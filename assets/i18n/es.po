@@ -3399,8 +3399,8 @@ msgstr[1] ""
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
-msgstr[0] "Este conjunto viene indicado por el siguiente ícono:"
-msgstr[1] "Estos conjuntos vienen indicado por los siguientes íconos:"
+msgstr[0] "${ startText } Este conjunto viene indicado por el siguiente ícono:"
+msgstr[1] "${ startText } Estos conjuntos vienen indicado por los siguientes íconos:"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:157
 msgid "Choose Investigators"

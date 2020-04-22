@@ -14,6 +14,11 @@
     {
       "id": "sacrificed",
       "title": "Sacrificed to Yog-Sothoth"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
     }
   ],
   "scenarios": [
@@ -3089,6 +3094,11 @@
     {
       "id": "cultists_escaped",
       "title": "Cultists Who Got Away"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
     }
   ],
   "scenarios": [
@@ -4359,6 +4369,34 @@
           ]
         }]
       }
+    }
+  ],
+  "side_scenario_steps": [
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "mitpm_defeated",
+            "text": "Defeated the Man in the Pallid Mask",
+            "steps": ["mitpm_defeated"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "mitpm_defeated",
+      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "chasing_the_stranger",
+          "operation": "add",
+          "value": 1
+        }
+      ]
     }
   ]
 }
@@ -9089,6 +9127,11 @@
     {
       "id": "sacrificed",
       "title": "Sacrificed to Yog-Sothoth"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
     }
   ],
   "scenarios": [
@@ -12728,6 +12771,11 @@
     {
       "id": "cultists_escaped",
       "title": "Cultists Who Got Away"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
     }
   ],
   "scenarios": [
@@ -14307,6 +14355,36 @@
           }
         ]
       }
+    }
+  ],
+  "side_scenario_steps": [
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "mitpm_defeated",
+            "text": "Defeated the Man in the Pallid Mask",
+            "steps": [
+              "mitpm_defeated"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "mitpm_defeated",
+      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "effects": [
+        {
+          "type": "campaign_log_count",
+          "section": "chasing_the_stranger",
+          "operation": "add",
+          "value": 1
+        }
+      ]
     }
   ]
 }, "scenarios": [
@@ -19848,6 +19926,2606 @@
     }
   ]
 }]}
+,
+{
+  "campaign":
+{
+  "id": "side",
+  "name": "Side Scenarios",
+  "position": 0,
+  "version": 1,
+  "campaign_log": [],
+  "scenarios": [
+    "curse_of_the_rougarou",
+    "carnevale_of_horrors",
+    "the_eternal_slumber",
+    "the_nights_usurper",
+    "murder_at_the_excelsior_hotel"
+  ],
+  "setup": [],
+  "steps": []
+}
+, "scenarios": [
+{
+  "id": "carnevale_of_horrors",
+  "scenario_name": "Carnevale of Horrors",
+  "full_name": "Carnevale of Horrors",
+  "xp_cost": 3,
+  "setup": [
+    "xp_cost",
+    "intro",
+    "gather_encounter_sets",
+    "remove_random_location",
+    "setup_locations",
+    "setup_masked_people",
+    "set_aside_cards",
+    "encounter_deck",
+    "circle_rule",
+    "counter_clockwise_rule",
+    "across_from_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -3
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that's really all there is to it.\" He sighs and sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg wearing this mask and holdin' a bloody butcher's cleaver,\" he says, motioning to the black leather mask sitting on his desk. It has a comicaly long nose and a strange symbol scrawled in yellow on its forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall & Garrison.\" The sheriff's jaw clenches and his brows furrow as he recounts the story. \"Fella did nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the 'carnival is coming'; whatever the hell that meant. Wasn't until the next day we found the victim's body. Defense wanted him in a straitjacket. We were happy to oblige.\"\nThere isn't much time to spare. If your research is right, there is more to this case than meets the eye. This \"Zanni\" wasn't talking about Darke's Carnival, but rather the Carnevale of Venice, which begins just before the next full moon."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "venice"
+      ]
+    },
+    {
+      "id": "remove_random_location",
+      "text": "Choose 1 location at random and remove it from the game. If San Marco Basilica or Canal-side is chosen, randomly choose a different location instead."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the other 8 locations into play, in a random circular formation. Each investigator begins play in San Marco Basilica. Put Abbess Allegria Di Biase into play at San Marco Basilica."
+    },
+    {
+      "id": "setup_masked_people",
+      "text": "Shuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica, Masked Carnevale-Goers side face-up. Do not look at their other sides."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Gilded Volto."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "circle_rule",
+      "type": "rule_reminder",
+      "title": "Location Setup",
+      "text": "In this scenario, locations are placed in a circle. Due to the parade during the Carnevale, each location is connectd only to the location in the clockwise direction. This means that investigators and monsters can only travel (or count the nearest location) in the clockwise direction unless otherwise noted."
+    },
+    {
+      "id": "counter_clockwise_rule",
+      "type": "rule_reminder",
+      "title": "Counter-clockwise",
+      "text": "Some cards instruct the players to find the nearest location in the counter-clockwise direction. This is an exception to the above rule and should be followed as though locations are connected counter-clockwise."
+    },
+    {
+      "id": "across_from_rule",
+      "type": "rule_reminder",
+      "title": "\"Across from\"",
+      "text": "The location \"across from\" another l ocation is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For hte purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "many_were_sacrificed_to_cnidathqua",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "coh_many_were_sacrificed_to_cnidathqua",
+          "text": "many were sacrificed to Cnidathqua during the Carnevale."
+        }
+      ]
+    },
+    {
+      "id": "sun_banished_cnidathqua",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "coh_sun_banished_cnidathqua",
+          "text": "the sun banished Cnidathqua into the depths."
+        }
+      ]
+    },
+    {
+      "id": "cnidathqua_retreated",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "coh_cnidathqua_retreated",
+          "text": "Cnidathqua retreated to nurse its wounds."
+        }
+      ]
+    },
+    {
+      "id": "move_innocent_reveler",
+      "text": "Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able."
+    },
+    {
+      "id": "choose_masks",
+      "title": "Additional Rewards",
+      "text": "In player order, each investigator may choose one of the following [[Mask]] cards to add to his or her deck: Pantalone, Medico Della Peste, Bauta, Gilded Volto. The chosen card does not count towards that investigator's deck size.",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "source": "scenario",
+        "investigator": "all",
+        "choices": [
+          {
+            "id": "82025",
+            "text": "Pantalone",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "82025"
+              }
+            ]
+          },
+          {
+            "id": "82024",
+            "text": "Medico Della Peste",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "82024"
+              }
+            ]
+          },
+          {
+            "id": "82023",
+            "text": "Bauta",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "82023"
+              }
+            ]
+          },
+          {
+            "id": "82026",
+            "text": "Gilded Volto",
+            "effects": [
+              {
+                "type": "add_card",
+                "investigator": "$input_value",
+                "card": "82026"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_innocent_revelers_saved",
+      "type": "input",
+      "text": "How many Innocent Revelers are underneath the act deck?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "none",
+            "text": "None",
+            "steps": ["ask_innocent_revelers_killed"]
+          },
+          {
+            "id": "one_or_two",
+            "text": "One or Two",
+            "steps": ["no_further_rewards"]
+          },
+          {
+            "id": "three",
+            "text": "Three",
+            "steps": ["abbess_satisfied", "earn_abbess"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_further_rewards",
+      "bullet_type": "small",
+      "text": "No further rewards."
+    },
+    {
+      "id": "ask_innocent_revelers_killed",
+      "text": "How many Innocent Revelers are underneath the agenda deck?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "none",
+            "text": "None"
+          },
+          {
+            "id": "one_or_more",
+            "text": "One or more",
+            "steps": ["sacrifice_made", "random_weakness"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "abbess_satisfied",
+      "type": "story",
+      "text": "\"Grazie mille—thank you for all your help.\" Allegria says as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what might have happened had you not arrived. Should you ever require assistance, please do not hesitate to ask.\""
+    },
+    {
+      "id": "earn_abbess",
+      "text": "Any one investigator may choose to add Abbess Allegria Di Biase to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "82022"
+        }
+      ]
+    },
+    {
+      "id": "sacrifice_made",
+      "type": "story",
+      "text": "Too many lives were lost during the eclipse to stop the machinations of Cnidathqua's servants. The beast has been fed, its minions empowered. You find yourself hoping you don't live long enough to see the fallout of your failure."
+    },
+    {
+      "id": "random_weakness",
+      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Monster]] weakness and adds it to their deck for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "add_weakness",
+          "investigator": "all",
+          "weakness_traits": ["Madness", "Injury", "Monster"]
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You sputter awake as an oar gently taps yoru shoulder. \"Tutto bene?\" The goldolier holding the oars says with a concerned expression. You nod and drag yourself onto the docks from his gondola, drenched and aching all over. The city is devestated. Most of the boats in the canal are wrecked. The streets are covered not in confetti, but in blood.",
+      "steps": ["many_were_sacrificed_to_cnidathqua", "earn_xp", "move_innocent_reveler", "choose_masks", "ask_innocent_revelers_saved", "$upgrade_decks"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "The city is still recovering from the events during the eclipse. With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than to speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken again.",
+      "steps": ["sun_banished_cnidathqua", "earn_xp", "choose_masks", "ask_innocent_revelers_saved", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "The creature recoils as globules of its jelly-like flesh rip and tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths. The chanting in the city plunges into mournful silence. As you return to the canal-side streets, black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it will take for the creature to recover.",
+      "steps": ["cnidathqua_retreated", "earn_xp", "choose_masks", "ask_innocent_revelers_saved", "$upgrade_decks"]
+    }
+  ]
+}
+,
+{
+  "id": "curse_of_the_rougarou",
+  "scenario_name": "Curse of the Rougarou",
+  "full_name": "Curse of the Rougarou",
+  "xp_cost": 1,
+  "setup": [
+    "xp_cost",
+    "intro",
+    "gather_encounter_sets",
+    "set_aside_rougarou",
+    "setup_locations",
+    "set_aside_cards",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -1
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Minnie Klein, your contact at the Arkham Advertiser, had slipped you a draft of the article over a cup of coffee at Velma's Diner. It would have gone to print had Doyle Jeffries, the lead editor, not scoffed at the concept. \"I believe his exact words were, 'I ain't printing it off as news,'\" she explained. From the sly grin spreading across her face, you could tell she smelled a story.\nThe headline was sensaltionalist. Three killings in nine days was enough to spook a town, sure. But you doubt all of New Orleans is gripped by terror, or even knows about the killings. Still, something piqued your interest. \"Lady Esprit,\" the Voodoo priestess from the article, claimed that a malign curse had taken root in the bayou.\n\"There's something to this, isn't there? I know that look,\" Minnie said. You weren't sure. If Lady Esprit was right, this \"roux-ga-roux\" wouldn't stop killing at three, that's for sure. Bur curses? Wolf-people? How could such things be real? Only one way to find out. You put on your coat and head for the Northside Station."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "rougarou",
+        "bayou"
+      ]
+    },
+    {
+      "id": "set_aside_rougarou",
+      "text": "Set the Curse of the Rougarou encounter set aside, out of play."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Sort each of the locations into 4 piles, by trait ([[New Orleans]], [[Riverside]], [[Wilderness]], and [[Unhallowed]]). Randomly choose 1 of these pile s and remove those locations from the game. Randomly chooseanother 1 of these piles and put those locations into play. Set each location in the other 2 piles aside, out of play. Each investigator begins play at a [[Bayou]] location in play."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Lady Esprit, Bear Trap, and Fishing Net."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rougarou_destroyed_and_curse_is_lifted",
+      "text": "In your Campaign Log, record that <i>the Rougarou is destroyed, and the curse is lifted</i>. Remove the Curse of the Rougarou weakness from it's bearers deck. Any one investigator may choose to add Lady Esprit to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "rougarou_destroyed_and_curse_is_lifted",
+          "text": "the Rougarou is destroyed, and the curse is lifted."
+        },
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "81019"
+        }
+      ]
+    },
+    {
+      "id": "rougarou_escaped_and_embrace_curse",
+      "text": "In your Campaign Log, record that <i>the Rougarou escaped, and you embraced the curse</i>. The bearer of the Curse of the Rougarou weakness must add Monstrous Transformation to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "rougarou_escaped_and_embrace_curse",
+          "text": "the Rougarou escaped, and you embraced the curse."
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "81029"
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "81030"
+        }
+      ]
+    },
+    {
+      "id": "rougarou_continues_to_haunt_the_bayou",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "rougarou_continues_to_haunt_the_bayou",
+          "text": "the Rougarou continues to haunt the bayou."
+        }
+      ]
+    },
+
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "Somehow, you manage to make it back to safety before daybreak, resting until late in the afternoon. It isn't until you seek out Lady Esprit the next day that you realize who last night's victim was. With a heavy heart and an unshakable dread, you choose to bury her body instead of contacting the authorities—the less people who delve this deep into the bayou, the better.",
+      "steps": ["rougarou_continues_to_haunt_the_bayou", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "The creature givs a pitiful wail as dark miry blood oozes from its wounds. By the time its body collapses into the mud, it has transformed back into its original form—the form of a young dark-skinned man, his expression twisted in agony. You bring his body back to Lady Esprit and she works her strange magic, removing the stain of the curse from the land. \"Call on me should you ever need my help,\" the mysterious woman tells you.",
+      "steps": ["rougarou_destroyed_and_curse_is_lifted", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "Somehow you have managed to quell the rage and bloodlust of the curse within the creature, and in moments the shape of a young, dark-skinned man stands before you, panting and sweating. He seems to only just now understand everything he's done, and agrees to flee to a secluded corner of the earth where he can harm no one. However, the curse lives on. He sees it in your eyes and grips your arm tightly. \"Don't let it take control,\" he warns. \"I was weak, but you—I can tell you are strong. Control the curse as I could not.\"",
+      "steps": ["rougarou_escaped_and_embrace_curse", "earn_xp", "$upgrade_decks"]
+    }
+  ]
+}
+,
+{
+  "id": "murder_at_the_excelsior_hotel",
+  "scenario_name": "Murder at the Excelsior Hotel",
+  "full_name": "Murder at the Excelsior Hotel",
+  "xp_cost": 3,
+  "setup": [
+    "check_first_play_xp_cost",
+    "intro_1",
+    "check_player_count",
+    "intro_4",
+    "gather_encounter_sets",
+    "set_aside_encounter_sets",
+    "construct_act_deck",
+    "set_aside_true_culprit",
+    "take_bloodstained_dagger",
+    "create_leads_deck",
+    "setup_locations",
+    "set_aside_cards",
+    "encounter_deck",
+    "patrol_rule",
+    "true_culprit_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "check_first_play_xp_cost",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "scenario_replayed",
+        "scenario": "murder_at_the_excelsior_hotel",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "bonus": -3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "patrol_rule",
+      "title": "Patrol",
+      "type": "rule_reminder",
+      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "bullets": [
+        {
+          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+        },
+        {
+          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+        }
+      ]
+    },
+    {
+      "id": "true_culprit_rule",
+      "title": "The True Culprit",
+      "type": "rule_reminder",
+      "text": "Each copy of The True Culprit is an agenda card with a different card template than most other agendas. These agendas each have doom thresholds which can be found to the right of their title, instead of in their normal position."
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "There have been reports of strange occurrences at Arkham’s Excelsior Hotel for over a month now. Disappearances. Bizarre sightings. Sudden closures, sometimes for days at a time, seemingly without warning. It’s like something out of a ghost story, but you know better than to simply dismiss these rumors. Too many people have whispered about the Excelsior…and to make matters worse, it seems the stories have only grown more unsettling in the last week. It’s time somebody looked into it all.\nYou’ve tried going to the police, but the grizzled and world‑weary Sergeant Monroe has dismissed you every time. You’ve been left to investigate on your own. Asking around at all the local hot-spots yields no leads. Velma’s Diner, Hibb’s Roadhouse, La Bella Luna; Each visit leaves you with only more questions. That is, until today.\nWhile walking down Central Avenue in Downtown, minding your own business, you bump into a man in a long trench coat. You begin to apologize, but he simply continues walking briskly away from you. It isn’t until you return home that you find the note in your pocket—one that wasn’t there before.\n<center><fancy>I have answers</fancy></center>\n<center><fancy>Room 225. Tonight. Come alone.</fancy></center>\n<center><fancy>They’re watching!</fancy></center>\nUncertain of what else you can do at this point, you begin making preparations to meet this mystery person."
+    },
+    {
+      "id": "check_player_count",
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["intro_2"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["intro_3"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["intro_3"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["intro_3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "The Excelsior is busy tonight. Either the rumors haven’t fazed these guests, or the stories have given the hotel a new allure. Everything seems normal. Hotel staff carry luggage and cleaning supplies throughout the lobby and the main stairway. The man behind the front desk greets you with a curt nod and a thin smile. A uniformed security guard reads the latest Arkham Advertiser in the corner. And yet, you can’t get the note’s final warning out of your mind.\nYou stride quickly across the lobby and up the stairs, wondering if you should have let someone know where you were going. Was it wise to come alone? What if you’re walking into a trap? You set your jaw and clench your fists as you stand in front of the blood-red door to room 225, and before you can second guess yourself any further, you knock. There’s no going back now."
+    },
+    {
+      "id": "intro_3",
+      "type": "story",
+      "text": "The Excelsior is busy tonight. Either the rumors haven’t fazed these guests, or the stories have given the hotel a new allure. Everything seems normal. Hotel staff carry luggage and cleaning supplies throughout the lobby and the main stairway. The man behind the front desk greets you with a curt nod and a thin smile. A uniformed security guard reads the latest Arkham Advertiser in the corner. And yet, you can’t get the note’s final warning out of your mind. You stride quickly across the lobby and up the stairs, taking some measure of comfort in the knowledge that you at least contacted others you could trust, letting them know of your whereabouts and intent. Your clandestine meetings have rarely gone as planned, especially lately, and it never hurts to have some measure of backup. You stand before the blood-red door to room 225, take a deep breath, and knock. There’s no going back now."
+    },
+    {
+      "id": "intro_4",
+      "type": "story",
+      "text": "You sit in a chair in the suite’s living room, watching as the man who slipped you the note paces about nervously. He rambles about secret meetings and watchful staff. The entire time, you find yourself glancing to the coffee table in front of you, and the curved dagger that rests there. He pauses for a moment, pours himself a drink, and raises the glass to his lips with a shaky grip. He then pours a second drink and hands it to you. “This is all going to sound crazy,” he says, his voice little more than a whisper. He glances at every darting shadow and twitches at every creak the old building makes. “I’m beginning to feel crazy, but there’s too much going on here to just ignore. And I’ve been a part of it long enough…” You listen closely, but his words are starting to run together. His voice is ethereal and wispy, like wind at the end of a long tunnel. You blink rapidly. Your vision blurs. The next thing you know, you’re on your feet. Your glass drops to the floor, and then—"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "murder_at_the_excelsior_hotel"
+      ]
+    },
+    {
+      "id": "set_aside_encounter_sets",
+      "type": "encounter_sets",
+      "aside": true,
+      "encounter_sets": [
+        "alien_interference",
+        "dark_rituals",
+        "excelsior_management",
+        "sins_of_the_past",
+        "vile_experiments"
+      ]
+    },
+    {
+      "id": "construct_act_deck",
+      "text": "Construct the act and agenda deck using only acts 1 & 2 and agendas 1 & 2 from <i>the Murder at the Excelsior Hotel</i> encounter set."
+    },
+    {
+      "id": "set_aside_true_culprit",
+      "text": "Set all ten copies of The True Culprit aside, out of play"
+    },
+    {
+      "id": "take_bloodstained_dagger",
+      "text": "The lead investigator begins play with the Bloodstained Dagger story asset under his or her control."
+    },
+    {
+      "id": "create_leads_deck",
+      "text": "Find each of the story assets from the 5 set-aside encounter sets (Alien Device, Tome of Rituals, Sinister Solution, Manager’s Key, and Time-Worn Locket) and shuffle them together into a separate deck. This deck is called the Leads deck. Place this deck near the scenario reference card."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Room 225, Suite Balcony, Second Floor Hall, Restaurant, and Foyer.",
+      "bullets": [
+        {
+          "text": "The lead investigator begins play in Room 225."
+        },
+        {
+          "text": "Each other investigator begins play in the Foyer."
+        },
+        {
+          "text": "Set each other location aside, out of play."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: All three copies of Arkham Officer, the Sergeant Monroe story asset, and the What Have You Done? weakness."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "excelsior_claims_another_victim",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "meh_excelsior_claims_another_victim",
+          "text": "the Excelsior claims another victim."
+        }
+      ]
+    },
+    {
+      "id": "fled_scene_of_the_crime",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "meh_fled_scene_of_the_crime",
+          "text": "the investigators fled the scene of the crime."
+        }
+      ]
+    },
+    {
+      "id": "excelsior_is_quiet_for_now",
+      "text": "In your Campaign Log, record that <i>the Excelsior is quiet, for now</i>. The lead investigator must add the What Have You Done? weakness to their deck. They may also choose to add the Bloodstained Dagger story asset to their deck as well. Both cards do not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "meh_excelsior_is_quiet_for_now",
+          "text": "the Excelsior is quiet, for now."
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "84007"
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "84006",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "earn_story_cards",
+      "text": "The lead investigator must add the What Have You Done? weakness to their deck. They may also choose to add the Bloodstained Dagger story asset to their deck as well. Both cards do not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "84007"
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "84006",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "check_police_on_your_side",
+      "type": "branch",
+      "text": "If “the police are on your side”:",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "meh_police_are_on_your_side",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["earn_sergeant_monroe"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_sergeant_monroe",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add Sergeant Monroe to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "84008"
+        }
+      ]
+    },
+    {
+      "id": "check_police_dont_believe_you",
+      "type": "branch",
+      "text": "If “the police don't believe you”:",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "meh_police_dont_believe_you",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["do_not_earn_sergeant_monroe", "ask_police_in_victory_display"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "do_not_earn_sergeant_monroe",
+      "bullet_type": "small",
+      "text": "Do not add Sergeant Monroe to any investigator’s deck."
+    },
+    {
+      "id": "ask_police_in_victory_display",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "killed_police",
+            "text": "Are there any [[Police]] enemies in the victory display?",
+            "steps": ["earn_weakness"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_weakness",
+      "text": "Search the collection for a [[Detective]] or [[Madness]] weakness and add it to the lead investigator’s deck.",
+      "effects": [
+        {
+          "type": "add_weakness",
+          "investigator": "lead_investigator",
+          "weakness_traits": ["Madness", "Detective"]
+        }
+      ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "the_truth",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "meh_the_truth",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Scenario Interlude: The Truth",
+            "steps": [
+              "the_truth_1",
+              "choose_inspector_monroe",
+              "the_truth_7",
+              "choose_lead_assets",
+              "lead_asset_branch_1",
+              "continue_playing"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "meh_the_truth",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "the_truth_1",
+      "type": "story",
+      "text": "Your investigation is halted by Sergeant Monroe—the very same police sergeant who had spurned your earlier warnings about the Excelsior Hotel. He is clearly exasperated by all of the strange happenings in the building, and demands answers. “Now listen here,” he says, his hand twitching toward his holstered gun. “I’m a reasonable man, but you’re looking mighty suspicious. You better tell me everything that’s going on right now, you understand? Or you’re gonna take a oneway trip straight to the big house.”"
+    },
+    {
+      "id": "choose_inspector_monroe",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "tell_truth",
+            "text": "<i>Tell Sergeant Monroe the truth.</i>",
+            "steps": ["the_truth_2", "truth_intro", "ask_did_not_cover_evidence", "ask_have_clues", "ask_no_innocents_killed", "tell_truth_branch"]
+          },
+          {
+            "id": "lie",
+            "text": "<i>Lie about your involvement.</i>",
+            "steps": ["the_truth_3", "lie_intro", "ask_cleared_evidence", "ask_no_innocents_killed", "lie_branch"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "the_truth_2",
+      "type": "story",
+      "text": "You explain everything to Sergeant Monroe from the beginning. The rumors. The note. The murder. The more you explain, the more you realize how crazy it all sounds, but you know it is the truth. You know you’re innocent. But do you have the evidence to back it up?"
+    },
+    {
+      "id": "truth_intro",
+      "text": "Sergeant Monroe will only believe you if you collected enough evidence and did not try to cover up your involvement. If all of the following circumstances are true:"
+    },
+    {
+      "id": "ask_did_not_cover_evidence",
+      "bullet_type": "small",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cleared_evidence",
+            "text": "Have the investigators NOT “cleaned up the blood,” “hid the body,” or “tidied up the room?”",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "meh_did_not_cover_up",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_have_clues",
+      "bullet_type": "small",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "have_clues",
+            "text": "Are there are least 2 [per_investigator] clues on each [[Lead]] asset in play?”",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "meh_have_clues",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_no_innocents_killed",
+      "bullet_type": "small",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "have_clues",
+            "text": "Are there no [[Innocent]] enemies in the victory display?”",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "meh_no_innocents_killed",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tell_truth_branch",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "meh_did_not_cover_up",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "meh_have_clues",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "meh_no_innocents_killed",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["the_truth_5", "the_truth_5_consequences"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["the_truth_4", "the_truth_4_consequences"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "the_truth_3",
+      "type": "story",
+      "text": "You do the only thing you can think to do in the moment: lie through your teeth. After all, there is no way the police would understand all of the strange occurrences within the hotel, and even if they did, you don’t expect them to turn a blind eye to all of the evidence pointing in your direction."
+    },
+    {
+      "id": "lie_intro",
+      "text": "Sergeant Monroe will only believe you if you successfully covered up your involvement. If all of the following circumstances are true:"
+    },
+    {
+      "id": "ask_cleared_evidence",
+      "bullet_type": "small",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "cleared_evidence",
+            "text": "Have the investigators “cleaned up the blood,” “hid the body,” and “tidied up the room?”",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "meh_did_cover_up",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lie_branch",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "meh_did_cover_up",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "meh_no_innocents_killed",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["the_truth_6", "the_truth_6_consequences"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["the_truth_4", "the_truth_4_consequences"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "the_truth_4",
+      "type": "story",
+      "text": "“No. No, I don’t believe you.” The man says, unholstering his weapon. “None of this checks out. You’re coming with me, pal. You can sing your story down at the station.” You raise your hands, and he starts ushering you out of the room when there is a tremendous crash from another part of the hotel. The entire building shakes to its foundations, and you hear guests screaming. “What in the hell?” He looks to the door, then to you. “Stay put,” he warns, “Or I swear, next time I see you, you’re gettin’ cuffed.” He runs off to investigate the noise, mumbling about how he is getting too old for this job."
+    },
+    {
+      "id": "the_truth_4_consequences",
+      "text": "Remember that “the police don’t believe you.” Remove Sergeant Monroe from the game. Search the encounter deck, discard pile, and all play areas for each copy of Arkham Officer and remove them from the game. Shuffle the encounter discard pile into the encounter deck.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_police_dont_believe_you",
+          "text": "dummy"
+        }
+      ]
+    },
+    {
+      "id": "the_truth_5",
+      "type": "story",
+      "text": "Sergeant Monroe listens to your story with skepticism, though he seems to come around the more evidence you present to him. “All right,” he says once you are finished explaining. “So you were under duress. Drugged, maybe. Crazy as it sounds, the pieces fit. I think you’re telling the truth. But if there's someone else pulling the strings, we've gotta figure out who, or nobody's gonna believe either one of us.” A drop of sweat slides down his forehead. “Come on, let’s go.”"
+    },
+    {
+      "id": "the_truth_5_consequences",
+      "text": "Remember that “the police are on your side.” Choose an investigator to take control of the Sergeant Monroe story asset <i>(move him to that investigator’s threat area)</i>. Search the encounter deck, discard pile, and all play areas for each copy of Arkham Officer and remove them from the game. ",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_police_are_on_your_side",
+          "text": "dummy"
+        }
+      ]
+    },
+    {
+      "id": "the_truth_6",
+      "type": "story",
+      "text": "Sergeant Monroe nods along to your story, convinced. “All right,” he says, “Sounds like you really did have nothing to do with this. But maybe you can help me find the real culprit. Somebody in this damned hotel is a murderer, and we’re gonna find them.” You breathe a sigh of relief. At least the police won’t be a problem anymore."
+    },
+    {
+      "id": "the_truth_6_consequences",
+      "text": "Remember that “the police are on your side.” Choose an investigator to take control of the Sergeant Monroe story asset <i>(move him to that investigator’s threat area)</i>. Search the encounter deck, discard pile, and all play areas for each copy of Arkham Officer and remove them from the game. Shuffle the encounter discard pile into the encounter deck.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_police_are_on_your_side",
+          "text": "dummy"
+        }
+      ]
+    },
+    {
+      "id": "the_truth_7",
+      "type": "story",
+      "text": "Thanks to your cunning investigation, you now have a better idea of what is going on. You’re not the real culprit here. There is much more happening behind the scenes of the Excelsior Hotel, and you’re just caught in the middle…"
+    },
+    {
+      "id": "choose_lead_assets",
+      "text": "Based on which two [[Lead]] assets are controlled by the players, a different result will occur.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "min": 2,
+        "max": 2,
+        "query": [
+          {
+            "code": ["84028", "84034", "84031", "84037", "84040"]
+          }
+        ],
+        "choices": [
+          {
+            "id": "in_play",
+            "text": "In play",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lead_asset_branch_1",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84028",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84040",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["alien_device_and_time_worn_locket", "true_culprit_1", "move_clues_1", "boss_1"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "alien_device_and_time_worn_locket",
+      "type": "story",
+      "text": "The specter laid dormant for many years, in relative peace. It wasn’t violent until the victim brought that accursed device into the hotel. The signal emitted from the transmitter was inaudible to human ears, but somehow pierced beyond the veil of the material world. Driven berserk, the specter will not stop until it has killed every last person in the hotel."
+    },
+    {
+      "id": "true_culprit_1",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. I).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_1",
+      "text": "Move all clues from Time-Worn Locket to Alien Device."
+    },
+    {
+      "id": "boss_1",
+      "text": "Spawn the set-aside Vengeful Specter in Room 245."
+    },
+    {
+      "id": "lead_asset_branch_2",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84028",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84037",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["alien_device_and_sinister_solution", "true_culprit_2", "move_clues_2", "boss_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "alien_device_and_sinister_solution",
+      "type": "story",
+      "text": "The victim was experimenting with extraterrestrial brain matter and attracted the attention of another creature from beyond the stars. Between the concoction you were forced to drink and the signal emitted by that horrible device, it’s a wonder you are able to think properly at all. You hear a crash and an unearthly screech from the rooftop. Perhaps you can turn this strange potion to your advantage."
+    },
+    {
+      "id": "true_culprit_2",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. II).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_2",
+      "text": "Move all clues from Alien Device to Sinister Solution."
+    },
+    {
+      "id": "boss_2",
+      "text": "Spawn the set-aside Otherworldly Meddler at the Hotel Roof. Place 1[per_investigator] doom on Otherworldly Meddler."
+    },
+    {
+      "id": "lead_asset_branch_3",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84028",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84031",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["alien_device_and_managers_key", "true_culprit_3", "move_clues_3", "boss_3"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_4"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "alien_device_and_managers_key",
+      "type": "story",
+      "text": "Whatever the extraterrestrial device’s original purpose was, it never should have been brought to your world. The moment it came into contact with humans, it changed them, and the resulting monstrosities hunger for more flesh. Your “victim” was one such creature, no innocent at all, and you were forced to defend yourself when you learned the truth. Now, with your memories returned, you can put an end to this."
+    },
+    {
+      "id": "true_culprit_3",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. III).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_3",
+      "text": "Move all clues from Manager’s Key to Alien Device."
+    },
+    {
+      "id": "boss_3",
+      "text": "Spawn the set-aside Hotel Manager in the Restaurant."
+    },
+    {
+      "id": "lead_asset_branch_4",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84028",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84034",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["alien_device_and_tome_of_rituals", "true_culprit_4", "move_clues_4", "boss_4"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_5"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "alien_device_and_tome_of_rituals",
+      "type": "story",
+      "text": "The Enclave used the strange transmitter to summon its owner to the hotel. Now they hope to gain control over the creature through a ritual of blood sacrifice. By forcing other guests to do their bloody work, evidence of their wrongdoing remains hidden...but you know the truth. And now you can stop their ritual and allow the hideous creature to return to its own world."
+    },
+    {
+      "id": "true_culprit_4",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. IV).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_4",
+      "text": "Move all clues from Alien Device to Tome of Rituals."
+    },
+    {
+      "id": "boss_4",
+      "text": "Spawn the set-aside Otherworldly Meddler at the Hotel Roof. Place 2 plus 2[per_investigator] doom on Otherworldly Meddler."
+    },
+    {
+      "id": "lead_asset_branch_5",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84040",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84037",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["time_worn_locket_and_sinister_solution", "true_culprit_5", "move_clues_5", "boss_5"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_6"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "time_worn_locket_and_sinister_solution",
+      "type": "story",
+      "text": "The victim was utilizing a strange concoction in an attempt to peer into the world beyond the living. His experiments were what angered the specter, and led to his demise. It is up to you to destroy this spirit once and for all, and there’s only one way to do that..."
+    },
+    {
+      "id": "true_culprit_5",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. V).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_5",
+      "text": "Move all clues from Time-Worn Locket to Sinister Solution."
+    },
+    {
+      "id": "boss_5",
+      "text": "Spawn the set-aside Vengeful Specter in Room 245."
+    },
+    {
+      "id": "lead_asset_branch_6",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84040",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84031",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["time_worn_locket_and_managers_key", "true_culprit_6", "move_clues_6", "boss_6"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_7"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "time_worn_locket_and_managers_key",
+      "type": "story",
+      "text": "The woman in the locket was killed many years ago, and the manager is the one responsible. The man who met you in 225 was one of the staff members involved. That is when the spirit possessed you in a fit of righteous fury. Nothing in this hotel will return to normal until the manager is destroyed and the spirit is avenged."
+    },
+    {
+      "id": "true_culprit_6",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. VI).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_6",
+      "text": "Move all clues from Manager’s Key to Time-Worn Locket."
+    },
+    {
+      "id": "boss_6",
+      "text": "Spawn the set-aside Hotel Manager in the Restaurant."
+    },
+    {
+      "id": "lead_asset_branch_7",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84040",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84034",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["time_worn_locket_and_tome_of_rituals", "true_culprit_7", "move_clues_7", "shuffle_guests_7", "boss_7"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_8"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "time_worn_locket_and_tome_of_rituals",
+      "type": "story",
+      "text": "The woman in the locket was killed many years ago in one of the Enclave’s many blood sacrifices. Its hate and malice for the cult is what drove it to possess you, and what drove it to kill. Its fury must be satisfied, and you are its righteous agent. It is up to you to direct that fury to its rightful source: the cult that infests the hotel."
+    },
+    {
+      "id": "true_culprit_7",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. VII).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_7",
+      "text": "Spawn the set-aside Dimensional Shambler in the Basement."
+    },
+    {
+      "id": "shuffle_guests_7",
+      "text": "Shuffle each [[Guest]] enemy in the victory display into the encounter deck, along with the encounter discard pile."
+    },
+    {
+      "id": "boss_7",
+      "text": "Discard cards from the top of the encounter deck until 1 plus 1[per_investigator] [[Guest]] or [[Cultist]] enemies are discarded. Randomly spawn each of those enemies in a different [[Crime Scene]] location (empty, if able)."
+    },
+    {
+      "id": "lead_asset_branch_8",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84037",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84031",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["sinister_solution_and_managers_key", "true_culprit_8", "shuffle_staff_8", "spawn_staff_8", "boss_8"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["lead_asset_branch_9"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sinister_solution_and_managers_key",
+      "type": "story",
+      "text": "The victim was performing horrible experiments within the Excelsior. He had already transformed much of the staff, and you were to be the next in a long line of subjects...only the experiment was a failure. Now it is up to you to put a stop to these horrible transformations by destroying the source of this concoction."
+    },
+    {
+      "id": "true_culprit_8",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. VIII).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "shuffle_staff_8",
+      "text": "Shuffle each [[Staff]] enemy in the victory display into the encounter deck, along with the encounter discard pile."
+    },
+    {
+      "id": "spawn_staff_8",
+      "text": "Discard cards from the top of the encounter deck until 1 [[Staff]] enemy is discarded (2 instead if there are 3 or 4 investigators in the game). Spawn each of those enemies in the Foyer."
+    },
+    {
+      "id": "boss_8",
+      "text": "Attach the set-aside Harvested Brain to Room 212."
+    },
+    {
+      "id": "lead_asset_branch_9",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84037",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "84034",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["sinister_solution_and_tome_of_rituals", "true_culprit_9", "move_clues_9", "boss_9"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["managers_key_and_tome_of_rituals", "true_culprit_10", "boss_10", "shuffle_guest_10", "place_doom_10"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sinister_solution_and_tome_of_rituals",
+      "type": "story",
+      "text": "The Enclave have wrested control of an inhuman brain through a vile ritual and blood sacrifice. Now the cult utilizes the brain’s vast intellect and strange secretions to possess others to do their bidding, and you are their latest victim. The only way to stop their scheme is to break their hold over this brain once and for all."
+    },
+    {
+      "id": "true_culprit_9",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. IX).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "move_clues_9",
+      "text": "Move all clues from Sinister Solution to Tome of Rituals."
+    },
+    {
+      "id": "boss_9",
+      "text": "Attach the set-aside Harvested Brain to Room 212."
+    },
+    {
+      "id": "managers_key_and_tome_of_rituals",
+      "type": "story",
+      "text": "The Enclave has been performing a terrible ritual for days, intending to change every last human inside the Excelsior into wretched monstrosities. The staff were the first to change, and if you aren’t quick, you will be next. The transformation has already begun... "
+    },
+    {
+      "id": "true_culprit_10",
+      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. X).” It is both the current act and the current agenda."
+    },
+    {
+      "id": "boss_10",
+      "text": "Spawn the set-aside Dimensional Shambler in the Basement."
+    },
+    {
+      "id": "shuffle_guest_10",
+      "text": "Shuffle each [[Guest]] enemy in the victory display into the encounter deck, along with the encounter discard pile."
+    },
+    {
+      "id": "place_doom_10",
+      "text": "Place 2[per_investigator] doom on “The True Culprit (v. X).”"
+    },
+    {
+      "id": "continue_playing",
+      "text": "You are now ready to continue playing."
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "resolution_3",
+      "type": "resolution",
+      "resolution": "R3"
+    },
+    {
+      "id": "check_replay_scenario_R2",
+      "type": "branch",
+      "text": "If this is the first time you have played this scenario during this campaign:",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "scenario_replayed",
+        "scenario": "murder_at_the_excelsior_hotel",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["murders_continue_unsolved", "earn_xp", "earn_story_cards", "$upgrade_decks"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["ask_replay_scenario_R2"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_replay_scenario_R3",
+      "type": "branch",
+      "text": "If this is the first time you have played this scenario during this campaign:",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "scenario_replayed",
+        "scenario": "murder_at_the_excelsior_hotel",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["murders_continue_unsolved", "earn_xp", "earn_story_cards", "earn_weakness", "$upgrade_decks"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["ask_replay_scenario_R3"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_replay_scenario_R2",
+      "type": "input",
+      "text": "You may replay this scenario. If you choose to, reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered. No experience points are earned from your previous game.",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "replay",
+            "text": "Replay scenario.",
+            "steps": ["$upgrade_decks", "replay_scenario"]
+          },
+          {
+            "id": "done",
+            "text": "Do not replay.",
+            "steps": ["murders_continue_unsolved", "earn_xp", "earn_story_cards", "$upgrade_decks"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_replay_scenario_R3",
+      "type": "input",
+      "text": "You may replay this scenario. If you choose to, reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered. No experience points are earned from your previous game.",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "replay",
+            "text": "Replay scenario.",
+            "steps": ["$upgrade_decks", "replay_scenario"]
+          },
+          {
+            "id": "done",
+            "text": "Do not replay.",
+            "steps": ["murders_continue_unsolved", "earn_xp", "earn_story_cards", "earn_weakness", "$upgrade_decks"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "murders_continue_unsolved",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "meh_murders_continue_unsolved",
+          "text": "the murders continue, unsolved."
+        }
+      ]
+    },
+    {
+      "id": "replay_scenario",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "replay_scenario",
+          "scenario": "murder_at_the_excelsior_hotel"
+        },
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "meh_excelsior_claims_another_victim",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "meh_fled_scene_of_the_crime",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_police_are_on_your_side",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_police_dont_believe_you",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_did_cover_up",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_did_not_cover_up",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_have_clues",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_no_innocents_killed",
+          "remove": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "hidden",
+          "id": "meh_the_truth",
+          "remove": true
+        },
+        {
+          "type": "campaign_log_cards",
+          "section": "hidden",
+          "id": "84028",
+          "remove": true
+        },
+        {
+          "type": "campaign_log_cards",
+          "section": "hidden",
+          "id": "84034",
+          "remove": true
+        },
+        {
+          "type": "campaign_log_cards",
+          "section": "hidden",
+          "id": "84031",
+          "remove": true
+        },
+        {
+          "type": "campaign_log_cards",
+          "section": "hidden",
+          "id": "84037",
+          "remove": true
+        },
+        {
+          "type": "campaign_log_cards",
+          "section": "hidden",
+          "id": "84040",
+          "remove": true
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You collapse to the floor, gasping for breath. The air around you feels oppressive, your ears filled with the agonizing wails of other innocents who have fallen victim to the cruel machinations that continue in the Excelsior hotel. You clutch at the carpet, your vision swirling and swaying as you feel yourself losing consciousness. Your efforts have been in vain. The nefarious plans that have been set into motion can no longer be undone.",
+      "steps": [
+        "excelsior_claims_another_victim",
+        "resolution_2"
+      ]
+    },
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "With no hope of solving this mystery, you fled the hotel. Unfortunately, your flight did not do much to prove your innocence. It wasn’t long before the bulls tracked you down and the dreaded knock on your door arrived: “Open up! Arkham Police!”",
+      "steps": ["fled_scene_of_the_crime", "resolution_3"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "Nobody will ever believe what you witnessed at the Excelsior. Not three days later, the hotel was open again, like nothing had ever happened. You know better, though. You witnessed it all firsthand. The events continue to haunt your dreams and your waking thoughts. Even now you go out of your way to avoid the Excelsior, though weeks have passed and there has been no sign of any other nefarious schemes within its accursed walls. The only thing that can quiet the echoing memories of that horrible experience is a visit to the local speakeasy. But all the booze in the world can’t keep the grisly visions from your nightmares, waking you in the dead of night with a violent start, soaked in sweat. That’s when you notice the person asking around town about the Excelsior. Innocent questions, at first, but more prodding with each passing day. Surely they will believe you. Somebody has to. You may have broken free of the Excelsior’s grasp, but there will be other victims, of that you are sure. You grab a piece of paper and hastily scribble a note.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>It’s not over.</fancy></center>\nIf they can see past the veil of the Excelsior’s operations, then maybe others can too. It may not be too late to stop it all from happening again!",
+      "steps": ["excelsior_is_quiet_for_now", "check_police_on_your_side", "check_police_dont_believe_you", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "“Sit there any longer and I’ll have to charge you rent.” You blink rapidly, as if coming out of a deep dream. Looking up, you see a waiter giving you an annoyed look. He is carrying a stack of dirty dishes. In your hand is a glass of water. You don’t remember ordering it, nor do you remember how long you’ve been here. And where <i>is</i> here, exactly? You spin around in your chair and realize you’re in the restaurant of the Excelsior Hotel. A few other diners are present, catching an early dinner and minding their own business. The soft light of an autumn afternoon filters in through the windows, and the general din of activity can be heard from the lobby. You turn and briefly glance back at the waiter before reaching in your pocket and dropping a quarter on the table, heading for the lobby. Your legs feel like jelly. As you stumble out of the restaurant, other guests view you with concern. The security guard in the corner watches you like a hawk. You head over to the front desk, steadying yourself against it. The concierge approaches, but you recoil at the recognition of his face. The hotel is operating as if nothing happened. But that can’t be. Everything you saw was true, right? You dash out the front door before he can reach you. You have to put some distance between yourself and this accursed place.\nWeeks pass. Nothing helps to quell the feeling in your mind that you have missed something important. This business with the Excelsior is not done, not by a long shot. You begin your investigation anew, asking around town for the latest rumors regarding the hotel. More missing staff. More sudden closures. Guests who never arrived. Guests who <i>never</i> left. It’s all too much.\nStanding on a lonely street corner in Northside, you consider your options. Streetlamps flicker to life around you as evening creeps in. Just then, a stranger bumps into you, muttering a half-hearted apology. You take a step after them before you feel something tugging at the back of your mind. No. Could it be? You stick your hands into your coat pocket. Stuffed inside is a small, folded note. You look up, but the pedestrian is nowhere in sight. You unfold the note slowly, fingers shaking from anxiety and fear.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>This isn't over.</fancy></center>",
+      "steps": ["check_replay_scenario_R2"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "You sit in a cold, dank holding cell awaiting your arraignment. You have no doubt that with the evidence the police gathered, you’ll be spending the rest of your life behind bars. You have sworn high and low that you had nothing to do with the murder, but doubt lingers in your mind. Could it have been you, somehow? What really happened in the Excelsior that night?\nJust then, you hear rapping on the bars of your cell. An officer stands just outside, looking away from you. He slips a folded note between the bars of your cell. Knowing better than to ask his intentions out loud, you slowly walk over and unfold the note, your fingers shaking with trepidation.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>This isn't over.</fancy></center>\nJust as you finish reading the note, you hear the click of the cell’s latch unlocking. The officer is gone, and the door to your cell swings open.",
+      "steps": ["check_replay_scenario_R3"]
+    }
+  ]
+}
+,
+{
+  "id": "the_eternal_slumber",
+  "scenario_name": "The Eternal Slumber",
+  "full_name": "The Eternal Slumber",
+  "xp_cost": 2,
+  "setup": [
+    "xp_cost",
+    "intro_1",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_cards",
+    "create_brotherhood_deck",
+    "set_strength_of_the_abyss",
+    "encounter_deck",
+    "explore_rule",
+    "story_cards",
+    "strength_of_the_abyss",
+    "taken_by_the_abyss",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "explore_rule",
+      "title": "explore",
+      "type": "rule_reminder",
+      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "bullets": [
+        {
+          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+        },
+        {
+          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+        },
+        {
+          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+        },
+        {
+          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+        }
+      ],
+      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River."
+    },
+    {
+      "id": "story_cards",
+      "title": "Story Cards",
+      "type": "rule_reminder",
+      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+    },
+    {
+      "id": "strength_of_the_abyss",
+      "title": "Strength of the Abyss",
+      "type": "rule_reminder",
+      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+    },
+    {
+      "id": "taken_by_the_abyss",
+      "title": "“Taken by the Abyss”",
+      "type": "rule_reminder",
+      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven insane. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<fancy>Greetings,\nI'm sorry. I know it has been some time since my last correspondence. I am writing to you now because there is nobody I can trust here in Cairo. I don't even know if this letter will make it to you safely. I can only hope it does, for all our sakes.\nThere's something wrong in this city. It started a few weeks ago. The head curator of the Museum of Egyptian Antiquities fell asleep and simply never awoke. I thought nothing of it at first; just a medical curiosity, a mystery the doctors would solve in due time. But then it happened again. And again. More and more, people all across the city started falling into comas. Now it's happening every night. . . And as I write to you, they are taking my husband John to the hospital.\nI'm scared. I don't want to fall asleep and never wake up again. But more than that, I'm worried that there are people purposely inflicting this curse on others. And if so, why?\nPlease, I am begging you. I need your help.\nYours sincerely,\nJessie Burk</fancy>"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_eternal_slumber",
+        "sands_of_egypt",
+        "brotherhood_of_the_beast",
+        "abyssal_tribute"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Streets of Cairo, Outskirts of Cairo, Temple Courtyard, Museum of Egyptian Antiquities, Cairo Bazaar, and Expedition Camp. Each investigator begins play in the Streets of Cairo."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Neith, John & Jessie Burke, Ancient Ankh, both copies of Abyssal Revenant, and each of the 7 single-sided locations (Nile River, Sands of Dashur, Dunes of the Sahara, Untouched Vault, Faceless Sphinx, Desert Oasis, and Sandswept Ruins)."
+    },
+    {
+      "id": "create_brotherhood_deck",
+      "text": "Find the 6 double-sided [[Brotherhood]] enemies (Professor Nathaniel Taylor, Dr. Layla El Masri, Dr. Wentworth Moore, Nadia Nimr, Farid, and Nassor). These enemies have story cards on their reverse sides <i>(see “Story Cards” on page 6).</i> For the best experience, do not look at the story cards on their reverse sides. Shuffle these 6 enemies together and place them beneath the scenario reference card."
+    },
+    {
+      "id": "set_strength_of_the_abyss",
+      "text": "For each investigator in the game, place 1 resource token on the scenario reference card, under “Strength of the Abyss.” For the remainder of this scenario, resources on the scenario reference card represent the current strength of the abyss <i>(see “Strength of the Abyss”).</i>"
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_dreamers_in_abyss",
+      "text": "In your Campaign Log, record <i>dreamers in the abyss (X)</i>. X is the strength of the abyss when the scenario ended.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Strength of the Abyss:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "campaign_notes",
+            "id": "tes_dreamers_in_the_abyss",
+            "operation": "set_input",
+            "text": "dreamers in the abyss (#X#)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_escaped_brotherhood",
+      "type": "input",
+      "text": "In your Campaign Log, record <i>Brotherhood Agents Who Escaped:</i> and list the names of each unique [[Cultist]] enemy that was in play or beneath the scenario reference card when the game ended.",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "cultist",
+            "unique": true,
+            "source": "scenario"
+          }
+        ],
+        "choices": [
+          {
+            "id": "escaped",
+            "text": "Escaped",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "tes_escaped_brotherhood",
+                "text": "Brotherhood Agents Who Escaped: #name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_ancient_ankh",
+      "text": "Any one investigator may choose to add the Ancient Ankh to their deck. It does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "83056"
+        }
+      ]
+    },
+    {
+      "id": "earn_john_and_jessie",
+      "text": "Any one investigator may choose to add John & Jessie Burke to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "83055"
+        }
+      ]
+    },
+    {
+      "id": "brotherhood_schemes_continue",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tes_brotherhood_schemes_continue",
+          "text": "the Brotherhood’s schemes continue unabated."
+        }
+      ]
+    },
+    {
+      "id": "aware_of_xzharahs_plan",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tes_aware_of_xzharahs_plan",
+          "text": "you are aware of Xzharah’s plans."
+        }
+      ]
+    },
+    {
+      "id": "curse_of_slumber_lifted",
+      "text": "In your Campaign Log, record that <i>the curse of slumber was lifted</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tes_curse_of_slumber_lifted",
+          "text": "the curse of slumber was lifted."
+        },
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tes_taken_by_the_abyss",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "record_ally_taken_by_the_abyss",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "ally",
+            "unique": true,
+            "source": "deck"
+          }
+        ],
+        "choices": [
+          {
+            "id": "taken_by_the_abyss",
+            "text": "Taken by the Abyss",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "tes_taken_by_the_abyss",
+                "cards": "$input_value",
+                "text": "#name# was taken by the abyss."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_investigator_taken_by_the_abyss",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "source": "scenario",
+        "investigator": "choice",
+        "choices": [
+          {
+            "id": "taken_by_the_abyss",
+            "text": "Taken by the Abyss",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "tes_taken_by_the_abyss",
+                "cards": "$input_value",
+                "text": "#name# was taken by the abyss."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "record_ally_taken_by_the_abyss",
+            "text": "Unique ally was taken by the abyss.",
+            "steps": ["record_ally_taken_by_the_abyss"]
+          },
+          {
+            "id": "record_investigator_taken_by_the_abyss",
+            "text": "Investigator was taken by the abyss.",
+            "steps": ["record_investigator_taken_by_the_abyss"]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "The city of Cairo sleeps andwill never wake. In the west, the Brotherhood rejoices, fortheir prophecy is about to be fulfilled. And deep in the landof dreams, their Chosen grips his weapon for the first time.",
+      "steps": ["earn_xp", "record_dreamers_in_abyss", "record_escaped_brotherhood", "brotherhood_schemes_continue", "$upgrade_decks"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "Jessie Burke cries with joy as her husband opens his eyes for the first time in weeks. “J… Jessie?” John trembles as he tries and fails to stand. His wife places a hand on his shoulder to steady him. “I thought you would never wake,” she admits, wiping tears from her eyes. “If it weren’t for our friends here, you’d still be under.” John turns to you, his expression dire. “Then you’re the only ones who can stop what is coming,” he says cryptically. “In my dreams, I saw him. The one they called Xzharah.” He swallows hard. “And he is like nothing we’ve ever seen before.”",
+      "steps": ["curse_of_slumber_lifted", "earn_john_and_jessie", "earn_xp", "record_dreamers_in_abyss", "record_escaped_brotherhood", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "Neith rises to her feet. Most of her power has been drained, but the strength of several dreamers still sustains her. “They have planned for centuries. Their day of reckoning is coming. Nothing can stop that. Not I. Certainly not you.” You notice she speaks as if she were a third party, and you press further. “Do you think I had a choice?” She scoffs. “None can withstand Xzharah. You will see. He will bend your will just as he did mine.” Her shadow grows and warps , misshapen. “It is the Abyss he wants. If you wish to stop him, head west. Xzharah awaits beyond the Gate.” Neith’s shadow consumes her body whole, and she vanishes from sight. Only her amulet remains.",
+      "steps": ["aware_of_xzharahs_plan", "earn_ancient_ankh", "earn_xp", "record_dreamers_in_abyss", "record_escaped_brotherhood", "$upgrade_decks"]
+    }
+  ]
+}
+,
+{
+  "id": "the_nights_usurper",
+  "scenario_name": "The Night's Usurper",
+  "full_name": "The Night's Usurper",
+  "xp_cost": 2,
+  "setup": [
+    "xp_cost",
+    "intro_1",
+    "gather_encounter_sets",
+    "setup_locations",
+    "set_aside_cards",
+    "create_exploration_deck",
+    "create_brotherhood_deck",
+    "set_strength_of_the_abyss",
+    "encounter_deck",
+    "explore_rule",
+    "story_cards",
+    "strength_of_the_abyss",
+    "taken_by_the_abyss",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "explore_rule",
+      "title": "explore",
+      "type": "rule_reminder",
+      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "bullets": [
+        {
+          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+        },
+        {
+          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+        },
+        {
+          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+        },
+        {
+          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+        }
+      ],
+      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River."
+    },
+    {
+      "id": "strength_of_the_abyss",
+      "title": "Strength of the Abyss",
+      "type": "rule_reminder",
+      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+    },
+    {
+      "id": "taken_by_the_abyss",
+      "title": "“Taken by the Abyss”",
+      "type": "rule_reminder",
+      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven insane. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+    },
+    {
+      "id": "story_cards",
+      "title": "Story Cards",
+      "type": "rule_reminder",
+      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "Winlock fiddles with his mustache for a moment while he considers your words. As the leader of the expedition currently scouring through Dashur, the decision of whether or not to let you join the expedition is up to him. “Look, I read through the evidence you gathered. I know about what happened in Cairo. I believe your story. But, still…” He lets out an exasperated sigh. “I just don’t know how I’m going to convince the rest of the expedition crew. Ancient temples is one thing, but a gate to another dimension? This ‘Xzharah’ fellow? None of this can be real, right?”\nYour research and your experience says otherwise. The threat is real. There is a secret organization operating within Egypt—The Brotherhood of the Beast—and if they are not stopped, their newfound “Chosen One” will begin a campaign of destruction that ends with the Earth.\nYou insist one last time to be allowed access to the expedition’s resources. “Alright, alright,” Winlock relents. “I don’t know what it is you’re looking for out there in the desert, but I hope you find it.” You shake your head in reply. You’d rather come up empty‑handed."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_nights_usurper",
+        "sands_of_egypt",
+        "brotherhood_of_the_beast",
+        "abyssal_gifts"
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the Expedition Camp into play. Each investigator begins play in the Expedition Camp."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set the following cards aside, out of play: Khopesh of the Abyss, Summoned Nightgaunt, the single-sided Eldritch Gate location, the double-sided Xzharah enemy, each of the 5 double-sided [[Otherworld]] locations, and both copies of Dreaded Shantak. Xzharah and the [[Otherworld]] locations have story cards on their reverse sides. For the best experience, do not look at the story cards on their reverse sides <i>(see “Story Cards”)</i>."
+    },
+    {
+      "id": "create_exploration_deck",
+      "text": "Create the exploration deck. This is done by shuffling together each of the 7 remaining single-sided locations, along with 1 copy each of the following treachery cards: Abyssal Reach, The Black Wind, Terror Under the Pyramids, and Swarm of Locusts."
+    },
+    {
+      "id": "create_brotherhood_deck",
+      "text": "Find the 6 double-sided [[Brotherhood]] enemies. These enemies have story cards on their reverse sides <i>(see “Story Cards”)</i>. Some of these enemies are placed beneath the scenario reference card, as follows. The rest are removed from the game.",
+      "bullets": [
+        {
+          "text": "If you are playing in Campaign Mode, place each of the enemies listed next to <i>“Brotherhood Agents Who Escaped”</i> in your Campaign Log beneath the scenario reference card."
+        },
+        {
+          "text": "If you are playing in Standalone mode, shuffle these 6 enemies together and place 3 of them beneath the scenario reference card without looking at them."
+        }
+      ]
+    },
+    {
+      "id": "set_strength_of_the_abyss",
+      "text": "Place a number of resource tokens on the scenario reference card (under “Strength of the Abyss”), as follows. <i>(see “Strength of the Abyss”)</i>",
+      "bullets": [
+        {
+          "text": "If you are playing in Campaign Mode, place resources equal to the number listed in parentheses next to <i>“dreamers in the abyss”</i> in your Campaign Log."
+        },
+        {
+          "text": "If you are playing in Standalone Mode, place 1 resource for each investigator in the game."
+        }
+      ]
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "day_of_reckoning_is_coming",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tnu_day_of_reckoning_is_coming",
+          "text": "the Day of Reckoning is coming."
+        }
+      ]
+    },
+    {
+      "id": "abyss_was_saved",
+      "text": "In your Campaign Log, record that <i>the Abyss was saved</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log. ",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tnu_the_abyss_was_saved",
+          "text": "the Abyss was saved."
+        },
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tes_taken_by_the_abyss",
+          "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tnu_taken_by_the_abyss",
+          "cross_out": true
+        }
+      ]
+    },
+    {
+      "id": "joined_xzharah",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "tnu_joined_xzharah",
+          "text": "you joined forces with Xzharah."
+        }
+      ]
+    },
+    {
+      "id": "earn_summoned_nightgaunt",
+      "text": "Any one investigator may choose to add Summoned Nightgaunt to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "83058"
+        }
+      ]
+    },
+    {
+      "id": "earn_kopesh_of_the_abyss",
+      "text": "Any one investigator may choose to add Khopesh of the Abyss to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "83057"
+        }
+      ]
+    },
+    {
+      "id": "record_ally_taken_by_the_abyss",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "trait": "ally",
+            "unique": true,
+            "source": "deck"
+          }
+        ],
+        "choices": [
+          {
+            "id": "taken_by_the_abyss",
+            "text": "Taken by the Abyss",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "tnu_taken_by_the_abyss",
+                "cards": "$input_value",
+                "text": "#name# was taken by the abyss."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_investigator_taken_by_the_abyss",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "source": "scenario",
+        "investigator": "choice",
+        "choices": [
+          {
+            "id": "taken_by_the_abyss",
+            "text": "Taken by the Abyss",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "campaign_notes",
+                "id": "tnu_taken_by_the_abyss",
+                "cards": "$input_value",
+                "text": "#name# was taken by the abyss."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "record_ally_taken_by_the_abyss",
+            "text": "Unique ally was taken by the abyss.",
+            "steps": ["record_ally_taken_by_the_abyss"]
+          },
+          {
+            "id": "record_investigator_taken_by_the_abyss",
+            "text": "Investigator was taken by the abyss.",
+            "steps": ["record_investigator_taken_by_the_abyss"]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "“It’s just an arch. Why’re you so worked up, boss?” Winlock crossed his arms. Something about all of this felt wrong. He was sure that this was the place those folks from Arkham were looking for—a delicately patterned archway that led nowhere at all—and yet, Winlock was certain there was something <i>on the other side</i>. “It’s not Egyptian,” he noted, staring at the thing with narrow eyes. “It doesn’t even look…human.”\n“You believed those loons? Look boss, it’s nothing!” one of his men laughed.\n“Is it?” Winlock snapped, eyes wide. “Is it?”",
+      "steps": ["day_of_reckoning_is_coming", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "The essence fades from Xzharah’s body. Swirling clouds of mist surround him and force him to his knees. Creatures of the abyss appear wordlessly at your side, surrounding Xzharah with a quiet, expressionless hate. Xzharah’s sword betrays him and falls from his grip, the blade fracturing as it clatters to the ground. “…The prophecy must be fulfilled…” It is the last of his vile whispers. His physical form vanishes into the realm’s ethereal mist, and all is silent in the Great Abyss.",
+      "steps": ["abyss_was_saved", "earn_summoned_nightgaunt", "earn_xp", "$upgrade_decks"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "Xzharah places an ice-cold hand on your shoulder as you kneel before him. “You have proven your loyalty,” he decrees. Creatures of the abyss surround you, heads bowed in reverence to their new master. There are none left to oppose him. “Few of your kind have the wit or the will to see beyond the present. To see our prophecy fulfilled. But you are worthy enough to have your eyes opened. Far worthier than the fools I have trusted in the past.” He bids you to stand, and places the handle of his blood-soaked sword in your hands. “Now arise, Servant of the Beast, and take your place among us.”",
+      "steps": ["joined_xzharah", "earn_kopesh_of_the_abyss", "earn_xp", "$upgrade_decks"]
+    }
+  ]
+}
+]}
 ,
 {
   "campaign":
@@ -27032,7 +29710,7 @@
     },
     {
       "id": "cross_off_black_cat_had_hunch",
-      "text": "In both Campaign Logs, cross off <i>the black cat has a hunch</i>.",
+      "text": "Based on events from <i>The Web of Dreams</i> (Campaign B), cross off <i>the black cat has a hunch</i> from your Campaign Log.",
       "effects": [
         {
           "type": "campaign_log",
@@ -27061,7 +29739,7 @@
               "oneironauts_2",
               "check_someone_escaped",
               "check_everyone_captured",
-              "check_black_cat_still_has_a_hunch"
+              "check_black_cat_has_a_hunch_and_randolph_eluded_capture"
             ]
           }
         ]
@@ -27132,33 +29810,34 @@
       "text": "You try to shush the black cat, but it ignores you. “Relax. Your captors are all up on deck at the moment.” You ask bitterly why the creature is so cavalier about your capture, and request that it free you. “Nah. Somebody else has that covered, if memory serves,” it replies enigmatically."
     },
     {
-      "id": "check_black_cat_still_has_a_hunch",
-      "type": "branch",
-      "hidden": true,
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "black_cat_has_a_hunch",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["check_randolph_eluded_capture"]
-          },
-          {
-            "boolCondition": false,
-            "steps": ["resume_interlude_no_message"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_randolph_eluded_capture",
+      "id": "check_black_cat_has_a_hunch_and_randolph_eluded_capture",
       "type": "branch",
       "text": "<i>If the black cat has a hunch</i> and <i>Randolph eluded capture</i>:",
       "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "randolph_eluded_capture",
+        "type": "multi",
+        "count": 2,
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "randolph_eluded_capture",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "black_cat_has_a_hunch",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
         "options": [
           {
             "boolCondition": true,
@@ -27178,12 +29857,35 @@
                 "text": "the black cat is searching for the truth."
               }
             ],
-            "steps": ["send_oneironauts_searching_for_the_truth_yes"]
+            "steps": [
+              "send_oneironauts_searching_for_the_truth_yes"
+            ]
           },
           {
             "boolCondition": false,
             "steps": [
-              "send_oneironauts_searching_for_the_truth_no",
+              "check_black_cat_still_has_a_hunch"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_black_cat_still_has_a_hunch",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_has_a_hunch",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["resume_interlude_no_message"]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
               "resume_interlude",
               "check_oneironauts_decision"
             ]
@@ -32718,7 +35420,7 @@
               {
                 "type": "campaign_log",
                 "section": "hidden",
-                "id": "grand_design",
+                "id": "spider_queen",
                 "text": "dummy"
               }
             ]
@@ -34088,7 +36790,7 @@
     },
     {
       "id": "replay_scenario",
-      "text": "The investigators must replay <b>Scenario V-A: Heart of the Elders, Part 1</b>. Reset the game to this scenario’s Setup. Do not record anything else in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game. Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
+      "text": "The investigators must replay <b>Scenario V-A: Heart of the Elders, Part 1</b>. Reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game. Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
       "effects": [
         {
           "type": "campaign_data",
@@ -37937,8 +40639,26 @@
         "branches": [
           {
             "id": "cross_out_supplies",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "doy_cross_off_rope",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
             "text": "Adjust supplies",
-            "steps": ["cross_out_rope"]
+            "steps": ["cross_out_rope"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "doy_cross_off_rope",
+                "text": "dummy"
+              }
+            ]
           }
         ]
       }
@@ -37951,7 +40671,7 @@
         "section": "supplies",
         "id": "rope",
         "investigator": "choice",
-        "min": 0,
+        "min": 1,
         "max": 1,
         "choices": []
       }
