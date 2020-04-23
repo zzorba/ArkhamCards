@@ -2700,7 +2700,7 @@ msgstr "La red de los sueños"
 
 #: src/components/campaign/constants.ts:147
 msgid "Return to Curtain Call"
-msgstr "Llamada de regreso a la cortina"
+msgstr "Regreso a se cierra el telón"
 
 #: src/components/campaign/constants.ts:148
 msgid "Return to The Last King"
@@ -2712,23 +2712,23 @@ msgstr "Regreso a Ecos del pasado"
 
 #: src/components/campaign/constants.ts:151
 msgid "Return to The Unspeakable Oath"
-msgstr "Regreso al juramento indescriptible"
+msgstr "Regreso al juramento inconfesable"
 
 #: src/components/campaign/constants.ts:153
 msgid "Return to A Phantom of Truth"
-msgstr "Regreso a un fantasma de la verdad"
+msgstr "Regreso a el fantasma de la verdad"
 
 #: src/components/campaign/constants.ts:154
 msgid "Return to The Pallid Mask"
-msgstr "Regreso a la máscara de pallid"
+msgstr "Regreso a la máscara pálida"
 
 #: src/components/campaign/constants.ts:155
 msgid "Return to Black Stars Rise"
-msgstr "Regreso a Black Stars Rise"
+msgstr "Regreso a Surgen estrellas negras"
 
 #: src/components/campaign/constants.ts:156
 msgid "Return to Dim Carcosa"
-msgstr "Regreso a Dim Carcosa"
+msgstr "Regreso a Penunbrosa Carcosa"
 
 #: src/components/campaign/constants.ts:208
 msgid "Beyond the Gates of Sleep"
@@ -2785,7 +2785,7 @@ msgstr "Pasos del puente"
 #: src/components/deck/CopyDeckDialog/index.tsx:292
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:341
 msgid "Deck Type"
-msgstr "Tip de Mazo"
+msgstr "Tipo de Mazo"
 
 #: src/components/cardlist/InvestigatorsListComponent/NewInvestigatorRow.tsx:44
 #, javascript-format
