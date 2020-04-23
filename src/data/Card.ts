@@ -69,10 +69,6 @@ export default class Card extends BaseCard {
     }
   }
 
-  factionPackSortHeader() {
-    return `${Card.factionSortHeader(this)} - ${this.cycle_name}`;
-  }
-
   static factionSortHeader(json: any) {
     if (json.spoiler) {
       return t`Mythos`;

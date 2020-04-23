@@ -65,6 +65,7 @@ export default function BranchStepComponent({ step, campaignLog }: Props) {
         />
       );
     case 'campaign_log':
+    case 'campaign_log_cards':
       return (
         <CampaignLogConditionComponent
           step={step}

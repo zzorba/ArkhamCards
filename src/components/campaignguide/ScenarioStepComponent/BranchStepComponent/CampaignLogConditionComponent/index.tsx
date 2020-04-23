@@ -11,12 +11,13 @@ import CampaignGuideContext, { CampaignGuideContextType } from '../../../Campaig
 import {
   BranchStep,
   CampaignLogCondition,
+  CampaignLogCardsCondition,
 } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;
-  condition: CampaignLogCondition;
+  condition: CampaignLogCondition | CampaignLogCardsCondition;
   campaignLog: GuidedCampaignLog;
 }
 

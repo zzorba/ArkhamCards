@@ -3,6 +3,7 @@ import { t } from 'ttag';
 
 import { TraumaAndCardData } from 'actions/types';
 import { FactionCodeType, TypeCodeType, SkillCodeType } from '../constants';
+import Card from './Card';
 import CardRestrictions from './CardRestrictions';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
@@ -219,6 +220,10 @@ export default class BaseCard {
 
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
+  }
+
+  factionPackSortHeader() {
+    return `${Card.factionSortHeader(this)} - ${this.cycle_name}`;
   }
 
   factionCode(): FactionCodeType {

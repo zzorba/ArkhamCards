@@ -429,6 +429,22 @@ export default class GuidedCampaignLog {
     return !section.sectionCrossedOut;
   }
 
+  allCards(sectionId: string, id: string): string[] | undefined {
+    const section = this.sections[sectionId];
+    if (!section) {
+      return undefined;
+    }
+    if (section.crossedOut[id]) {
+      return undefined;
+    }
+    return flatMap(section.entries, entry => {
+      if (entry.id === id && entry.type === 'card') {
+        return map(entry.cards || [], card => card.card);
+      }
+      return [];
+    });
+  }
+
   check(sectionId: string, id: string): boolean {
     const section = this.sections[sectionId];
     if (!section) {

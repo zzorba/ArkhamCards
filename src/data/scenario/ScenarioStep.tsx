@@ -265,6 +265,7 @@ export default class ScenarioStep {
           [{
             border: (result.option && result.option.border),
             numberInput: result.type === 'number' ? [result.number] : undefined,
+            input: result.type === 'binary' ? result.input : undefined,
             effects: (result.option && result.option.effects) || [],
           }],
           scenarioState

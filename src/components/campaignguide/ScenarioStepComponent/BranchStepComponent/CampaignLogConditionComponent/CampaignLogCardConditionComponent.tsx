@@ -5,14 +5,14 @@ import { t } from 'ttag';
 import BinaryResult from '../../../BinaryResult';
 import SingleCardWrapper from '../../../SingleCardWrapper';
 import { LogEntryCard } from 'data/scenario/CampaignGuide';
-import { BranchStep, CampaignLogCondition } from 'data/scenario/types';
+import { BranchStep, CampaignLogCondition, CampaignLogCardsCondition } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import Card from 'data/Card';
 
 interface Props {
   step: BranchStep;
   entry: LogEntryCard;
-  condition: CampaignLogCondition;
+  condition: CampaignLogCondition | CampaignLogCardsCondition;
   campaignLog: GuidedCampaignLog;
 }
 

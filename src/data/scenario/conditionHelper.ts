@@ -13,6 +13,7 @@ import {
   BinaryCardCondition,
   CardCondition,
   CampaignLogCondition,
+  CampaignLogCardsCondition,
   CampaignDataCondition,
   CampaignDataScenarioCondition,
   CampaignDataChaosBagCondition,
@@ -42,6 +43,7 @@ export interface BinaryResult {
   type: 'binary';
   decision: boolean;
   option?: Option;
+  input?: string[];
 }
 
 interface NumberResult {
@@ -72,7 +74,8 @@ export type ConditionResult =
 
 function binaryConditionResult(
   result: boolean,
-  options: BoolOption[]
+  options: BoolOption[],
+  input?: string[]
 ): BinaryResult {
   const ifTrue = find(options, option => option.boolCondition === true);
   const ifFalse = find(options, option => option.boolCondition === false);
@@ -80,6 +83,7 @@ function binaryConditionResult(
     type: 'binary',
     decision: result,
     option: result ? ifTrue : ifFalse,
+    input,
   };
 }
 
@@ -212,13 +216,27 @@ export function checkSuppliesAllConditionResult(
 }
 
 export function campaignLogConditionResult(
-  condition: CampaignLogSectionExistsCondition | CampaignLogCondition,
+  condition: CampaignLogSectionExistsCondition | CampaignLogCondition | CampaignLogCardsCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
-  const result = condition.type === 'campaign_log' ?
-    campaignLog.check(condition.section, condition.id) :
-    campaignLog.sectionExists(condition.section);
-  return binaryConditionResult(result, condition.options);
+  switch (condition.type) {
+    case 'campaign_log':
+      return binaryConditionResult(
+        campaignLog.check(condition.section, condition.id),
+        condition.options
+      );
+    case 'campaign_log_section_exists':
+      return binaryConditionResult(
+        campaignLog.sectionExists(condition.section),
+        condition.options
+      );
+    case 'campaign_log_cards':
+      return binaryConditionResult(
+        campaignLog.check(condition.section, condition.id),
+        condition.options,
+        campaignLog.allCards(condition.section, condition.id)
+      )
+  }
 }
 
 export function killedTraumaConditionResult(
@@ -526,6 +544,7 @@ export function conditionResult(
       return multiConditionResult(condition, campaignLog);
     case 'check_supplies':
       return checkSuppliesConditionResult(condition, campaignLog);
+    case 'campaign_log_cards':
     case 'campaign_log_section_exists':
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
