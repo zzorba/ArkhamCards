@@ -30399,9 +30399,11 @@
             "steps": ["drifter_dream", "drifter_dream_effect", "ask_replace_weakness"],
             "effects": [
               {
-                "type": "scenario_data",
-                "setting": "target_investigator",
-                "investigator": "$input_value"
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "drifter_dream",
+                "text": "#name#",
+                "cards": "$input_value"
               }
             ]
           },
@@ -30581,10 +30583,26 @@
           {
             "id": "replace",
             "text": "Would you like to replace a basic weakness in your deck?",
+            "steps": ["drifter_replace_weakness"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "drifter_replace_weakness",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "drifter_dream",
+        "options": [
+          {
+            "boolCondition": true,
             "effects": [
               {
                 "type": "add_weakness",
-                "investigator": "target_investigator",
+                "investigator": "$input_value",
                 "weakness_traits": []
               },
               {
@@ -30593,7 +30611,7 @@
               },
               {
                 "type": "trauma",
-                "investigator": "target_investigator",
+                "investigator": "$input_value",
                 "mental_or_physical": 1,
                 "bullet_type": "small"
               }

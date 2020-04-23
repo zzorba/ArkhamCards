@@ -47,7 +47,6 @@ export type Effect =
   | FreeformCampaignLogEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
-  | "target_investigator"
   | "all"
   | "any"
   | "choice"
@@ -196,7 +195,7 @@ export interface AddCardEffect {
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
-  investigator: "all" | "$input_value" | "lead_investigator" | "target_investigator";
+  investigator: "all" | "$input_value" | "lead_investigator";
   weakness_traits: string[];
   select_traits?: boolean;
 }
@@ -212,7 +211,7 @@ export interface ReplaceCardEffect {
 }
 export interface TraumaEffect {
   type: "trauma";
-  investigator: "all" | "lead_investigator" | "target_investigator" | "defeated" | "not_resigned" | "$input_value";
+  investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value";
   mental?: number;
   physical?: number;
   mental_or_physical?: number;
@@ -264,7 +263,7 @@ export interface CampaignDataNextScenarioEffect {
 }
 export interface ScenarioDataInvestigatorEffect {
   type: "scenario_data";
-  setting: "lead_investigator" | "target_investigator" | "playing_scenario";
+  setting: "lead_investigator" | "playing_scenario";
   investigator: "$input_value";
 }
 export interface ScenarioDataInvestigatorStatusEffect {

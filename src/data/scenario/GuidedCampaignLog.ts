@@ -99,7 +99,6 @@ interface PlayingScenarioItem {
 interface ScenarioData {
   resolution?: string;
   leadInvestigator?: string;
-  targetInvestigator?: string;
   playingScenario?: PlayingScenarioItem[];
   investigatorStatus: {
     [code: string]: InvestigatorStatus;
@@ -306,17 +305,6 @@ export default class GuidedCampaignLog {
       throw new Error('Lead Investigator called before decision');
     }
     return scenario.leadInvestigator;
-  }
-
-  targetInvestigator(): string {
-    if (this.scenarioId === undefined) {
-      throw new Error('Target investigator called outside of a scenario.');
-    }
-    const scenario = this.scenarioData[this.scenarioId];
-    if (!scenario || !scenario.targetInvestigator) {
-      throw new Error('TargetInvestigator called before being set');
-    }
-    return scenario.targetInvestigator;
   }
 
   private leadInvestigatorChoiceSafe(): string | undefined {
@@ -549,8 +537,6 @@ export default class GuidedCampaignLog {
     input?: string[]
   ): string[] {
     switch (investigator) {
-      case 'target_investigator':
-        return [this.targetInvestigator()];
       case 'lead_investigator':
         return [this.leadInvestigatorChoice()];
       case 'all':
@@ -936,9 +922,6 @@ export default class GuidedCampaignLog {
       }
       case 'lead_investigator':
         scenario.leadInvestigator = input[0];
-        break;
-      case 'target_investigator':
-        scenario.targetInvestigator = input[0];
         break;
     }
     this.scenarioData[scenarioId] = scenario;

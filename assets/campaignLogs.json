@@ -2117,6 +2117,10 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "drifter_dream",
+            "text": "#name#"
+          },
+          {
             "id": "everyone_captured",
             "text": "dummy"
           },
