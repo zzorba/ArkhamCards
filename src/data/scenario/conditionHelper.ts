@@ -235,7 +235,7 @@ export function campaignLogConditionResult(
         campaignLog.check(condition.section, condition.id),
         condition.options,
         campaignLog.allCards(condition.section, condition.id)
-      )
+      );
   }
 }
 

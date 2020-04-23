@@ -26,7 +26,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
     choice?: string
   ): Card[] {
     const { investigator, input, optional } = this.props;
-    switch (investigator) {      
+    switch (investigator) {
       case 'lead_investigator': {
         const leadInvestigator = campaignLog.leadInvestigatorChoice();
         if (!optional) {

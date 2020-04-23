@@ -96,7 +96,6 @@ class LocationSetupView extends React.Component<Props> {
         horizontal,
         locations,
       },
-      fontScale,
     } = this.props;
     const rowSize = locationsRow.length;
     const {

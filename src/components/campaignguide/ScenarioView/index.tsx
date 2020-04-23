@@ -72,7 +72,7 @@ class ScenarioView extends React.Component<Props> {
 
   componentDidUpdate() {
     const {
-      processedScenario: { type, canUndo },
+      processedScenario: { canUndo },
       componentId,
     } = this.props;
     if (canUndo !== this.undoEnabled) {
