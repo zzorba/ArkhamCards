@@ -78,10 +78,6 @@ class ScenarioView extends React.Component<Props> {
     if (canUndo !== this.undoEnabled) {
       Navigation.mergeOptions(componentId, ScenarioView.dynamicOptions(canUndo));
     }
-    if (type !== 'started' && type !== 'completed') {
-      // Get out of here
-      Navigation.pop(componentId);
-    }
   }
 
   componentWillUnmount() {
@@ -106,8 +102,15 @@ class ScenarioView extends React.Component<Props> {
   }
 
   undoPressed() {
-    const { scenarioId } = this.props;
+    const {
+      componentId,
+      scenarioId,
+      processedScenario: { closeOnUndo },
+    } = this.props;
     this.context.campaignState.undo(scenarioId);
+    if (closeOnUndo) {
+      Navigation.pop(componentId);
+    }
   }
 
   menuPressed() {

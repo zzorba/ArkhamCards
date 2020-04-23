@@ -168,6 +168,8 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             name: card.name,
           };
         })}
+        min={input.min}
+        max={input.max}
         checkText={choice.text}
         button={includeNonDeckButton ? (
           <BasicButton
@@ -242,7 +244,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
           return `((${encounterQuery}) AND ${this.basicQuery(q)})`;
         }
         case 'deck': {
-          const codeQuery = map(
+          const deckCodeQuery = map(
             uniq(
               flatMap(investigators, investigator => {
                 const deck = latestDecks[investigator.code];
@@ -255,10 +257,10 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             ),
             code => `(code == '${code}')`
           ).join(' OR ');
-          if (!codeQuery) {
+          if (!deckCodeQuery) {
             return [];
           }
-          return `((${codeQuery}) AND ${this.basicQuery(q)})`;
+          return `((${deckCodeQuery}) AND ${this.basicQuery(q)})`;
         }
       }
     });
@@ -266,6 +268,9 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     forEach(extraCards, code => {
       queryParts.push(`(code == '${code}')`);
     });
+    if (!queryParts.length) {
+      return '';
+    }
     return `(${queryParts.join(' OR ')})`;
   }
 

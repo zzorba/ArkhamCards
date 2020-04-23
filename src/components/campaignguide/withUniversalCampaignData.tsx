@@ -13,6 +13,7 @@ import {
 } from 'components/campaign/actions';
 import {
   startScenario,
+  startSideScenario,
   resetScenario,
   setScenarioCount,
   setScenarioDecision,
@@ -24,7 +25,14 @@ import {
   setCampaignLink,
   undo,
 } from 'components/campaignguide/actions';
-import { Deck, NumberChoices, StringChoices, SupplyCounts } from 'actions/types';
+import {
+  Deck,
+  NumberChoices,
+  StringChoices,
+  SupplyCounts,
+  GuideStartSideScenarioInput,
+  GuideStartCustomSideScenarioInput,
+} from 'actions/types';
 import Card from 'data/Card';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import {
@@ -37,6 +45,10 @@ interface ReduxActionProps {
   deleteCampaign: (campaignId: number) => void;
   addInvestigator: (campaignId: number, investigator: string, deckId?: number) => void;
   startScenario: (campaignId: number, scenarioId: string) => void;
+  startSideScenario: (
+    campaignId: number,
+    scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
+  ) => void;
   setScenarioDecision: (
     campaignId: number,
     stepId: string,
@@ -119,6 +131,7 @@ export default function withUniversalCampaignData<Props>(
       addInvestigator,
       deleteCampaign,
       startScenario,
+      startSideScenario,
       setScenarioCount,
       setScenarioDecision,
       setScenarioSupplies,

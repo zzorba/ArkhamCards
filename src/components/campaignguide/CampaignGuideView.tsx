@@ -134,6 +134,7 @@ class CampaignGuideView extends React.Component<Props> {
           <ScrollView>
             <ScenarioListComponent
               campaignId={campaignId}
+              campaignData={campaignData}
               processedCampaign={processedCampaign}
               fontScale={fontScale}
               componentId={componentId}

@@ -184,7 +184,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
           style={[
             {
               height: Math.min(height + 12, 200),
-             },
+            },
             isCrossedOut && Platform.OS === 'ios' ? {
               textDecorationLine: 'line-through',
               textDecorationStyle: 'solid',

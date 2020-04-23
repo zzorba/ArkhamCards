@@ -1,6 +1,16 @@
 import { flatMap, forEach } from 'lodash';
 
-import { Deck, InvestigatorData, NumberChoices, StringChoices, SupplyCounts, SingleCampaign, CampaignGuideState } from 'actions/types';
+import {
+  Deck,
+  InvestigatorData,
+  NumberChoices,
+  StringChoices,
+  SupplyCounts,
+  SingleCampaign,
+  CampaignGuideState,
+  GuideStartSideScenarioInput,
+  GuideStartCustomSideScenarioInput,
+} from 'actions/types';
 import { UniversalCampaignProps } from './withUniversalCampaignData';
 import { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import CampaignGuide from 'data/scenario/CampaignGuide';
@@ -81,6 +91,12 @@ export function constructCampaignGuideContext(
     scenarioId: string
   ) => {
     universalData.startScenario(campaign.id, scenarioId);
+  };
+
+  const startSideScenario = (
+    scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
+  ) => {
+    universalData.startSideScenario(campaign.id, scenario);
   };
 
   const setDecision = (
@@ -209,6 +225,7 @@ export function constructCampaignGuideContext(
     {
       showChooseDeck,
       startScenario,
+      startSideScenario,
       setCount,
       setDecision,
       setSupplies,

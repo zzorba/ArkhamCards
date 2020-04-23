@@ -2,16 +2,18 @@ import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType 
 import { FilterState } from 'lib/filters';
 import Card from 'data/Card';
 
-export const SORT_BY_TYPE = 'Type';
-export const SORT_BY_FACTION = 'Faction';
-export const SORT_BY_COST = 'Cost';
-export const SORT_BY_PACK = 'Pack';
-export const SORT_BY_TITLE = 'Title';
-export const SORT_BY_ENCOUNTER_SET = 'Encounter Set';
+export const SORT_BY_TYPE = 'type';
+export const SORT_BY_FACTION = 'faction';
+export const SORT_BY_FACTION_PACK = 'faction_pack';
+export const SORT_BY_COST = 'cost';
+export const SORT_BY_PACK = 'pack';
+export const SORT_BY_TITLE = 'title';
+export const SORT_BY_ENCOUNTER_SET = 'encounter_set';
 
 export type SortType =
   typeof SORT_BY_TYPE |
   typeof SORT_BY_FACTION |
+  typeof SORT_BY_FACTION_PACK |
   typeof SORT_BY_COST |
   typeof SORT_BY_PACK |
   typeof SORT_BY_TITLE |
@@ -695,6 +697,21 @@ export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
 }
 
+interface StartSideScenarioInput extends BasicInput {
+  type: 'start_side_scenario';
+  scenario: string;
+  previousScenarioId: string;
+}
+export interface GuideStartSideScenarioInput extends StartSideScenarioInput {
+  sideScenarioType: 'official';
+}
+
+export interface GuideStartCustomSideScenarioInput extends StartSideScenarioInput {
+  sideScenarioType: 'custom';
+  name: string;
+  xpCost: number;
+}
+
 export interface GuideCampaignLinkInput extends BasicInput {
   type: 'campaign_link';
   step: string;
@@ -710,7 +727,9 @@ export type GuideInput =
   GuideChoiceInput |
   GuideStringInput |
   GuideStartScenarioInput |
-  GuideCampaignLinkInput;
+  GuideCampaignLinkInput |
+  GuideStartSideScenarioInput |
+  GuideStartCustomSideScenarioInput;
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {

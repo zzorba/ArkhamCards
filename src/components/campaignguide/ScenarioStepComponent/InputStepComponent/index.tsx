@@ -192,10 +192,11 @@ export default class InputStepComponent extends React.Component<Props> {
             campaignLog={campaignLog}
           />
         );
-      default:
+      default: {
         /* eslint-disable @typescript-eslint/no-unused-vars */
         const _exhaustiveCheck: never = step.input;
         return null;
+      }
     }
   }
 

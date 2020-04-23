@@ -1,13 +1,10 @@
 import React from 'react';
 import {
-  Platform,
-  StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
+import DialogPlusMinusButtons from 'components/core/DialogPlusMinusButtons';
 import { t } from 'ttag';
 import { Trauma } from 'actions/types';
 import Card from 'data/Card';
@@ -81,44 +78,20 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
     const impliedInsane = (mental === sanity);
     return (
       <View>
-        <View style={styles.counterColumn}>
-          <Text style={typography.dialogLabel}>
-            { t`Physical Trauma` }
-          </Text>
-          <View style={styles.buttonsRow}>
-            <Text style={[typography.dialogLabel, styles.traumaText]}>
-              { physical || 0 }
-            </Text>
-            <PlusMinusButtons
-              count={physical || 0}
-              max={health}
-              onIncrement={this._incPhysical}
-              onDecrement={this._decPhysical}
-              size={36}
-              disabled={killed || insane}
-              color="dark"
-            />
-          </View>
-        </View>
-        <View style={styles.counterColumn}>
-          <Text style={typography.dialogLabel}>
-            { t`Mental Trauma` }
-          </Text>
-          <View style={styles.buttonsRow}>
-            <Text style={[typography.dialogLabel, styles.traumaText]}>
-              { mental || 0 }
-            </Text>
-            <PlusMinusButtons
-              count={mental || 0}
-              max={sanity}
-              onIncrement={this._incMental}
-              onDecrement={this._decMental}
-              size={36}
-              disabled={killed || insane}
-              color="dark"
-            />
-          </View>
-        </View>
+        <DialogPlusMinusButtons
+          label={t`Physical Trauma`}
+          value={physical || 0}
+          inc={this._incPhysical}
+          dec={this._decPhysical}
+          max={health}
+        />
+        <DialogPlusMinusButtons
+          label={t`Mental Trauma`}
+          value={mental || 0}
+          inc={this._incMental}
+          dec={this._decMental}
+          max={sanity}
+        />
         <DialogComponent.Switch
           label={t`Killed`}
           labelStyle={typography.dialogLabel}
@@ -139,23 +112,3 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  counterColumn: {
-    marginRight: Platform.OS === 'ios' ? 28 : 8,
-    marginLeft: Platform.OS === 'ios' ? 28 : 8,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  buttonsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    width: '100%',
-  },
-  traumaText: {
-    fontWeight: '900',
-    width: 30,
-  },
-});

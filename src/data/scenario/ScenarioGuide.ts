@@ -9,6 +9,7 @@ import GuidedCampaignLog from './GuidedCampaignLog';
 import ScenarioStep from './ScenarioStep';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import CampaignGuide from './CampaignGuide';
+import CampaignStateHelper from './CampaignStateHelper';
 import {
   getFixedStep,
   scenarioStepIds,
@@ -53,13 +54,19 @@ export default class ScenarioGuide {
     return this.scenario.type || 'scenario';
   }
 
+  resolutions(): Resolution[] {
+    return this.scenario.resolutions || [];
+  }
+
   step(
     id: string,
+    campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog
   ): Step | undefined {
     if (id.indexOf('#') !== -1) {
       const step = this.stepHelper(
         id.split('#')[0],
+        campaignState,
         campaignLog
       );
       if (!step) {
@@ -70,11 +77,12 @@ export default class ScenarioGuide {
         id,
       };
     }
-    return this.stepHelper(id, campaignLog);
+    return this.stepHelper(id, campaignState, campaignLog);
   }
 
   private stepHelper(
     id: string,
+    campaignState: CampaignStateHelper,
     campaignLog: GuidedCampaignLog
   ) {
     const existingStep = find(
@@ -87,7 +95,8 @@ export default class ScenarioGuide {
 
     const fixedStep = getFixedStep(
       id,
-      this.scenario,
+      this,
+      campaignState,
       campaignLog
     );
     if (fixedStep) {
@@ -146,7 +155,7 @@ export default class ScenarioGuide {
       return [];
     }
     const [firstStepId, ...remainingStepIds] = stepIds;
-    const step = this.step(firstStepId, campaignLog);
+    const step = this.step(firstStepId, scenarioState.campaignState, campaignLog);
     if (!step) {
       return [];
     }

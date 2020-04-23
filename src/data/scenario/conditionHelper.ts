@@ -372,10 +372,20 @@ export function campaignDataScenarioConditionResult(
   condition: CampaignDataScenarioCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
-  return binaryConditionResult(
-    campaignLog.scenarioStatus(condition.scenario) === 'completed',
-    condition.options
-  );
+  switch (condition.campaign_data) {
+    case 'scenario_completed':
+      return binaryConditionResult(
+        campaignLog.scenarioStatus(condition.scenario) === 'completed',
+        condition.options
+      );
+    case 'scenario_replayed': {
+      const replayCount = campaignLog.campaignData.scenarioReplayCount[condition.scenario] || 0;
+      return binaryConditionResult(
+        replayCount > 0,
+        condition.options
+      );
+    }
+  }
 }
 
 function investigatorConditionMatches(
@@ -470,6 +480,7 @@ export function campaignDataConditionResult(
         condition.options
       );
     }
+    case 'scenario_replayed':
     case 'scenario_completed': {
       return campaignDataScenarioConditionResult(condition, campaignLog);
     }

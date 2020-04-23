@@ -74,7 +74,8 @@ export default function(
       campaign => {
         const existingInputs = action.input.type !== 'campaign_link' ?
           campaign.inputs :
-          filter(campaign.inputs, input => !(
+          filter(campaign.inputs,
+            input => !(
               input.type === 'campaign_link' &&
               action.input.type === 'campaign_link' &&
               input.step === action.input.step &&
