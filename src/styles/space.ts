@@ -113,6 +113,9 @@ export default StyleSheet.create({
   paddingTopS: {
     paddingTop: s,
   },
+  paddingTopXs: {
+    paddingTop: xs,
+  },
   paddingLeftL: {
     paddingLeft: l,
   },

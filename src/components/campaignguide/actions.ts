@@ -4,6 +4,8 @@ import {
   GUIDE_UNDO_INPUT,
   GuideSetInputAction,
   GuideResetScenarioAction,
+  GuideStartSideScenarioInput,
+  GuideStartCustomSideScenarioInput,
   GuideUndoInputAction,
   SupplyCounts,
   NumberChoices,
@@ -43,6 +45,18 @@ export function startScenario(
       type: 'start_scenario',
       scenario,
     },
+  };
+}
+
+
+export function startSideScenario(
+  campaignId: number,
+  scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: scenario,
   };
 }
 

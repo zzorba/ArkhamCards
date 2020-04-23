@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
 import Card from 'data/Card';
+import { m } from 'styles/space';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 
@@ -17,11 +18,19 @@ interface Props {
 
 export default class LocationCard extends React.Component<Props> {
   _renderCard = (card: Card, back: boolean) => {
+    const image = back ? card.backimagesrc : card.imagesrc;
+    if (!image) {
+      return (
+        <View style={styles.singleCardWrapper}>
+          <Text>{ card.name }</Text>
+        </View>
+      );
+    }
     return (
       <FastImage
         style={styles.verticalCardImage}
         source={{
-          uri: `https://arkhamdb.com${back ? card.backimagesrc : card.imagesrc}`,
+          uri: `https://arkhamdb.com${image}`,
         }}
         resizeMode="contain"
       />
@@ -78,5 +87,17 @@ const styles = StyleSheet.create({
   verticalCardImage: {
     width: '100%',
     height: '100%',
+  },
+  singleCardWrapper: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#888',
+    padding: m,
+    backgroundColor: '#ddd',
+    width: '100%',
+    height: '100%',
+    borderRadius: 8,
   },
 });

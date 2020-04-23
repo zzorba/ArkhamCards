@@ -32,6 +32,11 @@ export default connectRealm<OwnProps<any>, RealmProps, Card>(
       realm: Realm,
       props: OwnProps<any>
     ) {
+      if (!props.query) {
+        return {
+          cards: [],
+        };
+      }
       const cards = results.cards.filtered(
         `((${props.query}) AND (taboo_set_id == 0 or taboo_set_id == null))`,
       ).sorted([['renderName', false], ['xp', false]]);

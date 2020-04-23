@@ -7,6 +7,7 @@ import { t } from 'ttag';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
+  SORT_BY_FACTION_PACK,
   SORT_BY_COST,
   SORT_BY_PACK,
   SORT_BY_TITLE,
@@ -41,7 +42,9 @@ export default class CardSortDialog extends React.Component<Props> {
       case SORT_BY_TYPE:
         return t`Type`;
       case SORT_BY_FACTION:
-        return t`Faction`;
+        return t`Faction, Name`;
+      case SORT_BY_FACTION_PACK:
+        return t`Faction, Pack`;
       case SORT_BY_COST:
         return t`Cost`;
       case SORT_BY_PACK:
@@ -74,6 +77,7 @@ export default class CardSortDialog extends React.Component<Props> {
     const sorts: SortType[] = [
       SORT_BY_TYPE,
       SORT_BY_FACTION,
+      SORT_BY_FACTION_PACK,
       SORT_BY_COST,
       SORT_BY_PACK,
       SORT_BY_TITLE,
@@ -97,6 +101,7 @@ export default class CardSortDialog extends React.Component<Props> {
         options={map(sorts, CardSortDialog.sortToCopy)}
         onSelectionChanged={this._onSortChanged}
         header={t`Sort by`}
+        noCapitalize
         selectedOption={CardSortDialog.sortToCopy(selectedSort)}
       />
     );

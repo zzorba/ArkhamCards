@@ -122,7 +122,7 @@ export default class PlayScenarioComponent extends React.Component<Props> {
             onPress={this._drawWeaknessPressed}
           />
           <BasicButton
-            title={t`Resolutions`}
+            title={input.no_resolutions ? t`Scenario completed` : t`Resolutions`}
             onPress={this._resolutionPressed}
           />
         </>

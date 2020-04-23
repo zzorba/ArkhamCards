@@ -204,7 +204,7 @@ export function deleteCampaign(
       type: DELETE_CAMPAIGN,
       id,
     });
-  }
+  };
 }
 
 export function addScenarioResult(

@@ -7,21 +7,29 @@ import ScenarioGuide from './ScenarioGuide';
 import ScenarioStep from './ScenarioStep';
 import GuidedCampaignLog from './GuidedCampaignLog';
 
+export interface ScenarioId {
+  scenarioId: string;
+  replayAttempt?: number;
+  encodedScenarioId: string;
+}
+
 interface BasicScenario {
+  id: ScenarioId;
   scenarioGuide: ScenarioGuide;
   latestCampaignLog: GuidedCampaignLog;
-  attempt: number;
 }
 
 interface PlayedScenario extends BasicScenario {
   type: 'started' | 'completed';
   canUndo: boolean;
+  closeOnUndo: boolean;
   steps: ScenarioStep[];
 }
 
 interface UnplayedScenario extends BasicScenario {
   type: 'locked' | 'playable' | 'skipped';
   canUndo: false;
+  closeOnUndo: false;
   steps: ScenarioStep[];
 }
 
@@ -71,7 +79,14 @@ export function getCampaignGuide(
     campaign.campaign.id === id
   );
   const logEntries = find(allLogEntries, log => log.campaignId === id);
-  return campaign && logEntries && new CampaignGuide(campaign, logEntries);
+  const sideCampaign = find(allCampaigns, campaign => campaign.campaign.id === 'side');
+
+  return campaign && logEntries && sideCampaign &&
+    new CampaignGuide(
+      campaign,
+      logEntries,
+      sideCampaign
+    );
 }
 
 export default {

@@ -40,7 +40,7 @@ import {
   ScenarioStatus,
   TraumaEffect,
 } from './types';
-import CampaignGuide from './CampaignGuide';
+import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from 'data/Card';
 import { LatestDecks } from 'data/scenario';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
@@ -393,49 +393,32 @@ export default class GuidedCampaignLog {
     return this.campaignData.scenarioStatus[scenarioId] || 'not_started';
   }
 
-  nextScenarioName(): string | undefined {
-    const scenarioId = this.nextScenarioId(false);
-    if (!scenarioId) {
-      return undefined;
-    }
-    const scenarioName = this.campaignGuide.getFullScenarioName(scenarioId);
-    return scenarioName;
-  }
-
-  nextScenarioId(includeSkipped: boolean): string | undefined {
+  campaignNextScenarioId(): string | undefined {
     if (this.campaignData.nextScenario &&
       this.scenarioId !== this.campaignData.nextScenario
     ) {
       // The campaign told us where to go next!
       return this.campaignData.nextScenario;
     }
+
     if (!this.scenarioId) {
-      return '$campaign_setup';
+      return CAMPAIGN_SETUP_ID;
     }
-    if (this.scenarioId === '$campaign_setup') {
+    if (this.scenarioId === CAMPAIGN_SETUP_ID) {
       // We haven't started yet, so the prologue/first scenario is first.
       return this.campaignGuide.prologueScenarioId();
     }
 
     const {
       scenarioId,
-      replayCount,
+      replayAttempt,
     } = this.campaignGuide.parseScenarioId(this.scenarioId);
-
     const newReplayCount = this.campaignData.scenarioReplayCount[scenarioId];
-    if (newReplayCount && (!replayCount || replayCount < newReplayCount)) {
+    if (newReplayCount && (!replayAttempt || replayAttempt < newReplayCount)) {
       return `${scenarioId}#${newReplayCount}`;
     }
-    const skippedScenarios: string[] = [];
-    forEach(this.campaignData.scenarioStatus, (status, scenarioId) => {
-      if (status === 'skipped') {
-        skippedScenarios.push(scenarioId);
-      }
-    });
-    return this.campaignGuide.nextScenarioId(
-      this.scenarioId,
-      includeSkipped ? [] : skippedScenarios
-    );
+
+    return undefined;
   }
 
   sectionExists(sectionId: string): boolean {
@@ -970,6 +953,11 @@ export default class GuidedCampaignLog {
     forEach(ids, id => {
       if (effect.cross_out) {
         section.crossedOut[id] = true;
+      } else if (effect.remove) {
+        section.entries = filter(
+          section.entries,
+          entry => entry.id !== id
+        );
       } else {
         section.entries.push({
           type: 'basic',
@@ -1166,15 +1154,17 @@ export default class GuidedCampaignLog {
           // Normal entry
           if (effect.cross_out) {
             section.crossedOut[id] = true;
+          } else if (effect.remove) {
+            section.entries = filter(
+              section.entries,
+              entry => entry.id !== id
+            );
           } else {
-            const entry = find(section.entries, entry => entry.id === id);
-            if (!entry) {
-              section.entries.push({
-                type: 'card',
-                id,
-                cards,
-              });
-            }
+            section.entries.push({
+              type: 'card',
+              id,
+              cards,
+            });
           }
         });
       }
