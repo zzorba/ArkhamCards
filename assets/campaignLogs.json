@@ -2117,10 +2117,6 @@
         "section": "hidden",
         "entries": [
           {
-            "id": "broke_cat_law",
-            "text": "dummy"
-          },
-          {
             "id": "everyone_captured",
             "text": "dummy"
           },
@@ -2232,6 +2228,14 @@
             "text": "the black cat warned the others."
           },
           {
+            "id": "bridge_was_completed",
+            "text": "the bridge was completed."
+          },
+          {
+            "id": "bridge_was_destroyed",
+            "text": "the bridge was destroyed."
+          },
+          {
             "id": "doctor_is_alive",
             "text": "Dr. Maheswaran is alive."
           },
@@ -2250,6 +2254,14 @@
           {
             "id": "doctors_fate_unknown",
             "text": "Dr. Maheswaran’s fate is unknown."
+          },
+          {
+            "id": "found_a_way_out_of_the_underworld",
+            "text": "the investigators found a way out of the Underworld."
+          },
+          {
+            "id": "never_escaped",
+            "text": "the investigators never escaped."
           },
           {
             "id": "on_your_own",
@@ -2274,6 +2286,14 @@
           {
             "id": "randolph_survived_descent",
             "text": "Randolph survived the descent."
+          },
+          {
+            "id": "returned_to_reality",
+            "text": "the investigators returned to reality."
+          },
+          {
+            "id": "still_in_the_dreamlands",
+            "text": "the investigators are still in the Dreamlands."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",

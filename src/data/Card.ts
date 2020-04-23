@@ -34,17 +34,17 @@ export default class Card extends BaseCard {
 
   static factionHeaderOrder() {
     return [
-      t`Guardian / Rogue`,
-      t`Rogue / Survivor`,
-      t`Survivor / Seeker`,
-      t`Seeker / Mystic`,
-      t`Mystic / Guardian`,
       t`Guardian`,
       t`Seeker`,
       t`Mystic`,
       t`Rogue`,
       t`Survivor`,
       t`Neutral`,
+      t`Guardian / Rogue`,
+      t`Rogue / Survivor`,
+      t`Survivor / Seeker`,
+      t`Seeker / Mystic`,
+      t`Mystic / Guardian`,
       t`Weakness`,
       t`Mythos`,
     ];
@@ -67,6 +67,10 @@ export default class Card extends BaseCard {
       default:
         return defaultName;
     }
+  }
+
+  factionPackSortHeader() {
+    return `${Card.factionSortHeader(this)} - ${this.cycle_name}`;
   }
 
   static factionSortHeader(json: any) {
@@ -281,6 +285,7 @@ export default class Card extends BaseCard {
     const sort_by_type = Card.typeHeaderOrder().indexOf(Card.typeSortHeader(json));
     const sort_by_faction = Card.factionHeaderOrder().indexOf(Card.factionSortHeader(json));
     const pack = packsByCode[json.pack_code] || null;
+    const sort_by_faction_pack = sort_by_faction * 100 + (pack ? pack.cycle_position : 0);
     const sort_by_pack = pack ? (pack.cycle_position * 100 + pack.position) : -1;
     const cycle_pack = pack ? cycleNames[pack.cycle_position] : null;
     const spoiler = !!(json.spoiler || (linked_card && linked_card.spoiler));
@@ -325,6 +330,7 @@ export default class Card extends BaseCard {
         heals_horror,
         sort_by_type,
         sort_by_faction,
+        sort_by_faction_pack,
         sort_by_pack,
         enemy_horror,
         enemy_damage,

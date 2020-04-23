@@ -335,7 +335,7 @@ class CardResultList extends React.Component<Props, State> {
       case SORT_BY_FACTION:
         return [['sort_by_faction', false], ['renderName', false], ['xp', false]];
       case SORT_BY_FACTION_PACK:
-        return [['sort_by_faction', false], ['code', false]];
+        return [['sort_by_faction_pack', false], ['code', false]];
       case SORT_BY_COST:
         return [['cost', false], ['renderName', false], ['xp', false]];
       case SORT_BY_PACK:
@@ -353,8 +353,9 @@ class CardResultList extends React.Component<Props, State> {
     switch(sort) {
       case SORT_BY_TYPE:
         return Card.typeSortHeader(card);
-      case SORT_BY_FACTION:
       case SORT_BY_FACTION_PACK:
+        return card.factionPackSortHeader();
+      case SORT_BY_FACTION:
         return Card.factionSortHeader(card);
       case SORT_BY_COST:
         if (card.cost === null) {

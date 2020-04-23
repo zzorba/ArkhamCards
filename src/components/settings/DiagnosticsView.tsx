@@ -173,9 +173,15 @@ class DiagnosticsView extends React.Component<Props> {
         cycleNames[pack.cycle_position] = pack;
       }
     });
-    cycleNames[50] = {};
-    cycleNames[70] = {};
-    cycleNames[80] = {};
+    cycleNames[50] = {
+      name: t`Return to...`,
+    };
+    cycleNames[70] = {
+      name: t`Investigator Starter Decks`,
+    };
+    cycleNames[80] = {
+      name: t`Side stories`,
+    };
     realm.write(() => {
       realm.create(
         'Card',

@@ -27,7 +27,8 @@ export type Condition =
   | CampaignLogSectionExistsCondition
   | ScenarioDataCondition
   | KilledTraumaCondition
-  | CheckSuppliesCondition;
+  | CheckSuppliesCondition
+  | CampaignLogCardsCondition;
 export type Effect =
   | StoryStepEffect
   | EarnXpEffect
@@ -433,6 +434,12 @@ export interface CheckSuppliesAnyCondition {
   section: string;
   id: string;
   prompt?: string;
+  options: BoolOption[];
+}
+export interface CampaignLogCardsCondition {
+  type: "campaign_log_cards";
+  section: string;
+  id: string;
   options: BoolOption[];
 }
 export interface EffectsStep {

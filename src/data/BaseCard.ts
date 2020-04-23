@@ -110,6 +110,7 @@ export default class BaseCard {
     heals_horror: 'bool?',
     sort_by_type: 'int',
     sort_by_faction: 'int',
+    sort_by_faction_pack: 'int',
     sort_by_pack: 'int',
   };
   public id!: string;
@@ -213,6 +214,7 @@ export default class BaseCard {
   public heals_horror?: boolean;
   public sort_by_type!: number;
   public sort_by_faction!: number;
+  public sort_by_faction_pack!: number;
   public sort_by_pack!: number;
 
   public cardName(): string {
