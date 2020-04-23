@@ -10,7 +10,7 @@ import { t } from 'ttag';
 import { fetchCards } from 'components/card/actions';
 import Card from 'data/Card';
 import { AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface ReduxProps {
   lang: string;

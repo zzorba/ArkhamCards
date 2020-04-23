@@ -20,7 +20,7 @@ import withUniversalCampaignData, { UniversalCampaignProps } from 'components/ca
 import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideContext } from 'components/campaignguide/contextHelper';
 import { getCampaign, AppState } from 'reducers';
 import { NavigationProps } from 'components/nav/types';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { s, m } from 'styles/space';
 
 export interface LinkedCampaignGuideProps {

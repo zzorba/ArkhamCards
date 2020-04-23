@@ -20,7 +20,7 @@ import { addFilterSet, removeFilterSet, clearFilters, syncFilterSet, toggleMytho
 import { CardFilterProps } from 'components/filter/withFilterFunctions';
 import { iconsMap } from 'app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface RealmProps {
   defaultFilterState: FilterState;

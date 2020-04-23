@@ -20,7 +20,7 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { getAllDecks, getLatestCampaignDeckIds, getCampaign, AppState } from 'reducers';
 import typography from 'styles/typography';
 import { iconsMap } from 'app/NavIcons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
 import ScenarioResultRow from '../CampaignScenarioView/ScenarioResultRow';

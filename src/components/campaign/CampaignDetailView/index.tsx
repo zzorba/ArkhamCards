@@ -42,7 +42,7 @@ import { ChaosBag } from 'constants';
 import { updateCampaign, deleteCampaign, cleanBrokenCampaigns } from '../actions';
 import { NavigationProps } from 'components/nav/types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 export interface CampaignDetailProps {
   id: number;
@@ -633,12 +633,12 @@ export default withPlayerCards<NavigationProps & CampaignDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.backgroundColor,
   },
   destructive: {
     color: COLORS.red,

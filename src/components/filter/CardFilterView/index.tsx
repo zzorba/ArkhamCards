@@ -20,7 +20,7 @@ import withFilterFunctions, { FilterProps } from '../withFilterFunctions';
 import NavButton from 'components/core/NavButton';
 import { CORE_FACTION_CODES, FactionCodeType } from 'constants';
 import { getAllPacks, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space from 'styles/space';
 
 const CARD_FACTION_CODES: FactionCodeType[] = [
@@ -717,6 +717,7 @@ const styles = StyleSheet.create({
   toggleStack: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
+    backgroundColor: COLORS.backgroundColor,
   },
   toggleRow: {
     flexDirection: 'row',

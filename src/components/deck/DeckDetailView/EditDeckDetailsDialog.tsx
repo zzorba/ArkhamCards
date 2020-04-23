@@ -11,7 +11,7 @@ import DialogComponent from 'react-native-dialog';
 
 import Dialog from 'components/core/Dialog';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space, { m } from 'styles/space';
 import typography from 'styles/typography';
 

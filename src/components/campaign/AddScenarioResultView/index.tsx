@@ -25,7 +25,7 @@ import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
 import Card from 'data/Card';
 import { getCampaign, getLatestCampaignInvestigators, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { m } from 'styles/space';
 
 export interface AddScenarioResultProps {

@@ -20,7 +20,7 @@ import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;

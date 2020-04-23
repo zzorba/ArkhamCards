@@ -19,7 +19,7 @@ import { iconsMap } from 'app/NavIcons';
 import DeckValidation from 'lib/DeckValidation';
 import { parseDeck } from 'lib/parseDeck';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';

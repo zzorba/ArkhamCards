@@ -79,7 +79,7 @@ import {
 } from 'reducers';
 import { m } from 'styles/space';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from 'components/nav/helper';
 
 const SHOW_DESCRIPTION_EDITOR = false;
@@ -1852,13 +1852,13 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.backgroundColor,
   },
   container: {
     position: 'relative',
     height: '100%',
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
   spinner: {
     height: 80,
@@ -1867,7 +1867,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
   errorMargin: {
     padding: m,
@@ -1875,7 +1875,7 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.backgroundColor,
   },
   destructive: {
     color: COLORS.red,

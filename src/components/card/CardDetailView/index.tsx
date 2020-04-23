@@ -17,7 +17,7 @@ import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { NavigationProps } from 'components/nav/types';
 import { iconsMap } from 'app/NavIcons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { getShowSpoilers, getTabooSet, AppState } from 'reducers';
 import Card from 'data/Card';
 

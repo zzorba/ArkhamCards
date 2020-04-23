@@ -12,7 +12,7 @@ import { t } from 'ttag';
 import SearchBox from 'components/core/SearchBox';
 import { NavigationProps } from 'components/nav/types';
 import SelectRow from './SelectRow';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 export interface SearchSelectProps {
   placeholder: string;
@@ -163,6 +163,6 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
 });

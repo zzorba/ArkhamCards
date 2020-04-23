@@ -19,7 +19,7 @@ import Card from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import DeckListComponent from 'components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from 'components/core/withLoginState';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import typography from 'styles/typography';
 import space, { m, s, xs } from 'styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from 'reducers';

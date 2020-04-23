@@ -26,7 +26,7 @@ import Card from 'data/Card';
 import { getAllDecks, AppState } from 'reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   componentId: string;
@@ -211,7 +211,7 @@ const styles = StyleSheet.create<Styles>({
   },
   list: {
     flex: 1,
-    backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
+    backgroundColor: COLORS.settingsBackground,
   },
   androidCategory: {
     color: COLORS.darkBlue,

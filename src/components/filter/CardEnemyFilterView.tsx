@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import SliderChooser from './SliderChooser';
 import ToggleFilter from 'components/core/ToggleFilter';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space from 'styles/space';
 
 class CardEnemyFilterView extends React.Component<FilterProps> {

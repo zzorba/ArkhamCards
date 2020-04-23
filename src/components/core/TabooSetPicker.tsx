@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import TabooSet from 'data/TabooSet';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   color: string;

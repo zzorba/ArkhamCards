@@ -11,7 +11,7 @@ import { Pack } from 'actions/types';
 import PackListComponent from 'components/core/PackListComponent';
 import { getAllPacks, AppState } from 'reducers';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   componentId: string;

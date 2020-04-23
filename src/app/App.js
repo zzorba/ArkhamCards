@@ -5,7 +5,7 @@ import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 export default class App {
   constructor(store) {
@@ -158,15 +158,18 @@ export default class App {
     Navigation.setDefaultOptions({
       topBar: {
         buttonColor: COLORS.lightBlue,
+        title: {
+          color: COLORS.darkTextColor,
+        },
         background: {
-          color: 'white',
+          color: COLORS.backgroundColor,
         },
       },
       layout: {
-        backgroundColor: 'white',
+        backgroundColor: COLORS.backgroundColor,
       },
       bottomTab: {
-        textColor: COLORS.darkGray,
+        textColor: COLORS.lightTextColor,
         selectedIconColor: COLORS.lightBlue,
         selectedTextColor: COLORS.lightBlue,
       },

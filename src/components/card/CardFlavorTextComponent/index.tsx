@@ -9,7 +9,7 @@ import {
 } from 'react-native-markdown-view';
 
 import { WithChildren, WithText, State } from '../CardTextComponent/types';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
 import FlavorFancyNode from './FlavorFancyNode';

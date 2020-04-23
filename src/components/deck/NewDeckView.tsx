@@ -10,7 +10,7 @@ import { getDeckOptions } from 'components/nav/helper';
 import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
 import { NavigationProps } from 'components/nav/types';
 import Card from 'data/Card';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;

@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import typography from 'styles/typography';
 import space, { isBig } from 'styles/space';
 

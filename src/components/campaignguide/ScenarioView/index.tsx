@@ -18,7 +18,7 @@ import withScenarioGuideContext, { ScenarioGuideInputProps } from '../withScenar
 import { iconsMap } from 'app/NavIcons';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { NavigationProps } from 'components/nav/types';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 type InputProps = NavigationProps & ScenarioGuideInputProps;
 

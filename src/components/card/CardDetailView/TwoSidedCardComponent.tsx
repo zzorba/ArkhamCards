@@ -29,6 +29,7 @@ import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
 import Button from 'components/core/Button';
 import CardCostIcon from 'components/core/CardCostIcon';
 import BaseCard from 'data/BaseCard';
+import COLORS from 'styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
 
@@ -450,7 +451,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       (card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code]);
     return (
       <View style={[styles.cardTitle, {
-        backgroundColor: factionColor || '#FFFFFF',
+        backgroundColor: factionColor || COLORS.backgroundColor,
         borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (factionColor || '#000000'),
       }]}>
         { this.renderTitleContent(card, name, subname, factionColor) }
@@ -525,7 +526,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View style={[styles.container, styles.containerPadding, { width }]}>
         <View style={[styles.card, {
-          backgroundColor: '#FFFFFF',
+          backgroundColor: COLORS.backgroundColor,
           borderColor: card.faction2_code ?
             FACTION_BACKGROUND_COLORS.dual :
             ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
@@ -765,7 +766,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           { this.renderTitle(card, card.name, card.subname) }
           <View style={styles.cardBody}>
             <View style={[styles.typeBlock, {
-              backgroundColor: '#FFFFFF',
+              backgroundColor: COLORS.backgroundColor,
             }]}>
               <View style={styles.row}>
                 <View style={styles.mainColumn}>

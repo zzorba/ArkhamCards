@@ -21,6 +21,7 @@ import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from 'data/query';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -342,16 +343,16 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
 const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
     flex: 1,
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.backgroundColor,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bbb',
+    borderColor: '#888',
   },
   footer: {
     position: 'absolute',

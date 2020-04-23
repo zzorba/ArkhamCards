@@ -16,6 +16,7 @@ import DialogOption from './DialogOption';
 import withDimensions, { DimensionsProps } from './withDimensions';
 import typography from 'styles/typography';
 import { s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   componentId: string;
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
     flexDirection: 'column',
     alignItems: 'center',
     width: '90%',

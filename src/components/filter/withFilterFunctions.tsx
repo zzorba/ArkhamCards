@@ -16,7 +16,7 @@ import { t, ngettext, msgid } from 'ttag';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import Card from 'data/Card';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { filterToQuery, FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
@@ -266,5 +266,6 @@ export default function withFilterFunctions<P>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: COLORS.backgroundColor,
   },
 });

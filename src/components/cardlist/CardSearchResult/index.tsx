@@ -17,7 +17,7 @@ import Button from 'components/core/Button';
 import Switch from 'components/core/Switch';
 import Card from 'data/Card';
 import { createFactionIcons, FACTION_COLORS, SKILLS, SkillCodeType } from 'constants';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from 'styles/typography';
@@ -445,7 +445,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   rowContainer: {
-    backgroundColor: '#FFF',
+    backgroundColor: COLORS.backgroundColor,
     position: 'relative',
     width: '100%',
     flexDirection: 'row',

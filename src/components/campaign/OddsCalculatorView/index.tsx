@@ -28,6 +28,7 @@ import Card from 'data/Card';
 import { AppState, getCampaign } from 'reducers';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 export interface OddsCalculatorProps {
   campaignId: number;
@@ -507,7 +508,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
   sectionRow: {
     padding: s,

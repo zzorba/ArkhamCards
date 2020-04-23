@@ -8,6 +8,8 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import COLORS from 'styles/colors';
+
 export const SEARCH_BAR_HEIGHT = 58;
 interface Props {
   onChangeText: (search: string) => void;
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 8,

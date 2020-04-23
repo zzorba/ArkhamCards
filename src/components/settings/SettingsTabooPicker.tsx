@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import { setTabooSet } from './actions';
 import TabooSetPicker from 'components/core/TabooSetPicker';
 import { AppState, getTabooSet } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface ReduxProps {
   cardsLoading?: boolean;

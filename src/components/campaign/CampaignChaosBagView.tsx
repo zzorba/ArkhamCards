@@ -6,7 +6,7 @@ import { t } from 'ttag';
 import DrawChaosBagComponent from './DrawChaosBagComponent';
 import { NavigationProps } from 'components/nav/types';
 import { ChaosBag } from 'constants';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, getCampaign } from 'reducers';
 

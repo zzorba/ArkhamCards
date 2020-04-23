@@ -9,7 +9,7 @@ import { ChaosBag, ChaosTokenType, SKILL_COLORS, SKILL_COLORS_LIGHT, SkillCodeTy
 import { flattenChaosBag } from 'components/campaign/campaignUtil';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { add, binomdist, formatPercentageText, subtract } from './oddsHelper';
 import { s } from 'styles/space';
 

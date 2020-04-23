@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { FactionCodeType, FACTION_COLORS } from 'constants';
 import Card from 'data/Card';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface Props {
   name: string;

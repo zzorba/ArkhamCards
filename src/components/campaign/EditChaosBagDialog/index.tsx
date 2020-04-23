@@ -24,7 +24,7 @@ import {
   ChaosTokenType,
 } from 'constants';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space from 'styles/space';
 
 export interface EditChaosBagProps {

@@ -6,7 +6,7 @@ import { SettingsPicker } from 'react-native-settings-components';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { DisplayChoice } from 'data/scenario';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import typography from 'styles/typography';
 
 export interface PickerProps {
@@ -146,11 +146,11 @@ export default class PickerComponent extends React.Component<Props> {
         }}
         options={options}
         disabledOverlayStyle={{
-          backgroundColor: 'rgba(255,255,255,0.0)',
+          backgroundColor: 'transparent',
         }}
         titleStyle={{
           ...typography.mediumGameFont,
-          color: colors ? colors.textColor : COLORS.black,
+          color: colors ? colors.textColor : COLORS.darkTextColor,
           fontWeight: '600',
         }}
         valueProps={{
@@ -159,7 +159,7 @@ export default class PickerComponent extends React.Component<Props> {
         }}
         valueStyle={{
           ...typography.label,
-          color: colors ? colors.textColor : COLORS.black,
+          color: colors ? colors.textColor : COLORS.darkTextColor,
           fontWeight: '400',
           textAlign: 'right',
         }}
@@ -168,7 +168,7 @@ export default class PickerComponent extends React.Component<Props> {
           paddingLeft: 0,
           flexDirection: 'row',
           justifyContent: 'space-between',
-          backgroundColor: colors ? colors.backgroundColor : COLORS.white,
+          backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
           borderBottomWidth: StyleSheet.hairlineWidth,
           borderColor: '#888',
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,

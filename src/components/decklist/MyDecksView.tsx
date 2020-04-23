@@ -13,7 +13,7 @@ import { showDeckModal } from 'components/nav/helper';
 import withFetchCardsGate from 'components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import typography from 'styles/typography';
 import { s, xs } from 'styles/space';
 

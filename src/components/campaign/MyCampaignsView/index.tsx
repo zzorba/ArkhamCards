@@ -27,7 +27,7 @@ import withFetchCardsGate from 'components/card/withFetchCardsGate';
 import { iconsMap } from 'app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from 'reducers';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { m } from 'styles/space';
 
 interface OwnProps {

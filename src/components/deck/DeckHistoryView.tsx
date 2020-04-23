@@ -17,6 +17,7 @@ import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCard
 import { Deck, DecksMap, ParsedDeck, Slots } from 'actions/types';
 import { AppState, getAllDecks } from 'reducers';
 import { parseDeck } from 'lib/parseDeck';
+import COLORS from 'styles/colors';
 
 export interface DeckHistoryProps {
   id: number;
@@ -140,6 +141,6 @@ export default connect<ReduxProps, null, NavigationProps & DeckHistoryProps, App
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
 });

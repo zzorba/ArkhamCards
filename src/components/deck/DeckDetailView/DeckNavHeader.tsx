@@ -12,7 +12,7 @@ import { Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 
 import AppIcon from 'icons/AppIcon';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { s, xs } from 'styles/space';
 
 interface Props {

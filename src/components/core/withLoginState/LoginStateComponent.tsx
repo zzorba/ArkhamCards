@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 
 import { login } from 'actions';
 import { AppState } from 'reducers';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   render: (
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   activityIndicatorContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

@@ -12,7 +12,7 @@ import { Deck, ParsedDeck, Slots } from 'actions/types';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import Card from 'data/Card';
 import { iconsMap } from 'app/NavIcons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 export function getDeckOptions(
   investigator?: Card,

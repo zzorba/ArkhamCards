@@ -6,7 +6,7 @@ import {
 
 import ArkhamIcon from 'icons/ArkhamIcon';
 import { BulletType } from 'data/scenario/types';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space, { s, m, xs } from 'styles/space';
 
 interface Props {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.backgroundColor,
   },
   step: {
     flexDirection: 'row',

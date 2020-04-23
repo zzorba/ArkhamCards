@@ -7,6 +7,7 @@ import {
 import { t } from 'ttag';
 
 import SearchBox, { SEARCH_BAR_HEIGHT } from 'components/core/SearchBox';
+import COLORS from 'styles/colors';
 
 export const SEARCH_OPTIONS_HEIGHT = 44;
 
@@ -91,6 +92,6 @@ export default class InvestigatorSearchBox extends React.Component<Props, State>
 const styles = StyleSheet.create({
   slider: {
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
 });

@@ -21,7 +21,7 @@ import { NavigationProps } from 'components/nav/types';
 import { Slots } from 'actions/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import Card from 'data/Card';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface ReduxProps {
   showSpoilers: { [pack_code: string]: boolean };

@@ -38,7 +38,7 @@ import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { isBig, m, s, xs } from 'styles/space';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 

@@ -17,7 +17,7 @@ import DeckProblemRow from 'components/core/DeckProblemRow';
 import { CardsMap } from 'data/Card';
 import typography from 'styles/typography';
 import { TINY_PHONE } from 'styles/sizes';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import DeckValidation from 'lib/DeckValidation';
 import { showCardCharts, showDrawSimulator } from 'components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';

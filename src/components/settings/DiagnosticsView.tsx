@@ -26,7 +26,7 @@ import { getBackupData, getAllPacks, AppState } from 'reducers';
 import { fetchCards } from 'components/card/actions';
 import { restoreBackup } from 'components/campaign/actions';
 import SettingsItem from './SettingsItem';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface RealmProps {
   realm: Realm;
@@ -297,6 +297,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   list: {
-    backgroundColor: Platform.OS === 'ios' ? COLORS.iosSettingsBackground : COLORS.white,
+    backgroundColor: COLORS.settingsBackground,
   },
 });

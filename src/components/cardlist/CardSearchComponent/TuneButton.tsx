@@ -14,7 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import { CardFilterProps } from 'components/filter/withFilterFunctions';
 import { filterToQuery } from 'lib/filters';
 import { AppState, getFilterState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 const SIZE = 36;
 

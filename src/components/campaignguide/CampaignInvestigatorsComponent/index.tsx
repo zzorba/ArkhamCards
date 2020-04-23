@@ -12,7 +12,7 @@ import CampaignGuideContext, { CampaignGuideContextType } from 'components/campa
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import { s, l } from 'styles/space';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;

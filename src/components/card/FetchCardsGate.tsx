@@ -18,6 +18,7 @@ import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from 'reducers';
 import typography from 'styles/typography';
 import { l, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -188,7 +189,7 @@ export default connectRealm<OwnProps, RealmProps, Card>(
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.backgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

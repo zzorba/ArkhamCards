@@ -15,7 +15,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import { SortType } from 'actions/types';
 import { updateCardSort } from 'components/filter/actions';
 import { AppState, getMythosMode, getCardSort } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 const SIZE = 36;
 

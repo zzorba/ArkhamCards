@@ -7,7 +7,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..

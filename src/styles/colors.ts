@@ -2,7 +2,10 @@ import {
   Platform,
 } from 'react-native';
 
-export const COLORS = {
+export default {
+  darkTextColor: '#222',
+  lightTextColor: 'rgb(120, 120, 120)',
+  backgroundColor: 'white',
   scenarioGreen: '#2E5344',
   veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
@@ -20,6 +23,6 @@ export const COLORS = {
   navButton: Platform.OS === 'ios' ? '#007AFF' : '#000',
   black: '#000',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
-  iosSettingsBackground: '#e3e6ed',
+  settingsBackground: Platform.OS === 'ios' ? '#e3e6ed' : 'rgb(247, 247, 255)',
   monza: '#C70039',
 };

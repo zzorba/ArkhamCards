@@ -23,7 +23,7 @@ import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from 'data/scenario/ScenarioStep';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space, { m, s } from 'styles/space';
 
 interface Props {

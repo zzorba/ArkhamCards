@@ -13,6 +13,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import Card from 'data/Card';
 import typography from 'styles/typography';
+import COLORS from 'styles/colors';
 import { m, s, xs, iconSizeScale } from 'styles/space';
 
 export interface CardSectionHeaderData {
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     color: '#FFF',
   },
   placeholder: {
-    backgroundColor: '#FFF',
+    backgroundColor: COLORS.backgroundColor,
     height: m,
   },
   superHeaderPadding: {

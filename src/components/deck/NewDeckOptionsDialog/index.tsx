@@ -32,7 +32,7 @@ import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';
 import space from 'styles/space';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
 
 export interface NewDeckOptionsProps {

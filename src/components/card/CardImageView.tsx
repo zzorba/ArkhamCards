@@ -16,7 +16,7 @@ import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
 import { HEADER_HEIGHT } from 'styles/sizes';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { NavigationProps } from 'components/nav/types';
 
 interface RealmProps {
@@ -202,6 +202,6 @@ const styles = StyleSheet.create({
   },
   pinchZoom: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
   },
 });

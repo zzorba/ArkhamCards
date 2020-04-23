@@ -49,7 +49,7 @@ import { NavigationProps } from 'components/nav/types';
 import Card from 'data/Card';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { s, xs } from 'styles/space';
 
 export interface NewCampaignProps {

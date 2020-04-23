@@ -18,7 +18,7 @@ import { Campaign, Deck, DeckMeta, Slots } from 'actions/types';
 import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS } from 'constants';
 import Card from 'data/Card';
 import { getCampaign, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import typography from 'styles/typography';
 import { l, s } from 'styles/space';
 

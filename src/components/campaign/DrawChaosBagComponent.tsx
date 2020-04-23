@@ -8,7 +8,7 @@ import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
 import { ChaosBag } from 'constants';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { ChaosBagResults } from 'actions/types';
 import typography from 'styles/typography';
 import ChaosToken from './ChaosToken';
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
   },
   containerTop: {
     alignItems: 'center',
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.backgroundColor,
     borderBottomColor: COLORS.gray,
     borderBottomWidth: 1,
     flex: 1,
@@ -365,7 +365,7 @@ const styles = StyleSheet.create({
     padding: s,
   },
   containerBottom: {
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.backgroundColor,
     flex: 1,
     flexDirection: 'column',
   },

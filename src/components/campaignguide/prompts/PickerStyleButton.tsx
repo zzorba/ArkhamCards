@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import typography from 'styles/typography';
 import space from 'styles/space';
 
@@ -23,7 +23,7 @@ export default class PickerStyleButton extends React.Component<Props> {
     const { colors, disabled, title, value, widget } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
-        backgroundColor: colors ? colors.backgroundColor : COLORS.white,
+        backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
       }]}>
         <Text style={[
           style.defaultTitleStyle,
@@ -80,7 +80,7 @@ const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
     alignItems: 'center',
     flexDirection: 'row',
     borderBottomWidth: StyleSheet.hairlineWidth,
@@ -91,7 +91,7 @@ const style = StyleSheet.create({
     fontSize: 16,
   },
   defaultValueStyle: {
-    color: 'rgb(160,160,160)',
+    color: COLORS.lightTextColor,
     fontSize: 14,
     flex: 0,
   },

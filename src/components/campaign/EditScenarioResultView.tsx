@@ -19,7 +19,7 @@ import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
 import { getCampaign, AppState } from 'reducers';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space, { s } from 'styles/space';
 
 export interface EditScenarioResultProps {

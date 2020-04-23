@@ -18,7 +18,7 @@ import { Deck } from 'actions/types';
 import { parseDeck } from 'lib/parseDeck';
 import { getDeck, getBaseDeck, getLatestDeck, AppState } from 'reducers';
 import typography from 'styles/typography';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import space from 'styles/space';
 
 interface OwnProps {

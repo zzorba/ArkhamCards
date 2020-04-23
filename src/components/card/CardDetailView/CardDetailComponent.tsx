@@ -16,6 +16,7 @@ import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 import space, { m, s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId?: string;
@@ -150,7 +151,7 @@ export default class CardDetailComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   viewContainer: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.backgroundColor,
     flexDirection: 'column',
     alignItems: 'center',
   },

@@ -13,7 +13,7 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { NavigationProps } from 'components/nav/types';
 import { m, s, xs } from 'styles/space';
 import DeckNavFooter from '../../DeckNavFooter';

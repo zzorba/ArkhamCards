@@ -22,7 +22,7 @@ import { Deck, DecksMap, Campaign, SortType, SORT_BY_PACK } from 'actions/types'
 import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
 import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from 'reducers';
-import { COLORS } from 'styles/colors';
+import COLORS from 'styles/colors';
 import { s, xs } from 'styles/space';
 
 export interface MyDecksSelectorProps {
