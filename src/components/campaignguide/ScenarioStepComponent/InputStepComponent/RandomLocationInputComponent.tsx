@@ -109,18 +109,16 @@ export default class RandomLocationInputComponent extends React.Component<Props,
     }
     return (
       <>
-        { selectedCards.length < cards.length && (
-          <BasicButton
-            title={t`Draw Location`}
-            onPress={this._drawLocation}
-          />
-        ) }
-        { choices.length > 0 && (
-          <BasicButton
-            title={t`Reshuffle`}
-            onPress={this._clearLocations}
-          />
-        ) }
+        <BasicButton
+          title={t`Draw location`}
+          disabled={selectedCards.length >= cards.length}
+          onPress={this._drawLocation}
+        />
+        <BasicButton
+          title={t`Reshuffle`}
+          disabled={choices.length === 0}
+          onPress={this._clearLocations}
+        />
         <View style={selectedCards.length ? styles.wrapper : {}}>
           { map(selectedCards, card => (
             <CardSearchResult
