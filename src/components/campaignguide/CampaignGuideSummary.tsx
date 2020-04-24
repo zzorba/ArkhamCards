@@ -7,10 +7,13 @@ import typography from 'styles/typography';
 import GameHeader from 'components/campaign/GameHeader';
 import BackgroundIcon from 'components/campaign/BackgroundIcon';
 import CampaignGuide from 'data/scenario/CampaignGuide';
+import COLORS from 'styles/colors';
+import { m, s } from 'styles/space';
 
 interface Props {
   campaignGuide: CampaignGuide;
   difficulty?: CampaignDifficulty;
+  inverted?: boolean;
 }
 
 export default class CampaignSummaryComponent extends React.Component<Props> {
@@ -18,13 +21,20 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     const {
       campaignGuide,
       difficulty,
+      inverted,
     } = this.props;
     const difficultyText = difficulty && difficultyString(difficulty);
+    const color = CAMPAIGN_COLORS[campaignGuide.campaignCycleCode() as CampaignCycleCode];
     return (
-      <View style={styles.row}>
+      <View style={[
+        styles.row,
+        inverted ? { backgroundColor: color } : {},
+        inverted ? styles.section : {},
+        inverted ? styles.bottomBorder : {},
+      ]}>
         <BackgroundIcon
           code={campaignGuide.campaignCycleCode()}
-          color={CAMPAIGN_COLORS[campaignGuide.campaignCycleCode() as CampaignCycleCode]}
+          color={inverted ? COLORS.black : color}
         />
         <View>
           <GameHeader text={campaignGuide.campaignName()} />
@@ -46,5 +56,14 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingTop: 24,
     paddingBottom: 24,
+  },
+  section: {
+    padding: m,
+    paddingLeft: s + m,
+    paddingRight: s + m,
+  },
+  bottomBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
   },
 });

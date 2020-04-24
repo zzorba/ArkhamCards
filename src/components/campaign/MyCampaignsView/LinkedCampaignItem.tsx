@@ -4,22 +4,31 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import { connect } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { Campaign, CUSTOM } from 'actions/types';
 import { CardsMap } from 'data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
+import { getCampaign, AppState } from 'reducers';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
 
-interface Props {
+interface OwnProps {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
   investigators: CardsMap;
 }
 
-export default class CampaignItem extends React.Component<Props> {
+interface ReduxProps {
+  campaignA?: Campaign;
+  campaignB?: Campaign;
+}
+
+type Props = OwnProps & ReduxProps;
+
+class LinkedCampaignItem extends React.Component<Props> {
   _onPress = () => {
     const {
       campaign,
@@ -31,6 +40,8 @@ export default class CampaignItem extends React.Component<Props> {
   render() {
     const {
       campaign,
+      campaignA,
+      campaignB,
       investigators,
     } = this.props;
     return (
@@ -46,16 +57,31 @@ export default class CampaignItem extends React.Component<Props> {
           ) }
           <CampaignSummaryComponent
             campaign={campaign}
+            hideScenario
           />
-          <CampaignInvestigatorRow
-            campaigns={[campaign]}
-            investigators={investigators}
-          />
+          { !!campaignA && !!campaignB && (
+            <CampaignInvestigatorRow
+              campaigns={[campaignA, campaignB]}
+              investigators={investigators}
+            />
+          ) }
         </LinearGradient>
       </TouchableOpacity>
     );
   }
 }
+
+function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+  if (!props.campaign.link) {
+    return {};
+  }
+  return {
+    campaignA: getCampaign(state, props.campaign.link.campaignIdA),
+    campaignB: getCampaign(state, props.campaign.link.campaignIdB),
+  };
+}
+
+export default connect(mapStateToProps)(LinkedCampaignItem);
 
 const styles = StyleSheet.create({
   container: {

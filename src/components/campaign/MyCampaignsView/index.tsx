@@ -15,6 +15,7 @@ import { t } from 'ttag';
 import BasicButton from 'components/core/BasicButton';
 import { CUSTOM, Campaign, DecksMap } from 'actions/types';
 import CampaignItem from './CampaignItem';
+import LinkedCampaignItem from './LinkedCampaignItem';
 import { NewCampaignProps } from '../NewCampaignView';
 import { CampaignDetailProps } from '../CampaignDetailView';
 import { CampaignGuideProps } from 'components/campaignguide/CampaignGuideView';
@@ -209,6 +210,16 @@ class MyCampaignsView extends React.Component<Props, State> {
     const {
       investigators,
     } = this.props;
+    if (campaign.link) {
+      return (
+        <LinkedCampaignItem
+          key={campaign.id}
+          campaign={campaign}
+          investigators={investigators}
+          onPress={this._onPress}
+        />
+      );
+    }
     return (
       <CampaignItem
         key={campaign.id}

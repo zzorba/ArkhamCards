@@ -13,24 +13,27 @@ import { getDecks, getLatestCampaignDeckIds, AppState } from 'reducers';
 import { s } from 'styles/space';
 
 interface OwnProps {
-  campaign: Campaign;
+  campaigns: Campaign[];
   investigators: CardsMap;
 }
 
-interface ReduxProps {
+interface CampaignDecks {
+  campaign: Campaign;
   decks: Deck[];
+}
+
+interface ReduxProps {
+  campaignDecks: CampaignDecks[];
 }
 
 type Props = OwnProps & ReduxProps;
 
 class CampaignInvestigatorRow extends React.Component<Props> {
-  _renderInvestigator = (code: string) => {
+  _renderInvestigator = (code: string, campaign: Campaign) => {
     const {
       investigators,
-      campaign: {
-        investigatorData = {},
-      },
     } = this.props;
+    const { investigatorData } = campaign;
     const card = investigators[code];
     if (card) {
       const killedOrInsane = card.eliminated(investigatorData[code]);
@@ -47,38 +50,48 @@ class CampaignInvestigatorRow extends React.Component<Props> {
     return null;
   };
 
-  _renderDeck = (deck: Deck) => {
+  _renderDeck = (deck: Deck, campaign: Campaign) => {
     if (deck && deck.investigator_code) {
-      return this._renderInvestigator(deck.investigator_code);
+      return this._renderInvestigator(deck.investigator_code, campaign);
     }
     return null;
   };
 
   render() {
     const {
-      decks,
-      campaign,
+      campaignDecks,
     } = this.props;
-    const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
     return (
       <View style={styles.row}>
-        { map(decks, this._renderDeck) }
-        { map(
-          filter(
-            campaign.nonDeckInvestigators || [],
-            code => !deckInvestigators.has(code)
-          ),
-          this._renderInvestigator
-        ) }
+        { map(campaignDecks, ({ campaign, decks }) => {
+          const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
+          return (
+            <>
+              { map(decks, deck => this._renderDeck(deck, campaign)) }
+              { map(
+                filter(
+                  campaign.nonDeckInvestigators || [],
+                  code => !deckInvestigators.has(code)
+                ),
+                code => this._renderInvestigator(code, campaign)
+              ) }
+            </>
+          );
+        }) }
       </View>
     );
   }
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const latestDeckIds = getLatestCampaignDeckIds(state, props.campaign);
   return {
-    decks: getDecks(state, latestDeckIds),
+    campaignDecks: map(props.campaigns, campaign => {
+      const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
+      return {
+        campaign,
+        decks: getDecks(state, latestDeckIds),
+      };
+    }),
   };
 }
 

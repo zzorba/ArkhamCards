@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -21,7 +21,6 @@ import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideC
 import { getCampaign, AppState } from 'reducers';
 import { NavigationProps } from 'components/nav/types';
 import COLORS from 'styles/colors';
-import { s, m } from 'styles/space';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;
@@ -135,12 +134,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Decks`,
         node: (
           <ScrollView>
-            <View style={[styles.section, styles.bottomBorder]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
-                campaignGuide={contextA.campaignGuide}
-              />
-            </View>
+            <CampaignGuideSummary
+              difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
+              campaignGuide={contextA.campaignGuide}
+              inverted
+            />
             <CampaignGuideContext.Provider value={contextA}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
@@ -150,12 +148,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 campaignData={contextA}
               />
             </CampaignGuideContext.Provider>
-            <View style={[styles.section, styles.bottomBorder]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
-                campaignGuide={contextB.campaignGuide}
-              />
-            </View>
+            <CampaignGuideSummary
+              difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
+              campaignGuide={contextB.campaignGuide}
+              inverted
+            />
             <CampaignGuideContext.Provider value={contextB}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
@@ -178,12 +175,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Scenarios`,
         node: (
           <ScrollView>
-            <View style={[styles.section, styles.bottomBorder]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
-                campaignGuide={contextA.campaignGuide}
-              />
-            </View>
+            <CampaignGuideSummary
+              difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
+              campaignGuide={contextA.campaignGuide}
+              inverted
+            />
             <CampaignGuideContext.Provider value={contextA}>
               <ScenarioListComponent
                 campaignId={campaignDataA.campaign.id}
@@ -193,12 +189,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 componentId={componentId}
               />
             </CampaignGuideContext.Provider>
-            <View style={[styles.section, styles.bottomBorder]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
-                campaignGuide={contextB.campaignGuide}
-              />
-            </View>
+            <CampaignGuideSummary
+              difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
+              campaignGuide={contextB.campaignGuide}
+              inverted
+            />
             <CampaignGuideContext.Provider value={contextB}>
               <ScenarioListComponent
                 campaignId={campaignDataB.campaign.id}
@@ -216,12 +211,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Log`,
         node: (
           <ScrollView>
-            <View style={[styles.section, styles.bottomBorder]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
-                campaignGuide={contextA.campaignGuide}
-              />
-            </View>
+            <CampaignGuideSummary
+              difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
+              campaignGuide={contextA.campaignGuide}
+              inverted
+            />
             <CampaignGuideContext.Provider value={contextA}>
               <CampaignLogComponent
                 campaignId={contextA.campaignId}
@@ -231,12 +225,11 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 fontScale={fontScale}
               />
             </CampaignGuideContext.Provider>
-            <View style={[styles.section, styles.bottomBorder]}>
-              <CampaignGuideSummary
-                difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
-                campaignGuide={contextB.campaignGuide}
-              />
-            </View>
+            <CampaignGuideSummary
+              difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
+              campaignGuide={contextB.campaignGuide}
+              inverted
+            />
             <CampaignGuideContext.Provider value={contextB}>
               <CampaignLogComponent
                 campaignId={contextB.campaignId}
@@ -303,15 +296,3 @@ export default withDimensions<LinkedCampaignGuideProps & NavigationProps>(
     )
   )
 );
-
-const styles = StyleSheet.create({
-  section: {
-    padding: m,
-    paddingLeft: s + m,
-    paddingRight: s + m,
-  },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
-  },
-});
