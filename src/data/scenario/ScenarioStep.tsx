@@ -436,10 +436,15 @@ export default class ScenarioStep {
                 }
                 if (secondInput < choices.length) {
                   const campaignLogChoice = choices[secondInput];
+                  const choiceSteps = map(
+                    campaignLogChoice.steps || [],
+                    stepId => `${stepId}#${nextIteration}`
+                  );
+
                   return this.maybeCreateEffectsStep(
                     step.id,
                     [
-                      ...(campaignLogChoice.steps || []),
+                      ...choiceSteps,
                       `$play_scenario#${nextIteration}`,
                       ...this.remainingStepIds,
                     ],

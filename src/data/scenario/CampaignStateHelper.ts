@@ -1,4 +1,4 @@
-import { sumBy, find, findLast } from 'lodash';
+import { sumBy, filter, find, findLast } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 import uuid from 'react-native-uuid';
@@ -62,7 +62,7 @@ export default class CampaignStateHelper {
 
   closeOnUndo(scenarioId: string) {
     return sumBy(
-      this.state.inputs,
+      filter(this.state.inputs, input => input.type !== 'campaign_link'),
       input => input.scenario === scenarioId ? 1 : 0
     ) === 1;
   }

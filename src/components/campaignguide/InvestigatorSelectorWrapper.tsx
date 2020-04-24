@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, keys, head } from 'lodash';
+import { filter, keys, map, head } from 'lodash';
 import { t } from 'ttag';
 
 import ScenarioStepContext, { ScenarioStepContextType } from './ScenarioStepContext';
@@ -47,6 +47,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
         return investigators;
       case 'any':
       case 'choice':
+      case 'any_resigned':
         if (choice === undefined) {
           return [];
         }
@@ -77,6 +78,27 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
     }
   }
 
+  getInvestigatorChoices(
+    investigator: InvestigatorSelector,
+    investigators: Card[],
+    campaignLog: GuidedCampaignLog
+  ): string[] | undefined {
+    switch (investigator) {
+      case 'lead_investigator':
+        return [campaignLog.leadInvestigatorChoice()];
+      case 'any_resigned': {
+        const allStatus = campaignLog.investigatorResolutionStatus();
+        return map(
+          filter(investigators, card => {
+            return allStatus[card.code] === 'resigned';
+          }),
+          card => card.code
+        );
+      }
+      default:
+        return undefined;
+    }
+  }
   renderContent(
     scenarioState: ScenarioStateHelper,
     campaignLog: GuidedCampaignLog,
@@ -94,6 +116,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
     if (choice === undefined && (
       investigator === 'choice' ||
       investigator === 'any' ||
+      investigator === 'any_resigned' ||
       (investigator === 'lead_investigator' && optional)
     )) {
       return (
@@ -102,12 +125,13 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
           title={t`Choose Investigator`}
           choiceId="chosen_investigator"
           description={description}
-          investigators={investigator === 'lead_investigator' ?
-            [campaignLog.leadInvestigatorChoice()] :
-            undefined
-          }
+          investigators={this.getInvestigatorChoices(
+            investigator,
+            scenarioInvestigators,
+            campaignLog
+          )}
           defaultLabel={t`No one`}
-          required={investigator === 'any'}
+          required={investigator === 'any' || investigator === 'any_resigned'}
         />
       );
     }

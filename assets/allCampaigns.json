@@ -4962,12 +4962,23 @@
     },
     {
       "id": "found_nigel_engram",
+      "text": "Record in your Campaign Log that <i>you found Nigel Engram</i>. Each investigator suffers 1 mental trauma from the shock of their discovery. Each investigator earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_nigel_engram",
           "text": "you found Nigel Engram."
+        },
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
         }
       ]
     },
@@ -15531,12 +15542,23 @@
     },
     {
       "id": "found_nigel_engram",
+      "text": "Record in your Campaign Log that <i>you found Nigel Engram</i>. Each investigator suffers 1 mental trauma from the shock of their discovery. Each investigator earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_nigel_engram",
           "text": "you found Nigel Engram."
+        },
+        {
+          "type": "trauma",
+          "investigator": "all",
+          "mental": 1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 2
         }
       ]
     },
@@ -25133,6 +25155,12 @@
           "section": "mementos",
           "id": "scrap_of_torn_shadow",
           "cross_out": true
+        },
+        {
+          "type": "campaign_log",
+          "section": "mementos",
+          "id": "corn_husk_doll",
+          "cross_out": true
         }
       ]
     },
@@ -26482,6 +26510,32 @@
       }
     },
     {
+      "id": "maybe_corn_husk_doll",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "resolution",
+        "options": [
+          {
+            "condition": "R1",
+            "steps": ["record_corn_husk_doll"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_corn_husk_doll",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "mementos",
+          "id": "corn_husk_doll",
+          "text": "Wisp of Spectral Mist"
+        }
+      ]
+    },
+    {
       "id": "check_earned_wisp",
       "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>...",
       "type": "branch",
@@ -26576,7 +26630,7 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "Rays of faded sunlight stream through the haze, and the unnatural mist finally recedes. As it does, Hangman’s Hill returns to its original state. No other spiteful ghosts emerge to haunt you, and the witches who summoned them have retreated into the shadows once more. You hope that you have done enough to prevent the rest of Arkham to succumbing to this horror.",
-      "steps": ["record_heretics_released", "check_earned_wisp", "earn_xp", "$upgrade_decks"]
+      "steps": ["maybe_corn_husk_doll", "record_heretics_released", "check_earned_wisp", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
@@ -28909,6 +28963,8 @@
     },
     {
       "id": "black_cat_has_a_hunch",
+      "bullet_type": "small",
+      "text": "In both Campaign Logs, record that <i>the black cat has a hunch</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -28942,6 +28998,7 @@
     },
     {
       "id": "black_cat_at_your_side",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -28953,6 +29010,7 @@
     },
     {
       "id": "add_elder_thing_token",
+      "bullet_type": "small",
       "text": "Add 1 [elder_thing] token to the chaos bag.",
       "effects": [
         {
@@ -29007,6 +29065,7 @@
     },
     {
       "id": "add_tablet_token",
+      "bullet_type": "small",
       "text": "Add 1 [tablet] token to the chaos bag.",
       "effects": [
         {
@@ -29039,6 +29098,7 @@
     },
     {
       "id": "you_asked_for_it",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -29067,6 +29127,7 @@
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
   "setup": [
+    "check_point_of_no_return",
     "great_ones_1",
     "check_difficulty",
     "check_randolph_did_not_survive_the_voyage_and_black_cat_is_searching_for_the_truth",
@@ -29075,9 +29136,19 @@
   ],
   "steps": [
     {
+      "id": "check_point_of_no_return",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario III–B: Point of No Return</b>.",
+        "id": "point_of_no_return",
+        "choices": []
+      }
+    },
+    {
       "id": "great_ones_1",
       "type": "story",
-      "text": "<i>Following scenario 3–A, the dreamers are on their way to the Cold Wastes wherein lies unknown Kadath…</i>You are nudged out of a sleepless reverie by a furry forehead. You look down to find the black cat peering up at you. “Hey. I see you’ve made some progress.” You’re not quite sure if you would call this progress. Though you are finally on your way to the Cold Wastes, you haven’t pinned down the exact location of unknown Kadath, and you have no idea what to expect when you arrive."
+      "text": "<i>Following scenario 3–A, the dreamers are on their way to the Cold Wastes wherein lies unknown Kadath…</i>\nYou are nudged out of a sleepless reverie by a furry forehead. You look down to find the black cat peering up at you. “Hey. I see you’ve made some progress.” You’re not quite sure if you would call this progress. Though you are finally on your way to the Cold Wastes, you haven’t pinned down the exact location of unknown Kadath, and you have no idea what to expect when you arrive."
     },
     {
       "id": "check_difficulty",
@@ -29214,22 +29285,18 @@
     },
     {
       "id": "add_easy_token",
-      "bullet_type": "small",
       "text": "Because you are playing on <b>Easy</b> difficulty, add a -3 token to the chaos bag."
     },
     {
       "id": "add_standard_token",
-      "bullet_type": "small",
       "text": "Because you are playing on <b>Standard</b> difficulty, add a -4 token to the chaos bag."
     },
     {
       "id": "add_hard_token",
-      "bullet_type": "small",
       "text": "Because you are playing on <b>Hard</b> difficulty, add a -5 token to the chaos bag."
     },
     {
       "id": "add_expert_token",
-      "bullet_type": "small",
       "text": "Because you are playing on <b>Expert</b> difficulty, add a -7 token to the chaos bag."
     },
     {
@@ -29312,7 +29379,6 @@
     },
     {
       "id": "cross_off_black_cat_is_searching_for_the_truth",
-      "bullet_type": "small",
       "text": "In both Campaign Logs, cross off <i>the black cat is searching for the truth</i>."
     },
     {
@@ -29331,7 +29397,8 @@
                 "type": "story_step",
                 "steps": ["you_asked_for_it", "skip_rest_of_interlude"]
               }
-            ]
+            ],
+            "steps": ["send_great_ones_black_cat_mad"]
           },
           {
             "boolCondition": false,
@@ -29351,6 +29418,15 @@
       "text": "Skip the rest of this interlude."
     },
     {
+      "id": "send_great_ones_black_cat_mad",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "great_ones_decision",
+        "decision": "black_cat_mad"
+      }
+    },
+    {
       "id": "resume_interlude",
       "type": "story",
       "text": "You ask the black cat if it knows what you’ll find in Kadath. “Sort of,” it answers. “I’ve foreseen your arrival in Kadath for some time now. I’ve seen a lot of this, in fact. But it’s…well, it’s not playing out exactly the same way. Or maybe I just didn’t <i>see</i> it the same way. Regardless, I think you’re on the right path. After all, it’s the only path that’s left. I know a little more about what you’ll see when you get there, but I’m afraid that if I tell you, you’ll see it differently, too. Don’t worry about it. You’re doing fine. Get to Kadath. Find the land of the Great Ones. Everything else will fall into place when you arrive. As long as you don’t mess this up. These beings that you face, the ones whose names I do not wish to speak, they don’t just threaten the Dreamlands. They threaten existence itself. Now, if you’ll excuse me, I have somewhere to be.”"
@@ -29365,7 +29441,12 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["black_cat_wanders_off", "send_great_ones_black_cat_wanders_off"]
+            "steps": [
+              "black_cat_wanders_off",
+              "send_great_ones_black_cat_wanders_off",
+              "check_great_ones_silver_key",
+              "check_black_cat_still_searching_for_the_truth"
+            ]
           },
           {
             "boolCondition": false,
@@ -29464,7 +29545,7 @@
           {
             "id": "transfer_key",
             "text": "<i>the investigators possess the Silver Key.</i>",
-            "steps": ["possess_silver_key", "gain_silver_key"]
+            "steps": ["other_campaign_header", "possess_silver_key", "gain_silver_key"]
           },
           {
             "id": "no_key",
@@ -29474,8 +29555,12 @@
       }
     },
     {
+      "id": "other_campaign_header",
+      "text": "Based on events from <i>The Web of Dreams</i> (Campaign B): "
+    },
+    {
       "id": "possess_silver_key",
-      "text": "In the Campaign Log for <i>The Web of Dreams</i> (Campaign B), cross off the investigators possess the Silver Key. Record this in the Campaign Log for <i>The Dream-Quest</i> (Campaign A) instead.",
+      "bullet_type": "small",
       "effects": [
         {
           "type": "campaign_log",
@@ -29487,7 +29572,8 @@
     },
     {
       "id": "gain_silver_key",
-      "text": "If The Silver Key is currently in an investigator’s deck, remove it. Any one investigator in <i>The Dream-Quest</i> (Campaign A) may choose to add The Silver Key to their deck. This card does not count toward that investigator’s deck size.",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to add The Silver Key to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -29506,11 +29592,27 @@
         "id": "black_cat_is_searching_for_the_truth",
         "options": [
           {
+            "boolCondition": true,
+            "steps": ["other_campaign_header", "black_cat_knows_the_truth"]
+          },
+          {
             "boolCondition": false,
             "steps": ["resolve_decision_effects"]
           }
         ]
       }
+    },
+    {
+      "id": "black_cat_knows_the_truth",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "black_cat_knows_the_truth",
+          "text": "the black cat knows the truth."
+        }
+      ]
     },
     {
       "id": "resolve_decision_effects",
@@ -29913,6 +30015,7 @@
           {
             "boolCondition": false,
             "steps": [
+              "send_oneironauts_searching_for_the_truth_no",
               "check_black_cat_still_has_a_hunch"
             ]
           }
@@ -29968,7 +30071,6 @@
     },
     {
       "id": "skip_rest_of_interlude_truth",
-      "bullet_type": "small",
       "text": "Skip the rest of this interlude. In both Campaign Logs, record <i>the black cat is searching for the truth</i>."
     },
     {
@@ -31128,7 +31230,7 @@
     {
       "id": "alarm_level",
       "type": "rule_reminder",
-      "title": "Rule Reminder",
+      "title": "Alarm Level",
       "text": "The setup of this scenario instructs the players to place 1 doom on each investigator card, marking their current “alarm level.” As the investigators attempt to escape from the grasp of the moon-beasts, their respective alarm levels may increase or decrease based on their actions and decisions. A higher alarm level means you are closer to being discovered, which will significantly hinder your attempts to escape.\nIf an effect raises an investigator’s alarm level by any amount, place that much doom on that investigator’s card to represent this. Likewise, if an effect reduces an investigator’s alarm level by any amount, remove that much doom from that investigator’s card.\nEven though it is marked using doom tokens, an investigator’s alarm level is not doom, and does not count toward the agenda’s doom threshold.\nAn investigator’s alarm level has no effect on its own, but it may alter or strengthen other encounter card effects."
     },
     {
@@ -31219,6 +31321,22 @@
       ]
     },
     {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "half_campaign",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["$upgrade_decks"]
+          }
+        ]
+      }
+    },
+    {
       "id": "maybe_skip_interlude",
       "text": "If you are playing The Dream-Quest as a four-part campaign:",
       "type": "branch",
@@ -31233,7 +31351,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["$upgrade_decks"]
+            "steps": ["send_moon_done"]
           }
         ]
       }
@@ -31249,6 +31367,15 @@
           "scenario": "the_great_ones"
         }
       ]
+    },
+    {
+      "id": "send_moon_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "dark_side_of_the_moon",
+        "decision": "done"
+      }
     }
   ],
   "resolutions": [
@@ -31261,13 +31388,13 @@
         "mental"
       ],
       "text": "Despite your best efforts, your pursuers are too many for you to escape unnoticed. You are cornered and taken captive. Virgil tries his best to resist, but Randolph gives in, knowing that his resistance is futile. You are brought into a large domed temple on the dark side of the Moon and forced to kneel before one of the moon-beasts. It is dressed in grey robes and heavy wrappings, but you see its true visage beneath: its slippery, clammy flesh and its drooling, bulbous lips. “Wonderful,” it praises its henchmen. “Our master will be pleased.” Behind you, Corsairs prevent your escape, while a row of winged things on either side of you squawk rhythmically and flap their wings. A preparation, you suspect, for an unpleasant journey.\nThe moon-beast orders its slaves to haul you onto the winged creatures. “Bring these wretches to the sacrificial pits,” it decrees. “They must be judged for their heresy. The moon lizard shall feed well tonight.”\n“What? No, this isn’t right.” Randolph grits his teeth.\nThere is a bright flash of light, and you <i>awaken</i>. You are sitting atop a comfortless and unfamiliar bed. A wave of relief washes over you at first. Have you finally awoken from this endless dream? Then the still, cold void embraces you, and you realize where you truly are. Instead of four walls and a ceiling, you are surrounded by a bright, starry cosmos. Galaxies and nebulae in the distance seem to stare back at you with unfeeling cruelty. Your bed floats along the thinnest of silver threads. Virgil’s cat sits up at your feet. “You’re not awake,” the black cat says. “Not yet.”\nAnother flash of light. The moon-beast orders its slaves to haul you onto the winged creatures. “Bring these wretches to the High Priest in the Cold Wastes,” it decrees. “They must be judged for their heresy.”\n“Worry not, my friends,” Randolph whispers to you. “Did you hear that? The Cold Wastes is the region wherein unknown Kadath lies. With any luck, they will bring us right to our destination—” Randolph is cut off as the moon-beast grabs him and pulls him to his feet.\n“No, not you. I know of you. You will be a gift. Fodder for the moon lizard. Come.” It drags Randolph away before your very eyes. His screams echo off the walls of the temple and fade as he is hauled underground. Then, borne aloft on dreadful, membranous wings, your mounts carry you into the void of space.",
-      "steps": ["carried_to_the_cold_wastes", "randolph_did_not_survive_the_voyage", "lead_investigator_gains_false_awakening", "earn_xp", "maybe_skip_interlude"]
+      "steps": ["carried_to_the_cold_wastes", "randolph_did_not_survive_the_voyage", "lead_investigator_gains_false_awakening", "earn_xp", "maybe_upgrade_decks", "maybe_skip_interlude"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "As the white galley glides silently back toward the Earth, its captain sings a soft, melodic shanty, which the ship’s oarsmen repeat. You seem to know the language well, despite having never heard it before. You ask after your course, but the bearded man does not reply other than to continue his harmonious song. You plead with him to aid you in your search for unknown Kadath, believing it to be of the utmost importance. “You should not seek to disturb the gods,” the man warns, his song interrupted. “They are far greater than you or I. Do you not see the folly in your ambition?” You beseech him once more, telling him you must bring back proof of the Dreamlands, and cannot return home without the aid of the gods. “Would that be so dire a fate? Look around you.”\nYou do as the captain requests, and are met with a scene of such serene beauty that it leaves you breathless. The seas below glitter in the moonlight like an ocean of diamonds. Along the horizon, you see crystalline coastlines, blissful countrysides, lush mountain vistas, and emerald-green gardens. The air is crisp and cool as you descend below the clouds. Your heart swells with the sweet fragrance of flowers from the nearby coast. Never in all your years in “reality” have you experienced a beauty so <i>real</i>.\nMaybe staying wouldn’t be so bad. You’ve already spent weeks—no, months—in this land. There have been hardships, yes, but could you really return to your mundane reality after everything you’ve seen and experienced in this wondrous land?\nThen, far to the north, you see it. Looming just over the horizon, or perhaps beyond the dreams of Earth itself. A white peak, atop which sits an azure beacon of refracted moonlight. The bearded man follows your gaze. “So be it,” he sighs. He changes course, following now behind a celestial bird whose plumage matches the vibrant sky. “We sail to the abode of the gods themselves.”",
-      "steps": ["travelled_to_the_cold_wastes", "randolph_survived_the_voyage", "earn_xp", "record_3_evidence_of_kadath", "maybe_skip_interlude"]
+      "steps": ["travelled_to_the_cold_wastes", "randolph_survived_the_voyage", "earn_xp", "record_3_evidence_of_kadath", "maybe_upgrade_decks", "maybe_skip_interlude"]
     }
   ]
 }
@@ -31276,12 +31403,23 @@
   "id": "tde_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
-  "type": "placeholder",
+  "type": "epilogue",
   "setup": [
+    "check_weaver_of_the_cosmos",
     "check_nyarlathoteps_invasion_has_begun",
     "check_broken_the_laws_of_ulthar"
   ],
   "steps": [
+    {
+      "id": "check_weaver_of_the_cosmos",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario IV–B: Weaver of the Cosmos</b>.",
+        "id": "weaver_of_the_cosmos",
+        "choices": []
+      }
+    },
     {
       "id": "check_nyarlathoteps_invasion_has_begun",
       "type": "branch",
@@ -32421,7 +32559,7 @@
         },
         {
           "type": "add_card",
-          "investigator": "choice",
+          "investigator": "any_resigned",
           "card": "06059"
         }
       ]
@@ -32752,6 +32890,7 @@
     },
     {
       "id": "check_black_cat_at_your_side",
+      "text": "Check Campaign Log. <i>If the black cat is at your side.</i>",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -32855,7 +32994,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "dreamers_banished_nyarlathotep",
-          "text": "the dreamers banisihed Nyarlathotep."
+          "text": "the dreamers banished Nyarlathotep."
         }
       ]
     },
@@ -33003,6 +33142,10 @@
                 "scenario": "epilogue"
               }
             ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_where_the_gods_dwell_done"]
           }
         ]
       }
@@ -33038,6 +33181,10 @@
                 "scenario": "epilogue"
               }
             ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_where_the_gods_dwell_done"]
           }
         ]
       }
@@ -33073,6 +33220,10 @@
                 "scenario": "epilogue"
               }
             ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_where_the_gods_dwell_done"]
           }
         ]
       }
@@ -33088,6 +33239,15 @@
           "value": "win"
         }
       ]
+    },
+    {
+      "id": "send_where_the_gods_dwell_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "where_the_gods_dwell",
+        "decision": "done"
+      }
     }
   ],
   "resolutions": [
@@ -33826,6 +33986,7 @@
     },
     {
       "id": "black_cat_has_a_hunch",
+      "text": "In both Campaign Logs, record that <i>the black cat has a hunch</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -33885,11 +34046,33 @@
   "full_name": "Interlude III: The Great Ones",
   "type": "interlude",
   "setup": [
+    "check_dark_side_of_the_moon",
+    "wait_great_ones_decision",
     "check_black_is_searching_for_the_truth",
     "check_you_asked_for_it",
     "$upgrade_decks"
   ],
   "steps": [
+    {
+      "id": "check_dark_side_of_the_moon",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario III–A: Dark Side of the Moon</b>.",
+        "id": "dark_side_of_the_moon",
+        "choices": []
+      }
+    },
+    {
+      "id": "wait_great_ones_decision",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "The interlude begins with <i>The Dream-Quest</i> (Campaign A).",
+        "id": "great_ones_decision",
+        "choices": []
+      }
+    },
     {
       "id": "check_black_is_searching_for_the_truth",
       "hidden": true,
@@ -33941,6 +34124,7 @@
     },
     {
       "id": "check_you_asked_for_it",
+      "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -34033,12 +34217,10 @@
     },
     {
       "id": "transfer_silver_key",
-      "bullet_type": "small",
-      "text": "In the Campaign Log for <i>The Web of Dreams</i> (Campaign B), cross off the investigators possess the Silver Key. Record this in the Campaign Log for <i>The Dream-Quest</i> (Campaign A) instead."
+      "text": "In the Campaign Log for <i>The Web of Dreams</i> (Campaign B), cross off <i>the investigators possess the Silver Key</i>. Record this in the Campaign Log for <i>The Dream-Quest</i> (Campaign A) instead."
     },
     {
       "id": "transfer_silver_key_card",
-      "bullet_type": "small",
       "text": "If The Silver Key is currently in an investigator’s deck, remove it. Any one investigator in <i>The Dream-Quest</i> (Campaign A) may choose to add The Silver Key to their deck. This card does not count toward that investigator’s deck size."
     },
     {
@@ -34079,7 +34261,6 @@
     },
     {
       "id": "black_cat_knows_the_truth",
-      "bullet_type": "small",
       "text": "Skip the rest of this interlude. In both Campaign Logs, record <i>the black cat knows the truth</i>."
     },
     {
@@ -34298,7 +34479,7 @@
     {
       "id": "oneironauts_1",
       "type": "story",
-      "text": "<i>Following scenario 2–B, the investigators have finally reached the end of the mysterious stairway…</i>The black cat awaits you at the bottom of the stairs, watching your long descent with distant, unblinking eyes. You are about to ask how the cat got there when it cuts you off. “Don’t bother. You wouldn’t understand.” It curls up on the cold stone floor, lounging amid the bleak environment. "
+      "text": "<i>Following scenario 2–B, the investigators have finally reached the end of the mysterious stairway…</i>\nThe black cat awaits you at the bottom of the stairs, watching your long descent with distant, unblinking eyes. You are about to ask how the cat got there when it cuts you off. “Don’t bother. You wouldn’t understand.” It curls up on the cold stone floor, lounging amid the bleak environment. "
     },
     {
       "id": "check_randolph_did_not_survive_descent",
@@ -34448,11 +34629,11 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["black_cat_wanders_off", "send_black_cat_wanders_off"]
+            "steps": ["black_cat_wanders_off", "send_black_cat_wanders_off", "check_has_hunch"]
           },
           {
             "boolCondition": false,
-            "steps": ["black_cat_decision", "check_has_hunch"]
+            "steps": ["black_cat_decision", "wait_for_other_side"]
           }
         ]
       }
@@ -34605,6 +34786,7 @@
     },
     {
       "id": "black_cat_is_searching_for_the_truth",
+      "text": "In both Campaign Logs, record <i>the black cat is searching for the truth</i>",
       "effects": [
         {
           "type": "campaign_log",
@@ -34888,7 +35070,6 @@
         "choices": []
       }
     }
-
   ]
 }
 ,
@@ -34896,11 +35077,22 @@
   "id": "tde_epilogue",
   "scenario_name": "Epilogue",
   "full_name": "Epilogue",
-  "type": "placeholder",
+  "type": "epilogue",
   "setup": [
+    "check_where_the_gods_dwell",
     "check_bridge_was_completed"
   ],
   "steps": [
+    {
+      "id": "check_where_the_gods_dwell",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario IV–A: Where the Gods Dwell</b>.",
+        "id": "where_the_gods_dwell",
+        "choices": []
+      }
+    },
     {
       "id": "check_bridge_was_completed",
       "type": "branch",
@@ -35500,6 +35692,22 @@
       "resolution": "R2"
     },
     {
+      "id": "maybe_upgrade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "half_campaign",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["$upgrade_decks"]
+          }
+        ]
+      }
+    },
+    {
       "id": "maybe_skip_interlude",
       "text": "If you are playing The Web of Dreams as a four-part campaign:",
       "type": "branch",
@@ -35514,7 +35722,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["$upgrade_decks"]
+            "steps": ["send_point_of_no_return_done"]
           }
         ]
       }
@@ -35581,6 +35789,15 @@
           "text": "the investigators found a way out of the Underworld."
         }
       ]
+    },
+    {
+      "id": "send_point_of_no_return_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "point_of_no_return",
+        "decision": "done"
+      }
     }
   ],
   "resolutions": [
@@ -35598,13 +35815,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "The black, tarry liquid rises around you, consuming you, and you fear that you’ve made a grave mistake. The pressure of the dense liquid surrounds your body, crushing you from all sides. But then you emerge on the other side. You fall for a brief, silent moment before being caught by a glowing, sinewy web. Panicking, you scramble to a nearby platform made of solid rock. Your refuge is one of many, each suspended in the air and connected by thick webbing. Beyond that is a vast, cosmic space, an infinite darkness that stretches as far as the eye can see.",
-      "steps": ["record_steps_of_the_bridge", "earn_xp", "maybe_skip_interlude"]
+      "steps": ["record_steps_of_the_bridge", "earn_xp", "maybe_upgrade_decks", "maybe_skip_interlude"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You brace yourself as another wave of distorted reality crashes into you. This feeling, whatever it is, is growing stronger as time marches on. Someone or something is causing it, but how? Just as you are pondering its meaning, you realize something curious: you aren’t the only one affected. Far from it, in fact; the entirety of the Underworld seems to be changing with each wave of warped energy that flows through the realm. Walls shift, the floor skews, and the dim, phosphorescent light scintillates with a cosmic, otherworldly glow. The ground rumbles as another wave of force rushes through the foundations of the dream world. The rocky surface upon which you stand gives way. You flail in the air, attempting to grab hold of something, anything that you can use to pull yourself up. Your hands wrap around a painted plank of wood. You have no time to question its appearance—survival comes first.\nWhen you pull yourself up, you realize you are curled up on a park bench, surrounded by a thick fog and the grim, gambrel rooftops of Arkham. There is no ground in front of you. Just an open, endless pit into fathomless depths. The Underworld, perhaps? But how is that possible? Virgil’s cat watches you casually from a tree branch that hangs over the park bench. “It won’t stop,” the black cat tells you. “Not until there is nothing left of your world.” You wonder what you could possibly do in the face of such horror. The cat gazes down into the pit below. “It’s waiting for you.”\nAnother rumble. In the distance, you watch with horror as an entire building is sucked into the ground. You think you spot a pedestrian in the distance, but it is no human. If this goes on any longer, your companions won’t have a world to awaken to. You steel yourself, look down into the empty pit, and gulp. “Down you go,” the cat says.\nYou fall. The roar of the wind is deafening as it whips by your head. You can’t possibly survive a fall like this, you think. But instead of splattering against a hard, rocky ground, you are caught by a glowing, sinewy web. Panicking, you scramble to a nearby platform made of solid rock. Your refuge is one of many, each suspended in the air and connected by thick webbing. Beyond that is a vast, cosmic space, an infinite darkness that stretches as far as the eye can see.",
-      "steps": ["lead_investigator_gains_false_awakening", "record_steps_of_the_bridge", "earn_xp", "maybe_skip_interlude"]
+      "steps": ["lead_investigator_gains_false_awakening", "record_steps_of_the_bridge", "earn_xp", "maybe_upgrade_decks", "maybe_skip_interlude"]
     }
   ]
 }
@@ -36047,7 +36264,6 @@
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Weaver of the Cosmos",
   "full_name": "Scenario IV: Weaver of the Cosmos",
-  "type": "placeholder",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -36329,17 +36545,17 @@
     {
       "id": "spider_queen_2",
       "type": "story",
-      "text": "SPIDER_QUEEN_2"
+      "text": "You are about to climb down the web to the platform below, when you hear the black cat's voice from behind your companion, Randolph. \"Drop it,\" the voice commands. A sinister grin spreads across Randolph's face as he drops a jagged onyx blad, which clatters to the ground.\n\"So you have seen through my mask?\" he says. \"No matter. You will complete the errand upon which I have sent you, regardless. Your world depends on it.\"\nBewildered, you ask why Randolph is acting this way. The black cat jumps onto your shoulder and perches there, its gaze never leaving your erstwhile companion. \"I figured it out a little while ago. He's not Randolph. He never was. Just an interloper in Randolph's skin.\"\n\"Interloper?\" Randolph thunders with anger. \"You, cat, are the interloper! Yes, I know what you are. This is not your place. But enough talk.\" A smile crawls along his lips once more. \"You have a task to perform. Goodbye, then… for now.\" With his warning complete, Not-Randolph walks off of the edge of the platform and falls into oblivion."
     },
     {
       "id": "spider_queen_3",
       "type": "story",
-      "text": "SPIDER_QUEEN_3"
+      "text": "You begin to climb down the web to the platform below, from which you can reach the edge of the bridge and Atlach-Nacha itself. Halfway down, the suspended platform jolts and starts to sway violently from side to side. You grip the silken threads tightly, hoping that the sticky web will keep you from falling. You look to Randolph to make sure he is okay, and it is then that you notice he is not climbing above you as you had suspected he would. You look up to find your companion scowling at you from above, a blade of onyx in his hands. He has cut a segment of the web upon which you are climbing. You plummet to the rocks below, landing painfully on your back. When you look back up at Randolph, his countenance has changed.\n\"Foolish mortals. I was never going to allow you to save your companions. You have an errand of mine to run, and that is your sole purpose. If you wish to live, complete this task for me.\" He peers across at the unfathomble spider that looms before you. \"I shall be the one to claim your world—not that thing.\" Then, Not-Randolph simply turns and walks away."
     },
     {
       "id": "spider_queen_4",
       "type": "story",
-      "text": "SPIDER_QUEEN_4"
+      "text": "The creature is close to completing its design. Its legs move about swiftly, spinning thread after thread of cosmic silk with unearthly determination. It scarcely even recognizes your presence. Perhaps if you can sever its legs, or tear apart the webbing on which it stands…"
     },
     {
       "id": "remove_randolph_carter",
@@ -36410,7 +36626,7 @@
     },
     {
       "id": "remove_each_location",
-      "text": "Remove each location from the game except for the bottommost location. Shift that location upward so it is at the top of the play area. Shuffle the remaining set-aside The Great Web locations and place 7 of them in a circle, along with the investigators' location (as the topmost location in the circle). Until the end of the scenario, each location is connected to each location next to it <i(clockwise or counterclockwise from it)</i>."
+      "text": "Remove each location from the game except for the bottommost location. Shift that location upward so it is at the top of the play area. Shuffle the remaining set-aside The Great Web locations and place 7 of them in a circle, along with the investigators' location (as the topmost location in the circle). Until the end of the scenario, each location is connected to each location next to it <i>(clockwise or counterclockwise from it)</i>."
     },
     {
       "id": "assemble_atlach_nacha",
@@ -36433,7 +36649,7 @@
       "text": "Atlach-Nacha Diagram",
       "horizontal": "normal",
       "vertical": "normal",
-      "locations": [],
+      "locations": [["blank"]],
       "note": "Coming Soon"
     },
     {
@@ -36589,6 +36805,10 @@
                 "scenario": "epilogue"
               }
             ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_weaver_of_the_cosmos_done"]
           }
         ]
       }
@@ -36624,6 +36844,10 @@
                 "scenario": "epilogue"
               }
             ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_weaver_of_the_cosmos_done"]
           }
         ]
       }
@@ -36659,6 +36883,10 @@
                 "scenario": "epilogue"
               }
             ]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["send_weaver_of_the_cosmos_done"]
           }
         ]
       }
@@ -36733,6 +36961,15 @@
       "id": "resolution_5",
       "type": "resolution",
       "resolution": "R5"
+    },
+    {
+      "id": "send_weaver_of_the_cosmos_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "weaver_of_the_cosmos",
+        "decision": "done"
+      }
     }
   ],
   "resolutions": [

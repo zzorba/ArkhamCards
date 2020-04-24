@@ -1857,6 +1857,10 @@
         "section": "mementos",
         "entries": [
           {
+            "id": "corn_husk_doll",
+            "text": "Wisp of Spectral Mist"
+          },
+          {
             "id": "gilmans_journal",
             "text": "Gilman's Journal"
           },
@@ -1916,6 +1920,10 @@
             "text": "the black cat is searching for the truth."
           },
           {
+            "id": "black_cat_knows_the_truth",
+            "text": "the black cat knows the truth."
+          },
+          {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
             "text": "the black cat shared knowledge of the Dreamlands."
           },
@@ -1953,7 +1961,7 @@
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banisihed Nyarlathotep."
+            "text": "the dreamers banished Nyarlathotep."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",

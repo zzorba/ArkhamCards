@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { findIndex, flatMap, keys } from 'lodash';
+import { filter, findIndex, map, keys } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -44,9 +44,10 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
   _onChoiceChange = (
     index: number
   ) => {
+    const investigators = this.investigators(this.context.scenarioInvestigators);
     const selectedInvestigator = index === -1 ?
       undefined :
-      this.context.scenarioInvestigators[index].code;
+      investigators[index].code;
     this.setState({
       selectedInvestigator,
     });
@@ -96,6 +97,17 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     );
   }
 
+  investigators(scenarioInvestigators: Card[]): Card[] {
+    const {
+      investigators,
+    } = this.props;
+    const investigatorSet = investigators && new Set(investigators);
+    return filter(
+      scenarioInvestigators, 
+      investigator => !investigatorSet || investigatorSet.has(investigator.code)
+    );
+  }
+
   renderContent(
     scenarioState: ScenarioStateHelper,
     scenarioInvestigators: Card[]
@@ -108,11 +120,10 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       required,
       defaultLabel,
       investigatorToValue,
-      investigators,
     } = this.props;
     const choice = scenarioState.stringChoices(id);
     const selectedIndex = this.getSelectedIndex(scenarioInvestigators, choice);
-    const investigatorSet = investigators && new Set(investigators);
+    const investigators = this.investigators(scenarioInvestigators);
     return (
       <>
         <View style={[
@@ -124,15 +135,13 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
             description={description}
             defaultLabel={defaultLabel}
             choices={
-              flatMap(scenarioInvestigators, investigator => {
-                if (investigatorSet && !investigatorSet.has(investigator.code)) {
-                  return [];
-                }
+              map(investigators, investigator => {
                 return {
                   text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
                   effects: [],
                 };
-              })}
+              })
+            }
             optional={!required}
             selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
             editable={choice === undefined}
@@ -143,7 +152,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
         { choice !== undefined ?
           // TODO: need to handle no-choice here?
           (!!renderResults && renderResults(
-            selectedIndex === -1 ? undefined : scenarioInvestigators[selectedIndex]
+            selectedIndex === -1 ? undefined : investigators[selectedIndex]
           )) :
           this.renderSaveButton()
         }

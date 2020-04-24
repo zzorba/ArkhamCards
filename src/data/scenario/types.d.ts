@@ -52,6 +52,7 @@ export type InvestigatorSelector =
   | "choice"
   | "defeated"
   | "not_resigned"
+  | "any_resigned"
   | "$input_value";
 export type BulletType = "none" | "small";
 export type CampaignDataEffect =

@@ -14,7 +14,8 @@ export function getSpecialEffectChoiceList(
     case 'remove_card':
       if (
         effect.investigator === 'choice' ||
-        effect.investigator === 'any'
+        effect.investigator === 'any' ||
+        effect.investigator === 'any_resigned'
       ) {
         return `${id}_investigator`;
       }
