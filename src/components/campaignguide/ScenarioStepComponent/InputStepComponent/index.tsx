@@ -1,6 +1,7 @@
 import React from 'react';
 import { t } from 'ttag';
 
+import RandomLocationInputComponent from './RandomLocationInputComponent';
 import ReceiveCampaignLinkInputComponent from './ReceiveCampaignLinkInputComponent';
 import SendCampaignLinkInputComponent from './SendCampaignLinkInputComponent';
 import TextBoxInputComponent from './TextBoxInputComponent';
@@ -190,6 +191,13 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             input={step.input}
             campaignLog={campaignLog}
+          />
+        );
+      case 'random_location':
+        return (
+          <RandomLocationInputComponent
+            input={step.input}
+            fontScale={fontScale}
           />
         );
       default: {

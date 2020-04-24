@@ -112,7 +112,8 @@ export type Input =
   | PlayScenarioInput
   | TextBoxInput
   | ReceiveCampaignLinkInput
-  | SendCampaignLinkInput;
+  | SendCampaignLinkInput
+  | RandomLocationInput;
 export type CardQuery = CardSearchQuery | CardCodeList;
 export type UseSuppliesInput = UseSuppliesChoiceInput | UseSuppliesAllInput;
 export type InvestigatorChoiceCondition = InvestigatorCardCondition | BasicTraumaCondition | InvestigatorCondition;
@@ -615,6 +616,11 @@ export interface SendCampaignLinkInput {
   id: string;
   decision: string;
   prompt?: string;
+}
+export interface RandomLocationInput {
+  type: "random_location";
+  cards: string[];
+  multiple?: boolean;
 }
 export interface EncounterSetsStep {
   id: string;

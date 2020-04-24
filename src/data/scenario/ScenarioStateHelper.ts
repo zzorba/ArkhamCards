@@ -81,4 +81,8 @@ export default class ScenarioStateHelper {
       this.scenarioId
     );
   }
+
+  undo() {
+    this.campaignState.undo(this.scenarioId);
+  }
 }

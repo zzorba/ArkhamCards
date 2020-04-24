@@ -103,7 +103,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
     } = this.props;
     const investigatorSet = investigators && new Set(investigators);
     return filter(
-      scenarioInvestigators, 
+      scenarioInvestigators,
       investigator => !investigatorSet || investigatorSet.has(investigator.code)
     );
   }
@@ -122,8 +122,8 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       investigatorToValue,
     } = this.props;
     const choice = scenarioState.stringChoices(id);
-    const selectedIndex = this.getSelectedIndex(scenarioInvestigators, choice);
     const investigators = this.investigators(scenarioInvestigators);
+    const selectedIndex = this.getSelectedIndex(investigators, choice);
     return (
       <>
         <View style={[

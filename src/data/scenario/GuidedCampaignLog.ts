@@ -568,6 +568,7 @@ export default class GuidedCampaignLog {
       case '$input_value':
         return input || [];
       case 'any':
+      case 'any_resigned':
       case 'choice':
         // These are rewritten in ScenarioStep
         throw new Error('should not happen');

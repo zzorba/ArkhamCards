@@ -341,6 +341,10 @@ export default class ScenarioStep {
     const currentIteration: number | undefined = parts.length > 1 ? parseInt(parts[1], 10) : undefined;
     const nextIteration = (currentIteration || 0) + 1;
     switch (input.type) {
+      case 'random_location': {
+        // Have to press 'undo' to get past the dead-end here.
+        return undefined;
+      }
       case 'send_campaign_link': {
         if (this.campaignLog.linked) {
           const decision = scenarioState.campaignLink(
