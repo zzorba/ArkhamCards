@@ -2353,6 +2353,26 @@
           }
         ]
       }
+    },
+    {
+      "id": "maybe_note_about_chaos_token",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tmm_add_chaos_token",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["note_about_chaos_token"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "note_about_chaos_token",
+      "text": "If you need to add a [tablet] token to the chaos bag, use \"undo\" and select \"Adjust chaos bag\"."
     }
   ],
   "resolutions": [
@@ -2366,7 +2386,7 @@
         "mental"
       ],
       "text": "Whatever the creature in the museum was, you had neither the will nor the tools to destroy it. It seems you must give up any hope of recovering the Necronomicon. Even so, there are others depending on you. Gathering your courage, you prepare for your next task.",
-      "steps": ["failed_to_recover_necronomicon", "earn_xp", "$upgrade_decks"]
+      "steps": ["maybe_note_about_chaos_token", "failed_to_recover_necronomicon", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R1",
@@ -11575,6 +11595,28 @@
       }
     },
     {
+      "id": "maybe_note_about_chaos_token",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "tmm_add_chaos_token",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": [
+              "note_about_chaos_token"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "note_about_chaos_token",
+      "text": "If you need to add a [tablet] token to the chaos bag, use \"undo\" and select \"Adjust chaos bag\"."
+    },
+    {
       "id": "gather_encounter_sets",
       "title": "Setup",
       "type": "encounter_sets",
@@ -11620,6 +11662,7 @@
       ],
       "text": "Whatever the creature in the museum was, you had neither the will nor the tools to destroy it. It seems you must give up any hope of recovering the Necronomicon. Even so, there are others depending on you. Gathering your courage, you prepare for your next task.",
       "steps": [
+        "maybe_note_about_chaos_token",
         "failed_to_recover_necronomicon",
         "earn_xp",
         "$upgrade_decks"
@@ -28853,7 +28896,7 @@
     },
     {
       "id": "ask_8_part_campaign",
-      "text": "It looks like you are playing The Dream-Quest as a 4 part campaign. If there is another group somewhere else playing The Web of Dreams, the app can present you with instructions to send them after each interlude, and wait for their input at appropriate times.",
+      "text": "It looks like you are playing <i>The Dream-Quest</i> as a 4-part campaign. If there is a separate group playing <i>The Web of Dreams</i>, the app can present you with instructions to send them during each interlude, and wait for their input at appropriate times.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -28977,6 +29020,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "You must complete <b>Scenario I–B: Waking Nightmare</b> before reading this interlude.",
+        "manual_prompt": "After they have completed <b>Scenario I-B: Waking Nightmare</b>, ask the investigators of <i>The Web of Dreams</i> (Campaign B) which of the following to choose:",
         "id": "dreamers_grow_weaker",
         "choices": [
           {
@@ -28986,7 +29030,7 @@
           },
           {
             "id": "dreamers_are_strong",
-            "text": "The dreamers' sleeping bodies are safe."
+            "text": "The dreamers are strong."
           }
         ]
       }
@@ -29354,6 +29398,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "manual_prompt": "After they have completed <b>Scenario IV-B: Weaver of the Cosmos</b>, ask the investigators of <i>The Web of Dreams</i> (Campaign B) which of the following is true:",
         "id": "b_epilogue",
         "choices": [
           {
@@ -29384,6 +29429,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "manual_prompt": "After they have completed <b>Scenario IV-B: Weaver of the Cosmos</b>, ask the investigators of <i>The Web of Dreams</i> (Campaign B) which of the following is true:",
         "id": "b_epilogue",
         "choices": [
           {
@@ -29414,6 +29460,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "manual_prompt": "After they have completed <b>Scenario IV-B: Weaver of the Cosmos</b>, ask the investigators of <i>The Web of Dreams</i> (Campaign B) which of the following is true:",
         "id": "b_epilogue",
         "choices": [
           {
@@ -29444,6 +29491,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "manual_prompt": "After they have completed <b>Scenario IV-B: Weaver of the Cosmos</b>, ask the investigators of <i>The Web of Dreams</i> (Campaign B) which of the following is true:",
         "id": "b_epilogue",
         "choices": [
           {
@@ -29944,7 +29992,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_great_ones_black_cat_is_searching_for_the_truth_keep"]
+            "steps": ["maybe_send_great_ones_black_cat_is_searching_for_the_truth_keep"]
           }
         ]
       }
@@ -29959,7 +30007,24 @@
       }
     },
     {
+      "id": "maybe_send_great_ones_black_cat_is_searching_for_the_truth_keep",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_is_searching_for_the_truth",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["send_great_ones_black_cat_is_searching_for_the_truth_keep"]
+          }
+        ]
+      }
+    },
+    {
       "id": "send_great_ones_black_cat_is_searching_for_the_truth_keep",
+      "bullet_type": "small",
       "type": "input",
       "input": {
         "type": "send_campaign_link",
@@ -30079,12 +30144,14 @@
         "choices": [
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "Tell your companions about the threats that you face. The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
+            "text": "<i>Tell your companions about the threats that you face.</i>",
+            "description": "The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
             "steps": ["black_cat_spoke_of_nyarlathotep", "send_great_ones_black_cat_spoke_of_nyarlathotep"]
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "Tell your companions that you will be okay. The black cat will stay with them once this message is delivered. This might make your quest a little more difficult. ",
+            "text": "<i>Tell your companions that you will be okay.</i>",
+            "description": "The black cat will stay with them once this message is delivered. This might make your quest a little more difficult. ",
             "steps": ["black_cat_spoke_of_atlach_nacha", "send_great_ones_black_cat_spoke_of_atlach_nacha"]
           }
         ]
@@ -30137,16 +30204,17 @@
         "type": "receive_campaign_link",
         "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Web of Dreams</b> (Campaign B).",
+        "manual_prompt": "Ask the investigators of <i>The Web of Dreams</i> (Campaign B) whether <i>the black cat brought a Silver Key</i>:",
         "id": "great_ones_silver_key",
         "choices": [
           {
             "id": "transfer_key",
-            "text": "<i>the investigators possess the Silver Key.</i>",
+            "text": "<i>The black cat brought a Silver Key.</i>",
             "steps": ["other_campaign_header", "possess_silver_key", "gain_silver_key"]
           },
           {
             "id": "no_key",
-            "text": "No key"
+            "text": "<i>The black cat did not bring a key.</i>"
           }
         ]
       }
@@ -30443,6 +30511,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "This interlude begins in <b>The Web of Dreams</b> (Campaign B).",
+        "manual_prompt": "Ask the investigators of <i>The Web of Dreams</i> (Campaign B) if you should cross off <i>the black cat has a hunch</i>:",
         "flip_campaign": true,
         "id": "oneironauts_black_cat_has_a_hunch",
         "choices": [
@@ -30614,7 +30683,7 @@
           {
             "boolCondition": false,
             "steps": [
-              "send_oneironauts_searching_for_the_truth_no",
+              "maybe_send_oneironauts_searching_for_the_truth_no",
               "check_black_cat_still_has_a_hunch"
             ]
           }
@@ -30654,6 +30723,22 @@
       }
     },
     {
+      "id": "maybe_send_oneironauts_searching_for_the_truth_no",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_has_a_hunch",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["send_oneironauts_searching_for_the_truth_no"]
+          }
+        ]
+      }
+    },
+    {
       "id": "send_oneironauts_searching_for_the_truth_no",
       "type": "input",
       "input": {
@@ -30688,6 +30773,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "This interlude continues in <b>The Web of Dreams</b> (Campaign B).",
+        "manual_prompt": "Ask the investigators of <i>The Web of Dreams</i> (Campaign B) for the message they told the black cat:",
         "flip_campaign": true,
         "id": "oneironauts_decision",
         "choices": [
@@ -31635,6 +31721,41 @@
           }
         ]
       }
+    },
+    {
+      "id": "maybe_check_final_act",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "strayed_from_the_path",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["check_final_act"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_final_act",
+      "type": "input",
+      "text": "What act was in play when the scenario ended?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1",
+            "text": "Act 1, 2, or 3"
+          },
+          {
+            "id": "act_4",
+            "text": "Act 4",
+            "steps": ["strayed_from_the_path"]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -31647,7 +31768,7 @@
         "mental"
       ],
       "text": "You are nudged into consciousness by an old, scarred cat. “Hey. You all right, human?”\nI’m dreaming, you remember, and suddenly the talking cat doesn’t seem quite as weird. Exhausted, you manage to rise to your feet, brushing off the dirt caked on your clothing. “You’re lucky you weren’t harmed before we arrived,” a human voice calls out to you. It belongs to a blond-haired man in a brown traveling coat, who leans against a nearby tree. “These woods are not forgiving to the faint of heart.” The scarred cat walks to the man’s side, and the man leans over to pet its back.\nYou ask the man where you are and how he came to this place, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your ordeals.” He turns to the cat and utters a word in an odd language—a password of sorts, you suspect—but the cat simply wanders off toward a hedge, where you see several other cats banded together. “Do it yerself,” it replies.\n“Don’t mind the cats,” the man says to you quietly as the cats depart. “They are useful allies, but also independent creatures with no need for you or me. When we reach Ulthar, you may get the chance to meet others of their kind. But first things first.” Together, you leave the eaves of the enchanted forest behind.",
-      "steps": ["saved_by_randolph_carter", "gain_randolph_carter", "earn_xp", "$upgrade_decks"]
+      "steps": ["maybe_check_final_act", "saved_by_randolph_carter", "gain_randolph_carter", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R1",
@@ -33282,12 +33403,12 @@
         "choices": [
           {
             "id": "wake_up",
-            "text": "Wake up.",
+            "text": "<i>Wake up.</i>",
             "steps": ["resolution_3"]
           },
           {
             "id": "remain_in_dreamlands",
-            "text": "Remain on the surface of the Dreamlands.",
+            "text": "<i>Remain on the surface of the Dreamlands.</i>",
             "steps": ["resolution_4"]
           },
           {
@@ -33302,7 +33423,8 @@
                 }
               ]
             },
-            "text": "Venture into the Underworld to find your companions.",
+            "text": "<i>Venture into the Underworld to find your companions.</i>",
+            "description": "You may choose this option because <i>the dreamers know of another path</i> is in the Campaign Log.",
             "steps": ["resolution_5"]
           }
         ]
@@ -33705,7 +33827,7 @@
     },
     {
       "id": "ask_8_part_campaign",
-      "text": "It looks like you are playing The Web of Dreams as a 4 part campaign. If there is another group somewhere else playing The Dream-Quest, the app can present you with instructions to send them after each interlude, and wait for their input at appropriate times.",
+      "text": "It looks like you are playing <i>The Web of Dreams</i> as a 4-part campaign. If there is a separate group playing <i>The Dream-Quest</i>, the app can present you with instructions to send them during each interlude, and wait for their input at appropriate times.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -34165,7 +34287,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
-        "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
+        "manual_prompt": "Ask the investigators of <i>The Dream-Quest</i> (Campaign A) for the message they told the black cat:",
         "flip_campaign": true,
         "id": "black_cat_decision",
         "choices": [
@@ -34379,6 +34501,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "manual_prompt": "After they have completed <b>Scenario IV-A: Where the Gods Dwell</b>, ask the investigators of <i>The Dream-Quest</i> (Campaign A) which of the following is true:",
         "id": "a_epilogue",
         "choices": [
           {
@@ -34409,7 +34532,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
-        "id": "a_epilogue",
+        "manual_prompt": "After they have completed <b>Scenario IV-A: Where the Gods Dwell</b>, ask the investigators of <i>The Dream-Quest</i> (Campaign A) which of the following is true:",        "id": "a_epilogue",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34439,7 +34562,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
-        "id": "a_epilogue",
+        "manual_prompt": "After they have completed <b>Scenario IV-A: Where the Gods Dwell</b>, ask the investigators of <i>The Dream-Quest</i> (Campaign A) which of the following is true:",        "id": "a_epilogue",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34469,7 +34592,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
-        "id": "a_epilogue",
+        "manual_prompt": "After they have completed <b>Scenario IV-A: Where the Gods Dwell</b>, ask the investigators of <i>The Dream-Quest</i> (Campaign A) which of the following is true:",        "id": "a_epilogue",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34763,6 +34886,7 @@
         "type": "receive_campaign_link",
         "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
+        "manual_prompt": "Ask the investigators of <i>The Dream-Quest</i> (Campaign A) if you should cross off <i>the black cat is searching for the truth</i>:",
         "id": "great_ones_black_cat_is_searching_for_the_truth",
         "choices": [
           {
@@ -34866,6 +34990,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_silver_key",
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> that <i>the black cat brought a Silver Key</i>.",
         "decision": "transfer_key"
       }
     },
@@ -34875,6 +35000,7 @@
       "input": {
         "type": "send_campaign_link",
         "id": "great_ones_silver_key",
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> that <i>the black cat did not bring a key</i>.",
         "decision": "no_key"
       }
     },
@@ -34943,6 +35069,7 @@
         "type": "receive_campaign_link",
         "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
+        "manual_prompt": "Ask the investigators of <i>The Dream-Quest</i> (Campaign A) for the message they told the black cat:",
         "id": "great_ones_decision",
         "choices": [
           {
@@ -34982,11 +35109,11 @@
         "token": "tablet",
         "options": [
           {
-            "numCondition": 2,
+            "numCondition": 0,
             "steps": ["move_cat_to_campaign_b_check_elder_thing"]
           },
           {
-            "numCondition": 3,
+            "numCondition": 1,
             "steps": ["cat_already_in_campaign_b"]
           }
         ]
@@ -35002,11 +35129,11 @@
         "token": "elder_thing",
         "options": [
           {
-            "numCondition": 0,
+            "numCondition": 2,
             "steps": ["move_cat_to_campaign_b_from_nowhere"]
           },
           {
-            "numCondition": 1,
+            "numCondition": 3,
             "steps": ["move_cat_to_campaign_b_from_campaign_a"]
           }
         ]
@@ -35033,8 +35160,8 @@
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "black_cat_at_your_side",
-          "cross_out": true
+          "id": "black_cat_at_your_side_2",
+          "text": "the black cat is at your side."
         },
         {
           "type": "remove_chaos_token",
@@ -35056,11 +35183,11 @@
         "token": "elder_thing",
         "options": [
           {
-            "numCondition": 0,
+            "numCondition": 2,
             "steps": ["move_cat_to_campaign_a_check_tablet"]
           },
           {
-            "numCondition": 1,
+            "numCondition": 3,
             "steps": ["cat_already_in_campaign_a"]
           }
         ]
@@ -35076,11 +35203,11 @@
         "token": "tablet",
         "options": [
           {
-            "numCondition": 2,
+            "numCondition": 0,
             "steps": ["move_cat_to_campaign_a_from_nowhere"]
           },
           {
-            "numCondition": 3,
+            "numCondition": 1,
             "steps": ["move_cat_to_campaign_a_from_campaign_b"]
           }
         ]
@@ -35107,8 +35234,8 @@
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "black_cat_at_your_side_2",
-          "text": "the black cat is at your side."
+          "id": "black_cat_at_your_side",
+          "cross_out": true
         },
         {
           "type": "remove_chaos_token",
@@ -35199,7 +35326,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_oneironauts_black_cat_has_a_hunch_keep"]
+            "steps": ["maybe_send_oneironauts_black_cat_has_a_hunch_keep"]
           }
         ]
       }
@@ -35214,7 +35341,24 @@
       }
     },
     {
+      "id": "maybe_send_oneironauts_black_cat_has_a_hunch_keep",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "black_cat_has_a_hunch",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["send_oneironauts_black_cat_has_a_hunch_keep"]
+          }
+        ]
+      }
+    },
+    {
       "id": "send_oneironauts_black_cat_has_a_hunch_keep",
+      "bullet_type": "small",
       "type": "input",
       "input": {
         "type": "send_campaign_link",
@@ -35302,7 +35446,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["black_cat_decision", "wait_for_other_side"]
+            "steps": ["black_cat_decision", "wait_for_other_side", "check_has_hunch"]
           }
         ]
       }
@@ -35332,19 +35476,23 @@
             "id": "black_cat_requested_aid",
             "text": "<i>Tell your companions that you are in trouble.</i>",
             "description": "The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
-            "steps": ["black_cat_requested_aid", "send_black_cat_requested_aid"]
+            "steps": [
+              "black_cat_requested_aid",
+              "send_black_cat_requested_aid",
+              "wait_for_other_side"
+            ]
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
             "text": "<i>Tell your companions about the Underworld.</i>",
             "description": "The black cat will then go elsewhere.",
-            "steps": ["black_cat_shared_knowledge_of_the_underworld", "send_black_cat_shared_knowledge_of_the_underworld"]
+            "steps": ["black_cat_shared_knowledge_of_the_underworld", "send_black_cat_shared_knowledge_of_the_underworld", "wait_for_other_side"]
           },
           {
             "id": "black_cat_warned_the_others",
             "text": "<i>Tell your companions that you are safe.</i>",
             "description": "The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
-            "steps": ["black_cat_warned_the_others", "send_black_cat_warned_the_others"]
+            "steps": ["black_cat_warned_the_others", "send_black_cat_warned_the_others", "wait_for_other_side"]
           }
         ]
       }
@@ -35427,7 +35575,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["wait_for_other_side"]
+            "steps": ["wait_for_other_side", "interlude_resolution"]
           }
         ]
       }
@@ -35439,6 +35587,7 @@
         "type": "receive_campaign_link",
         "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
+        "manual_prompt": "Ask the investigators of <i>The Dream-Quest</i> (Campaign A) if <i>the black cat is searching for the truth</i>:",
         "id": "oneironauts_searching_for_the_truth",
         "choices": [
           {
@@ -36507,7 +36656,7 @@
         "type": "send_campaign_link",
         "id": "dreamers_grow_weaker",
         "decision": "dreamers_are_strong",
-        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that the dreamers' sleeping bodies are safe."
+        "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the dreamers are strong</i>."
       }
     }
   ],

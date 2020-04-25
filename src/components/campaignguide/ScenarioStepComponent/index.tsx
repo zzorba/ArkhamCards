@@ -32,6 +32,7 @@ interface Props {
   fontScale: number;
   width: number;
   border?: boolean;
+  switchCampaignScenario: () => void;
 }
 
 export default class ScenarioStepComponent extends React.Component<Props> {
@@ -42,6 +43,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       fontScale,
       width,
       border,
+      switchCampaignScenario,
     } = this.props;
     if (!step.type) {
       return <GenericStepComponent step={step} />;
@@ -76,6 +78,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
             fontScale={fontScale}
             step={step}
             campaignLog={campaignLog}
+            switchCampaignScenario={switchCampaignScenario}
           />
         );
       case 'effects':
@@ -86,6 +89,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
             width={width}
             step={step}
             campaignLog={campaignLog}
+            switchCampaignScenario={switchCampaignScenario}
           />
         );
       case 'location_setup':

@@ -14,6 +14,9 @@ interface Props {
   campaignId: number;
   processedCampaign: ProcessedCampaign;
   campaignData: CampaignGuideContextType;
+  showLinkedScenario?: (
+    scenarioId: string
+  ) => void;
 }
 
 export default class ScenarioListTab extends React.Component<Props> {
@@ -27,6 +30,7 @@ export default class ScenarioListTab extends React.Component<Props> {
         campaignGuide,
         campaignState,
       },
+      showLinkedScenario,
     } = this.props;
     return (
       <View style={space.marginBottomL}>
@@ -37,6 +41,9 @@ export default class ScenarioListTab extends React.Component<Props> {
             componentId={componentId}
             scenario={scenario}
             campaignId={campaignId}
+            campaignGuide={campaignGuide}
+            showLinkedScenario={showLinkedScenario}
+            linked={processedCampaign.campaignLog.linked}
           />
         )) }
         <AddSideScenarioButton

@@ -5,13 +5,13 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import LinkedScenarioListComponent from './LinkedScenarioListComponent';
 import CampaignGuideSummary from './CampaignGuideSummary';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { Campaign } from 'actions/types';
 import BasicButton from 'components/core/BasicButton';
 import CampaignInvestigatorsComponent from 'components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from 'components/campaignguide/CampaignLogComponent';
-import ScenarioListComponent from 'components/campaignguide/ScenarioListComponent';
 import CampaignGuideContext from 'components/campaignguide/CampaignGuideContext';
 import TabView from 'components/core/TabView';
 import { deleteCampaign, updateCampaign } from 'components/campaign/actions';
@@ -175,34 +175,14 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         title: t`Scenarios`,
         node: (
           <ScrollView>
-            <CampaignGuideSummary
-              difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
-              campaignGuide={contextA.campaignGuide}
-              inverted
+            <LinkedScenarioListComponent
+              componentId={componentId}
+              fontScale={fontScale}
+              campaignA={processedCampaignA}
+              campaignDataA={contextA}
+              campaignB={processedCampaignB}
+              campaignDataB={contextB}
             />
-            <CampaignGuideContext.Provider value={contextA}>
-              <ScenarioListComponent
-                campaignId={campaignDataA.campaign.id}
-                campaignData={contextA}
-                processedCampaign={processedCampaignA}
-                fontScale={fontScale}
-                componentId={componentId}
-              />
-            </CampaignGuideContext.Provider>
-            <CampaignGuideSummary
-              difficulty={processedCampaignB.campaignLog.campaignData.difficulty}
-              campaignGuide={contextB.campaignGuide}
-              inverted
-            />
-            <CampaignGuideContext.Provider value={contextB}>
-              <ScenarioListComponent
-                campaignId={campaignDataB.campaign.id}
-                campaignData={contextB}
-                processedCampaign={processedCampaignB}
-                fontScale={fontScale}
-                componentId={componentId}
-              />
-            </CampaignGuideContext.Provider>
           </ScrollView>
         ),
       },

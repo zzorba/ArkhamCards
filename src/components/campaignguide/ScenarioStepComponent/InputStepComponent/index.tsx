@@ -29,6 +29,7 @@ interface Props {
   componentId: string;
   campaignLog: GuidedCampaignLog;
   fontScale: number;
+  switchCampaignScenario: () => void;
 }
 
 export default class InputStepComponent extends React.Component<Props> {
@@ -40,6 +41,7 @@ export default class InputStepComponent extends React.Component<Props> {
       campaignLog,
       componentId,
       fontScale,
+      switchCampaignScenario,
     } = this.props;
     switch (step.input.type) {
       case 'choose_one':
@@ -191,6 +193,7 @@ export default class InputStepComponent extends React.Component<Props> {
             id={step.id}
             input={step.input}
             campaignLog={campaignLog}
+            switchCampaignScenario={switchCampaignScenario}
           />
         );
       case 'random_location':

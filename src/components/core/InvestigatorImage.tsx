@@ -64,6 +64,20 @@ export default class InvestigatorImage extends React.Component<Props> {
     );
   }
 
+  renderStyledImage() {
+    const {
+      killedOrInsane,
+    } = this.props;
+    if (killedOrInsane) {
+      return (
+        <Sepia>
+          { this.renderInvestigatorImage() }
+        </Sepia>
+      );
+    }
+    return this.renderInvestigatorImage();
+  }
+
   renderImage() {
     const {
       card,
@@ -93,11 +107,7 @@ export default class InvestigatorImage extends React.Component<Props> {
         ) }
         { !!card.imagesrc && (
           <View style={styles.relative}>
-            { killedOrInsane ? (
-              <Sepia>
-                { this.renderInvestigatorImage() }
-              </Sepia>
-            ) : this.renderInvestigatorImage() }
+            { this.renderStyledImage() }
           </View>
         ) }
         <View style={styles.relative}>

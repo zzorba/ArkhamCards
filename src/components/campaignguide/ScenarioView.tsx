@@ -10,21 +10,26 @@ import { last } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
-import { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import StepsComponent from '../StepsComponent';
-import { CampaignLogProps } from '../CampaignLogView';
-import withScenarioGuideContext, { ScenarioGuideInputProps } from '../withScenarioGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
+import { ScenarioGuideContextType } from './ScenarioGuideContext';
+import StepsComponent from './StepsComponent';
+import { CampaignLogProps } from './CampaignLogView';
+import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
 import { iconsMap } from 'app/NavIcons';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { NavigationProps } from 'components/nav/types';
 import COLORS from 'styles/colors';
 
-type InputProps = NavigationProps & ScenarioGuideInputProps;
+interface OwnProps {
+  showLinkedScenario?: (
+    scenarioId: string
+  ) => void;
+}
+type InputProps = NavigationProps & ScenarioGuideInputProps & OwnProps;
 
 type Props = InputProps & DimensionsProps & ScenarioGuideContextType;
 
-export type ScenarioProps = ScenarioGuideInputProps;
+export type ScenarioProps = ScenarioGuideInputProps & OwnProps;
 
 const RESET_ENABLED = false;
 
@@ -113,6 +118,19 @@ class ScenarioView extends React.Component<Props> {
     }
   }
 
+  _switchCampaignScenario = () => {
+    const {
+      componentId,
+      showLinkedScenario,
+      processedScenario,
+    } = this.props;
+    Navigation.pop(componentId).then(() => {
+      if (showLinkedScenario) {
+        showLinkedScenario(processedScenario.id.encodedScenarioId);
+      }
+    });
+  };
+
   menuPressed() {
     const { componentId, processedScenario, campaignId } = this.props;
     const log = last(processedScenario.steps);
@@ -172,6 +190,7 @@ class ScenarioView extends React.Component<Props> {
             fontScale={fontScale}
             width={width}
             steps={processedScenario.steps}
+            switchCampaignScenario={this._switchCampaignScenario}
           />
           <View style={styles.footer} />
         </ScrollView>

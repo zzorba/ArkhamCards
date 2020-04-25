@@ -378,7 +378,27 @@ export default class ScenarioStep {
           );
         }
 
-        throw new Error('TODO: manual linked campaign');
+        // Manually linked campaign.
+        if (!input.choices.length) {
+          return this.proceedToNextStep(
+            this.remainingStepIds,
+            scenarioState,
+            this.campaignLog
+          );
+        }
+        const index = scenarioState.choice(step.id);
+        if (index === undefined) {
+          return undefined;
+        }
+        const choice = input.choices[index];
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...((choice && choice.steps) || []), ...this.remainingStepIds],
+          choice ? [{
+            effects: choice.effects || [],
+          }] : [],
+          scenarioState
+        );
       }
       case 'text_box': {
         const text = scenarioState.text(step.id);

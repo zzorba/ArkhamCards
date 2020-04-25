@@ -9,6 +9,7 @@ interface Props {
   componentId: string;
   fontScale: number;
   width: number;
+  switchCampaignScenario: () => void;
 }
 
 export default class StepsComponent extends React.Component<Props> {
@@ -18,6 +19,7 @@ export default class StepsComponent extends React.Component<Props> {
       componentId,
       fontScale,
       width,
+      switchCampaignScenario,
     } = this.props;
     return map(steps, (step, idx) => (
       <ScenarioStepComponent
@@ -26,6 +28,7 @@ export default class StepsComponent extends React.Component<Props> {
         fontScale={fontScale}
         width={width}
         step={step}
+        switchCampaignScenario={switchCampaignScenario}
       />
     ));
   }

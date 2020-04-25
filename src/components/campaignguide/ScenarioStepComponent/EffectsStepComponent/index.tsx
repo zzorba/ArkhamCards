@@ -24,6 +24,7 @@ interface Props {
   width: number;
   step: EffectsStep;
   campaignLog: GuidedCampaignLog;
+  switchCampaignScenario: () => void;
 }
 
 export default class EffectsStepComponent extends React.Component<Props> {
@@ -42,6 +43,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
       componentId,
       fontScale,
       width,
+      switchCampaignScenario,
     } = this.props;
     switch (effect.type) {
       case 'freeform_campaign_log':
@@ -130,6 +132,7 @@ export default class EffectsStepComponent extends React.Component<Props> {
                   width={width}
                   step={step}
                   border={border}
+                  switchCampaignScenario={switchCampaignScenario}
                 />
               )
             ) }

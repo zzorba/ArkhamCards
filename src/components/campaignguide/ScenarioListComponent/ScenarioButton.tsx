@@ -4,14 +4,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import { showScenario } from 'components/campaignguide/nav';
 import NavButton from 'components/core/NavButton';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import { ScenarioProps } from 'components/campaignguide/ScenarioView';
+import CampaignGuide from 'data/scenario/CampaignGuide';
 import { ProcessedScenario } from 'data/scenario';
 import COLORS from 'styles/colors';
 import typography from 'styles/typography';
@@ -20,8 +20,13 @@ import space, { s } from 'styles/space';
 interface Props {
   componentId: string;
   campaignId: number;
+  campaignGuide: CampaignGuide;
   scenario: ProcessedScenario;
   fontScale: number;
+  linked: boolean;
+  showLinkedScenario?: (
+    scenarioId: string
+  ) => void;
 }
 
 export default class ScenarioButton extends React.Component<Props> {
@@ -41,30 +46,22 @@ export default class ScenarioButton extends React.Component<Props> {
   }
 
   _onPress = () => {
-    const { componentId, scenario, campaignId } = this.props;
-    const scenarioId = scenario.scenarioGuide.id;
-    if (scenario.type === 'playable') {
-      this.context.campaignState.startScenario(scenarioId);
-    }
-    Navigation.push<ScenarioProps>(componentId, {
-      component: {
-        name: 'Guide.Scenario',
-        passProps: {
-          campaignId,
-          scenarioId,
-        },
-        options: {
-          topBar: {
-            title: {
-              text: this.name(),
-            },
-            backButton: {
-              title: t`Back`,
-            },
-          },
-        },
-      },
-    });
+    const {
+      componentId,
+      scenario,
+      campaignId,
+      campaignGuide,
+      linked,
+      showLinkedScenario,
+    } = this.props;
+    showScenario(
+      componentId,
+      scenario,
+      campaignId,
+      this.context.campaignState,
+      linked ? campaignGuide.campaignName() : undefined,
+      showLinkedScenario
+    );
   };
 
   renderIcon() {
