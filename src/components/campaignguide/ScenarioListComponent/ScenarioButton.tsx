@@ -31,11 +31,13 @@ export default class ScenarioButton extends React.Component<Props> {
   name() {
     const { scenario } = this.props;
     const attempt = (scenario.id.replayAttempt || 0) + 1;
+    const scenarioName = scenario.scenarioGuide.scenarioType() === 'scenario' ?
+      scenario.scenarioGuide.scenarioName() :
+      scenario.scenarioGuide.fullScenarioName();
     if (attempt > 1) {
-      const scenarioName = scenario.scenarioGuide.scenarioName();
       return t`${scenarioName} (Attempt ${attempt})`;
     }
-    return scenario.scenarioGuide.scenarioName();
+    return scenarioName;
   }
 
   _onPress = () => {
@@ -113,7 +115,7 @@ export default class ScenarioButton extends React.Component<Props> {
     switch (scenario.type) {
       case 'locked':
         return (
-          <Text style={[typography.gameFont]}>
+          <Text style={typography.gameFont}>
             { this.name() }
           </Text>
         );

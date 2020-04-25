@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Text, View } from 'react-native';
-import { map } from 'lodash';
+import { find , map } from 'lodash';
 import { t } from 'ttag';
 
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
@@ -11,6 +11,7 @@ import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from 'actions/types';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import InvestigatorRow from 'components/core/InvestigatorRow';
+import { BODY_OF_A_YITHIAN } from 'constants';
 import Card, { CardsMap } from 'data/Card';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
@@ -230,6 +231,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         button={this.renderButton()}
         eliminated={eliminated}
         detail={eliminated ? undefined : this.renderDetail()}
+        yithian={!!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN)}
       />
     );
   }

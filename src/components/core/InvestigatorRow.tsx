@@ -18,6 +18,7 @@ import space, { m, s, xs } from 'styles/space';
 
 interface Props {
   investigator: Card;
+  yithian?: boolean;
   description?: string;
   eliminated?: boolean;
   button?: React.ReactNode;
@@ -52,6 +53,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       eliminated,
       button,
       description,
+      yithian,
     } = this.props;
     return (
       <View style={styles.wrapper}>
@@ -64,6 +66,7 @@ export default class InvestigatorRow extends React.Component<Props> {
             <InvestigatorImage
               card={investigator}
               killedOrInsane={eliminated}
+              yithian={yithian}
               small
               border
             />

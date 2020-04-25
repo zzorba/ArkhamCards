@@ -73,8 +73,8 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       storyCounts,
       ignoreStoryCounts,
     } = this.props;
-    const hasStoryChange = !!find(storyCounts,
-      (count, code) => (upgradedDeck.slots[code] || 0) !== count
+    const hasStoryChange = !!find(storyCounts, (count, code) =>
+      (upgradedDeck.slots[code] || 0) !== count
     ) || !!find(ignoreStoryCounts, (count, code) =>
       (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== count
     );
@@ -101,6 +101,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       }).then(
         this._deckUpgradeComplete,
         (e: Error) => {
+          console.log(e);
           this.setState({
             error: e.message,
             saving: false,

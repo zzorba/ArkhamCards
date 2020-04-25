@@ -15,6 +15,7 @@ import { showDeckModal, showCard } from 'components/nav/helper';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import DeckUpgradeComponent from 'components/deck/DeckUpgradeComponent';
 import { DeckChanges } from 'components/deck/actions';
+import { BODY_OF_A_YITHIAN } from 'constants';
 import Card from 'data/Card';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
@@ -405,7 +406,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       if (delta) {
         newSlots[code] = (deck.slots[code] || 0) + delta;
       } else {
-        newSlots[code] = deck.slots[code];
+        newSlots[code] = (deck.slots[code] || 0);
       }
       if (newSlots[code] < 0) {
         newSlots[code] = 0;
@@ -456,11 +457,14 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
   render() {
     const {
       investigator,
+      campaignLog,
     } = this.props;
     const choices = this.props.scenarioState.numberChoices(this.choiceId());
+    const isYithian = (campaignLog.storyAssets(investigator.code)[BODY_OF_A_YITHIAN] || 0) > 0;
     return (
       <InvestigatorRow
         investigator={investigator}
+        yithian={isYithian}
         button={this.deckButton(choices)}
         detail={this.renderDetails(choices)}
       />

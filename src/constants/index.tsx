@@ -270,6 +270,7 @@ export function createFactionIcons(
   });
 }
 
+export const BODY_OF_A_YITHIAN = '04244';
 export const RANDOM_BASIC_WEAKNESS = '01000';
 export const VERSATILE_CODE = '06167';
 export const ON_YOUR_OWN_CODE = '53010';

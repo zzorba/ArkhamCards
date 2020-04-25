@@ -33,7 +33,7 @@ import InvestigatorOptionsModule from './InvestigatorOptionsModule';
 import CardSectionHeader, { CardSectionHeaderData } from 'components/core/CardSectionHeader';
 import TabooSetPicker from 'components/core/TabooSetPicker';
 import CardSearchResult from '../../cardlist/CardSearchResult';
-import { FACTION_DARK_GRADIENTS } from 'constants';
+import { FACTION_DARK_GRADIENTS, BODY_OF_A_YITHIAN } from 'constants';
 import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
@@ -565,6 +565,7 @@ export default class DeckViewTab extends React.Component<Props> {
       componentId,
       parsedDeck: {
         investigator,
+        slots,
       },
     } = this.props;
 
@@ -576,6 +577,8 @@ export default class DeckViewTab extends React.Component<Props> {
               <InvestigatorImage
                 card={investigator}
                 componentId={componentId}
+                yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
+                border
               />
             </View>
             <View style={styles.metadata}>

@@ -608,6 +608,7 @@ export interface TextBoxInput {
 export interface ReceiveCampaignLinkInput {
   type: "receive_campaign_link";
   linked_prompt: string;
+  flip_campaign?: boolean;
   id: string;
   choices: Choice[];
 }

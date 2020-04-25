@@ -29244,6 +29244,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "This interlude continues in <b>The Web of Dreams</b> (Campaign B).",
+        "flip_campaign": true,
         "id": "black_cat_done",
         "choices": []
       }
@@ -29354,7 +29355,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "b_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–B: Weaver of the Cosmos</b> before reading this interlude.",
         "choices": [
           {
             "id": "bridge_was_completed",
@@ -29385,7 +29385,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "b_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–B: Weaver of the Cosmos</b> before reading this interlude.",
         "choices": [
           {
             "id": "bridge_was_completed",
@@ -29416,7 +29415,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "b_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–B: Weaver of the Cosmos</b> before reading this interlude.",
         "choices": [
           {
             "id": "bridge_was_completed",
@@ -29447,7 +29445,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "b_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–B: Weaver of the Cosmos</b> before reading this interlude.",
         "choices": [
           {
             "id": "bridge_was_completed",
@@ -30138,6 +30135,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Web of Dreams</b> (Campaign B).",
         "id": "great_ones_silver_key",
         "choices": [
@@ -30417,6 +30415,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "The interlude begins with <i>The Web of Dreams</i> (Campaign B).",
         "id": "oneironauts_decision",
         "choices": []
@@ -30444,6 +30443,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "This interlude begins in <b>The Web of Dreams</b> (Campaign B).",
+        "flip_campaign": true,
         "id": "oneironauts_black_cat_has_a_hunch",
         "choices": [
           {
@@ -30688,6 +30688,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "This interlude continues in <b>The Web of Dreams</b> (Campaign B).",
+        "flip_campaign": true,
         "id": "oneironauts_decision",
         "choices": [
           {
@@ -34113,6 +34114,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "The interlude begins with <i>The Dream-Quest</i> (Campaign A).",
+        "flip_campaign": true,
         "id": "black_cat_decision",
         "choices": []
       }
@@ -34164,6 +34166,7 @@
       "input": {
         "type": "receive_campaign_link",
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
+        "flip_campaign": true,
         "id": "black_cat_decision",
         "choices": [
           {
@@ -34377,7 +34380,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "a_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–A: Where the Gods Dwell</b> before reading this interlude.",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34408,7 +34410,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "a_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–A: Where the Gods Dwell</b> before reading this interlude.",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34439,7 +34440,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "a_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–A: Where the Gods Dwell</b> before reading this interlude.",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34470,7 +34470,6 @@
       "input": {
         "type": "receive_campaign_link",
         "id": "a_epilogue",
-        "linked_prompt": "You must complete <b>Scenario IV–A: Where the Gods Dwell</b> before reading this interlude.",
         "choices": [
           {
             "id": "nyarlathoteps_invasion_has_begun",
@@ -34735,6 +34734,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "The interlude begins with <i>The Dream-Quest</i> (Campaign A).",
         "id": "great_ones_decision",
         "choices": []
@@ -34761,6 +34761,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
         "id": "great_ones_black_cat_is_searching_for_the_truth",
         "choices": [
@@ -34940,6 +34941,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
         "id": "great_ones_decision",
         "choices": [
@@ -35435,6 +35437,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
         "id": "oneironauts_searching_for_the_truth",
         "choices": [
@@ -35732,6 +35735,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
+        "flip_campaign": true,
         "linked_prompt": "This interlude continues in <b>The Dream-Quest</b> (Campaign A).",
         "id": "oneironauts_done",
         "choices": []

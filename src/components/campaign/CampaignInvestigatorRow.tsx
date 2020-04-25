@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, map } from 'lodash';
+import { filter, find, map } from 'lodash';
 import {
   StyleSheet,
   View,
@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 import { Campaign, Deck } from 'actions/types';
+import { BODY_OF_A_YITHIAN } from 'constants';
 import { CardsMap } from 'data/Card';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import { getDecks, getLatestCampaignDeckIds, AppState } from 'reducers';
@@ -29,7 +30,11 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class CampaignInvestigatorRow extends React.Component<Props> {
-  _renderInvestigator = (code: string, campaign: Campaign) => {
+  _renderInvestigator = (
+    code: string,
+    campaign: Campaign,
+    deck?: Deck
+  ) => {
     const {
       investigators,
     } = this.props;
@@ -37,11 +42,15 @@ class CampaignInvestigatorRow extends React.Component<Props> {
     const card = investigators[code];
     if (card) {
       const killedOrInsane = card.eliminated(investigatorData[code]);
+      const yithian = !!find(investigatorData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN) ||
+        (deck && (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0);
       return (
         <View key={card.code} style={styles.investigator}>
           <InvestigatorImage
             card={card}
             killedOrInsane={killedOrInsane}
+            yithian={yithian}
+            border
             small
           />
         </View>
@@ -52,7 +61,7 @@ class CampaignInvestigatorRow extends React.Component<Props> {
 
   _renderDeck = (deck: Deck, campaign: Campaign) => {
     if (deck && deck.investigator_code) {
-      return this._renderInvestigator(deck.investigator_code, campaign);
+      return this._renderInvestigator(deck.investigator_code, campaign, deck);
     }
     return null;
   };

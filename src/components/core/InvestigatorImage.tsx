@@ -23,6 +23,7 @@ interface Props {
   border?: boolean;
   small?: boolean;
   killedOrInsane?: boolean;
+  yithian?: boolean;
 }
 
 export default class InvestigatorImage extends React.Component<Props> {
@@ -36,16 +37,27 @@ export default class InvestigatorImage extends React.Component<Props> {
     }
   };
 
+  imageStyle() {
+    const {
+      small,
+      yithian,
+    } = this.props;
+    if (yithian) {
+      return small ? styles.smallYithianImage : styles.bigImage;
+    }
+    return small ? styles.image : styles.bigImage;
+  }
+
   renderInvestigatorImage() {
     const {
       card,
-      small,
+      yithian,
     } = this.props;
     return (
       <FastImage
-        style={small ? styles.image : styles.bigImage}
+        style={this.imageStyle()}
         source={{
-          uri: `https://arkhamdb.com/${card.imagesrc}`,
+          uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
         }}
         resizeMode="contain"
       />
@@ -124,6 +136,13 @@ const styles = StyleSheet.create({
   },
   relative: {
     position: 'relative',
+  },
+  smallYithianImage: {
+    position: 'absolute',
+    top: -36 * scaleFactor,
+    left: -20 * scaleFactor,
+    width: (166 + 24) * scaleFactor,
+    height: (136 + 14) * scaleFactor,
   },
   image: {
     position: 'absolute',

@@ -99,6 +99,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
         return undefined;
     }
   }
+
   renderContent(
     scenarioState: ScenarioStateHelper,
     campaignLog: GuidedCampaignLog,

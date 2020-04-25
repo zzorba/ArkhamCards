@@ -12,6 +12,7 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { Campaign, Deck, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
+import { BODY_OF_A_YITHIAN } from 'constants';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import FactionGradient from 'components/core/FactionGradient';
 import DeckProblemRow from 'components/core/DeckProblemRow';
@@ -59,6 +60,13 @@ export default class DeckListRow extends React.Component<Props> {
       return t`${parsedDeck.experience} experience required`;
     }
     return null;
+  }
+
+  yithian(): boolean {
+    const {
+      deck,
+    } = this.props;
+    return (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0;
   }
 
   killedOrInsane(): boolean {
@@ -150,6 +158,8 @@ export default class DeckListRow extends React.Component<Props> {
         <InvestigatorImage
           card={investigator}
           killedOrInsane={this.killedOrInsane()}
+          yithian={this.yithian()}
+          border
         />
       </View>
     );
