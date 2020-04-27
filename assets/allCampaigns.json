@@ -28657,6 +28657,114 @@
           }
         ]
       }
+    },
+    {
+      "id": "maybe_note_about_campaign_log",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "05046",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05047",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05048",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05049",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["note_about_campaign_log"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "note_about_campaign_log",
+      "text": "If you need to record information about the \"Missing Persons\", use \"undo\" and select \"Edit campaign log\"."
+    },
+    {
+      "id": "maybe_adjust_chaos_bag",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "uad_add_chaos_token",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "act_3_v2",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 2,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["fix_remove_all_cultist_tokens"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix_remove_all_cultist_tokens",
+      "text": "While playing the scenario, there was an instruction to remove all [cultist] tokens from the chaos bag.",
+      "effects": [
+        {
+          "type": "remove_chaos_token",
+          "tokens": ["cultist", "cultist", "cultist", "cultist"]
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -28694,7 +28802,7 @@
       "id": "R4",
       "title": "Resolution 4",
       "text": "Anette approaches, confronting the remnant’s ethereal shell. “Sister! We are the ones who have called you here from the great beyond.” The shattered revenant turns its attention to Anette, and the rest of her coven watch in anticipation.\n “What are you doing, you fool? This spirit is no mere witch!” Carl Sanford yells out. But it is too late. Anette ignores Mr. Sanford, continuing to speak with the spectral presence. “For years we have suffered injustice after injustice. Share with me your secrets, sister. Together, as one mind, body, and soul, we can begin anew.”\n The ghost reaches out to her with a long, skeletal arm. Anette’s sisters gasp as their high priestess steps forward and kneels before the being, offering herself. With a sudden rush of energy, the phantom soul is drawn inside Anette. She collapses to the ground, reeling from the spiritual impact. Her body writhes in torment, but none of the other witches step forward to help, instead watching with equal parts terror and fascination. Finally, Anette rises to her feet, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\n Carl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic. \nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
-      "steps": ["anette_mason_is_possessed_by_evil", "resolution_8"]
+      "steps": ["maybe_adjust_chaos_bag", "anette_mason_is_possessed_by_evil", "resolution_8"]
     },
     {
       "id": "R5",
@@ -28717,7 +28825,7 @@
       "id": "R8",
       "title": "Resolution 8",
       "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
-      "steps": ["remove_puzzle_box", "check_missing_persons_alive", "check_gavriella_in_game", "check_jerome_in_game", "check_penny_in_game", "check_valentino_in_game", "earn_xp", "$upgrade_decks"]
+      "steps": ["remove_puzzle_box", "maybe_note_about_campaign_log", "check_missing_persons_alive", "check_gavriella_in_game", "check_jerome_in_game", "check_penny_in_game", "check_valentino_in_game", "earn_xp", "$upgrade_decks"]
     }
   ]
 }]}
@@ -29019,7 +29127,7 @@
       "type": "input",
       "input": {
         "type": "receive_campaign_link",
-        "linked_prompt": "You must complete <b>Scenario I–B: Waking Nightmare</b> before reading this interlude.",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario I–B: Waking Nightmare</b>.",
         "manual_prompt": "After they have completed <b>Scenario I-B: Waking Nightmare</b>, ask the investigators of <i>The Web of Dreams</i> (Campaign B) which of the following to choose:",
         "id": "dreamers_grow_weaker",
         "choices": [
@@ -31198,7 +31306,6 @@
           {
             "id": "hunter",
             "text": "[[Hunter]] dream",
-            "border": true,
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -31214,7 +31321,6 @@
           {
             "id": "medic",
             "text": "[[Medic]] or [[Assistant]] dream",
-            "border": true,
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -31756,6 +31862,15 @@
           }
         ]
       }
+    },
+    {
+      "id": "send_beyond_the_gates_of_sleep_done",
+      "type": "input",
+      "input": {
+        "type": "send_campaign_link",
+        "id": "beyond_the_gates_of_sleep",
+        "decision": "done"
+      }
     }
   ],
   "resolutions": [
@@ -31768,19 +31883,19 @@
         "mental"
       ],
       "text": "You are nudged into consciousness by an old, scarred cat. “Hey. You all right, human?”\nI’m dreaming, you remember, and suddenly the talking cat doesn’t seem quite as weird. Exhausted, you manage to rise to your feet, brushing off the dirt caked on your clothing. “You’re lucky you weren’t harmed before we arrived,” a human voice calls out to you. It belongs to a blond-haired man in a brown traveling coat, who leans against a nearby tree. “These woods are not forgiving to the faint of heart.” The scarred cat walks to the man’s side, and the man leans over to pet its back.\nYou ask the man where you are and how he came to this place, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your ordeals.” He turns to the cat and utters a word in an odd language—a password of sorts, you suspect—but the cat simply wanders off toward a hedge, where you see several other cats banded together. “Do it yerself,” it replies.\n“Don’t mind the cats,” the man says to you quietly as the cats depart. “They are useful allies, but also independent creatures with no need for you or me. When we reach Ulthar, you may get the chance to meet others of their kind. But first things first.” Together, you leave the eaves of the enchanted forest behind.",
-      "steps": ["maybe_check_final_act", "saved_by_randolph_carter", "gain_randolph_carter", "earn_xp", "$upgrade_decks"]
+      "steps": ["maybe_check_final_act", "saved_by_randolph_carter", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "The creatures chitter among themselves, and after a moment, a dozen of them retreat in the direction of the great tree beyond the beaten path. They return shortly afterward carrying a variety of grouse, quail, and pheasants in their mouths. You’re almost certain now that you are going crazy. And yet, the spectacle continues. The creatures timidly drop their “tribute” of birds in front of the cats and quietly depart. “My apologies on behalf of the Zoogs,” the man says as he approaches. “They are curious creatures, and not usually so…agitated. It is good that we showed up when we did.” The leader of the cats jumps on a tree stump and adds, “Yes, yes. Them vile Zoogs have done their part, now let’s do ours and leave this forsaken place. What say yeh?”\nYou cannot contain your excitement. Zoogs, talking cats—everything you have read about is real. You begin to ask the man more about this world, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your travels.” He turns to the old, scarred cat and utters a word in an odd language—a password of sorts, you suspect—and the cat replies with a quick nod. The rest of the cats, tribute in mouth, take a protective circular formation around you, and together you escape from the eaves of the enchanted forest.",
-      "steps": ["cats_collected_their_tribute", "gain_randolph_carter", "earn_xp", "$upgrade_decks"]
+      "steps": ["cats_collected_their_tribute", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You hold a hand up to the new visitors, believing that you can defuse this situation on your own. Had you known these rodent-like creatures were intelligent all along, you might have tried to communicate with them much earlier. You inform them that you are just travelers in this faraway land and that you simply wish to pass through peacefully. The creatures chitter among themselves for a moment: “They are kind!” “They are not with the black cat after all!” “Summon the Council of Sages!” After a short while, several more of them appear, each with withering grey fur and a frail, thin body. The eldest one peeks behind you and states that they will aid you if you get the cats to leave.\nSomehow, you contain your disbelief and politely ask the cats to come back another time. “All right,” the scarred cat replies, “but you ain’t seen the last of us.” The cats retreat to the edge of the woods, though their human companion stays behind with you. Once the cats are out of earshot, one of the elders offers you a gourd of what appears to be fermented tree sap, which you accept graciously.\n“It is the wine of the moon-tree,” the man behind you explains quietly, stepping forward. “The Zoogs do not give such gifts lightly. They are curious creatures, but not without wisdom. Now that you may speak freely with their elders, try asking them a question. They know more of the dealings of this land than you might think.”\nYou describe the author Virgil Gray and ask the Zoogs if they have seen a man fitting that description pass through these woods. You add that he would have walked this path many times. A hush falls over the Zoogs, and some of them immediately depart into the deep foliage. “We have met this human,” one of the elders replies with a flutter just louder than a whisper. “He often comes this way. He is kind but foolish. Take the road to Ulthar. You may meet him.” Then it adds with a low growl: “…but beware the cat that follows him. All cats are liars, but the black cat especially.” You thank the ancient Zoog for its wisdom and depart, led by the blond man and his feline escort. The cats eye you suspiciously after your discussion with the Zoogs. The man breaks the tension. “If you are heading to Ulthar to find this friend of yours, allow me to guide you there. It is a safe place, relatively speaking. There you may recover from your travels.”\nZoogs. Talking cats. This can’t all be a figment of your imagination. Somehow, you can see a layer of truth beneath all of this absurdity. For better or for worse, the Zoog council has confirmed the reality of your situation: the Dreamlands are real, and Virgil Gray is here.",
-      "steps": ["parleyed_with_zoogs", "gain_randolph_carter", "earn_xp", "$upgrade_decks"]
+      "steps": ["parleyed_with_zoogs", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done"]
     }
   ]
 }
@@ -34180,6 +34295,12 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "This place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You ask Randolph if this is the way to your comatose companions. You almost hope that you are traveling in the wrong direction, so you can leave this awful place behind.\n“I do not know,” he replies, peering out one of the windows along the stairway. “We have traveled beyond the waking world, but this is the lower plane of the Dreamlands, known as the Underworld. It is an inhospitable place. Many of the creatures we have seen crossing over into our world come from this region. Perhaps our key knew this was our true destination?” Your guide examines the arcane key you found in the abandoned house, running his fingers over its arabesques as though recalling its shape, its weight, its texture. His eyes water with the depth of his loss.\nYou offer to hold the key for him, which yanks him from his private thoughts. “Ah. Yes, perhaps that would be best,” he says, handing the delicate artifact to you. It is surprisingly heavy for something that, according to Randolph, is not real.\nWith Randolph and the Silver Key in tow, you continue your descent anew. The Underworld may or may not be where your companions are, but if the creatures invading the world of the waking are indeed from this place, then perhaps here you can find answers.",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
       "steps": ["randolph_survived_descent", "possess_silver_key", "earn_xp", "add_skull", "$upgrade_decks", "maybe_skip_interlude"]
     },
     {
@@ -34225,9 +34346,19 @@
         "options": [
           {
             "boolCondition": true,
-            "steps": ["check_black_cat_decision"]
+            "steps": ["check_beyond_the_gates_of_sleep", "check_black_cat_decision"]
           }
         ]
+      }
+    },
+    {
+      "id": "check_beyond_the_gates_of_sleep",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Do not read this interlude until you have completed <b>Scenario I–A: Beyond the Gates of Sleep</b>.",
+        "id": "beyond_the_gates_of_sleep",
+        "choices": []
       }
     },
     {
@@ -35824,7 +35955,7 @@
           },
           {
             "numCondition": 1,
-            "steps": ["remove_cat_from_campaign_a"]
+            "steps": ["remove_cat_from_campaign_b"]
           }
         ]
       }
@@ -35844,7 +35975,7 @@
           },
           {
             "numCondition": 3,
-            "steps": ["remove_cat_from_campaign_b"]
+            "steps": ["remove_cat_from_campaign_a"]
           }
         ]
       }
@@ -39091,10 +39222,18 @@
             "boolCondition": true,
             "condition": "A Path Discovered",
             "border": true,
-            "effects": [{
-              "type": "story_step",
-              "steps": ["path_discovered", "mapped_way_forward"]
-            }]
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["path_discovered", "mapped_way_forward"]
+              },
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "mapped_way_forward",
+                "text": "the investigators mapped out the way forward."
+              }
+            ]
           }
         ]
       }
@@ -39107,14 +39246,7 @@
     },
     {
       "id": "mapped_way_forward",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "mapped_way_forward",
-          "text": "the investigators mapped out the way forward."
-        }
-      ]
+      "text": "In your Campaign Log, record that <i>the investigators mapped out the way forward.</i>"
     },
     {
       "id": "eat_provisions",
@@ -39387,7 +39519,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "ichtacas_faith_restored",
-                "text": "Ichtaca’s faith is restored"
+                "text": "Ichtaca’s faith is restored."
               },
               {
                 "type": "add_chaos_token",
@@ -44644,12 +44776,12 @@
           {
             "id": "fought_ichtaca",
             "text": "“You fought with Ichtaca”",
-            "steps": ["ichtaca_is_wary", "alejandro_followed_to_ruins"]
+            "steps": ["maybe_add_tablet_token", "ichtaca_is_wary", "alejandro_followed_to_ruins"]
           },
           {
             "id": "talked_to_ichtaca",
             "text": "“Ichtaca is leading the way”",
-            "steps": ["earned_ichtacas_trust", "alejandro_remained_at_camp"]
+            "steps": ["maybe_add_cultist_token", "earned_ichtacas_trust", "alejandro_remained_at_camp"]
           }
         ]
       }
@@ -44772,6 +44904,58 @@
           }
         ]
       }
+    },
+    {
+      "id": "maybe_add_tablet_token",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "chaos_bag",
+        "token": "tablet",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["add_tablet_token"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_add_cultist_token",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "chaos_bag",
+        "token": "cultist",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["add_cultist_token"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "add_tablet_token",
+      "text": "While playing the scenario, there was an instruction to add one [tablet] token to the chaos bag.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["tablet"]
+        }
+      ]
+    },
+    {
+      "id": "add_cultist_token",
+      "text": "While playing the scenario, there was an instruction to add one [cultist] token to the chaos bag.",
+      "effects": [
+        {
+          "type": "add_chaos_token",
+          "tokens": ["cultist"]
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -44791,13 +44975,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. The warrior named Ichtaca was particularly intriguing. We were able to defuse the initial encounter with her, and surprisingly, she helped guide us through the jungle, only to disappear mysteriously when we reached the ruins. I have a feeling we have not seen the last of her.\nAlejandro did not agree with our decision to trust the Eztli warriors. He’s decided to stay at camp until further notice, disturbed as he is by their presence. I thought he would be excited to learn more about them, but I expect this discovery defies even his broad-minded theories. I suppose he has a right to be distrustful. Nothing about this expedition makes sense.\nWe have cleared a route to what Alejandro believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+      "steps": ["maybe_add_cultist_token", "cleared_path_to_temple", "alejandro_remained_at_camp", "earned_ichtacas_trust", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "<right><fancy>Thursday, July 2nd, 1925</fancy></right>\nSomehow, after much toil and many hours of exploration, we found the ruins that Alejandro sought, though we scarcely could have been ready for what we encountered in the wilds of the jungle. The rainforest was guarded. Guarded by unfathomable horrors: serpentine creatures driven by anger and hate. They hunted us relentlessly, wielding primitive weaponry and communicating in sharp hisses.\nPerhaps just as deadly were the human natives of the rainforest. They appeared to be Aztec warriors as far as dress and speech were concerned. Despite the conquering of the Aztec people hundreds of years ago, these warriors somehow survived. How they managed to remain undiscovered this long is beyond us. I thought Alejandro would be excited to learn more about them, but he shared our alarm. We managed to fend off and interrogate their leader, a warrior named Ichtaca. Before she fled, she warned us to not go near the ruins. Unfortunately for her, we refuse to go home empty-handed.\nWith Alejandro leading the way, we’ve cleared a route to what he believes is the main temple of the ruins. There is little time to rest. The serpent creatures seem intent on stopping us, so we cannot tarry any longer than necessary. Soon we will enter the ruins to see what secrets they hide.",
-      "steps": ["cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
+      "steps": ["maybe_add_tablet_token", "cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
     }
   ]
 }
