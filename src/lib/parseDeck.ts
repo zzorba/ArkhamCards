@@ -29,6 +29,9 @@ import {
 } from 'actions/types';
 import Card, { CardKey, CardsMap } from 'data/Card';
 import {
+  ARCANE_RESEARCH_CODE,
+  ADAPTABLE_CODE,
+  DEJA_VU_CODE,
   PLAYER_FACTION_CODES,
   SKILLS,
   SLOTS,
@@ -36,7 +39,7 @@ import {
   FactionCodeType,
   SlotCodeType,
   SkillCodeType,
-} from '../constants';
+} from 'constants';
 import DeckValidation from './DeckValidation';
 
 function filterBy(
@@ -205,10 +208,6 @@ function sumSkillIcons(cardIds: CardId[], cards: CardsMap, skill: SkillCodeType)
     (cards[c.id] ? cards[c.id].skillCount(skill) : 0) * c.quantity));
 }
 
-
-const ARCANE_RESEARCH_CODE = '04109';
-const ADAPTABLE_CODE = '02110';
-
 function incSlot(slots: Slots, card: Card) {
   if (!slots[card.code]) {
     slots[card.code] = 0;
@@ -289,6 +288,11 @@ function getDeckChanges(
   forEach(invalidCards, invalidCard => {
     exiledSlots.push(invalidCard);
   });
+  const dejaVuCardUses = {
+    ...exiledCards,
+  };
+  const dejaVuMaxDiscount = (slots[DEJA_VU_CODE] || 0);
+  let dejaVuUses = dejaVuMaxDiscount * 3;
   let adaptableUses = (slots[ADAPTABLE_CODE] || 0) * 2;
   let arcaneResearchUses = (slots[ARCANE_RESEARCH_CODE] || 0);
 
@@ -341,7 +345,6 @@ function getDeckChanges(
         }
         myriadBuys[myriadKey] = true;
       }
-
       if (addedCard.xp === 0) {
         // We visit cards from high XP to low XP, so if there's 0 XP card,
         // we've found matches for all the other cards already.
@@ -388,6 +391,20 @@ function getDeckChanges(
           return 0;
         }
         return 1;
+      }
+
+      // Check if this is a deja-vu eligible exile card.
+      if ((dejaVuCardUses[addedCard.code] || 0) > 0 && dejaVuUses > 0) {
+        const discount = Math.min(
+          addedCard.xp || 0,
+          Math.min(dejaVuUses, dejaVuMaxDiscount)
+        );
+        if (discount > 0) {
+          dejaVuCardUses[addedCard.code]--;
+          dejaVuUses -= discount;
+          incSlot(added, addedCard);
+          return computeXp(addedCard) - discount;
+        }
       }
 
       // XP higher than 0.

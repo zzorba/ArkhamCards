@@ -6152,7 +6152,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You recall the night where this all began, and your thoughts drift to the mesmerizing song Ashleigh sang that night. Somehow you remember the lyrics perfectly after all this time, and its haunting melody is ingrained in your mind. “Above the city the storm clouds rage, and waves crash through the gilded cage... Below the earth the salt water seeps, the shadows fall as the red sun sleeps...” Studying the island that lies before you, illuminated by flashes of lighting and assaulted by tumultuous waves, you can’t help but wonder if Ashleigh was singing about this very moment."
+      "text": "You swim to the edge of the water and throw yourself upon the rocky shore, gasping for air. You lie there for some time, utterly exhausted. Every muscle in your body aches. Before you lies a desolate expanse of plain. In the distance, the alien spires of a warped city rise into the clouds. Behind you, the dark surface of the lake from which you’d emerged reflects the glare of two suns. When you peer back into the murky depths, you see no sign of the chapel where you’d made the leap, or of Mont Saint-Michel, or even of Earth. This is Carcosa—the realm of madness in the stars, where Hastur reigns supreme."
     },
     {
       "id": "intro_2",
@@ -17052,7 +17052,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You recall the night where this all began, and your thoughts drift to the mesmerizing song Ashleigh sang that night. Somehow you remember the lyrics perfectly after all this time, and its haunting melody is ingrained in your mind. “Above the city the storm clouds rage, and waves crash through the gilded cage... Below the earth the salt water seeps, the shadows fall as the red sun sleeps...” Studying the island that lies before you, illuminated by flashes of lighting and assaulted by tumultuous waves, you can’t help but wonder if Ashleigh was singing about this very moment."
+      "text": "You swim to the edge of the water and throw yourself upon the rocky shore, gasping for air. You lie there for some time, utterly exhausted. Every muscle in your body aches. Before you lies a desolate expanse of plain. In the distance, the alien spires of a warped city rise into the clouds. Behind you, the dark surface of the lake from which you’d emerged reflects the glare of two suns. When you peer back into the murky depths, you see no sign of the chapel where you’d made the leap, or of Mont Saint-Michel, or even of Earth. This is Carcosa—the realm of madness in the stars, where Hastur reigns supreme."
     },
     {
       "id": "intro_2",
@@ -33262,7 +33262,7 @@
       "title": "Setup",
       "type": "encounter_sets",
       "encounter_sets": [
-        "where_gods_dwell",
+        "where_the_gods_dwell",
         "agents_of_nyarlathotep",
         "dreamers_curse",
         "whispers_of_hypnos",
@@ -36436,7 +36436,6 @@
         ]
       }
     },
-
     {
       "id": "maybe_proceed_campaign_a",
       "type": "input",

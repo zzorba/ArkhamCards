@@ -347,6 +347,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_search_for_kadath':
         return this.dreamIcon('the_search_for_kadath', size, color);
       case 'wgd':
+      case 'where_the_gods_dwell':
       case 'where_gods_dwell':
         return this.dreamIcon('where_gods_dwell', size, color);
       case 'woc':

@@ -15,7 +15,7 @@ import { DrawWeaknessProps } from 'components/weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { NavigationProps } from 'components/nav/types';
 import { Campaign, Deck, DeckMeta, Slots } from 'actions/types';
-import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS } from 'constants';
+import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
 import Card from 'data/Card';
 import { getCampaign, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -134,7 +134,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     const {
       ignoreDeckLimitSlots,
     } = this.state;
-    return card.code === ACE_OF_RODS || ignoreDeckLimitSlots[card.code] > 0;
+    return card.code === ACE_OF_RODS_CODE || ignoreDeckLimitSlots[card.code] > 0;
   };
 
   _updateSlots = (newSlots: Slots) => {
