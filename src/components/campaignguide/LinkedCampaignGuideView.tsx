@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert, ScrollView } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import { EventSubscription, Navigation } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -50,6 +50,23 @@ type Props = LinkedCampaignGuideProps &
   InjectedDialogProps;
 
 class LinkedCampaignGuideView extends React.Component<Props> {
+  _navEventListener!: EventSubscription;
+  constructor(props: Props) {
+    super(props);
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener && this._navEventListener.remove();
+  }
+
+
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+    if (buttonId === 'edit') {
+      this._showEditNameDialog();
+    }
+  }
+
   _showEditNameDialog = () => {
     const { showTextEditDialog, campaignName } = this.props;
     showTextEditDialog(

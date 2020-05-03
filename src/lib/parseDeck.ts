@@ -75,6 +75,7 @@ function groupAssets(
         t`Hand`,
         t`Hand x2`,
         t`Arcane`,
+        t`Arcane x2`,
         t`Accessory`,
         t`Body`,
         t`Ally`,
