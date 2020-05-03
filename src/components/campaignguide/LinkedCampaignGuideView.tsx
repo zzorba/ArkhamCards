@@ -60,7 +60,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
     this._navEventListener && this._navEventListener.remove();
   }
 
-
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'edit') {
       this._showEditNameDialog();
@@ -87,12 +86,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
       },
     });
   };
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'edit') {
-      this._showEditNameDialog();
-    }
-  }
 
   _syncCampaignData = () => {
     return;

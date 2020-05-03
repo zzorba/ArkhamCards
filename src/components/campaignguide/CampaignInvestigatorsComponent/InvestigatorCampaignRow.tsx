@@ -3,6 +3,7 @@ import { Button, Text, View } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import DeckXpSection from './DeckXpSection';
 import BasicListRow from 'components/core/BasicListRow';
@@ -17,6 +18,7 @@ import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -31,6 +33,7 @@ interface Props {
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: Deck;
+  removeInvestigator?: (investigator: Card) => void;
 }
 
 export default class InvestigatorCampaignRow extends React.Component<Props> {
@@ -149,11 +152,32 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     );
   }
 
+  _removePressed = () => {
+    const {
+      investigator,
+      removeInvestigator,
+    } = this.props;
+    if (removeInvestigator) {
+      removeInvestigator(investigator);
+    }
+  };
+
   renderDetail() {
     const {
       investigator,
       fontScale,
+      removeInvestigator,
+      deck,
     } = this.props;
+    if (removeInvestigator) {
+      return (
+        <BasicButton
+          title={deck ? t`Remove deck` : t`Remove investigator`}
+          onPress={this._removePressed}
+          color={COLORS.red}
+        />
+      );
+    }
     return (
       <>
         { this.renderXp() }

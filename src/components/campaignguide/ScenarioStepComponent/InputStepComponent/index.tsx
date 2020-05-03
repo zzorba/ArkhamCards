@@ -135,11 +135,17 @@ export default class InputStepComponent extends React.Component<Props> {
         );
       case 'upgrade_decks':
         return (
-          <UpgradeDecksInput
-            id={step.id}
-            componentId={componentId}
-            fontScale={fontScale}
-          />
+          <CampaignGuideContext.Consumer>
+            { ({ latestDecks, campaignState }: CampaignGuideContextType) => (
+              <UpgradeDecksInput
+                id={step.id}
+                componentId={componentId}
+                fontScale={fontScale}
+                latestDecks={latestDecks}
+                campaignState={campaignState}
+              />
+            ) }
+          </CampaignGuideContext.Consumer>
         );
       case 'play_scenario':
         return (

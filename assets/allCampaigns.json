@@ -28834,7 +28834,7 @@
 {
   "id": "tdea",
   "position": 1,
-  "version": 0,
+  "version": 1,
   "name": "The Dream-Quest",
   "campaign_log": [
     {
@@ -31870,6 +31870,31 @@
         "id": "beyond_the_gates_of_sleep",
         "decision": "done"
       }
+    },
+    {
+      "id": "maybe_proceed_campaign_b",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "linked_campaign",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["proceed_campaign_b"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "proceed_campaign_b",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario I–B: Waking Nightmare</b>.",
+        "id": "dreamers_grow_weaker",
+        "choices": []
+      }
     }
   ],
   "resolutions": [
@@ -31882,19 +31907,19 @@
         "mental"
       ],
       "text": "You are nudged into consciousness by an old, scarred cat. “Hey. You all right, human?”\nI’m dreaming, you remember, and suddenly the talking cat doesn’t seem quite as weird. Exhausted, you manage to rise to your feet, brushing off the dirt caked on your clothing. “You’re lucky you weren’t harmed before we arrived,” a human voice calls out to you. It belongs to a blond-haired man in a brown traveling coat, who leans against a nearby tree. “These woods are not forgiving to the faint of heart.” The scarred cat walks to the man’s side, and the man leans over to pet its back.\nYou ask the man where you are and how he came to this place, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your ordeals.” He turns to the cat and utters a word in an odd language—a password of sorts, you suspect—but the cat simply wanders off toward a hedge, where you see several other cats banded together. “Do it yerself,” it replies.\n“Don’t mind the cats,” the man says to you quietly as the cats depart. “They are useful allies, but also independent creatures with no need for you or me. When we reach Ulthar, you may get the chance to meet others of their kind. But first things first.” Together, you leave the eaves of the enchanted forest behind.",
-      "steps": ["maybe_check_final_act", "saved_by_randolph_carter", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done"]
+      "steps": ["maybe_check_final_act", "saved_by_randolph_carter", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
     },
     {
       "id": "R1",
       "title": "Resolution 1",
       "text": "The creatures chitter among themselves, and after a moment, a dozen of them retreat in the direction of the great tree beyond the beaten path. They return shortly afterward carrying a variety of grouse, quail, and pheasants in their mouths. You’re almost certain now that you are going crazy. And yet, the spectacle continues. The creatures timidly drop their “tribute” of birds in front of the cats and quietly depart. “My apologies on behalf of the Zoogs,” the man says as he approaches. “They are curious creatures, and not usually so…agitated. It is good that we showed up when we did.” The leader of the cats jumps on a tree stump and adds, “Yes, yes. Them vile Zoogs have done their part, now let’s do ours and leave this forsaken place. What say yeh?”\nYou cannot contain your excitement. Zoogs, talking cats—everything you have read about is real. You begin to ask the man more about this world, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your travels.” He turns to the old, scarred cat and utters a word in an odd language—a password of sorts, you suspect—and the cat replies with a quick nod. The rest of the cats, tribute in mouth, take a protective circular formation around you, and together you escape from the eaves of the enchanted forest.",
-      "steps": ["cats_collected_their_tribute", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done"]
+      "steps": ["cats_collected_their_tribute", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You hold a hand up to the new visitors, believing that you can defuse this situation on your own. Had you known these rodent-like creatures were intelligent all along, you might have tried to communicate with them much earlier. You inform them that you are just travelers in this faraway land and that you simply wish to pass through peacefully. The creatures chitter among themselves for a moment: “They are kind!” “They are not with the black cat after all!” “Summon the Council of Sages!” After a short while, several more of them appear, each with withering grey fur and a frail, thin body. The eldest one peeks behind you and states that they will aid you if you get the cats to leave.\nSomehow, you contain your disbelief and politely ask the cats to come back another time. “All right,” the scarred cat replies, “but you ain’t seen the last of us.” The cats retreat to the edge of the woods, though their human companion stays behind with you. Once the cats are out of earshot, one of the elders offers you a gourd of what appears to be fermented tree sap, which you accept graciously.\n“It is the wine of the moon-tree,” the man behind you explains quietly, stepping forward. “The Zoogs do not give such gifts lightly. They are curious creatures, but not without wisdom. Now that you may speak freely with their elders, try asking them a question. They know more of the dealings of this land than you might think.”\nYou describe the author Virgil Gray and ask the Zoogs if they have seen a man fitting that description pass through these woods. You add that he would have walked this path many times. A hush falls over the Zoogs, and some of them immediately depart into the deep foliage. “We have met this human,” one of the elders replies with a flutter just louder than a whisper. “He often comes this way. He is kind but foolish. Take the road to Ulthar. You may meet him.” Then it adds with a low growl: “…but beware the cat that follows him. All cats are liars, but the black cat especially.” You thank the ancient Zoog for its wisdom and depart, led by the blond man and his feline escort. The cats eye you suspiciously after your discussion with the Zoogs. The man breaks the tension. “If you are heading to Ulthar to find this friend of yours, allow me to guide you there. It is a safe place, relatively speaking. There you may recover from your travels.”\nZoogs. Talking cats. This can’t all be a figment of your imagination. Somehow, you can see a layer of truth beneath all of this absurdity. For better or for worse, the Zoog council has confirmed the reality of your situation: the Dreamlands are real, and Virgil Gray is here.",
-      "steps": ["parleyed_with_zoogs", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done"]
+      "steps": ["parleyed_with_zoogs", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
     }
   ]
 }
@@ -32160,9 +32185,30 @@
       "hidden": true,
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "hidden",
-        "id": "half_campaign",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "half_campaign",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_data",
+            "campaign_data": "version",
+            "min_version": 1,
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
             "boolCondition": true,
@@ -32186,9 +32232,19 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_moon_done"]
+            "steps": ["send_moon_done", "maybe_proceed_campaign_b"]
           }
         ]
+      }
+    },
+    {
+      "id": "maybe_proceed_campaign_b",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario III–B: Point of No Return</b>.",
+        "id": "point_of_no_return",
+        "choices": []
       }
     },
     {
@@ -33024,9 +33080,19 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_kadath_done"]
+            "steps": ["send_kadath_done", "maybe_proceed_campaign_b"]
           }
         ]
+      }
+    },
+    {
+      "id": "maybe_proceed_campaign_b",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario II–B: A Thousand Shapes of Horror</b>.",
+        "id": "a_thousand_shapes_of_horror",
+        "choices": []
       }
     },
     {
@@ -33581,7 +33647,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_where_the_gods_dwell_done"]
+            "steps": ["send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
           }
         ]
       }
@@ -33597,6 +33663,22 @@
           "value": "lose"
         }
       ]
+    },
+    {
+      "id": "maybe_ugprade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["$upgrade_decks"]
+          }
+        ]
+      }
     },
     {
       "id": "maybe_win_campaign",
@@ -33620,7 +33702,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_where_the_gods_dwell_done"]
+            "steps": ["maybe_ugprade_decks", "send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
           }
         ]
       }
@@ -33659,7 +33741,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_where_the_gods_dwell_done"]
+            "steps": ["maybe_ugprade_decks", "send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
           }
         ]
       }
@@ -33720,6 +33802,16 @@
         "id": "a_epilogue",
         "decision": "dreamers_stayed_in_dreamlands_forever"
       }
+    },
+    {
+      "id": "maybe_proceed_campaign_b",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario IV–B: Weaver of the Cosmos</b>.",
+        "id": "weaver_of_the_cosmos",
+        "choices": []
+      }
     }
   ],
   "resolutions": [
@@ -33773,7 +33865,7 @@
 {
   "id": "tdeb",
   "position": 1,
-  "version": 0,
+  "version": 1,
   "name": "The Web of Dreams",
   "campaign_log": [
     {
@@ -34252,7 +34344,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_thousand_shapes_done"]
+            "steps": ["send_thousand_shapes_done", "maybe_proceed_campaign_a"]
           }
         ]
       }
@@ -34276,6 +34368,16 @@
         "type": "send_campaign_link",
         "id": "a_thousand_shapes_of_horror",
         "decision": "done"
+      }
+    },
+    {
+      "id": "maybe_proceed_campaign_a",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario II–A: The Search for Kadath</b>.",
+        "id": "the_search_for_kadath",
+        "choices": []
       }
     }
   ],
@@ -36282,9 +36384,30 @@
       "hidden": true,
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "hidden",
-        "id": "half_campaign",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "half_campaign",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_data",
+            "campaign_data": "version",
+            "min_version": 1,
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
             "boolCondition": true,
@@ -36308,9 +36431,20 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_point_of_no_return_done"]
+            "steps": ["send_point_of_no_return_done", "maybe_proceed_campaign_a"]
           }
         ]
+      }
+    },
+
+    {
+      "id": "maybe_proceed_campaign_a",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario III–A: Dark Side of the Moon</b>.",
+        "id": "dark_side_of_the_moon",
+        "choices": []
       }
     },
     {
@@ -36787,6 +36921,31 @@
         "id": "dreamers_grow_weaker",
         "decision": "dreamers_are_strong",
         "prompt": "Tell the investigators of <i>The Dream-Quest</i> (Campaign A), that <i>the dreamers are strong</i>."
+      }
+    },
+    {
+      "id": "maybe_proceed_campaign_a",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "linked_campaign",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["proceed_campaign_a"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "proceed_campaign_a",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario I–A: Beyond the Gates of Sleep</b>.",
+        "id": "beyond_the_gates_of_sleep",
+        "choices": []
       }
     }
   ],
@@ -37394,7 +37553,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_weaver_of_the_cosmos_done"]
+            "steps": ["send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
           }
         ]
       }
@@ -37433,7 +37592,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_weaver_of_the_cosmos_done"]
+            "steps": ["maybe_ugprade_decks", "send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
           }
         ]
       }
@@ -37472,7 +37631,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["send_weaver_of_the_cosmos_done"]
+            "steps": ["maybe_ugprade_decks", "send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
           }
         ]
       }
@@ -37534,6 +37693,22 @@
       }
     },
     {
+      "id": "maybe_ugprade_decks",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["$upgrade_decks"]
+          }
+        ]
+      }
+    },
+    {
       "id": "resolution_3",
       "type": "resolution",
       "resolution": "R3"
@@ -37555,6 +37730,16 @@
         "type": "send_campaign_link",
         "id": "weaver_of_the_cosmos",
         "decision": "done"
+      }
+    },
+    {
+      "id": "maybe_proceed_campaign_a",
+      "type": "input",
+      "input": {
+        "type": "receive_campaign_link",
+        "linked_prompt": "Proceed to <b>Scenario IV–A: Where the Gods Dwell</b>.",
+        "id": "where_the_gods_dwell",
+        "choices": []
       }
     },
     {

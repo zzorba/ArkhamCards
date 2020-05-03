@@ -34,6 +34,7 @@ interface Props {
   campaignLog: GuidedCampaignLog;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+  setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
 }
 
@@ -45,6 +46,11 @@ interface State {
 
 export default class UpgradeDeckRow extends React.Component<Props, State> {
   deckUpgradeComponent: React.RefObject<DeckUpgradeComponent> = React.createRef<DeckUpgradeComponent>();
+
+  static choiceId(stepId: string, investigator: Card) {
+    return `${stepId}#${investigator.code}`;
+  }
+
   constructor(props: Props) {
     super(props);
 
@@ -55,12 +61,25 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     };
   }
 
+  unsavedEdits() {
+    const { investigator, campaignLog } = this.props;
+    const { xp, physicalAdjust, mentalAdjust } = this.state;
+    return physicalAdjust !== 0 ||
+      mentalAdjust !== 0 ||
+      xp !== campaignLog.earnedXp(investigator.code);
+  }
+
+  _syncUnsavedEdits = () => {
+    const { setUnsavedEdits, investigator } = this.props;
+    setUnsavedEdits(investigator.code, this.unsavedEdits());
+  };
+
   choiceId() {
     const {
       id,
       investigator,
     } = this.props;
-    return `${id}#${investigator.code}`;
+    return UpgradeDeckRow.choiceId(id, investigator);
   }
 
   _saveCampaignLog = (xp: number, deck?: Deck) => {
@@ -181,7 +200,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
   _incPhysical = () => {
     this.setState(state => {
       return { physicalAdjust: (state.physicalAdjust || 0) + 1 };
-    });
+    }, this._syncUnsavedEdits);
   };
 
   _decPhysical = () => {
@@ -189,13 +208,13 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       return {
         physicalAdjust: (state.physicalAdjust || 0) - 1,
       };
-    });
+    }, this._syncUnsavedEdits);
   };
 
   _incMental = () => {
     this.setState(state => {
       return { mentalAdjust: (state.mentalAdjust || 0) + 1 };
-    });
+    }, this._syncUnsavedEdits);
   };
 
   _decMental = () => {
@@ -203,19 +222,19 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       return {
         mentalAdjust: (state.mentalAdjust || 0) - 1,
       };
-    });
+    }, this._syncUnsavedEdits);
   };
 
   _incXp = () => {
     this.setState(state => {
       return { xp: (state.xp || 0) + 1 };
-    });
+    }, this._syncUnsavedEdits);
   };
 
   _decXp = () => {
     this.setState(state => {
       return { xp: Math.max((state.xp || 0) - 1, 0) };
-    });
+    }, this._syncUnsavedEdits);
   };
 
   renderXpSection(choices?: NumberChoices) {
@@ -324,19 +343,37 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     );
   }
 
-  renderCampaignSection(choices?: NumberChoices, deck?: Deck) {
+  renderSaveButton(choices?: NumberChoices, deck?: Deck) {
     const { editable } = this.props;
+    if (choices !== undefined || !editable) {
+      return null;
+    }
+    if (deck) {
+      return (
+        <BasicButton
+          title={t`Save deck upgrade`}
+          onPress={this._save}
+        />
+      );
+    }
+    if (!this.unsavedEdits()) {
+      return null;
+    }
+    return (
+      <BasicButton
+        title={t`Save adjustments`}
+        onPress={this._save}
+      />
+    );
+  }
+
+  renderCampaignSection(choices?: NumberChoices, deck?: Deck) {
     return (
       <>
         { (choices !== undefined || !deck) && this.renderXpSection(choices) }
         { this.renderTraumaDetails(choices) }
         { this.renderStoryAssetDeltas() }
-        { choices === undefined && editable && (
-          <BasicButton
-            title={deck ? t`Save deck upgrade` : t`Save adjustments`}
-            onPress={this._save}
-          />
-        ) }
+        { this.renderSaveButton(choices, deck) }
       </>
     );
   }

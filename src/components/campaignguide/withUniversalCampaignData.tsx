@@ -9,6 +9,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import {
   addInvestigator,
+  removeInvestigator,
   deleteCampaign,
 } from 'components/campaign/actions';
 import {
@@ -44,6 +45,7 @@ interface ReduxProps {}
 interface ReduxActionProps {
   deleteCampaign: (campaignId: number) => void;
   addInvestigator: (campaignId: number, investigator: string, deckId?: number) => void;
+  removeInvestigator: (campaignId: number, investigator: string, deckId?: number) => void;
   startScenario: (campaignId: number, scenarioId: string) => void;
   startSideScenario: (
     campaignId: number,
@@ -129,6 +131,7 @@ export default function withUniversalCampaignData<Props>(
   ): ReduxActionProps => {
     return bindActionCreators({
       addInvestigator,
+      removeInvestigator,
       deleteCampaign,
       startScenario,
       startSideScenario,

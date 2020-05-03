@@ -4,6 +4,7 @@ import { t } from 'ttag';
 import uuid from 'react-native-uuid';
 
 import {
+  Deck,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
   GuideInput,
@@ -17,6 +18,8 @@ import Card, { CardsMap } from 'data/Card';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;
+  removeDeck: (deck: Deck) => void;
+  removeInvestigator: (investigator: Card) => void;
   setDecision: (id: string, value: boolean, scenarioId?: string) => void;
   setCount: (id: string, value: number, scenarioId?: string) => void;
   setSupplies: (id: string, supplyCounts: SupplyCounts, scenarioId?: string) => void;
@@ -39,13 +42,16 @@ export default class CampaignStateHelper {
   actions: CampaignGuideActions;
 
   linkedState?: CampaignGuideState;
+  guideVersion: number;
 
   constructor(
     state: CampaignGuideState,
     investigators: CardsMap,
     actions: CampaignGuideActions,
+    guideVersion: number,
     linkedState?: CampaignGuideState
   ) {
+    this.guideVersion = guideVersion;
     this.state = state;
     this.investigators = investigators;
     this.actions = actions;
@@ -54,6 +60,14 @@ export default class CampaignStateHelper {
 
   showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {
     this.actions.showChooseDeck(singleInvestigator, callback);
+  }
+
+  removeDeck(deck: Deck) {
+    this.actions.removeDeck(deck);
+  }
+
+  removeInvestigator(investigator: Card) {
+    this.actions.removeInvestigator(investigator);
   }
 
   startScenario(scenarioId: string) {

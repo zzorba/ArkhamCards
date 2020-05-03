@@ -547,6 +547,15 @@ export interface CampaignAddInvestigatorAction {
   now: Date;
 }
 
+export const CAMPAIGN_REMOVE_INVESTIGATOR = 'CAMPAIGN_REMOVE_INVESTIGATOR';
+export interface CampaignRemoveInvestigatorAction {
+  type: typeof CAMPAIGN_REMOVE_INVESTIGATOR;
+  id: number;
+  investigator: string;
+  removeDeckId?: number;
+  now: Date;
+}
+
 export const ADD_CAMPAIGN_SCENARIO_RESULT = 'ADD_CAMPAIGN_SCENARIO_RESULT';
 export interface AddCampaignScenarioResultAction {
   type: typeof ADD_CAMPAIGN_SCENARIO_RESULT;
@@ -824,7 +833,8 @@ export type CampaignActions =
   EditCampaignScenarioResultAction |
   RestoreBackupAction |
   UpdateChaosBagResultsAction |
-  CampaignAddInvestigatorAction;
+  CampaignAddInvestigatorAction |
+  CampaignRemoveInvestigatorAction;
 
 export type GuideActions =
   DeleteCampaignAction |

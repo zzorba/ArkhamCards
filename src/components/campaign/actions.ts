@@ -11,9 +11,11 @@ import {
   ADD_CAMPAIGN_SCENARIO_RESULT,
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   CAMPAIGN_ADD_INVESTIGATOR,
+  CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
   CleanBrokenCampaignsAction,
   CampaignAddInvestigatorAction,
+  CampaignRemoveInvestigatorAction,
   Campaign,
   Deck,
   CampaignNotes,
@@ -89,6 +91,25 @@ export function addInvestigator(
   };
 }
 
+export function removeInvestigator(
+  campaignId: number,
+  investigator: string,
+  deckId?: number
+): ThunkAction<void, AppState, null, CampaignRemoveInvestigatorAction> {
+  return (dispatch, getState: () => AppState) => {
+    const baseDeckId = deckId ?
+      getBaseDeckIds(getState(), [deckId])[0] :
+      undefined;
+    const action: CampaignRemoveInvestigatorAction = {
+      type: CAMPAIGN_REMOVE_INVESTIGATOR,
+      id: campaignId,
+      investigator,
+      removeDeckId: baseDeckId,
+      now: new Date(),
+    };
+    dispatch(action);
+  };
+}
 
 export function newLinkedCampaign(
   id: number,

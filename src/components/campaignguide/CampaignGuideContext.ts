@@ -8,6 +8,7 @@ import Card, { CardsMap } from 'data/Card';
 
 export interface CampaignGuideContextType {
   campaignId: number;
+  campaignGuideVersion: number;
   campaignName: string;
   campaignGuide: CampaignGuide;
   campaignState: CampaignStateHelper;

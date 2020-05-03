@@ -142,6 +142,7 @@ export default class GuidedCampaignLog {
   chaosBag: ChaosBag;
   investigatorCards: CardsMap;
   linked: boolean;
+  guideVersion: number;
 
   static isCampaignLogEffect(effect: Effect): boolean {
     switch (effect.type) {
@@ -176,6 +177,9 @@ export default class GuidedCampaignLog {
     this.campaignGuide = campaignGuide;
     this.investigatorCards = campaignState.investigators;
     this.linked = !!campaignState.linkedState;
+    this.guideVersion = campaignState.guideVersion === -1 ?
+      campaignGuide.campaignVersion() :
+      campaignState.guideVersion;
 
     const hasRelevantEffects = !!find(
       effectsWithInput,
@@ -316,6 +320,19 @@ export default class GuidedCampaignLog {
       return undefined;
     }
     return scenario.leadInvestigator;
+  }
+
+  hasInvestigatorPlayedScenario(investigator: Card) {
+    return !!find(this.scenarioData, (scenarioData, scenario) => {
+      if (scenario === CAMPAIGN_SETUP_ID) {
+        // campaign setup is probably okay?
+        return false;
+      }
+      return !!find(
+        (scenarioData && scenarioData.playingScenario) || [],
+        playing => playing.investigator === investigator.code
+      );
+    });
   }
 
   traumaAndCardData(investigator: string): TraumaAndCardData {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractionManager, Text, StyleSheet, View } from 'react-native';
+import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { flatMap, forEach, map, partition } from 'lodash';
 import { t } from 'ttag';
@@ -30,6 +30,7 @@ interface State {
   spentXp: {
     [code: string]: number;
   };
+  removeMode: boolean;
 }
 
 export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
@@ -49,6 +50,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
 
     this.state = {
       spentXp,
+      removeMode: false,
     };
     this._navEventListener = Navigation.events().bindComponent(this);
   }
@@ -62,6 +64,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     const {
       campaignData: {
         campaignId,
+        campaignGuideVersion,
         campaignGuide,
       },
       processedCampaign: {
@@ -80,7 +83,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     updateCampaign(
       campaignId,
       {
-        guideVersion: campaignGuide.campaignVersion(),
+        guideVersion: campaignGuideVersion === -1 ? campaignGuide.campaignVersion() : campaignGuideVersion,
         difficulty: campaignLog.campaignData.difficulty,
         investigatorData: campaignLog.campaignData.investigatorData,
         chaosBag: campaignLog.chaosBag,
@@ -106,6 +109,14 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     this.context.campaignState.showChooseDeck();
   };
 
+  _toggleRemoveInvestigator = () => {
+    this.setState(state => {
+      return {
+        removeMode: !state.removeMode,
+      };
+    });
+  };
+
   _showChooseDeckForInvestigator = (investigator: Card) =>{
     this.context.campaignState.showChooseDeck(investigator);
   };
@@ -128,6 +139,58 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     });
   };
 
+  renderRemoveButton(aliveInvestigators: Card[]) {
+    if (!aliveInvestigators.length) {
+      return null;
+    }
+
+    return (
+      <BasicButton
+        title={t`Remove investigators`}
+        color={COLORS.red}
+        onPress={this._toggleRemoveInvestigator}
+      />
+    );
+  }
+
+  _removeInvestigatorPressed = (investigator: Card) => {
+    const { latestDecks, campaignState } = this.context;
+    const deck = latestDecks[investigator.code];
+    if (deck) {
+      Alert.alert(
+        t`Remove deck from campaign`,
+        t`Are you sure you want to remove this deck from the campaign?\n\nAfter removing the deck you will be able to select a different deck, but experience and story assets will only be saved as you complete new scenarios.`,
+        [
+          { text: t`Cancel`, style: 'cancel' },
+          {
+            text: t`Remove deck`,
+            style: 'destructive',
+            onPress: () => {
+              campaignState.removeDeck(deck);
+            },
+          },
+        ]
+      );
+    } else {
+      const {
+        processedCampaign: {
+          campaignLog,
+        },
+      } = this.props;
+      if (campaignLog.hasInvestigatorPlayedScenario(investigator)) {
+        Alert.alert(
+          t`Cannot remove`,
+          t`Since this investigator has participated in one or more scenarios during this campaign, they cannot be removed.\n\nHowever, you can choose to have them not participate in future scenarios of this campaign.`,
+          [
+            { text: t`Okay` },
+          ]
+        );
+      } else {
+        campaignState.removeInvestigator(investigator);
+      }
+    }
+  };
+
   render() {
     const {
       processedCampaign: {
@@ -140,7 +203,10 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       componentId,
       deleteCampaign,
     } = this.props;
-    const { spentXp } = this.state;
+    const {
+      removeMode,
+      spentXp,
+    } = this.state;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignId, latestDecks }: CampaignGuideContextType) => {
@@ -165,9 +231,22 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                   investigator={investigator}
                   traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
                   chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
+                  removeInvestigator={removeMode ? this._removeInvestigatorPressed : undefined}
                 />
               )) }
-              <BasicButton title={t`Add Investigator`} onPress={this._addInvestigator} />
+              { !removeMode && (
+                <BasicButton
+                  title={t`Add Investigator`}
+                  onPress={this._addInvestigator}
+                />
+              ) }
+              { removeMode ?
+                <BasicButton
+                  title={t`Finished removing investigators`}
+                  color={COLORS.red}
+                  onPress={this._toggleRemoveInvestigator}
+                /> : this.renderRemoveButton(aliveInvestigators)
+              }
               { killedInvestigators.length > 0 && (
                 <View style={styles.header}>
                   <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
@@ -193,7 +272,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                   />
                 )) }
               </View>
-              { !!deleteCampaign && (
+              { !!deleteCampaign && !removeMode && (
                 <BasicButton
                   title={t`Delete Campaign`}
                   color={COLORS.red}

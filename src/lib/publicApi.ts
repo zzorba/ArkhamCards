@@ -1,6 +1,7 @@
 import { flatMap, forEach, groupBy, head, map, sortBy, uniq } from 'lodash';
 import Realm from 'realm';
 import { Alert } from 'react-native';
+import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from 'actions/types';
 import Card from 'data/Card';
@@ -133,6 +134,11 @@ export const syncCards = function(
     const lastModified = response.headers.get('Last-Modified') || undefined;
     return response.json().then(json => {
       realm.write(() => {
+        realm.create('EncounterSet', {
+          code: 'weaver_of_the_cosmos',
+          name: t`Weaver of the Cosmos`,
+        }, true);
+
         forEach(json, cardJson => {
           try {
             const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');

@@ -12,7 +12,7 @@ import DeckOptionLevel from './DeckOptionLevel';
 import FaqEntry from './FaqEntry';
 import TabooSet from './TabooSet';
 
-const SCHEMA_VERSION = 58;
+const SCHEMA_VERSION = 59;
 export default new Realm({
   schema: [
     Card,

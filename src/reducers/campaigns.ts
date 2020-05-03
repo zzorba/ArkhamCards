@@ -7,6 +7,7 @@ import {
   NEW_LINKED_CAMPAIGN,
   UPDATE_CAMPAIGN,
   CAMPAIGN_ADD_INVESTIGATOR,
+  CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
   UPDATE_CHAOS_BAG_RESULTS,
   DELETE_CAMPAIGN,
@@ -210,6 +211,30 @@ export default function(
     return {
       ...state,
       all,
+    };
+  }
+  if (action.type === CAMPAIGN_REMOVE_INVESTIGATOR) {
+    const campaign: Campaign = {
+      ...state.all[action.id],
+      lastUpdated: action.now,
+    };
+    if (action.removeDeckId) {
+      campaign.baseDeckIds = filter(
+        campaign.baseDeckIds || [],
+        deckId => deckId !== action.removeDeckId
+      );
+    } else {
+      campaign.nonDeckInvestigators = filter(
+        campaign.nonDeckInvestigators || [],
+        investigator => investigator !== action.investigator
+      );
+    }
+    return {
+      ...state,
+      all: {
+        ...state.all,
+        [action.id]: campaign,
+      },
     };
   }
   if (action.type === CAMPAIGN_ADD_INVESTIGATOR) {

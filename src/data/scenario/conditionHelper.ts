@@ -17,6 +17,7 @@ import {
   CampaignDataCondition,
   CampaignDataScenarioCondition,
   CampaignDataChaosBagCondition,
+  CampaignDataVersionCondition,
   MultiCondition,
   CampaignDataInvestigatorCondition,
   CampaignLogSectionExistsCondition,
@@ -487,6 +488,16 @@ export function campaignDataInvestigatorConditionResult(
   };
 }
 
+export function campaignDataVersionConditionResult(
+  condition: CampaignDataVersionCondition,
+  campaignLog: GuidedCampaignLog
+): BinaryResult {
+  return binaryConditionResult(
+    campaignLog.guideVersion >= condition.min_version,
+    condition.options
+  );
+}
+
 export function campaignDataConditionResult(
   condition: CampaignDataCondition,
   campaignLog: GuidedCampaignLog
@@ -498,6 +509,11 @@ export function campaignDataConditionResult(
         condition.options
       );
     }
+    case 'version':
+      return campaignDataVersionConditionResult(
+        condition,
+        campaignLog
+      );
     case 'scenario_replayed':
     case 'scenario_completed': {
       return campaignDataScenarioConditionResult(condition, campaignLog);
@@ -520,16 +536,25 @@ export function multiConditionResult(
   condition: MultiCondition,
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
-  const count = sumBy(condition.conditions, subCondition => {
-    switch (subCondition.type) {
-      case 'campaign_log':
-        return campaignLogConditionResult(subCondition, campaignLog).option ?
-          1 : 0;
-      case 'campaign_data':
-        return campaignDataConditionResult(subCondition, campaignLog).option ?
-          1 : 0;
-    }
-  });
+  const count = sumBy(
+    condition.conditions,
+    subCondition => {
+      switch (subCondition.type) {
+        case 'campaign_log':
+          return campaignLogConditionResult(subCondition, campaignLog).option ?
+            1 : 0;
+        case 'campaign_data': {
+          switch (subCondition.campaign_data) {
+            case 'chaos_bag':
+              return campaignDataConditionResult(subCondition, campaignLog).option ?
+                1 : 0;
+            case 'version':
+              return campaignDataVersionConditionResult(subCondition, campaignLog).option ?
+                1 : 0;
+          }
+        }
+      }
+    });
   return binaryConditionResult(
     count >= condition.count,
     condition.options

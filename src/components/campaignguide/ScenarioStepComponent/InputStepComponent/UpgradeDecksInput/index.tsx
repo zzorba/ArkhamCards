@@ -1,10 +1,11 @@
 import React from 'react';
 import {
+  Alert,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { map } from 'lodash';
+import { find, map } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -13,7 +14,6 @@ import BasicButton from 'components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from 'actions/types';
 import InvestigatorRow from 'components/core/InvestigatorRow';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
 import Card from 'data/Card';
 import { LatestDecks } from 'data/scenario';
@@ -34,24 +34,117 @@ interface OwnProps {
   componentId: string;
   fontScale: number;
   id: string;
+  latestDecks: LatestDecks;
+  campaignState: CampaignStateHelper;
 }
 
 type Props = OwnProps & ReduxActionProps;
 
-class UpgradeDecksInput extends React.Component<Props> {
+interface State {
+  unsavedEdits: {
+    [code: string]: boolean | undefined;
+  };
+}
+class UpgradeDecksInput extends React.Component<Props, State> {
   static contextType = ScenarioStepContext;
   context!: ScenarioStepContextType;
 
-  _save = () => {
+  state: State = {
+    unsavedEdits: {},
+  };
+
+  _setUnsavedEdits = (code: string, edits: boolean) => {
+    this.setState({
+      unsavedEdits: {
+        ...this.state.unsavedEdits,
+        [code]: edits,
+      },
+    });
+  };
+
+  proceedMessage(): string | undefined {
+    const {
+      id,
+      latestDecks,
+    } = this.props;
+    const { unsavedEdits } = this.state;
+    const {
+      scenarioInvestigators,
+      scenarioState,
+      campaignLog,
+    } = this.context;
+    const unsavedDeck = find(
+      scenarioInvestigators,
+      investigator => {
+        if (campaignLog.isEliminated(investigator)) {
+          return false;
+        }
+        const choiceId = UpgradeDeckRow.choiceId(id, investigator);
+        if (scenarioState.numberChoices(choiceId) !== undefined) {
+          // Already saved
+          return false;
+        }
+        if (latestDecks[investigator.code]) {
+          return true;
+        }
+        return false;
+      });
+    if (unsavedDeck) {
+      return t`It looks like one or more deck upgrades are unsaved. If you would like the app to track spent experience as you make deck changes, please go back and press 'Save deck upgrade' on each investigator before proceeding to the next scenario.\n\nOnce an upgrade has been saved, you can edit the deck as normal and the app will properly track the experience cost for any changes you make (the original versions of the deck can still be viewed from the deck's menu).`;
+    }
+
+    const unsavedNonDeck = find(
+      scenarioInvestigators,
+      investigator => {
+        if (campaignLog.isEliminated(investigator)) {
+          return false;
+        }
+        const choiceId = UpgradeDeckRow.choiceId(id, investigator);
+        if (scenarioState.numberChoices(choiceId) !== undefined) {
+          // Already saved
+          return false;
+        }
+        if (latestDecks[investigator.code]) {
+          return false;
+        }
+        return !!unsavedEdits[investigator.code];
+      });
+    if (unsavedNonDeck) {
+      return t`It looks like you edited the experience or trauma for an investigator, but have not saved it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved.`;
+    }
+    return undefined;
+  }
+
+  _actuallySave = () => {
+
     const { id } = this.props;
-    this.context.scenarioState.setDecision(id, true);
+    const { scenarioState } = this.context;
+    scenarioState.setDecision(id, true);
+  }
+
+  _save = () => {
+    const warningMessage = this.proceedMessage();
+    if (warningMessage) {
+      Alert.alert(
+        t`Proceed without saving`,
+        warningMessage,
+        [{
+          text: t`Cancel`,
+          style: 'cancel',
+        }, {
+          text: t`Proceed anyway`,
+          style: 'destructive',
+          onPress: this._actuallySave,
+        }]
+      );
+    } else {
+      this._actuallySave();
+    }
   };
 
   renderContent(
     scenarioInvestigators: Card[],
-    latestDecks: LatestDecks,
     campaignLog: GuidedCampaignLog,
-    campaignState: CampaignStateHelper,
     scenarioState: ScenarioStateHelper
   ) {
     const {
@@ -60,6 +153,8 @@ class UpgradeDecksInput extends React.Component<Props> {
       saveDeckChanges,
       saveDeckUpgrade,
       fontScale,
+      latestDecks,
+      campaignState,
     } = this.props;
     const hasDecision = scenarioState.decision(id) !== undefined;
     return (
@@ -93,12 +188,16 @@ class UpgradeDecksInput extends React.Component<Props> {
               scenarioState={scenarioState}
               investigator={investigator}
               deck={latestDecks[investigator.code]}
+              setUnsavedEdits={this._setUnsavedEdits}
               editable={!hasDecision}
             />
           );
         }) }
         { !hasDecision && (
-          <BasicButton title={t`Proceed`} onPress={this._save} />
+          <BasicButton
+            title={t`Proceed`}
+            onPress={this._save}
+          />
         ) }
       </View>
     );
@@ -106,15 +205,11 @@ class UpgradeDecksInput extends React.Component<Props> {
 
   render() {
     return (
-      <CampaignGuideContext.Consumer>
-        { ({ latestDecks, campaignState }: CampaignGuideContextType) => (
-          <ScenarioStepContext.Consumer>
-            { ({ scenarioInvestigators, campaignLog, scenarioState }: ScenarioStepContextType) => (
-              this.renderContent(scenarioInvestigators, latestDecks, campaignLog, campaignState, scenarioState)
-            ) }
-          </ScenarioStepContext.Consumer>
+      <ScenarioStepContext.Consumer>
+        { ({ scenarioInvestigators, campaignLog, scenarioState }: ScenarioStepContextType) => (
+          this.renderContent(scenarioInvestigators, campaignLog, scenarioState)
         ) }
-      </CampaignGuideContext.Consumer>
+      </ScenarioStepContext.Consumer>
     );
   }
 }

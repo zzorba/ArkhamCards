@@ -87,6 +87,22 @@ export function constructCampaignGuideContext(
     );
   };
 
+  const removeDeck = (
+    deck: Deck
+  ) => {
+    universalData.removeInvestigator(
+      campaign.id,
+      deck.investigator_code,
+      deck.id
+    );
+  };
+
+  const removeInvestigator = (
+    investigator: Card
+  ) => {
+    universalData.removeInvestigator(campaign.id, investigator.code);
+  };
+
   const startScenario = (
     scenarioId: string
   ) => {
@@ -224,6 +240,8 @@ export function constructCampaignGuideContext(
     universalData.investigators,
     {
       showChooseDeck,
+      removeDeck,
+      removeInvestigator,
       startScenario,
       startSideScenario,
       setCount,
@@ -237,11 +255,13 @@ export function constructCampaignGuideContext(
       resetScenario,
       undo,
     },
+    campaign.guideVersion === undefined ? -1 : campaign.guideVersion,
     linkedCampaignState
   );
   return {
     campaignId: campaign.id,
     campaignName: campaign.name,
+    campaignGuideVersion: campaign.guideVersion === undefined ? -1 : campaign.guideVersion,
     campaignGuide,
     campaignState: campaignStateHelper,
     campaignInvestigators,

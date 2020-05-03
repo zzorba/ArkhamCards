@@ -92,7 +92,8 @@ export type CampaignDataCondition =
   | CampaignDataScenarioCondition
   | CampaignDataChaosBagCondition
   | CampaignDataInvestigatorCondition
-  | CampaignDataLinkedCondition;
+  | CampaignDataLinkedCondition
+  | CampaignDataVersionCondition;
 export type ScenarioDataCondition =
   | ScenarioDataResolutionCondition
   | ScenarioDataInvestigatorStatusCondition
@@ -162,7 +163,7 @@ export interface BranchStep {
 }
 export interface MultiCondition {
   type: "multi";
-  conditions: (CampaignLogCondition | CampaignDataChaosBagCondition)[];
+  conditions: (CampaignLogCondition | CampaignDataChaosBagCondition | CampaignDataVersionCondition)[];
   count: number;
   options: BoolOption[];
 }
@@ -301,6 +302,12 @@ export interface NumOption {
   numCondition: number;
   effects?: Effect[];
   steps?: string[];
+}
+export interface CampaignDataVersionCondition {
+  type: "campaign_data";
+  campaign_data: "version";
+  min_version: number;
+  options: BoolOption[];
 }
 export interface CampaignLogCountCondition {
   type: "campaign_log_count";
