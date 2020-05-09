@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
 import { GuideChaosBagProps } from 'components/campaignguide/GuideChaosBagView';
-import { OddsCalculatorProps } from 'components/campaign/OddsCalculatorView';
+import { GuideOddsCalculatorProps } from 'components/campaignguide/GuideOddsCalculatorView';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
@@ -103,12 +103,13 @@ export default class CampaignLogComponent extends React.Component<Props> {
     this.setState({
       menuOpen: false,
     });
-    Navigation.push<OddsCalculatorProps>(componentId, {
+    Navigation.push<GuideOddsCalculatorProps>(componentId, {
       component: {
-        name: 'OddsCalculator',
+        name: 'Guide.OddsCalculator',
         passProps: {
           campaignId: campaignId,
           investigatorIds: campaignLog.investigatorCodesSafe(),
+          chaosBag: campaignLog.chaosBag,
         },
         options: {
           topBar: {

@@ -15,6 +15,9 @@ export default class GenericStepComponent extends React.Component<Props> {
     if (!step.title && !step.text && !step.bullets) {
       return null;
     }
+    if (step.hidden) {
+      return null;
+    }
     return (
       <>
         <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>

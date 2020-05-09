@@ -2392,13 +2392,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "As long as this translation of the Necronomicon exists, there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must be done to protect humanity from the threats you’ve seen. You find a trash bin and fill it with books and documents, throwing the Necronomicon on top. It takes several matches to set the contents of the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You watch the book burn for some time, its pages turning to ash. You can only hope you’ve made the right decision.",
-      "steps": ["destroyed_necronomicon", "earn_xp", "$upgrade_decks"]
+      "steps": ["maybe_note_about_chaos_token", "destroyed_necronomicon", "earn_xp", "$upgrade_decks"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "The Necronomicon is more than just a book; it is a tool. Within its pages is a wealth of information about the forces and creatures you have encountered. Knowing how useful it could be in your endeavors, how could you possibly bring yourself to destroy it? Besides, as long as you keep the book safely in your possession, you will still be foiling those who wish to use it for nefarious purposes.",
-      "steps": ["took_necronomicon", "earned_necronomicon",  "add_elder_thing", "earn_xp", "$upgrade_decks"]
+      "steps": ["maybe_note_about_chaos_token", "took_necronomicon", "earned_necronomicon",  "add_elder_thing", "earn_xp", "$upgrade_decks"]
     }
   ]
 }
@@ -11673,6 +11673,7 @@
       "title": "Resolution 1",
       "text": "As long as this translation of the Necronomicon exists, there will be sorcerers and other foul agents like Whateley seeking it. In the end, you know what must be done to protect humanity from the threats you’ve seen. You find a trash bin and fill it with books and documents, throwing the Necronomicon on top. It takes several matches to set the contents of the bin alight. The flames fill the room with heat and the creeping shadows retreat from its light. You watch the book burn for some time, its pages turning to ash. You can only hope you’ve made the right decision.",
       "steps": [
+        "maybe_note_about_chaos_token",
         "destroyed_necronomicon",
         "earn_xp",
         "$upgrade_decks"
@@ -11683,6 +11684,7 @@
       "title": "Resolution 2",
       "text": "The Necronomicon is more than just a book; it is a tool. Within its pages is a wealth of information about the forces and creatures you have encountered. Knowing how useful it could be in your endeavors, how could you possibly bring yourself to destroy it? Besides, as long as you keep the book safely in your possession, you will still be foiling those who wish to use it for nefarious purposes.",
       "steps": [
+        "maybe_note_about_chaos_token",
         "took_necronomicon",
         "earned_necronomicon",
         "add_elder_thing",
@@ -22036,6 +22038,196 @@
 }
 ,
 {
+  "id": "read_or_die",
+  "scenario_name": "Read or Die",
+  "full_name": "Read or Die",
+  "xp_cost": 2,
+  "setup": [
+    "xp_cost",
+    "intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "setup_tomes",
+    "setup_jazz_mulligan",
+    "spawn_namer_of_the_dead",
+    "daisy_gets_henry_armitage",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "check_daisy_playing",
+      "text": "Daisy Walker must be chosen as one of the investigators when playing this scenario."
+    },
+    {
+      "id": "check_daisy_deck",
+      "type": "input",
+      "text": "Daisy Walker’s deck must include at least 4 [[Tome]] assets. [[Tome]] weaknesses do not count toward this total.",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "1a",
+            "text": "Does Daisy Walker's deck include at least 4 [[Tome]] assets?",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You’ve spent your entire life reading. As a child, it was but a simple interest in harmless stories. Grisly stories, to be sure, but harmless nonetheless. Your fascination with horror and the macabre earned you the nickname “Spooks” among your friends and classmates. But as you grew, so too did this fascination, until it bordered on obsession. Your appetite for horror evolved from mystery and make-believe to something more. Something <i>real</i>.\nWhen you discovered John Dee’s translation of The Necronomicon, you knew you’d finally found the true horror you had been secretly yearning for. If only you’d known what would be in store for you once you’d read that dreadful tome. You would have locked it back up in Henry Armitage’s restricted collection in the Orne Library and never opened it again.\nOr so you like to think. But even you cannot doubt the allure of the <i>Kitab al-Azif</i>. The Book of the Dead. That is why, when Dr. Armitage summoned you to the Orne Library, the dread in your bones predicted precisely what had occurred.\n“I don’t understand how this could have happened,” Dr. Armitage says as he surveys the destruction. The entire restricted collection is in tattered disarray. The Necronomicon lies open on a nearby table, its metal clasps broken apart. You run your fingers along its leathery, skin-like pages. Your eyes flit along the words in a familiar dance:\n<center>“They walk unseen and foul in lonely places where the Words have been spoken and the Rites howled through at their Seasons. The wind gibbers with Their voices, and the earth mutters with Their consciousness.”</center>\nYour throat tightens as you realize what must have occurred. Something has been unleashed, and you are the only one who can figure out how to stop it…"
+    },
+    {
+      "id": "investigator_setup",
+      "title": "Investigator Setup",
+      "text": "Remove each non-weakness [[Tome]] asset from Daisy Walker’s deck. Set each of these assets aside, out of play"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Scenario Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "read_or_die",
+        "extracurricular_activity",
+        "sorcery",
+        "the_beyond",
+        "bishops_thralls",
+        "whippoorwills",
+        "ancient_evils",
+        "locked_doors",
+        "agents_of_yog",
+        "armitages_fate"
+      ]
+    },
+    {
+      "id": "new_scenario_card",
+      "text": "Remove the original scenario reference card from the <i>Extracurricular Activity</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Read or Die</i> encounter set."
+    },
+    {
+      "id": "new_act_agenda",
+      "text": "Remove the original act and agenda deck from the <i>Extracurricular Activity</i> encounter set from the game. Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Read or Die</i> encounter set."
+    },
+    {
+      "id": "remove_misc_cards",
+      "text": "Remove the Faculty Offices <i>(The Hour is Late)</i> location, the Alchemy Labs location, the Alchemical Concoction story asset, The Experiment enemy, and the Professor Warren Rice story asset from the game. These cards are not used in this challenge scenario."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put each of the remaining locations into play: Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building, Administration Building, Dormitories, and Faculty Offices <i>(The Night is Still Young)</i>.",
+      "bullets": [
+        {
+          "text": "Daisy Walker begins play at the Orne Library."
+        },
+        {
+          "text": "Each other investigator begins play at the Miskatonic Quad."
+        },
+        {
+          "text": "<b>Since Dormitories and Faculty Offices start the game in play and Alchemy Labs is removed from the game, ignore any Forced abilities that would put these locations into play.</b>"
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "83012_back", "blank", "blank"],
+        ["83009_back", "83008_back", "83011_back", "83037_back"],
+        ["blank", "83010_back", "blank", "blank"]
+      ]
+    },
+    {
+      "id": "setup_tomes",
+      "text": "Shuffle each of the set-aside [[Tome]] assets previously removed from Daisy Walker’s deck and place 1 of them facedown beneath each location except for the Miskatonic Quad, starting with the locations farthest from the Orne Library. Place each remaining set-aside [[Tome]] asset facedown beneath the Orne Library.",
+      "bullets": [
+        {
+          "text": "For example, if Daisy Walker previously set 12 [[Tome]] assets aside, 1 would be placed facedown beneath each location except for Miskatonic Quad, and the remaining 6 would be placed beneath Orne Library"
+        }
+      ]
+    },
+    {
+      "id": "setup_jazz_mulligan",
+      "text": "Put the “Jazz” Mulligan story asset into play at the Science Building."
+    },
+    {
+      "id": "spawn_namer_of_the_dead",
+      "text": "Place the Namer of the Dead enemy (provided in the downloadable <i>Read or Die</i> encounter set) into play at the Orne Library, unengaged and exhausted."
+    },
+    {
+      "id": "daisy_gets_henry_armitage",
+      "text": "Daisy Walker takes control of the Dr. Henry Armitage story asset. (If Dr. Henry Armitage is already part of an investigator’s deck, search that investigator’s deck for Dr. Henry Armitage and put him into play under Daisy Walker’s control.)"
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_2"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "When you wake, the floor of the library is a mess of scattered paper and torn books. The Necronomicon lies in front of you, its metal clasp sealing it shut once more. Hopefully, whatever presence had been unleashed is safely stored within. But you can’t risk the grimoire staying here—it is far too dangerous to be left alone. You stuff the tome into your tote bag, knowing only you can keep it safe...or keep others safe from it.",
+      "steps": ["daisy_experience", "others_experience", "daisy_good_swap", "$upgrade_decks"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "You stuff the tome back into your tote bag. You can only hope that the entity that was unleashed won’t cause further harm...",
+      "steps": ["daisy_experience", "others_experience", "daisy_bad_swap", "$upgrade_decks"]
+    }
+  ]
+}
+,
+{
   "id": "the_eternal_slumber",
   "scenario_name": "The Eternal Slumber",
   "full_name": "The Eternal Slumber",
@@ -22706,7 +22898,7 @@
 {
   "id": "tcu",
   "position": 4,
-  "version": 1,
+  "version": 2,
   "name": "The Circle Undone",
   "campaign_log": [
     {
@@ -28482,12 +28674,44 @@
       "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "05046",
-        "id": "alive",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "uad_no_investigators_alive",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05046",
+            "id": "disappeared_into_the_mist",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05046",
+            "id": "on_gavriellas_trail",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
         "options": [
           {
             "boolCondition": true,
+            "steps": ["maybe_record_gavriella_alive"],
             "effects": [
               {
                 "type": "add_card",
@@ -28531,12 +28755,44 @@
       "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "05047",
-        "id": "alive",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "uad_no_investigators_alive",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05047",
+            "id": "disappeared_into_the_mist",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05047",
+            "id": "on_jeromes_trail",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
         "options": [
           {
             "boolCondition": true,
+            "steps": ["maybe_record_jerome_alive"],
             "effects": [
               {
                 "type": "add_card",
@@ -28580,12 +28836,44 @@
       "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "05049",
-        "id": "alive",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "uad_no_investigators_alive",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05049",
+            "id": "disappeared_into_the_mist",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05049",
+            "id": "on_pennys_trail",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
         "options": [
           {
             "boolCondition": true,
+            "steps": ["maybe_record_penny_alive"],
             "effects": [
               {
                 "type": "add_card",
@@ -28629,12 +28917,44 @@
       "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "05048",
-        "id": "alive",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "hidden",
+            "id": "uad_no_investigators_alive",
+            "options": [
+              {
+                "boolCondition": false
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05048",
+            "id": "disappeared_into_the_mist",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05048",
+            "id": "on_valentinos_trail",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 3,
         "options": [
           {
             "boolCondition": true,
+            "steps": ["maybe_record_valentino_alive"],
             "effects": [
               {
                 "type": "add_card",
@@ -28653,6 +28973,193 @@
                 "text": "Valentino Rivas is dead."
               }
             ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_record_gavriella_alive",
+      "text": "hidden",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "05046",
+        "id": "alive",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "05046",
+                "id": "alive",
+                "text": "Gavriella is alive."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_record_jerome_alive",
+      "text": "hidden",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "05047",
+        "id": "alive",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "05047",
+                "id": "alive",
+                "text": "Jerome is alive."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_record_penny_alive",
+      "text": "hidden",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "05049",
+        "id": "alive",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "05049",
+                "id": "alive",
+                "text": "Penny is alive."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_record_valentino_alive",
+      "text": "hidden",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "05048",
+        "id": "alive",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "05048",
+                "id": "alive",
+                "text": "Valentino is alive."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_ask_act_1",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "05046",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05047",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05048",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "05049",
+            "id": "alive",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["ask_final_act"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_final_act",
+      "type": "input",
+      "text": "What act were the investigators on when the scenario ended?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1",
+            "text": "Act 1",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "uad_no_investigators_alive",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "act_2",
+            "text": "Act 2"
+          },
+          {
+            "id": "act_3",
+            "text": "Act 3"
+          },
+          {
+            "id": "act_4",
+            "text": "Act 4"
           }
         ]
       }
@@ -28713,10 +29220,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "note_about_campaign_log",
-      "text": "If you need to record information about the \"Missing Persons\", use \"undo\" and select \"Edit campaign log\"."
     },
     {
       "id": "maybe_adjust_chaos_bag",
@@ -28806,7 +29309,13 @@
     {
       "id": "R5",
       "title": "Resolution 5",
-      "steps": ["compare_columns_explanation", "compare_columns", "left_result", "right_result"]
+      "steps": [
+        "maybe_ask_act_1",
+        "compare_columns_explanation",
+        "compare_columns",
+        "left_result",
+        "right_result"
+      ]
     },
     {
       "id": "R6",
@@ -28824,7 +29333,16 @@
       "id": "R8",
       "title": "Resolution 8",
       "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
-      "steps": ["remove_puzzle_box", "maybe_note_about_campaign_log", "check_missing_persons_alive", "check_gavriella_in_game", "check_jerome_in_game", "check_penny_in_game", "check_valentino_in_game", "earn_xp", "$upgrade_decks"]
+      "steps": [
+        "remove_puzzle_box",
+        "check_missing_persons_alive",
+        "check_gavriella_in_game",
+        "check_jerome_in_game",
+        "check_penny_in_game",
+        "check_valentino_in_game",
+        "earn_xp",
+        "$upgrade_decks"
+      ]
     }
   ]
 }]}
@@ -31703,7 +32221,7 @@
               ]
             },
             "text": "The dreamers strayed from the path.",
-            "steps": ["strayed_from_the_path"]
+            "steps": ["strayed_from_the_path", "maybe_adjust_chaos_bag"]
           }
         ],
         "branches": [
@@ -31857,7 +32375,7 @@
           {
             "id": "act_4",
             "text": "Act 4",
-            "steps": ["strayed_from_the_path"]
+            "steps": ["strayed_from_the_path", "maybe_adjust_chaos_bag"]
           }
         ]
       }
@@ -31895,6 +32413,45 @@
         "id": "dreamers_grow_weaker",
         "choices": []
       }
+    },
+    {
+      "id": "maybe_adjust_chaos_bag",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "chaos_bag",
+        "token": "skull",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["fix_add_three_skulls"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["fix_add_three_skulls"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["fix_add_three_skulls"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix_add_three_skulls",
+      "text": "dummy",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "remove_chaos_token",
+          "tokens": ["skull", "skull", "skull", "skull"]
+        },
+        {
+          "type": "add_chaos_token",
+          "tokens": ["skull", "skull", "skull"]
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -31913,13 +32470,13 @@
       "id": "R1",
       "title": "Resolution 1",
       "text": "The creatures chitter among themselves, and after a moment, a dozen of them retreat in the direction of the great tree beyond the beaten path. They return shortly afterward carrying a variety of grouse, quail, and pheasants in their mouths. You’re almost certain now that you are going crazy. And yet, the spectacle continues. The creatures timidly drop their “tribute” of birds in front of the cats and quietly depart. “My apologies on behalf of the Zoogs,” the man says as he approaches. “They are curious creatures, and not usually so…agitated. It is good that we showed up when we did.” The leader of the cats jumps on a tree stump and adds, “Yes, yes. Them vile Zoogs have done their part, now let’s do ours and leave this forsaken place. What say yeh?”\nYou cannot contain your excitement. Zoogs, talking cats—everything you have read about is real. You begin to ask the man more about this world, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your travels.” He turns to the old, scarred cat and utters a word in an odd language—a password of sorts, you suspect—and the cat replies with a quick nod. The rest of the cats, tribute in mouth, take a protective circular formation around you, and together you escape from the eaves of the enchanted forest.",
-      "steps": ["cats_collected_their_tribute", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
+      "steps": ["maybe_adjust_chaos_bag", "cats_collected_their_tribute", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
     },
     {
       "id": "R2",
       "title": "Resolution 2",
       "text": "You hold a hand up to the new visitors, believing that you can defuse this situation on your own. Had you known these rodent-like creatures were intelligent all along, you might have tried to communicate with them much earlier. You inform them that you are just travelers in this faraway land and that you simply wish to pass through peacefully. The creatures chitter among themselves for a moment: “They are kind!” “They are not with the black cat after all!” “Summon the Council of Sages!” After a short while, several more of them appear, each with withering grey fur and a frail, thin body. The eldest one peeks behind you and states that they will aid you if you get the cats to leave.\nSomehow, you contain your disbelief and politely ask the cats to come back another time. “All right,” the scarred cat replies, “but you ain’t seen the last of us.” The cats retreat to the edge of the woods, though their human companion stays behind with you. Once the cats are out of earshot, one of the elders offers you a gourd of what appears to be fermented tree sap, which you accept graciously.\n“It is the wine of the moon-tree,” the man behind you explains quietly, stepping forward. “The Zoogs do not give such gifts lightly. They are curious creatures, but not without wisdom. Now that you may speak freely with their elders, try asking them a question. They know more of the dealings of this land than you might think.”\nYou describe the author Virgil Gray and ask the Zoogs if they have seen a man fitting that description pass through these woods. You add that he would have walked this path many times. A hush falls over the Zoogs, and some of them immediately depart into the deep foliage. “We have met this human,” one of the elders replies with a flutter just louder than a whisper. “He often comes this way. He is kind but foolish. Take the road to Ulthar. You may meet him.” Then it adds with a low growl: “…but beware the cat that follows him. All cats are liars, but the black cat especially.” You thank the ancient Zoog for its wisdom and depart, led by the blond man and his feline escort. The cats eye you suspiciously after your discussion with the Zoogs. The man breaks the tension. “If you are heading to Ulthar to find this friend of yours, allow me to guide you there. It is a safe place, relatively speaking. There you may recover from your travels.”\nZoogs. Talking cats. This can’t all be a figment of your imagination. Somehow, you can see a layer of truth beneath all of this absurdity. For better or for worse, the Zoog council has confirmed the reality of your situation: the Dreamlands are real, and Virgil Gray is here.",
-      "steps": ["parleyed_with_zoogs", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
+      "steps": ["maybe_adjust_chaos_bag", "parleyed_with_zoogs", "gain_randolph_carter", "earn_xp", "$upgrade_decks", "send_beyond_the_gates_of_sleep_done", "maybe_proceed_campaign_b"]
     }
   ]
 }

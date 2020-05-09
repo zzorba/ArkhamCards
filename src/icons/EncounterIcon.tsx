@@ -207,6 +207,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'venice':
       case 'carnevale_of_horrors':
         return this.standaloneIcon('carnevale', size, color);
+      case 'rod':
+      case 'read_or_die':
+        return this.standaloneIcon('read_or_die', size, color);
+      case 'parallel':
+        return this.standaloneIcon('parallel', size, color);
       case 'cotr':
       case 'curse_of_the_rougarou':
       case 'rougarou':

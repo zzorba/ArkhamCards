@@ -22,6 +22,7 @@ import CampaignLogView from 'components/campaignguide/CampaignLogView';
 import ScenarioView from 'components/campaignguide/ScenarioView';
 import CardSelectorView from 'components/campaignguide/CardSelectorView';
 import GuideChaosBagView from 'components/campaignguide/GuideChaosBagView';
+import GuideOddsCalculatorView from 'components/campaignguide/GuideOddsCalculatorView';
 import UpgradeDecksView from 'components/campaign/UpgradeDecksView';
 import EditScenarioResultView from 'components/campaign/EditScenarioResultView';
 import CampaignDetailView from 'components/campaign/CampaignDetailView';
@@ -93,6 +94,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Guide.LinkedCampaign', () => gestureHandlerRootHOC(LinkedCampaignGuideView), Provider, store);
   Navigation.registerComponentWithRedux('Guide.SideScenario', () => AddSideScenarioView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.ChaosBag', () => GuideChaosBagView, Provider, store);
+  Navigation.registerComponentWithRedux('Guide.OddsCalculator', () => GuideOddsCalculatorView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.Scenario', () => ScenarioView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.Log', () => CampaignLogView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.LocationSetup', () => LocationSetupView, Provider, store);

@@ -75,10 +75,11 @@ class DeckHistoryView extends React.Component<Props> {
       }
       return t`Latest Deck: ${deck.availableExperience} XP`;
     }
+    const humanVersionNumber = versionNumber - 1;
     if (deck.changes) {
-      return t`Upgrade ${versionNumber}: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
+      return t`Upgrade ${humanVersionNumber}: ${deck.changes.spentXp} of ${deck.availableExperience} XP`;
     }
-    return t`Upgrade ${versionNumber}: ${deck.availableExperience} XP`;
+    return t`Upgrade ${humanVersionNumber}: ${deck.availableExperience} XP`;
   }
 
   _onDeckPress = (parsedDeck: ParsedDeck) => {

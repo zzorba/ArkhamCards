@@ -566,7 +566,7 @@ export default class CampaignGuide {
           };
         }
       } catch (e) {
-        throw new Error(`Could not find section(${sectionId}), id(${id}), textSection(${JSON.stringify(textSection)})`);
+        throw new Error(`Could not find section(${sectionId}), id(${id}), textSection(${JSON.stringify(textSection)}), checked input value too`);
       }
     }
     throw new Error(`Could not find section(${sectionId}), id(${id}), textSection(${JSON.stringify(textSection)})`);
