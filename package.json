@@ -12,6 +12,8 @@
     "i18n-extract-it": "ttag update assets/i18n/it.po src/",
     "i18n-extract-de": "ttag update assets/i18n/de.po src/",
     "i18n-extract-es": "ttag update assets/i18n/es.po src/",
+    "i18n-extract-ko": "ttag update assets/i18n/ko.po src/",
+    "i18n-extract-uk": "ttag update assets/i18n/uk.po src/",
     "build": "tsc --skipLibCheck --resolveJsonModule --noEmit",
     "test": "jest",
     "postinstall": "patch-package && node node_modules/realm/scripts/download-realm.js ios --sync"

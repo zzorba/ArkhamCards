@@ -405,7 +405,7 @@ export default class CampaignGuide {
           id: 'spend_xp_cost',
           text: ngettext(
             msgid`Each investigator pays ${entry.xpCost} experience point to play this scenario.`,
-            msgid`Each investigator pays ${entry.xpCost} experience points to play this scenario.`,
+            `Each investigator pays ${entry.xpCost} experience points to play this scenario.`,
             entry.xpCost
           ),
           effects: [
