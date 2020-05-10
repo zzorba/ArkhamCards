@@ -1,17 +1,18 @@
 import React, { ReactNode } from 'react';
 import { find, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import {
-  StyleSheet,
   SectionList,
-  View,
-  TouchableOpacity,
-  Text,
   SectionListData,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { t } from 'ttag';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import PickerStyleButton from 'components/core/PickerStyleButton';
 import {
   Campaign,
   CardId,
@@ -186,6 +187,7 @@ interface Props {
   componentId: string;
   fontScale: number;
   deck: Deck;
+  parallelInvestigators: Card[];
   hideCampaign?: boolean;
   campaign?: Campaign;
   parsedDeck: ParsedDeck;
@@ -219,7 +221,7 @@ interface Props {
   problem?: DeckProblem;
   renderFooter: (slots?: Slots) => React.ReactNode;
   onDeckCountChange: (code: string, count: number) => void;
-  setMeta: (key: string, value: string) => void;
+  setMeta: (key: keyof DeckMeta, value?: string) => void;
   showEditCards: () => void;
   showDeckUpgrade: () => void;
   showDeckHistory: () => void;
@@ -497,25 +499,27 @@ export default class DeckViewTab extends React.Component<Props> {
     }
     const adjustedXp = (deck.xp || 0) + xpAdjustment;
     return (
-      <TouchableOpacity disabled={!editable} onPress={showEditNameDialog}>
-        <View style={styles.rowBetween}>
-          <Text style={typography.settingsLabel}>
-            { t`Experience` }
-          </Text>
-          <View style={styles.row}>
-            <Text style={typography.settingsValue}>
-              { t`${changes.spentXp} of ${adjustedXp}` }
-            </Text>
-            { editable && (
-              <MaterialIcons
-                name="keyboard-arrow-right"
-                size={30}
-                color={COLORS.darkGray}
-              />
-            ) }
+      <PickerStyleButton
+        id="xp"
+        title={t`Experience`}
+        value={t`${changes.spentXp} of ${adjustedXp}`}
+        disabled={!editable}
+        onPress={showEditNameDialog}
+        colors={{
+          backgroundColor: 'transparent',
+          textColor: COLORS.darkTextColor,
+        }}
+        widget={
+          <View style={{ marginRight: xs }}>
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={30}
+              color={COLORS.darkTextColor}
+            />
           </View>
-        </View>
-      </TouchableOpacity>
+        }
+        noBorder
+      />
     );
   }
 
@@ -524,6 +528,7 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         investigator,
       },
+      parallelInvestigators,
       deck,
       meta,
       setMeta,
@@ -551,6 +556,7 @@ export default class DeckViewTab extends React.Component<Props> {
         <InvestigatorOptionsModule
           investigator={investigator}
           meta={meta}
+          parallelInvestigators={parallelInvestigators}
           setMeta={setMeta}
           editWarning={!!deck.previous_deck}
           disabled={!editable}
@@ -719,8 +725,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   optionsContainer: {
-    marginLeft: s,
-    marginRight: s,
     flexDirection: 'column',
     flex: 1,
   },
@@ -740,16 +744,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
-  },
-  rowBetween: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: s,
-    paddingBottom: s,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });

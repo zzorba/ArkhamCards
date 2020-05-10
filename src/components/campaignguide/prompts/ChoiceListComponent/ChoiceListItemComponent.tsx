@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
-import SinglePickerComponent from '../SinglePickerComponent';
+import SinglePickerComponent from 'components/core/SinglePickerComponent';
 import { DisplayChoice } from 'data/scenario';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';

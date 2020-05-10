@@ -49,7 +49,7 @@ class GuideOddsCalculatorView extends React.Component<Props> {
     return (
       <OddsCalculatorComponent
         campaign={campaign}
-        chaosBag={chaosBag || {}}
+        chaosBag={chaosBag}
         fontScale={fontScale}
         cycleScenarios={cycleScenarios}
         scenarioByCode={scenarioByCode}

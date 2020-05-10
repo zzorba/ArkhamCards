@@ -1,7 +1,7 @@
 import React from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { EventSubscription, Navigation } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { Results } from 'realm';
 import LinearGradient from 'react-native-linear-gradient';
@@ -45,8 +45,6 @@ interface State {
 }
 
 export default class OddsCalculatorComponent extends React.Component<Props, State> {
-  _navEventListener?: EventSubscription;
-
   constructor(props: Props) {
     super(props);
 
@@ -76,12 +74,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
         elder_thing: 0,
       },
     };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
   }
 
   _showScenarioDialog = () => {
@@ -180,7 +172,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
             default: {
               const line = linesByToken[token];
               if (line) {
-                const valueRegex = new RegExp(`\\[(${token})\\]:?\\s([-+][0-9X])(\\. )?(.*)`);
+                const valueRegex = new RegExp(`\\[(${token})\\]\\s*:?\\s([-+][0-9X])(\\. )?(.*)`);
                 if (valueRegex.test(line)) {
                   const match = line.match(valueRegex);
                   if (match) {
@@ -198,7 +190,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
                     }
                   }
                 } else {
-                  const revealAnotherRegex = new RegExp(`\\[(${token})\\]:?\\sReveal another (chaos )?token.`);
+                  const revealAnotherRegex = new RegExp(`\\[(${token})\\]\\s*:?\\sReveal another (chaos )?token.`);
                   if (revealAnotherRegex.test(line)) {
                     scenarioTokens.push({
                       token,
@@ -348,6 +340,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
   renderContent(campaign: Campaign) {
     const {
       fontScale,
+      chaosBag,
     } = this.props;
     const {
       difficulty,
@@ -384,7 +377,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
         <View style={styles.sectionRow}>
           <Text style={typography.label}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
-            chaosBag={campaign.chaosBag}
+            chaosBag={chaosBag}
             fontScale={fontScale}
           />
         </View>

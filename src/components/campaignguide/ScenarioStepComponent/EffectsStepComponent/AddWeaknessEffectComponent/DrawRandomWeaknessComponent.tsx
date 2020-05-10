@@ -10,7 +10,7 @@ import { StringChoices, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
 import { drawWeakness } from 'lib/weaknessHelper';
 import { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
-import InvestigatorButton from 'components/campaignguide/prompts/InvestigatorButton';
+import InvestigatorButton from 'components/core/InvestigatorButton';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';

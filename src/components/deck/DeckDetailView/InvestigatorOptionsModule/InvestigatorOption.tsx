@@ -12,7 +12,7 @@ interface Props {
   investigator: Card;
   option: DeckOption;
   meta: DeckMeta;
-  setMeta: (key: string, value: string) => void;
+  setMeta: (key: keyof DeckMeta, value?: string) => void;
   editWarning: boolean;
   disabled?: boolean;
 }

@@ -1,0 +1,74 @@
+import React from 'react';
+import { findIndex, map } from 'lodash';
+import { SettingsPicker } from 'react-native-settings-components';
+import { t } from 'ttag';
+
+import SinglePickerComponent from 'components/core/SinglePickerComponent';
+import { FactionCodeType, FACTION_COLORS } from 'constants';
+import Card from 'data/Card';
+import COLORS from 'styles/colors';
+
+interface Props {
+  name: string;
+  factions: FactionCodeType[];
+  selection?: FactionCodeType;
+  onChange: (faction: FactionCodeType) => void;
+  investigatorFaction?: FactionCodeType;
+  disabled?: boolean;
+  editWarning: boolean;
+}
+
+export default class FactionSelectPicker extends React.Component<Props> {
+  ref?: SettingsPicker<FactionCodeType>;
+
+  _captureRef = (ref: SettingsPicker<FactionCodeType>) => {
+    this.ref = ref;
+  };
+
+  _onChange = (index: number) => {
+    this.ref && this.ref.closeModal();
+    const {
+      onChange,
+      factions,
+    } = this.props;
+    onChange(factions[index]);
+  };
+
+  _codeToLabel = (faction: string) => {
+    return Card.factionCodeToName(faction, t`Select Faction`);
+  };
+
+  render() {
+    const {
+      factions,
+      selection,
+      name,
+      investigatorFaction,
+      disabled,
+      editWarning,
+    } = this.props;
+    return (
+      <SinglePickerComponent
+        title={name}
+        editable={!disabled}
+        description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
+        colors={{
+          modalColor: investigatorFaction ?
+            FACTION_COLORS[investigatorFaction] :
+            COLORS.lightBlue,
+          modalTextColor: 'white',
+          backgroundColor: 'transparent',
+          textColor: COLORS.darkTextColor,
+        }}
+        choices={map(factions, size => {
+          return {
+            text: this._codeToLabel(size),
+          };
+        })}
+        selectedIndex={selection ? findIndex(factions, faction => faction === selection) : 0}
+        onChoiceChange={this._onChange}
+        noBorder
+      />
+    );
+  }
+}

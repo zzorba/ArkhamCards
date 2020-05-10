@@ -1,0 +1,73 @@
+import React from 'react';
+import { findIndex, map } from 'lodash';
+import { SettingsPicker } from 'react-native-settings-components';
+import { t } from 'ttag';
+
+import SinglePickerComponent from 'components/core/SinglePickerComponent';
+import { FactionCodeType, FACTION_COLORS } from 'constants';
+import COLORS from 'styles/colors';
+
+interface Props {
+  name: string;
+  sizes: string[];
+  selection?: string;
+  onChange: (selection: string) => void;
+  investigatorFaction?: FactionCodeType;
+  disabled?: boolean;
+  editWarning: boolean;
+}
+
+export default class DeckSizeSelectPicker extends React.Component<Props> {
+  ref?: SettingsPicker<string>;
+
+  _captureRef = (ref: SettingsPicker<string>) => {
+    this.ref = ref;
+  };
+
+  _onChange = (index: number) => {
+    this.ref && this.ref.closeModal();
+    const {
+      onChange,
+      sizes,
+    } = this.props;
+    onChange(sizes[index]);
+  };
+
+  _codeToLabel = (size?: string) => {
+    return size || t`Select Deck Size`;
+  };
+
+  render() {
+    const {
+      sizes,
+      selection,
+      name,
+      investigatorFaction,
+      disabled,
+      editWarning,
+    } = this.props;
+    return (
+      <SinglePickerComponent
+        title={name}
+        editable={!disabled}
+        description={editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined}
+        colors={{
+          modalColor: investigatorFaction ?
+            FACTION_COLORS[investigatorFaction] :
+            COLORS.lightBlue,
+          modalTextColor: 'white',
+          backgroundColor: 'transparent',
+          textColor: COLORS.darkTextColor,
+        }}
+        choices={map(sizes, size => {
+          return {
+            text: this._codeToLabel(size),
+          };
+        })}
+        selectedIndex={selection ? findIndex(sizes, size => size === selection) : 0}
+        onChoiceChange={this._onChange}
+        noBorder
+      />
+    );
+  }
+}

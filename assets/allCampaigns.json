@@ -22038,196 +22038,6 @@
 }
 ,
 {
-  "id": "read_or_die",
-  "scenario_name": "Read or Die",
-  "full_name": "Read or Die",
-  "xp_cost": 2,
-  "setup": [
-    "xp_cost",
-    "intro",
-    "investigator_setup",
-    "gather_encounter_sets",
-    "new_scenario_card",
-    "new_act_agenda",
-    "remove_misc_cards",
-    "setup_locations",
-    "location_layout",
-    "setup_tomes",
-    "setup_jazz_mulligan",
-    "spawn_namer_of_the_dead",
-    "daisy_gets_henry_armitage",
-    "encounter_deck",
-    "$play_scenario"
-  ],
-  "steps": [
-    {
-      "id": "check_daisy_playing",
-      "text": "Daisy Walker must be chosen as one of the investigators when playing this scenario."
-    },
-    {
-      "id": "check_daisy_deck",
-      "type": "input",
-      "text": "Daisy Walker’s deck must include at least 4 [[Tome]] assets. [[Tome]] weaknesses do not count toward this total.",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "1a",
-            "text": "Does Daisy Walker's deck include at least 4 [[Tome]] assets?",
-            "steps": []
-          }
-        ]
-      }
-    },
-    {
-      "id": "xp_cost",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": -2
-        }
-      ]
-    },
-    {
-      "id": "intro",
-      "type": "story",
-      "text": "You’ve spent your entire life reading. As a child, it was but a simple interest in harmless stories. Grisly stories, to be sure, but harmless nonetheless. Your fascination with horror and the macabre earned you the nickname “Spooks” among your friends and classmates. But as you grew, so too did this fascination, until it bordered on obsession. Your appetite for horror evolved from mystery and make-believe to something more. Something <i>real</i>.\nWhen you discovered John Dee’s translation of The Necronomicon, you knew you’d finally found the true horror you had been secretly yearning for. If only you’d known what would be in store for you once you’d read that dreadful tome. You would have locked it back up in Henry Armitage’s restricted collection in the Orne Library and never opened it again.\nOr so you like to think. But even you cannot doubt the allure of the <i>Kitab al-Azif</i>. The Book of the Dead. That is why, when Dr. Armitage summoned you to the Orne Library, the dread in your bones predicted precisely what had occurred.\n“I don’t understand how this could have happened,” Dr. Armitage says as he surveys the destruction. The entire restricted collection is in tattered disarray. The Necronomicon lies open on a nearby table, its metal clasps broken apart. You run your fingers along its leathery, skin-like pages. Your eyes flit along the words in a familiar dance:\n<center>“They walk unseen and foul in lonely places where the Words have been spoken and the Rites howled through at their Seasons. The wind gibbers with Their voices, and the earth mutters with Their consciousness.”</center>\nYour throat tightens as you realize what must have occurred. Something has been unleashed, and you are the only one who can figure out how to stop it…"
-    },
-    {
-      "id": "investigator_setup",
-      "title": "Investigator Setup",
-      "text": "Remove each non-weakness [[Tome]] asset from Daisy Walker’s deck. Set each of these assets aside, out of play"
-    },
-    {
-      "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
-      "type": "encounter_sets",
-      "encounter_sets": [
-        "read_or_die",
-        "extracurricular_activity",
-        "sorcery",
-        "the_beyond",
-        "bishops_thralls",
-        "whippoorwills",
-        "ancient_evils",
-        "locked_doors",
-        "agents_of_yog",
-        "armitages_fate"
-      ]
-    },
-    {
-      "id": "new_scenario_card",
-      "text": "Remove the original scenario reference card from the <i>Extracurricular Activity</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Read or Die</i> encounter set."
-    },
-    {
-      "id": "new_act_agenda",
-      "text": "Remove the original act and agenda deck from the <i>Extracurricular Activity</i> encounter set from the game. Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Read or Die</i> encounter set."
-    },
-    {
-      "id": "remove_misc_cards",
-      "text": "Remove the Faculty Offices <i>(The Hour is Late)</i> location, the Alchemy Labs location, the Alchemical Concoction story asset, The Experiment enemy, and the Professor Warren Rice story asset from the game. These cards are not used in this challenge scenario."
-    },
-    {
-      "id": "setup_locations",
-      "text": "Put each of the remaining locations into play: Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building, Administration Building, Dormitories, and Faculty Offices <i>(The Night is Still Young)</i>.",
-      "bullets": [
-        {
-          "text": "Daisy Walker begins play at the Orne Library."
-        },
-        {
-          "text": "Each other investigator begins play at the Miskatonic Quad."
-        },
-        {
-          "text": "<b>Since Dormitories and Faculty Offices start the game in play and Alchemy Labs is removed from the game, ignore any Forced abilities that would put these locations into play.</b>"
-        }
-      ]
-    },
-    {
-      "id": "location_layout",
-      "type": "location_setup",
-      "text": "Location Placement",
-      "horizontal": "normal",
-      "vertical": "normal",
-      "locations": [
-        ["blank", "83012_back", "blank", "blank"],
-        ["83009_back", "83008_back", "83011_back", "83037_back"],
-        ["blank", "83010_back", "blank", "blank"]
-      ]
-    },
-    {
-      "id": "setup_tomes",
-      "text": "Shuffle each of the set-aside [[Tome]] assets previously removed from Daisy Walker’s deck and place 1 of them facedown beneath each location except for the Miskatonic Quad, starting with the locations farthest from the Orne Library. Place each remaining set-aside [[Tome]] asset facedown beneath the Orne Library.",
-      "bullets": [
-        {
-          "text": "For example, if Daisy Walker previously set 12 [[Tome]] assets aside, 1 would be placed facedown beneath each location except for Miskatonic Quad, and the remaining 6 would be placed beneath Orne Library"
-        }
-      ]
-    },
-    {
-      "id": "setup_jazz_mulligan",
-      "text": "Put the “Jazz” Mulligan story asset into play at the Science Building."
-    },
-    {
-      "id": "spawn_namer_of_the_dead",
-      "text": "Place the Namer of the Dead enemy (provided in the downloadable <i>Read or Die</i> encounter set) into play at the Orne Library, unengaged and exhausted."
-    },
-    {
-      "id": "daisy_gets_henry_armitage",
-      "text": "Daisy Walker takes control of the Dr. Henry Armitage story asset. (If Dr. Henry Armitage is already part of an investigator’s deck, search that investigator’s deck for Dr. Henry Armitage and put him into play under Daisy Walker’s control.)"
-    },
-    {
-      "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
-    },
-    {
-      "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all"
-          }
-        ]
-      }
-    },
-    {
-      "id": "resolution_2",
-      "type": "resolution",
-      "resolution": "R2"
-    }
-  ],
-  "resolutions": [
-    {
-      "id": "no_resolution",
-      "title": "No resolution was reached\n(each investigator was defeated)",
-      "investigator_status": [
-        "eliminated",
-        "physical",
-        "mental"
-      ],
-      "steps": ["resolution_2"]
-    },
-    {
-      "id": "R1",
-      "title": "Resolution 1",
-      "text": "When you wake, the floor of the library is a mess of scattered paper and torn books. The Necronomicon lies in front of you, its metal clasp sealing it shut once more. Hopefully, whatever presence had been unleashed is safely stored within. But you can’t risk the grimoire staying here—it is far too dangerous to be left alone. You stuff the tome into your tote bag, knowing only you can keep it safe...or keep others safe from it.",
-      "steps": ["daisy_experience", "others_experience", "daisy_good_swap", "$upgrade_decks"]
-    },
-    {
-      "id": "R2",
-      "title": "Resolution 2",
-      "text": "You stuff the tome back into your tote bag. You can only hope that the entity that was unleashed won’t cause further harm...",
-      "steps": ["daisy_experience", "others_experience", "daisy_bad_swap", "$upgrade_decks"]
-    }
-  ]
-}
-,
-{
   "id": "the_eternal_slumber",
   "scenario_name": "The Eternal Slumber",
   "full_name": "The Eternal Slumber",
@@ -22301,7 +22111,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<fancy>Greetings,\nI'm sorry. I know it has been some time since my last correspondence. I am writing to you now because there is nobody I can trust here in Cairo. I don't even know if this letter will make it to you safely. I can only hope it does, for all our sakes.\nThere's something wrong in this city. It started a few weeks ago. The head curator of the Museum of Egyptian Antiquities fell asleep and simply never awoke. I thought nothing of it at first; just a medical curiosity, a mystery the doctors would solve in due time. But then it happened again. And again. More and more, people all across the city started falling into comas. Now it's happening every night. . . And as I write to you, they are taking my husband John to the hospital.\nI'm scared. I don't want to fall asleep and never wake up again. But more than that, I'm worried that there are people purposely inflicting this curse on others. And if so, why?\nPlease, I am begging you. I need your help.\nYours sincerely,\nJessie Burk</fancy>"
+      "text": "<fancy>Greetings,</fancy>\n<fancy>I'm sorry. I know it has been some time since my last correspondence. I am writing to you now because there is nobody I can trust here in Cairo. I don't even know if this letter will make it to you safely. I can only hope it does, for all our sakes.</fancy>\n<fancy>There's something wrong in this city. It started a few weeks ago. The head curator of the Museum of Egyptian Antiquities fell asleep and simply never awoke. I thought nothing of it at first; just a medical curiosity, a mystery the doctors would solve in due time. But then it happened again. And again. More and more, people all across the city started falling into comas. Now it's happening every night. . . And as I write to you, they are taking my husband John to the hospital.</fancy>\n<fancy>I'm scared. I don't want to fall asleep and never wake up again. But more than that, I'm worried that there are people purposely inflicting this curse on others. And if so, why?</fancy>\n<fancy>Please, I am begging you. I need your help.</fancy>\n<fancy>Yours sincerely,</fancy>\n<fancy>Jessie Burk</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -22622,7 +22432,7 @@
           "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River."
+      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
     },
     {
       "id": "strength_of_the_abyss",
@@ -29165,63 +28975,6 @@
       }
     },
     {
-      "id": "maybe_note_about_campaign_log",
-      "hidden": true,
-      "type": "branch",
-      "condition": {
-        "type": "multi",
-        "conditions": [
-          {
-            "type": "campaign_log",
-            "section": "05046",
-            "id": "alive",
-            "options": [
-              {
-                "boolCondition": true
-              }
-            ]
-          },
-          {
-            "type": "campaign_log",
-            "section": "05047",
-            "id": "alive",
-            "options": [
-              {
-                "boolCondition": true
-              }
-            ]
-          },
-          {
-            "type": "campaign_log",
-            "section": "05048",
-            "id": "alive",
-            "options": [
-              {
-                "boolCondition": true
-              }
-            ]
-          },
-          {
-            "type": "campaign_log",
-            "section": "05049",
-            "id": "alive",
-            "options": [
-              {
-                "boolCondition": true
-              }
-            ]
-          }
-        ],
-        "count": 1,
-        "options": [
-          {
-            "boolCondition": false,
-            "steps": ["note_about_campaign_log"]
-          }
-        ]
-      }
-    },
-    {
       "id": "maybe_adjust_chaos_bag",
       "hidden": true,
       "type": "branch",
@@ -32440,8 +32193,8 @@
     },
     {
       "id": "fix_add_three_skulls",
-      "text": "dummy",
       "hidden": true,
+      "text": "dummy",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -37556,7 +37309,7 @@
       "id": "R5",
       "title": "Resolution 5",
       "text": "You depart from the hospital with the blond-haired man in tow, and he introduces himself more fully. The man, whose name is Randolph Carter, tells you that he is a “dreamer,” like Virgil Gray and your friends: one with the ability to traverse the divide between the waking world and a parallel dimension that was created by, is sustained by, and dwells within the dreams of all living organisms on Earth—a realm he calls <smallcaps>The Dreamlands</smallcaps>. “It is a place of both dreams and nightmares,” he explains. “And I’m afraid your friends are trapped there as we speak.”\nYou ask if there is anything you can do to aid them. Randolph ponders this for a moment, then replies: “Normally, dreamers can return to the real world simply by willing themselves awake, but for some reason, your friends are unable to do so. If you truly wish to help them, you too must enter the Dreamlands and find them. But forcing your way into the Dreamlands is not easy. Such paths are usually accessible only to experienced dreamers, and only in sleep. Still, there are some places where the Dreamlands touch the waking world, and in those places, with the right tools, you may enter the Dreamlands in your physical body. I know of such a place, not far from here. However—”\nBefore Randolph is able to finish his sentence, he is interrupted by a mysterious voice…",
-      "steps": ["earn_xp", "remove_infestation_bag", "$upgrade_decks"]
+      "steps": ["earn_xp", "remove_infestation_bag", "$upgrade_decks", "maybe_proceed_campaign_a"]
     }
   ]
 }

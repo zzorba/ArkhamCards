@@ -45,7 +45,10 @@ export interface DeckProblem {
 export interface DeckMeta {
   faction_selected?: FactionCodeType;
   deck_size_selected?: string;
+  alternate_front?: string;
+  alternate_back?: string;
 }
+
 export interface Deck {
   id: number;
   name: string;

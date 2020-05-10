@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import BasicButton from 'components/core/BasicButton';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import CardListWrapper from 'components/campaignguide/CardListWrapper';
-import PickerStyleButton from 'components/campaignguide/prompts/PickerStyleButton';
+import PickerStyleButton from 'components/core/PickerStyleButton';
 import Card from 'data/Card';
 import { RandomLocationInput } from 'data/scenario/types';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';

@@ -3,7 +3,7 @@ import { filter, keys, flatMap, map, range, uniq, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
-import MultiPickerComponent from 'components/campaignguide/prompts/MultiPickerComponent';
+import MultiPickerComponent from 'components/core/MultiPickerComponent';
 import { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';

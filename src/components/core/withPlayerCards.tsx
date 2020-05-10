@@ -26,7 +26,7 @@ interface ReduxProps {
 }
 export default function withPlayerCards<Props, ExtraProps={}>(
   WrappedComponent: React.ComponentType<Props & PlayerCardProps & ExtraProps>,
-  computeExtraProps?: (cards: Results<Card>) => ExtraProps
+  computeExtraProps?: (cards: Results<Card>, props: Props) => ExtraProps
 ): React.ComponentType<Props & TabooSetOverride> {
   const mapStateToProps = (
     state: AppState,
@@ -70,7 +70,7 @@ export default function withPlayerCards<Props, ExtraProps={}>(
             tabooSets: results.tabooSets,
           };
           const extraProps: ExtraProps = computeExtraProps ?
-            computeExtraProps(playerCards) :
+            computeExtraProps(playerCards, props) :
             ({} as ExtraProps);
           return {
             ...extraProps,

@@ -16,14 +16,16 @@ interface Props {
     textColor: string;
   };
   widget?: React.ReactNode;
+  noBorder?: boolean;
 }
 
 export default class PickerStyleButton extends React.Component<Props> {
   renderContent() {
-    const { colors, disabled, title, value, widget } = this.props;
+    const { colors, disabled, title, value, widget, noBorder } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
         backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
+        borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
       }]}>
         <Text style={[
           style.defaultTitleStyle,
@@ -83,7 +85,6 @@ const style = StyleSheet.create({
     backgroundColor: COLORS.backgroundColor,
     alignItems: 'center',
     flexDirection: 'row',
-    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
   },
   defaultTitleStyle: {

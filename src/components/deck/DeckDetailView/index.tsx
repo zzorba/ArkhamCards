@@ -111,6 +111,7 @@ interface UpgradeCardProps {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  parallelInvestigators: Card[];
 }
 
 interface ReduxActionProps {
@@ -864,14 +865,17 @@ class DeckDetailView extends React.Component<Props, State> {
       (!!metaChanges && metaChanges.length > 0);
   }
 
-  _setMeta = (key: string, value: string) => {
+  _setMeta = (key: keyof DeckMeta, value?: string) => {
     const {
       meta,
     } = this.state;
-    const updatedMeta = {
+    const updatedMeta: DeckMeta = {
       ...meta,
       [key]: value,
     };
+    if (value === undefined) {
+      delete updatedMeta[key];
+    }
     this.setState({
       meta: updatedMeta,
       hasPendingEdits: this.hasPendingEdits(
@@ -1642,6 +1646,7 @@ class DeckDetailView extends React.Component<Props, State> {
       width,
       inCollection,
       hideCampaign,
+      parallelInvestigators,
     } = this.props;
     const {
       nameChange,
@@ -1663,6 +1668,7 @@ class DeckDetailView extends React.Component<Props, State> {
             componentId={componentId}
             fontScale={fontScale}
             inCollection={inCollection}
+            parallelInvestigators={parallelInvestigators}
             deck={deck}
             editable={editable}
             meta={meta}
@@ -1819,7 +1825,12 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
           )
         )
       ),
-      (cards: Results<Card>) => {
+      (
+        cards: Results<Card>,
+        props: ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps
+      ) => {
+        const investigator = props.deck && props.deck.investigator_code;
+        const parallelInvestigators: Card[] = [];
         const cardsByName: {
           [name: string]: Card[];
         } = {};
@@ -1827,6 +1838,9 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
           [name: string]: Card[];
         } = {};
         forEach(cards, card => {
+          if (investigator && card.alternate_of === investigator) {
+            parallelInvestigators.push(card);
+          }
           if (cardsByName[card.real_name]) {
             cardsByName[card.real_name].push(card);
           } else {
@@ -1843,6 +1857,7 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
         return {
           cardsByName,
           bondedCardsByName,
+          parallelInvestigators,
         };
       }
     )

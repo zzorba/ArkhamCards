@@ -22,7 +22,8 @@ export interface PickerProps {
     textColor: string;
   };
   defaultLabel?: string;
-  topBorder: boolean;
+  topBorder?: boolean;
+  noBorder?: boolean;
 }
 
 interface SingleConfig {
@@ -97,6 +98,7 @@ export default class PickerComponent extends React.Component<Props> {
       description,
       defaultLabel,
       topBorder,
+      noBorder,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -169,7 +171,7 @@ export default class PickerComponent extends React.Component<Props> {
           flexDirection: 'row',
           justifyContent: 'space-between',
           backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
-          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
           borderColor: '#888',
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,
         }}
