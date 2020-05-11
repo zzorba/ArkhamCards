@@ -9,6 +9,7 @@ import {
 import { last } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
+import KeepAwake from 'react-native-keep-awake';
 
 import CampaignGuideContext, { CampaignGuideContextType } from './CampaignGuideContext';
 import { ScenarioGuideContextType } from './ScenarioGuideContext';
@@ -184,6 +185,7 @@ class ScenarioView extends React.Component<Props> {
         enabled
         keyboardVerticalOffset={100}
       >
+        <KeepAwake />
         <ScrollView>
           <StepsComponent
             componentId={componentId}

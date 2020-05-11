@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { cloneDeep, shuffle } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
+import KeepAwake from 'react-native-keep-awake';
 
 import BasicButton from 'components/core/BasicButton';
 import { ChaosBag } from 'constants';
@@ -262,6 +263,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
 
     return (
       <ScrollView style={styles.containerBottom}>
+        <KeepAwake />
         <View style={styles.containerTop}>
           <View style={styles.chaosTokenView}>
             { this.renderChaosToken() }

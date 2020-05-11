@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import { Results } from 'realm';
 import LinearGradient from 'react-native-linear-gradient';
+import KeepAwake from 'react-native-keep-awake';
 
 import BasicButton from 'components/core/BasicButton';
 import InvestigatorOddsComponent from './InvestigatorOddsComponent';
@@ -393,6 +394,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     } = this.state;
     return (
       <View style={styles.container}>
+        <KeepAwake />
         <ScrollView style={styles.container}>
           { this.renderContent(campaign) }
           <View style={styles.finePrint}>

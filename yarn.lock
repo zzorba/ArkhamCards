@@ -2692,6 +2692,13 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
+"@types/react-native-keep-awake@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-native-keep-awake/-/react-native-keep-awake-2.0.2.tgz#a4229dd39ebb7c3d9a99c8e484c1bdc1fbec28a6"
+  integrity sha512-IRAAt0aQiJXjbbYdJ8mf3zyDucDYyUpfLqIXAVKDXBTVtQMwirFcqfqMoFvoWHCpLgrGBunBLHZKhsAeerspCQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native-svg-charts@5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@types/react-native-svg-charts/-/react-native-svg-charts-5.0.3.tgz#79ba443c2150d48b9bef5e33ccaadcca586a3875"
@@ -2703,7 +2710,7 @@
     "@types/react-native" "*"
     react-native-svg "^6.2.1"
 
-"@types/react-native-uuid@^1.4.0":
+"@types/react-native-uuid@1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@types/react-native-uuid/-/react-native-uuid-1.4.0.tgz#b37501042bbeb7066b7386804adf41f1b219f18f"
   integrity sha512-armOJH4Zcfq/pQ+Wj1wFWKuOI7Vdn5VlvqomdgGFkW5C2pBFEvrPwL/04xDLU6HFq1k9Rg/r9NNGKRDJiW+wtQ==
@@ -3437,7 +3444,7 @@ babel-plugin-macros@^2.4.2:
     cosmiconfig "^5.2.0"
     resolve "^1.10.0"
 
-babel-plugin-module-resolver@^4.0.0:
+babel-plugin-module-resolver@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-module-resolver/-/babel-plugin-module-resolver-4.0.0.tgz#8f3a3d9d48287dc1d3b0d5595113adabd36a847f"
   integrity sha512-3pdEq3PXALilSJ6dnC4wMWr0AZixHRM4utpdpBR9g5QG7B7JwWyukQv7a9hVxkbGFl+nQbrHDqqQOIBtTXTP/Q==
@@ -9541,7 +9548,7 @@ react-native-flip-card@3.5.5:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-gesture-handler@^1.6.1:
+react-native-gesture-handler@1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
   integrity sha512-gQgIKhDiYf754yzhhliagLuLupvGb6ZyBdzYzr7aus3Fyi87TLOw63ers+r4kGw0h26oAWTAdHd34JnF4NeL6Q==
@@ -9550,6 +9557,11 @@ react-native-gesture-handler@^1.6.1:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-keep-awake@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-keep-awake/-/react-native-keep-awake-4.0.0.tgz#d89fdc3fb60b3cffa979ef37dc5816196df998a2"
+  integrity sha512-0Fotox+eLXQooeibVs3P60yASYUWjtRw9MZNmbuHt5UZQrgUrAKsE4jm7gTr4tPU1m1RkwGzcgUFpcOkh/ec7g==
 
 react-native-keychain@6.0.0:
   version "6.0.0"
