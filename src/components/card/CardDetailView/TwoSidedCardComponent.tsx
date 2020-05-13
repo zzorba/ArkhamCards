@@ -16,6 +16,7 @@ import {
   FACTION_BACKGROUND_COLORS,
   RANDOM_BASIC_WEAKNESS,
 } from 'constants';
+import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
 import typography from 'styles/typography';
 import space, { isBig, xs, s } from 'styles/space';
 import AppIcon from 'icons/AppIcon';
@@ -204,15 +205,16 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTestIcons(card: BaseCard) {
+    const { fontScale } = this.props;
     if (card.type_code === 'investigator') {
       /* eslint-disable no-irregular-whitespace */
       return (
-        <Text style={typography.cardText}>
-          { `${card.skill_willpower} ` }<ArkhamIcon name="willpower" size={SMALL_ICON_SIZE} color="#000" />.
-          { `  ${card.skill_intellect} ` }<ArkhamIcon name="intellect" size={SMALL_ICON_SIZE} color="#000" />.
-          { `  ${card.skill_combat} ` }<ArkhamIcon name="combat" size={SMALL_ICON_SIZE} color="#000" />.
-          { `  ${card.skill_agility} ` } <ArkhamIcon name="agility" size={SMALL_ICON_SIZE} color="#000" />.
-        </Text>
+        <View style={styles.testIconRow}>
+          <InvestigatorStatLine
+            investigator={card}
+            fontScale={fontScale}
+          />
+        </View>
       );
     }
     const skills = flatMap(SKILL_FIELDS, skill => {

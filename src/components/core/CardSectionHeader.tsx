@@ -35,7 +35,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     const {
       fontScale,
     } = this.props;
-    const SMALL_EDIT_ICON_SIZE = 24 * iconSizeScale * fontScale;
+    const SMALL_EDIT_ICON_SIZE = 30 * iconSizeScale * fontScale;
     return (
       <View style={[
         styles.superHeaderRow,
@@ -118,6 +118,7 @@ export default class CardSectionHeader extends React.Component<Props> {
 const styles = StyleSheet.create({
   superHeaderText: {
     color: '#FFF',
+    fontWeight: '500',
   },
   placeholder: {
     backgroundColor: COLORS.backgroundColor,
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   superHeaderRow: {
     borderBottomWidth: 1,
     paddingLeft: s,
-    paddingRight: m,
+    paddingRight: xs,
     borderColor: '#bdbdbd',
     flexDirection: 'row',
     justifyContent: 'space-between',

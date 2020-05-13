@@ -1,5 +1,5 @@
 import React from 'react';
-import { find } from 'lodash';
+import { findIndex, map } from 'lodash';
 import Realm from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import { connectRealm } from 'react-native-realm';
 import { SettingsPicker } from 'react-native-settings-components';
 
 import { t } from 'ttag';
+import SinglePickerComponent from 'components/core/SinglePickerComponent';
 import { fetchCards } from 'components/card/actions';
 import Card from 'data/Card';
 import { AppState } from 'reducers';
@@ -45,7 +46,8 @@ class LanguagePicker extends React.Component<Props> {
     this.languagePickerRef = ref;
   }
 
-  _onLanguageChange = (newLang: string) => {
+  _onLanguageChange = (index: number) => {
+    const newLang = LANGUAGES[index].value;
     this.languagePickerRef && this.languagePickerRef.closeModal();
     const {
       realm,
@@ -57,50 +59,35 @@ class LanguagePicker extends React.Component<Props> {
     }
   };
 
-  _langCodeToLanguage = (lang: string) => {
-    const language = find(LANGUAGES, obj => obj.value === lang);
-    if (language) {
-      return language.label;
-    }
-    return 'Unknown';
-  }
-
   render() {
     const {
       cardsLoading,
       lang,
     } = this.props;
     return (
-      <SettingsPicker
-        ref={this._captureLanguagePickerRef}
+      <SinglePickerComponent
         title={t`Card Language`}
-        value={lang}
-        dialogDescription={t`Note: not all cards have translations available.`}
-        valueFormat={this._langCodeToLanguage}
-        onValueChange={this._onLanguageChange}
-        modalStyle={{
-          header: {
-            wrapper: {
-              backgroundColor: COLORS.lightBlue,
-            },
-            description: {
-              paddingTop: 8,
-            },
-          },
-          list: {
-            itemColor: COLORS.lightBlue,
-          },
+        description={t`Note: not all cards have translations available.`}
+        onChoiceChange={this._onLanguageChange}
+        selectedIndex={findIndex(LANGUAGES, x => x.value === lang)}
+        choices={map(LANGUAGES, lang => {
+          return {
+            text: lang.label,
+          };
+        })}
+        colors={{
+          modalColor: COLORS.lightBlue,
+          modalTextColor: '#FFF',
+          backgroundColor: '#FFF',
+          textColor: COLORS.darkTextColor,
         }}
-        valueStyle={{
-          color: COLORS.black,
-        }}
-        options={LANGUAGES}
-        disabled={cardsLoading}
+        editable={!cardsLoading}
+        settingsStyle
+        hideWidget
       />
     );
   }
 }
-
 
 function mapStateToProps(state: AppState): ReduxProps {
   return {

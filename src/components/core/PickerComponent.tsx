@@ -24,6 +24,9 @@ export interface PickerProps {
   defaultLabel?: string;
   topBorder?: boolean;
   noBorder?: boolean;
+  settingsStyle?: boolean;
+  open?: boolean;
+  hideWidget?: boolean;
 }
 
 interface SingleConfig {
@@ -47,6 +50,15 @@ export default class PickerComponent extends React.Component<Props> {
 
   _capturePickerRef = (ref: SettingsPicker<number>) => {
     this.pickerRef = ref;
+    if (this.props.open && this.pickerRef) {
+      this.pickerRef.openModal();
+    }
+  };
+
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.open && !prevProps.open) {
+      this.pickerRef && this.pickerRef.openModal();
+    }
   }
 
   _onSingleChoiceChange = (idx: number) => {
@@ -99,6 +111,8 @@ export default class PickerComponent extends React.Component<Props> {
       defaultLabel,
       topBorder,
       noBorder,
+      settingsStyle,
+      hideWidget,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -132,10 +146,12 @@ export default class PickerComponent extends React.Component<Props> {
             wrapper: {
               backgroundColor: colors ? colors.modalColor : COLORS.lightBlue,
             },
-            title: {
+            title: settingsStyle ? {
+              color: colors ? colors.modalTextColor : COLORS.white,
+            } : {
               ...typography.mediumGameFont,
               color: colors ? colors.modalTextColor : COLORS.white,
-            },
+            } ,
             description: {
               paddingTop: 8,
               color: colors ? colors.modalTextColor : COLORS.white,
@@ -150,7 +166,9 @@ export default class PickerComponent extends React.Component<Props> {
         disabledOverlayStyle={{
           backgroundColor: 'transparent',
         }}
-        titleStyle={{
+        titleStyle={settingsStyle ? {
+          color: colors ? colors.textColor : COLORS.darkTextColor,
+        } : {
           ...typography.mediumGameFont,
           color: colors ? colors.textColor : COLORS.darkTextColor,
           fontWeight: '600',
@@ -177,7 +195,7 @@ export default class PickerComponent extends React.Component<Props> {
         }}
         widgetStyle={{}}
         widget={
-          editable ? (
+          editable && !hideWidget ? (
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}

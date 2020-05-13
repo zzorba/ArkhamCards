@@ -4,7 +4,6 @@ import {
   SectionList,
   SectionListData,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -25,20 +24,21 @@ import {
   Slots,
   Trauma,
 } from 'actions/types';
+import HealthSanityIcon from 'components/core/HealthSanityIcon';
 import { showCard, showCardSwipe } from 'components/nav/helper';
-import ArkhamIcon from 'icons/ArkhamIcon';
 import AppIcon from 'icons/AppIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
+import CardTextComponent from 'components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
 import CardSectionHeader, { CardSectionHeaderData } from 'components/core/CardSectionHeader';
 import TabooSetPicker from 'components/core/TabooSetPicker';
-import CardSearchResult from '../../cardlist/CardSearchResult';
-import { FACTION_DARK_GRADIENTS, BODY_OF_A_YITHIAN } from 'constants';
+import CardSearchResult from 'components/cardlist/CardSearchResult';
+import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
+import { FACTION_COLORS, FACTION_DARK_GRADIENTS, BODY_OF_A_YITHIAN } from 'constants';
 import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
-import typography from 'styles/typography';
 import COLORS from 'styles/colors';
 import { isBig, m, s, xs } from 'styles/space';
 import DeckProblemRow from 'components/core/DeckProblemRow';
@@ -436,54 +436,6 @@ export default class DeckViewTab extends React.Component<Props> {
     ];
   }
 
-  renderInvestigatorStats() {
-    const {
-      parsedDeck: {
-        investigator,
-      },
-      fontScale,
-    } = this.props;
-
-    const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 20;
-    const health = investigator.health || 0;
-    const sanity = investigator.sanity || 0;
-    return (
-      <>
-        <View style={styles.skillRow}>
-          <Text style={typography.mediumGameFont}>
-            { investigator.name }
-          </Text>
-        </View>
-        <View style={styles.skillRow}>
-          <Text style={typography.mediumGameFont}>
-            { investigator.skill_willpower || 0 }
-            <ArkhamIcon name="willpower" size={ICON_SIZE} color="#222" />
-          </Text>
-          <Text style={typography.mediumGameFont}>
-            { investigator.skill_intellect || 0 }
-            <ArkhamIcon name="intellect" size={ICON_SIZE} color="#222" />
-          </Text>
-          <Text style={typography.mediumGameFont}>
-            { investigator.skill_combat || 0 }
-            <ArkhamIcon name="combat" size={ICON_SIZE} color="#222" />
-          </Text>
-          <Text style={typography.mediumGameFont}>
-            { investigator.skill_agility || 0 }
-            <ArkhamIcon name="agility" size={ICON_SIZE} color="#222" />
-          </Text>
-        </View>
-        <View style={styles.skillRow}>
-          <Text style={typography.mediumGameFont}>
-            { t`Health: ${health}` }
-          </Text>
-          <Text style={typography.mediumGameFont}>
-            { t`Sanity: ${sanity}` }
-          </Text>
-        </View>
-      </>
-    );
-  }
-
   renderAvailableExperienceButton() {
     const {
       parsedDeck: {
@@ -573,23 +525,57 @@ export default class DeckViewTab extends React.Component<Props> {
         investigator,
         slots,
       },
+      fontScale,
     } = this.props;
 
+    const health = investigator.health || 0;
+    const sanity = investigator.sanity || 0;
+    const factionCode = investigator.factionCode();
     return (
       <View style={styles.column}>
         <TouchableOpacity onPress={this._showInvestigator}>
           <View style={styles.header}>
-            <View style={styles.image}>
-              <InvestigatorImage
-                card={investigator}
-                componentId={componentId}
-                yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
-                border
-              />
+            <View style={styles.headerRow}>
+              <View style={styles.image}>
+                <InvestigatorImage
+                  card={investigator}
+                  componentId={componentId}
+                  yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
+                  border
+                />
+              </View>
+              <View style={styles.metadata}>
+                <View style={styles.skillRow}>
+                  <InvestigatorStatLine
+                    fontScale={fontScale}
+                    investigator={investigator}
+                  />
+                </View>
+                <View style={styles.skillRow}>
+                  <HealthSanityIcon
+                    type="health"
+                    count={health}
+                    fontScale={fontScale}
+                  />
+                  <HealthSanityIcon
+                    type="sanity"
+                    count={sanity}
+                    fontScale={fontScale}
+                  />
+                </View>
+              </View>
             </View>
-            <View style={styles.metadata}>
-              { this.renderInvestigatorStats() }
-            </View>
+            { !!investigator.text && (
+              <View style={[
+                styles.gameTextBlock, {
+                  borderColor: (factionCode && FACTION_COLORS[factionCode]) || '#000000',
+                },
+              ]}>
+                <CardTextComponent
+                  text={investigator.text}
+                />
+              </View>
+            ) }
           </View>
         </TouchableOpacity>
       </View>
@@ -690,9 +676,13 @@ export default class DeckViewTab extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: m,
+    marginTop: s,
     marginLeft: s,
     marginRight: s,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  headerRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
   },
@@ -744,5 +734,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-around',
+    marginBottom: xs,
+  },
+  gameTextBlock: {
+    marginTop: m,
+    borderLeftWidth: 4,
+    paddingLeft: s,
+    marginBottom: s,
+    marginRight: s,
   },
 });
