@@ -9,7 +9,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import { SKILL_COLORS } from 'constants';
 import Card from 'data/Card';
 import { TINY_PHONE } from 'styles/sizes';
-import { isBig, s } from 'styles/space';
+import { isBig, m, s, xs } from 'styles/space';
 import typography from 'styles/typography';
 
 interface Props {
@@ -79,18 +79,19 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     paddingLeft: s,
     paddingRight: s,
+    marginLeft: TINY_PHONE ? 0 : s,
+    marginRight: TINY_PHONE ? xs : m,
     borderWidth: TINY_PHONE ? 0 : 1,
     borderColor: '#888',
-    backgroundColor: '#FFF',
+    backgroundColor: TINY_PHONE ? 'transparent' : '#FFF',
   },
   skillIcon: {
     marginLeft: 2,
   },
   skillRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'space-around',
     marginBottom: s,
-    width: '100%',
   },
 });

@@ -17,6 +17,8 @@ import {
   RANDOM_BASIC_WEAKNESS,
 } from 'constants';
 import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
+import HealthSanityLine from 'components/core/HealthSanityLine';
+
 import typography from 'styles/typography';
 import space, { isBig, xs, s } from 'styles/space';
 import AppIcon from 'icons/AppIcon';
@@ -184,38 +186,54 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     });
   };
 
+  renderType(card: BaseCard) {
+    if (card.type_code === 'investigator') {
+      return null;
+    }
+    if (!card.subtype_name && !card.type_name) {
+      return null;
+    }
+    return (
+      <Text style={[typography.cardText, styles.typeText]}>
+        { card.subtype_name ?
+          `${card.type_name}. ${card.subtype_name}` :
+          card.type_name }
+        { (card.type_code === 'agenda' || card.type_code === 'act') ? ` ${card.stage}` : '' }
+      </Text>
+    );
+  }
+
   renderMetadata(card: BaseCard) {
+    const { fontScale } = this.props;
     return (
       <View style={styles.metadataBlock}>
-        { !!(card.subtype_name || card.type_name) && (
-          <Text style={[typography.cardText, styles.typeText]}>
-            { card.subtype_name ?
-              `${card.type_name}. ${card.subtype_name}` :
-              card.type_name }
-            { (card.type_code === 'agenda' || card.type_code === 'act') ? ` ${card.stage}` : '' }
-          </Text>
-        ) }
+        { this.renderType(card) }
         { !!card.traits && (
           <Text style={[typography.cardText, styles.traitsText]}>
             { card.traits }
           </Text>
+        ) }
+        { card.type_code === 'investigator' && (
+          <>
+            <View style={styles.statLineRow}>
+              <InvestigatorStatLine
+                investigator={card}
+                fontScale={fontScale}
+              />
+            </View>
+            <HealthSanityLine
+              investigator={card}
+              fontScale={fontScale}
+            />
+          </>
         ) }
       </View>
     );
   }
 
   renderTestIcons(card: BaseCard) {
-    const { fontScale } = this.props;
     if (card.type_code === 'investigator') {
-      /* eslint-disable no-irregular-whitespace */
-      return (
-        <View style={styles.testIconRow}>
-          <InvestigatorStatLine
-            investigator={card}
-            fontScale={fontScale}
-          />
-        </View>
-      );
+      return null;
     }
     const skills = flatMap(SKILL_FIELDS, skill => {
       // @ts-ignore
@@ -310,13 +328,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           { `. ${t`Evade`}: ${num(card.enemy_evade)}. ` }
           { '\n' }
           { `${t`Damage`}: ${num(card.enemy_damage)}. ${t`Horror`}: ${num(card.enemy_horror)}. ` }
-        </Text>
-      );
-    }
-    if ((card.health && card.health > 0) || (card.sanity && card.sanity > 0)) {
-      return (
-        <Text style={typography.cardText}>
-          { `${t`Health`}: ${num(card.health)}. ${t`Sanity`}: ${num(card.sanity)}.` }
         </Text>
       );
     }
@@ -536,19 +547,21 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           { this.renderTitle(card, card.back_name || card.name, null) }
           <View style={styles.cardBody}>
             <View style={styles.typeBlock}>
-              <View style={styles.metadataBlock}>
-                <Text style={[typography.cardText, styles.typeText]}>
-                  { card.type_name }
-                  { (card.type_code === 'act' || card.type_code === 'agenda') ?
-                    ` ${card.stage}` :
-                    '' }
-                </Text>
-                { !!card.traits && (
-                  <Text style={[typography.cardText, styles.traitsText]}>
-                    { card.traits }
+              { card.type_code !== 'investigator' && (
+                <View style={styles.metadataBlock}>
+                  <Text style={[typography.cardText, styles.typeText]}>
+                    { card.type_name }
+                    { (card.type_code === 'act' || card.type_code === 'agenda') ?
+                      ` ${card.stage}` :
+                      '' }
                   </Text>
-                ) }
-              </View>
+                  { !!card.traits && (
+                    <Text style={[typography.cardText, styles.traitsText]}>
+                      { card.traits }
+                    </Text>
+                  ) }
+                </View>
+              ) }
               { !!card.back_flavor && flavorFirst &&
                 <CardFlavorTextComponent text={card.back_flavor} />
               }
@@ -739,6 +752,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const {
       simple,
       width,
+      fontScale,
     } = this.props;
     if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
       return (
@@ -782,6 +796,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 { this.renderImage(card) }
               </View>
               { !isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
+              { (card.type_code !== 'enemy' && card.type_code !== 'investigator' && (
+                (card.health && card.health > 0) || (card.sanity && card.sanity > 0))
+              ) && (
+                <HealthSanityLine
+                  investigator={card}
+                  fontScale={fontScale}
+                />
+              ) }
               { isFirst && !simple && this.renderCardFooter(card) }
             </View>
           </View>
@@ -903,7 +925,7 @@ const styles = StyleSheet.create({
   },
   gameTextBlock: {
     borderLeftWidth: 4,
-    paddingLeft: xs,
+    paddingLeft: s,
     marginBottom: s,
     marginRight: s,
   },
@@ -945,6 +967,10 @@ const styles = StyleSheet.create({
   },
   testIconRow: {
     flexDirection: 'row',
+  },
+  statLineRow: {
+    flexDirection: 'row',
+    marginTop: s,
   },
   testIcon: {
     marginLeft: 2,

@@ -24,7 +24,6 @@ import {
   Slots,
   Trauma,
 } from 'actions/types';
-import HealthSanityIcon from 'components/core/HealthSanityIcon';
 import { showCard, showCardSwipe } from 'components/nav/helper';
 import AppIcon from 'icons/AppIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
@@ -35,7 +34,8 @@ import CardSectionHeader, { CardSectionHeaderData } from 'components/core/CardSe
 import TabooSetPicker from 'components/core/TabooSetPicker';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
-import { FACTION_COLORS, FACTION_DARK_GRADIENTS, BODY_OF_A_YITHIAN } from 'constants';
+import HealthSanityLine from 'components/core/HealthSanityLine';
+import { FACTION_DARK_GRADIENTS, BODY_OF_A_YITHIAN } from 'constants';
 import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
@@ -522,20 +522,35 @@ export default class DeckViewTab extends React.Component<Props> {
     const {
       componentId,
       parsedDeck: {
-        investigator,
         slots,
       },
       fontScale,
+      cards,
     } = this.props;
+    const investigator = (
+      (slots[BODY_OF_A_YITHIAN] || 0) > 0 ?
+        cards[BODY_OF_A_YITHIAN] :
+        undefined
+    ) || this.props.parsedDeck.investigator;
 
-    const health = investigator.health || 0;
-    const sanity = investigator.sanity || 0;
-    const factionCode = investigator.factionCode();
     return (
       <View style={styles.column}>
         <TouchableOpacity onPress={this._showInvestigator}>
           <View style={styles.header}>
-            <View style={styles.headerRow}>
+            <View style={styles.headerTextColumn}>
+              <InvestigatorStatLine
+                fontScale={fontScale}
+                investigator={investigator}
+              />
+              { !!investigator.text && (
+                <View style={styles.gameTextBlock}>
+                  <CardTextComponent
+                    text={investigator.text}
+                  />
+                </View>
+              ) }
+            </View>
+            <View style={styles.headerColumn}>
               <View style={styles.image}>
                 <InvestigatorImage
                   card={investigator}
@@ -544,38 +559,11 @@ export default class DeckViewTab extends React.Component<Props> {
                   border
                 />
               </View>
-              <View style={styles.metadata}>
-                <View style={styles.skillRow}>
-                  <InvestigatorStatLine
-                    fontScale={fontScale}
-                    investigator={investigator}
-                  />
-                </View>
-                <View style={styles.skillRow}>
-                  <HealthSanityIcon
-                    type="health"
-                    count={health}
-                    fontScale={fontScale}
-                  />
-                  <HealthSanityIcon
-                    type="sanity"
-                    count={sanity}
-                    fontScale={fontScale}
-                  />
-                </View>
-              </View>
+              <HealthSanityLine
+                investigator={investigator}
+                fontScale={fontScale}
+              />
             </View>
-            { !!investigator.text && (
-              <View style={[
-                styles.gameTextBlock, {
-                  borderColor: (factionCode && FACTION_COLORS[factionCode]) || '#000000',
-                },
-              ]}>
-                <CardTextComponent
-                  text={investigator.text}
-                />
-              </View>
-            ) }
           </View>
         </TouchableOpacity>
       </View>
@@ -676,15 +664,27 @@ export default class DeckViewTab extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: s,
-    marginLeft: s,
+    marginTop: m,
+    marginLeft: xs,
     marginRight: s,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+  headerTextColumn: {
+    flexDirection: 'column',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  image: {
+    marginBottom: xs,
+  },
+  headerColumn: {
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    marginLeft: s,
   },
   headerWrapper: {
     position: 'relative',
@@ -695,15 +695,6 @@ const styles = StyleSheet.create({
   },
   column: {
     flex: 1,
-  },
-  metadata: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    flex: 1,
-    maxWidth: 300,
-  },
-  image: {
-    marginRight: s,
   },
   containerWrapper: {
     flexDirection: isBig ? 'row' : 'column',
@@ -729,17 +720,8 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     position: 'relative',
   },
-  skillRow: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginBottom: xs,
-  },
   gameTextBlock: {
-    marginTop: m,
-    borderLeftWidth: 4,
-    paddingLeft: s,
+    paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
   },

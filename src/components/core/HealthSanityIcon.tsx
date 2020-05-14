@@ -14,9 +14,19 @@ export function costIconSize(fontScale: number) {
 }
 
 interface Props {
-  count: number;
+  count: number | null;
   type: 'health' | 'sanity';
   fontScale: number;
+}
+
+function num(value: number | null) {
+  if (value === null) {
+    return '-';
+  }
+  if (value < 0) {
+    return 'X';
+  }
+  return value;
 }
 
 export default class HealthSanityIcon extends React.PureComponent<Props> {
@@ -25,8 +35,8 @@ export default class HealthSanityIcon extends React.PureComponent<Props> {
       type,
     } = this.props;
     switch (type) {
-      case 'health': return dark ? '#911017' : '#911017';
-      case 'sanity': return dark ? '#0c2445' : '#0c2445';
+      case 'health': return dark ? '#911017' : '#a74045';
+      case 'sanity': return dark ? '#0c2445' : '#3d506a';
     }
   }
 
@@ -52,8 +62,8 @@ export default class HealthSanityIcon extends React.PureComponent<Props> {
           />
         </View>
         <View style={[styles.icon, type === 'health' ? styles.healthText : styles.sanityText, style]}>
-          <TextStroke color={this.color(true)} stroke={2}>
-            <Text style={styles.count}>{ count }</Text>
+          <TextStroke color={this.color(true)} stroke={3}>
+            <Text style={styles.count}>{ num(count) }</Text>
           </TextStroke>
         </View>
       </View>

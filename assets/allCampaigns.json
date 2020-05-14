@@ -41761,13 +41761,18 @@
     },
     {
       "id": "process_backfired",
-      "text": "Because 4 tasks were completed, record in your Campaign Log that <i>the process backfired</i>.",
+      "text": "Because 4 tasks were completed, record in your Campaign Log that <i>the process backfired</i>. Each investigator earns 1 bonus experience as they gain insight into the secrets of the Earth.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_backfired",
           "text": "the process backfired."
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 1
         }
       ]
     },
