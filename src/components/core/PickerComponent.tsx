@@ -147,6 +147,7 @@ export default class PickerComponent extends React.Component<Props> {
               backgroundColor: colors ? colors.modalColor : COLORS.lightBlue,
             },
             title: settingsStyle ? {
+              ...typography.text,
               color: colors ? colors.modalTextColor : COLORS.white,
             } : {
               ...typography.mediumGameFont,

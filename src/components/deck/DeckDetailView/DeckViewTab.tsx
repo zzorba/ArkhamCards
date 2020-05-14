@@ -471,6 +471,7 @@ export default class DeckViewTab extends React.Component<Props> {
           </View>
         }
         noBorder
+        settingsStyle
       />
     );
   }

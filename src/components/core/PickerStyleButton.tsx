@@ -17,11 +17,20 @@ interface Props {
   };
   widget?: React.ReactNode;
   noBorder?: boolean;
+  settingsStyle?: boolean;
 }
 
 export default class PickerStyleButton extends React.Component<Props> {
   renderContent() {
-    const { colors, disabled, title, value, widget, noBorder } = this.props;
+    const {
+      colors,
+      disabled,
+      title,
+      value,
+      widget,
+      noBorder,
+      settingsStyle,
+    } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
         backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
@@ -31,11 +40,12 @@ export default class PickerStyleButton extends React.Component<Props> {
           style.defaultTitleStyle,
           space.paddingLeftM,
           space.paddingRightS,
-          typography.mediumGameFont,
-          {
-            color: colors ? colors.textColor : COLORS.black,
-            fontWeight: '600',
-          },
+          settingsStyle ? {} :
+            {
+              ...typography.mediumGameFont,
+              fontWeight: '600',
+            },
+          { color: colors ? colors.textColor : COLORS.black },
         ]}>
           { title }
         </Text>

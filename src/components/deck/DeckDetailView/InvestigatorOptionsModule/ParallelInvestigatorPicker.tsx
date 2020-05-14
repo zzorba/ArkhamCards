@@ -69,6 +69,7 @@ export default class ParallelInvestigatorPicker extends React.Component<Props> {
     const investigatorFaction = investigator.factionCode();
     return (
       <SinglePickerComponent
+        settingsStyle
         title={type === 'alternate_front' ? t`Card Front` : t`Card Back`}
         editable={!disabled}
         description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}

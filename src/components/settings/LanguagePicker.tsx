@@ -83,6 +83,7 @@ class LanguagePicker extends React.Component<Props> {
         }}
         editable={!cardsLoading}
         settingsStyle
+        noBorder
         hideWidget
       />
     );

@@ -49,6 +49,7 @@ export default class FactionSelectPicker extends React.Component<Props> {
     } = this.props;
     return (
       <SinglePickerComponent
+        settingsStyle
         title={name}
         editable={!disabled}
         description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}

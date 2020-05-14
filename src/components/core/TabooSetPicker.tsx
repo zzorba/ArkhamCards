@@ -69,7 +69,8 @@ class TabooSetPicker extends React.Component<Props> {
         }}
         editable={!disabled}
         open={open}
-        settingsStyle={!transparent}
+        settingsStyle
+        noBorder
         hideWidget={!transparent}
       />
     );
