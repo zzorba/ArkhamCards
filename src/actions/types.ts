@@ -132,6 +132,7 @@ export interface ParsedDeck {
   specialCards: SplitCards;
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
+  problem?: DeckProblem;
 }
 
 export interface Pack {

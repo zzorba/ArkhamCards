@@ -102,6 +102,9 @@ export default class DeckListRow extends React.Component<Props> {
       return null;
     }
     const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
+    if (!parsedDeck) {
+      return null;
+    }
     const xpString = DeckListRow.xpString(parsedDeck);
 
     const date: undefined | string = deck.date_update || deck.date_creation;

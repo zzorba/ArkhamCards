@@ -2,10 +2,8 @@ import React from 'react';
 import {
   find,
   findIndex,
-  flatMap,
   forEach,
   keys,
-  map,
   range,
   throttle,
 } from 'lodash';
@@ -53,7 +51,6 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import { updateCampaign } from 'components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from 'components/core/withPlayerCards';
-import DeckValidation from 'lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import Card from 'data/Card';
 import TabooSet from 'data/TabooSet';
@@ -1229,35 +1226,13 @@ class DeckDetailView extends React.Component<Props, State> {
 
   getProblem() {
     const {
-      cards,
-      deck,
-    } = this.props;
-    const {
       parsedDeck,
       loaded,
-      meta,
     } = this.state;
-    if (!deck || !loaded || !parsedDeck) {
-      return null;
+    if (!loaded || !parsedDeck) {
+      return undefined;
     }
-
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-      investigator,
-    } = parsedDeck;
-
-    const validator = new DeckValidation(investigator, slots, meta);
-    return validator.getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(
-        range(0, Math.max(0, slots[code] - (ignoreDeckLimitSlots[code] || 0))),
-        () => card
-      );
-    }));
+    return parsedDeck.problem;
   }
 
   _showCardUpgradeDialog = (card: Card) => {

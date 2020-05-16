@@ -41,11 +41,15 @@ class DeckXpSection extends React.Component<Props> {
     if (!previousDeck) {
       return null;
     }
-    const { changes } = parseBasicDeck(
+    const parsedDeck = parseBasicDeck(
       deck,
       cards,
       previousDeck
     );
+    if (!parsedDeck) {
+      return null;
+    }
+    const { changes } = parsedDeck;
     if (!changes) {
       return null;
     }

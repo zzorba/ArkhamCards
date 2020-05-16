@@ -70,6 +70,9 @@ export default class UpgradeDecksList extends React.Component<Props> {
     }
     if (!originalDeckIds.has(deck.id)) {
       const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
+      if (!parsedDeck) {
+        return null;
+      }
       return (
         <View style={styles.section}>
           <View style={styles.column}>

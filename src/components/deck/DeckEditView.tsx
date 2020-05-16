@@ -100,6 +100,9 @@ class DeckEditView extends React.Component<Props, State> {
       cards,
       previousDeck
     );
+    if (!pDeck) {
+      return null;
+    }
     return (
       <DeckNavFooter
         componentId={componentId}

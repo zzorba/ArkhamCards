@@ -59,7 +59,7 @@ function hasUpgrades(
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
   inCollection: { [pack_code: string]: boolean }
-) {
+): boolean {
   const card = cards[code];
   return !!(
     card &&

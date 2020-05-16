@@ -1,5 +1,4 @@
 import React from 'react';
-import { flatMap, keys, map, range } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -11,7 +10,6 @@ import { ngettext, msgid, t } from 'ttag';
 
 import AppIcon from 'icons/AppIcon';
 import { Deck, InvestigatorData, ParsedDeck, Trauma } from 'actions/types';
-import DeckValidation from 'lib/DeckValidation';
 import { parseBasicDeck } from 'lib/parseDeck';
 import Card, { CardsMap } from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -80,6 +78,9 @@ class CampaignDecks extends React.Component<Props> {
     }
     const eliminated = investigator.eliminated(investigatorData[investigator.code]);
     const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
+    if (!parsedDeck) {
+      return null;
+    }
     return (
       <View style={styles.investigatorSubNotes}>
         <View style={styles.section}>
@@ -139,26 +140,21 @@ class CampaignDecks extends React.Component<Props> {
       return null;
     }
     const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
+    if (!parsedDeck) {
+      return null;
+    }
     const {
-      slots,
-      ignoreDeckLimitSlots,
+      problem,
     } = parsedDeck;
-
-    const problemObj = new DeckValidation(investigator, deck.slots, deck.meta).getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(
-        range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
-        () => card
-      );
-    }));
     return (
       <View style={styles.investigatorNotes}>
-        { !!problemObj && !killedOrInsane && (
+        { !!problem && !killedOrInsane && (
           <View style={styles.section}>
-            <DeckProblemRow problem={problemObj} color="#222" fontScale={fontScale} />
+            <DeckProblemRow
+              problem={problem}
+              color="#222"
+              fontScale={fontScale}
+            />
           </View>
         ) }
         <View style={styles.section}>

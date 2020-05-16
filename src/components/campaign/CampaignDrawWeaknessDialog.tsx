@@ -1,5 +1,5 @@
 import React from 'react';
-import { head, flatMap, forEach, keys, map, range, sum, throttle } from 'lodash';
+import { head, forEach, map, sum, throttle } from 'lodash';
 import { Alert, Platform, StyleSheet, View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -16,7 +16,6 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { saveDeckChanges, DeckChanges } from 'components/deck/actions';
 import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import { iconsMap } from 'app/NavIcons';
-import DeckValidation from 'lib/DeckValidation';
 import { parseDeck } from 'lib/parseDeck';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -193,7 +192,6 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       saveDeckChanges,
       decks,
       cards,
-      investigators,
       saveWeakness,
       updateCampaign,
     } = this.props;
@@ -223,8 +221,6 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const deck = selectedDeckId && decks[selectedDeckId];
     if (deck) {
       const previousDeck = deck.previous_deck ? decks[deck.previous_deck] : undefined;
-      const investigator = investigators[deck.investigator_code];
-      const ignoreDeckLimitSlots = deck.ignoreDeckLimitSlots || {};
       const newSlots = CampaignDrawWeaknessDialog.updateSlots(
         deck.slots,
         pendingNextCard,
@@ -238,18 +234,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
         cards,
         previousDeck
       );
-      const validator = new DeckValidation(investigator, newSlots, deck.meta);
-      const problemObj = validator.getProblem(flatMap(keys(newSlots), code => {
-        const card = cards[code];
-        if (!card) {
-          return [];
-        }
-        return map(
-          range(0, Math.max(0, newSlots[code] - (ignoreDeckLimitSlots[code] || 0))),
-          () => card
-        );
-      }));
-      const problem = problemObj ? problemObj.reason : '';
+      const problem = parsedDeck && parsedDeck.problem ? parsedDeck.problem.reason : '';
 
       this.setState({
         saving: true,
@@ -257,7 +242,7 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       saveDeckChanges(deck, {
         slots: newSlots,
         problem,
-        spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
+        spentXp: parsedDeck && parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
       }).then(() => {
         const newWeaknessSet = {
           ...weaknessSet,

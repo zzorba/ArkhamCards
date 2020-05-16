@@ -107,10 +107,9 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     }
 
     const parsedDeck = this.updateXp(newSlots);
-
     this.setState({
       slots: newSlots,
-      parsedDeck: parsedDeck,
+      parsedDeck: parsedDeck || this.state.parsedDeck,
     });
 
     updateSlots(newSlots);
@@ -137,7 +136,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
 
     this.setState({
       slots: newSlots,
-      parsedDeck: parsedDeck,
+      parsedDeck: parsedDeck || this.state.parsedDeck,
     });
 
     updateSlots(newSlots);
@@ -169,7 +168,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     return sumBy(namedCards, card => slots[card.code] || 0) > limit;
   }
 
-  updateXp(slots: Slots) {
+  updateXp(slots: Slots): ParsedDeck | undefined {
     const {
       cards,
       ignoreDeckLimitSlots,

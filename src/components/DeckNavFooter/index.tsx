@@ -1,5 +1,4 @@
 import React from 'react';
-import { flatMap, keys, map, range } from 'lodash';
 import {
   View,
   Text,
@@ -18,7 +17,6 @@ import { CardsMap } from 'data/Card';
 import typography from 'styles/typography';
 import { TINY_PHONE } from 'styles/sizes';
 import COLORS from 'styles/colors';
-import DeckValidation from 'lib/DeckValidation';
 import { showCardCharts, showDrawSimulator } from 'components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { FACTION_DARK_GRADIENTS } from 'constants';
@@ -55,27 +53,11 @@ export default class DeckNavFooter extends React.Component<Props> {
 
   renderProblem() {
     const {
-      cards,
       parsedDeck: {
-        slots,
-        ignoreDeckLimitSlots,
-        investigator,
+        problem,
       },
-      meta,
       fontScale,
     } = this.props;
-
-    const validator = new DeckValidation(investigator, slots, meta);
-    const problem = validator.getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(
-        range(0, Math.max(0, slots[code] - (ignoreDeckLimitSlots[code] || 0))),
-        () => card
-      );
-    }));
 
     if (!problem) {
       return null;
