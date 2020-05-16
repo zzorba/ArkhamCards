@@ -57,7 +57,7 @@ import DeckValidation from 'lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import Card from 'data/Card';
 import TabooSet from 'data/TabooSet';
-import { parseDeck } from 'lib/parseDeck';
+import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import { DeckDescriptionProps } from '../DeckDescriptionView';
@@ -319,9 +319,10 @@ class DeckDetailView extends React.Component<Props, State> {
         } = this.props;
         const {
           slots,
+          meta,
           ignoreDeckLimitSlots,
         } = this.state;
-        const parsedDeck = parseDeck(deck, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
+        const parsedDeck = parseDeck(deck, meta, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           parsedDeck,
@@ -896,11 +897,12 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.props;
     const {
       slots,
+      meta,
     } = this.state;
     if (!deck) {
       return;
     }
-    const parsedDeck = parseDeck(deck, slots, newIgnoreDeckLimitSlots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, meta, slots, newIgnoreDeckLimitSlots, cards, previousDeck);
     this.setState({
       ignoreDeckLimitSlots: newIgnoreDeckLimitSlots,
       parsedDeck,
@@ -934,13 +936,14 @@ class DeckDetailView extends React.Component<Props, State> {
       previousDeck,
       cards,
     } = this.props;
+    const { meta } = this.state;
     if (!deck) {
       return;
     }
     const ignoreDeckLimitSlots = resetIgnoreDeckLimitSlots ?
       (deck.ignoreDeckLimitSlots || {}) :
       this.state.ignoreDeckLimitSlots;
-    const parsedDeck = parseDeck(deck, newSlots, ignoreDeckLimitSlots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, meta, newSlots, ignoreDeckLimitSlots, cards, previousDeck);
     this.setState({
       slots: newSlots,
       ignoreDeckLimitSlots: ignoreDeckLimitSlots,
@@ -966,7 +969,7 @@ class DeckDetailView extends React.Component<Props, State> {
     if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
       findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1 ||
     (!loaded && keys(slots).length === 0 && keys(deck.slots).length === 0)) {
-      const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+      const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
       this.setState({
         slots: deck.slots,
         meta: deck.meta || {},
@@ -1455,6 +1458,7 @@ class DeckDetailView extends React.Component<Props, State> {
       slots,
       ignoreDeckLimitSlots,
       xpAdjustment,
+      meta,
     } = this.state;
     this.setState({
       menuOpen: false,
@@ -1467,6 +1471,7 @@ class DeckDetailView extends React.Component<Props, State> {
           name: 'Deck.History',
           passProps: {
             id: parsedDeck.deck.id,
+            meta,
             slots,
             ignoreDeckLimitSlots,
             xpAdjustment,

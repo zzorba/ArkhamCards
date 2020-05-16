@@ -20,6 +20,7 @@ import {
   CardSplitType,
   Deck,
   DeckChanges,
+  DeckMeta,
   FactionCounts,
   ParsedDeck,
   SkillCounts,
@@ -224,6 +225,7 @@ function decSlot(slots: Slots, card: Card) {
 function getDeckChanges(
   cards: CardsMap,
   deck: Deck,
+  meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   previousDeck?: Deck
@@ -231,19 +233,27 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  const investigator = cards[deck.investigator_code];
-  if (!deck.previous_deck || !previousDeck || !investigator) {
+  if (!deck.previous_deck || !previousDeck) {
+    return undefined;
+  }
+  const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
+    previousDeck.investigator_code;
+  const investigator_code = meta.alternate_back ||
+    deck.investigator_code;
+  const previousInvestigator = cards[previous_investigator_code];
+  const investigator = cards[investigator_code];
+  if (!investigator || !previousInvestigator) {
     return undefined;
   }
   const oldDeckSize = new DeckValidation(
-    investigator,
+    previousInvestigator,
     previousDeck.slots,
     previousDeck.meta
   ).getDeckSize();
   const validation = new DeckValidation(
     investigator,
     slots,
-    deck.meta
+    meta
   );
   const allCards: Card[] = [];
   forEach(
@@ -480,9 +490,28 @@ function calculateTotalXp(
   }));
 }
 
+export function parseBasicDeck(
+  deck: Deck | null,
+  cards: CardsMap,
+  previousDeck?: Deck
+): ParsedDeck {
+  if (!deck) {
+    // @ts-ignore
+    return {};
+  }
+  return parseDeck(
+    deck,
+    deck.meta || {},
+    deck.slots,
+    deck.ignoreDeckLimitSlots || {},
+    cards,
+    previousDeck
+  );
+}
 
 export function parseDeck(
   deck: Deck | null,
+  meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   cards: CardsMap,
@@ -514,6 +543,7 @@ export function parseDeck(
   const changes = getDeckChanges(
     cards,
     deck,
+    meta,
     slots,
     ignoreDeckLimitSlots,
     previousDeck);

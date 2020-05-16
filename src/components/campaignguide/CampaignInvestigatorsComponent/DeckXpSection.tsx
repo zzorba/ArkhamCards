@@ -8,7 +8,7 @@ import CardSectionHeader from 'components/core/CardSectionHeader';
 import { showDeckModal } from 'components/nav/helper';
 import Card, { CardsMap } from 'data/Card';
 import { AppState, getDeck } from 'reducers';
-import { parseDeck } from 'lib/parseDeck';
+import { parseBasicDeck } from 'lib/parseDeck';
 
 interface OwnProps {
   componentId: string;
@@ -41,10 +41,8 @@ class DeckXpSection extends React.Component<Props> {
     if (!previousDeck) {
       return null;
     }
-    const { changes } = parseDeck(
+    const { changes } = parseBasicDeck(
       deck,
-      deck.slots,
-      deck.ignoreDeckLimitSlots,
       cards,
       previousDeck
     );

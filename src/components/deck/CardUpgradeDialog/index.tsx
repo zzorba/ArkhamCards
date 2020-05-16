@@ -175,11 +175,18 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       ignoreDeckLimitSlots,
       parsedDeck,
       previousDeck,
+      meta,
     } = this.props;
 
     const deck = parsedDeck.deck;
-
-    return parseDeck(deck, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
+    return parseDeck(
+      deck,
+      meta,
+      slots,
+      ignoreDeckLimitSlots || {},
+      cards,
+      previousDeck
+    );
   }
 
   _showNonCollection = () => {

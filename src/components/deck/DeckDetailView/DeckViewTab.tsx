@@ -236,14 +236,40 @@ export default class DeckViewTab extends React.Component<Props> {
     return item.id;
   };
 
-  _showInvestigator = () => {
+  investigatorFront() {
     const {
       parsedDeck: {
         investigator,
       },
+      meta,
+      parallelInvestigators,
+    } = this.props;
+    const altFront = meta.alternate_front && find(
+      parallelInvestigators,
+      card => card.code === meta.alternate_front);
+    return altFront || investigator;
+  }
+
+  investigatorBack() {
+    const {
+      parsedDeck: {
+        investigator,
+      },
+      meta,
+      parallelInvestigators,
+    } = this.props;
+    const altFront = meta.alternate_back && find(
+      parallelInvestigators,
+      card => card.code === meta.alternate_back);
+    return altFront || investigator;
+  }
+
+  _showInvestigator = () => {
+    const {
       componentId,
       tabooSetId,
     } = this.props;
+    const investigator = this.investigatorFront();
     showCard(
       componentId,
       investigator.code,
@@ -258,13 +284,13 @@ export default class DeckViewTab extends React.Component<Props> {
       componentId,
       tabooSetId,
       parsedDeck: {
-        investigator,
         slots,
       },
       renderFooter,
       onDeckCountChange,
       singleCardView,
     } = this.props;
+    const investigator = this.investigatorFront();
     if (singleCardView) {
       showCard(
         componentId,
@@ -296,7 +322,7 @@ export default class DeckViewTab extends React.Component<Props> {
       slots,
       onDeckCountChange,
       investigator,
-      renderFooter,
+      renderFooter
     );
   };
 
@@ -389,7 +415,6 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         normalCards,
         specialCards,
-        investigator,
         slots,
       },
       meta,
@@ -401,7 +426,7 @@ export default class DeckViewTab extends React.Component<Props> {
       inCollection,
       editable,
     } = this.props;
-
+    const investigator = this.investigatorBack();
     const validation = new DeckValidation(investigator, slots, meta);
 
     return [

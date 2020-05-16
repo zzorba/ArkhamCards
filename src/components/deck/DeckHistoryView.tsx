@@ -14,13 +14,14 @@ import { getDeckOptions } from 'components/nav/helper';
 import { NavigationProps } from 'components/nav/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import { Deck, DecksMap, ParsedDeck, Slots } from 'actions/types';
+import { Deck, DeckMeta, DecksMap, ParsedDeck, Slots } from 'actions/types';
 import { AppState, getAllDecks } from 'reducers';
 import { parseDeck } from 'lib/parseDeck';
 import COLORS from 'styles/colors';
 
 export interface DeckHistoryProps {
   id: number;
+  meta: DeckMeta;
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
   xpAdjustment: number;
@@ -42,6 +43,7 @@ class DeckHistoryView extends React.Component<Props> {
       slots,
       ignoreDeckLimitSlots,
       xpAdjustment,
+      meta,
     } = this.props;
     const decksResult: ParsedDeck[] = [];
     let deck: Deck | undefined = decks[id];
@@ -53,6 +55,7 @@ class DeckHistoryView extends React.Component<Props> {
       decksResult.push(
         parseDeck(
           deck,
+          currentDeck ? meta : (deck.meta || {}),
           currentDeck ? slots : deck.slots,
           currentDeck ? ignoreDeckLimitSlots : deck.ignoreDeckLimitSlots,
           cards,

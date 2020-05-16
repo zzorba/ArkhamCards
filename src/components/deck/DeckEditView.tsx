@@ -1,6 +1,6 @@
 import React from 'react';
-import Realm, { Results } from 'realm';
-import { find, head } from 'lodash';
+import Realm from 'realm';
+import { forEach, head } from 'lodash';
 import { connectRealm, CardResults } from 'react-native-realm';
 
 import { Deck, DeckMeta, Slots } from 'actions/types';
@@ -9,7 +9,7 @@ import CardSearchComponent from '../cardlist/CardSearchComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from 'lib/InvestigatorRequirements';
 import { filterToQuery, defaultFilterState } from 'lib/filters';
-import { STORY_CARDS_QUERY } from 'data/query';
+import { STORY_CARDS_QUERY, PLAYER_CARDS_QUERY } from 'data/query';
 import Card, { CardsMap } from 'data/Card';
 import { parseDeck } from 'lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
@@ -30,7 +30,7 @@ export interface EditDeckProps {
 interface RealmProps {
   realm: Realm;
   investigator?: Card;
-  cards: Results<Card>;
+  cards: CardsMap;
 }
 
 type Props = NavigationProps & EditDeckProps & RealmProps & DimensionsProps;
@@ -92,18 +92,12 @@ class DeckEditView extends React.Component<Props, State> {
       fontScale,
     } = this.props;
     const deckCardCounts = updatedDeckCardCounts || this.state.deckCardCounts;
-    const cardsInDeck: CardsMap = {};
-    cards.forEach(card => {
-      if (deckCardCounts[card.code] || deck.investigator_code === card.code ||
-        (previousDeck && previousDeck.slots[card.code])) {
-        cardsInDeck[card.code] = card;
-      }
-    });
     const pDeck = parseDeck(
       deck,
+      meta,
       deckCardCounts,
       ignoreDeckLimitSlots,
-      cardsInDeck,
+      cards,
       previousDeck
     );
     return (
@@ -112,7 +106,7 @@ class DeckEditView extends React.Component<Props, State> {
         fontScale={fontScale}
         meta={meta}
         parsedDeck={pDeck}
-        cards={cardsInDeck}
+        cards={cards}
         xpAdjustment={xpAdjustment || 0}
         controls={controls}
       />
@@ -158,15 +152,14 @@ class DeckEditView extends React.Component<Props, State> {
     const {
       componentId,
       tabooSetId,
-      cards,
       deck,
       storyOnly,
+      investigator,
     } = this.props;
 
     const {
       deckCardCounts,
     } = this.state;
-    const investigator = find(cards, card => card.code === deck.investigator_code);
     return (
       <CardSearchComponent
         componentId={componentId}
@@ -191,12 +184,22 @@ export default connectRealm<NavigationProps & EditDeckProps, RealmProps, Card>(
     mapToProps(
       results: CardResults<Card>,
       realm: Realm,
-      props: NavigationProps & EditDeckProps
+      { meta, deck, tabooSetId }: NavigationProps & EditDeckProps
     ) {
+      const cards: CardsMap = {};
+      forEach(
+        results.cards.filtered(`(${PLAYER_CARDS_QUERY} and ${Card.tabooSetQuery(tabooSetId)})`),
+        card => {
+          cards[card.code] = card;
+        });
+
+      const investigator_code = meta.alternate_back || deck.investigator_code;
       return {
         realm,
-        investigator: head(results.cards.filtered(`(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`)),
-        cards: results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
+        investigator: head(results.cards.filtered(
+          `(code == '${investigator_code}') and ${Card.tabooSetQuery(tabooSetId)}`
+        )),
+        cards,
       };
     },
   },

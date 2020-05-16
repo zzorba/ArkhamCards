@@ -6,6 +6,7 @@ import { connectRealm, CardAndTabooSetResults } from 'react-native-realm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import Card, { CardsMap } from 'data/Card';
+import { PLAYER_CARDS_QUERY } from 'data/query';
 import TabooSet from 'data/TabooSet';
 import { AppState, getTabooSet } from 'reducers';
 
@@ -50,7 +51,7 @@ export default function withPlayerCards<Props, ExtraProps={}>(
           props: Props & ReduxProps
         ): PlayerCardProps & ExtraProps {
           const playerCards = results.cards.filtered(
-            `((type_code == "investigator" AND encounter_code == null) OR deck_limit > 0 OR bonded_name != null) and ${Card.tabooSetQuery(props.tabooSetId)}`
+            `((type_code == "investigator" AND encounter_code == null) OR ${PLAYER_CARDS_QUERY} OR bonded_name != null) and ${Card.tabooSetQuery(props.tabooSetId)}`
           );
           const investigators: CardsMap = {};
           const cards: CardsMap = {};

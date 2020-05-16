@@ -17,7 +17,7 @@ import InvestigatorImage from 'components/core/InvestigatorImage';
 import FactionGradient from 'components/core/FactionGradient';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 import { toRelativeDateString } from 'lib/datetime';
-import { parseDeck } from 'lib/parseDeck';
+import { parseBasicDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
 import DeckTitleBarComponent from './DeckTitleBarComponent';
@@ -101,13 +101,7 @@ export default class DeckListRow extends React.Component<Props> {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(
-      deck,
-      deck.slots,
-      deck.ignoreDeckLimitSlots || {},
-      cards,
-      previousDeck
-    );
+    const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
     const xpString = DeckListRow.xpString(parsedDeck);
 
     const date: undefined | string = deck.date_update || deck.date_creation;

@@ -8,6 +8,7 @@ import CardSectionHeader from 'components/core/CardSectionHeader';
 import { scenarioRewards } from 'components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
+import { PLAYER_CARDS_QUERY } from 'data/query';
 import { getDeck, getTabooSet, AppState } from 'reducers';
 import CardSelectorComponent from 'components/cardlist/CardSelectorComponent';
 
@@ -169,7 +170,7 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
         props: OwnProps & ReduxProps
       ): RealmProps {
         const allStoryCards = results.cards.filtered(
-          `(encounter_code != null AND deck_limit > 0) and ${Card.tabooSetQuery(props.tabooSetId)}`
+          `(encounter_code != null) ${PLAYER_CARDS_QUERY} and ${Card.tabooSetQuery(props.tabooSetId)}`
         ).sorted([['renderName', false], ['xp', false]]);
         const deckStorySlots: Slots = {};
         const storyCards: Card[] = [];

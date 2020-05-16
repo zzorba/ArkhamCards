@@ -12,7 +12,7 @@ import { ngettext, msgid, t } from 'ttag';
 import AppIcon from 'icons/AppIcon';
 import { Deck, InvestigatorData, ParsedDeck, Trauma } from 'actions/types';
 import DeckValidation from 'lib/DeckValidation';
-import { parseDeck } from 'lib/parseDeck';
+import { parseBasicDeck } from 'lib/parseDeck';
 import Card, { CardsMap } from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { showDeckModal } from 'components/nav/helper';
@@ -79,7 +79,7 @@ class CampaignDecks extends React.Component<Props> {
       return null;
     }
     const eliminated = investigator.eliminated(investigatorData[investigator.code]);
-    const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+    const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
     return (
       <View style={styles.investigatorSubNotes}>
         <View style={styles.section}>
@@ -138,12 +138,7 @@ class CampaignDecks extends React.Component<Props> {
     if (!deck) {
       return null;
     }
-    const parsedDeck = parseDeck(
-      deck,
-      deck.slots,
-      deck.ignoreDeckLimitSlots || {},
-      cards,
-      previousDeck);
+    const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
     const {
       slots,
       ignoreDeckLimitSlots,

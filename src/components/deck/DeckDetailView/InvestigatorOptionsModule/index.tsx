@@ -71,6 +71,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
       </>
     );
   }
+
   render() {
     const {
       investigator,
@@ -81,10 +82,13 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
     } = this.props;
     const options = investigator.investigatorSelectOptions();
     if (!options.length) {
-      return <View style={styles.placeholder} />;
+      return (
+        <View style={styles.placeholder} />
+      );
     }
     return (
       <View>
+        { this.renderParallelOptions() }
         { map(options, (option, idx) => {
           return (
             <InvestigatorOption
