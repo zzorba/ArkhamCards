@@ -1,6 +1,7 @@
 import {
   flatMap,
   filter,
+  find,
   forEach,
   keys,
   map,
@@ -527,6 +528,7 @@ export function parseDeck(
   if (!investigator) {
     return undefined;
   }
+  const validation = new DeckValidation(investigator, slots, meta);
   const cardIds = map(
     sortBy(
       sortBy(
@@ -536,9 +538,12 @@ export function parseDeck(
       id => cards[id].name
     ),
     id => {
+      const card = cards[id];
       return {
         id,
         quantity: slots[id],
+        invalid: !validation.canIncludeCard(card, false),
+        limited: validation.isCardLimited(card),
       };
     });
   const specialCards = cardIds.filter(c =>
@@ -546,7 +551,6 @@ export function parseDeck(
   const normalCards = cardIds.filter(c =>
     !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
 
-  const validation = new DeckValidation(investigator, slots, meta);
   const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
   const problem = validation.getProblem(deckCards) || undefined;
 
@@ -590,5 +594,6 @@ export function parseDeck(
     ignoreDeckLimitSlots,
     changes,
     problem,
+    limitedSlots: !!find(validation.deckOptions(), option => !!option.limit),
   };
 }

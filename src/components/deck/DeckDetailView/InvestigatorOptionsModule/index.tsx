@@ -8,6 +8,8 @@ import { DeckMeta } from 'actions/types';
 import Card from 'data/Card';
 import { s } from 'styles/space';
 
+const HIDE_PARALLEL_INVESTIGATORS = true;
+
 interface Props {
   investigator: Card;
   meta: DeckMeta;
@@ -38,7 +40,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
       editWarning,
       meta,
     } = this.props;
-    if (!parallelInvestigators.length) {
+    if (!parallelInvestigators.length || HIDE_PARALLEL_INVESTIGATORS) {
       return null;
     }
 

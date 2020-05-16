@@ -274,6 +274,18 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    /*
+    forEach(this.props, (val, key) => {
+      if (prevProps[key] !== val) {
+        console.log(`Prop '${key}' changed`);
+      }
+    });
+    if (this.state) {
+      forEach(this.state, (val, key) => {
+        prevState[key] !== val && console.log(`State '${key}' changed`)
+      });
+    }
+    */
     const {
       deck,
       id,

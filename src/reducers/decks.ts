@@ -19,6 +19,7 @@ import {
   Deck,
   DecksMap,
 } from 'actions/types';
+import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
@@ -242,6 +243,15 @@ export default function(
   }
   if (action.type === UPDATE_DECK) {
     const deck = updateDeck(state, action);
+    const diff = deepDiff(state.all[action.deck.id] || {}, deck);
+    if (!diff || !diff.length) {
+      return state;
+    }
+
+    if (!deck) {
+      return state;
+    }
+
     const newState = {
       ...state,
       all: {

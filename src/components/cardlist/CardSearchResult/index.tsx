@@ -41,6 +41,7 @@ interface Props {
   hasSecondCore?: boolean;
   showZeroCount?: boolean;
   backgroundColor?: string;
+  invalid?: boolean;
 }
 
 export default class CardSearchResult extends React.PureComponent<Props> {
@@ -256,6 +257,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   renderCardName() {
     const {
       card,
+      invalid,
     } = this.props;
     const color = card.faction2_code ?
       FACTION_COLORS.dual :
@@ -263,7 +265,11 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
-          <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="clip">
+          <Text style={[
+            typography.text,
+            { color },
+            invalid ? { textDecorationLine: 'line-through' } : {},
+          ]} numberOfLines={1} ellipsizeMode="clip">
             { card.renderName }
           </Text>
           { this.renderTabooBlock() }

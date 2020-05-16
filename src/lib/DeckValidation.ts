@@ -229,12 +229,9 @@ export default class DeckValidation {
     return filter(cards, card => !this.canIncludeCard(card, true));
   }
 
-  limitedCards(cards: Card[]): Card[] {
-    this.initDeckOptionsCounts();
-    return filter(cards, card => {
-      const option = this.matchingDeckOption(card, false);
-      return !!(option && option.limit);
-    });
+  isCardLimited(card: Card): boolean {
+    const option = this.matchingDeckOption(card, false);
+    return !!(option && option.limit);
   }
 
   deckOptions(): DeckOption[] {

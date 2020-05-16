@@ -25,6 +25,8 @@ export interface TabooSetOverride {
 interface ReduxProps {
   tabooSetId?: number;
 }
+const NULL_EXTRA_PROPS = {};
+
 export default function withPlayerCards<Props, ExtraProps={}>(
   WrappedComponent: React.ComponentType<Props & PlayerCardProps & ExtraProps>,
   computeExtraProps?: (cards: Results<Card>, props: Props) => ExtraProps
@@ -72,7 +74,7 @@ export default function withPlayerCards<Props, ExtraProps={}>(
           };
           const extraProps: ExtraProps = computeExtraProps ?
             computeExtraProps(playerCards, props) :
-            ({} as ExtraProps);
+            (NULL_EXTRA_PROPS as ExtraProps);
           return {
             ...extraProps,
             ...playerCardProps,

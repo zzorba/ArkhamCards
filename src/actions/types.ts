@@ -99,6 +99,8 @@ export interface DeckChanges {
 export interface CardId {
   id: string;
   quantity: number;
+  invalid: boolean;
+  limited: boolean;
 }
 
 export interface AssetGroup {
@@ -133,6 +135,7 @@ export interface ParsedDeck {
   ignoreDeckLimitSlots: Slots;
   changes?: DeckChanges;
   problem?: DeckProblem;
+  limitedSlots: boolean;
 }
 
 export interface Pack {
