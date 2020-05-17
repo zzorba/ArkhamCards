@@ -1,99 +1,102 @@
-import { flatMap, forEach, groupBy, head, map, sortBy, uniq } from 'lodash';
+import { flatMap, forEach, groupBy, head, map, sortBy, uniq, values } from 'lodash';
 import Realm from 'realm';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from 'actions/types';
-import Card from 'data/Card';
-import EncounterSet from 'data/EncounterSet';
-import TabooSet from 'data/TabooSet';
-import FaqEntry from 'data/FaqEntry';
+import Card from 'data/entities/Card';
+import Database from 'data/entities/Database';
+import EncounterSet from 'data/entities/EncounterSet';
+import TabooSet from 'data/entities/TabooSet';
+import FaqEntry from 'data/entities/FaqEntry';
 
-export const syncTaboos = function(
-  realm: Realm,
+export const syncTaboos = async function(
+  db: Database,
   lang?: string,
   cache?: TabooCache
 ): Promise<TabooCache | null> {
   const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/taboos/`;
   const headers = new Headers();
-  if (cache &&
-    cache.lastModified &&
-    cache.tabooCount > 0 &&
-    realm.objects('Card').filtered('taboo_set_id > 0').length === cache.tabooCount
-  ) {
-    headers.append('If-Modified-Since', cache.lastModified);
+  if (cache && cache.lastModified && cache.tabooCount > 0) {
+    const cards = await db.cards();
+    const tabooCount = await cards.createQueryBuilder()
+      .where('taboo_set_id > 0')
+      .getCount();
+    if (tabooCount === cache.tabooCount) {
+      headers.append('If-Modified-Since', cache.lastModified);
+    }
   }
-  return fetch(uri, {
+  const response = await fetch(uri, {
     method: 'GET',
     headers,
-  }).then(response => {
-    if (response.status === 304 && cache) {
-      return Promise.resolve(cache);
-    }
-    const lastModified = response.headers.get('Last-Modified') || undefined;
-    return response.json().then(json => {
-      const allTabooCards = uniq(
-        flatMap(json, tabooJson => {
-          const cards = JSON.parse(tabooJson.cards);
-          return map(cards, card => card.code);
-        })
-      );
-      realm.write(() => {
-        forEach(json, tabooJson => {
-          const cards = JSON.parse(tabooJson.cards);
-          try {
-            realm.create(
-              'TabooSet',
-              TabooSet.fromJson(tabooJson, cards.length),
-              true
-            );
-          } catch (e) {
-            Alert.alert(`${e}`);
-            console.log(e);
-          }
-          forEach(allTabooCards, tabooCode => {
-            const card = head(realm.objects<Card>('Card').filtered(`code == '${tabooCode}' and (taboo_set_id == null OR taboo_set_id == 0)`));
-            if (card) {
-              realm.create(
-                'Card',
-                Card.placeholderTabooCard(tabooJson.id, card),
-                true
-              );
-            }
-          });
-          forEach(cards, cardJson => {
-            const code: string = cardJson.code;
-            const card = head(realm.objects<Card>('Card').filtered(`code == '${code}' and (taboo_set_id == null OR taboo_set_id == 0)`));
-            if (card) {
-              try {
-                card.taboo_set_id = 0;
-                // Mark the original card as the 'vanilla' version.
-                realm.create(
-                  'Card',
-                  Card.fromTabooCardJson(tabooJson.id, cardJson, card),
-                  true
-                );
-              } catch (e) {
-                Alert.alert(`${e}`);
-                console.log(e);
-              }
-            } else {
-              console.log(`Could not find old card: ${code}`);
-            }
-          });
-        });
-      });
-      return {
-        tabooCount: realm.objects('Card').filtered('taboo_set_id > 0').length,
-        lastModified,
-      };
-    });
   });
+  if (response.status === 304 && cache) {
+    return cache;
+  }
+  const lastModified = response.headers.get('Last-Modified') || undefined;
+  const json = await response.json();
+  const allTabooCards = uniq(
+    flatMap(json, tabooJson => {
+      const cards = JSON.parse(tabooJson.cards);
+      return map(cards, card => card.code);
+    })
+  );
+  const cardsRep = await db.cards();
+  const tabooSetsRep = await db.tabooSets();
+  await tabooSetsRep.createQueryBuilder().delete().execute();
+
+  for (let i = 0; i < json.length; i++) {
+    const tabooJson = json[i];
+    const cards = JSON.parse(tabooJson.cards);
+    try {
+      await tabooSetsRep.insert(TabooSet.fromJson(tabooJson, cards.length));
+    } catch (e) {
+      Alert.alert(`${e}`);
+      console.log(e);
+    }
+    for (let j = 0; j < allTabooCards.length; j++) {
+      const tabooCode = allTabooCards[j];
+      const card = await cardsRep.createQueryBuilder('card')
+        .where('(card.code = :code AND (card.taboo_set_id = null OR card.taboo_set_id = 0))')
+        .setParameters({ code: tabooCode })
+        .getOne();
+      if (card) {
+        cards.save(Card.placeholderTabooCard(tabooJson.id, card));
+      }
+    }
+    for (let j = 0; j < cards.length; j++) {
+      const cardJson = cards[j];
+      const code: string = cardJson.code;
+      const card = await cardsRep.createQueryBuilder()
+        .where('(code = :code AND (taboo_set_id = null OR taboo_set_id = 0))')
+        .setParameters({ code: cardJson.code })
+        .getOne();
+      if (card) {
+        try {
+          // Mark the original card as the 'vanilla' version.
+          await cardsRep.update({ id: card.id }, { taboo_set_id: 0 });
+          await cardsRep.insert(Card.fromTabooCardJson(tabooJson.id, cardJson, card));
+        } catch (e) {
+          Alert.alert(`${e}`);
+          console.log(e);
+        }
+      } else {
+        console.log(`Could not find old card: ${code}`);
+      }
+    }
+  }
+  const tabooCount = await cardsRep.createQueryBuilder()
+    .where('taboo_set_id > 0')
+    .getCount();
+  return {
+    tabooCount,
+    lastModified,
+  };
 };
 
-export const syncCards = function(
-  realm: Realm,
+export const syncCards = async function(
+  db: Database,
   packs: Pack[],
   lang?: string,
   cache?: CardCache
@@ -120,101 +123,123 @@ export const syncCards = function(
   const headers = new Headers();
   if (cache &&
     cache.lastModified &&
-    cache.cardCount > 0 &&
-    realm.objects('Card').length === cache.cardCount
+    cache.cardCount > 0
   ) {
-    headers.append('If-Modified-Since', cache.lastModified);
-  }
-  return fetch(uri, {
-    method: 'GET',
-    headers,
-  }).then(response => {
-    if (response.status === 304 && cache) {
-      return Promise.resolve(cache);
+    const cards = await db.cards();
+    const cardCount = await cards.createQueryBuilder('card')
+      .where('card.taboo_set_id = null OR card.taboo_set_id = 0')
+      .getCount();
+    if (cardCount === cache.cardCount) {
+      headers.append('If-Modified-Since', cache.lastModified);
     }
-    const lastModified = response.headers.get('Last-Modified') || undefined;
-    return response.json().then(json => {
-      realm.write(() => {
-        realm.create('EncounterSet', {
-          code: 'weaver_of_the_cosmos',
-          name: t`Weaver of the Cosmos`,
-        }, true);
-
-        forEach(json, cardJson => {
-          try {
-            const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
-            realm.create('Card', card, true);
-            const encounterSet = EncounterSet.fromCard(card);
-            if (encounterSet) {
-              realm.create('EncounterSet', encounterSet, true);
-            }
-          } catch (e) {
-            Alert.alert(`${e}`);
-            console.log(e);
-            console.log(cardJson);
-          }
-        });
-        forEach(
-          groupBy(
-            realm.objects<Card>('Card')
-              .filtered(`deck_limit > 0 and spoiler != true and xp != null and (taboo_set_id == null or taboo_set_id == 0)`),
-            card => card.real_name
-          ), (cards) => {
-            if (cards.length > 1) {
-              const maxXpCard = head(sortBy(cards, card => -(card.xp || 0)));
-              if (maxXpCard) {
-                forEach(cards, card => {
-                  const xp = card.xp || 0;
-                  card.has_upgrades = xp < (maxXpCard.xp || 0);
-                });
-              }
-            }
-          });
-      });
-      return {
-        cardCount: realm.objects('Card').length,
-        lastModified,
-      };
+  }
+  try {
+    const response = await fetch(uri, {
+      method: 'GET',
+      headers,
     });
-  }).catch(e => {
+    if (response.status === 304 && cache) {
+      return cache;
+    }
+
+    const lastModified = response.headers.get('Last-Modified') || undefined;
+    const json = await response.json();
+    const encounterSets = await db.encounterSets();
+    const cards = await db.cards();
+    const tabooSets = await db.tabooSets();
+
+    // Delete the tables.
+    await cards.createQueryBuilder().delete().execute();
+    await encounterSets.createQueryBuilder().delete().execute();
+    await tabooSets.createQueryBuilder().delete().execute();
+
+    encounterSets.insert({
+      code: 'weaver_of_the_cosmos',
+      name: t`Weaver of the Cosmos`,
+    });
+
+    const cardsToInsert: Card[] = [];
+    const encounterSetsToInsert: {
+      [code: string]: EncounterSet | undefined;
+    } = {};
+    forEach(json, cardJson => {
+      try {
+        const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
+        cardsToInsert.push(card);
+        const encounterSet = EncounterSet.fromCard(card);
+        if (encounterSet && !encounterSetsToInsert[encounterSet.code]) {
+          encounterSetsToInsert[encounterSet.code] = encounterSet;
+        }
+      } catch (e) {
+        Alert.alert(`${e}`);
+        console.log(e);
+        console.log(cardJson);
+      }
+    });
+    await cards.insert(cardsToInsert);
+    await encounterSets.insert(encounterSetsToInsert);
+
+    const playerCards = await cards.createQueryBuilder()
+      .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id = null OR taboo_set_id = 0)')
+      .getMany();
+    const cardsByName = values(groupBy(playerCards, card => card.real_name));
+    for (let i = 0; i < cardsByName.length; i++) {
+      const cardsGroup = cardsByName[i];
+      if (cardsGroup.length > 1) {
+        const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
+        if (maxXpCard) {
+          for (let j = 0; j < cardsGroup.length; j++) {
+            const card = cardsGroup[j];
+            const xp = card.xp || 0;
+            await cards.update({ id: card.id }, { has_upgrades: xp < (maxXpCard.xp || 0) });
+          }
+        }
+      }
+    }
+    const cardCount = await cards.createQueryBuilder('card')
+      .where('card.taboo_set_id = null OR card.taboo_set_id = 0')
+      .getCount();
+    return {
+      cardCount,
+      lastModified,
+    };
+  } catch (e) {
     console.log(e);
     return Promise.resolve(null);
-  });
+  }
 };
 
-export const getFaqEntry = function(realm: Realm, code: string) {
-  const faqEntry: FaqEntry | undefined = head(
-    realm.objects<FaqEntry>('FaqEntry').filtered(`code == '${code}'`)
-  );
+export const getFaqEntry = async function(db: Database, code: string) {
+  const faqs = await db.faqEntries();
+  const faqEntry = await faqs.createQueryBuilder()
+    .where('code = :code')
+    .setParameters({ code })
+    .getOne();
+
   const headers = new Headers();
   if (faqEntry && faqEntry.lastModified) {
     headers.append('If-Modified-Since', faqEntry.lastModified);
   }
   const uri = `https://arkhamdb.com/api/public/faq/${code}.json`;
-  return fetch(uri, {
+  const response = await fetch(uri, {
     method: 'GET',
     headers: headers,
-  }).then(response => {
-    if (response.status === 304) {
-      return Promise.resolve(true);
-    }
-    const lastModified = response.headers.get('Last-Modified') || undefined;
-    return response.json().then(json => {
-      if (json.length) {
-        realm.write(() => {
-          realm.create('FaqEntry', FaqEntry.fromJson(json[0], lastModified), true);
-        });
-        return true;
-      }
-      realm.write(() => {
-        realm.create('FaqEntry', FaqEntry.empty(code, lastModified), true);
-      });
-      return false;
-    });
   });
+  if (response.status === 304) {
+    return Promise.resolve(true);
+  }
+  const lastModified = response.headers.get('Last-Modified') || undefined;
+  const json = await response.json();
+  if (json.length) {
+    faqs.insert(FaqEntry.fromJson(json[0], lastModified));
+    return true;
+  }
+  faqs.insert(FaqEntry.empty(code, lastModified));
+  return false;
 };
 
 export default {
   syncCards,
+  syncTaboos,
   getFaqEntry,
 };

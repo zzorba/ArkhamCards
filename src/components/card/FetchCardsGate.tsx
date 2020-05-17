@@ -6,14 +6,14 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-import Realm from 'realm';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { t } from 'ttag';
 
 import Button from 'components/core/Button';
 import Card from 'data/Card';
+import Database from 'data/entities/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from 'reducers';
 import typography from 'styles/typography';
@@ -25,11 +25,6 @@ const REPROMPT_DAYS = 3;
 const REFETCH_SECONDS = REFETCH_DAYS * 24 * 60 * 60;
 const REPROMPT_SECONDS = REPROMPT_DAYS * 24 * 60 * 60;
 
-interface RealmProps {
-  realm: Realm;
-  cardCount?: number;
-}
-
 interface ReduxProps {
   loading?: boolean;
   error?: string;
@@ -40,7 +35,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang: string) => void;
+  fetchCards: (db: Database, lang: string) => void;
   dismissUpdatePrompt: () => void;
 }
 
@@ -49,18 +44,22 @@ interface OwnProps {
   children: ReactNode;
 }
 
-type Props = RealmProps & ReduxProps & ReduxActionProps & OwnProps;
+type Props = ReduxProps & ReduxActionProps & OwnProps;
 
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
 class FetchCardsGate extends React.Component<Props> {
-  fetchNeeded(props: Props) {
-    return props.fetchNeeded || props.cardCount === 0;
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
+
+  async cardCount() {
+    const cards = await this.context.db.cards();
+    return await cards.count();
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (this.fetchNeeded(this.props) && !this.fetchNeeded(prevProps)) {
+    if (this.props.fetchNeeded && !prevProps.fetchNeeded) {
       this._doFetch();
     }
   }
@@ -86,25 +85,32 @@ class FetchCardsGate extends React.Component<Props> {
 
   _doFetch = () => {
     const {
-      realm,
       lang,
     } = this.props;
-    this.props.fetchCards(realm, lang);
+    this.props.fetchCards(this.context.db, lang);
   };
 
   componentDidMount() {
-    if (this.fetchNeeded(this.props)) {
+    if (this.props.fetchNeeded) {
       this._doFetch();
-    } else if (this.props.promptForUpdate && this.updateNeeded()) {
-      Alert.alert(
-        t`Check for updated cards?`,
-        t`It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?`,
-        [
-          { text: t`Ask me later`, onPress: this._ignoreUpdate },
-          { text: t`Check for updates`, onPress: this._doFetch },
-        ],
-      );
+      return;
     }
+    this.cardCount().then(cardCount => {
+      if (cardCount === 0) {
+        this._doFetch();
+        return
+      }
+      if (this.props.promptForUpdate && this.updateNeeded()) {
+        Alert.alert(
+          t`Check for updated cards?`,
+          t`It has been more than a week since you checked for new cards.\nCheck for new cards from ArkhamDB?`,
+          [
+            { text: t`Ask me later`, onPress: this._ignoreUpdate },
+            { text: t`Check for updates`, onPress: this._doFetch },
+          ],
+        );
+      }
+    });
   }
 
   render() {
@@ -128,8 +134,7 @@ class FetchCardsGate extends React.Component<Props> {
         </View>
       );
     }
-    const fetchNeeded = this.fetchNeeded(this.props);
-    if (loading || fetchNeeded) {
+    if (loading || this.props.fetchNeeded) {
       return (
         <View style={styles.activityIndicatorContainer}>
           <Text style={typography.text}>
@@ -168,24 +173,10 @@ function mapDispatchToProps(
   }, dispatch);
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
-  connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(FetchCardsGate),
-  {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm
-    ) {
-      return {
-        realm,
-        cardCount: results.cards.length,
-      };
-    },
-  },
-);
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(FetchCardsGate);
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {

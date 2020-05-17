@@ -8,10 +8,8 @@ import {
   TextStyle,
   ViewStyle,
 } from 'react-native';
-import Realm, { Results } from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
 import { SettingsCategoryHeader, SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
@@ -22,7 +20,8 @@ import { clearDecks } from 'actions';
 import { fetchCards } from 'components/card/actions';
 import { setSingleCardView } from './actions';
 import { prefetch } from 'lib/auth';
-import Card from 'data/Card';
+import Database from 'data/entities/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
 import { getAllDecks, AppState } from 'reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
@@ -41,20 +40,18 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang: string) => void;
+  fetchCards: (db: Database, lang: string) => void;
   clearDecks: () => void;
   setSingleCardView: (value: boolean) => void;
 }
 
-interface RealmProps {
-  realm: Realm;
-  cards: Results<Card>;
-  cardCount: number;
-}
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & RealmProps;
+type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 class SettingsView extends React.Component<Props> {
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
+
   navButtonPressed(screen: string, title: string) {
     Navigation.push<{}>(this.props.componentId, {
       component: {
@@ -95,11 +92,10 @@ class SettingsView extends React.Component<Props> {
 
   _doSyncCards = () => {
     const {
-      realm,
       lang,
       fetchCards,
     } = this.props;
-    fetchCards(realm, lang || 'en');
+    fetchCards(this.context.db, lang || 'en');
   };
 
   syncCardsText() {
@@ -184,20 +180,10 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connectRealm<OwnProps, RealmProps, Card>(
-  connect<ReduxProps, ReduxActionProps, OwnProps & RealmProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SettingsView), {
-    schemas: ['Card'],
-    mapToProps(results: CardResults<Card>, realm: Realm): RealmProps {
-      return {
-        realm,
-        cards: results.cards,
-        cardCount: results.cards.length,
-      };
-    },
-  });
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(SettingsView);
 
 interface Styles {
   container: ViewStyle;

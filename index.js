@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { RealmProvider } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
+import 'reflect-metadata';
 
+import DatabaseContext from './src/data/entities/DatabaseContext';
+import Database from './src/data/entities/Database';
 import { registerScreens } from './src/app/screens';
 import configureStore from './src/app/store';
 import App from './src/app/App';
-import realm from './src/data';
 
 class MyProvider extends React.Component {
   static propTypes = {
@@ -17,17 +18,18 @@ class MyProvider extends React.Component {
 
   render() {
     return (
-      <RealmProvider realm={realm}>
-        <Provider store={this.props.store}>
+      <DatabaseContext.Provider value={{ db: this.props.store.db }}>
+        <Provider store={this.props.store.redux}>
           { this.props.children }
         </Provider>
-      </RealmProvider>
+      </DatabaseContext.Provider>
     );
   }
 }
 
 const { store /* , persistor */ } = configureStore({});
-registerScreens(MyProvider, store);
+const db = new Database();
+registerScreens(MyProvider, { redux: store, database: db });
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;

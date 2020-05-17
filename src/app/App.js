@@ -113,7 +113,7 @@ export default class App {
         },
       },
     };
-    const tabs = [{
+    const tabs = [/*{
       stack: {
         children: [browseCards],
         options: {
@@ -143,7 +143,7 @@ export default class App {
           },
         },
       },
-    }, {
+    }, */{
       stack: {
         children: [settings],
         options: {

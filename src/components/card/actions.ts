@@ -1,4 +1,3 @@
-import Realm from 'realm';
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 
@@ -25,6 +24,7 @@ import {
 } from 'actions/types';
 import { AppState } from 'reducers/index';
 import { syncCards, syncTaboos } from 'lib/publicApi';
+import Database from 'data/entities/Database';
 
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
@@ -39,7 +39,7 @@ function taboosCache(state: AppState, lang: string): undefined | TabooCache {
 }
 
 export function fetchCards(
-  realm: Realm,
+  db: Database,
   lang: string
 ): ThunkAction<void, AppState, null, CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
@@ -53,9 +53,13 @@ export function fetchCards(
       });
       const packs = await dispatch(fetchPacks(lang));
       try {
-        const cardCache = await syncCards(realm, packs, lang, cardsCache(getState(), lang));
+        const cardCache = await syncCards(db, packs, lang, cardsCache(getState(), lang));
         try {
-          const tabooCache = await syncTaboos(realm, lang, taboosCache(getState(), lang));
+          const tabooCache = await syncTaboos(
+            db,
+            lang,
+            taboosCache(getState(), lang)
+          );
           dispatch({
             type: CARD_FETCH_SUCCESS,
             cache: cardCache || undefined,

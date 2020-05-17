@@ -3,7 +3,6 @@ import { mapValues } from 'lodash';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
 
-
 export type TypeCodeType =
   'asset' |
   'event' |
