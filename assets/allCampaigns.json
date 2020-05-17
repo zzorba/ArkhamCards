@@ -33985,7 +33985,7 @@
       ]
     },
     {
-      "id": "maybe_ugprade_decks",
+      "id": "maybe_upgrade_decks",
       "hidden": true,
       "type": "branch",
       "condition": {
@@ -34022,7 +34022,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["maybe_ugprade_decks", "send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
+            "steps": ["maybe_upgrade_decks", "send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
           }
         ]
       }
@@ -34061,7 +34061,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["maybe_ugprade_decks", "send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
+            "steps": ["maybe_upgrade_decks", "send_where_the_gods_dwell_done", "maybe_proceed_campaign_b"]
           }
         ]
       }
@@ -37911,7 +37911,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["maybe_ugprade_decks", "send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
+            "steps": ["maybe_upgrade_decks", "send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
           }
         ]
       }
@@ -37950,7 +37950,7 @@
           },
           {
             "boolCondition": false,
-            "steps": ["maybe_ugprade_decks", "send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
+            "steps": ["maybe_upgrade_decks", "send_weaver_of_the_cosmos_done", "maybe_proceed_campaign_a"]
           }
         ]
       }
@@ -38012,7 +38012,7 @@
       }
     },
     {
-      "id": "maybe_ugprade_decks",
+      "id": "maybe_upgrade_decks",
       "hidden": true,
       "type": "branch",
       "condition": {
@@ -38278,7 +38278,7 @@
         },{
           "id": "standard",
           "text": "Standard <i>(I want a challenge)</i>",
-          "description": "+1, 0, 0, 0, -1, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
+          "description": "+1, 0, 0, 0, -1, -2, -2, -3, -5, [skull], [skull], [elder_thing], [auto_fail], [elder_sign]",
           "effects": [
             {
               "type": "campaign_data",
@@ -38288,7 +38288,7 @@
             {
               "type": "add_chaos_token",
               "tokens": [
-                "+1", "0", "0", "0", "-1", "-1", "-2", "-2", "-3", "-5", "skull", "skull", "elder_thing", "auto_fail", "elder_sign"
+                "+1", "0", "0", "0", "-1", "-2", "-2", "-3", "-5", "skull", "skull", "elder_thing", "auto_fail", "elder_sign"
               ]
             }
           ]
