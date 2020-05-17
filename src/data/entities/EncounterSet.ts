@@ -13,7 +13,7 @@ export default class EncounterSet {
     },
   };
 
-  @PrimaryColumn('string')
+  @PrimaryColumn('text')
   code!: string;
 
   @Column('text', { nullable: true })

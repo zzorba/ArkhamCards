@@ -101,7 +101,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, RealmProps, AppState>(
+export default connect<ReduxProps, ReduxActionProps, {}, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(LanguagePicker);

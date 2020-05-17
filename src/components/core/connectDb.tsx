@@ -6,7 +6,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import Database from 'data/entities/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
 
-export function connectDb<InputProps, GeneratedProps>(
+export default function connectDb<InputProps, GeneratedProps>(
   WrappedComponent: React.ComponentType<InputProps & Partial<GeneratedProps>>,
   getData: (db: Database) => Promise<GeneratedProps>
 ) {
@@ -26,7 +26,7 @@ export function connectDb<InputProps, GeneratedProps>(
       super(props, context);
 
       this.state = {};
-      this.context.db.addSubscriber(this);
+
       this._loadData();
       this._delayedLoadData = debounce(this._loadData, 250);
     }
@@ -69,5 +69,3 @@ export function connectDb<InputProps, GeneratedProps>(
 
   return ConnectedDatabaseComponent;
 }
-
-export default connectRealm;

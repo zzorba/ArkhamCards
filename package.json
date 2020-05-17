@@ -83,9 +83,8 @@
     "yarn": "1.22.0"
   },
   "devDependencies": {
-    "@types/react-native-keep-awake": "^2.0.2",
-    "@types/react-native-zss-rich-text-editor": "1.0.0",
     "@babel/core": "7.6.2",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-typescript": "7.3.3",
     "@babel/runtime": "7.6.2",
@@ -97,9 +96,11 @@
     "@types/react": "16.9.0",
     "@types/react-native": "0.60.23",
     "@types/react-native-flip-card": "3.5.0",
+    "@types/react-native-keep-awake": "^2.0.2",
     "@types/react-native-svg-charts": "5.0.3",
     "@types/react-native-uuid": "1.4.0",
     "@types/react-native-vector-icons": "6.4.5",
+    "@types/react-native-zss-rich-text-editor": "1.0.0",
     "@types/react-redux": "7.1.7",
     "@types/victory": "33.1.4",
     "@typescript-eslint/eslint-plugin": "1.7.0",

@@ -1,5 +1,4 @@
-import { flatMap, forEach, groupBy, head, map, sortBy, uniq, values } from 'lodash';
-import Realm from 'realm';
+import { flatMap, filter, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 
@@ -58,7 +57,7 @@ export const syncTaboos = async function(
     for (let j = 0; j < allTabooCards.length; j++) {
       const tabooCode = allTabooCards[j];
       const card = await cardsRep.createQueryBuilder('card')
-        .where('(card.code = :code AND (card.taboo_set_id = null OR card.taboo_set_id = 0))')
+        .where('(card.code = :code AND (card.taboo_set_id is null OR card.taboo_set_id = 0))')
         .setParameters({ code: tabooCode })
         .getOne();
       if (card) {
@@ -69,7 +68,7 @@ export const syncTaboos = async function(
       const cardJson = cards[j];
       const code: string = cardJson.code;
       const card = await cardsRep.createQueryBuilder()
-        .where('(code = :code AND (taboo_set_id = null OR taboo_set_id = 0))')
+        .where('(code = :code AND (taboo_set_id is null OR taboo_set_id = 0))')
         .setParameters({ code: cardJson.code })
         .getOne();
       if (card) {
@@ -127,7 +126,7 @@ export const syncCards = async function(
   ) {
     const cards = await db.cards();
     const cardCount = await cards.createQueryBuilder('card')
-      .where('card.taboo_set_id = null OR card.taboo_set_id = 0')
+      .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
       .getCount();
     if (cardCount === cache.cardCount) {
       headers.append('If-Modified-Since', cache.lastModified);
@@ -153,15 +152,15 @@ export const syncCards = async function(
     await encounterSets.createQueryBuilder().delete().execute();
     await tabooSets.createQueryBuilder().delete().execute();
 
-    encounterSets.insert({
-      code: 'weaver_of_the_cosmos',
-      name: t`Weaver of the Cosmos`,
-    });
-
     const cardsToInsert: Card[] = [];
     const encounterSetsToInsert: {
       [code: string]: EncounterSet | undefined;
-    } = {};
+    } = {
+      'weaver_of_the_cosmos': {
+        code: 'weaver_of_the_cosmos',
+        name: t`Weaver of the Cosmos`,
+      },
+    };
     forEach(json, cardJson => {
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
@@ -176,11 +175,21 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
-    await cards.insert(cardsToInsert);
-    await encounterSets.insert(encounterSetsToInsert);
+    const allEncounterSets: EncounterSet[] = [];
+    forEach(values(encounterSetsToInsert), encounterSet => {
+      if (encounterSet) {
+        allEncounterSets.push(encounterSet);
+      }
+    });
+    const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
+    await cards.insert(normalCards);
+    for (let i = 0; i < linkedCards.length; i++) {
+      await cards.insert(linkedCards[i]);
+    }
+    await encounterSets.insert(allEncounterSets);
 
     const playerCards = await cards.createQueryBuilder()
-      .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id = null OR taboo_set_id = 0)')
+      .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
       .getMany();
     const cardsByName = values(groupBy(playerCards, card => card.real_name));
     for (let i = 0; i < cardsByName.length; i++) {
@@ -197,7 +206,7 @@ export const syncCards = async function(
       }
     }
     const cardCount = await cards.createQueryBuilder('card')
-      .where('card.taboo_set_id = null OR card.taboo_set_id = 0')
+      .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
       .getCount();
     return {
       cardCount,

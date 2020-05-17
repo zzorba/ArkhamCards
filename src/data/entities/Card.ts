@@ -1,4 +1,4 @@
-import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn } from 'typeorm/browser';
+import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn, ManyToMany } from 'typeorm/browser';
 import { forEach, filter, keys, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -221,7 +221,7 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
-  @OneToOne(type => Card, card => card.id)
+  @ManyToMany(type => Card, card => card.id)
   @JoinColumn()
   public linked_card?: Card;
 

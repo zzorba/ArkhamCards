@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
@@ -21,16 +20,14 @@ import { t } from 'ttag';
 import { Campaign, CampaignGuideState, Deck, Pack } from 'actions/types';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { clearDecks } from 'actions';
-import Card from 'data/Card';
+import Database from 'data/entities/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
+import Card from 'data/entities/Card';
 import { getBackupData, getAllPacks, AppState } from 'reducers';
 import { fetchCards } from 'components/card/actions';
 import { restoreBackup } from 'components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import COLORS from 'styles/colors';
-
-interface RealmProps {
-  realm: Realm;
-}
 
 interface ReduxProps {
   backupData: {
@@ -45,7 +42,7 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang: string) => void;
+  fetchCards: (db: Database, lang: string) => void;
   restoreBackup: (
     campaigns: Campaign[],
     guides: {
@@ -56,9 +53,12 @@ interface ReduxActionProps {
   clearDecks: () => void;
 }
 
-type Props = RealmProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
 
 class DiagnosticsView extends React.Component<Props> {
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
+
   _importBackupDataJson = (json: any) => {
     try {
       const backupData = JSON.parse(json) || {};
@@ -130,33 +130,33 @@ class DiagnosticsView extends React.Component<Props> {
     );
   };
 
+  async clearDatabase() {
+    await (await this.context.db.cards()).createQueryBuilder().delete().execute();
+    await (await this.context.db.encounterSets()).createQueryBuilder().delete().execute();
+    await (await this.context.db.faqEntries()).createQueryBuilder().delete().execute();
+    await (await this.context.db.tabooSets()).createQueryBuilder().delete().execute();
+  }
+
   _clearCache = () => {
     const {
-      realm,
       clearDecks,
     } = this.props;
     clearDecks();
-    realm.write(() => {
-      realm.delete(realm.objects('Card'));
-      realm.delete(realm.objects('EncounterSet'));
-      realm.delete(realm.objects('FaqEntry'));
-      realm.delete(realm.objects('TabooSet'));
+    this.clearDatabase().then(() => {
+      this._doSyncCards();
     });
-    this._doSyncCards();
   };
 
   _doSyncCards = () => {
     const {
-      realm,
       lang,
       fetchCards,
     } = this.props;
-    fetchCards(realm, lang);
+    fetchCards(this.context.db, lang);
   };
 
   addDebugCardJson(json: string) {
     const {
-      realm,
       packs,
       lang,
     } = this.props;
@@ -182,11 +182,9 @@ class DiagnosticsView extends React.Component<Props> {
     cycleNames[80] = {
       name: t`Side stories`,
     };
-    realm.write(() => {
-      realm.create(
-        'Card',
-        Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang),
-        true
+    this.context.db.cards().then(cards => {
+      cards.insert(
+        Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)
       );
     });
   }
@@ -273,23 +271,10 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 }
 
 export default withDialogs(
-  connectRealm<InjectedDialogProps, RealmProps, Card>(
-    connect<ReduxProps, ReduxActionProps, RealmProps & InjectedDialogProps, AppState>(
-      mapStateToProps,
-      mapDispatchToProps
-    )(DiagnosticsView),
-    {
-      schemas: ['Card'],
-      mapToProps(
-        results: CardResults<Card>,
-        realm: Realm
-      ): RealmProps {
-        return {
-          realm,
-        };
-      },
-    },
-  )
+  connect<ReduxProps, ReduxActionProps, InjectedDialogProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(DiagnosticsView)
 );
 
 const styles = StyleSheet.create({

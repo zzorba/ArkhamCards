@@ -17,10 +17,14 @@ class MyProvider extends React.Component {
   };
 
   render() {
+    const {
+      store: { database, redux },
+      children,
+    } = this.props;
     return (
-      <DatabaseContext.Provider value={{ db: this.props.store.db }}>
-        <Provider store={this.props.store.redux}>
-          { this.props.children }
+      <DatabaseContext.Provider value={{ db: database }}>
+        <Provider store={redux}>
+          { children }
         </Provider>
       </DatabaseContext.Provider>
     );
