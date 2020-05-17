@@ -2,7 +2,10 @@ import React from 'react';
 import { Button, Text } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
+// @ts-ignore
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import Switch from 'components/core/Switch';
 import BasicButton from 'components/core/BasicButton';
 import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from 'actions/types';
@@ -42,6 +45,8 @@ interface State {
   xp: number;
   physicalAdjust: number;
   mentalAdjust: number;
+  killed: boolean;
+  insane: boolean;
 }
 
 export default class UpgradeDeckRow extends React.Component<Props, State> {
@@ -58,15 +63,19 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       xp: props.campaignLog.earnedXp(props.investigator.code),
       physicalAdjust: 0,
       mentalAdjust: 0,
+      killed: false,
+      insane: false,
     };
   }
 
   unsavedEdits() {
     const { investigator, campaignLog } = this.props;
-    const { xp, physicalAdjust, mentalAdjust } = this.state;
+    const { xp, physicalAdjust, mentalAdjust, killed, insane } = this.state;
     return physicalAdjust !== 0 ||
       mentalAdjust !== 0 ||
-      xp !== campaignLog.earnedXp(investigator.code);
+      xp !== campaignLog.earnedXp(investigator.code) ||
+      killed ||
+      insane;
   }
 
   _syncUnsavedEdits = () => {
@@ -91,11 +100,15 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     const {
       physicalAdjust,
       mentalAdjust,
+      killed,
+      insane,
     } = this.state;
     const choices: NumberChoices = {
       xp: [xp - campaignLog.earnedXp(investigator.code)],
       physical: [physicalAdjust],
       mental: [mentalAdjust],
+      killed: [killed ? 1 : 0],
+      insane: [insane ? 1 : 0],
     };
     if (deck) {
       choices.deckId = [deck.id];
@@ -124,6 +137,20 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       return this.state.mentalAdjust;
     }
     return (choices.mental && choices.mental[0]) || 0;
+  }
+
+  killedAdjust(choices?: NumberChoices): boolean {
+    if (choices === undefined) {
+      return this.state.killed;
+    }
+    return !!(choices.killed && choices.killed[0]);
+  }
+
+  insaneAdjust(choices?: NumberChoices): boolean {
+    if (choices === undefined) {
+      return this.state.insane;
+    }
+    return !!(choices.insane && choices.insane[0]);
   }
 
   _onUpgrade = (deck: Deck, xp: number) => {
@@ -264,6 +291,22 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     );
   }
 
+  _toggleKilled = () => {
+    this.setState(state => {
+      return {
+        killed: !state.killed,
+      };
+    });
+  };
+
+  _toggleInsane = () => {
+    this.setState(state => {
+      return {
+        insane: !state.insane,
+      };
+    });
+  };
+
   renderTraumaDetails(choices?: NumberChoices) {
     const {
       investigator,
@@ -273,6 +316,9 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     } = this.props;
     const physicalAdjust = this.physicalAdjust(choices);
     const mentalAdjust = this.mentalAdjust(choices);
+    const killedAdjust = this.killedAdjust(choices);
+    const insaneAdjust = this.insaneAdjust(choices);
+
     const baseTrauma = campaignLog.baseTrauma(investigator.code);
     const traumaDelta = campaignLog.traumaChanges(investigator.code);
     const physical = (traumaDelta.physical || 0) + physicalAdjust;
@@ -285,12 +331,19 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     const locked = (choices !== undefined) || !editable;
     return (
       <>
+        { (!locked || physical !== 0 || mental !== 0 || killedAdjust || insaneAdjust) && (
+          <CardSectionHeader
+            investigator={investigator}
+            fontScale={fontScale}
+            section={{ superTitle: t`Trauma` }}
+          />
+        ) }
         { (!locked || physical !== 0) && (
           <>
             <CardSectionHeader
               investigator={investigator}
               fontScale={fontScale}
-              section={{ superTitle: t`Physical trauma` }}
+              section={{ subTitle: t`Physical` }}
             />
             <BasicListRow>
               <Text style={[typography.text]}>
@@ -307,17 +360,38 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
                   onIncrement={this._incPhysical}
                   onDecrement={this._decPhysical}
                   max={investigator.health || 0}
+                  disabled={this.state.killed || this.state.insane}
                 />
               ) }
             </BasicListRow>
           </>
+        ) }
+        { (!locked || killedAdjust) && (
+          <BasicListRow>
+            <Text style={[typography.text]}>
+              { t`Killed` }
+            </Text>
+            { !locked ? (
+              <Switch
+                value={this.state.killed}
+                onValueChange={this._toggleKilled}
+                disabled={this.state.insane}
+              />
+            ) : (
+              <MaterialCommunityIcons
+                name="check"
+                size={18}
+                color={'#222'}
+              />
+            ) }
+          </BasicListRow>
         ) }
         { (!locked || mental !== 0) && (
           <>
             <CardSectionHeader
               investigator={investigator}
               fontScale={fontScale}
-              section={{ superTitle: t`Mental trauma` }}
+              section={{ subTitle: t`Mental` }}
             />
             <BasicListRow>
               <Text style={typography.text}>
@@ -334,10 +408,31 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
                   onIncrement={this._incMental}
                   onDecrement={this._decMental}
                   max={(investigator.sanity || 0)}
+                  disabled={this.state.killed || this.state.insane}
                 />
               ) }
             </BasicListRow>
           </>
+        ) }
+        { (!locked || insaneAdjust) && (
+          <BasicListRow>
+            <Text style={[typography.text]}>
+              { t`Insane` }
+            </Text>
+            { !locked ? (
+              <Switch
+                value={this.state.insane}
+                onValueChange={this._toggleInsane}
+                disabled={this.state.killed}
+              />
+            ) : (
+              <MaterialCommunityIcons
+                name="check"
+                size={18}
+                color={'#222'}
+              />
+            ) }
+          </BasicListRow>
         ) }
       </>
     );

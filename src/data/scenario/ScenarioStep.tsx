@@ -423,17 +423,22 @@ export default class ScenarioStep {
           return undefined;
         }
         switch (choice) {
-          case PlayingScenarioBranch.DRAW_WEAKNESS:
+          case PlayingScenarioBranch.RECORD_TRAUMA:
+          case PlayingScenarioBranch.DRAW_WEAKNESS: {
+            const fixedStep = choice === PlayingScenarioBranch.DRAW_WEAKNESS ?
+              '$draw_weakness' :
+              '$record_trauma';
             return this.maybeCreateEffectsStep(
               step.id,
               [
-                `$draw_weakness#${nextIteration}`,
+                `${fixedStep}#${nextIteration}`,
                 `$play_scenario#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
               scenarioState
             );
+          }
           case PlayingScenarioBranch.RESOLUTION: {
             const steps: string[] = [];
             if (!input.no_resolutions) {
@@ -775,12 +780,28 @@ export default class ScenarioStep {
                 hidden: true,
               });
             }
+            if (choices.killed && choices.killed[0]) {
+              effects.push({
+                type: 'trauma',
+                investigator: '$input_value',
+                killed: true,
+                hidden: true,
+              });
+            }
             const mentalAdjust = (choices.mental && choices.mental[0]) || 0;
             if (mentalAdjust !== 0) {
               effects.push({
                 type: 'trauma',
                 investigator: '$input_value',
                 mental: mentalAdjust,
+                hidden: true,
+              });
+            }
+            if (choices.insane && choices.insane[0]) {
+              effects.push({
+                type: 'trauma',
+                investigator: '$input_value',
+                insane: true,
                 hidden: true,
               });
             }

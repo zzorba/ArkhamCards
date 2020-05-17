@@ -20,6 +20,7 @@ export enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,
   RESOLUTION = -2,
   DRAW_WEAKNESS = -3,
+  RECORD_TRAUMA = -4,
 }
 
 const CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID = '$check_investigator_defeat';
@@ -123,6 +124,33 @@ const DRAW_WEAKNESS_STEP: InputStep = {
             investigator: '$input_value',
             weakness_traits: [],
             select_traits: true,
+          },
+        ],
+      },
+    ],
+  },
+};
+
+
+const RECORD_TRAUMA_STEP: InputStep = {
+  id: '$record_trauma',
+  type: 'input',
+  bullet_type: 'none',
+  text: '<b>Note:</b> Trauma from investigator defeat is handled during scenario resolution.',
+  input: {
+    type: 'investigator_choice',
+    source: 'scenario',
+    investigator: 'all',
+    choices: [
+      {
+        id: 'record_trauma',
+        text: 'Record Trauma',
+        effects: [
+          {
+            type: 'trauma',
+            investigator: '$input_value',
+            mental_or_physical: 1,
+            hidden: true,
           },
         ],
       },
@@ -343,6 +371,8 @@ export function getFixedStep(
       return UPGRADE_DECKS_STEP;
     case LEAD_INVESTIGATOR_STEP.id:
       return LEAD_INVESTIGATOR_STEP;
+    case RECORD_TRAUMA_STEP.id:
+      return RECORD_TRAUMA_STEP;
     default:
       return resolutionStep(id, scenarioGuide.resolutions());
   }

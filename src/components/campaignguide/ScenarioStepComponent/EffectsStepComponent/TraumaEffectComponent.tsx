@@ -61,11 +61,13 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       }
       return (
         <>
-          <View style={border ? space.paddingSideL : undefined}>
-            <SetupStepWrapper bulletType={effect.bullet_type}>
-              <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
-            </SetupStepWrapper>
-          </View>
+          { !effect.hidden && (
+            <View style={border ? space.paddingSideL : undefined}>
+              <SetupStepWrapper bulletType={effect.bullet_type}>
+                <CampaignGuideTextComponent text={t`You suffer 1 physical or mental trauma <i>(your choice)</i>.`} />
+              </SetupStepWrapper>
+            </View>
+          ) }
           <InvestigatorChoicePrompt
             id={`${id}_trauma`}
             investigators={investigators}
@@ -101,7 +103,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
 
   render() {
     const { id, effect, input } = this.props;
-    if (effect.hidden) {
+    if (effect.hidden && !effect.mental_or_physical) {
       return null;
     }
     return (
