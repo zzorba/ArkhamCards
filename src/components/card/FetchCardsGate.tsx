@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import Button from 'components/core/Button';
-import Card from 'data/Card';
 import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';

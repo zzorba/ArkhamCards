@@ -127,36 +127,36 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       return undefined;
     }
     const parts = searchBack ? [
-      'name contains[c] $0',
-      'linked_card.name contains[c] $0',
-      'back_name contains[c] $0',
-      'linked_card.back_name contains[c] $0',
-      'subname contains[c] $0',
-      'linked_card.subname contains[c] $0',
+      'name LIKE :searchTerm',
+      'linked_card.name LIKE :searchTerm',
+      'back_name LIKE :searchTerm',
+      'linked_card.back_name LIKE :searchTerm',
+      'subname LIKE :searchTerm',
+      'linked_card.subname LIKE :searchTerm',
     ] : [
-      'renderName contains[c] $0',
-      'renderSubname contains[c] $0',
+      'renderName LIKE :searchTerm',
+      'renderSubname LIKE :searchTerm',
     ];
     if (searchText) {
-      parts.push('real_text contains[c] $0');
-      parts.push('linked_card.real_text contains[c] $0');
-      parts.push('traits contains[c] $0');
-      parts.push('linked_card.traits contains[c] $0');
+      parts.push('real_text LIKE :searchTerm');
+      parts.push('linked_card.real_text LIKE :searchTerm');
+      parts.push('traits LIKE :searchTerm');
+      parts.push('linked_card.traits LIKE :searchTerm');
       if (searchBack) {
-        parts.push('back_text contains[c] $0');
-        parts.push('linked_card.back_text contains[c] $0');
+        parts.push('back_text LIKE :searchTerm');
+        parts.push('linked_card.back_text LIKE :searchTerm');
       }
     }
 
     if (searchFlavor) {
-      parts.push('flavor contains[c] $0');
-      parts.push('linked_card.flavor contains[c] $0');
+      parts.push('flavor LIKE :searchTerm');
+      parts.push('linked_card.flavor LIKE :searchTerm');
       if (searchBack) {
-        parts.push('back_flavor contains[c] $0');
-        parts.push('linked_card.back_flavor contains[c] $0');
+        parts.push('back_flavor LIKE :searchTerm');
+        parts.push('linked_card.back_flavor LIKE :searchTerm');
       }
     }
-    return `(${parts.join(' or ')})`;
+    return `(${parts.join(' OR ')})`;
   }
 
   filterQueryParts() {

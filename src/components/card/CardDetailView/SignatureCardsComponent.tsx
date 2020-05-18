@@ -1,5 +1,4 @@
 import React from 'react';
-import Realm, { Results } from 'realm';
 import { connect } from 'react-redux';
 import { flatMap, map, partition } from 'lodash';
 import {
@@ -7,17 +6,18 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { t } from 'ttag';
 
+import Database from 'data/Database';
+import DbRender from 'components/data/DbRender';
 import SignatureCardItem from './SignatureCardItem';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
 import space, { m, s } from 'styles/space';
 
-interface RealmProps {
-  requiredCards?: Results<Card>;
-  alternateCards?: Results<Card>;
+interface SignatureCards {
+  requiredCards: Card[];
+  alternateCards: Card[];
 }
 
 interface ReduxProps {
@@ -30,17 +30,23 @@ interface OwnProps {
   width: number;
   fontScale: number;
 }
-type Props = OwnProps & RealmProps & ReduxProps;
+type Props = OwnProps & ReduxProps;
 
 class SignatureCardsComponent extends React.Component<Props> {
-  render() {
+
+  _render = (signatureCards?: SignatureCards) => {
     const {
       componentId,
-      requiredCards,
-      alternateCards,
       width,
       fontScale,
     } = this.props;
+    if (!signatureCards) {
+      return null;
+    }
+    const {
+      requiredCards,
+      alternateCards,
+    } = signatureCards;
 
     const [advancedCards, altCards] = partition(alternateCards, card => !!card.advanced);
 
@@ -94,6 +100,44 @@ class SignatureCardsComponent extends React.Component<Props> {
         ) }
       </View>
     );
+  };
+
+  _getSignatureCards = async (db: Database) => {
+    const { investigator, tabooSetId } = this.props;
+    const requirements = investigator.deck_requirements;
+    const card_requirements = requirements && requirements.card;
+    const requiredQuery = map(card_requirements || [], req => {
+      return `code = '${req.code}'`;
+    }).join(' OR ');
+    const requiredCards = requiredQuery ?
+      await (await db.cards()).createQueryBuilder()
+          .where(`(${requiredQuery}) AND ${Card.tabooSetQuery(tabooSetId)}`)
+        .getMany()
+      : [];
+
+    const alternateQuery = map(
+      flatMap(card_requirements || [], req => (req.alternates || [])),
+      code => `code = '${code}'`).join(' OR ');
+
+    const alternateCards = alternateQuery ?
+      await (await db.cards()).createQueryBuilder()
+          .where(`(${alternateQuery}) AND ${Card.tabooSetQuery(tabooSetId)}`)
+        .getMany()
+      : [];
+
+    return {
+      requiredCards,
+      alternateCards,
+    };
+  };
+
+  render() {
+    const { investigator } = this.props;
+    return (
+      <DbRender getData={this._getSignatureCards} id={investigator.id}>
+        { this._render }
+      </DbRender>
+    );
   }
 }
 
@@ -105,32 +149,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
-)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-  SignatureCardsComponent, {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps & ReduxProps
-    ): RealmProps {
-      const requirements = props.investigator.deck_requirements;
-      const card_requirements = requirements && requirements.card;
-      const requiredQuery = map(card_requirements || [], req => {
-        return `code == '${req.code}'`;
-      }).join(' OR ');
-      const alternateQuery = map(
-        flatMap(card_requirements || [], req => (req.alternates || [])),
-        code => `code == '${code}'`).join(' OR ');
-      return {
-        requiredCards: requiredQuery ?
-          results.cards.filtered(`(${requiredQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
-          undefined,
-        alternateCards: alternateQuery ?
-          results.cards.filtered(`(${alternateQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
-          undefined,
-      };
-    },
-  }));
+)(SignatureCardsComponent);
 
 const styles = StyleSheet.create({
   header: {

@@ -17,7 +17,7 @@ const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage
 @Entity('card')
 export default class Card {
   @PrimaryColumn('text')
-  public id?: string;
+  public id!: string;
 
   @Column('text')
   public code!: string;

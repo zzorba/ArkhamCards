@@ -7,7 +7,7 @@ import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 
 interface Props<T> {
   id: string;
-  extraProps: any;
+  extraProps?: any;
   getData: (db: Database) => Promise<T>;
   children: (t?: T) => React.ReactNode;
 }
@@ -55,6 +55,7 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> imp
   }
 
   _loadData = (context?: DatabaseContextType) => {
+    console.log(`LD: ${this.props.id} - ${this.props.extraProps}`);
     const db = (context || this.context).db;
     this.props.getData(db).then(data => {
       this.setState({
