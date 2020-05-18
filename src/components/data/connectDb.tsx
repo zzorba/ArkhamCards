@@ -1,25 +1,25 @@
 import React from 'react';
 import { debounce } from 'lodash';
+import deepDiff from 'deep-diff';
 import { EventSubscriber, EntitySubscriberInterface } from 'typeorm';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import Database from 'data/entities/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
+import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 
-export default function connectDb<InputProps, GeneratedProps>(
-  WrappedComponent: React.ComponentType<InputProps & Partial<GeneratedProps>>,
-  getData: (db: Database) => Promise<GeneratedProps>
+export default function connectDb<InputProps, GenerateProps, GenerateParams={}>(
+  WrappedComponent: React.ComponentType<InputProps & GenerateProps>,
+  extractProps: (props: InputProps) => GenerateParams,
+  getData: (db: Database, props: GenerateParams) => Promise<GenerateProps>
 ) {
   interface State {
-    generatedData?: GeneratedProps;
+    generatedData?: GenerateProps;
   }
 
   @EventSubscriber()
   class ConnectedDatabaseComponent extends React.Component<InputProps, State> implements EntitySubscriberInterface {
     static contextType = DatabaseContext;
     context!: DatabaseContextType;
-
-    results?: GeneratedProps;
 
     _delayedLoadData: () => void;
     constructor(props: InputProps, context: DatabaseContextType) {
@@ -35,8 +35,15 @@ export default function connectDb<InputProps, GeneratedProps>(
       this.context.db.addSubscriber(this);
     }
 
+    componentDidUpdate(prevProps: InputProps) {
+      const diff = deepDiff(extractProps(this.props), extractProps(prevProps));
+      if (diff && diff.length) {
+        this._loadData();
+      }
+    }
+
     componentWillUnmount() {
-      this.context.db.removeSubscriber
+      this.context.db.removeSubscriber(this);
     }
 
     afterInsert() {
@@ -48,7 +55,7 @@ export default function connectDb<InputProps, GeneratedProps>(
     }
 
     _loadData = () => {
-      getData(this.context.db).then(generatedData => {
+      getData(this.context.db, extractProps(this.props)).then(generatedData => {
         this.setState({
           generatedData,
         });
@@ -56,6 +63,10 @@ export default function connectDb<InputProps, GeneratedProps>(
     };
 
     render() {
+      const { generatedData } = this.state;
+      if (!generatedData) {
+        return null;
+      }
       return (
         <WrappedComponent
           {...this.props}

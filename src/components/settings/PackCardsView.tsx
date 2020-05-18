@@ -19,7 +19,7 @@ export default function PackCardsView({
   if (baseQuery) {
     parts.push(baseQuery);
   }
-  parts.push(`pack_code == '${pack_code}'`);
+  parts.push(`pack_code = '${pack_code}'`);
 
   return (
     <CardSearchComponent

@@ -1,18 +1,18 @@
 import React, { ReactNode } from 'react';
 import { forEach } from 'lodash';
-import Realm from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import Card from 'data/Card';
+import connectDb from 'components/data/connectDb';
 import {
   SortType,
   Slots,
 } from 'actions/types';
-import CardSearchResultsComponent from '../../cardlist/CardSearchResultsComponent';
+import Card from 'data/Card';
+import Database from 'data/Database'
+import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
 import { FilterState } from 'lib/filters';
@@ -22,7 +22,7 @@ import { iconsMap } from 'app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
 import COLORS from 'styles/colors';
 
-interface RealmProps {
+interface FilterProps {
   defaultFilterState: FilterState;
 }
 
@@ -60,7 +60,7 @@ interface OwnProps {
 }
 
 type Props = OwnProps &
-  RealmProps &
+  FilterProps &
   ReduxProps &
   ReduxActionProps &
   DimensionsProps;
@@ -296,24 +296,33 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
+interface DbProps {
+  baseQuery?: string;
+  tabooSetId?: number;
+}
+
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-  withDimensions(CardSearchComponent), {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps & ReduxProps
-    ) {
-      const cards = props.baseQuery ?
-        results.cards.filtered(`(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
-        results.cards.filtered(Card.tabooSetQuery(props.tabooSetId));
-
+)(
+  connectDb<OwnProps & ReduxProps & ReduxActionProps, FilterProps, DbProps>(
+    withDimensions(CardSearchComponent),
+    (props: OwnProps & ReduxProps & ReduxActionProps) => {
+      return {
+        baseQuery: props.baseQuery,
+        tabooSetId: props.tabooSetId,
+      };
+    },
+    async (db: Database, props: DbProps) => {
+      const cardsR = await db.cards();
+      const cards = await cardsR.createQueryBuilder()
+        .where(props.baseQuery ?
+          `(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}` :
+          Card.tabooSetQuery(props.tabooSetId)
+        ).getMany();
       return {
         defaultFilterState: calculateDefaultFilterState(cards),
       };
-    },
-  })
+    }
+  )
 );

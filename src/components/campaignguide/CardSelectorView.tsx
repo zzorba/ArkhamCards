@@ -99,7 +99,7 @@ class CardSelectorView extends React.Component<Props, State> {
           section={{ title: t`Story assets` }}
         />
         <CardQueryWrapper
-          query={`(${query} AND encounter_code != null)`}
+          query={`(${query} AND encounter_code is not null)`}
           render={this._render}
           extraArg={undefined}
         />

@@ -14,7 +14,11 @@ export default class Database {
       type: 'react-native',
       database: 'arkham',
       location: 'default',
-      logging: ['error', 'schema'],
+      logging: [
+        'error',
+        //'query',
+        'schema',
+      ],
       synchronize: true,
       entities: [
         Card,

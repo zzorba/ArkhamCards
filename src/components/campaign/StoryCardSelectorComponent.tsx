@@ -170,7 +170,7 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
         props: OwnProps & ReduxProps
       ): RealmProps {
         const allStoryCards = results.cards.filtered(
-          `(encounter_code != null) and ${PLAYER_CARDS_QUERY} and ${Card.tabooSetQuery(props.tabooSetId)}`
+          `(encounter_code is not null) and ${PLAYER_CARDS_QUERY} and ${Card.tabooSetQuery(props.tabooSetId)}`
         ).sorted([['renderName', false], ['xp', false]]);
         const deckStorySlots: Slots = {};
         const storyCards: Card[] = [];

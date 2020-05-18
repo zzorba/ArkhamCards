@@ -1,22 +1,22 @@
-import Realm from 'realm';
-export default class FaqEntry {
-  public static schema: Realm.ObjectSchema = {
-    name: 'FaqEntry',
-    primaryKey: 'code',
-    properties: {
-      'code': 'string',
-      'text': 'string?',
-      'updated': 'string?',
-      'fetched': 'date',
-      'lastModified': 'string?',
-    },
-  };
+import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
 
-  public code!: string;
-  public text?: string;
-  public updated?: string;
-  public fetched?: Date;
-  public lastModified?: string;
+@Entity('faq_entry')
+export default class FaqEntry {
+
+  @PrimaryColumn('text')
+  code!: string;
+
+  @Column('text', { nullable: true })
+  text?: string;
+
+  @Column('text', { nullable: true })
+  updated?: string;
+
+  @Column('date', { nullable: true })
+  fetched?: Date;
+
+  @Column('text', { nullable: true })
+  lastModified?: string;
 
   static fromJson(json: any, lastModified?: string) {
     return {

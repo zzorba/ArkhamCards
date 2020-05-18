@@ -7,8 +7,8 @@ import { t } from 'ttag';
 
 import SinglePickerComponent from 'components/core/SinglePickerComponent';
 import { fetchCards } from 'components/card/actions';
-import Database from 'data/entities/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
+import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { AppState } from 'reducers';
 import COLORS from 'styles/colors';
 

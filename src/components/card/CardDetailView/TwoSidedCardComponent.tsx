@@ -31,7 +31,7 @@ import { CardTabooProps } from 'components/card/CardTabooView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
 import Button from 'components/core/Button';
 import CardCostIcon from 'components/core/CardCostIcon';
-import BaseCard from 'data/BaseCard';
+import Card from 'data/Card';
 import COLORS from 'styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
@@ -67,7 +67,7 @@ function num(value: number | null) {
 
 interface Props {
   componentId?: string;
-  card: BaseCard;
+  card: Card;
   linked?: boolean;
   notFirst?: boolean;
   simple?: boolean;
@@ -186,7 +186,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     });
   };
 
-  renderType(card: BaseCard) {
+  renderType(card: Card) {
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -203,7 +203,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderMetadata(card: BaseCard) {
+  renderMetadata(card: Card) {
     const { fontScale } = this.props;
     return (
       <View style={styles.metadataBlock}>
@@ -231,7 +231,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderTestIcons(card: BaseCard) {
+  renderTestIcons(card: Card) {
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -262,7 +262,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderSlot(card: BaseCard) {
+  renderSlot(card: Card) {
     if (!card.slot) {
       return null;
     }
@@ -276,7 +276,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
 
-  renderPlaydata(card: BaseCard) {
+  renderPlaydata(card: Card) {
     if (card.type_code === 'scenario') {
       return null;
     }
@@ -319,7 +319,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderHealthAndSanity(card: BaseCard) {
+  renderHealthAndSanity(card: Card) {
     if (card.type_code === 'enemy') {
       return (
         <Text style={typography.cardText}>
@@ -334,7 +334,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return null;
   }
 
-  renderFactionIcon(card: BaseCard) {
+  renderFactionIcon(card: Card) {
     const color = (
       card.type_code === 'asset' ||
       card.type_code === 'event' ||
@@ -412,7 +412,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTitleContent(
-    card: BaseCard,
+    card: Card,
     name: string,
     subname: string | null,
     factionColor?: string
@@ -456,7 +456,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTitle(
-    card: BaseCard,
+    card: Card,
     name: string,
     subname: string | null,
   ) {
@@ -472,7 +472,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  backSource(card: BaseCard, isHorizontal: boolean) {
+  backSource(card: Card, isHorizontal: boolean) {
     if (card.double_sided) {
       if (isHorizontal) {
         if (card.type_code === 'act') {
@@ -495,7 +495,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardBack(
-    card: BaseCard,
+    card: Card,
     backFirst: boolean,
     isHorizontal: boolean,
     flavorFirst: boolean,
@@ -610,7 +610,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderCardFooter(card: BaseCard) {
+  renderCardFooter(card: Card) {
     const { componentId, fontScale } = this.props;
     return (
       <React.Fragment>
@@ -667,7 +667,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderImage(card: BaseCard) {
+  renderImage(card: Card) {
     if (card.type_code === 'story' || card.type_code === 'scenario') {
       return null;
     }
@@ -684,7 +684,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardText(
-    card: BaseCard,
+    card: Card,
     backFirst: boolean,
     isHorizontal: boolean,
     flavorFirst: boolean
@@ -743,7 +743,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardFront(
-    card: BaseCard,
+    card: Card,
     backFirst: boolean,
     isHorizontal: boolean,
     flavorFirst: boolean,

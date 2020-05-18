@@ -25,17 +25,20 @@ import {
   NativeScrollEvent,
   SectionListData,
 } from 'react-native';
+import { SelectQueryBuilder } from 'typeorm/browser';
 import Realm, { Results } from 'realm';
-import { connectRealm, Sort } from 'react-native-realm';
+import { connectRealm } from 'react-native-realm';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import DbRender from 'components/data/DbRender';
+import Database from 'data/Database';
 import BasicButton from 'components/core/BasicButton';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
-import CardSearchResult from '../CardSearchResult';
-import { rowHeight } from '../CardSearchResult/constants';
-import CardSectionHeader, { rowHeaderHeight } from '../CardSearchResultsComponent/CardSectionHeader';
+import CardSearchResult from 'components/cardlist/CardSearchResult';
+import { rowHeight } from 'components/cardlist/CardSearchResult/constants';
+import CardSectionHeader, { rowHeaderHeight } from 'components/cardlist/CardSearchResultsComponent/CardSectionHeader';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -104,20 +107,16 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-interface RealmProps {
-  realm: Realm;
-}
-
-type Props = OwnProps & ReduxProps & RealmProps;
+type Props = OwnProps & ReduxProps;
 
 interface State {
-  resultsKey: string;
-  deckSections: CardBucket[];
-  cards: CardBucket[];
-  cardsCount: number;
+  //resultsKey: string;
+  //deckSections: CardBucket[];
+  //cards: CardBucket[];
+  //cardsCount: number;
+  //spoilerCards: CardBucket[];
+  //spoilerCardsCount: number;
   deckCardCounts?: Slots;
-  spoilerCards: CardBucket[];
-  spoilerCardsCount: number;
   showSpoilerCards: boolean;
   showNonCollection: {
     [code: string]: boolean;
@@ -125,6 +124,15 @@ interface State {
   loadingMessage: string;
   dirty: boolean;
   scrollY: Animated.Value;
+}
+
+interface DbState {
+  resultsKey: string;
+  deckSections: CardBucket[];
+  cards: CardBucket[];
+  cardsCount: number;
+  spoilerCards: CardBucket[];
+  spoilerCardsCount: number;
 }
 
 interface CardBucket {
@@ -143,20 +151,13 @@ class CardResultList extends React.Component<Props, State> {
 
   lastOffsetY: number = 0;
   hasPendingCountChanges: boolean = false;
-  _throttledUpdateResults!: () => void;
   _handleScroll!: (...args: any[]) => void;
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      resultsKey: '',
-      deckSections: [],
-      cards: [],
-      cardsCount: 0,
       deckCardCounts: props.deckCardCounts || {},
-      spoilerCards: [],
-      spoilerCardsCount: 0,
       showSpoilerCards: false,
       showNonCollection: {},
       loadingMessage: CardResultList.randomLoadingMessage(),
@@ -169,12 +170,6 @@ class CardResultList extends React.Component<Props, State> {
       {
         listener: this._onScroll,
       },
-    );
-
-    this._throttledUpdateResults = debounce(
-      this._updateResults,
-      250,
-      { trailing: true }
     );
   }
 
@@ -208,7 +203,7 @@ class CardResultList extends React.Component<Props, State> {
         if (scrollingUp) {
           if (this.hasPendingCountChanges) {
             this.hasPendingCountChanges = false;
-            this._throttledUpdateResults();
+//            this._throttledUpdateResults();
           }
           this.props.showHeader();
         } else {
@@ -225,10 +220,6 @@ class CardResultList extends React.Component<Props, State> {
   _handleScrollBeginDrag = () => {
     Keyboard.dismiss();
   };
-
-  componentDidMount() {
-    this._updateResults();
-  }
 
   componentDidUpdate(prevProps: Props) {
     const {
@@ -254,7 +245,7 @@ class CardResultList extends React.Component<Props, State> {
           dirty: false,
           showNonCollection: {},
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
-        }, this._throttledUpdateResults);
+        });
       } else if (!dirty) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
@@ -267,7 +258,7 @@ class CardResultList extends React.Component<Props, State> {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           deckCardCounts: deckCardCounts,
-        }, this._throttledUpdateResults);
+        });
         this.hasPendingCountChanges = false;
       } else {
         this.setState({
@@ -293,7 +284,7 @@ class CardResultList extends React.Component<Props, State> {
         this.state.showNonCollection,
         { [id]: true },
       ),
-    }, this._throttledUpdateResults);
+    });
   };
 
   _editCollectionSettings = () => {
@@ -328,24 +319,42 @@ class CardResultList extends React.Component<Props, State> {
     });
   };
 
-  getSort(): Sort[] {
+  applySort(query: SelectQueryBuilder<Card>): SelectQueryBuilder<Card> {
     switch(this.props.sort) {
       case SORT_BY_TYPE:
-        return [['sort_by_type', false], ['renderName', false], ['xp', false]];
+        return query
+          .orderBy('sort_by_type', 'ASC')
+          .addOrderBy('renderName', 'ASC')
+          .addOrderBy('xp', 'ASC');
       case SORT_BY_FACTION:
-        return [['sort_by_faction', false], ['renderName', false], ['xp', false]];
+        return query
+          .orderBy('sort_by_faction', 'ASC')
+          .addOrderBy('renderName', 'ASC')
+          .addOrderBy('xp', 'ASC');
       case SORT_BY_FACTION_PACK:
-        return [['sort_by_faction_pack', false], ['code', false]];
+        return query
+          .orderBy('sort_by_faction_pack', 'ASC')
+          .addOrderBy('code', 'ASC');
       case SORT_BY_COST:
-        return [['cost', false], ['renderName', false], ['xp', false]];
+        return query
+          .orderBy('cost', 'ASC')
+          .addOrderBy('renderName', 'ASC')
+          .addOrderBy('xp', 'ASC');
       case SORT_BY_PACK:
-        return [['sort_by_pack', false], ['position', false]];
-      case SORT_BY_TITLE:
-        return [['renderName', false], ['xp', false]];
+        return query
+          .orderBy('sort_by_pack', 'ASC')
+          .addOrderBy('position', 'ASC');
+
       case SORT_BY_ENCOUNTER_SET:
-        return [['sort_by_pack', false], ['encounter_code', false], ['encounter_position', false]];
+        return query
+        .orderBy('sort_by_pack', 'ASC')
+        .addOrderBy('encounter_code', 'ASC')
+        .addOrderBy('encounter_position', 'ASC');
+      case SORT_BY_TITLE:
       default:
-        return [['renderName', false], ['xp', false]];
+        return query
+          .orderBy('renderName', 'ASC')
+          .addOrderBy('xp', 'ASC');
     }
   }
 
@@ -363,7 +372,7 @@ class CardResultList extends React.Component<Props, State> {
         }
         return t`Cost: ${card.cost}`;
       case SORT_BY_PACK:
-        return card.pack_name;
+        return `${card.pack_name}`;
       case SORT_BY_TITLE:
         return t`All Cards`;
       case SORT_BY_ENCOUNTER_SET:
@@ -443,17 +452,18 @@ class CardResultList extends React.Component<Props, State> {
       query,
       termQuery,
       searchTerm,
-      show_spoilers,
       sort,
     } = this.props;
-    return (
-      `q:${query},tq:${termQuery},s:${searchTerm},sp:${show_spoilers},st:${sort}`
-    );
+    return JSON.stringify({
+      query,
+      termQuery,
+      searchTerm,
+      sort,
+    });
   }
 
-  deckSections(): CardBucket[] {
+  async deckSections(db: Database): Promise<CardBucket[]> {
     const {
-      realm,
       originalDeckSlots,
       tabooSetId,
       searchTerm,
@@ -486,45 +496,43 @@ class CardResultList extends React.Component<Props, State> {
     if (filterQuery) {
       queryParts.push(filterQuery);
     }
-    const finalQuery = queryParts.join(' AND ');
-    const possibleDeckCards: Results<Card> = realm.objects<Card>('Card')
-      .filtered(finalQuery);
-    const deckCards: Results<Card> = (termQuery ?
-      possibleDeckCards.filtered(termQuery, searchTerm) :
-      possibleDeckCards).sorted(this.getSort());
 
+    const finalQuery = queryParts.join(' AND ');
+    let cardQuery = (await db.cards()).createQueryBuilder().where(finalQuery);
+    if (termQuery) {
+      cardQuery = cardQuery.andWhere(termQuery, { searchTerm });
+    }
+
+    const deckCards: Card[] = await this.applySort(cardQuery).getMany();
     return this.bucketCards(deckCards, 'deck');
   }
 
-  getCards(query?: string) {
+  async getCards(db: Database, query?: string): Promise<Card[]> {
     const {
-      realm,
       termQuery,
       searchTerm,
       tabooSetId,
     } = this.props;
-    let parsedSearchTerm = searchTerm;
-    if (parsedSearchTerm) {
-      // replace "smart" single and double quotes
-      parsedSearchTerm = parsedSearchTerm
-        .replace(/[\u2018\u2019]/g, '\'')
-        .replace(/[\u201C\u201D]/g, '"');
-    }
-    const queryCards: Results<Card> = (query ?
-      realm.objects<Card>('Card').filtered(
-        `(${query}) and ${Card.tabooSetQuery(tabooSetId)}`,
-        parsedSearchTerm
-      ) : realm.objects<Card>('Card').filtered(
-        Card.tabooSetQuery(tabooSetId)
-      )
+    // replace "smart" single and double quotes
+    const parsedSearchTerm = searchTerm && searchTerm
+      .replace(/[\u2018\u2019]/g, '\'')
+      .replace(/[\u201C\u201D]/g, '"');
+    let cardQuery = (await db.cards()).createQueryBuilder();
+
+    const params = { searchTerm: parsedSearchTerm };
+    cardQuery = (query ?
+      cardQuery.where(`(${query}) AND ${Card.tabooSetQuery(tabooSetId)}`, params) :
+      cardQuery.where(Card.tabooSetQuery(tabooSetId))
     );
-    return (termQuery ?
-      queryCards.filtered(termQuery, parsedSearchTerm) :
-      queryCards
-    ).sorted(this.getSort());
+
+    if (termQuery) {
+      cardQuery = cardQuery.andWhere(termQuery, params);
+    }
+
+    return await this.applySort(cardQuery).getMany();
   }
 
-  _updateResults = () => {
+  _updateResults = async (db: Database): Promise<DbState> => {
     const {
       query,
       show_spoilers,
@@ -533,7 +541,7 @@ class CardResultList extends React.Component<Props, State> {
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
     const resultsKey = this.resultsKey();
-    const cards: Results<Card> = this.getCards(query);
+    const cards: Card[] = await this.getCards(db, query);
     const groupedCards = partition(
       cards,
       card => {
@@ -541,14 +549,15 @@ class CardResultList extends React.Component<Props, State> {
           !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
       });
 
-    this.setState({
+    const deckSections = await this.deckSections(db);
+    return {
       resultsKey: resultsKey,
-      deckSections: this.deckSections(),
+      deckSections,
       cards: this.bucketCards(groupedCards[0], 'cards'),
       cardsCount: groupedCards[0].length,
       spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
       spoilerCardsCount: groupedCards[1].length,
-    });
+    }
   };
 
   _cardToKey = (card: Card) => {
@@ -680,15 +689,15 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  renderEmptyState() {
+  renderEmptyState(dbState: DbState) {
     const {
       searchTerm,
     } = this.props;
     const {
       cardsCount,
       spoilerCardsCount,
-    } = this.state;
-    if (!this.isLoading() && (cardsCount + spoilerCardsCount) === 0) {
+    } = dbState;
+    if (!this.isLoading(dbState) && (cardsCount + spoilerCardsCount) === 0) {
       return (
         <View>
           <View style={styles.emptyText}>
@@ -705,15 +714,15 @@ class CardResultList extends React.Component<Props, State> {
     return this.props.expandSearchControls;
   }
 
-  _renderFooter = () => {
+  _renderFooter = (dbState: DbState) => {
+    const { spoilerCardsCount } = dbState;
     const {
-      spoilerCardsCount,
       showSpoilerCards,
     } = this.state;
     if (!spoilerCardsCount) {
       return (
         <View style={styles.footer}>
-          { this.renderEmptyState() }
+          { this.renderEmptyState(dbState) }
         </View>
       );
     }
@@ -724,7 +733,7 @@ class CardResultList extends React.Component<Props, State> {
             onPress={this._editSpoilerSettings}
             title={t`Edit Spoiler Settings`}
           />
-          { this.renderEmptyState() }
+          { this.renderEmptyState(dbState) }
         </View>
       );
     }
@@ -739,17 +748,14 @@ class CardResultList extends React.Component<Props, State> {
           onPress={this._editSpoilerSettings}
           title={t`Edit Spoiler Settings`}
         />
-        { this.renderEmptyState() }
+        { this.renderEmptyState(dbState) }
       </View>
     );
   };
 
-  getData(): CardBucket[] {
+  getData({ cards, spoilerCards, deckSections }: DbState): CardBucket[] {
     const {
-      cards,
-      spoilerCards,
       showSpoilerCards,
-      deckSections,
     } = this.state;
     const startCards = deckSections.length ?
       concat(
@@ -776,11 +782,11 @@ class CardResultList extends React.Component<Props, State> {
     return concat(startCards, spoilerCards);
   }
 
-  isLoading() {
-    return this.state.resultsKey !== this.resultsKey();
+  isLoading({ resultsKey }: DbState) {
+    return resultsKey !== this.resultsKey();
   }
 
-  render() {
+  _renderResults = (dbState?: DbState) => {
     const {
       sort,
       fontScale,
@@ -788,7 +794,8 @@ class CardResultList extends React.Component<Props, State> {
     const {
       loadingMessage,
     } = this.state;
-    if (this.isLoading()) {
+
+    if (!dbState || this.isLoading(dbState)) {
       return (
         <View style={styles.loading}>
           <View style={styles.loadingText}>
@@ -808,7 +815,7 @@ class CardResultList extends React.Component<Props, State> {
       sort === SORT_BY_PACK ||
       sort === SORT_BY_ENCOUNTER_SET
     );
-    const data = this.getData();
+    const data = this.getData(dbState);
     let offset = 0;
     const elementHeights = map(
       flatMap(data, section => {
@@ -848,12 +855,28 @@ class CardResultList extends React.Component<Props, State> {
         keyExtractor={this._cardToKey}
         extraData={this.state.deckCardCounts}
         getItemLayout={getItemLayout}
-        ListFooterComponent={this._renderFooter}
+        ListFooterComponent={this._renderFooter(dbState)}
         stickySectionHeadersEnabled={stickyHeaders}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         scrollEventThrottle={1}
       />
+    );
+  };
+
+  render() {
+    const {
+      showSpoilerCards,
+      showNonCollection,
+    } = this.state;
+    return (
+      <DbRender
+        getData={this._updateResults}
+        id={this.resultsKey()}
+        extraProps={{ showSpoilerCards, showNonCollection }}
+      >
+        { this._renderResults }
+      </DbRender>
     );
   }
 }
@@ -872,15 +895,7 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
-)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-  CardResultList, {
-    mapToProps(results: any, realm: Realm): RealmProps {
-      return {
-        realm,
-      };
-    },
-  })
-);
+)(CardResultList);
 
 const styles = StyleSheet.create({
   footer: {

@@ -12,8 +12,8 @@ import { t } from 'ttag';
 
 import Button from 'components/core/Button';
 import Card from 'data/Card';
-import Database from 'data/entities/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/entities/DatabaseContext';
+import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { AppState } from 'reducers';
 import typography from 'styles/typography';

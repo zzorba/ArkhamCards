@@ -1,3 +1,6 @@
+import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
+
+@Entity('taboo_set')
 export default class TabooSet {
   public static schema: Realm.ObjectSchema = {
     name: 'TabooSet',
@@ -13,13 +16,26 @@ export default class TabooSet {
     },
   };
 
+  @PrimaryColumn('integer')
   id!: number;
-  code!: string;
-  name!: string;
-  cardCount!: number;
-  active!: boolean | null;
-  date_start!: string;
-  date_update!: string | null;
+
+  @Column('text', { nullable: true })
+  code?: string;
+
+  @Column('text', { nullable: true })
+  name?: string;
+
+  @Column('integer', { nullable: true })
+  cardCount?: number;
+
+  @Column('boolean', { nullable: true })
+  active?: boolean;
+
+  @Column('text', { nullable: true })
+  date_start?: string;
+
+  @Column('text', { nullable: true })
+  date_update?: string;
 
   static fromJson(json: any, cardCount: number): TabooSet {
     return {

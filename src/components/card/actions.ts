@@ -24,7 +24,7 @@ import {
 } from 'actions/types';
 import { AppState } from 'reducers/index';
 import { syncCards, syncTaboos } from 'lib/publicApi';
-import Database from 'data/entities/Database';
+import Database from 'data/Database';
 
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;

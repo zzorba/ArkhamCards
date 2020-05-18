@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import 'reflect-metadata';
 
-import DatabaseContext from './src/data/entities/DatabaseContext';
-import Database from './src/data/entities/Database';
+import DatabaseContext from './src/data/DatabaseContext';
+import Database from './src/data/Database';
 import { registerScreens } from './src/app/screens';
 import configureStore from './src/app/store';
 import App from './src/app/App';
