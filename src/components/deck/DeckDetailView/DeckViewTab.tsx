@@ -270,16 +270,15 @@ export default class DeckViewTab extends React.Component<Props, State> {
 
   investigatorFront() {
     const {
-      parsedDeck: {
-        investigator,
-      },
+      deck,
+      cards,
       meta,
       parallelInvestigators,
     } = this.props;
     const altFront = meta.alternate_front && find(
       parallelInvestigators,
       card => card.code === meta.alternate_front);
-    return altFront || investigator;
+    return altFront || cards[deck.investigator_code];
   }
 
   investigatorBack() {
@@ -612,7 +611,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       (slots[BODY_OF_A_YITHIAN] || 0) > 0 ?
         cards[BODY_OF_A_YITHIAN] :
         undefined
-    ) || this.props.parsedDeck.investigator;
+    ) || this.investigatorFront();
 
     return (
       <View style={styles.column}>

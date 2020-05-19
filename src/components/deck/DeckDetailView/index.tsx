@@ -878,7 +878,21 @@ class DeckDetailView extends React.Component<Props, State> {
   _setMeta = (key: keyof DeckMeta, value?: string) => {
     const {
       meta,
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+      nameChange,
+      tabooSetId,
     } = this.state;
+    const {
+      deck,
+      cards,
+      previousDeck,
+    } = this.props;
+    if (!deck) {
+      return;
+    }
+
     const updatedMeta: DeckMeta = {
       ...meta,
       [key]: value,
@@ -886,15 +900,24 @@ class DeckDetailView extends React.Component<Props, State> {
     if (value === undefined) {
       delete updatedMeta[key];
     }
+    const parsedDeck = parseDeck(
+      deck,
+      updatedMeta,
+      slots,
+      ignoreDeckLimitSlots,
+      cards,
+      previousDeck);
+
     this.setState({
       meta: updatedMeta,
+      parsedDeck,
       hasPendingEdits: this.hasPendingEdits(
-        this.state.slots,
-        this.state.ignoreDeckLimitSlots,
+        slots,
+        ignoreDeckLimitSlots,
         updatedMeta,
-        this.state.xpAdjustment,
-        this.state.nameChange,
-        this.state.tabooSetId),
+        xpAdjustment,
+        nameChange,
+        tabooSetId),
     });
   };
 
@@ -1830,7 +1853,7 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
           [name: string]: Card[];
         } = {};
         forEach(cards, card => {
-          if (investigator && card.alternate_of === investigator) {
+          if (investigator && card.alternate_of_code === investigator) {
             parallelInvestigators.push(card);
           }
           if (cardsByName[card.real_name]) {

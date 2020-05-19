@@ -1,14 +1,11 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { find, map } from 'lodash';
 
 import ParallelInvestigatorPicker from './ParallelInvestigatorPicker';
 import InvestigatorOption from './InvestigatorOption';
 import { DeckMeta } from 'actions/types';
 import Card from 'data/Card';
-import { s } from 'styles/space';
-
-const HIDE_PARALLEL_INVESTIGATORS = true;
 
 interface Props {
   investigator: Card;
@@ -23,13 +20,10 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
 
   _parallelCardChange = (
     type: 'alternate_front' | 'alternate_back',
-    investigator: Card
+    code?: string
   ) => {
     const { setMeta } = this.props;
-    setMeta(
-      type,
-      investigator.code === this.props.investigator.code ? undefined : investigator.code
-    );
+    setMeta(type, code);
   };
 
   renderParallelOptions() {
@@ -40,7 +34,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
       editWarning,
       meta,
     } = this.props;
-    if (!parallelInvestigators.length || HIDE_PARALLEL_INVESTIGATORS) {
+    if (!parallelInvestigators.length) {
       return null;
     }
 
@@ -54,7 +48,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
           selection={find(
             parallelInvestigators,
             investigator => investigator.code === meta.alternate_front
-          ) || investigator}
+          )}
           disabled={disabled}
           editWarning={editWarning}
         />
@@ -66,7 +60,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
           selection={find(
             parallelInvestigators,
             investigator => investigator.code === meta.alternate_back
-          ) || investigator}
+          )}
           disabled={disabled}
           editWarning={editWarning}
         />
@@ -83,11 +77,6 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
       editWarning,
     } = this.props;
     const options = investigator.investigatorSelectOptions();
-    if (!options.length) {
-      return (
-        <View style={styles.placeholder} />
-      );
-    }
     return (
       <View>
         { this.renderParallelOptions() }
@@ -108,9 +97,3 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  placeholder: {
-    marginBottom: s,
-  },
-});

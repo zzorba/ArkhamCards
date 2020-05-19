@@ -12,7 +12,7 @@ export default class BaseCard {
   protected static SCHEMA = {
     id: 'string',
     code: { type: 'string', indexed: true },
-    alternate_of: 'string?',
+    alternate_of_code: 'string?',
     taboo_set_id: 'int?',
     taboo_placeholder: 'bool?',
     taboo_text_change: 'string?',
@@ -117,7 +117,7 @@ export default class BaseCard {
   };
   public id!: string;
   public code!: string;
-  public alternate_of!: string | null;
+  public alternate_of_code!: string | null;
   public taboo_set_id!: number | null;
   public taboo_placeholder?: boolean;
   public taboo_text_change!: string | null;

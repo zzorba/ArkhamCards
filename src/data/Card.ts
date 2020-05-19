@@ -292,12 +292,12 @@ export default class Card extends BaseCard {
       json.name;
 
     const altArtInvestigator =
+      !!json.alternate_of_code ||
       json.code === '98001' || // Jenny
       json.code === '98004' || // Roland
       json.code === '98010' || // Carolyn
       // json.code === '98016' || // Dexter for TIC
       // json.code === '98013' || // Silas for TIC
-      // json.code === '90001' || // nega-daisy
       json.code === '99001'; // PROMO Marie
 
     return Object.assign(

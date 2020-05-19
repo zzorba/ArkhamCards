@@ -480,7 +480,7 @@ function calculateTotalXp(
     const card = cards[code];
     const xp = computeXp(card);
     if (card && card.myriad) {
-      const myriadKey = `${card.real_text}_${card.xp}`;
+      const myriadKey = `${card.real_name}_${card.xp}`;
       if (!myriadBuys[myriadKey]) {
         // Pay the cost only once for myriad.
         myriadBuys[myriadKey] = true;
