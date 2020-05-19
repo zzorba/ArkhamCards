@@ -98,6 +98,7 @@ export default class BaseCard {
     back_linked: 'bool?',
 
     // Derived data.
+    advanced: 'bool?',
     altArtInvestigator: 'bool?',
     cycle_name: 'string?',
     cycle_code: 'string?',
@@ -203,6 +204,7 @@ export default class BaseCard {
   public back_linked?: boolean;
 
   // Derived data.
+  public advanced?: boolean;
   public altArtInvestigator?: boolean;
   public cycle_name!: string | null;
   public cycle_code!: string | null;

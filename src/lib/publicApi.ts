@@ -116,6 +116,7 @@ export const syncCards = function(
   cycleNames[50] = {};
   cycleNames[70] = {};
   cycleNames[80] = {};
+  cycleNames[90] = {};
   const headers = new Headers();
   if (cache &&
     cache.lastModified &&
@@ -156,7 +157,7 @@ export const syncCards = function(
         forEach(
           groupBy(
             realm.objects<Card>('Card')
-              .filtered(`deck_limit > 0 and spoiler != true and (taboo_set_id == null or taboo_set_id == 0)`),
+              .filtered(`deck_limit > 0 and spoiler != true and xp != null and (taboo_set_id == null or taboo_set_id == 0)`),
             card => card.real_name
           ), (cards) => {
             if (cards.length > 1) {

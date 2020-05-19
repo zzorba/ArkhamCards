@@ -288,7 +288,7 @@ export default class DeckValidation {
     // reject cards restricted
     if (card.restrictions &&
         card.restrictions.investigators &&
-        !find(card.restrictions.investigators, code => code === investigator.code)) {
+        !find(card.restrictions.investigators, code => code === investigator.code || code === investigator.alternate_of_code)) {
       return undefined;
     }
 

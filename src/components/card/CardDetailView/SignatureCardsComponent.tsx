@@ -1,7 +1,7 @@
 import React from 'react';
 import Realm, { Results } from 'realm';
 import { connect } from 'react-redux';
-import { flatMap, map } from 'lodash';
+import { flatMap, map, partition } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -42,9 +42,13 @@ class SignatureCardsComponent extends React.Component<Props> {
       fontScale,
     } = this.props;
 
+    const [advancedCards, altCards] = partition(alternateCards, card => !!card.advanced);
+
     return (
       <View style={space.marginBottomS}>
-        <Text style={styles.header}>{ t`Required Cards` }</Text>
+        <Text style={styles.header}>
+          { t`Required Cards` }
+        </Text>
         { !!(requiredCards && requiredCards.length) && (
           map(requiredCards, card => (
             <SignatureCardItem
@@ -56,10 +60,28 @@ class SignatureCardsComponent extends React.Component<Props> {
             />
           ))
         ) }
-        { !!(alternateCards && alternateCards.length) && (
+        { !!(altCards && altCards.length) && (
           <React.Fragment>
-            <Text style={styles.header}>{ t`Alternate Cards` }</Text>
-            { map(alternateCards, card => (
+            <Text style={styles.header}>
+              { t`Alternate Cards` }
+            </Text>
+            { map(altCards, card => (
+              <SignatureCardItem
+                key={card.code}
+                componentId={componentId}
+                fontScale={fontScale}
+                card={card}
+                width={width}
+              />
+            )) }
+          </React.Fragment>
+        ) }
+        { !!(advancedCards && advancedCards.length) && (
+          <React.Fragment>
+            <Text style={styles.header}>
+              { t`Advanced Cards` }
+            </Text>
+            { map(advancedCards, card => (
               <SignatureCardItem
                 key={card.code}
                 componentId={componentId}
