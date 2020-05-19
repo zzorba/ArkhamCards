@@ -1,4 +1,4 @@
-import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn, ManyToMany } from 'typeorm/browser';
+import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -52,8 +52,8 @@ export default class Card {
   @Column('text', { nullable: true })
   public pack_name?: string;
 
-  @Column('text', { nullable: true })
-  public type_name?: string;
+  @Column('text')
+  public type_name!: string;
 
   @Column('text', { nullable: true })
   public subtype_code?: 'basicweakness' | 'weakness';
@@ -223,7 +223,7 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
-  @ManyToMany(type => Card, card => card.id)
+  @ManyToOne(type => Card, card => card.id)
   @JoinColumn()
   public linked_card?: Card;
 
@@ -386,7 +386,7 @@ export default class Card {
 
 
   public static tabooSetQuery(tabooSetId?: number) {
-    return `(taboo_set_id is null OR taboo_set_id = ${tabooSetId || 0})`;
+    return `(c.taboo_set_id is null OR c.taboo_set_id = ${tabooSetId || 0})`;
   }
 
   static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {

@@ -13,6 +13,7 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
+import { QueryClause } from 'lib/filters';
 import CardSearchBox from './CardSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
@@ -115,7 +116,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     this._searchUpdated('');
   };
 
-  termQuery(): string | undefined {
+  termQuery(): QueryClause | undefined {
     const {
       searchTerm,
       searchText,
@@ -127,36 +128,45 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       return undefined;
     }
     const parts = searchBack ? [
-      'name LIKE :searchTerm',
+      'c.name LIKE :searchTerm',
       'linked_card.name LIKE :searchTerm',
-      'back_name LIKE :searchTerm',
+      'c.back_name LIKE :searchTerm',
       'linked_card.back_name LIKE :searchTerm',
-      'subname LIKE :searchTerm',
+      'c.subname LIKE :searchTerm',
       'linked_card.subname LIKE :searchTerm',
     ] : [
-      'renderName LIKE :searchTerm',
-      'renderSubname LIKE :searchTerm',
+      'c.renderName LIKE :searchTerm',
+      'c.renderSubname LIKE :searchTerm',
     ];
     if (searchText) {
-      parts.push('real_text LIKE :searchTerm');
+      parts.push('c.real_text LIKE :searchTerm');
       parts.push('linked_card.real_text LIKE :searchTerm');
-      parts.push('traits LIKE :searchTerm');
+      parts.push('c.traits LIKE :searchTerm');
       parts.push('linked_card.traits LIKE :searchTerm');
       if (searchBack) {
-        parts.push('back_text LIKE :searchTerm');
+        parts.push('c.back_text LIKE :searchTerm');
         parts.push('linked_card.back_text LIKE :searchTerm');
       }
     }
 
     if (searchFlavor) {
-      parts.push('flavor LIKE :searchTerm');
+      parts.push('c.flavor LIKE :searchTerm');
       parts.push('linked_card.flavor LIKE :searchTerm');
       if (searchBack) {
-        parts.push('back_flavor LIKE :searchTerm');
+        parts.push('c.back_flavor LIKE :searchTerm');
         parts.push('linked_card.back_flavor LIKE :searchTerm');
       }
     }
-    return `(${parts.join(' OR ')})`;
+    const lang = 'en';
+    return {
+      query: `(${parts.join(' OR ')})`,
+      params: {
+        searchTerm: `%${searchTerm
+          .replace(/[\u2018\u2019]/g, '\'')
+          .replace(/[\u201C\u201D]/g, '"')
+          .toLocaleUpperCase(lang)}%`,
+      },
+    };
   }
 
   filterQueryParts() {
@@ -166,34 +176,35 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return filterToQuery(filters);
   }
 
-  query() {
+  query(): QueryClause[] {
     const {
       baseQuery,
       mythosToggle,
       selectedSort,
       mythosMode,
     } = this.props;
-    const queryParts = [];
+    const queryParts: QueryClause[] = [];
     if (mythosToggle) {
       if (mythosMode) {
-        queryParts.push(MYTHOS_CARDS_QUERY);
+        queryParts.push({ query: MYTHOS_CARDS_QUERY });
       } else {
-        queryParts.push(PLAYER_CARDS_QUERY);
+        queryParts.push({ query: PLAYER_CARDS_QUERY });
       }
     }
     if (baseQuery) {
-      queryParts.push(baseQuery);
+      queryParts.push({ query: baseQuery });
     }
-    queryParts.push('(not altArtInvestigator)');
-    queryParts.push('(back_linked is null)');
+    queryParts.push({ query: '(not c.altArtInvestigator)' });
+    queryParts.push({ query: '(c.back_linked is null)' });
     forEach(
       this.filterQueryParts(),
-      clause => queryParts.push(clause));
+      clause => queryParts.push(clause)
+    );
 
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push(`(encounter_code is not null OR linked_card.encounter_code is not null)`);
+      queryParts.push({ query: `(c.encounter_code is not null OR linked_card.encounter_code is not null)` });
     }
-    return queryParts.join(' and ');
+    return queryParts;
   }
 
 
@@ -314,7 +325,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             fontScale={fontScale}
             tabooSetOverride={tabooSetOverride}
             query={this.query()}
-            filterQuery={this.filterQueryParts().join(' and ')}
+            filterQuery={this.filterQueryParts()}
             termQuery={this.termQuery()}
             searchTerm={searchTerm}
             sort={selectedSort}

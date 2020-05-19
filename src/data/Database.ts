@@ -1,5 +1,5 @@
 import { findIndex } from 'lodash';
-import { createConnection, Connection, Repository, EntitySubscriberInterface } from 'typeorm/browser';
+import { createConnection, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm/browser';
 
 import Card from './Card';
 import EncounterSet from './EncounterSet';
@@ -32,6 +32,11 @@ export default class Database {
   async cards(): Promise<Repository<Card>> {
     const connection = await this.connectionP;
     return connection.getRepository(Card);
+  }
+
+  async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
+    const cards = await this.cards();
+    return cards.createQueryBuilder('c').leftJoin('c.linked_card', 'linked_card');
   }
 
   async tabooSets(): Promise<Repository<TabooSet>> {

@@ -49,6 +49,7 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
+import { QueryClause } from 'lib/filters';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from 'reducers';
 import Card from 'data/Card';
 import { showCard, showCardSwipe } from 'components/nav/helper';
@@ -73,9 +74,9 @@ function funLoadingMessages() {
 interface OwnProps {
   componentId: string;
   fontScale: number;
-  query?: string;
-  filterQuery?: string;
-  termQuery?: string;
+  query?: QueryClause[];
+  filterQuery?: QueryClause[];
+  termQuery?: QueryClause;
   searchTerm?: string;
   sort?: SortType;
   investigator?: Card;
@@ -321,37 +322,37 @@ class CardResultList extends React.Component<Props, State> {
 
       case SORT_BY_FACTION:
         return query
-          .orderBy('sort_by_faction', 'ASC')
-          .addOrderBy('renderName', 'ASC')
-          .addOrderBy('xp', 'ASC');
+          .orderBy('c.sort_by_faction', 'ASC')
+          .addOrderBy('c.renderName', 'ASC')
+          .addOrderBy('c.xp', 'ASC');
       case SORT_BY_FACTION_PACK:
         return query
-          .orderBy('sort_by_faction_pack', 'ASC')
-          .addOrderBy('code', 'ASC');
+          .orderBy('c.sort_by_faction_pack', 'ASC')
+          .addOrderBy('c.code', 'ASC');
       case SORT_BY_COST:
         return query
-          .orderBy('cost', 'ASC')
-          .addOrderBy('renderName', 'ASC')
-          .addOrderBy('xp', 'ASC');
+          .orderBy('c.cost', 'ASC')
+          .addOrderBy('c.renderName', 'ASC')
+          .addOrderBy('c.xp', 'ASC');
       case SORT_BY_PACK:
         return query
-          .orderBy('sort_by_pack', 'ASC')
-          .addOrderBy('position', 'ASC');
+          .orderBy('c.sort_by_pack', 'ASC')
+          .addOrderBy('c.position', 'ASC');
       case SORT_BY_ENCOUNTER_SET:
         return query
-        .orderBy('sort_by_pack', 'ASC')
-        .addOrderBy('encounter_code', 'ASC')
-        .addOrderBy('encounter_position', 'ASC');
+        .orderBy('c.sort_by_pack', 'ASC')
+        .addOrderBy('c.encounter_code', 'ASC')
+        .addOrderBy('c.encounter_position', 'ASC');
       case SORT_BY_TITLE:
         return query
-          .orderBy('renderName', 'ASC')
-          .addOrderBy('xp', 'ASC');
+          .orderBy('c.renderName', 'ASC')
+          .addOrderBy('c.xp', 'ASC');
       case SORT_BY_TYPE:
       default:
         return query
-          .orderBy('sort_by_type', 'ASC')
-          .addOrderBy('renderName', 'ASC')
-          .addOrderBy('xp', 'ASC');
+          .orderBy('c.sort_by_type', 'ASC')
+          .addOrderBy('c.renderName', 'ASC')
+          .addOrderBy('c.xp', 'ASC');
     }
   }
 
@@ -484,54 +485,29 @@ class CardResultList extends React.Component<Props, State> {
     if (!deckQuery) {
       return this.bucketCards([], 'deck');
     }
-    const queryParts: string[] = [
-      `(${deckQuery})`,
-      Card.tabooSetQuery(tabooSetId),
+    const queryParts: QueryClause[] = [
+      { query: Card.tabooSetQuery(tabooSetId) },
+      ...(storyOnly && query) || [],
+      ...filterQuery || [],
+      ...(termQuery ? [termQuery] : []),
     ];
-    if (storyOnly && query) {
-      queryParts.push(query);
-    }
-    if (filterQuery) {
-      queryParts.push(filterQuery);
-    }
-
-    const finalQuery = queryParts.join(' AND ');
-    let cardQuery = (await db.cards()).createQueryBuilder().where(finalQuery);
-    if (termQuery && searchTerm) {
-      cardQuery = cardQuery.andWhere(
-        termQuery,
-        { searchTerm: `%${searchTerm.toLocaleUpperCase(lang)}%` }
-      );
-    }
+    let cardQuery = (await db.cardsQuery()).where( `(${deckQuery})`);
+    forEach(queryParts, ({ query, params}) => {
+      cardQuery = cardQuery.andWhere(query, params);
+    });
 
     const deckCards: Card[] = await this.applySort(cardQuery).getMany();
     return this.bucketCards(deckCards, 'deck');
   }
 
-  async getCards(db: Database, query?: string): Promise<Card[]> {
+  async getCards(db: Database, queryClause?: QueryClause[]): Promise<Card[]> {
     const {
-      termQuery,
-      searchTerm,
       tabooSetId,
-      lang,
     } = this.props;
-    // replace "smart" single and double quotes
-    const parsedSearchTerm = searchTerm && searchTerm
-      .replace(/[\u2018\u2019]/g, '\'')
-      .replace(/[\u201C\u201D]/g, '"')
-      .toLocaleUpperCase(lang);
-    let cardQuery = (await db.cards()).createQueryBuilder();
-
-    const params = { searchTerm: `%${parsedSearchTerm}%` };
-    cardQuery = (query ?
-      cardQuery.where(`(${query}) AND ${Card.tabooSetQuery(tabooSetId)}`, params) :
-      cardQuery.where(Card.tabooSetQuery(tabooSetId))
-    );
-
-    if (termQuery) {
-      cardQuery = cardQuery.andWhere(termQuery, params);
-    }
-
+    let cardQuery = (await db.cardsQuery()).where(Card.tabooSetQuery(tabooSetId));
+    forEach(queryClause || [], ({ query, params}) => {
+      cardQuery = cardQuery.andWhere(query, params);
+    });
     return await this.applySort(cardQuery).getMany();
   }
 

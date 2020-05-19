@@ -1,7 +1,6 @@
 import React from 'react';
-import { pick } from 'lodash';
-import Realm, { Results } from 'realm';
-import { connectRealm, CardResults } from 'react-native-realm';
+import { forEach, pick } from 'lodash';
+import { SelectQueryBuilder } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import {
   StyleSheet,
@@ -13,6 +12,8 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
 import { t, ngettext, msgid } from 'ttag';
 
+import DbRender from 'components/data/DbRender';
+import Database from 'data/Database';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import Card from 'data/Card';
@@ -21,9 +22,8 @@ import { filterToQuery, FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
 
-export interface FilterProps {
+export interface FilterProps<T={}> {
   componentId: string;
-  cards: Results<Card>;
   filters: FilterState;
   defaultFilterState: FilterState;
   width: number;
@@ -31,6 +31,7 @@ export interface FilterProps {
   pushFilterView: (screen: string) => void;
   onToggleChange: (setting: string, value: boolean) => void;
   onFilterChange: (setting: string, value: any) => void;
+  extraData?: T;
 }
 
 export interface CardFilterProps {
@@ -40,15 +41,20 @@ export interface CardFilterProps {
   baseQuery?: string;
 }
 
-export default function withFilterFunctions<P>(
-  WrappedComponent: React.ComponentType<P & FilterProps>,
-  title: string,
-  clearTraits?: string[]
-): React.ComponentType<NavigationProps & CardFilterProps & P> {
-  interface RealmProps {
-    cards: Results<Card>;
-  }
+interface Options<T> {
+  title: string;
+  computeExtraData?: (cards: SelectQueryBuilder<Card>) => Promise<T>;
+  clearTraits?: string[];
+}
 
+export default function withFilterFunctions<P, T={}>(
+  WrappedComponent: React.ComponentType<P & FilterProps<T>>,
+  {
+    title,
+    clearTraits,
+    computeExtraData,
+  }: Options<T>
+): React.ComponentType<NavigationProps & CardFilterProps & P> {
   interface ReduxProps {
     currentFilters: FilterState;
     defaultFilterState: FilterState;
@@ -60,24 +66,17 @@ export default function withFilterFunctions<P>(
     clearFilters: (id: string, clearTraits?: string[]) => void;
   }
 
-  type Props = NavigationProps & DimensionsProps & CardFilterProps & RealmProps & ReduxProps & ReduxActionProps & P;
+  type Props = NavigationProps & DimensionsProps & CardFilterProps & ReduxProps & ReduxActionProps & P;
 
   class WrappedFilterComponent extends React.Component<Props> {
     _navEventListener?: EventSubscription;
 
     componentDidMount() {
-      this._syncState();
       this._navEventListener = Navigation.events().bindComponent(this);
     }
 
     componentWillUnmount() {
       this._navEventListener && this._navEventListener.remove();
-    }
-
-    componentDidUpdate(prevProps: Props) {
-      if (prevProps.currentFilters !== this.props.currentFilters) {
-        this._syncState();
-      }
     }
 
     hasChanges() {
@@ -93,41 +92,6 @@ export default function withFilterFunctions<P>(
         deepDiff(currentFilters, defaultFilterState);
       return differences && differences.length;
     }
-
-    cardCount() {
-      const {
-        cards,
-        currentFilters,
-      } = this.props;
-      const query = filterToQuery(currentFilters).join(' and ');
-      if (query) {
-        return cards.filtered(query).length;
-      }
-      return cards.length;
-    }
-
-    _syncState = () => {
-      const count = this.cardCount();
-      Navigation.mergeOptions(this.props.componentId, {
-        topBar: {
-          rightButtons: this.hasChanges() ?
-            [{
-              text: t`Clear`,
-              id: 'clear',
-              color: COLORS.navButton,
-              testID: t`Clear`,
-            }] : [],
-          subtitle: {
-            text: ngettext(
-              msgid`${count} Card`,
-              `${count} Cards`,
-              count
-            ),
-            color: COLORS.navButton,
-          },
-        },
-      });
-    };
 
     navigationButtonPressed({ buttonId }: { buttonId: string }) {
       const {
@@ -178,10 +142,73 @@ export default function withFilterFunctions<P>(
       updateFilter(filterId, key, selection);
     };
 
-    render() {
+    dataId() {
+      const {
+        baseQuery,
+        tabooSetId,
+        currentFilters,
+      } = this.props;
+      return JSON.stringify({
+        baseQuery,
+        tabooSetId,
+        currentFilters,
+      });
+    }
+
+    _getData = async (db: Database): Promise<T> => {
+      const {
+        baseQuery,
+        componentId,
+        tabooSetId,
+        currentFilters,
+      } = this.props;
+      let cardsQuery = await db.cardsQuery();
+      cardsQuery = cardsQuery
+        .where(Card.tabooSetQuery(tabooSetId));
+      if (baseQuery) {
+        cardsQuery = cardsQuery.andWhere(`(${baseQuery})`);
+      }
+      let extraData: T = {} as T;
+      if (computeExtraData) {
+        extraData = await computeExtraData(cardsQuery);
+      }
+      const filterParts = filterToQuery(currentFilters);
+      if (filterParts.length) {
+        forEach(filterToQuery(currentFilters), ({ query, params }) => {
+          console.log(`Adding clause: ${query}, ${JSON.stringify(params)}`)
+          //cardsQuery = cardsQuery.andWhere(query, params);
+        });
+      }
+      const count = 0; //await cardsQuery.getCount();
+      Navigation.mergeOptions(componentId, {
+        topBar: {
+          rightButtons: this.hasChanges() ?
+            [{
+              text: t`Clear`,
+              id: 'clear',
+              color: COLORS.navButton,
+              testID: t`Clear`,
+            }] : [],
+          title: {
+            text: title,
+            color: COLORS.navButton,
+          },
+          subtitle: {
+            text: ngettext(
+              msgid`${count} Card`,
+              `${count} Cards`,
+              count
+            ),
+            color: COLORS.navButton,
+          },
+        },
+      });
+      return extraData;
+    }
+
+    _renderData = (extraData?: T) => {
       const {
         componentId,
-        cards,
         /* eslint-disable @typescript-eslint/no-unused-vars */
         baseQuery,
         defaultFilterState,
@@ -201,7 +228,7 @@ export default function withFilterFunctions<P>(
         <View style={styles.wrapper}>
           <WrappedComponent
             componentId={componentId}
-            cards={cards}
+            extraData={extraData}
             filters={currentFilters}
             defaultFilterState={defaultFilterState}
             width={width}
@@ -212,6 +239,14 @@ export default function withFilterFunctions<P>(
             {...otherProps as P}
           />
         </View>
+      );
+    };
+
+    render() {
+      return (
+        <DbRender getData={this._getData} id={this.dataId()}>
+          { this._renderData }
+        </DbRender>
       );
     }
   }
@@ -236,28 +271,13 @@ export default function withFilterFunctions<P>(
     }, dispatch);
   };
 
-  const result = connect<ReduxProps, {}, NavigationProps & CardFilterProps & P, AppState>(
+  const result = connect<ReduxProps, ReduxActionProps, NavigationProps & CardFilterProps & P, AppState>(
     mapStateToProps,
     mapDispatchToProps,
   )(
-    // @ts-ignore TS2345
-    connectRealm<NavigationProps & CardFilterProps & P & ReduxProps & ReduxActionProps, RealmProps, Card>(
-      withDimensions(WrappedFilterComponent), {
-        schemas: ['Card'],
-        mapToProps(
-          results: CardResults<Card>,
-          realm: Realm,
-          props: NavigationProps & CardFilterProps & P & ReduxProps
-        ): RealmProps {
-          return {
-            cards: props.baseQuery ?
-              results.cards.filtered(`((${props.baseQuery}) and (${Card.tabooSetQuery(props.tabooSetId)}))`) :
-              results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
-          };
-        },
-      })
+    // @ts-ignore
+    withDimensions(WrappedFilterComponent)
   );
-
   hoistNonReactStatic(result, WrappedComponent);
 
   return result as React.ComponentType<NavigationProps & CardFilterProps & P>;

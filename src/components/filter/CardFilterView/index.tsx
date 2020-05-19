@@ -7,8 +7,10 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-
+import { SelectQueryBuilder } from 'typeorm/browser';
 import { t } from 'ttag';
+
+import Card from 'data/Card';
 import { Pack } from 'actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
@@ -33,10 +35,7 @@ interface ReduxProps {
   allPacks: Pack[];
 }
 
-type Props = ReduxProps & FilterProps;
-
-interface State {
-  loading: boolean;
+interface CardData {
   hasCost: boolean;
   hasXp: boolean;
   hasSkill: boolean;
@@ -50,10 +49,12 @@ interface State {
   allSlots: string[];
   allEncounters: string[];
   allIllustrators: string[];
-  levels: number[];
+//  levels: number[];
 }
 
-class CardFilterView extends React.Component<Props, State> {
+type Props = ReduxProps & FilterProps<CardData>;
+
+class CardFilterView extends React.Component<Props> {
   static get options() {
     return {
       topBar: {
@@ -85,98 +86,6 @@ class CardFilterView extends React.Component<Props, State> {
       allIllustrators: [],
       levels: [],
     };
-  }
-
-  componentDidMount() {
-    const {
-      cards,
-    } = this.props;
-    setTimeout(() => {
-      const allFactions = filter(CARD_FACTION_CODES, faction_code =>
-        cards.filtered(`faction_code == '${faction_code}'`).length > 0);
-      let hasCost = false;
-      let hasXp = false;
-      let hasSkill = false;
-      const typesMap: { [key: string]: boolean } = {};
-      const typeCodesMap: { [key: string]: boolean } = {};
-      const usesMap: { [key: string]: boolean } = {};
-      const subTypesMap: { [key: string]: boolean } = {};
-      const traitsMap: { [key: string]: boolean } = {};
-      const packsMap: { [key: string]: boolean } = {};
-      const slotsMap: { [key: string]: boolean } = {};
-      const encountersMap: { [key: string]: boolean } = {};
-      const illustratorsMap: { [key: string]: boolean } = {};
-      forEach(cards, card => {
-        if (card.cost !== null) {
-          hasCost = true;
-        }
-        if (card.xp !== null) {
-          hasXp = true;
-        }
-        if (!hasSkill && (
-          card.skill_willpower ||
-          card.skill_intellect ||
-          card.skill_combat ||
-          card.skill_agility ||
-          card.skill_wild
-        )) {
-          hasSkill = true;
-        }
-        if (card.traits) {
-          forEach(
-            filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
-            t => {
-              traitsMap[t] = true;
-            });
-        }
-        if (card.subtype_name) {
-          subTypesMap[card.subtype_name] = true;
-        }
-        if (card.uses) {
-          usesMap[card.uses] = true;
-        }
-        if (card.pack_name) {
-          packsMap[card.pack_name] = true;
-        }
-        if (card.slot) {
-          if (card.slot.indexOf('.') !== -1) {
-            forEach(
-              map(card.slot.split('.'), s => s.trim()),
-              s => {
-                slotsMap[s] = true;
-              }
-            );
-          } else {
-            slotsMap[card.slot] = true;
-          }
-        }
-        if (card.encounter_name) {
-          encountersMap[card.encounter_name] = true;
-        }
-        if (card.illustrator) {
-          illustratorsMap[card.illustrator] = true;
-        }
-        typesMap[card.type_name] = true;
-        typeCodesMap[card.type_code] = true;
-      });
-
-      this.setState({
-        loading: false,
-        allFactions,
-        hasCost,
-        hasXp,
-        hasSkill,
-        allUses: keys(usesMap).sort(),
-        allTraits: keys(traitsMap).sort(),
-        allTypes: keys(typesMap).sort(),
-        allTypeCodes: keys(typeCodesMap).sort(),
-        allSubTypes: keys(subTypesMap).sort(),
-        allPacks: keys(packsMap).sort(),
-        allSlots: keys(slotsMap).sort(),
-        allEncounters: keys(encountersMap).sort(),
-        allIllustrators: keys(illustratorsMap).sort(),
-      });
-    }, 0);
   }
 
   _onPacksPress = () => {
@@ -408,9 +317,22 @@ class CardFilterView extends React.Component<Props, State> {
       onToggleChange,
       onFilterChange,
       fontScale,
+      extraData,
     } = this.props;
+
+    if (!extraData) {
+      return (
+        <View style={styles.loadingWrapper}>
+          <ActivityIndicator
+            style={[{ height: 80 }]}
+            size="small"
+            animating
+          />
+        </View>
+      );
+    }
+
     const {
-      loading,
       allUses,
       allFactions,
       allTraits,
@@ -424,19 +346,7 @@ class CardFilterView extends React.Component<Props, State> {
       hasCost,
       hasXp,
       hasSkill,
-    } = this.state;
-
-    if (loading) {
-      return (
-        <View style={styles.loadingWrapper}>
-          <ActivityIndicator
-            style={[{ height: 80 }]}
-            size="small"
-            animating
-          />
-        </View>
-      );
-    }
+    } = extraData;
 
     return (
       <ScrollView>
@@ -704,7 +614,104 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default connect(mapStateToProps)(
-  withFilterFunctions(CardFilterView, t`Filters`)
+  withFilterFunctions(
+    CardFilterView, {
+      title: t`Filters`,
+      computeExtraData: async (cards: SelectQueryBuilder<Card>): Promise<CardData> => {
+        const allFactions: FactionCodeType[] = []
+        for (let i = 0; i < CARD_FACTION_CODES.length; i++) {
+          const faction_code = CARD_FACTION_CODES[i];
+          if (await cards.andWhere(
+            '(c.faction_code = :faction)',
+            { faction: faction_code }
+          ).getCount() > 0) {
+            allFactions.push(faction_code);
+          }
+        }
+        let hasCost = false;
+        let hasXp = false;
+        let hasSkill = false;
+        const typesMap: { [key: string]: boolean } = {};
+        const typeCodesMap: { [key: string]: boolean } = {};
+        const usesMap: { [key: string]: boolean } = {};
+        const subTypesMap: { [key: string]: boolean } = {};
+        const traitsMap: { [key: string]: boolean } = {};
+        const packsMap: { [key: string]: boolean } = {};
+        const slotsMap: { [key: string]: boolean } = {};
+        const encountersMap: { [key: string]: boolean } = {};
+        const illustratorsMap: { [key: string]: boolean } = {};
+        forEach(await cards.getMany(), card => {
+          if (card.cost !== null) {
+            hasCost = true;
+          }
+          if (card.xp !== null) {
+            hasXp = true;
+          }
+          if (!hasSkill && (
+            card.skill_willpower ||
+            card.skill_intellect ||
+            card.skill_combat ||
+            card.skill_agility ||
+            card.skill_wild
+          )) {
+            hasSkill = true;
+          }
+          if (card.traits) {
+            forEach(
+              filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
+              t => {
+                traitsMap[t] = true;
+              });
+          }
+          if (card.subtype_name) {
+            subTypesMap[card.subtype_name] = true;
+          }
+          if (card.uses) {
+            usesMap[card.uses] = true;
+          }
+          if (card.pack_name) {
+            packsMap[card.pack_name] = true;
+          }
+          if (card.slot) {
+            if (card.slot.indexOf('.') !== -1) {
+              forEach(
+                map(card.slot.split('.'), s => s.trim()),
+                s => {
+                  slotsMap[s] = true;
+                }
+              );
+            } else {
+              slotsMap[card.slot] = true;
+            }
+          }
+          if (card.encounter_name) {
+            encountersMap[card.encounter_name] = true;
+          }
+          if (card.illustrator) {
+            illustratorsMap[card.illustrator] = true;
+          }
+          typesMap[card.type_name] = true;
+          typeCodesMap[card.type_code] = true;
+        });
+
+        return {
+          allFactions,
+          hasCost,
+          hasXp,
+          hasSkill,
+          allUses: keys(usesMap).sort(),
+          allTraits: keys(traitsMap).sort(),
+          allTypes: keys(typesMap).sort(),
+          allTypeCodes: keys(typeCodesMap).sort(),
+          allSubTypes: keys(subTypesMap).sort(),
+          allPacks: keys(packsMap).sort(),
+          allSlots: keys(slotsMap).sort(),
+          allEncounters: keys(encountersMap).sort(),
+          allIllustrators: keys(illustratorsMap).sort(),
+        }
+      }
+    }
+  )
 );
 
 const styles = StyleSheet.create({

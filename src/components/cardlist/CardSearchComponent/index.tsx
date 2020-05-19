@@ -314,8 +314,8 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
       };
     },
     async (db: Database, props: DbProps) => {
-      const cardsR = await db.cards();
-      const cards = await cardsR.createQueryBuilder()
+      const query = await db.cardsQuery();
+      const cards = await query
         .where(props.baseQuery ?
           `(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}` :
           Card.tabooSetQuery(props.tabooSetId)

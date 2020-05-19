@@ -109,9 +109,11 @@ class SignatureCardsComponent extends React.Component<Props> {
     const requiredQuery = map(card_requirements || [], req => {
       return `code = '${req.code}'`;
     }).join(' OR ');
+    const cardsQuery = await db.cardsQuery();
+
     const requiredCards = requiredQuery ?
-      await (await db.cards()).createQueryBuilder()
-          .where(`(${requiredQuery}) AND ${Card.tabooSetQuery(tabooSetId)}`)
+      await cardsQuery
+        .where(`(${requiredQuery}) AND ${Card.tabooSetQuery(tabooSetId)}`)
         .getMany()
       : [];
 
@@ -120,7 +122,7 @@ class SignatureCardsComponent extends React.Component<Props> {
       code => `code = '${code}'`).join(' OR ');
 
     const alternateCards = alternateQuery ?
-      await (await db.cards()).createQueryBuilder()
+      await cardsQuery
           .where(`(${alternateQuery}) AND ${Card.tabooSetQuery(tabooSetId)}`)
         .getMany()
       : [];

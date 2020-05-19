@@ -78,7 +78,7 @@ class TabooSetPicker extends React.Component<Props> {
 
 export default connectDb<OwnProps, DbProps>(
   TabooSetPicker,
-  () => {},
+  () => { return {}; },
   async (db: Database) => {
     const tabooSetsR = await db.tabooSets();
     const tabooSets = await tabooSetsR.createQueryBuilder()

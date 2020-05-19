@@ -42,49 +42,61 @@ export const syncTaboos = async function(
     })
   );
   const cardsRep = await db.cards();
+  await cardsRep.createQueryBuilder().where('taboo_set_id > 0').delete().execute();
+
   const tabooSetsRep = await db.tabooSets();
   await tabooSetsRep.createQueryBuilder().delete().execute();
 
+  const tabooSets: TabooSet[] = [];
   for (let i = 0; i < json.length; i++) {
+    console.log(i);
     const tabooJson = json[i];
     const cards = JSON.parse(tabooJson.cards);
     try {
-      await tabooSetsRep.insert(TabooSet.fromJson(tabooJson, cards.length));
+      tabooSets.push(TabooSet.fromJson(tabooJson, cards.length));
+      for (let j = 0; j < allTabooCards.length; j++) {
+        const tabooCode = allTabooCards[j];
+        const card = await cardsRep.createQueryBuilder('card')
+          .where('(card.code = :code AND (card.taboo_set_id is null OR card.taboo_set_id = 0))')
+          .setParameters({ code: tabooCode })
+          .getOne();
+        if (card) {
+          const tabooCard = Card.placeholderTabooCard(tabooJson.id, card);
+          console.log(`Inserting ${tabooCard.id}`);
+          cardsRep.insert(tabooCard);
+        }
+      }
+      for (let j = 0; j < cards.length; j++) {
+        const cardJson = cards[j];
+        const code: string = cardJson.code;
+        const card = await cardsRep.createQueryBuilder()
+          .where('(code = :code AND (taboo_set_id is null OR taboo_set_id = 0))')
+          .setParameters({ code: cardJson.code })
+          .getOne();
+        if (card) {
+          try {
+            // Mark the original card as the 'vanilla' version.
+            if (card.taboo_set_id !== 0) {
+              await cardsRep.update({ id: card.id }, { taboo_set_id: 0 });
+            }
+            const tabooCard = Card.fromTabooCardJson(tabooJson.id, cardJson, card);
+            await cardsRep.save(tabooCard);
+          } catch (e) {
+            Alert.alert(`${e}`);
+            console.log(e);
+          }
+        } else {
+          console.log(`Could not find old card: ${code}`);
+        }
+      }
     } catch (e) {
       Alert.alert(`${e}`);
       console.log(e);
     }
-    for (let j = 0; j < allTabooCards.length; j++) {
-      const tabooCode = allTabooCards[j];
-      const card = await cardsRep.createQueryBuilder('card')
-        .where('(card.code = :code AND (card.taboo_set_id is null OR card.taboo_set_id = 0))')
-        .setParameters({ code: tabooCode })
-        .getOne();
-      if (card) {
-        cards.save(Card.placeholderTabooCard(tabooJson.id, card));
-      }
-    }
-    for (let j = 0; j < cards.length; j++) {
-      const cardJson = cards[j];
-      const code: string = cardJson.code;
-      const card = await cardsRep.createQueryBuilder()
-        .where('(code = :code AND (taboo_set_id is null OR taboo_set_id = 0))')
-        .setParameters({ code: cardJson.code })
-        .getOne();
-      if (card) {
-        try {
-          // Mark the original card as the 'vanilla' version.
-          await cardsRep.update({ id: card.id }, { taboo_set_id: 0 });
-          await cardsRep.insert(Card.fromTabooCardJson(tabooJson.id, cardJson, card));
-        } catch (e) {
-          Alert.alert(`${e}`);
-          console.log(e);
-        }
-      } else {
-        console.log(`Could not find old card: ${code}`);
-      }
-    }
   }
+
+  await tabooSetsRep.insert(tabooSets);
+
   const tabooCount = await cardsRep.createQueryBuilder()
     .where('taboo_set_id > 0')
     .getCount();
