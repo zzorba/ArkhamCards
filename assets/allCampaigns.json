@@ -24542,7 +24542,7 @@
           "text": "Some card effects may allow investigators to take control of keys in other ways."
         }
       ],
-      "example": "When an investigator takes control of a key, they places that key on their investigator card. If an investigator who controls 1 or more keys is eliminated, place each of those keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location."
+      "example": "When an investigator takes control of a key, they place that key on their investigator card. If an investigator who controls 1 or more keys is eliminated, place each of those keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location."
     },
     {
       "id": "guardian_of_the_trap_emerged",
@@ -33024,7 +33024,7 @@
                 }
               ]
             },
-            "text": "Minar Setup",
+            "text": "Mnar Setup",
             "steps": [
               "minar_setup",
               "minar_xp",
@@ -33165,7 +33165,7 @@
     {
       "id": "minar_setup",
       "type": "rule_reminder",
-      "title": "Minar Setup",
+      "title": "Mnar Setup",
       "text": "Each investigator loses each of their clues."
     },
     {
