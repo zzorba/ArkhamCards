@@ -1,6 +1,6 @@
 import { pick } from 'lodash';
 
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from 'lib/filters';
 import {
   SORT_BY_TYPE,
   CLEAR_FILTER,
@@ -20,6 +20,7 @@ interface FiltersState {
   defaults: { [componentId: string]: FilterState };
   mythos: { [componentId: string]: boolean };
   sorts: { [componentId: string]: SortType };
+  cardData: { [componentId: string]: CardFilterData };
 }
 
 const DEFAULT_STATE: FiltersState = {
@@ -27,6 +28,7 @@ const DEFAULT_STATE: FiltersState = {
   defaults: {},
   mythos: {},
   sorts: {},
+  cardData: {},
 };
 
 export default function(
@@ -50,6 +52,10 @@ export default function(
       sorts: {
         ...state.sorts,
         [action.id]: action.sort || SORT_BY_TYPE,
+      },
+      cardData: {
+        ...state.cardData,
+        [action.id]: action.cardData,
       },
     };
   }
@@ -76,6 +82,7 @@ export default function(
     const defaults = { ...state.defaults };
     const mythos = { ...state.mythos };
     const sorts = { ...state.sorts };
+    const cardData = { ...state.cardData };
     if (all[action.id]) {
       delete all[action.id];
     }
@@ -84,11 +91,13 @@ export default function(
     }
     delete mythos[action.id];
     delete sorts[action.id];
+    delete cardData[action.id];
     return {
       all,
       defaults,
       mythos,
       sorts,
+      cardData,
     };
   }
   if (action.type === TOGGLE_FILTER) {

@@ -17,42 +17,27 @@ import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
+import { CardFilterData } from 'lib/filters';
 import ToggleFilter from 'components/core/ToggleFilter';
-import withFilterFunctions, { FilterProps } from '../withFilterFunctions';
+import withFilterFunctions, { FilterFunctionProps, FilterProps } from '../withFilterFunctions';
 import NavButton from 'components/core/NavButton';
-import { CORE_FACTION_CODES, FactionCodeType } from 'constants';
+import { CARD_FACTION_CODES, FactionCodeType } from 'constants';
 import { getAllPacks, AppState } from 'reducers';
 import COLORS from 'styles/colors';
 import space from 'styles/space';
-
-const CARD_FACTION_CODES: FactionCodeType[] = [
-  ...CORE_FACTION_CODES,
-  'neutral',
-  'mythos',
-];
 
 interface ReduxProps {
   allPacks: Pack[];
 }
 
-interface CardData {
-  hasCost: boolean;
-  hasXp: boolean;
-  hasSkill: boolean;
-  allUses: string[];
-  allFactions: FactionCodeType[];
-  allTraits: string[];
-  allTypes: string[];
-  allTypeCodes: string[];
-  allSubTypes: string[];
-  allPacks: string[];
-  allSlots: string[];
-  allEncounters: string[];
-  allIllustrators: string[];
-//  levels: number[];
+
+interface OwnProps {
+  cardData: CardFilterData;
 }
 
-type Props = ReduxProps & FilterProps<CardData>;
+export type CardFilterProps = FilterFunctionProps & OwnProps;
+
+type Props = OwnProps & ReduxProps & FilterProps;
 
 class CardFilterView extends React.Component<Props> {
   static get options() {
@@ -317,36 +302,22 @@ class CardFilterView extends React.Component<Props> {
       onToggleChange,
       onFilterChange,
       fontScale,
-      extraData,
+      cardData: {
+        allUses,
+        allFactions,
+        allTraits,
+        allTypes,
+        allTypeCodes,
+        allSubTypes,
+        allPacks,
+        allSlots,
+        allEncounters,
+        allIllustrators,
+        hasCost,
+        hasXp,
+        hasSkill,
+      },
     } = this.props;
-
-    if (!extraData) {
-      return (
-        <View style={styles.loadingWrapper}>
-          <ActivityIndicator
-            style={[{ height: 80 }]}
-            size="small"
-            animating
-          />
-        </View>
-      );
-    }
-
-    const {
-      allUses,
-      allFactions,
-      allTraits,
-      allTypes,
-      allTypeCodes,
-      allSubTypes,
-      allPacks,
-      allSlots,
-      allEncounters,
-      allIllustrators,
-      hasCost,
-      hasXp,
-      hasSkill,
-    } = extraData;
 
     return (
       <ScrollView>
@@ -615,102 +586,8 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect(mapStateToProps)(
   withFilterFunctions(
-    CardFilterView, {
-      title: t`Filters`,
-      computeExtraData: async (cards: SelectQueryBuilder<Card>): Promise<CardData> => {
-        const allFactions: FactionCodeType[] = []
-        for (let i = 0; i < CARD_FACTION_CODES.length; i++) {
-          const faction_code = CARD_FACTION_CODES[i];
-          if (await cards.andWhere(
-            '(c.faction_code = :faction)',
-            { faction: faction_code }
-          ).getCount() > 0) {
-            allFactions.push(faction_code);
-          }
-        }
-        let hasCost = false;
-        let hasXp = false;
-        let hasSkill = false;
-        const typesMap: { [key: string]: boolean } = {};
-        const typeCodesMap: { [key: string]: boolean } = {};
-        const usesMap: { [key: string]: boolean } = {};
-        const subTypesMap: { [key: string]: boolean } = {};
-        const traitsMap: { [key: string]: boolean } = {};
-        const packsMap: { [key: string]: boolean } = {};
-        const slotsMap: { [key: string]: boolean } = {};
-        const encountersMap: { [key: string]: boolean } = {};
-        const illustratorsMap: { [key: string]: boolean } = {};
-        forEach(await cards.getMany(), card => {
-          if (card.cost !== null) {
-            hasCost = true;
-          }
-          if (card.xp !== null) {
-            hasXp = true;
-          }
-          if (!hasSkill && (
-            card.skill_willpower ||
-            card.skill_intellect ||
-            card.skill_combat ||
-            card.skill_agility ||
-            card.skill_wild
-          )) {
-            hasSkill = true;
-          }
-          if (card.traits) {
-            forEach(
-              filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
-              t => {
-                traitsMap[t] = true;
-              });
-          }
-          if (card.subtype_name) {
-            subTypesMap[card.subtype_name] = true;
-          }
-          if (card.uses) {
-            usesMap[card.uses] = true;
-          }
-          if (card.pack_name) {
-            packsMap[card.pack_name] = true;
-          }
-          if (card.slot) {
-            if (card.slot.indexOf('.') !== -1) {
-              forEach(
-                map(card.slot.split('.'), s => s.trim()),
-                s => {
-                  slotsMap[s] = true;
-                }
-              );
-            } else {
-              slotsMap[card.slot] = true;
-            }
-          }
-          if (card.encounter_name) {
-            encountersMap[card.encounter_name] = true;
-          }
-          if (card.illustrator) {
-            illustratorsMap[card.illustrator] = true;
-          }
-          typesMap[card.type_name] = true;
-          typeCodesMap[card.type_code] = true;
-        });
-
-        return {
-          allFactions,
-          hasCost,
-          hasXp,
-          hasSkill,
-          allUses: keys(usesMap).sort(),
-          allTraits: keys(traitsMap).sort(),
-          allTypes: keys(typesMap).sort(),
-          allTypeCodes: keys(typeCodesMap).sort(),
-          allSubTypes: keys(subTypesMap).sort(),
-          allPacks: keys(packsMap).sort(),
-          allSlots: keys(slotsMap).sort(),
-          allEncounters: keys(encountersMap).sort(),
-          allIllustrators: keys(illustratorsMap).sort(),
-        }
-      }
-    }
+    CardFilterView,
+    { title: t`Filters` }
   )
 );
 

@@ -107,7 +107,7 @@ class SignatureCardsComponent extends React.Component<Props> {
     const requirements = investigator.deck_requirements;
     const card_requirements = requirements && requirements.card;
     const requiredQuery = map(card_requirements || [], req => {
-      return `code = '${req.code}'`;
+      return `c.code = '${req.code}'`;
     }).join(' OR ');
     const cardsQuery = await db.cardsQuery();
 
@@ -119,7 +119,7 @@ class SignatureCardsComponent extends React.Component<Props> {
 
     const alternateQuery = map(
       flatMap(card_requirements || [], req => (req.alternates || [])),
-      code => `code = '${code}'`).join(' OR ');
+      code => `c.code = '${code}'`).join(' OR ');
 
     const alternateCards = alternateQuery ?
       await cardsQuery

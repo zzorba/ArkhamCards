@@ -12,7 +12,7 @@ import cards from './cards';
 import decks from './decks';
 import packs from './packs';
 import settings from './settings';
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from 'lib/filters';
 import {
   Campaign,
   ChaosBagResults,
@@ -442,6 +442,13 @@ export function getCardSort(
   filterId: string
 ): SortType {
   return state.filters.sorts[filterId];
+}
+
+export function getCardFilterData(
+  state: AppState,
+  filterId: string
+): CardFilterData | undefined {
+  return state.filters.cardData[filterId];
 }
 
 export function getDefaultFilterState(

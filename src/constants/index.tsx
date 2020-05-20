@@ -54,6 +54,12 @@ export const CORE_FACTION_CODES: FactionCodeType[] = [
   'survivor',
 ];
 
+export const CARD_FACTION_CODES: FactionCodeType[] = [
+  ...CORE_FACTION_CODES,
+  'neutral',
+  'mythos',
+];
+
 export const PLAYER_FACTION_CODES: FactionCodeType[] = [
   ...CORE_FACTION_CODES,
   'neutral',

@@ -1,6 +1,6 @@
 import React from 'react';
+import { InteractionManager } from 'react-native';
 import { forEach, pick } from 'lodash';
-import { SelectQueryBuilder } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import {
   StyleSheet,
@@ -22,7 +22,7 @@ import { filterToQuery, FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
 
-export interface FilterProps<T={}> {
+export interface FilterProps {
   componentId: string;
   filters: FilterState;
   defaultFilterState: FilterState;
@@ -31,30 +31,27 @@ export interface FilterProps<T={}> {
   pushFilterView: (screen: string) => void;
   onToggleChange: (setting: string, value: boolean) => void;
   onFilterChange: (setting: string, value: any) => void;
-  extraData?: T;
 }
 
-export interface CardFilterProps {
+export interface FilterFunctionProps {
   filterId: string;
   tabooSetId?: number;
   modal?: boolean;
   baseQuery?: string;
 }
 
-interface Options<T> {
+interface Options {
   title: string;
-  computeExtraData?: (cards: SelectQueryBuilder<Card>) => Promise<T>;
   clearTraits?: string[];
 }
 
-export default function withFilterFunctions<P, T={}>(
-  WrappedComponent: React.ComponentType<P & FilterProps<T>>,
+export default function withFilterFunctions<P>(
+  WrappedComponent: React.ComponentType<P & FilterProps>,
   {
     title,
     clearTraits,
-    computeExtraData,
-  }: Options<T>
-): React.ComponentType<NavigationProps & CardFilterProps & P> {
+  }: Options
+): React.ComponentType<NavigationProps & FilterFunctionProps & P> {
   interface ReduxProps {
     currentFilters: FilterState;
     defaultFilterState: FilterState;
@@ -66,7 +63,7 @@ export default function withFilterFunctions<P, T={}>(
     clearFilters: (id: string, clearTraits?: string[]) => void;
   }
 
-  type Props = NavigationProps & DimensionsProps & CardFilterProps & ReduxProps & ReduxActionProps & P;
+  type Props = NavigationProps & DimensionsProps & FilterFunctionProps & ReduxProps & ReduxActionProps & P;
 
   class WrappedFilterComponent extends React.Component<Props> {
     _navEventListener?: EventSubscription;
@@ -113,7 +110,7 @@ export default function withFilterFunctions<P, T={}>(
         baseQuery,
         modal,
       } = this.props;
-      Navigation.push<CardFilterProps>(componentId, {
+      Navigation.push<FilterFunctionProps>(componentId, {
         component: {
           name: screenName,
           passProps: {
@@ -155,7 +152,7 @@ export default function withFilterFunctions<P, T={}>(
       });
     }
 
-    _getData = async (db: Database): Promise<T> => {
+    async updateCount(db: Database) {
       const {
         baseQuery,
         componentId,
@@ -168,18 +165,13 @@ export default function withFilterFunctions<P, T={}>(
       if (baseQuery) {
         cardsQuery = cardsQuery.andWhere(`(${baseQuery})`);
       }
-      let extraData: T = {} as T;
-      if (computeExtraData) {
-        extraData = await computeExtraData(cardsQuery);
-      }
       const filterParts = filterToQuery(currentFilters);
       if (filterParts.length) {
         forEach(filterToQuery(currentFilters), ({ query, params }) => {
-          console.log(`Adding clause: ${query}, ${JSON.stringify(params)}`)
-          //cardsQuery = cardsQuery.andWhere(query, params);
+          cardsQuery = cardsQuery.andWhere(query, params);
         });
       }
-      const count = 0; //await cardsQuery.getCount();
+      const count = await cardsQuery.getCount();
       Navigation.mergeOptions(componentId, {
         topBar: {
           rightButtons: this.hasChanges() ?
@@ -203,10 +195,13 @@ export default function withFilterFunctions<P, T={}>(
           },
         },
       });
-      return extraData;
     }
 
-    _renderData = (extraData?: T) => {
+    _getData = async (db: Database): Promise<void> => {
+      InteractionManager.runAfterInteractions(() => this.updateCount(db));
+    };
+
+    _renderData = () => {
       const {
         componentId,
         /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -228,7 +223,6 @@ export default function withFilterFunctions<P, T={}>(
         <View style={styles.wrapper}>
           <WrappedComponent
             componentId={componentId}
-            extraData={extraData}
             filters={currentFilters}
             defaultFilterState={defaultFilterState}
             width={width}
@@ -253,7 +247,7 @@ export default function withFilterFunctions<P, T={}>(
 
   const mapStateToProps = (
     state: AppState,
-    props: NavigationProps & CardFilterProps & P
+    props: NavigationProps & FilterFunctionProps & P
   ): ReduxProps => {
     return {
       currentFilters: getFilterState(state, props.filterId),
@@ -271,7 +265,7 @@ export default function withFilterFunctions<P, T={}>(
     }, dispatch);
   };
 
-  const result = connect<ReduxProps, ReduxActionProps, NavigationProps & CardFilterProps & P, AppState>(
+  const result = connect<ReduxProps, ReduxActionProps, NavigationProps & FilterFunctionProps & P, AppState>(
     mapStateToProps,
     mapDispatchToProps,
   )(
@@ -280,7 +274,7 @@ export default function withFilterFunctions<P, T={}>(
   );
   hoistNonReactStatic(result, WrappedComponent);
 
-  return result as React.ComponentType<NavigationProps & CardFilterProps & P>;
+  return result as React.ComponentType<NavigationProps & FilterFunctionProps & P>;
 }
 
 const styles = StyleSheet.create({

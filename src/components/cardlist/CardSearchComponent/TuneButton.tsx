@@ -11,9 +11,9 @@ import { Navigation } from 'react-native-navigation';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { CardFilterProps } from 'components/filter/withFilterFunctions';
-import { filterToQuery } from 'lib/filters';
-import { AppState, getFilterState } from 'reducers';
+import { CardFilterProps } from 'components/filter/CardFilterView';
+import { CardFilterData, filterToQuery } from 'lib/filters';
+import { AppState, getFilterState, getCardFilterData } from 'reducers';
 import COLORS from 'styles/colors';
 
 const SIZE = 36;
@@ -27,6 +27,7 @@ interface OwnProps {
 
 interface ReduxProps {
   filters: boolean;
+  cardData?: CardFilterData;
 }
 
 type Props = OwnProps & ReduxProps;
@@ -37,14 +38,19 @@ class TuneButton extends React.Component<Props> {
       filterId,
       baseQuery,
       modal,
+      cardData,
     } = this.props;
+    if (!cardData) {
+      return;
+    }
     Navigation.push<CardFilterProps>(filterId, {
       component: {
         name: 'SearchFilters',
         passProps: {
-          filterId: filterId,
-          baseQuery: baseQuery,
-          modal: modal,
+          filterId,
+          baseQuery,
+          modal,
+          cardData,
         },
         options: {
           topBar: {
@@ -80,14 +86,17 @@ class TuneButton extends React.Component<Props> {
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
+  const cardData = getCardFilterData(state, props.filterId);
   const filters = getFilterState(state, props.filterId);
   if (!filters) {
     return {
       filters: false,
+      cardData,
     };
   }
   return {
     filters: filterToQuery(filters).length > 0,
+    cardData,
   };
 }
 

@@ -1,5 +1,5 @@
 import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from 'constants';
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from 'lib/filters';
 import Card from 'data/Card';
 
 export const SORT_BY_TYPE = 'type';
@@ -644,6 +644,7 @@ export interface AddFilterSetAction {
   filters: FilterState;
   sort?: SortType;
   mythosToggle?: boolean;
+  cardData: CardFilterData;
 }
 
 export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';

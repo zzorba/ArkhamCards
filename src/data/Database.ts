@@ -10,6 +10,7 @@ export default class Database {
   connectionP: Promise<Connection>;
 
   constructor() {
+
     this.connectionP = createConnection({
       type: 'react-native',
       database: 'arkham',

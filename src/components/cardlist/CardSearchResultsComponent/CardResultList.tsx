@@ -24,20 +24,26 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   SectionListData,
+  InteractionManager,
 } from 'react-native';
 import { SelectQueryBuilder } from 'typeorm/browser';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
+import deepDiff from 'deep-diff';
 
 import DbRender from 'components/data/DbRender';
 import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import BasicButton from 'components/core/BasicButton';
+import { addFilterSet } from 'components/filter/actions';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { rowHeight } from 'components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { rowHeaderHeight } from 'components/cardlist/CardSearchResultsComponent/CardSectionHeader';
+import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
+import { CardFilterData, FilterState, calculateCardFilterData } from 'lib/filters';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -93,6 +99,8 @@ interface OwnProps {
   expandSearchControls?: ReactNode;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
+  mythosToggle?: boolean;
+  initialSort?: SortType;
 }
 
 interface ReduxProps {
@@ -108,7 +116,27 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-type Props = OwnProps & ReduxProps;
+interface ReduxActionProps {
+  addFilterSet: (id: string, filters: FilterState, cardData: CardFilterData, sort?: SortType, mythosToggle?: boolean) => void;
+}
+
+type Props = OwnProps & ReduxProps & ReduxActionProps;
+
+interface DbState {
+  resultsKey: string;
+  deckSections: CardBucket[];
+  cards: Card[];
+}
+
+interface LiveState {
+  deckSections: CardBucket[];
+  resultsKey: string;
+  cards: CardBucket[];
+  cardsCount: number;
+  spoilerCards: CardBucket[];
+  spoilerCardsCount: number;
+}
+
 
 interface State {
   deckCardCounts?: Slots;
@@ -119,15 +147,6 @@ interface State {
   loadingMessage: string;
   dirty: boolean;
   scrollY: Animated.Value;
-}
-
-interface DbState {
-  resultsKey: string;
-  deckSections: CardBucket[];
-  cards: CardBucket[];
-  cardsCount: number;
-  spoilerCards: CardBucket[];
-  spoilerCardsCount: number;
 }
 
 interface CardBucket {
@@ -147,6 +166,7 @@ class CardResultList extends React.Component<Props, State> {
     return messages[random(0, messages.length - 1)];
   }
 
+  filterSetInitialized = false;
   lastOffsetY: number = 0;
   hasPendingCountChanges: boolean = false;
   _handleScroll!: (...args: any[]) => void;
@@ -229,8 +249,8 @@ class CardResultList extends React.Component<Props, State> {
     } = this.state;
     const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
     if ((visible && !prevProps.visible && dirty) ||
-        prevProps.query !== this.props.query ||
-        prevProps.termQuery !== this.props.termQuery ||
+        JSON.stringify(prevProps.query) !== JSON.stringify(this.props.query) ||
+        JSON.stringify(prevProps.termQuery) !== JSON.stringify(this.props.termQuery) ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||
@@ -277,11 +297,10 @@ class CardResultList extends React.Component<Props, State> {
   _showNonCollectionCards = (id: string) => {
     Keyboard.dismiss();
     this.setState({
-      showNonCollection: Object.assign(
-        {},
-        this.state.showNonCollection,
-        { [id]: true },
-      ),
+      showNonCollection: {
+        ...this.state.showNonCollection,
+        [id]: true,
+      },
     });
   };
 
@@ -449,13 +468,11 @@ class CardResultList extends React.Component<Props, State> {
     const {
       query,
       termQuery,
-      searchTerm,
       sort,
     } = this.props;
     return JSON.stringify({
       query,
       termQuery,
-      searchTerm,
       sort: sort || SORT_BY_TYPE,
     });
   }
@@ -464,12 +481,10 @@ class CardResultList extends React.Component<Props, State> {
     const {
       originalDeckSlots,
       tabooSetId,
-      searchTerm,
       termQuery,
       filterQuery,
       storyOnly,
       query,
-      lang,
     } = this.props;
     const {
       deckCardCounts,
@@ -503,47 +518,57 @@ class CardResultList extends React.Component<Props, State> {
   async getCards(db: Database, queryClause?: QueryClause[]): Promise<Card[]> {
     const {
       tabooSetId,
+      termQuery,
     } = this.props;
     let cardQuery = (await db.cardsQuery()).where(Card.tabooSetQuery(tabooSetId));
     forEach(queryClause || [], ({ query, params}) => {
       cardQuery = cardQuery.andWhere(query, params);
     });
+    if (termQuery) {
+      cardQuery = cardQuery.andWhere(termQuery.query, termQuery.params);
+    }
     return await this.applySort(cardQuery).getMany();
   }
 
   _updateResults = async (db: Database): Promise<DbState> => {
     const {
+      componentId,
       query,
       show_spoilers,
+      addFilterSet,
+      mythosToggle,
+      initialSort,
     } = this.props;
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
     const resultsKey = this.resultsKey();
     const cards: Card[] = await this.getCards(db, query);
-    const groupedCards = partition(
-      cards,
-      card => {
-        return show_spoilers[card.pack_code] ||
-          !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
-      });
-
     const deckSections = await this.deckSections(db);
-    return {
-      resultsKey: resultsKey,
-      deckSections,
-      cards: this.bucketCards(groupedCards[0], 'cards'),
-      cardsCount: groupedCards[0].length,
-      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
-      spoilerCardsCount: groupedCards[1].length,
+
+    if (!this.filterSetInitialized) {
+      this.filterSetInitialized = true;
+      addFilterSet(
+        componentId,
+        calculateDefaultFilterState(cards),
+        calculateCardFilterData(cards),
+        initialSort,
+        mythosToggle
+      );
     }
+
+    return {
+      resultsKey,
+      cards,
+      deckSections,
+    };
   };
 
   _cardToKey = (card: Card) => {
     return card.code;
   };
 
-  latestData?: DbState;
+  latestData?: LiveState;
 
   _cardPressed = (id: string, card: Card) => {
     const {
@@ -672,15 +697,15 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  renderEmptyState(dbState: DbState) {
+  renderEmptyState(liveState: LiveState) {
     const {
       searchTerm,
     } = this.props;
     const {
       cardsCount,
       spoilerCardsCount,
-    } = dbState;
-    if (!this.isLoading(dbState) && (cardsCount + spoilerCardsCount) === 0) {
+    } = liveState;
+    if (!this.isLoading(liveState) && (cardsCount + spoilerCardsCount) === 0) {
       return (
         <View>
           <View style={styles.emptyText}>
@@ -697,15 +722,15 @@ class CardResultList extends React.Component<Props, State> {
     return this.props.expandSearchControls;
   }
 
-  _renderFooter = (dbState: DbState) => {
-    const { spoilerCardsCount } = dbState;
+  _renderFooter = (liveState: LiveState) => {
+    const { spoilerCardsCount } = liveState;
     const {
       showSpoilerCards,
     } = this.state;
     if (!spoilerCardsCount) {
       return (
         <View style={styles.footer}>
-          { this.renderEmptyState(dbState) }
+          { this.renderEmptyState(liveState) }
         </View>
       );
     }
@@ -716,7 +741,7 @@ class CardResultList extends React.Component<Props, State> {
             onPress={this._editSpoilerSettings}
             title={t`Edit Spoiler Settings`}
           />
-          { this.renderEmptyState(dbState) }
+          { this.renderEmptyState(liveState) }
         </View>
       );
     }
@@ -731,12 +756,12 @@ class CardResultList extends React.Component<Props, State> {
           onPress={this._editSpoilerSettings}
           title={t`Edit Spoiler Settings`}
         />
-        { this.renderEmptyState(dbState) }
+        { this.renderEmptyState(liveState) }
       </View>
     );
   };
 
-  getData({ cards, spoilerCards, deckSections }: DbState): CardBucket[] {
+  getData({ cards, spoilerCards, deckSections }: LiveState): CardBucket[] {
     const {
       showSpoilerCards,
     } = this.state;
@@ -765,7 +790,7 @@ class CardResultList extends React.Component<Props, State> {
     return concat(startCards, spoilerCards);
   }
 
-  isLoading({ resultsKey }: DbState) {
+  isLoading({ resultsKey }: { resultsKey: string }) {
     return resultsKey !== this.resultsKey();
   }
 
@@ -773,6 +798,7 @@ class CardResultList extends React.Component<Props, State> {
     const {
       sort,
       fontScale,
+      show_spoilers,
     } = this.props;
     const {
       loadingMessage,
@@ -794,12 +820,28 @@ class CardResultList extends React.Component<Props, State> {
         </View>
       );
     }
-    this.latestData = dbState;
+    const { resultsKey, cards, deckSections } = dbState;
+    const groupedCards = partition(
+      cards,
+      card => {
+        return show_spoilers[card.pack_code] ||
+          !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
+      });
+
+    const liveState: LiveState = {
+      resultsKey,
+      deckSections,
+      cards: this.bucketCards(groupedCards[0], 'cards'),
+      cardsCount: groupedCards[0].length,
+      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
+      spoilerCardsCount: groupedCards[1].length,
+    };
+    this.latestData = liveState;
     const stickyHeaders = (
       sort === SORT_BY_PACK ||
       sort === SORT_BY_ENCOUNTER_SET
     );
-    const data = this.getData(dbState);
+    const data = this.getData(liveState);
     let offset = 0;
     const elementHeights = map(
       flatMap(data, section => {
@@ -839,7 +881,7 @@ class CardResultList extends React.Component<Props, State> {
         keyExtractor={this._cardToKey}
         extraData={this.state.deckCardCounts}
         getItemLayout={getItemLayout}
-        ListFooterComponent={this._renderFooter(dbState)}
+        ListFooterComponent={this._renderFooter(liveState)}
         stickySectionHeadersEnabled={stickyHeaders}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
@@ -849,15 +891,10 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   render() {
-    const {
-      showSpoilerCards,
-      showNonCollection,
-    } = this.state;
     return (
       <DbRender
         getData={this._updateResults}
         id={this.resultsKey()}
-        extraProps={JSON.stringify({ showSpoilerCards, showNonCollection })}
       >
         { this._renderResults }
       </DbRender>
@@ -877,9 +914,16 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   };
 }
 
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    addFilterSet,
+  }, dispatch);
+}
 
-export default connect<ReduxProps, {}, OwnProps, AppState>(
-  mapStateToProps
+
+export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
 )(CardResultList);
 
 const styles = StyleSheet.create({

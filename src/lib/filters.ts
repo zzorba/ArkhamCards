@@ -1,7 +1,7 @@
-import { findIndex, forEach, map, zip } from 'lodash';
+import { filter, findIndex, forEach, keys, map } from 'lodash';
 
-import { SKILLS, FactionCodeType } from '../constants';
-
+import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from 'constants';
+import Card from 'data/Card';
 
 export interface QueryParams {
   [key: string]: number | string;
@@ -11,6 +11,118 @@ export interface QueryClause {
   query: string;
   params?: QueryParams;
 }
+
+export interface CardFilterData {
+  hasCost: boolean;
+  hasXp: boolean;
+  hasSkill: boolean;
+  allUses: string[];
+  allFactions: FactionCodeType[];
+  allTraits: string[];
+  allTypes: string[];
+  allTypeCodes: string[];
+  allSubTypes: string[];
+  allPacks: string[];
+  allSlots: string[];
+  allEncounters: string[];
+  allIllustrators: string[];
+}
+
+export function calculateCardFilterData(cards: Card[]): CardFilterData {
+  const factionsMap: { [key: string]: boolean } = {};
+  let hasCost = false;
+  let hasXp = false;
+  let hasSkill = false;
+  const typesMap: { [key: string]: boolean } = {};
+  const typeCodesMap: { [key: string]: boolean } = {};
+  const usesMap: { [key: string]: boolean } = {};
+  const subTypesMap: { [key: string]: boolean } = {};
+  const traitsMap: { [key: string]: boolean } = {};
+  const packsMap: { [key: string]: boolean } = {};
+  const slotsMap: { [key: string]: boolean } = {};
+  const encountersMap: { [key: string]: boolean } = {};
+  const illustratorsMap: { [key: string]: boolean } = {};
+  forEach(cards, card => {
+    if (card.faction_code) {
+      factionsMap[card.faction_code] = true;
+    }
+    if (card.faction2_code) {
+      factionsMap[card.faction2_code] = true;
+    }
+    if (card.cost !== null) {
+      hasCost = true;
+    }
+    if (card.xp !== null) {
+      hasXp = true;
+    }
+    if (!hasSkill && (
+      card.skill_willpower ||
+      card.skill_intellect ||
+      card.skill_combat ||
+      card.skill_agility ||
+      card.skill_wild
+    )) {
+      hasSkill = true;
+    }
+    if (card.traits) {
+      forEach(
+        filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
+        t => {
+          traitsMap[t] = true;
+        });
+    }
+    if (card.subtype_name) {
+      subTypesMap[card.subtype_name] = true;
+    }
+    if (card.uses) {
+      usesMap[card.uses] = true;
+    }
+    if (card.pack_name) {
+      packsMap[card.pack_name] = true;
+    }
+    if (card.slot) {
+      if (card.slot.indexOf('.') !== -1) {
+        forEach(
+          map(card.slot.split('.'), s => s.trim()),
+          s => {
+            slotsMap[s] = true;
+          }
+        );
+      } else {
+        slotsMap[card.slot] = true;
+      }
+    }
+    if (card.encounter_name) {
+      encountersMap[card.encounter_name] = true;
+    }
+    if (card.illustrator) {
+      illustratorsMap[card.illustrator] = true;
+    }
+    typesMap[card.type_name] = true;
+    typeCodesMap[card.type_code] = true;
+  });
+
+  const allFactions: FactionCodeType[] = filter(
+    CARD_FACTION_CODES,
+    factionCode => !!factionsMap[factionCode]
+  );
+  return {
+    allFactions,
+    hasCost,
+    hasXp,
+    hasSkill,
+    allUses: keys(usesMap).sort(),
+    allTraits: keys(traitsMap).sort(),
+    allTypes: keys(typesMap).sort(),
+    allTypeCodes: keys(typeCodesMap).sort(),
+    allSubTypes: keys(subTypesMap).sort(),
+    allPacks: keys(packsMap).sort(),
+    allSlots: keys(slotsMap).sort(),
+    allEncounters: keys(encountersMap).sort(),
+    allIllustrators: keys(illustratorsMap).sort(),
+  };
+}
+
 
 export interface SkillIconsFilters {
   willpower: boolean;
@@ -170,14 +282,14 @@ function applyRangeFilter(
 ) {
   if (values[0] === values[1]) {
     query.push({
-      query: `c.${field} = :value${linked ? ` OR linked_card.${field} = :value` : ''}`,
+      query: `(c.${field} = :value${linked ? ` OR linked_card.${field} = :value` : ''})`,
       params: {
         value: values[0],
       },
     });
   } else {
     query.push({
-      query: `(c.${field} >= :value_0 and c.${field} <= :value_1)${linked ? ` or (linked_card.${field} >= :value_0 and linked_card.${field} <= :value_1)` : ''}`,
+      query: `((c.${field} >= :value_0 and c.${field} <= :value_1)${linked ? ` or (linked_card.${field} >= :value_0 and linked_card.${field} <= :value_1)` : ''})`,
       params: {
         value_0: values[0],
         value_1: values[1],
@@ -200,7 +312,7 @@ function vectorClause(
     return clause(valueName);
   }).join(' OR ');
   return {
-    query,
+    query: `(${query})`,
     params,
   };
 }
@@ -408,12 +520,12 @@ function applyMiscFilter(filters: FilterState, result: QueryClause[]) {
   } = filters;
   if (victory) {
     result.push({
-      query: 'c.victory >= 0 or linked_card.victory >= 0',
+      query: '(c.victory >= 0 or linked_card.victory >= 0)',
     });
   }
   if (vengeance) {
     result.push({
-      query: 'c.vengeance >= 0 or linked_card.vengeance >= 0',
+      query: '(c.vengeance >= 0 or linked_card.vengeance >= 0)',
     });
   }
 }
@@ -434,7 +546,7 @@ function applyLevelFilter(filters: FilterState, result: QueryClause[]) {
     }
     if (nonExceptional && !exceptional) {
       result.push({
-        query: `NOT (c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%')`,
+        query: `(NOT (c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'))`,
       });
     }
   }
@@ -453,7 +565,7 @@ function applyCostFilter(filters: FilterState, result: QueryClause[]) {
 function equalsVectorClause(values: string[], field: string, result: QueryClause[]) {
   const query = vectorClause(
     values,
-    (valueName: string) => `${field} = :${valueName}`
+    (valueName: string) => `(c.${field} = :${valueName} or c.${field} = :${valueName})`
   );
   if (query) {
     result.push(query);
@@ -532,7 +644,7 @@ export function filterToQuery(filters: FilterState): QueryClause[] {
   const result: QueryClause[] = [];
   const factionClause = vectorClause(
     filters.factions,
-    valueName => `faction_code = :${valueName} OR faction2_code = :${valueName}`
+    valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName})`
   );
   if (factionClause) {
     result.push(factionClause);

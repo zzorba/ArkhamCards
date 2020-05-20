@@ -31,7 +31,7 @@ interface Props {
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   selectedSort?: SortType;
-  filters: FilterState;
+  filters?: FilterState;
   mythosMode?: boolean;
   visible: boolean;
   toggleMythosMode: () => void;
@@ -45,6 +45,8 @@ interface Props {
   limits?: Slots;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
+
+  initialSort?: SortType;
 }
 
 interface State {
@@ -158,7 +160,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       }
     }
     const lang = 'en';
-    return {
+    const query = {
       query: `(${parts.join(' OR ')})`,
       params: {
         searchTerm: `%${searchTerm
@@ -167,13 +169,18 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
           .toLocaleUpperCase(lang)}%`,
       },
     };
+    console.log(JSON.stringify(query));
+    return query;
   }
 
-  filterQueryParts() {
+  filterQueryParts(): QueryClause[] {
     const {
       filters,
     } = this.props;
-    return filterToQuery(filters);
+    if (filters) {
+      return filterToQuery(filters);
+    }
+    return [];
   }
 
   query(): QueryClause[] {
@@ -206,7 +213,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     }
     return queryParts;
   }
-
 
   renderHeader() {
     const {
@@ -312,6 +318,8 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       investigator,
       storyOnly,
       fontScale,
+      initialSort,
+      mythosToggle,
     } = this.props;
     const {
       searchTerm,
@@ -341,6 +349,8 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             renderFooter={renderFooter}
             showNonCollection={showNonCollection}
             storyOnly={storyOnly}
+            mythosToggle={mythosToggle}
+            initialSort={initialSort}
           />
         </View>
         { !!renderFooter && <View style={[

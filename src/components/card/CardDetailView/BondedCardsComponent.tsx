@@ -41,7 +41,7 @@ class BondedCardsComponent extends React.Component<Props> {
     }
     const query = await db.cardsQuery();
     return await query.where(
-      `(real_name = :bonded_name) and ${Card.tabooSetQuery(tabooSetId)}`,
+      `(c.real_name = :bonded_name) and ${Card.tabooSetQuery(tabooSetId)}`,
       { bonded_name: card.bonded_name }
     ).getMany();
   }
@@ -53,7 +53,7 @@ class BondedCardsComponent extends React.Component<Props> {
     }
     const query = await db.cardsQuery();
     return await query.where(
-      `(bonded_name == :real_name) and ${Card.tabooSetQuery(tabooSetId)}`,
+      `(c.bonded_name == :real_name) and ${Card.tabooSetQuery(tabooSetId)}`,
         { real_name: card.real_name }
     ).getMany();
   }

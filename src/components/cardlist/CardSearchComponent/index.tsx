@@ -15,16 +15,12 @@ import Database from 'data/Database'
 import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState, calculateCardFilterData } from 'lib/filters';
 import { addFilterSet, removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode } from 'components/filter/actions';
-import { CardFilterProps } from 'components/filter/withFilterFunctions';
 import { iconsMap } from 'app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
 import COLORS from 'styles/colors';
 
-interface FilterProps {
-  defaultFilterState: FilterState;
-}
 
 interface ReduxProps {
   tabooSetId?: number;
@@ -35,7 +31,6 @@ interface ReduxProps {
 
 interface ReduxActionProps {
   clearFilters: (id: string, clearTraits?: string[]) => void;
-  addFilterSet: (id: string, filters: FilterState, sort?: SortType, mythosToggle?: boolean) => void;
   syncFilterSet: (id: string, filters: FilterState) => void;
   removeFilterSet: (id: string) => void;
   toggleMythosMode: (id: string, value: boolean) => void;
@@ -60,7 +55,6 @@ interface OwnProps {
 }
 
 type Props = OwnProps &
-  FilterProps &
   ReduxProps &
   ReduxActionProps &
   DimensionsProps;
@@ -82,15 +76,11 @@ class CardSearchComponent extends React.Component<Props, State> {
   componentDidMount() {
     const {
       componentId,
-      addFilterSet,
-      defaultFilterState,
-      sort,
       baseQuery,
       modal,
       onDeckCountChange,
       mythosToggle,
     } = this.props;
-    addFilterSet(componentId, defaultFilterState, sort, mythosToggle);
 
     const rightButtons = [{
       id: 'filter',
@@ -160,34 +150,6 @@ class CardSearchComponent extends React.Component<Props, State> {
     syncFilterSet(componentId, filters);
   }
 
-  _showSearchFilters = () => {
-    const {
-      componentId,
-      modal,
-      baseQuery,
-    } = this.props;
-    Navigation.push<CardFilterProps>(componentId, {
-      component: {
-        name: 'SearchFilters',
-        passProps: {
-          filterId: componentId,
-          baseQuery: baseQuery,
-          modal: modal,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: t`Apply`,
-            },
-            title: {
-              text: t`Filters`,
-            },
-          },
-        },
-      },
-    });
-  };
-
   componentDidUpdate(prevProps: Props) {
     const { mythosMode, mythosToggle, componentId } = this.props;
     if (mythosToggle && mythosMode !== prevProps.mythosMode) {
@@ -237,16 +199,16 @@ class CardSearchComponent extends React.Component<Props, State> {
       limits,
       renderFooter,
       showNonCollection,
-      mythosToggle,
       baseQuery,
       tabooSetOverride,
       investigator,
       filters,
-      defaultFilterState,
       mythosMode,
       selectedSort,
       storyOnly,
       fontScale,
+      sort,
+      mythosToggle,
     } = this.props;
     const {
       visible,
@@ -260,7 +222,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         mythosMode={mythosMode}
         showNonCollection={showNonCollection}
         selectedSort={selectedSort}
-        filters={this.state.filters || filters || defaultFilterState}
+        filters={this.state.filters || filters}
         tabooSetOverride={tabooSetOverride}
         toggleMythosMode={this._toggleMythosMode}
         clearSearchFilters={this._clearSearchFilters}
@@ -272,6 +234,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         renderFooter={renderFooter}
         visible={visible}
         storyOnly={storyOnly}
+        initialSort={sort}
       />
     );
   }
@@ -296,33 +259,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-interface DbProps {
-  baseQuery?: string;
-  tabooSetId?: number;
-}
-
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
-  connectDb<OwnProps & ReduxProps & ReduxActionProps, FilterProps, DbProps>(
-    withDimensions(CardSearchComponent),
-    (props: OwnProps & ReduxProps & ReduxActionProps) => {
-      return {
-        baseQuery: props.baseQuery,
-        tabooSetId: props.tabooSetId,
-      };
-    },
-    async (db: Database, props: DbProps) => {
-      const query = await db.cardsQuery();
-      const cards = await query
-        .where(props.baseQuery ?
-          `(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}` :
-          Card.tabooSetQuery(props.tabooSetId)
-        ).getMany();
-      return {
-        defaultFilterState: calculateDefaultFilterState(cards),
-      };
-    }
-  )
+  withDimensions(CardSearchComponent)
 );

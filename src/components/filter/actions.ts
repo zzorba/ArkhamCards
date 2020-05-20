@@ -17,7 +17,7 @@ import {
   UpdateCardSortAction,
   SortType,
 } from 'actions/types';
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from 'lib/filters';
 
 export function toggleMythosMode(
   id: string,
@@ -81,6 +81,7 @@ export function updateFilter(
 export function addFilterSet(
   id: string,
   filters: FilterState,
+  cardData: CardFilterData,
   sort?: SortType,
   mythosToggle?: boolean
 ): AddFilterSetAction {
@@ -90,6 +91,7 @@ export function addFilterSet(
     filters,
     sort,
     mythosToggle,
+    cardData,
   };
 }
 

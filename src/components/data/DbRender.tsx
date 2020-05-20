@@ -8,7 +8,7 @@ import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 interface Props<T> {
   id: string;
   extraProps?: any;
-  getData: (db: Database) => Promise<T>;
+  getData: (db: Database, extraProps?: any) => Promise<T>;
   children: (t?: T) => React.ReactNode;
 }
 
@@ -33,7 +33,7 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> imp
   }
 
   componentDidUpdate(prevProps: Props<T>) {
-    if (this.props.id !== prevProps.id || this.props.extraProps !== prevProps.extraProps) {
+    if (this.props.id !== prevProps.id) {
       this._delayedLoadData();
     }
   }
