@@ -1,9 +1,10 @@
 import React from 'react';
 import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { t } from 'ttag';
 
+import Database from 'data/Database';
+import DbRender from 'components/data/DbRender';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import { scenarioRewards } from 'components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
@@ -27,13 +28,13 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-interface RealmProps {
+interface StoryCards {
   storyCards: Card[];
   deckStoryCards: Card[];
-  deckStorySlots: Slots;
 }
-type Props = OwnProps & ReduxProps & RealmProps;
+type Props = OwnProps & ReduxProps;
 interface State {
+  initialized: boolean,
   storyCounts: Slots;
 }
 
@@ -42,9 +43,8 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      storyCounts: {
-        ...props.deckStorySlots,
-      },
+      initialized: false,
+      storyCounts: {},
     };
   }
 
@@ -58,10 +58,9 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     }, () => this.props.updateStoryCounts(storyCounts));
   };
 
-  renderScenarioStoryCards() {
+  renderScenarioStoryCards(storyCards: Card[]) {
     const {
       componentId,
-      storyCards,
       scenarioName,
       investigator,
       fontScale,
@@ -98,10 +97,9 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
   }
 
 
-  renderDeckStoryCards() {
+  renderDeckStoryCards(deckStoryCards: Card[]) {
     const {
       componentId,
-      deckStoryCards,
       investigator,
       fontScale,
     } = this.props;
@@ -136,12 +134,69 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     );
   }
 
-  render() {
+  _render = (storyCards?: StoryCards) => {
+    if (!storyCards) {
+      return null;
+    }
     return (
       <>
-        { this.renderScenarioStoryCards() }
-        { this.renderDeckStoryCards() }
+        { this.renderScenarioStoryCards(storyCards.storyCards) }
+        { this.renderDeckStoryCards(storyCards.deckStoryCards) }
       </>
+    );
+  };
+
+  _getStoryCards = async (db: Database): Promise<StoryCards> => {
+    const {
+      deck,
+      tabooSetId,
+    } = this.props;
+    const allStoryCards = await db.getCards(
+      [
+        { q: '(c.encounter_code is not null)' },
+        PLAYER_CARDS_QUERY,
+      ],
+      tabooSetId,
+      [
+        { s: 'c.renderName', direction: 'ASC' },
+        { s: 'c.xp', direction: 'ASC' },
+      ]
+    );
+    const deckStorySlots: Slots = {};
+    const storyCards: Card[] = [];
+    const deckStoryCards: Card[] = [];
+    const encounterCodes = new Set(flatMap(this.props.encounterCodes, encounterCode => {
+      return [
+        encounterCode,
+        ...scenarioRewards(encounterCode),
+      ];
+    }));
+    forEach(allStoryCards, card => {
+      if (deck && card.code && deck.slots[card.code] > 0) {
+        deckStoryCards.push(card);
+        deckStorySlots[card.code] = deck.slots[card.code];
+      } else if (card.encounter_code && encounterCodes.has(card.encounter_code)) {
+        storyCards.push(card);
+      }
+    });
+    if (!this.state.initialized) {
+      this.setState({
+        initialized: true,
+        storyCounts: { ...deckStorySlots },
+      });
+    }
+    return {
+      storyCards,
+      deckStoryCards,
+    };
+  };
+
+  render() {
+    const { deck } = this.props;
+    return (
+      <DbRender getData={this._getStoryCards} id={deck ? JSON.stringify(deck.slots) : 'undefined'}>
+        { this._render }
+      </DbRender>
     );
   }
 }
@@ -159,41 +214,4 @@ function mapStateToProps(
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
-)(
-  connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-    StoryCardSelectorComponent,
-    {
-      schemas: ['Card'],
-      mapToProps(
-        results: CardResults<Card>,
-        realm: Realm,
-        props: OwnProps & ReduxProps
-      ): RealmProps {
-        const allStoryCards = results.cards.filtered(
-          `(c.encounter_code is not null) and ${PLAYER_CARDS_QUERY} and ${Card.tabooSetQuery(props.tabooSetId)}`
-        ).sorted([['renderName', false], ['xp', false]]);
-        const deckStorySlots: Slots = {};
-        const storyCards: Card[] = [];
-        const deckStoryCards: Card[] = [];
-        const encounterCodes = new Set(flatMap(props.encounterCodes, encounterCode => {
-          return [
-            encounterCode,
-            ...scenarioRewards(encounterCode),
-          ];
-        }));
-        forEach(allStoryCards, card => {
-          if (props.deck && card.code && props.deck.slots[card.code] > 0) {
-            deckStoryCards.push(card);
-            deckStorySlots[card.code] = props.deck.slots[card.code];
-          } else if (card.encounter_code && encounterCodes.has(card.encounter_code)) {
-            storyCards.push(card);
-          }
-        });
-        return {
-          storyCards,
-          deckStoryCards,
-          deckStorySlots,
-        };
-      },
-    })
-);
+)(StoryCardSelectorComponent);

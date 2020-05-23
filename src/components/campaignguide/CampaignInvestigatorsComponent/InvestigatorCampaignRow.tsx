@@ -15,7 +15,7 @@ import InvestigatorRow from 'components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from 'constants';
 import Card, { CardsMap } from 'data/Card';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import typography from 'styles/typography';
 import space from 'styles/space';
 import COLORS from 'styles/colors';
@@ -144,9 +144,10 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
           <SingleCardWrapper
             key={asset}
             code={asset}
-            render={this._renderStoryAsset}
             extraArg={undefined}
-          />
+          >
+            { this._renderStoryAsset }
+          </SingleCardWrapper>
         )) }
       </>
     );

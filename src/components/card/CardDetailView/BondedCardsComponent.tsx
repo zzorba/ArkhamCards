@@ -39,11 +39,13 @@ class BondedCardsComponent extends React.Component<Props> {
     if (!card || !card.bonded_name) {
       return [];
     }
-    const query = await db.cardsQuery();
-    return await query.where(
-      `(c.real_name = :bonded_name) and ${Card.tabooSetQuery(tabooSetId)}`,
-      { bonded_name: card.bonded_name }
-    ).getMany();
+    return await db.getCards(
+      [{
+        q: '(c.real_name = :bonded_name)',
+        params:  { bonded_name: card.bonded_name },
+      }],
+      tabooSetId
+    );
   }
 
   async bondedFromCards(db: Database): Promise<Card[]> {
@@ -51,11 +53,13 @@ class BondedCardsComponent extends React.Component<Props> {
     if (!card) {
       return [];
     }
-    const query = await db.cardsQuery();
-    return await query.where(
-      `(c.bonded_name == :real_name) and ${Card.tabooSetQuery(tabooSetId)}`,
-        { real_name: card.real_name }
-    ).getMany();
+    return await db.getCards(
+      [{
+        q: '(c.bonded_name == :real_name)',
+        params: { real_name: card.real_name },
+      }],
+      tabooSetId
+    );
   }
 
   _getBondedCards = async (db: Database): Promise<BondedCards> => {

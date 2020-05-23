@@ -11,7 +11,7 @@ import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from 'actions/types';
 import BasicListRow from 'components/core/BasicListRow';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import CardListWrapper from 'components/campaignguide/CardListWrapper';
+import CardListWrapper from 'components/card/CardListWrapper';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from 'components/nav/helper';
@@ -214,11 +214,9 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
           section={{ superTitle: t`Campaign cards` }}
           fontScale={fontScale}
         />
-        <CardListWrapper
-          cards={cards}
-          render={this._renderDeltas}
-          extraArg={deltas}
-        />
+        <CardListWrapper cards={cards} extraArg={deltas}>
+          { this._renderDeltas }
+        </CardListWrapper>
       </>
     );
   }

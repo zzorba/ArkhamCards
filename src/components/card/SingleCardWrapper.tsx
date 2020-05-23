@@ -3,22 +3,22 @@ import {
   Text,
 } from 'react-native';
 
-import CardListWrapper from './CardListWrapper';
+import CardListWrapper from 'components/card/CardListWrapper';
 import Card from 'data/Card';
 
 interface Props<T = undefined> {
   code: string;
-  render: (card: Card, extraArg: T) => Element | null;
   extraArg: T;
+  children: (card: Card, extraArg: T) => React.ReactNode;
 }
 
 export default class SingleCardWrapper<T = undefined> extends React.Component<Props<T>> {
-  _render = (cards: Card[]): Element | null => {
-    const { render, code, extraArg } = this.props;
+  _render = (cards: Card[]): React.ReactNode => {
+    const { code, extraArg, children } = this.props;
     if (!cards.length) {
       return <Text>Unknown { code }</Text>;
     }
-    return render(cards[0], extraArg);
+    return children(cards[0], extraArg);
   };
 
   render() {
@@ -26,9 +26,10 @@ export default class SingleCardWrapper<T = undefined> extends React.Component<Pr
     return (
       <CardListWrapper
         cards={[code]}
-        render={this._render}
         extraArg={undefined}
-      />
+      >
+        { this._render }
+      </CardListWrapper>
     );
   }
 }

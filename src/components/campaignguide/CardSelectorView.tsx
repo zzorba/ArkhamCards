@@ -4,15 +4,16 @@ import { forEach, keys, map, uniqBy } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
-import CardQueryWrapper from './CardQueryWrapper';
+import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import CardToggleRow from 'components/cardlist/CardSelectorComponent/CardToggleRow';
 import { NavigationProps } from 'components/nav/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import Card from 'data/Card';
+import { QueryClause } from 'data/types';
 
 export interface CardSelectorProps {
-  query: string;
+  query: QueryClause[];
   selection: string[];
   onSelect: (cards: string[]) => void;
   includeStoryToggle: boolean;
@@ -99,10 +100,11 @@ class CardSelectorView extends React.Component<Props, State> {
           section={{ title: t`Story assets` }}
         />
         <CardQueryWrapper
-          query={`(${query} AND encounter_code is not null)`}
-          render={this._render}
+          query={[...query, { q: 'c.encounter_code is not null' }]}
           extraArg={undefined}
-        />
+        >
+          { this._render }
+        </CardQueryWrapper>
       </>
     );
   }
@@ -112,10 +114,11 @@ class CardSelectorView extends React.Component<Props, State> {
     return (
       <ScrollView>
         <CardQueryWrapper
-          query={includeStoryToggle ? `(${query} AND encounter_code == null)` : query}
-          render={this._render}
+          query={[ ...query, { q: 'c.encounter_code is null' }]}
           extraArg={undefined}
-        />
+        >
+          {this._render}
+        </CardQueryWrapper>
         { includeStoryToggle && this.renderStoryCards() }
       </ScrollView>
     );

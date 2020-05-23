@@ -67,10 +67,10 @@ export default class CardTabooView extends React.Component<Props> {
     const { id } = this.props;
     const cardsQuery = await db.cardsQuery();
     const card = await cardsQuery
-      .where('code = :code and (taboo_set_id = 0 or taboo_set_id is null)', { code: id })
+      .where('c.code = :code and (c.taboo_set_id = 0 or c.taboo_set_id is null)', { code: id })
       .getOne();
     const taboos = await cardsQuery
-      .where('code = :code and taboo_set_id > 0', { code: id })
+      .where('c.code = :code and c.taboo_set_id > 0', { code: id })
       .getMany();
     const allTabooSets = await (await db.tabooSets()).createQueryBuilder().orderBy('id', 'ASC').getMany();
     const tabooSets: TabooSetMap = {};

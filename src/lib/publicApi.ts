@@ -1,4 +1,4 @@
-import { flatMap, filter, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
+import { flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 

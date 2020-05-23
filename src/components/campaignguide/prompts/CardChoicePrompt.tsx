@@ -1,23 +1,25 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
-import { forEach, find, flatMap, keys, map, uniq } from 'lodash';
+import { find, flatMap, keys, map, uniq } from 'lodash';
 import { t } from 'ttag';
 
+import { QueryClause } from 'data/types';
 import BasicButton from 'components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import CardQueryWrapper from '../CardQueryWrapper';
-import CardListWrapper from '../CardListWrapper';
+import CardQueryWrapper from 'components/card/CardQueryWrapper';
+import CardListWrapper from 'components/card/CardListWrapper';
 import { CardSelectorProps } from '../CardSelectorView';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import { CardChoiceInput, CardSearchQuery } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { LatestDecks, ProcessedScenario } from 'data/scenario';
-import { safeValue } from 'lib/filters';
+import { PLAYER_CARDS_QUERY } from 'data/query';
+import { traitFilter, equalsVectorClause, UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
 import Card from 'data/Card';
 
 interface Props {
@@ -73,7 +75,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
 
   _showOtherCardSelector = () => {
     const { componentId, input } = this.props;
-    const queryParts = flatMap(input.query,
+    const query = flatMap(input.query,
       query => {
         if (query.source === 'deck') {
           return this.basicQuery(query);
@@ -86,7 +88,10 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
       component: {
         name: 'Guide.CardSelector',
         passProps: {
-          query: `((${queryParts.join(' AND ')}) AND deck_limit > 0)`,
+          query: [
+            ...query,
+            PLAYER_CARDS_QUERY,
+          ],
           selection: this.state.extraCards,
           onSelect: this._onSelect,
           includeStoryToggle: true,
@@ -183,43 +188,34 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
 
   basicQuery(
     q: CardSearchQuery
-  ): string | undefined {
-    const queryParts = [];
-    if (q.trait) {
-      queryParts.push([
-        '(',
-        `traits_normalized CONTAINS[c] "${safeValue(q.trait)}"`,
-        ')',
-      ].join(''));
-    }
+  ): QueryClause[] {
+    const result: QueryClause[] = [
+      ...(q.trait ? traitFilter([q.trait]) : []),
+    ];
     if (q.unique) {
-      queryParts.push(
-        '(is_unique == true or linked_card.is_unique == true)'
-      );
+      result.push(UNIQUE_FILTER);
     }
     if (q.vengeance) {
-      queryParts.push(
-        '(vengeance >= 0 or linked_card.vengeance >= 0)'
-      );
+      result.push(VENGEANCE_FILTER);
     }
     if (q.exclude_code) {
       const codeParts = map(q.exclude_code, code => `(code != '${code}')`).join(' AND ');
-      queryParts.push(`(${codeParts})`);
+      result.push({
+        q: `(${codeParts})`,
+      });
     }
-    return `(${queryParts.join(' AND ')})`;
+    return result;
   }
 
   query(
     processedScenario: ProcessedScenario,
     investigators: Card[],
     latestDecks: LatestDecks,
-  ): string {
+  ): QueryClause[] {
     const { input: { query } } = this.props;
-    const { extraCards } = this.state;
-    const queryParts = flatMap(query, q => {
+    return flatMap(query, q => {
       if (q.code) {
-        const codeParts = map(q.code, code => t`(code == '${code}')`).join(' OR ');
-        return `(${codeParts})`;
+        return equalsVectorClause(q.code, 'code');
       }
       switch (q.source) {
         case 'scenario': {
@@ -234,47 +230,36 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
           if (!encounterSets) {
             return [];
           }
-          const encounterQuery = flatMap(
-            encounterSets,
-            encounterCode => [
-              `(encounter_code == '${encounterCode}')`,
-              `(linked_card.encounter_code == '${encounterCode}')`,
-            ]
-          ).join(' OR ');
-          return `((${encounterQuery}) AND ${this.basicQuery(q)})`;
+          return [
+            ...equalsVectorClause(encounterSets, 'encounter_code'),
+            ...this.basicQuery(q),
+          ];
         }
         case 'deck': {
-          const deckCodeQuery = map(
-            uniq(
-              flatMap(investigators, investigator => {
-                const deck = latestDecks[investigator.code];
-                if (!deck) {
-                  // Do something else in this case?
-                  return [];
-                }
-                return keys(deck.slots);
-              })
-            ),
-            code => `(code == '${code}')`
-          ).join(' OR ');
-          if (!deckCodeQuery) {
+          const deckCodes = uniq(
+            flatMap(investigators, investigator => {
+              const deck = latestDecks[investigator.code];
+              if (!deck) {
+                // Do something else in this case?
+                return [];
+              }
+              return keys(deck.slots);
+            })
+          );
+          if (!deckCodes.length) {
             return [];
           }
-          return `((${deckCodeQuery}) AND ${this.basicQuery(q)})`;
+          return [
+            ...equalsVectorClause(deckCodes, 'code'),
+            ...this.basicQuery(q),
+          ];
         }
       }
     });
-
-    forEach(extraCards, code => {
-      queryParts.push(`(code == '${code}')`);
-    });
-    if (!queryParts.length) {
-      return '';
-    }
-    return `(${queryParts.join(' OR ')})`;
   }
 
   render() {
+    const { extraCards } = this.state;
     return (
       <CampaignGuideContext.Consumer>
         { ({ latestDecks }: CampaignGuideContextType) => (
@@ -286,17 +271,20 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
                 return (
                   <CardQueryWrapper
                     query={this.query(processedScenario, scenarioInvestigators, latestDecks)}
-                    render={this._renderCards}
+                    orQuery={equalsVectorClause(extraCards, 'code')}
                     extraArg={nonDeckButton}
-                  />
+                  >
+                    { this._renderCards }
+                  </CardQueryWrapper>
                 );
               }
               return (
                 <CardListWrapper
                   cards={selectedCards}
-                  render={this._renderCards}
                   extraArg={false}
-                />
+                >
+                  { this._renderCards }
+                </CardListWrapper>
               );
             } }
           </ScenarioStepContext.Consumer>

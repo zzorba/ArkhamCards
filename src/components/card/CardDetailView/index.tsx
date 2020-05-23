@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import CardDetailComponent from './CardDetailComponent';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import { CardFaqProps } from 'components/card/CardFaqView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -47,10 +48,6 @@ export function rightButtonsForCard(card?: Card, color?: string) {
   return rightButtons;
 }
 
-interface RealmProps {
-  card?: Card;
-}
-
 interface ReduxProps {
   showSpoilers: boolean;
   tabooSetId?: number;
@@ -63,7 +60,7 @@ export interface CardDetailProps {
   tabooSetId?: number;
 }
 
-type Props = NavigationProps & DimensionsProps & CardDetailProps & ReduxProps & RealmProps;
+type Props = NavigationProps & DimensionsProps & CardDetailProps & ReduxProps;
 
 interface State {
   showSpoilers: boolean;
@@ -80,6 +77,7 @@ class CardDetailView extends React.Component<Props, State> {
     };
   }
 
+  navUpdated: boolean;
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {
@@ -88,12 +86,8 @@ class CardDetailView extends React.Component<Props, State> {
     this.state = {
       showSpoilers: props.showSpoilers || false,
     };
+    this.navUpdated = false;
 
-    Navigation.mergeOptions(props.componentId, {
-      topBar: {
-        rightButtons: rightButtonsForCard(props.card),
-      },
-    });
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -120,56 +114,48 @@ class CardDetailView extends React.Component<Props, State> {
   _showFaq = () => {
     const {
       componentId,
-      card,
+      id,
     } = this.props;
-    if (card) {
-      Navigation.push<CardFaqProps>(componentId, {
-        component: {
-          name: 'Card.Faq',
-          passProps: {
-            id: card.code,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: card.name,
-              },
-              subtitle: {
-                text: t`FAQ`,
-              },
+    Navigation.push<CardFaqProps>(componentId, {
+      component: {
+        name: 'Card.Faq',
+        passProps: {
+          id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`FAQ`,
             },
           },
         },
-      });
-    }
+      },
+    });
   };
 
   _showInvestigatorCards = () => {
     const {
       componentId,
-      card,
+      id,
     } = this.props;
-
-    if (card) {
-      Navigation.push<InvestigatorCardsProps>(componentId, {
-        component: {
-          name: 'Browse.InvestigatorCards',
-          passProps: {
-            investigatorCode: card.code,
-          },
-          options: {
-            topBar: {
-              title: {
-                text: t`Allowed Cards`,
-              },
-              backButton: {
-                title: t`Back`,
-              },
+    Navigation.push<InvestigatorCardsProps>(componentId, {
+      component: {
+        name: 'Browse.InvestigatorCards',
+        passProps: {
+          investigatorCode: id,
+        },
+        options: {
+          topBar: {
+            title: {
+              text: t`Allowed Cards`,
+            },
+            backButton: {
+              title: t`Back`,
             },
           },
         },
-      });
-    }
+      },
+    });
   };
 
   _toggleShowSpoilers = () => {
@@ -178,32 +164,48 @@ class CardDetailView extends React.Component<Props, State> {
     });
   };
 
+
   render() {
     const {
       componentId,
-      card,
       showSpoilers,
       tabooSetId,
       width,
       fontScale,
+      id,
     } = this.props;
-    if (!card) {
-      return null;
-    }
     return (
-      <ScrollView style={styles.wrapper}>
-        <CardDetailComponent
-          width={width}
-          fontScale={fontScale}
-          componentId={componentId}
-          card={card}
-          showSpoilers={showSpoilers || this.state.showSpoilers}
-          tabooSetId={tabooSetId}
-          toggleShowSpoilers={this._toggleShowSpoilers}
-          showInvestigatorCards={this._showInvestigatorCards}
-        />
-      </ScrollView>
+      <SingleCardWrapper code={id} extraArg={undefined}>
+        { (card: Card) => {
+          if (!this.navUpdated) {
+            this.navUpdated = true;
+            Navigation.mergeOptions(componentId, {
+              topBar: {
+                rightButtons: rightButtonsForCard(card),
+              },
+            });
+          }
+          if (!card) {
+            return null;
+          }
+          return (
+            <ScrollView style={styles.wrapper}>
+              <CardDetailComponent
+                width={width}
+                fontScale={fontScale}
+                componentId={componentId}
+                card={card}
+                showSpoilers={showSpoilers || this.state.showSpoilers}
+                tabooSetId={tabooSetId}
+                toggleShowSpoilers={this._toggleShowSpoilers}
+                showInvestigatorCards={this._showInvestigatorCards}
+              />
+            </ScrollView>
+          );
+        } }
+      </SingleCardWrapper>
     );
+
   }
 }
 
@@ -219,21 +221,7 @@ function mapStateToProps(
 
 export default
 connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToProps)(
-  connectRealm<NavigationProps & CardDetailProps & ReduxProps, RealmProps, Card>(
-    withDimensions(CardDetailView), {
-      schemas: ['Card'],
-      mapToProps(
-        results: CardResults<Card>,
-        realm: Realm,
-        props: NavigationProps & CardDetailProps & ReduxProps
-      ) {
-        const card = head(results.cards.filtered(`(code == '${props.id}') and ${Card.tabooSetQuery(props.tabooSetId)}`));
-        return {
-          realm,
-          card,
-        };
-      },
-    })
+  withDimensions(CardDetailView)
 );
 
 const styles = StyleSheet.create({

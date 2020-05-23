@@ -1,4 +1,4 @@
-import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -15,10 +15,12 @@ const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror');
 
 @Entity('card')
+@Index(['code', 'taboo_set_id'], { unique: true })
 export default class Card {
   @PrimaryColumn('text')
   public id!: string;
 
+  @Index()
   @Column('text')
   public code!: string;
 
@@ -28,6 +30,7 @@ export default class Card {
   @Column('text')
   public real_name!: string;
 
+  @Index()
   @Column('text')
   public renderName!: string;
 
@@ -46,6 +49,7 @@ export default class Card {
   @Column('text', { nullable: true })
   public taboo_text_change?: string;
 
+  @Index()
   @Column('text')
   public pack_code!: string;
 
@@ -64,6 +68,7 @@ export default class Card {
   @Column('text', { nullable: true })
   public slot?: string;
 
+  @Index()
   @Column('text', { nullable: true })
   public faction_code?: FactionCodeType;
 
@@ -103,6 +108,7 @@ export default class Card {
   @Column('boolean', { nullable: true })
   public exceptional?: boolean;
 
+  @Index()
   @Column('integer', { nullable: true })
   public xp?: number;
 
@@ -382,11 +388,6 @@ export default class Card {
       });
     }
     return [];
-  }
-
-
-  public static tabooSetQuery(tabooSetId?: number) {
-    return `(c.taboo_set_id is null OR c.taboo_set_id = ${tabooSetId || 0})`;
   }
 
   static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {

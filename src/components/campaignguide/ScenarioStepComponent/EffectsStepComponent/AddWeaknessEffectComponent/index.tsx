@@ -13,8 +13,8 @@ import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
 import { AddWeaknessEffect } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import CardQueryWrapper from 'components/campaignguide/CardQueryWrapper';
-import { safeValue } from 'lib/filters';
+import CardQueryWrapper from 'components/card/CardQueryWrapper';
+import { traitFilter } from 'lib/filters';
 
 interface OwnProps {
   id: string;
@@ -92,18 +92,16 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
       return null;
     }
     if (!useAppDecision) {
-      const traitPart = map(effect.weakness_traits,
-        trait => `(real_traits_normalized CONTAINS[c] "${safeValue(trait)}")`
-      ).join(' OR ');
-      const query = traitPart ?
-        `(${BASIC_WEAKNESS_QUERY} AND (${traitPart}))` :
-        BASIC_WEAKNESS_QUERY;
       return (
         <CardQueryWrapper
-          query={query}
-          render={this._renderCardChoice}
+          query={[
+            BASIC_WEAKNESS_QUERY,
+            ...traitFilter(effect.weakness_traits),
+          ]}
           extraArg={investigators}
-        />
+        >
+          { this._renderCardChoice }
+        </CardQueryWrapper>
       );
     }
     const traitsChoice = effect.select_traits ?

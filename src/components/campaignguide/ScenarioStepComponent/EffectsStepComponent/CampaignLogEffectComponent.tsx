@@ -4,8 +4,8 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
+import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
 import Card from 'data/Card';
 import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType } from 'data/scenario/types';
@@ -71,9 +71,10 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                 return (
                   <SingleCardWrapper
                     code={logEntry.code}
-                    render={this._renderCard}
                     extraArg={logEntry.section}
-                  />
+                  >
+                    { this._renderCard }
+                  </SingleCardWrapper>
                 );
               }
               case 'section_count': {

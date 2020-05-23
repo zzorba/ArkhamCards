@@ -13,7 +13,7 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import { QueryClause } from 'lib/filters';
+import { QueryClause } from 'data/types';
 import CardSearchBox from './CardSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
@@ -161,7 +161,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     }
     const lang = 'en';
     const query = {
-      query: `(${parts.join(' OR ')})`,
+      q: `(${parts.join(' OR ')})`,
       params: {
         searchTerm: `%${searchTerm
           .replace(/[\u2018\u2019]/g, '\'')
@@ -193,23 +193,23 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     const queryParts: QueryClause[] = [];
     if (mythosToggle) {
       if (mythosMode) {
-        queryParts.push({ query: MYTHOS_CARDS_QUERY });
+        queryParts.push(MYTHOS_CARDS_QUERY);
       } else {
-        queryParts.push({ query: PLAYER_CARDS_QUERY });
+        queryParts.push(PLAYER_CARDS_QUERY);
       }
     }
     if (baseQuery) {
-      queryParts.push({ query: baseQuery });
+      queryParts.push({ q: baseQuery });
     }
-    queryParts.push({ query: '(not c.altArtInvestigator)' });
-    queryParts.push({ query: '(c.back_linked is null)' });
+    queryParts.push({ q: '(not c.altArtInvestigator)' });
+    queryParts.push({ q: '(c.back_linked is null)' });
     forEach(
       this.filterQueryParts(),
       clause => queryParts.push(clause)
     );
 
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push({ query: `(c.encounter_code is not null OR linked_card.encounter_code is not null)` });
+      queryParts.push({ q: `(c.encounter_code is not null OR linked_card.encounter_code is not null)` });
     }
     return queryParts;
   }

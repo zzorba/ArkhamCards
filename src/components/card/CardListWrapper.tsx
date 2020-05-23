@@ -1,30 +1,31 @@
 import React from 'react';
 import { map } from 'lodash';
 
-import CardQueryWrapper from './CardQueryWrapper';
+import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import Card from 'data/Card';
+import { equalsVectorClause } from 'lib/filters';
 
 interface OwnProps<T> {
   cards: string[];
-  render: (cards: Card[], extraArg: T) => Element | null;
   extraArg: T;
+  children: (cards: Card[], extraArg: T) => React.ReactNode;
 }
 
 type Props<T> = OwnProps<T>;
 
 export default class CardListWrapper<T> extends React.Component<Props<T>> {
   render() {
-    const { cards, render, extraArg } = this.props;
+    const { cards, children, extraArg } = this.props;
     if (!cards.length) {
-      return render([], extraArg);
+      return children([], extraArg);
     }
-    const query = `(${map(cards, code => `(code == '${code}')`).join(' OR ')})`;
     return (
       <CardQueryWrapper
-        query={query}
-        render={render}
+        query={equalsVectorClause(cards, 'code')}
         extraArg={extraArg}
-      />
+      >
+        { children }
+        </CardQueryWrapper>
     );
   }
 }

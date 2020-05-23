@@ -3,7 +3,7 @@ import { map } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
@@ -89,9 +89,10 @@ export default class HasCardConditionComponent extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={condition.card}
-        render={this._renderCard}
         extraArg={undefined}
-      />
+      >
+        { this._renderCard }
+      </SingleCardWrapper>
     );
   }
 }

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import connectDb from 'components/data/connectDb';
 import {
   SortType,
   Slots,

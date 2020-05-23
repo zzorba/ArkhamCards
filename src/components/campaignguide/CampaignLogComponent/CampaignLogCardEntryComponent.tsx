@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TextEntryComponent from './TextEntryComponent';
-import SingleCardWrapper from '../SingleCardWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import { CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
 import Card from 'data/Card';
 
@@ -30,9 +30,10 @@ export default class CampaignLogCardEntryComponent extends React.Component<Props
     return (
       <SingleCardWrapper
         code={code}
-        render={this._renderCard}
         extraArg={undefined}
-      />
+      >
+        {this._renderCard}
+      </SingleCardWrapper>
     );
   }
 }

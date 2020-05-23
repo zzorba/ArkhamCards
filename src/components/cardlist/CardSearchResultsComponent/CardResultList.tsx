@@ -24,14 +24,12 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   SectionListData,
-  InteractionManager,
 } from 'react-native';
 import { SelectQueryBuilder } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
-import deepDiff from 'deep-diff';
 
 import DbRender from 'components/data/DbRender';
 import Database from 'data/Database';
@@ -55,7 +53,7 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import { QueryClause } from 'lib/filters';
+import { QueryClause, QuerySort } from 'data/types';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from 'reducers';
 import Card from 'data/Card';
 import { showCard, showCardSwipe } from 'components/nav/helper';
@@ -336,42 +334,48 @@ class CardResultList extends React.Component<Props, State> {
     });
   };
 
-  applySort(query: SelectQueryBuilder<Card>): SelectQueryBuilder<Card> {
+  getSort(): QuerySort[] {
     switch(this.props.sort) {
-
       case SORT_BY_FACTION:
-        return query
-          .orderBy('c.sort_by_faction', 'ASC')
-          .addOrderBy('c.renderName', 'ASC')
-          .addOrderBy('c.xp', 'ASC');
+        return [
+          { s: 'c.sort_by_faction', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
       case SORT_BY_FACTION_PACK:
-        return query
-          .orderBy('c.sort_by_faction_pack', 'ASC')
-          .addOrderBy('c.code', 'ASC');
+        return [
+          { s: 'c.sort_by_faction_pack', direction: 'ASC' },
+          { s: 'c.code', direction: 'ASC' },
+        ];
       case SORT_BY_COST:
-        return query
-          .orderBy('c.cost', 'ASC')
-          .addOrderBy('c.renderName', 'ASC')
-          .addOrderBy('c.xp', 'ASC');
+        return [
+          { s: 'c.cost', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' }
+        ];
       case SORT_BY_PACK:
-        return query
-          .orderBy('c.sort_by_pack', 'ASC')
-          .addOrderBy('c.position', 'ASC');
+        return [
+          { s: 'c.sort_by_pack', direction: 'ASC' },
+          { s: 'c.position', direction: 'ASC' },
+        ];
       case SORT_BY_ENCOUNTER_SET:
-        return query
-        .orderBy('c.sort_by_pack', 'ASC')
-        .addOrderBy('c.encounter_code', 'ASC')
-        .addOrderBy('c.encounter_position', 'ASC');
+        return [
+          { s: 'c.sort_by_pack', direction: 'ASC' },
+          { s: 'c.encounter_code', direction: 'ASC' },
+          { s: 'c.encounter_position', direction: 'ASC' },
+        ];
       case SORT_BY_TITLE:
-        return query
-          .orderBy('c.renderName', 'ASC')
-          .addOrderBy('c.xp', 'ASC');
+        return [
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
       case SORT_BY_TYPE:
       default:
-        return query
-          .orderBy('c.sort_by_type', 'ASC')
-          .addOrderBy('c.renderName', 'ASC')
-          .addOrderBy('c.xp', 'ASC');
+        return [
+          { s: 'c.sort_by_type', direction: 'ASC' },
+          { s: 'c.renderName', direction: 'ASC' },
+          { s: 'c.xp', direction: 'ASC' },
+        ];
     }
   }
 
@@ -500,18 +504,16 @@ class CardResultList extends React.Component<Props, State> {
     if (!deckQuery) {
       return this.bucketCards([], 'deck');
     }
-    const queryParts: QueryClause[] = [
-      { query: Card.tabooSetQuery(tabooSetId) },
-      ...(storyOnly && query) || [],
-      ...filterQuery || [],
-      ...(termQuery ? [termQuery] : []),
-    ];
-    let cardQuery = (await db.cardsQuery()).where( `(${deckQuery})`);
-    forEach(queryParts, ({ query, params}) => {
-      cardQuery = cardQuery.andWhere(query, params);
-    });
-
-    const deckCards: Card[] = await this.applySort(cardQuery).getMany();
+    const deckCards: Card[] = await db.getCards(
+      [
+        { q: `(${deckQuery})` },
+        ...(storyOnly && query) || [],
+        ...filterQuery || [],
+        ...(termQuery ? [termQuery] : []),
+      ],
+      tabooSetId,
+      this.getSort()
+    );
     return this.bucketCards(deckCards, 'deck');
   }
 
@@ -520,14 +522,14 @@ class CardResultList extends React.Component<Props, State> {
       tabooSetId,
       termQuery,
     } = this.props;
-    let cardQuery = (await db.cardsQuery()).where(Card.tabooSetQuery(tabooSetId));
-    forEach(queryClause || [], ({ query, params}) => {
-      cardQuery = cardQuery.andWhere(query, params);
-    });
-    if (termQuery) {
-      cardQuery = cardQuery.andWhere(termQuery.query, termQuery.params);
-    }
-    return await this.applySort(cardQuery).getMany();
+    return await db.getCards(
+      [
+        ...(queryClause || []),
+        ...(termQuery ? [termQuery] : []),
+      ],
+      tabooSetId,
+      this.getSort()
+    );
   }
 
   _updateResults = async (db: Database): Promise<DbState> => {

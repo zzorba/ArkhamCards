@@ -68,7 +68,7 @@ export default class DeckOption {
       query += ' (';
       query +=
         map(this.faction, faction =>
-          ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
+          ` c.faction_code = '${faction}' OR c.faction2_code = '${faction}'`)
           .join(' OR');
       query += ' )';
 
@@ -90,7 +90,7 @@ export default class DeckOption {
       query += ' (';
       query +=
         map(factions, faction =>
-          ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
+          ` c.faction_code = '${faction}' OR c.faction2_code = '${faction}'`)
           .join(' OR');
       query += ' )';
 
@@ -101,7 +101,7 @@ export default class DeckOption {
         query += ' AND';
       }
       query += ' (';
-      query += map(this.slot, slot => ` slot == '${slot}'`).join(' OR');
+      query += map(this.slot, slot => ` slot = '${slot}'`).join(' OR');
       query += ' )';
       dirty = true;
     }
@@ -110,7 +110,7 @@ export default class DeckOption {
         query += ' AND';
       }
       query += ' (';
-      query += map(this.uses, use => ` uses == '${use}'`).join(' OR');
+      query += map(this.uses, use => ` uses = '${use}'`).join(' OR');
       query += ' )';
       dirty = true;
     }
@@ -122,7 +122,7 @@ export default class DeckOption {
       if (this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
         this.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
         this.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror') {
-        query += ' (heals_horror == true)';
+        query += ' (heals_horror = true)';
         dirty = true;
       }
     }
@@ -132,7 +132,7 @@ export default class DeckOption {
       }
       query += ' (';
       query +=
-        map(this.trait, trait => ` real_traits_normalized contains '#${trait}#'`)
+        map(this.trait, trait => ` real_traits_normalized LIKE '%#${trait}#%'`)
           .join(' OR');
       query += ' )';
       dirty = true;

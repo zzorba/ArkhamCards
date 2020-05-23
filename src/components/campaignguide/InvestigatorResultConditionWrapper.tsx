@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
-import CardListWrapper from './CardListWrapper';
+import CardListWrapper from 'components/card/CardListWrapper';
 import { InvestigatorResult } from 'data/scenario/conditionHelper';
 import Card from 'data/Card';
 import { Option } from 'data/scenario/types';
@@ -37,9 +37,10 @@ export default class InvestigatorResultConditionWrapper<T> extends React.Compone
             <View key={index}>
               <CardListWrapper
                 cards={investigators}
-                render={this._renderCards}
                 extraArg={option}
-              />
+              >
+                { this._renderCards }
+              </CardListWrapper>
             </View>
           );
         }) }

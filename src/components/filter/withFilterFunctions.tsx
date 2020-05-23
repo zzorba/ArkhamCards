@@ -14,9 +14,9 @@ import { t, ngettext, msgid } from 'ttag';
 
 import DbRender from 'components/data/DbRender';
 import Database from 'data/Database';
+import { QueryClause } from 'data/types';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import Card from 'data/Card';
 import COLORS from 'styles/colors';
 import { filterToQuery, FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
@@ -159,19 +159,15 @@ export default function withFilterFunctions<P>(
         tabooSetId,
         currentFilters,
       } = this.props;
-      let cardsQuery = await db.cardsQuery();
-      cardsQuery = cardsQuery
-        .where(Card.tabooSetQuery(tabooSetId));
-      if (baseQuery) {
-        cardsQuery = cardsQuery.andWhere(`(${baseQuery})`);
-      }
       const filterParts = filterToQuery(currentFilters);
-      if (filterParts.length) {
-        forEach(filterToQuery(currentFilters), ({ query, params }) => {
-          cardsQuery = cardsQuery.andWhere(query, params);
-        });
-      }
-      const count = await cardsQuery.getCount();
+      const baseClause: QueryClause[] = baseQuery ? [{ q: baseQuery as string }] : []
+      const count = await db.getCardCount(
+        [
+          ...baseClause,
+          ...filterParts,
+        ],
+        tabooSetId
+      );
       Navigation.mergeOptions(componentId, {
         topBar: {
           rightButtons: this.hasChanges() ?

@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import BasicButton from 'components/core/BasicButton';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
-import CardListWrapper from 'components/campaignguide/CardListWrapper';
+import CardListWrapper from 'components/card/CardListWrapper';
 import PickerStyleButton from 'components/core/PickerStyleButton';
 import Card from 'data/Card';
 import { RandomLocationInput } from 'data/scenario/types';
@@ -138,9 +138,10 @@ export default class RandomLocationInputComponent extends React.Component<Props,
       <View style={styles.container}>
         <CardListWrapper
           cards={input.cards}
-          render={this._renderCards}
           extraArg={undefined}
-        />
+        >
+          { this._renderCards }
+        </CardListWrapper>
         <BasicButton
           title={t`Done`}
           onPress={this._done}

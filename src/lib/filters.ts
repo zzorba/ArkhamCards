@@ -1,16 +1,8 @@
 import { filter, findIndex, forEach, keys, map } from 'lodash';
 
+import { QueryClause, QueryParams } from 'data/types';
 import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from 'constants';
 import Card from 'data/Card';
-
-export interface QueryParams {
-  [key: string]: number | string;
-}
-
-export interface QueryClause {
-  query: string;
-  params?: QueryParams;
-}
 
 export interface CardFilterData {
   hasCost: boolean;
@@ -274,36 +266,34 @@ export function safeValue(value: any) {
   return value;
 }
 
-function applyRangeFilter(
-  query: QueryClause[],
+function rangeFilter(
   field: string,
   values: [number, number],
   linked: boolean
-) {
+): QueryClause[] {
   if (values[0] === values[1]) {
-    query.push({
-      query: `(c.${field} = :value${linked ? ` OR linked_card.${field} = :value` : ''})`,
+    return[{
+      q: `(c.${field} = :value${linked ? ` OR linked_card.${field} = :value` : ''})`,
       params: {
         value: values[0],
       },
-    });
-  } else {
-    query.push({
-      query: `((c.${field} >= :value_0 and c.${field} <= :value_1)${linked ? ` or (linked_card.${field} >= :value_0 and linked_card.${field} <= :value_1)` : ''})`,
-      params: {
-        value_0: values[0],
-        value_1: values[1],
-      },
-    });
+    }];
   }
+  return[{
+    q: `((c.${field} >= :value_0 and c.${field} <= :value_1)${linked ? ` or (linked_card.${field} >= :value_0 and linked_card.${field} <= :value_1)` : ''})`,
+    params: {
+      value_0: values[0],
+      value_1: values[1],
+    },
+  }];
 }
 
-function vectorClause(
+function complexVectorClause(
   elements: string[],
   clause: (valueName: string) => string
-): QueryClause | undefined {
+): QueryClause[] {
   if (!elements.length) {
-    return undefined;
+    return [];
   }
   const params: QueryParams = {};
   const query = map(elements, (value, index) => {
@@ -311,47 +301,41 @@ function vectorClause(
     params[valueName] = value;
     return clause(valueName);
   }).join(' OR ');
-  return {
-    query: `(${query})`,
+  return [{
+    q: `(${query})`,
     params,
-  };
+  }];
 }
 
-function applySlotFilter(filters: FilterState, result: QueryClause[]) {
+function slotFilter(filters: FilterState): QueryClause[] {
   const {
     slots,
   } = filters;
-  const slotsClause = vectorClause(
+  return complexVectorClause(
     map(slots, slot => `%#${slot}#%`),
     (valueName: string) => `c.slots_normalized LIKE :${valueName}`
   );
-  if (slotsClause) {
-    result.push(slotsClause);
-  }
 }
 
-function applyTraitFilter(filters: FilterState, result: QueryClause[]) {
-  const {
-    traits,
-  } = filters;
-  const traitsClause = vectorClause(
-    map(traits, trait => `%${trait}%`),
+export function traitFilter(traits: string[]): QueryClause[] {
+  return complexVectorClause(
+    map(traits, trait => `%#${trait}#%`),
     (valueName: string) => `c.traits_normalized LIKE :${valueName} OR linked_card.traits_normalized LIKE :${valueName}`
   );
-
-  if (traitsClause) {
-    result.push(traitsClause);
-  }
 }
 
-function applySkillIconFilter(skillFilters: SkillIconsFilters, result: QueryClause[]) {
+function skillIconFilter(filters: FilterState): QueryClause[] {
+  if (!filters.skillEnabled) {
+    return [];
+  }
+  const { skillIcons } = filters;
   const parts: string[] = [];
-  const doubleIcons = skillFilters.doubleIcons;
+  const doubleIcons = skillIcons.doubleIcons;
   const matchAll = doubleIcons &&
-    (findIndex(SKILLS, skill => skillFilters[skill]) === -1);
+    (findIndex(SKILLS, skill => skillIcons[skill]) === -1);
 
   forEach(SKILLS, skill => {
-    if (matchAll || skillFilters[skill]) {
+    if (matchAll || skillIcons[skill]) {
       parts.push(`c.skill_${skill} > ${doubleIcons ? 1 : 0}`);
     }
   });
@@ -359,12 +343,15 @@ function applySkillIconFilter(skillFilters: SkillIconsFilters, result: QueryClau
   if (parts.length) {
     // Kick out investigators because they re-use the same field
     // and by definition cannot have skill icons.
-    result.push({ query: `(c.type_code != 'investigator')` });
-    result.push({ query: `(${parts.join(' OR ')})`})
+    return [
+      { q: `(c.type_code != 'investigator')` },
+      { q: `(${parts.join(' OR ')})`},
+    ];
   }
+  return [];
 }
 
-function applyLocationFilters(filters: FilterState, result: QueryClause[]) {
+function locationFilters(filters: FilterState): QueryClause[] {
   const {
     shroudEnabled,
     shroud,
@@ -373,31 +360,31 @@ function applyLocationFilters(filters: FilterState, result: QueryClause[]) {
     cluesFixed,
     hauntedEnabled,
   } = filters;
-  const oldLength = result.length;
-  if (shroudEnabled) {
-    applyRangeFilter(result, 'shroud', shroud, true);
-  }
-  if (cluesEnabled) {
-    applyRangeFilter(result, 'clues', clues, true);
-    if (clues[0] !== clues[1] || clues[0] !== 0) {
-      result.push({
-        query: `(c.clues_fixed = ${cluesFixed} OR linked_card.clues_fixed = ${cluesFixed})`,
-      });
-    }
+  const result: QueryClause[] = [
+    ...(shroudEnabled ? rangeFilter('shroud', shroud, true) : []),
+    ...(cluesEnabled ? [
+      ...rangeFilter('shroud', shroud, true),
+    ] : []),
+  ];
+  if (cluesEnabled && (clues[0] !== clues[1] || clues[0] !== 0)) {
+    result.push({
+      q: `(c.clues_fixed = ${cluesFixed} OR linked_card.clues_fixed = ${cluesFixed})`,
+    })
   }
   if (hauntedEnabled) {
     result.push({
-      query: `(c.real_text LIKE '%<b>Haunted</b>%' or linked_card.real_text LIKE '%<b>Haunted</b>%')`,
+      q: `(c.real_text LIKE '%<b>Haunted</b>%' or linked_card.real_text LIKE '%<b>Haunted</b>%')`,
     });
   }
-  if (result.length !== oldLength) {
+  if (result.length) {
     result.push({
-      query: `(c.type_code = 'location' or linked_card.type_code = 'location')`,
+      q: `(c.type_code = 'location' or linked_card.type_code = 'location')`,
     });
   }
+  return result;
 }
 
-function applyEnemyFilters(filters: FilterState, result: QueryClause[]) {
+function enemyFilters(filters: FilterState): QueryClause[] {
   const {
     // toggle filters
     enemyElite,
@@ -425,154 +412,160 @@ function applyEnemyFilters(filters: FilterState, result: QueryClause[]) {
     enemyHorror,
     enemyHorrorEnabled,
   } = filters;
-  const oldLength = result.length;
+  const result: QueryClause[] = [
+    ...(enemyFightEnabled ? rangeFilter('enemy_fight', enemyFight, true) : []),
+    ...(enemyEvadeEnabled ? rangeFilter('enemy_evade', enemyEvade, true) : []),
+    ...(enemyDamageEnabled ? rangeFilter('enemy_damage', enemyDamage, true) : []),
+    ...(enemyHorrorEnabled ? rangeFilter('enemy_horror', enemyHorror, true) : []),
+    ...(enemyHealthEnabled ? [
+      ...rangeFilter('health', enemyHealth, true),
+      {
+        q: `((c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator}) or (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator}))`,
+      }
+    ] : []),
+  ];
   if (enemyElite && !enemyNonElite) {
     result.push({
-      query: `(c.traits_normalized LIKE '%#elite#%' or linked_card.traits_normalized LIKE '%#elite#%')`,
+      q: `(c.traits_normalized LIKE '%#elite#%' or linked_card.traits_normalized LIKE '%#elite#%')`,
     });
   }
   if (enemyNonElite && !enemyElite) {
     result.push({
-      query: `((c.type_code = 'enemy' and not (c.traits_normalized LIKE '%#elite#%')) OR (linked_card.type_code = 'enemy' and not (linked_card.traits_normalized LIKE '%#elite#%')))`,
+      q: `((c.type_code = 'enemy' and not (c.traits_normalized LIKE '%#elite#%')) OR (linked_card.type_code = 'enemy' and not (linked_card.traits_normalized LIKE '%#elite#%')))`,
     });
   }
   if (enemyRetaliate) {
     result.push({
-      query: `(c.real_text LIKE '%Retaliate.%' OR linked_card.real_text LIKE '%Retaliate.%')`,
+      q: `(c.real_text LIKE '%Retaliate.%' OR linked_card.real_text LIKE '%Retaliate.%')`,
     });
   }
   if (enemyAlert) {
     result.push({
-      query: `(c.real_text LIKE '%Alert.%' or linked_card.real_text LIKE '%Alert.%')`,
+      q: `(c.real_text LIKE '%Alert.%' or linked_card.real_text LIKE '%Alert.%')`,
     });
   }
   if (enemyHunter && !enemyNonHunter) {
     result.push({
-      query: `(c.real_text LIKE '%Hunter.%' or linked_card.real_text LIKE '%Hunter.%')`,
+      q: `(c.real_text LIKE '%Hunter.%' or linked_card.real_text LIKE '%Hunter.%')`,
     });
   }
   if (enemyNonHunter && !enemyHunter) {
     result.push({
-      query: `((c.type_code = 'enemy' AND not (c.real_text LIKE '%Hunter.%')) or (linked_card.type_code = 'enemy' and not (linked_card.real_text LIKE '%Hunter.%')))`,
+      q: `((c.type_code = 'enemy' AND not (c.real_text LIKE '%Hunter.%')) or (linked_card.type_code = 'enemy' and not (linked_card.real_text LIKE '%Hunter.%')))`,
     });
   }
   if (enemySpawn) {
     result.push({
-      query: `(c.real_text LIKE '%Spawn%' OR linked_card.real_text LIKE '%Spawn%')`,
+      q: `(c.real_text LIKE '%Spawn%' OR linked_card.real_text LIKE '%Spawn%')`,
     });
   }
   if (enemyPrey) {
     result.push({
-      query: `(c.real_text LIKE '%Prey%' OR linked_card.real_text LIKE '%Prey%')`,
+      q: `(c.real_text LIKE '%Prey%' OR linked_card.real_text LIKE '%Prey%')`,
     });
   }
   if (enemyAloof) {
     result.push({
-      query: `(c.real_text LIKE '%Aloof.%' or linked_card.real_text LIKE '%Aloof.%')`,
+      q: `(c.real_text LIKE '%Aloof.%' or linked_card.real_text LIKE '%Aloof.%')`,
     });
   }
   if (enemyParley) {
     result.push({
-      query: `(c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%')`,
+      q: `(c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%')`,
     });
   }
   if (enemyMassive) {
     result.push({
-      query: `(c.real_text LIKE '%Massive.%' or linked_card.real_text LIKE '%Massive.%')`,
+      q: `(c.real_text LIKE '%Massive.%' or linked_card.real_text LIKE '%Massive.%')`,
     });
   }
   if (enemySwarm) {
     result.push({
-      query: `(c.real_text LIKE '%Swarm.%' or linked_card.real_text LIKE '%Swarm.%')`,
+      q: `(c.real_text LIKE '%Swarm.%' or linked_card.real_text LIKE '%Swarm.%')`,
     });
   }
-  if (enemyFightEnabled) {
-    applyRangeFilter(result, 'enemy_fight', enemyFight, true);
-  }
-  if (enemyEvadeEnabled) {
-    applyRangeFilter(result, 'enemy_evade', enemyEvade, true);
-  }
-  if (enemyDamageEnabled) {
-    applyRangeFilter(result, 'enemy_damage', enemyDamage, true);
-  }
-  if (enemyHorrorEnabled) {
-    applyRangeFilter(result, 'enemy_horror', enemyHorror, true);
-  }
-  if (enemyHealthEnabled) {
-    applyRangeFilter(result, 'health', enemyHealth, true);
-    result.push({
-      query: `((c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator}) or (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator}))`,
-    });
-  }
-  if (result.length !== oldLength ||
+
+  if (result.length ||
     (enemyHunter && enemyNonHunter) ||
     (enemyElite && enemyNonElite)) {
     result.push({
-      query: `(c.type_code = 'enemy' or linked_card.type_code = 'enemy')`,
+      q: `(c.type_code = 'enemy' or linked_card.type_code = 'enemy')`,
     });
   }
+  return result;
 }
 
-function applyMiscFilter(filters: FilterState, result: QueryClause[]) {
+export const VENGEANCE_FILTER: QueryClause = {
+  q: '(c. >= 0 or linked_card.vengeance >= 0)',
+};
+
+function miscFilter(filters: FilterState): QueryClause[] {
   const {
     victory,
     vengeance,
   } = filters;
+  const result: QueryClause[] = [];
   if (victory) {
     result.push({
-      query: '(c.victory >= 0 or linked_card.victory >= 0)',
+      q: '(c.victory >= 0 or linked_card.victory >= 0)',
     });
   }
   if (vengeance) {
-    result.push({
-      query: '(c.vengeance >= 0 or linked_card.vengeance >= 0)',
-    });
+    result.push(VENGEANCE_FILTER);
   }
+  return result;
 }
 
-function applyLevelFilter(filters: FilterState, result: QueryClause[]) {
+function levelFilter(filters: FilterState): QueryClause[] {
   const {
     levelEnabled,
     level,
     exceptional,
     nonExceptional,
   } = filters;
-  if (levelEnabled) {
-    applyRangeFilter(result, 'xp', level, false);
-    if (exceptional && !nonExceptional) {
-      result.push({
-        query: `(c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%')`,
-      });
-    }
-    if (nonExceptional && !exceptional) {
-      result.push({
-        query: `(NOT (c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'))`,
-      });
-    }
+  if (!levelEnabled) {
+    return [];
   }
+  const result = rangeFilter('xp', level, false);
+  if (exceptional && !nonExceptional) {
+    result.push({
+      q: `(c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%')`,
+    });
+  }
+  if (nonExceptional && !exceptional) {
+    result.push({
+      q: `(NOT (c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'))`,
+    });
+  }
+  return result;
 }
 
-function applyCostFilter(filters: FilterState, result: QueryClause[]) {
+function costFilter(filters: FilterState): QueryClause[] {
   const {
     costEnabled,
     cost,
   } = filters;
   if (costEnabled) {
-    applyRangeFilter(result, 'cost', cost, false);
+    return rangeFilter('cost', cost, false);
   }
+  return [];
 }
 
-function equalsVectorClause(values: string[], field: string, result: QueryClause[]) {
-  const query = vectorClause(
-    values,
-    (valueName: string) => `(c.${field} = :${valueName} or c.${field} = :${valueName})`
-  );
-  if (query) {
-    result.push(query);
+export function equalsVectorClause(values: string[], field: string): QueryClause[] {
+  if (values.length) {
+    return [{
+      q: `(c.${field} IN (:...values) OR linked_card.${field} IN (:...values))`,
+      params: { values },
+    }];
   }
+  return [];
 }
 
-function applyPlayerCardFilters(filters: FilterState, result: QueryClause[]) {
+export const UNIQUE_FILTER: QueryClause = {
+  q: '((c.is_unique = true or linked_card.is_unique = true) AND c.type_code != "enemy")',
+};
+
+function playerCardFilters(filters: FilterState): QueryClause[] {
   const {
     uses,
     unique,
@@ -586,87 +579,82 @@ function applyPlayerCardFilters(filters: FilterState, result: QueryClause[]) {
     permanent,
     exile,
   } = filters;
-  applySlotFilter(filters, result);
-  equalsVectorClause(uses, 'uses', result);
+  const result: QueryClause[] = [
+    ...slotFilter(filters),
+    ...equalsVectorClause(uses, 'uses'),
+  ];
   if (fast) {
     result.push({
-      query: `(c.real_text LIKE '%Fast.%' or linked_card.real_text LIKE '%Fast.%')`,
+      q: `(c.real_text LIKE '%Fast.%' or linked_card.real_text LIKE '%Fast.%')`,
     });
   }
   if (bonded) {
     result.push({
-      query: `(c.bonded_name is not null or linked_card.bonded_name is not null)`,
+      q: `(c.bonded_name is not null or linked_card.bonded_name is not null)`,
     });
   }
   if (fightAction) {
     result.push({
-      query: `(c.real_text LIKE '%<b>Fight.</b>%' or linked_card.real_text LIKE '%<b>Fight.</b>%')`,
+      q: `(c.real_text LIKE '%<b>Fight.</b>%' or linked_card.real_text LIKE '%<b>Fight.</b>%')`,
     });
   }
   if (evadeAction) {
     result.push({
-      query: `(c.real_text LIKE '%<b>Evade.</b>%' or linked_card.real_text LIKE '%<b>Evade.</b>%')`,
+      q: `(c.real_text LIKE '%<b>Evade.</b>%' or linked_card.real_text LIKE '%<b>Evade.</b>%')`,
     });
   }
   if (investigateAction) {
     result.push({
-      query: `(c.real_text LIKE '%<b>Investigate.</b>%' or linked_card.real_text LIKE '%<b>Investigate.</b>%')`,
+      q: `(c.real_text LIKE '%<b>Investigate.</b>%' or linked_card.real_text LIKE '%<b>Investigate.</b>%')`,
     });
   }
   if (permanent) {
     result.push({
-      query: `(c.real_text LIKE '%Permanent.%' or linked_card.real_text LIKE '%Permanent.%')`,
+      q: `(c.real_text LIKE '%Permanent.%' or linked_card.real_text LIKE '%Permanent.%')`,
     });
   }
   if (exile) {
     result.push({
-      query: `(c.real_text LIKE '%exile%' or linked_card.real_text LIKE '%exile%')`,
+      q: `(c.real_text LIKE '%exile%' or linked_card.real_text LIKE '%exile%')`,
     });
   }
   if (unique) {
-    result.push({
-      query: '((c.is_unique = true or linked_card.is_unique = true) AND c.type_code != "enemy")',
-    });
+    result.push(UNIQUE_FILTER);
   }
   if (seal) {
     result.push({
-      query: `(c.seal = true or linked_card.seal = true)`,
+      q: `(c.seal = true or linked_card.seal = true)`,
     });
   }
   if (myriad) {
     result.push({
-      query: `(c.real_text LIKE '%Myriad.%' or linked_card.real_text LIKE '%Myriad.%')`,
+      q: `(c.real_text LIKE '%Myriad.%' or linked_card.real_text LIKE '%Myriad.%')`,
     });
   }
+  return result;
 }
 
 export function filterToQuery(filters: FilterState): QueryClause[] {
-  const result: QueryClause[] = [];
-  const factionClause = vectorClause(
-    filters.factions,
-    valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName})`
-  );
-  if (factionClause) {
-    result.push(factionClause);
-  }
-  equalsVectorClause(filters.types, 'type_name', result);
-  equalsVectorClause(filters.subTypes, 'subtype_name', result);
-  applyPlayerCardFilters(filters, result);
-  equalsVectorClause(filters.packs, 'pack_name', result);
-  equalsVectorClause(filters.encounters, 'encounter_name', result);
-  equalsVectorClause(filters.illustrators, 'illustrator', result);
-  if (filters.skillEnabled) {
-    applySkillIconFilter(filters.skillIcons, result);
-  }
-  applyMiscFilter(filters, result);
-  applyLevelFilter(filters, result);
-  applyCostFilter(filters, result);
-  applyTraitFilter(filters, result);
-  applyEnemyFilters(filters, result);
-  applyLocationFilters(filters, result);
-  return result;
+  return [
+    ...equalsVectorClause(filters.factions, 'faction_code'),
+    ...equalsVectorClause(filters.factions, 'faction2_code'),
+    ...equalsVectorClause(filters.types, 'type_name'),
+    ...equalsVectorClause(filters.subTypes, 'subtype_name'),
+    ...playerCardFilters(filters),
+    ...equalsVectorClause(filters.packs, 'pack_name'),
+    ...equalsVectorClause(filters.encounters, 'encounter_name'),
+    ...equalsVectorClause(filters.illustrators, 'illustrator'),
+    ...miscFilter(filters),
+    ...levelFilter(filters),
+    ...costFilter(filters),
+    ...traitFilter(filters.traits),
+    ...enemyFilters(filters),
+    ...locationFilters(filters),
+    ...skillIconFilter(filters),
+    ];
 }
 
 export default {
   filterToQuery,
+  traitFilter,
 };

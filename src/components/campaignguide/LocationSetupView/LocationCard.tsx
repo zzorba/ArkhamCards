@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-import SingleCardWrapper from 'components/campaignguide/SingleCardWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import Card from 'data/Card';
 import { m } from 'styles/space';
 
@@ -54,9 +54,10 @@ export default class LocationCard extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={code.replace('_back', '')}
-        render={this._renderCard}
         extraArg={code.indexOf('_back') !== -1}
-      />
+      >
+        { this._renderCard }
+      </SingleCardWrapper>
     );
   }
 
