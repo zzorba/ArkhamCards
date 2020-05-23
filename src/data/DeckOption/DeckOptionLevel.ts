@@ -1,9 +1,9 @@
-import { Column } from 'typeorm/browser';
+import { Column } from 'typeorm';
 
 export default class DeckOptionLevel {
-  @Column('integer', { nullable: true })
-  public min?: number;
+  @Column('integer')
+  public min!: number;
 
-  @Column('integer', { nullable: true })
+  @Column('integer')
   public max!: number;
 }

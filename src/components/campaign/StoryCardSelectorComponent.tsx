@@ -9,7 +9,7 @@ import CardSectionHeader from 'components/core/CardSectionHeader';
 import { scenarioRewards } from 'components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
 import Card from 'data/Card';
-import { PLAYER_CARDS_QUERY } from 'data/query';
+import { PLAYER_CARDS_QUERY, combineQueries, where } from 'data/query';
 import { getDeck, getTabooSet, AppState } from 'reducers';
 import CardSelectorComponent from 'components/cardlist/CardSelectorComponent';
 
@@ -152,10 +152,11 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       tabooSetId,
     } = this.props;
     const allStoryCards = await db.getCards(
-      [
-        { q: '(c.encounter_code is not null)' },
-        PLAYER_CARDS_QUERY,
-      ],
+      combineQueries(
+        where('c.encounter_code is not null'),
+        [PLAYER_CARDS_QUERY],
+        'and'
+      ),
       tabooSetId,
       [
         { s: 'c.renderName', direction: 'ASC' },
@@ -194,7 +195,7 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
   render() {
     const { deck } = this.props;
     return (
-      <DbRender getData={this._getStoryCards} id={deck ? JSON.stringify(deck.slots) : 'undefined'}>
+      <DbRender getData={this._getStoryCards} ids={[deck && deck.slots]}>
         { this._render }
       </DbRender>
     );

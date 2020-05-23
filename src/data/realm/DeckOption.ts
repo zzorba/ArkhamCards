@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import { DeckMeta } from 'actions/types';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
-import { FactionCodeType, TypeCodeType } from '../constants';
+import { FactionCodeType, TypeCodeType } from 'constants';
 
 export default class DeckOption {
   public static schema: Realm.ObjectSchema = {

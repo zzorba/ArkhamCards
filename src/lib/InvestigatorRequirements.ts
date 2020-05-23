@@ -1,37 +1,50 @@
-import { filter, map } from 'lodash';
+import { filter, flatMap, forEach, map } from 'lodash';
+import { Brackets } from 'typeorm';
 
 import { DeckMeta } from 'actions/types';
 import Card from 'data/Card';
-import { QueryClause } from 'data/types';
+import { combineQueries, combineQueriesOpt, where } from 'data/query';
 
 
-export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta): QueryClause[] {
+export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta): Brackets | undefined {
   const inverted = filter(investigator.deck_options, opt => !!opt.not);
-  return inverted.length ?
-    `${filter(map(inverted, option => option.toQuery(meta))).join(' AND')} AND ` :
-    [];
+  if (!inverted.length) {
+    return undefined;
+  }
+  const subOptions: Brackets[] = flatMap(inverted, option => option.toQuery(meta) || []);
+  return combineQueriesOpt(subOptions, 'and');
 }
 
 /**
  * Turn the given realm card into a realm-query string.
  */
-export function queryForInvestigator(investigator: Card, meta?: DeckMeta): QueryClause[] {
+export function queryForInvestigator(investigator: Card, meta?: DeckMeta): Brackets {
   const normal = filter(investigator.deck_options, opt => !opt.not);
   // We assume that there is always at least one normalClause.
   const invertedClause = negativeQueryForInvestigator(investigator, meta);
-  const normalClause = filter(map(normal, option => option.toQuery(meta))).join(' OR');
+  const normalParts = flatMap(normal, option => option.toQuery(meta) || []);
+  const mainClause = combineQueriesOpt([
+    ...(invertedClause ? [invertedClause] : []),
+    ...normalParts,
+  ], 'and');
 
-  // Combine the two clauses with an AND to satisfy the logic here.
-  const orParts = [
-    `(${invertedClause}(${normalClause}))`,
-    `(c.restrictions.investigator = '${investigator.code}')`,
-    ...(investigator.alternate_of ? [`(c.restrictions.investigator = '${investigator.alternate_of}')`] : []),
-  ];
-  return [{
-    q: `(${orParts.join(' OR ')})`,
-  }];
+  return combineQueries(
+    where(
+      'c.restrictions.investigator IN (:...values)',
+      {
+        values: [
+          investigator.code,
+          ...(investigator.alternate_of ? [investigator.alternate_of] : []),
+        ],
+      }
+    ),
+    mainClause ? [mainClause] : [],
+    'or'
+  );
 }
 
+
 export default {
+  negativeQueryForInvestigator,
   queryForInvestigator,
 };

@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Brackets } from 'typeorm';
 
-import { QueryClause } from 'data/types';
 import Card from 'data/Card';
 import Database from 'data/Database';
 import DbRender from 'components/data/DbRender';
 import { getTabooSet, AppState } from 'reducers';
 
 interface Props<T> {
-  query: QueryClause[];
-  orQuery?: QueryClause[];
+  query?: Brackets;
   extraArg: T;
   children: (cards: Card[], extraArg: T) => React.ReactNode;
 }
@@ -30,21 +29,21 @@ export default function CardQueryWrapper<T=undefined>(props: Props<T>) {
     };
 
     _getData = async (db: Database): Promise<Data> => {
-      const { query, tabooSetId, orQuery } = this.props;
-      if (!query || !query.length) {
+      const { query, tabooSetId } = this.props;
+      if (!query) {
         return {
           cards: [],
         };
       }
       return {
-        cards:  await db.getCards(query, tabooSetId, undefined, orQuery),
+        cards:  await db.getCards(query, tabooSetId),
       };
     };
 
     render() {
-      const { query, tabooSetId, orQuery } = this.props;
+      const { query, tabooSetId } = this.props;
       return (
-        <DbRender getData={this._getData} id={JSON.stringify({ query, tabooSetId, orQuery })}>
+        <DbRender getData={this._getData} ids={[query, tabooSetId]}>
           { this._render }
         </DbRender>
       )

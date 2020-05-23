@@ -1,4 +1,4 @@
-import { Column } from 'typeorm/browser';
+import { Column } from 'typeorm';
 
 export default class CardRequirement {
   @Column('text', { nullable: true })

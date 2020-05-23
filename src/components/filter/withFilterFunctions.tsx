@@ -10,17 +10,18 @@ import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
+import { Brackets } from 'typeorm';
 import { t, ngettext, msgid } from 'ttag';
 
 import DbRender from 'components/data/DbRender';
 import Database from 'data/Database';
-import { QueryClause } from 'data/types';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import COLORS from 'styles/colors';
 import { filterToQuery, FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
+import { combineQueriesOpt } from 'data/query';
 
 export interface FilterProps {
   componentId: string;
@@ -37,7 +38,7 @@ export interface FilterFunctionProps {
   filterId: string;
   tabooSetId?: number;
   modal?: boolean;
-  baseQuery?: string;
+  baseQuery?: Brackets;
 }
 
 interface Options {
@@ -139,19 +140,6 @@ export default function withFilterFunctions<P>(
       updateFilter(filterId, key, selection);
     };
 
-    dataId() {
-      const {
-        baseQuery,
-        tabooSetId,
-        currentFilters,
-      } = this.props;
-      return JSON.stringify({
-        baseQuery,
-        tabooSetId,
-        currentFilters,
-      });
-    }
-
     async updateCount(db: Database) {
       const {
         baseQuery,
@@ -160,12 +148,14 @@ export default function withFilterFunctions<P>(
         currentFilters,
       } = this.props;
       const filterParts = filterToQuery(currentFilters);
-      const baseClause: QueryClause[] = baseQuery ? [{ q: baseQuery as string }] : []
       const count = await db.getCardCount(
-        [
-          ...baseClause,
-          ...filterParts,
-        ],
+        combineQueriesOpt(
+          [
+            ...(baseQuery ? [baseQuery as Brackets] : []),
+            ...(filterParts ? [filterParts] : []),
+          ],
+          'and'
+        ),
         tabooSetId
       );
       Navigation.mergeOptions(componentId, {
@@ -233,8 +223,20 @@ export default function withFilterFunctions<P>(
     };
 
     render() {
+      const {
+        baseQuery,
+        tabooSetId,
+        currentFilters,
+      } = this.props;
       return (
-        <DbRender getData={this._getData} id={this.dataId()}>
+        <DbRender
+          getData={this._getData}
+          ids={[
+            baseQuery,
+            tabooSetId,
+            currentFilters,
+          ]}
+        >
           { this._renderData }
         </DbRender>
       );

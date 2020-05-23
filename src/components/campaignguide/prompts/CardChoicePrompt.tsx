@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { find, flatMap, keys, map, uniq } from 'lodash';
+import { Brackets } from 'typeorm';
 import { t } from 'ttag';
 
-import { QueryClause } from 'data/types';
 import BasicButton from 'components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
@@ -18,7 +18,7 @@ import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepCon
 import { CardChoiceInput, CardSearchQuery } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { LatestDecks, ProcessedScenario } from 'data/scenario';
-import { PLAYER_CARDS_QUERY } from 'data/query';
+import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from 'data/query';
 import { traitFilter, equalsVectorClause, UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
 import Card from 'data/Card';
 
@@ -88,10 +88,11 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
       component: {
         name: 'Guide.CardSelector',
         passProps: {
-          query: [
-            ...query,
+          query: combineQueries(
             PLAYER_CARDS_QUERY,
-          ],
+            query,
+            'and'
+          ),
           selection: this.state.extraCards,
           onSelect: this._onSelect,
           includeStoryToggle: true,
@@ -188,8 +189,8 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
 
   basicQuery(
     q: CardSearchQuery
-  ): QueryClause[] {
-    const result: QueryClause[] = [
+  ): Brackets[] {
+    const result: Brackets[] = [
       ...(q.trait ? traitFilter([q.trait]) : []),
     ];
     if (q.unique) {
@@ -200,9 +201,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     }
     if (q.exclude_code) {
       const codeParts = map(q.exclude_code, code => `(code != '${code}')`).join(' AND ');
-      result.push({
-        q: `(${codeParts})`,
-      });
+      result.push(where(codeParts));
     }
     return result;
   }
@@ -211,9 +210,11 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     processedScenario: ProcessedScenario,
     investigators: Card[],
     latestDecks: LatestDecks,
-  ): QueryClause[] {
-    const { input: { query } } = this.props;
-    return flatMap(query, q => {
+  ): Brackets | undefined {
+    const {
+      input: { query },
+    } = this.props;
+    const queries = flatMap(query, q => {
       if (q.code) {
         return equalsVectorClause(q.code, 'code');
       }
@@ -236,7 +237,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
           ];
         }
         case 'deck': {
-          const deckCodes = uniq(
+          const deckCodes: string[] = uniq(
             flatMap(investigators, investigator => {
               const deck = latestDecks[investigator.code];
               if (!deck) {
@@ -256,6 +257,10 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
         }
       }
     });
+    return combineQueriesOpt(
+      queries,
+      'and'
+    );
   }
 
   render() {
@@ -268,10 +273,16 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
               const selectedCards = this.lockedCards(scenarioState);
               if (selectedCards === undefined) {
                 const nonDeckButton = this.includeNonDeckSearch(scenarioInvestigators, latestDecks);
+                const queryOpt = this.query(processedScenario, scenarioInvestigators, latestDecks);
                 return (
                   <CardQueryWrapper
-                    query={this.query(processedScenario, scenarioInvestigators, latestDecks)}
-                    orQuery={equalsVectorClause(extraCards, 'code')}
+                    query={combineQueriesOpt(
+                      [
+                        ...(queryOpt ? [queryOpt] : []),
+                        ...equalsVectorClause(extraCards, 'code')
+                      ],
+                      'or'
+                    )}
                     extraArg={nonDeckButton}
                   >
                     { this._renderCards }

@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { forEach } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
+import { Brackets } from 'typeorm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -10,12 +11,10 @@ import {
   Slots,
 } from 'actions/types';
 import Card from 'data/Card';
-import Database from 'data/Database'
 import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
-import { CardFilterData, FilterState, calculateCardFilterData } from 'lib/filters';
-import { addFilterSet, removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode } from 'components/filter/actions';
+import { FilterState } from 'lib/filters';
+import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode } from 'components/filter/actions';
 import { iconsMap } from 'app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -37,7 +36,7 @@ interface ReduxActionProps {
 
 interface OwnProps {
   componentId: string;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   tabooSetOverride?: number;
@@ -250,7 +249,6 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    addFilterSet,
     removeFilterSet,
     clearFilters,
     syncFilterSet,

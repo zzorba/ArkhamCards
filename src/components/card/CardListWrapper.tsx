@@ -1,8 +1,8 @@
 import React from 'react';
-import { map } from 'lodash';
 
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import Card from 'data/Card';
+import { combineQueriesOpt } from 'data/query';
 import { equalsVectorClause } from 'lib/filters';
 
 interface OwnProps<T> {
@@ -21,7 +21,7 @@ export default class CardListWrapper<T> extends React.Component<Props<T>> {
     }
     return (
       <CardQueryWrapper
-        query={equalsVectorClause(cards, 'code')}
+        query={combineQueriesOpt(equalsVectorClause(cards, 'code'), 'and')}
         extraArg={extraArg}
       >
         { children }

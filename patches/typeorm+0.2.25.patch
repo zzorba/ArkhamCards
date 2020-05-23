@@ -1,0 +1,110 @@
+diff --git a/node_modules/typeorm/query-builder/Brackets.d.ts b/node_modules/typeorm/query-builder/Brackets.d.ts
+index a4dc33d..6472347 100644
+--- a/node_modules/typeorm/query-builder/Brackets.d.ts
++++ b/node_modules/typeorm/query-builder/Brackets.d.ts
+@@ -1,9 +1,16 @@
+ import { WhereExpression } from "./WhereExpression";
++export interface BracketOptions {
++    negate?: boolean;
++}
+ /**
+  * Syntax sugar.
+  * Allows to use brackets in WHERE expressions for better syntax.
+  */
+ export declare class Brackets {
++    /**
++     * Signals the brackets to be enclosed with NOT
++     */
++    negate?: boolean;
+     /**
+      * WHERE expression that will be taken into brackets.
+      */
+@@ -11,5 +18,5 @@ export declare class Brackets {
+     /**
+      * Given WHERE query builder that will build a WHERE expression that will be taken into brackets.
+      */
+-    constructor(whereFactory: (qb: WhereExpression) => any);
++    constructor(whereFactory: (qb: WhereExpression) => any, options?: BracketOptions);
+ }
+diff --git a/node_modules/typeorm/query-builder/Brackets.js b/node_modules/typeorm/query-builder/Brackets.js
+index 522ec39..cce64b6 100644
+--- a/node_modules/typeorm/query-builder/Brackets.js
++++ b/node_modules/typeorm/query-builder/Brackets.js
+@@ -1,5 +1,6 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
++exports.Brackets = void 0;
+ /**
+  * Syntax sugar.
+  * Allows to use brackets in WHERE expressions for better syntax.
+@@ -8,11 +9,12 @@ var Brackets = /** @class */ (function () {
+     /**
+      * Given WHERE query builder that will build a WHERE expression that will be taken into brackets.
+      */
+-    function Brackets(whereFactory) {
++    function Brackets(whereFactory, options) {
++        if (options === void 0) { options = {}; }
+         this.whereFactory = whereFactory;
++        this.negate = options.negate;
+     }
+     return Brackets;
+ }());
+ exports.Brackets = Brackets;
+-
+ //# sourceMappingURL=Brackets.js.map
+\ No newline at end of file
+diff --git a/node_modules/typeorm/query-builder/Brackets.js.map b/node_modules/typeorm/query-builder/Brackets.js.map
+index a3c2b80..a8cc8f9 100644
+--- a/node_modules/typeorm/query-builder/Brackets.js.map
++++ b/node_modules/typeorm/query-builder/Brackets.js.map
+@@ -1 +1 @@
+-{"version":3,"sources":["../../src/query-builder/Brackets.ts"],"names":[],"mappings":";;AAEA;;;GAGG;AACH;IAOI;;OAEG;IACH,kBAAY,YAA0C;QAClD,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;IACrC,CAAC;IAEL,eAAC;AAAD,CAdA,AAcC,IAAA;AAdY,4BAAQ","file":"Brackets.js","sourcesContent":["import {WhereExpression} from \"./WhereExpression\";\n\n/**\n * Syntax sugar.\n * Allows to use brackets in WHERE expressions for better syntax.\n */\nexport class Brackets {\n\n    /**\n     * WHERE expression that will be taken into brackets.\n     */\n    whereFactory: (qb: WhereExpression) => any;\n\n    /**\n     * Given WHERE query builder that will build a WHERE expression that will be taken into brackets.\n     */\n    constructor(whereFactory: (qb: WhereExpression) => any) {\n        this.whereFactory = whereFactory;\n    }\n\n}"],"sourceRoot":".."}
+\ No newline at end of file
++{"version":3,"file":"Brackets.js","sourceRoot":"","sources":["../../../../src/query-builder/Brackets.ts"],"names":[],"mappings":";;;AAMA;;;GAGG;AACH;IAWI;;OAEG;IACH,kBAAY,YAA0C,EAAE,OAA4B;QAA5B,wBAAA,EAAA,YAA4B;QAChF,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;QACjC,IAAI,CAAC,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC;IACjC,CAAC;IAEL,eAAC;AAAD,CAAC,AAnBD,IAmBC;AAnBY,4BAAQ"}
+\ No newline at end of file
+diff --git a/node_modules/typeorm/query-builder/QueryBuilder.js b/node_modules/typeorm/query-builder/QueryBuilder.js
+index 46046a7..3be9292 100644
+--- a/node_modules/typeorm/query-builder/QueryBuilder.js
++++ b/node_modules/typeorm/query-builder/QueryBuilder.js
+@@ -1,5 +1,6 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
++exports.QueryBuilder = void 0;
+ var tslib_1 = require("tslib");
+ var QueryExpressionMap_1 = require("./QueryExpressionMap");
+ var Brackets_1 = require("./Brackets");
+@@ -55,7 +56,7 @@ var QueryBuilder = /** @class */ (function () {
+                 throw new Error("Main alias is not set"); // todo: better exception
+             return this.expressionMap.mainAlias.name;
+         },
+-        enumerable: true,
++        enumerable: false,
+         configurable: true
+     });
+     /**
+@@ -535,8 +536,8 @@ var QueryBuilder = /** @class */ (function () {
+      * Creates "WHERE" expression and variables for the given "ids".
+      */
+     QueryBuilder.prototype.createWhereIdsExpression = function (ids) {
+-        var _this = this;
+         var _a;
++        var _this = this;
+         var metadata = this.expressionMap.mainAlias.metadata;
+         var normalized = (Array.isArray(ids) ? ids : [ids]).map(function (id) { return metadata.ensureEntityIdMap(id); });
+         // using in(...ids) for single primary key entities
+@@ -581,7 +582,7 @@ var QueryBuilder = /** @class */ (function () {
+             where.whereFactory(whereQueryBuilder);
+             var whereString = whereQueryBuilder.createWhereExpressionString();
+             this.setParameters(whereQueryBuilder.getParameters());
+-            return whereString ? "(" + whereString + ")" : "";
++            return whereString ? ((where.negate ? "NOT " : "") + "(" + whereString + ")") : "";
+         }
+         else if (where instanceof Function) {
+             return where(this);
+@@ -660,5 +661,4 @@ var QueryBuilder = /** @class */ (function () {
+     return QueryBuilder;
+ }());
+ exports.QueryBuilder = QueryBuilder;
+-
+ //# sourceMappingURL=QueryBuilder.js.map
+\ No newline at end of file

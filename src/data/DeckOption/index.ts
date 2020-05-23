@@ -1,11 +1,14 @@
-import { Column } from 'typeorm/browser';
+import { Column } from 'typeorm';
 import { indexOf, map } from 'lodash';
+import { Brackets } from 'typeorm';
 import { t } from 'ttag';
 
 import { DeckMeta } from 'actions/types';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
-import { FactionCodeType, TypeCodeType } from '../../../constants';
+import { FactionCodeType, TypeCodeType } from 'constants';
+import { equalsVectorClause, factionFilter, slotFilter, traitFilter, rangeFilter } from 'lib/filters';
+import { combineQueriesOpt, where } from 'data/query';
 
 export default class DeckOption {
   @Column('simple-array', { nullable: true })
@@ -65,109 +68,45 @@ export default class DeckOption {
     return !!(this.deck_size_select && this.deck_size_select.length > 0);
   }
 
-  toQuery(meta?: DeckMeta) {
-    let query = this.not ? 'NOT (' : '(';
-    let dirty = false;
-    if (this.faction && this.faction.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      query += ' (';
-      query +=
-        map(this.faction, faction =>
-          ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
-          .join(' OR');
-      query += ' )';
-
-      dirty = true;
-    }
+  private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
     if (this.faction_select && this.faction_select.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      let factions = this.faction_select;
-      if (meta &&
+      if (
+        meta &&
         meta.faction_selected &&
         indexOf(this.faction_select, meta.faction_selected) !== -1
       ) {
         // If we have a deck select ONLY the ones they specified.
         // If not select them all.
-        factions = [meta.faction_selected];
+        return factionFilter([meta.faction_selected]);
       }
-      query += ' (';
-      query +=
-        map(factions, faction =>
-          ` faction_code == '${faction}' OR faction2_code == '${faction}'`)
-          .join(' OR');
-      query += ' )';
+      return factionFilter(this.faction_select);
+    }
+    return [];
+  }
 
-      dirty = true;
+  private textClause(): Brackets[] {
+    if (this.text && this.text.length && (
+      this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
+      this.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
+      this.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror'
+    )) {
+      return [where('c.heals_horror = true')];
     }
-    if (this.slot && this.slot.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      query += ' (';
-      query += map(this.slot, slot => ` slot == '${slot}'`).join(' OR');
-      query += ' )';
-      dirty = true;
-    }
-    if (this.uses && this.uses.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      query += ' (';
-      query += map(this.uses, use => ` uses == '${use}'`).join(' OR');
-      query += ' )';
-      dirty = true;
-    }
-    if (this.text && this.text.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      // No regex so we have to pre-bake these unfortunately.
-      if (this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
-        this.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
-        this.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror') {
-        query += ' (heals_horror == true)';
-        dirty = true;
-      }
-    }
-    if (this.trait && this.trait.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      query += ' (';
-      query +=
-        map(this.trait, trait => ` real_traits_normalized contains '#${trait}#'`)
-          .join(' OR');
-      query += ' )';
-      dirty = true;
-    }
-    if (this.level) {
-      if (dirty) {
-        query += ' AND';
-      }
-      query += ' (';
-      query += ` xp >= ${this.level.min} AND xp <= ${this.level.max}`;
-      query += ' )';
-      dirty = true;
-    }
-    if (this.type_code && this.type_code.length) {
-      if (dirty) {
-        query += ' AND';
-      }
-      query += ' (';
-      query +=
-        map(this.type_code, type => ` type_code = '${type}'`).join(' OR');
-      query += ' )';
-      dirty = true;
-    }
-    query += ' )';
-    if (query === '( )') {
-      return null;
-    }
-    return query;
+    return [];
+  }
+
+  toQuery(meta?: DeckMeta): Brackets | undefined {
+    const clauses: Brackets[] = [
+      ...factionFilter(this.faction || []),
+      ...this.selectedFactionFilter(meta),
+      ...slotFilter(this.slot || []),
+      ...equalsVectorClause(this.uses || [], 'uses'),
+      ...this.textClause(),
+      ...traitFilter(this.trait || []),
+      ...(this.level ? rangeFilter('xp', [this.level.min, this.level.max], true) : []),
+      ...equalsVectorClause(this.type_code || [], 'type_code')
+    ];
+    return combineQueriesOpt(clauses, 'and', !!this.not);
   }
 
   static parseList(jsonList: any[]): DeckOption[] {

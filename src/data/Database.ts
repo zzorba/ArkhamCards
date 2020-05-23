@@ -1,12 +1,12 @@
 import { findIndex, forEach } from 'lodash';
-import { createConnection, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm/browser';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm';
 
 import Card from './Card';
 import EncounterSet from './EncounterSet';
 import FaqEntry from './FaqEntry';
 import TabooSet from './TabooSet'
 import { QueryClause, QuerySort } from './types';
-import { tabooSetQuery } from './query';
+import { tabooSetQuery, combineQueries } from './query';
 
 export default class Database {
   connectionP: Promise<Connection>;
@@ -71,7 +71,7 @@ export default class Database {
   }
 
   async getCards(
-    query: QueryClause[],
+    query?: Brackets,
     tabooSetId?: number,
     sort?: QuerySort[],
     orQuery?: QueryClause[],
@@ -81,7 +81,7 @@ export default class Database {
   }
 
   async getCard(
-    query: QueryClause[],
+    query?: Brackets,
     tabooSetId?: number,
     sort?: QuerySort[],
   ): Promise<Card | undefined> {
@@ -90,43 +90,31 @@ export default class Database {
   }
 
   async getCardCount(
-    query: QueryClause[],
-    tabooSetId?: number
+    query?: Brackets,
+    tabooSetId?: number,
   ): Promise<number> {
     const cardsQuery = await this.applyCardsQuery(query, tabooSetId);
     return await cardsQuery.getCount();
   }
 
-
-private async applyCardsQuery(
-  query: QueryClause[],
-  tabooSetId?: number,
-  sort?: QuerySort[],
-  orQuery?: QueryClause[]
-): Promise<SelectQueryBuilder<Card>> {
-  let cardsQuery = await this.cardsQuery();
-  if (query.length) {
-    const [firstQuery, ...restQueries] = query;
-    cardsQuery = cardsQuery.where(firstQuery.q, firstQuery.params);
-    forEach(restQueries, ({ q, params}) => {
-      cardsQuery = cardsQuery.andWhere(q, params);
-    });
-    cardsQuery = cardsQuery.andWhere(tabooSetQuery(tabooSetId));
-  }
-  if (orQuery && orQuery.length) {
-    cardsQuery = cardsQuery.orWhere(tabooSetQuery(tabooSetId));
-    forEach(orQuery, ({ q, params}) => {
-      cardsQuery = cardsQuery.andWhere(q, params);
-    });
-  }
-  if (sort && sort.length) {
-    const [firstSort, ...restSorts] = sort;
-    cardsQuery = cardsQuery.orderBy(firstSort.s, firstSort.direction);
-    forEach(restSorts, ({ s, direction }) => {
-      cardsQuery = cardsQuery.addOrderBy(s, direction);
-    });
-  }
-  return cardsQuery;
+  private async applyCardsQuery(
+    query?: Brackets,
+    tabooSetId?: number,
+    sort?: QuerySort[]
+  ): Promise<SelectQueryBuilder<Card>> {
+    let cardsQuery = await this.cardsQuery();
+    cardsQuery.where(tabooSetQuery(tabooSetId));
+    if (query) {
+      cardsQuery = cardsQuery.andWhere(query);
+    }
+    if (sort && sort.length) {
+      const [firstSort, ...restSorts] = sort;
+      cardsQuery = cardsQuery.orderBy(firstSort.s, firstSort.direction);
+      forEach(restSorts, ({ s, direction }) => {
+        cardsQuery = cardsQuery.addOrderBy(s, direction);
+      });
+    }
+    return cardsQuery;
 }
 
 }

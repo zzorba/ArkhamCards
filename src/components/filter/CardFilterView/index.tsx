@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { SelectQueryBuilder } from 'typeorm/browser';
+import { SelectQueryBuilder } from 'typeorm';
 import { t } from 'ttag';
 
 import Card from 'data/Card';
@@ -29,7 +29,6 @@ import space from 'styles/space';
 interface ReduxProps {
   allPacks: Pack[];
 }
-
 
 interface OwnProps {
   cardData: CardFilterData;

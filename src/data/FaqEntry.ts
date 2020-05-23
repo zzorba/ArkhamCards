@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity('faq_entry')
 export default class FaqEntry {

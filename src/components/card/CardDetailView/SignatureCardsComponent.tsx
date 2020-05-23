@@ -12,6 +12,7 @@ import Database from 'data/Database';
 import DbRender from 'components/data/DbRender';
 import SignatureCardItem from './SignatureCardItem';
 import Card from 'data/Card';
+import { where } from 'data/query';
 import { getTabooSet, AppState } from 'reducers';
 import space, { m, s } from 'styles/space';
 
@@ -109,11 +110,9 @@ class SignatureCardsComponent extends React.Component<Props> {
     const requiredQuery = map(card_requirements || [], req => {
       return `c.code = '${req.code}'`;
     }).join(' OR ');
-    const cardsQuery = await db.cardsQuery();
-
     const requiredCards = requiredQuery ?
       await db.getCards(
-        [{ q: requiredQuery }],
+        where(requiredQuery),
         tabooSetId
       ) : [];
 
@@ -123,7 +122,7 @@ class SignatureCardsComponent extends React.Component<Props> {
 
     const alternateCards = alternateQuery ?
       await  db.getCards(
-        [{ q: alternateQuery }],
+        where(alternateQuery),
         tabooSetId
       ) : [];
 
@@ -136,7 +135,7 @@ class SignatureCardsComponent extends React.Component<Props> {
   render() {
     const { investigator } = this.props;
     return (
-      <DbRender getData={this._getSignatureCards} id={investigator.id}>
+      <DbRender getData={this._getSignatureCards} ids={[investigator.id]}>
         { this._render }
       </DbRender>
     );

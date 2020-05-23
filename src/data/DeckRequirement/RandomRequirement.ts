@@ -1,4 +1,4 @@
-import { Column } from 'typeorm/browser';
+import { Column } from 'typeorm';
 
 export default class RandomRequirement {
   @Column('text', { nullable: true })

@@ -1,11 +1,13 @@
 import React from 'react';
+import { Brackets } from 'typeorm';
 
 import CardSearchComponent from '../cardlist/CardSearchComponent';
 import { NavigationProps } from 'components/nav/types';
+import { combineQueries, where } from 'data/query';
 
 export interface PackCardsProps {
   pack_code: string;
-  baseQuery?: string;
+  baseQuery?: Brackets;
 }
 
 type Props = NavigationProps & PackCardsProps;
@@ -15,16 +17,15 @@ export default function PackCardsView({
   pack_code,
   baseQuery,
 }: Props) {
-  const parts: string[] = [];
-  if (baseQuery) {
-    parts.push(baseQuery);
-  }
-  parts.push(`pack_code = '${pack_code}'`);
 
   return (
     <CardSearchComponent
       componentId={componentId}
-      baseQuery={parts.join(' and ')}
+      baseQuery={combineQueries(
+        where(`c.pack_code = '${pack_code}'`),
+        baseQuery ? [baseQuery] : [],
+        'and'
+      )}
       showNonCollection
     />
   );

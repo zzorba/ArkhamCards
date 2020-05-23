@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
+import { Brackets } from 'typeorm';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
@@ -23,7 +24,7 @@ interface Props {
   setCycleChecked?: (cycle_position: number, checked: boolean) => void;
   checked?: boolean;
   whiteBackground?: boolean;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   compact?: boolean;
   nameOverride?: string;
 }

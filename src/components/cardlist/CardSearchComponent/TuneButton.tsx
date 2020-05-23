@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
+import { Brackets } from 'typeorm';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
@@ -21,7 +22,7 @@ const SIZE = 36;
 interface OwnProps {
   filterId: string;
   lightButton?: boolean;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   modal?: boolean;
 }
 
@@ -95,7 +96,7 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
     };
   }
   return {
-    filters: filterToQuery(filters).length > 0,
+    filters: !!filterToQuery(filters),
     cardData,
   };
 }

@@ -12,6 +12,7 @@ import Database from 'data/Database';
 import DbRender from 'components/data/DbRender';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from 'data/Card';
+import { where } from 'data/query';
 import { getTabooSet, AppState } from 'reducers';
 import { m, s } from 'styles/space';
 
@@ -40,10 +41,7 @@ class BondedCardsComponent extends React.Component<Props> {
       return [];
     }
     return await db.getCards(
-      [{
-        q: '(c.real_name = :bonded_name)',
-        params:  { bonded_name: card.bonded_name },
-      }],
+      where('c.real_name = :bonded_name', { bonded_name: card.bonded_name }),
       tabooSetId
     );
   }
@@ -54,10 +52,7 @@ class BondedCardsComponent extends React.Component<Props> {
       return [];
     }
     return await db.getCards(
-      [{
-        q: '(c.bonded_name == :real_name)',
-        params: { real_name: card.real_name },
-      }],
+      where('c.bonded_name == :real_name', { real_name: card.real_name }),
       tabooSetId
     );
   }
@@ -129,7 +124,7 @@ class BondedCardsComponent extends React.Component<Props> {
       card,
     } = this.props;
     return (
-      <DbRender getData={this._getBondedCards} id={card ? card.id : 'id'}>
+      <DbRender getData={this._getBondedCards} ids={card ? [card.id] : []}>
         { this._render }
       </DbRender>
     );

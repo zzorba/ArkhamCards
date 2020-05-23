@@ -3,7 +3,7 @@ import { map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import Card from 'data/Card';
-import { BASIC_WEAKNESS_QUERY } from 'data/query';
+import { BASIC_WEAKNESS_QUERY, combineQueries } from 'data/query';
 import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import SelectWeaknessTraitsComponent from './SelectWeaknessTraitsComponent';
 import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
@@ -94,10 +94,11 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
     if (!useAppDecision) {
       return (
         <CardQueryWrapper
-          query={[
+          query={combineQueries(
             BASIC_WEAKNESS_QUERY,
-            ...traitFilter(effect.weakness_traits),
-          ]}
+            traitFilter(effect.weakness_traits),
+            'and'
+          )}
           extraArg={investigators}
         >
           { this._renderCardChoice }

@@ -1,4 +1,4 @@
-import { Column } from 'typeorm/browser';
+import { Column } from 'typeorm';
 import { keys, min } from 'lodash';
 
 export default class CardRestriction {

@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity('taboo_set')
 export default class TabooSet {

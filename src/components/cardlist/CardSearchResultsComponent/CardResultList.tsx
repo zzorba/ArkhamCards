@@ -25,7 +25,7 @@ import {
   NativeScrollEvent,
   SectionListData,
 } from 'react-native';
-import { SelectQueryBuilder } from 'typeorm/browser';
+import { Brackets } from 'typeorm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
@@ -53,7 +53,8 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import { QueryClause, QuerySort } from 'data/types';
+import { QuerySort } from 'data/types';
+import { combineQueries, combineQueriesOpt, where } from 'data/query';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from 'reducers';
 import Card from 'data/Card';
 import { showCard, showCardSwipe } from 'components/nav/helper';
@@ -78,9 +79,9 @@ function funLoadingMessages() {
 interface OwnProps {
   componentId: string;
   fontScale: number;
-  query?: QueryClause[];
-  filterQuery?: QueryClause[];
-  termQuery?: QueryClause;
+  query: Brackets;
+  filterQuery?: Brackets;
+  termQuery?: Brackets;
   searchTerm?: string;
   sort?: SortType;
   investigator?: Card;
@@ -115,20 +116,24 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  addFilterSet: (id: string, filters: FilterState, cardData: CardFilterData, sort?: SortType, mythosToggle?: boolean) => void;
+  addFilterSet: (
+    id: string,
+    filters: FilterState,
+    cardData: CardFilterData,
+    sort?: SortType,
+    mythosToggle?: boolean
+  ) => void;
 }
 
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 interface DbState {
-  resultsKey: string;
   deckSections: CardBucket[];
   cards: Card[];
 }
 
 interface LiveState {
   deckSections: CardBucket[];
-  resultsKey: string;
   cards: CardBucket[];
   cardsCount: number;
   spoilerCards: CardBucket[];
@@ -468,19 +473,6 @@ class CardResultList extends React.Component<Props, State> {
     return results;
   }
 
-  resultsKey() {
-    const {
-      query,
-      termQuery,
-      sort,
-    } = this.props;
-    return JSON.stringify({
-      query,
-      termQuery,
-      sort: sort || SORT_BY_TYPE,
-    });
-  }
-
   async deckSections(db: Database): Promise<CardBucket[]> {
     const {
       originalDeckSlots,
@@ -505,62 +497,62 @@ class CardResultList extends React.Component<Props, State> {
       return this.bucketCards([], 'deck');
     }
     const deckCards: Card[] = await db.getCards(
-      [
-        { q: `(${deckQuery})` },
-        ...(storyOnly && query) || [],
-        ...filterQuery || [],
-        ...(termQuery ? [termQuery] : []),
-      ],
+      combineQueries(
+        where(deckQuery),
+        [
+          ...(storyOnly && query ? [query] : []),
+          ...(filterQuery ? [filterQuery] : []),
+          ...(termQuery ? [termQuery] : []),
+        ],
+        'and'
+      ),
       tabooSetId,
       this.getSort()
     );
     return this.bucketCards(deckCards, 'deck');
   }
 
-  async getCards(db: Database, queryClause?: QueryClause[]): Promise<Card[]> {
-    const {
-      tabooSetId,
-      termQuery,
-    } = this.props;
-    return await db.getCards(
-      [
-        ...(queryClause || []),
-        ...(termQuery ? [termQuery] : []),
-      ],
-      tabooSetId,
-      this.getSort()
-    );
-  }
-
   _updateResults = async (db: Database): Promise<DbState> => {
     const {
       componentId,
       query,
-      show_spoilers,
       addFilterSet,
       mythosToggle,
       initialSort,
+      tabooSetId,
+      termQuery,
+      filterQuery,
     } = this.props;
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
-    const resultsKey = this.resultsKey();
-    const cards: Card[] = await this.getCards(db, query);
+    const cards: Card[] = await db.getCards(
+      combineQueries(
+        query,
+        [
+          ...(filterQuery ? [filterQuery] : []),
+          ...(termQuery ? [termQuery] : []),
+        ],
+        'and'
+      ),
+      tabooSetId,
+      this.getSort()
+    );
     const deckSections = await this.deckSections(db);
 
     if (!this.filterSetInitialized) {
       this.filterSetInitialized = true;
+      console.log(`Registering filter set: ${initialSort}`);
       addFilterSet(
         componentId,
         calculateDefaultFilterState(cards),
         calculateCardFilterData(cards),
-        initialSort,
+        initialSort || SORT_BY_TYPE,
         mythosToggle
       );
     }
 
     return {
-      resultsKey,
       cards,
       deckSections,
     };
@@ -699,7 +691,7 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  renderEmptyState(liveState: LiveState) {
+  renderEmptyState(liveState: LiveState, refreshing?: boolean) {
     const {
       searchTerm,
     } = this.props;
@@ -707,7 +699,7 @@ class CardResultList extends React.Component<Props, State> {
       cardsCount,
       spoilerCardsCount,
     } = liveState;
-    if (!this.isLoading(liveState) && (cardsCount + spoilerCardsCount) === 0) {
+    if (!refreshing && (cardsCount + spoilerCardsCount) === 0) {
       return (
         <View>
           <View style={styles.emptyText}>
@@ -724,7 +716,7 @@ class CardResultList extends React.Component<Props, State> {
     return this.props.expandSearchControls;
   }
 
-  _renderFooter = (liveState: LiveState) => {
+  _renderFooter = (liveState: LiveState, refreshing?: boolean) => {
     const { spoilerCardsCount } = liveState;
     const {
       showSpoilerCards,
@@ -732,7 +724,7 @@ class CardResultList extends React.Component<Props, State> {
     if (!spoilerCardsCount) {
       return (
         <View style={styles.footer}>
-          { this.renderEmptyState(liveState) }
+          { this.renderEmptyState(liveState, refreshing) }
         </View>
       );
     }
@@ -743,7 +735,7 @@ class CardResultList extends React.Component<Props, State> {
             onPress={this._editSpoilerSettings}
             title={t`Edit Spoiler Settings`}
           />
-          { this.renderEmptyState(liveState) }
+          { this.renderEmptyState(liveState, refreshing) }
         </View>
       );
     }
@@ -758,7 +750,7 @@ class CardResultList extends React.Component<Props, State> {
           onPress={this._editSpoilerSettings}
           title={t`Edit Spoiler Settings`}
         />
-        { this.renderEmptyState(liveState) }
+        { this.renderEmptyState(liveState, refreshing) }
       </View>
     );
   };
@@ -792,11 +784,7 @@ class CardResultList extends React.Component<Props, State> {
     return concat(startCards, spoilerCards);
   }
 
-  isLoading({ resultsKey }: { resultsKey: string }) {
-    return resultsKey !== this.resultsKey();
-  }
-
-  _renderResults = (dbState?: DbState) => {
+  _renderResults = (dbState?: DbState, refreshing?: boolean) => {
     const {
       sort,
       fontScale,
@@ -806,7 +794,7 @@ class CardResultList extends React.Component<Props, State> {
       loadingMessage,
     } = this.state;
 
-    if (!dbState || this.isLoading(dbState)) {
+    if (!dbState || refreshing) {
       return (
         <View style={styles.loading}>
           <View style={styles.loadingText}>
@@ -822,7 +810,7 @@ class CardResultList extends React.Component<Props, State> {
         </View>
       );
     }
-    const { resultsKey, cards, deckSections } = dbState;
+    const { cards, deckSections } = dbState;
     const groupedCards = partition(
       cards,
       card => {
@@ -831,7 +819,6 @@ class CardResultList extends React.Component<Props, State> {
       });
 
     const liveState: LiveState = {
-      resultsKey,
       deckSections,
       cards: this.bucketCards(groupedCards[0], 'cards'),
       cardsCount: groupedCards[0].length,
@@ -883,7 +870,7 @@ class CardResultList extends React.Component<Props, State> {
         keyExtractor={this._cardToKey}
         extraData={this.state.deckCardCounts}
         getItemLayout={getItemLayout}
-        ListFooterComponent={this._renderFooter(liveState)}
+        ListFooterComponent={this._renderFooter(liveState, refreshing)}
         stickySectionHeadersEnabled={stickyHeaders}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
@@ -893,10 +880,16 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   render() {
+    const {
+      query,
+      filterQuery,
+      termQuery,
+      sort,
+    } = this.props;
     return (
       <DbRender
         getData={this._updateResults}
-        id={this.resultsKey()}
+        ids={[query, filterQuery, termQuery, sort]}
       >
         { this._renderResults }
       </DbRender>

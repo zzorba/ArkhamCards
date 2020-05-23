@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Brackets } from 'typeorm';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -13,12 +14,11 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import { QueryClause } from 'data/types';
 import CardSearchBox from './CardSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
 import { FilterState, filterToQuery } from 'lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from 'data/query';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from 'data/query';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import space from 'styles/space';
@@ -27,7 +27,7 @@ import COLORS from 'styles/colors';
 interface Props {
   componentId: string;
   fontScale: number;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   selectedSort?: SortType;
@@ -55,9 +55,58 @@ interface State {
   searchFlavor: boolean;
   searchBack: boolean;
   searchTerm: string;
+  termQuery: Brackets | undefined;
+
+  baseQuery?: Brackets;
+  filters?: FilterState;
+  query: Brackets;
+  filterQuery: Brackets | undefined;
 }
 
 export default class CardSearchResultsComponent extends React.Component<Props, State> {
+  static query({
+    baseQuery,
+    mythosToggle,
+    selectedSort,
+    mythosMode,
+  }: Props): Brackets {
+    const queryParts: Brackets[] = [];
+    if (mythosToggle) {
+      if (mythosMode) {
+        queryParts.push(MYTHOS_CARDS_QUERY);
+      } else {
+        queryParts.push(PLAYER_CARDS_QUERY);
+      }
+    }
+    if (baseQuery) {
+      queryParts.push(baseQuery);
+    }
+    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
+      queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
+    }
+    return combineQueries(
+      where('c.altArtInvestigator != true AND c.back_linked is null'),
+      queryParts,
+      'and'
+    );
+  }
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    const {
+      baseQuery,
+      filters,
+    } = props;
+    if (baseQuery !== state.baseQuery || filters !== state.filters) {
+      return {
+        baseQuery,
+        query: CardSearchResultsComponent.query(props),
+        filters,
+        filterQuery: filters && filterToQuery(filters),
+      };
+    }
+    return null;
+  }
+
   constructor(props: Props) {
     super(props);
 
@@ -67,6 +116,11 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchFlavor: false,
       searchBack: false,
       searchTerm: '',
+      termQuery: undefined,
+      baseQuery: props.baseQuery,
+      query: CardSearchResultsComponent.query(props),
+      filters: props.filters,
+      filterQuery: props.filters && filterToQuery(props.filters),
     };
   }
 
@@ -93,32 +147,32 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
   _toggleSearchText = () => {
     this.setState({
       searchText: !this.state.searchText,
-    });
+    }, this._updateTermQuery);
   };
 
   _toggleSearchFlavor = () => {
     this.setState({
       searchFlavor: !this.state.searchFlavor,
-    });
+    }, this._updateTermQuery);
   };
 
   _toggleSearchBack = () => {
     this.setState({
       searchBack: !this.state.searchBack,
-    });
+    }, this._updateTermQuery);
   };
 
   _searchUpdated = (text: string) => {
     this.setState({
       searchTerm: text,
-    });
+    }, this._updateTermQuery);
   };
 
   _clearSearchTerm = () => {
     this._searchUpdated('');
   };
 
-  termQuery(): QueryClause | undefined {
+  _updateTermQuery = () => {
     const {
       searchTerm,
       searchText,
@@ -160,59 +214,18 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       }
     }
     const lang = 'en';
-    const query = {
-      q: `(${parts.join(' OR ')})`,
-      params: {
-        searchTerm: `%${searchTerm
-          .replace(/[\u2018\u2019]/g, '\'')
-          .replace(/[\u201C\u201D]/g, '"')
-          .toLocaleUpperCase(lang)}%`,
-      },
-    };
-    console.log(JSON.stringify(query));
-    return query;
-  }
-
-  filterQueryParts(): QueryClause[] {
-    const {
-      filters,
-    } = this.props;
-    if (filters) {
-      return filterToQuery(filters);
-    }
-    return [];
-  }
-
-  query(): QueryClause[] {
-    const {
-      baseQuery,
-      mythosToggle,
-      selectedSort,
-      mythosMode,
-    } = this.props;
-    const queryParts: QueryClause[] = [];
-    if (mythosToggle) {
-      if (mythosMode) {
-        queryParts.push(MYTHOS_CARDS_QUERY);
-      } else {
-        queryParts.push(PLAYER_CARDS_QUERY);
-      }
-    }
-    if (baseQuery) {
-      queryParts.push({ q: baseQuery });
-    }
-    queryParts.push({ q: '(not c.altArtInvestigator)' });
-    queryParts.push({ q: '(c.back_linked is null)' });
-    forEach(
-      this.filterQueryParts(),
-      clause => queryParts.push(clause)
-    );
-
-    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push({ q: `(c.encounter_code is not null OR linked_card.encounter_code is not null)` });
-    }
-    return queryParts;
-  }
+    this.setState({
+      termQuery: where(
+        parts.join(' OR '),
+        {
+          searchTerm: `%${searchTerm
+            .replace(/[\u2018\u2019]/g, '\'')
+            .replace(/[\u201C\u201D]/g, '"')
+            .toLocaleUpperCase(lang)}%`,
+        },
+      ),
+    });
+  };
 
   renderHeader() {
     const {
@@ -243,7 +256,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       clearSearchFilters,
       mythosMode,
     } = this.props;
-    const hasFilters = this.filterQueryParts().length > 0;
+    const hasFilters = !!this.state.filterQuery;
     if (!mythosToggle && !hasFilters) {
       return null;
     }
@@ -323,6 +336,9 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     } = this.props;
     const {
       searchTerm,
+      query,
+      filterQuery,
+      termQuery,
     } = this.state;
     return (
       <View style={styles.wrapper}>
@@ -332,9 +348,9 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             componentId={componentId}
             fontScale={fontScale}
             tabooSetOverride={tabooSetOverride}
-            query={this.query()}
-            filterQuery={this.filterQueryParts()}
-            termQuery={this.termQuery()}
+            query={query}
+            filterQuery={filterQuery}
+            termQuery={termQuery}
             searchTerm={searchTerm}
             sort={selectedSort}
             investigator={investigator}

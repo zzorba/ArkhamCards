@@ -77,7 +77,8 @@
     "rn-fetch-blob": "0.12.0",
     "simple-markdown": "0.7.2",
     "ttag": "1.7.22",
-    "typeorm": "^0.2.24",
+    "typeorm": "0.2.25",
+    "url": "0.11.0",
     "utility-types": "3.10.0",
     "victory-native": "34.1.0",
     "yarn": "1.22.0"

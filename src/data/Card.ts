@@ -1,4 +1,4 @@
-import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm';
 import { forEach, filter, keys, map } from 'lodash';
 import { t } from 'ttag';
 

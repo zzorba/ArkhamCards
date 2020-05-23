@@ -1,19 +1,20 @@
 import React from 'react';
-import { debounce } from 'lodash';
+import { debounce, difference } from 'lodash';
 import { EventSubscriber, EntitySubscriberInterface } from 'typeorm';
 
 import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 
 interface Props<T> {
-  id: string;
+  ids: any[];
   extraProps?: any;
   getData: (db: Database, extraProps?: any) => Promise<T>;
-  children: (t?: T) => React.ReactNode;
+  children: (t?: T, refreshing?: boolean) => React.ReactNode | null;
 }
 
 interface State<T> {
   data?: T;
+  dataIds: any[];
 }
 
 @EventSubscriber()
@@ -21,50 +22,40 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> imp
   static contextType = DatabaseContext;
   context!: DatabaseContextType;
 
-  _delayedLoadData: () => void;
-
   constructor(props: Props<T>, context: DatabaseContextType) {
     super(props, context);
 
-    this.state = {};
+    this.state = {
+      dataIds: [],
+    };
 
     this._loadData(context);
-    this._delayedLoadData = debounce(this._loadData, 250);
   }
 
   componentDidUpdate(prevProps: Props<T>) {
-    if (this.props.id !== prevProps.id) {
-      this._delayedLoadData();
+    const diff = difference(this.props.ids, prevProps.ids);
+    if (diff.length) {
+      this._loadData(this.context);
     }
   }
 
-  componentDidMount() {
-//    this.context.db.addSubscriber(this);
-  }
-
-  componentWillUnmount() {
-//    this.context.db.removeSubscriber(this);
-  }
-
-  afterInsert() {
-    this._delayedLoadData();
-  }
-
-  afterUpdate() {
-    this._delayedLoadData();
-  }
-
   _loadData = (context?: DatabaseContextType) => {
+    const {
+      getData,
+      ids,
+    } = this.props;
     const db = (context || this.context).db;
-    this.props.getData(db).then(data => {
+    getData(db).then(data => {
       this.setState({
         data,
+        dataIds: ids,
       });
     });
   };
 
   render() {
-    const { children } = this.props;
-    return children(this.state.data);
+    const { children, ids } = this.props;
+    const { data, dataIds } = this.state;
+    return children(data,  difference(ids, dataIds).length > 0);
   }
 }

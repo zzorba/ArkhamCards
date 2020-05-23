@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { forEach, keys, map, uniqBy } from 'lodash';
+import { Brackets } from 'typeorm';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -10,10 +11,10 @@ import CardToggleRow from 'components/cardlist/CardSelectorComponent/CardToggleR
 import { NavigationProps } from 'components/nav/types';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import Card from 'data/Card';
-import { QueryClause } from 'data/types';
+import { combineQueries, where } from 'data/query';
 
 export interface CardSelectorProps {
-  query: QueryClause[];
+  query?: Brackets;
   selection: string[];
   onSelect: (cards: string[]) => void;
   includeStoryToggle: boolean;
@@ -100,7 +101,11 @@ class CardSelectorView extends React.Component<Props, State> {
           section={{ title: t`Story assets` }}
         />
         <CardQueryWrapper
-          query={[...query, { q: 'c.encounter_code is not null' }]}
+          query={combineQueries(
+            where('c.encounter_code is not null'),
+            query ? [query] : [],
+            'and'
+          )}
           extraArg={undefined}
         >
           { this._render }
@@ -114,7 +119,11 @@ class CardSelectorView extends React.Component<Props, State> {
     return (
       <ScrollView>
         <CardQueryWrapper
-          query={[ ...query, { q: 'c.encounter_code is null' }]}
+          query={combineQueries(
+            where('c.encounter_code is null'),
+            query ? [query] : [],
+            'and'
+          )}
           extraArg={undefined}
         >
           {this._render}

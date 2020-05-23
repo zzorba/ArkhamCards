@@ -1,4 +1,4 @@
-import { Column } from 'typeorm/browser';
+import { Column } from 'typeorm';
 import { filter, keys, map } from 'lodash';
 
 import CardRequirement from './CardRequirement';
