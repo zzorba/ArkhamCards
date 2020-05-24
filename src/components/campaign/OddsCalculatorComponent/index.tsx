@@ -33,7 +33,7 @@ interface Props {
   cycleScenarios?: Scenario[];
   scenarioByCode?: { [code: string]: Scenario };
   allInvestigators: Card[];
-  scenarioCards?: Results<Card>;
+  scenarioCards?: Card[];
 }
 
 interface State {

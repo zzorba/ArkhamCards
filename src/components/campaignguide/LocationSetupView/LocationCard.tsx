@@ -54,9 +54,9 @@ export default class LocationCard extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={code.replace('_back', '')}
-        extraArg={code.indexOf('_back') !== -1}
+        type="encounter"
       >
-        { this._renderCard }
+        { (card: Card) => this._renderCard(card, code.indexOf('_back') !== -1) }
       </SingleCardWrapper>
     );
   }

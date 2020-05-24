@@ -137,8 +137,8 @@ export default class RandomLocationInputComponent extends React.Component<Props,
     return (
       <View style={styles.container}>
         <CardListWrapper
-          cards={input.cards}
-          extraArg={undefined}
+          type="encounter"
+          codes={input.cards}
         >
           { this._renderCards }
         </CardListWrapper>

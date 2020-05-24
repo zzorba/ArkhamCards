@@ -3,7 +3,7 @@ import { Brackets } from 'typeorm/browser';
 import deepDiff from 'deep-diff';
 
 interface Props<T> {
-  getQuery: (props: Exclude<T, Props<T>>) => Brackets | undefined;
+  getQuery: (props: T) => Brackets | undefined;
   children: (query?: Brackets) => React.ReactNode | null;
 }
 
@@ -43,6 +43,7 @@ export default class QueryProvider<T> extends React.PureComponent<Props<T> & T, 
 
   render() {
     const { query } = this.state;
+    // @ts-ignore
     return this.props.children(query);
   }
 }

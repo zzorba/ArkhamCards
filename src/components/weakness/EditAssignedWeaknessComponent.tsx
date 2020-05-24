@@ -8,7 +8,7 @@ import { showCard } from 'components/nav/helper';
 import { t } from 'ttag';
 import { Slots, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
-import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import CardSearchResult from '../cardlist/CardSearchResult';
 
 interface OwnProps {
@@ -18,7 +18,7 @@ interface OwnProps {
   updateAssignedCards: (assignedCards: Slots) => void;
 }
 
-type Props = OwnProps & WeaknessCardProps;
+type Props = OwnProps & PlayerCardProps;
 
 class EditAssignedWeaknessComponent extends React.Component<Props> {
   static get options() {
@@ -37,12 +37,13 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
         assignedCards,
       },
       updateAssignedCards,
-      cardsMap,
+      cards,
     } = this.props;
-    const newAssignedCards = Object.assign(
-      {},
-      assignedCards,
-      { [code]: (cardsMap[code].quantity || 1) - count });
+    const card = cards[code];
+    const newAssignedCards = {
+      ...assignedCards,
+      [code]: (card && card.quantity || 1) - count,
+    };
     updateAssignedCards(newAssignedCards);
   };
 
@@ -81,6 +82,6 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
   }
 }
 
-export default withWeaknessCards<OwnProps>(
+export default withPlayerCards<OwnProps>(
   EditAssignedWeaknessComponent
 );

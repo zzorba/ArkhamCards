@@ -253,10 +253,10 @@ export const getFaqEntry = async function(db: Database, code: string) {
   const lastModified = response.headers.get('Last-Modified') || undefined;
   const json = await response.json();
   if (json.length) {
-    faqs.insert(FaqEntry.fromJson(json[0], lastModified));
+    faqs.save(FaqEntry.fromJson(code, json[0], lastModified), );
     return true;
   }
-  faqs.insert(FaqEntry.empty(code, lastModified));
+  faqs.save(FaqEntry.empty(code, lastModified));
   return false;
 };
 

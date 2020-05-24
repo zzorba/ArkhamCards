@@ -57,7 +57,7 @@ class TabooSetPicker extends React.Component<Props> {
         selectedIndex={selectedIndex}
         choices={map(tabooSets, set => {
           return {
-            text: format(Date.parse(set.date_start), 'LLL d, yyyy'),
+            text: set.date_start ? format(Date.parse(set.date_start), 'LLL d, yyyy') : 'Unknown',
           };
         })}
         colors={{

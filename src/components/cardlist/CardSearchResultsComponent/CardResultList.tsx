@@ -492,11 +492,10 @@ class CardResultList extends React.Component<Props, State> {
       uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0));
-    const deckQuery = map(codes, code => `code = '${code}'`).join(' OR ');
+    const deckQuery = map(codes, code => `c.code = '${code}'`).join(' OR ');
     if (!deckQuery) {
       return this.bucketCards([], 'deck');
     }
-    return this.bucketCards([], 'deck');
     const deckCards: Card[] = await db.getCards(
       combineQueries(
         where(deckQuery),

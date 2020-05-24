@@ -12,12 +12,15 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
+  static SCHEMA_VERSION: number = 2;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
   listeners: DatabaseListener[] = [];
 
-  constructor() {
+  constructor(latestVersion?: number) {
+    const recreate = !latestVersion || latestVersion < Database.SCHEMA_VERSION;
+
     this.connectionP = createConnection({
       type: 'react-native',
       database: 'arkham4',
@@ -27,8 +30,8 @@ export default class Database {
         // 'query',
         'schema',
       ],
-      //dropSchema: true,
-      synchronize: true,
+      dropSchema: recreate,
+      synchronize: recreate,
       //migrations:['migrations/migration.js'],
       entities: [
         Card,

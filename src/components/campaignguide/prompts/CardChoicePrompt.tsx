@@ -291,18 +291,19 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
                       ],
                       'or'
                     )}
-                    extraArg={nonDeckButton}
                   >
-                    { this._renderCards }
+                    { (cards: Card[]) => (
+                      this._renderCards(cards, nonDeckButton)
+                    ) }
                   </CardQueryWrapper>
                 );
               }
               return (
                 <CardListWrapper
-                  cards={selectedCards}
-                  extraArg={false}
+                  codes={selectedCards}
+                  type="encounter"
                 >
-                  { this._renderCards }
+                  { (cards: Card[]) => this._renderCards(cards, false) }
                 </CardListWrapper>
               );
             } }

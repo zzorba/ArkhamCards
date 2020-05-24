@@ -5,14 +5,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Results } from 'realm';
 
 import { t } from 'ttag';
 import { WeaknessSet } from 'actions/types';
 import typography from 'styles/typography';
 import Card from 'data/Card';
 import NavButton from 'components/core/NavButton';
-import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 
 interface OwnProps {
   fontScale: number;
@@ -20,10 +19,10 @@ interface OwnProps {
   showDrawDialog: () => void;
 }
 
-type Props = OwnProps & WeaknessCardProps;
+type Props = OwnProps & PlayerCardProps;
 
 class WeaknessSetSection extends React.Component<Props> {
-  static computeCount(set: WeaknessSet, allCards: Results<Card>) {
+  static computeCount(set: WeaknessSet, allCards: Card[]) {
     if (!set) {
       return {
         assigned: 0,
@@ -41,11 +40,11 @@ class WeaknessSetSection extends React.Component<Props> {
   render() {
     const {
       weaknessSet,
-      cards,
+      weaknessCards,
       fontScale,
       showDrawDialog,
     } = this.props;
-    const counts = WeaknessSetSection.computeCount(weaknessSet, cards);
+    const counts = WeaknessSetSection.computeCount(weaknessSet, weaknessCards);
     if (counts.total === 0) {
       return null;
     }
@@ -64,7 +63,7 @@ class WeaknessSetSection extends React.Component<Props> {
   }
 }
 
-export default withWeaknessCards<OwnProps>(WeaknessSetSection);
+export default withPlayerCards<OwnProps>(WeaknessSetSection);
 
 const styles = StyleSheet.create({
   padding: {

@@ -151,18 +151,12 @@ class CardImageView extends React.Component<Props, State> {
     const { id } = this.props;
     return (
       <View style={styles.container}>
-        <SingleCardWrapper code={id} extraArg={undefined}>
+        <SingleCardWrapper code={id} type="encounter">
           { this._renderContent }
         </SingleCardWrapper>
       </View>
     );
   }
-}
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    tabooSetId: getTabooSet(state),
-  };
 }
 
 export default withDimensions(CardImageView);

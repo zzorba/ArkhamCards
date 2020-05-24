@@ -12,7 +12,6 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
@@ -23,7 +22,8 @@ import InvestigatorRow from 'components/core/InvestigatorRow';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
 import { RANDOM_BASIC_WEAKNESS } from 'constants';
-import Card, { CardsMap } from 'data/Card';
+import Card from 'data/Card';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { searchMatchesText } from 'components/core/searchHelpers';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from 'components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
@@ -49,12 +49,7 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-interface RealmProps {
-  investigators: Card[];
-  cards: CardsMap;
-}
-
-type Props = OwnProps & ReduxProps & RealmProps & DimensionsProps;
+type Props = OwnProps & ReduxProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   showNonCollection: { [key: string]: boolean };
@@ -197,7 +192,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       case SORT_BY_TITLE:
         return t`All Investigators`;
       case SORT_BY_PACK:
-        return investigator.pack_name;
+        return investigator.pack_name || t`N/A`;
       default:
         return t`N/A`;
     }
@@ -221,6 +216,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       filter(
         investigators,
         i => {
+          if (i.altArtInvestigator || i.spoiler) {
+            return false;
+          }
           if (filterInvestigatorsSet.has(i.code)) {
             return false;
           }
@@ -440,40 +438,10 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
-)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-  withDimensions(InvestigatorsListComponent),
-  {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps & ReduxProps
-    ): RealmProps {
-      const investigators: Card[] = [];
-      const names: { [name: string]: boolean } = {};
-      forEach(
-        results.cards.filtered(
-          `(type_code == "investigator" AND encounter_code == null) and ${Card.tabooSetQuery(props.tabooSetId)}`)
-          .sorted('code', false),
-        card => {
-          if (!names[card.name]) {
-            names[card.name] = true;
-            investigators.push(card);
-          }
-        });
-
-      const cards: CardsMap = {};
-      forEach(
-        results.cards.filtered(`(has_restrictions == true OR code == "${RANDOM_BASIC_WEAKNESS}") and ${Card.tabooSetQuery(props.tabooSetId)}`),
-        card => {
-          cards[card.code] = card;
-        });
-      return {
-        investigators,
-        cards,
-      };
-    },
-  })
+)(
+  withPlayerCards<OwnProps & ReduxProps>(
+    withDimensions(InvestigatorsListComponent)
+  )
 );
 
 const styles = StyleSheet.create({

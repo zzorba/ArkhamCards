@@ -59,7 +59,7 @@ function matchingWeaknesses(
 
 export function drawWeakness(
   set: WeaknessSet,
-  allWeaknesses: Card[] | Realm.Results<Card>,
+  allWeaknesses: Card[],
   criteria: WeaknessCriteria,
   realTraits: boolean
 ): Card | undefined {

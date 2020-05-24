@@ -2,6 +2,7 @@ import {
   CARD_FETCH_START,
   CARD_FETCH_SUCCESS,
   CARD_FETCH_ERROR,
+  CARD_SET_SCHEMA_VERSION,
   CardFetchStartAction,
   CardFetchSuccessAction,
   CardFetchErrorAction,
@@ -15,6 +16,7 @@ interface CardsState {
   cache?: CardCache;
   tabooCache?: TabooCache;
   lang?: string | null;
+  schemaVersion?: string;
 }
 
 const DEFAULT_CARDS_STATE: CardsState = {
@@ -22,6 +24,7 @@ const DEFAULT_CARDS_STATE: CardsState = {
   error: null,
   cache: undefined,
   lang: null,
+  schemaVersion: undefined,
 };
 
 export default function(
@@ -29,17 +32,22 @@ export default function(
   action: CardFetchStartAction | CardFetchSuccessAction | CardFetchErrorAction
 ): CardsState {
   switch (action.type) {
+    case CARD_SET_SCHEMA_VERSION: {
+      return {
+        ...state,
+        schemaVersion: action.schemaVersion,
+      };
+    }
     case CARD_FETCH_START: {
-      return Object.assign({},
-        state,
-        {
-          loading: true,
-          error: null,
-        },
-      );
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
     }
     case CARD_FETCH_SUCCESS: {
       return {
+        ...state,
         loading: false,
         error: null,
         cache: action.cache,
@@ -49,6 +57,7 @@ export default function(
     }
     case CARD_FETCH_ERROR: {
       return {
+        ...state,
         loading: false,
         error: action.error,
         cache: undefined,

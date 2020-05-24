@@ -71,9 +71,9 @@ export default class CampaignLogEffectComponent extends React.Component<Props> {
                 return (
                   <SingleCardWrapper
                     code={logEntry.code}
-                    extraArg={logEntry.section}
+                    type="encounter"
                   >
-                    { this._renderCard }
+                    { (card: Card) => this._renderCard(card, logEntry.section) }
                   </SingleCardWrapper>
                 );
               }

@@ -36,10 +36,10 @@ export default class InvestigatorResultConditionWrapper<T> extends React.Compone
           return (
             <View key={index}>
               <CardListWrapper
-                cards={investigators}
-                extraArg={option}
+                codes={investigators}
+                type="player"
               >
-                { this._renderCards }
+                { (cards: Card[]) => this._renderCards(cards, option) }
               </CardListWrapper>
             </View>
           );

@@ -1,10 +1,11 @@
-import { forEach, groupBy, mapValues } from 'lodash';
+import { forEach, groupBy, mapValues, sortBy, uniqBy } from 'lodash';
 
-import { CardsMap } from './Card';
+import Card, { CardsMap } from './Card';
 import TabooSet from './TabooSet';
 import Database from './Database';
 import { PlayerCards } from './DatabaseContext';
 import { PLAYER_CARDS_QUERY } from './query';
+import { RANDOM_BASIC_WEAKNESS } from 'constants';
 
 export interface PlayerCardState {
   playerCards: {
@@ -30,15 +31,20 @@ export default async function syncPlayerCards(
     allCards => {
       const investigators: CardsMap = {};
       const cards: CardsMap = {};
+      const weaknessCards: Card[] = [];
       forEach(allCards, card => {
         cards[card.code] = card;
         if (card.type_code === 'investigator') {
           investigators[card.code] = card;
         }
+        if (card.isBasicWeakness()) {
+          weaknessCards.push(card);
+        }
       });
       return {
         investigators,
         cards,
+        weaknessCards,
       };
     }
   );
@@ -56,6 +62,13 @@ export default async function syncPlayerCards(
           ...baseTaboos.cards,
           ...tabooSet.cards,
         },
+        weaknessCards: sortBy(
+          uniqBy(
+            [...tabooSet.weaknessCards, ...baseTaboos.weaknessCards],
+            card => card.code
+          ),
+          card => card.name
+        ),
       };
     }
   });

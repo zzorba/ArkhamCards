@@ -4,10 +4,9 @@ import { t } from 'ttag';
 
 import { TraumaAndCardData } from 'actions/types';
 import { BASIC_SKILLS, FactionCodeType, TypeCodeType, SkillCodeType } from 'constants';
-import CardRestriction from './CardRestriction';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
-import { IndexMetadata } from 'typeorm/browser/metadata/IndexMetadata';
+import { RANDOM_BASIC_WEAKNESS } from 'constants';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
@@ -278,6 +277,12 @@ export default class Card {
 
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
+  }
+
+  isBasicWeakness(): boolean {
+    return this.type_code !== 'scenario' &&
+      this.subtype_code === 'basicweakness' &&
+      this.code !== RANDOM_BASIC_WEAKNESS;
   }
 
   factionPackSortHeader() {

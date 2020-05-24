@@ -14,8 +14,8 @@ import {
   uniqBy,
   union,
 } from 'lodash';
-
 import { t } from 'ttag';
+
 import {
   AssetGroup,
   CardId,
@@ -106,7 +106,7 @@ export function isSpecialCard(card: Card): boolean {
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness' ||
       card.spoiler ||
-      card.restrictions
+      card.has_restrictions
     )
   );
 }
@@ -424,10 +424,12 @@ function getDeckChanges(
       // See if there's a lower version card that counts as an upgrade.
       for (let i = 0; i < removedCards.length; i++) {
         const removedCard = removedCards[i];
-        if (addedCard.name === removedCard.name &&
-            addedCard.xp !== null &&
-            removedCard.xp !== null &&
-            addedCard.xp > removedCard.xp) {
+        if (
+          addedCard.name === removedCard.name &&
+          addedCard.xp !== undefined &&
+          removedCard.xp !== undefined &&
+          addedCard.xp > removedCard.xp
+        ) {
           decSlot(upgraded, removedCards[i]);
           incSlot(upgraded, addedCard);
           pullAt(removedCards, [i]);

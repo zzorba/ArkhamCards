@@ -1,13 +1,15 @@
 import React from 'react';
+import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import TabooSet from 'data/TabooSet';
 import DatabaseContext, { PlayerCards, DatabaseContextType } from 'data/DatabaseContext';
 import { AppState, getTabooSet } from 'reducers';
+import COLORS from 'styles/colors';
+import { l, s } from 'styles/space';
 
 export interface PlayerCardProps extends PlayerCards {
-  playerCards?: PlayerCards;
   tabooSetId?: number;
   tabooSets: TabooSet[];
 }
@@ -44,12 +46,24 @@ export default function withPlayerCards<Props>(
         tabooSets,
       } = this.context;
       const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
+      if (!playerCards) {
+        return (
+          <View style={styles.activityIndicatorContainer}>
+            <ActivityIndicator
+              style={styles.spinner}
+              size="small"
+              animating
+            />
+          </View>
+        );
+      }
       return (
         <WrappedComponent
           {...this.props}
           investigators={playerCards ? playerCards.investigators : {}}
           cards={playerCards ? playerCards.cards : {}}
           tabooSets={tabooSets}
+          weaknessCards={playerCards ? playerCards.weaknessCards : []}
         />
       );
     };
@@ -61,3 +75,25 @@ export default function withPlayerCards<Props>(
   hoistNonReactStatic(result, WrappedComponent);
   return result as React.ComponentType<Props & TabooSetOverride>;
 }
+
+const styles = StyleSheet.create({
+  activityIndicatorContainer: {
+    backgroundColor: COLORS.backgroundColor,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  spinner: {
+    height: 80,
+  },
+  errorBlock: {
+    marginLeft: l,
+    marginRight: l,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  error: {
+    color: 'red',
+    marginBottom: s,
+  },
+});

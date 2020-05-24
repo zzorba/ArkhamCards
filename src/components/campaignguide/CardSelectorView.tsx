@@ -106,7 +106,6 @@ class CardSelectorView extends React.Component<Props, State> {
             query ? [query] : [],
             'and'
           )}
-          extraArg={undefined}
         >
           { this._render }
         </CardQueryWrapper>
@@ -124,7 +123,6 @@ class CardSelectorView extends React.Component<Props, State> {
             query ? [query] : [],
             'and'
           )}
-          extraArg={undefined}
         >
           {this._render}
         </CardQueryWrapper>

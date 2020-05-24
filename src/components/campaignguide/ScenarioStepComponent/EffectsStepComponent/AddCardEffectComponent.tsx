@@ -48,7 +48,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={this.props.effect.card}
-        extraArg={undefined}
+        type="player"
       >
         { this._renderCard }
       </SingleCardWrapper>

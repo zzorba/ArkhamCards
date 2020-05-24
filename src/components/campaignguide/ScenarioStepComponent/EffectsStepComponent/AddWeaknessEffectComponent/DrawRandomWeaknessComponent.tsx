@@ -7,18 +7,19 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import BasicButton from 'components/core/BasicButton';
 import { StringChoices, WeaknessSet } from 'actions/types';
-import Card from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
 import { drawWeakness } from 'lib/weaknessHelper';
-import { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import InvestigatorButton from 'components/core/InvestigatorButton';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import space from 'styles/space';
 
-interface OwnProps extends WeaknessCardProps {
+interface OwnProps {
   id: string;
   investigators: Card[];
+  cards: CardsMap;
+  weaknessCards: Card[];
   traits: string[];
   realTraits: boolean;
   campaignLog: GuidedCampaignLog;
@@ -31,7 +32,7 @@ interface State {
   };
 }
 
-type Props = WeaknessCardProps & OwnProps;
+type Props = OwnProps;
 
 export default class DrawRandomWeaknessComponent extends React.Component<Props, State> {
   static contextType = CampaignGuideContext;
@@ -42,7 +43,7 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
   };
 
   effectiveWeaknessSet(): WeaknessSet {
-    const { cardsMap, campaignLog } = this.props;
+    const { cards, campaignLog } = this.props;
     const {
       campaignInvestigators,
       latestDecks,
@@ -53,7 +54,7 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
       campaignInvestigators,
       latestDecks,
       weaknessSet,
-      cardsMap,
+      cards,
       values(choices)
     );
   }
@@ -61,11 +62,11 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
   _drawRandomWeakness = (
     code: string
   ) => {
-    const { cards, traits, campaignLog, realTraits } = this.props;
+    const { weaknessCards, traits, campaignLog, realTraits } = this.props;
     const weaknessSet = this.effectiveWeaknessSet();
     const card = drawWeakness(
       weaknessSet,
-      cards,
+      weaknessCards,
       {
         traits,
         multiplayer: campaignLog.playerCount() > 1,
@@ -109,7 +110,7 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
   }
 
   render() {
-    const { id, investigators, cardsMap, scenarioState } = this.props;
+    const { id, investigators, cards, scenarioState } = this.props;
     const choices = scenarioState.stringChoices(`${id}_weakness`);
     return (
       <>
@@ -117,13 +118,14 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
           { map(investigators, investigator => {
             const choice = choices !== undefined ? choices[investigator.code][0] :
               this.state.choices[investigator.code];
+            const choiceCard = choice ? cards[choice] : undefined;
             return (
               <InvestigatorButton
                 key={investigator.code}
                 investigator={investigator}
                 value={choice === undefined ?
                   t`Draw random weakness` :
-                  cardsMap[choice].name
+                  (choiceCard?.name || 'Missing Card')
                 }
                 onPress={this._drawRandomWeakness}
                 disabled={choice !== undefined}

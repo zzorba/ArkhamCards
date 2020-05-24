@@ -16,7 +16,7 @@ export default class InvestigatorCardsView extends React.Component<Props> {
   render() {
     const { componentId, investigatorCode } = this.props;
     return (
-      <SingleCardWrapper code={investigatorCode} extraArg={undefined}>
+      <SingleCardWrapper code={investigatorCode} type="player">
         { (investigator: Card) => (
           <CardSearchComponent
             componentId={componentId}

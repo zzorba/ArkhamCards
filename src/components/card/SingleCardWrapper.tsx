@@ -6,27 +6,27 @@ import {
 import CardListWrapper from 'components/card/CardListWrapper';
 import Card from 'data/Card';
 
-interface Props<T = undefined> {
+interface Props {
   code: string;
-  extraArg: T;
-  children: (card: Card, extraArg: T) => React.ReactNode | null;
+  type: 'player' | 'encounter';
+  children: (card: Card) => React.ReactNode | null;
 }
 
-export default class SingleCardWrapper<T = undefined> extends React.Component<Props<T>> {
+export default class SingleCardWrapper extends React.Component<Props> {
   _render = (cards: Card[]): React.ReactNode => {
-    const { code, extraArg, children } = this.props;
+    const { code, children } = this.props;
     if (!cards.length) {
       return <Text>Unknown { code }</Text>;
     }
-    return children(cards[0], extraArg);
+    return children(cards[0]);
   };
 
   render() {
-    const { code } = this.props;
+    const { code, type } = this.props;
     return (
       <CardListWrapper
-        cards={[code]}
-        extraArg={undefined}
+        codes={[code]}
+        type={type}
       >
         { this._render }
       </CardListWrapper>

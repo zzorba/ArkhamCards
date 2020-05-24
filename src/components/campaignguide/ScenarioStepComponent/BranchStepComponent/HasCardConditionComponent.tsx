@@ -89,7 +89,7 @@ export default class HasCardConditionComponent extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={condition.card}
-        extraArg={undefined}
+        type="player"
       >
         { this._renderCard }
       </SingleCardWrapper>

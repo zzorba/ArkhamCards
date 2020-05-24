@@ -1,14 +1,19 @@
 import { Navigation } from 'react-native-navigation';
 import { Linking, YellowBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
+import { Action, Store } from 'redux';
 import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from 'styles/colors';
+import { AppState } from 'reducers';
 
 export default class App {
-  constructor(store) {
+  started: boolean;
+  currentLang: string;
+
+  constructor(store: Store<AppState, Action>) {
     this.started = false;
     this.currentLang = 'en';
     store.subscribe(this.onStoreUpdate.bind(this, store));
@@ -16,7 +21,7 @@ export default class App {
     this.onStoreUpdate(store);
   }
 
-  onStoreUpdate(store) {
+  onStoreUpdate(store: Store<AppState, Action>) {
     const lang = store.getState().cards.lang || 'en';
 
     // handle a root change
@@ -30,7 +35,7 @@ export default class App {
     }
   }
 
-  _handleUrl = ({ url }) => {
+  _handleUrl = ({ url }: { url: string }) => {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
         DeepLinking.evaluateUrl(url);
@@ -38,7 +43,7 @@ export default class App {
     });
   };
 
-  startApp(lang) {
+  startApp(lang?: string) {
     changeLocale(lang || 'en');
     YellowBox.ignoreWarnings([
       'Warning: AsyncStorage has been extracted from react-native core and will be removed in a future release.',
@@ -133,7 +138,7 @@ export default class App {
           },
         },
       },
-    },  /*{
+    }, {
       stack: {
         children: [browseCampaigns],
         options: {
@@ -143,7 +148,7 @@ export default class App {
           },
         },
       },
-    }, */{
+    }, {
       stack: {
         children: [settings],
         options: {
@@ -157,7 +162,8 @@ export default class App {
 
     Navigation.setDefaultOptions({
       topBar: {
-        buttonColor: COLORS.lightBlue,
+        leftButtonColor: COLORS.lightBlue,
+        rightButtonColor: COLORS.lightBlue,
         title: {
           color: COLORS.darkTextColor,
         },

@@ -393,6 +393,13 @@ export interface PacksCacheHitAction {
   type: typeof PACKS_CACHE_HIT;
   timestamp: Date;
 }
+
+export const CARD_SET_SCHEMA_VERSION = 'CARD_SET_SCHEMA_VERSION';
+export interface CardSetSchemaVersionAction {
+  type: typeof CARD_SET_SCHEMA_VERSION;
+  schemaVersion: number;
+}
+
 export const CARD_FETCH_START = 'CARD_FETCH_START';
 export interface CardFetchStartAction {
   type: typeof CARD_FETCH_START;

@@ -30,7 +30,7 @@ export default class CampaignLogCardEntryComponent extends React.Component<Props
     return (
       <SingleCardWrapper
         code={code}
-        extraArg={undefined}
+        type="encounter"
       >
         {this._renderCard}
       </SingleCardWrapper>

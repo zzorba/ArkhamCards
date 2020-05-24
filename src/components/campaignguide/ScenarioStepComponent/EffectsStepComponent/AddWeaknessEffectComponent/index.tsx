@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import Card from 'data/Card';
 import { BASIC_WEAKNESS_QUERY, combineQueries } from 'data/query';
-import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import SelectWeaknessTraitsComponent from './SelectWeaknessTraitsComponent';
 import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
 import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
@@ -22,7 +22,7 @@ interface OwnProps {
   input?: string[];
 }
 
-type Props = OwnProps & WeaknessCardProps;
+type Props = OwnProps & PlayerCardProps;
 
 class AddWeaknessEffectComponent extends React.Component<Props> {
   static contextType = ScenarioStepContext;
@@ -86,8 +86,8 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
     const {
       id,
       effect,
+      weaknessCards,
       cards,
-      cardsMap,
     } = this.props;
     const useAppDecision = scenarioState.decision(this.firstDecisionId());
     if (useAppDecision === undefined) {
@@ -101,9 +101,10 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
             this.filterBuilder.traitFilter(effect.weakness_traits),
             'and'
           )}
-          extraArg={investigators}
         >
-          { this._renderCardChoice }
+          { (cards: Card[]) => (
+            this._renderCardChoice(cards, investigators)
+          ) }
         </CardQueryWrapper>
       );
     }
@@ -115,8 +116,7 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
       <>
         { !!effect.select_traits && (
           <SelectWeaknessTraitsComponent
-            cards={cards}
-            cardsMap={cardsMap}
+            weaknessCards={weaknessCards}
             choices={chosenTraits}
             save={this._saveTraits}
             scenarioState={scenarioState}
@@ -130,8 +130,8 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
             investigators={investigators}
             campaignLog={this.context.campaignLog}
             scenarioState={this.context.scenarioState}
+            weaknessCards={weaknessCards}
             cards={cards}
-            cardsMap={cardsMap}
           />
         ) }
       </>
@@ -159,6 +159,4 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
   }
 }
 
-export default withWeaknessCards<OwnProps>(
-  AddWeaknessEffectComponent
-);
+export default withPlayerCards<OwnProps>(AddWeaknessEffectComponent);

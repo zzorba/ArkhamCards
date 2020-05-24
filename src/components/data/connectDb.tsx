@@ -28,7 +28,7 @@ export default function connectDb<InputProps, GenerateProps, GenerateParams={}>(
       this.state = {};
 
       this._loadData();
-      this._delayedLoadData = debounce(this._loadData, 250);
+      this._delayedLoadData = debounce(this._loadData, 25);
     }
 
     componentDidMount() {

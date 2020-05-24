@@ -4,14 +4,15 @@ import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
 import MultiPickerComponent from 'components/core/MultiPickerComponent';
-import { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import Card from 'data/Card';
 
-interface Props extends WeaknessCardProps {
+interface Props {
   scenarioState: ScenarioStateHelper;
   choices?: string[];
   save: (traits: string[]) => void;
+  weaknessCards: Card[];
 }
 
 interface State {
@@ -33,11 +34,10 @@ export default class SelectWeaknessTraitsComponent extends React.Component<Props
   };
 
   allTraits(): string[] {
-    const { cardsMap } = this.props;
+    const { weaknessCards } = this.props;
     return sortBy(
       uniq(
-        flatMap(keys(cardsMap), code => {
-          const card = cardsMap[code];
+        flatMap(weaknessCards, card => {
           if (!card || !card.traits) {
             return [];
           }

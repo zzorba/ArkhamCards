@@ -172,7 +172,7 @@ class CardDetailView extends React.Component<Props, State> {
       id,
     } = this.props;
     return (
-      <SingleCardWrapper code={id} extraArg={undefined}>
+      <SingleCardWrapper code={id} type="encounter">
         { (card: Card) => {
           if (!this.navUpdated) {
             this.navUpdated = true;

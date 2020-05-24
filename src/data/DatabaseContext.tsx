@@ -1,12 +1,13 @@
 import React from 'react';
 
 import Database from './Database';
-import { CardsMap } from './Card';
+import Card, { CardsMap } from './Card';
 import TabooSet from './TabooSet';
 
 export interface PlayerCards {
   investigators: CardsMap;
   cards: CardsMap;
+  weaknessCards: Card[];
 }
 
 export interface DatabaseContextType {

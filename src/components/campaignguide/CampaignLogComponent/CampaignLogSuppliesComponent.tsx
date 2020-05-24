@@ -43,7 +43,7 @@ export default class CampaignLogSuppliesComponent extends React.Component<Props>
         <SingleCardWrapper
           key={code}
           code={code}
-          extraArg={undefined}
+          type="player"
         >
           { this._renderInvestigator }
         </SingleCardWrapper>

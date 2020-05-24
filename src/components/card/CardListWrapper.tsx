@@ -1,33 +1,38 @@
 import React from 'react';
+import { flatMap } from 'lodash';
 
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import Card from 'data/Card';
 import { combineQueriesOpt } from 'data/query';
 import FilterBuilder from 'lib/filters';
 
-interface OwnProps<T> {
-  cards: string[];
-  extraArg: T;
-  children: (cards: Card[], extraArg: T) => React.ReactNode | null;
+interface Props {
+  codes: string[];
+  type: 'player' | 'encounter';
+  children: (cards: Card[]) => React.ReactNode | null;
 }
 
-type Props<T> = OwnProps<T>;
-
-export default class CardListWrapper<T> extends React.Component<Props<T>> {
+class CardListWrapper extends React.Component<Props & PlayerCardProps> {
   filterBuilder = new FilterBuilder('clw');
 
   render() {
-    const { cards, children, extraArg } = this.props;
-    if (!cards.length) {
-      return children([], extraArg);
+    const { cards, investigators, codes, children, type } = this.props;
+    if (type === 'player') {
+      const playerCards = flatMap(codes, code => cards[code] || investigators[code] || []);
+      return children(playerCards);
+    }
+    if (!codes.length) {
+      return children([]);
     }
     return (
       <CardQueryWrapper
-        query={combineQueriesOpt(this.filterBuilder.equalsVectorClause(cards, 'code'), 'and')}
-        extraArg={extraArg}
+        query={combineQueriesOpt(this.filterBuilder.equalsVectorClause(codes, 'code'), 'and')}
       >
         { children }
       </CardQueryWrapper>
     );
   }
 }
+
+export default withPlayerCards(CardListWrapper);

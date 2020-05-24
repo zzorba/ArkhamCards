@@ -141,8 +141,11 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     const investigator = this.investigator();
     if (investigator && investigator.deck_requirements) {
       forEach(investigator.deck_requirements.card, cardRequirement => {
-        const card = cards[cardRequirement.code];
-        slots[cardRequirement.code] = card.deck_limit || card.quantity || 0;
+        const card = cardRequirement.code && cards[cardRequirement.code];
+        if (!card) {
+          return;
+        }
+        slots[card.code] = card.deck_limit || card.quantity || 0;
       });
     }
 
@@ -249,7 +252,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     forEach(
       investigator.deck_requirements ? investigator.deck_requirements.card : [],
       cardRequirement => {
-        result[0].push(cards[cardRequirement.code]);
+        const code = cardRequirement.code;
+        if (code && cards[code]) {
+          result[0].push(cards[code]);
+        }
         if (cardRequirement.alternates && cardRequirement.alternates.length) {
           forEach(cardRequirement.alternates, (altCode, index) => {
             while (result.length <= index + 1) {

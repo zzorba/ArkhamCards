@@ -1,18 +1,14 @@
 import React from 'react';
-import { forEach, groupBy, mapValues } from 'lodash';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import 'reflect-metadata';
 
 import Database from 'data/Database';
-import DatabaseContext, { PlayerCards } from 'data/DatabaseContext';
-import { CardsMap } from 'data/Card';
-import TabooSet from 'data/TabooSet';
-import { PLAYER_CARDS_QUERY } from 'data/query';
+import DatabaseContext from 'data/DatabaseContext';
 import { registerScreens } from 'app/screens';
 import configureStore from 'app/store';
 import App from 'app/App';
+import { AppState } from 'reducers';
 
 
 interface Props {
@@ -54,13 +50,13 @@ class MyProvider extends React.Component<Props> {
   }
 }
 
-const { store /* , persistor */ } = configureStore({});
-const db = new Database();
-db.reloadPlayerCards();
-registerScreens(MyProvider, { redux: store, database: db });
+const { store /*, persistor */ } = configureStore({} as AppState);
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-let app = null;
+let app: App | null = null;
 Navigation.events().registerAppLaunchedListener(() => {
+  const db = new Database(store.getState().cards.schemaVersion);
+  registerScreens(MyProvider, { redux: store, database: db });
+  db.reloadPlayerCards();
   app = new App(store);
 });

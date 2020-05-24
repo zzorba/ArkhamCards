@@ -12,16 +12,16 @@ export default class FaqEntry {
   @Column('text', { nullable: true })
   updated?: string;
 
-  @Column('date', { nullable: true })
+  @Column('datetime', { nullable: true })
   fetched?: Date;
 
   @Column('text', { nullable: true })
   lastModified?: string;
 
-  static fromJson(json: any, lastModified?: string) {
+  static fromJson(code: string, json: any, lastModified?: string) {
     return {
+      code,
       fetched: new Date(),
-      code: json.code,
       text: json.text,
       updated: json.updated.date,
       lastModified,

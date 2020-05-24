@@ -55,8 +55,8 @@ const SKILL_FIELDS = [
   'skill_wild',
 ];
 
-function num(value: number | null) {
-  if (value === null) {
+function num(value: number | null | undefined) {
+  if (value === null || value === undefined) {
     return '-';
   }
   if (value < 0) {
@@ -414,7 +414,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   renderTitleContent(
     card: Card,
     name: string,
-    subname: string | null,
+    subname?: string,
     factionColor?: string
   ) {
     const { fontScale } = this.props;
@@ -458,7 +458,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   renderTitle(
     card: Card,
     name: string,
-    subname: string | null,
+    subname?: string,
   ) {
     const factionColor = card.faction2_code ? FACTION_BACKGROUND_COLORS.dual :
       (card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code]);
@@ -544,7 +544,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             FACTION_BACKGROUND_COLORS.dual :
             ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
         }]}>
-          { this.renderTitle(card, card.back_name || card.name, null) }
+          { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
@@ -638,14 +638,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
                       <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
-                      { ` ${card.cycle_name} #${card.position % 1000}.` }
+                      { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
                   ) }
                 </>
               ) : (
                 <Text style={typography.cardText}>
                   <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
-                  { ` ${card.pack_name} #${card.position % 1000}.` }
+                  { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>
               ) }
             </View>

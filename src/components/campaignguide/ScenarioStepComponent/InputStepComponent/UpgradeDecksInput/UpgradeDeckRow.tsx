@@ -214,8 +214,8 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
           section={{ superTitle: t`Campaign cards` }}
           fontScale={fontScale}
         />
-        <CardListWrapper cards={cards} extraArg={deltas}>
-          { this._renderDeltas }
+        <CardListWrapper codes={cards} type="player">
+          { (cards: Card[]) => this._renderDeltas(cards, deltas) }
         </CardListWrapper>
       </>
     );

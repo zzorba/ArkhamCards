@@ -144,7 +144,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
           <SingleCardWrapper
             key={asset}
             code={asset}
-            extraArg={undefined}
+            type="player"
           >
             { this._renderStoryAsset }
           </SingleCardWrapper>

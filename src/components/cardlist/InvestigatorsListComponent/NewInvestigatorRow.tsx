@@ -44,7 +44,7 @@ export default class NewInvestigatorRow extends React.Component<Props> {
           { t`${investigator.deck_requirements.size} Cards` }
         </Text>
         { map(investigator.deck_requirements.card, req => {
-          const card = cards[req.code];
+          const card = req.code && cards[req.code];
           if (!card) {
             return (
               <Text key={req.code} style={typography.small}>
