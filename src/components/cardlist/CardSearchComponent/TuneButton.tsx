@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { CardFilterProps } from 'components/filter/CardFilterView';
-import { CardFilterData, filterToQuery } from 'lib/filters';
+import FilterBuilder, { CardFilterData } from 'lib/filters';
 import { AppState, getFilterState, getCardFilterData } from 'reducers';
 import COLORS from 'styles/colors';
 
@@ -96,7 +96,7 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
     };
   }
   return {
-    filters: !!filterToQuery(filters),
+    filters: !!new FilterBuilder('default').filterToQuery(filters),
     cardData,
   };
 }

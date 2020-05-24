@@ -1,5 +1,5 @@
 import { filter, flatMap, forEach, map } from 'lodash';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 
 import { DeckMeta } from 'actions/types';
 import Card from 'data/Card';
@@ -34,7 +34,7 @@ export function queryForInvestigator(investigator: Card, meta?: DeckMeta): Brack
       {
         values: [
           investigator.code,
-          ...(investigator.alternate_of ? [investigator.alternate_of] : []),
+          ...(investigator.alternate_of_code ? [investigator.alternate_of_code] : []),
         ],
       }
     ),

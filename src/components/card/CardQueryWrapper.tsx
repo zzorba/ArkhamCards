@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 
 import Card from 'data/Card';
 import Database from 'data/Database';

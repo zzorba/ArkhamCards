@@ -10,15 +10,15 @@ import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { t, ngettext, msgid } from 'ttag';
 
-import DbRender from 'components/data/DbRender';
 import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import COLORS from 'styles/colors';
-import { filterToQuery, FilterState } from 'lib/filters';
+import FilterBuilder, { FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
 import { combineQueriesOpt } from 'data/query';
@@ -67,7 +67,24 @@ export default function withFilterFunctions<P>(
   type Props = NavigationProps & DimensionsProps & FilterFunctionProps & ReduxProps & ReduxActionProps & P;
 
   class WrappedFilterComponent extends React.Component<Props> {
+    static contextType = DatabaseContext;
+    context!: DatabaseContextType;
     _navEventListener?: EventSubscription;
+
+    constructor(props: Props) {
+      super(props);
+
+      InteractionManager.runAfterInteractions(() => this.updateCount(this.context.db));
+    }
+
+    componentDidUpdate(prevProps: Props) {
+      if (
+        prevProps.currentFilters !== this.props.currentFilters ||
+        prevProps.baseQuery !== this.props.baseQuery
+      ) {
+        this.updateCount(this.context.db);
+      }
+    }
 
     componentDidMount() {
       this._navEventListener = Navigation.events().bindComponent(this);
@@ -147,7 +164,7 @@ export default function withFilterFunctions<P>(
         tabooSetId,
         currentFilters,
       } = this.props;
-      const filterParts = filterToQuery(currentFilters);
+      const filterParts = new FilterBuilder('filters').filterToQuery(currentFilters);
       const count = await db.getCardCount(
         combineQueriesOpt(
           [
@@ -183,11 +200,7 @@ export default function withFilterFunctions<P>(
       });
     }
 
-    _getData = async (db: Database): Promise<void> => {
-      InteractionManager.runAfterInteractions(() => this.updateCount(db));
-    };
-
-    _renderData = () => {
+    render() {
       const {
         componentId,
         /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -219,26 +232,6 @@ export default function withFilterFunctions<P>(
             {...otherProps as P}
           />
         </View>
-      );
-    };
-
-    render() {
-      const {
-        baseQuery,
-        tabooSetId,
-        currentFilters,
-      } = this.props;
-      return (
-        <DbRender
-          getData={this._getData}
-          ids={[
-            baseQuery,
-            tabooSetId,
-            currentFilters,
-          ]}
-        >
-          { this._renderData }
-        </DbRender>
       );
     }
   }

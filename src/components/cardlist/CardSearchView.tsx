@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { SortType } from 'actions/types';
-import { Brackets } from 'typeorm';
 import CardSearchComponent from './CardSearchComponent';
 import withFetchCardsGate from 'components/card/withFetchCardsGate';
 

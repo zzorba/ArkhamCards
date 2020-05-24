@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { forEach, keys, map, uniqBy } from 'lodash';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';

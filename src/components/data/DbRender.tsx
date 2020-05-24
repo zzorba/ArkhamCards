@@ -1,6 +1,6 @@
 import React from 'react';
 import { debounce, difference } from 'lodash';
-import { EventSubscriber, EntitySubscriberInterface } from 'typeorm';
+import { EventSubscriber, EntitySubscriberInterface } from 'typeorm/browser';
 
 import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';

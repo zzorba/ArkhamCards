@@ -112,6 +112,7 @@ export const syncCards = async function(
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
+  console.log('SYNC');
   const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
   const packsByCode: { [code: string]: Pack } = {};

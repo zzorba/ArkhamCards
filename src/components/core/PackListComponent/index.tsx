@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';

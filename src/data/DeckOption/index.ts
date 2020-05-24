@@ -1,14 +1,16 @@
-import { Column } from 'typeorm';
+import { Column } from 'typeorm/browser';
 import { indexOf, map } from 'lodash';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { DeckMeta } from 'actions/types';
 import DeckAtLeastOption from './DeckAtLeastOption';
 import DeckOptionLevel from './DeckOptionLevel';
 import { FactionCodeType, TypeCodeType } from 'constants';
-import { equalsVectorClause, factionFilter, slotFilter, traitFilter, rangeFilter } from 'lib/filters';
+import FilterBuilder from 'lib/filters';
 import { combineQueriesOpt, where } from 'data/query';
+
+const FILTER_BUILDER = new FilterBuilder('deck');
 
 export default class DeckOption {
   @Column('simple-array', { nullable: true })
@@ -53,19 +55,19 @@ export default class DeckOption {
   @Column('simple-array', { nullable: true })
   public deck_size_select?: string[];
 
-  name() {
-    switch (this.real_name) {
+  static optionName(option: DeckOption) {
+    switch (option.real_name) {
       case 'Secondary Class':
         return t`Secondary Class`;
       case 'Deck Size':
         return t`Deck Size`;
       default:
-        return this.real_name;
+        return option.real_name;
     }
   }
 
-  deckSizeOnly(): boolean {
-    return !!(this.deck_size_select && this.deck_size_select.length > 0);
+  static deckSizeOnly(option: DeckOption): boolean {
+    return !!(option.deck_size_select && option.deck_size_select.length > 0);
   }
 
   private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
@@ -77,9 +79,9 @@ export default class DeckOption {
       ) {
         // If we have a deck select ONLY the ones they specified.
         // If not select them all.
-        return factionFilter([meta.faction_selected]);
+        return FILTER_BUILDER.factionFilter([meta.faction_selected]);
       }
-      return factionFilter(this.faction_select);
+      return FILTER_BUILDER.factionFilter(this.faction_select);
     }
     return [];
   }
@@ -97,14 +99,14 @@ export default class DeckOption {
 
   toQuery(meta?: DeckMeta): Brackets | undefined {
     const clauses: Brackets[] = [
-      ...factionFilter(this.faction || []),
+      ...FILTER_BUILDER.factionFilter(this.faction || []),
       ...this.selectedFactionFilter(meta),
-      ...slotFilter(this.slot || []),
-      ...equalsVectorClause(this.uses || [], 'uses'),
+      ...FILTER_BUILDER.slotFilter(this.slot || []),
+      ...FILTER_BUILDER.equalsVectorClause(this.uses || [], 'uses'),
       ...this.textClause(),
-      ...traitFilter(this.trait || []),
-      ...(this.level ? rangeFilter('xp', [this.level.min, this.level.max], true) : []),
-      ...equalsVectorClause(this.type_code || [], 'type_code')
+      ...FILTER_BUILDER.traitFilter(this.trait || []),
+      ...(this.level ? FILTER_BUILDER.rangeFilter('xp', [this.level.min, this.level.max], true) : []),
+      ...FILTER_BUILDER.equalsVectorClause(this.type_code || [], 'type_code')
     ];
     return combineQueriesOpt(clauses, 'and', !!this.not);
   }

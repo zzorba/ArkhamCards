@@ -14,7 +14,7 @@ import { AddWeaknessEffect } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
-import { traitFilter } from 'lib/filters';
+import FilterBuilder from 'lib/filters';
 
 interface OwnProps {
   id: string;
@@ -27,6 +27,8 @@ type Props = OwnProps & WeaknessCardProps;
 class AddWeaknessEffectComponent extends React.Component<Props> {
   static contextType = ScenarioStepContext;
   context!: ScenarioStepContextType;
+
+  filterBuilder = new FilterBuilder('weakness');
 
   firstDecisionId() {
     return `${this.props.id}_use_app`;
@@ -96,7 +98,7 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
         <CardQueryWrapper
           query={combineQueries(
             BASIC_WEAKNESS_QUERY,
-            traitFilter(effect.weakness_traits),
+            this.filterBuilder.traitFilter(effect.weakness_traits),
             'and'
           )}
           extraArg={investigators}

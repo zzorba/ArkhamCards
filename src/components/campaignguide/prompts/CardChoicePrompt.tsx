@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { find, flatMap, keys, map, uniq } from 'lodash';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -19,7 +19,7 @@ import { CardChoiceInput, CardSearchQuery } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { LatestDecks, ProcessedScenario } from 'data/scenario';
 import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from 'data/query';
-import { traitFilter, equalsVectorClause, UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
+import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
 import Card from 'data/Card';
 
 interface Props {
@@ -34,9 +34,17 @@ interface State {
 }
 
 export default class CardChoicePrompt extends React.Component<Props, State> {
-  state: State = {
-    extraCards: [],
-  };
+  filterBuilder: FilterBuilder;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      extraCards: [],
+    };
+
+    this.filterBuilder = new FilterBuilder('ccp');
+  }
 
   includeNonDeckSearch(
     investigators: Card[],
@@ -191,7 +199,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     q: CardSearchQuery
   ): Brackets[] {
     const result: Brackets[] = [
-      ...(q.trait ? traitFilter([q.trait]) : []),
+      ...(q.trait ? this.filterBuilder.traitFilter([q.trait]) : []),
     ];
     if (q.unique) {
       result.push(UNIQUE_FILTER);
@@ -216,7 +224,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     } = this.props;
     const queries = flatMap(query, q => {
       if (q.code) {
-        return equalsVectorClause(q.code, 'code');
+        return this.filterBuilder.equalsVectorClause(q.code, 'code');
       }
       switch (q.source) {
         case 'scenario': {
@@ -232,7 +240,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             return [];
           }
           return [
-            ...equalsVectorClause(encounterSets, 'encounter_code'),
+            ...this.filterBuilder.equalsVectorClause(encounterSets, 'encounter_code'),
             ...this.basicQuery(q),
           ];
         }
@@ -251,7 +259,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             return [];
           }
           return [
-            ...equalsVectorClause(deckCodes, 'code'),
+            ...this.filterBuilder.equalsVectorClause(deckCodes, 'code'),
             ...this.basicQuery(q),
           ];
         }
@@ -279,7 +287,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
                     query={combineQueriesOpt(
                       [
                         ...(queryOpt ? [queryOpt] : []),
-                        ...equalsVectorClause(extraCards, 'code')
+                        ...this.filterBuilder.equalsVectorClause(extraCards, 'code')
                       ],
                       'or'
                     )}

@@ -1,16 +1,13 @@
 import React from 'react';
 import { keys, forEach, filter, indexOf, map, partition } from 'lodash';
 import {
-  ActivityIndicator,
   ScrollView,
   StyleSheet,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { SelectQueryBuilder } from 'typeorm';
 import { t } from 'ttag';
 
-import Card from 'data/Card';
 import { Pack } from 'actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
@@ -21,7 +18,7 @@ import { CardFilterData } from 'lib/filters';
 import ToggleFilter from 'components/core/ToggleFilter';
 import withFilterFunctions, { FilterFunctionProps, FilterProps } from '../withFilterFunctions';
 import NavButton from 'components/core/NavButton';
-import { CARD_FACTION_CODES, FactionCodeType } from 'constants';
+import { CARD_FACTION_CODES } from 'constants';
 import { getAllPacks, AppState } from 'reducers';
 import COLORS from 'styles/colors';
 import space from 'styles/space';

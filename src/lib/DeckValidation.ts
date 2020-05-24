@@ -298,7 +298,7 @@ export default class DeckValidation {
       for (let i = 0; i < deck_options.length; i++) {
         const finalOption = (i === deck_options.length - 1);
         var option = deck_options[i];
-        if (option.deckSizeOnly()) {
+        if (DeckOption.deckSizeOnly(option)) {
           continue;
         }
         if (option.faction && option.faction.length){

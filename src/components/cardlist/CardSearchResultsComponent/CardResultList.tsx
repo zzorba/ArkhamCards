@@ -25,7 +25,7 @@ import {
   NativeScrollEvent,
   SectionListData,
 } from 'react-native';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';

@@ -3,7 +3,7 @@ import React from 'react';
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import Card from 'data/Card';
 import { combineQueriesOpt } from 'data/query';
-import { equalsVectorClause } from 'lib/filters';
+import FilterBuilder from 'lib/filters';
 
 interface OwnProps<T> {
   cards: string[];
@@ -14,6 +14,8 @@ interface OwnProps<T> {
 type Props<T> = OwnProps<T>;
 
 export default class CardListWrapper<T> extends React.Component<Props<T>> {
+  filterBuilder = new FilterBuilder('clw');
+
   render() {
     const { cards, children, extraArg } = this.props;
     if (!cards.length) {
@@ -21,7 +23,7 @@ export default class CardListWrapper<T> extends React.Component<Props<T>> {
     }
     return (
       <CardQueryWrapper
-        query={combineQueriesOpt(equalsVectorClause(cards, 'code'), 'and')}
+        query={combineQueriesOpt(this.filterBuilder.equalsVectorClause(cards, 'code'), 'and')}
         extraArg={extraArg}
       >
         { children }

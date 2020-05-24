@@ -1,4 +1,4 @@
-import { Column } from 'typeorm';
+import { Column } from 'typeorm/browser';
 
 export default class DeckAtLeastOption {
   @Column('integer', { nullable: true })

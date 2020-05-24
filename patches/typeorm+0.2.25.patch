@@ -1,3 +1,227 @@
+diff --git a/node_modules/typeorm/browser/query-builder/Brackets.d.ts b/node_modules/typeorm/browser/query-builder/Brackets.d.ts
+index a4dc33d..6472347 100644
+--- a/node_modules/typeorm/browser/query-builder/Brackets.d.ts
++++ b/node_modules/typeorm/browser/query-builder/Brackets.d.ts
+@@ -1,9 +1,16 @@
+ import { WhereExpression } from "./WhereExpression";
++export interface BracketOptions {
++    negate?: boolean;
++}
+ /**
+  * Syntax sugar.
+  * Allows to use brackets in WHERE expressions for better syntax.
+  */
+ export declare class Brackets {
++    /**
++     * Signals the brackets to be enclosed with NOT
++     */
++    negate?: boolean;
+     /**
+      * WHERE expression that will be taken into brackets.
+      */
+@@ -11,5 +18,5 @@ export declare class Brackets {
+     /**
+      * Given WHERE query builder that will build a WHERE expression that will be taken into brackets.
+      */
+-    constructor(whereFactory: (qb: WhereExpression) => any);
++    constructor(whereFactory: (qb: WhereExpression) => any, options?: BracketOptions);
+ }
+diff --git a/node_modules/typeorm/browser/query-builder/Brackets.js b/node_modules/typeorm/browser/query-builder/Brackets.js
+index 6050a8d..e8bf960 100644
+--- a/node_modules/typeorm/browser/query-builder/Brackets.js
++++ b/node_modules/typeorm/browser/query-builder/Brackets.js
+@@ -1,3 +1,6 @@
++"use strict";
++Object.defineProperty(exports, "__esModule", { value: true });
++exports.Brackets = void 0;
+ /**
+  * Syntax sugar.
+  * Allows to use brackets in WHERE expressions for better syntax.
+@@ -6,11 +9,12 @@ var Brackets = /** @class */ (function () {
+     /**
+      * Given WHERE query builder that will build a WHERE expression that will be taken into brackets.
+      */
+-    function Brackets(whereFactory) {
++    function Brackets(whereFactory, options) {
++        if (options === void 0) { options = {}; }
+         this.whereFactory = whereFactory;
++        this.negate = options.negate;
+     }
+     return Brackets;
+ }());
+-export { Brackets };
+-
++exports.Brackets = Brackets;
+ //# sourceMappingURL=Brackets.js.map
+diff --git a/node_modules/typeorm/browser/query-builder/Brackets.js.map b/node_modules/typeorm/browser/query-builder/Brackets.js.map
+index bb16707..a8cc8f9 100644
+--- a/node_modules/typeorm/browser/query-builder/Brackets.js.map
++++ b/node_modules/typeorm/browser/query-builder/Brackets.js.map
+@@ -1 +1 @@
+-{"version":3,"sources":["../browser/src/query-builder/Brackets.ts"],"names":[],"mappings":"AAEA;;;GAGG;AACH;IAOI;;OAEG;IACH,kBAAY,YAA0C;QAClD,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;IACrC,CAAC;IAEL,eAAC;AAAD,CAdA,AAcC,IAAA","file":"Brackets.js","sourcesContent":["import {WhereExpression} from \"./WhereExpression\";\n\n/**\n * Syntax sugar.\n * Allows to use brackets in WHERE expressions for better syntax.\n */\nexport class Brackets {\n\n    /**\n     * WHERE expression that will be taken into brackets.\n     */\n    whereFactory: (qb: WhereExpression) => any;\n\n    /**\n     * Given WHERE query builder that will build a WHERE expression that will be taken into brackets.\n     */\n    constructor(whereFactory: (qb: WhereExpression) => any) {\n        this.whereFactory = whereFactory;\n    }\n\n}"],"sourceRoot":".."}
+\ No newline at end of file
++{"version":3,"file":"Brackets.js","sourceRoot":"","sources":["../../../../src/query-builder/Brackets.ts"],"names":[],"mappings":";;;AAMA;;;GAGG;AACH;IAWI;;OAEG;IACH,kBAAY,YAA0C,EAAE,OAA4B;QAA5B,wBAAA,EAAA,YAA4B;QAChF,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;QACjC,IAAI,CAAC,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC;IACjC,CAAC;IAEL,eAAC;AAAD,CAAC,AAnBD,IAmBC;AAnBY,4BAAQ"}
+\ No newline at end of file
+diff --git a/node_modules/typeorm/browser/query-builder/QueryBuilder.js b/node_modules/typeorm/browser/query-builder/QueryBuilder.js
+index 34789cd..f760728 100644
+--- a/node_modules/typeorm/browser/query-builder/QueryBuilder.js
++++ b/node_modules/typeorm/browser/query-builder/QueryBuilder.js
+@@ -1,14 +1,17 @@
+-import * as tslib_1 from "tslib";
+-import { QueryExpressionMap } from "./QueryExpressionMap";
+-import { Brackets } from "./Brackets";
+-import { EntityMetadata } from "../metadata/EntityMetadata";
+-import { SqljsDriver } from "../driver/sqljs/SqljsDriver";
+-import { SqlServerDriver } from "../driver/sqlserver/SqlServerDriver";
+-import { OracleDriver } from "../driver/oracle/OracleDriver";
+-import { EntitySchema } from "../";
+-import { FindOperator } from "../find-options/FindOperator";
+-import { In } from "../find-options/operator/In";
+-import { EntityColumnNotFound } from "../error/EntityColumnNotFound";
++"use strict";
++Object.defineProperty(exports, "__esModule", { value: true });
++exports.QueryBuilder = void 0;
++var tslib_1 = require("tslib");
++var QueryExpressionMap_1 = require("./QueryExpressionMap");
++var Brackets_1 = require("./Brackets");
++var EntityMetadata_1 = require("../metadata/EntityMetadata");
++var SqljsDriver_1 = require("../driver/sqljs/SqljsDriver");
++var SqlServerDriver_1 = require("../driver/sqlserver/SqlServerDriver");
++var OracleDriver_1 = require("../driver/oracle/OracleDriver");
++var __1 = require("../");
++var FindOperator_1 = require("../find-options/FindOperator");
++var In_1 = require("../find-options/operator/In");
++var EntityColumnNotFound_1 = require("../error/EntityColumnNotFound");
+ // todo: completely cover query builder with tests
+ // todo: entityOrProperty can be target name. implement proper behaviour if it is.
+ // todo: check in persistment if id exist on object and throw exception (can be in partial selection?)
+@@ -38,7 +41,7 @@ var QueryBuilder = /** @class */ (function () {
+         else {
+             this.connection = connectionOrQueryBuilder;
+             this.queryRunner = queryRunner;
+-            this.expressionMap = new QueryExpressionMap(this.connection);
++            this.expressionMap = new QueryExpressionMap_1.QueryExpressionMap(this.connection);
+         }
+     }
+     Object.defineProperty(QueryBuilder.prototype, "alias", {
+@@ -53,7 +56,7 @@ var QueryBuilder = /** @class */ (function () {
+                 throw new Error("Main alias is not set"); // todo: better exception
+             return this.expressionMap.mainAlias.name;
+         },
+-        enumerable: true,
++        enumerable: false,
+         configurable: true
+     });
+     /**
+@@ -90,7 +93,7 @@ var QueryBuilder = /** @class */ (function () {
+      */
+     QueryBuilder.prototype.update = function (entityOrTableNameUpdateSet, maybeUpdateSet) {
+         var updateSet = maybeUpdateSet ? maybeUpdateSet : entityOrTableNameUpdateSet;
+-        entityOrTableNameUpdateSet = entityOrTableNameUpdateSet instanceof EntitySchema ? entityOrTableNameUpdateSet.options.name : entityOrTableNameUpdateSet;
++        entityOrTableNameUpdateSet = entityOrTableNameUpdateSet instanceof __1.EntitySchema ? entityOrTableNameUpdateSet.options.name : entityOrTableNameUpdateSet;
+         if (entityOrTableNameUpdateSet instanceof Function || typeof entityOrTableNameUpdateSet === "string") {
+             var mainAlias = this.createFromAlias(entityOrTableNameUpdateSet);
+             this.expressionMap.setMainAlias(mainAlias);
+@@ -263,7 +266,7 @@ var QueryBuilder = /** @class */ (function () {
+                         _b.sent();
+                         _b.label = 5;
+                     case 5:
+-                        if (!(this.connection.driver instanceof SqljsDriver)) return [3 /*break*/, 7];
++                        if (!(this.connection.driver instanceof SqljsDriver_1.SqljsDriver)) return [3 /*break*/, 7];
+                         return [4 /*yield*/, this.connection.driver.autoSave()];
+                     case 6:
+                         _b.sent();
+@@ -466,7 +469,7 @@ var QueryBuilder = /** @class */ (function () {
+         if (columns.length) {
+             var columnsExpression = columns.map(function (column) {
+                 var name = _this.escape(column.databaseName);
+-                if (driver instanceof SqlServerDriver) {
++                if (driver instanceof SqlServerDriver_1.SqlServerDriver) {
+                     if (_this.expressionMap.queryType === "insert" || _this.expressionMap.queryType === "update" || _this.expressionMap.queryType === "soft-delete" || _this.expressionMap.queryType === "restore") {
+                         return "INSERTED." + name;
+                     }
+@@ -478,14 +481,14 @@ var QueryBuilder = /** @class */ (function () {
+                     return name;
+                 }
+             }).join(", ");
+-            if (driver instanceof OracleDriver) {
++            if (driver instanceof OracleDriver_1.OracleDriver) {
+                 columnsExpression += " INTO " + columns.map(function (column) {
+                     var parameterName = "output_" + column.databaseName;
+                     _this.expressionMap.nativeParameters[parameterName] = { type: driver.columnTypeToNativeParameter(column.type), dir: driver.oracle.BIND_OUT };
+                     return _this.connection.driver.createParameter(parameterName, Object.keys(_this.expressionMap.nativeParameters).length);
+                 }).join(", ");
+             }
+-            if (driver instanceof SqlServerDriver) {
++            if (driver instanceof SqlServerDriver_1.SqlServerDriver) {
+                 if (this.expressionMap.queryType === "insert" || this.expressionMap.queryType === "update") {
+                     columnsExpression += " INTO @OutputTable";
+                 }
+@@ -533,8 +536,8 @@ var QueryBuilder = /** @class */ (function () {
+      * Creates "WHERE" expression and variables for the given "ids".
+      */
+     QueryBuilder.prototype.createWhereIdsExpression = function (ids) {
+-        var _this = this;
+         var _a;
++        var _this = this;
+         var metadata = this.expressionMap.mainAlias.metadata;
+         var normalized = (Array.isArray(ids) ? ids : [ids]).map(function (id) { return metadata.ensureEntityIdMap(id); });
+         // using in(...ids) for single primary key entities
+@@ -545,7 +548,7 @@ var QueryBuilder = /** @class */ (function () {
+             // todo: remove this transformer check after #2390 is fixed
+             if (!primaryColumn_1.transformer) {
+                 return this.computeWhereParameter((_a = {},
+-                    _a[primaryColumn_1.propertyName] = In(normalized.map(function (id) { return primaryColumn_1.getEntityValue(id, false); })),
++                    _a[primaryColumn_1.propertyName] = In_1.In(normalized.map(function (id) { return primaryColumn_1.getEntityValue(id, false); })),
+                     _a));
+             }
+         }
+@@ -574,12 +577,12 @@ var QueryBuilder = /** @class */ (function () {
+         var _this = this;
+         if (typeof where === "string")
+             return where;
+-        if (where instanceof Brackets) {
++        if (where instanceof Brackets_1.Brackets) {
+             var whereQueryBuilder = this.createQueryBuilder();
+             where.whereFactory(whereQueryBuilder);
+             var whereString = whereQueryBuilder.createWhereExpressionString();
+             this.setParameters(whereQueryBuilder.getParameters());
+-            return whereString ? "(" + whereString + ")" : "";
++            return whereString ? ((where.negate ? "NOT " : "") + "(" + whereString + ")") : "";
+         }
+         else if (where instanceof Function) {
+             return where(this);
+@@ -590,11 +593,11 @@ var QueryBuilder = /** @class */ (function () {
+             var parameterIndex_1 = Object.keys(this.expressionMap.nativeParameters).length;
+             if (this.expressionMap.mainAlias.hasMetadata) {
+                 andConditions = wheres.map(function (where, whereIndex) {
+-                    var propertyPaths = EntityMetadata.createPropertyPath(_this.expressionMap.mainAlias.metadata, where);
++                    var propertyPaths = EntityMetadata_1.EntityMetadata.createPropertyPath(_this.expressionMap.mainAlias.metadata, where);
+                     return propertyPaths.map(function (propertyPath, propertyIndex) {
+                         var columns = _this.expressionMap.mainAlias.metadata.findColumnsWithPropertyPath(propertyPath);
+                         if (!columns.length) {
+-                            throw new EntityColumnNotFound(propertyPath);
++                            throw new EntityColumnNotFound_1.EntityColumnNotFound(propertyPath);
+                         }
+                         return columns.map(function (column, columnIndex) {
+                             var aliasPath = _this.expressionMap.aliasNamePrefixingEnabled ? _this.alias + "." + propertyPath : column.propertyPath;
+@@ -604,7 +607,7 @@ var QueryBuilder = /** @class */ (function () {
+                             if (parameterValue === null) {
+                                 return aliasPath + " IS NULL";
+                             }
+-                            else if (parameterValue instanceof FindOperator) {
++                            else if (parameterValue instanceof FindOperator_1.FindOperator) {
+                                 var parameters_1 = [];
+                                 if (parameterValue.useParameter) {
+                                     var realParameterValues = parameterValue.multipleParameters ? parameterValue.value : [parameterValue.value];
+@@ -657,6 +660,5 @@ var QueryBuilder = /** @class */ (function () {
+     };
+     return QueryBuilder;
+ }());
+-export { QueryBuilder };
+-
++exports.QueryBuilder = QueryBuilder;
+ //# sourceMappingURL=QueryBuilder.js.map
 diff --git a/node_modules/typeorm/query-builder/Brackets.d.ts b/node_modules/typeorm/query-builder/Brackets.d.ts
 index a4dc33d..6472347 100644
 --- a/node_modules/typeorm/query-builder/Brackets.d.ts
@@ -27,7 +251,7 @@ index a4dc33d..6472347 100644
 +    constructor(whereFactory: (qb: WhereExpression) => any, options?: BracketOptions);
  }
 diff --git a/node_modules/typeorm/query-builder/Brackets.js b/node_modules/typeorm/query-builder/Brackets.js
-index 522ec39..cce64b6 100644
+index 522ec39..e8bf960 100644
 --- a/node_modules/typeorm/query-builder/Brackets.js
 +++ b/node_modules/typeorm/query-builder/Brackets.js
 @@ -1,5 +1,6 @@
@@ -52,7 +276,6 @@ index 522ec39..cce64b6 100644
  exports.Brackets = Brackets;
 -
  //# sourceMappingURL=Brackets.js.map
-\ No newline at end of file
 diff --git a/node_modules/typeorm/query-builder/Brackets.js.map b/node_modules/typeorm/query-builder/Brackets.js.map
 index a3c2b80..a8cc8f9 100644
 --- a/node_modules/typeorm/query-builder/Brackets.js.map
@@ -63,7 +286,7 @@ index a3c2b80..a8cc8f9 100644
 +{"version":3,"file":"Brackets.js","sourceRoot":"","sources":["../../../../src/query-builder/Brackets.ts"],"names":[],"mappings":";;;AAMA;;;GAGG;AACH;IAWI;;OAEG;IACH,kBAAY,YAA0C,EAAE,OAA4B;QAA5B,wBAAA,EAAA,YAA4B;QAChF,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;QACjC,IAAI,CAAC,MAAM,GAAG,OAAO,CAAC,MAAM,CAAC;IACjC,CAAC;IAEL,eAAC;AAAD,CAAC,AAnBD,IAmBC;AAnBY,4BAAQ"}
 \ No newline at end of file
 diff --git a/node_modules/typeorm/query-builder/QueryBuilder.js b/node_modules/typeorm/query-builder/QueryBuilder.js
-index 46046a7..3be9292 100644
+index 46046a7..f760728 100644
 --- a/node_modules/typeorm/query-builder/QueryBuilder.js
 +++ b/node_modules/typeorm/query-builder/QueryBuilder.js
 @@ -1,5 +1,6 @@
@@ -107,4 +330,3 @@ index 46046a7..3be9292 100644
  exports.QueryBuilder = QueryBuilder;
 -
  //# sourceMappingURL=QueryBuilder.js.map
-\ No newline at end of file

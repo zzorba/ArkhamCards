@@ -1,7 +1,7 @@
 import React from 'react';
 import { debounce } from 'lodash';
 import deepDiff from 'deep-diff';
-import { EventSubscriber, EntitySubscriberInterface } from 'typeorm';
+import { EventSubscriber, EntitySubscriberInterface } from 'typeorm/browser';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import Database from 'data/Database';

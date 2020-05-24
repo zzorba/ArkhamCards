@@ -133,7 +133,7 @@ export default class App {
           },
         },
       },
-    }, {
+    },  {
       stack: {
         children: [browseCampaigns],
         options: {

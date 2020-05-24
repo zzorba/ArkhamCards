@@ -1,6 +1,6 @@
 import React from 'react';
 import { forEach, head } from 'lodash';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from 'actions/types';
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from 'constants';
@@ -8,8 +8,8 @@ import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCard
 import CardSearchComponent from '../cardlist/CardSearchComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from 'lib/InvestigatorRequirements';
-import { filterToQuery, defaultFilterState } from 'lib/filters';
-import { STORY_CARDS_QUERY, PLAYER_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries, combineQueriesOpt } from 'data/query';
+import FilterBuilder, { defaultFilterState } from 'lib/filters';
+import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from 'data/query';
 import Card, { CardsMap } from 'data/Card';
 import { parseDeck } from 'lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
@@ -141,7 +141,7 @@ class DeckEditView extends React.Component<Props, State> {
       ...(investigatorPart ? [investigatorPart] : []),
     ];
     if (deckCardCounts[VERSATILE_CODE] > 0) {
-      const versatileQuery = filterToQuery({
+      const versatileQuery = new FilterBuilder('versatile').filterToQuery({
         ...defaultFilterState,
         factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
         level: [0, 0],

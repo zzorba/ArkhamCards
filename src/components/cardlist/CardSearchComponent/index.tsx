@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { forEach } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 

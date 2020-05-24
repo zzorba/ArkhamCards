@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Brackets } from 'typeorm';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -17,7 +17,7 @@ import {
 import CardSearchBox from './CardSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
-import { FilterState, filterToQuery } from 'lib/filters';
+import FilterBuilder, { FilterState } from 'lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from 'data/query';
 import Card from 'data/Card';
 import typography from 'styles/typography';
@@ -64,6 +64,8 @@ interface State {
 }
 
 export default class CardSearchResultsComponent extends React.Component<Props, State> {
+  static filterBuilder = new FilterBuilder('filters');
+
   static query({
     baseQuery,
     mythosToggle,
@@ -101,7 +103,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
         baseQuery,
         query: CardSearchResultsComponent.query(props),
         filters,
-        filterQuery: filters && filterToQuery(filters),
+        filterQuery: filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters),
       };
     }
     return null;
@@ -120,7 +122,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       baseQuery: props.baseQuery,
       query: CardSearchResultsComponent.query(props),
       filters: props.filters,
-      filterQuery: props.filters && filterToQuery(props.filters),
+      filterQuery: props.filters && CardSearchResultsComponent.filterBuilder.filterToQuery(props.filters),
     };
   }
 

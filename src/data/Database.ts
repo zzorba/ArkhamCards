@@ -1,34 +1,34 @@
 import { findIndex, forEach } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm/browser';
 
 import Card from './Card';
 import EncounterSet from './EncounterSet';
 import FaqEntry from './FaqEntry';
 import TabooSet from './TabooSet'
-import { QueryClause, QuerySort } from './types';
-import { tabooSetQuery, combineQueries } from './query';
+import { QuerySort } from './types';
+import { tabooSetQuery, PLAYER_CARDS_QUERY } from './query';
 
 export default class Database {
   connectionP: Promise<Connection>;
-
   constructor() {
-
     this.connectionP = createConnection({
       type: 'react-native',
-      database: 'arkham',
+      database: 'arkham4',
       location: 'default',
       logging: [
         'error',
-        //'query',
+        'query',
         'schema',
       ],
+      //dropSchema: true,
       synchronize: true,
+      //migrations:['migrations/migration.js'],
       entities: [
         Card,
         EncounterSet,
         FaqEntry,
         TabooSet,
-      ]
+      ],
     });
   }
 
@@ -73,10 +73,9 @@ export default class Database {
   async getCards(
     query?: Brackets,
     tabooSetId?: number,
-    sort?: QuerySort[],
-    orQuery?: QueryClause[],
+    sort?: QuerySort[]
   ): Promise<Card[]> {
-    const cardsQuery = await this.applyCardsQuery(query, tabooSetId, sort, orQuery);
+    const cardsQuery = await this.applyCardsQuery(query, tabooSetId, sort);
     return await cardsQuery.getMany();
   }
 

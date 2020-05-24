@@ -1,4 +1,4 @@
-import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -38,7 +38,7 @@ export default class Card {
   public type_code!: TypeCodeType;
 
   @Column('text', { nullable: true })
-  public alternate_of?: string;
+  public alternate_of_code?: string;
 
   @Column('integer', { nullable: true })
   public taboo_set_id?: number;
