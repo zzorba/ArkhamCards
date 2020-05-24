@@ -601,7 +601,6 @@ export default class FilterBuilder {
   }
 
   filterToQuery(filters: FilterState): Brackets | undefined {
-    console.log(JSON.stringify(filters));
     return combineQueriesOpt(
       [
         ...this.factionFilter(filters.factions),

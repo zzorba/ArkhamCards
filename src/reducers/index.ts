@@ -23,6 +23,7 @@ import {
   SortType,
   CampaignGuideState,
   NEW_CHAOS_BAG_RESULTS,
+  SORT_BY_TYPE,
 } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
 
@@ -426,7 +427,7 @@ export function getNextLocalDeckId(state: AppState): number {
 export function getFilterState(
   state: AppState,
   filterId: string
-): FilterState {
+): FilterState | undefined {
   return state.filters.all[filterId];
 }
 
@@ -441,7 +442,7 @@ export function getCardSort(
   state: AppState,
   filterId: string
 ): SortType {
-  return state.filters.sorts[filterId];
+  return state.filters.sorts[filterId] || SORT_BY_TYPE;
 }
 
 export function getCardFilterData(
@@ -454,7 +455,7 @@ export function getCardFilterData(
 export function getDefaultFilterState(
   state: AppState,
   filterId: string
-): FilterState {
+): FilterState | undefined {
   return state.filters.defaults[filterId];
 }
 

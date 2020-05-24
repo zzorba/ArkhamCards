@@ -17,7 +17,7 @@ export default class Database {
       location: 'default',
       logging: [
         'error',
-        'query',
+        // 'query',
         'schema',
       ],
       //dropSchema: true,

@@ -123,7 +123,7 @@ export default class App {
           },
         },
       },
-    }, /*{
+    }, {
       stack: {
         children: [browseDecks],
         options: {
@@ -133,7 +133,7 @@ export default class App {
           },
         },
       },
-    },  {
+    },  /*{
       stack: {
         children: [browseCampaigns],
         options: {

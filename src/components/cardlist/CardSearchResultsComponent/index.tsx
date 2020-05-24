@@ -23,6 +23,7 @@ import Card from 'data/Card';
 import typography from 'styles/typography';
 import space from 'styles/space';
 import COLORS from 'styles/colors';
+import deepDiff from 'deep-diff';
 
 interface Props {
   componentId: string;
@@ -98,15 +99,18 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       baseQuery,
       filters,
     } = props;
-    if (baseQuery !== state.baseQuery || filters !== state.filters) {
-      return {
-        baseQuery,
-        query: CardSearchResultsComponent.query(props),
-        filters,
-        filterQuery: filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters),
-      };
+    const updatedState: Partial<State> = {};
+    if (baseQuery !== state.baseQuery) {
+      //console.log('RERENDER: baseQuery changed');
+      updatedState.baseQuery = baseQuery;
+      updatedState.query = CardSearchResultsComponent.query(props);
     }
-    return null;
+    if (filters && filters !== state.filters && !!deepDiff(filters, state.filters)) {
+      //console.log(`RERENDER: filters changed: ${JSON.stringify(state.filters)} vs ${JSON.stringify(filters)}`);
+      updatedState.filters = filters;
+      updatedState.filterQuery = filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
+    }
+    return updatedState;
   }
 
   constructor(props: Props) {

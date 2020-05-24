@@ -18,7 +18,7 @@ interface State<T> {
 }
 
 @EventSubscriber()
-export default class DbRender<T> extends React.Component<Props<T>, State<T>> implements EntitySubscriberInterface {
+export default class DbRender<T> extends React.Component<Props<T>, State<T>> {
   static contextType = DatabaseContext;
   context!: DatabaseContextType;
 
@@ -35,6 +35,7 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> imp
   componentDidUpdate(prevProps: Props<T>) {
     const diff = difference(this.props.ids, prevProps.ids);
     if (diff.length) {
+      console.log(`RERENDER: ${JSON.stringify(diff)}, ${JSON.stringify(prevProps.ids)} vs ${JSON.stringify(this.props.ids)}`);
       this._loadData(this.context);
     }
   }

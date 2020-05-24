@@ -54,8 +54,8 @@ export default function withFilterFunctions<P>(
   }: Options
 ): React.ComponentType<NavigationProps & FilterFunctionProps & P> {
   interface ReduxProps {
-    currentFilters: FilterState;
-    defaultFilterState: FilterState;
+    currentFilters?: FilterState;
+    defaultFilterState?: FilterState;
   }
 
   interface ReduxActionProps {
@@ -164,7 +164,8 @@ export default function withFilterFunctions<P>(
         tabooSetId,
         currentFilters,
       } = this.props;
-      const filterParts = new FilterBuilder('filters').filterToQuery(currentFilters);
+      const filterParts: Brackets | undefined =
+        currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters as FilterState);
       const count = await db.getCardCount(
         combineQueriesOpt(
           [
@@ -215,15 +216,15 @@ export default function withFilterFunctions<P>(
         currentFilters,
         ...otherProps
       } = this.props;
-      if (!currentFilters) {
+      if (!defaultFilterState) {
         return null;
       }
       return (
         <View style={styles.wrapper}>
           <WrappedComponent
             componentId={componentId}
-            filters={currentFilters}
-            defaultFilterState={defaultFilterState}
+            filters={(currentFilters || defaultFilterState) as FilterState}
+            defaultFilterState={defaultFilterState as FilterState}
             width={width}
             fontScale={fontScale}
             pushFilterView={this._pushFilterView}

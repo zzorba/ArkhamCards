@@ -16,11 +16,11 @@ import {
 } from 'actions/types';
 
 interface FiltersState {
-  all: { [componentId: string]: FilterState };
+  all: { [componentId: string]: FilterState | undefined };
   defaults: { [componentId: string]: FilterState };
-  mythos: { [componentId: string]: boolean };
-  sorts: { [componentId: string]: SortType };
-  cardData: { [componentId: string]: CardFilterData };
+  mythos: { [componentId: string]: boolean | undefined };
+  sorts: { [componentId: string]: SortType | undefined };
+  cardData: { [componentId: string]: CardFilterData | undefined };
 }
 
 const DEFAULT_STATE: FiltersState = {
@@ -39,7 +39,7 @@ export default function(
     return {
       all: {
         ...state.all,
-        [action.id]: action.filters,
+        [action.id]: undefined,
       },
       defaults: {
         ...state.defaults,
@@ -101,7 +101,7 @@ export default function(
     };
   }
   if (action.type === TOGGLE_FILTER) {
-    const existingFilters = state.all[action.id];
+    const existingFilters = state.all[action.id] || state.defaults[action.id];
     return {
       ...state,
       all: {
@@ -123,7 +123,7 @@ export default function(
     };
   }
   if (action.type === UPDATE_FILTER) {
-    const existingFilters = state.all[action.id];
+    const existingFilters = state.all[action.id] || state.defaults[action.id];
     return {
       ...state,
       all: {
@@ -137,7 +137,7 @@ export default function(
   }
   if (action.type === CLEAR_FILTER) {
     const defaultFilterState = state.defaults[action.id];
-    const existingFilters = state.all[action.id];
+    const existingFilters = state.all[action.id] || defaultFilterState;
     const filters = (action.clearTraits && action.clearTraits.length) ? {
       ...existingFilters,
       ...pick(defaultFilterState, action.clearTraits),

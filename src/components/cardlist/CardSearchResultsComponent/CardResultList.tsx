@@ -542,7 +542,6 @@ class CardResultList extends React.Component<Props, State> {
 
     if (!this.filterSetInitialized) {
       this.filterSetInitialized = true;
-      console.log(`Registering filter set: ${initialSort}`);
       addFilterSet(
         componentId,
         calculateDefaultFilterState(cards),

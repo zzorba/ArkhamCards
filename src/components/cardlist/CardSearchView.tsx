@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SortType } from 'actions/types';
+import { SortType, SORT_BY_TYPE } from 'actions/types';
 import CardSearchComponent from './CardSearchComponent';
 import withFetchCardsGate from 'components/card/withFetchCardsGate';
 
@@ -20,7 +20,7 @@ class CardSearchView extends React.PureComponent<Props> {
       <CardSearchComponent
         componentId={componentId}
         mythosToggle
-        sort={sort}
+        sort={sort || SORT_BY_TYPE}
       />
     );
   }
