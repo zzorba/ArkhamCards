@@ -887,6 +887,7 @@ class CardResultList extends React.Component<Props, State> {
     } = this.props;
     return (
       <DbRender
+        name="card-results"
         getData={this._updateResults}
         ids={[query, filterQuery, termQuery, sort]}
       >

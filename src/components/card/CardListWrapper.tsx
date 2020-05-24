@@ -2,6 +2,7 @@ import React from 'react';
 import { flatMap } from 'lodash';
 
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
+import QueryProvider from 'components/data/QueryProvider';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import Card from 'data/Card';
 import { combineQueriesOpt } from 'data/query';
@@ -14,7 +15,14 @@ interface Props {
 }
 
 class CardListWrapper extends React.Component<Props & PlayerCardProps> {
-  filterBuilder = new FilterBuilder('clw');
+  static FILTER_BUILDER = new FilterBuilder('clw');
+
+  static query({ codes }: { codes: string[] }) {
+    return combineQueriesOpt(
+      CardListWrapper.FILTER_BUILDER.equalsVectorClause(codes, 'code'),
+      'and'
+    );
+  }
 
   render() {
     const { cards, investigators, codes, children, type } = this.props;
@@ -26,11 +34,13 @@ class CardListWrapper extends React.Component<Props & PlayerCardProps> {
       return children([]);
     }
     return (
-      <CardQueryWrapper
-        query={combineQueriesOpt(this.filterBuilder.equalsVectorClause(codes, 'code'), 'and')}
-      >
-        { children }
-      </CardQueryWrapper>
+      <QueryProvider codes={codes} getQuery={CardListWrapper.query}>
+        { query => (
+          <CardQueryWrapper name="card-list" query={query}>
+            { children }
+          </CardQueryWrapper>
+        )}
+      </QueryProvider>
     );
   }
 }

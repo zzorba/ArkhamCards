@@ -105,7 +105,7 @@ export default class CardTabooView extends React.Component<Props> {
     } = this.props;
     return (
       <ScrollView style={styles.container}>
-        <DbRender getData={this._getData} ids={[id]}>
+        <DbRender name="taboo" getData={this._getData} ids={[id]}>
           { this._renderData }
         </DbRender>
         <Text style={[typography.small, styles.header]}>

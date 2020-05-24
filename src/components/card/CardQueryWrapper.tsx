@@ -9,6 +9,7 @@ import DbRender from 'components/data/DbRender';
 import { getTabooSet, AppState } from 'reducers';
 
 interface Props {
+  name: string;
   query?: Brackets;
   sort?: QuerySort[];
   children: (cards: Card[]) => React.ReactNode;
@@ -22,7 +23,7 @@ interface Data {
   cards: Card[];
 }
 
-class CardQueryWrapper<T> extends React.Component<Props & ReduxProps> {
+class CardQueryWrapper extends React.Component<Props & ReduxProps> {
   _render = (data?: Data) => {
     const { children } = this.props;
     return children(data ? data.cards : []);
@@ -41,9 +42,9 @@ class CardQueryWrapper<T> extends React.Component<Props & ReduxProps> {
   };
 
   render() {
-    const { query, tabooSetId, sort } = this.props;
+    const { name, query, tabooSetId, sort } = this.props;
     return (
-      <DbRender getData={this._getData} ids={[query, tabooSetId, sort]}>
+      <DbRender name={name} getData={this._getData} ids={[query, tabooSetId, sort]}>
         { this._render }
       </DbRender>
     )

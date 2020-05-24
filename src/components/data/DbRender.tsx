@@ -6,6 +6,7 @@ import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 
 interface Props<T> {
+  name: string;
   ids: any[];
   extraProps?: any;
   getData: (db: Database, extraProps?: any) => Promise<T>;
@@ -33,9 +34,10 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> {
   }
 
   componentDidUpdate(prevProps: Props<T>) {
+    const { name } = this.props;
     const diff = difference(this.props.ids, prevProps.ids);
     if (diff.length) {
-      console.log(`RERENDER: ${JSON.stringify(diff)}, ${JSON.stringify(prevProps.ids)} vs ${JSON.stringify(this.props.ids)}`);
+      console.log(`RERENDER(${name}): ${JSON.stringify(diff)}, ${JSON.stringify(prevProps.ids)} vs ${JSON.stringify(this.props.ids)}`);
       this._loadData(this.context);
     }
   }

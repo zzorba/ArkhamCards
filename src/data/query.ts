@@ -14,6 +14,7 @@ export const ON_YOUR_OWN_RESTRICTION = new Brackets(qb =>
   { negate: true }
 );
 
+export const SCENARIO_CARDS_QUERY = where('c.type_code = "scenario"');
 export const BASIC_WEAKNESS_QUERY = where(
   `c.type_code != "scenario" AND c.subtype_code = "basicweakness" AND c.code != "${RANDOM_BASIC_WEAKNESS}"`
 );

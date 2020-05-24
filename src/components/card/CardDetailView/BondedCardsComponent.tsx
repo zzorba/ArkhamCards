@@ -124,7 +124,7 @@ class BondedCardsComponent extends React.Component<Props> {
       card,
     } = this.props;
     return (
-      <DbRender getData={this._getBondedCards} ids={card ? [card.id] : []}>
+      <DbRender name="bonded" getData={this._getBondedCards} ids={card ? [card.id] : []}>
         { this._render }
       </DbRender>
     );

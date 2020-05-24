@@ -4,6 +4,7 @@ import { t } from 'ttag';
 
 import Card from 'data/Card';
 import { BASIC_WEAKNESS_QUERY, combineQueries } from 'data/query';
+import QueryProvider from 'components/data/QueryProvider';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import SelectWeaknessTraitsComponent from './SelectWeaknessTraitsComponent';
 import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
@@ -28,7 +29,7 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
   static contextType = ScenarioStepContext;
   context!: ScenarioStepContextType;
 
-  filterBuilder = new FilterBuilder('weakness');
+  static FILTER_BUILDER = new FilterBuilder('weakness');
 
   firstDecisionId() {
     return `${this.props.id}_use_app`;
@@ -79,6 +80,14 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
       });
   };
 
+  static query({ weakness_traits }: { weakness_traits: string[] }){
+    return combineQueries(
+      BASIC_WEAKNESS_QUERY,
+      AddWeaknessEffectComponent.FILTER_BUILDER.traitFilter(weakness_traits),
+      'and'
+    );
+  }
+
   _renderSecondPrompt = (
     investigators: Card[],
     scenarioState: ScenarioStateHelper
@@ -95,17 +104,13 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
     }
     if (!useAppDecision) {
       return (
-        <CardQueryWrapper
-          query={combineQueries(
-            BASIC_WEAKNESS_QUERY,
-            this.filterBuilder.traitFilter(effect.weakness_traits),
-            'and'
-          )}
-        >
-          { (cards: Card[]) => (
-            this._renderCardChoice(cards, investigators)
+        <QueryProvider weakness_traits={effect.weakness_traits} getQuery={AddWeaknessEffectComponent.query}>
+          { query => (
+            <CardQueryWrapper name="add-weakness" query={query}>
+              { (cards: Card[]) =>  this._renderCardChoice(cards, investigators) }
+            </CardQueryWrapper>
           ) }
-        </CardQueryWrapper>
+          </QueryProvider>
       );
     }
     const traitsChoice = effect.select_traits ?

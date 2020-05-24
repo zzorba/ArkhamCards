@@ -4,6 +4,7 @@ import { find, flatMap, keys, map, uniq } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
+import QueryProvider from 'components/data/QueryProvider';
 import BasicButton from 'components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
@@ -15,7 +16,7 @@ import CardListWrapper from 'components/card/CardListWrapper';
 import { CardSelectorProps } from '../CardSelectorView';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import { CardChoiceInput, CardSearchQuery } from 'data/scenario/types';
+import { CardChoiceInput, CardSearchQuery, CardQuery } from 'data/scenario/types';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import { LatestDecks, ProcessedScenario } from 'data/scenario';
 import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from 'data/query';
@@ -34,17 +35,10 @@ interface State {
 }
 
 export default class CardChoicePrompt extends React.Component<Props, State> {
-  filterBuilder: FilterBuilder;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      extraCards: [],
-    };
-
-    this.filterBuilder = new FilterBuilder('ccp');
-  }
+  static FILTER_BUILDER = new FilterBuilder('ccp');
+  state: State = {
+    extraCards: [],
+  };
 
   includeNonDeckSearch(
     investigators: Card[],
@@ -195,11 +189,11 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     );
   };
 
-  basicQuery(
+  static basicQuery(
     q: CardSearchQuery
   ): Brackets[] {
     const result: Brackets[] = [
-      ...(q.trait ? this.filterBuilder.traitFilter([q.trait]) : []),
+      ...(q.trait ? CardChoicePrompt.FILTER_BUILDER.traitFilter([q.trait]) : []),
     ];
     if (q.unique) {
       result.push(UNIQUE_FILTER);
@@ -214,17 +208,15 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     return result;
   }
 
-  query(
+  static mainQuery(
+    query: CardQuery[],
     processedScenario: ProcessedScenario,
     investigators: Card[],
     latestDecks: LatestDecks,
   ): Brackets | undefined {
-    const {
-      input: { query },
-    } = this.props;
     const queries = flatMap(query, q => {
       if (q.code) {
-        return this.filterBuilder.equalsVectorClause(q.code, 'code');
+        return CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(q.code, 'code');
       }
       switch (q.source) {
         case 'scenario': {
@@ -240,8 +232,8 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             return [];
           }
           return [
-            ...this.filterBuilder.equalsVectorClause(encounterSets, 'encounter_code'),
-            ...this.basicQuery(q),
+            ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(encounterSets, 'encounter_code'),
+            ...CardChoicePrompt.basicQuery(q),
           ];
         }
         case 'deck': {
@@ -259,7 +251,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             return [];
           }
           return [
-            ...this.filterBuilder.equalsVectorClause(deckCodes, 'code'),
+            ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(deckCodes, 'code'),
             ...this.basicQuery(q),
           ];
         }
@@ -271,7 +263,31 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     );
   }
 
+  static query({
+    processedScenario,
+    scenarioInvestigators,
+    latestDecks,
+    query,
+    extraCards,
+  }: {
+    processedScenario: ProcessedScenario;
+    scenarioInvestigators: Card[];
+    latestDecks: LatestDecks;
+    query: CardQuery[];
+    extraCards: string[]
+  }) {
+    const queryOpt = this.mainQuery(query, processedScenario, scenarioInvestigators, latestDecks);
+    return combineQueriesOpt(
+      [
+        ...(queryOpt ? [queryOpt] : []),
+        ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(extraCards, 'code')
+      ],
+      'or'
+    )
+  }
+
   render() {
+    const { input } = this.props;
     const { extraCards } = this.state;
     return (
       <CampaignGuideContext.Consumer>
@@ -281,21 +297,21 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
               const selectedCards = this.lockedCards(scenarioState);
               if (selectedCards === undefined) {
                 const nonDeckButton = this.includeNonDeckSearch(scenarioInvestigators, latestDecks);
-                const queryOpt = this.query(processedScenario, scenarioInvestigators, latestDecks);
                 return (
-                  <CardQueryWrapper
-                    query={combineQueriesOpt(
-                      [
-                        ...(queryOpt ? [queryOpt] : []),
-                        ...this.filterBuilder.equalsVectorClause(extraCards, 'code')
-                      ],
-                      'or'
-                    )}
+                  <QueryProvider
+                    processedScenario={processedScenario}
+                    scenarioInvestigators={scenarioInvestigators}
+                    latestDecks={latestDecks}
+                    query={input.query}
+                    extraCards={extraCards}
+                    getQuery={CardChoicePrompt.query}
                   >
-                    { (cards: Card[]) => (
-                      this._renderCards(cards, nonDeckButton)
+                    { query => (
+                      <CardQueryWrapper name="card-choice" query={query} >
+                        { (cards: Card[]) => this._renderCards(cards, nonDeckButton) }
+                      </CardQueryWrapper>
                     ) }
-                  </CardQueryWrapper>
+                  </QueryProvider>
                 );
               }
               return (

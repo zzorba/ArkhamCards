@@ -12,7 +12,7 @@ import { campaignScenarios, Scenario } from 'components/campaign/constants';
 import { Campaign } from 'actions/types';
 import { ChaosBag } from 'constants';
 import Card from 'data/Card';
-import { where } from 'data/query';
+import { SCENARIO_CARDS_QUERY } from 'data/query';
 import { AppState, getCampaign } from 'reducers';
 
 export interface GuideOddsCalculatorProps {
@@ -54,7 +54,7 @@ class GuideOddsCalculatorView extends React.Component<Props> {
     }
     const allInvestigators = this.allInvestigators();
     return (
-      <CardQueryWrapper query={where('c.type_code = "scenario"')}>
+      <CardQueryWrapper name="guide-odds" query={SCENARIO_CARDS_QUERY}>
         { scenarioCards => (
           <OddsCalculatorComponent
             campaign={campaign}

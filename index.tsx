@@ -1,4 +1,6 @@
+import Realm from 'realm';
 import React from 'react';
+import { InteractionManager } from 'react-native';
 import { Provider } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import 'reflect-metadata';
@@ -52,10 +54,39 @@ class MyProvider extends React.Component<Props> {
 
 const { store /*, persistor */ } = configureStore({} as AppState);
 
+function cleanupRealm() {
+  InteractionManager.runAfterInteractions(() => {
+    try {
+      const SCHEMA_VERSION = 63;
+      const realm = new Realm({
+        schema: [],
+        schemaVersion: SCHEMA_VERSION,
+        migration: (oldRealm, newRealm) => {
+          if (oldRealm.schemaVersion < SCHEMA_VERSION) {
+          }
+        },
+      });
+      realm.write(() => {
+        realm.deleteModel('Card');
+        realm.deleteModel('EncounterSet');
+        realm.deleteModel('FaqEntry');
+        realm.deleteModel('TabooSet');
+        realm.deleteAll();
+      });
+    } catch (e) {
+      // DGAF
+    }
+  });
+}
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app: App | null = null;
 Navigation.events().registerAppLaunchedListener(() => {
-  const db = new Database(store.getState().cards.schemaVersion);
+  const schemaVersion = store.getState()?.cards?.schemaVersion;
+  //if (!schemaVersion) {
+    cleanupRealm();
+  //}
+  const db = new Database(schemaVersion);
   registerScreens(MyProvider, { redux: store, database: db });
   db.reloadPlayerCards();
   app = new App(store);

@@ -195,7 +195,7 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
   render() {
     const { deck } = this.props;
     return (
-      <DbRender getData={this._getStoryCards} ids={[deck && deck.slots]}>
+      <DbRender name="story-cards" getData={this._getStoryCards} ids={[deck && deck.slots]}>
         { this._render }
       </DbRender>
     );

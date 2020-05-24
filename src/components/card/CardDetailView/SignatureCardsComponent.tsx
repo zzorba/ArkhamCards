@@ -135,7 +135,7 @@ class SignatureCardsComponent extends React.Component<Props> {
   render() {
     const { investigator } = this.props;
     return (
-      <DbRender getData={this._getSignatureCards} ids={[investigator.id]}>
+      <DbRender name="sig" getData={this._getSignatureCards} ids={[investigator.id]}>
         { this._render }
       </DbRender>
     );

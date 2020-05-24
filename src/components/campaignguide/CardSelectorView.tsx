@@ -4,6 +4,7 @@ import { forEach, keys, map, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
+import QueryProvider from 'components/data/QueryProvider';
 import BasicButton from 'components/core/BasicButton';
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import CardSectionHeader from 'components/core/CardSectionHeader';
@@ -83,6 +84,22 @@ class CardSelectorView extends React.Component<Props, State> {
     });
   };
 
+  static storyCardsQuery({ query }: { query?: Brackets }) {
+    return combineQueries(
+      where('c.encounter_code is not null'),
+      query ? [query] : [],
+      'and'
+    );
+  }
+
+  static normalCardsQuery({ query }: { query?: Brackets }) {
+    return combineQueries(
+      where('c.encounter_code is null'),
+      query ? [query] : [],
+      'and'
+    );
+  }
+
   renderStoryCards() {
     const { fontScale, query } = this.props;
     const { storyToggle } = this.state;
@@ -100,15 +117,13 @@ class CardSelectorView extends React.Component<Props, State> {
           fontScale={fontScale}
           section={{ title: t`Story assets` }}
         />
-        <CardQueryWrapper
-          query={combineQueries(
-            where('c.encounter_code is not null'),
-            query ? [query] : [],
-            'and'
-          )}
-        >
-          { this._render }
-        </CardQueryWrapper>
+        <QueryProvider query={query} getQuery={CardSelectorView.storyCardsQuery}>
+          { query => (
+            <CardQueryWrapper name="other-selector" query={query}>
+              { this._render }
+            </CardQueryWrapper>
+          ) }
+        </QueryProvider>
       </>
     );
   }
@@ -117,15 +132,13 @@ class CardSelectorView extends React.Component<Props, State> {
     const { query, includeStoryToggle } = this.props;
     return (
       <ScrollView>
-        <CardQueryWrapper
-          query={combineQueries(
-            where('c.encounter_code is null'),
-            query ? [query] : [],
-            'and'
-          )}
-        >
-          {this._render}
-        </CardQueryWrapper>
+        <QueryProvider query={query} getQuery={CardSelectorView.normalCardsQuery}>
+          { query => (
+            <CardQueryWrapper name="normal-selector" query={query}>
+              {this._render}
+            </CardQueryWrapper>
+          ) }
+        </QueryProvider>
         { includeStoryToggle && this.renderStoryCards() }
       </ScrollView>
     );
