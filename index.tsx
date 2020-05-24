@@ -22,92 +22,29 @@ interface Props {
   };
 }
 
-interface State {
-  tabooSets: TabooSet[];
-  playerCards: {
-    [key: string]: PlayerCards;
+class MyProvider extends React.Component<Props> {
+  _playerCardsChanged = () => {
+    this.forceUpdate();
   };
-}
 
-class MyProvider extends React.Component<Props, State> {
-
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      tabooSets: [],
-      playerCards: {},
-    };
-    this._syncPlayerCards();
+  componentDidMount() {
+    this.props.store.database.addListener(this._playerCardsChanged)
   }
 
-  _syncPlayerCards = async () => {
-    const {
-      store: {
-        database,
-      },
-    } = this.props;
-    const tabooSets = await (await database.tabooSets()).createQueryBuilder().getMany();
-    const qb = await database.cardsQuery();
-    const cards = await qb.where(PLAYER_CARDS_QUERY).getMany();
-    const playerCards: {
-      [key: string]: PlayerCards
-    } = {};
-    const cardsByTaboo = mapValues(
-      groupBy(cards, card => card.taboo_set_id || 0),
-      allCards => {
-        const investigators: CardsMap = {};
-        const cards: CardsMap = {};
-        forEach(allCards, card => {
-          cards[card.code] = card;
-          if (card.type_code === 'investigator') {
-            investigators[card.code] = card;
-          }
-        });
-        return {
-          investigators,
-          cards,
-        };
-      }
-    );
-    forEach(cardsByTaboo, (tabooSet, tabooSetId) => {
-      if (tabooSetId === '0') {
-        playerCards[tabooSetId] = tabooSet;
-      } else {
-        const baseTaboos = cardsByTaboo['0'];
-        playerCards[tabooSetId] = {
-          investigators: {
-            ...baseTaboos.investigators,
-            ...tabooSet.investigators,
-          },
-          cards: {
-            ...baseTaboos.cards,
-            ...tabooSet.cards,
-          },
-        };
-      }
-    });
-    this.setState({
-      playerCards,
-      tabooSets,
-    });
-  };
+  componentWillUnmount() {
+    this.props.store.database.removeListener(this._playerCardsChanged);
+  }
 
   render() {
     const {
       store: { database, redux },
       children,
     } = this.props;
-    const {
-      playerCards,
-      tabooSets,
-    } = this.state;
     return (
       <DatabaseContext.Provider value={{
         db: database,
-        playerCardsByTaboo: playerCards,
-        tabooSets,
+        playerCardsByTaboo: database.state?.playerCards,
+        tabooSets: database.state?.tabooSets,
       }}>
         <Provider store={redux}>
           { children }
@@ -119,6 +56,7 @@ class MyProvider extends React.Component<Props, State> {
 
 const { store /* , persistor */ } = configureStore({});
 const db = new Database();
+db.reloadPlayerCards();
 registerScreens(MyProvider, { redux: store, database: db });
 
 /* eslint-disable @typescript-eslint/no-unused-vars */

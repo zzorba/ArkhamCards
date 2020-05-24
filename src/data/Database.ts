@@ -1,4 +1,4 @@
-import { findIndex, forEach } from 'lodash';
+import { findIndex, forEach, pull } from 'lodash';
 import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm/browser';
 
 import Card from './Card';
@@ -6,10 +6,17 @@ import EncounterSet from './EncounterSet';
 import FaqEntry from './FaqEntry';
 import TabooSet from './TabooSet'
 import { QuerySort } from './types';
-import { tabooSetQuery, PLAYER_CARDS_QUERY } from './query';
+import { tabooSetQuery } from './query';
+import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
+
+type DatabaseListener = () => void;
 
 export default class Database {
   connectionP: Promise<Connection>;
+
+  state?: PlayerCardState;
+  listeners: DatabaseListener[] = [];
+
   constructor() {
     this.connectionP = createConnection({
       type: 'react-native',
@@ -31,6 +38,25 @@ export default class Database {
       ],
     });
   }
+
+  addListener(change: () => void) {
+    this.listeners.push(change);
+  }
+
+  removeListener(change: () => void) {
+    pull(this.listeners, change);
+  }
+
+  reloadPlayerCards() {
+    console.log('RELOADING PLAYER CARDS');
+    return syncPlayerCards(this, this._updatePlayerCards);
+  }
+
+  private _updatePlayerCards = (state: PlayerCardState) => {
+    console.log('PLAYER CARDS UDPATED');
+    this.state = state;
+    forEach(this.listeners, listener => listener());
+  };
 
   async cards(): Promise<Repository<Card>> {
     const connection = await this.connectionP;

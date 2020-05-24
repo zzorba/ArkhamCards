@@ -31,7 +31,7 @@ export default function withPlayerCards<Props>(
       tabooSetId: getTabooSet(state, props.tabooSetOverride),
     };
   };
-  class WrappingComponent extends React.Component<Props & ReduxProps & PlayerCardProps> {
+  class WrappingComponent extends React.Component<Props & ReduxProps> {
     static contextType = DatabaseContext;
     context!: DatabaseContextType;
 

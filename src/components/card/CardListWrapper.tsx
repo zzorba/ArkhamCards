@@ -8,7 +8,7 @@ import FilterBuilder from 'lib/filters';
 interface OwnProps<T> {
   cards: string[];
   extraArg: T;
-  children: (cards: Card[], extraArg: T) => React.ReactNode;
+  children: (cards: Card[], extraArg: T) => React.ReactNode | null;
 }
 
 type Props<T> = OwnProps<T>;
@@ -27,7 +27,7 @@ export default class CardListWrapper<T> extends React.Component<Props<T>> {
         extraArg={extraArg}
       >
         { children }
-        </CardQueryWrapper>
+      </CardQueryWrapper>
     );
   }
 }

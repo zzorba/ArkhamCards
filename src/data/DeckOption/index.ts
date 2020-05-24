@@ -10,8 +10,6 @@ import { FactionCodeType, TypeCodeType } from 'constants';
 import FilterBuilder from 'lib/filters';
 import { combineQueriesOpt, where } from 'data/query';
 
-const FILTER_BUILDER = new FilterBuilder('deck');
-
 export default class DeckOption {
   @Column('simple-array', { nullable: true })
   public type_code?: TypeCodeType[];
@@ -70,47 +68,6 @@ export default class DeckOption {
     return !!(option.deck_size_select && option.deck_size_select.length > 0);
   }
 
-  private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
-    if (this.faction_select && this.faction_select.length) {
-      if (
-        meta &&
-        meta.faction_selected &&
-        indexOf(this.faction_select, meta.faction_selected) !== -1
-      ) {
-        // If we have a deck select ONLY the ones they specified.
-        // If not select them all.
-        return FILTER_BUILDER.factionFilter([meta.faction_selected]);
-      }
-      return FILTER_BUILDER.factionFilter(this.faction_select);
-    }
-    return [];
-  }
-
-  private textClause(): Brackets[] {
-    if (this.text && this.text.length && (
-      this.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
-      this.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
-      this.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror'
-    )) {
-      return [where('c.heals_horror = true')];
-    }
-    return [];
-  }
-
-  toQuery(meta?: DeckMeta): Brackets | undefined {
-    const clauses: Brackets[] = [
-      ...FILTER_BUILDER.factionFilter(this.faction || []),
-      ...this.selectedFactionFilter(meta),
-      ...FILTER_BUILDER.slotFilter(this.slot || []),
-      ...FILTER_BUILDER.equalsVectorClause(this.uses || [], 'uses'),
-      ...this.textClause(),
-      ...FILTER_BUILDER.traitFilter(this.trait || []),
-      ...(this.level ? FILTER_BUILDER.rangeFilter('xp', [this.level.min, this.level.max], true) : []),
-      ...FILTER_BUILDER.equalsVectorClause(this.type_code || [], 'type_code')
-    ];
-    return combineQueriesOpt(clauses, 'and', !!this.not);
-  }
-
   static parseList(jsonList: any[]): DeckOption[] {
     return map(jsonList, DeckOption.parse);
   }
@@ -144,5 +101,56 @@ export default class DeckOption {
     }
 
     return deck_option;
+  }
+}
+
+export class DeckOptionQueryBuilder {
+  option: DeckOption;
+  filterBuilder: FilterBuilder;
+
+  constructor(option: DeckOption, index: number) {
+    this.option = option;
+    this.filterBuilder = new FilterBuilder(`deck${index}`);
+  }
+
+  private selectedFactionFilter(meta?: DeckMeta): Brackets[] {
+    if (this.option.faction_select && this.option.faction_select.length) {
+      if (
+        meta &&
+        meta.faction_selected &&
+        indexOf(this.option.faction_select, meta.faction_selected) !== -1
+      ) {
+        // If we have a deck select ONLY the ones they specified.
+        // If not select them all.
+        return this.filterBuilder.factionFilter([meta.faction_selected]);
+      }
+      return this.filterBuilder.factionFilter(this.option.faction_select);
+    }
+    return [];
+  }
+
+  private textClause(): Brackets[] {
+    if (this.option.text && this.option.text.length && (
+      this.option.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror'
+    )) {
+      return [where('c.heals_horror = true')];
+    }
+    return [];
+  }
+
+  toQuery(meta?: DeckMeta): Brackets | undefined {
+    const clauses: Brackets[] = [
+      ...this.filterBuilder.factionFilter(this.option.faction || []),
+      ...this.selectedFactionFilter(meta),
+      ...this.filterBuilder.slotFilter(this.option.slot || []),
+      ...this.filterBuilder.equalsVectorClause(this.option.uses || [], 'uses'),
+      ...this.textClause(),
+      ...this.filterBuilder.traitFilter(this.option.trait || []),
+      ...(this.option.level ? this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true) : []),
+      ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code')
+    ];
+    return combineQueriesOpt(clauses, 'and', !!this.option.not);
   }
 }

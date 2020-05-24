@@ -60,6 +60,7 @@ export function fetchCards(
             lang,
             taboosCache(getState(), lang)
           );
+          db.reloadPlayerCards();
           dispatch({
             type: CARD_FETCH_SUCCESS,
             cache: cardCache || undefined,

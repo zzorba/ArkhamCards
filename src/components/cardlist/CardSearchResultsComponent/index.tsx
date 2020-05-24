@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
+import deepDiff from 'deep-diff';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -23,7 +24,6 @@ import Card from 'data/Card';
 import typography from 'styles/typography';
 import space from 'styles/space';
 import COLORS from 'styles/colors';
-import deepDiff from 'deep-diff';
 
 interface Props {
   componentId: string;
@@ -101,12 +101,12 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     } = props;
     const updatedState: Partial<State> = {};
     if (baseQuery !== state.baseQuery) {
-      //console.log('RERENDER: baseQuery changed');
+      console.log('RERENDER: baseQuery changed');
       updatedState.baseQuery = baseQuery;
       updatedState.query = CardSearchResultsComponent.query(props);
     }
     if (filters && filters !== state.filters && !!deepDiff(filters, state.filters)) {
-      //console.log(`RERENDER: filters changed: ${JSON.stringify(state.filters)} vs ${JSON.stringify(filters)}`);
+      console.log(`RERENDER: filters changed: ${JSON.stringify(state.filters)} vs ${JSON.stringify(filters)}`);
       updatedState.filters = filters;
       updatedState.filterQuery = filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
     }

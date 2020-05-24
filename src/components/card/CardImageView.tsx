@@ -1,16 +1,14 @@
 import React from 'react';
-import { head } from 'lodash';
 import {
   StyleSheet,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
 import FastImage from 'react-native-fast-image';
-import { connectRealm, CardResults } from 'react-native-realm';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
@@ -19,19 +17,11 @@ import { HEADER_HEIGHT } from 'styles/sizes';
 import COLORS from 'styles/colors';
 import { NavigationProps } from 'components/nav/types';
 
-interface RealmProps {
-  card?: Card;
-}
-
 export interface CardImageProps {
   id: string;
 }
 
-interface ReduxProps {
-  tabooSetId?: number;
-}
-
-type Props = CardImageProps & NavigationProps & DimensionsProps & ReduxProps & RealmProps;
+type Props = CardImageProps & NavigationProps & DimensionsProps;
 
 interface State {
   flipped: boolean;
@@ -39,35 +29,15 @@ interface State {
 
 class CardImageView extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
+  doubleCard: boolean = false;
 
   constructor(props: Props) {
     super(props);
 
-    const doubleCard: boolean = !!props.card && (
-      props.card.double_sided ||
-      !!(props.card.linked_card && props.card.linked_card.imagesrc)
-    );
-
     this.state = {
-      flipped: !!props.card && (
-        props.card.type_code === 'investigator' ||
-        props.card.type_code === 'act' ||
-        props.card.type_code === 'agenda' ||
-        (doubleCard && !!props.card.hidden)),
+      flipped: false,
     };
 
-    if (doubleCard) {
-      Navigation.mergeOptions(props.componentId, {
-        topBar: {
-          rightButtons: [{
-            id: 'flip',
-            icon: iconsMap.flip_card,
-            color: COLORS.navButton,
-            testID: t`Flip Card`,
-          }],
-        },
-      });
-    }
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -87,24 +57,39 @@ class CardImageView extends React.Component<Props, State> {
     });
   };
 
-  renderContent() {
+  _renderContent = (card: Card) => {
     const {
-      card,
+      componentId,
       height,
       width,
     } = this.props;
     const {
       flipped,
     } = this.state;
-    if (!card) {
-      return null;
+
+    const doubleCard: boolean = card.double_sided ||
+      !!(card.linked_card && card.linked_card.imagesrc)
+    if (doubleCard !== this.doubleCard) {
+      this.doubleCard = doubleCard;
+      if (doubleCard) {
+        Navigation.mergeOptions(componentId, {
+          topBar: {
+            rightButtons: [{
+              id: 'flip',
+              icon: iconsMap.flip_card,
+              color: COLORS.navButton,
+              testID: t`Flip Card`,
+            }],
+          },
+        });
+      }
     }
 
     const cardRatio = 68 / 95;
     const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
     const cardWidth = width - 16;
     if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {
-      if (flipped) {
+      if (!flipped) {
         return (
           <ViewControl
             cropWidth={width}
@@ -163,9 +148,12 @@ class CardImageView extends React.Component<Props, State> {
   }
 
   render() {
+    const { id } = this.props;
     return (
       <View style={styles.container}>
-        { this.renderContent() }
+        <SingleCardWrapper code={id} extraArg={undefined}>
+          { this._renderContent }
+        </SingleCardWrapper>
       </View>
     );
   }
@@ -177,24 +165,7 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & CardImageProps, AppState>(
-  mapStateToProps
-)(connectRealm<CardImageProps & NavigationProps & ReduxProps, RealmProps, Card>(
-  withDimensions(CardImageView), {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: CardImageProps & NavigationProps & ReduxProps
-    ) {
-      const card =
-        head(results.cards.filtered(`(code == "${props.id}") and ${Card.tabooSetQuery(props.tabooSetId)}`));
-      return {
-        card,
-      };
-    },
-  })
-);
+export default withDimensions(CardImageView);
 
 const styles = StyleSheet.create({
   container: {

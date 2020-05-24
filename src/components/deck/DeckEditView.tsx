@@ -5,7 +5,8 @@ import { Brackets } from 'typeorm/browser';
 import { Deck, DeckMeta, Slots } from 'actions/types';
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from 'constants';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import CardSearchComponent from '../cardlist/CardSearchComponent';
+import CardSearchComponent from 'components/cardlist/CardSearchComponent';
+import QueryProvider from 'components/data/QueryProvider';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from 'lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from 'lib/filters';
@@ -120,27 +121,31 @@ class DeckEditView extends React.Component<Props, State> {
     );
   }
 
-  baseQuery(): Brackets {
-    const {
-      meta,
-      storyOnly,
-    } = this.props;
-    const {
-      deckCardCounts,
-    } = this.state;
-    const investigator = this.investigator();
+  static baseQuery({
+    meta,
+    storyOnly,
+    versatile,
+    onYourOwn,
+    investigator,
+  }: {
+    meta: DeckMeta;
+    storyOnly?: boolean;
+    versatile: boolean;
+    onYourOwn: boolean;
+    investigator: Card;
+  }): Brackets {
     if (storyOnly) {
       return combineQueries(
         STORY_CARDS_QUERY,
-        [where(`subtype_code != 'basicweakness'`)],
+        [where(`c.subtype_code != 'basicweakness'`)],
         'and'
       );
     }
-    const investigatorPart = investigator && queryForInvestigator(investigator, meta);
+    const investigatorPart = queryForInvestigator(investigator, meta);
     const parts: Brackets[] = [
       ...(investigatorPart ? [investigatorPart] : []),
     ];
-    if (deckCardCounts[VERSATILE_CODE] > 0) {
+    if (versatile) {
       const versatileQuery = new FilterBuilder('versatile').filterToQuery({
         ...defaultFilterState,
         factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
@@ -148,7 +153,7 @@ class DeckEditView extends React.Component<Props, State> {
         levelEnabled: true,
       });
       if (versatileQuery) {
-        const invertedClause = investigator && negativeQueryForInvestigator(investigator, meta);
+        const invertedClause = negativeQueryForInvestigator(investigator, meta);
         if (invertedClause) {
           parts.push(
             new Brackets(qb => qb.where(invertedClause).andWhere(versatileQuery))
@@ -163,7 +168,7 @@ class DeckEditView extends React.Component<Props, State> {
       parts,
       'or'
     );
-    if (deckCardCounts[ON_YOUR_OWN_CODE] > 0) {
+    if (onYourOwn) {
       return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
     }
     return joinedQuery;
@@ -175,23 +180,39 @@ class DeckEditView extends React.Component<Props, State> {
       tabooSetId,
       deck,
       storyOnly,
+      meta,
     } = this.props;
     const {
       deckCardCounts,
     } = this.state;
+    const investigator = this.investigator();
+    if (!investigator) {
+      return null;
+    }
     return (
-      <CardSearchComponent
-        componentId={componentId}
-        tabooSetOverride={tabooSetId}
-        baseQuery={this.baseQuery()}
-        originalDeckSlots={deck.slots}
-        investigator={this.investigator()}
-        deckCardCounts={deckCardCounts}
-        onDeckCountChange={this._onDeckCountChange}
-        renderFooter={this._renderFooter}
+      <QueryProvider
+        meta={meta}
         storyOnly={storyOnly}
-        modal
-      />
+        investigator={investigator}
+        versatile={deckCardCounts[VERSATILE_CODE] > 0}
+        onYourOwn={deckCardCounts[ON_YOUR_OWN_CODE] > 0}
+        getQuery={DeckEditView.baseQuery}
+      >
+        { (query) => (
+          <CardSearchComponent
+            componentId={componentId}
+            tabooSetOverride={tabooSetId}
+            baseQuery={query}
+            originalDeckSlots={deck.slots}
+            investigator={investigator}
+            deckCardCounts={deckCardCounts}
+            onDeckCountChange={this._onDeckCountChange}
+            renderFooter={this._renderFooter}
+            storyOnly={storyOnly}
+            modal
+          />
+        ) }
+      </QueryProvider>
     );
   }
 }

@@ -1,13 +1,10 @@
 import React from 'react';
-import { head } from 'lodash';
 import {
   Linking,
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import Realm from 'realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 

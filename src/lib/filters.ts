@@ -338,7 +338,7 @@ export default class FilterBuilder {
     return this.complexVectorClause(
       'trait',
       map(traits, trait => `%#${trait}#%`),
-      (valueName: string) => `c.traits_normalized LIKE :${valueName} OR linked_card.traits_normalized LIKE :${valueName}`
+      (valueName: string) => `c.traits_normalized LIKE :${valueName} OR (linked_card.traits_normalized is not null AND linked_card.traits_normalized LIKE :${valueName})`
     );
   }
 

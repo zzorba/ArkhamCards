@@ -52,7 +52,7 @@ import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import { updateCampaign } from 'components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from 'components/core/withPlayerCards';
 import { FACTION_DARK_GRADIENTS } from 'constants';
-import Card from 'data/Card';
+import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
@@ -100,17 +100,6 @@ interface ReduxProps {
     [pack_code: string]: boolean;
   };
 }
-
-interface UpgradeCardProps {
-  cardsByName: {
-    [name: string]: Card[];
-  };
-  bondedCardsByName: {
-    [name: string]: Card[];
-  };
-  parallelInvestigators: Card[];
-}
-
 interface ReduxActionProps {
   fetchPrivateDeck: (id: number) => void;
   fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
@@ -129,7 +118,6 @@ type Props = NavigationProps &
   TraumaProps &
   LoginStateProps &
   InjectedDialogProps &
-  UpgradeCardProps &
   DimensionsProps;
 
 interface State {
@@ -153,9 +141,66 @@ interface State {
   upgradeCard?: Card;
   menuOpen: boolean;
   tabooOpen: boolean;
+
+  // Derived State
+  calculatedCards: CardsMap;
+  cardsByName: {
+    [name: string]: Card[];
+  };
+  bondedCardsByName: {
+    [name: string]: Card[];
+  };
+  calculatedInvestigators: CardsMap;
+  calculatedDeckInvestigator?: string;
+  parallelInvestigators: Card[];
 }
 
 class DeckDetailView extends React.Component<Props, State> {
+  static getDerivedStateFromProps(props: Props, state: State) {
+    const result: Partial<State> = {};
+    if (props.cards !== state.calculatedCards) {
+      const cardsByName: {
+        [name: string]: Card[];
+      } = {};
+      const bondedCardsByName: {
+        [name: string]: Card[];
+      } = {};
+      forEach(props.cards, card => {
+        if (cardsByName[card.real_name]) {
+          cardsByName[card.real_name].push(card);
+        } else {
+          cardsByName[card.real_name] = [card];
+        }
+        if (card.bonded_name) {
+          if (bondedCardsByName[card.bonded_name]) {
+            bondedCardsByName[card.bonded_name].push(card);
+          } else {
+            bondedCardsByName[card.bonded_name] = [card];
+          }
+        }
+      });
+      result.calculatedCards = props.cards;
+      result.bondedCardsByName = bondedCardsByName;
+      result.cardsByName = cardsByName;
+    }
+
+    if (props.investigators !== state.calculatedInvestigators ||
+      props.deck?.investigator_code !== state.calculatedDeckInvestigator
+    ) {
+      const investigator = props.deck && props.deck.investigator_code;
+      const parallelInvestigators: Card[] = [];
+      forEach(props.investigators, card => {
+        if (investigator && card.alternate_of_code === investigator) {
+          parallelInvestigators.push(card);
+        }
+      });
+      result.calculatedDeckInvestigator = props.deck?.investigator_code;
+      result.parallelInvestigators = parallelInvestigators;
+      result.calculatedInvestigators = props.investigators;
+    }
+    return result;
+  }
+
   _navEventListener?: EventSubscription;
   _uploadLocalDeck!: (isRetry?: boolean) => void;
   _saveEditsAndDismiss!: (isRetry?: boolean) => void;
@@ -178,6 +223,12 @@ class DeckDetailView extends React.Component<Props, State> {
       editDetailsVisible: false,
       menuOpen: false,
       tabooOpen: false,
+      // Derived state.
+      parallelInvestigators: [],
+      calculatedInvestigators: {},
+      calculatedCards: {},
+      bondedCardsByName: {},
+      cardsByName: {},
     };
 
     this._uploadLocalDeck = throttle(this.uploadLocalDeck.bind(this), 200);
@@ -274,18 +325,6 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    /*
-    forEach(this.props, (val, key) => {
-      if (prevProps[key] !== val) {
-        console.log(`Prop '${key}' changed`);
-      }
-    });
-    if (this.state) {
-      forEach(this.state, (val, key) => {
-        prevState[key] !== val && console.log(`State '${key}' changed`)
-      });
-    }
-    */
     const {
       deck,
       id,
@@ -294,6 +333,7 @@ class DeckDetailView extends React.Component<Props, State> {
       fetchPrivateDeck,
       fetchPublicDeck,
       tabooSetOverride,
+      cards,
     } = this.props;
     if (deck !== prevProps.deck) {
       if (!deck) {
@@ -319,7 +359,8 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     if (deck && (!deck.previous_deck || previousDeck)) {
       if (deck !== prevProps.deck ||
-        previousDeck !== prevProps.previousDeck
+        previousDeck !== prevProps.previousDeck ||
+        cards !== prevProps.cards
       ) {
         this.loadCards(deck, previousDeck);
       } else if (tabooSetOverride !== prevProps.tabooSetOverride) {
@@ -997,10 +1038,14 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       slots,
       loaded,
+      parsedDeck,
     } = this.state;
-    if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
-      findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1 ||
-    (!loaded && keys(slots).length === 0 && keys(deck.slots).length === 0)) {
+    if (!keys(cards).length) {
+      return;
+    }
+    const addedCard = findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1;
+    const removedCard = findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1;
+    if (addedCard || removedCard || !loaded || !parsedDeck) {
       const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
       this.setState({
         slots: deck.slots,
@@ -1274,7 +1319,6 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       componentId,
       cards,
-      cardsByName,
       previousDeck,
     } = this.props;
     const {
@@ -1283,6 +1327,7 @@ class DeckDetailView extends React.Component<Props, State> {
       meta,
       xpAdjustment,
       ignoreDeckLimitSlots,
+      cardsByName,
     } = this.state;
 
     if (!parsedDeck) {
@@ -1655,15 +1700,15 @@ class DeckDetailView extends React.Component<Props, State> {
       login,
       showTraumaDialog,
       investigatorDataUpdates,
-      cardsByName,
       singleCardView,
-      bondedCardsByName,
       width,
       inCollection,
       hideCampaign,
-      parallelInvestigators,
     } = this.props;
     const {
+      cardsByName,
+      bondedCardsByName,
+      parallelInvestigators,
       nameChange,
       hasPendingEdits,
       xpAdjustment,
@@ -1832,49 +1877,14 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
     mapStateToProps,
     mapDispatchToProps
   )(
-    withPlayerCards<ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps, UpgradeCardProps>(
+    withPlayerCards<ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps>(
       withTraumaDialog(
         withDialogs(
           withLoginState(
             withDimensions(DeckDetailView)
           )
         )
-      ),
-      (
-        cards: Results<Card>,
-        props: ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps
-      ) => {
-        const investigator = props.deck && props.deck.investigator_code;
-        const parallelInvestigators: Card[] = [];
-        const cardsByName: {
-          [name: string]: Card[];
-        } = {};
-        const bondedCardsByName: {
-          [name: string]: Card[];
-        } = {};
-        forEach(cards, card => {
-          if (investigator && card.alternate_of_code === investigator) {
-            parallelInvestigators.push(card);
-          }
-          if (cardsByName[card.real_name]) {
-            cardsByName[card.real_name].push(card);
-          } else {
-            cardsByName[card.real_name] = [card];
-          }
-          if (card.bonded_name) {
-            if (bondedCardsByName[card.bonded_name]) {
-              bondedCardsByName[card.bonded_name].push(card);
-            } else {
-              bondedCardsByName[card.bonded_name] = [card];
-            }
-          }
-        });
-        return {
-          cardsByName,
-          bondedCardsByName,
-          parallelInvestigators,
-        };
-      }
+      )
     )
   )
 );

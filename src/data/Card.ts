@@ -1,5 +1,5 @@
 import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
-import { forEach, filter, keys, map } from 'lodash';
+import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
 import { TraumaAndCardData } from 'actions/types';
@@ -7,6 +7,7 @@ import { BASIC_SKILLS, FactionCodeType, TypeCodeType, SkillCodeType } from 'cons
 import CardRestriction from './CardRestriction';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
+import { IndexMetadata } from 'typeorm/browser/metadata/IndexMetadata';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
@@ -170,6 +171,8 @@ export default class Card {
   public health_per_investigator?: boolean;
   @Column('integer', { nullable: true })
   public sanity?: number;
+
+  @Index()
   @Column('integer', { nullable: true })
   public deck_limit?: number;
   @Column('text', { nullable: true })
@@ -221,15 +224,18 @@ export default class Card {
   @Column('text', { nullable: true })
   public linked_to_name?: string;
 
-  // Parsed data (from original)
-  @Column('simple-json', { nullable: true })
-  public restrictions?: CardRestriction;
+  @Column('simple-array', { nullable: true })
+  public restrictions_all_investigators?: string[];
+  @Column('text', { nullable: true })
+  public restrictions_investigator?: string;
+
   @Column('simple-json', { nullable: true })
   public deck_requirements?: DeckRequirement;
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
   @ManyToOne(type => Card, card => card.id)
+  @Index()
   @JoinColumn()
   public linked_card?: Card;
 
@@ -390,11 +396,20 @@ export default class Card {
     return [];
   }
 
-  static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {
+  static parseRestrictions(json?: {
+    investigator?: {
+      [key: string]: string;
+    };
+  }): Partial<Card> | undefined {
     if (json && json.investigator && keys(json.investigator).length) {
-      return CardRestriction.parse(json);
+      const investigators = keys(json.investigator);
+      const mainInvestigator = min(investigators);
+      return {
+        restrictions_all_investigators: investigators,
+        restrictions_investigator: mainInvestigator,
+      };
     }
-    return null;
+    return undefined;
   }
 
   static factionHeaderOrder() {
@@ -629,6 +644,7 @@ export default class Card {
         map(json.slot.split('.'), slot => slot.toLowerCase().trim()),
         slot => slot),
       slot => `#${slot}#`).join(',') : null;
+
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
@@ -686,11 +702,11 @@ export default class Card {
       bonded_name,
       cycle_name: (cycle_pack && cycle_pack.name) || json.pack_name,
       cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
-      has_restrictions: !!restrictions,
+      has_restrictions: !!restrictions && !!restrictions.restrictions_investigator,
+      ...restrictions,
       seal,
       myriad,
       advanced,
-      restrictions,
       heals_horror,
       sort_by_type,
       sort_by_faction,

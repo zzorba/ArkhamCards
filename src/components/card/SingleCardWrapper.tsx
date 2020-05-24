@@ -9,7 +9,7 @@ import Card from 'data/Card';
 interface Props<T = undefined> {
   code: string;
   extraArg: T;
-  children: (card: Card, extraArg: T) => React.ReactNode;
+  children: (card: Card, extraArg: T) => React.ReactNode | null;
 }
 
 export default class SingleCardWrapper<T = undefined> extends React.Component<Props<T>> {
