@@ -53,8 +53,6 @@ class FetchCardsGate extends React.Component<Props> {
   context!: DatabaseContextType;
 
   async cardCount() {
-    //return 10;
-    console.log('Counting Cards');
     const cards = await this.context.db.cards();
     return await cards.count();
   }
@@ -93,7 +91,9 @@ class FetchCardsGate extends React.Component<Props> {
 
   componentDidMount() {
     if (this.props.fetchNeeded) {
-      this._doFetch();
+      if (this.props.promptForUpdate){
+        this._doFetch();
+      }
       return;
     }
     this.cardCount().then(cardCount => {

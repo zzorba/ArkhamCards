@@ -1,4 +1,4 @@
-import { flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
+import { chunk, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 
@@ -49,7 +49,6 @@ export const syncTaboos = async function(
 
   const tabooSets: TabooSet[] = [];
   for (let i = 0; i < json.length; i++) {
-    console.log(i);
     const tabooJson = json[i];
     const cards = JSON.parse(tabooJson.cards);
     try {
@@ -62,7 +61,6 @@ export const syncTaboos = async function(
           .getOne();
         if (card) {
           const tabooCard = Card.placeholderTabooCard(tabooJson.id, card);
-          console.log(`Inserting ${tabooCard.id}`);
           cardsRep.insert(tabooCard);
         }
       }
@@ -106,13 +104,20 @@ export const syncTaboos = async function(
   };
 };
 
+async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<void>) {
+  const chunkThings = chunk(things, 10);
+  for (let i = 0; i < chunkThings.length; i++) {
+    const toInsert = chunkThings[i];
+    await insert(toInsert);
+  }
+}
+
 export const syncCards = async function(
   db: Database,
   packs: Pack[],
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
-  console.log('SYNC');
   const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
   const packsByCode: { [code: string]: Pack } = {};
@@ -195,11 +200,16 @@ export const syncCards = async function(
       }
     });
     const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
-    await cards.insert(normalCards);
+
+    await insertChunk(normalCards, async (c: EncounterSet[]) => {
+      await cards.insert(c);
+    });
     for (let i = 0; i < linkedCards.length; i++) {
       await cards.insert(linkedCards[i]);
     }
-    await encounterSets.insert(allEncounterSets);
+    await insertChunk(allEncounterSets, async (set: EncounterSet[]) => {
+      await encounterSets.insert(set);
+    });
 
     const playerCards = await cards.createQueryBuilder()
       .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
