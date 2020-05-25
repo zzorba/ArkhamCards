@@ -526,12 +526,13 @@ export default class FilterBuilder {
     return [];
   }
 
-  equalsVectorClause(values: string[], field: string): Brackets[] {
+  equalsVectorClause(values: string[], field: string, valuePrefix?: string[]): Brackets[] {
     if (values.length) {
+      const valueName = this.fieldName([...(valuePrefix || []), field]);
       return [
         where(
-          `c.${field} IN (:...${field}) OR linked_card.${field} IN (:...${field})`,
-          { [field]: values }
+          `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
+          { [valueName]: values }
         ),
       ];
     }

@@ -32,6 +32,7 @@ const LANGUAGES = [
   { label: 'Français', value: 'fr' },
   { label: '한국어', value: 'ko' },
   { label: 'Українська', value: 'uk' },
+  { label: 'Polski', value: 'pl' },
 ];
 
 class LanguagePicker extends React.Component<Props> {

@@ -12,7 +12,7 @@ interface Props {
   name: string;
   query?: Brackets;
   sort?: QuerySort[];
-  children: (cards: Card[]) => React.ReactNode;
+  children: (cards: Card[], loading: boolean) => React.ReactNode;
 }
 
 interface ReduxProps {
@@ -26,7 +26,7 @@ interface Data {
 class CardQueryWrapper extends React.Component<Props & ReduxProps> {
   _render = (data?: Data) => {
     const { children } = this.props;
-    return children(data ? data.cards : []);
+    return children(data ? data.cards : [], !data);
   };
 
   _getData = async(db: Database): Promise<Data> => {

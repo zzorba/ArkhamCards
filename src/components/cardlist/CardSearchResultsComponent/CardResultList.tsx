@@ -925,13 +925,14 @@ class CardResultList extends React.Component<Props, State> {
       filterQuery,
       termQuery,
       sort,
+      tabooSetId,
     } = this.props;
     const { refreshDeck } = this.state;
     return (
       <DbRender
         name="card-results"
         getData={this._updateResults}
-        ids={[query, filterQuery, termQuery, sort, refreshDeck]}
+        ids={[query, filterQuery, termQuery, sort, refreshDeck, tabooSetId]}
       >
         { this._renderResults }
       </DbRender>

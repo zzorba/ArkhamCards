@@ -12,7 +12,7 @@ import FilterBuilder from 'lib/filters';
 interface Props {
   codes: string[];
   type: 'player' | 'encounter';
-  children: (cards: Card[]) => React.ReactNode | null;
+  children: (cards: Card[], loading: boolean) => React.ReactNode | null;
 }
 
 type QueryProps = Pick<Props, 'codes'>
@@ -31,10 +31,10 @@ class CardListWrapper extends React.Component<Props & PlayerCardProps> {
     const { cards, investigators, codes, children, type } = this.props;
     if (type === 'player') {
       const playerCards = flatMap(codes, code => cards[code] || investigators[code] || []);
-      return children(playerCards);
+      return children(playerCards, false);
     }
     if (!codes.length) {
-      return children([]);
+      return children([], false);
     }
     return (
       <QueryProvider<QueryProps, Brackets | undefined>
