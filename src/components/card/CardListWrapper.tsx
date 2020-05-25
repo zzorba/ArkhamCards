@@ -39,7 +39,7 @@ class CardListWrapper extends React.Component<Props & PlayerCardProps> {
           <CardQueryWrapper name="card-list" query={query}>
             { children }
           </CardQueryWrapper>
-        )}
+        ) }
       </QueryProvider>
     );
   }

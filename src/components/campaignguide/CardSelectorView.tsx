@@ -135,7 +135,7 @@ class CardSelectorView extends React.Component<Props, State> {
         <QueryProvider query={query} getQuery={CardSelectorView.normalCardsQuery}>
           { query => (
             <CardQueryWrapper name="normal-selector" query={query}>
-              {this._render}
+              { this._render }
             </CardQueryWrapper>
           ) }
         </QueryProvider>

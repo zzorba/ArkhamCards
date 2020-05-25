@@ -1,5 +1,5 @@
 import React from 'react';
-import { keys, forEach, filter, indexOf, map, partition } from 'lodash';
+import { keys, forEach, filter, indexOf, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -588,12 +588,6 @@ export default connect(mapStateToProps)(
 );
 
 const styles = StyleSheet.create({
-  loadingWrapper: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   toggleStack: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',

@@ -1,9 +1,9 @@
-import { filter, flatMap, forEach, map } from 'lodash';
+import { flatMap } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
 import { DeckMeta } from 'actions/types';
 import Card from 'data/Card';
-import DeckOption, { DeckOptionQueryBuilder } from 'data/DeckOption';
+import { DeckOptionQueryBuilder } from 'data/DeckOption';
 import { combineQueries, combineQueriesOpt, where } from 'data/query';
 
 

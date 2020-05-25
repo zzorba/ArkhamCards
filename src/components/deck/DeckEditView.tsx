@@ -1,5 +1,4 @@
 import React from 'react';
-import { forEach, head } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from 'actions/types';
@@ -11,7 +10,7 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { queryForInvestigator, negativeQueryForInvestigator } from 'lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from 'lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from 'data/query';
-import Card, { CardsMap } from 'data/Card';
+import Card from 'data/Card';
 import { parseDeck } from 'lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
 import { NavigationProps } from 'components/nav/types';

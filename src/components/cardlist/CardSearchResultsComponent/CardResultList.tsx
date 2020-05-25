@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import {
   concat,
-  debounce,
   flatMap,
   filter,
   forEach,
@@ -54,7 +53,7 @@ import {
   Slots,
 } from 'actions/types';
 import { QuerySort } from 'data/types';
-import { combineQueries, combineQueriesOpt, where } from 'data/query';
+import { combineQueries, where } from 'data/query';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from 'reducers';
 import Card from 'data/Card';
 import { showCard, showCardSwipe } from 'components/nav/helper';
@@ -224,7 +223,8 @@ class CardResultList extends React.Component<Props, State> {
         if (scrollingUp) {
           if (this.hasPendingCountChanges) {
             this.hasPendingCountChanges = false;
-//            this._throttledUpdateResults();
+            // TODO: figure out how to make cards show up in edit mode better.
+            // this._throttledUpdateResults();
           }
           this.props.showHeader();
         } else {
@@ -356,7 +356,7 @@ class CardResultList extends React.Component<Props, State> {
         return [
           { s: 'c.cost', direction: 'ASC' },
           { s: 'c.renderName', direction: 'ASC' },
-          { s: 'c.xp', direction: 'ASC' }
+          { s: 'c.xp', direction: 'ASC' },
         ];
       case SORT_BY_PACK:
         return [
@@ -512,7 +512,7 @@ class CardResultList extends React.Component<Props, State> {
     return this.bucketCards(deckCards, 'deck');
   }
 
-  _updateResults = async (db: Database): Promise<DbState> => {
+  _updateResults = async(db: Database): Promise<DbState> => {
     const {
       componentId,
       query,

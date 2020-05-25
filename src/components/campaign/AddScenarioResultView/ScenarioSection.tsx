@@ -267,7 +267,7 @@ export default connect(mapStateToPropsFix, mapDispatchToProps)(
         cycleScenarios: props.cycleScenarios,
       };
     },
-    async (db: Database, props) => {
+    async(db: Database, props) => {
       const hasCompletedScenario = completedScenario(props.scenarioResults);
       const finishedScenarios = new Set(props.finishedScenarios);
       const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));

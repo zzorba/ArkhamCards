@@ -5,7 +5,6 @@ import TabooSet from './TabooSet';
 import Database from './Database';
 import { PlayerCards } from './DatabaseContext';
 import { PLAYER_CARDS_QUERY } from './query';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
 
 export interface PlayerCardState {
   playerCards: {
@@ -18,13 +17,11 @@ export default async function syncPlayerCards(
   db: Database,
   updateContext: (state: PlayerCardState) => void
 ) {
-  console.log('Syncing Player Cards')
   const tabooSets = await (await db.tabooSets()).createQueryBuilder().getMany();
   const qb = await db.cardsQuery();
   const cards = await qb.where(PLAYER_CARDS_QUERY).getMany();
-  console.log(`Player Cards Loaded: ${cards.length}`);
   const playerCards: {
-    [key: string]: PlayerCards
+    [key: string]: PlayerCards;
   } = {};
   const cardsByTaboo = mapValues(
     groupBy(cards, card => card.taboo_set_id || 0),

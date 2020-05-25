@@ -1,11 +1,7 @@
 import React from 'react';
-import { InteractionManager } from 'react-native';
-import { forEach, pick } from 'lodash';
+import { InteractionManager, StyleSheet, View } from 'react-native';
+import { pick } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
 import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation, EventSubscription } from 'react-native-navigation';

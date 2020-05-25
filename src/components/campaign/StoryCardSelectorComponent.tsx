@@ -34,7 +34,7 @@ interface StoryCards {
 }
 type Props = OwnProps & ReduxProps;
 interface State {
-  initialized: boolean,
+  initialized: boolean;
   storyCounts: Slots;
 }
 
@@ -146,7 +146,7 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     );
   };
 
-  _getStoryCards = async (db: Database): Promise<StoryCards> => {
+  _getStoryCards = async(db: Database): Promise<StoryCards> => {
     const {
       deck,
       tabooSetId,

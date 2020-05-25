@@ -1,7 +1,6 @@
 import React from 'react';
 import { forEach, flatMap } from 'lodash';
 import { connect } from 'react-redux';
-import { Results } from 'realm';
 
 import OddsCalculatorComponent from 'components/campaign/OddsCalculatorComponent';
 import { NavigationProps } from 'components/nav/types';
@@ -25,10 +24,6 @@ interface ReduxProps {
   campaign?: Campaign;
   cycleScenarios?: Scenario[];
   scenarioByCode?: { [code: string]: Scenario };
-}
-
-interface RealmProps {
-  scenarioCards?: Results<Card>;
 }
 
 type Props = NavigationProps & GuideOddsCalculatorProps & ReduxProps & PlayerCardProps & DimensionsProps;

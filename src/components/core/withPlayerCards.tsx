@@ -7,7 +7,6 @@ import TabooSet from 'data/TabooSet';
 import DatabaseContext, { PlayerCards, DatabaseContextType } from 'data/DatabaseContext';
 import { AppState, getTabooSet } from 'reducers';
 import COLORS from 'styles/colors';
-import { l, s } from 'styles/space';
 
 export interface PlayerCardProps extends PlayerCards {
   tabooSetId?: number;
@@ -66,7 +65,7 @@ export default function withPlayerCards<Props>(
           weaknessCards={playerCards ? playerCards.weaknessCards : []}
         />
       );
-    };
+    }
   }
   const result = connect<ReduxProps, {}, Props & TabooSetOverride, AppState>(mapStateToProps)(
     // @ts-ignore TS2345
@@ -85,15 +84,5 @@ const styles = StyleSheet.create({
   },
   spinner: {
     height: 80,
-  },
-  errorBlock: {
-    marginLeft: l,
-    marginRight: l,
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  error: {
-    color: 'red',
-    marginBottom: s,
   },
 });

@@ -243,7 +243,7 @@ export default withFilterFunctions(
       'enemyFightEnabled',
       'enemyEvade',
       'enemyEvadeEnabled',
-    ]
+    ],
   }
 );
 

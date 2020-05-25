@@ -103,7 +103,7 @@ class SignatureCardsComponent extends React.Component<Props> {
     );
   };
 
-  _getSignatureCards = async (db: Database) => {
+  _getSignatureCards = async(db: Database) => {
     const { investigator, tabooSetId } = this.props;
     const requirements = investigator.deck_requirements;
     const card_requirements = requirements && requirements.card;
@@ -121,7 +121,7 @@ class SignatureCardsComponent extends React.Component<Props> {
       code => `c.code = '${code}'`).join(' OR ');
 
     const alternateCards = alternateQuery ?
-      await  db.getCards(
+      await db.getCards(
         where(alternateQuery),
         tabooSetId
       ) : [];

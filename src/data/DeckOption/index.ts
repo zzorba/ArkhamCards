@@ -1,6 +1,5 @@
-import { Column } from 'typeorm/browser';
+import { Brackets, Column } from 'typeorm/browser';
 import { indexOf, map } from 'lodash';
-import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { DeckMeta } from 'actions/types';
@@ -149,7 +148,7 @@ export class DeckOptionQueryBuilder {
       ...this.textClause(),
       ...this.filterBuilder.traitFilter(this.option.trait || []),
       ...(this.option.level ? this.filterBuilder.rangeFilter('xp', [this.option.level.min, this.option.level.max], true) : []),
-      ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code')
+      ...this.filterBuilder.equalsVectorClause(this.option.type_code || [], 'type_code'),
     ];
     return combineQueriesOpt(clauses, 'and', !!this.option.not);
   }

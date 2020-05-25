@@ -29,15 +29,15 @@ class CardQueryWrapper extends React.Component<Props & ReduxProps> {
     return children(data ? data.cards : []);
   };
 
-  _getData = async (db: Database): Promise<Data> => {
-    const { query, tabooSetId, sort} = this.props;
+  _getData = async(db: Database): Promise<Data> => {
+    const { query, tabooSetId, sort } = this.props;
     if (!query) {
       return {
         cards: [],
       };
     }
     return {
-      cards:  await db.getCards(query, tabooSetId, sort),
+      cards: await db.getCards(query, tabooSetId, sort),
     };
   };
 
@@ -47,7 +47,7 @@ class CardQueryWrapper extends React.Component<Props & ReduxProps> {
       <DbRender name={name} getData={this._getData} ids={[query, tabooSetId, sort]}>
         { this._render }
       </DbRender>
-    )
+    );
   }
 }
 

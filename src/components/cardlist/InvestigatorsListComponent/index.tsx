@@ -21,7 +21,6 @@ import NewInvestigatorRow from './NewInvestigatorRow';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import Card from 'data/Card';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';

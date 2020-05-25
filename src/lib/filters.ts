@@ -279,7 +279,7 @@ export default class FilterBuilder {
     return [
       this.prefix,
       ...parts,
-    ].join('_')
+    ].join('_');
   }
 
   rangeFilter(

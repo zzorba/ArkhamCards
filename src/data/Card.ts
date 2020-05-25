@@ -1,12 +1,11 @@
-import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToMany, ManyToOne } from 'typeorm/browser';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
 import { TraumaAndCardData } from 'actions/types';
-import { BASIC_SKILLS, FactionCodeType, TypeCodeType, SkillCodeType } from 'constants';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from 'constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
@@ -233,7 +232,7 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
-  @ManyToOne(type => Card, card => card.id)
+  @ManyToOne(() => Card, card => card.id)
   @Index()
   @JoinColumn()
   public linked_card?: Card;

@@ -1,5 +1,4 @@
 import { filter, find, flatMap, head, map, range, shuffle } from 'lodash';
-import Realm from 'realm';
 
 import { WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
@@ -12,7 +11,7 @@ export interface WeaknessCriteria {
 
 export function availableWeaknesses(
   weaknessSet: WeaknessSet,
-  cards: Card[] | Realm.Results<Card>
+  cards: Card[]
 ): Card[] {
   const {
     packCodes,
@@ -27,7 +26,7 @@ export function availableWeaknesses(
 
 function matchingWeaknesses(
   set: WeaknessSet,
-  allWeaknesses: Card[] | Realm.Results<Card>,
+  allWeaknesses: Card[],
   {
     traits,
     multiplayer,

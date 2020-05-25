@@ -201,13 +201,13 @@ export const syncCards = async function(
     });
     const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
 
-    await insertChunk(normalCards, async (c: EncounterSet[]) => {
+    await insertChunk(normalCards, async(c: EncounterSet[]) => {
       await cards.insert(c);
     });
     for (let i = 0; i < linkedCards.length; i++) {
       await cards.insert(linkedCards[i]);
     }
-    await insertChunk(allEncounterSets, async (set: EncounterSet[]) => {
+    await insertChunk(allEncounterSets, async(set: EncounterSet[]) => {
       await encounterSets.insert(set);
     });
 
@@ -263,7 +263,7 @@ export const getFaqEntry = async function(db: Database, code: string) {
   const lastModified = response.headers.get('Last-Modified') || undefined;
   const json = await response.json();
   if (json.length) {
-    faqs.save(FaqEntry.fromJson(code, json[0], lastModified), );
+    faqs.save(FaqEntry.fromJson(code, json[0], lastModified));
     return true;
   }
   faqs.save(FaqEntry.empty(code, lastModified));

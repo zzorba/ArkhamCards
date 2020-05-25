@@ -107,10 +107,10 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
         <QueryProvider weakness_traits={effect.weakness_traits} getQuery={AddWeaknessEffectComponent.query}>
           { query => (
             <CardQueryWrapper name="add-weakness" query={query}>
-              { (cards: Card[]) =>  this._renderCardChoice(cards, investigators) }
+              { (cards: Card[]) => this._renderCardChoice(cards, investigators) }
             </CardQueryWrapper>
           ) }
-          </QueryProvider>
+        </QueryProvider>
       );
     }
     const traitsChoice = effect.select_traits ?

@@ -9,8 +9,8 @@ export function where(query: string, params?: QueryParams): Brackets {
   return new Brackets(qb => qb.where(query, params));
 }
 
-export const ON_YOUR_OWN_RESTRICTION = new Brackets(qb =>
-  qb.where(`c.slots_normalized LIKE :slot`, { slot: '%#ally#%' }),
+export const ON_YOUR_OWN_RESTRICTION = new Brackets(
+  qb => qb.where(`c.slots_normalized LIKE :slot`, { slot: '%#ally#%' }),
   { negate: true }
 );
 
@@ -20,7 +20,7 @@ export const BASIC_WEAKNESS_QUERY = where(
 );
 export const STORY_CARDS_QUERY = where(
   `((c.deck_limit >= 0) AND (c.spoiler = true OR (c.subtype_code is not null AND c.has_restrictions = false))) OR c.code = "${RANDOM_BASIC_WEAKNESS}" OR c.code = "${ACE_OF_RODS_CODE}"`
-  );
+);
 export const MYTHOS_CARDS_QUERY = where(
   'c.encounter_code is not null OR linked_card.encounter_code is not null'
 );

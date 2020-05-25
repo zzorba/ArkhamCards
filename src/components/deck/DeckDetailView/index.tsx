@@ -19,7 +19,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Results } from 'realm';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription, OptionsTopBarButton } from 'react-native-navigation';

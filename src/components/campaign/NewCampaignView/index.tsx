@@ -222,7 +222,7 @@ class NewCampaignView extends React.Component<Props, State> {
     const weaknesses = filter(keys(deck.slots), code => {
       const card = cards[code];
       return card && card.isBasicWeakness();
-    })
+    });
     const count = sumBy(weaknesses, code => deck.slots[code]);
     if (weaknesses.length) {
       setTimeout(() => {

@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { forEach } from 'lodash';
 import {
   StyleSheet,
   Text,

@@ -74,7 +74,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
 export default connectDb<OwnProps, Data, string[]>(
   EncounterSetStepComponent,
   (props: OwnProps) => props.step.encounter_sets,
-  async (db: Database, encounter_sets: string[]) => {
+  async(db: Database, encounter_sets: string[]) => {
     const qb = await db.encounterSets();
     const allEncounterSets = await qb.createQueryBuilder().whereInIds(encounter_sets).getMany();
     const setsByCode: { [code: string]: EncounterSet } = {};

@@ -180,7 +180,7 @@ export default connect<ReduxProps, {}, NavigationProps & CardFaqProps, AppState>
   connectDb<NavigationProps & CardFaqProps & ReduxProps, Data, string>(
     CardFaqView,
     (props: NavigationProps & CardFaqProps & ReduxProps) => props.id,
-    async (db: Database, code: string) => {
+    async(db: Database, code: string) => {
       const qb = await db.faqEntries();
       const faqEntries = await qb.createQueryBuilder('faq')
         .where('faq.code = :code', { code })

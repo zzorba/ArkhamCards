@@ -3,7 +3,7 @@ import { findIndex, map } from 'lodash';
 import { format } from 'date-fns';
 import { t } from 'ttag';
 
-import connectDb from 'components/data/connectDb'
+import connectDb from 'components/data/connectDb';
 import Database from 'data/Database';
 import SinglePickerComponent from './SinglePickerComponent';
 import TabooSet from 'data/TabooSet';
@@ -78,8 +78,10 @@ class TabooSetPicker extends React.Component<Props> {
 
 export default connectDb<OwnProps, DbProps>(
   TabooSetPicker,
-  () => { return {}; },
-  async (db: Database) => {
+  () => {
+    return {};
+  },
+  async(db: Database) => {
     const tabooSetsR = await db.tabooSets();
     const tabooSets = await tabooSetsR.createQueryBuilder()
       .orderBy('id', 'DESC')

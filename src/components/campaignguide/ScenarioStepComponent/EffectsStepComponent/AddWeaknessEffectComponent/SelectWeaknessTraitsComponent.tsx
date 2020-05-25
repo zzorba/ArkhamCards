@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, keys, flatMap, map, range, uniq, sortBy } from 'lodash';
+import { filter, flatMap, map, range, uniq, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';

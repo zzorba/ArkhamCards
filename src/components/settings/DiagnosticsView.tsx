@@ -131,7 +131,6 @@ class DiagnosticsView extends React.Component<Props> {
   };
 
   async clearDatabase() {
-    const connection = await this.context.db.connectionP;
     await (await this.context.db.cardsQuery()).delete().execute();
     await (await this.context.db.encounterSets()).createQueryBuilder().delete().execute();
     await (await this.context.db.faqEntries()).createQueryBuilder().delete().execute();

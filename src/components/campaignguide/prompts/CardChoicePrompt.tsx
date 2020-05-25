@@ -80,7 +80,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     const query = flatMap(input.query,
       query => {
         if (query.source === 'deck') {
-          return this.basicQuery(query);
+          return CardChoicePrompt.basicQuery(query);
         }
         return [];
       }
@@ -274,16 +274,16 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     scenarioInvestigators: Card[];
     latestDecks: LatestDecks;
     query: CardQuery[];
-    extraCards: string[]
+    extraCards: string[];
   }) {
     const queryOpt = this.mainQuery(query, processedScenario, scenarioInvestigators, latestDecks);
     return combineQueriesOpt(
       [
         ...(queryOpt ? [queryOpt] : []),
-        ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(extraCards, 'code')
+        ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(extraCards, 'code'),
       ],
       'or'
-    )
+    );
   }
 
   render() {

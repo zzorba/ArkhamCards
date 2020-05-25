@@ -13,27 +13,19 @@ interface Props {
   text?: string;
 }
 
-export default class CampaignLogCardEntryComponent extends React.Component<Props> {
-  _renderCard = (card: Card) => {
-    const { crossedOut, entry, text, count } = this.props;
-    return (
-      <TextEntryComponent
-        text={(text || '#name#').replace('#name#', card.name).replace('#X#', `${count}`)}
-        crossedOut={crossedOut}
-        entry={entry}
-      />
-    );
-  };
-
-  render() {
-    const { code } = this.props;
-    return (
-      <SingleCardWrapper
-        code={code}
-        type="encounter"
-      >
-        {this._renderCard}
-      </SingleCardWrapper>
-    );
-  }
+export default function CampaignLogCardEntryComponent({ code, crossedOut, entry, text, count }: Props) {
+  return (
+    <SingleCardWrapper
+      code={code}
+      type="encounter"
+    >
+      { (card: Card) => (
+        <TextEntryComponent
+          text={(text || '#name#').replace('#name#', card.name).replace('#X#', `${count}`)}
+          crossedOut={crossedOut}
+          entry={entry}
+        />
+      ) }
+    </SingleCardWrapper>
+  );
 }

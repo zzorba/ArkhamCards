@@ -11,7 +11,7 @@ import reducers, { AppState } from 'reducers';
 
 /**
  * How to refresh discarded offline tokens properly.
-const discard = async (error, _action, _retries) => {
+const discard = async(error, _action, _retries) => {
   if (!status in error) return false;
 
   if (error.status === 401) {

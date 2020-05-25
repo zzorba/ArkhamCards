@@ -12,7 +12,6 @@ import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
-import { getTabooSet, AppState } from 'reducers';
 import { HEADER_HEIGHT } from 'styles/sizes';
 import COLORS from 'styles/colors';
 import { NavigationProps } from 'components/nav/types';
@@ -68,7 +67,7 @@ class CardImageView extends React.Component<Props, State> {
     } = this.state;
 
     const doubleCard: boolean = card.double_sided ||
-      !!(card.linked_card && card.linked_card.imagesrc)
+      !!(card.linked_card && card.linked_card.imagesrc);
     if (doubleCard !== this.doubleCard) {
       this.doubleCard = doubleCard;
       if (doubleCard) {

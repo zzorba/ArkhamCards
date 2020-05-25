@@ -6,6 +6,7 @@ import {
   CardFetchStartAction,
   CardFetchSuccessAction,
   CardFetchErrorAction,
+  CardSetSchemaVersionAction,
   CardCache,
   TabooCache,
 } from 'actions/types';
@@ -16,7 +17,7 @@ interface CardsState {
   cache?: CardCache;
   tabooCache?: TabooCache;
   lang?: string | null;
-  schemaVersion?: string;
+  schemaVersion?: number;
 }
 
 const DEFAULT_CARDS_STATE: CardsState = {
@@ -29,7 +30,7 @@ const DEFAULT_CARDS_STATE: CardsState = {
 
 export default function(
   state: CardsState = DEFAULT_CARDS_STATE,
-  action: CardFetchStartAction | CardFetchSuccessAction | CardFetchErrorAction
+  action: CardFetchStartAction | CardFetchSuccessAction | CardFetchErrorAction | CardSetSchemaVersionAction
 ): CardsState {
   switch (action.type) {
     case CARD_SET_SCHEMA_VERSION: {

@@ -57,7 +57,7 @@ class BondedCardsComponent extends React.Component<Props> {
     );
   }
 
-  _getBondedCards = async (db: Database): Promise<BondedCards> => {
+  _getBondedCards = async(db: Database): Promise<BondedCards> => {
     return {
       bonded_to_cards: await this.bondedToCards(db),
       bonded_from_cards: await this.bondedFromCards(db),

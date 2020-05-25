@@ -1,6 +1,6 @@
 import React from 'react';
-import { debounce, difference } from 'lodash';
-import { EventSubscriber, EntitySubscriberInterface } from 'typeorm/browser';
+import { difference } from 'lodash';
+import { EventSubscriber } from 'typeorm/browser';
 
 import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
@@ -59,6 +59,6 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> {
   render() {
     const { children, ids } = this.props;
     const { data, dataIds } = this.state;
-    return children(data,  difference(ids, dataIds).length > 0);
+    return children(data, difference(ids, dataIds).length > 0);
   }
 }

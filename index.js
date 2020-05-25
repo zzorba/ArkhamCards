@@ -12,15 +12,7 @@ import configureStore from 'app/store';
 import App from 'app/App';
 import { AppState } from 'reducers';
 
-
-interface Props {
-  store: {
-    database: Database;
-    redux: any;
-  };
-}
-
-class MyProvider extends React.Component<Props> {
+class MyProvider extends React.Component {
   _playerCardsChanged = () => {
     this.forceUpdate();
   };
@@ -52,7 +44,7 @@ class MyProvider extends React.Component<Props> {
   }
 }
 
-const { store /*, persistor */ } = configureStore({} as AppState);
+const { store /*, persistor */ } = configureStore({});
 
 function cleanupRealm() {
   InteractionManager.runAfterInteractions(() => {
@@ -80,12 +72,12 @@ function cleanupRealm() {
 }
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-let app: App | null = null;
+let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
   const schemaVersion = store.getState()?.cards?.schemaVersion;
-  //if (!schemaVersion) {
+  if (!schemaVersion) {
     cleanupRealm();
-  //}
+  }
   const db = new Database(schemaVersion);
   registerScreens(MyProvider, { redux: store, database: db });
   db.reloadPlayerCards();

@@ -99,7 +99,7 @@ class FetchCardsGate extends React.Component<Props> {
     this.cardCount().then(cardCount => {
       if (cardCount === 0) {
         this._doFetch();
-        return
+        return;
       }
       if (this.props.promptForUpdate && this.updateNeeded()) {
         Alert.alert(

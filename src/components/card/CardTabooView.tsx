@@ -63,7 +63,7 @@ export default class CardTabooView extends React.Component<Props> {
     );
   }
 
-  _getData = async (db: Database): Promise<TabooData> => {
+  _getData = async(db: Database): Promise<TabooData> => {
     const { id } = this.props;
     const cardsQuery = await db.cardsQuery();
     const card = await cardsQuery

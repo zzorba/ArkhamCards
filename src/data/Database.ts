@@ -4,7 +4,7 @@ import { createConnection, Brackets, Connection, Repository, EntitySubscriberInt
 import Card from './Card';
 import EncounterSet from './EncounterSet';
 import FaqEntry from './FaqEntry';
-import TabooSet from './TabooSet'
+import TabooSet from './TabooSet';
 import { QuerySort } from './types';
 import { tabooSetQuery } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
@@ -32,7 +32,7 @@ export default class Database {
       ],
       dropSchema: recreate,
       synchronize: recreate,
-      //migrations:['migrations/migration.js'],
+      // migrations:['migrations/migration.js'],
       entities: [
         Card,
         EncounterSet,
@@ -143,6 +143,5 @@ export default class Database {
       });
     }
     return cardsQuery;
-}
-
+  }
 }

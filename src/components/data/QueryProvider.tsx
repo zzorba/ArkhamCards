@@ -1,4 +1,5 @@
 import React from 'react';
+import { omit } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import deepDiff from 'deep-diff';
 
@@ -8,7 +9,7 @@ interface Props<T> {
 }
 
 interface State {
-  query?: Brackets
+  query?: Brackets;
 }
 
 export default class QueryProvider<T> extends React.PureComponent<Props<T> & T, State> {
@@ -22,13 +23,10 @@ export default class QueryProvider<T> extends React.PureComponent<Props<T> & T, 
     };
   }
 
-  componentDidUpdate({ children, getQuery, ...prevProps }: Props<T>) {
-    const {
-      children: newChildren,
-      getQuery: newQuery,
-      ...props
-    } = this.props;
-    const diff = deepDiff(props, prevProps);
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+  componentDidUpdate(prevProps: Props<T>) {
+    const ignoreFields = ['children', 'getQuery'];
+    const diff = deepDiff(omit(this.props, ignoreFields), omit(prevProps, ignoreFields));
     if (diff) {
       console.log(diff);
       this.updateQuery();

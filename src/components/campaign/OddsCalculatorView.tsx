@@ -1,7 +1,6 @@
 import React from 'react';
-import { flatMap, forEach, map } from 'lodash';
+import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
-import { Results } from 'realm';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
 import { NavigationProps } from 'components/nav/types';
