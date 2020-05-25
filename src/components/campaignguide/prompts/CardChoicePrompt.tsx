@@ -34,6 +34,14 @@ interface State {
   extraCards: string[];
 }
 
+interface QueryProps {
+  processedScenario: ProcessedScenario;
+  scenarioInvestigators: Card[];
+  latestDecks: LatestDecks;
+  query: CardQuery[];
+  extraCards: string[];
+}
+
 export default class CardChoicePrompt extends React.Component<Props, State> {
   static FILTER_BUILDER = new FilterBuilder('ccp');
   state: State = {
@@ -269,13 +277,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     latestDecks,
     query,
     extraCards,
-  }: {
-    processedScenario: ProcessedScenario;
-    scenarioInvestigators: Card[];
-    latestDecks: LatestDecks;
-    query: CardQuery[];
-    extraCards: string[];
-  }) {
+  }: QueryProps) {
     const queryOpt = this.mainQuery(query, processedScenario, scenarioInvestigators, latestDecks);
     return combineQueriesOpt(
       [
@@ -298,7 +300,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
               if (selectedCards === undefined) {
                 const nonDeckButton = this.includeNonDeckSearch(scenarioInvestigators, latestDecks);
                 return (
-                  <QueryProvider
+                  <QueryProvider<QueryProps, Brackets | undefined>
                     processedScenario={processedScenario}
                     scenarioInvestigators={scenarioInvestigators}
                     latestDecks={latestDecks}

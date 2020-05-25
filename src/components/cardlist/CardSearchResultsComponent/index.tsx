@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
+import { debounce, throttle } from 'throttle-debounce';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
-import deepDiff from 'deep-diff';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -14,6 +14,7 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
+import QueryProvider from 'components/data/QueryProvider';
 import CardSearchBox from './CardSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
@@ -55,23 +56,28 @@ interface State {
   searchFlavor: boolean;
   searchBack: boolean;
   searchTerm: string;
-  termQuery: Brackets | undefined;
 
-  baseQuery?: Brackets;
-  filters?: FilterState;
-  query: Brackets;
-  filterQuery: Brackets | undefined;
+  searchKey: string;
+  termQuery: Brackets | null;
 }
 
+type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
+type FilterQueryProps = Pick<Props, 'filters'>
 export default class CardSearchResultsComponent extends React.Component<Props, State> {
   static filterBuilder = new FilterBuilder('filters');
+
+  static filterQuery({
+    filters,
+  }: FilterQueryProps): Brackets | undefined {
+    return filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
+  }
 
   static query({
     baseQuery,
     mythosToggle,
     selectedSort,
     mythosMode,
-  }: Props): Brackets {
+  }: QueryProps): Brackets {
     const queryParts: Brackets[] = [];
     if (mythosToggle) {
       if (mythosMode) {
@@ -93,23 +99,16 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     );
   }
 
-  static getDerivedStateFromProps(props: Props, state: State) {
-    const {
-      baseQuery,
-      filters,
-    } = props;
-    const updatedState: Partial<State> = {};
-    if (baseQuery !== state.baseQuery) {
-      console.log('RERENDER: baseQuery changed');
-      updatedState.baseQuery = baseQuery;
-      updatedState.query = CardSearchResultsComponent.query(props);
-    }
-    if (filters && filters !== state.filters && !!deepDiff(filters, state.filters)) {
-      console.log(`RERENDER: filters changed: ${JSON.stringify(state.filters)} vs ${JSON.stringify(filters)}`);
-      updatedState.filters = filters;
-      updatedState.filterQuery = filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
-    }
-    return updatedState;
+  _throttledUpdateSearch: (search: string) => void;
+  _debouncedUpdateSeacrh: (search: string) => void;
+
+  static searchKey(searchTerm: string, searchText: boolean, searchFlavor: boolean, searchBack: boolean) {
+    return JSON.stringify({
+      searchTerm,
+      searchText,
+      searchBack,
+      searchFlavor,
+    });
   }
 
   constructor(props: Props) {
@@ -121,12 +120,12 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchFlavor: false,
       searchBack: false,
       searchTerm: '',
-      termQuery: undefined,
-      baseQuery: props.baseQuery,
-      query: CardSearchResultsComponent.query(props),
-      filters: props.filters,
-      filterQuery: props.filters && CardSearchResultsComponent.filterBuilder.filterToQuery(props.filters),
+      searchKey: CardSearchResultsComponent.searchKey('', false, false, false),
+      termQuery: null,
     };
+
+    this._throttledUpdateSearch = throttle(300, this._updateTermSearch);
+    this._debouncedUpdateSeacrh = debounce(300, this._updateTermSearch);
   }
 
   _showHeader = () => {
@@ -150,43 +149,61 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
   }
 
   _toggleSearchText = () => {
+    const searchText = !this.state.searchText;
     this.setState({
-      searchText: !this.state.searchText,
-    }, this._updateTermQuery);
+      searchText,
+    }, () => this._updateTermSearch(this.state.searchTerm));
   };
 
   _toggleSearchFlavor = () => {
+    const searchFlavor = !this.state.searchFlavor;
     this.setState({
-      searchFlavor: !this.state.searchFlavor,
-    }, this._updateTermQuery);
+      searchFlavor,
+    }, () => this._updateTermSearch(this.state.searchTerm));
   };
 
   _toggleSearchBack = () => {
+    const searchBack = !this.state.searchBack;
     this.setState({
-      searchBack: !this.state.searchBack,
-    }, this._updateTermQuery);
+      searchBack,
+    }, () => this._updateTermSearch(this.state.searchTerm));
   };
 
   _searchUpdated = (text: string) => {
     this.setState({
       searchTerm: text,
-    }, this._updateTermQuery);
+    }, () => {
+      const { searchTerm } = this.state;
+      if (searchTerm.length < 5) {
+        this._throttledUpdateSearch(this.state.searchTerm);
+      } else {
+        this._debouncedUpdateSeacrh(this.state.searchTerm);
+      }
+    });
   };
 
   _clearSearchTerm = () => {
     this._searchUpdated('');
   };
 
-  _updateTermQuery = () => {
+  _updateTermSearch = async(searchTerm: string) => {
     const {
-      searchTerm,
       searchText,
       searchFlavor,
       searchBack,
+      searchKey,
     } = this.state;
-
+    const newSearchKey = CardSearchResultsComponent.searchKey(
+      searchTerm, searchText, searchFlavor, searchBack
+    );
+    if (searchKey === newSearchKey) {
+      return;
+    }
     if (searchTerm === '') {
-      return undefined;
+      this.setState({
+        termQuery: null,
+      });
+      return;
     }
     const parts = searchBack ? [
       'c.name LIKE :searchTerm',
@@ -220,6 +237,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     }
     const lang = 'en';
     this.setState({
+      searchKey: newSearchKey,
       termQuery: where(
         parts.join(' OR '),
         {
@@ -254,14 +272,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     );
   }
 
-  renderExpandModesButtons() {
+  renderExpandModesButtons(hasFilters: boolean) {
     const {
       mythosToggle,
       toggleMythosMode,
       clearSearchFilters,
       mythosMode,
     } = this.props;
-    const hasFilters = !!this.state.filterQuery;
     if (!mythosToggle && !hasFilters) {
       return null;
     }
@@ -283,14 +300,14 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     );
   }
 
-  renderExpandSearchButtons() {
+  renderExpandSearchButtons(hasFilters: boolean) {
     const {
       searchTerm,
       searchText,
       searchBack,
     } = this.state;
     if (!searchTerm) {
-      return this.renderExpandModesButtons();
+      return this.renderExpandModesButtons(hasFilters);
     }
     return (
       <View>
@@ -316,7 +333,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             <Switch value={false} onValueChange={this._toggleSearchBack} />
           </View>
         ) }
-        { this.renderExpandModesButtons() }
+        { this.renderExpandModesButtons(hasFilters) }
       </View>
     );
   }
@@ -338,41 +355,59 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       fontScale,
       initialSort,
       mythosToggle,
+      baseQuery,
+      mythosMode,
+      filters,
     } = this.props;
     const {
       searchTerm,
-      query,
-      filterQuery,
       termQuery,
     } = this.state;
     return (
       <View style={styles.wrapper}>
         { this.renderHeader() }
         <View style={styles.container}>
-          <CardResultList
-            componentId={componentId}
-            fontScale={fontScale}
-            tabooSetOverride={tabooSetOverride}
-            query={query}
-            filterQuery={filterQuery}
-            termQuery={termQuery}
-            searchTerm={searchTerm}
-            sort={selectedSort}
-            investigator={investigator}
-            originalDeckSlots={originalDeckSlots}
-            deckCardCounts={deckCardCounts}
-            onDeckCountChange={onDeckCountChange}
-            limits={limits}
-            showHeader={this._showHeader}
-            hideHeader={this._hideHeader}
-            expandSearchControls={this.renderExpandSearchButtons()}
-            visible={visible}
-            renderFooter={renderFooter}
-            showNonCollection={showNonCollection}
-            storyOnly={storyOnly}
+          <QueryProvider<QueryProps, Brackets>
+            baseQuery={baseQuery}
             mythosToggle={mythosToggle}
-            initialSort={initialSort}
-          />
+            selectedSort={selectedSort}
+            mythosMode={mythosMode}
+            getQuery={CardSearchResultsComponent.query}
+          >
+            { query => (
+              <QueryProvider<FilterQueryProps, Brackets | undefined>
+                filters={filters}
+                getQuery={CardSearchResultsComponent.filterQuery}
+              >
+                { filterQuery => (
+                  <CardResultList
+                    componentId={componentId}
+                    fontScale={fontScale}
+                    tabooSetOverride={tabooSetOverride}
+                    query={query}
+                    filterQuery={filterQuery || undefined}
+                    termQuery={termQuery || undefined}
+                    searchTerm={searchTerm}
+                    sort={selectedSort}
+                    investigator={investigator}
+                    originalDeckSlots={originalDeckSlots}
+                    deckCardCounts={deckCardCounts}
+                    onDeckCountChange={onDeckCountChange}
+                    limits={limits}
+                    showHeader={this._showHeader}
+                    hideHeader={this._hideHeader}
+                    expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
+                    visible={visible}
+                    renderFooter={renderFooter}
+                    showNonCollection={showNonCollection}
+                    storyOnly={storyOnly}
+                    mythosToggle={mythosToggle}
+                    initialSort={initialSort}
+                  />
+                ) }
+              </QueryProvider>
+            ) }
+          </QueryProvider>
         </View>
         { !!renderFooter && <View style={[
           styles.footer,

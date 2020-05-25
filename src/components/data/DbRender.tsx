@@ -1,5 +1,5 @@
 import React from 'react';
-import { difference } from 'lodash';
+import deepDiff from 'deep-diff';
 import { EventSubscriber } from 'typeorm/browser';
 
 import Database from 'data/Database';
@@ -30,35 +30,38 @@ export default class DbRender<T> extends React.Component<Props<T>, State<T>> {
       dataIds: [],
     };
 
-    this._loadData(context);
+    this._loadData(context, props.ids);
   }
 
   componentDidUpdate(prevProps: Props<T>) {
-    const { name } = this.props;
-    const diff = difference(this.props.ids, prevProps.ids);
-    if (diff.length) {
-      console.log(`RERENDER(${name}): ${JSON.stringify(diff)}, ${JSON.stringify(prevProps.ids)} vs ${JSON.stringify(this.props.ids)}`);
-      this._loadData(this.context);
+    const { ids } = this.props;
+    const diff = deepDiff(ids, prevProps.ids);
+    if (diff && diff.length) {
+      // console.log(`RERENDER(${this.props.name}): ${JSON.stringify(diff)}, ${JSON.stringify(prevProps.ids)} vs ${JSON.stringify(this.props.ids)}`);
+      this._loadData(this.context, ids);
     }
   }
 
-  _loadData = (context?: DatabaseContextType) => {
+  _loadData = async(context: DatabaseContextType, ids: any[]) => {
     const {
       getData,
-      ids,
     } = this.props;
     const db = (context || this.context).db;
-    getData(db).then(data => {
-      this.setState({
-        data,
-        dataIds: ids,
-      });
+    const data = await getData(db);
+
+    // Check if results got pre-empted by other changes.
+    if (deepDiff(ids, this.props.ids)) {
+      return;
+    }
+    this.setState({
+      data,
+      dataIds: ids,
     });
-  };
+  }
 
   render() {
     const { children, ids } = this.props;
     const { data, dataIds } = this.state;
-    return children(data, difference(ids, dataIds).length > 0);
+    return children(data, !!deepDiff(ids, dataIds));
   }
 }

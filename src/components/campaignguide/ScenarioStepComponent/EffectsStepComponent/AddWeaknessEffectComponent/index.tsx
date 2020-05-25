@@ -1,5 +1,6 @@
 import React from 'react';
 import { map, sortBy } from 'lodash';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import Card from 'data/Card';
@@ -24,6 +25,10 @@ interface OwnProps {
 }
 
 type Props = OwnProps & PlayerCardProps;
+
+interface QueryProps {
+  weakness_traits: string[];
+}
 
 class AddWeaknessEffectComponent extends React.Component<Props> {
   static contextType = ScenarioStepContext;
@@ -104,7 +109,10 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
     }
     if (!useAppDecision) {
       return (
-        <QueryProvider weakness_traits={effect.weakness_traits} getQuery={AddWeaknessEffectComponent.query}>
+        <QueryProvider<QueryProps, Brackets>
+          weakness_traits={effect.weakness_traits}
+          getQuery={AddWeaknessEffectComponent.query}
+        >
           { query => (
             <CardQueryWrapper name="add-weakness" query={query}>
               { (cards: Card[]) => this._renderCardChoice(cards, investigators) }

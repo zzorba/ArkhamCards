@@ -16,6 +16,7 @@ import {
   ActivityIndicator,
   Animated,
   Keyboard,
+  RefreshControl,
   SectionList,
   StyleSheet,
   Text,
@@ -38,7 +39,7 @@ import { addFilterSet } from 'components/filter/actions';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { rowHeight } from 'components/cardlist/CardSearchResult/constants';
-import CardSectionHeader, { rowHeaderHeight } from 'components/cardlist/CardSearchResultsComponent/CardSectionHeader';
+import CardSectionHeader, { cardSectionHeaderHeight, CardSectionHeaderData } from 'components/core/CardSectionHeader';
 import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
 import { CardFilterData, FilterState, calculateCardFilterData } from 'lib/filters';
 import {
@@ -127,7 +128,12 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 interface DbState {
+  query: Brackets;
+  filterQuery?: Brackets;
+  termQuery?: Brackets;
+  sort?: SortType;
   deckSections: CardBucket[];
+  deckCardCounts?: Slots;
   cards: Card[];
 }
 
@@ -137,10 +143,12 @@ interface LiveState {
   cardsCount: number;
   spoilerCards: CardBucket[];
   spoilerCardsCount: number;
+  deckCardCounts?: Slots;
 }
 
 
 interface State {
+  refreshDeck: number;
   deckCardCounts?: Slots;
   showSpoilerCards: boolean;
   showNonCollection: {
@@ -152,8 +160,7 @@ interface State {
 }
 
 interface CardBucket {
-  title: string;
-  bold?: boolean;
+  header: CardSectionHeaderData;
   id: string;
   data: Card[];
   nonCollectionCount?: number;
@@ -183,6 +190,7 @@ class CardResultList extends React.Component<Props, State> {
       loadingMessage: CardResultList.randomLoadingMessage(),
       dirty: false,
       scrollY: new Animated.Value(0),
+      refreshDeck: 0,
     };
 
     this._handleScroll = Animated.event(
@@ -221,11 +229,6 @@ class CardResultList extends React.Component<Props, State> {
         const scrollingUp = offsetY < this.lastOffsetY;
 
         if (scrollingUp) {
-          if (this.hasPendingCountChanges) {
-            this.hasPendingCountChanges = false;
-            // TODO: figure out how to make cards show up in edit mode better.
-            // this._throttledUpdateResults();
-          }
           this.props.showHeader();
         } else {
           this.props.hideHeader();
@@ -280,12 +283,10 @@ class CardResultList extends React.Component<Props, State> {
         this.setState({
           deckCardCounts: deckCardCounts,
         });
-        this.hasPendingCountChanges = false;
       } else {
         this.setState({
           deckCardCounts: deckCardCounts,
         });
-        this.hasPendingCountChanges = true;
       }
     }
   }
@@ -426,7 +427,7 @@ class CardResultList extends React.Component<Props, State> {
     let currentBucket: CardBucket | null = null;
     cards.forEach(card => {
       const header = CardResultList.headerForCard(card, sort);
-      if (!currentBucket || currentBucket.title !== header) {
+      if (!currentBucket || currentBucket.header.subTitle !== header) {
         if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {
             forEach(nonCollectionCards, c => {
@@ -438,7 +439,9 @@ class CardResultList extends React.Component<Props, State> {
           nonCollectionCards = [];
         }
         currentBucket = {
-          title: header,
+          header: {
+            subTitle: header,
+          },
           id: `${keyPrefix}-${results.length}`,
           data: [],
           nonCollectionCount: 0,
@@ -522,6 +525,8 @@ class CardResultList extends React.Component<Props, State> {
       tabooSetId,
       termQuery,
       filterQuery,
+      sort,
+      deckCardCounts,
     } = this.props;
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
@@ -554,6 +559,11 @@ class CardResultList extends React.Component<Props, State> {
     return {
       cards,
       deckSections,
+      query,
+      termQuery,
+      filterQuery,
+      sort,
+      deckCardCounts,
     };
   };
 
@@ -593,7 +603,7 @@ class CardResultList extends React.Component<Props, State> {
     let index = 0;
     const cards: Card[] = [];
     if (this.latestData) {
-      forEach(this.getData(this.latestData), section => {
+      forEach(this.getData(this.latestData, false), section => {
         if (sectionId === section.id) {
           index = cards.length + parseInt(cardIndex, 10);
         }
@@ -620,11 +630,11 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   _renderSectionHeader = ({ section }: { section: SectionListData<CardBucket> }) => {
-    const { fontScale } = this.props;
+    const { fontScale, investigator } = this.props;
     return (
       <CardSectionHeader
-        title={section.title}
-        bold={section.bold}
+        section={section.header}
+        investigator={investigator}
         fontScale={fontScale}
       />
     );
@@ -754,22 +764,38 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  getData({ cards, spoilerCards, deckSections }: LiveState): CardBucket[] {
+  _refreshInDeck = () => {
+    this.setState(state => {
+      return {
+        refreshDeck: state.refreshDeck + 1,
+      };
+    });
+  };
+
+  getData(
+    { cards, spoilerCards, deckSections, deckCardCounts }: LiveState,
+    refreshing: boolean
+  ): CardBucket[] {
     const {
       showSpoilerCards,
     } = this.state;
+    const updateDeckCardCounts = !isEqual(deckCardCounts, this.props.deckCardCounts);
     const startCards = deckSections.length ?
       concat(
         [{
-          title: t`In Deck`,
-          bold: true,
+          header: {
+            superTitle: t`In Deck`,
+            superTitleIcon: 'refresh',
+            onPress: updateDeckCardCounts && !refreshing ? this._refreshInDeck : undefined,
+          },
           data: [],
           id: 'InDeck',
         }],
         deckSections,
         [{
-          title: t`All Eligible Cards`,
-          bold: true,
+          header: {
+            superTitle: t`All Eligible Cards`,
+          },
           data: [],
           id: 'AllEligibleCards',
         }],
@@ -783,6 +809,14 @@ class CardResultList extends React.Component<Props, State> {
     return concat(startCards, spoilerCards);
   }
 
+  hasMajorChange(dbState: DbState) {
+    const {
+      query,
+      sort,
+    } = this.props;
+    return dbState.query !== query || dbState.sort !== sort;
+  }
+
   _renderResults = (dbState?: DbState, refreshing?: boolean) => {
     const {
       sort,
@@ -793,7 +827,7 @@ class CardResultList extends React.Component<Props, State> {
       loadingMessage,
     } = this.state;
 
-    if (!dbState || refreshing) {
+    if (!dbState || this.hasMajorChange(dbState)) {
       return (
         <View style={styles.loading}>
           <View style={styles.loadingText}>
@@ -809,7 +843,7 @@ class CardResultList extends React.Component<Props, State> {
         </View>
       );
     }
-    const { cards, deckSections } = dbState;
+    const { cards, deckSections, deckCardCounts } = dbState;
     const groupedCards = partition(
       cards,
       card => {
@@ -819,6 +853,7 @@ class CardResultList extends React.Component<Props, State> {
 
     const liveState: LiveState = {
       deckSections,
+      deckCardCounts,
       cards: this.bucketCards(groupedCards[0], 'cards'),
       cardsCount: groupedCards[0].length,
       spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
@@ -829,12 +864,12 @@ class CardResultList extends React.Component<Props, State> {
       sort === SORT_BY_PACK ||
       sort === SORT_BY_ENCOUNTER_SET
     );
-    const data = this.getData(liveState);
+    const data = this.getData(liveState, !!refreshing);
     let offset = 0;
     const elementHeights = map(
       flatMap(data, section => {
         return concat(
-          [rowHeaderHeight(fontScale)], // Header
+          [cardSectionHeaderHeight(section.header, fontScale)], // Header
           map(section.data || [], () => rowHeight(fontScale)), // Rows
           [section.nonCollectionCount ? rowNonCollectionHeight(fontScale) : 0] // Footer (not used)
         );
@@ -859,6 +894,12 @@ class CardResultList extends React.Component<Props, State> {
     };
     return (
       <SectionList
+        refreshControl={
+          <RefreshControl
+            refreshing={!!refreshing}
+            onRefresh={this._refreshInDeck}
+          />
+        }
         onScroll={this._handleScroll}
         onScrollBeginDrag={this._handleScrollBeginDrag}
         sections={data}
@@ -885,11 +926,12 @@ class CardResultList extends React.Component<Props, State> {
       termQuery,
       sort,
     } = this.props;
+    const { refreshDeck } = this.state;
     return (
       <DbRender
         name="card-results"
         getData={this._updateResults}
-        ids={[query, filterQuery, termQuery, sort]}
+        ids={[query, filterQuery, termQuery, sort, refreshDeck]}
       >
         { this._renderResults }
       </DbRender>

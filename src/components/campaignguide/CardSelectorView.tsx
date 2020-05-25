@@ -24,6 +24,8 @@ export interface CardSelectorProps {
 
 type Props = CardSelectorProps & NavigationProps & DimensionsProps;
 
+type QueryProps = Pick<Props, 'query'>
+
 interface State {
   selection: {
     [code: string]: boolean;
@@ -84,7 +86,7 @@ class CardSelectorView extends React.Component<Props, State> {
     });
   };
 
-  static storyCardsQuery({ query }: { query?: Brackets }) {
+  static storyCardsQuery({ query }: QueryProps): Brackets {
     return combineQueries(
       where('c.encounter_code is not null'),
       query ? [query] : [],
@@ -92,7 +94,7 @@ class CardSelectorView extends React.Component<Props, State> {
     );
   }
 
-  static normalCardsQuery({ query }: { query?: Brackets }) {
+  static normalCardsQuery({ query }: QueryProps): Brackets {
     return combineQueries(
       where('c.encounter_code is null'),
       query ? [query] : [],
@@ -117,7 +119,10 @@ class CardSelectorView extends React.Component<Props, State> {
           fontScale={fontScale}
           section={{ title: t`Story assets` }}
         />
-        <QueryProvider query={query} getQuery={CardSelectorView.storyCardsQuery}>
+        <QueryProvider<QueryProps, Brackets>
+          query={query}
+          getQuery={CardSelectorView.storyCardsQuery}
+        >
           { query => (
             <CardQueryWrapper name="other-selector" query={query}>
               { this._render }
@@ -132,7 +137,10 @@ class CardSelectorView extends React.Component<Props, State> {
     const { query, includeStoryToggle } = this.props;
     return (
       <ScrollView>
-        <QueryProvider query={query} getQuery={CardSelectorView.normalCardsQuery}>
+        <QueryProvider<QueryProps, Brackets>
+          query={query}
+          getQuery={CardSelectorView.normalCardsQuery}
+        >
           { query => (
             <CardQueryWrapper name="normal-selector" query={query}>
               { this._render }

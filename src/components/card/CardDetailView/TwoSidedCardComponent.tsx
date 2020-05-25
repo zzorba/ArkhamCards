@@ -24,6 +24,7 @@ import space, { isBig, xs, s } from 'styles/space';
 import AppIcon from 'icons/AppIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import EncounterIcon from 'icons/EncounterIcon';
+import CardTabooTextBlock from 'components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import { CardFaqProps } from 'components/card/CardFaqView';
@@ -44,7 +45,6 @@ const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color="#000000" />
 );
 const ICON_SIZE = isBig ? 44 : 28;
-const SMALL_ICON_SIZE = isBig ? 26 : 16;
 const SKILL_ICON_SIZE = isBig ? 26 : 16;
 
 const SKILL_FIELDS = [
@@ -714,30 +714,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { !simple && !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
-        { !!(card.taboo_set_id && card.taboo_set_id > 0) && !card.taboo_placeholder && (
-          <View style={[styles.gameTextBlock, {
-            borderColor: 'purple',
-          }]}>
-            <View style={styles.tabooRow}>
-              <View style={styles.tabooIcon}>
-                <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color="purple" />
-              </View>
-              <Text style={typography.cardText}>
-                { t`Taboo List Changes` }
-              </Text>
-            </View>
-            { !!card.extra_xp && (
-              <Text style={typography.cardText}>
-                { card.extra_xp > 0 ?
-                  t`Additional XP: ${card.extra_xp}.` :
-                  t`XP Discount: ${card.extra_xp}.` }
-              </Text>
-            ) }
-            { !!card.taboo_text_change && (
-              <CardTextComponent text={card.taboo_text_change} />
-            ) }
-          </View>
-        ) }
+        <CardTabooTextBlock card={card} fontScale={fontScale} />
       </React.Fragment>
     );
   }
@@ -976,12 +953,5 @@ const styles = StyleSheet.create({
     marginLeft: 2,
   },
   factionIcon: {
-  },
-  tabooRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  tabooIcon: {
-    marginRight: xs,
   },
 });

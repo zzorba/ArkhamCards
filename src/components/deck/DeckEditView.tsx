@@ -34,6 +34,14 @@ interface State {
   slots: Slots;
 }
 
+interface QueryProps {
+  meta: DeckMeta;
+  storyOnly?: boolean;
+  versatile: boolean;
+  onYourOwn: boolean;
+  investigator: Card;
+}
+
 class DeckEditView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -50,8 +58,8 @@ class DeckEditView extends React.Component<Props, State> {
       meta,
       investigators,
     } = this.props;
-    const investigator_code = meta.alternate_back || deck.investigator_code;
-    return investigators[investigator_code];
+    const investigator_code = meta?.alternate_back || deck?.investigator_code;
+    return investigator_code ? investigators[investigator_code] : undefined;
   }
 
   _syncDeckCardCounts = () => {
@@ -126,13 +134,7 @@ class DeckEditView extends React.Component<Props, State> {
     versatile,
     onYourOwn,
     investigator,
-  }: {
-    meta: DeckMeta;
-    storyOnly?: boolean;
-    versatile: boolean;
-    onYourOwn: boolean;
-    investigator: Card;
-  }): Brackets {
+  }: QueryProps): Brackets {
     if (storyOnly) {
       return combineQueries(
         STORY_CARDS_QUERY,
@@ -189,7 +191,7 @@ class DeckEditView extends React.Component<Props, State> {
       return null;
     }
     return (
-      <QueryProvider
+      <QueryProvider<QueryProps, Brackets>
         meta={meta}
         storyOnly={storyOnly}
         investigator={investigator}
@@ -197,7 +199,7 @@ class DeckEditView extends React.Component<Props, State> {
         onYourOwn={deckCardCounts[ON_YOUR_OWN_CODE] > 0}
         getQuery={DeckEditView.baseQuery}
       >
-        { (query) => (
+        { query => (
           <CardSearchComponent
             componentId={componentId}
             tabooSetOverride={tabooSetId}

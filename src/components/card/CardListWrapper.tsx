@@ -1,5 +1,6 @@
 import React from 'react';
 import { flatMap } from 'lodash';
+import { Brackets } from 'typeorm/browser';
 
 import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import QueryProvider from 'components/data/QueryProvider';
@@ -13,6 +14,8 @@ interface Props {
   type: 'player' | 'encounter';
   children: (cards: Card[]) => React.ReactNode | null;
 }
+
+type QueryProps = Pick<Props, 'codes'>
 
 class CardListWrapper extends React.Component<Props & PlayerCardProps> {
   static FILTER_BUILDER = new FilterBuilder('clw');
@@ -34,7 +37,10 @@ class CardListWrapper extends React.Component<Props & PlayerCardProps> {
       return children([]);
     }
     return (
-      <QueryProvider codes={codes} getQuery={CardListWrapper.query}>
+      <QueryProvider<QueryProps, Brackets | undefined>
+        codes={codes}
+        getQuery={CardListWrapper.query}
+      >
         { query => (
           <CardQueryWrapper name="card-list" query={query}>
             { children }
