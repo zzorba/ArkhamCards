@@ -277,6 +277,7 @@ export default class Card extends BaseCard {
     const heals_horror_match = json.real_text && json.real_text.match(HEALS_HORROR_REGEX);
     const heals_horror = heals_horror_match ? true : null;
     const myriad = !!json.real_text && json.real_text.indexOf('Myriad.') !== -1;
+    const advanced = !!json.real_text && json.real_text.indexOf('Advanced.') !== -1;
 
     const sort_by_type = Card.typeHeaderOrder().indexOf(Card.typeSortHeader(json));
     const sort_by_faction = Card.factionHeaderOrder().indexOf(Card.factionSortHeader(json));
@@ -292,9 +293,12 @@ export default class Card extends BaseCard {
       json.name;
 
     const altArtInvestigator =
+      !!json.alternate_of_code ||
       json.code === '98001' || // Jenny
       json.code === '98004' || // Roland
       json.code === '98010' || // Carolyn
+      // json.code === '98016' || // Dexter for TIC
+      // json.code === '98013' || // Silas for TIC
       json.code === '99001'; // PROMO Marie
 
     return Object.assign(
@@ -322,6 +326,7 @@ export default class Card extends BaseCard {
         has_restrictions: !!restrictions,
         seal,
         myriad,
+        advanced,
         restrictions,
         heals_horror,
         sort_by_type,

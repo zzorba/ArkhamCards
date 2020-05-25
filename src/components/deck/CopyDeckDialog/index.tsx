@@ -15,7 +15,7 @@ import Dialog from 'components/core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from 'components/core/withNetworkStatus';
 import { login } from 'actions';
 import { Deck } from 'actions/types';
-import { parseDeck } from 'lib/parseDeck';
+import { parseBasicDeck } from 'lib/parseDeck';
 import { getDeck, getBaseDeck, getLatestDeck, AppState } from 'reducers';
 import typography from 'styles/typography';
 import COLORS from 'styles/colors';
@@ -213,9 +213,9 @@ class CopyDeckDialog extends React.Component<Props, State> {
     const {
       selectedDeckId,
     } = this.state;
-    const parsedCurrentDeck = deck && parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards);
-    const parsedBaseDeck = baseDeck && parseDeck(baseDeck, baseDeck.slots, baseDeck.ignoreDeckLimitSlots || {}, cards);
-    const parsedLatestDeck = latestDeck && parseDeck(latestDeck, latestDeck.slots, latestDeck.ignoreDeckLimitSlots || {}, cards);
+    const parsedCurrentDeck = deck && parseBasicDeck(deck, cards);
+    const parsedBaseDeck = baseDeck && parseBasicDeck(baseDeck, cards);
+    const parsedLatestDeck = latestDeck && parseBasicDeck(latestDeck, cards);
     if (parsedCurrentDeck && !parsedBaseDeck && !parsedLatestDeck) {
       // Only one deck, no need to show a selector.
       return null;

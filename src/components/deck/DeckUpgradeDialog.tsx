@@ -278,7 +278,11 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDe
       ): RealmProps {
         if (props.deck) {
           return {
-            investigator: head(results.cards.filtered(`(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`)),
+            investigator: head(
+              results.cards.filtered(
+                `(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`
+              )
+            ),
           };
         }
         return {};

@@ -1,5 +1,7 @@
 import {
+  flatMap,
   filter,
+  find,
   forEach,
   keys,
   map,
@@ -20,6 +22,7 @@ import {
   CardSplitType,
   Deck,
   DeckChanges,
+  DeckMeta,
   FactionCounts,
   ParsedDeck,
   SkillCounts,
@@ -221,8 +224,26 @@ function decSlot(slots: Slots, card: Card) {
   slots[card.code]--;
 }
 
+function getCards(
+  cards: CardsMap,
+  slots: Slots,
+  ignoreDeckLimitSlots: Slots
+): Card[] {
+  return flatMap(keys(slots), code => {
+    const card = cards[code];
+    if (!card) {
+      return [];
+    }
+    return map(
+      range(0, slots[code] - (ignoreDeckLimitSlots[code] || 0)),
+      () => card
+    );
+  });
+}
+
 function getDeckChanges(
   cards: CardsMap,
+  validation: DeckValidation,
   deck: Deck,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
@@ -231,33 +252,25 @@ function getDeckChanges(
   const exiledCards = deck.exile_string ? mapValues(
     groupBy(deck.exile_string.split(',')),
     items => items.length) : {};
-  const investigator = cards[deck.investigator_code];
-  if (!deck.previous_deck || !previousDeck || !investigator) {
+  if (!deck.previous_deck || !previousDeck) {
+    return undefined;
+  }
+  const previous_investigator_code = (previousDeck.meta || {}).alternate_back ||
+    previousDeck.investigator_code;
+  const previousInvestigator = cards[previous_investigator_code];
+  if (!previousInvestigator) {
     return undefined;
   }
   const oldDeckSize = new DeckValidation(
-    investigator,
+    previousInvestigator,
     previousDeck.slots,
     previousDeck.meta
   ).getDeckSize();
-  const validation = new DeckValidation(
-    investigator,
-    slots,
-    deck.meta
-  );
-  const allCards: Card[] = [];
-  forEach(
+  const previousDeckCards: Card[] = getCards(cards,
     previousDeck.slots,
-    (count, code) => {
-      const card = cards[code];
-      if (card) {
-        forEach(range(0, count), () => {
-          allCards.push(card);
-        });
-      }
-    }
+    previousDeck.ignoreDeckLimitSlots || {}
   );
-  const invalidCards = validation.getInvalidCards(allCards);
+  const invalidCards = validation.getInvalidCards(previousDeckCards);
   const newDeckSize = validation.getDeckSize();
   let extraDeckSize = newDeckSize - oldDeckSize;
 
@@ -467,7 +480,7 @@ function calculateTotalXp(
     const card = cards[code];
     const xp = computeXp(card);
     if (card && card.myriad) {
-      const myriadKey = `${card.real_text}_${card.xp}`;
+      const myriadKey = `${card.real_name}_${card.xp}`;
       if (!myriadBuys[myriadKey]) {
         // Pay the cost only once for myriad.
         myriadBuys[myriadKey] = true;
@@ -480,19 +493,42 @@ function calculateTotalXp(
   }));
 }
 
+export function parseBasicDeck(
+  deck: Deck | null,
+  cards: CardsMap,
+  previousDeck?: Deck
+): ParsedDeck | undefined {
+  if (!deck) {
+    return undefined;
+  }
+  return parseDeck(
+    deck,
+    deck.meta || {},
+    deck.slots,
+    deck.ignoreDeckLimitSlots || {},
+    cards,
+    previousDeck
+  );
+}
 
 export function parseDeck(
   deck: Deck | null,
+  meta: DeckMeta,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
   cards: CardsMap,
   previousDeck?: Deck,
   xpAdjustment?: number
-): ParsedDeck {
+): ParsedDeck | undefined {
   if (!deck) {
-    // @ts-ignore
-    return {};
+    return undefined;
   }
+  const investigator_code = meta.alternate_back || deck.investigator_code;
+  const investigator: Card | undefined = cards[investigator_code];
+  if (!investigator) {
+    return undefined;
+  }
+  const validation = new DeckValidation(investigator, slots, meta);
   const cardIds = map(
     sortBy(
       sortBy(
@@ -502,17 +538,25 @@ export function parseDeck(
       id => cards[id].name
     ),
     id => {
+      const card = cards[id];
       return {
         id,
         quantity: slots[id],
+        invalid: !validation.canIncludeCard(card, false),
+        limited: validation.isCardLimited(card),
       };
     });
   const specialCards = cardIds.filter(c =>
     (isSpecialCard(cards[c.id]) && slots[c.id] > 0) || ignoreDeckLimitSlots[c.id] > 0);
   const normalCards = cardIds.filter(c =>
     !isSpecialCard(cards[c.id]) && slots[c.id] > (ignoreDeckLimitSlots[c.id] || 0));
+
+  const deckCards = getCards(cards, slots, ignoreDeckLimitSlots);
+  const problem = validation.getProblem(deckCards) || undefined;
+
   const changes = getDeckChanges(
     cards,
+    validation,
     deck,
     slots,
     ignoreDeckLimitSlots,
@@ -532,22 +576,24 @@ export function parseDeck(
     slotCounts[slot] = slotCount(cardIds, cards, slot);
   });
   return {
-    investigator: cards[deck.investigator_code],
-    deck: deck,
-    slots: slots,
+    investigator,
+    deck,
+    slots,
     normalCardCount: sum(normalCards.map(c =>
       c.quantity - (ignoreDeckLimitSlots[c.id] || 0))),
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
     availableExperience: (deck.xp || 0) + (xpAdjustment || 0),
     packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
-    factionCounts: factionCounts,
+    factionCounts,
     costHistogram: costHistogram(cardIds, cards),
-    slotCounts: slotCounts,
-    skillIconCounts: skillIconCounts,
+    slotCounts,
+    skillIconCounts,
     normalCards: splitCards(normalCards, cards),
     specialCards: splitCards(specialCards, cards),
     ignoreDeckLimitSlots,
     changes,
+    problem,
+    limitedSlots: !!find(validation.deckOptions(), option => !!option.limit),
   };
 }

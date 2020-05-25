@@ -66,7 +66,7 @@ export default class InvestigatorChoiceInputComponent extends React.Component<Pr
       return (
         <>
           { !!step.text && (
-            <SetupStepWrapper>
+            <SetupStepWrapper bulletType={step.bullet_type}>
               <CampaignGuideTextComponent text={step.text} />
             </SetupStepWrapper>
           ) }

@@ -135,8 +135,11 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
                   { this.renderSecondAllPrompt(input, scenarioState) }
                 </>
               );
-            case 'choice':
-              // Single choice, of players with Gasoline, must choose one.
+            case 'choice': {
+              // Single choice of players with Gasoline/Medicine, must choose one.
+              const useChecklist = input.max === 1 ||
+                scenarioState.stringChoices(id) !== undefined;
+              const limits = this.supplyLimits();
               return (
                 <>
                   { !!text && (
@@ -144,16 +147,25 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
                       <CampaignGuideTextComponent text={text} />
                     </SetupStepWrapper>
                   ) }
-                  <InvestigatorCheckListComponent
-                    id={id}
-                    choiceId="use_supply"
-                    checkText={`Use ${input.id}`}
-                    min={input.min}
-                    max={input.max}
-                    filter={this._filterInvestigatorChoice}
-                  />
+                  { useChecklist ? (
+                    <InvestigatorCheckListComponent
+                      id={id}
+                      choiceId="use_supply"
+                      checkText={`Use ${input.id}`}
+                      min={input.min}
+                      max={input.max}
+                      filter={this._filterInvestigatorChoice}
+                    />
+                  ) : (
+                    <InvestigatorCounterComponent
+                      id={id}
+                      countText={`Use ${input.id}`}
+                      limits={limits}
+                    />
+                  ) }
                 </>
               );
+            }
           }
         } }
       </ScenarioGuideContext.Consumer>

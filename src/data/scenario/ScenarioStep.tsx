@@ -6,7 +6,9 @@ import {
   groupBy,
   keys,
   map,
+  mapValues,
   partition,
+  range,
   sortBy,
   sum,
 } from 'lodash';
@@ -421,17 +423,22 @@ export default class ScenarioStep {
           return undefined;
         }
         switch (choice) {
-          case PlayingScenarioBranch.DRAW_WEAKNESS:
+          case PlayingScenarioBranch.RECORD_TRAUMA:
+          case PlayingScenarioBranch.DRAW_WEAKNESS: {
+            const fixedStep = choice === PlayingScenarioBranch.DRAW_WEAKNESS ?
+              '$draw_weakness' :
+              '$record_trauma';
             return this.maybeCreateEffectsStep(
               step.id,
               [
-                `$draw_weakness#${nextIteration}`,
+                `${fixedStep}#${nextIteration}`,
                 `$play_scenario#${nextIteration}`,
                 ...this.remainingStepIds,
               ],
               [],
               scenarioState
             );
+          }
           case PlayingScenarioBranch.RESOLUTION: {
             const steps: string[] = [];
             if (!input.no_resolutions) {
@@ -773,12 +780,28 @@ export default class ScenarioStep {
                 hidden: true,
               });
             }
+            if (choices.killed && choices.killed[0]) {
+              effects.push({
+                type: 'trauma',
+                investigator: '$input_value',
+                killed: true,
+                hidden: true,
+              });
+            }
             const mentalAdjust = (choices.mental && choices.mental[0]) || 0;
             if (mentalAdjust !== 0) {
               effects.push({
                 type: 'trauma',
                 investigator: '$input_value',
                 mental: mentalAdjust,
+                hidden: true,
+              });
+            }
+            if (choices.insane && choices.insane[0]) {
+              effects.push({
+                type: 'trauma',
+                investigator: '$input_value',
+                insane: true,
                 hidden: true,
               });
             }
@@ -860,21 +883,25 @@ export default class ScenarioStep {
             );
           }
           case 'choice': {
-            const choice = scenarioState.stringChoices(this.step.id);
-            if (choice === undefined) {
+            const stringChoice = scenarioState.stringChoices(this.step.id);
+            const numberChoice =
+              stringChoice !== undefined ?
+                mapValues(stringChoice, () => [1]) :
+                scenarioState.numberChoices(this.step.id);
+            if (numberChoice === undefined) {
               return undefined;
             }
-            const consumeSuppliesEffects: Effect[] = map(keys(choice), code => {
+            const consumeSuppliesEffects: Effect[] = map(numberChoice, (counts, code) => {
               return {
                 type: 'campaign_log_count',
                 section: input.section,
                 investigator: code,
                 operation: 'add',
                 id: input.id,
-                value: -1,
+                value: -counts[0],
               };
             });
-            const hasAny = keys(choice).length > 0;
+            const hasAny = keys(numberChoice).length > 0;
             const branchChoice = find(
               input.choices,
               option => option.boolCondition === hasAny
@@ -889,6 +916,11 @@ export default class ScenarioStep {
                 scenarioState
               );
             }
+            const effectsInput: string[] = [];
+            forEach(numberChoice, (count, code) => {
+              forEach(range(0, count[0]), () => effectsInput.push(code));
+            });
+
             return this.maybeCreateEffectsStep(
               this.step.id,
               [
@@ -901,7 +933,7 @@ export default class ScenarioStep {
                 },
                 {
                   border: branchChoice && branchChoice.border,
-                  input: keys(choice),
+                  input: effectsInput,
                   effects: (branchChoice && branchChoice.effects) || [],
                 },
               ],

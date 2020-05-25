@@ -11,6 +11,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
+import StandaloneIcon from 'icons/StandaloneIcon';
 import EncounterIcon from 'icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from 'components/core/CardCostIcon';
 import Button from 'components/core/Button';
@@ -41,6 +42,7 @@ interface Props {
   hasSecondCore?: boolean;
   showZeroCount?: boolean;
   backgroundColor?: string;
+  invalid?: boolean;
 }
 
 export default class CardSearchResult extends React.PureComponent<Props> {
@@ -256,6 +258,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   renderCardName() {
     const {
       card,
+      invalid,
+      fontScale,
     } = this.props;
     const color = card.faction2_code ?
       FACTION_COLORS.dual :
@@ -263,10 +267,19 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
-          <Text style={[typography.text, { color }]} numberOfLines={1} ellipsizeMode="clip">
+          <Text style={[
+            typography.text,
+            { color },
+            invalid ? { textDecorationLine: 'line-through' } : {},
+          ]} numberOfLines={1} ellipsizeMode="clip">
             { card.renderName }
           </Text>
           { this.renderTabooBlock() }
+          { !!card.advanced && (
+            <View style={styles.tabooBlock}>
+              <StandaloneIcon name="parallel" size={18 * fontScale} color="#000" />
+            </View>
+          ) }
         </View>
         <View style={styles.row}>
           { this.renderSkillIcons() }

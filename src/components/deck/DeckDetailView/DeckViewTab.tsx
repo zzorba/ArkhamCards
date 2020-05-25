@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
-import { find, forEach, map, sum, sumBy, uniqBy } from 'lodash';
+import { filter, find, flatMap, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import {
   SectionList,
   SectionListData,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -11,6 +12,7 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import Switch from 'components/core/Switch';
 import PickerStyleButton from 'components/core/PickerStyleButton';
 import {
   Campaign,
@@ -25,6 +27,7 @@ import {
   Trauma,
 } from 'actions/types';
 import { showCard, showCardSwipe } from 'components/nav/helper';
+import DeckProblemRow from 'components/core/DeckProblemRow';
 import AppIcon from 'icons/AppIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -41,7 +44,7 @@ import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import COLORS from 'styles/colors';
 import { isBig, m, s, xs } from 'styles/space';
-import DeckProblemRow from 'components/core/DeckProblemRow';
+import typography from 'styles/typography';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -59,7 +62,7 @@ function hasUpgrades(
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
   inCollection: { [pack_code: string]: boolean }
-) {
+): boolean {
   const card = cards[code];
   return !!(
     card &&
@@ -78,18 +81,33 @@ function deckToSections(
   cardsByName: { [name: string]: Card[] },
   validation: DeckValidation,
   special: boolean,
-  inCollection: { [pack_code: string]: boolean }
+  inCollection: { [pack_code: string]: boolean },
+  limitedSlots: boolean
 ): CardSection[] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
-    const assetCount = sum(halfDeck.Assets.map(subAssets =>
-      sum(subAssets.data.map(c => c.quantity))));
-    result.push({
-      id: `assets${special ? '-special' : ''}`,
-      title: t`Assets (${assetCount})`,
-      data: [],
+    const assets = flatMap(halfDeck.Assets, subAssets => {
+      const data = filter(subAssets.data, c => !limitedSlots || c.limited);
+      if (!data.length) {
+        return [];
+      }
+      return {
+        ...subAssets,
+        data,
+      };
     });
-    forEach(halfDeck.Assets, (subAssets, idx) => {
+    const assetCount = sumBy(
+      assets,
+      subAssets => sum(subAssets.data.map(c => c.quantity))
+    );
+    if (assetCount > 0) {
+      result.push({
+        id: `assets${special ? '-special' : ''}`,
+        title: t`Assets (${assetCount})`,
+        data: [],
+      });
+    }
+    forEach(assets, (subAssets, idx) => {
       result.push({
         id: `asset${special ? '-special' : ''}-${idx}`,
         subTitle: subAssets.type,
@@ -116,11 +134,15 @@ function deckToSections(
     [t`Treachery`]: halfDeck.Treachery,
   }, (cardSplitGroup, localizedName) => {
     if (cardSplitGroup) {
-      const count = sumBy(cardSplitGroup, c => c.quantity);
+      const cardIds = filter(cardSplitGroup, c => !limitedSlots || c.limited);
+      if (!cardIds.length) {
+        return;
+      }
+      const count = sumBy(cardIds, c => c.quantity);
       result.push({
         id: `${localizedName}-${special ? '-special' : ''}`,
         title: `${localizedName} (${count})`,
-        data: map(cardSplitGroup, c => {
+        data: map(cardIds, c => {
           return {
             ...c,
             special,
@@ -178,6 +200,8 @@ function bondedSections(
         quantity: c.quantity || 0,
         special: true,
         hasUpgrades: false,
+        limited: false,
+        invalid: false,
       };
     }),
   }];
@@ -231,19 +255,52 @@ interface Props {
   };
 }
 
-export default class DeckViewTab extends React.Component<Props> {
+interface State {
+  limitedSlots: boolean;
+}
+
+export default class DeckViewTab extends React.Component<Props, State> {
+  state: State = {
+    limitedSlots: false,
+  };
+
   _keyForCard = (item: SectionCardId) => {
     return item.id;
   };
 
-  _showInvestigator = () => {
+  investigatorFront() {
+    const {
+      deck,
+      cards,
+      meta,
+      parallelInvestigators,
+    } = this.props;
+    const altFront = meta.alternate_front && find(
+      parallelInvestigators,
+      card => card.code === meta.alternate_front);
+    return altFront || cards[deck.investigator_code];
+  }
+
+  investigatorBack() {
     const {
       parsedDeck: {
         investigator,
       },
+      meta,
+      parallelInvestigators,
+    } = this.props;
+    const altFront = meta.alternate_back && find(
+      parallelInvestigators,
+      card => card.code === meta.alternate_back);
+    return altFront || investigator;
+  }
+
+  _showInvestigator = () => {
+    const {
       componentId,
       tabooSetId,
     } = this.props;
+    const investigator = this.investigatorFront();
     showCard(
       componentId,
       investigator.code,
@@ -258,13 +315,13 @@ export default class DeckViewTab extends React.Component<Props> {
       componentId,
       tabooSetId,
       parsedDeck: {
-        investigator,
         slots,
       },
       renderFooter,
       onDeckCountChange,
       singleCardView,
     } = this.props;
+    const investigator = this.investigatorFront();
     if (singleCardView) {
       showCard(
         componentId,
@@ -296,7 +353,7 @@ export default class DeckViewTab extends React.Component<Props> {
       slots,
       onDeckCountChange,
       investigator,
-      renderFooter,
+      renderFooter
     );
   };
 
@@ -349,6 +406,7 @@ export default class DeckViewTab extends React.Component<Props> {
         key={id}
         card={card}
         id={id}
+        invalid={item.invalid}
         onUpgrade={upgradeEnabled ? showCardUpgradeDialog : undefined}
         onPressId={this._showSwipeCard}
         count={count}
@@ -389,7 +447,6 @@ export default class DeckViewTab extends React.Component<Props> {
       parsedDeck: {
         normalCards,
         specialCards,
-        investigator,
         slots,
       },
       meta,
@@ -401,9 +458,9 @@ export default class DeckViewTab extends React.Component<Props> {
       inCollection,
       editable,
     } = this.props;
-
+    const { limitedSlots } = this.state;
+    const investigator = this.investigatorBack();
     const validation = new DeckValidation(investigator, slots, meta);
-
     return [
       {
         id: 'cards',
@@ -417,7 +474,8 @@ export default class DeckViewTab extends React.Component<Props> {
         cardsByName,
         validation,
         false,
-        inCollection
+        inCollection,
+        limitedSlots
       ), {
         id: 'special',
         superTitle: t`Special Cards`,
@@ -430,9 +488,10 @@ export default class DeckViewTab extends React.Component<Props> {
         cardsByName,
         validation,
         true,
-        inCollection
+        inCollection,
+        limitedSlots
       ),
-      ...bondedSections(slots, cards, bondedCardsByName),
+      ...(limitedSlots ? [] : bondedSections(slots, cards, bondedCardsByName)),
     ];
   }
 
@@ -476,10 +535,19 @@ export default class DeckViewTab extends React.Component<Props> {
     );
   }
 
+  _toggleLimitedSlots = () => {
+    this.setState(state => {
+      return {
+        limitedSlots: !state.limitedSlots,
+      };
+    });
+  };
+
   renderInvestigatorOptions() {
     const {
       parsedDeck: {
         investigator,
+        limitedSlots,
       },
       parallelInvestigators,
       deck,
@@ -515,6 +583,17 @@ export default class DeckViewTab extends React.Component<Props> {
           disabled={!editable}
         />
         { this.renderAvailableExperienceButton() }
+        { limitedSlots && (
+          <View style={styles.toggleRow}>
+            <Text style={typography.label}>
+              { t`Show limited splash` }
+            </Text>
+            <Switch
+              value={this.state.limitedSlots}
+              onValueChange={this._toggleLimitedSlots}
+            />
+          </View>
+        ) }
       </View>
     );
   }
@@ -532,7 +611,7 @@ export default class DeckViewTab extends React.Component<Props> {
       (slots[BODY_OF_A_YITHIAN] || 0) > 0 ?
         cards[BODY_OF_A_YITHIAN] :
         undefined
-    ) || this.props.parsedDeck.investigator;
+    ) || this.investigatorFront();
 
     return (
       <View style={styles.column}>
@@ -725,5 +804,13 @@ const styles = StyleSheet.create({
     paddingLeft: xs,
     marginBottom: s,
     marginRight: s,
+  },
+  toggleRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: s,
+    paddingLeft: m,
+    paddingRight: m,
   },
 });

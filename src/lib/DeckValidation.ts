@@ -122,8 +122,8 @@ export default class DeckValidation {
       //console.log(card.deck_requirements);
       // must have the required cards
       if (card.deck_requirements.card){
-        var req_count = 0;
-        var req_met_count = 0;
+        let req_count = 0;
+        let req_met_count = 0;
         forEach(card.deck_requirements.card, possible => {
           req_count++;
           if (find(cards, theCard =>
@@ -149,12 +149,12 @@ export default class DeckValidation {
     }
 
     // no invalid card
-    if(this.getInvalidCards(cards).length > 0) {
+    if (this.getInvalidCards(cards).length > 0) {
       return 'invalid_cards';
     }
 
     const deck_options = this.deckOptions();
-    for (var i = 0; i < deck_options.length; i++) {
+    for (let i = 0; i < deck_options.length; i++) {
       const option = deck_options[i];
       if (!option) {
         continue;
@@ -188,18 +188,18 @@ export default class DeckValidation {
 
     const drawDeckSize = this.getDrawDeckSize(cards);
       // at least 60 others cards
-    if(drawDeckSize < size) {
+    if (drawDeckSize < size) {
       return 'too_few_cards';
     }
 
     // at least 60 others cards
-    if(drawDeckSize > size) {
+    if (drawDeckSize > size) {
       return 'too_many_cards';
     }
     return null;
   }
 
-  getInvalidCards(cards: Card[]): Card[] {
+  private initDeckOptionsCounts() {
     const specialCards = this.specialCardCounts();
     this.deck_options_counts = [];
     if (specialCards.onYourOwn > 0) {
@@ -222,7 +222,16 @@ export default class DeckValidation {
         atleast: {},
       });
     }
+  }
+
+  getInvalidCards(cards: Card[]): Card[] {
+    this.initDeckOptionsCounts();
     return filter(cards, card => !this.canIncludeCard(card, true));
+  }
+
+  isCardLimited(card: Card): boolean {
+    const option = this.matchingDeckOption(card, false);
+    return !!(option && option.limit);
   }
 
   deckOptions(): DeckOption[] {
@@ -259,21 +268,28 @@ export default class DeckValidation {
     card: Card,
     processDeckCounts: boolean
   ): boolean {
+    return !!this.matchingDeckOption(card, processDeckCounts);
+  }
+
+  private matchingDeckOption(
+    card: Card,
+    processDeckCounts: boolean
+  ): DeckOption | undefined {
     const investigator = this.investigator;
 
     // hide investigators
     if (card.type_code === "investigator") {
-      return false;
+      return undefined;
     }
     if (card.faction_code === "mythos") {
-      return false;
+      return undefined;
     }
 
     // reject cards restricted
     if (card.restrictions &&
         card.restrictions.investigators &&
-        !find(card.restrictions.investigators, code => code === investigator.code)) {
-      return false;
+        !find(card.restrictions.investigators, code => code === investigator.code || code === investigator.alternate_of_code)) {
+      return undefined;
     }
 
     //var investigator = app.data.cards.findById(investigator_code);
@@ -397,7 +413,7 @@ export default class DeckValidation {
         }
 
         if (option.not){
-          return false;
+          return undefined;
         } else {
           if (processDeckCounts && option.atleast && card.faction_code) {
             if (!this.deck_options_counts[i].atleast[card.faction_code]) {
@@ -415,15 +431,15 @@ export default class DeckValidation {
           if (processDeckCounts && option.limit) {
             if (finalOption || this.deck_options_counts[i].limit < option.limit) {
               this.deck_options_counts[i].limit += 1;
-              return true;
+              return option;
             }
           } else {
-            return true;
+            return option;
           }
         }
       }
     }
 
-    return false;
+    return undefined;
   }
 }

@@ -2,10 +2,8 @@ import React from 'react';
 import {
   find,
   findIndex,
-  flatMap,
   forEach,
   keys,
-  map,
   range,
   throttle,
 } from 'lodash';
@@ -53,11 +51,10 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import { updateCampaign } from 'components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from 'components/core/withPlayerCards';
-import DeckValidation from 'lib/DeckValidation';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import Card from 'data/Card';
 import TabooSet from 'data/TabooSet';
-import { parseDeck } from 'lib/parseDeck';
+import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import { DeckDescriptionProps } from '../DeckDescriptionView';
@@ -277,6 +274,18 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    /*
+    forEach(this.props, (val, key) => {
+      if (prevProps[key] !== val) {
+        console.log(`Prop '${key}' changed`);
+      }
+    });
+    if (this.state) {
+      forEach(this.state, (val, key) => {
+        prevState[key] !== val && console.log(`State '${key}' changed`)
+      });
+    }
+    */
     const {
       deck,
       id,
@@ -319,9 +328,10 @@ class DeckDetailView extends React.Component<Props, State> {
         } = this.props;
         const {
           slots,
+          meta,
           ignoreDeckLimitSlots,
         } = this.state;
-        const parsedDeck = parseDeck(deck, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
+        const parsedDeck = parseDeck(deck, meta, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           parsedDeck,
@@ -868,7 +878,21 @@ class DeckDetailView extends React.Component<Props, State> {
   _setMeta = (key: keyof DeckMeta, value?: string) => {
     const {
       meta,
+      slots,
+      ignoreDeckLimitSlots,
+      xpAdjustment,
+      nameChange,
+      tabooSetId,
     } = this.state;
+    const {
+      deck,
+      cards,
+      previousDeck,
+    } = this.props;
+    if (!deck) {
+      return;
+    }
+
     const updatedMeta: DeckMeta = {
       ...meta,
       [key]: value,
@@ -876,15 +900,24 @@ class DeckDetailView extends React.Component<Props, State> {
     if (value === undefined) {
       delete updatedMeta[key];
     }
+    const parsedDeck = parseDeck(
+      deck,
+      updatedMeta,
+      slots,
+      ignoreDeckLimitSlots,
+      cards,
+      previousDeck);
+
     this.setState({
       meta: updatedMeta,
+      parsedDeck,
       hasPendingEdits: this.hasPendingEdits(
-        this.state.slots,
-        this.state.ignoreDeckLimitSlots,
+        slots,
+        ignoreDeckLimitSlots,
         updatedMeta,
-        this.state.xpAdjustment,
-        this.state.nameChange,
-        this.state.tabooSetId),
+        xpAdjustment,
+        nameChange,
+        tabooSetId),
     });
   };
 
@@ -896,11 +929,12 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.props;
     const {
       slots,
+      meta,
     } = this.state;
     if (!deck) {
       return;
     }
-    const parsedDeck = parseDeck(deck, slots, newIgnoreDeckLimitSlots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, meta, slots, newIgnoreDeckLimitSlots, cards, previousDeck);
     this.setState({
       ignoreDeckLimitSlots: newIgnoreDeckLimitSlots,
       parsedDeck,
@@ -934,13 +968,14 @@ class DeckDetailView extends React.Component<Props, State> {
       previousDeck,
       cards,
     } = this.props;
+    const { meta } = this.state;
     if (!deck) {
       return;
     }
     const ignoreDeckLimitSlots = resetIgnoreDeckLimitSlots ?
       (deck.ignoreDeckLimitSlots || {}) :
       this.state.ignoreDeckLimitSlots;
-    const parsedDeck = parseDeck(deck, newSlots, ignoreDeckLimitSlots, cards, previousDeck);
+    const parsedDeck = parseDeck(deck, meta, newSlots, ignoreDeckLimitSlots, cards, previousDeck);
     this.setState({
       slots: newSlots,
       ignoreDeckLimitSlots: ignoreDeckLimitSlots,
@@ -966,7 +1001,7 @@ class DeckDetailView extends React.Component<Props, State> {
     if (findIndex(keys(slots), code => deck.slots[code] !== slots[code]) !== -1 ||
       findIndex(keys(deck.slots), code => deck.slots[code] !== slots[code]) !== -1 ||
     (!loaded && keys(slots).length === 0 && keys(deck.slots).length === 0)) {
-      const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+      const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
       this.setState({
         slots: deck.slots,
         meta: deck.meta || {},
@@ -1226,35 +1261,13 @@ class DeckDetailView extends React.Component<Props, State> {
 
   getProblem() {
     const {
-      cards,
-      deck,
-    } = this.props;
-    const {
       parsedDeck,
       loaded,
-      meta,
     } = this.state;
-    if (!deck || !loaded || !parsedDeck) {
-      return null;
+    if (!loaded || !parsedDeck) {
+      return undefined;
     }
-
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-      investigator,
-    } = parsedDeck;
-
-    const validator = new DeckValidation(investigator, slots, meta);
-    return validator.getProblem(flatMap(keys(slots), code => {
-      const card = cards[code];
-      if (!card) {
-        return [];
-      }
-      return map(
-        range(0, Math.max(0, slots[code] - (ignoreDeckLimitSlots[code] || 0))),
-        () => card
-      );
-    }));
+    return parsedDeck.problem;
   }
 
   _showCardUpgradeDialog = (card: Card) => {
@@ -1455,6 +1468,7 @@ class DeckDetailView extends React.Component<Props, State> {
       slots,
       ignoreDeckLimitSlots,
       xpAdjustment,
+      meta,
     } = this.state;
     this.setState({
       menuOpen: false,
@@ -1467,6 +1481,7 @@ class DeckDetailView extends React.Component<Props, State> {
           name: 'Deck.History',
           passProps: {
             id: parsedDeck.deck.id,
+            meta,
             slots,
             ignoreDeckLimitSlots,
             xpAdjustment,
@@ -1838,7 +1853,7 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
           [name: string]: Card[];
         } = {};
         forEach(cards, card => {
-          if (investigator && card.alternate_of === investigator) {
+          if (investigator && card.alternate_of_code === investigator) {
             parallelInvestigators.push(card);
           }
           if (cardsByName[card.real_name]) {

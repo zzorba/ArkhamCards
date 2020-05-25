@@ -372,7 +372,7 @@ export default class GuidedCampaignLog {
 
   isDefeated(investigator: string): boolean {
     const status = this.investigatorResolutionStatus()[investigator];
-    return status === 'physical' || status === 'mental' || status === 'eliminated';
+    return status !== 'alive' && status !== 'resigned';
   }
 
   hasCard(investigator: string, card: string): boolean {
@@ -561,23 +561,20 @@ export default class GuidedCampaignLog {
           throw new Error('All investigators called before being set');
         }
         return this.investigatorCodes(false);
-      case 'defeated':
+      case 'defeated': {
+        const result: string[] = [];
+        forEach(this.investigatorResolutionStatus(), (status, code) => {
+          if (status !== 'alive' && status !== 'resigned') {
+            result.push(code);
+          }
+        });
+        return result;
+      }
       case 'not_resigned': {
         const result: string[] = [];
         forEach(this.investigatorResolutionStatus(), (status, code) => {
-          switch (status) {
-            case 'alive':
-              if (investigator === 'not_resigned') {
-                result.push(code);
-              }
-              break;
-            case 'physical':
-            case 'mental':
-            case 'eliminated':
-              result.push(code);
-              break;
-            case 'resigned':
-              break;
+          if (status !== 'resigned') {
+            result.push(code);
           }
         });
         return result;

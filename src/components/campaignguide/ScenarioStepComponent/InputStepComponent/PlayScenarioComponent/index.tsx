@@ -30,6 +30,7 @@ export default class PlayScenarioComponent extends React.Component<Props> {
   _campaignLogPressed: () => void;
   _resolutionPressed: () => void;
   _drawWeaknessPressed: () => void;
+  _recordTraumaPressed: () => void;
 
   constructor(props: Props) {
     super(props);
@@ -37,6 +38,7 @@ export default class PlayScenarioComponent extends React.Component<Props> {
     this._campaignLogPressed = this._branchPress.bind(this, PlayingScenarioBranch.CAMPAIGN_LOG);
     this._resolutionPressed = this._branchPress.bind(this, PlayingScenarioBranch.RESOLUTION);
     this._drawWeaknessPressed = this._branchPress.bind(this, PlayingScenarioBranch.DRAW_WEAKNESS);
+    this._recordTraumaPressed = this._branchPress.bind(this, PlayingScenarioBranch.RECORD_TRAUMA);
   }
 
   _branchPress = (index: number) => {
@@ -120,6 +122,10 @@ export default class PlayScenarioComponent extends React.Component<Props> {
           <BasicButton
             title={t`Draw random basic weakness`}
             onPress={this._drawWeaknessPressed}
+          />
+          <BasicButton
+            title={t`Record trauma`}
+            onPress={this._recordTraumaPressed}
           />
           <BasicButton
             title={input.no_resolutions ? t`Scenario completed` : t`Resolutions`}

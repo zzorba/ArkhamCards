@@ -644,7 +644,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 </>
               ) : (
                 <Text style={typography.cardText}>
-                  <EncounterIcon encounter_code={card.pack_code} size={16 * fontScale} color="#000" />
+                  <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
                   { ` ${card.pack_name} #${card.position % 1000}.` }
                 </Text>
               ) }
@@ -754,7 +754,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       width,
       fontScale,
     } = this.props;
-    if ((card.hidden || backFirst) && (card.hidden || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
+    if ((card.hidden || backFirst) && ((card.hidden && card.type_code !== 'investigator') || card.spoiler) && !this.state.showBack && card.code !== RANDOM_BASIC_WEAKNESS) {
       return (
         <View style={[styles.container, styles.buttonContainerPadding, { width }]}>
           <View style={styles.buttonContainer}>

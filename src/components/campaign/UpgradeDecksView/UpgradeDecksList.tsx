@@ -10,7 +10,7 @@ import { t } from 'ttag';
 
 import { Deck, InvestigatorData, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
-import { parseDeck } from 'lib/parseDeck';
+import { parseBasicDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
 import DeckRowButton from 'components/core/DeckRowButton';
 import { showDeckModal } from 'components/nav/helper';
@@ -69,7 +69,10 @@ export default class UpgradeDecksList extends React.Component<Props> {
       return null;
     }
     if (!originalDeckIds.has(deck.id)) {
-      const parsedDeck = parseDeck(deck, deck.slots, deck.ignoreDeckLimitSlots || {}, cards, previousDeck);
+      const parsedDeck = parseBasicDeck(deck, cards, previousDeck);
+      if (!parsedDeck) {
+        return null;
+      }
       return (
         <View style={styles.section}>
           <View style={styles.column}>

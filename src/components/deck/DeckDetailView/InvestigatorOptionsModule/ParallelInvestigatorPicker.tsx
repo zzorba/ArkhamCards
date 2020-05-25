@@ -13,7 +13,7 @@ interface Props {
   parallelInvestigators: Card[];
   selection?: Card;
   type: 'alternate_back' | 'alternate_front';
-  onChange: (type: 'alternate_back' | 'alternate_front', code: Card) => void;
+  onChange: (type: 'alternate_back' | 'alternate_front', code?: string) => void;
   disabled?: boolean;
   editWarning: boolean;
 }
@@ -29,32 +29,24 @@ export default class ParallelInvestigatorPicker extends React.Component<Props> {
     this.ref && this.ref.closeModal();
     const {
       onChange,
-      investigator,
       parallelInvestigators,
       type,
     } = this.props;
     onChange(
       type,
-      index === 0 ? investigator : parallelInvestigators[index - 1]
+      index === 0 ? undefined : parallelInvestigators[index - 1].code
     );
-  };
-
-  _codeToLabel = (faction: string) => {
-    return Card.factionCodeToName(faction, t`Select Faction`);
   };
 
   selectedIndex(): number {
     const {
-      investigator,
       selection,
       parallelInvestigators,
     } = this.props;
     if (!selection) {
       return 0;
     }
-    if (selection.code === investigator.code) {
-      return 0;
-    }
+    // Not found: -1 + 1 = 0
     return 1 + findIndex(parallelInvestigators, card => card.code === selection.code);
   }
 
@@ -72,7 +64,7 @@ export default class ParallelInvestigatorPicker extends React.Component<Props> {
         settingsStyle
         title={type === 'alternate_front' ? t`Card Front` : t`Card Back`}
         editable={!disabled}
-        description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
+        description={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
         colors={{
           modalColor: investigatorFaction ?
             FACTION_COLORS[investigatorFaction] :
@@ -83,8 +75,8 @@ export default class ParallelInvestigatorPicker extends React.Component<Props> {
         }}
         choices={[
           { text: t`Original` },
-          ...map(parallelInvestigators, () => {
-            return { text: t`Parallel` };
+          ...map(parallelInvestigators, (card) => {
+            return { text: card.pack_name };
           }),
         ]}
         selectedIndex={this.selectedIndex()}
