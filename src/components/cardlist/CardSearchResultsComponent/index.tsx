@@ -371,7 +371,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             baseQuery={baseQuery}
             mythosToggle={mythosToggle}
             selectedSort={selectedSort}
-            mythosMode={mythosMode}
+            mythosMode={mythosToggle && mythosMode}
             getQuery={CardSearchResultsComponent.query}
           >
             { query => (

@@ -26,7 +26,7 @@ export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta
  * Turn the given realm card into a realm-query string.
  */
 export function queryForInvestigator(investigator: Card, meta?: DeckMeta): Brackets {
-  console.log(`Generating query for: ${JSON.stringify(investigator.deck_options)}`);
+  // console.log(`Generating query for: ${JSON.stringify(investigator.deck_options)}`);
   const invertedClause = negativeQueryForInvestigator(investigator, meta);
   // We assume that there is always at least one normalClause.
   const normalQuery = combineQueriesOpt(
