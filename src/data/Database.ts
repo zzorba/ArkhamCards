@@ -12,7 +12,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  static SCHEMA_VERSION: number = 3;
+  static SCHEMA_VERSION: number = 4;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -51,12 +51,12 @@ export default class Database {
   }
 
   reloadPlayerCards() {
-    console.log('RELOADING PLAYER CARDS');
+    // console.log('RELOADING PLAYER CARDS');
     return syncPlayerCards(this, this._updatePlayerCards);
   }
 
   private _updatePlayerCards = (state: PlayerCardState) => {
-    console.log('PLAYER CARDS UDPATED');
+    // console.log('PLAYER CARDS UDPATED');
     this.state = state;
     forEach(this.listeners, listener => listener());
   };
