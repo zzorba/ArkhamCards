@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, forEach, sortBy } from 'lodash';
+import { filter, forEach, map, sortBy } from 'lodash';
 import {
   Keyboard,
   SectionList,
@@ -14,7 +14,6 @@ import { msgid, ngettext, t } from 'ttag';
 
 import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import BasicButton from 'components/core/BasicButton';
-import NewInvestigatorRow from './NewInvestigatorRow';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
@@ -106,19 +105,44 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     });
   };
 
+  deckbuildingDetails(investigator: Card) {
+    const { cards, hideDeckbuildingRules } = this.props;
+    if (hideDeckbuildingRules || !investigator.deck_requirements) {
+      return null;
+    }
+    return (
+      <>
+        <Text style={typography.text}>
+          { t`${investigator.deck_requirements.size} Cards` }
+        </Text>
+        { map(investigator.deck_requirements.card, req => {
+          const card = req.code && cards[req.code];
+          if (!card) {
+            return (
+              <Text key={req.code} style={typography.small}>
+                { t`Unknown card: ${req.code}` }
+              </Text>
+            );
+          }
+          return (
+            <Text key={req.code} style={typography.small}>
+              { card.quantity }x { card.name }
+            </Text>
+          );
+        }) }
+      </>
+    );
+  }
+
   _renderItem = ({ item }: { item: Card }) => {
-    return this.props.hideDeckbuildingRules ? (
+    const { hideDeckbuildingRules } = this.props;
+    return (
       <InvestigatorRow
         key={item.code}
         investigator={item}
         onPress={this._onPress}
-      />
-    ) : (
-      <NewInvestigatorRow
-        key={item.code}
-        cards={this.props.cards}
-        investigator={item}
-        onPress={this._onPress}
+        button={this.deckbuildingDetails(item)}
+        bigImage={!hideDeckbuildingRules}
       />
     );
   };

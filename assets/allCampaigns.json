@@ -29092,6 +29092,11 @@
     {
       "id": "R5",
       "title": "Resolution 5",
+      "investigator_status": [
+        "resigned",
+        "physical",
+        "mental"
+      ],
       "steps": [
         "maybe_ask_act_1",
         "compare_columns_explanation",
