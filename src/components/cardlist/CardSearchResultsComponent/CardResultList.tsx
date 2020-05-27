@@ -57,6 +57,7 @@ import Card from 'data/Card';
 import { showCard, showCardSwipe } from 'components/nav/helper';
 import typography from 'styles/typography';
 import { s, m } from 'styles/space';
+import { ReactElement } from 'simple-markdown';
 
 function funLoadingMessages() {
   return [
@@ -90,6 +91,7 @@ interface OwnProps {
   visible: boolean;
   showNonCollection?: boolean;
   expandSearchControls?: ReactNode;
+  renderHeader?: () => React.ReactElement;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
   mythosToggle?: boolean;
@@ -754,6 +756,7 @@ class CardResultList extends React.Component<Props, State> {
       fontScale,
       show_spoilers,
       handleScroll,
+      renderHeader,
     } = this.props;
     const {
       loadingMessage,
@@ -845,6 +848,7 @@ class CardResultList extends React.Component<Props, State> {
         keyExtractor={this._cardToKey}
         extraData={this.state.deckCardCounts}
         getItemLayout={getItemLayout}
+        ListHeaderComponent={renderHeader}
         ListFooterComponent={this._renderFooter(liveState, refreshing)}
         stickySectionHeadersEnabled={stickyHeaders}
         keyboardShouldPersistTaps="always"

@@ -11,6 +11,7 @@ import {
   Slots,
 } from 'actions/types';
 import Card from 'data/Card';
+import XpChooser from 'components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { FilterState } from 'lib/filters';
@@ -190,6 +191,31 @@ class CardSearchComponent extends React.Component<Props, State> {
     toggleMythosMode(componentId, !mythosMode);
   };
 
+  _onFilterChange = (key: keyof FilterState, value: any) => {
+    const { componentId, updateFilter } = this.props;
+    updateFilter(componentId, key, value);
+  };
+
+  _onToggleChange = (key: keyof FilterState, value: boolean) => {
+    const { componentId, toggleFilter } = this.props;
+    toggleFilter(componentId, key, value);
+  };
+
+  _renderHeader = () => {
+    const { filters } = this.props;
+    return (
+      <XpChooser
+        onFilterChange={this._onFilterChange}
+        onToggleChange={this._onToggleChange}
+        maxLevel={5}
+        levels={filters?.level || [0,5]}
+        enabled={filters?.levelEnabled || false}
+        exceptional={filters?.exceptional || false}
+        nonExceptional={filters?.nonExceptional || false}
+      />
+    );
+  };
+
   render() {
     const {
       componentId,
@@ -231,6 +257,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={onDeckCountChange}
         limits={limits}
+        renderHeader={deckCardCounts ? this._renderHeader : undefined}
         renderFooter={renderFooter}
         visible={visible}
         storyOnly={storyOnly}

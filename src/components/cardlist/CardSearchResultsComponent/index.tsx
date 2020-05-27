@@ -43,6 +43,7 @@ interface Props {
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
+  renderHeader?: () => React.ReactElement;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
 
@@ -358,6 +359,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       deckCardCounts,
       onDeckCountChange,
       limits,
+      renderHeader,
       renderFooter,
       showNonCollection,
       selectedSort,
@@ -415,6 +417,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                       handleScroll={handleScroll}
                       expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
                       visible={visible}
+                      renderHeader={renderHeader}
                       renderFooter={renderFooter}
                       showNonCollection={showNonCollection}
                       storyOnly={storyOnly}
