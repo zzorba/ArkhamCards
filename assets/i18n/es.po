@@ -2774,11 +2774,11 @@ msgstr "La red de los sueños"
 
 #: src/components/campaign/constants.ts:149
 msgid "Return to Curtain Call"
-msgstr "Llamada de regreso a la cortina"
+msgstr "Regreso a Se cierra el telón"
 
 #: src/components/campaign/constants.ts:150
 msgid "Return to The Last King"
-msgstr "Regreso al último rey"
+msgstr "Regreso a El último rey"
 
 #: src/components/campaign/constants.ts:152
 msgid "Return to Echoes of the Past"
@@ -2786,23 +2786,23 @@ msgstr "Regreso a Ecos del pasado"
 
 #: src/components/campaign/constants.ts:153
 msgid "Return to The Unspeakable Oath"
-msgstr "Regreso al juramento indescriptible"
+msgstr "Regreso a El juramento inconfesable"
 
 #: src/components/campaign/constants.ts:155
 msgid "Return to A Phantom of Truth"
-msgstr "Regreso a un fantasma de la verdad"
+msgstr "Regreso a El fantasma de la verdad"
 
 #: src/components/campaign/constants.ts:156
 msgid "Return to The Pallid Mask"
-msgstr "Regreso a la máscara de pallid"
+msgstr "Regreso a La máscara pálida"
 
 #: src/components/campaign/constants.ts:157
 msgid "Return to Black Stars Rise"
-msgstr "Regreso a Black Stars Rise"
+msgstr "Regreso a Surgen estrellas negras"
 
 #: src/components/campaign/constants.ts:158
 msgid "Return to Dim Carcosa"
-msgstr "Regreso a Dim Carcosa"
+msgstr "Regreso a Penumbrosa Carcosa"
 
 #: src/components/campaign/constants.ts:210
 msgid "Beyond the Gates of Sleep"
@@ -2863,7 +2863,7 @@ msgstr "Pasos del puente"
 #: src/components/deck/CopyDeckDialog/index.tsx:292
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:347
 msgid "Deck Type"
-msgstr "Tip de Mazo"
+msgstr "Tipo de Mazo"
 
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:116
 #, javascript-format
@@ -3463,7 +3463,7 @@ msgstr[1] ""
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] "${ startText } Este conjunto viene indicado por el siguiente ícono:"
-msgstr[1] "${ startText } Estos conjuntos vienen indicado por los siguientes íconos:"
+msgstr[1] "${ startText } Estos conjuntos vienen indicados por los siguientes íconos:"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:170
 msgid "Choose Investigators"
