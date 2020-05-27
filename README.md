@@ -14,7 +14,11 @@ Create and edit decks for all of your investigators -- it will even check the de
 
 ## Getting Started
 
-Follow the steps on [React Native](https://facebook.github.io/react-native/docs/getting-started) to install React Native dependencies for your environment. Once you have those you can clone the repo and get started.
+Follow the steps on [React Native Environment Setup](https://reactnative.dev/docs/environment-setup) to install React Native dependencies for your environment. Once you have those you can clone the repo and get started.
+
+Install [Node Version Manager](https://github.com/nvm-sh/nvm) and run the following command to use the appropriate Node version:
+
+`nvm use`
 
 Install NPM dependencies
 
@@ -27,9 +31,13 @@ cd ios
 pod install
 ```
 
+Start the bundle server in the background
+
+`npm start` or `yarn start`
+
 Build App
 
-`npm run ios` or `npm run andriod`
+`npm ios` or `npm andriod` (or their `yarn` counterparts)
 
 ## Translations
 The app is currently translated into English, Spanish, German, Italian, and French. Translation data for all of the cards comes from ArkhamDB.com, and is community managed. You can submit edits for cards in the [arkhamdb-json-data](https://github.com/kamalisk/arkhamdb-json-data/) project with a pull request.
@@ -43,4 +51,4 @@ For all the text of the app itself, the translation files are extracted using th
 
 ## Acknowledgments
 
-Arkham Cards is not affliated or endorsed by Arkham Horror: The Card Game, (c) 2016 Fantasy Flight Games. 
+Arkham Cards is not affiliated or endorsed by Arkham Horror: The Card Game, (c) 2016 Fantasy Flight Games.
