@@ -12,11 +12,11 @@ import { t } from 'ttag';
 import { Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from 'actions/types';
 import CampaignDecks from './CampaignDecks';
 import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
-import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import Card, { CardsMap } from 'data/Card';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 
 interface OwnProps {
   componentId: string;
@@ -32,14 +32,19 @@ interface OwnProps {
   updateWeaknessSet: (weaknessSet: WeaknessSet) => void;
 }
 
-type Props = OwnProps & WeaknessCardProps;
+type Props = OwnProps & PlayerCardProps;
 
 class DecksSection extends React.Component<Props> {
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
-      cardsMap,
+      cards,
     } = this.props;
-    const weaknesses = filter(keys(deck.slots), code => (code in cardsMap));
+    const weaknesses = filter(
+      keys(deck.slots),
+      code => {
+        const card = cards[code];
+        return card && card.isBasicWeakness();
+      });
     const count = sumBy(weaknesses, code => deck.slots[code]);
     if (weaknesses.length) {
       setTimeout(() => {
@@ -50,7 +55,7 @@ class DecksSection extends React.Component<Props> {
             t`This deck contains several basic weaknesses` :
             t`This deck contains a basic weakness`) +
           '\n\n' +
-          map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
+          map(weaknesses, code => `${deck.slots[code]}x - ${cards[code].name}`).join('\n') +
           '\n\n' +
           (count > 1 ?
             t`Do you want to remove them from the campaign’s Basic Weakness set?` :
@@ -65,15 +70,19 @@ class DecksSection extends React.Component<Props> {
                   weaknessSet,
                   updateWeaknessSet,
                 } = this.props;
-                const assignedCards = Object.assign({}, weaknessSet.assignedCards);
+                const assignedCards = { ...weaknessSet.assignedCards };
                 forEach(weaknesses, code => {
+                  const card = cards[code];
+                  if (!card) {
+                    // Shouldn't happen because of above, but defensiveness never hurts.
+                    return;
+                  }
                   const count = deck.slots[code];
                   if (!(code in assignedCards)) {
                     assignedCards[code] = 0;
                   }
-                  if ((assignedCards[code] + count) > (cardsMap[code].quantity || 0)) {
-                    // @ts-ignore
-                    assignedCards[code] = cardsMap[code].quantity;
+                  if ((assignedCards[code] + count) > (card.quantity || 0)) {
+                    assignedCards[code] = card.quantity || 0;
                   } else {
                     assignedCards[code] += count;
                   }
@@ -237,7 +246,7 @@ class DecksSection extends React.Component<Props> {
   }
 }
 
-export default withWeaknessCards<OwnProps>(DecksSection);
+export default withPlayerCards<OwnProps>(DecksSection);
 
 const styles = StyleSheet.create({
   underline: {

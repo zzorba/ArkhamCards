@@ -3,13 +3,11 @@ import { filter, map } from 'lodash';
 import {
   FlatList,
   Keyboard,
-  StyleSheet,
-  View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import SearchBox from 'components/core/SearchBox';
+import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import { NavigationProps } from 'components/nav/types';
 import SelectRow from './SelectRow';
 import COLORS from 'styles/colors';
@@ -142,27 +140,22 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       };
     });
     return (
-      <View style={styles.flex}>
-        <SearchBox
-          value={search}
-          onChangeText={this._onChangeText}
-          placeholder={placeholder}
-        />
-        <FlatList
-          data={data}
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          keyboardShouldPersistTaps="always"
-          keyboardDismissMode="on-drag"
-        />
-      </View>
+      <CollapsibleSearchBox
+        prompt={placeholder}
+        searchTerm={search}
+        onSearchChange={this._onChangeText}
+      >
+        { onScroll => (
+          <FlatList
+            data={data}
+            onScroll={onScroll}
+            renderItem={this._renderItem}
+            keyExtractor={this._keyExtractor}
+            keyboardShouldPersistTaps="always"
+            keyboardDismissMode="on-drag"
+          />
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-    backgroundColor: COLORS.backgroundColor,
-  },
-});

@@ -1,21 +1,17 @@
-import Realm from 'realm';
+import { Column } from 'typeorm/browser';
 import { filter, keys, map } from 'lodash';
 
 import CardRequirement from './CardRequirement';
 import RandomRequirement from './RandomRequirement';
 
 export default class DeckRequirement {
-  public static schema: Realm.ObjectSchema = {
-    name: 'DeckRequirement',
-    properties: {
-      size: 'int',
-      card: 'CardRequirement[]',
-      random: 'RandomRequirement[]',
-    },
-  };
+  @Column('integer', { nullable: true })
+  public size?: number;
 
-  public size!: number;
-  public card!: CardRequirement[];
+  @Column('simple-json', { nullable: true })
+  public card?: CardRequirement[];
+
+  @Column('simple-json', { nullable: true })
   public random!: RandomRequirement[];
 
   static parse(json: any): DeckRequirement {

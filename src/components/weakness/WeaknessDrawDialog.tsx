@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import WeaknessDrawComponent from './WeaknessDrawComponent';
-import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { t } from 'ttag';
 import { Slots } from 'actions/types';
 import Button from 'components/core/Button';
@@ -22,7 +22,7 @@ interface ReduxProps {
   in_collection: { [pack_code: string]: boolean };
 }
 
-type Props = NavigationProps & DrawWeaknessProps & ReduxProps & WeaknessCardProps;
+type Props = NavigationProps & DrawWeaknessProps & ReduxProps & PlayerCardProps;
 
 interface State {
   replaceRandomBasicWeakness: boolean;
@@ -105,21 +105,22 @@ class WeaknessDrawDialog extends React.Component<Props, State> {
   weaknessSetFromCollection() {
     const {
       in_collection,
+      weaknessCards,
       cards,
-      cardsMap,
     } = this.props;
     const {
       slots,
     } = this.state;
     const packCodes: { [pack_cod: string]: number } = {};
-    forEach(cards, weaknessCard => {
+    forEach(weaknessCards, weaknessCard => {
       if (in_collection[weaknessCard.pack_code] || weaknessCard.pack_code === 'core') {
         packCodes[weaknessCard.pack_code] = 1;
       }
     });
     const assignedCards: Slots = {};
     forEach(slots, (count, code) => {
-      if (cardsMap[code]) {
+      const card = cards[code];
+      if (card && card.isBasicWeakness()) {
         assignedCards[code] = count;
       }
     });
@@ -155,5 +156,5 @@ function mapStateToProps(state: AppState) {
 }
 
 export default connect(mapStateToProps)(
-  withWeaknessCards(WeaknessDrawDialog)
+  withPlayerCards(WeaknessDrawDialog)
 );

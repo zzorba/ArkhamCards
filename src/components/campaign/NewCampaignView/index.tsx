@@ -42,11 +42,11 @@ import LabeledTextBox from 'components/core/LabeledTextBox';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from 'components/weakness/WeaknessSetPackChooserComponent';
-import withWeaknessCards, { WeaknessCardProps } from 'components/weakness/withWeaknessCards';
 import { getNextCampaignId, AppState } from 'reducers';
 import { newCampaign, newLinkedCampaign } from 'components/campaign/actions';
 import { NavigationProps } from 'components/nav/types';
 import Card from 'data/Card';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
 import typography from 'styles/typography';
 import COLORS from 'styles/colors';
@@ -56,7 +56,7 @@ export interface NewCampaignProps {
   guided: boolean;
 }
 
-type OwnProps = NavigationProps & NewCampaignProps & WeaknessCardProps & InjectedDialogProps;
+type OwnProps = NavigationProps & NewCampaignProps & PlayerCardProps & InjectedDialogProps;
 
 interface ReduxProps {
   nextId: number;
@@ -217,9 +217,12 @@ class NewCampaignView extends React.Component<Props, State> {
 
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
-      cardsMap,
+      cards,
     } = this.props;
-    const weaknesses = filter(keys(deck.slots), code => (code in cardsMap));
+    const weaknesses = filter(keys(deck.slots), code => {
+      const card = cards[code];
+      return card && card.isBasicWeakness();
+    });
     const count = sumBy(weaknesses, code => deck.slots[code]);
     if (weaknesses.length) {
       setTimeout(() => {
@@ -230,7 +233,7 @@ class NewCampaignView extends React.Component<Props, State> {
             t`This deck contains several basic weaknesses` :
             t`This deck contains a basic weakness`) +
           '\n\n' +
-          map(weaknesses, code => `${deck.slots[code]}x - ${cardsMap[code].name}`).join('\n') +
+          map(weaknesses, code => `${deck.slots[code]}x - ${cards[code].name}`).join('\n') +
           '\n\n' +
           (count > 1 ?
             t`Do you want to remove them from the campaign’s Basic Weakness set?` :
@@ -244,14 +247,14 @@ class NewCampaignView extends React.Component<Props, State> {
                 const {
                   weaknessAssignedCards,
                 } = this.state;
-                const assignedCards = Object.assign({}, weaknessAssignedCards);
+                const assignedCards = { ...weaknessAssignedCards };
                 forEach(weaknesses, code => {
                   const count = deck.slots[code];
                   if (!(code in assignedCards)) {
                     assignedCards[code] = 0;
                   }
-                  if ((assignedCards[code] + count) > (cardsMap[code].quantity || 0)) {
-                    assignedCards[code] = cardsMap[code].quantity || 0;
+                  if ((assignedCards[code] + count) > (cards[code].quantity || 0)) {
+                    assignedCards[code] = cards[code].quantity || 0;
                   } else {
                     assignedCards[code] += count;
                   }
@@ -736,7 +739,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withWeaknessCards(
+  withPlayerCards(
     withDialogs(
       withDimensions(NewCampaignView)
     )

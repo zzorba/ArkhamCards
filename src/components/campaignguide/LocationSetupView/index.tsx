@@ -126,6 +126,7 @@ class LocationSetupView extends React.Component<Props> {
   render() {
     const {
       step,
+      width,
     } = this.props;
     if (!step) {
       return null;
@@ -143,9 +144,11 @@ class LocationSetupView extends React.Component<Props> {
     return (
       <PinchZoomView style={{ width: 500 }}>
         { !!note && (
-          <SetupStepWrapper bulletType="none">
-            <CampaignGuideTextComponent text={note} />
-          </SetupStepWrapper>
+          <View style={{ width: width }}>
+            <SetupStepWrapper bulletType="none">
+              <CampaignGuideTextComponent text={note} />
+            </SetupStepWrapper>
+          </View>
         ) }
         <View style={[styles.container, { height }]}>
           { map(locations, this._renderRow) }

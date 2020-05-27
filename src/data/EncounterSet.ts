@@ -1,5 +1,8 @@
+import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
+
 import Card from './Card';
 
+@Entity('encounter_set')
 export default class EncounterSet {
   public static schema: Realm.ObjectSchema = {
     name: 'EncounterSet',
@@ -10,7 +13,10 @@ export default class EncounterSet {
     },
   };
 
+  @PrimaryColumn('text')
   code!: string;
+
+  @Column('text', { nullable: true })
   name!: string;
 
   static fromCard(card: Card): EncounterSet | undefined {

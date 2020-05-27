@@ -6,12 +6,12 @@ import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import reducers from 'reducers';
+import reducers, { AppState } from 'reducers';
 // import Reactotron from './ReactotronConfig';
 
 /**
  * How to refresh discarded offline tokens properly.
-const discard = async (error, _action, _retries) => {
+const discard = async(error, _action, _retries) => {
   if (!status in error) return false;
 
   if (error.status === 401) {
@@ -24,14 +24,15 @@ const discard = async (error, _action, _retries) => {
 }
 */
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: AppState) {
   const offline = createOffline({
     ...offlineConfig,
+    // @ts-ignore
     persist: false,
   });
 
   const migrations = {
-    0: (state) => {
+    0: (state: any) => {
       const newState = Object.assign({}, state);
       if (newState.weaknesses) {
         delete newState.weaknesses;
@@ -54,6 +55,7 @@ export default function configureStore(initialState) {
     offline.enhanceReducer(reducers)
   );
 
+  // @ts-ignore
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(
@@ -68,7 +70,7 @@ export default function configureStore(initialState) {
         ], Boolean)),
       offline.enhanceStore)
   );
-  const persistor = persistStore(store, { debug: true }, () => {
+  const persistor = persistStore(store, null, () => {
     console.log('PersistStore loaded.');
   });
 

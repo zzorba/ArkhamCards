@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
-import { filter, map } from 'lodash';
 import {
-  FlatList,
   Keyboard,
   StyleSheet,
   Text,
@@ -11,12 +9,10 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import DeckList from './DeckList';
 import { Campaign, Deck, DecksMap } from 'actions/types';
 import Card from 'data/Card';
-import { searchMatchesText } from 'components/core/searchHelpers';
-import SearchBox from 'components/core/SearchBox';
-import DeckListRow from 'components/decklist/DeckListRow';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { fetchPublicDeck } from 'components/deck/actions';
 import { getAllDecks, AppState } from 'reducers';
@@ -45,16 +41,10 @@ interface ReduxActionProps {
 type Props = OwnProps &
   ReduxProps &
   ReduxActionProps &
-  PlayerCardProps &
   DimensionsProps;
 
 interface State {
   searchTerm: string;
-}
-
-interface Item {
-  key: string;
-  deckId: number;
 }
 
 class DeckListComponent extends React.Component<Props, State> {
@@ -89,51 +79,18 @@ class DeckListComponent extends React.Component<Props, State> {
       }
     });
   }
-
-  _renderItem = ({ item: { deckId } }: { item: Item }) => {
-    const {
-      investigators,
-      decks,
-      cards,
-      deckToCampaign,
-      fontScale,
-    } = this.props;
-
-    const deck = decks[deckId];
-    if (!deck) {
-      return null;
-    }
-    return (
-      <DeckListRow
-        key={deckId}
-        fontScale={fontScale}
-        deck={deck}
-        previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}
-        cards={cards}
-        deckToCampaign={deckToCampaign}
-        investigator={deck ? investigators[deck.investigator_code] : undefined}
-        onPress={this._deckClicked}
-      />
-    );
-  };
-
   _renderHeader = () => {
     const {
       customHeader,
     } = this.props;
     return (
       <View style={styles.header}>
-        <SearchBox
-          value={this.state.searchTerm}
-          onChangeText={this._searchChanged}
-          placeholder={t`Search decks`}
-        />
         { !!customHeader && customHeader }
       </View>
     );
   };
 
-  _renderFooter = () => {
+  _renderFooter = (empty: boolean) => {
     const {
       isEmpty,
       refreshing,
@@ -154,7 +111,7 @@ class DeckListComponent extends React.Component<Props, State> {
         </View>
       );
     }
-    if (searchTerm && this.getItems().length === 0) {
+    if (searchTerm && empty) {
       return (
         <View style={[styles.footer, styles.emptyStateText]}>
           <View style={styles.footerText}>
@@ -173,51 +130,38 @@ class DeckListComponent extends React.Component<Props, State> {
     );
   };
 
-  getItems() {
-    const {
-      deckIds,
-      decks,
-      investigators,
-    } = this.props;
-
-    const {
-      searchTerm,
-    } = this.state;
-    return map(
-      filter(deckIds, deckId => {
-        const deck = decks[deckId];
-        const investigator = deck && investigators[deck.investigator_code];
-        if (!deck || !investigator) {
-          return true;
-        }
-        return searchMatchesText(searchTerm, [deck.name, investigator.name]);
-      }), deckId => {
-        return {
-          key: `${deckId}`,
-          deckId,
-        };
-      });
-  }
-
   render() {
     const {
       onRefresh,
       refreshing,
       decks,
+      deckIds,
+      deckToCampaign,
+      fontScale,
     } = this.props;
+    const { searchTerm } = this.state;
     return (
-      <FlatList
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-        style={styles.container}
-        data={this.getItems()}
-        renderItem={this._renderItem}
-        extraData={decks}
-        ListHeaderComponent={this._renderHeader}
-        ListFooterComponent={this._renderFooter}
-      />
+      <CollapsibleSearchBox
+        searchTerm={searchTerm}
+        onSearchChange={this._searchChanged}
+        prompt={t`Search decks`}
+      >
+        { onScroll => (
+          <DeckList
+            deckIds={deckIds}
+            header={this._renderHeader()}
+            footer={this._renderFooter}
+            searchTerm={searchTerm}
+            deckToCampaign={deckToCampaign}
+            fontScale={fontScale}
+            onRefresh={onRefresh}
+            refreshing={refreshing}
+            decks={decks}
+            onScroll={onScroll}
+            deckClicked={this._deckClicked}
+          />
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
@@ -236,16 +180,10 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
-  withPlayerCards<ReduxProps & ReduxActionProps & OwnProps>(
-    withDimensions(DeckListComponent)
-  )
+  withDimensions(DeckListComponent)
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
   header: {
     width: '100%',
     flexDirection: 'column',

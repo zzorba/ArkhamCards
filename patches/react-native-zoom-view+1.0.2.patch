@@ -1,0 +1,39 @@
+diff --git a/node_modules/react-native-zoom-view/lib/ViewControl.js b/node_modules/react-native-zoom-view/lib/ViewControl.js
+index 6d6359e..6b20c20 100644
+--- a/node_modules/react-native-zoom-view/lib/ViewControl.js
++++ b/node_modules/react-native-zoom-view/lib/ViewControl.js
+@@ -32,7 +32,7 @@ export default class ViewControl extends Component {
+             isBeWillingTouch: isBeWillingTouch
+         });
+     }
+-    componentWillMount() {
++    UNSAFE_componentWillMount() {
+         this.imagePanResponder = PanResponder.create({
+             onStartShouldSetPanResponder: (_evt, _gestureState) => {
+                 this.lastPositionX = null;
+diff --git a/node_modules/react-native-zoom-view/lib/ViewControl.jsx b/node_modules/react-native-zoom-view/lib/ViewControl.jsx
+index 70e1a09..bc4e613 100644
+--- a/node_modules/react-native-zoom-view/lib/ViewControl.jsx
++++ b/node_modules/react-native-zoom-view/lib/ViewControl.jsx
+@@ -46,7 +46,7 @@ var ViewControl = /** @class */ (function (_super) {
+             isBeWillingTouch: isBeWillingTouch
+         });
+     };
+-    ViewControl.prototype.componentWillMount = function () {
++    ViewControl.prototype.UNSAFE_componentWillMount = function () {
+         var _this = this;
+         this.imagePanResponder = react_native_1.PanResponder.create({
+             onStartShouldSetPanResponder: function (_evt, _gestureState) {
+diff --git a/node_modules/react-native-zoom-view/lib/ViewControl.tsx b/node_modules/react-native-zoom-view/lib/ViewControl.tsx
+index ff1e878..e263b02 100644
+--- a/node_modules/react-native-zoom-view/lib/ViewControl.tsx
++++ b/node_modules/react-native-zoom-view/lib/ViewControl.tsx
+@@ -59,7 +59,7 @@ export default class ViewControl extends Component<typings.PropsDefine,typings.S
+         })
+     }
+ 
+-    componentWillMount() {
++    UNSAFE_componentWillMount() {
+         this.imagePanResponder = PanResponder.create({
+ 
+             onStartShouldSetPanResponder:(_evt,_gestureState) => {

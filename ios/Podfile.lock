@@ -201,7 +201,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-app-auth (5.1.1):
+  - react-native-app-auth (5.1.2):
     - AppAuth (= 1.2.0)
     - React
   - react-native-blur (0.8.0):
@@ -212,7 +212,9 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-netinfo (5.7.1):
+  - react-native-netinfo (5.9.1):
+    - React
+  - react-native-sqlite-storage (5.0.0):
     - React
   - react-native-webview (8.1.2):
     - React
@@ -264,7 +266,7 @@ PODS:
     - React
   - RNColorMatrixImageFilters (5.2.4):
     - React
-  - RNDeviceInfo (5.5.5):
+  - RNDeviceInfo (5.6.0):
     - React
   - RNFastImage (8.1.5):
     - React
@@ -312,6 +314,7 @@ DEPENDENCIES:
   - "react-native-in-app-browser (from `../node_modules/@matt-block/react-native-in-app-browser/ios`)"
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -390,6 +393,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-keep-awake"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-sqlite-storage:
+    :path: "../node_modules/react-native-sqlite-storage"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -459,12 +464,13 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-app-auth: 33fdb8dbdd61c1c4c6931eb322cb6622b3726401
+  react-native-app-auth: 3a8af9e5f62aa3d7a9391d5aa89ab91aeb5a0062
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-config: 8f6b2b9e017f6a5e92a97353c768e19e67294bb1
   react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
-  react-native-netinfo: 4fa023c153d582aeae8435df95c9a975c5986449
+  react-native-netinfo: 4284e9f4ade9fc498f313b2e9e3f7fd4fa6e3082
+  react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
   react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -481,7 +487,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNColorMatrixImageFilters: c120b5bff0d3c39f0eb3ba1751a4d70ed7f4b56a
-  RNDeviceInfo: d2ca97023bb1c2a49cd7adb3f956e14c048ea028
+  RNDeviceInfo: f7e473fc3cc0a7648d5c57c5413c7e875718a740
   RNFastImage: 35ae972d6727c84ee3f5c6897e07f84d0a3445e9
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNKeychain: bf2d7e9a0ae7a073c07770dd2aa6d11c67581733

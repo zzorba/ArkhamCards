@@ -3,7 +3,6 @@ import { mapValues } from 'lodash';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
 
-
 export type TypeCodeType =
   'asset' |
   'event' |
@@ -53,6 +52,12 @@ export const CORE_FACTION_CODES: FactionCodeType[] = [
   'guardian',
   'rogue',
   'survivor',
+];
+
+export const CARD_FACTION_CODES: FactionCodeType[] = [
+  ...CORE_FACTION_CODES,
+  'neutral',
+  'mythos',
 ];
 
 export const PLAYER_FACTION_CODES: FactionCodeType[] = [

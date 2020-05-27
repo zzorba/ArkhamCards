@@ -1,12 +1,11 @@
-import Realm from 'realm';
-import { forEach, filter, keys, map } from 'lodash';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToOne } from 'typeorm/browser';
+import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
-import BaseCard from './BaseCard';
-import CardRestrictions from './CardRestrictions';
+import { TraumaAndCardData } from 'actions/types';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from 'constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
-import { BASIC_SKILLS } from '../constants';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
@@ -14,22 +13,407 @@ const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror');
 
-export default class Card extends BaseCard {
-  public static schema: Realm.ObjectSchema = {
-    name: 'Card',
-    primaryKey: 'id',
-    properties: BaseCard.SCHEMA,
-  };
+@Entity('card')
+@Index(['code', 'taboo_set_id'], { unique: true })
+export default class Card {
+  @PrimaryColumn('text')
+  public id!: string;
 
-  public static tabooSetQuery(tabooSetId?: number) {
-    return `(taboo_set_id == null or taboo_set_id == ${tabooSetId || 0})`;
+  @Index()
+  @Column('text')
+  public code!: string;
+
+  @Column('text')
+  public name!: string;
+
+  @Column('text')
+  public real_name!: string;
+
+  @Index()
+  @Column('text')
+  public renderName!: string;
+
+  @Column('text')
+  public type_code!: TypeCodeType;
+
+  @Column('text', { nullable: true })
+  public alternate_of_code?: string;
+
+  @Column('integer', { nullable: true })
+  public taboo_set_id?: number;
+
+  @Column('boolean', { nullable: true })
+  public taboo_placeholder?: boolean;
+
+  @Column('text', { nullable: true })
+  public taboo_text_change?: string;
+
+  @Index()
+  @Column('text')
+  public pack_code!: string;
+
+  @Column('text', { nullable: true })
+  public pack_name?: string;
+
+  @Column('text')
+  public type_name!: string;
+
+  @Column('text', { nullable: true })
+  public subtype_code?: 'basicweakness' | 'weakness';
+
+  @Column('text', { nullable: true })
+  public subtype_name?: string;
+
+  @Column('text', { nullable: true })
+  public slot?: string;
+
+  @Index()
+  @Column('text', { nullable: true })
+  public faction_code?: FactionCodeType;
+
+  @Column('text', { nullable: true })
+  public faction_name?: string;
+
+  @Column('text', { nullable: true })
+  public faction2_code?: FactionCodeType;
+
+  @Column('text', { nullable: true })
+  public faction2_name?: string;
+
+  @Column('integer', { nullable: true })
+  public position?: number;
+
+  @Column('integer', { nullable: true })
+  public enemy_damage?: number;
+
+  @Column('integer', { nullable: true })
+  public enemy_horror?: number;
+
+  @Column('integer', { nullable: true })
+  public enemy_fight?: number;
+
+  @Column('integer', { nullable: true })
+  public enemy_evade?: number;
+
+  @Column('text', { nullable: true })
+  public encounter_code?: string;
+
+  @Column('text', { nullable: true })
+  public encounter_name?: string;
+
+  @Column('integer', { nullable: true })
+  public encounter_position?: number;
+
+  @Column('boolean', { nullable: true })
+  public exceptional?: boolean;
+
+  @Index()
+  @Column('integer', { nullable: true })
+  public xp?: number;
+
+  @Column('integer', { nullable: true })
+  public extra_xp?: number;
+
+  @Column('integer', { nullable: true })
+  public victory?: number;
+
+  @Column('integer', { nullable: true })
+  public vengeance?: number;
+
+  @Column('text', { nullable: true })
+  public renderSubname?: string;
+
+  @Column('text', { nullable: true })
+  public subname?: string;
+
+  @Column('text', { nullable: true })
+  public firstName?: string;
+
+  @Column('text', { nullable: true })
+  public illustrator?: string;
+
+  @Column('text', { nullable: true })
+  public text?: string;
+
+  @Column('text', { nullable: true })
+  public flavor?: string;
+
+  @Column('integer', { nullable: true })
+  public cost?: number;
+  @Column('text', { nullable: true })
+  public real_text?: string;
+  @Column('text', { nullable: true })
+  public back_name?: string;
+  @Column('text', { nullable: true })
+  public back_text?: string;
+  @Column('text', { nullable: true })
+  public back_flavor?: string;
+  @Column('integer', { nullable: true })
+  public quantity?: number;
+  @Column('boolean', { nullable: true })
+  public spoiler?: boolean;
+  @Column('boolean', { nullable: true })
+  public advanced?: boolean;
+  @Column('integer', { nullable: true })
+  public stage?: number; // Act/Agenda deck
+  @Column('integer', { nullable: true })
+  public clues?: number;
+  @Column('integer', { nullable: true })
+  public shroud?: number;
+  public clues_fixed?: boolean;
+  @Column('integer', { nullable: true })
+  public doom?: number;
+  @Column('integer', { nullable: true })
+  public health?: number;
+  @Column('boolean', { nullable: true })
+  public health_per_investigator?: boolean;
+  @Column('integer', { nullable: true })
+  public sanity?: number;
+
+  @Index()
+  @Column('integer', { nullable: true })
+  public deck_limit?: number;
+  @Column('text', { nullable: true })
+  public traits?: string;
+  @Column('text', { nullable: true })
+  public real_traits?: string;
+  @Column('boolean', { nullable: true })
+  public is_unique?: boolean;
+  @Column('boolean', { nullable: true })
+  public exile?: boolean;
+  @Column('boolean', { nullable: true })
+  public hidden?: boolean;
+  @Column('boolean', { nullable: true })
+  public myriad?: boolean;
+  @Column('boolean', { nullable: true })
+  public permanent?: boolean;
+  @Column('boolean', { nullable: true })
+  public double_sided?: boolean;
+  @Column('text', { nullable: true })
+  public url?: string;
+  @Column('text', { nullable: true })
+  public octgn_id?: string;
+  @Column('text', { nullable: true })
+  public imagesrc?: string;
+  @Column('text', { nullable: true })
+  public backimagesrc?: string;
+  @Column('integer', { nullable: true })
+  public skill_willpower?: number;
+  @Column('integer', { nullable: true })
+  public skill_intellect?: number;
+  @Column('integer', { nullable: true })
+  public skill_combat?: number;
+  @Column('integer', { nullable: true })
+  public skill_agility?: number;
+  @Column('integer', { nullable: true })
+  public skill_wild?: number;
+
+  // Effective skills (add wilds to them)
+  @Column('integer', { nullable: true })
+  public eskill_willpower?: number;
+  @Column('integer', { nullable: true })
+  public eskill_intellect?: number;
+  @Column('integer', { nullable: true })
+  public eskill_combat?: number;
+  @Column('integer', { nullable: true })
+  public eskill_agility?: number;
+  @Column('text', { nullable: true })
+  public linked_to_code?: string;
+  @Column('text', { nullable: true })
+  public linked_to_name?: string;
+
+  @Column('simple-array', { nullable: true })
+  public restrictions_all_investigators?: string[];
+  @Column('text', { nullable: true })
+  public restrictions_investigator?: string;
+
+  @Column('simple-json', { nullable: true })
+  public deck_requirements?: DeckRequirement;
+  @Column('simple-json', { nullable: true })
+  public deck_options?: DeckOption[];
+
+  @ManyToOne(() => Card, card => card.id)
+  @Index()
+  @JoinColumn()
+  public linked_card?: Card;
+
+  @Column('boolean', { nullable: true })
+  public back_linked?: boolean;
+
+  // Derived data.
+  @Column('boolean', { nullable: true })
+  public altArtInvestigator?: boolean;
+  @Column('text', { nullable: true })
+  public cycle_name?: string;
+  @Column('text', { nullable: true })
+  public cycle_code?: string;
+  @Column('boolean', { nullable: true })
+  public has_restrictions?: boolean;
+  @Column('boolean', { nullable: true })
+  public has_upgrades?: boolean;
+  @Column('text', { nullable: true })
+  public traits_normalized?: string;
+  @Column('text', { nullable: true })
+  public real_traits_normalized?: string;
+  @Column('text', { nullable: true })
+  public slots_normalized?: string;
+  @Column('text', { nullable: true })
+  public uses?: string;
+  @Column('text', { nullable: true })
+  public bonded_name?: string;
+  @Column('boolean', { nullable: true })
+  public seal?: boolean;
+  @Column('boolean', { nullable: true })
+  public heals_horror?: boolean;
+  @Column('integer', { nullable: true })
+  public sort_by_type?: number;
+  @Column('integer', { nullable: true })
+  public sort_by_faction?: number;
+  @Column('integer', { nullable: true })
+  public sort_by_faction_pack?: number;
+  @Column('integer', { nullable: true })
+  public sort_by_pack?: number;
+
+  public cardName(): string {
+    return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
   }
 
-  static parseRestrictions(json?: { investigator?: { [key: string]: string} }) {
-    if (json && json.investigator && keys(json.investigator).length) {
-      return CardRestrictions.parse(json);
+  isBasicWeakness(): boolean {
+    return this.type_code !== 'scenario' &&
+      this.subtype_code === 'basicweakness' &&
+      this.code !== RANDOM_BASIC_WEAKNESS;
+  }
+
+  factionPackSortHeader() {
+    return `${Card.factionSortHeader(this)} - ${this.cycle_name}`;
+  }
+
+  factionCode(): FactionCodeType {
+    return this.faction_code || 'neutral';
+  }
+
+  killed(traumaData?: TraumaAndCardData) {
+    if (!traumaData) {
+      return false;
     }
-    return null;
+    if (traumaData.killed) {
+      return true;
+    }
+    return (this.health || 0) <= (traumaData.physical || 0);
+  }
+
+  insane(traumaData?: TraumaAndCardData) {
+    if (!traumaData) {
+      return false;
+    }
+    if (traumaData.insane) {
+      return true;
+    }
+    return (this.sanity || 0) <= (traumaData.mental || 0);
+  }
+
+  eliminated(traumaData?: TraumaAndCardData) {
+    return this.killed(traumaData) || this.insane(traumaData);
+  }
+
+  hasTrauma(traumaData?: TraumaAndCardData) {
+    return this.eliminated(traumaData) || (traumaData && (
+      (traumaData.physical || 0) > 0 ||
+      (traumaData.mental || 0) > 0
+    ));
+  }
+
+  traumaString(traumaData?: TraumaAndCardData) {
+    if (!traumaData) {
+      return t`None`;
+    }
+    const parts = [];
+    if (traumaData.killed || (this.health || 0) <= (traumaData.physical || 0)) {
+      return t`Killed`;
+    }
+    if (traumaData.insane || (this.sanity || 0) <= (traumaData.mental || 0)) {
+      return t`Insane`;
+    }
+    if (traumaData.physical && traumaData.physical !== 0) {
+      parts.push(t`${traumaData.physical} Physical`);
+    }
+    if (traumaData.mental && traumaData.mental !== 0) {
+      parts.push(t`${traumaData.mental} Mental`);
+    }
+    if (!parts.length) {
+      return t`None`;
+    }
+    return parts.join(', ');
+  }
+
+  realCost(linked?: boolean) {
+    if (this.type_code !== 'asset' && this.type_code !== 'event') {
+      return null;
+    }
+    if (
+      this.code === '02010' ||
+      this.code === '03238' ||
+      this.cost === -2
+    ) {
+      return 'X';
+    }
+    if (this.permanent ||
+      this.double_sided ||
+      linked ||
+      this.cost === null
+    ) {
+      return '-';
+    }
+    return `${this.cost}`;
+  }
+
+  costString(linked?: boolean) {
+    const actualCost = this.realCost(linked);
+    if (actualCost === null) {
+      return '';
+    }
+    return t`Cost: ${actualCost}`;
+  }
+
+  skillCount(skill: SkillCodeType): number {
+    switch (skill) {
+      case 'willpower': return this.skill_willpower || 0;
+      case 'intellect': return this.skill_intellect || 0;
+      case 'combat': return this.skill_combat || 0;
+      case 'agility': return this.skill_agility || 0;
+      case 'wild': return this.skill_wild || 0;
+      default: {
+        /* eslint-disable @typescript-eslint/no-unused-vars */
+        const _exhaustiveCheck: never = skill;
+        return 0;
+      }
+    }
+  }
+
+  investigatorSelectOptions(): DeckOption[] {
+    if (this.type_code === 'investigator' && this.deck_options) {
+      return filter(this.deck_options, option => {
+        return !!(option.faction_select && option.faction_select.length > 0) ||
+          !!(option.deck_size_select && option.deck_size_select.length > 0);
+      });
+    }
+    return [];
+  }
+
+  static parseRestrictions(json?: {
+    investigator?: {
+      [key: string]: string;
+    };
+  }): Partial<Card> | undefined {
+    if (json && json.investigator && keys(json.investigator).length) {
+      const investigators = keys(json.investigator);
+      const mainInvestigator = min(investigators);
+      return {
+        restrictions_all_investigators: investigators,
+        restrictions_investigator: mainInvestigator,
+      };
+    }
+    return undefined;
   }
 
   static factionHeaderOrder() {
@@ -264,6 +648,7 @@ export default class Card extends BaseCard {
         map(json.slot.split('.'), slot => slot.toLowerCase().trim()),
         slot => slot),
       slot => `#${slot}#`).join(',') : null;
+
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
     const uses = uses_match ? uses_match[1].toLowerCase() : null;
@@ -301,54 +686,47 @@ export default class Card extends BaseCard {
       // json.code === '98013' || // Silas for TIC
       json.code === '99001'; // PROMO Marie
 
-    return Object.assign(
-      {},
-      json,
-      eskills,
-      {
-        id: json.code,
-        tabooSetId: null,
-        name,
-        firstName,
-        renderName,
-        renderSubname,
-        deck_requirements,
-        deck_options,
-        linked_card,
-        spoiler,
-        traits_normalized,
-        real_traits_normalized,
-        slots_normalized,
-        uses,
-        bonded_name,
-        cycle_name: (cycle_pack && cycle_pack.name) || json.pack_name,
-        cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
-        has_restrictions: !!restrictions,
-        seal,
-        myriad,
-        advanced,
-        restrictions,
-        heals_horror,
-        sort_by_type,
-        sort_by_faction,
-        sort_by_faction_pack,
-        sort_by_pack,
-        enemy_horror,
-        enemy_damage,
-        altArtInvestigator,
-      },
-    );
+    return {
+      ...json,
+      ...eskills,
+      id: json.code,
+      tabooSetId: null,
+      name,
+      firstName,
+      renderName,
+      renderSubname,
+      deck_requirements,
+      deck_options,
+      linked_card,
+      spoiler,
+      traits_normalized,
+      real_traits_normalized,
+      slots_normalized,
+      uses,
+      bonded_name,
+      cycle_name: (cycle_pack && cycle_pack.name) || json.pack_name,
+      cycle_code: cycle_pack && cycle_pack.code || json.pack_code,
+      has_restrictions: !!restrictions && !!restrictions.restrictions_investigator,
+      ...restrictions,
+      seal,
+      myriad,
+      advanced,
+      heals_horror,
+      sort_by_type,
+      sort_by_faction,
+      sort_by_faction_pack,
+      sort_by_pack,
+      enemy_horror,
+      enemy_damage,
+      altArtInvestigator,
+    };
   }
 
   static placeholderTabooCard(
     tabooId: number,
     card: Card
   ): Card {
-    const result: Card = {} as Card;
-    forEach(keys(BaseCard.SCHEMA), property => {
-      // @ts-ignore TS7017
-      result[property] = card[property];
-    });
+    const result: Card = { ...card } as Card;
     result.id = `${tabooId}-${card.code}`;
     result.taboo_set_id = tabooId;
     result.taboo_placeholder = true;
@@ -361,11 +739,7 @@ export default class Card extends BaseCard {
     card: Card
   ): Card {
     const code: string = json.code;
-    const result: Card = {} as Card;
-    forEach(keys(BaseCard.SCHEMA), property => {
-      // @ts-ignore TS7017
-      result[property] = card[property];
-    });
+    const result: Card = { ...card } as Card;
     result.id = `${tabooId}-${code}`;
     result.taboo_set_id = tabooId;
     result.taboo_placeholder = false;
@@ -385,6 +759,7 @@ export default class Card extends BaseCard {
 }
 
 export type CardKey = keyof Card;
+
 export interface CardsMap {
   [code: string]: Card;
 }

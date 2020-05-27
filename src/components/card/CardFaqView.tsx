@@ -9,13 +9,14 @@ import {
   Text,
   View,
 } from 'react-native';
-import Realm, { Results } from 'realm';
-import { connectRealm, CardAndFaqResults } from 'react-native-realm';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 
 import CardTextComponent from './CardTextComponent';
-import Card from 'data/Card';
+import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
+import { where } from 'data/query';
 import FaqEntry from 'data/FaqEntry';
+import connectDb from 'components/data/connectDb';
 import { showCard } from 'components/nav/helper';
 import { NavigationProps } from 'components/nav/types';
 import { getFaqEntry } from 'lib/publicApi';
@@ -31,13 +32,11 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-interface RealmProps {
-  realm: Realm;
-  cards: Results<Card>;
-  faqEntries: Results<FaqEntry>;
+interface Data {
+  faqEntries: FaqEntry[];
 }
 
-type Props = NavigationProps & CardFaqProps & ReduxProps & RealmProps;
+type Props = NavigationProps & CardFaqProps & ReduxProps & Data;
 
 interface State {
   faqLoading: boolean;
@@ -45,6 +44,9 @@ interface State {
 }
 
 class CardFaqView extends React.Component<Props, State> {
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -65,19 +67,22 @@ class CardFaqView extends React.Component<Props, State> {
     });
   }
 
+  async openCard(code: string) {
+    const { componentId, tabooSetId } = this.props;
+    const card = await this.context.db.getCard(
+      where('c.code = :code', { code }),
+      tabooSetId
+    );
+    if (card) {
+      showCard(componentId, code, card);
+    }
+  }
+
   _linkPressed = (url: string) => {
-    const {
-      componentId,
-      cards,
-    } = this.props;
     const regex = /\/card\/(\d+)/;
     const match = url.match(regex);
     if (match) {
-      const code = match[1];
-      const card = head(cards.filtered(`code == '${code}'`));
-      if (card) {
-        showCard(componentId, code, card);
-      }
+      this.openCard(match[1]);
     } else if (url.indexOf('arkhamdb.com') !== -1) {
       this.openUrl(url);
     } else if (startsWith(url, '/')) {
@@ -88,14 +93,13 @@ class CardFaqView extends React.Component<Props, State> {
   _loadFaq = () => {
     const {
       id,
-      realm,
     } = this.props;
     if (!this.state.faqLoading) {
       this.setState({
         faqLoading: true,
       });
 
-      getFaqEntry(realm, id).then(() => {
+      getFaqEntry(this.context.db, id).then(() => {
         this.setState({
           faqLoading: false,
           faqError: undefined,
@@ -172,20 +176,21 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect<ReduxProps, {}, NavigationProps & CardFaqProps, AppState>(
   mapStateToProps
-)(connectRealm<NavigationProps & CardFaqProps & ReduxProps, RealmProps, Card, FaqEntry>(CardFaqView, {
-  schemas: ['Card', 'FaqEntry'],
-  mapToProps(
-    results: CardAndFaqResults<Card, FaqEntry>,
-    realm: Realm,
-    props: NavigationProps & CardFaqProps & ReduxProps
-  ): RealmProps {
-    return {
-      realm,
-      cards: results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
-      faqEntries: results.faqEntries.filtered(`code == '${props.id}'`),
-    };
-  },
-}));
+)(
+  connectDb<NavigationProps & CardFaqProps & ReduxProps, Data, string>(
+    CardFaqView,
+    (props: NavigationProps & CardFaqProps & ReduxProps) => props.id,
+    async(db: Database, code: string) => {
+      const qb = await db.faqEntries();
+      const faqEntries = await qb.createQueryBuilder('faq')
+        .where('faq.code = :code', { code })
+        .getMany();
+      return {
+        faqEntries,
+      };
+    }
+  )
+);
 
 const styles = StyleSheet.create({
   container: {

@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
@@ -30,7 +31,7 @@ interface Props {
   renderHeader?: () => React.ReactElement;
   renderFooter?: () => React.ReactElement;
   whiteBackground?: boolean;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;
 }

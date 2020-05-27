@@ -1,6 +1,6 @@
 import { pick } from 'lodash';
 
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from 'lib/filters';
 import {
   SORT_BY_TYPE,
   CLEAR_FILTER,
@@ -16,10 +16,11 @@ import {
 } from 'actions/types';
 
 interface FiltersState {
-  all: { [componentId: string]: FilterState };
+  all: { [componentId: string]: FilterState | undefined };
   defaults: { [componentId: string]: FilterState };
-  mythos: { [componentId: string]: boolean };
-  sorts: { [componentId: string]: SortType };
+  mythos: { [componentId: string]: boolean | undefined };
+  sorts: { [componentId: string]: SortType | undefined };
+  cardData: { [componentId: string]: CardFilterData | undefined };
 }
 
 const DEFAULT_STATE: FiltersState = {
@@ -27,6 +28,7 @@ const DEFAULT_STATE: FiltersState = {
   defaults: {},
   mythos: {},
   sorts: {},
+  cardData: {},
 };
 
 export default function(
@@ -37,7 +39,7 @@ export default function(
     return {
       all: {
         ...state.all,
-        [action.id]: action.filters,
+        [action.id]: undefined,
       },
       defaults: {
         ...state.defaults,
@@ -50,6 +52,10 @@ export default function(
       sorts: {
         ...state.sorts,
         [action.id]: action.sort || SORT_BY_TYPE,
+      },
+      cardData: {
+        ...state.cardData,
+        [action.id]: action.cardData,
       },
     };
   }
@@ -76,6 +82,7 @@ export default function(
     const defaults = { ...state.defaults };
     const mythos = { ...state.mythos };
     const sorts = { ...state.sorts };
+    const cardData = { ...state.cardData };
     if (all[action.id]) {
       delete all[action.id];
     }
@@ -84,15 +91,17 @@ export default function(
     }
     delete mythos[action.id];
     delete sorts[action.id];
+    delete cardData[action.id];
     return {
       all,
       defaults,
       mythos,
       sorts,
+      cardData,
     };
   }
   if (action.type === TOGGLE_FILTER) {
-    const existingFilters = state.all[action.id];
+    const existingFilters = state.all[action.id] || state.defaults[action.id];
     return {
       ...state,
       all: {
@@ -114,7 +123,7 @@ export default function(
     };
   }
   if (action.type === UPDATE_FILTER) {
-    const existingFilters = state.all[action.id];
+    const existingFilters = state.all[action.id] || state.defaults[action.id];
     return {
       ...state,
       all: {
@@ -128,7 +137,7 @@ export default function(
   }
   if (action.type === CLEAR_FILTER) {
     const defaultFilterState = state.defaults[action.id];
-    const existingFilters = state.all[action.id];
+    const existingFilters = state.all[action.id] || defaultFilterState;
     const filters = (action.clearTraits && action.clearTraits.length) ? {
       ...existingFilters,
       ...pick(defaultFilterState, action.clearTraits),

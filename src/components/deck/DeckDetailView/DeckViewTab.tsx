@@ -28,6 +28,7 @@ import {
 } from 'actions/types';
 import { showCard, showCardSwipe } from 'components/nav/helper';
 import DeckProblemRow from 'components/core/DeckProblemRow';
+import CardTabooTextBlock from 'components/card/CardTabooTextBlock';
 import AppIcon from 'icons/AppIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import CardTextComponent from 'components/card/CardTextComponent';
@@ -616,34 +617,39 @@ export default class DeckViewTab extends React.Component<Props, State> {
     return (
       <View style={styles.column}>
         <TouchableOpacity onPress={this._showInvestigator}>
-          <View style={styles.header}>
-            <View style={styles.headerTextColumn}>
-              <InvestigatorStatLine
-                fontScale={fontScale}
-                investigator={investigator}
-              />
-              { !!investigator.text && (
-                <View style={styles.gameTextBlock}>
-                  <CardTextComponent
-                    text={investigator.text}
+          <View>
+            <View style={styles.header}>
+              <View style={styles.headerTextColumn}>
+                <InvestigatorStatLine
+                  fontScale={fontScale}
+                  investigator={investigator}
+                />
+                { !!investigator.text && (
+                  <View style={[styles.gameTextBlock, styles.headerLeftMargin]}>
+                    <CardTextComponent
+                      text={investigator.text}
+                    />
+                  </View>
+                ) }
+              </View>
+              <View style={[styles.headerColumn, styles.headerLeftMargin]}>
+                <View style={styles.image}>
+                  <InvestigatorImage
+                    card={investigator}
+                    componentId={componentId}
+                    yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
+                    border
                   />
                 </View>
-              ) }
-            </View>
-            <View style={styles.headerColumn}>
-              <View style={styles.image}>
-                <InvestigatorImage
-                  card={investigator}
-                  componentId={componentId}
-                  yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
-                  border
+                <HealthSanityLine
+                  investigator={investigator}
+                  fontScale={fontScale}
                 />
               </View>
-              <HealthSanityLine
-                investigator={investigator}
-                fontScale={fontScale}
-              />
             </View>
+          </View>
+          <View style={styles.headerLeftMargin}>
+            <CardTabooTextBlock card={investigator} fontScale={fontScale} />
           </View>
         </TouchableOpacity>
       </View>
@@ -743,9 +749,11 @@ export default class DeckViewTab extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
+  headerLeftMargin: {
+    marginLeft: xs,
+  },
   header: {
     marginTop: m,
-    marginLeft: xs,
     marginRight: s,
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -754,7 +762,7 @@ const styles = StyleSheet.create({
   headerTextColumn: {
     flexDirection: 'column',
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
   image: {

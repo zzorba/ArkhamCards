@@ -229,20 +229,22 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
 
 export default withFilterFunctions(
   CardEnemyFilterView,
-  t`Enemy Filters`,
-  [
-    'enemyHealth',
-    'enemyHealthEnabled',
-    'enemyHealthPerInvestigator',
-    'enemyDamage',
-    'enemyDamageEnabled',
-    'enemyHorror',
-    'enemyHorrorEnabled',
-    'enemyFight',
-    'enemyFightEnabled',
-    'enemyEvade',
-    'enemyEvadeEnabled',
-  ]
+  {
+    title: t`Enemy Filters`,
+    clearTraits: [
+      'enemyHealth',
+      'enemyHealthEnabled',
+      'enemyHealthPerInvestigator',
+      'enemyDamage',
+      'enemyDamageEnabled',
+      'enemyHorror',
+      'enemyHorrorEnabled',
+      'enemyFight',
+      'enemyFightEnabled',
+      'enemyEvade',
+      'enemyEvadeEnabled',
+    ],
+  }
 );
 
 const styles = StyleSheet.create({
