@@ -71,9 +71,9 @@ export default class PackListComponent extends React.Component<Props> {
       compact,
       coreSetName,
     } = this.props;
-    const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, pack => {
-      return (pack.cycle_position === pack.cycle_position &&
-        pack.id !== pack.id);
+    const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, p => {
+      return (pack.cycle_position === p.cycle_position &&
+        pack.id !== p.id);
     }) : [];
     return (
       <PackRow

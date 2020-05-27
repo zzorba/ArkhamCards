@@ -41,6 +41,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
       [{ nativeEvent: { contentOffset: { y: this.scrollY } } }],
       {
         listener: this._onScroll,
+        useNativeDriver: false,
       },
     );
   }
@@ -107,6 +108,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
       Animated.timing(anim, {
         toValue: visible ? height : 0,
         duration: 350,
+        useNativeDriver: false,
       }).start();
     });
     this.setState({
