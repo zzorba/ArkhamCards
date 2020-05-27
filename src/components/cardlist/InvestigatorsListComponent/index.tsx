@@ -1,10 +1,7 @@
 import React from 'react';
-import { filter, forEach, sortBy, throttle } from 'lodash';
+import { filter, forEach, sortBy } from 'lodash';
 import {
-  Animated,
   Keyboard,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
   SectionList,
   SectionListData,
   StyleSheet,
@@ -15,8 +12,8 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import BasicButton from 'components/core/BasicButton';
-import InvestigatorSearchBox from './InvestigatorSearchBox';
 import NewInvestigatorRow from './NewInvestigatorRow';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
@@ -29,8 +26,6 @@ import ShowNonCollectionFooter, { rowNonCollectionHeight } from 'components/card
 import { getTabooSet, getPacksInCollection, AppState } from 'reducers';
 import typography from 'styles/typography';
 import space from 'styles/space';
-
-const SCROLL_DISTANCE_BUFFER = 50;
 
 interface OwnProps {
   componentId: string;
@@ -54,7 +49,6 @@ interface State {
   showNonCollection: { [key: string]: boolean };
   headerVisible: boolean;
   searchTerm: string;
-  scrollY: Animated.Value;
 }
 
 interface Section {
@@ -65,11 +59,7 @@ interface Section {
 }
 
 class InvestigatorsListComponent extends React.Component<Props, State> {
-  lastOffsetY: number = 0;
-
   _navEventListener?: EventSubscription;
-  _throttledScroll!: (offset: number) => void;
-  _handleScroll!: (...args: any[]) => void;
 
   constructor(props: Props) {
     super(props);
@@ -78,62 +68,14 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       showNonCollection: {},
       headerVisible: true,
       searchTerm: '',
-      scrollY: new Animated.Value(0),
     };
 
-    this._throttledScroll = throttle(
-      this.throttledScroll.bind(this),
-      100,
-      { trailing: true },
-    );
-    this._handleScroll = Animated.event(
-      [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-      {
-        listener: this._onScroll,
-      },
-    );
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   _handleScrollBeginDrag = () => {
     Keyboard.dismiss();
   };
-
-  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    // Dispatch the throttle event to handle hiding/showing stuff on transition.
-    this._throttledScroll(offsetY);
-  };
-
-  /**
-   * This is the throttle scrollEvent, throttled so we check it slightly
-   * less often and are able to make decisions about whether we update
-   * the stored scrollY or not.
-   */
-  throttledScroll(offsetY: number) {
-    if (offsetY <= 0) {
-      this.showHeader();
-    } else {
-      const delta = Math.abs(offsetY - this.lastOffsetY);
-      if (delta < SCROLL_DISTANCE_BUFFER) {
-        // Not a long enough scroll, don't update scrollY and don't take any
-        // action at all.
-        return;
-      }
-
-      // We have a decent sized scroll so we will make a direction based
-      // show/hide decision UNLESS we are near the top/bottom of the content.
-      const scrollingUp = offsetY < this.lastOffsetY;
-
-      if (scrollingUp) {
-        this.showHeader();
-      } else {
-        this.hideHeader();
-      }
-    }
-
-    this.lastOffsetY = offsetY;
-  }
 
   _searchUpdated = (text: string) => {
     this.setState({
@@ -351,16 +293,6 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     }
   }
 
-  renderHeader() {
-    return (
-      <InvestigatorSearchBox
-        value={this.state.searchTerm}
-        visible={this.state.headerVisible}
-        onChangeText={this._searchUpdated}
-      />
-    );
-  }
-
   _renderFooter = () => {
     const {
       customFooter,
@@ -404,26 +336,34 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     const {
       sort,
     } = this.props;
+    const {
+      searchTerm,
+    } = this.state;
     return (
-      <View style={styles.wrapper}>
-        { this.renderHeader() }
-        <SectionList
-          onScroll={this._handleScroll}
-          onScrollBeginDrag={this._handleScrollBeginDrag}
-          sections={this.groupedInvestigators()}
-          renderSectionHeader={this._renderSectionHeader}
-          renderSectionFooter={this._renderSectionFooter}
-          ListHeaderComponent={this._renderCustomHeader}
-          ListFooterComponent={this._renderFooter}
-          renderItem={this._renderItem}
-          initialNumToRender={24}
-          keyExtractor={this._investigatorToCode}
-          stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
-          keyboardShouldPersistTaps="always"
-          keyboardDismissMode="on-drag"
-          scrollEventThrottle={1}
-        />
-      </View>
+      <CollapsibleSearchBox
+        prompt={t`Search`}
+        searchTerm={searchTerm}
+        onSearchChange={this._searchUpdated}
+      >
+        { onScroll => (
+          <SectionList
+            onScroll={onScroll}
+            onScrollBeginDrag={this._handleScrollBeginDrag}
+            sections={this.groupedInvestigators()}
+            renderSectionHeader={this._renderSectionHeader}
+            renderSectionFooter={this._renderSectionFooter}
+            ListHeaderComponent={this._renderCustomHeader}
+            ListFooterComponent={this._renderFooter}
+            renderItem={this._renderItem}
+            initialNumToRender={24}
+            keyExtractor={this._investigatorToCode}
+            stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
+            keyboardShouldPersistTaps="always"
+            keyboardDismissMode="on-drag"
+            scrollEventThrottle={1}
+          />
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
@@ -444,9 +384,6 @@ export default connect<ReduxProps, {}, OwnProps, AppState>(
 );
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
   footer: {
     marginBottom: 60,
   },

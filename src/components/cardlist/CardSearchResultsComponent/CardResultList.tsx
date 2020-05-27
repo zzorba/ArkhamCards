@@ -9,20 +9,16 @@ import {
   map,
   partition,
   random,
-  throttle,
   uniq,
 } from 'lodash';
 import {
   ActivityIndicator,
-  Animated,
   Keyboard,
   RefreshControl,
   SectionList,
   StyleSheet,
   Text,
   View,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
   SectionListData,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
@@ -61,8 +57,6 @@ import { showCard, showCardSwipe } from 'components/nav/helper';
 import typography from 'styles/typography';
 import { s, m } from 'styles/space';
 
-const SCROLL_DISTANCE_BUFFER = 50;
-
 function funLoadingMessages() {
   return [
     t`Investigating for clues`,
@@ -91,8 +85,7 @@ interface OwnProps {
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
   cardPressed?: (card: Card) => void;
-  showHeader: () => void;
-  hideHeader: () => void;
+  handleScroll: (...args: any[]) => void;
   visible: boolean;
   showNonCollection?: boolean;
   expandSearchControls?: ReactNode;
@@ -156,7 +149,6 @@ interface State {
   };
   loadingMessage: string;
   dirty: boolean;
-  scrollY: Animated.Value;
 }
 
 interface CardBucket {
@@ -176,9 +168,6 @@ class CardResultList extends React.Component<Props, State> {
   }
 
   filterSetInitialized = false;
-  lastOffsetY: number = 0;
-  hasPendingCountChanges: boolean = false;
-  _handleScroll!: (...args: any[]) => void;
 
   constructor(props: Props) {
     super(props);
@@ -189,57 +178,9 @@ class CardResultList extends React.Component<Props, State> {
       showNonCollection: {},
       loadingMessage: CardResultList.randomLoadingMessage(),
       dirty: false,
-      scrollY: new Animated.Value(0),
       refreshDeck: 0,
     };
-
-    this._handleScroll = Animated.event(
-      [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-      {
-        listener: this._onScroll,
-      },
-    );
   }
-
-  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    // Dispatch the throttle event to handle hiding/showing stuff on transition.
-    this._throttledScroll(offsetY);
-  };
-
-  /**
-   * This is the throttle scrollEvent, throttled so we check it slightly
-   * less often and are able to make decisions about whether we update
-   * the stored scrollY or not.
-   */
-  _throttledScroll = throttle(
-    (offsetY: number) => {
-      if (offsetY <= 0) {
-        this.props.showHeader();
-      } else {
-        const delta = Math.abs(offsetY - this.lastOffsetY);
-        if (delta < SCROLL_DISTANCE_BUFFER) {
-          // Not a long enough scroll, don't update scrollY and don't take any
-          // action at all.
-          return;
-        }
-
-        // We have a decent sized scroll so we will make a direction based
-        // show/hide decision UNLESS we are near the top/bottom of the content.
-        const scrollingUp = offsetY < this.lastOffsetY;
-
-        if (scrollingUp) {
-          this.props.showHeader();
-        } else {
-          this.props.hideHeader();
-        }
-      }
-
-      this.lastOffsetY = offsetY;
-    },
-    100,
-    { trailing: true }
-  );
 
   _handleScrollBeginDrag = () => {
     Keyboard.dismiss();
@@ -822,6 +763,7 @@ class CardResultList extends React.Component<Props, State> {
       sort,
       fontScale,
       show_spoilers,
+      handleScroll,
     } = this.props;
     const {
       loadingMessage,
@@ -900,7 +842,7 @@ class CardResultList extends React.Component<Props, State> {
             onRefresh={this._refreshInDeck}
           />
         }
-        onScroll={this._handleScroll}
+        onScroll={handleScroll}
         onScrollBeginDrag={this._handleScrollBeginDrag}
         sections={data}
         renderSectionHeader={this._renderSectionHeader}

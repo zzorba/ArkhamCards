@@ -15,15 +15,14 @@ import {
   Slots,
 } from 'actions/types';
 import QueryProvider from 'components/data/QueryProvider';
-import CardSearchBox from './CardSearchBox';
+import CollapsibleSearchBox, { SEARCH_OPTIONS_HEIGHT } from 'components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
 import FilterBuilder, { FilterState } from 'lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from 'data/query';
 import Card from 'data/Card';
 import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import space, { isTablet, s, xs } from 'styles/space';
 
 interface Props {
   componentId: string;
@@ -194,7 +193,10 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchKey,
     } = this.state;
     const newSearchKey = CardSearchResultsComponent.searchKey(
-      searchTerm, searchText, searchFlavor, searchBack
+      searchTerm,
+      searchText,
+      searchFlavor,
+      searchBack
     );
     if (searchKey === newSearchKey) {
       return;
@@ -250,25 +252,36 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     });
   };
 
-  renderHeader() {
+  renderSearchOptions() {
     const {
       searchText,
       searchFlavor,
       searchBack,
-      searchTerm,
     } = this.state;
     return (
-      <CardSearchBox
-        value={searchTerm}
-        visible={this.state.headerVisible}
-        onChangeText={this._searchUpdated}
-        searchText={searchText}
-        searchFlavor={searchFlavor}
-        searchBack={searchBack}
-        toggleSearchText={this._toggleSearchText}
-        toggleSearchFlavor={this._toggleSearchFlavor}
-        toggleSearchBack={this._toggleSearchBack}
-      />
+      <View style={styles.textSearchOptions}>
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isTablet ? t`Game Text` : t`Game\nText` }
+        </Text>
+        <Switch
+          value={searchText}
+          onValueChange={this._toggleSearchText}
+        />
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isTablet ? t`Flavor Text` : t`Flavor\nText` }
+        </Text>
+        <Switch
+          value={searchFlavor}
+          onValueChange={this._toggleSearchFlavor}
+        />
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isTablet ? t`Card Backs` : t`Card\nBacks` }
+        </Text>
+        <Switch
+          value={searchBack}
+          onValueChange={this._toggleSearchBack}
+        />
+      </View>
     );
   }
 
@@ -364,9 +377,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       termQuery,
     } = this.state;
     return (
-      <View style={styles.wrapper}>
-        { this.renderHeader() }
-        <View style={styles.container}>
+      <CollapsibleSearchBox
+        prompt={t`Search for a card`}
+        advancedOptions={this.renderSearchOptions()}
+        searchTerm={searchTerm}
+        onSearchChange={this._searchUpdated}
+      >
+        { (handleScroll) => (
           <QueryProvider<QueryProps, Brackets>
             baseQuery={baseQuery}
             mythosToggle={mythosToggle}
@@ -380,57 +397,45 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                 getQuery={CardSearchResultsComponent.filterQuery}
               >
                 { filterQuery => (
-                  <CardResultList
-                    componentId={componentId}
-                    fontScale={fontScale}
-                    tabooSetOverride={tabooSetOverride}
-                    query={query}
-                    filterQuery={filterQuery || undefined}
-                    termQuery={termQuery || undefined}
-                    searchTerm={searchTerm}
-                    sort={selectedSort}
-                    investigator={investigator}
-                    originalDeckSlots={originalDeckSlots}
-                    deckCardCounts={deckCardCounts}
-                    onDeckCountChange={onDeckCountChange}
-                    limits={limits}
-                    showHeader={this._showHeader}
-                    hideHeader={this._hideHeader}
-                    expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
-                    visible={visible}
-                    renderFooter={renderFooter}
-                    showNonCollection={showNonCollection}
-                    storyOnly={storyOnly}
-                    mythosToggle={mythosToggle}
-                    initialSort={initialSort}
-                  />
+                  <>
+                    <CardResultList
+                      componentId={componentId}
+                      fontScale={fontScale}
+                      tabooSetOverride={tabooSetOverride}
+                      query={query}
+                      filterQuery={filterQuery || undefined}
+                      termQuery={termQuery || undefined}
+                      searchTerm={searchTerm}
+                      sort={selectedSort}
+                      investigator={investigator}
+                      originalDeckSlots={originalDeckSlots}
+                      deckCardCounts={deckCardCounts}
+                      onDeckCountChange={onDeckCountChange}
+                      limits={limits}
+                      handleScroll={handleScroll}
+                      expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
+                      visible={visible}
+                      renderFooter={renderFooter}
+                      showNonCollection={showNonCollection}
+                      storyOnly={storyOnly}
+                      mythosToggle={mythosToggle}
+                      initialSort={initialSort}
+                    />
+                    { !!renderFooter && <View style={styles.footer}>
+                      { renderFooter() }
+                    </View> }
+                  </>
                 ) }
               </QueryProvider>
             ) }
           </QueryProvider>
-        </View>
-        { !!renderFooter && <View style={[
-          styles.footer,
-        ]}>{ renderFooter() }</View> }
-      </View>
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    position: 'relative',
-    backgroundColor: COLORS.backgroundColor,
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.backgroundColor,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
-  },
   footer: {
     position: 'absolute',
     left: 0,
@@ -445,5 +450,17 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     minWidth: '60%',
+  },
+  textSearchOptions: {
+    paddingLeft: xs,
+    paddingRight: s,
+    paddingBottom: xs,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: SEARCH_OPTIONS_HEIGHT,
+  },
+  searchOption: {
+    marginLeft: s,
+    marginRight: xs,
   },
 });

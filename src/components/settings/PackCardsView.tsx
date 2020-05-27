@@ -19,8 +19,9 @@ function getQuery({ pack_code, baseQuery }: QueryProps) {
     where(`c.pack_code = '${pack_code}'`),
     baseQuery ? [baseQuery] : [],
     'and'
-  )
+  );
 }
+
 export default function PackCardsView({
   componentId,
   pack_code,
