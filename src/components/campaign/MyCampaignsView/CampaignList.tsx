@@ -23,7 +23,7 @@ interface OwnProps {
 
 type Props = OwnProps & PlayerCardProps;
 
-interface CampaignItem {
+interface CampaignItemType {
   campaign: Campaign;
 }
 class CampaignList extends React.Component<Props> {
@@ -91,7 +91,7 @@ class CampaignList extends React.Component<Props> {
     }
   };
 
-  _renderItem = ({ item: { campaign } }: ListRenderItemInfo<CampaignItem>) => {
+  _renderItem = ({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
     const {
       investigators,
     } = this.props;

@@ -380,6 +380,18 @@ class DeckDetailView extends React.Component<Props, State> {
     }
   }
 
+  _syncNav = (name: string) => {
+    const { componentId } = this.props;
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        subtitle: {
+          text: name,
+          color: '#FFFFFF',
+        },
+      },
+    });
+  };
+
   _deleteAllDecks = () => {
     this.deleteDeck(true);
   };
@@ -833,6 +845,7 @@ class DeckDetailView extends React.Component<Props, State> {
       tabooSetId: deck.taboo_id || undefined,
       xpAdjustment: deck.xp_adjustment || 0,
     }, () => {
+      this._syncNav(deck.name);
       this._updateSlots(deck.slots, true);
     });
   };
@@ -1177,6 +1190,7 @@ class DeckDetailView extends React.Component<Props, State> {
       name,
       tabooSetId,
     );
+    this._syncNav(name);
     this.setState({
       nameChange: name,
       xpAdjustment,

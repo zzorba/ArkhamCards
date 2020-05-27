@@ -219,16 +219,9 @@ class CardResultList extends React.Component<Props, State> {
         });
       }
     } else if (updateDeckCardCounts) {
-      if (this.lastOffsetY <= 0) {
-        /* eslint-disable react/no-did-update-set-state */
-        this.setState({
-          deckCardCounts: deckCardCounts,
-        });
-      } else {
-        this.setState({
-          deckCardCounts: deckCardCounts,
-        });
-      }
+      this.setState({
+        deckCardCounts: deckCardCounts,
+      });
     }
   }
 
