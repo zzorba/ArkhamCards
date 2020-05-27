@@ -4,6 +4,7 @@ import {
   Keyboard,
   SectionList,
   SectionListData,
+  SectionListRenderItemInfo,
   StyleSheet,
   Text,
   View,
@@ -50,7 +51,7 @@ interface State {
   searchTerm: string;
 }
 
-interface Section {
+interface Section extends SectionListData<Card> {
   title: string;
   id: string;
   data: Card[];
@@ -134,7 +135,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     );
   }
 
-  _renderItem = ({ item }: { item: Card }) => {
+  _renderItem = ({ item }: SectionListRenderItemInfo<Card>) => {
     const { hideDeckbuildingRules } = this.props;
     return (
       <InvestigatorRow
@@ -256,11 +257,11 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     return results;
   }
 
-  _renderSectionHeader = ({ section }: { section: SectionListData<Section> }) => {
+  _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
     return <BasicSectionHeader title={section.title} />;
   };
 
-  _renderSectionFooter = ({ section }: { section: SectionListData<Section> }) => {
+  _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
     const { fontScale } = this.props;
     const {
       showNonCollection,

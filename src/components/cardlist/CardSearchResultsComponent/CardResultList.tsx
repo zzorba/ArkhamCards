@@ -20,6 +20,7 @@ import {
   Text,
   View,
   SectionListData,
+  SectionListRenderItemInfo,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -151,7 +152,7 @@ interface State {
   dirty: boolean;
 }
 
-interface CardBucket {
+interface CardBucket extends SectionListData<Card> {
   header: CardSectionHeaderData;
   id: string;
   data: Card[];
@@ -563,7 +564,7 @@ class CardResultList extends React.Component<Props, State> {
     return data[index];
   };
 
-  _renderSectionHeader = ({ section }: { section: SectionListData<CardBucket> }) => {
+  _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
     const { fontScale, investigator } = this.props;
     return (
       <CardSectionHeader
@@ -574,7 +575,7 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  _renderSectionFooter = ({ section }: { section: SectionListData<CardBucket> }) => {
+  _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
     const { fontScale } = this.props;
     const {
       showNonCollection,
@@ -606,11 +607,7 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  _renderCard = ({ item, index, section }: {
-    item: Card;
-    index: number;
-    section: SectionListData<CardBucket>;
-  }) => {
+  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<Card>) => {
     const {
       limits,
       hasSecondCore,
@@ -818,14 +815,17 @@ class CardResultList extends React.Component<Props, State> {
         return result;
       });
     const getItemLayout = (
-      data: SectionListData<CardBucket>[] | null,
+      data: SectionListData<Card>[] | null,
       index: number
     ): {
       index: number;
       length: number;
       offset: number;
     } => {
-      return Object.assign({}, elementHeights[index], { index });
+      return {
+        ...elementHeights[index],
+        index,
+      };
     };
     return (
       <SectionList

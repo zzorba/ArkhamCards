@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -10,6 +9,7 @@ import { t } from 'ttag';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import Card from 'data/Card';
 import space from 'styles/space';
+import typography from 'styles/typography';
 
 interface Props {
   card: Card;
@@ -46,11 +46,11 @@ export default class CardUpgradeOption extends React.Component<Props> {
       <View>
         <View style={[styles.buttonsRow, space.paddingSideS]}>
           <View style={styles.buttonLabel}>
-            <Text style={styles.label}>
+            <Text style={typography.dialogLabel}>
               { t`Level ${level}` }
             </Text>
           </View>
-          <Text style={[styles.label, styles.countText]}>
+          <Text style={[typography.dialogLabel, styles.countText]}>
             { count }
           </Text>
           <PlusMinusButtons
@@ -78,16 +78,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
-  label: Platform.select({
-    ios: {
-      fontSize: 13,
-      color: 'black',
-    },
-    android: {
-      fontSize: 16,
-      color: '#33383D',
-    },
-  }),
   countText: {
     fontWeight: '900',
     width: 30,

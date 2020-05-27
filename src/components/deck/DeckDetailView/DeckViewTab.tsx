@@ -3,6 +3,7 @@ import { filter, find, flatMap, forEach, map, sum, sumBy, uniqBy } from 'lodash'
 import {
   SectionList,
   SectionListData,
+  SectionListRenderItemInfo,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -359,7 +360,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
   };
 
   _renderSectionHeader = ({ section }: {
-    section: SectionListData<CardSection>;
+    section: SectionListData<SectionCardId>;
   }) => {
     const {
       parsedDeck: {
@@ -377,11 +378,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
     );
   }
 
-  _renderCard = ({ item, index, section }: {
-    item: SectionCardId;
-    index: number;
-    section: SectionListData<CardSection>;
-  }) => {
+  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<SectionCardId>) => {
     const {
       parsedDeck: {
         ignoreDeckLimitSlots,
