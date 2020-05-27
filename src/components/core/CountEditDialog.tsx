@@ -11,6 +11,7 @@ import { t } from 'ttag';
 import Dialog from './Dialog';
 import PlusMinusButtons from './PlusMinusButtons';
 import space from 'styles/space';
+import typography from 'styles/typography';
 
 interface Props {
   title: string;
@@ -99,7 +100,7 @@ export default class CountEditDialog extends React.Component<Props, State> {
       <Dialog visible={visible} title={title} viewRef={viewRef}>
         <View style={[styles.counterRow, space.marginBottomM]}>
           <View style={styles.row}>
-            <Text style={[styles.label, styles.countText]}>
+            <Text style={[typography.dialogLabel, styles.countText]}>
               { count || 0 }
             </Text>
             <PlusMinusButtons
@@ -135,16 +136,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     width: 60,
   },
-  label: Platform.select({
-    ios: {
-      fontSize: 13,
-      color: 'black',
-    },
-    android: {
-      fontSize: 16,
-      color: '#33383D',
-    },
-  }),
   counterRow: {
     marginRight: Platform.OS === 'ios' ? 28 : 8,
     marginLeft: Platform.OS === 'ios' ? 28 : 8,

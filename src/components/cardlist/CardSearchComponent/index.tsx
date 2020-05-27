@@ -14,7 +14,7 @@ import Card from 'data/Card';
 import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { FilterState } from 'lib/filters';
-import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode } from 'components/filter/actions';
+import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from 'components/filter/actions';
 import { iconsMap } from 'app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -28,6 +28,8 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
+  toggleFilter: (id: string, key: keyof FilterState, value: boolean) => void;
+  updateFilter: (id: string, key: keyof FilterState, value: any) => void;
   clearFilters: (id: string, clearTraits?: string[]) => void;
   syncFilterSet: (id: string, filters: FilterState) => void;
   removeFilterSet: (id: string) => void;
@@ -253,6 +255,8 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
     clearFilters,
     syncFilterSet,
     toggleMythosMode,
+    toggleFilter,
+    updateFilter,
   }, dispatch);
 }
 
