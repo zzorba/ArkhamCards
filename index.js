@@ -1,4 +1,3 @@
-import Realm from 'realm';
 import React from 'react';
 import { InteractionManager } from 'react-native';
 import { Provider } from 'react-redux';

@@ -1,5 +1,4 @@
 import React from 'react';
-import Realm from 'realm';
 import { Alert, InteractionManager } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -19,38 +18,12 @@ type Props = OwnProps & ReduxProps;
 let theDatabase: Database | null = null;
 
 class DatabaseProvider extends React.Component<Props> {
-  private cleanupRealm() {
-    InteractionManager.runAfterInteractions(() => {
-      try {
-        const SCHEMA_VERSION = 63;
-        const realm = new Realm({
-          schema: [],
-          schemaVersion: SCHEMA_VERSION,
-          migration: () => {},
-        });
-        realm.write(() => {
-          realm.deleteModel('Card');
-          realm.deleteModel('EncounterSet');
-          realm.deleteModel('FaqEntry');
-          realm.deleteModel('TabooSet');
-          realm.deleteAll();
-        });
-      } catch (e) {
-        // DGAF
-      }
-    });
-  }
-
   constructor(props: Props) {
     super(props);
 
     if (theDatabase === null) {
-      console.log(props.schemaVersion);
       theDatabase = new Database(props.schemaVersion);
       theDatabase.reloadPlayerCards();
-      if (!props.schemaVersion) {
-        this.cleanupRealm();
-      }
     }
   }
 
