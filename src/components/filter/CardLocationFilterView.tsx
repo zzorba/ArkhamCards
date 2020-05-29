@@ -91,15 +91,17 @@ class CardLocationFilterView extends React.Component<FilterProps> {
 
 export default withFilterFunctions(
   CardLocationFilterView,
-  t`Location Filters`,
-  [
-    'shroud',
-    'shroudEnabled',
-    'clues',
-    'cluesEnabled',
-    'cluesFixed',
-    'hauntedEnabled',
-  ]
+  {
+    title: t`Location Filters`,
+    clearTraits: [
+      'shroud',
+      'shroudEnabled',
+      'clues',
+      'cluesEnabled',
+      'cluesFixed',
+      'hauntedEnabled',
+    ],
+  }
 );
 
 const styles = StyleSheet.create({

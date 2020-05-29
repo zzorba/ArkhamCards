@@ -1,13 +1,13 @@
 import React from 'react';
-import { forEach, head, map } from 'lodash';
+import { forEach, map } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import Realm, { Results } from 'realm';
-import { connectRealm, CardAndTabooSetResults } from 'react-native-realm';
+import Database from 'data/Database';
+import DbRender from 'components/data/DbRender';
 import { t } from 'ttag';
 
 import Card from 'data/Card';
@@ -25,18 +25,16 @@ interface TabooSetMap {
   [id: number]: TabooSet;
 }
 
-interface RealmProps {
-  realm: Realm;
+interface TabooData {
   card?: Card;
-  taboos: Results<Card>;
+  taboos: Card[];
   tabooSets: TabooSetMap;
 }
 
-type Props = NavigationProps & CardTabooProps & RealmProps;
+type Props = NavigationProps & CardTabooProps;
 
-class CardTabooView extends React.Component<Props> {
-  renderContent(card: Card, taboo: Card) {
-    const { tabooSets } = this.props;
+export default class CardTabooView extends React.Component<Props> {
+  renderContent(card: Card, taboo: Card, tabooSets: TabooSetMap) {
     const tabooSet = taboo.taboo_set_id && tabooSets[taboo.taboo_set_id];
     if (taboo.taboo_placeholder) {
       return null;
@@ -65,17 +63,51 @@ class CardTabooView extends React.Component<Props> {
     );
   }
 
-  render() {
+  _getData = async(db: Database): Promise<TabooData> => {
+    const { id } = this.props;
+    const cardsQuery = await db.cardsQuery();
+    const card = await cardsQuery
+      .where('c.code = :code and (c.taboo_set_id = 0 or c.taboo_set_id is null)', { code: id })
+      .getOne();
+    const taboos = await cardsQuery
+      .where('c.code = :code and c.taboo_set_id > 0', { code: id })
+      .getMany();
+    const allTabooSets = await (await db.tabooSets()).createQueryBuilder().orderBy('id', 'ASC').getMany();
+    const tabooSets: TabooSetMap = {};
+    forEach(allTabooSets, tabooSet => {
+      tabooSets[tabooSet.id] = tabooSet;
+    });
+    return {
+      card,
+      taboos,
+      tabooSets,
+    };
+  };
+
+  _renderData = (tabooData?: TabooData) => {
+    if (!tabooData) {
+      return null;
+    }
     const {
       card,
       taboos,
-    } = this.props;
+      tabooSets,
+    } = tabooData;
     if (!card) {
       return null;
     }
+    return map(taboos, taboo => this.renderContent(card, taboo, tabooSets));
+  };
+
+  render() {
+    const {
+      id,
+    } = this.props;
     return (
       <ScrollView style={styles.container}>
-        { map(taboos, taboo => this.renderContent(card, taboo)) }
+        <DbRender name="taboo" getData={this._getData} ids={[id]}>
+          { this._renderData }
+        </DbRender>
         <Text style={[typography.small, styles.header]}>
           { t`The List of Taboos is a list of Arkham Horror: The Card Game cards with optional deckbuilding restrictions or text changes. This list is designed to craft a healthy balance between investigator power and scenario difficulty, and to enforce shifts in deckbuilding environments over time.` }
           { '\n\n' }
@@ -87,28 +119,6 @@ class CardTabooView extends React.Component<Props> {
     );
   }
 }
-
-export default connectRealm<NavigationProps & CardTabooProps, RealmProps, Card, TabooSet>(CardTabooView, {
-  schemas: ['Card', 'TabooSet'],
-  mapToProps(
-    results: CardAndTabooSetResults<Card, TabooSet>,
-    realm: Realm,
-    props: NavigationProps & CardTabooProps
-  ): RealmProps {
-    const card = head(results.cards.filtered(`code == "${props.id}" and (taboo_set_id == 0 or taboo_set_id == null)`));
-    const taboos = results.cards.filtered(`code == "${props.id}" and taboo_set_id > 0`);
-    const tabooSets: TabooSetMap = {};
-    forEach(results.tabooSets, tabooSet => {
-      tabooSets[tabooSet.id] = tabooSet;
-    });
-    return {
-      realm,
-      card,
-      taboos,
-      tabooSets,
-    };
-  },
-});
 
 const styles = StyleSheet.create({
   container: {

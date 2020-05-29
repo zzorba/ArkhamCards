@@ -142,7 +142,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
             </DialogComponent.Description>
             <View style={styles.buttonsRow}>
               <View style={styles.buttonLabel}>
-                <Text style={styles.label}>
+                <Text style={typography.dialogLabel}>
                   { this.xpString() }
                 </Text>
               </View>
@@ -189,14 +189,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
-  label: Platform.select({
-    ios: {
-      fontSize: 13,
-      color: 'black',
-    },
-    android: {
-      fontSize: 16,
-      color: '#33383D',
-    },
-  }),
 });

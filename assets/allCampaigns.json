@@ -1404,13 +1404,13 @@
       "effects": [
         {
           "type": "campaign_data",
-          "setting": "result",
-          "value": "lose"
+          "setting": "skip_scenario",
+          "scenario": "dwl_epilogue"
         },
         {
           "type": "campaign_data",
-          "setting": "skip_scenario",
-          "scenario": "dwl_epilogue"
+          "setting": "result",
+          "value": "lose"
         }
       ]
     },
@@ -3068,6 +3068,11 @@
       "id": "lose_campaign",
       "text": "The investigators lose the campaign.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "dwl_epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",
@@ -5757,6 +5762,11 @@
       "id": "lose",
       "text": "The investigators lose the campaign.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",
@@ -10846,13 +10856,13 @@
       "effects": [
         {
           "type": "campaign_data",
-          "setting": "result",
-          "value": "lose"
+          "setting": "skip_scenario",
+          "scenario": "dwl_epilogue"
         },
         {
           "type": "campaign_data",
-          "setting": "skip_scenario",
-          "scenario": "dwl_epilogue"
+          "setting": "result",
+          "value": "lose"
         }
       ]
     },
@@ -12414,6 +12424,11 @@
       "id": "lose_campaign",
       "text": "The investigators lose the campaign.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "dwl_epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",
@@ -16509,6 +16524,11 @@
       "id": "lose",
       "text": "The investigators lose the campaign.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",
@@ -29072,6 +29092,11 @@
     {
       "id": "R5",
       "title": "Resolution 5",
+      "investigator_status": [
+        "resigned",
+        "physical",
+        "mental"
+      ],
       "steps": [
         "maybe_ask_act_1",
         "compare_columns_explanation",
@@ -41680,6 +41705,11 @@
       "effects": [
         {
           "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tfa_epilogue"
+        },
+        {
+          "type": "campaign_data",
           "setting": "result",
           "value": "lose"
         }
@@ -42883,6 +42913,11 @@
         },
         {
           "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tfa_epilogue"
+        },
+        {
+          "type": "campaign_data",
           "setting": "result",
           "value": "lose"
         }
@@ -42928,6 +42963,11 @@
       "id": "lose",
       "text": "Because all investigators have been killed by the fall trauma, the investigators <b>lose</b> the campaign.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "tfa_epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",

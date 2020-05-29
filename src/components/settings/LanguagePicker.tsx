@@ -1,15 +1,14 @@
 import React from 'react';
 import { findIndex, map } from 'lodash';
-import Realm from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm } from 'react-native-realm';
 import { SettingsPicker } from 'react-native-settings-components';
-
 import { t } from 'ttag';
+
 import SinglePickerComponent from 'components/core/SinglePickerComponent';
 import { fetchCards } from 'components/card/actions';
-import Card from 'data/Card';
+import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { AppState } from 'reducers';
 import COLORS from 'styles/colors';
 
@@ -20,14 +19,10 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  fetchCards: (realm: Realm, lang: string) => void;
+  fetchCards: (db: Database, lang: string) => void;
 }
 
-interface RealmProps {
-  realm: Realm;
-}
-
-type Props = ReduxProps & ReduxActionProps & RealmProps;
+type Props = ReduxProps & ReduxActionProps;
 
 const LANGUAGES = [
   { label: 'English', value: 'en' },
@@ -37,9 +32,13 @@ const LANGUAGES = [
   { label: 'Français', value: 'fr' },
   { label: '한국어', value: 'ko' },
   { label: 'Українська', value: 'uk' },
+  { label: 'Polski', value: 'pl' },
 ];
 
 class LanguagePicker extends React.Component<Props> {
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
+
   languagePickerRef?: SettingsPicker<string>;
 
   _captureLanguagePickerRef = (ref: SettingsPicker<string>) => {
@@ -50,12 +49,11 @@ class LanguagePicker extends React.Component<Props> {
     const newLang = LANGUAGES[index].value;
     this.languagePickerRef && this.languagePickerRef.closeModal();
     const {
-      realm,
       lang,
       fetchCards,
     } = this.props;
     if (newLang && newLang !== lang) {
-      fetchCards(realm, newLang);
+      fetchCards(this.context.db, newLang);
     }
   };
 
@@ -104,14 +102,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connectRealm<{}, RealmProps, Card>(
-  connect<ReduxProps, ReduxActionProps, RealmProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(LanguagePicker), {
-    mapToProps(results: any, realm: Realm): RealmProps {
-      return {
-        realm,
-      };
-    },
-  });
+export default connect<ReduxProps, ReduxActionProps, {}, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(LanguagePicker);

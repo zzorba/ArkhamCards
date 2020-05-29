@@ -1,30 +1,25 @@
 import React, { ReactNode } from 'react';
 import { forEach } from 'lodash';
-import Realm from 'realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
+import { Brackets } from 'typeorm/browser';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import Card from 'data/Card';
 import {
   SortType,
   Slots,
 } from 'actions/types';
-import CardSearchResultsComponent from '../../cardlist/CardSearchResultsComponent';
+import Card from 'data/Card';
+import XpChooser from 'components/filter/CardFilterView/XpChooser';
+import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
 import { FilterState } from 'lib/filters';
-import { addFilterSet, removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode } from 'components/filter/actions';
-import { CardFilterProps } from 'components/filter/withFilterFunctions';
+import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from 'components/filter/actions';
 import { iconsMap } from 'app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
 import COLORS from 'styles/colors';
 
-interface RealmProps {
-  defaultFilterState: FilterState;
-}
 
 interface ReduxProps {
   tabooSetId?: number;
@@ -34,8 +29,9 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
+  toggleFilter: (id: string, key: keyof FilterState, value: boolean) => void;
+  updateFilter: (id: string, key: keyof FilterState, value: any) => void;
   clearFilters: (id: string, clearTraits?: string[]) => void;
-  addFilterSet: (id: string, filters: FilterState, sort?: SortType, mythosToggle?: boolean) => void;
   syncFilterSet: (id: string, filters: FilterState) => void;
   removeFilterSet: (id: string) => void;
   toggleMythosMode: (id: string, value: boolean) => void;
@@ -43,7 +39,7 @@ interface ReduxActionProps {
 
 interface OwnProps {
   componentId: string;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   tabooSetOverride?: number;
@@ -60,7 +56,6 @@ interface OwnProps {
 }
 
 type Props = OwnProps &
-  RealmProps &
   ReduxProps &
   ReduxActionProps &
   DimensionsProps;
@@ -82,15 +77,11 @@ class CardSearchComponent extends React.Component<Props, State> {
   componentDidMount() {
     const {
       componentId,
-      addFilterSet,
-      defaultFilterState,
-      sort,
       baseQuery,
       modal,
       onDeckCountChange,
       mythosToggle,
     } = this.props;
-    addFilterSet(componentId, defaultFilterState, sort, mythosToggle);
 
     const rightButtons = [{
       id: 'filter',
@@ -160,34 +151,6 @@ class CardSearchComponent extends React.Component<Props, State> {
     syncFilterSet(componentId, filters);
   }
 
-  _showSearchFilters = () => {
-    const {
-      componentId,
-      modal,
-      baseQuery,
-    } = this.props;
-    Navigation.push<CardFilterProps>(componentId, {
-      component: {
-        name: 'SearchFilters',
-        passProps: {
-          filterId: componentId,
-          baseQuery: baseQuery,
-          modal: modal,
-        },
-        options: {
-          topBar: {
-            backButton: {
-              title: t`Apply`,
-            },
-            title: {
-              text: t`Filters`,
-            },
-          },
-        },
-      },
-    });
-  };
-
   componentDidUpdate(prevProps: Props) {
     const { mythosMode, mythosToggle, componentId } = this.props;
     if (mythosToggle && mythosMode !== prevProps.mythosMode) {
@@ -228,6 +191,31 @@ class CardSearchComponent extends React.Component<Props, State> {
     toggleMythosMode(componentId, !mythosMode);
   };
 
+  _onFilterChange = (key: keyof FilterState, value: any) => {
+    const { componentId, updateFilter } = this.props;
+    updateFilter(componentId, key, value);
+  };
+
+  _onToggleChange = (key: keyof FilterState, value: boolean) => {
+    const { componentId, toggleFilter } = this.props;
+    toggleFilter(componentId, key, value);
+  };
+
+  _renderHeader = () => {
+    const { filters } = this.props;
+    return (
+      <XpChooser
+        onFilterChange={this._onFilterChange}
+        onToggleChange={this._onToggleChange}
+        maxLevel={5}
+        levels={filters?.level || [0,5]}
+        enabled={filters?.levelEnabled || false}
+        exceptional={filters?.exceptional || false}
+        nonExceptional={filters?.nonExceptional || false}
+      />
+    );
+  };
+
   render() {
     const {
       componentId,
@@ -237,16 +225,16 @@ class CardSearchComponent extends React.Component<Props, State> {
       limits,
       renderFooter,
       showNonCollection,
-      mythosToggle,
       baseQuery,
       tabooSetOverride,
       investigator,
       filters,
-      defaultFilterState,
       mythosMode,
       selectedSort,
       storyOnly,
       fontScale,
+      sort,
+      mythosToggle,
     } = this.props;
     const {
       visible,
@@ -260,7 +248,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         mythosMode={mythosMode}
         showNonCollection={showNonCollection}
         selectedSort={selectedSort}
-        filters={this.state.filters || filters || defaultFilterState}
+        filters={this.state.filters || filters}
         tabooSetOverride={tabooSetOverride}
         toggleMythosMode={this._toggleMythosMode}
         clearSearchFilters={this._clearSearchFilters}
@@ -269,9 +257,11 @@ class CardSearchComponent extends React.Component<Props, State> {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={onDeckCountChange}
         limits={limits}
+        renderHeader={deckCardCounts ? this._renderHeader : undefined}
         renderFooter={renderFooter}
         visible={visible}
         storyOnly={storyOnly}
+        initialSort={sort}
       />
     );
   }
@@ -288,32 +278,18 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    addFilterSet,
     removeFilterSet,
     clearFilters,
     syncFilterSet,
     toggleMythosMode,
+    toggleFilter,
+    updateFilter,
   }, dispatch);
 }
 
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-  withDimensions(CardSearchComponent), {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps & ReduxProps
-    ) {
-      const cards = props.baseQuery ?
-        results.cards.filtered(`(${props.baseQuery}) and ${Card.tabooSetQuery(props.tabooSetId)}`) :
-        results.cards.filtered(Card.tabooSetQuery(props.tabooSetId));
-
-      return {
-        defaultFilterState: calculateDefaultFilterState(cards),
-      };
-    },
-  })
+)(
+  withDimensions(CardSearchComponent)
 );

@@ -535,7 +535,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   extraXp: {
-    color: 'purple',
+    color: COLORS.taboo,
     marginRight: xs,
   },
   upgradeButton: {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { findIndex, map } from 'lodash';
-import Realm, { Results } from 'realm';
 import { format } from 'date-fns';
-import { connectRealm, TabooSetResults } from 'react-native-realm';
 import { t } from 'ttag';
 
+import connectDb from 'components/data/connectDb';
+import Database from 'data/Database';
 import SinglePickerComponent from './SinglePickerComponent';
 import TabooSet from 'data/TabooSet';
 import COLORS from 'styles/colors';
@@ -19,12 +19,11 @@ interface OwnProps {
   transparent?: boolean;
 }
 
-interface RealmProps {
-  realm: Realm;
-  tabooSets: Results<TabooSet>;
+interface DbProps {
+  tabooSets: TabooSet[];
 }
 
-type Props = OwnProps & RealmProps;
+type Props = OwnProps & DbProps;
 
 class TabooSetPicker extends React.Component<Props> {
 
@@ -58,7 +57,7 @@ class TabooSetPicker extends React.Component<Props> {
         selectedIndex={selectedIndex}
         choices={map(tabooSets, set => {
           return {
-            text: format(Date.parse(set.date_start), 'LLL d, yyyy'),
+            text: set.date_start ? format(Date.parse(set.date_start), 'LLL d, yyyy') : 'Unknown',
           };
         })}
         colors={{
@@ -77,16 +76,18 @@ class TabooSetPicker extends React.Component<Props> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, TabooSet>(
-  TabooSetPicker, {
-    schemas: ['TabooSet'],
-    mapToProps(
-      results: TabooSetResults<TabooSet>,
-      realm: Realm
-    ): RealmProps {
-      return {
-        realm,
-        tabooSets: results.tabooSets,
-      };
-    },
-  });
+export default connectDb<OwnProps, DbProps>(
+  TabooSetPicker,
+  () => {
+    return {};
+  },
+  async(db: Database) => {
+    const tabooSetsR = await db.tabooSets();
+    const tabooSets = await tabooSetsR.createQueryBuilder()
+      .orderBy('id', 'DESC')
+      .getMany();
+    return {
+      tabooSets,
+    };
+  }
+);

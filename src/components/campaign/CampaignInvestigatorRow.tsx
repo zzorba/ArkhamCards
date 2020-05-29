@@ -70,25 +70,21 @@ class CampaignInvestigatorRow extends React.Component<Props> {
     const {
       campaignDecks,
     } = this.props;
-    return (
-      <View style={styles.row}>
-        { map(campaignDecks, ({ campaign, decks }) => {
-          const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
-          return (
-            <>
-              { map(decks, deck => this._renderDeck(deck, campaign)) }
-              { map(
-                filter(
-                  campaign.nonDeckInvestigators || [],
-                  code => !deckInvestigators.has(code)
-                ),
-                code => this._renderInvestigator(code, campaign)
-              ) }
-            </>
-          );
-        }) }
-      </View>
-    );
+    return map(campaignDecks, ({ campaign, decks }) => {
+      const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
+      return (
+        <View key={campaign.id} style={styles.row}>
+          { map(decks, deck => this._renderDeck(deck, campaign)) }
+          { map(
+            filter(
+              campaign.nonDeckInvestigators || [],
+              code => !deckInvestigators.has(code)
+            ),
+            code => this._renderInvestigator(code, campaign)
+          ) }
+        </View>
+      );
+    });
   }
 }
 

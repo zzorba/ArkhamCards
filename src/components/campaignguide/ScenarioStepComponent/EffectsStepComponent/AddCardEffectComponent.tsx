@@ -2,12 +2,12 @@ import React from 'react';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
-import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
+import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
+import InvestigatorSelectorWrapper from 'components/campaignguide/InvestigatorSelectorWrapper';
 import { AddCardEffect } from 'data/scenario/types';
 import Card from 'data/Card';
-import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
+import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 
 interface Props {
   id: string;
@@ -48,9 +48,10 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={this.props.effect.card}
-        render={this._renderCard}
-        extraArg={undefined}
-      />
+        type="player"
+      >
+        { this._renderCard }
+      </SingleCardWrapper>
     );
   }
 }

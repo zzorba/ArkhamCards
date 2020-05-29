@@ -81,9 +81,11 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_the_midnight_masks':
       case 'return_to_the_devourer_below':
       case 'return_cult':
-      case 'ghouls_of_umôrdhoth':
       case 'the_devourers_cult':
         return this.coreIcon(encounter_code, size, color);
+      case 'ghouls_of_umôrdhoth':
+      case 'ghouls_of_umordhoth':
+        return this.coreIcon('ghouls_of_umordhoth', size, color);
       case 'pentagram':
         return this.coreIcon('dark_cult', size, color);
       case 'cultists':

@@ -1,6 +1,121 @@
-import { findIndex, forEach, map } from 'lodash';
+import { filter, findIndex, forEach, keys, map } from 'lodash';
 
-import { SKILLS, FactionCodeType } from '../constants';
+import { QueryParams } from 'data/types';
+import { combineQueriesOpt, where } from 'data/query';
+import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from 'constants';
+import Card from 'data/Card';
+import { Brackets } from 'typeorm/browser';
+
+export interface CardFilterData {
+  hasCost: boolean;
+  hasXp: boolean;
+  hasSkill: boolean;
+  allUses: string[];
+  allFactions: FactionCodeType[];
+  allTraits: string[];
+  allTypes: string[];
+  allTypeCodes: string[];
+  allSubTypes: string[];
+  allPacks: string[];
+  allSlots: string[];
+  allEncounters: string[];
+  allIllustrators: string[];
+}
+
+export function calculateCardFilterData(cards: Card[]): CardFilterData {
+  const factionsMap: { [key: string]: boolean } = {};
+  let hasCost = false;
+  let hasXp = false;
+  let hasSkill = false;
+  const typesMap: { [key: string]: boolean } = {};
+  const typeCodesMap: { [key: string]: boolean } = {};
+  const usesMap: { [key: string]: boolean } = {};
+  const subTypesMap: { [key: string]: boolean } = {};
+  const traitsMap: { [key: string]: boolean } = {};
+  const packsMap: { [key: string]: boolean } = {};
+  const slotsMap: { [key: string]: boolean } = {};
+  const encountersMap: { [key: string]: boolean } = {};
+  const illustratorsMap: { [key: string]: boolean } = {};
+  forEach(cards, card => {
+    if (card.faction_code) {
+      factionsMap[card.faction_code] = true;
+    }
+    if (card.faction2_code) {
+      factionsMap[card.faction2_code] = true;
+    }
+    if (card.cost !== null) {
+      hasCost = true;
+    }
+    if (card.xp !== null) {
+      hasXp = true;
+    }
+    if (!hasSkill && (
+      card.skill_willpower ||
+      card.skill_intellect ||
+      card.skill_combat ||
+      card.skill_agility ||
+      card.skill_wild
+    )) {
+      hasSkill = true;
+    }
+    if (card.traits) {
+      forEach(
+        filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
+        t => {
+          traitsMap[t] = true;
+        });
+    }
+    if (card.subtype_name) {
+      subTypesMap[card.subtype_name] = true;
+    }
+    if (card.uses) {
+      usesMap[card.uses] = true;
+    }
+    if (card.pack_name) {
+      packsMap[card.pack_name] = true;
+    }
+    if (card.slot) {
+      if (card.slot.indexOf('.') !== -1) {
+        forEach(
+          map(card.slot.split('.'), s => s.trim()),
+          s => {
+            slotsMap[s] = true;
+          }
+        );
+      } else {
+        slotsMap[card.slot] = true;
+      }
+    }
+    if (card.encounter_name) {
+      encountersMap[card.encounter_name] = true;
+    }
+    if (card.illustrator) {
+      illustratorsMap[card.illustrator] = true;
+    }
+    typesMap[card.type_name] = true;
+    typeCodesMap[card.type_code] = true;
+  });
+
+  const allFactions: FactionCodeType[] = filter(
+    CARD_FACTION_CODES,
+    factionCode => !!factionsMap[factionCode]
+  );
+  return {
+    allFactions,
+    hasCost,
+    hasXp,
+    hasSkill,
+    allUses: keys(usesMap).sort(),
+    allTraits: keys(traitsMap).sort(),
+    allTypes: keys(typesMap).sort(),
+    allTypeCodes: keys(typeCodesMap).sort(),
+    allSubTypes: keys(subTypesMap).sort(),
+    allPacks: keys(packsMap).sort(),
+    allSlots: keys(slotsMap).sort(),
+    allEncounters: keys(encountersMap).sort(),
+    allIllustrators: keys(illustratorsMap).sort(),
+  };
+}
 
 
 export interface SkillIconsFilters {
@@ -149,304 +264,362 @@ export const defaultFilterState: FilterState = {
   enemyEvade: [0, 6],
 };
 
-export function safeValue(value: any) {
-  return value;
-}
 
-function applyRangeFilter(
-  query: string[],
-  field: string,
-  values: [number, number],
-  linked: boolean
-) {
-  if (values[0] === values[1]) {
-    query.push(`(${field} == ${values[0]}${linked ? ` or linked_card.${field} == ${values[0]}` : ''})`);
-  } else {
-    query.push(`((${field} >= ${values[0]} and ${field} <= ${values[1]})${linked ? ` or (linked_card.${field} >= ${values[0]} and linked_card.${field} <= ${values[1]})` : ''})`);
+export const VENGEANCE_FILTER: Brackets = where('c.vengeance >= 0 or linked_card.vengeance >= 0');
+export const UNIQUE_FILTER: Brackets = where('(c.is_unique = true OR linked_card.is_unique = true) AND c.type_code != "enemy"');
+
+export default class FilterBuilder {
+  prefix: string;
+
+  constructor(prefix: string) {
+    this.prefix = prefix;
   }
-}
 
-function applySlotFilter(filters: FilterState, query: string[]) {
-  const {
-    slots,
-  } = filters;
-  if (slots.length) {
-    query.push([
-      '(',
-      map(slots, s => `slots_normalized CONTAINS[c] '#${safeValue(s)}#'`).join(' or '),
-      ')',
-    ].join(''));
+  private fieldName(parts: string[]): string {
+    return [
+      this.prefix,
+      ...parts,
+    ].join('_');
   }
-}
 
-function applyTraitFilter(filters: FilterState, query: string[]) {
-  const {
-    traits,
-  } = filters;
-  if (traits.length) {
-    query.push([
-      '(',
-      map(traits, t => `traits_normalized CONTAINS[c] "${safeValue(t)}"`).join(' or '),
-      ' or ',
-      map(traits, t => `linked_card.traits_normalized CONTAINS[c] "${safeValue(t)}"`).join(' or '),
-      ')',
-    ].join(''));
-  }
-}
-
-function applySkillIconFilter(skillFilters: SkillIconsFilters, query: string[]) {
-  const parts: string[] = [];
-  const doubleIcons = skillFilters.doubleIcons;
-  const matchAll = doubleIcons &&
-    (findIndex(SKILLS, skill => skillFilters[skill]) === -1);
-
-  forEach(SKILLS, skill => {
-    if (matchAll || skillFilters[skill]) {
-      parts.push(`skill_${skill} > ${doubleIcons ? 1 : 0}`);
+  rangeFilter(
+    field: string,
+    values: [number, number],
+    linked: boolean
+  ): Brackets[] {
+    if (values[0] === values[1]) {
+      const fieldName = this.fieldName([field, 'value']);
+      return [
+        where(
+          `c.${field} = :${fieldName}${linked ? ` OR linked_card.${field} = :${fieldName}` : ''}`,
+          { [fieldName]: values[0] },
+        ),
+      ];
     }
-  });
-
-  if (parts.length) {
-    // Kick out investigators because they re-use the same field
-    // and by definition cannot have skill icons.
-    query.push(`(type_code != 'investigator')`);
-    query.push(`(${parts.join(' or ')})`);
+    const minFieldName = this.fieldName([field, 'min']);
+    const maxFieldName = this.fieldName([field, 'max']);
+    return [
+      where(
+        `(c.${field} >= :${minFieldName} and c.${field} <= :${maxFieldName})${linked ? ` or (linked_card.${field} >= :${minFieldName} and linked_card.${field} <= :${maxFieldName})` : ''}`,
+        {
+          [minFieldName]: values[0],
+          [maxFieldName]: values[1],
+        },
+      ),
+    ];
   }
-}
 
-function applyLocationFilters(filters: FilterState, query: string[]) {
-  const {
-    shroudEnabled,
-    shroud,
-    cluesEnabled,
-    clues,
-    cluesFixed,
-    hauntedEnabled,
-  } = filters;
-  const oldLength = query.length;
-  if (shroudEnabled) {
-    applyRangeFilter(query, 'shroud', shroud, true);
-  }
-  if (cluesEnabled) {
-    applyRangeFilter(query, 'clues', clues, true);
-    if (clues[0] !== clues[1] || clues[0] !== 0) {
-      query.push(`(clues_fixed == ${cluesFixed} or linked_card.clues_fixed == ${cluesFixed})`);
+  complexVectorClause(
+    field: string,
+    elements: string[],
+    clause: (valueName: string) => string
+  ): Brackets[] {
+    if (!elements.length) {
+      return [];
     }
+    const params: QueryParams = {};
+    const query = map(elements, (value, index) => {
+      const fieldName = this.fieldName([field, `${index}`]);
+      params[fieldName] = value;
+      return clause(fieldName);
+    }).join(' OR ');
+    return [where(query, params)];
   }
-  if (hauntedEnabled) {
-    query.push(`(real_text CONTAINS '<b>Haunted</b>' or linked_card.real_text CONTAINS '<b>Haunted</b>')`);
-  }
-  if (query.length !== oldLength) {
-    query.push(`(type_code == 'location' or linked_card.type_code == 'location')`);
-  }
-}
 
-function applyEnemyFilters(filters: FilterState, query: string[]) {
-  const {
-    // toggle filters
-    enemyElite,
-    enemyNonElite,
-    enemyHunter,
-    enemyNonHunter,
-    enemyRetaliate,
-    enemyAlert,
-    enemyParley,
-    enemySpawn,
-    enemyPrey,
-    enemyAloof,
-    enemyMassive,
-    enemySwarm,
-    // range filters
-    enemyEvade,
-    enemyEvadeEnabled,
-    enemyFight,
-    enemyFightEnabled,
-    enemyHealth,
-    enemyHealthEnabled,
-    enemyHealthPerInvestigator,
-    enemyDamage,
-    enemyDamageEnabled,
-    enemyHorror,
-    enemyHorrorEnabled,
-  } = filters;
-  const oldLength = query.length;
-  if (enemyElite && !enemyNonElite) {
-    query.push(`(traits_normalized CONTAINS[c] 'elite' or linked_card.traits_normalized CONTAINS[c] 'elite')`);
+  slotFilter(slots: string[]): Brackets[] {
+    return this.complexVectorClause(
+      'slot',
+      map(slots, slot => `%#${slot}#%`),
+      (valueName: string) => `c.slots_normalized LIKE :${valueName}`
+    );
   }
-  if (enemyNonElite && !enemyElite) {
-    query.push(`((type_code == 'enemy' and !(traits_normalized CONTAINS[c] 'elite')) or (linked_card.type_code == 'enemy' and !(linked_card.traits_normalized CONTAINS[c] 'elite')))`);
-  }
-  if (enemyRetaliate) {
-    query.push(`(real_text CONTAINS 'Retaliate.' or linked_card.real_text CONTAINS 'Retaliate.')`);
-  }
-  if (enemyAlert) {
-    query.push(`(real_text CONTAINS 'Alert.' or linked_card.real_text CONTAINS 'Alert.')`);
-  }
-  if (enemyHunter && !enemyNonHunter) {
-    query.push(`(real_text CONTAINS 'Hunter.' or linked_card.real_text CONTAINS 'Hunter.')`);
-  }
-  if (enemyNonHunter && !enemyHunter) {
-    query.push(`((type_code == 'enemy' and !(real_text CONTAINS 'Hunter.')) or (linked_card.type_code == 'enemy' and !(linked_card.real_text CONTAINS 'Hunter.')))`);
-  }
-  if (enemySpawn) {
-    query.push(`(real_text CONTAINS 'Spawn' or linked_card.real_text CONTAINS 'Spawn')`);
-  }
-  if (enemyPrey) {
-    query.push(`(real_text CONTAINS 'Prey' or linked_card.real_text CONTAINS 'Prey')`);
-  }
-  if (enemyAloof) {
-    query.push(`(real_text CONTAINS 'Aloof.' or linked_card.real_text CONTAINS 'Aloof.')`);
-  }
-  if (enemyParley) {
-    query.push(`(real_text CONTAINS 'Parley.' or linked_card.real_text CONTAINS 'Parley.')`);
-  }
-  if (enemyMassive) {
-    query.push(`(real_text CONTAINS 'Massive.' or linked_card.real_text CONTAINS 'Massive.')`);
-  }
-  if (enemySwarm) {
-    query.push(`(real_text CONTAINS 'Swarm.' or linked_card.real_text CONTAINS 'Swarm.')`);
-  }
-  if (enemyFightEnabled) {
-    applyRangeFilter(query, 'enemy_fight', enemyFight, true);
-  }
-  if (enemyEvadeEnabled) {
-    applyRangeFilter(query, 'enemy_evade', enemyEvade, true);
-  }
-  if (enemyDamageEnabled) {
-    applyRangeFilter(query, 'enemy_damage', enemyDamage, true);
-  }
-  if (enemyHorrorEnabled) {
-    applyRangeFilter(query, 'enemy_horror', enemyHorror, true);
-  }
-  if (enemyHealthEnabled) {
-    applyRangeFilter(query, 'health', enemyHealth, true);
-    query.push(`((type_code == 'enemy' and health_per_investigator == ${enemyHealthPerInvestigator}) or (linked_card.type_code == 'enemy' && linked_card.health_per_investigator == ${enemyHealthPerInvestigator}))`);
-  }
-  if (query.length !== oldLength ||
-    (enemyHunter && enemyNonHunter) ||
-    (enemyElite && enemyNonElite)) {
-    query.push(`(type_code == 'enemy' or linked_card.type_code == 'enemy')`);
-  }
-}
 
-function applyMiscFilter(filters: FilterState, query: string[]) {
-  const {
-    victory,
-    vengeance,
-  } = filters;
-  if (victory) {
-    query.push('victory >= 0 or linked_card.victory >= 0');
+  traitFilter(traits: string[]): Brackets[] {
+    return this.complexVectorClause(
+      'trait',
+      map(traits, trait => `%#${trait}#%`),
+      (valueName: string) => `c.traits_normalized LIKE :${valueName} OR (linked_card.traits_normalized is not null AND linked_card.traits_normalized LIKE :${valueName})`
+    );
   }
-  if (vengeance) {
-    query.push('vengeance >= 0 or linked_card.vengeance >= 0');
-  }
-}
 
-function applyLevelFilter(filters: FilterState, query: string[]) {
-  const {
-    levelEnabled,
-    level,
-    exceptional,
-    nonExceptional,
-  } = filters;
-  if (levelEnabled) {
-    applyRangeFilter(query, 'xp', level, false);
+  skillIconFilter(filters: FilterState): Brackets[] {
+    if (!filters.skillEnabled) {
+      return [];
+    }
+    const { skillIcons } = filters;
+    const parts: string[] = [];
+    const doubleIcons = skillIcons.doubleIcons;
+    const matchAll = doubleIcons &&
+      (findIndex(SKILLS, skill => skillIcons[skill]) === -1);
+
+    forEach(SKILLS, skill => {
+      if (matchAll || skillIcons[skill]) {
+        parts.push(`c.skill_${skill} > ${doubleIcons ? 1 : 0}`);
+      }
+    });
+
+    if (parts.length) {
+      // Kick out investigators because they re-use the same field
+      // and by definition cannot have skill icons.
+      return [
+        new Brackets(qb => qb.where(`(c.type_code != 'investigator')`)
+          .andWhere(`(${parts.join(' OR ')})`)),
+      ];
+    }
+    return [];
+  }
+
+  locationFilters(filters: FilterState): Brackets[] {
+    const {
+      shroudEnabled,
+      shroud,
+      cluesEnabled,
+      clues,
+      cluesFixed,
+      hauntedEnabled,
+    } = filters;
+    const result: Brackets[] = [
+      ...(shroudEnabled ? this.rangeFilter('shroud', shroud, true) : []),
+      ...(cluesEnabled ? [
+        ...this.rangeFilter('shroud', shroud, true),
+      ] : []),
+    ];
+    if (cluesEnabled && (clues[0] !== clues[1] || clues[0] !== 0)) {
+      result.push(where(`c.clues_fixed = ${cluesFixed} OR linked_card.clues_fixed = ${cluesFixed}`));
+    }
+    if (hauntedEnabled) {
+      result.push(where(`c.real_text LIKE '%<b>Haunted</b>%' OR linked_card.real_text LIKE '%<b>Haunted</b>%'`));
+    }
+    if (result.length) {
+      result.push(where(`c.type_code = 'location' OR linked_card.type_code = 'location'`));
+    }
+    return result;
+  }
+
+  enemyFilters(filters: FilterState): Brackets[] {
+    const {
+      // toggle filters
+      enemyElite,
+      enemyNonElite,
+      enemyHunter,
+      enemyNonHunter,
+      enemyRetaliate,
+      enemyAlert,
+      enemyParley,
+      enemySpawn,
+      enemyPrey,
+      enemyAloof,
+      enemyMassive,
+      enemySwarm,
+      // range filters
+      enemyEvade,
+      enemyEvadeEnabled,
+      enemyFight,
+      enemyFightEnabled,
+      enemyHealth,
+      enemyHealthEnabled,
+      enemyHealthPerInvestigator,
+      enemyDamage,
+      enemyDamageEnabled,
+      enemyHorror,
+      enemyHorrorEnabled,
+    } = filters;
+    const result: Brackets[] = [
+      ...(enemyFightEnabled ? this.rangeFilter('enemy_fight', enemyFight, true) : []),
+      ...(enemyEvadeEnabled ? this.rangeFilter('enemy_evade', enemyEvade, true) : []),
+      ...(enemyDamageEnabled ? this.rangeFilter('enemy_damage', enemyDamage, true) : []),
+      ...(enemyHorrorEnabled ? this.rangeFilter('enemy_horror', enemyHorror, true) : []),
+      ...(enemyHealthEnabled ? [
+        ...this.rangeFilter('health', enemyHealth, true),
+        where(`(c.type_code = 'enemy' AND c.health_per_investigator = ${enemyHealthPerInvestigator}) OR (linked_card.type_code = 'enemy' AND linked_card.health_per_investigator = ${enemyHealthPerInvestigator})`),
+      ] : []),
+    ];
+    if (enemyElite && !enemyNonElite) {
+      result.push(where(`c.traits_normalized LIKE '%#elite#%' or linked_card.traits_normalized LIKE '%#elite#%'`));
+    }
+    if (enemyNonElite && !enemyElite) {
+      result.push(where(`(c.type_code = 'enemy' AND NOT (c.traits_normalized LIKE '%#elite#%')) OR (linked_card.type_code = 'enemy' AND NOT (linked_card.traits_normalized LIKE '%#elite#%'))`));
+    }
+    if (enemyRetaliate) {
+      result.push(where(`c.real_text LIKE '%Retaliate.%' OR linked_card.real_text LIKE '%Retaliate.%'`));
+    }
+    if (enemyAlert) {
+      result.push(where(`c.real_text LIKE '%Alert.%' OR linked_card.real_text LIKE '%Alert.%'`));
+    }
+    if (enemyHunter && !enemyNonHunter) {
+      result.push(where(`c.real_text LIKE '%Hunter.%' OR linked_card.real_text LIKE '%Hunter.%'`));
+    }
+    if (enemyNonHunter && !enemyHunter) {
+      result.push(where(`(c.type_code = 'enemy' AND NOT (c.real_text LIKE '%Hunter.%')) OR (linked_card.type_code = 'enemy' AND NOT (linked_card.real_text LIKE '%Hunter.%'))`));
+    }
+    if (enemySpawn) {
+      result.push(where(`c.real_text LIKE '%Spawn%' OR linked_card.real_text LIKE '%Spawn%'`));
+    }
+    if (enemyPrey) {
+      result.push(where(`c.real_text LIKE '%Prey%' OR linked_card.real_text LIKE '%Prey%'`));
+    }
+    if (enemyAloof) {
+      result.push(where(`c.real_text LIKE '%Aloof.%' or linked_card.real_text LIKE '%Aloof.%'`));
+    }
+    if (enemyParley) {
+      result.push(where(`c.real_text LIKE '%Parley.%' or linked_card.real_text LIKE '%Parley.%'`));
+    }
+    if (enemyMassive) {
+      result.push(where(`c.real_text LIKE '%Massive.%' or linked_card.real_text LIKE '%Massive.%'`));
+    }
+    if (enemySwarm) {
+      result.push(where(`c.real_text LIKE '%Swarming%' or linked_card.real_text LIKE '%Swarming%'`));
+    }
+
+    if (result.length ||
+      (enemyHunter && enemyNonHunter) ||
+      (enemyElite && enemyNonElite)) {
+      result.push(where(`c.type_code = 'enemy' or linked_card.type_code = 'enemy'`));
+    }
+    return result;
+  }
+
+
+  miscFilter(filters: FilterState): Brackets[] {
+    const {
+      victory,
+      vengeance,
+    } = filters;
+    const result: Brackets[] = [];
+    if (victory) {
+      result.push(where('c.victory >= 0 or linked_card.victory >= 0'));
+    }
+    if (vengeance) {
+      result.push(VENGEANCE_FILTER);
+    }
+    return result;
+  }
+
+  levelFilter(filters: FilterState): Brackets[] {
+    const {
+      levelEnabled,
+      level,
+      exceptional,
+      nonExceptional,
+    } = filters;
+    if (!levelEnabled) {
+      return [];
+    }
+    const result = this.rangeFilter('xp', level, false);
     if (exceptional && !nonExceptional) {
-      query.push(`(real_text CONTAINS 'Exceptional.' or linked_card.real_text CONTAINS 'Exceptional.')`);
+      result.push(where(`c.real_text LIKE '%Exceptional.%' or linked_card.real_text LIKE '%Exceptional.%'`));
     }
     if (nonExceptional && !exceptional) {
-      query.push(`!(real_text CONTAINS 'Exceptional.' or linked_card.real_text CONTAINS 'Exceptional.')`);
+      result.push(where(`NOT (c.real_text LIKE '%Exceptional.%' AND linked_card.real_text LIKE '%Exceptional.%')`));
     }
+    return result;
+  }
+
+  costFilter(filters: FilterState): Brackets[] {
+    const {
+      costEnabled,
+      cost,
+    } = filters;
+    if (costEnabled) {
+      return this.rangeFilter('cost', cost, false);
+    }
+    return [];
+  }
+
+  equalsVectorClause(values: string[], field: string, valuePrefix?: string[]): Brackets[] {
+    if (values.length) {
+      const valueName = this.fieldName([...(valuePrefix || []), field]);
+      return [
+        where(
+          `c.${field} IN (:...${valueName}) OR linked_card.${field} IN (:...${valueName})`,
+          { [valueName]: values }
+        ),
+      ];
+    }
+    return [];
+  }
+
+
+  playerCardFilters(filters: FilterState): Brackets[] {
+    const {
+      uses,
+      unique,
+      fast,
+      bonded,
+      seal,
+      myriad,
+      evadeAction,
+      fightAction,
+      investigateAction,
+      permanent,
+      exile,
+      slots,
+    } = filters;
+    const result: Brackets[] = [
+      ...this.slotFilter(slots),
+      ...this.equalsVectorClause(uses, 'uses'),
+    ];
+    if (fast) {
+      result.push(where(`c.real_text LIKE '%Fast.%' OR linked_card.real_text LIKE '%Fast.%'`));
+    }
+    if (bonded) {
+      result.push(where(`c.bonded_name is not null OR linked_card.bonded_name is not null`));
+    }
+    if (fightAction) {
+      result.push(where(`c.real_text LIKE '%<b>Fight.</b>%' OR linked_card.real_text LIKE '%<b>Fight.</b>%'`));
+    }
+    if (evadeAction) {
+      result.push(where(`c.real_text LIKE '%<b>Evade.</b>%' OR linked_card.real_text LIKE '%<b>Evade.</b>%'`));
+    }
+    if (investigateAction) {
+      result.push(where(`c.real_text LIKE '%<b>Investigate.</b>%' OR linked_card.real_text LIKE '%<b>Investigate.</b>%'`));
+    }
+    if (permanent) {
+      result.push(where(`c.real_text LIKE '%Permanent.%' OR linked_card.real_text LIKE '%Permanent.%'`));
+    }
+    if (exile) {
+      result.push(where(`c.real_text LIKE '%exile%' or linked_card.real_text LIKE '%exile%'`));
+    }
+    if (unique) {
+      result.push(UNIQUE_FILTER);
+    }
+    if (seal) {
+      result.push(where(`c.seal = true or linked_card.seal = true`));
+    }
+    if (myriad) {
+      result.push(where(`c.real_text LIKE '%Myriad.%' or linked_card.real_text LIKE '%Myriad.%'`));
+    }
+    return result;
+  }
+
+
+  factionFilter(factions: FactionCodeType[]): Brackets[] {
+    return this.complexVectorClause(
+      'faction',
+      factions,
+      valueName => `(c.faction_code = :${valueName} OR c.faction2_code = :${valueName})`
+    );
+  }
+
+  filterToQuery(filters: FilterState): Brackets | undefined {
+    return combineQueriesOpt(
+      [
+        ...this.factionFilter(filters.factions),
+        ...this.equalsVectorClause(filters.types, 'type_name'),
+        ...this.equalsVectorClause(filters.subTypes, 'subtype_name'),
+        ...this.playerCardFilters(filters),
+        ...this.equalsVectorClause(filters.packs, 'pack_name'),
+        ...this.equalsVectorClause(filters.encounters, 'encounter_name'),
+        ...this.equalsVectorClause(filters.illustrators, 'illustrator'),
+        ...this.miscFilter(filters),
+        ...this.levelFilter(filters),
+        ...this.costFilter(filters),
+        ...this.traitFilter(filters.traits),
+        ...this.enemyFilters(filters),
+        ...this.locationFilters(filters),
+        ...this.skillIconFilter(filters),
+      ],
+      'and'
+    );
   }
 }
-
-function applyCostFilter(filters: FilterState, query: string[]) {
-  const {
-    costEnabled,
-    cost,
-  } = filters;
-  if (costEnabled) {
-    applyRangeFilter(query, 'cost', cost, false);
-  }
-}
-
-function applyFilter(values: string[], field: string, query: string[]) {
-  if (values.length) {
-    query.push(`(${map(values, value => `${field} == "${safeValue(value)}"`).join(' or ')})`);
-  }
-}
-
-function applyPlayerCardFilters(filters: FilterState, query: string[]) {
-  const {
-    uses,
-    unique,
-    fast,
-    bonded,
-    seal,
-    myriad,
-    evadeAction,
-    fightAction,
-    investigateAction,
-    permanent,
-    exile,
-  } = filters;
-  applySlotFilter(filters, query);
-  applyFilter(uses, 'uses', query);
-  if (fast) {
-    query.push(`(real_text CONTAINS 'Fast.' or linked_card.real_text CONTAINS 'Fast.')`);
-  }
-  if (bonded) {
-    query.push(`(bonded_name != null or linked_card.bonded_name != null)`);
-  }
-  if (fightAction) {
-    query.push(`(real_text CONTAINS '<b>Fight.</b>' or linked_card.real_text CONTAINS '<b>Fight.</b>')`);
-  }
-  if (evadeAction) {
-    query.push(`(real_text CONTAINS '<b>Evade.</b>' or linked_card.real_text CONTAINS '<b>Evade.</b>')`);
-  }
-  if (investigateAction) {
-    query.push(`(real_text CONTAINS '<b>Investigate.</b>' or linked_card.real_text CONTAINS '<b>Investigate.</b>')`);
-  }
-  if (permanent) {
-    query.push(`(real_text CONTAINS 'Permanent.' or linked_card.real_text CONTAINS 'Permanent.')`);
-  }
-  if (exile) {
-    query.push(`(real_text CONTAINS[c] 'exile' or linked_card.real_text CONTAINS[c] 'exile')`);
-  }
-  if (unique) {
-    query.push('((is_unique == true or linked_card.is_unique == true) && type_code != "enemy")');
-  }
-  if (seal) {
-    query.push(`(seal == true or linked_card.seal == true)`);
-  }
-  if (myriad) {
-    query.push(`(real_text CONTAINS 'Myriad.' or linked_card.real_text CONTAINS 'Myriad.')`);
-  }
-}
-
-export function filterToQuery(filters: FilterState): string[] {
-  const query = [];
-  if (filters.factions.length) {
-    query.push(`(${map(filters.factions, value => `faction_code == "${safeValue(value)}" or faction2_code == "${safeValue(value)}"`).join(' or ')})`);
-  }
-  applyFilter(filters.types, 'type_name', query);
-  applyFilter(filters.subTypes, 'subtype_name', query);
-  applyPlayerCardFilters(filters, query);
-  applyFilter(filters.packs, 'pack_name', query);
-  applyFilter(filters.encounters, 'encounter_name', query);
-  applyFilter(filters.illustrators, 'illustrator', query);
-  if (filters.skillEnabled) {
-    applySkillIconFilter(filters.skillIcons, query);
-  }
-  applyMiscFilter(filters, query);
-  applyLevelFilter(filters, query);
-  applyCostFilter(filters, query);
-  applyTraitFilter(filters, query);
-  applyEnemyFilters(filters, query);
-  applyLocationFilters(filters, query);
-  return query;
-}
-
-export default {
-  filterToQuery,
-};

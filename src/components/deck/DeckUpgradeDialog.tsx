@@ -1,5 +1,5 @@
 import React from 'react';
-import { head, last } from 'lodash';
+import { last } from 'lodash';
 import {
   View,
   ScrollView,
@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -19,6 +18,7 @@ import { NavigationProps } from 'components/nav/types';
 import { showDeckModal, showCard } from 'components/nav/helper';
 import StoryCardSelectorComponent from 'components/campaign/StoryCardSelectorComponent';
 import { updateCampaign } from 'components/campaign/actions';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import withTraumaDialog, { TraumaProps } from 'components/campaign/withTraumaDialog';
 import EditTraumaComponent from 'components/campaign/EditTraumaComponent';
 import Card from 'data/Card';
@@ -46,11 +46,7 @@ interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
 }
 
-interface RealmProps {
-  investigator?: Card;
-}
-
-type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps & TraumaProps & DimensionsProps;
+type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps & TraumaProps & DimensionsProps;
 
 interface State {
   storyEncounterCodes: string[];
@@ -111,11 +107,21 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     }
   }
 
+  investigator(): Card | undefined {
+    const {
+      deck,
+      investigators,
+    } = this.props;
+    if (!deck) {
+      return undefined;
+    }
+    return investigators[deck.investigator_code];
+  }
+
   _deckUpgradeComplete = (deck: Deck) => {
     const {
       showNewDeck,
       componentId,
-      investigator,
       campaign,
       updateCampaign,
     } = this.props;
@@ -129,7 +135,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       }
     }
     if (showNewDeck) {
-      showDeckModal(componentId, deck, investigator);
+      showDeckModal(componentId, deck, this.investigator());
     } else {
       Navigation.pop(componentId);
     }
@@ -164,7 +170,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       componentId,
       campaign,
-      investigator,
       showTraumaDialog,
       fontScale,
     } = this.props;
@@ -172,6 +177,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       storyEncounterCodes,
       scenarioName,
     } = this.state;
+    const investigator = this.investigator();
     if (!campaign || !investigator) {
       return null;
     }
@@ -203,7 +209,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       deck,
       componentId,
-      investigator,
       campaign,
       saveDeckChanges,
       saveDeckUpgrade,
@@ -212,7 +217,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       storyCounts,
     } = this.state;
-
+    const investigator = this.investigator();
     if (!deck || !investigator) {
       return null;
     }
@@ -266,28 +271,11 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDe
   mapStateToProps,
   mapDispatchToProps
 )(
-  connectRealm<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-    withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & RealmProps>(
+  withPlayerCards<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps>(
+    withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
       withDimensions(DeckUpgradeDialog)
-    ), {
-      schemas: ['Card'],
-      mapToProps(
-        results: CardResults<Card>,
-        realm: Realm,
-        props: NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps
-      ): RealmProps {
-        if (props.deck) {
-          return {
-            investigator: head(
-              results.cards.filtered(
-                `(code == '${props.deck.investigator_code}') and ${Card.tabooSetQuery(props.tabooSetId)}`
-              )
-            ),
-          };
-        }
-        return {};
-      },
-    })
+    )
+  )
 );
 
 const styles = StyleSheet.create({

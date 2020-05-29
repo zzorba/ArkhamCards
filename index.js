@@ -1,36 +1,39 @@
+import Realm from 'realm';
 import React from 'react';
-import PropTypes from 'prop-types';
+import { InteractionManager } from 'react-native';
 import { Provider } from 'react-redux';
-import { RealmProvider } from 'react-native-realm';
+import { PersistGate } from 'redux-persist/integration/react'
 import { Navigation } from 'react-native-navigation';
+import 'reflect-metadata';
 
-import { registerScreens } from './src/app/screens';
-import configureStore from './src/app/store';
-import App from './src/app/App';
-import realm from './src/data';
+import DatabaseProvider from 'data/DatabaseProvider';
+import { registerScreens } from 'app/screens';
+import configureStore from 'app/store';
+import App from 'app/App';
 
 class MyProvider extends React.Component {
-  static propTypes = {
-    store: PropTypes.object.isRequired,
-    children: PropTypes.node.isRequired,
-  };
-
   render() {
+    const {
+      store: { redux, persistor },
+      children,
+    } = this.props;
     return (
-      <RealmProvider realm={realm}>
-        <Provider store={this.props.store}>
-          { this.props.children }
-        </Provider>
-      </RealmProvider>
+      <Provider store={redux}>
+        <PersistGate loading={null} persistor={persistor}>
+          <DatabaseProvider>
+            { children }
+          </DatabaseProvider>
+        </PersistGate>
+      </Provider>
     );
   }
 }
 
-const { store /* , persistor */ } = configureStore({});
-registerScreens(MyProvider, store);
+const { store, persistor } = configureStore({});
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
 Navigation.events().registerAppLaunchedListener(() => {
+  registerScreens(MyProvider, { redux: store, persistor: persistor });
   app = new App(store);
 });

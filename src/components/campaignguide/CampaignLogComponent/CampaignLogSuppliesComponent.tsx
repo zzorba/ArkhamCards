@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
-import SingleCardWrapper from '../SingleCardWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import InvestigatorNameRow from '../prompts/InvestigatorNameRow';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from 'data/scenario/CampaignGuide';
@@ -43,9 +43,10 @@ export default class CampaignLogSuppliesComponent extends React.Component<Props>
         <SingleCardWrapper
           key={code}
           code={code}
-          render={this._renderInvestigator}
-          extraArg={undefined}
-        />
+          type="player"
+        >
+          { this._renderInvestigator }
+        </SingleCardWrapper>
       );
     });
   }

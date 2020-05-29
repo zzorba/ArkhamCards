@@ -2,8 +2,8 @@ import React from 'react';
 import { map, keys } from 'lodash';
 import { t } from 'ttag';
 
-import SetupStepWrapper from '../../SetupStepWrapper';
-import SingleCardWrapper from '../../SingleCardWrapper';
+import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
+import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorCheckListComponent from '../../prompts/InvestigatorCheckListComponent';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
@@ -88,9 +88,10 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
     return (
       <SingleCardWrapper
         code={this.props.effect.card}
-        render={this._renderCard}
-        extraArg={undefined}
-      />
+        type="player"
+      >
+        { this._renderCard }
+      </SingleCardWrapper>
     );
   }
 }

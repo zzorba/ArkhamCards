@@ -23,6 +23,7 @@ interface Props {
   eliminated?: boolean;
   button?: React.ReactNode;
   detail?: React.ReactNode;
+  bigImage?: boolean;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
 }
@@ -54,6 +55,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       button,
       description,
       yithian,
+      bigImage,
     } = this.props;
     return (
       <View style={styles.wrapper}>
@@ -67,7 +69,7 @@ export default class InvestigatorRow extends React.Component<Props> {
               card={investigator}
               killedOrInsane={eliminated}
               yithian={yithian}
-              small
+              small={!bigImage}
               border
             />
           </View>

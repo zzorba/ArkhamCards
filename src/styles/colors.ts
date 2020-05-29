@@ -18,6 +18,7 @@ export default {
   darkGray: 'rgb(120, 120, 120)',
   lightGreen: 'rgb(114, 221, 82)',
   yellow: 'rgb(255, 204, 0)',
+  taboo: 'purple',
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
   navButton: Platform.OS === 'ios' ? '#007AFF' : '#000',

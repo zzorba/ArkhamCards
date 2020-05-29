@@ -8,6 +8,7 @@ function getTranslationObj(locale: string) {
     case 'it': return require('../../assets/i18n/it.po.json');
     case 'ko': return require('../../assets/i18n/ko.po.json');
     case 'uk': return require('../../assets/i18n/uk.po.json');
+    case 'pl': return require('../../assets/i18n/pl.po.json');
     case 'en':
     default:
       return require('../../assets/i18n/en.po.json');

@@ -18,6 +18,7 @@ import { m, s, xs, iconSizeScale } from 'styles/space';
 
 export interface CardSectionHeaderData {
   superTitle?: string;
+  superTitleIcon?: string;
   title?: string;
   subTitle?: string;
   placeholder?: boolean;
@@ -30,10 +31,20 @@ interface Props {
   section: CardSectionHeaderData;
 }
 
+export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScale: number) {
+  if (section.placeholder) {
+    return m;
+  }
+  return fontScale * 22 + (section.superTitle ? s : xs) * 2;
+}
+
 export default class CardSectionHeader extends React.Component<Props> {
   renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
     const {
       fontScale,
+      section: {
+        superTitleIcon,
+      },
     } = this.props;
     const SMALL_EDIT_ICON_SIZE = 30 * iconSizeScale * fontScale;
     return (
@@ -47,9 +58,12 @@ export default class CardSectionHeader extends React.Component<Props> {
           </Text>
         </View>
         { !noIcon && (
-          <View style={{ width: SMALL_EDIT_ICON_SIZE, height: SMALL_EDIT_ICON_SIZE }}>
+          <View style={[
+            { width: SMALL_EDIT_ICON_SIZE, height: SMALL_EDIT_ICON_SIZE },
+            superTitleIcon ? { marginRight: xs } : {},
+          ]}>
             <MaterialIcons
-              name="keyboard-arrow-right"
+              name={superTitleIcon || 'keyboard-arrow-right'}
               color="#FFF"
               size={SMALL_EDIT_ICON_SIZE}
             />
@@ -142,7 +156,7 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
   headerRow: {
@@ -151,7 +165,7 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
 });

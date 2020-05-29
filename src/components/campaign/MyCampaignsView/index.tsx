@@ -1,9 +1,7 @@
 import React from 'react';
-import { filter, map, throttle } from 'lodash';
+import { filter, throttle } from 'lodash';
 import {
   Alert,
-  Keyboard,
-  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -12,17 +10,12 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import BasicButton from 'components/core/BasicButton';
 import { CUSTOM, Campaign, DecksMap } from 'actions/types';
-import CampaignItem from './CampaignItem';
-import LinkedCampaignItem from './LinkedCampaignItem';
-import { NewCampaignProps } from '../NewCampaignView';
-import { CampaignDetailProps } from '../CampaignDetailView';
-import { CampaignGuideProps } from 'components/campaignguide/CampaignGuideView';
-import { LinkedCampaignGuideProps } from 'components/campaignguide/LinkedCampaignGuideView';
+import { NewCampaignProps } from 'components/campaign/NewCampaignView';
+import CampaignList from './CampaignList';
 import { campaignNames } from 'components/campaign/constants';
-import SearchBox from 'components/core/SearchBox';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { searchMatchesText } from 'components/core/searchHelpers';
 import withFetchCardsGate from 'components/card/withFetchCardsGate';
 import { iconsMap } from 'app/NavIcons';
@@ -40,7 +33,7 @@ interface ReduxProps {
   decks: DecksMap;
 }
 
-type Props = OwnProps & ReduxProps & PlayerCardProps;
+type Props = OwnProps & ReduxProps;
 
 interface State {
   search: string;
@@ -85,70 +78,6 @@ class MyCampaignsView extends React.Component<Props, State> {
     this.setState({
       search: text,
     });
-  };
-
-  _onPress = (id: number, campaign: Campaign) => {
-    const {
-      componentId,
-    } = this.props;
-    Keyboard.dismiss();
-    const options = {
-      topBar: {
-        title: {
-          text: campaign.name,
-        },
-        backButton: {
-          title: t`Back`,
-        },
-        rightButtons: [
-          campaign.guided ? {
-            icon: iconsMap.edit,
-            id: 'edit',
-            color: COLORS.navButton,
-            testID: t`Edit name`,
-          } : {
-            icon: iconsMap.menu,
-            id: 'menu',
-            color: COLORS.navButton,
-          },
-        ],
-      },
-    };
-    if (campaign.guided) {
-      if (campaign.link) {
-        Navigation.push<LinkedCampaignGuideProps>(componentId, {
-          component: {
-            name: 'Guide.LinkedCampaign',
-            passProps: {
-              campaignId: campaign.id,
-              campaignIdA: campaign.link.campaignIdA,
-              campaignIdB: campaign.link.campaignIdB,
-            },
-            options,
-          },
-        });
-        return;
-      }
-      Navigation.push<CampaignGuideProps>(componentId, {
-        component: {
-          name: 'Guide.Campaign',
-          passProps: {
-            campaignId: campaign.id,
-          },
-          options,
-        },
-      });
-    } else {
-      Navigation.push<CampaignDetailProps>(componentId, {
-        component: {
-          name: 'Campaign',
-          passProps: {
-            id,
-          },
-          options,
-        },
-      });
-    }
   };
 
   showNewCampaignDialog() {
@@ -206,29 +135,6 @@ class MyCampaignsView extends React.Component<Props, State> {
     }
   }
 
-  renderItem(campaign: Campaign) {
-    const {
-      investigators,
-    } = this.props;
-    if (campaign.link) {
-      return (
-        <LinkedCampaignItem
-          key={campaign.id}
-          campaign={campaign}
-          investigators={investigators}
-          onPress={this._onPress}
-        />
-      );
-    }
-    return (
-      <CampaignItem
-        key={campaign.id}
-        campaign={campaign}
-        investigators={investigators}
-        onPress={this._onPress}
-      />
-    );
-  }
 
   filteredCampaigns(): Campaign[] {
     const {
@@ -247,7 +153,7 @@ class MyCampaignsView extends React.Component<Props, State> {
     });
   }
 
-  renderFooter(campaigns: Campaign[]) {
+  renderConditionalFooter(campaigns: Campaign[]) {
     const {
       search,
     } = this.state;
@@ -274,28 +180,38 @@ class MyCampaignsView extends React.Component<Props, State> {
     );
   }
 
-
-  render() {
-    const campaigns = this.filteredCampaigns();
+  renderFooter(campaigns: Campaign[]) {
     return (
-      <ScrollView
-        style={styles.container}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-      >
-        <SearchBox
-          value={this.state.search}
-          onChangeText={this._searchChanged}
-          placeholder={t`Search campaigns`}
-        />
-        { map(campaigns, campaign => this.renderItem(campaign)) }
-        { this.renderFooter(campaigns) }
+      <View>
+        { this.renderConditionalFooter(campaigns) }
         <BasicButton
           title={t`New Campaign`}
           onPress={this._showNewCampaignDialog}
         />
         <View style={styles.gutter} />
-      </ScrollView>
+      </View>
+    );
+  }
+
+  render() {
+    const { componentId } = this.props;
+    const { search } = this.state;
+    const campaigns = this.filteredCampaigns();
+    return (
+      <CollapsibleSearchBox
+        prompt={t`Search campaigns`}
+        searchTerm={search}
+        onSearchChange={this._searchChanged}
+      >
+        { onScroll => (
+          <CampaignList
+            onScroll={onScroll}
+            componentId={componentId}
+            campaigns={campaigns}
+            footer={this.renderFooter(campaigns)}
+          />
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
@@ -308,16 +224,11 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default withFetchCardsGate<OwnProps>(
-  connect(mapStateToProps)(
-    withPlayerCards<OwnProps & ReduxProps>(MyCampaignsView)
-  ),
+  connect(mapStateToProps)(MyCampaignsView),
   { promptForUpdate: false },
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   footer: {
     margin: m,
     alignItems: 'center',

@@ -1,5 +1,4 @@
 import React from 'react';
-import Realm, { Results } from 'realm';
 import { connect } from 'react-redux';
 import { map } from 'lodash';
 import {
@@ -7,17 +6,19 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { t } from 'ttag';
 
+import Database from 'data/Database';
+import DbRender from 'components/data/DbRender';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from 'data/Card';
+import { where } from 'data/query';
 import { getTabooSet, AppState } from 'reducers';
 import { m, s } from 'styles/space';
 
 interface OwnProps {
   componentId?: string;
-  card: Card;
+  card?: Card;
   width: number;
   fontScale: number;
 }
@@ -26,22 +27,56 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-interface RealmProps {
-  bonded_to_cards?: Results<Card>;
-  bonded_from_cards?: Results<Card>;
+type Props = OwnProps & ReduxProps;
+
+interface BondedCards {
+  bonded_to_cards: Card[];
+  bonded_from_cards: Card[];
 }
 
-type Props = OwnProps & ReduxProps & RealmProps;
-
 class BondedCardsComponent extends React.Component<Props> {
-  render() {
+  async bondedToCards(db: Database): Promise<Card[]> {
+    const { card, tabooSetId } = this.props;
+    if (!card || !card.bonded_name) {
+      return [];
+    }
+    return await db.getCards(
+      where('c.real_name = :bonded_name', { bonded_name: card.bonded_name }),
+      tabooSetId
+    );
+  }
+
+  async bondedFromCards(db: Database): Promise<Card[]> {
+    const { card, tabooSetId } = this.props;
+    if (!card) {
+      return [];
+    }
+    return await db.getCards(
+      where('c.bonded_name == :real_name', { real_name: card.real_name }),
+      tabooSetId
+    );
+  }
+
+  _getBondedCards = async(db: Database): Promise<BondedCards> => {
+    return {
+      bonded_to_cards: await this.bondedToCards(db),
+      bonded_from_cards: await this.bondedFromCards(db),
+    };
+  };
+
+  _render = (bondedCards?: BondedCards) => {
     const {
       componentId,
-      bonded_to_cards,
-      bonded_from_cards,
       width,
       fontScale,
     } = this.props;
+    if (!bondedCards) {
+      return null;
+    }
+    const {
+      bonded_from_cards,
+      bonded_to_cards,
+    } = bondedCards;
     if (!(bonded_to_cards && bonded_to_cards.length) &&
       !(bonded_from_cards && bonded_from_cards.length)) {
       return null;
@@ -82,6 +117,17 @@ class BondedCardsComponent extends React.Component<Props> {
         ) }
       </React.Fragment>
     );
+  };
+
+  render() {
+    const {
+      card,
+    } = this.props;
+    return (
+      <DbRender name="bonded" getData={this._getBondedCards} ids={card ? [card.id] : []}>
+        { this._render }
+      </DbRender>
+    );
   }
 }
 
@@ -93,25 +139,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
-)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-  BondedCardsComponent, {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps & ReduxProps
-    ): RealmProps {
-      const bonded_to_cards = (props.card && props.card.bonded_name) ?
-        results.cards.filtered(`(real_name == $0) and ${Card.tabooSetQuery(props.tabooSetId)}`, props.card.bonded_name) : undefined;
-      const bonded_from_cards = props.card &&
-        results.cards.filtered(`(bonded_name == $0) and ${Card.tabooSetQuery(props.tabooSetId)}`, props.card.real_name);
-      return {
-        bonded_to_cards,
-        bonded_from_cards,
-      };
-    },
-  })
-);
+)(BondedCardsComponent);
 
 const styles = StyleSheet.create({
   header: {
