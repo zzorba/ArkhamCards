@@ -634,7 +634,7 @@ export default class GuidedCampaignLog {
     campaignInvestigators: Card[],
     latestDecks: LatestDecks,
     campaignWeaknessSet: WeaknessSet,
-    weaknessCards: CardsMap,
+    cards: CardsMap,
     unsavedAssignments: string[]
   ): WeaknessSet {
     const assignedCards: Slots = {};
@@ -643,7 +643,8 @@ export default class GuidedCampaignLog {
       const deck = latestDecks[investigator.code];
       if (deck) {
         forEach(deck.slots, (count, code) => {
-          if (weaknessCards[code]) {
+          const card = cards[code];
+          if (card && card.isBasicWeakness()) {
             investigatorAssignedCards[code] = count;
           }
         });
@@ -651,7 +652,8 @@ export default class GuidedCampaignLog {
 
       const storyAssets = this.storyAssets(investigator.code);
       forEach(storyAssets, (count, code) => {
-        if (weaknessCards[code]) {
+        const card = cards[code];
+        if (card && card.isBasicWeakness()) {
           if ((investigatorAssignedCards[code] || 0) <= count) {
             investigatorAssignedCards[code] = count;
           }

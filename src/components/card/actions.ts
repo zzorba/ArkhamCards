@@ -1,4 +1,3 @@
-import Realm from 'realm';
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 
@@ -8,6 +7,7 @@ import {
   PACKS_FETCH_START,
   PACKS_FETCH_ERROR,
   PACKS_CACHE_HIT,
+  CARD_SET_SCHEMA_VERSION,
   CARD_FETCH_START,
   CARD_FETCH_SUCCESS,
   CARD_FETCH_ERROR,
@@ -22,9 +22,11 @@ import {
   Pack,
   CardCache,
   TabooCache,
+  CardSetSchemaVersionAction,
 } from 'actions/types';
 import { AppState } from 'reducers/index';
 import { syncCards, syncTaboos } from 'lib/publicApi';
+import Database from 'data/Database';
 
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
@@ -39,9 +41,9 @@ function taboosCache(state: AppState, lang: string): undefined | TabooCache {
 }
 
 export function fetchCards(
-  realm: Realm,
+  db: Database,
   lang: string
-): ThunkAction<void, AppState, null, CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
+): ThunkAction<void, AppState, null, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
     if (shouldFetchCards(getState())) {
       const previousLang = (getState().cards.lang || 'en');
@@ -49,13 +51,22 @@ export function fetchCards(
         changeLocale(lang);
       }
       dispatch({
+        type: CARD_SET_SCHEMA_VERSION,
+        schemaVersion: Database.SCHEMA_VERSION,
+      });
+      dispatch({
         type: CARD_FETCH_START,
       });
       const packs = await dispatch(fetchPacks(lang));
       try {
-        const cardCache = await syncCards(realm, packs, lang, cardsCache(getState(), lang));
+        const cardCache = await syncCards(db, packs, lang, cardsCache(getState(), lang));
         try {
-          const tabooCache = await syncTaboos(realm, lang, taboosCache(getState(), lang));
+          const tabooCache = await syncTaboos(
+            db,
+            lang,
+            taboosCache(getState(), lang)
+          );
+          db.reloadPlayerCards();
           dispatch({
             type: CARD_FETCH_SUCCESS,
             cache: cardCache || undefined,

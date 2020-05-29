@@ -1,29 +1,26 @@
 import React from 'react';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 import { pick } from 'lodash';
-import Realm, { Results } from 'realm';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { bindActionCreators, Dispatch, Action } from 'redux';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
 import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import deepDiff from 'deep-diff';
+import { Brackets } from 'typeorm/browser';
 import { t, ngettext, msgid } from 'ttag';
 
+import Database from 'data/Database';
+import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import Card from 'data/Card';
 import COLORS from 'styles/colors';
-import { filterToQuery, FilterState } from 'lib/filters';
+import FilterBuilder, { FilterState } from 'lib/filters';
 import { NavigationProps } from 'components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
+import { combineQueriesOpt } from 'data/query';
 
 export interface FilterProps {
   componentId: string;
-  cards: Results<Card>;
   filters: FilterState;
   defaultFilterState: FilterState;
   width: number;
@@ -33,25 +30,28 @@ export interface FilterProps {
   onFilterChange: (setting: string, value: any) => void;
 }
 
-export interface CardFilterProps {
+export interface FilterFunctionProps {
   filterId: string;
   tabooSetId?: number;
   modal?: boolean;
-  baseQuery?: string;
+  baseQuery?: Brackets;
+}
+
+interface Options {
+  title: string;
+  clearTraits?: string[];
 }
 
 export default function withFilterFunctions<P>(
   WrappedComponent: React.ComponentType<P & FilterProps>,
-  title: string,
-  clearTraits?: string[]
-): React.ComponentType<NavigationProps & CardFilterProps & P> {
-  interface RealmProps {
-    cards: Results<Card>;
-  }
-
+  {
+    title,
+    clearTraits,
+  }: Options
+): React.ComponentType<NavigationProps & FilterFunctionProps & P> {
   interface ReduxProps {
-    currentFilters: FilterState;
-    defaultFilterState: FilterState;
+    currentFilters?: FilterState;
+    defaultFilterState?: FilterState;
   }
 
   interface ReduxActionProps {
@@ -60,24 +60,34 @@ export default function withFilterFunctions<P>(
     clearFilters: (id: string, clearTraits?: string[]) => void;
   }
 
-  type Props = NavigationProps & DimensionsProps & CardFilterProps & RealmProps & ReduxProps & ReduxActionProps & P;
+  type Props = NavigationProps & DimensionsProps & FilterFunctionProps & ReduxProps & ReduxActionProps & P;
 
   class WrappedFilterComponent extends React.Component<Props> {
+    static contextType = DatabaseContext;
+    context!: DatabaseContextType;
     _navEventListener?: EventSubscription;
 
+    constructor(props: Props) {
+      super(props);
+
+      InteractionManager.runAfterInteractions(() => this.updateCount(this.context.db));
+    }
+
+    componentDidUpdate(prevProps: Props) {
+      if (
+        prevProps.currentFilters !== this.props.currentFilters ||
+        prevProps.baseQuery !== this.props.baseQuery
+      ) {
+        this.updateCount(this.context.db);
+      }
+    }
+
     componentDidMount() {
-      this._syncState();
       this._navEventListener = Navigation.events().bindComponent(this);
     }
 
     componentWillUnmount() {
       this._navEventListener && this._navEventListener.remove();
-    }
-
-    componentDidUpdate(prevProps: Props) {
-      if (prevProps.currentFilters !== this.props.currentFilters) {
-        this._syncState();
-      }
     }
 
     hasChanges() {
@@ -93,41 +103,6 @@ export default function withFilterFunctions<P>(
         deepDiff(currentFilters, defaultFilterState);
       return differences && differences.length;
     }
-
-    cardCount() {
-      const {
-        cards,
-        currentFilters,
-      } = this.props;
-      const query = filterToQuery(currentFilters).join(' and ');
-      if (query) {
-        return cards.filtered(query).length;
-      }
-      return cards.length;
-    }
-
-    _syncState = () => {
-      const count = this.cardCount();
-      Navigation.mergeOptions(this.props.componentId, {
-        topBar: {
-          rightButtons: this.hasChanges() ?
-            [{
-              text: t`Clear`,
-              id: 'clear',
-              color: COLORS.navButton,
-              testID: t`Clear`,
-            }] : [],
-          subtitle: {
-            text: ngettext(
-              msgid`${count} Card`,
-              `${count} Cards`,
-              count
-            ),
-            color: COLORS.navButton,
-          },
-        },
-      });
-    };
 
     navigationButtonPressed({ buttonId }: { buttonId: string }) {
       const {
@@ -149,7 +124,7 @@ export default function withFilterFunctions<P>(
         baseQuery,
         modal,
       } = this.props;
-      Navigation.push<CardFilterProps>(componentId, {
+      Navigation.push<FilterFunctionProps>(componentId, {
         component: {
           name: screenName,
           passProps: {
@@ -178,10 +153,53 @@ export default function withFilterFunctions<P>(
       updateFilter(filterId, key, selection);
     };
 
+    async updateCount(db: Database) {
+      const {
+        baseQuery,
+        componentId,
+        tabooSetId,
+        currentFilters,
+      } = this.props;
+      const filterParts: Brackets | undefined =
+        currentFilters && new FilterBuilder('filters').filterToQuery(currentFilters as FilterState);
+      const count = await db.getCardCount(
+        combineQueriesOpt(
+          [
+            ...(baseQuery ? [baseQuery as Brackets] : []),
+            ...(filterParts ? [filterParts] : []),
+          ],
+          'and'
+        ),
+        tabooSetId
+      );
+      Navigation.mergeOptions(componentId, {
+        topBar: {
+          rightButtons: this.hasChanges() ?
+            [{
+              text: t`Clear`,
+              id: 'clear',
+              color: COLORS.navButton,
+              testID: t`Clear`,
+            }] : [],
+          title: {
+            text: title,
+            color: COLORS.navButton,
+          },
+          subtitle: {
+            text: ngettext(
+              msgid`${count} Card`,
+              `${count} Cards`,
+              count
+            ),
+            color: COLORS.navButton,
+          },
+        },
+      });
+    }
+
     render() {
       const {
         componentId,
-        cards,
         /* eslint-disable @typescript-eslint/no-unused-vars */
         baseQuery,
         defaultFilterState,
@@ -194,16 +212,15 @@ export default function withFilterFunctions<P>(
         currentFilters,
         ...otherProps
       } = this.props;
-      if (!currentFilters) {
+      if (!defaultFilterState) {
         return null;
       }
       return (
         <View style={styles.wrapper}>
           <WrappedComponent
             componentId={componentId}
-            cards={cards}
-            filters={currentFilters}
-            defaultFilterState={defaultFilterState}
+            filters={(currentFilters || defaultFilterState) as FilterState}
+            defaultFilterState={defaultFilterState as FilterState}
             width={width}
             fontScale={fontScale}
             pushFilterView={this._pushFilterView}
@@ -218,7 +235,7 @@ export default function withFilterFunctions<P>(
 
   const mapStateToProps = (
     state: AppState,
-    props: NavigationProps & CardFilterProps & P
+    props: NavigationProps & FilterFunctionProps & P
   ): ReduxProps => {
     return {
       currentFilters: getFilterState(state, props.filterId),
@@ -236,31 +253,16 @@ export default function withFilterFunctions<P>(
     }, dispatch);
   };
 
-  const result = connect<ReduxProps, {}, NavigationProps & CardFilterProps & P, AppState>(
+  const result = connect<ReduxProps, ReduxActionProps, NavigationProps & FilterFunctionProps & P, AppState>(
     mapStateToProps,
     mapDispatchToProps,
   )(
-    // @ts-ignore TS2345
-    connectRealm<NavigationProps & CardFilterProps & P & ReduxProps & ReduxActionProps, RealmProps, Card>(
-      withDimensions(WrappedFilterComponent), {
-        schemas: ['Card'],
-        mapToProps(
-          results: CardResults<Card>,
-          realm: Realm,
-          props: NavigationProps & CardFilterProps & P & ReduxProps
-        ): RealmProps {
-          return {
-            cards: props.baseQuery ?
-              results.cards.filtered(`((${props.baseQuery}) and (${Card.tabooSetQuery(props.tabooSetId)}))`) :
-              results.cards.filtered(Card.tabooSetQuery(props.tabooSetId)),
-          };
-        },
-      })
+    // @ts-ignore
+    withDimensions(WrappedFilterComponent)
   );
-
   hoistNonReactStatic(result, WrappedComponent);
 
-  return result as React.ComponentType<NavigationProps & CardFilterProps & P>;
+  return result as React.ComponentType<NavigationProps & FilterFunctionProps & P>;
 }
 
 const styles = StyleSheet.create({

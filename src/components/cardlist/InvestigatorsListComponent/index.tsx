@@ -1,37 +1,31 @@
 import React from 'react';
-import { filter, forEach, sortBy, throttle } from 'lodash';
+import { filter, forEach, map, sortBy } from 'lodash';
 import {
-  Animated,
   Keyboard,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
   SectionList,
   SectionListData,
+  SectionListRenderItemInfo,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
+import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import BasicButton from 'components/core/BasicButton';
-import InvestigatorSearchBox from './InvestigatorSearchBox';
-import NewInvestigatorRow from './NewInvestigatorRow';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
-import Card, { CardsMap } from 'data/Card';
+import Card from 'data/Card';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { searchMatchesText } from 'components/core/searchHelpers';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from 'components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getTabooSet, getPacksInCollection, AppState } from 'reducers';
 import typography from 'styles/typography';
 import space from 'styles/space';
-
-const SCROLL_DISTANCE_BUFFER = 50;
 
 interface OwnProps {
   componentId: string;
@@ -49,21 +43,15 @@ interface ReduxProps {
   tabooSetId?: number;
 }
 
-interface RealmProps {
-  investigators: Card[];
-  cards: CardsMap;
-}
-
-type Props = OwnProps & ReduxProps & RealmProps & DimensionsProps;
+type Props = OwnProps & ReduxProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   showNonCollection: { [key: string]: boolean };
   headerVisible: boolean;
   searchTerm: string;
-  scrollY: Animated.Value;
 }
 
-interface Section {
+interface Section extends SectionListData<Card> {
   title: string;
   id: string;
   data: Card[];
@@ -71,11 +59,7 @@ interface Section {
 }
 
 class InvestigatorsListComponent extends React.Component<Props, State> {
-  lastOffsetY: number = 0;
-
   _navEventListener?: EventSubscription;
-  _throttledScroll!: (offset: number) => void;
-  _handleScroll!: (...args: any[]) => void;
 
   constructor(props: Props) {
     super(props);
@@ -84,62 +68,14 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       showNonCollection: {},
       headerVisible: true,
       searchTerm: '',
-      scrollY: new Animated.Value(0),
     };
 
-    this._throttledScroll = throttle(
-      this.throttledScroll.bind(this),
-      100,
-      { trailing: true },
-    );
-    this._handleScroll = Animated.event(
-      [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-      {
-        listener: this._onScroll,
-      },
-    );
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
   _handleScrollBeginDrag = () => {
     Keyboard.dismiss();
   };
-
-  _onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-    // Dispatch the throttle event to handle hiding/showing stuff on transition.
-    this._throttledScroll(offsetY);
-  };
-
-  /**
-   * This is the throttle scrollEvent, throttled so we check it slightly
-   * less often and are able to make decisions about whether we update
-   * the stored scrollY or not.
-   */
-  throttledScroll(offsetY: number) {
-    if (offsetY <= 0) {
-      this.showHeader();
-    } else {
-      const delta = Math.abs(offsetY - this.lastOffsetY);
-      if (delta < SCROLL_DISTANCE_BUFFER) {
-        // Not a long enough scroll, don't update scrollY and don't take any
-        // action at all.
-        return;
-      }
-
-      // We have a decent sized scroll so we will make a direction based
-      // show/hide decision UNLESS we are near the top/bottom of the content.
-      const scrollingUp = offsetY < this.lastOffsetY;
-
-      if (scrollingUp) {
-        this.showHeader();
-      } else {
-        this.hideHeader();
-      }
-    }
-
-    this.lastOffsetY = offsetY;
-  }
 
   _searchUpdated = (text: string) => {
     this.setState({
@@ -170,19 +106,44 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     });
   };
 
-  _renderItem = ({ item }: { item: Card }) => {
-    return this.props.hideDeckbuildingRules ? (
+  deckbuildingDetails(investigator: Card) {
+    const { cards, hideDeckbuildingRules } = this.props;
+    if (hideDeckbuildingRules || !investigator.deck_requirements) {
+      return null;
+    }
+    return (
+      <>
+        <Text style={typography.text}>
+          { t`${investigator.deck_requirements.size} Cards` }
+        </Text>
+        { map(investigator.deck_requirements.card, req => {
+          const card = req.code && cards[req.code];
+          if (!card) {
+            return (
+              <Text key={req.code} style={typography.small}>
+                { t`Unknown card: ${req.code}` }
+              </Text>
+            );
+          }
+          return (
+            <Text key={req.code} style={typography.small}>
+              { card.quantity }x { card.name }
+            </Text>
+          );
+        }) }
+      </>
+    );
+  }
+
+  _renderItem = ({ item }: SectionListRenderItemInfo<Card>) => {
+    const { hideDeckbuildingRules } = this.props;
+    return (
       <InvestigatorRow
         key={item.code}
         investigator={item}
         onPress={this._onPress}
-      />
-    ) : (
-      <NewInvestigatorRow
-        key={item.code}
-        cards={this.props.cards}
-        investigator={item}
-        onPress={this._onPress}
+        button={this.deckbuildingDetails(item)}
+        bigImage={!hideDeckbuildingRules}
       />
     );
   };
@@ -197,7 +158,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       case SORT_BY_TITLE:
         return t`All Investigators`;
       case SORT_BY_PACK:
-        return investigator.pack_name;
+        return investigator.pack_name || t`N/A`;
       default:
         return t`N/A`;
     }
@@ -221,6 +182,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       filter(
         investigators,
         i => {
+          if (i.altArtInvestigator || i.spoiler) {
+            return false;
+          }
           if (filterInvestigatorsSet.has(i.code)) {
             return false;
           }
@@ -293,11 +257,11 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     return results;
   }
 
-  _renderSectionHeader = ({ section }: { section: SectionListData<Section> }) => {
+  _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
     return <BasicSectionHeader title={section.title} />;
   };
 
-  _renderSectionFooter = ({ section }: { section: SectionListData<Section> }) => {
+  _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
     const { fontScale } = this.props;
     const {
       showNonCollection,
@@ -354,16 +318,6 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     }
   }
 
-  renderHeader() {
-    return (
-      <InvestigatorSearchBox
-        value={this.state.searchTerm}
-        visible={this.state.headerVisible}
-        onChangeText={this._searchUpdated}
-      />
-    );
-  }
-
   _renderFooter = () => {
     const {
       customFooter,
@@ -407,26 +361,34 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     const {
       sort,
     } = this.props;
+    const {
+      searchTerm,
+    } = this.state;
     return (
-      <View style={styles.wrapper}>
-        { this.renderHeader() }
-        <SectionList
-          onScroll={this._handleScroll}
-          onScrollBeginDrag={this._handleScrollBeginDrag}
-          sections={this.groupedInvestigators()}
-          renderSectionHeader={this._renderSectionHeader}
-          renderSectionFooter={this._renderSectionFooter}
-          ListHeaderComponent={this._renderCustomHeader}
-          ListFooterComponent={this._renderFooter}
-          renderItem={this._renderItem}
-          initialNumToRender={24}
-          keyExtractor={this._investigatorToCode}
-          stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
-          keyboardShouldPersistTaps="always"
-          keyboardDismissMode="on-drag"
-          scrollEventThrottle={1}
-        />
-      </View>
+      <CollapsibleSearchBox
+        prompt={t`Search`}
+        searchTerm={searchTerm}
+        onSearchChange={this._searchUpdated}
+      >
+        { onScroll => (
+          <SectionList
+            onScroll={onScroll}
+            onScrollBeginDrag={this._handleScrollBeginDrag}
+            sections={this.groupedInvestigators()}
+            renderSectionHeader={this._renderSectionHeader}
+            renderSectionFooter={this._renderSectionFooter}
+            ListHeaderComponent={this._renderCustomHeader}
+            ListFooterComponent={this._renderFooter}
+            renderItem={this._renderItem}
+            initialNumToRender={24}
+            keyExtractor={this._investigatorToCode}
+            stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
+            keyboardShouldPersistTaps="always"
+            keyboardDismissMode="on-drag"
+            scrollEventThrottle={1}
+          />
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
@@ -440,46 +402,13 @@ function mapStateToProps(state: AppState): ReduxProps {
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(
   mapStateToProps
-)(connectRealm<OwnProps & ReduxProps, RealmProps, Card>(
-  withDimensions(InvestigatorsListComponent),
-  {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      props: OwnProps & ReduxProps
-    ): RealmProps {
-      const investigators: Card[] = [];
-      const names: { [name: string]: boolean } = {};
-      forEach(
-        results.cards.filtered(
-          `(type_code == "investigator" AND encounter_code == null) and ${Card.tabooSetQuery(props.tabooSetId)}`)
-          .sorted('code', false),
-        card => {
-          if (!names[card.name]) {
-            names[card.name] = true;
-            investigators.push(card);
-          }
-        });
-
-      const cards: CardsMap = {};
-      forEach(
-        results.cards.filtered(`(has_restrictions == true OR code == "${RANDOM_BASIC_WEAKNESS}") and ${Card.tabooSetQuery(props.tabooSetId)}`),
-        card => {
-          cards[card.code] = card;
-        });
-      return {
-        investigators,
-        cards,
-      };
-    },
-  })
+)(
+  withPlayerCards<OwnProps & ReduxProps>(
+    withDimensions(InvestigatorsListComponent)
+  )
 );
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
   footer: {
     marginBottom: 60,
   },

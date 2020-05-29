@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react';
-import { forEach } from 'lodash';
+import { debounce, throttle } from 'throttle-debounce';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
@@ -13,24 +14,24 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import CardSearchBox from './CardSearchBox';
+import QueryProvider from 'components/data/QueryProvider';
+import CollapsibleSearchBox, { SEARCH_OPTIONS_HEIGHT } from 'components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
 import Switch from 'components/core/Switch';
-import { FilterState, filterToQuery } from 'lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY } from 'data/query';
+import FilterBuilder, { FilterState } from 'lib/filters';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from 'data/query';
 import Card from 'data/Card';
 import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import space, { isTablet, s, xs } from 'styles/space';
 
 interface Props {
   componentId: string;
   fontScale: number;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
   selectedSort?: SortType;
-  filters: FilterState;
+  filters?: FilterState;
   mythosMode?: boolean;
   visible: boolean;
   toggleMythosMode: () => void;
@@ -42,8 +43,11 @@ interface Props {
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
+  renderHeader?: () => React.ReactElement;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
+
+  initialSort?: SortType;
 }
 
 interface State {
@@ -52,9 +56,61 @@ interface State {
   searchFlavor: boolean;
   searchBack: boolean;
   searchTerm: string;
+
+  searchKey: string;
+  termQuery: Brackets | null;
 }
 
+type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
+type FilterQueryProps = Pick<Props, 'filters'>
 export default class CardSearchResultsComponent extends React.Component<Props, State> {
+  static filterBuilder = new FilterBuilder('filters');
+
+  static filterQuery({
+    filters,
+  }: FilterQueryProps): Brackets | undefined {
+    return filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
+  }
+
+  static query({
+    baseQuery,
+    mythosToggle,
+    selectedSort,
+    mythosMode,
+  }: QueryProps): Brackets {
+    const queryParts: Brackets[] = [];
+    if (mythosToggle) {
+      if (mythosMode) {
+        queryParts.push(MYTHOS_CARDS_QUERY);
+      } else {
+        queryParts.push(PLAYER_CARDS_QUERY);
+      }
+    }
+    if (baseQuery) {
+      queryParts.push(baseQuery);
+    }
+    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
+      queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
+    }
+    return combineQueries(
+      where('c.altArtInvestigator != true AND c.back_linked is null'),
+      queryParts,
+      'and'
+    );
+  }
+
+  _throttledUpdateSearch: (search: string) => void;
+  _debouncedUpdateSeacrh: (search: string) => void;
+
+  static searchKey(searchTerm: string, searchText: boolean, searchFlavor: boolean, searchBack: boolean) {
+    return JSON.stringify({
+      searchTerm,
+      searchText,
+      searchBack,
+      searchFlavor,
+    });
+  }
+
   constructor(props: Props) {
     super(props);
 
@@ -64,7 +120,12 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchFlavor: false,
       searchBack: false,
       searchTerm: '',
+      searchKey: CardSearchResultsComponent.searchKey('', false, false, false),
+      termQuery: null,
     };
+
+    this._throttledUpdateSearch = throttle(300, this._updateTermSearch);
+    this._debouncedUpdateSeacrh = debounce(300, this._updateTermSearch);
   }
 
   _showHeader = () => {
@@ -88,26 +149,36 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
   }
 
   _toggleSearchText = () => {
+    const searchText = !this.state.searchText;
     this.setState({
-      searchText: !this.state.searchText,
-    });
+      searchText,
+    }, () => this._updateTermSearch(this.state.searchTerm));
   };
 
   _toggleSearchFlavor = () => {
+    const searchFlavor = !this.state.searchFlavor;
     this.setState({
-      searchFlavor: !this.state.searchFlavor,
-    });
+      searchFlavor,
+    }, () => this._updateTermSearch(this.state.searchTerm));
   };
 
   _toggleSearchBack = () => {
+    const searchBack = !this.state.searchBack;
     this.setState({
-      searchBack: !this.state.searchBack,
-    });
+      searchBack,
+    }, () => this._updateTermSearch(this.state.searchTerm));
   };
 
   _searchUpdated = (text: string) => {
     this.setState({
       searchTerm: text,
+    }, () => {
+      const { searchTerm } = this.state;
+      if (searchTerm.length < 5) {
+        this._throttledUpdateSearch(this.state.searchTerm);
+      } else {
+        this._debouncedUpdateSeacrh(this.state.searchTerm);
+      }
     });
   };
 
@@ -115,118 +186,113 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     this._searchUpdated('');
   };
 
-  termQuery(): string | undefined {
+  _updateTermSearch = async(searchTerm: string) => {
     const {
-      searchTerm,
       searchText,
       searchFlavor,
       searchBack,
+      searchKey,
     } = this.state;
-
+    const newSearchKey = CardSearchResultsComponent.searchKey(
+      searchTerm,
+      searchText,
+      searchFlavor,
+      searchBack
+    );
+    if (searchKey === newSearchKey) {
+      return;
+    }
     if (searchTerm === '') {
-      return undefined;
+      this.setState({
+        termQuery: null,
+      });
+      return;
     }
     const parts = searchBack ? [
-      'name contains[c] $0',
-      'linked_card.name contains[c] $0',
-      'back_name contains[c] $0',
-      'linked_card.back_name contains[c] $0',
-      'subname contains[c] $0',
-      'linked_card.subname contains[c] $0',
+      'c.name LIKE :searchTerm',
+      'linked_card.name LIKE :searchTerm',
+      'c.back_name LIKE :searchTerm',
+      'linked_card.back_name LIKE :searchTerm',
+      'c.subname LIKE :searchTerm',
+      'linked_card.subname LIKE :searchTerm',
     ] : [
-      'renderName contains[c] $0',
-      'renderSubname contains[c] $0',
+      'c.renderName LIKE :searchTerm',
+      'c.renderSubname LIKE :searchTerm',
     ];
     if (searchText) {
-      parts.push('real_text contains[c] $0');
-      parts.push('linked_card.real_text contains[c] $0');
-      parts.push('traits contains[c] $0');
-      parts.push('linked_card.traits contains[c] $0');
+      parts.push('c.real_text LIKE :searchTerm');
+      parts.push('linked_card.real_text LIKE :searchTerm');
+      parts.push('c.traits LIKE :searchTerm');
+      parts.push('linked_card.traits LIKE :searchTerm');
       if (searchBack) {
-        parts.push('back_text contains[c] $0');
-        parts.push('linked_card.back_text contains[c] $0');
+        parts.push('c.back_text LIKE :searchTerm');
+        parts.push('linked_card.back_text LIKE :searchTerm');
       }
     }
 
     if (searchFlavor) {
-      parts.push('flavor contains[c] $0');
-      parts.push('linked_card.flavor contains[c] $0');
+      parts.push('c.flavor LIKE :searchTerm');
+      parts.push('linked_card.flavor LIKE :searchTerm');
       if (searchBack) {
-        parts.push('back_flavor contains[c] $0');
-        parts.push('linked_card.back_flavor contains[c] $0');
+        parts.push('c.back_flavor LIKE :searchTerm');
+        parts.push('linked_card.back_flavor LIKE :searchTerm');
       }
     }
-    return `(${parts.join(' or ')})`;
-  }
+    const lang = 'en';
+    this.setState({
+      searchKey: newSearchKey,
+      termQuery: where(
+        parts.join(' OR '),
+        {
+          searchTerm: `%${searchTerm
+            .replace(/[\u2018\u2019]/g, '\'')
+            .replace(/[\u201C\u201D]/g, '"')
+            .toLocaleUpperCase(lang)}%`,
+        },
+      ),
+    });
+  };
 
-  filterQueryParts() {
-    const {
-      filters,
-    } = this.props;
-    return filterToQuery(filters);
-  }
-
-  query() {
-    const {
-      baseQuery,
-      mythosToggle,
-      selectedSort,
-      mythosMode,
-    } = this.props;
-    const queryParts = [];
-    if (mythosToggle) {
-      if (mythosMode) {
-        queryParts.push(MYTHOS_CARDS_QUERY);
-      } else {
-        queryParts.push(PLAYER_CARDS_QUERY);
-      }
-    }
-    if (baseQuery) {
-      queryParts.push(baseQuery);
-    }
-    queryParts.push('(altArtInvestigator != true)');
-    queryParts.push('(back_linked != true)');
-    forEach(
-      this.filterQueryParts(),
-      clause => queryParts.push(clause));
-
-    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push(`(encounter_code != null OR linked_card.encounter_code != null)`);
-    }
-    return queryParts.join(' and ');
-  }
-
-
-  renderHeader() {
+  renderSearchOptions() {
     const {
       searchText,
       searchFlavor,
       searchBack,
-      searchTerm,
     } = this.state;
     return (
-      <CardSearchBox
-        value={searchTerm}
-        visible={this.state.headerVisible}
-        onChangeText={this._searchUpdated}
-        searchText={searchText}
-        searchFlavor={searchFlavor}
-        searchBack={searchBack}
-        toggleSearchText={this._toggleSearchText}
-        toggleSearchFlavor={this._toggleSearchFlavor}
-        toggleSearchBack={this._toggleSearchBack}
-      />
+      <View style={styles.textSearchOptions}>
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isTablet ? t`Game Text` : t`Game\nText` }
+        </Text>
+        <Switch
+          value={searchText}
+          onValueChange={this._toggleSearchText}
+        />
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isTablet ? t`Flavor Text` : t`Flavor\nText` }
+        </Text>
+        <Switch
+          value={searchFlavor}
+          onValueChange={this._toggleSearchFlavor}
+        />
+        <Text style={[typography.smallLabel, styles.searchOption]}>
+          { isTablet ? t`Card Backs` : t`Card\nBacks` }
+        </Text>
+        <Switch
+          value={searchBack}
+          onValueChange={this._toggleSearchBack}
+        />
+      </View>
     );
   }
 
-  renderExpandModesButtons() {
+  renderExpandModesButtons(hasFilters: boolean) {
     const {
       mythosToggle,
       toggleMythosMode,
       clearSearchFilters,
       mythosMode,
     } = this.props;
-    const hasFilters = this.filterQueryParts().length > 0;
     if (!mythosToggle && !hasFilters) {
       return null;
     }
@@ -248,14 +314,14 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     );
   }
 
-  renderExpandSearchButtons() {
+  renderExpandSearchButtons(hasFilters: boolean) {
     const {
       searchTerm,
       searchText,
       searchBack,
     } = this.state;
     if (!searchTerm) {
-      return this.renderExpandModesButtons();
+      return this.renderExpandModesButtons(hasFilters);
     }
     return (
       <View>
@@ -281,7 +347,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             <Switch value={false} onValueChange={this._toggleSearchBack} />
           </View>
         ) }
-        { this.renderExpandModesButtons() }
+        { this.renderExpandModesButtons(hasFilters) }
       </View>
     );
   }
@@ -293,6 +359,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       deckCardCounts,
       onDeckCountChange,
       limits,
+      renderHeader,
       renderFooter,
       showNonCollection,
       selectedSort,
@@ -301,59 +368,77 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       investigator,
       storyOnly,
       fontScale,
+      initialSort,
+      mythosToggle,
+      baseQuery,
+      mythosMode,
+      filters,
     } = this.props;
     const {
       searchTerm,
+      termQuery,
     } = this.state;
     return (
-      <View style={styles.wrapper}>
-        { this.renderHeader() }
-        <View style={styles.container}>
-          <CardResultList
-            componentId={componentId}
-            fontScale={fontScale}
-            tabooSetOverride={tabooSetOverride}
-            query={this.query()}
-            filterQuery={this.filterQueryParts().join(' and ')}
-            termQuery={this.termQuery()}
-            searchTerm={searchTerm}
-            sort={selectedSort}
-            investigator={investigator}
-            originalDeckSlots={originalDeckSlots}
-            deckCardCounts={deckCardCounts}
-            onDeckCountChange={onDeckCountChange}
-            limits={limits}
-            showHeader={this._showHeader}
-            hideHeader={this._hideHeader}
-            expandSearchControls={this.renderExpandSearchButtons()}
-            visible={visible}
-            renderFooter={renderFooter}
-            showNonCollection={showNonCollection}
-            storyOnly={storyOnly}
-          />
-        </View>
-        { !!renderFooter && <View style={[
-          styles.footer,
-        ]}>{ renderFooter() }</View> }
-      </View>
+      <CollapsibleSearchBox
+        prompt={t`Search for a card`}
+        advancedOptions={this.renderSearchOptions()}
+        searchTerm={searchTerm}
+        onSearchChange={this._searchUpdated}
+      >
+        { (handleScroll) => (
+          <QueryProvider<QueryProps, Brackets>
+            baseQuery={baseQuery}
+            mythosToggle={mythosToggle}
+            selectedSort={selectedSort}
+            mythosMode={mythosToggle && mythosMode}
+            getQuery={CardSearchResultsComponent.query}
+          >
+            { query => (
+              <QueryProvider<FilterQueryProps, Brackets | undefined>
+                filters={filters}
+                getQuery={CardSearchResultsComponent.filterQuery}
+              >
+                { filterQuery => (
+                  <>
+                    <CardResultList
+                      componentId={componentId}
+                      fontScale={fontScale}
+                      tabooSetOverride={tabooSetOverride}
+                      query={query}
+                      filterQuery={filterQuery || undefined}
+                      termQuery={termQuery || undefined}
+                      searchTerm={searchTerm}
+                      sort={selectedSort}
+                      investigator={investigator}
+                      originalDeckSlots={originalDeckSlots}
+                      deckCardCounts={deckCardCounts}
+                      onDeckCountChange={onDeckCountChange}
+                      limits={limits}
+                      handleScroll={handleScroll}
+                      expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
+                      visible={visible}
+                      renderHeader={renderHeader}
+                      renderFooter={renderFooter}
+                      showNonCollection={showNonCollection}
+                      storyOnly={storyOnly}
+                      mythosToggle={mythosToggle}
+                      initialSort={initialSort}
+                    />
+                    { !!renderFooter && <View style={styles.footer}>
+                      { renderFooter() }
+                    </View> }
+                  </>
+                ) }
+              </QueryProvider>
+            ) }
+          </QueryProvider>
+        ) }
+      </CollapsibleSearchBox>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    position: 'relative',
-    backgroundColor: COLORS.backgroundColor,
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.backgroundColor,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
-  },
   footer: {
     position: 'absolute',
     left: 0,
@@ -368,5 +453,17 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     minWidth: '60%',
+  },
+  textSearchOptions: {
+    paddingLeft: xs,
+    paddingRight: s,
+    paddingBottom: xs,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: SEARCH_OPTIONS_HEIGHT,
+  },
+  searchOption: {
+    marginLeft: s,
+    marginRight: xs,
   },
 });

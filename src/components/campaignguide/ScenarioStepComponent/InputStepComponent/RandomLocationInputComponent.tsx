@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import BasicButton from 'components/core/BasicButton';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
-import CardListWrapper from 'components/campaignguide/CardListWrapper';
+import CardListWrapper from 'components/card/CardListWrapper';
 import PickerStyleButton from 'components/core/PickerStyleButton';
 import Card from 'data/Card';
 import { RandomLocationInput } from 'data/scenario/types';
@@ -64,10 +64,9 @@ export default class RandomLocationInputComponent extends React.Component<Props,
           ],
         };
       }
+      const choice = Math.floor(Math.random() * input.cards.length);
       return {
-        choices: state.choices.length ? [] : [
-          Math.floor(Math.random() * input.cards.length),
-        ],
+        choices: state.choices.length ? [] : [choice],
       };
     });
   };
@@ -78,11 +77,9 @@ export default class RandomLocationInputComponent extends React.Component<Props,
     });
   };
 
-  _renderCards = (cards: Card[]) => {
+  _renderCards = (cards: Card[], choices: number[]) => {
     const { input, fontScale } = this.props;
-    const { choices } = this.state;
-
-    const selectedCards = flatMap(choices, idx => cards[idx]);
+    const selectedCards = flatMap(choices, idx => cards[idx] || []);
     if (!input.multiple) {
       return (
         <View style={styles.wrapper}>
@@ -134,13 +131,15 @@ export default class RandomLocationInputComponent extends React.Component<Props,
 
   render() {
     const { input } = this.props;
+    const { choices } = this.state;
     return (
       <View style={styles.container}>
         <CardListWrapper
-          cards={input.cards}
-          render={this._renderCards}
-          extraArg={undefined}
-        />
+          type="encounter"
+          codes={input.cards}
+        >
+          { (cards: Card[]) => this._renderCards(cards, choices) }
+        </CardListWrapper>
         <BasicButton
           title={t`Done`}
           onPress={this._done}

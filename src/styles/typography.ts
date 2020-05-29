@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, TextStyle } from 'react-native';
 
 import { isBig, m, s } from './space';
 import COLORS from './colors';
@@ -85,7 +85,7 @@ export default StyleSheet.create({
       fontSize: 16 * sizeScale,
       color: '#33383D',
     },
-  }),
+  }) as TextStyle,
   left: {
     textAlign: 'left',
   },

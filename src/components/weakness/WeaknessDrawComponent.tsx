@@ -15,7 +15,7 @@ import { t } from 'ttag';
 import { drawWeakness, availableWeaknesses } from 'lib/weaknessHelper';
 import { Slots, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
-import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import Button from 'components/core/Button';
 import ChooserButton from 'components/core/ChooserButton';
 import ToggleFilter from 'components/core/ToggleFilter';
@@ -39,7 +39,7 @@ interface OwnProps {
   customFlippedHeader?: ReactNode;
   saving?: boolean;
 }
-type Props = OwnProps & WeaknessCardProps & DimensionsProps;
+type Props = OwnProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   headerHeight: number;
@@ -197,11 +197,11 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   ) {
     const {
       weaknessSet,
-      cards,
+      weaknessCards,
     } = this.props;
     const card = drawWeakness(
       weaknessSet,
-      cards,
+      weaknessCards,
       {
         traits: selectedTraits,
         multiplayer,
@@ -222,14 +222,14 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   allTraits() {
     const {
       weaknessSet,
-      cards,
+      weaknessCards,
     } = this.props;
     const {
       selectedTraits,
     } = this.state;
     const traitsMap: { [trait: string]: number } = {};
     forEach(
-      availableWeaknesses(weaknessSet, cards),
+      availableWeaknesses(weaknessSet, weaknessCards),
       card => {
         if (card.traits) {
           forEach(
@@ -427,7 +427,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   }
 }
 
-export default withWeaknessCards(
+export default withPlayerCards(
   withDimensions(WeaknessDrawComponent)
 );
 

@@ -11,7 +11,7 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from 'actions/types';
-import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from '../constants';
+import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from 'constants';
 import Card from 'data/Card';
 import DeckOption from 'data/DeckOption';
 
@@ -208,7 +208,7 @@ export default class DeckValidation {
         atleast: {},
       });
     }
-    if (this.investigator) {
+    if (this.investigator && this.investigator.deck_options) {
       for (var i = 0; i < this.investigator.deck_options.length; i++){
         this.deck_options_counts.push({
           limit: 0,
@@ -286,9 +286,9 @@ export default class DeckValidation {
     }
 
     // reject cards restricted
-    if (card.restrictions &&
-        card.restrictions.investigators &&
-        !find(card.restrictions.investigators, code => code === investigator.code || code === investigator.alternate_of_code)) {
+    if (card.restrictions_all_investigators &&
+        card.restrictions_all_investigators &&
+        !find(card.restrictions_all_investigators, code => code === investigator.code || code === investigator.alternate_of_code)) {
       return undefined;
     }
 
@@ -298,7 +298,7 @@ export default class DeckValidation {
       for (let i = 0; i < deck_options.length; i++) {
         const finalOption = (i === deck_options.length - 1);
         var option = deck_options[i];
-        if (option.deckSizeOnly()) {
+        if (DeckOption.deckSizeOnly(option)) {
           continue;
         }
         if (option.faction && option.faction.length){
@@ -403,7 +403,7 @@ export default class DeckValidation {
 
         if (option.level){
           var level_valid = false;
-          if (card.xp !== null && option.level){
+          if (card.xp !== undefined && option.level){
             if (card.xp >= option.level.min && card.xp <= option.level.max){
               level_valid = true;
             } else {

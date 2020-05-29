@@ -6,19 +6,18 @@ import {
   View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
-import Realm from 'realm';
 import { connect } from 'react-redux';
-import { connectRealm, CardResults } from 'react-native-realm';
 import { Navigation } from 'react-native-navigation';
-
 import { t } from 'ttag';
+
 import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from 'actions/types';
-import Card from 'data/Card';
+import connectDb from 'components/data/connectDb';
 import { updateCampaign } from '../actions';
 import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';
 import LabeledTextBox from 'components/core/LabeledTextBox';
 import Switch from 'components/core/Switch';
 import { ShowTextEditDialog } from 'components/core/withDialogs';
+import Database from 'data/Database';
 import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
@@ -44,11 +43,11 @@ interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
 }
 
-interface RealmProps {
+interface Data {
   allScenarios: Scenario[];
 }
 
-type Props = OwnProps & ReduxProps & ReduxActionProps & RealmProps;
+type Props = OwnProps & ReduxProps & ReduxActionProps & Data;
 
 interface State {
   selectedScenario: typeof CUSTOM | Scenario;
@@ -248,50 +247,62 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
+interface DbProps {
+  scenarioResults: ScenarioResult[];
+  finishedScenarios: string[];
+  cyclePacks: Pack[];
+  standalonePacks: Pack[];
+  cycleScenarios: Scenario[];
+}
+
 export default connect(mapStateToPropsFix, mapDispatchToProps)(
-  connectRealm<OwnProps & ReduxProps & ReduxActionProps, RealmProps, Card>(
-    ScenarioSection, {
-      schemas: ['Card'],
-      mapToProps(
-        results: CardResults<Card>,
-        realm: Realm,
-        props: OwnProps & ReduxProps & ReduxActionProps
-      ): RealmProps {
-        const hasCompletedScenario = completedScenario(props.campaign.scenarioResults);
-        const finishedScenarios = new Set(props.campaign.finishedScenarios);
-        const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
-        const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
+  connectDb<OwnProps & ReduxProps & ReduxActionProps, Data, DbProps>(
+    ScenarioSection,
+    (props: OwnProps & ReduxProps & ReduxActionProps) => {
+      return {
+        scenarioResults: props.campaign.scenarioResults,
+        finishedScenarios: props.campaign.finishedScenarios,
+        cyclePacks: props.cyclePacks,
+        standalonePacks: props.standalonePacks,
+        cycleScenarios: props.cycleScenarios,
+      };
+    },
+    async(db: Database, props) => {
+      const hasCompletedScenario = completedScenario(props.scenarioResults);
+      const finishedScenarios = new Set(props.finishedScenarios);
+      const cyclePackCodes = new Set(map(props.cyclePacks, pack => pack.code));
+      const standalonePackCodes = new Set(map(props.standalonePacks, pack => pack.code));
+      const allScenarioCards = await (await db.cardsQuery())
+        .where('c.type_code = "scenario"')
+        .orderBy('c.position', 'ASC')
+        .getMany();
 
-        const allScenarioCards = results.cards
-          .filtered(`(type_code == "scenario") and ${Card.tabooSetQuery(props.tabooSetId)}`)
-          .sorted('position');
-
-        const cycleScenarios: Scenario[] = [];
-        const standaloneScenarios: Scenario[] = [];
-        forEach(allScenarioCards, card => {
-          if (cyclePackCodes.has(card.pack_code)) {
-            const scenario = scenarioFromCard(card);
-            if (scenario) {
-              cycleScenarios.push(scenario);
-            }
+      const cycleScenarios: Scenario[] = [];
+      const standaloneScenarios: Scenario[] = [];
+      forEach(allScenarioCards, card => {
+        if (cyclePackCodes.has(card.pack_code)) {
+          const scenario = scenarioFromCard(card);
+          if (scenario) {
+            cycleScenarios.push(scenario);
           }
-          if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.name)) {
-            const scenario = scenarioFromCard(card);
-            if (scenario) {
-              standaloneScenarios.push(scenario);
-            }
+        }
+        if (standalonePackCodes.has(card.pack_code) && !finishedScenarios.has(card.name)) {
+          const scenario = scenarioFromCard(card);
+          if (scenario) {
+            standaloneScenarios.push(scenario);
           }
-        });
-        return {
-          allScenarios: concat(
-            filter(
-              props.cycleScenarios || cycleScenarios,
-              scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
-            standaloneScenarios
-          ),
-        };
-      },
-    }),
+        }
+      });
+      return {
+        allScenarios: concat(
+          filter(
+            props.cycleScenarios || cycleScenarios,
+            scenario => !finishedScenarios.has(scenario.name) && !hasCompletedScenario(scenario)),
+          standaloneScenarios
+        ),
+      };
+    }
+  )
 );
 
 const styles = StyleSheet.create({

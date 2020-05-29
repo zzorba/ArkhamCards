@@ -3,17 +3,19 @@ import { filter, groupBy, map } from 'lodash';
 import {
   SectionList,
   SectionListData,
+  SectionListRenderItemInfo,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import PackRow from './PackRow';
 
-interface PackCycle {
+interface PackCycle extends SectionListData<Pack> {
   title: string;
   id: string;
   data: Pack[];
@@ -30,7 +32,7 @@ interface Props {
   renderHeader?: () => React.ReactElement;
   renderFooter?: () => React.ReactElement;
   whiteBackground?: boolean;
-  baseQuery?: string;
+  baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;
 }
@@ -58,7 +60,7 @@ export default class PackListComponent extends React.Component<Props> {
     }
   }
 
-  _renderItem = ({ item }: { item: Pack }) => {
+  renderPack(pack: Pack) {
     const {
       packs,
       checkState,
@@ -69,28 +71,32 @@ export default class PackListComponent extends React.Component<Props> {
       compact,
       coreSetName,
     } = this.props;
-    const cyclePacks: Pack[] = item.position === 1 ? filter(packs, pack => {
-      return (pack.cycle_position === item.cycle_position &&
-        pack.id !== item.id);
+    const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, p => {
+      return (pack.cycle_position === p.cycle_position &&
+        pack.id !== p.id);
     }) : [];
     return (
       <PackRow
-        key={item.id}
+        key={pack.id}
         componentId={this.props.componentId}
-        pack={item}
-        nameOverride={item.code === 'core' ? coreSetName : undefined}
+        pack={pack}
+        nameOverride={pack.code === 'core' ? coreSetName : undefined}
         cycle={cyclePacks}
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}
-        checked={checkState && checkState[item.code]}
+        checked={checkState && checkState[pack.code]}
         whiteBackground={whiteBackground}
         baseQuery={baseQuery}
         compact={compact}
       />
     );
+  }
+
+  _renderItem = ({ item }: SectionListRenderItemInfo<Pack>) => {
+    return this.renderPack(item);
   };
 
-  _renderSectionHeader = ({ section }: { section: SectionListData<PackCycle> }) => {
+  _renderSectionHeader = ({ section }: { section: SectionListData<Pack> }) => {
     const { fontScale } = this.props;
     return (
       <CardSectionHeader
@@ -119,7 +125,7 @@ export default class PackListComponent extends React.Component<Props> {
       return (
         <View style={styles.container}>
           { !!renderHeader && renderHeader() }
-          { map(packs, item => this._renderItem({ item })) }
+          { map(packs, item => this.renderPack(item)) }
           { !!renderFooter && renderFooter() }
         </View>
       );

@@ -24,6 +24,7 @@ import space, { isBig, xs, s } from 'styles/space';
 import AppIcon from 'icons/AppIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import EncounterIcon from 'icons/EncounterIcon';
+import CardTabooTextBlock from 'components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
 import CardTextComponent from 'components/card/CardTextComponent';
 import { CardFaqProps } from 'components/card/CardFaqView';
@@ -31,7 +32,7 @@ import { CardTabooProps } from 'components/card/CardTabooView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
 import Button from 'components/core/Button';
 import CardCostIcon from 'components/core/CardCostIcon';
-import BaseCard from 'data/BaseCard';
+import Card from 'data/Card';
 import COLORS from 'styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
@@ -44,7 +45,6 @@ const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color="#000000" />
 );
 const ICON_SIZE = isBig ? 44 : 28;
-const SMALL_ICON_SIZE = isBig ? 26 : 16;
 const SKILL_ICON_SIZE = isBig ? 26 : 16;
 
 const SKILL_FIELDS = [
@@ -55,8 +55,8 @@ const SKILL_FIELDS = [
   'skill_wild',
 ];
 
-function num(value: number | null) {
-  if (value === null) {
+function num(value: number | null | undefined) {
+  if (value === null || value === undefined) {
     return '-';
   }
   if (value < 0) {
@@ -67,7 +67,7 @@ function num(value: number | null) {
 
 interface Props {
   componentId?: string;
-  card: BaseCard;
+  card: Card;
   linked?: boolean;
   notFirst?: boolean;
   simple?: boolean;
@@ -186,7 +186,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     });
   };
 
-  renderType(card: BaseCard) {
+  renderType(card: Card) {
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -203,7 +203,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderMetadata(card: BaseCard) {
+  renderMetadata(card: Card) {
     const { fontScale } = this.props;
     return (
       <View style={styles.metadataBlock}>
@@ -231,7 +231,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderTestIcons(card: BaseCard) {
+  renderTestIcons(card: Card) {
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -262,7 +262,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderSlot(card: BaseCard) {
+  renderSlot(card: Card) {
     if (!card.slot) {
       return null;
     }
@@ -276,7 +276,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
 
-  renderPlaydata(card: BaseCard) {
+  renderPlaydata(card: Card) {
     if (card.type_code === 'scenario') {
       return null;
     }
@@ -319,7 +319,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderHealthAndSanity(card: BaseCard) {
+  renderHealthAndSanity(card: Card) {
     if (card.type_code === 'enemy') {
       return (
         <Text style={typography.cardText}>
@@ -334,7 +334,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return null;
   }
 
-  renderFactionIcon(card: BaseCard) {
+  renderFactionIcon(card: Card) {
     const color = (
       card.type_code === 'asset' ||
       card.type_code === 'event' ||
@@ -412,9 +412,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTitleContent(
-    card: BaseCard,
+    card: Card,
     name: string,
-    subname: string | null,
+    subname?: string,
     factionColor?: string
   ) {
     const { fontScale } = this.props;
@@ -456,9 +456,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTitle(
-    card: BaseCard,
+    card: Card,
     name: string,
-    subname: string | null,
+    subname?: string,
   ) {
     const factionColor = card.faction2_code ? FACTION_BACKGROUND_COLORS.dual :
       (card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code]);
@@ -472,7 +472,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  backSource(card: BaseCard, isHorizontal: boolean) {
+  backSource(card: Card, isHorizontal: boolean) {
     if (card.double_sided) {
       if (isHorizontal) {
         if (card.type_code === 'act') {
@@ -495,7 +495,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardBack(
-    card: BaseCard,
+    card: Card,
     backFirst: boolean,
     isHorizontal: boolean,
     flavorFirst: boolean,
@@ -544,7 +544,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             FACTION_BACKGROUND_COLORS.dual :
             ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
         }]}>
-          { this.renderTitle(card, card.back_name || card.name, null) }
+          { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
@@ -610,7 +610,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderCardFooter(card: BaseCard) {
+  renderCardFooter(card: Card) {
     const { componentId, fontScale } = this.props;
     return (
       <React.Fragment>
@@ -638,14 +638,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
                       <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
-                      { ` ${card.cycle_name} #${card.position % 1000}.` }
+                      { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
                   ) }
                 </>
               ) : (
                 <Text style={typography.cardText}>
                   <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
-                  { ` ${card.pack_name} #${card.position % 1000}.` }
+                  { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>
               ) }
             </View>
@@ -667,7 +667,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-  renderImage(card: BaseCard) {
+  renderImage(card: Card) {
     if (card.type_code === 'story' || card.type_code === 'scenario') {
       return null;
     }
@@ -684,7 +684,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardText(
-    card: BaseCard,
+    card: Card,
     backFirst: boolean,
     isHorizontal: boolean,
     flavorFirst: boolean
@@ -714,36 +714,13 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { !simple && !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
-        { !!(card.taboo_set_id && card.taboo_set_id > 0) && !card.taboo_placeholder && (
-          <View style={[styles.gameTextBlock, {
-            borderColor: 'purple',
-          }]}>
-            <View style={styles.tabooRow}>
-              <View style={styles.tabooIcon}>
-                <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color="purple" />
-              </View>
-              <Text style={typography.cardText}>
-                { t`Taboo List Changes` }
-              </Text>
-            </View>
-            { !!card.extra_xp && (
-              <Text style={typography.cardText}>
-                { card.extra_xp > 0 ?
-                  t`Additional XP: ${card.extra_xp}.` :
-                  t`XP Discount: ${card.extra_xp}.` }
-              </Text>
-            ) }
-            { !!card.taboo_text_change && (
-              <CardTextComponent text={card.taboo_text_change} />
-            ) }
-          </View>
-        ) }
+        <CardTabooTextBlock card={card} fontScale={fontScale} />
       </React.Fragment>
     );
   }
 
   renderCardFront(
-    card: BaseCard,
+    card: Card,
     backFirst: boolean,
     isHorizontal: boolean,
     flavorFirst: boolean,
@@ -976,12 +953,5 @@ const styles = StyleSheet.create({
     marginLeft: 2,
   },
   factionIcon: {
-  },
-  tabooRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  tabooIcon: {
-    marginRight: xs,
   },
 });

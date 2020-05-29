@@ -4,11 +4,12 @@ import {
   View,
 } from 'react-native';
 import { flatMap, forEach, map } from 'lodash';
-import { connectRealm, EncounterSetResults } from 'react-native-realm';
 import { msgid, ngettext } from 'ttag';
 
 import { stringList } from 'lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
+import connectDb from 'components/data/connectDb';
+import Database from 'data/Database';
 import { EncounterSetsStep } from 'data/scenario/types';
 import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
@@ -19,11 +20,11 @@ interface OwnProps {
   step: EncounterSetsStep;
 }
 
-interface RealmProps {
+interface Data {
   encounterSets: EncounterSet[];
 }
 
-type Props = OwnProps & RealmProps;
+type Props = OwnProps & Data;
 
 class EncounterSetStepComponent extends React.Component<Props> {
 
@@ -70,34 +71,23 @@ class EncounterSetStepComponent extends React.Component<Props> {
   }
 }
 
-export default connectRealm<OwnProps, RealmProps, EncounterSet>(
+export default connectDb<OwnProps, Data, string[]>(
   EncounterSetStepComponent,
-  {
-    schemas: ['EncounterSet'],
-    mapToProps(
-      results: EncounterSetResults<EncounterSet>,
-      realm: Realm,
-      props: OwnProps
-    ) {
-      const { step } = props;
-      const setsByCode: { [code: string]: EncounterSet } = {};
-      forEach(
-        results.encounterSets.filtered(
-          map(step.encounter_sets, code => `(code == "${code}")`).join(' OR ')),
-        set => {
-          setsByCode[set.code] = set;
-        }
-      );
-
-      const encounterSets = flatMap(
-        step.encounter_sets,
-        code => setsByCode[code]
-      );
-
-      return {
-        encounterSets,
-      };
-    },
+  (props: OwnProps) => props.step.encounter_sets,
+  async(db: Database, encounter_sets: string[]) => {
+    const qb = await db.encounterSets();
+    const allEncounterSets = await qb.createQueryBuilder().whereInIds(encounter_sets).getMany();
+    const setsByCode: { [code: string]: EncounterSet } = {};
+    forEach(allEncounterSets, encounterSet => {
+      setsByCode[encounterSet.code] = encounterSet;
+    });
+    const encounterSets = flatMap(
+      encounter_sets,
+      code => setsByCode[code]
+    );
+    return {
+      encounterSets,
+    };
   }
 );
 

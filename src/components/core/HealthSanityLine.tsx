@@ -15,8 +15,8 @@ interface Props {
   fontScale: number;
 }
 
-function num(value: number | null) {
-  if (value === null) {
+function num(value: number | null | undefined) {
+  if (value === null || value === undefined) {
     return '-';
   }
   if (value < 0) {

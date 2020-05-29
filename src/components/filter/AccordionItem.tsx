@@ -47,6 +47,7 @@ export default class AccordionItem extends React.Component<Props, State> {
           toValue: enabled ? 1 : 0,
           duration: 250,
           easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
+          useNativeDriver: false,
         }).start();
       });
     }

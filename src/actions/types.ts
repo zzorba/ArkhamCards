@@ -1,5 +1,5 @@
 import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from 'constants';
-import { FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from 'lib/filters';
 import Card from 'data/Card';
 
 export const SORT_BY_TYPE = 'type';
@@ -393,6 +393,13 @@ export interface PacksCacheHitAction {
   type: typeof PACKS_CACHE_HIT;
   timestamp: Date;
 }
+
+export const CARD_SET_SCHEMA_VERSION = 'CARD_SET_SCHEMA_VERSION';
+export interface CardSetSchemaVersionAction {
+  type: typeof CARD_SET_SCHEMA_VERSION;
+  schemaVersion: number;
+}
+
 export const CARD_FETCH_START = 'CARD_FETCH_START';
 export interface CardFetchStartAction {
   type: typeof CARD_FETCH_START;
@@ -644,6 +651,7 @@ export interface AddFilterSetAction {
   filters: FilterState;
   sort?: SortType;
   mythosToggle?: boolean;
+  cardData: CardFilterData;
 }
 
 export const SYNC_FILTER_SET = 'SYNC_FILTER_SET';

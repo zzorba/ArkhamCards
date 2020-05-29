@@ -242,9 +242,9 @@ function statusToString(
   switch (status) {
     case 'alive': return t`Alive`;
     case 'resigned': return t`Resigned`;
-    case 'physical': return t`Eliminated by damage`;
-    case 'mental': return t`Eliminated by horror`;
-    case 'eliminated': return t`Eliminated by scenario`;
+    case 'physical': return t`Defeated: physical trauma`;
+    case 'mental': return t`Defeated: mental trauma`;
+    case 'eliminated': return t`Defeated: no trauma`;
   }
 }
 

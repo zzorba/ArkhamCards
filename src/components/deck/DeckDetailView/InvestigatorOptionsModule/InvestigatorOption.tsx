@@ -45,7 +45,7 @@ export default class InvestigatorOption extends React.Component<Props> {
       ) ? meta.faction_selected : undefined;
       return (
         <FactionSelectPicker
-          name={option.name() || t`Select Faction`}
+          name={DeckOption.optionName(option) || t`Select Faction`}
           factions={option.faction_select}
           onChange={this._onChange}
           selection={selection}
@@ -62,7 +62,7 @@ export default class InvestigatorOption extends React.Component<Props> {
       ) ? meta.deck_size_selected : undefined;
       return (
         <DeckSizeSelectPicker
-          name={option.name() || t`Select Deck Size`}
+          name={DeckOption.optionName(option) || t`Select Deck Size`}
           sizes={option.deck_size_select}
           onChange={this._onChange}
           selection={selection}

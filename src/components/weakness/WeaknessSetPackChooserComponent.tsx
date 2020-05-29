@@ -6,7 +6,7 @@ import PackListComponent from 'components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from 'data/query';
 import { AppState } from 'reducers';
 import { Pack } from 'actions/types';
-import withWeaknessCards, { WeaknessCardProps } from './withWeaknessCards';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 
 interface OwnProps {
   componentId: string;
@@ -20,7 +20,7 @@ interface ReduxProps {
   packs?: Pack[];
 }
 
-type Props = OwnProps & ReduxProps & WeaknessCardProps;
+type Props = OwnProps & ReduxProps & PlayerCardProps;
 
 interface State {
   override: { [pack_code: string]: boolean };
@@ -66,12 +66,12 @@ class WeaknessSetPackChooserComponent extends React.Component<Props, State> {
 
   weaknessPacks() {
     const {
-      cards,
+      weaknessCards,
       packs,
     } = this.props;
     const weaknessPackSet = new Set(
       uniqBy(
-        map(cards, card => card.pack_code),
+        map(weaknessCards, card => card.pack_code),
         code => code
       ));
     return filter(packs, pack => weaknessPackSet.has(pack.code));
@@ -93,7 +93,7 @@ class WeaknessSetPackChooserComponent extends React.Component<Props, State> {
         componentId={componentId}
         packs={weaknessPacks}
         fontScale={fontScale}
-        checkState={Object.assign({}, in_collection, override)}
+        checkState={{ ...in_collection, ...override }}
         setChecked={this._onPackCheck}
         baseQuery={BASIC_WEAKNESS_QUERY}
         compact={compact}
@@ -113,5 +113,5 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(
-  withWeaknessCards(WeaknessSetPackChooserComponent)
+  withPlayerCards(WeaknessSetPackChooserComponent)
 );

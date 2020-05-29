@@ -1,16 +1,16 @@
 import React from 'react';
-import Realm from 'realm';
-import { forEach, head } from 'lodash';
-import { connectRealm, CardResults } from 'react-native-realm';
+import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from 'actions/types';
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from 'constants';
-import CardSearchComponent from '../cardlist/CardSearchComponent';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import CardSearchComponent from 'components/cardlist/CardSearchComponent';
+import QueryProvider from 'components/data/QueryProvider';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from 'lib/InvestigatorRequirements';
-import { filterToQuery, defaultFilterState } from 'lib/filters';
-import { STORY_CARDS_QUERY, PLAYER_CARDS_QUERY } from 'data/query';
-import Card, { CardsMap } from 'data/Card';
+import FilterBuilder, { defaultFilterState } from 'lib/filters';
+import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from 'data/query';
+import Card from 'data/Card';
 import { parseDeck } from 'lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
 import { NavigationProps } from 'components/nav/types';
@@ -27,17 +27,19 @@ export interface EditDeckProps {
   updateSlots: (slots: Slots) => void;
 }
 
-interface RealmProps {
-  realm: Realm;
-  investigator?: Card;
-  cards: CardsMap;
-}
-
-type Props = NavigationProps & EditDeckProps & RealmProps & DimensionsProps;
+type Props = NavigationProps & EditDeckProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   deckCardCounts: Slots;
   slots: Slots;
+}
+
+interface QueryProps {
+  meta: DeckMeta;
+  storyOnly?: boolean;
+  versatile: boolean;
+  onYourOwn: boolean;
+  investigator: Card;
 }
 
 class DeckEditView extends React.Component<Props, State> {
@@ -48,6 +50,16 @@ class DeckEditView extends React.Component<Props, State> {
       deckCardCounts: props.slots || {},
       slots: props.slots,
     };
+  }
+
+  investigator(): Card | undefined {
+    const {
+      deck,
+      meta,
+      investigators,
+    } = this.props;
+    const investigator_code = meta?.alternate_back || deck?.investigator_code;
+    return investigator_code ? investigators[investigator_code] : undefined;
   }
 
   _syncDeckCardCounts = () => {
@@ -116,37 +128,49 @@ class DeckEditView extends React.Component<Props, State> {
     );
   }
 
-  baseQuery() {
-    const {
-      meta,
-      investigator,
-      storyOnly,
-    } = this.props;
-    const {
-      deckCardCounts,
-    } = this.state;
+  static baseQuery({
+    meta,
+    storyOnly,
+    versatile,
+    onYourOwn,
+    investigator,
+  }: QueryProps): Brackets {
     if (storyOnly) {
-      return `((${STORY_CARDS_QUERY}) and (subtype_code != 'basicweakness'))`;
+      return combineQueries(
+        STORY_CARDS_QUERY,
+        [where(`c.subtype_code != 'basicweakness'`)],
+        'and'
+      );
     }
-    const parts = investigator ? [
-      `(${queryForInvestigator(investigator, meta)})`,
-    ] : [];
-    parts.push(`(${STORY_CARDS_QUERY})`);
-    if (deckCardCounts[VERSATILE_CODE] > 0) {
-      const versatileQuery = filterToQuery({
+    const investigatorPart = queryForInvestigator(investigator, meta);
+    const parts: Brackets[] = [
+      ...(investigatorPart ? [investigatorPart] : []),
+    ];
+    if (versatile) {
+      const versatileQuery = new FilterBuilder('versatile').filterToQuery({
         ...defaultFilterState,
         factions: ['guardian', 'seeker', 'rogue', 'mystic', 'survivor'],
         level: [0, 0],
         levelEnabled: true,
-      }).join(' and ');
-      const invertedClause = investigator ?
-        negativeQueryForInvestigator(investigator, meta) : '';
-      parts.push(`(${invertedClause}${versatileQuery})`);
+      });
+      if (versatileQuery) {
+        const invertedClause = negativeQueryForInvestigator(investigator, meta);
+        if (invertedClause) {
+          parts.push(
+            new Brackets(qb => qb.where(invertedClause).andWhere(versatileQuery))
+          );
+        } else {
+          parts.push(versatileQuery);
+        }
+      }
     }
-    const joinedQuery = `(${parts.join(' or ')})`;
-    if (deckCardCounts[ON_YOUR_OWN_CODE] > 0) {
-      const onYourOwnQuery = `(slot != 'Ally')`;
-      return `(${onYourOwnQuery} and ${joinedQuery})`;
+    const joinedQuery = combineQueries(
+      STORY_CARDS_QUERY,
+      parts,
+      'or'
+    );
+    if (onYourOwn) {
+      return combineQueries(joinedQuery, [ON_YOUR_OWN_RESTRICTION], 'and');
     }
     return joinedQuery;
   }
@@ -157,53 +181,43 @@ class DeckEditView extends React.Component<Props, State> {
       tabooSetId,
       deck,
       storyOnly,
-      investigator,
+      meta,
     } = this.props;
-
     const {
       deckCardCounts,
     } = this.state;
+    const investigator = this.investigator();
+    if (!investigator) {
+      return null;
+    }
     return (
-      <CardSearchComponent
-        componentId={componentId}
-        tabooSetOverride={tabooSetId}
-        baseQuery={this.baseQuery()}
-        originalDeckSlots={deck.slots}
-        investigator={investigator}
-        deckCardCounts={deckCardCounts}
-        onDeckCountChange={this._onDeckCountChange}
-        renderFooter={this._renderFooter}
+      <QueryProvider<QueryProps, Brackets>
+        meta={meta}
         storyOnly={storyOnly}
-        modal
-      />
+        investigator={investigator}
+        versatile={deckCardCounts[VERSATILE_CODE] > 0}
+        onYourOwn={deckCardCounts[ON_YOUR_OWN_CODE] > 0}
+        getQuery={DeckEditView.baseQuery}
+      >
+        { query => (
+          <CardSearchComponent
+            componentId={componentId}
+            tabooSetOverride={tabooSetId}
+            baseQuery={query}
+            originalDeckSlots={deck.slots}
+            investigator={investigator}
+            deckCardCounts={deckCardCounts}
+            onDeckCountChange={this._onDeckCountChange}
+            renderFooter={this._renderFooter}
+            storyOnly={storyOnly}
+            modal
+          />
+        ) }
+      </QueryProvider>
     );
   }
 }
 
-export default connectRealm<NavigationProps & EditDeckProps, RealmProps, Card>(
-  withDimensions(DeckEditView),
-  {
-    schemas: ['Card'],
-    mapToProps(
-      results: CardResults<Card>,
-      realm: Realm,
-      { meta, deck, tabooSetId }: NavigationProps & EditDeckProps
-    ) {
-      const cards: CardsMap = {};
-      forEach(
-        results.cards.filtered(`(${PLAYER_CARDS_QUERY} and ${Card.tabooSetQuery(tabooSetId)})`),
-        card => {
-          cards[card.code] = card;
-        });
-
-      const investigator_code = meta.alternate_back || deck.investigator_code;
-      return {
-        realm,
-        investigator: head(results.cards.filtered(
-          `(code == '${investigator_code}') and ${Card.tabooSetQuery(tabooSetId)}`
-        )),
-        cards,
-      };
-    },
-  },
+export default withPlayerCards<NavigationProps & EditDeckProps>(
+  withDimensions(DeckEditView)
 );
