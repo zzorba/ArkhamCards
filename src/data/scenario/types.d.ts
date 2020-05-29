@@ -689,6 +689,7 @@ export interface StoryStep {
 export interface LocationSetupStep {
   id: string;
   type: "location_setup";
+  svg?: string;
   text: string;
   title?: string;
   note?: string;

@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 import PinchZoomView from 'react-native-pinch-zoom-view';
 
+import LocationDiagram from 'data/scenario/LocationDiagram';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { NavigationProps } from 'components/nav/types';
@@ -143,6 +144,7 @@ class LocationSetupView extends React.Component<Props> {
     const height = TOP_PADDING * 2 + cardHeight * (locations.length / (vertical === 'half' ? 2 : 1)) + GUTTER_SIZE;
     return (
       <PinchZoomView style={{ width: 500 }}>
+        <LocationDiagram scenario="the_gathering" />
         { !!note && (
           <View style={{ width: width }}>
             <SetupStepWrapper bulletType="none">

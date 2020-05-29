@@ -36,6 +36,7 @@
 		65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9C247EE0B500286F16 /* pl.po.json */; };
 		65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9D247EE0B500286F16 /* uk.po.json */; };
 		65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8DBA3247EEBC100286F16 /* Bridge.swift */; };
+		65F8DBA72480855C00286F16 /* AHLCGSYMBOL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DBA62480855C00286F16 /* AHLCGSYMBOL.ttf */; };
 		FC04436060C69ED43DE55DAE /* libPods-ArkhamCards-ArkhamCardsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 184A961D85085A21CA4AAC7A /* libPods-ArkhamCards-ArkhamCardsTests.a */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		65F8DB9C247EE0B500286F16 /* pl.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pl.po.json; path = ../assets/i18n/pl.po.json; sourceTree = "<group>"; };
 		65F8DB9D247EE0B500286F16 /* uk.po.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = uk.po.json; path = ../assets/i18n/uk.po.json; sourceTree = "<group>"; };
 		65F8DBA3247EEBC100286F16 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		65F8DBA62480855C00286F16 /* AHLCGSYMBOL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AHLCGSYMBOL.ttf; path = ../assets/AHLCGSYMBOL.ttf; sourceTree = "<group>"; };
 		715668562027058C00376EED /* Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsTests/Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
 		AF212649A356FC508AC5DF85 /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65F8DBA62480855C00286F16 /* AHLCGSYMBOL.ttf */,
 				65F8DB9B247EE0B500286F16 /* ko.po.json */,
 				65F8DB9C247EE0B500286F16 /* pl.po.json */,
 				65F8DB9D247EE0B500286F16 /* uk.po.json */,
@@ -333,6 +336,7 @@
 			files = (
 				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				65F8DBA72480855C00286F16 /* AHLCGSYMBOL.ttf in Resources */,
 				652EB73C226BAF8400F6D790 /* en.po.json in Resources */,
 				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
