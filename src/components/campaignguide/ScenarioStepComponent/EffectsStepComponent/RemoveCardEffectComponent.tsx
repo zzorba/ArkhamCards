@@ -28,7 +28,11 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
     return map(investigators, (investigator, idx) => (
       <SetupStepWrapper bulletType="small" key={idx}>
         <CampaignGuideTextComponent
-          text={`${investigator.name} earns ${card.name}`}
+          text={
+            card.advanced ?
+              t`${investigator.name} removes ${card.name} (Advanced)` :
+              t`${investigator.name} removes ${card.name}`
+          }
         />
       </SetupStepWrapper>
     ));
@@ -72,6 +76,7 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
       <InvestigatorSelectorWrapper
         id={id}
         investigator={effect.investigator}
+        fixedInvestigator={effect.fixed_investigator}
         render={this._renderInvestigators}
         description={t`Who will remove ${card.name} from their deck?`}
         extraArg={card}

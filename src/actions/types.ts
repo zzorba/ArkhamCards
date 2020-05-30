@@ -162,6 +162,8 @@ export interface TraumaAndCardData extends Trauma {
   spentXp?: number;
   storyAssets?: string[];
   ignoreStoryAssets?: string[];
+  addedCards?: string[];
+  removedCards?: string[];
 }
 
 export interface InvestigatorData {

@@ -143,25 +143,6 @@ function getOperand(
   }
 }
 
-function performOp(
-  opA: number,
-  opB: number,
-  operation: 'compare' | 'sum'
-): number {
-  switch (operation) {
-    case 'compare':
-      if (opA < opB) {
-        return -1;
-      }
-      if (opA === opB) {
-        return 0;
-      }
-      return 1;
-    case 'sum':
-      return opA + opB;
-  }
-}
-
 export function checkSuppliesConditionResult(
   condition: CheckSuppliesCondition,
   campaignLog: GuidedCampaignLog
@@ -586,12 +567,31 @@ export function conditionResult(
       }
       const opA = getOperand(condition.opA, campaignLog);
       const opB = getOperand(condition.opB, campaignLog);
-      const value = performOp(opA, opB, condition.operation);
-      return numberConditionResult(
-        value,
-        condition.options,
-        condition.operation === 'sum' ? condition.defaultOption : undefined
-      );
+      switch (condition.operation) {
+        case 'sum':
+          return numberConditionResult(
+            opA + opB,
+            condition.options,
+            condition.defaultOption
+          );
+        case 'compare': {
+          const value = opA - opB;
+          const choice = find(condition.options, option => {
+            if (value < 0) {
+              return option.numCondition === -1;
+            }
+            if (value === 0) {
+              return option.numCondition === 0;
+            }
+            return option.numCondition === 1;
+          });
+          return {
+            type: 'number',
+            number: value,
+            option: choice,
+          };
+        }
+      }
     }
     case 'campaign_data': {
       return campaignDataConditionResult(condition, campaignLog);
