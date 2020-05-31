@@ -22178,11 +22178,14 @@
       "type": "location_setup",
       "text": "Location Placement",
       "horizontal": "normal",
-      "vertical": "normal",
+      "vertical": "half",
       "locations": [
-        ["blank", "83012_back", "blank", "blank"],
-        ["83009_back", "83008_back", "83011_back", "83037_back"],
-        ["blank", "83010_back", "blank", "blank"]
+        ["02050_back", "blank", "02056_back", "blank"],
+        ["blank", "02048_back", "blank", "blank"],
+        ["02049_back", "blank", "02053_back", "02054_back"],
+        ["blank", "02051_back", "blank", "blank"],
+        ["blank", "blank", "blank", "blank"],
+        ["blank", "02052_back", "blank", "blank"]
       ]
     },
     {
