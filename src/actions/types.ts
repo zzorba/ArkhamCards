@@ -282,7 +282,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
 ];
 
-export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
+export const GUIDED_CAMPAIGNS = new Set([
   CORE,
   DWL,
   PTC,
@@ -291,13 +291,10 @@ export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   RTNOTZ,
   RTDWL,
   RTPTC,
-];
-
-export const COMING_SOON_GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   TDE,
   TDEA,
   TDEB,
-];
+]);
 
 export interface CustomCampaignLog {
   sections?: string[];

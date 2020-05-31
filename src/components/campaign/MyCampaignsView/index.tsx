@@ -1,7 +1,6 @@
 import React from 'react';
 import { filter, throttle } from 'lodash';
 import {
-  Alert,
   StyleSheet,
   Text,
   View,
@@ -13,7 +12,6 @@ import { t } from 'ttag';
 import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
 import BasicButton from 'components/core/BasicButton';
 import { CUSTOM, Campaign, DecksMap } from 'actions/types';
-import { NewCampaignProps } from 'components/campaign/NewCampaignView';
 import CampaignList from './CampaignList';
 import { campaignNames } from 'components/campaign/constants';
 import { searchMatchesText } from 'components/core/searchHelpers';
@@ -84,49 +82,21 @@ class MyCampaignsView extends React.Component<Props, State> {
     const {
       componentId,
     } = this.props;
-    const options = {
-      topBar: {
-        title: {
-          text: t`New Campaign`,
-        },
-        backButton: {
-          title: t`Cancel`,
+    Navigation.push<{}>(componentId, {
+      component: {
+        name: 'Campaign.New',
+        options: {
+          topBar: {
+            title: {
+              text: t`New Campaign`,
+            },
+            backButton: {
+              title: t`Cancel`,
+            },
+          },
         },
       },
-    };
-    Alert.alert(
-      t`New Campaign`,
-      t`Introducing: Guided Campaigns!\n\nThe app can now walk you through setup + resolution of each scenario while keeping track of the Campaign Log, story assets, and trauma automatically.\n\nNote that while there was a lot of testing, you might still encounter a bug or an incorrect setup/resolution instruction at times. If you encounter any problems, please reach out to arkhamcards@gmail.com.`,
-      [{
-        text: t`Guided Campaign`,
-        onPress: () => {
-          Navigation.push<NewCampaignProps>(componentId, {
-            component: {
-              name: 'Campaign.New',
-              passProps: {
-                guided: true,
-              },
-              options,
-            },
-          });
-        },
-      }, {
-        text: t`Manual Campaign`,
-        onPress: () => {
-          Navigation.push<NewCampaignProps>(componentId, {
-            component: {
-              name: 'Campaign.New',
-              passProps: {
-                guided: false,
-              },
-              options,
-            },
-          });
-        },
-      }, {
-        text: t`Cancel`,
-      }]
-    );
+    });
   }
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {

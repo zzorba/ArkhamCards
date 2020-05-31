@@ -1,22 +1,17 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { SelectCampagaignProps } from '../SelectCampaignDialog';
-import LabeledTextBox from 'components/core/LabeledTextBox';
+import PickerStyleButton from 'components/core/PickerStyleButton';
 import { CUSTOM, CORE, CampaignCycleCode } from 'actions/types';
-import { s } from 'styles/space';
 
 interface Props {
   componentId: string;
-  guided: boolean;
   campaignChanged: (
     cycleCode: CampaignCycleCode,
-    campaignName: string
+    campaignName: string,
+    hasGuide: boolean
   ) => void;
 }
 
@@ -24,12 +19,14 @@ interface State {
   selectedCampaign: string;
   selectedCampaignCode: CampaignCycleCode;
   customCampaign?: string;
+  hasGuide: boolean;
 }
 export default class CampaignSelector extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
     this.state = {
+      hasGuide: true,
       selectedCampaign: t`The Night of the Zealot`,
       selectedCampaignCode: CORE,
     };
@@ -44,33 +41,34 @@ export default class CampaignSelector extends React.Component<Props, State> {
       selectedCampaign,
       selectedCampaignCode,
       customCampaign,
+      hasGuide,
     } = this.state;
     this.props.campaignChanged(
       selectedCampaignCode,
       selectedCampaignCode === CUSTOM ?
         (customCampaign || 'Custom Campaign') :
         selectedCampaign,
+      hasGuide
     );
   };
 
-  _campaignChanged = (code: CampaignCycleCode, text: string) => {
+  _campaignChanged = (code: CampaignCycleCode, text: string, hasGuide: boolean) => {
     this.setState({
       selectedCampaign: text,
       selectedCampaignCode: code,
+      hasGuide,
     }, this._updateManagedCampaign);
   };
 
   _campaignPressed = () => {
     const {
       componentId,
-      guided,
     } = this.props;
     Navigation.push<SelectCampagaignProps>(componentId, {
       component: {
         name: 'Dialog.Campaign',
         passProps: {
           campaignChanged: this._campaignChanged,
-          guided,
         },
         options: {
           topBar: {
@@ -89,22 +87,13 @@ export default class CampaignSelector extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <View>
-        <LabeledTextBox
-          column
-          label={t`Campaign`}
-          onPress={this._campaignPressed}
-          value={selectedCampaign}
-          style={styles.margin}
-        />
-      </View>
+      <PickerStyleButton
+        title={t`Campaign`}
+        value={selectedCampaign}
+        id="campaign"
+        onPress={this._campaignPressed}
+        widget="nav"
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  margin: {
-    marginLeft: s,
-    marginRight: s,
-  },
-});

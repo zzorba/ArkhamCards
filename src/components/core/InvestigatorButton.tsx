@@ -7,7 +7,7 @@ import { FACTION_LIGHT_GRADIENTS } from 'constants';
 interface Props {
   investigator: Card;
   value: string;
-  widget?: React.ReactNode;
+  widget?: 'shuffle' | 'nav';
   disabled?: boolean;
   onPress: (code: string) => void;
 }
