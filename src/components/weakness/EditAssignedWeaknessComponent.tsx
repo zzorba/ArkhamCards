@@ -54,13 +54,13 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
   render() {
     const {
       weaknessSet,
-      cards,
+      weaknessCards,
       fontScale,
     } = this.props;
     const packCodes = new Set(weaknessSet.packCodes);
     return (
       <ScrollView>
-        { flatMap(cards, card => {
+        { flatMap(weaknessCards, card => {
           if (!packCodes.has(card.pack_code)) {
             return null;
           }
