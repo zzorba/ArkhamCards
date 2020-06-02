@@ -48,7 +48,7 @@ export default class ScenarioResultRow extends React.Component<Props> {
     const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
     const scenarioName = scenarioCard ? scenarioCard.name : scenarioResult.scenario;
     const content = (
-      <Text style={typography.gameFont}>
+      <Text style={typography.mediumGameFont}>
         { `${scenarioName}${resolution}` }
       </Text>
     );

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
   },
   bottomBorder: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
   indentedContainer: {

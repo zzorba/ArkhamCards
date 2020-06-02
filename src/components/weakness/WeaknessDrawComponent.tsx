@@ -16,7 +16,7 @@ import { drawWeakness, availableWeaknesses } from 'lib/weaknessHelper';
 import { Slots, WeaknessSet } from 'actions/types';
 import Card from 'data/Card';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import Button from 'components/core/Button';
+import BasicButton from 'components/core/BasicButton';
 import ChooserButton from 'components/core/ChooserButton';
 import ToggleFilter from 'components/core/ToggleFilter';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -296,9 +296,10 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
           onLayout={this._onFlippedHeaderLayout}
           style={[styles.buttonWrapper, { minHeight: flippedHeaderHeight }]}
         >
-          <Button
-            text={buttonText}
-            onPress={this._drawAnother} />
+          <BasicButton
+            title={buttonText}
+            onPress={this._drawAnother}
+          />
           { customFlippedHeader }
         </View>
       );

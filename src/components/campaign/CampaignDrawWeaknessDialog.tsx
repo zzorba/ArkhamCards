@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { Campaign, Deck, DecksMap, Slots, WeaknessSet } from 'actions/types';
 import { updateCampaign } from './actions';
 import { NavigationProps } from 'components/nav/types';
-import Button from 'components/core/Button';
+import BasicButton from 'components/core/BasicButton';
 import NavButton from 'components/core/NavButton';
 import ToggleFilter from 'components/core/ToggleFilter';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
@@ -23,7 +23,7 @@ import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog'
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
-import space, { xs } from 'styles/space';
+import { xs } from 'styles/space';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: number;
@@ -320,13 +320,10 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       t`Save to ${investigator.name}’s Deck` :
       t`Save to Deck`;
     return (
-      <View style={space.marginTopS}>
-        <Button
-          color="green"
-          onPress={this._saveDrawnCard}
-          text={buttonText}
-        />
-      </View>
+      <BasicButton
+        onPress={this._saveDrawnCard}
+        title={buttonText}
+      />
     );
   }
 

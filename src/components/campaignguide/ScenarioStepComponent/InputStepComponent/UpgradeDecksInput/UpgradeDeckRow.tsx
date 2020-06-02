@@ -603,8 +603,9 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         investigator={investigator}
         yithian={isYithian}
         button={this.deckButton(choices)}
-        detail={this.renderDetails(choices)}
-      />
+      >
+        { this.renderDetails(choices) }
+      </InvestigatorRow>
     );
   }
 }

@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { Deck } from 'actions/types';
-import NavButton from 'components/core/NavButton';
+import PickerStyleButton from 'components/core/PickerStyleButton';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import { showDeckModal } from 'components/nav/helper';
 import Card, { CardsMap } from 'data/Card';
@@ -16,6 +17,7 @@ interface OwnProps {
   cards: CardsMap;
   investigator: Card;
   fontScale: number;
+  showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
 }
 
 interface ReduxProps {
@@ -25,6 +27,17 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class DeckXpSection extends React.Component<Props> {
+  _showDeckUpgrade = () => {
+    const {
+      investigator,
+      deck,
+      showDeckUpgrade,
+    } = this.props;
+    if (deck && showDeckUpgrade) {
+      showDeckUpgrade(investigator, deck);
+    }
+  };
+
   _onPress = () => {
     const { componentId, deck, investigator } = this.props;
     showDeckModal(
@@ -37,8 +50,8 @@ class DeckXpSection extends React.Component<Props> {
   };
 
   render() {
-    const { deck, investigator, previousDeck, fontScale, cards } = this.props;
-    if (!previousDeck) {
+    const { deck, investigator, previousDeck, fontScale, cards, showDeckUpgrade } = this.props;
+    if (!previousDeck && !showDeckUpgrade) {
       return null;
     }
     const parsedDeck = parseBasicDeck(
@@ -50,11 +63,10 @@ class DeckXpSection extends React.Component<Props> {
       return null;
     }
     const { changes } = parsedDeck;
-    if (!changes) {
+    if (!changes && !showDeckUpgrade) {
       return null;
     }
     const availableXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
-    const xpLine = `${changes.spentXp} of ${availableXp} spent`;
     return (
       <>
         <CardSectionHeader
@@ -62,11 +74,21 @@ class DeckXpSection extends React.Component<Props> {
           investigator={investigator}
           section={{ superTitle: t`Experience points` }}
         />
-        <NavButton
-          fontScale={fontScale}
-          text={xpLine}
-          onPress={this._onPress}
-        />
+        { !!changes && (
+          <PickerStyleButton
+            id="xp"
+            title={`${changes.spentXp} of ${availableXp} spent`}
+            onPress={this._onPress}
+            widget="nav"
+            settingsStyle
+          />
+        ) }
+        { !!showDeckUpgrade && (
+          <BasicButton
+            title={t`Upgrade Deck`}
+            onPress={this._showDeckUpgrade}
+          />
+        ) }
       </>
     );
   }

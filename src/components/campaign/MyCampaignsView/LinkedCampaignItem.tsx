@@ -1,18 +1,16 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import LinearGradient from 'react-native-linear-gradient';
 
 import { Campaign, CUSTOM } from 'actions/types';
 import { CardsMap } from 'data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { getCampaign, AppState } from 'reducers';
-import typography from 'styles/typography';
 import { s } from 'styles/space';
 
 interface OwnProps {
@@ -46,18 +44,11 @@ class LinkedCampaignItem extends React.Component<Props> {
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <LinearGradient
-          colors={['#fbfaf6', '#ebe6d4']}
-          style={styles.container}
-        >
-          { campaign.cycleCode !== CUSTOM && (
-            <Text style={[typography.text, styles.bottomMargin]}>
-              { campaign.name }
-            </Text>
-          ) }
+        <View style={styles.container}>
           <CampaignSummaryComponent
             campaign={campaign}
             hideScenario
+            name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
           />
           { !!campaignA && !!campaignB && (
             <CampaignInvestigatorRow
@@ -65,7 +56,7 @@ class LinkedCampaignItem extends React.Component<Props> {
               investigators={investigators}
             />
           ) }
-        </LinearGradient>
+        </View>
       </TouchableOpacity>
     );
   }
@@ -93,8 +84,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',
-  },
-  bottomMargin: {
-    marginBottom: s,
   },
 });

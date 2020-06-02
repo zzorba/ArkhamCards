@@ -14,18 +14,17 @@ import CardSectionHeader from 'components/core/CardSectionHeader';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from 'constants';
 import Card, { CardsMap } from 'data/Card';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import typography from 'styles/typography';
-import space from 'styles/space';
 import COLORS from 'styles/colors';
+import PickerStyleButton from 'components/core/PickerStyleButton';
 
 interface Props {
   componentId: string;
   campaignId: number;
-  campaignLog: GuidedCampaignLog;
   investigator: Card;
   spentXp: number;
+  totalXp: number;
   incSpentXp: (code: string) => void;
   decSpentXp: (code: string) => void;
   traumaAndCardData: TraumaAndCardData;
@@ -34,6 +33,9 @@ interface Props {
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: Deck;
   removeInvestigator?: (investigator: Card) => void;
+  // For legacy system
+  showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
+  showTraumaDialog?: (investigator: Card, traumaData: TraumaAndCardData) => void;
 }
 
 export default class InvestigatorCampaignRow extends React.Component<Props> {
@@ -73,8 +75,9 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       componentId,
       deck,
       playerCards,
-      campaignLog,
       spentXp,
+      totalXp,
+      showDeckUpgrade,
     } = this.props;
     if (deck) {
       return (
@@ -84,11 +87,11 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
           cards={playerCards}
           investigator={investigator}
           fontScale={fontScale}
+          showDeckUpgrade={showDeckUpgrade}
         />
       );
     }
-    const xp = campaignLog.totalXp(investigator.code);
-    if (xp === 0) {
+    if (totalXp === 0) {
       return null;
     }
     return (
@@ -100,11 +103,11 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         />
         <BasicListRow>
           <Text style={typography.text}>
-            { t`${spentXp} of ${xp} spent` }
+            { t`${spentXp} of ${totalXp} spent` }
           </Text>
           <PlusMinusButtons
             count={spentXp}
-            max={xp}
+            max={totalXp}
             onIncrement={this._incXp}
             onDecrement={this._decXp}
           />
@@ -113,17 +116,25 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     );
   }
 
+  _showTraumaDialog = () => {
+    const { traumaAndCardData, investigator, showTraumaDialog } = this.props;
+    if (showTraumaDialog) {
+      showTraumaDialog(investigator, traumaAndCardData);
+    }
+  };
+
   renderTrauma() {
-    const { traumaAndCardData, investigator } = this.props;
+    const { traumaAndCardData, investigator, showTraumaDialog } = this.props;
     return (
-      <View style={[
-        space.paddingS,
-        space.paddingLeftM,
-      ]}>
-        <Text style={typography.text}>
-          { investigator.traumaString(traumaAndCardData) }
-        </Text>
-      </View>
+      <PickerStyleButton
+        id="trauma"
+        onPress={this._showTraumaDialog}
+        disabled={!showTraumaDialog}
+        title={investigator.traumaString(traumaAndCardData)}
+        widget="nav"
+        noBorder
+        settingsStyle
+      />
     );
   }
 
@@ -219,27 +230,41 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     chooseDeckForInvestigator && chooseDeckForInvestigator(investigator);
   };
 
-  renderButton() {
+  renderButton(eliminated: boolean) {
     const {
       deck,
       chooseDeckForInvestigator,
+      showTraumaDialog,
     } = this.props;
+    const traumaNode = (!!showTraumaDialog && eliminated) && (
+      <Button
+        title={t`Edit Trauma`}
+        onPress={this._showTraumaDialog}
+      />
+    );
+
     if (deck) {
       return (
-        <Button
-          title={t`View Deck`}
-          onPress={this._viewDeck}
-        />
+        <>
+          <Button
+            title={t`View Deck`}
+            onPress={this._viewDeck}
+          />
+          { traumaNode }
+        </>
       );
     }
     if (!chooseDeckForInvestigator) {
-      return <View />;
+      return traumaNode || <View />;
     }
     return (
-      <Button
-        title={t`Select Deck`}
-        onPress={this._selectDeck}
-      />
+      <>
+        <Button
+          title={t`Select Deck`}
+          onPress={this._selectDeck}
+        />
+        { traumaNode }
+      </>
     );
   }
 
@@ -253,11 +278,12 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       <InvestigatorRow
         investigator={investigator}
         description={eliminated ? investigator.traumaString(traumaAndCardData) : undefined}
-        button={this.renderButton()}
+        button={this.renderButton(eliminated)}
         eliminated={eliminated}
-        detail={eliminated ? undefined : this.renderDetail()}
         yithian={!!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN)}
-      />
+      >
+        { eliminated ? undefined : this.renderDetail() }
+      </InvestigatorRow>
     );
   }
 }

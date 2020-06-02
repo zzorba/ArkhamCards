@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import { Campaign, InvestigatorData } from 'actions/types';
 import BasicButton from 'components/core/BasicButton';
-import InvestigatorCampaignRow from './InvestigatorCampaignRow';
+import InvestigatorCampaignRow from 'components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from 'data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import Card from 'data/Card';
@@ -222,11 +222,11 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                   campaignId={campaignId}
                   playerCards={playerCards}
                   spentXp={spentXp[investigator.code] || 0}
+                  totalXp={campaignLog.totalXp(investigator.code)}
                   incSpentXp={this._incXp}
                   decSpentXp={this._decXp}
                   deck={latestDecks[investigator.code]}
                   componentId={componentId}
-                  campaignLog={campaignLog}
                   fontScale={fontScale}
                   investigator={investigator}
                   traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
@@ -260,10 +260,10 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                     key={investigator.code}
                     playerCards={playerCards}
                     spentXp={spentXp[investigator.code] || 0}
+                    totalXp={campaignLog.totalXp(investigator.code)}
                     incSpentXp={this._incXp}
                     decSpentXp={this._decXp}
                     campaignId={campaignId}
-                    campaignLog={campaignLog}
                     deck={latestDecks[investigator.code]}
                     componentId={componentId}
                     fontScale={fontScale}

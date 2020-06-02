@@ -532,6 +532,15 @@ export interface UpdateCampaignAction {
   campaign: Partial<Campaign>;
   now: Date;
 }
+
+export const UPDATE_CAMPAIGN_SPENT_XP = 'UPDATE_CAMPAIGN_SPENT_XP';
+export interface UpdateCampaignSpentXpAction {
+  type: typeof UPDATE_CAMPAIGN_SPENT_XP;
+  id: number;
+  investigator: string;
+  operation: 'inc' | 'dec';
+}
+
 export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
 export interface UpdateChaosBagResultsAction {
   type: typeof UPDATE_CHAOS_BAG_RESULTS;
@@ -842,6 +851,7 @@ export type CampaignActions =
   NewCampaignAction |
   NewLinkedCampaignAction |
   UpdateCampaignAction |
+  UpdateCampaignSpentXpAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |

@@ -1,18 +1,10 @@
 import React, { ReactNode } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import { showDeckModal } from 'components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
 import { Deck } from 'actions/types';
-import AppIcon from 'icons/AppIcon';
 import Card, { CardsMap } from 'data/Card';
 import { fetchPrivateDeck } from 'components/deck/actions';
 import { getDeck, AppState } from 'reducers';
@@ -128,39 +120,6 @@ class DeckRow extends React.Component<Props> {
     );
   }
 
-  titleButton() {
-    const {
-      deckRemoved,
-      viewDeckButton,
-    } = this.props;
-    if (deckRemoved) {
-      return (
-        <View style={styles.row}>
-          <TouchableOpacity onPress={this._onRemove}>
-            <MaterialCommunityIcons
-              name="close"
-              size={32}
-              color="#FFFFFF"
-            />
-          </TouchableOpacity>
-        </View>
-      );
-    }
-
-    if (!viewDeckButton) {
-      return (
-        <TouchableOpacity onPress={this._onDeckPress}>
-          <AppIcon
-            name="deck"
-            size={28}
-            color="#FFFFFF"
-          />
-        </TouchableOpacity>
-      );
-    }
-    return null;
-  }
-
   render() {
     const {
       theDeck,
@@ -190,7 +149,6 @@ class DeckRow extends React.Component<Props> {
         cards={cards}
         onPress={this._onDeckPress}
         investigator={investigator}
-        titleButton={this.titleButton()}
         details={this.renderDetails()}
         subDetails={this.renderSubDetails()}
         compact={compact}
@@ -222,10 +180,3 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(DeckRow);
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
