@@ -120,4 +120,7 @@ export default StyleSheet.create({
   darkGray: {
     color: COLORS.darkGray,
   },
+  uppercase: {
+    textTransform: 'uppercase',
+  },
 });

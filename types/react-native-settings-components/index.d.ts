@@ -115,7 +115,7 @@ declare module 'react-native-settings-components' {
     descriptionProps?: TextProps;
     descriptionStyle?: TextStyle;
     description?: string;
-    valueProps?: ViewProps;
+    valueProps?: TextProps;
     valueStyle?: TextStyle;
     value?: T;
     valuePlaceholder?: string;

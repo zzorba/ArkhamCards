@@ -584,6 +584,7 @@ export default class GuidedCampaignLog {
       case 'any':
       case 'any_resigned':
       case 'choice':
+      case '$fixed_investigator':
         // These are rewritten in ScenarioStep
         throw new Error('should not happen');
     }
@@ -692,16 +693,35 @@ export default class GuidedCampaignLog {
     return this.storyAssetSlots(this.campaignData.investigatorData[code] || {});
   }
 
+  private nonStoryCardSlots(data: TraumaAndCardData): Slots {
+    const slots: Slots = {};
+    const addedCards: string[] = data.addedCards || [];
+    forEach(addedCards, card => {
+      slots[card] = (slots[card] || 0) + 1;
+    });
+    const removeCards: string[] = data.removedCards || [];
+    forEach(removeCards, card => {
+      slots[card] = (slots[card] || 0) - 1;
+    });
+    return slots;
+  }
+
+  private nonStoryCards(code: string): Slots {
+    return this.nonStoryCardSlots(this.campaignData.investigatorData[code] || {});
+  }
+
   storyAssetChanges(code: string): Slots {
     const currentSlots = this.storyAssets(code);
     const previousSlots = this.storyAssetSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
+    const currentNonStorySlots = this.nonStoryCards(code);
+    const previousNonStorySlots = this.nonStoryCardSlots(this.campaignData.lastSavedInvestigatorData[code] || {});
 
     const slotDelta: Slots = {};
     forEach(
-      uniq([...keys(currentSlots), ...keys(previousSlots)]),
+      uniq([...keys(currentSlots), ...keys(previousSlots), ...keys(currentNonStorySlots), ...keys(previousNonStorySlots)]),
       code => {
-        const previousCount = previousSlots[code] || 0;
-        const newCount = currentSlots[code] || 0;
+        const previousCount = (previousSlots[code] || 0) + (previousNonStorySlots[code] || 0);
+        const newCount = (currentSlots[code] || 0) + (currentNonStorySlots[code] || 0);
         const delta = (newCount - previousCount);
         if (delta !== 0) {
           slotDelta[code] = delta;
@@ -748,13 +768,19 @@ export default class GuidedCampaignLog {
     );
     forEach(investigators, investigator => {
       const data = this.campaignData.investigatorData[investigator] || {};
-      const assets = data.storyAssets || [];
-      assets.push(effect.card);
-      data.storyAssets = uniq(assets);
-      if (effect.ignore_deck_limit) {
-        const assets = data.ignoreStoryAssets || [];
+      if (effect.non_story) {
+        const assets = data.addedCards || [];
         assets.push(effect.card);
-        data.ignoreStoryAssets = uniq(assets);
+        data.addedCards = uniq(assets);
+      } else {
+        const assets = data.storyAssets || [];
+        assets.push(effect.card);
+        data.storyAssets = uniq(assets);
+        if (effect.ignore_deck_limit) {
+          const assets = data.ignoreStoryAssets || [];
+          assets.push(effect.card);
+          data.ignoreStoryAssets = uniq(assets);
+        }
       }
       this.campaignData.investigatorData[investigator] = data;
     });
@@ -770,16 +796,14 @@ export default class GuidedCampaignLog {
     forEach(
       keys(this.campaignData.investigatorData),
       investigator => {
-        const data = this.campaignData.investigatorData[investigator];
-        if (data) {
-          this.campaignData.investigatorData[investigator] = {
-            ...data,
-            storyAssets: map(
-              data.storyAssets || [],
-              card => card === effect.old_card ? effect.new_card : card
-            ),
-          };
-        }
+        const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
+        this.campaignData.investigatorData[investigator] = {
+          ...data,
+          storyAssets: map(
+            data.storyAssets || [],
+            card => card === effect.old_card ? effect.new_card : card
+          ),
+        };
       }
     );
   }
@@ -788,21 +812,32 @@ export default class GuidedCampaignLog {
     effect: RemoveCardEffect,
     input?: string[]
   ) {
-    const cards = new Set(effect.card === '$input_value' ? input : [effect.card]);
+    const allCards = effect.card === '$input_value' ? input : [effect.card];
+    const cards = new Set(allCards);
     const investigatorRestriction = effect.investigator ?
       new Set(this.getInvestigators(effect.investigator, input)) :
       undefined;
     forEach(
       keys(this.campaignData.investigatorData),
       investigator => {
-        const data = this.campaignData.investigatorData[investigator];
-        if (data) {
-          if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
-            this.campaignData.investigatorData[investigator] = {
-              ...data,
-              storyAssets: filter(data.storyAssets || [], card => !cards.has(card)),
-            };
+        if (!investigatorRestriction || investigatorRestriction.has(investigator)) {
+          const data: TraumaAndCardData = this.campaignData.investigatorData[investigator] || {};
+          if (effect.non_story) {
+            let addedCards = data.addedCards || [];
+            const removedCards = data.removedCards || [];
+            forEach(allCards, card => {
+              if (find(addedCards, card)) {
+                addedCards = filter(addedCards, existingCard => existingCard === card);
+              } else {
+                removedCards.push(card);
+              }
+            });
+            data.addedCards = addedCards;
+            data.removedCards = removedCards;
+          } else {
+            data.storyAssets = filter(data.storyAssets || [], card => !cards.has(card));
           }
+          this.campaignData.investigatorData[investigator] = data;
         }
       }
     );

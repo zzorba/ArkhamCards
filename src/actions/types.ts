@@ -162,6 +162,8 @@ export interface TraumaAndCardData extends Trauma {
   spentXp?: number;
   storyAssets?: string[];
   ignoreStoryAssets?: string[];
+  addedCards?: string[];
+  removedCards?: string[];
 }
 
 export interface InvestigatorData {
@@ -280,7 +282,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDEB,
 ];
 
-export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
+export const GUIDED_CAMPAIGNS = new Set([
   CORE,
   DWL,
   PTC,
@@ -289,13 +291,10 @@ export const GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   RTNOTZ,
   RTDWL,
   RTPTC,
-];
-
-export const COMING_SOON_GUIDED_CAMPAIGNS: CampaignCycleCode[] = [
   TDE,
   TDEA,
   TDEB,
-];
+]);
 
 export interface CustomCampaignLog {
   sections?: string[];
@@ -533,6 +532,15 @@ export interface UpdateCampaignAction {
   campaign: Partial<Campaign>;
   now: Date;
 }
+
+export const UPDATE_CAMPAIGN_SPENT_XP = 'UPDATE_CAMPAIGN_SPENT_XP';
+export interface UpdateCampaignSpentXpAction {
+  type: typeof UPDATE_CAMPAIGN_SPENT_XP;
+  id: number;
+  investigator: string;
+  operation: 'inc' | 'dec';
+}
+
 export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
 export interface UpdateChaosBagResultsAction {
   type: typeof UPDATE_CHAOS_BAG_RESULTS;
@@ -843,6 +851,7 @@ export type CampaignActions =
   NewCampaignAction |
   NewLinkedCampaignAction |
   UpdateCampaignAction |
+  UpdateCampaignSpentXpAction |
   DeleteCampaignAction |
   AddCampaignScenarioResultAction |
   EditCampaignScenarioResultAction |

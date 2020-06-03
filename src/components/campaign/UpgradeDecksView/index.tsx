@@ -1,5 +1,5 @@
 import React from 'react';
-import { forEach } from 'lodash';
+import { flatMap } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
@@ -7,23 +7,24 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch, Action } from 'redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from 'components/core/BasicButton';
-import { Deck, DecksMap, SingleCampaign, ScenarioResult } from 'actions/types';
+import { Campaign, Deck, DecksMap, SingleCampaign, ScenarioResult } from 'actions/types';
 import { NavigationProps } from 'components/nav/types';
 import { FACTION_DARK_GRADIENTS } from 'constants';
 import Card from 'data/Card';
-import { Scenario, campaignScenarios } from '../constants';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { getAllDecks, getLatestCampaignDeckIds, getCampaign, AppState } from 'reducers';
+import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState } from 'reducers';
+import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import typography from 'styles/typography';
 import { iconsMap } from 'app/NavIcons';
 import COLORS from 'styles/colors';
+import { updateCampaign } from 'components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
-import ScenarioResultRow from '../CampaignScenarioView/ScenarioResultRow';
 import space, { s } from 'styles/space';
 
 export interface UpgradeDecksProps {
@@ -34,11 +35,15 @@ export interface UpgradeDecksProps {
 interface ReduxProps {
   campaign?: SingleCampaign;
   decks: DecksMap;
+  allInvestigators: Card[];
   latestDeckIds: number[];
-  scenarioByCode: { [code: string]: Scenario };
 }
 
-type Props = NavigationProps & UpgradeDecksProps & ReduxProps & DimensionsProps;
+interface ReduxActionProps {
+  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
+}
+
+type Props = NavigationProps & UpgradeDecksProps & PlayerCardProps & ReduxProps & ReduxActionProps & DimensionsProps;
 
 class UpgradeDecksView extends React.Component<Props> {
   static options(passProps: UpgradeDecksProps) {
@@ -61,12 +66,12 @@ class UpgradeDecksView extends React.Component<Props> {
   }
 
   _navEventListener?: EventSubscription;
-  _doSave!: () => void;
-  _originalDeckIds: Set<number> = new Set(this.props.latestDeckIds);
+  _originalDeckIds: Set<number>;
 
   constructor(props: Props) {
     super(props);
 
+    this._originalDeckIds = new Set(this.props.latestDeckIds);
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
@@ -79,6 +84,23 @@ class UpgradeDecksView extends React.Component<Props> {
       this._close();
     }
   }
+
+  _updateInvestigatorXp = (investigator: Card, xp: number) => {
+    const { updateCampaign, campaign } = this.props;
+    if (campaign) {
+      const investigatorData = campaign.investigatorData[investigator.code] || {};
+      const oldXp = investigatorData.availableXp || 0;
+      updateCampaign(campaign.id, {
+        investigatorData: {
+          ...campaign.investigatorData || {},
+          [investigator.code]: {
+            ...investigatorData,
+            availableXp: oldXp + xp,
+          },
+        },
+      });
+    }
+  };
 
   _close = () => {
     Navigation.dismissModal(this.props.componentId);
@@ -125,9 +147,11 @@ class UpgradeDecksView extends React.Component<Props> {
       id,
       campaign,
       componentId,
-      scenarioResult,
-      scenarioByCode,
       fontScale,
+      allInvestigators,
+      decks,
+      cards,
+      investigators,
     } = this.props;
     if (!campaign) {
       return null;
@@ -135,14 +159,7 @@ class UpgradeDecksView extends React.Component<Props> {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <View style={space.marginS}>
-          <ScenarioResultRow
-            componentId={componentId}
-            campaignId={id}
-            index={0}
-            scenarioResult={scenarioResult}
-            scenarioByCode={scenarioByCode}
-          />
-          <Text style={typography.small}>
+          <Text style={typography.label}>
             { t`By upgrading a deck, you can track XP and story card upgrades as your campaign develops.\n\nPrevious versions of your deck will still be accessible.` }
           </Text>
         </View>
@@ -151,10 +168,13 @@ class UpgradeDecksView extends React.Component<Props> {
           fontScale={fontScale}
           campaignId={id}
           investigatorData={campaign.investigatorData}
-          deckIds={latestDeckIds}
-          investigatorIds={[]}
+          allInvestigators={allInvestigators}
+          decks={flatMap(latestDeckIds, deckId => decks[deckId] || [])}
           originalDeckIds={this._originalDeckIds}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}
+          updateInvestigatorXp={this._updateInvestigatorXp}
+          cards={cards}
+          investigators={investigators}
         />
         <BasicButton title={t`Done`} onPress={this._close} />
         <View style={styles.footer} />
@@ -165,26 +185,32 @@ class UpgradeDecksView extends React.Component<Props> {
 
 function mapStateToPropsFix(
   state: AppState,
-  props: NavigationProps & UpgradeDecksProps
+  props: NavigationProps & UpgradeDecksProps & PlayerCardProps
 ): ReduxProps {
   const campaign = getCampaign(state, props.id);
-  const cycleScenarios = campaign ? campaignScenarios(campaign.cycleCode) : [];
-  const scenarioByCode: { [code: string]: Scenario } = {};
-  forEach(cycleScenarios, scenario => {
-    scenarioByCode[scenario.code] = scenario;
-  });
+  const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
+  const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
   return {
     campaign,
     decks: getAllDecks(state),
-    latestDeckIds: getLatestCampaignDeckIds(state, campaign),
-    scenarioByCode,
+    latestDeckIds,
+    allInvestigators,
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & UpgradeDecksProps, AppState>(
-  mapStateToPropsFix
-)(
-  withDimensions(UpgradeDecksView)
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    updateCampaign,
+  }, dispatch);
+}
+
+export default withPlayerCards(
+  connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDecksProps & PlayerCardProps, AppState>(
+    mapStateToPropsFix,
+    mapDispatchToProps
+  )(
+    withDimensions(UpgradeDecksView)
+  )
 );
 
 const styles = StyleSheet.create({

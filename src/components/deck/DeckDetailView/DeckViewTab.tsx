@@ -10,8 +10,6 @@ import {
   View,
 } from 'react-native';
 import { t } from 'ttag';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import Switch from 'components/core/Switch';
 import PickerStyleButton from 'components/core/PickerStyleButton';
@@ -518,15 +516,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
           backgroundColor: 'transparent',
           textColor: COLORS.darkTextColor,
         }}
-        widget={
-          <View style={{ marginRight: xs }}>
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color={COLORS.darkTextColor}
-            />
-          </View>
-        }
+        widget="nav"
         noBorder
         settingsStyle
       />

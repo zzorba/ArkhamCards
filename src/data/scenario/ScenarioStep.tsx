@@ -78,6 +78,7 @@ export default class ScenarioStep {
         return [];
       });
       const stillNeedsInput = find(specialInputs, id =>
+        id !== '$fixed_investigator' &&
         scenarioState.stringChoices(id) === undefined
       );
       if (stillNeedsInput) {
@@ -102,6 +103,26 @@ export default class ScenarioStep {
           if (!input) {
             // Impossible
             return;
+          }
+          if (input === '$fixed_investigator') {
+            switch (specialEffect.type) {
+              case 'earn_xp':
+              case 'remove_card':
+              case 'add_card': {
+                result.push({
+                  input: specialEffect.fixed_investigator ? [specialEffect.fixed_investigator] : [],
+                  numberInput: effects.numberInput,
+                  effects: [{
+                    ...specialEffect,
+                    investigator: '$input_value',
+                  }],
+                });
+                break;
+              }
+              default:
+                // Should not happen
+                return;
+            }
           }
           const choiceList = scenarioState.stringChoices(input);
           if (choiceList === undefined) {

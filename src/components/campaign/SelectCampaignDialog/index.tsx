@@ -13,9 +13,8 @@ import BasicButton from 'components/core/BasicButton';
 import BasicSectionHeader from 'components/core/BasicSectionHeader';
 import {
   CUSTOM,
-  GUIDED_CAMPAIGNS,
-  COMING_SOON_GUIDED_CAMPAIGNS,
   ALL_CAMPAIGNS,
+  GUIDED_CAMPAIGNS,
   TDE,
   TDEA,
   TDEB,
@@ -27,10 +26,8 @@ import { campaignName } from '../constants';
 import { NavigationProps } from 'components/nav/types';
 import { getPacksInCollection, AppState } from 'reducers';
 
-const INCLUDE_DREAM_EATERS = true;
 export interface SelectCampagaignProps {
-  guided: boolean;
-  campaignChanged: (packCode: CampaignCycleCode, text: string) => void;
+  campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
 }
 
 interface ReduxProps {
@@ -55,13 +52,13 @@ class SelectCampaignDialog extends React.Component<Props> {
     };
   }
 
-  _onPress = (packCode: CampaignCycleCode, text: string) => {
+  _onPress = (campaignCode: CampaignCycleCode, text: string) => {
     const {
       campaignChanged,
       componentId,
     } = this.props;
 
-    campaignChanged(packCode, text);
+    campaignChanged(campaignCode, text, GUIDED_CAMPAIGNS.has(campaignCode));
     Navigation.pop(componentId);
   };
 
@@ -107,13 +104,9 @@ class SelectCampaignDialog extends React.Component<Props> {
   render() {
     const {
       in_collection,
-      guided,
     } = this.props;
     const partitionedCampaigns = partition(
-      guided ? [
-        ...GUIDED_CAMPAIGNS,
-        ...(INCLUDE_DREAM_EATERS ? COMING_SOON_GUIDED_CAMPAIGNS : []),
-      ] : ALL_CAMPAIGNS,
+      ALL_CAMPAIGNS,
       pack_code => (in_collection[pack_code] || (
         in_collection.tde && (pack_code === TDEA || pack_code === TDEB || pack_code === TDE)))
     );
@@ -128,7 +121,7 @@ class SelectCampaignDialog extends React.Component<Props> {
           />
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
-        { !guided && this.renderCampaign(CUSTOM, true) }
+        { this.renderCampaign(CUSTOM, true) }
         <BasicSectionHeader
           title={t`Other Campaigns`}
         />
@@ -136,12 +129,6 @@ class SelectCampaignDialog extends React.Component<Props> {
         <View style={styles.button}>
           <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
-        { guided && !INCLUDE_DREAM_EATERS && (
-          <>
-            <BasicSectionHeader title={t`Coming Soon`} />
-            { map(COMING_SOON_GUIDED_CAMPAIGNS, pack_code => this.renderCampaign(pack_code, false)) }
-          </>
-        ) }
       </ScrollView>
     );
   }

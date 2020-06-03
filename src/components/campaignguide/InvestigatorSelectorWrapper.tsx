@@ -15,6 +15,7 @@ interface Props<T> {
   optional?: boolean;
   description?: string;
   input?: string[];
+  fixedInvestigator?: string;
   render: (investigators: Card[], extraArg: T) => React.ReactNode;
   extraArg: T;
 }
@@ -25,7 +26,7 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
     campaignLog: GuidedCampaignLog,
     choice?: string
   ): Card[] {
-    const { investigator, input, optional } = this.props;
+    const { investigator, input, optional, fixedInvestigator } = this.props;
     switch (investigator) {
       case 'lead_investigator': {
         const leadInvestigator = campaignLog.leadInvestigatorChoice();
@@ -73,6 +74,15 @@ export default class InvestigatorSelectorWrapper<T = undefined> extends React.Co
         return filter(
           investigators,
           investigator => codes.has(investigator.code)
+        );
+      }
+      case '$fixed_investigator': {
+        if (!fixedInvestigator) {
+          return [];
+        }
+        return filter(
+          investigators,
+          investigator => investigator.code === fixedInvestigator
         );
       }
     }

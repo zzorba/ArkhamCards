@@ -24,7 +24,10 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     return map(investigators, (investigator, idx) => (
       <SetupStepWrapper bulletType="small" key={idx}>
         <CampaignGuideTextComponent
-          text={`${investigator.name} earns ${card.name}`}
+          text={
+            card.advanced ?
+              t`${investigator.name} earns ${card.name} (Advanced)` :
+              t`${investigator.name} earns ${card.name}`}
         />
       </SetupStepWrapper>
     ));
@@ -36,6 +39,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
       <InvestigatorSelectorWrapper
         id={id}
         investigator={effect.investigator}
+        fixedInvestigator={effect.fixed_investigator}
         render={this._renderInvestigators}
         optional={effect.optional}
         description={t`Who will add ${card.name} to their deck?`}

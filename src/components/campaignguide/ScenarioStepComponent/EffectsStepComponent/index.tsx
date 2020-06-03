@@ -171,7 +171,9 @@ export default class EffectsStepComponent extends React.Component<Props> {
                     return null;
                   }
                   const specialEffectChoice = getSpecialEffectChoiceList(step.id, effect);
-                  if (specialEffectChoice && scenarioState.stringChoices(specialEffectChoice) === undefined) {
+                  if (specialEffectChoice && specialEffectChoice !== '$fixed_investigator' &&
+                    scenarioState.stringChoices(specialEffectChoice) === undefined
+                  ) {
                     foundSpecialEffect = true;
                   }
                   return (

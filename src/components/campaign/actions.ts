@@ -12,6 +12,7 @@ import {
   EDIT_CAMPAIGN_SCENARIO_RESULT,
   CAMPAIGN_ADD_INVESTIGATOR,
   CAMPAIGN_REMOVE_INVESTIGATOR,
+  UPDATE_CAMPAIGN_SPENT_XP,
   CLEAN_BROKEN_CAMPAIGNS,
   CleanBrokenCampaignsAction,
   CampaignAddInvestigatorAction,
@@ -31,6 +32,7 @@ import {
   NewCampaignAction,
   NewLinkedCampaignAction,
   UpdateCampaignAction,
+  UpdateCampaignSpentXpAction,
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
   RestoreBackupAction,
@@ -160,6 +162,19 @@ export function newCampaign(
       now: new Date(),
     };
     dispatch(action);
+  };
+}
+
+export function updateCampaignSpentXp(
+  id: number,
+  investigator: string,
+  operation: 'inc' | 'dec'
+): UpdateCampaignSpentXpAction {
+  return {
+    type: UPDATE_CAMPAIGN_SPENT_XP,
+    id,
+    investigator,
+    operation,
   };
 }
 

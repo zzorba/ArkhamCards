@@ -19,8 +19,9 @@ interface Props {
   children?: ReactNode;
   noBorder?: boolean;
   disabled?: boolean;
+  color?: string;
 }
-export default function NavButton({ disabled, text, fontScale, onPress, indent, children, noBorder }: Props) {
+export default function NavButton({ disabled, text, fontScale, onPress, color, indent, children, noBorder }: Props) {
   return (
     <TouchableOpacity onPress={onPress} disabled={!!disabled}>
       <View style={[
@@ -43,7 +44,7 @@ export default function NavButton({ disabled, text, fontScale, onPress, indent, 
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color="rgb(0, 122,255)"
+              color={color || 'rgb(0, 122,255)'}
             />
           ) }
         </View>
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
   },
   bottomBorder: {
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bdbdbd',
   },
   indentedContainer: {
@@ -75,7 +76,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 40,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    maxWidth: 40,
+    marginRight: xs,
   },
   flex: {
     flex: 1,

@@ -11,7 +11,6 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
-import StandaloneIcon from 'icons/StandaloneIcon';
 import EncounterIcon from 'icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from 'components/core/CardCostIcon';
 import Button from 'components/core/Button';
@@ -277,7 +276,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           { this.renderTabooBlock() }
           { !!card.advanced && (
             <View style={styles.tabooBlock}>
-              <StandaloneIcon name="parallel" size={18 * fontScale} color="#000" />
+              <ArkhamIcon name="parallel" size={18 * fontScale} color="#000" />
             </View>
           ) }
         </View>
