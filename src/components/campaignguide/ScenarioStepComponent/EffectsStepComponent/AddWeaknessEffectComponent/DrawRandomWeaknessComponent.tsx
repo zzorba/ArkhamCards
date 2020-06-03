@@ -2,8 +2,6 @@ import React from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import { forEach, keys, map, values } from 'lodash';
 import { t } from 'ttag';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import BasicButton from 'components/core/BasicButton';
 import { StringChoices, WeaknessSet } from 'actions/types';
@@ -13,7 +11,6 @@ import InvestigatorButton from 'components/core/InvestigatorButton';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import space from 'styles/space';
 
 interface OwnProps {
   id: string;
@@ -129,15 +126,7 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
                 }
                 onPress={this._drawRandomWeakness}
                 disabled={choice !== undefined}
-                widget={(
-                  <View style={space.marginRightS}>
-                    <MaterialCommunityIcons
-                      name="shuffle-variant"
-                      size={24}
-                      color="#000"
-                    />
-                  </View>
-                )}
+                widget="shuffle"
               />
             );
           }) }

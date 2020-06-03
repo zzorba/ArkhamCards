@@ -4,28 +4,46 @@ import {
   Text,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import { find, filter, map } from 'lodash';
 import { t } from 'ttag';
 
+import NonDeckDetailsButton from './NonDeckDetailsButton';
+import UpgradeDeckButton from './UpgradeDeckButton';
 import { Deck, InvestigatorData, ParsedDeck } from 'actions/types';
+import InvestigatorRow from 'components/core/InvestigatorRow';
 import Card, { CardsMap } from 'data/Card';
 import { parseBasicDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
-import DeckRowButton from 'components/core/DeckRowButton';
 import { showDeckModal } from 'components/nav/helper';
-import DeckList, { DeckListProps } from '../DeckList';
 import DeckRow from '../DeckRow';
-import { s, xs } from 'styles/space';
+import { s } from 'styles/space';
 
-interface Props extends DeckListProps {
+interface Props {
   campaignId: number;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
+  updateInvestigatorXp: (investigator: Card, xp: number) => void;
   investigatorData: InvestigatorData;
   originalDeckIds: Set<number>;
+  componentId: string;
+  fontScale: number;
+  decks: Deck[];
+  allInvestigators: Card[];
+
+  cards: CardsMap;
+  investigators: CardsMap;
 }
 
-export default class UpgradeDecksList extends React.Component<Props> {
+interface State {
+  saved: {
+    [investigator: string]: boolean;
+  };
+}
+
+export default class UpgradeDecksList extends React.Component<Props, State> {
+  state: State = {
+    saved: {},
+  };
+
   viewDeck(deck: Deck, investigator: Card) {
     const {
       componentId,
@@ -45,9 +63,9 @@ export default class UpgradeDecksList extends React.Component<Props> {
     const xp = (deck.xp || 0) + (deck.xp_adjustment || 0);
     if (xp > 0) {
       if (parsedDeck.changes && parsedDeck.changes.spentXp > 0) {
-        return t`${xp} available (${parsedDeck.changes.spentXp} spent)`;
+        return t`${xp} available experience, (${parsedDeck.changes.spentXp} spent)`;
       }
-      return t`${xp} available`;
+      return t`${xp} available experience`;
     }
     const totalXp = parsedDeck.experience || 0;
     return t`${totalXp} total`;
@@ -62,7 +80,6 @@ export default class UpgradeDecksList extends React.Component<Props> {
     const {
       investigatorData,
       originalDeckIds,
-      fontScale,
     } = this.props;
     const eliminated = investigator.eliminated(investigatorData[investigator.code]);
     if (eliminated) {
@@ -76,12 +93,6 @@ export default class UpgradeDecksList extends React.Component<Props> {
       return (
         <View style={styles.section}>
           <View style={styles.column}>
-            <Text style={typography.bigLabel}>
-              { t`Deck upgrade saved.` }
-            </Text>
-            <Text style={typography.smallLabel}>
-              { t`EXPERIENCE` }
-            </Text>
             <Text style={typography.text}>
               { this.experienceLine(parsedDeck.deck, parsedDeck) }
             </Text>
@@ -91,9 +102,7 @@ export default class UpgradeDecksList extends React.Component<Props> {
     }
 
     return (
-      <DeckRowButton
-        icon={<MaterialCommunityIcons size={18 * fontScale} color="#222" name="arrow-up-bold" />}
-        text={t`Upgrade deck`}
+      <UpgradeDeckButton
         deck={deck}
         investigator={investigator}
         onPress={this._upgradeDeckPressed}
@@ -110,31 +119,15 @@ export default class UpgradeDecksList extends React.Component<Props> {
     if (!deck) {
       return null;
     }
-    return (
-      <View style={styles.investigatorNotes}>
-        <View style={styles.section}>
-          { this.renderUpgradeButton(deck, cards, investigator, previousDeck) }
-        </View>
-      </View>
-    );
+    return this.renderUpgradeButton(deck, cards, investigator, previousDeck);
   };
 
-  _skipRender = (
-    deck: Deck,
-    investigator: Card,
-  ) => {
-    const { investigatorData } = this.props;
-    return investigator.eliminated(investigatorData[investigator.code]);
-  };
-
-  _renderDeck = (
-    deckId: number,
-    cards: CardsMap,
-    investigators: CardsMap
-  ) => {
+  _renderDeck = (deckId: number) => {
     const {
       componentId,
       fontScale,
+      cards,
+      investigators,
     } = this.props;
 
     return (
@@ -146,7 +139,6 @@ export default class UpgradeDecksList extends React.Component<Props> {
         cards={cards}
         investigators={investigators}
         renderDetails={this._renderDetails}
-        skipRender={this._skipRender}
         otherProps={this.props}
         compact
         viewDeckButton
@@ -154,25 +146,52 @@ export default class UpgradeDecksList extends React.Component<Props> {
     );
   };
 
+  _saveXp = (investigator: Card, xp: number) => {
+    const { updateInvestigatorXp } = this.props;
+    updateInvestigatorXp(investigator, xp);
+    this.setState({
+      saved: {
+        ...this.state.saved,
+        [investigator.code]: true,
+      },
+    });
+  }
+
   render() {
     const {
-      componentId,
-      deckIds,
-      deckAdded,
-      campaignId,
+      decks,
+      investigatorData,
+      allInvestigators,
       fontScale,
     } = this.props;
+    const { saved } = this.state;
+    const investigators = filter(
+      allInvestigators,
+      investigator => !investigator.eliminated(investigatorData[investigator.code] || {})
+    );
+
     return (
-      <DeckList
-        fontScale={fontScale}
-        renderDeck={this._renderDeck}
-        componentId={componentId}
-        campaignId={campaignId}
-        deckIds={deckIds}
-        investigatorIds={[]}
-        deckAdded={deckAdded}
-        otherProps={this.props}
-      />
+      <>
+        { map(investigators, investigator => {
+          const deck = find(decks, deck => deck.investigator_code === investigator.code);
+          if (deck) {
+            return this._renderDeck(deck.id);
+          }
+          return (
+            <InvestigatorRow
+              key={investigator.code}
+              investigator={investigator}
+            >
+              <NonDeckDetailsButton
+                investigator={investigator}
+                fontScale={fontScale}
+                saved={saved[investigator.code] || false}
+                saveXp={this._saveXp}
+              />
+            </InvestigatorRow>
+          );
+        }) }
+      </>
     );
   }
 }
@@ -182,11 +201,6 @@ const styles = StyleSheet.create({
     marginBottom: s,
     marginRight: s,
     flexDirection: 'row',
-  },
-  investigatorNotes: {
-    flex: 1,
-    marginTop: xs,
-    flexDirection: 'column',
   },
   column: {
     flexDirection: 'column',

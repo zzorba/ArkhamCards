@@ -15,17 +15,20 @@ import Card from 'data/Card';
 import { FACTION_COLORS, FACTION_DARK_GRADIENTS } from 'constants';
 import typography from 'styles/typography';
 import space, { m, s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
+  superTitle?: string;
   investigator: Card;
   yithian?: boolean;
   description?: string;
   eliminated?: boolean;
   button?: React.ReactNode;
-  detail?: React.ReactNode;
   bigImage?: boolean;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
+  children?: React.ReactElement | React.ReactElement[];
+  noFactionIcon?: boolean;
 }
 
 const ICON_SIZE = 60;
@@ -50,12 +53,14 @@ export default class InvestigatorRow extends React.Component<Props> {
     const {
       investigator,
       onRemove,
-      detail,
+      children,
       eliminated,
       button,
       description,
       yithian,
       bigImage,
+      noFactionIcon,
+      superTitle,
     } = this.props;
     return (
       <View style={styles.wrapper}>
@@ -63,7 +68,12 @@ export default class InvestigatorRow extends React.Component<Props> {
           styles.headerColor,
           { backgroundColor: FACTION_DARK_GRADIENTS[eliminated ? 'dead' : investigator.factionCode()][0] },
         ]} />
-        <View style={styles.row}>
+        { !!superTitle && (
+          <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
+            <Text style={typography.mediumGameFont}>{ superTitle }</Text>
+          </View>
+        ) }
+        <View style={[styles.row, !superTitle ? space.paddingTopS : {}]}>
           <View style={styles.image}>
             <InvestigatorImage
               card={investigator}
@@ -73,21 +83,23 @@ export default class InvestigatorRow extends React.Component<Props> {
               border
             />
           </View>
-          <View style={[styles.titleColumn, button ? styles.buttonColumn : {}]}>
-            <Text style={[typography.bigGameFont, styles.title]}>
+          <View style={[styles.titleColumn, button ? styles.buttonColumn : {}, noFactionIcon ? space.marginRightM : {}]}>
+            <Text style={[superTitle ? typography.gameFont : typography.bigGameFont, styles.title]}>
               { description ? `${investigator.name}: ${description}` : investigator.name }
             </Text>
             { !!button && button }
           </View>
-          <View style={space.marginRightM}>
-            { !onRemove && (
-              <ArkhamIcon
-                name={CardCostIcon.factionIcon(investigator)}
-                size={ICON_SIZE}
-                color={FACTION_COLORS[eliminated ? 'dead' : investigator.factionCode()]}
-              />
-            ) }
-          </View>
+          { !noFactionIcon && (
+            <View style={space.marginRightM}>
+              { !onRemove && (
+                <ArkhamIcon
+                  name={CardCostIcon.factionIcon(investigator)}
+                  size={ICON_SIZE}
+                  color={FACTION_COLORS[eliminated ? 'dead' : investigator.factionCode()]}
+                />
+              ) }
+            </View>
+          ) }
           { !!onRemove && (
             <View style={styles.closeIcon}>
               <TouchableOpacity onPress={this._onRemove}>
@@ -100,7 +112,7 @@ export default class InvestigatorRow extends React.Component<Props> {
             </View>
           ) }
         </View>
-        { !!detail && detail }
+        { !!children && children }
         <View style={[
           styles.headerColor,
           { backgroundColor: FACTION_DARK_GRADIENTS[eliminated ? 'dead' : investigator.factionCode()][0] },
@@ -127,7 +139,7 @@ export default class InvestigatorRow extends React.Component<Props> {
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'column',
-    borderBottomWidth: 1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bbb',
   },
   row: {
@@ -135,7 +147,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     position: 'relative',
-    paddingTop: s,
   },
   closeIcon: {
     position: 'absolute',
@@ -161,7 +172,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   title: {
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   headerColor: {
     height: 16,

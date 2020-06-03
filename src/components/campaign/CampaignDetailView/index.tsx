@@ -39,7 +39,7 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
 import { ChaosBag } from 'constants';
-import { updateCampaign, deleteCampaign, cleanBrokenCampaigns } from '../actions';
+import { updateCampaign, updateCampaignSpentXp, deleteCampaign, cleanBrokenCampaigns } from '../actions';
 import { NavigationProps } from 'components/nav/types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -57,6 +57,7 @@ interface ReduxProps {
 
 interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
+  updateCampaignSpentXp: (id: number, investigator: string, operation: 'inc' | 'dec') => void;
   deleteCampaign: (id: number) => void;
   cleanBrokenCampaigns: () => void;
 }
@@ -93,6 +94,7 @@ class CampaignDetailView extends React.Component<Props, State> {
   }
   _navEventListener?: EventSubscription;
   _onCampaignNameChange!: (name: string) => void;
+  _updateNonDeckInvestigators: (latestInvestigators: string[]) => void;
   _updateLatestDeckIds!: (latestDeckIds: number[]) => void;
   _updateCampaignNotes!: (campaignNotes: CampaignNotes) => void;
   _updateInvestigatorData!: (investigatorData: InvestigatorData) => void;
@@ -108,6 +110,7 @@ class CampaignDetailView extends React.Component<Props, State> {
     };
 
     this._onCampaignNameChange = this.applyCampaignUpdate.bind(this, 'name');
+    this._updateNonDeckInvestigators = this.applyCampaignUpdate.bind(this, 'nonDeckInvestigators');
     this._updateLatestDeckIds = this.applyCampaignUpdate.bind(this, 'latestDeckIds');
     this._updateCampaignNotes = this.applyCampaignUpdate.bind(this, 'campaignNotes');
     this._updateInvestigatorData = this.applyCampaignUpdate.bind(this, 'investigatorData');
@@ -120,6 +123,16 @@ class CampaignDetailView extends React.Component<Props, State> {
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }
+
+  _incSpentXp = (code: string) => {
+    const { id, updateCampaignSpentXp } = this.props;
+    updateCampaignSpentXp(id, code, 'inc');
+  };
+
+  _decSpentXp = (code: string) => {
+    const { id, updateCampaignSpentXp } = this.props;
+    updateCampaignSpentXp(id, code, 'dec');
+  };
 
   _showAddSectionDialog = (addSectionFunction: AddSectionFunction) => {
     this.setState({
@@ -512,6 +525,7 @@ class CampaignDetailView extends React.Component<Props, State> {
       allInvestigators,
       fontScale,
       decks,
+      cards,
     } = this.props;
     return (
       <ScrollView style={styles.flex}>
@@ -530,15 +544,19 @@ class CampaignDetailView extends React.Component<Props, State> {
         <DecksSection
           componentId={componentId}
           fontScale={fontScale}
-          campaignId={campaign.id}
+          campaign={campaign}
           weaknessSet={campaign.weaknessSet}
           latestDeckIds={latestDeckIds || []}
           decks={decks}
           allInvestigators={allInvestigators}
+          cards={cards}
           investigatorData={campaign.investigatorData || {}}
           showTraumaDialog={showTraumaDialog}
           updateLatestDeckIds={this._updateLatestDeckIds}
+          updateNonDeckInvestigators={this._updateNonDeckInvestigators}
           updateWeaknessSet={this._updateWeaknessSet}
+          incSpentXp={this._incSpentXp}
+          decSpentXp={this._decSpentXp}
         />
         <WeaknessSetSection
           fontScale={fontScale}
@@ -612,10 +630,11 @@ function mapStateToProps(
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>) {
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     deleteCampaign,
     updateCampaign,
+    updateCampaignSpentXp,
     cleanBrokenCampaigns,
   }, dispatch);
 }

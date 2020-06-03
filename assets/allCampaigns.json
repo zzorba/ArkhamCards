@@ -3345,6 +3345,7 @@
       "text": "Location Placement",
       "horizontal": "normal",
       "vertical": "normal",
+      "svg": "the_midnight_masks",
       "locations": [
         ["01134_back", "01131_back", "01132_back"],
         ["01129_back", "01125_back", "01133_back"],
@@ -13737,6 +13738,7 @@
       "text": "Location Placement",
       "horizontal": "normal",
       "vertical": "normal",
+      "svg": "return_to_the_gathering",
       "locations": [
         [
           "blank",
@@ -13887,6 +13889,7 @@
       "text": "Location Placement",
       "horizontal": "normal",
       "vertical": "normal",
+      "svg": "the_midnight_masks",
       "locations": [
         [
           "01134_back",
@@ -20117,7 +20120,8 @@
     "carnevale_of_horrors",
     "the_eternal_slumber",
     "the_nights_usurper",
-    "murder_at_the_excelsior_hotel"
+    "murder_at_the_excelsior_hotel",
+    "read_or_die"
   ],
   "setup": [],
   "steps": []
@@ -22063,6 +22067,391 @@
       "title": "Resolution 3",
       "text": "You sit in a cold, dank holding cell awaiting your arraignment. You have no doubt that with the evidence the police gathered, you’ll be spending the rest of your life behind bars. You have sworn high and low that you had nothing to do with the murder, but doubt lingers in your mind. Could it have been you, somehow? What really happened in the Excelsior that night?\nJust then, you hear rapping on the bars of your cell. An officer stands just outside, looking away from you. He slips a folded note between the bars of your cell. Knowing better than to ask his intentions out loud, you slowly walk over and unfold the note, your fingers shaking with trepidation.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>This isn't over.</fancy></center>\nJust as you finish reading the note, you hear the click of the cell’s latch unlocking. The officer is gone, and the door to your cell swings open.",
       "steps": ["check_replay_scenario_R3"]
+    }
+  ]
+}
+,
+{
+  "id": "read_or_die",
+  "scenario_name": "Read or Die",
+  "full_name": "Read or Die",
+  "xp_cost": 1,
+  "side_scenario_type": "challenge",
+  "challenge": {
+    "investigator": "01002",
+    "xp_cost": 2,
+    "requirements": [
+      "Daisy Walker’s deck must include at least 4 [[Tome]] assets. [[Tome]] weaknesses do not count toward this total."
+    ]
+  },
+  "setup": [
+    "xp_cost",
+    "intro",
+    "investigator_setup",
+    "gather_encounter_sets",
+    "new_scenario_card",
+    "new_act_agenda",
+    "remove_misc_cards",
+    "setup_locations",
+    "location_layout",
+    "setup_tomes",
+    "setup_jazz_mulligan",
+    "spawn_namer_of_the_dead",
+    "daisy_gets_henry_armitage",
+    "encounter_deck",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "xp_cost",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -1
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "$fixed_investigator",
+          "fixed_investigator": "01002",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You’ve spent your entire life reading. As a child, it was but a simple interest in harmless stories. Grisly stories, to be sure, but harmless nonetheless. Your fascination with horror and the macabre earned you the nickname “Spooks” among your friends and classmates. But as you grew, so too did this fascination, until it bordered on obsession. Your appetite for horror evolved from mystery and make-believe to something more. Something <i>real</i>.\nWhen you discovered John Dee’s translation of The Necronomicon, you knew you’d finally found the true horror you had been secretly yearning for. If only you’d known what would be in store for you once you’d read that dreadful tome. You would have locked it back up in Henry Armitage’s restricted collection in the Orne Library and never opened it again.\nOr so you like to think. But even you cannot doubt the allure of the <i>Kitab al-Azif</i>. The Book of the Dead. That is why, when Dr. Armitage summoned you to the Orne Library, the dread in your bones predicted precisely what had occurred.\n“I don’t understand how this could have happened,” Dr. Armitage says as he surveys the destruction. The entire restricted collection is in tattered disarray. The Necronomicon lies open on a nearby table, its metal clasps broken apart. You run your fingers along its leathery, skin-like pages. Your eyes flit along the words in a familiar dance:\n<center><i>“They walk unseen and foul in lonely places where the Words have been spoken and the Rites howled through at their Seasons. The wind gibbers with Their voices, and the earth mutters with Their consciousness.”</i></center>\nYour throat tightens as you realize what must have occurred. Something has been unleashed, and you are the only one who can figure out how to stop it…"
+    },
+    {
+      "id": "investigator_setup",
+      "title": "Investigator Setup",
+      "text": "Remove each non-weakness [[Tome]] asset from Daisy Walker’s deck. Set each of these assets aside, out of play"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Scenario Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "read_or_die",
+        "extracurricular_activity",
+        "sorcery",
+        "the_beyond",
+        "bishops_thralls",
+        "whippoorwills",
+        "ancient_evils",
+        "locked_doors",
+        "agents_of_yog",
+        "armitages_fate"
+      ]
+    },
+    {
+      "id": "new_scenario_card",
+      "text": "Remove the original scenario reference card from the <i>Extracurricular Activity</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Read or Die</i> encounter set."
+    },
+    {
+      "id": "new_act_agenda",
+      "text": "Remove the original act and agenda deck from the <i>Extracurricular Activity</i> encounter set from the game. Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Read or Die</i> encounter set."
+    },
+    {
+      "id": "remove_misc_cards",
+      "text": "Remove the Faculty Offices <i>(The Hour is Late)</i> location, the Alchemy Labs location, the Alchemical Concoction story asset, The Experiment enemy, and the Professor Warren Rice story asset from the game. These cards are not used in this challenge scenario."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put each of the remaining locations into play: Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building, Administration Building, Dormitories, and Faculty Offices <i>(The Night is Still Young)</i>.",
+      "bullets": [
+        {
+          "text": "Daisy Walker begins play at the Orne Library."
+        },
+        {
+          "text": "Each other investigator begins play at the Miskatonic Quad."
+        },
+        {
+          "text": "<b>Since Dormitories and Faculty Offices start the game in play and Alchemy Labs is removed from the game, ignore any Forced abilities that would put these locations into play.</b>"
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "half",
+      "locations": [
+        ["02050_back", "blank", "02056_back", "blank"],
+        ["blank", "02048_back", "blank", "blank"],
+        ["02049_back", "blank", "02053_back", "02054_back"],
+        ["blank", "02051_back", "blank", "blank"],
+        ["blank", "blank", "blank", "blank"],
+        ["blank", "02052_back", "blank", "blank"]
+      ]
+    },
+    {
+      "id": "setup_tomes",
+      "text": "Shuffle each of the set-aside [[Tome]] assets previously removed from Daisy Walker’s deck and place 1 of them facedown beneath each location except for the Miskatonic Quad, starting with the locations farthest from the Orne Library. Place each remaining set-aside [[Tome]] asset facedown beneath the Orne Library.",
+      "bullets": [
+        {
+          "text": "For example, if Daisy Walker previously set 12 [[Tome]] assets aside, 1 would be placed facedown beneath each location except for Miskatonic Quad, and the remaining 6 would be placed beneath Orne Library"
+        }
+      ]
+    },
+    {
+      "id": "setup_jazz_mulligan",
+      "text": "Put the “Jazz” Mulligan story asset into play at the Science Building."
+    },
+    {
+      "id": "spawn_namer_of_the_dead",
+      "text": "Place the Namer of the Dead enemy (provided in the downloadable <i>Read or Die</i> encounter set) into play at the Orne Library, unengaged and exhausted."
+    },
+    {
+      "id": "daisy_gets_henry_armitage",
+      "text": "Daisy Walker takes control of the Dr. Henry Armitage story asset. (If Dr. Henry Armitage is already part of an investigator’s deck, search that investigator’s deck for Dr. Henry Armitage and put him into play under Daisy Walker’s control.)"
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resolution_2",
+      "type": "resolution",
+      "resolution": "R2"
+    },
+    {
+      "id": "daisy_bad_swap",
+      "text": "Daisy Walker must either upgrade The Necronomicon <i>(John Dee Translation)</i> to its advanced version, or downgrade the advanced version of Daisy’s Tote Bag to its original version",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "necronomicon",
+            "text": "Upgrade to advanced The Necronomicon",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "01009"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "90003"
+              }
+            ]
+          },
+          {
+            "id": "tote_bag",
+            "text": "Downgrade from advanced Daisy's Tote Bag",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "90002"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "01008"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "daisy_good_swap",
+      "text": "Daisy Walker may either upgrade Daisy’s Tote Bag to its advanced version, or downgrade the advanced version of The Necronomicon <i>(John Dee Translation)</i> to its original version.",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "tote_bag",
+            "text": "Upgrade to advanced Daisy's Tote Bag",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "01008"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "90002"
+              }
+            ]
+          },
+          {
+            "id": "necronomicon",
+            "text": "Downgrade advanced The Necronomicon",
+            "effects": [
+              {
+                "type": "remove_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "90003"
+              },
+              {
+                "type": "add_card",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002",
+                "non_story": true,
+                "card": "01009"
+              }
+            ]
+          },
+          {
+            "id": "neither",
+            "text": "No change"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_daisy_tomes",
+      "text": "How many [[Tome]] assets did Daisy Walker have in play at the end of the scenario?",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Tome assets:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "hidden",
+            "id": "rod_tome_count",
+            "operation": "set_input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "others_experience",
+      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "hidden",
+            "id": "rod_victory_display",
+            "operation": "set_input"
+          },
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "daisy_experience_explanation",
+      "text": "Daisy Walker earns experience equal to either the combined Victory X value of each card in the victory display, or equal to the number of [[Tome]] assets she had in play at the end of the game, whichever is higher."
+    },
+    {
+      "id": "daisy_experience",
+      "type": "branch",
+      "condition": {
+        "type": "math",
+        "opA": {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "rod_tome_count"
+        },
+        "opB": {
+          "type": "campaign_log_count",
+          "section": "hidden",
+          "id": "rod_victory_display"
+        },
+        "operation": "compare",
+        "options": [
+          {
+            "numCondition": -1
+          },
+          {
+            "numCondition": 0
+          },
+          {
+            "numCondition": 1,
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "$fixed_investigator",
+                "fixed_investigator": "01002"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_2"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "When you wake, the floor of the library is a mess of scattered paper and torn books. The Necronomicon lies in front of you, its metal clasp sealing it shut once more. Hopefully, whatever presence had been unleashed is safely stored within. But you can’t risk the grimoire staying here—it is far too dangerous to be left alone. You stuff the tome into your tote bag, knowing only you can keep it safe...or keep others safe from it.",
+      "steps": [
+        "ask_daisy_tomes",
+        "others_experience",
+        "daisy_experience_explanation",
+        "daisy_experience",
+        "daisy_good_swap",
+        "$upgrade_decks"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "You stuff the tome back into your tote bag. You can only hope that the entity that was unleashed won’t cause further harm...",
+      "steps": [
+        "ask_daisy_tomes",
+        "others_experience",
+        "daisy_experience_explanation",
+        "daisy_experience",
+        "daisy_bad_swap",
+        "$upgrade_decks"
+      ]
     }
   ]
 }

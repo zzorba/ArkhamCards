@@ -13,6 +13,7 @@ import space from 'styles/space';
 
 interface Props {
   campaign: Campaign;
+  name?: string;
   hideScenario?: boolean;
 }
 export default class CampaignSummaryComponent extends React.Component<Props> {
@@ -22,13 +23,20 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
 
   renderCampaign() {
     const {
-      campaign: {
-        cycleCode,
-        name,
-      },
+      campaign,
+      name,
     } = this.props;
-    const text = cycleCode === CUSTOM ? name : campaignNames()[cycleCode];
-    return <GameHeader text={text} />;
+    const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
+    return (
+      <>
+        <GameHeader text={text} />
+        { !!name && (
+          <Text style={typography.gameFont}>
+            { name }
+          </Text>
+        ) }
+      </>
+    );
   }
 
   renderLastScenario() {
@@ -42,9 +50,6 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={space.marginTopXs}>
-          <Text style={typography.smallLabel}>
-            { latestScenario.interlude ? t`LATEST INTERLUDE` : t`LATEST SCENARIO` }
-          </Text>
           <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}` }
           </Text>
@@ -53,9 +58,23 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     }
     return (
       <View style={space.marginTopXs}>
-        <Text style={typography.text}>
+        <Text style={typography.gameFont}>
           { t`Not yet started` }
         </Text>
+      </View>
+    );
+  }
+
+  renderDifficulty() {
+    const {
+      campaign,
+    } = this.props;
+    if (!campaign.difficulty) {
+      return null;
+    }
+    return (
+      <View style={space.marginRightS}>
+        <Difficulty difficulty={campaign.difficulty} />
       </View>
     );
   }
@@ -67,12 +86,17 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     return (
       <View style={styles.row}>
         { campaign.cycleCode !== CUSTOM && (
-          <BackgroundIcon code={campaign.cycleCode} color={CAMPAIGN_COLORS[campaign.cycleCode]} />
+          <BackgroundIcon
+            code={campaign.cycleCode}
+            color={CAMPAIGN_COLORS[campaign.cycleCode]}
+          />
         ) }
         <View>
-          { !!campaign.difficulty && <Difficulty difficulty={campaign.difficulty} /> }
           { this.renderCampaign() }
-          { this.renderLastScenario() }
+          <View style={styles.textRow}>
+            { this.renderDifficulty() }
+            { this.renderLastScenario() }
+          </View>
         </View>
       </View>
     );
@@ -84,5 +108,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     position: 'relative',
+  },
+  textRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

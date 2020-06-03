@@ -1,17 +1,15 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import { Campaign, CUSTOM } from 'actions/types';
 import { CardsMap } from 'data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import typography from 'styles/typography';
-import { s } from 'styles/space';
+import { m } from 'styles/space';
 
 interface Props {
   campaign: Campaign;
@@ -35,23 +33,16 @@ export default class CampaignItem extends React.Component<Props> {
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <LinearGradient
-          colors={['#fbfaf6', '#ebe6d4']}
-          style={styles.container}
-        >
-          { campaign.cycleCode !== CUSTOM && (
-            <Text style={[typography.text, styles.bottomMargin]}>
-              { campaign.name }
-            </Text>
-          ) }
+        <View style={styles.container}>
           <CampaignSummaryComponent
             campaign={campaign}
+            name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
           />
           <CampaignInvestigatorRow
             campaigns={[campaign]}
             investigators={investigators}
           />
-        </LinearGradient>
+        </View>
       </TouchableOpacity>
     );
   }
@@ -59,16 +50,11 @@ export default class CampaignItem extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: s,
-    paddingRight: s,
-    paddingTop: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    padding: m,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#888',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',
-  },
-  bottomMargin: {
-    marginBottom: s,
   },
 });

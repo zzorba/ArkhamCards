@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { filter, flatMap, map, throttle, shuffle } from 'lodash';
 import { t } from 'ttag';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import BasicButton from 'components/core/BasicButton';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
@@ -12,7 +10,7 @@ import PickerStyleButton from 'components/core/PickerStyleButton';
 import Card from 'data/Card';
 import { RandomLocationInput } from 'data/scenario/types';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import space, { m, l } from 'styles/space';
+import { m, l } from 'styles/space';
 
 interface Props {
   input: RandomLocationInput;
@@ -91,15 +89,7 @@ export default class RandomLocationInputComponent extends React.Component<Props,
               ''
             }
             onPress={this._drawLocation}
-            widget={(
-              <View style={space.marginRightS}>
-                <MaterialCommunityIcons
-                  name="shuffle-variant"
-                  size={24}
-                  color="#000"
-                />
-              </View>
-            )}
+            widget="shuffle"
           />
         </View>
       );

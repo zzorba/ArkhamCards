@@ -1,26 +1,16 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import { t } from 'ttag';
 
-import Button from 'components/core/Button';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import PickerStyleButton from 'components/core/PickerStyleButton';
 
-interface OwnProps {
+interface Props {
   name: string;
   isCount?: boolean;
   perInvestigator?: boolean;
   onPress?: (name: string, isCount?: boolean, perInvestigator?: boolean) => void;
 }
-type Props = OwnProps & DimensionsProps;
 
-class CampaignNoteSectionRow extends React.Component<Props> {
+export default class CampaignNoteSectionRow extends React.Component<Props> {
   _onPress = () => {
     const {
       name,
@@ -40,7 +30,7 @@ class CampaignNoteSectionRow extends React.Component<Props> {
 
     let result = name;
     if (perInvestigator) {
-      result += ' (Per Investigator)';
+      result += t` (Per Investigator)`;
     }
     if (isCount) {
       result += ': 0';
@@ -51,41 +41,17 @@ class CampaignNoteSectionRow extends React.Component<Props> {
   render() {
     const {
       onPress,
-      fontScale,
     } = this.props;
-    if (onPress) {
-      return (
-        <View style={[styles.row, space.marginTopXs]}>
-          <Button
-            style={space.marginRightXs}
-            color="red"
-            size="small"
-            onPress={this._onPress}
-            icon={
-              <MaterialIcons name="close" size={14 * fontScale} color="#FFFFFF" />
-            }
-          />
-          <Text style={typography.text}>
-            { this.text() }
-          </Text>
-        </View>
-      );
-    }
     return (
-      <View style={[styles.row, space.marginTopXs]}>
-        <Text style={typography.text}>
-          { this.text() }
-        </Text>
-      </View>
+      <PickerStyleButton
+        id="delete"
+        onPress={this._onPress}
+        disabled={!onPress}
+        title={this.text()}
+        widget="delete"
+        settingsStyle
+        noBorder
+      />
     );
   }
 }
-
-export default withDimensions<OwnProps>(CampaignNoteSectionRow);
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});

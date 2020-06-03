@@ -7,6 +7,7 @@ import {
   NEW_LINKED_CAMPAIGN,
   UPDATE_CAMPAIGN,
   CAMPAIGN_ADD_INVESTIGATOR,
+  UPDATE_CAMPAIGN_SPENT_XP,
   CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
   UPDATE_CHAOS_BAG_RESULTS,
@@ -267,6 +268,30 @@ export default function(
         ...state.chaosBagResults || {},
         [action.id]: action.chaosBagResults,
       },
+    };
+  }
+  if (action.type === UPDATE_CAMPAIGN_SPENT_XP) {
+    const existingCampaign = state.all[action.id];
+    if (!existingCampaign) {
+      // Can't update a campaign that doesn't exist.
+      return state;
+    }
+    const investigatorData = existingCampaign.investigatorData[action.investigator] || {};
+    const campaign: Campaign = {
+      ...existingCampaign,
+      investigatorData: {
+        ...existingCampaign.investigatorData,
+        [action.investigator]: {
+          ...investigatorData,
+          spentXp: action.operation === 'inc' ?
+            (investigatorData.spentXp || 0) + 1 :
+            Math.max((investigatorData.spentXp || 0) - 1, 0),
+        },
+      },
+    };
+    return {
+      ...state,
+      all: { ...state.all, [action.id]: campaign },
     };
   }
   if (action.type === UPDATE_CAMPAIGN) {

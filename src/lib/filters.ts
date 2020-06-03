@@ -266,7 +266,7 @@ export const defaultFilterState: FilterState = {
 
 
 export const VENGEANCE_FILTER: Brackets = where('c.vengeance >= 0 or linked_card.vengeance >= 0');
-export const UNIQUE_FILTER: Brackets = where('(c.is_unique = true OR linked_card.is_unique = true) AND c.type_code != "enemy"');
+export const UNIQUE_FILTER: Brackets = where('c.is_unique = true');
 
 export default class FilterBuilder {
   prefix: string;
@@ -581,7 +581,7 @@ export default class FilterBuilder {
       result.push(where(`c.real_text LIKE '%exile%' or linked_card.real_text LIKE '%exile%'`));
     }
     if (unique) {
-      result.push(UNIQUE_FILTER);
+      result.push(where('(c.is_unique = true OR linked_card.is_unique = true) AND c.type_code != "enemy"'));
     }
     if (seal) {
       result.push(where(`c.seal = true or linked_card.seal = true`));

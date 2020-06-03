@@ -15,6 +15,9 @@ export default StyleSheet.create({
   button: {
     padding: s,
   },
+  paddingRightXs: {
+    paddingRight: xs,
+  },
   paddingSideXs: {
     paddingLeft: xs,
     paddingRight: xs,

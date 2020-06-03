@@ -171,8 +171,6 @@ export default class EditCampaignNotesComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   underline: {
     paddingBottom: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
     marginBottom: xs,
   },
   investigatorSection: {

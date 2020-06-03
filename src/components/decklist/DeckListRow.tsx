@@ -13,14 +13,13 @@ import { ngettext, msgid, t } from 'ttag';
 import { Campaign, Deck, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
 import { BODY_OF_A_YITHIAN } from 'constants';
+import InvestigatorRow from 'components/core/InvestigatorRow';
 import InvestigatorImage from 'components/core/InvestigatorImage';
-import FactionGradient from 'components/core/FactionGradient';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 import { toRelativeDateString } from 'lib/datetime';
 import { parseBasicDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
-import DeckTitleBarComponent from './DeckTitleBarComponent';
 
 interface Props {
   deck: Deck;
@@ -32,7 +31,6 @@ interface Props {
   onPress?: (deck: Deck, investigator?: Card) => void;
   details?: ReactNode;
   subDetails?: ReactNode;
-  titleButton?: ReactNode;
   compact?: boolean;
   viewDeckButton?: boolean;
   killedOrInsane?: boolean;
@@ -167,10 +165,8 @@ export default class DeckListRow extends React.Component<Props> {
       deck,
       deckToCampaign,
       investigator,
-      titleButton,
       compact,
       subDetails,
-      fontScale,
     } = this.props;
     if (!deck || !investigator) {
       return (
@@ -184,41 +180,24 @@ export default class DeckListRow extends React.Component<Props> {
       );
     }
     const campaign = deckToCampaign && deckToCampaign[deck.id];
-    const killedOrInsane = this.killedOrInsane();
     return (
-      <View>
-        <View style={styles.column}>
-          <DeckTitleBarComponent
-            name={compact && investigator ? investigator.name : deck.name}
-            investigator={investigator}
-            button={titleButton}
-            fontScale={fontScale}
-            killedOrInsane={killedOrInsane}
-            compact
-          />
-          <FactionGradient faction_code={killedOrInsane ? 'dead' : investigator.factionCode()}>
-            <View style={styles.investigatorBlock}>
-              <View style={styles.investigatorBlockRow}>
-                { this.renderInvestigatorImage(investigator) }
-                <View style={[styles.column, styles.titleColumn]}>
-                  { !compact && (
-                    <Text style={typography.label}>
-                      { investigator.name }
-                    </Text>
-                  ) }
-                  { this.renderDeckDetails(investigator, campaign) }
-                </View>
+      <InvestigatorRow
+        investigator={investigator}
+        bigImage={!compact}
+        noFactionIcon={!compact}
+        eliminated={this.killedOrInsane()}
+        superTitle={compact ? undefined : deck.name}
+        button={(
+          <View style={styles.investigatorBlock}>
+            <View style={styles.investigatorBlockRow}>
+              <View style={[styles.column, styles.titleColumn]}>
+                { this.renderDeckDetails(investigator, campaign) }
               </View>
-              { subDetails }
             </View>
-          </FactionGradient>
-        </View>
-        <FactionGradient
-          faction_code={killedOrInsane ? 'dead' : investigator.factionCode()}
-          style={styles.footer}
-          dark
-        />
-      </View>
+            { subDetails }
+          </View>
+        )}
+      />
     );
   }
 
@@ -258,11 +237,6 @@ export default class DeckListRow extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  footer: {
-    height: 16,
-    borderBottomWidth: 1,
-    borderColor: '#333',
-  },
   column: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -277,7 +251,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   investigatorBlock: {
-    paddingTop: s,
     paddingBottom: s,
     width: '100%',
     flexDirection: 'column',

@@ -126,6 +126,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
       Animated.timing(anim, {
         toValue: SEARCH_BAR_HEIGHT + (!advancedOpen ? SEARCH_OPTIONS_HEIGHT : 0),
         duration: 200,
+        useNativeDriver: false,
       }).start();
     });
     this.setState({

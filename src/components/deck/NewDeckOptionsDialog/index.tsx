@@ -10,10 +10,11 @@ import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { SettingsEditText, SettingsSwitch } from 'react-native-settings-components';
+import { SettingsSwitch } from 'react-native-settings-components';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
+import EditText from 'components/core/EditText';
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { showDeckModal } from 'components/nav/helper';
 import TabooSetPicker from 'components/core/TabooSetPicker';
@@ -309,15 +310,12 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     }
     return (
       <>
-        <SettingsEditText
+        <EditText
           title={t`Name`}
-          containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
           dialogDescription={t`Enter a name for this deck.`}
-          negativeButtonTitle={t`Cancel`}
-          positiveButtonTitle={t`Done`}
           onValueChange={this._onDeckNameChange}
           value={deckName}
-          valueStyle={{ color: COLORS.black, flex: 3 }}
+          settingsStyle
         />
         <TabooSetPicker
           color={FACTION_COLORS[investigator.factionCode()]}

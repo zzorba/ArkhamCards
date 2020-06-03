@@ -542,6 +542,13 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         newSlots[code] = 0;
       }
     });
+    forEach(storyDeltas, (delta, code) => {
+      if (storyAssets[code] === undefined) {
+        if (delta) {
+          newSlots[code] = (deck.slots[code] || 0) + delta;
+        }
+      }
+    });
     return newSlots;
   }
 
@@ -596,8 +603,9 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         investigator={investigator}
         yithian={isYithian}
         button={this.deckButton(choices)}
-        detail={this.renderDetails(choices)}
-      />
+      >
+        { this.renderDetails(choices) }
+      </InvestigatorRow>
     );
   }
 }

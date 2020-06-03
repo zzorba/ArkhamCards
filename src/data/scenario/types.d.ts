@@ -53,7 +53,8 @@ export type InvestigatorSelector =
   | "defeated"
   | "not_resigned"
   | "any_resigned"
-  | "$input_value";
+  | "$input_value"
+  | "$fixed_investigator";
 export type BulletType = "none" | "small";
 export type CampaignDataEffect =
   | CampaignDataResultEffect
@@ -186,15 +187,18 @@ export interface StoryStepEffect {
 }
 export interface EarnXpEffect {
   type: "earn_xp";
-  investigator: "all" | "defeated" | "$input_value" | "lead_investigator";
+  investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
+  fixed_investigator?: string;
   bonus?: number;
 }
 export interface AddCardEffect {
   type: "add_card";
   investigator: InvestigatorSelector;
+  fixed_investigator?: string;
   optional?: boolean;
   card: string;
   ignore_deck_limit?: boolean;
+  non_story?: boolean;
 }
 export interface AddWeaknessEffect {
   type: "add_weakness";
@@ -204,8 +208,10 @@ export interface AddWeaknessEffect {
 }
 export interface RemoveCardEffect {
   type: "remove_card";
-  investigator?: "choice" | "$input_value";
+  investigator?: "choice" | "$input_value" | "$fixed_investigator";
+  fixed_investigator?: string;
   card: string;
+  non_story?: boolean;
 }
 export interface ReplaceCardEffect {
   type: "replace_card";
@@ -689,6 +695,7 @@ export interface StoryStep {
 export interface LocationSetupStep {
   id: string;
   type: "location_setup";
+  svg?: string;
   text: string;
   title?: string;
   note?: string;
@@ -702,10 +709,17 @@ export interface Scenario {
   scenario_name: string;
   full_name: string;
   xp_cost?: number;
+  side_scenario_type?: "challenge";
+  challenge?: ChallengeData;
   setup: string[];
   resolutions?: Resolution[];
   steps: Step[];
   type?: "interlude" | "epilogue" | "placeholder";
+}
+export interface ChallengeData {
+  investigator: string;
+  xp_cost: number;
+  requirements: string[];
 }
 export interface Resolution {
   id: string;

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 
 import EncounterIcon from 'icons/EncounterIcon';
+import { s } from 'styles/space';
 
 interface Props {
   code: string;
@@ -20,7 +21,7 @@ export default class BackgroundIcon extends React.Component<Props> {
       <View style={[styles.backgroundIcon, style || {}]}>
         <EncounterIcon
           encounter_code={code}
-          size={84}
+          size={100}
           color={color}
         />
       </View>
@@ -31,10 +32,10 @@ export default class BackgroundIcon extends React.Component<Props> {
 const styles = StyleSheet.create({
   backgroundIcon: {
     position: 'absolute',
-    right: 22,
+    right: s,
     top: 10,
-    width: 110,
+    width: 125,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
 });
