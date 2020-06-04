@@ -387,6 +387,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           onPress={this._onPress}
           disabled={!onPress && !onPressId}
           style={[styles.row, styles.fullHeight]}
+          testID={`SearchCard-${card.code}`}
         >
           <View style={[
             styles.cardTextRow,

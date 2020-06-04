@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
   },
   background: {
     position: 'absolute',
+    backgroundColor: 'rgba(128,128,128,.25)',
     top: 0,
     left: 0,
     width: '100%',

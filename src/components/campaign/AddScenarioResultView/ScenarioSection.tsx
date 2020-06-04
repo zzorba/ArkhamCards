@@ -155,11 +155,6 @@ class ScenarioSection extends React.Component<Props, State> {
           scenarios: this.possibleScenarios(),
           selected: selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name,
         },
-        options: {
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
-        },
       },
     });
   };

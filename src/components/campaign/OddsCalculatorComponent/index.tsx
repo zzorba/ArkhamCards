@@ -91,11 +91,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           scenarios: this.possibleScenarios(),
           selected: currentScenario.name,
         },
-        options: {
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
-        },
       },
     });
   };

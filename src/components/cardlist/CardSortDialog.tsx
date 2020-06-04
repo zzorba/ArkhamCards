@@ -24,6 +24,14 @@ interface Props {
 }
 
 export default class CardSortDialog extends React.Component<Props> {
+  static options() {
+    return {
+      layout: {
+        componentBackgroundColor: 'transparent',
+      },
+    };
+  }
+
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
   }

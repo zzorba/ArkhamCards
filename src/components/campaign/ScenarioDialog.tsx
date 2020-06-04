@@ -11,6 +11,14 @@ interface Props {
 }
 
 export default class ScenarioDialog extends React.Component<Props> {
+  static options() {
+    return {
+      layout: {
+        componentBackgroundColor: 'transparent',
+      },
+    };
+  }
+
   render() {
     const {
       componentId,

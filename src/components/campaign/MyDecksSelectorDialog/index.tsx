@@ -139,11 +139,6 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
           sortChanged: this._sortChanged,
           selectedSort: this.state.selectedSort,
         },
-        options: {
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
-        },
       },
     });
   };

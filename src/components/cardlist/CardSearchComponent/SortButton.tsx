@@ -56,11 +56,6 @@ class SortButton extends React.Component<Props> {
           selectedSort: this.props.sort,
           hasEncounterCards: this.props.mythosMode,
         },
-        options: {
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
-        },
       },
     });
   };
@@ -72,7 +67,7 @@ class SortButton extends React.Component<Props> {
     const defaultColor = Platform.OS === 'ios' ? '#007AFF' : COLORS.button;
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this._onPress}>
+        <TouchableOpacity onPress={this._onPress} testID="Sort">
           <View style={styles.touchable}>
             <MaterialIcons name="sort-by-alpha" size={28} color={lightButton ? 'white' : defaultColor} />
           </View>

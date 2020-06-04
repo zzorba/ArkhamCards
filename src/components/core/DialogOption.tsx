@@ -15,6 +15,14 @@ interface Props {
   noCapitalize?: boolean;
 }
 export default class DialogOption extends React.Component<Props> {
+  static get options() {
+    return ({
+      overlay: {
+        interceptTouchOutside: true
+      }
+    });
+  }
+
   _onPress = () => {
     const {
       text,
@@ -32,7 +40,7 @@ export default class DialogOption extends React.Component<Props> {
     } = this.props;
     return (
       <View style={[styles.item, { height: 50 * fontScale }]}>
-        <TouchableOpacity onPress={this._onPress}>
+        <TouchableOpacity onPress={this._onPress} testID={`Sort-${text}`}>
           <Text
             style={[styles.itemText, { fontSize: text.length > 30 ? 14 : 22 }]}
             numberOfLines={2}

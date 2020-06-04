@@ -13,6 +13,13 @@ interface Props {
 }
 
 export default class CampaignDifficultyDialog extends React.Component<Props> {
+  static options() {
+    return {
+      layout: {
+        componentBackgroundColor: 'transparent',
+      },
+    };
+  }
   _onChoice = (value: string) => {
     const difficulty = find(DIFFICULTIES, code =>
       difficultyString(code) === value);

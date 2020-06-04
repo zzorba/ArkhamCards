@@ -447,11 +447,6 @@ class NewCampaignView extends React.Component<Props, State> {
           difficulty: this.state.difficulty,
           updateDifficulty: this._updateDifficulty,
         },
-        options: {
-          layout: {
-            backgroundColor: 'rgba(128,128,128,.75)',
-          },
-        },
       },
     });
   };

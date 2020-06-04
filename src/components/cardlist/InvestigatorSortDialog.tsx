@@ -17,6 +17,14 @@ interface Props {
 }
 
 export default class InvestigatorSortDialog extends React.Component<Props> {
+  static options() {
+    return {
+      layout: {
+        componentBackgroundColor: 'transparent',
+      },
+    };
+  }
+
   static sortToCopy(sort: SortType) {
     switch (sort) {
       case SORT_BY_TITLE: return t`Title`;

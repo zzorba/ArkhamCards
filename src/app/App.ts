@@ -75,7 +75,7 @@ export default class App {
               icon: iconsMap.add,
               id: 'add',
               color: COLORS.navButton,
-              testID: t`New Deck`,
+              testID: 'NewDeck',
             }],
           },
         },
@@ -93,7 +93,7 @@ export default class App {
               icon: iconsMap.add,
               id: 'add',
               color: COLORS.navButton,
-              testID: t`New Campaign`,
+              testID: 'NewCampaign',
             }],
           },
         },
@@ -118,6 +118,7 @@ export default class App {
           bottomTab: {
             text: t`Cards`,
             icon: iconsMap.cards,
+            testId: 'Bottom_Cards',
           },
         },
       },
@@ -128,6 +129,7 @@ export default class App {
           bottomTab: {
             text: t`Decks`,
             icon: iconsMap.deck,
+            testId: 'Bottom_Decks',
           },
         },
       },
@@ -138,6 +140,7 @@ export default class App {
           bottomTab: {
             text: t`Campaigns`,
             icon: iconsMap.book,
+            testId: 'Bottom_Campaigns',
           },
         },
       },
@@ -148,6 +151,7 @@ export default class App {
           bottomTab: {
             text: t`Settings`,
             icon: iconsMap.settings,
+            testId: 'Bottom_Settings',
           },
         },
       },

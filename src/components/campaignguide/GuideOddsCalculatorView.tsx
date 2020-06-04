@@ -1,4 +1,5 @@
 import React from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { forEach, flatMap } from 'lodash';
 import { connect } from 'react-redux';
 
@@ -50,7 +51,7 @@ class GuideOddsCalculatorView extends React.Component<Props> {
     const allInvestigators = this.allInvestigators();
     return (
       <CardQueryWrapper name="guide-odds" query={SCENARIO_CARDS_QUERY}>
-        { scenarioCards => (
+        { scenarioCards => scenarioCards.length ? (
           <OddsCalculatorComponent
             campaign={campaign}
             chaosBag={chaosBag}
@@ -60,6 +61,10 @@ class GuideOddsCalculatorView extends React.Component<Props> {
             allInvestigators={allInvestigators}
             scenarioCards={scenarioCards}
           />
+        ) : (
+          <View style={styles.loading}>
+            <ActivityIndicator size="small" />
+          </View>
         ) }
       </CardQueryWrapper>
     );
@@ -95,3 +100,11 @@ export default connect(mapStateToProps)(
   )
 );
 
+const styles = StyleSheet.create({
+  loading: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+});
