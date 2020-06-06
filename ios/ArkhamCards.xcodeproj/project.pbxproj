@@ -37,6 +37,7 @@
 		65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9C247EE0B500286F16 /* pl.po.json */; };
 		65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */ = {isa = PBXBuildFile; fileRef = 65F8DB9D247EE0B500286F16 /* uk.po.json */; };
 		65F8DBA4247EEBC100286F16 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F8DBA3247EEBC100286F16 /* Bridge.swift */; };
+		8771D18D6FA89F3C71B60A87 /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B12BAED462D323E8F4C844 /* libPods-ArkhamCards-ArkhamCardsUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		05473A831C53C7FA3DC2E1A2 /* Pods-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		09B12BAED462D323E8F4C844 /* libPods-ArkhamCards-ArkhamCardsUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-ArkhamCardsUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* ArkhamCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArkhamCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ArkhamCards/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ArkhamCards/AppDelegate.m; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ArkhamCards/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ArkhamCards/main.m; sourceTree = "<group>"; };
 		184A961D85085A21CA4AAC7A /* libPods-ArkhamCards-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		231B73C11372A5E199409AAE /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B0BDDE31E78DE8A3A314744 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		715668562027058C00376EED /* Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsTests/Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		77826D98D567F5BAA673BAA1 /* Pods-ArkhamCards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.debug.xcconfig"; sourceTree = "<group>"; };
 		AF212649A356FC508AC5DF85 /* Pods-ArkhamCardsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCardsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCardsTests/Pods-ArkhamCardsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B45475752BA6DA496FC3752F /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CAB040D549E643C0A271ADCC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D015900F71F34A5187CC75F4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		DCFA4586462A01391995CA1B /* Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsTests/Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8771D18D6FA89F3C71B60A87 /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +168,7 @@
 			children = (
 				654277262365FE7200D394B1 /* libPods-ArkhamCards.a */,
 				184A961D85085A21CA4AAC7A /* libPods-ArkhamCards-ArkhamCardsTests.a */,
+				09B12BAED462D323E8F4C844 /* libPods-ArkhamCards-ArkhamCardsUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 				05473A831C53C7FA3DC2E1A2 /* Pods-ArkhamCardsTests.release.xcconfig */,
 				715668562027058C00376EED /* Pods-ArkhamCards-ArkhamCardsTests.debug.xcconfig */,
 				DCFA4586462A01391995CA1B /* Pods-ArkhamCards-ArkhamCardsTests.release.xcconfig */,
+				B45475752BA6DA496FC3752F /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */,
+				231B73C11372A5E199409AAE /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -251,9 +259,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 655BAD7C248739AD00854210 /* Build configuration list for PBXNativeTarget "ArkhamCardsUITests" */;
 			buildPhases = (
+				AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */,
 				655BAD6F248739AD00854210 /* Sources */,
 				655BAD70248739AD00854210 /* Frameworks */,
 				655BAD71248739AD00854210 /* Resources */,
+				12301E85C125DDC678D7BE91 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -417,6 +427,76 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		12301E85C125DDC678D7BE91 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE29C1752D982FDDBA12131F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ArkhamCards-ArkhamCardsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D2CF3EC98B2CE98156C3E70B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -492,7 +572,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -535,7 +615,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,13 +650,16 @@
 		};
 		655BAD7A248739AD00854210 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B45475752BA6DA496FC3752F /* Pods-ArkhamCards-ArkhamCardsUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 54773FU58P;
@@ -598,13 +681,16 @@
 		};
 		655BAD7B248739AD00854210 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 231B73C11372A5E199409AAE /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

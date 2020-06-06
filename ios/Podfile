@@ -78,7 +78,7 @@ target 'ArkhamCards' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'ArkhamCardsTests' do
+  target 'ArkhamCardsUITests' do
     inherit! :complete
     # Pods for testing
   end
