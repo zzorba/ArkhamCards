@@ -6804,8 +6804,8 @@
       "steps": ["terrible_fate", "carcosa_merged", "all_insane", "lose"]
     },
     {
-      "id": "R4",
-      "title": "Resolution 4",
+      "id": "R5",
+      "title": "Resolution 5",
       "text": "The outside world will never know how you tried to save them. They treat you with pity, with scorn and contempt, but you know the truth. They are resigned to their hideous fate, but still you try day after day to bring them your message. You must warn them of The King in Yellow, of Hastur and of Carcosa. “Another lost soul,” they say, but they cannot possibly fathom what you have gone through in your attempt to save them. You warn them that he is coming to claim them, but they never believe you. You write of Aldebaran and of the black stars on the wall of your cell, but the words become faded as the years go by. Your warning is never heeded.",
       "steps": ["could_not_escape", "hastur_has_you", "all_insane", "lose"]
     }
@@ -8459,9 +8459,10 @@
             "text": "Read Act II",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "read_act_2",
+                "cards": "$input_value",
                 "text": "#name# read Act 2 of The King in Yellow."
               },
               {
@@ -17838,8 +17839,8 @@
       ]
     },
     {
-      "id": "R4",
-      "title": "Resolution 4",
+      "id": "R5",
+      "title": "Resolution 5",
       "text": "The outside world will never know how you tried to save them. They treat you with pity, with scorn and contempt, but you know the truth. They are resigned to their hideous fate, but still you try day after day to bring them your message. You must warn them of The King in Yellow, of Hastur and of Carcosa. “Another lost soul,” they say, but they cannot possibly fathom what you have gone through in your attempt to save them. You warn them that he is coming to claim them, but they never believe you. You write of Aldebaran and of the black stars on the wall of your cell, but the words become faded as the years go by. Your warning is never heeded.",
       "steps": [
         "could_not_escape",
@@ -19156,9 +19157,10 @@
             "text": "Read Act II",
             "effects": [
               {
-                "type": "campaign_log",
+                "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "read_act_2",
+                "cards": "$input_value",
                 "text": "#name# read Act 2 of The King in Yellow."
               },
               {

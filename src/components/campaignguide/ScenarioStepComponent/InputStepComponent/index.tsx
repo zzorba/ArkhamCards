@@ -87,6 +87,7 @@ export default class InputStepComponent extends React.Component<Props> {
             </SetupStepWrapper>
             <InvestigatorCounterComponent
               id={step.id}
+              countText={step.input.text}
             />
           </>
         );
