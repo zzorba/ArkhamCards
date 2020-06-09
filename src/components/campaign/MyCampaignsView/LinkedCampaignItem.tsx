@@ -11,7 +11,7 @@ import { CardsMap } from 'data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { getCampaign, AppState } from 'reducers';
-import { s } from 'styles/space';
+import { m, s } from 'styles/space';
 
 interface OwnProps {
   campaign: Campaign;
@@ -76,7 +76,7 @@ export default connect(mapStateToProps)(LinkedCampaignItem);
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: s,
+    paddingLeft: m,
     paddingRight: s,
     paddingTop: s,
     borderBottomWidth: 1,

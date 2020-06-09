@@ -15,7 +15,7 @@ import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from 'reducers';
 import COLORS from 'styles/colors';
 import typography from 'styles/typography';
-import { s, xs } from 'styles/space';
+import { m, xs } from 'styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: xs,
     paddingBottom: xs,
-    paddingLeft: s,
-    paddingRight: s,
+    paddingLeft: m,
+    paddingRight: m,
   },
   searchOption: {
     marginRight: 2,

@@ -35,6 +35,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         <BackgroundIcon
           code={campaignGuide.campaignCycleCode()}
           color={inverted ? COLORS.black : color}
+          small
         />
         <View>
           <GameHeader text={campaignGuide.campaignName()} />

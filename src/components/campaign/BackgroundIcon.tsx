@@ -8,6 +8,7 @@ interface Props {
   code: string;
   color: string;
   style?: ViewStyle;
+  small?: boolean;
 }
 
 export default class BackgroundIcon extends React.Component<Props> {
@@ -16,12 +17,13 @@ export default class BackgroundIcon extends React.Component<Props> {
       code,
       color,
       style,
+      small
     } = this.props;
     return (
       <View style={[styles.backgroundIcon, style || {}]}>
         <EncounterIcon
           encounter_code={code}
-          size={100}
+          size={small ? 75 : 100}
           color={color}
         />
       </View>

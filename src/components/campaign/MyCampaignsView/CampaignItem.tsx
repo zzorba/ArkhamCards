@@ -9,7 +9,7 @@ import { Campaign, CUSTOM } from 'actions/types';
 import { CardsMap } from 'data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { m } from 'styles/space';
+import { m, s } from 'styles/space';
 
 interface Props {
   campaign: Campaign;
@@ -50,7 +50,9 @@ export default class CampaignItem extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    padding: m,
+    paddingLeft: m,
+    paddingRight: s,
+    paddingTop: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#888',
     flexDirection: 'column',
