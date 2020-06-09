@@ -143,12 +143,15 @@ android {
         applicationId "com.arkhamcards"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 143
-        versionName "2.3.1"
+        versionCode 144
+        versionName "2.3.2"
         manifestPlaceholders = [
             appAuthRedirectScheme: 'arkhamcards'
         ]
         multiDexEnabled true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
     splits {
         abi {

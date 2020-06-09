@@ -1,10 +1,8 @@
 import React, { ReactNode } from 'react';
 import {
   ActivityIndicator,
-  Platform,
   StyleSheet,
   Text,
-  TouchableNativeFeedback,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -147,19 +145,6 @@ export default class DeckListRow extends React.Component<Props> {
     );
   }
 
-  renderInvestigatorImage(investigator: Card) {
-    return (
-      <View style={styles.image}>
-        <InvestigatorImage
-          card={investigator}
-          killedOrInsane={this.killedOrInsane()}
-          yithian={this.yithian()}
-          border
-        />
-      </View>
-    );
-  }
-
   renderContents() {
     const {
       deck,
@@ -221,17 +206,10 @@ export default class DeckListRow extends React.Component<Props> {
     if (viewDeckButton) {
       return this.renderContents();
     }
-    if (Platform.OS === 'ios' || !TouchableNativeFeedback.canUseNativeForeground()) {
-      return (
-        <TouchableOpacity onPress={this._onPress}>
-          { this.renderContents() }
-        </TouchableOpacity>
-      );
-    }
     return (
-      <TouchableNativeFeedback useForeground onPress={this._onPress}>
+      <TouchableOpacity onPress={this._onPress}>
         { this.renderContents() }
-      </TouchableNativeFeedback>
+      </TouchableOpacity>
     );
   }
 }
