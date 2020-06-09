@@ -134,4 +134,7 @@ export default StyleSheet.create({
   marginRightS: {
     marginRight: s,
   },
+  paddingbottomL: {
+    paddingBottom: l,
+  },
 });

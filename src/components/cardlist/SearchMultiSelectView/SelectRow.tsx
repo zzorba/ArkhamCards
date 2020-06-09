@@ -7,6 +7,7 @@ import {
 
 import Switch from 'components/core/Switch';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   value: string;
@@ -57,5 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'System',
     flex: 1,
+    color: COLORS.darkTextColor,
   },
 });

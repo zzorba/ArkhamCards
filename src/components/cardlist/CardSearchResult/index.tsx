@@ -175,7 +175,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <ArkhamIcon
           name={skill}
           size={SKILL_ICON_SIZE}
-          color="#444"
+          color={COLORS.lightTextColor}
         />
       </View>
     ));

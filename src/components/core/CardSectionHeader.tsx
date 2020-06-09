@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   subHeaderRow: {
-    backgroundColor: '#eee',
+    backgroundColor: COLORS.veryLightBackgroundColor,
     paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     borderColor: '#bdbdbd',
   },
   headerRow: {
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.lightBackgroundColor,
     paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,

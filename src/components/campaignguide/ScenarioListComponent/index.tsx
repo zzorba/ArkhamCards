@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import { ProcessedCampaign } from 'data/scenario';
@@ -7,6 +7,7 @@ import ScenarioButton from './ScenarioButton';
 import AddSideScenarioButton from './AddSideScenarioButton';
 import { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -33,7 +34,7 @@ export default class ScenarioListTab extends React.Component<Props> {
       showLinkedScenario,
     } = this.props;
     return (
-      <View style={space.marginBottomL}>
+      <View style={[space.paddingBottomL, styles.wrapper]}>
         { map(processedCampaign.scenarios, (scenario, idx) => (
           <ScenarioButton
             key={idx}
@@ -57,3 +58,10 @@ export default class ScenarioListTab extends React.Component<Props> {
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: COLORS.backgroundColor,
+  },
+});

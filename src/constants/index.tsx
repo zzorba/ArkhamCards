@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { mapValues } from 'lodash';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
+import COLORS from 'styles/colors';
 
 export type TypeCodeType =
   'asset' |
@@ -122,7 +123,7 @@ export const FACTION_COLORS: { [faction_code: string]: string } = {
   guardian: '#2b80c5',
   rogue: '#107116',
   survivor: '#cc3038',
-  neutral: '#000000',
+  neutral: COLORS.darkTextColor,
   dual: '#868600',
   dead: '#704214',
 };

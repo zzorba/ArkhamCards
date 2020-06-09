@@ -12,7 +12,7 @@ export default StyleSheet.create({
     fontSize: 24 * sizeScale,
     lineHeight: 32 * sizeScale,
     fontWeight: '600',
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   cardText: {
     fontFamily: 'System',
@@ -23,13 +23,13 @@ export default StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18 * sizeScale,
     lineHeight: 22 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   small: {
     fontFamily: 'System',
     fontSize: SMALL_FONT_SIZE,
     lineHeight: 18 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   italic: {
     fontWeight: '300',
@@ -46,35 +46,35 @@ export default StyleSheet.create({
     fontFamily: 'System',
     fontSize: 16 * sizeScale,
     marginRight: 8 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   bigLabel: {
     fontFamily: 'System',
     fontSize: 22 * sizeScale,
     lineHeight: 28 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   bold: {
     fontWeight: '700',
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   gameFont: {
     fontFamily: 'Teutonic',
     fontSize: 18 * sizeScale,
     lineHeight: 26 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   mediumGameFont: {
     fontFamily: 'Teutonic',
     fontSize: 24 * sizeScale,
     lineHeight: 30 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   bigGameFont: {
     fontFamily: 'Teutonic',
     fontSize: 28 * sizeScale,
     lineHeight: 36 * sizeScale,
-    color: '#222',
+    color: COLORS.darkTextColor,
   },
   dialogLabel: Platform.select({
     ios: {

@@ -10,6 +10,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import { FACTION_BACKGROUND_COLORS } from 'constants';
 import Card from 'data/Card';
 import { isBig } from 'styles/space';
+import COLORS from 'styles/colors';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
@@ -97,14 +98,14 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           <AppIcon
             name={`${inverted ? '' : 'inverted_'}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? color : '#FFF'}
+            color={inverted ? color : COLORS.veryLightBackgroundColor}
           />
         </View>
         <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? '#FFF' : color}
+            color={inverted ? COLORS.backgroundColor : color}
           />
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
@@ -112,7 +113,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
             <View>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color="#FFF"
+                color={COLORS.backgroundColor}
                 size={ICON_SIZE / 2}
               />
             </View>
@@ -148,6 +149,6 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    color: '#FFF',
+    color: COLORS.backgroundColor,
   },
 });

@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: '#bbb',
+    backgroundColor: COLORS.backgroundColor,
   },
   row: {
     flexDirection: 'row',
