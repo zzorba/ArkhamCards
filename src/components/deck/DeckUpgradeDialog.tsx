@@ -282,6 +282,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
 });

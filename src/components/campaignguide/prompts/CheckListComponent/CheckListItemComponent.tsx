@@ -6,6 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import Switch from 'components/core/Switch';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   code: string;
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

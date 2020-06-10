@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   activityIndicatorContainer: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

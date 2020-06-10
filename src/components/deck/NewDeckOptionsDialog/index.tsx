@@ -347,7 +347,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         { signedIn ? (
           <SettingsSwitch
             title={t`Create on ArkhamDB`}
-            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
+            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider }}
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
@@ -372,7 +372,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           <SettingsSwitch
             title={t`Use Starter Deck`}
             value={starterDeck}
-            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
+            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider }}
             onValueChange={this._onStarterDeckChange}
             trackColor={COLORS.switchTrackColor}
           />

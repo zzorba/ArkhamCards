@@ -15,7 +15,7 @@ import { DrawWeaknessProps } from 'components/weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { NavigationProps } from 'components/nav/types';
 import { Campaign, Deck, DeckMeta, Slots } from 'actions/types';
-import { FACTION_DARK_GRADIENTS, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
+import { FACTION_DARK_COLOR, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
 import Card from 'data/Card';
 import { getCampaign, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -122,7 +122,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
+              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
             },
           },
         },
@@ -218,7 +218,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
+              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
             },
           },
         },
@@ -264,7 +264,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
+              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
             },
           },
         },
@@ -430,7 +430,7 @@ const styles = StyleSheet.create({
   header: {
     marginTop: l,
     borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   headerText: {
     paddingLeft: s,

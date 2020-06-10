@@ -9,7 +9,7 @@ import { DeckDetailProps } from 'components/deck/DeckDetailView';
 import { CardDetailProps } from 'components/card/CardDetailView';
 import { CardDetailSwipeProps } from 'components/card/CardDetailSwipeView';
 import { Deck, ParsedDeck, Slots } from 'actions/types';
-import { FACTION_DARK_GRADIENTS } from 'constants';
+import { FACTION_DARK_COLOR } from 'constants';
 import Card from 'data/Card';
 import { iconsMap } from 'app/NavIcons';
 import COLORS from 'styles/colors';
@@ -52,9 +52,9 @@ export function getDeckOptions(
         color: '#FFFFFF',
       },
       background: {
-        color: FACTION_DARK_GRADIENTS[
+        color: FACTION_DARK_COLOR[
           (investigator ? investigator.faction_code : null) || 'neutral'
-        ][0],
+        ],
       },
     },
     bottomTabs: {

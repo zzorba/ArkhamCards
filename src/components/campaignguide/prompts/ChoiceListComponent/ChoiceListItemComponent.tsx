@@ -7,6 +7,7 @@ import { DisplayChoice } from 'data/scenario';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   code: string;
@@ -105,6 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

@@ -11,6 +11,7 @@ import Card from 'data/Card';
 import { RandomLocationInput } from 'data/scenario/types';
 import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
 import { m, l } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   input: RandomLocationInput;
@@ -142,7 +143,7 @@ export default class RandomLocationInputComponent extends React.Component<Props,
 const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   container: {
     marginTop: m,

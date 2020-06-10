@@ -50,7 +50,7 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import { updateCampaign } from 'components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from 'components/core/withPlayerCards';
-import { FACTION_DARK_GRADIENTS } from 'constants';
+import { FACTION_DARK_COLOR } from 'constants';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
@@ -588,7 +588,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
+              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
             },
           },
         },
@@ -644,7 +644,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[investigator ? investigator.factionCode() : 'neutral'][0],
+              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
             },
           },
         },
@@ -689,7 +689,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_GRADIENTS[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'][0],
+              color: FACTION_DARK_COLOR[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'],
             },
           },
         },
@@ -1905,13 +1905,13 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   container: {
     position: 'relative',
     height: '100%',
     width: '100%',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   spinner: {
     height: 80,
@@ -1920,7 +1920,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   errorMargin: {
     padding: m,
@@ -1928,7 +1928,7 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   destructive: {
     color: COLORS.red,

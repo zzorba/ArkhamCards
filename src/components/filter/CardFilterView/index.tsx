@@ -590,8 +590,8 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   toggleStack: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
-    backgroundColor: COLORS.backgroundColor,
+    borderColor: COLORS.divider,
+    backgroundColor: COLORS.background,
   },
   toggleRow: {
     flexDirection: 'row',

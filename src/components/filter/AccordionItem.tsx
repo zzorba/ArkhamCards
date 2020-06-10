@@ -10,6 +10,7 @@ import {
 import Switch from 'components/core/Switch';
 import typography from 'styles/typography';
 import { isBig, s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   label: string;
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     overflow: 'hidden',
     borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   row: {
     paddingTop: xs,

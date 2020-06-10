@@ -10,6 +10,7 @@ import ChaosTokenIcon from './ChaosTokenIcon';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from 'constants';
 import space, { iconSizeScale } from 'styles/space';
 import typography from 'styles/typography';
+import COLORS from 'styles/colors';
 
 interface Props {
   chaosBag: ChaosBag;
@@ -31,7 +32,7 @@ export default function ChaosBagLine({ chaosBag, fontScale }: Props) {
               <ChaosTokenIcon
                 icon={token}
                 size={24 * iconSizeScale * fontScale}
-                color="#222"
+                color={COLORS.darkText}
               />
               { !isLast && <Text style={typography.header}>, </Text> }
             </View>

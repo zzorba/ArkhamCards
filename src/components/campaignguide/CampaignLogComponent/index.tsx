@@ -14,6 +14,7 @@ import CampaignGuide from 'data/scenario/CampaignGuide';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import typography from 'styles/typography';
 import space, { m, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -181,7 +182,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
   render() {
     const { campaignGuide } = this.props;
     return (
-      <>
+      <View style={styles.wrapper}>
         { this.renderChaosBag() }
         { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
@@ -193,18 +194,21 @@ export default class CampaignLogComponent extends React.Component<Props> {
             </View>
           );
         }) }
-      </>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: COLORS.background,
+  },
   section: {
     padding: m,
     paddingLeft: m + s,
     paddingRight: m + s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   crossedOut: {
     textDecorationLine: 'line-through',

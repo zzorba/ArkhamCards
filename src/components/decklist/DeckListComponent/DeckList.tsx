@@ -120,6 +120,6 @@ export default withPlayerCards(DeckList);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
 });

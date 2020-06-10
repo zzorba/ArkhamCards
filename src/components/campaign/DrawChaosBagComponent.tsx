@@ -358,7 +358,7 @@ const styles = StyleSheet.create({
   },
   containerTop: {
     alignItems: 'center',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     borderBottomColor: COLORS.gray,
     borderBottomWidth: 1,
     flex: 1,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     padding: s,
   },
   containerBottom: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     flex: 1,
     flexDirection: 'column',
   },

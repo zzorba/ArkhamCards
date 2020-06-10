@@ -7,6 +7,7 @@ import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from 'data/scenario';
 import { m, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   choice: DisplayChoice;
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
     flexDirection: 'row',
   },
   padding: {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   bullet: {
     marginRight: m,

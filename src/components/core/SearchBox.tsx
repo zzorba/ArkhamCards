@@ -59,6 +59,7 @@ export default class SearchBox extends React.Component<Props> {
             allowFontScaling={false}
             onChangeText={onChangeText}
             placeholder={placeholder}
+            placeholderTextColor={COLORS.lightText}
             value={value}
           />
           { this.renderToggleButton() }
@@ -71,17 +72,17 @@ export default class SearchBox extends React.Component<Props> {
 const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: 1,
-    borderColor: '#eee',
+    borderColor: COLORS.divider,
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.background,
     width: '100%',
   },
   searchInputWrapper: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 8,
@@ -93,8 +94,8 @@ const styles = StyleSheet.create({
     padding: 10,
     fontFamily: 'System',
     fontSize: 18,
-    color: '#111',
-    backgroundColor: '#EEE',
+    color: COLORS.darkText,
+    backgroundColor: COLORS.veryLightBackground,
     borderRadius: 10,
   },
   icon: {

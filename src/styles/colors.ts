@@ -3,17 +3,22 @@ import {
 } from 'react-native';
 
 export default {
-  // darkTextColor: '#ddd',
-  // lightTextColor: '#aaa',
-  // backgroundColor: '#111',
-  // lightBackgroundColor: '#444',
-  // veryLightBackgroundColor: '#222',
-
-  darkTextColor: '#222',
-  lightTextColor: 'rgb(120, 120, 120)',
-  backgroundColor: 'white',
-  lightBackgroundColor: '#ccc',
-  veryLightBackgroundColor: '#eee',
+  // Dark Mode Colors
+  /*
+   darkText: '#ddd',
+   lightText: '#aaa',
+   background: '#111',
+   lightBackground: '#444',
+   veryLightBackground: '#222',
+   divider: '#444',
+*/
+  // Normal Colors
+  darkText: '#111',
+  lightText: 'rgb(120, 120, 120)',
+  background: 'white',
+  lightBackground: '#ccc',
+  veryLightBackground: '#eee',
+  divider: "#bdbdbd",
 
   scenarioGreen: '#2E5344',
   veryLightBlue: '#cce4ff',

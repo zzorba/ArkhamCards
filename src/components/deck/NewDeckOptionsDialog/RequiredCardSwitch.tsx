@@ -31,7 +31,7 @@ export default class RequiredCardSwitch extends React.Component<Props> {
       <SettingsSwitch
         disabled={disabled}
         title={label}
-        containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: '#888' }}
+        containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider }}
         disabledOverlayStyle={{ backgroundColor: 'transparent' }}
         value={value}
         onValueChange={this._onValueChange}

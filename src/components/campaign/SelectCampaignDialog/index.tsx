@@ -25,6 +25,7 @@ import withDimensions, { DimensionsProps } from 'components/core/withDimensions'
 import { campaignName } from '../constants';
 import { NavigationProps } from 'components/nav/types';
 import { getPacksInCollection, AppState } from 'reducers';
+import COLORS from 'styles/colors';
 
 export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
@@ -150,6 +151,6 @@ const styles = StyleSheet.create({
   },
   button: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

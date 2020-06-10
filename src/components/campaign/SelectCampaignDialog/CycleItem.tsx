@@ -10,6 +10,7 @@ import { CampaignCycleCode } from 'actions/types';
 import EncounterIcon from 'icons/EncounterIcon';
 import { s, iconSizeScale } from 'styles/space';
 import typography from 'styles/typography';
+import COLORS from 'styles/colors';
 
 interface Props {
   fontScale: number;
@@ -76,8 +77,8 @@ const styles = StyleSheet.create({
   campaignRow: {
     paddingTop: s,
     paddingBottom: s,
-    borderBottomWidth: 1,
-    borderColor: '#888',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',

@@ -59,7 +59,7 @@ export default class FactionSelectPicker extends React.Component<Props> {
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',
-          textColor: COLORS.darkTextColor,
+          textColor: COLORS.darkText,
         }}
         choices={map(factions, size => {
           return {

@@ -652,12 +652,12 @@ export default withPlayerCards<NavigationProps & CampaignDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   destructive: {
     color: COLORS.red,

@@ -18,12 +18,12 @@ import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import { iconsMap } from 'app/NavIcons';
 import { parseDeck } from 'lib/parseDeck';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from 'reducers';
-import COLORS from 'styles/colors';
 import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
 import WeaknessDrawComponent from '../weakness/WeaknessDrawComponent';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 import { xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: number;
@@ -414,6 +414,6 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
 });

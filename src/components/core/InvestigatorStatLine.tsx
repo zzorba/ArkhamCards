@@ -11,6 +11,7 @@ import Card from 'data/Card';
 import { TINY_PHONE } from 'styles/sizes';
 import { isBig, m, s, xs } from 'styles/space';
 import typography from 'styles/typography';
+import COLORS from 'styles/colors';
 
 interface Props {
   investigator: Card;
@@ -25,48 +26,84 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
         <Text style={typography.mediumGameFont}>
           { investigator.skill_willpower || 0 }
         </Text>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name="skill_willpower"
-            size={ICON_SIZE}
-            color={SKILL_COLORS.willpower}
-          />
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_willpower_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_willpower"
+              size={ICON_SIZE}
+              color={SKILL_COLORS.willpower}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.skillIconBlock}>
         <Text style={typography.mediumGameFont}>
           { investigator.skill_intellect || 0 }
         </Text>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name="skill_intellect"
-            size={ICON_SIZE}
-            color={SKILL_COLORS.intellect}
-          />
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_intellect_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_intellect"
+              size={ICON_SIZE}
+              color={SKILL_COLORS.intellect}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.skillIconBlock}>
         <Text style={typography.mediumGameFont}>
           { investigator.skill_combat || 0 }
         </Text>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name="skill_combat"
-            size={ICON_SIZE}
-            color={SKILL_COLORS.combat}
-          />
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_combat_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_combat"
+              size={ICON_SIZE}
+              color={SKILL_COLORS.combat}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.skillIconBlock}>
         <Text style={typography.mediumGameFont}>
           { investigator.skill_agility || 0 }
         </Text>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name="skill_agility"
-            size={ICON_SIZE}
-            color={SKILL_COLORS.agility}
-          />
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_agility_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_agility"
+              size={ICON_SIZE}
+              color={SKILL_COLORS.agility}
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -82,11 +119,17 @@ const styles = StyleSheet.create({
     marginLeft: TINY_PHONE ? 0 : s,
     marginRight: TINY_PHONE ? xs : m,
     borderWidth: TINY_PHONE ? 0 : 1,
-    borderColor: '#888',
-    backgroundColor: TINY_PHONE ? 'transparent' : '#FFF',
+    borderColor: COLORS.divider,
+    backgroundColor: TINY_PHONE ? 'transparent' : COLORS.veryLightBackground,
   },
   skillIcon: {
     marginLeft: 2,
+    position: 'relative',
+  },
+  icon: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   skillRow: {
     flexDirection: 'row',

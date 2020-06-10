@@ -11,6 +11,7 @@ import InvestigatorButton from 'components/core/InvestigatorButton';
 import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   id: string;
@@ -140,6 +141,6 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
 const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

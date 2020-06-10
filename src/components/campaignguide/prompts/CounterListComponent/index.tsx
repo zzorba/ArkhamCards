@@ -10,6 +10,7 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGu
 import { NumberChoices } from 'actions/types';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 export interface CounterItem {
   code: string;
@@ -168,6 +169,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

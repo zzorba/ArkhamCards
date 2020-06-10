@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
 });

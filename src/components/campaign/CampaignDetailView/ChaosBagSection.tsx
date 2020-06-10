@@ -12,6 +12,7 @@ import NavButton from 'components/core/NavButton';
 import ChaosBagLine from 'components/core/ChaosBagLine';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   fontScale: number;
@@ -58,7 +59,7 @@ export default function ChaosBagSection(props: Props) {
 
 const styles = StyleSheet.create({
   bottomBorder: {
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
 });

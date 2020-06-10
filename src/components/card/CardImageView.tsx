@@ -166,6 +166,6 @@ const styles = StyleSheet.create({
   },
   pinchZoom: {
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
 });

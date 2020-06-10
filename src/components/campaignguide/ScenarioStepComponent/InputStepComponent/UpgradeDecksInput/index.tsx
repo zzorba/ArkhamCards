@@ -24,6 +24,7 @@ import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from 'components/deck/a
 import { AppState } from 'reducers';
 import typography from 'styles/typography';
 import { m, s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
@@ -239,6 +240,6 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     paddingTop: s + m,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

@@ -71,7 +71,7 @@ export default class ParallelInvestigatorPicker extends React.Component<Props> {
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',
-          textColor: COLORS.darkTextColor,
+          textColor: COLORS.darkText,
         }}
         choices={[
           { text: t`Original` },

@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
     paddingTop: xs,
     paddingBottom: xs,
     borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   boldRow: {
     backgroundColor: '#ccc',
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   headerText: {
     marginLeft: s,

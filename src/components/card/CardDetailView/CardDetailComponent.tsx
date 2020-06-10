@@ -151,7 +151,7 @@ export default class CardDetailComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   viewContainer: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     flexDirection: 'column',
     alignItems: 'center',
   },

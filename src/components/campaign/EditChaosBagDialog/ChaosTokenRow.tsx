@@ -9,6 +9,7 @@ import { ChaosTokenType } from 'constants';
 import ChaosToken from 'components/core/ChaosToken';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   id: ChaosTokenType;
@@ -114,8 +115,8 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
   row: {
     flexDirection: 'row',

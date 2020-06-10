@@ -9,7 +9,7 @@ import {
 } from 'react-native-markdown-view';
 
 import { isBig } from 'styles/space';
-
+import COLORS from 'styles/colors';
 import { WithChildren, WithIconName, WithText, State } from './types';
 import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';
@@ -203,6 +203,7 @@ export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
           fontSize: (fontAdjustment || 1) * (isBig ? 24 : 14),
           marginTop: 4,
           marginBottom: 4,
+          color: COLORS.darkText,
         },
       }}
       onLinkPress={onLinkPress}

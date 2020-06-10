@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   children: React.ReactNode | React.ReactNode[];
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   row: {
     flexDirection: 'row',

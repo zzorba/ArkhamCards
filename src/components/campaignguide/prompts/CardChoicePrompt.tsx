@@ -24,6 +24,7 @@ import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from 'da
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
 import Card from 'data/Card';
 import { m } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -349,6 +350,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

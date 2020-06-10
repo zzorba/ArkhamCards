@@ -62,6 +62,6 @@ export default class ScenarioListTab extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
 });

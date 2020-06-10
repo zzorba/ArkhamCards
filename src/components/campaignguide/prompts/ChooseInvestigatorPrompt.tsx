@@ -9,6 +9,7 @@ import SinglePickerComponent from 'components/core/SinglePickerComponent';
 import Card from 'data/Card';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
+import COLORS from 'styles/colors';
 
 interface Props {
   id: string;
@@ -174,7 +175,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
 const styles = StyleSheet.create({
   wrapper: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   topBorder: {
     borderTopWidth: StyleSheet.hairlineWidth,

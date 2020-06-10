@@ -12,7 +12,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import CardCostIcon from 'components/core/CardCostIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import Card from 'data/Card';
-import { FACTION_COLORS, FACTION_DARK_GRADIENTS } from 'constants';
+import { FACTION_COLORS, FACTION_DARK_COLOR } from 'constants';
 import typography from 'styles/typography';
 import space, { m, s, xs } from 'styles/space';
 import COLORS from 'styles/colors';
@@ -66,7 +66,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       <View style={styles.wrapper}>
         <View style={[
           styles.headerColor,
-          { backgroundColor: FACTION_DARK_GRADIENTS[eliminated ? 'dead' : investigator.factionCode()][0] },
+          { backgroundColor: FACTION_DARK_COLOR[eliminated ? 'dead' : investigator.factionCode()] },
         ]} />
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
@@ -115,7 +115,7 @@ export default class InvestigatorRow extends React.Component<Props> {
         { !!children && children }
         <View style={[
           styles.headerColor,
-          { backgroundColor: FACTION_DARK_GRADIENTS[eliminated ? 'dead' : investigator.factionCode()][0] },
+          { backgroundColor: FACTION_DARK_COLOR[eliminated ? 'dead' : investigator.factionCode()] },
         ]} />
       </View>
     );
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'column',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bbb',
-    backgroundColor: COLORS.backgroundColor,
+    borderColor: COLORS.divider,
+    backgroundColor: COLORS.background,
   },
   row: {
     flexDirection: 'row',
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   title: {
-    color: COLORS.darkTextColor,
+    color: COLORS.darkText,
   },
   headerColor: {
     height: 16,

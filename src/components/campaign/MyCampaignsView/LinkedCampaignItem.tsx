@@ -12,6 +12,7 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { getCampaign, AppState } from 'reducers';
 import { m, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   campaign: Campaign;
@@ -79,8 +80,8 @@ const styles = StyleSheet.create({
     paddingLeft: m,
     paddingRight: s,
     paddingTop: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',

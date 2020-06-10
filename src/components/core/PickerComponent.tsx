@@ -168,10 +168,10 @@ export default class PickerComponent extends React.Component<Props> {
           backgroundColor: 'transparent',
         }}
         titleStyle={settingsStyle ? {
-          color: colors ? colors.textColor : COLORS.darkTextColor,
+          color: colors ? colors.textColor : COLORS.darkText,
         } : {
           ...typography.mediumGameFont,
-          color: colors ? colors.textColor : COLORS.darkTextColor,
+          color: colors ? colors.textColor : COLORS.darkText,
           fontWeight: '600',
         }}
         valueProps={{
@@ -180,7 +180,7 @@ export default class PickerComponent extends React.Component<Props> {
         }}
         valueStyle={{
           ...typography.label,
-          color: colors ? colors.textColor : COLORS.darkTextColor,
+          color: colors ? colors.textColor : COLORS.darkText,
           fontWeight: '400',
           textAlign: 'right',
         }}
@@ -189,9 +189,9 @@ export default class PickerComponent extends React.Component<Props> {
           paddingLeft: 0,
           flexDirection: 'row',
           justifyContent: 'space-between',
-          backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
+          backgroundColor: colors ? COLORS.background : COLORS.background,
           borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
-          borderColor: '#888',
+          borderColor: COLORS.divider,
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,
         }}
         widgetStyle={{}}

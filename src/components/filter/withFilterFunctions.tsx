@@ -268,6 +268,6 @@ export default function withFilterFunctions<P>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
 });

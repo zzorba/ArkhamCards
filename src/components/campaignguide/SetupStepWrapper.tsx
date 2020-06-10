@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
   border: {
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
-    backgroundColor: COLORS.backgroundColor,
+    borderColor: COLORS.divider,
+    backgroundColor: COLORS.background,
   },
   step: {
     flexDirection: 'row',

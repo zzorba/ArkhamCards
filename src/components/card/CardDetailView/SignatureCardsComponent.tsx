@@ -15,6 +15,7 @@ import Card from 'data/Card';
 import { where } from 'data/query';
 import { getTabooSet, AppState } from 'reducers';
 import space, { m, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface SignatureCards {
   requiredCards: Card[];
@@ -160,5 +161,6 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
+    color: COLORS.darkText,
   },
 });

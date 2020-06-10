@@ -147,7 +147,7 @@ export default function CardFlavorTextComponent(
           marginBottom: 4,
           fontWeight: '400',
           fontStyle: 'italic',
-          color: color || COLORS.darkTextColor,
+          color: color || COLORS.darkText,
         },
       }}
     >

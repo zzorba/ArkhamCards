@@ -181,7 +181,7 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

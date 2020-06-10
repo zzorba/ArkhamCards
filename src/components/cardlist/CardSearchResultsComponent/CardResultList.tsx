@@ -57,7 +57,7 @@ import Card from 'data/Card';
 import { showCard, showCardSwipe } from 'components/nav/helper';
 import typography from 'styles/typography';
 import { s, m } from 'styles/space';
-import { ReactElement } from 'simple-markdown';
+import COLORS from 'styles/colors';
 
 function funLoadingMessages() {
   return [
@@ -925,6 +925,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
 });

@@ -175,7 +175,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <ArkhamIcon
           name={skill}
           size={SKILL_ICON_SIZE}
-          color={COLORS.lightTextColor}
+          color={COLORS.lightText}
         />
       </View>
     ));
@@ -458,7 +458,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   rowContainer: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     position: 'relative',
     width: '100%',
     flexDirection: 'row',

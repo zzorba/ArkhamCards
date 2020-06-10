@@ -13,6 +13,7 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from 'components/core/NavButton';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   fontScale: number;
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   bottomBorder: {
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
 });

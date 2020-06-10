@@ -98,14 +98,14 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           <AppIcon
             name={`${inverted ? '' : 'inverted_'}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? color : COLORS.veryLightBackgroundColor}
+            color={inverted ? color : COLORS.veryLightBackground}
           />
         </View>
         <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? COLORS.backgroundColor : color}
+            color={inverted ? COLORS.background : color}
           />
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
@@ -113,7 +113,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
             <View>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color={COLORS.backgroundColor}
+                color={COLORS.background}
                 size={ICON_SIZE / 2}
               />
             </View>
@@ -149,6 +149,6 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    color: COLORS.backgroundColor,
+    color: COLORS.background,
   },
 });

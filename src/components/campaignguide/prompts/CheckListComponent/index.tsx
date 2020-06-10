@@ -13,6 +13,7 @@ import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 import { m, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 export interface ListItem {
   code: string;
@@ -209,11 +210,11 @@ const styles = StyleSheet.create({
     paddingRight: m,
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
     padding: s,
     paddingLeft: m,
     paddingRight: m,
@@ -223,7 +224,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   nameText: {
     fontWeight: '600',

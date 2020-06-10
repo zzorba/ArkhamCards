@@ -15,6 +15,7 @@ import EncounterIcon from 'icons/EncounterIcon';
 import Switch from 'components/core/Switch';
 import { PackCardsProps } from 'components/settings/PackCardsView';
 import { s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   componentId: string;
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   touchable: {
     height: 50,

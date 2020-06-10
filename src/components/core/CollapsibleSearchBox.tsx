@@ -161,19 +161,19 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
 const styles = StyleSheet.create({
   slider: {
     width: '100%',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   wrapper: {
     position: 'relative',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     flex: 1,
   },
   container: {
     flex: 1,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

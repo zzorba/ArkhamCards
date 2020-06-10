@@ -52,12 +52,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   title: {
     fontSize: 20,
     fontFamily: 'System',
     flex: 1,
-    color: COLORS.darkTextColor,
+    color: COLORS.darkText,
   },
 });

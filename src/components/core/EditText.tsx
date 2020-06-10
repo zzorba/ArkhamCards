@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
   value: {
     fontFamily: 'System',
     fontSize: 16,
-    color: COLORS.darkTextColor,
+    color: COLORS.darkText,
     flex: 3,
   },
   container: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

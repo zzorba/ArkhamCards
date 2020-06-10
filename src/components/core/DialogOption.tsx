@@ -7,6 +7,8 @@ import {
   View,
 } from 'react-native';
 
+import COLORS from 'styles/colors';
+
 interface Props {
   text: string;
   fontScale: number;
@@ -56,8 +58,8 @@ export default class DialogOption extends React.Component<Props> {
 const styles = StyleSheet.create({
   item: {
     width: '100%',
-    borderBottomWidth: 1,
-    borderColor: '#eeeeee',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
   itemText: {
     color: 'rgb(0,122,255)',

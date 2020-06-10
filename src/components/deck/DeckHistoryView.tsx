@@ -146,6 +146,6 @@ export default connect<ReduxProps, null, NavigationProps & DeckHistoryProps, App
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
 });

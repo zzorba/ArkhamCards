@@ -424,12 +424,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
   },
   sectionRow: {
     padding: s,
-    borderBottomWidth: 1,
-    borderColor: '#bdbdbd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
   footer: {
     borderTopWidth: 1,

@@ -778,14 +778,14 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   footer: {
     minHeight: 100,
   },
   switch: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
     paddingTop: s,
     paddingBottom: s,
   },

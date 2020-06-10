@@ -57,7 +57,7 @@ export default class DeckSizeSelectPicker extends React.Component<Props> {
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',
-          textColor: COLORS.darkTextColor,
+          textColor: COLORS.darkText,
         }}
         settingsStyle
         choices={map(sizes, size => {

@@ -10,6 +10,7 @@ import { CardsMap } from 'data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { m, s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   campaign: Campaign;
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',

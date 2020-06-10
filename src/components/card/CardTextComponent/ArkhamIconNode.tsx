@@ -5,6 +5,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import { isBig } from 'styles/space';
 
 import { WithIconName } from './types';
+import COLORS from 'styles/colors';
 
 const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   Action: 'action',
@@ -25,7 +26,7 @@ export default function ArkhamIconNode(
       key={state.key}
       name={BAD_ICON_NAMES[node.name] || node.name}
       size={isBig ? 24 : 16}
-      color="#000000"
+      color={COLORS.darkText}
     />
   );
 }

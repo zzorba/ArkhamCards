@@ -42,7 +42,7 @@ const BLURRED_AGENDA = require('../../../../assets/blur-agenda.jpeg');
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ENCOUNTER_BACK = require('../../../../assets/encounter-back.png');
 const PER_INVESTIGATOR_ICON = (
-  <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color="#000000" />
+  <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color={COLORS.darkText} />
 );
 const ICON_SIZE = isBig ? 44 : 28;
 const SKILL_ICON_SIZE = isBig ? 26 : 16;
@@ -435,7 +435,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <Text style={[
               typography.text,
               space.marginLeftS,
-              { color: factionColor ? '#FFFFFF' : '#000000' },
+              { color: factionColor ? '#FFFFFF' : COLORS.darkText },
             ]}>
               { `${name}${card.is_unique ? ' ✷' : ''}` }
             </Text>
@@ -443,7 +443,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               <Text style={[
                 typography.small,
                 space.marginLeftS,
-                { color: factionColor ? '#FFFFFF' : '#000000' },
+                { color: factionColor ? '#FFFFFF' : COLORS.darkText },
               ]}>
                 { subname }
               </Text>
@@ -464,7 +464,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       (card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code]);
     return (
       <View style={[styles.cardTitle, {
-        backgroundColor: factionColor || COLORS.backgroundColor,
+        backgroundColor: factionColor || COLORS.background,
         borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (factionColor || '#000000'),
       }]}>
         { this.renderTitleContent(card, name, subname, factionColor) }
@@ -539,7 +539,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View style={[styles.container, styles.containerPadding, { width }]}>
         <View style={[styles.card, {
-          backgroundColor: COLORS.backgroundColor,
+          backgroundColor: COLORS.background,
           borderColor: card.faction2_code ?
             FACTION_BACKGROUND_COLORS.dual :
             ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
@@ -617,7 +617,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={[typography.cardText, styles.illustratorText]}>
-              <AppIcon name="paintbrush" size={16 * fontScale} color="#000000" />
+              <AppIcon name="paintbrush" size={16 * fontScale} color={COLORS.darkText} />
               { ` ${card.illustrator}` }
             </Text>
           ) }
@@ -626,7 +626,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { !!card.encounter_name && !!card.encounter_code ? (
                 <>
                   <Text style={typography.cardText}>
-                    <EncounterIcon encounter_code={card.encounter_code} size={16 * fontScale} color="#000" />
+                    <EncounterIcon encounter_code={card.encounter_code} size={16 * fontScale} color={COLORS.darkText} />
                     { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
                       ngettext(
                         msgid`\n${card.quantity} copy.`,
@@ -637,14 +637,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   </Text>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
-                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
+                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color={COLORS.darkText} />
                       { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
                   ) }
                 </>
               ) : (
                 <Text style={typography.cardText}>
-                  <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color="#000" />
+                  <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color={COLORS.darkText} />
                   { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>
               ) }
@@ -759,7 +759,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           { this.renderTitle(card, card.name, card.subname) }
           <View style={styles.cardBody}>
             <View style={[styles.typeBlock, {
-              backgroundColor: COLORS.backgroundColor,
+              backgroundColor: COLORS.background,
             }]}>
               <View style={styles.row}>
                 <View style={styles.mainColumn}>

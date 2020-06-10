@@ -10,7 +10,7 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { FACTION_DARK_GRADIENTS } from 'constants';
+import { FACTION_DARK_COLOR } from 'constants';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import COLORS from 'styles/colors';
@@ -50,7 +50,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <View style={[
         styles.superHeaderRow,
-        { backgroundColor: FACTION_DARK_GRADIENTS[investigator.factionCode()][0] },
+        { backgroundColor: FACTION_DARK_COLOR[investigator.factionCode()] },
       ]}>
         <View style={styles.superHeaderPadding}>
           <Text style={[typography.text, styles.superHeaderText]}>
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   placeholder: {
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     height: m,
   },
   superHeaderPadding: {
@@ -145,27 +145,27 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingLeft: s,
     paddingRight: xs,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   subHeaderRow: {
-    backgroundColor: COLORS.veryLightBackgroundColor,
+    backgroundColor: COLORS.veryLightBackground,
     paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   headerRow: {
-    backgroundColor: COLORS.lightBackgroundColor,
+    backgroundColor: COLORS.lightBackground,
     paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
 });

@@ -10,6 +10,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import typography from 'styles/typography';
 import { xs, s, isBig } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   fontScale: number;
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   indentedContainer: {
     paddingLeft: 18,

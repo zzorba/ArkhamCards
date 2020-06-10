@@ -44,7 +44,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={COLORS.darkTextColor}
+              color={COLORS.darkText}
             />
           </View>
         );
@@ -54,7 +54,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={COLORS.darkTextColor}
+              color={COLORS.darkText}
             />
           </View>
         );
@@ -73,7 +73,7 @@ export default class PickerStyleButton extends React.Component<Props> {
     } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
-        backgroundColor: colors ? colors.backgroundColor : COLORS.backgroundColor,
+        backgroundColor: colors ? COLORS.background : COLORS.background,
         borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
       }]}>
         <Text style={[
@@ -85,7 +85,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               ...typography.mediumGameFont,
               fontWeight: '600',
             },
-          { color: colors ? colors.textColor : COLORS.darkTextColor },
+          { color: colors ? colors.textColor : COLORS.darkText },
         ]}>
           { title }
         </Text>
@@ -97,7 +97,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               space.paddingRightM,
               typography.label,
               {
-                color: colors ? colors.textColor : COLORS.darkTextColor,
+                color: colors ? colors.textColor : COLORS.darkText,
                 fontWeight: '400',
               },
             ]}
@@ -132,17 +132,17 @@ const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.backgroundColor,
+    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
   defaultTitleStyle: {
     flex: 1,
     fontSize: 16,
   },
   defaultValueStyle: {
-    color: COLORS.lightTextColor,
+    color: COLORS.lightText,
     fontSize: 14,
     flex: 0,
   },

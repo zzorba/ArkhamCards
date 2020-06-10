@@ -6,6 +6,7 @@ import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { BulletType } from 'data/scenario/types';
 import typography from 'styles/typography';
 import { m, s, xs } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   code: string;
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   },
   promptRow: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
     padding: m,
     paddingTop: s,
     paddingBottom: s,

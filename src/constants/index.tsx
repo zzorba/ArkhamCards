@@ -123,7 +123,7 @@ export const FACTION_COLORS: { [faction_code: string]: string } = {
   guardian: '#2b80c5',
   rogue: '#107116',
   survivor: '#cc3038',
-  neutral: COLORS.darkTextColor,
+  neutral: COLORS.darkText,
   dual: '#868600',
   dead: '#704214',
 };
@@ -139,15 +139,26 @@ export const FACTION_LIGHT_GRADIENTS: { [faction_code: string]: string[] } = {
   dead: ['#d4c6b9', '#b8a18a'],
 };
 
+export const FACTION_DARK_COLOR: { [faction_code: string]: string } = {
+  mystic: '#4331b9',
+  seeker: '#ec8426',
+  guardian: '#2b80c5',
+  rogue: '#107116',
+  survivor: '#cc3038',
+  neutral: '#444444',
+  dual: '#c0c000',
+  dead: '#5a3510',
+}
+
 export const FACTION_DARK_GRADIENTS: { [faction_code: string]: string[] } = {
-  mystic: ['#4331b9', '#2f2282'],
-  seeker: ['#ec8426', '#bd6a1e'],
-  guardian: ['#2b80c5', '#22669e'],
-  rogue: ['#107116', '#0b4f0f'],
-  survivor: ['#cc3038', '#a3262d'],
-  neutral: ['#444444', '#222222'],
-  dual: ['#c0c000', '#868600'],
-  dead: ['#5a3510', '#38210a'],
+  mystic: [FACTION_DARK_COLOR.mystic, '#2f2282'],
+  seeker: [FACTION_DARK_COLOR.seeker, '#bd6a1e'],
+  guardian: [FACTION_DARK_COLOR.guardian, '#22669e'],
+  rogue: [FACTION_DARK_COLOR.rogue, '#0b4f0f'],
+  survivor: [FACTION_DARK_COLOR.survivor, '#a3262d'],
+  neutral: [FACTION_DARK_COLOR.neutral, '#222222'],
+  dual: [FACTION_DARK_COLOR.dual, '#868600'],
+  dead: [FACTION_DARK_COLOR.dead, '#38210a'],
 };
 
 export const FACTION_BACKGROUND_COLORS: { [faction_code: string]: string } = Object.assign(

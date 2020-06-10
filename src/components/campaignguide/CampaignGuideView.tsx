@@ -20,6 +20,7 @@ import withCampaignGuideContext, {
 } from 'components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from 'components/nav/types';
 import { s, m } from 'styles/space';
+import COLORS from 'styles/colors';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -203,6 +204,6 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#888',
+    borderColor: COLORS.divider,
   },
 });

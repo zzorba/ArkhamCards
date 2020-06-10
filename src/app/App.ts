@@ -162,17 +162,17 @@ export default class App {
         leftButtonColor: COLORS.lightBlue,
         rightButtonColor: COLORS.lightBlue,
         title: {
-          color: COLORS.darkTextColor,
+          color: COLORS.darkText,
         },
         background: {
-          color: COLORS.backgroundColor,
+          color: COLORS.background,
         },
       },
       layout: {
-        backgroundColor: COLORS.backgroundColor,
+        backgroundColor: COLORS.background,
       },
       bottomTab: {
-        textColor: COLORS.lightTextColor,
+        textColor: COLORS.lightText,
         selectedIconColor: COLORS.lightBlue,
         selectedTextColor: COLORS.lightBlue,
       },

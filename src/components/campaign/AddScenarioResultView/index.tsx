@@ -25,8 +25,8 @@ import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
 import Card from 'data/Card';
 import { getCampaign, getLatestCampaignInvestigators, AppState } from 'reducers';
-import COLORS from 'styles/colors';
 import { m } from 'styles/space';
+import COLORS from 'styles/colors';
 
 export interface AddScenarioResultProps {
   id: number;
@@ -355,7 +355,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bdbdbd',
+    borderColor: COLORS.divider,
   },
   flex: {
     flex: 1,
