@@ -73,7 +73,7 @@ export default class PickerStyleButton extends React.Component<Props> {
     } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
-        backgroundColor: colors ? COLORS.background : COLORS.background,
+        backgroundColor: colors ? colors.backgroundColor : 'transparent',
         borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
       }]}>
         <Text style={[
@@ -132,7 +132,7 @@ const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
+    backgroundColor: 'transparent',
     alignItems: 'center',
     flexDirection: 'row',
     borderColor: COLORS.divider,

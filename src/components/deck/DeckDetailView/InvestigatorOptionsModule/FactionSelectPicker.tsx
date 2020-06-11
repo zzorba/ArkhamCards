@@ -4,7 +4,7 @@ import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
 import SinglePickerComponent from 'components/core/SinglePickerComponent';
-import { FactionCodeType, FACTION_COLORS } from 'constants';
+import { FactionCodeType } from 'constants';
 import Card from 'data/Card';
 import COLORS from 'styles/colors';
 
@@ -55,7 +55,7 @@ export default class FactionSelectPicker extends React.Component<Props> {
         description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
         colors={{
           modalColor: investigatorFaction ?
-            FACTION_COLORS[investigatorFaction] :
+            COLORS.faction[investigatorFaction].primary :
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',

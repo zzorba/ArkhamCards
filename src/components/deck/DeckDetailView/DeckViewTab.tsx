@@ -38,7 +38,7 @@ import TabooSetPicker from 'components/core/TabooSetPicker';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
 import HealthSanityLine from 'components/core/HealthSanityLine';
-import { FACTION_DARK_COLOR, BODY_OF_A_YITHIAN } from 'constants';
+import { BODY_OF_A_YITHIAN } from 'constants';
 import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
@@ -556,9 +556,9 @@ export default class DeckViewTab extends React.Component<Props, State> {
             disabled={!editable}
             tabooSetId={tabooSetId}
             setTabooSet={setTabooSet}
-            color={FACTION_DARK_COLOR[
-              (investigator ? investigator.faction_code : null) || 'neutral'
-            ]}
+            color={COLORS.faction[
+              investigator ? investigator.factionCode() : 'neutral'
+            ].dark}
             transparent
           />
         ) }

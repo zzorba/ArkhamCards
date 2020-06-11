@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
-import { SKILL_COLORS } from 'constants';
 import Card from 'data/Card';
 import { TINY_PHONE } from 'styles/sizes';
 import { isBig, m, s, xs } from 'styles/space';
@@ -38,7 +37,7 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
             <ArkhamIcon
               name="skill_willpower"
               size={ICON_SIZE}
-              color={SKILL_COLORS.willpower}
+              color={COLORS.skill.willpower.default}
             />
           </View>
         </View>
@@ -59,7 +58,7 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
             <ArkhamIcon
               name="skill_intellect"
               size={ICON_SIZE}
-              color={SKILL_COLORS.intellect}
+              color={COLORS.skill.intellect.default}
             />
           </View>
         </View>
@@ -80,7 +79,7 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
             <ArkhamIcon
               name="skill_combat"
               size={ICON_SIZE}
-              color={SKILL_COLORS.combat}
+              color={COLORS.skill.combat.default}
             />
           </View>
         </View>
@@ -101,7 +100,7 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
             <ArkhamIcon
               name="skill_agility"
               size={ICON_SIZE}
-              color={SKILL_COLORS.agility}
+              color={COLORS.skill.agility.default}
             />
           </View>
         </View>

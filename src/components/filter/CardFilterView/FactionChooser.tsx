@@ -6,7 +6,8 @@ import {
 import { ButtonGroup } from 'react-native-elements';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
-import { FACTION_COLORS, FactionCodeType } from 'constants';
+import { FactionCodeType } from 'constants';
+import COLORS from 'styles/colors';
 
 function factionToIconName(faction: FactionCodeType) {
   if (faction === 'neutral') {
@@ -57,7 +58,7 @@ export default class FactionChooser extends React.Component<Props> {
             <ArkhamIcon
               name={iconName}
               size={iconName !== faction ? 28 : 32}
-              color={selected ? FACTION_COLORS[faction] : '#bdbdbd'}
+              color={selected ? COLORS.faction[faction].primary : '#bdbdbd'}
             />
           );
         },

@@ -3,8 +3,8 @@ import { map } from 'lodash';
 
 import ChoiceListComponent, { ChoiceListComponentProps } from './ChoiceListComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import { FACTION_COLORS, FACTION_LIGHT_GRADIENTS } from 'constants';
 import Card from 'data/Card';
+import COLORS from 'styles/colors';
 
 interface Props extends ChoiceListComponentProps {
   investigators?: Card[];
@@ -24,8 +24,8 @@ export default function InvestigatorChoicePrompt(
                 code: investigator.code,
                 name: investigator.name,
                 color: {
-                  tint: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
-                  primary: FACTION_COLORS[investigator.factionCode()],
+                  tint: COLORS.faction[investigator.factionCode()].veryLight,
+                  primary: COLORS.faction[investigator.factionCode()].primary,
                 },
               };
             })}

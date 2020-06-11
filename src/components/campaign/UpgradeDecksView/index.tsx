@@ -14,7 +14,6 @@ import { t } from 'ttag';
 import BasicButton from 'components/core/BasicButton';
 import { Campaign, Deck, DecksMap, SingleCampaign, ScenarioResult } from 'actions/types';
 import { NavigationProps } from 'components/nav/types';
-import { FACTION_DARK_COLOR } from 'constants';
 import Card from 'data/Card';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState } from 'reducers';
@@ -133,7 +132,7 @@ class UpgradeDecksView extends React.Component<Props> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },

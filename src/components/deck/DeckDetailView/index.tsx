@@ -50,7 +50,6 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import { updateCampaign } from 'components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from 'components/core/withPlayerCards';
-import { FACTION_DARK_COLOR } from 'constants';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';
 import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
@@ -588,7 +587,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },
@@ -644,7 +643,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },
@@ -689,7 +688,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].dark,
             },
           },
         },

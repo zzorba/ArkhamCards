@@ -15,7 +15,7 @@ import { DrawWeaknessProps } from 'components/weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { NavigationProps } from 'components/nav/types';
 import { Campaign, Deck, DeckMeta, Slots } from 'actions/types';
-import { FACTION_DARK_COLOR, RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
+import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
 import Card from 'data/Card';
 import { getCampaign, AppState } from 'reducers';
 import COLORS from 'styles/colors';
@@ -122,7 +122,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },
@@ -218,7 +218,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },
@@ -264,7 +264,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },

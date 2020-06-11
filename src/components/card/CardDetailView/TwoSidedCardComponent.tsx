@@ -12,13 +12,10 @@ import { msgid, ngettext, t, jt } from 'ttag';
 
 import {
   CORE_FACTION_CODES,
-  FACTION_COLORS,
-  FACTION_BACKGROUND_COLORS,
   RANDOM_BASIC_WEAKNESS,
 } from 'constants';
 import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
 import HealthSanityLine from 'components/core/HealthSanityLine';
-
 import typography from 'styles/typography';
 import space, { isBig, xs, s } from 'styles/space';
 import AppIcon from 'icons/AppIcon';
@@ -460,12 +457,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     name: string,
     subname?: string,
   ) {
-    const factionColor = card.faction2_code ? FACTION_BACKGROUND_COLORS.dual :
-      (card.faction_code && FACTION_BACKGROUND_COLORS[card.faction_code]);
+    const factionColor = COLORS.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
     return (
       <View style={[styles.cardTitle, {
         backgroundColor: factionColor || COLORS.background,
-        borderColor: card.faction2_code ? FACTION_BACKGROUND_COLORS.dual : (factionColor || '#000000'),
+        borderColor: (card.faction2_code ? COLORS.faction.dual.primary : factionColor),
       }]}>
         { this.renderTitleContent(card, name, subname, factionColor) }
       </View>
@@ -540,9 +536,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <View style={[styles.container, styles.containerPadding, { width }]}>
         <View style={[styles.card, {
           backgroundColor: COLORS.background,
-          borderColor: card.faction2_code ?
-            FACTION_BACKGROUND_COLORS.dual :
-            ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
+          borderColor: COLORS.faction[
+            card.faction2_code ? 'dual' : card.factionCode()
+          ].primary,
         }]}>
           { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
@@ -567,9 +563,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               }
               { !!card.back_text && (
                 <View style={[styles.gameTextBlock, {
-                  borderColor: card.faction2_code ?
-                    FACTION_BACKGROUND_COLORS.dual :
-                    ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
+                  borderColor: COLORS.faction[card.faction2_code ?
+                    'dual' : card.factionCode()
+                  ].primary,
                 }]}>
                   <CardTextComponent text={card.back_text} />
                 </View>)
@@ -694,9 +690,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <React.Fragment>
         { !!card.text && (
           <View style={[styles.gameTextBlock, {
-            borderColor: card.faction2_code ?
-              FACTION_BACKGROUND_COLORS.dual :
-              ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
+            borderColor: COLORS.faction[card.faction2_code ?
+              'dual' : card.factionCode()
+            ].primary,
           }]}>
             <CardTextComponent text={card.text} />
           </View>)
@@ -751,9 +747,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         <View style={[
           styles.card,
           {
-            borderColor: card.faction2_code ?
-              FACTION_BACKGROUND_COLORS.dual :
-              ((card.faction_code && FACTION_COLORS[card.faction_code]) || '#000000'),
+            borderColor: COLORS.faction[
+              card.faction2_code ? 'dual' : card.factionCode()
+            ].primary,
           },
         ]}>
           { this.renderTitle(card, card.name, card.subname) }

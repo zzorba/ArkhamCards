@@ -19,7 +19,6 @@ import { TINY_PHONE } from 'styles/sizes';
 import COLORS from 'styles/colors';
 import { showCardCharts, showDrawSimulator } from 'components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
-import { FACTION_DARK_GRADIENTS } from 'constants';
 import { m, s, xs } from 'styles/space';
 
 const SHOW_CHARTS_BUTTON = true;
@@ -132,10 +131,7 @@ export default class DeckNavFooter extends React.Component<Props> {
     const xpString = this.xpString();
     return (
       <View style={styles.borderWrapper}>
-        <LinearGradient
-          style={styles.wrapper}
-          colors={FACTION_DARK_GRADIENTS[investigator.factionCode()]}
-        >
+        <View style={[styles.wrapper, { backgroundColor: COLORS.faction[investigator.factionCode()].dark }]}>
           <View style={styles.left}>
             <View style={styles.row}>
               <Text style={[
@@ -152,7 +148,7 @@ export default class DeckNavFooter extends React.Component<Props> {
           <View style={styles.right}>
             { this.renderControls() }
           </View>
-        </LinearGradient>
+        </View>
       </View>
     );
   }

@@ -16,7 +16,6 @@ import InvestigatorCampaignRow from 'components/campaign/InvestigatorCampaignRow
 import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from 'actions/types';
 import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from 'data/Card';
-import { FACTION_DARK_COLOR } from 'constants';
 import typography from 'styles/typography';
 import space from 'styles/space';
 import COLORS from 'styles/colors';
@@ -255,7 +254,7 @@ export default class DecksSection extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: FACTION_DARK_COLOR[investigator ? investigator.factionCode() : 'neutral'],
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
             },
           },
         },

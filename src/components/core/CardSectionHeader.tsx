@@ -10,7 +10,6 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { FACTION_DARK_COLOR } from 'constants';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import COLORS from 'styles/colors';
@@ -50,7 +49,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <View style={[
         styles.superHeaderRow,
-        { backgroundColor: FACTION_DARK_COLOR[investigator.factionCode()] },
+        { backgroundColor: COLORS.faction[investigator.factionCode()].dark },
       ]}>
         <View style={styles.superHeaderPadding}>
           <Text style={[typography.text, styles.superHeaderText]}>

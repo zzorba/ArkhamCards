@@ -12,7 +12,6 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import CardCostIcon from 'components/core/CardCostIcon';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import Card from 'data/Card';
-import { FACTION_COLORS, FACTION_DARK_COLOR } from 'constants';
 import typography from 'styles/typography';
 import space, { m, s, xs } from 'styles/space';
 import COLORS from 'styles/colors';
@@ -66,7 +65,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       <View style={styles.wrapper}>
         <View style={[
           styles.headerColor,
-          { backgroundColor: FACTION_DARK_COLOR[eliminated ? 'dead' : investigator.factionCode()] },
+          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].dark },
         ]} />
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
@@ -95,7 +94,7 @@ export default class InvestigatorRow extends React.Component<Props> {
                 <ArkhamIcon
                   name={CardCostIcon.factionIcon(investigator)}
                   size={ICON_SIZE}
-                  color={FACTION_COLORS[eliminated ? 'dead' : investigator.factionCode()]}
+                  color={COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].primary}
                 />
               ) }
             </View>
@@ -115,7 +114,7 @@ export default class InvestigatorRow extends React.Component<Props> {
         { !!children && children }
         <View style={[
           styles.headerColor,
-          { backgroundColor: FACTION_DARK_COLOR[eliminated ? 'dead' : investigator.factionCode()] },
+          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].dark },
         ]} />
       </View>
     );

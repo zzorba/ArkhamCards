@@ -2,7 +2,7 @@ import React from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
 import ArkhamIcon from 'icons/ArkhamIcon';
-import { FACTION_COLORS, SKILL_COLORS } from 'constants';
+import COLORS from 'styles/colors';
 
 interface Props {
   x: number;
@@ -19,6 +19,28 @@ export default class ChartIconComponent extends React.Component<Props> {
     super(props);
     this.iconGlyphs = ArkhamIcon.getRawGlyphMap();
   }
+  color() {
+    const { text } = this.props;
+    switch (text) {
+      case 'mystic':
+      case 'rogue':
+      case 'guardian':
+      case 'seeker':
+      case 'survivor':
+      case 'neutral':
+      case 'dual':
+      case 'mythos':
+        return COLORS.faction[text].primary;
+      case 'willpower':
+      case 'agility':
+      case 'combat':
+      case 'intellect':
+      case 'wild':
+        return COLORS.skill[text].default;
+      default:
+        return '#444';
+    }
+  }
 
   render() {
     const { x, y, text } = this.props;
@@ -27,7 +49,7 @@ export default class ChartIconComponent extends React.Component<Props> {
         x={x - SIZE / 2} y={y + SIZE / 2 + 3}
         fontSize={SIZE}
         fontFamily="arkhamicons"
-        fill={FACTION_COLORS[text] || SKILL_COLORS[text] || '#444'}
+        fill={this.color()}
       >
         { String.fromCharCode(this.iconGlyphs[text === 'neutral' ? 'elder_sign' : text]) }
       </SVGText>

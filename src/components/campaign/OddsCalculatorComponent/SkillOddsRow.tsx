@@ -5,7 +5,7 @@ import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
 import typography from 'styles/typography';
-import { ChaosBag, ChaosTokenType, SKILL_COLORS, SKILL_COLORS_LIGHT, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from 'constants';
+import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from 'constants';
 import { flattenChaosBag } from 'components/campaign/campaignUtil';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
@@ -216,7 +216,8 @@ export default class SkillOddsRow extends React.Component<Props, State> {
     const {
       type,
     } = this.props;
-    const backgroundColor = light ? SKILL_COLORS_LIGHT[type] : SKILL_COLORS[type];
+    const color = COLORS.skill[type];
+    const backgroundColor = light ? color.light : color.default;
     return (
       <View key={title} style={[styles.additionalRow, { backgroundColor }]}>
         <Text style={styles.additionalRowText}>{ title }</Text>
@@ -272,7 +273,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
           onPress={this._toggleAdditionalRows}
         >
           <View style={styles.row}>
-            <View style={[styles.skillBox, { backgroundColor: SKILL_COLORS[type] }]}>
+            <View style={[styles.skillBox, { backgroundColor: COLORS.skill[type].default }]}>
               <Text style={styles.skillValue}>
                 { type !== 'wild' ? `${stat}` : '' }<ArkhamIcon name={type} size={28} color={COLORS.white} />
               </Text>

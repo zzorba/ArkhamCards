@@ -2,7 +2,7 @@ import React from 'react';
 
 import Card from 'data/Card';
 import PickerStyleButton from './PickerStyleButton';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
+import COLORS from 'styles/colors';
 
 interface Props {
   investigator: Card;
@@ -27,7 +27,7 @@ export default function InvestigatorButton({
       onPress={onPress}
       disabled={disabled}
       colors={{
-        backgroundColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0],
+        backgroundColor: COLORS.faction[investigator.factionCode()].veryLight,
         textColor: '#000',
       }}
       widget={widget}

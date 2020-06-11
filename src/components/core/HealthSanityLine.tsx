@@ -33,12 +33,21 @@ export default function HealthSanityLine({ investigator, fontScale }: Props) {
         <Text style={typography.mediumGameFont}>
           { num(investigator.health) }
         </Text>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name="health"
-            size={ICON_SIZE}
-            color="#911017"
-          />
+        <View style={[styles.skillIcon, { width: ICON_SIZE * .75 }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="health_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="health"
+              size={ICON_SIZE}
+              color="#911017"
+            />
+          </View>
         </View>
       </View>
       <View style={styles.growth} />
@@ -46,12 +55,21 @@ export default function HealthSanityLine({ investigator, fontScale }: Props) {
         <Text style={typography.mediumGameFont}>
           { num(investigator.sanity) }
         </Text>
-        <View style={styles.skillIcon}>
-          <ArkhamIcon
-            name="sanity"
-            size={ICON_SIZE}
-            color="#0c2445"
-          />
+        <View style={[styles.skillIcon, { width: ICON_SIZE * 1.2 }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="sanity_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="sanity"
+              size={ICON_SIZE}
+              color="#0c2445"
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -66,6 +84,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'relative',
+  },
+  icon: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
   },
   skillRow: {
     flexDirection: 'row',

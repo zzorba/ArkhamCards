@@ -100,76 +100,6 @@ export const SKILLS: SkillCodeType[] = [
   'wild',
 ];
 
-export const SKILL_COLORS: { [skill: string]: string } = {
-  willpower: '#003961',
-  intellect: '#4e1a45',
-  combat: '#661e09',
-  agility: '#00543a',
-  wild: '#635120',
-};
-
-export const SKILL_COLORS_LIGHT: { [skill: string]: string } = {
-  willpower: '#506A85',
-  intellect: '#7B5373',
-  combat: '#8D5648',
-  agility: '#417F6C',
-  wild: '#8A7D5A',
-};
-
-
-export const FACTION_COLORS: { [faction_code: string]: string } = {
-  mystic: '#4331b9',
-  seeker: '#ec8426',
-  guardian: '#2b80c5',
-  rogue: '#107116',
-  survivor: '#cc3038',
-  neutral: COLORS.darkText,
-  dual: '#868600',
-  dead: '#704214',
-};
-
-export const FACTION_LIGHT_GRADIENTS: { [faction_code: string]: string[] } = {
-  mystic: ['#d9d6f1', '#a198dc'],
-  seeker: ['#fbe6d4', '#f7cea8'],
-  guardian: ['#d5e6f3', '#aacce8'],
-  rogue: ['#cfe3d0', '#9fc6a2'],
-  survivor: ['#f5d6d7', '#ebacaf'],
-  neutral: ['#e6e6e6', '#cccccc'],
-  dual: ['#f2f2cc', '#e6e699'],
-  dead: ['#d4c6b9', '#b8a18a'],
-};
-
-export const FACTION_DARK_COLOR: { [faction_code: string]: string } = {
-  mystic: '#4331b9',
-  seeker: '#ec8426',
-  guardian: '#2b80c5',
-  rogue: '#107116',
-  survivor: '#cc3038',
-  neutral: '#444444',
-  dual: '#c0c000',
-  dead: '#5a3510',
-}
-
-export const FACTION_DARK_GRADIENTS: { [faction_code: string]: string[] } = {
-  mystic: [FACTION_DARK_COLOR.mystic, '#2f2282'],
-  seeker: [FACTION_DARK_COLOR.seeker, '#bd6a1e'],
-  guardian: [FACTION_DARK_COLOR.guardian, '#22669e'],
-  rogue: [FACTION_DARK_COLOR.rogue, '#0b4f0f'],
-  survivor: [FACTION_DARK_COLOR.survivor, '#a3262d'],
-  neutral: [FACTION_DARK_COLOR.neutral, '#222222'],
-  dual: [FACTION_DARK_COLOR.dual, '#868600'],
-  dead: [FACTION_DARK_COLOR.dead, '#38210a'],
-};
-
-export const FACTION_BACKGROUND_COLORS: { [faction_code: string]: string } = Object.assign(
-  {},
-  FACTION_COLORS,
-  {
-    neutral: '#444444',
-    dual: '#9a9a00',
-  },
-);
-
 export type SpecialChaosTokenType =
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
@@ -274,13 +204,13 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
 export function createFactionIcons(
   defaultColor?: string
 ): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
-  return mapValues(FACTION_COLORS, (color, faction) => {
+  return mapValues(COLORS.faction, (color, faction) => {
     return function factionIcon(size: number) {
       return (
         <ArkhamIcon
           name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
           size={size}
-          color={defaultColor || color}
+          color={defaultColor || color.primary}
         />
       );
     };

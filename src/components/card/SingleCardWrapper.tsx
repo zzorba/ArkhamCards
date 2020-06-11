@@ -13,9 +13,12 @@ interface Props {
 }
 
 export default class SingleCardWrapper extends React.Component<Props> {
-  _render = (cards: Card[]): React.ReactNode => {
+  _render = (cards: Card[], loading: boolean): React.ReactNode => {
     const { code, children } = this.props;
     if (!cards.length) {
+      if (loading) {
+        return null;
+      }
       return <Text>Unknown { code }</Text>;
     }
     return children(cards[0]);

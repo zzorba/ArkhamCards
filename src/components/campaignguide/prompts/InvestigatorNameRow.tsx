@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   investigator: Card;
@@ -18,8 +18,8 @@ export default function InvestigatorNameRow({
   dark,
 }: Props) {
   const backgroundColor = dark ?
-    FACTION_LIGHT_GRADIENTS[investigator.factionCode()][1] :
-    FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0];
+    COLORS.faction[investigator.factionCode()].light :
+    COLORS.faction[investigator.factionCode()].veryLight;
   return (
     <View style={[
       styles.investigatorRow,

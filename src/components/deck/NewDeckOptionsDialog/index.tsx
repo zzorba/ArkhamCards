@@ -28,7 +28,7 @@ import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCard
 import { saveNewDeck, NewDeckParams } from 'components/deck/actions';
 import { NavigationProps } from 'components/nav/types';
 import { Deck, Slots } from 'actions/types';
-import { FACTION_COLORS, RANDOM_BASIC_WEAKNESS } from 'constants';
+import { RANDOM_BASIC_WEAKNESS } from 'constants';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';
@@ -318,7 +318,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           settingsStyle
         />
         <TabooSetPicker
-          color={FACTION_COLORS[investigator.factionCode()]}
+          color={COLORS.faction[investigator.factionCode()].primary}
           tabooSetId={tabooSetId}
           setTabooSet={this._setTabooSetId}
         />

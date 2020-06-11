@@ -189,7 +189,7 @@ export default class PickerComponent extends React.Component<Props> {
           paddingLeft: 0,
           flexDirection: 'row',
           justifyContent: 'space-between',
-          backgroundColor: colors ? COLORS.background : COLORS.background,
+          backgroundColor: colors ? colors.backgroundColor : 'transparent',
           borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
           borderColor: COLORS.divider,
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,

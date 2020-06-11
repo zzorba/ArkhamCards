@@ -3,11 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { msgid, ngettext } from 'ttag';
 
 import Card from 'data/Card';
-import { FACTION_LIGHT_GRADIENTS } from 'constants';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';
 import { Supply } from 'data/scenario/types';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   investigator: Card;
@@ -56,7 +56,7 @@ export default class SupplyComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
-        { backgroundColor: FACTION_LIGHT_GRADIENTS[investigator.factionCode()][0] },
+        { backgroundColor: COLORS.faction[investigator.factionCode()].veryLight },
       ]}>
         <View style={[styles.textBlock, space.paddingS, space.paddingSideM]}>
           <Text style={typography.text}>

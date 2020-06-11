@@ -10,9 +10,10 @@ import { Navigation } from 'react-native-navigation';
 
 import { CardImageProps } from 'components/card/CardImageView';
 import EncounterIcon from 'icons/EncounterIcon';
-import { createFactionIcons, FACTION_COLORS } from 'constants';
+import { createFactionIcons } from 'constants';
 import Card from 'data/Card';
 import { isBig } from 'styles/space';
+import COLORS from 'styles/colors';
 
 const FACTION_ICONS = createFactionIcons('#FFF');
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
@@ -74,9 +75,9 @@ export default class PlayerCardImage extends React.Component<Props> {
       return (
         <View style={[
           styles.placeholder,
-          { backgroundColor: card.faction2_code ?
-            FACTION_COLORS.dual :
-            FACTION_COLORS[card.factionCode()],
+          { backgroundColor: (card.faction2_code ?
+            COLORS.faction.dual :
+            COLORS.faction[card.factionCode()]).primary,
           },
         ]}>
           <Text style={styles.placeholderIcon}>

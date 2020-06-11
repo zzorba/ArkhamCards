@@ -7,7 +7,6 @@ import {
 
 import AppIcon from 'icons/AppIcon';
 import ArkhamIcon from 'icons/ArkhamIcon';
-import { FACTION_BACKGROUND_COLORS } from 'constants';
 import Card from 'data/Card';
 import { isBig } from 'styles/space';
 import COLORS from 'styles/colors';
@@ -71,12 +70,9 @@ export default class CardCostIcon extends React.PureComponent<Props> {
       card,
     } = this.props;
     if (card.faction2_code) {
-      return FACTION_BACKGROUND_COLORS.dual;
+      return COLORS.faction.dual.background;
     }
-    if (card.faction_code) {
-      return FACTION_BACKGROUND_COLORS[card.faction_code];
-    }
-    return FACTION_BACKGROUND_COLORS.neutral;
+    return COLORS.faction[card.factionCode()].background;
   }
 
   render() {
