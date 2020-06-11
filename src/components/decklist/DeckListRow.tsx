@@ -12,7 +12,6 @@ import { Campaign, Deck, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
 import { BODY_OF_A_YITHIAN } from 'constants';
 import InvestigatorRow from 'components/core/InvestigatorRow';
-import InvestigatorImage from 'components/core/InvestigatorImage';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 import { toRelativeDateString } from 'lib/datetime';
 import { parseBasicDeck } from 'lib/parseDeck';
@@ -237,10 +236,6 @@ const styles = StyleSheet.create({
   },
   loading: {
     marginLeft: 10,
-  },
-  image: {
-    marginLeft: s,
-    marginRight: s,
   },
   titleColumn: {
     flex: 1,

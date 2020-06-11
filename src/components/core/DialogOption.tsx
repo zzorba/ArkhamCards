@@ -20,8 +20,8 @@ export default class DialogOption extends React.Component<Props> {
   static get options() {
     return ({
       overlay: {
-        interceptTouchOutside: true
-      }
+        interceptTouchOutside: true,
+      },
     });
   }
 

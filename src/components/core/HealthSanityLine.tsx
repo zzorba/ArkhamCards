@@ -33,7 +33,7 @@ export default function HealthSanityLine({ investigator, fontScale }: Props) {
         <Text style={typography.mediumGameFont}>
           { num(investigator.health) }
         </Text>
-        <View style={[styles.skillIcon, { width: ICON_SIZE * .75 }]}>
+        <View style={[styles.skillIcon, { width: ICON_SIZE * 0.75 }]}>
           <View style={styles.icon}>
             <ArkhamIcon
               name="health_inverted"

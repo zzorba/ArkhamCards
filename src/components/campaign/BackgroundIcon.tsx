@@ -17,7 +17,7 @@ export default class BackgroundIcon extends React.Component<Props> {
       code,
       color,
       style,
-      small
+      small,
     } = this.props;
     return (
       <View style={[styles.backgroundIcon, style || {}]}>

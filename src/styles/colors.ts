@@ -20,7 +20,7 @@ export default {
   background: 'white',
   lightBackground: '#ccc',
   veryLightBackground: '#eee',
-  divider: "#bdbdbd",
+  divider: '#bdbdbd',
 
   faction: {
     mystic: {

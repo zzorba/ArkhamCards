@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import LinearGradient from 'react-native-linear-gradient';
 import { msgid, ngettext, t } from 'ttag';
 
 import { DeckMeta, ParsedDeck } from 'actions/types';
