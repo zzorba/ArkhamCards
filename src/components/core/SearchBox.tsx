@@ -59,7 +59,7 @@ export default class SearchBox extends React.Component<Props> {
             allowFontScaling={false}
             onChangeText={onChangeText}
             placeholder={placeholder}
-            placeholderTextColor={COLORS.lightText}
+            placeholderTextColor={COLORS.veryLightText}
             value={value}
           />
           { this.renderToggleButton() }

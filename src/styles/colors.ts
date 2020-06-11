@@ -9,17 +9,21 @@ export default {
   /*
   darkText: '#ddd',
   lightText: '#aaa',
+  veryLightText: '#888',
   background: '#111',
   lightBackground: '#444',
   veryLightBackground: '#222',
+  veryVeryLightBackgound: '#040404',
   divider: '#444',*/
 
   // Normal Colors
   darkText,
   lightText,
+  veryLightText: '#888',
   background: 'white',
   lightBackground: '#ccc',
   veryLightBackground: '#eee',
+  veryVeryLightBackgound: '#f4f4f4',
   divider: '#bdbdbd',
 
   faction: {

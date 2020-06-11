@@ -1584,29 +1584,43 @@ class DeckDetailView extends React.Component<Props, State> {
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
       <ScrollView style={styles.menu}>
-        <SettingsCategoryHeader title={t`Deck`} />
+        <SettingsCategoryHeader
+          title={t`Deck`}
+          titleStyle={styles.categoryText}
+          containerStyle={styles.categoryContainer}
+        />
         { editable && (
           <>
             <SettingsButton
               onPress={this._showEditDetailsVisible}
               title={t`Name`}
               description={nameChange || deck.name}
-            />
+              titleStyle={styles.text}
+              containerStyle={styles.button}
+              />
             { SHOW_DESCRIPTION_EDITOR && (
               <SettingsButton
                 onPress={this._showEditDescription}
                 title={t`Description`}
-              />
+                titleStyle={styles.text}
+                containerStyle={styles.button}
+                />
             ) }
             <SettingsButton
               onPress={this._showTabooPicker}
               title={t`Taboo List`}
+              titleStyle={styles.text}
+              containerStyle={styles.button}
               description={tabooSet ? tabooSet.date_start : t`None`}
+              descriptionStyle={styles.text}
             />
             { !deck.local && (
               <SettingsButton
                 title={t`Deck Id`}
+                titleStyle={styles.text}
+                containerStyle={styles.button}
                 description={`${deck.id}`}
+                descriptionStyle={styles.text}
                 onPress={this._showEditDetailsVisible}
                 disabledOverlayStyle={{ backgroundColor: 'transparent' }}
                 disabled
@@ -1614,42 +1628,63 @@ class DeckDetailView extends React.Component<Props, State> {
             ) }
           </>
         ) }
-        <SettingsCategoryHeader title={t`Cards`} />
+        <SettingsCategoryHeader
+          title={t`Cards`}
+          titleStyle={styles.categoryText}
+          containerStyle={styles.categoryContainer}
+        />
         { editable && (
           <>
             <SettingsButton
               onPress={this._onEditPressed}
               title={t`Edit Cards`}
+              titleStyle={styles.text}
+              containerStyle={styles.button}
               description={ngettext(
                 msgid`${normalCardCount} Card (${totalCardCount} Total)`,
                 `${normalCardCount} Cards (${totalCardCount} Total)`,
                 normalCardCount
               )}
+              descriptionStyle={styles.text}
             />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Story Assets`}
-            />
+              titleStyle={styles.text}
+              containerStyle={styles.button}
+              />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Weaknesses`}
-            />
+              titleStyle={styles.text}
+              containerStyle={styles.button}
+              />
           </>
         ) }
         <SettingsButton
           onPress={this._showCardCharts}
           title={t`Charts`}
-        />
+          titleStyle={styles.text}
+          containerStyle={styles.button}
+          />
         <SettingsButton
           onPress={this._showDrawSimulator}
           title={t`Draw Simulator`}
-        />
+          titleStyle={styles.text}
+          containerStyle={styles.button}
+          />
         { editable && (
           <>
-            <SettingsCategoryHeader title={t`Campaign`} />
+            <SettingsCategoryHeader
+              title={t`Campaign`}
+              titleStyle={styles.categoryText}
+              containerStyle={styles.categoryContainer}
+            />
             <SettingsButton
               onPress={this._onUpgradePressed}
               title={t`Upgrade Deck`}
+              titleStyle={styles.text}
+              containerStyle={styles.button}
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
             />
@@ -1657,6 +1692,8 @@ class DeckDetailView extends React.Component<Props, State> {
               <SettingsButton
                 onPress={this._showEditDetailsVisible}
                 title={t`Available XP`}
+                titleStyle={styles.text}
+                containerStyle={styles.button}
                 description={xpString}
               />
             ) }
@@ -1664,30 +1701,43 @@ class DeckDetailView extends React.Component<Props, State> {
               <SettingsButton
                 onPress={this._showUpgradeHistory}
                 title={t`Upgrade History`}
-              />
+                titleStyle={styles.text}
+                containerStyle={styles.button}
+                />
             ) }
           </>
         ) }
-        <SettingsCategoryHeader title={t`Options`} />
+        <SettingsCategoryHeader
+          title={t`Options`}
+          titleStyle={styles.categoryText}
+          containerStyle={styles.categoryContainer}
+        />
         <SettingsButton
           onPress={this._toggleCopyDialog}
           title={t`Clone`}
-        />
+          titleStyle={styles.text}
+          containerStyle={styles.button}
+          />
         { deck.local ? (
           <SettingsButton
             onPress={this._uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
+            titleStyle={styles.text}
+            containerStyle={styles.button}
           />
         ) : (
           <SettingsButton
             title={t`View on ArkhamDB`}
             onPress={this._viewDeck}
+            titleStyle={styles.text}
+            containerStyle={styles.button}
           />
         ) }
         { !!isPrivate && (
           <SettingsButton
             title={t`Delete`}
             titleStyle={styles.destructive}
+            containerStyle={styles.button}
             onPress={this._deleteDeckPrompt}
           />
         ) }
@@ -1931,5 +1981,17 @@ const styles = StyleSheet.create({
   },
   destructive: {
     color: COLORS.red,
+  },
+  categoryContainer: {
+    backgroundColor: COLORS.veryLightBackground,
+  },
+  categoryText: {
+    color: COLORS.lightText,
+  },
+  text: {
+    color: COLORS.darkText,
+  },
+  button: {
+    backgroundColor: COLORS.background,
   },
 });

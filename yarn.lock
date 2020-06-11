@@ -9747,9 +9747,9 @@ react-native-reanimated@1.8.0:
   dependencies:
     fbjs "^1.0.0"
 
-"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#fix_alert":
+"react-native-settings-components@https://github.com/zzorba/react-native-settings-components#add-picker-itemWrapper":
   version "0.0.2"
-  resolved "https://github.com/zzorba/react-native-settings-components#5a2d4c141308cb43dc3f07ce7e687ba41ba87121"
+  resolved "https://github.com/zzorba/react-native-settings-components#5621b34c950195f0d08d90402b6a4f5a2a588759"
   dependencies:
     lodash "^4.17.11"
     react-native-dialogs "^1.0.2"

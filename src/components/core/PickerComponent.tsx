@@ -161,6 +161,12 @@ export default class PickerComponent extends React.Component<Props> {
           list: {
             itemText: typography.label,
             itemColor: colors ? colors.modalColor : COLORS.lightBlue,
+            scrollView: {
+              backgroundColor: COLORS.background,
+            },
+            itemWrapper: {
+              backgroundColor: COLORS.background,
+            },
           },
         }}
         options={options}

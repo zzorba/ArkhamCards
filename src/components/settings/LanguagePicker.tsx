@@ -76,7 +76,7 @@ class LanguagePicker extends React.Component<Props> {
         colors={{
           modalColor: COLORS.lightBlue,
           modalTextColor: '#FFF',
-          backgroundColor: '#FFF',
+          backgroundColor: COLORS.background,
           textColor: COLORS.darkText,
         }}
         editable={!cardsLoading}

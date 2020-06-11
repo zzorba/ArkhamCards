@@ -40,7 +40,11 @@ export default class SettingsItem extends React.Component<Props> {
       return (
         <View style={[styles.wrapper, space.paddingXs]}>
           <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
-          <ActivityIndicator style={[styles.spinner, space.marginLeftM]} size="small" animating />
+          <ActivityIndicator
+            style={[styles.spinner, space.marginLeftM]}
+            size="small"
+            animating
+          />
         </View>
       );
 
@@ -49,6 +53,8 @@ export default class SettingsItem extends React.Component<Props> {
       <SettingsButton
         onPress={onPress || this._dummyOnPress}
         title={text}
+        titleStyle={{ color: COLORS.darkText }}
+        containerStyle={styles.categoryContainer}
         rightIcon={navigation ? this._renderIcon : undefined}
         disabled={!onPress}
       />
@@ -64,5 +70,8 @@ const styles = StyleSheet.create({
   },
   spinner: {
     height: 20,
+  },
+  categoryContainer: {
+    backgroundColor: COLORS.background,
   },
 });

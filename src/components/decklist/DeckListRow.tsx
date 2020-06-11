@@ -17,6 +17,7 @@ import { toRelativeDateString } from 'lib/datetime';
 import { parseBasicDeck } from 'lib/parseDeck';
 import typography from 'styles/typography';
 import { s } from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   deck: Deck;
@@ -131,7 +132,7 @@ export default class DeckListRow extends React.Component<Props> {
         { !!deck.problem && (
           <DeckProblemRow
             problem={{ reason: deck.problem }}
-            color="#222"
+            color={COLORS.darkText}
             fontScale={fontScale}
           />
         ) }
