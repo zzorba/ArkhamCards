@@ -26,14 +26,14 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
           { investigator.skill_willpower || 0 }
         </Text>
         <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
-          <View style={styles.icon}>
+          <View style={[styles.icon, { top: 1 }]}>
             <ArkhamIcon
               name="skill_willpower_inverted"
               size={ICON_SIZE}
               color="#FFF"
             />
           </View>
-          <View style={styles.icon}>
+          <View style={[styles.icon, { top: 1 }]}>
             <ArkhamIcon
               name="skill_willpower"
               size={ICON_SIZE}
@@ -89,17 +89,17 @@ export default function InvestigatorStatLine({ investigator, fontScale }: Props)
           { investigator.skill_agility || 0 }
         </Text>
         <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
-          <View style={styles.icon}>
+          <View style={[styles.icon, { top: 1 }]}>
             <ArkhamIcon
               name="skill_agility_inverted"
-              size={ICON_SIZE}
+              size={ICON_SIZE - 1}
               color="#FFF"
             />
           </View>
-          <View style={styles.icon}>
+          <View style={[styles.icon, { top: 1 }]}>
             <ArkhamIcon
               name="skill_agility"
-              size={ICON_SIZE}
+              size={ICON_SIZE - 1}
               color={COLORS.skill.agility.default}
             />
           </View>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     top: 0,
-    left: 0,
+    left: 2,
   },
   skillRow: {
     flexDirection: 'row',
