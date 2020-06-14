@@ -7526,7 +7526,14 @@
           {
             "id": "burn_house",
             "text": "<i>If these people are allowed to live, these horrors will only repeat themselves. We have to put an end to this. We have to <b>kill them.</b></i>",
-            "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters", "slay_vips", "add_cultists"]
+            "steps": ["reward_3", "did_what_had_to_be_done", "slayed_the_monsters",
+              "maybe_slay_constance",
+              "maybe_slay_jordan",
+              "maybe_slay_haruko",
+              "maybe_slay_sebastien",
+              "maybe_slay_ashleigh",
+              "add_cultists"
+            ]
           }
         ]
       }
@@ -7663,39 +7670,119 @@
       ]
     },
     {
-      "id": "slay_vips",
-      "effects": [
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03065b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03066b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03067b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03068b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03069b",
-          "text": "#name#"
-        }
-      ]
+      "id": "maybe_slay_constance",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03065b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03065b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_jordan",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03066b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03066b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_haruko",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03067b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03067b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_sebastien",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03068b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03068b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_ashleigh",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03069b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03069b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "reward_1",
@@ -14785,7 +14872,11 @@
               "reward_3",
               "did_what_had_to_be_done",
               "slayed_the_monsters",
-              "slay_vips",
+              "maybe_slay_constance",
+              "maybe_slay_jordan",
+              "maybe_slay_haruko",
+              "maybe_slay_sebastien",
+              "maybe_slay_ashleigh",
               "add_cultists"
             ]
           }
@@ -14924,39 +15015,119 @@
       ]
     },
     {
-      "id": "slay_vips",
-      "effects": [
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03065b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03066b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03067b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03068b",
-          "text": "#name#"
-        },
-        {
-          "type": "campaign_log_cards",
-          "section": "vips_slain",
-          "id": "03069b",
-          "text": "#name#"
-        }
-      ]
+      "id": "maybe_slay_constance",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03065b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03065b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_jordan",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03066b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03066b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_haruko",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03067b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03067b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_sebastien",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03068b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03068b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_slay_ashleigh",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "vips_slain",
+        "id": "03069b",
+        "options": [
+          {
+            "boolCondition": false,
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "vips_slain",
+                "id": "03069b",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "reward_1",
