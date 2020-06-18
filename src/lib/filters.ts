@@ -291,7 +291,7 @@ export default class FilterBuilder {
       const fieldName = this.fieldName([field, 'value']);
       return [
         where(
-          `c.${field} = :${fieldName}${linked ? ` OR linked_card.${field} = :${fieldName}` : ''}`,
+          `c.${field} = :${fieldName}${linked ? ` OR (linked_card.${field} is not null AND linked_card.${field} = :${fieldName})` : ''}`,
           { [fieldName]: values[0] },
         ),
       ];
@@ -300,7 +300,7 @@ export default class FilterBuilder {
     const maxFieldName = this.fieldName([field, 'max']);
     return [
       where(
-        `(c.${field} >= :${minFieldName} and c.${field} <= :${maxFieldName})${linked ? ` or (linked_card.${field} >= :${minFieldName} and linked_card.${field} <= :${maxFieldName})` : ''}`,
+        `(c.${field} >= :${minFieldName} AND c.${field} <= :${maxFieldName})${linked ? ` OR (linked_card.${field} is not null AND (linked_card.${field} >= :${minFieldName} AND linked_card.${field} <= :${maxFieldName}))` : ''}`,
         {
           [minFieldName]: values[0],
           [maxFieldName]: values[1],
