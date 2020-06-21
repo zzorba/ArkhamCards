@@ -161,6 +161,8 @@ export default class App {
       topBar: {
         leftButtonColor: COLORS.lightBlue,
         rightButtonColor: COLORS.lightBlue,
+        rightButtonDisabledColor: COLORS.darkGray,
+        leftButtonDisabledColor: COLORS.darkGray,
         title: {
           color: COLORS.darkText,
         },

@@ -74,11 +74,11 @@ class AddScenarioResultView extends React.Component<Props, State> {
         backButton: {
           title: t`Cancel`,
         },
+        rightButtonDisabledColor: COLORS.darkGray,
         rightButtons: [{
           text: t`Save`,
           id: 'save',
           color: COLORS.navButton,
-          testID: t`Save`,
         }],
       },
     };
@@ -121,12 +121,12 @@ class AddScenarioResultView extends React.Component<Props, State> {
     const { componentId } = this.props;
     Navigation.mergeOptions(componentId, {
       topBar: {
+        rightButtonDisabledColor: COLORS.darkGray,
         rightButtons: [{
           text: t`Save`,
           id: 'save',
           enabled: this.saveEnabled(),
           color: COLORS.navButton,
-          testID: t`Save`,
         }],
       },
     });

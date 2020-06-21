@@ -6,7 +6,7 @@ buildscript {
         RNNKotlinVersion = kotlinVersion
         buildToolsVersion = "28.0.3"
         minSdkVersion = 21
-        compileSdkVersion = 28
+        compileSdkVersion = 29
         targetSdkVersion = 28
     }
     repositories {

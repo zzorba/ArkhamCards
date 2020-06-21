@@ -40075,7 +40075,7 @@
           },
           {
             "id": "alive",
-            "text": "Haringer is still in play or set aside.",
+            "text": "Harbinger is still in play or set aside.",
             "steps": ["record_harbinger"]
           }
         ]
@@ -41920,7 +41920,7 @@
           },
           {
             "id": "alive",
-            "text": "Haringer is still in play or set aside.",
+            "text": "Harbinger is still in play or set aside.",
             "steps": ["record_harbinger"]
           }
         ]
@@ -43590,7 +43590,7 @@
           },
           {
             "id": "alive",
-            "text": "Haringer is still in play or set aside.",
+            "text": "Harbinger is still in play or set aside.",
             "steps": ["record_harbinger"]
           }
         ]
