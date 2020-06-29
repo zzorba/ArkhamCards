@@ -338,7 +338,7 @@ export default class FilterBuilder {
     return this.complexVectorClause(
       'trait',
       map(traits, trait => `%#${trait}#%`),
-      (valueName: string) => `c.traits_normalized LIKE :${valueName} OR (linked_card.traits_normalized is not null AND linked_card.traits_normalized LIKE :${valueName})`
+      (valueName: string) => `c.real_traits_normalized LIKE :${valueName} OR (linked_card.real_traits_normalized is not null AND linked_card.real_traits_normalized LIKE :${valueName})`
     );
   }
 
@@ -435,10 +435,10 @@ export default class FilterBuilder {
       ] : []),
     ];
     if (enemyElite && !enemyNonElite) {
-      result.push(where(`c.traits_normalized LIKE '%#elite#%' or linked_card.traits_normalized LIKE '%#elite#%'`));
+      result.push(where(`c.real_traits_normalized LIKE '%#elite#%' or linked_card.real_traits_normalized LIKE '%#elite#%'`));
     }
     if (enemyNonElite && !enemyElite) {
-      result.push(where(`(c.type_code = 'enemy' AND NOT (c.traits_normalized LIKE '%#elite#%')) OR (linked_card.type_code = 'enemy' AND NOT (linked_card.traits_normalized LIKE '%#elite#%'))`));
+      result.push(where(`(c.type_code = 'enemy' AND NOT (c.real_traits_normalized LIKE '%#elite#%')) OR (linked_card.type_code = 'enemy' AND NOT (linked_card.real_traits_normalized LIKE '%#elite#%'))`));
     }
     if (enemyRetaliate) {
       result.push(where(`c.real_text LIKE '%Retaliate.%' OR linked_card.real_text LIKE '%Retaliate.%'`));

@@ -4764,6 +4764,7 @@
     },
     {
       "id": "check_jordan_perry",
+      "text": "Check Campaign Log. <i>If Jordan Perry is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -5253,6 +5254,7 @@
     },
     {
       "id": "check_ashleigh_clarke",
+      "text": "Check Campaign Log. <i>If Ashleigh Clarke is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -6838,6 +6840,7 @@
     },
     {
       "id": "check_sebastien_moreau",
+      "text": "Check Campaign Log. <i>If Sebastien Moreau is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -8242,6 +8245,7 @@
     },
     {
       "id": "check_ishimaru_haruko",
+      "text": "Check Campaign Log. <i>If Ishimaru Haruko is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -8783,6 +8787,7 @@
     },
     {
       "id": "check_constance_dumaine",
+      "text": "Check Campaign Log. <i>If Constance Dumaine is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -15557,6 +15562,7 @@
     },
     {
       "id": "check_jordan_perry",
+      "text": "Check Campaign Log. <i>If Jordan Perry is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -16133,6 +16139,7 @@
     },
     {
       "id": "check_ashleigh_clarke",
+      "text": "Check Campaign Log. <i>If Ashleigh Clarke is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -18049,6 +18056,7 @@
     },
     {
       "id": "check_sebastien_moreau",
+      "text": "Check Campaign Log. <i>If Sebastien Moreau is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -19030,6 +19038,7 @@
     },
     {
       "id": "check_ishimaru_haruko",
+      "text": "Check Campaign Log. <i>If Ishimaru Haruko is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -19626,6 +19635,7 @@
     },
     {
       "id": "check_constance_dumaine",
+      "text": "Check Campaign Log. <i>If Constance Dumaine is listed under VIPs Interviewed</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
