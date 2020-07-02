@@ -1734,7 +1734,7 @@
     },
     {
       "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
@@ -12859,7 +12859,7 @@
     },
     {
       "id": "earn_francis_morgan",
-      "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Any one investigator may choose to add Dr. Francis Morgan to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
           "type": "add_card",
