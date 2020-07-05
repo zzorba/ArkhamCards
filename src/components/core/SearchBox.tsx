@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18,
     color: COLORS.darkText,
-    backgroundColor: COLORS.veryVeryLightBackgound,
+    backgroundColor: COLORS.veryVeryLightBackground,
     borderRadius: 10,
   },
   icon: {

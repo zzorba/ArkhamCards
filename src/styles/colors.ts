@@ -14,67 +14,67 @@ export default {
   background: Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : 'white',
   lightBackground: Platform.OS === 'ios' ? PlatformColor('systemFillColor') : '#ccc',
   veryLightBackground: Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : '#eee',
-  veryVeryLightBackgound: Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : '#f4f4f4',
+  veryVeryLightBackground: Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : '#f4f4f4',
   divider: Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#bdbdbd',
   faction: {
     mystic: {
-      primary: '#4331b9',
+      text: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331b9', dark: '#af89fa' }) : '#4331b9',
       background: '#4331b9',
       darkBackground: '#4331b9',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d9d6f1', dark: '#46018f' }) : '#d9d6f1',
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#a198dc', dark: '#6104c4' }) : '#a198dc',
     },
     seeker: {
-      primary: '#ec8426',
+      text: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ec8426', dark: '#fcb447' }) : '#ec8426',
       background: '#ec8426',
       darkBackground: '#ec8426',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#cf6b0e' }) : '#f7cea8',
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f7cea8', dark: '#de6f09' }) : '#f7cea8',
     },
     guardian: {
-      primary: '#2b80c5',
+      text: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#2b80c5', dark: '#62cefc' }) : '#2b80c5',
       background: '#2b80c5',
       darkBackground: '#2b80c5',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d5e6f3', dark: '#004880' }) : '#d5e6f3',
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#aacce8', dark: '#0062ad' }) : '#aacce8',
     },
     rogue: {
-      primary: '#107116',
+      text: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#4fe356' }) : '#107116',
       background: '#107116',
       darkBackground: '#107116',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#015906' }) : '#cfe3d0',
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#9fc6a2', dark: '#008207' }) : '#9fc6a2', 
     },
     survivor: {
-      primary: '#cc3038',
+      text: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc3038', dark: '#ff6b73' }) : '#cc3038',
       background: '#cc3038',
       darkBackground: '#cc3038',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5d6d7', dark: '#7a0105' }) : '#f5d6d7', 
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ebacaf', dark: '#b30006' }) : '#ebacaf',
     },
     neutral: {
-      primary: darkText,
+      text: darkText,
       background: '#444',
       darkBackground: '#444',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : '#e6e6e6',
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ccc', dark: '#404040' }) : '#ccc',
     },
     dual: {
-      primary: '#868600',
+      text: '#868600',
       background: '#9a9a00',
       darkBackground: '#c0c000',
       pastelBackground: '#f2f2cc',
       light: '#e6e699',
     },
     dead: {
-      primary: '#704214',
+      text: '#704214',
       background: '#704214',
       darkBackground: '#5a3510',
       pastelBackground: '#d4c6b9',
       light: '#b8a18a',
     },
     mythos: {
-      primary: darkText,
+      text: darkText,
       background: '#000000',
       darkBackground: '#000000',
       pastelBackground: '#000000',
@@ -123,4 +123,16 @@ export default {
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
   settingsBackground: Platform.OS === 'ios' ? '#e3e6ed' : 'rgb(247, 247, 255)',
   monza: '#C70039',
+
+  toggleButton: Platform.OS === 'ios' ? 
+    DynamicColorIOS({
+      light: '#f6f6f6',
+      dark: '#363636',
+    }) : '#f6f6f6',
+
+  selectedToggleButton: Platform.OS === 'ios' ? 
+    DynamicColorIOS({
+      light: '#dddddd',
+      dark: '#111',
+    }) : '#dddddd',
 };

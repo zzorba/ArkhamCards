@@ -1,6 +1,9 @@
 import React from 'react';
 import { flatMap, map } from 'lodash';
 import {
+  Platform,
+  PlatformColor,
+  DynamicColorIOS,
   StyleSheet,
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
@@ -58,7 +61,7 @@ export default class FactionChooser extends React.Component<Props> {
             <ArkhamIcon
               name={iconName}
               size={iconName !== faction ? 28 : 32}
-              color={selected ? COLORS.faction[faction].primary : '#bdbdbd'}
+              color={selected ? COLORS.faction[faction].text : '#bdbdbd'}
             />
           );
         },
@@ -84,9 +87,9 @@ const styles = StyleSheet.create({
     height: 40,
   },
   button: {
-    backgroundColor: 'rgb(246,246,246)',
+    backgroundColor: COLORS.toggleButton,
   },
   selectedButton: {
-    backgroundColor: 'rgb(221,221,221)',
+    backgroundColor: COLORS.selectedToggleButton,
   },
 });

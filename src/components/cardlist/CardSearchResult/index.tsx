@@ -23,7 +23,7 @@ import CardQuantityComponent from './CardQuantityComponent';
 import typography from 'styles/typography';
 import { isBig, s, xs } from 'styles/space';
 
-const FACTION_ICONS = createFactionIcons();
+const FACTION_ICONS = createFactionIcons({ colorChoice: 'background' });
 
 interface Props {
   card: Card;
@@ -101,7 +101,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
       return (
-        <ArkhamIcon name="weakness" size={size} color={COLORS.faction.neutral.primary} />
+        <ArkhamIcon name="weakness" size={size} color={COLORS.faction.neutral.text} />
       );
     }
     const ICON_SIZE = iconSize(fontScale);
@@ -196,14 +196,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           <ArkhamIcon
             name={card.factionCode()}
             size={SKILL_ICON_SIZE}
-            color={COLORS.faction[card.factionCode()].primary}
+            color={COLORS.faction[card.factionCode()].text}
           />
         </View>
         <View style={styles.skillIcon}>
           <ArkhamIcon
             name={card.faction2_code}
             size={SKILL_ICON_SIZE}
-            color={COLORS.faction[card.faction2_code].primary}
+            color={COLORS.faction[card.faction2_code].text}
           />
         </View>
       </View>
@@ -262,7 +262,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     } = this.props;
     const color = (card.faction2_code ?
       COLORS.faction.dual :
-      COLORS.faction[card.factionCode()]).primary;
+      COLORS.faction[card.factionCode()]
+    ).text;
     return (
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>

@@ -461,7 +461,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View style={[styles.cardTitle, {
         backgroundColor: factionColor || COLORS.background,
-        borderColor: (card.faction2_code ? COLORS.faction.dual.primary : factionColor),
+        borderColor: (card.faction2_code ? COLORS.faction.dual.background : factionColor),
       }]}>
         { this.renderTitleContent(card, name, subname, factionColor) }
       </View>

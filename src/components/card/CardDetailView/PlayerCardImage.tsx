@@ -15,7 +15,7 @@ import Card from 'data/Card';
 import { isBig } from 'styles/space';
 import COLORS from 'styles/colors';
 
-const FACTION_ICONS = createFactionIcons('#FFF');
+const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFF' });
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 
 interface Props {
@@ -77,7 +77,7 @@ export default class PlayerCardImage extends React.Component<Props> {
           styles.placeholder,
           { backgroundColor: (card.faction2_code ?
             COLORS.faction.dual :
-            COLORS.faction[card.factionCode()]).primary,
+            COLORS.faction[card.factionCode()]).text,
           },
         ]}>
           <Text style={styles.placeholderIcon}>

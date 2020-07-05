@@ -655,7 +655,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
           <AppIcon
             name="kraken"
             size={width}
-            color={COLORS.veryVeryLightBackgound}
+            color={COLORS.veryVeryLightBackground}
           />
         </View>
         <View style={styles.headerBlock}>
