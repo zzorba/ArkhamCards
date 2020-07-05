@@ -106,8 +106,7 @@ export default class PackRow extends React.Component<Props> {
     } = this.props;
 
     const mythosPack = true;
-    const backgroundColor = (whiteBackground || mythosPack) ? '#FFFFFF' : '#f0f0f0';
-    const textColor = '#222222';
+    const backgroundColor = (whiteBackground || mythosPack) ? COLORS.background : COLORS.lightBackground;
     const iconSize = (mythosPack || compact) ? 24 : 28;
     const fontSize = (mythosPack || compact) ? 16 : 22;
     const rowHeight = mythosPack ? 50 : 60;
@@ -122,11 +121,11 @@ export default class PackRow extends React.Component<Props> {
               <EncounterIcon
                 encounter_code={pack.code}
                 size={iconSize}
-                color="#000000"
+                color={COLORS.darkText}
               />
             </View>
             <Text
-              style={[styles.title, { color: textColor, fontSize }]}
+              style={[styles.title, { color: COLORS.darkText, fontSize }]}
               numberOfLines={2}
               ellipsizeMode="tail"
             >

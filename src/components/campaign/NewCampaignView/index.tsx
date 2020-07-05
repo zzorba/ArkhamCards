@@ -786,6 +786,7 @@ const styles = StyleSheet.create({
   switch: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
+    backgroundColor: COLORS.background,
     paddingTop: s,
     paddingBottom: s,
   },

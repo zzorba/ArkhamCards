@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   container: {
+    backgroundColor: COLORS.background,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
     flexDirection: 'column',

@@ -93,7 +93,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <EncounterIcon
           encounter_code={card.encounter_code}
           size={size}
-          color="#000000"
+          color={COLORS.darkText}
         />
       );
     }
@@ -110,7 +110,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <EncounterIcon
           encounter_code={card.pack_code}
           size={ICON_SIZE}
-          color="#000000"
+          color={COLORS.darkText}
         />
       );
     }

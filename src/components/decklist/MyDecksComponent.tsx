@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
   signInFooter: {
     padding: m,
     marginTop: s,
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.lightBackground,
   },
   footer: {
     width: '100%',

@@ -1,71 +1,63 @@
 import {
   Platform,
+  PlatformColor,
   DynamicColorIOS,
 } from 'react-native';
 
-const darkText = Platform.OS === 'ios' ? 
-  DynamicColorIOS({
-    light: '#111',
-    dark: '#ddd',
-  }) : '#111';
+const darkText = Platform.OS === 'ios' ? PlatformColor('labelColor') : '#111';
+const lightText = Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : '#444';
 
-const lightText = Platform.OS === 'ios' ? 
-  DynamicColorIOS({
-    light: '#444',
-    dark: '#aaa',
-  }): '#444';
-
-  export default {
+export default {
   darkText,
   lightText,
-  veryLightText: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#888', dark: '#888' }) : '#888',
-  background: Platform.OS === 'ios' ? DynamicColorIOS({ light: 'white', dark: '#111' }) : 'white',
-  lightBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ccc', dark: '#444' }) : '#ccc',
-  veryLightBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#eee', dark: '#222' }) : '#eee',
-  veryVeryLightBackgound: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f4f4f4', dark: '#040404' }) : '#f4f4f4',
-  divider: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#bdbdbd', dark: '#444' }) : '#bdbdbd',
+  veryLightText: Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor'): '#888',
+  background: Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : 'white',
+  lightBackground: Platform.OS === 'ios' ? PlatformColor('systemFillColor') : '#ccc',
+  veryLightBackground: Platform.OS === 'ios' ? PlatformColor('secondarySystemBackgroundColor') : '#eee',
+  veryVeryLightBackgound: Platform.OS === 'ios' ? PlatformColor('tertiarySystemBackgroundColor') : '#f4f4f4',
+  divider: Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#bdbdbd',
   faction: {
     mystic: {
       primary: '#4331b9',
       background: '#4331b9',
       dark: '#4331b9',
-      veryLight: '#d9d6f1',
-      light: '#a198dc',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d9d6f1', dark: '#46018f' }) : '#d9d6f1',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#a198dc', dark: '#6104c4' }) : '#a198dc',
     },
     seeker: {
       primary: '#ec8426',
       background: '#ec8426',
       dark: '#ec8426',
-      veryLight: '#fbe6d4',
-      light: '#f7cea8',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#cf6b0e' }) : '#f7cea8',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f7cea8', dark: '#de6f09' }) : '#f7cea8',
     },
     guardian: {
       primary: '#2b80c5',
       background: '#2b80c5',
       dark: '#2b80c5',
-      veryLight: '#d5e6f3',
-      light: '#aacce8',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d5e6f3', dark: '#004880' }) : '#d5e6f3',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#aacce8', dark: '#0062ad' }) : '#aacce8',
     },
     rogue: {
-      primary: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#1bb525' }) : '#107116',
+      primary: '#107116',
       background: '#107116',
-      dark: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#cfe3d0' }) : '#107116',
-      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#107116' }) : '#cfe3d0',
-      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#9fc6a2', dark: '#08450d' }) : '#9fc6a2',
+      dark: '#107116',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#015906' }) : '#cfe3d0',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#9fc6a2', dark: '#008207' }) : '#9fc6a2', 
     },
     survivor: {
       primary: '#cc3038',
       background: '#cc3038',
       dark: '#cc3038',
-      veryLight: '#f5d6d7',
-      light: '#ebacaf',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5d6d7', dark: '#7a0105' }) : '#f5d6d7', 
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ebacaf', dark: '#b30006' }) : '#ebacaf',
     },
     neutral: {
       primary: darkText,
       background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#bbb' }) : '#444',
       dark: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#bbb' }) : '#444',
-      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '060606' }) : '#e6e6e6',
-      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cccccc', dark: '#444' }) : '#ccc',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : '#e6e6e6',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ccc', dark: '#404040' }) : '#ccc',
     },
     dual: {
       primary: '#868600',
@@ -82,14 +74,13 @@ const lightText = Platform.OS === 'ios' ?
       light: '#b8a18a',
     },
     mythos: {
-      primary: '#000000',
+      primary: darkText,
       background: '#000000',
       dark: '#000000',
       veryLight: '#000000',
       light: '#000000',
     },
   },
-
   skill: {
     willpower: {
       default: '#003961',
@@ -112,7 +103,6 @@ const lightText = Platform.OS === 'ios' ?
       light: '#8A7D5A',
     },
   },
-
   scenarioGreen: '#2E5344',
   veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
@@ -128,7 +118,7 @@ const lightText = Platform.OS === 'ios' ?
   taboo: 'purple',
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
-  navButton: Platform.OS === 'ios' ? '#007AFF' : '#000',
+  navButton: Platform.OS === 'ios' ? PlatformColor('linkColor') : '#000',
   black: '#000',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
   settingsBackground: Platform.OS === 'ios' ? '#e3e6ed' : 'rgb(247, 247, 255)',
