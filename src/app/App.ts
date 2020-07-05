@@ -175,7 +175,7 @@ export default class App {
       },
       bottomTab: {
         iconColor: COLORS.lightText,
-        textColor: COLORS.lightText,
+        textColor: COLORS.darkText,
         selectedIconColor: COLORS.lightBlue,
         selectedTextColor: COLORS.lightBlue,
       },
@@ -184,6 +184,7 @@ export default class App {
     Navigation.setRoot({
       root: {
         bottomTabs: {
+          id: 'BOTTOM',
           children: tabs,
         },
       },

@@ -14,6 +14,8 @@ import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCard
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from 'styles/space';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import COLORS from 'styles/colors';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -268,22 +270,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#f6f6f6',
+    backgroundColor: COLORS.veryVeryLightBackground,
   },
   wrapButtonRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#f6f6f6',
+    backgroundColor: COLORS.veryVeryLightBackground,
     flexWrap: 'wrap',
   },
   text: {
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 22,
+    color: COLORS.darkText,
   },
   button: {
     flex: 1,
     marginLeft: xs,
-    marginRight: xs,
+    marginRight: xs,    
+    color: COLORS.darkText,
   },
 });

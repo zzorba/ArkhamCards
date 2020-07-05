@@ -175,7 +175,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <ArkhamIcon
           name={skill}
           size={SKILL_ICON_SIZE}
-          color={COLORS.lightText}
+          color={COLORS.faction.neutral.text}
         />
       </View>
     ));
@@ -277,7 +277,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           { this.renderTabooBlock() }
           { !!card.advanced && (
             <View style={styles.tabooBlock}>
-              <ArkhamIcon name="parallel" size={18 * fontScale} color="#000" />
+              <ArkhamIcon name="parallel" size={18 * fontScale} color={COLORS.darkText} />
             </View>
           ) }
         </View>
