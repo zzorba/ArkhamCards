@@ -8,6 +8,7 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import COLORS from 'styles/colors';
 import { iconSizeScale } from 'styles/space';
 
 interface Props {
@@ -36,7 +37,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       case 'dark': return '#888';
       case 'light': return '#FFF';
       default:
-        return '#ddd';
+        return COLORS.veryLightText;
     }
   }
 
@@ -47,7 +48,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     switch (color) {
       case 'dark': return '#000';
       case 'light': return '#FFF';
-      default: return '#888';
+      default: return COLORS.lightText;
     }
   }
 
