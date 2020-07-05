@@ -538,7 +538,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           backgroundColor: COLORS.background,
           borderColor: COLORS.faction[
             card.faction2_code ? 'dual' : card.factionCode()
-          ].primary,
+          ].background,
         }]}>
           { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
@@ -565,7 +565,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <View style={[styles.gameTextBlock, {
                   borderColor: COLORS.faction[card.faction2_code ?
                     'dual' : card.factionCode()
-                  ].primary,
+                  ].background,
                 }]}>
                   <CardTextComponent text={card.back_text} />
                 </View>)
@@ -692,7 +692,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <View style={[styles.gameTextBlock, {
             borderColor: COLORS.faction[card.faction2_code ?
               'dual' : card.factionCode()
-            ].primary,
+            ].background,
           }]}>
             <CardTextComponent text={card.text} />
           </View>)
@@ -749,7 +749,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           {
             borderColor: COLORS.faction[
               card.faction2_code ? 'dual' : card.factionCode()
-            ].primary,
+            ].background,
           },
         ]}>
           { this.renderTitle(card, card.name, card.subname) }

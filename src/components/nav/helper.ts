@@ -53,7 +53,7 @@ export function getDeckOptions(
       background: {
         color: COLORS.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
-        ].dark,
+        ].darkBackground,
       },
     },
     bottomTabs: {

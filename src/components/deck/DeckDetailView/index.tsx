@@ -587,7 +587,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -643,7 +643,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -688,7 +688,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },

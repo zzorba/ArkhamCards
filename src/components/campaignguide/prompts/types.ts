@@ -1,4 +1,8 @@
+import { DynamicColorIOS, PlatformColor } from 'react-native';
+
+type Color = string | DynamicColorIOS | PlatformColor;
+
 export interface CustomColor {
-  tint: string;
-  primary: string;
+  tint: Color;
+  primary: Color;
 }

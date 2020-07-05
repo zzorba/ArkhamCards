@@ -8,10 +8,11 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { SettingsCategoryHeader, SettingsSwitch } from 'react-native-settings-components';
+import { SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
 
 import LanguagePicker from './LanguagePicker';
+import CategoryHeader from './CategoryHeader';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { clearDecks } from 'actions';
 import { fetchCards } from 'components/card/actions';
@@ -23,7 +24,6 @@ import { getAllDecks, AppState } from 'reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import COLORS from 'styles/colors';
-import typography from 'styles/typography';
 
 interface OwnProps {
   componentId: string;
@@ -45,16 +45,6 @@ interface ReduxActionProps {
 
 
 type Props = OwnProps & ReduxProps & ReduxActionProps;
-
-function CategoryHeader({ title }: { title: string }) {
-  return (
-    <SettingsCategoryHeader
-      title={title}
-      titleStyle={typography.smallLabel}
-      containerStyle={styles.categoryContainer}
-    />
-  );
-}
 
 class SettingsView extends React.Component<Props> {
   static contextType = DatabaseContext;

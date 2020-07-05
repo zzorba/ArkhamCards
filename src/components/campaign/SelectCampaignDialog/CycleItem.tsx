@@ -40,7 +40,7 @@ export default class CycleItem extends React.Component<Props> {
           <EncounterIcon
             encounter_code={packCode}
             size={36 * iconSizeScale * fontScale}
-            color="#000000"
+            color={COLORS.darkText}
           />
         </View>
         <View style={styles.column}>

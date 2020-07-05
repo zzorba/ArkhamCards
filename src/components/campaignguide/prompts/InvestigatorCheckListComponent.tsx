@@ -82,8 +82,8 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
               code: investigator.code,
               name: investigator.name,
               color: {
-                tint: COLORS.faction[investigator.factionCode()].veryLight,
-                primary: COLORS.faction[investigator.factionCode()].primary,
+                tint: COLORS.faction[investigator.factionCode()].pastelBackground,
+                primary: COLORS.faction[investigator.factionCode()].background,
               },
             };
           })

@@ -558,7 +558,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
             setTabooSet={setTabooSet}
             color={COLORS.faction[
               investigator ? investigator.factionCode() : 'neutral'
-            ].dark}
+            ].darkBackground}
             transparent
           />
         ) }

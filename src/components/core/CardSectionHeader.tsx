@@ -49,7 +49,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <View style={[
         styles.superHeaderRow,
-        { backgroundColor: COLORS.faction[investigator.factionCode()].dark },
+        { backgroundColor: COLORS.faction[investigator.factionCode()].darkBackground },
       ]}>
         <View style={styles.superHeaderPadding}>
           <Text style={[typography.text, styles.superHeaderText]}>

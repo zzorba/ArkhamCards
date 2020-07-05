@@ -94,7 +94,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           <AppIcon
             name={`${inverted ? '' : 'inverted_'}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? color : COLORS.veryLightBackground}
+            color={inverted ? color : COLORS.lightBackground}
           />
         </View>
         <View style={[styles.levelIcon, style]}>
@@ -145,6 +145,6 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    color: COLORS.background,
+    color: COLORS.white,
   },
 });

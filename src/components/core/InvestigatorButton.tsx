@@ -27,7 +27,7 @@ export default function InvestigatorButton({
       onPress={onPress}
       disabled={disabled}
       colors={{
-        backgroundColor: COLORS.faction[investigator.factionCode()].veryLight,
+        backgroundColor: COLORS.faction[investigator.factionCode()].pastelBackground,
         textColor: '#000',
       }}
       widget={widget}

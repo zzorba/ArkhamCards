@@ -5,7 +5,7 @@ declare module 'react-native-settings-components' {
     container?: React.ReactNode;
     containerStyle?: ViewStyle;
     titleProps?: TextProps;
-    titleStyle?: TextStyle;
+    titleStyle?: TextStyle | TextStyle[];
     title: string;
   }
   class SettingsCategoryHeader extends React.Component<SettingsCategoryHeaderProps> {}

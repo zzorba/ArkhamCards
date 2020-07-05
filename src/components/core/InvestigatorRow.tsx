@@ -65,7 +65,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       <View style={styles.wrapper}>
         <View style={[
           styles.headerColor,
-          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].dark },
+          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
         ]} />
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
@@ -114,7 +114,7 @@ export default class InvestigatorRow extends React.Component<Props> {
         { !!children && children }
         <View style={[
           styles.headerColor,
-          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].dark },
+          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
         ]} />
       </View>
     );

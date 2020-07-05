@@ -130,7 +130,7 @@ export default class DeckNavFooter extends React.Component<Props> {
     const xpString = this.xpString();
     return (
       <View style={styles.borderWrapper}>
-        <View style={[styles.wrapper, { backgroundColor: COLORS.faction[investigator.factionCode()].dark }]}>
+        <View style={[styles.wrapper, { backgroundColor: COLORS.faction[investigator.factionCode()].darkBackground }]}>
           <View style={styles.left}>
             <View style={styles.row}>
               <Text style={[

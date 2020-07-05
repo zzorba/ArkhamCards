@@ -56,7 +56,7 @@ export default class SupplyComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
-        { backgroundColor: COLORS.faction[investigator.factionCode()].veryLight },
+        { backgroundColor: COLORS.faction[investigator.factionCode()].pastelBackground },
       ]}>
         <View style={[styles.textBlock, space.paddingS, space.paddingSideM]}>
           <Text style={typography.text}>

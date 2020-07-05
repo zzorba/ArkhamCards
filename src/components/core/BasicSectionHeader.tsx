@@ -27,7 +27,7 @@ export default function BasicSectionHeader({ title, bold }: Props) {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    backgroundColor: '#eee',
+    backgroundColor: COLORS.veryLightBackground,
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     marginLeft: s,
-    color: COLORS.black,
+    color: COLORS.darkText,
   },
 });

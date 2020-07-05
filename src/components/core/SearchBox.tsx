@@ -59,7 +59,7 @@ export default class SearchBox extends React.Component<Props> {
             allowFontScaling={false}
             onChangeText={onChangeText}
             placeholder={placeholder}
-            placeholderTextColor={COLORS.veryLightText}
+            placeholderTextColor={COLORS.lightText}
             value={value}
           />
           { this.renderToggleButton() }
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18,
     color: COLORS.darkText,
-    backgroundColor: COLORS.veryLightBackground,
+    backgroundColor: COLORS.veryVeryLightBackgound,
     borderRadius: 10,
   },
   icon: {

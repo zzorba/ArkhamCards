@@ -122,7 +122,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -218,7 +218,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -264,7 +264,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },

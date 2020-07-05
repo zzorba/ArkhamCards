@@ -53,7 +53,7 @@ export default class DeckSizeSelectPicker extends React.Component<Props> {
         description={editWarning ? t`Note: Deck size should only be selected at deck creation time, not between scenarios.` : undefined}
         colors={{
           modalColor: investigatorFaction ?
-            COLORS.faction[investigatorFaction].primary :
+            COLORS.faction[investigatorFaction].background :
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',

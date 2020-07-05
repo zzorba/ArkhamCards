@@ -174,6 +174,7 @@ export default class App {
         backgroundColor: COLORS.background,
       },
       bottomTab: {
+        iconColor: COLORS.lightText,
         textColor: COLORS.lightText,
         selectedIconColor: COLORS.lightBlue,
         selectedTextColor: COLORS.lightBlue,

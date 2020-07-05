@@ -317,7 +317,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           value={deckName}
         />
         <TabooSetPicker
-          color={COLORS.faction[investigator.factionCode()].primary}
+          color={COLORS.faction[investigator.factionCode()].background}
           tabooSetId={tabooSetId}
           setTabooSet={this._setTabooSetId}
         />

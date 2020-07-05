@@ -19,7 +19,7 @@ export default function InvestigatorNameRow({
 }: Props) {
   const backgroundColor = dark ?
     COLORS.faction[investigator.factionCode()].light :
-    COLORS.faction[investigator.factionCode()].veryLight;
+    COLORS.faction[investigator.factionCode()].pastelBackground;
   return (
     <View style={[
       styles.investigatorRow,

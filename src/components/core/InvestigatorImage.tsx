@@ -97,7 +97,7 @@ export default class InvestigatorImage extends React.Component<Props> {
               {
                 width: size,
                 height: size,
-                backgroundColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].primary,
+                backgroundColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].backgroud,
               },
             ]}>
               <Text style={styles.placeholderIcon} allowFontScaling={false}>
@@ -116,7 +116,7 @@ export default class InvestigatorImage extends React.Component<Props> {
             <View style={[
               styles.border,
               {
-                borderColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].primary,
+                borderColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].backgroud,
                 width: size,
                 height: size,
               },

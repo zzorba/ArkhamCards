@@ -24,8 +24,8 @@ export default function InvestigatorChoicePrompt(
                 code: investigator.code,
                 name: investigator.name,
                 color: {
-                  tint: COLORS.faction[investigator.factionCode()].veryLight,
-                  primary: COLORS.faction[investigator.factionCode()].primary,
+                  tint: COLORS.faction[investigator.factionCode()].pastelBackground,
+                  primary: COLORS.faction[investigator.factionCode()].background,
                 },
               };
             })}

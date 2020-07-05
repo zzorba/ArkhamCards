@@ -67,7 +67,7 @@ export default class ParallelInvestigatorPicker extends React.Component<Props> {
         description={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
         colors={{
           modalColor: investigatorFaction ?
-            COLORS.faction[investigatorFaction].primary :
+            COLORS.faction[investigatorFaction].background :
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',

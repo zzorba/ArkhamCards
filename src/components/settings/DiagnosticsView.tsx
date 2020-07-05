@@ -3,7 +3,6 @@ import { forEach } from 'lodash';
 import {
   Alert,
   InteractionManager,
-  Platform,
   Keyboard,
   SafeAreaView,
   ScrollView,
@@ -12,11 +11,9 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import {
-  SettingsCategoryHeader,
-} from 'react-native-settings-components';
-
 import { t } from 'ttag';
+
+import CategoryHeader from './CategoryHeader';
 import { Campaign, CampaignGuideState, Deck, Pack } from 'actions/types';
 import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import { clearDecks } from 'actions';
@@ -211,9 +208,8 @@ class DiagnosticsView extends React.Component<Props> {
     }
     return (
       <>
-        <SettingsCategoryHeader
+        <CategoryHeader
           title={t`Debug`}
-          titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
         />
         <SettingsItem
           onPress={this._addDebugCard}
@@ -227,9 +223,8 @@ class DiagnosticsView extends React.Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
-          <SettingsCategoryHeader
+          <CategoryHeader
             title={t`Backup`}
-            titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
           <SettingsItem
             onPress={this._exportCampaignData}
@@ -239,9 +234,8 @@ class DiagnosticsView extends React.Component<Props> {
             onPress={this._importCampaignData}
             text={t`Restore Campaign Data`}
           />
-          <SettingsCategoryHeader
+          <CategoryHeader
             title={t`Caches`}
-            titleStyle={Platform.OS === 'android' ? { color: COLORS.monza } : undefined}
           />
           <SettingsItem
             onPress={this._clearCache}
@@ -280,8 +274,9 @@ export default withDialogs(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.veryLightBackground,
   },
   list: {
-    backgroundColor: COLORS.settingsBackground,
+    backgroundColor: COLORS.veryLightBackground,
   },
 });

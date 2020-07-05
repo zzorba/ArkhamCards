@@ -31,8 +31,8 @@ export default class InvestigatorCounterComponent extends React.Component<Props>
                   code: investigator.code,
                   name: investigator.name,
                   color: {
-                    tint: COLORS.faction[investigator.factionCode()].veryLight,
-                    primary: COLORS.faction[investigator.factionCode()].primary,
+                    tint: COLORS.faction[investigator.factionCode()].pastelBackground,
+                    primary: COLORS.faction[investigator.factionCode()].background,
                   },
                   limit: limits ? limits[investigator.code] : undefined,
                   description: description ? description[investigator.code] : undefined,
