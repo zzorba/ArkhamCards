@@ -1,10 +1,11 @@
 import React from 'react';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { Alert, Button, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import BasicButton from 'components/core/BasicButton';
 import { EditDeckProps } from './DeckEditView';
 import { CampaignDrawWeaknessProps } from 'components/campaign/CampaignDrawWeaknessDialog';
 import { CardDetailProps } from 'components/card/CardDetailView';
@@ -284,7 +285,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       campaignId,
     } = this.props;
     return (
-      <Button
+      <BasicButton
         title={t`Draw Basic Weakness`}
         onPress={campaignId ? this._showCampaignWeaknessDialog : this._drawWeakness}
       />
@@ -358,7 +359,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
             fontScale={fontScale}
           />
         )) }
-        <Button
+        <BasicButton
           title={t`Edit Story Cards`}
           onPress={this._editStoryPressed}
         />
