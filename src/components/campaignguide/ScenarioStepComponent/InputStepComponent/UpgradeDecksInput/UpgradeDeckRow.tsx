@@ -347,7 +347,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <Text style={[typography.text]}>
                 { physicalDeltaString }
                 { !locked && (
-                  <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                  <Text style={[typography.text, { color: COLORS.lightText }]}>
                     { t` (New Total: ${totalPhysical})` }
                   </Text>
                 ) }
@@ -395,7 +395,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <Text style={typography.text}>
                 { mentalDeltaString }
                 { !locked && (
-                  <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                  <Text style={[typography.text, { color: COLORS.lightText }]}>
                     { t` (New Total: ${totalMental})` }
                   </Text>
                 ) }

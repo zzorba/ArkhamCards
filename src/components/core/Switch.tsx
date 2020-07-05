@@ -27,8 +27,11 @@ export default function CustomSwitch({ customColor, customTrackColor, ...otherPr
   }
   return (
     <Switch
-      //trackColor={COLORS.switchTrackColor}
-      //ios_backgroundColor={COLORS.background}
+      trackColor={customTrackColor ? {
+        false: customTrackColor,
+        true: customTrackColor,
+      } : undefined}
+      ios_backgroundColor={COLORS.background}
       {...otherProps}
     />
   );

@@ -252,7 +252,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             key={idx}
             name={skill.substring(6)}
             size={SKILL_ICON_SIZE}
-            color="#444"
+            color={COLORS.darkText}
           />))
         }
       </View>

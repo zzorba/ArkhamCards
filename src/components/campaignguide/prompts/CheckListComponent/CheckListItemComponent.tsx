@@ -56,14 +56,14 @@ export default class CheckListItemComponent extends React.Component<Props> {
           <Switch
             onValueChange={this._toggle}
             customColor={color && color.primary}
-            customTrackColor={color ? '#bbb' : undefined}
+            customTrackColor={color ? '#ccc' : undefined}
             value={selected}
           />
         ) : (
           <MaterialCommunityIcons
             name="check"
             size={18}
-            color={color ? '#000' : '#222'}
+            color={color ? COLORS.darkText : '#222'}
           />
         ) }
       </View>

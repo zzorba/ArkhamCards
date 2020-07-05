@@ -16,6 +16,7 @@ export function costIconSize(fontScale: number) {
   return (isBig ? 48 : 36) * scaleFactor;
 }
 
+const COST_ICON_BACKGROUND_COLOR = 'rgb(245, 245, 245)';
 interface Props {
   card: Card;
   fontScale: number;
@@ -94,14 +95,14 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           <AppIcon
             name={`${inverted ? '' : 'inverted_'}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? color : COLORS.lightBackground}
+            color={inverted ? color : COST_ICON_BACKGROUND_COLOR}
           />
         </View>
         <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? COLORS.background : color}
+            color={inverted ? COST_ICON_BACKGROUND_COLOR : color}
           />
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
@@ -109,7 +110,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
             <View>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color={COLORS.background}
+                color="white"
                 size={ICON_SIZE / 2}
               />
             </View>

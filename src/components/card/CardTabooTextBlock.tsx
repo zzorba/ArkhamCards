@@ -28,7 +28,7 @@ export default function CardTabooTextBlock({ card, fontScale }: Props) {
     <View style={styles.tabooTextBlock}>
       <View style={styles.tabooRow}>
         <View style={styles.tabooIcon}>
-          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color="purple" />
+          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={COLORS.taboo} />
         </View>
         <Text style={typography.cardText}>
           { t`Taboo List Changes` }

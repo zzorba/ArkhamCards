@@ -86,7 +86,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
         onChoiceChange={this._onChoiceChange}
         colors={color ? {
           backgroundColor: color.tint,
-          textColor: '#000',
+          textColor: COLORS.darkText,
           modalColor: color.primary,
           modalTextColor: '#FFF',
         } : undefined}

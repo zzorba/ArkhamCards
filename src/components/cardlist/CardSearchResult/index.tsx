@@ -248,7 +248,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           </Text>
         ) }
         { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
-          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color="purple" />
+          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color={COLORS.taboo} />
         ) }
       </View>
     );

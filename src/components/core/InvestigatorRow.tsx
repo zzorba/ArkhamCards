@@ -94,7 +94,7 @@ export default class InvestigatorRow extends React.Component<Props> {
                 <ArkhamIcon
                   name={CardCostIcon.factionIcon(investigator)}
                   size={ICON_SIZE}
-                  color={COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].text}
+                  color={COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].background}
                 />
               ) }
             </View>

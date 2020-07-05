@@ -77,7 +77,7 @@ export default class PlayerCardImage extends React.Component<Props> {
           styles.placeholder,
           { backgroundColor: (card.faction2_code ?
             COLORS.faction.dual :
-            COLORS.faction[card.factionCode()]).text,
+            COLORS.faction[card.factionCode()]).background,
           },
         ]}>
           <Text style={styles.placeholderIcon}>
