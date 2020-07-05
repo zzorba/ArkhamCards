@@ -46,6 +46,7 @@ export default class App {
   startApp(lang?: string) {
     changeLocale(lang || 'en');
     LogBox.ignoreLogs([
+      'Warning: Failed prop type: Invalid prop `titleStyle` of type `array` supplied to `SettingsCategoryHeader`, expected `object`.',
       'Warning: Failed prop type: DialogSwitch: prop type `labelStyle` is invalid;',
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',
