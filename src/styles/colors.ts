@@ -1,31 +1,29 @@
 import {
   Platform,
+  DynamicColorIOS,
 } from 'react-native';
 
-const darkText = '#111';
-const lightText = '#444';
-export default {
-  // Dark Mode Colors
-  /*
-  darkText: '#ddd',
-  lightText: '#aaa',
-  veryLightText: '#888',
-  background: '#111',
-  lightBackground: '#444',
-  veryLightBackground: '#222',
-  veryVeryLightBackgound: '#040404',
-  divider: '#444',*/
+const darkText = Platform.OS === 'ios' ? 
+  DynamicColorIOS({
+    light: '#111',
+    dark: '#ddd',
+  }) : '#111';
 
-  // Normal Colors
+const lightText = Platform.OS === 'ios' ? 
+  DynamicColorIOS({
+    light: '#444',
+    dark: '#aaa',
+  }): '#444';
+
+  export default {
   darkText,
   lightText,
-  veryLightText: '#888',
-  background: 'white',
-  lightBackground: '#ccc',
-  veryLightBackground: '#eee',
-  veryVeryLightBackgound: '#f4f4f4',
-  divider: '#bdbdbd',
-
+  veryLightText: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#888', dark: '#888' }) : '#888',
+  background: Platform.OS === 'ios' ? DynamicColorIOS({ light: 'white', dark: '#111' }) : 'white',
+  lightBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ccc', dark: '#444' }) : '#ccc',
+  veryLightBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#eee', dark: '#222' }) : '#eee',
+  veryVeryLightBackgound: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f4f4f4', dark: '#040404' }) : '#f4f4f4',
+  divider: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#bdbdbd', dark: '#444' }) : '#bdbdbd',
   faction: {
     mystic: {
       primary: '#4331b9',
@@ -49,11 +47,11 @@ export default {
       light: '#aacce8',
     },
     rogue: {
-      primary: '#107116',
+      primary: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#1bb525' }) : '#107116',
       background: '#107116',
-      dark: '#107116',
-      veryLight: '#cfe3d0',
-      light: '#9fc6a2',
+      dark: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#cfe3d0' }) : '#107116',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#107116' }) : '#cfe3d0',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#9fc6a2', dark: '#08450d' }) : '#9fc6a2',
     },
     survivor: {
       primary: '#cc3038',
@@ -64,10 +62,10 @@ export default {
     },
     neutral: {
       primary: darkText,
-      background: '#444444',
-      dark: '#444444',
-      veryLight: '#e6e6e6',
-      light: '#cccccc',
+      background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#bbb' }) : '#444',
+      dark: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#bbb' }) : '#444',
+      veryLight: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '060606' }) : '#e6e6e6',
+      light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cccccc', dark: '#444' }) : '#ccc',
     },
     dual: {
       primary: '#868600',

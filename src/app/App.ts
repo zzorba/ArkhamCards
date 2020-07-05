@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { Linking, YellowBox } from 'react-native';
+import { Linking, LogBox } from 'react-native';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
 import { t } from 'ttag';
@@ -45,7 +45,7 @@ export default class App {
 
   startApp(lang?: string) {
     changeLocale(lang || 'en');
-    YellowBox.ignoreWarnings([
+    LogBox.ignoreLogs([
       'Warning: Failed prop type: DialogSwitch: prop type `labelStyle` is invalid;',
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',
