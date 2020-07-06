@@ -332,15 +332,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderFactionIcon(card: Card) {
-    const color = (
-      card.type_code === 'asset' ||
-      card.type_code === 'event' ||
-      card.type_code === 'skill' ||
-      card.type_code === 'investigator' ||
-      card.subtype_code === 'weakness' ||
-      card.subtype_code === 'basicweakness'
-    ) ? '#FFF' : '#222';
-
+    const color =  '#FFF';
     if (card.spoiler) {
       const encounter_code = card.encounter_code ||
         (card.linked_card && card.linked_card.encounter_code);
@@ -514,6 +506,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             notFirst={!isFirst}
             width={width}
             simple={simple}
+            key="linked"
           />
         </View>
       );
@@ -622,7 +615,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { !!card.encounter_name && !!card.encounter_code ? (
                 <>
                   <Text style={typography.cardText}>
-                    <EncounterIcon encounter_code={card.encounter_code} size={16 * fontScale} color={COLORS.darkText} />
+                    <EncounterIcon
+                      encounter_code={card.encounter_code} 
+                      size={16 * fontScale} 
+                      color={COLORS.darkText} 
+                    />
                     { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
                       ngettext(
                         msgid`\n${card.quantity} copy.`,
@@ -633,14 +630,22 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   </Text>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
-                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color={COLORS.darkText} />
+                      <EncounterIcon 
+                        encounter_code={card.cycle_code || card.pack_code} 
+                        size={16 * fontScale} 
+                        color={COLORS.darkText} 
+                      />
                       { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
                   ) }
                 </>
               ) : (
                 <Text style={typography.cardText}>
-                  <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color={COLORS.darkText} />
+                  <EncounterIcon 
+                    encounter_code={card.cycle_code || card.pack_code} 
+                    size={16 * fontScale} 
+                    color={COLORS.darkText} 
+                  />
                   { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>
               ) }

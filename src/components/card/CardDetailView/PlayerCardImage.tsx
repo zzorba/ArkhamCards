@@ -67,6 +67,18 @@ export default class PlayerCardImage extends React.Component<Props> {
     const {
       card,
     } = this.props;
+    if (card.encounter_code) {
+      return (
+        <View style={[
+          styles.placeholder,
+          { backgroundColor: '#444' },
+        ]}>
+          <Text style={styles.placeholderIcon}>
+            <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
+          </Text>
+        </View>
+      );
+    }
 
     const faction_icon = card.faction2_code ?
       FACTION_ICONS.dual :
@@ -86,18 +98,6 @@ export default class PlayerCardImage extends React.Component<Props> {
         </View>
       );
     }
-    if (card.encounter_code) {
-      return (
-        <View style={[
-          styles.placeholder,
-          { backgroundColor: '#444' },
-        ]}>
-          <Text style={styles.placeholderIcon}>
-            <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
-          </Text>
-        </View>
-      );
-    }
     return null;
   }
 
@@ -113,7 +113,7 @@ export default class PlayerCardImage extends React.Component<Props> {
       card.type_code === 'investigator' ||
       card.type_code === 'agenda';
 
-    if (isBig && !horizontal) {
+      if (isBig && !horizontal) {
       return (
         <View style={styles.verticalContainer}>
           <FastImage

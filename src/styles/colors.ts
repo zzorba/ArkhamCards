@@ -54,8 +54,8 @@ export default {
     },
     neutral: {
       text: darkText,
-      background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444', dark: '#666' }) : '#444',
-      darkBackground: '#444',
+      background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444', dark: '#888' }) : '#444',
+      darkBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444', dark: '#888' }) : '#444',
       pastelBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : '#e6e6e6',
       light: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#ccc', dark: '#404040' }) : '#ccc',
     },
@@ -75,8 +75,8 @@ export default {
     },
     mythos: {
       text: darkText,
-      background: '#000000',
-      darkBackground: '#000000',
+      background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : '#000',
+      background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : '#000',
       pastelBackground: '#000000',
       light: '#000000',
     },
