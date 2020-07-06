@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bbb',
+    borderColor: COLORS.divider,
   },
   buttons: {
     justifyContent: 'center',
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   blackText: {
-    color: '#000',
+    color: COLORS.darkText,
   },
 });

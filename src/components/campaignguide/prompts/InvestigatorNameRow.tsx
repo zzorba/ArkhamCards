@@ -26,7 +26,7 @@ export default function InvestigatorNameRow({
       space.paddingS,
       space.paddingLeftM,
       { backgroundColor },
-      dark ? { borderColor: '#FFF' } : { borderColor: '#888' },
+      dark ? { borderColor: COLORS.background } : { borderColor: COLORS.divider },
     ]}>
       <View>
         <Text style={[
@@ -50,7 +50,7 @@ export default function InvestigatorNameRow({
 const styles = StyleSheet.create({
   investigatorText: {
     fontWeight: '600',
-    color: '#000',
+    color: COLORS.darkText,
   },
   investigatorRow: {
     flexDirection: 'row',
