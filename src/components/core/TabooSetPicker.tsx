@@ -30,7 +30,7 @@ class TabooSetPicker extends React.Component<Props> {
   _onTabooChange = (tabooId: number) => {
     const { tabooSets } = this.props;
     this.props.setTabooSet(
-      (tabooId === -1 || tabooId < tabooSets.length) ? undefined : tabooSets[tabooId].id
+      (tabooId === -1 || tabooId >= tabooSets.length) ? undefined : tabooSets[tabooId].id
     );
   };
 
