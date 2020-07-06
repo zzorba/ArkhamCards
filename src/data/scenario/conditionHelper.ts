@@ -160,10 +160,12 @@ export function checkSuppliesAnyConditionResult(
   campaignLog: GuidedCampaignLog
 ): BinaryResult {
   const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
+  const investigators = campaignLog.investigators(false);
   return binaryConditionResult(
-    !!find(investigatorSupplies, supplies =>
-      !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id])
-    ),
+    !!find(investigators, investigator => {
+      const supplies = investigatorSupplies[investigator.code] || {};
+      return !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id])
+    }),
     condition.options
   );
 }

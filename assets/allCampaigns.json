@@ -42727,19 +42727,19 @@
     },
     {
       "id": "add_easy_token",
-      "text": "Because you are playing on Easy difficulty, add a -3 token to the chaos bag for the remainder of the campaign."
+      "text": "Because you are playing on <b>Easy</b> difficulty, add a -3 token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "add_standard_token",
-      "text": "Because you are playing on Easy difficulty, add a -4 token to the chaos bag for the remainder of the campaign."
+      "text": "Because you are playing on <b>Standard</b> difficulty, add a -4 token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "add_hard_token",
-      "text": "Because you are playing on Easy difficulty, add a -5 token to the chaos bag for the remainder of the campaign."
+      "text": "Because you are playing on <b>Hard</b> difficulty, add a -5 token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "add_expert_token",
-      "text": "Because you are playing on Easy difficulty, add a -7 token to the chaos bag for the remainder of the campaign."
+      "text": "Because you are playing on <b>Expert</b> difficulty, add a -7 token to the chaos bag for the remainder of the campaign."
     },
     {
       "id": "find_brazier",

@@ -57,16 +57,6 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
     );
   };
 
-  investigatorHasSupply(code: string) {
-    const { condition, campaignLog } = this.props;
-    const investigatorSection = campaignLog.investigatorSections[condition.section] || {};
-    const section = investigatorSection[code];
-    return !!(section &&
-      find(section.entries, entry => entry.id === condition.id && entry.type === 'count' && entry.count > 0) &&
-      !section.crossedOut[condition.id]
-    );
-  }
-
   render(): React.ReactNode {
     const { step, condition, campaignLog } = this.props;
     switch (condition.investigator) {
