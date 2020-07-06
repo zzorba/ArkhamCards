@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 import { Campaign, Deck } from 'actions/types';
-import { BODY_OF_A_YITHIAN } from 'constants';
+import { BODY_OF_A_YITHIAN } from 'app_constants';
 import { CardsMap } from 'data/Card';
 import InvestigatorImage from 'components/core/InvestigatorImage';
 import { getDecks, getLatestCampaignDeckIds, AppState } from 'reducers';

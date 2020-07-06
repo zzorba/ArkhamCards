@@ -1,4 +1,4 @@
-import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from 'constants';
+import { ChaosBag, ChaosTokenType, FactionCodeType, SkillCodeType, SlotCodeType } from 'app_constants';
 import { CardFilterData, FilterState } from 'lib/filters';
 import Card from 'data/Card';
 

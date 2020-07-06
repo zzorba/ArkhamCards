@@ -19,7 +19,7 @@ import Difficulty from 'components/campaign/Difficulty';
 import GameHeader from 'components/campaign/GameHeader';
 import BackgroundIcon from 'components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from 'actions/types';
-import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from 'constants';
+import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from 'app_constants';
 import Card from 'data/Card';
 import typography from 'styles/typography';
 import { s } from 'styles/space';

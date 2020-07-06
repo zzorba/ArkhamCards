@@ -28,7 +28,7 @@ import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCard
 import { saveNewDeck, NewDeckParams } from 'components/deck/actions';
 import { NavigationProps } from 'components/nav/types';
 import { Deck, Slots } from 'actions/types';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
+import { RANDOM_BASIC_WEAKNESS } from 'app_constants';
 import Card from 'data/Card';
 import { getTabooSet, AppState } from 'reducers';
 import typography from 'styles/typography';

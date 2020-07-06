@@ -6,7 +6,7 @@ import ArkhamIcon from 'icons/ArkhamIcon';
 import Switch from 'components/core/Switch';
 import Card from 'data/Card';
 import typography from 'styles/typography';
-import { ChaosBag, ChaosTokenValue, SpecialTokenValue } from 'constants';
+import { ChaosBag, ChaosTokenValue, SpecialTokenValue } from 'app_constants';
 import COLORS from 'styles/colors';
 import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';

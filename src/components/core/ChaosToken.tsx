@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
-import { ChaosTokenType } from 'constants';
+import { ChaosTokenType } from 'app_constants';
 import space, { iconSizeScale } from 'styles/space';
 
 interface Props {

@@ -45,6 +45,7 @@
       "actions": ["./actions"],
       "assets": ["./../assets"],
       "components": ["./components"],
+      "app_constants": ["./app_constants"],
       "data": ["./data"],
       "icons": ["./icons"],
       "lib": ["./lib"],

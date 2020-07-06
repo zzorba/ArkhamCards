@@ -10,7 +10,7 @@ import { Slots } from 'actions/types';
 import Button from 'components/core/Button';
 import { NavigationProps } from 'components/nav/types';
 import { AppState } from 'reducers';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
+import { RANDOM_BASIC_WEAKNESS } from 'app_constants';
 import space from 'styles/space';
 
 export interface DrawWeaknessProps {

@@ -1,7 +1,7 @@
 import { forEach } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
-import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
+import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'app_constants';
 import { QueryParams } from 'data/types';
 
 

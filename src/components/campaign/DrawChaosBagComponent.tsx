@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import BasicButton from 'components/core/BasicButton';
-import { ChaosBag } from 'constants';
+import { ChaosBag } from 'app_constants';
 import COLORS from 'styles/colors';
 import { ChaosBagResults } from 'actions/types';
 import typography from 'styles/typography';

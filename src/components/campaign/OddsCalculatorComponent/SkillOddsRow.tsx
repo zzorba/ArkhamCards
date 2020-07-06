@@ -5,7 +5,7 @@ import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
 import typography from 'styles/typography';
-import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from 'constants';
+import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from 'app_constants';
 import { flattenChaosBag } from 'components/campaign/campaignUtil';
 import ArkhamIcon from 'icons/ArkhamIcon';
 import PlusMinusButtons from 'components/core/PlusMinusButtons';

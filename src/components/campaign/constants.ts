@@ -20,7 +20,7 @@ import {
   CustomCampaignLog,
   ScenarioResult,
 } from 'actions/types';
-import { ChaosBag } from 'constants';
+import { ChaosBag } from 'app_constants';
 import Card from 'data/Card';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {

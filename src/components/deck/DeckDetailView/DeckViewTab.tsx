@@ -38,7 +38,7 @@ import TabooSetPicker from 'components/core/TabooSetPicker';
 import CardSearchResult from 'components/cardlist/CardSearchResult';
 import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
 import HealthSanityLine from 'components/core/HealthSanityLine';
-import { BODY_OF_A_YITHIAN } from 'constants';
+import { BODY_OF_A_YITHIAN } from 'app_constants';
 import DeckValidation from 'lib/DeckValidation';
 import Card, { CardsMap } from 'data/Card';
 import TabooSet from 'data/TabooSet';

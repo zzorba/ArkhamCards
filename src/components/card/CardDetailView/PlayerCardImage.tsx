@@ -10,7 +10,7 @@ import { Navigation } from 'react-native-navigation';
 
 import { CardImageProps } from 'components/card/CardImageView';
 import EncounterIcon from 'icons/EncounterIcon';
-import { createFactionIcons } from 'constants';
+import { createFactionIcons } from 'app_constants';
 import Card from 'data/Card';
 import { isBig } from 'styles/space';
 import COLORS from 'styles/colors';

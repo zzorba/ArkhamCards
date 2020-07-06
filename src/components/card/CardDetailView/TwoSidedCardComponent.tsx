@@ -13,7 +13,7 @@ import { msgid, ngettext, t, jt } from 'ttag';
 import {
   CORE_FACTION_CODES,
   RANDOM_BASIC_WEAKNESS,
-} from 'constants';
+} from 'app_constants';
 import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
 import HealthSanityLine from 'components/core/HealthSanityLine';
 import typography from 'styles/typography';

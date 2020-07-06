@@ -2,7 +2,7 @@ import React from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from 'actions/types';
-import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from 'constants';
+import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from 'app_constants';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import CardSearchComponent from 'components/cardlist/CardSearchComponent';
 import QueryProvider from 'components/data/QueryProvider';

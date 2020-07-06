@@ -29,7 +29,7 @@ import {
   Slots,
   WeaknessSet,
 } from 'actions/types';
-import { ChaosBag } from 'constants';
+import { ChaosBag } from 'app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import {

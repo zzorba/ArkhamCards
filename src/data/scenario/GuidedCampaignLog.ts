@@ -19,7 +19,7 @@ import {
   TraumaAndCardData,
   WeaknessSet,
 } from 'actions/types';
-import { ChaosBag } from 'constants';
+import { ChaosBag } from 'app_constants';
 import { traumaDelta } from 'lib/trauma';
 import {
   AddRemoveChaosTokenEffect,

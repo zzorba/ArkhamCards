@@ -11,7 +11,7 @@ import { t } from 'ttag';
 import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from 'actions/types';
-import { SKILLS, SkillCodeType } from 'constants';
+import { SKILLS, SkillCodeType } from 'app_constants';
 import typography from 'styles/typography';
 import COLORS from 'styles/colors';
 

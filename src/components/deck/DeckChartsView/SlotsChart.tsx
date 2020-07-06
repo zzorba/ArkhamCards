@@ -11,7 +11,7 @@ import { t } from 'ttag';
 import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from 'actions/types';
-import { SLOTS, SlotCodeType } from 'constants';
+import { SLOTS, SlotCodeType } from 'app_constants';
 import typography from 'styles/typography';
 
 interface Props {

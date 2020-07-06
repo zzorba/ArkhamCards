@@ -9,7 +9,7 @@ import CardQueryWrapper from 'components/card/CardQueryWrapper';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { campaignScenarios, Scenario } from 'components/campaign/constants';
 import { Campaign } from 'actions/types';
-import { ChaosBag } from 'constants';
+import { ChaosBag } from 'app_constants';
 import Card from 'data/Card';
 import { SCENARIO_CARDS_QUERY } from 'data/query';
 import { AppState, getCampaign } from 'reducers';

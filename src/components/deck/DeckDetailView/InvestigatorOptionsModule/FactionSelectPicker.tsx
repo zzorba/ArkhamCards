@@ -4,7 +4,7 @@ import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
 import SinglePickerComponent from 'components/core/SinglePickerComponent';
-import { FactionCodeType } from 'constants';
+import { FactionCodeType } from 'app_constants';
 import Card from 'data/Card';
 import COLORS from 'styles/colors';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import { isSpecialToken } from 'constants';
+import { isSpecialToken } from 'app_constants';
 import { AddRemoveChaosTokenEffect } from 'data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';

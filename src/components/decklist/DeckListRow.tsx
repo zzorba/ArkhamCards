@@ -10,7 +10,7 @@ import { ngettext, msgid, t } from 'ttag';
 
 import { Campaign, Deck, ParsedDeck } from 'actions/types';
 import Card, { CardsMap } from 'data/Card';
-import { BODY_OF_A_YITHIAN } from 'constants';
+import { BODY_OF_A_YITHIAN } from 'app_constants';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import DeckProblemRow from 'components/core/DeckProblemRow';
 import { toRelativeDateString } from 'lib/datetime';

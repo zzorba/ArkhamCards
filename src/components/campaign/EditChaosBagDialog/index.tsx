@@ -22,7 +22,7 @@ import {
   CHAOS_TOKEN_ORDER,
   ChaosBag,
   ChaosTokenType,
-} from 'constants';
+} from 'app_constants';
 import typography from 'styles/typography';
 import COLORS from 'styles/colors';
 import space from 'styles/space';

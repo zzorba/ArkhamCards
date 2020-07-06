@@ -16,7 +16,7 @@ import { DrawWeaknessProps } from 'components/weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
 import { NavigationProps } from 'components/nav/types';
 import { Campaign, Deck, DeckMeta, Slots } from 'actions/types';
-import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'constants';
+import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'app_constants';
 import Card from 'data/Card';
 import { getCampaign, AppState } from 'reducers';
 import COLORS from 'styles/colors';

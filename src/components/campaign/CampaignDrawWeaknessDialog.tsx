@@ -14,7 +14,7 @@ import NavButton from 'components/core/NavButton';
 import ToggleFilter from 'components/core/ToggleFilter';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { saveDeckChanges, DeckChanges } from 'components/deck/actions';
-import { RANDOM_BASIC_WEAKNESS } from 'constants';
+import { RANDOM_BASIC_WEAKNESS } from 'app_constants';
 import { iconsMap } from 'app/NavIcons';
 import { parseDeck } from 'lib/parseDeck';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, AppState } from 'reducers';

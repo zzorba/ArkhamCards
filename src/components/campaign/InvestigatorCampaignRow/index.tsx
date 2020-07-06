@@ -12,7 +12,7 @@ import CardSearchResult from 'components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from 'actions/types';
 import CardSectionHeader from 'components/core/CardSectionHeader';
 import InvestigatorRow from 'components/core/InvestigatorRow';
-import { BODY_OF_A_YITHIAN } from 'constants';
+import { BODY_OF_A_YITHIAN } from 'app_constants';
 import Card, { CardsMap } from 'data/Card';
 import SingleCardWrapper from 'components/card/SingleCardWrapper';
 import typography from 'styles/typography';

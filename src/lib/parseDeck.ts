@@ -42,7 +42,7 @@ import {
   FactionCodeType,
   SlotCodeType,
   SkillCodeType,
-} from 'constants';
+} from 'app_constants';
 import DeckValidation from './DeckValidation';
 
 function filterBy(

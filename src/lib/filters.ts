@@ -2,7 +2,7 @@ import { filter, findIndex, forEach, keys, map } from 'lodash';
 
 import { QueryParams } from 'data/types';
 import { combineQueriesOpt, where } from 'data/query';
-import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from 'constants';
+import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from 'app_constants';
 import Card from 'data/Card';
 import { Brackets } from 'typeorm/browser';
 

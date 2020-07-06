@@ -38,7 +38,7 @@ import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
 import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
 import { iconsMap } from 'app/NavIcons';
 import Card from 'data/Card';
-import { ChaosBag } from 'constants';
+import { ChaosBag } from 'app_constants';
 import { updateCampaign, updateCampaignSpentXp, deleteCampaign, cleanBrokenCampaigns } from '../actions';
 import { NavigationProps } from 'components/nav/types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';

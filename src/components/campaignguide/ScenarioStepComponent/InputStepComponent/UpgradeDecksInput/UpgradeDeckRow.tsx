@@ -18,7 +18,7 @@ import { showDeckModal, showCard } from 'components/nav/helper';
 import InvestigatorRow from 'components/core/InvestigatorRow';
 import DeckUpgradeComponent from 'components/deck/DeckUpgradeComponent';
 import { DeckChanges } from 'components/deck/actions';
-import { BODY_OF_A_YITHIAN } from 'constants';
+import { BODY_OF_A_YITHIAN } from 'app_constants';
 import Card from 'data/Card';
 import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';

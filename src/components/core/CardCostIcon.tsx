@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  DynamicColorIOS,
+  Platform,
   Text,
   StyleSheet,
   View,
@@ -16,7 +18,11 @@ export function costIconSize(fontScale: number) {
   return (isBig ? 48 : 36) * scaleFactor;
 }
 
-const COST_ICON_BACKGROUND_COLOR = 'rgb(245, 245, 245)';
+const COST_ICON_BACKGROUND_COLOR = Platform.OS === 'ios' ? 
+  DynamicColorIOS({
+    light: 'rgb(245, 245, 245)',
+    dark: 'rgb(32,32,32)',
+  }) : 'rgb(245, 245, 245)';
 interface Props {
   card: Card;
   fontScale: number;
@@ -102,7 +108,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? COST_ICON_BACKGROUND_COLOR : color}
+            color={inverted ? 'white' : color}
           />
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
