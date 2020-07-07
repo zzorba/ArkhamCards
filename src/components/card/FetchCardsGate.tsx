@@ -10,7 +10,7 @@ import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import Button from 'components/core/Button';
+import BasicButton from 'components/core/BasicButton';
 import Database from 'data/Database';
 import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
@@ -131,7 +131,7 @@ class FetchCardsGate extends React.Component<Props> {
               { error }
             </Text>
           </View>
-          <Button onPress={this._doFetch} text={t`Try Again`} />
+          <BasicButton onPress={this._doFetch} title={t`Try Again`} />
         </View>
       );
     }

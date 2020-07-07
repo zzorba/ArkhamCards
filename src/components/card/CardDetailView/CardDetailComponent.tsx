@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button as BasicButton,
   StyleSheet,
   Text,
   View,
@@ -11,6 +10,7 @@ import { t } from 'ttag';
 import typography from 'styles/typography';
 import AppIcon from 'icons/AppIcon';
 import Button from 'components/core/Button';
+import BasicButton from 'components/core/BasicButton';
 import Card from 'data/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
@@ -119,12 +119,8 @@ export default class CardDetailComponent extends React.Component<Props> {
           <Text style={[space.marginS]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
-          <View style={[styles.basicButtonContainer, styles.buttonPadding]}>
-            <BasicButton onPress={this._toggleShowSpoilers} title="Show card" />
-          </View>
-          <View style={[styles.basicButtonContainer, styles.buttonPadding]}>
-            <BasicButton onPress={this._editSpoilersPressed} title="Edit my spoiler settings" />
-          </View>
+          <BasicButton onPress={this._toggleShowSpoilers} title="Show card" />
+          <BasicButton onPress={this._editSpoilersPressed} title="Edit my spoiler settings" />
         </View>
       );
     }
