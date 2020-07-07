@@ -696,7 +696,6 @@ class NewCampaignView extends React.Component<Props, State> {
               descriptionStyle={typography.label}
               description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
               onValueChange={this._toggleGuided}
-              trackColor={COLORS.switchTrackColor}
               value={guided}
             />
           ) }

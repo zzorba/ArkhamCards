@@ -350,7 +350,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
-            trackColor={COLORS.switchTrackColor}
           />
         ) : (
           <NavButton
@@ -373,7 +372,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             value={starterDeck}
             containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider }}
             onValueChange={this._onStarterDeckChange}
-            trackColor={COLORS.switchTrackColor}
           />
         ) }
       </>

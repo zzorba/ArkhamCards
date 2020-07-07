@@ -35,7 +35,6 @@ export default class RequiredCardSwitch extends React.Component<Props> {
         disabledOverlayStyle={{ backgroundColor: 'transparent' }}
         value={value}
         onValueChange={this._onValueChange}
-        trackColor={COLORS.switchTrackColor}
       />
     );
   }
