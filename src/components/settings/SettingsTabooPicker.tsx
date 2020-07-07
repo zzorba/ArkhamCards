@@ -5,6 +5,7 @@ import { t } from 'ttag';
 
 import { setTabooSet } from './actions';
 import TabooSetPicker from 'components/core/TabooSetPicker';
+import SettingsItem from './SettingsItem';
 import { AppState, getTabooSet } from 'reducers';
 import COLORS from 'styles/colors';
 
@@ -26,7 +27,13 @@ class SettingsTabooPicker extends React.Component<Props> {
       tabooSetId,
       setTabooSet,
     } = this.props;
-
+    if (cardsLoading) {
+      return (
+        <SettingsItem
+          text={t`Taboo List`}
+        />
+      );
+    }
     return (
       <TabooSetPicker
         color={COLORS.lightBlue}

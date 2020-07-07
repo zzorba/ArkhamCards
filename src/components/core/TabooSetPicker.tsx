@@ -46,7 +46,7 @@ class TabooSetPicker extends React.Component<Props> {
     } = this.props;
     const selectedIndex = !tabooSetId ?
       -1 :
-      findIndex(tabooSets, set => set.id === tabooSetId);
+      findIndex(tabooSets, set => set && set.id === tabooSetId);
     return (
       <SinglePickerComponent
         title={t`Taboo List`}
