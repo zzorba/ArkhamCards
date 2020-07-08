@@ -89,6 +89,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     available: boolean
   ) {
     const { fontScale } = this.props;
+    const guideComingSoon = (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
     return (
       <CycleItem
         key={packCode}
@@ -96,7 +97,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}
-        description={!available ? t`Guide not yet available` : this.campaignDescription(packCode)}
+        description={!available || guideComingSoon ? t`Guide not yet available` : this.campaignDescription(packCode)}
         disabled={!available}
       />
     );
@@ -123,11 +124,12 @@ class SelectCampaignDialog extends React.Component<Props> {
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
         { this.renderCampaign(CUSTOM, true) }
-        <BasicSectionHeader
-          title={t`Other Campaigns`}
-        />
+        { otherCampaigns.length > 0 && (
+          <BasicSectionHeader
+            title={t`Other Campaigns`}
+          />
+        ) }
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
-        { this.renderCampaign('rttfa', false) }
         <View style={styles.button}>
           <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
