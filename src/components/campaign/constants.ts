@@ -10,6 +10,7 @@ import {
   PTC,
   RTPTC,
   TFA,
+  RTTFA,
   TCU,
   TDE,
   TDEA,
@@ -45,6 +46,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case PTC: return t`The Path To Carcosa`;
     case RTPTC: return t`Return to The Path to Carcosa`;
     case TFA: return t`The Forgotten Age`;
+    case RTTFA: return t`Return to The Forgotten Age`;
     case TCU: return t`The Circle Undone`;
     case TDE: return t`The Dream-Eaters`;
     case TDEA: return t`The Dream-Quest`;
@@ -175,6 +177,23 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Shattered Aeons`, code: 'shattered_aeons', pack_code: 'sha' },
       { name: t`Epilogue`, code: 'tfa_epilogue', interlude: true },
     ];
+    case RTTFA: return [
+      { name: t`Prologue`, code: 'tfa_prologue', interlude: true },
+      { name: t`Return to The Untamed Wilds`, code: 'return_to_the_untamed_wilds', pack_code: 'tfa' },
+      { name: t`Restless Nights`, code: 'tfa_interlude1', interlude: true },
+      { name: t`Return to The Doom of Eztli`, code: 'return_to_the_doom_of_eztli', pack_code: 'tfa' },
+      { name: t`Expedition’s End`, code: 'tfa_interlude2', interlude: true },
+      { name: t`Return to Threads of Fate`, code: 'return_to_threads_of_fate', pack_code: 'tof' },
+      { name: t`Return to The Boundary Beyond`, code: 'return_to_the_boundary_beyond', pack_code: 'tbb' },
+      { name: t`The Jungle Beckons`, code: 'tfa_interlude3', interlude: true },
+      { name: t`Return to Heart of the Elders`, code: 'return_to_heart_of_the_elders', pack_code: 'hote' },
+      { name: t`Return to The City of Archives`, code: 'return_to_the_city_of_archives', pack_code: 'tcoa' },
+      { name: t`Those Held Captive`, code: 'tfa_interlude4', interlude: true },
+      { name: t`Return to The Depths of Yoth`, code: 'return_to_the_depths_of_yoth', pack_code: 'tdoy' },
+      { name: t`The Darkness`, code: 'tfa_interlude5', interlude: true },
+      { name: t`Return to Shattered Aeons`, code: 'return_to_shattered_aeons', pack_code: 'sha' },
+      { name: t`Epilogue`, code: 'tfa_epilogue', interlude: true },
+    ];
     case TCU: return [
       {
         name: t`Prologue: Disappearance at the Twilight Estate`,
@@ -246,6 +265,7 @@ export function campaignNames() {
     ptc: t`The Path to Carcosa`,
     rtptc: t`Return to The Path to Carcosa`,
     tfa: t`The Forgotten Age`,
+    rttfa: t`Return to The Forgotten Age`,
     tde: t`The Dream-Eaters`,
     tdea: t`The Dream-Quest`,
     tdeb: t`The Web of Dreams`,
@@ -261,6 +281,7 @@ export const CAMPAIGN_COLORS = {
   ptc: '#cc990033',
   rtptc: '#cc990033',
   tfa: '#33660033',
+  rttfa: '#33660033',
   tcu: '#00006622',
   tde: '#00006622',
   tdea: '#00006622',
@@ -304,6 +325,7 @@ export function getCampaignLog(
         ],
       };
     case TFA:
+    case RTTFA:
       return {
         sections: [t`Campaign Notes`],
         counts: [t`Yig's Fury`],
@@ -418,6 +440,8 @@ function basicScenarioRewards(encounterCode: string) {
     case 'bayou':
       return ['rougarou'];
     case 'wilds':
+    case 'the_untamed_wilds':
+    case 'the_doom_of_eztli':
     case 'eztli':
     case 'the_boundary_beyond':
     case 'heart_of_the_elders':
@@ -462,6 +486,7 @@ export function getChaosBag(
     case RTPTC:
       return PTC_BAG[difficulty];
     case TFA:
+    case RTTFA:
       return TFA_BAG[difficulty];
     case TCU:
       return TCU_BAG[difficulty];

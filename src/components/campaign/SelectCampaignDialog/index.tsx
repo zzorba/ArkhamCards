@@ -127,6 +127,7 @@ class SelectCampaignDialog extends React.Component<Props> {
           title={t`Other Campaigns`}
         />
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
+        { this.renderCampaign('rttfa', false) }
         <View style={styles.button}>
           <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>

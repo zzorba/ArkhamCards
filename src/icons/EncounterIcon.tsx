@@ -277,6 +277,8 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.forgottenIcon('knyan', size, color);
       case 'pillars_of_judgment':
         return this.forgottenIcon('pillars_of_judgement', size, color);
+      case 'rttfa':
+        return this.forgottenIcon('return_to_the_forgotten_age', size, color);  
       case 'turn_back_time':
       case 'rainforest':
       case 'serpents':
@@ -290,6 +292,23 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'city_of_archives':
       case 'knyan':
       case 'poison':
+      case 'return_to_the_rainforest':
+      case 'venomous_hate':
+      case 'temporal_hunters':
+      case 'doomed_expedition':
+      case 'cult_of_pnakotus':
+      case 'return_to_the_untamed_wilds':
+      case 'return_to_the_doom_of_eztli':
+      case 'return_to_threads_of_fate':
+      case 'return_to_the_boundary_beyond':
+      case 'return_to_heart_of_the_elders':
+      case 'return_to_pillars_of_judgement':
+      case 'return_to_knyan':
+      case 'return_to_the_city_of_archives':
+      case 'return_to_the_depths_of_yoth':
+      case 'return_to_shattered_aeons':
+      case 'return_to_turn_back_time':
+      case 'return_to_the_forgotten_age':
         return this.forgottenIcon(encounter_code, size, color);
       case 'tcu':
         return this.circleIcon('the_circle_undone', size, color);

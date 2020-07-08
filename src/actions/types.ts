@@ -249,6 +249,7 @@ export const RTDWL = 'rtdwl';
 export const PTC = 'ptc';
 export const RTPTC = 'rtptc';
 export const TFA = 'tfa';
+export const RTTFA = 'rttfa';
 export const TCU = 'tcu';
 export const TDE = 'tde';
 export const TDEA = 'tdea';
@@ -263,6 +264,7 @@ export type CampaignCycleCode =
   typeof PTC |
   typeof RTPTC |
   typeof TFA |
+  typeof RTTFA |
   typeof TCU |
   typeof TDE |
   typeof TDEA |
@@ -275,7 +277,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   RTDWL,
   PTC,
   RTPTC,
-  TFA,
+  RTTFA,
   TCU,
   TDE,
   TDEA,
