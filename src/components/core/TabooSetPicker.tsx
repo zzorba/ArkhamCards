@@ -27,8 +27,12 @@ type Props = OwnProps & DbProps;
 
 class TabooSetPicker extends React.Component<Props> {
 
-  _onTabooChange = (tabooId: number) => {
+  _onTabooChange = (tabooId: number | null) => {
     const { tabooSets } = this.props;
+    if (tabooId === null) {
+      // No change, so just drop it.
+      return;
+    }
     this.props.setTabooSet(
       (tabooId === -1 || tabooId >= tabooSets.length) ? undefined : tabooSets[tabooId].id
     );
