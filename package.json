@@ -33,7 +33,7 @@
     "lodash": "4.17.15",
     "query-string": "6.13.1",
     "react": "16.13.1",
-    "react-native": "0.63.0-rc.1",
+    "react-native": "0.63.0",
     "react-native-app-auth": "5.1.2",
     "react-native-collapsible": "1.5.2",
     "react-native-color-matrix-image-filters": "5.2.5",
