@@ -17,6 +17,7 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import BranchStepComponent from './BranchStepComponent';
 import EncounterSetStepComponent from './EncounterSetStepComponent';
+import LocationConnectorsStepComponent from './LocationConnectorsStepComponent';
 import GenericStepComponent from './GenericStepComponent';
 import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
@@ -67,6 +68,8 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         );
       case 'encounter_sets':
         return <EncounterSetStepComponent step={step} />;
+      case 'location_connectors':
+        return <LocationConnectorsStepComponent step={step} />
       case 'rule_reminder':
         return <RuleReminderStepComponent step={step} />;
       case 'resolution':

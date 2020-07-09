@@ -277,6 +277,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   RTDWL,
   PTC,
   RTPTC,
+  TFA,
   RTTFA,
   TCU,
   TDE,

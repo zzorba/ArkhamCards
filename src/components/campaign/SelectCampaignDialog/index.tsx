@@ -89,7 +89,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     available: boolean
   ) {
     const { fontScale } = this.props;
-    const guideComingSoon = (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
+    const guideComingSoon = false && (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
     return (
       <CycleItem
         key={packCode}

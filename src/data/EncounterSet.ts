@@ -4,15 +4,6 @@ import Card from './Card';
 
 @Entity('encounter_set')
 export default class EncounterSet {
-  public static schema: Realm.ObjectSchema = {
-    name: 'EncounterSet',
-    primaryKey: 'code',
-    properties: {
-      code: 'string',
-      name: 'string',
-    },
-  };
-
   @PrimaryColumn('text')
   code!: string;
 

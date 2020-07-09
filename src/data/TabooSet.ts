@@ -2,20 +2,6 @@ import { Entity, Column, PrimaryColumn } from 'typeorm/browser';
 
 @Entity('taboo_set')
 export default class TabooSet {
-  public static schema: Realm.ObjectSchema = {
-    name: 'TabooSet',
-    primaryKey: 'id',
-    properties: {
-      id: 'int',
-      code: 'string',
-      name: 'string',
-      cardCount: 'int',
-      active: 'bool?',
-      date_start: 'string',
-      date_update: 'string?',
-    },
-  };
-
   @PrimaryColumn('integer')
   id!: number;
 

@@ -223,6 +223,7 @@ export default class ScenarioStep {
         );
       case 'story':
       case 'encounter_sets':
+      case 'location_connectors':
       case 'rule_reminder':
       case 'location_setup':
         return this.proceedToNextStep(

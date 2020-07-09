@@ -1530,6 +1530,442 @@
     "supplies": []
   },
   {
+    "campaignId": "rttfa",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alejandro_followed_to_ruins",
+            "text": "Alejandro followed the investigators into the ruins."
+          },
+          {
+            "id": "alejandro_is_missing",
+            "text": "Alejandro is missing."
+          },
+          {
+            "id": "alejandro_on_his_own",
+            "text": "Alejandro is continuing his research on his own."
+          },
+          {
+            "id": "alejandro_recovered_relic",
+            "text": "Alejandro recovered the Relic of Ages."
+          },
+          {
+            "id": "alejandro_remained_at_camp",
+            "text": "Alejandro chose to remain at camp."
+          },
+          {
+            "id": "alejandro_remembers_everything",
+            "text": "Alejandro remembers everything."
+          },
+          {
+            "id": "alejandro_set_against",
+            "text": "Alejandro is set against you."
+          },
+          {
+            "id": "braziers_are_lit",
+            "text": "the braziers are lit."
+          },
+          {
+            "id": "braziers_remain_unlit",
+            "text": "the braziers remain unlit."
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "the investigators cleared a path to the Eztli ruins."
+          },
+          {
+            "id": "cooperated_with_yithians",
+            "text": "the investigators cooperated with the Yithians."
+          },
+          {
+            "id": "earned_alejandros_trust",
+            "text": "the investigators have earned Alejandro’s trust."
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "the investigators have earned Ichtaca’s trust."
+          },
+          {
+            "id": "fabric_of_time_unwoven",
+            "text": "the fabric of time is unwoven."
+          },
+          {
+            "id": "fell_into_depths",
+            "text": "the investigators fell into the depths."
+          },
+          {
+            "id": "forged_bond_with_ichtaca",
+            "text": "the investigators forged a bond with Ichtaca."
+          },
+          {
+            "id": "forging_own_path",
+            "text": "you are forging your own path."
+          },
+          {
+            "id": "found_missing_relic",
+            "text": "the investigators found the missing relic."
+          },
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "the investigators gave custody of the relic to Alejandro."
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          },
+          {
+            "id": "had_memories_expunged",
+            "text": "the investigators had their memories expunged."
+          },
+          {
+            "id": "harbinger_alive",
+            "text": "the Harbinger is still alive (#X# damage)."
+          },
+          {
+            "id": "ichtaca_has_confidence",
+            "text": "Ichtaca has confidence in you."
+          },
+          {
+            "id": "ichtaca_in_the_dark",
+            "text": "Ichtaca is in the dark."
+          },
+          {
+            "id": "ichtaca_is_wary",
+            "text": "Ichtaca is wary of the investigators."
+          },
+          {
+            "id": "ichtaca_observed_progress",
+            "text": "Ichtaca observed your progress with keen interest."
+          },
+          {
+            "id": "ichtaca_set_against",
+            "text": "Ichtaca is set against you."
+          },
+          {
+            "id": "ichtacas_faith_restored",
+            "text": "Ichtaca’s faith is restored."
+          },
+          {
+            "id": "investigators_recovered_relic",
+            "text": "the investigators recovered the Relic of Ages."
+          },
+          {
+            "id": "investigators_saved_serpents",
+            "text": "the investigators saved the civilization of the Serpents."
+          },
+          {
+            "id": "investigators_saved_yithians",
+            "text": "the investigators saved the civilization of the Yithians."
+          },
+          {
+            "id": "jungle_watches",
+            "text": "the jungle watches (#name# x#X#)."
+          },
+          {
+            "id": "mapped_way_forward",
+            "text": "the investigators mapped out the way forward."
+          },
+          {
+            "id": "mended_tear_in_time",
+            "text": "the investigators mended the tear in time."
+          },
+          {
+            "id": "nexus_is_near",
+            "text": "the nexus is near."
+          },
+          {
+            "id": "paths_known",
+            "text": "#X# paths are known to you"
+          },
+          {
+            "id": "paths_known",
+            "text": "#X# paths are known to you."
+          },
+          {
+            "id": "process_backfired",
+            "text": "the process backfired."
+          },
+          {
+            "id": "process_backfired_spectacularly",
+            "text": "the process backfired spectacularly."
+          },
+          {
+            "id": "process_was_perfected",
+            "text": "the process was perfected."
+          },
+          {
+            "id": "process_was_successful",
+            "text": "the process was successful."
+          },
+          {
+            "id": "relic_is_missing",
+            "text": "the relic is missing."
+          },
+          {
+            "id": "rescued_alejandro",
+            "text": "the investigators rescued Alejandro."
+          },
+          {
+            "id": "resisted_captivity",
+            "text": "the investigators resisted captivity."
+          },
+          {
+            "id": "sealed_relic_of_ages_forever",
+            "text": "the investigators sealed the Relic of Ages forever."
+          },
+          {
+            "id": "turned_back_time",
+            "text": "the investigarors turned back time."
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "the investigators were forced to wait for additional supplies."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "agenda_5",
+            "text": "hidden"
+          },
+          {
+            "id": "agenda_6",
+            "text": "hidden"
+          },
+          {
+            "id": "doy_cross_off_rope",
+            "text": "dummy"
+          },
+          {
+            "id": "final_depth",
+            "text": "#X# depth"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "Ichtaca left without you."
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "listened to Ichtaca's tale."
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# tasks were completed"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "gasoline",
+        "name": "Gasoline",
+        "description": "Enough for a long journey bycar.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Food and water for one person. A must-have for any journey.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Medicine",
+        "description": "To stave off disease, infection, or venom.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "Pendant",
+        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "cost": 1
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Can be refilled at streams and rivers.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Compass",
+        "description": "Can guide you when you are hopelessly lost.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Pickaxe",
+        "description": "For breaking apart rocky surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Blanket",
+        "description": "For warmth at night.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Chalk",
+        "description": "For writing on rough stone surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Binoculars",
+        "description": "To help you see faraway places.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "Pocketknife",
+        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "cost": 2
+      },
+      {
+        "id": "torches",
+        "name": "Torches",
+        "description": "Can light up dark areas, or set sconces alight.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Rope",
+        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "cost": 3
+      },
+      {
+        "id": "map",
+        "name": "Map",
+        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "cost": 3
+      }
+    ]
+  },
+  {
     "campaignId": "tcu",
     "sections": [
       {

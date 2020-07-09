@@ -16,7 +16,8 @@ export type Step =
   | ResolutionStep
   | RuleReminderStep
   | StoryStep
-  | LocationSetupStep;
+  | LocationSetupStep
+  | LocationConnectorsStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -125,6 +126,7 @@ export type BinaryChoiceCondition =
   | CampaignLogCondition
   | CampaignDataChaosBagCondition
   | MultiCondition;
+export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
 export type AllCampaigns = FullCampaign[];
 export type Choice1 =
   | CardChoice
@@ -703,6 +705,15 @@ export interface LocationSetupStep {
   horizontal: "half" | "normal" | "tight";
   locations: string[][];
   bullet_type?: null;
+}
+export interface LocationConnectorsStep {
+  id: string;
+  type: "location_connectors";
+  title?: string;
+  text: string;
+  subtext: string;
+  location_connectors: LocationConnector[];
+  bullet_type?: BulletType;
 }
 export interface Scenario {
   id: string;
