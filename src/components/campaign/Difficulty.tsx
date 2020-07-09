@@ -5,6 +5,7 @@ import { difficultyString } from './constants';
 import { CampaignDifficulty } from 'actions/types';
 import typography from 'styles/typography';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface Props {
   difficulty: CampaignDifficulty;
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   difficulty: {
-    backgroundColor: '#dedede',
+    backgroundColor: COLORS.veryLightBackground,
     borderRadius: 4,
   },
 });

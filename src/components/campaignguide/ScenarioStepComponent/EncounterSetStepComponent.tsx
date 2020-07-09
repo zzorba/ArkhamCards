@@ -15,6 +15,7 @@ import EncounterSet from 'data/EncounterSet';
 import EncounterIcon from 'icons/EncounterIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from 'styles/space';
+import COLORS from 'styles/colors';
 
 interface OwnProps {
   step: EncounterSetsStep;
@@ -57,7 +58,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
                 <EncounterIcon
                   encounter_code={set.code}
                   size={48}
-                  color="#222"
+                  color={COLORS.darkText}
                 />
               </View>
             )) }
