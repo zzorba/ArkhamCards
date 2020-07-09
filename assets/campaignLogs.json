@@ -1700,6 +1700,10 @@
             "text": "the process was successful."
           },
           {
+            "id": "recruited_help_of_another_expedition",
+            "text": "the investigators recruited the help of another expedition."
+          },
+          {
             "id": "relic_is_missing",
             "text": "the relic is missing."
           },

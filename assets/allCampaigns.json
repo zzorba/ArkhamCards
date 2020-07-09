@@ -25235,6 +25235,48 @@
           "text": "<b>Forced</b> - After a new exploration deck is created during act 1b: Search the encounter deck, discard pile, and all out-of-play areas for Perils of Yoth and shuffle it into the exploration deck. Shuffle the encounter deck if it was searched."
         }
       ]
+    },
+    {
+      "id": "ask_collected_strange_liquid",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "strange_liquid",
+            "text": "Do you remember that you “collected a strange liquid”?",
+            "steps": [
+              "check_goop"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_goop",
+      "bullet_type": "small",
+      "type": "branch",
+      "text": "Check your supplies. If any investigator has sticky goop:",
+      "condition": {
+        "type": "check_supplies",
+        "section": "supplies",
+        "investigator": "any",
+        "id": "goop",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "record_key_of_eztli"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "record_key_of_eztli",
+      "bullet_type": "small",
+      "text": "The liquid from the fountain dissolves the viscous substance, revealing a solid object beneath the ooze. Record \"Key of Eztli\" in any one investigator's supplies.",
+      "effects": []
     }
   ],
   "resolutions": [
@@ -25259,6 +25301,7 @@
         "fell_into_depths",
         "record_final_depth",
         "check_final_depth",
+        "ask_collected_strange_liquid",
         "check_harbinger",
         "record_yigs_fury",
         "earn_xp",
@@ -25272,6 +25315,7 @@
       "steps": [
         "nexus_is_near",
         "check_harbinger",
+        "ask_collected_strange_liquid",
         "record_yigs_fury",
         "earn_xp_full_depth",
         "check_investigators_poisoned"
@@ -27318,6 +27362,53 @@
       "id": "find_root_of_problem",
       "bullet_type": "small",
       "text": "Remove the following act cards from the “g/h” deck: Search for the Source, both copies of Seeking Trouble, and 1 of the 2 copies of The Overgrown Estate, at random."
+    },
+    {
+      "id": "check_act_gh",
+      "text": "Which of the following is true?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "completed",
+            "text": "Act 3g was completed.",
+            "steps": [
+              "recruited_help_of_another_expedition",
+              "earn_veda_whitsley"
+            ]
+          },
+          {
+            "id": "in_play",
+            "text": "The “e/f” act deck is still in play.",
+            "steps": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "recruited_help_of_another_expedition",
+      "bullet_type": "small",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "recruited_help_of_another_expedition",
+          "text": "the investigators recruited the help of another expedition."
+        }
+      ]
+    },
+    {
+      "id": "earn_veda_whitsley",
+      "bullet_type": "small",
+      "text": "Any one investigator may choose to include the Veda Whitsley story asset in their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": ""
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -27342,6 +27433,7 @@
         "check_act_ab",
         "check_act_cd",
         "check_act_ef",
+        "check_act_gh",
         "earn_expedition_journal",
         "earn_xp",
         "earn_act_xp",
