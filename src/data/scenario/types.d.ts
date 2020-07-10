@@ -45,7 +45,8 @@ export type Effect =
   | ScenarioDataEffect
   | AddRemoveChaosTokenEffect
   | UpgradeDecksEffect
-  | FreeformCampaignLogEffect;
+  | FreeformCampaignLogEffect
+  | GainSuppliesEffect;
 export type InvestigatorSelector =
   | "lead_investigator"
   | "all"
@@ -192,6 +193,8 @@ export interface EarnXpEffect {
   investigator: "all" | "defeated" | "$input_value" | "lead_investigator" | "$fixed_investigator";
   fixed_investigator?: string;
   bonus?: number;
+  input_scale?: number;
+  special_xp?: string;
 }
 export interface AddCardEffect {
   type: "add_card";
@@ -223,6 +226,7 @@ export interface ReplaceCardEffect {
 export interface TraumaEffect {
   type: "trauma";
   investigator: "all" | "lead_investigator" | "defeated" | "not_resigned" | "$input_value";
+  heal_input?: "physical" | "mental";
   mental?: number;
   physical?: number;
   mental_or_physical?: number;
@@ -299,6 +303,19 @@ export interface UpgradeDecksEffect {
 export interface FreeformCampaignLogEffect {
   type: "freeform_campaign_log";
   section: "campaign_notes";
+}
+export interface GainSuppliesEffect {
+  type: "gain_supplies";
+  section: string;
+  supplies: Supply[];
+  investigator: "$input_value";
+}
+export interface Supply {
+  id: string;
+  name: string;
+  description: string;
+  cost: number;
+  multiple?: boolean;
 }
 export interface CampaignDataChaosBagCondition {
   type: "campaign_data";
@@ -517,13 +534,7 @@ export interface SuppliesInput {
   points: number[];
   supplies: Supply[];
   section: string;
-}
-export interface Supply {
-  id: string;
-  name: string;
-  description: string;
-  cost: number;
-  multiple?: boolean;
+  special_xp?: string;
 }
 export interface UseSuppliesChoiceInput {
   type: "use_supplies";
@@ -597,6 +608,8 @@ export interface InvestigatorCounterInput {
   type: "investigator_counter";
   text: string;
   effects: Effect[];
+  investigator_max?: "physical_trauma" | "mental_trauma";
+  max?: number;
 }
 export interface InvestigatorChoiceWithSuppliesInput {
   type: "investigator_choice_supplies";

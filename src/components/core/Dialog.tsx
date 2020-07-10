@@ -6,7 +6,6 @@ import {
   findNodeHandle,
 } from 'react-native';
 import DialogComponent from 'react-native-dialog';
-import { BlurView } from 'react-native-blur';
 
 interface Props {
   title: string;
@@ -40,24 +39,6 @@ export default class Dialog extends React.Component<Props, State> {
     }
   }
 
-  blurComponent() {
-    const {
-      nodeHandle,
-    } = this.state;
-    if (Platform.OS !== 'ios' || !nodeHandle) {
-      return null;
-    }
-
-    return (
-      <BlurView
-        style={styles.blur}
-        viewRef={nodeHandle}
-        blurType="xlight"
-        blurAmount={50}
-      />
-    );
-  }
-
   render() {
     const {
       title,
@@ -68,7 +49,6 @@ export default class Dialog extends React.Component<Props, State> {
       <View>
         <DialogComponent.Container
           visible={visible}
-          blurComponentIOS={this.blurComponent()}
         >
           <DialogComponent.Title>
             { title }

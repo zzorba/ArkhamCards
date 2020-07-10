@@ -1837,6 +1837,14 @@
             "text": "listened to Ichtaca's tale."
           },
           {
+            "id": "rtdoe_gain_mysterious_scepter",
+            "text": "dummy"
+          },
+          {
+            "id": "rthote2_gain_sticky_goop",
+            "text": "dummy"
+          },
+          {
             "id": "tasks_completed",
             "text": "#X# tasks were completed"
           },
@@ -1880,6 +1888,27 @@
       }
     ],
     "supplies": [
+      {
+        "id": "sticky_goop",
+        "name": "Sticky Goopr",
+        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "mysterious_scepter",
+        "name": "Mysterious Scepter",
+        "description": "A mysterious scepter you found in the throne room.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "key_of_eztli",
+        "name": "Key of Eztli",
+        "description": "The Key of Eztli.",
+        "cost": 0,
+        "multiple": false
+      },
       {
         "id": "gasoline",
         "name": "Gasoline",

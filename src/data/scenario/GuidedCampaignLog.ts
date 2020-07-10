@@ -39,6 +39,7 @@ import {
   ScenarioDataEffect,
   ScenarioStatus,
   TraumaEffect,
+  GainSuppliesEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
 import Card, { CardsMap } from 'data/Card';
@@ -160,6 +161,7 @@ export default class GuidedCampaignLog {
       case 'replace_card':
       case 'earn_xp':
       case 'upgrade_decks':
+      case 'gain_supplies':
         return true;
       default:
         return false;
@@ -248,6 +250,9 @@ export default class GuidedCampaignLog {
       forEach(effectsWithInput, ({ effects, input, numberInput }) => {
         forEach(effects, effect => {
           switch (effect.type) {
+            case 'gain_supplies':
+              this.handleGainSuppliesEffect(effect, input);
+              break;
             case 'campaign_data':
               this.handleCampaignDataEffect(effect);
               break;
@@ -275,7 +280,7 @@ export default class GuidedCampaignLog {
               this.handleAddRemoveChaosTokenEffect(effect);
               break;
             case 'trauma':
-              this.handleTraumaEffect(effect, input);
+              this.handleTraumaEffect(effect, input, numberInput);
               break;
             case 'add_card':
               this.handleAddCardEffect(effect, input);
@@ -590,6 +595,11 @@ export default class GuidedCampaignLog {
     }
   }
 
+  specialXp(code: string, special_xp: string): number {
+    const specialXp = (this.campaignData.investigatorData[code] || {}).specialXp || {};
+    return specialXp[special_xp] || 0;
+  }
+
   totalXp(code: string): number {
     const data = this.campaignData.investigatorData[code] || {};
     return data.availableXp || 0;
@@ -740,16 +750,40 @@ export default class GuidedCampaignLog {
     input?: string[],
     numberInput?: number[]
   ) {
-    const baseXp = numberInput ? numberInput[0] : 0;
+    const baseXp = (effect.input_scale || 1) * (numberInput ? numberInput[0] : 0);
     const totalXp = baseXp + (effect.bonus || 0);
     forEach(
       this.getInvestigators(effect.investigator, input),
       investigator => {
         const data = this.campaignData.investigatorData[investigator] || {};
-        this.campaignData.investigatorData[investigator] = {
-          ...data,
-          availableXp: (data.availableXp || 0) + totalXp,
-        };
+        if (effect.special_xp) {
+          const specialXp = data.specialXp || {};
+          const availableSpecialXp = (specialXp[effect.special_xp] || 0) + totalXp;
+          if (availableSpecialXp >= 0) {
+            this.campaignData.investigatorData[investigator] = {
+              ...data,
+              specialXp: {
+                ...specialXp,
+                [effect.special_xp]: availableSpecialXp,
+              },
+            };
+          } else {
+            // We try to spend special XP first, but then spend regular XP.
+            this.campaignData.investigatorData[investigator] = {
+              ...data,
+              specialXp: {
+                ...specialXp,
+                [effect.special_xp]: 0,
+              },
+              availableXp: (data.availableXp || 0) + availableSpecialXp,
+            };
+          }
+        } else {
+          this.campaignData.investigatorData[investigator] = {
+            ...data,
+            availableXp: (data.availableXp || 0) + totalXp,
+          };
+        }
       }
     );
   }
@@ -845,11 +879,26 @@ export default class GuidedCampaignLog {
 
   private handleTraumaEffect(
     effect: TraumaEffect,
-    input?: string[]
+    input?: string[],
+    numberInput?: number[]
   ) {
     const investigators = this.getInvestigators(effect.investigator, input);
     forEach(investigators, code => {
       const trauma: TraumaAndCardData = this.campaignData.investigatorData[code] || {};
+      if (effect.heal_input) {
+        if (!numberInput) {
+          throw new Error('Input expected for "heal_input" type.');
+        }
+        const value = numberInput[0];
+        switch (effect.heal_input) {
+          case 'mental':
+            trauma.mental = (trauma.mental || 0) - value;
+            break;
+          case 'physical':
+            trauma.physical = (trauma.physical || 0) - value;
+            break;
+        }
+      }
       if (effect.killed) {
         trauma.killed = true;
       }
@@ -881,6 +930,28 @@ export default class GuidedCampaignLog {
       if (this.chaosBag[token] === 0) {
         delete this.chaosBag[token];
       }
+    });
+  }
+
+  private handleGainSuppliesEffect(effect: GainSuppliesEffect, input?: string[]) {
+    if (effect.investigator !== '$input_value') {
+      throw new Error('Unexpected investigator type for gain_supplies effect.');
+    }
+    if (!input || !input.length) {
+      throw new Error('input required for scenarioData effect');
+    }
+    forEach(input, investigator => {
+      forEach(effect.supplies, supply => {
+        const countEffect: CampaignLogCountEffect = {
+          type: 'campaign_log_count',
+          section: effect.section,
+          investigator: investigator,
+          operation: 'add',
+          id: supply.id,
+          value: 1,
+        };
+        this.handleCampaignLogCountEffect(countEffect);
+      });
     });
   }
 

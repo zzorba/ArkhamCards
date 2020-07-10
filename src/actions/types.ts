@@ -158,6 +158,9 @@ export interface Trauma {
 }
 
 export interface TraumaAndCardData extends Trauma {
+  specialXp?: {
+    [key: string]: number | undefined;
+  };
   availableXp?: number;
   spentXp?: number;
   storyAssets?: string[];

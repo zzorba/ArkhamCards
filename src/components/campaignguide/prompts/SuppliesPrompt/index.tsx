@@ -94,7 +94,7 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
     });
 
     const playerCount = campaignLog.playerCount();
-    const total = input.points[playerCount - 1];
+    const baseTotal = input.points[playerCount - 1];
     const suppliesInput = scenarioState.supplies(id);
     const supplyCounts = suppliesInput !== undefined ? suppliesInput : this.state.counts;
     return (
@@ -103,6 +103,7 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
           { !!text && <CampaignGuideTextComponent text={text} /> }
         </SetupStepWrapper>
         { map(scenarioInvestigators, (investigator, idx) => {
+          const total = baseTotal + (input.special_xp ? campaignLog.specialXp(investigator.code, input.special_xp) : 0)
           const counts = supplyCounts[investigator.code] || {};
           const spent = sumBy(keys(counts), id => {
             const count = counts[id];

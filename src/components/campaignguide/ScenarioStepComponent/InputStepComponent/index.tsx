@@ -14,15 +14,18 @@ import InvestigatorCheckListComponent from 'components/campaignguide/prompts/Inv
 import UseSuppliesPrompt from 'components/campaignguide/prompts/UseSuppliesPrompt';
 import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
+import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
 import CardChoicePrompt from 'components/campaignguide/prompts/CardChoicePrompt';
 import InvestigatorCounterComponent from 'components/campaignguide/prompts/InvestigatorCounterComponent';
 import ChooseOnePrompt from 'components/campaignguide/prompts/ChooseOnePrompt';
 import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
 import NumberPrompt from 'components/campaignguide/prompts/NumberPrompt';
 import SuppliesPrompt from 'components/campaignguide/prompts/SuppliesPrompt';
-import { InputStep } from 'data/scenario/types';
+import { InputStep, InvestigatorCounterInput } from 'data/scenario/types';
 import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
 import { chooseOneInputChoices } from 'data/scenario/inputHelper';
+import Card from 'data/Card';
+import { forEach } from 'lodash';
 
 interface Props {
   step: InputStep;
@@ -33,6 +36,26 @@ interface Props {
 }
 
 export default class InputStepComponent extends React.Component<Props> {
+  investigatorCounterLimits(input: InvestigatorCounterInput, scenarioInvestigators: Card[]) {
+    const { campaignLog } = this.props;
+    if (!input.max && !input.investigator_max) {
+      return undefined;
+    }
+
+    const limits: { [key: string]: number } = {};
+    forEach(scenarioInvestigators, investigator => {
+      const trauma = campaignLog.traumaAndCardData(investigator.code);
+      if (input.max) {
+        limits[investigator.code] = input.max;
+      } else if (input.investigator_max === 'physical_trauma') {
+        limits[investigator.code] = trauma.physical || 0;
+      } else if (input.investigator_max === 'mental_trauma') {
+        limits[investigator.code] = trauma.mental || 0;
+      }
+    });
+    return limits;
+  }
+
   renderContent(
     campaignId: number
   ): React.ReactNode {
@@ -79,18 +102,25 @@ export default class InputStepComponent extends React.Component<Props> {
             text={step.text}
           />
         );
-      case 'investigator_counter':
+      case 'investigator_counter': {
+        const input = step.input;
         return (
           <>
             <SetupStepWrapper bulletType={step.bullet_type}>
               { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
             </SetupStepWrapper>
-            <InvestigatorCounterComponent
-              id={step.id}
-              countText={step.input.text}
-            />
+            <ScenarioStepContext.Consumer>
+              { ({ scenarioInvestigators }: ScenarioStepContextType) => (
+                <InvestigatorCounterComponent
+                  id={step.id}
+                  countText={input.text}
+                  limits={this.investigatorCounterLimits(input, scenarioInvestigators)}
+                />
+              ) }
+            </ScenarioStepContext.Consumer>
           </>
         );
+      }
       case 'supplies':
         return (
           <SuppliesPrompt

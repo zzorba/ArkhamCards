@@ -22493,6 +22493,74 @@
           "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
         }
       ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "adjust_supplies",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "rthote2_gain_sticky_goop",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Adjust supplies",
+            "steps": [
+              "adjust_supplies_choice",
+              "gain_sticky_goop"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "adjust_supplies_choice",
+      "text": "Which investigator should add the \"Sticky Goop\" to their supplies?"
+    },
+    {
+      "id": "gain_sticky_goop",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "any",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "gain_sticky_goop",
+            "text": "Found \"Sticky Goop\"",
+            "effects": [
+              {
+                "type": "gain_supplies",
+                "section": "supplies",
+                "investigator": "$input_value",
+                "supplies": [
+                  {
+                    "id": "sticky_goop",
+                    "name": "Sticky Goopr",
+                    "description": "A mysterious scepter you found in a subterranean swamp.",
+                    "cost": 0,
+                    "multiple": false
+                  }
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "rthote2_gain_sticky_goop",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -24043,25 +24111,6 @@
       ]
     },
     {
-      "id": "record_number_of_tasks",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Tasks on act 2b that were completed:",
-        "min": 3,
-        "max": 6,
-        "effects": [
-          {
-            "type": "campaign_log_count",
-            "section": "hidden",
-            "id": "tasks_completed",
-            "operation": "set_input",
-            "text": "#X# tasks were completed"
-          }
-        ]
-      }
-    },
-    {
       "id": "check_number_of_tasks",
       "type": "branch",
       "condition": {
@@ -24070,6 +24119,18 @@
         "id": "tasks_completed",
         "max": 6,
         "options": [
+          {
+            "numCondition": 8,
+            "steps": [
+              "process_was_perfected"
+            ]
+          },
+          {
+            "numCondition": 7,
+            "steps": [
+              "process_was_perfected"
+            ]
+          },
           {
             "numCondition": 6,
             "steps": [
@@ -24203,6 +24264,25 @@
     {
       "id": "remove_act2a",
       "text": "Remove Act 2a—\"Restricted Access\" from the game and replace it with the new Act 2a—\"Unrestricted Access.\""
+    },
+    {
+      "id": "record_number_of_tasks",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Tasks on act 2b that were completed:",
+        "min": 3,
+        "max": 8,
+        "effects": [
+          {
+            "type": "campaign_log_count",
+            "section": "hidden",
+            "id": "tasks_completed",
+            "operation": "set_input",
+            "text": "#X# tasks were completed"
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -25261,22 +25341,53 @@
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
-        "id": "goop",
+        "id": "sticky_goop",
         "options": [
           {
             "boolCondition": true,
             "steps": [
-              "record_key_of_eztli"
+              "key_of_eztli_story",
+              "gain_key_of_eztli"
             ]
           }
         ]
       }
     },
     {
-      "id": "record_key_of_eztli",
-      "bullet_type": "small",
-      "text": "The liquid from the fountain dissolves the viscous substance, revealing a solid object beneath the ooze. Record \"Key of Eztli\" in any one investigator's supplies.",
-      "effects": []
+      "id": "key_of_eztli_story",
+      "type": "story",
+      "text": "The liquid from the fountain dissolves the viscous substance, revealing a solid object beneath the ooze. Record \"Key of Eztli\" in any one investigator's supplies."
+    },
+    {
+      "id": "gain_key_of_eztli",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "any",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "gain_key_of_eztli",
+            "text": "Key of Eztli",
+            "effects": [
+              {
+                "type": "gain_supplies",
+                "section": "supplies",
+                "investigator": "$input_value",
+                "supplies": [
+                  {
+                    "id": "key_of_eztli",
+                    "name": "Key of Eztli",
+                    "description": "The Key of Eztli.",
+                    "cost": 0,
+                    "multiple": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -25781,6 +25892,74 @@
           "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
         }
       ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "adjust_supplies",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "rtdoe_gain_mysterious_scepter",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Adjust supplies",
+            "steps": [
+              "adjust_supplies_choice",
+              "gain_mysterious_scepter"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "adjust_supplies_choice",
+      "text": "Which investigator should add the \"Mysterious Scepter\" to their supplies?"
+    },
+    {
+      "id": "gain_mysterious_scepter",
+      "type": "input",
+      "input": {
+        "type": "investigator_choice",
+        "investigator": "any",
+        "source": "scenario",
+        "choices": [
+          {
+            "id": "gain_mysterious_scepter",
+            "text": "Mysterious Scepter",
+            "effects": [
+              {
+                "type": "gain_supplies",
+                "section": "supplies",
+                "investigator": "$input_value",
+                "supplies": [
+                  {
+                    "id": "mysterious_scepter",
+                    "name": "Mysterious Scepter",
+                    "description": "A mysterious scepter you found in the throne room.",
+                    "cost": 0,
+                    "multiple": false
+                  }
+                ]
+              },
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "rtdoe_gain_mysterious_scepter",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -26707,32 +26886,6 @@
       "text": "This scenario contains three different act decks —an “a/b” deck, a “c/d” deck, and an “e/f” deck. Each of these act decks is constructed separately, in numerical order, as usual. During the course of this scenario, all three of these act decks will be in play, and players may choose which acts to pursue and which to ignore. The text of all three acts is considered active at all times. You might not have time to accomplish all three tasks, so choose which leads you wish to pursue wisely!\nThe contents of each of these act decks is altered depending on the circumstances below."
     },
     {
-      "id": "check_act_ab",
-      "type": "input",
-      "text": "Which of the following is true?",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "completed",
-            "text": "Act 3b was completed.",
-            "steps": [
-              "found_missing_relic",
-              "maybe_earn_relic_of_ages"
-            ]
-          },
-          {
-            "id": "in_play",
-            "text": "The “a/b” act deck is still in play.",
-            "steps": [
-              "relic_is_missing",
-              "maybe_remove_relic_of_ages"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "id": "maybe_earn_relic_of_ages",
       "bullet_type": "small",
       "hidden": true,
@@ -26891,57 +27044,6 @@
       ]
     },
     {
-      "id": "check_act_cd",
-      "text": "Which of the following is true?",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "completed",
-            "text": "Act 3d was completed.",
-            "steps": [
-              "rescued_alejandro",
-              "maybe_earn_alejandro"
-            ]
-          },
-          {
-            "id": "in_play",
-            "text": "The “c/d” act deck is still in play.",
-            "steps": [
-              "alejandro_is_missing",
-              "maybe_remove_alejandro"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_act_ef",
-      "text": "Which of the following is true?",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "completed",
-            "text": "Act 3f was completed.",
-            "steps": [
-              "forged_bond_with_ichtaca",
-              "maybe_earn_ichtaca"
-            ]
-          },
-          {
-            "id": "in_play",
-            "text": "The “e/f” act deck is still in play.",
-            "steps": [
-              "ichtaca_in_the_dark"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "id": "maybe_earn_ichtaca",
       "type": "branch",
       "hidden": true,
@@ -27008,22 +27110,6 @@
       "input": {
         "type": "counter",
         "text": "Victory display:",
-        "effects": [
-          {
-            "type": "earn_xp",
-            "investigator": "all"
-          }
-        ]
-      }
-    },
-    {
-      "id": "earn_act_xp",
-      "text": "Each investigator earns 1 additional experience for each act 1 card that was completed during this scenario, as you gain insight into the schemes of the Brotherhood.",
-      "type": "input",
-      "input": {
-        "type": "counter",
-        "text": "Completed act 1 Cards:",
-        "max": 3,
         "effects": [
           {
             "type": "earn_xp",
@@ -27107,6 +27193,7 @@
     {
       "id": "resupply_point",
       "title": "Resupply Point",
+      "bullet_type": "none",
       "text": "It is clear now that you will have to venture once more into the wilds before the mystery behind the Relic of Ages is solved. Each investigator has the option to choose additional supplies to add to their current list of supplies. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chooses to bring. <i>(Note: Provisions, Medicine and Gasoline can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>"
     },
     {
@@ -27141,6 +27228,7 @@
               {
                 "type": "earn_xp",
                 "investigator": "$input_value",
+                "special_xp": "resupply_points",
                 "bonus": -3
               },
               {
@@ -27149,153 +27237,6 @@
                 "investigator": "$input_value"
               }
             ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "choose_to_heal_trauma",
-      "bullet_type": "small",
-      "text": "Each investigator may spend 5 experience points to remove a single point of physical or mental trauma from their investigator.",
-      "type": "input",
-      "input": {
-        "type": "investigator_choice",
-        "investigator": "choice",
-        "source": "scenario",
-        "choices": [
-          {
-            "id": "remove_physical",
-            "text": "Remove Physical Trauma",
-            "condition": {
-              "type": "trauma",
-              "investigator": "each",
-              "trauma": "physical",
-              "options": [
-                {
-                  "boolCondition": true,
-                  "steps": []
-                }
-              ]
-            },
-            "effects": [
-              {
-                "type": "earn_xp",
-                "investigator": "$input_value",
-                "bonus": -5
-              },
-              {
-                "type": "trauma",
-                "investigator": "$input_value",
-                "physical": -1
-              }
-            ]
-          },
-          {
-            "id": "remove_mental",
-            "text": "Remove Mental Trauma",
-            "condition": {
-              "type": "trauma",
-              "investigator": "each",
-              "trauma": "mental",
-              "options": [
-                {
-                  "boolCondition": true,
-                  "steps": []
-                }
-              ]
-            },
-            "effects": [
-              {
-                "type": "earn_xp",
-                "investigator": "$input_value",
-                "bonus": -5
-              },
-              {
-                "type": "trauma",
-                "investigator": "$input_value",
-                "mental": -1
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "buy_supplies",
-      "type": "input",
-      "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign.",
-      "input": {
-        "type": "supplies",
-        "section": "supplies",
-        "points": [
-          8,
-          5,
-          4,
-          3
-        ],
-        "supplies": [
-          {
-            "id": "provisions",
-            "name": "Provisions",
-            "description": "Food and water for one person. A must-have for any journey.",
-            "cost": 1,
-            "multiple": true
-          },
-          {
-            "id": "medicine",
-            "name": "Medicine",
-            "description": "To stave off disease, infection, or venom.",
-            "cost": 2,
-            "multiple": true
-          },
-          {
-            "id": "gasoline",
-            "name": "Gasoline",
-            "description": "Enough for a long journey bycar.",
-            "cost": 1,
-            "multiple": true
-          },
-          {
-            "id": "blanket",
-            "name": "Blanket",
-            "description": "For warmth at night.",
-            "cost": 2
-          },
-          {
-            "id": "canteen",
-            "name": "Canteen",
-            "description": "Can be refilled at streams and rivers.",
-            "cost": 2
-          },
-          {
-            "id": "compass",
-            "name": "Compass",
-            "description": "Can guide you when you are hopelessly lost.",
-            "cost": 2
-          },
-          {
-            "id": "binoculars",
-            "name": "Binoculars",
-            "description": "To help you see faraway places.",
-            "cost": 2
-          },
-          {
-            "id": "chalk",
-            "name": "Chalk",
-            "description": "For writing on rough stone surfaces.",
-            "cost": 2
-          },
-          {
-            "id": "pocketknife",
-            "name": "Pocketknife",
-            "description": "Too small to be used as a reliable weapon, but easily concealed.",
-            "cost": 2
-          },
-          {
-            "id": "pickaxe",
-            "name": "Pickaxe",
-            "description": "For breaking apart rocky surfaces.",
-            "cost": 2
           }
         ]
       }
@@ -27364,29 +27305,6 @@
       "text": "Remove the following act cards from the “g/h” deck: Search for the Source, both copies of Seeking Trouble, and 1 of the 2 copies of The Overgrown Estate, at random."
     },
     {
-      "id": "check_act_gh",
-      "text": "Which of the following is true?",
-      "type": "input",
-      "input": {
-        "type": "choose_one",
-        "choices": [
-          {
-            "id": "completed",
-            "text": "Act 3g was completed.",
-            "steps": [
-              "recruited_help_of_another_expedition",
-              "earn_veda_whitsley"
-            ]
-          },
-          {
-            "id": "in_play",
-            "text": "The “e/f” act deck is still in play.",
-            "steps": []
-          }
-        ]
-      }
-    },
-    {
       "id": "recruited_help_of_another_expedition",
       "bullet_type": "small",
       "effects": [
@@ -27406,9 +27324,458 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": ""
+          "card": "53037"
         }
       ]
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "cross_out_supplies",
+            "text": "Adjust supplies",
+            "steps": [
+              "cross_out_medicine"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cross_out_medicine",
+      "type": "input",
+      "input": {
+        "type": "use_supplies",
+        "section": "supplies",
+        "id": "medicine",
+        "investigator": "choice",
+        "min": 1,
+        "max": 1,
+        "choices": []
+      }
+    },
+    {
+      "id": "check_act_ab",
+      "type": "input",
+      "text": "Which stage of the act “a/b” deck was in play?",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1",
+            "text": "Act 1a",
+            "steps": [
+              "relic_is_missing",
+              "maybe_remove_relic_of_ages"
+            ]
+          },
+          {
+            "id": "act_2",
+            "text": "Act 2a",
+            "steps": [
+              "relic_is_missing",
+              "maybe_remove_relic_of_ages"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 1
+              }
+            ]
+          },
+          {
+            "id": "act_3",
+            "text": "Act 3a",
+            "steps": [
+              "relic_is_missing",
+              "maybe_remove_relic_of_ages"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 2
+              }
+            ]
+          },
+          {
+            "id": "completed",
+            "text": "Act 3b was completed.",
+            "steps": [
+              "found_missing_relic",
+              "maybe_earn_relic_of_ages"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_act_cd",
+      "text": "Which stage of the act “c/d” deck was in play?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1",
+            "text": "Act 1c",
+            "steps": [
+              "alejandro_is_missing",
+              "maybe_remove_alejandro"
+            ]
+          },
+          {
+            "id": "act_2",
+            "text": "Act 2c",
+            "steps": [
+              "alejandro_is_missing",
+              "maybe_remove_alejandro"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 1
+              }
+            ]
+          },
+          {
+            "id": "act_3",
+            "text": "Act 3c",
+            "steps": [
+              "alejandro_is_missing",
+              "maybe_remove_alejandro"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 2
+              }
+            ]
+          },
+          {
+            "id": "completed",
+            "text": "Act 3d was completed.",
+            "steps": [
+              "rescued_alejandro",
+              "maybe_earn_alejandro"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_act_ef",
+      "text": "Which stage of the act “e/f” deck was in play?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1",
+            "text": "Act 1e",
+            "steps": [
+              "ichtaca_in_the_dark"
+            ]
+          },
+          {
+            "id": "act_2",
+            "text": "Act 2e",
+            "steps": [
+              "ichtaca_in_the_dark"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 1
+              }
+            ]
+          },
+          {
+            "id": "act_3",
+            "text": "Act 3e",
+            "steps": [
+              "ichtaca_in_the_dark"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 2
+              }
+            ]
+          },
+          {
+            "id": "completed",
+            "text": "Act 3f was completed.",
+            "steps": [
+              "forged_bond_with_ichtaca",
+              "maybe_earn_ichtaca"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_act_gh",
+      "text": "Which stage of the act “g/h” deck was in play?",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "act_1",
+            "text": "Act 1g",
+            "steps": []
+          },
+          {
+            "id": "act_2",
+            "text": "Act 2g",
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 1
+              }
+            ]
+          },
+          {
+            "id": "act_3",
+            "text": "Act 3g",
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 2
+              }
+            ]
+          },
+          {
+            "id": "completed",
+            "text": "Act 3h was completed.",
+            "steps": [
+              "recruited_help_of_another_expedition",
+              "earn_veda_whitsley"
+            ],
+            "effects": [
+              {
+                "type": "earn_xp",
+                "investigator": "all",
+                "special_xp": "resupply_points",
+                "bonus": 3
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_act_xp",
+      "text": "Each investigator earns 1 additional experience for each act 1, act 2, or act 3 card that was completed during this scenario, as you gain insight into the schemes of the Brotherhood.",
+      "bullets": [
+        {
+          "text": "This additional experience cannot be spent to purchase cards."
+        },
+        {
+          "text": "Instead, it must be spent to remove poison or cure trauma, or it must be converted to supply points during the upcoming <b>Resupply Point</b>"
+        }
+      ]
+    },
+    {
+      "id": "resupply_point_explanation",
+      "text": "When spending experience points during this section, experience earned from completing acts will be spent first. You may also convert up to 10 points of experience to supply points, at a rate of 1 supply point for every 2 experience converted."
+    },
+    {
+      "id": "choose_to_heal_trauma",
+      "bullet_type": "small",
+      "text": "Each investigator may spend 5 experience points to remove physical or mental trauma from their investigator."
+    },
+    {
+      "id": "choose_to_heal_physical_trauma",
+      "type": "input",
+      "input": {
+        "type": "investigator_counter",
+        "text": "Physical trauma to remove",
+        "investigator_max": "physical_trauma",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "special_xp": "resupply_points",
+            "input_scale": -5,
+            "investigator": "$input_value"
+          },
+          {
+            "type": "trauma",
+            "investigator": "$input_value",
+            "heal_input": "physical",
+            "hidden": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "choose_to_heal_mental_trauma",
+      "type": "input",
+      "input": {
+        "type": "investigator_counter",
+        "text": "Mental trauma to remove",
+        "investigator_max": "mental_trauma",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "special_xp": "resupply_points",
+            "input_scale": -5,
+            "investigator": "$input_value"
+          },
+          {
+            "type": "trauma",
+            "investigator": "$input_value",
+            "heal_input": "mental",
+            "hidden": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "buy_supply_points",
+      "type": "input",
+      "input": {
+        "type": "investigator_counter",
+        "text": "Supply points to purchase (2 expeirence each)",
+        "max": 5,
+        "effects": [
+          {
+            "type": "earn_xp",
+            "special_xp": "resupply_points",
+            "input_scale": -2,
+            "investigator": "$input_value"
+          },
+          {
+            "type": "earn_xp",
+            "special_xp": "supply_points",
+            "investigator": "$input_value"
+          }
+        ]
+      }
+    },
+    {
+      "id": "buy_supplies",
+      "type": "input",
+      "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign.",
+      "input": {
+        "type": "supplies",
+        "section": "supplies",
+        "points": [
+          8,
+          5,
+          4,
+          3
+        ],
+        "special_xp": "supply_points",
+        "supplies": [
+          {
+            "id": "provisions",
+            "name": "Provisions",
+            "description": "Food and water for one person. A must-have for any journey.",
+            "cost": 1,
+            "multiple": true
+          },
+          {
+            "id": "medicine",
+            "name": "Medicine",
+            "description": "To stave off disease, infection, or venom.",
+            "cost": 2,
+            "multiple": true
+          },
+          {
+            "id": "gasoline",
+            "name": "Gasoline",
+            "description": "Enough for a long journey bycar.",
+            "cost": 1,
+            "multiple": true
+          },
+          {
+            "id": "blanket",
+            "name": "Blanket",
+            "description": "For warmth at night.",
+            "cost": 2
+          },
+          {
+            "id": "canteen",
+            "name": "Canteen",
+            "description": "Can be refilled at streams and rivers.",
+            "cost": 2
+          },
+          {
+            "id": "compass",
+            "name": "Compass",
+            "description": "Can guide you when you are hopelessly lost.",
+            "cost": 2
+          },
+          {
+            "id": "binoculars",
+            "name": "Binoculars",
+            "description": "To help you see faraway places.",
+            "cost": 2
+          },
+          {
+            "id": "chalk",
+            "name": "Chalk",
+            "description": "For writing on rough stone surfaces.",
+            "cost": 2
+          },
+          {
+            "id": "pocketknife",
+            "name": "Pocketknife",
+            "description": "Too small to be used as a reliable weapon, but easily concealed.",
+            "cost": 2
+          },
+          {
+            "id": "pickaxe",
+            "name": "Pickaxe",
+            "description": "For breaking apart rocky surfaces.",
+            "cost": 2
+          }
+        ]
+      }
     }
   ],
   "resolutions": [
@@ -27438,9 +27805,13 @@
         "earn_xp",
         "earn_act_xp",
         "resupply_point",
+        "resupply_point_explanation",
         "visit_hospital",
         "choose_to_heal_poison",
         "choose_to_heal_trauma",
+        "choose_to_heal_physical_trauma",
+        "choose_to_heal_mental_trauma",
+        "buy_supply_points",
         "buy_supplies",
         "$upgrade_decks"
       ]
@@ -51058,6 +51429,14 @@
         "max": 6,
         "options": [
           {
+            "numCondition": 8,
+            "steps": ["process_was_perfected"]
+          },
+          {
+            "numCondition": 7,
+            "steps": ["process_was_perfected"]
+          },
+          {
             "numCondition": 6,
             "steps": ["process_was_perfected"]
           },
@@ -53812,6 +54191,7 @@
     {
       "id": "resupply_point",
       "title": "Resupply Point",
+      "bullet_type": "none",
       "text": "It is clear now that you will have to venture once more into the wilds before the mystery behind the Relic of Ages is solved. Each investigator has the option to choose additional supplies to add to their current list of supplies. In the Campaign Log, under each investigator’s “Supplies” section, record the supplies that investigator chooses to bring. <i>(Note: Provisions, Medicine and Gasoline can be taken more than once by recording their name multiple times and spending the appropriate number of supply points each time.)</i>"
     },
     {
@@ -53846,6 +54226,7 @@
               {
                 "type": "earn_xp",
                 "investigator": "$input_value",
+                "special_xp": "resupply_points",
                 "bonus": -3
               },
               {
