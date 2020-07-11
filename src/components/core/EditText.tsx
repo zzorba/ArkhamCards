@@ -13,7 +13,6 @@ interface Props {
   placeholder?: string;
   value?: string;
   onValueChange: (text: string) => void;
-  settingsStyle?: boolean;
 }
 
 export default function EditText({
@@ -21,7 +20,6 @@ export default function EditText({
   dialogDescription,
   placeholder,
   value,
-  settingsStyle,
   onValueChange,
 }: Props) {
   return (
@@ -49,6 +47,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 16,
     color: COLORS.darkText,
+    textAlign: 'left',
   },
   container: {
     borderBottomWidth: StyleSheet.hairlineWidth,

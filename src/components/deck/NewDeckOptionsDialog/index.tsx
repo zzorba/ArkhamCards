@@ -315,7 +315,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           dialogDescription={t`Enter a name for this deck.`}
           onValueChange={this._onDeckNameChange}
           value={deckName}
-          settingsStyle
         />
         <TabooSetPicker
           color={COLORS.faction[investigator.factionCode()].primary}
