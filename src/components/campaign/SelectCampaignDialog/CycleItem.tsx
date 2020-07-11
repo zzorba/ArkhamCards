@@ -17,7 +17,7 @@ interface Props {
   packCode: CampaignCycleCode;
   text: string;
   description?: string;
-  disabled: boolean;
+  disabled?: boolean;
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
 

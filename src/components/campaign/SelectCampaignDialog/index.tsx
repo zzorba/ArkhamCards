@@ -84,12 +84,9 @@ class SelectCampaignDialog extends React.Component<Props> {
     }
   }
 
-  renderCampaign(
-    packCode: CampaignCycleCode,
-    available: boolean
-  ) {
+  renderCampaign(packCode: CampaignCycleCode) {
     const { fontScale } = this.props;
-    const guideComingSoon = false && (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
+    const guideComingSoon = (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
     return (
       <CycleItem
         key={packCode}
@@ -97,8 +94,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}
-        description={!available || guideComingSoon ? t`Guide not yet available` : this.campaignDescription(packCode)}
-        disabled={!available}
+        description={guideComingSoon ? t`Guide not yet available` : this.campaignDescription(packCode)}
       />
     );
   }
@@ -122,14 +118,14 @@ class SelectCampaignDialog extends React.Component<Props> {
             title={t`My Campaigns`}
           />
         ) }
-        { map(myCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
-        { this.renderCampaign(CUSTOM, true) }
+        { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
+        { this.renderCampaign(CUSTOM) }
         { otherCampaigns.length > 0 && (
           <BasicSectionHeader
             title={t`Other Campaigns`}
           />
         ) }
-        { map(otherCampaigns, pack_code => this.renderCampaign(pack_code, true)) }
+        { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
         <View style={styles.button}>
           <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
