@@ -1597,14 +1597,14 @@ class DeckDetailView extends React.Component<Props, State> {
               description={nameChange || deck.name}
               titleStyle={styles.text}
               containerStyle={styles.button}
-              />
+            />
             { SHOW_DESCRIPTION_EDITOR && (
               <SettingsButton
                 onPress={this._showEditDescription}
                 title={t`Description`}
                 titleStyle={styles.text}
                 containerStyle={styles.button}
-                />
+              />
             ) }
             <SettingsButton
               onPress={this._showTabooPicker}
@@ -1652,13 +1652,13 @@ class DeckDetailView extends React.Component<Props, State> {
               title={t`Story Assets`}
               titleStyle={styles.text}
               containerStyle={styles.button}
-              />
+            />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Weaknesses`}
               titleStyle={styles.text}
               containerStyle={styles.button}
-              />
+            />
           </>
         ) }
         <SettingsButton
@@ -1666,13 +1666,13 @@ class DeckDetailView extends React.Component<Props, State> {
           title={t`Charts`}
           titleStyle={styles.text}
           containerStyle={styles.button}
-          />
+        />
         <SettingsButton
           onPress={this._showDrawSimulator}
           title={t`Draw Simulator`}
           titleStyle={styles.text}
           containerStyle={styles.button}
-          />
+        />
         { editable && (
           <>
             <SettingsCategoryHeader
@@ -1703,7 +1703,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 title={t`Upgrade History`}
                 titleStyle={styles.text}
                 containerStyle={styles.button}
-                />
+              />
             ) }
           </>
         ) }
@@ -1717,7 +1717,7 @@ class DeckDetailView extends React.Component<Props, State> {
           title={t`Clone`}
           titleStyle={styles.text}
           containerStyle={styles.button}
-          />
+        />
         { deck.local ? (
           <SettingsButton
             onPress={this._uploadToArkhamDB}

@@ -278,7 +278,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'pillars_of_judgment':
         return this.forgottenIcon('pillars_of_judgement', size, color);
       case 'rttfa':
-        return this.forgottenIcon('return_to_the_forgotten_age', size, color);  
+        return this.forgottenIcon('return_to_the_forgotten_age', size, color);
       case 'turn_back_time':
       case 'rainforest':
       case 'serpents':

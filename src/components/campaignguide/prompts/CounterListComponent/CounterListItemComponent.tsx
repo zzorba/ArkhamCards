@@ -11,6 +11,7 @@ import COLORS from 'styles/colors';
 interface Props {
   code: string;
   name: string;
+  description?: string;
   color?: CustomColor;
   bulletType?: BulletType;
   value: number;
@@ -51,6 +52,7 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
   render() {
     const {
       name,
+      description,
       limit,
       color,
       value,
@@ -61,9 +63,16 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
         styles.promptRow,
         color ? { backgroundColor: color.tint } : {},
       ]}>
-        <Text style={typography.mediumGameFont}>
-          { name }
-        </Text>
+        <View style={styles.column}>
+          <Text style={typography.mediumGameFont}>
+            { name }
+          </Text>
+          { editable && !!description && (
+            <Text style={typography.text}>
+              { description }
+            </Text>
+          ) }
+        </View>
         { editable ? (
           <PlusMinusButtons
             count={value}
@@ -97,5 +106,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  column: {
+    flexDirection: 'column',
+    flex: 1,
   },
 });

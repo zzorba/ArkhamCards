@@ -1,12 +1,9 @@
 import React from 'react';
 import { keys } from 'lodash';
 import {
-  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  TextStyle,
-  ViewStyle,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';

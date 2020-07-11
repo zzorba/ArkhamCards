@@ -610,6 +610,7 @@ export interface InvestigatorCounterInput {
   effects: Effect[];
   investigator_max?: "physical_trauma" | "mental_trauma";
   max?: number;
+  show_special_xp?: string;
 }
 export interface InvestigatorChoiceWithSuppliesInput {
   type: "investigator_choice_supplies";

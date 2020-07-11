@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, InteractionManager } from 'react-native';
+import { Alert } from 'react-native';
 import { connect } from 'react-redux';
 
 import Database from './Database';

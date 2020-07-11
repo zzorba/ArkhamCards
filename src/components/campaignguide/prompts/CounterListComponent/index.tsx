@@ -15,6 +15,7 @@ import COLORS from 'styles/colors';
 export interface CounterItem {
   code: string;
   name: string;
+  description?: string;
   color?: CustomColor;
   limit?: number;
 }
@@ -139,7 +140,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
                   { countText }
                 </Text>
               </View>
-              { map(items, ({ code, name, limit, color }, idx) => {
+              { map(items, ({ code, name, description, limit, color }, idx) => {
                 const value = this.getValue(code, choiceList);
                 return (
                   <CounterListItemComponent
@@ -147,6 +148,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
                     value={value}
                     code={code}
                     name={name}
+                    description={description}
                     onInc={this._onInc}
                     onDec={this._onDec}
                     limit={limit}

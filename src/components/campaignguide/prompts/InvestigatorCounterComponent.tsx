@@ -12,11 +12,14 @@ interface Props {
   };
   countText?: string;
   requiredTotal?: number;
+  description?: {
+    [code: string]: string;
+  };
 }
 
 export default class InvestigatorCounterComponent extends React.Component<Props> {
   render() {
-    const { id, limits, requiredTotal, countText } = this.props;
+    const { id, limits, requiredTotal, countText, description } = this.props;
     return (
       <ScenarioStepContext.Consumer>
         { ({ scenarioInvestigators }: ScenarioStepContextType) => {
@@ -32,6 +35,7 @@ export default class InvestigatorCounterComponent extends React.Component<Props>
                     primary: COLORS.faction[investigator.factionCode()].primary,
                   },
                   limit: limits ? limits[investigator.code] : undefined,
+                  description: description ? description[investigator.code] : undefined,
                 };
               })}
               countText={countText}

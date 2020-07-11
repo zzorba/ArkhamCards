@@ -69,7 +69,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       case 'encounter_sets':
         return <EncounterSetStepComponent step={step} />;
       case 'location_connectors':
-        return <LocationConnectorsStepComponent step={step} />
+        return <LocationConnectorsStepComponent step={step} />;
       case 'rule_reminder':
         return <RuleReminderStepComponent step={step} />;
       case 'resolution':

@@ -1,10 +1,5 @@
 import React, { ReactNode } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  View,
-  findNodeHandle,
-} from 'react-native';
+import { View, findNodeHandle } from 'react-native';
 import DialogComponent from 'react-native-dialog';
 
 interface Props {
@@ -59,13 +54,3 @@ export default class Dialog extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  blur: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-  },
-});

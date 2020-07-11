@@ -164,7 +164,7 @@ export function checkSuppliesAnyConditionResult(
   return binaryConditionResult(
     !!find(investigators, investigator => {
       const supplies = investigatorSupplies[investigator.code] || {};
-      return !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id])
+      return !!find(supplies.entries, entry => entry.id === condition.id && !supplies.crossedOut[condition.id]);
     }),
     condition.options
   );
@@ -564,19 +564,21 @@ export function conditionResult(
       );
     }
     case 'math': {
-      if (condition.operation === 'equals') {
-        return mathEqualsConditionResult(condition, campaignLog);
-      }
-      const opA = getOperand(condition.opA, campaignLog);
-      const opB = getOperand(condition.opB, campaignLog);
       switch (condition.operation) {
-        case 'sum':
+        case 'equals':
+          return mathEqualsConditionResult(condition, campaignLog);
+        case 'sum': {
+          const opA = getOperand(condition.opA, campaignLog);
+          const opB = getOperand(condition.opB, campaignLog);
           return numberConditionResult(
             opA + opB,
             condition.options,
             condition.defaultOption
           );
+        }
         case 'compare': {
+          const opA = getOperand(condition.opA, campaignLog);
+          const opB = getOperand(condition.opB, campaignLog);
           const value = opA - opB;
           const choice = find(condition.options, option => {
             if (value < 0) {

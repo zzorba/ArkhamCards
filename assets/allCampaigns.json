@@ -27630,11 +27630,13 @@
     },
     {
       "id": "choose_to_heal_physical_trauma",
+      "bullet_type": "none",
       "type": "input",
       "input": {
         "type": "investigator_counter",
         "text": "Physical trauma to remove",
         "investigator_max": "physical_trauma",
+        "show_special_xp": "resupply_points",
         "effects": [
           {
             "type": "earn_xp",
@@ -27653,11 +27655,13 @@
     },
     {
       "id": "choose_to_heal_mental_trauma",
+      "bullet_type": "none",
       "type": "input",
       "input": {
         "type": "investigator_counter",
         "text": "Mental trauma to remove",
         "investigator_max": "mental_trauma",
+        "show_special_xp": "resupply_points",
         "effects": [
           {
             "type": "earn_xp",
@@ -27676,11 +27680,13 @@
     },
     {
       "id": "buy_supply_points",
+      "bullet_type": "none",
       "type": "input",
       "input": {
         "type": "investigator_counter",
         "text": "Supply points to purchase (2 expeirence each)",
         "max": 5,
+        "show_special_xp": "resupply_points",
         "effects": [
           {
             "type": "earn_xp",
