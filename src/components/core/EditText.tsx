@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { SettingsEditText } from 'react-native-settings-components';
 import { t } from 'ttag';
 
+import SettingsEditText from './SettingsEditText'
 import COLORS from 'styles/colors';
+import { m, s } from 'styles/space';
 import typography from 'styles/typography';
 
 interface Props {
@@ -26,7 +27,7 @@ export default function EditText({
   return (
     <SettingsEditText
       title={title}
-      titleStyle={settingsStyle ? undefined : typography.mediumGameFont}
+      titleStyle={typography.mediumGameFont}
       dialogDescription={dialogDescription}
       valuePlaceholder={placeholder}
       valueProps={{
@@ -48,10 +49,15 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 16,
     color: COLORS.darkText,
-    flex: 3,
   },
   container: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    paddingLeft: m,
+    paddingTop: s,
+    paddingBottom: s,
   },
 });

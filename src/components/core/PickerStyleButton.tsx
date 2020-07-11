@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import COLORS from 'styles/colors';
 import typography from 'styles/typography';
-import space from 'styles/space';
+import space, { s } from 'styles/space';
 
 interface Props {
   title: string;
@@ -70,41 +70,52 @@ export default class PickerStyleButton extends React.Component<Props> {
       value,
       noBorder,
       settingsStyle,
+      widget,
     } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
         backgroundColor: colors ? colors.backgroundColor : 'transparent',
         borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
       }]}>
-        <Text style={[
-          style.defaultTitleStyle,
+        <View style={[
+          style.textColumn,
           space.paddingLeftM,
-          space.paddingRightS,
-          settingsStyle ? {} :
-            {
-              ...typography.mediumGameFont,
-              fontWeight: '600',
-            },
-          { color: colors ? colors.textColor : COLORS.darkText },
+          !disabled && widget ? space.paddingRightXs : space.paddingRightM,
         ]}>
-          { title }
-        </Text>
-        { !!value && (
-          <Text
-            style={[
-              style.defaultValueStyle,
-              space.paddingLeftS,
-              space.paddingRightM,
-              typography.label,
-              {
-                color: colors ? colors.textColor : COLORS.darkText,
-                fontWeight: '400',
-              },
+          <Text 
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={[          
+              style.defaultTitleStyle,
+              space.paddingRightS,
+              settingsStyle ? {} :
+                {
+                  ...typography.mediumGameFont,
+                  fontWeight: '600',
+                },
+              { color: colors ? colors.textColor : COLORS.darkText },
             ]}
           >
-            { value }
+            { title }
           </Text>
-        ) }
+          { !!value && (
+            <Text
+              numberOfLines={2}
+              ellipsizeMode="tail"
+              style={[
+                style.defaultValueStyle,
+                typography.label,
+                {
+                  color: colors ? colors.textColor : COLORS.darkText,
+                  fontWeight: '400',
+                  flex: 4,
+                },
+              ]}
+            >
+              { value }
+            </Text>
+          ) }
+        </View>
         { !disabled && this.renderWidget() }
       </View>
     );
@@ -140,10 +151,16 @@ const style = StyleSheet.create({
   defaultTitleStyle: {
     flex: 1,
     fontSize: 16,
+    minWidth: 100,
   },
   defaultValueStyle: {
     color: COLORS.lightText,
     fontSize: 14,
-    flex: 0,
+  },
+  textColumn: {
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: s,
+    paddingBottom: s,
   },
 });
