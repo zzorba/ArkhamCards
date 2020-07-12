@@ -23,12 +23,14 @@ const COST_ICON_BACKGROUND_COLOR = Platform.OS === 'ios' ?
     light: 'rgb(245, 245, 245)',
     dark: 'rgb(32,32,32)',
   }) : 'rgb(245, 245, 245)';
+
 interface Props {
   card: Card;
   fontScale: number;
   inverted?: boolean;
   linked?: boolean;
 }
+
 export default class CardCostIcon extends React.PureComponent<Props> {
   cardCost() {
     const {

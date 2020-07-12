@@ -23,7 +23,7 @@ import CardQuantityComponent from './CardQuantityComponent';
 import typography from 'styles/typography';
 import { isBig, s, xs } from 'styles/space';
 
-const FACTION_ICONS = createFactionIcons({ colorChoice: 'background' });
+const FACTION_ICONS = createFactionIcons({ colorChoice: 'text' });
 
 interface Props {
   card: Card;
