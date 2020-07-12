@@ -76,7 +76,7 @@ export default {
     mythos: {
       text: darkText,
       background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : '#000',
-      background: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : '#000',
+      darkBackground: Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : '#000',
       pastelBackground: '#000000',
       light: '#000000',
     },

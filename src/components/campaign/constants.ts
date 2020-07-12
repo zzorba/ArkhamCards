@@ -1,3 +1,4 @@
+import { Platform, DynamicColorIOS } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -273,20 +274,24 @@ export function campaignNames() {
   };
 }
 
+const BLUE = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00408033', dark: '#00408088' }) : '#00408033';
+const TEAL = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00666633', dark: '#00666688' }) : '#00666633';
+const PURPLE = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc990033', dark: '#cc990088' }) : '#cc990033';
+const GREEN = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#33660033', dark: '#33660088' }) : '#33660033';
 export const CAMPAIGN_COLORS = {
-  core: '#00408033',
-  rtnotz: '#00006622',
-  dwl: '#00666633',
-  rtdwl: '#00006622',
-  ptc: '#cc990033',
-  rtptc: '#cc990033',
-  tfa: '#33660033',
-  rttfa: '#33660033',
-  tcu: '#00006622',
-  tde: '#00006622',
-  tdea: '#00006622',
-  tdeb: '#00006622',
-  custom: '#00006622',
+  core: BLUE,
+  rtnotz: BLUE,
+  dwl: TEAL,
+  rtdwl: TEAL,
+  ptc: PURPLE,
+  rtptc: PURPLE,
+  tfa: GREEN,
+  rttfa: GREEN,
+  tcu: BLUE,
+  tde: BLUE,
+  tdea: BLUE,
+  tdeb: BLUE,
+  custom: BLUE,
 };
 
 export function getCampaignLog(

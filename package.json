@@ -35,6 +35,7 @@
     "react": "16.13.1",
     "react-native": "0.63.0",
     "react-native-app-auth": "5.1.2",
+    "react-native-appearance": "^0.3.4",
     "react-native-collapsible": "1.5.2",
     "react-native-color-matrix-image-filters": "5.2.5",
     "react-native-config": "luggit/react-native-config#89a602b",

@@ -1,5 +1,7 @@
+import { forEach } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { Linking, LogBox } from 'react-native';
+import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
 import { t } from 'ttag';
@@ -8,6 +10,11 @@ import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from 'styles/colors';
 import { AppState } from 'reducers';
+
+const BROWSE_CARDS = 'BROWSE_CARDS';
+const BROWSE_DECKS = 'BROWSE_DECKS';
+const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
+const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
 
 export default class App {
   started: boolean;
@@ -42,6 +49,39 @@ export default class App {
       }
     });
   };
+
+  setDefaultOptions(colorScheme: 'light' | 'dark', changeUpdate?:boolean) {
+    const darkMode = Platform.OS === 'ios' && colorScheme === 'dark';
+    const defaultOptions = {
+      topBar: {
+        leftButtonColor: COLORS.lightBlue,
+        rightButtonColor: COLORS.lightBlue,
+        rightButtonDisabledColor: COLORS.lightText,
+        leftButtonDisabledColor: COLORS.lightText,
+        title: {
+          color: COLORS.darkText,
+        },
+        background: {
+          color: COLORS.background,
+        },
+      },
+      layout: {
+        backgroundColor: COLORS.background,
+      },
+      bottomTab: {
+        iconColor: darkMode ? '#bbb' :COLORS.lightText,
+        textColor: darkMode ? '#eee' : COLORS.darkText,
+        selectedIconColor: COLORS.lightBlue,
+        selectedTextColor: COLORS.lightBlue,
+      },
+    };
+    Navigation.setDefaultOptions(defaultOptions);
+    if (changeUpdate) {
+      forEach([BROWSE_CARDS, BROWSE_DECKS, BROWSE_CAMPAIGNS, BROWSE_SETTINGS], componentId => {
+        Navigation.mergeOptions(componentId, defaultOptions);
+      });
+    }
+  }
 
   startApp(lang?: string) {
     changeLocale(lang || 'en');
@@ -114,6 +154,7 @@ export default class App {
     };
     const tabs = [{
       stack: {
+        id: BROWSE_CARDS,
         children: [browseCards],
         options: {
           bottomTab: {
@@ -125,6 +166,7 @@ export default class App {
       },
     }, {
       stack: {
+        id: BROWSE_DECKS,
         children: [browseDecks],
         options: {
           bottomTab: {
@@ -136,6 +178,7 @@ export default class App {
       },
     }, {
       stack: {
+        id: BROWSE_CAMPAIGNS,
         children: [browseCampaigns],
         options: {
           bottomTab: {
@@ -147,6 +190,7 @@ export default class App {
       },
     }, {
       stack: {
+        id: BROWSE_SETTINGS,
         children: [settings],
         options: {
           bottomTab: {
@@ -157,35 +201,15 @@ export default class App {
         },
       },
     }];
-
-    Navigation.setDefaultOptions({
-      topBar: {
-        leftButtonColor: COLORS.lightBlue,
-        rightButtonColor: COLORS.lightBlue,
-        rightButtonDisabledColor: COLORS.darkGray,
-        leftButtonDisabledColor: COLORS.darkGray,
-        title: {
-          color: COLORS.darkText,
-        },
-        background: {
-          color: COLORS.background,
-        },
-      },
-      layout: {
-        backgroundColor: COLORS.background,
-      },
-      bottomTab: {
-        iconColor: COLORS.lightText,
-        textColor: COLORS.darkText,
-        selectedIconColor: COLORS.lightBlue,
-        selectedTextColor: COLORS.lightBlue,
-      },
+    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+      this.setDefaultOptions(colorScheme, true);
     });
+
+    this.setDefaultOptions(Appearance.getColorScheme());
 
     Navigation.setRoot({
       root: {
         bottomTabs: {
-          id: 'BOTTOM',
           children: tabs,
         },
       },

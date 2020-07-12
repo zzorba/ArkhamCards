@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractionManager } from 'react-native';
+import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 import { Navigation } from 'react-native-navigation';
@@ -10,13 +10,9 @@ import { registerScreens } from 'app/screens';
 import configureStore from 'app/store';
 import App from 'app/App';
 
-class MyProvider extends React.Component {
-  render() {
-    const {
-      store: { redux, persistor },
-      children,
-    } = this.props;
-    return (
+function MyProvider({ store: { redux, persistor }, children}) {
+  return (
+    <AppearanceProvider>
       <Provider store={redux}>
         <PersistGate loading={null} persistor={persistor}>
           <DatabaseProvider>
@@ -24,8 +20,8 @@ class MyProvider extends React.Component {
           </DatabaseProvider>
         </PersistGate>
       </Provider>
-    );
-  }
+    </AppearanceProvider>
+  );
 }
 
 const { store, persistor } = configureStore({});
