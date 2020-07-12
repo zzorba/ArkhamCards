@@ -100,7 +100,7 @@ export default class PackListComponent extends React.Component<Props> {
     const { fontScale } = this.props;
     return (
       <CardSectionHeader
-        section={{ title: section.title }}
+        section={{ subTitle: section.title }}
         fontScale={fontScale}
       />
     );
