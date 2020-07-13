@@ -10,7 +10,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import typography from 'styles/typography';
 import { xs } from 'styles/space';
@@ -56,37 +55,28 @@ export default class TextBoxButton extends React.Component<Props, State> {
     } = this.props;
     return (
       <View style={styles.container}>
-        <LinearGradient
-          colors={['#fff', '#eee']}
-          style={[
-            styles.textBox,
-            style,
-            multiline ? {} : { paddingTop: Platform.OS === 'ios' ? 4 : 2 },
-          ]}
+        <TextInput
+          style={styles.textInput}
+          editable={false}
+          multiline={multiline}
+          {...otherProps}
         >
-          <TextInput
-            style={styles.textInput}
-            editable={false}
-            multiline={multiline}
-            {...otherProps}
-          >
-            <Text style={[
-              typography.text,
-              styles.input,
-              textStyle,
-              multiline ? { height: this.state.height + 12 } : {},
-              crossedOut ? {
-                textDecorationLine: 'line-through',
-                textDecorationStyle: 'solid',
-                textDecorationColor: '#222',
-              } : {},
-              value ? { color: '#222' } : { color: '#aaa' },
-            ]}
-            onLayout={multiline ? this._updateSize : undefined}>
-              { value || placeholder }
-            </Text>
-          </TextInput>
-        </LinearGradient>
+          <Text style={[
+            typography.text,
+            styles.input,
+            textStyle,
+            multiline ? { height: this.state.height + 12 } : {},
+            crossedOut ? {
+              textDecorationLine: 'line-through',
+              textDecorationStyle: 'solid',
+              textDecorationColor: '#222',
+            } : {},
+            value ? { color: '#222' } : { color: '#aaa' },
+          ]}
+          onLayout={multiline ? this._updateSize : undefined}>
+            { value || placeholder }
+          </Text>
+        </TextInput>
       </View>
     );
   }
@@ -94,10 +84,11 @@ export default class TextBoxButton extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    borderRadius: 4,
+    paddingBottom: xs,
+    borderBottomWidth: 1,
     borderColor: '#a8a8a8',
     overflow: 'hidden',
+    marginBottom: xs,
   },
   textBox: {
     paddingLeft: xs,
@@ -110,6 +101,7 @@ const styles = StyleSheet.create({
     paddingTop: (xs / 2),
     width: '100%',
     padding: 0,
+    paddingLeft: xs,
     minHeight: 22,
     flexDirection: 'column',
     justifyContent: 'center',

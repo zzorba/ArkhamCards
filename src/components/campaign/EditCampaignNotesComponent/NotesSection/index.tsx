@@ -64,8 +64,8 @@ export default class NotesSection extends React.Component<Props> {
     const notes = this.notes();
     return (
       <View style={isInvestigator ? {} : styles.container}>
-        <Text style={[typography.smallLabel, styles.margin]}>
-          { title.toUpperCase() }
+        <Text style={[typography.mediumGameFont, typography.center, typography.underline, styles.margin]}>
+          { title }
         </Text>
         <View>
           { map(filter(notes, note => note !== ''), (note, idx) => (
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     paddingRight: s,
   },
   margin: {
-    marginTop: xs,
+    marginTop: s,
+    marginBottom: xs,
   },
 });

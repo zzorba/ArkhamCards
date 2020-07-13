@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
   },
   iconBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#FFF',
+    borderColor: COLORS.background,
   },
 });

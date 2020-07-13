@@ -369,8 +369,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         { hasStarterDeck && (
           <SettingsSwitch
             title={t`Use Starter Deck`}
+            titleStyle={{ color: COLORS.darkText }}
             value={starterDeck}
-            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider }}
+            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider, backgroundColor: COLORS.background }}
+            disabledOverlayStyle={{ backgroundColor: 'transparent' }}
             onValueChange={this._onStarterDeckChange}
           />
         ) }

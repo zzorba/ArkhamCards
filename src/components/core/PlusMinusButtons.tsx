@@ -34,7 +34,7 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       color,
     } = this.props;
     switch (color) {
-      case 'dark': return COLORS.divider;
+      case 'dark': return COLORS.lightText;
       case 'light': return COLORS.background;
       default:
         return COLORS.veryLightText;

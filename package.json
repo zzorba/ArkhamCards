@@ -96,7 +96,7 @@
     "@types/hoist-non-react-statics": "3.3.1",
     "@types/lodash": "4.14.149",
     "@types/react": "16.9.0",
-    "@types/react-native": "0.62.11",
+    "@types/react-native": "0.62.18",
     "@types/react-native-flip-card": "3.5.0",
     "@types/react-native-keep-awake": "^2.0.2",
     "@types/react-native-svg-charts": "5.0.3",

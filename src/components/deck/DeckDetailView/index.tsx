@@ -1595,6 +1595,7 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._showEditDetailsVisible}
               title={t`Name`}
               description={nameChange || deck.name}
+              descriptionStyle={styles.text}
               titleStyle={styles.text}
               containerStyle={styles.button}
             />
@@ -1687,6 +1688,7 @@ class DeckDetailView extends React.Component<Props, State> {
               containerStyle={styles.button}
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
+              descriptionStyle={styles.text}
             />
             { !!deck.previous_deck && (
               <SettingsButton
@@ -1695,6 +1697,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 titleStyle={styles.text}
                 containerStyle={styles.button}
                 description={xpString}
+                descriptionStyle={styles.text}
               />
             ) }
             { !!deck.previous_deck && (

@@ -203,7 +203,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
 
 const styles = StyleSheet.create({
   headerRow: {
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.lightBackground,
     paddingTop: 5,
     paddingRight: 15,
     paddingBottom: 5,

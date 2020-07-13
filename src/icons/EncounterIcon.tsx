@@ -301,7 +301,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_the_doom_of_eztli':
       case 'return_to_threads_of_fate':
       case 'return_to_the_boundary_beyond':
-      case 'return_to_heart_of_the_elders':
       case 'return_to_pillars_of_judgement':
       case 'return_to_knyan':
       case 'return_to_the_city_of_archives':
@@ -310,6 +309,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_turn_back_time':
       case 'return_to_the_forgotten_age':
         return this.forgottenIcon(encounter_code, size, color);
+      case 'return_to_heart_of_the_elders':
+      case 'return_to_the_heart_of_the_elders':
+        return this.forgottenIcon('return_to_the_heart_of_the_elders', size, color);
       case 'tcu':
         return this.circleIcon('the_circle_undone', size, color);
       case 'tsn':

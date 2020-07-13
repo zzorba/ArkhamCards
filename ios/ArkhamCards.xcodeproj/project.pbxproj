@@ -377,7 +377,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "export NODE_BINARY=/Users/daniel/.nvm/versions/node/v10.17.0/bin/node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		1000A2C507B5A91925B8E1EB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -594,7 +594,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3.9;
+				MARKETING_VERSION = 2.4.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -636,7 +636,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3.9;
+				MARKETING_VERSION = 2.4.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

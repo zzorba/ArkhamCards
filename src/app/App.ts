@@ -1,6 +1,6 @@
 import { forEach } from 'lodash';
 import { Navigation } from 'react-native-navigation';
-import { Linking, LogBox } from 'react-native';
+import { Platform, Linking, LogBox } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
@@ -50,7 +50,7 @@ export default class App {
     });
   };
 
-  setDefaultOptions(colorScheme: 'light' | 'dark', changeUpdate?:boolean) {
+  setDefaultOptions(colorScheme: 'light' | 'dark' | 'no-preference', changeUpdate?:boolean) {
     const darkMode = Platform.OS === 'ios' && colorScheme === 'dark';
     const defaultOptions = {
       topBar: {

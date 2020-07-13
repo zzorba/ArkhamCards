@@ -398,12 +398,9 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           </View>
         </ScrollView>
         <View style={styles.footer}>
-          <LinearGradient
-            colors={['#ededed', '#f0f0f0']}
-            style={[styles.countRow, styles.footerRow]}
-          >
+          <View style={[styles.countRow, styles.footerRow, ]}>
             <Text style={typography.text}>{ t`Difficulty` }</Text>
-            <Text style={[{ color: 'black', fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
+            <Text style={[{ color: COLORS.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
               { testDifficulty }
             </Text>
             <PlusMinusButtons
@@ -413,7 +410,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
               onDecrement={this._decrementDifficulty}
               color="dark"
             />
-          </LinearGradient>
+          </View>
         </View>
       </View>
     );
@@ -433,10 +430,11 @@ const styles = StyleSheet.create({
   },
   footer: {
     borderTopWidth: 1,
-    borderColor: '#444',
+    borderColor: COLORS.divider,
   },
   footerRow: {
     padding: s,
+    backgroundColor: COLORS.lightBackground,
   },
   countRow: {
     flexDirection: 'row',

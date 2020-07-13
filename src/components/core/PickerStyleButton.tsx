@@ -149,7 +149,6 @@ const style = StyleSheet.create({
     borderColor: COLORS.divider,
   },
   defaultTitleStyle: {
-    flex: 1,
     fontSize: 16,
     minWidth: 100,
   },
@@ -160,6 +159,7 @@ const style = StyleSheet.create({
   textColumn: {
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'center',
     paddingTop: s,
     paddingBottom: s,
   },
