@@ -45890,6 +45890,22 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
+        "id": "black_cat_has_a_hunch",
+        "options": [
+          {
+            "boolCondition": false,
+            "steps": ["interlude_resolution_no_hunch"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "interlude_resolution_no_hunch",
+      "type": "branch",
+      "hidden": true,
+      "condition": {      
+        "type": "campaign_log",
+        "section": "campaign_notes",
         "id": "black_cat_requested_aid",
         "options": [
           {
