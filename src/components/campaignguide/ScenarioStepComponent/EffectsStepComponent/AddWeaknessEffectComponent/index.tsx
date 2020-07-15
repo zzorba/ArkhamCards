@@ -3,19 +3,19 @@ import { map, sortBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import Card from 'data/Card';
-import { BASIC_WEAKNESS_QUERY, combineQueries } from 'data/query';
-import QueryProvider from 'components/data/QueryProvider';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import Card from '@data/Card';
+import { BASIC_WEAKNESS_QUERY, combineQueries } from '@data/query';
+import QueryProvider from '@components/data/QueryProvider';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import SelectWeaknessTraitsComponent from './SelectWeaknessTraitsComponent';
 import DrawRandomWeaknessComponent from './DrawRandomWeaknessComponent';
-import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
-import InvestigatorSelectorWrapper from 'components/campaignguide/InvestigatorSelectorWrapper';
-import BinaryPrompt from 'components/campaignguide/prompts/BinaryPrompt';
-import { AddWeaknessEffect } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import CardQueryWrapper from 'components/card/CardQueryWrapper';
+import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
+import InvestigatorSelectorWrapper from '@components/campaignguide/InvestigatorSelectorWrapper';
+import BinaryPrompt from '@components/campaignguide/prompts/BinaryPrompt';
+import { AddWeaknessEffect } from '@data/scenario/types';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import FilterBuilder from 'lib/filters';
 
 interface OwnProps {

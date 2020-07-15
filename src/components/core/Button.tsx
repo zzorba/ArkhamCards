@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import typography from 'styles/typography';
-import space, { s, xs } from 'styles/space';
+import typography from '@styles/typography';
+import space, { s, xs } from '@styles/space';
 
 interface Props {
   text?: string;

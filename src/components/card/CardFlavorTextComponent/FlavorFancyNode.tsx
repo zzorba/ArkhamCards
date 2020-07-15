@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import { isBig } from 'styles/space';
+import { isBig } from '@styles/space';
 import { WithChildren } from '../CardTextComponent/types';
 
 export default function FlavorFancyNode(

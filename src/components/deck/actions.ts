@@ -20,7 +20,7 @@ import {
 } from 'actions/types';
 import { login } from 'actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from 'lib/authApi';
-import { AppState, getNextLocalDeckId } from 'reducers/index';
+import { AppState, getNextLocalDeckId } from '@reducers/index';
 
 function setNewDeck(
   id: number,

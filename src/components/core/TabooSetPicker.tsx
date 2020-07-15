@@ -3,11 +3,11 @@ import { findIndex, map } from 'lodash';
 import { format } from 'date-fns';
 import { t } from 'ttag';
 
-import connectDb from 'components/data/connectDb';
-import Database from 'data/Database';
+import connectDb from '@components/data/connectDb';
+import Database from '@data/Database';
 import SinglePickerComponent from './SinglePickerComponent';
-import TabooSet from 'data/TabooSet';
-import COLORS from 'styles/colors';
+import TabooSet from '@data/TabooSet';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   color: string;

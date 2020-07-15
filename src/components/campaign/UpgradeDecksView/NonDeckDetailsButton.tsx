@@ -2,12 +2,12 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import BasicListRow from 'components/core/BasicListRow';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import Card from 'data/Card';
-import typography from 'styles/typography';
+import BasicButton from '@components/core/BasicButton';
+import BasicListRow from '@components/core/BasicListRow';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import Card from '@data/Card';
+import typography from '@styles/typography';
 
 interface Props {
   investigator: Card;

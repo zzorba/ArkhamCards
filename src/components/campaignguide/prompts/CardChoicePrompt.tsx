@@ -5,26 +5,26 @@ import { find, flatMap, keys, map, uniq } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import QueryProvider from 'components/data/QueryProvider';
-import BasicButton from 'components/core/BasicButton';
+import QueryProvider from '@components/data/QueryProvider';
+import BasicButton from '@components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import CardQueryWrapper from 'components/card/CardQueryWrapper';
-import CardListWrapper from 'components/card/CardListWrapper';
+import CardQueryWrapper from '@components/card/CardQueryWrapper';
+import CardListWrapper from '@components/card/CardListWrapper';
 import { CardSelectorProps } from '../CardSelectorView';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import { CardChoiceInput, CardSearchQuery, CardQuery } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { LatestDecks, ProcessedScenario } from 'data/scenario';
-import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from 'data/query';
+import { CardChoiceInput, CardSearchQuery, CardQuery } from '@data/scenario/types';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import { LatestDecks, ProcessedScenario } from '@data/scenario';
+import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
-import Card from 'data/Card';
-import { m } from 'styles/space';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import { m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

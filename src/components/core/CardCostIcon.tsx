@@ -7,11 +7,11 @@ import {
   View,
 } from 'react-native';
 
-import AppIcon from 'icons/AppIcon';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import Card from 'data/Card';
-import { isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import Card from '@data/Card';
+import { isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);

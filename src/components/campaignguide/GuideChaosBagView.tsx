@@ -1,8 +1,8 @@
 import React from 'react';
 
-import DrawChaosBagComponent from 'components/campaign/DrawChaosBagComponent';
-import { NavigationProps } from 'components/nav/types';
-import { ChaosBag } from 'app_constants';
+import DrawChaosBagComponent from '@components/campaign/DrawChaosBagComponent';
+import { NavigationProps } from '@components/nav/types';
+import { ChaosBag } from '@app_constants';
 
 export interface GuideChaosBagProps {
   componentId: string;

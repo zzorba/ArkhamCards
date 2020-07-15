@@ -3,10 +3,10 @@ import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import TabooSet from 'data/TabooSet';
-import DatabaseContext, { PlayerCards, DatabaseContextType } from 'data/DatabaseContext';
-import { AppState, getTabooSet } from 'reducers';
-import COLORS from 'styles/colors';
+import TabooSet from '@data/TabooSet';
+import DatabaseContext, { PlayerCards, DatabaseContextType } from '@data/DatabaseContext';
+import { AppState, getTabooSet } from '@reducers';
+import COLORS from '@styles/colors';
 
 export interface PlayerCardProps extends PlayerCards {
   tabooSetId?: number;

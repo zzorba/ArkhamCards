@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
 import TextStroke from './TextStroke';
 
 export function costIconSize(fontScale: number) {

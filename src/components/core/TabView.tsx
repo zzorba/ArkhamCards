@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   tabs: {

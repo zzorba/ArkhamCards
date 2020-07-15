@@ -8,11 +8,11 @@ import {
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 
-import { showCard } from 'components/nav/helper';
-import { createFactionIcons } from 'app_constants';
-import Card from 'data/Card';
-import { isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import { showCard } from '@components/nav/helper';
+import { createFactionIcons } from '@app_constants';
+import Card from '@data/Card';
+import { isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
 const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFF' });
 

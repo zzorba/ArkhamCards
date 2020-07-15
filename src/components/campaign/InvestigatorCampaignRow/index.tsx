@@ -3,21 +3,21 @@ import { Button, Text, View } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
+import BasicButton from '@components/core/BasicButton';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import DeckXpSection from './DeckXpSection';
-import BasicListRow from 'components/core/BasicListRow';
-import { showCard, showDeckModal } from 'components/nav/helper';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
+import BasicListRow from '@components/core/BasicListRow';
+import { showCard, showDeckModal } from '@components/nav/helper';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { Deck, TraumaAndCardData } from 'actions/types';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import { BODY_OF_A_YITHIAN } from 'app_constants';
-import Card, { CardsMap } from 'data/Card';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import PickerStyleButton from 'components/core/PickerStyleButton';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
+import Card, { CardsMap } from '@data/Card';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import PickerStyleButton from '@components/core/PickerStyleButton';
 
 interface Props {
   componentId: string;

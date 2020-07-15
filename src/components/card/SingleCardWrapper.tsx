@@ -3,8 +3,8 @@ import {
   Text,
 } from 'react-native';
 
-import CardListWrapper from 'components/card/CardListWrapper';
-import Card from 'data/Card';
+import CardListWrapper from '@components/card/CardListWrapper';
+import Card from '@data/Card';
 
 interface Props {
   code: string;

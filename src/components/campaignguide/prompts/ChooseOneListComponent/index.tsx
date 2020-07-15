@@ -2,8 +2,8 @@ import React from 'react';
 import { flatMap } from 'lodash';
 
 import ChoiceComponent from './ChoiceComponent';
-import { CustomColor } from 'components/campaignguide/prompts/types';
-import { DisplayChoice } from 'data/scenario';
+import { CustomColor } from '@components/campaignguide/prompts/types';
+import { DisplayChoice } from '@data/scenario';
 
 interface Props {
   choices: DisplayChoice[];

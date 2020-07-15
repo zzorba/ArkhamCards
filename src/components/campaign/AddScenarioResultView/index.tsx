@@ -11,22 +11,22 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import { CampaignNotes, SingleCampaign, ScenarioResult } from 'actions/types';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { NavigationProps } from 'components/nav/types';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { NavigationProps } from '@components/nav/types';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import ScenarioSection from './ScenarioSection';
 import CampaignLogSection from '../CampaignDetailView/CampaignLogSection';
 import XpComponent from '../XpComponent';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
-import Card from 'data/Card';
-import { getCampaign, getLatestCampaignInvestigators, AppState } from 'reducers';
-import { m } from 'styles/space';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import { getCampaign, getLatestCampaignInvestigators, AppState } from '@reducers';
+import { m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 export interface AddScenarioResultProps {
   id: number;

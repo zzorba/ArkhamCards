@@ -8,14 +8,14 @@ import { msgid, ngettext } from 'ttag';
 
 import { stringList } from 'lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
-import connectDb from 'components/data/connectDb';
-import Database from 'data/Database';
-import { EncounterSetsStep } from 'data/scenario/types';
-import EncounterSet from 'data/EncounterSet';
-import EncounterIcon from 'icons/EncounterIcon';
+import connectDb from '@components/data/connectDb';
+import Database from '@data/Database';
+import { EncounterSetsStep } from '@data/scenario/types';
+import EncounterSet from '@data/EncounterSet';
+import EncounterIcon from '@icons/EncounterIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   step: EncounterSetsStep;

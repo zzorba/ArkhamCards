@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   text: string;

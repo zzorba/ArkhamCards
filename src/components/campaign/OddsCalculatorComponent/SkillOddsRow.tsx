@@ -4,14 +4,14 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
-import typography from 'styles/typography';
-import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from 'app_constants';
-import { flattenChaosBag } from 'components/campaign/campaignUtil';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import COLORS from 'styles/colors';
+import typography from '@styles/typography';
+import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from '@app_constants';
+import { flattenChaosBag } from '@components/campaign/campaignUtil';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import COLORS from '@styles/colors';
 import { add, binomdist, formatPercentageText, subtract } from './oddsHelper';
-import { s } from 'styles/space';
+import { s } from '@styles/space';
 
 export interface SkillOddsRowProps {
   chaosBag: ChaosBag;

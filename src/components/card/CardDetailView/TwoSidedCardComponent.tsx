@@ -13,24 +13,24 @@ import { msgid, ngettext, t, jt } from 'ttag';
 import {
   CORE_FACTION_CODES,
   RANDOM_BASIC_WEAKNESS,
-} from 'app_constants';
-import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
-import HealthSanityLine from 'components/core/HealthSanityLine';
-import typography from 'styles/typography';
-import space, { isBig, xs, s } from 'styles/space';
-import AppIcon from 'icons/AppIcon';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import EncounterIcon from 'icons/EncounterIcon';
-import CardTabooTextBlock from 'components/card/CardTabooTextBlock';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
-import CardTextComponent from 'components/card/CardTextComponent';
-import { CardFaqProps } from 'components/card/CardFaqView';
-import { CardTabooProps } from 'components/card/CardTabooView';
+} from '@app_constants';
+import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
+import HealthSanityLine from '@components/core/HealthSanityLine';
+import typography from '@styles/typography';
+import space, { isBig, xs, s } from '@styles/space';
+import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import EncounterIcon from '@icons/EncounterIcon';
+import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
+import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
+import CardTextComponent from '@components/card/CardTextComponent';
+import { CardFaqProps } from '@components/card/CardFaqView';
+import { CardTabooProps } from '@components/card/CardTabooView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
-import Button from 'components/core/Button';
-import CardCostIcon from 'components/core/CardCostIcon';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import Button from '@components/core/Button';
+import CardCostIcon from '@components/core/CardCostIcon';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { map, filter, findIndex } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 interface Props {
   id: string;

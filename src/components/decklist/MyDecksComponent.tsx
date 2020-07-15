@@ -13,16 +13,16 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import { refreshMyDecks } from 'actions';
-import withNetworkStatus, { NetworkStatusProps } from 'components/core/withNetworkStatus';
+import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import { Campaign, Deck, DecksMap } from 'actions/types';
-import Card from 'data/Card';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import DeckListComponent from 'components/decklist/DeckListComponent';
-import withLoginState, { LoginStateProps } from 'components/core/withLoginState';
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
-import space, { m, s, xs } from 'styles/space';
-import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from 'reducers';
+import Card from '@data/Card';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import DeckListComponent from '@components/decklist/DeckListComponent';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
+import space, { m, s, xs } from '@styles/space';
+import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
 
 interface OwnProps {
   componentId: string;

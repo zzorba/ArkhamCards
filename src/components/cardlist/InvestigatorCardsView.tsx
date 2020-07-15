@@ -1,9 +1,9 @@
 import React from 'react';
 
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import { queryForInvestigator } from 'lib/InvestigatorRequirements';
-import Card from 'data/Card';
-import { NavigationProps } from 'components/nav/types';
+import Card from '@data/Card';
+import { NavigationProps } from '@components/nav/types';
 import CardSearchComponent from './CardSearchComponent';
 
 export interface InvestigatorCardsProps {

@@ -10,12 +10,12 @@ import {
 
 import { t } from 'ttag';
 import { Slots } from 'actions/types';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardSearchResult from '../cardlist/CardSearchResult';
-import { s, xs } from 'styles/space';
+import { s, xs } from '@styles/space';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export interface DrawSimulatorProps {
   slots: Slots;

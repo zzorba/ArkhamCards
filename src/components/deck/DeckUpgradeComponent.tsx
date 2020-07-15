@@ -9,16 +9,16 @@ import {
 import { t } from 'ttag';
 
 import { Deck, Slots } from 'actions/types';
-import BasicListRow from 'components/core/BasicListRow';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import { NavigationProps } from 'components/nav/types';
-import { showCard } from 'components/nav/helper';
-import ExileCardSelectorComponent from 'components/campaign/ExileCardSelectorComponent';
-import Card from 'data/Card';
-import { DeckChanges } from 'components/deck/actions';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import typography from 'styles/typography';
-import space, { m } from 'styles/space';
+import BasicListRow from '@components/core/BasicListRow';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import { NavigationProps } from '@components/nav/types';
+import { showCard } from '@components/nav/helper';
+import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
+import Card from '@data/Card';
+import { DeckChanges } from '@components/deck/actions';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import typography from '@styles/typography';
+import space, { m } from '@styles/space';
 
 interface OwnProps {
   investigator: Card;

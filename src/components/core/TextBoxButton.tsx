@@ -11,8 +11,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import typography from 'styles/typography';
-import { xs } from 'styles/space';
+import typography from '@styles/typography';
+import { xs } from '@styles/space';
 
 interface Props extends TextInputProps {
   value: string;

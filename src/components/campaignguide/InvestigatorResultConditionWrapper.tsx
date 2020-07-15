@@ -2,10 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
-import CardListWrapper from 'components/card/CardListWrapper';
-import { InvestigatorResult } from 'data/scenario/conditionHelper';
-import Card from 'data/Card';
-import { Option } from 'data/scenario/types';
+import CardListWrapper from '@components/card/CardListWrapper';
+import { InvestigatorResult } from '@data/scenario/conditionHelper';
+import Card from '@data/Card';
+import { Option } from '@data/scenario/types';
 
 interface Props<T> {
   result: InvestigatorResult;

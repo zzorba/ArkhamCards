@@ -5,23 +5,23 @@ import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import { EditDeckProps } from './DeckEditView';
-import { CampaignDrawWeaknessProps } from 'components/campaign/CampaignDrawWeaknessDialog';
-import { CardDetailProps } from 'components/card/CardDetailView';
-import CardSelectorComponent from 'components/cardlist/CardSelectorComponent';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { DrawWeaknessProps } from 'components/weakness/WeaknessDrawDialog';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import { NavigationProps } from 'components/nav/types';
+import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
+import { CardDetailProps } from '@components/card/CardDetailView';
+import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import { NavigationProps } from '@components/nav/types';
 import { Campaign, Deck, DeckMeta, Slots } from 'actions/types';
-import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from 'app_constants';
-import Card from 'data/Card';
-import { getCampaign, AppState } from 'reducers';
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
-import { l, s } from 'styles/space';
+import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
+import Card from '@data/Card';
+import { getCampaign, AppState } from '@reducers';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
+import { l, s } from '@styles/space';
 
 export interface EditSpecialCardsProps {
   deck: Deck;

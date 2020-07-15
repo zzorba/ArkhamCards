@@ -6,11 +6,11 @@ import { t } from 'ttag';
 import { SORT_BY_PACK, SortType , Deck } from 'actions/types';
 import { iconsMap } from 'app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
-import { getDeckOptions } from 'components/nav/helper';
-import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
-import { NavigationProps } from 'components/nav/types';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import { getDeckOptions } from '@components/nav/helper';
+import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
+import { NavigationProps } from '@components/nav/types';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;

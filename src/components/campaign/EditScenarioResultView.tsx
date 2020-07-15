@@ -12,15 +12,15 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { ScenarioResult, CUSTOM } from 'actions/types';
-import LabeledTextBox from 'components/core/LabeledTextBox';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import { NavigationProps } from 'components/nav/types';
+import LabeledTextBox from '@components/core/LabeledTextBox';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import { NavigationProps } from '@components/nav/types';
 import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
-import { getCampaign, AppState } from 'reducers';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import space, { s } from 'styles/space';
+import { getCampaign, AppState } from '@reducers';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import space, { s } from '@styles/space';
 
 export interface EditScenarioResultProps {
   campaignId: number;

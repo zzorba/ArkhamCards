@@ -10,15 +10,15 @@ import {
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
-import BasicButton from 'components/core/BasicButton';
-import InvestigatorCampaignRow from 'components/campaign/InvestigatorCampaignRow';
+import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
+import BasicButton from '@components/core/BasicButton';
+import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from 'actions/types';
-import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
-import Card, { CardsMap } from 'data/Card';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
+import Card, { CardsMap } from '@data/Card';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

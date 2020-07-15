@@ -2,7 +2,7 @@ import { find, findIndex, filter, flatMap, forEach, reverse, slice } from 'lodas
 import { ngettext, msgid, t } from 'ttag';
 
 import { GuideStartCustomSideScenarioInput } from 'actions/types';
-import { ProcessedCampaign, ProcessedScenario, ScenarioId } from 'data/scenario';
+import { ProcessedCampaign, ProcessedScenario, ScenarioId } from '@data/scenario';
 import { createInvestigatorStatusStep } from './fixedSteps';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import CampaignStateHelper from './CampaignStateHelper';

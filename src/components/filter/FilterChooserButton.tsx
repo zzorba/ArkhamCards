@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ChooserButton from 'components/core/ChooserButton';
+import ChooserButton from '@components/core/ChooserButton';
 
 interface Props {
   componentId: string;

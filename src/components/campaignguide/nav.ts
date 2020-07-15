@@ -1,9 +1,9 @@
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { ScenarioProps } from 'components/campaignguide/ScenarioView';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
-import { ProcessedScenario } from 'data/scenario';
+import { ScenarioProps } from '@components/campaignguide/ScenarioView';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import { ProcessedScenario } from '@data/scenario';
 
 export function showScenario(
   componentId: string,

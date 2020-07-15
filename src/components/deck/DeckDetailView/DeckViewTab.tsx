@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import Switch from 'components/core/Switch';
-import PickerStyleButton from 'components/core/PickerStyleButton';
+import Switch from '@components/core/Switch';
+import PickerStyleButton from '@components/core/PickerStyleButton';
 import {
   Campaign,
   CardId,
@@ -25,26 +25,26 @@ import {
   Slots,
   Trauma,
 } from 'actions/types';
-import { showCard, showCardSwipe } from 'components/nav/helper';
-import DeckProblemRow from 'components/core/DeckProblemRow';
-import CardTabooTextBlock from 'components/card/CardTabooTextBlock';
-import AppIcon from 'icons/AppIcon';
-import InvestigatorImage from 'components/core/InvestigatorImage';
-import CardTextComponent from 'components/card/CardTextComponent';
+import { showCard, showCardSwipe } from '@components/nav/helper';
+import DeckProblemRow from '@components/core/DeckProblemRow';
+import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
+import AppIcon from '@icons/AppIcon';
+import InvestigatorImage from '@components/core/InvestigatorImage';
+import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
-import CardSectionHeader, { CardSectionHeaderData } from 'components/core/CardSectionHeader';
-import TabooSetPicker from 'components/core/TabooSetPicker';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
-import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
-import HealthSanityLine from 'components/core/HealthSanityLine';
-import { BODY_OF_A_YITHIAN } from 'app_constants';
+import CardSectionHeader, { CardSectionHeaderData } from '@components/core/CardSectionHeader';
+import TabooSetPicker from '@components/core/TabooSetPicker';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
+import HealthSanityLine from '@components/core/HealthSanityLine';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
 import DeckValidation from 'lib/DeckValidation';
-import Card, { CardsMap } from 'data/Card';
-import TabooSet from 'data/TabooSet';
-import COLORS from 'styles/colors';
-import { isBig, m, s, xs } from 'styles/space';
-import typography from 'styles/typography';
+import Card, { CardsMap } from '@data/Card';
+import TabooSet from '@data/TabooSet';
+import COLORS from '@styles/colors';
+import { isBig, m, s, xs } from '@styles/space';
+import typography from '@styles/typography';
 
 interface SectionCardId extends CardId {
   special: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 
-import MyDecksComponent from 'components/decklist/MyDecksComponent';
+import MyDecksComponent from '@components/decklist/MyDecksComponent';
 import { Deck } from 'actions/types';
 
 interface Props {

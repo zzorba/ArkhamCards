@@ -1,8 +1,8 @@
 import React from 'react';
 import { throttle } from 'lodash';
 import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View } from 'react-native';
-import SearchBox, { SEARCH_BAR_HEIGHT } from 'components/core/SearchBox';
-import COLORS from 'styles/colors';
+import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import COLORS from '@styles/colors';
 
 interface Props {
   prompt: string;

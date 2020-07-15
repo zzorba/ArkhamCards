@@ -3,7 +3,7 @@ import { map } from 'lodash';
 
 import CounterListComponent from './CounterListComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   id: string;

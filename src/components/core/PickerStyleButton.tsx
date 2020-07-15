@@ -5,9 +5,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
-import space, { s } from 'styles/space';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
+import space, { s } from '@styles/space';
 
 interface Props {
   title: string;

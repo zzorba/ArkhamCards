@@ -10,8 +10,8 @@ import { t } from 'ttag';
 
 import ChartLabel from './ChartLabel';
 import { ParsedDeck } from 'actions/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   parsedDeck: ParsedDeck;

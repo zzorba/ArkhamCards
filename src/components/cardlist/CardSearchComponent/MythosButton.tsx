@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import { toggleMythosMode } from 'components/filter/actions';
-import { AppState, getMythosMode } from 'reducers';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import { toggleMythosMode } from '@components/filter/actions';
+import { AppState, getMythosMode } from '@reducers';
+import COLORS from '@styles/colors';
 
 const SIZE = 36;
 

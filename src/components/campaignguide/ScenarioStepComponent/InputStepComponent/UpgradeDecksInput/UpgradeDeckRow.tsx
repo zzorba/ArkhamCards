@@ -5,26 +5,26 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import Switch from 'components/core/Switch';
-import BasicButton from 'components/core/BasicButton';
+import Switch from '@components/core/Switch';
+import BasicButton from '@components/core/BasicButton';
 import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from 'actions/types';
-import BasicListRow from 'components/core/BasicListRow';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import CardListWrapper from 'components/card/CardListWrapper';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
-import { showDeckModal, showCard } from 'components/nav/helper';
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import DeckUpgradeComponent from 'components/deck/DeckUpgradeComponent';
-import { DeckChanges } from 'components/deck/actions';
-import { BODY_OF_A_YITHIAN } from 'app_constants';
-import Card from 'data/Card';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import BasicListRow from '@components/core/BasicListRow';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import CardListWrapper from '@components/card/CardListWrapper';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import { showDeckModal, showCard } from '@components/nav/helper';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import DeckUpgradeComponent from '@components/deck/DeckUpgradeComponent';
+import { DeckChanges } from '@components/deck/actions';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
+import Card from '@data/Card';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

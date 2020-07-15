@@ -15,16 +15,16 @@ import { t } from 'ttag';
 
 import CategoryHeader from './CategoryHeader';
 import { Campaign, CampaignGuideState, Deck, Pack } from 'actions/types';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { clearDecks } from 'actions';
-import Database from 'data/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
-import Card from 'data/Card';
-import { getBackupData, getAllPacks, AppState } from 'reducers';
-import { fetchCards } from 'components/card/actions';
-import { restoreBackup } from 'components/campaign/actions';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import Card from '@data/Card';
+import { getBackupData, getAllPacks, AppState } from '@reducers';
+import { fetchCards } from '@components/card/actions';
+import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface ReduxProps {
   backupData: {

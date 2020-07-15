@@ -1,4 +1,4 @@
-import { ChaosTokenValue } from 'app_constants';
+import { ChaosTokenValue } from '@app_constants';
 
 interface InvestigatorElderSignValue {
   type: 'constant';

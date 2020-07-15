@@ -7,10 +7,10 @@ import {
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
-import { NavigationProps } from 'components/nav/types';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import { NavigationProps } from '@components/nav/types';
 import SelectRow from './SelectRow';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export interface SearchSelectProps {
   placeholder: string;

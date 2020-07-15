@@ -4,17 +4,17 @@ import { map } from 'lodash';
 import { t } from 'ttag';
 
 import BranchButton from './BranchButton';
-import { GuideChaosBagProps } from 'components/campaignguide/GuideChaosBagView';
-import ChooseOnePrompt from 'components/campaignguide/prompts/ChooseOnePrompt';
-import BasicButton from 'components/core/BasicButton';
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import { PlayScenarioInput } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { PlayingScenarioBranch } from 'data/scenario/fixedSteps';
-import { chooseOneInputChoices } from 'data/scenario/inputHelper';
+import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
+import ChooseOnePrompt from '@components/campaignguide/prompts/ChooseOnePrompt';
+import BasicButton from '@components/core/BasicButton';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { PlayScenarioInput } from '@data/scenario/types';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
+import { chooseOneInputChoices } from '@data/scenario/inputHelper';
 
 interface Props {
   componentId: string;

@@ -12,17 +12,17 @@ import {
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 
 import CardTextComponent from './CardTextComponent';
-import Database from 'data/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
-import { where } from 'data/query';
-import FaqEntry from 'data/FaqEntry';
-import connectDb from 'components/data/connectDb';
-import { showCard } from 'components/nav/helper';
-import { NavigationProps } from 'components/nav/types';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import { where } from '@data/query';
+import FaqEntry from '@data/FaqEntry';
+import connectDb from '@components/data/connectDb';
+import { showCard } from '@components/nav/helper';
+import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from 'lib/publicApi';
-import { getTabooSet, AppState } from 'reducers';
-import typography from 'styles/typography';
-import { m } from 'styles/space';
+import { getTabooSet, AppState } from '@reducers';
+import typography from '@styles/typography';
+import { m } from '@styles/space';
 
 export interface CardFaqProps {
   id: string;

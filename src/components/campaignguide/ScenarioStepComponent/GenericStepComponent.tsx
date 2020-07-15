@@ -2,7 +2,7 @@ import React from 'react';
 
 import BulletsComponent from './BulletsComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
-import { GenericStep } from 'data/scenario/types';
+import { GenericStep } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 
 interface Props {

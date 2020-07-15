@@ -11,7 +11,7 @@ import DialogComponent from 'react-native-dialog';
 
 import { t } from 'ttag';
 import Dialog from './Dialog';
-import typography from 'styles/typography';
+import typography from '@styles/typography';
 
 interface Props {
   title: string;

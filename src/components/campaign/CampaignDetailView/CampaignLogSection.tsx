@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { ShowTextEditDialog } from 'components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { CampaignNotes } from 'actions/types';
-import Card from 'data/Card';
+import Card from '@data/Card';
 import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 
 interface Props {

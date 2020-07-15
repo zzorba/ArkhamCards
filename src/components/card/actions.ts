@@ -24,9 +24,9 @@ import {
   TabooCache,
   CardSetSchemaVersionAction,
 } from 'actions/types';
-import { AppState } from 'reducers/index';
+import { AppState } from '@reducers/index';
 import { syncCards, syncTaboos } from 'lib/publicApi';
-import Database from 'data/Database';
+import Database from '@data/Database';
 
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;

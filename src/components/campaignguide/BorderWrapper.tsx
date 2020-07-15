@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import StepBorder from './StepBorder';
-import { l, m } from 'styles/space';
+import { l, m } from '@styles/space';
 
 interface Props {
   width: number;

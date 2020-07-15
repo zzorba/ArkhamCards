@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Deck, Slots } from 'actions/types';
-import Card from 'data/Card';
-import { getDeck, AppState } from 'reducers';
-import CardSelectorComponent from 'components/cardlist/CardSelectorComponent';
+import Card from '@data/Card';
+import { getDeck, AppState } from '@reducers';
+import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 
 interface OwnProps {
   componentId: string;

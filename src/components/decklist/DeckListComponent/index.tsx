@@ -11,13 +11,13 @@ import { t } from 'ttag';
 
 import DeckList from './DeckList';
 import { Campaign, Deck, DecksMap } from 'actions/types';
-import Card from 'data/Card';
-import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { fetchPublicDeck } from 'components/deck/actions';
-import { getAllDecks, AppState } from 'reducers';
-import typography from 'styles/typography';
-import space, { s } from 'styles/space';
+import Card from '@data/Card';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { fetchPublicDeck } from '@components/deck/actions';
+import { getAllDecks, AppState } from '@reducers';
+import typography from '@styles/typography';
+import space, { s } from '@styles/space';
 
 interface OwnProps {
   deckIds: number[];

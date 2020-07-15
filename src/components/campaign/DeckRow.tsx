@@ -2,12 +2,12 @@ import React, { ReactNode } from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
-import { showDeckModal } from 'components/nav/helper';
+import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
 import { Deck } from 'actions/types';
-import Card, { CardsMap } from 'data/Card';
-import { fetchPrivateDeck } from 'components/deck/actions';
-import { getDeck, AppState } from 'reducers';
+import Card, { CardsMap } from '@data/Card';
+import { fetchPrivateDeck } from '@components/deck/actions';
+import { getDeck, AppState } from '@reducers';
 
 type RenderDeckDetails = (
   deck: Deck,

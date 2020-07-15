@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 import CardSearchResult from '../../cardlist/CardSearchResult';
-import Card from 'data/Card';
+import Card from '@data/Card';
 
 interface Props {
   card: Card;

@@ -6,8 +6,8 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import COLORS from 'styles/colors';
-import space from 'styles/space';
+import COLORS from '@styles/colors';
+import space from '@styles/space';
 
 interface Props {
   result: boolean;

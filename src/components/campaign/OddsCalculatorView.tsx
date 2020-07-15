@@ -3,16 +3,16 @@ import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
-import { NavigationProps } from 'components/nav/types';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import CardQueryWrapper from 'components/card/CardQueryWrapper';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { campaignScenarios, Scenario } from 'components/campaign/constants';
+import { NavigationProps } from '@components/nav/types';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import CardQueryWrapper from '@components/card/CardQueryWrapper';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import { Campaign } from 'actions/types';
-import { ChaosBag } from 'app_constants';
-import Card from 'data/Card';
-import { SCENARIO_CARDS_QUERY } from 'data/query';
-import { AppState, getCampaign } from 'reducers';
+import { ChaosBag } from '@app_constants';
+import Card from '@data/Card';
+import { SCENARIO_CARDS_QUERY } from '@data/query';
+import { AppState, getCampaign } from '@reducers';
 
 export interface OddsCalculatorProps {
   campaignId: number;

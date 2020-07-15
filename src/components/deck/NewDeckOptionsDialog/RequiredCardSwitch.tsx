@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SettingsSwitch } from 'react-native-settings-components';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   index: number;

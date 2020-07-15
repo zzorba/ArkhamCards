@@ -2,7 +2,7 @@ import React from 'react';
 import { map } from 'lodash';
 
 import ScenarioStepComponent from './ScenarioStepComponent';
-import ScenarioStep from 'data/scenario/ScenarioStep';
+import ScenarioStep from '@data/scenario/ScenarioStep';
 
 interface Props {
   steps: ScenarioStep[];

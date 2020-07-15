@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { msgid, ngettext } from 'ttag';
 
-import Card from 'data/Card';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { Supply } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import { Supply } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   investigator: Card;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   children: React.ReactNode | React.ReactNode[];

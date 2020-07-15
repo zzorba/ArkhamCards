@@ -4,7 +4,7 @@ import {
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
-import { m } from 'styles/space';
+import { m } from '@styles/space';
 
 export default function HrTagNode(
   node: Node,

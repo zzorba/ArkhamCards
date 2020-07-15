@@ -7,7 +7,7 @@ import {
 import { ButtonGroup } from 'react-native-elements';
 import { t } from 'ttag';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;

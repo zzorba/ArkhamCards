@@ -9,15 +9,15 @@ import {
 import { ngettext, msgid, t } from 'ttag';
 
 import { Campaign, Deck, ParsedDeck } from 'actions/types';
-import Card, { CardsMap } from 'data/Card';
-import { BODY_OF_A_YITHIAN } from 'app_constants';
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import DeckProblemRow from 'components/core/DeckProblemRow';
+import Card, { CardsMap } from '@data/Card';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import DeckProblemRow from '@components/core/DeckProblemRow';
 import { toRelativeDateString } from 'lib/datetime';
 import { parseBasicDeck } from 'lib/parseDeck';
-import typography from 'styles/typography';
-import { s } from 'styles/space';
-import COLORS from 'styles/colors';
+import typography from '@styles/typography';
+import { s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   deck: Deck;

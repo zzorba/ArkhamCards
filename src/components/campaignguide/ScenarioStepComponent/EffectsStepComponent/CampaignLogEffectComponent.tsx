@@ -4,11 +4,11 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
-import Card from 'data/Card';
-import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType } from 'data/scenario/types';
+import Card from '@data/Card';
+import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 
 interface Props {

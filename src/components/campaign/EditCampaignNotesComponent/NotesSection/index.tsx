@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 
 import NoteRow from './NoteRow';
-import { ShowTextEditDialog } from 'components/core/withDialogs';
-import { s, xs } from 'styles/space';
-import typography from 'styles/typography';
+import { ShowTextEditDialog } from '@components/core/withDialogs';
+import { s, xs } from '@styles/space';
+import typography from '@styles/typography';
 interface Props {
   notesChanged: (index: number, notes: string[]) => void;
   index: number;

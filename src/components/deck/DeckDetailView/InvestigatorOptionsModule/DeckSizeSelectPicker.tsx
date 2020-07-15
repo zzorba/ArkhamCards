@@ -3,9 +3,9 @@ import { findIndex, map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import SinglePickerComponent from 'components/core/SinglePickerComponent';
-import { FactionCodeType } from 'app_constants';
-import COLORS from 'styles/colors';
+import SinglePickerComponent from '@components/core/SinglePickerComponent';
+import { FactionCodeType } from '@app_constants';
+import COLORS from '@styles/colors';
 
 interface Props {
   name: string;

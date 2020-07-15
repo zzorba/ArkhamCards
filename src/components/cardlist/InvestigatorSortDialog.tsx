@@ -2,7 +2,7 @@ import React from 'react';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
-import DialogPicker from 'components/core/DialogPicker';
+import DialogPicker from '@components/core/DialogPicker';
 import {
   SORT_BY_FACTION,
   SORT_BY_PACK,

@@ -6,7 +6,7 @@ import {
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithText } from './types';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export default function StrikethroughTextNode(
   node: Node & WithText,

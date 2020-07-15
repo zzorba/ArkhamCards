@@ -6,10 +6,10 @@ import {
 import { map } from 'lodash';
 
 import SetupStepWrapper from '../SetupStepWrapper';
-import { LocationConnectorsStep, LocationConnector } from 'data/scenario/types';
-import AppIcon from 'icons/AppIcon';
+import { LocationConnectorsStep, LocationConnector } from '@data/scenario/types';
+import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import space from 'styles/space';
+import space from '@styles/space';
 
 interface Props {
   step: LocationConnectorsStep;

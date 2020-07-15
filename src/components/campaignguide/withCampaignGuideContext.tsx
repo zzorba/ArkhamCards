@@ -3,12 +3,12 @@ import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import {
   AppState,
-} from 'reducers';
-import withUniversalCampaignData, { UniversalCampaignProps } from 'components/campaignguide/withUniversalCampaignData';
-import { CampaignGuideReduxData, campaignGuideReduxData, constructCampaignGuideContext } from 'components/campaignguide/contextHelper';
+} from '@reducers';
+import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
+import { CampaignGuideReduxData, campaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
 
 export interface CampaignGuideInputProps {
   campaignId: number;

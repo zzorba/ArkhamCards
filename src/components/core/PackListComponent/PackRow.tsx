@@ -11,11 +11,11 @@ import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
-import EncounterIcon from 'icons/EncounterIcon';
-import Switch from 'components/core/Switch';
-import { PackCardsProps } from 'components/settings/PackCardsView';
-import { s } from 'styles/space';
-import COLORS from 'styles/colors';
+import EncounterIcon from '@icons/EncounterIcon';
+import Switch from '@components/core/Switch';
+import { PackCardsProps } from '@components/settings/PackCardsView';
+import { s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

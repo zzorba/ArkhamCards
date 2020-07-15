@@ -8,14 +8,14 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import { showScenario } from 'components/campaignguide/nav';
-import NavButton from 'components/core/NavButton';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import { ProcessedScenario } from 'data/scenario';
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
-import space, { s } from 'styles/space';
+import { showScenario } from '@components/campaignguide/nav';
+import NavButton from '@components/core/NavButton';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import { ProcessedScenario } from '@data/scenario';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
+import space, { s } from '@styles/space';
 
 interface Props {
   componentId: string;

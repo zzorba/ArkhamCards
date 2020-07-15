@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { rowHeight, buttonWidth, BUTTON_PADDING } from './constants';
-import typography from 'styles/typography';
+import typography from '@styles/typography';
 
 const DEPRESS_HEIGHT = 6;
 

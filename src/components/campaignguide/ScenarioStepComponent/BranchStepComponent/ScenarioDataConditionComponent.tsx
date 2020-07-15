@@ -6,8 +6,8 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import {
   BranchStep,
   ScenarioDataCondition,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;

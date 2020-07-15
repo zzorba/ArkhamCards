@@ -4,7 +4,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import withCampaignGuideContext, { CampaignGuideProps, CampaignGuideInputProps } from './withCampaignGuideContext';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;

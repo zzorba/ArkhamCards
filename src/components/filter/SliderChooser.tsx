@@ -3,7 +3,7 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { t } from 'ttag';
 
 import AccordionItem from './AccordionItem';
-import space from 'styles/space';
+import space from '@styles/space';
 
 interface Props {
   label: string;

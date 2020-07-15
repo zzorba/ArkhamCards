@@ -6,9 +6,9 @@ import {
   View,
 } from 'react-native';
 
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import typography from 'styles/typography';
-import { xs, s } from 'styles/space';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import typography from '@styles/typography';
+import { xs, s } from '@styles/space';
 
 interface Props {
   countChanged: (index: number, count: number) => void;

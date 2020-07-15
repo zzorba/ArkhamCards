@@ -6,11 +6,11 @@ import {
 } from 'react-native';
 
 import { Campaign, CUSTOM } from 'actions/types';
-import { CardsMap } from 'data/Card';
+import { CardsMap } from '@data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { m, s } from 'styles/space';
-import COLORS from 'styles/colors';
+import { m, s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   campaign: Campaign;

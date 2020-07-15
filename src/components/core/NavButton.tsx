@@ -8,9 +8,9 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import typography from 'styles/typography';
-import { xs, s, isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import typography from '@styles/typography';
+import { xs, s, isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   fontScale: number;

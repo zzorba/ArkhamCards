@@ -6,12 +6,12 @@ import { t } from 'ttag';
 import ChooseInvestigatorPrompt from '../../prompts/ChooseInvestigatorPrompt';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import Card from 'data/Card';
+import Card from '@data/Card';
 import {
   InputStep,
   InvestigatorChoiceWithSuppliesInput,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: InputStep;

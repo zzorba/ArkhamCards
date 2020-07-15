@@ -4,8 +4,8 @@ import { map } from 'lodash';
 
 import CampaignLogCardEntryComponent from './CampaignLogCardEntryComponent';
 import TextEntryComponent from './TextEntryComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import { EntrySection, CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import { EntrySection, CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   sectionId: string;

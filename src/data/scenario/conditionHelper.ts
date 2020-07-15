@@ -38,7 +38,7 @@ import {
   DefaultOption,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
-import Card from 'data/Card';
+import Card from '@data/Card';
 
 export interface BinaryResult {
   type: 'binary';

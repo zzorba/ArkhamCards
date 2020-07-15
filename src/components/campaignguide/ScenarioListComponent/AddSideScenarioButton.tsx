@@ -3,11 +3,11 @@ import { find, findLast, findLastIndex } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import { AddSideScenarioProps } from 'components/campaignguide/AddSideScenarioView';
-import { ProcessedCampaign } from 'data/scenario';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
+import BasicButton from '@components/core/BasicButton';
+import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioView';
+import { ProcessedCampaign } from '@data/scenario';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 
 interface Props {
   componentId: string;

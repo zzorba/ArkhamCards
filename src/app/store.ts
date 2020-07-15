@@ -6,7 +6,7 @@ import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import { createMigrate, persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import reducers, { AppState } from 'reducers';
+import reducers, { AppState } from '@reducers';
 // import Reactotron from './ReactotronConfig';
 
 /**

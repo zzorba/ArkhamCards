@@ -10,14 +10,14 @@ import { t } from 'ttag';
 
 import DeckProgressComponent from './DeckProgressComponent';
 import { DeckDetailProps } from './DeckDetailView';
-import { getDeckOptions } from 'components/nav/helper';
-import { NavigationProps } from 'components/nav/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import { getDeckOptions } from '@components/nav/helper';
+import { NavigationProps } from '@components/nav/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { Deck, DeckMeta, DecksMap, ParsedDeck, Slots } from 'actions/types';
-import { AppState, getAllDecks } from 'reducers';
+import { AppState, getAllDecks } from '@reducers';
 import { parseDeck } from 'lib/parseDeck';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export interface DeckHistoryProps {
   id: number;

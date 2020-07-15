@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 import { forEach, keys } from 'lodash';
 
-import AppIcon from 'icons/AppIcon';
-import ArkhamIcon from 'icons/ArkhamIcon';
+import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..

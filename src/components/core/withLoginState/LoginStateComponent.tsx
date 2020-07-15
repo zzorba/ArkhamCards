@@ -8,8 +8,8 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import { login } from 'actions';
-import { AppState } from 'reducers';
-import COLORS from 'styles/colors';
+import { AppState } from '@reducers';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   render: (

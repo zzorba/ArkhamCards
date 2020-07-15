@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import { FactionCodeType } from 'app_constants';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import { FactionCodeType } from '@app_constants';
+import COLORS from '@styles/colors';
 
 function factionToIconName(faction: FactionCodeType) {
   if (faction === 'neutral') {

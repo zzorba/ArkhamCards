@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { CampaignCycleCode, CampaignDifficulty } from 'actions/types';
-import { CAMPAIGN_COLORS, difficultyString } from 'components/campaign/constants';
-import typography from 'styles/typography';
-import GameHeader from 'components/campaign/GameHeader';
-import BackgroundIcon from 'components/campaign/BackgroundIcon';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import COLORS from 'styles/colors';
-import { m, s } from 'styles/space';
+import { CAMPAIGN_COLORS, difficultyString } from '@components/campaign/constants';
+import typography from '@styles/typography';
+import GameHeader from '@components/campaign/GameHeader';
+import BackgroundIcon from '@components/campaign/BackgroundIcon';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import COLORS from '@styles/colors';
+import { m, s } from '@styles/space';
 
 interface Props {
   campaignGuide: CampaignGuide;

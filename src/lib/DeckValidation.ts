@@ -11,9 +11,9 @@ import {
 import { t } from 'ttag';
 
 import { DeckMeta, DeckProblem, DeckProblemType, Slots } from 'actions/types';
-import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from 'app_constants';
-import Card from 'data/Card';
-import DeckOption from 'data/DeckOption';
+import { ON_YOUR_OWN_CODE, VERSATILE_CODE } from '@app_constants';
+import Card from '@data/Card';
+import DeckOption from '@data/DeckOption';
 
 
 interface SpecialCardCounts {

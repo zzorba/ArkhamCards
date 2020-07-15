@@ -1,10 +1,10 @@
 import React from 'react';
 import { Brackets } from 'typeorm/browser';
 
-import QueryProvider from 'components/data/QueryProvider';
+import QueryProvider from '@components/data/QueryProvider';
 import CardSearchComponent from '../cardlist/CardSearchComponent';
-import { NavigationProps } from 'components/nav/types';
-import { combineQueries, where } from 'data/query';
+import { NavigationProps } from '@components/nav/types';
+import { combineQueries, where } from '@data/query';
 
 export interface PackCardsProps {
   pack_code: string;

@@ -5,11 +5,11 @@ import { t } from 'ttag';
 
 import { CAMPAIGN_COLORS, campaignNames } from './constants';
 import { Campaign, CUSTOM } from 'actions/types';
-import typography from 'styles/typography';
+import typography from '@styles/typography';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
-import space from 'styles/space';
+import space from '@styles/space';
 
 interface Props {
   campaign: Campaign;

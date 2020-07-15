@@ -5,23 +5,23 @@ import { filter, find, reverse, partition, sortBy, sumBy } from 'lodash';
 import { connect } from 'react-redux';
 import { ngettext, msgid } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import CardUpgradeOption from './CardUpgradeOption';
-import DeckProblemRow from 'components/core/DeckProblemRow';
-import CardDetailComponent from 'components/card/CardDetailView/CardDetailComponent';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import DeckProblemRow from '@components/core/DeckProblemRow';
+import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
 import DeckValidation from 'lib/DeckValidation';
-import Card, { CardsMap } from 'data/Card';
-import COLORS from 'styles/colors';
-import { NavigationProps } from 'components/nav/types';
-import { m, s, xs } from 'styles/space';
+import Card, { CardsMap } from '@data/Card';
+import COLORS from '@styles/colors';
+import { NavigationProps } from '@components/nav/types';
+import { m, s, xs } from '@styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
 import { parseDeck } from 'lib/parseDeck';
 import {
   getPacksInCollection,
   AppState,
-} from 'reducers';
+} from '@reducers';
 
 export interface CardUpgradeDialogProps {
   componentId: string;

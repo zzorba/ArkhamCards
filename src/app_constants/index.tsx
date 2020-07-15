@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { mapValues } from 'lodash';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import COLORS from '@styles/colors';
 
 export type TypeCodeType =
   'asset' |

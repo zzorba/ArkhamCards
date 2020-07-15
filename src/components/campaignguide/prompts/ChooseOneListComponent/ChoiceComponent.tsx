@@ -4,10 +4,10 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import BinaryResult from '../../BinaryResult';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import { DisplayChoice } from 'data/scenario';
-import { m, s } from 'styles/space';
-import COLORS from 'styles/colors';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { DisplayChoice } from '@data/scenario';
+import { m, s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   choice: DisplayChoice;

@@ -5,7 +5,7 @@ import {
   SwitchProps,
 } from 'react-native';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props extends SwitchProps {
   customColor?: string;

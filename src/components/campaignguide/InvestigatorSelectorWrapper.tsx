@@ -4,10 +4,10 @@ import { t } from 'ttag';
 
 import ScenarioStepContext, { ScenarioStepContextType } from './ScenarioStepContext';
 import ChooseInvestigatorPrompt from './prompts/ChooseInvestigatorPrompt';
-import { InvestigatorSelector } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
+import { InvestigatorSelector } from '@data/scenario/types';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import Card from '@data/Card';
 
 interface Props<T> {
   id: string;

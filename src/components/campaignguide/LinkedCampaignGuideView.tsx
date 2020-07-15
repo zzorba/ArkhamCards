@@ -7,20 +7,20 @@ import { t } from 'ttag';
 
 import LinkedScenarioListComponent from './LinkedScenarioListComponent';
 import CampaignGuideSummary from './CampaignGuideSummary';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { Campaign } from 'actions/types';
-import BasicButton from 'components/core/BasicButton';
-import CampaignInvestigatorsComponent from 'components/campaignguide/CampaignInvestigatorsComponent';
-import CampaignLogComponent from 'components/campaignguide/CampaignLogComponent';
-import CampaignGuideContext from 'components/campaignguide/CampaignGuideContext';
-import TabView from 'components/core/TabView';
-import { deleteCampaign, updateCampaign } from 'components/campaign/actions';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import withUniversalCampaignData, { UniversalCampaignProps } from 'components/campaignguide/withUniversalCampaignData';
-import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideContext } from 'components/campaignguide/contextHelper';
-import { getCampaign, AppState } from 'reducers';
-import { NavigationProps } from 'components/nav/types';
-import COLORS from 'styles/colors';
+import BasicButton from '@components/core/BasicButton';
+import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
+import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import TabView from '@components/core/TabView';
+import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
+import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
+import { getCampaign, AppState } from '@reducers';
+import { NavigationProps } from '@components/nav/types';
+import COLORS from '@styles/colors';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;

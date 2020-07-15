@@ -7,10 +7,10 @@ import InvestigatorCheckListComponent from './InvestigatorCheckListComponent';
 import InvestigatorCounterComponent from './InvestigatorCounterComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
-import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from 'data/scenario/types';
-import Card from 'data/Card';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
+import { BulletType, UseSuppliesInput, UseSuppliesAllInput } from '@data/scenario/types';
+import Card from '@data/Card';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 
 interface Props {
   id: string;

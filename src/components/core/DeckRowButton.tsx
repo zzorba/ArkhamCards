@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Deck } from 'actions/types';
-import Button from 'components/core/Button';
-import Card from 'data/Card';
+import Button from '@components/core/Button';
+import Card from '@data/Card';
 
 interface Props {
   icon: React.ReactNode;

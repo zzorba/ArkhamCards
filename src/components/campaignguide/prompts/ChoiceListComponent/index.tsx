@@ -3,16 +3,16 @@ import { View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import { CustomColor } from 'components/campaignguide/prompts/types';
+import BasicButton from '@components/core/BasicButton';
+import { CustomColor } from '@components/campaignguide/prompts/types';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from 'actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import { BulletType } from 'data/scenario/types';
-import { Choices, DisplayChoiceWithId } from 'data/scenario';
-import space from 'styles/space';
+import { BulletType } from '@data/scenario/types';
+import { Choices, DisplayChoiceWithId } from '@data/scenario';
+import space from '@styles/space';
 
 export interface ListItem {
   code: string;

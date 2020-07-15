@@ -2,15 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import SinglePickerComponent from 'components/core/SinglePickerComponent';
+import BasicButton from '@components/core/BasicButton';
+import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import ChooseOneListComponent from './ChooseOneListComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { BulletType } from 'data/scenario/types';
-import { DisplayChoice } from 'data/scenario';
-import space from 'styles/space';
+import { BulletType } from '@data/scenario/types';
+import { DisplayChoice } from '@data/scenario';
+import space from '@styles/space';
 
 interface Props {
   id: string;

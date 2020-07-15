@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
-import SinglePickerComponent from 'components/core/SinglePickerComponent';
-import { DisplayChoice } from 'data/scenario';
-import { BulletType } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import SinglePickerComponent from '@components/core/SinglePickerComponent';
+import { DisplayChoice } from '@data/scenario';
+import { BulletType } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   code: string;

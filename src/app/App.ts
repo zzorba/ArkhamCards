@@ -8,8 +8,8 @@ import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
-import COLORS from 'styles/colors';
-import { AppState } from 'reducers';
+import COLORS from '@styles/colors';
+import { AppState } from '@reducers';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';

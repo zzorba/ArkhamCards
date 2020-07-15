@@ -7,9 +7,9 @@ import {
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { ResolutionStep } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import { ResolutionStep } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   step: ResolutionStep;

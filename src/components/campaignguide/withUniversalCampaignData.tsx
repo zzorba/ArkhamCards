@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
+import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import {
   addInvestigator,
   removeInvestigator,
   deleteCampaign,
-} from 'components/campaign/actions';
+} from '@components/campaign/actions';
 import {
   startScenario,
   startSideScenario,
@@ -25,7 +25,7 @@ import {
   setScenarioText,
   setCampaignLink,
   undo,
-} from 'components/campaignguide/actions';
+} from '@components/campaignguide/actions';
 import {
   Deck,
   NumberChoices,
@@ -34,11 +34,11 @@ import {
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
 } from 'actions/types';
-import Card from 'data/Card';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import Card from '@data/Card';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import {
   AppState,
-} from 'reducers';
+} from '@reducers';
 
 interface ReduxProps {}
 

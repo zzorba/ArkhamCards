@@ -3,15 +3,15 @@ import { flatMap, forEach } from 'lodash';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import Database from 'data/Database';
-import DbRender from 'components/data/DbRender';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import { scenarioRewards } from 'components/campaign/constants';
+import Database from '@data/Database';
+import DbRender from '@components/data/DbRender';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import { scenarioRewards } from '@components/campaign/constants';
 import { Deck, Slots } from 'actions/types';
-import Card from 'data/Card';
-import { PLAYER_CARDS_QUERY, combineQueries, where } from 'data/query';
-import { getDeck, getTabooSet, AppState } from 'reducers';
-import CardSelectorComponent from 'components/cardlist/CardSelectorComponent';
+import Card from '@data/Card';
+import { PLAYER_CARDS_QUERY, combineQueries, where } from '@data/query';
+import { getDeck, getTabooSet, AppState } from '@reducers';
+import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 
 interface OwnProps {
   componentId: string;

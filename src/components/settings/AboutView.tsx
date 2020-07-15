@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 
-import typography from 'styles/typography';
-import space from 'styles/space';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 export default class AboutView extends React.Component {
   _octopusLink = () => {

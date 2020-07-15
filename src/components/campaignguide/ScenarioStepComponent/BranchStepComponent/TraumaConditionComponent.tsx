@@ -5,9 +5,9 @@ import BinaryResult from '../../BinaryResult';
 import {
   BranchStep,
   KilledTraumaCondition,
-} from 'data/scenario/types';
-import { killedTraumaConditionResult } from 'data/scenario/conditionHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import { killedTraumaConditionResult } from '@data/scenario/conditionHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;

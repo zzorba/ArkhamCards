@@ -10,15 +10,15 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import Card from 'data/Card';
-import XpChooser from 'components/filter/CardFilterView/XpChooser';
-import CardSearchResultsComponent from 'components/cardlist/CardSearchResultsComponent';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import Card from '@data/Card';
+import XpChooser from '@components/filter/CardFilterView/XpChooser';
+import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { FilterState } from 'lib/filters';
-import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from 'components/filter/actions';
+import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from '@components/filter/actions';
 import { iconsMap } from 'app/NavIcons';
-import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from 'reducers';
-import COLORS from 'styles/colors';
+import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
+import COLORS from '@styles/colors';
 
 
 interface ReduxProps {

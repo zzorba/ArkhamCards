@@ -8,8 +8,8 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import COLORS from 'styles/colors';
-import { iconSizeScale } from 'styles/space';
+import COLORS from '@styles/colors';
+import { iconSizeScale } from '@styles/space';
 
 interface Props {
   count: number;

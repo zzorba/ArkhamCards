@@ -13,8 +13,8 @@ import {
   CampaignGuideState,
   SupplyCounts,
 } from 'actions/types';
-import { ScenarioId } from 'data/scenario';
-import Card, { CardsMap } from 'data/Card';
+import { ScenarioId } from '@data/scenario';
+import Card, { CardsMap } from '@data/Card';
 
 export interface CampaignGuideActions {
   showChooseDeck: (singleInvestigator?: Card, callback?: (code: string) => void) => void;

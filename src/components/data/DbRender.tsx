@@ -2,8 +2,8 @@ import React from 'react';
 import deepDiff from 'deep-diff';
 import { EventSubscriber } from 'typeorm/browser';
 
-import Database from 'data/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 
 interface Props<T> {
   name: string;

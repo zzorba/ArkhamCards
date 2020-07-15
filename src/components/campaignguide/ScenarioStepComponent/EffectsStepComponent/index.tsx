@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { flatMap, map } from 'lodash';
 
-import BorderWrapper from 'components/campaignguide/BorderWrapper';
-import ScenarioStepComponent from 'components/campaignguide/ScenarioStepComponent';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import BorderWrapper from '@components/campaignguide/BorderWrapper';
+import ScenarioStepComponent from '@components/campaignguide/ScenarioStepComponent';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import ChaosTokenEffectComponent from './ChaosTokenEffectComponent';
 import CampaignLogEffectComponent from './CampaignLogEffectComponent';
@@ -12,11 +12,11 @@ import AddWeaknessEffectComponent from './AddWeaknessEffectComponent';
 import AddCardEffectComponent from './AddCardEffectComponent';
 import RemoveCardEffectComponent from './RemoveCardEffectComponent';
 import TraumaEffectComponent from './TraumaEffectComponent';
-import { EffectsStep, Effect } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { ProcessedScenario } from 'data/scenario';
-import { getSpecialEffectChoiceList } from 'data/scenario/effectHelper';
-import space from 'styles/space';
+import { EffectsStep, Effect } from '@data/scenario/types';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import { ProcessedScenario } from '@data/scenario';
+import { getSpecialEffectChoiceList } from '@data/scenario/effectHelper';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;

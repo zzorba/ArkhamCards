@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import CardTextComponent from 'components/card/CardTextComponent';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import { s } from 'styles/space';
+import CardTextComponent from '@components/card/CardTextComponent';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import { s } from '@styles/space';
 
 export interface Props {
   symbol: string;

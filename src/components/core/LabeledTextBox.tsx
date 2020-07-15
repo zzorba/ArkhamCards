@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import TextBoxButton from './TextBoxButton';
-import typography from 'styles/typography';
+import typography from '@styles/typography';
 
 interface Props {
   label: string;

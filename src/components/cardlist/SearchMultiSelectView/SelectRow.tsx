@@ -5,9 +5,9 @@ import {
   View,
 } from 'react-native';
 
-import Switch from 'components/core/Switch';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import Switch from '@components/core/Switch';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   value: string;

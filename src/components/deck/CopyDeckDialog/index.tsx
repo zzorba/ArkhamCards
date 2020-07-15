@@ -9,17 +9,17 @@ import { t } from 'ttag';
 
 import SelectDeckSwitch from './SelectDeckSwitch';
 import { saveClonedDeck } from '../actions';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import { showDeckModal } from 'components/nav/helper';
-import Dialog from 'components/core/Dialog';
-import withNetworkStatus, { NetworkStatusProps } from 'components/core/withNetworkStatus';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import { showDeckModal } from '@components/nav/helper';
+import Dialog from '@components/core/Dialog';
+import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import { login } from 'actions';
 import { Deck } from 'actions/types';
 import { parseBasicDeck } from 'lib/parseDeck';
-import { getDeck, getBaseDeck, getLatestDeck, AppState } from 'reducers';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import space from 'styles/space';
+import { getDeck, getBaseDeck, getLatestDeck, AppState } from '@reducers';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import space from '@styles/space';
 
 interface OwnProps {
   componentId: string;

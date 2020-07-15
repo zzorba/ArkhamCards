@@ -6,24 +6,24 @@ import { t } from 'ttag';
 import LinearGradient from 'react-native-linear-gradient';
 import KeepAwake from 'react-native-keep-awake';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import InvestigatorOddsComponent from './InvestigatorOddsComponent';
 import SkillOddsRow from './SkillOddsRow';
 import VariableTokenInput from './VariableTokenInput';
 import { add, subtract } from './oddsHelper';
-import CardTextComponent from 'components/card/CardTextComponent';
-import ChaosBagLine from 'components/core/ChaosBagLine';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { CAMPAIGN_COLORS, Scenario, completedScenario } from 'components/campaign/constants';
-import Difficulty from 'components/campaign/Difficulty';
-import GameHeader from 'components/campaign/GameHeader';
-import BackgroundIcon from 'components/campaign/BackgroundIcon';
+import CardTextComponent from '@components/card/CardTextComponent';
+import ChaosBagLine from '@components/core/ChaosBagLine';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import { CAMPAIGN_COLORS, Scenario, completedScenario } from '@components/campaign/constants';
+import Difficulty from '@components/campaign/Difficulty';
+import GameHeader from '@components/campaign/GameHeader';
+import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from 'actions/types';
-import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from 'app_constants';
-import Card from 'data/Card';
-import typography from 'styles/typography';
-import { s } from 'styles/space';
-import COLORS from 'styles/colors';
+import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
+import Card from '@data/Card';
+import typography from '@styles/typography';
+import { s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   campaign: Campaign;

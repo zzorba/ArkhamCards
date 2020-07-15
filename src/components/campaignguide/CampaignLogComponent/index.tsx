@@ -4,17 +4,17 @@ import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import { GuideChaosBagProps } from 'components/campaignguide/GuideChaosBagView';
-import { GuideOddsCalculatorProps } from 'components/campaignguide/GuideOddsCalculatorView';
-import ChaosBagLine from 'components/core/ChaosBagLine';
+import BasicButton from '@components/core/BasicButton';
+import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
+import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
+import ChaosBagLine from '@components/core/ChaosBagLine';
 import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import typography from 'styles/typography';
-import space, { m, s } from 'styles/space';
-import COLORS from 'styles/colors';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import typography from '@styles/typography';
+import space, { m, s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

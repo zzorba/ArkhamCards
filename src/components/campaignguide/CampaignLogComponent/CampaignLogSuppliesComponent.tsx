@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import InvestigatorNameRow from '../prompts/InvestigatorNameRow';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import { InvestigatorSection } from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
-import { l, m, s } from 'styles/space';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import { InvestigatorSection } from '@data/scenario/GuidedCampaignLog';
+import Card from '@data/Card';
+import { l, m, s } from '@styles/space';
 
 interface Props {
   sectionId: string;

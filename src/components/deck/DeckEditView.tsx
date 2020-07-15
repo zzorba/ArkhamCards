@@ -2,18 +2,18 @@ import React from 'react';
 import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from 'actions/types';
-import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from 'app_constants';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import CardSearchComponent from 'components/cardlist/CardSearchComponent';
-import QueryProvider from 'components/data/QueryProvider';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import CardSearchComponent from '@components/cardlist/CardSearchComponent';
+import QueryProvider from '@components/data/QueryProvider';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { queryForInvestigator, negativeQueryForInvestigator } from 'lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from 'lib/filters';
-import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from 'data/query';
-import Card from 'data/Card';
+import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/query';
+import Card from '@data/Card';
 import { parseDeck } from 'lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
-import { NavigationProps } from 'components/nav/types';
+import { NavigationProps } from '@components/nav/types';
 
 export interface EditDeckProps {
   deck: Deck;

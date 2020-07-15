@@ -3,8 +3,8 @@ import { map } from 'lodash';
 
 import ChoiceListComponent, { ChoiceListComponentProps } from './ChoiceListComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 interface Props extends ChoiceListComponentProps {
   investigators?: Card[];

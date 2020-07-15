@@ -13,20 +13,20 @@ import { t } from 'ttag';
 
 import DeckUpgradeComponent from './DeckUpgradeComponent';
 import { Campaign, Deck, Slots } from 'actions/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { NavigationProps } from 'components/nav/types';
-import { showDeckModal, showCard } from 'components/nav/helper';
-import StoryCardSelectorComponent from 'components/campaign/StoryCardSelectorComponent';
-import { updateCampaign } from 'components/campaign/actions';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import withTraumaDialog, { TraumaProps } from 'components/campaign/withTraumaDialog';
-import EditTraumaComponent from 'components/campaign/EditTraumaComponent';
-import Card from 'data/Card';
-import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from 'components/deck/actions';
-import { getDeck, getCampaign, getTabooSet, AppState } from 'reducers';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { NavigationProps } from '@components/nav/types';
+import { showDeckModal, showCard } from '@components/nav/helper';
+import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
+import { updateCampaign } from '@components/campaign/actions';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
+import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
+import Card from '@data/Card';
+import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
+import { getDeck, getCampaign, getTabooSet, AppState } from '@reducers';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 export interface UpgradeDeckProps {
   id: number;

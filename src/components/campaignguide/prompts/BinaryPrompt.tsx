@@ -1,12 +1,12 @@
 import React from 'react';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { DisplayChoice } from 'data/scenario';
-import { BulletType } from 'data/scenario/types';
+import { DisplayChoice } from '@data/scenario';
+import { BulletType } from '@data/scenario/types';
 import BinaryResult from '../BinaryResult';
 
 interface Props {

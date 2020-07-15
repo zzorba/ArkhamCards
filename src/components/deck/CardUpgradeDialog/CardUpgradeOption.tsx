@@ -6,10 +6,10 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import Card from 'data/Card';
-import space from 'styles/space';
-import typography from 'styles/typography';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import Card from '@data/Card';
+import space from '@styles/space';
+import typography from '@styles/typography';
 
 interface Props {
   card: Card;

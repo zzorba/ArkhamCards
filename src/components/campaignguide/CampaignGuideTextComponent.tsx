@@ -1,8 +1,8 @@
 import React from 'react';
 
-import CardTextComponent from 'components/card/CardTextComponent';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
-import COLORS from 'styles/colors';
+import CardTextComponent from '@components/card/CardTextComponent';
+import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
+import COLORS from '@styles/colors';
 
 interface Props {
   text: string;

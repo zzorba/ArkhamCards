@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import Card from 'data/Card';
-import { m } from 'styles/space';
-import COLORS from 'styles/colors';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import Card from '@data/Card';
+import { m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 

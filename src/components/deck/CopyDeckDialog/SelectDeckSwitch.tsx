@@ -1,7 +1,7 @@
 import React from 'react';
 import DialogComponent from 'react-native-dialog';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   deckId: number;

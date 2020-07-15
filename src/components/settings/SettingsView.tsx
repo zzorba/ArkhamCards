@@ -15,15 +15,15 @@ import LanguagePicker from './LanguagePicker';
 import CategoryHeader from './CategoryHeader';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import { clearDecks } from 'actions';
-import { fetchCards } from 'components/card/actions';
+import { fetchCards } from '@components/card/actions';
 import { setSingleCardView } from './actions';
 import { prefetch } from 'lib/auth';
-import Database from 'data/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
-import { getAllDecks, AppState } from 'reducers';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import { getAllDecks, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   componentId: string;

@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Button from 'components/core/Button';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
+import Button from '@components/core/Button';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CountButton from './CountButton';
 import { rowHeight, buttonWidth, BUTTON_PADDING, toggleButtonMode } from './constants';
-import typography from 'styles/typography';
-import { s, xs } from 'styles/space';
+import typography from '@styles/typography';
+import { s, xs } from '@styles/space';
 
 interface Props {
   count: number;

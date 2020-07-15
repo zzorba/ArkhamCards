@@ -31,13 +31,13 @@ import {
   SettingsCategoryHeader,
 } from 'react-native-settings-components';
 
-import BasicButton from 'components/core/BasicButton';
-import withLoginState, { LoginStateProps } from 'components/core/withLoginState';
-import withTraumaDialog, { TraumaProps } from 'components/campaign/withTraumaDialog';
-import Dialog from 'components/core/Dialog';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import CopyDeckDialog from 'components/deck/CopyDeckDialog';
+import BasicButton from '@components/core/BasicButton';
+import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
+import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
+import Dialog from '@components/core/Dialog';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from 'app/NavIcons';
 import {
   fetchPrivateDeck,
@@ -46,12 +46,12 @@ import {
   uploadLocalDeck,
   saveDeckChanges,
   DeckChanges,
-} from 'components/deck/actions';
+} from '@components/deck/actions';
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
-import { updateCampaign } from 'components/campaign/actions';
-import withPlayerCards, { TabooSetOverride, PlayerCardProps } from 'components/core/withPlayerCards';
-import Card, { CardsMap } from 'data/Card';
-import TabooSet from 'data/TabooSet';
+import { updateCampaign } from '@components/campaign/actions';
+import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '@components/core/withPlayerCards';
+import Card, { CardsMap } from '@data/Card';
+import TabooSet from '@data/TabooSet';
 import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
@@ -62,8 +62,8 @@ import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
 import EditDeckDetailsDialog from './EditDeckDetailsDialog';
 import DeckViewTab from './DeckViewTab';
 import withTabooSetOverride, { TabooSetOverrideProps } from './withTabooSetOverride';
-import DeckNavFooter from 'components/DeckNavFooter';
-import { NavigationProps } from 'components/nav/types';
+import DeckNavFooter from '@components/DeckNavFooter';
+import { NavigationProps } from '@components/nav/types';
 import {
   getCampaign,
   getDeck,
@@ -71,11 +71,11 @@ import {
   getCampaignForDeck,
   getPacksInCollection,
   AppState,
-} from 'reducers';
-import { m } from 'styles/space';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import { getDeckOptions, showCardCharts, showDrawSimulator } from 'components/nav/helper';
+} from '@reducers';
+import { m } from '@styles/space';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 
 const SHOW_DESCRIPTION_EDITOR = false;
 

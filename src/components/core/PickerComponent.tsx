@@ -5,9 +5,9 @@ import { SettingsPicker } from 'react-native-settings-components';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { DisplayChoice } from 'data/scenario';
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
+import { DisplayChoice } from '@data/scenario';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
 
 export interface PickerProps {
   choices: DisplayChoice[];

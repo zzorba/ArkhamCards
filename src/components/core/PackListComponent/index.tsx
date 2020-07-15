@@ -12,7 +12,7 @@ import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import { Pack } from 'actions/types';
-import CardSectionHeader from 'components/core/CardSectionHeader';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 
 interface PackCycle extends SectionListData<Pack> {

@@ -6,13 +6,13 @@ import {
 
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
-import { ShowTextEditDialog } from 'components/core/withDialogs';
+import { ShowTextEditDialog } from '@components/core/withDialogs';
 import {
   InvestigatorNotes,
   InvestigatorCampaignNoteSection,
   InvestigatorCampaignNoteCount,
 } from 'actions/types';
-import Card from 'data/Card';
+import Card from '@data/Card';
 
 interface Props {
   investigator: Card;

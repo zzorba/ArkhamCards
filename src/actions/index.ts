@@ -14,7 +14,7 @@ import {
   LOGIN_ERROR,
   LOGOUT,
 } from './types';
-import { AppState } from 'reducers';
+import { AppState } from '@reducers';
 
 import { getAccessToken, signInFlow, signOutFlow } from 'lib/auth';
 // @ts-ignore

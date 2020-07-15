@@ -8,7 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
@@ -22,10 +22,10 @@ import GenericStepComponent from './GenericStepComponent';
 import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
-import ScenarioStep from 'data/scenario/ScenarioStep';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import space, { m, s } from 'styles/space';
+import ScenarioStep from '@data/scenario/ScenarioStep';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import space, { m, s } from '@styles/space';
 
 interface Props {
   componentId: string;

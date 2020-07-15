@@ -15,13 +15,13 @@ import SkillIconChooser from './SkillIconChooser';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
 import { CardFilterData } from 'lib/filters';
-import ToggleFilter from 'components/core/ToggleFilter';
+import ToggleFilter from '@components/core/ToggleFilter';
 import withFilterFunctions, { FilterFunctionProps, FilterProps } from '../withFilterFunctions';
-import NavButton from 'components/core/NavButton';
-import { CARD_FACTION_CODES } from 'app_constants';
-import { getAllPacks, AppState } from 'reducers';
-import COLORS from 'styles/colors';
-import space from 'styles/space';
+import NavButton from '@components/core/NavButton';
+import { CARD_FACTION_CODES } from '@app_constants';
+import { getAllPacks, AppState } from '@reducers';
+import COLORS from '@styles/colors';
+import space from '@styles/space';
 
 interface ReduxProps {
   allPacks: Pack[];

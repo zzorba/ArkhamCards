@@ -7,7 +7,7 @@ import {
 import ResultIndicatorIcon from './ResultIndicatorIcon';
 import CampaignGuideTextComponent from './CampaignGuideTextComponent';
 import SetupStepWrapper from './SetupStepWrapper';
-import { BulletType } from 'data/scenario/types';
+import { BulletType } from '@data/scenario/types';
 
 interface Props {
   bulletType?: BulletType;

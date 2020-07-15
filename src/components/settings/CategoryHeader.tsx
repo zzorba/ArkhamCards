@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SettingsCategoryHeader } from 'react-native-settings-components';
 
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
 
 interface Props {
   title: string;

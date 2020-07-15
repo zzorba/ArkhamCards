@@ -10,21 +10,21 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from 'actions/types';
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import Card from 'data/Card';
-import { LatestDecks } from 'data/scenario';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from 'components/deck/actions';
-import { AppState } from 'reducers';
-import typography from 'styles/typography';
-import { m, s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import Card from '@data/Card';
+import { LatestDecks } from '@data/scenario';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
+import { AppState } from '@reducers';
+import typography from '@styles/typography';
+import { m, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;

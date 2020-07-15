@@ -4,9 +4,9 @@ import BinaryResult from '../../BinaryResult';
 import {
   BranchStep,
   MathCondition,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { mathEqualsConditionResult } from 'data/scenario/conditionHelper';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { mathEqualsConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: BranchStep;

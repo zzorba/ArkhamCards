@@ -2,7 +2,7 @@ import React from 'react';
 
 import SetupStepWrapper from '../SetupStepWrapper';
 import BulletsComponent from './BulletsComponent';
-import { RuleReminderStep } from 'data/scenario/types';
+import { RuleReminderStep } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 
 interface Props {

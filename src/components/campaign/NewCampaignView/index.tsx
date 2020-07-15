@@ -13,9 +13,9 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import PickerStyleButton from 'components/core/PickerStyleButton';
-import EditText from 'components/core/EditText';
+import BasicButton from '@components/core/BasicButton';
+import PickerStyleButton from '@components/core/PickerStyleButton';
+import EditText from '@components/core/EditText';
 import {
   CORE,
   CUSTOM,
@@ -29,7 +29,7 @@ import {
   Slots,
   WeaknessSet,
 } from 'actions/types';
-import { ChaosBag } from 'app_constants';
+import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';
 import {
@@ -38,21 +38,21 @@ import {
   difficultyString,
 } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
-import NavButton from 'components/core/NavButton';
-import ChaosBagLine from 'components/core/ChaosBagLine';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import NavButton from '@components/core/NavButton';
+import ChaosBagLine from '@components/core/ChaosBagLine';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import DeckSelector from './DeckSelector';
-import WeaknessSetPackChooserComponent from 'components/weakness/WeaknessSetPackChooserComponent';
-import { getNextCampaignId, AppState } from 'reducers';
-import { newCampaign, newLinkedCampaign } from 'components/campaign/actions';
-import { NavigationProps } from 'components/nav/types';
-import Card from 'data/Card';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
+import { getNextCampaignId, AppState } from '@reducers';
+import { newCampaign, newLinkedCampaign } from '@components/campaign/actions';
+import { NavigationProps } from '@components/nav/types';
+import Card from '@data/Card';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import space, { m, s } from 'styles/space';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import space, { m, s } from '@styles/space';
 
 type OwnProps = NavigationProps & PlayerCardProps & InjectedDialogProps;
 

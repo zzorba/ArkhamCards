@@ -30,7 +30,7 @@ import {
   Slots,
   SplitCards,
 } from 'actions/types';
-import Card, { CardKey, CardsMap } from 'data/Card';
+import Card, { CardKey, CardsMap } from '@data/Card';
 import {
   ARCANE_RESEARCH_CODE,
   ADAPTABLE_CODE,
@@ -42,7 +42,7 @@ import {
   FactionCodeType,
   SlotCodeType,
   SkillCodeType,
-} from 'app_constants';
+} from '@app_constants';
 import DeckValidation from './DeckValidation';
 
 function filterBy(

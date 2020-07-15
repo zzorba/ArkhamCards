@@ -10,15 +10,15 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import { msgid, ngettext, t } from 'ttag';
 
 import { DeckMeta, ParsedDeck } from 'actions/types';
-import AppIcon from 'icons/AppIcon';
-import DeckProblemRow from 'components/core/DeckProblemRow';
-import { CardsMap } from 'data/Card';
-import typography from 'styles/typography';
-import { TINY_PHONE } from 'styles/sizes';
-import COLORS from 'styles/colors';
-import { showCardCharts, showDrawSimulator } from 'components/nav/helper';
+import AppIcon from '@icons/AppIcon';
+import DeckProblemRow from '@components/core/DeckProblemRow';
+import { CardsMap } from '@data/Card';
+import typography from '@styles/typography';
+import { TINY_PHONE } from '@styles/sizes';
+import COLORS from '@styles/colors';
+import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
-import { m, s, xs } from 'styles/space';
+import { m, s, xs } from '@styles/space';
 
 const SHOW_CHARTS_BUTTON = true;
 

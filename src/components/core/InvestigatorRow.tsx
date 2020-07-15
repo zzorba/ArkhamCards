@@ -8,13 +8,13 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import CardCostIcon from 'components/core/CardCostIcon';
-import InvestigatorImage from 'components/core/InvestigatorImage';
-import Card from 'data/Card';
-import typography from 'styles/typography';
-import space, { m, s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import CardCostIcon from '@components/core/CardCostIcon';
+import InvestigatorImage from '@components/core/InvestigatorImage';
+import Card from '@data/Card';
+import typography from '@styles/typography';
+import space, { m, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   superTitle?: string;

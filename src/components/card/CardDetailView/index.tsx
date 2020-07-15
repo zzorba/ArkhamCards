@@ -9,15 +9,15 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import CardDetailComponent from './CardDetailComponent';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import { CardFaqProps } from 'components/card/CardFaqView';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import { CardFaqProps } from '@components/card/CardFaqView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { NavigationProps } from 'components/nav/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { NavigationProps } from '@components/nav/types';
 import { iconsMap } from 'app/NavIcons';
-import COLORS from 'styles/colors';
-import { getShowSpoilers, getTabooSet, AppState } from 'reducers';
-import Card from 'data/Card';
+import COLORS from '@styles/colors';
+import { getShowSpoilers, getTabooSet, AppState } from '@reducers';
+import Card from '@data/Card';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{

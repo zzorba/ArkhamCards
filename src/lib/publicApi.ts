@@ -3,11 +3,11 @@ import { Alert } from 'react-native';
 import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from 'actions/types';
-import Card from 'data/Card';
-import Database from 'data/Database';
-import EncounterSet from 'data/EncounterSet';
-import TabooSet from 'data/TabooSet';
-import FaqEntry from 'data/FaqEntry';
+import Card from '@data/Card';
+import Database from '@data/Database';
+import EncounterSet from '@data/EncounterSet';
+import TabooSet from '@data/TabooSet';
+import FaqEntry from '@data/FaqEntry';
 
 export const syncTaboos = async function(
   db: Database,

@@ -14,9 +14,9 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import DialogOption from './DialogOption';
 import withDimensions, { DimensionsProps } from './withDimensions';
-import typography from 'styles/typography';
-import { s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import typography from '@styles/typography';
+import { s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   componentId: string;

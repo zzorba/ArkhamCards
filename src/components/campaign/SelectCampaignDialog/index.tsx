@@ -9,8 +9,8 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import BasicSectionHeader from 'components/core/BasicSectionHeader';
+import BasicButton from '@components/core/BasicButton';
+import BasicSectionHeader from '@components/core/BasicSectionHeader';
 import {
   CUSTOM,
   ALL_CAMPAIGNS,
@@ -21,11 +21,11 @@ import {
   CampaignCycleCode,
 } from 'actions/types';
 import CycleItem from './CycleItem';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { campaignName } from '../constants';
-import { NavigationProps } from 'components/nav/types';
-import { getPacksInCollection, AppState } from 'reducers';
-import COLORS from 'styles/colors';
+import { NavigationProps } from '@components/nav/types';
+import { getPacksInCollection, AppState } from '@reducers';
+import COLORS from '@styles/colors';
 
 export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;

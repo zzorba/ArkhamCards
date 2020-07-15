@@ -7,7 +7,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import EditTraumaDialog from './EditTraumaDialog';
 import { InvestigatorData, Trauma } from 'actions/types';
-import Card from 'data/Card';
+import Card from '@data/Card';
 
 export interface TraumaProps {
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;

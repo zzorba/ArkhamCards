@@ -14,16 +14,16 @@ import { t } from 'ttag';
 
 import { drawWeakness, availableWeaknesses } from 'lib/weaknessHelper';
 import { Slots, WeaknessSet } from 'actions/types';
-import Card from 'data/Card';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import BasicButton from 'components/core/BasicButton';
-import ChooserButton from 'components/core/ChooserButton';
-import ToggleFilter from 'components/core/ToggleFilter';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import CardDetailComponent from 'components/card/CardDetailView/CardDetailComponent';
-import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from 'styles/sizes';
-import typography from 'styles/typography';
-import space, { s, xs } from 'styles/space';
+import Card from '@data/Card';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import BasicButton from '@components/core/BasicButton';
+import ChooserButton from '@components/core/ChooserButton';
+import ToggleFilter from '@components/core/ToggleFilter';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
+import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '@styles/sizes';
+import typography from '@styles/typography';
+import space, { s, xs } from '@styles/space';
 
 const PLAYER_BACK = require('../../../assets/player-back.png');
 

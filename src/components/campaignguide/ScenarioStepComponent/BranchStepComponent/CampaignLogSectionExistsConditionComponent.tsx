@@ -6,9 +6,9 @@ import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGu
 import {
   BranchStep,
   CampaignLogSectionExistsCondition,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { campaignLogConditionResult } from 'data/scenario/conditionHelper';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { campaignLogConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: BranchStep;

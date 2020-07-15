@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
-import { ProcessedCampaign } from 'data/scenario';
+import { ProcessedCampaign } from '@data/scenario';
 import ScenarioButton from './ScenarioButton';
 import AddSideScenarioButton from './AddSideScenarioButton';
-import { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

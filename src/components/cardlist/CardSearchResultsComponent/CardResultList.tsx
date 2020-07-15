@@ -28,16 +28,16 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
-import DbRender from 'components/data/DbRender';
-import Database from 'data/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
-import BasicButton from 'components/core/BasicButton';
-import { addFilterSet } from 'components/filter/actions';
+import DbRender from '@components/data/DbRender';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import BasicButton from '@components/core/BasicButton';
+import { addFilterSet } from '@components/filter/actions';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
-import { rowHeight } from 'components/cardlist/CardSearchResult/constants';
-import CardSectionHeader, { cardSectionHeaderHeight, CardSectionHeaderData } from 'components/core/CardSectionHeader';
-import calculateDefaultFilterState from 'components/filter/DefaultFilterState';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
+import CardSectionHeader, { cardSectionHeaderHeight, CardSectionHeaderData } from '@components/core/CardSectionHeader';
+import calculateDefaultFilterState from '@components/filter/DefaultFilterState';
 import { CardFilterData, FilterState, calculateCardFilterData } from 'lib/filters';
 import {
   SORT_BY_TYPE,
@@ -50,14 +50,14 @@ import {
   SortType,
   Slots,
 } from 'actions/types';
-import { QuerySort } from 'data/types';
-import { combineQueries, where } from 'data/query';
-import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from 'reducers';
-import Card from 'data/Card';
-import { showCard, showCardSwipe } from 'components/nav/helper';
-import typography from 'styles/typography';
-import { s, m } from 'styles/space';
-import COLORS from 'styles/colors';
+import { QuerySort } from '@data/types';
+import { combineQueries, where } from '@data/query';
+import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '@reducers';
+import Card from '@data/Card';
+import { showCard, showCardSwipe } from '@components/nav/helper';
+import typography from '@styles/typography';
+import { s, m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 function funLoadingMessages() {
   return [

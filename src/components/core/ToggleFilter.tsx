@@ -6,10 +6,10 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import Switch from 'components/core/Switch';
-import typography from 'styles/typography';
-import { s, xs } from 'styles/space';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import Switch from '@components/core/Switch';
+import typography from '@styles/typography';
+import { s, xs } from '@styles/space';
 
 const ICON_SIZE = 28;
 

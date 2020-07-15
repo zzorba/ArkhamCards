@@ -6,7 +6,7 @@ import {
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithChildren } from './types';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export default function ItalicHtmlTagNode(
   node: Node & WithChildren,

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import BasicButton from 'components/core/BasicButton';
-import { BinaryConditionalChoice } from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { calculateBinaryConditionResult } from 'data/scenario/inputHelper';
+import BasicButton from '@components/core/BasicButton';
+import { BinaryConditionalChoice } from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { calculateBinaryConditionResult } from '@data/scenario/inputHelper';
 
 interface Props {
   index: number;

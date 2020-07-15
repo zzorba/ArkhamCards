@@ -3,7 +3,7 @@ import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
 import { TraumaAndCardData } from 'actions/types';
-import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from 'app_constants';
+import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, SkillCodeType } from '@app_constants';
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 

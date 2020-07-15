@@ -3,7 +3,7 @@ import { find, map } from 'lodash';
 
 import { t } from 'ttag';
 import { CampaignDifficulty, DIFFICULTIES } from 'actions/types';
-import DialogPicker from 'components/core/DialogPicker';
+import DialogPicker from '@components/core/DialogPicker';
 import { difficultyString } from './constants';
 
 interface Props {

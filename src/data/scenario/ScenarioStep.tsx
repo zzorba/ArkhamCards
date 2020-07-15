@@ -14,7 +14,7 @@ import {
 } from 'lodash';
 
 import { StringChoices } from 'actions/types';
-import { Choices } from 'data/scenario';
+import { Choices } from '@data/scenario';
 import {
   BulletType,
   BranchStep,
@@ -22,14 +22,14 @@ import {
   Step,
   Effect,
   EffectsWithInput,
-} from 'data/scenario/types';
+} from '@data/scenario/types';
 import { getSpecialEffectChoiceList } from './effectHelper';
-import { investigatorChoiceInputChoices, chooseOneInputChoices } from 'data/scenario/inputHelper';
-import { conditionResult } from 'data/scenario/conditionHelper';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch } from 'data/scenario/fixedSteps';
+import { investigatorChoiceInputChoices, chooseOneInputChoices } from '@data/scenario/inputHelper';
+import { conditionResult } from '@data/scenario/conditionHelper';
+import ScenarioGuide from '@data/scenario/ScenarioGuide';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;

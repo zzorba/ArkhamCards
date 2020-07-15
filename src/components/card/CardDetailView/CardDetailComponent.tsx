@@ -7,16 +7,16 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import typography from 'styles/typography';
-import AppIcon from 'icons/AppIcon';
-import Button from 'components/core/Button';
-import BasicButton from 'components/core/BasicButton';
-import Card from 'data/Card';
+import typography from '@styles/typography';
+import AppIcon from '@icons/AppIcon';
+import Button from '@components/core/Button';
+import BasicButton from '@components/core/BasicButton';
+import Card from '@data/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
-import space, { m, s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import space, { m, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId?: string;

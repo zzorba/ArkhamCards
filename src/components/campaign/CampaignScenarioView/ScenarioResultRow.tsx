@@ -8,7 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import { ScenarioResult } from 'actions/types';
 import { Scenario } from '../constants';
 import { EditScenarioResultProps } from '../EditScenarioResultView';
-import typography from 'styles/typography';
+import typography from '@styles/typography';
 
 interface Props {
   componentId: string;

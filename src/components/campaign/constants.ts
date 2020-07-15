@@ -21,8 +21,8 @@ import {
   CustomCampaignLog,
   ScenarioResult,
 } from 'actions/types';
-import { ChaosBag } from 'app_constants';
-import Card from 'data/Card';
+import { ChaosBag } from '@app_constants';
+import Card from '@data/Card';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {
   switch (difficulty) {

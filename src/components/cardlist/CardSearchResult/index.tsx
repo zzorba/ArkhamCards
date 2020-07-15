@@ -10,18 +10,18 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import EncounterIcon from 'icons/EncounterIcon';
-import CardCostIcon, { costIconSize } from 'components/core/CardCostIcon';
-import Button from 'components/core/Button';
-import Switch from 'components/core/Switch';
-import Card from 'data/Card';
-import { createFactionIcons, SKILLS, SkillCodeType } from 'app_constants';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import EncounterIcon from '@icons/EncounterIcon';
+import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
+import Button from '@components/core/Button';
+import Switch from '@components/core/Switch';
+import Card from '@data/Card';
+import { createFactionIcons, SKILLS, SkillCodeType } from '@app_constants';
+import COLORS from '@styles/colors';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
-import typography from 'styles/typography';
-import { isBig, s, xs } from 'styles/space';
+import typography from '@styles/typography';
+import { isBig, s, xs } from '@styles/space';
 
 const FACTION_ICONS = createFactionIcons({ colorChoice: 'text' });
 

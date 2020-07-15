@@ -17,7 +17,7 @@ import {
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from 'actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
@@ -32,17 +32,17 @@ import { CampaignDrawWeaknessProps } from '../CampaignDrawWeaknessDialog';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
 import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { OddsCalculatorProps } from '../OddsCalculatorView';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { iconsMap } from 'app/NavIcons';
-import Card from 'data/Card';
-import { ChaosBag } from 'app_constants';
+import Card from '@data/Card';
+import { ChaosBag } from '@app_constants';
 import { updateCampaign, updateCampaignSpentXp, deleteCampaign, cleanBrokenCampaigns } from '../actions';
-import { NavigationProps } from 'components/nav/types';
-import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
-import COLORS from 'styles/colors';
+import { NavigationProps } from '@components/nav/types';
+import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '@reducers';
+import COLORS from '@styles/colors';
 
 export interface CampaignDetailProps {
   id: number;

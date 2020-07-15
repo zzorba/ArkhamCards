@@ -3,18 +3,18 @@ import { map } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import Card from 'data/Card';
+import Card from '@data/Card';
 import {
   BranchStep,
   CardCondition,
   Option,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { hasCardConditionResult } from 'data/scenario/conditionHelper';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { hasCardConditionResult } from '@data/scenario/conditionHelper';
 import { stringList } from 'lib/stringHelper';
 
 interface Props {

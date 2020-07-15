@@ -1,7 +1,7 @@
 import React from 'react';
 import { t } from 'ttag';
 
-import DialogPicker from 'components/core/DialogPicker';
+import DialogPicker from '@components/core/DialogPicker';
 
 interface Props {
   componentId: string;

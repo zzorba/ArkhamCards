@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Card from 'data/Card';
+import Card from '@data/Card';
 import PickerStyleButton from './PickerStyleButton';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props {
   investigator: Card;

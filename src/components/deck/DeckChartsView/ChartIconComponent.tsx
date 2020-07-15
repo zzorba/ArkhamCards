@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import COLORS from '@styles/colors';
 
 interface Props {
   x: number;

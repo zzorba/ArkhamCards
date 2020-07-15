@@ -12,9 +12,9 @@ import { t } from 'ttag';
 import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from 'actions/types';
-import { PLAYER_FACTION_CODES, FactionCodeType } from 'app_constants';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import { PLAYER_FACTION_CODES, FactionCodeType } from '@app_constants';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   parsedDeck: ParsedDeck;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import { CustomColor } from 'components/campaignguide/prompts/types';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { BulletType } from 'data/scenario/types';
-import typography from 'styles/typography';
-import { m, s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import { CustomColor } from '@components/campaignguide/prompts/types';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import { BulletType } from '@data/scenario/types';
+import typography from '@styles/typography';
+import { m, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   code: string;

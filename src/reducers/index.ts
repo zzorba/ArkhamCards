@@ -25,7 +25,7 @@ import {
   NEW_CHAOS_BAG_RESULTS,
   SORT_BY_TYPE,
 } from 'actions/types';
-import Card, { CardsMap } from 'data/Card';
+import Card, { CardsMap } from '@data/Card';
 
 const packsPersistConfig = {
   key: 'packs',

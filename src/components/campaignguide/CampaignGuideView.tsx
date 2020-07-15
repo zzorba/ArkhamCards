@@ -6,21 +6,21 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { Campaign } from 'actions/types';
-import CampaignInvestigatorsComponent from 'components/campaignguide/CampaignInvestigatorsComponent';
-import CampaignLogComponent from 'components/campaignguide/CampaignLogComponent';
-import ScenarioListComponent from 'components/campaignguide/ScenarioListComponent';
-import TabView from 'components/core/TabView';
-import { deleteCampaign, updateCampaign } from 'components/campaign/actions';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
+import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
+import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
+import TabView from '@components/core/TabView';
+import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import withCampaignGuideContext, {
   CampaignGuideProps as InjectedCampaignGuideProps,
   CampaignGuideInputProps,
-} from 'components/campaignguide/withCampaignGuideContext';
-import { NavigationProps } from 'components/nav/types';
-import { s, m } from 'styles/space';
-import COLORS from 'styles/colors';
+} from '@components/campaignguide/withCampaignGuideContext';
+import { NavigationProps } from '@components/nav/types';
+import { s, m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 

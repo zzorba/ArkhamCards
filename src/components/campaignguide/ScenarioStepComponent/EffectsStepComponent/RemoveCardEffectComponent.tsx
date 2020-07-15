@@ -2,15 +2,15 @@ import React from 'react';
 import { map, keys } from 'lodash';
 import { t } from 'ttag';
 
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorCheckListComponent from '../../prompts/InvestigatorCheckListComponent';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { RemoveCardEffect } from 'data/scenario/types';
-import Card from 'data/Card';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { RemoveCardEffect } from '@data/scenario/types';
+import Card from '@data/Card';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import { hasCardConditionResult } from 'data/scenario/conditionHelper';
+import { hasCardConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   id: string;
