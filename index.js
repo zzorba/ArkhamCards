@@ -5,10 +5,10 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Navigation } from 'react-native-navigation';
 import 'reflect-metadata';
 
-import DatabaseProvider from 'data/DatabaseProvider';
-import { registerScreens } from 'app/screens';
-import configureStore from 'app/store';
-import App from 'app/App';
+import DatabaseProvider from './src/data/DatabaseProvider';
+import { registerScreens } from './src/app/screens';
+import configureStore from './src/app/store';
+import App from './src/app/App';
 
 function MyProvider({ store: { redux, persistor }, children}) {
   return (
