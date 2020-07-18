@@ -372,6 +372,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
             { !locked ? (
               <Switch
                 value={this.state.killed}
+                customColor={COLORS.faction[investigator.factionCode()].background}
                 onValueChange={this._toggleKilled}
                 disabled={this.state.insane}
               />
@@ -419,6 +420,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
             </Text>
             { !locked ? (
               <Switch
+                customColor={COLORS.faction[investigator.factionCode()].background}
                 value={this.state.insane}
                 onValueChange={this._toggleInsane}
                 disabled={this.state.killed}

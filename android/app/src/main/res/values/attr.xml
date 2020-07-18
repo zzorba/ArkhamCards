@@ -31,4 +31,5 @@
     <attr name="campaignGreenColor" format="reference" />
     <attr name="toggleButtonColor" format="reference" />
     <attr name="selectedToggleButtonColor" format="reference" />
+    <attr name="dividerColor" format="reference" />
 </resources>

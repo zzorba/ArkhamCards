@@ -32,4 +32,5 @@
     <color name="campaignGreenColor">#33660033</color>
     <color name="toggleButtonColor">#f6f6f6</color>
     <color name="selectedToggleButtonColor">#dddddd</color>
+    <color name="dividerColor">#bdbdbd</color>
 </resources>

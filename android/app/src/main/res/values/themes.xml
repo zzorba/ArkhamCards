@@ -31,5 +31,6 @@
 		<item name="campaignGreenColor">@color/campaignGreenColor</item>
 		<item name="toggleButtonColor">@color/toggleButtonColor</item>
 		<item name="selectedToggleButtonColor">@color/selectedToggleButtonColor</item>
+		<item name="dividerColor">@color/dividerColor</item>
 	</style>
 </resources>

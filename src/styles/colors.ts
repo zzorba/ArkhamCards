@@ -15,7 +15,7 @@ export default {
   lightBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
   veryLightBackground: (Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : PlatformColor('?attr/colorVeryLightBackground')) as any as string,
   veryVeryLightBackground: (Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : PlatformColor('?attr/colorVeryVeryLightBackground')) as any as string,
-  divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#bdbdbd') as any as string,
+  divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#888888') as any as string,
   faction: {
     mystic: {
       text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331b9', dark: '#af89fa' }) : PlatformColor('?attr/factionMysticTextColor')) as any as string,

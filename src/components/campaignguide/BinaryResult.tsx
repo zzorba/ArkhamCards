@@ -14,7 +14,6 @@ interface Props {
   prompt?: string;
   children?: React.ReactNode | React.ReactNode[];
   result: boolean;
-  noBorder?: boolean;
 }
 
 export default function BinaryResult({
@@ -22,7 +21,6 @@ export default function BinaryResult({
   prompt,
   result,
   children,
-  noBorder,
 }: Props) {
   return (
     <View style={styles.row}>
@@ -32,7 +30,7 @@ export default function BinaryResult({
           { !!children && children }
         </SetupStepWrapper>
       </View>
-      <ResultIndicatorIcon result={result} noBorder={noBorder} />
+      <ResultIndicatorIcon result={result} />
     </View>
   );
 }

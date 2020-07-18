@@ -53,7 +53,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
         { editable ? (
           <Switch
             onValueChange={this._toggle}
-            customColor={color}
+            customColor="white"
             customTrackColor={color ? '#ccc' : undefined}
             value={selected}
           />
