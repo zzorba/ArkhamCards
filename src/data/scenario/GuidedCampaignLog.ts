@@ -18,9 +18,9 @@ import {
   Slots,
   TraumaAndCardData,
   WeaknessSet,
-} from 'actions/types';
+} from '@actions/types';
 import { ChaosBag } from '@app_constants';
-import { traumaDelta } from 'lib/trauma';
+import { traumaDelta } from '@lib/trauma';
 import {
   AddRemoveChaosTokenEffect,
   AddCardEffect,

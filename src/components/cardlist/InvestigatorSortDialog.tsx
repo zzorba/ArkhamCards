@@ -8,7 +8,7 @@ import {
   SORT_BY_PACK,
   SORT_BY_TITLE,
   SortType,
-} from 'actions/types';
+} from '@actions/types';
 
 interface Props {
   componentId: string;

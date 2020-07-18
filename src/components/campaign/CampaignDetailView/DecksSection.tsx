@@ -13,7 +13,7 @@ import { t } from 'ttag';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from 'actions/types';
+import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import typography from '@styles/typography';

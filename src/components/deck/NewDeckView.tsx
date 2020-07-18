@@ -3,8 +3,8 @@ import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { SORT_BY_PACK, SortType , Deck } from 'actions/types';
-import { iconsMap } from 'app/NavIcons';
+import { SORT_BY_PACK, SortType , Deck } from '@actions/types';
+import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
 import { getDeckOptions } from '@components/nav/helper';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';

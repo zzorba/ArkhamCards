@@ -4,8 +4,8 @@ import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { Campaign } from 'actions/types';
-import { iconsMap } from 'app/NavIcons';
+import { Campaign } from '@actions/types';
+import { iconsMap } from '@app/NavIcons';
 import CampaignItem from './CampaignItem';
 import { CampaignDetailProps } from '@components/campaign/CampaignDetailView';
 import { CampaignGuideProps } from '@components/campaignguide/CampaignGuideView';

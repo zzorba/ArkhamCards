@@ -19,7 +19,7 @@ import {
   TDEA,
   TDEB,
   CampaignCycleCode,
-} from 'actions/types';
+} from '@actions/types';
 import CycleItem from './CycleItem';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { campaignName } from '../constants';

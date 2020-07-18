@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Campaign, Deck, DecksMap } from 'actions/types';
+import { Campaign, Deck, DecksMap } from '@actions/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import DeckListRow from '@components/decklist/DeckListRow';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';

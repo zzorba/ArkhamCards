@@ -13,7 +13,7 @@ import { Brackets } from 'typeorm/browser';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { CardFilterProps } from '@components/filter/CardFilterView';
-import FilterBuilder, { CardFilterData } from 'lib/filters';
+import FilterBuilder, { CardFilterData } from '@lib/filters';
 import { AppState, getFilterState, getCardFilterData } from '@reducers';
 import COLORS from '@styles/colors';
 

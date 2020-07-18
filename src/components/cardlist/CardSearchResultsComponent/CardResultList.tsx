@@ -38,7 +38,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { cardSectionHeaderHeight, CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import calculateDefaultFilterState from '@components/filter/DefaultFilterState';
-import { CardFilterData, FilterState, calculateCardFilterData } from 'lib/filters';
+import { CardFilterData, FilterState, calculateCardFilterData } from '@lib/filters';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -49,7 +49,7 @@ import {
   SORT_BY_ENCOUNTER_SET,
   SortType,
   Slots,
-} from 'actions/types';
+} from '@actions/types';
 import { QuerySort } from '@data/types';
 import { combineQueries, where } from '@data/query';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '@reducers';

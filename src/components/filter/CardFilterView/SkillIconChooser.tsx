@@ -7,7 +7,7 @@ import { t } from 'ttag';
 
 import AccordionItem from '../AccordionItem';
 import ToggleFilter from '@components/core/ToggleFilter';
-import { SkillIconsFilters } from 'lib/filters';
+import { SkillIconsFilters } from '@lib/filters';
 import { xs } from '@styles/space';
 
 interface Props {

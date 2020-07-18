@@ -13,7 +13,7 @@ import {
   sum,
 } from 'lodash';
 
-import { StringChoices } from 'actions/types';
+import { StringChoices } from '@actions/types';
 import { Choices } from '@data/scenario';
 import {
   BulletType,

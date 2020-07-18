@@ -7,7 +7,7 @@ import BasicButton from '@components/core/BasicButton';
 import { CustomColor } from '@components/campaignguide/prompts/types';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import { NumberChoices } from 'actions/types';
+import { NumberChoices } from '@actions/types';
 import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';

@@ -15,7 +15,7 @@ import {
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { hasCardConditionResult } from '@data/scenario/conditionHelper';
-import { stringList } from 'lib/stringHelper';
+import { stringList } from '@lib/stringHelper';
 
 interface Props {
   step: BranchStep;

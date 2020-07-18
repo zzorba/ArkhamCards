@@ -36,7 +36,7 @@ import {
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
   RestoreBackupAction,
-} from 'actions/types';
+} from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, getCampaign } from '@reducers';
 

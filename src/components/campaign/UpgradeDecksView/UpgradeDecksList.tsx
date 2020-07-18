@@ -9,10 +9,10 @@ import { t } from 'ttag';
 
 import NonDeckDetailsButton from './NonDeckDetailsButton';
 import UpgradeDeckButton from './UpgradeDeckButton';
-import { Deck, InvestigatorData, ParsedDeck } from 'actions/types';
+import { Deck, InvestigatorData, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import Card, { CardsMap } from '@data/Card';
-import { parseBasicDeck } from 'lib/parseDeck';
+import { parseBasicDeck } from '@lib/parseDeck';
 import typography from '@styles/typography';
 import { showDeckModal } from '@components/nav/helper';
 import DeckRow from '../DeckRow';

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { t } from 'ttag';
-import { WeaknessSet } from 'actions/types';
+import { WeaknessSet } from '@actions/types';
 import typography from '@styles/typography';
 import Card from '@data/Card';
 import NavButton from '@components/core/NavButton';

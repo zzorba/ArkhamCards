@@ -14,9 +14,9 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import CategoryHeader from './CategoryHeader';
-import { Campaign, CampaignGuideState, Deck, Pack } from 'actions/types';
+import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { clearDecks } from 'actions';
+import { clearDecks } from '@actions';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import Card from '@data/Card';

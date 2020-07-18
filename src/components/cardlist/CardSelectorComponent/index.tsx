@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { filter, keys, map, sortBy } from 'lodash';
 
-import { Slots } from 'actions/types';
+import { Slots } from '@actions/types';
 import Card from '@data/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';

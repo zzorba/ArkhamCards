@@ -9,7 +9,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { msgid, ngettext, t } from 'ttag';
 
-import { DeckMeta, ParsedDeck } from 'actions/types';
+import { DeckMeta, ParsedDeck } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import { CardsMap } from '@data/Card';

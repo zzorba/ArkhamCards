@@ -9,7 +9,7 @@ import {
   CardSetSchemaVersionAction,
   CardCache,
   TabooCache,
-} from 'actions/types';
+} from '@actions/types';
 
 interface CardsState {
   loading: boolean;

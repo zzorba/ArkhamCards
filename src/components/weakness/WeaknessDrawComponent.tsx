@@ -12,8 +12,8 @@ import FastImage from 'react-native-fast-image';
 import FlipCard from 'react-native-flip-card';
 import { t } from 'ttag';
 
-import { drawWeakness, availableWeaknesses } from 'lib/weaknessHelper';
-import { Slots, WeaknessSet } from 'actions/types';
+import { drawWeakness, availableWeaknesses } from '@lib/weaknessHelper';
+import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import BasicButton from '@components/core/BasicButton';

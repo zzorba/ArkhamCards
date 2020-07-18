@@ -8,9 +8,9 @@ import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import { CardDetailSwipeProps } from '@components/card/CardDetailSwipeView';
-import { Deck, ParsedDeck, Slots } from 'actions/types';
+import { Deck, ParsedDeck, Slots } from '@actions/types';
 import Card from '@data/Card';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 
 export function getDeckOptions(

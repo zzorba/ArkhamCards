@@ -38,7 +38,7 @@ import Dialog from '@components/core/Dialog';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import {
   fetchPrivateDeck,
   fetchPublicDeck,
@@ -47,12 +47,12 @@ import {
   saveDeckChanges,
   DeckChanges,
 } from '@components/deck/actions';
-import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from 'actions/types';
+import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '@components/core/withPlayerCards';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
-import { parseDeck, parseBasicDeck } from 'lib/parseDeck';
+import { parseDeck, parseBasicDeck } from '@lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import { DeckDescriptionProps } from '../DeckDescriptionView';

@@ -29,7 +29,7 @@ import {
   SlotCounts,
   Slots,
   SplitCards,
-} from 'actions/types';
+} from '@actions/types';
 import Card, { CardKey, CardsMap } from '@data/Card';
 import {
   ARCANE_RESEARCH_CODE,

@@ -9,7 +9,7 @@ import DeckXpSection from './DeckXpSection';
 import BasicListRow from '@components/core/BasicListRow';
 import { showCard, showDeckModal } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { Deck, TraumaAndCardData } from 'actions/types';
+import { Deck, TraumaAndCardData } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from '@app_constants';

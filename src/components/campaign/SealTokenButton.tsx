@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { updateChaosBagResults } from './actions';
 import ChaosToken from './ChaosToken';
-import { ChaosBagResults } from 'actions/types';
+import { ChaosBagResults } from '@actions/types';
 import { AppState, getChaosBagResults } from '@reducers';
 import { ChaosTokenType } from '@app_constants';
 

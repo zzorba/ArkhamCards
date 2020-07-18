@@ -16,8 +16,8 @@ import {
   ToggleMythosAction,
   UpdateCardSortAction,
   SortType,
-} from 'actions/types';
-import { CardFilterData, FilterState } from 'lib/filters';
+} from '@actions/types';
+import { CardFilterData, FilterState } from '@lib/filters';
 
 export function toggleMythosMode(
   id: string,

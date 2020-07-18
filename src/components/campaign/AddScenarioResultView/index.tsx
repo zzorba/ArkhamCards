@@ -12,7 +12,7 @@ import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 're
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, SingleCampaign, ScenarioResult } from 'actions/types';
+import { CampaignNotes, SingleCampaign, ScenarioResult } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';

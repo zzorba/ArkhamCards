@@ -19,7 +19,7 @@ import FaqEntry from '@data/FaqEntry';
 import connectDb from '@components/data/connectDb';
 import { showCard } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
-import { getFaqEntry } from 'lib/publicApi';
+import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
 import typography from '@styles/typography';
 import { m } from '@styles/space';

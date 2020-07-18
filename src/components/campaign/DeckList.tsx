@@ -8,7 +8,7 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Deck } from 'actions/types';
+import { Deck } from '@actions/types';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import Card, { CardsMap } from '@data/Card';

@@ -3,7 +3,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import { t } from 'ttag';
-import { Campaign, Slots, WeaknessSet } from 'actions/types';
+import { Campaign, Slots, WeaknessSet } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';

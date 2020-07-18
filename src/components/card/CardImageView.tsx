@@ -10,7 +10,7 @@ import { t } from 'ttag';
 
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
 import { HEADER_HEIGHT } from '@styles/sizes';
 import COLORS from '@styles/colors';

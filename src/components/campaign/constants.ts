@@ -20,7 +20,7 @@ import {
   CampaignCycleCode,
   CustomCampaignLog,
   ScenarioResult,
-} from 'actions/types';
+} from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
 

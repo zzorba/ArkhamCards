@@ -24,7 +24,7 @@ import {
   SplitCards,
   Slots,
   Trauma,
-} from 'actions/types';
+} from '@actions/types';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
@@ -39,7 +39,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import DeckValidation from 'lib/DeckValidation';
+import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import COLORS from '@styles/colors';

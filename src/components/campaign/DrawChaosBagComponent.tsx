@@ -10,7 +10,7 @@ import KeepAwake from 'react-native-keep-awake';
 import BasicButton from '@components/core/BasicButton';
 import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
-import { ChaosBagResults } from 'actions/types';
+import { ChaosBagResults } from '@actions/types';
 import typography from '@styles/typography';
 import ChaosToken from './ChaosToken';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';

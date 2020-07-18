@@ -4,14 +4,14 @@ import {
   DynamicColorIOS,
 } from 'react-native';
 
-const darkText = Platform.OS === 'ios' ? PlatformColor('labelColor') : '#111';
+const darkText = Platform.OS === 'ios' ? PlatformColor('labelColor') : PlatformColor('?attr/colorOnPrimary');
 const lightText = Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : '#444';
 
 export default {
   darkText,
   lightText,
   veryLightText: Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor'): '#888',
-  background: Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : 'white',
+  background: Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : PlatformColor('?attr/colorPrimarySurface'),
   lightBackground: Platform.OS === 'ios' ? PlatformColor('systemFillColor') : '#ccc',
   veryLightBackground: Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : '#eee',
   veryVeryLightBackground: Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : '#f4f4f4',

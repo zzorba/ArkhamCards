@@ -2,7 +2,7 @@ import { chunk, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, v
 import { Alert } from 'react-native';
 import { t } from 'ttag';
 
-import { CardCache, TabooCache, Pack } from 'actions/types';
+import { CardCache, TabooCache, Pack } from '@actions/types';
 import Card from '@data/Card';
 import Database from '@data/Database';
 import EncounterSet from '@data/EncounterSet';

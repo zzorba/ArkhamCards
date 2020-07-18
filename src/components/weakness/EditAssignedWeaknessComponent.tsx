@@ -6,7 +6,7 @@ import {
 
 import { showCard } from '@components/nav/helper';
 import { t } from 'ttag';
-import { Slots, WeaknessSet } from 'actions/types';
+import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import CardSearchResult from '../cardlist/CardSearchResult';

@@ -12,9 +12,9 @@ import { NetInfoStateType } from '@react-native-community/netinfo';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import { refreshMyDecks } from 'actions';
+import { refreshMyDecks } from '@actions';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
-import { Campaign, Deck, DecksMap } from 'actions/types';
+import { Campaign, Deck, DecksMap } from '@actions/types';
 import Card from '@data/Card';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import DeckListComponent from '@components/decklist/DeckListComponent';

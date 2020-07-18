@@ -6,7 +6,7 @@ import {
 import { flatMap, forEach, map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
-import { stringList } from 'lib/stringHelper';
+import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import connectDb from '@components/data/connectDb';
 import Database from '@data/Database';

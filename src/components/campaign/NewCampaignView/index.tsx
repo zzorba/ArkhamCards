@@ -28,7 +28,7 @@ import {
   Deck,
   Slots,
   WeaknessSet,
-} from 'actions/types';
+} from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
 import CampaignNoteSectionRow from './CampaignNoteSectionRow';

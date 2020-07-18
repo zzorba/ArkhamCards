@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { Deck, Slots } from 'actions/types';
+import { Deck, Slots } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';

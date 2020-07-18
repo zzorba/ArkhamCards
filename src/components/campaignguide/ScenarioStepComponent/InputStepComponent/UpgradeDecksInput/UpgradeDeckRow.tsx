@@ -8,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import Switch from '@components/core/Switch';
 import BasicButton from '@components/core/BasicButton';
 import ShowDeckButton from './ShowDeckButton';
-import { Deck, Slots, NumberChoices } from 'actions/types';
+import { Deck, Slots, NumberChoices } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardListWrapper from '@components/card/CardListWrapper';

@@ -7,7 +7,7 @@ import {
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount } from 'actions/types';
+import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount } from '@actions/types';
 import Card from '@data/Card';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import EditCountComponent from '../EditCountComponent';

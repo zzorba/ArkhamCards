@@ -18,7 +18,7 @@ import { CAMPAIGN_COLORS, Scenario, completedScenario } from '@components/campai
 import Difficulty from '@components/campaign/Difficulty';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
-import { Campaign, CampaignDifficulty, CUSTOM } from 'actions/types';
+import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
 import Card from '@data/Card';
 import typography from '@styles/typography';

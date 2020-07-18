@@ -4,7 +4,7 @@ import { filter, findIndex, map, keys } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { StringChoices } from 'actions/types';
+import { StringChoices } from '@actions/types';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/Card';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';

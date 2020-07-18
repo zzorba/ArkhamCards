@@ -11,7 +11,7 @@ import {
   InvestigatorNotes,
   InvestigatorCampaignNoteSection,
   InvestigatorCampaignNoteCount,
-} from 'actions/types';
+} from '@actions/types';
 import Card from '@data/Card';
 
 interface Props {

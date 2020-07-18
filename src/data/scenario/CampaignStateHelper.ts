@@ -12,7 +12,7 @@ import {
   StringChoices,
   CampaignGuideState,
   SupplyCounts,
-} from 'actions/types';
+} from '@actions/types';
 import { ScenarioId } from '@data/scenario';
 import Card, { CardsMap } from '@data/Card';
 

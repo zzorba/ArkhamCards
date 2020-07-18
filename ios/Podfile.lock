@@ -212,7 +212,7 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-netinfo (5.9.4):
+  - react-native-netinfo (5.9.5):
     - React
   - react-native-sqlite-storage (5.0.0):
     - React
@@ -278,7 +278,7 @@ PODS:
     - React-Core (= 0.63.1)
     - React-cxxreact (= 0.63.1)
     - React-jsi (= 0.63.1)
-  - ReactNativeNavigation (6.9.0):
+  - ReactNativeNavigation (6.9.1):
     - React
     - React-RCTImage
     - React-RCTText
@@ -489,7 +489,7 @@ SPEC CHECKSUMS:
   react-native-config: 54f023214af396f21ff0a9e0fed22620d676c8a1
   react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
-  react-native-netinfo: cd479ab1b67cdd1cb1403a99ecdb24190a6dd7ef
+  react-native-netinfo: a53b00d949b6456913aaf507d9dba90c4008c611
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
   react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
   React-RCTActionSheet: 1702a1a85e550b5c36e2e03cb2bd3adea053de95
@@ -502,7 +502,7 @@ SPEC CHECKSUMS:
   React-RCTText: 4f95d322b7e6da72817284abf8a2cdcec18b9cd8
   React-RCTVibration: f3a9123c244f35c40d3c9f3ec3f0b9e5717bb292
   ReactCommon: 2905859f84a94a381bb0d8dd3921ccb1a0047cb8
-  ReactNativeNavigation: 38441fc9711ea6df07e4c30c642fb4c29fecc4c5
+  ReactNativeNavigation: 9b0afb0e38d6b97eb23aab3bb410826ebc559bec
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNColorMatrixImageFilters: b63046039affa237c9e8e10a79052fbc7fb9d963

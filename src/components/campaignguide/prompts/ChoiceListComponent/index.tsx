@@ -8,7 +8,7 @@ import { CustomColor } from '@components/campaignguide/prompts/types';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import { StringChoices } from 'actions/types';
+import { StringChoices } from '@actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';

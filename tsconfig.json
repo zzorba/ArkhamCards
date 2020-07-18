@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "target": "esnext",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
     // "skipLibCheck": true,
     "module": "es6",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "lib": ["es6"],                             /* Specify library files to be included in the compilation. */
-    // "allowJs": true,                       /* Allow javascript files to be compiled. */
+    "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
     "jsx": "react",                           /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
     // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    // "sourceMap": true,                     /* Generates corresponding '.map' file. */
+    "sourceMap": true,                     /* Generates corresponding '.map' file. */
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
     // "outDir": "./",                        /* Redirect output structure to the directory. */
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
@@ -19,7 +19,7 @@
     "noEmit": true,                        /* Do not emit outputs. */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
-    // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
     "resolveJsonModule": true,
     /* Strict Type-Checking Options */
     "strict": true,                           /* Enable all strict type-checking options. */
@@ -39,24 +39,27 @@
 
     /* Module Resolution Options */
     "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    "baseUrl": "./src",                       /* Base directory to resolve non-absolute module names. */
+    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
     "paths": {
-      "@app": ["./app"],
-      "@actions": ["./actions"],
-      "@assets": ["./../assets"],
-      "@components": ["./components"],
-      "@app_constants": ["./app_constants"],
-      "@data": ["./data"],
-      "@icons": ["./icons"],
-      "@lib": ["./lib"],
-      "@reducers": ["./reducers"],
-      "@styles": ["./styles"],
+      "@app/*": ["src/app/*"],
+      "@actions": ["src/actions/index.ts"],
+      "@actions/*": ["src/actions/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["src/components/*"],
+      "@app_constants": ["src/app_constants.tsx"],
+      "@data/*": ["src/data/*"],
+      "@icons/*": ["src/icons/*"],
+      "@lib/*": ["src/lib/*"],
+      "@reducers/*": ["src/reducers/*"],
+      "@reducers": ["src/reducers/index.ts"],
+      "@styles/*": ["src/styles/*"],
+
     },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     "typeRoots": ["./types", "./node_modules/@types"],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */
     "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    //"esModuleInterop": true,                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "esModuleInterop": true,                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
     // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */
 
     /* Source Map Options */
@@ -69,5 +72,11 @@
     "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     "emitDecoratorMetadata": true         /* Enables experimental support for emitting type metadata for decorators. */
   },
-  "exclude": ["node_modules", "types"]
+  "exclude": [
+    "node_modules", 
+    "types",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { find, map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
-import { stringList } from 'lib/stringHelper';
+import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';

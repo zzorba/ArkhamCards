@@ -8,7 +8,7 @@ import {
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Campaign } from 'actions/types';
+import { Campaign } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from '@components/core/NavButton';
 import typography from '@styles/typography';

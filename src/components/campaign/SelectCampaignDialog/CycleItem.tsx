@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native';
 
-import { CampaignCycleCode } from 'actions/types';
+import { CampaignCycleCode } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import { s, iconSizeScale } from '@styles/space';
 import typography from '@styles/typography';

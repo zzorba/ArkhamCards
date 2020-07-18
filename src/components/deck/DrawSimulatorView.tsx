@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { t } from 'ttag';
-import { Slots } from 'actions/types';
+import { Slots } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardSearchResult from '../cardlist/CardSearchResult';

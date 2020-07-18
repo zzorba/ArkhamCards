@@ -13,7 +13,7 @@ import ScenarioResultRow from './ScenarioResultRow';
 import { campaignScenarios, Scenario, completedScenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { NavigationProps } from '@components/nav/types';
-import { Campaign, ScenarioResult } from 'actions/types';
+import { Campaign, ScenarioResult } from '@actions/types';
 import { getCampaign, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';

@@ -12,7 +12,7 @@ import {
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import { NavigationProps } from '@components/nav/types';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import ChaosTokenRow from './ChaosTokenRow';

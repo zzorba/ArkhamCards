@@ -8,13 +8,13 @@ import {
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import { Pack } from 'actions/types';
+import { Pack } from '@actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
-import { CardFilterData } from 'lib/filters';
+import { CardFilterData } from '@lib/filters';
 import ToggleFilter from '@components/core/ToggleFilter';
 import withFilterFunctions, { FilterFunctionProps, FilterProps } from '../withFilterFunctions';
 import NavButton from '@components/core/NavButton';

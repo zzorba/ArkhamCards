@@ -2,7 +2,7 @@ import {
   NumberChoices,
   StringChoices,
   SupplyCounts,
-} from 'actions/types';
+} from '@actions/types';
 import CampaignStateHelper from './CampaignStateHelper';
 
 export default class ScenarioStateHelper {

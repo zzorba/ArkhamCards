@@ -1,7 +1,7 @@
 import { flatMap } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
-import { DeckMeta } from 'actions/types';
+import { DeckMeta } from '@actions/types';
 import Card from '@data/Card';
 import { DeckOptionQueryBuilder } from '@data/DeckOption';
 import { combineQueries, combineQueriesOpt, where } from '@data/query';

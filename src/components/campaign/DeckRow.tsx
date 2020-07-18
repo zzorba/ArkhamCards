@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
-import { Deck } from 'actions/types';
+import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { getDeck, AppState } from '@reducers';

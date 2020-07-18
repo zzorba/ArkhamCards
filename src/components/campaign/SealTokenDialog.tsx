@@ -8,11 +8,11 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { AppState, getChaosBagResults } from '@reducers';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
-import { ChaosBagResults } from 'actions/types';
+import { ChaosBagResults } from '@actions/types';
 import SealTokenButton from './SealTokenButton';
 
 export interface SealTokenDialogProps {

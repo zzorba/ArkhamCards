@@ -13,7 +13,7 @@ import {
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
   SortType,
-} from 'actions/types';
+} from '@actions/types';
 import DialogPicker from '@components/core/DialogPicker';
 
 interface Props {

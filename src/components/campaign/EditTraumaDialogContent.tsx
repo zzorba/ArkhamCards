@@ -6,7 +6,7 @@ import DialogComponent from 'react-native-dialog';
 
 import DialogPlusMinusButtons from '@components/core/DialogPlusMinusButtons';
 import { t } from 'ttag';
-import { Trauma } from 'actions/types';
+import { Trauma } from '@actions/types';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';

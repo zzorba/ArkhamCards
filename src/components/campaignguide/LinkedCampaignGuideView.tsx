@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import LinkedScenarioListComponent from './LinkedScenarioListComponent';
 import CampaignGuideSummary from './CampaignGuideSummary';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { Campaign } from 'actions/types';
+import { Campaign } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';

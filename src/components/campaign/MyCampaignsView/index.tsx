@@ -11,12 +11,12 @@ import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import BasicButton from '@components/core/BasicButton';
-import { CUSTOM, Campaign, DecksMap } from 'actions/types';
+import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import CampaignList from './CampaignList';
 import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from '@reducers';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';

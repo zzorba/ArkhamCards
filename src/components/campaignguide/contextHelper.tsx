@@ -10,7 +10,7 @@ import {
   CampaignGuideState,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
-} from 'actions/types';
+} from '@actions/types';
 import { UniversalCampaignProps } from './withUniversalCampaignData';
 import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuide from '@data/scenario/CampaignGuide';

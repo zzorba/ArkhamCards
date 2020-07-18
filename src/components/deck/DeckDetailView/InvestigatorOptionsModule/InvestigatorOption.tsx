@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import DeckSizeSelectPicker from './DeckSizeSelectPicker';
 import FactionSelectPicker from './FactionSelectPicker';
-import { DeckMeta } from 'actions/types';
+import { DeckMeta } from '@actions/types';
 import Card from '@data/Card';
 import DeckOption from '@data/DeckOption';
 

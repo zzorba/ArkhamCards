@@ -4,7 +4,7 @@ import { t } from 'ttag';
 
 import { SelectCampagaignProps } from '../SelectCampaignDialog';
 import PickerStyleButton from '@components/core/PickerStyleButton';
-import { CUSTOM, CORE, CampaignCycleCode } from 'actions/types';
+import { CUSTOM, CORE, CampaignCycleCode } from '@actions/types';
 
 interface Props {
   componentId: string;

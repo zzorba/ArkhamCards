@@ -12,7 +12,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
-import { Deck, Slots } from 'actions/types';
+import { Deck, Slots } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import Card from '@data/Card';

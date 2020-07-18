@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { WeaknessSet, InvestigatorData } from 'actions/types';
+import { WeaknessSet, InvestigatorData } from '@actions/types';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks } from '@data/scenario';

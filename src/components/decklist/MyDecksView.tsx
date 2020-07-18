@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Deck } from 'actions/types';
+import { Deck } from '@actions/types';
 import Card from '@data/Card';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import { showDeckModal } from '@components/nav/helper';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';

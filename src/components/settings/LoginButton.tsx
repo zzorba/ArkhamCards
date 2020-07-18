@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import BasicButton from '@components/core/BasicButton';
 import SettingsItem from './SettingsItem';
 import { t } from 'ttag';
-import { logout, login } from 'actions';
+import { logout, login } from '@actions';
 import { AppState } from '@reducers';
 
 interface OwnProps {

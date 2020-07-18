@@ -12,14 +12,14 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Campaign, Deck, DecksMap, SingleCampaign, ScenarioResult } from 'actions/types';
+import { Campaign, Deck, DecksMap, SingleCampaign, ScenarioResult } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState } from '@reducers';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import typography from '@styles/typography';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { updateCampaign } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';

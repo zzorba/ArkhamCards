@@ -12,7 +12,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DeckUpgradeComponent from './DeckUpgradeComponent';
-import { Campaign, Deck, Slots } from 'actions/types';
+import { Campaign, Deck, Slots } from '@actions/types';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal, showCard } from '@components/nav/helper';

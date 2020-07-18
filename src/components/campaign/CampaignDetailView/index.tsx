@@ -18,7 +18,7 @@ import {
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from 'actions/types';
+import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -36,7 +36,7 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import { OddsCalculatorProps } from '../OddsCalculatorView';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { iconsMap } from 'app/NavIcons';
+import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
 import { ChaosBag } from '@app_constants';
 import { updateCampaign, updateCampaignSpentXp, deleteCampaign, cleanBrokenCampaigns } from '../actions';

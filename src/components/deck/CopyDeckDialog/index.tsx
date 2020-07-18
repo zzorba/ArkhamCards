@@ -13,9 +13,9 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import { showDeckModal } from '@components/nav/helper';
 import Dialog from '@components/core/Dialog';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
-import { login } from 'actions';
-import { Deck } from 'actions/types';
-import { parseBasicDeck } from 'lib/parseDeck';
+import { login } from '@actions';
+import { Deck } from '@actions/types';
+import { parseBasicDeck } from '@lib/parseDeck';
 import { getDeck, getBaseDeck, getLatestDeck, AppState } from '@reducers';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';

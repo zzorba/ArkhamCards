@@ -17,7 +17,7 @@ import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import BasicSectionHeader from '@components/core/BasicSectionHeader';
-import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
+import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';

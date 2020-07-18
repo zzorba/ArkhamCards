@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from 'actions/types';
+import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '@actions/types';
 import connectDb from '@components/data/connectDb';
 import { updateCampaign } from '../actions';
 import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';

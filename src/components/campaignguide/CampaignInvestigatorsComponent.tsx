@@ -4,7 +4,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { flatMap, forEach, map, partition } from 'lodash';
 import { t } from 'ttag';
 
-import { Campaign, InvestigatorData } from 'actions/types';
+import { Campaign, InvestigatorData } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';

@@ -16,7 +16,7 @@ import { AddWeaknessEffect } from '@data/scenario/types';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import CardQueryWrapper from '@components/card/CardQueryWrapper';
-import FilterBuilder from 'lib/filters';
+import FilterBuilder from '@lib/filters';
 
 interface OwnProps {
   id: string;

@@ -7,7 +7,7 @@ import Database from '@data/Database';
 import DbRender from '@components/data/DbRender';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
-import { Deck, Slots } from 'actions/types';
+import { Deck, Slots } from '@actions/types';
 import Card from '@data/Card';
 import { PLAYER_CARDS_QUERY, combineQueries, where } from '@data/query';
 import { getDeck, getTabooSet, AppState } from '@reducers';

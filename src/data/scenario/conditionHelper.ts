@@ -8,7 +8,7 @@ import {
   sumBy,
 } from 'lodash';
 
-import { StringChoices } from 'actions/types';
+import { StringChoices } from '@actions/types';
 import {
   BinaryCardCondition,
   CardCondition,

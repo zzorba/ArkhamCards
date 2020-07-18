@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 
 import { t } from 'ttag';
-import { ScenarioResult, CUSTOM } from 'actions/types';
+import { ScenarioResult, CUSTOM } from '@actions/types';
 import LabeledTextBox from '@components/core/LabeledTextBox';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { NavigationProps } from '@components/nav/types';

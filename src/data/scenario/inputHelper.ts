@@ -1,6 +1,6 @@
 import { filter, find, forEach } from 'lodash';
 
-import { NumberChoices } from 'actions/types';
+import { NumberChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
   InvestigatorChoiceCondition,

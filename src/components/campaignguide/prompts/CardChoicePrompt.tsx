@@ -21,7 +21,7 @@ import { CardChoiceInput, CardSearchQuery, CardQuery } from '@data/scenario/type
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import { LatestDecks, ProcessedScenario } from '@data/scenario';
 import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
-import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from 'lib/filters';
+import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import { m } from '@styles/space';
 import COLORS from '@styles/colors';

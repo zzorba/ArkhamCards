@@ -13,7 +13,7 @@ import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import { Campaign, Deck, ParsedDeck, Slots, Trauma } from 'actions/types';
+import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { fetchPublicDeck, fetchPrivateDeck } from '@components/deck/actions';
 import typography from '@styles/typography';

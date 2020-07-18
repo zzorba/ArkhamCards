@@ -10,7 +10,7 @@ import {
   GuideActions,
   CampaignGuideState,
   DEFAULT_CAMPAIGN_GUIDE_STATE,
-} from 'actions/types';
+} from '@actions/types';
 
 export interface GuidesState {
   all: {

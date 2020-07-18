@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, Deck, DecksMap } from 'actions/types';
+import { Campaign, Deck, DecksMap } from '@actions/types';
 import Card from '@data/Card';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';

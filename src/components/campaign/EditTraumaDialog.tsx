@@ -5,7 +5,7 @@ import DialogComponent from 'react-native-dialog';
 import EditTraumaDialogContent from './EditTraumaDialogContent';
 import Dialog from '@components/core/Dialog';
 import { t } from 'ttag';
-import { Trauma } from 'actions/types';
+import { Trauma } from '@actions/types';
 import Card from '@data/Card';
 
 interface Props {

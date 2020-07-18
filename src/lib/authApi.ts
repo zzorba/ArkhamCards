@@ -2,7 +2,7 @@ import Config from 'react-native-config';
 import { keys, map } from 'lodash';
 
 import { getAccessToken } from './auth';
-import { Deck, DeckMeta } from 'actions/types';
+import { Deck, DeckMeta } from '@actions/types';
 
 interface Params {
   [key: string]: string | number;

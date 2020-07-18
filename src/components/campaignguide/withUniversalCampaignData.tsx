@@ -33,7 +33,7 @@ import {
   SupplyCounts,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
-} from 'actions/types';
+} from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import {

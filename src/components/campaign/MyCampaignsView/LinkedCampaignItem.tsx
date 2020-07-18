@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Campaign, CUSTOM } from 'actions/types';
+import { Campaign, CUSTOM } from '@actions/types';
 import { CardsMap } from '@data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';

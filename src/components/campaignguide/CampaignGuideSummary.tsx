@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { CampaignCycleCode, CampaignDifficulty } from 'actions/types';
+import { CampaignCycleCode, CampaignDifficulty } from '@actions/types';
 import { CAMPAIGN_COLORS, difficultyString } from '@components/campaign/constants';
 import typography from '@styles/typography';
 import GameHeader from '@components/campaign/GameHeader';

@@ -10,7 +10,7 @@ import {
   SupplyCounts,
   NumberChoices,
   StringChoices,
-} from 'actions/types';
+} from '@actions/types';
 
 export function undo(
   campaignId: number,
