@@ -1,9 +1,6 @@
 import React from 'react';
 import { flatMap, map } from 'lodash';
 import {
-  Platform,
-  PlatformColor,
-  DynamicColorIOS,
   StyleSheet,
 } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';

@@ -677,7 +677,7 @@ class NewCampaignView extends React.Component<Props, State> {
 
     return (
       <View ref={captureViewRef}>
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.container}>
           <CampaignSelector
             componentId={componentId}
             campaignChanged={this._campaignChanged}
@@ -793,5 +793,8 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
 });

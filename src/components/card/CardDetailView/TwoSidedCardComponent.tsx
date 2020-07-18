@@ -449,13 +449,13 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     name: string,
     subname?: string,
   ) {
-    const factionColor = COLORS.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
+    const color = COLORS.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
     return (
       <View style={[styles.cardTitle, {
-        backgroundColor: factionColor || COLORS.background,
-        borderColor: (card.faction2_code ? COLORS.faction.dual.background : factionColor),
+        backgroundColor: color,
+        borderColor: color,
       }]}>
-        { this.renderTitleContent(card, name, subname, factionColor) }
+        { this.renderTitleContent(card, name, subname, color) }
       </View>
     );
   }
@@ -692,7 +692,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   ) {
     const { simple, fontScale } = this.props;
     return (
-      <React.Fragment>
+      <>
         { !!card.text && (
           <View style={[styles.gameTextBlock, {
             borderColor: COLORS.faction[card.faction2_code ?
@@ -716,7 +716,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <CardFlavorTextComponent text={card.flavor} />
         }
         <CardTabooTextBlock card={card} fontScale={fontScale} />
-      </React.Fragment>
+      </>
     );
   }
 
@@ -796,7 +796,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       linked,
       notFirst,
     } = this.props;
-
     const isHorizontal = card.type_code === 'act' ||
       card.type_code === 'agenda' ||
       card.type_code === 'investigator';

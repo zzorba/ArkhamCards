@@ -379,7 +379,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <MaterialCommunityIcons
                 name="check"
                 size={18}
-                color={'#222'}
+                color={COLORS.darkText}
               />
             ) }
           </BasicListRow>
@@ -427,7 +427,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <MaterialCommunityIcons
                 name="check"
                 size={18}
-                color={'#222'}
+                color={COLORS.darkText}
               />
             ) }
           </BasicListRow>

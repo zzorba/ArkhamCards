@@ -1,0 +1,35 @@
+<resources>
+    <style name="ArkhamCards.DayNight" parent="Theme.AppCompat.DayNight.NoActionBar">
+		<item name="colorPrimaryText">@color/colorPrimaryText</item>
+		<item name="colorSecondaryText">@color/colorSecondaryText</item>
+		<item name="colorBackground">@color/colorBackground</item>
+		<item name="colorLightBackground">@color/colorLightBackground</item>
+		<item name="colorVeryLightBackground">@color/colorVeryLightBackground</item>
+		<item name="colorVeryVeryLightBackground">@color/colorVeryVeryLightBackground</item>
+		<item name="costTintIcon">@color/costTintIcon</item>
+		<item name="factionMysticTextColor">@color/factionMysticTextColor</item>
+		<item name="factionMysticLightBackgroundColor">@color/factionMysticLightBackgroundColor</item>
+		<item name="factionSeekerTextColor">@color/factionSeekerTextColor</item>
+		<item name="factionSeekerLightBackgroundColor">@color/factionSeekerLightBackgroundColor</item>
+		<item name="factionGuardianTextColor">@color/factionGuardianTextColor</item>
+		<item name="factionGuardianLightBackgroundColor">@color/factionGuardianLightBackgroundColor</item>
+		<item name="factionRogueTextColor">@color/factionRogueTextColor</item>
+		<item name="factionRogueLightBackgroundColor">@color/factionRogueLightBackgroundColor</item>
+		<item name="factionSurvivorTextColor">@color/factionSurvivorTextColor</item>
+		<item name="factionSurvivorLightBackgroundColor">@color/factionSurvivorLightBackgroundColor</item>
+		<item name="factionNeutralBackgroundColor">@color/factionNeutralBackgroundColor</item>
+		<item name="factionNeutralDarkBackgroundColor">@color/factionNeutralDarkBackgroundColor</item>
+		<item name="factionNeutralLightBackgroundColor">@color/factionNeutralLightBackgroundColor</item>
+		<item name="factionDualTextColor">@color/factionDualTextColor</item>
+		<item name="factionMythosBackgroundColor">@color/factionMythosBackgroundColor</item>
+		<item name="factionMythosDarkBackgroundColor">@color/factionMythosDarkBackgroundColor</item>
+		<item name="factionMythosLightBackgroundColor">@color/factionMythosLightBackgroundColor</item>
+		<item name="campaignScenarioGreen">@color/campaignScenarioGreen</item>
+		<item name="campaignBlueColor">@color/campaignBlueColor</item>
+		<item name="campaignTealColor">@color/campaignTealColor</item>
+		<item name="campaignPurpleColor">@color/campaignPurpleColor</item>
+		<item name="campaignGreenColor">@color/campaignGreenColor</item>
+		<item name="toggleButtonColor">@color/toggleButtonColor</item>
+		<item name="selectedToggleButtonColor">@color/selectedToggleButtonColor</item>
+	</style>
+</resources>

@@ -377,7 +377,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
     if (nextCard) {
       return (
         <View style={styles.singleCardWrapper}>
-          <TouchableWithoutFeedback onPress={this._flipCard}>
+          <TouchableWithoutFeedback onPress={this._flipCard} delayPressIn={0}>
             <FlipCard
               style={[styles.flipCard, {
                 width: cardWidth,

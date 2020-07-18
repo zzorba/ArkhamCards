@@ -84,7 +84,7 @@ export default class CountButton extends React.PureComponent<Props, State> {
       extrapolate: 'clamp',
     });
     return (
-      <TouchableWithoutFeedback onPress={this._onPress}>
+      <TouchableWithoutFeedback onPress={this._onPress} delayPressIn={0}>
         <View style={[
           styles.container,
           {

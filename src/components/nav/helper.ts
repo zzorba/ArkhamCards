@@ -56,6 +56,9 @@ export function getDeckOptions(
         ].darkBackground,
       },
     },
+    layout: {
+      backgroundColor: COLORS.background,
+    },
     bottomTabs: {
       visible: false,
       drawBehind: true,

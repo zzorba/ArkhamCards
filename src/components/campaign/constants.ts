@@ -1,4 +1,4 @@
-import { Platform, DynamicColorIOS } from 'react-native';
+import { Platform, PlatformColor, DynamicColorIOS } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -274,10 +274,10 @@ export function campaignNames() {
   };
 }
 
-const BLUE = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00408033', dark: '#00408088' }) : '#00408033';
-const TEAL = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00666633', dark: '#00666688' }) : '#00666633';
-const PURPLE = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc990033', dark: '#cc990088' }) : '#cc990033';
-const GREEN = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#33660033', dark: '#33660088' }) : '#33660033';
+const BLUE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00408033', dark: '#00408088' }) : PlatformColor('?attr/campaignBlueColor')) as any as string;
+const TEAL = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00666633', dark: '#00666688' }) : PlatformColor('?attr/campaignTealColor')) as any as string
+const PURPLE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc990033', dark: '#cc990088' }) : PlatformColor('?attr/campaignPurpleColor')) as any as string
+const GREEN = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#33660033', dark: '#33660088' }) : PlatformColor('?attr/campaignGreenColor')) as any as string
 export const CAMPAIGN_COLORS = {
   core: BLUE,
   rtnotz: BLUE,

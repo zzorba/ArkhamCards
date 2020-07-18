@@ -12,10 +12,7 @@ import COLORS from '@styles/colors';
 interface Props {
   code: string;
   name: string;
-  color?: {
-    primary: string;
-    tint: string;
-  };
+  color?: string;
   bulletType?: BulletType;
   choices: DisplayChoice[];
   choice?: number;
@@ -53,7 +50,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
             styles.headerRow,
             space.paddingS,
             space.paddingLeftM,
-            color ? { backgroundColor: color.tint } : {},
+            color ? { backgroundColor: color } : {},
           ]}>
             <View>
               <Text style={[
@@ -85,10 +82,10 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
         title={name}
         onChoiceChange={this._onChoiceChange}
         colors={color ? {
-          backgroundColor: color.tint,
+          backgroundColor: color,
           textColor: COLORS.darkText,
-          modalColor: color.primary,
-          modalTextColor: '#FFF',
+          modalColor: color,
+          modalTextColor: 'white',
         } : undefined}
         topBorder={firstItem}
       />

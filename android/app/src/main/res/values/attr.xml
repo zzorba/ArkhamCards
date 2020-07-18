@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorPrimaryText" format="reference"  />
+    <attr name="colorSecondaryText" format="reference" />
+    <attr name="colorBackground" format="reference" />
+    <attr name="colorLightBackground" format="reference" />
+    <attr name="colorVeryLightBackground" format="reference" />
+    <attr name="colorVeryVeryLightBackground" format="reference" />
+    <attr name="costTintIcon" format="reference" />
+    <attr name="factionMysticTextColor" format="reference" />
+    <attr name="factionMysticLightBackgroundColor" format="reference" />
+    <attr name="factionSeekerTextColor" format="reference" />
+    <attr name="factionSeekerLightBackgroundColor" format="reference" />
+    <attr name="factionGuardianTextColor" format="reference" />
+    <attr name="factionGuardianLightBackgroundColor" format="reference" />
+    <attr name="factionRogueTextColor" format="reference" />
+    <attr name="factionRogueLightBackgroundColor" format="reference" />
+    <attr name="factionSurvivorTextColor" format="reference" />
+    <attr name="factionSurvivorLightBackgroundColor" format="reference" />
+    <attr name="factionNeutralBackgroundColor" format="reference" />
+    <attr name="factionNeutralDarkBackgroundColor" format="reference" />
+    <attr name="factionNeutralLightBackgroundColor" format="reference" />
+    <attr name="factionDualTextColor" format="reference" />
+    <attr name="factionMythosBackgroundColor" format="reference" />
+    <attr name="factionMythosDarkBackgroundColor" format="reference" />
+    <attr name="factionMythosLightBackgroundColor" format="reference" />
+    <attr name="campaignScenarioGreen" format="reference" />
+    <attr name="campaignBlueColor" format="reference" />
+    <attr name="campaignTealColor" format="reference" />
+    <attr name="campaignPurpleColor" format="reference" />
+    <attr name="campaignGreenColor" format="reference" />
+    <attr name="toggleButtonColor" format="reference" />
+    <attr name="selectedToggleButtonColor" format="reference" />
+</resources>

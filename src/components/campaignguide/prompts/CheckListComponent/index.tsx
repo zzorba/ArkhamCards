@@ -4,7 +4,6 @@ import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CustomColor } from '@components/campaignguide/prompts/types';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -18,7 +17,7 @@ import COLORS from '@styles/colors';
 export interface ListItem {
   code: string;
   name: string;
-  color?: CustomColor;
+  color?: string;
 }
 
 export interface CheckListComponentProps {

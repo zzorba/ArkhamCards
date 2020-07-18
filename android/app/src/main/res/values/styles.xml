@@ -1,12 +1,10 @@
 <resources>
-    <color name="primaryColor">#2E407B</color>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="android:windowBackground">@color/primaryColor</item>
-      </style>
-    <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="ArkhamCards.DayNight">
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+    </style>
+    <style name="SplashScreen" parent="ArkhamCards.DayNight">
         <item name="android:windowBackground">@drawable/splash</item>
     </style>
-
 </resources>

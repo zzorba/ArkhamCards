@@ -4,7 +4,6 @@ import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CustomColor } from '@components/campaignguide/prompts/types';
 import ChoiceListItemComponent from './ChoiceListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
@@ -17,7 +16,7 @@ import space from '@styles/space';
 export interface ListItem {
   code: string;
   name: string;
-  color?: CustomColor;
+  color?: string;
 }
 
 export interface ChoiceListComponentProps {

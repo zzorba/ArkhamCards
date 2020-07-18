@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import { CustomColor } from '@components/campaignguide/prompts/types';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType } from '@data/scenario/types';
 import typography from '@styles/typography';
@@ -12,7 +11,7 @@ interface Props {
   code: string;
   name: string;
   description?: string;
-  color?: CustomColor;
+  color?: string;
   bulletType?: BulletType;
   value: number;
   limit?: number;
@@ -40,9 +39,10 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
   };
 
   renderCount() {
+    const { color } = this.props;
     return (
       <View style={styles.count}>
-        <Text style={[typography.bigGameFont, typography.center]}>
+        <Text style={[typography.bigGameFont, typography.center, color ? typography.white : {}]}>
           { this.props.value }
         </Text>
       </View>
@@ -61,14 +61,14 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.promptRow,
-        color ? { backgroundColor: color.tint } : {},
+        color ? { backgroundColor: color } : {},
       ]}>
         <View style={styles.column}>
-          <Text style={typography.mediumGameFont}>
+          <Text style={[typography.mediumGameFont, color ? typography.white : {}]}>
             { name }
           </Text>
           { editable && !!description && (
-            <Text style={typography.text}>
+            <Text style={[typography.text, color ? typography.white : {}]}>
               { description }
             </Text>
           ) }
@@ -80,7 +80,7 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
             onIncrement={this._inc}
             onDecrement={this._dec}
             countRender={this.renderCount()}
-            color="dark"
+            color="light"
           />
         ) : (
           this.renderCount()

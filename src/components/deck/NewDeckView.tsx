@@ -103,7 +103,10 @@ export default class NewDeckView extends React.Component<Props, State> {
           investigatorId: investigator.code,
           onCreateDeck,
         },
-        options: getDeckOptions(investigator, false, t`New Deck`),
+        options: {
+          ...getDeckOptions(investigator, false, t`New Deck`),
+          bottomTabs: {},
+        },
       },
     });
   };
@@ -134,5 +137,6 @@ export default class NewDeckView extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
 });

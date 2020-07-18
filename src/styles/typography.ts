@@ -121,6 +121,9 @@ export default StyleSheet.create({
   darkGray: {
     color: COLORS.darkGray,
   },
+  white: {
+    color: COLORS.white,
+  },
   uppercase: {
     textTransform: 'uppercase',
   },

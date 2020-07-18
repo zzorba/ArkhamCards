@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#2E407B</color>
+    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorSecondaryText">#BBBBBB</color>
+    <color name="colorBackground">#000000</color>
+    <color name="colorLightBackground">#1d1c1f</color>
+    <color name="colorVeryLightBackground">#1d1c1f</color>
+    <color name="colorVeryVeryLightBackground">#151518</color>
+    <color name="costTintIcon">#202020</color>
+    <color name="factionMysticTextColor">#af89fa</color>
+    <color name="factionMysticLightBackgroundColor">#46018f</color>
+    <color name="factionSeekerTextColor">#fcb447</color>
+    <color name="factionSeekerLightBackgroundColor">#cf6b0e</color>
+    <color name="factionGuardianTextColor">#62cefc</color>
+    <color name="factionGuardianLightBackgroundColor">#004880</color>
+    <color name="factionRogueTextColor">#4fe356</color>
+    <color name="factionRogueLightBackgroundColor">#107116</color>
+    <color name="factionSurvivorTextColor">#ff6b73</color>
+    <color name="factionSurvivorLightBackgroundColor">#7a0105</color>
+    <color name="factionNeutralBackgroundColor">#888888</color>
+    <color name="factionNeutralDarkBackgroundColor">#888888</color>
+    <color name="factionNeutralLightBackgroundColor">#292929</color>
+    <color name="factionDualTextColor">#bfbf4d</color>
+    <color name="factionMythosBackgroundColor">#444</color>
+    <color name="factionMythosDarkBackgroundColor">#444444</color>
+    <color name="factionMythosLightBackgroundColor">#000000</color>
+    <color name="campaignScenarioGreen">#1fab73</color>
+    <color name="campaignBlueColor">#00408088</color>
+    <color name="campaignTealColor">#00666688</color>
+    <color name="campaignPurpleColor">#cc990088</color>
+    <color name="campaignGreenColor">#33660088</color>
+    <color name="toggleButtonColor">#363636</color>
+    <color name="selectedToggleButtonColor">#111</color>
+</resources>

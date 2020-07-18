@@ -346,7 +346,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         { signedIn ? (
           <SettingsSwitch
             title={t`Create on ArkhamDB`}
-            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider }}
+            containerStyle={{ 
+              borderBottomWidth: StyleSheet.hairlineWidth, 
+              borderColor: COLORS.divider, 
+            }}
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
@@ -371,7 +374,11 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             title={t`Use Starter Deck`}
             titleStyle={{ color: COLORS.darkText }}
             value={starterDeck}
-            containerStyle={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: COLORS.divider, backgroundColor: COLORS.background }}
+            containerStyle={{ 
+              borderBottomWidth: StyleSheet.hairlineWidth, 
+              borderColor: COLORS.divider, 
+              backgroundColor: COLORS.background, 
+            }}
             disabledOverlayStyle={{ backgroundColor: 'transparent' }}
             onValueChange={this._onStarterDeckChange}
           />
@@ -396,7 +403,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     }
     const okDisabled = saving || !find(optionSelected, selected => selected);
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
         { this.renderFormContent(investigator) }
         { !saving && (
           <>
@@ -446,5 +453,8 @@ export default withPlayerCards<NavigationProps & NewDeckOptionsProps>(
 const styles = StyleSheet.create({
   spinner: {
     height: 80,
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
 });

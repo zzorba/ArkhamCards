@@ -19,6 +19,7 @@
         android:name=".MainActivity"
         android:label="@string/app_name"
         android:launchMode="singleTask"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         android:screenOrientation="portrait"
         android:windowSoftInputMode="adjustResize"
         android:theme="@style/SplashScreen"

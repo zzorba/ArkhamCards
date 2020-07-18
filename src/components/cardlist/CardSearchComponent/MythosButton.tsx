@@ -45,7 +45,7 @@ class MythosButton extends React.Component<Props> {
       mythosMode,
       lightButton,
     } = this.props;
-    const defaultColor = Platform.OS === 'ios' ? '#007AFF' : COLORS.button;
+    const defaultColor = COLORS.navButton;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress}>

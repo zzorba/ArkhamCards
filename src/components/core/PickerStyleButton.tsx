@@ -26,7 +26,7 @@ interface Props {
 
 export default class PickerStyleButton extends React.Component<Props> {
   renderWidget() {
-    const { widget } = this.props;
+    const { widget, colors } = this.props;
     switch (widget) {
       case 'shuffle':
         return (
@@ -34,7 +34,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color="#000"
+              color={colors ? colors.textColor : "#000"}
             />
           </View>
         );
@@ -44,7 +44,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={COLORS.darkText}
+              color={colors ? colors.textColor : "#000"}
             />
           </View>
         );
@@ -54,7 +54,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={COLORS.darkText}
+              color={colors ? colors.textColor : "#000"}
             />
           </View>
         );

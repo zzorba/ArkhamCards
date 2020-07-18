@@ -1,6 +1,6 @@
 import { forEach } from 'lodash';
-import { Navigation } from 'react-native-navigation';
-import { Platform, Linking, LogBox } from 'react-native';
+import { Navigation, Options } from 'react-native-navigation';
+import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
@@ -15,6 +15,9 @@ const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
 const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
 const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
+
+// @ts-ignore ts2339
+TouchableOpacity.defaultProps = {...(TouchableOpacity.defaultProps || {}), delayPressIn: 0};
 
 export default class App {
   started: boolean;
@@ -51,26 +54,52 @@ export default class App {
   };
 
   setDefaultOptions(colorScheme: 'light' | 'dark' | 'no-preference', changeUpdate?:boolean) {
-    const darkMode = Platform.OS === 'ios' && colorScheme === 'dark';
-    const defaultOptions = {
+    const darkMode = colorScheme === 'dark';
+    const backgroundColor = Platform.select({
+      ios: COLORS.background,
+      android: darkMode ? '#000000' : '#FFFFFF',
+    });
+    const darkText = Platform.select({
+      ios: COLORS.darkText,
+      android: darkMode ? '#FFFFFF' : '#000000',
+    });
+    const defaultOptions: Options = {
       topBar: {
         leftButtonColor: COLORS.lightBlue,
         rightButtonColor: COLORS.lightBlue,
         rightButtonDisabledColor: COLORS.lightText,
         leftButtonDisabledColor: COLORS.lightText,
         title: {
-          color: COLORS.darkText,
+          color: darkText,
         },
         background: {
-          color: COLORS.background,
+          color: Platform.select({
+            ios: COLORS.background,
+            android: darkMode ? '#000000' : '#FFFFFF',
+          }),
+          translucent: false,
         },
+        barStyle: darkMode ? 'black' : 'default',
       },
-      layout: {
-        backgroundColor: COLORS.background,
+      layout: Platform.select({
+        android: {
+          componentBackgroundColor: backgroundColor,
+        },
+        ios: {
+          backgroundColor: COLORS.background,
+        }
+      }),
+      navigationBar: {
+        backgroundColor: 'default',
+      },
+      bottomTabs: {
+        barStyle: darkMode ? 'black' : 'default',
+        backgroundColor: backgroundColor,
+        translucent: true,
       },
       bottomTab: {
-        iconColor: darkMode ? '#bbb' :COLORS.lightText,
-        textColor: darkMode ? '#eee' : COLORS.darkText,
+        iconColor: darkMode ? '#bbb' : '#444',
+        textColor: darkMode ? '#eee' : '#000',      
         selectedIconColor: COLORS.lightBlue,
         selectedTextColor: COLORS.lightBlue,
       },

@@ -11,10 +11,7 @@ import COLORS from '@styles/colors';
 interface Props {
   code: string;
   name: string;
-  color?: {
-    tint: string;
-    primary: string;
-  };
+  color?: string;
   selected: boolean;
   onChoiceToggle: (code: string) => void;
   editable: boolean;
@@ -44,18 +41,19 @@ export default class CheckListItemComponent extends React.Component<Props> {
         styles.row,
         space.paddingS,
         space.paddingSideM,
-        color ? { backgroundColor: color.tint } : {},
+        color ? { backgroundColor: color } : {},
       ]}>
         <Text style={[
           typography.mediumGameFont,
           styles.nameText,
+          color ? { color: 'white' } : {},
         ]}>
           { name }
         </Text>
         { editable ? (
           <Switch
             onValueChange={this._toggle}
-            customColor={color && color.primary}
+            customColor={color}
             customTrackColor={color ? '#ccc' : undefined}
             value={selected}
           />
@@ -63,7 +61,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
           <MaterialCommunityIcons
             name="check"
             size={18}
-            color={color ? COLORS.darkText : '#222'}
+            color={color ? 'white' : COLORS.darkText}
           />
         ) }
       </View>

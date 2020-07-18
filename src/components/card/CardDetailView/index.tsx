@@ -3,6 +3,7 @@ import {
   Linking,
   ScrollView,
   StyleSheet,
+  View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connect } from 'react-redux';
@@ -172,7 +173,7 @@ class CardDetailView extends React.Component<Props, State> {
       id,
     } = this.props;
     return (
-      <SingleCardWrapper code={id} type="encounter">
+      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={styles.wrapper} />}>
         { (card: Card) => {
           if (!this.navUpdated) {
             this.navUpdated = true;
@@ -224,5 +225,6 @@ connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToP
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
 });

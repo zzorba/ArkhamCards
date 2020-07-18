@@ -9,24 +9,19 @@ import COLORS from '@styles/colors';
 interface Props {
   investigator: Card;
   detail?: string;
-  dark?: boolean;
 }
 
 export default function InvestigatorNameRow({
   investigator,
   detail,
-  dark,
 }: Props) {
-  const backgroundColor = dark ?
-    COLORS.faction[investigator.factionCode()].light :
-    COLORS.faction[investigator.factionCode()].pastelBackground;
+  const backgroundColor = COLORS.faction[investigator.factionCode()].background
   return (
     <View style={[
       styles.investigatorRow,
       space.paddingS,
       space.paddingLeftM,
       { backgroundColor },
-      dark ? { borderColor: COLORS.background } : { borderColor: COLORS.divider },
     ]}>
       <View>
         <Text style={[
@@ -38,7 +33,10 @@ export default function InvestigatorNameRow({
       </View>
       <View>
         { !!detail && (
-          <Text style={[typography.text, styles.investigatorText]}>
+          <Text style={[
+            typography.text, 
+            styles.investigatorText,
+          ]}>
             { detail }
           </Text>
         ) }
@@ -50,7 +48,7 @@ export default function InvestigatorNameRow({
 const styles = StyleSheet.create({
   investigatorText: {
     fontWeight: '600',
-    color: COLORS.darkText,
+    color: 'white',
   },
   investigatorRow: {
     flexDirection: 'row',
@@ -58,5 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.background,
   },
 });

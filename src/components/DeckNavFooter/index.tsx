@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   borderWrapper: {
     width: '100%',
     height: FOOTER_HEIGHT,
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.white,
   },
   wrapper: {
