@@ -20,10 +20,10 @@ do
     npm run i18n-extract-$CODE
   elif [ $COMMAND = "validate" ]; then 
     echo Validating $CODE
-    ttag validate assets/i18n/$CODE.po
+    npx ttag validate assets/i18n/$CODE.po
   elif [ $COMMAND = "update" ]; then
     echo Updating Translations for $CODE
-    ttag po2json assets/i18n/$CODE.po > assets/i18n/$CODE.po.json
+    npx ttag po2json assets/i18n/$CODE.po > assets/i18n/$CODE.po.json
   fi
 done
 
