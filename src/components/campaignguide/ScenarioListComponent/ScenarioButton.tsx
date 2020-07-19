@@ -70,7 +70,11 @@ export default class ScenarioButton extends React.Component<Props> {
     switch (scenario.type) {
       case 'locked':
         return (
-          <MaterialCommunityIcons name="lock" size={iconSize} color="#222" />
+          <MaterialCommunityIcons 
+            name="lock" 
+            size={iconSize} 
+            color={COLORS.lightText}
+          />
         );
       case 'completed':
         return (
@@ -101,7 +105,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="close-box-outline"
             size={iconSize}
-            color={COLORS.darkGray}
+            color={COLORS.lightText}
           />
         );
     }
@@ -112,19 +116,22 @@ export default class ScenarioButton extends React.Component<Props> {
     switch (scenario.type) {
       case 'locked':
         return (
+          <Text style={[typography.gameFont, styles.locked]}>
+            { this.name() }
+          </Text>
+        );
+      case 'completed':
+        return (
           <Text style={typography.gameFont}>
             { this.name() }
           </Text>
         );
       case 'started':
-      case 'completed':
       case 'playable':
         return (
-          <>
-            <Text style={[typography.gameFont, styles.playable]}>
-              { this.name() }
-            </Text>
-          </>
+          <Text style={[typography.gameFont, styles.playable]}>
+            { this.name() }
+          </Text>
         );
       case 'skipped':
         return (
@@ -165,7 +172,10 @@ const styles = StyleSheet.create({
   skipped: {
     textDecorationLine: 'line-through',
   },
+  locked: {
+    color: COLORS.lightText,
+  },
   playable: {
-    color: COLORS.lightBlue,
+    textDecorationLine: 'underline',
   },
 });
