@@ -11,6 +11,8 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: \n"
 "x-generator: Poedit 2.3.1\n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: src/data/Card.ts:427
 msgid "Guardian / Rogue"
@@ -648,7 +650,7 @@ msgstr "Presa"
 #: src/components/filter/CardFilterView/index.tsx:216
 #: src/components/filter/CardFilterView/index.tsx:484
 msgid "Fight"
-msgstr "Combate"
+msgstr "Combatir"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:326
 #: src/components/filter/CardEnemyFilterView.tsx:167
@@ -2637,7 +2639,7 @@ msgstr "Multijugador"
 #: src/components/core/PackListComponent/index.tsx:56
 #: src/components/weakness/WeaknessDrawComponent.tsx:329
 msgid "Standalone"
-msgstr "Independiente"
+msgstr "Escenarios independientes"
 
 #: src/components/settings/DiagnosticsView.tsx:197
 msgid "Debug Card Json"
@@ -2657,7 +2659,7 @@ msgstr "Multitud"
 
 #: src/components/filter/CardFilterView/index.tsx:478
 msgid "Seal"
-msgstr "Sella"
+msgstr "Sello"
 
 #: src/components/filter/CardFilterView/index.tsx:490
 msgid "Investigate"
@@ -2785,7 +2787,7 @@ msgstr "Seleccione Tamaño del Mazo"
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:198
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr "Cartas vinculadas (${ count })"
+msgstr "Cartas enlazadas (${ count })"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:281
 msgid "New Name"
@@ -2801,7 +2803,7 @@ msgstr ""
 msgid "Flavor Text"
 msgstr ""
 "Texto\n"
-"De Adorno"
+"Ambiente"
 
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:279
 msgid "Card Backs"
@@ -3749,7 +3751,7 @@ msgstr "Mazos iniciales de investigador"
 
 #: src/components/core/PackListComponent/index.tsx:57
 msgid "Miscelaneous"
-msgstr "Misceláneo"
+msgstr "Otros"
 
 #: src/components/campaignguide/CardSelectorView.tsx:136
 msgid "Show story assets from other campaigns"
@@ -3940,7 +3942,7 @@ msgstr "Original"
 
 #: src/components/core/PackListComponent/index.tsx:58
 msgid "Parallel"
-msgstr "Paralelo"
+msgstr "Paralelos"
 
 #: src/components/cardlist/CardSortDialog.tsx:45
 msgid "Faction, Name"
