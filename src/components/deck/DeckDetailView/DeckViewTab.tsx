@@ -728,6 +728,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
         initialNumToRender={50}
         renderItem={this._renderCard}
         keyExtractor={this._keyForCard}
+        stickySectionHeadersEnabled={false}
         renderSectionHeader={this._renderSectionHeader}
         sections={sections}
       />

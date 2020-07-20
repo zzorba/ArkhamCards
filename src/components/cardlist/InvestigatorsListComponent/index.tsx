@@ -382,7 +382,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
             renderItem={this._renderItem}
             initialNumToRender={24}
             keyExtractor={this._investigatorToCode}
-            stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
+            stickySectionHeadersEnabled={false}
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
             scrollEventThrottle={1}

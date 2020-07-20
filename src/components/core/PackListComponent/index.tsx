@@ -149,6 +149,7 @@ export default class PackListComponent extends React.Component<Props> {
           renderSectionHeader={this._renderSectionHeader}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
+          stickySectionHeadersEnabled={false}
           extraData={checkState}
         />
       </View>

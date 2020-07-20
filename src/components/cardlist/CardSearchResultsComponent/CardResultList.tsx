@@ -795,10 +795,6 @@ class CardResultList extends React.Component<Props, State> {
       spoilerCardsCount: groupedCards[1].length,
     };
     this.latestData = liveState;
-    const stickyHeaders = (
-      sort === SORT_BY_PACK ||
-      sort === SORT_BY_ENCOUNTER_SET
-    );
     const data = this.getData(liveState, !!refreshing);
     let offset = 0;
     const elementHeights = map(
@@ -850,7 +846,7 @@ class CardResultList extends React.Component<Props, State> {
         getItemLayout={getItemLayout}
         ListHeaderComponent={renderHeader}
         ListFooterComponent={this._renderFooter(liveState, refreshing)}
-        stickySectionHeadersEnabled={stickyHeaders}
+        stickySectionHeadersEnabled={false}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         scrollEventThrottle={1}
