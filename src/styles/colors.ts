@@ -24,9 +24,9 @@ export default {
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d47400', dark: '#46018f' }) : PlatformColor('?attr/factionMysticLightBackgroundColor')) as any as string,
     },
     seeker: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#c46308', dark: '#fcb447' }) : PlatformColor('?attr/factionSeekerTextColor')) as any as string,
-      background: '#cf6b0e',
-      darkBackground: '#cf6b0e',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#db7c07', dark: '#fcb447' }) : PlatformColor('?attr/factionSeekerTextColor')) as any as string,
+      background: '#db7c07',
+      darkBackground: '#db7c07',
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#bf5c00' }) : PlatformColor('?attr/factionSeekerLightBackgroundColor')) as any as string,
     },
     guardian: {
