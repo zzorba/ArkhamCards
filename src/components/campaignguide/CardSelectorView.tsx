@@ -4,18 +4,18 @@ import { filter, forEach, keys, map, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
-import QueryProvider from 'components/data/QueryProvider';
-import BasicButton from 'components/core/BasicButton';
-import CardQueryWrapper from 'components/card/CardQueryWrapper';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import CardToggleRow from 'components/cardlist/CardSelectorComponent/CardToggleRow';
-import { NavigationProps } from 'components/nav/types';
-import { searchMatchesText } from 'components/core/searchHelpers';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import Card from 'data/Card';
-import { combineQueries, where } from 'data/query';
-import space from 'styles/space';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import QueryProvider from '@components/data/QueryProvider';
+import BasicButton from '@components/core/BasicButton';
+import CardQueryWrapper from '@components/card/CardQueryWrapper';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import CardToggleRow from '@components/cardlist/CardSelectorComponent/CardToggleRow';
+import { NavigationProps } from '@components/nav/types';
+import { searchMatchesText } from '@components/core/searchHelpers';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import Card from '@data/Card';
+import { combineQueries, where } from '@data/query';
+import space from '@styles/space';
 
 export interface CardSelectorProps {
   query?: Brackets;

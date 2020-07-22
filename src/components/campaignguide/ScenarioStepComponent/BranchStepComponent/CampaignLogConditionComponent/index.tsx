@@ -12,8 +12,8 @@ import {
   BranchStep,
   CampaignLogCondition,
   CampaignLogCardsCondition,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;

@@ -8,7 +8,7 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export const SEARCH_BAR_HEIGHT = 58;
 interface Props {
@@ -59,7 +59,7 @@ export default class SearchBox extends React.Component<Props> {
             allowFontScaling={false}
             onChangeText={onChangeText}
             placeholder={placeholder}
-            placeholderTextColor={COLORS.veryLightText}
+            placeholderTextColor={COLORS.lightText}
             value={value}
           />
           { this.renderToggleButton() }
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18,
     color: COLORS.darkText,
-    backgroundColor: COLORS.veryLightBackground,
+    backgroundColor: COLORS.veryVeryLightBackground,
     borderRadius: 10,
   },
   icon: {

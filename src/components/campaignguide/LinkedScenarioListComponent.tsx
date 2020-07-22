@@ -4,8 +4,8 @@ import { find } from 'lodash';
 import { showScenario } from './nav';
 import CampaignGuideSummary from './CampaignGuideSummary';
 import ScenarioListComponent from './ScenarioListComponent';
-import { ProcessedCampaign } from 'data/scenario';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
+import { ProcessedCampaign } from '@data/scenario';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 
 interface Props {
   componentId: string;

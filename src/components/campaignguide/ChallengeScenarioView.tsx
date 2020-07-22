@@ -4,14 +4,14 @@ import { Navigation } from 'react-native-navigation';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import BasicButton from 'components/core/BasicButton';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import { NavigationProps } from 'components/nav/types';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import Card from 'data/Card';
-import { Scenario, ChallengeData } from 'data/scenario/types';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import BasicButton from '@components/core/BasicButton';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { NavigationProps } from '@components/nav/types';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import Card from '@data/Card';
+import { Scenario, ChallengeData } from '@data/scenario/types';
 
 export interface ChallengeScenarioProps {
   scenario: Scenario;

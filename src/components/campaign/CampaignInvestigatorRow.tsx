@@ -6,12 +6,12 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Campaign, Deck } from 'actions/types';
-import { BODY_OF_A_YITHIAN } from 'constants';
-import { CardsMap } from 'data/Card';
-import InvestigatorImage from 'components/core/InvestigatorImage';
-import { getDecks, getLatestCampaignDeckIds, AppState } from 'reducers';
-import { s } from 'styles/space';
+import { Campaign, Deck } from '@actions/types';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
+import { CardsMap } from '@data/Card';
+import InvestigatorImage from '@components/core/InvestigatorImage';
+import { getDecks, getLatestCampaignDeckIds, AppState } from '@reducers';
+import { s } from '@styles/space';
 
 interface OwnProps {
   campaigns: Campaign[];

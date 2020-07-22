@@ -2,11 +2,11 @@ import React from 'react';
 import { filter, flatMap, map, range, uniq, sortBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import MultiPickerComponent from 'components/core/MultiPickerComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import Card from 'data/Card';
+import BasicButton from '@components/core/BasicButton';
+import MultiPickerComponent from '@components/core/MultiPickerComponent';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import Card from '@data/Card';
 
 interface Props {
   scenarioState: ScenarioStateHelper;

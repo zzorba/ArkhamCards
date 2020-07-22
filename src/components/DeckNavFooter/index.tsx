@@ -9,16 +9,16 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import { msgid, ngettext, t } from 'ttag';
 
-import { DeckMeta, ParsedDeck } from 'actions/types';
-import AppIcon from 'icons/AppIcon';
-import DeckProblemRow from 'components/core/DeckProblemRow';
-import { CardsMap } from 'data/Card';
-import typography from 'styles/typography';
-import { TINY_PHONE } from 'styles/sizes';
-import COLORS from 'styles/colors';
-import { showCardCharts, showDrawSimulator } from 'components/nav/helper';
+import { DeckMeta, ParsedDeck } from '@actions/types';
+import AppIcon from '@icons/AppIcon';
+import DeckProblemRow from '@components/core/DeckProblemRow';
+import { CardsMap } from '@data/Card';
+import typography from '@styles/typography';
+import { TINY_PHONE } from '@styles/sizes';
+import COLORS from '@styles/colors';
+import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
-import { m, s, xs } from 'styles/space';
+import { m, s, xs } from '@styles/space';
 
 const SHOW_CHARTS_BUTTON = true;
 
@@ -130,7 +130,7 @@ export default class DeckNavFooter extends React.Component<Props> {
     const xpString = this.xpString();
     return (
       <View style={styles.borderWrapper}>
-        <View style={[styles.wrapper, { backgroundColor: COLORS.faction[investigator.factionCode()].dark }]}>
+        <View style={[styles.wrapper, { backgroundColor: COLORS.faction[investigator.factionCode()].darkBackground }]}>
           <View style={styles.left}>
             <View style={styles.row}>
               <Text style={[
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   borderWrapper: {
     width: '100%',
     height: FOOTER_HEIGHT,
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.white,
   },
   wrapper: {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Database from './Database';
 import DatabaseContext from './DatabaseContext';
-import { AppState } from 'reducers';
+import { AppState } from '@reducers';
 
 interface OwnProps {
   children: React.ReactNode;

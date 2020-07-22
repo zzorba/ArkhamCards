@@ -6,10 +6,10 @@ import {
 import { map } from 'lodash';
 
 import SetupStepWrapper from '../SetupStepWrapper';
-import { LocationConnectorsStep, LocationConnector } from 'data/scenario/types';
-import AppIcon from 'icons/AppIcon';
+import { LocationConnectorsStep, LocationConnector } from '@data/scenario/types';
+import AppIcon from '@icons/AppIcon';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import space from 'styles/space';
+import space from '@styles/space';
 
 interface Props {
   step: LocationConnectorsStep;
@@ -40,8 +40,9 @@ export default class LocationConnectorsStepComponent extends React.Component<Pro
         <SetupStepWrapper bulletType={step.bullet_type} reverseSpacing>
           <View style={[styles.iconPile, space.marginTopM, space.marginBottomS]}>
             { map(step.location_connectors, connector => (
-              <View style={[space.marginSideS, space.marginBottomM]} key={connector}>
-                { this.renderLocationConnector(connector) }
+              <View style={[space.marginSideS, space.marginBottomM, styles.icon]} key={connector}>
+                <View style={styles.iconBackground} />
+                { this.renderLocationConnector(connector) }                
               </View>
             )) }
           </View>
@@ -57,5 +58,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
+  },
+  icon: {
+    position: 'relative',
+  },
+  iconBackground: {
+    position: 'absolute',
+    top: 1,
+    left: 1,
+    width: ICON_SIZE - 2,
+    height: ICON_SIZE - 2,
+    backgroundColor: 'white',
+    borderRadius: (ICON_SIZE / 2) - 1,
   },
 });

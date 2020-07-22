@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 
 import { t } from 'ttag';
-import TextBoxButton from 'components/core/TextBoxButton';
-import { ShowTextEditDialog } from 'components/core/withDialogs';
+import TextBoxButton from '@components/core/TextBoxButton';
+import { ShowTextEditDialog } from '@components/core/withDialogs';
 
 interface Props {
   title: string;

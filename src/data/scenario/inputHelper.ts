@@ -1,13 +1,13 @@
 import { filter, find, forEach } from 'lodash';
 
-import { NumberChoices } from 'actions/types';
+import { NumberChoices } from '@actions/types';
 import {
   BinaryChoiceCondition,
   InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
   BinaryConditionalChoice,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import {
   basicTraumaConditionResult,
   campaignDataInvestigatorConditionResult,
@@ -19,8 +19,8 @@ import {
   multiConditionResult,
   BinaryResult,
   InvestigatorResult,
-} from 'data/scenario/conditionHelper';
-import { PersonalizedChoices, UniversalChoices, DisplayChoice } from 'data/scenario';
+} from '@data/scenario/conditionHelper';
+import { PersonalizedChoices, UniversalChoices, DisplayChoice } from '@data/scenario';
 
 export function chooseOneInputChoices(
   choices: BinaryConditionalChoice[],

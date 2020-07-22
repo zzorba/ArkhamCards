@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { SortType, SORT_BY_TYPE } from 'actions/types';
+import { SortType, SORT_BY_TYPE } from '@actions/types';
 import CardSearchComponent from './CardSearchComponent';
-import withFetchCardsGate from 'components/card/withFetchCardsGate';
+import withFetchCardsGate from '@components/card/withFetchCardsGate';
 
 interface Props {
   componentId: string;

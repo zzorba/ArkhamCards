@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { rowHeight, buttonWidth, BUTTON_PADDING } from './constants';
-import typography from 'styles/typography';
+import typography from '@styles/typography';
 
 const DEPRESS_HEIGHT = 6;
 
@@ -84,7 +84,7 @@ export default class CountButton extends React.PureComponent<Props, State> {
       extrapolate: 'clamp',
     });
     return (
-      <TouchableWithoutFeedback onPress={this._onPress}>
+      <TouchableWithoutFeedback onPress={this._onPress} delayPressIn={0}>
         <View style={[
           styles.container,
           {

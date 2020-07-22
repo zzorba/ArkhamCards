@@ -6,10 +6,10 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import ToggleFilter from 'components/core/ToggleFilter';
+import ToggleFilter from '@components/core/ToggleFilter';
 import SliderChooser from './SliderChooser';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
-import { xs } from 'styles/space';
+import { xs } from '@styles/space';
 
 class CardLocationFilterView extends React.Component<FilterProps> {
   static get options() {

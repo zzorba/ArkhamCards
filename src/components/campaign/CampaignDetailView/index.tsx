@@ -17,8 +17,8 @@ import {
 } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from 'actions/types';
+import BasicButton from '@components/core/BasicButton';
+import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
@@ -32,17 +32,17 @@ import { CampaignDrawWeaknessProps } from '../CampaignDrawWeaknessDialog';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { campaignToText } from '../campaignUtil';
 import withTraumaDialog, { TraumaProps } from '../withTraumaDialog';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { OddsCalculatorProps } from '../OddsCalculatorView';
-import withDialogs, { InjectedDialogProps } from 'components/core/withDialogs';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { iconsMap } from 'app/NavIcons';
-import Card from 'data/Card';
-import { ChaosBag } from 'constants';
+import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { iconsMap } from '@app/NavIcons';
+import Card from '@data/Card';
+import { ChaosBag } from '@app_constants';
 import { updateCampaign, updateCampaignSpentXp, deleteCampaign, cleanBrokenCampaigns } from '../actions';
-import { NavigationProps } from 'components/nav/types';
-import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from 'reducers';
-import COLORS from 'styles/colors';
+import { NavigationProps } from '@components/nav/types';
+import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '@reducers';
+import COLORS from '@styles/colors';
 
 export interface CampaignDetailProps {
   id: number;
@@ -470,47 +470,81 @@ class CampaignDetailView extends React.Component<Props, State> {
   renderSideMenu(campaign: Campaign) {
     return (
       <ScrollView style={styles.menu}>
-        <SettingsCategoryHeader title={t`Campaign`} />
+        <SettingsCategoryHeader 
+          title={t`Campaign`} 
+          titleStyle={styles.categoryText}
+          containerStyle={styles.categoryContainer}
+        />
         <SettingsButton
           onPress={this._editNamePressed}
           title={t`Name`}
+          titleStyle={styles.text}
           description={campaign.name}
+          descriptionStyle={styles.text}
+          containerStyle={styles.button}
         />
         <SettingsButton
           onPress={this._viewScenarios}
           title={t`Scenario History`}
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
         <SettingsButton
           onPress={this._addScenarioResult}
           title={t`Record Scenario Results`}
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
-        <SettingsCategoryHeader title={t`Chaos Bag`} />
+        <SettingsCategoryHeader 
+          title={t`Chaos Bag`} 
+          titleStyle={styles.categoryText} 
+          containerStyle={styles.categoryContainer}
+        />
         <SettingsButton
           title={t`Edit Tokens`}
           onPress={this._editChaosBag}
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
         <SettingsButton
           title={t`Draw Tokens`}
           onPress={this._drawChaosBag}
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
         <SettingsButton
           title={t`Odds Calculator`}
           onPress={this._oddsCalculatorPressed}
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
-        <SettingsCategoryHeader title={t`Weakness Set`} />
+        <SettingsCategoryHeader 
+          title={t`Weakness Set`} 
+          titleStyle={styles.categoryText} 
+          containerStyle={styles.categoryContainer}
+        />
         <SettingsButton
           title={t`Draw Basic Weakness`}
           onPress={this._showDrawWeakness}
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
-        <SettingsCategoryHeader title={t`Options`} />
+        <SettingsCategoryHeader 
+          title={t`Options`} 
+          titleStyle={styles.categoryText} 
+          containerStyle={styles.categoryContainer}
+        />
         <SettingsButton
           onPress={this._showShareSheet}
-          title={t`Share`}
+          title={t`Share`}              
+          titleStyle={styles.text}
+          containerStyle={styles.button}
         />
         <SettingsButton
           title={t`Delete`}
           titleStyle={styles.destructive}
           onPress={this._deletePressed}
+          containerStyle={styles.button}
         />
       </ScrollView>
     );
@@ -661,5 +695,17 @@ const styles = StyleSheet.create({
   },
   destructive: {
     color: COLORS.red,
+  },
+  categoryText: {
+    color: COLORS.lightText,
+  },
+  categoryContainer: {
+    backgroundColor: COLORS.veryLightBackground,
+  },
+  text: {
+    color: COLORS.darkText,
+  },
+  button: {
+    backgroundColor: COLORS.background,
   },
 });

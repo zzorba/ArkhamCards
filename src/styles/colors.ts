@@ -1,97 +1,77 @@
 import {
   Platform,
+  PlatformColor,
+  DynamicColorIOS,
 } from 'react-native';
 
-const darkText = '#111';
-const lightText = '#444';
-export default {
-  // Dark Mode Colors
-  /*
-  darkText: '#ddd',
-  lightText: '#aaa',
-  veryLightText: '#888',
-  background: '#111',
-  lightBackground: '#444',
-  veryLightBackground: '#222',
-  veryVeryLightBackgound: '#040404',
-  divider: '#444',*/
+const darkText = (Platform.OS === 'ios' ? PlatformColor('labelColor') : PlatformColor('?attr/colorPrimaryText')) as any as string;
+const lightText = (Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : PlatformColor('?attr/colorSecondaryText')) as any as string;
 
-  // Normal Colors
+export default {
   darkText,
   lightText,
-  veryLightText: '#888',
-  background: 'white',
-  lightBackground: '#ccc',
-  veryLightBackground: '#eee',
-  veryVeryLightBackgound: '#f4f4f4',
-  divider: '#bdbdbd',
-
+  veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor'): '#888') as any as string,
+  background: (Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : PlatformColor('?attr/colorBackground')) as any as string,
+  lightBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
+  veryLightBackground: (Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : PlatformColor('?attr/colorVeryLightBackground')) as any as string,
+  veryVeryLightBackground: (Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : PlatformColor('?attr/colorVeryVeryLightBackground')) as any as string,
+  divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#888888') as any as string,
   faction: {
     mystic: {
-      primary: '#4331b9',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331b9', dark: '#af89fa' }) : PlatformColor('?attr/factionMysticTextColor')) as any as string,
       background: '#4331b9',
-      dark: '#4331b9',
-      veryLight: '#d9d6f1',
-      light: '#a198dc',
+      darkBackground: '#4331b9',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d47400', dark: '#46018f' }) : PlatformColor('?attr/factionMysticLightBackgroundColor')) as any as string,
     },
     seeker: {
-      primary: '#ec8426',
-      background: '#ec8426',
-      dark: '#ec8426',
-      veryLight: '#fbe6d4',
-      light: '#f7cea8',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#db7c07', dark: '#fcb447' }) : PlatformColor('?attr/factionSeekerTextColor')) as any as string,
+      background: '#db7c07',
+      darkBackground: '#db7c07',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#bf5c00' }) : PlatformColor('?attr/factionSeekerLightBackgroundColor')) as any as string,
     },
     guardian: {
-      primary: '#2b80c5',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#1072c2', dark: '#62cefc' }) : PlatformColor('?attr/factionGuardianTextColor')) as any as string,
       background: '#2b80c5',
-      dark: '#2b80c5',
-      veryLight: '#d5e6f3',
-      light: '#aacce8',
+      darkBackground: '#2b80c5',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d5e6f3', dark: '#004880' }) : PlatformColor('?attr/factionGuardianLightBackgroundColor')) as any as string,
     },
     rogue: {
-      primary: '#107116',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#4fe356' }) : PlatformColor('?attr/factionRogueTextColor')) as any as string,
       background: '#107116',
-      dark: '#107116',
-      veryLight: '#cfe3d0',
-      light: '#9fc6a2',
+      darkBackground: '#107116',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#015906' }) : PlatformColor('?attr/factionRogueLightBackgroundColor')) as any as string,
     },
     survivor: {
-      primary: '#cc3038',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc3038', dark: '#ff6b73' }) : PlatformColor('?attr/factionSurvivorTextColor')) as any as string,
       background: '#cc3038',
-      dark: '#cc3038',
-      veryLight: '#f5d6d7',
-      light: '#ebacaf',
+      darkBackground: '#cc3038',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5d6d7', dark: '#7a0105' }) : PlatformColor('?attr/factionSurvivorLightBackgroundColor')) as any as string,
     },
     neutral: {
-      primary: darkText,
-      background: '#444444',
-      dark: '#444444',
-      veryLight: '#e6e6e6',
-      light: '#cccccc',
+      text: darkText,
+      background: '#444',
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444', dark: '#888' }) : PlatformColor('?attr/factionNeutralDarkBackgroundColor')) as any as string,
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : PlatformColor('?attr/factionNeutralLightBackgroundColor')) as any as string,
     },
     dual: {
-      primary: '#868600',
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#868600', dark: '#bfbf4d' }) : PlatformColor('?attr/factionDualTextColor')) as any as string,
       background: '#9a9a00',
-      dark: '#c0c000',
-      veryLight: '#f2f2cc',
-      light: '#e6e699',
+      darkBackground: '#c0c000',
+      lightBackground: '#f2f2cc',
     },
     dead: {
-      primary: '#704214',
+      text: '#704214',
       background: '#704214',
-      dark: '#5a3510',
-      veryLight: '#d4c6b9',
-      light: '#b8a18a',
+      darkBackground: '#5a3510',
+      lightBackground: '#d4c6b9',
     },
     mythos: {
-      primary: '#000000',
-      background: '#000000',
-      dark: '#000000',
-      veryLight: '#000000',
-      light: '#000000',
+      text: darkText,
+      background: '#444',
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : PlatformColor('?attr/factionMythosDarkBackgroundColor')) as any as string,
+      lightBackground: '#000000',
     },
   },
-
   skill: {
     willpower: {
       default: '#003961',
@@ -114,25 +94,36 @@ export default {
       light: '#8A7D5A',
     },
   },
-
-  scenarioGreen: '#2E5344',
+  costTintIcon: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5f5f5', dark: '#202020' }) : PlatformColor('?attr/costTintIcon')) as any as string,
+  scenarioGreen: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#2E5344', dark: '#1fab73' }) : PlatformColor('?attr/campaignScenarioGreen')) as any as string,
   veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
   darkBlue: 'rgb(0, 78, 100)',
   white: 'rgb(247, 247, 255)',
   red: '#D84144',
   lightGray: 'rgb(230, 230, 230)',
-  veryLightGray: 'rgb(245, 245, 245)',
   gray: 'rgb(201, 201, 201)',
   darkGray: 'rgb(120, 120, 120)',
   lightGreen: 'rgb(114, 221, 82)',
   yellow: 'rgb(255, 204, 0)',
-  taboo: 'purple',
+  taboo: (Platform.OS === 'ios' ? DynamicColorIOS({ light: 'purple', dark: PlatformColor('systemPurple') }) : 'purple') as any as string,
   green: '#498D35',
   button: Platform.OS === 'ios' ? '#bbb' : '#000',
-  navButton: Platform.OS === 'ios' ? '#007AFF' : '#000',
+  navButton: (Platform.OS === 'ios' ? PlatformColor('linkColor') : '#007AFF') as any as string,
   black: '#000',
   switchTrackColor: Platform.OS === 'ios' ? { false: '#bbb', true: '#222' } : undefined,
-  settingsBackground: Platform.OS === 'ios' ? '#e3e6ed' : 'rgb(247, 247, 255)',
+  settingsBackground: Platform.OS === 'ios' ? '#e3e6ed' : '#f7f7ff',
   monza: '#C70039',
+
+  toggleButton: (Platform.OS === 'ios' ? 
+    DynamicColorIOS({
+      light: '#f6f6f6',
+      dark: '#363636',
+    }) : PlatformColor('?attr/toggleButtonColor')) as any as string,
+
+  selectedToggleButton: (Platform.OS === 'ios' ? 
+    DynamicColorIOS({
+      light: '#dddddd',
+      dark: '#111',
+    }) : PlatformColor('?attr/selectedToggleButtonColor')) as any as string,
 };

@@ -4,7 +4,7 @@ import {
   LOGIN_ERROR,
   LOGOUT,
   SignInActions,
-} from 'actions/types';
+} from '@actions/types';
 
 interface SignedInState {
   loading: boolean;

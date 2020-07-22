@@ -5,12 +5,12 @@ import {
   View,
 } from 'react-native';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import Card from 'data/Card';
-import { TINY_PHONE } from 'styles/sizes';
-import { isBig, m, s, xs } from 'styles/space';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import Card from '@data/Card';
+import { TINY_PHONE } from '@styles/sizes';
+import { isBig, m, s, xs } from '@styles/space';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   investigator: Card;

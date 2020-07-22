@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import { ChaosBag } from 'constants';
-import NavButton from 'components/core/NavButton';
-import ChaosBagLine from 'components/core/ChaosBagLine';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import BasicButton from '@components/core/BasicButton';
+import { ChaosBag } from '@app_constants';
+import NavButton from '@components/core/NavButton';
+import ChaosBagLine from '@components/core/ChaosBagLine';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   fontScale: number;

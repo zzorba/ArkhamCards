@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
 
-import Card from 'data/Card';
-import Database from 'data/Database';
-import { QuerySort } from 'data/types';
-import DbRender from 'components/data/DbRender';
-import { getTabooSet, AppState } from 'reducers';
+import Card from '@data/Card';
+import Database from '@data/Database';
+import { QuerySort } from '@data/types';
+import DbRender from '@components/data/DbRender';
+import { getTabooSet, AppState } from '@reducers';
 
 interface Props {
   name: string;

@@ -1,3 +1,4 @@
+import { Platform, PlatformColor, DynamicColorIOS } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -19,9 +20,9 @@ import {
   CampaignCycleCode,
   CustomCampaignLog,
   ScenarioResult,
-} from 'actions/types';
-import { ChaosBag } from 'constants';
-import Card from 'data/Card';
+} from '@actions/types';
+import { ChaosBag } from '@app_constants';
+import Card from '@data/Card';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {
   switch (difficulty) {
@@ -273,20 +274,24 @@ export function campaignNames() {
   };
 }
 
+const BLUE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00408033', dark: '#00408088' }) : PlatformColor('?attr/campaignBlueColor')) as any as string;
+const TEAL = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00666633', dark: '#00666688' }) : PlatformColor('?attr/campaignTealColor')) as any as string
+const PURPLE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc990033', dark: '#cc990088' }) : PlatformColor('?attr/campaignPurpleColor')) as any as string
+const GREEN = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#33660033', dark: '#33660088' }) : PlatformColor('?attr/campaignGreenColor')) as any as string
 export const CAMPAIGN_COLORS = {
-  core: '#00408033',
-  rtnotz: '#00006622',
-  dwl: '#00666633',
-  rtdwl: '#00006622',
-  ptc: '#cc990033',
-  rtptc: '#cc990033',
-  tfa: '#33660033',
-  rttfa: '#33660033',
-  tcu: '#00006622',
-  tde: '#00006622',
-  tdea: '#00006622',
-  tdeb: '#00006622',
-  custom: '#00006622',
+  core: BLUE,
+  rtnotz: BLUE,
+  dwl: TEAL,
+  rtdwl: TEAL,
+  ptc: PURPLE,
+  rtptc: PURPLE,
+  tfa: GREEN,
+  rttfa: GREEN,
+  tcu: BLUE,
+  tde: BLUE,
+  tdea: BLUE,
+  tdeb: BLUE,
+  custom: BLUE,
 };
 
 export function getCampaignLog(

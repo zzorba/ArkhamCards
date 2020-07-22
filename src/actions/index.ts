@@ -14,11 +14,11 @@ import {
   LOGIN_ERROR,
   LOGOUT,
 } from './types';
-import { AppState } from 'reducers';
+import { AppState } from '@reducers';
 
-import { getAccessToken, signInFlow, signOutFlow } from 'lib/auth';
+import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 // @ts-ignore
-import { decks } from 'lib/authApi';
+import { decks } from '@lib/authApi';
 
 export function login(): ThunkAction<void, AppState, {}, Action> {
   return (dispatch: ThunkDispatch<AppState, {}, Action>): void => {

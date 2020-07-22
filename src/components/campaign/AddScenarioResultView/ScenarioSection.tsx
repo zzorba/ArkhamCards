@@ -10,17 +10,17 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from 'actions/types';
-import connectDb from 'components/data/connectDb';
+import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '@actions/types';
+import connectDb from '@components/data/connectDb';
 import { updateCampaign } from '../actions';
 import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';
-import LabeledTextBox from 'components/core/LabeledTextBox';
-import Switch from 'components/core/Switch';
-import { ShowTextEditDialog } from 'components/core/withDialogs';
-import Database from 'data/Database';
-import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from 'reducers';
-import typography from 'styles/typography';
-import { s } from 'styles/space';
+import LabeledTextBox from '@components/core/LabeledTextBox';
+import Switch from '@components/core/Switch';
+import { ShowTextEditDialog } from '@components/core/withDialogs';
+import Database from '@data/Database';
+import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from '@reducers';
+import typography from '@styles/typography';
+import { s } from '@styles/space';
 
 interface OwnProps {
   componentId: string;

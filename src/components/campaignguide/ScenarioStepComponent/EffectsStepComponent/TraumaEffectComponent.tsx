@@ -6,10 +6,10 @@ import { t } from 'ttag';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
 import InvestigatorChoicePrompt from '../../prompts/InvestigatorChoicePrompt';
-import Card from 'data/Card';
-import { TraumaEffect } from 'data/scenario/types';
+import Card from '@data/Card';
+import { TraumaEffect } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import space from 'styles/space';
+import space from '@styles/space';
 
 interface Props {
   id: string;

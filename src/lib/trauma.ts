@@ -1,4 +1,4 @@
-import { Trauma } from 'actions/types';
+import { Trauma } from '@actions/types';
 
 export const DEFAULT_TRAUMA_DATA = {
   mental: 0,

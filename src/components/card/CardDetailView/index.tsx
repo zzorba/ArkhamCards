@@ -3,21 +3,22 @@ import {
   Linking,
   ScrollView,
   StyleSheet,
+  View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import CardDetailComponent from './CardDetailComponent';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import { CardFaqProps } from 'components/card/CardFaqView';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import { CardFaqProps } from '@components/card/CardFaqView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { NavigationProps } from 'components/nav/types';
-import { iconsMap } from 'app/NavIcons';
-import COLORS from 'styles/colors';
-import { getShowSpoilers, getTabooSet, AppState } from 'reducers';
-import Card from 'data/Card';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { NavigationProps } from '@components/nav/types';
+import { iconsMap } from '@app/NavIcons';
+import COLORS from '@styles/colors';
+import { getShowSpoilers, getTabooSet, AppState } from '@reducers';
+import Card from '@data/Card';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{
@@ -172,7 +173,7 @@ class CardDetailView extends React.Component<Props, State> {
       id,
     } = this.props;
     return (
-      <SingleCardWrapper code={id} type="encounter">
+      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={styles.wrapper} />}>
         { (card: Card) => {
           if (!this.navUpdated) {
             this.navUpdated = true;
@@ -224,5 +225,6 @@ connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToP
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
 });

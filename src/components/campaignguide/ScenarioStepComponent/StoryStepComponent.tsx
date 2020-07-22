@@ -7,8 +7,8 @@ import {
 import BorderWrapper from '../BorderWrapper';
 import BulletsComponent from './BulletsComponent';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import { StoryStep } from 'data/scenario/types';
-import space from 'styles/space';
+import { StoryStep } from '@data/scenario/types';
+import space from '@styles/space';
 
 interface Props {
   step: StoryStep;

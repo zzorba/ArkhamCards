@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 
-import EncounterIcon from 'icons/EncounterIcon';
-import { s } from 'styles/space';
+import EncounterIcon from '@icons/EncounterIcon';
+import { s } from '@styles/space';
 
 interface Props {
   code: string;

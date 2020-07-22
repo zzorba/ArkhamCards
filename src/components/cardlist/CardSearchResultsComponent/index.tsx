@@ -8,21 +8,21 @@ import {
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import {
   SORT_BY_ENCOUNTER_SET,
   SortType,
   Slots,
-} from 'actions/types';
-import QueryProvider from 'components/data/QueryProvider';
-import CollapsibleSearchBox, { SEARCH_OPTIONS_HEIGHT } from 'components/core/CollapsibleSearchBox';
+} from '@actions/types';
+import QueryProvider from '@components/data/QueryProvider';
+import CollapsibleSearchBox, { SEARCH_OPTIONS_HEIGHT } from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
-import Switch from 'components/core/Switch';
-import FilterBuilder, { FilterState } from 'lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from 'data/query';
-import Card from 'data/Card';
-import typography from 'styles/typography';
-import space, { isTablet, s, xs } from 'styles/space';
+import Switch from '@components/core/Switch';
+import FilterBuilder, { FilterState } from '@lib/filters';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@data/query';
+import Card from '@data/Card';
+import typography from '@styles/typography';
+import space, { isTablet, s, xs } from '@styles/space';
 
 interface Props {
   componentId: string;

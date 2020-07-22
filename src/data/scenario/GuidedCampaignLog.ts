@@ -18,9 +18,9 @@ import {
   Slots,
   TraumaAndCardData,
   WeaknessSet,
-} from 'actions/types';
-import { ChaosBag } from 'constants';
-import { traumaDelta } from 'lib/trauma';
+} from '@actions/types';
+import { ChaosBag } from '@app_constants';
+import { traumaDelta } from '@lib/trauma';
 import {
   AddRemoveChaosTokenEffect,
   AddCardEffect,
@@ -42,9 +42,9 @@ import {
   GainSuppliesEffect,
 } from './types';
 import CampaignGuide, { CAMPAIGN_SETUP_ID } from './CampaignGuide';
-import Card, { CardsMap } from 'data/Card';
-import { LatestDecks } from 'data/scenario';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
+import Card, { CardsMap } from '@data/Card';
+import { LatestDecks } from '@data/scenario';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 
 interface BasicEntry {
   id: string;

@@ -8,13 +8,13 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import CardCostIcon from 'components/core/CardCostIcon';
-import InvestigatorImage from 'components/core/InvestigatorImage';
-import Card from 'data/Card';
-import typography from 'styles/typography';
-import space, { m, s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import CardCostIcon from '@components/core/CardCostIcon';
+import InvestigatorImage from '@components/core/InvestigatorImage';
+import Card from '@data/Card';
+import typography from '@styles/typography';
+import space, { m, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   superTitle?: string;
@@ -65,7 +65,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       <View style={styles.wrapper}>
         <View style={[
           styles.headerColor,
-          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].dark },
+          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
         ]} />
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
@@ -94,7 +94,7 @@ export default class InvestigatorRow extends React.Component<Props> {
                 <ArkhamIcon
                   name={CardCostIcon.factionIcon(investigator)}
                   size={ICON_SIZE}
-                  color={COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].primary}
+                  color={COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].background}
                 />
               ) }
             </View>
@@ -114,7 +114,7 @@ export default class InvestigatorRow extends React.Component<Props> {
         { !!children && children }
         <View style={[
           styles.headerColor,
-          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].dark },
+          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
         ]} />
       </View>
     );

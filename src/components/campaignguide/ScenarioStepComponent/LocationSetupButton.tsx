@@ -2,9 +2,9 @@ import React from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import { LocationSetupProps } from '../LocationSetupView';
-import { LocationSetupStep } from 'data/scenario/types';
+import { LocationSetupStep } from '@data/scenario/types';
 
 interface Props {
   step: LocationSetupStep;

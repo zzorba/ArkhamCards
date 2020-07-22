@@ -7,9 +7,9 @@ import {
 import DialogComponent from 'react-native-dialog';
 import { t } from 'ttag';
 
-import Dialog from 'components/core/Dialog';
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
+import Dialog from '@components/core/Dialog';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
 
 export type AddSectionFunction = (
   name: string,

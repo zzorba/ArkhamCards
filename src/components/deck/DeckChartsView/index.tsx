@@ -4,13 +4,13 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { ParsedDeck } from 'actions/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import { ParsedDeck } from '@actions/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import FactionChart from './FactionChart';
 import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';
 import SkillIconChart from './SkillIconChart';
-import space from 'styles/space';
+import space from '@styles/space';
 
 const INCLUDE_SLOTS_CHART = false;
 

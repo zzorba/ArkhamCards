@@ -9,15 +9,15 @@ import deepDiff from 'deep-diff';
 import { Brackets } from 'typeorm/browser';
 import { t, ngettext, msgid } from 'ttag';
 
-import Database from 'data/Database';
-import DatabaseContext, { DatabaseContextType } from 'data/DatabaseContext';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import { toggleFilter, updateFilter, clearFilters } from './actions';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import COLORS from 'styles/colors';
-import FilterBuilder, { FilterState } from 'lib/filters';
-import { NavigationProps } from 'components/nav/types';
-import { getFilterState, getDefaultFilterState, AppState } from 'reducers';
-import { combineQueriesOpt } from 'data/query';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import COLORS from '@styles/colors';
+import FilterBuilder, { FilterState } from '@lib/filters';
+import { NavigationProps } from '@components/nav/types';
+import { getFilterState, getDefaultFilterState, AppState } from '@reducers';
+import { combineQueriesOpt } from '@data/query';
 
 export interface FilterProps {
   componentId: string;

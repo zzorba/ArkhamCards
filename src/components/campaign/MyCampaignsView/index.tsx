@@ -9,18 +9,18 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
-import BasicButton from 'components/core/BasicButton';
-import { CUSTOM, Campaign, DecksMap } from 'actions/types';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import BasicButton from '@components/core/BasicButton';
+import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import CampaignList from './CampaignList';
-import { campaignNames } from 'components/campaign/constants';
-import { searchMatchesText } from 'components/core/searchHelpers';
-import withFetchCardsGate from 'components/card/withFetchCardsGate';
-import { iconsMap } from 'app/NavIcons';
-import { getAllDecks, getCampaigns, AppState } from 'reducers';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import { m } from 'styles/space';
+import { campaignNames } from '@components/campaign/constants';
+import { searchMatchesText } from '@components/core/searchHelpers';
+import withFetchCardsGate from '@components/card/withFetchCardsGate';
+import { iconsMap } from '@app/NavIcons';
+import { getAllDecks, getCampaigns, AppState } from '@reducers';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import { m } from '@styles/space';
 
 interface OwnProps {
   componentId: string;

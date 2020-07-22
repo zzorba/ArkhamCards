@@ -1,10 +1,10 @@
 import React from 'react';
 
-import InvestigatorRow from 'components/core/InvestigatorRow';
+import InvestigatorRow from '@components/core/InvestigatorRow';
 import InvestigatorDeckRow from '../InvestigatorDeckRow';
 import DeckList, { DeckListProps } from '../DeckList';
-import { Deck } from 'actions/types';
-import Card, { CardsMap } from 'data/Card';
+import { Deck } from '@actions/types';
+import Card, { CardsMap } from '@data/Card';
 
 interface Props extends DeckListProps {
   deckRemoved?: (

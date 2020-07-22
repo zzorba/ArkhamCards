@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 
 import { updateChaosBagResults } from './actions';
 import ChaosToken from './ChaosToken';
-import { ChaosBagResults } from 'actions/types';
-import { AppState, getChaosBagResults } from 'reducers';
-import { ChaosTokenType } from 'constants';
+import { ChaosBagResults } from '@actions/types';
+import { AppState, getChaosBagResults } from '@reducers';
+import { ChaosTokenType } from '@app_constants';
 
 interface OwnProps {
   campaignId: number;
@@ -70,7 +70,12 @@ class SealTokenButton extends React.Component<Props> {
       fontScale,
     } = this.props;
     return (
-      <TouchableHighlight style={sealed && canDisable && { opacity: 0.2 }} onPress={this._toggleSealToken} underlayColor="transparent">
+      <TouchableHighlight 
+        style={sealed && canDisable && { opacity: 0.2 }} 
+        onPress={this._toggleSealToken} 
+        underlayColor="transparent"
+        delayPressIn={0}
+      >
         <ChaosToken iconKey={iconKey} fontScale={fontScale} small />
       </TouchableHighlight>
     );

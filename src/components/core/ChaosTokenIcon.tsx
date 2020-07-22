@@ -5,8 +5,8 @@ import {
   TextStyle,
 } from 'react-native';
 
-import { SPECIAL_TOKENS, ChaosTokenType } from 'constants';
-import ArkhamIcon from 'icons/ArkhamIcon';
+import { SPECIAL_TOKENS, ChaosTokenType } from '@app_constants';
+import ArkhamIcon from '@icons/ArkhamIcon';
 
 const SPECIAL_TOKENS_SET: Set<ChaosTokenType> = new Set(SPECIAL_TOKENS);
 

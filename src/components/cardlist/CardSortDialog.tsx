@@ -13,8 +13,8 @@ import {
   SORT_BY_TITLE,
   SORT_BY_ENCOUNTER_SET,
   SortType,
-} from 'actions/types';
-import DialogPicker from 'components/core/DialogPicker';
+} from '@actions/types';
+import DialogPicker from '@components/core/DialogPicker';
 
 interface Props {
   componentId: string;

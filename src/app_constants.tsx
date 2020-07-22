@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import { mapValues } from 'lodash';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import COLORS from '@styles/colors';
 
 export type TypeCodeType =
   'asset' |
@@ -201,16 +201,20 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
-export function createFactionIcons(
-  defaultColor?: string
-): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
+export function createFactionIcons({
+  defaultColor,
+  colorChoice = 'text',
+}: { 
+  defaultColor?: string;
+  colorChoice?: 'text' | 'background'
+}): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
   return mapValues(COLORS.faction, (color, faction) => {
     return function factionIcon(size: number) {
       return (
         <ArkhamIcon
           name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
           size={size}
-          color={defaultColor || color.primary}
+          color={defaultColor || color[colorChoice]}
         />
       );
     };

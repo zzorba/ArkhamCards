@@ -10,8 +10,8 @@ import { t } from 'ttag';
 
 import Dialog from './Dialog';
 import PlusMinusButtons from './PlusMinusButtons';
-import space from 'styles/space';
-import typography from 'styles/typography';
+import space from '@styles/space';
+import typography from '@styles/typography';
 
 interface Props {
   title: string;

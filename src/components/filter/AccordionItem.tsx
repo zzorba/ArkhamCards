@@ -7,10 +7,10 @@ import {
   View,
 } from 'react-native';
 
-import Switch from 'components/core/Switch';
-import typography from 'styles/typography';
-import { isBig, s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import Switch from '@components/core/Switch';
+import typography from '@styles/typography';
+import { isBig, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   label: string;

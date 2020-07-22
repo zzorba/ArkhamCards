@@ -2,19 +2,19 @@ import React from 'react';
 import { find, map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
-import { stringList } from 'lib/stringHelper';
+import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import Card from 'data/Card';
+import Card from '@data/Card';
 import {
   BranchStep,
   CheckSuppliesCondition,
   Option,
-} from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { checkSuppliesAnyConditionResult, checkSuppliesAllConditionResult } from 'data/scenario/conditionHelper';
+} from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { checkSuppliesAnyConditionResult, checkSuppliesAllConditionResult } from '@data/scenario/conditionHelper';
 
 interface Props {
   step: BranchStep;

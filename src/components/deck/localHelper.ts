@@ -1,7 +1,7 @@
 import { forEach } from 'lodash';
 
-import { UpgradeDeckResult } from 'lib/authApi';
-import { Deck, DeckMeta, Slots } from 'actions/types';
+import { UpgradeDeckResult } from '@lib/authApi';
+import { Deck, DeckMeta, Slots } from '@actions/types';
 
 export function newLocalDeck(
   id: number,

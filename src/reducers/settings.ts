@@ -3,7 +3,7 @@ import {
   SET_SINGLE_CARD_VIEW,
   SetTabooSetAction,
   SetSingleCardViewAction,
-} from 'actions/types';
+} from '@actions/types';
 
 interface SettingsState {
   tabooId?: number;

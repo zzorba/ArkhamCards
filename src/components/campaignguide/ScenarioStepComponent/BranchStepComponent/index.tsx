@@ -10,8 +10,8 @@ import CampaignDataConditionComponent from './CampaignDataConditionComponent';
 import TraumaConditionComponent from './TraumaConditionComponent';
 import HasCardConditionComponent from './HasCardConditionComponent';
 import CampaignLogConditionComponent from './CampaignLogConditionComponent';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { BranchStep } from 'data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { BranchStep } from '@data/scenario/types';
 
 interface Props {
   step: BranchStep;

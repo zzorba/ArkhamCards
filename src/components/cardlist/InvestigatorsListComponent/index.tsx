@@ -13,19 +13,19 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
-import CollapsibleSearchBox from 'components/core/CollapsibleSearchBox';
-import BasicButton from 'components/core/BasicButton';
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import BasicSectionHeader from 'components/core/BasicSectionHeader';
-import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from 'actions/types';
-import Card from 'data/Card';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { searchMatchesText } from 'components/core/searchHelpers';
-import ShowNonCollectionFooter, { rowNonCollectionHeight } from 'components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
-import { getTabooSet, getPacksInCollection, AppState } from 'reducers';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import BasicButton from '@components/core/BasicButton';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import BasicSectionHeader from '@components/core/BasicSectionHeader';
+import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
+import Card from '@data/Card';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { searchMatchesText } from '@components/core/searchHelpers';
+import ShowNonCollectionFooter, { rowNonCollectionHeight } from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
+import { getTabooSet, getPacksInCollection, AppState } from '@reducers';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -382,7 +382,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
             renderItem={this._renderItem}
             initialNumToRender={24}
             keyExtractor={this._investigatorToCode}
-            stickySectionHeadersEnabled={sort !== SORT_BY_TITLE}
+            stickySectionHeadersEnabled={false}
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
             scrollEventThrottle={1}

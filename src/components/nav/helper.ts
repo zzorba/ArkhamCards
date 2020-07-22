@@ -3,15 +3,15 @@ import { Platform } from 'react-native';
 import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { DeckChartsProps } from 'components/deck/DeckChartsView';
-import { DrawSimulatorProps } from 'components/deck/DrawSimulatorView';
-import { DeckDetailProps } from 'components/deck/DeckDetailView';
-import { CardDetailProps } from 'components/card/CardDetailView';
-import { CardDetailSwipeProps } from 'components/card/CardDetailSwipeView';
-import { Deck, ParsedDeck, Slots } from 'actions/types';
-import Card from 'data/Card';
-import { iconsMap } from 'app/NavIcons';
-import COLORS from 'styles/colors';
+import { DeckChartsProps } from '@components/deck/DeckChartsView';
+import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
+import { DeckDetailProps } from '@components/deck/DeckDetailView';
+import { CardDetailProps } from '@components/card/CardDetailView';
+import { CardDetailSwipeProps } from '@components/card/CardDetailSwipeView';
+import { Deck, ParsedDeck, Slots } from '@actions/types';
+import Card from '@data/Card';
+import { iconsMap } from '@app/NavIcons';
+import COLORS from '@styles/colors';
 
 export function getDeckOptions(
   investigator?: Card,
@@ -53,8 +53,11 @@ export function getDeckOptions(
       background: {
         color: COLORS.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
-        ].dark,
+        ].darkBackground,
       },
+    },
+    layout: {
+      backgroundColor: COLORS.background,
     },
     bottomTabs: {
       visible: false,

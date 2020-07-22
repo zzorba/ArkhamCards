@@ -8,14 +8,14 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import Database from 'data/Database';
-import DbRender from 'components/data/DbRender';
+import Database from '@data/Database';
+import DbRender from '@components/data/DbRender';
 import SignatureCardItem from './SignatureCardItem';
-import Card from 'data/Card';
-import { where } from 'data/query';
-import { getTabooSet, AppState } from 'reducers';
-import space, { m, s } from 'styles/space';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import { where } from '@data/query';
+import { getTabooSet, AppState } from '@reducers';
+import space, { m, s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface SignatureCards {
   requiredCards: Card[];

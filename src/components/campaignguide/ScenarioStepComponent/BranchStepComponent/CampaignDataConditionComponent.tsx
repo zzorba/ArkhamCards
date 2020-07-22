@@ -2,16 +2,16 @@ import React from 'react';
 import { upperFirst } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryResult from 'components/campaignguide/BinaryResult';
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
+import BinaryResult from '@components/campaignguide/BinaryResult';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import {
   BranchStep,
   CampaignDataCondition,
-} from 'data/scenario/types';
-import { campaignDataScenarioConditionResult, campaignDataInvestigatorConditionResult } from 'data/scenario/conditionHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import { campaignDataScenarioConditionResult, campaignDataInvestigatorConditionResult } from '@data/scenario/conditionHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;

@@ -4,10 +4,10 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import BinaryResult from '../../BinaryResult';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import { DisplayChoice } from 'data/scenario';
-import { m, s } from 'styles/space';
-import COLORS from 'styles/colors';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { DisplayChoice } from '@data/scenario';
+import { m, s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   choice: DisplayChoice;
@@ -16,10 +16,7 @@ interface Props {
   editable: boolean;
   onSelect: (index: number) => void;
   noBullet?: boolean;
-  color?: {
-    tint: string;
-    primary: string;
-  };
+  color?: string;
 }
 
 export default class ChoiceComponent extends React.Component<Props> {
@@ -54,7 +51,7 @@ export default class ChoiceComponent extends React.Component<Props> {
           styles.row,
           index === 0 ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
           selected ? {
-            backgroundColor: color ? color.tint : undefined,
+            backgroundColor: color,
           } : {},
         ]}>
           <View style={styles.padding}>
@@ -62,7 +59,7 @@ export default class ChoiceComponent extends React.Component<Props> {
               <MaterialCommunityIcons
                 name={selected ? 'radiobox-marked' : 'radiobox-blank'}
                 size={30}
-                color={color ? color.primary : 'rgb(0, 122,255)'}
+                color={color ? color : 'rgb(0, 122,255)'}
               />
             </View>
             <View style={styles.textBlock}>

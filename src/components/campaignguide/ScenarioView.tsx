@@ -16,10 +16,10 @@ import { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
-import { iconsMap } from 'app/NavIcons';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { NavigationProps } from 'components/nav/types';
-import COLORS from 'styles/colors';
+import { iconsMap } from '@app/NavIcons';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { NavigationProps } from '@components/nav/types';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   showLinkedScenario?: (

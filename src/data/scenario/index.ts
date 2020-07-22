@@ -1,6 +1,6 @@
 import { find } from 'lodash';
 
-import { Deck, NumberChoices } from 'actions/types';
+import { Deck, NumberChoices } from '@actions/types';
 import { FullCampaign, Effect } from './types';
 import CampaignGuide, { CampaignLog } from './CampaignGuide';
 import ScenarioGuide from './ScenarioGuide';

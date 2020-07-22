@@ -6,11 +6,11 @@ import {
   Text,
 } from 'react-native';
 
-import { CampaignCycleCode } from 'actions/types';
-import EncounterIcon from 'icons/EncounterIcon';
-import { s, iconSizeScale } from 'styles/space';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import { CampaignCycleCode } from '@actions/types';
+import EncounterIcon from '@icons/EncounterIcon';
+import { s, iconSizeScale } from '@styles/space';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   fontScale: number;
@@ -40,7 +40,7 @@ export default class CycleItem extends React.Component<Props> {
           <EncounterIcon
             encounter_code={packCode}
             size={36 * iconSizeScale * fontScale}
-            color="#000000"
+            color={COLORS.darkText}
           />
         </View>
         <View style={styles.column}>

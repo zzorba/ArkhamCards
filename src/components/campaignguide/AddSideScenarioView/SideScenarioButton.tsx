@@ -3,13 +3,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import EncounterIcon from 'icons/EncounterIcon';
-import NavButton from 'components/core/NavButton';
-import { ChallengeData, Scenario } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space, { s, m } from 'styles/space';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import { ChallengeScenarioProps } from 'components/campaignguide/ChallengeScenarioView';
+import EncounterIcon from '@icons/EncounterIcon';
+import NavButton from '@components/core/NavButton';
+import { ChallengeData, Scenario } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space, { s, m } from '@styles/space';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import { ChallengeScenarioProps } from '@components/campaignguide/ChallengeScenarioView';
 
 interface Props {
   componentId: string;

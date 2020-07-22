@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import AppIcon from 'icons/AppIcon';
-import COLORS from 'styles/colors';
+import AppIcon from '@icons/AppIcon';
+import COLORS from '@styles/colors';
 
 interface Props {
   type: 'top' | 'bottom';

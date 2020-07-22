@@ -2,8 +2,7 @@ import React from 'react';
 import { flatMap } from 'lodash';
 
 import ChoiceComponent from './ChoiceComponent';
-import { CustomColor } from 'components/campaignguide/prompts/types';
-import { DisplayChoice } from 'data/scenario';
+import { DisplayChoice } from '@data/scenario';
 
 interface Props {
   choices: DisplayChoice[];
@@ -11,14 +10,14 @@ interface Props {
   editable: boolean;
   onSelect: (index: number) => void;
   noBullet?: boolean;
-  color?: CustomColor | CustomColor[];
+  color?: string | string[];
 }
 
 export default class ChooseOneListComponent extends React.Component<Props> {
   static getColor(
     idx: number,
-    color?: CustomColor | CustomColor[]
-  ): CustomColor | undefined {
+    color?: string | string[]
+  ): string | undefined {
     if (Array.isArray(color)) {
       return color.length >= idx ? color[idx] : undefined;
     }

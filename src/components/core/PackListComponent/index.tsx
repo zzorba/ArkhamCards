@@ -11,8 +11,8 @@ import {
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import { Pack } from 'actions/types';
-import CardSectionHeader from 'components/core/CardSectionHeader';
+import { Pack } from '@actions/types';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 
 interface PackCycle extends SectionListData<Pack> {
@@ -149,6 +149,7 @@ export default class PackListComponent extends React.Component<Props> {
           renderSectionHeader={this._renderSectionHeader}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
+          stickySectionHeadersEnabled={false}
           extraData={checkState}
         />
       </View>

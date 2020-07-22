@@ -9,11 +9,11 @@ import {
 import { t } from 'ttag';
 import DialogComponent from 'react-native-dialog';
 
-import Dialog from 'components/core/Dialog';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import COLORS from 'styles/colors';
-import space, { m } from 'styles/space';
-import typography from 'styles/typography';
+import Dialog from '@components/core/Dialog';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import COLORS from '@styles/colors';
+import space, { m } from '@styles/space';
+import typography from '@styles/typography';
 
 interface Props {
   name: string;

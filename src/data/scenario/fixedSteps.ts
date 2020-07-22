@@ -11,10 +11,10 @@ import {
   InputStep,
   Step,
   Scenario,
-} from 'data/scenario/types';
-import ScenarioGuide from 'data/scenario/ScenarioGuide';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
+} from '@data/scenario/types';
+import ScenarioGuide from '@data/scenario/ScenarioGuide';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 
 export enum PlayingScenarioBranch {
   CAMPAIGN_LOG = -1,

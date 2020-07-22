@@ -5,22 +5,22 @@ import DialogComponent from 'react-native-dialog';
 import { find, flatMap } from 'lodash';
 import { t } from 'ttag';
 
-import Dialog from 'components/core/Dialog';
-import DialogPlusMinusButtons from 'components/core/DialogPlusMinusButtons';
-import BasicButton from 'components/core/BasicButton';
+import Dialog from '@components/core/Dialog';
+import DialogPlusMinusButtons from '@components/core/DialogPlusMinusButtons';
+import BasicButton from '@components/core/BasicButton';
 import SideScenarioButton from './SideScenarioButton';
-import { NavigationProps } from 'components/nav/types';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from 'components/campaignguide/withCampaignGuideContext';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import TabView from 'components/core/TabView';
-import { ScenarioId } from 'data/scenario';
-import { Scenario } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import { NavigationProps } from '@components/nav/types';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import TabView from '@components/core/TabView';
+import { ScenarioId } from '@data/scenario';
+import { Scenario } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;

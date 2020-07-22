@@ -2,12 +2,12 @@ import React from 'react';
 import { flatMap } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
-import CardQueryWrapper from 'components/card/CardQueryWrapper';
-import QueryProvider from 'components/data/QueryProvider';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import Card from 'data/Card';
-import { combineQueriesOpt } from 'data/query';
-import FilterBuilder from 'lib/filters';
+import CardQueryWrapper from '@components/card/CardQueryWrapper';
+import QueryProvider from '@components/data/QueryProvider';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import Card from '@data/Card';
+import { combineQueriesOpt } from '@data/query';
+import FilterBuilder from '@lib/filters';
 
 interface Props {
   codes: string[];

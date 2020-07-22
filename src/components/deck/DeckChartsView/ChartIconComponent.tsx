@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import COLORS from '@styles/colors';
 
 interface Props {
   x: number;
@@ -19,6 +19,7 @@ export default class ChartIconComponent extends React.Component<Props> {
     super(props);
     this.iconGlyphs = ArkhamIcon.getRawGlyphMap();
   }
+
   color() {
     const { text } = this.props;
     switch (text) {
@@ -30,7 +31,7 @@ export default class ChartIconComponent extends React.Component<Props> {
       case 'neutral':
       case 'dual':
       case 'mythos':
-        return COLORS.faction[text].primary;
+        return COLORS.faction[text].background;
       case 'willpower':
       case 'agility':
       case 'combat':

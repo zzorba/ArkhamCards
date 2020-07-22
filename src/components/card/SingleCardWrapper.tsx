@@ -3,21 +3,22 @@ import {
   Text,
 } from 'react-native';
 
-import CardListWrapper from 'components/card/CardListWrapper';
-import Card from 'data/Card';
+import CardListWrapper from '@components/card/CardListWrapper';
+import Card from '@data/Card';
 
 interface Props {
   code: string;
   type: 'player' | 'encounter';
   children: (card: Card) => React.ReactNode | null;
+  loadingComponent?: React.ReactNode;
 }
 
 export default class SingleCardWrapper extends React.Component<Props> {
   _render = (cards: Card[], loading: boolean): React.ReactNode => {
-    const { code, children } = this.props;
+    const { code, children, loadingComponent } = this.props;
     if (!cards.length) {
       if (loading) {
-        return null;
+        return loadingComponent || null;
       }
       return <Text>Unknown { code }</Text>;
     }

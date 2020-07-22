@@ -7,11 +7,11 @@ import {
 } from 'react-native';
 
 import { t } from 'ttag';
-import { WeaknessSet } from 'actions/types';
-import typography from 'styles/typography';
-import Card from 'data/Card';
-import NavButton from 'components/core/NavButton';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import { WeaknessSet } from '@actions/types';
+import typography from '@styles/typography';
+import Card from '@data/Card';
+import NavButton from '@components/core/NavButton';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 
 interface OwnProps {
   fontScale: number;

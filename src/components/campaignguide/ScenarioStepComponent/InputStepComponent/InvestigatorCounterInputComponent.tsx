@@ -1,13 +1,13 @@
 import React from 'react';
 import { ngettext, msgid } from 'ttag';
 
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import InvestigatorCounterComponent from 'components/campaignguide/prompts/InvestigatorCounterComponent';
-import { InputStep, InvestigatorCounterInput } from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import InvestigatorCounterComponent from '@components/campaignguide/prompts/InvestigatorCounterComponent';
+import { InputStep, InvestigatorCounterInput } from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import Card from '@data/Card';
 import { forEach } from 'lodash';
 
 interface Props {

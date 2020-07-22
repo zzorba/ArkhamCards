@@ -22,7 +22,7 @@ import {
   WeaknessSet,
   CampaignActions,
   ChaosBagResults,
-} from 'actions/types';
+} from '@actions/types';
 
 export interface CampaignsState {
   all: {

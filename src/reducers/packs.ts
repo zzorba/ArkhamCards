@@ -10,7 +10,7 @@ import {
   SET_PACK_SPOILER,
   PacksActions,
   Pack,
-} from 'actions/types';
+} from '@actions/types';
 
 interface PacksState {
   all: Pack[];

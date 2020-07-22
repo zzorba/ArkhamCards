@@ -10,20 +10,20 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import TabView from 'components/core/TabView';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import TabView from '@components/core/TabView';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
-import { NewDeckProps } from 'components/deck/NewDeckView';
-import Switch from 'components/core/Switch';
-import { NavigationProps } from 'components/nav/types';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import { Deck, DecksMap, Campaign, SortType, SORT_BY_PACK } from 'actions/types';
-import { iconsMap } from 'app/NavIcons';
-import Card from 'data/Card';
-import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from 'reducers';
-import COLORS from 'styles/colors';
-import { s, xs } from 'styles/space';
+import { NewDeckProps } from '@components/deck/NewDeckView';
+import Switch from '@components/core/Switch';
+import { NavigationProps } from '@components/nav/types';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import { Deck, DecksMap, Campaign, SortType, SORT_BY_PACK } from '@actions/types';
+import { iconsMap } from '@app/NavIcons';
+import Card from '@data/Card';
+import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from '@reducers';
+import COLORS from '@styles/colors';
+import { s, xs } from '@styles/space';
 
 export interface MyDecksSelectorProps {
   campaignId: number;

@@ -8,14 +8,14 @@ import {
 import FastImage from 'react-native-fast-image';
 import { Navigation } from 'react-native-navigation';
 
-import { CardImageProps } from 'components/card/CardImageView';
-import EncounterIcon from 'icons/EncounterIcon';
-import { createFactionIcons } from 'constants';
-import Card from 'data/Card';
-import { isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import { CardImageProps } from '@components/card/CardImageView';
+import EncounterIcon from '@icons/EncounterIcon';
+import { createFactionIcons } from '@app_constants';
+import Card from '@data/Card';
+import { isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
-const FACTION_ICONS = createFactionIcons('#FFF');
+const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFF' });
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 
 interface Props {
@@ -67,6 +67,18 @@ export default class PlayerCardImage extends React.Component<Props> {
     const {
       card,
     } = this.props;
+    if (card.encounter_code) {
+      return (
+        <View style={[
+          styles.placeholder,
+          { backgroundColor: '#444' },
+        ]}>
+          <Text style={styles.placeholderIcon}>
+            <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
+          </Text>
+        </View>
+      );
+    }
 
     const faction_icon = card.faction2_code ?
       FACTION_ICONS.dual :
@@ -77,23 +89,11 @@ export default class PlayerCardImage extends React.Component<Props> {
           styles.placeholder,
           { backgroundColor: (card.faction2_code ?
             COLORS.faction.dual :
-            COLORS.faction[card.factionCode()]).primary,
+            COLORS.faction[card.factionCode()]).background,
           },
         ]}>
           <Text style={styles.placeholderIcon}>
             { faction_icon(55) }
-          </Text>
-        </View>
-      );
-    }
-    if (card.encounter_code) {
-      return (
-        <View style={[
-          styles.placeholder,
-          { backgroundColor: '#444' },
-        ]}>
-          <Text style={styles.placeholderIcon}>
-            <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
           </Text>
         </View>
       );
@@ -113,7 +113,7 @@ export default class PlayerCardImage extends React.Component<Props> {
       card.type_code === 'investigator' ||
       card.type_code === 'agenda';
 
-    if (isBig && !horizontal) {
+      if (isBig && !horizontal) {
       return (
         <View style={styles.verticalContainer}>
           <FastImage

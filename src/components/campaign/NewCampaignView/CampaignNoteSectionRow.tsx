@@ -1,7 +1,7 @@
 import React from 'react';
 import { t } from 'ttag';
 
-import PickerStyleButton from 'components/core/PickerStyleButton';
+import PickerStyleButton from '@components/core/PickerStyleButton';
 
 interface Props {
   name: string;

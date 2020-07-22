@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { Campaign, CUSTOM } from 'actions/types';
-import { CardsMap } from 'data/Card';
+import { Campaign, CUSTOM } from '@actions/types';
+import { CardsMap } from '@data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
-import { getCampaign, AppState } from 'reducers';
-import { m, s } from 'styles/space';
-import COLORS from 'styles/colors';
+import { getCampaign, AppState } from '@reducers';
+import { m, s } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   campaign: Campaign;

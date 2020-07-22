@@ -3,17 +3,17 @@ import { View } from 'react-native';
 import { forEach, keys, map, sumBy } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import InvestigatorNameRow from '../InvestigatorNameRow';
 import SupplyComponent from './SupplyComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../../ScenarioStepContext';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
-import { BulletType, Supply, SuppliesInput } from 'data/scenario/types';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
+import { BulletType, Supply, SuppliesInput } from '@data/scenario/types';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import Card from '@data/Card';
 
 interface Props {
   id: string;
@@ -115,7 +115,6 @@ export default class SuppliesPrompt extends React.Component<Props, State> {
               <InvestigatorNameRow
                 investigator={investigator}
                 detail={suppliesInput !== undefined ? undefined : t`${spent} of ${total}`}
-                dark
               />
               { map(input.supplies, (supply, idx2) => {
                 const count = counts[supply.id] || 0;

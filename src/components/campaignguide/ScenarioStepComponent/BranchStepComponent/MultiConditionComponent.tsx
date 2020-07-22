@@ -4,9 +4,9 @@ import BinaryResult from '../../BinaryResult';
 import {
   BranchStep,
   MultiCondition,
-} from 'data/scenario/types';
-import { multiConditionResult } from 'data/scenario/conditionHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+} from '@data/scenario/types';
+import { multiConditionResult } from '@data/scenario/conditionHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   step: BranchStep;

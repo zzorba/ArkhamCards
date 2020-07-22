@@ -2,12 +2,12 @@ import React from 'react';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
-import BinaryResult from 'components/campaignguide/BinaryResult';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import { LogEntryCard } from 'data/scenario/CampaignGuide';
-import { BranchStep, CampaignLogCondition, CampaignLogCardsCondition } from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
+import BinaryResult from '@components/campaignguide/BinaryResult';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import { LogEntryCard } from '@data/scenario/CampaignGuide';
+import { BranchStep, CampaignLogCondition, CampaignLogCardsCondition } from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import Card from '@data/Card';
 
 interface Props {
   step: BranchStep;

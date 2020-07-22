@@ -8,13 +8,13 @@ import {
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 
-import { showCard } from 'components/nav/helper';
-import { createFactionIcons } from 'constants';
-import Card from 'data/Card';
-import { isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import { showCard } from '@components/nav/helper';
+import { createFactionIcons } from '@app_constants';
+import Card from '@data/Card';
+import { isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
-const FACTION_ICONS = createFactionIcons('#FFF');
+const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFF' });
 
 const scaleFactor = isBig ? 1.2 : 1.0;
 
@@ -97,7 +97,7 @@ export default class InvestigatorImage extends React.Component<Props> {
               {
                 width: size,
                 height: size,
-                backgroundColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].primary,
+                backgroundColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
               },
             ]}>
               <Text style={styles.placeholderIcon} allowFontScaling={false}>
@@ -116,7 +116,7 @@ export default class InvestigatorImage extends React.Component<Props> {
             <View style={[
               styles.border,
               {
-                borderColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].primary,
+                borderColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
                 width: size,
                 height: size,
               },

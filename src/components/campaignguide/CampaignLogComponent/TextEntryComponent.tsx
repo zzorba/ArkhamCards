@@ -2,9 +2,9 @@ import React from 'react';
 import { Text } from 'react-native';
 import { upperFirst } from 'lodash';
 
-import { CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   text: string;

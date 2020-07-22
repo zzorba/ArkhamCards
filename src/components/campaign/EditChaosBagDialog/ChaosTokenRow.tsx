@@ -5,11 +5,11 @@ import {
   View,
 } from 'react-native';
 
-import { ChaosTokenType } from 'constants';
-import ChaosToken from 'components/core/ChaosToken';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import { ChaosTokenType } from '@app_constants';
+import ChaosToken from '@components/core/ChaosToken';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import { s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   id: ChaosTokenType;

@@ -12,9 +12,9 @@ import {
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { iconsMap } from 'app/NavIcons';
-import { NavigationProps } from 'components/nav/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import { iconsMap } from '@app/NavIcons';
+import { NavigationProps } from '@components/nav/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import ChaosTokenRow from './ChaosTokenRow';
 import {
   CHAOS_TOKENS,
@@ -22,10 +22,10 @@ import {
   CHAOS_TOKEN_ORDER,
   ChaosBag,
   ChaosTokenType,
-} from 'constants';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import space from 'styles/space';
+} from '@app_constants';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import space from '@styles/space';
 
 export interface EditChaosBagProps {
   chaosBag: ChaosBag;

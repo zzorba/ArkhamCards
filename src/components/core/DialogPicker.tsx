@@ -14,9 +14,9 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import DialogOption from './DialogOption';
 import withDimensions, { DimensionsProps } from './withDimensions';
-import typography from 'styles/typography';
-import { s, xs } from 'styles/space';
-import COLORS from 'styles/colors';
+import typography from '@styles/typography';
+import { s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   componentId: string;
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   background: {
     position: 'absolute',
-    backgroundColor: 'rgba(128,128,128,.25)',
+    backgroundColor: 'rgba(0,0,0,.20)',
     top: 0,
     left: 0,
     width: '100%',
@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
     fontWeight: '700',
+    color: COLORS.darkText,
     paddingBottom: xs,
   },
   descriptionText: {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { keys, slice } from 'lodash';
 
-import InvestigatorCheckListComponent from 'components/campaignguide/prompts/InvestigatorCheckListComponent';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import ChooseInvestigatorPrompt from 'components/campaignguide/prompts/ChooseInvestigatorPrompt';
-import InvestigatorChoicePrompt from 'components/campaignguide/prompts/InvestigatorChoicePrompt';
-import { InputStep, InvestigatorChoiceInput } from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import { investigatorChoiceInputChoices } from 'data/scenario/inputHelper';
+import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import ChooseInvestigatorPrompt from '@components/campaignguide/prompts/ChooseInvestigatorPrompt';
+import InvestigatorChoicePrompt from '@components/campaignguide/prompts/InvestigatorChoicePrompt';
+import { InputStep, InvestigatorChoiceInput } from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import { investigatorChoiceInputChoices } from '@data/scenario/inputHelper';
 
 interface Props {
   step: InputStep;

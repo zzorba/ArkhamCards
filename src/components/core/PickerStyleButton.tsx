@@ -5,9 +5,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import COLORS from 'styles/colors';
-import typography from 'styles/typography';
-import space, { s } from 'styles/space';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
+import space, { s } from '@styles/space';
 
 interface Props {
   title: string;
@@ -26,7 +26,7 @@ interface Props {
 
 export default class PickerStyleButton extends React.Component<Props> {
   renderWidget() {
-    const { widget } = this.props;
+    const { widget, colors } = this.props;
     switch (widget) {
       case 'shuffle':
         return (
@@ -34,7 +34,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color="#000"
+              color={colors ? colors.textColor : "#000"}
             />
           </View>
         );
@@ -44,7 +44,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={COLORS.darkText}
+              color={colors ? colors.textColor : "#000"}
             />
           </View>
         );
@@ -54,7 +54,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={COLORS.darkText}
+              color={colors ? colors.textColor : "#000"}
             />
           </View>
         );
@@ -149,7 +149,6 @@ const style = StyleSheet.create({
     borderColor: COLORS.divider,
   },
   defaultTitleStyle: {
-    flex: 1,
     fontSize: 16,
     minWidth: 100,
   },
@@ -160,6 +159,7 @@ const style = StyleSheet.create({
   textColumn: {
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'center',
     paddingTop: s,
     paddingBottom: s,
   },

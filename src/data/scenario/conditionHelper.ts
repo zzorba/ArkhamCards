@@ -8,7 +8,7 @@ import {
   sumBy,
 } from 'lodash';
 
-import { StringChoices } from 'actions/types';
+import { StringChoices } from '@actions/types';
 import {
   BinaryCardCondition,
   CardCondition,
@@ -38,7 +38,7 @@ import {
   DefaultOption,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
-import Card from 'data/Card';
+import Card from '@data/Card';
 
 export interface BinaryResult {
   type: 'binary';

@@ -3,10 +3,10 @@ import { findIndex, map } from 'lodash';
 import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
-import SinglePickerComponent from 'components/core/SinglePickerComponent';
-import { FactionCodeType } from 'constants';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import SinglePickerComponent from '@components/core/SinglePickerComponent';
+import { FactionCodeType } from '@app_constants';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 interface Props {
   name: string;
@@ -55,7 +55,7 @@ export default class FactionSelectPicker extends React.Component<Props> {
         description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
         colors={{
           modalColor: investigatorFaction ?
-            COLORS.faction[investigatorFaction].primary :
+            COLORS.faction[investigatorFaction].background :
             COLORS.lightBlue,
           modalTextColor: 'white',
           backgroundColor: 'transparent',

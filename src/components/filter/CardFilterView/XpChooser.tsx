@@ -7,6 +7,8 @@ import {
 import { ButtonGroup } from 'react-native-elements';
 import { t } from 'ttag';
 
+import COLORS from '@styles/colors';
+
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
   onToggleChange: (setting: string, value: boolean) => void;
@@ -78,7 +80,7 @@ export default class XpChooser extends React.Component<Props> {
         t`Level ${startXp}` :
         t`Level ${startXp} - ${endXp}`;
       return {
-        element: () => (<Text>{ xp }</Text>),
+        element: () => (<Text style={styles.text}>{ xp }</Text>),
       };
     });
     return (
@@ -100,10 +102,13 @@ const styles = StyleSheet.create({
   container: {
     height: 40,
   },
+  text: {
+    color: COLORS.darkText,
+  },
   button: {
-    backgroundColor: 'rgb(246,246,246)',
+    backgroundColor: COLORS.toggleButton,
   },
   selectedButton: {
-    backgroundColor: 'rgb(221,221,221)',
+    backgroundColor: COLORS.selectedToggleButton,
   },
 });

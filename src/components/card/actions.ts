@@ -1,7 +1,7 @@
 import { ThunkAction } from 'redux-thunk';
 import { Dispatch } from 'redux';
 
-import { changeLocale } from 'app/i18n';
+import { changeLocale } from '@app/i18n';
 import {
   PACKS_AVAILABLE,
   PACKS_FETCH_START,
@@ -23,10 +23,10 @@ import {
   CardCache,
   TabooCache,
   CardSetSchemaVersionAction,
-} from 'actions/types';
-import { AppState } from 'reducers/index';
-import { syncCards, syncTaboos } from 'lib/publicApi';
-import Database from 'data/Database';
+} from '@actions/types';
+import { AppState } from '@reducers/index';
+import { syncCards, syncTaboos } from '@lib/publicApi';
+import Database from '@data/Database';
 
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;

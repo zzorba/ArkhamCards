@@ -10,10 +10,10 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import Card from 'data/Card';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
-import { m, s, xs, iconSizeScale } from 'styles/space';
+import Card from '@data/Card';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
+import { m, s, xs, iconSizeScale } from '@styles/space';
 
 export interface CardSectionHeaderData {
   superTitle?: string;
@@ -49,7 +49,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <View style={[
         styles.superHeaderRow,
-        { backgroundColor: COLORS.faction[investigator.factionCode()].dark },
+        { backgroundColor: COLORS.faction[investigator.factionCode()].darkBackground },
       ]}>
         <View style={styles.superHeaderPadding}>
           <Text style={[typography.text, styles.superHeaderText]}>

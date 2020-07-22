@@ -5,10 +5,10 @@ import {
   View,
 } from 'react-native';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import Card from 'data/Card';
-import { m, xs } from 'styles/space';
-import typography from 'styles/typography';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import Card from '@data/Card';
+import { m, xs } from '@styles/space';
+import typography from '@styles/typography';
 
 interface Props {
   investigator: Card;

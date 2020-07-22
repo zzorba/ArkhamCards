@@ -3,17 +3,17 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { forEach, flatMap } from 'lodash';
 import { connect } from 'react-redux';
 
-import OddsCalculatorComponent from 'components/campaign/OddsCalculatorComponent';
-import { NavigationProps } from 'components/nav/types';
-import CardQueryWrapper from 'components/card/CardQueryWrapper';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { campaignScenarios, Scenario } from 'components/campaign/constants';
-import { Campaign } from 'actions/types';
-import { ChaosBag } from 'constants';
-import Card from 'data/Card';
-import { SCENARIO_CARDS_QUERY } from 'data/query';
-import { AppState, getCampaign } from 'reducers';
+import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponent';
+import { NavigationProps } from '@components/nav/types';
+import CardQueryWrapper from '@components/card/CardQueryWrapper';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { campaignScenarios, Scenario } from '@components/campaign/constants';
+import { Campaign } from '@actions/types';
+import { ChaosBag } from '@app_constants';
+import Card from '@data/Card';
+import { SCENARIO_CARDS_QUERY } from '@data/query';
+import { AppState, getCampaign } from '@reducers';
 
 export interface GuideOddsCalculatorProps {
   campaignId: number;

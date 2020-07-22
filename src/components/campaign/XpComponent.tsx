@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { t } from 'ttag';
 
 import EditCountComponent from './EditCountComponent';
-import space from 'styles/space';
+import space from '@styles/space';
 
 interface Props {
   xp: number;

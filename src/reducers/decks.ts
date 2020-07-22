@@ -18,7 +18,7 @@ import {
   UpdateDeckAction,
   Deck,
   DecksMap,
-} from 'actions/types';
+} from '@actions/types';
 import deepDiff from 'deep-diff';
 
 interface DecksState {

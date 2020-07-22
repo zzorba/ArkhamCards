@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import { toggleMythosMode } from 'components/filter/actions';
-import { AppState, getMythosMode } from 'reducers';
-import COLORS from 'styles/colors';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import { toggleMythosMode } from '@components/filter/actions';
+import { AppState, getMythosMode } from '@reducers';
+import COLORS from '@styles/colors';
 
 const SIZE = 36;
 
@@ -45,7 +45,7 @@ class MythosButton extends React.Component<Props> {
       mythosMode,
       lightButton,
     } = this.props;
-    const defaultColor = Platform.OS === 'ios' ? '#007AFF' : COLORS.button;
+    const defaultColor = COLORS.navButton;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress}>

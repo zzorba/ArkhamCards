@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import typography from 'styles/typography';
-import space from 'styles/space';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   text: string;

@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 
 import ChaosTokenIcon from './ChaosTokenIcon';
-import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from 'constants';
-import space, { iconSizeScale } from 'styles/space';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
+import space, { iconSizeScale } from '@styles/space';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   chaosBag: ChaosBag;

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import { isBig } from 'styles/space';
+import { isBig } from '@styles/space';
 import { WithChildren } from './types';
 
 export default function BoldHtmlTagNode(

@@ -8,13 +8,13 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import { Pack } from 'actions/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { setPackSpoiler, setCyclePackSpoiler } from 'actions';
-import PackListComponent from 'components/core/PackListComponent';
-import { NavigationProps } from 'components/nav/types';
-import { getAllPacks, getPackSpoilers, AppState } from 'reducers';
-import space from 'styles/space';
+import { Pack } from '@actions/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { setPackSpoiler, setCyclePackSpoiler } from '@actions';
+import PackListComponent from '@components/core/PackListComponent';
+import { NavigationProps } from '@components/nav/types';
+import { getAllPacks, getPackSpoilers, AppState } from '@reducers';
+import space from '@styles/space';
 
 interface ReduxProps {
   packs: Pack[];

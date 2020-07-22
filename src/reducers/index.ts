@@ -12,7 +12,7 @@ import cards from './cards';
 import decks from './decks';
 import packs from './packs';
 import settings from './settings';
-import { CardFilterData, FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from '@lib/filters';
 import {
   Campaign,
   ChaosBagResults,
@@ -24,8 +24,8 @@ import {
   CampaignGuideState,
   NEW_CHAOS_BAG_RESULTS,
   SORT_BY_TYPE,
-} from 'actions/types';
-import Card, { CardsMap } from 'data/Card';
+} from '@actions/types';
+import Card, { CardsMap } from '@data/Card';
 
 const packsPersistConfig = {
   key: 'packs',

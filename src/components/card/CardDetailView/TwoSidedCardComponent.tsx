@@ -13,24 +13,24 @@ import { msgid, ngettext, t, jt } from 'ttag';
 import {
   CORE_FACTION_CODES,
   RANDOM_BASIC_WEAKNESS,
-} from 'constants';
-import InvestigatorStatLine from 'components/core/InvestigatorStatLine';
-import HealthSanityLine from 'components/core/HealthSanityLine';
-import typography from 'styles/typography';
-import space, { isBig, xs, s } from 'styles/space';
-import AppIcon from 'icons/AppIcon';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import EncounterIcon from 'icons/EncounterIcon';
-import CardTabooTextBlock from 'components/card/CardTabooTextBlock';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
-import CardTextComponent from 'components/card/CardTextComponent';
-import { CardFaqProps } from 'components/card/CardFaqView';
-import { CardTabooProps } from 'components/card/CardTabooView';
+} from '@app_constants';
+import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
+import HealthSanityLine from '@components/core/HealthSanityLine';
+import typography from '@styles/typography';
+import space, { isBig, xs, s } from '@styles/space';
+import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import EncounterIcon from '@icons/EncounterIcon';
+import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
+import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
+import CardTextComponent from '@components/card/CardTextComponent';
+import { CardFaqProps } from '@components/card/CardFaqView';
+import { CardTabooProps } from '@components/card/CardTabooView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
-import Button from 'components/core/Button';
-import CardCostIcon from 'components/core/CardCostIcon';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import Button from '@components/core/Button';
+import CardCostIcon from '@components/core/CardCostIcon';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
 
@@ -252,7 +252,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             key={idx}
             name={skill.substring(6)}
             size={SKILL_ICON_SIZE}
-            color="#444"
+            color={COLORS.darkText}
           />))
         }
       </View>
@@ -332,15 +332,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderFactionIcon(card: Card) {
-    const color = (
-      card.type_code === 'asset' ||
-      card.type_code === 'event' ||
-      card.type_code === 'skill' ||
-      card.type_code === 'investigator' ||
-      card.subtype_code === 'weakness' ||
-      card.subtype_code === 'basicweakness'
-    ) ? '#FFF' : '#222';
-
+    const color =  '#FFF';
     if (card.spoiler) {
       const encounter_code = card.encounter_code ||
         (card.linked_card && card.linked_card.encounter_code);
@@ -457,13 +449,13 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     name: string,
     subname?: string,
   ) {
-    const factionColor = COLORS.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
+    const color = COLORS.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
     return (
       <View style={[styles.cardTitle, {
-        backgroundColor: factionColor || COLORS.background,
-        borderColor: (card.faction2_code ? COLORS.faction.dual.primary : factionColor),
+        backgroundColor: color,
+        borderColor: color,
       }]}>
-        { this.renderTitleContent(card, name, subname, factionColor) }
+        { this.renderTitleContent(card, name, subname, color) }
       </View>
     );
   }
@@ -514,6 +506,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             notFirst={!isFirst}
             width={width}
             simple={simple}
+            key="linked"
           />
         </View>
       );
@@ -538,7 +531,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           backgroundColor: COLORS.background,
           borderColor: COLORS.faction[
             card.faction2_code ? 'dual' : card.factionCode()
-          ].primary,
+          ].background,
         }]}>
           { this.renderTitle(card, card.back_name || card.name) }
           <View style={styles.cardBody}>
@@ -565,7 +558,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <View style={[styles.gameTextBlock, {
                   borderColor: COLORS.faction[card.faction2_code ?
                     'dual' : card.factionCode()
-                  ].primary,
+                  ].background,
                 }]}>
                   <CardTextComponent text={card.back_text} />
                 </View>)
@@ -622,7 +615,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { !!card.encounter_name && !!card.encounter_code ? (
                 <>
                   <Text style={typography.cardText}>
-                    <EncounterIcon encounter_code={card.encounter_code} size={16 * fontScale} color={COLORS.darkText} />
+                    <EncounterIcon
+                      encounter_code={card.encounter_code} 
+                      size={16 * fontScale} 
+                      color={COLORS.darkText} 
+                    />
                     { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
                       ngettext(
                         msgid`\n${card.quantity} copy.`,
@@ -633,14 +630,22 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   </Text>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
-                      <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color={COLORS.darkText} />
+                      <EncounterIcon 
+                        encounter_code={card.cycle_code || card.pack_code} 
+                        size={16 * fontScale} 
+                        color={COLORS.darkText} 
+                      />
                       { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
                   ) }
                 </>
               ) : (
                 <Text style={typography.cardText}>
-                  <EncounterIcon encounter_code={card.cycle_code || card.pack_code} size={16 * fontScale} color={COLORS.darkText} />
+                  <EncounterIcon 
+                    encounter_code={card.cycle_code || card.pack_code} 
+                    size={16 * fontScale} 
+                    color={COLORS.darkText} 
+                  />
                   { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>
               ) }
@@ -687,12 +692,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   ) {
     const { simple, fontScale } = this.props;
     return (
-      <React.Fragment>
+      <>
         { !!card.text && (
           <View style={[styles.gameTextBlock, {
             borderColor: COLORS.faction[card.faction2_code ?
               'dual' : card.factionCode()
-            ].primary,
+            ].background,
           }]}>
             <CardTextComponent text={card.text} />
           </View>)
@@ -711,7 +716,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <CardFlavorTextComponent text={card.flavor} />
         }
         <CardTabooTextBlock card={card} fontScale={fontScale} />
-      </React.Fragment>
+      </>
     );
   }
 
@@ -749,7 +754,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           {
             borderColor: COLORS.faction[
               card.faction2_code ? 'dual' : card.factionCode()
-            ].primary,
+            ].background,
           },
         ]}>
           { this.renderTitle(card, card.name, card.subname) }
@@ -791,7 +796,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       linked,
       notFirst,
     } = this.props;
-
     const isHorizontal = card.type_code === 'act' ||
       card.type_code === 'agenda' ||
       card.type_code === 'investigator';

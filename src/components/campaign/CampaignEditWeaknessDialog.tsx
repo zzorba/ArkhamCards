@@ -3,12 +3,12 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
 import { t } from 'ttag';
-import { Campaign, Slots, WeaknessSet } from 'actions/types';
-import { NavigationProps } from 'components/nav/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import { Campaign, Slots, WeaknessSet } from '@actions/types';
+import { NavigationProps } from '@components/nav/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import EditAssignedWeaknessComponent from '../weakness/EditAssignedWeaknessComponent';
 import { updateCampaign } from './actions';
-import { getCampaign, AppState } from 'reducers';
+import { getCampaign, AppState } from '@reducers';
 
 export interface CampaignEditWeaknessProps {
   campaignId: number;

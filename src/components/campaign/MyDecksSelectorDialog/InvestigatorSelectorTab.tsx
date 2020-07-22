@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navigation } from 'react-native-navigation';
 
-import { SortType } from 'actions/types';
-import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
-import Card from 'data/Card';
+import { SortType } from '@actions/types';
+import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
+import Card from '@data/Card';
 
 interface Props {
   componentId: string;

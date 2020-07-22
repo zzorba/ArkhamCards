@@ -3,15 +3,15 @@ import { StyleSheet, View } from 'react-native';
 import { filter, flatMap, map, throttle, shuffle } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
-import CardListWrapper from 'components/card/CardListWrapper';
-import PickerStyleButton from 'components/core/PickerStyleButton';
-import Card from 'data/Card';
-import { RandomLocationInput } from 'data/scenario/types';
-import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import { m, l } from 'styles/space';
-import COLORS from 'styles/colors';
+import BasicButton from '@components/core/BasicButton';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import CardListWrapper from '@components/card/CardListWrapper';
+import PickerStyleButton from '@components/core/PickerStyleButton';
+import Card from '@data/Card';
+import { RandomLocationInput } from '@data/scenario/types';
+import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import { m, l } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   input: RandomLocationInput;

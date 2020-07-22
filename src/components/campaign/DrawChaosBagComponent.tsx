@@ -7,19 +7,19 @@ import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigati
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
-import BasicButton from 'components/core/BasicButton';
-import { ChaosBag } from 'constants';
-import COLORS from 'styles/colors';
-import { ChaosBagResults } from 'actions/types';
-import typography from 'styles/typography';
+import BasicButton from '@components/core/BasicButton';
+import { ChaosBag } from '@app_constants';
+import COLORS from '@styles/colors';
+import { ChaosBagResults } from '@actions/types';
+import typography from '@styles/typography';
 import ChaosToken from './ChaosToken';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { updateChaosBagResults } from './actions';
-import { AppState, getChaosBagResults } from 'reducers';
+import { AppState, getChaosBagResults } from '@reducers';
 import { SealTokenDialogProps } from './SealTokenDialog';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
-import space, { s } from 'styles/space';
+import space, { s } from '@styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -353,13 +353,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: s,
-    backgroundColor: COLORS.gray,
+    backgroundColor: COLORS.lightBackground,
     height: 40,
   },
   containerTop: {
     alignItems: 'center',
     backgroundColor: COLORS.background,
-    borderBottomColor: COLORS.gray,
+    borderBottomColor: COLORS.divider,
     borderBottomWidth: 1,
     flex: 1,
     flexDirection: 'column',

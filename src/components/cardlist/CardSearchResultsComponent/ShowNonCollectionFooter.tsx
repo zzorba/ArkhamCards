@@ -4,9 +4,9 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import BasicButton from 'components/core/BasicButton';
-import { isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import BasicButton from '@components/core/BasicButton';
+import { isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
 export function rowNonCollectionHeight(fontScale: number) {
   return (isBig ? 52 : 38) * fontScale + 16;

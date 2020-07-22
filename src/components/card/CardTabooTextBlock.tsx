@@ -6,12 +6,12 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import typography from 'styles/typography';
-import { isBig, xs, s } from 'styles/space';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import CardTextComponent from 'components/card/CardTextComponent';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import typography from '@styles/typography';
+import { isBig, xs, s } from '@styles/space';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import CardTextComponent from '@components/card/CardTextComponent';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 const SMALL_ICON_SIZE = isBig ? 26 : 16;
 
@@ -28,7 +28,7 @@ export default function CardTabooTextBlock({ card, fontScale }: Props) {
     <View style={styles.tabooTextBlock}>
       <View style={styles.tabooRow}>
         <View style={styles.tabooIcon}>
-          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color="purple" />
+          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={COLORS.taboo} />
         </View>
         <Text style={typography.cardText}>
           { t`Taboo List Changes` }

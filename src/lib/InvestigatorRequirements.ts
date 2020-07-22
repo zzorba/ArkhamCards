@@ -1,10 +1,10 @@
 import { flatMap } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 
-import { DeckMeta } from 'actions/types';
-import Card from 'data/Card';
-import { DeckOptionQueryBuilder } from 'data/DeckOption';
-import { combineQueries, combineQueriesOpt, where } from 'data/query';
+import { DeckMeta } from '@actions/types';
+import Card from '@data/Card';
+import { DeckOptionQueryBuilder } from '@data/DeckOption';
+import { combineQueries, combineQueriesOpt, where } from '@data/query';
 
 
 export function negativeQueryForInvestigator(investigator: Card, meta?: DeckMeta): Brackets | undefined {

@@ -2,13 +2,13 @@ import React from 'react';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
-import DialogPicker from 'components/core/DialogPicker';
+import DialogPicker from '@components/core/DialogPicker';
 import {
   SORT_BY_FACTION,
   SORT_BY_PACK,
   SORT_BY_TITLE,
   SortType,
-} from 'actions/types';
+} from '@actions/types';
 
 interface Props {
   componentId: string;

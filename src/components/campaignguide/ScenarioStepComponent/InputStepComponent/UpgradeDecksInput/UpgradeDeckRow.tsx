@@ -5,26 +5,26 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import Switch from 'components/core/Switch';
-import BasicButton from 'components/core/BasicButton';
+import Switch from '@components/core/Switch';
+import BasicButton from '@components/core/BasicButton';
 import ShowDeckButton from './ShowDeckButton';
-import { Deck, Slots, NumberChoices } from 'actions/types';
-import BasicListRow from 'components/core/BasicListRow';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import CardListWrapper from 'components/card/CardListWrapper';
-import CardSectionHeader from 'components/core/CardSectionHeader';
-import CardSearchResult from 'components/cardlist/CardSearchResult';
-import { showDeckModal, showCard } from 'components/nav/helper';
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import DeckUpgradeComponent from 'components/deck/DeckUpgradeComponent';
-import { DeckChanges } from 'components/deck/actions';
-import { BODY_OF_A_YITHIAN } from 'constants';
-import Card from 'data/Card';
-import CampaignStateHelper from 'data/scenario/CampaignStateHelper';
-import ScenarioStateHelper from 'data/scenario/ScenarioStateHelper';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import { Deck, Slots, NumberChoices } from '@actions/types';
+import BasicListRow from '@components/core/BasicListRow';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import CardListWrapper from '@components/card/CardListWrapper';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import { showDeckModal, showCard } from '@components/nav/helper';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import DeckUpgradeComponent from '@components/deck/DeckUpgradeComponent';
+import { DeckChanges } from '@components/deck/actions';
+import { BODY_OF_A_YITHIAN } from '@app_constants';
+import Card from '@data/Card';
+import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;
@@ -347,7 +347,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <Text style={[typography.text]}>
                 { physicalDeltaString }
                 { !locked && (
-                  <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                  <Text style={[typography.text, { color: COLORS.lightText }]}>
                     { t` (New Total: ${totalPhysical})` }
                   </Text>
                 ) }
@@ -372,6 +372,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
             { !locked ? (
               <Switch
                 value={this.state.killed}
+                customColor={COLORS.faction[investigator.factionCode()].background}
                 onValueChange={this._toggleKilled}
                 disabled={this.state.insane}
               />
@@ -379,7 +380,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <MaterialCommunityIcons
                 name="check"
                 size={18}
-                color={'#222'}
+                color={COLORS.darkText}
               />
             ) }
           </BasicListRow>
@@ -395,7 +396,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <Text style={typography.text}>
                 { mentalDeltaString }
                 { !locked && (
-                  <Text style={[typography.text, { color: COLORS.darkGray }]}>
+                  <Text style={[typography.text, { color: COLORS.lightText }]}>
                     { t` (New Total: ${totalMental})` }
                   </Text>
                 ) }
@@ -419,6 +420,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
             </Text>
             { !locked ? (
               <Switch
+                customColor={COLORS.faction[investigator.factionCode()].background}
                 value={this.state.insane}
                 onValueChange={this._toggleInsane}
                 disabled={this.state.killed}
@@ -427,7 +429,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <MaterialCommunityIcons
                 name="check"
                 size={18}
-                color={'#222'}
+                color={COLORS.darkText}
               />
             ) }
           </BasicListRow>

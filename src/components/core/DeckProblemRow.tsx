@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import { DeckProblem, DeckProblemType } from 'actions/types';
-import AppIcon from 'icons/AppIcon';
-import typography, { SMALL_FONT_SIZE } from 'styles/typography';
-import space from 'styles/space';
+import { DeckProblem, DeckProblemType } from '@actions/types';
+import AppIcon from '@icons/AppIcon';
+import typography, { SMALL_FONT_SIZE } from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   problem: DeckProblem;

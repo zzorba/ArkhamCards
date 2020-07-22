@@ -6,14 +6,14 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
+import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { BulletType, Effect, Option } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import { BulletType, Effect, Option } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   id: string;

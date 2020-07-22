@@ -2,11 +2,11 @@ import React from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 
-import InvestigatorRow from 'components/core/InvestigatorRow';
-import { Deck } from 'actions/types';
-import Card, { CardsMap } from 'data/Card';
-import { fetchPrivateDeck } from 'components/deck/actions';
-import { getDeck, AppState } from 'reducers';
+import InvestigatorRow from '@components/core/InvestigatorRow';
+import { Deck } from '@actions/types';
+import Card, { CardsMap } from '@data/Card';
+import { fetchPrivateDeck } from '@components/deck/actions';
+import { getDeck, AppState } from '@reducers';
 
 interface OwnProps {
   id: number;

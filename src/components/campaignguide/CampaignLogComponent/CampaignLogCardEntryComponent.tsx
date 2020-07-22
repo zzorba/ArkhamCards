@@ -1,9 +1,9 @@
 import React from 'react';
 
 import TextEntryComponent from './TextEntryComponent';
-import SingleCardWrapper from 'components/card/SingleCardWrapper';
-import { CampaignLogEntry } from 'data/scenario/GuidedCampaignLog';
-import Card from 'data/Card';
+import SingleCardWrapper from '@components/card/SingleCardWrapper';
+import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
+import Card from '@data/Card';
 
 interface Props {
   crossedOut?: boolean;

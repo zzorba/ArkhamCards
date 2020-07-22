@@ -1,7 +1,8 @@
 import React from 'react';
 
-import CardTextComponent from 'components/card/CardTextComponent';
-import CardFlavorTextComponent from 'components/card/CardFlavorTextComponent';
+import CardTextComponent from '@components/card/CardTextComponent';
+import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
+import COLORS from '@styles/colors';
 
 interface Props {
   text: string;
@@ -13,7 +14,7 @@ export default function CampaignGuideTextComponent({ text, flavor }: Props) {
     return (
       <CardFlavorTextComponent
         text={text.replace(/\n/g, '\n\n')}
-        color="#222"
+        color={COLORS.darkText}
         fontAdjustment={1.1}
       />
     );

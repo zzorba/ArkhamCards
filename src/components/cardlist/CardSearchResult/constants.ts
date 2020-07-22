@@ -1,5 +1,5 @@
-import { isBig } from 'styles/space';
-import { TINY_PHONE } from 'styles/sizes';
+import { isBig } from '@styles/space';
+import { TINY_PHONE } from '@styles/sizes';
 
 function halfFontScale(fontScale: number) {
   return (fontScale - 1) / 2 + 1;

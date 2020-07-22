@@ -3,20 +3,19 @@ import { Text, View, StyleSheet } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
-import BasicButton from 'components/core/BasicButton';
-import { CustomColor } from 'components/campaignguide/prompts/types';
+import BasicButton from '@components/core/BasicButton';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
-import { NumberChoices } from 'actions/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import { NumberChoices } from '@actions/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 export interface CounterItem {
   code: string;
   name: string;
   description?: string;
-  color?: CustomColor;
+  color?: string;
   limit?: number;
 }
 

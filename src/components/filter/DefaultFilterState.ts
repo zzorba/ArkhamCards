@@ -1,7 +1,7 @@
 import { concat, forEach } from 'lodash';
 
-import Card from 'data/Card';
-import { defaultFilterState } from 'lib/filters';
+import Card from '@data/Card';
+import { defaultFilterState } from '@lib/filters';
 
 function update(value: number | undefined | null, minMax: [number, number]): [number, number] {
   if (value === undefined || value === null || value < 0) {

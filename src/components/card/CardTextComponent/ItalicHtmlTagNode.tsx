@@ -6,6 +6,7 @@ import {
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithChildren } from './types';
+import COLORS from '@styles/colors';
 
 export default function ItalicHtmlTagNode(
   node: Node & WithChildren,
@@ -25,7 +26,7 @@ export default function ItalicHtmlTagNode(
 const styles = StyleSheet.create({
   italicText: {
     fontStyle: 'italic',
-    fontWeight: '400',
-    color: '#333',
+    fontWeight: '300',
+    color: COLORS.darkText,
   },
 });

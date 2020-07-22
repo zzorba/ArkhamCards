@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
 import SettingsEditText from './SettingsEditText'
-import COLORS from 'styles/colors';
-import { m, s } from 'styles/space';
-import typography from 'styles/typography';
+import COLORS from '@styles/colors';
+import { m, s } from '@styles/space';
+import typography from '@styles/typography';
 
 interface Props {
   title: string;
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   container: {
+    backgroundColor: COLORS.background,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
     flexDirection: 'column',

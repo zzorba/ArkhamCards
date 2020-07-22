@@ -6,6 +6,7 @@ import {
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithText } from './types';
+import COLORS from '@styles/colors';
 
 export default function StrikethroughTextNode(
   node: Node & WithText,
@@ -26,6 +27,6 @@ const styles = StyleSheet.create({
   strikeText: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
-    textDecorationColor: '#222',
+    textDecorationColor: COLORS.darkText
   },
 });

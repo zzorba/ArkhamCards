@@ -3,14 +3,14 @@ import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 import PinchZoomView from 'react-native-pinch-zoom-view';
 
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import { NavigationProps } from 'components/nav/types';
-import { LocationSetupStep } from 'data/scenario/types';
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { NavigationProps } from '@components/nav/types';
+import { LocationSetupStep } from '@data/scenario/types';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import LocationCard from './LocationCard';
-import { CARD_RATIO } from 'styles/sizes';
-import { isTablet } from 'styles/space';
+import { CARD_RATIO } from '@styles/sizes';
+import { isTablet } from '@styles/space';
 
 export interface LocationSetupProps {
   step: LocationSetupStep;

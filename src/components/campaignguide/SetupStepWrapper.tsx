@@ -4,10 +4,10 @@ import {
   View,
 } from 'react-native';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import { BulletType } from 'data/scenario/types';
-import COLORS from 'styles/colors';
-import space, { s, m, xs } from 'styles/space';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import { BulletType } from '@data/scenario/types';
+import COLORS from '@styles/colors';
+import space, { s, m, xs } from '@styles/space';
 
 interface Props {
   bulletType?: BulletType;
@@ -40,7 +40,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={'#222'}
+              color={COLORS.darkText}
             />
           </View>
         );

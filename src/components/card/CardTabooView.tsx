@@ -6,16 +6,16 @@ import {
   Text,
   View,
 } from 'react-native';
-import Database from 'data/Database';
-import DbRender from 'components/data/DbRender';
+import Database from '@data/Database';
+import DbRender from '@components/data/DbRender';
 import { t } from 'ttag';
 
-import Card from 'data/Card';
-import TabooSet from 'data/TabooSet';
+import Card from '@data/Card';
+import TabooSet from '@data/TabooSet';
 import CardTextComponent from './CardTextComponent';
-import { NavigationProps } from 'components/nav/types';
-import { l, m, xs, s } from 'styles/space';
-import typography from 'styles/typography';
+import { NavigationProps } from '@components/nav/types';
+import { l, m, xs, s } from '@styles/space';
+import typography from '@styles/typography';
 
 export interface CardTabooProps {
   id: string;

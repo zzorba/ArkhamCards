@@ -4,15 +4,15 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import { flatMap, forEach, map, partition } from 'lodash';
 import { t } from 'ttag';
 
-import { Campaign, InvestigatorData } from 'actions/types';
-import BasicButton from 'components/core/BasicButton';
-import InvestigatorCampaignRow from 'components/campaign/InvestigatorCampaignRow';
-import { ProcessedCampaign } from 'data/scenario';
-import CampaignGuideContext, { CampaignGuideContextType } from 'components/campaignguide/CampaignGuideContext';
-import Card from 'data/Card';
-import typography from 'styles/typography';
-import { s, l } from 'styles/space';
-import COLORS from 'styles/colors';
+import { Campaign, InvestigatorData } from '@actions/types';
+import BasicButton from '@components/core/BasicButton';
+import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
+import { ProcessedCampaign } from '@data/scenario';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import Card from '@data/Card';
+import typography from '@styles/typography';
+import { s, l } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

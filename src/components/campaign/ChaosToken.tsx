@@ -1,10 +1,10 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
 
-import { ChaosTokenType } from 'constants';
-import ChaosTokenIcon from 'components/core/ChaosTokenIcon';
-import { iconSizeScale } from 'styles/space';
-import COLORS from 'styles/colors';
+import { ChaosTokenType } from '@app_constants';
+import ChaosTokenIcon from '@components/core/ChaosTokenIcon';
+import { iconSizeScale } from '@styles/space';
+import COLORS from '@styles/colors';
 
 const CHAOS_TOKEN_BACKGROUND = require('../../../assets/chaos-token-background.jpg');
 

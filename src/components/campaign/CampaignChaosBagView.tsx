@@ -4,11 +4,11 @@ import { EventSubscription, Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
-import { NavigationProps } from 'components/nav/types';
-import { ChaosBag } from 'constants';
-import COLORS from 'styles/colors';
+import { NavigationProps } from '@components/nav/types';
+import { ChaosBag } from '@app_constants';
+import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
-import { AppState, getCampaign } from 'reducers';
+import { AppState, getCampaign } from '@reducers';
 
 export interface CampaignChaosBagProps {
   componentId: string;

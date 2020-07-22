@@ -2,11 +2,11 @@ import React from 'react';
 import { filter, forEach, map, uniqBy } from 'lodash';
 import { connect } from 'react-redux';
 
-import PackListComponent from 'components/core/PackListComponent';
-import { BASIC_WEAKNESS_QUERY } from 'data/query';
-import { AppState } from 'reducers';
-import { Pack } from 'actions/types';
-import withPlayerCards, { PlayerCardProps } from 'components/core/withPlayerCards';
+import PackListComponent from '@components/core/PackListComponent';
+import { BASIC_WEAKNESS_QUERY } from '@data/query';
+import { AppState } from '@reducers';
+import { Pack } from '@actions/types';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 
 interface OwnProps {
   componentId: string;

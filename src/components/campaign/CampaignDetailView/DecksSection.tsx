@@ -10,15 +10,15 @@ import {
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { MyDecksSelectorProps } from 'components/campaign/MyDecksSelectorDialog';
-import BasicButton from 'components/core/BasicButton';
-import InvestigatorCampaignRow from 'components/campaign/InvestigatorCampaignRow';
-import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from 'actions/types';
-import { UpgradeDeckProps } from 'components/deck/DeckUpgradeDialog';
-import Card, { CardsMap } from 'data/Card';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
+import BasicButton from '@components/core/BasicButton';
+import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
+import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from '@actions/types';
+import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
+import Card, { CardsMap } from '@data/Card';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;
@@ -254,7 +254,7 @@ export default class DecksSection extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].dark,
+              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },

@@ -3,14 +3,14 @@ import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import { SORT_BY_PACK, SortType , Deck } from 'actions/types';
-import { iconsMap } from 'app/NavIcons';
+import { SORT_BY_PACK, SortType , Deck } from '@actions/types';
+import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
-import { getDeckOptions } from 'components/nav/helper';
-import InvestigatorsListComponent from 'components/cardlist/InvestigatorsListComponent';
-import { NavigationProps } from 'components/nav/types';
-import Card from 'data/Card';
-import COLORS from 'styles/colors';
+import { getDeckOptions } from '@components/nav/helper';
+import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
+import { NavigationProps } from '@components/nav/types';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
 
 export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;
@@ -103,7 +103,10 @@ export default class NewDeckView extends React.Component<Props, State> {
           investigatorId: investigator.code,
           onCreateDeck,
         },
-        options: getDeckOptions(investigator, false, t`New Deck`),
+        options: {
+          ...getDeckOptions(investigator, false, t`New Deck`),
+          bottomTabs: {},
+        },
       },
     });
   };
@@ -134,5 +137,6 @@ export default class NewDeckView extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
 });

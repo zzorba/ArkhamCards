@@ -11,10 +11,10 @@ import { t } from 'ttag';
 
 import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
-import { ParsedDeck } from 'actions/types';
-import { PLAYER_FACTION_CODES, FactionCodeType } from 'constants';
-import typography from 'styles/typography';
-import COLORS from 'styles/colors';
+import { ParsedDeck } from '@actions/types';
+import { PLAYER_FACTION_CODES, FactionCodeType } from '@app_constants';
+import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -106,7 +106,7 @@ export default class FactionChart extends React.PureComponent<Props> {
               labels={this._getDualValue}
               style={{
                 data: {
-                  fill: COLORS.faction.dual.primary,
+                  fill: COLORS.faction.dual.background,
                 },
                 labels: {
                   fill: 'white',
@@ -127,7 +127,7 @@ export default class FactionChart extends React.PureComponent<Props> {
               labels={this._getTotalValue}
               style={{
                 data: {
-                  fill: ({ datum }: { datum: Item }) => COLORS.faction[datum.faction].primary,
+                  fill: ({ datum }: { datum: Item }) => COLORS.faction[datum.faction].background,
                 },
                 labels: {
                   fill: 'white',

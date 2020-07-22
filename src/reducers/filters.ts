@@ -1,6 +1,6 @@
 import { pick } from 'lodash';
 
-import { CardFilterData, FilterState } from 'lib/filters';
+import { CardFilterData, FilterState } from '@lib/filters';
 import {
   SORT_BY_TYPE,
   CLEAR_FILTER,
@@ -13,7 +13,7 @@ import {
   UPDATE_CARD_SORT,
   FilterActions,
   SortType,
-} from 'actions/types';
+} from '@actions/types';
 
 interface FiltersState {
   all: { [componentId: string]: FilterState | undefined };

@@ -1,15 +1,17 @@
 import React from 'react';
 import {
+  DynamicColorIOS,
+  Platform,
   Text,
   StyleSheet,
   View,
 } from 'react-native';
 
-import AppIcon from 'icons/AppIcon';
-import ArkhamIcon from 'icons/ArkhamIcon';
-import Card from 'data/Card';
-import { isBig } from 'styles/space';
-import COLORS from 'styles/colors';
+import AppIcon from '@icons/AppIcon';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import Card from '@data/Card';
+import { isBig } from '@styles/space';
+import COLORS from '@styles/colors';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
@@ -22,6 +24,7 @@ interface Props {
   inverted?: boolean;
   linked?: boolean;
 }
+
 export default class CardCostIcon extends React.PureComponent<Props> {
   cardCost() {
     const {
@@ -94,14 +97,14 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           <AppIcon
             name={`${inverted ? '' : 'inverted_'}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? color : COLORS.veryLightBackground}
+            color={inverted ? color : COLORS.costTintIcon}
           />
         </View>
         <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
             size={ICON_SIZE}
-            color={inverted ? COLORS.background : color}
+            color={inverted ? 'white' : color}
           />
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
@@ -109,7 +112,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
             <View>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color={COLORS.background}
+                color="white"
                 size={ICON_SIZE / 2}
               />
             </View>
@@ -145,6 +148,6 @@ const styles = StyleSheet.create({
   costNumber: {
     paddingTop: 3,
     fontFamily: 'Teutonic',
-    color: COLORS.background,
+    color: COLORS.white,
   },
 });

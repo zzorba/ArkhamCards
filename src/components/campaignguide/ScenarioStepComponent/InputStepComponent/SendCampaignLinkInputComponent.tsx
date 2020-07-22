@@ -1,10 +1,10 @@
 import React from 'react';
 
-import SetupStepWrapper from 'components/campaignguide/SetupStepWrapper';
-import CampaignGuideTextComponent from 'components/campaignguide/CampaignGuideTextComponent';
-import ScenarioStepContext, { ScenarioStepContextType } from 'components/campaignguide/ScenarioStepContext';
-import { SendCampaignLinkInput, BulletType } from 'data/scenario/types';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
+import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import { SendCampaignLinkInput, BulletType } from '@data/scenario/types';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
   id: string;

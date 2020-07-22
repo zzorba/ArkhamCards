@@ -36,9 +36,9 @@ import {
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
   RestoreBackupAction,
-} from 'actions/types';
-import { ChaosBag } from 'constants';
-import { AppState, getCampaign } from 'reducers';
+} from '@actions/types';
+import { ChaosBag } from '@app_constants';
+import { AppState, getCampaign } from '@reducers';
 
 function getBaseDeckIds(
   state: AppState,

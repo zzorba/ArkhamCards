@@ -5,7 +5,7 @@ import {
   SwitchProps,
 } from 'react-native';
 
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 interface Props extends SwitchProps {
   customColor?: string;
@@ -27,7 +27,10 @@ export default function CustomSwitch({ customColor, customTrackColor, ...otherPr
   }
   return (
     <Switch
-      trackColor={COLORS.switchTrackColor}
+      trackColor={customTrackColor ? {
+        false: customTrackColor,
+        true: customTrackColor,
+      } : undefined}
       ios_backgroundColor={COLORS.background}
       {...otherProps}
     />

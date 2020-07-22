@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { msgid, ngettext } from 'ttag';
 
-import Card from 'data/Card';
-import PlusMinusButtons from 'components/core/PlusMinusButtons';
-import { Supply } from 'data/scenario/types';
-import typography from 'styles/typography';
-import space from 'styles/space';
-import COLORS from 'styles/colors';
+import Card from '@data/Card';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import { Supply } from '@data/scenario/types';
+import typography from '@styles/typography';
+import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   investigator: Card;
@@ -56,7 +56,7 @@ export default class SupplyComponent extends React.Component<Props> {
     return (
       <View style={[
         styles.row,
-        { backgroundColor: COLORS.faction[investigator.factionCode()].veryLight },
+        { backgroundColor: COLORS.faction[investigator.factionCode()].lightBackground },
       ]}>
         <View style={[styles.textBlock, space.paddingS, space.paddingSideM]}>
           <Text style={typography.text}>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#bbb',
+    borderColor: COLORS.divider,
   },
   buttons: {
     justifyContent: 'center',
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   blackText: {
-    color: '#000',
+    color: COLORS.darkText,
   },
 });

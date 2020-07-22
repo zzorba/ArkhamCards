@@ -1,11 +1,11 @@
 import React from 'react';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import ArkhamIcon from 'icons/ArkhamIcon';
-import { isBig } from 'styles/space';
+import ArkhamIcon from '@icons/ArkhamIcon';
+import { isBig } from '@styles/space';
 
 import { WithIconName } from './types';
-import COLORS from 'styles/colors';
+import COLORS from '@styles/colors';
 
 const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   Action: 'action',

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import withDimensions, { DimensionsProps } from 'components/core/withDimensions';
-import { NavigationProps } from 'components/nav/types';
-import CampaignGuide from 'data/scenario/CampaignGuide';
-import GuidedCampaignLog from 'data/scenario/GuidedCampaignLog';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import { NavigationProps } from '@components/nav/types';
+import CampaignGuide from '@data/scenario/CampaignGuide';
+import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignLogComponent from './CampaignLogComponent';
 
 export interface CampaignLogProps {

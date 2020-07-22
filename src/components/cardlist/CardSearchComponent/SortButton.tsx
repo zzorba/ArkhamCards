@@ -12,10 +12,10 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import { SortType } from 'actions/types';
-import { updateCardSort } from 'components/filter/actions';
-import { AppState, getMythosMode, getCardSort } from 'reducers';
-import COLORS from 'styles/colors';
+import { SortType } from '@actions/types';
+import { updateCardSort } from '@components/filter/actions';
+import { AppState, getMythosMode, getCardSort } from '@reducers';
+import COLORS from '@styles/colors';
 
 const SIZE = 36;
 
@@ -64,7 +64,7 @@ class SortButton extends React.Component<Props> {
     const {
       lightButton,
     } = this.props;
-    const defaultColor = Platform.OS === 'ios' ? '#007AFF' : COLORS.button;
+    const defaultColor = COLORS.navButton;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress} testID="Sort">
