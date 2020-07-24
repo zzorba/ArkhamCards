@@ -13,6 +13,7 @@ import {
 
 import typography from '@styles/typography';
 import { xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props extends TextInputProps {
   value: string;
@@ -69,9 +70,9 @@ export default class TextBoxButton extends React.Component<Props, State> {
             crossedOut ? {
               textDecorationLine: 'line-through',
               textDecorationStyle: 'solid',
-              textDecorationColor: '#222',
+              textDecorationColor: COLORS.lightText,
             } : {},
-            value ? { color: '#222' } : { color: '#aaa' },
+            value ? { color: COLORS.lightText } : { color: COLORS.veryLightText },
           ]}
           onLayout={multiline ? this._updateSize : undefined}>
             { value || placeholder }
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    color: '#222',
+    color: COLORS.lightText,
     width: '100%',
   },
 });

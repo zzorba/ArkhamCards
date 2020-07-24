@@ -5,7 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 import { t } from 'ttag';
 
 import Dialog from './Dialog';

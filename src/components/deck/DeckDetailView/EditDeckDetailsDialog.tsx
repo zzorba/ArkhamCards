@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { t } from 'ttag';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 
 import Dialog from '@components/core/Dialog';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   View,
 } from 'react-native';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 
 import DialogPlusMinusButtons from '@components/core/DialogPlusMinusButtons';
 import { t } from 'ttag';

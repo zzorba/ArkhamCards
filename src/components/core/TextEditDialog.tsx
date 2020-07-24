@@ -7,8 +7,8 @@ import {
   View,
 } from 'react-native';
 import { startsWith, throttle } from 'lodash';
-import DialogComponent from 'react-native-dialog';
 
+import DialogComponent from '@lib/react-native-dialog';
 import { t } from 'ttag';
 import Dialog from './Dialog';
 import typography from '@styles/typography';

@@ -4,7 +4,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 import { t } from 'ttag';
 
 import Dialog from '@components/core/Dialog';
@@ -133,14 +133,12 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
           labelStyle={typography.dialogLabel}
           value={isCount}
           onValueChange={this._toggleCount}
-          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Switch
           label={t`Per Investigator`}
           labelStyle={typography.dialogLabel}
           value={perInvestigator}
           onValueChange={this._toggleInvestigator}
-          trackColor={COLORS.switchTrackColor}
         />
         <DialogComponent.Button
           label={t`Cancel`}

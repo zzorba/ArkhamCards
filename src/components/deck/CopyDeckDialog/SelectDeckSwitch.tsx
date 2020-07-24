@@ -1,5 +1,5 @@
 import React from 'react';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 
 import COLORS from '@styles/colors';
 

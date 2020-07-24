@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
-import { View, findNodeHandle } from 'react-native';
-import DialogComponent from 'react-native-dialog';
+import { View, StyleSheet, findNodeHandle } from 'react-native';
+import DialogComponent from '@lib/react-native-dialog';
+
+import COLORS from '@styles/colors'
 
 interface Props {
   title: string;

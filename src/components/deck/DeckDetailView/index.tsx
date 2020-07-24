@@ -22,7 +22,7 @@ import {
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription, OptionsTopBarButton } from 'react-native-navigation';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu';
@@ -1623,7 +1623,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 description={`${deck.id}`}
                 descriptionStyle={styles.text}
                 onPress={this._showEditDetailsVisible}
-                disabledOverlayStyle={{ backgroundColor: 'transparent' }}
+                disabledOverlayStyle={{ backgroundColor: COLORS.disabledOverlay }}
                 disabled
               />
             ) }

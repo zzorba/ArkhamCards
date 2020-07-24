@@ -1,6 +1,6 @@
 import React from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import LinearGradient from 'react-native-linear-gradient';
@@ -397,21 +397,23 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
             </Text>
           </View>
         </ScrollView>
-        <View style={styles.footer}>
-          <View style={[styles.countRow, styles.footerRow, ]}>
-            <Text style={typography.text}>{ t`Difficulty` }</Text>
-            <Text style={[{ color: COLORS.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
-              { testDifficulty }
-            </Text>
-            <PlusMinusButtons
-              count={testDifficulty}
-              size={36}
-              onIncrement={this._incrementDifficulty}
-              onDecrement={this._decrementDifficulty}
-              color="dark"
-            />
+        <SafeAreaView>
+          <View style={styles.footer}>
+            <View style={[styles.countRow, styles.footerRow, ]}>
+              <Text style={typography.text}>{ t`Difficulty` }</Text>
+              <Text style={[{ color: COLORS.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
+                { testDifficulty }
+              </Text>
+              <PlusMinusButtons
+                count={testDifficulty}
+                size={36}
+                onIncrement={this._incrementDifficulty}
+                onDecrement={this._decrementDifficulty}
+                color="dark"
+              />
+            </View>
           </View>
-        </View>
+        </SafeAreaView>
       </View>
     );
   }

@@ -8,6 +8,8 @@ const darkText = (Platform.OS === 'ios' ? PlatformColor('labelColor') : Platform
 const lightText = (Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : PlatformColor('?attr/colorSecondaryText')) as any as string;
 
 export default {
+  disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: 'rgba(255,255,255,0.6)', dark: 'rgba(0,0,0,0.6)' }) : 'rgba(255,255,255,0.6)') as any as string,
+  modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
   darkText,
   lightText,
   veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor'): '#888') as any as string,

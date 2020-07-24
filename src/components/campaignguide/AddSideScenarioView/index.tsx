@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linking, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 import { find, flatMap } from 'lodash';
 import { t } from 'ttag';
 

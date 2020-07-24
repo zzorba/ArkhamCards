@@ -10,10 +10,10 @@ import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { SettingsSwitch } from 'react-native-settings-components';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
+import SettingsSwitch from '@components/core/SettingsSwitch';
 import EditText from '@components/core/EditText';
 import RequiredCardSwitch from './RequiredCardSwitch';
 import { showDeckModal } from '@components/nav/helper';
@@ -346,10 +346,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         { signedIn ? (
           <SettingsSwitch
             title={t`Create on ArkhamDB`}
-            containerStyle={{ 
-              borderBottomWidth: StyleSheet.hairlineWidth, 
-              borderColor: COLORS.divider, 
-            }}
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
@@ -372,14 +368,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         { hasStarterDeck && (
           <SettingsSwitch
             title={t`Use Starter Deck`}
-            titleStyle={{ color: COLORS.darkText }}
             value={starterDeck}
-            containerStyle={{ 
-              borderBottomWidth: StyleSheet.hairlineWidth, 
-              borderColor: COLORS.divider, 
-              backgroundColor: COLORS.background, 
-            }}
-            disabledOverlayStyle={{ backgroundColor: 'transparent' }}
             onValueChange={this._onStarterDeckChange}
           />
         ) }

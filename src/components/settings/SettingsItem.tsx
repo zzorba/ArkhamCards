@@ -57,6 +57,7 @@ export default class SettingsItem extends React.Component<Props> {
         containerStyle={styles.categoryContainer}
         rightIcon={navigation ? this._renderIcon : undefined}
         disabled={!onPress}
+        disabledOverlayStyle={{ backgroundColor: COLORS.disabledOverlay }}
       />
     );
   }

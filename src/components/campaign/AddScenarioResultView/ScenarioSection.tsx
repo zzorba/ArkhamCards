@@ -1,5 +1,5 @@
 import React from 'react';
-import { concat, filter, find, forEach, head, last, map } from 'lodash';
+import { concat, filter, find, findIndex, forEach, head, last, map } from 'lodash';
 import {
   StyleSheet,
   Text,
@@ -12,9 +12,12 @@ import { t } from 'ttag';
 
 import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '@actions/types';
 import connectDb from '@components/data/connectDb';
+import SettingsSwitch from '@components/core/SettingsSwitch';
+import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
 import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';
 import LabeledTextBox from '@components/core/LabeledTextBox';
+import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Switch from '@components/core/Switch';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import Database from '@data/Database';
@@ -92,17 +95,6 @@ class ScenarioSection extends React.Component<Props, State> {
     );
   };
 
-  _showResolutionDialog = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
-    showTextEditDialog(
-      'Resolution',
-      this.state.resolution,
-      this._resolutionChanged
-    );
-  };
-
   _updateManagedScenario = () => {
     const {
       selectedScenario,
@@ -119,14 +111,15 @@ class ScenarioSection extends React.Component<Props, State> {
     });
   };
 
-  _scenarioChanged = (value: string) => {
+  _scenarioChanged = (index: number) => {
     const {
       allScenarios,
     } = this.props;
+    const scenarioName = this.possibleScenarios()[index];    
     this.setState({
       selectedScenario: find(
         allScenarios,
-        scenario => scenario.name === value
+        scenario => scenario.name === scenarioName,
       ) || CUSTOM,
     }, this._updateManagedScenario);
   };
@@ -178,41 +171,39 @@ class ScenarioSection extends React.Component<Props, State> {
       resolution,
     } = this.state;
 
+    const possibleScenarios = this.possibleScenarios();
     return (
       <View>
-        <View style={[styles.margin, styles.row]}>
-          <Text style={typography.text}>
-            { t`Show Interludes` }
-          </Text>
-          <Switch
-            value={this.props.showInterludes}
-            onValueChange={this._toggleShowInterludes}
-          />
-        </View>
-        <LabeledTextBox
-          label={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
-          onPress={this._showScenarioDialog}
-          value={selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name}
-          style={styles.margin}
-          column
+        <SettingsSwitch
+          title={t`Show Interludes`}
+          value={this.props.showInterludes}
+          onValueChange={this._toggleShowInterludes}
+        />
+        <SinglePickerComponent
+          title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
+          choices={map(possibleScenarios, name => {
+            return {
+              text: name,
+            };
+          })}
+          onChoiceChange={this._scenarioChanged}
+          selectedIndex={findIndex(possibleScenarios, name => name === (selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name))}
+          editable
         />
         { selectedScenario === CUSTOM && (
-          <LabeledTextBox
-            label={t`Name`}
-            onPress={this._showCustomCampaignDialog}
+          <EditText
+            title={t`Name`}
+            placeholder={t`(required)`}
+            onValueChange={this._customScenarioTextChanged}
             value={customScenario}
-            style={styles.margin}
-            column
           />
         ) }
         { (selectedScenario === CUSTOM || !selectedScenario.interlude) && (
-          <LabeledTextBox
-            label={t`Resolution`}
+          <EditText
+            title={t`Resolution`}
             placeholder={t`(required)`}
-            onPress={this._showResolutionDialog}
+            onValueChange={this._resolutionChanged}
             value={resolution}
-            style={styles.margin}
-            column
           />
         ) }
       </View>

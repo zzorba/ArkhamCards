@@ -10,7 +10,6 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-import { SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -39,6 +38,7 @@ import {
 } from '../constants';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '@components/core/NavButton';
+import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -691,9 +691,6 @@ class NewCampaignView extends React.Component<Props, State> {
           { hasGuide && (
             <SettingsSwitch
               title={t`Guided Campaign`}
-              titleStyle={typography.mediumGameFont}
-              containerStyle={styles.switch}
-              descriptionStyle={typography.label}
               description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
               onValueChange={this._toggleGuided}
               value={guided}

@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 
+import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import typography from '@styles/typography';
 import { xs, s } from '@styles/space';
@@ -60,27 +61,22 @@ export default class EditCountComponent extends React.Component<Props, State> {
       count,
     } = this.state;
     return (
-      <View style={[
-        styles.marginTop,
-        isInvestigator ? {} : styles.container,
-      ]}>
-        <View style={styles.row}>
-          <View style={styles.textColumn}>
-            <Text style={typography.small} ellipsizeMode="tail">
-              { title.toUpperCase() }
-            </Text>
-            <Text style={[styles.margin, typography.text]}>
-              { count }
-            </Text>
-          </View>
-          <PlusMinusButtons
+      <BasicListRow>
+        <Text style={typography.mediumGameFont}>
+          { title }
+        </Text>
+        <PlusMinusButtons
             count={count || 0}
             onIncrement={this._increment}
             onDecrement={this._decrement}
+            countRender={(
+              <Text style={[styles.margin, typography.text]}>
+                { count }
+              </Text>
+            )}
             size={36}
           />
-        </View>
-      </View>
+      </BasicListRow>
     );
   }
 }
@@ -95,7 +91,8 @@ const styles = StyleSheet.create({
     paddingRight: s,
   },
   margin: {
-    marginBottom: xs,
+    minWidth: 40,
+    textAlign: 'center',
   },
   textColumn: {
     flex: 1,

@@ -8,12 +8,12 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import { SettingsSwitch } from 'react-native-settings-components';
 import { t } from 'ttag';
 
 import LanguagePicker from './LanguagePicker';
 import CategoryHeader from './CategoryHeader';
 import SettingsTabooPicker from './SettingsTabooPicker';
+import SettingsSwitch from '@components/core/SettingsSwitch';
 import { clearDecks } from '@actions';
 import { fetchCards } from '@components/card/actions';
 import { setSingleCardView } from './actions';
@@ -141,8 +141,6 @@ class SettingsView extends React.Component<Props> {
           <CategoryHeader title={t`Preferences`} />
           <SettingsSwitch
             title={t`Swipe between card results`}
-            titleStyle={{ color: COLORS.darkText }}
-            containerStyle={{ backgroundColor: COLORS.background }}
             value={!showCardsingleCardView}
             onValueChange={this._swipeBetweenCardsChanged}
           />

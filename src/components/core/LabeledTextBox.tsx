@@ -9,6 +9,7 @@ import {
 
 import TextBoxButton from './TextBoxButton';
 import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface Props {
   label: string;
@@ -31,7 +32,7 @@ export default function LabeledTextBox({
   const viewStyle = column ? styles.column : styles.row;
   return (
     <View style={[viewStyle, style]}>
-      <Text style={column ? typography.smallLabel : typography.label}>
+      <Text style={[column ? typography.smallLabel : typography.label, { color: COLORS.darkText }]}>
         { column ? label.toUpperCase() : `${label}:` }
       </Text>
       <TouchableOpacity onPress={onPress} style={column ? {} : styles.grow}>

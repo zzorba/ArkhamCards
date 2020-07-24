@@ -3,7 +3,7 @@ import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet, View }
 import { throttle } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import DialogComponent from 'react-native-dialog';
+import DialogComponent from '@lib/react-native-dialog';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
