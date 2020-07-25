@@ -1,21 +1,25 @@
 import {
   SET_TABOO_SET,
   SET_SINGLE_CARD_VIEW,
+  SET_ALPHABETIZE_ENCOUNTER_SETS,
   SetTabooSetAction,
   SetSingleCardViewAction,
+  SetAlphabetizeEncounterSetsAction,
 } from '@actions/types';
 
 interface SettingsState {
   tabooId?: number;
   singleCardView?: boolean;
+  alphabetizeEncounterSets?: boolean;
 }
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
   tabooId: undefined,
   singleCardView: false,
+  alphabetizeEncounterSets: false,
 };
 
-type SettingAction = SetTabooSetAction | SetSingleCardViewAction;
+type SettingAction = SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction;
 
 
 export default function(
@@ -29,6 +33,11 @@ export default function(
         tabooId: action.tabooId,
       };
     }
+    case SET_ALPHABETIZE_ENCOUNTER_SETS:
+      return {
+        ...state,
+        alphabetizeEncounterSets: action.alphabetizeEncounterSets,
+      };
     case SET_SINGLE_CARD_VIEW: {
       return {
         ...state,

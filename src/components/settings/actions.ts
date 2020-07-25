@@ -1,8 +1,10 @@
 import {
   SET_TABOO_SET,
   SET_SINGLE_CARD_VIEW,
+  SET_ALPHABETIZE_ENCOUNTER_SETS,
   SetTabooSetAction,
   SetSingleCardViewAction,
+  SetAlphabetizeEncounterSetsAction,
 } from '@actions/types';
 
 export function setTabooSet(tabooId?: number): SetTabooSetAction {
@@ -16,5 +18,12 @@ export function setSingleCardView(value: boolean): SetSingleCardViewAction {
   return {
     type: SET_SINGLE_CARD_VIEW,
     singleCardView: value,
+  };
+}
+
+export function setAlphabetizeEncounterSets(value: boolean): SetAlphabetizeEncounterSetsAction {
+  return {
+    type: SET_ALPHABETIZE_ENCOUNTER_SETS,
+    alphabetizeEncounterSets: value,
   };
 }

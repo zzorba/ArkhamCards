@@ -3,9 +3,11 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { flatMap, forEach, map } from 'lodash';
+import { flatMap, forEach, map, sortBy } from 'lodash';
+import { connect } from 'react-redux';
 import { msgid, ngettext } from 'ttag';
 
+import { AppState } from '@reducers';
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
 import connectDb from '@components/data/connectDb';
@@ -25,12 +27,24 @@ interface Data {
   encounterSets: EncounterSet[];
 }
 
-type Props = OwnProps & Data;
+interface ReduxProps {
+  alphabetizeEncounterSets: boolean;
+}
+
+type Props = OwnProps & Data & ReduxProps;
 
 class EncounterSetStepComponent extends React.Component<Props> {
+  encounterSets() {
+    const { encounterSets, alphabetizeEncounterSets } = this.props;
+    if (alphabetizeEncounterSets) {
+      return sortBy(encounterSets, set => set.name);
+    }
+    return encounterSets;
+  }
 
   render() {
-    const { step, encounterSets } = this.props;
+    const { step } = this.props;
+    const encounterSets = this.encounterSets();
     const encounterSetString = stringList(map(encounterSets, set => set ? `<i>${set.name}</i>` : 'Missing Set Name'));
     const leadText = step.aside ?
       ngettext(
@@ -72,8 +86,14 @@ class EncounterSetStepComponent extends React.Component<Props> {
   }
 }
 
+function mapStateToProps(state: AppState): ReduxProps {
+  return {
+    alphabetizeEncounterSets: state.settings.alphabetizeEncounterSets || false,
+  };
+}
+
 export default connectDb<OwnProps, Data, string[]>(
-  EncounterSetStepComponent,
+  connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(EncounterSetStepComponent),
   (props: OwnProps) => props.step.encounter_sets,
   async(db: Database, encounter_sets: string[]) => {
     const qb = await db.encounterSets();

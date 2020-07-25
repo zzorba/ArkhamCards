@@ -365,6 +365,12 @@ export interface SetSingleCardViewAction {
   singleCardView: boolean;
 }
 
+export const SET_ALPHABETIZE_ENCOUNTER_SETS = 'SET_ALPHABETIZE_ENCOUNTER_SETS';
+export interface SetAlphabetizeEncounterSetsAction {
+  type: typeof SET_ALPHABETIZE_ENCOUNTER_SETS;
+  alphabetizeEncounterSets: boolean;
+}
+
 export const PACKS_FETCH_START = 'PACKS_FETCH_START';
 export interface PacksFetchStartAction {
   type: typeof PACKS_FETCH_START;
