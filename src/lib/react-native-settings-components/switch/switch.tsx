@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Switch, Text, View, ViewProps, ViewStyle, TextProps, TextStyle, SwitchProps,
 } from 'react-native';
-import PropTypes from 'prop-types';
+
+import COLORS from '@styles/colors';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -31,7 +32,7 @@ const style = StyleSheet.create({
     paddingRight: 16,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,

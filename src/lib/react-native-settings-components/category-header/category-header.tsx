@@ -17,7 +17,7 @@ const style = StyleSheet.create({
 });
 
 interface Props {
-  container: ViewProps;
+  container?: ViewProps;
   containerStyle?: ViewStyle;
   titleProps?: TextProps;
   titleStyle?: TextStyle;

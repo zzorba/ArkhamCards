@@ -10,6 +10,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import Switch from '@components/core/Switch';
 import typography from '@styles/typography';
 import { s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 const ICON_SIZE = 28;
 
@@ -40,7 +41,7 @@ export default class ToggleFilter extends React.Component<Props> {
     if (icon) {
       return (
         <View style={styles.icon}>
-          <ArkhamIcon name={icon} size={ICON_SIZE} color="#000000" />
+          <ArkhamIcon name={icon} size={ICON_SIZE} color={COLORS.darkText} />
         </View>
       );
     }

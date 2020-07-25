@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Text, TextProps, TextStyle, TouchableOpacity, View, ViewProps, ViewStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
+
+import COLORS from '@styles/colors';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.background,
     position: 'relative',
   },
   wrapper: {
@@ -32,7 +33,7 @@ const style = StyleSheet.create({
     flex: 0,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -123,7 +124,7 @@ class SettingsButton extends Component<Props> {
           ) : null}
           {(disabled) ? (
             <View
-              style={[style.defaultDisabledOverlayStyle, (disabled) ? disabledOverlayStyle : null]}
+              style={[style.defaultDisabledOverlayStyle, (disabledOverlayStyle) ? disabledOverlayStyle : null]}
             />
           ) : null}
         </View>

@@ -53,7 +53,6 @@ export default class SettingsItem extends React.Component<Props> {
           />
         ): undefined}
         disabled={!onPress}
-        disabledOverlayStyle={{ backgroundColor: COLORS.disabledOverlay }}
       />
     );
   }

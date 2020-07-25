@@ -1623,7 +1623,6 @@ class DeckDetailView extends React.Component<Props, State> {
                 description={`${deck.id}`}
                 descriptionStyle={styles.text}
                 onPress={this._showEditDetailsVisible}
-                disabledOverlayStyle={{ backgroundColor: COLORS.disabledOverlay }}
                 disabled
               />
             ) }

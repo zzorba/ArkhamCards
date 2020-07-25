@@ -26,7 +26,6 @@ export default function SettingsSwitch({ title, description, onValueChange, valu
       onValueChange={onValueChange}
       value={value}
       disabled={disabled}
-      disabledOverlayStyle={{ backgroundColor: COLORS.disabledOverlay }}
     />
   );
 }

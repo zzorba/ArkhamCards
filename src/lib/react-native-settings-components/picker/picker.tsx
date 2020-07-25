@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity, ViewProps, ViewStyle, TextProps, TextStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
-import cloneDeep from 'lodash/cloneDeep';
-import isArray from 'lodash/isArray';
-import trim from 'lodash/trim';
-import join from 'lodash/join';
+import { cloneDeep, isArray, join, trim } from 'lodash';
+
 import PickerModal, { ModalStyle, PickerItem } from './picker.modal';
+import COLORS from '@styles/colors';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: 'white',
+    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -24,14 +22,14 @@ const style = StyleSheet.create({
     fontSize: 16,
   },
   defaultValueStyle: {
-    color: 'rgb(160,160,160)',
+    color: COLORS.lightText,
     fontSize: 14,
     flex: 0,
     paddingLeft: 8,
     paddingRight: 16,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
