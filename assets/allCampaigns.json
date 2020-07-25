@@ -22544,7 +22544,7 @@
                 "supplies": [
                   {
                     "id": "sticky_goop",
-                    "name": "Sticky Goopr",
+                    "name": "Sticky Goop",
                     "description": "A mysterious scepter you found in a subterranean swamp.",
                     "cost": 0,
                     "multiple": false
@@ -29438,12 +29438,488 @@
     "the_eternal_slumber",
     "the_nights_usurper",
     "murder_at_the_excelsior_hotel",
+    "blob_that_ate_everything",
     "read_or_die"
   ],
   "setup": [],
   "steps": []
 }
 , "scenarios": [
+{
+  "id": "blob_that_ate_everything",
+  "scenario_name": "The Blob That Ate Everything",
+  "full_name": "The Blob That Ate Everything",
+  "xp_cost": 2,
+  "setup": [
+    "xp_cost",
+    "intro_1",
+    "intro_2",
+    "gather_encounter_sets",
+    "set_aside_migo",
+    "set_aside_cards",
+    "setup_blob",
+    "setup_locations",
+    "place_countermeasures",
+    "encounter_deck",
+    "countermeasures_rule",
+    "blob_x_rule",
+    "devour_rule",
+    "reality_acid",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "xp_cost",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": -2
+        }
+      ]
+    },
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<i>Incident Report: 8L-08</i>\n<i>Thursday, 07/05/1928</i>\n<i>Blackwater, MA</i>\n\n<i>0312 hours - Impact event just outside of Blackwater. Intercepted police call, agents sent to investigate. Interviewed local farmer, Ron Graham; claims meteor was several feet wide, greenish hue. Crater roughly 100 yards in diameter. Radiation detected in outlying area. Recommend immediate quarantine and further observation by research team. Situation under control.</i>"
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "It wasn't under control.\nThat was the report the G-men took when they first arrived. For the next few days, the town of Blackwater was on lockdown. The impact was all that was talked about in the papers, but not much was known aside from the enormous crater and the effect it had on the countryside. Nobody was allowed to leave the town, and only those approved by the shadow government agency was allowed to enter. Those unfortunate few included high-ranking government agent, and a team of researchers from the nearby Miskatonic University, who were summoned to investigate the meteor itself. For the rest of the town's inhabitants, it was a strange occurence, nothing more… that is, until the meteor <i>hatched</i>.\nI saw it with my own eyes. When the anomaly emerged, the first thing it did was devour the team of researchers who have been sent to collect and study samples from the meteor. The next thing it did was devour their lab equipment. Then Ron Graham's tractor. Then his house, in its entirety. It continued to grow and spread, devouring everything in its path. I barely escaped with my life.\nWhen the army arrived, they thought they could kill it with bullets and shells. Everything they threw at the creature was devoured, one round after the next. Then it split into hundreds of smaller pieces of itself, and the army was quickly overwhelmed. While the battle raged on, myself and others back in town saw lights and shapes in the sky above. Something was up there, waiting. Biding time.\nThe quarantine still holds, and we're stuck in the middle of it. It won't be long before the anomaly has grown large enough to devour everything in Blackwater. And if that happens, who could possibly stop its rampage?"
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "blob",
+        "blob_single_group"
+      ]
+    },
+    {
+      "id": "set_aside_migo",
+      "type": "encounter_sets",
+      "aside": true,
+      "encounter_sets": [
+        "migo_incursion"
+      ]
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Search <i>The Blob That Ate Everything</i> encounter set for the following encounter cards and set them aside out of play: Vulnerable Heart, 1 copy of Grasping Ooze, 1 copy of Cubic Ooze, and both copies of Oozewraith."
+    },
+    {
+      "id": "setup_blob",
+      "text": "Put the Subject 8L-08 enemy into play next to the agenda deck. It is not at any location."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Set up the locations acccording to the guidelines below.",
+      "bullets": [
+        {
+          "text": "Shuffle the Quarantine Zone locations together and remove 1 of them from the game."
+        },
+        {
+          "text": "Put The Crater into play."
+        },
+        {
+          "text": "Take the Research Site, the Temporary HQ, and 2 random Quarantine Zone locations. Shuffle them and place each of them connected to the Crater, in a random order."
+        },
+        {
+          "text": "Take the Fungus Mound and 3 random Qurantine Zone locations. Shuffle them and place each of them in 1 of the 4 positions in the outer ring, farthest from the Crater."
+        },
+        {
+          "text": "Put the remaining Quarantine Zone locations into play."
+        },
+        {
+          "text": "Each investigator begins play at the Temporary HQ."
+        }
+      ]
+    },
+    {
+      "id": "place_countermeasures",
+      "type": "branch",
+      "condition": {
+        "type": "scenario_data",
+        "scenario_data": "player_count",
+        "options": [
+          {
+            "numCondition": 1,
+            "steps": ["one_countermeasure"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["one_countermeasure"]
+          },
+          {
+            "numCondition": 3,
+            "steps": ["two_countermeasure"]
+          },
+          {
+            "numCondition": 4,
+            "steps": ["two_countermeasure"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "one_countermeasure",
+      "bullet_type": "small",
+      "text": "Place 1 resource on the scenario reference card as a countermeasure."
+    },
+    {
+      "id": "two_countermeasure",
+      "bullet_type": "small",
+      "text": "Place 2 resources on the scenario reference card as a countermeasures."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "devour_rule",
+      "type": "rule_reminder",
+      "title": "Devour",
+      "text": "During this scenario, Subject 8L-08 can \"devour\" a variety of things.",
+      "bullets": [
+        {
+          "text": "If a card is devoured, it is placed beneath Subject 8L-08. Cards beneath Subject 8L-08 are considered out of play. Each devoured card is returned to its owner's deck at the end of the game. If an investigator is devoured, he or she is killed."
+        },
+        {
+          "text": "If a token is devoured, it is placed in the token pool."
+        },
+        {
+          "text": "When choosing a location to be devoured, you cannot choose to devour a location if it causes another location to have no valid connections."
+        },
+        {
+          "text": "Subject 8L-08 can also devour certain aspect of reality or metaphysical objects. If it does so, you will be instructed of the consequences."
+        }
+      ]
+    },
+    {
+      "id": "countermeasures_rule",
+      "type": "rule_reminder",
+      "title": "Countermeasures",
+      "text": "Countermeasures represent supplies, research, or military equipment which may aid the investigators in their survival. Countermeasures may be spent via certain card abilities in order to trigger powerful effects. However, gaining new countermeasures is rare, so be careful how you spend them!"
+    },
+
+    {
+      "id": "blob_x_rule",
+      "type": "rule_reminder",
+      "title": "Blob X",
+      "text": "Many of the enemies in this scenario are pieces of the anomaly which have broken apart and have their own sentience. Defeating these enemies damages the anomaly. As an enemy with <b>Blox X</b> is defeated, deal X damage to Subject 8L-08.",
+      "bullets": [
+        {
+          "text": "Enemies with <b>Blox X</b> are not placed in the victory display when they are defeated unless they also have <b>Victory X</b>."
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all"
+          }
+        ]
+      }
+    },
+    {
+      "id": "blob_devoured_universe",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "blob_devoured_universe",
+          "text": "Subject 8L-08 devoured the entire universe."
+        }
+      ]
+    },
+    {
+      "id": "reality_acid",
+      "type": "table",
+      "title": "Reality Acid",
+      "bullet_type": "none",
+      "text": "<smallcaps>Subject 8L-08 opens its maw, and devours…</smallcaps>\n<i>(If the combination of chaos tokens revealed is not listed, or if the listed aspect cannot be devoured, reveal two new chaos tokens and consult the chart again.)</i> ",
+      "header": {
+        "cells": [
+          { 
+            "text": "<b>Chaos Tokens</b>\n<i>(in any order)</i>",
+            "size": 2        
+          },
+          {
+            "text": "<center><b>Aspect of Reality Devoured</b></center>",
+            "size": 4
+          }
+        ]
+      },
+      "rows": [
+        { "cells": [ { "text": "[elder_sign]", "size": 1 }, { "text": "[skull]/[cultist]", "size": 1 }, { "text": "…the non-[[Elite]] enemy nearest to you.", "size": 4 }] },
+        { "cells": [ { "text": "[elder_sign]", "size": 1 }, { "text": "[tablet]/[elder_thing]", "size": 1 }, { "text": "…a treachery at your location.", "size": 4 }] },
+        { "cells": [ { "text": "[elder_sign]", "size": 1 }, { "text": "‑1 to ‑8", "size": 1 }, { "text": "…1 horror and 1 damage from your investigator card.", "size": 4 }] },
+        { "cells": [ { "text": "[elder_sign]", "size": 1 }, { "text": "0/+1", "size": 1 }, { "text": "…your greatest flaw. Search your deck for any 1 weakness card. It is devoured.", "size": 4 }] },
+        { "cells": [ { "text": "[elder_sign]", "size": 1 }, { "text": "[auto_fail]", "size": 1 }, { "text": "…the [elder_sign] token just revealed.", "size": 4 }] },
+
+        { "cells": [ { "text": "+1", "size": 1 }, { "text": "[skull]/[cultist]", "size": 1 }, { "text": "…your caution. Resolve Reality Acid three more times, ignoring this result.", "size": 4 }] },
+        { "cells": [ { "text": "+1", "size": 1 }, { "text": "[tablet]/[elder_thing]", "size": 1 }, { "text": "…your ignorance. Discover 1 clue at your location.", "size": 4 }] },
+        { "cells": [ { "text": "+1", "size": 1 }, { "text": "‑1 to ‑8", "size": 1 }, { "text": "…friendships. Until the end of the round, investigators cannot commit cards to each others' skill tests.", "size": 4 }] },
+        { "cells": [ { "text": "+1", "size": 1 }, { "text": "0", "size": 1 }, { "text": "…your player reference card.", "size": 4 }] },
+
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "0", "size": 1 }, { "text": "…1 [per_investigator] clues from your location.", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "[skull]", "size": 1 }, { "text": "…your voice. Until the end of the round, you cannot speak or make noise.", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "[cultist]", "size": 1 }, { "text": "…your group's food and drinks. It cannot be consumed until your group has dealt at least 3 damage to Subject 8L-08.", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "[tablet]", "size": 1 }, { "text": "…the concept of language. Until the end of the investigation phase, you can only speak in gibberish.", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "[elder_thing]", "size": 1 }, { "text": "…light. Until the end of the round, investigators must play with all nearby light sources turned off or covered (except for flashlights).", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "‑1/‑2", "size": 1 }, { "text": "…itself, and then regurgitates itself. Deal 1 damage to Subject 8L-08.", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "‑3", "size": 1 }, { "text": "…all damage from each [[Manifold]] enemy.", "size": 4 }] },
+        { "cells": [ { "text": "0", "size": 1 }, { "text": "‑4 to ‑8", "size": 1 }, { "text": "…all of the supplies, ammo, charges, and secrets among assets you control.", "size": 4 }] },
+
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "[skull]", "size": 1 }, { "text": "…your hope. Until the end of the next mythos phase, set your base [willpower] to 0.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "[cultist]", "size": 1 }, { "text": "…your curiosity. Until the end of the next mythos phase, set your base [intellect] to 0.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "[tablet]", "size": 1 }, { "text": "…your precision. Until the end of the next mythos phase, set your base [combat] to 0.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "[elder_thing]", "size": 1 }, { "text": "…your attention. Until the end of the next mythos phase, set your base [agility] to 0.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "‑1", "size": 1 }, { "text": "…your versatility. Until the end of the round, you cannot play or use cards that do not match your investigator's class.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "‑2", "size": 1 }, { "text": "…your cell phone.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "‑3", "size": 1 }, { "text": "…the chaos bag. Remove all tokens from it and place them in a different container.", "size": 4 }] },
+        { "cells": [ { "text": "‑1", "size": 1 }, { "text": "‑4 to ‑8", "size": 1 }, { "text": "…level 1 - 5 cards of your choice with at least 5 total levels from among your deck, discard pile, hand, and play area.", "size": 4 }] },
+
+        { "cells": [ { "text": "‑2", "size": 1 }, { "text": "[skull]/[cultist]", "size": 1 }, { "text": "…the top three cards of your deck.", "size": 4 }] },
+        { "cells": [ { "text": "‑2", "size": 1 }, { "text": "[tablet]/[elder_thing]", "size": 1 }, { "text": "…the top 3 cards of your discard pile.", "size": 4 }] },
+        { "cells": [ { "text": "‑2", "size": 1 }, { "text": "‑2", "size": 1 }, { "text": "…the deckbox you store your deck in.", "size": 4 }] },
+        { "cells": [ { "text": "‑2", "size": 1 }, { "text": "‑3", "size": 1 }, { "text": "…your investigator's card sleeve.", "size": 4 }] },
+        { "cells": [ { "text": "‑2", "size": 1 }, { "text": "‑4 to ‑8", "size": 1 }, { "text": "…your party's teamwork. Each investigator loses 1 action.", "size": 4 }] },
+
+        { "cells": [ { "text": "‑3", "size": 1 }, { "text": "[skull]/[cultist]/[tablet]/[elder_thing]", "size": 1 }, { "text": "…a [[Talent]], [[Connection]], or [[Condition]] asset you control.", "size": 4 }] },
+        { "cells": [ { "text": "‑3", "size": 1 }, { "text": "‑4 to ‑8", "size": 1 }, { "text": "…your sense of time. Until you advance the agenda, investigators cannot use time-keeping devices, ask about the time, or trigger abilities on any card with \"time\", \"watch\", or \"chrono\" in its title.", "size": 4 }] },
+
+        { "cells": [ { "text": "‑4 to ‑8", "size": 1 }, { "text": "[skull]/[cultist]", "size": 1 }, { "text": "…your investigator mini card. (Use something else to mark your location.)", "size": 4 }] },
+        { "cells": [ { "text": "‑4 to ‑8", "size": 1 }, { "text": "[tablet]/[elder_thing]", "size": 1 }, { "text": "…your house. Search the collection for Your House (Core #124); it is devoured.", "size": 4 }] },
+        { "cells": [ { "text": "‑4 to ‑8", "size": 1 }, { "text": "‑4 to ‑8", "size": 1 }, { "text": "…your soul. Record in your Campaign Log that <i>you have no soul.</i>", "size": 4 }] },
+
+        { "cells": [ { "text": "[skull]", "size": 1 }, { "text": "[skull]", "size": 1 }, { "text": "…the highest-cost [[Ally]] asset you control.", "size": 4 }] },
+        { "cells": [ { "text": "[skull]", "size": 1 }, { "text": "[cultist]", "size": 1 }, { "text": "…all event cards in your hand.", "size": 4 }] },
+        { "cells": [ { "text": "[skull]", "size": 1 }, { "text": "[tablet]", "size": 1 }, { "text": "…all of your resources.", "size": 4 }] },
+        { "cells": [ { "text": "[skull]", "size": 1 }, { "text": "[elder_thing]", "size": 1 }, { "text": "…all skill cards in your hand.", "size": 4 }] },
+
+        { "cells": [ { "text": "[cultist]", "size": 1 }, { "text": "[cultist]", "size": 1 }, { "text": "…all cards that have been exiled.", "size": 4 }] },
+        { "cells": [ { "text": "[cultist]", "size": 1 }, { "text": "[tablet]", "size": 1 }, { "text": "…your identity. Until the end of the round, treat your investigator's text box as if it were blank (including [[Traits]]).", "size": 4 }] },
+        { "cells": [ { "text": "[cultist]", "size": 1 }, { "text": "[elder_thing]", "size": 1 }, { "text": "…the concept of speed. Until the end of the round, investigators cannot gain or take additional actions.", "size": 4 }] },
+
+        { "cells": [ { "text": "[tablet]", "size": 1 }, { "text": "[tablet]", "size": 1 }, { "text": "…your sense of urgency. Until the end of the round, you cannot move.", "size": 4 }] },
+        { "cells": [ { "text": "[tablet]", "size": 1 }, { "text": "[elder_thing]", "size": 1 }, { "text": "…your potential. Until the end of the round, your skills cannot be increased.", "size": 4 }] },
+
+        { "cells": [ { "text": "[elder_thing]", "size": 1 }, { "text": "[elder_thing]", "size": 1 }, { "text": "…your patience. Place 1 doom on the current agenda.", "size": 4 }] },
+
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "[skull]/[cultist]", "size": 1 }, { "text": "…all [[Spell]] and [[Ritual]] assets you control.", "size": 4 }] },
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "[tablet]/[elder_thing]", "size": 1 }, { "text": "…all [[Item]] assets you control.", "size": 4 }] },
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "+1", "size": 1 }, { "text": "…the concept of a \"discard pile.\" Until the end of the next mythos phase, each card that would be placed in any investigator's discard pile is instead devoured.", "size": 4 }] },
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "0", "size": 1 }, { "text": "…one of your hands. For the remainder of the game, you have 1 fewer hand slot.", "size": 4 }] },
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "‑1", "size": 1 }, { "text": "…the concept of success. The next time an investigator would succeed at a test by 2 or more, that investigator instead automatically fails.", "size": 4 }] },
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "‑2/‑3", "size": 1 }, { "text": "…1 countermeasure.", "size": 4 }] },
+        { "cells": [ { "text": "[auto_fail]", "size": 1 }, { "text": "‑4 to ‑8", "size": 1 }, { "text": "…the concept of easiness. Until lthe end of the game, flip the scenario reference card to its Hard/Expert side.", "size": 4 }]}
+      ]
+    },
+    {
+      "id": "blob_contained",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "blob_contained",
+          "text": "the anomaly was contained."
+        }
+      ]
+    },
+    {
+      "id": "lose_campaign",
+      "text": "The investigators lose the campaign.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
+    },
+    {
+      "id": "earn_assets",
+      "text": "For each of the following assets that are in play, any one investigator may choose to add that asset to their deck.",
+      "type": "input",
+      "input": {
+        "type": "card_choice",
+        "query": [
+          {
+            "code": [
+              "85029",
+              "85030",
+              "85031",
+              "85032" 
+            ]
+          }
+        ],
+        "choices": [
+          {
+            "id": "in_play",
+            "text": "In play",
+            "effects": [
+              {
+                "type": "campaign_log_cards",
+                "section": "hidden",
+                "id": "$input_value",
+                "text": "#name#"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "maybe_earn_asset_85029",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "85029",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["earn_asset_85029"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_asset_85029",
+      "text": "Any one investigator may choose to add Universal Solvent to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "85029"
+        }
+      ]
+    },
+    {
+      "id": "maybe_earn_asset_85030",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "85030",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["earn_asset_85030"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_asset_85030",
+      "text": "Any one investigator may choose to add Pet Oozeling to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "85030"
+        }
+      ]
+    },
+    {
+      "id": "maybe_earn_asset_85031",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "85031",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["earn_asset_85031"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_asset_85031",
+      "text": "Any one investigator may choose to add Mi-Go Weapon to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "85031"
+        }
+      ]
+    },
+    {
+      "id": "maybe_earn_asset_85032",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_cards",
+        "section": "hidden",
+        "id": "85032",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["earn_asset_85032"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_asset_85032",
+      "text": "Any one investigator may choose to add Lt. Wilson Stewart to their deck. This card does not count toward that investigator’s deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "85032"
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "Nothing is left of Blackwater now. The quarantine is broken. The anomaly cannot be contained. First it will spread throughout the countryside, devouring all in its path. Soon all of Massachusetts will be devoured. Then the entirety of New England. It has burrowed beneath the ground and cannot be stopped even by the oceans. No continent is safe. Every living organism on the planet will be devoured. And then, so too will the Earth.\n…but that won't be the end.\nNot even the void of space can stop the creature's growth. In time, it will continue to expand and devour until there is nothing left but the cold emptiness of space and the blob that ate everything.",
+      "steps": ["blob_devoured_universe", "lose_campaign"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "<i>Incident Report: 8L-08, continued</i>\n<i>Wednesday, 07/11/1928</i>\n<i>Blackwater, MA</i>\n<i>0742 hours - Contact made with ████████████ subject. Subject ███████████ meteor; researchers are unsure whether meteor served as an avenue for ██████████ or as some kind of ██████████████. Initiated immediate emergency response procedures. At roughly 0500 hours, subject was eliminated by third party. As per operational protocol, samples have been collected and sent to ██████ for further study. Agents are currently scrubbing remainder of subject's presence from quarantine zone. Strongly recommend immediate expunging of previous conflicting incident report.</i>\n<i>Citizens of Blackwater have been informed ██████████ quarantine ████████ contagion of airborne virus. ███████ several infections ████████; medical teams en route to confirm.</i>\n<i>Agents are attempting to meet with unlicensed combatants for debriefing. Due to sensitive nature of incident, recommend release followed by close observation. Story must be kept ████████████. ████████████████████████████████████████████.</i>\n<i>Destroy the incident report immediately. Additional instructions to follow.</i>",
+      "steps": ["blob_contained", "earn_assets", "maybe_earn_asset_85029", "maybe_earn_asset_85030", "maybe_earn_asset_85031", "maybe_earn_asset_85032", "earn_xp", "$upgrade_decks"]
+    }
+  ]
+}
+,
 {
   "id": "carnevale_of_horrors",
   "scenario_name": "Carnevale of Horrors",

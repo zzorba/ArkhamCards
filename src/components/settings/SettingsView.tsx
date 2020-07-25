@@ -143,6 +143,7 @@ class SettingsView extends React.Component<Props> {
             title={t`Swipe between card results`}
             value={!showCardsingleCardView}
             onValueChange={this._swipeBetweenCardsChanged}
+            settingsStyle
           />
           <SettingsItem
             navigation

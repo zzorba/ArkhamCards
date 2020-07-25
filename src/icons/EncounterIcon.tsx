@@ -96,7 +96,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.coreIcon('midnight_masks', size, color);
       case 'tentacles':
         return this.coreIcon('the_devourer_below', size, color);
-
       case 'dwl': // THE DUNWICH LEGACY
         return this.dunwichIcon('set', size, color);
       case 'rtdwl':
@@ -220,10 +219,18 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.standaloneIcon('curse_of_the_rougarou', size, color);
       case 'bayou':
         return this.standaloneIcon('the_bayou', size, color);
+      case 'blob':
+        return this.standaloneIcon('the_blob_that_ate_everything', size, color);
+      case 'migo_incursion':
+        return this.standaloneIcon('migo', size, color);
+      case 'blob_epic_multiplayer':
+      case 'epic_multiplayer':
+        return this.standaloneIcon('epic_multiplayer', size, color);
+      case 'single_group':
+      case 'blob_single_group':
+        return this.standaloneIcon('single_group', size, color);
       case 'lol':
       case 'in_the_labyrinths_of_lunacy':
-      case 'epic_multiplayer':
-      case 'single_group':
       case 'guardians':
       case 'abyssal_gifts':
       case 'abyssal_tribute':

@@ -3,7 +3,7 @@ import React from 'react';
 import { Platform, StyleSheet, Text, TextProps, TextStyle } from 'react-native';
 
 interface Props extends TextProps {
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
   children: string;
 }
 
@@ -13,7 +13,7 @@ export default class DialogDescription extends React.PureComponent<Props> {
   render() {
     const { style, children, ...otherProps } = this.props;
     return (
-      <Text style={[styles.text, style]} {...otherProps}>
+      <Text style={[styles.text, ...(Array.isArray(style) ? style : [style])]} {...otherProps}>
         { children }
       </Text>
     );
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
       fontSize: 13,
       marginTop: 4,
     },
-    android: {
+    default: {
       color: '#33383D',
       fontSize: 16,
       marginTop: 10,

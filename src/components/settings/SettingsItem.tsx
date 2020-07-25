@@ -73,6 +73,8 @@ const styles = StyleSheet.create({
     height: 20,
   },
   categoryContainer: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.background, 
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
   },
 });

@@ -34,7 +34,7 @@ interface State {
   height: number;
 }
 export default class TextEditDialog extends React.Component<Props, State> {
-  _textInputRef?: TextInput;
+  _textInputRef = React.createRef<TextInput>();
   _throttledUpdateSize!: (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void;
 
   constructor(props: Props) {
@@ -69,10 +69,6 @@ export default class TextEditDialog extends React.Component<Props, State> {
     });
   };
 
-  _captureTextInputRef = (ref: TextInput) => {
-    this._textInputRef = ref;
-  };
-
   componentDidUpdate(prevProps: Props) {
     const {
       visible,
@@ -88,8 +84,8 @@ export default class TextEditDialog extends React.Component<Props, State> {
         height: 40,
         isCrossedOut,
       }, () => {
-        if (this._textInputRef) {
-          this._textInputRef.focus();
+        if (this._textInputRef && this._textInputRef.current) {
+          this._textInputRef.current.focus();
         }
       });
     }
@@ -146,8 +142,8 @@ export default class TextEditDialog extends React.Component<Props, State> {
       height: 40,
       isCrossedOut: false,
     }, () => {
-      if (this._textInputRef) {
-        this._textInputRef.focus();
+      if (this._textInputRef && this._textInputRef.current) {
+        this._textInputRef.current.focus();
       }
     });
   };
@@ -194,7 +190,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
           wrapperStyle={{
             height: Math.min(height + 12, 200),
           }}
-          textInputRef={this._captureTextInputRef}
+          textInputRef={this._textInputRef}
           value={text}
           editable={!isCrossedOut}
           onChangeText={this._onTextChange}

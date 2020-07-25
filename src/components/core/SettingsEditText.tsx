@@ -13,6 +13,7 @@ import {
   Alert,
   AlertType,
 } from 'react-native';
+// @ts-ignore TS7016
 import DialogAndroid from 'react-native-dialogs';
 import { TouchableProps } from 'react-native-svg';
 

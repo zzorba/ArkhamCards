@@ -4,8 +4,8 @@ import { Platform, StyleSheet, Text, TextInput, View, TextInputProps, TextStyle,
 
 interface Props extends TextInputProps {
   label?: string;
-  style?: TextStyle;
-  textInputRef?: React.Ref<TextInput>;
+  style?: TextStyle | TextStyle[];
+  textInputRef?: React.RefObject<TextInput>;
   wrapperStyle?: ViewStyle;
   numberOfLines?: number;
   multiline?: boolean;
@@ -31,7 +31,7 @@ export default class DialogInput extends React.PureComponent<Props> {
         {label && <Text style={styles.label}>{label}</Text>}
         <TextInput
           ref={textInputRef}
-          style={[styles.textInput, style, { height }]}
+          style={[styles.textInput, ...(Array.isArray(style) ? style : [style]), { height }]}
           multiline={multiline}
           numberOfLines={numberOfLines}
           {...otherProps}
@@ -52,21 +52,21 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       paddingHorizontal: 8,
     },
-    android: {
+    default: {
       marginHorizontal: 10,
       marginBottom: 20,
     },
   }),
   label: Platform.select({
     ios: {},
-    android: {
+    default: {
       color: 'rgba(0, 0, 0, 0.5)',
       fontSize: 14,
     },
   }),
   textInput: Platform.select({
     ios: {},
-    android: {
+    default: {
       marginLeft: -4,
       paddingLeft: 4,
     },

@@ -1,20 +1,21 @@
 import React from 'react';
-import { Platform, StyleSheet, Switch, Text, View, SwitchProps } from 'react-native';
+import { Platform, StyleSheet, Switch, Text, View, SwitchProps, TextStyle } from 'react-native';
 
 import COLORS from '@styles/colors';
 
 interface Props extends SwitchProps {
   label?: string;
+  labelStyle?: TextStyle;
 }
 
 export default class DialogSwitch extends React.PureComponent<Props> {
   static displayName = 'DialogSwitch';
 
   render() {
-    const { label, ...otherProps } = this.props;
+    const { label, labelStyle, ...otherProps } = this.props;
     return (
       <View style={styles.switchWrapper}>
-        <Text style={styles.label}>{label}</Text>
+        <Text style={[styles.label, labelStyle]}>{label}</Text>
         <Switch {...otherProps} />
       </View>
     );

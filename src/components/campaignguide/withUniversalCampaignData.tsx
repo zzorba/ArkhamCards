@@ -218,6 +218,7 @@ export default function withUniversalCampaignData<Props>(
     }
   }
   const result = withPlayerCards<Props>(
+    // @ts-ignore TS  2345
     connect<ReduxProps, ReduxActionProps, Props & PlayerCardProps, AppState>(
       mapStateToProps,
       mapDispatchToProps

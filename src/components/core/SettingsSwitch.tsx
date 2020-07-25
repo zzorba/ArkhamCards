@@ -12,13 +12,14 @@ interface Props {
   value: boolean;
   onValueChange: (value: boolean) => void;
   disabled?: boolean;
+  settingsStyle?: boolean;
 }
 
-export default function SettingsSwitch({ title, description, onValueChange, value, disabled }: Props) {
+export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
   return (
     <SwitchRow
       title={title}
-      titleStyle={typography.mediumGameFont}
+      titleStyle={settingsStyle ? typography.label : typography.mediumGameFont}
       containerStyle={styles.switch}
       descriptionStyle={typography.label}
       description={description}

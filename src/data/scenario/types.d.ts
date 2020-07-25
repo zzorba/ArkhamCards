@@ -17,7 +17,8 @@ export type Step =
   | RuleReminderStep
   | StoryStep
   | LocationSetupStep
-  | LocationConnectorsStep;
+  | LocationConnectorsStep
+  | TableStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -728,6 +729,22 @@ export interface LocationConnectorsStep {
   subtext: string;
   location_connectors: LocationConnector[];
   bullet_type?: BulletType;
+}
+export interface TableStep {
+  id: string;
+  type: "table";
+  title?: string;
+  text?: string;
+  header: TableRow;
+  rows: TableRow[];
+  bullet_type?: BulletType;
+}
+export interface TableRow {
+  cells: TableCell[];
+}
+export interface TableCell {
+  text: string;
+  size: number;
 }
 export interface Scenario {
   id: string;

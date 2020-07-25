@@ -51,7 +51,6 @@ interface State {
 }
 
 class CopyDeckDialog extends React.Component<Props, State> {
-  _textInputRef: View | null = null;
   _onOkayPress!: () => void;
   constructor(props: Props) {
     super(props);
@@ -105,10 +104,6 @@ class CopyDeckDialog extends React.Component<Props, State> {
         selectedDeckId: undefined,
       });
     }
-  };
-
-  _captureTextInputRef = (ref: View) => {
-    this._textInputRef = ref;
   };
 
   resetForm() {
@@ -281,7 +276,6 @@ class CopyDeckDialog extends React.Component<Props, State> {
           { t`New Name` }
         </DialogComponent.Description>
         <DialogComponent.Input
-          textInputRef={this._captureTextInputRef}
           value={deckName || ''}
           placeholder={t`Required`}
           onChangeText={this._onDeckNameChange}

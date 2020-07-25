@@ -72,7 +72,7 @@ export default class TextBoxButton extends React.Component<Props, State> {
               textDecorationStyle: 'solid',
               textDecorationColor: COLORS.lightText,
             } : {},
-            value ? { color: COLORS.lightText } : { color: COLORS.veryLightText },
+            value ? { color: COLORS.darkText } : { color: COLORS.lightText },
           ]}
           onLayout={multiline ? this._updateSize : undefined}>
             { value || placeholder }

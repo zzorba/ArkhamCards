@@ -42,6 +42,14 @@
             "text": "the investigators repelled Umôrdhoth."
           },
           {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua retreated to nurse its wounds."
           },
@@ -328,6 +336,14 @@
             "text": "Zebulon Whateley survived The Dunwich Legacy."
           },
           {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua retreated to nurse its wounds."
           },
@@ -587,6 +603,14 @@
           {
             "id": "unable_to_find_nigel",
             "text": "you were unable to find Nigel."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -911,6 +935,14 @@
             "text": "Zebulon Whateley survived The Dunwich Legacy."
           },
           {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua retreated to nurse its wounds."
           },
@@ -1086,6 +1118,14 @@
           {
             "id": "umordhoth_repelled",
             "text": "the investigators repelled Umôrdhoth."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -1352,6 +1392,14 @@
           {
             "id": "unable_to_find_nigel",
             "text": "you were unable to find Nigel."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -1728,6 +1776,14 @@
             "text": "the investigators were forced to wait for additional supplies."
           },
           {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua retreated to nurse its wounds."
           },
@@ -1890,7 +1946,7 @@
     "supplies": [
       {
         "id": "sticky_goop",
-        "name": "Sticky Goopr",
+        "name": "Sticky Goop",
         "description": "A mysterious scepter you found in a subterranean swamp.",
         "cost": 0,
         "multiple": false
@@ -2258,6 +2314,14 @@
             "text": "the witches' spell was cast."
           },
           {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua retreated to nurse its wounds."
           },
@@ -2587,6 +2651,14 @@
             "text": "you asked for it."
           },
           {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
             "id": "coh_cnidathqua_retreated",
             "text": "Cnidathqua retreated to nurse its wounds."
           },
@@ -2861,6 +2933,14 @@
           {
             "id": "you_asked_for_it",
             "text": "you asked for it."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
           },
           {
             "id": "coh_cnidathqua_retreated",
@@ -3189,6 +3269,14 @@
           {
             "id": "wait_for_additional_supplies",
             "text": "the investigators were forced to wait for additional supplies."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
           },
           {
             "id": "coh_cnidathqua_retreated",

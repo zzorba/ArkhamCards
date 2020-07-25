@@ -278,7 +278,12 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
-  - ReactNativeNavigation (6.9.1):
+  - ReactNativeNavigation (6.10.1):
+    - React
+    - React-RCTImage
+    - React-RCTText
+    - ReactNativeNavigation/Core (= 6.10.1)
+  - ReactNativeNavigation/Core (6.10.1):
     - React
     - React-RCTImage
     - React-RCTText
@@ -288,7 +293,7 @@ PODS:
     - React
   - RNColorMatrixImageFilters (5.2.5):
     - React
-  - RNDeviceInfo (5.6.1):
+  - RNDeviceInfo (5.6.3):
     - React
   - RNFastImage (8.3.2):
     - React
@@ -502,11 +507,11 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  ReactNativeNavigation: 9b0afb0e38d6b97eb23aab3bb410826ebc559bec
+  ReactNativeNavigation: 93712ba3b8d066da5db972bf4fda8ba11811d4da
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
   RNColorMatrixImageFilters: b63046039affa237c9e8e10a79052fbc7fb9d963
-  RNDeviceInfo: b6e650fbd234732c759544218657d549b4339038
+  RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNKeychain: db956c02a018f7dd3a0ea8a6cf3087bc1894bf2b

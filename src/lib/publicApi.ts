@@ -235,7 +235,23 @@ export const syncCards = async function(
       {
         'code': 'venomous_hate',
         'name': t`Venomous Hate`
-      }
+      },
+      {
+        "code": "blob",
+        "name": t`The Blob That Ate Everything`,
+      },
+      {
+        "code": "blob_epic_multiplayer",
+        "name": t`Epic Multiplayer`,
+      },
+      {
+        "code": "blob_single_group",
+        "name": t`Single Group`,
+      },
+      {
+        "code": "migo_incursion",
+        "name": t`Mi-Go Incursion`,
+      },
     ];
     const encounterSetsToInsert: {
       [code: string]: EncounterSet | undefined;

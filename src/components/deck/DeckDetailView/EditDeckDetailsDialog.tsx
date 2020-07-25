@@ -39,7 +39,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
     xpAdjustment: 0,
     saving: false,
   };
-  _textInputRef?: TextInput;
+  _textInputRef = React.createRef<TextInput>();
 
   componentDidUpdate(prevProps: Props) {
     const {
@@ -77,10 +77,6 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
       name,
     });
   }
-
-  _captureTextInputRef = (ref: TextInput) => {
-    this._textInputRef = ref;
-  };
 
   _onOkayPress = () => {
     const {
@@ -129,7 +125,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
             { t`NAME` }
           </DialogComponent.Description>
           <DialogComponent.Input
-            textInputRef={this._captureTextInputRef}
+            textInputRef={this._textInputRef}
             value={name}
             onChangeText={this._onDeckNameChange}
             returnKeyType="done"

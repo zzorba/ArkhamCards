@@ -221,6 +221,7 @@ export default class ScenarioStep {
           this.step,
           scenarioState
         );
+      case 'table':
       case 'story':
       case 'encounter_sets':
       case 'location_connectors':

@@ -10,6 +10,7 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
+import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
@@ -50,6 +51,10 @@ export default class ScenarioStepComponent extends React.Component<Props> {
       return <GenericStepComponent step={step} />;
     }
     switch (step.type) {
+      case 'table':
+        return (
+          <TableStepComponent step={step} />
+        );
       case 'branch':
         return (
           <BranchStepComponent

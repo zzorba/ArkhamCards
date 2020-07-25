@@ -21,6 +21,8 @@ import HrTagNode from './HrTagNode';
 import ParagraphHtmlTagNode from './ParagraphHtmlTagNode';
 import UnderlineHtmlTagNode from './UnderlineHtmlTagNode';
 import StrikethroughTextNode from './StrikethroughTextNode';
+import SmallCapsNode from './SmallCapsNode';
+import CenterNode from './CenterNode';
 
 const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<p>(.+?)<\\/p>')),
@@ -59,6 +61,18 @@ const BreakTagRule: MarkdownRule<WithText, State> = {
   },
   render: BoldItalicHtmlTagNode,
 };
+
+const SmallCapsHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: SmallCapsNode,
+};
+
 
 const EmphasisMarkdownTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^\\[\\[([\\s\\S]+?)\\]\\]')),
@@ -127,6 +141,17 @@ const BoldHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: BoldHtmlTagNode,
 };
 
+const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
+  order: 2,
+  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+    return {
+      children: nestedParse(capture[1], state),
+    };
+  },
+  render: CenterNode,
+};
+
 const UnderlineHtmlTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<u>([\\s\\S]+?)<\\/u>')),
   order: 2,
@@ -189,6 +214,8 @@ export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
         uTag: UnderlineHtmlTagRule,
         emTag: EmphasisHtmlTagRule,
         iTag: ItalicHtmlTagRule,
+        smallcapsTag: SmallCapsHtmlTagRule,
+        center: CenterHtmlTagRule,
         ...(onLinkPress ? {} : { arkhamIcon: ArkhamIconRule }),
       }}
       styles={{

@@ -31,8 +31,8 @@ interface State {
 }
 
 export default class AddCampaignNoteSectionDialog extends React.Component<Props, State> {
-  _textInputRef: TextInput | null = null;
-
+  _textInputRef = React.createRef<TextInput>();
+  
   constructor(props: Props) {
     super(props);
 
@@ -42,10 +42,6 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
       isCount: false,
     };
   }
-
-  _captureTextInputRef = (ref: TextInput) => {
-    this._textInputRef = ref;
-  };
 
   _onAddPress = () => {
     const {
@@ -98,8 +94,8 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
       visible,
     } = this.props;
     if (visible && !prevProps.visible) {
-      if (this._textInputRef) {
-        this._textInputRef.focus();
+      if (this._textInputRef && this._textInputRef.current) {
+        this._textInputRef.current.focus();
       }
     }
   }
@@ -124,7 +120,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
       >
         <DialogComponent.Input
           value={name}
-          textInputRef={this._captureTextInputRef}
+          textInputRef={this._textInputRef}
           placeholder={t`Section Name`}
           onChangeText={this._onNameChange}
         />
