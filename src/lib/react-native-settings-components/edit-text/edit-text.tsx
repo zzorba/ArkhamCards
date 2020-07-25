@@ -12,6 +12,7 @@ import {
   TextStyle,
 } from 'react-native';
 import { trim } from 'lodash';
+// @ts-ignore
 import DialogAndroid from 'react-native-dialogs';
 import isFunction from 'lodash/isFunction';
 import { TouchableProps } from 'react-native-svg';
@@ -50,31 +51,20 @@ const style = StyleSheet.create({
   },
 });
 
-namespace constants {
-  export enum IosDialogInputType {
-    DEFAULT = 'plain-text',
-    PLAIN_TEXT= 'plain-text',
-    EMAIL_ADDRESS = 'email-address',
-    NUMERIC = 'numeric',
-    PHONE_PAD = 'phone-pad',
-    ASCII_CAPABLE = 'ascii-capable',
-    NUMBERS_AND_PUNCTUATION = 'numbers-and-punctuation',
-    URL = 'url',
-    NUMBER_PAD = 'number-pad',
-    NAME_PHONE_PAD = 'name-phone-pad',
-    DECIMAL_PAD = 'decimal-pad',
-    TWITTER = 'twitter',
-    WEB_SEARCH = 'web-search',
-  };
-  export enum AndroidDialogInputType {
-    NUMERIC= 'numeric',
-    NUMBERS_AND_PUNCTUATION = 'numbers-and-punctuation',
-    NUMERIC_PASSWORD = 'numeric-password',
-    EMAIL_ADDRESS = 'email-address',
-    PASSWORD = 'password',
-    PHONE_PAD = 'phone-pad',
-    DECIMAL_PAD = 'decimal-pad',
-  };
+export enum IosDialogInputType {
+  DEFAULT = 'plain-text',
+  PLAIN_TEXT= 'plain-text',
+  SECURE_TEXT = 'secure-text',
+  LOGIN_PASSWORD = 'login-password',
+};
+export enum AndroidDialogInputType {
+  NUMERIC= 'numeric',
+  NUMBERS_AND_PUNCTUATION = 'numbers-and-punctuation',
+  NUMERIC_PASSWORD = 'numeric-password',
+  EMAIL_ADDRESS = 'email-address',
+  PASSWORD = 'password',
+  PHONE_PAD = 'phone-pad',
+  DECIMAL_PAD = 'decimal-pad',
 };
 
 
@@ -95,8 +85,8 @@ interface Props {
     dialogDescription?: string;
     onValueChange: (value: string) => string;
     disabled?: boolean;
-    iosDialogInputType?: constants.IosDialogInputType;
-    androidDialogInputType?: constants.AndroidDialogInputType | null;
+    iosDialogInputType?: IosDialogInputType;
+    androidDialogInputType?: AndroidDialogInputType | null;
     androidDialogPlaceholder?: string;
     androidDialogOptions: any;
     touchableProps?: TouchableProps;
@@ -115,14 +105,14 @@ class SettingsEditText extends Component<Props> {
     valueFormat: null,
     dialogDescription: '',
     disabled: false,
-    iosDialogInputType: constants.IosDialogInputType.DEFAULT,
+    iosDialogInputType: IosDialogInputType.DEFAULT,
     androidDialogInputType: null,
     androidDialogPlaceholder: null,
     androidDialogOptions: {},
     touchableProps: {},
   };
 
-  onValueChange = (val: string) => {
+  onValueChange = (val: string | undefined) => {
     const { onValueChange } = this.props;
     onValueChange(trim(val));
   };

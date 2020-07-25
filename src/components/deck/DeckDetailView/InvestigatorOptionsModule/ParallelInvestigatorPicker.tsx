@@ -19,14 +19,7 @@ interface Props {
 }
 
 export default class ParallelInvestigatorPicker extends React.Component<Props> {
-  ref?: SettingsPicker;
-
-  _captureRef = (ref: SettingsPicker) => {
-    this.ref = ref;
-  };
-
   _onChange = (index: number) => {
-    this.ref && this.ref.closeModal();
     const {
       onChange,
       parallelInvestigators,

@@ -13,7 +13,7 @@ export default function CategoryHeader({ title }: Props) {
   return (
     <SettingsCategoryHeader
       title={title}
-      titleStyle={[typography.smallLabel, { color: COLORS.darkText }]}
+      titleStyle={typography.categoryHeader}
       containerStyle={styles.categoryContainer}
     />
   );

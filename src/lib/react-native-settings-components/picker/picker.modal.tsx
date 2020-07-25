@@ -64,6 +64,7 @@ const style = StyleSheet.create({
     paddingVertical: 4,
     color: 'white',
     fontSize: 16,
+    textTransform: 'uppercase',
   },
   listWrapper: {
     height: 300,
@@ -149,7 +150,7 @@ class PickerModal extends Component<Props> {
   _defaultRenderCloseBtn = () => {
     return (
       <Text style={style.headerCloseBtnText}>
-        { t`CLOSE` }
+        { t`Close` }
       </Text>
     );
   };

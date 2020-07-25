@@ -3,6 +3,7 @@ import {
   View, Text, StyleSheet, TouchableOpacity, ViewProps, ViewStyle, TextProps, TextStyle,
 } from 'react-native';
 import { cloneDeep, isArray, join, trim } from 'lodash';
+import { t } from 'ttag';
 
 import PickerModal, { ModalStyle, PickerItem } from './picker.modal';
 import COLORS from '@styles/colors';
@@ -41,6 +42,7 @@ const style = StyleSheet.create({
     paddingVertical: 4,
     color: 'white',
     fontSize: 16,
+    textTransform: 'uppercase',
   },
 });
 
@@ -99,7 +101,7 @@ class SettingsPicker extends Component<Props, State> {
 
   _renderCloseBtn = () => (
     <Text style={style.headerCloseBtnText}>
-      {'CLOSE'}
+      { t`Close` }
     </Text>
   );
 

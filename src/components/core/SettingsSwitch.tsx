@@ -19,7 +19,7 @@ export default function SettingsSwitch({ title, description, onValueChange, valu
   return (
     <SwitchRow
       title={title}
-      titleStyle={settingsStyle ? typography.label : typography.mediumGameFont}
+      titleStyle={settingsStyle ? undefined : typography.mediumGameFont}
       containerStyle={styles.switch}
       descriptionStyle={typography.label}
       description={description}

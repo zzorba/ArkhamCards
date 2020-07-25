@@ -152,6 +152,13 @@ export default class NumberPrompt extends React.Component<Props, State> {
                   <CampaignGuideTextComponent text={text} />
                 </SetupStepWrapper>
               ) }
+              { !!confirmText && (
+                <SetupStepWrapper bulletType="small">
+                  <CampaignGuideTextComponent 
+                    text={count === undefined ? t`${confirmText} <i>(applied automatically)</i>` : confirmText} 
+                  />
+                </SetupStepWrapper>
+              ) } 
               <SetupStepWrapper
                 bulletType={count === undefined ? 'none' : 'small'}
                 border={count === undefined}
@@ -162,11 +169,6 @@ export default class NumberPrompt extends React.Component<Props, State> {
               </SetupStepWrapper>
               { (count === undefined) && (
                 <BasicButton title={t`Proceed`} onPress={this._submit} />
-              ) }
-              { count !== undefined && !!confirmText && (
-                <SetupStepWrapper bulletType="small">
-                  <CampaignGuideTextComponent text={confirmText} />
-                </SetupStepWrapper>
               ) }
             </View>
           );

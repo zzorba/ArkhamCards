@@ -19,7 +19,7 @@ import RequiredCardSwitch from './RequiredCardSwitch';
 import { showDeckModal } from '@components/nav/helper';
 import TabooSetPicker from '@components/core/TabooSetPicker';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import NavButton from '@components/core/NavButton';
+import SettingsItem from '@components/settings/SettingsItem';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
@@ -148,6 +148,9 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         }
         slots[card.code] = card.deck_limit || card.quantity || 0;
       });
+      if (investigator.code === '06002') {
+        slots['06008'] = 1;
+      }
     }
 
     if (optionSelected[0] !== true ||
@@ -349,11 +352,11 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
+            settingsStyle
           />
         ) : (
-          <NavButton
-            indent
-            fontScale={fontScale}
+          <SettingsItem 
+            navigation
             text={t`Sign in to ArkhamDB`}
             onPress={login}
           />
@@ -370,6 +373,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             title={t`Use Starter Deck`}
             value={starterDeck}
             onValueChange={this._onStarterDeckChange}
+            settingsStyle
           />
         ) }
       </>

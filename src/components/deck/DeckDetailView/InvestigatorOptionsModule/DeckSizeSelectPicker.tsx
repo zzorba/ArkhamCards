@@ -2,7 +2,6 @@ import React from 'react';
 import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
 
-import { SettingsPicker } from '@lib/react-native-settings-components';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { FactionCodeType } from '@app_constants';
 import COLORS from '@styles/colors';
@@ -18,14 +17,7 @@ interface Props {
 }
 
 export default class DeckSizeSelectPicker extends React.Component<Props> {
-  ref?: SettingsPicker<string>;
-
-  _captureRef = (ref: SettingsPicker<string>) => {
-    this.ref = ref;
-  };
-
   _onChange = (index: number) => {
-    this.ref && this.ref.closeModal();
     const {
       onChange,
       sizes,

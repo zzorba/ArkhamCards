@@ -33,6 +33,7 @@ export default class RequiredCardSwitch extends React.Component<Props> {
         title={label}
         value={value}
         onValueChange={this._onValueChange}
+        settingsStyle
       />
     );
   }

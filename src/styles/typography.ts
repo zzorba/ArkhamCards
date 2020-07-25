@@ -43,6 +43,13 @@ export default StyleSheet.create({
     letterSpacing: 0.3,
     color: COLORS.lightText,
   },
+  categoryHeader: {
+    fontFamily: 'System',
+    fontSize: 12 * sizeScale,
+    lineHeight: 18 * sizeScale,
+    letterSpacing: 0.3,
+    color: COLORS.darkText,
+  },
   label: {
     fontFamily: 'System',
     fontSize: 16 * sizeScale,

@@ -928,9 +928,9 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 
   _setMeta = (key: keyof DeckMeta, value?: string) => {
+    let { slots } = this.state;
     const {
       meta,
-      slots,
       ignoreDeckLimitSlots,
       xpAdjustment,
       nameChange,
@@ -949,8 +949,16 @@ class DeckDetailView extends React.Component<Props, State> {
       ...meta,
       [key]: value,
     };
+
     if (value === undefined) {
       delete updatedMeta[key];
+    } else {
+      if (deck.investigator_code === '06002' && key === 'deck_size_selected') {
+        slots = {
+          ...slots,
+          '06008': (parseInt(value, 10) - 20) / 10,
+        };
+      }
     }
     const parsedDeck = parseDeck(
       deck,

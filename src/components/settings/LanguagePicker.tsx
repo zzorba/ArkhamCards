@@ -39,15 +39,8 @@ class LanguagePicker extends React.Component<Props> {
   static contextType = DatabaseContext;
   context!: DatabaseContextType;
 
-  languagePickerRef?: SettingsPicker;
-
-  _captureLanguagePickerRef = (ref: SettingsPicker) => {
-    this.languagePickerRef = ref;
-  }
-
   _onLanguageChange = (index: number) => {
     const newLang = LANGUAGES[index].value;
-    this.languagePickerRef && this.languagePickerRef.closeModal();
     const {
       lang,
       fetchCards,
