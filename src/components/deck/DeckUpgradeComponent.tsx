@@ -1,5 +1,5 @@
 import React from 'react';
-import { forEach, find, throttle } from 'lodash';
+import { forEach, find, keys, throttle } from 'lodash';
 import {
   ActivityIndicator,
   View,
@@ -73,11 +73,11 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       storyCounts,
       ignoreStoryCounts,
     } = this.props;
-    const hasStoryChange = !!find(storyCounts, (count, code) =>
-      (upgradedDeck.slots[code] || 0) !== count
-    ) || !!find(ignoreStoryCounts, (count, code) =>
-      (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== count
-    );
+    const hasStoryChange = !!find(keys(storyCounts), (code) => {
+      return (upgradedDeck.slots[code] || 0) !== storyCounts[code];
+    }) || !!find(keys(ignoreStoryCounts), (code) => {
+      return (upgradedDeck.ignoreDeckLimitSlots[code] || 0) !== ignoreStoryCounts[code];
+    });
     if (hasStoryChange) {
       const newSlots: Slots = { ...upgradedDeck.slots };
       forEach(storyCounts, (count, code) => {
