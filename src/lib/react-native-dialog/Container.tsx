@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   blur: {
     position: 'absolute',
-    backgroundColor: DynamicColorIOS({ light: 'white', dark: '#222' }),
+    backgroundColor: Platform.OS === 'ios' ? DynamicColorIOS({ light: 'white', dark: '#222' }) : 'white',
     top: 0,
     left: 0,
     bottom: 0,

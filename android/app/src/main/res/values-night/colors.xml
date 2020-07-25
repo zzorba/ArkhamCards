@@ -14,7 +14,7 @@
     <color name="factionSeekerLightBackgroundColor">#cf6b0e</color>
     <color name="factionGuardianTextColor">#62cefc</color>
     <color name="factionGuardianLightBackgroundColor">#004880</color>
-    <color name="factionRogueTextColor">#4fe356</color>
+    <color name="factionRogueTextColor">#52cc66</color>
     <color name="factionRogueLightBackgroundColor">#107116</color>
     <color name="factionSurvivorTextColor">#ff6b73</color>
     <color name="factionSurvivorLightBackgroundColor">#7a0105</color>
@@ -33,4 +33,5 @@
     <color name="toggleButtonColor">#363636</color>
     <color name="selectedToggleButtonColor">#111</color>
     <color name="dividerColor">#424242</color>
+    <color name="disabledOverlayColor">#00000099</color>
 </resources>

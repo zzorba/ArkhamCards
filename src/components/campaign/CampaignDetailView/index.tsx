@@ -11,12 +11,12 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import SideMenu from 'react-native-side-menu';
+import { t } from 'ttag';
+
 import {
   SettingsButton,
   SettingsCategoryHeader,
-} from 'react-native-settings-components';
-import { t } from 'ttag';
-
+} from '@lib/react-native-settings-components';
 import BasicButton from '@components/core/BasicButton';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';

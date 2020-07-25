@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { isArray, map } from 'lodash';
-import { SettingsPicker } from 'react-native-settings-components';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import { SettingsPicker } from '@lib/react-native-settings-components';
 import { DisplayChoice } from '@data/scenario';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
@@ -13,6 +13,7 @@ export interface PickerProps {
   choices: DisplayChoice[];
   description?: string;
   title: string;
+  modalTitle?: string;
   optional?: boolean;
   editable: boolean;
   colors?: {
@@ -46,9 +47,9 @@ interface Props extends PickerProps {
 }
 
 export default class PickerComponent extends React.Component<Props> {
-  pickerRef?: SettingsPicker<number>;
+  pickerRef?: SettingsPicker;
 
-  _capturePickerRef = (ref: SettingsPicker<number>) => {
+  _capturePickerRef = (ref: SettingsPicker) => {
     this.pickerRef = ref;
     if (this.props.open && this.pickerRef) {
       this.pickerRef.openModal();
@@ -113,6 +114,7 @@ export default class PickerComponent extends React.Component<Props> {
       noBorder,
       settingsStyle,
       hideWidget,
+      modalTitle,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -130,6 +132,7 @@ export default class PickerComponent extends React.Component<Props> {
       <SettingsPicker
         ref={this._capturePickerRef}
         title={title}
+        modalTitle={modalTitle}
         dialogDescription={description}
         value={config.selectedIndex}
         valuePlaceholder={''}

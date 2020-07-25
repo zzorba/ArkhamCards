@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonProps, StyleSheet, View } from 'react-native';
+import { Button, ButtonProps, StyleSheet, View, Platform } from 'react-native';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 
@@ -9,7 +9,9 @@ interface Props extends ButtonProps {
 export default function BasicButton({ grow, ...otherProps }: Props) {
   return (
     <View style={[space.button, grow ? styles.grow : {}]}>
-      <Button {...otherProps} />
+      <Button
+        {...otherProps} 
+      />
     </View>
   );
 }

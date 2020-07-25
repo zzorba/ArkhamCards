@@ -1,8 +1,8 @@
 import React from 'react';
 import { findIndex, map } from 'lodash';
-import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
+import { SettingsPicker } from '@lib/react-native-settings-components';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
@@ -19,9 +19,9 @@ interface Props {
 }
 
 export default class ParallelInvestigatorPicker extends React.Component<Props> {
-  ref?: SettingsPicker<FactionCodeType>;
+  ref?: SettingsPicker;
 
-  _captureRef = (ref: SettingsPicker<FactionCodeType>) => {
+  _captureRef = (ref: SettingsPicker) => {
     this.ref = ref;
   };
 

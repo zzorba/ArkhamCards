@@ -80,11 +80,11 @@ export default StyleSheet.create({
   dialogLabel: Platform.select({
     ios: {
       fontSize: 13 * sizeScale,
-      color: 'black',
+      color: COLORS.darkText,
     },
     android: {
       fontSize: 16 * sizeScale,
-      color: '#33383D',
+      color: COLORS.darkText,
     },
   }) as TextStyle,
   left: {

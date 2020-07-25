@@ -8,7 +8,7 @@ const darkText = (Platform.OS === 'ios' ? PlatformColor('labelColor') : Platform
 const lightText = (Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : PlatformColor('?attr/colorSecondaryText')) as any as string;
 
 export default {
-  disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: 'rgba(255,255,255,0.6)', dark: 'rgba(0,0,0,0.6)' }) : 'rgba(255,255,255,0.6)') as any as string,
+  disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFFFF99', dark: '#00000099' }) : PlatformColor('?attr/disabledOverlayColor')) as any as string,
   modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
   darkText,
   lightText,
@@ -38,7 +38,7 @@ export default {
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d5e6f3', dark: '#004880' }) : PlatformColor('?attr/factionGuardianLightBackgroundColor')) as any as string,
     },
     rogue: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#4fe356' }) : PlatformColor('?attr/factionRogueTextColor')) as any as string,
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#52cc66' }) : PlatformColor('?attr/factionRogueTextColor')) as any as string,
       background: '#107116',
       darkBackground: '#107116',
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#015906' }) : PlatformColor('?attr/factionRogueLightBackgroundColor')) as any as string,

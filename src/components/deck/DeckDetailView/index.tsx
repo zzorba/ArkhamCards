@@ -26,11 +26,11 @@ import DialogComponent from '@lib/react-native-dialog';
 import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
 import SideMenu from 'react-native-side-menu';
+
 import {
   SettingsButton,
   SettingsCategoryHeader,
-} from 'react-native-settings-components';
-
+} from '@lib/react-native-settings-components';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';

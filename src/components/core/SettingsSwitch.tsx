@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { SettingsSwitch as SwitchRow } from 'react-native-settings-components';
 
+import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import { m, s } from '@styles/space';

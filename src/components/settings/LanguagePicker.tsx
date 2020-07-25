@@ -2,9 +2,9 @@ import React from 'react';
 import { findIndex, map } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { SettingsPicker } from 'react-native-settings-components';
 import { t } from 'ttag';
 
+import { SettingsPicker } from '@lib/react-native-settings-components';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { fetchCards } from '@components/card/actions';
 import Database from '@data/Database';
@@ -39,9 +39,9 @@ class LanguagePicker extends React.Component<Props> {
   static contextType = DatabaseContext;
   context!: DatabaseContextType;
 
-  languagePickerRef?: SettingsPicker<string>;
+  languagePickerRef?: SettingsPicker;
 
-  _captureLanguagePickerRef = (ref: SettingsPicker<string>) => {
+  _captureLanguagePickerRef = (ref: SettingsPicker) => {
     this.languagePickerRef = ref;
   }
 

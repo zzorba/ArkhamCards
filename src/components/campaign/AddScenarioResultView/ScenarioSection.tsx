@@ -165,6 +165,7 @@ class ScenarioSection extends React.Component<Props, State> {
   }
 
   render() {
+    const { showInterludes } = this.props;
     const {
       selectedScenario,
       customScenario,
@@ -176,11 +177,12 @@ class ScenarioSection extends React.Component<Props, State> {
       <View>
         <SettingsSwitch
           title={t`Show Interludes`}
-          value={this.props.showInterludes}
+          value={showInterludes}
           onValueChange={this._toggleShowInterludes}
         />
         <SinglePickerComponent
           title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}
+          modalTitle={showInterludes ? t`Scenario or Interlude` : t`Scenario`}
           choices={map(possibleScenarios, name => {
             return {
               text: name,

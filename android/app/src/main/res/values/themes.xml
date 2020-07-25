@@ -32,5 +32,6 @@
 		<item name="toggleButtonColor">@color/toggleButtonColor</item>
 		<item name="selectedToggleButtonColor">@color/selectedToggleButtonColor</item>
 		<item name="dividerColor">@color/dividerColor</item>
+		<item name="disabledOverlayColor">@color/disabledOverlayColor</item>
 	</style>
 </resources>

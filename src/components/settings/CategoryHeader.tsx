@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { SettingsCategoryHeader } from 'react-native-settings-components';
 
+import { SettingsCategoryHeader } from '@lib/react-native-settings-components';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 
