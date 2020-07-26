@@ -66,16 +66,16 @@ export default class EditCountComponent extends React.Component<Props, State> {
           { title }
         </Text>
         <PlusMinusButtons
-            count={count || 0}
-            onIncrement={this._increment}
-            onDecrement={this._decrement}
-            countRender={(
-              <Text style={[styles.margin, typography.text]}>
-                { count }
-              </Text>
-            )}
-            size={36}
-          />
+          count={count || 0}
+          onIncrement={this._increment}
+          onDecrement={this._decrement}
+          countRender={(
+            <Text style={[styles.margin, typography.text]}>
+              { count }
+            </Text>
+          )}
+          size={36}
+        />
       </BasicListRow>
     );
   }

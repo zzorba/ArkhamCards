@@ -21987,12 +21987,13 @@
     {
       "id": "replay_scenario",
       "type": "input",
+      "text": "The puzzle has not been solved, you can either try again or choose to proceed anyway. The investigators must decide (choose one):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "replay",
-            "text": "Replace <b>Scenario V-A: Heart of the Elders, Part 1</b>.",
+            "text": "Continue to try by replaying <b>Scenario V-A: Heart of the Elders, Part 1</b>.",
             "steps": [
               "chose_replay"
             ]
@@ -22000,6 +22001,7 @@
           {
             "id": "resolution_2",
             "text": "Proceed to <b>Resolution 2</b>",
+            "description": "<i>You have a bad feeling about this...</i>",
             "steps": [
               "resolution_2"
             ]
@@ -22164,6 +22166,7 @@
     {
       "id": "poison_or_trauma",
       "type": "branch",
+      "hidden": true,
       "condition": {
         "type": "has_card",
         "investigator": "each",
@@ -24008,11 +24011,13 @@
     },
     {
       "id": "setup_locations_resisted",
-      "text": "Because <i>the investigators resisted captivity</i>, put the Interview Room (<i>Restraining Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Restraining Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "bullet_type": "small",
+      "text": "Put the Interview Room (<i>Restraining Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Restraining Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
     },
     {
       "id": "yithian_observer_resisted",
-      "text": "Because <i>the investigators resisted captivity</i>, search the gathered encounter sets for a Yithian Observer and place it in the victory display."
+      "bullet_type": "small",
+      "text": "Search the gathered encounter sets for a Yithian Observer and place it in the victory display."
     },
     {
       "id": "location_layout",
@@ -24162,23 +24167,6 @@
       }
     },
     {
-      "id": "process_was_perfected",
-      "text": "Because all 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gain insight into the secrets of the Earth.",
-      "effects": [
-        {
-          "type": "campaign_log",
-          "section": "campaign_notes",
-          "id": "process_was_perfected",
-          "text": "the process was perfected."
-        },
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "bonus": 4
-        }
-      ]
-    },
-    {
       "id": "process_was_successful",
       "text": "Because 5 tasks were completed, record in your Campaign Log that <i>the process was successful</i>. Each investigator earns 2 bonus experience as they gain insight into the secrets of the Earth.",
       "effects": [
@@ -24283,6 +24271,23 @@
           }
         ]
       }
+    },
+    {
+      "id": "process_was_perfected",
+      "text": "Because at least 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gain insight into the secrets of the Earth.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "process_was_perfected",
+          "text": "the process was perfected."
+        },
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "bonus": 4
+        }
+      ]
     }
   ],
   "resolutions": [
@@ -28252,7 +28257,14 @@
     {
       "id": "cross_off_new_things",
       "hidden": true,
-      "effects": []
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "recruited_help_of_another_expedition",
+          "cross_out": true
+        }
+      ]
     },
     {
       "id": "gather_encounter_sets",
@@ -28262,7 +28274,7 @@
         "turn_back_time",
         "return_to_turn_back_time",
         "eztli",
-        "return_to_the_boundary_beyond",
+        "return_to_the_doom_of_eztli",
         "agents_of_yig",
         "venomous_hate",
         "temporal_hunters",
@@ -51807,11 +51819,13 @@
     },
     {
       "id": "setup_locations_resisted",
-      "text": "Because <i>the investigators resisted captivity</i>, put the Interview Room (<i>Restraining Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Restraining Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "bullet_type": "small",
+      "text": "Put the Interview Room (<i>Restraining Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Restraining Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
     },
     {
       "id": "yithian_observer_resisted",
-      "text": "Because <i>the investigators resisted captivity</i>, search the gathered encounter sets for a Yithian Observer and place it in the victory display."
+      "bullet_type": "small",
+      "text": "Search the gathered encounter sets for a Yithian Observer and place it in the victory display."
     },
     {
       "id": "setup_locations",

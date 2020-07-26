@@ -80,7 +80,7 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
             onIncrement={this._inc}
             onDecrement={this._dec}
             countRender={this.renderCount()}
-            color="light"
+            color={color ? 'light' : 'dark'}
           />
         ) : (
           this.renderCount()
