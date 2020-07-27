@@ -16,13 +16,10 @@ import SettingsSwitch from '@components/core/SettingsSwitch';
 import EditText from '@components/core/EditText';
 import { updateCampaign } from '../actions';
 import { completedScenario, campaignScenarios, scenarioFromCard, Scenario } from '../constants';
-import LabeledTextBox from '@components/core/LabeledTextBox';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
-import Switch from '@components/core/Switch';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import Database from '@data/Database';
 import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
 import { s } from '@styles/space';
 
 interface OwnProps {

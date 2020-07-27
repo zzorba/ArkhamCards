@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.background,
+    borderColor: COLORS.divider,
   },
 });

@@ -1,12 +1,13 @@
 import React from 'react';
 import { concat, filter, flatMap, map, shuffle, range, without } from 'lodash';
 import {
-  Button,
   FlatList,
+  Platform,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { Button } from 'react-native-elements';
 
 import { t } from 'ttag';
 import { Slots } from '@actions/types';
@@ -14,7 +15,6 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import COLORS from '@styles/colors';
 
 export interface DrawSimulatorProps {
@@ -171,33 +171,49 @@ class DrawSimulatorView extends React.Component<Props, State> {
       <View style={styles.controlsContainer}>
         <View style={styles.drawButtonRow}>
           <Text style={styles.text}>{ t`Draw: ` }</Text>
-          <View style={styles.button}>
-            <Button title="1" disabled={deckEmpty} onPress={this._drawOne} />
+          <View style={styles.buttonContainer}>
+            <Button 
+              title="1" 
+              disabled={deckEmpty}
+              onPress={this._drawOne} 
+            />
           </View>
-          <View style={styles.button}>
-            <Button title="2" disabled={deckEmpty} onPress={this._drawTwo} />
+          <View style={styles.buttonContainer}>
+            <Button 
+              title="2" 
+              disabled={deckEmpty}
+              onPress={this._drawTwo} 
+            />
           </View>
-          <View style={styles.button}>
-            <Button title="5" disabled={deckEmpty} onPress={this._drawFive} />
+          <View style={styles.buttonContainer}>
+            <Button 
+              title="5"
+              disabled={deckEmpty} 
+              onPress={this._drawFive} 
+            />
           </View>
-          <View style={styles.button}>
-            <Button title={t`All`} disabled={deckEmpty} onPress={this._drawAll} />
+          <View style={styles.buttonContainer}>
+            <Button 
+              title={t`All`} 
+              disabled={deckEmpty} 
+              onPress={this._drawAll} 
+            />
           </View>
         </View>
         <View style={styles.wrapButtonRow}>
-          <View style={styles.button}>
+          <View style={styles.buttonContainer}>
             <Button
               title={t`Redraw`}
               disabled={noSelection}
               onPress={this._redrawSelected} />
           </View>
-          <View style={styles.button}>
+          <View style={styles.buttonContainer}>
             <Button
               title={t`Reshuffle`}
               disabled={noSelection}
               onPress={this._reshuffleSelected} />
           </View>
-          <View style={styles.button}>
+          <View style={styles.buttonContainer}>
             <Button
               title={t`Reset`}
               disabled={drawnCards.length === 0}
@@ -218,7 +234,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
         card={card}
         onPressId={this._toggleSelection}
         fontScale={fontScale}
-        backgroundColor={item.selected ? '#ddd' : undefined}
+        backgroundColor={item.selected ? COLORS.veryLightBackground : undefined}
       />
     );
   };
@@ -284,10 +300,8 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     color: COLORS.darkText,
   },
-  button: {
+  buttonContainer: {
     flex: 1,
-    marginLeft: xs,
-    marginRight: xs,    
-    color: COLORS.darkText,
+    padding: s,
   },
 });

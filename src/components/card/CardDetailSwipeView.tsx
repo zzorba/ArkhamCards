@@ -251,7 +251,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           limit={deck_limit}
           showZeroCount
           forceBig
-          light
         />
       </View>
     );

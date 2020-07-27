@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     maxWidth: 400,
     borderRadius: Platform.OS === 'ios' ? 25 : 0,
     borderWidth: 1,
-    borderColor: '#dedede',
+    borderColor: COLORS.divider,
   },
   background: {
     position: 'absolute',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: s,
     borderBottomWidth: 1,
-    borderColor: '#eeeeee',
+    borderColor: COLORS.divider,
     flexDirection: 'column',
     justifyContent: 'center',
   },

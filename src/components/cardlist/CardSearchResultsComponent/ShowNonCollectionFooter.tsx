@@ -42,6 +42,6 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
 const styles = StyleSheet.create({
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.gray,
+    borderColor: COLORS.divider,
   },
 });

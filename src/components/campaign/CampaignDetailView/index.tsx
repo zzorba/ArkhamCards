@@ -690,7 +690,7 @@ const styles = StyleSheet.create({
   },
   menu: {
     borderLeftWidth: 2,
-    borderColor: COLORS.darkGray,
+    borderColor: COLORS.divider,
     backgroundColor: COLORS.background,
   },
   destructive: {

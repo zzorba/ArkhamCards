@@ -22,7 +22,6 @@ interface Props {
   limit: number;
   showZeroCount?: boolean;
   forceBig?: boolean;
-  light?: boolean;
 }
 
 interface State {
@@ -199,7 +198,6 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
       limit,
       showZeroCount,
       forceBig,
-      light,
       fontScale,
     } = this.props;
     if (toggleButtonMode(fontScale) && !forceBig) {
@@ -218,10 +216,10 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
           onIncrement={this._increment}
           onDecrement={this._decrement}
           max={limit}
-          color={light ? 'light' : undefined}
+          color={forceBig ? 'white' : undefined}
           hideDisabledMinus
           countRender={
-            <Text style={[typography.text, styles.count, light ? { color: 'white', fontSize: 22 } : {}]}>
+            <Text style={[typography.text, styles.count, forceBig ? { color: 'white', fontSize: 22 } : {}]}>
               { (showZeroCount || count !== 0) ? count : ' ' }
             </Text>
           }
