@@ -15,6 +15,7 @@ const style = StyleSheet.create({
   },
   defaultTitleStyle: {
     flex: 0,
+    color: COLORS.darkText,
     paddingLeft: 16,
     paddingRight: 8,
     fontSize: 16,
