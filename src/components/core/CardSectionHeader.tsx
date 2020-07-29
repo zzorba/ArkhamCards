@@ -130,7 +130,7 @@ export default class CardSectionHeader extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   superHeaderText: {
-    color: '#FFF',
+    color: '#FFFFFF',
     fontWeight: '500',
   },
   placeholder: {

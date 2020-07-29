@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.divider,
   },
   boldRow: {
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.lightBackground,
     borderColor: COLORS.divider,
   },
   headerText: {

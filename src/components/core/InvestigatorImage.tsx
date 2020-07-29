@@ -14,7 +14,7 @@ import Card from '@data/Card';
 import { isBig } from '@styles/space';
 import COLORS from '@styles/colors';
 
-const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFF' });
+const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFFFFF' });
 
 const scaleFactor = isBig ? 1.2 : 1.0;
 

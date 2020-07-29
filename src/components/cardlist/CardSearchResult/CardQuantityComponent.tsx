@@ -14,6 +14,7 @@ import CountButton from './CountButton';
 import { rowHeight, buttonWidth, BUTTON_PADDING, toggleButtonMode } from './constants';
 import typography from '@styles/typography';
 import { s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface Props {
   count: number;
@@ -269,7 +270,7 @@ const styles = StyleSheet.create({
     overflow: 'visible',
   },
   slideDrawer: {
-    borderColor: '#888888',
+    borderColor: COLORS.divider,
     borderLeftWidth: 1,
   },
   gradient: {

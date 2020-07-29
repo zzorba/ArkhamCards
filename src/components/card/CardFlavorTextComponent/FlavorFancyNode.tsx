@@ -7,6 +7,7 @@ import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { isBig } from '@styles/space';
 import { WithChildren } from '../CardTextComponent/types';
+import COLORS from '@styles/colors';
 
 export default function FlavorFancyNode(
   node: Node & WithChildren,
@@ -24,6 +25,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: isBig ? 28 : 18,
     fontFamily: 'AnkeCalligraphicFG',
-    color: '#222',
+    color: COLORS.lightText,
   },
 });

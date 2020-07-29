@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.divider,
     padding: m,
-    backgroundColor: '#ddd',
+    backgroundColor: COLORS.faction.mythos.background,
     width: '100%',
     height: '100%',
     borderRadius: 8,

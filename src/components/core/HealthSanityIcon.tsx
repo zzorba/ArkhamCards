@@ -93,6 +93,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Teutonic',
     fontWeight: '600',
     fontSize: 36,
-    color: '#FFF',
+    color: '#FFFFFF',
   },
 });

@@ -66,7 +66,7 @@ class TabooSetPicker extends React.Component<Props> {
         })}
         colors={{
           modalColor: color,
-          modalTextColor: '#FFF',
+          modalTextColor: '#FFFFFF',
           backgroundColor: transparent ? 'transparent' : COLORS.background,
           textColor: COLORS.darkText,
         }}
