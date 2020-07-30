@@ -6,6 +6,7 @@ import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import Card from '@data/Card';
 import { m } from '@styles/space';
 import COLORS from '@styles/colors';
+import typography from '@styles/typography';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 
@@ -23,7 +24,7 @@ export default class LocationCard extends React.Component<Props> {
     if (!image) {
       return (
         <View style={styles.singleCardWrapper}>
-          <Text>{ card.name }</Text>
+          <Text style={typography.text}>{ card.name }</Text>
         </View>
       );
     }

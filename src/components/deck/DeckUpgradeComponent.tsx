@@ -197,7 +197,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <View style={styles.container}>
-        { !!error && <Text>{ error }</Text> }
+        { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
         <CardSectionHeader
           investigator={investigator}
           fontScale={fontScale}

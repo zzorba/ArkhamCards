@@ -14,6 +14,7 @@ import { t } from 'ttag';
 import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
+import typography from '@styles/typography';
 
 interface PackCycle extends SectionListData<Pack> {
   title: string;
@@ -117,7 +118,7 @@ export default class PackListComponent extends React.Component<Props> {
     if (!packs.length) {
       return (
         <View>
-          <Text>Loading</Text>
+          <Text style={typography.text}>{t`Loading`}</Text>
         </View>
       );
     }

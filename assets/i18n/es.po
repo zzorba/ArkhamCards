@@ -161,8 +161,8 @@ msgstr "Habilidad"
 msgid "Basic Weakness"
 msgstr "Debilidad básica"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:184
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:185
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:181
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:182
 #: src/components/campaign/EditScenarioResultView.tsx:159
 #: src/components/campaign/ScenarioDialog.tsx:33
 #: src/data/Card.ts:498
@@ -198,7 +198,7 @@ msgstr "Acto ${linked_card.stage}"
 msgid "Agenda ${ linked_card.stage }"
 msgstr "Plan ${linked_card.stage}"
 
-#: src/components/settings/CollectionEditView.tsx:57
+#: src/components/settings/CollectionEditView.tsx:58
 msgid "Second Core Set"
 msgstr "Segunda Caja Básica"
 
@@ -207,8 +207,8 @@ msgstr "Segunda Caja Básica"
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:593
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:277
 #: src/components/deck/EditSpecialDeckCardsView.tsx:186
-#: src/components/settings/CollectionEditView.tsx:33
-#: src/components/settings/SettingsView.tsx:76
+#: src/components/settings/CollectionEditView.tsx:34
+#: src/components/settings/SettingsView.tsx:78
 msgid "Edit Collection"
 msgstr "Editar Colección"
 
@@ -293,7 +293,7 @@ msgstr "Contiene demasiadas cartas limitadas."
 #: src/components/deck/EditSpecialDeckCardsView.tsx:218
 #: src/components/deck/EditSpecialDeckCardsView.tsx:264
 #: src/components/filter/CardEnemyFilterView.tsx:20
-#: src/components/filter/PackFilterView.tsx:30
+#: src/components/filter/PackFilterView.tsx:31
 #: src/components/nav/helper.ts:30
 #: src/components/nav/helper.ts:119
 #: src/components/nav/helper.ts:177
@@ -572,18 +572,18 @@ msgstr "Desconectarse de ArkhamDB"
 msgid "Sign in to ArkhamDB"
 msgstr "Conectarse a ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:80
+#: src/components/settings/SettingsView.tsx:82
 msgid "Edit Spoilers"
 msgstr "Editar Spoilers"
 
-#: src/components/settings/SettingsView.tsx:84
-#: src/components/settings/SettingsView.tsx:151
+#: src/components/settings/SettingsView.tsx:86
+#: src/components/settings/SettingsView.tsx:163
 msgid "Diagnostics"
 msgstr "Diagnósticos"
 
-#: src/components/settings/SettingsView.tsx:88
-#: src/components/settings/SettingsView.tsx:153
-#: src/components/settings/SettingsView.tsx:157
+#: src/components/settings/SettingsView.tsx:90
+#: src/components/settings/SettingsView.tsx:165
+#: src/components/settings/SettingsView.tsx:169
 msgid "About Arkham Cards"
 msgstr "Acerca de Arkham Cards"
 
@@ -598,11 +598,11 @@ msgstr "Acerca de Arkham Cards"
 #: src/components/core/TextEditDialog.tsx:225
 #: src/components/deck/DeckDetailView/index.tsx:238
 #: src/components/nav/helper.ts:35
-#: src/components/settings/SettingsView.tsx:63
+#: src/components/settings/SettingsView.tsx:65
 msgid "Done"
 msgstr "Hecho"
 
-#: src/components/settings/SettingsView.tsx:105
+#: src/components/settings/SettingsView.tsx:107
 msgid "Updating cards"
 msgstr "Actualizando cartas"
 
@@ -610,28 +610,28 @@ msgstr "Actualizando cartas"
 msgid "Card Language"
 msgstr "Idioma de Cartas"
 
-#: src/components/settings/SettingsView.tsx:108
+#: src/components/settings/SettingsView.tsx:110
 msgid "Error: Check for Cards Again"
 msgstr "Error: Buscar cartas nuevamente"
 
-#: src/components/settings/SettingsView.tsx:109
+#: src/components/settings/SettingsView.tsx:111
 msgid "Check for New Cards on ArkhamDB"
 msgstr "Buscar nuevas cartas en ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:121
+#: src/components/settings/SettingsView.tsx:127
 msgid "Account"
 msgstr "Cuenta"
 
-#: src/components/settings/SettingsView.tsx:135
+#: src/components/settings/SettingsView.tsx:141
 msgid "Card Data"
 msgstr "Datos de cartas"
 
-#: src/components/settings/SettingsView.tsx:127
+#: src/components/settings/SettingsView.tsx:133
 msgid "Card Collection"
 msgstr "Colección de cartas"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:272
-#: src/components/settings/SettingsView.tsx:132
+#: src/components/settings/SettingsView.tsx:138
 msgid "Spoiler Settings"
 msgstr "Ajustes de Spoilers"
 
@@ -753,12 +753,12 @@ msgstr "Embrujada"
 msgid "Location Filters"
 msgstr "Filtros de Lugar"
 
-#: src/components/core/PackListComponent/index.tsx:47
-#: src/components/filter/PackFilterView.tsx:102
+#: src/components/core/PackListComponent/index.tsx:48
+#: src/components/filter/PackFilterView.tsx:103
 msgid "Core Set"
 msgstr "Caja Básica"
 
-#: src/components/filter/PackFilterView.tsx:34
+#: src/components/filter/PackFilterView.tsx:35
 msgid "Select Packs"
 msgstr "Selecciona pack de mitos"
 
@@ -900,7 +900,7 @@ msgstr "Seleccionar ${title}"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:95
 #: src/components/core/ChooserButton.tsx:68
-#: src/components/deck/DrawSimulatorView.tsx:184
+#: src/components/deck/DrawSimulatorView.tsx:197
 msgid "All"
 msgstr "Todos"
 
@@ -1052,7 +1052,7 @@ msgstr "Regreso a La Noche de la Fanática"
 
 #: src/components/campaign/constants.ts:45
 #: src/components/campaign/constants.ts:264
-#: src/components/core/PackListComponent/index.tsx:48
+#: src/components/core/PackListComponent/index.tsx:49
 msgid "The Dunwich Legacy"
 msgstr "El legado de Dunwich"
 
@@ -1067,13 +1067,13 @@ msgstr "El camino a Carcosa"
 
 #: src/components/campaign/constants.ts:49
 #: src/components/campaign/constants.ts:268
-#: src/components/core/PackListComponent/index.tsx:50
+#: src/components/core/PackListComponent/index.tsx:51
 msgid "The Forgotten Age"
 msgstr "La era olvidada"
 
 #: src/components/campaign/constants.ts:51
 #: src/components/campaign/constants.ts:273
-#: src/components/core/PackListComponent/index.tsx:51
+#: src/components/core/PackListComponent/index.tsx:52
 msgid "The Circle Undone"
 msgstr "El Círculo Roto"
 
@@ -1347,7 +1347,7 @@ msgid "The Night of the Zealot"
 msgstr "La Noche de la Fanática"
 
 #: src/components/campaign/constants.ts:266
-#: src/components/core/PackListComponent/index.tsx:49
+#: src/components/core/PackListComponent/index.tsx:50
 msgid "The Path to Carcosa"
 msgstr "El camino a Carcosa"
 
@@ -1532,8 +1532,8 @@ msgstr "Ahora No"
 msgid "Okay"
 msgstr "Bueno"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:198
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:206
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:195
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:203
 #: src/components/campaign/NewCampaignView/index.tsx:349
 msgid "(required)"
 msgstr "(requerido)"
@@ -1672,20 +1672,20 @@ msgstr "Eliminar"
 msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
 msgstr "¿Estás seguro de que quieres eliminar la campaña: ${campaign.name}?"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:92
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:89
 msgid "Custom Scenario Name"
 msgstr "Nombre del Escenario Personalizado"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:179
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:176
 msgid "Show Interludes"
 msgstr "Mostrar Interludios"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:184
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:181
 #: src/components/campaign/EditScenarioResultView.tsx:159
 msgid "Interlude"
 msgstr "Interludio"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:197
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:194
 #: src/components/campaign/CampaignDetailView/index.tsx:480
 #: src/components/campaign/NewCampaignView/index.tsx:686
 #: src/components/campaignguide/CampaignGuideView.tsx:65
@@ -1695,7 +1695,7 @@ msgstr "Interludio"
 msgid "Name"
 msgstr "Nombre"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:205
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:202
 #: src/components/campaign/EditScenarioResultView.tsx:166
 msgid "Resolution"
 msgstr "Resolución"
@@ -1805,17 +1805,17 @@ msgstr "Todos los Investigadores"
 msgid "Draw: "
 msgstr "Robar: "
 
-#: src/components/deck/DrawSimulatorView.tsx:190
+#: src/components/deck/DrawSimulatorView.tsx:206
 msgid "Redraw"
 msgstr "Volver a robar"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:106
-#: src/components/deck/DrawSimulatorView.tsx:196
+#: src/components/deck/DrawSimulatorView.tsx:212
 msgid "Reshuffle"
 msgstr "Volver a barajar"
 
 #: src/components/campaignguide/ScenarioView.tsx:170
-#: src/components/deck/DrawSimulatorView.tsx:202
+#: src/components/deck/DrawSimulatorView.tsx:218
 msgid "Reset"
 msgstr "Reiniciar"
 
@@ -2189,7 +2189,7 @@ msgstr ""
 msgid "Note: not all cards have translations available."
 msgstr "Nota: no todas las cartas tienen traducciones disponibles."
 
-#: src/components/settings/SettingsView.tsx:123
+#: src/components/settings/SettingsView.tsx:129
 msgid "Card Settings"
 msgstr "Configuración de cartas"
 
@@ -2588,7 +2588,7 @@ msgstr ""
 "Advertencia: esta carta contiene posibles spoilers para ‘${ "
 "card.pack_name}'."
 
-#: src/components/filter/PackFilterView.tsx:121
+#: src/components/filter/PackFilterView.tsx:122
 msgid "Pack Filters"
 msgstr "Filtros de packs"
 
@@ -2608,11 +2608,11 @@ msgstr "Clase Secundaria"
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr "${xp} de experiencia disponible, ${parsedDeck.changes.spentXp} gastada"
 
-#: src/components/settings/SettingsView.tsx:141
+#: src/components/settings/SettingsView.tsx:147
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/components/settings/SettingsView.tsx:143
+#: src/components/settings/SettingsView.tsx:149
 msgid "Swipe between card results"
 msgstr "Desliza el dedo para cambiar de carta"
 
@@ -2658,7 +2658,7 @@ msgstr ""
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#: src/components/core/PackListComponent/index.tsx:56
+#: src/components/core/PackListComponent/index.tsx:57
 #: src/components/weakness/WeaknessDrawComponent.tsx:330
 msgid "Standalone"
 msgstr "Escenarios independientes"
@@ -3255,7 +3255,7 @@ msgstr "Estado del investigador al final del escenario:"
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Continua en <b>${ nextScenarioName }</b>."
 
-#: src/components/settings/SpoilersView.tsx:36
+#: src/components/settings/SpoilersView.tsx:37
 msgid ""
 "Mark the scenarios you've played through to make the results start showing "
 "up in search results."
@@ -3263,7 +3263,10 @@ msgstr ""
 "Marca los escenarios que ya hayas jugado para hacer que los resultados "
 "aparezcan en la lista de resultados."
 
-#: src/components/settings/SpoilersView.tsx:54
+#: src/components/core/PackListComponent/index.tsx:121
+#: src/components/filter/PackFilterView.tsx:90
+#: src/components/settings/CollectionEditView.tsx:52
+#: src/components/settings/SpoilersView.tsx:55
 msgid "Loading"
 msgstr "Cargando"
 
@@ -3373,7 +3376,7 @@ msgstr ""
 "\n"
 "Toda la información ingresada se perderá."
 
-#: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:36
+#: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:50
 #, javascript-format
 msgid "Set the ${ encounterSetString } encounter set aside, out of play."
 msgid_plural "Set the ${ encounterSetString } encounter sets aside, out of play."
@@ -3384,7 +3387,7 @@ msgstr[1] ""
 "Coloca los conjuntos de encuentro ${ encounterSetString }  aparte, fuera de "
 "juego."
 
-#: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:41
+#: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:55
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] ""
@@ -3394,7 +3397,7 @@ msgstr[1] ""
 "Reúne todas las cartas de los siguientes conjuntos de encuentros: ${ "
 "encounterSetString }."
 
-#: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:48
+#: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:62
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
@@ -3801,25 +3804,25 @@ msgstr "Subir"
 
 #: src/components/campaign/constants.ts:52
 #: src/components/campaign/constants.ts:270
-#: src/components/core/PackListComponent/index.tsx:52
+#: src/components/core/PackListComponent/index.tsx:53
 msgid "The Dream-Eaters"
 msgstr "Los Devoradores de Sueños"
 
-#: src/components/core/PackListComponent/index.tsx:53
+#: src/components/core/PackListComponent/index.tsx:54
 msgid "The Innsmouth Conspiracy"
 msgstr "La Conspiración de Innsmouth"
 
-#: src/components/core/PackListComponent/index.tsx:54
+#: src/components/core/PackListComponent/index.tsx:55
 #: src/components/settings/DiagnosticsView.tsx:174
 msgid "Return to..."
 msgstr "Regreso a..."
 
-#: src/components/core/PackListComponent/index.tsx:55
+#: src/components/core/PackListComponent/index.tsx:56
 #: src/components/settings/DiagnosticsView.tsx:177
 msgid "Investigator Starter Decks"
 msgstr "Mazos iniciales de investigador"
 
-#: src/components/core/PackListComponent/index.tsx:57
+#: src/components/core/PackListComponent/index.tsx:58
 msgid "Miscelaneous"
 msgstr "Otros"
 
@@ -3998,7 +4001,7 @@ msgstr "Reverso"
 msgid "Original"
 msgstr "Original"
 
-#: src/components/core/PackListComponent/index.tsx:58
+#: src/components/core/PackListComponent/index.tsx:59
 msgid "Parallel"
 msgstr "Paralelos"
 
@@ -4511,6 +4514,10 @@ msgid ""
 "Campaign log data associated with them may be lost."
 msgstr ""
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:185
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:182
 msgid "Scenario or Interlude"
+msgstr ""
+
+#: src/components/settings/SettingsView.tsx:155
+msgid "Alphabetize guide encounter sets"
 msgstr ""

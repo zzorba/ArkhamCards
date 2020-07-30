@@ -13,6 +13,7 @@ import { NavigationProps } from '@components/nav/types';
 import { Pack } from '@actions/types';
 import { setInCollection, setCycleInCollection } from '@actions';
 import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
+import typography from '@styles/typography';
 
 interface ReduxProps {
   packs: Pack[];
@@ -48,7 +49,7 @@ class CollectionEditView extends React.Component<Props> {
     if (!packs.length) {
       return (
         <View>
-          <Text>Loading</Text>
+          <Text style={typography.text}>{t`Loading`}</Text>
         </View>
       );
     }
