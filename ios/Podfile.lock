@@ -291,7 +291,7 @@ PODS:
     - React-RCTText
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNCAsyncStorage (1.6.3):
+  - RNCAsyncStorage (1.11.0):
     - React
   - RNColorMatrixImageFilters (5.2.5):
     - React
@@ -511,7 +511,7 @@ SPEC CHECKSUMS:
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
   ReactNativeNavigation: 93712ba3b8d066da5db972bf4fda8ba11811d4da
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNCAsyncStorage: 3c304d1adfaea02ec732ac218801cb13897aa8c0
+  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNColorMatrixImageFilters: b63046039affa237c9e8e10a79052fbc7fb9d963
   RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
