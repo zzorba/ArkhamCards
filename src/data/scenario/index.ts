@@ -70,18 +70,18 @@ export interface PersonalizedChoices {
 export type Choices = PersonalizedChoices | UniversalChoices;
 
 
-function load(lang?: string): {
+function load(lang: string): {
   allLogEntries: CampaignLog[];
   allCampaigns: FullCampaign[];
 } {
-  switch (lang || 'en') {
+  switch (lang) {
     case 'es':
       return {
         allLogEntries: require('../../../assets/campaignLogs_es.json'),
         allCampaigns: require('../../../assets/allCampaigns_es.json'),
       };
-    case 'en':
-    default:
+      default:
+      case 'en':
       return {
         allLogEntries: require('../../../assets/campaignLogs.json'),
         allCampaigns: require('../../../assets/allCampaigns.json'),
@@ -91,7 +91,7 @@ function load(lang?: string): {
 
 export function getCampaignGuide(
   id: string,
-  lang?: string
+  lang: string
 ): CampaignGuide | undefined {
   const {
     allLogEntries,

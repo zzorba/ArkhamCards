@@ -91,123 +91,144 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
 
 const PROCEED_STEP_ID = '$proceed';
 
-const CHOOSE_INVESTIGATORS_STEP: InputStep = {
-  id: '$choose_investigators',
-  type: 'input',
-  input: {
-    type: 'scenario_investigators',
-  },
+const CHOOSE_INVESTIGATORS_STEP_ID = '$choose_investigators';
+function chooseInvestigatorsStep(): InputStep {
+  return {
+    id: CHOOSE_INVESTIGATORS_STEP_ID,
+    type: 'input',
+    input: {
+      type: 'scenario_investigators',
+    },
+  };
 };
 
-const UPGRADE_DECKS_STEP: InputStep = {
-  id: '$upgrade_decks',
-  type: 'input',
-  input: {
-    type: 'upgrade_decks',
-  },
+const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
+function upgradeDecksStep(): InputStep {
+  return {
+    id: UPGRADE_DECKS_STEP_ID,
+    type: 'input',
+    input: {
+      type: 'upgrade_decks',
+    },
+  };
 };
 
-const DRAW_WEAKNESS_STEP: InputStep = {
-  id: '$draw_weakness',
-  type: 'input',
-  input: {
-    type: 'investigator_choice',
-    source: 'scenario',
-    investigator: 'all',
-    choices: [
-      {
-        id: 'draw_weakness',
-        text: 'Draw Weakness',
-        effects: [
-          {
-            type: 'add_weakness',
-            investigator: '$input_value',
-            weakness_traits: [],
-            select_traits: true,
-          },
-        ],
-      },
-    ],
-  },
+const DRAW_WEAKNESS_STEP_ID = '$draw_weakness';
+function drawWeaknessStep(): InputStep {
+  return {
+    id: DRAW_WEAKNESS_STEP_ID,
+    type: 'input',
+    input: {
+      type: 'investigator_choice',
+      source: 'scenario',
+      investigator: 'all',
+      choices: [
+        {
+          id: 'draw_weakness',
+          text: t`Draw Weakness`,
+          effects: [
+            {
+              type: 'add_weakness',
+              investigator: '$input_value',
+              weakness_traits: [],
+              select_traits: true,
+            },
+          ],
+        },
+      ],
+    },
+  };
 };
 
 
-const RECORD_TRAUMA_STEP: InputStep = {
-  id: '$record_trauma',
-  type: 'input',
-  bullet_type: 'none',
-  text: '<b>Note:</b> Trauma from investigator defeat is handled during scenario resolution.',
-  input: {
-    type: 'investigator_choice',
-    source: 'scenario',
-    investigator: 'all',
-    choices: [
-      {
-        id: 'record_trauma',
-        text: 'Record Trauma',
-        effects: [
-          {
-            type: 'trauma',
-            investigator: '$input_value',
-            mental_or_physical: 1,
-            hidden: true,
-          },
-        ],
-      },
-    ],
-  },
+const RECORD_TRAUMA_STEP_ID = '$record_trauma';
+function recordTraumaStep(): InputStep {
+  return {
+    id: RECORD_TRAUMA_STEP_ID,
+    type: 'input',
+    bullet_type: 'none',
+    text: t`<b>Note:</b> Trauma from investigator defeat is handled during scenario resolution.`,
+    input: {
+      type: 'investigator_choice',
+      source: 'scenario',
+      investigator: 'all',
+      choices: [
+        {
+          id: 'record_trauma',
+          text: t`Record Trauma`,
+          effects: [
+            {
+              type: 'trauma',
+              investigator: '$input_value',
+              mental_or_physical: 1,
+              hidden: true,
+            },
+          ],
+        },
+      ],
+    },
+  };
+}
+
+const PLAY_SCENARIO_STEP_ID = '$play_scenario';
+function playScenarioStep(): InputStep {
+  return {
+    id: PLAY_SCENARIO_STEP_ID,
+    type: 'input',
+    input: {
+      type: 'play_scenario',
+    },
+  };
 };
 
-const PLAY_SCENARIO_STEP: InputStep = {
-  id: '$play_scenario',
-  type: 'input',
-  input: {
-    type: 'play_scenario',
-  },
+const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
+function editCampaignLogStep(): InputStep {
+  return {
+    id: EDIT_CAMPAIGN_LOG_STEP_ID,
+    type: 'input',
+    text: t`In your Campaign Log, record that:`,
+    input: {
+      type: 'text_box',
+      effects: [
+        {
+          type: 'freeform_campaign_log',
+          section: 'campaign_notes',
+        },
+      ],
+    },
+  };
 };
 
-const EDIT_CAMPAIGN_LOG_STEP: InputStep = {
-  id: '$campaign_log',
-  type: 'input',
-  text: t`In your Campaign Log, record that:`,
-  input: {
-    type: 'text_box',
-    effects: [
-      {
-        type: 'freeform_campaign_log',
-        section: 'campaign_notes',
-      },
-    ],
-  },
-};
-
-const LEAD_INVESTIGATOR_STEP: InputStep = {
-  id: '$lead_investigator',
-  type: 'input',
-  text: t`Choose lead investigator`,
-  input: {
-    type: 'investigator_choice',
-    investigator: 'any',
-    source: 'scenario',
-    choices: [
-      {
-        id: 'lead',
-        text: t`Lead Investigator`,
-        effects: [
-          {
-            type: 'scenario_data',
-            setting: 'lead_investigator',
-            investigator: '$input_value',
-          },
-          {
-            type: 'scenario_data',
-            setting: 'scenario_status',
-            status: 'started',
-          },
-        ],
-      },
-    ],
-  },
+const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
+function leadInvestigatorStep(): InputStep {
+  return {
+    id: LEAD_INVESTIGATOR_STEP_ID,
+    type: 'input',
+    text: t`Choose lead investigator`,
+    input: {
+      type: 'investigator_choice',
+      investigator: 'any',
+      source: 'scenario',
+      choices: [
+        {
+          id: 'lead',
+          text: t`Lead Investigator`,
+          effects: [
+            {
+              type: 'scenario_data',
+              setting: 'lead_investigator',
+              investigator: '$input_value',
+            },
+            {
+              type: 'scenario_data',
+              setting: 'scenario_status',
+              status: 'started',
+            },
+          ],
+        },
+      ],
+    },
+  };
 };
 
 
@@ -359,20 +380,20 @@ export function getFixedStep(
         ],
       };
     }
-    case EDIT_CAMPAIGN_LOG_STEP.id:
-      return EDIT_CAMPAIGN_LOG_STEP;
-    case DRAW_WEAKNESS_STEP.id:
-      return DRAW_WEAKNESS_STEP;
-    case PLAY_SCENARIO_STEP.id:
-      return PLAY_SCENARIO_STEP;
-    case CHOOSE_INVESTIGATORS_STEP.id:
-      return CHOOSE_INVESTIGATORS_STEP;
-    case UPGRADE_DECKS_STEP.id:
-      return UPGRADE_DECKS_STEP;
-    case LEAD_INVESTIGATOR_STEP.id:
-      return LEAD_INVESTIGATOR_STEP;
-    case RECORD_TRAUMA_STEP.id:
-      return RECORD_TRAUMA_STEP;
+    case EDIT_CAMPAIGN_LOG_STEP_ID:
+      return editCampaignLogStep();
+    case DRAW_WEAKNESS_STEP_ID:
+      return drawWeaknessStep();
+    case PLAY_SCENARIO_STEP_ID:
+      return playScenarioStep();
+    case CHOOSE_INVESTIGATORS_STEP_ID:
+      return chooseInvestigatorsStep();
+    case UPGRADE_DECKS_STEP_ID:
+      return upgradeDecksStep();
+    case LEAD_INVESTIGATOR_STEP_ID:
+      return leadInvestigatorStep();
+    case RECORD_TRAUMA_STEP_ID:
+      return recordTraumaStep();
     default:
       return resolutionStep(id, scenarioGuide.resolutions());
   }
@@ -384,8 +405,8 @@ export function scenarioStepIds(scenario: Scenario) {
       ...scenario.setup,
       PROCEED_STEP_ID,
     ] : [
-      CHOOSE_INVESTIGATORS_STEP.id,
-      LEAD_INVESTIGATOR_STEP.id,
+      CHOOSE_INVESTIGATORS_STEP_ID,
+      LEAD_INVESTIGATOR_STEP_ID,
       ...scenario.setup,
     ];
 }

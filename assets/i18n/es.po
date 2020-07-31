@@ -10,7 +10,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"x-generator: Poedit 2.3.1\n"
+"x-generator: Poedit 2.4\n"
 
 #: src/data/Card.ts:427
 msgid "Guardian / Rogue"
@@ -3230,27 +3230,27 @@ msgstr "${ this.name } <i>(${ this.subname })</i>"
 msgid "Campaign Setup"
 msgstr "Preparación de la Campaña"
 
-#: src/data/scenario/fixedSteps.ts:187
+#: src/data/scenario/fixedSteps.ts:207
 msgid "Choose lead investigator"
 msgstr "Elegir Investigador jefe"
 
-#: src/data/scenario/fixedSteps.ts:195
+#: src/data/scenario/fixedSteps.ts:215
 msgid "Lead Investigator"
 msgstr "Investigador Jefe"
 
-#: src/data/scenario/fixedSteps.ts:243
+#: src/data/scenario/fixedSteps.ts:264
 msgid "Alive"
 msgstr "Vivo"
 
-#: src/data/scenario/fixedSteps.ts:244
+#: src/data/scenario/fixedSteps.ts:265
 msgid "Resigned"
 msgstr "Desistido"
 
-#: src/data/scenario/fixedSteps.ts:311
+#: src/data/scenario/fixedSteps.ts:332
 msgid "Investigator status at end of scenario:"
 msgstr "Estado del investigador al final del escenario:"
 
-#: src/data/scenario/fixedSteps.ts:352
+#: src/data/scenario/fixedSteps.ts:373
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr "Continua en <b>${ nextScenarioName }</b>."
@@ -3478,7 +3478,7 @@ msgid ""
 "logEntry.text }</i>"
 msgstr ""
 "En el Registro de Campaña, tacha <i>${ logEntry.text }</i> en la sección "
-"\"${ logEntry.section }\"."
+"\"${ logEntry.section }\""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:64
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
@@ -3778,7 +3778,7 @@ msgstr ""
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/data/scenario/fixedSteps.ts:172
+#: src/data/scenario/fixedSteps.ts:189
 msgid "In your Campaign Log, record that:"
 msgstr "En el Registro de Campaña, anota que:"
 
@@ -4182,15 +4182,15 @@ msgstr ""
 "Campaña B\n"
 "Campaña de 4 partes"
 
-#: src/data/scenario/fixedSteps.ts:245
+#: src/data/scenario/fixedSteps.ts:266
 msgid "Defeated: physical trauma"
 msgstr "Derrotado: trauma físico"
 
-#: src/data/scenario/fixedSteps.ts:246
+#: src/data/scenario/fixedSteps.ts:267
 msgid "Defeated: mental trauma"
 msgstr "Derrotado: trauma mental"
 
-#: src/data/scenario/fixedSteps.ts:247
+#: src/data/scenario/fixedSteps.ts:268
 msgid "Defeated: no trauma"
 msgstr "Derrotado: sin traumas"
 
@@ -4292,27 +4292,6 @@ msgstr ""
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:177
 msgid "Side"
 msgstr "Secundaria"
-
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:183
-msgid ""
-"A side-story is a scenario that may be played between any two scenarios of "
-"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
-"each investigator in the campaign a certain amount of experience. "
-"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
-"stay with the investigators for the remainder of the campaign. Each "
-"sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted "
-"automatically at the end of the scenario"
-msgstr ""
-"Una historia secundaria es un escenario que puede jugarse entre dos "
-"escenarios cualesquiera de una campaña de <i>Arkham Horror: El juego de "
-"cartas<i>. Jugar una historia secundaria le cuesta una cantidad de "
-"experiencia a cada investigador de la campaña. Los investigadores conservan "
-"durante el resto de la campaña las Debilidades, traumas, experiencia y "
-"recompensas obtenidas por jugar una historia secundaria. Cada historia "
-"secundaria solo puede jugarse una vez por campaña.\n"
-"La experiencia requerida para jugar estos escenarios será restada "
-"automáticamente al final del escenario."
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:217
 msgid "Challenge"
@@ -4521,3 +4500,38 @@ msgstr ""
 #: src/components/settings/SettingsView.tsx:155
 msgid "Alphabetize guide encounter sets"
 msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:128
+msgid "Draw Weakness"
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:150
+msgid ""
+"<b>Note:</b> Trauma from investigator defeat is handled during scenario "
+"resolution."
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:158
+msgid "Record Trauma"
+msgstr ""
+
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:183
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
+"each investigator in the campaign a certain amount of experience. "
+"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
+"stay with the investigators for the remainder of the campaign. Each "
+"sidestory may only be played once per campaign.\n"
+"The experience required to play these scenarios will be deducted "
+"automatically at the end of the scenario."
+msgstr ""
+"Una historia secundaria es un escenario que puede jugarse entre dos "
+"escenarios cualesquiera de una campaña de <i>Arkham Horror: El juego de "
+"cartas<i>. Jugar una historia secundaria le cuesta una cantidad de "
+"experiencia a cada investigador de la campaña. Los investigadores conservan "
+"durante el resto de la campaña las Debilidades, traumas, experiencia y "
+"recompensas obtenidas por jugar una historia secundaria. Cada historia "
+"secundaria solo puede jugarse una vez por campaña.\n"
+"La experiencia requerida para jugar estos escenarios será restada "
+"automáticamente al final del escenario."

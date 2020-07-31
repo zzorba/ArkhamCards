@@ -3228,27 +3228,27 @@ msgstr ""
 msgid "Campaign Setup"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:187
+#: src/data/scenario/fixedSteps.ts:207
 msgid "Choose lead investigator"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:195
+#: src/data/scenario/fixedSteps.ts:215
 msgid "Lead Investigator"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:243
+#: src/data/scenario/fixedSteps.ts:264
 msgid "Alive"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:244
+#: src/data/scenario/fixedSteps.ts:265
 msgid "Resigned"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:311
+#: src/data/scenario/fixedSteps.ts:332
 msgid "Investigator status at end of scenario:"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:352
+#: src/data/scenario/fixedSteps.ts:373
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
 msgstr ""
@@ -3726,7 +3726,7 @@ msgstr ""
 msgid "Undo"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:172
+#: src/data/scenario/fixedSteps.ts:189
 msgid "In your Campaign Log, record that:"
 msgstr ""
 
@@ -4115,15 +4115,15 @@ msgstr ""
 msgid "Record trauma"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:245
+#: src/data/scenario/fixedSteps.ts:266
 msgid "Defeated: physical trauma"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:246
+#: src/data/scenario/fixedSteps.ts:267
 msgid "Defeated: mental trauma"
 msgstr ""
 
-#: src/data/scenario/fixedSteps.ts:247
+#: src/data/scenario/fixedSteps.ts:268
 msgid "Defeated: no trauma"
 msgstr ""
 
@@ -4188,18 +4188,6 @@ msgstr ""
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:177
 msgid "Side"
-msgstr ""
-
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:183
-msgid ""
-"A side-story is a scenario that may be played between any two scenarios of "
-"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
-"each investigator in the campaign a certain amount of experience. "
-"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
-"stay with the investigators for the remainder of the campaign. Each "
-"sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted "
-"automatically at the end of the scenario"
 msgstr ""
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:217
@@ -4401,4 +4389,30 @@ msgstr ""
 
 #: src/components/settings/SettingsView.tsx:155
 msgid "Alphabetize guide encounter sets"
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:128
+msgid "Draw Weakness"
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:150
+msgid ""
+"<b>Note:</b> Trauma from investigator defeat is handled during scenario "
+"resolution."
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:158
+msgid "Record Trauma"
+msgstr ""
+
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:183
+msgid ""
+"A side-story is a scenario that may be played between any two scenarios of "
+"an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
+"each investigator in the campaign a certain amount of experience. "
+"Weaknesses, trauma, experience, and rewards granted by playing a side-story "
+"stay with the investigators for the remainder of the campaign. Each "
+"sidestory may only be played once per campaign.\n"
+"The experience required to play these scenarios will be deducted "
+"automatically at the end of the scenario."
 msgstr ""

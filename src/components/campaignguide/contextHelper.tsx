@@ -46,7 +46,7 @@ export function campaignGuideReduxData(
   if (!campaign) {
     return undefined;
   }
-  const campaignGuide = getCampaignGuide(campaign.cycleCode, state.cards.lang);
+  const campaignGuide = getCampaignGuide(campaign.cycleCode, state.cards.lang || 'en');
   if (!campaignGuide) {
     return undefined;
   }
