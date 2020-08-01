@@ -38,6 +38,16 @@ export default class AboutView extends React.Component {
           project would not have been possible.
           { '\n\n' }
         </Text>
+        <Text style={typography.text}>
+          <Text style={typography.bold}>Translation Support:</Text>
+          • Spanish: Midraed, Alvaro, and Casalderrey
+          • French: Fabrice2
+        </Text>
+        <Text style={typography.text}>
+          <Text style={typography.bold}>Additional Support:</Text>
+          • Digital chaos bag + odds calculator: Joshua Payne (@suxur)
+          • Tooling and build support: Akaan
+        </Text>
         <Text style={typography.small}>
           <Text style={typography.bold}>Icon Attribution:</Text>
           { '\n' }
@@ -56,6 +66,7 @@ export default class AboutView extends React.Component {
             • <Text style={styles.underline}>Octopus Vectors by Vecteezy</Text>
           </Text>
         </TouchableOpacity>
+        
         <View style={styles.footer} />
       </ScrollView>
     );

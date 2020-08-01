@@ -76,7 +76,7 @@ class CardImageView extends React.Component<Props, State> {
             rightButtons: [{
               id: 'flip',
               icon: iconsMap.flip_card,
-              color: COLORS.navButton,
+              color: '#FFFFFF',
               testID: t`Flip Card`,
             }],
           },

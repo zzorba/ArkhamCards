@@ -37,6 +37,20 @@ export default class PlayerCardImage extends React.Component<Props> {
             id: card.code,
           },
           options: {
+            topBar: {
+              backButton: {
+                color: '#FFFFFF',
+              },
+              background: {
+                color: COLORS.faction[
+                  card.faction_code || 'neutral'
+                ].darkBackground,
+              },
+              title: {
+                text: card.name,
+                color: '#FFFFFF',
+              },
+            },
             bottomTabs: {
               visible: false,
               drawBehind: true,
