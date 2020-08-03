@@ -55,8 +55,8 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
   const step: InputStep = {
     id: CHOOSE_RESOLUTION_STEP_ID,
     type: 'input',
-    title: 'Resolutions',
-    text: 'Select resolution',
+    title: t`Resolutions`,
+    text: t`Select resolution`,
     bullet_type: 'none',
     input: {
       type: 'choose_one',

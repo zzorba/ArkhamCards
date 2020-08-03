@@ -196,7 +196,7 @@ msgstr ""
 msgid "Second Core Set"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:130
+#: src/components/campaign/SelectCampaignDialog/index.tsx:131
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:256
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:593
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:277
@@ -272,9 +272,10 @@ msgstr ""
 #: src/components/campaignguide/ScenarioView.tsx:155
 #: src/components/campaignguide/nav.ts:39
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:120
-#: src/components/card/CardDetailSwipeView.tsx:60
-#: src/components/card/CardDetailSwipeView.tsx:106
-#: src/components/card/CardDetailSwipeView.tsx:177
+#: src/components/card/CardDetailSwipeView.tsx:61
+#: src/components/card/CardDetailSwipeView.tsx:113
+#: src/components/card/CardDetailSwipeView.tsx:184
+#: src/components/card/CardDetailView/PlayerCardImage.tsx:43
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:171
 #: src/components/card/CardDetailView/index.tsx:72
 #: src/components/card/CardDetailView/index.tsx:151
@@ -597,7 +598,7 @@ msgstr ""
 msgid "Updating cards"
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:60
+#: src/components/settings/LanguagePicker.tsx:59
 msgid "Card Language"
 msgstr ""
 
@@ -681,14 +682,14 @@ msgstr ""
 msgid "Prey"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:323
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:324
 #: src/components/filter/CardEnemyFilterView.tsx:155
 #: src/components/filter/CardFilterView/index.tsx:216
 #: src/components/filter/CardFilterView/index.tsx:484
 msgid "Fight"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:323
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:324
 #: src/components/filter/CardEnemyFilterView.tsx:167
 #: src/components/filter/CardFilterView/index.tsx:206
 msgid "Health"
@@ -700,20 +701,20 @@ msgstr ""
 msgid "Per Investigator"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:325
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:326
 #: src/components/filter/CardEnemyFilterView.tsx:189
 #: src/components/filter/CardFilterView/index.tsx:219
 #: src/components/filter/CardFilterView/index.tsx:522
 msgid "Evade"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:327
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:328
 #: src/components/filter/CardEnemyFilterView.tsx:201
 #: src/components/filter/CardFilterView/index.tsx:210
 msgid "Damage"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:327
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:328
 #: src/components/filter/CardEnemyFilterView.tsx:213
 #: src/components/filter/CardFilterView/index.tsx:213
 msgid "Horror"
@@ -1429,19 +1430,19 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:96
+#: src/components/campaign/SelectCampaignDialog/index.tsx:97
 msgid "Custom"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:118
+#: src/components/campaign/SelectCampaignDialog/index.tsx:119
 msgid "My Campaigns"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:125
+#: src/components/campaign/SelectCampaignDialog/index.tsx:126
 msgid "Other Campaigns"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:50
+#: src/components/campaign/SelectCampaignDialog/index.tsx:51
 msgid "Select Campaign"
 msgstr ""
 
@@ -2065,44 +2066,44 @@ msgstr ""
 msgid "Alternate Cards"
 msgstr ""
 
-#: src/components/card/CardDetailSwipeView.tsx:151
+#: src/components/card/CardDetailSwipeView.tsx:158
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:141
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:595
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:596
 #: src/components/card/CardDetailView/index.tsx:33
 #: src/components/card/CardDetailView/index.tsx:126
 msgid "FAQ"
 msgstr ""
 
-#: src/components/card/CardDetailSwipeView.tsx:174
+#: src/components/card/CardDetailSwipeView.tsx:181
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:168
 #: src/components/card/CardDetailView/index.tsx:148
 msgid "Allowed Cards"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:247
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:248
 msgid "Test Icons: "
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:269
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:270
 #, javascript-format
 msgid "Slot: ${ card.slot }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:522
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:741
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:523
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:742
 msgid "Show back"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:707
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:708
 msgid "Victory: ${ card.victory }."
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:712
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:713
 #, javascript-format
 msgid "Vengeance: ${ card.vengeance }."
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:741
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:742
 msgid "Show front"
 msgstr ""
 
@@ -2161,7 +2162,7 @@ msgid ""
 "cannot pick and choose which restrictions to use)."
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:61
+#: src/components/settings/LanguagePicker.tsx:60
 msgid "Note: not all cards have translations available."
 msgstr ""
 
@@ -2222,11 +2223,11 @@ msgstr ""
 msgid "Bound Cards"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:292
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:293
 msgid "Level: ${ card.xp }."
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:583
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:584
 msgid "Taboo"
 msgstr ""
 
@@ -2387,7 +2388,7 @@ msgstr ""
 msgid "Show Encounter Cards"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:624
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:625
 #, javascript-format
 msgid "${ card.quantity } copy."
 msgid_plural "${ card.quantity } copies."
@@ -2429,17 +2430,17 @@ msgstr ""
 msgid "Flip Card"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:299
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:300
 #, javascript-format
 msgid "Doom: ${ doom }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:304
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:305
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:312
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:313
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr ""
 
@@ -3571,7 +3572,7 @@ msgstr ""
 msgid "Delete Campaign"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:97
+#: src/components/campaign/SelectCampaignDialog/index.tsx:98
 msgid "Guide not yet available"
 msgstr ""
 
@@ -3704,6 +3705,7 @@ msgid "Draw random basic weakness"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:131
+#: src/data/scenario/fixedSteps.ts:58
 msgid "Resolutions"
 msgstr ""
 
@@ -3955,19 +3957,19 @@ msgstr ""
 msgid "Custom scenario"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:77
+#: src/components/campaign/SelectCampaignDialog/index.tsx:78
 msgid ""
 "Campaign A and Campaign B\n"
 "Eight-part campaign"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:79
+#: src/components/campaign/SelectCampaignDialog/index.tsx:80
 msgid ""
 "Campaign A\n"
 "Four-part campaign"
 msgstr ""
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:81
+#: src/components/campaign/SelectCampaignDialog/index.tsx:82
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
@@ -4299,4 +4301,8 @@ msgstr ""
 
 #: src/data/scenario/fixedSteps.ts:158
 msgid "Record Trauma"
+msgstr ""
+
+#: src/data/scenario/fixedSteps.ts:59
+msgid "Select resolution"
 msgstr ""
