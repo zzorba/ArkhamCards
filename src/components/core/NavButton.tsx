@@ -56,10 +56,10 @@ export default function NavButton({ disabled, text, fontScale, onPress, color, i
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flex: 1,
     paddingLeft: s,
     paddingTop: xs,
     paddingBottom: xs,
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
   },
   text: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },

@@ -40,12 +40,16 @@ export default class AboutView extends React.Component {
         </Text>
         <Text style={typography.text}>
           <Text style={typography.bold}>Translation Support:</Text>
+          { '\n' }
           • Spanish: Midraed, Alvaro, and Casalderrey
+          { '\n' }
           • French: Fabrice2
         </Text>
         <Text style={typography.text}>
           <Text style={typography.bold}>Additional Support:</Text>
+          { '\n' }
           • Digital chaos bag + odds calculator: Joshua Payne (@suxur)
+          { '\n' }
           • Tooling and build support: Akaan
         </Text>
         <Text style={typography.small}>

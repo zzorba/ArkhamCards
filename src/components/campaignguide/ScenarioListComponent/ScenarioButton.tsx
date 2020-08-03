@@ -116,26 +116,26 @@ export default class ScenarioButton extends React.Component<Props> {
     switch (scenario.type) {
       case 'locked':
         return (
-          <Text style={[typography.gameFont, styles.locked]}>
+          <Text style={[typography.gameFont, styles.locked]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'completed':
         return (
-          <Text style={typography.gameFont}>
+          <Text style={typography.gameFont} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'started':
       case 'playable':
         return (
-          <Text style={[typography.gameFont, styles.playable]}>
+          <Text style={[typography.gameFont, styles.playable]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'skipped':
         return (
-          <Text style={[typography.gameFont, styles.skipped]}>
+          <Text style={[typography.gameFont, styles.skipped]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
@@ -154,7 +154,9 @@ export default class ScenarioButton extends React.Component<Props> {
           <View style={[space.marginLeftS, space.marginRightM]}>
             { this.renderIcon() }
           </View>
-          { this.renderContent() }
+          <View style={styles.flex}>
+            { this.renderContent() }
+          </View>
         </View>
       </NavButton>
     );
@@ -162,6 +164,9 @@ export default class ScenarioButton extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   wrapper: {
     paddingTop: s,
     paddingBottom: s,
