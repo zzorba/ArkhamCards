@@ -35,6 +35,7 @@ const darkTheme = {
   },
 
 };
+
 function MyProvider({ store: { redux, persistor }, children}) {
   return (
     <AppearanceProvider>

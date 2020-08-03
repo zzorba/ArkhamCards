@@ -27,9 +27,9 @@
     <color name="factionMythosDarkBackgroundColor">#000000</color>
     <color name="factionMythosLightBackgroundColor">#000000</color>
     <color name="campaignScenarioGreen">#2E5344</color>
-    <color name="campaignBlueColor">#00408033</color>
-    <color name="campaignTealColor">#00666633</color>
-    <color name="campaignPurpleColor">#cc990033</color>
+    <color name="campaignBlueColor">#33004080</color>
+    <color name="campaignTealColor">#33006666</color>
+    <color name="campaignPurpleColor">#33cc9900</color>
     <color name="campaignGreenColor">#33660033</color>
     <color name="toggleButtonColor">#f6f6f6</color>
     <color name="selectedToggleButtonColor">#dddddd</color>

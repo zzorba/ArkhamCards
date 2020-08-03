@@ -229,6 +229,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTestIcons(card: Card) {
+    const { fontScale } = this.props;
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -251,7 +252,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             style={styles.testIcon}
             key={idx}
             name={skill.substring(6)}
-            size={SKILL_ICON_SIZE}
+            size={SKILL_ICON_SIZE * fontScale}
             color={COLORS.darkText}
           />))
         }

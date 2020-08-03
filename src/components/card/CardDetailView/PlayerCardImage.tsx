@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Navigation } from 'react-native-navigation';
+import { t } from 'ttag';
 
 import { CardImageProps } from '@components/card/CardImageView';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -39,6 +40,7 @@ export default class PlayerCardImage extends React.Component<Props> {
           options: {
             topBar: {
               backButton: {
+                title: t`Back`,
                 color: '#FFFFFF',
               },
               background: {

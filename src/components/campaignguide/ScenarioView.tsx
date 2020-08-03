@@ -186,7 +186,7 @@ class ScenarioView extends React.Component<Props> {
         keyboardVerticalOffset={100}
       >
         <KeepAwake />
-        <ScrollView>
+        <ScrollView contentContainerStyle={styles.container}>
           <StepsComponent
             componentId={componentId}
             fontScale={fontScale}
@@ -208,6 +208,9 @@ export default withScenarioGuideContext<InputProps>(
 const styles = StyleSheet.create({
   footer: {
     marginTop: 64,
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
   keyboardView: {
     flex: 1,

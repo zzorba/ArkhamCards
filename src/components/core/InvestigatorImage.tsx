@@ -9,6 +9,7 @@ import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 
 import { showCard } from '@components/nav/helper';
+import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
 import { createFactionIcons } from '@app_constants';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
@@ -25,6 +26,7 @@ interface Props {
   small?: boolean;
   killedOrInsane?: boolean;
   yithian?: boolean;
+  fontScale: number;
 }
 
 export default class InvestigatorImage extends React.Component<Props> {
@@ -38,15 +40,19 @@ export default class InvestigatorImage extends React.Component<Props> {
     }
   };
 
+  small() {
+    const { small, fontScale } = this.props;
+    return small || toggleButtonMode(fontScale);
+  }
+
   imageStyle() {
     const {
-      small,
       yithian,
     } = this.props;
     if (yithian) {
-      return small ? styles.smallYithianImage : styles.bigImage;
+      return this.small() ? styles.smallYithianImage : styles.bigImage;
     }
-    return small ? styles.image : styles.bigImage;
+    return this.small() ? styles.image : styles.bigImage;
   }
 
   renderInvestigatorImage() {
@@ -82,10 +88,10 @@ export default class InvestigatorImage extends React.Component<Props> {
   renderImage() {
     const {
       card,
-      small,
       killedOrInsane,
       border,
     } = this.props;
+    const small = this.small();
     const size = (small ? 65 : 110) * scaleFactor;
     const faction_icon = FACTION_ICONS[card.factionCode()];
     return (

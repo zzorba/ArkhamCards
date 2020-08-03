@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 import Swiper from 'react-native-swiper';
 
+import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';
 import { rightButtonsForCard } from './CardDetailView';
 import { CardFaqProps } from './CardFaqView';
@@ -81,6 +82,12 @@ class CardDetailSwipeView extends React.Component<Props, State> {
 
   componentDidMount() {
     this._syncNavigationButtons();
+  }
+
+  componentDidAppear() {
+    const { componentId } = this.props;
+    console.log('merge options');
+    Navigation.mergeOptions(componentId, CardDetailSwipeView.options(this.props));
   }
 
   currentCard() {
@@ -242,7 +249,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       card.deck_limit || 0
     );
     return (
-      <View>
+      <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <CardQuantityComponent
           key={card.code}
           fontScale={fontScale}

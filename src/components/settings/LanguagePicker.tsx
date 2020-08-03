@@ -4,7 +4,6 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import { SettingsPicker } from '@lib/react-native-settings-components';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { fetchCards } from '@components/card/actions';
 import Database from '@data/Database';
