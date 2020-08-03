@@ -213,7 +213,7 @@
           },
           {
             "id": "closed_tear",
-            "text": "the investigators closed the tear in reality."
+            "text": "los investigadores cerraron el desgarro en la realidad."
           },
           {
             "id": "destroyed_necronomicon",
@@ -321,7 +321,7 @@
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
+            "text": "Yog-Sothoth hizo pedazos la barrera entre los mundos y se hizo uno con la realidad."
           },
           {
             "id": "yog_sothoth_escaped",
@@ -329,7 +329,7 @@
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth has fled to another dimension."
+            "text": "Yog-Sothoth ha huido a otra dimensión."
           },
           {
             "id": "zebulon_whateley_survived",
@@ -812,7 +812,7 @@
           },
           {
             "id": "closed_tear",
-            "text": "the investigators closed the tear in reality."
+            "text": "los investigadores cerraron el desgarro en la realidad."
           },
           {
             "id": "destroyed_necronomicon",
@@ -920,7 +920,7 @@
           },
           {
             "id": "yog_sothoth_became_one_with_reality",
-            "text": "Yog-Sothoth tore apart the barriers between worlds, and became one with all reality."
+            "text": "Yog-Sothoth hizo pedazos la barrera entre los mundos y se hizo uno con la realidad."
           },
           {
             "id": "yog_sothoth_escaped",
@@ -928,7 +928,7 @@
           },
           {
             "id": "yog_sothoth_fled",
-            "text": "Yog-Sothoth has fled to another dimension."
+            "text": "Yog-Sothoth ha huido a otra dimensión."
           },
           {
             "id": "zebulon_whateley_survived",
@@ -1870,11 +1870,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "oculto"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "oculto"
           },
           {
             "id": "doy_cross_off_rope",
@@ -2062,19 +2062,19 @@
         "entries": [
           {
             "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
+            "text": "#name# fue arrebatado por espectros."
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
+            "text": "#name# desapareció en la niebla."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
+            "text": "#name# fue absorbido al reino espectral."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
+            "text": "el vigilante se llevó a #name#."
           }
         ]
       },
@@ -2083,15 +2083,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "Gavriella está viva."
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella ha muerto."
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "los investigadores están tras la pista de Gavriella."
           }
         ]
       },
@@ -2100,15 +2100,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "Jerome está vivo."
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome ha muerto."
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "los investigadores están tras la pista de Jerome."
           }
         ]
       },
@@ -2117,15 +2117,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "Valentino está vivo."
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino ha muerto."
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "los investigadores están tras la pista de Valentino."
           }
         ]
       },
@@ -2134,15 +2134,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "Penny está viva."
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny ha muerto."
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "los investigadores están tras la pista de Penny."
           }
         ]
       },
@@ -2151,167 +2151,167 @@
         "entries": [
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "los investigadores han aceptado su destino."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "Anette Mason está poseída por el mal."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette enseñó a los investigadores los hechizos de antaño."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "los investigadores han arrestado a Anette."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "los investigadores han arrestado a Sanford."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "los investigadores le han pedido ayuda a Anette."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "los investigadores le han pedido ayuda a Sanford."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "los investigadores han tomado el control de la Logia del Crepúsculo de Plata."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth devoró el universo."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth duerme... por ahora."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "Carl Sanford posee los secretos del universo."
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "los investigadores han continuado solos."
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "los investigadores están engañando a la Logia."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "los investigadores descubrieron cómo abrir la caja enigmática."
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "la perdición está cada vez más cerca."
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "los investigadores son enemigos de la Logia."
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "el guardián de la trampa apareció y fue derrotado."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "el guardián de la trampa ha aparecido."
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "#X# herejes fueron liberadas en Arkham."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "los investigadores ocultaron su conocimiento del aquelarre."
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "los investigadores han sido admitidos en el Círculo Interno."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "los investigadores escaparon del reino espectral."
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "Josef desapareció en la niebla."
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "Josef está sano y salvo."
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
+            "text": "los investigadores mantuvieron ocultos sus recuerdos."
           },
           {
             "id": "lead_investigator_joins_pipers",
-            "text": "#name# joins the pipers of Azathoth."
+            "text": "#name# se ha unido a los flautistas de Azathoth."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "los investigadores no descubrieron nada sobre los planes de la Logia."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "los investigadores son miembros de la Logia."
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "nadie volvió a ver nunca a los investigadores ni tuvo noticias suyas."
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "el camino se extiende ante los investigadores: #X#"
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "se dejaron #X# pruebas."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "los investigadores han rechazado su destino."
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "los investigadores rescataron a Josef."
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "los investigadores se han puesto de parte del aquelarre."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "los investigadores se han puesto de parte de la Logia."
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "los investigadores firmaron el Libro Negro de Azathoth."
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "los investigadores sobrevivieron al abrazo del vigilante."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "los investigadores hablaron a la Logia sobre el aquelarre."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "ha comenzado el verdadero trabajo de la Logia del Crepúsculo de Plata."
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "los investigadores rompieron el hechizo de las brujas."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "las brujas lanzaron su hechizo."
           },
           {
             "id": "blob_contained",
@@ -2469,35 +2469,35 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "Muñeca de hoja de maíz"
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "Diario de Gilman"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "Fórmulas de Keziah"
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Flauta hipnotizadora"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Componentes del ritual"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Trozo de sombra desgarrado"
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "Voluta de niebla espectral"
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "Crucifijo gastado"
           }
         ]
       }
@@ -3365,11 +3365,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "oculto"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "oculto"
           },
           {
             "id": "doy_cross_off_rope",
