@@ -1364,7 +1364,7 @@ msgstr "Ninguno"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:96
 msgid "Custom"
-msgstr "Personalizado"
+msgstr "Personalizada"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:118
 msgid "My Campaigns"
@@ -1454,7 +1454,7 @@ msgstr "Ahora No"
 #: src/components/deck/DeckDetailView/index.tsx:1251
 #: src/components/deck/DeckDetailView/index.tsx:1284
 msgid "Okay"
-msgstr "Bueno"
+msgstr "Vale"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:195
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:203
@@ -3537,7 +3537,7 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Revisa ${ logEntry.section }. <i>si ${ logEntry.text }</i>"
+msgstr "Revisa en ${ logEntry.section } <i>si ${ logEntry.text }</i>"
 
 #: src/components/campaignguide/CampaignGuideView.tsx:98
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:107
