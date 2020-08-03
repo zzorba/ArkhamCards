@@ -71,7 +71,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     // Basically 2 sequential choices.
     // 1) How many "supply" to consume
     // 2) If count != players, who doesn't get any?
-    const supplyName = upperFirst(input.id);
+    const supplyName = input.name;
     const desiredCount = campaignLog.playerCount();
     const totalProvisionCount = sum(map(limits, count => count));
     return (

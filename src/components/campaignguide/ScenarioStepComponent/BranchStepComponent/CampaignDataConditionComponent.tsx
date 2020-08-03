@@ -19,7 +19,18 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
+
+
 export default class CampaignDataConditionComponent extends React.Component<Props> {
+  difficultyStr() {
+    const { campaignLog } = this.props;
+    switch (campaignLog.campaignData.difficulty || 'standard') {
+      case 'easy': return t`Easy`;
+      case 'standard': return t`Standard`;
+      case 'hard': return t`Hard`;
+      case 'expert': return t`Expert`;
+    }
+  }
   render() {
     const { step, condition, campaignLog } = this.props;
     return (
@@ -27,7 +38,7 @@ export default class CampaignDataConditionComponent extends React.Component<Prop
         { ({ campaignGuide }: CampaignGuideContextType) => {
           switch (condition.campaign_data) {
             case 'difficulty': {
-              const difficulty = upperFirst(campaignLog.campaignData.difficulty);
+              const difficulty = this.difficultyStr();
               return (
                 <SetupStepWrapper bulletType={step.bullet_type}>
                   <CampaignGuideTextComponent

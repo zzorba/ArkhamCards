@@ -30,7 +30,7 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
       return null;
     }
     const sectionName = option.condition || 'Missing';
-    const supplyName = condition.id;
+    const supplyName = condition.name;
     const list = stringList(map(cards, card => card.name));
     return (
       <SetupStepWrapper bulletType="small">

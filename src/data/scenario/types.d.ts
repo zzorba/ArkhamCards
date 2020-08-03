@@ -459,6 +459,7 @@ export interface CheckSuppliesAllCondition {
   investigator: "all";
   section: string;
   id: string;
+  name: string;
   prompt?: string;
   options: BoolOption[];
 }
@@ -467,6 +468,7 @@ export interface CheckSuppliesAnyCondition {
   investigator: "any";
   section: string;
   id: string;
+  name: string;
   prompt?: string;
   options: BoolOption[];
 }
@@ -541,6 +543,7 @@ export interface UseSuppliesChoiceInput {
   type: "use_supplies";
   section: string;
   id: string;
+  name: string;
   investigator: "choice";
   min: number;
   max: number;
@@ -550,6 +553,7 @@ export interface UseSuppliesAllInput {
   type: "use_supplies";
   section: string;
   id: string;
+  name: string;
   investigator: "all";
   choices: BoolOption[];
 }

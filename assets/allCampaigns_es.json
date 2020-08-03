@@ -22215,6 +22215,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "gasoline",
+        "name": "Gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -22255,6 +22256,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "map",
+        "name": "Map",
         "options": [
           {
             "boolCondition": true,
@@ -22297,6 +22299,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "provisions",
+        "name": "Provisions",
         "investigator": "all",
         "choices": [
           {
@@ -22334,6 +22337,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -22400,6 +22404,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "canteen",
+        "name": "Canteen",
         "options": [
           {
             "boolCondition": true,
@@ -22748,6 +22753,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
+        "name": "Blanket",
         "options": [
           {
             "boolCondition": true,
@@ -22808,6 +22814,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "provisions",
+        "name": "Provisions",
         "investigator": "all",
         "choices": [
           {
@@ -22910,6 +22917,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -24742,6 +24750,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "gasoline",
+        "name": "Gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -25901,6 +25910,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "pocketknife",
+        "name": "Pocketknife",
         "options": [
           {
             "boolCondition": true,
@@ -26651,6 +26661,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "rope",
+        "name": "Rope",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -26719,6 +26730,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "sticky_goop",
+        "name": "Sticky Goop",
         "options": [
           {
             "boolCondition": true,
@@ -28728,6 +28740,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -30078,6 +30091,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "torches",
+        "name": "Torches",
         "options": [
           {
             "boolCondition": true,
@@ -30168,6 +30182,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "map",
+        "name": "Map",
         "options": [
           {
             "boolCondition": true,
@@ -30591,6 +30606,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "chalk",
+        "name": "Chalk",
         "options": [
           {
             "boolCondition": true,
@@ -30653,6 +30669,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "provisions",
+        "name": "Provisions",
         "investigator": "all",
         "choices": [
           {
@@ -30691,6 +30708,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -30757,6 +30775,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
+        "name": "Blanket",
         "options": [
           {
             "boolCondition": true,
@@ -54739,6 +54758,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "gasoline",
+        "name": "Gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -54779,6 +54799,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "map",
+        "name": "Map",
         "options": [
           {
             "boolCondition": true,
@@ -54821,6 +54842,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "provisions",
+        "name": "Provisions",
         "investigator": "all",
         "choices": [
           {
@@ -54858,6 +54880,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -54924,6 +54947,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "canteen",
+        "name": "Canteen",
         "options": [
           {
             "boolCondition": true,
@@ -55272,6 +55296,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
+        "name": "Blanket",
         "options": [
           {
             "boolCondition": true,
@@ -55332,6 +55357,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "provisions",
+        "name": "Provisions",
         "investigator": "all",
         "choices": [
           {
@@ -55434,6 +55460,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -56240,6 +56267,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "gasoline",
+        "name": "Gasoline",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -57534,6 +57562,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "torches",
+        "name": "Torches",
         "options": [
           {
             "boolCondition": true,
@@ -57624,6 +57653,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "map",
+        "name": "Map",
         "options": [
           {
             "boolCondition": true,
@@ -57890,6 +57920,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "pocketknife",
+        "name": "Pocketknife",
         "options": [
           {
             "boolCondition": true,
@@ -58662,6 +58693,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "rope",
+        "name": "Rope",
         "investigator": "choice",
         "min": 1,
         "max": 1,
@@ -59077,6 +59109,7 @@
         "section": "supplies",
         "investigator": "any",
         "id": "chalk",
+        "name": "Chalk",
         "options": [
           {
             "boolCondition": true,
@@ -59139,6 +59172,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "provisions",
+        "name": "Provisions",
         "investigator": "all",
         "choices": [
           {
@@ -59177,6 +59211,7 @@
         "type": "use_supplies",
         "section": "supplies",
         "id": "medicine",
+        "name": "Medicine",
         "investigator": "choice",
         "min": 0,
         "max": 4,
@@ -59243,6 +59278,7 @@
         "section": "supplies",
         "investigator": "all",
         "id": "blanket",
+        "name": "Blanket",
         "options": [
           {
             "boolCondition": true,
