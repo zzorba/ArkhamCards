@@ -17,7 +17,7 @@ const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
 const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
 
 // @ts-ignore ts2339
-TouchableOpacity.defaultProps = {...(TouchableOpacity.defaultProps || {}), delayPressIn: 0};
+TouchableOpacity.defaultProps = {...(TouchableOpacity.defaultProps || {}), delayPressIn: 50 };
 
 export default class App {
   started: boolean;
