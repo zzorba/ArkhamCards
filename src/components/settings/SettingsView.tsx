@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  Linking,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -90,6 +91,10 @@ class SettingsView extends React.Component<Props> {
     this.navButtonPressed('About', t`About Arkham Cards`);
   };
 
+  _contactPressed = () => {
+    Linking.openURL('mailto:arkhamcards@gmail.com');
+  }
+
   _doSyncCards = () => {
     const {
       lang,
@@ -167,6 +172,11 @@ class SettingsView extends React.Component<Props> {
             navigation
             onPress={this._aboutPressed}
             text={t`About Arkham Cards`}
+          />
+          <SettingsItem
+            navigation
+            onPress={this._contactPressed}
+            text={t`Contact us`}
           />
         </ScrollView>
       </SafeAreaView>

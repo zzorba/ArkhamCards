@@ -297,6 +297,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   RTNOTZ,
   RTDWL,
   RTPTC,
+  RTTFA,
   TDE,
   TDEA,
   TDEB,
