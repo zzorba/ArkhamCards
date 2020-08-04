@@ -18,7 +18,9 @@ export type Step =
   | StoryStep
   | LocationSetupStep
   | LocationConnectorsStep
-  | TableStep;
+  | TableStep
+  | CampaignLogCountStep
+  | XpCountStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -48,6 +50,7 @@ export type Effect =
   | UpgradeDecksEffect
   | FreeformCampaignLogEffect
   | GainSuppliesEffect;
+export type SpecialXp = "resupply_points" | "supply_points";
 export type InvestigatorSelector =
   | "lead_investigator"
   | "all"
@@ -195,7 +198,7 @@ export interface EarnXpEffect {
   fixed_investigator?: string;
   bonus?: number;
   input_scale?: number;
-  special_xp?: string;
+  special_xp?: SpecialXp;
 }
 export interface AddCardEffect {
   type: "add_card";
@@ -537,7 +540,7 @@ export interface SuppliesInput {
   points: number[];
   supplies: Supply[];
   section: string;
-  special_xp?: string;
+  special_xp?: SpecialXp;
 }
 export interface UseSuppliesChoiceInput {
   type: "use_supplies";
@@ -749,6 +752,24 @@ export interface TableRow {
 export interface TableCell {
   text: string;
   size: number;
+}
+export interface CampaignLogCountStep {
+  id: string;
+  type: "campaign_log_count";
+  text_count: string;
+  campaign_log_count: {
+    section: string;
+    id?: string;
+  };
+  bullet_type?: null;
+  title?: string;
+}
+export interface XpCountStep {
+  id: string;
+  type: "xp_count";
+  bullet_type?: null;
+  title?: string;
+  special_xp: SpecialXp;
 }
 export interface Scenario {
   id: string;

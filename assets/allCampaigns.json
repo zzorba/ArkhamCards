@@ -27647,6 +27647,11 @@
       "text": "Each investigator may spend 5 experience points to remove physical or mental trauma from their investigator."
     },
     {
+      "id": "show_resupply_xp",
+      "type": "xp_count",
+      "special_xp": "resupply_points"
+    },
+    {
       "id": "choose_to_heal_physical_trauma",
       "bullet_type": "none",
       "type": "input",
@@ -27695,6 +27700,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "choose_to_buy_supply_points",
+      "bullet_type": "small",
+      "text": "Each investigator may convert additional experience into supply points, at a rate of 1 supply point for every 2 experience converted. Any unspent resupply experience will be lost."
     },
     {
       "id": "buy_supply_points",
@@ -27830,11 +27840,14 @@
         "earn_act_xp",
         "resupply_point",
         "resupply_point_explanation",
+        "show_resupply_xp",
         "visit_hospital",
         "choose_to_heal_poison",
         "choose_to_heal_trauma",
         "choose_to_heal_physical_trauma",
         "choose_to_heal_mental_trauma",
+        "choose_to_buy_supply_points",
+        "show_resupply_xp",
         "buy_supply_points",
         "buy_supplies",
         "$upgrade_decks"

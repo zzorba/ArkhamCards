@@ -227,6 +227,8 @@ export default class ScenarioStep {
       case 'location_connectors':
       case 'rule_reminder':
       case 'location_setup':
+      case 'campaign_log_count':
+      case 'xp_count':
         return this.proceedToNextStep(
           this.remainingStepIds,
           scenarioState,

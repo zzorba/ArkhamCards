@@ -16,6 +16,8 @@ import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
+import CampaignLogCountComponent from './CampaignLogCountComponent';
+import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';
 import EncounterSetStepComponent from './EncounterSetStepComponent';
 import LocationConnectorsStepComponent from './LocationConnectorsStepComponent';
@@ -79,6 +81,15 @@ export default class ScenarioStepComponent extends React.Component<Props> {
         return <RuleReminderStepComponent step={step} />;
       case 'resolution':
         return <ResolutionStepComponent step={step} />;
+      case 'campaign_log_count':
+        return <CampaignLogCountComponent step={step} />;
+      case 'xp_count':
+        return (
+          <XpCountComponent 
+            step={step} 
+            campaignLog={campaignLog}
+          />
+        );
       case 'input':
         return (
           <InputStepComponent
