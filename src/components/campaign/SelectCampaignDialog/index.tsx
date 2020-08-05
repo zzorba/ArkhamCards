@@ -149,6 +149,7 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   button: {
     borderBottomWidth: StyleSheet.hairlineWidth,

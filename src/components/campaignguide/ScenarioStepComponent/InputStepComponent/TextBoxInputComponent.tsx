@@ -92,5 +92,6 @@ const styles = StyleSheet.create({
     padding: 8,
     paddingTop: 12,
     paddingBottom: 12,
+    color: COLORS.darkText,
   },
 });

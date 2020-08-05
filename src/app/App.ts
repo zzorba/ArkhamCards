@@ -84,6 +84,7 @@ export default class App {
       layout: Platform.select({
         android: {
           componentBackgroundColor: backgroundColor,
+          // backgroundColor: backgroundColor,
         },
         ios: {
           backgroundColor: COLORS.background,

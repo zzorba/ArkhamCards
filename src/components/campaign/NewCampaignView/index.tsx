@@ -676,7 +676,7 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <View ref={captureViewRef}>
+      <View ref={captureViewRef} style={styles.container}>
         <ScrollView contentContainerStyle={styles.container}>
           <CampaignSelector
             componentId={componentId}

@@ -10,6 +10,7 @@ import {
 
 import typography from '@styles/typography';
 import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 export default class AboutView extends React.Component {
   _octopusLink = () => {
@@ -18,7 +19,7 @@ export default class AboutView extends React.Component {
 
   render() {
     return (
-      <ScrollView style={space.paddingM}>
+      <ScrollView style={[space.paddingM, styles.background]}>
         <Text style={typography.text}>
           The information presented in this app about Arkham Horror: The Card
           Game, both literal and graphical, is copyrighted by Fantasy Flight
@@ -83,5 +84,8 @@ const styles = StyleSheet.create({
   },
   underline: {
     textDecorationLine: 'underline',
+  },
+  background: {
+    backgroundColor: COLORS.background,
   },
 });

@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingTop: 24,
     paddingBottom: 24,
+    backgroundColor: COLORS.background,
   },
   section: {
     padding: m,

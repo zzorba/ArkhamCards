@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    backgroundColor: COLORS.background,
   },
   campaignText: {
     marginLeft: s,
@@ -99,6 +100,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   disabled: {
-    backgroundColor: '#f8f8f8',
+    backgroundColor: COLORS.disabledOverlay,
   },
 });
