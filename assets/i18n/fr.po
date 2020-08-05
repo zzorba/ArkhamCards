@@ -208,7 +208,7 @@ msgstr "Deuxième Boite de base"
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:277
 #: src/components/deck/EditSpecialDeckCardsView.tsx:186
 #: src/components/settings/CollectionEditView.tsx:34
-#: src/components/settings/SettingsView.tsx:78
+#: src/components/settings/SettingsView.tsx:79
 msgid "Edit Collection"
 msgstr "Modifier la Collection"
 
@@ -272,7 +272,7 @@ msgstr "Contient trop de cartes limitées."
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:76
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:121
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:145
-#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:49
+#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:52
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:65
 #: src/components/campaignguide/ScenarioStepComponent/LocationSetupButton.tsx:32
 #: src/components/campaignguide/ScenarioView.tsx:155
@@ -573,18 +573,18 @@ msgstr "Déconnexion d’ArkhamDB"
 msgid "Sign in to ArkhamDB"
 msgstr "Se connecter à ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:82
+#: src/components/settings/SettingsView.tsx:83
 msgid "Edit Spoilers"
 msgstr "Modifier les spoilers"
 
-#: src/components/settings/SettingsView.tsx:86
-#: src/components/settings/SettingsView.tsx:163
+#: src/components/settings/SettingsView.tsx:87
+#: src/components/settings/SettingsView.tsx:168
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
-#: src/components/settings/SettingsView.tsx:90
-#: src/components/settings/SettingsView.tsx:165
-#: src/components/settings/SettingsView.tsx:169
+#: src/components/settings/SettingsView.tsx:91
+#: src/components/settings/SettingsView.tsx:170
+#: src/components/settings/SettingsView.tsx:174
 msgid "About Arkham Cards"
 msgstr "À propos de Arkham Cards"
 
@@ -593,17 +593,17 @@ msgstr "À propos de Arkham Cards"
 #: src/components/campaign/SealTokenDialog.tsx:124
 #: src/components/campaign/UpgradeDecksView/index.tsx:178
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:135
-#: src/components/campaignguide/ScenarioStepComponent/index.tsx:152
+#: src/components/campaignguide/ScenarioStepComponent/index.tsx:163
 #: src/components/core/CountEditDialog.tsx:120
 #: src/components/core/EditText.tsx:39
 #: src/components/core/TextEditDialog.tsx:225
 #: src/components/deck/DeckDetailView/index.tsx:238
 #: src/components/nav/helper.ts:35
-#: src/components/settings/SettingsView.tsx:65
+#: src/components/settings/SettingsView.tsx:66
 msgid "Done"
 msgstr "Terminé"
 
-#: src/components/settings/SettingsView.tsx:107
+#: src/components/settings/SettingsView.tsx:112
 msgid "Updating cards"
 msgstr "Mise à jour des cartes"
 
@@ -611,28 +611,28 @@ msgstr "Mise à jour des cartes"
 msgid "Card Language"
 msgstr "Langue des cartes"
 
-#: src/components/settings/SettingsView.tsx:110
+#: src/components/settings/SettingsView.tsx:115
 msgid "Error: Check for Cards Again"
 msgstr "Erreur: Vérifiez les cartes à nouveau"
 
-#: src/components/settings/SettingsView.tsx:111
+#: src/components/settings/SettingsView.tsx:116
 msgid "Check for New Cards on ArkhamDB"
 msgstr "Rechercher de nouvelles cartes sur ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:127
+#: src/components/settings/SettingsView.tsx:132
 msgid "Account"
 msgstr "Compte"
 
-#: src/components/settings/SettingsView.tsx:141
+#: src/components/settings/SettingsView.tsx:146
 msgid "Card Data"
 msgstr "Données des cartes"
 
-#: src/components/settings/SettingsView.tsx:133
+#: src/components/settings/SettingsView.tsx:138
 msgid "Card Collection"
 msgstr "Collection de cartes"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:272
-#: src/components/settings/SettingsView.tsx:138
+#: src/components/settings/SettingsView.tsx:143
 msgid "Spoiler Settings"
 msgstr "Paramètres du spoiler"
 
@@ -1027,18 +1027,22 @@ msgid "Experience"
 msgstr "Expérience"
 
 #: src/components/campaign/constants.ts:29
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:28
 msgid "Easy"
 msgstr "Facile"
 
 #: src/components/campaign/constants.ts:30
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:29
 msgid "Standard"
 msgstr "Standard"
 
 #: src/components/campaign/constants.ts:31
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:30
 msgid "Hard"
 msgstr "Difficile"
 
 #: src/components/campaign/constants.ts:32
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:31
 msgid "Expert"
 msgstr "Expert"
 
@@ -2191,7 +2195,7 @@ msgstr ""
 msgid "Note: not all cards have translations available."
 msgstr "Remarque: toutes les cartes ne disposent pas de traductions disponibles."
 
-#: src/components/settings/SettingsView.tsx:129
+#: src/components/settings/SettingsView.tsx:134
 msgid "Card Settings"
 msgstr "Paramètres de la carte"
 
@@ -2615,11 +2619,11 @@ msgstr "Classe secondaire"
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr "${xp} expérience disponible, ${parsedDeck.changes.spentXp} dépensé"
 
-#: src/components/settings/SettingsView.tsx:147
+#: src/components/settings/SettingsView.tsx:152
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/components/settings/SettingsView.tsx:149
+#: src/components/settings/SettingsView.tsx:154
 msgid "Swipe between card results"
 msgstr "Faites glisser entre les résultats de la carte"
 
@@ -3535,16 +3539,16 @@ msgstr ""
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:34
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:45
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:47
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:58
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:48
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:59
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
 msgstr ""
@@ -4005,11 +4009,11 @@ msgstr ""
 msgid "Scenario completed"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:46
+#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:49
 msgid "Choose Side-Scenario"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:117
+#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:122
 msgid "Add side scenario"
 msgstr ""
 
@@ -4394,7 +4398,7 @@ msgstr ""
 msgid "Scenario or Interlude"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:155
+#: src/components/settings/SettingsView.tsx:160
 msgid "Alphabetize guide encounter sets"
 msgstr ""
 
@@ -4426,4 +4430,34 @@ msgstr ""
 
 #: src/data/scenario/fixedSteps.ts:59
 msgid "Select resolution"
+msgstr ""
+
+#: src/components/settings/SettingsView.tsx:179
+msgid "Contact us"
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:24
+#, javascript-format
+msgid "${ count } resupply"
+msgid_plural "${ count } resupply"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:28
+msgid "${ count } supply point"
+msgid_plural "${ count } supply points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:47
+#, javascript-format
+msgid "${ xp } general / ${ resupplyPointsString } XP"
+msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:129
+msgid ""
+"Side scenarios cannot be added to a campaign until the previous scenario "
+"and following interludes are completed."
 msgstr ""

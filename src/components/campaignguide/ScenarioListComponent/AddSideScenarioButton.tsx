@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text, View } from 'react-native';
 import { find, findLast, findLastIndex } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -8,6 +9,8 @@ import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioV
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 interface Props {
   componentId: string;
@@ -112,12 +115,22 @@ export default class AddSideScenarioButton extends React.Component<Props> {
   }
 
   render() {
+    const disabled = !this.canAddScenario()
     return (
-      <BasicButton
-        title={t`Add side scenario`}
-        onPress={this._onPress}
-        disabled={!this.canAddScenario()}
-      />
+      <>
+        <BasicButton
+          title={t`Add side scenario`}
+          onPress={this._onPress}
+          disabled={disabled}
+        />
+        { !!disabled && (
+          <View style={[space.marginTopM, space.marginBottomL, space.marginSideM]}>
+            <Text style={typography.text}>
+              { t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.` }
+            </Text>
+          </View>
+        ) }
+      </>
     );
   }
 }
