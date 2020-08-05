@@ -23,6 +23,7 @@ import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
 import typography from '@styles/typography';
 import { m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 export interface CardFaqProps {
   id: string;
@@ -154,7 +155,7 @@ class CardFaqView extends React.Component<Props, State> {
   render() {
     return (
       <ScrollView
-        style={styles.container}
+        contentContainerStyle={styles.container}
         refreshControl={
           <RefreshControl
             refreshing={this.state.faqLoading}
@@ -194,7 +195,8 @@ export default connect<ReduxProps, {}, NavigationProps & CardFaqProps, AppState>
 
 const styles = StyleSheet.create({
   container: {
-    margin: m,
+    padding: m,
+    backgroundColor: COLORS.background,
   },
   error: {
     color: 'red',

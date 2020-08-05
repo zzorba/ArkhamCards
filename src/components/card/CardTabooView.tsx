@@ -16,6 +16,7 @@ import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { l, m, xs, s } from '@styles/space';
 import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 export interface CardTabooProps {
   id: string;
@@ -104,7 +105,7 @@ export default class CardTabooView extends React.Component<Props> {
       id,
     } = this.props;
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <DbRender name="taboo" getData={this._getData} ids={[id]}>
           { this._renderData }
         </DbRender>
@@ -123,6 +124,7 @@ export default class CardTabooView extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     margin: m,
+    backgroundColor: COLORS.background,
   },
   header: {
     marginTop: l,

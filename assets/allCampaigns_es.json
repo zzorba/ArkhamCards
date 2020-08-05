@@ -15225,7 +15225,7 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each other location aside, out of play."
+      "text": "Deja aparte todos los demás Lugares, fuera del juego."
     }
   ],
   "resolutions": [
@@ -21898,13 +21898,13 @@
       "text": "Some abilities in this campaign are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Cada capacidad <b>Explorar</b> indica un tipo de Lugar concreto que intentas robar. <b>Si se roba un Lugar de ese tipo, se pone en juego y te mueves a él.</b> Esto se considera una exploración \"con éxito\"."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si se roba cualquier otro Lugar, colócalo junto al mazo de Exploración y roba la siguiente carta del mazo de Exploración. Repite este proceso hasta que se robe un Lugar del tipo indicado o una Traición. Después de que esta acción haya acabado, devuelve al mazo de Exploración todos los Lugares que haya junto a éste y barájalo."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si se roba una carta de Traición, se resuelve de forma normal. Si se descarta, colócala en la pila de descartes de Encuentros como lo harías normalmente. El mazo de Exploración no tiene pila de descartes. Esto se considera una exploración \"sin éxito\"."
         },
         {
           "text": "As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
@@ -30844,7 +30844,7 @@
   "campaign":
 {
   "id": "side",
-  "name": "Side Scenarios",
+  "name": "Escenarios secundarios",
   "position": 0,
   "version": 1,
   "campaign_log": [],
@@ -32134,8 +32134,8 @@
 },
 {
   "id": "carnevale_of_horrors",
-  "scenario_name": "Carnevale of Horrors",
-  "full_name": "Carnevale of Horrors",
+  "scenario_name": "Carnevale de horrores",
+  "full_name": "Carnevale de horrores",
   "xp_cost": 3,
   "setup": [
     "xp_cost",
@@ -32165,7 +32165,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that's really all there is to it.\" He sighs and sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg wearing this mask and holdin' a bloody butcher's cleaver,\" he says, motioning to the black leather mask sitting on his desk. It has a comicaly long nose and a strange symbol scrawled in yellow on its forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall & Garrison.\" The sheriff's jaw clenches and his brows furrow as he recounts the story. \"Fella did nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the 'carnival is coming'; whatever the hell that meant. Wasn't until the next day we found the victim's body. Defense wanted him in a straitjacket. We were happy to oblige.\"\nThere isn't much time to spare. If your research is right, there is more to this case than meets the eye. This \"Zanni\" wasn't talking about Darke's Carnival, but rather the Carnevale of Venice, which begins just before the next full moon."
+      "text": "—Mire —insiste el sheriff Engel—, sé que suena a locura, pero es que es lo que hay. —Suspira y vuelve a sentarse, antes de servir una taza de café para ti y otra para él—. Una señora de la periferia vio a un chalado que llevaba puesta esta máscara e iba con un cuchillo de carnicero ensangrentado —dice mientras señala la máscara de cuero negro que hay sobre su mesa. Tiene una nariz cómicamente larga y un extraño símbolo amarillo garabateado en la frente—. Así que nos llamó, y los chicos y yo lo atrapamos en la esquina de Saltonstall y Garrison. —El sheriff tensa la mandíbula y frunce el ceño al relatar la historia—. El tipo se limitó a reírse cuando le pusimos las esposas. Dijo llamarse Zanni, y no añadió nada más, excepto que “llega el carnaval”. A saber lo que significa. No encontramos el cuerpo de la víctima hasta el día siguiente. La defensa le quería internado y con camisa de fuerza, y nosotros estuvimos encantados de concedérselo.\nNo queda mucho tiempo. Si la investigación realizada es acertada, en este caso hay más de lo que parece. El tal “Zanni” no se refería a la Feria de Darke, que para algunos es como el carnaval, sino al Carnevale de Venecia, que comienza justo antes de la próxima luna llena..."
     },
     {
       "id": "gather_encounter_sets",
@@ -32177,19 +32177,19 @@
     },
     {
       "id": "remove_random_location",
-      "text": "Choose 1 location at random and remove it from the game. If San Marco Basilica or Canal-side is chosen, randomly choose a different location instead."
+      "text": "Elige 1 Lugar al azar y retíralo de la partida. Si se elige la Basílica de San Marcos o el Canal, en lugar de eso elige al azar un Lugar distinto."
     },
     {
       "id": "setup_locations",
-      "text": "Put the other 8 locations into play, in a random circular formation. Each investigator begins play in San Marco Basilica. Put Abbess Allegria Di Biase into play at San Marco Basilica."
+      "text": "Pon los otros 8 Lugares en juego, formando un círculo al azar. Cada investigador comienza la partida en la Basílica de San Marcos. Pon en juego a la Abadesa Allegria Di Biase en la Basílica de San Marcos."
     },
     {
       "id": "setup_masked_people",
-      "text": "Shuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica, Masked Carnevale-Goers side face-up. Do not look at their other sides."
+      "text": "Baraja los 7 Enmascarados del Carnevale y pon 1 en juego en cada Lugar que no sea la Basílica de San Marcos, con el lado Enmascarado del Carnevale boca arriba. No mires los otros lados."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Gilded Volto."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: Cnidathqua, Pantalone, Medico della peste, Bauta, Volto dorado."
     },
     {
       "id": "encounter_deck",
@@ -32198,20 +32198,20 @@
     {
       "id": "circle_rule",
       "type": "rule_reminder",
-      "title": "Location Setup",
-      "text": "In this scenario, locations are placed in a circle. Due to the parade during the Carnevale, each location is connectd only to the location in the clockwise direction. This means that investigators and monsters can only travel (or count the nearest location) in the clockwise direction unless otherwise noted."
+      "title": "Preparación de los Lugares",
+      "text": "En este escenario, los Lugares se colocan en círculo. Debido al desfile del Carnevale, cada Lugar sólo está conectado con el siguiente Lugar en el sentido de las agujas del reloj. Esto significa que los investigadores y monstruos sólo pueden viajar (o contar el Lugar más cercano) en el sentido de las agujas del reloj a menos que se indique algo distinto."
     },
     {
       "id": "counter_clockwise_rule",
       "type": "rule_reminder",
-      "title": "Counter-clockwise",
-      "text": "Some cards instruct the players to find the nearest location in the counter-clockwise direction. This is an exception to the above rule and should be followed as though locations are connected counter-clockwise."
+      "title": "Sentido contrario a las agujas del reloj",
+      "text": "Algunas cartas dicen a los jugadores que busquen el Lugar más cercano en el sentido contrario a las agujas del reloj. Esto es una excepción a la regla anterior que debe seguirse como si los Lugares estuvieran conectados en el sentido contrario a las agujas del reloj."
     },
     {
       "id": "across_from_rule",
       "type": "rule_reminder",
-      "title": "\"Across from\"",
-      "text": "The location \"across from\" another l ocation is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For hte purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
+      "title": "\"Enfrente\"",
+      "text": "El Lugar que está \"enfrente\" de otro Lugar es el Lugar más alejado y equidistante tanto en el sentido de las agujas del reloj como al contrario. A efectos de este escenario, \"enfrente de tu Lugar\" y \"enfrente de ti\" tienen el mismo significado."
     },
     {
       "id": "earn_xp",
@@ -32235,7 +32235,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_many_were_sacrificed_to_cnidathqua",
-          "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          "text": "fueron sacrificadas muchas personas a Cnidaihqua durante el Carnevale."
         }
       ]
     },
@@ -32246,7 +32246,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_sun_banished_cnidathqua",
-          "text": "the sun banished Cnidathqua into the depths."
+          "text": "el sol desterró a Cnidathqua a las profundidades."
         }
       ]
     },
@@ -32257,18 +32257,18 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_cnidathqua_retreated",
-          "text": "Cnidathqua retreated to nurse its wounds."
+          "text": "Cnidathqua se retiró para curarse las heridas."
         }
       ]
     },
     {
       "id": "move_innocent_reveler",
-      "text": "Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able."
+      "text": "Mueve 1 Carnavalero inocente de debajo del mazo de Acto debajo del mazo de Plan si es posible."
     },
     {
       "id": "choose_masks",
-      "title": "Additional Rewards",
-      "text": "In player order, each investigator may choose one of the following [[Mask]] cards to add to his or her deck: Pantalone, Medico Della Peste, Bauta, Gilded Volto. The chosen card does not count towards that investigator's deck size.",
+      "title": "Recompensas adicionales",
+      "text": "En el orden de juego, cada investigador puede elegir una de las siguientes cartas [[Máscara]] para añadirla a su mazo: Pantalone, Medico della peste, Bauta o Volto dorado. La carta elegida no cuenta para el tamaño de mazo de ese investigador.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -32310,7 +32310,7 @@
           },
           {
             "id": "82026",
-            "text": "Gilded Volto",
+            "text": "Volto dorado",
             "effects": [
               {
                 "type": "add_card",
@@ -32325,27 +32325,27 @@
     {
       "id": "ask_innocent_revelers_saved",
       "type": "input",
-      "text": "How many Innocent Revelers are underneath the act deck?",
+      "text": "¿Cuántos Carnavaleros inocentes hay bajo el mazo de Acto?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "none",
-            "text": "None",
+            "text": "Ninguno",
             "steps": [
               "ask_innocent_revelers_killed"
             ]
           },
           {
             "id": "one_or_two",
-            "text": "One or Two",
+            "text": "Uno o dos",
             "steps": [
               "no_further_rewards"
             ]
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "Tres",
             "steps": [
               "abbess_satisfied",
               "earn_abbess"
@@ -32357,22 +32357,22 @@
     {
       "id": "no_further_rewards",
       "bullet_type": "small",
-      "text": "No further rewards."
+      "text": "No hay más recompensas."
     },
     {
       "id": "ask_innocent_revelers_killed",
-      "text": "How many Innocent Revelers are underneath the agenda deck?",
+      "text": "¿Cuántos Carnavaleros inocentes hay bajo el mazo de Plan?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "none",
-            "text": "None"
+            "text": "Ninguno"
           },
           {
             "id": "one_or_more",
-            "text": "One or more",
+            "text": "Uno o más",
             "steps": [
               "sacrifice_made",
               "random_weakness"
@@ -32384,11 +32384,11 @@
     {
       "id": "abbess_satisfied",
       "type": "story",
-      "text": "\"Grazie mille—thank you for all your help.\" Allegria says as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what might have happened had you not arrived. Should you ever require assistance, please do not hesitate to ask.\""
+      "text": "—Grazie mille... gracias por toda tu ayuda —dice Allegria cuando vuelves a la Basílica—, Gracias a ti, ha habido pocas bajas. Me estremezco al pensar lo que podría haber ocurrido si no hubieras venido. Si alguna vez necesitas ayuda, no dudes en pedirla."
     },
     {
       "id": "earn_abbess",
-      "text": "Any one investigator may choose to add Abbess Allegria Di Biase to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir a la Abadesa Allegria Di Biase a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -32400,11 +32400,11 @@
     {
       "id": "sacrifice_made",
       "type": "story",
-      "text": "Too many lives were lost during the eclipse to stop the machinations of Cnidathqua's servants. The beast has been fed, its minions empowered. You find yourself hoping you don't live long enough to see the fallout of your failure."
+      "text": "Se perdieron demasiadas vidas durante el eclipse para detener las maquinaciones de los sirvientes de Cnidathqua. La bestia recibió su alimento, y sus siervos, poder. Esperas no vivir lo suficiente como para ver las consecuencias de tu fracaso."
     },
     {
       "id": "random_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Monster]] weakness and adds it to their deck for the remainder of the campaign.",
+      "text": "Cada investigador busca en la colección una Debilidad [[Locura]], [[Lesión]] o [[Monstruo]] básica aleatoria y la añade a su mazo durante el resto de la campaña.",
       "effects": [
         {
           "type": "add_weakness",
@@ -32428,7 +32428,7 @@
         "physical",
         "mental"
       ],
-      "text": "You sputter awake as an oar gently taps yoru shoulder. \"Tutto bene?\" The goldolier holding the oars says with a concerned expression. You nod and drag yourself onto the docks from his gondola, drenched and aching all over. The city is devestated. Most of the boats in the canal are wrecked. The streets are covered not in confetti, but in blood.",
+      "text": "Te despiertas escupiendo cuando un remo te da unos suaves golpes en el hombro. —¿Tutto bene? —te pregunta el gondolero que sostiene el remo con expresión preocupada. Asientes y te arrastras hasta el embarcadero desde su góndola. La ciudad está devastada. La mayoría de las embarcaciones del canal están destrozadas, y las calles no están cubiertas de confeti, sino de sangre...",
       "steps": [
         "many_were_sacrificed_to_cnidathqua",
         "earn_xp",
@@ -32441,7 +32441,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "The city is still recovering from the events during the eclipse. With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than to speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken again.",
+      "text": "La ciudad sigue recuperándose de los acontecimientos vividos durante el eclipse. Con casi todos los restos de la criatura fundidos por el cálido sol, muchos le atribuyen la violencia del Camevale al señor del crimen local Cascio Di Boerio y a su banda. Quienes conocen la verdad saben que es mejor no hablar de la criatura primigenia que vive en la Laguna Veneta. Con suerte, su nombre no será pronunciado nunca más.",
       "steps": [
         "sun_banished_cnidathqua",
         "earn_xp",
@@ -32453,7 +32453,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "The creature recoils as globules of its jelly-like flesh rip and tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths. The chanting in the city plunges into mournful silence. As you return to the canal-side streets, black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it will take for the creature to recover.",
+      "text": "La criatura se revuelve mientras glóbulos de su gelatinosa carne se desprenden de su cuerpo y caen a la laguna con un chapoteo. El cántico de la ciudad se sume en un afligido silencio. Al volver a las calles de los canales, del cielo caen plumas negras allí donde antes revoloteaba el brillante confeti. Lo único que te preguntas es cuánto tardará la criatura en recuperarse.",
       "steps": [
         "cnidathqua_retreated",
         "earn_xp",
@@ -32466,8 +32466,8 @@
 },
 {
   "id": "curse_of_the_rougarou",
-  "scenario_name": "Curse of the Rougarou",
-  "full_name": "Curse of the Rougarou",
+  "scenario_name": "La maldición del Rougarou",
+  "full_name": "La maldición del Rougarou",
   "xp_cost": 1,
   "setup": [
     "xp_cost",
@@ -32493,7 +32493,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Minnie Klein, your contact at the Arkham Advertiser, had slipped you a draft of the article over a cup of coffee at Velma's Diner. It would have gone to print had Doyle Jeffries, the lead editor, not scoffed at the concept. \"I believe his exact words were, 'I ain't printing it off as news,'\" she explained. From the sly grin spreading across her face, you could tell she smelled a story.\nThe headline was sensaltionalist. Three killings in nine days was enough to spook a town, sure. But you doubt all of New Orleans is gripped by terror, or even knows about the killings. Still, something piqued your interest. \"Lady Esprit,\" the Voodoo priestess from the article, claimed that a malign curse had taken root in the bayou.\n\"There's something to this, isn't there? I know that look,\" Minnie said. You weren't sure. If Lady Esprit was right, this \"roux-ga-roux\" wouldn't stop killing at three, that's for sure. Bur curses? Wolf-people? How could such things be real? Only one way to find out. You put on your coat and head for the Northside Station."
+      "text": "Minnie Klein, tu contacto del Arkham Advertiser, te dio un borrador del artículo mientras tomabais café en el Restaurante de Velma. Habría llegado a publicarse sí Doyle Jeffries, el editor jefe, no se hubiera burlado de la historia. —Creo que sus palabras exactas fueron: \"No voy a publicar los desvaríos de una lunática vudú como si fuera una noticia de verdad\" —te contó Minnie. Viendo la taimada sonrisa que tenía de oreja a oreja, sabías que ella se olía una buena historia.\nEl titular era sensacionalista. Vale que tres asesinatos en nueve días son suficientes como para asustar a la población de una ciudad. Pero 110 crees que toda Nueva Orleans sea presa del terror, o que todo el mundo supiera lo de las muertes. Aun así había algo que te picó la curiosidad. \"Madame Esprit\", la sacerdotisa vudú del artículo, afirmaba que una siniestra maldición se había adueñado del bayou.\n—Esto va en serio, ¿verdad? Conozco esa mirada —diio Mínníe. No estabas seguro. Si Madame Esprit tenía razón, este \"roux-ga-roux\" no iba a dejar de matar después de tres víctimas, eso estaba claro. Pero ¿una maldición? ¿Hombres lobo? ¿Cómo podían ser reales esas cosas? Sólo había una forma de averiguarlo, así que te pusiste el abrigo y te dirigiste a la estación del Barrio Norte..."
     },
     {
       "id": "gather_encounter_sets",
@@ -32506,15 +32506,15 @@
     },
     {
       "id": "set_aside_rougarou",
-      "text": "Set the Curse of the Rougarou encounter set aside, out of play."
+      "text": "Pon aparte el conjunto de encuentros La maldición del rougarou, fuera del juego."
     },
     {
       "id": "setup_locations",
-      "text": "Sort each of the locations into 4 piles, by trait ([[New Orleans]], [[Riverside]], [[Wilderness]], and [[Unhallowed]]). Randomly choose 1 of these pile s and remove those locations from the game. Randomly chooseanother 1 of these piles and put those locations into play. Set each location in the other 2 piles aside, out of play. Each investigator begins play at a [[Bayou]] location in play."
+      "text": "Separa los Lugares en 4 montones, según su rasgo ([[Nueva Orleans]], [[Ribera]], [[Naturaleza]] e [[Impío]]). Elige al azar l de estos montones y retira esos Lugares de la partida. Elige al azar otro de esos montones y pon esos Lugares en juego. Pon aparte todos los Lugares de los otros 2 montones, fuera del juego. Cada investigador comienza la partida en un Lugar [[Bayou]] que esté en juego."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Lady Esprit, Bear Trap, and Fishing Net."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: Madame Esprit, Cepo para osos y Red de pesca."
     },
     {
       "id": "encounter_deck",
@@ -32537,13 +32537,13 @@
     },
     {
       "id": "rougarou_destroyed_and_curse_is_lifted",
-      "text": "In your Campaign Log, record that <i>the Rougarou is destroyed, and the curse is lifted</i>. Remove the Curse of the Rougarou weakness from it's bearers deck. Any one investigator may choose to add Lady Esprit to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Anota en el registro de campaña que <i>el rougarou ha sido destruido, y la maldición ha sido levantada</i>. Retira la Debilidad La maldición del rougarou del mazo del afectado. Un investigador cualquiera puede elegir añadir a Madame Esprit a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_destroyed_and_curse_is_lifted",
-          "text": "the Rougarou is destroyed, and the curse is lifted."
+          "text": "el rougarou ha sido destruido, y la maldición ha sido levantada."
         },
         {
           "type": "add_card",
@@ -32554,13 +32554,13 @@
     },
     {
       "id": "rougarou_escaped_and_embrace_curse",
-      "text": "In your Campaign Log, record that <i>the Rougarou escaped, and you embraced the curse</i>. The bearer of the Curse of the Rougarou weakness must add Monstrous Transformation to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Anota en el registro de campaña que <i>el rougarou escapó, y aceptaste la maldición</i>. El afectado por la Debilidad La maldición del rougarou debe añadir Transformación monstruosa a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_escaped_and_embrace_curse",
-          "text": "the Rougarou escaped, and you embraced the curse."
+          "text": "el rougarou escapó, y aceptaste la maldición."
         },
         {
           "type": "add_card",
@@ -32581,7 +32581,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rougarou_continues_to_haunt_the_bayou",
-          "text": "the Rougarou continues to haunt the bayou."
+          "text": "el rougarou sigue acechando en el bayou."
         }
       ]
     },
@@ -32608,7 +32608,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "Somehow, you manage to make it back to safety before daybreak, resting until late in the afternoon. It isn't until you seek out Lady Esprit the next day that you realize who last night's victim was. With a heavy heart and an unshakable dread, you choose to bury her body instead of contacting the authorities—the less people who delve this deep into the bayou, the better.",
+      "text": "Logras ponerte a salvo de algún modo hasta que llega el día y descansas hasta última hora de la tarde. Hasta que no vas a buscar a Madame Esprit al día siguiente, no te das cuenta de quién fue la víctima de la noche anterior. Con gran pesar y un temor del que no logras desprenderte, eliges enterrar su cuerpo en lugar de avisar a las autoridades; cuanta menos gente se adentre tanto en el bayou, mejor.",
       "steps": [
         "rougarou_continues_to_haunt_the_bayou",
         "earn_xp",
@@ -32618,7 +32618,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "The creature givs a pitiful wail as dark miry blood oozes from its wounds. By the time its body collapses into the mud, it has transformed back into its original form—the form of a young dark-skinned man, his expression twisted in agony. You bring his body back to Lady Esprit and she works her strange magic, removing the stain of the curse from the land. \"Call on me should you ever need my help,\" the mysterious woman tells you.",
+      "text": "La criatura emite un gemido lastimero, y de sus heridas brota una sangre oscura y fangosa. Para cuando su cuerpo se desploma en el barro, ha recobrado su forma original, la de un joven de piel oscura con el rostro demudado por el dolor. Llevas su cuerpo a Madame Esprit y ésta realiza su extraña magia, retirando la mancha de la maldición de la tierra. —Llámame si alguna vez necesitas mi ayuda —te dice la misteriosa mujer.",
       "steps": [
         "rougarou_destroyed_and_curse_is_lifted",
         "earn_xp",
@@ -32628,7 +32628,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "Somehow you have managed to quell the rage and bloodlust of the curse within the creature, and in moments the shape of a young, dark-skinned man stands before you, panting and sweating. He seems to only just now understand everything he's done, and agrees to flee to a secluded corner of the earth where he can harm no one. However, the curse lives on. He sees it in your eyes and grips your arm tightly. \"Don't let it take control,\" he warns. \"I was weak, but you—I can tell you are strong. Control the curse as I could not.\"",
+      "text": "De algún modo, has logrado aplacar la rabia y la sed de sangre de la maldición que alberga la criatura, y en pocos instantes tienes ante ti la forma de un joven de piel oscura, jadeante y sudoroso. Parece que empieza a comprender todo lo que ha hecho, y accede a marcharse a un rincón remoto del planeta donde no pueda dañar a nadie. Sin embargo, la maldición pervive. La ve en tus ojos y te agarra con fuerza del brazo: —No deje que le controle —te advierte—. Yo fui débil, pero usted... puedo ver que usted es fuerte. Controle la maldición como yo no pude.",
       "steps": [
         "rougarou_escaped_and_embrace_curse",
         "earn_xp",
@@ -32639,8 +32639,8 @@
 },
 {
   "id": "murder_at_the_excelsior_hotel",
-  "scenario_name": "Murder at the Excelsior Hotel",
-  "full_name": "Murder at the Excelsior Hotel",
+  "scenario_name": "Asesinato en el hotel Excelsior",
+  "full_name": "Asesinato en el hotel Excelsior",
   "xp_cost": 3,
   "setup": [
     "check_first_play_xp_cost",
@@ -32688,28 +32688,28 @@
     },
     {
       "id": "patrol_rule",
-      "title": "Patrol",
+      "title": "Errante",
       "type": "rule_reminder",
-      "text": "Some enemies have the patrol keyword. During the enemy phase (in framework step 3.2), each ready, unengaged enemy with the patrol keyword moves to a connecting location along the shortest path toward the designated location (as described in parentheses next to the word patrol).",
+      "text": "Algunos Enemigos tienen la palabra clave Errante. Durante la fase de Enemigos (en el paso de estructura 3.2), cada Enemigo preparado y sin enfrentar que tenga la palabra clave Errante se mueve a un Lugar conectado por la ruta más corta hacia el Lugar designado (como se describe entre paréntesis junto a la palabra Errante).",
       "bullets": [
         {
-          "text": "If there are multiple locations that qualify as the designated location, the lead investigator may choose which location the enemy moves toward."
+          "text": "Si hay varios Lugares válidos como posible Lugar designado, el investigador jefe puede elegir hacia qué Lugar se mueve el Enemigo."
         },
         {
-          "text": "If an enemy with patrol would be compelled to move to a location which is blocked by a card ability, the enemy does not move."
+          "text": "Si un enemigo con Errante tuviera que moverse a un Lugar que esté bloqueado por la capacidad de una carta, el Enemigo no se mueve."
         }
       ]
     },
     {
       "id": "true_culprit_rule",
-      "title": "The True Culprit",
+      "title": "El verdadero culpable",
       "type": "rule_reminder",
-      "text": "Each copy of The True Culprit is an agenda card with a different card template than most other agendas. These agendas each have doom thresholds which can be found to the right of their title, instead of in their normal position."
+      "text": "Cada copia de El verdadero culpable es una carta de Plan con un diseño de carta distinto a la mayoría de los demás planes. Cada uno de estos planes tiene umbrales de perdición que aparecen a la derecha de su nombre en lugar de en su posición habitual."
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "There have been reports of strange occurrences at Arkham’s Excelsior Hotel for over a month now. Disappearances. Bizarre sightings. Sudden closures, sometimes for days at a time, seemingly without warning. It’s like something out of a ghost story, but you know better than to simply dismiss these rumors. Too many people have whispered about the Excelsior…and to make matters worse, it seems the stories have only grown more unsettling in the last week. It’s time somebody looked into it all.\nYou’ve tried going to the police, but the grizzled and world‑weary Sergeant Monroe has dismissed you every time. You’ve been left to investigate on your own. Asking around at all the local hot-spots yields no leads. Velma’s Diner, Hibb’s Roadhouse, La Bella Luna; Each visit leaves you with only more questions. That is, until today.\nWhile walking down Central Avenue in Downtown, minding your own business, you bump into a man in a long trench coat. You begin to apologize, but he simply continues walking briskly away from you. It isn’t until you return home that you find the note in your pocket—one that wasn’t there before.\n<center><fancy>I have answers</fancy></center>\n<center><fancy>Room 225. Tonight. Come alone.</fancy></center>\n<center><fancy>They’re watching!</fancy></center>\nUncertain of what else you can do at this point, you begin making preparations to meet this mystery person."
+      "text": "Desde hace más de un mes se están produciendo sucesos insólitos en el hotel Excelsior de Arkham: desapariciones, visiones extrañas, cierres repentinos de hasta varios días sin previo aviso aparente... Todo parece sacado de una historia de fantasmas, pero sabes bien que no sería sensato ignorar esos rumores. Hay demasiada gente murmurando acerca del Excelsior... Y para empeorar las cosas, parece que las historias se han vuelto más perturbadoras durante la última semana. Es hora de que alguien lo investigue.\nHas intentado acudir a la policía, pero el veterano y curtido sargento Monroe te ha despachado sin más cada vez que lo has hecho. No te queda otra que investigar por tu cuenta. Tras preguntar en los locales más frecuentados de la ciudad, no obtienes pista alguna. El Restaurante de Velma, el Motel Hibb, La Bella Luna... Pero cada visita sólo te plantea más preguntas. Al menos hasta hoy.\nMientras caminas por la Avenida Central del Centro pensando en tus cosas, te chocas con un hombre que lleva una gabardina larga. Empiezas a disculparte, pero él sigue andando a buen paso sin pararse. Hasta que no vuelves a casa no encuentras la nota de tu bolsillo que antes no estaba ahí.\n<center><fancy>Tengo respuestas.</fancy></center>\n<center><fancy>Habitación 225. Esta noche. Ven solo.</fancy></center>\n<center><fancy>¡Están vigilando!</fancy></center>\nHas llegado a un punto en el que no sabes qué más puedes hacer, así que empiezas a prepararte para encontrarte con esta persona misteriosa."
     },
     {
       "id": "check_player_count",
@@ -32748,17 +32748,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The Excelsior is busy tonight. Either the rumors haven’t fazed these guests, or the stories have given the hotel a new allure. Everything seems normal. Hotel staff carry luggage and cleaning supplies throughout the lobby and the main stairway. The man behind the front desk greets you with a curt nod and a thin smile. A uniformed security guard reads the latest Arkham Advertiser in the corner. And yet, you can’t get the note’s final warning out of your mind.\nYou stride quickly across the lobby and up the stairs, wondering if you should have let someone know where you were going. Was it wise to come alone? What if you’re walking into a trap? You set your jaw and clench your fists as you stand in front of the blood-red door to room 225, and before you can second guess yourself any further, you knock. There’s no going back now."
+      "text": "El Excelsior está a rebosar esta noche, ya sea porque los rumores no han desanimado a estos clientes o porque las historias le han dado mayor atractivo al hotel. Todo parece normal. El personal del hotel lleva equipajes y útiles de limpieza por el vestíbulo y la escalera principal. El hombre que hay tras el mostrador de recepción te saluda con un breve gesto de cabeza y una apretada sonrisa. Hay un guardia de seguridad uniformado leyendo el último Arkham Advertiser en el rincón. Pese a todo, no logras sacarte de la cabeza la advertencia final de la nota.\nAtraviesas el vestíbulo rápidamente y subes las escaleras, preguntándote si deberías haberle contado a alguien adónde ibas. ¿Ha sido sensato venir solo? ¿Y si te estás metiendo en la boca del lobo? Aprietas la mandíbula y cierras los puños mientras miras la puerta de color rojo sangre de la habitación 225, pero antes de poder pensártelo mejor, llamas. Ya no hay vuelta atrás."
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The Excelsior is busy tonight. Either the rumors haven’t fazed these guests, or the stories have given the hotel a new allure. Everything seems normal. Hotel staff carry luggage and cleaning supplies throughout the lobby and the main stairway. The man behind the front desk greets you with a curt nod and a thin smile. A uniformed security guard reads the latest Arkham Advertiser in the corner. And yet, you can’t get the note’s final warning out of your mind. You stride quickly across the lobby and up the stairs, taking some measure of comfort in the knowledge that you at least contacted others you could trust, letting them know of your whereabouts and intent. Your clandestine meetings have rarely gone as planned, especially lately, and it never hurts to have some measure of backup. You stand before the blood-red door to room 225, take a deep breath, and knock. There’s no going back now."
+      "text": "El Excelsior está a rebosar esta noche, ya sea porque los rumores no han desanimado a estos clientes o porque las historias le han dado mayor atractivo al hotel. Todo parece normal. El personal del hotel lleva equipajes y útiles de limpieza por el vestíbulo y la escalera principal. El hombre que hay tras el mostrador de recepción te saluda con un breve gesto de cabeza y una apretada sonrisa. Hay un guardia de seguridad uniformado leyendo el último Arkham Advertiser en el rincón. Pese a todo, no logras sacarte de la cabeza la advertencia final de la nota.\nAtraviesas el vestíbulo rápidamente y subes las escaleras, disfrutando de un cierto consuelo por haber contactado con otros en los que puedes confiar y haberles dicho dónde ibas y para qué. Tus reuniones clandestinas rara vez van como planeas, sobre todo últimamente, y nunca está de más tener algún apoyo. Estás delante de la puerta de color rojo sangre de la habitación 225, respiras hondo y llamas. Ya no hay vuelta atrás."
     },
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You sit in a chair in the suite’s living room, watching as the man who slipped you the note paces about nervously. He rambles about secret meetings and watchful staff. The entire time, you find yourself glancing to the coffee table in front of you, and the curved dagger that rests there. He pauses for a moment, pours himself a drink, and raises the glass to his lips with a shaky grip. He then pours a second drink and hands it to you. “This is all going to sound crazy,” he says, his voice little more than a whisper. He glances at every darting shadow and twitches at every creak the old building makes. “I’m beginning to feel crazy, but there’s too much going on here to just ignore. And I’ve been a part of it long enough…” You listen closely, but his words are starting to run together. His voice is ethereal and wispy, like wind at the end of a long tunnel. You blink rapidly. Your vision blurs. The next thing you know, you’re on your feet. Your glass drops to the floor, and then—"
+      "text": "Estás sentado en una silla del salón de la suite, observando cómo el hombre que te dio la nota da vueltas de forma nerviosa. No deja de hablar sobre reuniones secretas y personal vigilante. Tú no puedes evitar mirar todo el tiempo la mesa baja que tienes delante y sobre la que hay una daga curvada. Se detiene un momento, se sirve una copa y se la lleva a los labios con mano temblorosa. Luego sirve una segunda copa y te la entrega:\n—Todo esto le va a parecer una locura—dice en un tono que es poco más que un susurro. Mira de reojo cada vez que se mueve una sombra y se estremece con cada crujido del viejo edificio—. Empiezo a sentirme como un demente, pero aquí están pasando demasiadas cosas como para ignorarlas. Y llevo demasiado tiempo participando de ello...\nEscuchas atentamente, pero sus palabras comienzan a embarullarse. Su voz es etérea y débil, como el viento al final de un largo túnel. Parpadeas rápidamente. Se te nubla la vista. Cuando te quieres dar cuenta, estás de pie. Se te cae la copa al suelo y..."
     },
     {
       "id": "gather_encounter_sets",
@@ -32782,32 +32782,32 @@
     },
     {
       "id": "construct_act_deck",
-      "text": "Construct the act and agenda deck using only acts 1 & 2 and agendas 1 & 2 from <i>the Murder at the Excelsior Hotel</i> encounter set."
+      "text": "Crea el mazo de Acto y el mazo de Plan únicamente con los actos 1 y 2 y los planes 1 y 2 del conjunto de encuentros <i>Asesinato en el hotel Excelsior</i>."
     },
     {
       "id": "set_aside_true_culprit",
-      "text": "Set all ten copies of The True Culprit aside, out of play"
+      "text": "Deja aparte las 10 copias de El verdadero culpable, fuera del juego."
     },
     {
       "id": "take_bloodstained_dagger",
-      "text": "The lead investigator begins play with the Bloodstained Dagger story asset under his or her control."
+      "text": "El investigador jefe comienza el juego con el Apoyo de historia Daga manchada de sangre bajo su control."
     },
     {
       "id": "create_leads_deck",
-      "text": "Find each of the story assets from the 5 set-aside encounter sets (Alien Device, Tome of Rituals, Sinister Solution, Manager’s Key, and Time-Worn Locket) and shuffle them together into a separate deck. This deck is called the Leads deck. Place this deck near the scenario reference card."
+      "text": "Busca todos los Apoyos de historia de los 5 conjuntos de encuentros puestos aparte (Artefacto alienígena, Tomo de rituales, Solución siniestra, Llave del director y Guardapelo desgastado) y barájalos para formar un mazo aparte. Este mazo es el mazo de Indicios. Colócalo junto a la carta de referencia de escenario."
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Room 225, Suite Balcony, Second Floor Hall, Restaurant, and Foyer.",
+      "text": "Pon en juego los siguientes Lugares: Habitación 225, Balcón de la suite, Pasillo del segundo piso, Restaurante y Vestíbulo.",
       "bullets": [
         {
-          "text": "The lead investigator begins play in Room 225."
+          "text": "El investigador jefe comienza la partida en la Habitación 225."
         },
         {
-          "text": "Each other investigator begins play in the Foyer."
+          "text": "Cada uno de los demás investigadores comienza la partida en el Vestíbulo."
         },
         {
-          "text": "Set each other location aside, out of play."
+          "text": "Deja aparte todos los demás Lugares, fuera del juego."
         }
       ]
     },
@@ -32846,7 +32846,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: All three copies of Arkham Officer, the Sergeant Monroe story asset, and the What Have You Done? weakness."
+      "text": "Deja aparte las siguientes cartas, fuera del juego: las 3 copias del Agente de Arkham, el Apoyo de historia Sargento Monroe y la Debilidad ¿Qué has hecho?"
     },
     {
       "id": "encounter_deck",
@@ -32874,7 +32874,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "meh_excelsior_claims_another_victim",
-          "text": "the Excelsior claims another victim."
+          "text": "el Excelsior se cobra otra víctima."
         }
       ]
     },
@@ -32885,19 +32885,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "meh_fled_scene_of_the_crime",
-          "text": "the investigators fled the scene of the crime."
+          "text": "los investigadores huyeron de la escena del crimen."
         }
       ]
     },
     {
       "id": "excelsior_is_quiet_for_now",
-      "text": "In your Campaign Log, record that <i>the Excelsior is quiet, for now</i>. The lead investigator must add the What Have You Done? weakness to their deck. They may also choose to add the Bloodstained Dagger story asset to their deck as well. Both cards do not count toward that investigator’s deck size.",
+      "text": "Anota en el registro de campaña que <i>el Excelsior está tranquilo, por ahora</i>. El investigador jefe debe añadir la Debilidad ¿Qué has hecho? a su mazo. También puede elegir añadir el Apoyo de historia Daga manchada de sangre a su mazo. Ninguna de esas dos cartas cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "meh_excelsior_is_quiet_for_now",
-          "text": "the Excelsior is quiet, for now."
+          "text": "el Excelsior está tranquilo, por ahora."
         },
         {
           "type": "add_card",
@@ -32914,7 +32914,7 @@
     },
     {
       "id": "earn_story_cards",
-      "text": "The lead investigator must add the What Have You Done? weakness to their deck. They may also choose to add the Bloodstained Dagger story asset to their deck as well. Both cards do not count toward that investigator’s deck size.",
+      "text": "El investigador jefe debe añadir la Debilidad ¿Qué has hecho? a su mazo. También puede elegir añadir el Apoyo de historia Daga manchada de sangre a su mazo. Ninguna de esas dos cartas cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -32932,7 +32932,7 @@
     {
       "id": "check_police_on_your_side",
       "type": "branch",
-      "text": "If “the police are on your side”:",
+      "text": "Si \"la policía está de tu parte\":",
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
@@ -32950,7 +32950,7 @@
     {
       "id": "earn_sergeant_monroe",
       "bullet_type": "small",
-      "text": "Any one investigator may choose to add Sergeant Monroe to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Sargento Monroe a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -32962,7 +32962,7 @@
     {
       "id": "check_police_dont_believe_you",
       "type": "branch",
-      "text": "If “the police don't believe you”:",
+      "text": "Si \"la policía no te cree\":",
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
@@ -32981,7 +32981,7 @@
     {
       "id": "do_not_earn_sergeant_monroe",
       "bullet_type": "small",
-      "text": "Do not add Sergeant Monroe to any investigator’s deck."
+      "text": "No añadas el Sargento Monroe al mazo de ningún investigador."
     },
     {
       "id": "ask_police_in_victory_display",
@@ -32991,7 +32991,7 @@
         "choices": [
           {
             "id": "killed_police",
-            "text": "Are there any [[Police]] enemies in the victory display?",
+            "text": "¿Hay algún enemigo [[Policía]] en la zona de victoria?",
             "steps": [
               "earn_weakness"
             ]
@@ -33001,7 +33001,7 @@
     },
     {
       "id": "earn_weakness",
-      "text": "Search the collection for a [[Detective]] or [[Madness]] weakness and add it to the lead investigator’s deck.",
+      "text": "Busca en tu colección una Debilidad [[Detective]] o [[Locura]] y añádela al mazo del investigador jefe. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_weakness",
@@ -33031,7 +33031,7 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: The Truth",
+            "text": "Interludio del escenario: La verdad",
             "steps": [
               "the_truth_1",
               "choose_inspector_monroe",
@@ -33055,7 +33055,7 @@
     {
       "id": "the_truth_1",
       "type": "story",
-      "text": "Your investigation is halted by Sergeant Monroe—the very same police sergeant who had spurned your earlier warnings about the Excelsior Hotel. He is clearly exasperated by all of the strange happenings in the building, and demands answers. “Now listen here,” he says, his hand twitching toward his holstered gun. “I’m a reasonable man, but you’re looking mighty suspicious. You better tell me everything that’s going on right now, you understand? Or you’re gonna take a oneway trip straight to the big house.”"
+      "text": "Tu investigación se ve interrumpida por el sargento Monroe, el mismo policía que desdeñó tus advertencias sobre el hotel Excelsior. Está claramente frustrado por todos los sucesos extraños que ocurren en el edificio y quiere respuestas: —Escúcheme bien —dice, llevándose la mano a la funda del arma con nerviosismo—. Soy un tipo razonable, pero las sospechas apuntan a usted. Más le vale contarme todo lo que esté pasando ahora mismo, ¿me entiende? Porque si no le espera un viaje sólo de ida a la trena."
     },
     {
       "id": "choose_inspector_monroe",
@@ -33065,7 +33065,7 @@
         "choices": [
           {
             "id": "tell_truth",
-            "text": "<i>Tell Sergeant Monroe the truth.</i>",
+            "text": "<i>Contarle la verdad al sargento Monroe.</i>",
             "steps": [
               "the_truth_2",
               "truth_intro",
@@ -33077,7 +33077,7 @@
           },
           {
             "id": "lie",
-            "text": "<i>Lie about your involvement.</i>",
+            "text": "<i>Mentir sobre tu implicación.</i>",
             "steps": [
               "the_truth_3",
               "lie_intro",
@@ -33092,11 +33092,11 @@
     {
       "id": "the_truth_2",
       "type": "story",
-      "text": "You explain everything to Sergeant Monroe from the beginning. The rumors. The note. The murder. The more you explain, the more you realize how crazy it all sounds, but you know it is the truth. You know you’re innocent. But do you have the evidence to back it up?"
+      "text": "Le explicas todo al sargento Monroe desde el principio. Los rumores. La nota. El asesinato. Cuanto más le explicas, más consiente eres de que parece una locura, pero sabes que es la verdad. Sabes que eres inocente. Pero ¿tienes pruebas para demostrarlo?"
     },
     {
       "id": "truth_intro",
-      "text": "Sergeant Monroe will only believe you if you collected enough evidence and did not try to cover up your involvement. If all of the following circumstances are true:"
+      "text": "El sargento Monroe sólo te creerá si has reunido suficientes pruebas y no has intentado encubrir tu implicación. Revisa si todas las circunstancias siguientes se cumplen:"
     },
     {
       "id": "ask_did_not_cover_evidence",
@@ -33107,7 +33107,7 @@
         "choices": [
           {
             "id": "cleared_evidence",
-            "text": "Have the investigators NOT “cleaned up the blood,” “hid the body,” or “tidied up the room?”",
+            "text": "¿Los investigadores no han \"limpiado la sangre\", ni \"ocultado el cuerpo\" ni \"ordenado la habitación\"?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -33129,7 +33129,7 @@
         "choices": [
           {
             "id": "have_clues",
-            "text": "Are there are least 2 [per_investigator] clues on each [[Lead]] asset in play?”",
+            "text": "¿Hay al menos 2 pistas [per_investigator] sobre cada Apoyo [[Indicio]] en juego?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -33151,7 +33151,7 @@
         "choices": [
           {
             "id": "have_clues",
-            "text": "Are there no [[Innocent]] enemies in the victory display?”",
+            "text": "¿No hay Enemigos [[Inocente]] en la zona de victoria?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -33224,11 +33224,11 @@
     {
       "id": "the_truth_3",
       "type": "story",
-      "text": "You do the only thing you can think to do in the moment: lie through your teeth. After all, there is no way the police would understand all of the strange occurrences within the hotel, and even if they did, you don’t expect them to turn a blind eye to all of the evidence pointing in your direction."
+      "text": "Haces lo único que se te ocurre en ese momento: mentir descaradamente. Al fin y al cabo, es imposible que la policía vaya a entender todos los extraños sucesos que están teniendo lugar en el hotel, e incluso si lo entendieran, no esperas que vayan a hacer la vista gorda ante todas las pruebas que apuntan hacia ti."
     },
     {
       "id": "lie_intro",
-      "text": "Sergeant Monroe will only believe you if you successfully covered up your involvement. If all of the following circumstances are true:"
+      "text": "El sargento Monroe sólo te creerá si has encubierto tu implicación. Revisa si todas las circunstancias siguientes se cumplen:"
     },
     {
       "id": "ask_cleared_evidence",
@@ -33239,7 +33239,7 @@
         "choices": [
           {
             "id": "cleared_evidence",
-            "text": "Have the investigators “cleaned up the blood,” “hid the body,” and “tidied up the room?”",
+            "text": "¿Los investigadores han \"limpiado la sangre\", ni \"ocultado el cuerpo\" ni \"ordenado la habitación\"?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -33302,11 +33302,11 @@
     {
       "id": "the_truth_4",
       "type": "story",
-      "text": "“No. No, I don’t believe you.” The man says, unholstering his weapon. “None of this checks out. You’re coming with me, pal. You can sing your story down at the station.” You raise your hands, and he starts ushering you out of the room when there is a tremendous crash from another part of the hotel. The entire building shakes to its foundations, and you hear guests screaming. “What in the hell?” He looks to the door, then to you. “Stay put,” he warns, “Or I swear, next time I see you, you’re gettin’ cuffed.” He runs off to investigate the noise, mumbling about how he is getting too old for this job."
+      "text": "—No. No, no le creo —dice el agente, desenfundando su arma—. Nada de eso concuerda. Usted se viene conmigo, amigo. Ya cantará en comisaría.\nLevantas las manos y él empieza a sacarte de la habitación cuando se oye un estruendo tremendo en otra parte del hotel. Todo el edificio tiembla hasta los cimientos, y oyes gritar a algunos clientes.\n—¿Qué demonios? —exclama mientras pasa la mirada de la puerta a ti antes de advertirte—: No se mueva de aquí. O le juro que la próxima vez que le vea, le pongo las esposas.\nSe va corriendo a investigar el ruido, mascullando que se está volviendo demasiado viejo para este trabajo."
     },
     {
       "id": "the_truth_4_consequences",
-      "text": "Remember that “the police don’t believe you.” Remove Sergeant Monroe from the game. Search the encounter deck, discard pile, and all play areas for each copy of Arkham Officer and remove them from the game. Shuffle the encounter discard pile into the encounter deck.",
+      "text": "Recuerda que \"la policía no te cree\". Retira al Sargento Monroe de la partida. Busca en el mazo y la pila de descartes de Encuentros y en todas las zonas de juego todas las copias del Agente de Arkham y retíralas de la partida. Añade la pila de descartes de Encuentros al mazo de Encuentros y baraja éste.",
       "effects": [
         {
           "type": "campaign_log",
@@ -33319,11 +33319,11 @@
     {
       "id": "the_truth_5",
       "type": "story",
-      "text": "Sergeant Monroe listens to your story with skepticism, though he seems to come around the more evidence you present to him. “All right,” he says once you are finished explaining. “So you were under duress. Drugged, maybe. Crazy as it sounds, the pieces fit. I think you’re telling the truth. But if there's someone else pulling the strings, we've gotta figure out who, or nobody's gonna believe either one of us.” A drop of sweat slides down his forehead. “Come on, let’s go.”"
+      "text": "El sargento Monroe escucha tu historia con escepticismo, aunque parece irse convenciendo a medida que le presentas pruebas.\n—Muy bien —dice cuando terminas de explicarte—, Así que actuó bajo coerción. Y posiblemente fuera drogado. Aunque parezca una locura, las piezas encajan. Creo que está diciendo la verdad. Pero si hay alguien más tirando de los hilos, debemos descubrir de quién se trata, porque de otro modo nadie más nos creería. —Una gota de sudor baja por su frente—. Venga, vámonos."
     },
     {
       "id": "the_truth_5_consequences",
-      "text": "Remember that “the police are on your side.” Choose an investigator to take control of the Sergeant Monroe story asset <i>(move him to that investigator’s threat area)</i>. Search the encounter deck, discard pile, and all play areas for each copy of Arkham Officer and remove them from the game. ",
+      "text": "Recuerda que \"la policía está de tu parte\". Elige a un investigador para que tome el control del Apoyo de historia Sargento Monroe <i>(muévelo a la zona de amenaza de ese investigador)</i>. Busca en el mazo y la pila de descartes de Encuentros y en todas las zonas de juego todas las copias del Agente de Arkham y retíralas de la partida.",
       "effects": [
         {
           "type": "campaign_log",
@@ -33336,11 +33336,11 @@
     {
       "id": "the_truth_6",
       "type": "story",
-      "text": "Sergeant Monroe nods along to your story, convinced. “All right,” he says, “Sounds like you really did have nothing to do with this. But maybe you can help me find the real culprit. Somebody in this damned hotel is a murderer, and we’re gonna find them.” You breathe a sigh of relief. At least the police won’t be a problem anymore."
+      "text": "El sargento Monroe asiente mientras escucha convencido.\n—Muy bien —dice—, Parece que realmente no ha tenido nada que ver con esto. Pero quizás pueda ayudarme a encontrar al verdadero culpable. En este maldito hotel hay un asesino, y vamos a encontrarlo.\nDas un suspiro de alivio. Al menos la policía dejará de ser un problema."
     },
     {
       "id": "the_truth_6_consequences",
-      "text": "Remember that “the police are on your side.” Choose an investigator to take control of the Sergeant Monroe story asset <i>(move him to that investigator’s threat area)</i>. Search the encounter deck, discard pile, and all play areas for each copy of Arkham Officer and remove them from the game. Shuffle the encounter discard pile into the encounter deck.",
+      "text": "Recuerda que \"la policía está de tu parte\". Elige a un investigador para que tome el control del Apoyo de historia Sargento Monroe <i>(muévelo a la zona de amenaza de ese investigador)</i>. Busca en el mazo y la pila de descartes de Encuentros y en todas las zonas de juego todas las copias del Agente de Arkham y retíralas de la partida. Añade la pila de descartes de Encuentro al mazo de Encuentros y baraja éste.",
       "effects": [
         {
           "type": "campaign_log",
@@ -33353,11 +33353,11 @@
     {
       "id": "the_truth_7",
       "type": "story",
-      "text": "Thanks to your cunning investigation, you now have a better idea of what is going on. You’re not the real culprit here. There is much more happening behind the scenes of the Excelsior Hotel, and you’re just caught in the middle…"
+      "text": "Gracias a tu hábil investigación, ahora te haces una buena idea de lo que está pasando. El verdadero culpable no eres tú. En el hotel Excelsior están ocurriendo muchas más cosas entre bambalinas, y tú te has visto atrapado en el medio…"
     },
     {
       "id": "choose_lead_assets",
-      "text": "Based on which two [[Lead]] assets are controlled by the players, a different result will occur.",
+      "text": "En función de qué 2 Apoyos [[Indicio]] controlen los jugadores, se dará un resultado diferente.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -33441,19 +33441,19 @@
     {
       "id": "alien_device_and_time_worn_locket",
       "type": "story",
-      "text": "The specter laid dormant for many years, in relative peace. It wasn’t violent until the victim brought that accursed device into the hotel. The signal emitted from the transmitter was inaudible to human ears, but somehow pierced beyond the veil of the material world. Driven berserk, the specter will not stop until it has killed every last person in the hotel."
+      "text": "El espectro estuvo en letargo durante muchos años, sumido en una paz relativa. No se volvió violento hasta que la víctima trajo ese artefacto maldito al hotel. La señal que emitía el transmisor era inaudible para oídos humanos, pero de algún modo penetró el velo del mundo material. Tras volverse furioso, el espectro no se detendrá hasta que haya matado a todo aquel que esté en el hotel."
     },
     {
       "id": "true_culprit_1",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. I).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. I)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_1",
-      "text": "Move all clues from Time-Worn Locket to Alien Device."
+      "text": "Mueve todas las pistas del Guardapelo desgastado al Artefacto alienígena."
     },
     {
       "id": "boss_1",
-      "text": "Spawn the set-aside Vengeful Specter in Room 245."
+      "text": "Haz aparecer el Espectro vengativo puesto aparte en la Habitación 245."
     },
     {
       "id": "lead_asset_branch_2",
@@ -33506,19 +33506,19 @@
     {
       "id": "alien_device_and_sinister_solution",
       "type": "story",
-      "text": "The victim was experimenting with extraterrestrial brain matter and attracted the attention of another creature from beyond the stars. Between the concoction you were forced to drink and the signal emitted by that horrible device, it’s a wonder you are able to think properly at all. You hear a crash and an unearthly screech from the rooftop. Perhaps you can turn this strange potion to your advantage."
+      "text": "La víctima estaba experimentando con materia cerebral extraterrestre y atrajo la atención de otra criatura de más allá de las estrellas. Entre el brebaje que te obligaron a beber y la señal emitida por ese horrible artefacto, parece imposible que puedas pensar con claridad. Oyes un fuerte ruido y un chirrido sobrenatural que vienen del tejado. Tal vez puedas sacar alguna ventaja de esta extraña poción."
     },
     {
       "id": "true_culprit_2",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. II).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. II)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_2",
-      "text": "Move all clues from Alien Device to Sinister Solution."
+      "text": "Mueve todas las pistas del Artefacto alienígena a la Solución siniestra."
     },
     {
       "id": "boss_2",
-      "text": "Spawn the set-aside Otherworldly Meddler at the Hotel Roof. Place 1[per_investigator] doom on Otherworldly Meddler."
+      "text": "Haz aparecer el Entrometido sobrenatural puesto aparte en el Tejado del hotel. Coloca 1 ficha de Perdición [per_investigator] sobre el Entrometido sobrenatural."
     },
     {
       "id": "lead_asset_branch_3",
@@ -33571,19 +33571,19 @@
     {
       "id": "alien_device_and_managers_key",
       "type": "story",
-      "text": "Whatever the extraterrestrial device’s original purpose was, it never should have been brought to your world. The moment it came into contact with humans, it changed them, and the resulting monstrosities hunger for more flesh. Your “victim” was one such creature, no innocent at all, and you were forced to defend yourself when you learned the truth. Now, with your memories returned, you can put an end to this."
+      "text": "Fuera lo que fuera el propósito original del artefacto extraterrestre, nunca tendría que haber llegado a tu mundo. En el momento en el que entró en contacto con humanos, los cambió, y las monstruosidades resultantes ansían más carne. Tu \"victima\" era una de esas criaturas, y no un inocente, y te viste obligado a defenderte cuando descubriste la verdad. Ahora que has recuperado la memoria, puedes ponerle fin a esto."
     },
     {
       "id": "true_culprit_3",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. III).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. III)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_3",
-      "text": "Move all clues from Manager’s Key to Alien Device."
+      "text": "Mueve todas las pistas de la Llave del director al Artefacto alienígena."
     },
     {
       "id": "boss_3",
-      "text": "Spawn the set-aside Hotel Manager in the Restaurant."
+      "text": "Haz aparecer el Director del hotel en el Restaurante."
     },
     {
       "id": "lead_asset_branch_4",
@@ -33636,19 +33636,19 @@
     {
       "id": "alien_device_and_tome_of_rituals",
       "type": "story",
-      "text": "The Enclave used the strange transmitter to summon its owner to the hotel. Now they hope to gain control over the creature through a ritual of blood sacrifice. By forcing other guests to do their bloody work, evidence of their wrongdoing remains hidden...but you know the truth. And now you can stop their ritual and allow the hideous creature to return to its own world."
+      "text": "El Enclave empleó el extraño transmisor para convocar a su propietario al hotel. Ahora quieren hacerse con el control de la criatura mediante un ritual de sacrificio de sangre. Al obligar a otros huéspedes a hacerles su sangriento trabajo, las pruebas de sus fechorías permanecen ocultas... pero tú sabes la verdad. Y ahora puedes detener su ritual y permitir que la terrible criatura vuelva a su mundo."
     },
     {
       "id": "true_culprit_4",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. IV).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. IV)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_4",
-      "text": "Move all clues from Alien Device to Tome of Rituals."
+      "text": "Mueve todas las pistas del Artefacto alienígena al Tomo de rituales."
     },
     {
       "id": "boss_4",
-      "text": "Spawn the set-aside Otherworldly Meddler at the Hotel Roof. Place 2 plus 2[per_investigator] doom on Otherworldly Meddler."
+      "text": "Haz aparecer el Entrometido sobrenatural puesto aparte en el Tejado del hotel. Coloca 2 fichas de Perdición más 2 [per_investigator] sobre el Entrometido sobrenatural."
     },
     {
       "id": "lead_asset_branch_5",
@@ -33701,19 +33701,19 @@
     {
       "id": "time_worn_locket_and_sinister_solution",
       "type": "story",
-      "text": "The victim was utilizing a strange concoction in an attempt to peer into the world beyond the living. His experiments were what angered the specter, and led to his demise. It is up to you to destroy this spirit once and for all, and there’s only one way to do that..."
+      "text": "La víctima estaba utilizando un extraño brebaje para intentar ver el mundo que hay más allá de la vida. Sus experimentos enfurecieron al espectro y provocaron su muerte. Tendrás que destruir a este espíritu de una vez por todas, y sólo hay una forma de hacerlo..."
     },
     {
       "id": "true_culprit_5",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. V).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. V)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_5",
-      "text": "Move all clues from Time-Worn Locket to Sinister Solution."
+      "text": "Mueve todas las pistas del Guardapelo desgastado a la Solución siniestra."
     },
     {
       "id": "boss_5",
-      "text": "Spawn the set-aside Vengeful Specter in Room 245."
+      "text": "Haz aparecer el Espectro vengativo puesto aparte en la Habitación 245."
     },
     {
       "id": "lead_asset_branch_6",
@@ -33766,19 +33766,19 @@
     {
       "id": "time_worn_locket_and_managers_key",
       "type": "story",
-      "text": "The woman in the locket was killed many years ago, and the manager is the one responsible. The man who met you in 225 was one of the staff members involved. That is when the spirit possessed you in a fit of righteous fury. Nothing in this hotel will return to normal until the manager is destroyed and the spirit is avenged."
+      "text": "La mujer cuya imagen contiene el guardapelo fue asesinada hace muchos años, y el responsable es el director. El hombre que conociste en la 225 era uno de los miembros del personal involucrados. Fue entonces cuando el espíritu te poseyó en un arrebato de furia vengativa. En el hotel no volverá nada a la normalidad hasta que el director sea destruido y el espíritu sea vengado."
     },
     {
       "id": "true_culprit_6",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. VI).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. VI)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_6",
-      "text": "Move all clues from Manager’s Key to Time-Worn Locket."
+      "text": "Mueve todas las pistas de la Llave del director al Guardapelo desgastado."
     },
     {
       "id": "boss_6",
-      "text": "Spawn the set-aside Hotel Manager in the Restaurant."
+      "text": "Haz aparecer el Director del hotel en el Restaurante."
     },
     {
       "id": "lead_asset_branch_7",
@@ -33832,23 +33832,23 @@
     {
       "id": "time_worn_locket_and_tome_of_rituals",
       "type": "story",
-      "text": "The woman in the locket was killed many years ago in one of the Enclave’s many blood sacrifices. Its hate and malice for the cult is what drove it to possess you, and what drove it to kill. Its fury must be satisfied, and you are its righteous agent. It is up to you to direct that fury to its rightful source: the cult that infests the hotel."
+      "text": "La mujer cuya imagen contiene el guardapelo fue asesinada hace muchos años como parte de uno de los muchos sacrificios de sangre del Enclave. Su odio y rencor hacia la secta es lo que lo llevó a poseerte y a matar. Es necesario satisfacer su furia, y tú eres el agente de su venganza. Tendrás que dirigir esa furia hacia su verdadero objetivo: la secta que infesta el hotel."
     },
     {
       "id": "true_culprit_7",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. VII).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. VII)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_7",
-      "text": "Spawn the set-aside Dimensional Shambler in the Basement."
+      "text": "Haz aparecer el Vagabundo dimensional puesto aparte en el Sótano."
     },
     {
       "id": "shuffle_guests_7",
-      "text": "Shuffle each [[Guest]] enemy in the victory display into the encounter deck, along with the encounter discard pile."
+      "text": "Añade la pila de descartes de Encuentros y todos los Enemigos [[Cliente]] de la zona de victoria al mazo de Encuentros y baraja éste."
     },
     {
       "id": "boss_7",
-      "text": "Discard cards from the top of the encounter deck until 1 plus 1[per_investigator] [[Guest]] or [[Cultist]] enemies are discarded. Randomly spawn each of those enemies in a different [[Crime Scene]] location (empty, if able)."
+      "text": "Descarta cartas de la parte superior del mazo de Encuentros hasta que sean descartados 1 más 1 [per_investigator] Enemigos [[Cliente]] o [[Sectario]]. Haz aparecer al azar cada uno de esos Enemigos en un Lugar Escena del crimen distinto (y vacío si es posible)."
     },
     {
       "id": "lead_asset_branch_8",
@@ -33902,23 +33902,23 @@
     {
       "id": "sinister_solution_and_managers_key",
       "type": "story",
-      "text": "The victim was performing horrible experiments within the Excelsior. He had already transformed much of the staff, and you were to be the next in a long line of subjects...only the experiment was a failure. Now it is up to you to put a stop to these horrible transformations by destroying the source of this concoction."
+      "text": "La víctima estaba realizando experimentos horribles en el Excelsior. Ya había transformado a gran parte del personal, e ibas a ser el siguiente en una larga lista de sujetos de pruebas... pero el experimento fracasó. Ahora debes detener estas terribles transformaciones destruyendo la fuente de este brebaje."
     },
     {
       "id": "true_culprit_8",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. VIII).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. VIII)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "shuffle_staff_8",
-      "text": "Shuffle each [[Staff]] enemy in the victory display into the encounter deck, along with the encounter discard pile."
+      "text": "Añade la pila de descartes de Encuentros y todos los Enemigos [[Personal]] de la zona de victoria al mazo de Encuentros y baraja éste."
     },
     {
       "id": "spawn_staff_8",
-      "text": "Discard cards from the top of the encounter deck until 1 [[Staff]] enemy is discarded (2 instead if there are 3 or 4 investigators in the game). Spawn each of those enemies in the Foyer."
+      "text": "Descarta cartas de la parte superior del maro de Encuentros hasta que sea descartado 1 Enemigo [[Personal]], o bien 2 si hay 3 o 4 investigadores en la partida. Haz aparecer cada uno de esos Enemigos en el Vestíbulo."
     },
     {
       "id": "boss_8",
-      "text": "Attach the set-aside Harvested Brain to Room 212."
+      "text": "Vincula el Cerebro extraído puesto aparte a la Habitación 212."
     },
     {
       "id": "lead_asset_branch_9",
@@ -33975,44 +33975,44 @@
     {
       "id": "sinister_solution_and_tome_of_rituals",
       "type": "story",
-      "text": "The Enclave have wrested control of an inhuman brain through a vile ritual and blood sacrifice. Now the cult utilizes the brain’s vast intellect and strange secretions to possess others to do their bidding, and you are their latest victim. The only way to stop their scheme is to break their hold over this brain once and for all."
+      "text": "El Enclave se ha hecho con el control de un cerebro inhumano mediante un ritual vil y un sacrificio de sangre. Ahora, la secta emplea el vasto intelecto del cerebro y sus extrañas secreciones para poseer a otras personas y obligarles a cumplir su voluntad, y tú has sido su víctima más reciente. La única forma de detener sus planes es romper de una vez por todas su control del cerebro."
     },
     {
       "id": "true_culprit_9",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. IX).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. IX)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "move_clues_9",
-      "text": "Move all clues from Sinister Solution to Tome of Rituals."
+      "text": "Mueve todas las pistas de la Solución siniestra al Tomo de rituales."
     },
     {
       "id": "boss_9",
-      "text": "Attach the set-aside Harvested Brain to Room 212."
+      "text": "Vincula el Cerebro extraído puesto aparte a la Habitación 212."
     },
     {
       "id": "managers_key_and_tome_of_rituals",
       "type": "story",
-      "text": "The Enclave has been performing a terrible ritual for days, intending to change every last human inside the Excelsior into wretched monstrosities. The staff were the first to change, and if you aren’t quick, you will be next. The transformation has already begun... "
+      "text": "El Enclave lleva días realizando un terrible ritual con la intención de transformar en horrendas monstruosidades a todos los humanos que haya en el interior del Excelsior. Los primeros en transformarse fueron los miembros del personal, y tú serás el siguiente si no te das prisa. La transformación ya ha comenzado..."
     },
     {
       "id": "true_culprit_10",
-      "text": "Remove all doom from play. Advance the act and agenda deck to the set-aside “The True Culprit (v. X).” It is both the current act and the current agenda."
+      "text": "Retira toda la perdición del juego. Haz avanzar los mazos de Acto y de Plan a \"El verdadero culpable (v. X)\" puesto aparte, que actúa tanto de plan como de acto en curso."
     },
     {
       "id": "boss_10",
-      "text": "Spawn the set-aside Dimensional Shambler in the Basement."
+      "text": "Haz aparecer el Vagabundo dimensional puesto aparte en el Sótano."
     },
     {
       "id": "shuffle_guest_10",
-      "text": "Shuffle each [[Guest]] enemy in the victory display into the encounter deck, along with the encounter discard pile."
+      "text": "Añade la pila de descartes de Encuentros y todos los Enemigos [[Cliente]] de la zona de victoria al mazo de Encuentros y baraja éste."
     },
     {
       "id": "place_doom_10",
-      "text": "Place 2[per_investigator] doom on “The True Culprit (v. X).”"
+      "text": "Coloca 2 fichas de Perdición [per_investigator] sobre \"El verdadero culpable (v. X)\"."
     },
     {
       "id": "continue_playing",
-      "text": "You are now ready to continue playing."
+      "text": "Ya estás listo para seguir jugando."
     },
     {
       "id": "resolution_2",
@@ -34027,7 +34027,7 @@
     {
       "id": "check_replay_scenario_R2",
       "type": "branch",
-      "text": "If this is the first time you have played this scenario during this campaign:",
+      "text": "Si es la primera vez que has jugado este escenario:",
       "condition": {
         "type": "campaign_data",
         "campaign_data": "scenario_replayed",
@@ -34054,7 +34054,7 @@
     {
       "id": "check_replay_scenario_R3",
       "type": "branch",
-      "text": "If this is the first time you have played this scenario during this campaign:",
+      "text": "Si es la primera vez que has jugado este escenario:",
       "condition": {
         "type": "campaign_data",
         "campaign_data": "scenario_replayed",
@@ -34082,13 +34082,13 @@
     {
       "id": "ask_replay_scenario_R2",
       "type": "input",
-      "text": "You may replay this scenario. If you choose to, reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered. No experience points are earned from your previous game.",
+      "text": "Puedes volver a jugar este escenario. Reinicia la partida a la <b>Preparación</b> de este escenario. No anotes nada más en el registro de campaña excepto cualquier trauma sufrido. La partida anterior no otorga ningún punto de experiencia.",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "replay",
-            "text": "Replay scenario.",
+            "text": "Rejugar el escenario.",
             "steps": [
               "$upgrade_decks",
               "replay_scenario"
@@ -34096,7 +34096,7 @@
           },
           {
             "id": "done",
-            "text": "Do not replay.",
+            "text": "No rejugar el escenario.",
             "steps": [
               "murders_continue_unsolved",
               "earn_xp",
@@ -34110,13 +34110,13 @@
     {
       "id": "ask_replay_scenario_R3",
       "type": "input",
-      "text": "You may replay this scenario. If you choose to, reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered. No experience points are earned from your previous game.",
+      "text": "Puedes volver a jugar este escenario. Reinicia la partida a la <b>Preparación</b> de este escenario. No anotes nada más en el registro de campaña excepto cualquier trauma sufrido. La partida anterior no otorga ningún punto de experiencia.",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "replay",
-            "text": "Replay scenario.",
+            "text": "Rejugar el escenario.",
             "steps": [
               "$upgrade_decks",
               "replay_scenario"
@@ -34124,7 +34124,7 @@
           },
           {
             "id": "done",
-            "text": "Do not replay.",
+            "text": "No rejugar el escenario.",
             "steps": [
               "murders_continue_unsolved",
               "earn_xp",
@@ -34143,7 +34143,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "meh_murders_continue_unsolved",
-          "text": "the murders continue, unsolved."
+          "text": "los asesinatos continúan sin resolver."
         }
       ]
     },
@@ -34251,7 +34251,7 @@
         "physical",
         "mental"
       ],
-      "text": "You collapse to the floor, gasping for breath. The air around you feels oppressive, your ears filled with the agonizing wails of other innocents who have fallen victim to the cruel machinations that continue in the Excelsior hotel. You clutch at the carpet, your vision swirling and swaying as you feel yourself losing consciousness. Your efforts have been in vain. The nefarious plans that have been set into motion can no longer be undone.",
+      "text": "Te desplomas en el suelo tratando de respirar. El aire que te rodea es agobiante, y en tus oídos resuenan los agonizantes alaridos de otros inocentes que han sido víctima de las crueles maquinaciones que siguen teniendo lugar en el hotel Excelsior. Te aferras a la moqueta mientras todo te da vueltas y notas cómo pierdes la consciencia. Tus esfuerzos han sido en vano. Los siniestros planes que se han puesto en marcha ya no pueden detenerse.",
       "steps": [
         "excelsior_claims_another_victim",
         "resolution_2"
@@ -34259,14 +34259,14 @@
     },
     {
       "id": "no_resolution",
-      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "title": "No se ha llegado a ninguna resolución\n(al menos un investigador desistió)",
       "investigator_status": [
         "resigned",
         "eliminated",
         "physical",
         "mental"
       ],
-      "text": "With no hope of solving this mystery, you fled the hotel. Unfortunately, your flight did not do much to prove your innocence. It wasn’t long before the bulls tracked you down and the dreaded knock on your door arrived: “Open up! Arkham Police!”",
+      "text": "Escapaste del hotel sin esperanza de resolver este misterio. Por desgracia, tu huida no contribuye precisamente a demostrar tu inocencia. No pasa mucho tiempo antes de que la pasma te encuentre y llame a tu puerta: — ¡Abra! ¡Policía de Arkham!",
       "steps": [
         "fled_scene_of_the_crime",
         "resolution_3"
@@ -34275,7 +34275,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "Nobody will ever believe what you witnessed at the Excelsior. Not three days later, the hotel was open again, like nothing had ever happened. You know better, though. You witnessed it all firsthand. The events continue to haunt your dreams and your waking thoughts. Even now you go out of your way to avoid the Excelsior, though weeks have passed and there has been no sign of any other nefarious schemes within its accursed walls. The only thing that can quiet the echoing memories of that horrible experience is a visit to the local speakeasy. But all the booze in the world can’t keep the grisly visions from your nightmares, waking you in the dead of night with a violent start, soaked in sweat. That’s when you notice the person asking around town about the Excelsior. Innocent questions, at first, but more prodding with each passing day. Surely they will believe you. Somebody has to. You may have broken free of the Excelsior’s grasp, but there will be other victims, of that you are sure. You grab a piece of paper and hastily scribble a note.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>It’s not over.</fancy></center>\nIf they can see past the veil of the Excelsior’s operations, then maybe others can too. It may not be too late to stop it all from happening again!",
+      "text": "Nadie creerá nunca lo que viviste en el Excelsior. El hotel volvía a estar abierto cuando no habían pasado ni tres días, como si no hubiera pasado nada. Pero tú sabes que no es así. Lo viviste todo en tu propia carne. Los hechos siguen persiguiéndote en tus sue1ios y en tus pensamientos conscientes. Incluso ahora que han pasado semanas, sigues haciendo todo lo posible por evitar el Excelsior, pese a que no hay nada que apunte a que se estén llevando a cabo planes maléficos entre sus paredes. Lo único que acalla el eco de los recuerdos de esa horrible experiencia son las visitas a tu garito habitual. Pero ni todo el alcohol del mundo puede sacar de tus pesadillas esas macabras visiones que te despiertan violentamente en mitad de la noche empapado en sudor. Y es entonces cuando descubres que hay una persona preguntando por el Excelsior por toda la ciudad. Al principio son preguntas inocentes, pero se van volviendo más incisivas con cada día que pasa. Seguro que te cree. Alguien tiene que hacerlo. Tal vez te hayas liberado de las garras del Excelsior, pero debe de haber otras víctimas, estás seguro de ello. Coges un trozo de papel y garabateas una nota apresuradamente.\n<center><fancy>Es todo un montaje.</fancy></center>\n<center><fancy>Habitación 225. Esta noche.</fancy></center>\n<center><fancy>No ha acabado.</fancy></center>\nSi logra ver tras la fachada del funcionamiento del Excelsior, quizá otros también puedan. ¡Tal vez no sea demasiado tarde para evitar que vuelva a suceder!",
       "steps": [
         "excelsior_is_quiet_for_now",
         "check_police_on_your_side",
@@ -34287,7 +34287,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "“Sit there any longer and I’ll have to charge you rent.” You blink rapidly, as if coming out of a deep dream. Looking up, you see a waiter giving you an annoyed look. He is carrying a stack of dirty dishes. In your hand is a glass of water. You don’t remember ordering it, nor do you remember how long you’ve been here. And where <i>is</i> here, exactly? You spin around in your chair and realize you’re in the restaurant of the Excelsior Hotel. A few other diners are present, catching an early dinner and minding their own business. The soft light of an autumn afternoon filters in through the windows, and the general din of activity can be heard from the lobby. You turn and briefly glance back at the waiter before reaching in your pocket and dropping a quarter on the table, heading for the lobby. Your legs feel like jelly. As you stumble out of the restaurant, other guests view you with concern. The security guard in the corner watches you like a hawk. You head over to the front desk, steadying yourself against it. The concierge approaches, but you recoil at the recognition of his face. The hotel is operating as if nothing happened. But that can’t be. Everything you saw was true, right? You dash out the front door before he can reach you. You have to put some distance between yourself and this accursed place.\nWeeks pass. Nothing helps to quell the feeling in your mind that you have missed something important. This business with the Excelsior is not done, not by a long shot. You begin your investigation anew, asking around town for the latest rumors regarding the hotel. More missing staff. More sudden closures. Guests who never arrived. Guests who <i>never</i> left. It’s all too much.\nStanding on a lonely street corner in Northside, you consider your options. Streetlamps flicker to life around you as evening creeps in. Just then, a stranger bumps into you, muttering a half-hearted apology. You take a step after them before you feel something tugging at the back of your mind. No. Could it be? You stick your hands into your coat pocket. Stuffed inside is a small, folded note. You look up, but the pedestrian is nowhere in sight. You unfold the note slowly, fingers shaking from anxiety and fear.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>This isn't over.</fancy></center>",
+      "text": "—Si sigue ahí sentado mucho más tiempo, le voy a tener que cobrar alquiler.\nParpadeas rápidamente, corno si salieras de un sueño profundo. Al levantar la mirada, ves a un camarero que te mira contrariado y lleva una pila de platos sucios. Tienes un vaso de agua en la mano. No recuerdas haberlo pedido, ni tampoco cuánto tiempo llevas aquí. ¿Y dónde es aquí exactamente? Te giras en la silla y te das cuenta de que estás en el restaurante del hotel Excelsior. Hay algunos comensales más que disfrutan de una cena temprana y se ocupan de sus asuntos. La tenue luz de la tarde otoñal se filtra por las ventanas, y desde el vestíbulo llega el habitual murmullo de actividad. Te das la vuelta de nuevo para mirar al camarero, te metes la mano en el bolsillo y dejas veinticinco centavos sobre la mesa antes de dirigirte hacia el vestíbulo. Notas las piernas como de gelatina. Al salir tambaleante del restaurante, otros clientes te miran con preocupación. El guardia de seguridad del rincón no te quita ojo de encima. Te acercas al mostrador de recepción y te apoyas en él para no caerte. El conserje se acerca, pero retrocedes al ver que te reconoce. El hotel está funcionando como si no hubiera pasado nada. Pero eso no puede ser. Todo lo que viste era cierto, ¿verdad? Sales corriendo por la puerta principal antes de que te alcance. Tienes que poner tierra de por medio entre este maldito lugar y tú.\nPasan semanas. Nada te ayuda a acallar la sensación en tu mente de que has pasado por alto algo importante. El asunto del Excelsior no ha terminado ni mucho menos. Comienzas de nuevo tu investigación, preguntando por la ciudad acerca de cualquier rumor reciente sobre el hotel. Más personal desaparecido. Más cierres repentinos. Clientes que nunca llegan. Clientes que nunca se marchan. Es demasiado.\nParado en una solitaria esquina del Barrio Norte, sopesas tus opciones. Las farolas se encienden entre parpadeos a tu alrededor mientras cae la noche. En ese momento, un desconocido se choca contigo y murmura una disculpa desganada. Das un paso en su dirección, pero algo en tu subconsciente te hace detenerte. No. ¿Podría ser...? Metes la mano en el bolsillo de tu abrigo. En su interior hay una notita doblada. Cuando vuelves a mirar, el desconocido ya no está. Desdoblas la nota lentamente, con los dedos temblorosos de miedo y ansiedad.\n<center><fancy>Es todo un montaje.</fancy></center>\n<center><fancy>Habitación 225. Esta noche.</fancy></center>\n<center><fancy>No ha acabado.</fancy></center>",
       "steps": [
         "check_replay_scenario_R2"
       ]
@@ -34295,7 +34295,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "You sit in a cold, dank holding cell awaiting your arraignment. You have no doubt that with the evidence the police gathered, you’ll be spending the rest of your life behind bars. You have sworn high and low that you had nothing to do with the murder, but doubt lingers in your mind. Could it have been you, somehow? What really happened in the Excelsior that night?\nJust then, you hear rapping on the bars of your cell. An officer stands just outside, looking away from you. He slips a folded note between the bars of your cell. Knowing better than to ask his intentions out loud, you slowly walk over and unfold the note, your fingers shaking with trepidation.\n<center><fancy>It’s all a facade.</fancy></center>\n<center><fancy>Room 225. Tonight.</fancy></center>\n<center><fancy>This isn't over.</fancy></center>\nJust as you finish reading the note, you hear the click of the cell’s latch unlocking. The officer is gone, and the door to your cell swings open.",
+      "text": "Estás sentado en una fría y húmeda celda esperando que terminen las diligencias. No tienes ninguna duda de que, con las pruebas que ha reunido la policía, te vas a pasar el resto de tu vida entre rejas. Has jurado y perjurado que no tuviste nada que ver con el asesinato, pero sigue habiendo una duda en tu mente. ¿Podrías haber sido tú el asesino de algún modo? ¿Qué ocurrió realmente en el Excelsior aquella noche?\nEn ese momento, oyes que alguien llama en los barrotes de tu celda. Fuera de ella hay un agente mirando para otro lado. Te pasa una nota doblada entre los barrotes. Sería absurdo preguntarle en alto que qué hace, así que te acercas lentamente, coges la nota y la desdoblas con los dedos temblorosos de inquietud.\n<center><fancy>Es todo un montaje.</fancy></center>\n<center><fancy>Habitación 225. Esta noche.</fancy></center>\n<center><fancy>No ha acabado.</fancy></center>\nNada más acabar de leer la nota, oyes el clic de la cerradura de la celda al abrirse. El agente se ha ido, y la puerta está abierta de par en par.",
       "steps": [
         "check_replay_scenario_R3"
       ]
@@ -34304,8 +34304,8 @@
 },
 {
   "id": "read_or_die",
-  "scenario_name": "Read or Die",
-  "full_name": "Read or Die",
+  "scenario_name": "Lee o muere",
+  "full_name": "Lee o muere",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -34353,16 +34353,16 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You’ve spent your entire life reading. As a child, it was but a simple interest in harmless stories. Grisly stories, to be sure, but harmless nonetheless. Your fascination with horror and the macabre earned you the nickname “Spooks” among your friends and classmates. But as you grew, so too did this fascination, until it bordered on obsession. Your appetite for horror evolved from mystery and make-believe to something more. Something <i>real</i>.\nWhen you discovered John Dee’s translation of The Necronomicon, you knew you’d finally found the true horror you had been secretly yearning for. If only you’d known what would be in store for you once you’d read that dreadful tome. You would have locked it back up in Henry Armitage’s restricted collection in the Orne Library and never opened it again.\nOr so you like to think. But even you cannot doubt the allure of the <i>Kitab al-Azif</i>. The Book of the Dead. That is why, when Dr. Armitage summoned you to the Orne Library, the dread in your bones predicted precisely what had occurred.\n“I don’t understand how this could have happened,” Dr. Armitage says as he surveys the destruction. The entire restricted collection is in tattered disarray. The Necronomicon lies open on a nearby table, its metal clasps broken apart. You run your fingers along its leathery, skin-like pages. Your eyes flit along the words in a familiar dance:\n<center><i>“They walk unseen and foul in lonely places where the Words have been spoken and the Rites howled through at their Seasons. The wind gibbers with Their voices, and the earth mutters with Their consciousness.”</i></center>\nYour throat tightens as you realize what must have occurred. Something has been unleashed, and you are the only one who can figure out how to stop it…"
+      "text": "Te has pasado toda la vida leyendo. De niña, no era más que un sencillo interés en historias inofensivas. Eran relatos espeluznantes, sí, pero inofensivos en cualquier caso. Tu fascinación por el horror y lo macabro hizo que te ganaras el apodo de «Sustitos» entre tus amigos y compañeros de clase. A medida que creciste, también lo hizo esta fascinación, hasta rayar en lo obsesivo. Tu apetito por el terror evolucionó del misterio y la ficción a algo más. Algo <i>real</i>.\nCuando descubriste la traducción del Necronomicón de John Dee, supiste que por fin habías encontrado el verdadero terror que ansiabas en secreto. Ojalá hubieras sabido lo que te esperaba tras haber leído ese horrible tomo. Lo habrías encerrado con llave en la colección restringida de Henry Armitage en la Biblioteca Orne y no habrías vuelto a sacarlo de allí.\nAl menos eso quieres pensar. Pero ni siquiera tú puedes poner en duda la atracción del <i>Kitab al-Azif</i>. El Libro de los Muertos. Por esa razón, cuando el Dr. Armitage te hizo llamar a la Biblioteca Orne, el temor que sentías en los huesos presagiaba exactamente lo que había ocurrido.\n–No entiendo cómo puede haber pasado esto –dice el Dr. Armitage mientras examina la destrucción. Toda la colección restringida está hecha un verdadero desastre. El Necronomicón se encuentra abierto en una mesa cercana, con los cierres metálicos rotos. Pasas los dedos por sus coriáceas páginas similares a la piel humana. Tus ojos van recorriendo las palabras, siguiendo una danza familiar:\n<center><i>«Se pasean inadvertidos y pestilentes por los solitarios lugares donde se pronunciaron las Palabras y se profirieron los Rituales en su debido momento. Sus voces hacen tremolar el viento y sus conciencias trepidar la tierra».</i></center>\nSe te hace un nudo en la garganta cuando te das cuenta de lo que debe de haber ocurrido. Algo ha sido liberado, y eres la única que puede averiguar cómo detenerlo…"
     },
     {
       "id": "investigator_setup",
-      "title": "Investigator Setup",
-      "text": "Remove each non-weakness [[Tome]] asset from Daisy Walker’s deck. Set each of these assets aside, out of play"
+      "title": "Preparación del investigador",
+      "text": "Retira todos los Apoyos [[Tomo]] que no sean Debilidad del mazo de Daisy Walker. Deja aparte todos estos Apoyos, fuera del juego."
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Preparación del escenario",
       "type": "encounter_sets",
       "encounter_sets": [
         "read_or_die",
@@ -34379,28 +34379,28 @@
     },
     {
       "id": "new_scenario_card",
-      "text": "Remove the original scenario reference card from the <i>Extracurricular Activity</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>Read or Die</i> encounter set."
+      "text": "Retira de la partida la carta de referencia de escenario original del conjunto de encuentros <i>Actividad extracurricular</i>: Usa la nueva carta de referencia de escenario que se proporciona con el conjunto de encuentros descargable <i>Lee o muere</i>."
     },
     {
       "id": "new_act_agenda",
-      "text": "Remove the original act and agenda deck from the <i>Extracurricular Activity</i> encounter set from the game. Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>Read or Die</i> encounter set."
+      "text": "Retira de la partida los mazos de Acto y de Plan originales del conjunto de encuentros <i>Actividad extracurricular</i>: Crea los mazos de Acto y de Plan únicamente con las nuevas cartas de Acto y de Plan que se proporcionan con el conjunto de encuentros descargable <i>Lee o muere</i>."
     },
     {
       "id": "remove_misc_cards",
-      "text": "Remove the Faculty Offices <i>(The Hour is Late)</i> location, the Alchemy Labs location, the Alchemical Concoction story asset, The Experiment enemy, and the Professor Warren Rice story asset from the game. These cards are not used in this challenge scenario."
+      "text": "Retira de la partida el Lugar Despachos del profesorado <i>(Se ha hecho tarde)<i/>, el Lugar Laboratorios de alquimia, el Apoyo de historia Pócima alquímica, el Enemigo El experimento y el Apoyo de historia Profesor Warren Rice. Estas cartas no se usan en el escenario de desafío."
     },
     {
       "id": "setup_locations",
-      "text": "Put each of the remaining locations into play: Miskatonic Quad, Orne Library, Humanities Building, Student Union, Science Building, Administration Building, Dormitories, and Faculty Offices <i>(The Night is Still Young)</i>.",
+      "text": "Pon en juego todos los Lugares restantes: Patio principal de Miskatonic, Biblioteca Orne, Edificio de Humanidades, Sindicato de estudiantes, Edificio de Ciencias, Edificio de administración, Residencia estudiantil y Despachos del profesorado <i>(La noche aún es joven)</i>.",
       "bullets": [
         {
-          "text": "Daisy Walker begins play at the Orne Library."
+          "text": "Daisy Walker comienza la partida en la Biblioteca Orne."
         },
         {
-          "text": "Each other investigator begins play at the Miskatonic Quad."
+          "text": "Cada uno de los demás investigadores comienza la partida en el Patio principal de Miskatonic."
         },
         {
-          "text": "<b>Since Dormitories and Faculty Offices start the game in play and Alchemy Labs is removed from the game, ignore any Forced abilities that would put these locations into play.</b>"
+          "text": "<b>Puesto que la Residencia estudiantil y los Despachos del profesorado empiezan la partida en juego y los Laboratorios de alquimia se han retirado de la partida, ignora cualquier capacidad Obligado que fuera a poner en juego estos Lugares.</b>"
         }
       ]
     },
@@ -34451,24 +34451,24 @@
     },
     {
       "id": "setup_tomes",
-      "text": "Shuffle each of the set-aside [[Tome]] assets previously removed from Daisy Walker’s deck and place 1 of them facedown beneath each location except for the Miskatonic Quad, starting with the locations farthest from the Orne Library. Place each remaining set-aside [[Tome]] asset facedown beneath the Orne Library.",
+      "text": "Baraja todos los Apoyos [[Tomo]] puestos aparte que se retiraron anteriormente del mazo de Daisy Walker y coloca 1 de ellos boca abajo bajo cada Lugar excepto el Patio principal de Miskatonic, empezando por los Lugares más alejados de la Biblioteca Orne. Coloca todos los Apoyos [[Tomo]] puestos aparte restantes boca abajo bajo la Biblioteca Orne.",
       "bullets": [
         {
-          "text": "For example, if Daisy Walker previously set 12 [[Tome]] assets aside, 1 would be placed facedown beneath each location except for Miskatonic Quad, and the remaining 6 would be placed beneath Orne Library"
+          "text": "Por ejemplo, si Daisy Walker había puesto aparte 12 Apoyos [[Tomo]], se colocaría 1 boca abajo bajo cada Lugar excepto el Patio principal de Miskatonic, y los 6 restantes se colocarían bajo la Biblioteca Orne."
         }
       ]
     },
     {
       "id": "setup_jazz_mulligan",
-      "text": "Put the “Jazz” Mulligan story asset into play at the Science Building."
+      "text": "Pon en juego el Apoyo de historia «Jazz» Mulligan en el Edificio de Ciencias."
     },
     {
       "id": "spawn_namer_of_the_dead",
-      "text": "Place the Namer of the Dead enemy (provided in the downloadable <i>Read or Die</i> encounter set) into play at the Orne Library, unengaged and exhausted."
+      "text": "Coloca el Enemigo Nombrador de los muertos (se proporciona en el conjunto de encuentros descargable <i>Lee o muere</i>) en juego en la Biblioteca Orne, sin enfrentar y agotado."
     },
     {
       "id": "daisy_gets_henry_armitage",
-      "text": "Daisy Walker takes control of the Dr. Henry Armitage story asset. (If Dr. Henry Armitage is already part of an investigator’s deck, search that investigator’s deck for Dr. Henry Armitage and put him into play under Daisy Walker’s control.)"
+      "text": "Daisy Walker toma el control del Apoyo de historia Dr. Henry Armitage. Si el Dr. Henry Armitage ya es parte del mazo de un investigador, busca al Dr. Henry Armitage en el mazo de ese investigador y ponlo en juego bajo el control de Daisy Walker."
     },
     {
       "id": "encounter_deck",
@@ -34481,14 +34481,14 @@
     },
     {
       "id": "daisy_bad_swap",
-      "text": "Daisy Walker must either upgrade The Necronomicon <i>(John Dee Translation)</i> to its advanced version, or downgrade the advanced version of Daisy’s Tote Bag to its original version",
+      "text": "Daisy Walker debe mejorar El Necronomicón <i>(Traducción de John Dee)</i> a su versión avanzada o bien reducir la versión avanzada del Bolso de mano de Daisy a su versión original:",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "necronomicon",
-            "text": "Upgrade to advanced The Necronomicon",
+            "text": "Mejorar la versión de El Necronomicón",
             "effects": [
               {
                 "type": "remove_card",
@@ -34508,7 +34508,7 @@
           },
           {
             "id": "tote_bag",
-            "text": "Downgrade from advanced Daisy's Tote Bag",
+            "text": "Reducir la versión del Bolso de mano de Daisy",
             "effects": [
               {
                 "type": "remove_card",
@@ -34531,14 +34531,14 @@
     },
     {
       "id": "daisy_good_swap",
-      "text": "Daisy Walker may either upgrade Daisy’s Tote Bag to its advanced version, or downgrade the advanced version of The Necronomicon <i>(John Dee Translation)</i> to its original version.",
+      "text": "Daisy Walker puede mejorar el Bolso de mano de Daisy a su versión avanzada o bien reducir la versión avanzada de El Necronomicón <i>(Traducción de John Dee)</i> a su versión original:",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "tote_bag",
-            "text": "Upgrade to advanced Daisy's Tote Bag",
+            "text": "Mejorar el Bolso de mano de Daisy",
             "effects": [
               {
                 "type": "remove_card",
@@ -34558,7 +34558,7 @@
           },
           {
             "id": "necronomicon",
-            "text": "Downgrade advanced The Necronomicon",
+            "text": "Reducir la versión de El Necronomicón",
             "effects": [
               {
                 "type": "remove_card",
@@ -34578,18 +34578,18 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "No realizar cambios"
           }
         ]
       }
     },
     {
       "id": "ask_daisy_tomes",
-      "text": "How many [[Tome]] assets did Daisy Walker have in play at the end of the scenario?",
+      "text": "¿Cuántos Apoyos Tomo tenía Daisy Walker en juego al final del escenario?",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Tome assets:",
+        "text": "Apoyos Tomo:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -34602,7 +34602,7 @@
     },
     {
       "id": "others_experience",
-      "text": "Each investigator besides Daisy Walker earns experience equal to the Victory X value of each card in the victory display.",
+      "text": "Cada uno de los demás investigadores obtiene una cantidad de experiencia igual al valor de Victoria X de todas las cartas de la zona de victoria.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -34623,7 +34623,7 @@
     },
     {
       "id": "daisy_experience_explanation",
-      "text": "Daisy Walker earns experience equal to either the combined Victory X value of each card in the victory display, or equal to the number of [[Tome]] assets she had in play at the end of the game, whichever is higher."
+      "text": "Daisy Walker obtiene una cantidad de experiencia igual al valor combinado de Victoria X de todas las cartas de la zona de victoria o bien igual a la cantidad de Apoyos [[Tomo]] que tenía en juego al final de la partida, lo que sea mayor."
     },
     {
       "id": "daisy_experience",
@@ -34678,7 +34678,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "When you wake, the floor of the library is a mess of scattered paper and torn books. The Necronomicon lies in front of you, its metal clasp sealing it shut once more. Hopefully, whatever presence had been unleashed is safely stored within. But you can’t risk the grimoire staying here—it is far too dangerous to be left alone. You stuff the tome into your tote bag, knowing only you can keep it safe...or keep others safe from it.",
+      "text": "Cuando despiertas, el suelo de la biblioteca es un caos de papeles diseminados y libros rotos. Tienes el Necronomicón delante, firmemente cerrado una vez más mediante su cierre metálico. Ojalá la presencia que había quedado liberada vuelva a estar encerrada en su interior. Pero no puedes arriesgarte a que el grimorio se quede aquí; dejarlo solo es excesivamente peligroso. Te metes el tomo en el bolso de mano, sabiendo que solo tú puedes mantenerlo a salvo... o mantener a los demás a salvo de él.",
       "steps": [
         "ask_daisy_tomes",
         "others_experience",
@@ -34691,7 +34691,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You stuff the tome back into your tote bag. You can only hope that the entity that was unleashed won’t cause further harm...",
+      "text": "Vuelves a guardarte el tomo en el bolso de mano. Solo te queda esperar que la entidad que había quedado liberada no provoque más daños...",
       "steps": [
         "ask_daisy_tomes",
         "others_experience",
@@ -34705,8 +34705,8 @@
 },
 {
   "id": "the_eternal_slumber",
-  "scenario_name": "The Eternal Slumber",
-  "full_name": "The Eternal Slumber",
+  "scenario_name": "El letargo eterno",
+  "full_name": "El letargo eterno",
   "xp_cost": 2,
   "setup": [
     "xp_cost",
@@ -34737,21 +34737,21 @@
     },
     {
       "id": "explore_rule",
-      "title": "explore",
+      "title": "Explorar",
       "type": "rule_reminder",
-      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "text": "Algunas capacidades de <i>Guardianes del Abismo</i> se identifican mediante el tipo de acción <b>Explorar</b>. Dichas capacidades se suelen usar para encontrar nuevos Lugares que poner en juego, y se inician con la acción de “activar”:\nLas capacidades <b>Explorar</b> te indican que robes la primera carta del \"mazo de Exploración\", que es un mazo aparte que se crea durante este escenario. Este mazo está formado por varios Lugares de una sola cara y por cartas de Traición.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Cada capacidad <b>Explorar</b> indica un tipo de Lugar concreto que intentas robar. <b>Si se roba un Lugar de ese tipo, se pone en juego y te mueves a él.</b> Esto se considera una exploración \"con éxito\"."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si se roba cualquier otro Lugar, colócalo junto al mazo de Exploración y roba la siguiente carta del mazo de Exploración. Repite este proceso hasta que se robe un Lugar del tipo indicado o una Traición. Después de que esta acción haya acabado, devuelve al mazo de Exploración todos los Lugares que haya junto a éste y barájalo."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si se roba una carta de Traición, se resuelve de forma normal. Si se descarta, colócala en la pila de descartes de Encuentros como lo harías normalmente. El mazo de Exploración no tiene pila de descartes. Esto se considera una exploración \"sin éxito\"."
         },
         {
-          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         }
       ],
       "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River."
@@ -34760,24 +34760,24 @@
       "id": "story_cards",
       "title": "Story Cards",
       "type": "rule_reminder",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+      "text": "Las cartas de Historia son un nuevo tipo de carta de este escenario. Estas cartas sirven para proporcionar una narrativa adicional y suelen aparecer en el dorso de otra carta del escenario. Cuando debas resolver una carta de Historia, lee su texto de ambientación y resuelve su texto de reglas si lo hay.\n<i>Nota: cuando se le dé la vuelta a un Lugar o Enemigo que esté en juego para mostrar la carta de Historia que tiene en su otro lado, dicho Lugar o Enemigo se sigue considerando en juego mientras se esté resolviendo la carta de Historia.</i>"
     },
     {
       "id": "strength_of_the_abyss",
-      "title": "Strength of the Abyss",
+      "title": "Fuerza del Abismo",
       "type": "rule_reminder",
-      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+      "text": "Durante este escenario, los recursos que haya sobre la carta de referencia de escenario representan la fuerza del Abismo actual. Cuando se te indique que añadas fuerza al Abismo o que retires fuerza del Abismo, modifica la cantidad de fichas de Recursos de la carta de referencia de escenario según se requiera. La fuerza del Abismo no tiene ningún efecto de juego inherente por sí misma, pero algunos efectos de cartas de Encuentro pueden volverse más potentes o cambiar en función de la fuerza del Abismo actual. Tened cuidado, porque a medida que el Abismo se vuelva más fuerte, también lo harán las fuerzas que se oponen a ti. Si se vuelve demasiado poderoso, fracasaréis como Guardianes del Abismo."
     },
     {
       "id": "taken_by_the_abyss",
-      "title": "“Taken by the Abyss”",
+      "title": "\"Atrapado por el Abismo\"",
       "type": "rule_reminder",
-      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven insane. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+      "text": "Si un efecto indica que un investigador derrotado o Apoyo [[Aliado]] ha sido <i>\"atrapado por el Abismo\"</i>, ese personaje se ha visto afectado por una maldición que le sume en un estado comatoso. Cuando un investigador o Apoyo Aliado sea <i>atrapado por el Abismo</i>, añade 1 punto de fuerza al Abismo antes de nada. A continuación, si esa carta era única, anota en el registro de campaña que <i>\"(nombre de la carta) ha sido atrapado/a por el Abismo\"</i>. Un investigador que haya sido <i>atrapado por el Abismo</i> se considera como si hubiera muerto o se hubiera vuelto loco. Además, durante el resto de la campaña, los jugadores no pueden jugar copias de ningún Apoyo [[Aliado]] único que haya sido <i>atrapado por el Abismo</i>."
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<fancy>Greetings,</fancy>\n<fancy>I'm sorry. I know it has been some time since my last correspondence. I am writing to you now because there is nobody I can trust here in Cairo. I don't even know if this letter will make it to you safely. I can only hope it does, for all our sakes.</fancy>\n<fancy>There's something wrong in this city. It started a few weeks ago. The head curator of the Museum of Egyptian Antiquities fell asleep and simply never awoke. I thought nothing of it at first; just a medical curiosity, a mystery the doctors would solve in due time. But then it happened again. And again. More and more, people all across the city started falling into comas. Now it's happening every night. . . And as I write to you, they are taking my husband John to the hospital.</fancy>\n<fancy>I'm scared. I don't want to fall asleep and never wake up again. But more than that, I'm worried that there are people purposely inflicting this curse on others. And if so, why?</fancy>\n<fancy>Please, I am begging you. I need your help.</fancy>\n<fancy>Yours sincerely,</fancy>\n<fancy>Jessie Burk</fancy>"
+      "text": "<fancy>Saludos,</fancy>\n<fancy>Lo Lamento. Sé que ha pasado algún tiempo desde mi última misiva. Te escribo de nuevo porque en El Cairo no hay nadie más en quien pueda confiar. Ni siquiera sé si esta carta te llegará intacta. Sólo puedo esperar que sea así, pues hay mucho en juego.</fancy>\n<fancy>Está ocurriendo algo en esta ciudad. Comenzó hace unas semanas. El conservador jefe del Museo de Antigüedades Egipcias se quedó dormido y no ha vuelto a despertar. Al principio no le di importancia; era una simple curiosidad médica, un misterio que los doctores resolverían con el tiempo. Pero luego volvió a ocurrir. Una y otra vez. Cada vez más gente entraba en coma por toda la ciudad. Ahora está pasando cada noche... Están trasladando al hospital a John, mi marido, mientras escribo estas líneas.</fancy>\n<fancy>Estoy asustada. No quiero dormirme para no despertar. Pero me preocupa mucho más que haya gente infligiendo esta maldición sobre otras personas a propósito. Y si es así, ¿por qué?</fancy>\n<fancy>Por favor, te lo ruego. Necesito tu ayuda.</fancy>\n<fancy>Atentamente,</fancy>\n<fancy>Jessie Burk</fancy>"
     },
     {
       "id": "gather_encounter_sets",
@@ -34792,7 +34792,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Streets of Cairo, Outskirts of Cairo, Temple Courtyard, Museum of Egyptian Antiquities, Cairo Bazaar, and Expedition Camp. Each investigator begins play in the Streets of Cairo."
+      "text": "Pon en juego los siguientes Lugares: Calles de El Cairo, Afueras de El Cairo, Patio del templo, Museo de Antigüedades Egipcias, Bazar de El Cairo y Campamento de expedición. Cada investigador comienza la partida en las Calles de El Cairo."
     },
     {
       "id": "location_layout",
@@ -34823,15 +34823,15 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Neith, John & Jessie Burke, Ancient Ankh, both copies of Abyssal Revenant, and each of the 7 single-sided locations (Nile River, Sands of Dashur, Dunes of the Sahara, Untouched Vault, Faceless Sphinx, Desert Oasis, and Sandswept Ruins)."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Neith, John y Jessie Burke, Anj antiguo, ambas copias del Resucitado abisal y los 7 Lugares de una sola cara (Río Nilo, Arenas de Dahshur, Dunas del Sáhara, Cámara intacta, Esfinge sin rostro, Oasis del desierto y Ruinas azotadas por la arena)."
     },
     {
       "id": "create_brotherhood_deck",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies (Professor Nathaniel Taylor, Dr. Layla El Masri, Dr. Wentworth Moore, Nadia Nimr, Farid, and Nassor). These enemies have story cards on their reverse sides <i>(see “Story Cards” on page 6).</i> For the best experience, do not look at the story cards on their reverse sides. Shuffle these 6 enemies together and place them beneath the scenario reference card."
+      "text": "Busca los 6 Enemigos [[Hermandad]] de doble cara (Profesor Nathaniel Taylor, Dra. Layla El Masri, Dr. Wentworth Moore, Nadia Nimr, Parid y Nassor). Estos Enemigos tienen cartas de Historia en su dorso <i>(consulta \"Cartas de Historia\")</i>. Para una mejor experiencia, no mires las cartas de Historia de sus dorsos. Baraja estos 6 Enemigos juntos y colócalos bajo la carta de referencia de escenario."
     },
     {
       "id": "set_strength_of_the_abyss",
-      "text": "For each investigator in the game, place 1 resource token on the scenario reference card, under “Strength of the Abyss.” For the remainder of this scenario, resources on the scenario reference card represent the current strength of the abyss <i>(see “Strength of the Abyss”).</i>"
+      "text": "Por cada investigador que haya en la partida, coloca 1 ficha de Recurso sobre la carta de referencia de escenario, en la sección \"Fuerza del Abismo\". Durante el resto de este escenario, los recursos que haya sobre la carta de referencia de escenario representan la fuerza del Abismo actual <i>(consulta \"Fuerza del Abismo\")</i>."
     },
     {
       "id": "encounter_deck",
@@ -34854,18 +34854,18 @@
     },
     {
       "id": "record_dreamers_in_abyss",
-      "text": "In your Campaign Log, record <i>dreamers in the abyss (X)</i>. X is the strength of the abyss when the scenario ended.",
+      "text": "Anota en el registro de campaña <i>Soñadores en el Abismo (X)</i>. X es la fuerza del Abismo en el momento en el que acabó el escenario.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Strength of the Abyss:",
+        "text": "Fuerza del Abismo:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "tes_dreamers_in_the_abyss",
             "operation": "set_input",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "Soñadores en el Abismo (#X#)"
           }
         ]
       }
@@ -34873,7 +34873,7 @@
     {
       "id": "record_escaped_brotherhood",
       "type": "input",
-      "text": "In your Campaign Log, record <i>Brotherhood Agents Who Escaped:</i> and list the names of each unique [[Cultist]] enemy that was in play or beneath the scenario reference card when the game ended.",
+      "text": "Anota en el registro de campaña <i>Agentes de la Hermandad que escaparon:</i> y añade los nombres de todos los Enemigos [[Sectario]] únicos que estaban en juego o bajo la carta de referencia de escenario en el momento en el que acabó la partida.",
       "input": {
         "type": "card_choice",
         "query": [
@@ -34886,13 +34886,13 @@
         "choices": [
           {
             "id": "escaped",
-            "text": "Escaped",
+            "text": "Escaparon",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_escaped_brotherhood",
-                "text": "Brotherhood Agents Who Escaped: #name#"
+                "text": "Agentes de la Hermandad que escaparon: #name#"
               }
             ]
           }
@@ -34901,7 +34901,7 @@
     },
     {
       "id": "earn_ancient_ankh",
-      "text": "Any one investigator may choose to add the Ancient Ankh to their deck. It does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Anj antiguo a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -34912,7 +34912,7 @@
     },
     {
       "id": "earn_john_and_jessie",
-      "text": "Any one investigator may choose to add John & Jessie Burke to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir a John y Jessie Burke a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -34928,7 +34928,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_brotherhood_schemes_continue",
-          "text": "the Brotherhood’s schemes continue unabated."
+          "text": "los planes de la Hermandad prosiguen sin oposición."
         }
       ]
     },
@@ -34939,19 +34939,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_aware_of_xzharahs_plan",
-          "text": "you are aware of Xzharah’s plans."
+          "text": "los investigadores conocen los planes de Xzharah."
         }
       ]
     },
     {
       "id": "curse_of_slumber_lifted",
-      "text": "In your Campaign Log, record that <i>the curse of slumber was lifted</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log.",
+      "text": "Anota en el registro de campaña que <i>la maldición del letargo fue disipada</i>. Tacha todas las notas <i>\"(nombre de la carta) ha sido atrapado/a por el Abismo\"</i> del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tes_curse_of_slumber_lifted",
-          "text": "the curse of slumber was lifted."
+          "text": "la maldición del letargo fue disipada."
         },
         {
           "type": "campaign_log",
@@ -34976,14 +34976,14 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Atrapado por el Abismo",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "text": "#name# ha sido atrapado por el Abismo."
               }
             ]
           }
@@ -35000,14 +35000,14 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Atrapado por el Abismo",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "text": "#name# ha sido atrapado por el Abismo."
               }
             ]
           }
@@ -35022,14 +35022,14 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "Aliados únicos atrapados por el Abismo",
             "steps": [
               "record_ally_taken_by_the_abyss"
             ]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "Investigadores atrapados por el Abismo",
             "steps": [
               "record_investigator_taken_by_the_abyss"
             ]
@@ -35048,7 +35048,7 @@
         "physical",
         "mental"
       ],
-      "text": "The city of Cairo sleeps andwill never wake. In the west, the Brotherhood rejoices, fortheir prophecy is about to be fulfilled. And deep in the landof dreams, their Chosen grips his weapon for the first time.",
+      "text": "La ciudad de El Cairo duerme y no despertará nunca. Al oeste, la Hermandad se regocija, pues su profecía está a punto de cumplirse. Y en lo más profundo de la tierra de los sueños, su Elegido aferra su arma por primera vez.",
       "steps": [
         "earn_xp",
         "record_dreamers_in_abyss",
@@ -35060,7 +35060,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "Jessie Burke cries with joy as her husband opens his eyes for the first time in weeks. “J… Jessie?” John trembles as he tries and fails to stand. His wife places a hand on his shoulder to steady him. “I thought you would never wake,” she admits, wiping tears from her eyes. “If it weren’t for our friends here, you’d still be under.” John turns to you, his expression dire. “Then you’re the only ones who can stop what is coming,” he says cryptically. “In my dreams, I saw him. The one they called Xzharah.” He swallows hard. “And he is like nothing we’ve ever seen before.”",
+      "text": "Jessie Burke llora de alegría cuando su marido abre los ojos por primera vez desde hace semanas.\n—¿J-Jessie? —dice John mientras intenta levantarse tembloroso sin conseguirlo. Su esposa le pone la mano en el hombro para sostenerlo.\n—Pensé que nunca despertarías —admite mientras se enjuga las lágrimas de los ojos—. Si no fuera por estos amigos, aún seguirías así.\nJohn se vuelve hacia vosotros con expresión adusta: —Entonces sólo vosotros podréis detener lo que se avecina —dice de forma enigmática—. Lo vi en mis sueños. Aquel al que llaman Xzharah —Traga saliva—. Y es distinto a nada que hayamos visto nunca.",
       "steps": [
         "curse_of_slumber_lifted",
         "earn_john_and_jessie",
@@ -35073,7 +35073,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "Neith rises to her feet. Most of her power has been drained, but the strength of several dreamers still sustains her. “They have planned for centuries. Their day of reckoning is coming. Nothing can stop that. Not I. Certainly not you.” You notice she speaks as if she were a third party, and you press further. “Do you think I had a choice?” She scoffs. “None can withstand Xzharah. You will see. He will bend your will just as he did mine.” Her shadow grows and warps , misshapen. “It is the Abyss he wants. If you wish to stop him, head west. Xzharah awaits beyond the Gate.” Neith’s shadow consumes her body whole, and she vanishes from sight. Only her amulet remains.",
+      "text": "Neith se pone en pie. Ha perdido la mayor parte de su poder, pero aún se sustenta mediante la fuerza de varios soñadores.\n—Llevan siglos planeando esto. Se acerca el día de la verdad. Nada puede evitarlo. Yo no puedo, y mucho menos vosotros.\nOs dais cuenta de que habla como si fuera ajena al plan y le preguntáis por ello.\n—¿Creéis que tuve elección? —se burla—, Nadie puede resistir ante Xzharah. Ya lo veréis. Doblegará vuestra voluntad como hizo con la mía —Su sombra crece y se distorsiona hasta deformarse—. Lo que quiere es el Abismo. Si queréis detenerlo, id hacia el oeste. Xzharah aguarda al otro lado del portal.\nLa sombra de Neith consume todo su cuerpo, y la mujer se desvanece. Sólo queda su amuleto.",
       "steps": [
         "aware_of_xzharahs_plan",
         "earn_ancient_ankh",
@@ -35087,8 +35087,8 @@
 },
 {
   "id": "the_nights_usurper",
-  "scenario_name": "The Night's Usurper",
-  "full_name": "The Night's Usurper",
+  "scenario_name": "El usurpador de la noche",
+  "full_name": "El usurpador de la noche",
   "xp_cost": 2,
   "setup": [
     "xp_cost",
@@ -35119,47 +35119,47 @@
     },
     {
       "id": "explore_rule",
-      "title": "explore",
+      "title": "Explorar",
       "type": "rule_reminder",
-      "text": "Some abilities in <i>Guardians of the Abyss</i> are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that will be constructed during this scenario. This deck consists of several single-sided locations and treachery cards.",
+      "text": "Algunas capacidades de <i>Guardianes del Abismo</i> se identifican mediante el tipo de acción <b>Explorar</b>. Dichas capacidades se suelen usar para encontrar nuevos Lugares que poner en juego, y se inician con la acción de “activar”:\nLas capacidades <b>Explorar</b> te indican que robes la primera carta del \"mazo de Exploración\", que es un mazo aparte que se crea durante este escenario. Este mazo está formado por varios Lugares de una sola cara y por cartas de Traición.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Cada capacidad <b>Explorar</b> indica un tipo de Lugar concreto que intentas robar. <b>Si se roba un Lugar de ese tipo, se pone en juego y te mueves a él.</b> Esto se considera una exploración \"con éxito\"."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si se roba cualquier otro Lugar, colócalo junto al mazo de Exploración y roba la siguiente carta del mazo de Exploración. Repite este proceso hasta que se robe un Lugar del tipo indicado o una Traición. Después de que esta acción haya acabado, devuelve al mazo de Exploración todos los Lugares que haya junto a éste y barájalo."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si se roba una carta de Traición, se resuelve de forma normal. Si se descarta, colócala en la pila de descartes de Encuentros como lo harías normalmente. El mazo de Exploración no tiene pila de descartes. Esto se considera una exploración \"sin éxito\"."
         },
         {
-          "text": "When a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
+          "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         }
       ],
       "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
     },
     {
       "id": "strength_of_the_abyss",
-      "title": "Strength of the Abyss",
+      "title": "Fuerza del Abismo",
       "type": "rule_reminder",
-      "text": "During this scenario, resources on the scenario reference card represent the current strength of the abyss. When you are instructed to add strength to the abyss or remove strength from the abyss, adjust the number of resource tokens on the scenario reference card accordingly. The strength of the abyss has no inherent game effect on its own, though certain encounter card effects may grow stronger or change depending on the current strength of the abyss. Beware—as the abyss grows in strength, so too will the forces set against you. Should it grow too powerful, you will surely fail as Guardians of the Abyss."
+      "text": "Durante este escenario, los recursos que haya sobre la carta de referencia de escenario representan la fuerza del Abismo actual. Cuando se te indique que añadas fuerza al Abismo o que retires fuerza del Abismo, modifica la cantidad de fichas de Recursos de la carta de referencia de escenario según se requiera. La fuerza del Abismo no tiene ningún efecto de juego inherente por sí misma, pero algunos efectos de cartas de Encuentro pueden volverse más potentes o cambiar en función de la fuerza del Abismo actual. Tened cuidado, porque a medida que el Abismo se vuelva más fuerte, también lo harán las fuerzas que se oponen a ti. Si se vuelve demasiado poderoso, fracasaréis como Guardianes del Abismo."
     },
     {
       "id": "taken_by_the_abyss",
-      "title": "“Taken by the Abyss”",
+      "title": "\"Atrapado por el Abismo\"",
       "type": "rule_reminder",
-      "text": "If an effect states that a defeated investigator or [[Ally]] asset has been <i>“taken by the abyss,”</i> that character has been afflicted by a curse which puts them in a comatose state. When an investigator or [[Ally]] asset is <i>taken by the abyss</i>, first add 1 strength to the abyss. Then, if that card was unique, record in the campaign log that <i>“(card name) was taken by the abyss.”</i> An investigator who has been <i>taken by the abyss</i> is treated as if he or she was killed or driven insane. Additionally, for the remainder of the campaign, players cannot play copies of any unique [[Ally]] asset who has been <i>taken by the abyss.</i>"
+      "text": "Si un efecto indica que un investigador derrotado o Apoyo [[Aliado]] ha sido <i>\"atrapado por el Abismo\"</i>, ese personaje se ha visto afectado por una maldición que le sume en un estado comatoso. Cuando un investigador o Apoyo Aliado sea <i>atrapado por el Abismo</i>, añade 1 punto de fuerza al Abismo antes de nada. A continuación, si esa carta era única, anota en el registro de campaña que <i>\"(nombre de la carta) ha sido atrapado/a por el Abismo\"</i>. Un investigador que haya sido <i>atrapado por el Abismo</i> se considera como si hubiera muerto o se hubiera vuelto loco. Además, durante el resto de la campaña, los jugadores no pueden jugar copias de ningún Apoyo [[Aliado]] único que haya sido <i>atrapado por el Abismo</i>."
     },
     {
       "id": "story_cards",
       "title": "Story Cards",
       "type": "rule_reminder",
-      "text": "Story cards are a new cardtype in this scenario. These cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any.\n<i>(Note: When a location or enemy that is in play is flipped over to a story card on its other side, that location or enemy is still considered to be in play while that story card is being resolved.)</i>"
+      "text": "Las cartas de Historia son un nuevo tipo de carta de este escenario. Estas cartas sirven para proporcionar una narrativa adicional y suelen aparecer en el dorso de otra carta del escenario. Cuando debas resolver una carta de Historia, lee su texto de ambientación y resuelve su texto de reglas si lo hay.\n<i>Nota: cuando se le dé la vuelta a un Lugar o Enemigo que esté en juego para mostrar la carta de Historia que tiene en su otro lado, dicho Lugar o Enemigo se sigue considerando en juego mientras se esté resolviendo la carta de Historia.</i>"
     },
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Winlock fiddles with his mustache for a moment while he considers your words. As the leader of the expedition currently scouring through Dashur, the decision of whether or not to let you join the expedition is up to him. “Look, I read through the evidence you gathered. I know about what happened in Cairo. I believe your story. But, still…” He lets out an exasperated sigh. “I just don’t know how I’m going to convince the rest of the expedition crew. Ancient temples is one thing, but a gate to another dimension? This ‘Xzharah’ fellow? None of this can be real, right?”\nYour research and your experience says otherwise. The threat is real. There is a secret organization operating within Egypt—The Brotherhood of the Beast—and if they are not stopped, their newfound “Chosen One” will begin a campaign of destruction that ends with the Earth.\nYou insist one last time to be allowed access to the expedition’s resources. “Alright, alright,” Winlock relents. “I don’t know what it is you’re looking for out there in the desert, but I hope you find it.” You shake your head in reply. You’d rather come up empty‑handed."
+      "text": "Winlock juguetea con su bigote durante unos instantes mientras sopesa vuestras palabras. Como líder de la expedición que está explorando Dahshur, es quien debe tomar la decisión de dejaros uniros a la misma o no.\n—Miren, he revisado las pruebas que han reunido. Sé lo que ocurrió en El Cairo. Creo su historia. Pero, aun así... —Da un suspiro de enojo—. Es que no sé cómo voy a convencer al resto de miembros de la expedición. Una cosa son los templos antiguos, pero ¿un portal hacia otra dimensión? ¿Ese tal \"Xzharah\"? Nada de eso puede ser real, ¿verdad?\nVuestra investigación y experiencias indican lo contrario. La amenaza es real. Hay una organización secreta que opera en Egipto llamada la Hermandad de la Bestia, y si no se les detiene, su recién descubierto \"Elegido\" comenzará una campaña de destrucción que acabará con la Tierra.\nInsistís una última vez para que os permita acceder a los recursos de la expedición.\n—Está bien, está bien —transige Winlock—. No sé qué es lo que buscan en el desierto, pero espero que lo encuentren.\nSacudís la cabeza como respuesta. Preferiríais no encontrar nada."
     },
     {
       "id": "gather_encounter_sets",
@@ -35174,37 +35174,37 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Expedition Camp into play. Each investigator begins play in the Expedition Camp."
+      "text": "Pon en juego el Campamento de expedición. Cada investigador comienza la partida en el Campamento de expedición."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Khopesh of the Abyss, Summoned Nightgaunt, the single-sided Eldritch Gate location, the double-sided Xzharah enemy, each of the 5 double-sided [[Otherworld]] locations, and both copies of Dreaded Shantak. Xzharah and the [[Otherworld]] locations have story cards on their reverse sides. For the best experience, do not look at the story cards on their reverse sides <i>(see “Story Cards”)</i>."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Khopesh del Abismo, Ángel descarnado invocado, el Lugar de una sola cara Portal arcano, el Enemigo de doble cara Xzharah, los S Lugares [[Sobrenatural]] de doble cara y ambas copias del Shantak temido. Xzharah y los Lugares [[Sobrenatural]] tienen cartas de Historia en su dorso. Para una mejor experiencia, no mires las cartas de Historia de sus dorsos <i>(consulta \"Cartas de Historia\")</i>."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by shuffling together each of the 7 remaining single-sided locations, along with 1 copy each of the following treachery cards: Abyssal Reach, The Black Wind, Terror Under the Pyramids, and Swarm of Locusts."
+      "text": "Crea el mazo de Exploración. Esto se hace cogiendo los 7 Lugares de una sola cara restantes y añadiéndoles 1 copia de cada una de las siguientes cartas de Traición: Alcance abisal, El Viento Negro, Terror bajo las pirámides y Enjambre de langostas. Después, baraja todas esas cartas."
     },
     {
       "id": "create_brotherhood_deck",
-      "text": "Find the 6 double-sided [[Brotherhood]] enemies. These enemies have story cards on their reverse sides <i>(see “Story Cards”)</i>. Some of these enemies are placed beneath the scenario reference card, as follows. The rest are removed from the game.",
+      "text": "Busca los 6 Enemigos [[Hermandad]] de doble cara. Estos Enemigos tienen cartas de Historia en su dorso <i>(consulta \"Cartas de Historia\")</i>. Algunos de estos Enemigos se colocan bajo la carta de referencia de escenario, como se explica a continuación. El resto se retiran de la partida.",
       "bullets": [
         {
-          "text": "If you are playing in Campaign Mode, place each of the enemies listed next to <i>“Brotherhood Agents Who Escaped”</i> in your Campaign Log beneath the scenario reference card."
+          "text": "Si estás jugando en modo de campaña, coloca bajo la carta de referencia de escenario todos los Enemigos anotados en la sección <i>\"Agentes de la Hermandad que escaparon\"</i> del registro de campaña."
         },
         {
-          "text": "If you are playing in Standalone mode, shuffle these 6 enemies together and place 3 of them beneath the scenario reference card without looking at them."
+          "text": "Si estás jugando el escenario de forma independiente, baraja los 6 Enemigos y coloca 3 de ellos bajo la carta de referencia de escenario sin mirarlos."
         }
       ]
     },
     {
       "id": "set_strength_of_the_abyss",
-      "text": "Place a number of resource tokens on the scenario reference card (under “Strength of the Abyss”), as follows. <i>(see “Strength of the Abyss”)</i>",
+      "text": "Coloca una cantidad de fichas de Recurso sobre la carta de referencia de escenario (en la sección \"Fuerza del Abismo\") de la siguiente forma <i>(consulta \"Fuerza del Abismo”)</i>.",
       "bullets": [
         {
-          "text": "If you are playing in Campaign Mode, place resources equal to the number listed in parentheses next to <i>“dreamers in the abyss”</i> in your Campaign Log."
+          "text": "Si estás jugando en modo de campaña, coloca una cantidad de recursos igual al número anotado entre paréntesis en la sección <i>\"Soñadores en el Abismo\"</i> del registro de campaña."
         },
         {
-          "text": "If you are playing in Standalone Mode, place 1 resource for each investigator in the game."
+          "text": "Si estás jugando el escenario de forma independiente, coloca 1 recurso por cada investigador que haya en la partida."
         }
       ]
     },
@@ -35239,19 +35239,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_day_of_reckoning_is_coming",
-          "text": "the Day of Reckoning is coming."
+          "text": "se acerca la hora de la verdad."
         }
       ]
     },
     {
       "id": "abyss_was_saved",
-      "text": "In your Campaign Log, record that <i>the Abyss was saved</i>. Cross off all <i>“(card name) was taken by the abyss”</i> notes in your Campaign Log. ",
+      "text": "Anota en el registro de campaña que <i>el Abismo ha sido salvado</i>. Tacha todas las notas <i>\"(nombre de la carta) ha sido atrapado/a por el Abismo\"</i> del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_the_abyss_was_saved",
-          "text": "the Abyss was saved."
+          "text": "el Abismo ha sido salvado."
         },
         {
           "type": "campaign_log",
@@ -35274,13 +35274,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "tnu_joined_xzharah",
-          "text": "you joined forces with Xzharah."
+          "text": "los investigadores han unido sus fuerzas con Xzharah."
         }
       ]
     },
     {
       "id": "earn_summoned_nightgaunt",
-      "text": "Any one investigator may choose to add Summoned Nightgaunt to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Ángel descarnado invocado a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -35291,7 +35291,7 @@
     },
     {
       "id": "earn_kopesh_of_the_abyss",
-      "text": "Any one investigator may choose to add Khopesh of the Abyss to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Khopesh del Abismo a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -35315,14 +35315,14 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Atrapado por el Abismo",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "text": "#name# ha sido atrapado por el Abismo."
               }
             ]
           }
@@ -35339,14 +35339,14 @@
         "choices": [
           {
             "id": "taken_by_the_abyss",
-            "text": "Taken by the Abyss",
+            "text": "Atrapado por el Abismo",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "text": "#name# ha sido atrapado por el Abismo."
               }
             ]
           }
@@ -35361,14 +35361,14 @@
         "branches": [
           {
             "id": "record_ally_taken_by_the_abyss",
-            "text": "Unique ally was taken by the abyss.",
+            "text": "Aliados únicos atrapados por el Abismo",
             "steps": [
               "record_ally_taken_by_the_abyss"
             ]
           },
           {
             "id": "record_investigator_taken_by_the_abyss",
-            "text": "Investigator was taken by the abyss.",
+            "text": "Investigadores atrapados por el Abismo",
             "steps": [
               "record_investigator_taken_by_the_abyss"
             ]
@@ -35394,7 +35394,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "“It’s just an arch. Why’re you so worked up, boss?” Winlock crossed his arms. Something about all of this felt wrong. He was sure that this was the place those folks from Arkham were looking for—a delicately patterned archway that led nowhere at all—and yet, Winlock was certain there was something <i>on the other side</i>. “It’s not Egyptian,” he noted, staring at the thing with narrow eyes. “It doesn’t even look…human.”\n“You believed those loons? Look boss, it’s nothing!” one of his men laughed.\n“Is it?” Winlock snapped, eyes wide. “Is it?”",
+      "text": "—No es más que un arco. ¿Por qué está tan tenso, jefe?\nWinlock cruzó los brazos. Había algo raro en todo esto. Estaba seguro de que éste era el sitio que estaban buscando esos tipos de Arkham: un arco delicadamente decorado que no llevaba a ninguna parte. Y, sin embargo, Winlock estaba seguro de que había algo al otro lado.\n—No es egipcio —a.firmó mientras miraba el objeto con los ojos entrecerrados—, Ni siquiera parece... humano.\n— ¿Se creyó lo que dijeron esos pirados? Mire, jefe, ¡no es nada! —río uno de sus hombres.\n— ¿No es nada? —replicó mordaz Winlock abriendo los ojos de par en par—. ¿No lo es?",
       "steps": [
         "day_of_reckoning_is_coming",
         "earn_xp",
@@ -35404,7 +35404,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "The essence fades from Xzharah’s body. Swirling clouds of mist surround him and force him to his knees. Creatures of the abyss appear wordlessly at your side, surrounding Xzharah with a quiet, expressionless hate. Xzharah’s sword betrays him and falls from his grip, the blade fracturing as it clatters to the ground. “…The prophecy must be fulfilled…” It is the last of his vile whispers. His physical form vanishes into the realm’s ethereal mist, and all is silent in the Great Abyss.",
+      "text": "El cuerpo de Xzharah pierde su esencia. Jirones de neblina se arremolinan en torno a él y le hacen caer de rodillas. A vuestro lado aparecen silenciosas criaturas del Abismo que rodean a Xzharah con un callado odio sin expresión. La espada de Xzharah le falla y cae al suelo, donde su hoja se fractura al chocar con él.\n— …Hay que cumplir la profecía... —Son las últimas palabras viles que susurra. Su forma física desaparece en la etérea neblina del reino, y el Gran Abismo queda en silencio.",
       "steps": [
         "abyss_was_saved",
         "earn_summoned_nightgaunt",
@@ -35415,7 +35415,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "Xzharah places an ice-cold hand on your shoulder as you kneel before him. “You have proven your loyalty,” he decrees. Creatures of the abyss surround you, heads bowed in reverence to their new master. There are none left to oppose him. “Few of your kind have the wit or the will to see beyond the present. To see our prophecy fulfilled. But you are worthy enough to have your eyes opened. Far worthier than the fools I have trusted in the past.” He bids you to stand, and places the handle of his blood-soaked sword in your hands. “Now arise, Servant of the Beast, and take your place among us.”",
+      "text": "Xzharah os va poniendo en el hombro una mano fría como el hielo cuando os arrodilláis ante él.\n—Habéis demostrado vuestra lealtad —decreta. Las criaturas del Abismo os rodean, inclinando la cabeza ante su nuevo señor. Ya no queda nadie para oponerse a él.\n—Pocos de vuestra especie tienen el ingenio o la voluntad necesarios como para ver más allá del presente. Para lograr cumplir nuestra profecía. Pero merecéis que os abran los ojos. Lo merecéis mucho más que los necios en quienes confié en el pasado.\nOs pide que os levantéis y, de nuevo por turnos, va poniendo en vuestras manos el puño de su ensangrentada espada.\n—Levantaos, sirvientes de la Bestia, y aceptad vuestro lugar entre nosotros.",
       "steps": [
         "joined_xzharah",
         "earn_kopesh_of_the_abyss",
@@ -46436,7 +46436,7 @@
       "text": "Put City of the Moon-Beasts, Temple of the Moon Lizard, Moon-Forest, and The Dark Crater into play.",
       "bullets": [
         {
-          "text": "Set each other location aside, out of play."
+          "text": "Deja aparte todos los demás Lugares, fuera del juego."
         }
       ]
     },
@@ -47103,7 +47103,7 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each other location aside, out of play."
+      "text": "Deja aparte todos los demás Lugares, fuera del juego."
     },
     {
       "id": "set_aside_cards",
@@ -47652,7 +47652,7 @@
     },
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "title": "No se ha llegado a ninguna resolución\n(al menos un investigador desistió)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -50762,7 +50762,7 @@
           },
           {
             "id": "no_change",
-            "text": "No change",
+            "text": "No realizar cambios",
             "steps": [
               "interlude_resolution"
             ]
@@ -51227,7 +51227,7 @@
           "text": "Each investigator begins play at the Vaults of Zin."
         },
         {
-          "text": "Set each other location aside, out of play."
+          "text": "Deja aparte todos los demás Lugares, fuera del juego."
         }
       ]
     },
@@ -52024,7 +52024,7 @@
   "resolutions": [
     {
       "id": "no_resolution_resigned",
-      "title": "No resolution was reached\n(at least one investigator resigned)",
+      "title": "No se ha llegado a ninguna resolución\n(al menos un investigador desistió)",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -53129,13 +53129,13 @@
       "text": "Some abilities in this campaign are identified with an <b>Explore</b> action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the “activate” action.\n<b>Explore</b> abilities instruct you to draw the top card of the “exploration deck,” which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.",
       "bullets": [
         {
-          "text": "Each <b>Explore</b> ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a “successful” exploration."
+          "text": "Cada capacidad <b>Explorar</b> indica un tipo de Lugar concreto que intentas robar. <b>Si se roba un Lugar de ese tipo, se pone en juego y te mueves a él.</b> Esto se considera una exploración \"con éxito\"."
         },
         {
-          "text": "If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck."
+          "text": "Si se roba cualquier otro Lugar, colócalo junto al mazo de Exploración y roba la siguiente carta del mazo de Exploración. Repite este proceso hasta que se robe un Lugar del tipo indicado o una Traición. Después de que esta acción haya acabado, devuelve al mazo de Exploración todos los Lugares que haya junto a éste y barájalo."
         },
         {
-          "text": "If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an “unsuccessful” exploration."
+          "text": "Si se roba una carta de Traición, se resuelve de forma normal. Si se descarta, colócala en la pila de descartes de Encuentros como lo harías normalmente. El mazo de Exploración no tiene pila de descartes. Esto se considera una exploración \"sin éxito\"."
         },
         {
           "text": "As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value."
