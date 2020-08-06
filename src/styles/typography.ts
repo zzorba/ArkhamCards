@@ -126,7 +126,7 @@ export default StyleSheet.create({
     paddingRight: m,
   },
   darkGray: {
-    color: COLORS.darkGray,
+    color: COLORS.lightText,
   },
   white: {
     color: COLORS.white,

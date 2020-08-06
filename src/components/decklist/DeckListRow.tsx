@@ -159,7 +159,7 @@ export default class DeckListRow extends React.Component<Props> {
           <ActivityIndicator
             style={styles.loading}
             size="large"
-            color="#000000"
+            color={COLORS.darkText}
           />
         </View>
       );
@@ -198,7 +198,7 @@ export default class DeckListRow extends React.Component<Props> {
           <ActivityIndicator
             style={styles.loading}
             size="large"
-            color="#000000"
+            color={COLORS.darkText}
           />
         </View>
       );
