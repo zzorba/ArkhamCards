@@ -12,6 +12,7 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		6505E52224DA64AC001DF983 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6505E52124DA64AC001DF983 /* libswiftCore.tbd */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
@@ -66,6 +67,8 @@
 		184A961D85085A21CA4AAC7A /* libPods-ArkhamCards-ArkhamCardsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ArkhamCards-ArkhamCardsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		231B73C11372A5E199409AAE /* Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards-ArkhamCardsUITests/Pods-ArkhamCards-ArkhamCardsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B0BDDE31E78DE8A3A314744 /* Pods-ArkhamCards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArkhamCards.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArkhamCards/Pods-ArkhamCards.release.xcconfig"; sourceTree = "<group>"; };
+		6505E51F24DA59A4001DF983 /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6505E52124DA64AC001DF983 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6505E52224DA64AC001DF983 /* libswiftCore.tbd in Frameworks */,
 				8771D18D6FA89F3C71B60A87 /* libPods-ArkhamCards-ArkhamCardsUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +176,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6505E52124DA64AC001DF983 /* libswiftCore.tbd */,
+				6505E51F24DA59A4001DF983 /* libReact-jsi.a */,
 				654277262365FE7200D394B1 /* libPods-ArkhamCards.a */,
 				184A961D85085A21CA4AAC7A /* libPods-ArkhamCards-ArkhamCardsTests.a */,
 				09B12BAED462D323E8F4C844 /* libPods-ArkhamCards-ArkhamCardsUITests.a */,
@@ -584,7 +590,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -602,7 +608,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.4.3;
+				MARKETING_VERSION = 2.4.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -627,7 +633,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,7 +650,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.4.3;
+				MARKETING_VERSION = 2.4.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

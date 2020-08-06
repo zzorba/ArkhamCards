@@ -28,12 +28,12 @@ class ArkhamCardsUITests: XCTestCase {
         let app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
-        app.otherElements["Bottom_Cards"].waitForExistence(timeout: 30)
-        app.otherElements["Bottom_Cards"].tap()
-        app.otherElements["Sort"].waitForExistence(timeout: 30)
+        // app.otherElements["Bottom_Cards"].waitForExistence(timeout: 30)
+        //app.otherElements["Bottom_Cards"].tap()
+        //app.otherElements["Sort"].waitForExistence(timeout: 30)
         snapshot("01Cards")
 
-        app.otherElements["Sort"].tap()
+        // app.otherElements["Sort"].tap()
                   
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

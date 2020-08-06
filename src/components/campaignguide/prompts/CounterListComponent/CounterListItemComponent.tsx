@@ -20,7 +20,7 @@ interface Props {
   editable: boolean;
 }
 
-export default class InvestigatorCountComponent extends React.Component<Props> {
+export default class CounterListItemComponent extends React.Component<Props> {
   _inc = () => {
     const {
       onInc,
@@ -80,7 +80,8 @@ export default class InvestigatorCountComponent extends React.Component<Props> {
             onIncrement={this._inc}
             onDecrement={this._dec}
             countRender={this.renderCount()}
-            color={color ? 'light' : 'dark'}
+            color={color ? 'light' : 'dark'} 
+            hideDisabledMinus
           />
         ) : (
           this.renderCount()

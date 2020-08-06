@@ -47,8 +47,8 @@ export default class InvestigatorCounterInputComponent extends React.Component<P
     forEach(scenarioInvestigators, investigator => {
       const specialXp = campaignLog.specialXp(investigator.code, specialXpType);
       description[investigator.code] = ngettext(
-        msgid`${specialXp} resupply point available`,
-        `${specialXp} resupply points available`,
+        msgid`${specialXp} resupply experience available`,
+        `${specialXp} resupply experience available`,
         specialXp
       );
     });
