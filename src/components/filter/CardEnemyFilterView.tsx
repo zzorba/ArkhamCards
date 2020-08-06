@@ -150,7 +150,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
       fontScale,
     } = this.props;
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
         <SliderChooser
           label={t`Fight`}
           width={width}
@@ -256,5 +256,8 @@ const styles = StyleSheet.create({
   toggleRow: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
 });

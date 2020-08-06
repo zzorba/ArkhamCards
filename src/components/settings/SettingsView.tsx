@@ -212,6 +212,7 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   list: {
     flex: 1,

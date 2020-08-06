@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, ScrollView } from 'react-native';
+import { Alert, ScrollView, StyleSheet } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -143,7 +143,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'investigators',
         title: t`Decks`,
         node: (
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.container}>
             <CampaignGuideSummary
               difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
               campaignGuide={contextA.campaignGuide}
@@ -184,7 +184,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'scenarios',
         title: t`Scenarios`,
         node: (
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.container}>
             <LinkedScenarioListComponent
               componentId={componentId}
               fontScale={fontScale}
@@ -200,7 +200,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'log',
         title: t`Log`,
         node: (
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.container}>
             <CampaignGuideSummary
               difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
               campaignGuide={contextA.campaignGuide}
@@ -286,3 +286,9 @@ export default withDimensions<LinkedCampaignGuideProps & NavigationProps>(
     )
   )
 );
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.background,
+  },
+});

@@ -103,5 +103,6 @@ export default class ExileCardDialog extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
 });

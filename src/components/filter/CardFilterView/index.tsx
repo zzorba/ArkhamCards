@@ -316,7 +316,7 @@ class CardFilterView extends React.Component<Props> {
     } = this.props;
 
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
         <FactionChooser
           factions={allFactions}
           selection={factions}
@@ -601,5 +601,8 @@ const styles = StyleSheet.create({
     width: '50%',
     flexDirection: 'column',
     alignItems: 'flex-end',
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
 });

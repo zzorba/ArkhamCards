@@ -121,7 +121,7 @@ class CampaignGuideView extends React.Component<Props> {
         key: 'investigators',
         title: t`Decks`,
         node: (
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.container}>
             <View style={[styles.section, styles.bottomBorder]}>
               <CampaignGuideSummary
                 difficulty={processedCampaign.campaignLog.campaignData.difficulty}
@@ -143,7 +143,7 @@ class CampaignGuideView extends React.Component<Props> {
         key: 'scenarios',
         title: t`Scenarios`,
         node: (
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.container}>
             <ScenarioListComponent
               campaignId={campaignId}
               campaignData={campaignData}
@@ -158,7 +158,7 @@ class CampaignGuideView extends React.Component<Props> {
         key: 'log',
         title: t`Log`,
         node: (
-          <ScrollView>
+          <ScrollView contentContainerStyle={styles.container}>
             <CampaignLogComponent
               campaignId={campaignId}
               campaignGuide={campaignGuide}
@@ -205,5 +205,8 @@ const styles = StyleSheet.create({
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
 });

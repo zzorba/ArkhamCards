@@ -11,6 +11,7 @@ import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';
 import SkillIconChart from './SkillIconChart';
 import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 const INCLUDE_SLOTS_CHART = false;
 
@@ -50,5 +51,6 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 64,
     flexDirection: 'column',
+    backgroundColor: COLORS.background,
   },
 });

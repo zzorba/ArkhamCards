@@ -34,7 +34,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       ]}>
         <BackgroundIcon
           code={campaignGuide.campaignCycleCode()}
-          color={inverted ? COLORS.black : color}
+          color={inverted ? COLORS.darkText : color}
           small
         />
         <View>

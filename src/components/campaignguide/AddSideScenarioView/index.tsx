@@ -270,6 +270,7 @@ export default withCampaignGuideContext(
 const styles = StyleSheet.create({
   scrollView: {
     paddingBottom: 32,
+    backgroundColor: COLORS.background,
   },
   header: {
     borderBottomWidth: StyleSheet.hairlineWidth,

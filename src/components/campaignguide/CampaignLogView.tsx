@@ -1,11 +1,12 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignLogComponent from './CampaignLogComponent';
+import COLORS from '@styles/colors';
 
 export interface CampaignLogProps {
   campaignId: number;
@@ -25,7 +26,7 @@ class CampaignLogView extends React.Component<Props> {
       componentId,
     } = this.props;
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
         <CampaignLogComponent
           componentId={componentId}
           campaignId={campaignId}
@@ -39,3 +40,9 @@ class CampaignLogView extends React.Component<Props> {
 }
 
 export default withDimensions(CampaignLogView);
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.background,
+  },
+});

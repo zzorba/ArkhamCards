@@ -163,6 +163,7 @@ export default withDimensions(CardImageView);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   pinchZoom: {
     flex: 1,

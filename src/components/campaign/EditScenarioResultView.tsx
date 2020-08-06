@@ -204,6 +204,7 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    backgroundColor: COLORS.background,
   },
   footer: {
     height: 100,

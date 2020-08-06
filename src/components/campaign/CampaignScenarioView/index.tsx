@@ -17,6 +17,7 @@ import { Campaign, ScenarioResult } from '@actions/types';
 import { getCampaign, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 export interface CampaignScenarioProps {
   id: number;
@@ -109,6 +110,7 @@ export default connect(mapStateToPropsFix)(CampaignScenarioView);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   disabled: {
     color: '#bdbdbd',

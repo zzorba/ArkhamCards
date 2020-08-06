@@ -5,6 +5,8 @@ import {
 } from 'react-native';
 import { RichTextEditor, RichTextToolbar } from 'react-native-zss-rich-text-editor';
 
+import COLORS from '@styles/colors';
+
 export interface DeckDescriptionProps {
   description: string;
   update: (description: string) => void;
@@ -45,5 +47,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: COLORS.background,
   },
 });

@@ -351,6 +351,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: COLORS.background,
   },
   problemBox: {
     flex: 1,

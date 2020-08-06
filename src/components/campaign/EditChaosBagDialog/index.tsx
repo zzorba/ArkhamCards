@@ -187,7 +187,7 @@ class EditChaosBagDialog extends React.Component<Props, State> {
     } = this.state;
     const ogChaosBag = this.props.chaosBag;
     return (
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.container}>
         <View style={[styles.row, space.paddingS]}>
           <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
         </View>
@@ -221,5 +221,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
+  },
+  container: {
+    backgroundColor: COLORS.background,
   },
 });

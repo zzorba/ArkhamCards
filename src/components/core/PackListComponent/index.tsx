@@ -15,6 +15,7 @@ import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import typography from '@styles/typography';
+import COLORS from '@styles/colors';
 
 interface PackCycle extends SectionListData<Pack> {
   title: string;
@@ -161,5 +162,6 @@ export default class PackListComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
 });

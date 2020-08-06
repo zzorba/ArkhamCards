@@ -107,7 +107,7 @@ class DeckHistoryView extends React.Component<Props> {
     const decks = this.historicDecks();
 
     return (
-      <ScrollView style={styles.wrapper}>
+      <ScrollView contentContainerStyle={styles.wrapper}>
         { map(decks, (deck, idx) => (
           <DeckProgressComponent
             key={deck.deck.id}
