@@ -158,7 +158,6 @@ class CardSearchComponent extends React.Component<Props, State> {
         topBar: {
           title: {
             text: mythosMode ? t`Encounter Cards` : t`Player Cards`,
-            color: COLORS.darkText,
           },
         },
       });
