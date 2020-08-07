@@ -14,14 +14,14 @@ export default function TableStepComponent({ step }: Props) {
   return (
     <SetupStepWrapper bulletType={step.bullet_type}>
       { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
-      <TableRowComponent style="header" row={step.header} />
+      <TableRowComponent background="header" row={step.header} />
       { map(step.rows, (row, idx) => (
-        <TableRowComponent 
-          key={idx} 
-          row={row} 
-          style={idx % 2 === 0 ? 'light': 'dark'} 
+        <TableRowComponent
+          key={idx}
+          row={row}
+          background={idx % 2 === 0 ? 'light': 'dark'}
           last={idx === step.rows.length - 1}
-        /> 
+        />
       )) }
     </SetupStepWrapper>
   );

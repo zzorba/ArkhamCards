@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from 'react';
 import { Platform, StyleSheet, Text, TextProps, TextStyle } from 'react-native';
 
@@ -33,5 +32,5 @@ const styles = StyleSheet.create({
       fontSize: 16,
       marginTop: 10,
     },
-  })
+  }),
 });

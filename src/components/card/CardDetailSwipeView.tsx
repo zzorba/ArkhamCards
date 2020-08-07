@@ -362,7 +362,7 @@ function mapStateToProps(
 }
 
 export default withDimensions<NavigationProps & CardDetailSwipeProps>(
-  connect<ReduxProps, {}, NavigationProps & CardDetailSwipeProps & DimensionsProps, AppState>(mapStateToProps)(
+  connect<ReduxProps, unknown, NavigationProps & CardDetailSwipeProps & DimensionsProps, AppState>(mapStateToProps)(
     // @ts-ignore TS2345
     CardDetailSwipeView
   )

@@ -2,7 +2,6 @@ import React from 'react';
 import { concat, filter, flatMap, map, shuffle, range, without } from 'lodash';
 import {
   FlatList,
-  Platform,
   StyleSheet,
   Text,
   View,
@@ -172,31 +171,31 @@ class DrawSimulatorView extends React.Component<Props, State> {
         <View style={styles.drawButtonRow}>
           <Text style={styles.text}>{ t`Draw: ` }</Text>
           <View style={styles.buttonContainer}>
-            <Button 
-              title="1" 
+            <Button
+              title="1"
               disabled={deckEmpty}
-              onPress={this._drawOne} 
+              onPress={this._drawOne}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <Button 
-              title="2" 
+            <Button
+              title="2"
               disabled={deckEmpty}
-              onPress={this._drawTwo} 
+              onPress={this._drawTwo}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <Button 
+            <Button
               title="5"
-              disabled={deckEmpty} 
-              onPress={this._drawFive} 
+              disabled={deckEmpty}
+              onPress={this._drawFive}
             />
           </View>
           <View style={styles.buttonContainer}>
-            <Button 
-              title={t`All`} 
-              disabled={deckEmpty} 
-              onPress={this._drawAll} 
+            <Button
+              title={t`All`}
+              disabled={deckEmpty}
+              onPress={this._drawAll}
             />
           </View>
         </View>

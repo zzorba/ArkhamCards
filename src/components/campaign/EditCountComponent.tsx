@@ -3,7 +3,6 @@ import { debounce } from 'lodash';
 import {
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
 
 import BasicListRow from '@components/core/BasicListRow';
@@ -55,7 +54,6 @@ export default class EditCountComponent extends React.Component<Props, State> {
   render() {
     const {
       title,
-      isInvestigator,
     } = this.props;
     const {
       count,
@@ -82,14 +80,6 @@ export default class EditCountComponent extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-  marginTop: {
-    marginTop: xs,
-  },
-  container: {
-    paddingTop: s,
-    paddingLeft: s,
-    paddingRight: s,
-  },
   margin: {
     minWidth: 40,
     textAlign: 'center',

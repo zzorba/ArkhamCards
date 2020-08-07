@@ -155,5 +155,10 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'react-native/split-platform-components': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
+    'react/jsx-curly-spacing': 'off',
   }
 }

@@ -93,7 +93,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default connectDb<OwnProps, Data, string[]>(
-  connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(EncounterSetStepComponent),
+  connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(EncounterSetStepComponent),
   (props: OwnProps) => props.step.encounter_sets,
   async(db: Database, encounter_sets: string[]) => {
     const qb = await db.encounterSets();

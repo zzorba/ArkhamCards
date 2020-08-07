@@ -171,86 +171,86 @@ export const syncCards = async function(
     await tabooSets.createQueryBuilder().delete().execute();
 
     const cardsToInsert: Card[] = [];
-    const newEncounterSets = [  
+    const newEncounterSets = [
       {
         'code': 'return_to_the_untamed_wilds',
-        'name': t`Return to the Untamed Wilds`
+        'name': t`Return to the Untamed Wilds`,
       },
       {
         'code': 'return_to_the_doom_of_eztli',
-        'name': t`Return to the Doom of Eztli`
+        'name': t`Return to the Doom of Eztli`,
       },
       {
         'code': 'return_to_threads_of_fate',
-        'name': t`Return to Threads of Fate`
+        'name': t`Return to Threads of Fate`,
       },
       {
         'code': 'return_to_the_boundary_beyond',
-        'name': t`Return to the Boundary Beyond`
+        'name': t`Return to the Boundary Beyond`,
       },
       {
         'code': 'return_to_heart_of_the_elders',
-        'name': t`Return to Heart of the Elders`
+        'name': t`Return to Heart of the Elders`,
       },
       {
         'code': 'return_to_pillars_of_judgement',
-        'name': t`Return to Pillars of Judgement`
+        'name': t`Return to Pillars of Judgement`,
       },
       {
         'code': 'return_to_knyan',
-        'name': t`Return to K'n-yan`
+        'name': t`Return to K'n-yan`,
       },
       {
         'code': 'return_to_the_city_of_archives',
-        'name': t`Return to the City of Archives`
+        'name': t`Return to the City of Archives`,
       },
       {
         'code': 'return_to_the_depths_of_yoth',
-        'name': t`Return to the Depths of Yoth`
+        'name': t`Return to the Depths of Yoth`,
       },
       {
         'code': 'return_to_shattered_aeons',
-        'name': t`Return to Shattered Aeons`
+        'name': t`Return to Shattered Aeons`,
       },
       {
         'code': 'return_to_turn_back_time',
-        'name': t`Return to Turn Back Time`
+        'name': t`Return to Turn Back Time`,
       },
       {
         'code': 'return_to_the_rainforest',
-        'name': t`Return to the Rainforest`
+        'name': t`Return to the Rainforest`,
       },
       {
         'code': 'cult_of_pnakotus',
-        'name': t`Cult of Pnakotus`
+        'name': t`Cult of Pnakotus`,
       },
       {
         'code': 'doomed_expedition',
-        'name': t`Doomed Expedition`
+        'name': t`Doomed Expedition`,
       },
       {
         'code': 'temporal_hunters',
-        'name': t`Temporal Hunters`
+        'name': t`Temporal Hunters`,
       },
       {
         'code': 'venomous_hate',
-        'name': t`Venomous Hate`
+        'name': t`Venomous Hate`,
       },
       {
-        "code": "blob",
-        "name": t`The Blob That Ate Everything`,
+        'code': 'blob',
+        'name': t`The Blob That Ate Everything`,
       },
       {
-        "code": "blob_epic_multiplayer",
-        "name": t`Epic Multiplayer`,
+        'code': 'blob_epic_multiplayer',
+        'name': t`Epic Multiplayer`,
       },
       {
-        "code": "blob_single_group",
-        "name": t`Single Group`,
+        'code': 'blob_single_group',
+        'name': t`Single Group`,
       },
       {
-        "code": "migo_incursion",
-        "name": t`Mi-Go Incursion`,
+        'code': 'migo_incursion',
+        'name': t`Mi-Go Incursion`,
       },
     ];
     const encounterSetsToInsert: {

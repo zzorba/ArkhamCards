@@ -154,11 +154,11 @@ export default class NumberPrompt extends React.Component<Props, State> {
               ) }
               { !!confirmText && (
                 <SetupStepWrapper bulletType="small">
-                  <CampaignGuideTextComponent 
-                    text={count === undefined ? t`${confirmText} <i>(included automatically)</i>` : confirmText} 
+                  <CampaignGuideTextComponent
+                    text={count === undefined ? t`${confirmText} <i>(included automatically)</i>` : confirmText}
                   />
                 </SetupStepWrapper>
-              ) } 
+              ) }
               <SetupStepWrapper
                 bulletType={count === undefined ? 'none' : 'small'}
                 border={count === undefined}

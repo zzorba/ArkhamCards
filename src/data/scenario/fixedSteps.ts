@@ -100,7 +100,7 @@ function chooseInvestigatorsStep(): InputStep {
       type: 'scenario_investigators',
     },
   };
-};
+}
 
 const UPGRADE_DECKS_STEP_ID = '$upgrade_decks';
 function upgradeDecksStep(): InputStep {
@@ -111,7 +111,7 @@ function upgradeDecksStep(): InputStep {
       type: 'upgrade_decks',
     },
   };
-};
+}
 
 const DRAW_WEAKNESS_STEP_ID = '$draw_weakness';
 function drawWeaknessStep(): InputStep {
@@ -138,8 +138,7 @@ function drawWeaknessStep(): InputStep {
       ],
     },
   };
-};
-
+}
 
 const RECORD_TRAUMA_STEP_ID = '$record_trauma';
 function recordTraumaStep(): InputStep {
@@ -179,7 +178,7 @@ function playScenarioStep(): InputStep {
       type: 'play_scenario',
     },
   };
-};
+}
 
 const EDIT_CAMPAIGN_LOG_STEP_ID = '$campaign_log';
 function editCampaignLogStep(): InputStep {
@@ -197,7 +196,7 @@ function editCampaignLogStep(): InputStep {
       ],
     },
   };
-};
+}
 
 const LEAD_INVESTIGATOR_STEP_ID = '$lead_investigator';
 function leadInvestigatorStep(): InputStep {
@@ -229,8 +228,7 @@ function leadInvestigatorStep(): InputStep {
       ],
     },
   };
-};
-
+}
 
 function resolutionStep(
   id: string,

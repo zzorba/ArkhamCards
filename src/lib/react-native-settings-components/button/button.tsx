@@ -76,18 +76,18 @@ class SettingsButton extends Component<Props> {
 
   render() {
     const {
-      containerProps = {}, 
-      containerStyle = {}, 
-      titleProps = {}, 
-      titleStyle = {}, 
-      title, 
+      containerProps = {},
+      containerStyle = {},
+      titleProps = {},
+      titleStyle = {},
+      title,
       disabled = false,
-      disabledOverlayStyle = {}, 
-      rightIconWrapperStyle = {}, 
+      disabledOverlayStyle = {},
+      rightIconWrapperStyle = {},
       rightIcon = null,
       onPress,
-      descriptionProps = {}, 
-      descriptionStyle = {}, 
+      descriptionProps = {},
+      descriptionStyle = {},
       description = null,
     } = this.props;
 

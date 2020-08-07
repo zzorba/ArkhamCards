@@ -34,7 +34,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color={colors ? colors.textColor : "#000"}
+              color={colors ? colors.textColor : '#000'}
             />
           </View>
         );
@@ -44,7 +44,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={colors ? colors.textColor : "#000"}
+              color={colors ? colors.textColor : '#000'}
             />
           </View>
         );
@@ -54,7 +54,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={colors ? colors.textColor : "#000"}
+              color={colors ? colors.textColor : '#000'}
             />
           </View>
         );
@@ -82,10 +82,10 @@ export default class PickerStyleButton extends React.Component<Props> {
           space.paddingLeftM,
           !disabled && widget ? space.paddingRightXs : space.paddingRightM,
         ]}>
-          <Text 
+          <Text
             numberOfLines={2}
             ellipsizeMode="tail"
-            style={[          
+            style={[
               style.defaultTitleStyle,
               space.paddingRightS,
               settingsStyle ? {} :

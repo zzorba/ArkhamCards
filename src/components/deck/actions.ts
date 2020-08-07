@@ -119,17 +119,17 @@ export interface DeckChanges {
 
 function handleUpgradeDeckResult(
   result: UpgradeDeckResult,
-  dispatch: ThunkDispatch<AppState, {}, Action>
+  dispatch: ThunkDispatch<AppState, unknown, Action>
 ) {
   dispatch(updateDeck(result.deck.id, result.deck, false));
   dispatch(setNewDeck(result.upgradedDeck.id, result.upgradedDeck));
 }
 
 export const deleteDeckAction: ActionCreator<
-  ThunkAction<Promise<boolean>, AppState, {}, Action>
+  ThunkAction<Promise<boolean>, AppState, unknown, Action>
 > = (id: number, deleteAllVersion: boolean, local: boolean) => {
   return (
-    dispatch: ThunkDispatch<AppState, {}, Action>,
+    dispatch: ThunkDispatch<AppState, unknown, Action>,
   ) => {
     return new Promise<boolean>((resolve, reject) => {
       if (local) {
@@ -155,14 +155,14 @@ export const deleteDeckAction: ActionCreator<
 };
 
 export const saveDeckUpgrade: ActionCreator<
-  ThunkAction<Promise<Deck>, AppState, {}, Action>
+  ThunkAction<Promise<Deck>, AppState, unknown, Action>
 > = (
   deck: Deck,
   xp: number,
   exileCounts: Slots,
 ) => {
   return (
-    dispatch: ThunkDispatch<AppState, {}, Action>,
+    dispatch: ThunkDispatch<AppState, unknown, Action>,
     getState: () => AppState
   ) => {
     return new Promise<Deck>((resolve, reject) => {
@@ -204,12 +204,12 @@ export const saveDeckUpgrade: ActionCreator<
 };
 
 export const saveDeckChanges: ActionCreator<
-  ThunkAction<Promise<Deck>, AppState, {}, Action>
+  ThunkAction<Promise<Deck>, AppState, unknown, Action>
 > = (
   deck: Deck,
   changes: DeckChanges
 ) => {
-  return (dispatch: ThunkDispatch<AppState, {}, Action>): Promise<Deck> => {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): Promise<Deck> => {
     return new Promise((resolve, reject) => {
       if (deck.local) {
         const newDeck = updateLocalDeck(
@@ -271,12 +271,12 @@ export interface NewDeckParams {
   meta?: DeckMeta;
 }
 export const saveNewDeck: ActionCreator<
-  ThunkAction<Promise<Deck>, AppState, {}, Action>
+  ThunkAction<Promise<Deck>, AppState, unknown, Action>
 > = (
   params: NewDeckParams
 ) => {
   return (
-    dispatch: ThunkDispatch<AppState, {}, Action>,
+    dispatch: ThunkDispatch<AppState, unknown, Action>,
     getState: () => AppState
   ): Promise<Deck> => {
     return new Promise<Deck>((resolve, reject) => {
@@ -326,13 +326,13 @@ export const saveNewDeck: ActionCreator<
 };
 
 export const saveClonedDeck: ActionCreator<
-  ThunkAction<Promise<Deck>, AppState, {}, Action>
+  ThunkAction<Promise<Deck>, AppState, unknown, Action>
 > = (
   local: boolean,
   cloneDeck: Deck,
   deckName: string
 ) => {
-  return (dispatch: ThunkDispatch<AppState, {}, Action>): Promise<Deck> => {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): Promise<Deck> => {
     return new Promise<Deck>((resolve, reject) => {
       dispatch(saveNewDeck({
         local,
@@ -364,11 +364,11 @@ export const saveClonedDeck: ActionCreator<
 };
 
 export const uploadLocalDeck: ActionCreator<
-  ThunkAction<Promise<Deck>, AppState, {}, Action>
+  ThunkAction<Promise<Deck>, AppState, unknown, Action>
 > = (
   localDeck: Deck
 ) => {
-  return (dispatch: ThunkDispatch<AppState, {}, Action>): Promise<Deck> => {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): Promise<Deck> => {
     return dispatch(saveClonedDeck(
       false,
       localDeck,

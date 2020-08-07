@@ -120,6 +120,6 @@ function mapStateToProps(
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & CampaignChaosBagProps, AppState>(
+export default connect<ReduxProps, unknown, NavigationProps & CampaignChaosBagProps, AppState>(
   mapStateToProps
 )(CampaignChaosBagView);

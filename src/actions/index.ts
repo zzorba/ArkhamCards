@@ -20,8 +20,8 @@ import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 // @ts-ignore
 import { decks } from '@lib/authApi';
 
-export function login(): ThunkAction<void, AppState, {}, Action> {
-  return (dispatch: ThunkDispatch<AppState, {}, Action>): void => {
+export function login(): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
     dispatch({
       type: LOGIN_STARTED,
     });
@@ -82,8 +82,8 @@ function getDecksLastModified(state: AppState): string | undefined {
     undefined;
 }
 
-export function refreshMyDecks(): ThunkAction<void, AppState, {}, Action> {
-  return (dispatch: ThunkDispatch<AppState, {}, Action>, getState: () => AppState) => {
+export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>, getState: () => AppState) => {
     dispatch({
       type: MY_DECKS_START_REFRESH,
     });

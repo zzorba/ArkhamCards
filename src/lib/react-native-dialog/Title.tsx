@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
       color: COLORS.darkText,
       textAlign: 'center',
       fontSize: 18,
-      fontWeight: '600'
+      fontWeight: '600',
     },
     default: {
       color: COLORS.darkText,

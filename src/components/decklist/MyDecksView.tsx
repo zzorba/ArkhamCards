@@ -164,7 +164,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default withFetchCardsGate(
-  connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(MyDecksView),
+  connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(MyDecksView),
   { promptForUpdate: false },
 );
 

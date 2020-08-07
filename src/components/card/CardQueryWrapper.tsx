@@ -59,6 +59,6 @@ function mapStateToProps(
   };
 }
 
-export default connect<ReduxProps, {}, Props, AppState>(
+export default connect<ReduxProps, unknown, Props, AppState>(
   mapStateToProps
 )(CardQueryWrapper) as React.ComponentType<Props>;

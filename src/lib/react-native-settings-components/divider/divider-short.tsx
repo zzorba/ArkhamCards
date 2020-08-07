@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet, View, Platform, ViewStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 const style = StyleSheet.create({
   containerStyle: {
@@ -28,9 +27,9 @@ interface Props {
 class SettingsDividerShort extends Component<Props> {
   render() {
     const {
-      containerStyle = {}, 
+      containerStyle = {},
       dividerStyle = {},
-      android = true, 
+      android = true,
       ios = true,
     } = this.props;
 

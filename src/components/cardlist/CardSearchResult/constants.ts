@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 import { isBig } from '@styles/space';
 import { TINY_PHONE } from '@styles/sizes';
 
@@ -17,7 +19,7 @@ export function buttonWidth(fontScale: number) {
 }
 
 export function toggleButtonMode(fontScale: number) {
-  return TINY_PHONE || fontScale > 1.3;
+  return (Platform.OS === 'ios') && (TINY_PHONE || fontScale > 1.3);
 }
 
 export default {

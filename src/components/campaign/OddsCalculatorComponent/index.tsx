@@ -3,7 +3,6 @@ import { filter, find, flatMap, forEach, head, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
-import LinearGradient from 'react-native-linear-gradient';
 import KeepAwake from 'react-native-keep-awake';
 
 import BasicButton from '@components/core/BasicButton';

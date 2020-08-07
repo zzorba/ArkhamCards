@@ -355,7 +355,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             settingsStyle
           />
         ) : (
-          <SettingsItem 
+          <SettingsItem
             navigation
             text={t`Sign in to ArkhamDB`}
             onPress={login}

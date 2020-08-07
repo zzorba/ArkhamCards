@@ -218,7 +218,7 @@ function mapStateToProps(
 }
 
 export default
-connect<ReduxProps, {}, NavigationProps & CardDetailProps, AppState>(mapStateToProps)(
+connect<ReduxProps, unknown, NavigationProps & CardDetailProps, AppState>(mapStateToProps)(
   withDimensions(CardDetailView)
 );
 

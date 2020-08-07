@@ -9,7 +9,7 @@ import { s, xs } from '@styles/space';
 
 interface Props {
   row: TableRow;
-  style: 'header' | 'light' | 'dark';
+  background: 'header' | 'light' | 'dark';
   last?: boolean
 }
 
@@ -19,17 +19,17 @@ const ROW_COLORS = {
   dark: '#c7ebc9',
 };
 
-export default function TableRowComponent({ row, style, last }: Props) {
+export default function TableRowComponent({ row, background, last }: Props) {
   return (
     <View style={styles.row}>
       { map(row.cells, (cell, idx) => (
         <View style={[
-          styles.cell, 
-          { 
+          styles.cell,
+          {
             flex: cell.size,
-            backgroundColor: ROW_COLORS[style],
-          }, 
-          cell.size === 1 ? { alignItems: 'center' } : {}, 
+            backgroundColor: ROW_COLORS[background],
+          },
+          cell.size === 1 ? { alignItems: 'center' } : {},
           cell.size === 2 ? { paddingLeft: s, paddingRight: s } : {},
           idx === row.cells.length - 1 ? { borderRightWidth: 2 } : {},
           last ? { borderBottomWidth: 2 }  : {},
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
     padding: xs,
   },
   row: {
-    flexDirection: 'row',    
+    flexDirection: 'row',
   },
 });

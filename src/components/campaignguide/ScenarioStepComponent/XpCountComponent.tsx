@@ -1,6 +1,6 @@
 import React from 'react';
 import { map } from 'lodash';
-import { t, msgid, ngettext } from 'ttag';
+import { msgid, ngettext } from 'ttag';
 
 import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
@@ -14,11 +14,13 @@ interface Props {
 }
 
 export default class XpCountComponent extends React.Component<Props> {
-  _onChoiceChange = (code: string, idx: number) => {};
+  _onChoiceChange = () => {
+    // intentionally empty.
+  };
 
   specialString(investigator: Card) {
     const { step, campaignLog } = this.props;
-    const count = campaignLog.specialXp(investigator.code, step.special_xp)
+    const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {
       case 'resupply_points':
         return ngettext(msgid`${count} resupply`,
@@ -31,14 +33,14 @@ export default class XpCountComponent extends React.Component<Props> {
     }
   }
   render() {
-    const { step, campaignLog } = this.props;
+    const { campaignLog } = this.props;
     return (
       <>
         { map(campaignLog.investigators(false), (investigator, idx) => {
           const resupplyPointsString = this.specialString(investigator);
           const xp = campaignLog.totalXp(investigator.code);
           return (
-            <ChoiceListItemComponent 
+            <ChoiceListItemComponent
               key={investigator.code}
               code={investigator.code}
               name={investigator.name}

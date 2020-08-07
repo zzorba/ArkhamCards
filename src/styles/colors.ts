@@ -12,7 +12,7 @@ export default {
   modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
   darkText,
   lightText,
-  veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor'): '#888') as any as string,
+  veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor') : '#888') as any as string,
   background: (Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : PlatformColor('?attr/colorBackground')) as any as string,
   lightBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
   veryLightBackground: (Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : PlatformColor('?attr/colorVeryLightBackground')) as any as string,
@@ -117,13 +117,13 @@ export default {
   settingsBackground: Platform.OS === 'ios' ? '#e3e6ed' : '#f7f7ff',
   monza: '#C70039',
 
-  toggleButton: (Platform.OS === 'ios' ? 
+  toggleButton: (Platform.OS === 'ios' ?
     DynamicColorIOS({
       light: '#f6f6f6',
       dark: '#363636',
     }) : PlatformColor('?attr/toggleButtonColor')) as any as string,
 
-  selectedToggleButton: (Platform.OS === 'ios' ? 
+  selectedToggleButton: (Platform.OS === 'ios' ?
     DynamicColorIOS({
       light: '#dddddd',
       dark: '#111',

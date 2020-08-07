@@ -137,7 +137,7 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connect<ReduxProps, {}, OwnProps, AppState>(
+export default connect<ReduxProps, unknown, OwnProps, AppState>(
   mapStateToProps
 )(BondedCardsComponent);
 

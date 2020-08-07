@@ -65,7 +65,7 @@ export default function withCampaignGuideContext<Props>(
   }
   const result = withUniversalCampaignData<Props & CampaignGuideInputProps>(
     // @ts-ignore TS  2345
-    connect<ReduxProps, {}, Props & UniversalCampaignProps & CampaignGuideInputProps, AppState>(
+    connect<ReduxProps, unknown, Props & UniversalCampaignProps & CampaignGuideInputProps, AppState>(
       mapStateToProps
     )(
       // @ts-ignore TS2345

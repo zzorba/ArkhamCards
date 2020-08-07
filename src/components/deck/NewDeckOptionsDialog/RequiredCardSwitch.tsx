@@ -1,8 +1,6 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
 import SettingsSwitch from '@components/core/SettingsSwitch';
-import COLORS from '@styles/colors';
 
 interface Props {
   index: number;

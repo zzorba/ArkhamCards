@@ -56,7 +56,7 @@ export enum IosDialogInputType {
   PLAIN_TEXT= 'plain-text',
   SECURE_TEXT = 'secure-text',
   LOGIN_PASSWORD = 'login-password',
-};
+}
 export enum AndroidDialogInputType {
   NUMERIC= 'numeric',
   NUMBERS_AND_PUNCTUATION = 'numbers-and-punctuation',
@@ -65,8 +65,7 @@ export enum AndroidDialogInputType {
   PASSWORD = 'password',
   PHONE_PAD = 'phone-pad',
   DECIMAL_PAD = 'decimal-pad',
-};
-
+}
 
 interface Props {
   containerProps?: ViewProps;
@@ -117,7 +116,7 @@ class SettingsEditText extends Component<Props> {
     onValueChange(trim(val));
   };
 
-  renderAndroidDialog = async () => {
+  renderAndroidDialog = async() => {
     const {
       title, dialogDescription, positiveButtonTitle, negativeButtonTitle, value,
       androidDialogOptions, androidDialogInputType,
@@ -135,7 +134,7 @@ class SettingsEditText extends Component<Props> {
     }
   };
 
-  openDialog = async () => {
+  openDialog = async() => {
     const {
       title, dialogDescription, negativeButtonTitle, positiveButtonTitle,
       iosDialogInputType, value,

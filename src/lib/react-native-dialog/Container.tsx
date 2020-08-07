@@ -44,7 +44,7 @@ export default class DialogContainer extends React.PureComponent<Props> {
         return;
       }
       if (
-        child.type && 
+        child.type &&
         child.type.name === 'DialogTitle' ||
         child.type.displayName === 'DialogTitle'
       ) {
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     bottom: 0,
-    right: 0
+    right: 0,
   },
   content: Platform.select({
     ios: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
       margin: 16,
       overflow: 'hidden',
       elevation: 4,
-      minWidth: 300
+      minWidth: 300,
     },
   }),
   header: Platform.select({

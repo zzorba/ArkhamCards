@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Platform, StyleSheet, Text, TextInput, View, TextInputProps, TextStyle, ViewStyle } from 'react-native';
 

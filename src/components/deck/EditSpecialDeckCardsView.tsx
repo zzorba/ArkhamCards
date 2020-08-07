@@ -417,7 +417,7 @@ function mapStateToProps(
 }
 
 export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
-  connect<ReduxProps, {}, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
+  connect<ReduxProps, unknown, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
     mapStateToProps
   )(
     withDimensions(EditSpecialDeckCardsView)

@@ -175,7 +175,7 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & CardFaqProps, AppState>(
+export default connect<ReduxProps, unknown, NavigationProps & CardFaqProps, AppState>(
   mapStateToProps
 )(
   connectDb<NavigationProps & CardFaqProps & ReduxProps, Data, string>(

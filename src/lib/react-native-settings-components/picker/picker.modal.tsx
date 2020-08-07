@@ -7,7 +7,6 @@ import {
   LayoutChangeEvent,
 } from 'react-native';
 import get from 'lodash/get';
-import isFunction from 'lodash/isFunction';
 import map from 'lodash/map';
 import toString from 'lodash/toString';
 import { t } from 'ttag';
@@ -128,8 +127,8 @@ class PickerModal extends Component<Props> {
     });
   };
 
-  renderPickerItem = ({ item, index }: { 
-    item: PickerItem; 
+  renderPickerItem = ({ item, index }: {
+    item: PickerItem;
     index: number;
   }) => {
     const { modalStyle, pickerValue, options } = this.props;
@@ -158,7 +157,7 @@ class PickerModal extends Component<Props> {
   render() {
     const {
       closeModal, pickerOpen, dialogDescription, title, modalStyle = {},
-      options, 
+      options,
       renderCloseBtn = this._defaultRenderCloseBtn,
     } = this.props;
     const { scrollViewContentHeight } = this.state;

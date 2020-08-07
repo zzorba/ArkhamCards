@@ -2,7 +2,6 @@ import React from 'react';
 import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
 
-import { SettingsPicker } from '@lib/react-native-settings-components';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { FactionCodeType } from '@app_constants';
 import Card from '@data/Card';

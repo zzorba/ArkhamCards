@@ -409,7 +409,7 @@ function mapStateToPropsFix(
   };
 }
 
-export default connect<ReduxProps, {}, NavigationProps & MyDecksSelectorProps, AppState>(
+export default connect<ReduxProps, unknown, NavigationProps & MyDecksSelectorProps, AppState>(
   mapStateToPropsFix
 )(
   withPlayerCards<NavigationProps & MyDecksSelectorProps & ReduxProps>(

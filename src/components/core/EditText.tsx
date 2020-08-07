@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
-import SettingsEditText from './SettingsEditText'
+import SettingsEditText from './SettingsEditText';
 import COLORS from '@styles/colors';
 import { m, s } from '@styles/space';
 import typography from '@styles/typography';

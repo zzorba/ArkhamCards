@@ -617,9 +617,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <>
                   <Text style={typography.cardText}>
                     <EncounterIcon
-                      encounter_code={card.encounter_code} 
-                      size={16 * fontScale} 
-                      color={COLORS.darkText} 
+                      encounter_code={card.encounter_code}
+                      size={16 * fontScale}
+                      color={COLORS.darkText}
                     />
                     { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
                       ngettext(
@@ -631,10 +631,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   </Text>
                   { card.encounter_name !== card.cycle_name && (
                     <Text style={typography.cardText}>
-                      <EncounterIcon 
-                        encounter_code={card.cycle_code || card.pack_code} 
-                        size={16 * fontScale} 
-                        color={COLORS.darkText} 
+                      <EncounterIcon
+                        encounter_code={card.cycle_code || card.pack_code}
+                        size={16 * fontScale}
+                        color={COLORS.darkText}
                       />
                       { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
@@ -642,10 +642,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 </>
               ) : (
                 <Text style={typography.cardText}>
-                  <EncounterIcon 
-                    encounter_code={card.cycle_code || card.pack_code} 
-                    size={16 * fontScale} 
-                    color={COLORS.darkText} 
+                  <EncounterIcon
+                    encounter_code={card.cycle_code || card.pack_code}
+                    size={16 * fontScale}
+                    color={COLORS.darkText}
                   />
                   { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>

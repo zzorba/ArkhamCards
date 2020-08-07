@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet, View, Platform, ViewStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 const style = StyleSheet.create({
   dividerStyle: {
@@ -20,7 +19,7 @@ interface Props {
 
 class SettingsDividerLong extends Component<Props> {
   render() {
-    const { dividerStyle = {}, ios = true, android = true} = this.props;
+    const { dividerStyle = {}, ios = true, android = true } = this.props;
 
     return (
       (Platform.OS === 'ios' && ios)

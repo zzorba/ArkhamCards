@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
-import { m, s } from '@styles/space';
+import { s } from '@styles/space';
 
 interface Props {
   title: string;
@@ -37,13 +37,5 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
     paddingTop: s,
     paddingBottom: s,
-  },
-  block: {
-    padding: s,
-    paddingLeft: m,
-    paddingRight: m,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

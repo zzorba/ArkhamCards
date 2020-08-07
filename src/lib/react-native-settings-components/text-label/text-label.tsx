@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Text, View, Platform, ViewProps, ViewStyle, TextStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { TextProps } from 'react-native-svg';
 
 const style = StyleSheet.create({

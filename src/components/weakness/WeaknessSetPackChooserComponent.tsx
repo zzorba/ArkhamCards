@@ -112,6 +112,6 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connect<ReduxProps, {}, OwnProps, AppState>(mapStateToProps)(
+export default connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(
   withPlayerCards(WeaknessSetPackChooserComponent)
 );

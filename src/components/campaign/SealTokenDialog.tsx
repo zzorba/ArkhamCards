@@ -137,7 +137,7 @@ function mapStateToProps(
 }
 
 
-export default connect<ReduxProps, {}, NavigationProps & SealTokenDialogProps, AppState>(
+export default connect<ReduxProps, unknown, NavigationProps & SealTokenDialogProps, AppState>(
   mapStateToProps
 )(
   withDimensions(SealTokenDialog)

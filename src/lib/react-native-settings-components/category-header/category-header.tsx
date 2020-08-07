@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Text, View, Platform, ViewProps, ViewStyle, TextProps, TextStyle,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 const style = StyleSheet.create({
   defaultTitleStyle: {
@@ -27,10 +26,10 @@ interface Props {
 class SettingsCategoryHeader extends Component<Props> {
   render() {
     const {
-      container = {}, 
-      containerStyle = {}, 
-      titleProps = {}, 
-      titleStyle = {}, 
+      container = {},
+      containerStyle = {},
+      titleProps = {},
+      titleStyle = {},
       title,
     } = this.props;
 
