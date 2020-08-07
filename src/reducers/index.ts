@@ -29,29 +29,34 @@ import Card, { CardsMap } from '@data/Card';
 
 const packsPersistConfig = {
   key: 'packs',
+  timeout: 0,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 
 const cardsPersistConfig = {
   key: 'cards',
+  timeout: 0,
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
 
 const guidesPersistConfig = {
   key: 'guides',
+  timeout: 0,
   storage: AsyncStorage,
 };
 
 const decksPersistConfig = {
   key: 'decks',
+  timeout: 0,
   storage: AsyncStorage,
   blacklist: ['refreshing', 'error'],
 };
 
 const settingsPeristConfig = {
   key: 'settings',
+  timeout: 0,
   storage: AsyncStorage,
   blacklist: [],
 };

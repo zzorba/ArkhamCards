@@ -3790,7 +3790,7 @@
 {
   "id": "arkham",
   "scenario_name": "Las máscaras de medianoche",
-  "full_name": "Parte II: Las máscaras de medianoche",
+  "full_name": "Escenario II: Las máscaras de medianoche",
   "setup": [
     "lita_condition",
     "intro_3",
@@ -4227,7 +4227,7 @@
 {
   "id": "tentacles",
   "scenario_name": "El Devorador de las Profundidades",
-  "full_name": "Parte III: El Devorador de las Profundidades",
+  "full_name": "Escenario III: El Devorador de las Profundidades",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -4649,7 +4649,7 @@
 {
   "id": "torch",
   "scenario_name": "El encuentro",
-  "full_name": "Parte I: El encuentro",
+  "full_name": "Escenario I: El encuentro",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -10669,7 +10669,7 @@
   "id": "rtdwl",
   "position": 1,
   "version": 1,
-  "name": "Return to The Dunwich Legacy",
+  "name": "Regreso a El legado de Dunwich",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -11048,8 +11048,8 @@
 },
 {
   "id": "return_to_blood_on_the_altar",
-  "scenario_name": "Return to Blood on the Altar",
-  "full_name": "Scenario IV: Return to Blood on the Altar",
+  "scenario_name": "Regreso a Sangre en el altar",
+  "full_name": "Escenario IV: Regreso a Sangre en el altar",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -11319,11 +11319,11 @@
     },
     {
       "id": "setup_village_commons",
-      "text": "Remove the original Village Commons location from the game. Put the new Village Commons <i>(Silent Decay)</i> into play. Each investigator begins play at the Village Commons <i>(Silent Decay)</i>."
+      "text": "Retira de la partida el Lugar Calles de la aldea original. Pon en juego las nuevas Calles de la aldea <i>(Decadencia silenciosa)</i>. Cada investigador comienza la partida en las Calles de la aldea <i>(Decadencia silenciosa)</i>."
     },
     {
       "id": "setup_locations",
-      "text": "Add the new locations to the original locations from the <i>Blood on the Altar</i> encounter set. Remove two of the three copies of each location from the game at random. Then, choose one of the six remaining locations at random, and remove it from the game as well. Put the remaining five locations into play."
+      "text": "Añade los Lugares nuevos a los Lugares originales del conjunto de encuentros <i>Sangre en el altar</i>. Retira de la partida 2 de las 3 copias de cada uno de estos Lugares al azar. A continuación, elige 1 de los 6 Lugares restantes al azar y retíralo también de la partida. Pon en juego los 5 Lugares restantes."
     },
     {
       "id": "location_layout",
@@ -11361,7 +11361,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Hired Gun, Silas Bishop, The Hidden Chamber, Key to the Chamber, and Powder of Ibn-Ghazi."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Sicario a sueldo, Silas Bishop, La cámara oculta, Llave de la cámara y Polvo de Ibn-Ghazi."
     },
     {
       "id": "check_bone_to_pick",
@@ -11391,20 +11391,20 @@
     {
       "id": "gather_naomis_crew",
       "bullet_type": "small",
-      "text": "Seeking vengeance, the gang from the Clover Club has followed you to Dunwich. Gather all cards from the <i>Naomi’s Crew</i> encounter set.",
+      "text": "Buscando venganza, la banda del Clover Club os ha seguido hasta Dunwich. Reúne todas las cartas del conjunto de encuentros <i>La banda de Naomi</i>.",
       "type": "encounter_sets",
       "encounter_sets": [
         "naomis_crew"
       ],
-      "subtext": "Do not shuffle these cards into the encounter deck yet."
+      "subtext": "No añadas estas cartas al mazo de Encuentros todavía."
     },
     {
       "id": "setup_hidden_cards_naomi",
-      "text": "Before shuffling the <i>Naomi's Crew</i> encounter set into the encounter deck, take the previously set-aside The Hidden Chamber and Key to the Chamber cards, along with the top 3 cards of the encounter deck. Shuffle them and randomly deal 1 card facedown underneath each location in play except Village Commons."
+      "text": "Antes de añadir las cartas del conjunto de encuentros <i>La banda de Naomi</i> al mazo de Encuentros, coge las cartas La cámara oculta y Llave de la cámara que habías puesto aparte y las 3 primeras cartas del mazo de Encuentros. Barájalas y coloca, al azar, 1 carta boca abajo bajo cada Lugar en juego, excepto bajo las Calles de la aldea <i>(Decadencia silenciosa)</i>."
     },
     {
       "id": "spawn_hired_gun",
-      "text": "Spawn one set-aside Hired Gun at one of the locations not connected to Village Commons. Shuffle the other set-aside Hired Gun, along with the rest of the <i>Naomi's Crew</i> encounter set into the encounter deck."
+      "text": "Haz aparecer un Sicario a sueldo en uno de los Lugares que no están conectados a las Calles de la aldea <i>(Decadencia silenciosa)</i>. Añade al mazo de Encuentros las demás cartas del conjunto de encuentros <i>La banda de Naomi</i> y barájalo."
     }
   ],
   "resolutions": [
@@ -11465,8 +11465,8 @@
 },
 {
   "id": "return_to_essex_county_express",
-  "scenario_name": "Return to The Essex County Express",
-  "full_name": "Scenario III: Return to The Essex County Express",
+  "scenario_name": "Regreso a El Essex County Express",
+  "full_name": "Escenario III: Regreso a El Essex County Express",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -11802,15 +11802,15 @@
     },
     {
       "id": "remove_agenda_1a",
-      "text": "Remove Agenda 1a - \"A Tear in Reality,\" from the game and replace it with the new Agenda 0a - \"Where There's Smoke\" and the new agenda 1a - \"A Tear in Reality (v.II).\" (When you construct the agenda deck, agenda 0a should be on top.)"
+      "text": "Retira de la partida el plan 1a—\"Un desgarro en la realidad\" y sustitúyelo por el nuevo plan 0a—\"Donde hay humo...\" y el nuevo plan 1a—\"Un desgarro en la realidad (v. II)\". Al crear el mazo de Plan, pon el plan 0a en la parte superior."
     },
     {
       "id": "setup_locations",
-      "text": "Put one of the four Engine Car locations into play at random. Remove the other three versions of Engine Car from the game. Then, put six of the ten Train Car locations into play at random, in a straight line to the left of the Engine Car. Remove the remaining four Train Car locations from the game."
+      "text": "Pon en juego, de forma aleatoria, 1 de los 4 Lugares Locomotora. Retira de la partida las demás versiones de la Locomotora. A continuación, pon en juego, de forma aleatoria, 6 de los 10 Lugares Vagón de tren, colocados en línea recta a la izquierda de la Locomotora. Retira de la partida los 2 Lugares Vagón de tren restantes."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Engineer story asset and all 4 copies of Across Space and Time aside, out of play."
+      "text": "Deja aparte el Apoyo de historia Maquinista, fuera de juego."
     }
   ],
   "resolutions": [
@@ -11875,8 +11875,8 @@
 },
 {
   "id": "return_to_extracurricular_activity",
-  "scenario_name": "Return to Extracurricular Activity",
-  "full_name": "Scenario I–A: Return to Extracurricular Activity",
+  "scenario_name": "Regreso a Actividad extracurricular",
+  "full_name": "Escenario I–A: Regreso a Actividad extracurricular",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12087,7 +12087,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Randomly choose between Orne Library and Warren Observatory. Put the chosen location into play, and remove the other location from the game. Then, put the Miskatonic Quad, Humanities Building, Student Union, Science Building, and Administration Building locations into play. Each investigator begins play at the Miskatonic Quad."
+      "text": "Elige un Lugar al azar entre la Biblioteca Orne y el Observatorio Warren. Pon en juego el Lugar elegido y retira el otro Lugar de la partida. Pon en juego los Lugares Patio principal de Miskatonic, Edificio de Ciencias, Edificio de Humanidades, Sindicato de estudiantes y Edificio de administración. Cada investigador comienza la partida en el Patio principal de Miskatonic."
     },
     {
       "id": "maybe_spawn_security_guard",
@@ -12109,7 +12109,7 @@
     },
     {
       "id": "spawn_security_guard",
-      "text": "Because you have already completed <b>Return to The House Always Wins</b>, search the gathered encounter sets for 1 copy of Enthralled Security Guard, and spawn it at the Administration Building."
+      "text": "Puesto que has completado <b>Regreso a La casa siempre gana</b>, busca en los conjuntos de encuentros reunidos 1 copia de Guardia de seguridad esclavizado y haz que aparezca en el Edificio de administración."
     },
     {
       "id": "proceed_either",
@@ -12215,8 +12215,8 @@
 },
 {
   "id": "return_to_lost_in_time_and_space",
-  "scenario_name": "Return to Lost in Time and Space",
-  "full_name": "Scenario VII: Return to Lost in Time and Space",
+  "scenario_name": "Regreso a Perdidos en el tiempo y el espacio",
+  "full_name": "Escenario VII: Regreso a Perdidos en el tiempo y el espacio",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12445,7 +12445,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Edge of the Universe, Tear Through Time, and Seth Bishop <i>(Thrall of Yog-Sothoth)</i>."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Los bordes del universo, Desgarro en el tiempo y Seth Bishop <i>(Esclavo de Yog-Sothoth)</i>."
     },
     {
       "id": "check_ritual_completed",
@@ -12467,15 +12467,15 @@
     {
       "id": "replace_act_2",
       "bullet_type": "small",
-      "text": "Replace Act 2a - \"Into the Beyond\" with the new Act 2a - \"Into the Beyond (v. II)\" from the <i>Return to Lost in Time and Space</i> encounter set."
+      "text": "Sustituye el acto 2a—\"Hacia el otro lado\" por el nuevo acto 2a—\"Hacia el otro lado (v. II)\" que se incluye en el conjunto de encuentros <i>Regreso a Perdidos en el tiempo y el espacio</i>."
     },
     {
       "id": "replace_agenda_3",
-      "text": "Replace Agenda 3a - \"Breaking Through\" with the new Agenda 3a - \"Breaking Through (v. II)\" included in this encounter set."
+      "text": "Sustituye el plan 3a—\"Abriéndose paso\" por el nuevo plan 3a—\"Abriéndose paso (v. II)\" que se incluye en el conjunto de encuentros <i>Regreso a Perdidos en el tiempo y el espacio</i>."
     },
     {
       "id": "setup_realms_beyond",
-      "text": "Put the single-sided Realms Beyond location into play and spawn Yog-Sothoth there."
+      "text": "Pon en juego el Lugar de una sola cara Reinos del otro lado y haz que aparezca Yog-Sothoth en él."
     }
   ],
   "resolutions": [
@@ -12543,8 +12543,8 @@
 },
 {
   "id": "return_to_the_house_always_wins",
-  "scenario_name": "Return to The House Always Wins",
-  "full_name": "Scenario I–B: Return to The House Always Wins",
+  "scenario_name": "Regreso a La casa siempre gana",
+  "full_name": "Escenario I–B: Regreso a La casa siempre gana",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12762,11 +12762,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two Clover Club Lounge locations at random. Put the chosen location into play, and remove the other version from the game. Then, put the Clover Club Bar, Clover Club Cardroom, and La Bella Luna locations into play. Each investigator begins play in La Bella Luna."
+      "text": "Elige al azar uno de los dos Lugares Salón del Clover Club. Pon en juego el Lugar elegido y retira la otra versión de la partida. Pon en juego los Lugares Bar del Clover Club, Sala de juego del Clover Club y La Bella Luna. Cada investigador comienza la partida en La Bella Luna."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Clover Club Stage, Darkened Hall, Peter Clover, Dr. Francis Morgan, and each copy of Back Hall Doorway."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: Escenario del Clover Club, Pasillo en penumbra, Peter Clover, Dr. Francis Morgan y todas las copias de Puerta del final del pasillo."
     },
     {
       "id": "proceed_either",
@@ -12863,8 +12863,8 @@
 },
 {
   "id": "return_to_the_miskatonic_museum",
-  "scenario_name": "Return to The Miskatonic Museum",
-  "full_name": "Scenario II: Return to The Miskatonic Museum",
+  "scenario_name": "Regreso a El museo Miskatonic",
+  "full_name": "Escenario II: Regreso a El museo Miskatonic",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -13113,13 +13113,13 @@
     },
     {
       "id": "exhibit_halls",
-      "text": "Set the “Exhibit Hall” locations aside as a separate 6 card “Exhibit Deck.” To do this, perform the following:",
+      "text": "Pon aparte los Lugares “Sala de exposición”, formando un “mazo de Exposición” de 6 cartas. Para ello, realiza los siguientes pasos:",
       "bullets": [
         {
-          "text": "Gather the 8 “Exhibit Hall” locations. Set Exhibit Hall <i>(Restricted Hall)</i> aside and randomly remove 2 Exhibit Hall locations from the game."
+          "text": "Reúne los 8 Lugares “Sala de exposición”. Deja aparte la Sala de exposición <i>(Sala restringida)</i> y retira de la partida 2 Lugares Sala de exposición aleatorios."
         },
         {
-          "text": "Shuffle the Exhibit Hall <i>(Restricted Hall)</i> and 2 other random Exhibit Hall locations together to form the bottom 3 cards of the Exhibit Deck, unrevealed side faceup."
+          "text": "Baraja la Sala de exposición <i>(Sala restringida)</i> y otros 2 Lugares Sala de exposición aleatorios para formar las 3 cartas inferiores del mazo de Exposición, con el lado sin revelar boca arriba."
         },
         {
           "text": "A continuación, pon los otros 3 Lugares Sala de exposición encima, en orden aleatorio. Las 6 cartas del mazo de Exposición sólo deben mostrar el lado sin revelar, de forma que los jugadores no sepan cuál de las Salas de exposición es la Sala de exposición <i>(Sala restringida)</i>."
@@ -13128,7 +13128,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"While an investigator is resolving the text on agenda 1b and agenda 2b, the <b>Forced</b> ability on the next agenda in the agenda deck is considered to be active.\"\nAttach the Return to The Miskatonic Museum scenario reference card to the scenario reference card as a reminder."
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:\n\"Mientras un investigador esté resolviendo el texto del plan 1b y del plan 2b, la capacidad <b>Obligado</b> del siguiente plan del mazo de Plan se considera activa.\"\nVincula esta carta a la carta de referencia de escenario como recordatorio."
     }
   ],
   "resolutions": [
@@ -13177,8 +13177,8 @@
 },
 {
   "id": "return_to_undimensioned_and_unseen",
-  "scenario_name": "Return to Undimensioned and Unseen",
-  "full_name": "Scenario V: Return to Undimensioned and Unseen",
+  "scenario_name": "Regreso a Invisibles y sin dimensión",
+  "full_name": "Escenario V: Regreso a Invisibles y sin dimensión",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -13476,32 +13476,32 @@
     },
     {
       "id": "remove_old_broods",
-      "text": "Remove 4 copies of Brood of Yog-Sothoth from the original scenario and replace them with the 4 new versions of Brood of Yog-Sothoth from the <i>Return to Undimensioned and Unseen</i> encounter set. For the duration of the scenario"
+      "text": "Retira 4 copias de la Progenie de Yog-Sothoth del escenario original y sustitúyelas por las 4 nuevas versiones de la Progenie de Yog-Sothoth del conjunto de encuentros de <i>Regreso a Invisibles y sin dimensión</i>."
     },
     {
       "id": "randomize_broods_note",
       "bullet_type": "small",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"If a Brood of Yog-Sothoth would be put into play, it is chosen at random from among the set-aside versions of Brood of Yog-Sothoth.\"\nAttach the Return to Undimensioned and Unseen scenario reference card to the scenario reference card as a reminder."
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:\n\"Si fuese a ponerse en juego una Progenie de Yog-Sothoth, se elige al azar de entre las Progenies de Yog-Sothoth puestas aparte.\"\nVincula esta carta a la carta de referencia del escenario como recordatorio."
     },
     {
       "id": "spawn_two_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen and put 1 random copy of Brood of Yog‐Sothoth into play in Blasted Heath. Then, set the final 3 copies of Brood of Yog‐Sothoth aside, out of play."
+      "text": "Pon 1 copia al azar de la Progenie de Yog-Sothoth en juego en la Cañada de Cold Spring, y 1 copia al azar de la Progenie de Yog-Sothoth en juego en el Páramo arrasado. A continuación, deja aparte, fuera del juego, las últimas 3 copias de la Progenie de Yog-Sothoth."
     },
     {
       "id": "spawn_one_remove_one_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 3 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final copy of Brood of Yog‐Sothoth from the game."
+      "text": "Pon 1 copia al azar de la Progenie de Yog-Sothoth en juego en la Cañada de Cold Spring, y pon aparte, fuera del juego, 3 copias al azar de la Progenie de Yog-Sothoth. A continuación, retira de la partida la última copia de la Progenie de Yog-Sothoth."
     },
     {
       "id": "spawn_one_remove_two_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 2 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 2 copies of Brood of Yog‐Sothoth from the game."
+      "text": "Pon 1 copia al azar de la Progenie de Yog-Sothoth en juego en la Cañada de Cold Spring, y pon aparte, fuera del juego, 2 copias al azar de la Progenie de Yog-Sothoth. A continuación, retira de la partida las últimas 2 copias de la Progenie de Yog-Sothoth."
     },
     {
       "id": "spawn_zero_remove_three_brood",
       "bullet_type": "small",
-      "text": "Set 2 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 3 random copies of Brood of Yog‐Sothoth from the game."
+      "text": "Pon aparte, fuera del juego, 2 copias al azar de la Progenie de Yog-Sothoth. A continuación, retira de la partida las últimas 3 copias de la Progenie de Yog-Sothoth."
     }
   ],
   "resolutions": [
@@ -13545,8 +13545,8 @@
 },
 {
   "id": "return_to_where_doom_awaits",
-  "scenario_name": "Return to Where Doom Awaits",
-  "full_name": "Scenario VI: Return to Where Doom Awaits",
+  "scenario_name": "Regreso a Donde aguarda la perdición",
+  "full_name": "Escenario VI: Regreso a Donde aguarda la perdición",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -13925,7 +13925,7 @@
     {
       "id": "gain_naomi_award",
       "bullet_type": "small",
-      "text": "The lead investigator may choose an investigator to add the Naomi O'Bannion asset to their deck. This card does not count toward that investigator's deck size.",
+      "text": "El investigador jefe puede elegir a un investigador para que añada a su mazo la carta Naomi O'Bannion puesta aparte. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -13951,15 +13951,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Base of the Hill <i>(Warped and Twisted)</i>, Ascending Path <i>(Warped and Twisted)</i>, and Sentinel Peak into play. Remove the original Base of the Hill and Ascending Path locations from the game. Each investigator begins play at Base of the Hill."
+      "text": "Pon en juego el Pie de la colina <i>(Retorcido y serpenteante)</i>, el Sendero ascendente <i>(Retorcido y serpenteante)</i> y la Cumbre de Sentinel Hill. Retira de la partida las versiones originales del Pie de la colina y el Sendero ascendente. Cada investigador comienza la partida en el Pie de la colina <i>(Retorcido y serpenteante)</i>."
     },
     {
       "id": "remove_diverging_path",
-      "text": "Remove 2 copies of Diverging Path from the game, at random. Set the other 3 copies of Diverging Path aside, out of play."
+      "text": "Retira de la partida, al azar, 2 copias del Sendero divergente. Pon aparte, fuera del juego, las otras 3 copias del Sendero divergente."
     },
     {
       "id": "remove_altered_path",
-      "text": "Remove 2 copies of Altered Path from the game, at random. Set the other 3 copies of Altered Path aside, out of play."
+      "text": "Retira de la partida, al azar, 2 copias del Sendero alterado. Pon aparte, fuera del juego, las otras 3 copias del Sendero alterado."
     },
     {
       "id": "check_set_aside_naomi",
@@ -13986,7 +13986,7 @@
     },
     {
       "id": "set_aside_cards_and_naomi",
-      "text": "Set Seth Bishop and Naomi O'Bannion aside, out of play."
+      "text": "Pon aparte, fuera del juego, a Seth Bishop y Naomi O'Bannion."
     }
   ],
   "resolutions": [
@@ -14368,7 +14368,7 @@
   "campaign":
 {
   "id": "rtnotz",
-  "name": "Return to The Night of the Zealot",
+  "name": "Regreso a La noche de la fanática",
   "position": 0,
   "version": 1,
   "campaign_log": [
@@ -14562,8 +14562,8 @@
 }, "scenarios": [
 {
   "id": "return_to_the_devourer_below",
-  "scenario_name": "Return to The Devourer Below",
-  "full_name": "Scenario III: Return to The Devourer Below",
+  "scenario_name": "Regreso a El Devorador de las Profundidades",
+  "full_name": "Escenario III: Regreso a El Devorador de las Profundidades",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -14920,11 +14920,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Main Path location into play. Shuffle the 10 copies of Arkham Woods, choose 4 of them at random, and put them into play without looking at their revealed sides. Remove the other 6 from the game. Each investigator begins play at the Main Path."
+      "text": "Pon en juego el Lugar Sendero principal. Baraja las 10 copias de Bosques de Arkham, elige 4 al azar y ponlas en juego sin mirar sus lados revelados. Retira las otras 6 de la partida. Cada investigador comienza la partida en el Sendero principal."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Ritual Site and Umôrdhoth cards aside, out of play. Flip over the \"Return to The Devourer Below\" scenario card and attach it to Umôrdhoth"
+      "text": "Pon aparte las cartas Lugar del ritual y Umôrdhoth, fuera del juego. Dale la vuelta a la carta \"Regreso a El Devorador de las Profundidades\" y vincúlasela a Umôrdhoth."
     }
   ],
   "resolutions": [
@@ -14985,8 +14985,8 @@
 },
 {
   "id": "return_to_the_gathering",
-  "scenario_name": "Return to The Gathering",
-  "full_name": "Scenario I: Return to the Gathering",
+  "scenario_name": "Regreso a El encuentro",
+  "full_name": "Escenario I: Regreso a El encuentro",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -15176,26 +15176,26 @@
     },
     {
       "id": "remove_cards",
-      "text": "When gathering cards, make the following changes:"
+      "text": "Al reunir las cartas, haz los siguientes cambios:"
     },
     {
       "id": "remove_act_1a",
       "bullet_type": "small",
-      "text": "Remove Act 1a- \"Trapped\" from the game and replace it with the new Act 1a- \"Mysterious Gateway.\""
+      "text": "Retira de la partida el Acto 1a—\"Atrapados\" y sustitúyelo por el nuevo Acto 1a—\"Portal misterioso\"."
     },
     {
       "id": "remove_study",
       "bullet_type": "small",
-      "text": "Remove the original Study location from the game and replace it with the new Study <i>Aberrant Gateway</i>."
+      "text": "Retira de la partida el Lugar Estudio original y sustitúyelo por el nuevo Estudio <i>(Portal aberrante)</i>."
     },
     {
       "id": "remove_hallway",
       "bullet_type": "small",
-      "text": "Remove the Hallway location from the game."
+      "text": "Retira de la partida el Lugar Pasillo original."
     },
     {
       "id": "setup_locations",
-      "text": "Put Guest Hall, Bedroom, Bathroom and the new Study <i>(Aberrant Gateway)</i> into play. Each investigator begins play in the Study <i>(Aberrant Gateway)</i>."
+      "text": "Pon en juego los Lugares Vestíbulo de invitados, Dormitorio, Cuarto de baño y Estudio <i>(Portal aberrante)</i>. Cada investigador comienza la partida en el Estudio <i>(Portal aberrante)</i>."
     },
     {
       "id": "location_layout",
@@ -15221,7 +15221,7 @@
     },
     {
       "id": "randomize_locations",
-      "text": "Choose one of the two Attic locations and one of the two Cellar locations at random, and set them aside, out of play. Remove the other versions of Attic and Cellar from the game."
+      "text": "Elige al azar uno de los dos Lugares Ático y uno de los dos Lugares Sótano, y déjalos aparte, fuera de juego. Retira de la partida las demás versiones del Ático y el Sótano."
     },
     {
       "id": "set_aside_locations",
@@ -15291,8 +15291,8 @@
 },
 {
   "id": "return_to_the_midnight_masks",
-  "scenario_name": "Return to The Midnight Masks",
-  "full_name": "Scenario II: Return to The Midnight Masks",
+  "scenario_name": "Regreso a Las máscaras de medianoche",
+  "full_name": "Escenario II: Regreso a Las máscaras de medianoche",
   "setup": [
     "lita_condition",
     "intro_3",
@@ -15665,29 +15665,29 @@
         "cultists",
         "return_cult"
       ],
-      "text": "Set the <i>Cult of Umôrdhoth</i> encounter sets aside as a separate “Cultist deck.” Shuffle this deck and remove 3 random cards from it, without looking at them. <i>(You should be left with a 5-card Cultist deck.)</i>"
+      "text": "Pon aparte el conjunto de encuentros <i>Secta de Umôrdhoth</i> como un “mazo de Sectarios” separado. Baraja este mazo y retira 3 cartas al azar de él, sin mirarlas <i>(debería quedar un mazo de Sectarios de 5 cartas)</i>."
     },
     {
       "id": "construct_act_deck",
-      "text": "Construct the act deck using one of the two copies of Agenda 1a- \"Predator or Prey\" at random, without looking at their other sides. Remove the other version of Agenda 1a from the game."
+      "text": "Crea el mazo de Plan usando al azar una de las dos copias del Plan 1a—\"Depredador o presa\", sin mirar sus otros lados. Retira de la partida la otra versión del Plan 1a."
     },
     {
       "id": "setup_locations",
-      "text": "Randomly put 1 of each of the following locations into play: Downtown, Southside, Easttown, Northside, Rivertown, and Miskatonic University. Remove the other versions of those locations from the game. Then, put Graveyeard, St. Mary's Hospital, and Your House into play."
+      "text": "Para cada uno de los siguientes Lugares, elige al azar una de las dos versiones disponibles: Centro, Barrio Sur, Barrio Este, Barrio Norte, Barrio Fluvial y Universidad Miskatonic. Pon en juego la versión elegida y retira las demás versiones de la partida. A continuación, pon en juego los Lugares Hospital de Santa María, Cementerio y Tu casa."
     },
     {
       "id": "one_cultist",
-      "text": "Search the gathered encounter sets for any 1-health [[Cultist]] enemy and spawn it at Southside.",
+      "text": "Busca en los conjuntos de encuentros que has reunido 1 copia de cualquier Enemigo [[Sectario]] que tenga 1 punto de salud y haz que aparezca en el Barrio Sur.",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 1-health [[Cultist]] enemies. Spawn 1 at Southside and 1 at Downtown.",
+      "text": "Busca en los conjuntos de encuentros que has reunido 2 copias de cualquier Enemigo [[Sectario]] que tenga 1 punto de salud. Haz que 1 aparezca en el Barrio Sur, y el otro en el Centro.",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 1-health [[Cultist]] enemies. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
+      "text": "Busca en los conjuntos de encuentros que has reunido 3 copias de cualquier Enemigo [[Sectario]] que tenga 1 punto de salud. Haz que 1 aparezca en el Barrio Sur, 1 en el Centro y 1 en el Cementerio.",
       "bullet_type": "small"
     }
   ],

@@ -2,9 +2,11 @@ import React from 'react';
 import {
   Text,
 } from 'react-native';
+import { t } from 'ttag';
 
 import CardListWrapper from '@components/card/CardListWrapper';
 import Card from '@data/Card';
+import typography from '@styles/typography';
 
 interface Props {
   code: string;
@@ -20,7 +22,11 @@ export default class SingleCardWrapper extends React.Component<Props> {
       if (loading) {
         return loadingComponent || null;
       }
-      return <Text>Unknown { code }</Text>;
+      return (
+        <Text style={typography.text}>
+          { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
+        </Text>
+      );
     }
     return children(cards[0]);
   };
