@@ -181,6 +181,7 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
             <InvestigatorRow
               key={investigator.code}
               investigator={investigator}
+              fontScale={fontScale}
             >
               <NonDeckDetailsButton
                 investigator={investigator}

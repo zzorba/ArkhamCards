@@ -597,6 +597,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     const {
       investigator,
       campaignLog,
+      fontScale,
     } = this.props;
     const choices = this.props.scenarioState.numberChoices(this.choiceId());
     const isYithian = (campaignLog.storyAssets(investigator.code)[BODY_OF_A_YITHIAN] || 0) > 0;
@@ -605,6 +606,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         investigator={investigator}
         yithian={isYithian}
         button={this.deckButton(choices)}
+        fontScale={fontScale}
       >
         { this.renderDetails(choices) }
       </InvestigatorRow>

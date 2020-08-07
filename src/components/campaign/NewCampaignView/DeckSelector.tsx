@@ -26,6 +26,7 @@ export default class DeckSelector extends React.Component<Props> {
   ) => {
     const {
       deckRemoved,
+      fontScale,
     } = this.props;
     return (
       <InvestigatorDeckRow
@@ -33,6 +34,7 @@ export default class DeckSelector extends React.Component<Props> {
         id={deckId}
         investigators={investigators}
         deckRemoved={deckRemoved}
+        fontScale={fontScale}
       />
     );
   };
@@ -43,6 +45,7 @@ export default class DeckSelector extends React.Component<Props> {
   ) => {
     const {
       investigatorRemoved,
+      fontScale,
     } = this.props;
     const investigator = investigators[code];
     if (!investigator) {
@@ -53,6 +56,7 @@ export default class DeckSelector extends React.Component<Props> {
         key={code}
         investigator={investigator}
         onRemove={investigatorRemoved}
+        fontScale={fontScale}
       />
     );
   };

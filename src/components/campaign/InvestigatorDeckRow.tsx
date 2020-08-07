@@ -16,6 +16,7 @@ interface OwnProps {
     deck?: Deck,
     investigator?: Card
   ) => void;
+  fontScale: number;
 }
 
 interface ReduxProps {
@@ -56,6 +57,7 @@ class InvestigatorDeckRow extends React.Component<Props> {
       theDeck,
       investigators,
       deckRemoved,
+      fontScale,
     } = this.props;
     if (!theDeck) {
       return null;
@@ -68,6 +70,7 @@ class InvestigatorDeckRow extends React.Component<Props> {
       <InvestigatorRow
         investigator={investigator}
         onRemove={deckRemoved ? this._onRemove : undefined}
+        fontScale={fontScale}
       />
     );
   }

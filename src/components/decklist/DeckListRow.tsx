@@ -152,6 +152,7 @@ export default class DeckListRow extends React.Component<Props> {
       investigator,
       compact,
       subDetails,
+      fontScale,
     } = this.props;
     if (!deck || !investigator) {
       return (
@@ -168,6 +169,7 @@ export default class DeckListRow extends React.Component<Props> {
     return (
       <InvestigatorRow
         investigator={investigator}
+        fontScale={fontScale}
         bigImage={!compact}
         noFactionIcon={!compact}
         eliminated={this.killedOrInsane()}

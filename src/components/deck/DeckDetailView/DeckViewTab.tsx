@@ -626,6 +626,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
                     componentId={componentId}
                     yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
                     border
+                    fontScale={fontScale}
                   />
                 </View>
                 <HealthSanityLine

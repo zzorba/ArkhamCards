@@ -19,6 +19,7 @@ interface OwnProps {
   componentId: string;
   campaigns: Campaign[];
   footer: React.ReactElement;
+  fontScale: number;
 }
 
 type Props = OwnProps & PlayerCardProps;
@@ -94,6 +95,7 @@ class CampaignList extends React.Component<Props> {
   _renderItem = ({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
     const {
       investigators,
+      fontScale,
     } = this.props;
     if (campaign.link) {
       return (
@@ -102,6 +104,7 @@ class CampaignList extends React.Component<Props> {
           campaign={campaign}
           investigators={investigators}
           onPress={this._onPress}
+          fontScale={fontScale}
         />
       );
     }
@@ -111,6 +114,7 @@ class CampaignList extends React.Component<Props> {
         campaign={campaign}
         investigators={investigators}
         onPress={this._onPress}
+        fontScale={fontScale}
       />
     );
   };

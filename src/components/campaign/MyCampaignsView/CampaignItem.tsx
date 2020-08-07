@@ -16,6 +16,7 @@ interface Props {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
   investigators: CardsMap;
+  fontScale: number;
 }
 
 export default class CampaignItem extends React.Component<Props> {
@@ -31,6 +32,7 @@ export default class CampaignItem extends React.Component<Props> {
     const {
       campaign,
       investigators,
+      fontScale,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
@@ -42,6 +44,7 @@ export default class CampaignItem extends React.Component<Props> {
           <CampaignInvestigatorRow
             campaigns={[campaign]}
             investigators={investigators}
+            fontScale={fontScale}
           />
         </View>
       </TouchableOpacity>

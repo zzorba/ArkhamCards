@@ -272,6 +272,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     const {
       investigator,
       traumaAndCardData,
+      fontScale,
     } = this.props;
     const eliminated = investigator.eliminated(traumaAndCardData);
     return (
@@ -281,6 +282,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         button={this.renderButton(eliminated)}
         eliminated={eliminated}
         yithian={!!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN)}
+        fontScale={fontScale}
       >
         { eliminated ? undefined : this.renderDetail() }
       </InvestigatorRow>

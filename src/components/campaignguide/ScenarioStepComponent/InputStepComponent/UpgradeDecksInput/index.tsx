@@ -172,6 +172,7 @@ class UpgradeDecksInput extends React.Component<Props, State> {
                 key={investigator.code}
                 investigator={investigator}
                 description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
+                fontScale={fontScale}
                 eliminated
               />
             );

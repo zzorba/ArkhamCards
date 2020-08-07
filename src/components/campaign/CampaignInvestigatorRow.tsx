@@ -16,6 +16,7 @@ import { s } from '@styles/space';
 interface OwnProps {
   campaigns: Campaign[];
   investigators: CardsMap;
+  fontScale: number;
 }
 
 interface CampaignDecks {
@@ -37,6 +38,7 @@ class CampaignInvestigatorRow extends React.Component<Props> {
   ) => {
     const {
       investigators,
+      fontScale,
     } = this.props;
     const { investigatorData } = campaign;
     const card = investigators[code];
@@ -52,6 +54,7 @@ class CampaignInvestigatorRow extends React.Component<Props> {
             yithian={yithian}
             border
             small
+            fontScale={fontScale}
           />
         </View>
       );

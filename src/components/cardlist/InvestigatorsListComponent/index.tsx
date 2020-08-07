@@ -136,10 +136,11 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderItem = ({ item }: SectionListRenderItemInfo<Card>) => {
-    const { hideDeckbuildingRules } = this.props;
+    const { hideDeckbuildingRules, fontScale } = this.props;
     return (
       <InvestigatorRow
         key={item.code}
+        fontScale={fontScale}
         investigator={item}
         onPress={this._onPress}
         button={this.deckbuildingDetails(item)}

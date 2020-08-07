@@ -18,6 +18,7 @@ interface OwnProps {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
   investigators: CardsMap;
+  fontScale: number;
 }
 
 interface ReduxProps {
@@ -42,6 +43,7 @@ class LinkedCampaignItem extends React.Component<Props> {
       campaignA,
       campaignB,
       investigators,
+      fontScale,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
@@ -55,6 +57,7 @@ class LinkedCampaignItem extends React.Component<Props> {
             <CampaignInvestigatorRow
               campaigns={[campaignA, campaignB]}
               investigators={investigators}
+              fontScale={fontScale}
             />
           ) }
         </View>

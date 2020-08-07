@@ -11,6 +11,7 @@ import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import BasicButton from '@components/core/BasicButton';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import CampaignList from './CampaignList';
 import { campaignNames } from '@components/campaign/constants';
@@ -31,7 +32,7 @@ interface ReduxProps {
   decks: DecksMap;
 }
 
-type Props = OwnProps & ReduxProps;
+type Props = OwnProps & ReduxProps & DimensionsProps;
 
 interface State {
   search: string;
@@ -164,7 +165,7 @@ class MyCampaignsView extends React.Component<Props, State> {
   }
 
   render() {
-    const { componentId } = this.props;
+    const { componentId, fontScale } = this.props;
     const { search } = this.state;
     const campaigns = this.filteredCampaigns();
     return (
@@ -179,6 +180,7 @@ class MyCampaignsView extends React.Component<Props, State> {
             componentId={componentId}
             campaigns={campaigns}
             footer={this.renderFooter(campaigns)}
+            fontScale={fontScale}
           />
         ) }
       </CollapsibleSearchBox>
@@ -194,7 +196,7 @@ function mapStateToProps(state: AppState): ReduxProps {
 }
 
 export default withFetchCardsGate<OwnProps>(
-  connect(mapStateToProps)(MyCampaignsView),
+  connect(mapStateToProps)(withDimensions(MyCampaignsView)),
   { promptForUpdate: false },
 );
 

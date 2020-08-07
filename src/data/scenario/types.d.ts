@@ -763,6 +763,7 @@ export interface CampaignLogCountStep {
   };
   bullet_type?: null;
   title?: string;
+  text?: null;
 }
 export interface XpCountStep {
   id: string;
@@ -770,6 +771,7 @@ export interface XpCountStep {
   bullet_type?: null;
   title?: string;
   special_xp: SpecialXp;
+  text?: null;
 }
 export interface Scenario {
   id: string;
