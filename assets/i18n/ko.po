@@ -405,7 +405,7 @@ msgstr ""
 #: src/components/campaign/NewCampaignView/index.tsx:434
 #: src/components/campaign/SealTokenDialog.tsx:40
 #: src/components/campaign/UpgradeDecksView/index.tsx:61
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:47
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:48
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:144
 #: src/components/campaignguide/CampaignGuideView.tsx:101
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:164
@@ -493,7 +493,7 @@ msgstr ""
 msgid "Multiplayer"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:57
+#: src/components/core/PackListComponent/index.tsx:58
 #: src/components/weakness/WeaknessDrawComponent.tsx:330
 msgid "Standalone"
 msgstr ""
@@ -589,12 +589,12 @@ msgstr ""
 msgid "Debug Card Json"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:55
+#: src/components/core/PackListComponent/index.tsx:56
 #: src/components/settings/DiagnosticsView.tsx:174
 msgid "Return to..."
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:56
+#: src/components/core/PackListComponent/index.tsx:57
 #: src/components/settings/DiagnosticsView.tsx:177
 msgid "Investigator Starter Decks"
 msgstr ""
@@ -752,7 +752,7 @@ msgid ""
 "up in search results."
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:121
+#: src/components/core/PackListComponent/index.tsx:122
 #: src/components/filter/PackFilterView.tsx:90
 #: src/components/settings/CollectionEditView.tsx:52
 #: src/components/settings/SpoilersView.tsx:55
@@ -888,7 +888,7 @@ msgstr ""
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:134
 #: src/components/filter/CardEnemyFilterView.tsx:181
-#: src/components/filter/CardLocationFilterView.tsx:70
+#: src/components/filter/CardLocationFilterView.tsx:71
 msgid "Per Investigator"
 msgstr ""
 
@@ -917,26 +917,26 @@ msgid "Enemy Filters"
 msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:249
-#: src/components/filter/CardLocationFilterView.tsx:44
+#: src/components/filter/CardLocationFilterView.tsx:45
 msgid "Shroud"
 msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:245
-#: src/components/filter/CardLocationFilterView.tsx:56
+#: src/components/filter/CardLocationFilterView.tsx:57
 msgid "Clues"
 msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:252
-#: src/components/filter/CardLocationFilterView.tsx:80
+#: src/components/filter/CardLocationFilterView.tsx:81
 msgid "Haunted"
 msgstr ""
 
-#: src/components/filter/CardLocationFilterView.tsx:19
-#: src/components/filter/CardLocationFilterView.tsx:95
+#: src/components/filter/CardLocationFilterView.tsx:20
+#: src/components/filter/CardLocationFilterView.tsx:96
 msgid "Location Filters"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:48
+#: src/components/core/PackListComponent/index.tsx:49
 #: src/components/filter/PackFilterView.tsx:103
 msgid "Core Set"
 msgstr ""
@@ -1194,8 +1194,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr ""
 
-#: src/app/App.ts:142
-#: src/app/App.ts:202
+#: src/app/App.ts:143
+#: src/app/App.ts:203
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:363
 #: src/components/campaignguide/CampaignGuideView.tsx:122
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:144
@@ -1708,7 +1708,7 @@ msgstr ""
 msgid "Deck Id"
 msgstr ""
 
-#: src/app/App.ts:190
+#: src/app/App.ts:191
 #: src/components/deck/DeckDetailView/index.tsx:1640
 msgid "Cards"
 msgstr ""
@@ -1792,7 +1792,7 @@ msgstr ""
 msgid "Original"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:59
+#: src/components/core/PackListComponent/index.tsx:60
 msgid "Parallel"
 msgstr ""
 
@@ -1946,38 +1946,38 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:45
 #: src/components/campaign/constants.ts:264
-#: src/components/core/PackListComponent/index.tsx:49
+#: src/components/core/PackListComponent/index.tsx:50
 msgid "The Dunwich Legacy"
 msgstr ""
 
 #: src/components/campaign/constants.ts:266
-#: src/components/core/PackListComponent/index.tsx:50
+#: src/components/core/PackListComponent/index.tsx:51
 msgid "The Path to Carcosa"
 msgstr ""
 
 #: src/components/campaign/constants.ts:49
 #: src/components/campaign/constants.ts:268
-#: src/components/core/PackListComponent/index.tsx:51
+#: src/components/core/PackListComponent/index.tsx:52
 msgid "The Forgotten Age"
 msgstr ""
 
 #: src/components/campaign/constants.ts:51
 #: src/components/campaign/constants.ts:273
-#: src/components/core/PackListComponent/index.tsx:52
+#: src/components/core/PackListComponent/index.tsx:53
 msgid "The Circle Undone"
 msgstr ""
 
 #: src/components/campaign/constants.ts:52
 #: src/components/campaign/constants.ts:270
-#: src/components/core/PackListComponent/index.tsx:53
+#: src/components/core/PackListComponent/index.tsx:54
 msgid "The Dream-Eaters"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:54
+#: src/components/core/PackListComponent/index.tsx:55
 msgid "The Innsmouth Conspiracy"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:58
+#: src/components/core/PackListComponent/index.tsx:59
 msgid "Miscelaneous"
 msgstr ""
 
@@ -2205,7 +2205,7 @@ msgstr ""
 msgid "Encounter Cards"
 msgstr ""
 
-#: src/app/App.ts:130
+#: src/app/App.ts:131
 #: src/components/cardlist/CardSearchComponent/index.tsx:160
 msgid "Player Cards"
 msgstr ""
@@ -2228,16 +2228,16 @@ msgstr ""
 msgid "Flip Card"
 msgstr ""
 
-#: src/components/card/CardTabooView.tsx:54
+#: src/components/card/CardTabooView.tsx:55
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
 msgstr ""
 
-#: src/components/card/CardTabooView.tsx:55
+#: src/components/card/CardTabooView.tsx:56
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr ""
 
-#: src/components/card/CardTabooView.tsx:112
+#: src/components/card/CardTabooView.tsx:113
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
 "optional deckbuilding restrictions or text changes. This list is designed "
@@ -2245,7 +2245,7 @@ msgid ""
 "difficulty, and to enforce shifts in deckbuilding environments over time."
 msgstr ""
 
-#: src/components/card/CardTabooView.tsx:114
+#: src/components/card/CardTabooView.tsx:115
 msgid ""
 "Adhering to The List of Taboos is completely optional. Investigators are "
 "not forced to adhere to the restrictions on this list, but if an "
@@ -2253,7 +2253,7 @@ msgid ""
 "cannot pick and choose which restrictions to use)."
 msgstr ""
 
-#: src/components/card/CardTabooView.tsx:116
+#: src/components/card/CardTabooView.tsx:117
 msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
 "Settings."
@@ -2998,7 +2998,7 @@ msgstr ""
 msgid "Killed and Insane Investigators"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:101
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:102
 msgid "Experience cost: ${ xpCost }"
 msgstr ""
 
@@ -3855,8 +3855,8 @@ msgstr ""
 msgid "Only Show Previous Campaign Members"
 msgstr ""
 
-#: src/app/App.ts:160
-#: src/app/App.ts:214
+#: src/app/App.ts:161
+#: src/app/App.ts:215
 #: src/components/campaign/MyCampaignsView/index.tsx:45
 msgid "Campaigns"
 msgstr ""
@@ -3897,7 +3897,7 @@ msgstr ""
 msgid "Add note"
 msgstr ""
 
-#: src/components/campaign/CampaignScenarioView/index.tsx:74
+#: src/components/campaign/CampaignScenarioView/index.tsx:75
 msgid "SCENARIOS"
 msgstr ""
 
@@ -3980,8 +3980,8 @@ msgstr ""
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr ""
 
-#: src/app/App.ts:178
-#: src/app/App.ts:226
+#: src/app/App.ts:179
+#: src/app/App.ts:227
 msgid "Settings"
 msgstr ""
 
@@ -4023,7 +4023,7 @@ msgstr ""
 msgid "Defeated: no trauma"
 msgstr ""
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:36
+#: src/components/campaignguide/ChallengeScenarioView.tsx:37
 #, javascript-format
 msgid ""
 "The <i>${ scenario.scenario_name }</i> challenge scenario centers around "
@@ -4031,19 +4031,19 @@ msgid ""
 "prerequisites:"
 msgstr ""
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:54
+#: src/components/campaignguide/ChallengeScenarioView.tsx:55
 msgid ""
 "${ investigator.name } must be chosen as one of the investigators when "
 "playing this scenario."
 msgstr ""
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:66
+#: src/components/campaignguide/ChallengeScenarioView.tsx:67
 msgid ""
 "The app does not enforce Challenge Scenario prerequisites, so please "
 "confirm that they apply manually."
 msgstr ""
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:69
+#: src/components/campaignguide/ChallengeScenarioView.tsx:70
 msgid "Play this scenario"
 msgstr ""
 
@@ -4066,16 +4066,16 @@ msgstr ""
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:44
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:45
 msgid "Challenge Scenario"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:65
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:66
 #, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:68
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:69
 #, javascript-format
 msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } "
@@ -4192,12 +4192,6 @@ msgstr ""
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
 msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/InvestigatorCounterInputComponent.tsx:49
-msgid "${ specialXp } resupply point available"
-msgid_plural "${ specialXp } resupply points available"
-msgstr[0] ""
-msgstr[1] ""
 
 #: src/components/campaign/constants.ts:50
 #: src/components/campaign/constants.ts:269
@@ -4326,20 +4320,35 @@ msgstr ""
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:28
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:47
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:129
 msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario "
 "and following interludes are completed."
 msgstr ""
+
+#: src/components/card/SingleCardWrapper.tsx:27
+#, javascript-format
+msgid ""
+"Missing card #${ code }. Please try updating cards from ArkhamDB in "
+"settings."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/InvestigatorCounterInputComponent.tsx:49
+msgid "${ specialXp } resupply experience available"
+msgid_plural "${ specialXp } resupply experience available"
+msgstr[0] ""
