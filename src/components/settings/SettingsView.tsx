@@ -1,14 +1,18 @@
 import React from 'react';
 import { keys } from 'lodash';
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Linking,
+  Alert,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
+import DocumentPicker from 'react-native-document-picker';
+import Share from 'react-native-share';
 import { t } from 'ttag';
 
 import LanguagePicker from './LanguagePicker';
@@ -38,6 +42,8 @@ interface ReduxProps {
   cardsError?: string;
   deckCount: number;
 }
+
+const SHOW_BACKUP = false;
 
 interface ReduxActionProps {
   fetchCards: (db: Database, lang: string) => void;
@@ -124,6 +130,36 @@ class SettingsView extends React.Component<Props> {
     this.props.setAlphabetizeEncounterSets(value);
   };
 
+  _backupPressed = () => {
+    Alert.alert(
+      t`Backup local data`,
+      t`You can use this feature to save/restore backups from multiple devices.`,
+      [
+        { text: t`Cancel`, style: 'cancel' },
+        {
+          text: t`Save backup`,
+          onPress: () => {
+            Share.open({
+              message: t`Arkham Cards backup`,
+              filename: 'arkham_cards_backup',
+              url: 'data:text/txt;base64,FDLKJLKGDKLJASDKLFDS',
+              saveToFiles: true,
+            });
+          },
+        },
+        {
+          text: t`Restore backup`,
+          onPress: () => {
+            DocumentPicker.pick({
+              type: [
+                Platform.OS === 'ios' ? 'public.plain-text' : 'text/plain'],
+            });
+          },
+        },
+      ]
+    );
+  };
+
   render() {
     const { cardsLoading, showCardsingleCardView, alphabetizeEncounterSets } = this.props;
     return (
@@ -131,6 +167,13 @@ class SettingsView extends React.Component<Props> {
         <ScrollView style={styles.list}>
           <CategoryHeader title={t`Account`} />
           <LoginButton settings />
+          { SHOW_BACKUP && (
+            <SettingsItem
+              navigation
+              onPress={this._backupPressed}
+              text={t`Backup Data`}
+            />
+          ) }
           <CategoryHeader title={t`Card Settings`} />
           <SettingsItem
             navigation
