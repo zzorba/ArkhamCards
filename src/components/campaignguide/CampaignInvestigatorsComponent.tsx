@@ -1,7 +1,8 @@
 import React from 'react';
 import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-import { flatMap, forEach, map, partition } from 'lodash';
+import { find, flatMap, forEach, map, partition } from 'lodash';
+import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
 import { Campaign, InvestigatorData } from '@actions/types';
@@ -21,7 +22,8 @@ interface Props {
   fontScale: number;
   updateCampaign: (
     id: number,
-    sparseCampaign: Partial<Campaign>
+    sparseCampaign: Partial<Campaign>,
+    now?: Date
   ) => void;
   deleteCampaign?: () => void;
 }
@@ -66,6 +68,8 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         campaignId,
         campaignGuideVersion,
         campaignGuide,
+        campaignState,
+        lastUpdated,
       },
       processedCampaign: {
         campaignLog,
@@ -80,6 +84,12 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         spentXp: xp,
       };
     });
+    const hasXpDifference = !!find(spentXp, (xp, code) => {
+      const adjust = this.props.campaignData.adjustedInvestigatorData[code];
+      return !adjust || adjust.spentXp !== xp;
+    });
+    const guideLastUpdated = campaignState.lastUpdated();
+    const newLastUpdated = isAfter(lastUpdated, guideLastUpdated) ? lastUpdated : guideLastUpdated;
     updateCampaign(
       campaignId,
       {
@@ -101,7 +111,8 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
           };
         }),
         adjustedInvestigatorData,
-      }
+      },
+      hasXpDifference ? new Date() : newLastUpdated
     );
   };
 

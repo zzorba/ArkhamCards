@@ -390,6 +390,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           style={[styles.row, styles.fullHeight]}
           testID={`SearchCard-${card.code}`}
           delayPressIn={5}
+          delayPressOut={5}
+          delayLongPress={5}
         >
           <View style={[
             styles.cardTextRow,

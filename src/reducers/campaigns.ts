@@ -1,4 +1,5 @@
 import { find, filter, forEach, map, uniq } from 'lodash';
+import uuid from 'react-native-uuid';
 import { t } from 'ttag';
 
 import {
@@ -47,6 +48,7 @@ function newBlankGuidedCampaign(
 ): Campaign {
   return {
     id,
+    uuid: uuid.v4(),
     name,
     cycleCode,
     weaknessSet,
@@ -173,6 +175,7 @@ export default function(
 
     const newCampaign: Campaign = {
       id: action.id,
+      uuid: uuid.v4(),
       name: action.name,
       showInterludes: true,
       cycleCode: action.cycleCode,
@@ -288,6 +291,7 @@ export default function(
             Math.max((investigatorData.spentXp || 0) - 1, 0),
         },
       },
+      lastUpdated: action.now,
     };
     return {
       ...state,

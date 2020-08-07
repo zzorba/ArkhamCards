@@ -51,6 +51,7 @@ export interface DeckMeta {
 
 export interface Deck {
   id: number;
+  local_uuid?: string;
   name: string;
   description_md?: string;
   taboo_id?: number;
@@ -323,6 +324,7 @@ export interface CampaignNotes {
 
 export interface Campaign {
   id: number;
+  uuid?: string;
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
@@ -552,6 +554,7 @@ export interface UpdateCampaignSpentXpAction {
   id: number;
   investigator: string;
   operation: 'inc' | 'dec';
+  now: Date;
 }
 
 export const UPDATE_CHAOS_BAG_RESULTS = 'UPDATE_CHAOS_BAG_RESULTS';
@@ -781,6 +784,7 @@ export interface GuideResetScenarioAction {
   type: typeof GUIDE_RESET_SCENARIO;
   campaignId: number;
   scenarioId: string;
+  now: Date;
 }
 
 export const GUIDE_SET_INPUT = 'GUIDE_SET_INPUT';
@@ -788,6 +792,7 @@ export interface GuideSetInputAction {
   type: typeof GUIDE_SET_INPUT;
   campaignId: number;
   input: GuideInput;
+  now: Date;
 }
 
 export const GUIDE_UNDO_INPUT = 'GUIDE_UNDO_INPUT';
@@ -795,6 +800,7 @@ export interface GuideUndoInputAction {
   type: typeof GUIDE_UNDO_INPUT;
   campaignId: number;
   scenarioId: string;
+  now: Date;
 }
 
 export interface SupplyCounts {
@@ -813,6 +819,7 @@ export interface StringChoices {
 
 export interface CampaignGuideState {
   inputs: GuideInput[];
+  lastUpdated?: Date;
 }
 
 export const DEFAULT_CAMPAIGN_GUIDE_STATE: CampaignGuideState = {

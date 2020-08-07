@@ -25,14 +25,17 @@ const DEFAULT_GUIDES_STATE: GuidesState = {
 function updateCampaign(
   state: GuidesState,
   campaignId: number,
+  now: Date,
   update: (campaign: CampaignGuideState) => CampaignGuideState
 ): GuidesState {
   const campaign: CampaignGuideState = state.all[campaignId] || DEFAULT_CAMPAIGN_GUIDE_STATE;
+  const updatedCampaign = update(campaign);
+  updatedCampaign.lastUpdated = now;
   return {
     ...state,
     all: {
       ...state.all,
-      [campaignId]: update(campaign),
+      [campaignId]: updatedCampaign,
     },
   };
 }
@@ -71,6 +74,7 @@ export default function(
     return updateCampaign(
       state,
       action.campaignId,
+      action.now,
       campaign => {
         const existingInputs = action.input.type !== 'campaign_link' ?
           campaign.inputs :
@@ -93,6 +97,7 @@ export default function(
     return updateCampaign(
       state,
       action.campaignId,
+      action.now,
       campaign => {
         if (!campaign.inputs.length) {
           return campaign;
@@ -129,6 +134,7 @@ export default function(
     return updateCampaign(
       state,
       action.campaignId,
+      action.now,
       campaign => {
         return {
           ...campaign,

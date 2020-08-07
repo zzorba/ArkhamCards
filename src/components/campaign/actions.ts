@@ -175,6 +175,7 @@ export function updateCampaignSpentXp(
     id,
     investigator,
     operation,
+    now: new Date(),
   };
 }
 
@@ -190,7 +191,8 @@ export function updateCampaignSpentXp(
  */
 export function updateCampaign(
   id: number,
-  sparseCampaign: Partial<Campaign>
+  sparseCampaign: Partial<Campaign>,
+  now?: Date
 ): ThunkAction<void, AppState, null, UpdateCampaignAction> {
   return (dispatch, getState: () => AppState) => {
     const campaign: Partial<Campaign> = { ...sparseCampaign };
@@ -202,7 +204,7 @@ export function updateCampaign(
       type: UPDATE_CAMPAIGN,
       id,
       campaign,
-      now: new Date(),
+      now: (now || new Date()),
     });
   };
 }

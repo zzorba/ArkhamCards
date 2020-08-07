@@ -17,6 +17,7 @@ export interface CampaignGuideContextType {
   latestDecks: LatestDecks;
   adjustedInvestigatorData: InvestigatorData;
   playerCards: CardsMap;
+  lastUpdated: Date;
 }
 
 export const CampaignGuideContext = React.createContext<CampaignGuideContextType>(

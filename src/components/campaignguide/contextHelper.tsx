@@ -269,5 +269,6 @@ export function constructCampaignGuideContext(
     weaknessSet: campaign.weaknessSet,
     adjustedInvestigatorData: campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
     playerCards: universalData.cards,
+    lastUpdated: campaign.lastUpdated,
   };
 }

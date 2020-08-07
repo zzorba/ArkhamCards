@@ -58,6 +58,10 @@ export default class CampaignStateHelper {
     this.linkedState = linkedState;
   }
 
+  lastUpdated(): Date {
+    return this.state.lastUpdated || new Date();
+  }
+
   showChooseDeck(singleInvestigator?: Card, callback?: (code: string) => void) {
     this.actions.showChooseDeck(singleInvestigator, callback);
   }
