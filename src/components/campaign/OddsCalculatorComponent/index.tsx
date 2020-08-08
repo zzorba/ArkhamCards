@@ -43,6 +43,13 @@ interface State {
   xValue: { [token: string]: number };
 }
 
+const SCENARIO_CODE_FIXER: {
+  [key: string]: string | undefined;
+} = {
+  the_untamed_wilds: 'wilds',
+  the_doom_of_eztli: 'eztli',
+}
+
 export default class OddsCalculatorComponent extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -94,16 +101,25 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     });
   };
 
+  encounterCode(currentScenario?: Scenario)   {
+    const encounterCode = currentScenario && (
+      currentScenario.code.startsWith('return_to_') ?
+        currentScenario.code.substring('return_to_'.length) :
+        currentScenario.code);
+    if (encounterCode && SCENARIO_CODE_FIXER[encounterCode]) {
+      return SCENARIO_CODE_FIXER[encounterCode]
+    }
+    return encounterCode;
+  }
+
   currentScenarioState(currentScenario?: Scenario) {
     const {
       scenarioCards,
       campaign,
     } = this.props;
     const difficulty = campaign ? campaign.difficulty : undefined;
-    const encounterCode = currentScenario && (
-      currentScenario.code.startsWith('return_to_') ?
-        currentScenario.code.substring('return_to_'.length) :
-        currentScenario.code);
+    const encounterCode = this.encounterCode(currentScenario);
+
     const currentScenarioCard = (scenarioCards && encounterCode) ?
       find(scenarioCards, card => card.encounter_code === encounterCode) :
       undefined;
@@ -141,7 +157,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       if (scenarioText) {
         const linesByToken: { [token: string]: string } = {};
         forEach(
-          scenarioText.split('\n'),
+          scenarioText.replace(/<br\/>/g, '\n').split('\n'),
           line => {
             const token = find(SPECIAL_TOKENS, token =>
               line.startsWith(`[${token}]`));
@@ -149,6 +165,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
               linesByToken[token] = line;
             }
           });
+        console.log(linesByToken);
         SPECIAL_TOKENS.forEach(token => {
           switch (token) {
             case 'elder_sign':
@@ -170,6 +187,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
                 if (valueRegex.test(line)) {
                   const match = line.match(valueRegex);
                   if (match) {
+                    console.log(`${token} = ${match}`);
                     if (match[2] === '-X') {
                       scenarioTokens.push({
                         token,

@@ -32,6 +32,7 @@ import CampaignDrawWeaknessDialog from '@components/campaign/CampaignDrawWeaknes
 import CampaignDifficultyDialog from '@components/campaign/CampaignDifficultyDialog';
 import EditChaosBagDialog from '@components/campaign/EditChaosBagDialog';
 import MyCampaignsView from '@components/campaign/MyCampaignsView';
+import BackupView from '@components/settings/BackupView';
 import NewCampaignView from '@components/campaign/NewCampaignView';
 import SelectCampaignDialog from '@components/campaign/SelectCampaignDialog';
 import MyDecksSelectorDialog from '@components/campaign/MyDecksSelectorDialog';
@@ -108,6 +109,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('OddsCalculator', () => OddsCalculatorView, Provider, store);
   Navigation.registerComponentWithRedux('Settings', () => SettingsView, Provider, store);
   Navigation.registerComponentWithRedux('Settings.Diagnostics', () => DiagnosticsView, Provider, store);
+  Navigation.registerComponentWithRedux('Settings.BackupView', () => BackupView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters', () => CardFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Enemy', () => CardEnemyFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Location', () => CardLocationFilterView, Provider, store);

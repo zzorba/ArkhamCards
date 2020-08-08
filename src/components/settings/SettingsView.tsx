@@ -1,18 +1,14 @@
 import React from 'react';
 import { keys } from 'lodash';
 import {
-  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Linking,
-  Alert,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import DocumentPicker from 'react-native-document-picker';
-import Share from 'react-native-share';
 import { t } from 'ttag';
 
 import LanguagePicker from './LanguagePicker';
@@ -97,6 +93,10 @@ class SettingsView extends React.Component<Props> {
     this.navButtonPressed('About', t`About Arkham Cards`);
   };
 
+  _backupPressed = () => {
+    this.navButtonPressed('Settings.Backup', t`Backup`);
+  };
+
   _contactPressed = () => {
     Linking.openURL('mailto:arkhamcards@gmail.com');
   }
@@ -130,35 +130,6 @@ class SettingsView extends React.Component<Props> {
     this.props.setAlphabetizeEncounterSets(value);
   };
 
-  _backupPressed = () => {
-    Alert.alert(
-      t`Backup local data`,
-      t`You can use this feature to save/restore backups from multiple devices.`,
-      [
-        { text: t`Cancel`, style: 'cancel' },
-        {
-          text: t`Save backup`,
-          onPress: () => {
-            Share.open({
-              message: t`Arkham Cards backup`,
-              filename: 'arkham_cards_backup',
-              url: 'data:text/txt;base64,FDLKJLKGDKLJASDKLFDS',
-              saveToFiles: true,
-            });
-          },
-        },
-        {
-          text: t`Restore backup`,
-          onPress: () => {
-            DocumentPicker.pick({
-              type: [
-                Platform.OS === 'ios' ? 'public.plain-text' : 'text/plain'],
-            });
-          },
-        },
-      ]
-    );
-  };
 
   render() {
     const { cardsLoading, showCardsingleCardView, alphabetizeEncounterSets } = this.props;
