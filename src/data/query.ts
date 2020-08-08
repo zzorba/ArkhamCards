@@ -10,7 +10,7 @@ export function where(query: string, params?: QueryParams): Brackets {
 }
 
 export const ON_YOUR_OWN_RESTRICTION = new Brackets(
-  qb => qb.where(`c.slots_normalized LIKE :slot`, { slot: '%#ally#%' }),
+  qb => qb.where(`c.slots_normalized is not null AND c.slots_normalized LIKE :slot`, { slot: '%#ally#%' }),
   { negate: true }
 );
 
