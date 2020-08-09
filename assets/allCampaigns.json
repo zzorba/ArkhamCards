@@ -22019,12 +22019,12 @@
     },
     {
       "id": "chose_replay",
-      "text": "The investigators must replay <b>Scenario V-A: Heart of the Elders, Part 1</b>. Reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game. Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
+      "text": "The investigators must replay <b>Scenario V-A: Return to Heart of the Elders, Part 1</b>. Reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game. Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
       "effects": [
         {
           "type": "campaign_data",
           "setting": "replay_scenario",
-          "scenario": "heart_of_the_elders_part_1"
+          "scenario": "return_to_heart_of_the_elders_part_1"
         }
       ]
     },
@@ -25798,17 +25798,6 @@
       ]
     },
     {
-      "id": "replay_scenario",
-      "text": "The investigators must replay <b>Scenario II: The Doom of Eztli</b>. Reset the game to this scenario’s Setup. Do not record anything in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game.",
-      "effects": [
-        {
-          "type": "campaign_data",
-          "setting": "replay_scenario",
-          "scenario": "eztli"
-        }
-      ]
-    },
-    {
       "id": "choose_new_investigators",
       "text": "Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal."
     },
@@ -25977,6 +25966,17 @@
           }
         ]
       }
+    },
+    {
+      "id": "replay_scenario",
+      "text": "The investigators must replay <b>Scenario II: Return to The Doom of Eztli</b>. Reset the game to this scenario’s Setup. Do not record anything in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "replay_scenario",
+          "scenario": "return_to_the_doom_of_eztli"
+        }
+      ]
     }
   ],
   "resolutions": [

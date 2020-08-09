@@ -1,4 +1,5 @@
 import { concat, uniq, flatMap, filter, forEach, map, reverse, sortBy, values } from 'lodash';
+import uuid from 'react-native-uuid';
 
 import {
   LOGOUT,
@@ -12,6 +13,7 @@ import {
   UPDATE_DECK,
   CLEAR_DECKS,
   REPLACE_LOCAL_DECK,
+  ENSURE_UUID,
   DecksActions,
   NewDeckAvailableAction,
   ReplaceLocalDeckAction,
@@ -71,6 +73,23 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
+  if (action.type === ENSURE_UUID) {
+    const all: DecksMap = {};
+    forEach(state.all, (deck, id: any) => {
+      if (!deck || !deck.local || deck.local_uuid) {
+        all[id] = deck;
+      } else {
+        all[id] = {
+          ...deck,
+          local_uuid: uuid.v4(),
+        };
+      };
+    });
+    return {
+      ...state,
+      all,
+    };
+  }
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
     const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {

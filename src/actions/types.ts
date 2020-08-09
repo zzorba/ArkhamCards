@@ -826,6 +826,11 @@ export const DEFAULT_CAMPAIGN_GUIDE_STATE: CampaignGuideState = {
   inputs: [],
 };
 
+export const ENSURE_UUID = 'ENSURE_UUID';
+export interface EnsureUuidAction {
+  type: typeof ENSURE_UUID;
+}
+
 export type FilterActions =
   ClearFilterAction |
   ToggleFilterAction |
@@ -862,7 +867,8 @@ export type DecksActions =
   DeleteDeckAction |
   UpdateDeckAction |
   ClearDecksAction |
-  ReplaceLocalDeckAction;
+  ReplaceLocalDeckAction |
+  EnsureUuidAction;
 
 export type CampaignActions =
   LogoutAction |
@@ -878,7 +884,8 @@ export type CampaignActions =
   RestoreBackupAction |
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
-  CampaignRemoveInvestigatorAction;
+  CampaignRemoveInvestigatorAction |
+  EnsureUuidAction;
 
 export type GuideActions =
   DeleteCampaignAction |

@@ -7,8 +7,12 @@ import {
   ScrollView,
   Share,
   StyleSheet,
+  Platform,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
+import RNFS from 'react-native-fs';
+import DocumentPicker from 'react-native-document-picker';
+
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
@@ -22,7 +26,9 @@ import { getBackupData, getAllPacks, AppState } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
+import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
+import { s } from '@styles/space';
 
 interface ReduxProps {
   backupData: {
@@ -46,6 +52,7 @@ interface ReduxActionProps {
     decks: Deck[]
   ) => void;
   clearDecks: () => void;
+  ensureUuid: () => void;
 }
 
 type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
@@ -53,6 +60,10 @@ type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
 class DiagnosticsView extends React.Component<Props> {
   static contextType = DatabaseContext;
   context!: DatabaseContextType;
+
+  componentDidMount() {
+    this.props.ensureUuid();
+  }
 
   _importBackupDataJson = (json: any) => {
     try {
@@ -75,34 +86,45 @@ class DiagnosticsView extends React.Component<Props> {
     }
   };
 
+  _pickBackupFile = async() => {
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles]
+      });
+      if (!res.name.endsWith('.acb')) {
+        Alert.alert(
+          t`Unexpected file type`,
+          t`This app expects an Arkham Cards backup file (.acb)`,
+          [{
+            text: t`Try again`,
+            onPress: this._pickBackupFile,
+          },{
+            text: t`Cancel`,
+            style: 'cancel',
+          }]
+        );
+        return;
+      }
+      // We got the file
+      const contents = await RNFS.readFile(res.fileCopyUri);
+      Alert.alert(contents.substr(0, 100));
+    } catch (err) {
+      if (!DocumentPicker.isCancel(err)) {
+        throw err;
+      }
+    }
+  };
+
   _importCampaignData = () => {
-    const {
-      showTextEditDialog,
-    } = this.props;
-    const erasedCopy = t`All local decks and campaigns will be overridden`;
     Alert.alert(
       t`Restore campaign data?`,
-      t`This feature is intended for advanced diagnostics or to import data from another app.\n\n${erasedCopy}`,
+      t`This feature will let you restore data from a lost device. After a backup is selected, you can choose which data to backup`,
       [{
-        text: t`Nevermind`,
-        style: 'cancel',
-      }, {
         text: t`Import data`,
-        style: 'destructive',
-        onPress: () => {
-          showTextEditDialog(
-            t`Paste Backup Here`,
-            '',
-            (json) => {
-              Keyboard.dismiss();
-              InteractionManager.runAfterInteractions(
-                () => this._importBackupDataJson(json)
-              );
-            },
-            false,
-            4
-          );
-        },
+        onPress: this._pickBackupFile,
+      },{
+        text: t`Cancel`,
+        style: 'cancel',
       }],
     );
   };
@@ -110,16 +132,30 @@ class DiagnosticsView extends React.Component<Props> {
   _exportCampaignData = () => {
     Alert.alert(
       t`Backup campaign data?`,
-      t`This feature is intended for advanced diagnostics or if you are trying to move your campaign data from one device to another. Just copy the data and paste it into the other app.`,
+      t`This will let you backup your local decks and campaigns for safe-keeping, or to move them to another device.`,
       [{
         text: t`Cancel`,
         style: 'cancel',
       }, {
         text: t`Export Campaign Data`,
         onPress: () => {
-          Share.share({
-            message: JSON.stringify(this.props.backupData),
-          });
+          if (Platform.OS === 'ios') {
+            const path = RNFS.CachesDirectoryPath + '/arkham-cards-backup.acb';
+            RNFS.writeFile(
+              path,
+              JSON.stringify(this.props.backupData),
+              'utf8'
+            ).then(() => {
+              Share.share({
+                url: `file://${path}`,
+              });
+            });
+          } else {
+            Share.share({
+              url: 'data:text/acb;base64,32342342342',
+              showAppsToView: true,
+            });
+          }
         },
       }],
     );
@@ -159,6 +195,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
     clearDecks,
     fetchCards,
     restoreBackup,
+    ensureUuid,
   }, dispatch);
 }
 

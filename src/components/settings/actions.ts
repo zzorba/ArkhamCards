@@ -2,9 +2,11 @@ import {
   SET_TABOO_SET,
   SET_SINGLE_CARD_VIEW,
   SET_ALPHABETIZE_ENCOUNTER_SETS,
+  ENSURE_UUID,
   SetTabooSetAction,
   SetSingleCardViewAction,
   SetAlphabetizeEncounterSetsAction,
+  EnsureUuidAction,
 } from '@actions/types';
 
 export function setTabooSet(tabooId?: number): SetTabooSetAction {
@@ -25,5 +27,11 @@ export function setAlphabetizeEncounterSets(value: boolean): SetAlphabetizeEncou
   return {
     type: SET_ALPHABETIZE_ENCOUNTER_SETS,
     alphabetizeEncounterSets: value,
+  };
+}
+
+export function ensureUuid(): EnsureUuidAction {
+  return {
+    type: ENSURE_UUID,
   };
 }

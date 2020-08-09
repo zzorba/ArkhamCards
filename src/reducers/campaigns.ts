@@ -18,6 +18,7 @@ import {
   RESTORE_BACKUP,
   REPLACE_LOCAL_DECK,
   NEW_CHAOS_BAG_RESULTS,
+  ENSURE_UUID,
   Campaign,
   CampaignCycleCode,
   WeaknessSet,
@@ -76,6 +77,23 @@ export default function(
   state: CampaignsState = DEFAULT_CAMPAIGNS_STATE,
   action: CampaignActions
 ): CampaignsState {
+  if (action.type === ENSURE_UUID) {
+    const all: { [id: string]: Campaign } = {};
+    forEach(state.all, (campaign, id) => {
+      if (campaign.uuid) {
+        all[id] = campaign;
+      } else {
+        all[id] = {
+          ...campaign,
+          uuid: uuid.v4(),
+        };
+      };
+    });
+    return {
+      ...state,
+      all,
+    };
+  }
   if (action.type === LOGOUT) {
     const all: { [id: string]: Campaign } = {};
     forEach(state.all, (campaign, id) => {

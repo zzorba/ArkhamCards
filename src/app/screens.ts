@@ -109,7 +109,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('OddsCalculator', () => OddsCalculatorView, Provider, store);
   Navigation.registerComponentWithRedux('Settings', () => SettingsView, Provider, store);
   Navigation.registerComponentWithRedux('Settings.Diagnostics', () => DiagnosticsView, Provider, store);
-  Navigation.registerComponentWithRedux('Settings.BackupView', () => BackupView, Provider, store);
+  Navigation.registerComponentWithRedux('Settings.Backup', () => BackupView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters', () => CardFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Enemy', () => CardEnemyFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Location', () => CardLocationFilterView, Provider, store);

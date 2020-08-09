@@ -1,4 +1,5 @@
 import { forEach } from 'lodash';
+import uuid from 'react-native-uuid';
 
 import { UpgradeDeckResult } from '@lib/authApi';
 import { Deck, DeckMeta, Slots } from '@actions/types';
@@ -23,6 +24,7 @@ export function newLocalDeck(
     taboo_id: tabooSetId,
     ignoreDeckLimitSlots: {},
     local: true,
+    local_uuid: uuid.v4(),
     problem: 'too_few_cards',
     version: '0.1',
   };

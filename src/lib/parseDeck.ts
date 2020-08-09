@@ -8,11 +8,13 @@ import {
   mapValues,
   range,
   groupBy,
+  partition,
   pullAt,
   sortBy,
   sum,
   uniqBy,
   union,
+  uniq,
 } from 'lodash';
 import { t } from 'ttag';
 
@@ -277,7 +279,7 @@ function getDeckChanges(
   const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
   forEach(
-    union(keys(slots), keys(previousDeck.slots)),
+    uniq(union(keys(slots), keys(previousDeck.slots))),
     code => {
       const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
@@ -313,19 +315,20 @@ function getDeckChanges(
   const removedCards: Card[] = [];
   forEach(changedCards, (count, code) => {
     const card = cards[code];
-    if (card) {
-      if (count < 0) {
-        for (let i = count; i < 0; i++) {
-          removedCards.push(card);
-        }
-      } else {
-        for (let i = 0; i < count; i++) {
-          addedCards.push(card);
-          if (card.code === ARCANE_RESEARCH_CODE) {
-            // Per FAQ, you do not get the arcane research bonus if you just
-            // added this card to your deck.
-            arcaneResearchUses--;
-          }
+    if (!card) {
+      return;
+    }
+    if (count < 0) {
+      for (let i = count; i < 0; i++) {
+        removedCards.push(card);
+      }
+    } else {
+      for (let i = 0; i < count; i++) {
+        addedCards.push(card);
+        if (card.code === ARCANE_RESEARCH_CODE) {
+          // Per FAQ, you do not get the arcane research bonus if you just
+          // added this card to your deck.
+          arcaneResearchUses--;
         }
       }
     }
@@ -336,10 +339,13 @@ function getDeckChanges(
   const myriadBuys: {
     [name: string]: boolean;
   } = {};
+  const [addedStoryCards, addedNormalCards] = partition(addedCards, card => card.xp === null);
+  forEach(addedStoryCards, addedCard => incSlot(added, addedCard));
+
   const spentXp = sum(map(
     sortBy(
       // null cards are story assets, so putting them in is free.
-      filter(addedCards, card => card.xp !== null),
+      addedNormalCards,
       card => -((card.xp || 0) + (card.extra_xp || 0))
     ),
     addedCard => {

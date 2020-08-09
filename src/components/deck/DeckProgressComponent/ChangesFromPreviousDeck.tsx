@@ -184,7 +184,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     if (!ChangesFromPreviousDeck.hasChanges(changes) && !title) {
       return null;
     }
-
     return (
       <>
         <CardSectionHeader
