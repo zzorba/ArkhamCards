@@ -1901,23 +1901,23 @@ msgstr "Maldiciendo la ficha del tentáculo"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:66
 msgid "Drawing a mythos card with surge"
-msgstr "Robando una carta de Mitos con oleada"
+msgstr "Robando una carta de Encuentros con oleada"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:67
 msgid "Placing doom on the agenda"
-msgstr "Poniendo perdición en el Plan"
+msgstr "Poniendo perdición en el Plan en curso"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:68
 msgid "Reticulating spines"
-msgstr "Las espinas reticulantes"
+msgstr "Descubriendo nuevas erratas"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:69
 msgid "Trying to make sense of the Time Warp FAQ"
-msgstr "Tratando de entender el FAQ de Time Warp"
+msgstr "Tratando de entender las secuencias anidadas"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:70
 msgid "Taking three damage and three horror"
-msgstr "Recibiendo tres puntos de Daño y tres de Horror"
+msgstr "Recibiendo tres de Daño y tres de Horror"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:603
 #, javascript-format
