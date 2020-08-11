@@ -75,7 +75,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
     this.state = {
       saving: false,
-      deckName: this.deckName(),
+      deckName: t`New Deck`,
       offlineDeck: !props.signedIn || !props.isConnected || props.networkType === NetInfoStateType.none,
       optionSelected: [true],
       tabooSetId: props.defaultTabooSetId,
@@ -220,15 +220,15 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       investigatorId,
       investigators,
     } = this.props;
-    return investigators[investigatorId] || undefined;
+    return (investigators && investigators[investigatorId]) || undefined;
   }
 
   deckName() {
     const investigator = this.investigator();
-    if (!investigator) {
+    if (!investigator || !investigator.name) {
       return undefined;
     }
-    switch (investigator.faction_code) {
+    switch (investigator.factionCode()) {
       case 'guardian':
         return t`The Adventures of ${investigator.name}`;
       case 'seeker':
