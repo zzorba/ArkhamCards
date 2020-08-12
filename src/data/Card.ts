@@ -761,5 +761,5 @@ export default class Card {
 export type CardKey = keyof Card;
 
 export interface CardsMap {
-  [code: string]: Card;
+  [code: string]: Card | undefined;
 }

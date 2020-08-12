@@ -86,18 +86,38 @@ export default class DecksSection extends React.Component<Props, State> {
     });
   };
 
+  weaknessString(deck: Deck) {
+    const {
+      cards,
+    } = this.props;
+    let weaknessCount = 0;
+    const weaknesses: Card[] = [];
+    const message = flatMap(
+      deck.slots,
+      (count, code) => {
+        const card = cards[code];
+        if (!card || !card.isBasicWeakness()) {
+          return null;
+        }
+        weaknessCount += count;
+        weaknesses.push(card);
+        return `${deck.slots[code]}x - ${card.name}`;
+      }
+    ).join('\n');
+    return {
+      count: weaknessCount,
+      message,
+      weaknesses,
+    };
+  }
+
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cards,
     } = this.props;
-    const weaknesses = filter(
-      keys(deck.slots),
-      code => {
-        const card = cards[code];
-        return card && card.isBasicWeakness();
-      });
-    const count = sumBy(weaknesses, code => deck.slots[code]);
-    if (weaknesses.length) {
+    const { count, message, weaknesses } = this.weaknessString(deck);
+
+    if (count > 0) {
       setTimeout(() => {
         Alert.alert(
           t`Adjust Weakness Set`,
@@ -106,7 +126,7 @@ export default class DecksSection extends React.Component<Props, State> {
             t`This deck contains several basic weaknesses` :
             t`This deck contains a basic weakness`) +
           '\n\n' +
-          map(weaknesses, code => `${deck.slots[code]}x - ${cards[code].name}`).join('\n') +
+          message +
           '\n\n' +
           (count > 1 ?
             t`Do you want to remove them from the campaign’s Basic Weakness set?` :
@@ -122,20 +142,15 @@ export default class DecksSection extends React.Component<Props, State> {
                   updateWeaknessSet,
                 } = this.props;
                 const assignedCards = { ...weaknessSet.assignedCards };
-                forEach(weaknesses, code => {
-                  const card = cards[code];
-                  if (!card) {
-                    // Shouldn't happen because of above, but defensiveness never hurts.
-                    return;
+                forEach(weaknesses, card => {
+                  const count = deck.slots[card.code];
+                  if (!(card.code in assignedCards)) {
+                    assignedCards[card.code] = 0;
                   }
-                  const count = deck.slots[code];
-                  if (!(code in assignedCards)) {
-                    assignedCards[code] = 0;
-                  }
-                  if ((assignedCards[code] + count) > (card.quantity || 0)) {
-                    assignedCards[code] = card.quantity || 0;
+                  if ((assignedCards[card.code] + count) > (card.quantity || 0)) {
+                    assignedCards[card.code] = card.quantity || 0;
                   } else {
-                    assignedCards[code] += count;
+                    assignedCards[card.code] += count;
                   }
                 });
                 updateWeaknessSet(Object.assign({}, weaknessSet, { assignedCards }));

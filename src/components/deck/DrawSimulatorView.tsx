@@ -132,6 +132,9 @@ class DrawSimulatorView extends React.Component<Props, State> {
         Object.keys(slots),
         cardId => {
           const card = cards[cardId];
+          if (!card) {
+            return [];
+          }
           // DUKE=02014
           if (card.permanent || card.double_sided || card.code === '02014') {
             return [];
@@ -226,6 +229,9 @@ class DrawSimulatorView extends React.Component<Props, State> {
   _renderCardItem = ({ item }: { item: Item }) => {
     const { fontScale } = this.props;
     const card = this.props.cards[item.code];
+    if (!card) {
+      return null;
+    }
     return (
       <CardSearchResult
         key={item.key}

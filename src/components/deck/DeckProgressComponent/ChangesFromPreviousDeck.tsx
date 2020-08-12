@@ -1,5 +1,5 @@
 import React from 'react';
-import { concat, findIndex, keys, map, sortBy } from 'lodash';
+import { concat, flatMap, findIndex, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
 import { showCard, showCardSwipe } from '@components/nav/helper';
@@ -33,7 +33,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
     }
     return sortBy(
       sortBy(
-        map(keys(slots), code => cards[code]),
+        flatMap(keys(slots), code => cards[code] || []),
         card => card.xp || 0),
       card => card.name
     );

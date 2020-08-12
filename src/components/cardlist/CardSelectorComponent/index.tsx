@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { filter, keys, map, sortBy } from 'lodash';
+import { filter, flatMap, keys, sortBy } from 'lodash';
 
 import { Slots } from '@actions/types';
 import Card from '@data/Card';
@@ -44,11 +44,19 @@ class CardSelectorComponent extends React.Component<Props> {
     const matchingCards = sortBy(
       filter(
         keys(slots),
-        code => (
-          slots[code] > 0 &&
-          cards[code] &&
-          (!filterCard || filterCard(cards[code])))),
-      code => cards[code].name
+        code => {
+          const card = cards[code];
+          return (
+            slots[code] > 0 &&
+            !!card &&
+            (!filterCard || filterCard(card))
+          );
+        }
+      ),
+      code => {
+        const card = cards[code];
+        return (card && card.name) || '';
+      }
     );
 
     if (!matchingCards.length) {
@@ -58,17 +66,23 @@ class CardSelectorComponent extends React.Component<Props> {
     return (
       <>
         { header }
-        { map(matchingCards, code => (
-          <CardToggleRow
-            key={code}
-            fontScale={fontScale}
-            card={cards[code]}
-            onPress={this._onCardPress}
-            onChange={this._onChange}
-            count={counts[code] || 0}
-            limit={slots[code]}
-          />
-        )) }
+        { flatMap(matchingCards, code => {
+          const card = cards[code];
+          if (!card) {
+            return null;
+          }
+          return (
+            <CardToggleRow
+              key={code}
+              fontScale={fontScale}
+              card={card}
+              onPress={this._onCardPress}
+              onChange={this._onChange}
+              count={counts[code] || 0}
+              limit={slots[code]}
+            />
+          );
+        }) }
       </>
     );
   }

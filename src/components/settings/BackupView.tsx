@@ -153,7 +153,6 @@ class DiagnosticsView extends React.Component<Props> {
           } else {
             Share.share({
               url: 'data:text/acb;base64,32342342342',
-              showAppsToView: true,
             });
           }
         },

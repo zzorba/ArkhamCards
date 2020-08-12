@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, forEach, keys, map, sumBy, throttle } from 'lodash';
+import { filter, flatMap, forEach, keys, map, sumBy, throttle } from 'lodash';
 import {
   Alert,
   ScrollView,
@@ -217,15 +217,39 @@ class NewCampaignView extends React.Component<Props, State> {
     }, this._updateNavigationButtons);
   };
 
+
+  weaknessString(deck: Deck) {
+    const {
+      cards,
+    } = this.props;
+    let weaknessCount = 0;
+    const weaknesses: Card[] = [];
+    const message = flatMap(
+      deck.slots,
+      (count, code) => {
+        const card = cards[code];
+        if (!card || !card.isBasicWeakness()) {
+          return null;
+        }
+        weaknessCount += count;
+        weaknesses.push(card);
+        return `${deck.slots[code]}x - ${card.name}`;
+      }
+    ).join('\n');
+    return {
+      count: weaknessCount,
+      message,
+      weaknesses,
+    };
+  }
+
+
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cards,
     } = this.props;
-    const weaknesses = filter(keys(deck.slots), code => {
-      const card = cards[code];
-      return card && card.isBasicWeakness();
-    });
-    const count = sumBy(weaknesses, code => deck.slots[code]);
+    const { count, message, weaknesses } = this.weaknessString(deck);
+
     if (weaknesses.length) {
       setTimeout(() => {
         Alert.alert(
@@ -235,7 +259,7 @@ class NewCampaignView extends React.Component<Props, State> {
             t`This deck contains several basic weaknesses` :
             t`This deck contains a basic weakness`) +
           '\n\n' +
-          map(weaknesses, code => `${deck.slots[code]}x - ${cards[code].name}`).join('\n') +
+          message +
           '\n\n' +
           (count > 1 ?
             t`Do you want to remove them from the campaign’s Basic Weakness set?` :
@@ -250,13 +274,14 @@ class NewCampaignView extends React.Component<Props, State> {
                   weaknessAssignedCards,
                 } = this.state;
                 const assignedCards = { ...weaknessAssignedCards };
-                forEach(weaknesses, code => {
+                forEach(weaknesses, card => {
+                  const code = card.code;
                   const count = deck.slots[code];
                   if (!(code in assignedCards)) {
                     assignedCards[code] = 0;
                   }
-                  if ((assignedCards[code] + count) > (cards[code].quantity || 0)) {
-                    assignedCards[code] = cards[code].quantity || 0;
+                  if ((assignedCards[code] + count) > (card.quantity || 0)) {
+                    assignedCards[code] = card.quantity || 0;
                   } else {
                     assignedCards[code] += count;
                   }

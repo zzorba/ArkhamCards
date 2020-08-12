@@ -256,9 +256,9 @@ export const getLatestCampaignInvestigators = createSelector(
     return uniq([
       ...flatMap(
         filter(latestDecks, deck => !!(deck && deck.investigator_code)),
-        deck => investigators[deck.investigator_code]
+        deck => investigators[deck.investigator_code] || []
       ),
-      ...map(nonDeckInvestigators, code => investigators[code]),
+      ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
     ]);
   }
 );

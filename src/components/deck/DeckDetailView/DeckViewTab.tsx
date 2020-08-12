@@ -301,13 +301,15 @@ export default class DeckViewTab extends React.Component<Props, State> {
       tabooSetId,
     } = this.props;
     const investigator = this.investigatorFront();
-    showCard(
-      componentId,
-      investigator.code,
-      investigator,
-      false,
-      tabooSetId,
-    );
+    if (investigator) {
+      showCard(
+        componentId,
+        investigator.code,
+        investigator,
+        false,
+        tabooSetId,
+      );
+    }
   };
 
   _showSwipeCard = (id: string, card: Card) => {
@@ -341,7 +343,9 @@ export default class DeckViewTab extends React.Component<Props, State> {
       }
       forEach(section.data, item => {
         const card = this.props.cards[item.id];
-        cards.push(card);
+        if (card) {
+          cards.push(card);
+        }
       });
     });
     showCardSwipe(
@@ -600,6 +604,10 @@ export default class DeckViewTab extends React.Component<Props, State> {
         cards[BODY_OF_A_YITHIAN] :
         undefined
     ) || this.investigatorFront();
+
+    if (!investigator) {
+      return null;
+    }
 
     return (
       <View style={styles.column}>

@@ -150,9 +150,12 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   static headerForInvestigator(
-    investigator: Card,
-    sort: SortType
+    sort: SortType,
+    investigator?: Card
   ): string {
+    if (!investigator) {
+      return t`N/A`;
+    }
     switch (sort) {
       case SORT_BY_FACTION:
         return investigator.faction_name || t`N/A`;
@@ -183,6 +186,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       filter(
         investigators,
         i => {
+          if (!i) {
+            return false;
+          }
           if (i.altArtInvestigator || i.spoiler) {
             return false;
           }
@@ -198,6 +204,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           );
         }),
       investigator => {
+        if (!investigator) {
+          return '';
+        }
         switch (sort) {
           case SORT_BY_FACTION:
             return investigator.factionCode();
@@ -213,7 +222,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     let nonCollectionCards: Card[] = [];
     let currentBucket: Section | undefined = undefined;
     forEach(allInvestigators, i => {
-      const header = InvestigatorsListComponent.headerForInvestigator(i, sort);
+      const header = InvestigatorsListComponent.headerForInvestigator(sort, i);
       if (!currentBucket || currentBucket.title !== header) {
         if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {
@@ -232,12 +241,14 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
         };
         results.push(currentBucket);
       }
-      if (i && i.pack_code && (
-        i.pack_code === 'core' || in_collection[i.pack_code])
-      ) {
-        currentBucket.data.push(i);
-      } else {
-        nonCollectionCards.push(i);
+      if (i) {
+        if (i.pack_code && (
+          i.pack_code === 'core' || in_collection[i.pack_code])
+        ) {
+          currentBucket.data.push(i);
+        } else {
+          nonCollectionCards.push(i);
+        }
       }
     });
 

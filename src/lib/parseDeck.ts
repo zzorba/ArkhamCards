@@ -53,7 +53,10 @@ function filterBy(
   field: CardKey,
   value: any
 ): CardId[] {
-  return cardIds.filter(c => cards[c.id] && cards[c.id][field] === value);
+  return cardIds.filter(c => {
+    const card = cards[c.id];
+    return card && card[field] === value
+  });
 }
 
 function groupAssets(
@@ -62,7 +65,11 @@ function groupAssets(
 ): AssetGroup[] {
   const assets = filterBy(cardIds, cards, 'type_code', 'asset');
   const groups = groupBy(assets, c => {
-    switch (cards[c.id].slot) {
+    const card = cards[c.id];
+    if (!card) {
+      return t`Other`;
+    }
+    switch (card.slot) {
       case 'Hand': return t`Hand`;
       case 'Hand. Arcane': return t`Hand. Arcane`;
       case 'Hand x2': return t`Hand x2`;
@@ -100,7 +107,7 @@ function groupAssets(
   );
 }
 
-export function isSpecialCard(card: Card): boolean {
+export function isSpecialCard(card?: Card): boolean {
   return !!(
     card && (
       card.code === RANDOM_BASIC_WEAKNESS ||
@@ -144,10 +151,11 @@ function slotCount(
   return sum(
     map(
       filter(cardIds, c => {
-        if (!cards[c.id] || cards[c.id].type_code !== 'asset') {
+        const card = cards[c.id];
+        if (!card || card.type_code !== 'asset') {
           return false;
         }
-        const slots = cards[c.id].slots_normalized;
+        const slots = card.slots_normalized;
         return !!(slots && slots.indexOf(`#${slot}#`) !== -1);
       }),
       c => c.quantity
@@ -160,22 +168,30 @@ function factionCount(
   cards: CardsMap,
   faction: FactionCodeType
 ): [number, number] {
-  const nonPermanentCards = cardIds.filter(c => (
-    cards[c.id] &&
-    !cards[c.id].permanent &&
-    !cards[c.id].double_sided &&
-    cards[c.id].code !== '02014'
-  ));
+  const nonPermanentCards = cardIds.filter(c => {
+    const card = cards[c.id];
+    return !!card && (
+      !card.permanent &&
+      !card.double_sided &&
+      card.code !== '02014'
+    );
+  });
   return [
-    sum(nonPermanentCards.filter(c => (
-      cards[c.id].faction2_code !== null &&
-      (cards[c.id].faction_code === faction ||
-      cards[c.id].faction2_code === faction)
-    )).map(c => c.quantity)),
-    sum(nonPermanentCards.filter(c => (
-      cards[c.id].faction2_code === null &&
-      cards[c.id].faction_code === faction
-    )).map(c => c.quantity)),
+    sum(nonPermanentCards.filter(c => {
+      const card = cards[c.id];
+      return !!card && (
+        card.faction2_code !== null &&
+        (card.faction_code === faction || card.faction2_code === faction)
+      );
+    }).map(c => c.quantity)),
+    sum(nonPermanentCards.filter(c => {
+      const card = cards[c.id];
+      return (
+        card &&
+        card.faction2_code === null &&
+        card.faction_code === faction
+      );
+    }).map(c => c.quantity)),
   ];
 }
 
@@ -209,8 +225,10 @@ function costHistogram(
 }
 
 function sumSkillIcons(cardIds: CardId[], cards: CardsMap, skill: SkillCodeType): number {
-  return sum(cardIds.map(c =>
-    (cards[c.id] ? cards[c.id].skillCount(skill) : 0) * c.quantity));
+  return sum(cardIds.map(c => {
+    const card = cards[c.id];
+    return (card ? card.skillCount(skill) : 0) * c.quantity;
+  }));
 }
 
 function incSlot(slots: Slots, card: Card) {
@@ -537,16 +555,25 @@ export function parseDeck(
     return undefined;
   }
   const validation = new DeckValidation(investigator, slots, meta);
-  const cardIds = map(
+  const cardIds = flatMap(
     sortBy(
       sortBy(
         filter(keys(slots), id => !!cards[id]),
-        id => cards[id].xp || 0
+        id => {
+          const card = cards[id];
+          return (card && card.xp) || 0;
+        }
       ),
-      id => cards[id].name
+      id => {
+        const card = cards[id];
+        return (card && card.name) || '???';
+      }
     ),
     id => {
       const card = cards[id];
+      if (!card) {
+        return [];
+      }
       return {
         id,
         quantity: slots[id],
@@ -592,7 +619,10 @@ export function parseDeck(
     totalCardCount: sum(cardIds.map(c => c.quantity)),
     experience: totalXp,
     availableExperience: (deck.xp || 0) + (xpAdjustment || 0),
-    packs: uniqBy(cardIds, c => cards[c.id].pack_code).length,
+    packs: uniqBy(cardIds, c => {
+      const card = cards[c.id];
+      return (card && card.pack_code) || ''
+    }).length,
     factionCounts,
     costHistogram: costHistogram(cardIds, cards),
     slotCounts,

@@ -522,7 +522,7 @@ export default class GuidedCampaignLog {
   investigators(includeEliminated: boolean): Card[] {
     return flatMap(
       this.investigatorCodes(includeEliminated),
-      code => this.investigatorCards[code]
+      code => this.investigatorCards[code] || []
     );
   }
 
