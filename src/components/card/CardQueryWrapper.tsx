@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
+import { filter } from 'lodash';
 
 import Card from '@data/Card';
 import Database from '@data/Database';
@@ -37,7 +38,7 @@ class CardQueryWrapper extends React.Component<Props & ReduxProps> {
       };
     }
     return {
-      cards: await db.getCards(query, tabooSetId, sort),
+      cards: filter(await db.getCards(query, tabooSetId, sort), card => !!card),
     };
   };
 
