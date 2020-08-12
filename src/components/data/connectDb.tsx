@@ -10,7 +10,8 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 export default function connectDb<InputProps, GenerateProps, GenerateParams={}>(
   WrappedComponent: React.ComponentType<InputProps & GenerateProps>,
   extractProps: (props: InputProps) => GenerateParams,
-  getData: (db: Database, props: GenerateParams) => Promise<GenerateProps>
+  getData: (db: Database, props: GenerateParams) => Promise<GenerateProps>,
+  defaultState?: GenerateProps
 ) {
   interface State {
     generatedData?: GenerateProps;
@@ -65,6 +66,14 @@ export default function connectDb<InputProps, GenerateProps, GenerateParams={}>(
     render() {
       const { generatedData } = this.state;
       if (!generatedData) {
+        if (defaultState) {
+          return (
+            <WrappedComponent
+              {...this.props}
+              {...defaultState}
+            />
+          );
+        }
         return null;
       }
       return (
