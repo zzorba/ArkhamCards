@@ -1,8 +1,6 @@
 import React from 'react';
 import {
   Alert,
-  InteractionManager,
-  Keyboard,
   SafeAreaView,
   ScrollView,
   Share,
@@ -12,23 +10,21 @@ import {
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
-
 import { connect } from 'react-redux';
+import { values } from 'lodash';
 import { t } from 'ttag';
 
 import CategoryHeader from './CategoryHeader';
-import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
+import { MergeBackupProps } from './MergeBackupView';
+import { Campaign, CampaignGuideState, Deck } from '@actions/types';
+import { NavigationProps } from '@components/nav/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { clearDecks } from '@actions';
-import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import { getBackupData, getAllPacks, AppState } from '@reducers';
-import { fetchCards } from '@components/card/actions';
-import { restoreBackup } from '@components/campaign/actions';
+import { getBackupData, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
-import { s } from '@styles/space';
+import { Navigation } from 'react-native-navigation';
+import { forEach } from 'lodash';
 
 interface ReduxProps {
   backupData: {
@@ -38,55 +34,21 @@ interface ReduxProps {
       [id: string]: CampaignGuideState;
     };
   };
-  packs: Pack[];
-  lang: string;
 }
 
 interface ReduxActionProps {
-  fetchCards: (db: Database, lang: string) => void;
-  restoreBackup: (
-    campaigns: Campaign[],
-    guides: {
-      [id: string]: CampaignGuideState;
-    },
-    decks: Deck[]
-  ) => void;
-  clearDecks: () => void;
   ensureUuid: () => void;
 }
 
-type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
-class DiagnosticsView extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
+class BackupView extends React.Component<Props> {
   componentDidMount() {
     this.props.ensureUuid();
   }
 
-  _importBackupDataJson = (json: any) => {
-    try {
-      const backupData = JSON.parse(json) || {};
-      const campaigns: Campaign[] = backupData.campaigns || [];
-      const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
-      const decks: Deck[] = backupData.decks || [];
-      this.props.restoreBackup(
-        campaigns,
-        guides,
-        decks
-      );
-      return;
-    } catch (e) {
-      console.log(e);
-      Alert.alert(
-        t`Problem with import`,
-        t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
-      );
-    }
-  };
-
   _pickBackupFile = async() => {
+    const { componentId } = this.props;
     try {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles]
@@ -106,8 +68,24 @@ class DiagnosticsView extends React.Component<Props> {
         return;
       }
       // We got the file
-      const contents = await RNFS.readFile(res.fileCopyUri);
-      Alert.alert(contents.substr(0, 100));
+      const json = JSON.parse(await RNFS.readFile(res.fileCopyUri));
+      const campaigns: Campaign[] = [];
+      forEach(values(json.campaigns), campaign => {
+        campaigns.push({
+          ...campaign,
+          lastUpdated: new Date(Date.parse(campaign.lastUpdated)),
+        });
+      });
+      Navigation.push<MergeBackupProps>(componentId, {
+        component: {
+          name: 'Settings.MergeBackup',
+          passProps: {
+            guides: json.guides,
+            decks: values(json.decks),
+            campaigns,
+          },
+        },
+      });
     } catch (err) {
       if (!DocumentPicker.isCancel(err)) {
         throw err;
@@ -184,16 +162,11 @@ class DiagnosticsView extends React.Component<Props> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     backupData: getBackupData(state),
-    packs: getAllPacks(state),
-    lang: state.packs.lang || 'en',
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    clearDecks,
-    fetchCards,
-    restoreBackup,
     ensureUuid,
   }, dispatch);
 }
@@ -202,7 +175,7 @@ export default withDialogs(
   connect<ReduxProps, ReduxActionProps, InjectedDialogProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(DiagnosticsView)
+  )(BackupView)
 );
 
 const styles = StyleSheet.create({

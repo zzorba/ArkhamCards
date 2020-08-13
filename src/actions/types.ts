@@ -349,7 +349,6 @@ export interface Campaign {
   linkedCampaignId?: number;
 }
 
-
 export interface SingleCampaign extends Campaign {
   latestScenario?: ScenarioResult;
   finishedScenarios: string[];

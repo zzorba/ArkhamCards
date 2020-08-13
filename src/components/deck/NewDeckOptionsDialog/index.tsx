@@ -75,7 +75,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
 
     this.state = {
       saving: false,
-      deckName: t`New Deck`,
+      deckName: undefined,
       offlineDeck: !props.signedIn || !props.isConnected || props.networkType === NetInfoStateType.none,
       optionSelected: [true],
       tabooSetId: props.defaultTabooSetId,
@@ -181,7 +181,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       saveNewDeck,
     } = this.props;
     const {
-      deckName,
+      deckName = this.defaultDeckName(),
       offlineDeck,
       saving,
       starterDeck,
@@ -223,10 +223,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     return (investigators && investigators[investigatorId]) || undefined;
   }
 
-  deckName() {
+  defaultDeckName() {
     const investigator = this.investigator();
     if (!investigator || !investigator.name) {
-      return undefined;
+      return t`New Deck`;
     }
     switch (investigator.factionCode()) {
       case 'guardian':
@@ -324,6 +324,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           dialogDescription={t`Enter a name for this deck.`}
           onValueChange={this._onDeckNameChange}
           value={deckName}
+          placeholder={this.defaultDeckName()}
         />
         <TabooSetPicker
           color={COLORS.faction[investigator.factionCode()].background}
