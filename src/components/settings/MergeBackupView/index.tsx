@@ -9,17 +9,14 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import CategoryHeader from './CategoryHeader';
-import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
-import { clearDecks } from '@actions';
-import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import CategoryHeader from '../CategoryHeader';
+import CampaignMergeItem from './CampaignMergeItem';
+import { Campaign, CampaignGuideState, Deck } from '@actions/types';
 import { AppState } from '@reducers';
 import { mergeCampaigns, CampaignMergeResult, mergeDecks, DeckMergeResult } from '@lib/cloudHelper';
-import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
-import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
+import { map } from 'lodash';
 
 export interface MergeBackupProps {
   guides: { [key: string]: CampaignGuideState };
@@ -33,7 +30,6 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  fetchCards: (db: Database, lang: string) => void;
   restoreBackup: (
     campaigns: Campaign[],
     guides: {
@@ -41,19 +37,38 @@ interface ReduxActionProps {
     },
     decks: Deck[]
   ) => void;
-  clearDecks: () => void;
-  ensureUuid: () => void;
 }
 
 type Props = ReduxProps & ReduxActionProps;
 
-class MergeBackupView extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
-  componentDidMount() {
-    this.props.ensureUuid();
+interface State {
+  importCampaigns: {
+    [key: string]: boolean;
+  };
+  importDecks: {
+    [key: string]: boolean;
+  };
+}
+class MergeBackupView extends React.Component<Props, State> {
+  static get options() {
+    return {
+      topBar: {
+        title: {
+          text: t`Select items to import`,
+          color: COLORS.darkText,
+        },
+        rightButtons: [{
+          text: t`Import`,
+          id: 'import',
+          color: COLORS.navButton,
+        }]
+      },
+    };
   }
+  state: State = {
+    importCampaigns: {},
+    importDecks: {},
+  };
 
   _importBackupDataJson = (json: any) => {
     try {
@@ -76,13 +91,39 @@ class MergeBackupView extends React.Component<Props> {
     }
   };
 
+  _onCampaignChange = (campaign: Campaign, value: boolean) => {
+
+  };
+
+  renderSection(name: string, campaigns: Campaign[], inverted: boolean) {
+    const { importCampaigns } = this.state;
+    if (!campaigns.length) {
+      return null;
+    }
+    return (
+      <>
+        <CategoryHeader title={name} />
+        { map(campaigns, campaign => (
+          <CampaignMergeItem
+            key={campaign.uuid || campaign.id}
+            campaign={campaign}
+            inverted={inverted}
+            value={!!importCampaigns[campaign.id]}
+            onValueChange={this._onCampaignChange}
+          />
+        )) }
+      </>
+    );
+  }
+
   render() {
+    const { campaignMerge } =  this.props;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
-          <CategoryHeader
-            title={t`Backup`}
-          />
+          { this.renderSection(t`New campaigns`, campaignMerge.newCampaigns, true) }
+          { this.renderSection(t`Campaigns with updates`, campaignMerge.updatedCampaigns, true) }
+          { this.renderSection(t`Campaigns with newer local version`, campaignMerge.staleCampaigns, false) }
         </ScrollView>
       </SafeAreaView>
     );
@@ -98,10 +139,7 @@ function mapStateToProps(state: AppState, props: MergeBackupProps): ReduxProps {
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    clearDecks,
-    fetchCards,
     restoreBackup,
-    ensureUuid,
   }, dispatch);
 }
 

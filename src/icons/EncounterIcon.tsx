@@ -211,6 +211,9 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'rod':
       case 'read_or_die':
         return this.standaloneIcon('read_or_die', size, color);
+      case 'aon':
+      case 'all_or_nothing':
+        return this.standaloneIcon('all_or_nothing', size, color);
       case 'parallel':
         return this.standaloneIcon('parallel', size, color);
       case 'cotr':

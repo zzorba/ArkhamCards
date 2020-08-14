@@ -59,6 +59,7 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
   const newDecks: Deck[] = [];
   const updatedDecks: Deck[] = [];
   const staleDecks: Deck[] = [];
+
   forEach(cloudDecks, cloudDeck => {
     const { status, cloudId, localId } = mergeLocalDeck(cloudDeck, state.decks.all, nextLocalDeckId);
     nextLocalDeckId = Math.min(localId - 1, nextLocalDeckId);
