@@ -268,6 +268,16 @@ export default class DeckViewTab extends React.Component<Props, State> {
     return item.id;
   };
 
+  investigator() {
+    const {
+      deck,
+      cards,
+      meta,
+      parallelInvestigators,
+    } = this.props;
+    return cards[deck.investigator_code];
+  }
+
   investigatorFront() {
     const {
       deck,
@@ -630,7 +640,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
               <View style={[styles.headerColumn, styles.headerLeftMargin]}>
                 <View style={styles.image}>
                   <InvestigatorImage
-                    card={investigator}
+                    card={this.investigator() || investigator}
                     componentId={componentId}
                     yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
                     border

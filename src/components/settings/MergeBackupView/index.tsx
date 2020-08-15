@@ -4,24 +4,27 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import CategoryHeader from '../CategoryHeader';
-import CampaignMergeItem from './CampaignMergeItem';
-import { Campaign, CampaignGuideState, Deck } from '@actions/types';
+import BasicButton from '@components/core/BasicButton';
+import CampaignMergeSection from './CampaignMergeSection';
+import DeckMergeSection from './DeckMergeSection';
+import { Campaign, CampaignGuideState, Deck, BackupState } from '@actions/types';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { AppState } from '@reducers';
 import { mergeCampaigns, CampaignMergeResult, mergeDecks, DeckMergeResult } from '@lib/cloudHelper';
 import { restoreBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
-import { map } from 'lodash';
+import space from '@styles/space';
+import typography from '@styles/typography';
 
 export interface MergeBackupProps {
-  guides: { [key: string]: CampaignGuideState };
-  decks: Deck[];
-  campaigns: Campaign[];
+  backupData: BackupState;
 }
 
 interface ReduxProps {
@@ -39,7 +42,7 @@ interface ReduxActionProps {
   ) => void;
 }
 
-type Props = ReduxProps & ReduxActionProps;
+type Props = ReduxProps & ReduxActionProps & PlayerCardProps;
 
 interface State {
   importCampaigns: {
@@ -92,38 +95,108 @@ class MergeBackupView extends React.Component<Props, State> {
   };
 
   _onCampaignChange = (campaign: Campaign, value: boolean) => {
+    if (campaign.uuid) {
+      this.setState({
+        importCampaigns: {
+          ...this.state.importCampaigns,
+          [campaign.id]: value,
+        },
+      });
+    }
+  };
+
+  _onDeckChange = (deck: Deck, value: boolean) => {
+    if (deck.local_uuid) {
+      this.setState({
+        importDecks: {
+          ...this.state.importDecks,
+          [deck.id]: value,
+        },
+      });
+    }
+  };
+
+  _doImport = () => {
 
   };
 
-  renderSection(name: string, campaigns: Campaign[], inverted: boolean) {
-    const { importCampaigns } = this.state;
-    if (!campaigns.length) {
-      return null;
-    }
-    return (
-      <>
-        <CategoryHeader title={name} />
-        { map(campaigns, campaign => (
-          <CampaignMergeItem
-            key={campaign.uuid || campaign.id}
-            campaign={campaign}
-            inverted={inverted}
-            value={!!importCampaigns[campaign.id]}
-            onValueChange={this._onCampaignChange}
-          />
-        )) }
-      </>
-    );
-  }
-
   render() {
-    const { campaignMerge } =  this.props;
+    const { campaignMerge, deckMerge, investigators } =  this.props;
+    const { importCampaigns, importDecks } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
-          { this.renderSection(t`New campaigns`, campaignMerge.newCampaigns, true) }
-          { this.renderSection(t`Campaigns with updates`, campaignMerge.updatedCampaigns, true) }
-          { this.renderSection(t`Campaigns with newer local version`, campaignMerge.staleCampaigns, false) }
+          <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
+            <Text style={typography.bigLabel}>
+              { t`Campaigns` }
+            </Text>
+          </View>
+          <CampaignMergeSection
+            title={t`New:`}
+            campaigns={campaignMerge.newCampaigns}
+            inverted
+            values={importCampaigns}
+            onValueChange={this._onCampaignChange}
+          />
+          <CampaignMergeSection
+            title={t`Updated:`}
+            campaigns={campaignMerge.updatedCampaigns}
+            inverted
+            values={importCampaigns}
+            onValueChange={this._onCampaignChange}
+          />
+          <CampaignMergeSection
+            title={t`No changes:`}
+            campaigns={campaignMerge.sameCampaigns}
+            values={importCampaigns}
+            onValueChange={this._onCampaignChange}
+          />
+          <CampaignMergeSection
+            title={t`Local version appears to be newer:`}
+            campaigns={campaignMerge.staleCampaigns}
+            values={importCampaigns}
+            onValueChange={this._onCampaignChange}
+          />
+          <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
+            <Text style={typography.bigLabel}>
+              { t`Decks` }
+            </Text>
+          </View>
+          <DeckMergeSection
+            title={t`New:`}
+            decks={deckMerge.newDecks}
+            values={importDecks}
+            inverted
+            onValueChange={this._onDeckChange}
+            investigators={investigators}
+            scenarioCount={deckMerge.scenarioCount}
+          />
+          <DeckMergeSection
+            title={t`Updated:`}
+            decks={deckMerge.updatedDecks}
+            values={importDecks}
+            inverted
+            onValueChange={this._onDeckChange}
+            investigators={investigators}
+            scenarioCount={deckMerge.scenarioCount}
+          />
+          <DeckMergeSection
+            title={t`No changes:`}
+            decks={deckMerge.sameDecks}
+            values={importDecks}
+            onValueChange={this._onDeckChange}
+            investigators={investigators}
+            scenarioCount={deckMerge.scenarioCount}
+          />
+          <DeckMergeSection
+            title={t`Local version appears to be newer:`}
+            decks={deckMerge.staleDecks}
+            values={importDecks}
+            onValueChange={this._onDeckChange}
+            investigators={investigators}
+            scenarioCount={deckMerge.scenarioCount}
+          />
+          <BasicButton onPress={this._doImport} title={t`Import selected data`} />
         </ScrollView>
       </SafeAreaView>
     );
@@ -132,8 +205,8 @@ class MergeBackupView extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, props: MergeBackupProps): ReduxProps {
   return {
-    campaignMerge: mergeCampaigns(props.campaigns, state),
-    deckMerge: mergeDecks(props.decks, state),
+    campaignMerge: mergeCampaigns(props.backupData.campaigns, state),
+    deckMerge: mergeDecks(props.backupData.decks, state),
   };
 }
 
@@ -143,17 +216,26 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default connect<ReduxProps, ReduxActionProps, MergeBackupProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(MergeBackupView);
+export default withPlayerCards(
+  connect<ReduxProps, ReduxActionProps, MergeBackupProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MergeBackupView)
+);
 
 const styles = StyleSheet.create({
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: COLORS.lightBackground,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: COLORS.divider,
+  },
   container: {
     flex: 1,
     backgroundColor: COLORS.veryLightBackground,
   },
   list: {
-    backgroundColor: COLORS.veryLightBackground,
+    backgroundColor: COLORS.background,
   },
 });

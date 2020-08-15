@@ -201,7 +201,7 @@ PODS:
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
   - React-jsinspector (0.63.2)
-  - react-native-app-auth (5.1.2):
+  - react-native-app-auth (5.1.3):
     - AppAuth (= 1.2.0)
     - React
   - react-native-appearance (0.3.4):
@@ -216,7 +216,7 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-netinfo (5.9.5):
+  - react-native-netinfo (5.9.6):
     - React
   - react-native-sqlite-storage (5.0.0):
     - React
@@ -297,7 +297,7 @@ PODS:
     - React
   - RNColorMatrixImageFilters (5.2.5):
     - React
-  - RNDeviceInfo (5.6.3):
+  - RNDeviceInfo (5.6.4):
     - React
   - RNFastImage (8.3.2):
     - React
@@ -506,13 +506,13 @@ SPEC CHECKSUMS:
   React-jsi: 54245e1d5f4b690dec614a73a3795964eeef13a8
   React-jsiexecutor: 8ca588cc921e70590820ce72b8789b02c67cce38
   React-jsinspector: b14e62ebe7a66e9231e9581279909f2fc3db6606
-  react-native-app-auth: 3a8af9e5f62aa3d7a9391d5aa89ab91aeb5a0062
+  react-native-app-auth: 4b83339a50548e803db392e6dafa82da9c54c85e
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-config: 9a061347e0136fdb32d43a34d60999297d672361
   react-native-document-picker: 4921045c5c6c78243010f784eae0a3f4b2af7799
   react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
-  react-native-netinfo: a53b00d949b6456913aaf507d9dba90c4008c611
+  react-native-netinfo: 38a1e0b3e89b48e4b5833ed475d8df5f049f6f90
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
   react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
@@ -529,7 +529,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNColorMatrixImageFilters: b63046039affa237c9e8e10a79052fbc7fb9d963
-  RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
+  RNDeviceInfo: a576aac2f2927eb7e0058a27dad811c8e7cd1474
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08

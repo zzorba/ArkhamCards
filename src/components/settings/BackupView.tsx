@@ -7,6 +7,8 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { forEach } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
@@ -16,24 +18,17 @@ import { t } from 'ttag';
 
 import CategoryHeader from './CategoryHeader';
 import { MergeBackupProps } from './MergeBackupView';
-import { Campaign, CampaignGuideState, Deck } from '@actions/types';
+import { Campaign, BackupState } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { getBackupData, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
-import { Navigation } from 'react-native-navigation';
-import { forEach } from 'lodash';
+import { campaignFromJson } from '@lib/cloudHelper';
 
 interface ReduxProps {
-  backupData: {
-    campaigns: Campaign[];
-    decks: Deck[];
-    guides: {
-      [id: string]: CampaignGuideState;
-    };
-  };
+  backupData: BackupState;
 }
 
 interface ReduxActionProps {
@@ -71,18 +66,19 @@ class BackupView extends React.Component<Props> {
       const json = JSON.parse(await RNFS.readFile(res.fileCopyUri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
-        campaigns.push({
-          ...campaign,
-          lastUpdated: new Date(Date.parse(campaign.lastUpdated)),
-        });
+        campaigns.push(campaignFromJson(campaign));
       });
       Navigation.push<MergeBackupProps>(componentId, {
         component: {
           name: 'Settings.MergeBackup',
           passProps: {
-            guides: json.guides,
-            decks: values(json.decks),
-            campaigns,
+            backupData: {
+              guides: json.guides,
+              decks: values(json.decks),
+              campaigns,
+              deckIds: json.deckIds,
+              campaignIds: json.campaignIds,
+            },
           },
         },
       });

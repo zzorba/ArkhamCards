@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: isBig ? 28 : 18,
     fontFamily: 'AnkeCalligraphicFG',
-    color: COLORS.lightText,
+    color: COLORS.darkText,
   },
 });

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values } from 'lodash';
+import { concat, find, filter, flatMap, forEach, keys, map, mapValues, max, minBy, last, sortBy, uniq, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -14,6 +14,7 @@ import packs from './packs';
 import settings from './settings';
 import { CardFilterData, FilterState } from '@lib/filters';
 import {
+  BackupState,
   Campaign,
   ChaosBagResults,
   SingleCampaign,
@@ -101,7 +102,19 @@ export const getCampaigns = createSelector(
   )
 );
 
-export function getBackupData(state: AppState) {
+export function getBackupData(state: AppState): BackupState {
+  const deckIds: { [id: string]: string } = {};
+  forEach(state.decks.all, (deck, id) => {
+    if (deck.local && deck.local_uuid) {
+      deckIds[deck.id] = deck.local_uuid;
+    }
+  })
+  const campaignIds: { [id: string]: string } = {};
+  forEach(state.campaigns.all, campaign => {
+    if (campaign.uuid) {
+      campaignIds[campaign.id] = campaign.uuid;
+    }
+  });
   const guides: { [id: string]: CampaignGuideState } = {};
   forEach(state.guides.all, (guide, id) => {
     if (guide) {
@@ -112,6 +125,8 @@ export function getBackupData(state: AppState) {
     campaigns: values(state.campaigns.all || {}),
     decks: filter(values(state.decks.all), deck => !!deck.local),
     guides,
+    deckIds,
+    campaignIds,
   };
 }
 

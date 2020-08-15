@@ -231,6 +231,14 @@ export interface ScenarioResult {
   interlude?: boolean;
 }
 
+export interface BackupState {
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: { [id: string]: CampaignGuideState };
+  deckIds: { [id: string]: string };
+  campaignIds: { [id: string]: string };
+}
+
 export enum CampaignDifficulty {
   EASY = 'easy',
   STANDARD = 'standard',
@@ -328,7 +336,7 @@ export interface Campaign {
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
-  lastUpdated: Date;
+  lastUpdated: Date | string;
   showInterludes?: boolean;
   baseDeckIds?: number[];
   latestDeckIds?: number[]; // deprecated
