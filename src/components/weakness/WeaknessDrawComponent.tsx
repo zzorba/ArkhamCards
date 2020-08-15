@@ -3,6 +3,7 @@ import { filter, forEach, keys, map } from 'lodash';
 import {
   ActivityIndicator,
   LayoutChangeEvent,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -418,12 +419,12 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.headerContainer}>
           { this.renderHeaderContent() }
         </View>
         { this.renderCard() }
-      </View>
+      </SafeAreaView>
     );
   }
 }

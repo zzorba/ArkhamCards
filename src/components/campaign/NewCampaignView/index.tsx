@@ -36,6 +36,7 @@ import {
   getChaosBag,
   difficultyString,
 } from '../constants';
+import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
@@ -217,84 +218,20 @@ class NewCampaignView extends React.Component<Props, State> {
     }, this._updateNavigationButtons);
   };
 
-
-  weaknessString(deck: Deck) {
-    const {
-      cards,
-    } = this.props;
-    let weaknessCount = 0;
-    const weaknesses: Card[] = [];
-    const message = flatMap(
-      deck.slots,
-      (count, code) => {
-        const card = cards[code];
-        if (!card || !card.isBasicWeakness()) {
-          return null;
-        }
-        weaknessCount += count;
-        weaknesses.push(card);
-        return `${deck.slots[code]}x - ${card.name}`;
-      }
-    ).join('\n');
-    return {
-      count: weaknessCount,
-      message,
-      weaknesses,
-    };
-  }
-
+  _updateWeaknessAssignedCards = (weaknessAssignedCards: Slots) => {
+    this.setState({
+      weaknessAssignedCards,
+    });
+  };
 
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cards,
     } = this.props;
-    const { count, message, weaknesses } = this.weaknessString(deck);
-
-    if (weaknesses.length) {
-      setTimeout(() => {
-        Alert.alert(
-          t`Adjust Weakness Set`,
-          /* eslint-disable prefer-template */
-          (count > 1 ?
-            t`This deck contains several basic weaknesses` :
-            t`This deck contains a basic weakness`) +
-          '\n\n' +
-          message +
-          '\n\n' +
-          (count > 1 ?
-            t`Do you want to remove them from the campaign’s Basic Weakness set?` :
-            t`Do you want to remove it from the campaign’s Basic Weakness set?`),
-          [
-            { text: t`Not Now`, style: 'cancel' },
-            {
-              text: t`Okay`,
-              style: 'default',
-              onPress: () => {
-                const {
-                  weaknessAssignedCards,
-                } = this.state;
-                const assignedCards = { ...weaknessAssignedCards };
-                forEach(weaknesses, card => {
-                  const code = card.code;
-                  const count = deck.slots[code];
-                  if (!(code in assignedCards)) {
-                    assignedCards[code] = 0;
-                  }
-                  if ((assignedCards[code] + count) > (card.quantity || 0)) {
-                    assignedCards[code] = card.quantity || 0;
-                  } else {
-                    assignedCards[code] += count;
-                  }
-                });
-                this.setState({
-                  weaknessAssignedCards: assignedCards,
-                });
-              },
-            },
-          ],
-        );
-      }, 50);
-    }
+    const {
+      weaknessAssignedCards,
+    } = this.state;
+    maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, this._updateWeaknessAssignedCards);
   }
 
   _investigatorAdded = (card: Card) => {
