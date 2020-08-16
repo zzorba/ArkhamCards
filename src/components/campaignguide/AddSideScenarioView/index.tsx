@@ -21,6 +21,7 @@ import space from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import COLORS from '@styles/colors';
+import { InvestigatorTraumaData } from '@actions/types';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
@@ -63,7 +64,7 @@ class AddSideScenarioView extends React.Component<Props, State> {
     this.context.campaignState.startCustomSideScenario(
       latestScenarioId,
       customScenarioName,
-      customXpCost
+      customXpCost,
     );
     Navigation.pop(componentId);
   };

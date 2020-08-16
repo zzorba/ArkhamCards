@@ -2,6 +2,7 @@ import {
   NumberChoices,
   StringChoices,
   SupplyCounts,
+  InvestigatorTraumaData,
 } from '@actions/types';
 import CampaignStateHelper from './CampaignStateHelper';
 
@@ -72,6 +73,10 @@ export default class ScenarioStateHelper {
 
   campaignLink(sendOrReceive: 'send' | 'receive', id: string): string | undefined {
     return this.campaignState.campaignLink(sendOrReceive, id, this.scenarioId);
+  }
+
+  interScenarioInfo(): InvestigatorTraumaData | undefined {
+    return this.campaignState.interScenarioInfo(this.scenarioId);
   }
 
   setCampaignLink(id: string, decision: string) {

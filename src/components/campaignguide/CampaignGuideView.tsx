@@ -7,13 +7,15 @@ import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { Campaign } from '@actions/types';
+import { Campaign, Trauma } from '@actions/types';
+import Card from '@data/Card';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import withCampaignGuideContext, {
   CampaignGuideProps as InjectedCampaignGuideProps,
   CampaignGuideInputProps,
@@ -36,7 +38,8 @@ type Props = CampaignGuideProps &
   NavigationProps &
   DimensionsProps &
   InjectedDialogProps &
-  InjectedCampaignGuideProps;
+  InjectedCampaignGuideProps &
+  TraumaProps;
 
 class CampaignGuideView extends React.Component<Props> {
   _navEventListener!: EventSubscription;
@@ -110,6 +113,7 @@ class CampaignGuideView extends React.Component<Props> {
       fontScale,
       componentId,
       updateCampaign,
+      showTraumaDialog,
     } = this.props;
     const {
       campaignGuide,
@@ -135,6 +139,7 @@ class CampaignGuideView extends React.Component<Props> {
               updateCampaign={updateCampaign}
               campaignData={campaignData}
               processedCampaign={processedCampaign}
+              showTraumaDialog={showTraumaDialog}
             />
           </ScrollView>
         ),
@@ -191,7 +196,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default withDimensions(
   withCampaignGuideContext<Props>(
     connect(null, mapDispatchToProps)(
-      withDialogs(CampaignGuideView)
+      withDialogs(
+        withTraumaDialog(CampaignGuideView, { hideKilledInsane: true })
+      )
     )
   )
 );

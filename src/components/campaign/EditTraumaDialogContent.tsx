@@ -15,6 +15,7 @@ interface Props {
   investigator?: Card;
   trauma: Trauma;
   mutateTrauma: (updateTrauma: (trauma: Trauma) => Trauma) => void;
+  hideKilledInsane?: boolean;
 }
 export default class EditTraumaDialogContent extends React.Component<Props> {
   _incPhysical = () => {
@@ -70,6 +71,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
         physical,
         mental,
       },
+      hideKilledInsane,
     } = this.props;
     const health = investigator ? (investigator.health || 0) : 0;
     const sanity = investigator ? (investigator.sanity || 0) : 0;
@@ -92,22 +94,26 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
           dec={this._decMental}
           max={sanity}
         />
-        <DialogComponent.Switch
-          label={t`Killed`}
-          labelStyle={typography.dialogLabel}
-          value={killed || impliedKilled}
-          disabled={impliedKilled}
-          onValueChange={this._toggleKilled}
-          trackColor={COLORS.switchTrackColor}
-        />
-        <DialogComponent.Switch
-          label={t`Insane`}
-          labelStyle={typography.dialogLabel}
-          value={insane || impliedInsane}
-          disabled={impliedInsane}
-          onValueChange={this._toggleInsane}
-          trackColor={COLORS.switchTrackColor}
-        />
+        { !hideKilledInsane && (
+          <DialogComponent.Switch
+            label={t`Killed`}
+            labelStyle={typography.dialogLabel}
+            value={killed || impliedKilled}
+            disabled={impliedKilled}
+            onValueChange={this._toggleKilled}
+            trackColor={COLORS.switchTrackColor}
+          />
+        ) }
+        { !hideKilledInsane && (
+          <DialogComponent.Switch
+            label={t`Insane`}
+            labelStyle={typography.dialogLabel}
+            value={insane || impliedInsane}
+            disabled={impliedInsane}
+            onValueChange={this._toggleInsane}
+            trackColor={COLORS.switchTrackColor}
+          />
+        ) }
       </View>
     );
   }

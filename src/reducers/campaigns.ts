@@ -1,4 +1,4 @@
-import { find, filter, forEach, map, uniq } from 'lodash';
+import { find, filter, forEach, map, omit, uniq } from 'lodash';
 import uuid from 'react-native-uuid';
 import { t } from 'ttag';
 

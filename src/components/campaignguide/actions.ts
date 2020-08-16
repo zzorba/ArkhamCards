@@ -10,6 +10,7 @@ import {
   SupplyCounts,
   NumberChoices,
   StringChoices,
+  InvestigatorTraumaData,
 } from '@actions/types';
 
 export function undo(
@@ -46,6 +47,7 @@ export function startScenario(
     input: {
       type: 'start_scenario',
       scenario,
+      step: undefined,
     },
     now: new Date(),
   };
@@ -78,6 +80,24 @@ export function setScenarioDecision(
       scenario,
       step,
       decision: value,
+    },
+    now: new Date(),
+  };
+}
+
+export function setInterScenarioData(
+  campaignId: number,
+  value: InvestigatorTraumaData,
+  scenario?: string
+): GuideSetInputAction {
+  return {
+    type: GUIDE_SET_INPUT,
+    campaignId,
+    input: {
+      type: 'inter_scenario',
+      scenario,
+      investigatorData: value,
+      step: undefined,
     },
     now: new Date(),
   };

@@ -40,6 +40,8 @@ function updateCampaign(
   };
 }
 
+const SYSTEM_BASED_INPUTS = new Set(['campaign_link', 'inter_scenario']);
+
 export default function(
   state: GuidesState = DEFAULT_GUIDES_STATE,
   action: GuideActions
@@ -76,16 +78,14 @@ export default function(
       action.campaignId,
       action.now,
       campaign => {
-        const existingInputs = action.input.type !== 'campaign_link' ?
-          campaign.inputs :
+        const existingInputs = SYSTEM_BASED_INPUTS.has(action.input.type) ?
           filter(campaign.inputs,
             input => !(
-              input.type === 'campaign_link' &&
-              action.input.type === 'campaign_link' &&
+              input.type === action.input.type &&
               input.step === action.input.step &&
               input.scenario === action.input.scenario
             )
-          );
+          ) : campaign.inputs;
         const inputs = [...existingInputs, action.input];
         return {
           ...campaign,
@@ -106,7 +106,7 @@ export default function(
           campaign.inputs,
           input => (
             input.scenario === action.scenarioId &&
-            input.type !== 'campaign_link'
+            !SYSTEM_BASED_INPUTS.has(input.type)
           )
         );
         if (latestInputIndex === -1) {
@@ -115,7 +115,7 @@ export default function(
         const inputs = filter(
           campaign.inputs,
           (input, idx) => {
-            if (input.type === 'campaign_link') {
+            if (SYSTEM_BASED_INPUTS.has(input.type)) {
               return (
                 idx < latestInputIndex ||
                 input.scenario !== action.scenarioId

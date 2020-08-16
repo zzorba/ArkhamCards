@@ -174,6 +174,10 @@ export interface InvestigatorData {
   [code: string]: TraumaAndCardData | undefined;
 }
 
+export interface InvestigatorTraumaData {
+  [code: string]: Trauma | undefined;
+}
+
 export interface WeaknessSet {
   packCodes: string[];
   assignedCards: Slots;
@@ -750,12 +754,20 @@ export interface GuideChoiceInput extends BasicInput {
 
 export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
+  step: undefined;
+}
+
+export interface GuideInterScenarioInput extends BasicInput {
+  type: 'inter_scenario';
+  investigatorData: InvestigatorTraumaData;
+  step: undefined;
 }
 
 interface StartSideScenarioInput extends BasicInput {
   type: 'start_side_scenario';
   scenario: string;
   previousScenarioId: string;
+  step: undefined;
 }
 export interface GuideStartSideScenarioInput extends StartSideScenarioInput {
   sideScenarioType: 'official';
@@ -784,7 +796,8 @@ export type GuideInput =
   GuideStartScenarioInput |
   GuideCampaignLinkInput |
   GuideStartSideScenarioInput |
-  GuideStartCustomSideScenarioInput;
+  GuideStartCustomSideScenarioInput |
+  GuideInterScenarioInput;
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {

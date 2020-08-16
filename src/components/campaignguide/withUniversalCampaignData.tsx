@@ -23,6 +23,7 @@ import {
   setScenarioNumberChoices,
   setScenarioStringChoices,
   setScenarioText,
+  setInterScenarioData,
   setCampaignLink,
   undo,
 } from '@components/campaignguide/actions';
@@ -33,6 +34,7 @@ import {
   SupplyCounts,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
+  InvestigatorTraumaData,
 } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
@@ -93,6 +95,11 @@ interface ReduxActionProps {
     choice: number,
     scenarioId?: string
   ) => void;
+  setInterScenarioData: (
+    campaignId: number,
+    investigatorData: InvestigatorTraumaData,
+    scenarioId?: string
+  ) => void;
   setScenarioText: (
     campaignId: number,
     stepId: string,
@@ -135,6 +142,7 @@ export default function withUniversalCampaignData<Props>(
       deleteCampaign,
       startScenario,
       startSideScenario,
+      setInterScenarioData,
       setScenarioCount,
       setScenarioDecision,
       setScenarioSupplies,

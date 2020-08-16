@@ -15,6 +15,7 @@ interface Props {
   updateTrauma: (investigator_code: string, trauma: Trauma) => void;
   hideDialog: () => void;
   viewRef?: View;
+  hideKilledInsane?: boolean;
 }
 
 interface State {
@@ -75,6 +76,7 @@ export default class EditTraumaDialog extends React.Component<Props, State> {
     const {
       investigator,
       viewRef,
+      hideKilledInsane,
     } = this.props;
     const {
       visible,
@@ -92,6 +94,7 @@ export default class EditTraumaDialog extends React.Component<Props, State> {
           investigator={investigator}
           trauma={trauma}
           mutateTrauma={this._mutateTrauma}
+          hideKilledInsane={hideKilledInsane}
         />
         <DialogComponent.Button label={t`Cancel`} onPress={this._onCancel} />
         <DialogComponent.Button label={t`Save`} onPress={this._onSubmit} />

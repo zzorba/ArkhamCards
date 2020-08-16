@@ -29,7 +29,7 @@ import { conditionResult } from '@data/scenario/conditionHelper';
 import ScenarioGuide from '@data/scenario/ScenarioGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
+import { PlayingScenarioBranch, INTER_SCENARIO_CHANGES_STEP_ID } from '@data/scenario/fixedSteps';
 
 export default class ScenarioStep {
   step: Step;
@@ -211,6 +211,41 @@ export default class ScenarioStep {
     scenarioState: ScenarioStateHelper
   ): ScenarioStep | undefined {
     switch (this.step.type) {
+      case 'internal':
+        if (this.step.id === INTER_SCENARIO_CHANGES_STEP_ID) {
+          const investigatorData = scenarioState.interScenarioInfo();
+          if (investigatorData) {
+            const effectsWithInput: EffectsWithInput[] = [];
+            forEach(investigatorData, (trauma, investigator) => {
+              if (trauma) {
+                const currentTrauma = this.campaignLog.traumaAndCardData(investigator);
+                effectsWithInput.push({
+                  input: [investigator],
+                  effects: [{
+                    type: 'trauma',
+                    investigator: '$input_value',
+                    hidden: true,
+                    mental: (trauma.mental || 0) - (currentTrauma.mental || 0),
+                    physical: (trauma.physical || 0) - (currentTrauma.physical || 0),
+                    killed: trauma.killed,
+                    insane: trauma.insane,
+                  }],
+                });
+              }
+            });
+            return this.maybeCreateEffectsStep(
+              this.step.id,
+              this.remainingStepIds,
+              effectsWithInput,
+              scenarioState
+            );
+          }
+        }
+        return this.proceedToNextStep(
+          this.remainingStepIds,
+          scenarioState,
+          this.campaignLog
+        );
       case 'branch':
         return this.expandBranchStep(
           this.step,
