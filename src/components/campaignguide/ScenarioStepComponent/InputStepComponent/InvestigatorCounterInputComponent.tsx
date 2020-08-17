@@ -54,7 +54,7 @@ export default class InvestigatorCounterInputComponent extends React.Component<P
     });
     return description;
   }
-  
+
   render() {
     const { step, input } = this.props;
     return (

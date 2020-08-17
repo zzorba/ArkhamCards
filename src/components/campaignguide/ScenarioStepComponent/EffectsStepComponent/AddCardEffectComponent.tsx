@@ -48,7 +48,7 @@ export default class AddCardEffectComponent extends React.Component<Props> {
     );
   };
 
-  render() {    
+  render() {
     return (
       <SingleCardWrapper
         code={this.props.effect.card}

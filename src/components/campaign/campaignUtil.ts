@@ -47,6 +47,9 @@ export function campaignToText(
   lines.push('Investigators:');
   forEach(latestDecks, deck => {
     const investigator = investigators[deck.investigator_code];
+    if (!investigator) {
+      return;
+    }
     lines.push(`${investigator.name}:`);
     lines.push(`Deck: https://arkhamdb.com/deck/view/${deck.id}`);
     lines.push(`Trauma: ${investigator.traumaString(campaign.investigatorData[investigator.code])}`);

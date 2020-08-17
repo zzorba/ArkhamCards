@@ -247,7 +247,7 @@ class CardResultList extends React.Component<Props, State> {
 
   _editCollectionSettings = () => {
     Keyboard.dismiss();
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
         options: {
@@ -263,7 +263,7 @@ class CardResultList extends React.Component<Props, State> {
 
   _editSpoilerSettings = () => {
     Keyboard.dismiss();
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Spoilers',
         options: {
@@ -752,7 +752,6 @@ class CardResultList extends React.Component<Props, State> {
 
   _renderResults = (dbState?: DbState, refreshing?: boolean) => {
     const {
-      sort,
       fontScale,
       show_spoilers,
       handleScroll,

@@ -17,7 +17,7 @@ import SettingsTabooPicker from './SettingsTabooPicker';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import { clearDecks } from '@actions';
 import { fetchCards } from '@components/card/actions';
-import { setSingleCardView, setAlphabetizeEncounterSets} from './actions';
+import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
@@ -39,7 +39,7 @@ interface ReduxProps {
   deckCount: number;
 }
 
-const SHOW_BACKUP = false;
+const SHOW_BACKUP = true;
 
 interface ReduxActionProps {
   fetchCards: (db: Database, lang: string) => void;
@@ -56,7 +56,7 @@ class SettingsView extends React.Component<Props> {
   context!: DatabaseContextType;
 
   navButtonPressed(screen: string, title: string) {
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: screen,
         options: {
@@ -230,9 +230,6 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    backgroundColor: COLORS.veryLightBackground,
-  },
-  categoryContainer: {
     backgroundColor: COLORS.veryLightBackground,
   },
 });

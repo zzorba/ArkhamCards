@@ -48,7 +48,7 @@ const SCENARIO_CODE_FIXER: {
 } = {
   the_untamed_wilds: 'wilds',
   the_doom_of_eztli: 'eztli',
-}
+};
 
 export default class OddsCalculatorComponent extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -101,13 +101,13 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     });
   };
 
-  encounterCode(currentScenario?: Scenario)   {
+  encounterCode(currentScenario?: Scenario) {
     const encounterCode = currentScenario && (
       currentScenario.code.startsWith('return_to_') ?
         currentScenario.code.substring('return_to_'.length) :
         currentScenario.code);
     if (encounterCode && SCENARIO_CODE_FIXER[encounterCode]) {
-      return SCENARIO_CODE_FIXER[encounterCode]
+      return SCENARIO_CODE_FIXER[encounterCode];
     }
     return encounterCode;
   }
@@ -260,7 +260,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     );
   }
 
-  modifyTestDifficulty(calculate: Function) {
+  modifyTestDifficulty(calculate: (x: number, y: number) => number) {
     const {
       testDifficulty,
     } = this.state;
@@ -416,7 +416,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
         </ScrollView>
         <SafeAreaView>
           <View style={styles.footer}>
-            <View style={[styles.countRow, styles.footerRow, ]}>
+            <View style={[styles.countRow, styles.footerRow]}>
               <Text style={typography.text}>{ t`Difficulty` }</Text>
               <Text style={[{ color: COLORS.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
                 { testDifficulty }

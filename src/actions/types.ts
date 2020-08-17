@@ -51,7 +51,7 @@ export interface DeckMeta {
 
 export interface Deck {
   id: number;
-  local_uuid?: string;
+  uuid?: string;
   name: string;
   description_md?: string;
   taboo_id?: number;
@@ -174,6 +174,10 @@ export interface InvestigatorData {
   [code: string]: TraumaAndCardData | undefined;
 }
 
+export interface InvestigatorTraumaData {
+  [code: string]: Trauma | undefined;
+}
+
 export interface WeaknessSet {
   packCodes: string[];
   assignedCards: Slots;
@@ -229,6 +233,14 @@ export interface ScenarioResult {
   xp?: number;
   scenarioPack?: string;
   interlude?: boolean;
+}
+
+export interface BackupState {
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: { [id: string]: CampaignGuideState };
+  deckIds: { [id: string]: string };
+  campaignIds: { [id: string]: string };
 }
 
 export enum CampaignDifficulty {
@@ -328,7 +340,7 @@ export interface Campaign {
   name: string;
   difficulty?: CampaignDifficulty;
   cycleCode: CampaignCycleCode;
-  lastUpdated: Date;
+  lastUpdated: Date | string;
   showInterludes?: boolean;
   baseDeckIds?: number[];
   latestDeckIds?: number[]; // deprecated
@@ -348,7 +360,6 @@ export interface Campaign {
   };
   linkedCampaignId?: number;
 }
-
 
 export interface SingleCampaign extends Campaign {
   latestScenario?: ScenarioResult;
@@ -540,6 +551,24 @@ export interface RestoreBackupAction {
     [id: string]: CampaignGuideState;
   };
 }
+
+
+export const RESTORE_COMPLEX_BACKUP = 'RESTORE_COMPLEX_BACKUP';
+export interface RestoreComplexBackupAction {
+  type: typeof RESTORE_COMPLEX_BACKUP;
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: {
+    [id: string]: CampaignGuideState;
+  };
+  deckRemapping: {
+    [key: string]: number;
+  };
+  campaignRemapping: {
+    [key: string]: number;
+  };
+}
+
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
@@ -743,12 +772,20 @@ export interface GuideChoiceInput extends BasicInput {
 
 export interface GuideStartScenarioInput extends BasicInput {
   type: 'start_scenario';
+  step: undefined;
+}
+
+export interface GuideInterScenarioInput extends BasicInput {
+  type: 'inter_scenario';
+  investigatorData: InvestigatorTraumaData;
+  step: undefined;
 }
 
 interface StartSideScenarioInput extends BasicInput {
   type: 'start_side_scenario';
   scenario: string;
   previousScenarioId: string;
+  step: undefined;
 }
 export interface GuideStartSideScenarioInput extends StartSideScenarioInput {
   sideScenarioType: 'official';
@@ -777,7 +814,8 @@ export type GuideInput =
   GuideStartScenarioInput |
   GuideCampaignLinkInput |
   GuideStartSideScenarioInput |
-  GuideStartCustomSideScenarioInput;
+  GuideStartCustomSideScenarioInput |
+  GuideInterScenarioInput;
 
 export const GUIDE_RESET_SCENARIO = 'GUIDE_RESET_SCENARIO';
 export interface GuideResetScenarioAction {
@@ -858,6 +896,7 @@ export type SignInActions =
 
 export type DecksActions =
   LogoutAction |
+  RestoreComplexBackupAction |
   RestoreBackupAction |
   MyDecksStartRefreshAction |
   MyDecksCacheHitAction |
@@ -872,6 +911,7 @@ export type DecksActions =
 
 export type CampaignActions =
   LogoutAction |
+  RestoreComplexBackupAction |
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
   NewCampaignAction |
@@ -889,6 +929,7 @@ export type CampaignActions =
 
 export type GuideActions =
   DeleteCampaignAction |
+  RestoreComplexBackupAction |
   RestoreBackupAction |
   LogoutAction |
   GuideSetInputAction |

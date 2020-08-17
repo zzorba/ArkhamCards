@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -32,7 +32,7 @@ export default function TableRowComponent({ row, background, last }: Props) {
           cell.size === 1 ? { alignItems: 'center' } : {},
           cell.size === 2 ? { paddingLeft: s, paddingRight: s } : {},
           idx === row.cells.length - 1 ? { borderRightWidth: 2 } : {},
-          last ? { borderBottomWidth: 2 }  : {},
+          last ? { borderBottomWidth: 2 } : {},
         ]} key={idx}>
           <CampaignGuideTextComponent text={cell.size === 1 ? cell.text : cell.text} />
         </View>

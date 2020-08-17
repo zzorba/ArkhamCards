@@ -2,7 +2,7 @@ import { forEach } from 'lodash';
 import uuid from 'react-native-uuid';
 
 import { UpgradeDeckResult } from '@lib/authApi';
-import { Deck, DeckMeta, Slots } from '@actions/types';
+import { Deck, DeckProblemType, DeckMeta, Slots } from '@actions/types';
 
 export function newLocalDeck(
   id: number,
@@ -24,7 +24,7 @@ export function newLocalDeck(
     taboo_id: tabooSetId,
     ignoreDeckLimitSlots: {},
     local: true,
-    local_uuid: uuid.v4(),
+    uuid: uuid.v4(),
     problem: 'too_few_cards',
     version: '0.1',
   };
@@ -35,32 +35,29 @@ export function updateLocalDeck(
   name: string,
   slots: Slots,
   ignoreDeckLimitSlots: Slots,
-  problem: string,
+  problem: DeckProblemType,
   spentXp?: number,
   xp_adjustment?: number,
   tabooSetId?: number,
   meta?: DeckMeta,
-) {
+): Deck {
   const versionParts = (deck.version || '0.1').split('.');
   // @ts-ignore
   versionParts[1]++;
   const timestamp = (new Date()).toISOString();
-  return Object.assign(
-    {},
-    deck,
-    {
-      name,
-      date_update: timestamp,
-      slots,
-      ignoreDeckLimitSlots,
-      problem,
-      spentXp,
-      xp_adjustment: xp_adjustment || 0,
-      version: versionParts.join('.'),
-      taboo_id: tabooSetId,
-      meta,
-    },
-  );
+  return {
+    ...deck,
+    name,
+    date_update: timestamp,
+    slots,
+    ignoreDeckLimitSlots,
+    problem,
+    spentXp,
+    xp_adjustment: xp_adjustment || 0,
+    version: versionParts.join('.'),
+    taboo_id: tabooSetId,
+    meta,
+  };
 }
 
 export function upgradeLocalDeck(
@@ -83,24 +80,25 @@ export function upgradeLocalDeck(
   });
   const timestamp = (new Date()).toISOString();
   return {
-    deck: Object.assign({}, deck, { next_deck: id }),
-    upgradedDeck: Object.assign(
-      {},
-      deck,
-      {
-        id,
-        slots,
-        date_creation: timestamp,
-        date_update: timestamp,
-        problem: exiles.length ? 'too_few_cards' : deck.problem,
-        xp: xp + (deck.xp || 0) + (deck.xp_adjustment || 0) - (deck.spentXp || 0),
-        xp_adjustment: 0,
-        spentXp: 0,
-        version: versionParts.join('.'),
-        previous_deck: deck.id,
-        exile_string: exiles && exiles.length ? exiles.join(',') : null,
-      },
-    ),
+    deck: {
+      ...deck,
+      next_deck: id,
+    },
+    upgradedDeck: {
+      ...deck,
+      id,
+      uuid: uuid.v4(),
+      slots,
+      date_creation: timestamp,
+      date_update: timestamp,
+      problem: exiles.length ? 'too_few_cards' : deck.problem,
+      xp: xp + (deck.xp || 0) + (deck.xp_adjustment || 0) - (deck.spentXp || 0),
+      xp_adjustment: 0,
+      spentXp: 0,
+      version: versionParts.join('.'),
+      previous_deck: deck.id,
+      exile_string: exiles && exiles.length ? exiles.join(',') : '',
+    },
   };
 }
 

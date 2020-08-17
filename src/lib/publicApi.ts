@@ -173,6 +173,10 @@ export const syncCards = async function(
     const cardsToInsert: Card[] = [];
     const newEncounterSets = [
       {
+        'code': 'all_or_nothing',
+        'name': t`All or Nothing`,
+      },
+      {
         'code': 'return_to_the_untamed_wilds',
         'name': t`Return to the Untamed Wilds`,
       },

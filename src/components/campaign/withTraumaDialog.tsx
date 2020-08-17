@@ -10,18 +10,24 @@ import { InvestigatorData, Trauma } from '@actions/types';
 import Card from '@data/Card';
 
 export interface TraumaProps {
-  showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
+  showTraumaDialog: (
+    investigator: Card,
+    traumaData: Trauma,
+    onUpdate?: (investigator: string, traumaData: Trauma) => void
+  ) => void;
   investigatorDataUpdates: InvestigatorData;
 }
 
 export default function withTraumaDialog<Props>(
-  WrappedComponent: React.ComponentType<Props & TraumaProps>
+  WrappedComponent: React.ComponentType<Props & TraumaProps>,
+  options?: { hideKilledInsane: boolean }
 ) {
   interface State {
     viewRef?: View;
     visible: boolean;
     investigator?: Card;
     traumaData?: Trauma;
+    onUpdate?: (investigator: string, traumaData: Trauma) => void
     investigatorData: InvestigatorData;
   }
 
@@ -41,27 +47,41 @@ export default function withTraumaDialog<Props>(
       });
     };
 
-    _updateTraumaData = (code: string, data: Trauma) => {
+    _updateTraumaData = (investigator: string, data: Trauma) => {
+      const { onUpdate } = this.state;
+      if (onUpdate) {
+        onUpdate(investigator, data);
+      }
       this.setState({
-        investigatorData: Object.assign(
-          {},
-          this.state.investigatorData,
-          { [code]: Object.assign({}, data) },
-        ),
+        investigatorData: {
+          ...this.state.investigatorData,
+          [investigator]: { ...data },
+        },
       });
     };
 
-    _showTraumaDialog = (investigator: Card, traumaData: Trauma) => {
+    _showTraumaDialog = (
+      investigator: Card,
+      traumaData: Trauma,
+      onUpdate?: (investigator: string, traumaData: Trauma) => void
+    ) => {
       this.setState({
         visible: true,
         investigator: investigator,
         traumaData,
+        onUpdate,
       });
     };
 
     _hideDialog = () => {
       this.setState({
         visible: false,
+      });
+    };
+
+    _clearInvestigatorDataUpdates = () => {
+      this.setState({
+        investigatorData: {},
       });
     };
 
@@ -80,6 +100,7 @@ export default function withTraumaDialog<Props>(
           trauma={traumaData}
           updateTrauma={this._updateTraumaData}
           hideDialog={this._hideDialog}
+          hideKilledInsane={options?.hideKilledInsane}
           viewRef={viewRef}
         />
       );
@@ -92,6 +113,7 @@ export default function withTraumaDialog<Props>(
             <WrappedComponent
               showTraumaDialog={this._showTraumaDialog}
               investigatorDataUpdates={this.state.investigatorData}
+              clearInvestigatorDataUpdates={this._clearInvestigatorDataUpdates}
               {...this.props}
             />
           </View>

@@ -144,7 +144,7 @@ class SettingsEditText extends Component<Props> {
         title,
         dialogDescription,
         [
-          { text: negativeButtonTitle, onPress: () => {}, style: 'cancel' },
+          { text: negativeButtonTitle, style: 'cancel' },
           {
             text: positiveButtonTitle,
             onPress: this.onValueChange,

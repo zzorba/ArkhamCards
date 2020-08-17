@@ -107,6 +107,7 @@ class SettingsPicker extends Component<Props, State> {
 
   componentDidMount() {
     const { value, multi } = this.props;
+    /* eslint-disable react/no-did-mount-set-state */
     this.setState({
       pickerValue: (multi && isArray(value) ? value : [value]) as any,
     });

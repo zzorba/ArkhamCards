@@ -14,6 +14,7 @@ import ScenarioListComponent from '@components/campaignguide/ScenarioListCompone
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import withCampaignGuideContext, {
   CampaignGuideProps as InjectedCampaignGuideProps,
   CampaignGuideInputProps,
@@ -36,7 +37,8 @@ type Props = CampaignGuideProps &
   NavigationProps &
   DimensionsProps &
   InjectedDialogProps &
-  InjectedCampaignGuideProps;
+  InjectedCampaignGuideProps &
+  TraumaProps;
 
 class CampaignGuideView extends React.Component<Props> {
   _navEventListener!: EventSubscription;
@@ -80,8 +82,8 @@ class CampaignGuideView extends React.Component<Props> {
     });
   };
 
-  _onTabChange = () => {
-  };
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  _onTabChange = () => {};
 
   _delete = () => {
     const { componentId, campaignId, deleteCampaign } = this.props;
@@ -110,6 +112,7 @@ class CampaignGuideView extends React.Component<Props> {
       fontScale,
       componentId,
       updateCampaign,
+      showTraumaDialog,
     } = this.props;
     const {
       campaignGuide,
@@ -135,6 +138,7 @@ class CampaignGuideView extends React.Component<Props> {
               updateCampaign={updateCampaign}
               campaignData={campaignData}
               processedCampaign={processedCampaign}
+              showTraumaDialog={showTraumaDialog}
             />
           </ScrollView>
         ),
@@ -191,7 +195,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default withDimensions(
   withCampaignGuideContext<Props>(
     connect(null, mapDispatchToProps)(
-      withDialogs(CampaignGuideView)
+      withDialogs(
+        withTraumaDialog(CampaignGuideView, { hideKilledInsane: true })
+      )
     )
   )
 );

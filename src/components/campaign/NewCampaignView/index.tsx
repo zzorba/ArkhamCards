@@ -1,7 +1,6 @@
 import React from 'react';
-import { filter, forEach, keys, map, sumBy, throttle } from 'lodash';
+import { filter, forEach, map, throttle } from 'lodash';
 import {
-  Alert,
   ScrollView,
   StyleSheet,
   Text,
@@ -36,6 +35,7 @@ import {
   getChaosBag,
   difficultyString,
 } from '../constants';
+import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
@@ -217,59 +217,20 @@ class NewCampaignView extends React.Component<Props, State> {
     }, this._updateNavigationButtons);
   };
 
+  _updateWeaknessAssignedCards = (weaknessAssignedCards: Slots) => {
+    this.setState({
+      weaknessAssignedCards,
+    });
+  };
+
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cards,
     } = this.props;
-    const weaknesses = filter(keys(deck.slots), code => {
-      const card = cards[code];
-      return card && card.isBasicWeakness();
-    });
-    const count = sumBy(weaknesses, code => deck.slots[code]);
-    if (weaknesses.length) {
-      setTimeout(() => {
-        Alert.alert(
-          t`Adjust Weakness Set`,
-          /* eslint-disable prefer-template */
-          (count > 1 ?
-            t`This deck contains several basic weaknesses` :
-            t`This deck contains a basic weakness`) +
-          '\n\n' +
-          map(weaknesses, code => `${deck.slots[code]}x - ${cards[code].name}`).join('\n') +
-          '\n\n' +
-          (count > 1 ?
-            t`Do you want to remove them from the campaign’s Basic Weakness set?` :
-            t`Do you want to remove it from the campaign’s Basic Weakness set?`),
-          [
-            { text: t`Not Now`, style: 'cancel' },
-            {
-              text: t`Okay`,
-              style: 'default',
-              onPress: () => {
-                const {
-                  weaknessAssignedCards,
-                } = this.state;
-                const assignedCards = { ...weaknessAssignedCards };
-                forEach(weaknesses, code => {
-                  const count = deck.slots[code];
-                  if (!(code in assignedCards)) {
-                    assignedCards[code] = 0;
-                  }
-                  if ((assignedCards[code] + count) > (cards[code].quantity || 0)) {
-                    assignedCards[code] = cards[code].quantity || 0;
-                  } else {
-                    assignedCards[code] += count;
-                  }
-                });
-                this.setState({
-                  weaknessAssignedCards: assignedCards,
-                });
-              },
-            },
-          ],
-        );
-      }, 50);
-    }
+    const {
+      weaknessAssignedCards,
+    } = this.state;
+    maybeShowWeaknessPrompt(deck, cards, weaknessAssignedCards, this._updateWeaknessAssignedCards);
   }
 
   _investigatorAdded = (card: Card) => {
@@ -778,13 +739,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     minHeight: 100,
-  },
-  switch: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
-    paddingTop: s,
-    paddingBottom: s,
   },
   block: {
     padding: s,

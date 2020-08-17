@@ -170,7 +170,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   };
 
   _editCollection = () => {
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },
@@ -302,8 +302,9 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     } = this.state;
     const weaknesses: Card[] = [];
     forEach(keys(slots), code => {
-      if (cards[code] && cards[code].subtype_code === 'basicweakness') {
-        weaknesses.push(cards[code]);
+      const card = cards[code];
+      if (card && card.subtype_code === 'basicweakness') {
+        weaknesses.push(card);
       }
     });
 
@@ -338,8 +339,9 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     } = this.state;
     const storyCards: Card[] = [];
     forEach(keys(slots), code => {
-      if (cards[code] && cards[code].spoiler) {
-        storyCards.push(cards[code]);
+      const card = cards[code];
+      if (card && card.spoiler) {
+        storyCards.push(card);
       }
     });
 

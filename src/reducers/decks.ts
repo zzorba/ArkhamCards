@@ -14,6 +14,7 @@ import {
   CLEAR_DECKS,
   REPLACE_LOCAL_DECK,
   ENSURE_UUID,
+  RESTORE_COMPLEX_BACKUP,
   DecksActions,
   NewDeckAvailableAction,
   ReplaceLocalDeckAction,
@@ -73,17 +74,44 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
+  if (action.type === RESTORE_COMPLEX_BACKUP) {
+    const all: DecksMap = { ...state.all };
+    forEach(action.decks, deck => {
+      const remappedDeck = {
+        ...deck,
+        id: action.deckRemapping[deck.id],
+        previous_deck: deck.previous_deck ? action.deckRemapping[deck.previous_deck] : undefined,
+        next_deck: deck.next_deck ? action.deckRemapping[deck.next_deck] : undefined,
+      };
+      all[remappedDeck.id] = remappedDeck;
+    });
+    const myDecks = flatMap(
+      values(all),
+      deck => {
+        if (deck.previous_deck) {
+          return [];
+        }
+        return [deck.id];
+      }
+    );
+    return {
+      ...state,
+      all,
+      myDecks,
+      replacedLocalIds: [],
+    };
+  }
   if (action.type === ENSURE_UUID) {
     const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {
-      if (!deck || !deck.local || deck.local_uuid) {
+      if (!deck || !deck.local || deck.uuid) {
         all[id] = deck;
       } else {
         all[id] = {
           ...deck,
-          local_uuid: uuid.v4(),
+          uuid: uuid.v4(),
         };
-      };
+      }
     });
     return {
       ...state,
@@ -213,7 +241,7 @@ export default function(
     };
   }
   if (action.type === DELETE_DECK) {
-    const all = Object.assign({}, state.all);
+    const all = { ...state.all };
     let deck = all[action.id];
     const toDelete = [action.id];
     if (deck) {
@@ -226,12 +254,11 @@ export default function(
         }
       } else {
         if (deck.previous_deck && all[deck.previous_deck]) {
-          const previousDeck = all[deck.previous_deck];
-          all[deck.previous_deck] = Object.assign(
-            {},
-            previousDeck,
-            { next_deck: null }
-          );
+          const previousDeck = {
+            ...all[deck.previous_deck],
+          };
+          delete previousDeck.next_deck;
+          all[deck.previous_deck] = previousDeck;
         }
       }
     }

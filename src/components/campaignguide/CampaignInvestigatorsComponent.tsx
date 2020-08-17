@@ -1,11 +1,11 @@
 import React from 'react';
 import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-import { find, flatMap, forEach, map, partition } from 'lodash';
+import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
-import { Campaign, InvestigatorData } from '@actions/types';
+import { Campaign, InvestigatorData, Trauma } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
@@ -26,6 +26,7 @@ interface Props {
     now?: Date
   ) => void;
   deleteCampaign?: () => void;
+  showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
 interface State {
@@ -202,6 +203,48 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     }
   };
 
+  canEditTrauma() {
+    const {
+      processedCampaign,
+    } = this.props;
+    return !find(processedCampaign.scenarios, scenario => scenario.type === 'started') &&
+      !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
+  }
+
+  _updateTraumaData = (code: string, trauma: Trauma) => {
+    const { processedCampaign } = this.props;
+    const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
+    console.log(`Updating ${code} ${JSON.stringify({ trauma, latestScenario })}`);
+    this.context.campaignState.setInterScenarioInvestigatorData(
+      code,
+      trauma,
+      latestScenario ? latestScenario?.id.encodedScenarioId : undefined
+    );
+  };
+
+  _showTraumaDialog = (investigator: Card, traumaData: Trauma) => {
+    const { showTraumaDialog } = this.props;
+    showTraumaDialog(
+      investigator,
+      traumaData,
+      this._updateTraumaData
+    );
+  };
+
+  _disabledShowTraumaDialog = () => {
+    const {
+      processedCampaign,
+    } = this.props;
+    const campaignSetupCompleted = !!find(processedCampaign.scenarios, scenario => scenario.type === 'completed');
+
+    Alert.alert(
+      t`Investigator trauma`,
+      campaignSetupCompleted ?
+        t`You can only edit trauma here between scenarios.\n\nDuring scenario play it can be edited using the scenario guide.` :
+        t`Starting trauma can be adjusted after 'Campaign Setup' has been completed.`
+    );
+  };
+
   render() {
     const {
       processedCampaign: {
@@ -218,6 +261,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       removeMode,
       spentXp,
     } = this.state;
+    const canEditTrauma = this.canEditTrauma();
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignId, latestDecks }: CampaignGuideContextType) => {
@@ -243,6 +287,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                   traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
                   chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
                   removeInvestigator={removeMode ? this._removeInvestigatorPressed : undefined}
+                  showTraumaDialog={canEditTrauma ? this._showTraumaDialog : this._disabledShowTraumaDialog}
                 />
               )) }
               { !removeMode && (

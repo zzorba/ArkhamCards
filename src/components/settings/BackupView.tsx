@@ -1,100 +1,62 @@
 import React from 'react';
 import {
   Alert,
-  InteractionManager,
-  Keyboard,
+  PermissionsAndroid,
   SafeAreaView,
   ScrollView,
-  Share,
   StyleSheet,
   Platform,
 } from 'react-native';
+import { format } from 'date-fns';
+import { Navigation } from 'react-native-navigation';
+import { forEach, values } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
-
 import { connect } from 'react-redux';
+import base64 from 'react-native-base64';
+import Share from 'react-native-share';
 import { t } from 'ttag';
 
 import CategoryHeader from './CategoryHeader';
-import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
+import { MergeBackupProps } from './MergeBackupView';
+import { Campaign, BackupState } from '@actions/types';
+import { NavigationProps } from '@components/nav/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { clearDecks } from '@actions';
-import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import { getBackupData, getAllPacks, AppState } from '@reducers';
-import { fetchCards } from '@components/card/actions';
-import { restoreBackup } from '@components/campaign/actions';
+import { getBackupData, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
-import { s } from '@styles/space';
+import { campaignFromJson } from '@lib/cloudHelper';
 
 interface ReduxProps {
-  backupData: {
-    campaigns: Campaign[];
-    decks: Deck[];
-    guides: {
-      [id: string]: CampaignGuideState;
-    };
-  };
-  packs: Pack[];
-  lang: string;
+  backupData: BackupState;
 }
 
 interface ReduxActionProps {
-  fetchCards: (db: Database, lang: string) => void;
-  restoreBackup: (
-    campaigns: Campaign[],
-    guides: {
-      [id: string]: CampaignGuideState;
-    },
-    decks: Deck[]
-  ) => void;
-  clearDecks: () => void;
   ensureUuid: () => void;
 }
 
-type Props = ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
-class DiagnosticsView extends React.Component<Props> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
+class BackupView extends React.Component<Props> {
   componentDidMount() {
     this.props.ensureUuid();
   }
 
-  _importBackupDataJson = (json: any) => {
-    try {
-      const backupData = JSON.parse(json) || {};
-      const campaigns: Campaign[] = backupData.campaigns || [];
-      const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
-      const decks: Deck[] = backupData.decks || [];
-      this.props.restoreBackup(
-        campaigns,
-        guides,
-        decks
-      );
-      return;
-    } catch (e) {
-      console.log(e);
-      Alert.alert(
-        t`Problem with import`,
-        t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
-      );
-    }
-  };
-
   _pickBackupFile = async() => {
+    const { componentId } = this.props;
+    if (!await this.hasFileSystemPermission(true)) {
+      return;
+    }
     try {
       const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles]
+        type: [DocumentPicker.types.allFiles],
       });
-      if (!res.name.endsWith('.acb')) {
+      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json')) {
         Alert.alert(
           t`Unexpected file type`,
-          t`This app expects an Arkham Cards backup file (.acb)`,
+          t`This app expects an Arkham Cards backup file (.acb/.json)`,
           [{
             text: t`Try again`,
             onPress: this._pickBackupFile,
@@ -106,8 +68,25 @@ class DiagnosticsView extends React.Component<Props> {
         return;
       }
       // We got the file
-      const contents = await RNFS.readFile(res.fileCopyUri);
-      Alert.alert(contents.substr(0, 100));
+      const json = JSON.parse(await RNFS.readFile(res.fileCopyUri));
+      const campaigns: Campaign[] = [];
+      forEach(values(json.campaigns), campaign => {
+        campaigns.push(campaignFromJson(campaign));
+      });
+      Navigation.push<MergeBackupProps>(componentId, {
+        component: {
+          name: 'Settings.MergeBackup',
+          passProps: {
+            backupData: {
+              guides: json.guides,
+              decks: values(json.decks),
+              campaigns,
+              deckIds: json.deckIds,
+              campaignIds: json.campaignIds,
+            },
+          },
+        },
+      });
     } catch (err) {
       if (!DocumentPicker.isCancel(err)) {
         throw err;
@@ -118,7 +97,7 @@ class DiagnosticsView extends React.Component<Props> {
   _importCampaignData = () => {
     Alert.alert(
       t`Restore campaign data?`,
-      t`This feature will let you restore data from a lost device. After a backup is selected, you can choose which data to backup`,
+      t`This feature will let you restore data from a lost device. If you were signed into ArkhamDB, please reauthorize before importing campaign data.\n\nAfter a backup is selected, you will be able to choose which data to import.`,
       [{
         text: t`Import data`,
         onPress: this._pickBackupFile,
@@ -129,32 +108,71 @@ class DiagnosticsView extends React.Component<Props> {
     );
   };
 
+  async hasFileSystemPermission(read: boolean) {
+    if (Platform.OS === 'ios') {
+      return true;
+    }
+    try {
+      const granted = await PermissionsAndroid.request(
+        read ? 'android.permission.READ_EXTERNAL_STORAGE' : 'android.permission.WRITE_EXTERNAL_STORAGE'
+      );
+      switch (granted) {
+        case PermissionsAndroid.RESULTS.GRANTED:
+          return true;
+        case PermissionsAndroid.RESULTS.DENIED:
+          return false;
+        case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
+          Alert.alert(t`Cannot request access`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
+          return false;
+      }
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+
   _exportCampaignData = () => {
+    const { backupData } = this.props;
     Alert.alert(
       t`Backup campaign data?`,
-      t`This will let you backup your local decks and campaigns for safe-keeping, or to move them to another device.`,
+      t`This will let you backup your local decks and campaigns for safe-keeping. This can also be used to move them to another device.`,
       [{
         text: t`Cancel`,
         style: 'cancel',
       }, {
         text: t`Export Campaign Data`,
-        onPress: () => {
-          if (Platform.OS === 'ios') {
-            const path = RNFS.CachesDirectoryPath + '/arkham-cards-backup.acb';
-            RNFS.writeFile(
-              path,
-              JSON.stringify(this.props.backupData),
-              'utf8'
-            ).then(() => {
-              Share.share({
+        onPress: async() => {
+          try {
+            if (!await this.hasFileSystemPermission(false)) {
+              return;
+            }
+            const date = format(new Date(), 'yyyy-MM-dd');
+            const filename = `ACB-${date}`;
+            if (Platform.OS === 'ios') {
+              const path = `${RNFS.CachesDirectoryPath }/${ filename }.acb`;
+              await RNFS.writeFile(
+                path,
+                JSON.stringify(backupData),
+                'utf8'
+              );
+              await Share.open({
                 url: `file://${path}`,
+                saveToFiles: true,
+                filename,
+                type: 'text/json',
               });
-            });
-          } else {
-            Share.share({
-              url: 'data:text/acb;base64,32342342342',
-              showAppsToView: true,
-            });
+            } else {
+              await Share.open({
+                title: t`Save backup`,
+                message: filename,
+                url: `data:application/json;base64,${base64.encode(JSON.stringify(backupData))}`,
+                filename,
+                failOnCancel: false,
+                showAppsToView: true,
+              });
+            }
+          } catch (e) {
+            console.log(e);
           }
         },
       }],
@@ -185,16 +203,11 @@ class DiagnosticsView extends React.Component<Props> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     backupData: getBackupData(state),
-    packs: getAllPacks(state),
-    lang: state.packs.lang || 'en',
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    clearDecks,
-    fetchCards,
-    restoreBackup,
     ensureUuid,
   }, dispatch);
 }
@@ -203,7 +216,7 @@ export default withDialogs(
   connect<ReduxProps, ReduxActionProps, InjectedDialogProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(DiagnosticsView)
+  )(BackupView)
 );
 
 const styles = StyleSheet.create({

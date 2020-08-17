@@ -13,6 +13,7 @@ import BasicButton from '@components/core/BasicButton';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
+import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -47,7 +48,8 @@ type Props = LinkedCampaignGuideProps &
   ReduxActionProps &
   NavigationProps &
   DimensionsProps &
-  InjectedDialogProps;
+  InjectedDialogProps &
+  TraumaProps;
 
 class LinkedCampaignGuideView extends React.Component<Props> {
   _navEventListener!: EventSubscription;
@@ -91,8 +93,8 @@ class LinkedCampaignGuideView extends React.Component<Props> {
     return;
   };
 
-  _onTabChange = () => {
-  };
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  _onTabChange = () => {};
 
   _delete = () => {
     const { componentId, campaignId, deleteCampaign } = this.props;
@@ -119,6 +121,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
       fontScale,
       componentId,
       updateCampaign,
+      showTraumaDialog,
     } = this.props;
     if (!campaignDataA || !campaignDataB) {
       return null;
@@ -156,6 +159,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 updateCampaign={updateCampaign}
                 processedCampaign={processedCampaignA}
                 campaignData={contextA}
+                showTraumaDialog={showTraumaDialog}
               />
             </CampaignGuideContext.Provider>
             <CampaignGuideSummary
@@ -170,6 +174,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 updateCampaign={updateCampaign}
                 processedCampaign={processedCampaignB}
                 campaignData={contextB}
+                showTraumaDialog={showTraumaDialog}
               />
             </CampaignGuideContext.Provider>
             <BasicButton
@@ -281,7 +286,7 @@ export default withDimensions<LinkedCampaignGuideProps & NavigationProps>(
       mapDispatchToProps
     )(
       withDialogs(
-        LinkedCampaignGuideView
+        withTraumaDialog(LinkedCampaignGuideView, { hideKilledInsane: true })
       )
     )
   )

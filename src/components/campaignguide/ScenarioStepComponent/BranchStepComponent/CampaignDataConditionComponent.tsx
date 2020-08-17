@@ -1,5 +1,4 @@
 import React from 'react';
-import { upperFirst } from 'lodash';
 import { t } from 'ttag';
 
 import BinaryResult from '@components/campaignguide/BinaryResult';
@@ -18,7 +17,6 @@ interface Props {
   condition: CampaignDataCondition;
   campaignLog: GuidedCampaignLog;
 }
-
 
 
 export default class CampaignDataConditionComponent extends React.Component<Props> {

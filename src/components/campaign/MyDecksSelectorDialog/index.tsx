@@ -264,7 +264,10 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     const eliminatedInvestigators: string[] = !campaign ? [] :
       filter(
         keys(campaign.investigatorData || {}),
-        code => investigators[code].eliminated(campaign.investigatorData[code]));
+        code => {
+          const card = investigators[code];
+          return !!card && card.eliminated(campaign.investigatorData[code]);
+        });
     return uniq([
       ...(hideEliminatedInvestigators ? eliminatedInvestigators : []),
       ...flatMap(selectedDeckIds, deckId => {

@@ -14,6 +14,7 @@ import packs from './packs';
 import settings from './settings';
 import { CardFilterData, FilterState } from '@lib/filters';
 import {
+  BackupState,
   Campaign,
   ChaosBagResults,
   SingleCampaign,
@@ -101,7 +102,19 @@ export const getCampaigns = createSelector(
   )
 );
 
-export function getBackupData(state: AppState) {
+export function getBackupData(state: AppState): BackupState {
+  const deckIds: { [id: string]: string } = {};
+  forEach(state.decks.all, deck => {
+    if (deck.local && deck.uuid) {
+      deckIds[deck.id] = deck.uuid;
+    }
+  });
+  const campaignIds: { [id: string]: string } = {};
+  forEach(state.campaigns.all, campaign => {
+    if (campaign.uuid) {
+      campaignIds[campaign.id] = campaign.uuid;
+    }
+  });
   const guides: { [id: string]: CampaignGuideState } = {};
   forEach(state.guides.all, (guide, id) => {
     if (guide) {
@@ -112,6 +125,8 @@ export function getBackupData(state: AppState) {
     campaigns: values(state.campaigns.all || {}),
     decks: filter(values(state.decks.all), deck => !!deck.local),
     guides,
+    deckIds,
+    campaignIds,
   };
 }
 
@@ -256,9 +271,9 @@ export const getLatestCampaignInvestigators = createSelector(
     return uniq([
       ...flatMap(
         filter(latestDecks, deck => !!(deck && deck.investigator_code)),
-        deck => investigators[deck.investigator_code]
+        deck => investigators[deck.investigator_code] || []
       ),
-      ...map(nonDeckInvestigators, code => investigators[code]),
+      ...flatMap(nonDeckInvestigators, code => investigators[code] || []),
     ]);
   }
 );
@@ -382,12 +397,20 @@ export const getCampaign = createSelector(
 
 const getChaosBagResultsWithId = (state: AppState, id: number) => state.campaigns.chaosBagResults;
 
+const EMPTY_CHAOS_BAG_RESULTS = {
+  drawnTokens: [],
+  sealedTokens: [],
+  totalDrawnTokens: 0,
+};
 export const getChaosBagResults = createSelector(
   getChaosBagResultsWithId,
   getIdWithId,
   (chaosBagResults, id): ChaosBagResults => {
-    if (chaosBagResults && chaosBagResults[id]) {
-      return chaosBagResults[id];
+    if (chaosBagResults) {
+      const result = chaosBagResults[id];
+      if (result) {
+        return result;
+      }
     }
     return NEW_CHAOS_BAG_RESULTS;
   }

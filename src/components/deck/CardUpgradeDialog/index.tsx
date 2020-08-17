@@ -94,10 +94,12 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       [code]: (slots[code] || 0) + 1,
     };
 
-    const possibleDecrement = find(reverse(this.namedCards()), card => (
-      card.code !== code && newSlots[card.code] > 0 &&
-        (card.xp || 0) < (cards[code].xp || 0)
-    ));
+    const possibleDecrement = find(reverse(this.namedCards()), card => {
+      return (
+        card.code !== code && newSlots[card.code] > 0 &&
+        (card.xp || 0) < (cards[code]?.xp || 0)
+      );
+    });
 
     if (possibleDecrement) {
       newSlots[possibleDecrement.code]--;

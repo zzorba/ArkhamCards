@@ -20,7 +20,8 @@ export type Step =
   | LocationConnectorsStep
   | TableStep
   | CampaignLogCountStep
-  | XpCountStep;
+  | XpCountStep
+  | InternalStep;
 export type Condition =
   | MultiCondition
   | CampaignLogCondition
@@ -772,6 +773,14 @@ export interface XpCountStep {
   title?: string;
   special_xp: SpecialXp;
   text?: null;
+}
+export interface InternalStep {
+  id: string;
+  type: "internal";
+  text?: null;
+  hidden?: boolean;
+  bullet_type?: null;
+  title?: null;
 }
 export interface Scenario {
   id: string;

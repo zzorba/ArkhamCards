@@ -10,6 +10,7 @@ import {
   CampaignGuideState,
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
+  InvestigatorTraumaData,
 } from '@actions/types';
 import { UniversalCampaignProps } from './withUniversalCampaignData';
 import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
@@ -219,6 +220,17 @@ export function constructCampaignGuideContext(
     );
   };
 
+  const setInterScenarioData = (
+    investigatorData: InvestigatorTraumaData,
+    scenarioId?: string,
+  ) => {
+    universalData.setInterScenarioData(
+      campaign.id,
+      investigatorData,
+      scenarioId
+    );
+  };
+
   const undo = (scenarioId: string) => {
     universalData.undo(campaign.id, scenarioId);
   };
@@ -253,11 +265,13 @@ export function constructCampaignGuideContext(
       setCampaignLink,
       setText,
       resetScenario,
+      setInterScenarioData,
       undo,
     },
     campaign.guideVersion === undefined ? -1 : campaign.guideVersion,
     linkedCampaignState
   );
+  const lastUpdated = (typeof campaign.lastUpdated === 'string') ? new Date(Date.parse(campaign.lastUpdated)) : campaign.lastUpdated;
   return {
     campaignId: campaign.id,
     campaignName: campaign.name,
@@ -269,6 +283,6 @@ export function constructCampaignGuideContext(
     weaknessSet: campaign.weaknessSet,
     adjustedInvestigatorData: campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
     playerCards: universalData.cards,
-    lastUpdated: campaign.lastUpdated,
+    lastUpdated,
   };
 }

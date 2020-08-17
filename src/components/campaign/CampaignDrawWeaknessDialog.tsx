@@ -378,6 +378,9 @@ function mapStateToProps(
     const deck = decks[deckId];
     if (deck) {
       const investigator = props.cards[deck.investigator_code];
+      if (!investigator) {
+        return 0;
+      }
       if (!investigator.eliminated(campaign.investigatorData[deck.investigator_code])) {
         return 1;
       }

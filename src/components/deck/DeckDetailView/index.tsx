@@ -164,16 +164,18 @@ class DeckDetailView extends React.Component<Props, State> {
         [name: string]: Card[];
       } = {};
       forEach(props.cards, card => {
-        if (cardsByName[card.real_name]) {
-          cardsByName[card.real_name].push(card);
-        } else {
-          cardsByName[card.real_name] = [card];
-        }
-        if (card.bonded_name) {
-          if (bondedCardsByName[card.bonded_name]) {
-            bondedCardsByName[card.bonded_name].push(card);
+        if (card) {
+          if (cardsByName[card.real_name]) {
+            cardsByName[card.real_name].push(card);
           } else {
-            bondedCardsByName[card.bonded_name] = [card];
+            cardsByName[card.real_name] = [card];
+          }
+          if (card.bonded_name) {
+            if (bondedCardsByName[card.bonded_name]) {
+              bondedCardsByName[card.bonded_name].push(card);
+            } else {
+              bondedCardsByName[card.bonded_name] = [card];
+            }
           }
         }
       });
@@ -188,7 +190,7 @@ class DeckDetailView extends React.Component<Props, State> {
       const investigator = props.deck && props.deck.investigator_code;
       const parallelInvestigators: Card[] = [];
       forEach(props.investigators, card => {
-        if (investigator && card.alternate_of_code === investigator) {
+        if (card && investigator && card.alternate_of_code === investigator) {
           parallelInvestigators.push(card);
         }
       });
@@ -893,7 +895,8 @@ class DeckDetailView extends React.Component<Props, State> {
     const deltas = this.slotDeltas(deck, slots, ignoreDeckLimitSlots);
     const addedWeaknesses: string[] = [];
     forEach(deltas.additions, (addition, code) => {
-      if (cards[code] && cards[code].subtype_code === 'basicweakness') {
+      const card = cards[code];
+      if (card && card.subtype_code === 'basicweakness') {
         forEach(range(0, addition), () => addedWeaknesses.push(code));
       }
     });

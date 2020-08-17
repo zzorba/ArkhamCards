@@ -93,5 +93,6 @@ export default connectDb<OwnProps, DbProps>(
     return {
       tabooSets,
     };
-  }
+  },
+  { tabooSets: [] }
 );

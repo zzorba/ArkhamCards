@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
   strikeText: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
-    textDecorationColor: COLORS.darkText
+    textDecorationColor: COLORS.darkText,
   },
 });

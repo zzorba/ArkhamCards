@@ -80,7 +80,7 @@ export default class CounterListItemComponent extends React.Component<Props> {
             onIncrement={this._inc}
             onDecrement={this._dec}
             countRender={this.renderCount()}
-            color={color ? 'light' : 'dark'} 
+            color={color ? 'light' : 'dark'}
             hideDisabledMinus
           />
         ) : (

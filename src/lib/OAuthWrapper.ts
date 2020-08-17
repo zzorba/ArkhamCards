@@ -31,6 +31,7 @@ export function authorize(config: AppAuthConfig): Promise<AuthorizeResponse> {
   const originalState: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
   return new Promise<AuthorizeResponse>((resolve, reject) => {
+    /* eslint-disable @typescript-eslint/no-empty-function */
     let cleanup: () => void = () => {};
     let abandoned = true;
     let currentAppState: AppStateStatus = AppState.currentState;
@@ -144,7 +145,7 @@ export function refresh(
 export function revoke(
   config: AppAuthConfig,
   tokenToRevoke: string
-): Promise<{}> {
+): Promise<AuthorizeResponse> {
   if (Platform.OS === 'ios') {
     const { revoke } = require('react-native-app-auth');
     return revoke(config, { tokenToRevoke });

@@ -12,6 +12,8 @@ import {
   StringChoices,
   CampaignGuideState,
   SupplyCounts,
+  InvestigatorTraumaData,
+  Trauma,
 } from '@actions/types';
 import { ScenarioId } from '@data/scenario';
 import Card, { CardsMap } from '@data/Card';
@@ -28,6 +30,7 @@ export interface CampaignGuideActions {
   setChoice: (id: string, choice: number, scenarioId?: string) => void;
   setText: (id: string, text: string, scenarioId?: string) => void;
   setCampaignLink: (id: string, value: string, scenarioId?: string) => void;
+  setInterScenarioData: (investigatorData: InvestigatorTraumaData, scenarioId?: string) => void;
   startScenario: (scenarioId: string) => void;
   startSideScenario: (
     scenario: GuideStartSideScenarioInput | GuideStartCustomSideScenarioInput
@@ -107,6 +110,7 @@ export default class CampaignStateHelper {
       previousScenarioId: previousScenarioId.encodedScenarioId,
       sideScenarioType: 'official',
       scenario: scenarioId,
+      step: undefined,
     });
   }
 
@@ -122,6 +126,7 @@ export default class CampaignStateHelper {
       scenario: uuid.v4(),
       name,
       xpCost,
+      step: undefined,
     });
   }
 
@@ -156,6 +161,15 @@ export default class CampaignStateHelper {
   setCount(id: string, value: number, scenarioId?: string) {
     this.actions.setCount(id, value, scenarioId);
   }
+
+  setInterScenarioInvestigatorData(investigator: string, trauma: Trauma, scenarioId?: string) {
+    const investigatorData = {
+      ...(this.interScenarioInfo(scenarioId) || {}),
+      [investigator]: trauma,
+    };
+    this.actions.setInterScenarioData(investigatorData, scenarioId);
+  }
+
 
   undo(scenarioId: string) {
     const latestInput = findLast(this.state.inputs,
@@ -233,6 +247,14 @@ export default class CampaignStateHelper {
     const entry = this.entry('choice', id, scenario);
     if (entry && entry.type === 'choice') {
       return entry.choice;
+    }
+    return undefined;
+  }
+
+  interScenarioInfo(scenarioId?: string): InvestigatorTraumaData | undefined {
+    const entry = this.entry('inter_scenario', undefined, scenarioId);
+    if (entry && entry.type === 'inter_scenario') {
+      return entry.investigatorData;
     }
     return undefined;
   }

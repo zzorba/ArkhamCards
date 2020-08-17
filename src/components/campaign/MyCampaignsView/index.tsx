@@ -83,7 +83,7 @@ class MyCampaignsView extends React.Component<Props, State> {
     const {
       componentId,
     } = this.props;
-    Navigation.push<{}>(componentId, {
+    Navigation.push(componentId, {
       component: {
         name: 'Campaign.New',
         options: {

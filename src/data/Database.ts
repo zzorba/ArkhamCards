@@ -12,6 +12,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
+  // Next time go to 10
   static SCHEMA_VERSION: number = 8;
   connectionP: Promise<Connection>;
 

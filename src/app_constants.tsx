@@ -204,7 +204,7 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
 export function createFactionIcons({
   defaultColor,
   colorChoice = 'text',
-}: { 
+}: {
   defaultColor?: string;
   colorChoice?: 'text' | 'background'
 }): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {

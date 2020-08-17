@@ -15,7 +15,7 @@ export default function InvestigatorNameRow({
   investigator,
   detail,
 }: Props) {
-  const backgroundColor = COLORS.faction[investigator.factionCode()].background
+  const backgroundColor = COLORS.faction[investigator.factionCode()].background;
   return (
     <View style={[
       styles.investigatorRow,
@@ -34,7 +34,7 @@ export default function InvestigatorNameRow({
       <View>
         { !!detail && (
           <Text style={[
-            typography.text, 
+            typography.text,
             styles.investigatorText,
           ]}>
             { detail }

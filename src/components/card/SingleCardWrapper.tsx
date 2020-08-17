@@ -18,7 +18,7 @@ interface Props {
 export default class SingleCardWrapper extends React.Component<Props> {
   _render = (cards: Card[], loading: boolean): React.ReactNode => {
     const { code, children, loadingComponent } = this.props;
-    if (!cards.length) {
+    if (!cards || !cards.length || !cards[0]) {
       if (loading) {
         return loadingComponent || null;
       }

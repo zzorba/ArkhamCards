@@ -154,7 +154,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
     return 0;
   }
 
-  modifyBoostValue(calculate: Function) {
+  modifyBoostValue(calculate: (x: number, y: number) => number) {
     const {
       boosts,
     } = this.state;

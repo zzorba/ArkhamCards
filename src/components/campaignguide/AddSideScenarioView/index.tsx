@@ -63,7 +63,7 @@ class AddSideScenarioView extends React.Component<Props, State> {
     this.context.campaignState.startCustomSideScenario(
       latestScenarioId,
       customScenarioName,
-      customXpCost
+      customXpCost,
     );
     Navigation.pop(componentId);
   };
@@ -154,8 +154,8 @@ class AddSideScenarioView extends React.Component<Props, State> {
     );
   }
 
-  _onTabChange = () => {
-  };
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  _onTabChange = () => {};
 
   _challengeScenario = () => {
     Linking.openURL('https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { find, flatMap, filter, forEach, keys, map, partition, sumBy } from 'lodash';
+import { find, flatMap, filter, map, partition } from 'lodash';
 import {
   Alert,
   StyleSheet,
@@ -13,7 +13,8 @@ import { t } from 'ttag';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
-import { Campaign, Deck, DecksMap, InvestigatorData, Trauma, WeaknessSet } from '@actions/types';
+import { maybeShowWeaknessPrompt } from '../campaignHelper';
+import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, WeaknessSet } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import typography from '@styles/typography';
@@ -86,65 +87,30 @@ export default class DecksSection extends React.Component<Props, State> {
     });
   };
 
+  _updateWeaknessAssignedCards = (weaknessCards: Slots) => {
+    const {
+      updateWeaknessSet,
+      weaknessSet,
+    } = this.props;
+    updateWeaknessSet({
+      ...weaknessSet,
+      assignedCards: weaknessCards,
+    });
+  };
+
   maybeShowWeaknessPrompt(deck: Deck) {
     const {
       cards,
     } = this.props;
-    const weaknesses = filter(
-      keys(deck.slots),
-      code => {
-        const card = cards[code];
-        return card && card.isBasicWeakness();
-      });
-    const count = sumBy(weaknesses, code => deck.slots[code]);
-    if (weaknesses.length) {
-      setTimeout(() => {
-        Alert.alert(
-          t`Adjust Weakness Set`,
-          /* eslint-disable prefer-template */
-          (count > 1 ?
-            t`This deck contains several basic weaknesses` :
-            t`This deck contains a basic weakness`) +
-          '\n\n' +
-          map(weaknesses, code => `${deck.slots[code]}x - ${cards[code].name}`).join('\n') +
-          '\n\n' +
-          (count > 1 ?
-            t`Do you want to remove them from the campaign’s Basic Weakness set?` :
-            t`Do you want to remove it from the campaign’s Basic Weakness set?`),
-          [
-            { text: t`Not Now`, style: 'cancel' },
-            {
-              text: t`Okay`,
-              style: 'default',
-              onPress: () => {
-                const {
-                  weaknessSet,
-                  updateWeaknessSet,
-                } = this.props;
-                const assignedCards = { ...weaknessSet.assignedCards };
-                forEach(weaknesses, code => {
-                  const card = cards[code];
-                  if (!card) {
-                    // Shouldn't happen because of above, but defensiveness never hurts.
-                    return;
-                  }
-                  const count = deck.slots[code];
-                  if (!(code in assignedCards)) {
-                    assignedCards[code] = 0;
-                  }
-                  if ((assignedCards[code] + count) > (card.quantity || 0)) {
-                    assignedCards[code] = card.quantity || 0;
-                  } else {
-                    assignedCards[code] += count;
-                  }
-                });
-                updateWeaknessSet(Object.assign({}, weaknessSet, { assignedCards }));
-              },
-            },
-          ],
-        );
-      }, 50);
-    }
+    const {
+      weaknessSet,
+    } = this.props;
+    maybeShowWeaknessPrompt(
+      deck,
+      cards,
+      weaknessSet.assignedCards,
+      this._updateWeaknessAssignedCards
+    );
   }
 
   _addInvestigator = (card: Card) => {

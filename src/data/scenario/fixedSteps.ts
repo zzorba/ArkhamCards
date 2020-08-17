@@ -72,6 +72,7 @@ function chooseResolutionStep(resolutions: Resolution[]): InputStep {
               ...(hasInvestigatorDefeat ? [CHECK_INVESTIGATOR_DEFEAT_RESOLUTION_ID] : []),
               `$r_${resolution.id}`,
               ...resolution.steps,
+              INTER_SCENARIO_CHANGES_STEP_ID,
               PROCEED_STEP_ID,
             ],
             effects: [{
@@ -337,6 +338,15 @@ export function createInvestigatorStatusStep(
   };
 }
 
+export const INTER_SCENARIO_CHANGES_STEP_ID = '$inter_scenario_changes';
+function interScenarioChangesStep(): Step {
+  return {
+    id: INTER_SCENARIO_CHANGES_STEP_ID,
+    type: 'internal',
+    hidden: true,
+  };
+}
+
 export function getFixedStep(
   id: string,
   scenarioGuide: ScenarioGuide,
@@ -378,6 +388,8 @@ export function getFixedStep(
         ],
       };
     }
+    case INTER_SCENARIO_CHANGES_STEP_ID:
+      return interScenarioChangesStep();
     case EDIT_CAMPAIGN_LOG_STEP_ID:
       return editCampaignLogStep();
     case DRAW_WEAKNESS_STEP_ID:
@@ -401,6 +413,7 @@ export function scenarioStepIds(scenario: Scenario) {
   return (scenario.type === 'interlude' || scenario.type === 'epilogue') ?
     [
       ...scenario.setup,
+      INTER_SCENARIO_CHANGES_STEP_ID,
       PROCEED_STEP_ID,
     ] : [
       CHOOSE_INVESTIGATORS_STEP_ID,

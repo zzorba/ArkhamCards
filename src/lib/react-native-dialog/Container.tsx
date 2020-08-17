@@ -95,7 +95,7 @@ export default class DialogContainer extends React.PureComponent<Props> {
               <View style={[styles.footer, footerStyle]}>
                 {buttonChildrens.map((x, i) =>
                   React.cloneElement(x as any, {
-                    key: `dialog-button-${i}`
+                    key: `dialog-button-${i}`,
                   })
                 )}
               </View>

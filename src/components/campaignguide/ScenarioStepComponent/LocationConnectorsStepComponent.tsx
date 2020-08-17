@@ -19,7 +19,7 @@ const ICON_SIZE = 48;
 export default class LocationConnectorsStepComponent extends React.Component<Props> {
   renderLocationConnector(connector: LocationConnector) {
     switch (connector) {
-      case 'blue_triangle': 
+      case 'blue_triangle':
         return <AppIcon name="triangle" color="rgb(37,63,95)" size={ICON_SIZE} />;
       case 'orange_heart':
         return <AppIcon name="heart" color="rgb(173,88,39)" size={ICON_SIZE} />;
@@ -42,7 +42,7 @@ export default class LocationConnectorsStepComponent extends React.Component<Pro
             { map(step.location_connectors, connector => (
               <View style={[space.marginSideS, space.marginBottomM, styles.icon]} key={connector}>
                 <View style={styles.iconBackground} />
-                { this.renderLocationConnector(connector) }                
+                { this.renderLocationConnector(connector) }
               </View>
             )) }
           </View>

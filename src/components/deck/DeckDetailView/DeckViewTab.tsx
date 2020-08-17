@@ -268,6 +268,14 @@ export default class DeckViewTab extends React.Component<Props, State> {
     return item.id;
   };
 
+  investigator() {
+    const {
+      deck,
+      cards,
+    } = this.props;
+    return cards[deck.investigator_code];
+  }
+
   investigatorFront() {
     const {
       deck,
@@ -301,13 +309,15 @@ export default class DeckViewTab extends React.Component<Props, State> {
       tabooSetId,
     } = this.props;
     const investigator = this.investigatorFront();
-    showCard(
-      componentId,
-      investigator.code,
-      investigator,
-      false,
-      tabooSetId,
-    );
+    if (investigator) {
+      showCard(
+        componentId,
+        investigator.code,
+        investigator,
+        false,
+        tabooSetId,
+      );
+    }
   };
 
   _showSwipeCard = (id: string, card: Card) => {
@@ -341,7 +351,9 @@ export default class DeckViewTab extends React.Component<Props, State> {
       }
       forEach(section.data, item => {
         const card = this.props.cards[item.id];
-        cards.push(card);
+        if (card) {
+          cards.push(card);
+        }
       });
     });
     showCardSwipe(
@@ -601,6 +613,10 @@ export default class DeckViewTab extends React.Component<Props, State> {
         undefined
     ) || this.investigatorFront();
 
+    if (!investigator) {
+      return null;
+    }
+
     return (
       <View style={styles.column}>
         <TouchableOpacity onPress={this._showInvestigator}>
@@ -622,7 +638,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
               <View style={[styles.headerColumn, styles.headerLeftMargin]}>
                 <View style={styles.image}>
                   <InvestigatorImage
-                    card={investigator}
+                    card={this.investigator() || investigator}
                     componentId={componentId}
                     yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
                     border

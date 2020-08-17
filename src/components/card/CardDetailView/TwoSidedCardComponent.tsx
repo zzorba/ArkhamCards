@@ -88,7 +88,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   editSpoilersPressed() {
     const { componentId } = this.props;
     if (componentId) {
-      Navigation.push<{}>(componentId, {
+      Navigation.push(componentId, {
         component: {
           name: 'My.Spoilers',
         },
@@ -333,7 +333,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderFactionIcon(card: Card) {
-    const color =  '#FFF';
+    const color = '#FFF';
     if (card.spoiler) {
       const encounter_code = card.encounter_code ||
         (card.linked_card && card.linked_card.encounter_code);

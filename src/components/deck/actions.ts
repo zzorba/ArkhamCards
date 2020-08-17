@@ -16,6 +16,7 @@ import {
   DeleteDeckAction,
   Deck,
   DeckMeta,
+  DeckProblemType,
   Slots,
 } from '@actions/types';
 import { login } from '@actions';
@@ -217,7 +218,7 @@ export const saveDeckChanges: ActionCreator<
           changes.name || deck.name,
           changes.slots || deck.slots,
           changes.ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots || {},
-          (changes.problem !== undefined && changes.problem !== null) ? changes.problem : (deck.problem || ''),
+          ((changes.problem !== undefined && changes.problem !== null) ? changes.problem : (deck.problem || '')) as DeckProblemType,
           (changes.spentXp !== undefined && changes.spentXp !== null) ? changes.spentXp : (deck.spentXp || 0),
           (changes.xpAdjustment !== undefined && changes.xpAdjustment !== null) ? changes.xpAdjustment : (deck.xp_adjustment || 0),
           changes.tabooSetId !== undefined ? changes.tabooSetId : deck.taboo_id,

@@ -91,10 +91,14 @@ class DeckRow extends React.Component<Props> {
       renderSubDetails,
     } = this.props;
     if (theDeck && renderSubDetails) {
+      const card = investigators[theDeck.investigator_code];
+      if (!card) {
+        return null;
+      }
       return renderSubDetails(
         theDeck,
         cards,
-        investigators[theDeck.investigator_code],
+        card,
         thePreviousDeck
       );
     }
@@ -112,10 +116,14 @@ class DeckRow extends React.Component<Props> {
     if (!theDeck || !renderDetails) {
       return null;
     }
+    const card = investigators[theDeck.investigator_code];
+    if (!card) {
+      return null;
+    }
     return renderDetails(
       theDeck,
       cards,
-      investigators[theDeck.investigator_code],
+      card,
       thePreviousDeck
     );
   }
