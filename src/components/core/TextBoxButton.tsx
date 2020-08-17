@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   LayoutChangeEvent,
-  Platform,
   StyleSheet,
   Text,
   TextStyle,
@@ -50,7 +49,6 @@ export default class TextBoxButton extends React.Component<Props, State> {
       multiline,
       crossedOut,
       placeholder,
-      style = {},
       textStyle = {},
       ...otherProps
     } = this.props;
@@ -90,13 +88,6 @@ const styles = StyleSheet.create({
     borderColor: '#a8a8a8',
     overflow: 'hidden',
     marginBottom: xs,
-  },
-  textBox: {
-    paddingLeft: xs,
-    paddingRight: xs,
-    paddingBottom: Platform.OS === 'ios' ? xs : (xs / 2),
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   textInput: {
     paddingTop: (xs / 2),

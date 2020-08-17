@@ -596,6 +596,7 @@ export function conditionResult(
           };
         }
       }
+      /* eslint-disable no-fallthrough */
     }
     case 'campaign_data': {
       return campaignDataConditionResult(condition, campaignLog);

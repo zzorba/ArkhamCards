@@ -5,7 +5,6 @@ import { map, sumBy } from 'lodash';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import CategoryHeader from '@components/settings/CategoryHeader';
 import CampaignMergeItem from './CampaignMergeItem';
 import { Campaign } from '@actions/types';
 import typography from '@styles/typography';
@@ -29,7 +28,7 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
   };
 
   renderItems() {
-    const { campaigns, inverted, onValueChange, values, title } = this.props;
+    const { campaigns, inverted, onValueChange, values } = this.props;
     return (
       <>
         { map(campaigns, campaign => (
@@ -57,8 +56,8 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
     const selected = sumBy(campaigns, campaign => {
       if (inverted) {
         return values[campaign.id] ? 0 : 1;
-       }
-       return values[campaign.id] ? 1 : 0;
+      }
+      return values[campaign.id] ? 1 : 0;
     });
     return (
       <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
@@ -68,7 +67,7 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
         { !inverted && (
           <View style={[styles.icon, space.marginSideS]}>
             <MaterialIcons
-              name={open ? 'keyboard-arrow-up': 'keyboard-arrow-down'}
+              name={open ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
               size={24}
               color={COLORS.darkText}
             />

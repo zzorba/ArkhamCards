@@ -1,10 +1,6 @@
 import React from 'react';
 import { concat, filter, find, findIndex, forEach, head, last, map } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
@@ -20,7 +16,6 @@ import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import Database from '@data/Database';
 import { getAllDecks, getAllCyclePacks, getAllStandalonePacks, getPack, getTabooSet, AppState } from '@reducers';
-import { s } from '@styles/space';
 
 interface OwnProps {
   componentId: string;
@@ -112,7 +107,7 @@ class ScenarioSection extends React.Component<Props, State> {
     const {
       allScenarios,
     } = this.props;
-    const scenarioName = this.possibleScenarios()[index];    
+    const scenarioName = this.possibleScenarios()[index];
     this.setState({
       selectedScenario: find(
         allScenarios,
@@ -289,15 +284,3 @@ export default connect(mapStateToPropsFix, mapDispatchToProps)(
     }
   )
 );
-
-const styles = StyleSheet.create({
-  margin: {
-    marginLeft: s,
-    marginRight: s,
-    marginBottom: s,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});

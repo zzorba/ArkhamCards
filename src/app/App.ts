@@ -17,7 +17,11 @@ const BROWSE_CAMPAIGNS = 'BROWSE_CAMPAIGNS';
 const BROWSE_SETTINGS = 'BROWSE_SETTINGS';
 
 // @ts-ignore ts2339
-TouchableOpacity.defaultProps = {...(TouchableOpacity.defaultProps || {}), delayPressIn: 0 };
+TouchableOpacity.defaultProps = {
+  // @ts-ignore ts2339
+  ...(TouchableOpacity.defaultProps || {}),
+  delayPressIn: 0,
+};
 
 export default class App {
   started: boolean;
@@ -88,7 +92,7 @@ export default class App {
         },
         ios: {
           backgroundColor: COLORS.background,
-        }
+        },
       }),
       navigationBar: {
         backgroundColor: 'default',
@@ -100,7 +104,7 @@ export default class App {
       },
       bottomTab: {
         iconColor: darkMode ? '#bbb' : '#444',
-        textColor: darkMode ? '#eee' : '#000',      
+        textColor: darkMode ? '#eee' : '#000',
         selectedIconColor: COLORS.lightBlue,
         selectedTextColor: COLORS.lightBlue,
       },
@@ -231,7 +235,7 @@ export default class App {
         },
       },
     }];
-    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+    Appearance.addChangeListener(({ colorScheme }) => {
       this.setDefaultOptions(colorScheme, true);
     });
 

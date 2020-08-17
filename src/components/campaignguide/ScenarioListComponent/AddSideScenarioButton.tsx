@@ -115,7 +115,7 @@ export default class AddSideScenarioButton extends React.Component<Props> {
   }
 
   render() {
-    const disabled = !this.canAddScenario()
+    const disabled = !this.canAddScenario();
     return (
       <>
         <BasicButton

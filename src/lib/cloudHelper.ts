@@ -1,4 +1,4 @@
-import { find, forEach, update, noConflict } from 'lodash';
+import { find, forEach } from 'lodash';
 
 import { Deck, DecksMap, Campaign } from '@actions/types';
 import { getNextLocalDeckId, getNextCampaignId, AppState } from '@reducers';
@@ -8,7 +8,7 @@ enum CloudMergeStatus {
   UPDATE = 'update',
   STALE = 'stale',
   NO_CHANGE = 'no_change',
-};
+}
 
 interface CloudMergeResult {
   status: CloudMergeStatus;
@@ -94,17 +94,15 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
     let hasUpdate = false;
     let hasNew = false;
     let hasStale = false;
-    let hasNoChange = false;
     let currentDeck: Deck | undefined = deck;
     let count = 0;
     do {
-      count++
+      count++;
       switch (deckStatus[currentDeck.id]) {
         case CloudMergeStatus.NEW:
           hasNew = true;
           break;
         case CloudMergeStatus.NO_CHANGE:
-          hasNoChange = true;
           break;
         case CloudMergeStatus.UPDATE:
           hasUpdate = true;
@@ -142,7 +140,7 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
 
 function lastUpdated(campaign: Campaign): Date {
   if (typeof campaign.lastUpdated === 'string') {
-    return new Date(Date.parse(campaign.lastUpdated))
+    return new Date(Date.parse(campaign.lastUpdated));
   }
   return campaign.lastUpdated;
 }

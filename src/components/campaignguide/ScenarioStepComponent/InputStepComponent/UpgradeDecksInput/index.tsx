@@ -217,6 +217,7 @@ class UpgradeDecksInput extends React.Component<Props, State> {
 }
 
 
+/* eslint-disable @typescript-eslint/ban-types */
 function mapStateToProps(): {} {
   return {};
 }
@@ -228,6 +229,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   } as any, dispatch);
 }
 
+/* eslint-disable @typescript-eslint/ban-types */
 export default connect<{}, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps

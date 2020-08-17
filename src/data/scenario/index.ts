@@ -80,8 +80,8 @@ function load(lang: string): {
         allLogEntries: require('../../../assets/campaignLogs_es.json'),
         allCampaigns: require('../../../assets/allCampaigns_es.json'),
       };
-      default:
-      case 'en':
+    default:
+    case 'en':
       return {
         allLogEntries: require('../../../assets/campaignLogs.json'),
         allCampaigns: require('../../../assets/allCampaigns.json'),

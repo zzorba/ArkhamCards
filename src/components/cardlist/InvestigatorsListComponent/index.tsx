@@ -88,7 +88,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   _editCollection = () => {
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },
@@ -98,11 +98,10 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   _showNonCollectionCards = (id: string) => {
     Keyboard.dismiss();
     this.setState({
-      showNonCollection: Object.assign(
-        {},
-        this.state.showNonCollection,
-        { [id]: true },
-      ),
+      showNonCollection: {
+        ...this.state.showNonCollection,
+        [id]: true,
+      },
     });
   };
 
@@ -370,9 +369,6 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   render() {
-    const {
-      sort,
-    } = this.props;
     const {
       searchTerm,
     } = this.state;

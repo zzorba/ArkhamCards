@@ -272,8 +272,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
     const {
       deck,
       cards,
-      meta,
-      parallelInvestigators,
     } = this.props;
     return cards[deck.investigator_code];
   }

@@ -1,4 +1,4 @@
-import { find, filter, flatMap, forEach, map, omit, uniq } from 'lodash';
+import { find, filter, flatMap, forEach, map, uniq } from 'lodash';
 import uuid from 'react-native-uuid';
 import { t } from 'ttag';
 
@@ -107,7 +107,7 @@ export default function(
     return {
       ...state,
       all,
-      chaosBagResults
+      chaosBagResults,
     };
   }
   if (action.type === ENSURE_UUID) {
@@ -120,7 +120,7 @@ export default function(
           ...campaign,
           uuid: uuid.v4(),
         };
-      };
+      }
     });
     return {
       ...state,

@@ -167,7 +167,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
   }
 }
 
-function mapStateToProps(): {} {
+function mapStateToProps(): unknown {
   return {};
 }
 

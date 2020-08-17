@@ -93,8 +93,8 @@ class LinkedCampaignGuideView extends React.Component<Props> {
     return;
   };
 
-  _onTabChange = () => {
-  };
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  _onTabChange = () => {};
 
   _delete = () => {
     const { componentId, campaignId, deleteCampaign } = this.props;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { find, flatMap, filter, forEach, keys, map, partition, sumBy } from 'lodash';
+import { find, flatMap, filter, map, partition } from 'lodash';
 import {
   Alert,
   StyleSheet,
@@ -87,10 +87,10 @@ export default class DecksSection extends React.Component<Props, State> {
     });
   };
 
-  _updateWeaknessAssignedCards = (weaknessCards: Slots) =>  {
+  _updateWeaknessAssignedCards = (weaknessCards: Slots) => {
     const {
       updateWeaknessSet,
-      weaknessSet
+      weaknessSet,
     } = this.props;
     updateWeaknessSet({
       ...weaknessSet,

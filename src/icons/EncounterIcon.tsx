@@ -259,6 +259,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'the_city_of_archives':
         return this.forgottenIcon('city_of_archives', size, color);
       case 'return_to_the_city_of_archives':
+      case 'return_to_city_of_archives':
         return this.forgottenIcon('return_to_city_of_archives', size, color);
       case 'tfa':
         return this.forgottenIcon('the_forgotten_age', size, color);
@@ -316,7 +317,6 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'return_to_the_boundary_beyond':
       case 'return_to_pillars_of_judgement':
       case 'return_to_knyan':
-      case 'return_to_the_city_of_archives':
       case 'return_to_the_depths_of_yoth':
       case 'return_to_shattered_aeons':
       case 'return_to_turn_back_time':

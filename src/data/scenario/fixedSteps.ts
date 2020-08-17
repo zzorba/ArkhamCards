@@ -343,7 +343,7 @@ function interScenarioChangesStep(): Step {
   return {
     id: INTER_SCENARIO_CHANGES_STEP_ID,
     type: 'internal',
-    hidden: true
+    hidden: true,
   };
 }
 

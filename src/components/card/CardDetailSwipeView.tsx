@@ -304,9 +304,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     const {
       cards,
     } = this.props;
-    const vm = this;
-
-    return cards.map((card, index) => vm.renderCard(card, index));
+    return cards.map((card, index) => this.renderCard(card, index));
   }
 
   render() {

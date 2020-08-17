@@ -1,5 +1,5 @@
 import React from 'react';
-import { find, forEach, map, upperFirst, sum } from 'lodash';
+import { find, forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import SetupStepWrapper from '../SetupStepWrapper';

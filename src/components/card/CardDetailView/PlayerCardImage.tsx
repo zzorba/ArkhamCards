@@ -129,7 +129,7 @@ export default class PlayerCardImage extends React.Component<Props> {
       card.type_code === 'investigator' ||
       card.type_code === 'agenda';
 
-      if (isBig && !horizontal) {
+    if (isBig && !horizontal) {
       return (
         <View style={styles.verticalContainer}>
           <FastImage

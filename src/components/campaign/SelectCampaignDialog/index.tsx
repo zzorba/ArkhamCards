@@ -65,7 +65,7 @@ class SelectCampaignDialog extends React.Component<Props> {
   };
 
   _editCollection = () => {
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },

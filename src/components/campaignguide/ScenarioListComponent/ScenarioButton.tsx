@@ -70,9 +70,9 @@ export default class ScenarioButton extends React.Component<Props> {
     switch (scenario.type) {
       case 'locked':
         return (
-          <MaterialCommunityIcons 
-            name="lock" 
-            size={iconSize} 
+          <MaterialCommunityIcons
+            name="lock"
+            size={iconSize}
             color={COLORS.lightText}
           />
         );

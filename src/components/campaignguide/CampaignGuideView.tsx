@@ -7,8 +7,7 @@ import { t } from 'ttag';
 
 import CampaignGuideSummary from './CampaignGuideSummary';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import { Campaign, Trauma } from '@actions/types';
-import Card from '@data/Card';
+import { Campaign } from '@actions/types';
 import CampaignInvestigatorsComponent from '@components/campaignguide/CampaignInvestigatorsComponent';
 import CampaignLogComponent from '@components/campaignguide/CampaignLogComponent';
 import ScenarioListComponent from '@components/campaignguide/ScenarioListComponent';
@@ -83,8 +82,8 @@ class CampaignGuideView extends React.Component<Props> {
     });
   };
 
-  _onTabChange = () => {
-  };
+  /* eslint-disable @typescript-eslint/no-empty-function */
+  _onTabChange = () => {};
 
   _delete = () => {
     const { componentId, campaignId, deleteCampaign } = this.props;

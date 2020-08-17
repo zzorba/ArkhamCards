@@ -229,7 +229,7 @@ export function constructCampaignGuideContext(
       investigatorData,
       scenarioId
     );
-  }
+  };
 
   const undo = (scenarioId: string) => {
     universalData.undo(campaign.id, scenarioId);

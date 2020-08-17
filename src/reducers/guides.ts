@@ -1,4 +1,4 @@
-import { forEach, find, findLastIndex, filter, map } from 'lodash';
+import { forEach, findLastIndex, filter, map } from 'lodash';
 
 import {
   RESTORE_BACKUP,
@@ -59,14 +59,14 @@ export default function(
         inputs: map(guide.inputs, input => {
           if (input.step && input.step.startsWith('$upgrade_decks') && input.type === 'choice_list') {
             const choices: NumberChoices = { ...input.choices };
-            if (choices['deckId'] && choices['deckId'].length) {
-              const deckId = choices['deckId'][0];
+            if (choices.deckId && choices.deckId.length) {
+              const deckId = choices.deckId[0];
               if (deckId < 0) {
                 const newDeckId = action.deckRemapping[deckId];
                 if (newDeckId) {
-                  choices['deckId'] = [newDeckId];
+                  choices.deckId = [newDeckId];
                 } else {
-                  delete choices['deckId'];
+                  delete choices.deckId;
                 }
               }
             }

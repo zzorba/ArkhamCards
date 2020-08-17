@@ -170,7 +170,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   };
 
   _editCollection = () => {
-    Navigation.push<{}>(this.props.componentId, {
+    Navigation.push(this.props.componentId, {
       component: {
         name: 'My.Collection',
       },

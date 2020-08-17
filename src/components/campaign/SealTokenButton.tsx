@@ -70,9 +70,9 @@ class SealTokenButton extends React.Component<Props> {
       fontScale,
     } = this.props;
     return (
-      <TouchableHighlight 
-        style={sealed && canDisable && { opacity: 0.2 }} 
-        onPress={this._toggleSealToken} 
+      <TouchableHighlight
+        style={sealed && canDisable && { opacity: 0.2 }}
+        onPress={this._toggleSealToken}
         underlayColor="transparent"
         delayPressIn={0}
       >

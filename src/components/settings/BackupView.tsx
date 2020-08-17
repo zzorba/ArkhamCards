@@ -9,13 +9,12 @@ import {
 } from 'react-native';
 import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
-import { forEach } from 'lodash';
+import { forEach, values } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
 import { connect } from 'react-redux';
-import { values } from 'lodash';
-import base64 from 'react-native-base64'
+import base64 from 'react-native-base64';
 import Share from 'react-native-share';
 import { t } from 'ttag';
 
@@ -52,7 +51,7 @@ class BackupView extends React.Component<Props> {
     }
     try {
       const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles]
+        type: [DocumentPicker.types.allFiles],
       });
       if (!res.name.endsWith('.acb') && !res.name.endsWith('.json')) {
         Alert.alert(
@@ -150,7 +149,7 @@ class BackupView extends React.Component<Props> {
             const date = format(new Date(), 'yyyy-MM-dd');
             const filename = `ACB-${date}`;
             if (Platform.OS === 'ios') {
-              const path = RNFS.CachesDirectoryPath + '/' + filename + '.acb';
+              const path = `${RNFS.CachesDirectoryPath }/${ filename }.acb`;
               await RNFS.writeFile(
                 path,
                 JSON.stringify(backupData),

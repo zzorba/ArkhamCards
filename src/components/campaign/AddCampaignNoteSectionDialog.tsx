@@ -8,7 +8,6 @@ import DialogComponent from '@lib/react-native-dialog';
 import { t } from 'ttag';
 
 import Dialog from '@components/core/Dialog';
-import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 
 export type AddSectionFunction = (
@@ -32,7 +31,7 @@ interface State {
 
 export default class AddCampaignNoteSectionDialog extends React.Component<Props, State> {
   _textInputRef = React.createRef<TextInput>();
-  
+
   constructor(props: Props) {
     super(props);
 

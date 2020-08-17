@@ -7,7 +7,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 
-export default function connectDb<InputProps, GenerateProps, GenerateParams={}>(
+export default function connectDb<InputProps, GenerateProps, GenerateParams=Record<string, unknown>>(
   WrappedComponent: React.ComponentType<InputProps & GenerateProps>,
   extractProps: (props: InputProps) => GenerateParams,
   getData: (db: Database, props: GenerateParams) => Promise<GenerateProps>,

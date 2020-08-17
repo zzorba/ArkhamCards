@@ -470,8 +470,8 @@ class CampaignDetailView extends React.Component<Props, State> {
   renderSideMenu(campaign: Campaign) {
     return (
       <ScrollView style={styles.menu}>
-        <SettingsCategoryHeader 
-          title={t`Campaign`} 
+        <SettingsCategoryHeader
+          title={t`Campaign`}
           titleStyle={styles.categoryText}
           containerStyle={styles.categoryContainer}
         />
@@ -495,9 +495,9 @@ class CampaignDetailView extends React.Component<Props, State> {
           titleStyle={styles.text}
           containerStyle={styles.button}
         />
-        <SettingsCategoryHeader 
-          title={t`Chaos Bag`} 
-          titleStyle={styles.categoryText} 
+        <SettingsCategoryHeader
+          title={t`Chaos Bag`}
+          titleStyle={styles.categoryText}
           containerStyle={styles.categoryContainer}
         />
         <SettingsButton
@@ -518,9 +518,9 @@ class CampaignDetailView extends React.Component<Props, State> {
           titleStyle={styles.text}
           containerStyle={styles.button}
         />
-        <SettingsCategoryHeader 
-          title={t`Weakness Set`} 
-          titleStyle={styles.categoryText} 
+        <SettingsCategoryHeader
+          title={t`Weakness Set`}
+          titleStyle={styles.categoryText}
           containerStyle={styles.categoryContainer}
         />
         <SettingsButton
@@ -529,14 +529,14 @@ class CampaignDetailView extends React.Component<Props, State> {
           titleStyle={styles.text}
           containerStyle={styles.button}
         />
-        <SettingsCategoryHeader 
-          title={t`Options`} 
-          titleStyle={styles.categoryText} 
+        <SettingsCategoryHeader
+          title={t`Options`}
+          titleStyle={styles.categoryText}
           containerStyle={styles.categoryContainer}
         />
         <SettingsButton
           onPress={this._showShareSheet}
-          title={t`Share`}              
+          title={t`Share`}
           titleStyle={styles.text}
           containerStyle={styles.button}
         />

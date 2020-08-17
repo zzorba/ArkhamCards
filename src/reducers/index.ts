@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { concat, find, filter, flatMap, forEach, keys, map, mapValues, max, minBy, last, sortBy, uniq, values } from 'lodash';
+import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -104,11 +104,11 @@ export const getCampaigns = createSelector(
 
 export function getBackupData(state: AppState): BackupState {
   const deckIds: { [id: string]: string } = {};
-  forEach(state.decks.all, (deck, id) => {
+  forEach(state.decks.all, deck => {
     if (deck.local && deck.uuid) {
       deckIds[deck.id] = deck.uuid;
     }
-  })
+  });
   const campaignIds: { [id: string]: string } = {};
   forEach(state.campaigns.all, campaign => {
     if (campaign.uuid) {

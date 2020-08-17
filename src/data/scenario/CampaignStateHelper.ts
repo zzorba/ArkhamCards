@@ -252,7 +252,7 @@ export default class CampaignStateHelper {
   }
 
   interScenarioInfo(scenarioId?: string): InvestigatorTraumaData | undefined {
-    let entry = this.entry('inter_scenario', undefined, scenarioId);
+    const entry = this.entry('inter_scenario', undefined, scenarioId);
     if (entry && entry.type === 'inter_scenario') {
       return entry.investigatorData;
     }

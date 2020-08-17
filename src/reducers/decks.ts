@@ -111,7 +111,7 @@ export default function(
           ...deck,
           uuid: uuid.v4(),
         };
-      };
+      }
     });
     return {
       ...state,
@@ -257,7 +257,7 @@ export default function(
           const previousDeck = {
             ...all[deck.previous_deck],
           };
-          delete previousDeck['next_deck'];
+          delete previousDeck.next_deck;
           all[deck.previous_deck] = previousDeck;
         }
       }

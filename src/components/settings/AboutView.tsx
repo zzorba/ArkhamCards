@@ -71,7 +71,7 @@ export default class AboutView extends React.Component {
             • <Text style={styles.underline}>Octopus Vectors by Vecteezy</Text>
           </Text>
         </TouchableOpacity>
-        
+
         <View style={styles.footer} />
       </ScrollView>
     );

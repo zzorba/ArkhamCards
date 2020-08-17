@@ -38,7 +38,7 @@ export default class CardDetailComponent extends React.Component<Props> {
   _editSpoilersPressed = () => {
     const { componentId } = this.props;
     if (componentId) {
-      Navigation.push<{}>(componentId, {
+      Navigation.push(componentId, {
         component: {
           name: 'My.Spoilers',
         },
@@ -159,10 +159,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  basicButtonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
   sectionHeader: {
     marginTop: m + s,

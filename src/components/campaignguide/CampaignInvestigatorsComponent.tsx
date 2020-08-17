@@ -5,7 +5,7 @@ import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
-import { Campaign, InvestigatorData, Trauma, TraumaAndCardData } from '@actions/types';
+import { Campaign, InvestigatorData, Trauma } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
@@ -213,8 +213,8 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
 
   _updateTraumaData = (code: string, trauma: Trauma) => {
     const { processedCampaign } = this.props;
-    const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed')
-    console.log(`Updating ${code} ${JSON.stringify({trauma, latestScenario})}`);
+    const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
+    console.log(`Updating ${code} ${JSON.stringify({ trauma, latestScenario })}`);
     this.context.campaignState.setInterScenarioInvestigatorData(
       code,
       trauma,
@@ -228,7 +228,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       investigator,
       traumaData,
       this._updateTraumaData
-    )
+    );
   };
 
   _disabledShowTraumaDialog = () => {

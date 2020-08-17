@@ -22,6 +22,7 @@ interface Props {
   onPress?: () => void;
 }
 export default class SettingsItem extends React.Component<Props> {
+  /* eslint-disable @typescript-eslint/no-empty-function */
   _dummyOnPress = () => {};
 
   render() {
@@ -51,7 +52,7 @@ export default class SettingsItem extends React.Component<Props> {
             color={COLORS.button}
             name="chevron-right"
           />
-        ): undefined}
+        ) : undefined}
         disabled={!onPress}
       />
     );
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     height: 20,
   },
   categoryContainer: {
-    backgroundColor: COLORS.background, 
+    backgroundColor: COLORS.background,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
   },

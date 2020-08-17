@@ -1,7 +1,6 @@
 import React from 'react';
-import { filter, flatMap, forEach, keys, map, sumBy, throttle } from 'lodash';
+import { filter, forEach, map, throttle } from 'lodash';
 import {
-  Alert,
   ScrollView,
   StyleSheet,
   Text,
@@ -740,13 +739,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     minHeight: 100,
-  },
-  switch: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
-    paddingTop: s,
-    paddingBottom: s,
   },
   block: {
     padding: s,

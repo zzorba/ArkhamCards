@@ -8,7 +8,6 @@ import {
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import typography from '@styles/typography';
-import { xs, s } from '@styles/space';
 
 interface Props {
   countChanged: (index: number, count: number) => void;
@@ -83,15 +82,5 @@ const styles = StyleSheet.create({
   margin: {
     minWidth: 40,
     textAlign: 'center',
-  },
-  textColumn: {
-    flex: 1,
-    marginRight: s,
-  },
-  row: {
-    alignSelf: 'stretch',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
 });

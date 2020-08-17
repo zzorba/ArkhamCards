@@ -55,7 +55,7 @@ function filterBy(
 ): CardId[] {
   return cardIds.filter(c => {
     const card = cards[c.id];
-    return card && card[field] === value
+    return card && card[field] === value;
   });
 }
 
@@ -621,7 +621,7 @@ export function parseDeck(
     availableExperience: (deck.xp || 0) + (xpAdjustment || 0),
     packs: uniqBy(cardIds, c => {
       const card = cards[c.id];
-      return (card && card.pack_code) || ''
+      return (card && card.pack_code) || '';
     }).length,
     factionCounts,
     costHistogram: costHistogram(cardIds, cards),

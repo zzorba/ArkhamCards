@@ -68,7 +68,7 @@ class MergeBackupView extends React.Component<Props, State> {
           text: t`Import`,
           id: 'import',
           color: COLORS.navButton,
-        }]
+        }],
       },
     };
   }
@@ -89,8 +89,8 @@ class MergeBackupView extends React.Component<Props, State> {
           id: 'import',
           color: COLORS.navButton,
           enabled: this.canImport(),
-        }]
-      }
+        }],
+      },
     });
   };
 
@@ -134,7 +134,7 @@ class MergeBackupView extends React.Component<Props, State> {
       while (deck && deck.next_deck) {
         deck = deckMerge.upgradeDecks[deck.next_deck];
         if (deck) {
-          dependentDecks.push(deck)
+          dependentDecks.push(deck);
         }
       }
       return dependentDecks;
@@ -181,7 +181,7 @@ class MergeBackupView extends React.Component<Props, State> {
     const selectedGuides: { [key: string]: CampaignGuideState } = {};
     forEach(campaigns, campaign => {
       if (guides[campaign.id]) {
-        selectedGuides[campaign.id] = guides[campaign.id]
+        selectedGuides[campaign.id] = guides[campaign.id];
       }
     });
     const deckRemapping = { ...deckMerge.localRemapping };
@@ -229,7 +229,7 @@ class MergeBackupView extends React.Component<Props, State> {
   };
 
   render() {
-    const { campaignMerge, deckMerge, investigators } =  this.props;
+    const { campaignMerge, deckMerge, investigators } = this.props;
     const { importCampaigns, importDecks } = this.state;
     return (
       <SafeAreaView style={styles.container}>

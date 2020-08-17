@@ -5,7 +5,6 @@ import { map, sumBy } from 'lodash';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import CategoryHeader from '@components/settings/CategoryHeader';
 import DeckMergeItem from './DeckMergeItem';
 import { Deck } from '@actions/types';
 import typography from '@styles/typography';
@@ -64,8 +63,8 @@ export default class DeckMergeSection extends React.Component<Props, State> {
     const selected = sumBy(decks, deck => {
       if (inverted) {
         return values[deck.id] ? 0 : 1;
-       }
-       return values[deck.id] ? 1 : 0;
+      }
+      return values[deck.id] ? 1 : 0;
     });
     return (
       <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
@@ -75,7 +74,7 @@ export default class DeckMergeSection extends React.Component<Props, State> {
         { !inverted && (
           <View style={[styles.icon, space.marginSideS]}>
             <MaterialIcons
-              name={open ? 'keyboard-arrow-up': 'keyboard-arrow-down'}
+              name={open ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
               size={24}
               color={COLORS.darkText}
             />

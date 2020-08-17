@@ -31,47 +31,47 @@ export function maybeShowWeaknessPrompt(
   deck: Deck,
   cards: CardsMap,
   weaknessCards: Slots,
-  updateWeaknessCards: (weaknessCards: Slots) =>  void
+  updateWeaknessCards: (weaknessCards: Slots) => void
 ) {
-    const { count, message, weaknesses } = weaknessString(deck, cards);
-    if (weaknesses.length) {
-      setTimeout(() => {
-        Alert.alert(
-          t`Adjust Weakness Set`,
-          /* eslint-disable prefer-template */
-          (count > 1 ?
-            t`This deck contains several basic weaknesses` :
-            t`This deck contains a basic weakness`) +
+  const { count, message, weaknesses } = weaknessString(deck, cards);
+  if (weaknesses.length) {
+    setTimeout(() => {
+      Alert.alert(
+        t`Adjust Weakness Set`,
+        /* eslint-disable prefer-template */
+        (count > 1 ?
+          t`This deck contains several basic weaknesses` :
+          t`This deck contains a basic weakness`) +
           '\n\n' +
           message +
           '\n\n' +
           (count > 1 ?
             t`Do you want to remove them from the campaign’s Basic Weakness set?` :
             t`Do you want to remove it from the campaign’s Basic Weakness set?`),
-          [
-            { text: t`Not Now`, style: 'cancel' },
-            {
-              text: t`Okay`,
-              style: 'default',
-              onPress: () => {
-                const assignedCards = { ...weaknessCards };
-                forEach(weaknesses, card => {
-                  const code = card.code;
-                  const count = deck.slots[code];
-                  if (!(code in assignedCards)) {
-                    assignedCards[code] = 0;
-                  }
-                  if ((assignedCards[code] + count) > (card.quantity || 0)) {
-                    assignedCards[code] = card.quantity || 0;
-                  } else {
-                    assignedCards[code] += count;
-                  }
-                });
-                updateWeaknessCards(assignedCards);
-              },
+        [
+          { text: t`Not Now`, style: 'cancel' },
+          {
+            text: t`Okay`,
+            style: 'default',
+            onPress: () => {
+              const assignedCards = { ...weaknessCards };
+              forEach(weaknesses, card => {
+                const code = card.code;
+                const count = deck.slots[code];
+                if (!(code in assignedCards)) {
+                  assignedCards[code] = 0;
+                }
+                if ((assignedCards[code] + count) > (card.quantity || 0)) {
+                  assignedCards[code] = card.quantity || 0;
+                } else {
+                  assignedCards[code] += count;
+                }
+              });
+              updateWeaknessCards(assignedCards);
             },
-          ],
-        );
-      }, 50);
-    }
+          },
+        ],
+      );
+    }, 50);
   }
+}

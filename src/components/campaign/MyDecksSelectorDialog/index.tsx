@@ -265,7 +265,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       filter(
         keys(campaign.investigatorData || {}),
         code => {
-          const card = investigators[code]
+          const card = investigators[code];
           return !!card && card.eliminated(campaign.investigatorData[code]);
         });
     return uniq([

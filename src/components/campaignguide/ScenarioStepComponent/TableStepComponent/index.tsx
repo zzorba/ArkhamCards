@@ -19,7 +19,7 @@ export default function TableStepComponent({ step }: Props) {
         <TableRowComponent
           key={idx}
           row={row}
-          background={idx % 2 === 0 ? 'light': 'dark'}
+          background={idx % 2 === 0 ? 'light' : 'dark'}
           last={idx === step.rows.length - 1}
         />
       )) }
