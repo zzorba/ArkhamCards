@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SettingsSwitch from '@components/core/SettingsSwitch';
+import { campaignName } from '@components/campaign/constants';
 import { Campaign } from '@actions/types';
 
 interface Props {
@@ -21,7 +22,7 @@ export default class CampaignMergeItem extends React.Component<Props> {
     return (
       <SettingsSwitch
         title={campaign.name}
-        description={campaign.cycleCode}
+        description={campaignName(campaign.cycleCode) || undefined}
         value={inverted ? !value : value}
         onValueChange={this._onValueChange}
       />
