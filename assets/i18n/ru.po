@@ -17,80 +17,80 @@ msgstr ""
 #: src/reducers/campaigns.ts:168
 #, javascript-format
 msgid "${ action.name } (Campaign A)"
-msgstr ""
+msgstr "${ action.name } (Кампания А)"
 
 #: src/reducers/campaigns.ts:175
 msgid "${ action.name } (Campaign B)"
-msgstr ""
+msgstr "${ action.name } (Кампания Б)"
 
 #: src/lib/DeckValidation.ts:244
 msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr ""
+msgstr "«Своими силами» не позволяет вам иметь под контролем активы, занимающие слот союзника"
 
 #: src/lib/DeckValidation.ts:261
 msgid "Too many off-class cards for Versatile"
-msgstr ""
+msgstr "«Versatile» не позволяет иметь так много внеклассовых карт"
 
 #: src/lib/parseDeck.ts:73
 #: src/lib/parseDeck.ts:90
 msgid "Hand"
-msgstr ""
+msgstr "Рука"
 
 #: src/lib/parseDeck.ts:74
 #: src/lib/parseDeck.ts:98
 msgid "Hand. Arcane"
-msgstr ""
+msgstr "Рука. Магический"
 
 #: src/lib/parseDeck.ts:75
 #: src/lib/parseDeck.ts:91
 msgid "Hand x2"
-msgstr ""
+msgstr "Рука ×2"
 
 #: src/lib/parseDeck.ts:76
 #: src/lib/parseDeck.ts:92
 msgid "Arcane"
-msgstr ""
+msgstr "Магический"
 
 #: src/lib/parseDeck.ts:77
 #: src/lib/parseDeck.ts:93
 msgid "Arcane x2"
-msgstr ""
+msgstr "Магический ×2"
 
 #: src/lib/parseDeck.ts:78
 #: src/lib/parseDeck.ts:94
 msgid "Accessory"
-msgstr ""
+msgstr "Аксессуар"
 
 #: src/lib/parseDeck.ts:79
 #: src/lib/parseDeck.ts:95
 msgid "Body"
-msgstr ""
+msgstr "Одежда"
 
 #: src/lib/parseDeck.ts:80
 #: src/lib/parseDeck.ts:99
 msgid "Body. Hand x2"
-msgstr ""
+msgstr "Одежда. Рука ×2"
 
 #: src/lib/parseDeck.ts:81
 #: src/lib/parseDeck.ts:100
 msgid "Ally. Arcane"
-msgstr ""
+msgstr "Союзник. Магический"
 
 #: src/lib/parseDeck.ts:82
 #: src/lib/parseDeck.ts:96
 msgid "Ally"
-msgstr ""
+msgstr "Союзник"
 
 #: src/lib/parseDeck.ts:83
 #: src/lib/parseDeck.ts:97
 msgid "Tarot"
-msgstr ""
+msgstr "Таро"
 
 #: src/lib/parseDeck.ts:70
 #: src/lib/parseDeck.ts:84
 #: src/lib/parseDeck.ts:101
 msgid "Other"
-msgstr ""
+msgstr "Без слота"
 
 #: src/lib/publicApi.ts:181
 msgid "Return to the Untamed Wilds"
@@ -165,11 +165,11 @@ msgstr ""
 
 #: src/lib/publicApi.ts:249
 msgid "Epic Multiplayer"
-msgstr ""
+msgstr "Эпическая игра"
 
 #: src/lib/publicApi.ts:253
 msgid "Single Group"
-msgstr ""
+msgstr "Отдельная группа"
 
 #: src/lib/publicApi.ts:257
 msgid "Mi-Go Incursion"
@@ -178,23 +178,23 @@ msgstr ""
 #: src/lib/stringHelper.ts:8
 #, javascript-format
 msgid "${ things[0] } and ${ things[1] }"
-msgstr ""
+msgstr "${ things[0] } и ${ things[1] }"
 
 #: src/lib/stringHelper.ts:12
 #, javascript-format
 msgid "${ listOfThings }, and ${ lastThing }"
-msgstr ""
+msgstr "${ listOfThings }, и ${ lastThing }"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/ReceiveCampaignLinkInputComponent.tsx:57
 #: src/lib/react-native-settings-components/picker/picker.modal.tsx:152
 #: src/lib/react-native-settings-components/picker/picker.tsx:104
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/data/Card.ts:278
 #, javascript-format
 msgid "${ this.name } <i>(${ this.subname })</i>"
-msgstr ""
+msgstr "${ this.name } <i>(${ this.subname })</i>"
 
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:187
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:167
@@ -203,187 +203,187 @@ msgstr ""
 #: src/data/Card.ts:328
 #: src/data/Card.ts:344
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:99
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:370
 #: src/data/Card.ts:332
 msgid "Killed"
-msgstr ""
+msgstr "Убит"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:109
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:419
 #: src/data/Card.ts:335
 msgid "Insane"
-msgstr ""
+msgstr "Сошёл с ума"
 
 #: src/data/Card.ts:338
 #, javascript-format
 msgid "${ traumaData.physical } Physical"
-msgstr ""
+msgstr "Физические: ${ traumaData.physical }"
 
 #: src/data/Card.ts:341
 msgid "${ traumaData.mental } Mental"
-msgstr ""
+msgstr "Ментальные: ${ traumaData.mental }"
 
 #: src/data/Card.ts:375
 #, javascript-format
 msgid "Cost: ${ actualCost }"
-msgstr ""
+msgstr "Цена: ${ actualCost }"
 
 #: src/data/Card.ts:421
 #: src/data/Card.ts:440
 msgid "Guardian"
-msgstr ""
+msgstr "Хранитель"
 
 #: src/data/Card.ts:422
 #: src/data/Card.ts:446
 msgid "Seeker"
-msgstr ""
+msgstr "Искатель"
 
 #: src/data/Card.ts:423
 #: src/data/Card.ts:444
 msgid "Mystic"
-msgstr ""
+msgstr "Мистик"
 
 #: src/data/Card.ts:424
 #: src/data/Card.ts:442
 msgid "Rogue"
-msgstr ""
+msgstr "Ловкач"
 
 #: src/data/Card.ts:425
 #: src/data/Card.ts:448
 msgid "Survivor"
-msgstr ""
+msgstr "Выживший"
 
 #: src/data/Card.ts:426
 #: src/data/Card.ts:450
 msgid "Neutral"
-msgstr ""
+msgstr "Нейтральный"
 
 #: src/data/Card.ts:427
 msgid "Guardian / Rogue"
-msgstr ""
+msgstr "Хранитель / Ловкач"
 
 #: src/data/Card.ts:428
 msgid "Rogue / Survivor"
-msgstr ""
+msgstr "Ловкач / Выживший"
 
 #: src/data/Card.ts:429
 msgid "Survivor / Seeker"
-msgstr ""
+msgstr "Выживший / Искатель"
 
 #: src/data/Card.ts:430
 msgid "Seeker / Mystic"
-msgstr ""
+msgstr "Искатель / Мистик"
 
 #: src/data/Card.ts:431
 msgid "Mystic / Guardian"
-msgstr ""
+msgstr "Мистик / Хранитель"
 
 #: src/data/Card.ts:432
 #: src/data/Card.ts:463
 #: src/data/Card.ts:497
 #: src/data/Card.ts:514
 msgid "Weakness"
-msgstr ""
+msgstr "Слабость"
 
 #: src/data/Card.ts:433
 #: src/data/Card.ts:458
 msgid "Mythos"
-msgstr ""
+msgstr "Миф"
 
 #: src/data/Card.ts:466
 msgid "Unknown"
-msgstr ""
+msgstr "Неизвестно"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:371
 #: src/data/Card.ts:480
 #: src/data/Card.ts:564
 msgid "Investigator"
-msgstr ""
+msgstr "Сыщик"
 
 #: src/data/Card.ts:481
 #: src/data/Card.ts:526
 msgid "Asset: Hand"
-msgstr ""
+msgstr "Актив: Рука"
 
 #: src/data/Card.ts:482
 #: src/data/Card.ts:528
 msgid "Asset: Hand x2"
-msgstr ""
+msgstr "Актив: Рука ×2"
 
 #: src/data/Card.ts:483
 #: src/data/Card.ts:530
 msgid "Asset: Accessory"
-msgstr ""
+msgstr "Актив: Аксессуар"
 
 #: src/data/Card.ts:484
 #: src/data/Card.ts:532
 msgid "Asset: Ally"
-msgstr ""
+msgstr "Актив: Союзник"
 
 #: src/data/Card.ts:485
 #: src/data/Card.ts:534
 msgid "Asset: Arcane"
-msgstr ""
+msgstr "Актив: Мистический"
 
 #: src/data/Card.ts:486
 #: src/data/Card.ts:536
 msgid "Asset: Arcane x2"
-msgstr ""
+msgstr "Актив: Мистический ×2"
 
 #: src/data/Card.ts:487
 #: src/data/Card.ts:538
 msgid "Asset: Body"
-msgstr ""
+msgstr "Актив: Одежда"
 
 #: src/data/Card.ts:488
 #: src/data/Card.ts:522
 msgid "Asset: Permanent"
-msgstr ""
+msgstr "Актив: Постоянный"
 
 #: src/data/Card.ts:489
 #: src/data/Card.ts:540
 msgid "Asset: Tarot"
-msgstr ""
+msgstr "Актив: Таро"
 
 #: src/data/Card.ts:490
 #: src/data/Card.ts:546
 msgid "Asset: Ally. Arcane"
-msgstr ""
+msgstr "Актив: Союзник. Мистический"
 
 #: src/data/Card.ts:491
 #: src/data/Card.ts:544
 msgid "Asset: Hand. Arcane"
-msgstr ""
+msgstr "Актив: Рука. Мистический"
 
 #: src/data/Card.ts:492
 #: src/data/Card.ts:542
 msgid "Asset: Body. Hand x2"
-msgstr ""
+msgstr "Актив: Одежда. Рука ×2"
 
 #: src/data/Card.ts:493
 #: src/data/Card.ts:548
 msgid "Asset: Other"
-msgstr ""
+msgstr "Актив: Без слота"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:131
 #: src/data/Card.ts:494
 #: src/data/Card.ts:554
 msgid "Event"
-msgstr ""
+msgstr "Событие"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:132
 #: src/data/Card.ts:495
 #: src/data/Card.ts:559
 msgid "Skill"
-msgstr ""
+msgstr "Навык"
 
 #: src/data/Card.ts:496
 #: src/data/Card.ts:509
 msgid "Basic Weakness"
-msgstr ""
+msgstr "Базовая слабость"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:176
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:177
@@ -393,7 +393,7 @@ msgstr ""
 #: src/data/Card.ts:566
 #: src/data/Card.ts:617
 msgid "Scenario"
-msgstr ""
+msgstr "Сценарий"
 
 #: src/data/Card.ts:499
 #: src/data/Card.ts:512
@@ -402,40 +402,42 @@ msgstr ""
 #: src/data/Card.ts:557
 #: src/data/Card.ts:562
 msgid "Story"
-msgstr ""
+msgstr "Сюжет"
 
 #: src/data/Card.ts:613
 #, javascript-format
 msgid "Act ${ json.stage }"
-msgstr ""
+msgstr "Сцена ${ json.stage }"
 
 #: src/data/Card.ts:615
 msgid "Agenda ${ json.stage }"
-msgstr ""
+msgstr "Замысел ${ json.stage }"
 
 #: src/data/Card.ts:627
 #, javascript-format
 msgid "Act ${ linked_card.stage }"
-msgstr ""
+msgstr "Сцена ${ linked_card.stage }"
 
 #: src/data/Card.ts:629
 msgid "Agenda ${ linked_card.stage }"
-msgstr ""
+msgstr "Замысел ${ linked_card.stage }"
 
 #: src/data/scenario/CampaignGuide.ts:243
 #: src/data/scenario/CampaignGuide.ts:244
 msgid "Campaign Setup"
-msgstr ""
+msgstr "Подкотовка к кампании"
 
 #: src/data/scenario/CampaignGuide.ts:383
 msgid ""
 "Each investigator earns experience equal to the Victory X value of each "
 "card in the victory display."
 msgstr ""
+"Каждый сыщик получает опыт, равынй сумме победных значений всех карт "
+"на победном счету."
 
 #: src/data/scenario/CampaignGuide.ts:387
 msgid "Victory display:"
-msgstr ""
+msgstr "Победный счёт:"
 
 #: src/data/scenario/CampaignGuide.ts:406
 #, javascript-format
@@ -446,12 +448,16 @@ msgid_plural ""
 "Each investigator pays ${ entry.xpCost } experience points to play this "
 "scenario."
 msgstr[0] ""
+"Чтобы сыграть этот сценарий, каждый сыщик должен потратить "
+"${ entry.xpCost } опыт."
 msgstr[1] ""
+"Чтобы сыграть этот сценарий, каждый сыщик должен потратить "
+"${ entry.xpCost } опыта."
 
 #: src/data/scenario/CampaignStateHelper.ts:184
 #. This is a deck upgrade action.
 msgid "Undo deck upgrade"
-msgstr ""
+msgstr "Отменить улучшение колоды"
 
 #: src/data/scenario/CampaignStateHelper.ts:185
 #. This is a deck upgrade action.
@@ -464,11 +470,18 @@ msgid ""
 "You can view the deck and delete the most recent 'upgrade' to put things "
 "back the way they were."
 msgstr ""
+"Кажется, вы собираетесь отменить улучшение колоды.\n"
+"\n"
+"Обратите внимание: это действие НЕ УДАЛИТ улучшение с ArkhamDB, "
+"так что ваша колода сохранит внесённые ранее изменения.\n"
+"\n"
+"Вы можете открыть колоду там и удалить самое последнее улучшение, "
+"чтобы вернуть её к прежнему виду."
 
 #: src/data/scenario/CampaignStateHelper.ts:188
 #. This is a deck upgrade action.
 msgid "Undo"
-msgstr ""
+msgstr "Отменить"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:139
 #: src/components/campaign/AddScenarioResultView/index.tsx:75
@@ -518,113 +531,115 @@ msgstr ""
 #: src/data/scenario/CampaignStateHelper.ts:194
 #. This is a deck upgrade action.
 msgid "Cancel"
-msgstr ""
+msgstr "Отменить"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:131
 #: src/data/scenario/fixedSteps.ts:58
 msgid "Resolutions"
-msgstr ""
+msgstr "Исходы"
 
 #: src/data/scenario/fixedSteps.ts:59
 msgid "Select resolution"
-msgstr ""
+msgstr "Выберите исход"
 
 #: src/data/scenario/fixedSteps.ts:129
 msgid "Draw Weakness"
-msgstr ""
+msgstr "Возьмите слабость"
 
 #: src/data/scenario/fixedSteps.ts:150
 msgid ""
 "<b>Note:</b> Trauma from investigator defeat is handled during scenario "
 "resolution."
 msgstr ""
+"<b>Внимание:</b> Если ваш сыщик побеждён, полученные травмы будут "
+"учтены при розыгрыше исхода."
 
 #: src/data/scenario/fixedSteps.ts:158
 msgid "Record Trauma"
-msgstr ""
+msgstr "Учёт травм"
 
 #: src/data/scenario/fixedSteps.ts:189
 msgid "In your Campaign Log, record that:"
-msgstr ""
+msgstr "Запишите в журнале кампании:"
 
 #: src/data/scenario/fixedSteps.ts:207
 msgid "Choose lead investigator"
-msgstr ""
+msgstr "Выберите ведущего сыщика"
 
 #: src/data/scenario/fixedSteps.ts:215
 msgid "Lead Investigator"
-msgstr ""
+msgstr "Ведущий сыщик"
 
 #: src/data/scenario/fixedSteps.ts:263
 msgid "Alive"
-msgstr ""
+msgstr "Жив"
 
 #: src/data/scenario/fixedSteps.ts:264
 msgid "Resigned"
-msgstr ""
+msgstr "Совершил побег"
 
 #: src/data/scenario/fixedSteps.ts:265
 msgid "Defeated: physical trauma"
-msgstr ""
+msgstr "Побеждён: физическая травма"
 
 #: src/data/scenario/fixedSteps.ts:266
 msgid "Defeated: mental trauma"
-msgstr ""
+msgstr "Побеждён: ментальная травма"
 
 #: src/data/scenario/fixedSteps.ts:267
 msgid "Defeated: no trauma"
-msgstr ""
+msgstr "Побеждён: без травмы"
 
 #: src/data/scenario/fixedSteps.ts:331
 msgid "Investigator status at end of scenario:"
-msgstr ""
+msgstr "Состояние сыщика в конце сценария:"
 
 #: src/data/scenario/fixedSteps.ts:381
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr ""
+msgstr "Перейдите к сценарию <b>${ nextScenarioName }</b>."
 
 #: src/data/DeckOption/index.ts:58
 msgid "Secondary Class"
-msgstr ""
+msgstr "Побочный класс"
 
 #: src/data/DeckOption/index.ts:60
 msgid "Deck Size"
-msgstr ""
+msgstr "Размер колоды"
 
 #: src/components/campaign/CampaignEditWeaknessDialog.tsx:36
 #: src/components/weakness/EditAssignedWeaknessComponent.tsx:28
 msgid "Available weaknesses"
-msgstr ""
+msgstr "Доступные слабости"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:337
 #: src/components/deck/DeckDetailView/index.tsx:1295
 #: src/components/weakness/WeaknessDrawComponent.tsx:282
 msgid "Saving"
-msgstr ""
+msgstr "Сохранение"
 
 #: src/components/weakness/WeaknessDrawComponent.tsx:293
 msgid "Draw a Different Weakness"
-msgstr ""
+msgstr "Взять другую слабость"
 
 #: src/components/weakness/WeaknessDrawComponent.tsx:294
 msgid "Draw Another"
-msgstr ""
+msgstr "Взять ещё"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:82
 #: src/components/filter/CardFilterView/index.tsx:416
 #: src/components/weakness/WeaknessDrawComponent.tsx:313
 msgid "Traits"
-msgstr ""
+msgstr "Черты"
 
 #: src/components/weakness/WeaknessDrawComponent.tsx:322
 msgid "Multiplayer"
-msgstr ""
+msgstr "Мультиплеер"
 
 #: src/components/core/PackListComponent/index.tsx:58
 #: src/components/weakness/WeaknessDrawComponent.tsx:331
 msgid "Standalone"
-msgstr ""
+msgstr "Одиночный режим"
 
 #: src/components/weakness/WeaknessDrawComponent.tsx:409
 msgid ""
@@ -632,19 +647,22 @@ msgid ""
 "\n"
 "Please adjust the trait filter."
 msgstr ""
+"В вашей коллекции нет таких слабостей.\n"
+"\n"
+"Пожалуйста, измените фильтры."
 
 #: src/components/weakness/WeaknessDrawComponent.tsx:415
 msgid "All weaknesses have been drawn."
-msgstr ""
+msgstr "Все слабости взяты."
 
 #: src/components/campaign/CampaignDrawWeaknessDialog.tsx:321
 #: src/components/weakness/WeaknessDrawDialog.tsx:99
 msgid "Save to Deck"
-msgstr ""
+msgstr "Сохранить колоду"
 
 #: src/components/settings/DiagnosticsView.tsx:74
 msgid "Problem with import"
-msgstr ""
+msgstr "Ошибка импорта"
 
 #: src/components/settings/DiagnosticsView.tsx:75
 msgid ""
@@ -653,62 +671,66 @@ msgid ""
 "Make sure its an exact copy of the text provided by the Backup feature of "
 "an Arkham Cards app."
 msgstr ""
+"Нам не удалось найти данные кампании в предоставленных данных.\n"
+"\n"
+"Убедитесь, что они точно совпадают с данными из раздела Резервная копия "
+"приложения Arkham Cards."
 
 #: src/components/settings/BackupView.tsx:58
 msgid "Unexpected file type"
-msgstr ""
+msgstr "Неизвестный формат"
 
 #: src/components/deck/authHelper.ts:21
 #: src/components/settings/BackupView.tsx:61
 msgid "Try again"
-msgstr ""
+msgstr "Попытаться снова"
 
 #: src/components/settings/BackupView.tsx:99
 #: src/components/settings/DiagnosticsView.tsx:86
 msgid "Restore campaign data?"
-msgstr ""
+msgstr "Восстановить кампанию?"
 
 #: src/components/settings/BackupView.tsx:102
 #: src/components/settings/DiagnosticsView.tsx:92
 msgid "Import data"
-msgstr ""
+msgstr "Импортировать данные"
 
 #: src/components/settings/BackupView.tsx:137
 #: src/components/settings/DiagnosticsView.tsx:114
 msgid "Backup campaign data?"
-msgstr ""
+msgstr "Сделать резервную копию кампании?"
 
 #: src/components/settings/BackupView.tsx:143
 #: src/components/settings/DiagnosticsView.tsx:120
 msgid "Export Campaign Data"
-msgstr ""
+msgstr "Экспортировать кампанию"
 
 #: src/components/settings/BackupView.tsx:187
 #: src/components/settings/DiagnosticsView.tsx:227
 #: src/components/settings/SettingsView.tsx:97
 msgid "Backup"
-msgstr ""
+msgstr "Резервная копия"
 
 #: src/components/settings/BackupView.tsx:191
 #: src/components/settings/DiagnosticsView.tsx:231
 msgid "Backup Campaign Data"
-msgstr ""
+msgstr "Сделать резервную копию кампании"
 
 #: src/components/settings/BackupView.tsx:195
 #: src/components/settings/DiagnosticsView.tsx:235
 msgid "Restore Campaign Data"
-msgstr ""
+msgstr "Восстановить кампанию"
 
 #: src/components/core/PackListComponent/index.tsx:122
 #: src/components/filter/PackFilterView.tsx:90
 #: src/components/settings/CollectionEditView.tsx:52
 #: src/components/settings/SpoilersView.tsx:55
 msgid "Loading"
-msgstr ""
+msgstr "Загрузка"
 
 #: src/components/settings/CollectionEditView.tsx:58
 msgid "Second Core Set"
-msgstr ""
+msgstr "Вторая база"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:131
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:256
@@ -718,11 +740,11 @@ msgstr ""
 #: src/components/settings/CollectionEditView.tsx:34
 #: src/components/settings/SettingsView.tsx:81
 msgid "Edit Collection"
-msgstr ""
+msgstr "Изменить коллекцию"
 
 #: src/components/settings/DiagnosticsView.tsx:84
 msgid "All local decks and campaigns will be overridden"
-msgstr ""
+msgstr "Все локальные колоды и кампании будут перезаписаны"
 
 #: src/components/settings/DiagnosticsView.tsx:87
 #, javascript-format
@@ -732,15 +754,19 @@ msgid ""
 "\n"
 "${ erasedCopy }"
 msgstr ""
+"Эта функция используется для расширенной диагностики или импорта данных "
+"из другого приложения.\n"
+"\n"
+"${ erasedCopy }"
 
 #: src/components/campaignguide/ScenarioView.tsx:168
 #: src/components/settings/DiagnosticsView.tsx:89
 msgid "Nevermind"
-msgstr ""
+msgstr "Неважно"
 
 #: src/components/settings/DiagnosticsView.tsx:96
 msgid "Paste Backup Here"
-msgstr ""
+msgstr "Скопируйте сюда резервную копию"
 
 #: src/components/settings/DiagnosticsView.tsx:115
 msgid ""
@@ -748,52 +774,55 @@ msgid ""
 "move your campaign data from one device to another. Just copy the data and "
 "paste it into the other app."
 msgstr ""
+"Эта функция используется для расширенной диагностики или на случай, "
+"если вы захотите перенести прогресс в кампании на другое устройство. "
+"Просто скопируйте эти данные в другое приложение."
 
 #: src/components/settings/DiagnosticsView.tsx:194
 msgid "Debug Card Json"
-msgstr ""
+msgstr "Отладка данных карты"
 
 #: src/components/core/PackListComponent/index.tsx:56
 #: src/components/settings/DiagnosticsView.tsx:174
 msgid "Return to..."
-msgstr ""
+msgstr "Return to..."
 
 #: src/components/core/PackListComponent/index.tsx:57
 #: src/components/settings/DiagnosticsView.tsx:177
 msgid "Investigator Starter Decks"
-msgstr ""
+msgstr "Investigator Starter Decks"
 
 #: src/components/settings/DiagnosticsView.tsx:180
 msgid "Side stories"
-msgstr ""
+msgstr "Сценарии-ответвления"
 
 #: src/components/settings/DiagnosticsView.tsx:212
 msgid "Debug"
-msgstr ""
+msgstr "Отладка"
 
 #: src/components/settings/DiagnosticsView.tsx:216
 msgid "Add Debug Card"
-msgstr ""
+msgstr "Добавить отладочную карту"
 
 #: src/components/settings/DiagnosticsView.tsx:238
 msgid "Caches"
-msgstr ""
+msgstr "Кэш"
 
 #: src/components/settings/DiagnosticsView.tsx:242
 msgid "Clear cache"
-msgstr ""
+msgstr "Очистить кэш"
 
 #: src/components/settings/LanguagePicker.tsx:60
 msgid "Card Language"
-msgstr ""
+msgstr "Язык карт"
 
 #: src/components/settings/LanguagePicker.tsx:61
 msgid "Note: not all cards have translations available."
-msgstr ""
+msgstr "Обратите внимание: перевод есть не для всех карт."
 
 #: src/components/settings/LoginButton.tsx:36
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "Вы уверены, что хотите выйти из аккаунта?"
 
 #: src/components/settings/LoginButton.tsx:37
 msgid ""
