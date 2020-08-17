@@ -8,7 +8,9 @@ import {
   View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
+import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
+import { filter, find, flatMap, map, forEach } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -18,10 +20,11 @@ import { Campaign, CampaignGuideState, Deck, BackupState } from '@actions/types'
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { AppState } from '@reducers';
 import { mergeCampaigns, CampaignMergeResult, mergeDecks, DeckMergeResult } from '@lib/cloudHelper';
-import { restoreBackup } from '@components/campaign/actions';
+import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import typography from '@styles/typography';
+import { NavigationProps } from '@components/nav/types';
 
 export interface MergeBackupProps {
   backupData: BackupState;
@@ -33,16 +36,16 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  restoreBackup: (
+  restoreComplexBackup: (
     campaigns: Campaign[],
-    guides: {
-      [id: string]: CampaignGuideState;
-    },
-    decks: Deck[]
+    guides: { [id: string]: CampaignGuideState },
+    campaignRemapping: { [id: string]: number },
+    decks: Deck[],
+    deckRemapping: { [id: string]: number }
   ) => void;
 }
 
-type Props = ReduxProps & ReduxActionProps & PlayerCardProps;
+type Props = MergeBackupProps & ReduxProps & ReduxActionProps & PlayerCardProps & NavigationProps;
 
 interface State {
   importCampaigns: {
@@ -52,6 +55,7 @@ interface State {
     [key: string]: boolean;
   };
 }
+
 class MergeBackupView extends React.Component<Props, State> {
   static get options() {
     return {
@@ -73,25 +77,21 @@ class MergeBackupView extends React.Component<Props, State> {
     importDecks: {},
   };
 
-  _importBackupDataJson = (json: any) => {
-    try {
-      const backupData = JSON.parse(json) || {};
-      const campaigns: Campaign[] = backupData.campaigns || [];
-      const guides: { [id: string]: CampaignGuideState } = backupData.guides || {};
-      const decks: Deck[] = backupData.decks || [];
-      this.props.restoreBackup(
-        campaigns,
-        guides,
-        decks
-      );
-      return;
-    } catch (e) {
-      console.log(e);
-      Alert.alert(
-        t`Problem with import`,
-        t`We were not able to parse any campaigns from that pasted data.\n\nMake sure its an exact copy of the text provided by the Backup feature of an Arkham Cards app.`,
-      );
-    }
+  componentDidMount() {
+    this._syncNavButtons();
+  }
+
+  _syncNavButtons = () => {
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: [{
+          text: t`Import`,
+          id: 'import',
+          color: COLORS.navButton,
+          enabled: this.canImport(),
+        }]
+      }
+    });
   };
 
   _onCampaignChange = (campaign: Campaign, value: boolean) => {
@@ -101,23 +101,131 @@ class MergeBackupView extends React.Component<Props, State> {
           ...this.state.importCampaigns,
           [campaign.id]: value,
         },
-      });
+      }, this._syncNavButtons);
     }
   };
 
   _onDeckChange = (deck: Deck, value: boolean) => {
-    if (deck.local_uuid) {
+    if (deck.uuid) {
       this.setState({
         importDecks: {
           ...this.state.importDecks,
           [deck.id]: value,
         },
-      });
+      }, this._syncNavButtons);
     }
   };
 
-  _doImport = () => {
+  selectedCampaigns(): Campaign[] {
+    const { campaignMerge } = this.props;
+    const { importCampaigns } = this.state;
+    return [
+      ...filter(campaignMerge.newCampaigns, c => !importCampaigns[c.id]),
+      ...filter(campaignMerge.updatedCampaigns, c => !importCampaigns[c.id]),
+      ...filter(campaignMerge.staleCampaigns, c => !!importCampaigns[c.id]),
+      ...filter(campaignMerge.sameCampaigns, c => !!importCampaigns[c.id]),
+    ];
+  }
 
+  dependentDecks(decks: Deck[]) {
+    const { deckMerge } = this.props;
+    return flatMap(decks, deck => {
+      const dependentDecks: Deck[] = [deck];
+      while (deck && deck.next_deck) {
+        deck = deckMerge.upgradeDecks[deck.next_deck];
+        if (deck) {
+          dependentDecks.push(deck)
+        }
+      }
+      return dependentDecks;
+    });
+  }
+
+  missingDecks(): Deck[] {
+    const { deckMerge } = this.props;
+    const { importDecks } = this.state;
+    const decks = [
+      ...filter(deckMerge.newDecks, c => !!importDecks[c.id]),
+    ];
+    return this.dependentDecks(decks);
+  }
+
+  selectedDecks(): Deck[] {
+    const { deckMerge } = this.props;
+    const { importDecks } = this.state;
+    const decks = [
+      ...filter(deckMerge.newDecks, c => !importDecks[c.id]),
+      ...filter(deckMerge.updatedDecks, c => !importDecks[c.id]),
+      ...filter(deckMerge.staleDecks, c => !!importDecks[c.id]),
+      ...filter(deckMerge.sameDecks, c => !!importDecks[c.id]),
+    ];
+    return this.dependentDecks(decks);
+  }
+
+  canImport() {
+    return this.selectedCampaigns().length > 0 || this.selectedDecks().length > 0;
+  }
+
+  _actuallyDoImport = () => {
+    const {
+      componentId,
+      backupData: {
+        guides,
+      },
+      campaignMerge,
+      deckMerge,
+      restoreComplexBackup,
+    } = this.props;
+    const campaigns = this.selectedCampaigns();
+    const decks = this.selectedDecks();
+    const selectedGuides: { [key: string]: CampaignGuideState } = {};
+    forEach(campaigns, campaign => {
+      if (guides[campaign.id]) {
+        selectedGuides[campaign.id] = guides[campaign.id]
+      }
+    });
+    const deckRemapping = { ...deckMerge.localRemapping };
+    forEach(this.missingDecks(), deck => {
+      delete deckRemapping[deck.id];
+    });
+
+    restoreComplexBackup(
+      campaigns,
+      selectedGuides,
+      campaignMerge.localRemapping,
+      decks,
+      deckRemapping,
+    );
+    Navigation.pop(componentId);
+  }
+
+  _doImport = () => {
+    const { deckMerge } = this.props;
+    const campaigns = this.selectedCampaigns();
+    const decks = this.selectedDecks();
+    const importedDecks = new Set(map(decks, deck => deck.id));
+    const newDecks = new Set(map(deckMerge.newDecks, deck => deck.id));
+    const campaignWithoutDecks = find(campaigns, campaign => {
+      return !!find(campaign.baseDeckIds || [], deckId => (
+        deckId < 0 && !importedDecks.has(deckId) && newDecks.has(deckId)
+      ));
+    });
+    if (campaignWithoutDecks) {
+      Alert.alert(
+        t`Missing decks`,
+        t`It seems like you have chosen to import a campaign without importing one or more non-ArkhamDB decks. The campaign can still be imported, however the deck information will be removed.`,
+        [
+          { text: t`Import anyway`, onPress: this._actuallyDoImport },
+          { text: t`Cancel`, style: 'cancel' },
+        ]
+      );
+    } else {
+      this._actuallyDoImport();
+    }
+  };
+
+  _cancel = () => {
+    Navigation.pop(this.props.componentId);
   };
 
   render() {
@@ -196,7 +304,12 @@ class MergeBackupView extends React.Component<Props, State> {
             investigators={investigators}
             scenarioCount={deckMerge.scenarioCount}
           />
-          <BasicButton onPress={this._doImport} title={t`Import selected data`} />
+          <BasicButton
+            onPress={this._doImport}
+            title={t`Import selected data`}
+            disabled={!this.canImport()}
+          />
+          <BasicButton onPress={this._cancel} title={t`Cancel`} color={COLORS.red} />
         </ScrollView>
       </SafeAreaView>
     );
@@ -212,7 +325,7 @@ function mapStateToProps(state: AppState, props: MergeBackupProps): ReduxProps {
 
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
-    restoreBackup,
+    restoreComplexBackup,
   }, dispatch);
 }
 

@@ -1,4 +1,4 @@
-import { forEach, findLastIndex, filter } from 'lodash';
+import { forEach, find, findLastIndex, filter, map } from 'lodash';
 
 import {
   RESTORE_BACKUP,
@@ -6,10 +6,12 @@ import {
   GUIDE_SET_INPUT,
   GUIDE_UNDO_INPUT,
   GUIDE_RESET_SCENARIO,
+  RESTORE_COMPLEX_BACKUP,
   LOGOUT,
   GuideActions,
   CampaignGuideState,
   DEFAULT_CAMPAIGN_GUIDE_STATE,
+  NumberChoices,
 } from '@actions/types';
 
 export interface GuidesState {
@@ -48,6 +50,40 @@ export default function(
 ): GuidesState {
   if (action.type === LOGOUT) {
     return state;
+  }
+  if (action.type === RESTORE_COMPLEX_BACKUP) {
+    const all = { ...state.all };
+    forEach(action.guides, (guide, id) => {
+      const remappedGuide = {
+        ...guide,
+        inputs: map(guide.inputs, input => {
+          if (input.step && input.step.startsWith('$upgrade_decks') && input.type === 'choice_list') {
+            const choices: NumberChoices = { ...input.choices };
+            if (choices['deckId'] && choices['deckId'].length) {
+              const deckId = choices['deckId'][0];
+              if (deckId < 0) {
+                const newDeckId = action.deckRemapping[deckId];
+                if (newDeckId) {
+                  choices['deckId'] = [newDeckId];
+                } else {
+                  delete choices['deckId'];
+                }
+              }
+            }
+            return {
+              ...input,
+              choices,
+            };
+          }
+          return input;
+        }),
+      };
+      all[action.campaignRemapping[id]] = remappedGuide;
+    });
+    return {
+      ...state,
+      all,
+    };
   }
   if (action.type === RESTORE_BACKUP) {
     const newAll: { [id: string]: CampaignGuideState } = {};

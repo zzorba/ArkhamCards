@@ -39,7 +39,7 @@ interface ReduxProps {
   deckCount: number;
 }
 
-const SHOW_BACKUP = false;
+const SHOW_BACKUP = true;
 
 interface ReduxActionProps {
   fetchCards: (db: Database, lang: string) => void;

@@ -9065,6 +9065,11 @@ react-native-base64@0.0.2:
   resolved "https://registry.yarnpkg.com/react-native-base64/-/react-native-base64-0.0.2.tgz#c28463c2c6779ac3ec5fdd12979ebc8c5f9b410a"
   integrity sha512-Fu/J1a2y0X22EJDWqJR2oEa1fpP4gTFjYxk8ElJdt1Yak3HOXmFJ7EohLVHU2DaQkgmKfw8qb7u/48gpzveRbg==
 
+react-native-base64@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-base64/-/react-native-base64-0.1.0.tgz#8e0c9df9d7d455e32921279c4378fc90557ed13b"
+  integrity sha512-in7EtB6eWn0KO5n4qknyqtbLHiiFGSQ7X7m3bYnoHafhARTaomxq+Rpuyhv3xj6WEP18Z7gW0EaujiSyMzQQOA==
+
 react-native-collapsible@1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.5.3.tgz#d6bc7274ae8f40f7688cca23ededa263e6c81c63"

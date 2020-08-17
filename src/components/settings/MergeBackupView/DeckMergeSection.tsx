@@ -39,7 +39,7 @@ export default class DeckMergeSection extends React.Component<Props, State> {
       <>
         { map(decks, deck => (
           <DeckMergeItem
-            key={deck.local_uuid || deck.id}
+            key={deck.uuid || deck.id}
             deck={deck}
             investigators={investigators}
             inverted={!!inverted}

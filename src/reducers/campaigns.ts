@@ -1,4 +1,4 @@
-import { find, filter, forEach, map, omit, uniq } from 'lodash';
+import { find, filter, flatMap, forEach, map, omit, uniq } from 'lodash';
 import uuid from 'react-native-uuid';
 import { t } from 'ttag';
 
@@ -9,6 +9,7 @@ import {
   UPDATE_CAMPAIGN,
   CAMPAIGN_ADD_INVESTIGATOR,
   UPDATE_CAMPAIGN_SPENT_XP,
+  RESTORE_COMPLEX_BACKUP,
   CAMPAIGN_REMOVE_INVESTIGATOR,
   CLEAN_BROKEN_CAMPAIGNS,
   UPDATE_CHAOS_BAG_RESULTS,
@@ -31,7 +32,7 @@ export interface CampaignsState {
     [id: string]: Campaign;
   };
   chaosBagResults?: {
-    [id: string]: ChaosBagResults;
+    [id: string]: ChaosBagResults | undefined;
   };
 }
 
@@ -77,6 +78,38 @@ export default function(
   state: CampaignsState = DEFAULT_CAMPAIGNS_STATE,
   action: CampaignActions
 ): CampaignsState {
+  if (action.type === RESTORE_COMPLEX_BACKUP) {
+    const all = { ...state.all };
+    const chaosBagResults = { ...state.chaosBagResults };
+    forEach(action.campaigns, campaign => {
+      const remappedCampaign = {
+        ...campaign,
+        id: action.campaignRemapping[campaign.id],
+        baseDeckIds: flatMap(campaign.baseDeckIds, deckId => {
+          if (deckId < 0) {
+            const newDeckId = action.deckRemapping[deckId];
+            if (newDeckId) {
+              return [newDeckId];
+            }
+            // They chose not to import this deck.
+            return [];
+          }
+          return [deckId];
+        }),
+      };
+      all[remappedCampaign.id] = remappedCampaign;
+      chaosBagResults[remappedCampaign.id] = {
+        drawnTokens: [],
+        sealedTokens: [],
+        totalDrawnTokens: 0,
+      };
+    });
+    return {
+      ...state,
+      all,
+      chaosBagResults
+    };
+  }
   if (action.type === ENSURE_UUID) {
     const all: { [id: string]: Campaign } = {};
     forEach(state.all, (campaign, id) => {

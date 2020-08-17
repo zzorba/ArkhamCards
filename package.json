@@ -37,6 +37,7 @@
     "react-native": "0.63.2",
     "react-native-app-auth": "5.1.3",
     "react-native-appearance": "0.3.4",
+    "react-native-base64": "^0.1.0",
     "react-native-collapsible": "1.5.3",
     "react-native-color-matrix-image-filters": "5.2.5",
     "react-native-config": "1.3.3",

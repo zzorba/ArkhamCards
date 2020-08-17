@@ -105,8 +105,8 @@ export const getCampaigns = createSelector(
 export function getBackupData(state: AppState): BackupState {
   const deckIds: { [id: string]: string } = {};
   forEach(state.decks.all, (deck, id) => {
-    if (deck.local && deck.local_uuid) {
-      deckIds[deck.id] = deck.local_uuid;
+    if (deck.local && deck.uuid) {
+      deckIds[deck.id] = deck.uuid;
     }
   })
   const campaignIds: { [id: string]: string } = {};
@@ -397,12 +397,20 @@ export const getCampaign = createSelector(
 
 const getChaosBagResultsWithId = (state: AppState, id: number) => state.campaigns.chaosBagResults;
 
+const EMPTY_CHAOS_BAG_RESULTS = {
+  drawnTokens: [],
+  sealedTokens: [],
+  totalDrawnTokens: 0,
+};
 export const getChaosBagResults = createSelector(
   getChaosBagResultsWithId,
   getIdWithId,
   (chaosBagResults, id): ChaosBagResults => {
-    if (chaosBagResults && chaosBagResults[id]) {
-      return chaosBagResults[id];
+    if (chaosBagResults) {
+      const result = chaosBagResults[id];
+      if (result) {
+        return result;
+      }
     }
     return NEW_CHAOS_BAG_RESULTS;
   }

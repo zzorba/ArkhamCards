@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   Alert,
+  PermissionsAndroid,
   SafeAreaView,
   ScrollView,
-  Share,
   StyleSheet,
   Platform,
 } from 'react-native';
+import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
 import { forEach } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -14,6 +15,8 @@ import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
 import { connect } from 'react-redux';
 import { values } from 'lodash';
+import base64 from 'react-native-base64'
+import Share from 'react-native-share';
 import { t } from 'ttag';
 
 import CategoryHeader from './CategoryHeader';
@@ -44,14 +47,17 @@ class BackupView extends React.Component<Props> {
 
   _pickBackupFile = async() => {
     const { componentId } = this.props;
+    if (!await this.hasFileSystemPermission(true)) {
+      return;
+    }
     try {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles]
       });
-      if (!res.name.endsWith('.acb')) {
+      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json')) {
         Alert.alert(
           t`Unexpected file type`,
-          t`This app expects an Arkham Cards backup file (.acb)`,
+          t`This app expects an Arkham Cards backup file (.acb/.json)`,
           [{
             text: t`Try again`,
             onPress: this._pickBackupFile,
@@ -92,7 +98,7 @@ class BackupView extends React.Component<Props> {
   _importCampaignData = () => {
     Alert.alert(
       t`Restore campaign data?`,
-      t`This feature will let you restore data from a lost device. After a backup is selected, you can choose which data to backup`,
+      t`This feature will let you restore data from a lost device. If you were signed into ArkhamDB, please reauthorize before importing campaign data.\n\nAfter a backup is selected, you will be able to choose which data to import.`,
       [{
         text: t`Import data`,
         onPress: this._pickBackupFile,
@@ -103,31 +109,71 @@ class BackupView extends React.Component<Props> {
     );
   };
 
+  async hasFileSystemPermission(read: boolean) {
+    if (Platform.OS === 'ios') {
+      return true;
+    }
+    try {
+      const granted = await PermissionsAndroid.request(
+        read ? 'android.permission.READ_EXTERNAL_STORAGE' : 'android.permission.WRITE_EXTERNAL_STORAGE'
+      );
+      switch (granted) {
+        case PermissionsAndroid.RESULTS.GRANTED:
+          return true;
+        case PermissionsAndroid.RESULTS.DENIED:
+          return false;
+        case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
+          Alert.alert(t`Cannot request access`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
+          return false;
+      }
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+
   _exportCampaignData = () => {
+    const { backupData } = this.props;
     Alert.alert(
       t`Backup campaign data?`,
-      t`This will let you backup your local decks and campaigns for safe-keeping, or to move them to another device.`,
+      t`This will let you backup your local decks and campaigns for safe-keeping. This can also be used to move them to another device.`,
       [{
         text: t`Cancel`,
         style: 'cancel',
       }, {
         text: t`Export Campaign Data`,
-        onPress: () => {
-          if (Platform.OS === 'ios') {
-            const path = RNFS.CachesDirectoryPath + '/arkham-cards-backup.acb';
-            RNFS.writeFile(
-              path,
-              JSON.stringify(this.props.backupData),
-              'utf8'
-            ).then(() => {
-              Share.share({
+        onPress: async() => {
+          try {
+            if (!await this.hasFileSystemPermission(false)) {
+              return;
+            }
+            const date = format(new Date(), 'yyyy-MM-dd');
+            const filename = `ACB-${date}`;
+            if (Platform.OS === 'ios') {
+              const path = RNFS.CachesDirectoryPath + '/' + filename + '.acb';
+              await RNFS.writeFile(
+                path,
+                JSON.stringify(backupData),
+                'utf8'
+              );
+              await Share.open({
                 url: `file://${path}`,
+                saveToFiles: true,
+                filename,
+                type: 'text/json',
               });
-            });
-          } else {
-            Share.share({
-              url: 'data:text/acb;base64,32342342342',
-            });
+            } else {
+              await Share.open({
+                title: t`Save backup`,
+                message: filename,
+                url: `data:application/json;base64,${base64.encode(JSON.stringify(backupData))}`,
+                filename,
+                failOnCancel: false,
+                showAppsToView: true,
+              });
+            }
+          } catch (e) {
+            console.log(e);
           }
         },
       }],

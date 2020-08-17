@@ -51,7 +51,7 @@ export interface DeckMeta {
 
 export interface Deck {
   id: number;
-  local_uuid?: string;
+  uuid?: string;
   name: string;
   description_md?: string;
   taboo_id?: number;
@@ -551,6 +551,24 @@ export interface RestoreBackupAction {
     [id: string]: CampaignGuideState;
   };
 }
+
+
+export const RESTORE_COMPLEX_BACKUP = 'RESTORE_COMPLEX_BACKUP';
+export interface RestoreComplexBackupAction {
+  type: typeof RESTORE_COMPLEX_BACKUP;
+  campaigns: Campaign[];
+  decks: Deck[];
+  guides: {
+    [id: string]: CampaignGuideState;
+  };
+  deckRemapping: {
+    [key: string]: number;
+  };
+  campaignRemapping: {
+    [key: string]: number;
+  };
+}
+
 export const UPDATE_CAMPAIGN = 'UPDATE_CAMPAIGN';
 export interface UpdateCampaignAction {
   type: typeof UPDATE_CAMPAIGN;
@@ -878,6 +896,7 @@ export type SignInActions =
 
 export type DecksActions =
   LogoutAction |
+  RestoreComplexBackupAction |
   RestoreBackupAction |
   MyDecksStartRefreshAction |
   MyDecksCacheHitAction |
@@ -892,6 +911,7 @@ export type DecksActions =
 
 export type CampaignActions =
   LogoutAction |
+  RestoreComplexBackupAction |
   ReplaceLocalDeckAction |
   CleanBrokenCampaignsAction |
   NewCampaignAction |
@@ -909,6 +929,7 @@ export type CampaignActions =
 
 export type GuideActions =
   DeleteCampaignAction |
+  RestoreComplexBackupAction |
   RestoreBackupAction |
   LogoutAction |
   GuideSetInputAction |

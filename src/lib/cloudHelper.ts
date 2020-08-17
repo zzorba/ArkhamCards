@@ -22,7 +22,7 @@ export function campaignFromJson(json: any) {
 
 function mergeLocalDeck(cloudDeck: Deck, decks: DecksMap, nextLocalDeckId: number): CloudMergeResult {
   const localDeck = find(decks, deck => {
-    return !!(deck.local && deck.local_uuid ===  cloudDeck.local_uuid);
+    return !!(deck.local && deck.uuid && deck.uuid === cloudDeck.uuid);
   });
   if (!localDeck) {
     return {
@@ -54,7 +54,7 @@ export interface DeckMergeResult {
   staleDecks: Deck[];
   sameDecks: Deck[];
 
-  upgradeDecks: Deck[];
+  upgradeDecks: DecksMap;
 
   scenarioCount: {
     [key: string]: number;
@@ -69,9 +69,7 @@ export interface DeckMergeResult {
 export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult {
   let nextLocalDeckId = getNextLocalDeckId(state);
   const localRemapping: { [key: number]: number } = {};
-
   const deckStatus: { [id: string]: CloudMergeStatus } = {};
-
   forEach(cloudDecks, cloudDeck => {
     const { status, cloudId, localId } = mergeLocalDeck(cloudDeck, state.decks.all, nextLocalDeckId);
     nextLocalDeckId = Math.min(localId - 1, nextLocalDeckId);
@@ -80,16 +78,17 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
     deckStatus[cloudDeck.id] = status;
   });
 
+
   const newDecks: Deck[] = [];
   const updatedDecks: Deck[] = [];
   const staleDecks: Deck[] = [];
   const sameDecks: Deck[] = [];
-  const upgradeDecks: Deck[] = [];
+  const upgradeDecks: DecksMap = {};
   const scenarioCount: { [key: string]: number } = {};
   forEach(cloudDecks, deck => {
     if (deck.previous_deck) {
       // Part of an upgrade chain, and not the latest.
-      upgradeDecks.push(deck);
+      upgradeDecks[deck.id] = deck;
       return;
     }
     let hasUpdate = false;
@@ -109,6 +108,7 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
           break;
         case CloudMergeStatus.UPDATE:
           hasUpdate = true;
+          break;
         case CloudMergeStatus.STALE:
           hasStale = true;
           break;
@@ -119,10 +119,10 @@ export function mergeDecks(cloudDecks: Deck[], state: AppState): DeckMergeResult
       }
       currentDeck = find(cloudDecks, d => !!currentDeck && d.id === currentDeck.next_deck);
     } while (currentDeck);
-    if (hasStale) {
-      staleDecks.push(deck);
-    } else if (hasNew) {
+    if (hasNew) {
       newDecks.push(deck);
+    } else if (hasStale) {
+      staleDecks.push(deck);
     } else if (hasUpdate) {
       updatedDecks.push(deck);
     } else {

@@ -14,6 +14,7 @@ import {
   CAMPAIGN_REMOVE_INVESTIGATOR,
   UPDATE_CAMPAIGN_SPENT_XP,
   CLEAN_BROKEN_CAMPAIGNS,
+  RESTORE_COMPLEX_BACKUP,
   CleanBrokenCampaignsAction,
   CampaignAddInvestigatorAction,
   CampaignRemoveInvestigatorAction,
@@ -29,6 +30,7 @@ import {
   WeaknessSet,
   AddCampaignScenarioResultAction,
   EditCampaignScenarioResultAction,
+  RestoreComplexBackupAction,
   NewCampaignAction,
   NewLinkedCampaignAction,
   UpdateCampaignAction,
@@ -64,6 +66,24 @@ export function restoreBackup(
     campaigns,
     guides,
     decks,
+  };
+}
+
+
+export function restoreComplexBackup(
+  campaigns: Campaign[],
+  guides: { [id: string]: CampaignGuideState },
+  campaignRemapping: { [id: string]: number },
+  decks: Deck[],
+  deckRemapping: { [id: string]: number }
+): RestoreComplexBackupAction {
+  return {
+    type: RESTORE_COMPLEX_BACKUP,
+    campaigns,
+    guides,
+    decks,
+    deckRemapping,
+    campaignRemapping,
   };
 }
 
