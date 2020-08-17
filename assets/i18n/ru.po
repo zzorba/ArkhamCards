@@ -831,51 +831,55 @@ msgid ""
 "\n"
 "If you are having trouble with your account you can also reconnect."
 msgstr ""
+"Данные на ArkhamDB сохранятся, но все данные о кампании и все "
+"изменения, внесённые без подключения к сети могут быть утрачены.\n"
+"\n"
+"Если у вас проблемы с аккаунтом, попробуйте переподключить его."
 
 #: src/components/settings/LoginButton.tsx:39
 msgid "Sign Out"
-msgstr ""
+msgstr "Выйти из аккаунта"
 
 #: src/components/settings/LoginButton.tsx:40
 msgid "Reconnect Account"
-msgstr ""
+msgstr "Переподключить аккаунт"
 
 #: src/components/settings/LoginButton.tsx:66
 #: src/components/settings/LoginButton.tsx:69
 msgid "Sign out of ArkhamDB"
-msgstr ""
+msgstr "Выйти из ArkhamDB"
 
 #: src/components/deck/DeckDetailView/index.tsx:1452
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:367
 #: src/components/settings/LoginButton.tsx:75
 #: src/components/settings/LoginButton.tsx:78
 msgid "Sign in to ArkhamDB"
-msgstr ""
+msgstr "Войти в ArkhamDB"
 
 #: src/components/core/TabooSetPicker.tsx:56
 #: src/components/deck/DeckDetailView/index.tsx:1623
 #: src/components/settings/SettingsTabooPicker.tsx:33
 msgid "Taboo List"
-msgstr ""
+msgstr "Списко табу"
 
 #: src/components/settings/SettingsTabooPicker.tsx:43
 msgid "Changes the default taboo list for newly created decks and search."
-msgstr ""
+msgstr "Изменение списка табу по умолчанию для новых колод и поиска."
 
 #: src/components/settings/SettingsView.tsx:85
 msgid "Edit Spoilers"
-msgstr ""
+msgstr "Настроить спойлеры"
 
 #: src/components/settings/SettingsView.tsx:89
 #: src/components/settings/SettingsView.tsx:182
 msgid "Diagnostics"
-msgstr ""
+msgstr "Диагностика"
 
 #: src/components/settings/SettingsView.tsx:93
 #: src/components/settings/SettingsView.tsx:184
 #: src/components/settings/SettingsView.tsx:188
 msgid "About Arkham Cards"
-msgstr ""
+msgstr "О приложении"
 
 #: src/components/campaign/NewCampaignView/index.tsx:288
 #: src/components/campaign/NewCampaignView/index.tsx:292
@@ -890,66 +894,68 @@ msgstr ""
 #: src/components/nav/helper.ts:35
 #: src/components/settings/SettingsView.tsx:68
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: src/components/settings/SettingsView.tsx:118
 msgid "Updating cards"
-msgstr ""
+msgstr "Обновление карт"
 
 #: src/components/settings/SettingsView.tsx:121
 msgid "Error: Check for Cards Again"
-msgstr ""
+msgstr "Ошибка: перепроверить карты"
 
 #: src/components/settings/SettingsView.tsx:122
 msgid "Check for New Cards on ArkhamDB"
-msgstr ""
+msgstr "Обновить карты с ArkhamDB"
 
 #: src/components/settings/SettingsView.tsx:139
 msgid "Account"
-msgstr ""
+msgstr "Аккаунт"
 
 #: src/components/settings/SettingsView.tsx:145
 msgid "Backup Data"
-msgstr ""
+msgstr "Сделать резервную копию"
 
 #: src/components/settings/SettingsView.tsx:148
 msgid "Card Settings"
-msgstr ""
+msgstr "Настройки карт"
 
 #: src/components/settings/SettingsView.tsx:152
 msgid "Card Collection"
-msgstr ""
+msgstr "Коллекция карт"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:272
 #: src/components/settings/SettingsView.tsx:157
 msgid "Spoiler Settings"
-msgstr ""
+msgstr "Настройки спойлеров"
 
 #: src/components/settings/SettingsView.tsx:160
 msgid "Card Data"
-msgstr ""
+msgstr "Данные карт"
 
 #: src/components/settings/SettingsView.tsx:166
 msgid "Preferences"
-msgstr ""
+msgstr "Настройки"
 
 #: src/components/settings/SettingsView.tsx:168
 msgid "Swipe between card results"
-msgstr ""
+msgstr "Свайпать между картами в поиске"
 
 #: src/components/settings/SettingsView.tsx:174
 msgid "Alphabetize guide encounter sets"
-msgstr ""
+msgstr "Расположить наборы контактов по алфавиту"
 
 #: src/components/settings/SettingsView.tsx:193
 msgid "Contact us"
-msgstr ""
+msgstr "Обратная связь"
 
 #: src/components/settings/SpoilersView.tsx:37
 msgid ""
 "Mark the scenarios you've played through to make the results start showing "
 "up in search results."
 msgstr ""
+"Отметьте, какие сценарии вы прошли, чтобы карты из них начали "
+"отображаться в поиске."
 
 #: src/components/campaign/CampaignDetailView/index.tsx:254
 #: src/components/campaign/CampaignDetailView/index.tsx:347
@@ -987,164 +993,164 @@ msgstr ""
 #: src/components/nav/helper.ts:30
 #: src/components/nav/helper.ts:119
 #: src/components/nav/helper.ts:177
-msgid "Back"
+msgid "Назад"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:1599
 #: src/components/nav/helper.ts:46
 #: src/components/nav/helper.ts:82
 msgid "Deck"
-msgstr ""
+msgstr "Колода"
 
 #: src/components/deck/DeckDetailView/index.tsx:1677
 #: src/components/nav/helper.ts:137
 msgid "Charts"
-msgstr ""
+msgstr "Диаграммы"
 
 #: src/components/deck/DeckDetailView/index.tsx:1683
 #: src/components/nav/helper.ts:156
 msgid "Draw Simulator"
-msgstr ""
+msgstr "Симулятор взятия"
 
 #: src/components/filter/CardEnemyFilterView.tsx:53
 #: src/components/filter/CardFilterView/index.tsx:170
 msgid "Elite"
-msgstr ""
+msgstr "Элитный"
 
 #: src/components/filter/CardEnemyFilterView.tsx:59
 #: src/components/filter/CardFilterView/index.tsx:176
 msgid "Hunter"
-msgstr ""
+msgstr "Охотник"
 
 #: src/components/filter/CardEnemyFilterView.tsx:65
 #: src/components/filter/CardFilterView/index.tsx:188
 msgid "Alert"
-msgstr ""
+msgstr "Бдительный"
 
 #: src/components/filter/CardEnemyFilterView.tsx:71
 #: src/components/filter/CardFilterView/index.tsx:191
 msgid "Spawn"
-msgstr ""
+msgstr "Выходит"
 
 #: src/components/filter/CardEnemyFilterView.tsx:77
 #: src/components/filter/CardFilterView/index.tsx:197
 msgid "Aloof"
-msgstr ""
+msgstr "Осторожный"
 
 #: src/components/filter/CardEnemyFilterView.tsx:83
 #: src/components/filter/CardFilterView/index.tsx:200
 msgid "Massive"
-msgstr ""
+msgstr "Огромный"
 
 #: src/components/filter/CardEnemyFilterView.tsx:91
 #: src/components/filter/CardFilterView/index.tsx:173
 msgid "Non-Elite"
-msgstr ""
+msgstr "Не элитный"
 
 #: src/components/filter/CardEnemyFilterView.tsx:97
 #: src/components/filter/CardFilterView/index.tsx:179
 msgid "Non-Hunter"
-msgstr ""
+msgstr "Не охотник"
 
 #: src/components/filter/CardEnemyFilterView.tsx:103
 #: src/components/filter/CardFilterView/index.tsx:185
 msgid "Retaliate"
-msgstr ""
+msgstr "Мститель"
 
 #: src/components/filter/CardEnemyFilterView.tsx:109
 #: src/components/filter/CardFilterView/index.tsx:182
 msgid "Parley"
-msgstr ""
+msgstr "Переговоры"
 
 #: src/components/filter/CardEnemyFilterView.tsx:115
 #: src/components/filter/CardFilterView/index.tsx:194
 msgid "Prey"
-msgstr ""
+msgstr "Добыча"
 
 #: src/components/filter/CardEnemyFilterView.tsx:121
 msgid "Swarm"
-msgstr ""
+msgstr "Рой"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:324
 #: src/components/filter/CardEnemyFilterView.tsx:155
 #: src/components/filter/CardFilterView/index.tsx:216
 #: src/components/filter/CardFilterView/index.tsx:484
 msgid "Fight"
-msgstr ""
+msgstr "Бой"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:324
 #: src/components/filter/CardEnemyFilterView.tsx:167
 #: src/components/filter/CardFilterView/index.tsx:206
 msgid "Health"
-msgstr ""
+msgstr "Здоровье"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:133
 #: src/components/filter/CardEnemyFilterView.tsx:181
 #: src/components/filter/CardLocationFilterView.tsx:71
 msgid "Per Investigator"
-msgstr ""
+msgstr "За сыщика"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:326
 #: src/components/filter/CardEnemyFilterView.tsx:189
 #: src/components/filter/CardFilterView/index.tsx:219
 #: src/components/filter/CardFilterView/index.tsx:522
 msgid "Evade"
-msgstr ""
+msgstr "Уход"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:328
 #: src/components/filter/CardEnemyFilterView.tsx:201
 #: src/components/filter/CardFilterView/index.tsx:210
 msgid "Damage"
-msgstr ""
+msgstr "Раны"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:328
 #: src/components/filter/CardEnemyFilterView.tsx:213
 #: src/components/filter/CardFilterView/index.tsx:213
 msgid "Horror"
-msgstr ""
+msgstr "Ужас"
 
 #: src/components/filter/CardEnemyFilterView.tsx:24
 #: src/components/filter/CardEnemyFilterView.tsx:233
 msgid "Enemy Filters"
-msgstr ""
+msgstr "Фильтр по врагам"
 
 #: src/components/filter/CardFilterView/index.tsx:249
 #: src/components/filter/CardLocationFilterView.tsx:45
 msgid "Shroud"
-msgstr ""
+msgstr "Неясность"
 
 #: src/components/filter/CardFilterView/index.tsx:245
 #: src/components/filter/CardLocationFilterView.tsx:57
 msgid "Clues"
-msgstr ""
+msgstr "Улики"
 
 #: src/components/filter/CardFilterView/index.tsx:252
 #: src/components/filter/CardLocationFilterView.tsx:81
 msgid "Haunted"
-msgstr ""
+msgstr "Скверна"
 
 #: src/components/filter/CardLocationFilterView.tsx:20
 #: src/components/filter/CardLocationFilterView.tsx:96
 msgid "Location Filters"
-msgstr ""
+msgstr "Фильтр по локациям"
 
 #: src/components/core/PackListComponent/index.tsx:49
 #: src/components/filter/PackFilterView.tsx:103
 msgid "Core Set"
-msgstr ""
+msgstr "Базовый набор"
 
 #: src/components/filter/PackFilterView.tsx:35
 msgid "Select Packs"
-msgstr ""
+msgstr "Выберите наборы"
 
 #: src/components/filter/PackFilterView.tsx:122
 msgid "Pack Filters"
-msgstr ""
+msgstr "Фтльтр по наборам"
 
 #: src/components/filter/SliderChooser.tsx:39
 #, javascript-format
 msgid "${ label }: All"
-msgstr ""
+msgstr "${ label }: Все"
 
 #: src/components/cardlist/SearchMultiSelectView/index.tsx:60
 #: src/components/cardlist/SearchMultiSelectView/index.tsx:63
@@ -1153,151 +1159,151 @@ msgstr ""
 #: src/components/filter/withFilterFunctions.tsx:179
 #: src/components/filter/withFilterFunctions.tsx:182
 msgid "Clear"
-msgstr ""
+msgstr "Очистить"
 
 #: src/components/filter/withFilterFunctions.tsx:189
 #, javascript-format
 msgid "${ count } Card"
 msgid_plural "${ count } Cards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ count } карта"
+msgstr[1] "${ count } карт"
 
 #: src/components/deck/DeckChartsView/SkillIconChart.tsx:47
 #: src/components/filter/CardFilterView/SkillIconChooser.tsx:50
 msgid "Skill Icons"
-msgstr ""
+msgstr "Символы навыков"
 
 #: src/components/filter/CardFilterView/SkillIconChooser.tsx:50
 msgid "Skill Icons: All"
-msgstr ""
+msgstr "Символы навыков: все"
 
 #: src/components/filter/CardFilterView/XpChooser.tsx:80
 #, javascript-format
 msgid "Level ${ startXp }"
-msgstr ""
+msgstr "Уровень ${ startXp }"
 
 #: src/components/filter/CardFilterView/XpChooser.tsx:81
 #, javascript-format
 msgid "Level ${ startXp } - ${ endXp }"
-msgstr ""
+msgstr "Уровень ${ startXp } – ${ endXp }"
 
 #: src/components/filter/CardFilterView/index.tsx:43
 msgid "Filter"
-msgstr ""
+msgstr "Фильтр"
 
 #: src/components/filter/CardFilterView/index.tsx:99
 msgid "Packs: All"
-msgstr ""
+msgstr "Наборы: все"
 
 #: src/components/filter/CardFilterView/index.tsx:129
 #, javascript-format
 msgid "${ cycleNames[cycle_position] } Cycle"
-msgstr ""
+msgstr "Цикл ${ cycleNames[cycle_position] }"
 
 #: src/components/filter/CardFilterView/index.tsx:138
 msgid "Packs: ${ allPacksString }"
-msgstr ""
+msgstr "Наборы: ${ allPacksString }"
 
 #: src/components/filter/CardFilterView/index.tsx:204
 msgid "HPI"
-msgstr ""
+msgstr "HPI"
 
 #: src/components/filter/CardFilterView/index.tsx:223
 msgid "Enemies: All"
-msgstr ""
+msgstr "Враги: все"
 
 #: src/components/filter/CardFilterView/index.tsx:226
 #, javascript-format
 msgid "Enemies: ${ searchParts }"
-msgstr ""
+msgstr "Враги: ${ searchParts }"
 
 #: src/components/filter/CardFilterView/index.tsx:243
 msgid "Fixed Clues"
-msgstr ""
+msgstr "Фиксированные улики"
 
 #: src/components/filter/CardFilterView/index.tsx:256
 msgid "Locations: All"
-msgstr ""
+msgstr "Локации: все"
 
 #: src/components/filter/CardFilterView/index.tsx:259
 #, javascript-format
 msgid "Locations: ${ searchParts }"
-msgstr ""
+msgstr "Локации: ${ searchParts }"
 
 #: src/components/filter/CardFilterView/index.tsx:338
 msgid "Level"
-msgstr ""
+msgstr "Уровень"
 
 #: src/components/filter/CardFilterView/index.tsx:352
 msgid "Exceptional"
-msgstr ""
+msgstr "Исключительный"
 
 #: src/components/filter/CardFilterView/index.tsx:358
 msgid "Non-Exceptional"
-msgstr ""
+msgstr "Не исключительный"
 
 #: src/components/filter/CardFilterView/index.tsx:370
 msgid "Types"
-msgstr ""
+msgstr "Типы"
 
 #: src/components/filter/CardFilterView/index.tsx:381
 msgid "SubTypes"
-msgstr ""
+msgstr "Подтипы"
 
 #: src/components/cardlist/CardSortDialog.tsx:57
 #: src/components/filter/CardFilterView/index.tsx:392
 msgid "Cost"
-msgstr ""
+msgstr "Цена"
 
 #: src/components/deck/DeckChartsView/SlotsChart.tsx:49
 #: src/components/filter/CardFilterView/index.tsx:443
 msgid "Slots"
-msgstr ""
+msgstr "Слоты"
 
 #: src/components/filter/CardFilterView/index.tsx:454
 msgid "Uses"
-msgstr ""
+msgstr "Многоразовый"
 
 #: src/components/filter/CardFilterView/index.tsx:466
 msgid "Fast"
-msgstr ""
+msgstr "Быстрый"
 
 #: src/components/filter/CardFilterView/index.tsx:472
 msgid "Permanent"
-msgstr ""
+msgstr "Постоянный"
 
 #: src/components/filter/CardFilterView/index.tsx:478
 msgid "Seal"
-msgstr ""
+msgstr "Печать"
 
 #: src/components/filter/CardFilterView/index.tsx:490
 msgid "Investigate"
-msgstr ""
+msgstr "Исследование"
 
 #: src/components/filter/CardFilterView/index.tsx:496
 msgid "Victory"
-msgstr ""
+msgstr "Победа"
 
 #: src/components/filter/CardFilterView/index.tsx:504
 msgid "Exile"
-msgstr ""
+msgstr "Изгнание"
 
 #: src/components/filter/CardFilterView/index.tsx:510
 msgid "Unique"
-msgstr ""
+msgstr "Уникальный"
 
 #: src/components/filter/CardFilterView/index.tsx:516
 msgid "Myriad"
-msgstr ""
+msgstr "Myriad"
 
 #: src/components/card/CardDetailView/BondedCardsComponent.tsx:89
 #: src/components/filter/CardFilterView/index.tsx:528
 msgid "Bonded"
-msgstr ""
+msgstr "Bonded"
 
 #: src/components/filter/CardFilterView/index.tsx:534
 msgid "Vengeance"
-msgstr ""
+msgstr "Возмездие"
 
 #: src/components/filter/CardFilterView/index.tsx:545
 msgid "Encounter Sets"
@@ -1305,14 +1311,14 @@ msgstr ""
 
 #: src/components/filter/CardFilterView/index.tsx:563
 msgid "Illustrators"
-msgstr ""
+msgstr "Иллюстраторы"
 
 #: src/components/cardlist/CardSearchComponent/TuneButton.tsx:62
 #: src/components/cardlist/CardSearchComponent/index.tsx:96
 #: src/components/cardlist/CardSearchComponent/index.tsx:109
 #: src/components/filter/CardFilterView/index.tsx:586
 msgid "Filters"
-msgstr ""
+msgstr "Фильтры"
 
 #: src/components/decklist/DeckListRow.tsx:115
 #, javascript-format
