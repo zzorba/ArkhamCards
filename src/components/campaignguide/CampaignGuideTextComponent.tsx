@@ -7,15 +7,14 @@ import COLORS from '@styles/colors';
 interface Props {
   text: string;
   flavor?: boolean;
-  color?: string;
 }
 
-export default function CampaignGuideTextComponent({ text, flavor, color }: Props) {
+export default function CampaignGuideTextComponent({ text, flavor }: Props) {
   if (flavor) {
     return (
       <CardFlavorTextComponent
         text={text.replace(/\n/g, '\n\n')}
-        color={color || COLORS.darkText}
+        color={COLORS.darkText}
         fontAdjustment={1.1}
       />
     );
@@ -24,7 +23,6 @@ export default function CampaignGuideTextComponent({ text, flavor, color }: Prop
     <CardTextComponent
       text={text.replace(/\n/g, '\n\n')}
       fontAdjustment={1.1}
-      color={color}
     />
   );
 }
