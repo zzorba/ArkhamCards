@@ -358,6 +358,7 @@ msgstr "Pesca dalla Collezione"
 #: src/components/settings/BackupView.tsx:105
 #: src/components/settings/BackupView.tsx:140
 #: src/components/settings/DiagnosticsView.tsx:117
+#: src/components/settings/LanguagePicker.tsx:62
 #: src/components/settings/LoginButton.tsx:41
 #: src/components/settings/MergeBackupView/index.tsx:219
 #: src/components/settings/MergeBackupView/index.tsx:312
@@ -631,7 +632,7 @@ msgstr "Fatto"
 msgid "Updating cards"
 msgstr "Aggiornamento Carte"
 
-#: src/components/settings/LanguagePicker.tsx:60
+#: src/components/settings/LanguagePicker.tsx:78
 msgid "Card Language"
 msgstr "Linguaggio delle Carte"
 
@@ -2060,32 +2061,32 @@ msgstr "Costo: ${ card.cost }"
 msgid "All Cards"
 msgstr "Tutte le Carte"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:386
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:381
 msgid "Search for a card"
 msgstr "Cerca una Carta"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:249
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:240
 msgid "Search Player Cards"
 msgstr "Cerca Carte Investigatore"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:249
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:240
 msgid "Search Encounter Cards"
 msgstr "Cerca Carte Incontro"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:255
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:246
 msgid "Clear Search Filters"
 msgstr "Rimuovi Filtri"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:276
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:267
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Cancella la ricerca di  \"${ searchTerm }\""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:273
 msgid "Search Game Text"
 msgstr "Cerca Testo di Gioco"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:290
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:281
 msgid "Search Card Backs"
 msgstr "Cerca Retro delle Carte"
 
@@ -2200,7 +2201,7 @@ msgstr ""
 "Investigatore sceglie di farlo, lo deve fare interamente (un Investigatore "
 "non può selezionare singolarmente quale restrizioni applicare)."
 
-#: src/components/settings/LanguagePicker.tsx:61
+#: src/components/settings/LanguagePicker.tsx:79
 msgid "Note: not all cards have translations available."
 msgstr "Nota: non tutte le Carte hanno una traduzione disponibile."
 
@@ -2467,7 +2468,7 @@ msgstr ""
 "Ultima Versione ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } PE"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:201
 msgid ""
 "Game\n"
 "Text"
@@ -2475,7 +2476,7 @@ msgstr ""
 "Testo\n"
 "di Gioco"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:217
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
 msgid ""
 "Flavor\n"
 "Text"
@@ -2483,7 +2484,7 @@ msgstr ""
 "Testo\n"
 "Flavor"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:224
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:215
 msgid ""
 "Card\n"
 "Backs"
@@ -2840,15 +2841,15 @@ msgstr "Carte Vincolate (${ count })"
 msgid "New Name"
 msgstr "Nuovo Nome"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:201
 msgid "Game Text"
 msgstr "Testo di Gioco"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:217
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
 msgid "Flavor Text"
 msgstr "Testo Flavor"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:224
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:215
 msgid "Card Backs"
 msgstr "Retro della Carta"
 
@@ -4588,4 +4589,18 @@ msgstr ""
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:244
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:52
+msgid "Confirm"
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:53
+msgid ""
+"Changing app language requires downloading the translated card information "
+"from ArkhamDB. This requires network and can take some time."
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:56
+msgid "Download now"
 msgstr ""
