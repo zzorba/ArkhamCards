@@ -101,7 +101,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     );
   }
 
-  _throttledUpdateSearch: () => void;
   _debouncedUpdateSeacrh: () => void;
 
   constructor(props: Props) {
@@ -114,8 +113,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchBack: false,
     };
 
-    this._throttledUpdateSearch = throttle(300, this._updateTermSearch);
-    this._debouncedUpdateSeacrh = debounce(300, this._updateTermSearch);
+    this._debouncedUpdateSeacrh = debounce(50, this._updateTermSearch);
   }
 
   _showHeader = () => {
@@ -164,11 +162,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchTerm: text,
     }, () => {
       const { searchTerm } = this.state;
-      if (searchTerm && searchTerm.length < 5) {
-        this._throttledUpdateSearch();
-      } else {
-        this._debouncedUpdateSeacrh();
-      }
+      this._debouncedUpdateSeacrh();
     });
   };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert, InteractionManager } from 'react-native';
 import { findIndex, map } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -46,7 +47,24 @@ class LanguagePicker extends React.Component<Props> {
       fetchCards,
     } = this.props;
     if (newLang && newLang !== lang) {
-      fetchCards(this.context.db, newLang);
+      setTimeout(() => {
+        Alert.alert(
+          t`Confirm`,
+          t`Changing app language requires downloading the translated card information from ArkhamDB. This requires network and can take some time.`,
+          [
+            {
+              text: t`Download now`,
+              onPress: () => {
+                fetchCards(this.context.db, newLang);
+              },
+            },
+            {
+              text: t`Cancel`,
+              style: 'cancel',
+            },
+          ]
+        );
+      }, 200);
     }
   };
 
