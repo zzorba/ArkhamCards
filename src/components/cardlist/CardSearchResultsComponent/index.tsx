@@ -25,6 +25,8 @@ import Card from '@data/Card';
 import typography from '@styles/typography';
 import space, { isTablet, s, xs } from '@styles/space';
 
+const DIGIT_REGEX = /^[0-9]+$/;
+
 interface Props {
   componentId: string;
   fontScale: number;
@@ -57,6 +59,7 @@ interface State {
   searchFlavor: boolean;
   searchBack: boolean;
   searchTerm?: string;
+  searchCode?: number;
   searchQuery?: RegExp;
 }
 
@@ -100,15 +103,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
 
   _throttledUpdateSearch: () => void;
   _debouncedUpdateSeacrh: () => void;
-
-  static searchKey(searchTerm: string, searchText: boolean, searchFlavor: boolean, searchBack: boolean) {
-    return JSON.stringify({
-      searchTerm,
-      searchText,
-      searchBack,
-      searchFlavor,
-    });
-  }
 
   constructor(props: Props) {
     super(props);
@@ -189,12 +183,15 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     if (!searchTerm) {
       this.setState({
         searchQuery: undefined,
+        searchCode: undefined,
       });
       return;
     }
+    const searchCode = DIGIT_REGEX.test(searchTerm) ? parseInt(searchTerm, 10) : undefined;
     const term = searchTerm.replace(/“|”/g, '"').replace(/‘|’/, '\'');
     this.setState({
       searchQuery: new RegExp(`.*${RegexEscape(term)}.*`, 'i'),
+      searchCode,
     });
   };
 
@@ -304,7 +301,11 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchBack,
       searchTerm,
       searchQuery,
+      searchCode,
     } = this.state;
+    if (searchCode && card.position === searchCode) {
+      return true;
+    }
     if (!searchQuery || searchTerm === '' || !searchTerm) {
       return true;
     }

@@ -203,8 +203,8 @@ msgid "Second Core Set"
 msgstr "Segunda Caja Básica"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:131
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:256
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:593
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:253
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:585
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:288
 #: src/components/deck/EditSpecialDeckCardsView.tsx:186
 #: src/components/settings/CollectionEditView.tsx:34
@@ -646,7 +646,7 @@ msgstr "Datos de cartas"
 msgid "Card Collection"
 msgstr "Colección de cartas"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:272
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:269
 #: src/components/settings/SettingsView.tsx:157
 msgid "Spoiler Settings"
 msgstr "Ajustes de Spoilers"
@@ -1804,7 +1804,7 @@ msgstr[1] "Mostrar ${section.nonCollectionCount} Investigadores fuera de la cole
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "No hay investigadores que coincidan con ”${searchTerm}”."
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:345
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:342
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:156
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:160
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:164
@@ -1997,74 +1997,74 @@ msgstr "Tratando de entender las secuencias anidadas"
 msgid "Taking three damage and three horror"
 msgstr "Recibiendo tres de Daño y tres de Horror"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:603
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:595
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
 msgstr[0] "Mostrar ${section.nonCollectionCount} carta fuera de la colección"
 msgstr[1] "Mostrar ${section.nonCollectionCount} cartas fuera de la colección"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:678
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:693
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:670
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:685
 msgid "Edit Spoiler Settings"
 msgstr "Editar Configuraciones de Spoiler"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:684
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:676
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } Spoiler"
 msgid_plural "Show ${ spoilerCardsCount } Spoilers"
 msgstr[0] "Mostrar ${spoilerCardsCount} spoiler"
 msgstr[1] "Mostrar ${spoilerCardsCount} spoilers"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:650
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:642
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "No hay cartas que coincidan con \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:651
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:643
 msgid "No matching cards"
 msgstr "No hay cartas que coincidan"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:335
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:332
 msgid "Cost: None"
 msgstr "Coste: ninguno"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:337
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:334
 #, javascript-format
 msgid "Cost: ${ card.cost }"
 msgstr "Coste: ${card.cost}"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:341
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:347
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:338
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:344
 msgid "All Cards"
 msgstr "Todas las cartas"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:383
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:386
 msgid "Search for a card"
 msgstr "Buscar una carta"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:304
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:249
 msgid "Search Player Cards"
 msgstr "Buscar Cartas de Jugador"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:304
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:249
 msgid "Search Encounter Cards"
 msgstr "Buscar Cartas de Encuentros"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:310
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:255
 msgid "Clear Search Filters"
 msgstr "Limpiar Filtros de Búsqueda"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:331
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:276
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Limpia búsqueda por \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:337
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
 msgid "Search Game Text"
 msgstr "Buscar Texto de Juego"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:345
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:290
 msgid "Search Card Backs"
 msgstr "Buscar Dorsos de Cartas"
 
@@ -2463,7 +2463,7 @@ msgstr ""
 "Última Versión: ${parsedLatestDeck.deck.version}\n"
 "${parsedLatestDeck.experience} XP"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:265
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
 msgid ""
 "Game\n"
 "Text"
@@ -2471,7 +2471,7 @@ msgstr ""
 "Texto\n"
 "De Juego"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:272
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:217
 msgid ""
 "Flavor\n"
 "Text"
@@ -2479,7 +2479,7 @@ msgstr ""
 "Texto\n"
 "Ambiente"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:279
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:224
 msgid ""
 "Card\n"
 "Backs"
@@ -2503,7 +2503,7 @@ msgstr[1] "${ card.quantity } copias."
 msgid "Share"
 msgstr "Compartir"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:156
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:154
 #: src/components/deck/DeckUpgradeComponent.tsx:221
 msgid "Exiled cards"
 msgstr "Cartas Exiliadas"
@@ -2584,11 +2584,11 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr "Nivel ${ level }"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:720
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:712
 msgid "In Deck"
 msgstr "En el mazo"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:730
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:722
 msgid "All Eligible Cards"
 msgstr "Todas las cartas elegibles"
 
@@ -2634,15 +2634,15 @@ msgstr "Desliza el dedo para cambiar de carta"
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr "XP: ${changes.spentXp} de ${adjustedExperience}"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:153
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:151
 msgid "Upgraded cards"
 msgstr "Cartas mejoradas"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:154
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:152
 msgid "Added cards"
 msgstr "Cartas añadidas"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:155
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:153
 msgid "Removed cards"
 msgstr "Cartas eliminadas"
 
@@ -2834,19 +2834,19 @@ msgstr "Cartas enlazadas (${ count })"
 msgid "New Name"
 msgstr "Nuevo Nombre"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:265
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
 msgid "Game Text"
 msgstr ""
 "Texto\n"
 "De Juego"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:272
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:217
 msgid "Flavor Text"
 msgstr ""
 "Texto\n"
 "Ambiente"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:279
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:224
 msgid "Card Backs"
 msgstr ""
 "Dorsos\n"
@@ -3155,11 +3155,11 @@ msgstr "${ changes.spentXp } de ${ adjustedXp }"
 msgid "Cost: ${ actualCost }"
 msgstr "Coste: ${ actualCost }"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:167
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:165
 msgid "No Changes"
 msgstr "Sin Cambios"
 
-#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:192
+#: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:190
 msgid "Card changes"
 msgstr "Cambios en cartas"
 
