@@ -140,7 +140,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       parsedDeck: {
         investigator,
         changes,
-        slots,
       },
       fontScale,
       editable,

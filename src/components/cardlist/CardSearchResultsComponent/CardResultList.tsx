@@ -77,13 +77,13 @@ interface OwnProps {
   fontScale: number;
   query: Brackets;
   filterQuery?: Brackets;
-  termQuery?: Brackets;
   searchTerm?: string;
   sort?: SortType;
   investigator?: Card;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
   tabooSetOverride?: number;
+  filterCard?: (card: Card) => boolean;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
   cardPressed?: (card: Card) => void;
@@ -126,7 +126,6 @@ type Props = OwnProps & ReduxProps & ReduxActionProps;
 interface DbState {
   query: Brackets;
   filterQuery?: Brackets;
-  termQuery?: Brackets;
   sort?: SortType;
   deckSections: CardBucket[];
   deckCardCounts?: Slots;
@@ -141,7 +140,6 @@ interface LiveState {
   spoilerCardsCount: number;
   deckCardCounts?: Slots;
 }
-
 
 interface State {
   refreshDeck: number;
@@ -200,7 +198,6 @@ class CardResultList extends React.Component<Props, State> {
     const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
     if ((visible && !prevProps.visible && dirty) ||
         JSON.stringify(prevProps.query) !== JSON.stringify(this.props.query) ||
-        JSON.stringify(prevProps.termQuery) !== JSON.stringify(this.props.termQuery) ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||
@@ -417,7 +414,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       originalDeckSlots,
       tabooSetId,
-      termQuery,
       filterQuery,
       storyOnly,
       query,
@@ -442,7 +438,6 @@ class CardResultList extends React.Component<Props, State> {
         [
           ...(storyOnly && query ? [query] : []),
           ...(filterQuery ? [filterQuery] : []),
-          ...(termQuery ? [termQuery] : []),
         ],
         'and'
       ),
@@ -460,7 +455,6 @@ class CardResultList extends React.Component<Props, State> {
       mythosToggle,
       initialSort,
       tabooSetId,
-      termQuery,
       filterQuery,
       sort,
       deckCardCounts,
@@ -473,7 +467,6 @@ class CardResultList extends React.Component<Props, State> {
         query,
         [
           ...(filterQuery ? [filterQuery] : []),
-          ...(termQuery ? [termQuery] : []),
         ],
         'and'
       ),
@@ -497,7 +490,6 @@ class CardResultList extends React.Component<Props, State> {
       cards,
       deckSections,
       query,
-      termQuery,
       filterQuery,
       sort,
       deckCardCounts,
@@ -756,6 +748,7 @@ class CardResultList extends React.Component<Props, State> {
       show_spoilers,
       handleScroll,
       renderHeader,
+      filterCard,
     } = this.props;
     const {
       loadingMessage,
@@ -778,15 +771,26 @@ class CardResultList extends React.Component<Props, State> {
       );
     }
     const { cards, deckSections, deckCardCounts } = dbState;
+    const filteredDeckSections = filterCard ?
+      flatMap(deckSections, section => {
+        const data = filter(section.data, card => filterCard(card));
+        if (!data.length) {
+          return [];
+        }
+        return {
+          ...section,
+          data,
+        };
+      }) : deckSections;
     const groupedCards = partition(
-      cards,
+      filterCard ? filter(cards, card => filterCard(card)) : cards,
       card => {
         return show_spoilers[card.pack_code] ||
           !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
       });
 
     const liveState: LiveState = {
-      deckSections,
+      deckSections: filteredDeckSections,
       deckCardCounts,
       cards: this.bucketCards(groupedCards[0], 'cards'),
       cardsCount: groupedCards[0].length,
@@ -857,7 +861,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       query,
       filterQuery,
-      termQuery,
       sort,
       tabooSetId,
     } = this.props;
@@ -866,7 +869,7 @@ class CardResultList extends React.Component<Props, State> {
       <DbRender
         name="card-results"
         getData={this._updateResults}
-        ids={[query, filterQuery, termQuery, sort, refreshDeck, tabooSetId]}
+        ids={[query, filterQuery, sort, refreshDeck, tabooSetId]}
       >
         { this._renderResults }
       </DbRender>
