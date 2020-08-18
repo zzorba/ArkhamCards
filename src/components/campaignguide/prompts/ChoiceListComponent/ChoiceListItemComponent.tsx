@@ -56,6 +56,7 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
               <Text style={[
                 typography.mediumGameFont,
                 styles.nameText,
+                color ? { color: COLORS.white } : {},
               ]}>
                 { name }
               </Text>
