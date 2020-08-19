@@ -1166,7 +1166,8 @@ msgstr "Очистить"
 msgid "${ count } Card"
 msgid_plural "${ count } Cards"
 msgstr[0] "${ count } карта"
-msgstr[1] "${ count } карт"
+msgstr[1] "${ count } карты"
+msgstr[2] "${ count } карт"
 
 #: src/components/deck/DeckChartsView/SkillIconChart.tsx:47
 #: src/components/filter/CardFilterView/SkillIconChooser.tsx:50
@@ -1307,7 +1308,7 @@ msgstr "Возмездие"
 
 #: src/components/filter/CardFilterView/index.tsx:545
 msgid "Encounter Sets"
-msgstr ""
+msgstr "Наборы контактов"
 
 #: src/components/filter/CardFilterView/index.tsx:563
 msgid "Illustrators"
@@ -1324,37 +1325,40 @@ msgstr "Фильтры"
 #, javascript-format
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Завершён ${ scenarioCount } сценарий"
+msgstr[1] "Завершено ${ scenarioCount } сценария"
+msgstr[1] "Завершено ${ scenarioCount } сценариев"
 
 #: src/components/decklist/DeckListRow.tsx:141
 msgid "Updated ${ dateStr }"
-msgstr ""
+msgstr "Обновлено ${ dateStr }"
 
 #: src/components/decklist/DeckListRow.tsx:51
 #, javascript-format
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
-msgstr ""
+msgstr "Доступно опыта: ${ xp }, потрачено: ${ parsedDeck.changes.spentXp }"
 
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:68
 #: src/components/decklist/DeckListRow.tsx:53
 msgid "${ xp } available experience"
-msgstr ""
+msgstr "Доступно опыта: ${ xp }"
 
 #: src/components/decklist/DeckListRow.tsx:56
 #, javascript-format
 msgid "${ parsedDeck.experience } experience required"
-msgstr ""
+msgstr "Требуется ${ parsedDeck.experience } опыта"
 
 #: src/components/decklist/MyDecksComponent.tsx:100
 msgid "Unable to update: you appear to be offline."
-msgstr ""
+msgstr "Не удалось обновить данные: кажется, вы не в сети"
 
 #: src/components/decklist/MyDecksComponent.tsx:109
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
 "persists tap here to reauthorize."
 msgstr ""
+"Нам не удаётся обновить ваши колоды. Если проблема повторяется, "
+"нажмите здесь, чтобы заново авторизоваться."
 
 #: src/components/decklist/MyDecksComponent.tsx:117
 #, javascript-format
@@ -1362,6 +1366,8 @@ msgid ""
 "An unexpected error occurred (${ error }). If restarting the app doesn't "
 "fix the problem, tap here to reauthorize."
 msgstr ""
+"Произошла неизвестная ошибка (${ error }). Если перезапуск приложения "
+"не решит проблему, нажмите здесь, чтобы заново авторизоваться."
 
 #: src/components/deck/DeckDetailView/index.tsx:1453
 #: src/components/decklist/MyDecksComponent.tsx:147
@@ -1371,10 +1377,14 @@ msgid ""
 "\n"
 "Sign in to access your decks or share decks you have created with others."
 msgstr ""
+"ArkhamDB — это популярный веб-сайт, на котором вы можете собирать, "
+"редактировать и делиться колодами.\n"
+"\n"
+"Подключите аккаунт ArkhamDB, чтобы получить доступ к своим колодам"
 
 #: src/components/decklist/MyDecksComponent.tsx:149
 msgid "Connect to ArkhamDB"
-msgstr ""
+msgstr "Подключиться к ArkhamDB"
 
 #: src/app/App.ts:147
 #: src/app/App.ts:207
@@ -1384,7 +1394,7 @@ msgstr ""
 #: src/components/decklist/MyDecksView.tsx:39
 #: src/components/settings/MergeBackupView/index.tsx:270
 msgid "Decks"
-msgstr ""
+msgstr "Колоды"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:75
 #: src/components/deck/CopyDeckDialog/index.tsx:180
@@ -1395,11 +1405,11 @@ msgstr ""
 #: src/components/decklist/MyDecksView.tsx:45
 #: src/components/decklist/MyDecksView.tsx:131
 msgid "New Deck"
-msgstr ""
+msgstr "Новая колода"
 
 #: src/components/decklist/MyDecksView.tsx:117
 msgid "Hide ArkhamDB Decks"
-msgstr ""
+msgstr "Скрыть колоды с ArkhamDB"
 
 #: src/components/decklist/DeckListComponent/index.tsx:107
 msgid ""
@@ -1407,28 +1417,31 @@ msgid ""
 "\n"
 "Use the + button to create a new one."
 msgstr ""
+"Пока у вас нет колод.\n"
+"\n"
+"Нажмите кнопку +, чтобы создать новую."
 
 #: src/components/decklist/DeckListComponent/index.tsx:119
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
-msgstr ""
+msgstr "По запросу «${ searchTerm }» колод не найдено."
 
 #: src/components/decklist/DeckListComponent/index.tsx:147
 msgid "Search decks"
-msgstr ""
+msgstr "Поиск по колодам"
 
 #: src/components/deck/DeckHistoryView.tsx:74
 msgid "Original Deck"
-msgstr ""
+msgstr "Исходная колода"
 
 #: src/components/deck/DeckHistoryView.tsx:78
 #, javascript-format
 msgid "Latest Deck: ${ deck.changes.spentXp } of ${ deck.availableExperience } XP"
-msgstr ""
+msgstr "Последняя колода: ${ deck.changes.spentXp } из ${ deck.availableExperience } опыта"
 
 #: src/components/deck/DeckHistoryView.tsx:80
 msgid "Latest Deck: ${ deck.availableExperience } XP"
-msgstr ""
+msgstr "Последняя колода: ${ deck.availableExperience } опыта"
 
 #: src/components/deck/DeckHistoryView.tsx:84
 #, javascript-format
@@ -1436,15 +1449,17 @@ msgid ""
 "Upgrade ${ humanVersionNumber }: ${ deck.changes.spentXp } of ${ "
 "deck.availableExperience } XP"
 msgstr ""
+"Улучшение ${ humanVersionNumber }: ${ deck.changes.spentXp } из ${ "
+"deck.availableExperience } опыта"
 
 #: src/components/deck/DeckHistoryView.tsx:86
 #, javascript-format
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
-msgstr ""
+msgstr "Улучшение ${ humanVersionNumber }: ${ deck.availableExperience } опыта"
 
 #: src/components/deck/DeckUpgradeComponent.tsx:187
 msgid "Saving..."
-msgstr ""
+msgstr "Сохранение..."
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:75
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:102
@@ -1452,12 +1467,12 @@ msgstr ""
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:274
 #: src/components/deck/DeckUpgradeComponent.tsx:204
 msgid "Experience points"
-msgstr ""
+msgstr "Очки опыта"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:156
 #: src/components/deck/DeckUpgradeComponent.tsx:221
 msgid "Exiled cards"
-msgstr ""
+msgstr "Изгнанные карты"
 
 #: src/components/campaign/AddScenarioResultView/index.tsx:79
 #: src/components/campaign/AddScenarioResultView/index.tsx:126
@@ -1474,48 +1489,50 @@ msgstr ""
 #: src/components/deck/DeckUpgradeDialog.tsx:63
 #: src/components/deck/DeckUpgradeDialog.tsx:67
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 #: src/components/deck/DeckUpgradeDialog.tsx:231
 msgid ""
 "Upgrading your deck allows changes and experience to be tracked over the "
 "course of a campaign."
 msgstr ""
+"Улучшение колоды позволяет отслеживать изменения карт и опыта "
+"в ходе кампании."
 
 #: src/components/deck/DrawSimulatorView.tsx:175
 msgid "Draw: "
-msgstr ""
+msgstr "Взять: "
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:95
 #: src/components/core/ChooserButton.tsx:68
 #: src/components/deck/DrawSimulatorView.tsx:199
 msgid "All"
-msgstr ""
+msgstr "Все"
 
 #: src/components/deck/DrawSimulatorView.tsx:208
 msgid "Redraw"
-msgstr ""
+msgstr "Перетянуть"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:106
 #: src/components/deck/DrawSimulatorView.tsx:214
 msgid "Reshuffle"
-msgstr ""
+msgstr "Перемешать"
 
 #: src/components/campaignguide/ScenarioView.tsx:170
 #: src/components/deck/DrawSimulatorView.tsx:220
 msgid "Reset"
-msgstr ""
+msgstr "Сбросить"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:118
 #: src/components/deck/EditSpecialDeckCardsView.tsx:365
 msgid "Edit Story Cards"
-msgstr ""
+msgstr "Настроить сюжетные карты"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:527
 #: src/components/deck/EditSpecialDeckCardsView.tsx:182
 #: src/components/deck/EditSpecialDeckCardsView.tsx:289
 msgid "Draw Basic Weakness"
-msgstr ""
+msgstr "Взять базовую слабость"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:183
 msgid ""
@@ -1526,37 +1543,43 @@ msgid ""
 "\n"
 "Otherwise, you can draw random weaknesses from your entire collection."
 msgstr ""
+"Кажется, эта колода ещё не используется в этой кампании.\n"
+"\n"
+"Если вы добавите эту колоду в кампанию, приложение сможет отслеживать, "
+"какие слабости вам доступны с учётом нескольких колод.\n"
+"\n"
+"Или же можете выбрать случайную слабость из всей вашей коллекции."
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:185
 msgid "Draw From Collection"
-msgstr ""
+msgstr "Взять из коллекции"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:457
 #: src/components/deck/EditSpecialDeckCardsView.tsx:214
 #: src/components/deck/EditSpecialDeckCardsView.tsx:260
 msgid "Draw Weaknesses"
-msgstr ""
+msgstr "Взять слабости"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:315
 msgid "BASIC WEAKNESS"
-msgstr ""
+msgstr "Базовая слабость"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:352
 msgid "STORY"
-msgstr ""
+msgstr "Сюжет"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:385
 msgid "DO NOT COUNT TOWARDS DECK SIZE"
-msgstr ""
+msgstr "Не идёт в счёт размера колоды"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:97
 #: src/components/deck/NewDeckView.tsx:45
 msgid "Sort"
-msgstr ""
+msgstr "Сортировка"
 
 #: src/components/deck/authHelper.ts:18
 msgid "Authorization error"
-msgstr ""
+msgstr "Ошибка авторизации"
 
 #: src/components/deck/authHelper.ts:19
 msgid ""
@@ -1564,37 +1587,40 @@ msgid ""
 "\n"
 "If the problem persists, please try to reauthorize."
 msgstr ""
+"У нас неполадки с устанвокой связи с ArkhamDB.\n"
+"\n"
+"Если это продолжится, авторизуйтесь заново."
 
 #: src/components/deck/authHelper.ts:26
 msgid "Reauthorize"
-msgstr ""
+msgstr "Авторизоваться заново"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:233
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
-msgstr ""
+msgstr "${ investigator.name } расследует"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:235
 msgid "${ investigator.name } Investigates"
-msgstr ""
+msgstr "Следствие ведёт ${ investigator.name }"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:237
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
-msgstr ""
+msgstr "${ investigator.name } и мистические тайны"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:239
 msgid "The ${ investigator.name } Job"
-msgstr ""
+msgstr "${ investigator.name } нападает на след"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:241
 #, javascript-format
 msgid "${ investigator.name } on the Road"
-msgstr ""
+msgstr "${ investigator.name } отправляется в путь"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:243
 msgid "${ investigator.name } Does It All"
-msgstr ""
+msgstr "${ investigator.name }: один за всех"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:189
 #: src/components/campaign/CampaignDetailView/index.tsx:480
@@ -1604,59 +1630,59 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:1607
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:323
 msgid "Name"
-msgstr ""
+msgstr "Название"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:324
 msgid "Enter a name for this deck."
-msgstr ""
+msgstr "Введите название этой колоды"
 
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:58
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:337
 msgid "Required Cards"
-msgstr ""
+msgstr "Обязательные карты"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:286
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:354
 msgid "Deck Type"
-msgstr ""
+msgstr "Тип колоды"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:289
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:358
 msgid "Create on ArkhamDB"
-msgstr ""
+msgstr "Создать на ArkhamDB"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:298
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:374
 msgid "You seem to be offline. Refresh Network?"
-msgstr ""
+msgstr "Кажется, вы не в сети. Обновить подключение?"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:380
 msgid "Use Starter Deck"
-msgstr ""
+msgstr "Использовать стартовую колоду"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:411
 msgid "Create deck"
-msgstr ""
+msgstr "Создать колоду"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:153
 msgid "Upgraded cards"
-msgstr ""
+msgstr "Улучшенные карты"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:154
 msgid "Added cards"
-msgstr ""
+msgstr "Добавленные карты"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:155
 msgid "Removed cards"
-msgstr ""
+msgstr "Удалённые карты"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:167
 msgid "No Changes"
-msgstr ""
+msgstr "Без изменений"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:192
 msgid "Card changes"
-msgstr ""
+msgstr "Изменения"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:85
 #: src/components/campaign/CampaignDetailView/index.tsx:474
@@ -1664,31 +1690,31 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:1690
 #: src/components/deck/DeckProgressComponent/index.tsx:87
 msgid "Campaign"
-msgstr ""
+msgstr "Кампания"
 
 #: src/components/deck/DeckProgressComponent/index.tsx:110
 msgid "Upgrade Deck with XP"
-msgstr ""
+msgstr "Улучшить колоду за опыт"
 
 #: src/components/deck/DeckDetailView/index.tsx:1545
 #: src/components/deck/DeckDetailView/index.tsx:1716
 #: src/components/deck/DeckProgressComponent/index.tsx:161
 #. Actually compute the diffs.
 msgid "Upgrade History"
-msgstr ""
+msgstr "История улучшений"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:106
 #, javascript-format
 msgid "Assets (${ assetCount })"
-msgstr ""
+msgstr "Активы (${ assetCount })"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:133
 msgid "Enemy"
-msgstr ""
+msgstr "Враг"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:134
 msgid "Treachery"
-msgstr ""
+msgstr "Напасть"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:196
 #, javascript-format
@@ -1697,47 +1723,47 @@ msgstr ""
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:475
 msgid "Deck Cards"
-msgstr ""
+msgstr "Карты в колоде"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:489
 msgid "Special Cards"
-msgstr ""
+msgstr "Особые карты"
 
 #: src/components/campaign/XpComponent.tsx:29
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:523
 msgid "Experience"
-msgstr ""
+msgstr "Опыт"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:524
 #, javascript-format
 msgid "${ changes.spentXp } of ${ adjustedXp }"
-msgstr ""
+msgstr "${ changes.spentXp } из ${ adjustedXp }"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:589
 msgid "Show limited splash"
-msgstr ""
+msgstr "Карты ограниченного пула"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:100
 #, javascript-format
 msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr ""
+msgstr "Опыт: ${ spentXp } из ${ adjustedExperience } (${ adjustment })"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:102
 #, javascript-format
 msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr ""
+msgstr "Опыт: ${ spentXp } из ${ adjustedExperience } (+0)"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:119
 msgid "Deck Details"
-msgstr ""
+msgstr "Подробности"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:125
 msgid "NAME"
-msgstr ""
+msgstr "Название"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:137
 msgid "EXPERIENCE"
-msgstr ""
+msgstr "Опыт"
 
 #: src/components/campaign/campaignHelper.ts:54
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:197
@@ -1746,15 +1772,15 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:1254
 #: src/components/deck/DeckDetailView/index.tsx:1287
 msgid "Okay"
-msgstr ""
+msgstr "Ок"
 
 #: src/components/deck/DeckDetailView/index.tsx:432
 msgid "Delete broken deck"
-msgstr ""
+msgstr "Удалить повреждённую колоду"
 
 #: src/components/deck/DeckDetailView/index.tsx:433
 msgid "Looks like we are having trouble loading this deck for some reason"
-msgstr ""
+msgstr "При загрузке колоды что-то пошло не так"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:272
 #: src/components/campaign/CampaignDetailView/index.tsx:275
@@ -1767,54 +1793,54 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:1504
 #: src/components/deck/DeckDetailView/index.tsx:1751
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: src/components/deck/DeckDetailView/index.tsx:501
 msgid "Save deck changes?"
-msgstr ""
+msgstr "Сохранить изменения?"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:133
 #: src/components/deck/DeckDetailView/index.tsx:502
 msgid "Looks like you have made some changes that have not been saved."
-msgstr ""
+msgstr "Кажется, вы внесли изменения, которые ещё не сохранены."
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:135
 #: src/components/deck/DeckDetailView/index.tsx:504
 #: src/components/deck/DeckDetailView/index.tsx:1318
 msgid "Save Changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:140
 #: src/components/deck/DeckDetailView/index.tsx:509
 #: src/components/deck/DeckDetailView/index.tsx:1322
 msgid "Discard Changes"
-msgstr ""
+msgstr "Отменить изменения"
 
 #: src/components/deck/DeckDetailView/index.tsx:584
 msgid "Edit Special Cards"
-msgstr ""
+msgstr "Править особые карты"
 
 #: src/components/deck/DeckDetailView/index.tsx:640
 msgid "Edit Deck"
-msgstr ""
+msgstr "Править колоду"
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:88
 #: src/components/deck/DeckDetailView/index.tsx:685
 #: src/components/deck/DeckDetailView/index.tsx:1696
 msgid "Upgrade Deck"
-msgstr ""
+msgstr "Улучшить колоду"
 
 #: src/components/deck/DeckDetailView/index.tsx:1442
 msgid "Save Local Changes"
-msgstr ""
+msgstr "Сохранить локальные изменения"
 
 #: src/components/deck/DeckDetailView/index.tsx:1443
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
-msgstr ""
+msgstr "Сохраните локальные изменения перед публикацией на ArkhamDB"
 
 #: src/components/deck/DeckDetailView/index.tsx:1447
 msgid "Unsupported Operation"
-msgstr ""
+msgstr "Неподдерживаемая операция"
 
 #: src/components/deck/DeckDetailView/index.tsx:1448
 msgid ""
