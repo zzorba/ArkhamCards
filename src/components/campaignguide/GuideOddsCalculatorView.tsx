@@ -14,6 +14,7 @@ import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
 import { AppState, getCampaign } from '@reducers';
+import COLORS from '@styles/colors';
 
 export interface GuideOddsCalculatorProps {
   campaignId: number;
@@ -63,7 +64,7 @@ class GuideOddsCalculatorView extends React.Component<Props> {
           />
         ) : (
           <View style={styles.loading}>
-            <ActivityIndicator size="small" />
+            <ActivityIndicator size="small" color={COLORS.lightText} />
           </View>
         ) }
       </CardQueryWrapper>

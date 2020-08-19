@@ -13,6 +13,7 @@ import SettingsItem from './SettingsItem';
 import { t } from 'ttag';
 import { logout, login } from '@actions';
 import { AppState } from '@reducers';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   settings?: boolean;
@@ -55,6 +56,7 @@ class LoginButton extends React.Component<Props> {
       return (
         <ActivityIndicator
           style={[{ height: 60 }]}
+          color={COLORS.lightText}
           size="small"
           animating
         />

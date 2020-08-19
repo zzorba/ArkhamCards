@@ -50,6 +50,7 @@ export default function withPlayerCards<Props>(
           <View style={styles.activityIndicatorContainer}>
             <ActivityIndicator
               style={styles.spinner}
+              color={COLORS.lightText}
               size="small"
               animating
             />

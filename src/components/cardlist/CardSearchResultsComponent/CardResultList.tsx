@@ -764,6 +764,7 @@ class CardResultList extends React.Component<Props, State> {
           </View>
           <ActivityIndicator
             style={[{ height: 80 }]}
+            color={COLORS.lightText}
             size="small"
             animating
           />

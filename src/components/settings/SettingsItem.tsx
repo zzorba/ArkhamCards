@@ -33,6 +33,7 @@ export default class SettingsItem extends React.Component<Props> {
           <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
           <ActivityIndicator
             style={[styles.spinner, space.marginLeftM]}
+            color={COLORS.lightText}
             size="small"
             animating
           />

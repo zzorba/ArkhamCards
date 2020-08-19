@@ -1262,6 +1262,7 @@ class DeckDetailView extends React.Component<Props, State> {
       <Dialog title={t`Deleting`} visible={deleting} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
+          color={COLORS.lightText}
           size="large"
           animating
         />
@@ -1295,6 +1296,7 @@ class DeckDetailView extends React.Component<Props, State> {
       <Dialog title={t`Saving`} visible={saving} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
+          color={COLORS.lightText}
           size="large"
           animating
         />
@@ -1864,6 +1866,7 @@ class DeckDetailView extends React.Component<Props, State> {
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator
             style={styles.spinner}
+            color={COLORS.lightText}
             size="small"
             animating
           />
@@ -1880,6 +1883,7 @@ class DeckDetailView extends React.Component<Props, State> {
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator
             style={styles.spinner}
+            color={COLORS.lightText}
             size="small"
             animating
           />

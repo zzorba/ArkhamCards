@@ -145,6 +145,7 @@ class FetchCardsGate extends React.Component<Props> {
             style={styles.spinner}
             size="small"
             animating
+            color={COLORS.lightText}
           />
         </View>
       );
