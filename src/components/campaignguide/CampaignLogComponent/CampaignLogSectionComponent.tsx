@@ -44,6 +44,9 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
             />
           );
         }
+        if (entry.count === 0 && !crossedOut) {
+          return null;
+        }
         return (
           <TextEntryComponent
             text={logEntry.supply.name}

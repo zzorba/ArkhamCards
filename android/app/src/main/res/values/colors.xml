@@ -10,7 +10,7 @@
     <color name="colorVeryVeryLightBackground">#f4f4f4</color>
     <color name="costTintIcon">#f5f5f5</color>
     <color name="factionMysticTextColor">#4331b9</color>
-    <color name="factionMysticLightBackgroundColor">#d47400</color>
+    <color name="factionMysticLightBackgroundColor">#d9d6f1</color>
     <color name="factionSeekerTextColor">#db7c07</color>
     <color name="factionSeekerLightBackgroundColor">#fbe6d4</color>
     <color name="factionGuardianTextColor">#1072c2</color>

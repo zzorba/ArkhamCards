@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, InteractionManager } from 'react-native';
+import { Alert } from 'react-native';
 import { findIndex, map } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -33,7 +33,7 @@ const LANGUAGES = [
   { label: '한국어', value: 'ko' },
   { label: 'Українська', value: 'uk' },
   { label: 'Polski', value: 'pl' },
-//  { label: 'Ру́сский', value: 'ru' },
+  { label: 'Ру́сский', value: 'ru' },
 ];
 
 class LanguagePicker extends React.Component<Props> {

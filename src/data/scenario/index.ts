@@ -73,18 +73,29 @@ export type Choices = PersonalizedChoices | UniversalChoices;
 function load(lang: string): {
   allLogEntries: CampaignLog[];
   allCampaigns: FullCampaign[];
+  encounterSets: {
+    [code: string]: string;
+  };
 } {
   switch (lang) {
     case 'es':
       return {
         allLogEntries: require('../../../assets/campaignLogs_es.json'),
         allCampaigns: require('../../../assets/allCampaigns_es.json'),
+        encounterSets: require('../../../assets/encounterSets_es.json'),
+      };
+    case 'ru':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_ru.json'),
+        allCampaigns: require('../../../assets/allCampaigns_ru.json'),
+        encounterSets: require('../../../assets/encounterSets_ru.json'),
       };
     default:
     case 'en':
       return {
         allLogEntries: require('../../../assets/campaignLogs.json'),
         allCampaigns: require('../../../assets/allCampaigns.json'),
+        encounterSets: require('../../../assets/encounterSets.json'),
       };
   }
 }
@@ -96,6 +107,7 @@ export function getCampaignGuide(
   const {
     allLogEntries,
     allCampaigns,
+    encounterSets,
   } = load(lang);
 
   const campaign = find(allCampaigns, campaign =>
@@ -108,7 +120,8 @@ export function getCampaignGuide(
     new CampaignGuide(
       campaign,
       logEntries,
-      sideCampaign
+      encounterSets,
+      sideCampaign,
     );
 }
 

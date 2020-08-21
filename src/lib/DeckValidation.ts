@@ -347,7 +347,7 @@ export default class DeckValidation {
           var slot_valid = false;
           for(var j = 0; j < option.slot.length; j++){
             var slot = option.slot[j];
-            if (card.slot && card.slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
+            if (card.real_slot && card.real_slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
               slot_valid = true;
             }
           }

@@ -104,7 +104,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
       <InvestigatorCheckListComponent
         id={id}
         choiceId="bad_thing"
-        checkText={badThing ? t`Reads "${badThing.condition}"` : `Doesn't get any`}
+        checkText={badThing ? t`Reads "${badThing.condition}"` : t`Doesn't get any`}
         min={target}
         max={target}
       />

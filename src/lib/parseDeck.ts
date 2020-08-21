@@ -69,7 +69,7 @@ function groupAssets(
     if (!card) {
       return t`Other`;
     }
-    switch (card.slot) {
+    switch (card.real_slot) {
       case 'Hand': return t`Hand`;
       case 'Hand. Arcane': return t`Hand. Arcane`;
       case 'Hand x2': return t`Hand x2`;

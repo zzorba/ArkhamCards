@@ -118,7 +118,7 @@ export const syncCards = async function(
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
-  const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
+  const langPrefix = lang && lang !== 'en' && lang !== 'ru' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
   const packsByCode: { [code: string]: Pack } = {};
   const cycleNames: {
@@ -171,116 +171,15 @@ export const syncCards = async function(
     await tabooSets.createQueryBuilder().delete().execute();
 
     const cardsToInsert: Card[] = [];
-    const newEncounterSets = [
-      {
-        'code': 'all_or_nothing',
-        'name': t`All or Nothing`,
-      },
-      {
-        'code': 'return_to_the_untamed_wilds',
-        'name': t`Return to the Untamed Wilds`,
-      },
-      {
-        'code': 'return_to_the_doom_of_eztli',
-        'name': t`Return to the Doom of Eztli`,
-      },
-      {
-        'code': 'return_to_threads_of_fate',
-        'name': t`Return to Threads of Fate`,
-      },
-      {
-        'code': 'return_to_the_boundary_beyond',
-        'name': t`Return to the Boundary Beyond`,
-      },
-      {
-        'code': 'return_to_heart_of_the_elders',
-        'name': t`Return to Heart of the Elders`,
-      },
-      {
-        'code': 'return_to_pillars_of_judgement',
-        'name': t`Return to Pillars of Judgement`,
-      },
-      {
-        'code': 'return_to_knyan',
-        'name': t`Return to K'n-yan`,
-      },
-      {
-        'code': 'return_to_the_city_of_archives',
-        'name': t`Return to the City of Archives`,
-      },
-      {
-        'code': 'return_to_the_depths_of_yoth',
-        'name': t`Return to the Depths of Yoth`,
-      },
-      {
-        'code': 'return_to_shattered_aeons',
-        'name': t`Return to Shattered Aeons`,
-      },
-      {
-        'code': 'return_to_turn_back_time',
-        'name': t`Return to Turn Back Time`,
-      },
-      {
-        'code': 'return_to_the_rainforest',
-        'name': t`Return to the Rainforest`,
-      },
-      {
-        'code': 'cult_of_pnakotus',
-        'name': t`Cult of Pnakotus`,
-      },
-      {
-        'code': 'doomed_expedition',
-        'name': t`Doomed Expedition`,
-      },
-      {
-        'code': 'temporal_hunters',
-        'name': t`Temporal Hunters`,
-      },
-      {
-        'code': 'venomous_hate',
-        'name': t`Venomous Hate`,
-      },
-      {
-        'code': 'blob',
-        'name': t`The Blob That Ate Everything`,
-      },
-      {
-        'code': 'blob_epic_multiplayer',
-        'name': t`Epic Multiplayer`,
-      },
-      {
-        'code': 'blob_single_group',
-        'name': t`Single Group`,
-      },
-      {
-        'code': 'migo_incursion',
-        'name': t`Mi-Go Incursion`,
-      },
-    ];
-    const encounterSetsToInsert: {
-      [code: string]: EncounterSet | undefined;
-    } = {};
-    forEach(newEncounterSets, set => {
-      encounterSetsToInsert[set.code] = set;
-    });
     forEach(json, cardJson => {
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         cardsToInsert.push(card);
         const encounterSet = EncounterSet.fromCard(card);
-        if (encounterSet && !encounterSetsToInsert[encounterSet.code]) {
-          encounterSetsToInsert[encounterSet.code] = encounterSet;
-        }
       } catch (e) {
         Alert.alert(`${e}`);
         console.log(e);
         console.log(cardJson);
-      }
-    });
-    const allEncounterSets: EncounterSet[] = [];
-    forEach(values(encounterSetsToInsert), encounterSet => {
-      if (encounterSet) {
-        allEncounterSets.push(encounterSet);
       }
     });
     const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
@@ -291,10 +190,6 @@ export const syncCards = async function(
     for (let i = 0; i < linkedCards.length; i++) {
       await cards.insert(linkedCards[i]);
     }
-    await insertChunk(allEncounterSets, async(set: EncounterSet[]) => {
-      await encounterSets.insert(set);
-    });
-
     const playerCards = await cards.createQueryBuilder()
       .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
       .getMany();

@@ -67,6 +67,9 @@ export default class Card {
   @Column('text', { nullable: true })
   public slot?: string;
 
+  @Column('text', { nullable: true })
+  public real_slot?: string;
+
   @Index()
   @Column('text', { nullable: true })
   public faction_code?: FactionCodeType;
@@ -643,11 +646,14 @@ export default class Card {
         map(json.traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
-    const slots_normalized = json.slot ? map(
+    const real_slot = json.real_slot || json.slot;
+    const slot = json.real_slot || json.slot;
+    const slots_normalized = slot ? map(
       filter(
-        map(json.slot.split('.'), slot => slot.toLowerCase().trim()),
-        slot => slot),
-      slot => `#${slot}#`).join(',') : null;
+        map(slot.split('.'), s => s.toLowerCase().trim()),
+        s => !!s
+      ),
+      s => `#${s}#`).join(',') : null;
 
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
@@ -701,6 +707,7 @@ export default class Card {
       spoiler,
       traits_normalized,
       real_traits_normalized,
+      real_slot,
       slots_normalized,
       uses,
       bonded_name,

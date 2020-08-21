@@ -31559,7 +31559,8 @@
         "effects": [
           {
             "type": "earn_xp",
-            "investigator": "all"
+            "investigator": "all",
+            "bonus": 3
           }
         ]
       }
