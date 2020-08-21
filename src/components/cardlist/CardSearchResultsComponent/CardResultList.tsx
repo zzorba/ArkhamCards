@@ -37,8 +37,6 @@ import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollec
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { cardSectionHeaderHeight, CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import calculateDefaultFilterState from '@components/filter/DefaultFilterState';
-import { CardFilterData, FilterState, calculateCardFilterData } from '@lib/filters';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -95,6 +93,7 @@ interface OwnProps {
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
   mythosToggle?: boolean;
+  mythosMode?: boolean;
   initialSort?: SortType;
 }
 
@@ -114,8 +113,8 @@ interface ReduxProps {
 interface ReduxActionProps {
   addFilterSet: (
     id: string,
-    filters: FilterState,
-    cardData: CardFilterData,
+    cards: Card[],
+    db: Database,
     sort?: SortType,
     mythosToggle?: boolean
   ) => void;
@@ -191,11 +190,15 @@ class CardResultList extends React.Component<Props, State> {
     const {
       deckCardCounts,
       visible,
+      mythosMode,
     } = this.props;
     const {
       dirty,
     } = this.state;
     const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
+    if (prevProps.mythosMode !== mythosMode) {
+      this.filterSetInitialized = false;
+    }
     if ((visible && !prevProps.visible && dirty) ||
         JSON.stringify(prevProps.query) !== JSON.stringify(this.props.query) ||
         prevProps.sort !== this.props.sort ||
@@ -479,8 +482,8 @@ class CardResultList extends React.Component<Props, State> {
       this.filterSetInitialized = true;
       addFilterSet(
         componentId,
-        calculateDefaultFilterState(cards),
-        calculateCardFilterData(cards),
+        cards,
+        db,
         initialSort || SORT_BY_TYPE,
         mythosToggle
       );

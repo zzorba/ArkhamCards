@@ -155,7 +155,7 @@ function slotCount(
         if (!card || card.type_code !== 'asset') {
           return false;
         }
-        const slots = card.slots_normalized;
+        const slots = card.real_slots_normalized;
         return !!(slots && slots.indexOf(`#${slot}#`) !== -1);
       }),
       c => c.quantity

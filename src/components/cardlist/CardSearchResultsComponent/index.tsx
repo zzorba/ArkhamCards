@@ -420,6 +420,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                       showNonCollection={showNonCollection}
                       storyOnly={storyOnly}
                       mythosToggle={mythosToggle}
+                      mythosMode={mythosToggle && mythosMode}
                       initialSort={initialSort}
                     />
                     { !!renderFooter && <View style={styles.footer}>

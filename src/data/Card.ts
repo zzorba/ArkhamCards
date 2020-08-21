@@ -261,6 +261,8 @@ export default class Card {
   @Column('text', { nullable: true })
   public slots_normalized?: string;
   @Column('text', { nullable: true })
+  public real_slots_normalized?: string;
+  @Column('text', { nullable: true })
   public uses?: string;
   @Column('text', { nullable: true })
   public bonded_name?: string;
@@ -647,10 +649,15 @@ export default class Card {
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
     const real_slot = json.real_slot || json.slot;
-    const slot = json.real_slot || json.slot;
-    const slots_normalized = slot ? map(
+    const real_slots_normalized = real_slot ? map(
       filter(
-        map(slot.split('.'), s => s.toLowerCase().trim()),
+        map(real_slot.split('.'), s => s.toLowerCase().trim()),
+        s => !!s
+      )
+    ) : null;
+    const slots_normalized = json.slot ? map(
+      filter(
+        map(json.slot.split('.'), s => s.toLowerCase().trim()),
         s => !!s
       ),
       s => `#${s}#`).join(',') : null;
@@ -708,6 +715,7 @@ export default class Card {
       traits_normalized,
       real_traits_normalized,
       real_slot,
+      real_slots_normalized,
       slots_normalized,
       uses,
       bonded_name,
