@@ -654,7 +654,7 @@ export default class Card {
         map(real_slot.split('.'), s => s.toLowerCase().trim()),
         s => !!s
       )
-    ) : null;
+    ).join(',') : null;
     const slots_normalized = json.slot ? map(
       filter(
         map(json.slot.split('.'), s => s.toLowerCase().trim()),

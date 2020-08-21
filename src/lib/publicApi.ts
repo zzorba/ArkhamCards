@@ -169,13 +169,14 @@ export const syncCards = async function(
     await cards.createQueryBuilder().delete().execute();
     await encounterSets.createQueryBuilder().delete().execute();
     await tabooSets.createQueryBuilder().delete().execute();
-
+    console.log(await cards.count() + ' cards after delete');
     const cardsToInsert: Card[] = [];
     forEach(json, cardJson => {
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
-        cardsToInsert.push(card);
-        const encounterSet = EncounterSet.fromCard(card);
+        if (card) {
+          cardsToInsert.push(card);
+        }
       } catch (e) {
         Alert.alert(`${e}`);
         console.log(e);
@@ -183,10 +184,11 @@ export const syncCards = async function(
       }
     });
     const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
-
-    await insertChunk(normalCards, async(c: EncounterSet[]) => {
+    //console.log('Parsed all cards');
+    await insertChunk(normalCards, async(c: Card[]) => {
       await cards.insert(c);
     });
+    //console.log(`Inserting linked cards.`);
     for (let i = 0; i < linkedCards.length; i++) {
       await cards.insert(linkedCards[i]);
     }
@@ -194,6 +196,8 @@ export const syncCards = async function(
       .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
       .getMany();
     const cardsByName = values(groupBy(playerCards, card => card.real_name));
+
+    //console.log(`Working on upgrades now.`);
     for (let i = 0; i < cardsByName.length; i++) {
       const cardsGroup = cardsByName[i];
       if (cardsGroup.length > 1) {
