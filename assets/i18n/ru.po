@@ -1217,9 +1217,9 @@ msgstr ""
 #, javascript-format
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
-msgstr[0] "1s"
-msgstr[1] "2s"
-msgstr[2] "others"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: src/components/decklist/DeckListRow.tsx:141
 msgid "Updated ${ dateStr }"

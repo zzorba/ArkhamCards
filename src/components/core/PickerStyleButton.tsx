@@ -109,14 +109,15 @@ export default class PickerStyleButton extends React.Component<Props> {
                   color: colors ? colors.textColor : COLORS.darkText,
                   fontWeight: '400',
                   flex: 4,
+                  textAlign: 'right',
                 },
               ]}
             >
               { value }
             </Text>
           ) }
-        </View>
         { !disabled && this.renderWidget() }
+        </View>
       </View>
     );
   }
@@ -157,9 +158,8 @@ const style = StyleSheet.create({
     fontSize: 14,
   },
   textColumn: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingTop: s,
     paddingBottom: s,
   },
