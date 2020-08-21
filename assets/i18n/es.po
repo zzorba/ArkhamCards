@@ -12,7 +12,7 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 2.4\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: src/data/Card.ts:427
 msgid "Guardian / Rogue"
@@ -322,7 +322,7 @@ msgstr "Robar de colección"
 #: src/components/settings/BackupView.tsx:64 src/components/settings/BackupView.tsx:105
 #: src/components/settings/BackupView.tsx:140
 #: src/components/settings/DiagnosticsView.tsx:117
-#: src/components/settings/LoginButton.tsx:41
+#: src/components/settings/LanguagePicker.tsx:62 src/components/settings/LoginButton.tsx:41
 #: src/components/settings/MergeBackupView/index.tsx:219
 #: src/components/settings/MergeBackupView/index.tsx:312
 #: src/data/scenario/CampaignStateHelper.ts:194
@@ -495,23 +495,23 @@ msgstr ""
 #: src/components/settings/BackupView.tsx:143
 #: src/components/settings/DiagnosticsView.tsx:120
 msgid "Export Campaign Data"
-msgstr "Exportar Datos de Campaña"
+msgstr "Exportar datos de campaña"
 
 #: src/components/settings/BackupView.tsx:187
 #: src/components/settings/DiagnosticsView.tsx:227
 #: src/components/settings/SettingsView.tsx:97
 msgid "Backup"
-msgstr "Respaldo"
+msgstr "Copia de seguridad"
 
 #: src/components/settings/BackupView.tsx:191
 #: src/components/settings/DiagnosticsView.tsx:231
 msgid "Backup Campaign Data"
-msgstr "Respaldar Datos de Campaña"
+msgstr "Respaldar datos de campaña"
 
 #: src/components/settings/BackupView.tsx:195
 #: src/components/settings/DiagnosticsView.tsx:235
 msgid "Restore Campaign Data"
-msgstr "Restaurar Datos de Campaña"
+msgstr "Restaurar datos de campaña"
 
 #: src/components/settings/DiagnosticsView.tsx:238
 msgid "Caches"
@@ -573,7 +573,7 @@ msgstr "Hecho"
 msgid "Updating cards"
 msgstr "Actualizando cartas"
 
-#: src/components/settings/LanguagePicker.tsx:60
+#: src/components/settings/LanguagePicker.tsx:78
 msgid "Card Language"
 msgstr "Idioma de Cartas"
 
@@ -1960,32 +1960,32 @@ msgstr "Coste: ${card.cost}"
 msgid "All Cards"
 msgstr "Todas las cartas"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:386
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:381
 msgid "Search for a card"
 msgstr "Buscar una carta"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:249
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:240
 msgid "Search Player Cards"
 msgstr "Buscar Cartas de Jugador"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:249
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:240
 msgid "Search Encounter Cards"
 msgstr "Buscar Cartas de Encuentros"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:255
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:246
 msgid "Clear Search Filters"
 msgstr "Limpiar Filtros de Búsqueda"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:276
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:267
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Limpia búsqueda por \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:273
 msgid "Search Game Text"
 msgstr "Buscar Texto de Juego"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:290
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:281
 msgid "Search Card Backs"
 msgstr "Buscar Dorsos de Cartas"
 
@@ -2117,7 +2117,7 @@ msgstr ""
 "hacerlo, deben hacerlo en su totalidad (un investigador no puede elegir qué "
 "restricciones usar)."
 
-#: src/components/settings/LanguagePicker.tsx:61
+#: src/components/settings/LanguagePicker.tsx:79
 msgid "Note: not all cards have translations available."
 msgstr "Nota: no todas las cartas tienen traducciones disponibles."
 
@@ -2373,7 +2373,7 @@ msgstr ""
 "Última Versión: ${parsedLatestDeck.deck.version}\n"
 "${parsedLatestDeck.experience} XP"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:201
 msgid ""
 "Game\n"
 "Text"
@@ -2381,7 +2381,7 @@ msgstr ""
 "Texto\n"
 "De Juego"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:217
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
 msgid ""
 "Flavor\n"
 "Text"
@@ -2389,7 +2389,7 @@ msgstr ""
 "Texto\n"
 "Ambiente"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:224
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:215
 msgid ""
 "Card\n"
 "Backs"
@@ -2734,19 +2734,19 @@ msgstr "Cartas enlazadas (${ count })"
 msgid "New Name"
 msgstr "Nuevo Nombre"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:210
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:201
 msgid "Game Text"
 msgstr ""
 "Texto\n"
 "De Juego"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:217
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
 msgid "Flavor Text"
 msgstr ""
 "Texto\n"
 "Ambiente"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:224
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:215
 msgid "Card Backs"
 msgstr ""
 "Dorsos\n"
@@ -4554,3 +4554,20 @@ msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed
 msgstr ""
 "Los traumas iniciales pueden ser ajustados después de completar la \"Preparación de la "
 "Campaña\"."
+
+#: src/components/settings/LanguagePicker.tsx:52
+msgid "Confirm"
+msgstr "Confirma"
+
+#: src/components/settings/LanguagePicker.tsx:53
+msgid ""
+"Changing app language requires downloading the translated card information from "
+"ArkhamDB. This requires network and can take some time."
+msgstr ""
+"Cambiar el idioma de la aplicación requiere descargar la información de las cartas "
+"traducidas de ArkhamDB. Es necesario disponer de conexión a Internet y el proceso puede "
+"llevar algunos minutos."
+
+#: src/components/settings/LanguagePicker.tsx:56
+msgid "Download now"
+msgstr "Descargar ahora"
