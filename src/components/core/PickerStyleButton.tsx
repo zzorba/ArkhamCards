@@ -157,6 +157,8 @@ const style = StyleSheet.create({
   },
   textColumn: {
     flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: s,
     paddingBottom: s,

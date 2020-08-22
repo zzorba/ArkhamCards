@@ -160,6 +160,7 @@ export interface Campaign {
   setup: string[];
   steps: Step[];
   side_scenario_steps?: Step[];
+  standalone?: any[];
 }
 export interface BranchStep {
   id: string;
