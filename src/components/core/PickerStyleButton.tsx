@@ -40,13 +40,11 @@ export default class PickerStyleButton extends React.Component<Props> {
         );
       case 'nav':
         return (
-          <View style={space.marginRightXs}>
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color={colors ? colors.textColor : '#000'}
-            />
-          </View>
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={30}
+            color={colors ? colors.textColor : '#000'}
+          />
         );
       case 'delete':
         return (

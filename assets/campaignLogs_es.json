@@ -486,7 +486,7 @@
         "entries": [
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "los investigadores fueron atacados al huir del manicomio."
           },
           {
             "id": "awoke_inside_catacombs",
@@ -498,11 +498,11 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "los investigadores eligieron no acudir a la policía."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "los investigadores destruyeron al juramentado."
           },
           {
             "id": "did_not_escape_gaze",
@@ -514,15 +514,15 @@
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "los investigadores escaparon del manicomio."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "los investigadores huyeron de la fiesta."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "los seguidores del signo encontraron el camino."
           },
           {
             "id": "found_nigel_engram",
@@ -546,11 +546,11 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "los investigadores se colaron en una reunión secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "el Rey se cobró sus víctimas."
           },
           {
             "id": "know_site_of_gate",
@@ -558,7 +558,7 @@
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "los investigadores dejaron el broche de ónice."
           },
           {
             "id": "opened_path_above",
@@ -570,7 +570,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "la policía sospecha de los investigadores."
           },
           {
             "id": "possessed",
@@ -586,19 +586,19 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "los investigadores mataron a los monstruos de la fiesta."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "el Extranjero sabe lo que intentan hacer los investigadores."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "los investigadores se llevaron el broche de ónice."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "los investigadores trataron de avisar a la policía."
           },
           {
             "id": "unable_to_find_nigel",
@@ -1275,7 +1275,7 @@
         "entries": [
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "los investigadores fueron atacados al huir del manicomio."
           },
           {
             "id": "awoke_inside_catacombs",
@@ -1287,11 +1287,11 @@
           },
           {
             "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
+            "text": "los investigadores eligieron no acudir a la policía."
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "los investigadores destruyeron al juramentado."
           },
           {
             "id": "did_not_escape_gaze",
@@ -1303,15 +1303,15 @@
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "los investigadores escaparon del manicomio."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "los investigadores huyeron de la fiesta."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "los seguidores del signo encontraron el camino."
           },
           {
             "id": "found_nigel_engram",
@@ -1335,11 +1335,11 @@
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "los investigadores se colaron en una reunión secreta."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "el Rey se cobró sus víctimas."
           },
           {
             "id": "know_site_of_gate",
@@ -1347,7 +1347,7 @@
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "los investigadores dejaron el broche de ónice."
           },
           {
             "id": "opened_path_above",
@@ -1359,7 +1359,7 @@
           },
           {
             "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "text": "la policía sospecha de los investigadores."
           },
           {
             "id": "possessed",
@@ -1375,19 +1375,19 @@
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "los investigadores mataron a los monstruos de la fiesta."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "el Extranjero sabe lo que intentan hacer los investigadores."
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "los investigadores se llevaron el broche de ónice."
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "los investigadores trataron de avisar a la policía."
           },
           {
             "id": "unable_to_find_nigel",
@@ -1585,19 +1585,19 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro siguió a los investigadores a las ruinas."
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro ha desaparecido."
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro continúa su investigación por su cuenta."
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro recuperó la Reliquia de las eras."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -1605,147 +1605,143 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro lo recuerda todo."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro está en contra de los investigadores."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "los braseros están encendidos."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "los braseros permanecen apagados."
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "los investigadores despejaron un camino a las ruinas de Eztli."
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "los investigadores cooperaron con los yithianos."
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "los investigadores se han ganado la confianza de Alejandro."
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "los investigadores se han ganado la confianza de Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "se ha deshecho el tejido del tiempo."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "los investigadores cayeron a las profundidades."
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "los investigadores forjaron un vínculo con Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "los investigadores se están forjando su propio camino."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "los investigadores encontraron la reliquia desaparecida."
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "los investigadores le dieron la custodia de la reliquia a Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "los investigadores le dieron la custodia de la reliquia a Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "han eliminado los recuerdos de los investigadores."
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "el Heraldo sigue vivo (#X# daño)."
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca tiene confianza en los investigadores."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca está al margen."
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca recela de los investigadores."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca observó los progresos de los investigadores con profundo interés."
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca está en contra de los investigadores."
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "Ichtaca ha recuperado la fe."
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "los investigadores recuperaron la Reliquia de las eras."
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "los investigadores salvaron la civilización de las serpientes."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "los investigadores salvaron la civilización de los yithianos."
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "la jungla observa (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "los investigadores cartografiaron el camino."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "los investigadores repararon la grieta en el tejido del tiempo."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "el Nexo está cerca."
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you"
-          },
-          {
-            "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "los investigadores conocen #X# caminos."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "el proceso salió mal."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "el proceso salió espectacularmente mal."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "el proceso fue perfeccionado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "el proceso tuvo éxito."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1753,27 +1749,27 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "la reliquia ha desaparecido."
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "los investigadores rescataron a Alejandro."
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "los investigadores se resistieron a su cautiverio."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "los investigadores sellaron la Reliquia de las eras para siempre."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "los investigadores dieron marcha atrás al tiempo."
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "los investigadores se vieron obligados a esperar suministros adicionales."
           },
           {
             "id": "blob_contained",
@@ -1882,15 +1878,15 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "Profundidad #X#"
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca se fue sin los investigadores."
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "los investigadores han escuchado el relato de Ichtaca."
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
@@ -1902,7 +1898,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Se completaron #X# tareas."
           },
           {
             "id": "wilds_add_chaos_token",
@@ -1966,90 +1962,90 @@
         "multiple": false
       },
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "id": "provisions",
+        "name": "Provisiones",
+        "description": "Agua y comida para una persona. Imprescindible en cualquier viaje.",
         "cost": 1,
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "id": "gasoline",
+        "name": "Gasolina",
+        "description": "Suficiente para un largo viaje en coche.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "name": "Medicinas",
+        "description": "Para prevenir enfermedades, infecciones y venenos.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Colgante",
+        "description": "No sirve de nada, pero los buenos recuerdos reconfortan a los viajeros cuando están lejos de casa.",
         "cost": 1
       },
       {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
-      },
-      {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
+        "id": "pocketknife",
+        "name": "Navaja",
+        "description": "Demasiado pequeña para ser fiable como arma, pero se puede esconder fácilmente.",
         "cost": 2
       },
       {
         "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "Prismáticos",
+        "description": "Para ayudarte a ver sitios lejanos.",
         "cost": 2
       },
       {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "id": "chalk",
+        "name": "Tiza",
+        "description": "Para escribir sobre superficies irregulares de piedra.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Manta",
+        "description": "Para mantenerse caliente por la noche.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Pico",
+        "description": "Para romper superficies rocosas.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Brújula",
+        "description": "Puede guiarte cuando estés irremediablemente perdido.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Cantimplora",
+        "description": "Se puede rellenar en ríos y manantiales.",
         "cost": 2
       },
       {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
-      },
-      {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "name": "Antorchas",
+        "description": "Para iluminar zonas oscuras y encender hachones o teas.",
         "cost": 3
       },
       {
         "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "Mapa",
+        "description": "Por ahora, no tiene ninguna indicación, pero quizás con el tiempo puedas cartografiar la zona.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Cuerda",
+        "description": "Varios rollos largos de una resistente cuerda. Fundamental para hacer escalada y espeleología.",
         "cost": 3
       }
     ]
@@ -3084,19 +3080,19 @@
         "entries": [
           {
             "id": "alejandro_followed_to_ruins",
-            "text": "Alejandro followed the investigators into the ruins."
+            "text": "Alejandro siguió a los investigadores a las ruinas."
           },
           {
             "id": "alejandro_is_missing",
-            "text": "Alejandro is missing."
+            "text": "Alejandro ha desaparecido."
           },
           {
             "id": "alejandro_on_his_own",
-            "text": "Alejandro is continuing his research on his own."
+            "text": "Alejandro continúa su investigación por su cuenta."
           },
           {
             "id": "alejandro_recovered_relic",
-            "text": "Alejandro recovered the Relic of Ages."
+            "text": "Alejandro recuperó la Reliquia de las eras."
           },
           {
             "id": "alejandro_remained_at_camp",
@@ -3104,171 +3100,167 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Alejandro lo recuerda todo."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Alejandro está en contra de los investigadores."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "los braseros están encendidos."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "los braseros permanecen apagados."
           },
           {
             "id": "cleared_path_to_temple",
-            "text": "the investigators cleared a path to the Eztli ruins."
+            "text": "los investigadores despejaron un camino a las ruinas de Eztli."
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "los investigadores cooperaron con los yithianos."
           },
           {
             "id": "earned_alejandros_trust",
-            "text": "the investigators have earned Alejandro’s trust."
+            "text": "los investigadores se han ganado la confianza de Alejandro."
           },
           {
             "id": "earned_ichtacas_trust",
-            "text": "the investigators have earned Ichtaca’s trust."
+            "text": "los investigadores se han ganado la confianza de Ichtaca."
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "se ha deshecho el tejido del tiempo."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "los investigadores cayeron a las profundidades."
           },
           {
             "id": "forged_bond_with_ichtaca",
-            "text": "the investigators forged a bond with Ichtaca."
+            "text": "los investigadores forjaron un vínculo con Ichtaca."
           },
           {
             "id": "forging_own_path",
-            "text": "you are forging your own path."
+            "text": "los investigadores se están forjando su propio camino."
           },
           {
             "id": "found_missing_relic",
-            "text": "the investigators found the missing relic."
+            "text": "los investigadores encontraron la reliquia desaparecida."
           },
           {
             "id": "gave_relic_to_alejandro",
-            "text": "the investigators gave custody of the relic to Alejandro."
+            "text": "los investigadores le dieron la custodia de la reliquia a Alejandro."
           },
           {
             "id": "gave_relic_to_harlan",
-            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+            "text": "los investigadores le dieron la custodia de la reliquia a Harlan Earnstone."
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "han eliminado los recuerdos de los investigadores."
           },
           {
             "id": "harbinger_alive",
-            "text": "the Harbinger is still alive (#X# damage)."
+            "text": "el Heraldo sigue vivo (#X# daño)."
           },
           {
             "id": "ichtaca_has_confidence",
-            "text": "Ichtaca has confidence in you."
+            "text": "Ichtaca tiene confianza en los investigadores."
           },
           {
             "id": "ichtaca_in_the_dark",
-            "text": "Ichtaca is in the dark."
+            "text": "Ichtaca está al margen."
           },
           {
             "id": "ichtaca_is_wary",
-            "text": "Ichtaca is wary of the investigators."
+            "text": "Ichtaca recela de los investigadores."
           },
           {
             "id": "ichtaca_observed_progress",
-            "text": "Ichtaca observed your progress with keen interest."
+            "text": "Ichtaca observó los progresos de los investigadores con profundo interés."
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ichtaca está en contra de los investigadores."
           },
           {
             "id": "ichtacas_faith_restored",
-            "text": "Ichtaca’s faith is restored."
+            "text": "Ichtaca ha recuperado la fe."
           },
           {
             "id": "investigators_recovered_relic",
-            "text": "the investigators recovered the Relic of Ages."
+            "text": "los investigadores recuperaron la Reliquia de las eras."
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "los investigadores salvaron la civilización de las serpientes."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "los investigadores salvaron la civilización de los yithianos."
           },
           {
             "id": "jungle_watches",
-            "text": "the jungle watches (#name# x#X#)."
+            "text": "la jungla observa (#name# x#X#)."
           },
           {
             "id": "mapped_way_forward",
-            "text": "the investigators mapped out the way forward."
+            "text": "los investigadores cartografiaron el camino."
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "los investigadores repararon la grieta en el tejido del tiempo."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "el Nexo está cerca."
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you"
-          },
-          {
-            "id": "paths_known",
-            "text": "#X# paths are known to you."
+            "text": "los investigadores conocen #X# caminos."
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "el proceso salió mal."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "el proceso salió espectacularmente mal."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "el proceso fue perfeccionado."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "el proceso tuvo éxito."
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "la reliquia ha desaparecido."
           },
           {
             "id": "rescued_alejandro",
-            "text": "the investigators rescued Alejandro."
+            "text": "los investigadores rescataron a Alejandro."
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "los investigadores se resistieron a su cautiverio."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "los investigadores sellaron la Reliquia de las eras para siempre."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "los investigadores dieron marcha atrás al tiempo."
           },
           {
             "id": "wait_for_additional_supplies",
-            "text": "the investigators were forced to wait for additional supplies."
+            "text": "los investigadores se vieron obligados a esperar suministros adicionales."
           },
           {
             "id": "blob_contained",
@@ -3377,19 +3369,19 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "Profundidad #X#"
           },
           {
             "id": "ichtaca_left_without_you",
-            "text": "Ichtaca left without you."
+            "text": "Ichtaca se fue sin los investigadores."
           },
           {
             "id": "listened_to_ichtaca",
-            "text": "listened to Ichtaca's tale."
+            "text": "los investigadores han escuchado el relato de Ichtaca."
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Se completaron #X# tareas."
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3432,90 +3424,90 @@
     ],
     "supplies": [
       {
-        "id": "gasoline",
-        "name": "Gasoline",
-        "description": "Enough for a long journey bycar.",
+        "id": "provisions",
+        "name": "Provisiones",
+        "description": "Agua y comida para una persona. Imprescindible en cualquier viaje.",
         "cost": 1,
         "multiple": true
       },
       {
-        "id": "provisions",
-        "name": "Provisions",
-        "description": "Food and water for one person. A must-have for any journey.",
+        "id": "gasoline",
+        "name": "Gasolina",
+        "description": "Suficiente para un largo viaje en coche.",
         "cost": 1,
         "multiple": true
       },
       {
         "id": "medicine",
-        "name": "Medicine",
-        "description": "To stave off disease, infection, or venom.",
+        "name": "Medicinas",
+        "description": "Para prevenir enfermedades, infecciones y venenos.",
         "cost": 2,
         "multiple": true
       },
       {
         "id": "pendant",
-        "name": "Pendant",
-        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "name": "Colgante",
+        "description": "No sirve de nada, pero los buenos recuerdos reconfortan a los viajeros cuando están lejos de casa.",
         "cost": 1
       },
       {
-        "id": "canteen",
-        "name": "Canteen",
-        "description": "Can be refilled at streams and rivers.",
-        "cost": 2
-      },
-      {
-        "id": "compass",
-        "name": "Compass",
-        "description": "Can guide you when you are hopelessly lost.",
-        "cost": 2
-      },
-      {
-        "id": "pickaxe",
-        "name": "Pickaxe",
-        "description": "For breaking apart rocky surfaces.",
-        "cost": 2
-      },
-      {
-        "id": "blanket",
-        "name": "Blanket",
-        "description": "For warmth at night.",
-        "cost": 2
-      },
-      {
-        "id": "chalk",
-        "name": "Chalk",
-        "description": "For writing on rough stone surfaces.",
+        "id": "pocketknife",
+        "name": "Navaja",
+        "description": "Demasiado pequeña para ser fiable como arma, pero se puede esconder fácilmente.",
         "cost": 2
       },
       {
         "id": "binoculars",
-        "name": "Binoculars",
-        "description": "To help you see faraway places.",
+        "name": "Prismáticos",
+        "description": "Para ayudarte a ver sitios lejanos.",
         "cost": 2
       },
       {
-        "id": "pocketknife",
-        "name": "Pocketknife",
-        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "id": "chalk",
+        "name": "Tiza",
+        "description": "Para escribir sobre superficies irregulares de piedra.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Manta",
+        "description": "Para mantenerse caliente por la noche.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Pico",
+        "description": "Para romper superficies rocosas.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Brújula",
+        "description": "Puede guiarte cuando estés irremediablemente perdido.",
+        "cost": 2
+      },
+      {
+        "id": "canteen",
+        "name": "Cantimplora",
+        "description": "Se puede rellenar en ríos y manantiales.",
         "cost": 2
       },
       {
         "id": "torches",
-        "name": "Torches",
-        "description": "Can light up dark areas, or set sconces alight.",
-        "cost": 3
-      },
-      {
-        "id": "rope",
-        "name": "Rope",
-        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "name": "Antorchas",
+        "description": "Para iluminar zonas oscuras y encender hachones o teas.",
         "cost": 3
       },
       {
         "id": "map",
-        "name": "Map",
-        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "name": "Mapa",
+        "description": "Por ahora, no tiene ninguna indicación, pero quizás con el tiempo puedas cartografiar la zona.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Cuerda",
+        "description": "Varios rollos largos de una resistente cuerda. Fundamental para hacer escalada y espeleología.",
         "cost": 3
       }
     ]

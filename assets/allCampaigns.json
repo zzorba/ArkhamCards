@@ -23265,7 +23265,7 @@
     },
     {
       "id": "check_relic_is_missing",
-      "text": "<i>If the relic is missing<i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -51685,7 +51685,7 @@
     },
     {
       "id": "check_relic_is_missing",
-      "text": "<i>If the relic is missing<i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
