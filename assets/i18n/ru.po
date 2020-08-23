@@ -2410,10 +2410,10 @@ msgid ""
 "between investigator power and scenario difficulty, and to enforce shifts in deckbuilding "
 "environments over time."
 msgstr ""
-"Список табу для Карточного Ужаса Аркхэма содержит опциональные ограничения по созданию "
-"колод или изменения в тексте карт. Этот список был создан, что бы поддерживать оптимальный "
-"баланс между силой сыщиков и сложностью сценариев, а также что бы способствовать изменениям "
-"в создании колод с течением времени."
+"Список табу для Карточного Ужаса Аркхэма — это необязательные ограничения в создании "
+"колод или изменения текста карт. Этот список создан для поддержания здорового баланса "
+"между силой сыщиков и сложностью сценариев, а также чтобы заставить игроков "
+"пересматривать свои колоды с течением времени."
 
 #: src/components/card/CardTabooView.tsx:115
 msgid ""
@@ -2421,14 +2421,14 @@ msgid ""
 "adhere to the restrictions on this list, but if an investigator chooses to do so, they must "
 "do so in full (an investigator cannot pick and choose which restrictions to use)."
 msgstr ""
-"Следование списку табу является опциональным. Сыщики не обязаны следовать ограничениям из "
-"списка, но если они все же решатся на это, то должны придерживаться всех ограничений в "
+"Следование списку табу необязательно. Сыщики сами решают, следовать ли предлагаемым "
+"ограничениям, но если они идут на это, то обязаны придерживаться всех ограничений в "
 "полной мере (сыщик не может выбирать, каким ограничениям следовать, а каким нет)."
 
 #: src/components/card/CardTabooView.tsx:117
 msgid "You can opt-in to always seeing taboos and buiding decks with them in Settings."
 msgstr ""
-"Вы можете включить эту опцию в Настройках, что бы всегда видеть табу и изменения при "
+"Вы можете включить эту опцию в Настройках, чтобы всегда видеть ограничения табу при "
 "создании колоды."
 
 #: src/components/card/FetchCardsGate.tsx:106
@@ -2440,8 +2440,8 @@ msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
 msgstr ""
-"Прошло уже более недели с момента, когда вы проверяли наличие новых карт.\n"
-"Проверить новые карты в ArkhamDB?"
+"Вы уже больше недели не проверяли наличие новых карт.\n"
+"Проверить наличие новых карт в ArkhamDB?"
 
 #: src/components/card/FetchCardsGate.tsx:109
 msgid "Ask me later"
@@ -2484,7 +2484,7 @@ msgstr "Карты для создания колоды"
 #: src/components/card/CardDetailView/CardDetailComponent.tsx:120
 #, javascript-format
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
-msgstr "Внимание: это карта может содержать спойлеры к ‘${ card.pack_name }’."
+msgstr "Внимание: эта карта может содержать спойлеры к ‘${ card.pack_name }’."
 
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:74
 msgid "Alternate Cards"
@@ -2496,7 +2496,7 @@ msgstr "Продвинутые карты"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:248
 msgid "Test Icons: "
-msgstr "Символы проверки: "
+msgstr "Символы навыков: "
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:270
 #, javascript-format
@@ -2519,7 +2519,7 @@ msgstr "Улики: ${ clues }${ perInvestigatorClues }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:313
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
-msgstr "Неясность: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
+msgstr "Неясность: ${ shroud }. Улики: ${ clues }${ perInvestigatorClues }."
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:523
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:742
@@ -2560,7 +2560,7 @@ msgstr "Поделиться"
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:109
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
-msgstr "Вы уверены, что хотите удалить эту кампанию: ${ campaignName }"
+msgstr "Вы уверены, что хотите удалить кампанию: ${ campaignName }"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:344
 #: src/components/campaignguide/CampaignGuideView.tsx:148
@@ -2608,7 +2608,7 @@ msgstr ""
 "Поскольку этот сыщик участвовал по крайней мере в одном сценарии этой кампании, его нельзя "
 "удалить.\n"
 "\n"
-"Однако, вы можете больше не принимать участия ими в будущих сценариях этой кампании."
+"Однако вы можете больше не включать его в будущие сценарии этой кампании."
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:284
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:161
@@ -2624,7 +2624,7 @@ msgstr "Добавить сыщика"
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:321
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:301
 msgid "Finished removing investigators"
-msgstr "Сыщики было удалены"
+msgstr "Сыщики удалены"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:330
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:309
@@ -2650,18 +2650,24 @@ msgid ""
 "The <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator "
 "${ investigator.name }, and therefore has the following prerequisites:"
 msgstr ""
+"Сценарий-испытание <i>${ scenario.scenario_name }</i> разворачивается вокруг "
+"${ investigator.name }, поэтому у него следующие начальные требования:"
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:55
 msgid ""
 "${ investigator.name } must be chosen as one of the investigators when playing this "
 "scenario."
-msgstr "${ investigator.name } должен быть выбран одним из сыщиков для игры в этот сценарий."
+msgstr ""
+"Среди сыщиков, которые проходят этот сценарий, обязательно должен быть сыщик "
+"${ investigator.name }."
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:67
 msgid ""
 "The app does not enforce Challenge Scenario prerequisites, so please confirm that they "
 "apply manually."
 msgstr ""
+"Приложение не проверяет, выполнили ли вы начальные требования сценария-испытания, "
+"поэтому убедитесь в этом самостоятельно."
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:70
 msgid "Play this scenario"
@@ -2682,7 +2688,7 @@ msgstr "Журнал кампании"
 
 #: src/components/campaignguide/ScenarioView.tsx:165
 msgid "Reset Scenario?"
-msgstr "Обнулить сценарий?"
+msgstr "Сбросить сценарий?"
 
 #: src/components/campaignguide/ScenarioView.tsx:166
 msgid ""
@@ -2690,9 +2696,9 @@ msgid ""
 "\n"
 "All data you have entered will be lost."
 msgstr ""
-"Вы действительно хотите обнулить этот сценарий?\n"
+"Вы действительно хотите сбросить этот сценарий?\n"
 "\n"
-"Все созданные вами пометки и записи будут потеряны."
+"Все введённые данные будут потеряны."
 
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:117
 msgid "Select Cards"
@@ -2728,7 +2734,7 @@ msgstr "Добавить нового сыщика"
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:158
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
-msgstr "${ confirmText } <i>(автоматически включен)</i>"
+msgstr "${ confirmText } <i>(добавлен автоматически)</i>"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:80
 #, javascript-format
@@ -2737,7 +2743,7 @@ msgstr "${ supplyName } использовать (${ desiredCount })"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:107
 msgid "Reads \"${ badThing.condition }\""
-msgstr "Читается “${ badThing.condition }”"
+msgstr "Описание: “${ badThing.condition }”"
 
 #: src/components/campaignguide/prompts/SuppliesPrompt/SupplyComponent.tsx:50
 #, javascript-format
@@ -2750,7 +2756,7 @@ msgstr[2] "(${ supply.cost } очков припасов за единицу)"
 #: src/components/campaignguide/prompts/SuppliesPrompt/SupplyComponent.tsx:53
 msgid "(${ supply.cost } supply point)"
 msgid_plural "(${ supply.cost } supply points)"
-msgstr[0] "(${ supply.cost } очко припасови)"
+msgstr[0] "(${ supply.cost } очко припасов)"
 msgstr[1] "(${ supply.cost } очка припасов)"
 msgstr[2] "(${ supply.cost } очков припасов)"
 
@@ -2766,7 +2772,7 @@ msgstr "Слишком много"
 
 #: src/components/campaignguide/prompts/CounterListComponent/index.tsx:99
 msgid "Not enough"
-msgstr "Не достаточно"
+msgstr "Недостаточно"
 
 #: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:50
 #, javascript-format
@@ -2834,7 +2840,7 @@ msgstr "Случайная локация"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:101
 msgid "Draw location"
-msgstr ""
+msgstr "Взять локацию"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/ReceiveCampaignLinkInputComponent.tsx:52
 msgid "Switch campaign"
@@ -2913,14 +2919,14 @@ msgid ""
 "track the experience cost for any changes you make (the original versions of the deck can "
 "still be viewed from the deck's menu)."
 msgstr ""
-"Похоже, что одно или несколько изменений колоды не были сохранены. Если вы хотите, что бы "
+"Похоже, что одно или несколько изменений колоды не были сохранены. Если вы хотите, чтобы "
 "приложение следило за потраченным опытом во время изменений колоды, пожалуйста, вернитесь "
-"назад и нажмите ‘Сохраните улучшения колоды’ на каждом сыщике, прежде чем начать следующий "
+"назад и нажмите «Сохранить улучшения колод» на каждом сыщике, прежде чем начать следующий "
 "сценарий.\n"
 "\n"
 "Как только улучшения будут сохранены, вы можете редактировать колоды в обычном режиме. "
 "Приложение будет следить за стоимостью улучшений всех ваших изменений колоды (оригинальную "
-"версию колоды все так же можно будет увидеть в меню колоды)."
+"версию колоды всё так же можно будет увидеть в меню колоды)."
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:114
 msgid ""
@@ -2928,7 +2934,7 @@ msgid ""
 "it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved."
 msgstr ""
 "Похоже, что вы не сохранили изменения опыта или травм для сыщика. Пожалуйста, вернитесь "
-"назад и выберите ‘Сохранить изменения’."
+"назад и выберите «Сохранить изменения»."
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:165
 msgid "Update decks with scenario results"
@@ -2950,7 +2956,7 @@ msgstr "Мешок хаоса"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:88
 msgid "Choose entry to add to campaign log:"
-msgstr "Выберите запись для добавление в журнал кампании:"
+msgstr "Выберите запись для добавления в журнал кампании:"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:115
 msgid "Edit campaign log"
@@ -2971,7 +2977,7 @@ msgstr "Записать травмы"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:131
 msgid "Scenario completed"
-msgstr "Сценарий завершен"
+msgstr "Сценарий завершён"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:150
 msgid "Start playing the scenario now."
@@ -2994,11 +3000,11 @@ msgstr "Кто добавит ${ card.name } в свою колоду?"
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:25
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr "В журнале кампании под “${ section }”, запишите ${ card.name }. "
+msgstr "В графе «${ section }» журнала кампании запишите ${ card.name }. "
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:40
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr "В вашем журнале кампании запишите <i>${ text }</i>"
+msgstr "Запишите в журнале кампании, что <i>${ text }</i>"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:57
 #, javascript-format
@@ -3010,18 +3016,18 @@ msgstr "В вашем журнале кампании вычеркните <i>${
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>"
 msgstr ""
-"В вашем журнале кампании под “${ logEntry.section }”, вычеркните <i>${ logEntry.text }</i>"
+"В графе «${ logEntry.section }» журнала кампании, вычеркните <i>${ logEntry.text }</i>"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:64
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr "В вашем журнале кампании запишите <i>${ logEntry.text }</i>"
+msgstr "Запишите в журнале кампании, что <i>${ logEntry.text }</i>"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:65
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
 msgstr ""
-"В вашем журнале кампании под “${ logEntry.section }”, запишите <i>${ logEntry.text }</i>."
+"В графе «${ logEntry.section }» журнала кампании запишите <i>${ logEntry.text }</i>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/ChaosTokenEffectComponent.tsx:21
 msgid "Add ${ tokenString } to the chaos bag."
@@ -3065,7 +3071,7 @@ msgstr "Ментальная травма"
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } сошел <b>с ума</b>."
+msgstr "${ investigator.name } <b>сошёл с ума</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
 msgid "${ investigator.name } is <b>killed</b>."
@@ -3106,20 +3112,20 @@ msgstr "${ investigator.name } получает ${ effect.physical } физич�
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:76
 msgid "All weaknesses have been assigned."
-msgstr "Все слабости были назначены."
+msgstr "Все слабости назначены."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:125
 msgid "Draw random weakness"
-msgstr "Вытянуть случайную слабость"
+msgstr "Взять случайную слабость"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:52
 msgid "Do you want to use the app to randomize weaknesses?"
-msgstr "Вы хотите, что бы приложение выбрало слабость случайным образом?"
+msgstr "Взять слабость случайным образом?"
 
 #: src/components/campaign/constants.ts:29
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:26
 msgid "Easy"
-msgstr "Легкий"
+msgstr "Лёгкий"
 
 #: src/components/campaign/constants.ts:30
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:27
@@ -3139,16 +3145,16 @@ msgstr "Экстремальный"
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:43
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
-msgstr "Потому что вы играете на <b>${ difficulty }</b> сложности:"
+msgstr "Поскольку вы играете на сложности «<b>${ difficulty }</b>»:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:56
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
-msgstr "Потому что вы закончили <b>${ scenarioName }</b>:"
+msgstr "Поскольку вы прошли <b>${ scenarioName }</b>:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:57
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr "Потому что вы не закончили <b>${ scenarioName }</b>:"
+msgstr "Поскольку вы не прошли <b>${ scenarioName }</b>:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:28
 #, javascript-format
@@ -3156,22 +3162,28 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
-"Проверьте журнал кампании. Потому что там ${ count } метка под ‘${ logEntry.section }’"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } метка в графе "
+"«${ logEntry.section }»"
 msgstr[1] ""
-"Проверьте журнал кампании. Потому что там ${ count } метки под ‘${ logEntry.section }’"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } метки в графе 
+"«${ logEntry.section }»"
 msgstr[2] ""
-"Проверьте журнал кампании. Потому что там ${ count } меток под ‘${ logEntry.section }’"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } меток в графе 
+"«${ logEntry.section }»"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:34
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
-"Проверьте журнал кампании. Потому что там ${ count } запись под ‘${ logEntry.section }’"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } запись в графе "
+"«${ logEntry.section }»"
 msgstr[1] ""
-"Проверьте журнал кампании. Потому что там ${ count } записи под ‘${ logEntry.section }’"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } записи в графе "
+"«${ logEntry.section }»"
 msgstr[2] ""
-"Проверьте журнал кампании. Потому что там ${ count } записей под ‘${ logEntry.section }’"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } записей в графе "
+"«${ logEntry.section }»"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:41
 #, javascript-format
@@ -3188,11 +3200,11 @@ msgid "Since ${ list } has a ${ supplyName }, they must read <b>${ sectionName }
 msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
-"Потому что у ${ list } есть ${ supplyName }, они должны прочитать <b>${ sectionName }</b>."
+"Поскольку ${ supplyName } есть у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
 msgstr[1] ""
-"Потому что у ${ list } есть ${ supplyName }, они должны прочитать <b>${ sectionName }</b>."
+"Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 msgstr[2] ""
-"Потому что у ${ list } есть ${ supplyName }, они должны прочитать <b>${ sectionName }</b>."
+"Поскольку ${ supplyName } есть у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CheckSuppliesConditionComponent.tsx:43
 #, javascript-format
@@ -3201,11 +3213,11 @@ msgid ""
 msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ sectionName }</b>."
 msgstr[0] ""
-"Потому что у ${ list } нет ${ supplyName }, они должны прочитать <b>${ sectionName }</b>."
+"Поскольку ${ supplyName } отсутствует у ${ list }, этот сыщик читает <b>${ sectionName }</b>."
 msgstr[1] ""
-"Потому что у ${ list } нет ${ supplyName }, они должны прочитать <b>${ sectionName }</b>."
+"Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 msgstr[2] ""
-"Потому что у ${ list } нет ${ supplyName }, они должны прочитать <b>${ sectionName }</b>."
+"Поскольку ${ supplyName } отсутствует у ${ list }, эти сыщики читают <b>${ sectionName }</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:51
 msgid "${ investigators } must read <b>${ prompt }</b>."
@@ -3217,23 +3229,23 @@ msgstr[2] "${ investigators } должны прочитать <b>${ prompt }</b>
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:34
 #, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
-msgstr "Есть ли у сыщика “${ cardName }” в его колоде?"
+msgstr "Есть ли у какого-либо сыщика «${ cardName }» в колоде?"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:36
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
-msgstr "Был ли сыщик с “${ cardName }” в его колоде побеждён?"
+msgstr "Побеждён ли сыщик с «${ cardName }» в колоде?"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:38
 #, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "Для каждого сыщика с “${ cardName }” в его колоде:"
+msgstr "Для каждого сыщика с «${ cardName }» в его колоде:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/ScenarioDataConditionComponent.tsx:28
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "Потому что ${ playerCount } игрок в игре:"
-msgstr[1] "Потому что ${ playerCount } игрока в игре:"
-msgstr[2] "Потому что ${ playerCount } игроков в игре:"
+msgstr[0] "Поскольку играет ${ playerCount } игрок:"
+msgstr[1] "Поскольку играет ${ playerCount } игрока:"
+msgstr[2] "Поскольку играет ${ playerCount } игроков:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/TraumaConditionComponent.tsx:24
 msgid "If the lead investigator was <b>killed</b>."
@@ -3249,15 +3261,15 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in your Campaign "
 "Log."
 msgstr ""
-"Если <i>${ card.name }</i> не указана под Проверьте ‘${ entry.section }’ в вашем журнале "
-"кампании."
+"Если <i>${ card.name }</i> не указана в графе «Проверьте ‘${ entry.section }» в вашем "
+"журнале кампании."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:28
 #, javascript-format
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
-"Если <i>${ card.name }</i> указана под Проверьте ‘${ entry.section }’ в вашем журнале "
+"Если <i>${ card.name }</i> указана под «Проверьте ‘${ entry.section }» в вашем журнале "
 "кампании."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
@@ -3266,44 +3278,44 @@ msgstr "Проверьте ${ logEntry.section }. <i>Если ${ logEntry.text }
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:49
 msgid "Choose Side-Scenario"
-msgstr "Выберите побочный сценарий"
+msgstr "Выберите сценарий-ответвление"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:122
 msgid "Add side scenario"
-msgstr "Добавить побочный сценарий"
+msgstr "Добавить сценарий-ответвление"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:129
 msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario and following "
 "interludes are completed."
 msgstr ""
-"Побочные сценарии не могут быть добавлены в кампанию пока предыдущий сценарий и все "
-"последующие интерлюдии не будут завершены."
+"Сценарии-ответвления не могут быть добавлены в кампанию, пока предыдущий сценарий "
+"и все последующие интерлюдии не будут завершены."
 
 #: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:43
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
-msgstr "${ scenarioName } (Попыток ${ attempt })"
+msgstr "${ scenarioName } (Попытка ${ attempt })"
 
 #: src/components/campaign/CampaignDetailView/ChaosBagSection.tsx:52
 #: src/components/campaign/CampaignDetailView/index.tsx:251
 #: src/components/campaign/CampaignDetailView/index.tsx:516
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:118
 msgid "Odds Calculator"
-msgstr "Калькулятор Шансов"
+msgstr "Калькулятор вероятностей"
 
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:175
 msgid "Odds calculator"
-msgstr "Калькулятор шансов"
+msgstr "Калькулятор вероятностей"
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:45
 msgid "Challenge Scenario"
-msgstr "Испытать Сценарий"
+msgstr "Сценарий-испытание"
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:66
 #, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
-msgstr "${ investigator.name } Испытать Сценарий"
+msgstr "Сценарий-испытание ${ investigator.name }"
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:69
 #, javascript-format
@@ -3311,16 +3323,16 @@ msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } for each other "
 "investigator"
 msgstr ""
-"Стоимость очков опыта: ${ challengeCost } для ${ investigator.name }, ${ xpCost } для "
-"каждого сыщика"
+"Цена в опыте для ${ investigator.name }: ${ challengeCost }, для остальных сыщиков – "
+"по ${ xpCost } очков опыта"
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:102
 msgid "Experience cost: ${ xpCost }"
-msgstr "Стоимость очков опыта: ${ xpCost }"
+msgstr "Цена в очках опыта: ${ xpCost }"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:121
 msgid "Custom side scenario"
-msgstr "Пользовательский побочный сценарий"
+msgstr "Пользовательский сценарий-ответвление"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:130
 msgid "Scenario Name"
@@ -3328,7 +3340,7 @@ msgstr "Название Сценария"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:138
 msgid "Experience Cost"
-msgstr "Стоимость очков опыта"
+msgstr "Цена в очках опыта"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:143
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:148
@@ -3337,7 +3349,7 @@ msgstr "Добавить"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:177
 msgid "Side"
-msgstr "Побочный"
+msgstr "Ответвление"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:183
 msgid ""
@@ -3366,117 +3378,123 @@ msgid ""
 "mind, in order to craft a challenging puzzle-like experience. Printable cards can be "
 "downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section."
 msgstr ""
+"Испытания — это особые сценарии, которые рассказывают новые сюжеты на основе уже "
+"выпущенных продуктов карточного «Ужаса Аркхэма» и новых элементов, предназначенных "
+"для самостоятельной печати. Испытания представляют собой что-то вроде головоломки, "
+"поэтому у них есть определённые начальные требования. Карты для печати можно "
+"скачать на английском языке с сайта FFG, а на русском – на странице карточного "
+"«Ужаса Аркхэма» издательства Hobby World в разделе «Правила игры»."
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:226
 msgid "Download printable cards"
-msgstr ""
+msgstr "Скачать карты для самостоятельной печати"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:116
 msgid "Add Campaign Log Section"
-msgstr ""
+msgstr "Добавить графу в журнал кампании"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:123
 msgid "Section Name"
-msgstr ""
+msgstr "Название графы"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:127
 msgid "Count"
-msgstr ""
+msgstr "Количество"
 
 #: src/components/campaign/CampaignChaosBagView.tsx:32
 #: src/components/campaign/CampaignChaosBagView.tsx:36
 msgid "Edit"
-msgstr ""
+msgstr "Править"
 
 #: src/components/campaign/CampaignDifficultyDialog.tsx:41
 msgid "Selected Difficulty"
-msgstr ""
+msgstr "Выбранная сложность"
 
 #: src/components/campaign/CampaignDrawWeaknessDialog.tsx:89
 msgid "Edit Assigned Weaknesses"
-msgstr ""
+msgstr "Править назначенные слабости"
 
 #: src/components/campaign/CampaignDrawWeaknessDialog.tsx:280
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
-msgstr ""
+msgstr "Сыщик: ${ investigatorName }"
 
 #: src/components/campaign/CampaignDrawWeaknessDialog.tsx:295
 msgid "Replace Random Weakness"
-msgstr ""
+msgstr "Заменить случайной слабостью"
 
 #: src/components/campaign/CampaignDrawWeaknessDialog.tsx:320
 #, javascript-format
 msgid "Save to ${ investigator.name }’s Deck"
-msgstr ""
+msgstr "Сохранить в колоду ${ investigator.name }"
 
 #: src/components/campaign/CampaignSummaryComponent.tsx:62
 msgid "Not yet started"
-msgstr ""
+msgstr "Ещё не начата"
 
 #: src/components/campaign/DeckList.tsx:95
 msgid "Add Investigator Deck"
-msgstr ""
+msgstr "Добавить колоду сыщика"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:204
 msgid "Tap token to draw"
-msgstr ""
+msgstr "Нажмите, чтобы тянуть жетон"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:242
 msgid "Set aside and draw another"
-msgstr ""
+msgstr "Отложить и тянуть ещё"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:253
 msgid "Clear Tokens"
-msgstr ""
+msgstr "Сбросить жетоны"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:277
 msgid "Drawn"
-msgstr ""
+msgstr "Вытянуто"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:280
 msgid "Total"
-msgstr ""
+msgstr "Всего"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:293
 msgid "Sealed Tokens"
-msgstr ""
+msgstr "Запечатанные жетоны"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:301
 msgid "Seal Tokens"
-msgstr ""
+msgstr "Запечатать жетоны"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:176
 #: src/components/campaign/EditScenarioResultView.tsx:159
 msgid "Interlude"
-msgstr ""
+msgstr "Интерлюдия"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:197
 #: src/components/campaign/EditScenarioResultView.tsx:166
 msgid "Resolution"
-msgstr ""
+msgstr "Исход"
 
 #: src/components/campaign/EditTraumaDialog.tsx:88
 #, javascript-format
 msgid "${ investigator.firstName }’s Trauma"
-msgstr ""
+msgstr "Травмы ${ investigator.firstName }"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:84
 msgid "Physical Trauma"
-msgstr ""
+msgstr "Физическая травма"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:91
 msgid "Mental Trauma"
-msgstr ""
+msgstr "Ментальная травма"
 
 #: src/components/campaign/SealTokenDialog.tsx:34
 msgid "Choose Tokens to Seal"
-msgstr ""
+msgstr "Выберите, какие жетоны запечатать"
 
 #: src/components/campaign/StoryCardSelectorComponent.tsx:78
 #, javascript-format
 msgid "Story cards to add - ${ scenarioName }"
-msgstr ""
+msgstr "Добавить карты сюжета — ${ scenarioName }"
 
 #: src/components/campaign/StoryCardSelectorComponent.tsx:78
 msgid "Story cards to add"
