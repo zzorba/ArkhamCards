@@ -50,6 +50,7 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '@components/core/withPlayerCards';
+import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import { parseDeck, parseBasicDeck } from '@lib/parseDeck';
@@ -78,7 +79,7 @@ import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 
 const SHOW_DESCRIPTION_EDITOR = false;
-
+const SHOW_CHECKLIST_EDITOR = false;
 export interface DeckDetailProps {
   id: number;
   title?: string;
@@ -533,6 +534,29 @@ class DeckDetailView extends React.Component<Props, State> {
       });
     }
   }
+
+  _onChecklistPressed = () => {
+    const {
+      componentId,
+      deck,
+    } = this.props;
+    const {
+      slots,
+    } = this.state;
+    if (!deck) {
+      return;
+    }
+    Navigation.push<DeckChecklistProps>(componentId, {
+      component: {
+        name: 'Deck.Checklist',
+        passProps: {
+          id: deck.id,
+          investigator: deck.investigator_code,
+          slots,
+        },
+      },
+    });
+  };
 
   _onEditSpecialPressed = () => {
     const {
@@ -1673,6 +1697,14 @@ class DeckDetailView extends React.Component<Props, State> {
               containerStyle={styles.button}
             />
           </>
+        ) }
+        { SHOW_CHECKLIST_EDITOR && (
+          <SettingsButton
+            onPress={this._onChecklistPressed}
+            title={t`Checklist`}
+            titleStyle={styles.text}
+            containerStyle={styles.button}
+          />
         ) }
         <SettingsButton
           onPress={this._showCardCharts}

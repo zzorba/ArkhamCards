@@ -46,6 +46,7 @@ import NewDeckView from '@components/deck/NewDeckView';
 import NewDeckOptionsDialog from '@components/deck/NewDeckOptionsDialog';
 import DeckDetailView from '@components/deck/DeckDetailView';
 import DeckEditView from '@components/deck/DeckEditView';
+import DeckChecklistView from '@components/deck/DeckChecklistView';
 import DrawSimulatorView from '@components/deck/DrawSimulatorView';
 import DeckChartsView from '@components/deck/DeckChartsView';
 import DeckHistoryView from '@components/deck/DeckHistoryView';
@@ -76,6 +77,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Deck', () => DeckDetailView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Charts', () => DeckChartsView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.History', () => DeckHistoryView, Provider, store);
+  Navigation.registerComponentWithRedux('Deck.Checklist', () => DeckChecklistView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.DrawSimulator', () => DrawSimulatorView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Description', () => DeckDescriptionView, Provider, store);
   Navigation.registerComponentWithRedux('Deck.Edit', () => DeckEditView, Provider, store);

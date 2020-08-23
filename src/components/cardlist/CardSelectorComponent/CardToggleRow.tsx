@@ -18,6 +18,7 @@ interface Props {
 interface State {
   one: boolean;
   two: boolean;
+  three: boolean;
 }
 
 export default class CardToggleRow extends React.Component<Props, State> {
@@ -27,6 +28,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
     this.state = {
       one: props.count > 0,
       two: props.count > 1,
+      three: props.count > 2,
     };
   }
 
@@ -38,8 +40,9 @@ export default class CardToggleRow extends React.Component<Props, State> {
     const {
       one,
       two,
+      three,
     } = this.state;
-    onChange(card, (one ? 1 : 0) + (two ? 1 : 0));
+    onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0));
   };
 
   _onCardOneToggle = () => {
@@ -54,6 +57,12 @@ export default class CardToggleRow extends React.Component<Props, State> {
     }, this._syncChange);
   };
 
+  _onCardThreeToggle = () => {
+    this.setState({
+      three: !this.state.three,
+    }, this._syncChange);
+  };
+
   render() {
     const {
       card,
@@ -64,6 +73,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
     const {
       one,
       two,
+      three,
     } = this.state;
 
     if (limit === 0) {
@@ -85,6 +95,16 @@ export default class CardToggleRow extends React.Component<Props, State> {
             onToggleChange={this._onCardTwoToggle}
             onPress={onPress}
             toggleValue={two}
+            fontScale={fontScale}
+            backgroundColor="transparent"
+          />
+        ) }
+        { (limit > 2) && (
+          <CardSearchResult
+            card={card}
+            onToggleChange={this._onCardThreeToggle}
+            onPress={onPress}
+            toggleValue={three}
             fontScale={fontScale}
             backgroundColor="transparent"
           />

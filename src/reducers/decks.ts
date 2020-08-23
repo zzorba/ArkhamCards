@@ -15,6 +15,8 @@ import {
   REPLACE_LOCAL_DECK,
   ENSURE_UUID,
   RESTORE_COMPLEX_BACKUP,
+  RESET_DECK_CHECKLIST,
+  SET_DECK_CHECKLIST_CARD,
   DecksActions,
   NewDeckAvailableAction,
   ReplaceLocalDeckAction,
@@ -26,6 +28,9 @@ import deepDiff from 'deep-diff';
 
 interface DecksState {
   all: DecksMap;
+  checklist?: {
+    [id: number]: string[] | undefined;
+  };
   myDecks: number[];
   replacedLocalIds?: {
     [id: number]: number;
@@ -38,6 +43,7 @@ interface DecksState {
 
 const DEFAULT_DECK_STATE: DecksState = {
   all: {},
+  checklist: {},
   myDecks: [],
   replacedLocalIds: {},
   dateUpdated: null,
@@ -74,6 +80,30 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
+  if (action.type === RESET_DECK_CHECKLIST) {
+    const newChecklist = {
+      ...(state.checklist || {}),
+    };
+    delete newChecklist[action.id];
+    return {
+      ...state,
+      checklist: newChecklist,
+    };
+  }
+  if (action.type === SET_DECK_CHECKLIST_CARD) {
+    const currentChecklist = (state.checklist || {})[action.id] || []
+    const checklist = action.value ? [
+      ...currentChecklist,
+      action.card,
+    ] : filter(currentChecklist, card => card !== action.card);
+    return {
+      ...state,
+      checklist: {
+        ...(state.checklist || {}),
+        [action.id]: checklist,
+      },
+    };
+  }
   if (action.type === RESTORE_COMPLEX_BACKUP) {
     const all: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
@@ -119,16 +149,23 @@ export default function(
     };
   }
   if (action.type === LOGOUT || action.type === CLEAR_DECKS) {
+    const checklist: { [id: number]: string[] } = {};
     const all: DecksMap = {};
     forEach(state.all, (deck, id: any) => {
       if (deck && deck.local) {
         all[id] = deck;
       }
     });
+    forEach(state.checklist || {}, (c, id: any) => {
+      if (all[id] && c) {
+        checklist[id] = c;
+      }
+    });
     const myDecks = filter(state.myDecks, id => !!all[id]);
     return {
       ...DEFAULT_DECK_STATE,
       all,
+      checklist,
       myDecks,
     };
   }
@@ -184,7 +221,7 @@ export default function(
     };
   }
   if (action.type === SET_MY_DECKS) {
-    const allDecks: DecksMap = Object.assign({}, state.all);
+    const allDecks: DecksMap = { ...state.all };
     forEach(action.decks, deck => {
       allDecks[deck.id] = deck;
     });
@@ -233,9 +270,17 @@ export default function(
       ...(state.replacedLocalIds || {}),
       [action.localId]: deck.id,
     };
+    const checklist = {
+      ...(state.checklist || {}),
+    };
+    if (checklist[action.localId]) {
+      checklist[deck.id] = checklist[action.localId];
+      delete checklist[action.localId];
+    }
     return {
       ...state,
       all,
+      checklist,
       myDecks: sortMyDecks(myDecks, all),
       replacedLocalIds,
     };
@@ -277,11 +322,17 @@ export default function(
           return deckId;
         }
       );
-
+    const checklist = {
+      ...(state.checklist || {})
+    };
+    if (checklist[action.id]) {
+      delete checklist[action.id];
+    }
     return {
       ...state,
       all,
       myDecks,
+      checklist,
       // There's a bug on ArkhamDB cache around deletes,
       // so drop lastModified when we detect a delete locally.
       lastModified: undefined,

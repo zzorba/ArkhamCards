@@ -869,6 +869,20 @@ export interface EnsureUuidAction {
   type: typeof ENSURE_UUID;
 }
 
+export const RESET_DECK_CHECKLIST = 'RESET_DECK_CHECKLIST';
+export interface ResetDeckChecklistAction {
+  type: typeof RESET_DECK_CHECKLIST;
+  id: number;
+}
+
+export const SET_DECK_CHECKLIST_CARD = 'SET_DECK_CHECKLIST_CARD';
+export interface SetDeckChecklistCardAction {
+  type: typeof SET_DECK_CHECKLIST_CARD;
+  id: number;
+  card: string;
+  value: boolean;
+}
+
 export type FilterActions =
   ClearFilterAction |
   ToggleFilterAction |
@@ -895,6 +909,8 @@ export type SignInActions =
   LogoutAction;
 
 export type DecksActions =
+  ResetDeckChecklistAction |
+  SetDeckChecklistCardAction |
   LogoutAction |
   RestoreComplexBackupAction |
   RestoreBackupAction |

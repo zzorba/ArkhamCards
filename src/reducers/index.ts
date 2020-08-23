@@ -452,6 +452,10 @@ export function getNextLocalDeckId(state: AppState): number {
   return -1;
 }
 
+export function getDeckChecklist(state: AppState, id: number): string[] {
+  return (state.decks.checklist || {})[id] || [];
+}
+
 export function getFilterState(
   state: AppState,
   filterId: string

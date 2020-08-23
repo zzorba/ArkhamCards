@@ -12,7 +12,8 @@ interface OwnProps {
   componentId: string;
   slots: Slots;
   counts: Slots;
-  updateCounts: (slots: Slots) => void;
+  toggleCard?: (code: string, value: boolean) => void;
+  updateCounts?: (slots: Slots) => void;
   filterCard?: (card: Card) => boolean;
   header?: ReactNode;
 }
@@ -24,8 +25,16 @@ class CardSelectorComponent extends React.Component<Props> {
     const {
       counts,
       updateCounts,
+      toggleCard,
     } = this.props;
-    updateCounts(Object.assign({}, counts, { [card.code]: count }));
+    if (toggleCard) {
+       toggleCard(card.code, count > 0);
+    } else if (updateCounts) {
+      updateCounts({
+        ...counts,
+        [card.code]: count,
+      });
+    }
   };
 
   _onCardPress = (card: Card) => {
@@ -40,6 +49,7 @@ class CardSelectorComponent extends React.Component<Props> {
       filterCard,
       header,
       fontScale,
+      toggleCard,
     } = this.props;
     const matchingCards = sortBy(
       filter(
@@ -79,7 +89,7 @@ class CardSelectorComponent extends React.Component<Props> {
               onPress={this._onCardPress}
               onChange={this._onChange}
               count={counts[code] || 0}
-              limit={slots[code]}
+              limit={toggleCard ? 1 : slots[code]}
             />
           );
         }) }
