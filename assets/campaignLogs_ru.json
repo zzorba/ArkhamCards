@@ -1725,10 +1725,6 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you"
-          },
-          {
-            "id": "paths_known",
             "text": "#X# paths are known to you."
           },
           {
@@ -3221,10 +3217,6 @@
           {
             "id": "nexus_is_near",
             "text": "the nexus is near."
-          },
-          {
-            "id": "paths_known",
-            "text": "#X# paths are known to you"
           },
           {
             "id": "paths_known",
