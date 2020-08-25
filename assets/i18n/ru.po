@@ -3498,15 +3498,15 @@ msgstr "Добавить карты сюжета — ${ scenarioName }"
 
 #: src/components/campaign/StoryCardSelectorComponent.tsx:78
 msgid "Story cards to add"
-msgstr ""
+msgstr "Добавление сюжетных карт"
 
 #: src/components/campaign/StoryCardSelectorComponent.tsx:116
 msgid "Story Cards - Existing"
-msgstr ""
+msgstr "Имеющиеся сюжетные карты"
 
 #: src/components/campaign/constants.ts:43
 msgid "Night of the Zealot"
-msgstr ""
+msgstr "Ночь фанатички"
 
 #: src/components/campaign/constants.ts:44 src/components/campaign/constants.ts:263
 msgid "Return to the Night of the Zealot"
@@ -3518,7 +3518,7 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:47
 msgid "The Path To Carcosa"
-msgstr ""
+msgstr "Путь в Каркозу"
 
 #: src/components/campaign/constants.ts:48 src/components/campaign/constants.ts:267
 msgid "Return to The Path to Carcosa"
@@ -3538,62 +3538,62 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:104
 msgid "The Gathering"
-msgstr ""
+msgstr "Встреча"
 
 #: src/components/campaign/constants.ts:105
 msgid "The Midnight Masks"
-msgstr ""
+msgstr "Полуночные маски"
 
 #: src/components/campaign/constants.ts:106
 msgid "The Devourer Below"
-msgstr ""
+msgstr "Пожиратель из глубин"
 
 #: src/components/campaign/constants.ts:109 src/components/campaign/constants.ts:123
 #: src/components/campaign/constants.ts:137 src/components/campaign/constants.ts:151
 #: src/components/campaign/constants.ts:165 src/components/campaign/constants.ts:182
 #: src/components/campaign/constants.ts:229 src/components/campaign/constants.ts:240
 msgid "Prologue"
-msgstr ""
+msgstr "Пролог"
 
 #: src/components/campaign/constants.ts:110
 msgid "Extracurricular Activity"
-msgstr ""
+msgstr "Факультативные занятия"
 
 #: src/components/campaign/constants.ts:111
 msgid "The House Always Wins"
-msgstr ""
+msgstr "Казино всегда в выигрыше"
 
 #: src/components/campaign/constants.ts:112 src/components/campaign/constants.ts:126
 msgid "Armitage’s Fate"
-msgstr ""
+msgstr "Судьба Армитеджа"
 
 #: src/components/campaign/constants.ts:113
 msgid "The Miskatonic Museum"
-msgstr ""
+msgstr "Мискатоникский музей"
 
 #: src/components/campaign/constants.ts:114
 msgid "Essex County Express"
-msgstr ""
+msgstr "Экспресс округа Эссекс"
 
 #: src/components/campaign/constants.ts:115
 msgid "Blood on the Altar"
-msgstr ""
+msgstr "Кровь на Алтаре"
 
 #: src/components/campaign/constants.ts:116 src/components/campaign/constants.ts:130
 msgid "The Survivors"
-msgstr ""
+msgstr "Выжившие"
 
 #: src/components/campaign/constants.ts:117
 msgid "Undimensioned and Unseen"
-msgstr ""
+msgstr "Неизмеримые и невидимые"
 
 #: src/components/campaign/constants.ts:118
 msgid "Where Doom Awaits"
-msgstr ""
+msgstr "Там, где ждёт погибель"
 
 #: src/components/campaign/constants.ts:119
 msgid "Lost in Time and Space"
-msgstr ""
+msgstr "Потерянные во времени и пространстве"
 
 #: src/components/campaign/constants.ts:120 src/components/campaign/constants.ts:134
 #: src/components/campaign/constants.ts:148 src/components/campaign/constants.ts:162
@@ -3601,7 +3601,7 @@ msgstr ""
 #: src/components/campaign/constants.ts:221 src/components/campaign/constants.ts:237
 #: src/components/campaign/constants.ts:248
 msgid "Epilogue"
-msgstr ""
+msgstr "Эпилог"
 
 #: src/components/campaign/constants.ts:124
 msgid "Return to Extracurricular Activity"
@@ -3637,43 +3637,43 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:138
 msgid "Curtain Call"
-msgstr ""
+msgstr "Дайте занавес"
 
 #: src/components/campaign/constants.ts:139
 msgid "The Last King"
-msgstr ""
+msgstr "Последний король"
 
 #: src/components/campaign/constants.ts:140 src/components/campaign/constants.ts:154
 msgid "Lunacy’s Reward"
-msgstr ""
+msgstr "Награда за безумие"
 
 #: src/components/campaign/constants.ts:141
 msgid "Echoes of the Past"
-msgstr ""
+msgstr "Отголоски прошлого"
 
 #: src/components/campaign/constants.ts:142
 msgid "The Unspeakable Oath"
-msgstr ""
+msgstr "Невырязимая клятва"
 
 #: src/components/campaign/constants.ts:143 src/components/campaign/constants.ts:157
 msgid "Lost Soul"
-msgstr ""
+msgstr "Пропащая душа"
 
 #: src/components/campaign/constants.ts:144
 msgid "A Phantom of Truth"
-msgstr ""
+msgstr "Призрак истины"
 
 #: src/components/campaign/constants.ts:145
 msgid "The Pallid Mask"
-msgstr ""
+msgstr "Бледная маска"
 
 #: src/components/campaign/constants.ts:146
 msgid "Black Stars Rise"
-msgstr ""
+msgstr "Восход чёрных звёзд"
 
 #: src/components/campaign/constants.ts:147
 msgid "Dim Carcosa"
-msgstr ""
+msgstr "Туманная Каркоза"
 
 #: src/components/campaign/constants.ts:152
 msgid "Return to Curtain Call"
@@ -3709,55 +3709,55 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:166
 msgid "The Untamed Wilds"
-msgstr ""
+msgstr "Дремучие джунгли"
 
 #: src/components/campaign/constants.ts:167 src/components/campaign/constants.ts:184
 msgid "Restless Nights"
-msgstr ""
+msgstr "Бессонные ночи"
 
 #: src/components/campaign/constants.ts:168
 msgid "The Doom of Eztli"
-msgstr ""
+msgstr "Погибель эцтли"
 
 #: src/components/campaign/constants.ts:169 src/components/campaign/constants.ts:186
 msgid "Expedition’s End"
-msgstr ""
+msgstr "Финал экспедиции"
 
 #: src/components/campaign/constants.ts:170
 msgid "Threads of Fate"
-msgstr ""
+msgstr "Нити судьбы"
 
 #: src/components/campaign/constants.ts:171
 msgid "The Boundary Beyond"
-msgstr ""
+msgstr "Потусторонний предел"
 
 #: src/components/campaign/constants.ts:172 src/components/campaign/constants.ts:189
 msgid "The Jungle Beckons"
-msgstr ""
+msgstr "Джунгли зовут"
 
 #: src/components/campaign/constants.ts:173
 msgid "Heart of the Elders"
-msgstr ""
+msgstr "Сердце древних"
 
 #: src/components/campaign/constants.ts:174
 msgid "The City of Archives"
-msgstr ""
+msgstr "Город архивов"
 
 #: src/components/campaign/constants.ts:175 src/components/campaign/constants.ts:192
 msgid "Those Held Captive"
-msgstr ""
+msgstr "На свободе"
 
 #: src/components/campaign/constants.ts:176
 msgid "The Depths of Yoth"
-msgstr ""
+msgstr "Глубины Йота"
 
 #: src/components/campaign/constants.ts:177 src/components/campaign/constants.ts:194
 msgid "The Darkness"
-msgstr ""
+msgstr "Во тьме"
 
 #: src/components/campaign/constants.ts:178
 msgid "Shattered Aeons"
-msgstr ""
+msgstr "Расколотая вечность"
 
 #: src/components/campaign/constants.ts:183
 msgid "Return to The Untamed Wilds"
@@ -3886,7 +3886,7 @@ msgstr ""
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:30
 #: src/components/campaign/constants.ts:262
 msgid "The Night of the Zealot"
-msgstr ""
+msgstr "Ночь фанатички"
 
 #: src/components/campaign/NewCampaignView/index.tsx:140
 #: src/components/campaign/constants.ts:305 src/components/campaign/constants.ts:314
@@ -3895,47 +3895,47 @@ msgstr ""
 #: src/components/campaign/constants.ts:365 src/components/campaign/constants.ts:374
 #: src/components/campaign/constants.ts:382
 msgid "Campaign Notes"
-msgstr ""
+msgstr "Заметки"
 
 #: src/components/campaign/constants.ts:306
 msgid "Cultists We Interrogated"
-msgstr ""
+msgstr "Допрошенные культисты"
 
 #: src/components/campaign/constants.ts:307
 msgid "Cultists Who Got Away"
-msgstr ""
+msgstr "Сбежавшие культисты"
 
 #: src/components/campaign/constants.ts:315
 msgid "Sacrificed to Yog-Sothoth"
-msgstr ""
+msgstr "Принесены в жертву Йог-Сототу"
 
 #: src/components/campaign/constants.ts:323
 msgid "VIPs Interviewed"
-msgstr ""
+msgstr "Опрошенные гости"
 
 #: src/components/campaign/constants.ts:324
 msgid "VIPs Slain"
-msgstr ""
+msgstr "Убитые гости"
 
 #: src/components/campaign/constants.ts:327
 msgid "Doubt"
-msgstr ""
+msgstr "Сомнение"
 
 #: src/components/campaign/constants.ts:328
 msgid "Conviction"
-msgstr ""
+msgstr "Уверенность"
 
 #: src/components/campaign/constants.ts:329
 msgid "Chasing the Stranger"
-msgstr ""
+msgstr "Преследуя Незнакомца"
 
 #: src/components/campaign/constants.ts:336
 msgid "Yig's Fury"
-msgstr ""
+msgstr "Ярость Йига"
 
 #: src/components/campaign/constants.ts:337
 msgid "Supplies"
-msgstr ""
+msgstr "Припасы"
 
 #: src/components/campaign/constants.ts:344
 msgid "Mementos Discovered"
@@ -3967,30 +3967,30 @@ msgstr ""
 
 #: src/components/campaign/UpgradeDecksView/NonDeckDetailsButton.tsx:69
 msgid "Save XP"
-msgstr ""
+msgstr "Сохранить опыт"
 
 #: src/components/campaign/UpgradeDecksView/UpgradeDeckButton.tsx:23
 msgid "Upgrade deck"
-msgstr ""
+msgstr "Улучшить колоду"
 
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:66
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
-msgstr ""
+msgstr "${ xp } опыта доступно, (${ parsedDeck.changes.spentXp } потрачено)"
 
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:71
 #, javascript-format
 msgid "${ totalXp } total"
-msgstr ""
+msgstr "всего ${ totalXp }"
 
 #: src/components/campaign/UpgradeDecksView/index.tsx:55
 msgid "Update investigator decks"
-msgstr ""
+msgstr "Обновить колоды сыщиков"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:215
 #: src/components/campaign/UpgradeDecksView/index.tsx:127
 msgid "Upgrade"
-msgstr ""
+msgstr "Улучшить"
 
 #: src/components/campaign/UpgradeDecksView/index.tsx:162
 msgid ""
@@ -3998,253 +3998,266 @@ msgid ""
 "\n"
 "Previous versions of your deck will still be accessible."
 msgstr ""
+"Улучшая колоду, вы отслеживаете очки опыта и сюжетные карты по мере развития сюжета.\n"
+"\n"
+"Предыдущие версии колоды останутся доступными."
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:78
 msgid ""
 "Campaign A and Campaign B\n"
 "Eight-part campaign"
 msgstr ""
+"Кампания A и Кампания Б\n"
+"Кампания из восьми частей"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:80
 msgid ""
 "Campaign A\n"
 "Four-part campaign"
 msgstr ""
+"Кампания A\n"
+"Кампания из четырёх частей"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:82
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
 msgstr ""
+"Кампания B\n"
+"Кампания из четырёх частей"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:97
 msgid "Custom"
-msgstr ""
+msgstr "Особая"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:98
 msgid "Guide not yet available"
-msgstr ""
+msgstr "Путеводитель ещё не готов"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:119
 msgid "My Campaigns"
-msgstr ""
+msgstr "Мои кампании"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:126
 msgid "Other Campaigns"
-msgstr ""
+msgstr "Другие кампании"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:51
 msgid "Select Campaign"
-msgstr ""
+msgstr "Выбрать кампанию"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:250
 msgid "Success"
-msgstr ""
+msgstr "Успех"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:254
 msgid "Draw Two, Pick One"
-msgstr ""
+msgstr "Вытянуть два, выбрать один"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:258
 msgid "Fail By 2 or Less"
-msgstr ""
+msgstr "Провал на 2 или меньше"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:262
 msgid "Fail By 1 or Less"
-msgstr ""
+msgstr "Провал на 1 или меньше"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:265
 msgid "Succeed By 1 or More"
-msgstr ""
+msgstr "Успех хотя бы на 1"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:266
 msgid "Succeed By 2 or More"
-msgstr ""
+msgstr "Успех хотя бы на 2"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:267
 msgid "Succeed By 3 or More"
-msgstr ""
+msgstr "Успех на 3 и больше"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:268
 msgid "Re-Draw After Fail"
-msgstr ""
+msgstr "Перетянуть после провала"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:269
 msgid "Succeed Twice In A Row"
-msgstr ""
+msgstr "Два успеха подряд"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:33
 msgid "Number of clues on your location"
-msgstr ""
+msgstr "Число улик на вашей локации"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:39
 msgid "Horror on Agnes Baker"
-msgstr ""
+msgstr "Ужас на Агнес Бейкер"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:45
 msgid "Wendy's Amulet in play"
-msgstr ""
+msgstr "«Амулет Венди» в игре"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:52
 msgid "Number of resources you have"
-msgstr ""
+msgstr "Число ресурсов у вас"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:58
 msgid "Damage on Mark Harrigan"
-msgstr ""
+msgstr "Раны на Марке Хэрригане"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:64
 msgid "Number of exhausted enemies in play"
-msgstr ""
+msgstr "Число повёрнутых врагов в игре"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:76
 msgid "Spend two resources to automatically succeed"
-msgstr ""
+msgstr "Потратить два ресурса, чтобы автоматически пройти"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:83
 msgid "Resource cost of the top card on your deck"
-msgstr ""
+msgstr "Цена в ресурсах верхней карты вашей колоды"
 
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:384
 msgid "Change Scenario"
-msgstr ""
+msgstr "Сменить сценарий"
 
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:413
 msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not show correct odds "
 "for the \"Draw Two Pick One\" and similar multi-draw situations."
 msgstr ""
+"Обратите внимание: жетоны хаоса, предписывающие вытянуть ещё один жетон, дают "
+"некорректные вероятности в ситуациях, подобных «Вытянуть два, выбрать один»."
 
 #: src/components/campaign/NewCampaignView/index.tsx:662
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:420
 msgid "Difficulty"
-msgstr ""
+msgstr "Сложность"
 
 #: src/components/campaign/NewCampaignView/CampaignNoteSectionRow.tsx:33
 msgid " (Per Investigator)"
-msgstr ""
+msgstr " (за сыщика)"
 
 #: src/components/campaign/MyCampaignsView/index.tsx:52
 #: src/components/campaign/MyCampaignsView/index.tsx:92
 #: src/components/campaign/MyCampaignsView/index.tsx:159
 #: src/components/campaign/NewCampaignView/index.tsx:115
 msgid "New Campaign"
-msgstr ""
+msgstr "Новая кампания"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:224
 #: src/components/campaign/NewCampaignView/index.tsx:483
 msgid "Campaign Name"
-msgstr ""
+msgstr "Название кампании"
 
 #: src/components/campaign/campaignHelper.ts:40
 msgid "Adjust Weakness Set"
-msgstr ""
+msgstr "Настроить комплект слабости"
 
 #. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:43
 msgid "This deck contains several basic weaknesses"
-msgstr ""
+msgstr "Эта колода включает несколько базовых слабостей"
 
 #. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:44
 msgid "This deck contains a basic weakness"
-msgstr ""
+msgstr "Эта колода включает базовую слабость"
 
 #. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:49
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
-msgstr ""
+msgstr "Хотите исключить их из комплекта базовых слабостей?"
 
 #. eslint-disable prefer-template
 #: src/components/campaign/campaignHelper.ts:50
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
-msgstr ""
+msgstr "Хотите исключить её из комплекта базовых слабостей?"
 
 #: src/components/campaign/campaignHelper.ts:52
 msgid "Not Now"
-msgstr ""
+msgstr "Не сейчас"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:190
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:198
 #: src/components/campaign/NewCampaignView/index.tsx:310
 msgid "(required)"
-msgstr ""
+msgstr "(обязательно)"
 
 #: src/components/campaign/NewCampaignView/index.tsx:312
 #, javascript-format
 msgid "My ${ campaign } Campaign"
-msgstr ""
+msgstr "Моя ${ campaign } кампания"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:522
 #: src/components/campaign/NewCampaignView/index.tsx:498
 msgid "Weakness Set"
-msgstr ""
+msgstr "Комплект слабостей"
 
 #: src/components/campaign/NewCampaignView/index.tsx:501
 msgid "Include all basic weaknesses from these expansions"
-msgstr ""
+msgstr "Включить все слабости из данных дополнений"
 
 #: src/components/campaign/EditCampaignNotesComponent/index.tsx:165
 #: src/components/campaign/NewCampaignView/index.tsx:600
 msgid "Add Log Section"
-msgstr ""
+msgstr "Добавить графу"
 
 #: src/components/campaign/NewCampaignView/index.tsx:654
 msgid "Guided Campaign"
-msgstr ""
+msgstr "Путеводитель по кампании"
 
 #: src/components/campaign/NewCampaignView/index.tsx:655
 msgid "Use app for scenario setup & resolutions"
-msgstr ""
+msgstr "Использовать приложение для подготовки и розыгрыша исходов"
 
 #: src/components/campaign/NewCampaignView/index.tsx:655
 msgid "Track campaign log and resolutions manually"
-msgstr ""
+msgstr "Вести журнал кампании и определять исходы вручную"
 
 #: src/components/campaign/NewCampaignView/index.tsx:675
 msgid "Investigators"
-msgstr ""
+msgstr "Сыщики"
 
 #: src/components/campaign/NewCampaignView/index.tsx:694
 msgid "Create Campaign"
-msgstr ""
+msgstr "Создать кампанию"
 
 #: src/components/campaign/NewCampaignView/index.tsx:701
 msgid ""
 "If you encounter any problems with the campaign guide system, please let me know at "
 "arkhamcards@gmail.com."
 msgstr ""
+"При обнаружении проблем или недочётов в работе путеводителя, напишите, пожалуйста, "
+"на arkhamcards@gmail.com."
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:63
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:85
 msgid "Choose an Investigator"
-msgstr ""
+msgstr "Выберите сыщика"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:214
 msgid "Hide Decks From Other Campaigns"
-msgstr ""
+msgstr "Не показывать колоды из других кампаний"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:225
 msgid "Hide Killed and Insane Investigators"
-msgstr ""
+msgstr "Не показывать убитых и сошедших с ума сыщиков"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:236
 msgid "Only Show Previous Campaign Members"
-msgstr ""
+msgstr "Показывать только прежних участников кампании"
 
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:49
 msgid "Edit name"
-msgstr ""
+msgstr "Редактировать название"
 
 #: src/app/App.ts:165 src/app/App.ts:219 src/components/campaign/MyCampaignsView/index.tsx:46
 #: src/components/settings/MergeBackupView/index.tsx:239
 msgid "Campaigns"
-msgstr ""
+msgstr "Кампании"
 
 #: src/components/campaign/MyCampaignsView/index.tsx:136
 #, javascript-format
 msgid "No matching campaigns for \"${ search }\"."
-msgstr ""
+msgstr "Нет кампаний по запросу «${ search }»."
 
 #: src/components/campaign/MyCampaignsView/index.tsx:144
 msgid ""
@@ -4255,48 +4268,54 @@ msgid ""
 "You can use this app to keep track of campaigns, including investigator trauma, the chaos "
 "bag, basic weaknesses, campaign notes and the experience values for all decks."
 msgstr ""
+"Кампаний ещё нет.\n"
+"\n"
+"Нажмите «+», чтобы создать новую.\n"
+"\n"
+"В этом приложении вы можете отслеживать прогресс кампании, включая травмы, жетоны хаоса, "
+"слабости, заметки в журнале кампании и опыт, полученный каждым из сыщиков."
 
 #: src/components/campaign/MyCampaignsView/index.tsx:173
 msgid "Search campaigns"
-msgstr ""
+msgstr "Поиск по кампаниям"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:106
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
-msgstr ""
+msgstr "${ spentXp } из ${ totalXp } потрачено"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:187
 msgid "Remove investigator"
-msgstr ""
+msgstr "Удалить сыщика"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:241
 msgid "Edit Trauma"
-msgstr ""
+msgstr "Править травмы"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:250
 msgid "View Deck"
-msgstr ""
+msgstr "Посмотреть колоду"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:263
 msgid "Select Deck"
-msgstr ""
+msgstr "Выбрать колоду"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:132
 msgid "Save changes?"
-msgstr ""
+msgstr "Сохранить изменения?"
 
 #: src/components/campaign/EditCampaignNotesComponent/NotesSection/NoteRow.tsx:58
 msgid "Add note"
-msgstr ""
+msgstr "Добавить заметку"
 
 #: src/components/campaign/CampaignScenarioView/index.tsx:75
 msgid "SCENARIOS"
-msgstr ""
+msgstr "Сценарии"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:175
 #, javascript-format
 msgid "Remove ${ investigator.name }?"
-msgstr ""
+msgstr "Удалить ${ investigator.name }?"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:177
 msgid ""
