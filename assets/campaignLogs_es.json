@@ -506,7 +506,7 @@
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "los investigadores no escaparon de la mirada del Fantasma."
           },
           {
             "id": "entered_catacombs",
@@ -526,11 +526,11 @@
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "los investigadores encontraron a Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "los investigadores encontraron la casa de Nigel."
           },
           {
             "id": "hastur_has_you",
@@ -538,11 +538,11 @@
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "los investigadores hicieron caso de la advertencia de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "los investigadores ignoraron la advertencia de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -602,7 +602,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "los investigadores no lograron encontrar a Nigel."
           },
           {
             "id": "blob_contained",
@@ -1295,7 +1295,7 @@
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "los investigadores no escaparon de la mirada del Fantasma."
           },
           {
             "id": "entered_catacombs",
@@ -1315,11 +1315,11 @@
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "los investigadores encontraron a Nigel Engram."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "los investigadores encontraron la casa de Nigel."
           },
           {
             "id": "hastur_has_you",
@@ -1327,11 +1327,11 @@
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "los investigadores hicieron caso de la advertencia de Daniel."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "los investigadores ignoraron la advertencia de Daniel."
           },
           {
             "id": "intruded_on_secret_meeting",
@@ -1391,7 +1391,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "los investigadores no lograron encontrar a Nigel."
           },
           {
             "id": "blob_contained",

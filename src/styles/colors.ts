@@ -52,7 +52,7 @@ export default {
     neutral: {
       text: darkText,
       background: '#444',
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444', dark: '#888' }) : PlatformColor('?attr/factionNeutralDarkBackgroundColor')) as any as string,
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#888888' }) : PlatformColor('?attr/factionNeutralDarkBackgroundColor')) as any as string,
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : PlatformColor('?attr/factionNeutralLightBackgroundColor')) as any as string,
     },
     dual: {
@@ -70,7 +70,7 @@ export default {
     mythos: {
       text: darkText,
       background: '#444',
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : PlatformColor('?attr/factionMythosDarkBackgroundColor')) as any as string,
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000000', dark: '#444444' }) : PlatformColor('?attr/factionMythosDarkBackgroundColor')) as any as string,
       lightBackground: '#000000',
     },
   },

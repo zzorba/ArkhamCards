@@ -5142,7 +5142,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -5152,7 +5152,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -5166,8 +5166,8 @@
 }, "scenarios": [
 {
   "id": "a_phantom_of_truth",
-  "scenario_name": "A Phantom of Truth",
-  "full_name": "Scenario V: A Phantom of Truth",
+  "scenario_name": "El Fantasma de la Verdad",
+  "full_name": "Escenario V: El Fantasma de la Verdad",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -5193,7 +5193,7 @@
   "steps": [
     {
       "id": "app_note",
-      "text": "Note: while the app implements the introduction for this scenario correctly, it does not fully capture the incredible design of the printed rules. Since the experience is very different, if you have not played this scenario before I <i>highly recommend</i> using the printed instructions."
+      "text": "Nota: Aunque la aplicación implementa correctamente la Introducción de este escenario, no logra capturar plenamente el increíble diseño de la Guía de campaña oficial. Puesto que la experiencia es muy diferente, si no has jugado a este escenario anteriormente, te <i>recomiendo encarecidamente</i> que leas la Introducción de este escenario en la versión en papel de la Guía de campaña."
     },
     {
       "id": "check_king_claimed_victims",
@@ -5221,17 +5221,17 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Several months have passed since The King in Yellow came to the Ward Theatre. You and your companions have been investigating the strange incidents that followed in its wake. What you have found makes you question the wisdom of continuing your investigation, but the truth calls out to you, and you cannot help but answer. It seems you weren’t the first to piece together the strange happenings surrounding The King in Yellow. Another group of investigators had been researching these events as well. Just a matter of days after the performance in Arkham, they were admitted to the asylum, ranting about the King’s return and the “monsters” that had attacked them. Somehow this doesn’t surprise you. Their fate makes you all the more certain you are on the right trail... And all the more certain that you should stop while you still have the chance.\nYou’ve found the records those investigators kept before their incarceration, and picked up the trail where they left off. They had interviewed some of the cast and crew of The King in Yellow, and discovered several pieces of vital information. Their research also contains notes about their discoveries in Arkham’s Historical Society, and accounts from their time spent in the asylum, including interactions with a patient named “Daniel Chesterfield.” After a long night of compiling and comparing notes, you fall into a deep slumber. In your dreams, you are subjected to visions of Carcosa—its black stars, twin suns, shattered moons, and twisted spires."
+      "text": "Han pasado varios meses desde que El Rey de Amarillo se representara en el Teatro Ward. Tus compañeros y tú habéis estado investigando los extraños incidentes que se produjeron después. Lo que habéis encontrado hace que te preguntes si es sensato proseguir la investigación, pero la verdad te llama, y no puedes evitar responder a su llamada. Parece que no sois los únicos que unisteis las piezas que vinculaban los extraños acontecimientos que rodean a El Rey de Amarillo. Otro grupo de investigadores también ha investigado estos sucesos. Unos días después de la representación en Arkham, fueron ingresados en el manicomio, desvariando acerca del regreso del Rey y de los “monstruos” que los habían atacado. La noticia no te sorprende. Su destino te hace estar aún más seguro de que estás siguiendo el rastro correcto... Y mucho más de que deberías parar mientras aún estás a tiempo.\nHas encontrado los documentos que tenían esos investigadores antes de su ingreso y has seguido las pistas que dejaron. Habían interrogado a parte del elenco y del equipo de El Rey de Amarillo y descubierto varias informaciones de vital importancia. Su investigación también contiene notas sobre sus descubrimientos en la Sociedad Histórica de Arkham, además de la narración del tiempo que pasaron en el manicomio, incluido su encuentro con un paciente llamado “Daniel Chesterfield”. Tras una larga noche de recopilar y comparar notas, te quedas profundamente dormido. En tus sueños, te ves sometido a visiones de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "It has been several weeks since the events in the asylum, and you are still no closer to the truth about The King in Yellow and Carcosa. You have scoured the city for signs of the others Daniel had mentioned—the ones who are “opening the path to Carcosa”—but found nothing. Either the trail has gone cold, or they’re no longer in Arkham. Perhaps Daniel truly was insane, and you are only following him deeper down the rabbit hole. Every night, you toss and turn as you are subjected to vivid dreams of Carcosa—its black stars, twin suns, shattered moons, and twisted spires."
+      "text": "Han pasado varias semanas desde los sucesos ocurridos en el manicomio, y sigues igual de lejos de la verdad sobre El Rey de Amarillo y Carcosa. Has registrado la ciudad en busca de algún indicio de aquellos que mencionó Daniel, los que estaban “abriendo el camino a Carcosa”, pero no has encontrado nada. O el rastro se ha enfriado o ya no están en Arkham. Puede que Daniel estuviera loco de verdad, y que lo único que estés haciendo sea seguirlo cada vez más dentro de la madriguera del conejo. Cada noche, te agitas mientras duermes al verte expuesto a vívidos sueños de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "dream_4",
       "type": "story",
-      "text": "Smoke and embers float upwards into the starless night sky. The screams of burning creatures fill you with a horrid sense of accomplishment. They almost sound human, you consider. But you know that isn’t true."
+      "text": "Humo y ascuas flotan hacia el cielo nocturno carente de estrellas. Los gritos de criaturas que arden hacen que te invada la horrenda sensación de haberlo logrado. Casi parecen gritos humanos, piensas. Pero sabes que no es verdad."
     },
     {
       "id": "one_mental_trauma",
@@ -5246,7 +5246,7 @@
     {
       "id": "dream_8",
       "type": "story",
-      "text": "You peer in the mirror, and the Stranger peers back at you. His gaze drills into your mind. The mirror shatters."
+      "text": "Miras en el espejo, y el Extranjero te devuelve la mirada. Sus ojos penetran en tu mente. El espejo se hace pedazos."
     },
     {
       "id": "dream_8_test",
@@ -5292,11 +5292,11 @@
     {
       "id": "dream_1",
       "type": "story",
-      "text": "You fall through the empty abyss of Hali. Creatures of unknown and impossible origin lurk just beyond the darkness of your sight. Hastur looms above you, magnificent and yet bound in his prison of madness, manipulating your torturous descent with a sole outstretched arm."
+      "text": "Caes por el vacío abismal de Hali. Unas criaturas de origen desconocido e imposible acechan en la oscuridad, donde no puedes verlas. Hastur se alza sobre ti de forma gloriosa, pero cautivo de su prisión de locura, manipulando tu tortuoso descenso con un brazo extendido."
     },
     {
       "id": "earn_lost_soul",
-      "text": "Each investigator has earned the Lost Soul weakness <i>(The Path to Carcosa #227)</i> (does not count toward deck size). Shuffle one copy of this weakness into each investigator’s deck.",
+      "text": "Todos los investigadores reciben la Debilidad “Alma perdida” <i>(El camino a Carcosa 227)</i>. Esta carta no cuenta para el tamaño de mazo de los investigadores. Añade 1 copia de esta Debilidad al mazo de cada investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -5308,11 +5308,11 @@
     {
       "id": "dream_12",
       "type": "story",
-      "text": "You peer up at the stained glass, curious. What is the shape of the shadow along the window? What is the meaning behind this strange design?"
+      "text": "Levantas la vista hacia la vidriera por curiosidad. ¿Qué es esa sombra que hay en la ventana? ¿Qué significado tiene este extraño diseño?"
     },
     {
       "id": "mark_one_doubt",
-      "text": "Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "Marca una <b>Duda</b> en tu registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -5325,7 +5325,7 @@
     {
       "id": "dream_2",
       "type": "story",
-      "text": "Constance takes your hand and pulls you onto the polished dance floor. “Come now, don’t be shy. Tonight is a night for dancing! For celebration!”"
+      "text": "Constance te coge de la mano y te lleva a la reluciente pista de baile. –Vamos, que no te dé vergüenza. ¡Hoy es una noche para bailar! ¡Para celebrar!"
     },
     {
       "id": "dream_2_test",
@@ -5406,16 +5406,16 @@
     {
       "id": "dream_9",
       "type": "story",
-      "text": "You chase the Stranger through dark, chilly passageways composed of hundreds of thousands of skeletal bodies. Skulls watch as you run, their mouths rattling a mocking taunt as you pass. The Stranger reaches a solid wall of bone, and is grabbed by bony hands and pulled into the wall. Their mocking laughs reach an awful crescendo."
+      "text": "Persigues al Extranjero por oscuros corredores fríos como el hielo y formados por cientos de miles de esqueletos. Los cráneos te miran correr, castañeteando de forma burlona sus mandíbulas cuando pasas. El Extranjero llega a una pared hecha de hueso y unas manos huesudas lo agarran y lo meten en la pared. Sus burlonas risas llegan a un terrible crescendo."
     },
     {
       "id": "dream_7",
       "type": "story",
-      "text": "You find yourself inside the Arkham Police Department, desperately trying to explain to the desk sergeant what happened in the Ward Theatre. He scoffs and refuses to believe you. “We know what you’re really up to,” he says, and claps a pair of handcuffs over your wrists. “You’re under arrest for larceny. Boys, take ‘em away.” Several other cops flank you and prevent any escape. Your protests go unheard as you are firmly escorted down a flight of concrete stairs and hurled into a cold jail cell. “Maybe some time in lockup will change your story,” the desk sergeant shouts. He slams the door behind him, leaving you with your spiraling thoughts. How did they find out? How could they possibly know?"
+      "text": "Te encuentras en el interior de la comisaría de policía de Arkham, tratando desesperadamente de explicarle al sargento de guardia lo que ha ocurrido en el Teatro Ward. Éste hace una mueca burlona y se niega a creerte: –Sabemos lo que intentas hacer –dice mientras te pone unas esposas en las muñecas–. Quedas arrestado por robo. Chicos, lleváoslo –Varios agentes te rodean para evitar que huyas. Nadie escucha tus protestas mientras te llevan escaleras abajo y te meten en una fría celda–. Quizás pasarte un tiempo encerrado te haga cambiar el cuento –grita el sargento de guardia. Cierra la puerta de un golpe y te deja sumido en una cascada de pensamientos. ¿Cómo se han enterado? ¿Cómo han podido saberlo?"
     },
     {
       "id": "earn_paranoia",
-      "text": "Choose an investigator. The chosen investigator has earned the Paranoia weakness (Core 97) (does not count toward deck size). Shuffle 1 copy of this weakness into that investigator’s deck, if able.",
+      "text": "Elige un investigador. El investigador elegido ha obtenido la Debilidad “Paranoia” (Básico 97). Esta carta no cuenta para el tamaño de mazo de ese investigador. Añade 1 copia de esta Debilidad al mazo de ese investigador si es posible.",
       "effects": [
         {
           "type": "add_card",
@@ -5427,7 +5427,7 @@
     {
       "id": "dream_10",
       "type": "story",
-      "text": "You chase the Stranger up a steep staircase of broken stone, a torrent of rain crashing upon your back as you run. Lighting flashes in the distance. A vortex of swirling black clouds looms above you, threatening to swallow the world whole. The masked man dashes through a wide set of doors atop the stairs, and you follow close behind. The sound of crashing thunder is muffled as the doors close behind you. Looking up, you see a familiar depiction in stained glass. “Beautiful, is it not?” the Stranger says quietly."
+      "text": "Persigues al Extranjero por una empinada escalera de piedra rota mientras una lluvia torrencial descarga sobre ti mientras corres. Ves relámpagos a lo lejos. Un remolino de nubes negras se forma sobre ti, amenazando con tragarse el mundo. El enmascarado atraviesa a la carrera unas anchas puertas que hay en lo alto de las escaleras, y le sigues de cerca. El sonido del trueno queda amortiguado cuando las puertas se cierran a tu espalda. Al levantar la vista, ves una imagen familiar en una vidriera. –¿Verdad que es precioso? –dice el Extranjero en voz baja."
     },
     {
       "id": "dream_10_choice",
@@ -5437,7 +5437,7 @@
         "choices": [
           {
             "id": "beautiful",
-            "text": "<i>“How could any of this be beautiful to you?”</i>",
+            "text": "<i>–¿Cómo puede resultarte precioso nada de esto?</i>",
             "steps": [
               "dream_11",
               "mark_one_conviction"
@@ -5445,7 +5445,7 @@
           },
           {
             "id": "confused",
-            "text": "<i>“What exactly am I looking at?”</i>",
+            "text": "<i>–¿Eso qué es exactamente?</i>",
             "steps": [
               "dream_12",
               "mark_one_doubt"
@@ -5457,11 +5457,11 @@
     {
       "id": "dream_11",
       "type": "story",
-      "text": "You avoid looking at the stained glass. If this vile man considers it to be beautiful, it is probably some trap meant to ensnare your mind. You clench your fist until your knuckles are white and step forward to confront the Stranger."
+      "text": "Evitas mirar la vidriera. Si este hombre malvado la considera preciosa, probablemente sea una trampa para atrapar tu mente. Aprietas los puños hasta que se te ponen blancos los nudillos y avanzas para enfrentarte al Extranjero."
     },
     {
       "id": "mark_one_conviction",
-      "text": "Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "Marca una <b>Convicción</b> en tu registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -5474,17 +5474,17 @@
     {
       "id": "dream_3",
       "type": "story",
-      "text": "“Ah, if it isn’t our esteemed guest,” the man with the mustache and the silver-handled cane says. He grabs a bottle of wine from the nearby countertop and pours you a glass. “I hear you have taken quite the interest in our little production,” he says with a smile. “Tell me: how are you enjoying Act 2, so far?”"
+      "text": "–Vaya, vaya, si es nuestro estimado invitado –dice el hombre del bigote y el bastón de mango de plata. Coge una botella de vino de una encimera cercana y te sirve un vaso–. Me han dicho que tiene un gran interés por nuestra modesta producción –dice con una sonrisa–. Dígame, ¿cómo le está pareciendo el segundo acto hasta ahora?"
     },
     {
       "id": "dream_13",
       "type": "story",
-      "text": "Daniel’s voice calls out to you. “They are opening the path to Carcosa.”"
+      "text": "La voz de Daniel te llama: –Están abriendo el camino a Carcosa."
     },
     {
       "id": "dream_6",
       "type": "story",
-      "text": "The lights of the theatre dim and a spotlight shines on the stage. “Welcome, ladies and gentleman!” the creature exclaims. Its many tentacles reach across the stage, up into the rafters, and throughout the aisles. It tears the curtains down, and tattered red cloth falls over its bulbous form."
+      "text": "Las luces del auditorio se atenúan, y un foco ilumina el escenario. –¡Bienvenidos, damas y caballeros! –exclama la criatura. Sus numerosos tentáculos recorren el escenario, llegan hasta el techo y penetran en los pasillos. Arranca el telón, y una andrajosa tela roja cae sobre su bulbosa forma."
     },
     {
       "id": "dream_6_test",
@@ -5516,11 +5516,11 @@
     {
       "id": "awakening",
       "type": "story",
-      "text": "You awaken from your fitful dream, sweating and gagging. This cannot go on any longer. You have only one option if you are to continue your investigation. You must find Nigel Engram, director of The King in Yellow, and architect of this madness. Only he will have the answers you seek. You pack your bags and plan your trip to Paris, the City of Lights."
+      "text": "Despiertas de tu agitado sueño, sudoroso y boqueante. Esto no puede continuar. Sólo tienes una opción si quieres continuar tu investigación. Debes encontrar a Nigel Engram, director de El Rey de Amarillo y arquitecto de esta locura. Sólo él tendrá las respuestas que buscas. Haces las maletas y preparas tu viaje a París, la Ciudad de la Luz."
     },
     {
       "id": "check_jordan_perry",
-      "text": "Check Campaign Log. <i>If Jordan Perry is listed under VIPs Interviewed</i>:",
+      "text": "Comprueba en el registro de campaña si <i>Jordan Perry aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -5540,11 +5540,11 @@
     {
       "id": "jordan_information",
       "type": "story",
-      "text": "According to Mr. Jordan Perry, who had financed several performances of The King in Yellow across the world, Nigel Engram was an eccentric and impassioned man, almost to the point of mania. Rumor was, he hadn’t directed any other works since discovering The King in Yellow. Jordan had first met with Mr. Engram at a café in Montparnasse, “L’agneau Perdu.” You travel there first, hoping to find Mr. Engram..."
+      "text": "Según el Sr. Jordan Perry, que financió varias representaciones de El Rey de Amarillo por todo el mundo, Nigel Engram era un hombre excéntrico y apasionado, rozando lo obsesivo. Se rumorea que, desde que descubrió El Rey de Amarillo, no ha dirigido ninguna otra obra. Jordan conoció al Sr. Engram en una cafetería de Montparnasse, “L’agneau perdu”. Es allí a donde vas primero, con la esperanza de poder encontrar al Sr. Engram..."
     },
     {
       "id": "gain_resources",
-      "text": "Each investigator begins the game with 3 additional resources. Instead of the normal starting location, each investigator begins play at Montparnasse."
+      "text": "Cada investigador comienza la partida con 3 recursos adicionales. Cada investigador comienza la partida en Montparnasse en lugar de en el Lugar inicial normal."
     },
     {
       "id": "gather_encounter_sets",
@@ -5558,7 +5558,7 @@
         "agents_of_hastur",
         "arkham"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set"
+      "subtext": "Al reunir el conjunto de encuentros <i>Las máscaras de medianoche</i>, coge sólo las 5 cartas de Traición (2x Pista falsa y 3x Sombra acechante). No cojas las cartas de Lugar, de Acto, de Plan o de referencia de escenario de ese conjunto."
     },
     {
       "id": "check_doubt_and_conviction",
@@ -5604,39 +5604,39 @@
     },
     {
       "id": "more_or_equal_doubt",
-      "text": "Because you have more (or equal) <b>Doubt</b> than <b>Conviction</b>:"
+      "text": "Como tu cantidad de <b>Dudas</b> es mayor o igual que la de <b>Convicciones</b>:"
     },
     {
       "id": "more_conviction",
-      "text": "Because you have more <b>Conviction</b> than <b>Doubt</b>:"
+      "text": "Como tienes más <b>Convicciones</b> que <b>Dudas</b>:"
     },
     {
       "id": "gather_doubt",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for both copies of Twin Suns and all 3 copies of Hunting Shadow, and remove them from the game."
+      "text": "Busca las 2 copias de Soles gemelos y las 3 copias de Sombra acechante en los conjuntos de encuentros reunidos y retíralas de la partida."
     },
     {
       "id": "gather_conviction",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for both copies of Black Stars Rise and both copies of False Lead, and remove them from the game."
+      "text": "Busca las 2 copias de Surgen estrellas negras y de Pista falsa y retíralas de la partida."
     },
     {
       "id": "act_1_v1",
       "bullet_type": "small",
-      "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. I). The other version of Act 1 is removed from the game."
+      "text": "Durante este escenario, usa el Acto 1 – La conspiración parisina (v.I). Retira de la partida la otra versión del Acto 1."
     },
     {
       "id": "act_1_v2",
       "bullet_type": "small",
-      "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. II). The other version of Act 1 is removed from the game."
+      "text": "Durante este escenario, usa el Acto 1 – La conspiración parisina (v.II). Retira de la partida la otra versión del Acto 1."
     },
     {
       "id": "choose_locations",
-      "text": "Choose one of the two Montmartre locations, one of the two Opéra Garnier locations, and one of the two Le Marais locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game."
+      "text": "Elige al azar 1 de los 2 Lugares “Montmartre”, 1 de los 2 Lugares “Opéra Garnier” y 1 de los 2 Lugares “Le Marais”. Pon en juego los Lugares elegidos. Retira de la partida las otras versiones de esos Lugares."
     },
     {
       "id": "setup_locations",
-      "text": "Put the remaining locations (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint‐Martin, Père Lachaise Cemetery, Notre‐Dame, and Gardens of Luxembourg) into play. Each investigator begins play at Gare d’Orsay."
+      "text": "Pon en juego los Lugares restantes (Montparnasse, Gare d’Orsay, Grand Guignol, Canal Saint-Martin, Cementerio Père Lachaise, Notre-Dame y Jardines de Luxemburgo). Consulta la distribución sugerida a continuación. Cada investigador comienza la partida en la Gare d’Orsay."
     },
     {
       "id": "location_layout",
@@ -5691,11 +5691,11 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the double‐sided The Organist enemy aside, out of play."
+      "text": "Pon aparte, fuera del juego, el Enemigo de doble cara El organista."
     },
     {
       "id": "set_aside_lost_soul",
-      "text": "If there are any remaining copies of the Lost Soul weakness, set them aside, out of play."
+      "text": "Si quedan copias de la Debilidad “Alma perdida”, ponlas aparte, fuera del juego."
     },
     {
       "id": "encounter_deck",
@@ -5739,7 +5739,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -5772,7 +5772,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -5793,7 +5793,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -5803,7 +5803,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -5820,7 +5820,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "did_not_escape_gaze",
-          "text": "you did not escape the gaze of the phantom."
+          "text": "los investigadores no escaparon de la mirada del Fantasma."
         }
       ]
     },
@@ -5831,19 +5831,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_nigels_home",
-          "text": "you found Nigel's home."
+          "text": "los investigadores encontraron la casa de Nigel."
         }
       ]
     },
     {
       "id": "found_nigel_engram",
-      "text": "Record in your Campaign Log that <i>you found Nigel Engram</i>. Each investigator suffers 1 mental trauma from the shock of their discovery. Each investigator earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Anota en el registro de campaña que <i>los investigadores encontraron a Nigel Engram</i>. Cada investigador sufre 1 trauma mental por la conmoción del descubrimiento. Cada investigador obtiene 2 puntos de experiencia adicionales por haber recibido información sobre las maquinaciones del Rey Andrajoso.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_nigel_engram",
-          "text": "you found Nigel Engram."
+          "text": "los investigadores encontraron a Nigel Engram."
         },
         {
           "type": "trauma",
@@ -5864,7 +5864,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "unable_to_find_nigel",
-          "text": "you were unable to find Nigel."
+          "text": "los investigadores no lograron encontrar a Nigel."
         }
       ]
     },
@@ -5909,7 +5909,7 @@
         "choices": [
           {
             "id": "jordan_killed",
-            "text": "Is Jordan Perry <i>(An Imposing Presence)</i> in the victory display?",
+            "text": "¿Está Jordan Perry <i>(Una presencia imponente)</i> en la zona de victoria?",
             "steps": [
               "kill_jordan"
             ]
@@ -5920,7 +5920,7 @@
     {
       "id": "kill_jordan",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Jordan Perry</i>.",
+      "text": "Anota a <i>Jordan Perry</i> en la sección “VIP muertos” del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -5931,7 +5931,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -5955,7 +5955,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -5979,7 +5979,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -6012,7 +6012,7 @@
         "physical",
         "mental"
       ],
-      "text": "You lose track of yourself within the city as you flee for your life. Your feet move of their own accord. The beating of sinewy wings and screeching of creatures above you spurs you onward. Soon you find yourself running down a narrow avenue, passing a set of heavy iron gates. You are in a dead end—a court with tall, old houses on either side. You turn back toward the entrance to find the shapes of many winged creatures barring your path. They are perched on the gates and on the balconies above, awaiting your doom. Walking with cold, sinister confidence, the man in black opens the iron gate and enters the court. His face gleams in the darkness. His eyes pierce your soul. For a moment, you recognize him for what he truly is. It is the last you remember of that night.",
+      "text": "Ni siquiera miras por dónde vas mientras huyes por la ciudad para ponerte a salvo. Tus pies se mueven solos. El batir de unas fuertes alas y el chillido de las criaturas que te sobrevuelan te hacen ir más rápido. Pronto te encuentras corriendo por una estrecha avenida, por unos pesados portones de hierro. Estás en un callejón sin salida; un patio con altas casas antiguas en todos sus lados. Te vuelves hacia la entrada y ves las siluetas de muchas criaturas aladas que te bloquean el paso. Están posadas en los portones y en los balcones de los pisos superiores, esperando tu muerte. Caminando con fría y siniestra confianza, el hombre de negro abre el portón de hierro y entra en el patio. Su rostro brilla en la oscuridad. Sus ojos te atraviesan el alma. Durante un instante, reconoces su verdadero ser. Es lo último que recuerdas de esa noche.",
       "steps": [
         "did_not_escape_gaze",
         "add_elder_things",
@@ -6024,7 +6024,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<center><fancy>He is already here.</fancy></center>",
+      "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Agarras el picaporte, esperando no tener que recurrir a la fuerza, pero, para tu sorpresa, la puerta está abierta.\nEl interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. La comida de la despensa lleva allí mucho tiempo y está podrida. No parece que nadie haya vivido aquí desde hace años, y aun así, la tinta de las paredes de la sala de estar está húmeda y parece fresca. Cada centímetro del papel pintado está cubierto por una frase que se repite una y otra vez:\n<center><fancy>Ya está aquí.</fancy></center>",
       "steps": [
         "found_nigels_home",
         "add_cultists",
@@ -6036,7 +6036,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. A flock of magpies scatters from the rooftop at the sudden noise. Then, to your surprise, the door opens.\nAcross the threshold of the doorway stands a tall man with a thick, brown mustache. A familiar silver-handled cane leans against the wall next to his coat hanger. “So it’s you,” he says. “Come in. I have expected you for some time now.” He turns away and walks toward his kitchen. You can hear a teapot whistling, as though he’d been preparing for your arrival.\nYou enter his home, unsure of what to do next. This gentle, unassuming man is not quite what you had expected. Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. Mr. Engram returns moments later with hot tea and a plate of cheese and crackers. “I assume you are here to find the path to Carcosa?” he asks, wearing an excited grin. You shake your head in response, but he doesn’t seem to notice. He paces back and forth around the room as he speaks rapidly. “He told me that you would be arriving soon. That I should... Prepare.” Nigel turns toward you as he reaches the wooden door across from you, his eyes flashing. “Don’t worry. All is ready. The way is paved.” He opens the door to his study and steps inside, leaving you behind to interpret his cryptic comments. You wait a few minutes for him to return, but when he does not, you begin to worry. Then you notice that mold has already begun to grow over the cheese he’d brought you. “Mr. Engram?” you call out, and you hesitantly knock on the door to his study. There is no response. When you enter the room, you find him hanging from the ceiling fan, his body rotting from weeks of decomposition.",
+      "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Para tu sorpresa, la puerta se abre.\nEn el umbral de la puerta se encuentra un hombre alto con un poblado bigote marrón. Junto al perchero hay un familiar bastón con mango de plata apoyado en la pared. –Así que eres tú –dice el hombre–. Pasa. Llevo tiempo esperándote –Se gira y camina hacia la cocina. Oyes el silbido de una tetera, como si hubiera preparado tu llegada.\nEntras en su casa sin saber muy bien qué hacer. Este amable y sencillo hombre no es precisamente como esperabas. El interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. El Sr. Engram regresa poco después con té caliente y un plato de queso y galletas saladas. –¿Has venido para encontrar el camino hacia Carcosa? –pregunta con una sonrisa de emoción. Sacudes la cabeza como respuesta, pero no parece darse cuenta. Va de un lado a otro de la habitación mientras habla rápidamente–. Me dijo que llegarías pronto. Que debería... prepararme –Nigel se vuelve hacia ti con los ojos brillantes mientras extiende la mano hacia la puerta de madera que tienes enfrente–. No te preocupes. Todo está listo. El camino está creado –Abre la puerta de su estudio y entra, dejándote fuera mientras tratas de interpretar sus enigmáticos comentarios. Esperas unos minutos a que vuelva, pero al ver que no lo hace, comienzas a preocuparte. Entonces te das cuenta de que ya ha empezado a aparecer moho sobre el queso que ha traído–. ¿Señor Engram? –le llamas, y das unos golpecitos en la puerta del estudio. No hay respuesta. Cuando entras en la habitación, le encuentras ahorcado del ventilador del techo, podrido tras semanas de descomposición.",
       "steps": [
         "found_nigel_engram",
         "add_tablets",
@@ -6048,7 +6048,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "As the sun rises once more over the skyline of Paris, you lose sight of the mysterious figure. Frustrated at your failure, you return to your hotel to sleep and recover from the horrors of the past few nights. Your fitful dreams return— dreams of Carcosa, of the King in Tatters, and of the shadowy figure whom you had pursued through the streets of Paris. When you awaken, you are no longer in your hotel room.",
+      "text": "Cuando el sol vuelve a salir sobre los tejados de París, pierdes de vista a la misteriosa figura. Frustrado por tu fracaso, vuelves a tu hotel para dormir y recuperarte de los horrores de las noches pasadas. Tus agitados sueños regresan: sueños de Carcosa, del Rey Andrajoso y de la sombría figura a la que perseguiste por las calles de París. Cuando despiertas, no estás en tu habitación del hotel.",
       "steps": [
         "unable_to_find_nigel",
         "add_elder_things",
@@ -6317,7 +6317,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -6350,7 +6350,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -6428,7 +6428,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -6501,7 +6501,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -7409,7 +7409,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -7442,7 +7442,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -7580,7 +7580,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -7590,7 +7590,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -8102,7 +8102,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -8123,7 +8123,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -8133,7 +8133,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -8281,7 +8281,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -8305,7 +8305,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -8329,7 +8329,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -8494,8 +8494,8 @@
 },
 {
   "id": "ptc_interlude2",
-  "scenario_name": "Lost Soul",
-  "full_name": "Interlude II: Lost Soul",
+  "scenario_name": "Alma perdida",
+  "full_name": "Interludio II: Alma perdida",
   "type": "interlude",
   "setup": [
     "daniel_choice",
@@ -8511,7 +8511,7 @@
         "choices": [
           {
             "id": "survived",
-            "text": "If an investigator resigned with the asset version of Daniel Chesterfield under their control.",
+            "text": "Si un investigador desistió con la versión Apoyo de Daniel Chesterfield bajo su control.",
             "steps": [
               "daniel_survived",
               "earn_2_xp"
@@ -8519,14 +8519,14 @@
           },
           {
             "id": "possessed",
-            "text": "If the enemy version of Daniel Chesterfield was in play when the scenario ended.",
+            "text": "Si la versión Enemigo de Daniel Chesterfield estaba en juego cuando terminó el escenario.",
             "steps": [
               "daniel_possessed"
             ]
           },
           {
             "id": "neither",
-            "text": "If neither of the above are true.",
+            "text": "Si nada de lo anterior es cierto.",
             "steps": [
               "daniel_did_not_survive"
             ]
@@ -8536,7 +8536,7 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Cada investigador obtiene 2 puntos de experiencia adicionales por haber recibido información sobre las maquinaciones del Rey Andrajoso.",
       "effects": [
         {
           "type": "earn_xp",
@@ -8547,7 +8547,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns 1 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Cada investigador obtiene 1 punto de experiencia adicional por haber recibido información sobre las maquinaciones del Rey Andrajoso.",
       "effects": [
         {
           "type": "earn_xp",
@@ -8564,7 +8564,7 @@
         "choices": [
           {
             "id": "ignore",
-            "text": "<i>Possession? Oaths? There must be another explanation for all of this.</i>",
+            "text": "<i>¿Posesión? ¿ Juramentos? Debe de haber otra explicación para todo esto.</i>",
             "steps": [
               "ignore_the_warning",
               "ignored_daniels_warning",
@@ -8573,7 +8573,7 @@
           },
           {
             "id": "heed",
-            "text": "<i>We must heed Daniel’s warning. We must not speak the name of the King in Yellow.</i>",
+            "text": "<i>Debemos hacer caso a la advertencia de Daniel. No debemos pronunciar el nombre del Rey de Amarillo.</i>",
             "steps": [
               "heed_the_warning",
               "heeded_daniels_warning",
@@ -8587,7 +8587,7 @@
     },
     {
       "id": "forbidden_name",
-      "text": "For the remainder of the campaign, any time an investigator speaks the name of HASTUR aloud during a scenario (or during the setup of a scenario), that investigator must immediately take 1 horror."
+      "text": "Durante el resto de la campaña, en cualquier momento en el que un investigador pronuncie el nombre de HASTUR durante un escenario (o durante la preparación de un escenario), ese investigador debe recibir 1 punto de horror inmediatamente."
     },
     {
       "id": "ignored_daniels_warning",
@@ -8596,13 +8596,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ignored_daniels_warning",
-          "text": "you ignored Daniel’s warning."
+          "text": "los investigadores ignoraron la advertencia de Daniel."
         }
       ]
     },
     {
       "id": "mark_2_doubt",
-      "text": "Mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Marca dos <b>Dudas</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -8614,7 +8614,7 @@
     },
     {
       "id": "mark_2_conviction",
-      "text": "Mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Marca dos <b>Convicciones</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -8631,34 +8631,34 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "heeded_daniels_warning",
-          "text": "you heeded Daniel’s warning."
+          "text": "los investigadores hicieron caso de la advertencia de Daniel."
         }
       ]
     },
     {
       "id": "daniel_survived",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House and hide Daniel from the authorities, although you’re unsure how long you’ll be able to stay in Arkham with an escaped asylum patient. Daniel is a loose cannon, dazed and unresponsive one moment, and screaming for his life the next. It takes several days for him to realize he’s no longer institutionalized, which for some reason makes him even more terrified. “He’s coming for me, he’s coming for me!” he rambles, sometimes for hours at a time. Finally, during an unusually warm and starry night, Daniel is calm enough to open up to you. “The King in Yellow, it’s not just a play,” he explains. “It’s a being named Hastur, and He’s already claimed me. But there’s still time for you. You are not yet possessed. You have yet to speak the Oath. Whatever you do, speak not his name. Do not give in.” You ask him about the strange events that have been happening across town, and of the cultists and creatures you’ve encountered. “They are trying to find Carcosa,” he says matter-of-factly. You recognize the name as the fictional city from the play, the one The King in Yellow rules over. “They want to release Hastur from His prison. But you!—You can open the way to Carcosa before they do! You can seal Hastur for good!” He grips you tightly as he rants. “Quickly, before the Stranger discovers our plan!”\nHours later, Daniel is incoherent and unresponsive once more. You take a long walk to ease your thoughts, mulling over this new information. You’re unsure what to make of his wild claims. Before you can make a decision about what to do next, you return to find the door to your room broken open. Daniel lies in a heap on the ground, his face colorless and body limp. Judging from the bruising around his neck, you surmise that he has been choked to death."
+      "text": "Decides ocultarte por un tiempo en la Pensión de Ma y evitar que las autoridades den con Daniel, aunque no estás seguro de cuánto tiempo podrás quedarte en Arkham con un paciente fugado del manicomio. Daniel es totalmente imprevisible, y puede estar aturdido y casi catatónico en un momento dado y gritando como si lo mataran un segundo después. Hasta que no pasan varios días, no se da cuenta de que ya no está ingresado, lo que, por algún motivo, le aterra aún más. –¡Viene a por mí, viene a por mí! –repite incesantemente, a veces durante horas. Por fin, durante una estrellada noche extrañamente cálida, Daniel está lo suficientemente tranquilo como para abrirse a ti: –El Rey de Amarillo no es sólo una obra –explica–. Es un ser llamado Hastur, que ya me ha reclamado. Pero aún hay tiempo para ti. Todavía no estás poseído. Aún no has pronunciado el juramento. Hagas lo que hagas, no digas su nombre. No cedas –Le preguntas acerca de los extraños sucesos que han estado ocurriendo en la ciudad, y sobre los sectarios y criaturas con los que te has topado–. Están intentando encontrar Carcosa –dice como si tal cosa. Reconoces el nombre como el de la ciudad ficticia de la obra en la que gobierna El Rey de Amarillo–. Quieren liberar a Hastur de Su prisión. ¡Pero tú...! ¡Tú puedes abrir el camino a Carcosa antes de que lo hagan ellos! ¡Puedes encerrar a Hastur para siempre! –Te agarra con fuerza mientras desvaría–. ¡Rápido, antes de que el Extranjero descubra nuestro plan!\nHoras más tarde, Daniel vuelve a resultar incoherente y a no responder. Das un largo paseo para ordenar tus pensamientos y reflexionar sobre esta nueva información. No estás seguro de qué pensar sobre sus disparatadas afirmaciones. Antes de poder tomar una decisión, regresas y descubres que han roto la puerta de tu habitación. Daniel está hecho un guiñapo en el suelo, con el rostro pálido y el cuerpo inerte. A juzgar por los hematomas del cuello, supones que lo han estrangulado."
     },
     {
       "id": "daniel_did_not_survive",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House, unsure whether news of the events at the asylum will get out to the general public. You take this time to make extensive notes of the events you’ve experienced thus far, including the brief dialogue between you and Daniel. He’d spoke of The King in Yellow as if it were an actual being, and even named it. “Hastur.” He’d rambled and muttered and screeched other phrases, as well. You doubt you’ll ever forget them. “He made us speak the Oath.” “The price was paid.” “They are opening the path to Carcosa.” For hours, you think about Daniel’s warning to you, which he begged you to heed: “Do not speak His name.” His final moments play out in your mind over and over again."
+      "text": "Decides ocultarte por un tiempo en la Pensión de Ma, sin saber si las noticias de lo sucedido en el manicomio serán de dominio público. Aprovechas el tiempo para poner por escrito los sucesos que has experimentado hasta ahora, incluido el breve diálogo entre tú y Daniel. Habló de El Rey de Amarillo como si fuera un ser real, y hasta le puso nombre. “Hastur”. También murmuró, gritó y divagó pronunciando otras frases. Dudas que vayas a olvidarlas algún día. “Nos obligó a pronunciar el juramento”. “Se pagó el precio”. “Están abriendo el camino a Carcosa”. Dedicas horas a pensar en la advertencia de Daniel, la que te rogó que siguieras: “No pronuncies Su nombre”. Revives sus últimos momentos en tu mente una y otra vez."
     },
     {
       "id": "daniel_possessed",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House, unsure whether news of the events at the asylum will get out to the general public. You take this time to make extensive notes of the events you’ve experienced thus far, including the brief dialogue between you and Daniel. He’d spoke of The King in Yellow as if it were an actual being, and even named it. “Hastur.” He’d rambled and muttered and screeched other phrases, as well. You doubt you’ll ever forget them. “He made us speak the Oath.” “The price was paid.” “They are opening the path to Carcosa.”\nOn the third night, you return to your room to find the door broken open. You enter cautiously, wondering if the police are onto you. Or worse, the Stranger. You are surprised to find the body of Daniel Chesterfield instead, lying on the ground with a pained, wide-eyed expression on his face. He is dead. His eyes are bloodshot and yellow, and he clutches a copy of The King in Yellow in his stiff hands. You pry the playbook from his deathly grasp and examine it. Daniel has scribbled notes in the margins of each page, mostly incomprehensible, but with a few lucid standouts. The first time the fictional city of Carcosa is mentioned, scrawled next to it Daniel has written:\n<center><fancy>[elder_sign]Carcosa is real</fancy></center>\n<center><fancy>Do not let them open the path</fancy></center>\nWhen Cassilda speaks of the tattered king, Daniel has written:\n<center><fancy>Hastur is the king in tatters</fancy></center>\n<center><fancy>locked in his prison in the stars</fancy></center>\n<center><fancy>seal him away and stop this madness!</fancy></center>\nYour mind swims with questions. How did he escape the asylum? How did he die? And why does he appear human to your eyes now? With little time to spare, you clean the room of your belongings and flee. Daniel’s words, which he begged you to heed, play out in your mind over and over again."
+      "text": "Decides ocultarte por un tiempo en la Pensión de Ma, sin saber si las noticias de lo sucedido en el manicomio serán de dominio público. Aprovechas el tiempo para poner por escrito los sucesos que has experimentado hasta ahora, incluido el breve diálogo entre tú y Daniel. Habló de El Rey de Amarillo como si fuera un ser real, y hasta le puso nombre. “Hastur”. También murmuró, gritó y divagó pronunciando otras frases. Dudas que vayas a olvidarlas algún día. “Nos obligó a pronunciar el juramento”. “Se pagó el precio”. “Están abriendo el camino a Carcosa”.\nLa tercera noche, vuelves a tu habitación y descubres que han roto la puerta. Entras con cuidado, preguntándote si la policía te sigue la pista. O peor aún, el Extranjero. Te sorprende encontrar el cuerpo de Daniel Chesterfield, tendido en el suelo con una expresión de dolor en el rostro y los ojos abiertos como platos. Está muerto. Tiene los ojos inyectados en sangre y amarillentos, y está aferrando una copia de El Rey de Amarillo en sus rígidas manos. Arrancas el libreto de su rigor mortis y lo examinas. Daniel ha garabateado notas en los márgenes de cada página, y aunque la mayoría son incomprensibles, hay algunos momentos de lucidez destacables. La primera vez que se menciona la ciudad ficticia de Carcosa, Daniel escribió lo siguiente junto a esa parte:\n<center><fancy>[elder_sign] Carcosa es real</fancy></center>\n<center><fancy>No dejes que abran el camino</fancy></center>\nCuando Cassilda habla del Rey Andrajoso, Daniel ha escrito:\n<center><fancy>Hastur es el Rey Andrajoso</fancy></center>\n<center><fancy>cautivo en su prisión de las estrellas</fancy></center>\n<center><fancy>¡Enciérralo y detén esta locura!</fancy></center>\nTu mente se llena de preguntas. ¿Cómo escapó del manicomio? ¿Cómo murió? ¿Por qué ahora vuelve a parecer humano? No tienes tiempo que perder, así que reúnes tus cosas y huyes de la habitación. Las palabras de Daniel, las que te rogó que escucharas, se repiten en tu mente una y otra vez."
     },
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into The King in Yellow. What is true? What is real? Only you can sort through this madness."
+      "text": "Pasas horas dándole vueltas a la información que tienes sobre El Rey de Amarillo. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
     },
     {
       "id": "heed_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness."
+      "text": "Pasas horas dándole vueltas a la información que tienes sobre <u>El Rey de Amarillo</u>. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
     }
   ]
 },
@@ -8777,7 +8777,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -8801,7 +8801,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -8825,7 +8825,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -9141,7 +9141,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -9162,7 +9162,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -9172,7 +9172,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -9601,7 +9601,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -9634,7 +9634,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -9661,7 +9661,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -9736,7 +9736,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -9876,7 +9876,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -9900,7 +9900,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -9924,7 +9924,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -10268,7 +10268,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -10319,7 +10319,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -10340,7 +10340,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -10350,7 +10350,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -10493,7 +10493,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -10517,7 +10517,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -10563,7 +10563,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -15980,7 +15980,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -15990,7 +15990,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16038,8 +16038,8 @@
 },
 {
   "id": "ptc_interlude2",
-  "scenario_name": "Lost Soul",
-  "full_name": "Interlude II: Lost Soul",
+  "scenario_name": "Alma perdida",
+  "full_name": "Interludio II: Alma perdida",
   "type": "interlude",
   "setup": [
     "daniel_choice",
@@ -16055,7 +16055,7 @@
         "choices": [
           {
             "id": "survived",
-            "text": "If an investigator resigned with the asset version of Daniel Chesterfield under their control.",
+            "text": "Si un investigador desistió con la versión Apoyo de Daniel Chesterfield bajo su control.",
             "steps": [
               "daniel_survived",
               "earn_2_xp"
@@ -16063,14 +16063,14 @@
           },
           {
             "id": "possessed",
-            "text": "If the enemy version of Daniel Chesterfield was in play when the scenario ended.",
+            "text": "Si la versión Enemigo de Daniel Chesterfield estaba en juego cuando terminó el escenario.",
             "steps": [
               "daniel_possessed"
             ]
           },
           {
             "id": "neither",
-            "text": "If neither of the above are true.",
+            "text": "Si nada de lo anterior es cierto.",
             "steps": [
               "daniel_did_not_survive"
             ]
@@ -16080,7 +16080,7 @@
     },
     {
       "id": "earn_2_xp",
-      "text": "Each investigator earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Cada investigador obtiene 2 puntos de experiencia adicionales por haber recibido información sobre las maquinaciones del Rey Andrajoso.",
       "effects": [
         {
           "type": "earn_xp",
@@ -16091,7 +16091,7 @@
     },
     {
       "id": "earn_1_xp",
-      "text": "Each investigator earns 1 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Cada investigador obtiene 1 punto de experiencia adicional por haber recibido información sobre las maquinaciones del Rey Andrajoso.",
       "effects": [
         {
           "type": "earn_xp",
@@ -16108,7 +16108,7 @@
         "choices": [
           {
             "id": "ignore",
-            "text": "<i>Possession? Oaths? There must be another explanation for all of this.</i>",
+            "text": "<i>¿Posesión? ¿ Juramentos? Debe de haber otra explicación para todo esto.</i>",
             "steps": [
               "ignore_the_warning",
               "ignored_daniels_warning",
@@ -16117,7 +16117,7 @@
           },
           {
             "id": "heed",
-            "text": "<i>We must heed Daniel’s warning. We must not speak the name of the King in Yellow.</i>",
+            "text": "<i>Debemos hacer caso a la advertencia de Daniel. No debemos pronunciar el nombre del Rey de Amarillo.</i>",
             "steps": [
               "heed_the_warning",
               "heeded_daniels_warning",
@@ -16131,7 +16131,7 @@
     },
     {
       "id": "forbidden_name",
-      "text": "For the remainder of the campaign, any time an investigator speaks the name of HASTUR aloud during a scenario (or during the setup of a scenario), that investigator must immediately take 1 horror."
+      "text": "Durante el resto de la campaña, en cualquier momento en el que un investigador pronuncie el nombre de HASTUR durante un escenario (o durante la preparación de un escenario), ese investigador debe recibir 1 punto de horror inmediatamente."
     },
     {
       "id": "ignored_daniels_warning",
@@ -16140,13 +16140,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ignored_daniels_warning",
-          "text": "you ignored Daniel’s warning."
+          "text": "los investigadores ignoraron la advertencia de Daniel."
         }
       ]
     },
     {
       "id": "mark_2_doubt",
-      "text": "Mark two <b>Doubt</b> in your Campaign Log.",
+      "text": "Marca dos <b>Dudas</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16158,7 +16158,7 @@
     },
     {
       "id": "mark_2_conviction",
-      "text": "Mark two <b>Conviction</b> in your Campaign Log.",
+      "text": "Marca dos <b>Convicciones</b> en el registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16175,34 +16175,34 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "heeded_daniels_warning",
-          "text": "you heeded Daniel’s warning."
+          "text": "los investigadores hicieron caso de la advertencia de Daniel."
         }
       ]
     },
     {
       "id": "daniel_survived",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House and hide Daniel from the authorities, although you’re unsure how long you’ll be able to stay in Arkham with an escaped asylum patient. Daniel is a loose cannon, dazed and unresponsive one moment, and screaming for his life the next. It takes several days for him to realize he’s no longer institutionalized, which for some reason makes him even more terrified. “He’s coming for me, he’s coming for me!” he rambles, sometimes for hours at a time. Finally, during an unusually warm and starry night, Daniel is calm enough to open up to you. “The King in Yellow, it’s not just a play,” he explains. “It’s a being named Hastur, and He’s already claimed me. But there’s still time for you. You are not yet possessed. You have yet to speak the Oath. Whatever you do, speak not his name. Do not give in.” You ask him about the strange events that have been happening across town, and of the cultists and creatures you’ve encountered. “They are trying to find Carcosa,” he says matter-of-factly. You recognize the name as the fictional city from the play, the one The King in Yellow rules over. “They want to release Hastur from His prison. But you!—You can open the way to Carcosa before they do! You can seal Hastur for good!” He grips you tightly as he rants. “Quickly, before the Stranger discovers our plan!”\nHours later, Daniel is incoherent and unresponsive once more. You take a long walk to ease your thoughts, mulling over this new information. You’re unsure what to make of his wild claims. Before you can make a decision about what to do next, you return to find the door to your room broken open. Daniel lies in a heap on the ground, his face colorless and body limp. Judging from the bruising around his neck, you surmise that he has been choked to death."
+      "text": "Decides ocultarte por un tiempo en la Pensión de Ma y evitar que las autoridades den con Daniel, aunque no estás seguro de cuánto tiempo podrás quedarte en Arkham con un paciente fugado del manicomio. Daniel es totalmente imprevisible, y puede estar aturdido y casi catatónico en un momento dado y gritando como si lo mataran un segundo después. Hasta que no pasan varios días, no se da cuenta de que ya no está ingresado, lo que, por algún motivo, le aterra aún más. –¡Viene a por mí, viene a por mí! –repite incesantemente, a veces durante horas. Por fin, durante una estrellada noche extrañamente cálida, Daniel está lo suficientemente tranquilo como para abrirse a ti: –El Rey de Amarillo no es sólo una obra –explica–. Es un ser llamado Hastur, que ya me ha reclamado. Pero aún hay tiempo para ti. Todavía no estás poseído. Aún no has pronunciado el juramento. Hagas lo que hagas, no digas su nombre. No cedas –Le preguntas acerca de los extraños sucesos que han estado ocurriendo en la ciudad, y sobre los sectarios y criaturas con los que te has topado–. Están intentando encontrar Carcosa –dice como si tal cosa. Reconoces el nombre como el de la ciudad ficticia de la obra en la que gobierna El Rey de Amarillo–. Quieren liberar a Hastur de Su prisión. ¡Pero tú...! ¡Tú puedes abrir el camino a Carcosa antes de que lo hagan ellos! ¡Puedes encerrar a Hastur para siempre! –Te agarra con fuerza mientras desvaría–. ¡Rápido, antes de que el Extranjero descubra nuestro plan!\nHoras más tarde, Daniel vuelve a resultar incoherente y a no responder. Das un largo paseo para ordenar tus pensamientos y reflexionar sobre esta nueva información. No estás seguro de qué pensar sobre sus disparatadas afirmaciones. Antes de poder tomar una decisión, regresas y descubres que han roto la puerta de tu habitación. Daniel está hecho un guiñapo en el suelo, con el rostro pálido y el cuerpo inerte. A juzgar por los hematomas del cuello, supones que lo han estrangulado."
     },
     {
       "id": "daniel_did_not_survive",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House, unsure whether news of the events at the asylum will get out to the general public. You take this time to make extensive notes of the events you’ve experienced thus far, including the brief dialogue between you and Daniel. He’d spoke of The King in Yellow as if it were an actual being, and even named it. “Hastur.” He’d rambled and muttered and screeched other phrases, as well. You doubt you’ll ever forget them. “He made us speak the Oath.” “The price was paid.” “They are opening the path to Carcosa.” For hours, you think about Daniel’s warning to you, which he begged you to heed: “Do not speak His name.” His final moments play out in your mind over and over again."
+      "text": "Decides ocultarte por un tiempo en la Pensión de Ma, sin saber si las noticias de lo sucedido en el manicomio serán de dominio público. Aprovechas el tiempo para poner por escrito los sucesos que has experimentado hasta ahora, incluido el breve diálogo entre tú y Daniel. Habló de El Rey de Amarillo como si fuera un ser real, y hasta le puso nombre. “Hastur”. También murmuró, gritó y divagó pronunciando otras frases. Dudas que vayas a olvidarlas algún día. “Nos obligó a pronunciar el juramento”. “Se pagó el precio”. “Están abriendo el camino a Carcosa”. Dedicas horas a pensar en la advertencia de Daniel, la que te rogó que siguieras: “No pronuncies Su nombre”. Revives sus últimos momentos en tu mente una y otra vez."
     },
     {
       "id": "daniel_possessed",
       "type": "story",
-      "text": "You decide to lay low for some time in Ma’s Boarding House, unsure whether news of the events at the asylum will get out to the general public. You take this time to make extensive notes of the events you’ve experienced thus far, including the brief dialogue between you and Daniel. He’d spoke of The King in Yellow as if it were an actual being, and even named it. “Hastur.” He’d rambled and muttered and screeched other phrases, as well. You doubt you’ll ever forget them. “He made us speak the Oath.” “The price was paid.” “They are opening the path to Carcosa.”\nOn the third night, you return to your room to find the door broken open. You enter cautiously, wondering if the police are onto you. Or worse, the Stranger. You are surprised to find the body of Daniel Chesterfield instead, lying on the ground with a pained, wide-eyed expression on his face. He is dead. His eyes are bloodshot and yellow, and he clutches a copy of The King in Yellow in his stiff hands. You pry the playbook from his deathly grasp and examine it. Daniel has scribbled notes in the margins of each page, mostly incomprehensible, but with a few lucid standouts. The first time the fictional city of Carcosa is mentioned, scrawled next to it Daniel has written:\n<center><fancy>[elder_sign]Carcosa is real</fancy></center>\n<center><fancy>Do not let them open the path</fancy></center>\nWhen Cassilda speaks of the tattered king, Daniel has written:\n<center><fancy>Hastur is the king in tatters</fancy></center>\n<center><fancy>locked in his prison in the stars</fancy></center>\n<center><fancy>seal him away and stop this madness!</fancy></center>\nYour mind swims with questions. How did he escape the asylum? How did he die? And why does he appear human to your eyes now? With little time to spare, you clean the room of your belongings and flee. Daniel’s words, which he begged you to heed, play out in your mind over and over again."
+      "text": "Decides ocultarte por un tiempo en la Pensión de Ma, sin saber si las noticias de lo sucedido en el manicomio serán de dominio público. Aprovechas el tiempo para poner por escrito los sucesos que has experimentado hasta ahora, incluido el breve diálogo entre tú y Daniel. Habló de El Rey de Amarillo como si fuera un ser real, y hasta le puso nombre. “Hastur”. También murmuró, gritó y divagó pronunciando otras frases. Dudas que vayas a olvidarlas algún día. “Nos obligó a pronunciar el juramento”. “Se pagó el precio”. “Están abriendo el camino a Carcosa”.\nLa tercera noche, vuelves a tu habitación y descubres que han roto la puerta. Entras con cuidado, preguntándote si la policía te sigue la pista. O peor aún, el Extranjero. Te sorprende encontrar el cuerpo de Daniel Chesterfield, tendido en el suelo con una expresión de dolor en el rostro y los ojos abiertos como platos. Está muerto. Tiene los ojos inyectados en sangre y amarillentos, y está aferrando una copia de El Rey de Amarillo en sus rígidas manos. Arrancas el libreto de su rigor mortis y lo examinas. Daniel ha garabateado notas en los márgenes de cada página, y aunque la mayoría son incomprensibles, hay algunos momentos de lucidez destacables. La primera vez que se menciona la ciudad ficticia de Carcosa, Daniel escribió lo siguiente junto a esa parte:\n<center><fancy>[elder_sign] Carcosa es real</fancy></center>\n<center><fancy>No dejes que abran el camino</fancy></center>\nCuando Cassilda habla del Rey Andrajoso, Daniel ha escrito:\n<center><fancy>Hastur es el Rey Andrajoso</fancy></center>\n<center><fancy>cautivo en su prisión de las estrellas</fancy></center>\n<center><fancy>¡Enciérralo y detén esta locura!</fancy></center>\nTu mente se llena de preguntas. ¿Cómo escapó del manicomio? ¿Cómo murió? ¿Por qué ahora vuelve a parecer humano? No tienes tiempo que perder, así que reúnes tus cosas y huyes de la habitación. Las palabras de Daniel, las que te rogó que escucharas, se repiten en tu mente una y otra vez."
     },
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into The King in Yellow. What is true? What is real? Only you can sort through this madness."
+      "text": "Pasas horas dándole vueltas a la información que tienes sobre El Rey de Amarillo. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
     },
     {
       "id": "heed_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness."
+      "text": "Pasas horas dándole vueltas a la información que tienes sobre <u>El Rey de Amarillo</u>. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
     }
   ]
 },
@@ -16321,7 +16321,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -16345,7 +16345,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -16369,7 +16369,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -16607,7 +16607,7 @@
   "steps": [
     {
       "id": "app_note",
-      "text": "Note: while the app implements the introduction for this scenario correctly, it does not fully capture the incredible design of the printed rules. Since the experience is very different, if you have not played this scenario before I <i>highly recommend</i> using the printed instructions."
+      "text": "Nota: Aunque la aplicación implementa correctamente la Introducción de este escenario, no logra capturar plenamente el increíble diseño de la Guía de campaña oficial. Puesto que la experiencia es muy diferente, si no has jugado a este escenario anteriormente, te <i>recomiendo encarecidamente</i> que leas la Introducción de este escenario en la versión en papel de la Guía de campaña."
     },
     {
       "id": "check_king_claimed_victims",
@@ -16635,17 +16635,17 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Several months have passed since The King in Yellow came to the Ward Theatre. You and your companions have been investigating the strange incidents that followed in its wake. What you have found makes you question the wisdom of continuing your investigation, but the truth calls out to you, and you cannot help but answer. It seems you weren’t the first to piece together the strange happenings surrounding The King in Yellow. Another group of investigators had been researching these events as well. Just a matter of days after the performance in Arkham, they were admitted to the asylum, ranting about the King’s return and the “monsters” that had attacked them. Somehow this doesn’t surprise you. Their fate makes you all the more certain you are on the right trail... And all the more certain that you should stop while you still have the chance.\nYou’ve found the records those investigators kept before their incarceration, and picked up the trail where they left off. They had interviewed some of the cast and crew of The King in Yellow, and discovered several pieces of vital information. Their research also contains notes about their discoveries in Arkham’s Historical Society, and accounts from their time spent in the asylum, including interactions with a patient named “Daniel Chesterfield.” After a long night of compiling and comparing notes, you fall into a deep slumber. In your dreams, you are subjected to visions of Carcosa—its black stars, twin suns, shattered moons, and twisted spires."
+      "text": "Han pasado varios meses desde que El Rey de Amarillo se representara en el Teatro Ward. Tus compañeros y tú habéis estado investigando los extraños incidentes que se produjeron después. Lo que habéis encontrado hace que te preguntes si es sensato proseguir la investigación, pero la verdad te llama, y no puedes evitar responder a su llamada. Parece que no sois los únicos que unisteis las piezas que vinculaban los extraños acontecimientos que rodean a El Rey de Amarillo. Otro grupo de investigadores también ha investigado estos sucesos. Unos días después de la representación en Arkham, fueron ingresados en el manicomio, desvariando acerca del regreso del Rey y de los “monstruos” que los habían atacado. La noticia no te sorprende. Su destino te hace estar aún más seguro de que estás siguiendo el rastro correcto... Y mucho más de que deberías parar mientras aún estás a tiempo.\nHas encontrado los documentos que tenían esos investigadores antes de su ingreso y has seguido las pistas que dejaron. Habían interrogado a parte del elenco y del equipo de El Rey de Amarillo y descubierto varias informaciones de vital importancia. Su investigación también contiene notas sobre sus descubrimientos en la Sociedad Histórica de Arkham, además de la narración del tiempo que pasaron en el manicomio, incluido su encuentro con un paciente llamado “Daniel Chesterfield”. Tras una larga noche de recopilar y comparar notas, te quedas profundamente dormido. En tus sueños, te ves sometido a visiones de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "It has been several weeks since the events in the asylum, and you are still no closer to the truth about The King in Yellow and Carcosa. You have scoured the city for signs of the others Daniel had mentioned—the ones who are “opening the path to Carcosa”—but found nothing. Either the trail has gone cold, or they’re no longer in Arkham. Perhaps Daniel truly was insane, and you are only following him deeper down the rabbit hole. Every night, you toss and turn as you are subjected to vivid dreams of Carcosa—its black stars, twin suns, shattered moons, and twisted spires."
+      "text": "Han pasado varias semanas desde los sucesos ocurridos en el manicomio, y sigues igual de lejos de la verdad sobre El Rey de Amarillo y Carcosa. Has registrado la ciudad en busca de algún indicio de aquellos que mencionó Daniel, los que estaban “abriendo el camino a Carcosa”, pero no has encontrado nada. O el rastro se ha enfriado o ya no están en Arkham. Puede que Daniel estuviera loco de verdad, y que lo único que estés haciendo sea seguirlo cada vez más dentro de la madriguera del conejo. Cada noche, te agitas mientras duermes al verte expuesto a vívidos sueños de Carcosa: de sus estrellas negras, soles gemelos, lunas destrozadas y torres retorcidas."
     },
     {
       "id": "dream_4",
       "type": "story",
-      "text": "Smoke and embers float upwards into the starless night sky. The screams of burning creatures fill you with a horrid sense of accomplishment. They almost sound human, you consider. But you know that isn’t true."
+      "text": "Humo y ascuas flotan hacia el cielo nocturno carente de estrellas. Los gritos de criaturas que arden hacen que te invada la horrenda sensación de haberlo logrado. Casi parecen gritos humanos, piensas. Pero sabes que no es verdad."
     },
     {
       "id": "one_mental_trauma",
@@ -16660,7 +16660,7 @@
     {
       "id": "dream_8",
       "type": "story",
-      "text": "You peer in the mirror, and the Stranger peers back at you. His gaze drills into your mind. The mirror shatters."
+      "text": "Miras en el espejo, y el Extranjero te devuelve la mirada. Sus ojos penetran en tu mente. El espejo se hace pedazos."
     },
     {
       "id": "dream_8_test",
@@ -16706,11 +16706,11 @@
     {
       "id": "dream_1",
       "type": "story",
-      "text": "You fall through the empty abyss of Hali. Creatures of unknown and impossible origin lurk just beyond the darkness of your sight. Hastur looms above you, magnificent and yet bound in his prison of madness, manipulating your torturous descent with a sole outstretched arm."
+      "text": "Caes por el vacío abismal de Hali. Unas criaturas de origen desconocido e imposible acechan en la oscuridad, donde no puedes verlas. Hastur se alza sobre ti de forma gloriosa, pero cautivo de su prisión de locura, manipulando tu tortuoso descenso con un brazo extendido."
     },
     {
       "id": "earn_lost_soul",
-      "text": "Each investigator has earned the Lost Soul weakness <i>(The Path to Carcosa #227)</i> (does not count toward deck size). Shuffle one copy of this weakness into each investigator’s deck.",
+      "text": "Todos los investigadores reciben la Debilidad “Alma perdida” <i>(El camino a Carcosa 227)</i>. Esta carta no cuenta para el tamaño de mazo de los investigadores. Añade 1 copia de esta Debilidad al mazo de cada investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -16722,11 +16722,11 @@
     {
       "id": "dream_12",
       "type": "story",
-      "text": "You peer up at the stained glass, curious. What is the shape of the shadow along the window? What is the meaning behind this strange design?"
+      "text": "Levantas la vista hacia la vidriera por curiosidad. ¿Qué es esa sombra que hay en la ventana? ¿Qué significado tiene este extraño diseño?"
     },
     {
       "id": "mark_one_doubt",
-      "text": "Mark one <b>Doubt</b> in your Campaign Log.",
+      "text": "Marca una <b>Duda</b> en tu registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16739,7 +16739,7 @@
     {
       "id": "dream_2",
       "type": "story",
-      "text": "Constance takes your hand and pulls you onto the polished dance floor. “Come now, don’t be shy. Tonight is a night for dancing! For celebration!”"
+      "text": "Constance te coge de la mano y te lleva a la reluciente pista de baile. –Vamos, que no te dé vergüenza. ¡Hoy es una noche para bailar! ¡Para celebrar!"
     },
     {
       "id": "dream_2_test",
@@ -16820,16 +16820,16 @@
     {
       "id": "dream_9",
       "type": "story",
-      "text": "You chase the Stranger through dark, chilly passageways composed of hundreds of thousands of skeletal bodies. Skulls watch as you run, their mouths rattling a mocking taunt as you pass. The Stranger reaches a solid wall of bone, and is grabbed by bony hands and pulled into the wall. Their mocking laughs reach an awful crescendo."
+      "text": "Persigues al Extranjero por oscuros corredores fríos como el hielo y formados por cientos de miles de esqueletos. Los cráneos te miran correr, castañeteando de forma burlona sus mandíbulas cuando pasas. El Extranjero llega a una pared hecha de hueso y unas manos huesudas lo agarran y lo meten en la pared. Sus burlonas risas llegan a un terrible crescendo."
     },
     {
       "id": "dream_7",
       "type": "story",
-      "text": "You find yourself inside the Arkham Police Department, desperately trying to explain to the desk sergeant what happened in the Ward Theatre. He scoffs and refuses to believe you. “We know what you’re really up to,” he says, and claps a pair of handcuffs over your wrists. “You’re under arrest for larceny. Boys, take ‘em away.” Several other cops flank you and prevent any escape. Your protests go unheard as you are firmly escorted down a flight of concrete stairs and hurled into a cold jail cell. “Maybe some time in lockup will change your story,” the desk sergeant shouts. He slams the door behind him, leaving you with your spiraling thoughts. How did they find out? How could they possibly know?"
+      "text": "Te encuentras en el interior de la comisaría de policía de Arkham, tratando desesperadamente de explicarle al sargento de guardia lo que ha ocurrido en el Teatro Ward. Éste hace una mueca burlona y se niega a creerte: –Sabemos lo que intentas hacer –dice mientras te pone unas esposas en las muñecas–. Quedas arrestado por robo. Chicos, lleváoslo –Varios agentes te rodean para evitar que huyas. Nadie escucha tus protestas mientras te llevan escaleras abajo y te meten en una fría celda–. Quizás pasarte un tiempo encerrado te haga cambiar el cuento –grita el sargento de guardia. Cierra la puerta de un golpe y te deja sumido en una cascada de pensamientos. ¿Cómo se han enterado? ¿Cómo han podido saberlo?"
     },
     {
       "id": "earn_paranoia",
-      "text": "Choose an investigator. The chosen investigator has earned the Paranoia weakness (Core 97) (does not count toward deck size). Shuffle 1 copy of this weakness into that investigator’s deck, if able.",
+      "text": "Elige un investigador. El investigador elegido ha obtenido la Debilidad “Paranoia” (Básico 97). Esta carta no cuenta para el tamaño de mazo de ese investigador. Añade 1 copia de esta Debilidad al mazo de ese investigador si es posible.",
       "effects": [
         {
           "type": "add_card",
@@ -16841,7 +16841,7 @@
     {
       "id": "dream_10",
       "type": "story",
-      "text": "You chase the Stranger up a steep staircase of broken stone, a torrent of rain crashing upon your back as you run. Lighting flashes in the distance. A vortex of swirling black clouds looms above you, threatening to swallow the world whole. The masked man dashes through a wide set of doors atop the stairs, and you follow close behind. The sound of crashing thunder is muffled as the doors close behind you. Looking up, you see a familiar depiction in stained glass. “Beautiful, is it not?” the Stranger says quietly."
+      "text": "Persigues al Extranjero por una empinada escalera de piedra rota mientras una lluvia torrencial descarga sobre ti mientras corres. Ves relámpagos a lo lejos. Un remolino de nubes negras se forma sobre ti, amenazando con tragarse el mundo. El enmascarado atraviesa a la carrera unas anchas puertas que hay en lo alto de las escaleras, y le sigues de cerca. El sonido del trueno queda amortiguado cuando las puertas se cierran a tu espalda. Al levantar la vista, ves una imagen familiar en una vidriera. –¿Verdad que es precioso? –dice el Extranjero en voz baja."
     },
     {
       "id": "dream_10_choice",
@@ -16851,7 +16851,7 @@
         "choices": [
           {
             "id": "beautiful",
-            "text": "<i>“How could any of this be beautiful to you?”</i>",
+            "text": "<i>–¿Cómo puede resultarte precioso nada de esto?</i>",
             "steps": [
               "dream_11",
               "mark_one_conviction"
@@ -16859,7 +16859,7 @@
           },
           {
             "id": "confused",
-            "text": "<i>“What exactly am I looking at?”</i>",
+            "text": "<i>–¿Eso qué es exactamente?</i>",
             "steps": [
               "dream_12",
               "mark_one_doubt"
@@ -16871,11 +16871,11 @@
     {
       "id": "dream_11",
       "type": "story",
-      "text": "You avoid looking at the stained glass. If this vile man considers it to be beautiful, it is probably some trap meant to ensnare your mind. You clench your fist until your knuckles are white and step forward to confront the Stranger."
+      "text": "Evitas mirar la vidriera. Si este hombre malvado la considera preciosa, probablemente sea una trampa para atrapar tu mente. Aprietas los puños hasta que se te ponen blancos los nudillos y avanzas para enfrentarte al Extranjero."
     },
     {
       "id": "mark_one_conviction",
-      "text": "Mark one <b>Conviction</b> in your Campaign Log.",
+      "text": "Marca una <b>Convicción</b> en tu registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -16888,17 +16888,17 @@
     {
       "id": "dream_3",
       "type": "story",
-      "text": "“Ah, if it isn’t our esteemed guest,” the man with the mustache and the silver-handled cane says. He grabs a bottle of wine from the nearby countertop and pours you a glass. “I hear you have taken quite the interest in our little production,” he says with a smile. “Tell me: how are you enjoying Act 2, so far?”"
+      "text": "–Vaya, vaya, si es nuestro estimado invitado –dice el hombre del bigote y el bastón de mango de plata. Coge una botella de vino de una encimera cercana y te sirve un vaso–. Me han dicho que tiene un gran interés por nuestra modesta producción –dice con una sonrisa–. Dígame, ¿cómo le está pareciendo el segundo acto hasta ahora?"
     },
     {
       "id": "dream_13",
       "type": "story",
-      "text": "Daniel’s voice calls out to you. “They are opening the path to Carcosa.”"
+      "text": "La voz de Daniel te llama: –Están abriendo el camino a Carcosa."
     },
     {
       "id": "dream_6",
       "type": "story",
-      "text": "The lights of the theatre dim and a spotlight shines on the stage. “Welcome, ladies and gentleman!” the creature exclaims. Its many tentacles reach across the stage, up into the rafters, and throughout the aisles. It tears the curtains down, and tattered red cloth falls over its bulbous form."
+      "text": "Las luces del auditorio se atenúan, y un foco ilumina el escenario. –¡Bienvenidos, damas y caballeros! –exclama la criatura. Sus numerosos tentáculos recorren el escenario, llegan hasta el techo y penetran en los pasillos. Arranca el telón, y una andrajosa tela roja cae sobre su bulbosa forma."
     },
     {
       "id": "dream_6_test",
@@ -16930,11 +16930,11 @@
     {
       "id": "awakening",
       "type": "story",
-      "text": "You awaken from your fitful dream, sweating and gagging. This cannot go on any longer. You have only one option if you are to continue your investigation. You must find Nigel Engram, director of The King in Yellow, and architect of this madness. Only he will have the answers you seek. You pack your bags and plan your trip to Paris, the City of Lights."
+      "text": "Despiertas de tu agitado sueño, sudoroso y boqueante. Esto no puede continuar. Sólo tienes una opción si quieres continuar tu investigación. Debes encontrar a Nigel Engram, director de El Rey de Amarillo y arquitecto de esta locura. Sólo él tendrá las respuestas que buscas. Haces las maletas y preparas tu viaje a París, la Ciudad de la Luz."
     },
     {
       "id": "check_jordan_perry",
-      "text": "Check Campaign Log. <i>If Jordan Perry is listed under VIPs Interviewed</i>:",
+      "text": "Comprueba en el registro de campaña si <i>Jordan Perry aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -16954,11 +16954,11 @@
     {
       "id": "jordan_information",
       "type": "story",
-      "text": "According to Mr. Jordan Perry, who had financed several performances of The King in Yellow across the world, Nigel Engram was an eccentric and impassioned man, almost to the point of mania. Rumor was, he hadn’t directed any other works since discovering The King in Yellow. Jordan had first met with Mr. Engram at a café in Montparnasse, “L’agneau Perdu.” You travel there first, hoping to find Mr. Engram..."
+      "text": "Según el Sr. Jordan Perry, que financió varias representaciones de El Rey de Amarillo por todo el mundo, Nigel Engram era un hombre excéntrico y apasionado, rozando lo obsesivo. Se rumorea que, desde que descubrió El Rey de Amarillo, no ha dirigido ninguna otra obra. Jordan conoció al Sr. Engram en una cafetería de Montparnasse, “L’agneau perdu”. Es allí a donde vas primero, con la esperanza de poder encontrar al Sr. Engram..."
     },
     {
       "id": "gain_resources",
-      "text": "Each investigator begins the game with 3 additional resources. Instead of the normal starting location, each investigator begins play at Montparnasse."
+      "text": "Cada investigador comienza la partida con 3 recursos adicionales. Cada investigador comienza la partida en Montparnasse en lugar de en el Lugar inicial normal."
     },
     {
       "id": "check_doubt_and_conviction",
@@ -17004,31 +17004,31 @@
     },
     {
       "id": "more_or_equal_doubt",
-      "text": "Because you have more (or equal) <b>Doubt</b> than <b>Conviction</b>:"
+      "text": "Como tu cantidad de <b>Dudas</b> es mayor o igual que la de <b>Convicciones</b>:"
     },
     {
       "id": "more_conviction",
-      "text": "Because you have more <b>Conviction</b> than <b>Doubt</b>:"
+      "text": "Como tienes más <b>Convicciones</b> que <b>Dudas</b>:"
     },
     {
       "id": "gather_doubt",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for both copies of Twin Suns and all 3 copies of Hunting Shadow, and remove them from the game."
+      "text": "Busca las 2 copias de Soles gemelos y las 3 copias de Sombra acechante en los conjuntos de encuentros reunidos y retíralas de la partida."
     },
     {
       "id": "gather_conviction",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for both copies of Black Stars Rise and both copies of False Lead, and remove them from the game."
+      "text": "Busca las 2 copias de Surgen estrellas negras y de Pista falsa y retíralas de la partida."
     },
     {
       "id": "act_1_v1",
       "bullet_type": "small",
-      "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. I). The other version of Act 1 is removed from the game."
+      "text": "Durante este escenario, usa el Acto 1 – La conspiración parisina (v.I). Retira de la partida la otra versión del Acto 1."
     },
     {
       "id": "act_1_v2",
       "bullet_type": "small",
-      "text": "During this scenario, use Act 1—The Parisian Conspiracy (v. II). The other version of Act 1 is removed from the game."
+      "text": "Durante este escenario, usa el Acto 1 – La conspiración parisina (v.II). Retira de la partida la otra versión del Acto 1."
     },
     {
       "id": "location_layout",
@@ -17083,7 +17083,7 @@
     },
     {
       "id": "set_aside_lost_soul",
-      "text": "If there are any remaining copies of the Lost Soul weakness, set them aside, out of play."
+      "text": "Si quedan copias de la Debilidad “Alma perdida”, ponlas aparte, fuera del juego."
     },
     {
       "id": "encounter_deck",
@@ -17127,7 +17127,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -17160,7 +17160,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -17181,7 +17181,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -17191,7 +17191,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -17208,7 +17208,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "did_not_escape_gaze",
-          "text": "you did not escape the gaze of the phantom."
+          "text": "los investigadores no escaparon de la mirada del Fantasma."
         }
       ]
     },
@@ -17219,19 +17219,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_nigels_home",
-          "text": "you found Nigel's home."
+          "text": "los investigadores encontraron la casa de Nigel."
         }
       ]
     },
     {
       "id": "found_nigel_engram",
-      "text": "Record in your Campaign Log that <i>you found Nigel Engram</i>. Each investigator suffers 1 mental trauma from the shock of their discovery. Each investigator earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Anota en el registro de campaña que <i>los investigadores encontraron a Nigel Engram</i>. Cada investigador sufre 1 trauma mental por la conmoción del descubrimiento. Cada investigador obtiene 2 puntos de experiencia adicionales por haber recibido información sobre las maquinaciones del Rey Andrajoso.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_nigel_engram",
-          "text": "you found Nigel Engram."
+          "text": "los investigadores encontraron a Nigel Engram."
         },
         {
           "type": "trauma",
@@ -17252,7 +17252,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "unable_to_find_nigel",
-          "text": "you were unable to find Nigel."
+          "text": "los investigadores no lograron encontrar a Nigel."
         }
       ]
     },
@@ -17297,7 +17297,7 @@
         "choices": [
           {
             "id": "jordan_killed",
-            "text": "Is Jordan Perry <i>(An Imposing Presence)</i> in the victory display?",
+            "text": "¿Está Jordan Perry <i>(Una presencia imponente)</i> en la zona de victoria?",
             "steps": [
               "kill_jordan"
             ]
@@ -17308,7 +17308,7 @@
     {
       "id": "kill_jordan",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Jordan Perry</i>.",
+      "text": "Anota a <i>Jordan Perry</i> en la sección “VIP muertos” del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -17319,7 +17319,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -17343,7 +17343,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -17367,7 +17367,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -17402,7 +17402,7 @@
         "hasturs_envoys",
         "arkham"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set"
+      "subtext": "Al reunir el conjunto de encuentros <i>Las máscaras de medianoche</i>, coge sólo las 5 cartas de Traición (2x Pista falsa y 3x Sombra acechante). No cojas las cartas de Lugar, de Acto, de Plan o de referencia de escenario de ese conjunto."
     },
     {
       "id": "choose_locations",
@@ -17431,7 +17431,7 @@
         "physical",
         "mental"
       ],
-      "text": "You lose track of yourself within the city as you flee for your life. Your feet move of their own accord. The beating of sinewy wings and screeching of creatures above you spurs you onward. Soon you find yourself running down a narrow avenue, passing a set of heavy iron gates. You are in a dead end—a court with tall, old houses on either side. You turn back toward the entrance to find the shapes of many winged creatures barring your path. They are perched on the gates and on the balconies above, awaiting your doom. Walking with cold, sinister confidence, the man in black opens the iron gate and enters the court. His face gleams in the darkness. His eyes pierce your soul. For a moment, you recognize him for what he truly is. It is the last you remember of that night.",
+      "text": "Ni siquiera miras por dónde vas mientras huyes por la ciudad para ponerte a salvo. Tus pies se mueven solos. El batir de unas fuertes alas y el chillido de las criaturas que te sobrevuelan te hacen ir más rápido. Pronto te encuentras corriendo por una estrecha avenida, por unos pesados portones de hierro. Estás en un callejón sin salida; un patio con altas casas antiguas en todos sus lados. Te vuelves hacia la entrada y ves las siluetas de muchas criaturas aladas que te bloquean el paso. Están posadas en los portones y en los balcones de los pisos superiores, esperando tu muerte. Caminando con fría y siniestra confianza, el hombre de negro abre el portón de hierro y entra en el patio. Su rostro brilla en la oscuridad. Sus ojos te atraviesan el alma. Durante un instante, reconoces su verdadero ser. Es lo último que recuerdas de esa noche.",
       "steps": [
         "did_not_escape_gaze",
         "add_elder_things",
@@ -17443,7 +17443,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. There is no response but a flock of magpies that scatter from the rooftop at the sudden noise. You try the doorknob, hoping you won’t have to resort to more forceful measures. To your surprise, you find the door unlocked.\nInside, Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. The food in his pantry is old and rotten. There is no sign of anyone having lived here for years, and yet the ink upon the living room walls is wet and fresh. Over and over, across nearly every inch of the wallpaper, it reads:\n<center><fancy>He is already here.</fancy></center>",
+      "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Agarras el picaporte, esperando no tener que recurrir a la fuerza, pero, para tu sorpresa, la puerta está abierta.\nEl interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. La comida de la despensa lleva allí mucho tiempo y está podrida. No parece que nadie haya vivido aquí desde hace años, y aun así, la tinta de las paredes de la sala de estar está húmeda y parece fresca. Cada centímetro del papel pintado está cubierto por una frase que se repite una y otra vez:\n<center><fancy>Ya está aquí.</fancy></center>",
       "steps": [
         "found_nigels_home",
         "add_cultists",
@@ -17455,7 +17455,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You can only assume this house belongs to Nigel Engram, the director of The King in Yellow. At last, you have finally found your quarry...and yet, it is little relief to your straining sanity. You feel like a dog being led by a leash, your fate decided by a cruel master who has long kept you in the dark. You push these gloomy thoughts to the back of your mind and knock on Mr. Engram’s door. A flock of magpies scatters from the rooftop at the sudden noise. Then, to your surprise, the door opens.\nAcross the threshold of the doorway stands a tall man with a thick, brown mustache. A familiar silver-handled cane leans against the wall next to his coat hanger. “So it’s you,” he says. “Come in. I have expected you for some time now.” He turns away and walks toward his kitchen. You can hear a teapot whistling, as though he’d been preparing for your arrival.\nYou enter his home, unsure of what to do next. This gentle, unassuming man is not quite what you had expected. Nigel’s home is a mess of notes, old books, and strange diagrams. Covering the coffee table in his living room is an old, faded map, bearing many fold creases and tattered edges. It looks to be an incomplete map of the catacombs beneath Paris, or at least a section of it. Mr. Engram returns moments later with hot tea and a plate of cheese and crackers. “I assume you are here to find the path to Carcosa?” he asks, wearing an excited grin. You shake your head in response, but he doesn’t seem to notice. He paces back and forth around the room as he speaks rapidly. “He told me that you would be arriving soon. That I should... Prepare.” Nigel turns toward you as he reaches the wooden door across from you, his eyes flashing. “Don’t worry. All is ready. The way is paved.” He opens the door to his study and steps inside, leaving you behind to interpret his cryptic comments. You wait a few minutes for him to return, but when he does not, you begin to worry. Then you notice that mold has already begun to grow over the cheese he’d brought you. “Mr. Engram?” you call out, and you hesitantly knock on the door to his study. There is no response. When you enter the room, you find him hanging from the ceiling fan, his body rotting from weeks of decomposition.",
+      "text": "Supones que esta casa pertenece a Nigel Engram, el director de El Rey de Amarillo. Por fin has encontrado tu objetivo... y aun así, no alivia tu forzada cordura. Te sientes como un perro al que llevan de una correa, con tu destino decidido por un cruel amo que te mantiene en la ignorancia. Apartas estos pesimistas pensamientos de tu mente y llamas a la puerta del Sr. Engram. No hay respuesta, pero una bandada de urracas sale volando del tejado por el ruido. Para tu sorpresa, la puerta se abre.\nEn el umbral de la puerta se encuentra un hombre alto con un poblado bigote marrón. Junto al perchero hay un familiar bastón con mango de plata apoyado en la pared. –Así que eres tú –dice el hombre–. Pasa. Llevo tiempo esperándote –Se gira y camina hacia la cocina. Oyes el silbido de una tetera, como si hubiera preparado tu llegada.\nEntras en su casa sin saber muy bien qué hacer. Este amable y sencillo hombre no es precisamente como esperabas. El interior del hogar de Nigel es un batiburrillo de notas, viejos libros y extraños diagramas. Sobre la mesita de su sala de estar hay un viejo mapa desvaído con muchos dobleces y bordes desgastados. Parece un mapa incompleto de las catacumbas que hay bajo París, o al menos parte de ellas. El Sr. Engram regresa poco después con té caliente y un plato de queso y galletas saladas. –¿Has venido para encontrar el camino hacia Carcosa? –pregunta con una sonrisa de emoción. Sacudes la cabeza como respuesta, pero no parece darse cuenta. Va de un lado a otro de la habitación mientras habla rápidamente–. Me dijo que llegarías pronto. Que debería... prepararme –Nigel se vuelve hacia ti con los ojos brillantes mientras extiende la mano hacia la puerta de madera que tienes enfrente–. No te preocupes. Todo está listo. El camino está creado –Abre la puerta de su estudio y entra, dejándote fuera mientras tratas de interpretar sus enigmáticos comentarios. Esperas unos minutos a que vuelva, pero al ver que no lo hace, comienzas a preocuparte. Entonces te das cuenta de que ya ha empezado a aparecer moho sobre el queso que ha traído–. ¿Señor Engram? –le llamas, y das unos golpecitos en la puerta del estudio. No hay respuesta. Cuando entras en la habitación, le encuentras ahorcado del ventilador del techo, podrido tras semanas de descomposición.",
       "steps": [
         "found_nigel_engram",
         "add_tablets",
@@ -17467,7 +17467,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "As the sun rises once more over the skyline of Paris, you lose sight of the mysterious figure. Frustrated at your failure, you return to your hotel to sleep and recover from the horrors of the past few nights. Your fitful dreams return— dreams of Carcosa, of the King in Tatters, and of the shadowy figure whom you had pursued through the streets of Paris. When you awaken, you are no longer in your hotel room.",
+      "text": "Cuando el sol vuelve a salir sobre los tejados de París, pierdes de vista a la misteriosa figura. Frustrado por tu fracaso, vuelves a tu hotel para dormir y recuperarte de los horrores de las noches pasadas. Tus agitados sueños regresan: sueños de Carcosa, del Rey Andrajoso y de la sombría figura a la que perseguiste por las calles de París. Cuando despiertas, no estás en tu habitación del hotel.",
       "steps": [
         "unable_to_find_nigel",
         "add_elder_things",
@@ -17719,7 +17719,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -17752,7 +17752,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -17830,7 +17830,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -17903,7 +17903,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -18849,7 +18849,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -18882,7 +18882,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -19020,7 +19020,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -19030,7 +19030,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -19553,7 +19553,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -19574,7 +19574,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -19584,7 +19584,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -19732,7 +19732,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -19756,7 +19756,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -19780,7 +19780,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -20053,7 +20053,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -20074,7 +20074,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -20084,7 +20084,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -20521,7 +20521,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -20554,7 +20554,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -20581,7 +20581,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -20656,7 +20656,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -20796,7 +20796,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -20820,7 +20820,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -20844,7 +20844,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -21194,7 +21194,7 @@
     },
     {
       "id": "transfer_mitpm",
-      "text": "Because the original bearer of The Man in the Pallid Mask weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que el investigador originalmente afectado por El hombre de la máscara pálida no está jugando este escenario, elige a un nuevo investigador para que sea el afectado.",
       "effects": [
         {
           "type": "remove_card",
@@ -21245,7 +21245,7 @@
     },
     {
       "id": "transfer_onyx_clasp",
-      "text": "Because <i>you took the onyx clasp</i> and the original bearer of the Clasp of Black Onyx weakness is not playing this scenario, another investigator must become the bearer.",
+      "text": "Puesto que <i>los investigadores se llevaron el broche de ónice</i> y el portador original del “Broche de ónice negro” no está jugando este escenario, elige a un nuevo investigador para que lleve el broche.",
       "effects": [
         {
           "type": "remove_card",
@@ -21266,7 +21266,7 @@
         "branches": [
           {
             "id": "mitpm_defeated",
-            "text": "Defeated the Man in the Pallid Mask",
+            "text": "Derrotaste a El hombre de la máscara pálida",
             "steps": [
               "mitpm_defeated"
             ]
@@ -21276,7 +21276,7 @@
     },
     {
       "id": "mitpm_defeated",
-      "text": "In your Campaign Log, under “Chasing the Stranger,” place one tally mark.",
+      "text": "En la sección “Persiguiendo al Extranjero” del registro de campaña, haz una marca.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -21419,7 +21419,7 @@
     },
     {
       "id": "add_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -21443,7 +21443,7 @@
     },
     {
       "id": "add_cultists",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -21489,7 +21489,7 @@
     },
     {
       "id": "add_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -23326,7 +23326,7 @@
       "type": "encounter_sets",
       "encounter_sets": [
         "pillars_of_judgment",
-        "return_to_pillars_of_judgement",
+        "return_to_pillars_of_judgment",
         "heart_of_the_elders",
         "return_to_heart_of_the_elders",
         "rainforest",
@@ -30159,7 +30159,7 @@
     },
     {
       "id": "add_expert_token",
-      "text": "Como estás jugando en dificultad <b>Experto</b>, añade una ficha -6 a la bolsa de caos durante el resto de la campaña."
+      "text": "Como estás jugando en dificultad <b>Experto</b>, añade una ficha -7 a la bolsa de caos durante el resto de la campaña."
     },
     {
       "id": "find_brazier",
@@ -41446,7 +41446,7 @@
       "text": "Elige al azar uno de los dos Lugares El patíbulo, uno de los dos Lugares Tumbas de herejes, uno de los dos Lugares Ático de la capilla y uno de los dos Lugares Cripta de la capilla y ponlos en juego. Retira de la partida las demás versiones de El patíbulo, Tumbas de herejes, Ático de la capilla y Cripta de la capilla. A continuación, pon en juego los Campos encantados, la Capilla abandonada y el Arroyo del Ahorcado.",
       "bullets": [
         {
-          "text": "=Estos Lugares tienen versiones reveladas en ambos lados. Un lado tiene el rasgo [[Espectral]], y el otro no. Al poner en juego estos Lugares, usa los lados revelados sin el rasgo [[Espectral]]."
+          "text": "Estos Lugares tienen versiones reveladas en ambos lados. Un lado tiene el rasgo [[Espectral]], y el otro no. Al poner en juego estos Lugares, usa los lados revelados sin el rasgo [[Espectral]]."
         },
         {
           "text": "Cada investigador comienza la partida en el Arroyo del Ahorcado."
@@ -58992,7 +58992,7 @@
     },
     {
       "id": "add_expert_token",
-      "text": "Como estás jugando en dificultad <b>Experto</b>, añade una ficha -6 a la bolsa de caos durante el resto de la campaña."
+      "text": "Como estás jugando en dificultad <b>Experto</b>, añade una ficha -7 a la bolsa de caos durante el resto de la campaña."
     },
     {
       "id": "find_brazier",

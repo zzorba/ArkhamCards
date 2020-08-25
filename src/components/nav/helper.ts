@@ -117,6 +117,7 @@ export function showCard(
         topBar: {
           backButton: {
             title: t`Back`,
+            color: COLORS.navButton,
           },
         },
       },

@@ -79,7 +79,7 @@ import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 
 const SHOW_DESCRIPTION_EDITOR = false;
-const SHOW_CHECKLIST_EDITOR = false;
+const SHOW_CHECKLIST_EDITOR = true;
 export interface DeckDetailProps {
   id: number;
   title?: string;
