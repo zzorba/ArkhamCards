@@ -539,6 +539,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       componentId,
       deck,
+      cards,
     } = this.props;
     const {
       slots,
@@ -546,6 +547,7 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
+    const investigator = cards[deck.investigator_code];
     Navigation.push<DeckChecklistProps>(componentId, {
       component: {
         name: 'Deck.Checklist',
@@ -553,6 +555,9 @@ class DeckDetailView extends React.Component<Props, State> {
           id: deck.id,
           investigator: deck.investigator_code,
           slots,
+        },
+        options: {
+          ...getDeckOptions(investigator, false, t`Checklist`),
         },
       },
     });

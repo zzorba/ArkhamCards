@@ -41,12 +41,14 @@ class DeckChecklistView extends React.Component<Props> {
       counts[code] = 1;
     });
     return (
-      <CardSelectorComponent
-        componentId={componentId}
-        slots={slots}
-        counts={counts}
-        toggleCard={this._toggleCard}
-      />
+      <ScrollView>
+        <CardSelectorComponent
+          componentId={componentId}
+          slots={slots}
+          counts={counts}
+          toggleCard={this._toggleCard}
+        />
+      </ScrollView>
     );
   }
 }

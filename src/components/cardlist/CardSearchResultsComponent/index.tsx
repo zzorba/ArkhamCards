@@ -24,6 +24,7 @@ import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@
 import Card from '@data/Card';
 import typography from '@styles/typography';
 import space, { isTablet, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -464,5 +465,6 @@ const styles = StyleSheet.create({
   searchOption: {
     marginLeft: s,
     marginRight: xs,
+    color: COLORS.darkText,
   },
 });

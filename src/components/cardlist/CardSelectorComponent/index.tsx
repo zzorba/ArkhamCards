@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { filter, flatMap, keys, sortBy } from 'lodash';
 
 import { Slots } from '@actions/types';
+import { SortType } from '@actions/types';
 import Card from '@data/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
@@ -16,6 +17,7 @@ interface OwnProps {
   updateCounts?: (slots: Slots) => void;
   filterCard?: (card: Card) => boolean;
   header?: ReactNode;
+  sort?: SortType;
 }
 
 type Props = OwnProps & PlayerCardProps & DimensionsProps;
@@ -41,17 +43,13 @@ class CardSelectorComponent extends React.Component<Props> {
     showCard(this.props.componentId, card.code, card, true);
   };
 
-  render() {
+  cards() {
     const {
       slots,
       cards,
-      counts,
       filterCard,
-      header,
-      fontScale,
-      toggleCard,
     } = this.props;
-    const matchingCards = sortBy(
+    return sortBy(
       filter(
         keys(slots),
         code => {
@@ -68,7 +66,18 @@ class CardSelectorComponent extends React.Component<Props> {
         return (card && card.name) || '';
       }
     );
+  }
 
+  render() {
+    const {
+      slots,
+      cards,
+      counts,
+      header,
+      fontScale,
+      toggleCard,
+    } = this.props;
+    const matchingCards = this.cards();
     if (!matchingCards.length) {
       return null;
     }
