@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2020-08-20 13:16+0300\n"
+"PO-Revision-Date: 2020-08-26 15:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -10,8 +10,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "x-generator: Poedit 2.4\n"
 "x-poedit-basepath: .\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n"
-"%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "X-Generator: Poedit 2.4.1\n"
@@ -27,8 +27,7 @@ msgstr "${ action.name } (Кампания Б)"
 
 #: src/lib/DeckValidation.ts:244
 msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr ""
-"«Своими силами» не позволяет вам иметь под контролем активы, занимающие слот союзника."
+msgstr "«Своими силами» не позволяет вам иметь под контролем активы, занимающие слот союзника."
 
 #: src/lib/DeckValidation.ts:261
 msgid "Too many off-class cards for Versatile"
@@ -395,9 +394,8 @@ msgid "Each investigator pays ${ entry.xpCost } experience point to play this sc
 msgid_plural ""
 "Each investigator pays ${ entry.xpCost } experience points to play this scenario."
 msgstr[0] "Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost } опыт."
-msgstr[1] ""
-"Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost } опыта."
-msgstr[2] ""
+msgstr[1] "Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost } опыта."
+msgstr[2] "Чтобы сыграть этот сценарий, каждый сыщик должен потратить ${ entry.xpCost } опыта."
 
 #. This is a deck upgrade action.
 #: src/data/scenario/CampaignStateHelper.ts:184
@@ -417,8 +415,8 @@ msgid ""
 msgstr ""
 "Кажется, вы собираетесь отменить улучшение колоды.\n"
 "\n"
-"Обратите внимание: это действие НЕ УДАЛИТ улучшение с ArkhamDB, так что ваша колода "
-"сохранит внесённые ранее изменения.\n"
+"Обратите внимание: это действие НЕ УДАЛИТ улучшение с ArkhamDB, так что ваша колода сохранит "
+"внесённые ранее изменения.\n"
 "\n"
 "Вы можете открыть колоду там и удалить самое последнее улучшение, чтобы вернуть её к "
 "прежнему виду."
@@ -698,9 +696,8 @@ msgstr "Скопируйте сюда резервную копию"
 
 #: src/components/settings/DiagnosticsView.tsx:115
 msgid ""
-"This feature is intended for advanced diagnostics or if you are trying to move your "
-"campaign data from one device to another. Just copy the data and paste it into the other "
-"app."
+"This feature is intended for advanced diagnostics or if you are trying to move your campaign "
+"data from one device to another. Just copy the data and paste it into the other app."
 msgstr ""
 "Эта функция используется для расширенной диагностики или на случай, если вы захотите "
 "перенести прогресс в кампании на другое устройство. Просто скопируйте эти данные в другое "
@@ -904,9 +901,9 @@ msgstr "Отметьте, какие сценарии вы прошли, что�
 #: src/components/deck/EditSpecialDeckCardsView.tsx:122
 #: src/components/deck/EditSpecialDeckCardsView.tsx:218
 #: src/components/deck/EditSpecialDeckCardsView.tsx:264
-#: src/components/filter/CardEnemyFilterView.tsx:20
-#: src/components/filter/PackFilterView.tsx:31 src/components/nav/helper.ts:30
-#: src/components/nav/helper.ts:119 src/components/nav/helper.ts:177
+#: src/components/filter/CardEnemyFilterView.tsx:20 src/components/filter/PackFilterView.tsx:31
+#: src/components/nav/helper.ts:30 src/components/nav/helper.ts:119
+#: src/components/nav/helper.ts:177
 msgid "Назад"
 msgstr ""
 
@@ -1621,7 +1618,7 @@ msgstr "Напасть"
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:196
 #, javascript-format
 msgid "Bonded Cards (${ count })"
-msgstr ""
+msgstr "Связанные карты (${ count })"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:475
 msgid "Deck Cards"
@@ -1805,8 +1802,8 @@ msgstr "Колода удалена"
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
-"If it was part of a campaign you can add the same investigator back to restore your "
-"campaign data."
+"If it was part of a campaign you can add the same investigator back to restore your campaign "
+"data."
 msgstr ""
 "Похоже, вы удалили эту колоду с ArkhamDB.\n"
 "\n"
@@ -1847,8 +1844,7 @@ msgstr "Карты"
 msgid "Edit Cards"
 msgstr "Править карты"
 
-#: src/components/DeckNavFooter/index.tsx:125
-#: src/components/deck/DeckDetailView/index.tsx:1654
+#: src/components/DeckNavFooter/index.tsx:125 src/components/deck/DeckDetailView/index.tsx:1654
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
@@ -1907,8 +1903,7 @@ msgstr "Выберите класс"
 
 #: src/components/deck/DeckDetailView/InvestigatorOptionsModule/FactionSelectPicker.tsx:47
 msgid ""
-"Note: Secondary faction should only be selected at deck creation time, not between "
-"scenarios."
+"Note: Secondary faction should only be selected at deck creation time, not between scenarios."
 msgstr ""
 "Обратите внимание: Дополнительный класс может быть выбран только при создании колоды, но не "
 "между сценариями."
@@ -2410,10 +2405,10 @@ msgid ""
 "between investigator power and scenario difficulty, and to enforce shifts in deckbuilding "
 "environments over time."
 msgstr ""
-"Список табу для Карточного Ужаса Аркхэма — это необязательные ограничения в создании "
-"колод или изменения текста карт. Этот список создан для поддержания здорового баланса "
-"между силой сыщиков и сложностью сценариев, а также чтобы заставить игроков "
-"пересматривать свои колоды с течением времени."
+"Список табу для Карточного Ужаса Аркхэма — это необязательные ограничения в создании колод "
+"или изменения текста карт. Этот список создан для поддержания здорового баланса между силой "
+"сыщиков и сложностью сценариев, а также чтобы заставить игроков пересматривать свои колоды с "
+"течением времени."
 
 #: src/components/card/CardTabooView.tsx:115
 msgid ""
@@ -2422,14 +2417,14 @@ msgid ""
 "do so in full (an investigator cannot pick and choose which restrictions to use)."
 msgstr ""
 "Следование списку табу необязательно. Сыщики сами решают, следовать ли предлагаемым "
-"ограничениям, но если они идут на это, то обязаны придерживаться всех ограничений в "
-"полной мере (сыщик не может выбирать, каким ограничениям следовать, а каким нет)."
+"ограничениям, но если они идут на это, то обязаны придерживаться всех ограничений в полной "
+"мере (сыщик не может выбирать, каким ограничениям следовать, а каким нет)."
 
 #: src/components/card/CardTabooView.tsx:117
 msgid "You can opt-in to always seeing taboos and buiding decks with them in Settings."
 msgstr ""
-"Вы можете включить эту опцию в Настройках, чтобы всегда видеть ограничения табу при "
-"создании колоды."
+"Вы можете включить эту опцию в Настройках, чтобы всегда видеть ограничения табу при создании "
+"колоды."
 
 #: src/components/card/FetchCardsGate.tsx:106
 msgid "Check for updated cards?"
@@ -2470,7 +2465,7 @@ msgstr "Отсутствует карта #${ code }. Попробуйте об�
 
 #: src/components/card/CardDetailView/BondedCardsComponent.tsx:105
 msgid "Bound Cards"
-msgstr ""
+msgstr "Привязанные карты"
 
 #: src/components/card/CardDetailView/CardDetailComponent.tsx:81
 msgid "Deckbuilding"
@@ -2600,8 +2595,8 @@ msgstr "Нельзя удалить"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:195
 msgid ""
-"Since this investigator has participated in one or more scenarios during this campaign, "
-"they cannot be removed.\n"
+"Since this investigator has participated in one or more scenarios during this campaign, they "
+"cannot be removed.\n"
 "\n"
 "However, you can choose to have them not participate in future scenarios of this campaign."
 msgstr ""
@@ -2650,24 +2645,23 @@ msgid ""
 "The <i>${ scenario.scenario_name }</i> challenge scenario centers around the investigator "
 "${ investigator.name }, and therefore has the following prerequisites:"
 msgstr ""
-"Сценарий-испытание <i>${ scenario.scenario_name }</i> разворачивается вокруг "
-"${ investigator.name }, поэтому у него следующие начальные требования:"
+"Сценарий-испытание <i>${ scenario.scenario_name }</i> разворачивается вокруг ${ investigator."
+"name }, поэтому у него следующие начальные требования:"
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:55
 msgid ""
-"${ investigator.name } must be chosen as one of the investigators when playing this "
-"scenario."
+"${ investigator.name } must be chosen as one of the investigators when playing this scenario."
 msgstr ""
-"Среди сыщиков, которые проходят этот сценарий, обязательно должен быть сыщик "
-"${ investigator.name }."
+"Среди сыщиков, которые проходят этот сценарий, обязательно должен быть сыщик ${ investigator."
+"name }."
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:67
 msgid ""
-"The app does not enforce Challenge Scenario prerequisites, so please confirm that they "
-"apply manually."
+"The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply "
+"manually."
 msgstr ""
-"Приложение не проверяет, выполнили ли вы начальные требования сценария-испытания, "
-"поэтому убедитесь в этом самостоятельно."
+"Приложение не проверяет, выполнили ли вы начальные требования сценария-испытания, поэтому "
+"убедитесь в этом самостоятельно."
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:70
 msgid "Play this scenario"
@@ -2816,9 +2810,9 @@ msgstr[2] "${ count } очков припасов"
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Всего ${ xp } / ${ resupplyPointsString } опыта"
+msgstr[1] "Всего ${ xp } / ${ resupplyPointsString } опыта"
+msgstr[2] "Всего ${ xp } / ${ resupplyPointsString } опыта"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/InvestigatorChoiceWithSuppliesInputComponent.tsx:36
 #, javascript-format
@@ -2826,13 +2820,15 @@ msgid ""
 "${ card.name }\n"
 "(has ${ input.id })"
 msgstr ""
+"${ card.name }\n"
+"(Имеет ${ input.id })"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/InvestigatorCounterInputComponent.tsx:49
 msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Доступно ${ specialXp } очко пополнения припасов"
+msgstr[1] "Доступно ${ specialXp } очка пополнения припасов"
+msgstr[2] "Доступно ${ specialXp } очков пополнения припасов"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:87
 msgid "Random location"
@@ -2930,8 +2926,8 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:114
 msgid ""
-"It looks like you edited the experience or trauma for an investigator, but have not saved "
-"it yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved."
+"It looks like you edited the experience or trauma for an investigator, but have not saved it "
+"yet. Please go back and select ‘Save adjustments’ to ensure your changes are saved."
 msgstr ""
 "Похоже, что вы не сохранили изменения опыта или травм для сыщика. Пожалуйста, вернитесь "
 "назад и выберите «Сохранить изменения»."
@@ -3015,8 +3011,7 @@ msgstr "В вашем журнале кампании вычеркните <i>${
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ logEntry.text }</i>"
-msgstr ""
-"В графе «${ logEntry.section }» журнала кампании, вычеркните <i>${ logEntry.text }</i>"
+msgstr "В графе «${ logEntry.section }» журнала кампании, вычеркните <i>${ logEntry.text }</i>"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:64
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
@@ -3026,8 +3021,7 @@ msgstr "Запишите в журнале кампании, что <i>${ logEnt
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ logEntry.text }</i>."
-msgstr ""
-"В графе «${ logEntry.section }» журнала кампании запишите <i>${ logEntry.text }</i>."
+msgstr "В графе «${ logEntry.section }» журнала кампании запишите <i>${ logEntry.text }</i>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/ChaosTokenEffectComponent.tsx:21
 msgid "Add ${ tokenString } to the chaos bag."
@@ -3173,14 +3167,14 @@ msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
-"Сверьтесь с журналом кампании. Поскольку там ${ count } запись в графе "
-"«${ logEntry.section }»"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } запись в графе «${ logEntry."
+"section }»"
 msgstr[1] ""
-"Сверьтесь с журналом кампании. Поскольку там ${ count } записи в графе "
-"«${ logEntry.section }»"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } записи в графе «${ logEntry."
+"section }»"
 msgstr[2] ""
-"Сверьтесь с журналом кампании. Поскольку там ${ count } записей в графе "
-"«${ logEntry.section }»"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } записей в графе «${ logEntry."
+"section }»"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:41
 #, javascript-format
@@ -3255,18 +3249,17 @@ msgstr "Если все сыщики были <b>убиты</b>."
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:27
 #, javascript-format
 msgid ""
-"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in your Campaign "
-"Log."
+"If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
-"Если <i>${ card.name }</i> не указана в графе «Проверьте ‘${ entry.section }» в вашем "
-"журнале кампании."
+"Если <i>${ card.name }</i> не указана в графе Проверьте «${ entry.section }» в вашем журнале "
+"кампании."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:28
 #, javascript-format
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
-"Если <i>${ card.name }</i> указана под «Проверьте ‘${ entry.section }» в вашем журнале "
+"Если <i>${ card.name }</i> указана под «Проверьте «${ entry.section }» в вашем журнале "
 "кампании."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
@@ -3286,8 +3279,8 @@ msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario and following "
 "interludes are completed."
 msgstr ""
-"Сценарии-ответвления не могут быть добавлены в кампанию, пока предыдущий сценарий "
-"и все последующие интерлюдии не будут завершены."
+"Сценарии-ответвления не могут быть добавлены в кампанию, пока предыдущий сценарий и все "
+"последующие интерлюдии не будут завершены."
 
 #: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:43
 #, javascript-format
@@ -3320,8 +3313,8 @@ msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } for each other "
 "investigator"
 msgstr ""
-"Цена в опыте для ${ investigator.name }: ${ challengeCost }, для остальных сыщиков – "
-"по ${ xpCost } очков опыта"
+"Цена в опыте для ${ investigator.name }: ${ challengeCost }, для остальных сыщиков – по "
+"${ xpCost } очков опыта"
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:102
 msgid "Experience cost: ${ xpCost }"
@@ -3352,20 +3345,27 @@ msgstr "Ответвление"
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of an <i>Arkham "
 "Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the "
-"campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards "
-"granted by playing a side-story stay with the investigators for the remainder of the "
-"campaign. Each sidestory may only be played once per campaign.\n"
-"The experience required to play these scenarios will be deducted automatically at the end "
-"of the scenario."
+"campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards granted "
+"by playing a side-story stay with the investigators for the remainder of the campaign. Each "
+"sidestory may only be played once per campaign.\n"
+"The experience required to play these scenarios will be deducted automatically at the end of "
+"the scenario."
 msgstr ""
+"История-ответвление - это сценарий, который проходится между двумя другими сценариями "
+"кампании <i>Ужас Аркхэма. Карточная игра</i>. Для игры в историю-ответвление в кампании "
+"каждый сыщик должен заплатить определённое количество опыта. Слабости, травмы, опыт и "
+"награды полученные сыщиками при прохождении этого сценария ответвления остаются до конца "
+"кампании. Каждая история-ответвление может играться лишь раз за кампанию.\n"
+"Стоимость опыта, необходимая для игры в этот сценарий ответвление, будет автоматически "
+"отнята в конце этого сценария."
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:209
 msgid "Custom scenario"
-msgstr ""
+msgstr "Пользовательский сценарий"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:217
 msgid "Challenge"
-msgstr ""
+msgstr "Испытание"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:222
 msgid ""
@@ -3375,12 +3375,12 @@ msgid ""
 "mind, in order to craft a challenging puzzle-like experience. Printable cards can be "
 "downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section."
 msgstr ""
-"Испытания — это особые сценарии, которые рассказывают новые сюжеты на основе уже "
-"выпущенных продуктов карточного «Ужаса Аркхэма» и новых элементов, предназначенных "
-"для самостоятельной печати. Испытания представляют собой что-то вроде головоломки, "
-"поэтому у них есть определённые начальные требования. Карты для печати можно "
-"скачать на английском языке с сайта FFG, а на русском – на странице карточного "
-"«Ужаса Аркхэма» издательства Hobby World в разделе «Правила игры»."
+"Испытания — это особые сценарии, которые рассказывают новые сюжеты на основе уже выпущенных "
+"продуктов карточного «Ужаса Аркхэма» и новых элементов, предназначенных для самостоятельной "
+"печати. Испытания представляют собой что-то вроде головоломки, поэтому у них есть "
+"определённые начальные требования. Карты для печати можно скачать на английском языке с "
+"сайта FFG, а на русском – на странице карточного «Ужаса Аркхэма» издательства Hobby World в "
+"разделе «Правила игры»."
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:226
 msgid "Download printable cards"
@@ -4120,8 +4120,8 @@ msgid ""
 "Note: chaos tokens that cause additional tokens to be revealed does not show correct odds "
 "for the \"Draw Two Pick One\" and similar multi-draw situations."
 msgstr ""
-"Обратите внимание: жетоны хаоса, предписывающие вытянуть ещё один жетон, дают "
-"некорректные вероятности в ситуациях, подобных «Вытянуть два, выбрать один»."
+"Обратите внимание: жетоны хаоса, предписывающие вытянуть ещё один жетон, дают некорректные "
+"вероятности в ситуациях, подобных «Вытянуть два, выбрать один»."
 
 #: src/components/campaign/NewCampaignView/index.tsx:662
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:420
@@ -4222,8 +4222,8 @@ msgid ""
 "If you encounter any problems with the campaign guide system, please let me know at "
 "arkhamcards@gmail.com."
 msgstr ""
-"При обнаружении проблем или недочётов в работе путеводителя, напишите, пожалуйста, "
-"на arkhamcards@gmail.com."
+"При обнаружении проблем или недочётов в работе путеводителя, напишите, пожалуйста, на "
+"arkhamcards@gmail.com."
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:63
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:85
@@ -4320,6 +4320,9 @@ msgid ""
 "\n"
 "The deck will remain on ArkhamDB."
 msgstr ""
+"Вы действительно хотите удалить эту колоды из кампании?\n"
+"\n"
+"Эта колода останется в ArkhamDB."
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:178
 #, javascript-format
@@ -4328,136 +4331,147 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"Вы действительно хотите удалить ${ investigator.name } из этой кампании?\n"
+"\n"
+"Все связанные записи в журнале кампании будут утеряны."
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:181
 msgid "Remove"
-msgstr ""
+msgstr "Удалить"
 
 #: src/components/campaign/CampaignDetailView/ScenarioSection.tsx:73
 #: src/components/campaign/CampaignDetailView/index.tsx:494
 msgid "Record Scenario Results"
-msgstr ""
+msgstr "Записать результаты сценария"
 
 #: src/components/campaign/CampaignDetailView/WeaknessSetSection.tsx:55
 msgid "Basic Weakness Set"
-msgstr ""
+msgstr "Набор базовых слабостей"
 
 #: src/components/campaign/CampaignDetailView/WeaknessSetSection.tsx:58
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
-msgstr ""
+msgstr "Было вытащено ${ counts.assigned } / ${ counts.total }."
 
 #: src/components/campaign/CampaignDetailView/index.tsx:273
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaign.name }"
-msgstr ""
+msgstr "Вы действительно хотите удалить кампанию: ${ campaign.name }"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:488
 msgid "Scenario History"
-msgstr ""
+msgstr "История сценария"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:504
 msgid "Edit Tokens"
-msgstr ""
+msgstr "Редактировать жетоны"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:510
 msgid "Draw Tokens"
-msgstr ""
+msgstr "Вытащить жетоны"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:625
 msgid "Clean up broken campaigns"
-msgstr ""
+msgstr "Почистить сломанные кампании"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:84
 msgid "Custom Scenario Name"
-msgstr ""
+msgstr "Пользовательское название сценария"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:171
 msgid "Show Interludes"
-msgstr ""
+msgstr "Показать интерлюдии"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:177
 msgid "Scenario or Interlude"
-msgstr ""
+msgstr "Сценарий или интерлюдия"
 
 #: src/components/campaign/AddScenarioResultView/index.tsx:72
 msgid "Scenario Result"
-msgstr ""
+msgstr "Результат сценария"
 
 #: src/components/campaign/AddScenarioResultView/index.tsx:290
 msgid "Save and Upgrade Decks"
-msgstr ""
+msgstr "Сохранить и улучшить колоды"
 
 #: src/components/campaign/AddScenarioResultView/index.tsx:297
 msgid "Only Save"
-msgstr ""
+msgstr "Только сохранить"
 
 #: src/components/DeckNavFooter/index.tsx:86
 #, javascript-format
 msgid "XP: ${ experience }"
-msgstr ""
+msgstr "Опыт: ${ experience }"
 
 #: src/components/DeckNavFooter/index.tsx:89
 #, javascript-format
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
-msgstr ""
+msgstr "Опыт: ${ changes.spentXp } из ${ adjustedExperience }"
 
 #: src/app/App.ts:183 src/app/App.ts:231
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: src/lib/publicApi.ts:177
 msgid "All or Nothing"
-msgstr ""
+msgstr "Все или ничего"
 
 #: src/components/settings/BackupView.tsx:59
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
-msgstr ""
+msgstr "Это приложение ожидает файл резервной копии Arkham Cards (.acb/.json)"
 
 #: src/components/settings/BackupView.tsx:100
 msgid ""
-"This feature will let you restore data from a lost device. If you were signed into "
-"ArkhamDB, please reauthorize before importing campaign data.\n"
+"This feature will let you restore data from a lost device. If you were signed into ArkhamDB, "
+"please reauthorize before importing campaign data.\n"
 "\n"
 "After a backup is selected, you will be able to choose which data to import."
 msgstr ""
+"Это опция позволит вам восстановить данные из утерянного устройства. Если вы вошли в "
+"ArkhamDB, пожалуйста зайдите повторно перед импортом кампании.\n"
+"\n"
+"После выбора резервной копии, вы сможете выбрать, какие данные необходимо импортировать."
 
 #: src/components/settings/BackupView.tsx:138
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. This can also be "
 "used to move them to another device."
 msgstr ""
+"Эта опция позволит вам сохранить ваши локальные колоды и кампании. Так же эта функция "
+"поможет перенести их на другое устройство."
 
 #: src/components/settings/BackupView.tsx:166
 msgid "Save backup"
-msgstr ""
+msgstr "Сохранить резервную копию"
 
 #: src/components/settings/BackupView.tsx:125
 msgid "Cannot request access"
-msgstr ""
+msgstr "Не могу запросить доступ"
 
 #: src/components/settings/BackupView.tsx:125
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write external files. "
 "Please visit your System settings to adjust this permission, and try again."
 msgstr ""
+"Похоже, что ранее вы запретили доступ для Arkham Cards на чтение\\запись внешних файлов. "
+"Пожалуйста, измените настройки доступа в вашей системе и попробуйте снова."
 
 #: src/components/settings/MergeBackupView/DeckMergeItem.tsx:31
 #, javascript-format
 msgid "(${ investigator.name } - ${ scenarioCount } scenario"
 msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "${ investigator.name } - ${ scenarioCount } сценарий"
+msgstr[1] "${ investigator.name } - ${ scenarioCount } сценария"
+msgstr[2] "${ investigator.name } - ${ scenarioCount } сценариев"
 
 #: src/components/settings/MergeBackupView/index.tsx:68
 #: src/components/settings/MergeBackupView/index.tsx:88
 msgid "Import"
-msgstr ""
+msgstr "Импортировать"
 
 #: src/components/settings/MergeBackupView/index.tsx:215
 msgid "Missing decks"
-msgstr ""
+msgstr "Недостающие колоды"
 
 #: src/components/settings/MergeBackupView/index.tsx:216
 msgid ""
@@ -4465,42 +4479,44 @@ msgid ""
 "ArkhamDB decks. The campaign can still be imported, however the deck information will be "
 "removed."
 msgstr ""
+"Похоже вы решили импортировать кампанию без импорта одной или нескольких колод не из "
+"ArkhamDB. Кампания все же будет импортирована, но информация о колодах будет удалена."
 
 #: src/components/settings/MergeBackupView/index.tsx:218
 msgid "Import anyway"
-msgstr ""
+msgstr "Импортировать принудительно"
 
 #: src/components/settings/MergeBackupView/index.tsx:243
 #: src/components/settings/MergeBackupView/index.tsx:274
 msgid "New:"
-msgstr ""
+msgstr "Новый:"
 
 #: src/components/settings/MergeBackupView/index.tsx:250
 #: src/components/settings/MergeBackupView/index.tsx:283
 msgid "Updated:"
-msgstr ""
+msgstr "Обновленный:"
 
 #: src/components/settings/MergeBackupView/index.tsx:257
 #: src/components/settings/MergeBackupView/index.tsx:292
 msgid "No changes:"
-msgstr ""
+msgstr "Без изменений:"
 
 #: src/components/settings/MergeBackupView/index.tsx:263
 #: src/components/settings/MergeBackupView/index.tsx:300
 msgid "Local version appears to be newer:"
-msgstr ""
+msgstr "Похоже, что ваша локальная версия является более новой:"
 
 #: src/components/settings/MergeBackupView/index.tsx:309
 msgid "Import selected data"
-msgstr ""
+msgstr "Импортировать выбранные данные"
 
 #: src/components/settings/MergeBackupView/index.tsx:64
 msgid "Select items to import"
-msgstr ""
+msgstr "Выберите пункты для импорта"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:241
 msgid "Investigator trauma"
-msgstr ""
+msgstr "Травма сыщика"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:243
 msgid ""
@@ -4508,7 +4524,10 @@ msgid ""
 "\n"
 "During scenario play it can be edited using the scenario guide."
 msgstr ""
+"Вы можете редактировать травмы только между сценариями.\n"
+"\n"
+"Во время игры в сценарий, травмы можно редактировать лишь используя руководство сценария."
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:244
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
-msgstr ""
+msgstr "Начальные травмы можно изменить после окончания «Подготовки к сценарию»."
