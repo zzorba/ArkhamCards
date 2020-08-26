@@ -108,7 +108,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
     });
   };
 
-  getValues() {
+  getValues(): string[] {
     const {
       values,
     } = this.props;
@@ -120,7 +120,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
     }
     const lowerCaseSearch = search.toLowerCase();
     return filter(values, value =>
-      search === '' || (value && value.toLowerCase().includes(lowerCaseSearch)));
+      search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
   }
 
   render() {

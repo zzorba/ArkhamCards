@@ -96,7 +96,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      where('c.altArtInvestigator != true AND c.back_linked is null'),
+      where('c.altArtInvestigator != true AND c.back_linked is null AND not c.hidden'),
       queryParts,
       'and'
     );

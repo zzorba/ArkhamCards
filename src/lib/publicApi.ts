@@ -190,6 +190,7 @@ export const syncCards = async function(
     });
     //console.log(`Inserting linked cards.`);
     for (let i = 0; i < linkedCards.length; i++) {
+      // console.log(`Inserting ${linkedCards[i].code} - ${linkedCards[i].name}`)
       await cards.insert(linkedCards[i]);
     }
     const playerCards = await cards.createQueryBuilder()

@@ -68,7 +68,7 @@ export default class Database {
 
   async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
     const cards = await this.cards();
-    return cards.createQueryBuilder('c').leftJoin('c.linked_card', 'linked_card');
+    return cards.createQueryBuilder('c').leftJoinAndSelect('c.linked_card', 'linked_card');
   }
 
   async tabooSets(): Promise<Repository<TabooSet>> {
