@@ -2166,7 +2166,7 @@ msgid "Show ${ section.nonCollectionCount } Non-Collection Investigator"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Investigators"
 msgstr[0] "Показать ${ section.nonCollectionCount } сыщика не в коллекции"
 msgstr[1] "Показать ${ section.nonCollectionCount } сыщиков не в коллекции"
-msgstr[2] ""
+msgstr[2] "Показать ${ section.nonCollectionCount } сыщиков не в коллекции"
 
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:345
 msgid "No matching investigators for \"${ searchTerm }\"."
@@ -3162,14 +3162,11 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
-"Сверьтесь с журналом кампании. Поскольку там ${ count } метка в графе "
-"«${ logEntry.section }»"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } метка в графе «${ logEntry.section }»"
 msgstr[1] ""
-"Сверьтесь с журналом кампании. Поскольку там ${ count } метки в графе 
-"«${ logEntry.section }»"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } метки в графе «${ logEntry.section }»"
 msgstr[2] ""
-"Сверьтесь с журналом кампании. Поскольку там ${ count } меток в графе 
-"«${ logEntry.section }»"
+"Сверьтесь с журналом кампании. Поскольку там ${ count } меток в графе «${ logEntry.section }»"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:34
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
