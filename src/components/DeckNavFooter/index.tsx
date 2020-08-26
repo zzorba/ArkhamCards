@@ -107,7 +107,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         ) }
         <TouchableOpacity onPress={this._showCardSimulator}>
           <View style={styles.button}>
-            <AppIcon name="cards" size={28} color="#FFFFFF" />
+            <AppIcon name="cards-1" size={28} color="#FFFFFF" />
           </View>
         </TouchableOpacity>
       </React.Fragment>

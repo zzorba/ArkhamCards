@@ -2186,6 +2186,10 @@
             "text": "Azathoth slumbers… for now."
           },
           {
+            "id": "being_hunted",
+            "text": "you are being hunted."
+          },
+          {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
             "text": "Carl Sanford possesses the secrets of the universe."
           },

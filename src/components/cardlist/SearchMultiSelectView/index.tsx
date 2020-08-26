@@ -115,11 +115,12 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
     const {
       search,
     } = this.state;
-
+    if (!search) {
+      return values;
+    }
     const lowerCaseSearch = search.toLowerCase();
-
     return filter(values, value =>
-      search === '' || value.toLowerCase().includes(lowerCaseSearch));
+      search === '' || (value && value.toLowerCase().includes(lowerCaseSearch)));
   }
 
   render() {

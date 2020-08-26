@@ -1,24 +1,34 @@
 import React from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
+import { Navigation, EventSubscription } from 'react-native-navigation';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { t } from 'ttag';
 
-import { Slots } from '@actions/types';
+import { iconsMap } from '@app/NavIcons';
+import { Slots, SORT_BY_TYPE, SortType } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import { ScrollView } from 'react-native-gesture-handler';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
+import { showCard } from '@components/nav/helper';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
-import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
-import { forEach } from 'lodash';
+import CardSearchResult from '@components/cardlist/CardSearchResult';
+import CardResultList from '@components/cardlist/CardSearchResultsComponent/CardResultList';
+import Card from '@data/Card';
+import COLORS from '@styles/colors';
+import typography from '@styles/typography';
+import space from '@styles/space';
 
 export interface DeckChecklistProps {
   investigator: string;
   id: number;
   slots: Slots;
+  tabooSetOverride?: number;
 }
 
 interface ReduxProps {
-  checklist: string[];
+  checklist: Set<string>;
 }
 
 interface ReduxActionProps {
@@ -26,29 +36,132 @@ interface ReduxActionProps {
   setDeckChecklistCard: (id: number, card: string, value: boolean) => void;
 }
 
-type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps;
+type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps & DimensionsProps;
+interface State {
+  sort: SortType;
+}
+class DeckChecklistView extends React.Component<Props, State> {
+  static get options() {
+    return  {
+      topBar: {
+        title: {
+          text: t`Checklist`,
+          color: COLORS.white,
+        },
+        rightButtons: [
+          {
+            icon: iconsMap['sort-by-alpha'],
+            id: 'sort',
+            color: COLORS.white,
+            testID: t`Sort`,
+          }
+        ]
+      },
+    };
+  }
+  state: State = {
+    sort: SORT_BY_TYPE,
+  };
+  _navEventListener?: EventSubscription;
 
-class DeckChecklistView extends React.Component<Props> {
-  _toggleCard = (code: string, value: boolean) => {
+  componentDidMount() {
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener && this._navEventListener.remove();
+  }
+
+  _sortChanged = (sort: SortType) =>  {
+    this.setState({
+      sort,
+    });
+  }
+
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+    const { sort } = this.state;
+    if (buttonId === 'sort') {
+      Navigation.showOverlay({
+        component: {
+          name: 'Dialog.Sort',
+          passProps: {
+            sortChanged: this._sortChanged,
+            selectedSort: sort,
+            hasEncounterCards: false,
+          },
+        },
+      });
+    }
+  }
+
+  _toggleCard = (card: Card, value: boolean) => {
     const { setDeckChecklistCard, id } = this.props;
-    setDeckChecklistCard(id, code, value);
+    setDeckChecklistCard(id, card.code, value);
   };
 
-  render() {
-    const { componentId, slots, checklist } = this.props;
-    const counts: Slots = {};
-    forEach(checklist, code => {
-      counts[code] = 1;
-    });
+  _pressCard = (card: Card) => {
+    const {
+      componentId,
+      tabooSetOverride,
+    } = this.props;
+    showCard(
+      componentId,
+      card.code,
+      card,
+      true,
+      tabooSetOverride
+    );
+  };
+
+  _renderCard = (card: Card) => {
+    const { slots, fontScale, checklist } = this.props;
     return (
-      <ScrollView>
-        <CardSelectorComponent
-          componentId={componentId}
-          slots={slots}
-          counts={counts}
-          toggleCard={this._toggleCard}
-        />
-      </ScrollView>
+      <CardSearchResult
+        card={card}
+        count={slots[card.code]}
+        onToggleChange={this._toggleCard}
+        onPress={this._pressCard}
+        toggleValue={checklist.has(card.code)}
+        fontScale={fontScale}
+        backgroundColor="transparent"
+      />
+    )
+  };
+
+  _handleScroll = () => {};
+
+  _clearChecklist = () => {
+    const { id, resetDeckChecklist } = this.props;
+    resetDeckChecklist(id);
+  };
+
+  _renderHeader = () => {
+    const { checklist } = this.props;
+    return (
+      <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
+        <TouchableOpacity onPress={this._clearChecklist} disabled={!checklist.size}>
+          <Text style={[typography.text, checklist.size ? styles.clearText : typography.darkGray]}>{t`Clear`}</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  render() {
+    const { componentId, fontScale, slots } = this.props;
+    const { sort } = this.state;
+    return (
+      <CardResultList
+        componentId={componentId}
+        fontScale={fontScale}
+        visible
+        deckCardCounts={slots}
+        originalDeckSlots={slots}
+        onDeckCountChange={() => {}}
+        sort={sort}
+        renderHeader={this._renderHeader}
+        renderCard={this._renderCard}
+        handleScroll={this._handleScroll}
+      />
     );
   }
 }
@@ -73,5 +186,17 @@ export default withPlayerCards<NavigationProps & DeckChecklistProps>(
   connect<ReduxProps, ReduxActionProps, NavigationProps & DeckChecklistProps & PlayerCardProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(DeckChecklistView)
+  )(
+    withDimensions(DeckChecklistView)
+  )
 );
+
+const styles = StyleSheet.create({
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  clearText: {
+    color: COLORS.navButton,
+  },
+});

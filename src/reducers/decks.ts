@@ -81,13 +81,12 @@ export default function(
   action: DecksActions
 ): DecksState {
   if (action.type === RESET_DECK_CHECKLIST) {
-    const newChecklist = {
-      ...(state.checklist || {}),
-    };
-    delete newChecklist[action.id];
     return {
       ...state,
-      checklist: newChecklist,
+      checklist: {
+        ...(state.checklist || {}),
+        [`${action.id}`]: [],
+      },
     };
   }
   if (action.type === SET_DECK_CHECKLIST_CARD) {

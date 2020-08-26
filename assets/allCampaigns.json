@@ -33948,7 +33948,7 @@
 {
   "id": "tcu",
   "position": 4,
-  "version": 2,
+  "version": 3,
   "name": "The Circle Undone",
   "campaign_log": [
     {
@@ -34631,6 +34631,32 @@
           "scenario": "the_price_of_progress"
         }
       ]
+    },
+    {
+      "id": "check_being_hunted",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "being_hunted",
+        "options": [
+          {
+            "boolCondition": true,
+            "border": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["being_hunted"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "being_hunted",
+      "type": "story",
+      "text": "You are startled from your reverie by the sensation of something crawling up your chest, an icy hand that clasps around your throat. It grips until your breath is trapped and your windpipe starts to crack. Only there is nothing there—just a chilly draft entering the room through the open window. The wind shrill, whistling wind rattles your window frame, penetrating the safety of your home. It almost sounds like the dissonant notes of a dreadful flute: a mindless, haunting music that fills you with inexplicable terror. You rush to the window and slam it shut, hands trembling. Still, the thin, discordant notes echo around you. <i>This can’t be real</i>, you think. <i>Not here, not now</i>. But denial provides no asylum.\nThe cold creeps its way up your back once again. A thin, grey mist pours into the room, seeping beneath your front door and through the cracks around your window. It crawls along the ground and coils slowly around your ankles, sending shivers up your body. You run into your bedroom, slam the door, and lock it. A few seconds of respite are all you receive before the invader resumes its assault. Over and over, a heavy force slams against the door, shaking the entire room. You press against the door, trying to hold it shut. With each pounding crash, dark mist seeps through cracks appearing in the wood. With a final crash, the door shatters. You are hurled back, landing not on the floor but in a cloud of mist, gripped by a hundred spectral arms that cling into your flesh and tear you limb from limb.\nNO!—That can’t be right. You are here, reading this very text. A wave of relief washes over you as you realize it is all in your head. Even so, the words compel your mind to torment you with visions of a macabre death. You find yourself glancing at your window, searching for dark mist that is not there. What if the text is trying to tell you something? Maybe—no, that’s impossible.\n“Real or imagined, your fate approaches all the same.”"
     }
   ],
   "resolutions": [
@@ -34660,13 +34686,13 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "You head out of the manor and are embraced by the brisk evening air. Your investigation has left you exhausted and strangely paranoid. Something about that event felt peculiar to you, though you aren’t sure why. Although the guests seemed oblivious, you noticed that the staff was sweaty and jittery, and the Lodge members seemed tense as well. More than once, you noticed their gaze drawn to you, watching your every move. If you didn’t know any better, you’d think the Silver Twilight Lodge was having you tailed for some reason. Regardless, you weren’t able to find much information about the four disappearances, and you doubt you ever will. Perhaps it was nothing, after all.",
-      "steps": ["learned_nothing_of_the_lodges_schemes", "earn_xp", "$upgrade_decks", "skip_price_of_progress"]
+      "steps": ["learned_nothing_of_the_lodges_schemes", "earn_xp", "$upgrade_decks", "skip_price_of_progress", "check_being_hunted"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "You flee toward the manor’s entry hall, but the wall of spectral mist still blocks your way. Emerging from the mist are several ghostly faces and arms, writhing and screaming in torment. You turn and are confronted by the empty visage of the hooded Watcher. Before you even realize your doom, the creature’s ethereal body is swirling and swooping through the air as though composed of mist itself. The creature reconstitutes before you, and its charred hand grips your throat, holding you aloft with tremendous strength. You kick and dig your nails into the creature’s hand, struggling with the ferocity of a cornered animal, but it is no use. The last thing you see is the red glare of the thing’s eyes as it drills into your mind.",
-      "steps": ["never_seen_again", "earn_xp", "kill_not_resigned", "choose_new_investigators", "$upgrade_decks", "skip_price_of_progress"]
+      "steps": ["never_seen_again", "earn_xp", "kill_not_resigned", "choose_new_investigators", "$upgrade_decks", "skip_price_of_progress", "check_being_hunted"]
     }
   ]
 }
@@ -35074,6 +35100,7 @@
     "encounter_deck",
     "no_way_out",
     "agenda_1_results",
+    "maybe_ask_being_hunted",
     "resolution_1"
   ],
   "steps": [
@@ -35386,6 +35413,43 @@
       }
     },
     {
+      "id": "maybe_ask_being_hunted",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_data",
+        "campaign_data": "version",
+        "min_version": 3,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["ask_being_hunted"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_being_hunted",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "being_hunted",
+            "text": "Are you being hunted?",
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "being_hunted",
+                "text": "you are being hunted."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "resolution_1",
       "type": "resolution",
       "resolution": "no_resolution",
@@ -35423,7 +35487,8 @@
     "check_anette_arrested",
     "check_assumed_control_of_the_silver_twilight_lodge",
     "check_survived_the_watchers_embrace",
-    "check_signed_the_black_book"
+    "check_signed_the_black_book",
+    "check_being_hunted"
   ],
   "steps": [
     {
@@ -35516,6 +35581,32 @@
           "cross_out": true
         }
       ]
+    },
+    {
+      "id": "check_being_hunted",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "being_hunted",
+        "options": [
+          {
+            "border": true,
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["being_hunted"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "being_hunted",
+      "type": "story",
+      "text": "No matter what you do, the creature’s assault on your mind never ceases. Its gaze haunts you everywhere you look. It controls your every thought—your hopes, your bonds, your fears, your ambitions. A reminder of your futile existence. Each night, you toss and turn, unable to wrench free from this sensation of worthlessness. Your thoughts turn to a grim, uncertain future. A future without life. A future without <i>you</i>. It is the one ordeal every mortal must endure, and yet the one experience no mortal could possibly describe. Ghosts? Realms beyond our mortal coil? Nothing but a last resort for a mind desperate to cling to life.\nWhen the creature next invades, you have come to a new conclusion. An icy draft surrounds you as the thing coalesces before you. Your throat constricts and tears well in your eyes, but you stand tall. You are unafraid. The creature gazes at you curiously, and the piping of infernal flutes fades into silence. It extends its clawed hand, and you shake it. You will never truly be free from its grasp, but perhaps you and the creature can work in agreement. Perhaps you can tame your fear. It doesn’t matter if the world has no point. It’s yours, damnit, and nothing will stop you from altering it to your liking."
     }
   ]
 }
@@ -37059,7 +37150,8 @@
     "check_silver_twilight_investigator",
     "progress_3",
     "check_josef_meiger",
-    "$upgrade_decks"
+    "$upgrade_decks",
+    "check_being_hunted"
   ],
   "steps": [
     {
@@ -37294,6 +37386,32 @@
           "text": "the investigators are deceiving the Lodge."
         }
       ]
+    },
+    {
+      "id": "check_being_hunted",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "being_hunted",
+        "options": [
+          {
+            "border": true,
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "story_step",
+                "steps": ["being_hunted"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "being_hunted",
+      "type": "story",
+      "text": "You are startled from your reverie by the sensation of something crawling up your chest, an icy hand that clasps around your throat. It grips until your breath is trapped and your windpipe starts to crack. Only there is nothing there—just a chilly draft entering the room through the open window. The wind shrill, whistling wind rattles your window frame, penetrating the safety of your home. It almost sounds like the dissonant notes of a dreadful flute: a mindless, haunting music that fills you with inexplicable terror. You rush to the window and slam it shut, hands trembling. Still, the thin, discordant notes echo around you. <i>This can’t be real</i>, you think. <i>Not here, not now</i>. But denial provides no asylum.\nThe cold creeps its way up your back once again. A thin, grey mist pours into the room, seeping beneath your front door and through the cracks around your window. It crawls along the ground and coils slowly around your ankles, sending shivers up your body. You run into your bedroom, slam the door, and lock it. A few seconds of respite are all you receive before the invader resumes its assault. Over and over, a heavy force slams against the door, shaking the entire room. You press against the door, trying to hold it shut. With each pounding crash, dark mist seeps through cracks appearing in the wood. With a final crash, the door shatters. You are hurled back, landing not on the floor but in a cloud of mist, gripped by a hundred spectral arms that cling into your flesh and tear you limb from limb.\nNO!—That can’t be right. You are here, reading this very text. A wave of relief washes over you as you realize it is all in your head. Even so, the words compel your mind to torment you with visions of a macabre death. You find yourself glancing at your window, searching for dark mist that is not there. What if the text is trying to tell you something? Maybe—no, that’s impossible.\n“Real or imagined, your fate approaches all the same.”"
     }
   ]
 },

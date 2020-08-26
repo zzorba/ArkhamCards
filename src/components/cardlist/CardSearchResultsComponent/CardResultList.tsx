@@ -73,7 +73,7 @@ function funLoadingMessages() {
 interface OwnProps {
   componentId: string;
   fontScale: number;
-  query: Brackets;
+  query?: Brackets;
   filterQuery?: Brackets;
   searchTerm?: string;
   sort?: SortType;
@@ -95,6 +95,7 @@ interface OwnProps {
   mythosToggle?: boolean;
   mythosMode?: boolean;
   initialSort?: SortType;
+  renderCard?: (card: Card) => React.ReactElement;
 }
 
 interface ReduxProps {
@@ -123,7 +124,7 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 interface DbState {
-  query: Brackets;
+  query?: Brackets;
   filterQuery?: Brackets;
   sort?: SortType;
   deckSections: CardBucket[];
@@ -465,7 +466,7 @@ class CardResultList extends React.Component<Props, State> {
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
-    const cards: Card[] = await db.getCards(
+    const cards: Card[] = query ? await db.getCards(
       combineQueries(
         query,
         [
@@ -475,7 +476,7 @@ class CardResultList extends React.Component<Props, State> {
       ),
       tabooSetId,
       this.getSort()
-    );
+    ) : [];
     const deckSections = await this.deckSections(db);
 
     if (!this.filterSetInitialized) {
@@ -604,38 +605,51 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<Card>) => {
+  renderCard(card: Card, id: string) {
     const {
       limits,
       hasSecondCore,
       fontScale,
       onDeckCountChange,
+      renderCard,
     } = this.props;
     const {
       deckCardCounts,
     } = this.state;
+    if (renderCard) {
+      return renderCard(card);
+    }
     return (
       <CardSearchResult
-        card={item}
+        card={card}
         fontScale={fontScale}
-        count={deckCardCounts && deckCardCounts[item.code]}
+        count={deckCardCounts && deckCardCounts[card.code]}
         onDeckCountChange={onDeckCountChange}
-        id={`${section.id}.${index}`}
+        id={id}
         onPressId={this._cardPressed}
-        limit={limits ? limits[item.code] : undefined}
+        limit={limits ? limits[card.code] : undefined}
         hasSecondCore={hasSecondCore}
       />
     );
+  }
+
+
+  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<Card>) => {
+    return this.renderCard(item, `${section.id}.${index}`);
   };
 
   renderEmptyState(liveState: LiveState, refreshing?: boolean) {
     const {
       searchTerm,
+      query,
     } = this.props;
     const {
       cardsCount,
       spoilerCardsCount,
     } = liveState;
+    if  (!query) {
+      return null;
+    }
     if (!refreshing && (cardsCount + spoilerCardsCount) === 0) {
       return (
         <View>

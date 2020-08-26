@@ -540,6 +540,7 @@ class DeckDetailView extends React.Component<Props, State> {
       componentId,
       deck,
       cards,
+      tabooSetOverride,
     } = this.props;
     const {
       slots,
@@ -547,6 +548,9 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!deck) {
       return;
     }
+    this.setState({
+      menuOpen: false,
+    });
     const investigator = cards[deck.investigator_code];
     Navigation.push<DeckChecklistProps>(componentId, {
       component: {
@@ -555,9 +559,10 @@ class DeckDetailView extends React.Component<Props, State> {
           id: deck.id,
           investigator: deck.investigator_code,
           slots,
+          tabooSetOverride,
         },
         options: {
-          ...getDeckOptions(investigator, false, t`Checklist`),
+          ...getDeckOptions(investigator, false, t`Checklist`, true),
         },
       },
     });

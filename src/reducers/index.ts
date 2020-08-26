@@ -452,8 +452,8 @@ export function getNextLocalDeckId(state: AppState): number {
   return -1;
 }
 
-export function getDeckChecklist(state: AppState, id: number): string[] {
-  return (state.decks.checklist || {})[id] || [];
+export function getDeckChecklist(state: AppState, id: number): Set<string> {
+  return new Set((state.decks.checklist || {})[id] || []);
 }
 
 export function getFilterState(
