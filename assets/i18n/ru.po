@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2020-08-26 15:34+0300\n"
+"PO-Revision-Date: 2020-08-27 10:07+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -4351,7 +4351,7 @@ msgstr "Набор базовых слабостей"
 #: src/components/campaign/CampaignDetailView/WeaknessSetSection.tsx:58
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
-msgstr "Было вытащено ${ counts.assigned } / ${ counts.total }."
+msgstr "Взято ${ counts.assigned } / ${ counts.total }."
 
 #: src/components/campaign/CampaignDetailView/index.tsx:273
 #, javascript-format
@@ -4368,7 +4368,7 @@ msgstr "Редактировать жетоны"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:510
 msgid "Draw Tokens"
-msgstr "Вытащить жетоны"
+msgstr "Вытянуть жетоны"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:625
 msgid "Clean up broken campaigns"
@@ -4427,10 +4427,10 @@ msgid ""
 "\n"
 "After a backup is selected, you will be able to choose which data to import."
 msgstr ""
-"Это опция позволит вам восстановить данные из утерянного устройства. Если вы вошли в "
+"Эта опция позволит вам восстановить данные из утерянного устройства. Если вы вошли в "
 "ArkhamDB, пожалуйста зайдите повторно перед импортом кампании.\n"
 "\n"
-"После выбора резервной копии, вы сможете выбрать, какие данные необходимо импортировать."
+"После выбора резервной копии, вы сможете указать, какие данные необходимо импортировать."
 
 #: src/components/settings/BackupView.tsx:138
 msgid ""
@@ -4446,23 +4446,23 @@ msgstr "Сохранить резервную копию"
 
 #: src/components/settings/BackupView.tsx:125
 msgid "Cannot request access"
-msgstr "Не могу запросить доступ"
+msgstr "Невозможно запросить доступ"
 
 #: src/components/settings/BackupView.tsx:125
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write external files. "
 "Please visit your System settings to adjust this permission, and try again."
 msgstr ""
-"Похоже, что ранее вы запретили доступ для Arkham Cards на чтение\\запись внешних файлов. "
-"Пожалуйста, измените настройки доступа в вашей системе и попробуйте снова."
+"Похоже, что ранее вы не дали доступ для Arkham Cards на чтение\\запись внешних файлов. "
+"Пожалуйста, разрешите приложению доступ в системных настройках и попробуйте снова."
 
 #: src/components/settings/MergeBackupView/DeckMergeItem.tsx:31
 #, javascript-format
 msgid "(${ investigator.name } - ${ scenarioCount } scenario"
 msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
-msgstr[0] "${ investigator.name } - ${ scenarioCount } сценарий"
-msgstr[1] "${ investigator.name } - ${ scenarioCount } сценария"
-msgstr[2] "${ investigator.name } - ${ scenarioCount } сценариев"
+msgstr[0] "${ investigator.name } — ${ scenarioCount } сценарий"
+msgstr[1] "${ investigator.name } — ${ scenarioCount } сценария"
+msgstr[2] "${ investigator.name } — ${ scenarioCount } сценариев"
 
 #: src/components/settings/MergeBackupView/index.tsx:68
 #: src/components/settings/MergeBackupView/index.tsx:88
@@ -4504,7 +4504,7 @@ msgstr "Без изменений:"
 #: src/components/settings/MergeBackupView/index.tsx:263
 #: src/components/settings/MergeBackupView/index.tsx:300
 msgid "Local version appears to be newer:"
-msgstr "Похоже, что ваша локальная версия является более новой:"
+msgstr "Похоже, локальная версия новее:"
 
 #: src/components/settings/MergeBackupView/index.tsx:309
 msgid "Import selected data"
@@ -4512,7 +4512,7 @@ msgstr "Импортировать выбранные данные"
 
 #: src/components/settings/MergeBackupView/index.tsx:64
 msgid "Select items to import"
-msgstr "Выберите пункты для импорта"
+msgstr "Укажите, что импортировать"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:241
 msgid "Investigator trauma"
@@ -4526,7 +4526,7 @@ msgid ""
 msgstr ""
 "Вы можете редактировать травмы только между сценариями.\n"
 "\n"
-"Во время игры в сценарий, травмы можно редактировать лишь используя руководство сценария."
+"Во время кампании травмы можно редактировать в путеводителе."
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:244
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
