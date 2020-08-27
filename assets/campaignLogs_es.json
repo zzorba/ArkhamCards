@@ -1745,7 +1745,7 @@
           },
           {
             "id": "recruited_help_of_another_expedition",
-            "text": "the investigators recruited the help of another expedition."
+            "text": "los investigadores reclutaron la ayuda de otra expedición."
           },
           {
             "id": "relic_is_missing",
@@ -1941,23 +1941,23 @@
     ],
     "supplies": [
       {
-        "id": "sticky_goop",
-        "name": "Sticky Goop",
-        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "id": "key_of_eztli",
+        "name": "Llave de Eztli",
+        "description": "La Llave de Eztli.",
         "cost": 0,
         "multiple": false
       },
       {
         "id": "mysterious_scepter",
-        "name": "Mysterious Scepter",
-        "description": "A mysterious scepter you found in the throne room.",
+        "name": "Cetro misterioso",
+        "description": "Un cetro misterioso que encontraste en la sala del trono.",
         "cost": 0,
         "multiple": false
       },
       {
-        "id": "key_of_eztli",
-        "name": "Key of Eztli",
-        "description": "The Key of Eztli.",
+        "id": "sticky_goop",
+        "name": "Pringue pegajoso",
+        "description": "Un pringue pegajoso que encontraste en un pantano subterráneo.",
         "cost": 0,
         "multiple": false
       },

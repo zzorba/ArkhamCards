@@ -21668,7 +21668,7 @@
   "id": "rttfa",
   "position": 3,
   "version": 1,
-  "name": "Return to The Forgotten Age",
+  "name": "Regreso a La era olvidada",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -21910,10 +21910,10 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         },
         {
-          "text": "If an enemy is drawn from the exploration deck, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. This is considered an \"unsuccessful\" exploration."
+          "text": "Si se roba un Enemigo del mazo de Exploración, se resuelve de forma normal. Si se descarta, colócalo en la pila de descartes de Encuentros como lo harías normalmente. Esto se considera una exploración \"sin éxito\"."
         },
         {
-          "text": "In some scenarios, there are additional changes to the explore rules. These changes are noted on the setup card for each scenario."
+          "text": "Algunos escenarios contienen cambios adicionales para las reglas de <b>Explorar</b>. Verás esos cambios en la carta de preparación de cada escenario."
         }
       ],
       "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
@@ -22974,8 +22974,8 @@
 },
 {
   "id": "return_to_heart_of_the_elders_part_1",
-  "scenario_name": "Return to Heart of the Elders, Part 1",
-  "full_name": "Scenario V–A: Return to Heart of the Elders, Part 1",
+  "scenario_name": "Regreso a El corazón de los ancianos, primera parte",
+  "full_name": "Escenario V-A: Regreso a El corazón de los ancianos, primera parte",
   "setup": [
     "intro_1",
     "choose_who_to_consult",
@@ -23338,50 +23338,50 @@
     },
     {
       "id": "remove_act_1a",
-      "text": "Remove the Act 1a—\"Search for the Pattern\" from the game and replace it with the new Act 1a—\"A Familiar Pattern.\""
+      "text": "Retira de la partida el Acto 1a—\"Buscando el patrón\" y sustitúyelo por el nuevo Acto 1a—\"Un patrón familiar.\""
     },
     {
       "id": "create_exploration_deck",
       "type": "location_connectors",
-      "text": "Create the exploration deck. Gather all of the single-sided [[Jungle]] locations. Include only 1 of the 2 locations with each of the following connection symbols, chosen at random.",
+      "text": "Crea el mazo de Exploración. Para ello, coge todos los Lugares [[Jungla]] de una sola cara. Incluye únicamente 1 de los 2 Lugares que tengan cada uno de los siguientes símbolos de conexión, eligiendo al azar:",
       "location_connectors": [
         "purple_moon",
         "blue_triangle",
         "red_square",
         "orange_heart"
       ],
-      "subtext": "Remove the other 4 [[Jungle]] locations from the game. Do not include any of the other encounter cards listed in the original setup instructions."
+      "subtext": "Retira los otros 4 Lugares [[Jungla]] de la partida sin mirarlos. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rules apply:",
+      "text": "Durante este escenario, se aplican las siguientes reglas adicionales:",
       "bullets": [
         {
-          "text": "The 'check your supplies' ability on the Mouth of K'n-yan can be used from any location."
+          "text": "La capacidad 'Comprueba tus suministros' de la Boca de K'n-yan se puede usar desde cualquier Lugar."
         },
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Obligado</b> - Después de que acabe una exploración con éxito: Añade la primera carta del mazo de Encuentros al mazo de Exploración y baraja éste."
         }
       ]
     },
     {
       "id": "replay_scenario",
       "type": "input",
-      "text": "The puzzle has not been solved, you can either try again or choose to proceed anyway. The investigators must decide (choose one):",
+      "text": "El rompecabezas no ha sido resuelto, los investigadores pueden elegir volver a intentarlo o seguir igualmente. Los investigadores deben decidir (elige una):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "replay",
-            "text": "Continue to try by replaying <b>Scenario V-A: Heart of the Elders, Part 1</b>.",
+            "text": "Sigue intentándolo rejugando el <b>Escenario V-A: El corazón de los ancianos, primera parte</b>.",
             "steps": [
               "chose_replay"
             ]
           },
           {
             "id": "resolution_2",
-            "text": "Proceed to <b>Resolution 2</b>",
-            "description": "<i>You have a bad feeling about this...</i>",
+            "text": "Pasa a la <b>Resolución 2</b>.",
+            "description": "<i>Tienes un mal presentimiento sobre esto...</i>",
             "steps": [
               "resolution_2"
             ]
@@ -23391,7 +23391,7 @@
     },
     {
       "id": "chose_replay",
-      "text": "The investigators must replay <b>Scenario V-A: Return to Heart of the Elders, Part 1</b>. Reset the game to this scenario’s <b>Setup</b>. Do not record anything else in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game. Any player whose investigator was killed or driven insane must choose a new investigator to play, as normal.",
+      "text": "Los investigadores deben volver a jugar el <b>Escenario V-A: Regreso a El corazón de los ancianos, parte 1</b>. Reinicia el juego hasta la <b>Preparación</b> de este escenario. No anotes nada más en el registro de campaña excepto cualesquier traumas sufridos durante la partida anterior. Cualquier investigador cuyo investigador muriera o se volviera loco debe elegir un nuevo investigador para jugar, de forma normal.",
       "effects": [
         {
           "type": "campaign_data",
@@ -23412,7 +23412,7 @@
     },
     {
       "id": "trespassed_in_hostile_land",
-      "text": "You have trespassed in a hostile land. Place pillar tokens on the Mouth of K'n-yan until there are exactly 6 pillar tokens. For every pillar token added in this way, record two tally marks under \"Yig's Fury\" in your Campaign Log.",
+      "text": "Los investigadores son intrusos en una tierra hostil. Coloca fichas de columna en la Boca de K'n-yan hasta que haya exactamente 6 fichas de columna. Por cada ficha de columna añadida de este modo, anota 2 marcas en la sección \"Furia de Yig\" del registro de campaña.",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -23464,7 +23464,7 @@
     {
       "id": "6_paths_12_fury",
       "bullet_type": "small",
-      "text": "Record 12 tally marks under \"Yig's Fury\".",
+      "text": "Anota 12 marcas en la sección \"Furia de Yig\".",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23477,7 +23477,7 @@
     {
       "id": "5_paths_10_fury",
       "bullet_type": "small",
-      "text": "Record 10 tally marks under \"Yig's Fury\".",
+      "text": "Anota 10 marcas en la sección \"Furia de Yig\".",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23490,7 +23490,7 @@
     {
       "id": "4_paths_8_fury",
       "bullet_type": "small",
-      "text": "Record 8 tally marks under \"Yig's Fury\".",
+      "text": "Anota 8 marcas en la sección \"Furia de Yig\".",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23503,7 +23503,7 @@
     {
       "id": "3_paths_6_fury",
       "bullet_type": "small",
-      "text": "Record 6 tally marks under \"Yig's Fury\".",
+      "text": "Anota 6 marcas en la sección \"Furia de Yig\".",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23516,7 +23516,7 @@
     {
       "id": "2_paths_4_fury",
       "bullet_type": "small",
-      "text": "Record 4 tally marks under \"Yig's Fury\".",
+      "text": "Anota 4 marcas en la sección \"Furia de Yig\".",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23529,7 +23529,7 @@
     {
       "id": "1_path_2_fury",
       "bullet_type": "small",
-      "text": "Record 2 tally marks under \"Yig's Fury\".",
+      "text": "Anota 2 marcas en la sección \"Furia de Yig\".",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -23541,7 +23541,7 @@
     },
     {
       "id": "pass_pillars_take_trauma_or_poison",
-      "text": "As you pass the pillars, intense pain wrenches its way through your body, and you are afflicted with a terrible curse. Each investigator who is poisoned takes 1 mental trauma. Each investigator who is not poisoned adds a set-aside Poisoned weakness to their deck."
+      "text": "Al pasar junto a las columnas, un intenso dolor recorre tu cuerpo, y eres presa de una terrible maldición. Cada investigador que esté envenenado recibe 1 trauma mental. Cada investigador que no esté envenenado añade a su mazo una Debilidad Envenenado puesta aparte."
     },
     {
       "id": "poison_or_trauma",
@@ -23577,7 +23577,7 @@
     },
     {
       "id": "proceed_resolution_1",
-      "text": "Proceed to <b>Resolution 1</b>."
+      "text": "Pasa a la <b>Resolución 1</b>."
     }
   ],
   "resolutions": [
@@ -23611,7 +23611,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You haven't yet completed the puzzle of the six pillars that serve as the entrance to K'n-yan, but you don't wish to tarry any further in this hostile jungle. You decide to enter the cavern anyway, hoping that whatever \"wards\" the pillars represent are nothing but ancient superstition...",
+      "text": "Aún no has completado el rompecabezas de las seis columnas que sirven como entrada a K'n-yan, pero no quieres demorarte más tiempo en esta selva hostil. Decides entrar en la caverna de todas formas, con la esperanza de que las \"barreras\" que representan las columnas no sean más que una antigua superstición...",
       "steps": [
         "trespassed_in_hostile_land",
         "pass_pillars_take_trauma_or_poison",
@@ -23624,8 +23624,8 @@
 },
 {
   "id": "return_to_heart_of_the_elders_part_2",
-  "scenario_name": "Return to Heart of the Elders, Part 2",
-  "full_name": "Scenario V–B: Return to Heart of the Elders, Part 2",
+  "scenario_name": "Regreso a El corazón de los ancianos, segunda parte",
+  "full_name": "Escenario V-B: Regreso a El corazón de los ancianos, segunda parte",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -23851,29 +23851,29 @@
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Busca el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i> en la colección y ponlo aparte, fuera del juego. Si el Heraldo de Valusia fuese a entrar en juego durante este escenario, usa esta versión en lugar de la original."
     },
     {
       "id": "create_exploration_deck",
       "type": "location_connectors",
-      "text": "Create the exploration deck. This is done by taking the 5 remaining single-sided locations from the <i>K’n-yan</i> encounter set. Include only 1 of the 2 locations with each of the following connection symbols, chosen at random.",
+      "text": "Crea el mazo de Exploración. Para ello, coge los 5 Lugares de una sola cara restantes del conjunto de encuentros <i>K’n-yan</i> y barájalos. Incluye únicamente 1 de los 2 Lugares que tengan cada uno de los siguientes símbolos de conexión, eligiendo al azar:",
       "location_connectors": [
         "purple_moon",
         "blue_triangle",
         "red_square",
         "green_diamond"
       ],
-      "subtext": "Remove the other 4 [[Ancient]] locations from the game. Do not include any of the other encounter cards listed in the original setup instructions. (There should be a total of 5 cards, not counting the set-aside Descent to Yoth.)"
+      "subtext": "Retira los otros 4 Lugares [[Antiguo]] de la partida sin mirarlos. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales. (Debería haber 5 cartas en total, sin contar el Descenso a Yoth puesto aparte.)"
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rules apply:",
+      "text": "Durante este escenario, se aplican las siguientes reglas adicionales:",
       "bullets": [
         {
-          "text": "The 'check your supplies' ability on the Mouth of K'n-yan can be used from any location, and it discards enemies as well as treacheries."
+          "text": "La capacidad 'Comprueba tus suministros' de la Boca de K'n-yan se puede usar desde cualquier Lugar y descarta Enemigos además de Traiciones."
         },
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Obligado</b> - Después de que acabe una exploración con éxito: Añade la primera carta del mazo de Encuentros al mazo de Exploración y baraja éste."
         }
       ]
     },
@@ -23906,7 +23906,7 @@
     },
     {
       "id": "adjust_supplies_choice",
-      "text": "Which investigator should add the \"Sticky Goop\" to their supplies?"
+      "text": "¿Qué investigador debería añadir el \"Pringue pegajoso\" a sus suministros?"
     },
     {
       "id": "gain_sticky_goop",
@@ -23918,7 +23918,7 @@
         "choices": [
           {
             "id": "gain_sticky_goop",
-            "text": "Found \"Sticky Goop\"",
+            "text": "Encontraste el \"Pringue pegajoso\"",
             "effects": [
               {
                 "type": "gain_supplies",
@@ -23927,8 +23927,8 @@
                 "supplies": [
                   {
                     "id": "sticky_goop",
-                    "name": "Sticky Goop",
-                    "description": "A mysterious scepter you found in a subterranean swamp.",
+                    "name": "Pringue pegajoso",
+                    "description": "Un pringue pegajoso que encontraste en un pantano subterráneo.",
                     "cost": 0,
                     "multiple": false
                   }
@@ -23988,8 +23988,8 @@
 },
 {
   "id": "return_to_shattered_aeons",
-  "scenario_name": "Return to Shattered Aeons",
-  "full_name": "Scenario VIII: Return to Shattered Aeons",
+  "scenario_name": "Regreso a Eones destrozados",
+  "full_name": "Escenario VIII: Regreso a Eones destrozados",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -24393,18 +24393,18 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the 4 single-sided [[Otherworld]] locations. Do not include any of the other encounter cards listed in the original setup instructions."
+      "text": "Crea el mazo de Exploración. Para ello, coge los 4 Lugares [[Sobrenatural]] de una sola cara y barájalos. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Formless Spawn, Relic of Ages (Unleash the Timestream), A Pocket in Time, Act 4a—“Paradise Lost”, Act 4a—“Timelock”, and all of the single-sided [[Shattered]] locations."
+      "text": "Deja aparte, fuera del juego, las siguientes cartas: Semilla informe, Reliquia de las eras (Desatar la corriente temporal), Una burbuja en el tiempo, Acto 4a – “Paraíso perdido”, Acto 4a – “Bloqueo temporal” y todos los Lugares [[Destrozado]] de una sola cara."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Obligado</b> - Después de que acabe una exploración con éxito: Añade la primera carta del mazo de Encuentros al mazo de Exploración y baraja éste."
         }
       ]
     }
@@ -24485,8 +24485,8 @@
 },
 {
   "id": "return_to_the_boundary_beyond",
-  "scenario_name": "Return to The Boundary Beyond",
-  "full_name": "Scenario IV: Return to The Boundary Beyond",
+  "scenario_name": "Regreso a El límite del otro lado",
+  "full_name": "Escenario IV: Regreso a El límite del otro lado",
   "setup": [
     "intro",
     "check_forged_bond_with_ichtaca",
@@ -25184,15 +25184,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Combine the new [[Present-Day]] locations with the original versions from <i>The Boundary Beyond</i>. Remove 1 of the 2 copies of each location from the game at random. Then put Metropolitan Cathedral, Zócalo, Temple Ruins, Xochimilco, Chapultepec Park, and Coyoacán into play. Each investigator begins play in either Zócalo or Coyoacán (their choice)."
+      "text": "Añade los nuevos Lugares [[Época actual]] a los Lugares originales del conjunto de encuentros de <i>El límite del otro lado</i>. Retira de la partida 1 de las 2 copias de cada uno de estos Lugares al azar. Pon en juego los siguientes Lugares: Catedral metropolitana, Zócalo, Ruinas del templo, Xochimilco, Parque Chapultepec y Coyoacán. Cada investigador comienza la partida en el Zócalo o en Coyoacán (a su elección)."
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Busca el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i> en la colección y ponlo aparte, fuera del juego. Si el Heraldo de Valusia fuese a entrar en juego durante este escenario, usa esta versión en lugar de la original."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the 12 single-sided [[Ancient]] locations and shuffling them together. Do not include any of the other encounter cards listed in the original setup instructions."
+      "text": "Crea el mazo de Exploración. Para ello, coge los 12 Lugares [[Antiguo]] de una sola cara y barájalos. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales."
     }
   ],
   "resolutions": [
@@ -25244,8 +25244,8 @@
 },
 {
   "id": "return_to_the_city_of_archives",
-  "scenario_name": "Return to The City of Archives",
-  "full_name": "Scenario VI: Return to The City of Archives",
+  "scenario_name": "Regreso a La Ciudad de los Archivos",
+  "full_name": "Escenario VI: Regreso a La Ciudad de los Archivos",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -25623,16 +25623,16 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the four Halls of Pnakotus locations into play (the 3 from the original set and the new Halls of Pnakotus <i>(Southern Corridors)</i>). Set each remaining location aside, out of play.",
+      "text": "Pon en juego los cuatro Lugares Salones de Pnakotus (los 3 del conjunto original y el nuevo Salones de Pnakotus<i>(Corredores sur)</i>). Deja aparte los Lugares restantes, fuera del juego.",
       "bullets": [
         {
-          "text": "When instructed to put locations into play during act 1b, put Cyclopean Vaults and Alien Conservatory into play as well."
+          "text": "Cuando deban ponerse en juego el resto de Lugares durante el Acto 1b, pon en juego también las Salas ciclópeas y el Vivero alienígena."
         }
       ]
     },
     {
       "id": "remove_act2a",
-      "text": "Remove Act 2a—\"Restricted Access\" from the game and replace it with the new Act 2a—\"Unrestricted Access.\""
+      "text": "Retira de la partida el Acto 2a—\"Acceso restringido\" y sustitúyelo por el nuevo Acto 2a—\"Acceso ilimitado\"."
     },
     {
       "id": "record_number_of_tasks",
@@ -25655,7 +25655,7 @@
     },
     {
       "id": "process_was_perfected",
-      "text": "Because at least 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Como se completaron al menos 6 tareas, anota en el registro de campaña que <i>el proceso fue perfeccionado</i>. Cada investigador obtiene 4 puntos de experiencia adicionales por haber logrado información sobre los secretos de la Tierra.",
       "effects": [
         {
           "type": "campaign_log",
@@ -25701,8 +25701,8 @@
 },
 {
   "id": "return_to_the_depths_of_yoth",
-  "scenario_name": "Return to The Depths of Yoth",
-  "full_name": "Scenario VII: Return to The Depths of Yoth",
+  "scenario_name": "Regreso a Las profundidades de Yoth",
+  "full_name": "Escenario VII: Regreso a Las profundidades de Yoth",
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -26684,23 +26684,23 @@
     },
     {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Busca el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i> en la colección y ponlo aparte, fuera del juego. Si el Heraldo de Valusia fuese a entrar en juego durante este escenario, usa esta versión en lugar de la original."
     },
     {
       "id": "create_exploration_deck",
       "text": "Crea el mazo de Exploración. Para ello, coge el Lugar Escalones de Yoth y, al azar, 4 de los Lugares de una sola cara restantes puestos aparte y barájalos.",
       "bullets": [
         {
-          "text": "Shuffle the Perils of Yoth treachery into the exploration deck."
+          "text": "Añade la Traición Peligros de Yoth al mazo de Exploración y baraja éste."
         }
       ]
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a new exploration deck is created during act 1b: Search the encounter deck, discard pile, and all out-of-play areas for Perils of Yoth and shuffle it into the exploration deck. Shuffle the encounter deck if it was searched."
+          "text": "<b>Obligado</b> - Después de que se cree un nuevo mazo de Exploración durante el acto 1b: Busca los Peligros de Yoth en el mazo y la pila de descartes de Encuentros y en todas las zonas fuera del juego, añádelos al mazo de Exploración y baraja éste. Baraja el mazo de Encuentros si se buscó en él."
         }
       ]
     },
@@ -26712,7 +26712,7 @@
         "choices": [
           {
             "id": "strange_liquid",
-            "text": "Do you remember that you “collected a strange liquid”?",
+            "text": "¿Recuerdas haber \"recogido un extraño líquido\"?",
             "steps": [
               "check_goop"
             ]
@@ -26724,13 +26724,13 @@
       "id": "check_goop",
       "bullet_type": "small",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has sticky goop:",
+      "text": "Comprobad vuestros suministros. Si cualquier investigador tiene un pringue pegajoso:",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
         "id": "sticky_goop",
-        "name": "Sticky Goop",
+        "name": "Pringue pegajoso",
         "options": [
           {
             "boolCondition": true,
@@ -26745,7 +26745,7 @@
     {
       "id": "key_of_eztli_story",
       "type": "story",
-      "text": "The liquid from the fountain dissolves the viscous substance, revealing a solid object beneath the ooze. Record \"Key of Eztli\" in any one investigator's supplies."
+      "text": "El líquido de la fuente disuelve la sustancia viscosa, revelando un objeto sólido bajo el pringue. Anota la \"Llave de Eztli\" en los suministros de un investigador cualquiera."
     },
     {
       "id": "gain_key_of_eztli",
@@ -26757,7 +26757,7 @@
         "choices": [
           {
             "id": "gain_key_of_eztli",
-            "text": "Key of Eztli",
+            "text": "Llave de Eztli",
             "effects": [
               {
                 "type": "gain_supplies",
@@ -26766,8 +26766,8 @@
                 "supplies": [
                   {
                     "id": "key_of_eztli",
-                    "name": "Key of Eztli",
-                    "description": "The Key of Eztli.",
+                    "name": "Llave de Eztli",
+                    "description": "La Llave de Eztli.",
                     "cost": 0,
                     "multiple": false
                   }
@@ -26825,8 +26825,8 @@
 },
 {
   "id": "return_to_the_doom_of_eztli",
-  "scenario_name": "Return to The Doom of Eztli",
-  "full_name": "Scenario II: Return to The Doom of Eztli",
+  "scenario_name": "Regreso a La perdición de Eztli",
+  "full_name": "Escenario II: Regreso a La perdición de Eztli",
   "setup": [
     "check_wait_for_additional_supplies",
     "gather_encounter_sets",
@@ -27244,30 +27244,30 @@
     },
     {
       "id": "remove_cards",
-      "text": "Remove the original Burial Pit, Underground Ruins, Secret Passage locations from the game."
+      "text": "Retira de la partida los Lugares Foso funerario, Ruinas subterráneas y Pasadizo secreto originales."
     },
     {
       "id": "replace_cards",
-      "text": "Replace the original Entryway, Ancient Hall, Grand Chamber, and Chamber of Time locations with the new versions from <i>The Return to The Doom of Eztli</i> encounter set."
+      "text": "Sustituye los Lugares Entrada, Sala antigua, Gran cámara y Cámara del tiempo originales por las nuevas versiones del conjunto de encuentros <i>Regreso a La perdición de Eztli</i>."
     },
     {
       "id": "replace_harbinger",
-      "text": "Replace the original Harbinger of Valusia enemy with the new Harbinger of Valusia <i>(The Sleeper Returns</i>."
+      "text": "Sustituye el Enemigo Heraldo de Valusia original por el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i>."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking Sealed Passage, Mosaic Chamber, Tomb of the Ancients, Throne Room, Snake Pit, Ancient Hall, and Grand Chamber and shuffling them together. Do not include any encounter cards listed in the original setup instructions."
+      "text": "Crea el mazo de Exploración. Esto se hace cogiendo el Pasadizo cerrado, la Cámara del mosaico, la Tumba de los antiguos, la Sala del trono, el Foso de serpientes, la Sala antigua y la Gran cámara. Después, baraja todas esas cartas. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Harbinger of Valusia enemy, the 3 Pit Viper cards from the <i>Serpents</i> encounter set, and the Chamber of Time location, and the Relic of Ages asset."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: el Enemigo Heraldo de Valusia <i>(El durmiente regresa)</i>, las 3 cartas Víbora de foso del conjunto de encuentros <i>Serpientes</i>, el Lugar Cámara del tiempo y el Apoyo Reliquia de las eras."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Obligado</b> - Después de que acabe una exploración con éxito: Añade la primera carta del mazo de Encuentros al mazo de Exploración y baraja éste."
         }
       ]
     },
@@ -27300,7 +27300,7 @@
     },
     {
       "id": "adjust_supplies_choice",
-      "text": "Which investigator should add the \"Mysterious Scepter\" to their supplies?"
+      "text": "¿Qué investigador debería añadir el \"cetro misterioso\" a sus suministros?"
     },
     {
       "id": "gain_mysterious_scepter",
@@ -27312,7 +27312,7 @@
         "choices": [
           {
             "id": "gain_mysterious_scepter",
-            "text": "Mysterious Scepter",
+            "text": "Cetro misterioso",
             "effects": [
               {
                 "type": "gain_supplies",
@@ -27321,8 +27321,8 @@
                 "supplies": [
                   {
                     "id": "mysterious_scepter",
-                    "name": "Mysterious Scepter",
-                    "description": "A mysterious scepter you found in the throne room.",
+                    "name": "Cetro misterioso",
+                    "description": "Un cetro misterioso que encontraste en la sala del trono.",
                     "cost": 0,
                     "multiple": false
                   }
@@ -27341,7 +27341,7 @@
     },
     {
       "id": "replay_scenario",
-      "text": "The investigators must replay <b>Scenario II: Return to The Doom of Eztli</b>. Reset the game to this scenario’s Setup. Do not record anything in your Campaign Log except for any trauma suffered from your previous game. No experience points are earned from your previous game.",
+      "text": "Los investigadores deben volver a jugar el <b>Escenario II: Regreso a La perdición de Eztli</b>. Reinicia la partida a la Preparación de este escenario. No anotes nada en el registro de campaña excepto cualquier trauma sufrido en la partida anterior. No se obtienen puntos de experiencia por la partida anterior.",
       "effects": [
         {
           "type": "campaign_data",
@@ -27442,8 +27442,8 @@
 },
 {
   "id": "return_to_the_untamed_wilds",
-  "scenario_name": "Return to The Untamed Wilds",
-  "full_name": "Scenario I: Return to The Untamed Wilds",
+  "scenario_name": "Regreso a Naturaleza salvaje",
+  "full_name": "Escenario I: Regreso a Naturaleza salvaje",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -27802,24 +27802,24 @@
     {
       "id": "create_exploration_deck",
       "type": "location_connectors",
-      "text": "Create the exploration deck. Gather all of the single-sided [[Jungle]] locations. Include only 1 of the 2 locations with each of the following connection symbols, chosen at random.",
+      "text": "Crea el mazo de Exploración. Para ello, coge todos los Lugares [[Jungla]] de una sola cara. Incluye únicamente 1 de los 2 Lugares que tengan cada uno de los siguientes símbolos de conexión, eligiendo al azar:",
       "location_connectors": [
         "purple_moon",
         "blue_triangle",
         "red_square",
         "orange_heart"
       ],
-      "subtext": "Remove the other 4 [[Jungle]] locations from the game. Do not include any of the other encounter cards listed in the original setup instructions (There should be a total of 5 cards.)"
+      "subtext": "Retira los otros 4 Lugares [[Jungla]] de la partida sin mirarlos. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales. (Debería haber 5 cartas en total)."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rules apply:",
+      "text": "Durante este escenario, se aplican las siguientes reglas adicionales:",
       "bullets": [
         {
-          "text": "The 'check your supplies' ability on the Expedition Camp can be used from any location."
+          "text": "La capacidad 'Comprueba tus suministros' del Campamento de expedición se puede usar desde cualquier Lugar."
         },
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Obligado</b> - Después de que acabe una exploración con éxito: Añade la primera carta del mazo de Encuentros al mazo de Exploración y baraja éste."
         }
       ]
     }
@@ -27875,8 +27875,8 @@
 },
 {
   "id": "return_to_threads_of_fate",
-  "scenario_name": "Return to Threads of Fate",
-  "full_name": "Scenario III: Return to Threads of Fate",
+  "scenario_name": "Regreso a Los hilos del destino",
+  "full_name": "Escenario III: Regreso a Los hilos del destino",
   "setup": [
     "intro_1",
     "check_gave_relic_to_alejandro",
@@ -28628,7 +28628,7 @@
     {
       "id": "intro_7",
       "type": "story",
-      "text": "As if you didn't already have several other pressing concerns, this morning's article in the <i>Arkham Advertiser</i> piques your interest: \"Chaos in French Hill!\" The article goes on to describe several strange happenings sighted around the estate of one Marshall Hastings in French Hill, an old and storied neighborhood of Arkham. According to the article's source—who goes unnamed—the mansion has become a tangled mess of overgrowth and serpents. The article reports that a recent expedition returned with several strange artifacts in tow, meant to be displayed in the Hastings manor. You wonder if this has anything to do with your expedition to find the Eztli. Even if these events are unrelated, your investigation might connect you with others who can assist you in turn."
+      "text": "Como si no tuvieras ya bastantes preocupaciones acuciantes, hay un artículo en el <i>Arkham Advertiser</i> de esta mañana que suscita tu interés: \"¡Caos en French Hill!\". El artículo describe varios sucesos extraños que han tenido lugar en torno a la finca de un tal Marshall Hastings en French Hill, un antiguo barrio histórico de Arkham. Según la fuente anónima del artículo, la mansión se ha convertido en un caos enredado de vegetación exuberante y serpientes. El artículo informa de que una expedición volvió hace poco con varios artefactos extraños que iban a exponerse en la mansión Hastings. Te preguntas si esto tiene algo que ver con tu expedición para encontrar a los eztli. Incluso si estos sucesos no tuvieran relación alguna, tu investigación podría ponerte en contacto con otras personas que pueda ayudarte."
     },
     {
       "id": "gather_encounter_sets",
@@ -28647,25 +28647,25 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Veda Whitsley asset, the Town Hall location, the Ichtaca <i>(The Forgotten Guardian)</i> asset, and the Expedition Journal asset aside, out of play."
+      "text": "Deja aparte las siguientes cartas, fuera del juego: la carta de Apoyo Veda Whitsley, el Lugar Ayuntamiento, el Apoyo Ichtaca <i>(La guardiana olvidada)</i> y el Apoyo Diario de expedición."
     },
     {
       "id": "setup_act_gh",
-      "text": "The investigators must choose one of the following options, and adjust the contents of the “g/h” deck accordingly:",
+      "text": "Los investigadores deben elegir una de las siguientes opciones, y ajustar el contenido del mazo de Acto \"g/h\" en consecuencia:",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "police",
-            "text": "If you wish to find the source named in the <i>Advertiser's</i> story.",
+            "text": "Quieres encontrar la fuente mencionada en la historia del <i>Advertiser's</i>.",
             "steps": [
               "find_advertiser_source"
             ]
           },
           {
             "id": "search_alone",
-            "text": "If you wish to find the root of the problem.",
+            "text": "Quieres buscar la raíz del problema.",
             "steps": [
               "find_root_of_problem"
             ]
@@ -28676,12 +28676,12 @@
     {
       "id": "find_advertiser_source",
       "bullet_type": "small",
-      "text": "Remove the following act cards from the “g/h” deck: Search for the Meaning, both copies of The Overgrown Estate, and 1 of the 2 copies of Seeking Trouble, at random."
+      "text": "Retira las siguientes cartas de Acto del mazo \"g/h\": Buscando el significado, ambas copias de La finca invadida de vegetación y 1 de las 2 copias de Buscando problemas, al azar."
     },
     {
       "id": "find_root_of_problem",
       "bullet_type": "small",
-      "text": "Remove the following act cards from the “g/h” deck: Search for the Source, both copies of Seeking Trouble, and 1 of the 2 copies of The Overgrown Estate, at random."
+      "text": "Retira las siguientes cartas de Acto del mazo \"g/h\": Buscando la fuente, ambas copias de Buscando problemas y 1 de las 2 copias de La finca invadida de vegetación, al azar."
     },
     {
       "id": "recruited_help_of_another_expedition",
@@ -28691,14 +28691,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "recruited_help_of_another_expedition",
-          "text": "the investigators recruited the help of another expedition."
+          "text": "los investigadores reclutaron la ayuda de otra expedición."
         }
       ]
     },
     {
       "id": "earn_veda_whitsley",
       "bullet_type": "small",
-      "text": "Any one investigator may choose to include the Veda Whitsley story asset in their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir incluir el Apoyo de historia Veda Whitsley en su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -28740,13 +28740,13 @@
     {
       "id": "check_act_ab",
       "type": "input",
-      "text": "Which stage of the act “a/b” deck was in play?",
+      "text": "¿Qué carta del Acto \"a/b\" estaba en juego?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1a",
+            "text": "Acto 1a",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -28754,7 +28754,7 @@
           },
           {
             "id": "act_2",
-            "text": "Act 2a",
+            "text": "Acto 2a",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -28770,7 +28770,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3a",
+            "text": "Acto 3a",
             "steps": [
               "relic_is_missing",
               "maybe_remove_relic_of_ages"
@@ -28805,14 +28805,14 @@
     },
     {
       "id": "check_act_cd",
-      "text": "Which stage of the act “c/d” deck was in play?",
+      "text": "¿Qué carta del Acto \"c/d\" estaba en juego?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1c",
+            "text": "Acto 1c",
             "steps": [
               "alejandro_is_missing",
               "maybe_remove_alejandro"
@@ -28820,7 +28820,7 @@
           },
           {
             "id": "act_2",
-            "text": "Act 2c",
+            "text": "Acto 2c",
             "steps": [
               "alejandro_is_missing",
               "maybe_remove_alejandro"
@@ -28836,7 +28836,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3c",
+            "text": "Acto 3c",
             "steps": [
               "alejandro_is_missing",
               "maybe_remove_alejandro"
@@ -28871,21 +28871,21 @@
     },
     {
       "id": "check_act_ef",
-      "text": "Which stage of the act “e/f” deck was in play?",
+      "text": "¿Qué carta del Acto \"e/f\" estaba en juego?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1e",
+            "text": "Acto 1e",
             "steps": [
               "ichtaca_in_the_dark"
             ]
           },
           {
             "id": "act_2",
-            "text": "Act 2e",
+            "text": "Acto 2e",
             "steps": [
               "ichtaca_in_the_dark"
             ],
@@ -28900,7 +28900,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3e",
+            "text": "Acto 3e",
             "steps": [
               "ichtaca_in_the_dark"
             ],
@@ -28934,19 +28934,19 @@
     },
     {
       "id": "check_act_gh",
-      "text": "Which stage of the act “g/h” deck was in play?",
+      "text": "¿Qué carta del Acto \"g/h\" estaba en juego?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1g",
+            "text": "Acto 1g",
             "steps": []
           },
           {
             "id": "act_2",
-            "text": "Act 2g",
+            "text": "Acto 2g",
             "effects": [
               {
                 "type": "earn_xp",
@@ -28958,7 +28958,7 @@
           },
           {
             "id": "act_3",
-            "text": "Act 3g",
+            "text": "Acto 3g",
             "effects": [
               {
                 "type": "earn_xp",
@@ -28970,7 +28970,7 @@
           },
           {
             "id": "completed",
-            "text": "Act 3h was completed.",
+            "text": "El Acto 3h fue completado.",
             "steps": [
               "recruited_help_of_another_expedition",
               "earn_veda_whitsley"
@@ -28989,24 +28989,24 @@
     },
     {
       "id": "earn_act_xp",
-      "text": "Each investigator earns 1 additional experience for each act 1, act 2, or act 3 card that was completed during this scenario, as you gain insight into the schemes of the Brotherhood.",
+      "text": "Cada investigador obtiene 1 punto de experiencia adicional por cada carta de Acto 1, de Acto 2 y de Acto 3 que fuera completada durante este escenario, pues habéis obtenido información sobre los planes de la Hermandad.",
       "bullets": [
         {
-          "text": "This additional experience cannot be spent to purchase cards."
+          "text": "Esta experiencia adicional no se puede gastar para adquirir cartas."
         },
         {
-          "text": "Instead, it must be spent to remove poison or cure trauma, or it must be converted to supply points during the upcoming <b>Resupply Point</b>"
+          "text": "En lugar de eso, debe gastarse para retirar veneno o traumas, o bien debe convertirse en puntos de suministros durante el próximo <b>Punto de reabastecimiento</b>."
         }
       ]
     },
     {
       "id": "resupply_point_explanation",
-      "text": "When spending experience points during this section, experience earned from completing acts will be spent first. You may also convert up to 10 points of experience to supply points, at a rate of 1 supply point for every 2 experience converted."
+      "text": "Al gastar puntos de experiencia en esta sección, la experiencia obtenida por completar Actos se gastará en primer lugar. También puedes convertir hasta 10 puntos de experiencia en puntos de suministros, aplicando una tasa de 1 punto de suministros por cada 2 puntos de experiencia convertidos."
     },
     {
       "id": "choose_to_heal_trauma",
       "bullet_type": "small",
-      "text": "Each investigator may spend 5 experience points to remove physical or mental trauma from their investigator."
+      "text": "Cada investigador puede gastar 5 puntos de experiencia para retirar traumas físicos o mentales de su investigador."
     },
     {
       "id": "show_resupply_xp",
@@ -29019,7 +29019,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Physical trauma to remove",
+        "text": "Traumas físicos a retirar",
         "investigator_max": "physical_trauma",
         "show_special_xp": "resupply_points",
         "effects": [
@@ -29044,7 +29044,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Mental trauma to remove",
+        "text": "Traumas mentales a retirar",
         "investigator_max": "mental_trauma",
         "show_special_xp": "resupply_points",
         "effects": [
@@ -29066,7 +29066,7 @@
     {
       "id": "choose_to_buy_supply_points",
       "bullet_type": "small",
-      "text": "Each investigator may convert additional experience into supply points, at a rate of 1 supply point for every 2 experience converted. Any unspent resupply experience will be lost."
+      "text": "Cada investigador puede convertir experiencia adicional en puntos de suministros, aplicando una tasa de 1 punto de suministros por cada 2 puntos de experiencia. Cualquier experiencia adicional no gastada se perderá."
     },
     {
       "id": "buy_supply_points",
@@ -29074,7 +29074,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Supply points to purchase (2 expeirence each)",
+        "text": "Puntos de suministros a convertir (2 puntos de experiencia cada uno)",
         "max": 5,
         "show_special_xp": "resupply_points",
         "effects": [
@@ -29095,7 +29095,7 @@
     {
       "id": "buy_supplies",
       "type": "input",
-      "text": "Each investigator may spend supply points to purchase one or more of the supplies listed below. The number of supply points available to each investigator is based on the number of investigators in the campaign.",
+      "text": "Cada investigador puede gastar puntos de suministros para adquirir uno o más de los siguientes suministros. El número de puntos de suministros disponibles para cada investigador depende del número de investigadores que haya en la campaña.",
       "input": {
         "type": "supplies",
         "section": "supplies",
@@ -29175,13 +29175,13 @@
     },
     {
       "id": "setup_act_deck",
-      "text": "Adjust the contents of each act deck, as noted below under <b>Four Acts, Four Threads</b>."
+      "text": "Ajusta el contenido de cada mazo de Acto como se indica en la sección <b>Cuatro actos, cuatro hilos</b>."
     },
     {
       "id": "three_acts_three_decks",
       "type": "rule_reminder",
-      "title": "Four Acts, Four Threads.",
-      "text": "This scenario contains four different act decks —an “a/b” deck, a “c/d” deck, an “e/f” deck, and a “g/h” deck. Each of these act decks is constructed separately, in numerical order, as usual. During the course of this scenario, all four of these act decks will be in play, and players may choose which acts to pursue and which to ignore. The text of all four acts is considered active at all times. You might not have time to accomplish all four tasks, so choose which leads you wish to pursue wisely!\nThe contents of each of these act decks is altered depending on the circumstances below."
+      "title": "Cuatro actos, cuatro hilos.",
+      "text": "Este escenario contiene cuatro mazos de Acto distintos: un mazo “a/b”, un mazo “c/d”, un mazo “e/f ” y un mazo “g/h ”. Cada uno de estos mazos de Acto se crea por separado y en orden numérico, como de costumbre. A lo largo de este escenario, estarán en juego los cuatro mazos de Acto, y los jugadores pueden elegir en qué Actos actuar y cuáles ignorar. El texto de los cuatro Actos se considera activo en todo momento. Puede que no tengas tiempo de completar las cuatro tareas, ¡así que elige bien cuál quieres emprender!\nEl contenido de cada uno de estos mazos de Acto se modifica en función de las siguientes circunstancias."
     },
     {
       "id": "check_harbinger",
@@ -29300,8 +29300,8 @@
 },
 {
   "id": "return_to_turn_back_time",
-  "scenario_name": "Return to Turn Back Time",
-  "full_name": "Scenario IX: Return to Turn Back Time",
+  "scenario_name": "Regreso a Vuelta atrás en el tiempo",
+  "full_name": "Escenario IX: Regreso a Vuelta atrás en el tiempo",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -29755,30 +29755,30 @@
     },
     {
       "id": "remove_cards",
-      "text": "Remove the original Burial Pit, Underground Ruins, Secret Passage locations from the game."
+      "text": "Retira de la partida los Lugares Foso funerario, Ruinas subterráneas y Pasadizo secreto originales."
     },
     {
       "id": "replace_cards",
-      "text": "Replace the original Entryway, Ancient Hall, Grand Chamber, and Chamber of Time locations with the new versions from <i>The Return to The Doom of Eztli</i> encounter set."
+      "text": "Sustituye los Lugares Entrada, Sala antigua, Gran cámara y Cámara del tiempo originales por las nuevas versiones del conjunto de encuentros <i>Regreso a La perdición de Eztli</i>."
     },
     {
       "id": "replace_harbinger",
-      "text": "Replace the original Harbinger of Valusia enemy with the new Harbinger of Valusia <i>(The Sleeper Returns</i>."
+      "text": "Sustituye el Enemigo Heraldo de Valusia original por el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i>."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Harbinger of Valusia enemy, the 3 Pit Viper cards from the <i>Serpents</i> encounter set, and the Chamber of Time location."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: el Enemigo Heraldo de Valusia, las 3 cartas Víbora de foso del conjunto de encuentros <i>Serpientes</i>, y el Lugar Cámara del tiempo."
     },
     {
       "id": "create_explore_deck",
-      "text": "Create the exploration deck. This is done by taking Sealed Passage, Mosaic Chamber, Tomb of the Ancients, Throne Room, Snake Pit, Ancient Hall, and Grand Chamber and shuffling them together. Do not include any encounter cards listed in the original setup instructions."
+      "text": "Crea el mazo de Exploración. Esto se hace cogiendo el Pasadizo cerrado, la Cámara del mosaico, la Tumba de los antiguos, la Sala del trono, el Foso de serpientes, la Sala antigua y la Gran cámara. Después, baraja todas esas cartas. No incluyas ninguna de las demás cartas de Encuentro indicadas en las instrucciones de preparación originales."
     },
     {
       "id": "additional_return_rules",
-      "text": "For the duration of this scenario, the following additional rule applies:",
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:",
       "bullets": [
         {
-          "text": "<b>Forced</b> - After a successful exploration ends: Shuffle the top card of the encounter deck into the exploration deck."
+          "text": "<b>Obligado</b> - Después de que acabe una exploración con éxito: Añade la primera carta del mazo de Encuentros al mazo de Exploración y baraja éste."
         }
       ]
     }
@@ -30955,7 +30955,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -30996,7 +30996,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31063,7 +31063,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31099,7 +31099,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31161,7 +31161,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31199,7 +31199,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31265,7 +31265,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31303,7 +31303,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31369,7 +31369,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31403,7 +31403,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31463,7 +31463,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, -1, -1, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31494,7 +31494,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31552,7 +31552,7 @@
             "choices": [
               {
                 "id": "easy",
-                "text": "Easy",
+                "text": "Fácil",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31586,7 +31586,7 @@
               },
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31620,7 +31620,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31654,7 +31654,7 @@
               },
               {
                 "id": "expert",
-                "text": "Expert",
+                "text": "Experto",
                 "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31713,7 +31713,7 @@
             "choices": [
               {
                 "id": "easy",
-                "text": "Easy",
+                "text": "Fácil",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31747,7 +31747,7 @@
               },
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31781,7 +31781,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Difícil",
                 "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31815,7 +31815,7 @@
               },
               {
                 "id": "expert",
-                "text": "Expert",
+                "text": "Experto",
                 "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -35746,7 +35746,7 @@
     "xp_cost": 2,
     "requirements": [
       {
-        "text": "Daisy Walker’s deck must include at least 4 [[Tome]] assets. [[Tome]] weaknesses do not count toward this total."
+        "text": "El mazo de Daisy Walker debe incluir al menos 4 Apoyos [[Tomo]]. Las Debilidades [[Tomo]] no cuentan para esta cifra."
       }
     ]
   },
