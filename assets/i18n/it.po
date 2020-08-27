@@ -203,8 +203,8 @@ msgid "Second Core Set"
 msgstr "Secondo Set Base"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:131
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:256
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:588
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:257
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:589
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:288
 #: src/components/deck/EditSpecialDeckCardsView.tsx:186
 #: src/components/settings/CollectionEditView.tsx:34
@@ -279,25 +279,25 @@ msgstr "Contiene troppe carte Limitate."
 #: src/components/campaignguide/nav.ts:39
 #: src/components/campaignguide/prompts/CardChoicePrompt.tsx:120
 #: src/components/card/CardDetailSwipeView.tsx:61
-#: src/components/card/CardDetailSwipeView.tsx:113
-#: src/components/card/CardDetailSwipeView.tsx:184
+#: src/components/card/CardDetailSwipeView.tsx:112
+#: src/components/card/CardDetailSwipeView.tsx:183
 #: src/components/card/CardDetailView/PlayerCardImage.tsx:43
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:171
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:172
 #: src/components/card/CardDetailView/index.tsx:72
-#: src/components/card/CardDetailView/index.tsx:151
+#: src/components/card/CardDetailView/index.tsx:159
 #: src/components/core/ChooserButton.tsx:42
 #: src/components/core/PackListComponent/PackRow.tsx:53
-#: src/components/deck/DeckDetailView/index.tsx:588
-#: src/components/deck/DeckDetailView/index.tsx:644
+#: src/components/deck/DeckDetailView/index.tsx:622
+#: src/components/deck/DeckDetailView/index.tsx:678
 #: src/components/deck/EditSpecialDeckCardsView.tsx:56
 #: src/components/deck/EditSpecialDeckCardsView.tsx:122
 #: src/components/deck/EditSpecialDeckCardsView.tsx:218
 #: src/components/deck/EditSpecialDeckCardsView.tsx:264
 #: src/components/filter/CardEnemyFilterView.tsx:20
 #: src/components/filter/PackFilterView.tsx:31
-#: src/components/nav/helper.ts:30
-#: src/components/nav/helper.ts:119
-#: src/components/nav/helper.ts:177
+#: src/components/nav/helper.ts:31
+#: src/components/nav/helper.ts:123
+#: src/components/nav/helper.ts:182
 msgid "Back"
 msgstr "Indietro"
 
@@ -343,11 +343,11 @@ msgstr "Pesca dalla Collezione"
 #: src/components/core/TextEditDialog.tsx:205
 #: src/components/deck/CopyDeckDialog/index.tsx:344
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:157
-#: src/components/deck/DeckDetailView/index.tsx:436
-#: src/components/deck/DeckDetailView/index.tsx:515
-#: src/components/deck/DeckDetailView/index.tsx:1458
-#: src/components/deck/DeckDetailView/index.tsx:1467
-#: src/components/deck/DeckDetailView/index.tsx:1512
+#: src/components/deck/DeckDetailView/index.tsx:437
+#: src/components/deck/DeckDetailView/index.tsx:516
+#: src/components/deck/DeckDetailView/index.tsx:1492
+#: src/components/deck/DeckDetailView/index.tsx:1501
+#: src/components/deck/DeckDetailView/index.tsx:1546
 #: src/components/deck/DeckUpgradeDialog.tsx:70
 #: src/components/deck/DeckUpgradeDialog.tsx:72
 #: src/components/deck/EditSpecialDeckCardsView.tsx:187
@@ -395,8 +395,8 @@ msgstr "NON CONTA NEI LIMITI DEL MAZZO"
 #: src/components/campaign/EditTraumaDialog.tsx:100
 #: src/components/campaign/ExileCardDialog.tsx:27
 #: src/components/campaign/ExileCardDialog.tsx:31
-#: src/components/deck/DeckDetailView/index.tsx:486
-#: src/components/deck/DeckDetailView/index.tsx:489
+#: src/components/deck/DeckDetailView/index.tsx:487
+#: src/components/deck/DeckDetailView/index.tsx:490
 #: src/components/deck/DeckUpgradeDialog.tsx:63
 #: src/components/deck/DeckUpgradeDialog.tsx:67
 msgid "Save"
@@ -472,9 +472,9 @@ msgstr "Prova ancora"
 msgid "Reauthorize"
 msgstr "Riautorizza"
 
-#: src/components/deck/DeckDetailView/index.tsx:1601
-#: src/components/nav/helper.ts:46
-#: src/components/nav/helper.ts:82
+#: src/components/deck/DeckDetailView/index.tsx:1635
+#: src/components/nav/helper.ts:63
+#: src/components/nav/helper.ts:86
 msgid "Deck"
 msgstr "Mazzo"
 
@@ -484,7 +484,7 @@ msgid "Available weaknesses"
 msgstr "Debolezze Disponibili"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:338
-#: src/components/deck/DeckDetailView/index.tsx:1296
+#: src/components/deck/DeckDetailView/index.tsx:1330
 #: src/components/weakness/WeaknessDrawComponent.tsx:283
 msgid "Saving"
 msgstr "Salvataggio"
@@ -591,7 +591,7 @@ msgstr "Riconnetti Account"
 msgid "Sign out of ArkhamDB"
 msgstr "Logout da ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:1454
+#: src/components/deck/DeckDetailView/index.tsx:1488
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:368
 #: src/components/settings/LoginButton.tsx:77
 #: src/components/settings/LoginButton.tsx:80
@@ -622,8 +622,8 @@ msgstr "Riguardo Arkham Cards"
 #: src/components/core/CountEditDialog.tsx:120
 #: src/components/core/EditText.tsx:39
 #: src/components/core/TextEditDialog.tsx:225
-#: src/components/deck/DeckDetailView/index.tsx:240
-#: src/components/nav/helper.ts:35
+#: src/components/deck/DeckDetailView/index.tsx:241
+#: src/components/nav/helper.ts:36
 #: src/components/settings/SettingsView.tsx:68
 msgid "Done"
 msgstr "Fatto"
@@ -656,7 +656,7 @@ msgstr "Informazioni Carta"
 msgid "Card Collection"
 msgstr "Collezione"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:272
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:273
 #: src/components/settings/SettingsView.tsx:157
 msgid "Spoiler Settings"
 msgstr "Impostazioni Spoiler"
@@ -716,14 +716,14 @@ msgstr "Negoziare"
 msgid "Prey"
 msgstr "Preda"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:324
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:325
 #: src/components/filter/CardEnemyFilterView.tsx:155
 #: src/components/filter/CardFilterView/index.tsx:216
 #: src/components/filter/CardFilterView/index.tsx:484
 msgid "Fight"
 msgstr "Combattimento"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:324
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:325
 #: src/components/filter/CardEnemyFilterView.tsx:167
 #: src/components/filter/CardFilterView/index.tsx:206
 msgid "Health"
@@ -735,20 +735,20 @@ msgstr "Salute"
 msgid "Per Investigator"
 msgstr "Per Investigatore"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:326
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:327
 #: src/components/filter/CardEnemyFilterView.tsx:189
 #: src/components/filter/CardFilterView/index.tsx:219
 #: src/components/filter/CardFilterView/index.tsx:522
 msgid "Evade"
 msgstr "Eludere"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:328
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:329
 #: src/components/filter/CardEnemyFilterView.tsx:201
 #: src/components/filter/CardFilterView/index.tsx:210
 msgid "Damage"
 msgstr "Danno"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:328
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:329
 #: src/components/filter/CardEnemyFilterView.tsx:213
 #: src/components/filter/CardFilterView/index.tsx:213
 msgid "Horror"
@@ -792,6 +792,7 @@ msgstr "Seleziona Pack"
 #: src/components/cardlist/SearchMultiSelectView/index.tsx:63
 #: src/components/core/ChooserButton.tsx:47
 #: src/components/core/ChooserButton.tsx:50
+#: src/components/deck/DeckChecklistView/index.tsx:143
 #: src/components/filter/withFilterFunctions.tsx:179
 #: src/components/filter/withFilterFunctions.tsx:182
 msgid "Clear"
@@ -1466,7 +1467,7 @@ msgstr "${ traumaData.mental } Mentale"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:187
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:167
 #: src/components/core/TabooSetPicker.tsx:59
-#: src/components/deck/DeckDetailView/index.tsx:1628
+#: src/components/deck/DeckDetailView/index.tsx:1662
 #: src/data/Card.ts:333
 #: src/data/Card.ts:349
 msgid "None"
@@ -1491,7 +1492,7 @@ msgstr "Seleziona Campagna"
 #: src/components/campaign/CampaignDetailView/index.tsx:85
 #: src/components/campaign/CampaignDetailView/index.tsx:474
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:91
-#: src/components/deck/DeckDetailView/index.tsx:1692
+#: src/components/deck/DeckDetailView/index.tsx:1734
 #: src/components/deck/DeckProgressComponent/index.tsx:87
 msgid "Campaign"
 msgstr "Campagna"
@@ -1554,8 +1555,8 @@ msgstr "Non Ora"
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:197
 #: src/components/deck/CopyDeckDialog/index.tsx:348
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:161
-#: src/components/deck/DeckDetailView/index.tsx:1254
 #: src/components/deck/DeckDetailView/index.tsx:1288
+#: src/components/deck/DeckDetailView/index.tsx:1322
 msgid "Okay"
 msgstr "Ok"
 
@@ -1609,19 +1610,19 @@ msgid "Save changes?"
 msgstr "Salva le modifiche?"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:133
-#: src/components/deck/DeckDetailView/index.tsx:502
+#: src/components/deck/DeckDetailView/index.tsx:503
 msgid "Looks like you have made some changes that have not been saved."
 msgstr "Sembra che tu abbia fatto alcune modifiche che non sono state salvate."
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:135
-#: src/components/deck/DeckDetailView/index.tsx:504
-#: src/components/deck/DeckDetailView/index.tsx:1320
+#: src/components/deck/DeckDetailView/index.tsx:505
+#: src/components/deck/DeckDetailView/index.tsx:1354
 msgid "Save Changes"
 msgstr "Salva Modifiche"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:140
-#: src/components/deck/DeckDetailView/index.tsx:509
-#: src/components/deck/DeckDetailView/index.tsx:1324
+#: src/components/deck/DeckDetailView/index.tsx:510
+#: src/components/deck/DeckDetailView/index.tsx:1358
 msgid "Discard Changes"
 msgstr "Annulla Modifiche"
 
@@ -1639,8 +1640,8 @@ msgid "EXPERIENCE"
 msgstr "ESPERIENZA"
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:88
-#: src/components/deck/DeckDetailView/index.tsx:685
-#: src/components/deck/DeckDetailView/index.tsx:1698
+#: src/components/deck/DeckDetailView/index.tsx:719
+#: src/components/deck/DeckDetailView/index.tsx:1740
 msgid "Upgrade Deck"
 msgstr "Aggiorna Mazzo"
 
@@ -1689,9 +1690,9 @@ msgstr "${ counts.assigned } / ${ counts.total } sono state pescate."
 #: src/components/campaignguide/CampaignGuideView.tsx:102
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:108
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:111
-#: src/components/deck/DeckDetailView/index.tsx:435
-#: src/components/deck/DeckDetailView/index.tsx:1506
-#: src/components/deck/DeckDetailView/index.tsx:1753
+#: src/components/deck/DeckDetailView/index.tsx:436
+#: src/components/deck/DeckDetailView/index.tsx:1540
+#: src/components/deck/DeckDetailView/index.tsx:1795
 msgid "Delete"
 msgstr "Cancella"
 
@@ -1718,7 +1719,7 @@ msgstr "Interludio"
 #: src/components/campaign/NewCampaignView/index.tsx:647
 #: src/components/campaignguide/CampaignGuideView.tsx:67
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:74
-#: src/components/deck/DeckDetailView/index.tsx:1609
+#: src/components/deck/DeckDetailView/index.tsx:1643
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:324
 msgid "Name"
 msgstr "Nome"
@@ -1818,7 +1819,7 @@ msgstr[1] "Mostra ${ section.nonCollectionCount } Investigatori non in Collezion
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Nessun Investigatore corrispondente per \"${ searchTerm }\"."
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:345
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:346
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:156
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:160
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:164
@@ -1859,7 +1860,7 @@ msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
 msgstr "PE: ${ spentXp } di ${ adjustedExperience } (${ adjustment })"
 
 #: src/components/DeckNavFooter/index.tsx:125
-#: src/components/deck/DeckDetailView/index.tsx:1656
+#: src/components/deck/DeckDetailView/index.tsx:1690
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
@@ -1883,40 +1884,40 @@ msgstr "Sventura"
 msgid "Doesn't comply with the Investigator requirements."
 msgstr "Non soddisfa i requisiti dell'Investigatore."
 
-#: src/components/deck/DeckDetailView/index.tsx:1494
+#: src/components/deck/DeckDetailView/index.tsx:1528
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
 msgstr "Cancella questo Aggiornamento (${ deck.version })"
 
-#: src/components/deck/DeckDetailView/index.tsx:1499
-#: src/components/deck/DeckDetailView/index.tsx:1506
+#: src/components/deck/DeckDetailView/index.tsx:1533
+#: src/components/deck/DeckDetailView/index.tsx:1540
 msgid "Delete all versions"
 msgstr "Cancella tutte le versioni"
 
-#: src/components/deck/DeckDetailView/index.tsx:1517
+#: src/components/deck/DeckDetailView/index.tsx:1551
 msgid "Delete deck"
 msgstr "Cancella Mazzo"
 
-#: src/components/deck/DeckDetailView/index.tsx:1518
+#: src/components/deck/DeckDetailView/index.tsx:1552
 msgid "Are you sure you want to delete this deck?"
 msgstr "Sei certo di voler cancellare questo Mazzo?"
 
-#: src/components/deck/DeckDetailView/index.tsx:1444
+#: src/components/deck/DeckDetailView/index.tsx:1478
 msgid "Save Local Changes"
 msgstr "Salva le Modifiche"
 
-#: src/components/deck/DeckDetailView/index.tsx:1445
+#: src/components/deck/DeckDetailView/index.tsx:1479
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
 "Ricordati di salvare ogni modifica fatta a questo Mazzo prima di "
 "condividerlo su ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:1449
+#: src/components/deck/DeckDetailView/index.tsx:1483
 msgid "Unsupported Operation"
 msgstr "Operazione non supportata"
 
-#: src/components/deck/DeckDetailView/index.tsx:1463
-#: src/components/deck/DeckDetailView/index.tsx:1739
+#: src/components/deck/DeckDetailView/index.tsx:1497
+#: src/components/deck/DeckDetailView/index.tsx:1781
 msgid "Upload to ArkhamDB"
 msgstr "Salvataggio su ArkhamDB"
 
@@ -1924,32 +1925,32 @@ msgstr "Salvataggio su ArkhamDB"
 msgid "Special Cards"
 msgstr "Carte Speciali"
 
-#: src/components/deck/DeckDetailView/index.tsx:1745
+#: src/components/deck/DeckDetailView/index.tsx:1787
 msgid "View on ArkhamDB"
 msgstr "Vedi su ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:501
+#: src/components/deck/DeckDetailView/index.tsx:502
 msgid "Save deck changes?"
 msgstr "Salvare le modifiche al Mazzo?"
 
-#: src/components/deck/DeckDetailView/index.tsx:584
+#: src/components/deck/DeckDetailView/index.tsx:618
 msgid "Edit Special Cards"
 msgstr "Modifica le Carte Speciali"
 
-#: src/components/deck/DeckDetailView/index.tsx:640
+#: src/components/deck/DeckDetailView/index.tsx:674
 msgid "Edit Deck"
 msgstr "Modifica Mazzo"
 
-#: src/components/deck/DeckDetailView/index.tsx:342
+#: src/components/deck/DeckDetailView/index.tsx:343
 msgid "Deck has been deleted"
 msgstr "Il Mazzo è stato cancellato"
 
-#: src/components/deck/DeckDetailView/index.tsx:345
+#: src/components/deck/DeckDetailView/index.tsx:346
 msgid "OK"
 msgstr "OK"
 
-#: src/components/deck/DeckDetailView/index.tsx:1249
 #: src/components/deck/DeckDetailView/index.tsx:1283
+#: src/components/deck/DeckDetailView/index.tsx:1317
 msgid "Error"
 msgstr "Errore"
 
@@ -2019,74 +2020,74 @@ msgstr "Prendo 3 Danni e 3 Orrori"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Sto sopra di 5, spero di non pescare il tentacolo"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:598
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:599
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
 msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
 msgstr[0] "Mostra ${ section.nonCollectionCount } Carta non in Collezione"
 msgstr[1] "Mostra ${ section.nonCollectionCount } Carte non in Collezione"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:673
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:688
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:687
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:702
 msgid "Edit Spoiler Settings"
 msgstr "Modifica Impostazioni Spoiler"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:679
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:693
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } Spoiler"
 msgid_plural "Show ${ spoilerCardsCount } Spoilers"
 msgstr[0] "Mostra ${ spoilerCardsCount } Spoiler"
 msgstr[1] "Mostra ${ spoilerCardsCount } Spoiler"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:645
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:659
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Nessuna Carta corrispondente per \"${ searchTerm }\""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:646
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:660
 msgid "No matching cards"
 msgstr "Nessuna Carta corrispondente"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:335
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:336
 msgid "Cost: None"
 msgstr "Costo: Nessuno"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:337
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:338
 #, javascript-format
 msgid "Cost: ${ card.cost }"
 msgstr "Costo: ${ card.cost }"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:341
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:347
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:342
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:348
 msgid "All Cards"
 msgstr "Tutte le Carte"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:381
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:382
 msgid "Search for a card"
 msgstr "Cerca una Carta"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:240
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
 msgid "Search Player Cards"
 msgstr "Cerca Carte Investigatore"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:240
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
 msgid "Search Encounter Cards"
 msgstr "Cerca Carte Incontro"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:246
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:247
 msgid "Clear Search Filters"
 msgstr "Rimuovi Filtri"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:267
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:268
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Cancella la ricerca di  \"${ searchTerm }\""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:273
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:274
 msgid "Search Game Text"
 msgstr "Cerca Testo di Gioco"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:281
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
 msgid "Search Card Backs"
 msgstr "Cerca Retro delle Carte"
 
@@ -2115,31 +2116,31 @@ msgstr "Carte Richieste"
 msgid "Alternate Cards"
 msgstr "Carte Alternative"
 
-#: src/components/card/CardDetailSwipeView.tsx:158
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:141
+#: src/components/card/CardDetailSwipeView.tsx:157
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:142
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:596
 #: src/components/card/CardDetailView/index.tsx:33
-#: src/components/card/CardDetailView/index.tsx:126
+#: src/components/card/CardDetailView/index.tsx:134
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/components/card/CardDetailSwipeView.tsx:181
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:168
-#: src/components/card/CardDetailView/index.tsx:148
+#: src/components/card/CardDetailSwipeView.tsx:180
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:169
+#: src/components/card/CardDetailView/index.tsx:156
 msgid "Allowed Cards"
 msgstr "Carte Permesse"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:248
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:249
 msgid "Test Icons: "
 msgstr "Icone Abilità: "
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:270
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:271
 #, javascript-format
 msgid "Slot: ${ card.slot }"
 msgstr "Slot: ${ card.slot }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:523
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:742
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:524
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:744
 msgid "Show back"
 msgstr "Mostra retro"
 
@@ -2152,7 +2153,7 @@ msgstr "Vittoria: ${ card.victory }."
 msgid "Vengeance: ${ card.vengeance }."
 msgstr "Vendetta: ${ card.vengeance }."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:742
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:744
 msgid "Show front"
 msgstr "Mostra fronte"
 
@@ -2162,7 +2163,7 @@ msgid "Deckbuilding Cards"
 msgstr "Carte del Deckbuilding"
 
 #: src/app/App.ts:195
-#: src/components/deck/DeckDetailView/index.tsx:1645
+#: src/components/deck/DeckDetailView/index.tsx:1679
 msgid "Cards"
 msgstr "Carte"
 
@@ -2210,7 +2211,7 @@ msgid "Card Settings"
 msgstr "Impostazioni Carte"
 
 #: src/components/core/TabooSetPicker.tsx:56
-#: src/components/deck/DeckDetailView/index.tsx:1625
+#: src/components/deck/DeckDetailView/index.tsx:1659
 #: src/components/settings/SettingsTabooPicker.tsx:33
 msgid "Taboo List"
 msgstr "Lista dei Taboo"
@@ -2233,8 +2234,8 @@ msgstr "Provate Ancora"
 msgid "Loading latest cards..."
 msgstr "Caricando le ultime carte."
 
-#: src/components/deck/DeckDetailView/index.tsx:1679
-#: src/components/nav/helper.ts:137
+#: src/components/deck/DeckDetailView/index.tsx:1721
+#: src/components/nav/helper.ts:142
 msgid "Charts"
 msgstr "Tabelle"
 
@@ -2264,7 +2265,7 @@ msgstr "Vincolo"
 msgid "Bound Cards"
 msgstr "Carte Vincolate"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:293
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:294
 msgid "Level: ${ card.xp }."
 msgstr "Livello: ${ card.xp }."
 
@@ -2308,7 +2309,7 @@ msgstr ""
 "In alternativa, puoi pescare una Debolezza Base casuale dalla tua intera "
 "Collezione."
 
-#: src/components/deck/DeckDetailView/index.tsx:1455
+#: src/components/deck/DeckDetailView/index.tsx:1489
 #: src/components/decklist/MyDecksComponent.tsx:147
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -2415,11 +2416,12 @@ msgstr ""
 "Note della Campagna e i Punti Esperienza di tutti i Mazzi."
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:97
+#: src/components/deck/DeckChecklistView/index.tsx:56
 #: src/components/deck/NewDeckView.tsx:45
 msgid "Sort"
 msgstr "Ordina"
 
-#: src/components/deck/DeckDetailView/index.tsx:1464
+#: src/components/deck/DeckDetailView/index.tsx:1498
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
@@ -2430,7 +2432,7 @@ msgstr ""
 "Dopo aver fatto questo avrai bisogno di una connessione Internet per fare "
 "modifiche al Mazzo."
 
-#: src/components/deck/DeckDetailView/index.tsx:343
+#: src/components/deck/DeckDetailView/index.tsx:344
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
@@ -2468,7 +2470,7 @@ msgstr ""
 "Ultima Versione ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } PE"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:201
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:202
 msgid ""
 "Game\n"
 "Text"
@@ -2476,7 +2478,7 @@ msgstr ""
 "Testo\n"
 "di Gioco"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:209
 msgid ""
 "Flavor\n"
 "Text"
@@ -2484,7 +2486,7 @@ msgstr ""
 "Testo\n"
 "Flavor"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:215
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:216
 msgid ""
 "Card\n"
 "Backs"
@@ -2538,17 +2540,17 @@ msgstr "Salvataggio..."
 msgid "Flip Card"
 msgstr "Gira Carta"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:300
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:301
 #, javascript-format
 msgid "Doom: ${ doom }"
 msgstr "Destino: ${ doom }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:305
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:306
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "Indizi: ${ clues }${ perInvestigatorClues }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:313
+#: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:314
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr "Oscurità: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 
@@ -2589,11 +2591,11 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr "Livello ${ level }"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:715
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:729
 msgid "In Deck"
 msgstr "Nel Mazzo"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:725
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:739
 msgid "All Eligible Cards"
 msgstr "Tutte le Carte Utilizzabili"
 
@@ -2841,15 +2843,15 @@ msgstr "Carte Vincolate (${ count })"
 msgid "New Name"
 msgstr "Nuovo Nome"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:201
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:202
 msgid "Game Text"
 msgstr "Testo di Gioco"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:209
 msgid "Flavor Text"
 msgstr "Testo Flavor"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:215
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:216
 msgid "Card Backs"
 msgstr "Retro della Carta"
 
@@ -2917,7 +2919,7 @@ msgstr ""
 "Nota: le dimensioni del Mazzo dovrebbe essere scelte solo nel momento della "
 "sua creazione, non tra uno scenario e l'altro."
 
-#: src/components/deck/DeckDetailView/index.tsx:1653
+#: src/components/deck/DeckDetailView/index.tsx:1687
 msgid "Edit Cards"
 msgstr "Modifica Carte"
 
@@ -2929,7 +2931,7 @@ msgstr ""
 "Nota: la Classe secondaria dovrebbe essere scelta solo nel momento della "
 "creazione del Mazzo, non tra uno scenario e l'altro."
 
-#: src/components/deck/DeckDetailView/index.tsx:1450
+#: src/components/deck/DeckDetailView/index.tsx:1484
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time.\n"
@@ -2943,29 +2945,29 @@ msgstr ""
 "Se desideri aggiornarlo, puoi usare Clona per creare una copia di questo "
 "Deck."
 
-#: src/components/deck/DeckDetailView/index.tsx:1597
+#: src/components/deck/DeckDetailView/index.tsx:1631
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) PE"
 
-#: src/components/deck/DeckDetailView/index.tsx:1732
+#: src/components/deck/DeckDetailView/index.tsx:1774
 msgid "Clone"
 msgstr "Clona"
 
-#: src/components/deck/DeckDetailView/index.tsx:1665
+#: src/components/deck/DeckDetailView/index.tsx:1699
 msgid "Story Assets"
 msgstr "Supporti Storia"
 
-#: src/components/deck/DeckDetailView/index.tsx:1671
+#: src/components/deck/DeckDetailView/index.tsx:1705
 msgid "Weaknesses"
 msgstr "Debolezze"
 
-#: src/components/deck/DeckDetailView/index.tsx:1685
-#: src/components/nav/helper.ts:156
+#: src/components/deck/DeckDetailView/index.tsx:1727
+#: src/components/nav/helper.ts:161
 msgid "Draw Simulator"
 msgstr "Simulatore Di Pescata"
 
-#: src/components/deck/DeckDetailView/index.tsx:1708
+#: src/components/deck/DeckDetailView/index.tsx:1750
 msgid "Available XP"
 msgstr "PE Disponibili"
 
@@ -3022,7 +3024,7 @@ msgid "Weakness Set"
 msgstr "Set Debolezze"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:533
-#: src/components/deck/DeckDetailView/index.tsx:1726
+#: src/components/deck/DeckDetailView/index.tsx:1768
 msgid "Options"
 msgstr "Opzioni"
 
@@ -3030,7 +3032,7 @@ msgstr "Opzioni"
 msgid "Deck Cards"
 msgstr "Mazzo di Carte"
 
-#: src/components/deck/DeckDetailView/index.tsx:1702
+#: src/components/deck/DeckDetailView/index.tsx:1744
 msgid "Save changes before upgrading"
 msgstr "Salva le modifiche prima di Aggiornare"
 
@@ -3082,7 +3084,7 @@ msgstr ""
 "Segnalino non mostrano le corrette probabilità per il \"Pesca due scegli "
 "uno\" o altre situazioni di pesca multipla."
 
-#: src/components/deck/DeckDetailView/index.tsx:1262
+#: src/components/deck/DeckDetailView/index.tsx:1296
 msgid "Deleting"
 msgstr "Cancellazione"
 
@@ -3165,8 +3167,8 @@ msgstr ""
 msgid "Card changes"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1547
-#: src/components/deck/DeckDetailView/index.tsx:1718
+#: src/components/deck/DeckDetailView/index.tsx:1581
+#: src/components/deck/DeckDetailView/index.tsx:1760
 #: src/components/deck/DeckProgressComponent/index.tsx:161
 #. Actually compute the diffs.
 msgid "Upgrade History"
@@ -3301,7 +3303,7 @@ msgid ""
 "course of a campaign."
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1618
+#: src/components/deck/DeckDetailView/index.tsx:1652
 msgid "Description"
 msgstr ""
 
@@ -3336,12 +3338,12 @@ msgstr ""
 msgid "Add new investigator"
 msgstr ""
 
-#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:80
+#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:82
 #, javascript-format
 msgid "${ supplyName } to use (${ desiredCount })"
 msgstr ""
 
-#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:107
+#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:109
 msgid "Reads \"${ badThing.condition }\""
 msgstr ""
 
@@ -3758,11 +3760,11 @@ msgstr ""
 msgid "Create deck"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1457
+#: src/components/deck/DeckDetailView/index.tsx:1491
 msgid "Sign In"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1466
+#: src/components/deck/DeckDetailView/index.tsx:1500
 msgid "Upload"
 msgstr ""
 
@@ -3927,19 +3929,19 @@ msgstr ""
 msgid "Upgrade ${ humanVersionNumber }: ${ deck.availableExperience } XP"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:432
+#: src/components/deck/DeckDetailView/index.tsx:433
 msgid "Delete broken deck"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:433
+#: src/components/deck/DeckDetailView/index.tsx:434
 msgid "Looks like we are having trouble loading this deck for some reason"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1633
+#: src/components/deck/DeckDetailView/index.tsx:1667
 msgid "Deck Id"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1874
+#: src/components/deck/DeckDetailView/index.tsx:1916
 msgid "Delete Deck"
 msgstr ""
 
@@ -4530,6 +4532,12 @@ msgstr ""
 msgid "Download now"
 msgstr ""
 
-#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:107
+#: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:109
 msgid "Doesn't get any"
+msgstr ""
+
+#: src/components/deck/DeckChecklistView/index.tsx:48
+#: src/components/deck/DeckDetailView/index.tsx:565
+#: src/components/deck/DeckDetailView/index.tsx:1714
+msgid "Checklist"
 msgstr ""
