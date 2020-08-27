@@ -244,6 +244,11 @@ export default class DeckValidation {
         error: t`No assets that take up the ally slot are allowed by On Your Own.`,
       }));
     }
+    deck_options.push({
+      limit: 1,
+      trait: ['Covenant'],
+      error: t`Limit 1 Covenant per deck.`,
+    });
     if (this.investigator &&
         this.investigator.deck_options &&
         this.investigator.deck_options.length) {

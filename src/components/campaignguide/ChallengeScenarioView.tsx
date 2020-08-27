@@ -55,9 +55,9 @@ export default class ChallengeScenarioView extends React.Component<Props> {
                     text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
                   />
                 </SetupStepWrapper>
-                { map(challenge.requirements, (text, idx) => (
+                { map(challenge.requirements, (req, idx) => (
                   <SetupStepWrapper key={idx}>
-                    <CampaignGuideTextComponent text={text} />
+                    <CampaignGuideTextComponent text={req.text} />
                   </SetupStepWrapper>
                 )) }
               </View>

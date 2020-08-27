@@ -798,7 +798,9 @@ export interface Scenario {
 export interface ChallengeData {
   investigator: string;
   xp_cost: number;
-  requirements: string[];
+  requirements: {
+    text: string;
+  }[];
 }
 export interface Resolution {
   id: string;

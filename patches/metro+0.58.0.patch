@@ -1,0 +1,32 @@
+diff --git a/node_modules/metro/src/lib/polyfills/require.js b/node_modules/metro/src/lib/polyfills/require.js
+index 8c04756..4e94080 100644
+--- a/node_modules/metro/src/lib/polyfills/require.js
++++ b/node_modules/metro/src/lib/polyfills/require.js
+@@ -113,12 +113,21 @@ function metroRequire(moduleId) {
+         .slice(initializingIndex)
+         .map(id => (modules[id] ? modules[id].verboseName : "[unknown]")); // We want to show A -> B -> A:
+ 
+-      cycle.push(cycle[0]);
+-      console.warn(
+-        `Require cycle: ${cycle.join(" -> ")}\n\n` +
+-          "Require cycles are allowed, but can result in uninitialized values. " +
+-          "Consider refactoring to remove the need for a cycle."
+-      );
++      var isExternalOnly = cycle.every(function(cycleWarning) {
++        return cycleWarning.includes("node_modules")
++      })
++      
++      if (!isExternalOnly) {
++        // We want to show A -> B -> A:
++        cycle.push(cycle[0]);
++        console.warn(
++          "Require cycle: " +
++            cycle.join(" -> ") +
++            "\n\n" +
++            "Require cycles are allowed, but can result in uninitialized values. " +
++            "Consider refactoring to remove the need for a cycle."
++        );
++      }    
+     }
+   }
+ 

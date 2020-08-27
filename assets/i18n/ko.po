@@ -25,7 +25,7 @@ msgstr ""
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 
-#: src/lib/DeckValidation.ts:261
+#: src/lib/DeckValidation.ts:266
 msgid "Too many off-class cards for Versatile"
 msgstr ""
 
@@ -1210,8 +1210,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr ""
 
-#: src/app/App.ts:147
-#: src/app/App.ts:207
+#: src/app/App.ts:148
+#: src/app/App.ts:208
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:366
 #: src/components/campaignguide/CampaignGuideView.tsx:125
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:147
@@ -1727,7 +1727,7 @@ msgstr ""
 msgid "Deck Id"
 msgstr ""
 
-#: src/app/App.ts:195
+#: src/app/App.ts:196
 #: src/components/deck/DeckDetailView/index.tsx:1679
 msgid "Cards"
 msgstr ""
@@ -2225,7 +2225,7 @@ msgstr ""
 msgid "Encounter Cards"
 msgstr ""
 
-#: src/app/App.ts:135
+#: src/app/App.ts:136
 #: src/components/cardlist/CardSearchComponent/index.tsx:160
 msgid "Player Cards"
 msgstr ""
@@ -3869,8 +3869,8 @@ msgstr ""
 msgid "Only Show Previous Campaign Members"
 msgstr ""
 
-#: src/app/App.ts:165
-#: src/app/App.ts:219
+#: src/app/App.ts:166
+#: src/app/App.ts:220
 #: src/components/campaign/MyCampaignsView/index.tsx:46
 #: src/components/settings/MergeBackupView/index.tsx:239
 msgid "Campaigns"
@@ -3995,8 +3995,8 @@ msgstr ""
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr ""
 
-#: src/app/App.ts:183
-#: src/app/App.ts:231
+#: src/app/App.ts:184
+#: src/app/App.ts:232
 msgid "Settings"
 msgstr ""
 
@@ -4431,4 +4431,8 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:565
 #: src/components/deck/DeckDetailView/index.tsx:1714
 msgid "Checklist"
+msgstr ""
+
+#: src/lib/DeckValidation.ts:250
+msgid "Limit 1 Covenant per deck."
 msgstr ""

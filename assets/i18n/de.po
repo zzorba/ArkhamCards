@@ -425,8 +425,8 @@ msgstr "Erweiterung"
 msgid "Connect to ArkhamDB"
 msgstr "Verbinde mit ArkhamDB"
 
-#: src/app/App.ts:147
-#: src/app/App.ts:207
+#: src/app/App.ts:148
+#: src/app/App.ts:208
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:366
 #: src/components/campaignguide/CampaignGuideView.tsx:125
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:147
@@ -1577,8 +1577,8 @@ msgstr "Schwierigkeit"
 msgid "Create Campaign"
 msgstr "Kampagne erstellen"
 
-#: src/app/App.ts:165
-#: src/app/App.ts:219
+#: src/app/App.ts:166
+#: src/app/App.ts:220
 #: src/components/campaign/MyCampaignsView/index.tsx:46
 #: src/components/settings/MergeBackupView/index.tsx:239
 msgid "Campaigns"
@@ -2084,7 +2084,7 @@ msgstr "Übernehmen"
 msgid "Filters"
 msgstr "Filter"
 
-#: src/app/App.ts:135
+#: src/app/App.ts:136
 #: src/components/cardlist/CardSearchComponent/index.tsx:160
 msgid "Player Cards"
 msgstr "Spielerkarten"
@@ -2166,13 +2166,13 @@ msgstr "Hält sich nicht an die Anforderungen des Ermittlers."
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Mehr als 5 über den Zielwert, hoffe ich, ich ziehe nicht den Tentakel"
 
-#: src/app/App.ts:195
+#: src/app/App.ts:196
 #: src/components/deck/DeckDetailView/index.tsx:1679
 msgid "Cards"
 msgstr "Karten"
 
-#: src/app/App.ts:183
-#: src/app/App.ts:231
+#: src/app/App.ts:184
+#: src/app/App.ts:232
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -3192,7 +3192,7 @@ msgstr "Aktuelles Deck: ${ deck.availableExperience } XP"
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr "\"On Your Own\" erlaubt keine Assets, die den Verbündeten-Slot belegen."
 
-#: src/lib/DeckValidation.ts:261
+#: src/lib/DeckValidation.ts:266
 msgid "Too many off-class cards for Versatile"
 msgstr "Zu viele Off-Class-Karten für \"Versatile\""
 
@@ -4541,4 +4541,8 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:565
 #: src/components/deck/DeckDetailView/index.tsx:1714
 msgid "Checklist"
+msgstr ""
+
+#: src/lib/DeckValidation.ts:250
+msgid "Limit 1 Covenant per deck."
 msgstr ""

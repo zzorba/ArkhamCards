@@ -124,6 +124,7 @@ export default class App {
       'Warning: Failed prop type: DialogSwitch: prop type `labelStyle` is invalid;',
       'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
       'Consider using `numColumns` with `FlatList` instead.',
+      'Require cycle: node_modules/typeorm/browser/index.js',
     ]);
 
     const browseCards = {

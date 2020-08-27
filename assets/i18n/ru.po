@@ -28,7 +28,7 @@ msgstr ""
 "«Своими силами» не позволяет вам иметь под контролем активы, занимающие "
 "слот союзника."
 
-#: src/lib/DeckValidation.ts:261
+#: src/lib/DeckValidation.ts:266
 msgid "Too many off-class cards for Versatile"
 msgstr "«Versatile» не позволяет иметь так много внеклассовых карт"
 
@@ -1282,8 +1282,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr "Подключиться к ArkhamDB"
 
-#: src/app/App.ts:147
-#: src/app/App.ts:207
+#: src/app/App.ts:148
+#: src/app/App.ts:208
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:366
 #: src/components/campaignguide/CampaignGuideView.tsx:125
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:147
@@ -1839,7 +1839,7 @@ msgstr "Описание"
 msgid "Deck Id"
 msgstr "Код колоды"
 
-#: src/app/App.ts:195
+#: src/app/App.ts:196
 #: src/components/deck/DeckDetailView/index.tsx:1679
 msgid "Cards"
 msgstr "Карты"
@@ -2368,7 +2368,7 @@ msgstr "Показать карты контактов"
 msgid "Encounter Cards"
 msgstr "Карты контактов"
 
-#: src/app/App.ts:135
+#: src/app/App.ts:136
 #: src/components/cardlist/CardSearchComponent/index.tsx:160
 msgid "Player Cards"
 msgstr "Карты игроков"
@@ -4347,8 +4347,8 @@ msgstr "Показывать только прежних участников к
 msgid "Edit name"
 msgstr "Редактировать название"
 
-#: src/app/App.ts:165
-#: src/app/App.ts:219
+#: src/app/App.ts:166
+#: src/app/App.ts:220
 #: src/components/campaign/MyCampaignsView/index.tsx:46
 #: src/components/settings/MergeBackupView/index.tsx:239
 msgid "Campaigns"
@@ -4513,8 +4513,8 @@ msgstr "Опыт: ${ experience }"
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr "Опыт: ${ changes.spentXp } из ${ adjustedExperience }"
 
-#: src/app/App.ts:183
-#: src/app/App.ts:231
+#: src/app/App.ts:184
+#: src/app/App.ts:232
 msgid "Settings"
 msgstr "Настройки"
 
@@ -4699,4 +4699,8 @@ msgstr ""
 #: src/components/deck/DeckDetailView/index.tsx:565
 #: src/components/deck/DeckDetailView/index.tsx:1714
 msgid "Checklist"
+msgstr ""
+
+#: src/lib/DeckValidation.ts:250
+msgid "Limit 1 Covenant per deck."
 msgstr ""

@@ -32917,7 +32917,9 @@
     "investigator": "01002",
     "xp_cost": 2,
     "requirements": [
-      "Daisy Walker’s deck must include at least 4 [[Tome]] assets. [[Tome]] weaknesses do not count toward this total."
+      {
+        "text": "Daisy Walker’s deck must include at least 4 [[Tome]] assets. [[Tome]] weaknesses do not count toward this total."
+      }
     ]
   },
   "setup": [
