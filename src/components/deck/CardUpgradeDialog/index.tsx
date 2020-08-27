@@ -4,6 +4,7 @@ import { EventSubscription, Navigation } from 'react-native-navigation';
 import { filter, find, reverse, partition, sortBy, sumBy } from 'lodash';
 import { connect } from 'react-redux';
 import { ngettext, msgid } from 'ttag';
+import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CardUpgradeOption from './CardUpgradeOption';
@@ -56,7 +57,6 @@ interface State {
 type Props = CardUpgradeDialogProps & ReduxProps & NavigationProps & DimensionsProps;
 
 class CardUpgradeDialog extends React.Component<Props, State> {
-
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {

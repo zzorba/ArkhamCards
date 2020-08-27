@@ -1415,7 +1415,7 @@ class DeckDetailView extends React.Component<Props, State> {
       component: {
         name: 'Dialog.CardUpgrade',
         passProps,
-        options: options,
+        options,
       },
     });
   }
