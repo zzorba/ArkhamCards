@@ -3079,11 +3079,11 @@ msgstr ""
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr ""
 
-#: src/lib/DeckValidation.ts:244
+#: src/lib/DeckValidation.ts:249
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 
-#: src/lib/DeckValidation.ts:266
+#: src/lib/DeckValidation.ts:271
 msgid "Too many off-class cards for Versatile"
 msgstr ""
 
@@ -4434,6 +4434,19 @@ msgstr ""
 msgid "Checklist"
 msgstr ""
 
-#: src/lib/DeckValidation.ts:250
+#: src/lib/DeckValidation.ts:255
 msgid "Limit 1 Covenant per deck."
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:144
+msgid "Checking for FAQ"
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:144
+msgid "No entries at this time."
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:150
+#, javascript-format
+msgid "Last Updated: ${ lastUpdated }"
 msgstr ""

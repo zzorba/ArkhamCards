@@ -3186,13 +3186,13 @@ msgstr "Último mazo: ${ deck.changes.spentXp } de ${ deck.availableExperience }
 msgid "Latest Deck: ${ deck.availableExperience } XP"
 msgstr "Último mazo: ${ deck.availableExperience } XP"
 
-#: src/lib/DeckValidation.ts:244
+#: src/lib/DeckValidation.ts:249
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 "Por tu cuenta  no permite que controles un Apoyo que ocupe un espacio de "
 "aliado."
 
-#: src/lib/DeckValidation.ts:266
+#: src/lib/DeckValidation.ts:271
 msgid "Too many off-class cards for Versatile"
 msgstr "Demasiadas cartas fuera de la clase para Versátil"
 
@@ -4697,6 +4697,19 @@ msgstr "No se recibieron datos"
 msgid "Checklist"
 msgstr "Checklist"
 
-#: src/lib/DeckValidation.ts:250
+#: src/lib/DeckValidation.ts:255
 msgid "Limit 1 Covenant per deck."
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:144
+msgid "Checking for FAQ"
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:144
+msgid "No entries at this time."
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:150
+#, javascript-format
+msgid "Last Updated: ${ lastUpdated }"
 msgstr ""

@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
+import { t } from 'ttag';
 
 import CardTextComponent from './CardTextComponent';
 import Database from '@data/Database';
@@ -124,6 +125,7 @@ class CardFaqView extends React.Component<Props, State> {
     } = this.state;
 
     const faqEntry = head(faqEntries);
+    const lastUpdated = faqEntry && faqEntry.fetched && faqEntry.fetched.toISOString().slice(0, 10);
     return (
       <View>
         { !!faqError && (
@@ -139,13 +141,13 @@ class CardFaqView extends React.Component<Props, State> {
             />
           ) : (
             <Text style={typography.text}>
-              { faqLoading ? 'Checking for FAQ' : 'No entries at this time.' }
+              { faqLoading ? t`Checking for FAQ` : t`No entries at this time.` }
             </Text>
           ) }
         </View>
-        { !!faqEntry && !!faqEntry.fetched && (
+        { !!lastUpdated && (
           <Text style={typography.small}>
-            Last Updated: { faqEntry.fetched.toISOString().slice(0, 10) }
+            { t`Last Updated: ${lastUpdated}` }
           </Text>
         ) }
       </View>

@@ -55,15 +55,15 @@ export default class EncounterIcon extends React.PureComponent<Props> {
     } = this.props;
     switch (encounter_code) {
       case 'nat':
-        return this.arkhamIcon('guardian', size, color);
+        return this.standaloneIcon('nate', size, color);
       case 'har':
-        return this.arkhamIcon('seeker', size, color);
+        return this.standaloneIcon('harvey', size, color);
       case 'win':
-        return this.arkhamIcon('rogue', size, color);
+        return this.standaloneIcon('winifred', size, color);
       case 'jac':
-        return this.arkhamIcon('mystic', size, color);
+        return this.standaloneIcon('jacqueline', size, color);
       case 'ste':
-        return this.arkhamIcon('survivor', size, color);
+        return this.standaloneIcon('stella', size, color);
       case 'rtnotz':
       case 'core':
       case 'agents_of_hastur':

@@ -22,13 +22,13 @@ msgstr "${ action.name } (Кампания А)"
 msgid "${ action.name } (Campaign B)"
 msgstr "${ action.name } (Кампания Б)"
 
-#: src/lib/DeckValidation.ts:244
+#: src/lib/DeckValidation.ts:249
 msgid "No assets that take up the ally slot are allowed by On Your Own."
 msgstr ""
 "«Своими силами» не позволяет вам иметь под контролем активы, занимающие "
 "слот союзника."
 
-#: src/lib/DeckValidation.ts:266
+#: src/lib/DeckValidation.ts:271
 msgid "Too many off-class cards for Versatile"
 msgstr "«Versatile» не позволяет иметь так много внеклассовых карт"
 
@@ -4701,6 +4701,19 @@ msgstr ""
 msgid "Checklist"
 msgstr ""
 
-#: src/lib/DeckValidation.ts:250
+#: src/lib/DeckValidation.ts:255
 msgid "Limit 1 Covenant per deck."
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:144
+msgid "Checking for FAQ"
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:144
+msgid "No entries at this time."
+msgstr ""
+
+#: src/components/card/CardFaqView.tsx:150
+#, javascript-format
+msgid "Last Updated: ${ lastUpdated }"
 msgstr ""

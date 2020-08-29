@@ -29,7 +29,7 @@ export default class CampaignLogCardConditionComponent extends React.Component<P
 
     return (
       <BinaryResult
-        prompt={prompt}
+        prompt={step.text || prompt}
         bulletType={step.bullet_type}
         result={negated ? !result : result}
       />

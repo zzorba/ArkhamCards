@@ -208,6 +208,11 @@ export default class DeckValidation {
         atleast: {},
       });
     }
+    // For the new global covenant restriction.
+    this.deck_options_counts.push({
+      limit: 0,
+      atleast: {}
+    });
     if (this.investigator && this.investigator.deck_options) {
       for (var i = 0; i < this.investigator.deck_options.length; i++){
         this.deck_options_counts.push({
