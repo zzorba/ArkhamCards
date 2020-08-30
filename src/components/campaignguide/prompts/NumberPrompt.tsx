@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
@@ -15,7 +16,7 @@ import { BulletType, Effect, Option } from '@data/scenario/types';
 import typography from '@styles/typography';
 import space from '@styles/space';
 
-interface Props {
+interface OwnProps {
   id: string;
   bulletType?: BulletType;
   prompt: string;
@@ -29,11 +30,13 @@ interface Props {
   text?: string;
 }
 
+type Props = OwnProps & StylesProps;
+
 interface State {
   value: number;
 }
 
-export default class NumberPrompt extends React.Component<Props, State> {
+class NumberPrompt extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -100,10 +103,10 @@ export default class NumberPrompt extends React.Component<Props, State> {
   };
 
   renderCount(count: number) {
-    const { delta } = this.props;
+    const { delta, gameFont } = this.props;
     return (
       <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
-        <Text style={[typography.bigGameFont, typography.center]}>
+        <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center]}>
           { delta && count >= 0 ? '+ ' : '' }{ count }
         </Text>
       </View>
@@ -111,7 +114,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
   }
 
   renderPrompt(count?: number) {
-    const { prompt } = this.props;
+    const { prompt, gameFont } = this.props;
     const value = this.currentValue();
     return (
       <View style={styles.promptRow}>
@@ -119,7 +122,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
           <CampaignGuideTextComponent text={prompt} />
           { count !== undefined && (
             <View style={space.paddingLeftS}>
-              <Text style={[typography.gameFont, typography.bold]}>
+              <Text style={[typography.gameFont, { fontFamily: gameFont }, typography.bold]}>
                 { count }
               </Text>
             </View>
@@ -177,6 +180,8 @@ export default class NumberPrompt extends React.Component<Props, State> {
     );
   }
 }
+
+export default withStyles(NumberPrompt);
 
 const styles = StyleSheet.create({
   count: {

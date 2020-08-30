@@ -50,7 +50,7 @@ import {
 } from '@actions/types';
 import { QuerySort } from '@data/types';
 import { combineQueries, where } from '@data/query';
-import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '@reducers';
+import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState, getLangPreference } from '@reducers';
 import Card from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import typography from '@styles/typography';
@@ -900,7 +900,7 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     singleCardView: state.settings.singleCardView || false,
     in_collection,
-    lang: state.packs.lang || 'en',
+    lang: getLangPreference(state),
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
     tabooSetId: getTabooSet(state, props.tabooSetOverride),

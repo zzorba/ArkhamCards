@@ -1,14 +1,10 @@
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
-import { systemLocale } from '@app/i18n';
 import { isBig, m, s } from './space';
 import COLORS from './colors';
 const sizeScale = 1;
 
 export const SMALL_FONT_SIZE = 12 * sizeScale;
-const GAME_FONT = systemLocale() === 'ru' ?
-  'Conkordia' :
-  'Teutonic';
 
 export default StyleSheet.create({
   header: {
@@ -71,19 +67,19 @@ export default StyleSheet.create({
     color: COLORS.darkText,
   },
   gameFont: {
-    fontFamily: GAME_FONT,
+    fontFamily: 'Teutonic',
     fontSize: 18 * sizeScale,
     lineHeight: 26 * sizeScale,
     color: COLORS.darkText,
   },
   mediumGameFont: {
-    fontFamily: GAME_FONT,
+    fontFamily: 'Teutonic',
     fontSize: 24 * sizeScale,
     lineHeight: 30 * sizeScale,
     color: COLORS.darkText,
   },
   bigGameFont: {
-    fontFamily: GAME_FONT,
+    fontFamily: 'Teutonic',
     fontSize: 28 * sizeScale,
     lineHeight: 36 * sizeScale,
     color: COLORS.darkText,

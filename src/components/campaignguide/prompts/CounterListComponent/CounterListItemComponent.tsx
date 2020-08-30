@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType } from '@data/scenario/types';
 import typography from '@styles/typography';
@@ -20,7 +21,7 @@ interface Props {
   editable: boolean;
 }
 
-export default class CounterListItemComponent extends React.Component<Props> {
+class CounterListItemComponent extends React.Component<Props & StylesProps> {
   _inc = () => {
     const {
       onInc,
@@ -39,10 +40,10 @@ export default class CounterListItemComponent extends React.Component<Props> {
   };
 
   renderCount() {
-    const { color } = this.props;
+    const { color, gameFont } = this.props;
     return (
       <View style={styles.count}>
-        <Text style={[typography.bigGameFont, typography.center, color ? typography.white : {}]}>
+        <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, color ? typography.white : {}]}>
           { this.props.value }
         </Text>
       </View>
@@ -57,6 +58,7 @@ export default class CounterListItemComponent extends React.Component<Props> {
       color,
       value,
       editable,
+      gameFont,
     } = this.props;
     return (
       <View style={[
@@ -64,7 +66,7 @@ export default class CounterListItemComponent extends React.Component<Props> {
         color ? { backgroundColor: color } : {},
       ]}>
         <View style={styles.column}>
-          <Text style={[typography.mediumGameFont, color ? typography.white : {}]}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, color ? typography.white : {}]}>
             { name }
           </Text>
           { editable && !!description && (
@@ -91,6 +93,8 @@ export default class CounterListItemComponent extends React.Component<Props> {
 
   }
 }
+
+export default withStyles(CounterListItemComponent);
 
 const styles = StyleSheet.create({
   count: {

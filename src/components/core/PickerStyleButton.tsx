@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 import space, { s } from '@styles/space';
@@ -24,7 +25,7 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-export default class PickerStyleButton extends React.Component<Props> {
+class PickerStyleButton extends React.Component<Props & StylesProps> {
   renderWidget() {
     const { widget, colors } = this.props;
     switch (widget) {
@@ -69,6 +70,7 @@ export default class PickerStyleButton extends React.Component<Props> {
       noBorder,
       settingsStyle,
       widget,
+      gameFont,
     } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
@@ -89,6 +91,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               settingsStyle ? {} :
                 {
                   ...typography.mediumGameFont,
+                  fontFamily: gameFont,
                   fontWeight: '600',
                 },
               { color: colors ? colors.textColor : COLORS.darkText },
@@ -137,6 +140,8 @@ export default class PickerStyleButton extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(PickerStyleButton);
 
 const style = StyleSheet.create({
   defaultContainerStyle: {

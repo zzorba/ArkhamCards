@@ -20,7 +20,7 @@ import { clearDecks } from '@actions';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import Card from '@data/Card';
-import { getBackupData, getAllPacks, AppState } from '@reducers';
+import { getBackupData, getAllPacks, AppState, getLangPreference, getLangChoice } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
@@ -36,10 +36,11 @@ interface ReduxProps {
   };
   packs: Pack[];
   lang: string;
+  langChoice: string;
 }
 
 interface ReduxActionProps {
-  fetchCards: (db: Database, lang: string) => void;
+  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
   restoreBackup: (
     campaigns: Campaign[],
     guides: {
@@ -147,9 +148,10 @@ class DiagnosticsView extends React.Component<Props> {
   _doSyncCards = () => {
     const {
       lang,
+      langChoice,
       fetchCards,
     } = this.props;
-    fetchCards(this.context.db, lang);
+    fetchCards(this.context.db, lang, langChoice);
   };
 
   addDebugCardJson(json: string) {
@@ -252,7 +254,8 @@ function mapStateToProps(state: AppState): ReduxProps {
   return {
     backupData: getBackupData(state),
     packs: getAllPacks(state),
-    lang: state.packs.lang || 'en',
+    lang: getLangPreference(state),
+    langChoice: getLangChoice(state),
   };
 }
 

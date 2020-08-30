@@ -8,6 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
@@ -39,7 +40,7 @@ interface Props {
   switchCampaignScenario: () => void;
 }
 
-export default class ScenarioStepComponent extends React.Component<Props> {
+class ScenarioStepComponent extends React.Component<Props & StylesProps> {
   renderContent(campaignGuide: CampaignGuide): React.ReactNode {
     const {
       componentId,
@@ -126,7 +127,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
   }
 
   render() {
-    const { step, border } = this.props;
+    const { step, border, gameFont } = this.props;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignGuide }: CampaignGuideContextType) => (
@@ -148,6 +149,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
                     <View style={styles.titleWrapper}>
                       <Text style={[
                         typography.bigGameFont,
+                        { fontFamily: gameFont },
                         styles.title,
                         space.paddingTopL,
                         border ? typography.center : {},
@@ -172,6 +174,8 @@ export default class ScenarioStepComponent extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(ScenarioStepComponent);
 
 const styles = StyleSheet.create({
   title: {

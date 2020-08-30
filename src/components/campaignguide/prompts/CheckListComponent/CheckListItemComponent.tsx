@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import Switch from '@components/core/Switch';
 import typography from '@styles/typography';
 import space from '@styles/space';
@@ -17,7 +18,7 @@ interface Props {
   editable: boolean;
 }
 
-export default class CheckListItemComponent extends React.Component<Props> {
+class CheckListItemComponent extends React.Component<Props & StylesProps> {
   _toggle = () => {
     const {
       onChoiceToggle,
@@ -32,6 +33,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
       editable,
       color,
       selected,
+      gameFont,
     } = this.props;
     if (!editable && !selected) {
       return null;
@@ -45,6 +47,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
       ]}>
         <Text style={[
           typography.mediumGameFont,
+          { fontFamily: gameFont },
           styles.nameText,
           color ? { color: 'white' } : {},
         ]}>
@@ -68,6 +71,8 @@ export default class CheckListItemComponent extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(CheckListItemComponent);
 
 const styles = StyleSheet.create({
   nameText: {

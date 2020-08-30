@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import EditText from '@components/core/EditText';
@@ -86,7 +87,8 @@ interface ReduxActionProps {
 type Props = OwnProps &
   ReduxProps &
   ReduxActionProps &
-  DimensionsProps;
+  DimensionsProps &
+  StylesProps;
 
 interface State {
   hasGuide: boolean;
@@ -461,11 +463,11 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
-    const { fontScale } = this.props;
+    const { fontScale, gameFont } = this.props;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.block}>
-        <Text style={typography.mediumGameFont}>
+        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
           { t`Chaos Bag` }
         </Text>
         <View style={space.marginTopS}>
@@ -490,11 +492,12 @@ class NewCampaignView extends React.Component<Props, State> {
     const {
       componentId,
       fontScale,
+      gameFont,
     } = this.props;
     return (
       <View style={[space.paddingBottomS, styles.underline]}>
         <View style={styles.block}>
-          <Text style={typography.mediumGameFont}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Weakness Set` }
           </Text>
           <Text style={typography.label}>
@@ -549,6 +552,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderCampaignLogSection() {
+    const { gameFont } = this.props;
     if (this.isGuided()) {
       return null;
     }
@@ -559,7 +563,7 @@ class NewCampaignView extends React.Component<Props, State> {
     return (
       <View style={styles.underline}>
         <View style={styles.block}>
-          <Text style={typography.mediumGameFont}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Campaign Log` }
           </Text>
         </View>
@@ -623,6 +627,7 @@ class NewCampaignView extends React.Component<Props, State> {
       captureViewRef,
       nextId,
       fontScale,
+      gameFont,
     } = this.props;
 
     const {
@@ -671,7 +676,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { campaignCode !== TDE && (
             <View style={styles.underline}>
               <View style={styles.block}>
-                <Text style={typography.mediumGameFont}>
+                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
                   { t`Investigators` }
                 </Text>
               </View>
@@ -727,7 +732,9 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect(mapStateToProps, mapDispatchToProps)(
   withPlayerCards(
     withDialogs(
-      withDimensions(NewCampaignView)
+      withDimensions(
+        withStyles(NewCampaignView)
+      )
     )
   )
 );

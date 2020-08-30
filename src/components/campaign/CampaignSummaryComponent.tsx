@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import { CAMPAIGN_COLORS, campaignNames } from './constants';
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { Campaign, CUSTOM } from '@actions/types';
 import typography from '@styles/typography';
 import Difficulty from './Difficulty';
@@ -16,7 +17,8 @@ interface Props {
   name?: string;
   hideScenario?: boolean;
 }
-export default class CampaignSummaryComponent extends React.Component<Props> {
+
+class CampaignSummaryComponent extends React.Component<Props & StylesProps> {
   latestScenario() {
     return last(this.props.campaign.scenarioResults);
   }
@@ -25,13 +27,14 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     const {
       campaign,
       name,
+      gameFont,
     } = this.props;
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
     return (
       <>
         <GameHeader text={text} />
         { !!name && (
-          <Text style={typography.gameFont}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
             { name }
           </Text>
         ) }
@@ -40,7 +43,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
   }
 
   renderLastScenario() {
-    const { hideScenario, campaign } = this.props;
+    const { hideScenario, campaign, gameFont } = this.props;
     if (hideScenario) {
       return null;
     }
@@ -50,7 +53,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={space.marginTopXs}>
-          <Text style={typography.gameFont}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
             { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>
@@ -58,7 +61,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     }
     return (
       <View style={space.marginTopXs}>
-        <Text style={typography.gameFont}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
           { t`Not yet started` }
         </Text>
       </View>
@@ -102,6 +105,8 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(CampaignSummaryComponent);
 
 const styles = StyleSheet.create({
   row: {

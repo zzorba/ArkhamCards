@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import { Campaign } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
@@ -21,12 +22,13 @@ interface Props {
   viewScenarios: () => void;
   addScenarioResult: () => void;
 }
-export default class ScenarioSection extends React.Component<Props> {
+class ScenarioSection extends React.Component<Props & StylesProps> {
   renderCompletedScenarios() {
     const {
       campaign: {
         scenarioResults,
       },
+      gameFont,
     } = this.props;
 
     if (scenarioResults.length === 0) {
@@ -40,7 +42,7 @@ export default class ScenarioSection extends React.Component<Props> {
       <View>
         { map(scenarioResults, ({ scenarioCode, scenario, resolution }) => {
           return (
-            <Text key={scenarioCode} style={typography.gameFont}>
+            <Text key={scenarioCode} style={[typography.gameFont, { fontFamily: gameFont }]}>
               { `${scenario}${resolution ? ` (${resolution})` : ''}` }
             </Text>
           );
@@ -78,6 +80,8 @@ export default class ScenarioSection extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(ScenarioSection);
 
 const styles = StyleSheet.create({
   section: {

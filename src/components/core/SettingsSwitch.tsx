@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
@@ -15,11 +16,14 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
+function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle, gameFont }: Props & StylesProps) {
   return (
     <SwitchRow
       title={title}
-      titleStyle={settingsStyle ? undefined : typography.mediumGameFont}
+      titleStyle={settingsStyle ? undefined : {
+        ...typography.mediumGameFont,
+        fontFamily: gameFont,
+      }}
       containerStyle={styles.switch}
       descriptionStyle={typography.label}
       description={description}
@@ -29,6 +33,8 @@ export default function SettingsSwitch({ title, description, onValueChange, valu
     />
   );
 }
+
+export default withStyles(SettingsSwitch);
 
 const styles = StyleSheet.create({
   switch: {

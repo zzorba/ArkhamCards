@@ -4,6 +4,7 @@ import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
@@ -24,15 +25,15 @@ interface Props {
   fontScale: number;
 }
 
-export default class CampaignLogComponent extends React.Component<Props> {
+class CampaignLogComponent extends React.Component<Props & StylesProps> {
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
-    const { campaignLog, campaignGuide } = this.props;
+    const { campaignLog, campaignGuide, gameFont } = this.props;
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
           <View style={styles.section}>
-            <Text style={typography.bigGameFont}>
+            <Text style={[typography.bigGameFont, { fontFamily: gameFont }]}>
               { title }: { count }
             </Text>
           </View>
@@ -43,7 +44,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
         if (!section) {
           return (
             <View style={styles.section}>
-              <Text style={[typography.bigGameFont, typography.underline]}>
+              <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline]}>
                 { title }
               </Text>
             </View>
@@ -54,6 +55,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
             <View style={space.paddingBottomM}>
               <Text style={[
                 typography.bigGameFont,
+                { fontFamily: gameFont },
                 typography.underline,
                 typography.center,
               ]}>
@@ -151,7 +153,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
   };
 
   renderChaosBag() {
-    const { campaignLog, fontScale } = this.props;
+    const { campaignLog, fontScale, gameFont } = this.props;
     if (!keys(campaignLog.chaosBag).length) {
       return null;
     }
@@ -159,7 +161,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
     return (
       <View style={styles.section}>
         <View style={space.paddingBottomM}>
-          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
+          <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline, typography.center]}>
             { t`Chaos Bag` }{ ` (${tokenCount})` }
           </Text>
         </View>
@@ -198,6 +200,8 @@ export default class CampaignLogComponent extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(CampaignLogComponent);
 
 const styles = StyleSheet.create({
   wrapper: {

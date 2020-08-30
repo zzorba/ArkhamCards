@@ -632,6 +632,8 @@ export function parseDeck(
     ignoreDeckLimitSlots,
     changes,
     problem,
-    limitedSlots: !!find(validation.deckOptions(), option => !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')),
+    limitedSlots: !!find(validation.deckOptions(), option =>
+      !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')
+    ),
   };
 }

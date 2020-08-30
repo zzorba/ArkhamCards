@@ -506,6 +506,16 @@ export function getCampaignGuideState(
   return getGuideState(state, campaignId);
 }
 
+export function getLangChoice(state: AppState) {
+  if (state.settings.lang) {
+    return state.settings.lang;
+  }
+  if (state.cards.lang) {
+    return state.cards.lang;
+  }
+  return 'en';
+}
+
 export function getLangPreference(
   state: AppState
 ): string {

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import SettingsEditText from './SettingsEditText';
 import COLORS from '@styles/colors';
 import { m, s } from '@styles/space';
@@ -15,17 +16,18 @@ interface Props {
   onValueChange: (text: string) => void;
 }
 
-export default function EditText({
+function EditText({
   title,
   dialogDescription,
   placeholder,
   value,
   onValueChange,
-}: Props) {
+  gameFont,
+}: Props & StylesProps) {
   return (
     <SettingsEditText
       title={title}
-      titleStyle={typography.mediumGameFont}
+      titleStyle={{ ...typography.mediumGameFont, fontFamily: gameFont }}
       dialogDescription={dialogDescription}
       valuePlaceholder={placeholder}
       valueProps={{
@@ -41,6 +43,8 @@ export default function EditText({
     />
   );
 }
+
+export default withStyles(EditText);
 
 const styles = StyleSheet.create({
   value: {

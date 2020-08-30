@@ -5,6 +5,7 @@ import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { Campaign, InvestigatorData, Trauma } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
@@ -15,7 +16,7 @@ import typography from '@styles/typography';
 import { s, l } from '@styles/space';
 import COLORS from '@styles/colors';
 
-interface Props {
+interface OwnProps {
   componentId: string;
   campaignData: CampaignGuideContextType;
   processedCampaign: ProcessedCampaign;
@@ -29,6 +30,8 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
+type Props = OwnProps & StylesProps;
+
 interface State {
   spentXp: {
     [code: string]: number;
@@ -36,7 +39,7 @@ interface State {
   removeMode: boolean;
 }
 
-export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
+class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   _navEventListener: EventSubscription;
 
   static contextType = CampaignGuideContext;
@@ -256,6 +259,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       fontScale,
       componentId,
       deleteCampaign,
+      gameFont,
     } = this.props;
     const {
       removeMode,
@@ -305,7 +309,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
               }
               { killedInvestigators.length > 0 && (
                 <View style={styles.header}>
-                  <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
+                  <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, typography.underline]}>
                     { t`Killed and Insane Investigators` }
                   </Text>
                 </View>
@@ -342,6 +346,8 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     );
   }
 }
+
+export default withStyles(CampaignInvestigatorsComponent);
 
 const styles = StyleSheet.create({
   header: {

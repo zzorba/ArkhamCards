@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -19,7 +20,7 @@ export interface CounterItem {
   limit?: number;
 }
 
-interface Props {
+interface OwnProps {
   id: string;
   items: CounterItem[];
   countText?: string;
@@ -32,7 +33,9 @@ interface State {
   };
 }
 
-export default class CounterListComponent extends React.Component<Props, State> {
+type Props = OwnProps & StylesProps;
+
+class CounterListComponent extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -122,7 +125,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
   }
 
   render() {
-    const { id, items, countText } = this.props;
+    const { id, items, countText, gameFont } = this.props;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ scenarioState }: ScenarioGuideContextType) => {
@@ -135,7 +138,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
                 space.paddingTopS,
                 space.paddingRightM,
               ]}>
-                <Text style={typography.mediumGameFont}>
+                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
                   { countText }
                 </Text>
               </View>
@@ -164,6 +167,8 @@ export default class CounterListComponent extends React.Component<Props, State> 
     );
   }
 }
+
+export default withStyles(CounterListComponent);
 
 const styles = StyleSheet.create({
   prompt: {
