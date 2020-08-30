@@ -17,6 +17,8 @@ interface CardsState {
   cache?: CardCache;
   tabooCache?: TabooCache;
   lang?: string | null;
+
+  card_lang?: string | null;
   schemaVersion?: number;
 }
 
@@ -25,6 +27,7 @@ const DEFAULT_CARDS_STATE: CardsState = {
   error: null,
   cache: undefined,
   lang: null,
+  card_lang: null,
   schemaVersion: undefined,
 };
 
@@ -53,7 +56,8 @@ export default function(
         error: null,
         cache: action.cache,
         tabooCache: action.tabooCache,
-        lang: action.lang,
+        lang: undefined,
+        card_lang: action.cardLang,
       };
     }
     case CARD_FETCH_ERROR: {

@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
-import { AppState } from '@reducers';
+import { getLangPreference, AppState } from '@reducers';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -36,7 +36,7 @@ export default class App {
   }
 
   onStoreUpdate(store: Store<AppState, Action>) {
-    const lang = store.getState().cards.lang || 'en';
+    const lang = getLangPreference(store.getState());
 
     // handle a root change
     // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether

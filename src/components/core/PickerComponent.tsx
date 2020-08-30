@@ -28,6 +28,7 @@ export interface PickerProps {
   settingsStyle?: boolean;
   open?: boolean;
   hideWidget?: boolean;
+  formatLabel?: (index: number) => string;
 }
 
 interface SingleConfig {
@@ -78,14 +79,14 @@ export default class PickerComponent extends React.Component<Props> {
   };
 
   _valueFormat = (idxOrArray: number | number[]): string => {
-    const { defaultLabel } = this.props;
+    const { defaultLabel, formatLabel } = this.props;
     if (isArray(idxOrArray)) {
       if (!idxOrArray.length) {
         return defaultLabel || '';
       }
-      return map(idxOrArray, x => this.choiceToLabel(x)).join(', ');
+      return map(idxOrArray, x => formatLabel ? formatLabel(x) : this.choiceToLabel(x)).join(', ');
     }
-    return this.choiceToLabel(idxOrArray);
+    return formatLabel ? formatLabel(idxOrArray) : this.choiceToLabel(idxOrArray);
   };
 
   choiceToLabel(idx: number): string {

@@ -48,7 +48,7 @@ export default function configureStore(initialState: AppState) {
     // Disable timeout since hitting the timeout causes it to reset all data?
     // WHY is that the default behavior?!?!?
     timeout: 0,
-    // These three have some transient fields and are handled separately.
+    // These all have some transient fields and are handled separately.
     blacklist: ['cards', 'decks', 'packs', 'signedIn', 'filters'],
     migrate: createMigrate(migrations, { debug: false }),
   };

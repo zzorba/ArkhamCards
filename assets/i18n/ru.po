@@ -458,7 +458,7 @@ msgstr "Отменить"
 #: src/components/settings/BackupView.tsx:105
 #: src/components/settings/BackupView.tsx:140
 #: src/components/settings/DiagnosticsView.tsx:117
-#: src/components/settings/LanguagePicker.tsx:62
+#: src/components/settings/LanguagePicker.tsx:80
 #: src/components/settings/LoginButton.tsx:42
 #: src/components/settings/MergeBackupView/index.tsx:219
 #: src/components/settings/MergeBackupView/index.tsx:312
@@ -666,7 +666,7 @@ msgstr "Загрузка"
 msgid "Second Core Set"
 msgstr "Вторая база"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:131
+#: src/components/campaign/SelectCampaignDialog/index.tsx:130
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:257
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:589
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:288
@@ -746,11 +746,11 @@ msgstr "Кэш"
 msgid "Clear cache"
 msgstr "Очистить кэш"
 
-#: src/components/settings/LanguagePicker.tsx:78
+#: src/components/settings/LanguagePicker.tsx:101
 msgid "Card Language"
 msgstr "Язык карт"
 
-#: src/components/settings/LanguagePicker.tsx:79
+#: src/components/settings/LanguagePicker.tsx:102
 msgid "Note: not all cards have translations available."
 msgstr "Обратите внимание: перевод есть не для всех карт."
 
@@ -2445,11 +2445,11 @@ msgstr ""
 "Вы можете включить эту опцию в Настройках, чтобы всегда видеть ограничения "
 "табу при создании колоды."
 
-#: src/components/card/FetchCardsGate.tsx:106
+#: src/components/card/FetchCardsGate.tsx:135
 msgid "Check for updated cards?"
 msgstr "Проверить обновления карт?"
 
-#: src/components/card/FetchCardsGate.tsx:107
+#: src/components/card/FetchCardsGate.tsx:136
 msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
@@ -2457,23 +2457,23 @@ msgstr ""
 "Вы уже больше недели не проверяли наличие новых карт.\n"
 "Проверить наличие новых карт в ArkhamDB?"
 
-#: src/components/card/FetchCardsGate.tsx:109
+#: src/components/card/FetchCardsGate.tsx:138
 msgid "Ask me later"
 msgstr "Спросить позже"
 
-#: src/components/card/FetchCardsGate.tsx:110
+#: src/components/card/FetchCardsGate.tsx:139
 msgid "Check for updates"
 msgstr "Проверить обновления"
 
-#: src/components/card/FetchCardsGate.tsx:128
+#: src/components/card/FetchCardsGate.tsx:158
 msgid "Error loading cards, make sure your network is working."
 msgstr "Ошибка при загрузке карт, проверьте ваше соединение с интернетом."
 
-#: src/components/card/FetchCardsGate.tsx:134
+#: src/components/card/FetchCardsGate.tsx:164
 msgid "Try Again"
 msgstr "Попробовать еще раз"
 
-#: src/components/card/FetchCardsGate.tsx:142
+#: src/components/card/FetchCardsGate.tsx:172
 msgid "Loading latest cards..."
 msgstr "Загрузка новых карт…"
 
@@ -4098,7 +4098,7 @@ msgstr ""
 "\n"
 "Предыдущие версии колоды останутся доступными."
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:78
+#: src/components/campaign/SelectCampaignDialog/index.tsx:77
 msgid ""
 "Campaign A and Campaign B\n"
 "Eight-part campaign"
@@ -4106,7 +4106,7 @@ msgstr ""
 "Кампания A и Кампания Б\n"
 "Кампания из восьми частей"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:80
+#: src/components/campaign/SelectCampaignDialog/index.tsx:79
 msgid ""
 "Campaign A\n"
 "Four-part campaign"
@@ -4114,7 +4114,7 @@ msgstr ""
 "Кампания A\n"
 "Кампания из четырёх частей"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:82
+#: src/components/campaign/SelectCampaignDialog/index.tsx:81
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
@@ -4122,23 +4122,23 @@ msgstr ""
 "Кампания B\n"
 "Кампания из четырёх частей"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:97
+#: src/components/campaign/SelectCampaignDialog/index.tsx:96
 msgid "Custom"
 msgstr "Особая"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:98
+#: src/components/campaign/SelectCampaignDialog/index.tsx:97
 msgid "Guide not yet available"
 msgstr "Путеводитель ещё не готов"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:119
+#: src/components/campaign/SelectCampaignDialog/index.tsx:118
 msgid "My Campaigns"
 msgstr "Мои кампании"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:126
+#: src/components/campaign/SelectCampaignDialog/index.tsx:125
 msgid "Other Campaigns"
 msgstr "Другие кампании"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:51
+#: src/components/campaign/SelectCampaignDialog/index.tsx:50
 msgid "Select Campaign"
 msgstr "Выбрать кампанию"
 
@@ -4634,17 +4634,18 @@ msgstr ""
 "\n"
 "Во время кампании травмы можно редактировать в путеводителе."
 
-#: src/components/settings/LanguagePicker.tsx:52
+#: src/components/settings/LanguagePicker.tsx:66
 msgid "Confirm"
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:53
+#: src/components/settings/LanguagePicker.tsx:67
 msgid ""
 "Changing app language requires downloading the translated card information "
 "from ArkhamDB. This requires network and can take some time."
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:56
+#: src/components/card/FetchCardsGate.tsx:130
+#: src/components/settings/LanguagePicker.tsx:70
 msgid "Download now"
 msgstr ""
 
@@ -4716,4 +4717,26 @@ msgstr ""
 #: src/components/card/CardFaqView.tsx:150
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:33
+#, javascript-format
+msgid "Default (${ systemLanguage })"
+msgstr ""
+
+#: src/components/card/FetchCardsGate.tsx:126
+msgid "Download language cards"
+msgstr ""
+
+#: src/components/card/FetchCardsGate.tsx:127
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your "
+"phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings."
+msgstr ""
+
+#: src/components/card/FetchCardsGate.tsx:129
+msgid "Not now"
 msgstr ""

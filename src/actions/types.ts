@@ -430,12 +430,19 @@ export interface CardFetchStartAction {
   type: typeof CARD_FETCH_START;
 }
 
+export const SET_LANGUAGE_CHOICE = 'SET_LANGUAGE_CHOICE';
+export interface SetLanguageChoiceAction {
+  type: typeof SET_LANGUAGE_CHOICE;
+  choiceLang: string;
+}
+
 export const CARD_FETCH_SUCCESS = 'CARD_FETCH_SUCCESS';
 export interface CardFetchSuccessAction {
   type: typeof CARD_FETCH_SUCCESS;
   cache?: CardCache;
   tabooCache?: TabooCache;
-  lang: string;
+  cardLang: string;
+  choiceLang: string;
 }
 
 export const CARD_FETCH_ERROR = 'CARD_FETCH_ERROR';

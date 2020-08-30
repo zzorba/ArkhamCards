@@ -202,7 +202,7 @@ msgstr "Plan ${linked_card.stage}"
 msgid "Second Core Set"
 msgstr "Segunda Caja Básica"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:131
+#: src/components/campaign/SelectCampaignDialog/index.tsx:130
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:257
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:589
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:288
@@ -358,7 +358,7 @@ msgstr "Robar de colección"
 #: src/components/settings/BackupView.tsx:105
 #: src/components/settings/BackupView.tsx:140
 #: src/components/settings/DiagnosticsView.tsx:117
-#: src/components/settings/LanguagePicker.tsx:62
+#: src/components/settings/LanguagePicker.tsx:80
 #: src/components/settings/LoginButton.tsx:42
 #: src/components/settings/MergeBackupView/index.tsx:219
 #: src/components/settings/MergeBackupView/index.tsx:312
@@ -623,7 +623,7 @@ msgstr "Hecho"
 msgid "Updating cards"
 msgstr "Actualizando cartas"
 
-#: src/components/settings/LanguagePicker.tsx:78
+#: src/components/settings/LanguagePicker.tsx:101
 msgid "Card Language"
 msgstr "Idioma de Cartas"
 
@@ -942,15 +942,15 @@ msgstr "Tachar"
 msgid "Add Another"
 msgstr "Agregar otro"
 
-#: src/components/card/FetchCardsGate.tsx:106
+#: src/components/card/FetchCardsGate.tsx:135
 msgid "Check for updated cards?"
 msgstr "¿Quieres buscar cartas actualizadas?"
 
-#: src/components/card/FetchCardsGate.tsx:109
+#: src/components/card/FetchCardsGate.tsx:138
 msgid "Ask me later"
 msgstr "Pregúntame más tarde"
 
-#: src/components/card/FetchCardsGate.tsx:110
+#: src/components/card/FetchCardsGate.tsx:139
 msgid "Check for updates"
 msgstr "Buscar actualizaciones"
 
@@ -1460,19 +1460,19 @@ msgstr "${traumaData.mental} Mental"
 msgid "None"
 msgstr "Ninguno"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:97
+#: src/components/campaign/SelectCampaignDialog/index.tsx:96
 msgid "Custom"
 msgstr "Personalizada"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:119
+#: src/components/campaign/SelectCampaignDialog/index.tsx:118
 msgid "My Campaigns"
 msgstr "Mis Campañas"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:126
+#: src/components/campaign/SelectCampaignDialog/index.tsx:125
 msgid "Other Campaigns"
 msgstr "Otras Campañas"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:51
+#: src/components/campaign/SelectCampaignDialog/index.tsx:50
 msgid "Select Campaign"
 msgstr "Seleccionar Campaña"
 
@@ -2202,7 +2202,7 @@ msgstr ""
 "lista, pero si un investigador decide hacerlo, deben hacerlo en su "
 "totalidad (un investigador no puede elegir qué restricciones usar)."
 
-#: src/components/settings/LanguagePicker.tsx:79
+#: src/components/settings/LanguagePicker.tsx:102
 msgid "Note: not all cards have translations available."
 msgstr "Nota: no todas las cartas tienen traducciones disponibles."
 
@@ -2222,15 +2222,15 @@ msgstr ""
 "Cambia la lista de tabúes predeterminada para los mazos y las búsquedas "
 "recién creadas."
 
-#: src/components/card/FetchCardsGate.tsx:128
+#: src/components/card/FetchCardsGate.tsx:158
 msgid "Error loading cards, make sure your network is working."
 msgstr "Error al cargar cartas, asegúrate que tu conexión está funcionando."
 
-#: src/components/card/FetchCardsGate.tsx:134
+#: src/components/card/FetchCardsGate.tsx:164
 msgid "Try Again"
 msgstr "Intenta de nuevo"
 
-#: src/components/card/FetchCardsGate.tsx:142
+#: src/components/card/FetchCardsGate.tsx:172
 msgid "Loading latest cards..."
 msgstr "Cargando las últimas cartas..."
 
@@ -2380,7 +2380,7 @@ msgstr ""
 "\n"
 "Si tienes problemas con tu cuenta, también puedes volver a conectarte."
 
-#: src/components/card/FetchCardsGate.tsx:107
+#: src/components/card/FetchCardsGate.tsx:136
 msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
@@ -3749,7 +3749,7 @@ msgstr "Investigadores muertos y locos"
 msgid "Delete Campaign"
 msgstr "Borrar Campaña"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:98
+#: src/components/campaign/SelectCampaignDialog/index.tsx:97
 msgid "Guide not yet available"
 msgstr "Guía aún no disponible"
 
@@ -4177,7 +4177,7 @@ msgstr "Coste de experiencia"
 msgid "Custom scenario"
 msgstr "Escenario personalizado"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:78
+#: src/components/campaign/SelectCampaignDialog/index.tsx:77
 msgid ""
 "Campaign A and Campaign B\n"
 "Eight-part campaign"
@@ -4185,7 +4185,7 @@ msgstr ""
 "Campaña A y Campaña B\n"
 "Campaña de 8 partes"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:80
+#: src/components/campaign/SelectCampaignDialog/index.tsx:79
 msgid ""
 "Campaign A\n"
 "Four-part campaign"
@@ -4193,7 +4193,7 @@ msgstr ""
 "Campaña A\n"
 "Campaña de 4 partes"
 
-#: src/components/campaign/SelectCampaignDialog/index.tsx:82
+#: src/components/campaign/SelectCampaignDialog/index.tsx:81
 msgid ""
 "Campaign B\n"
 "Four-part campaign"
@@ -4670,11 +4670,11 @@ msgstr ""
 "Los traumas iniciales pueden ser ajustados después de completar la "
 "\"Preparación de la Campaña\"."
 
-#: src/components/settings/LanguagePicker.tsx:52
+#: src/components/settings/LanguagePicker.tsx:66
 msgid "Confirm"
 msgstr "Confirma"
 
-#: src/components/settings/LanguagePicker.tsx:53
+#: src/components/settings/LanguagePicker.tsx:67
 msgid ""
 "Changing app language requires downloading the translated card information "
 "from ArkhamDB. This requires network and can take some time."
@@ -4683,7 +4683,8 @@ msgstr ""
 "cartas traducidas de ArkhamDB. Es necesario disponer de conexión a Internet "
 "y el proceso puede llevar algunos minutos."
 
-#: src/components/settings/LanguagePicker.tsx:56
+#: src/components/card/FetchCardsGate.tsx:130
+#: src/components/settings/LanguagePicker.tsx:70
 msgid "Download now"
 msgstr "Descargar ahora"
 
@@ -4712,4 +4713,26 @@ msgstr ""
 #: src/components/card/CardFaqView.tsx:150
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:33
+#, javascript-format
+msgid "Default (${ systemLanguage })"
+msgstr ""
+
+#: src/components/card/FetchCardsGate.tsx:126
+msgid "Download language cards"
+msgstr ""
+
+#: src/components/card/FetchCardsGate.tsx:127
+#, javascript-format
+msgid ""
+"Would you like to download updated cards from ArkhamDB to match your "
+"phone's preferred language (${ lang })?\n"
+"\n"
+"You can override your language preference for this app in Settings."
+msgstr ""
+
+#: src/components/card/FetchCardsGate.tsx:129
+msgid "Not now"
 msgstr ""
