@@ -526,7 +526,7 @@ export default class Card {
             if (json.permanent || json.double_sided) {
               return t`Asset: Permanent`;
             }
-            switch(json.slot) {
+            switch(json.real_slot) {
               case 'Hand':
                 return t`Asset: Hand`;
               case 'Hand x2':
@@ -655,6 +655,7 @@ export default class Card {
         s => !!s
       )
     ).join(',') : null;
+    const slot = json.slot || null;
     const slots_normalized = json.slot ? map(
       filter(
         map(json.slot.split('.'), s => s.toLowerCase().trim()),
@@ -716,6 +717,7 @@ export default class Card {
       real_traits_normalized,
       real_slot,
       real_slots_normalized,
+      slot,
       slots_normalized,
       uses,
       bonded_name,

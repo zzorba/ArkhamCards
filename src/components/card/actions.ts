@@ -120,7 +120,7 @@ export function fetchPacks(
     if (lastModified && packs && packs.length && state.lang == lang) {
       headers.append('If-Modified-Since', lastModified);
     }
-    const langPrefix = lang && lang !== 'en' && lang !== 'ru' ? `${lang}.` : '';
+    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
     return fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
       method: 'GET',
       headers: headers,
