@@ -132,7 +132,8 @@ export class DeckOptionQueryBuilder {
     if (this.option.text && this.option.text.length && (
       this.option.text[0] === '[Hh]eals? (\\d+ damage (and|or) )?(\\d+ )?horror' ||
       this.option.text[0] === '[Hh]eals? (that much )?(\\d+ damage (and|or) )?(\\d+ )?horror' ||
-      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror'
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror' ||
+      this.option.text[0] === '[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror'
     )) {
       return [where('c.heals_horror = true')];
     }
