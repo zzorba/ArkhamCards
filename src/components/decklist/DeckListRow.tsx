@@ -138,7 +138,7 @@ export default class DeckListRow extends React.Component<Props> {
         ) }
         { !!dateStr && (
           <Text style={typography.small} >
-            { t`Updated ${dateStr}` }
+            { dateStr }
           </Text>
         ) }
       </View>

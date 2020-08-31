@@ -208,7 +208,7 @@ msgstr "Deuxième Boite de base"
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:288
 #: src/components/deck/EditSpecialDeckCardsView.tsx:186
 #: src/components/settings/CollectionEditView.tsx:34
-#: src/components/settings/SettingsView.tsx:81
+#: src/components/settings/SettingsView.tsx:82
 msgid "Edit Collection"
 msgstr "Modifier la Collection"
 
@@ -227,10 +227,6 @@ msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] "${ scenarioCount } scenario complété"
 msgstr[1] "${ scenarioCount } scenarios complétés"
-
-#: src/components/decklist/DeckListRow.tsx:141
-msgid "Updated ${ dateStr }"
-msgstr "Mise à jour ${dateStr}"
 
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:68
 #: src/components/decklist/DeckListRow.tsx:53
@@ -270,8 +266,8 @@ msgstr "Contient trop de cartes limitées."
 #: src/components/campaign/EditChaosBagDialog/index.tsx:59
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:42
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:76
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:121
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:145
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:123
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:147
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:52
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:65
 #: src/components/campaignguide/ScenarioStepComponent/LocationSetupButton.tsx:32
@@ -328,18 +324,18 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/campaign/MyCampaignsView/index.tsx:95
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:69
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:91
-#: src/components/campaign/NewCampaignView/index.tsx:395
+#: src/components/campaign/NewCampaignView/index.tsx:397
 #: src/components/campaign/SealTokenDialog.tsx:40
 #: src/components/campaign/UpgradeDecksView/index.tsx:61
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:48
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:144
 #: src/components/campaignguide/CampaignGuideView.tsx:103
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:176
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:179
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:112
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:133
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:134
 #: src/components/core/CountEditDialog.tsx:116
 #: src/components/core/DialogPicker.tsx:115
-#: src/components/core/EditText.tsx:40
+#: src/components/core/EditText.tsx:42
 #: src/components/core/TextEditDialog.tsx:205
 #: src/components/deck/CopyDeckDialog/index.tsx:344
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:157
@@ -357,8 +353,8 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/settings/BackupView.tsx:64
 #: src/components/settings/BackupView.tsx:105
 #: src/components/settings/BackupView.tsx:140
-#: src/components/settings/DiagnosticsView.tsx:117
-#: src/components/settings/LanguagePicker.tsx:80
+#: src/components/settings/DiagnosticsView.tsx:118
+#: src/components/settings/LanguagePicker.tsx:82
 #: src/components/settings/LoginButton.tsx:42
 #: src/components/settings/MergeBackupView/index.tsx:219
 #: src/components/settings/MergeBackupView/index.tsx:312
@@ -504,29 +500,29 @@ msgid "Save to Deck"
 msgstr "Enregistrer dans le Deck"
 
 #: src/components/campaignguide/ScenarioView.tsx:168
-#: src/components/settings/DiagnosticsView.tsx:89
+#: src/components/settings/DiagnosticsView.tsx:90
 msgid "Nevermind"
 msgstr "Nevermind"
 
-#: src/components/settings/DiagnosticsView.tsx:74
+#: src/components/settings/DiagnosticsView.tsx:75
 msgid "Problem with import"
 msgstr "Problème avec l’importation"
 
 #: src/components/settings/BackupView.tsx:99
-#: src/components/settings/DiagnosticsView.tsx:86
+#: src/components/settings/DiagnosticsView.tsx:87
 msgid "Restore campaign data?"
 msgstr "Restaurer les données de la campagne ?"
 
-#: src/components/settings/DiagnosticsView.tsx:96
+#: src/components/settings/DiagnosticsView.tsx:97
 msgid "Paste Backup Here"
 msgstr "Coller la sauvegarde ici"
 
 #: src/components/settings/BackupView.tsx:137
-#: src/components/settings/DiagnosticsView.tsx:114
+#: src/components/settings/DiagnosticsView.tsx:115
 msgid "Backup campaign data?"
 msgstr "Sauvegarder les données de campagne ?"
 
-#: src/components/settings/DiagnosticsView.tsx:115
+#: src/components/settings/DiagnosticsView.tsx:116
 msgid ""
 "This feature is intended for advanced diagnostics or if you are trying to "
 "move your campaign data from one device to another. Just copy the data and "
@@ -537,31 +533,31 @@ msgstr ""
 "simplement les données et collez-les dans l’autre application."
 
 #: src/components/settings/BackupView.tsx:143
-#: src/components/settings/DiagnosticsView.tsx:120
+#: src/components/settings/DiagnosticsView.tsx:121
 msgid "Export Campaign Data"
 msgstr "Exporter les données de campagne"
 
 #: src/components/settings/BackupView.tsx:187
-#: src/components/settings/DiagnosticsView.tsx:227
-#: src/components/settings/SettingsView.tsx:97
+#: src/components/settings/DiagnosticsView.tsx:229
+#: src/components/settings/SettingsView.tsx:98
 msgid "Backup"
 msgstr "Sauvegarde"
 
 #: src/components/settings/BackupView.tsx:191
-#: src/components/settings/DiagnosticsView.tsx:231
+#: src/components/settings/DiagnosticsView.tsx:233
 msgid "Backup Campaign Data"
 msgstr "Sauvegarder les données de campagne"
 
 #: src/components/settings/BackupView.tsx:195
-#: src/components/settings/DiagnosticsView.tsx:235
+#: src/components/settings/DiagnosticsView.tsx:237
 msgid "Restore Campaign Data"
 msgstr "Restaurer les données de la campagne"
 
-#: src/components/settings/DiagnosticsView.tsx:238
+#: src/components/settings/DiagnosticsView.tsx:240
 msgid "Caches"
 msgstr "Caches"
 
-#: src/components/settings/DiagnosticsView.tsx:242
+#: src/components/settings/DiagnosticsView.tsx:244
 msgid "Clear cache"
 msgstr "Vider le cache"
 
@@ -589,66 +585,66 @@ msgstr "Déconnexion d’ArkhamDB"
 msgid "Sign in to ArkhamDB"
 msgstr "Se connecter à ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:85
+#: src/components/settings/SettingsView.tsx:86
 msgid "Edit Spoilers"
 msgstr "Modifier les spoilers"
 
-#: src/components/settings/SettingsView.tsx:89
-#: src/components/settings/SettingsView.tsx:182
+#: src/components/settings/SettingsView.tsx:90
+#: src/components/settings/SettingsView.tsx:184
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
-#: src/components/settings/SettingsView.tsx:93
-#: src/components/settings/SettingsView.tsx:184
-#: src/components/settings/SettingsView.tsx:188
+#: src/components/settings/SettingsView.tsx:94
+#: src/components/settings/SettingsView.tsx:186
+#: src/components/settings/SettingsView.tsx:190
 msgid "About Arkham Cards"
 msgstr "À propos de Arkham Cards"
 
-#: src/components/campaign/NewCampaignView/index.tsx:288
-#: src/components/campaign/NewCampaignView/index.tsx:292
+#: src/components/campaign/NewCampaignView/index.tsx:290
+#: src/components/campaign/NewCampaignView/index.tsx:294
 #: src/components/campaign/SealTokenDialog.tsx:124
 #: src/components/campaign/UpgradeDecksView/index.tsx:178
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:135
-#: src/components/campaignguide/ScenarioStepComponent/index.tsx:163
+#: src/components/campaignguide/ScenarioStepComponent/index.tsx:165
 #: src/components/core/CountEditDialog.tsx:120
-#: src/components/core/EditText.tsx:39
+#: src/components/core/EditText.tsx:41
 #: src/components/core/TextEditDialog.tsx:225
 #: src/components/deck/DeckDetailView/index.tsx:241
 #: src/components/nav/helper.ts:36
-#: src/components/settings/SettingsView.tsx:68
+#: src/components/settings/SettingsView.tsx:69
 msgid "Done"
 msgstr "Terminé"
 
-#: src/components/settings/SettingsView.tsx:118
+#: src/components/settings/SettingsView.tsx:120
 msgid "Updating cards"
 msgstr "Mise à jour des cartes"
 
-#: src/components/settings/LanguagePicker.tsx:101
+#: src/components/settings/LanguagePicker.tsx:102
 msgid "Card Language"
 msgstr "Langue des cartes"
 
-#: src/components/settings/SettingsView.tsx:121
+#: src/components/settings/SettingsView.tsx:123
 msgid "Error: Check for Cards Again"
 msgstr "Erreur: Vérifiez les cartes à nouveau"
 
-#: src/components/settings/SettingsView.tsx:122
+#: src/components/settings/SettingsView.tsx:124
 msgid "Check for New Cards on ArkhamDB"
 msgstr "Rechercher de nouvelles cartes sur ArkhamDB"
 
-#: src/components/settings/SettingsView.tsx:139
+#: src/components/settings/SettingsView.tsx:141
 msgid "Account"
 msgstr "Compte"
 
-#: src/components/settings/SettingsView.tsx:160
+#: src/components/settings/SettingsView.tsx:162
 msgid "Card Data"
 msgstr "Données des cartes"
 
-#: src/components/settings/SettingsView.tsx:152
+#: src/components/settings/SettingsView.tsx:154
 msgid "Card Collection"
 msgstr "Collection de cartes"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:273
-#: src/components/settings/SettingsView.tsx:157
+#: src/components/settings/SettingsView.tsx:159
 msgid "Spoiler Settings"
 msgstr "Paramètres du spoiler"
 
@@ -942,15 +938,15 @@ msgstr "Barrer le texte"
 msgid "Add Another"
 msgstr "Ajouter un autre"
 
-#: src/components/card/FetchCardsGate.tsx:135
+#: src/components/card/FetchCardsGate.tsx:137
 msgid "Check for updated cards?"
 msgstr "Vérifier les cartes mises à jour ?"
 
-#: src/components/card/FetchCardsGate.tsx:138
+#: src/components/card/FetchCardsGate.tsx:140
 msgid "Ask me later"
 msgstr "Demandez-moi plus tard"
 
-#: src/components/card/FetchCardsGate.tsx:139
+#: src/components/card/FetchCardsGate.tsx:141
 msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
@@ -989,7 +985,7 @@ msgstr "Remplacer la faiblesse aléatoire"
 msgid "Save to ${ investigator.name }’s Deck"
 msgstr "Enregistrer dans le deck de ${investigator.name}"
 
-#: src/components/campaign/CampaignSummaryComponent.tsx:62
+#: src/components/campaign/CampaignSummaryComponent.tsx:65
 msgid "Not yet started"
 msgstr "Pas encore commencé"
 
@@ -1373,7 +1369,7 @@ msgstr "La Nuit de la Zélatrice"
 msgid "The Path to Carcosa"
 msgstr "La Route de Carcosa"
 
-#: src/components/campaign/NewCampaignView/index.tsx:140
+#: src/components/campaign/NewCampaignView/index.tsx:142
 #: src/components/campaign/constants.ts:305
 #: src/components/campaign/constants.ts:314
 #: src/components/campaign/constants.ts:322
@@ -1451,7 +1447,7 @@ msgstr "${ traumaData.physical } physique"
 msgid "${ traumaData.mental } Mental"
 msgstr "${ traumaData.mental } mental"
 
-#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:187
+#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:190
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:167
 #: src/components/core/TabooSetPicker.tsx:59
 #: src/components/deck/DeckDetailView/index.tsx:1662
@@ -1487,7 +1483,7 @@ msgstr "Campagne"
 #: src/components/campaign/MyCampaignsView/index.tsx:52
 #: src/components/campaign/MyCampaignsView/index.tsx:92
 #: src/components/campaign/MyCampaignsView/index.tsx:159
-#: src/components/campaign/NewCampaignView/index.tsx:115
+#: src/components/campaign/NewCampaignView/index.tsx:117
 msgid "New Campaign"
 msgstr "Nouvelle campagne"
 
@@ -1496,17 +1492,17 @@ msgstr "Nouvelle campagne"
 #: src/components/campaign/CampaignDetailView/index.tsx:397
 #: src/components/campaign/CampaignDetailView/index.tsx:429
 #: src/components/campaign/CampaignDetailView/index.tsx:499
-#: src/components/campaign/NewCampaignView/index.tsx:392
-#: src/components/campaign/NewCampaignView/index.tsx:469
+#: src/components/campaign/NewCampaignView/index.tsx:394
+#: src/components/campaign/NewCampaignView/index.tsx:471
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:390
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:142
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:163
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:144
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:165
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:62
 msgid "Chaos Bag"
 msgstr "Réserve du chaos"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:224
-#: src/components/campaign/NewCampaignView/index.tsx:483
+#: src/components/campaign/NewCampaignView/index.tsx:485
 msgid "Campaign Name"
 msgstr "Nom de la Campagne"
 
@@ -1539,7 +1535,7 @@ msgid "Not Now"
 msgstr "Pas maintenant"
 
 #: src/components/campaign/campaignHelper.ts:54
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:197
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:200
 #: src/components/deck/CopyDeckDialog/index.tsx:348
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:161
 #: src/components/deck/DeckDetailView/index.tsx:1288
@@ -1549,30 +1545,30 @@ msgstr "Ok"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:190
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:198
-#: src/components/campaign/NewCampaignView/index.tsx:310
+#: src/components/campaign/NewCampaignView/index.tsx:312
 msgid "(required)"
 msgstr "(requis)"
 
-#: src/components/campaign/NewCampaignView/index.tsx:312
+#: src/components/campaign/NewCampaignView/index.tsx:314
 #, javascript-format
 msgid "My ${ campaign } Campaign"
 msgstr "Ma campagne ${campaign}"
 
-#: src/components/campaign/NewCampaignView/index.tsx:501
+#: src/components/campaign/NewCampaignView/index.tsx:504
 msgid "Include all basic weaknesses from these expansions"
 msgstr "Inclure toutes les faiblesses de base de ces expansions"
 
 #: src/components/campaign/EditCampaignNotesComponent/index.tsx:165
-#: src/components/campaign/NewCampaignView/index.tsx:600
+#: src/components/campaign/NewCampaignView/index.tsx:604
 msgid "Add Log Section"
 msgstr "Ajouter une section de journal"
 
-#: src/components/campaign/NewCampaignView/index.tsx:662
+#: src/components/campaign/NewCampaignView/index.tsx:667
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:420
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: src/components/campaign/NewCampaignView/index.tsx:694
+#: src/components/campaign/NewCampaignView/index.tsx:699
 msgid "Create Campaign"
 msgstr "Créer une campagne"
 
@@ -1656,7 +1652,7 @@ msgstr "Scénarios"
 msgid "Scenario Result"
 msgstr "Résultat du scénario"
 
-#: src/components/campaign/CampaignDetailView/ScenarioSection.tsx:73
+#: src/components/campaign/CampaignDetailView/ScenarioSection.tsx:75
 #: src/components/campaign/CampaignDetailView/index.tsx:494
 msgid "Record Scenario Results"
 msgstr "Enregister les Résultats des scénarios"
@@ -1703,7 +1699,7 @@ msgstr "Interlude"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:189
 #: src/components/campaign/CampaignDetailView/index.tsx:480
-#: src/components/campaign/NewCampaignView/index.tsx:647
+#: src/components/campaign/NewCampaignView/index.tsx:652
 #: src/components/campaignguide/CampaignGuideView.tsx:67
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:74
 #: src/components/deck/DeckDetailView/index.tsx:1643
@@ -2203,11 +2199,11 @@ msgstr ""
 "intégralement (un investigateur ne peut pas choisir les restrictions à "
 "utiliser)."
 
-#: src/components/settings/LanguagePicker.tsx:102
+#: src/components/settings/LanguagePicker.tsx:103
 msgid "Note: not all cards have translations available."
 msgstr "Remarque: toutes les cartes ne disposent pas de traductions disponibles."
 
-#: src/components/settings/SettingsView.tsx:148
+#: src/components/settings/SettingsView.tsx:150
 msgid "Card Settings"
 msgstr "Paramètres de la carte"
 
@@ -2223,15 +2219,15 @@ msgstr ""
 "Modifie la liste de tabou par défaut pour les decks nouvellement créés et "
 "la recherche."
 
-#: src/components/card/FetchCardsGate.tsx:158
+#: src/components/card/FetchCardsGate.tsx:160
 msgid "Error loading cards, make sure your network is working."
 msgstr "Erreur de chargement des cartes, assurez-vous que votre réseau fonctionne."
 
-#: src/components/card/FetchCardsGate.tsx:164
+#: src/components/card/FetchCardsGate.tsx:166
 msgid "Try Again"
 msgstr "Réessayer"
 
-#: src/components/card/FetchCardsGate.tsx:172
+#: src/components/card/FetchCardsGate.tsx:174
 msgid "Loading latest cards..."
 msgstr "Chargement des dernières cartes..."
 
@@ -2344,7 +2340,7 @@ msgstr ""
 "\n"
 "Veuillez régler le filtre de traits."
 
-#: src/components/settings/DiagnosticsView.tsx:75
+#: src/components/settings/DiagnosticsView.tsx:76
 msgid ""
 "We were not able to parse any campaigns from that pasted data.\n"
 "\n"
@@ -2357,7 +2353,7 @@ msgstr ""
 "Assurez-vous que c’est une copie exacte du texte fourni par la "
 "fonctionnalité de sauvegarde d’une application Arkham Cards."
 
-#: src/components/settings/DiagnosticsView.tsx:87
+#: src/components/settings/DiagnosticsView.tsx:88
 #, javascript-format
 msgid ""
 "This feature is intended for advanced diagnostics or to import data from "
@@ -2384,7 +2380,7 @@ msgstr ""
 "Si vous rencontrez des problèmes avec votre compte, vous pouvez également "
 "vous reconnecter."
 
-#: src/components/card/FetchCardsGate.tsx:136
+#: src/components/card/FetchCardsGate.tsx:138
 msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
@@ -2632,11 +2628,11 @@ msgstr "Classe secondaire"
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr "${xp} expérience disponible, ${parsedDeck.changes.spentXp} dépensé"
 
-#: src/components/settings/SettingsView.tsx:166
+#: src/components/settings/SettingsView.tsx:168
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/components/settings/SettingsView.tsx:168
+#: src/components/settings/SettingsView.tsx:170
 msgid "Swipe between card results"
 msgstr "Faites glisser entre les résultats de la carte"
 
@@ -2687,15 +2683,15 @@ msgstr "Multijoueur"
 msgid "Standalone"
 msgstr "Mode standalone"
 
-#: src/components/settings/DiagnosticsView.tsx:194
+#: src/components/settings/DiagnosticsView.tsx:196
 msgid "Debug Card Json"
 msgstr "Carte Debug Json"
 
-#: src/components/settings/DiagnosticsView.tsx:212
+#: src/components/settings/DiagnosticsView.tsx:214
 msgid "Debug"
 msgstr "Débogage"
 
-#: src/components/settings/DiagnosticsView.tsx:216
+#: src/components/settings/DiagnosticsView.tsx:218
 msgid "Add Debug Card"
 msgstr "Ajouter la carte Debug"
 
@@ -2983,27 +2979,27 @@ msgstr "XP disponible"
 #: src/components/campaign/CampaignDetailView/ChaosBagSection.tsx:52
 #: src/components/campaign/CampaignDetailView/index.tsx:251
 #: src/components/campaign/CampaignDetailView/index.tsx:516
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:118
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:120
 msgid "Odds Calculator"
 msgstr "Calculateur de probabilités"
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:258
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:260
 msgid "Fail By 2 or Less"
 msgstr "Echec par 2 ou moins"
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:262
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:264
 msgid "Fail By 1 or Less"
 msgstr "Echec par 1 ou moins"
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:265
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:267
 msgid "Succeed By 1 or More"
 msgstr "Succés par 1 ou plus"
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:266
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:268
 msgid "Succeed By 2 or More"
 msgstr "Succés par 2 ou plus"
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:267
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:269
 msgid "Succeed By 3 or More"
 msgstr "Succés par 3 ou plus"
 
@@ -3011,7 +3007,7 @@ msgstr "Succés par 3 ou plus"
 msgid "Change Scenario"
 msgstr "Changer de scénario"
 
-#: src/components/campaign/CampaignScenarioView/index.tsx:75
+#: src/components/campaign/CampaignScenarioView/index.tsx:77
 msgid "SCENARIOS"
 msgstr "SCENARIOS"
 
@@ -3028,7 +3024,7 @@ msgid "Draw Tokens"
 msgstr "Tirer des jetons"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:522
-#: src/components/campaign/NewCampaignView/index.tsx:498
+#: src/components/campaign/NewCampaignView/index.tsx:501
 msgid "Weakness Set"
 msgstr "Ensemble des Faiblesses"
 
@@ -3216,19 +3212,19 @@ msgstr ""
 msgid "Ally. Arcane"
 msgstr ""
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:250
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:252
 msgid "Success"
 msgstr ""
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:254
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:256
 msgid "Draw Two, Pick One"
 msgstr ""
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:268
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:270
 msgid "Re-Draw After Fail"
 msgstr ""
 
-#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:269
+#: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:271
 msgid "Succeed Twice In A Row"
 msgstr ""
 
@@ -3324,14 +3320,14 @@ msgstr ""
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:105
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:71
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:73
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:200
-#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:119
-#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:142
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:202
+#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:122
+#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:145
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:108
 #: src/components/campaignguide/prompts/ChooseInvestigatorPrompt.tsx:73
 #: src/components/campaignguide/prompts/ChooseOnePrompt.tsx:84
-#: src/components/campaignguide/prompts/CounterListComponent/index.tsx:105
-#: src/components/campaignguide/prompts/NumberPrompt.tsx:171
+#: src/components/campaignguide/prompts/CounterListComponent/index.tsx:108
+#: src/components/campaignguide/prompts/NumberPrompt.tsx:174
 #: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:139
 msgid "Proceed"
 msgstr ""
@@ -3371,12 +3367,12 @@ msgstr[1] ""
 msgid "${ spent } of ${ total }"
 msgstr ""
 
-#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:136
-#: src/components/campaignguide/prompts/CounterListComponent/index.tsx:99
+#: src/components/campaignguide/prompts/CheckListComponent/index.tsx:139
+#: src/components/campaignguide/prompts/CounterListComponent/index.tsx:102
 msgid "Too many"
 msgstr ""
 
-#: src/components/campaignguide/prompts/CounterListComponent/index.tsx:99
+#: src/components/campaignguide/prompts/CounterListComponent/index.tsx:102
 msgid "Not enough"
 msgstr ""
 
@@ -3458,7 +3454,7 @@ msgstr ""
 msgid "View deck"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:165
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:167
 msgid "Update decks with scenario results"
 msgstr ""
 
@@ -3682,7 +3678,7 @@ msgstr ""
 msgid "Log"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:43
+#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:44
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
 msgstr ""
@@ -3697,16 +3693,16 @@ msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:315
 #: src/components/campaign/DeckList.tsx:95
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:295
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:299
 msgid "Add Investigator"
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:330
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:309
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:313
 msgid "Killed and Insane Investigators"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:333
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:337
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:181
 msgid "Delete Campaign"
 msgstr ""
@@ -3724,7 +3720,7 @@ msgstr ""
 msgid "Edit name"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:654
+#: src/components/campaign/NewCampaignView/index.tsx:659
 msgid "Guided Campaign"
 msgstr ""
 
@@ -3785,12 +3781,12 @@ msgid "The Innsmouth Conspiracy"
 msgstr ""
 
 #: src/components/core/PackListComponent/index.tsx:56
-#: src/components/settings/DiagnosticsView.tsx:174
+#: src/components/settings/DiagnosticsView.tsx:176
 msgid "Return to..."
 msgstr ""
 
 #: src/components/core/PackListComponent/index.tsx:57
-#: src/components/settings/DiagnosticsView.tsx:177
+#: src/components/settings/DiagnosticsView.tsx:179
 msgid "Investigator Starter Decks"
 msgstr ""
 
@@ -3814,7 +3810,7 @@ msgstr ""
 msgid "Choose additional card"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:563
+#: src/components/campaign/NewCampaignView/index.tsx:567
 #: src/components/campaignguide/ScenarioView.tsx:152
 msgid "Campaign Log"
 msgstr ""
@@ -3834,7 +3830,7 @@ msgstr ""
 msgid "Edit campaign log"
 msgstr ""
 
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:171
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:173
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:119
 msgid "Draw chaos tokens"
 msgstr ""
@@ -3872,7 +3868,7 @@ msgstr ""
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr ""
 
-#: src/components/campaignguide/CampaignLogComponent/index.tsx:175
+#: src/components/campaignguide/CampaignLogComponent/index.tsx:177
 msgid "Odds calculator"
 msgstr "Calculateur de probabilités"
 
@@ -3910,16 +3906,16 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/settings/DiagnosticsView.tsx:84
+#: src/components/settings/DiagnosticsView.tsx:85
 msgid "All local decks and campaigns will be overridden"
 msgstr ""
 
 #: src/components/settings/BackupView.tsx:102
-#: src/components/settings/DiagnosticsView.tsx:92
+#: src/components/settings/DiagnosticsView.tsx:93
 msgid "Import data"
 msgstr ""
 
-#: src/components/settings/DiagnosticsView.tsx:180
+#: src/components/settings/DiagnosticsView.tsx:182
 msgid "Side stories"
 msgstr ""
 
@@ -3993,15 +3989,15 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:130
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:131
 msgid "Proceed without saving"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:136
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:137
 msgid "Proceed anyway"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:94
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:95
 msgid ""
 "It looks like one or more deck upgrades are unsaved. If you would like the "
 "app to track spent experience as you make deck changes, please go back and "
@@ -4013,7 +4009,7 @@ msgid ""
 "original versions of the deck can still be viewed from the deck's menu)."
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:114
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:115
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
 "have not saved it yet. Please go back and select ‘Save adjustments’ to "
@@ -4033,7 +4029,7 @@ msgid "Add side scenario"
 msgstr ""
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:187
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:178
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:181
 msgid "Remove deck"
 msgstr ""
 
@@ -4041,11 +4037,11 @@ msgstr ""
 msgid "Remove investigator"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:173
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:176
 msgid "Remove deck from campaign"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:174
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:177
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
@@ -4054,11 +4050,11 @@ msgid ""
 "scenarios."
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:194
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:197
 msgid "Cannot remove"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:195
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:198
 msgid ""
 "Since this investigator has participated in one or more scenarios during "
 "this campaign, they cannot be removed.\n"
@@ -4068,12 +4064,12 @@ msgid ""
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:284
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:161
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:164
 msgid "Remove investigators"
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:321
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:301
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:305
 msgid "Finished removing investigators"
 msgstr ""
 
@@ -4247,7 +4243,7 @@ msgstr ""
 msgid "Return to Shattered Aeons"
 msgstr ""
 
-#: src/components/campaignguide/prompts/NumberPrompt.tsx:158
+#: src/components/campaignguide/prompts/NumberPrompt.tsx:161
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
 msgstr ""
@@ -4290,19 +4286,19 @@ msgstr ""
 msgid " (Per Investigator)"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:655
+#: src/components/campaign/NewCampaignView/index.tsx:660
 msgid "Use app for scenario setup & resolutions"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:655
+#: src/components/campaign/NewCampaignView/index.tsx:660
 msgid "Track campaign log and resolutions manually"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:675
+#: src/components/campaign/NewCampaignView/index.tsx:680
 msgid "Investigators"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:701
+#: src/components/campaign/NewCampaignView/index.tsx:706
 msgid ""
 "If you encounter any problems with the campaign guide system, please let me "
 "know at arkhamcards@gmail.com."
@@ -4336,7 +4332,7 @@ msgstr ""
 msgid "Scenario or Interlude"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:174
+#: src/components/settings/SettingsView.tsx:176
 msgid "Alphabetize guide encounter sets"
 msgstr ""
 
@@ -4370,7 +4366,7 @@ msgstr ""
 msgid "Select resolution"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:193
+#: src/components/settings/SettingsView.tsx:195
 msgid "Contact us"
 msgstr ""
 
@@ -4417,7 +4413,7 @@ msgstr[1] ""
 msgid "Unexpected file type"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:145
+#: src/components/settings/SettingsView.tsx:147
 msgid "Backup Data"
 msgstr ""
 
@@ -4509,33 +4505,33 @@ msgstr ""
 msgid "Select items to import"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:241
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:244
 msgid "Investigator trauma"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:243
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:246
 msgid ""
 "You can only edit trauma here between scenarios.\n"
 "\n"
 "During scenario play it can be edited using the scenario guide."
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:244
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:247
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:66
+#: src/components/settings/LanguagePicker.tsx:68
 msgid "Confirm"
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:67
+#: src/components/settings/LanguagePicker.tsx:69
 msgid ""
 "Changing app language requires downloading the translated card information "
 "from ArkhamDB. This requires network and can take some time."
 msgstr ""
 
-#: src/components/card/FetchCardsGate.tsx:130
-#: src/components/settings/LanguagePicker.tsx:70
+#: src/components/card/FetchCardsGate.tsx:132
+#: src/components/settings/LanguagePicker.tsx:72
 msgid "Download now"
 msgstr ""
 
@@ -4566,16 +4562,16 @@ msgstr ""
 msgid "Last Updated: ${ lastUpdated }"
 msgstr ""
 
-#: src/components/settings/LanguagePicker.tsx:33
+#: src/components/settings/LanguagePicker.tsx:34
 #, javascript-format
 msgid "Default (${ systemLanguage })"
 msgstr ""
 
-#: src/components/card/FetchCardsGate.tsx:126
+#: src/components/card/FetchCardsGate.tsx:128
 msgid "Download language cards"
 msgstr ""
 
-#: src/components/card/FetchCardsGate.tsx:127
+#: src/components/card/FetchCardsGate.tsx:129
 #, javascript-format
 msgid ""
 "Would you like to download updated cards from ArkhamDB to match your "
@@ -4584,6 +4580,23 @@ msgid ""
 "You can override your language preference for this app in Settings."
 msgstr ""
 
-#: src/components/card/FetchCardsGate.tsx:129
+#: src/components/card/FetchCardsGate.tsx:131
 msgid "Not now"
+msgstr ""
+
+#: src/lib/datetime.ts:59
+msgid "Updated today"
+msgstr ""
+
+#: src/lib/datetime.ts:62
+msgid "Updated yesterday"
+msgstr ""
+
+#: src/lib/datetime.ts:66
+#, javascript-format
+msgid "Updated ${ dayOfWeek }"
+msgstr ""
+
+#: src/lib/datetime.ts:69
+msgid "Updated ${ dateString }"
 msgstr ""
