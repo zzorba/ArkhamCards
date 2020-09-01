@@ -3,13 +3,13 @@ import { findBestAvailableLanguage } from 'react-native-localize';
 export const ALL_LANGUAGES = [
   'en',
   'es',
+  'ru',
   'de',
   'fr',
   'it',
   'ko',
   'uk',
   'pl',
-  'ru',
 ];
 
 export function getSystemLanguage() {
