@@ -222,10 +222,6 @@ msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/decklist/DeckListRow.tsx:141
-msgid "Updated ${ dateStr }"
-msgstr ""
-
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:68
 #: src/components/decklist/DeckListRow.tsx:53
 msgid "${ xp } available experience"
@@ -612,10 +608,6 @@ msgstr ""
 
 #: src/components/settings/SettingsView.tsx:120
 msgid "Updating cards"
-msgstr ""
-
-#: src/components/settings/LanguagePicker.tsx:102
-msgid "Card Language"
 msgstr ""
 
 #: src/components/settings/SettingsView.tsx:123
@@ -4482,4 +4474,8 @@ msgstr ""
 
 #: src/lib/datetime.ts:69
 msgid "Updated ${ dateString }"
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:102
+msgid "Language"
 msgstr ""

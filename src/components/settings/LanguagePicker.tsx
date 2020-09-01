@@ -99,7 +99,7 @@ class LanguagePicker extends React.Component<Props> {
     const allLanguages = languages();
     return (
       <SinglePickerComponent
-        title={t`Card Language`}
+        title={t`Language`}
         description={t`Note: not all cards have translations available.`}
         onChoiceChange={this._onLanguageChange}
         selectedIndex={findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}

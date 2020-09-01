@@ -619,10 +619,6 @@ msgstr "Hecho"
 msgid "Updating cards"
 msgstr "Actualizando cartas"
 
-#: src/components/settings/LanguagePicker.tsx:102
-msgid "Card Language"
-msgstr "Idioma de Cartas"
-
 #: src/components/settings/SettingsView.tsx:123
 msgid "Error: Check for Cards Again"
 msgstr "Error: Buscar cartas de nuevo"
@@ -4748,4 +4744,8 @@ msgstr ""
 
 #: src/lib/datetime.ts:69
 msgid "Updated ${ dateString }"
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:102
+msgid "Language"
 msgstr ""

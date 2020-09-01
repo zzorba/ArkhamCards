@@ -746,10 +746,6 @@ msgstr "Кэш"
 msgid "Clear cache"
 msgstr "Очистить кэш"
 
-#: src/components/settings/LanguagePicker.tsx:102
-msgid "Card Language"
-msgstr "Язык карт"
-
 #: src/components/settings/LanguagePicker.tsx:103
 msgid "Note: not all cards have translations available."
 msgstr "Обратите внимание: перевод есть не для всех карт."
@@ -4752,4 +4748,8 @@ msgstr ""
 
 #: src/lib/datetime.ts:69
 msgid "Updated ${ dateString }"
+msgstr ""
+
+#: src/components/settings/LanguagePicker.tsx:102
+msgid "Language"
 msgstr ""
