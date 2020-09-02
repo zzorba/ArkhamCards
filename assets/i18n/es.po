@@ -3426,7 +3426,7 @@ msgstr "Ver las mejoras del mazo"
 msgid "Campaign cards"
 msgstr "Cartas de la Campaña"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:80
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:101
 msgid "Physical trauma"
 msgstr "Traumas físicos"
 
@@ -3435,7 +3435,7 @@ msgstr "Traumas físicos"
 msgid " (New Total: ${ totalPhysical })"
 msgstr " (Nuevo Total: ${ totalPhysical })"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:84
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:105
 msgid "Mental trauma"
 msgstr "Trauma mental"
 
@@ -3502,7 +3502,7 @@ msgstr "Retira ${ card.name } (${ input.length })"
 msgid "Who will remove ${ card.name } from their deck?"
 msgstr "¿Quién retirará ${ card.name } de su mazo?"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:67
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:88
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "Sufres 1 trauma físico o mental <i>(tu eliges)</i>."
 
@@ -3524,7 +3524,7 @@ msgstr ""
 "${ investigator.name } sufre 1 trauma físico o mental <i>(a su "
 "elección)</i>."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:35
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:36
 #, javascript-format
 msgid ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
@@ -3533,21 +3533,21 @@ msgstr ""
 "${ investigator.name } sufre ${ effect.mental } trauma mental y ${ "
 "effect.physical } trauma físico."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:40
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:45
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgstr "${ investigator.name } se cura ${ mental } trauma mental."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:42
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:51
 #, javascript-format
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr "${ investigator.name } sufre ${ effect.mental } trauma mental."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:47
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:60
 #, javascript-format
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgstr "${ investigator.name } se cura ${ physical } trauma físico."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:49
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:66
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr "${ investigator.name } sufre ${ effect.physical } trauma físico."
 

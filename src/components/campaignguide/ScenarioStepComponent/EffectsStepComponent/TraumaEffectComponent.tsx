@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { map } from 'lodash';
-import { t } from 'ttag';
+import { t, msgid, ngettext } from 'ttag';
 
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
@@ -32,21 +32,42 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       return t`${investigator.name} suffers 1 physical or mental trauma <i>(their choice)</i>.`;
     }
     if (effect.mental && effect.physical) {
-      return t`${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`;
+      const traumaTotal = effect.mental + effect.physical;
+      return ngettext(
+        msgid`${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`,
+        `${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`,
+        traumaTotal
+      );
     }
     if (effect.mental) {
       if (effect.mental < 0) {
         const mental = Math.abs(effect.mental);
-        return t`${investigator.name} heals ${mental} mental trauma.`;
+        return ngettext(
+          msgid`${investigator.name} heals ${mental} mental trauma.`,
+          `${investigator.name} heals ${mental} mental trauma.`,
+          mental
+        );
       }
-      return t`${investigator.name} suffers ${effect.mental} mental trauma.`;
+      return ngettext(
+        msgid`${investigator.name} suffers ${effect.mental} mental trauma.`,
+        `${investigator.name} suffers ${effect.mental} mental trauma.`,
+        effect.mental
+      );
     }
     if (effect.physical) {
       if (effect.physical < 0) {
         const physical = Math.abs(effect.physical);
-        return t`${investigator.name} heals ${physical} physical trauma.`;
+        return  ngettext(
+          msgid`${investigator.name} heals ${physical} physical trauma.`,
+          `${investigator.name} heals ${physical} physical trauma.`,
+          physical
+        );
       }
-      return t`${investigator.name} suffers ${effect.physical} physical trauma.`;
+      return  ngettext(
+        msgid`${investigator.name} suffers ${effect.physical} physical trauma.`,
+        `${investigator.name} suffers ${effect.physical} physical trauma.`,
+        effect.physical
+      );
     }
     return 'Unknown trauma type';
   }
