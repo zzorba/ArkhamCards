@@ -2596,6 +2596,7 @@
       "input": {
         "type": "counter",
         "text": "Brood of Yog-Sothoth in play or set aside:",
+        "max": 5,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -12006,6 +12007,7 @@
       "input": {
         "type": "counter",
         "text": "Brood of Yog-Sothoth in play or set aside:",
+        "max": 5,
         "effects": [
           {
             "type": "campaign_log_count",

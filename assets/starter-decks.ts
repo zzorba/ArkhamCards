@@ -973,6 +973,7 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '01089': 2,
     '01093': 2,
   },
+  // Nate
   '60101': {
     '60102': 1,
     '60103': 1,
@@ -993,6 +994,7 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '60118': 2,
     '01025': 2,
   },
+  // Harvey
   '60201': {
     '60202': 1,
     '60203': 1,
@@ -1013,6 +1015,7 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '02186': 2,
     '01039': 2,
   },
+  // Wini
   '60301': {
     '60302': 1,
     '60303': 1,
@@ -1033,6 +1036,7 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '60318': 2,
     '01053': 2,
   },
+  // Jacqueline
   '60401': {
     '60402': 1,
     '60403': 1,
@@ -1053,6 +1057,7 @@ const starterDecks: { [investigatorId: string]: {} } = {
     '02190': 2,
     '60419': 2,
   },
+  // Stella
   '60501': {
     '60502': 3,
     '60503': 1,

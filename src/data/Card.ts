@@ -13,6 +13,31 @@ const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
 
+const FEMININE_INVESTIGATORS = new Set([
+  '01002', // Daisy Walker
+  '01004', // Agnes Baker
+  '01005', // Wendy Adams
+  '02001', // Zoey Samaras
+  '02003', // Jenny Barnes
+  '03002', // Mihn Thi Phan
+  '03003', // Sefina Rousseau
+  '03004', // Akachi Onyele
+  '03006', // Lola Hayes
+  '04002', // Ursula Downs
+  '05001', // Carolyn Fern
+  '05004', // Diana
+  '05005', // Rita
+  '05006', // Marie
+  '06002', // Mandy Thompson
+  '06005', // Patrice
+  '60301', // Wini
+  '60401', // Jacqueline
+  '60501', // Stella
+  '07001', // Sister Mary
+  '07002', // Amanda Sharpe
+  '07003', // Trish
+]);
+
 @Entity('card')
 @Index(['code', 'taboo_set_id'], { unique: true })
 export default class Card {
@@ -281,6 +306,10 @@ export default class Card {
 
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
+  }
+
+  public grammarGenderMasculine(): boolean {
+    return !FEMININE_INVESTIGATORS.has(this.code);
   }
 
   isBasicWeakness(): boolean {

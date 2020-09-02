@@ -21,7 +21,7 @@ interface Props {
 
 export default class TraumaEffectComponent extends React.Component<Props> {
   message(investigator: Card): string {
-    const male = true;
+    const male = investigator.grammarGenderMasculine();
     const { effect } = this.props;
     if (effect.insane) {
       return male ?

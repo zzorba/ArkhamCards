@@ -45,6 +45,10 @@ export default class AboutView extends React.Component {
           • Spanish: Midraed, Alvaro, and Casalderrey
           { '\n' }
           • French: Fabrice2
+          { '\n' }
+          • German: Hauke
+          { '\n' }
+          • Russian:
         </Text>
         <Text style={typography.text}>
           <Text style={typography.bold}>Additional Support:</Text>

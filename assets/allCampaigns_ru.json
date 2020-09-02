@@ -2991,6 +2991,7 @@
       "input": {
         "type": "counter",
         "text": "«Отпрысков Йог-Сотота» в игре и отложенных в сторону:",
+        "max": 5,
         "effects": [
           {
             "type": "campaign_log_count",
@@ -13378,6 +13379,7 @@
       "input": {
         "type": "counter",
         "text": "«Отпрысков Йог-Сотота» в игре и отложенных в сторону:",
+        "max": 5,
         "effects": [
           {
             "type": "campaign_log_count",
