@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2020-09-02 10:53+0300\n"
+"PO-Revision-Date: 2020-09-02 12:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -2977,7 +2977,7 @@ msgstr "Сценарий завершён"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:150
 msgid "Start playing the scenario now."
-msgstr "Начать играть сценарий."
+msgstr "Вы готовы играть сценарий."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:29
 #, javascript-format
