@@ -4465,29 +4465,29 @@ msgstr "Checklist"
 
 #: src/lib/DeckValidation.ts:255
 msgid "Limit 1 Covenant per deck."
-msgstr ""
+msgstr "Límite 1 Covenant por mazo."
 
 #: src/components/card/CardFaqView.tsx:144
 msgid "Checking for FAQ"
-msgstr ""
+msgstr "Buscando FAQ"
 
 #: src/components/card/CardFaqView.tsx:144
 msgid "No entries at this time."
-msgstr ""
+msgstr "No existen datos."
 
 #: src/components/card/CardFaqView.tsx:150
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
-msgstr ""
+msgstr "Última actualización: ${ lastUpdated }"
 
 #: src/components/settings/LanguagePicker.tsx:34
 #, javascript-format
 msgid "Default (${ systemLanguage })"
-msgstr ""
+msgstr "Por defecto (${ systemLanguage })"
 
 #: src/components/card/FetchCardsGate.tsx:128
 msgid "Download language cards"
-msgstr ""
+msgstr "Descargar cartas traducidas"
 
 #: src/components/card/FetchCardsGate.tsx:129
 #, javascript-format
@@ -4497,31 +4497,35 @@ msgid ""
 "\n"
 "You can override your language preference for this app in Settings."
 msgstr ""
+"¿Quieres descargar actualizaciones de las cartas desde ArkhamDB para que aparezcan en el "
+"idioma por defecto de tu teléfono (${ lang })?\n"
+"\n"
+"Puedes sobrescribir el idioma para esta aplicación en Ajustes."
 
 #: src/components/card/FetchCardsGate.tsx:131
 msgid "Not now"
-msgstr ""
+msgstr "Ahora no"
 
 #: src/lib/datetime.ts:59
 msgid "Updated today"
-msgstr ""
+msgstr "Actualizado hoy"
 
 #: src/lib/datetime.ts:62
 msgid "Updated yesterday"
-msgstr ""
+msgstr "Actualizado ayer"
 
 #: src/lib/datetime.ts:66
 #, javascript-format
 msgid "Updated ${ dayOfWeek }"
-msgstr ""
+msgstr "Actualizado el ${ dayOfWeek }"
 
 #: src/lib/datetime.ts:69
 msgid "Updated ${ dateString }"
-msgstr ""
+msgstr "Actualizado el ${ dateString }"
 
 #: src/components/settings/LanguagePicker.tsx:102
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:28
 #, javascript-format
@@ -4554,15 +4558,15 @@ msgstr[0] ""
 "${ investigator.name } sufre ${ effect.mental } trauma mental y ${ effect.physical } "
 "trauma físico."
 msgstr[1] ""
-"${ investigator.name } sufre ${ effect.mental } trauma mental y ${ effect.physical } "
-"trauma físico."
+"${ investigator.name } sufre ${ effect.mental } traumas mentales y ${ effect.physical } "
+"traumas físicos."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:59
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name } se cura ${ mental } trauma mental."
-msgstr[1] "${ investigator.name } se cura ${ mental } trauma mental."
+msgstr[1] "${ investigator.name } se cura ${ mental } traumas mentales."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:71
 #, javascript-format
@@ -4570,7 +4574,7 @@ msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] "${ investigator.name } sufre ${ effect.mental } trauma mental."
-msgstr[1] "${ investigator.name } sufre ${ effect.mental } trauma mental."
+msgstr[1] "${ investigator.name } sufre ${ effect.mental } traumas mentales."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:86
 #, javascript-format
@@ -4578,14 +4582,14 @@ msgctxt "masculine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name } se cura ${ physical } trauma físico."
-msgstr[1] "${ investigator.name } se cura ${ physical } trauma físico."
+msgstr[1] "${ investigator.name } se cura ${ physical } traumas físicos."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:97
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] "${ investigator.name } sufre ${ effect.physical } trauma físico."
-msgstr[1] "${ investigator.name } sufre ${ effect.physical } trauma físico."
+msgstr[1] "${ investigator.name } sufre ${ effect.physical } traumas físicos."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
 msgctxt "feminine"
@@ -4595,7 +4599,7 @@ msgstr "${ investigator.name } se ha vuelto <b>loca</b>."
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:34
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } ha <b>muerta</b>."
+msgstr "${ investigator.name } ha <b>muerto</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:39
 msgctxt "feminine"
@@ -4615,8 +4619,8 @@ msgstr[0] ""
 "${ investigator.name } sufre ${ effect.mental } trauma mental y ${ effect.physical } "
 "trauma físico."
 msgstr[1] ""
-"${ investigator.name } sufre ${ effect.mental } trauma mental y ${ effect.physical } "
-"trauma físico."
+"${ investigator.name } sufre ${ effect.mental } traumas mentales y ${ effect.physical } "
+"traumas físicos."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:64
 #, javascript-format
@@ -4624,14 +4628,14 @@ msgctxt "feminine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
 msgstr[0] "${ investigator.name } se cura ${ mental } trauma mental."
-msgstr[1] "${ investigator.name } se cura ${ mental } trauma mental."
+msgstr[1] "${ investigator.name } se cura ${ mental } traumas mentales."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:76
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgstr[0] "${ investigator.name } sufre ${ effect.mental } trauma mental."
-msgstr[1] "${ investigator.name } sufre ${ effect.mental } trauma mental."
+msgstr[1] "${ investigator.name } sufre ${ effect.mental } traumas mentales."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:90
 #, javascript-format
@@ -4639,7 +4643,7 @@ msgctxt "feminine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
 msgstr[0] "${ investigator.name } se cura ${ physical } trauma físico."
-msgstr[1] "${ investigator.name } se cura ${ physical } trauma físico."
+msgstr[1] "${ investigator.name } se cura ${ physical } traumas físicos."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:102
 #, javascript-format
@@ -4647,4 +4651,4 @@ msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr[0] "${ investigator.name } sufre ${ effect.physical } trauma físico."
-msgstr[1] "${ investigator.name } sufre ${ effect.physical } trauma físico."
+msgstr[1] "${ investigator.name } sufre ${ effect.physical } traumas físicos."
