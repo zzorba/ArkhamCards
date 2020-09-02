@@ -2,6 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "PO-Revision-Date: 2020-08-19 10:58-0500\n"
+"POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -355,7 +356,7 @@ msgstr "Замысел ${ linked_card.stage }"
 #: src/data/scenario/CampaignGuide.ts:250
 #: src/data/scenario/CampaignGuide.ts:251
 msgid "Campaign Setup"
-msgstr "Подкотовка к кампании"
+msgstr "Подготовка к кампании"
 
 #: src/data/scenario/CampaignGuide.ts:390
 msgid ""
@@ -627,7 +628,7 @@ msgstr "Восстановить кампанию?"
 #: src/components/settings/BackupView.tsx:102
 #: src/components/settings/DiagnosticsView.tsx:93
 msgid "Import data"
-msgstr "Импортировать данные"
+msgstr "Импортировать"
 
 #: src/components/settings/BackupView.tsx:137
 #: src/components/settings/DiagnosticsView.tsx:115
@@ -637,7 +638,7 @@ msgstr "Сделать резервную копию кампании?"
 #: src/components/settings/BackupView.tsx:143
 #: src/components/settings/DiagnosticsView.tsx:121
 msgid "Export Campaign Data"
-msgstr "Экспортировать кампанию"
+msgstr "Экспортировать"
 
 #: src/components/settings/BackupView.tsx:187
 #: src/components/settings/DiagnosticsView.tsx:229
@@ -696,7 +697,7 @@ msgstr ""
 #: src/components/campaignguide/ScenarioView.tsx:168
 #: src/components/settings/DiagnosticsView.tsx:90
 msgid "Nevermind"
-msgstr "Неважно"
+msgstr "Отмена"
 
 #: src/components/settings/DiagnosticsView.tsx:97
 msgid "Paste Backup Here"
@@ -2748,7 +2749,7 @@ msgstr "Добавить нового сыщика"
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:161
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
-msgstr "${ confirmText } <i>(добавлен автоматически)</i>"
+msgstr "${ confirmText } <i>(учтено автоматически)</i>"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:82
 #, javascript-format
@@ -3000,17 +3001,17 @@ msgstr "Сценарий завершён"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:150
 msgid "Start playing the scenario now."
-msgstr "Начать играть сценарий сейчас."
+msgstr "Вы готовы играть сценарий."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:29
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name } (Advanced)"
-msgstr "${ investigator.name } получает ${ card.name } (Продвинутую)"
+msgstr "${ investigator.name } получает карту ${ card.name } (Продвинутую)"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:30
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name }"
-msgstr "${ investigator.name } получает ${ card.name }"
+msgstr "${ investigator.name } получает карту ${ card.name }"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:45
 msgid "Who will add ${ card.name } to their deck?"
@@ -3098,7 +3099,7 @@ msgstr "${ investigator.name } <b>сошёл с ума</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name } <b>убит</b>."
+msgstr "Сыщик ${ investigator.name } <b>убит</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:32
 #, javascript-format
@@ -3494,7 +3495,7 @@ msgstr "Добавить колоду сыщика"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:204
 msgid "Tap token to draw"
-msgstr "Нажмите, чтобы тянуть жетон"
+msgstr "Нажмите, чтобы вытянуть жетон"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:242
 msgid "Set aside and draw another"
@@ -3506,7 +3507,7 @@ msgstr "Сбросить жетоны"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:277
 msgid "Drawn"
-msgstr "Вытянуто"
+msgstr "Вы вытянули"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:280
 msgid "Total"
@@ -4274,7 +4275,7 @@ msgstr "(обязательно)"
 #: src/components/campaign/NewCampaignView/index.tsx:314
 #, javascript-format
 msgid "My ${ campaign } Campaign"
-msgstr "Моя ${ campaign } кампания"
+msgstr "Моя кампания ${ campaign }"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:522
 #: src/components/campaign/NewCampaignView/index.tsx:501
