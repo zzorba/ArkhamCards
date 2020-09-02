@@ -3416,7 +3416,7 @@ msgstr ""
 msgid "Campaign cards"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:101
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:137
 msgid "Physical trauma"
 msgstr ""
 
@@ -3425,7 +3425,7 @@ msgstr ""
 msgid " (New Total: ${ totalPhysical })"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:105
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:141
 msgid "Mental trauma"
 msgstr ""
 
@@ -3488,49 +3488,8 @@ msgstr ""
 msgid "Who will remove ${ card.name } from their deck?"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:88
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:124
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
-#, javascript-format
-msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
-msgid "${ investigator.name } is <b>killed</b>."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:32
-#, javascript-format
-msgid ""
-"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
-"choice)</i>."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:36
-#, javascript-format
-msgid ""
-"${ investigator.name } suffers ${ effect.mental } mental and ${ "
-"effect.physical } physical trauma."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:45
-msgid "${ investigator.name } heals ${ mental } mental trauma."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:51
-#, javascript-format
-msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:60
-#, javascript-format
-msgid "${ investigator.name } heals ${ physical } physical trauma."
-msgstr ""
-
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:66
-msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:76
@@ -4600,3 +4559,125 @@ msgstr ""
 #: src/components/settings/LanguagePicker.tsx:102
 msgid "Language"
 msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:28
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:33
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:38
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:44
+#, javascript-format
+msgctxt "masculine"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:59
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:71
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:86
+#, javascript-format
+msgctxt "masculine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:97
+msgctxt "masculine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
+msgctxt "feminine"
+msgid "${ investigator.name } is driven <b>insane</b>."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:34
+msgctxt "feminine"
+msgid "${ investigator.name } is <b>killed</b>."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:39
+msgctxt "feminine"
+msgid ""
+"${ investigator.name } suffers 1 physical or mental trauma <i>(their "
+"choice)</i>."
+msgstr ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:49
+#, javascript-format
+msgctxt "feminine"
+msgid ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgid_plural ""
+"${ investigator.name } suffers ${ effect.mental } mental and ${ "
+"effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:64
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ mental } mental trauma."
+msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:76
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:90
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } heals ${ physical } physical trauma."
+msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:102
+#, javascript-format
+msgctxt "feminine"
+msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
+msgstr[0] ""
+msgstr[1] ""
