@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
-"PO-Revision-Date: 2020-09-02 12:19+0300\n"
+"PO-Revision-Date: 2020-09-02 16:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "mime-version: 1.0\n"
@@ -2728,7 +2728,7 @@ msgstr "Добавить нового сыщика"
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:158
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
-msgstr "${ confirmText } <i>(добавлен автоматически)</i>"
+msgstr "${ confirmText } <i>(учтено автоматически)</i>"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:80
 #, javascript-format
