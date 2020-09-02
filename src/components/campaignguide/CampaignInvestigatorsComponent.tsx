@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
+import { Alert, AppState, InteractionManager, Text, StyleSheet, View, AppStateStatus } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
@@ -37,6 +37,7 @@ interface State {
     [code: string]: number;
   };
   removeMode: boolean;
+  appState: AppStateStatus;
 }
 
 class CampaignInvestigatorsComponent extends React.Component<Props, State> {
@@ -57,11 +58,28 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
     this.state = {
       spentXp,
       removeMode: false,
+      appState: AppState.currentState,
     };
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
+  _handleAppStateChange = (nextAppState: AppStateStatus) => {
+    const { appState } = this.state;
+    if (appState === 'active' && (nextAppState === 'inactive' || nextAppState === 'background')) {
+      this._syncCampaignData();
+    }
+    this.setState({
+      appState: nextAppState,
+    });
+  };
+
+  componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+  }
+
   componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
+
     this._navEventListener && this._navEventListener.remove();
     InteractionManager.runAfterInteractions(this._syncCampaignData);
   }
@@ -101,7 +119,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
         difficulty: campaignLog.campaignData.difficulty,
         investigatorData: campaignLog.campaignData.investigatorData,
         chaosBag: campaignLog.chaosBag,
-        lastUpdated: new Date(),
         scenarioResults: flatMap(scenarios, scenario => {
           if (scenario.type !== 'completed') {
             return [];

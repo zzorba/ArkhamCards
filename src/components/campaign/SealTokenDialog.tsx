@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView,StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
