@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
 import { EventSubscription, Navigation } from 'react-native-navigation';
@@ -119,10 +119,10 @@ class SealTokenDialog extends React.Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.drawnTokenRow}>{ this.getAllChaosTokens() }</View>
         <BasicButton title={t`Done`} onPress={this._close} />
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -90,6 +90,12 @@ function load(lang: string): {
         allCampaigns: require('../../../assets/allCampaigns_ru.json'),
         encounterSets: require('../../../assets/encounterSets_ru.json'),
       };
+    case 'de':
+      return {
+        allLogEntries: require('../../../assets/campaignLogs_de.json'),
+        allCampaigns: require('../../../assets/allCampaigns_de.json'),
+        encounterSets: require('../../../assets/encounterSets_de.json'),
+      };
     default:
     case 'en':
       return {
