@@ -283,7 +283,7 @@ class SkillOddsRow extends React.Component<Props, State> {
             <Text style={typography.text}>{ formatPercentageText(success) }</Text>
           </View>
           <View style={[styles.row, { paddingRight: s }]}>
-            <Text style={[typography.text, { color: 'black', fontSize: 22, paddingRight: s }]}>
+            <Text style={[typography.text, { fontSize: 22, paddingRight: s }]}>
               { boosts[type] >= 0 ? `+${boosts[type]}` : boosts[type] }
             </Text>
             <PlusMinusButtons
