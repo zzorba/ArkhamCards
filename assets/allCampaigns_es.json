@@ -47035,7 +47035,7 @@
         "choices": [
           {
             "id": "guardian",
-            "text": "Guardian [guardian] dream",
+            "text": "Sueño de Guardián ([guardian])",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47053,7 +47053,7 @@
           },
           {
             "id": "seeker",
-            "text": "Seeker [seeker] dream",
+            "text": "Sueño de Buscador ([seeker])",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47071,7 +47071,7 @@
           },
           {
             "id": "rogue",
-            "text": "Rogue [rogue] dream",
+            "text": "Sueño de Pícaro ([rogue])",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47089,7 +47089,7 @@
           },
           {
             "id": "mystic",
-            "text": "Mystic [mystic] dream",
+            "text": "Sueño de Místico ([mystic])",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47107,7 +47107,7 @@
           },
           {
             "id": "survivor",
-            "text": "Survivor [survivor] dream",
+            "text": "Sueño de Superviviente ([survivor])",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47125,7 +47125,7 @@
           },
           {
             "id": "criminal",
-            "text": "[[Criminal]] dream",
+            "text": "Sueño de [[Criminal]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47143,7 +47143,7 @@
           },
           {
             "id": "drifter",
-            "text": "[[Drifter]] dream",
+            "text": "Sueño de [[Vagabundo]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47171,7 +47171,7 @@
           },
           {
             "id": "hunter",
-            "text": "[[Hunter]] dream",
+            "text": "Sueño de [[Cazador]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47189,7 +47189,7 @@
           },
           {
             "id": "medic",
-            "text": "[[Medic]] or [[Assistant]] dream",
+            "text": "Sueño de [[Médico]] o [[Ayudante]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47210,7 +47210,7 @@
           },
           {
             "id": "miskatonic",
-            "text": "[[Miskatonic]] or [[Scholar]] dream",
+            "text": "Sueño de [[Miskatonic]] o [[Erudito]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47231,7 +47231,7 @@
           },
           {
             "id": "veteran",
-            "text": "[[Veteran]] dream",
+            "text": "Sueño de [[Veterano]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47249,7 +47249,7 @@
           },
           {
             "id": "wayfarer",
-            "text": "[[Wayfarer]] dream",
+            "text": "Sueño de [[Viajero]]",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47267,7 +47267,7 @@
           },
           {
             "id": "neutral_1",
-            "text": "Neutral dream (1)",
+            "text": "Sueño neutral (1)",
             "steps": [
               "neutral_1_dream",
               "neutral_1_dream_effect"
@@ -47275,7 +47275,7 @@
           },
           {
             "id": "neutral_2",
-            "text": "Neutral dream (2)",
+            "text": "Sueño neutral (2)",
             "steps": [
               "neutral_2_dream",
               "neutral_2_dream_effect"
@@ -47287,72 +47287,72 @@
     {
       "id": "guardian_dream",
       "type": "story",
-      "text": "You circle a sullen hill shrouded in darkness and steeped in fog that seems to swallow all sound. You don’t know what rests within the hill, but it feels older than this world, and it seems like it is watching you. You dare not turn to face the barrow, yet you know you cannot leave it, so instead you endlessly patrol it. In the surrounding hedgerows, you catch glimpses of twisted shadows darting to and fro, but whenever you turn your torch upon them, they vanish. You begin to run but are frozen by a loud knock from behind you. When you turn, the fog parts, and you finally see the base of the hill, where a heavy door of weathered slate calls to you."
+      "text": "Das vueltas por una triste colina envuelta en oscuridad y sumida en una niebla que parece tragarse todos los sonidos. No sabes lo que yace en el interior de la colina, pero da la impresión de ser más antiguo que este mundo y parece como si te estuviera observando. No te atreves a afrontar el túmulo, pero a la vez sabes que no puedes marcharte, así que te limitas a patrullarlo eternamente. En los setos de alrededor atisbas sombras retorcidas que van de un lado a otro, pero siempre que arrojas la luz de tu antorcha sobre ellas, se desvanecen. Echas a correr, pero te quedas paralizado al oír un fuerte golpe a tu espalda. Cuando te das la vuelta, la niebla se abre y te deja ver por fin el pie de la colina, donde una pesada puerta con una gastada losa te llama."
     },
     {
       "id": "guardian_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [guardian] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [guardian] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "seeker_dream",
       "type": "story",
-      "text": "You hurry through the halls of a university you barely recognize, cradling several textbooks in your arms as you scurry past other students and faculty members. You don’t know how it is possible that you forgot the date of your exam, but if you don’t arrive soon, you know you will fail the class. Somehow, you don’t even remember the course’s subject matter or its curriculum, even though you know it is the end of the semester. It is not like you to skip class or forget to study. You can hear the other students snickering to themselves as you pass. When you reach the end of the hall, the classroom door looms ominiously before you."
+      "text": "Recorres apresuradamente los pasillos de una universidad que apenas reconoces, con los brazos cargados de libros de texto mientras esquivas a otros estudiantes y miembros del claustro. No sabes cómo puedes haberte olvidado de la fecha del examen, pero si no llegas pronto, sabes que suspenderás. De algún modo, ni siquiera recuerdas la materia del curso ni su currículo, aunque sí sabes que es el final del semestre. No es propio de ti no ir a clase o que se te olvide estudiar. Oyes a los demás alumnos reírse disimuladamente cuando pasas junto a ellos. Al llegar al final del pasillo, la puerta del aula se alza siniestra frente a ti."
     },
     {
       "id": "seeker_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [seeker] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [seeker] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "rogue_dream",
       "type": "story",
-      "text": "You conceal a grin as you examine your cards. Jack of diamonds, queen of spades for the nut straight. Your stack of chips is growing larger with each hand, and this will be no different. Bets fly back and forth until it is just you and the man in the white suit across from you. “Are you sure about this?” he taunts, cradling his fingers. You push all of your chips into the center and reveal your king-high straight. “What a shame.” He tsks, revealing a pair of twos. “It appears you have lost everything.” You protest, pointing to your superior hand, but when you examine it again, it has changed. The figures on the face cards are now monstrous shapes with no eyes, many mouths, and tentacled arms. “9♥-10♣-D♦-C♠-N[auto_fail],” the cards read. You gape in shock as you are carried away from the table and ushered out the door."
+      "text": "Reprimes una sonrisa al mirar tus cartas. Jota de diamantes y reina de picas para tener la mejor escalera posible con lo que hay en la mesa. Tu montón de fichas crece con cada mano que pasa, y ésta no será distinta. Las apuestas vienen y van hasta que sólo quedáis tú y el hombre del traje blanco que tienes enfrente.\n–¿Estás seguro de esto? –se burla mientras entrelaza los dedos de las manos.\nEmpujas todas tus fichas al centro y revelas tu escalera al rey.\n–Qué lástima –se queja cuando revela una pareja de doses–. Parece que lo has perdido todo.\nProtestas y señalas que tu mano es mejor, pero cuando vuelves a mirarla, ha cambiado. Las figuras de las cartas ahora son formas monstruosas sin ojos, con muchas bocas y tentáculos por brazos. Tus cartas ahora son “9♥-10♣-D♦-C♠-N[auto_fail]”. Te quedas boquiabierto de terror mientras te apartan de la mesa a la fuerza y te sacan por la puerta."
     },
     {
       "id": "rogue_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [rogue] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [rogue] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "mystic_dream",
       "type": "story",
-      "text": "You traverse an enchanted path full of color and vibrancy. Wisps of light hang in the air, bobbing up and down as you approach. With each step you take, the flora along the path atrophy, following no laws of nature. Flowers once bloomed in your wake; now they shrivel as you pass. Vines wither and die. The wisps mock you for your ignorance, yet you do not slow your pace. As you look upon the fair trees, their leaves begin to fall. The once-green grass is dry, brown, and cracked. But even should the whole forest die, it will be worth reaching the other side. When you do, the trail ends abruptly at an ornate wooden door carved into the trunk of a great redwood."
+      "text": "Recorres un sendero encantado lleno de vida y color. En el aire flotan volutas de luz que suben y bajan cuando te acercas. A cada paso que das, la flora que bordea el sendero se atrofia, desafiando las leyes de la naturaleza. Antes, las flores brotaban a tu paso, pero ahora se secan. Las enredaderas se marchitan y mueren. Las volutas se burlan de tu ignorancia, pero no frenas tu caminar. Al mirar los robustos árboles, empiezan a perder sus hojas. La hierba que antes era verde ahora está seca, marrón y agrietada. Pero aunque todo el bosque muera, merecerá la pena llegar al otro lado. Cuando lo haces, el camino termina de forma abrupta en una decorada puerta de madera tallada en el tronco de una gran secuoya."
     },
     {
       "id": "mystic_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [mystic] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [mystic] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "survivor_dream",
       "type": "story",
-      "text": "You are fleeing through a dark, cramped hall of vine-covered wood. Something inexplicable chases you through the murk. You are too terrified to turn and look upon your pursuer, but nonetheless you know that if it catches you, it will mean the end of your life. It will pierce your heart, drain your blood, and devour your insides. It is this thought that drives you onward, faster than you have ever run before. You cannot let it reach you. You cannot let it feed. Suddenly, you spot your way out: a sturdy wooden door surrounded by a wall of vines."
+      "text": "Estás huyendo por un lóbrego y angosto pasillo de madera cubierta de enredaderas. Algo inexplicable te persigue por la oscuridad. Estás demasiado aterrado como para volverte a mirar a tu perseguidor, pero en cualquier caso, sabes que si te atrapa, pondrá fin a tu vida. Te atravesará el corazón, chupará tu sangre y devorará tus entrañas. Este pensamiento te impulsa hacia delante, corriendo más deprisa de lo que jamás lo has hecho en tu vida. No puedes permitir que te alcance. No puedes permitir que se alimente. De pronto, ves la salida: una recia puerta de madera rodeada de un muro de enredaderas."
     },
     {
       "id": "survivor_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [survivor] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [survivor] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "criminal_dream",
       "type": "story",
-      "text": "The blare of sirens echoes through the streets behind you. They’re gaining on you. They have always been hot on your heels, and you were always one step ahead…until now. You run down an alleyway, and a bright-red glare follows you. They’re going to catch you. They’ll lock you in a cage and throw away the key. Your freedom, your lifestyle, everything you are, everything you love: they’ll take it all away. And why? Just because you wouldn’t play by their rules? When have they ever gotten everything right? You round a corner just as the bulls are about to catch up to you and spot the entrance into a brick building."
+      "text": "El estruendo de las sirenas resuena por las calles a tu espalda. Te están ganando terreno. Siempre los has tenido pisándote los talones, pero siempre has ido un paso por delante... hasta ahora. Corres por un callejón, y un brillante resplandor rojo te sigue. Van a atraparte. Te encerrarán en una celda y tirarán la llave. Tu libertad, tu estilo de vida, todo lo que eres, todo lo que amas: se lo llevarán todo. ¿Y por qué? ¿Simplemente porque no juegas según sus reglas? ¿Acaso no se han equivocado nunca? Doblas una esquina justo cuando la bofia está a punto de alcanzarte y ves la entrada de un edificio de ladrillos."
     },
     {
       "id": "criminal_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Criminal]] or [[Illicit]] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [[Criminal]] o [[Ilegal]] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "drifter_dream",
       "type": "story",
-      "text": "The blare of sirens echoes through the streets behind you. They’re gaining on you. They have always been hot on your heels, and you were always one step ahead…until now. You run down an alleyway, and a bright-red glare follows you. They’re going to catch you. They’ll lock you in a cage and throw away the key. Your freedom, your lifestyle, everything you are, everything you love: they’ll take it all away. And why? Just because you wouldn’t play by their rules? When have they ever gotten everything right? You round a corner just as the bulls are about to catch up to you and spot the entrance into a brick building."
+      "text": "Deambulas por un campo de flores, y una cálida brisa primaveral impulsa tus pasos. El campo está dividido por una vía de tren, y al llegar a las líneas en paralelo, el atronador traqueteo de hierro y vapor se aproxima hacia ti. Cuando el tren pasa a tu lado, te agarras de una escalerilla que cuelga de uno de sus muchos vagones oxidados y desgastados por las inclemencias del tiempo. Viendo el aspecto exterior, el interior del tren posee un lujo y opulencia inesperados: hay alfombras persas colgadas como decoración, escalinatas de mármol que suben hacia alturas de vértigo y una araña de cristal que baña la estancia de un brillo prismático. Bajo la lámpara hay una adornada puerta, cuyo entramado dorado forma la imagen de un zorro en un bosque."
     },
     {
       "id": "drifter_dream_effect",
       "bullet_type": "small",
-      "text": "You may replace a basic weakness in your deck with a different random basic weakness. If you do, suffer 1 trauma of your choice"
+      "text": "Puedes sustituir una Debilidad básica de tu mazo por una Debilidad básica aleatoria distinta. Si lo haces, sufre 1 trauma de tu elección."
     },
     {
       "id": "ask_replace_weakness",
@@ -47413,72 +47413,72 @@
     {
       "id": "hunter_dream",
       "type": "story",
-      "text": "You stalk your prey through a decrepit house, its halls smelling of mold and dust. The creature you hunt is an abomination from an unnatural world. It threatens humanity’s very existence with its presence. You catch its uncanny shape entering one of the doorways upstairs. It cannot escape now—it is yours. But when you enter its den, you find only a dirty, cracked mirror and your own tired and troubled face reflected in the glass. Where could the aberration have gone? You are sure this is where it retreated to, and yet… you turn back to the entrance and are surprised to see a door where there was none before."
+      "text": "Acechas a tu presa en una casa decrépita, cuyas habi- taciones huelen a moho y polvo. La criatura a la que das caza es una abominación de un mundo antinatural. Atisbas su imposible forma entrando por una de las puertas del piso de arriba. Ya no tiene escapatoria: es tuya. Pero cuando entras en su cubil, sólo encuentras un sucio espejo agrietado y tu propio rostro, cansado y preocupado, que se refleja en el cristal. ¿Dónde se puede haber metido la aberración? Estás seguro de que huyó por aquí, y sin embargo... Te das la vuelta hacia la entrada y te sorprende ver una puerta donde antes no había nada."
     },
     {
       "id": "hunter_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Weapon]] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [[Arma]] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "medic_dream",
       "type": "story",
-      "text": "You stand in front of a closed casket. Mourners in black clothing stand in a line at your side, waiting for you to say your last words. Tearfully, you place a hand on the casket. The hard, cold wood feels dead under your palm. They confided in you. They relied on you. And in their time of utmost need, you failed them. All of this—the cold casket, the mourning friends and family—it is all because of you. But when you open the casket, there is no body inside: only a long stone passageway leading deep underground. Suddenly, one of the mourners pushes you forward, and you fall over the edge of the casket and down into the pit below, landing painfully on your side. As you rise to your feet, you find your only exit: a stone archway leading somewhere else entirely…"
+      "text": "Estás delante de un ataúd cerrado. A tu lado hay una fila de asistentes al funeral vestidos de luto que esperan que digas tus últimas palabras. Con lágrimas en los ojos, pones una mano sobre el ataúd. La fría y dura madera parece muerta bajo tu palma. Confiaban en ti. Dependían de ti. Y en su hora de mayor necesidad, los fallaste. Todo esto –el frío ataúd, los amigos y familiares de luto– es por tu culpa. Pero cuando abres el ataúd, no hay ningún cuerpo en su interior: sólo un largo pasadizo de piedra que lleva hacia las profundidades de la tierra. De repente, uno de los asistentes te empuja, y te caes por el hueco del ataúd hasta aterrizar dolorosamente sobre un costado. Al ponerte en pie, encuentras la única salida: un arco de piedra que lleva a un lugar completamente distinto…"
     },
     {
       "id": "medic_dream_effect",
       "bullet_type": "small",
-      "text": "Choose another investigator. They begin this scenario with 2 additional resources and 1 additional card in their opening hand."
+      "text": "Elige a otro investigador. Éste comienza este escenario con 2 recursos adicionales y 1 carta adicional en su mano inicial."
     },
     {
       "id": "miskatonic_dream",
       "type": "story",
-      "text": "You are in an old, forgotten library, surrounded by the knowledge of the ancients. Hundreds of thousands of tomes line the shelves around you, ascending into an empty void above. The dim halls smell of musty pages and melting wax. Taking one of the thick tomes from a nearby shelf, you begin to read. Although you cannot seem to read any of the words, you are utterly absorbed by the tale the pages weave. Your surroundings fade into triviality as time passes. Nothing matters but the shapes of the crimson ink; all else is meaningless in the face of such stark truths. All around you, the library burns to its foundations. Just as the flames reach you, a door out of the library calls to you. Somehow, it stands unburned among the flames."
+      "text": "Estás en una vieja biblioteca olvidada, rodeado por el conocimiento de los antiguos. Cientos de miles de tomos pueblan las estanterías que te rodean y suben hacia un vacío que hay sobre tu cabeza. Las sombrías salas huelen a páginas mohosas y cera derretida. Coges uno de los gruesos tomos de un estante cercano y empiezas la lectura. Aunque no pareces lograr leer ninguna palabra, estás completamente absorbido por el relato que tejen sus páginas. El entorno que te rodea se con- vierte en algo trivial mientras el tiempo pasa. Nada importa salvo las formas de la tinta carmesí; todo lo demás carece de importancia ante verdades tan descarnadas. A tu alrededor, la biblioteca se quema hasta los cimientos. Cuando las llamas te alcanzan, una puerta de salida de la biblioteca te llama. De algún modo, permanece intacta entre las llamas."
     },
     {
       "id": "miskatonic_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Tome]] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [[Tomo]] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "veteran_dream",
       "type": "story",
-      "text": "You are in a muddy, soot-filled trench. All around you, the thunderous din of war rages on and on, never ending. Dead litter the trenches: friends and comrades-in-arms who lost their lives over nothing, in a land far from home. You peer over the rim of the trench and into no-man’s-land, a barren waste of broken, charred countryside where death is certain. And there, you see it: a lone wooden door standing among the rubble and dirt. You know it is your only way out. Gripping your rifle tight, you go over the top and run headlong into a hail of deadly bullets, explosions rocking the ground around you."
+      "text": "Estás en una trinchera embarrada y llena de hollín. A tu alrededor, el atronador fragor de la guerra no cesa. Los muertos llenan las trincheras: amigos y camaradas de armas que perdieron la vida por nada, en una tierra lejos de su hogar. Te asomas por el borde de la trinchera para mirar la tierra de nadie, un baldío páramo de terreno roto y calcinado en el que la muerte es segura. Y allí la ves: una solitaria puerta de madera que se levanta entre los escombros y la tierra. Sabes que es tu única salida. Agarras con fuerza el fusil, sales de la trinchera y corres directo hacia una lluvia de letales balas, mientras las explosiones hacen temblar el suelo a tu alrededor."
     },
     {
       "id": "veteran_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for up to 2 [[Tactic]] and/or [[Supply]] cards and begin this scenario with them as additional cards in your opening hand."
+      "text": "Busca en tu mazo hasta 2 cartas [[Táctica]] y/o [[Suministros]] y comienza este escenario con ellas como cartas adicionales en tu mano inicial."
     },
     {
       "id": "wayfarer_dream",
       "type": "story",
-      "text": "You trudge chest-deep through a brackish swamp. Impossibly large bulrushes tower over you, and clouds of strange, iridescent insects swarm through the fetid air. With each step, your feet sink deeper into the soft muck, threatening to pull you under. You feel something slick and cold glide across your leg, and you lunge toward dry land—but the more you struggle, the farther you sink. In the blink of an eye, you are consumed whole by the mire, yet you are still falling ever downward. Eventually, you are deposited onto a stone floor along with a small mudslide. You find yourself in a sealed chamber, lit by the paleblue glimmering of strange hieroglyphs. The symbols frame an intricate golden door: the door to the crypt you’ve been searching for."
+      "text": "Avanzas trabajosamente por un pantano salobre con el agua hasta el pecho. Unas espadañas imposiblemente grandes se alzan sobre ti, y nubes de extraños insectos iridiscentes pueblan el fétido aire. Con cada paso, tus pies se hunden más y más en el suave lodo, que amenaza con llegar a hundirte. Notas algo frío y viscoso que se desliza por tu pierna, y tratas de lanzarte hacia terreno seco, pero cuanto más te debates, más te hundes. En un abrir y cerrar de ojos, te ves consumido entero por la ciénaga, pero no dejas de caer. Al final, aterrizas sobre un suelo de piedra junto con un pequeño alud de barro. Te encuentras en una sala sellada, iluminada por el resplandor azul pálido de unos extraños jeroglíficos. Los símbolos enmarcan una intricada puerta dorada: la puerta de la cripta que estabas buscando."
     },
     {
       "id": "wayfarer_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Wayfarer]] or [[Relic]] card and play it <i>(paying its cost)</i>."
+      "text": "Busca en tu mazo una carta [[Viajero]] o [[Reliquia]] y juégala <i>(pagando su coste)</i>."
     },
     {
       "id": "neutral_1_dream",
       "type": "story",
-      "text": "You toss and turn but do not sleep, not even for a moment. Your mind is filled with discomfort and dark thoughts: thoughts of failure, of ineptitude, of loss. Your brow is covered in sweat. No matter how you lie, your bed is either too hot or too cold. Finally, sick of getting nowhere, you rise and head to the sink to splash some water on your face. That is when you realize the layout of your room is not as it was before—and the door to your bathroom has been replaced with a large gateway of onyx and marble."
+      "text": "Das mil vueltas en la cama, pero no te duermes ni por un instante. Tu mente está llena de incomodidad y pensamientos oscuros: pensamientos de fracaso, de ineptitud y de pérdida. Tienes la frente perlada de sudor. Da igual cómo te pongas, porque la cama está demasiado caliente o demasiado fría. Al final, harto de no llegar a ninguna parte, te levantas y vas al lavabo para echarte algo de agua en la cara. En ese momento, te das cuenta de que la distribución de tu habitación no es como era antes, y que la puerta que da a tu baño ha sido sustituida por un enorme portal de ónice y mármol."
     },
     {
       "id": "neutral_1_dream_effect",
       "bullet_type": "small",
-      "text": "You begin this scenario with 2 additional resources."
+      "text": "Comienzas este escenario con 2 recursos adicionales."
     },
     {
       "id": "neutral_2_dream",
       "type": "story",
-      "text": "You sit on the back patio of what seems like your childhood home, but something is off. You don’t recognize your family…the plants in the back yard are arranged differently…and the sky is a patchwork of rotting corpses, raining dismembered body parts onto the landscape. Your not-family watches this precipitation of corpses calmly, discussing the weather it as if it were a banal occurrence. This continues even as the intermittent thudding of hands and feet onto your roof intensifies into a torrent of maimed torsos that causes the ceiling to sag. You run outside, weaving through the deadly rain, and head instinctively toward the edge of your parents’ property. As you hear the crash of the house collapsing behind you, you push away the fallen limbs piling atop an old, familiar spot and are relieved to find the weathered wood of a cellar door."
+      "text": "Estás sentado en el patio trasero de lo que parece tu hogar de la infancia, pero algo no cuadra. No reconoces a tu familia... Las plantas del jardín de atrás están distribuidas de forma distinta... Y el cielo es una mezcolanza de cadáveres podridos que hacen llover partes desmembradas sobre el paisaje. Tu no-familia observa esta precipitación de cadáveres con calma, hablando del tiempo como si fuera un suceso banal. Esto prosigue incluso cuando el traqueteo intermitente de manos y pies sobre el tejado crece hasta convertirse en un torrente de torsos mutilados que hacen que el techo se abombe. Sales corriendo al exterior, intentando esquivar la letal lluvia, y te diriges de forma instintiva hacia el límite de la propiedad de tus padres. Cuando oyes el estruendo de la casa que se derrumba a tu espalda, apartas las extremidades caídas que se amontonan sobre un viejo lugar familiar y te alivia encontrar la gastada puerta de madera de un sótano."
     },
     {
       "id": "neutral_2_dream_effect",
       "bullet_type": "small",
-      "text": "You begin this scenario with 1 additional card in your opening hand."
+      "text": "Comienzas este escenario con 1 carta adicional en tu mano inicial."
     },
     {
       "id": "gather_encounter_sets",
@@ -47495,7 +47495,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Seventy Steps <i>(Of Lighter Slumber)</i> and The Cavern of Flame into play. Each investigator begins at the Seventy Steps <i>(Of Lighter Slumber)</i>."
+      "text": "Pon en juego los Setenta peldaños <i>(De sueño ligero)</i> y La caverna de fuego. Cada investigador comienza en los Setenta peldaños <i>(De sueño ligero)</i>."
     },
     {
       "id": "set_aside_cards",
@@ -48326,7 +48326,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+      "text": "<fancy>Viernes, 13 de febrero de 1925</fancy>\nAlgo extraño estaba ocurriendo en Arkham, Massachusetts.\nPor lo general, esto no sería nada sorprendente para los habitantes de la sombría ciudad de Nueva Inglaterra. En efecto, Arkham siembre ha sido conocida por sus extraños sucesos, que algunos llamarían sobrenaturales. Sin embargo, este acontecimiento concreto era de índole cuanto menos atípica.\nTodo empezó en el número más reciente de Relatos de nunca más. Un autor llamado Virgil Gray describía un viaje que había emprendido en sueños y que afirmaba que no era una ficción suya. En él, escribía acerca de una larga escalera en espiral, de una columna de fuego consciente de un calor insoportable, de un árbol que brotaba de la luna y de un curioso gato que hablaba... entre otras cosas igualmente difíciles de creer. Pero lo que primero llamó tu atención no fue este extraordinario relato. Poco después de que la historia de Virgil fuera publicada, Relatos de nunca más comenzó a recibir y publicar una carta tras otra de gente que había leído la historia de Virgil y que afirmaba haber experimentado el mismo sueño, punto por punto. No pasó mucho tiempo hasta que el Arkham Advertised se hiciera eco de la historia y la noticia de este extraño fenómeno llegara a oídos de los expertos.\nConvencieron a Virgil Gray de que fuera a terapia en el manicomio local, y muchos de los que compartían la psicosis del escritor también fueron ingresados. La teoría predominante entre los académicos era que el sueño de Virgil parecía tan real que no lograba separar la ficción de la realidad, y su relato propagó sus delirios a otros como si fuera una especie de histeria colectiva. A ti no te conven- cía esta teoría. Al fin y al cabo, aún hoy siguen sin saberse muchas cosas sobre el mero acto de soñar. Los expertos médicos tienen teorías increíblemente distintas sobre el estado del cerebro mientras sueña. Hace poco, expertos como Sigmund Freud han sugerido que los sueños son manifestaciones de los deseos, miedos u obsesiones del subconsciente. Por su parte, las pitonisas y adivinos han creído desde hace mucho que los sueños se pueden filtrar e interpretar para saber el pasado o el futuro del soñador. Pero si estas teorías son ciertas, ¿cómo es posible que varios individuos de toda clase y condición hayan tenido la misma expe- riencia compartida en sus sueños? ¿Y si nuestra comprensión moderna del sueño está equivocada? ¿Y si existe realmente un lugar al que viaja nuestra consciencia cuando dormimos? ¿Una tierra del sueño que existe más allá de nuestro mundo de la vigilia?\nTus compañeros y tú os habéis reunido para llegar al fondo de este extraño fenó- meno. Si otras personas de la ciudad pueden viajar a otro mundo en sus sueños, tal vez vosotros también podáis hacerlo. Habéis recreado las circunstancias del viaje de Virgil a la perfección. Si todo sale bien, la mitad de vosotros emprende- réis el viaje de ida y vuelta a esta “tierra de los sueños”. El resto se quedará en el mundo de la vigilia para estudiar los patrones de sueño de sus compañeros y asegurarse de que nada sale mal…"
     }
   ]
 },
@@ -53167,7 +53167,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+      "text": "<fancy>Viernes, 13 de febrero de 1925</fancy>\nAlgo extraño estaba ocurriendo en Arkham, Massachusetts.\nPor lo general, esto no sería nada sorprendente para los habitantes de la sombría ciudad de Nueva Inglaterra. En efecto, Arkham siembre ha sido conocida por sus extraños sucesos, que algunos llamarían sobrenaturales. Sin embargo, este acontecimiento concreto era de índole cuanto menos atípica.\nTodo empezó en el número más reciente de Relatos de nunca más. Un autor llamado Virgil Gray describía un viaje que había emprendido en sueños y que afirmaba que no era una ficción suya. En él, escribía acerca de una larga escalera en espiral, de una columna de fuego consciente de un calor insoportable, de un árbol que brotaba de la luna y de un curioso gato que hablaba... entre otras cosas igualmente difíciles de creer. Pero lo que primero llamó tu atención no fue este extraordinario relato. Poco después de que la historia de Virgil fuera publicada, Relatos de nunca más comenzó a recibir y publicar una carta tras otra de gente que había leído la historia de Virgil y que afirmaba haber experimentado el mismo sueño, punto por punto. No pasó mucho tiempo hasta que el Arkham Advertised se hiciera eco de la historia y la noticia de este extraño fenómeno llegara a oídos de los expertos.\nConvencieron a Virgil Gray de que fuera a terapia en el manicomio local, y muchos de los que compartían la psicosis del escritor también fueron ingresados. La teoría predominante entre los académicos era que el sueño de Virgil parecía tan real que no lograba separar la ficción de la realidad, y su relato propagó sus delirios a otros como si fuera una especie de histeria colectiva. A ti no te conven- cía esta teoría. Al fin y al cabo, aún hoy siguen sin saberse muchas cosas sobre el mero acto de soñar. Los expertos médicos tienen teorías increíblemente distintas sobre el estado del cerebro mientras sueña. Hace poco, expertos como Sigmund Freud han sugerido que los sueños son manifestaciones de los deseos, miedos u obsesiones del subconsciente. Por su parte, las pitonisas y adivinos han creído desde hace mucho que los sueños se pueden filtrar e interpretar para saber el pasado o el futuro del soñador. Pero si estas teorías son ciertas, ¿cómo es posible que varios individuos de toda clase y condición hayan tenido la misma expe- riencia compartida en sus sueños? ¿Y si nuestra comprensión moderna del sueño está equivocada? ¿Y si existe realmente un lugar al que viaja nuestra consciencia cuando dormimos? ¿Una tierra del sueño que existe más allá de nuestro mundo de la vigilia?\nTus compañeros y tú os habéis reunido para llegar al fondo de este extraño fenó- meno. Si otras personas de la ciudad pueden viajar a otro mundo en sus sueños, tal vez vosotros también podáis hacerlo. Habéis recreado las circunstancias del viaje de Virgil a la perfección. Si todo sale bien, la mitad de vosotros emprende- réis el viaje de ida y vuelta a esta “tierra de los sueños”. El resto se quedará en el mundo de la vigilia para estudiar los patrones de sueño de sus compañeros y asegurarse de que nada sale mal…"
     }
   ]
 },
@@ -53985,7 +53985,7 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "randolph_did_not_survive_descen",
+        "id": "randolph_did_not_survive_descent",
         "options": [
           {
             "boolCondition": true
@@ -54304,6 +54304,7 @@
           {
             "boolCondition": true,
             "steps": [
+              "win_text",
               "$upgrade_decks",
               "win"
             ],
@@ -54327,9 +54328,13 @@
       }
     },
     {
-      "id": "win",
+      "id": "win_text",
       "bullet_type": "small",
-      "text": "The investigators win the campaign.",
+      "text": "The investigators win the campaign."
+    },
+    {
+      "id": "win",
+      "hidden": true,
       "effects": [
         {
           "type": "campaign_data",
@@ -54351,13 +54356,6 @@
             "boolCondition": true,
             "steps": [
               "win_never_seen_again"
-            ],
-            "effects": [
-              {
-                "type": "campaign_data",
-                "setting": "skip_scenario",
-                "scenario": "epilogue"
-              }
             ]
           },
           {
@@ -54376,6 +54374,11 @@
       "bullet_type": "small",
       "text": "The investigators win the campaign… and are never seen or heard from again.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",
@@ -54560,7 +54563,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "In the distance, you can see the tower that loomed behind the spider god as it spun its web, the entrance beckoning you closer. You recall the Tower of Koth in the Underworld and the way to the surface. Is this the root of that same tower? Does it penetrate through this world-between-worlds? If so, you might be able to escape. Instead of climbing back the way you came, you swing your web from side to side and make a leap through the void, landing at the base of the tower. Then you begin the long climb up—above the usrface of the Sea of Pitch, under the ground below the City of Gugs, then farther upward still. Finally, after miles and miles of restless travel, you push aside the stone slab at the top of the tower, and you emerge in the Enchanted Wood. You seal the entrance behind you. Nothing from the hellish Underworld can follow you hear. For the first time since entering the Dreamlands, you breathe a sigh of relief. Recalling the first chapter's of Virgil Gray's story, you follow a narrow path through the woods until you reach a staircase of solid stone that ascends into the clouds. It is time to return home.",
+      "text": "In the distance, you can see the tower that loomed behind the spider god as it spun its web, the entrance beckoning you closer. You recall the Tower of Koth in the Underworld and the way to the surface. Is this the root of that same tower? Does it penetrate through this world-between-worlds? If so, you might be able to escape. Instead of climbing back the way you came, you swing your web from side to side and make a leap through the void, landing at the base of the tower. Then you begin the long climb up—above the surface of the Sea of Pitch, under the ground below the City of Gugs, then farther upward still. Finally, after miles and miles of restless travel, you push aside the stone slab at the top of the tower, and you emerge in the Enchanted Wood. You seal the entrance behind you. Nothing from the hellish Underworld can follow you here. For the first time since entering the Dreamlands, you breathe a sigh of relief. Recalling the first chapter's of Virgil Gray's story, you follow a narrow path through the woods until you reach a staircase of solid stone that ascends into the clouds. It is time to return home.",
       "steps": [
         "returned_to_reality",
         "send_returned_to_reality",

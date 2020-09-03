@@ -47347,12 +47347,12 @@
     {
       "id": "drifter_dream",
       "type": "story",
-      "text": "The blare of sirens echoes through the streets behind you. They’re gaining on you. They have always been hot on your heels, and you were always one step ahead…until now. You run down an alleyway, and a bright-red glare follows you. They’re going to catch you. They’ll lock you in a cage and throw away the key. Your freedom, your lifestyle, everything you are, everything you love: they’ll take it all away. And why? Just because you wouldn’t play by their rules? When have they ever gotten everything right? You round a corner just as the bulls are about to catch up to you and spot the entrance into a brick building."
+      "text": "You meander through a field of flowers, a warm spring breeze nudging your steps forward. A train track divides the field, and as you meet its parallel lines, the roaring clatter of steam and iron lumbers toward you. As the train passes by, you grab onto a ladder hanging from one of its many rusted and weather-beaten cars. Given the appearance of the exterior, the train’s interior is full of unexpected luxury and affluence: Persian rugs hang as decoration, marble staircases wind to dizzying heights, and a crystal chandelier speckles the room with prismatic brilliance. Under the chandelier sits an ornate doorway, its gilded lattices forming the depiction of a fox in a forest."
     },
     {
       "id": "drifter_dream_effect",
       "bullet_type": "small",
-      "text": "You may replace a basic weakness in your deck with a different random basic weakness. If you do, suffer 1 trauma of your choice"
+      "text": "You may replace a basic weakness in your deck with a different random basic weakness. If you do, suffer 1 trauma of your choice."
     },
     {
       "id": "ask_replace_weakness",
@@ -53985,7 +53985,7 @@
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
-        "id": "randolph_did_not_survive_descen",
+        "id": "randolph_did_not_survive_descent",
         "options": [
           {
             "boolCondition": true
@@ -54304,6 +54304,7 @@
           {
             "boolCondition": true,
             "steps": [
+              "win_text",
               "$upgrade_decks",
               "win"
             ],
@@ -54327,9 +54328,13 @@
       }
     },
     {
-      "id": "win",
+      "id": "win_text",
       "bullet_type": "small",
-      "text": "The investigators win the campaign.",
+      "text": "The investigators win the campaign."
+    },
+    {
+      "id": "win",
+      "hidden": true,
       "effects": [
         {
           "type": "campaign_data",
@@ -54351,13 +54356,6 @@
             "boolCondition": true,
             "steps": [
               "win_never_seen_again"
-            ],
-            "effects": [
-              {
-                "type": "campaign_data",
-                "setting": "skip_scenario",
-                "scenario": "epilogue"
-              }
             ]
           },
           {
@@ -54376,6 +54374,11 @@
       "bullet_type": "small",
       "text": "The investigators win the campaign… and are never seen or heard from again.",
       "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "epilogue"
+        },
         {
           "type": "campaign_data",
           "setting": "result",
@@ -54560,7 +54563,7 @@
     {
       "id": "R3",
       "title": "Исход 3",
-      "text": "In the distance, you can see the tower that loomed behind the spider god as it spun its web, the entrance beckoning you closer. You recall the Tower of Koth in the Underworld and the way to the surface. Is this the root of that same tower? Does it penetrate through this world-between-worlds? If so, you might be able to escape. Instead of climbing back the way you came, you swing your web from side to side and make a leap through the void, landing at the base of the tower. Then you begin the long climb up—above the usrface of the Sea of Pitch, under the ground below the City of Gugs, then farther upward still. Finally, after miles and miles of restless travel, you push aside the stone slab at the top of the tower, and you emerge in the Enchanted Wood. You seal the entrance behind you. Nothing from the hellish Underworld can follow you hear. For the first time since entering the Dreamlands, you breathe a sigh of relief. Recalling the first chapter's of Virgil Gray's story, you follow a narrow path through the woods until you reach a staircase of solid stone that ascends into the clouds. It is time to return home.",
+      "text": "In the distance, you can see the tower that loomed behind the spider god as it spun its web, the entrance beckoning you closer. You recall the Tower of Koth in the Underworld and the way to the surface. Is this the root of that same tower? Does it penetrate through this world-between-worlds? If so, you might be able to escape. Instead of climbing back the way you came, you swing your web from side to side and make a leap through the void, landing at the base of the tower. Then you begin the long climb up—above the surface of the Sea of Pitch, under the ground below the City of Gugs, then farther upward still. Finally, after miles and miles of restless travel, you push aside the stone slab at the top of the tower, and you emerge in the Enchanted Wood. You seal the entrance behind you. Nothing from the hellish Underworld can follow you here. For the first time since entering the Dreamlands, you breathe a sigh of relief. Recalling the first chapter's of Virgil Gray's story, you follow a narrow path through the woods until you reach a staircase of solid stone that ascends into the clouds. It is time to return home.",
       "steps": [
         "returned_to_reality",
         "send_returned_to_reality",
