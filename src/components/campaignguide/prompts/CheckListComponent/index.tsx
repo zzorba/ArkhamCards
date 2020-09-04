@@ -136,7 +136,7 @@ class CheckListComponent extends React.Component<Props, State> {
     const enabled = hasMin && hasMax;
     return !enabled ? (
       <BasicButton
-        title={hasMin ? t`Too many` : `Not enough`}
+        title={hasMin ? t`Too many` : t`Not enough`}
         onPress={this._save}
         disabled
       />
