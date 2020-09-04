@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -34,9 +35,11 @@ export interface CheckListComponentProps {
   button?: React.ReactNode;
 }
 
-interface Props extends CheckListComponentProps {
+interface OwnProps extends CheckListComponentProps {
   items: ListItem[];
 }
+
+type Props = OwnProps & StylesProps;
 
 interface State {
   selectedChoice: {
@@ -44,7 +47,7 @@ interface State {
   };
 }
 
-export default class CheckListComponent extends React.Component<Props, State> {
+class CheckListComponent extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -146,7 +149,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, items, bulletType, text, checkText, button } = this.props;
+    const { id, items, bulletType, text, checkText, button, gameFont } = this.props;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
@@ -161,7 +164,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
                 </SetupStepWrapper>
               ) }
               <View style={styles.prompt}>
-                <Text style={typography.mediumGameFont}>
+                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
                   { checkText }
                 </Text>
               </View>
@@ -183,7 +186,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
               }) }
               { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
                 <View style={styles.row}>
-                  <Text style={[typography.mediumGameFont, styles.nameText]}>
+                  <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
                     { t`None` }
                   </Text>
                 </View>
@@ -201,6 +204,8 @@ export default class CheckListComponent extends React.Component<Props, State> {
     );
   }
 }
+
+export default withStyles(CheckListComponent);
 
 const styles = StyleSheet.create({
   prompt: {

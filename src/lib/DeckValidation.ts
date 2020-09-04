@@ -208,6 +208,11 @@ export default class DeckValidation {
         atleast: {},
       });
     }
+    // For the new global covenant restriction.
+    this.deck_options_counts.push({
+      limit: 0,
+      atleast: {}
+    });
     if (this.investigator && this.investigator.deck_options) {
       for (var i = 0; i < this.investigator.deck_options.length; i++){
         this.deck_options_counts.push({
@@ -244,6 +249,11 @@ export default class DeckValidation {
         error: t`No assets that take up the ally slot are allowed by On Your Own.`,
       }));
     }
+    deck_options.push({
+      limit: 1,
+      trait: ['Covenant'],
+      error: t`Limit 1 Covenant per deck.`,
+    });
     if (this.investigator &&
         this.investigator.deck_options &&
         this.investigator.deck_options.length) {
@@ -347,7 +357,7 @@ export default class DeckValidation {
           var slot_valid = false;
           for(var j = 0; j < option.slot.length; j++){
             var slot = option.slot[j];
-            if (card.slot && card.slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
+            if (card.real_slot && card.real_slot.toUpperCase().indexOf(slot.toUpperCase()) !== -1){
               slot_valid = true;
             }
           }

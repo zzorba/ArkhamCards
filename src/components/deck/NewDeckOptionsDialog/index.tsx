@@ -307,6 +307,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       return (
         <ActivityIndicator
           style={styles.spinner}
+          color={COLORS.lightText}
           size="large"
           animating
         />

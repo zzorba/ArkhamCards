@@ -17,7 +17,12 @@ import {
   UpdateCardSortAction,
   SortType,
 } from '@actions/types';
-import { CardFilterData, FilterState } from '@lib/filters';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { FilterState, calculateCardFilterData, calculateAllCardFilterData } from '@lib/filters';
+import calculateDefaultFilterState from '@components/filter/DefaultFilterState';
+import Card from '@data/Card';
+import Database from '@data/Database';
+import { AppState } from '@reducers';
 
 export function toggleMythosMode(
   id: string,
@@ -80,18 +85,26 @@ export function updateFilter(
 
 export function addFilterSet(
   id: string,
-  filters: FilterState,
-  cardData: CardFilterData,
+  cards: Card[],
+  db: Database,
   sort?: SortType,
   mythosToggle?: boolean
-): AddFilterSetAction {
-  return {
-    type: ADD_FILTER_SET,
-    id,
-    filters,
-    sort,
-    mythosToggle,
-    cardData,
+): ThunkAction<void, AppState, unknown, AddFilterSetAction> {
+  return async(dispatch: ThunkDispatch<AppState, unknown, AddFilterSetAction>): Promise<void> => {
+    const filters = calculateDefaultFilterState(cards);
+
+    const cardData = mythosToggle ?
+      (await calculateAllCardFilterData(cards, db)) :
+      calculateCardFilterData(cards);
+
+    dispatch({
+      type: ADD_FILTER_SET,
+      id,
+      filters,
+      sort,
+      mythosToggle,
+      cardData,
+    });
   };
 }
 

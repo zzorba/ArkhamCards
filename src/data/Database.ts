@@ -12,8 +12,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  // Next time go to 10
-  static SCHEMA_VERSION: number = 8;
+  static SCHEMA_VERSION: number = 11;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -69,7 +68,7 @@ export default class Database {
 
   async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
     const cards = await this.cards();
-    return cards.createQueryBuilder('c').leftJoin('c.linked_card', 'linked_card');
+    return cards.createQueryBuilder('c').leftJoinAndSelect('c.linked_card', 'linked_card');
   }
 
   async tabooSets(): Promise<Repository<TabooSet>> {

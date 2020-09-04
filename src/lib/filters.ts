@@ -1,10 +1,11 @@
-import { filter, findIndex, forEach, keys, map } from 'lodash';
+import { filter, findIndex, flatMap, forEach, keys, map, values } from 'lodash';
 
 import { QueryParams } from '@data/types';
 import { combineQueriesOpt, where } from '@data/query';
 import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
 import { Brackets } from 'typeorm/browser';
+import Database from '@data/Database';
 
 export interface CardFilterData {
   hasCost: boolean;
@@ -20,6 +21,17 @@ export interface CardFilterData {
   allSlots: string[];
   allEncounters: string[];
   allIllustrators: string[];
+}
+export async function calculateAllCardFilterData(cards: Card[], db: Database): Promise<CardFilterData> {
+  const result = calculateCardFilterData(cards);
+  const encounterCards = await (await db.cardsQuery())
+    .select('c.encounter_name')
+    .distinct(true)
+    .getRawMany();
+  return {
+    ...result,
+    allEncounters: flatMap(encounterCards, c => values(c)).sort(),
+  };
 }
 
 export function calculateCardFilterData(cards: Card[]): CardFilterData {
@@ -95,7 +107,6 @@ export function calculateCardFilterData(cards: Card[]): CardFilterData {
     typesMap[card.type_name] = true;
     typeCodesMap[card.type_code] = true;
   });
-
   const allFactions: FactionCodeType[] = filter(
     CARD_FACTION_CODES,
     factionCode => !!factionsMap[factionCode]

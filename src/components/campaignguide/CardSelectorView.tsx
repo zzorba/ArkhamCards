@@ -16,6 +16,7 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import Card from '@data/Card';
 import { combineQueries, where } from '@data/query';
 import space from '@styles/space';
+import COLORS from '@styles/colors';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -77,6 +78,7 @@ class CardSelectorView extends React.Component<Props, State> {
       return (
         <ActivityIndicator
           style={space.paddingM}
+          color={COLORS.lightText}
           size="large"
           animating
         />

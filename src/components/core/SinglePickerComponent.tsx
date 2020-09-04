@@ -3,6 +3,7 @@ import React from 'react';
 import PickerComponent, { PickerProps } from './PickerComponent';
 
 interface Props extends PickerProps {
+  formatLabel?: (index: number) => string;
   onChoiceChange: (index: number) => void;
   selectedIndex?: number;
 }

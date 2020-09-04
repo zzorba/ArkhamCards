@@ -165,7 +165,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
               linesByToken[token] = line;
             }
           });
-        console.log(linesByToken);
         SPECIAL_TOKENS.forEach(token => {
           switch (token) {
             case 'elder_sign':
@@ -187,7 +186,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
                 if (valueRegex.test(line)) {
                   const match = line.match(valueRegex);
                   if (match) {
-                    console.log(`${token} = ${match}`);
                     if (match[2] === '-X') {
                       scenarioTokens.push({
                         token,

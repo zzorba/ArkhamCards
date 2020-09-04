@@ -35,7 +35,7 @@ interface Props {
   onUpgrade?: (card: Card) => void;
   onDeckCountChange?: (code: string, count: number) => void;
   limit?: number;
-  onToggleChange?: () => void;
+  onToggleChange?: (card: Card, value: boolean) => void;
   toggleValue?: boolean;
   deltaCountMode?: boolean;
   hasSecondCore?: boolean;
@@ -365,6 +365,16 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     return null;
   }
 
+  _onToggleChange = (value: boolean) => {
+    const {
+      card,
+      onToggleChange,
+    } = this.props;
+    if (onToggleChange) {
+      onToggleChange(card, value);
+    }
+  };
+
   renderContent() {
     const {
       card,
@@ -408,7 +418,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           <View style={styles.switchButton}>
             <Switch
               value={toggleValue}
-              onValueChange={onToggleChange}
+              onValueChange={this._onToggleChange}
             />
           </View>
         ) }

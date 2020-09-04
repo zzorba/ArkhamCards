@@ -138,7 +138,7 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
     if (loading) {
       return (
         <View style={styles.loadingRow}>
-          <ActivityIndicator size="small" animating />
+          <ActivityIndicator size="small" animating color={COLORS.lightText} />
         </View>
       );
     }

@@ -10,6 +10,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from '@actions/types';
@@ -39,7 +40,7 @@ interface OwnProps {
   campaignState: CampaignStateHelper;
 }
 
-type Props = OwnProps & ReduxActionProps;
+type Props = OwnProps & ReduxActionProps & StylesProps;
 
 interface State {
   unsavedEdits: {
@@ -156,12 +157,13 @@ class UpgradeDecksInput extends React.Component<Props, State> {
       fontScale,
       latestDecks,
       campaignState,
+      gameFont,
     } = this.props;
     const hasDecision = scenarioState.decision(id) !== undefined;
     return (
       <View>
         <View style={styles.header}>
-          <Text style={[typography.bigGameFont, typography.right]}>
+          <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.right]}>
             { t`Update decks with scenario results` }
           </Text>
         </View>
@@ -234,7 +236,7 @@ export default connect<{}, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
-  UpgradeDecksInput
+  withStyles(UpgradeDecksInput)
 );
 
 const styles = StyleSheet.create({

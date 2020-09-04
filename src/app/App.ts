@@ -1,6 +1,7 @@
+import Crashes from 'appcenter-crashes';
 import { forEach } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
-import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
+import { TouchableOpacity, Platform, Linking, LogBox, Alert } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
@@ -9,7 +10,7 @@ import { t } from 'ttag';
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
-import { AppState } from '@reducers';
+import { getLangPreference, AppState } from '@reducers';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -32,20 +33,76 @@ export default class App {
     this.currentLang = 'en';
     store.subscribe(this.onStoreUpdate.bind(this, store));
 
-    this.onStoreUpdate(store);
+    this.initialAppStart(store).then(safeMode => {
+      if (!safeMode) {
+        this.setupAppEventHandlers(true);
+      }
+    });
   }
 
-  onStoreUpdate(store: Store<AppState, Action>) {
-    const lang = store.getState().cards.lang || 'en';
+  setupAppEventHandlers(initial: boolean) {
+    Linking.addEventListener('url', this._handleUrl);
 
-    // handle a root change
-    // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
-    if (!this.started || this.currentLang !== lang) {
-      this.started = true;
-      this.currentLang = lang;
-      iconsLoaded.then(() => {
-        this.startApp(lang);
-      }).catch(error => console.log(error));
+    // We handle arkham cards schema-ref
+    DeepLinking.addScheme('arkhamcards://');
+
+    Appearance.addChangeListener(({ colorScheme }) => {
+      this.setDefaultOptions(colorScheme, true);
+    });
+
+    if (initial) {
+      Linking.getInitialURL().then((url) => {
+        if (url) {
+          this._handleUrl({ url });
+        }
+      });
+    }
+  }
+
+  static crashDeltaSeconds(report: Crashes.ErrorReport) {
+    if (Platform.OS === 'android') {
+      const startTime = parseInt(`${report.appStartTime}`, 10) / 1000;
+      const endTime = parseInt(`${report.appErrorTime}`, 10) / 1000;
+      return (endTime - startTime) / 60;
+    }
+    if (typeof report.appErrorTime === 'number' && typeof report.appStartTime === 'number') {
+      return (report.appErrorTime - report.appStartTime) / 60;
+    }
+    return 0;
+  }
+
+  async initialAppStart(store: Store<AppState, Action>): Promise<boolean> {
+    try {
+      const previousCrash = await Crashes.hasCrashedInLastSession();
+      if (previousCrash) {
+        const report = await Crashes.lastSessionCrashReport();
+        const deltaSeconds = App.crashDeltaSeconds(report);
+        if (deltaSeconds < 20) {
+          this.startSafeMode(store);
+          return true;
+        }
+      }
+    } catch (error) {
+      // Who crash reports the crash report system.
+      console.log(error);
+    }
+    // Start normally
+    this.onStoreUpdate(store, true);
+    return false;
+  }
+
+  onStoreUpdate(store: Store<AppState, Action>, appStart?: boolean) {
+    if (this.started || appStart) {
+      const lang = getLangPreference(store.getState());
+      // handle a root change
+      // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
+      if (!this.started || this.currentLang !== lang) {
+        this.started = true;
+        this.currentLang = lang;
+        iconsLoaded.then(() => {
+          this.startApp(lang);
+        }).catch(error => console.log(error));
+      }
     }
   }
 
@@ -117,14 +174,45 @@ export default class App {
     }
   }
 
+  startSafeMode(store: Store<AppState, Action>) {
+    const lang = getLangPreference(store.getState());
+    changeLocale(lang || 'en');
+    this.started = true;
+    this.currentLang = lang;
+    Navigation.setRoot({
+      root: {
+        stack: {
+          children: [{
+            component: {
+              name: 'Settings.SafeMode',
+              options: {
+                topBar: {
+                  visible: false,
+                },
+              },
+              passProps: {
+                startApp: () => {
+                  this.startApp(lang);
+                }
+              }
+            },
+          }],
+        },
+      },
+    });
+  }
+
   startApp(lang?: string) {
     changeLocale(lang || 'en');
-    LogBox.ignoreLogs([
-      'Warning: Failed prop type: Invalid prop `titleStyle` of type `array` supplied to `SettingsCategoryHeader`, expected `object`.',
-      'Warning: Failed prop type: DialogSwitch: prop type `labelStyle` is invalid;',
-      'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
-      'Consider using `numColumns` with `FlatList` instead.',
-    ]);
+    if (__DEV__) {
+      LogBox.ignoreLogs([
+        'Warning: Failed prop type: Invalid prop `titleStyle` of type `array` supplied to `SettingsCategoryHeader`, expected `object`.',
+        'Warning: Failed prop type: DialogSwitch: prop type `labelStyle` is invalid;',
+        'Warning: `flexWrap: `wrap`` is not supported with the `VirtualizedList` components.' +
+        'Consider using `numColumns` with `FlatList` instead.',
+        'Require cycle: node_modules/typeorm/browser/index.js',
+      ]);
+    }
 
     const browseCards = {
       component: {
@@ -235,9 +323,6 @@ export default class App {
         },
       },
     }];
-    Appearance.addChangeListener(({ colorScheme }) => {
-      this.setDefaultOptions(colorScheme, true);
-    });
 
     this.setDefaultOptions(Appearance.getColorScheme());
 
@@ -247,16 +332,6 @@ export default class App {
           children: tabs,
         },
       },
-    });
-    Linking.addEventListener('url', this._handleUrl);
-
-    // We handle scrollapp and https (universal) links
-    DeepLinking.addScheme('arkhamcards://');
-
-    Linking.getInitialURL().then((url) => {
-      if (url) {
-        this._handleUrl({ url });
-      }
     });
   }
 }

@@ -13,11 +13,13 @@ interface Props {
   onChange: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
+  value?: number;
 }
 
 interface State {
   one: boolean;
   two: boolean;
+  three: boolean;
 }
 
 export default class CardToggleRow extends React.Component<Props, State> {
@@ -27,6 +29,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
     this.state = {
       one: props.count > 0,
       two: props.count > 1,
+      three: props.count > 2,
     };
   }
 
@@ -38,8 +41,9 @@ export default class CardToggleRow extends React.Component<Props, State> {
     const {
       one,
       two,
+      three,
     } = this.state;
-    onChange(card, (one ? 1 : 0) + (two ? 1 : 0));
+    onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0));
   };
 
   _onCardOneToggle = () => {
@@ -54,16 +58,24 @@ export default class CardToggleRow extends React.Component<Props, State> {
     }, this._syncChange);
   };
 
+  _onCardThreeToggle = () => {
+    this.setState({
+      three: !this.state.three,
+    }, this._syncChange);
+  };
+
   render() {
     const {
       card,
       limit,
       onPress,
       fontScale,
+      value,
     } = this.props;
     const {
       one,
       two,
+      three,
     } = this.state;
 
     if (limit === 0) {
@@ -73,6 +85,7 @@ export default class CardToggleRow extends React.Component<Props, State> {
       <View>
         <CardSearchResult
           card={card}
+          count={value}
           onToggleChange={this._onCardOneToggle}
           onPress={onPress}
           toggleValue={one}
@@ -82,9 +95,21 @@ export default class CardToggleRow extends React.Component<Props, State> {
         { (limit > 1) && (
           <CardSearchResult
             card={card}
+            count={value}
             onToggleChange={this._onCardTwoToggle}
             onPress={onPress}
             toggleValue={two}
+            fontScale={fontScale}
+            backgroundColor="transparent"
+          />
+        ) }
+        { (limit > 2) && (
+          <CardSearchResult
+            card={card}
+            count={value}
+            onToggleChange={this._onCardThreeToggle}
+            onPress={onPress}
+            toggleValue={three}
             fontScale={fontScale}
             backgroundColor="transparent"
           />

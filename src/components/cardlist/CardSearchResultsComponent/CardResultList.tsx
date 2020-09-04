@@ -37,8 +37,6 @@ import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollec
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { cardSectionHeaderHeight, CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import calculateDefaultFilterState from '@components/filter/DefaultFilterState';
-import { CardFilterData, FilterState, calculateCardFilterData } from '@lib/filters';
 import {
   SORT_BY_TYPE,
   SORT_BY_FACTION,
@@ -52,7 +50,7 @@ import {
 } from '@actions/types';
 import { QuerySort } from '@data/types';
 import { combineQueries, where } from '@data/query';
-import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState } from '@reducers';
+import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState, getLangPreference } from '@reducers';
 import Card from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import typography from '@styles/typography';
@@ -75,15 +73,15 @@ function funLoadingMessages() {
 interface OwnProps {
   componentId: string;
   fontScale: number;
-  query: Brackets;
+  query?: Brackets;
   filterQuery?: Brackets;
-  termQuery?: Brackets;
   searchTerm?: string;
   sort?: SortType;
   investigator?: Card;
   originalDeckSlots?: Slots;
   deckCardCounts?: Slots;
   tabooSetOverride?: number;
+  filterCard?: (card: Card) => boolean;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
   cardPressed?: (card: Card) => void;
@@ -95,7 +93,9 @@ interface OwnProps {
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
   mythosToggle?: boolean;
+  mythosMode?: boolean;
   initialSort?: SortType;
+  renderCard?: (card: Card) => React.ReactElement;
 }
 
 interface ReduxProps {
@@ -114,8 +114,8 @@ interface ReduxProps {
 interface ReduxActionProps {
   addFilterSet: (
     id: string,
-    filters: FilterState,
-    cardData: CardFilterData,
+    cards: Card[],
+    db: Database,
     sort?: SortType,
     mythosToggle?: boolean
   ) => void;
@@ -124,9 +124,8 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 interface DbState {
-  query: Brackets;
+  query?: Brackets;
   filterQuery?: Brackets;
-  termQuery?: Brackets;
   sort?: SortType;
   deckSections: CardBucket[];
   deckCardCounts?: Slots;
@@ -141,7 +140,6 @@ interface LiveState {
   spoilerCardsCount: number;
   deckCardCounts?: Slots;
 }
-
 
 interface State {
   refreshDeck: number;
@@ -193,14 +191,17 @@ class CardResultList extends React.Component<Props, State> {
     const {
       deckCardCounts,
       visible,
+      mythosMode,
     } = this.props;
     const {
       dirty,
     } = this.state;
     const updateDeckCardCounts = !isEqual(prevProps.deckCardCounts, deckCardCounts);
+    if (prevProps.mythosMode !== mythosMode) {
+      this.filterSetInitialized = false;
+    }
     if ((visible && !prevProps.visible && dirty) ||
         JSON.stringify(prevProps.query) !== JSON.stringify(this.props.query) ||
-        JSON.stringify(prevProps.termQuery) !== JSON.stringify(this.props.termQuery) ||
         prevProps.sort !== this.props.sort ||
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||
@@ -417,7 +418,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       originalDeckSlots,
       tabooSetId,
-      termQuery,
       filterQuery,
       storyOnly,
       query,
@@ -442,7 +442,6 @@ class CardResultList extends React.Component<Props, State> {
         [
           ...(storyOnly && query ? [query] : []),
           ...(filterQuery ? [filterQuery] : []),
-          ...(termQuery ? [termQuery] : []),
         ],
         'and'
       ),
@@ -460,7 +459,6 @@ class CardResultList extends React.Component<Props, State> {
       mythosToggle,
       initialSort,
       tabooSetId,
-      termQuery,
       filterQuery,
       sort,
       deckCardCounts,
@@ -468,26 +466,25 @@ class CardResultList extends React.Component<Props, State> {
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
-    const cards: Card[] = await db.getCards(
+    const cards: Card[] = query ? await db.getCards(
       combineQueries(
         query,
         [
           ...(filterQuery ? [filterQuery] : []),
-          ...(termQuery ? [termQuery] : []),
         ],
         'and'
       ),
       tabooSetId,
       this.getSort()
-    );
+    ) : [];
     const deckSections = await this.deckSections(db);
 
     if (!this.filterSetInitialized) {
       this.filterSetInitialized = true;
       addFilterSet(
         componentId,
-        calculateDefaultFilterState(cards),
-        calculateCardFilterData(cards),
+        cards,
+        db,
         initialSort || SORT_BY_TYPE,
         mythosToggle
       );
@@ -497,7 +494,6 @@ class CardResultList extends React.Component<Props, State> {
       cards,
       deckSections,
       query,
-      termQuery,
       filterQuery,
       sort,
       deckCardCounts,
@@ -609,38 +605,51 @@ class CardResultList extends React.Component<Props, State> {
     );
   };
 
-  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<Card>) => {
+  renderCard(card: Card, id: string) {
     const {
       limits,
       hasSecondCore,
       fontScale,
       onDeckCountChange,
+      renderCard,
     } = this.props;
     const {
       deckCardCounts,
     } = this.state;
+    if (renderCard) {
+      return renderCard(card);
+    }
     return (
       <CardSearchResult
-        card={item}
+        card={card}
         fontScale={fontScale}
-        count={deckCardCounts && deckCardCounts[item.code]}
+        count={deckCardCounts && deckCardCounts[card.code]}
         onDeckCountChange={onDeckCountChange}
-        id={`${section.id}.${index}`}
+        id={id}
         onPressId={this._cardPressed}
-        limit={limits ? limits[item.code] : undefined}
+        limit={limits ? limits[card.code] : undefined}
         hasSecondCore={hasSecondCore}
       />
     );
+  }
+
+
+  _renderCard = ({ item, index, section }: SectionListRenderItemInfo<Card>) => {
+    return this.renderCard(item, `${section.id}.${index}`);
   };
 
   renderEmptyState(liveState: LiveState, refreshing?: boolean) {
     const {
       searchTerm,
+      query,
     } = this.props;
     const {
       cardsCount,
       spoilerCardsCount,
     } = liveState;
+    if  (!query) {
+      return null;
+    }
     if (!refreshing && (cardsCount + spoilerCardsCount) === 0) {
       return (
         <View>
@@ -756,6 +765,7 @@ class CardResultList extends React.Component<Props, State> {
       show_spoilers,
       handleScroll,
       renderHeader,
+      filterCard,
     } = this.props;
     const {
       loadingMessage,
@@ -771,6 +781,7 @@ class CardResultList extends React.Component<Props, State> {
           </View>
           <ActivityIndicator
             style={[{ height: 80 }]}
+            color={COLORS.lightText}
             size="small"
             animating
           />
@@ -778,15 +789,26 @@ class CardResultList extends React.Component<Props, State> {
       );
     }
     const { cards, deckSections, deckCardCounts } = dbState;
+    const filteredDeckSections = filterCard ?
+      flatMap(deckSections, section => {
+        const data = filter(section.data, card => filterCard(card));
+        if (!data.length) {
+          return [];
+        }
+        return {
+          ...section,
+          data,
+        };
+      }) : deckSections;
     const groupedCards = partition(
-      cards,
+      filterCard ? filter(cards, card => filterCard(card)) : cards,
       card => {
         return show_spoilers[card.pack_code] ||
           !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
       });
 
     const liveState: LiveState = {
-      deckSections,
+      deckSections: filteredDeckSections,
       deckCardCounts,
       cards: this.bucketCards(groupedCards[0], 'cards'),
       cardsCount: groupedCards[0].length,
@@ -857,7 +879,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       query,
       filterQuery,
-      termQuery,
       sort,
       tabooSetId,
     } = this.props;
@@ -866,7 +887,7 @@ class CardResultList extends React.Component<Props, State> {
       <DbRender
         name="card-results"
         getData={this._updateResults}
-        ids={[query, filterQuery, termQuery, sort, refreshDeck, tabooSetId]}
+        ids={[query, filterQuery, sort, refreshDeck, tabooSetId]}
       >
         { this._renderResults }
       </DbRender>
@@ -879,7 +900,7 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
     singleCardView: state.settings.singleCardView || false,
     in_collection,
-    lang: state.packs.lang || 'en',
+    lang: getLangPreference(state),
     show_spoilers: getPackSpoilers(state),
     hasSecondCore: in_collection.core || false,
     tabooSetId: getTabooSet(state, props.tabooSetOverride),

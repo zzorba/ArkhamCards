@@ -13,6 +13,7 @@ import decks from './decks';
 import packs from './packs';
 import settings from './settings';
 import { CardFilterData, FilterState } from '@lib/filters';
+import { getSystemLanguage } from '@lib/i18n';
 import {
   BackupState,
   Campaign,
@@ -27,6 +28,7 @@ import {
   SORT_BY_TYPE,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
+import { State } from 'react-native-gesture-handler';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -452,6 +454,10 @@ export function getNextLocalDeckId(state: AppState): number {
   return -1;
 }
 
+export function getDeckChecklist(state: AppState, id: number): Set<string> {
+  return new Set((state.decks.checklist || {})[id] || []);
+}
+
 export function getFilterState(
   state: AppState,
   filterId: string
@@ -498,4 +504,38 @@ export function getCampaignGuideState(
   campaignId: number
 ): CampaignGuideState {
   return getGuideState(state, campaignId);
+}
+
+export function getLangChoice(state: AppState) {
+  if (state.settings.lang) {
+    return state.settings.lang;
+  }
+  if (state.cards.lang) {
+    return state.cards.lang;
+  }
+  return 'en';
+}
+
+export function getLangPreference(
+  state: AppState
+): string {
+  if (state.settings.lang === 'system') {
+    return getSystemLanguage();
+  }
+  if (state.settings.lang) {
+    return state.settings.lang;
+  }
+  if (state.cards.lang) {
+    return state.cards.lang;
+  }
+  return getSystemLanguage();
+}
+
+export function getCardLang(
+  state: AppState
+): string {
+  if (state.cards.card_lang) {
+    return state.cards.card_lang;
+  }
+  return state.cards.lang || 'en';
 }

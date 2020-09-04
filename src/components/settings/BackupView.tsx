@@ -29,6 +29,10 @@ import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
 import { campaignFromJson } from '@lib/cloudHelper';
 
+export interface BackupProps {
+  safeMode?: boolean;
+}
+
 interface ReduxProps {
   backupData: BackupState;
 }
@@ -37,7 +41,7 @@ interface ReduxActionProps {
   ensureUuid: () => void;
 }
 
-type Props = NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
 class BackupView extends React.Component<Props> {
   componentDidMount() {
@@ -180,6 +184,9 @@ class BackupView extends React.Component<Props> {
   };
 
   render() {
+    const {
+      safeMode,
+    } = this.props;
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
@@ -190,10 +197,12 @@ class BackupView extends React.Component<Props> {
             onPress={this._exportCampaignData}
             text={t`Backup Campaign Data`}
           />
-          <SettingsItem
-            onPress={this._importCampaignData}
-            text={t`Restore Campaign Data`}
-          />
+          { !safeMode && (
+            <SettingsItem
+              onPress={this._importCampaignData}
+              text={t`Restore Campaign Data`}
+            />
+          ) }
         </ScrollView>
       </SafeAreaView>
     );
@@ -213,7 +222,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 }
 
 export default withDialogs(
-  connect<ReduxProps, ReduxActionProps, InjectedDialogProps, AppState>(
+  connect<ReduxProps, ReduxActionProps, InjectedDialogProps & BackupProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
   )(BackupView)

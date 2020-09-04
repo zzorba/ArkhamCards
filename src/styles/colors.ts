@@ -23,7 +23,7 @@ export default {
       text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331b9', dark: '#af89fa' }) : PlatformColor('?attr/factionMysticTextColor')) as any as string,
       background: '#4331b9',
       darkBackground: '#4331b9',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d47400', dark: '#46018f' }) : PlatformColor('?attr/factionMysticLightBackgroundColor')) as any as string,
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d9d6f1', dark: '#46018f' }) : PlatformColor('?attr/factionMysticLightBackgroundColor')) as any as string,
     },
     seeker: {
       text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#db7c07', dark: '#fcb447' }) : PlatformColor('?attr/factionSeekerTextColor')) as any as string,
@@ -52,7 +52,7 @@ export default {
     neutral: {
       text: darkText,
       background: '#444',
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444', dark: '#888' }) : PlatformColor('?attr/factionNeutralDarkBackgroundColor')) as any as string,
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#888888' }) : PlatformColor('?attr/factionNeutralDarkBackgroundColor')) as any as string,
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : PlatformColor('?attr/factionNeutralLightBackgroundColor')) as any as string,
     },
     dual: {
@@ -70,7 +70,7 @@ export default {
     mythos: {
       text: darkText,
       background: '#444',
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000', dark: '#444' }) : PlatformColor('?attr/factionMythosDarkBackgroundColor')) as any as string,
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000000', dark: '#444444' }) : PlatformColor('?attr/factionMythosDarkBackgroundColor')) as any as string,
       lightBackground: '#000000',
     },
   },

@@ -8,8 +8,9 @@ import {
   ParseState,
 } from 'react-native-markdown-view';
 
-import { WithChildren, WithText, State } from '../CardTextComponent/types';
+import { WithChildren, WithText, WithIconName, State } from '../CardTextComponent/types';
 import COLORS from '@styles/colors';
+import ArkhamIconNode from '../CardTextComponent/ArkhamIconNode';
 import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
 import FlavorFancyNode from './FlavorFancyNode';
@@ -27,6 +28,16 @@ const BreakTagRule: MarkdownRule<WithText, State> = {
     return { text: '\n' };
   },
   render: FlavorUnderlineNode,
+};
+
+
+const ArkhamIconRule: MarkdownRule<WithIconName, State> = {
+  match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
+  order: 1,
+  parse: (capture) => {
+    return { name: capture[1] };
+  },
+  render: ArkhamIconNode,
 };
 
 const CiteTagRule: MarkdownRule<WithText, State> = {
@@ -128,6 +139,7 @@ export default function CardFlavorTextComponent(
         marginBottom: xs,
       }}
       rules={{
+        iconTag: ArkhamIconRule,
         bTag: BoldHtmlTagRule,
         uTag: UnderlineHtmlTagRule,
         brTag: BreakTagRule,

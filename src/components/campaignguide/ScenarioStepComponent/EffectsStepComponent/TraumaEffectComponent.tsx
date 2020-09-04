@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { map } from 'lodash';
-import { t } from 'ttag';
+import { c, t, msgid, ngettext } from 'ttag';
 
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
@@ -21,32 +21,89 @@ interface Props {
 
 export default class TraumaEffectComponent extends React.Component<Props> {
   message(investigator: Card): string {
+    const male = investigator.grammarGenderMasculine();
     const { effect } = this.props;
     if (effect.insane) {
-      return t`${investigator.name} is driven <b>insane</b>.`;
+      return male ?
+        c('masculine').t`${investigator.name} is driven <b>insane</b>.` :
+        c('feminine').t`${investigator.name} is driven <b>insane</b>.`;
     }
     if (effect.killed) {
-      return t`${investigator.name} is <b>killed</b>.`;
+      return male ?
+        c('masculine').t`${investigator.name} is <b>killed</b>.`:
+        c('feminine').t`${investigator.name} is <b>killed</b>.`;
     }
     if (effect.mental_or_physical) {
-      return t`${investigator.name} suffers 1 physical or mental trauma <i>(their choice)</i>.`;
+      return male ?
+        c('masculine').t`${investigator.name} suffers 1 physical or mental trauma <i>(their choice)</i>.` :
+        c('feminine').t`${investigator.name} suffers 1 physical or mental trauma <i>(their choice)</i>.`;
     }
     if (effect.mental && effect.physical) {
-      return t`${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`;
+      const traumaTotal = effect.mental + effect.physical;
+      return male ?
+        c('masculine').ngettext(
+          msgid`${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`,
+          `${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`,
+          traumaTotal
+        ) :
+        c('feminine').ngettext(
+          msgid`${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`,
+          `${investigator.name} suffers ${effect.mental} mental and ${effect.physical} physical trauma.`,
+          traumaTotal
+        );
     }
     if (effect.mental) {
       if (effect.mental < 0) {
         const mental = Math.abs(effect.mental);
-        return t`${investigator.name} heals ${mental} mental trauma.`;
+        return male ?
+          c('masculine').ngettext(
+            msgid`${investigator.name} heals ${mental} mental trauma.`,
+            `${investigator.name} heals ${mental} mental trauma.`,
+            mental
+          ) :
+          c('feminine').ngettext(
+            msgid`${investigator.name} heals ${mental} mental trauma.`,
+            `${investigator.name} heals ${mental} mental trauma.`,
+            mental
+          ) ;
       }
-      return t`${investigator.name} suffers ${effect.mental} mental trauma.`;
+      return male ?
+        c('masculine').ngettext(
+          msgid`${investigator.name} suffers ${effect.mental} mental trauma.`,
+          `${investigator.name} suffers ${effect.mental} mental trauma.`,
+          effect.mental
+        ) :
+        c('feminine').ngettext(
+          msgid`${investigator.name} suffers ${effect.mental} mental trauma.`,
+          `${investigator.name} suffers ${effect.mental} mental trauma.`,
+          effect.mental
+        );
     }
     if (effect.physical) {
       if (effect.physical < 0) {
         const physical = Math.abs(effect.physical);
-        return t`${investigator.name} heals ${physical} physical trauma.`;
+        return male ?
+          c('masculine').ngettext(
+            msgid`${investigator.name} heals ${physical} physical trauma.`,
+            `${investigator.name} heals ${physical} physical trauma.`,
+            physical
+          ) : c('feminine').ngettext(
+            msgid`${investigator.name} heals ${physical} physical trauma.`,
+            `${investigator.name} heals ${physical} physical trauma.`,
+            physical
+          );
       }
-      return t`${investigator.name} suffers ${effect.physical} physical trauma.`;
+      return male ?
+        c('masculine').ngettext(
+          msgid`${investigator.name} suffers ${effect.physical} physical trauma.`,
+          `${investigator.name} suffers ${effect.physical} physical trauma.`,
+          effect.physical
+        ) :
+        c('feminine').ngettext(
+          msgid`${investigator.name} suffers ${effect.physical} physical trauma.`,
+          `${investigator.name} suffers ${effect.physical} physical trauma.`,
+          effect.physical
+        );
     }
     return 'Unknown trauma type';
   }

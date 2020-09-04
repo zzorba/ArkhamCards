@@ -44,9 +44,7 @@ export default class PlayerCardImage extends React.Component<Props> {
                 color: '#FFFFFF',
               },
               background: {
-                color: COLORS.faction[
-                  card.faction_code || 'neutral'
-                ].darkBackground,
+                color: card.faction_code ? COLORS.faction[card.faction_code].background : COLORS.darkText,
               },
               title: {
                 text: card.name,

@@ -193,8 +193,8 @@ export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
   const cleanText = text
     .replace(/&rarr;/g, '→')
     .replace(/\/n/g, '\n')
-    .replace(/^\s?-|—\s+(.+)$/gm,
-      onLinkPress ? '<span class="icon-bullet"></span> $1' : '[bullet] $1'
+    .replace(/(^\s?-|^—\s+)(.+)$/gm,
+      onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
     );
 
   // Text that has hyperlinks uses a different style for the icons.

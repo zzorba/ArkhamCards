@@ -138,7 +138,7 @@ export default class DeckListRow extends React.Component<Props> {
         ) }
         { !!dateStr && (
           <Text style={typography.small} >
-            { t`Updated ${dateStr}` }
+            { dateStr }
           </Text>
         ) }
       </View>
@@ -160,7 +160,7 @@ export default class DeckListRow extends React.Component<Props> {
           <ActivityIndicator
             style={styles.loading}
             size="large"
-            color={COLORS.darkText}
+            color={COLORS.lightText}
           />
         </View>
       );
@@ -200,7 +200,7 @@ export default class DeckListRow extends React.Component<Props> {
           <ActivityIndicator
             style={styles.loading}
             size="large"
-            color={COLORS.darkText}
+            color={COLORS.lightText}
           />
         </View>
       );

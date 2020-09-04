@@ -1725,10 +1725,6 @@
           },
           {
             "id": "paths_known",
-            "text": "#X# paths are known to you"
-          },
-          {
-            "id": "paths_known",
             "text": "#X# paths are known to you."
           },
           {
@@ -2188,6 +2184,10 @@
           {
             "id": "azathoth_slumbers",
             "text": "Azathoth slumbers… for now."
+          },
+          {
+            "id": "being_hunted",
+            "text": "you are being hunted."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -3221,10 +3221,6 @@
           {
             "id": "nexus_is_near",
             "text": "the nexus is near."
-          },
-          {
-            "id": "paths_known",
-            "text": "#X# paths are known to you"
           },
           {
             "id": "paths_known",

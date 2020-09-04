@@ -253,11 +253,14 @@ class AddSideScenarioView extends React.Component<Props, State> {
       },
     ];
     return (
-      <TabView
-        tabs={tabs}
-        onTabChange={this._onTabChange}
-        fontScale={fontScale}
-      />
+      <>
+        <TabView
+          tabs={tabs}
+          onTabChange={this._onTabChange}
+          fontScale={fontScale}
+        />
+        { this.renderCustomDialog() }
+      </>
     );
   }
 }

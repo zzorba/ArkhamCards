@@ -8,6 +8,7 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { showScenario } from '@components/campaignguide/nav';
 import NavButton from '@components/core/NavButton';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
@@ -29,7 +30,7 @@ interface Props {
   ) => void;
 }
 
-export default class ScenarioButton extends React.Component<Props> {
+class ScenarioButton extends React.Component<Props & StylesProps> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
@@ -112,30 +113,30 @@ export default class ScenarioButton extends React.Component<Props> {
   }
 
   renderContent() {
-    const { scenario } = this.props;
+    const { scenario, gameFont } = this.props;
     switch (scenario.type) {
       case 'locked':
         return (
-          <Text style={[typography.gameFont, styles.locked]} numberOfLines={2}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.locked]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'completed':
         return (
-          <Text style={typography.gameFont} numberOfLines={2}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'started':
       case 'playable':
         return (
-          <Text style={[typography.gameFont, styles.playable]} numberOfLines={2}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.playable]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'skipped':
         return (
-          <Text style={[typography.gameFont, styles.skipped]} numberOfLines={2}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.skipped]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
@@ -162,6 +163,8 @@ export default class ScenarioButton extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(ScenarioButton);
 
 const styles = StyleSheet.create({
   flex: {

@@ -25,6 +25,7 @@ import CardDetailComponent from '@components/card/CardDetailView/CardDetailCompo
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '@styles/sizes';
 import typography from '@styles/typography';
 import space, { s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
 
 const PLAYER_BACK = require('../../../assets/player-back.png');
 
@@ -282,6 +283,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
           <Text style={typography.text}>{ t`Saving` }</Text>
           <ActivityIndicator
             style={[{ height: 80 }]}
+            color={COLORS.lightText}
             size="small"
             animating
           />

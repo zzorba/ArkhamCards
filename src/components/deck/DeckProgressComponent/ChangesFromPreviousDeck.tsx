@@ -61,9 +61,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       componentId,
       parsedDeck: {
         investigator,
-        deck: {
-          slots,
-        },
+        slots,
       },
       tabooSetId,
       renderFooter,

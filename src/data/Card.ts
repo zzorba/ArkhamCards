@@ -11,7 +11,32 @@ const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
-const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (and|or) )?((\\d+|all) )?horror');
+const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
+
+const FEMININE_INVESTIGATORS = new Set([
+  '01002', // Daisy Walker
+  '01004', // Agnes Baker
+  '01005', // Wendy Adams
+  '02001', // Zoey Samaras
+  '02003', // Jenny Barnes
+  '03002', // Mihn Thi Phan
+  '03003', // Sefina Rousseau
+  '03004', // Akachi Onyele
+  '03006', // Lola Hayes
+  '04002', // Ursula Downs
+  '05001', // Carolyn Fern
+  '05004', // Diana
+  '05005', // Rita
+  '05006', // Marie
+  '06002', // Mandy Thompson
+  '06005', // Patrice
+  '60301', // Wini
+  '60401', // Jacqueline
+  '60501', // Stella
+  '07001', // Sister Mary
+  '07002', // Amanda Sharpe
+  '07003', // Trish
+]);
 
 @Entity('card')
 @Index(['code', 'taboo_set_id'], { unique: true })
@@ -66,6 +91,9 @@ export default class Card {
 
   @Column('text', { nullable: true })
   public slot?: string;
+
+  @Column('text', { nullable: true })
+  public real_slot?: string;
 
   @Index()
   @Column('text', { nullable: true })
@@ -258,6 +286,8 @@ export default class Card {
   @Column('text', { nullable: true })
   public slots_normalized?: string;
   @Column('text', { nullable: true })
+  public real_slots_normalized?: string;
+  @Column('text', { nullable: true })
   public uses?: string;
   @Column('text', { nullable: true })
   public bonded_name?: string;
@@ -276,6 +306,10 @@ export default class Card {
 
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
+  }
+
+  public grammarGenderMasculine(): boolean {
+    return !FEMININE_INVESTIGATORS.has(this.code);
   }
 
   isBasicWeakness(): boolean {
@@ -521,7 +555,7 @@ export default class Card {
             if (json.permanent || json.double_sided) {
               return t`Asset: Permanent`;
             }
-            switch(json.slot) {
+            switch(json.real_slot) {
               case 'Hand':
                 return t`Asset: Hand`;
               case 'Hand x2':
@@ -643,11 +677,20 @@ export default class Card {
         map(json.traits.split('.'), trait => trait.toLowerCase().trim()),
         trait => trait),
       trait => `#${trait}#`).join(',') : null;
+    const real_slot = json.real_slot || json.slot;
+    const real_slots_normalized = real_slot ? map(
+      filter(
+        map(real_slot.split('.'), s => s.toLowerCase().trim()),
+        s => !!s
+      )
+    ).join(',') : null;
+    const slot = json.slot || null;
     const slots_normalized = json.slot ? map(
       filter(
-        map(json.slot.split('.'), slot => slot.toLowerCase().trim()),
-        slot => slot),
-      slot => `#${slot}#`).join(',') : null;
+        map(json.slot.split('.'), s => s.toLowerCase().trim()),
+        s => !!s
+      ),
+      s => `#${s}#`).join(',') : null;
 
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
@@ -701,6 +744,9 @@ export default class Card {
       spoiler,
       traits_normalized,
       real_traits_normalized,
+      real_slot,
+      real_slots_normalized,
+      slot,
       slots_normalized,
       uses,
       bonded_name,

@@ -69,7 +69,7 @@ function groupAssets(
     if (!card) {
       return t`Other`;
     }
-    switch (card.slot) {
+    switch (card.real_slot) {
       case 'Hand': return t`Hand`;
       case 'Hand. Arcane': return t`Hand. Arcane`;
       case 'Hand x2': return t`Hand x2`;
@@ -155,7 +155,7 @@ function slotCount(
         if (!card || card.type_code !== 'asset') {
           return false;
         }
-        const slots = card.slots_normalized;
+        const slots = card.real_slots_normalized;
         return !!(slots && slots.indexOf(`#${slot}#`) !== -1);
       }),
       c => c.quantity
@@ -632,6 +632,8 @@ export function parseDeck(
     ignoreDeckLimitSlots,
     changes,
     problem,
-    limitedSlots: !!find(validation.deckOptions(), option => !!option.limit),
+    limitedSlots: !!find(validation.deckOptions(), option =>
+      !!option.limit && !find(option.trait || [], trait => trait === 'Covenant')
+    ),
   };
 }

@@ -4,6 +4,7 @@ import { isArray, map } from 'lodash';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { SettingsPicker } from '@lib/react-native-settings-components';
 import { DisplayChoice } from '@data/scenario';
 import COLORS from '@styles/colors';
@@ -28,6 +29,7 @@ export interface PickerProps {
   settingsStyle?: boolean;
   open?: boolean;
   hideWidget?: boolean;
+  formatLabel?: (index: number) => string;
 }
 
 interface SingleConfig {
@@ -42,11 +44,13 @@ interface MultiConfig {
   selectedIndex?: number[];
 }
 
-interface Props extends PickerProps {
+interface OwnProps extends PickerProps {
   config: SingleConfig | MultiConfig;
 }
 
-export default class PickerComponent extends React.Component<Props> {
+type Props = OwnProps & StylesProps;
+
+class PickerComponent extends React.Component<Props> {
   pickerRef?: SettingsPicker;
 
   _capturePickerRef = (ref: SettingsPicker) => {
@@ -78,14 +82,14 @@ export default class PickerComponent extends React.Component<Props> {
   };
 
   _valueFormat = (idxOrArray: number | number[]): string => {
-    const { defaultLabel } = this.props;
+    const { defaultLabel, formatLabel } = this.props;
     if (isArray(idxOrArray)) {
       if (!idxOrArray.length) {
         return defaultLabel || '';
       }
-      return map(idxOrArray, x => this.choiceToLabel(x)).join(', ');
+      return map(idxOrArray, x => formatLabel ? formatLabel(x) : this.choiceToLabel(x)).join(', ');
     }
-    return this.choiceToLabel(idxOrArray);
+    return formatLabel ? formatLabel(idxOrArray) : this.choiceToLabel(idxOrArray);
   };
 
   choiceToLabel(idx: number): string {
@@ -115,6 +119,7 @@ export default class PickerComponent extends React.Component<Props> {
       settingsStyle,
       hideWidget,
       modalTitle,
+      gameFont,
     } = this.props;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
@@ -154,6 +159,7 @@ export default class PickerComponent extends React.Component<Props> {
               color: colors ? colors.modalTextColor : COLORS.white,
             } : {
               ...typography.mediumGameFont,
+              fontFamily: gameFont,
               color: colors ? colors.modalTextColor : COLORS.white,
             } ,
             description: {
@@ -180,6 +186,7 @@ export default class PickerComponent extends React.Component<Props> {
           color: colors ? colors.textColor : COLORS.darkText,
         } : {
           ...typography.mediumGameFont,
+          fontFamily: gameFont,
           color: colors ? colors.textColor : COLORS.darkText,
           fontWeight: '600',
         }}
@@ -217,3 +224,5 @@ export default class PickerComponent extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(PickerComponent);

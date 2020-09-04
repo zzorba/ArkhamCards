@@ -5,6 +5,7 @@ import {
   isAfter,
   startOfDay,
 } from 'date-fns';
+import { t } from 'ttag';
 
 /**
  * Formats a timestamp into a string with year and month, e.g. "2017-2".
@@ -55,15 +56,17 @@ export function toRelativeDateString(date: Date) {
   const nowDate = new Date();
   const startOfNowDate = startOfDay(nowDate);
   if (isAfter(date, startOfNowDate)) {
-    return 'Today';
+    return t`Updated today`;
   }
   if (isAfter(date, addDays(startOfNowDate, -1))) {
-    return 'Yesterday';
+    return t`Updated yesterday`;
   }
   if (isAfter(date, addDays(startOfNowDate, -7))) {
-    return format(date, 'EEEE');
+    const dayOfWeek = format(date, 'EEEE');
+    return t`Updated ${dayOfWeek}`;
   }
-  return format(date, 'MMMM d, yyyy');
+  const dateString = format(date, 'MMMM d, yyyy');
+  return t`Updated ${dateString}`;
 }
 
 /**

@@ -16,9 +16,10 @@ import COLORS from '@styles/colors';
 export function getDeckOptions(
   investigator?: Card,
   modal?: boolean,
-  title?: string
+  title?: string,
+  noTitle?: boolean,
 ): Options {
-  return {
+  const options: Options = {
     statusBar: {
       style: 'light',
     },
@@ -41,15 +42,6 @@ export function getDeckOptions(
           color: 'white',
         },
       ] : [],
-      title: {
-        fontWeight: 'bold',
-        text: (investigator ? investigator.name : t`Deck`),
-        color: '#FFFFFF',
-      },
-      subtitle: {
-        text: title,
-        color: '#FFFFFF',
-      },
       background: {
         color: COLORS.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
@@ -65,6 +57,18 @@ export function getDeckOptions(
       animate: true,
     },
   };
+  if (!noTitle && options.topBar) {
+    options.topBar.title = {
+      fontWeight: 'bold',
+      text: (investigator ? investigator.name : t`Deck`),
+      color: '#FFFFFF',
+    };
+    options.topBar.subtitle =  {
+      text: title,
+      color: '#FFFFFF',
+    };
+  }
+  return options;
 }
 
 export function showDeckModal(
@@ -117,6 +121,7 @@ export function showCard(
         topBar: {
           backButton: {
             title: t`Back`,
+            color: COLORS.navButton,
           },
         },
       },

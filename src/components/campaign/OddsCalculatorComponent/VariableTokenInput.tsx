@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     borderColor: COLORS.divider,
   },
   counterText: {
-    color: 'black',
     fontSize: 22,
     paddingRight: s,
   },

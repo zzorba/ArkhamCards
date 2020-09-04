@@ -160,6 +160,7 @@ export interface Campaign {
   setup: string[];
   steps: Step[];
   side_scenario_steps?: Step[];
+  standalone?: any[];
 }
 export interface BranchStep {
   id: string;
@@ -797,7 +798,9 @@ export interface Scenario {
 export interface ChallengeData {
   investigator: string;
   xp_cost: number;
-  requirements: string[];
+  requirements: {
+    text: string;
+  }[];
 }
 export interface Resolution {
   id: string;

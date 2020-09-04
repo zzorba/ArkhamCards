@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
+import RegexEscape from 'regex-escape';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -23,6 +24,9 @@ import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@
 import Card from '@data/Card';
 import typography from '@styles/typography';
 import space, { isTablet, s, xs } from '@styles/space';
+import COLORS from '@styles/colors';
+
+const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
@@ -55,10 +59,9 @@ interface State {
   searchText: boolean;
   searchFlavor: boolean;
   searchBack: boolean;
-  searchTerm: string;
-
-  searchKey: string;
-  termQuery: Brackets | null;
+  searchTerm?: string;
+  searchCode?: number;
+  searchQuery?: RegExp;
 }
 
 type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
@@ -93,23 +96,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      where('c.altArtInvestigator != true AND c.back_linked is null'),
+      where('c.altArtInvestigator != true AND c.back_linked is null AND not c.hidden'),
       queryParts,
       'and'
     );
   }
 
-  _throttledUpdateSearch: (search: string) => void;
-  _debouncedUpdateSeacrh: (search: string) => void;
-
-  static searchKey(searchTerm: string, searchText: boolean, searchFlavor: boolean, searchBack: boolean) {
-    return JSON.stringify({
-      searchTerm,
-      searchText,
-      searchBack,
-      searchFlavor,
-    });
-  }
+  _debouncedUpdateSeacrh: () => void;
 
   constructor(props: Props) {
     super(props);
@@ -119,13 +112,9 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchText: false,
       searchFlavor: false,
       searchBack: false,
-      searchTerm: '',
-      searchKey: CardSearchResultsComponent.searchKey('', false, false, false),
-      termQuery: null,
     };
 
-    this._throttledUpdateSearch = throttle(300, this._updateTermSearch);
-    this._debouncedUpdateSeacrh = debounce(300, this._updateTermSearch);
+    this._debouncedUpdateSeacrh = debounce(50, this._updateTermSearch);
   }
 
   _showHeader = () => {
@@ -141,7 +130,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       headerVisible,
       searchTerm,
     } = this.state;
-    if (headerVisible && searchTerm === '') {
+    if (headerVisible && !searchTerm) {
       this.setState({
         headerVisible: false,
       });
@@ -152,21 +141,21 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     const searchText = !this.state.searchText;
     this.setState({
       searchText,
-    }, () => this._updateTermSearch(this.state.searchTerm));
+    });
   };
 
   _toggleSearchFlavor = () => {
     const searchFlavor = !this.state.searchFlavor;
     this.setState({
       searchFlavor,
-    }, () => this._updateTermSearch(this.state.searchTerm));
+    });
   };
 
   _toggleSearchBack = () => {
     const searchBack = !this.state.searchBack;
     this.setState({
       searchBack,
-    }, () => this._updateTermSearch(this.state.searchTerm));
+    });
   };
 
   _searchUpdated = (text: string) => {
@@ -174,11 +163,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchTerm: text,
     }, () => {
       const { searchTerm } = this.state;
-      if (searchTerm.length < 5) {
-        this._throttledUpdateSearch(this.state.searchTerm);
-      } else {
-        this._debouncedUpdateSeacrh(this.state.searchTerm);
-      }
+      this._debouncedUpdateSeacrh();
     });
   };
 
@@ -186,70 +171,22 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     this._searchUpdated('');
   };
 
-  _updateTermSearch = async(searchTerm: string) => {
+  _updateTermSearch = async() => {
     const {
-      searchText,
-      searchFlavor,
-      searchBack,
-      searchKey,
-    } = this.state;
-    const newSearchKey = CardSearchResultsComponent.searchKey(
       searchTerm,
-      searchText,
-      searchFlavor,
-      searchBack
-    );
-    if (searchKey === newSearchKey) {
-      return;
-    }
-    if (searchTerm === '') {
+    } = this.state;
+    if (!searchTerm) {
       this.setState({
-        termQuery: null,
+        searchQuery: undefined,
+        searchCode: undefined,
       });
       return;
     }
-    const parts = searchBack ? [
-      'c.name LIKE :searchTerm',
-      'linked_card.name LIKE :searchTerm',
-      'c.back_name LIKE :searchTerm',
-      'linked_card.back_name LIKE :searchTerm',
-      'c.subname LIKE :searchTerm',
-      'linked_card.subname LIKE :searchTerm',
-    ] : [
-      'c.renderName LIKE :searchTerm',
-      'c.renderSubname LIKE :searchTerm',
-    ];
-    if (searchText) {
-      parts.push('c.real_text LIKE :searchTerm');
-      parts.push('linked_card.real_text LIKE :searchTerm');
-      parts.push('c.traits LIKE :searchTerm');
-      parts.push('linked_card.traits LIKE :searchTerm');
-      if (searchBack) {
-        parts.push('c.back_text LIKE :searchTerm');
-        parts.push('linked_card.back_text LIKE :searchTerm');
-      }
-    }
-
-    if (searchFlavor) {
-      parts.push('c.flavor LIKE :searchTerm');
-      parts.push('linked_card.flavor LIKE :searchTerm');
-      if (searchBack) {
-        parts.push('c.back_flavor LIKE :searchTerm');
-        parts.push('linked_card.back_flavor LIKE :searchTerm');
-      }
-    }
-    const lang = 'en';
+    const searchCode = DIGIT_REGEX.test(searchTerm) ? parseInt(searchTerm, 10) : undefined;
+    const term = searchTerm.replace(/“|”/g, '"').replace(/‘|’/, '\'');
     this.setState({
-      searchKey: newSearchKey,
-      termQuery: where(
-        parts.join(' OR '),
-        {
-          searchTerm: `%${searchTerm
-            .replace(/[\u2018\u2019]/g, '\'')
-            .replace(/[\u201C\u201D]/g, '"')
-            .toLocaleUpperCase(lang)}%`,
-        },
-      ),
+      searchQuery: new RegExp(`.*${RegexEscape(term)}.*`, 'i'),
+      searchCode,
     });
   };
 
@@ -352,6 +289,69 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     );
   }
 
+  _filterCardText = (card: Card): boolean => {
+    const {
+      searchText,
+      searchFlavor,
+      searchBack,
+      searchTerm,
+      searchQuery,
+      searchCode,
+    } = this.state;
+    if (searchCode && card.position === searchCode) {
+      return true;
+    }
+    if (!searchQuery || searchTerm === '' || !searchTerm) {
+      return true;
+    }
+    if (searchBack) {
+      if (searchQuery.test(card.name) ||
+        (card.linked_card && searchQuery.test(card.linked_card.name)) ||
+        (card.back_name && searchQuery.test(card.back_name)) ||
+        (card.linked_card && card.linked_card.back_name && searchQuery.test(card.linked_card.back_name)) ||
+        (card.subname && searchQuery.test(card.subname)) ||
+        (card.linked_card && card.linked_card.subname && searchQuery.test(card.linked_card.subname))
+      ) {
+        return true;
+      }
+    } else {
+      if (searchQuery.test(card.renderName) || (card.renderSubname && searchQuery.test(card.renderSubname))) {
+        return true;
+      }
+    }
+    if (searchText) {
+      if (
+        (card.real_text && searchQuery.test(card.real_text)) ||
+        (card.linked_card && card.linked_card.real_text && searchQuery.test(card.linked_card.real_text)) ||
+        (card.traits && searchQuery.test(card.traits)) ||
+        (card.linked_card && card.linked_card.traits && searchQuery.test(card.linked_card.traits))
+      ) {
+        return true;
+      }
+      if (searchBack && (
+        (card.back_text && searchQuery.test(card.back_text)) ||
+        (card.linked_card && card.linked_card.back_text && searchQuery.test(card.linked_card.back_text))
+      )) {
+        return true;
+      }
+    }
+    if (searchFlavor) {
+      if (
+        (card.flavor && searchQuery.test(card.flavor)) ||
+        (card.linked_card && card.linked_card.flavor && searchQuery.test(card.linked_card.flavor))
+      ) {
+        return true;
+      }
+      if (searchBack && (
+        (card.back_flavor && searchQuery.test(card.back_flavor)) ||
+        (card.linked_card && card.linked_card.back_flavor && searchQuery.test(card.linked_card.back_flavor))
+      )) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   render() {
     const {
       componentId,
@@ -376,13 +376,12 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     } = this.props;
     const {
       searchTerm,
-      termQuery,
     } = this.state;
     return (
       <CollapsibleSearchBox
         prompt={t`Search for a card`}
         advancedOptions={this.renderSearchOptions()}
-        searchTerm={searchTerm}
+        searchTerm={searchTerm || ''}
         onSearchChange={this._searchUpdated}
       >
         { (handleScroll) => (
@@ -406,7 +405,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                       tabooSetOverride={tabooSetOverride}
                       query={query}
                       filterQuery={filterQuery || undefined}
-                      termQuery={termQuery || undefined}
+                      filterCard={this._filterCardText}
                       searchTerm={searchTerm}
                       sort={selectedSort}
                       investigator={investigator}
@@ -422,6 +421,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                       showNonCollection={showNonCollection}
                       storyOnly={storyOnly}
                       mythosToggle={mythosToggle}
+                      mythosMode={mythosToggle && mythosMode}
                       initialSort={initialSort}
                     />
                     { !!renderFooter && <View style={styles.footer}>
@@ -465,5 +465,6 @@ const styles = StyleSheet.create({
   searchOption: {
     marginLeft: s,
     marginRight: xs,
+    color: COLORS.darkText,
   },
 });

@@ -60,6 +60,7 @@
 	<string>LaunchScreen</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Conkordia.ttf</string>
 		<string>Teutonic.ttf</string>
 		<string>forgotten.ttf</string>
 		<string>circle.ttf</string>

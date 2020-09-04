@@ -59,7 +59,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: passProps.whiteNav ? 'white' : COLORS.navButton,
+          color: passProps.whiteNav ? 'white' : '#007AFF',
         },
       },
     };
@@ -86,7 +86,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
 
   componentDidAppear() {
     const { componentId } = this.props;
-    console.log('merge options');
     Navigation.mergeOptions(componentId, CardDetailSwipeView.options(this.props));
   }
 

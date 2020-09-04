@@ -55,16 +55,19 @@ export const CAMPAIGN_SETUP_ID = '$campaign_setup';
 export default class CampaignGuide {
   private campaign: FullCampaign;
   private log: CampaignLog;
+  private encounterSets: { [code: string]: string };
 
   private sideCampaign: FullCampaign;
 
   constructor(
     campaign: FullCampaign,
     log: CampaignLog,
+    encounterSets: { [code: string]: string},
     sideCampaign: FullCampaign
   ) {
     this.campaign = campaign;
     this.log = log;
+    this.encounterSets = encounterSets;
     this.sideCampaign = sideCampaign;
   }
 
@@ -85,6 +88,10 @@ export default class CampaignGuide {
 
   campaignVersion() {
     return this.campaign.campaign.version;
+  }
+
+  encounterSet(code: string): string | undefined {
+    return this.encounterSets[code];
   }
 
   getFullScenarioName(

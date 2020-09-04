@@ -50,16 +50,18 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
     const { input, campaignLog } = this.props;
     const investigagorSupplies = campaignLog.investigatorSections[input.section] || {};
     const limits: { [code: string]: number } = {};
-    forEach(campaignLog.investigators(false), investigator => {
+    const investigators = campaignLog.investigators(false);
+    forEach(investigators, investigator => {
       limits[investigator.code] = 0;
     });
-    forEach(investigagorSupplies, (supplies, code) => {
-      const entry = find(supplies.entries,
+    forEach(investigators, investigator => {
+      const supplies = investigagorSupplies[investigator.code] || {};
+      const entry = find(supplies.entries || [],
         entry => entry.id === input.id &&
           !supplies.crossedOut[entry.id] &&
           entry.type === 'count'
       );
-      limits[code] = (entry && entry.type === 'count') ? entry.count : 0;
+      limits[investigator.code] = (entry && entry.type === 'count') ? entry.count : 0;
     });
     return limits;
   }
@@ -104,7 +106,7 @@ export default class UseSuppliesPrompt extends React.Component<Props, State> {
       <InvestigatorCheckListComponent
         id={id}
         choiceId="bad_thing"
-        checkText={badThing ? t`Reads "${badThing.condition}"` : `Doesn't get any`}
+        checkText={badThing ? t`Reads "${badThing.condition}"` : t`Doesn't get any`}
         min={target}
         max={target}
       />

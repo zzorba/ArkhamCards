@@ -36,6 +36,20 @@ export default function(
   action: FilterActions
 ): FiltersState {
   if (action.type === ADD_FILTER_SET) {
+    if (state.defaults[action.id]) {
+      // Already exists.
+      return {
+        ...state,
+        cardData: {
+          ...state.cardData,
+          [action.id]: action.cardData,
+        },
+        defaults: {
+          ...state.defaults,
+          [action.id]: action.filters,
+        },
+      };
+    }
     return {
       all: {
         ...state.all,

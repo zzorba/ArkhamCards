@@ -19,6 +19,7 @@ import { DeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import typography from '@styles/typography';
 import space, { m } from '@styles/space';
+import COLORS from '@styles/colors';
 
 interface OwnProps {
   investigator: Card;
@@ -188,6 +189,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
           </Text>
           <ActivityIndicator
             style={space.marginTopM}
+            color={COLORS.lightText}
             size="large"
             animating
           />

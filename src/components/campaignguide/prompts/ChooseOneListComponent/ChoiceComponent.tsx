@@ -50,9 +50,6 @@ export default class ChoiceComponent extends React.Component<Props> {
         <View style={[
           styles.row,
           index === 0 ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
-          selected ? {
-            backgroundColor: color,
-          } : {},
         ]}>
           <View style={styles.padding}>
             <View style={[styles.bullet, styles.radioButton]}>

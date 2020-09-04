@@ -4,10 +4,12 @@ import {
   Text,
   TouchableOpacity,
   View,
+  StyleProp,
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
@@ -32,7 +34,7 @@ interface Props {
 }
 
 const ICON_SIZE = 60;
-export default class InvestigatorRow extends React.Component<Props> {
+class InvestigatorRow extends React.Component<Props & StylesProps> {
   _onPress = () => {
     const {
       onPress,
@@ -62,6 +64,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       noFactionIcon,
       superTitle,
       fontScale,
+      gameFont,
     } = this.props;
     return (
       <View style={styles.wrapper}>
@@ -71,7 +74,7 @@ export default class InvestigatorRow extends React.Component<Props> {
         ]} />
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
-            <Text style={typography.mediumGameFont}>{ superTitle }</Text>
+            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>{ superTitle }</Text>
           </View>
         ) }
         <View style={[styles.row, !superTitle ? space.paddingTopS : {}]}>
@@ -86,7 +89,7 @@ export default class InvestigatorRow extends React.Component<Props> {
             />
           </View>
           <View style={[styles.titleColumn, button ? styles.buttonColumn : {}, noFactionIcon ? space.marginRightM : {}]}>
-            <Text style={[superTitle ? typography.gameFont : typography.bigGameFont, styles.title]}>
+            <Text style={[superTitle ? typography.gameFont : typography.bigGameFont, { fontFamily: gameFont }, styles.title]}>
               { description ? `${investigator.name}: ${description}` : investigator.name }
             </Text>
             { !!button && button }
@@ -137,6 +140,8 @@ export default class InvestigatorRow extends React.Component<Props> {
     );
   }
 }
+
+export default withStyles(InvestigatorRow);
 
 const styles = StyleSheet.create({
   wrapper: {

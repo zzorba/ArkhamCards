@@ -3,41 +3,47 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { flatMap, forEach, map, sortBy } from 'lodash';
+import { map, sortBy } from 'lodash';
 import { connect } from 'react-redux';
 import { msgid, ngettext } from 'ttag';
 
 import { AppState } from '@reducers';
 import { stringList } from '@lib/stringHelper';
 import SetupStepWrapper from '../SetupStepWrapper';
-import connectDb from '@components/data/connectDb';
-import Database from '@data/Database';
 import { EncounterSetsStep } from '@data/scenario/types';
-import EncounterSet from '@data/EncounterSet';
 import EncounterIcon from '@icons/EncounterIcon';
+import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+import CampaignGuide from '@data/scenario/CampaignGuide';
 
 interface OwnProps {
   step: EncounterSetsStep;
-}
-
-interface Data {
-  encounterSets: EncounterSet[];
+  campaignGuide: CampaignGuide
 }
 
 interface ReduxProps {
   alphabetizeEncounterSets: boolean;
 }
 
-type Props = OwnProps & Data & ReduxProps;
+type Props = OwnProps & ReduxProps;
 
 class EncounterSetStepComponent extends React.Component<Props> {
   encounterSets() {
-    const { encounterSets, alphabetizeEncounterSets } = this.props;
+    const { step, campaignGuide, alphabetizeEncounterSets } = this.props;
+    const encounterSets = map(
+      step.encounter_sets,
+      encounter_set => {
+        return {
+          code: encounter_set,
+          name: campaignGuide.encounterSet(encounter_set),
+        };
+      }
+    );
+
     if (alphabetizeEncounterSets) {
-      return sortBy(encounterSets, set => set.name);
+      return sortBy(encounterSets, set => set.name || '???');
     }
     return encounterSets;
   }
@@ -45,7 +51,7 @@ class EncounterSetStepComponent extends React.Component<Props> {
   render() {
     const { step } = this.props;
     const encounterSets = this.encounterSets();
-    const encounterSetString = stringList(map(encounterSets, set => set ? `<i>${set.name}</i>` : 'Missing Set Name'));
+    const encounterSetString = stringList(map(encounterSets, set => set.name ? `<i>${set.name}</i>` : 'Missing Set Name'));
     const leadText = step.aside ?
       ngettext(
         msgid`Set the ${encounterSetString} encounter set aside, out of play.`,
@@ -92,25 +98,7 @@ function mapStateToProps(state: AppState): ReduxProps {
   };
 }
 
-export default connectDb<OwnProps, Data, string[]>(
-  connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(EncounterSetStepComponent),
-  (props: OwnProps) => props.step.encounter_sets,
-  async(db: Database, encounter_sets: string[]) => {
-    const qb = await db.encounterSets();
-    const allEncounterSets = await qb.createQueryBuilder().whereInIds(encounter_sets).getMany();
-    const setsByCode: { [code: string]: EncounterSet } = {};
-    forEach(allEncounterSets, encounterSet => {
-      setsByCode[encounterSet.code] = encounterSet;
-    });
-    const encounterSets = flatMap(
-      encounter_sets,
-      code => setsByCode[code]
-    );
-    return {
-      encounterSets,
-    };
-  }
-);
+export default connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(EncounterSetStepComponent);
 
 const styles = StyleSheet.create({
   iconPile: {

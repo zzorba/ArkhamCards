@@ -44,7 +44,7 @@ function MyProvider({ store: { redux, persistor }, children}) {
           <DatabaseProvider>
             <ThemeProvider theme={Appearance.getColorScheme() === 'dark' ? darkTheme : theme}>
               { children }
-            </ThemeProvider> 
+            </ThemeProvider>
           </DatabaseProvider>
         </PersistGate>
       </Provider>

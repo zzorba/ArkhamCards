@@ -1,10 +1,11 @@
 import React from 'react';
-import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
+import { Alert, AppState, InteractionManager, Text, StyleSheet, View, AppStateStatus } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { Campaign, InvestigatorData, Trauma } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
@@ -15,7 +16,7 @@ import typography from '@styles/typography';
 import { s, l } from '@styles/space';
 import COLORS from '@styles/colors';
 
-interface Props {
+interface OwnProps {
   componentId: string;
   campaignData: CampaignGuideContextType;
   processedCampaign: ProcessedCampaign;
@@ -29,14 +30,17 @@ interface Props {
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
+type Props = OwnProps & StylesProps;
+
 interface State {
   spentXp: {
     [code: string]: number;
   };
   removeMode: boolean;
+  appState: AppStateStatus;
 }
 
-export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
+class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   _navEventListener: EventSubscription;
 
   static contextType = CampaignGuideContext;
@@ -54,11 +58,28 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     this.state = {
       spentXp,
       removeMode: false,
+      appState: AppState.currentState,
     };
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
+  _handleAppStateChange = (nextAppState: AppStateStatus) => {
+    const { appState } = this.state;
+    if (appState === 'active' && (nextAppState === 'inactive' || nextAppState === 'background')) {
+      this._syncCampaignData();
+    }
+    this.setState({
+      appState: nextAppState,
+    });
+  };
+
+  componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+  }
+
   componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
+
     this._navEventListener && this._navEventListener.remove();
     InteractionManager.runAfterInteractions(this._syncCampaignData);
   }
@@ -98,7 +119,6 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         difficulty: campaignLog.campaignData.difficulty,
         investigatorData: campaignLog.campaignData.investigatorData,
         chaosBag: campaignLog.chaosBag,
-        lastUpdated: new Date(),
         scenarioResults: flatMap(scenarios, scenario => {
           if (scenario.type !== 'completed') {
             return [];
@@ -256,6 +276,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       fontScale,
       componentId,
       deleteCampaign,
+      gameFont,
     } = this.props;
     const {
       removeMode,
@@ -305,7 +326,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
               }
               { killedInvestigators.length > 0 && (
                 <View style={styles.header}>
-                  <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
+                  <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, typography.underline]}>
                     { t`Killed and Insane Investigators` }
                   </Text>
                 </View>
@@ -342,6 +363,8 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     );
   }
 }
+
+export default withStyles(CampaignInvestigatorsComponent);
 
 const styles = StyleSheet.create({
   header: {

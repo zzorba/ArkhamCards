@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import ScenarioResultRow from './ScenarioResultRow';
 import { campaignScenarios, Scenario, completedScenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
@@ -29,7 +30,7 @@ interface ReduxProps {
   scenarioByCode?: { [code: string]: Scenario };
 }
 
-type Props = NavigationProps & CampaignScenarioProps & ReduxProps;
+type Props = NavigationProps & CampaignScenarioProps & ReduxProps & StylesProps;
 
 class CampaignScenarioView extends React.Component<Props> {
   _renderScenarioResult = (scenarioResult: ScenarioResult, idx: number) => {
@@ -52,8 +53,9 @@ class CampaignScenarioView extends React.Component<Props> {
   };
 
   renderPendingScenario(scenario: Scenario, idx: number) {
+    const { gameFont } = this.props;
     return (
-      <Text style={[typography.gameFont, styles.disabled]} key={idx}>
+      <Text style={[typography.gameFont, styles.disabled, { fontFamily: gameFont }]} key={idx}>
         { scenario.name }
       </Text>
     );
@@ -105,7 +107,7 @@ function mapStateToPropsFix(
   return {};
 }
 
-export default connect(mapStateToPropsFix)(CampaignScenarioView);
+export default connect(mapStateToPropsFix)(withStyles(CampaignScenarioView));
 
 const styles = StyleSheet.create({
   container: {

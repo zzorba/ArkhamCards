@@ -25,6 +25,7 @@ import {
   getLatestCampaignInvestigators,
   getAllDecks,
   getLatestCampaignDeckIds,
+  getLangPreference,
 } from '@reducers';
 
 export interface CampaignGuideReduxData {
@@ -47,7 +48,7 @@ export function campaignGuideReduxData(
   if (!campaign) {
     return undefined;
   }
-  const campaignGuide = getCampaignGuide(campaign.cycleCode, state.cards.lang || 'en');
+  const campaignGuide = getCampaignGuide(campaign.cycleCode, getLangPreference(state));
   if (!campaignGuide) {
     return undefined;
   }

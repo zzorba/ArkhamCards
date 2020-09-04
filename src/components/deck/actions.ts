@@ -10,6 +10,8 @@ import {
   UPDATE_DECK,
   DELETE_DECK,
   REPLACE_LOCAL_DECK,
+  RESET_DECK_CHECKLIST,
+  SET_DECK_CHECKLIST_CARD,
   ReplaceLocalDeckAction,
   NewDeckAvailableAction,
   UpdateDeckAction,
@@ -18,6 +20,8 @@ import {
   DeckMeta,
   DeckProblemType,
   Slots,
+  ResetDeckChecklistAction,
+  SetDeckChecklistCardAction,
 } from '@actions/types';
 import { login } from '@actions';
 import { saveDeck, loadDeck, upgradeDeck, newCustomDeck, UpgradeDeckResult, deleteDeck } from '@lib/authApi';
@@ -44,6 +48,28 @@ function updateDeck(
     id,
     deck,
     isWrite,
+  };
+}
+
+export function resetDeckChecklist(
+  id: number
+): ResetDeckChecklistAction {
+  return {
+    type: RESET_DECK_CHECKLIST,
+    id,
+  };
+}
+
+export function setDeckChecklistCard(
+  id: number,
+  card: string,
+  value: boolean
+): SetDeckChecklistCardAction {
+  return {
+    type: SET_DECK_CHECKLIST_CARD,
+    id,
+    card,
+    value,
   };
 }
 
@@ -391,4 +417,6 @@ export default {
   saveNewDeck,
   saveClonedDeck,
   uploadLocalDeck,
+  resetDeckChecklist,
+  setDeckChecklistCard,
 };

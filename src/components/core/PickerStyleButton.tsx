@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 import space, { s } from '@styles/space';
@@ -24,7 +25,7 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-export default class PickerStyleButton extends React.Component<Props> {
+class PickerStyleButton extends React.Component<Props & StylesProps> {
   renderWidget() {
     const { widget, colors } = this.props;
     switch (widget) {
@@ -40,13 +41,11 @@ export default class PickerStyleButton extends React.Component<Props> {
         );
       case 'nav':
         return (
-          <View style={space.marginRightXs}>
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color={colors ? colors.textColor : '#000'}
-            />
-          </View>
+          <MaterialIcons
+            name="keyboard-arrow-right"
+            size={30}
+            color={colors ? colors.textColor : '#000'}
+          />
         );
       case 'delete':
         return (
@@ -71,6 +70,7 @@ export default class PickerStyleButton extends React.Component<Props> {
       noBorder,
       settingsStyle,
       widget,
+      gameFont,
     } = this.props;
     return (
       <View style={[style.defaultContainerStyle, {
@@ -91,6 +91,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               settingsStyle ? {} :
                 {
                   ...typography.mediumGameFont,
+                  fontFamily: gameFont,
                   fontWeight: '600',
                 },
               { color: colors ? colors.textColor : COLORS.darkText },
@@ -109,14 +110,15 @@ export default class PickerStyleButton extends React.Component<Props> {
                   color: colors ? colors.textColor : COLORS.darkText,
                   fontWeight: '400',
                   flex: 4,
+                  textAlign: 'right',
                 },
               ]}
             >
               { value }
             </Text>
           ) }
-        </View>
         { !disabled && this.renderWidget() }
+        </View>
       </View>
     );
   }
@@ -139,6 +141,8 @@ export default class PickerStyleButton extends React.Component<Props> {
   }
 }
 
+export default withStyles(PickerStyleButton);
+
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
@@ -157,9 +161,10 @@ const style = StyleSheet.create({
     fontSize: 14,
   },
   textColumn: {
+    flexDirection: 'row',
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingTop: s,
     paddingBottom: s,
   },

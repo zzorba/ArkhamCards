@@ -9,6 +9,7 @@ import {
   Share,
   StyleSheet,
 } from 'react-native';
+import Crashes from 'appcenter-crashes';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -20,7 +21,7 @@ import { clearDecks } from '@actions';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import Card from '@data/Card';
-import { getBackupData, getAllPacks, AppState } from '@reducers';
+import { getBackupData, getAllPacks, AppState, getLangPreference, getLangChoice } from '@reducers';
 import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
@@ -36,10 +37,11 @@ interface ReduxProps {
   };
   packs: Pack[];
   lang: string;
+  langChoice: string;
 }
 
 interface ReduxActionProps {
-  fetchCards: (db: Database, lang: string) => void;
+  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
   restoreBackup: (
     campaigns: Campaign[],
     guides: {
@@ -147,9 +149,10 @@ class DiagnosticsView extends React.Component<Props> {
   _doSyncCards = () => {
     const {
       lang,
+      langChoice,
       fetchCards,
     } = this.props;
-    fetchCards(this.context.db, lang);
+    fetchCards(this.context.db, lang, langChoice);
   };
 
   addDebugCardJson(json: string) {
@@ -202,6 +205,10 @@ class DiagnosticsView extends React.Component<Props> {
     );
   };
 
+  _crash = () => {
+    Crashes.generateTestCrash();
+  };
+
   renderDebugSection() {
     if (!__DEV__) {
       return null;
@@ -212,8 +219,12 @@ class DiagnosticsView extends React.Component<Props> {
           title={t`Debug`}
         />
         <SettingsItem
+          onPress={this._crash}
+          text={'Crash'}
+        />
+        <SettingsItem
           onPress={this._addDebugCard}
-          text={t`Add Debug Card`}
+          text={'Add Debug Card'}
         />
       </>
     );
@@ -252,7 +263,8 @@ function mapStateToProps(state: AppState): ReduxProps {
   return {
     backupData: getBackupData(state),
     packs: getAllPacks(state),
-    lang: state.packs.lang || 'en',
+    lang: getLangPreference(state),
+    langChoice: getLangChoice(state),
   };
 }
 

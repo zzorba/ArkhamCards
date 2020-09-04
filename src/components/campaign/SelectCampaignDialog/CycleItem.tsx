@@ -6,6 +6,7 @@ import {
   Text,
 } from 'react-native';
 
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { CampaignCycleCode } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import { s, iconSizeScale } from '@styles/space';
@@ -21,7 +22,7 @@ interface Props {
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
 
-export default class CycleItem extends React.Component<Props> {
+class CycleItem extends React.Component<Props & StylesProps> {
   _onPress = () => {
     this.props.onPress(this.props.packCode, this.props.text);
   };
@@ -33,6 +34,7 @@ export default class CycleItem extends React.Component<Props> {
       fontScale,
       disabled,
       description,
+      gameFont,
     } = this.props;
     return (
       <View style={[styles.campaignRow, disabled ? styles.disabled : {}]}>
@@ -44,7 +46,7 @@ export default class CycleItem extends React.Component<Props> {
           />
         </View>
         <View style={styles.column}>
-          <Text style={[typography.mediumGameFont, styles.campaignText]}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.campaignText]}>
             { text }
           </Text>
           { !!description && (
@@ -72,6 +74,8 @@ export default class CycleItem extends React.Component<Props> {
     return this.renderContent();
   }
 }
+
+export default withStyles(CycleItem);
 
 const styles = StyleSheet.create({
   campaignRow: {

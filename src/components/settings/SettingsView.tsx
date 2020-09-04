@@ -21,7 +21,7 @@ import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
 import { prefetch } from '@lib/auth';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import { getAllDecks, AppState } from '@reducers';
+import { getAllDecks, AppState, getLangPreference, getLangChoice } from '@reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import COLORS from '@styles/colors';
@@ -34,15 +34,14 @@ interface ReduxProps {
   showCardsingleCardView: boolean;
   alphabetizeEncounterSets: boolean;
   lang: string;
+  langChoice: string;
   cardsLoading?: boolean;
   cardsError?: string;
   deckCount: number;
 }
 
-const SHOW_BACKUP = true;
-
 interface ReduxActionProps {
-  fetchCards: (db: Database, lang: string) => void;
+  fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
   clearDecks: () => void;
   setSingleCardView: (value: boolean) => void;
   setAlphabetizeEncounterSets: (value: boolean) => void;
@@ -104,9 +103,10 @@ class SettingsView extends React.Component<Props> {
   _doSyncCards = () => {
     const {
       lang,
+      langChoice,
       fetchCards,
     } = this.props;
-    fetchCards(this.context.db, lang || 'en');
+    fetchCards(this.context.db, lang, langChoice);
   };
 
   syncCardsText() {
@@ -138,13 +138,11 @@ class SettingsView extends React.Component<Props> {
         <ScrollView style={styles.list}>
           <CategoryHeader title={t`Account`} />
           <LoginButton settings />
-          { SHOW_BACKUP && (
-            <SettingsItem
-              navigation
-              onPress={this._backupPressed}
-              text={t`Backup Data`}
-            />
-          ) }
+          <SettingsItem
+            navigation
+            onPress={this._backupPressed}
+            text={t`Backup Data`}
+          />
           <CategoryHeader title={t`Card Settings`} />
           <SettingsItem
             navigation
@@ -205,7 +203,8 @@ function mapStateToProps(state: AppState): ReduxProps {
     cardsLoading: state.cards.loading,
     cardsError: state.cards.error || undefined,
     deckCount: keys(getAllDecks(state)).length,
-    lang: state.packs.lang || 'en',
+    lang: getLangPreference(state),
+    langChoice: getLangChoice(state),
   };
 }
 

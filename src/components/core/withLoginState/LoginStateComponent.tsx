@@ -52,7 +52,8 @@ class LoginStateComponent extends React.Component<Props> {
         { !!loading && (
           <View style={styles.activityIndicatorContainer}>
             <ActivityIndicator
-              style={[{ height: 80 }]}
+              style={{ height: 80 }}
+              color={COLORS.lightText}
               size="small"
               animating
             />

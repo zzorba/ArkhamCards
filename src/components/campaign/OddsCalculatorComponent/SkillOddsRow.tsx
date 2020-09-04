@@ -5,6 +5,7 @@ import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
 import typography from '@styles/typography';
+import withStyles, { StylesProps } from '@components/core/withStyles';
 import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from '@app_constants';
 import { flattenChaosBag } from '@components/campaign/campaignUtil';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -21,7 +22,7 @@ export interface SkillOddsRowProps {
   testDifficulty: number;
 }
 
-type Props = SkillOddsRowProps;
+type Props = SkillOddsRowProps & StylesProps;
 
 interface State {
   boosts: {
@@ -30,7 +31,7 @@ interface State {
   collapsed: boolean;
 }
 
-export default class SkillOddsRow extends React.Component<Props, State> {
+class SkillOddsRow extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -231,6 +232,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
       stat,
       type,
       testDifficulty,
+      gameFont,
     } = this.props;
     const {
       boosts,
@@ -274,14 +276,14 @@ export default class SkillOddsRow extends React.Component<Props, State> {
         >
           <View style={styles.row}>
             <View style={[styles.skillBox, { backgroundColor: COLORS.skill[type].default }]}>
-              <Text style={styles.skillValue}>
+              <Text style={[typography.bigGameFont, { fontFamily: gameFont }, styles.skillValue]}>
                 { type !== 'wild' ? `${stat}` : '' }<ArkhamIcon name={type} size={28} color={COLORS.white} />
               </Text>
             </View>
             <Text style={typography.text}>{ formatPercentageText(success) }</Text>
           </View>
           <View style={[styles.row, { paddingRight: s }]}>
-            <Text style={[typography.text, { color: 'black', fontSize: 22, paddingRight: s }]}>
+            <Text style={[typography.text, { fontSize: 22, paddingRight: s }]}>
               { boosts[type] >= 0 ? `+${boosts[type]}` : boosts[type] }
             </Text>
             <PlusMinusButtons
@@ -305,6 +307,8 @@ export default class SkillOddsRow extends React.Component<Props, State> {
   }
 }
 
+export default withStyles(SkillOddsRow);
+
 const styles = StyleSheet.create({
   skillBox: {
     height: 50,
@@ -314,7 +318,6 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   skillValue: {
-    ...typography.bigGameFont,
     color: COLORS.white,
     justifyContent: 'center',
     alignItems: 'center',

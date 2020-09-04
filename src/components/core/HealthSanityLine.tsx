@@ -75,6 +75,7 @@ export default function HealthSanityLine({ investigator, fontScale }: Props) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   skillIconBlock: {
     flexDirection: 'row',

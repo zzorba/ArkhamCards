@@ -12,6 +12,8 @@ import {
   CARD_FETCH_SUCCESS,
   CARD_FETCH_ERROR,
   UPDATE_PROMPT_DISMISSED,
+  SET_LANGUAGE_CHOICE,
+  SetLanguageChoiceAction,
   CardFetchStartAction,
   CardFetchSuccessAction,
   CardFetchErrorAction,
@@ -24,7 +26,7 @@ import {
   TabooCache,
   CardSetSchemaVersionAction,
 } from '@actions/types';
-import { AppState } from '@reducers/index';
+import { getCardLang, AppState } from '@reducers/index';
 import { syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/Database';
 
@@ -33,60 +35,71 @@ function shouldFetchCards(state: AppState) {
 }
 
 function cardsCache(state: AppState, lang: string): undefined | CardCache {
-  return (state.cards.lang || 'en') === lang ? state.cards.cache : undefined;
+  return getCardLang(state) === lang ? state.cards.cache : undefined;
 }
 
 function taboosCache(state: AppState, lang: string): undefined | TabooCache {
-  return (state.cards.lang || 'en') === lang ? state.cards.tabooCache : undefined;
+  return getCardLang(state) === lang ? state.cards.tabooCache : undefined;
+}
+
+export function setLanguageChoice(choiceLang: string): SetLanguageChoiceAction {
+  return {
+    type: SET_LANGUAGE_CHOICE,
+    choiceLang,
+  };
 }
 
 export function fetchCards(
   db: Database,
-  lang: string
+  cardLang: string,
+  choiceLang: string
 ): ThunkAction<void, AppState, null, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
-    if (shouldFetchCards(getState())) {
-      const previousLang = (getState().cards.lang || 'en');
-      if (lang && previousLang !== lang) {
-        changeLocale(lang);
-      }
-      dispatch({
-        type: CARD_SET_SCHEMA_VERSION,
-        schemaVersion: Database.SCHEMA_VERSION,
-      });
-      dispatch({
-        type: CARD_FETCH_START,
-      });
-      const packs = await dispatch(fetchPacks(lang));
+    if (!shouldFetchCards(getState())) {
+      return;
+    }
+    const previousLang = getCardLang(getState());
+    if (cardLang && previousLang !== cardLang) {
+      changeLocale(cardLang);
+    }
+    dispatch({
+      type: CARD_SET_SCHEMA_VERSION,
+      schemaVersion: Database.SCHEMA_VERSION,
+    });
+    dispatch({
+      type: CARD_FETCH_START,
+    });
+    const packs = await dispatch(fetchPacks(cardLang));
+    try {
+      const cardCache = await syncCards(db, packs, cardLang, cardsCache(getState(), cardLang));
       try {
-        const cardCache = await syncCards(db, packs, lang, cardsCache(getState(), lang));
-        try {
-          const tabooCache = await syncTaboos(
-            db,
-            lang,
-            taboosCache(getState(), lang)
-          );
-          db.reloadPlayerCards();
-          dispatch({
-            type: CARD_FETCH_SUCCESS,
-            cache: cardCache || undefined,
-            tabooCache: tabooCache || undefined,
-            lang: lang,
-          });
-        } catch (tabooErr) {
-          dispatch({
-            type: CARD_FETCH_SUCCESS,
-            cache: cardCache || undefined,
-            lang: lang,
-          });
-        }
-      } catch (err) {
+        const tabooCache = await syncTaboos(
+          db,
+          cardLang,
+          taboosCache(getState(), cardLang)
+        );
+        db.reloadPlayerCards();
         dispatch({
-          type: CARD_FETCH_ERROR,
-          error: err.message || err,
-          lang: previousLang,
+          type: CARD_FETCH_SUCCESS,
+          cache: cardCache || undefined,
+          tabooCache: tabooCache || undefined,
+          cardLang,
+          choiceLang,
+        });
+      } catch (tabooErr) {
+        dispatch({
+          type: CARD_FETCH_SUCCESS,
+          cache: cardCache || undefined,
+          cardLang,
+          choiceLang,
         });
       }
+    } catch (err) {
+      dispatch({
+        type: CARD_FETCH_ERROR,
+        error: err.message || err,
+        lang: previousLang,
+      });
     }
   };
 }
