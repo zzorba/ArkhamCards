@@ -515,7 +515,7 @@ msgstr "Cachés"
 
 #: src/components/settings/DiagnosticsView.tsx:244
 msgid "Clear cache"
-msgstr "Limpiar cache"
+msgstr "Limpiar caché"
 
 #: src/components/settings/LoginButton.tsx:37
 msgid "Are you sure you want to sign out?"
@@ -705,7 +705,7 @@ msgstr "Pistas"
 #: src/components/filter/CardFilterView/index.tsx:252
 #: src/components/filter/CardLocationFilterView.tsx:81
 msgid "Haunted"
-msgstr "Embrujada"
+msgstr "Embrujado"
 
 #: src/components/filter/CardLocationFilterView.tsx:20
 #: src/components/filter/CardLocationFilterView.tsx:96
@@ -2852,7 +2852,7 @@ msgstr "Debilidades"
 
 #: src/components/deck/DeckDetailView/index.tsx:1727 src/components/nav/helper.ts:161
 msgid "Draw Simulator"
-msgstr "Simulador de mano"
+msgstr "Simulador de robo"
 
 #: src/components/deck/DeckDetailView/index.tsx:1750
 msgid "Available XP"
@@ -2863,7 +2863,7 @@ msgstr "XP disponible"
 #: src/components/campaign/CampaignDetailView/index.tsx:516
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:120
 msgid "Odds Calculator"
-msgstr "Calculador de probabilidades"
+msgstr "Calculadora de probabilidades"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:260
 msgid "Fail By 2 or Less"
@@ -2972,7 +2972,7 @@ msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:1296
 msgid "Deleting"
-msgstr "Borrando"
+msgstr "Eliminando"
 
 #: src/lib/parseDeck.ts:73 src/lib/parseDeck.ts:90
 msgid "Hand"
@@ -3040,7 +3040,7 @@ msgstr "Sin Cambios"
 
 #: src/components/deck/DeckProgressComponent/ChangesFromPreviousDeck.tsx:190
 msgid "Card changes"
-msgstr "Cambios en cartas"
+msgstr "Cambios realizados"
 
 #. Actually compute the diffs.
 #: src/components/deck/DeckDetailView/index.tsx:1581
@@ -3064,11 +3064,11 @@ msgstr "Último mazo: ${ deck.availableExperience } XP"
 
 #: src/lib/DeckValidation.ts:249
 msgid "No assets that take up the ally slot are allowed by On Your Own."
-msgstr "Por tu cuenta  no permite que controles un Apoyo que ocupe un espacio de aliado."
+msgstr "Por tu cuenta no permite que controles un Apoyo que ocupe un espacio de aliado."
 
 #: src/lib/DeckValidation.ts:271
 msgid "Too many off-class cards for Versatile"
-msgstr "Demasiadas cartas fuera de la clase para Versátil"
+msgstr "Demasiadas cartas de otras clases para Versátil"
 
 #: src/data/Card.ts:495 src/data/Card.ts:551
 msgid "Asset: Ally. Arcane"
@@ -3088,15 +3088,15 @@ msgstr "Éxito"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:256
 msgid "Draw Two, Pick One"
-msgstr "Roba Dos, Elige Uno"
+msgstr "Roba dos, elige una"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:270
 msgid "Re-Draw After Fail"
-msgstr "Volver a Robar Luego de Fallar"
+msgstr "Volver a robar después de fallar"
 
 #: src/components/campaign/OddsCalculatorComponent/SkillOddsRow.tsx:271
 msgid "Succeed Twice In A Row"
-msgstr "Tener Éxito dos veces seguidas"
+msgstr "Tener éxito dos veces seguidas"
 
 #: src/lib/stringHelper.ts:8
 #, javascript-format
@@ -3220,7 +3220,7 @@ msgstr "${ supplyName } a utilizar (${ desiredCount })"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:109
 msgid "Reads \"${ badThing.condition }\""
-msgstr "Se lee \"${ badThing.condition }\""
+msgstr "Lee \"${ badThing.condition }\""
 
 #: src/components/campaignguide/prompts/SuppliesPrompt/SupplyComponent.tsx:50
 #, javascript-format
@@ -3243,11 +3243,11 @@ msgstr "${ spent } de ${ total }"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:139
 #: src/components/campaignguide/prompts/CounterListComponent/index.tsx:102
 msgid "Too many"
-msgstr "Demasiado"
+msgstr "Demasiadas"
 
 #: src/components/campaignguide/prompts/CounterListComponent/index.tsx:102
 msgid "Not enough"
-msgstr "Insuficiente"
+msgstr "Insuficientes"
 
 #: src/components/campaignguide/ScenarioView.tsx:165
 msgid "Reset Scenario?"
@@ -3394,16 +3394,16 @@ msgstr "¿Quieres usar la aplicación para seleccionar aleatoriamente las debili
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:43
 #, javascript-format
 msgid "Because you are playing on <b>${ difficulty }</b> difficulty:"
-msgstr "Porque estas jugando en dificultad: <b>${ difficulty }</b>:"
+msgstr "Como estas jugando en dificultad: <b>${ difficulty }</b>:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:56
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
-msgstr "Porque ya has completado<b>${ scenarioName }</b>:"
+msgstr "Como ya has completado<b>${ scenarioName }</b>:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:57
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr "Porque aún no has completado <b>${ scenarioName }</b>:"
+msgstr "Como aún no has completado <b>${ scenarioName }</b>:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:28
 #, javascript-format
@@ -3411,23 +3411,23 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
-"Revisa el Registro de Campaña. Porque hay ${ count } marca en  '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } marca en '${ logEntry.section }'"
 msgstr[1] ""
-"Revisa el Registro de Campaña. Porque hay ${ count } marcas en  '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } marcas en '${ logEntry.section }'"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:34
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
-"Revisa el Registro de Campaña. Porque hay ${ count } entrada en '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } entrada en '${ logEntry.section }'"
 msgstr[1] ""
-"Revisa el Registro de Campaña. Porque hay ${ count } entradas en '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } entradas en '${ logEntry.section }'"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:41
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Revisa el Registro de Campaña. Porque <i>${ entry }</i>"
+msgstr "Revisa el Registro de Campaña. Como <i>${ entry }</i>"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogSectionExistsConditionComponent.tsx:27
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
@@ -3474,8 +3474,8 @@ msgstr "Por cada investigador con \"${ cardName }\" en su mazo:"
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/ScenarioDataConditionComponent.tsx:28
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "Porque hay ${ playerCount } jugador en el juego:"
-msgstr[1] "Porque hay ${ playerCount } jugadores en el juego:"
+msgstr[0] "Como hay ${ playerCount } jugador en el juego:"
+msgstr[1] "Como hay ${ playerCount } jugadores en el juego:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/TraumaConditionComponent.tsx:24
 msgid "If the lead investigator was <b>killed</b>."
@@ -3483,7 +3483,7 @@ msgstr "Si el investigador jefe ha <b>muerto</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/TraumaConditionComponent.tsx:25
 msgid "If all investigators were <b>killed</b>."
-msgstr "Si los investigadores han <b>muerto</b>."
+msgstr "Si todos los investigadores han <b>muerto</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:27
 #, javascript-format
@@ -3491,7 +3491,7 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in your Campaign "
 "Log."
 msgstr ""
-"Si <i>${ card.name }</i> no esta listada en ‘${ entry.section }’ en tu Registro de "
+"Si <i>${ card.name }</i> no aparece en la sección ‘${ entry.section }’ de tu Registro de "
 "Campaña."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:28
@@ -3499,17 +3499,18 @@ msgstr ""
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your Campaign Log."
 msgstr ""
-"Si <i>${ card.name }</i> esta listada en ‘${ entry.section }’ en tu Registro de Campaña."
+"Si <i>${ card.name }</i> aparece en la sección ‘${ entry.section }’ de tu Registro de "
+"Campaña."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Revisa en ${ logEntry.section } <i>si ${ logEntry.text }</i>"
+msgstr "Revisa en ${ logEntry.section } si <i>${ logEntry.text }</i>"
 
 #: src/components/campaignguide/CampaignGuideView.tsx:100
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:109
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
-msgstr "Estas seguro que quieres borrar la campaña: ${ campaignName }"
+msgstr "¿Estás seguro de querer borrar la campaña: ${ campaignName }?"
 
 #: src/components/campaignguide/CampaignGuideView.tsx:163
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:206
@@ -3583,7 +3584,7 @@ msgstr ""
 "La aplicación NO borrará tu última mejora en ArkhamDB, por lo que tu mazo tendrá el "
 "último cambio aplicado.\n"
 "\n"
-"Puede ver el mazo y borrar la ultima 'mejora' para que las cosas sean como eran."
+"Para deshacer completamente la mejora y volver al estado anterior, elimínala de ArkhamDB."
 
 #. This is a deck upgrade action.
 #: src/data/scenario/CampaignStateHelper.ts:188
@@ -4465,7 +4466,7 @@ msgstr "Checklist"
 
 #: src/lib/DeckValidation.ts:255
 msgid "Limit 1 Covenant per deck."
-msgstr "Límite 1 Covenant por mazo."
+msgstr "Límite 1 Acuerdo por mazo."
 
 #: src/components/card/CardFaqView.tsx:144
 msgid "Checking for FAQ"
