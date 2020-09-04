@@ -77,7 +77,7 @@ export default class App {
       if (previousCrash) {
         const report = await Crashes.lastSessionCrashReport();
         const deltaSeconds = App.crashDeltaSeconds(report);
-        if (deltaSeconds < 15) {
+        if (deltaSeconds < 20) {
           this.startSafeMode(store);
           return true;
         }
