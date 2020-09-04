@@ -3264,14 +3264,14 @@ msgstr[1] ""
 msgid "Gather all cards from the ${ encounterSetString } encounter set."
 msgid_plural "Gather all cards from the following encounter sets: ${ encounterSetString }."
 msgstr[0] ""
-msgstr[1] "Es werden alle Karten aus folgenden Begegnungssets herausgesucht:"
+msgstr[1] ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:68
 #, javascript-format
 msgid "${ startText } This set is indicated by the following icon:"
 msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] ""
-msgstr[1] "Diese Sets sind an folgenden Symbolen zu erkennen:"
+msgstr[1] ""
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:168
 msgid "Choose Investigators"
