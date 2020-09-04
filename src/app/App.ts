@@ -1,3 +1,4 @@
+import Crashes from 'appcenter-crashes';
 import { forEach } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
 import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
@@ -32,10 +33,12 @@ export default class App {
     this.currentLang = 'en';
     store.subscribe(this.onStoreUpdate.bind(this, store));
 
-    this.onStoreUpdate(store);
+    Crashes.hasCrashedInLastSession().then(previousCrash => {
+      this.onStoreUpdate(store, previousCrash);
+    })
   }
 
-  onStoreUpdate(store: Store<AppState, Action>) {
+  onStoreUpdate(store: Store<AppState, Action>, previousCrash?: boolean) {
     const lang = getLangPreference(store.getState());
 
     // handle a root change

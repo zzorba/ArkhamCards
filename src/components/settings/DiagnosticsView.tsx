@@ -9,6 +9,7 @@ import {
   Share,
   StyleSheet,
 } from 'react-native';
+import Crashes from 'appcenter-crashes';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -204,6 +205,10 @@ class DiagnosticsView extends React.Component<Props> {
     );
   };
 
+  _crash = () => {
+    Crashes.generateTestCrash();
+  };
+
   renderDebugSection() {
     if (!__DEV__) {
       return null;
@@ -214,8 +219,12 @@ class DiagnosticsView extends React.Component<Props> {
           title={t`Debug`}
         />
         <SettingsItem
+          onPress={this._crash}
+          text={'Crash'}
+        />
+        <SettingsItem
           onPress={this._addDebugCard}
-          text={t`Add Debug Card`}
+          text={'Add Debug Card'}
         />
       </>
     );
