@@ -94,6 +94,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/helper-skip-transparent-expression-wrappers": "^7.11.0",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-typescript": "7.10.4",
