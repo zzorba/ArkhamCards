@@ -100,6 +100,10 @@ class SettingsView extends React.Component<Props> {
     Linking.openURL('mailto:arkhamcards@gmail.com');
   }
 
+  _rules = () => {
+    Linking.openURL('https://arkhamdb.com/rules');
+  };
+
   _doSyncCards = () => {
     const {
       lang,
@@ -156,11 +160,16 @@ class SettingsView extends React.Component<Props> {
           />
           <SettingsTabooPicker />
           <CategoryHeader title={t`Card Data`} />
+          <LanguagePicker />
           <SettingsItem
             onPress={cardsLoading ? undefined : this._doSyncCards}
             text={this.syncCardsText()}
           />
-          <LanguagePicker />
+          <SettingsItem
+            navigation
+            onPress={this._rules}
+            text={t`Rules`}
+          />
           <CategoryHeader title={t`Preferences`} />
           <SettingsSwitch
             title={t`Swipe between card results`}
