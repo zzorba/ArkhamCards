@@ -58,6 +58,7 @@ import CardLocationFilterView from '@components/filter/CardLocationFilterView';
 import PackFilterView from '@components/filter/PackFilterView';
 import DiagnosticsView from '@components/settings/DiagnosticsView';
 import CollectionEditView from '@components/settings/CollectionEditView';
+import SafeModeView from '@components/settings/SafeModeView';
 import SettingsView from '@components/settings/SettingsView';
 import PackCardsView from '@components/settings/PackCardsView';
 import SpoilersView from '@components/settings/SpoilersView';
@@ -114,6 +115,7 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Settings.Diagnostics', () => DiagnosticsView, Provider, store);
   Navigation.registerComponentWithRedux('Settings.Backup', () => BackupView, Provider, store);
   Navigation.registerComponentWithRedux('Settings.MergeBackup', () => MergeBackupView, Provider, store);
+  Navigation.registerComponentWithRedux('Settings.SafeMode', () => SafeModeView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters', () => CardFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Enemy', () => CardEnemyFilterView, Provider, store);
   Navigation.registerComponentWithRedux('SearchFilters.Location', () => CardLocationFilterView, Provider, store);

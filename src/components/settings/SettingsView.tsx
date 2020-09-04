@@ -40,8 +40,6 @@ interface ReduxProps {
   deckCount: number;
 }
 
-const SHOW_BACKUP = true;
-
 interface ReduxActionProps {
   fetchCards: (db: Database, cardLang: string, choiceLang: string) => void;
   clearDecks: () => void;
@@ -140,13 +138,11 @@ class SettingsView extends React.Component<Props> {
         <ScrollView style={styles.list}>
           <CategoryHeader title={t`Account`} />
           <LoginButton settings />
-          { SHOW_BACKUP && (
-            <SettingsItem
-              navigation
-              onPress={this._backupPressed}
-              text={t`Backup Data`}
-            />
-          ) }
+          <SettingsItem
+            navigation
+            onPress={this._backupPressed}
+            text={t`Backup Data`}
+          />
           <CategoryHeader title={t`Card Settings`} />
           <SettingsItem
             navigation
