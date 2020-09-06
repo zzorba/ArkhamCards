@@ -176,6 +176,9 @@ export function checkSuppliesAllConditionResult(
 ): InvestigatorResult {
   const investigatorSupplies = campaignLog.investigatorSections[condition.section] || {};
   const choices: StringChoices = {};
+  forEach(campaignLog.investigators(false), investigator => {
+    choices[investigator.code] = ['false'];
+  });
   forEach(investigatorSupplies, (supplies, investigatorCode) => {
     const hasSupply = !!find(supplies.entries,
       entry => entry.id === condition.id && !supplies.crossedOut[condition.id]

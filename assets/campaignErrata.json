@@ -166,7 +166,7 @@
       ]
     },
     {
-      "scenario_code": "restless_nights",
+      "scenario_code": "tfa_interlude1",
       "questions": [
         {
           "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
@@ -175,7 +175,7 @@
       ]
     },
     {
-      "scenario_code": "jungle_beckons",
+      "scenario_code": "tfa_interlude3",
       "questions": [
         {
           "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
@@ -184,7 +184,7 @@
       ]
     },
     {
-      "scenario_code": "those_held_captive",
+      "scenario_code": "tfa_interlude4",
       "questions": [
         {
           "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",
@@ -193,7 +193,7 @@
       ]
     },
     {
-      "scenario_code": "the_darkness",
+      "scenario_code": "tfa_interlude5",
       "questions": [
         {
           "question": "If a resolution or interlude contains effects that refer to “the next scenario,” will these apply to a side-story?",

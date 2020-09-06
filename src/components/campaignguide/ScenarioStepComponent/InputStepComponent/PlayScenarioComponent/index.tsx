@@ -10,11 +10,13 @@ import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { PlayScenarioInput } from '@data/scenario/types';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { PlayingScenarioBranch } from '@data/scenario/fixedSteps';
 import { chooseOneInputChoices } from '@data/scenario/inputHelper';
+import { ProcessedScenario } from '@data/scenario';
 
 interface Props {
   componentId: string;
@@ -46,6 +48,21 @@ export default class PlayScenarioComponent extends React.Component<Props> {
     this.context.scenarioState.setChoice(id, index);
   };
 
+
+
+  _showScenarioFaq = () => {
+    const { componentId, campaignId } = this.props;
+    Navigation.push<ScenarioFaqProps>(componentId, {
+      component: {
+        name: 'Guide.ScenarioFaq',
+        passProps: {
+          scenario: this.context.processedScenario.id.scenarioId,
+          campaignId,
+        },
+      },
+    });
+  };
+
   _chaosBagSimulatorPressed = () => {
     const { componentId, campaignId } = this.props;
     Navigation.push<GuideChaosBagProps>(componentId, {
@@ -72,7 +89,8 @@ export default class PlayScenarioComponent extends React.Component<Props> {
 
   renderContent(
     scenarioState: ScenarioStateHelper,
-    campaignLog: GuidedCampaignLog
+    campaignLog: GuidedCampaignLog,
+    processedScenario: ProcessedScenario
   ) {
     const { id, input } = this.props;
     const firstDecision = scenarioState.choice(id);
@@ -97,6 +115,8 @@ export default class PlayScenarioComponent extends React.Component<Props> {
       }
     }
     if (firstDecision === undefined) {
+      const hasFaq = processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
+
       return (
         <>
           { map(
@@ -127,6 +147,12 @@ export default class PlayScenarioComponent extends React.Component<Props> {
             title={t`Record trauma`}
             onPress={this._recordTraumaPressed}
           />
+          { !!hasFaq && (
+            <BasicButton
+              title={t`Scenario FAQ`}
+              onPress={this._showScenarioFaq}
+            />
+          ) }
           <BasicButton
             title={input.no_resolutions ? t`Scenario completed` : t`Resolutions`}
             onPress={this._resolutionPressed}
@@ -141,7 +167,7 @@ export default class PlayScenarioComponent extends React.Component<Props> {
     const { id } = this.props;
     return (
       <ScenarioStepContext.Consumer>
-        { ({ scenarioState, campaignLog }: ScenarioStepContextType) => {
+        { ({ scenarioState, processedScenario, campaignLog }: ScenarioStepContextType) => {
           return (
             <>
               { (id === '$play_scenario') && (
@@ -151,7 +177,7 @@ export default class PlayScenarioComponent extends React.Component<Props> {
                   />
                 </SetupStepWrapper>
               ) }
-              { this.renderContent(scenarioState, campaignLog) }
+              { this.renderContent(scenarioState, campaignLog, processedScenario) }
             </>
           );
         } }
