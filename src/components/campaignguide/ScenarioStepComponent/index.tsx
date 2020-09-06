@@ -41,7 +41,7 @@ interface Props {
 }
 
 class ScenarioStepComponent extends React.Component<Props & StylesProps> {
-  renderContent(campaignGuide: CampaignGuide): React.ReactNode {
+  renderContent(campaignGuide: CampaignGuide, campaignId: number): React.ReactNode {
     const {
       componentId,
       step: { step, campaignLog },
@@ -75,7 +75,14 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
           </View>
         );
       case 'encounter_sets':
-        return <EncounterSetStepComponent step={step} campaignGuide={campaignGuide} />;
+        return (
+          <EncounterSetStepComponent
+            step={step}
+            campaignGuide={campaignGuide}
+            campaignId={campaignId}
+            componentId={componentId}
+          />
+        );
       case 'location_connectors':
         return <LocationConnectorsStepComponent step={step} />;
       case 'rule_reminder':
@@ -130,7 +137,7 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
     const { step, border, gameFont } = this.props;
     return (
       <CampaignGuideContext.Consumer>
-        { ({ campaignInvestigators, campaignGuide }: CampaignGuideContextType) => (
+        { ({ campaignInvestigators, campaignGuide, campaignId }: CampaignGuideContextType) => (
           <ScenarioGuideContext.Consumer>
             { (scenarioGuideContext: ScenarioGuideContextType) => {
               const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
@@ -158,7 +165,7 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
                       </Text>
                     </View>
                   ) }
-                  { this.renderContent(campaignGuide) }
+                  { this.renderContent(campaignGuide, campaignId) }
                   { (step.step.id === '$proceed') && (
                     <BasicButton
                       onPress={this._proceed}

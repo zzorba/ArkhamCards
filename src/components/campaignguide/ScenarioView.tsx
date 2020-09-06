@@ -17,9 +17,12 @@ import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
 import { iconsMap } from '@app/NavIcons';
+import BasicButton from '@components/core/BasicButton';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
+import { ScenarioFaqProps } from './ScenarioFaqView';
+import { proc } from 'react-native-reanimated';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -176,8 +179,22 @@ class ScenarioView extends React.Component<Props> {
     );
   }
 
+  _showScenarioFaq = () => {
+    const { componentId, campaignId, processedScenario } = this.props;
+    Navigation.push<ScenarioFaqProps>(componentId, {
+      component: {
+        name: 'Guide.ScenarioFaq',
+        passProps: {
+          scenario: processedScenario.id.scenarioId,
+          campaignId,
+        },
+      },
+    });
+  };
+
   render() {
     const { componentId, fontScale, width, processedScenario } = this.props;
+    const hasFaq = processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
     return (
       <KeyboardAvoidingView
         style={styles.keyboardView}
@@ -187,6 +204,12 @@ class ScenarioView extends React.Component<Props> {
       >
         <KeepAwake />
         <ScrollView contentContainerStyle={styles.container}>
+          { !!hasFaq && (
+            <BasicButton
+              title={processedScenario.scenarioGuide.scenarioType() === 'scenario' ? t`Scenario FAQ` : t`Interlude FAQ`}
+              onPress={this._showScenarioFaq}
+            />
+          )}
           <StepsComponent
             componentId={componentId}
             fontScale={fontScale}
