@@ -1,7 +1,7 @@
 import React from 'react';
 import { findIndex, map } from 'lodash';
 import { format } from 'date-fns';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import connectDb from '@components/data/connectDb';
 import Database from '@data/Database';
@@ -56,7 +56,7 @@ class TabooSetPicker extends React.Component<Props> {
         title={t`Taboo List`}
         description={description}
         optional
-        defaultLabel={t`None`}
+        defaultLabel={c('Taboo List').t`None`}
         onChoiceChange={this._onTabooChange}
         selectedIndex={selectedIndex}
         choices={map(tabooSets, set => {

@@ -7,8 +7,8 @@ import {
   View,
 } from 'react-native';
 import { Button } from 'react-native-elements';
+import { c, t } from 'ttag';
 
-import { t } from 'ttag';
 import { Slots } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -196,7 +196,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
           </View>
           <View style={styles.buttonContainer}>
             <Button
-              title={t`All`}
+              title={c('Draw Cards').t`All`}
               disabled={deckEmpty}
               onPress={this._drawAll}
             />
