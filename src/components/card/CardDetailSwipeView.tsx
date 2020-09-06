@@ -327,7 +327,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
         <Swiper
           index={initialIndex}
           width={width}
-          height={height}
+          height={height - (renderFooter ? FOOTER_HEIGHT : 0)}
           style={{ backgroundColor: COLORS.background }}
           containerStyle={{ flex: 1, backgroundColor: COLORS.background }}
           loadMinimal

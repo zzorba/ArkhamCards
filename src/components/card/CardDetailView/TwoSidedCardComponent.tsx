@@ -766,7 +766,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <View style={styles.mainColumn}>
                   { this.renderMetadata(card) }
                   { this.renderPlaydata(card) }
-                  { !simple || !!(card.flavor && flavorFirst) &&
+                  { !!card.flavor && (simple || flavorFirst) &&
                     <CardFlavorTextComponent text={card.flavor} />
                   }
                   { isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
@@ -806,7 +806,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       (!!card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
       !(isHorizontal || !card.spoiler) &&
       card.type_code !== 'scenario';
-    console.log(`${card.code} ${card.linked_to_code}`);
+
     const sideA = backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst, !notFirst, 'sideA');
     const sideB = this.renderCardFront(card, !!backFirst, isHorizontal, flavorFirst, !notFirst && !sideA, 'sideB');
     const sideC = !backFirst && this.renderCardBack(card, !!backFirst, isHorizontal, flavorFirst, !notFirst && !sideA && !sideB, 'sideC');
