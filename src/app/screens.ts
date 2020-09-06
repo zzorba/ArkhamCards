@@ -29,6 +29,7 @@ import EditScenarioResultView from '@components/campaign/EditScenarioResultView'
 import CampaignDetailView from '@components/campaign/CampaignDetailView';
 import CampaignEditWeaknessDialog from '@components/campaign/CampaignEditWeaknessDialog';
 import CampaignDrawWeaknessDialog from '@components/campaign/CampaignDrawWeaknessDialog';
+import EncounterCardErrataView from '@components/campaignguide/EncounterCardErrataView';
 import CampaignDifficultyDialog from '@components/campaign/CampaignDifficultyDialog';
 import EditChaosBagDialog from '@components/campaign/EditChaosBagDialog';
 import MyCampaignsView from '@components/campaign/MyCampaignsView';
@@ -69,6 +70,7 @@ import ExileCardDialog from '@components/campaign/ExileCardDialog';
 import AboutView from '@components/settings/AboutView';
 import WeaknessDrawDialog from '@components/weakness/WeaknessDrawDialog';
 import SealTokenDialog from '@components/campaign/SealTokenDialog';
+import ScenarioFaqView from '@components/campaignguide/ScenarioFaqView';
 
 // register all screens of the app (including internal ones)
 export function registerScreens(Provider: any, store: any) {
@@ -99,6 +101,8 @@ export function registerScreens(Provider: any, store: any) {
   Navigation.registerComponentWithRedux('Guide.Campaign', () => gestureHandlerRootHOC(CampaignGuideView), Provider, store);
   Navigation.registerComponentWithRedux('Guide.LinkedCampaign', () => gestureHandlerRootHOC(LinkedCampaignGuideView), Provider, store);
   Navigation.registerComponentWithRedux('Guide.SideScenario', () => AddSideScenarioView, Provider, store);
+  Navigation.registerComponentWithRedux('Guide.CardErrata', () => EncounterCardErrataView, Provider, store);
+  Navigation.registerComponentWithRedux('Guide.ScenarioFaq', () => ScenarioFaqView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.ChallengeScenario', () => ChallengeScenarioView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.ChaosBag', () => GuideChaosBagView, Provider, store);
   Navigation.registerComponentWithRedux('Guide.OddsCalculator', () => GuideOddsCalculatorView, Provider, store);

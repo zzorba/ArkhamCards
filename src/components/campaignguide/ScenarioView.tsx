@@ -17,9 +17,11 @@ import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
 import { iconsMap } from '@app/NavIcons';
+import BasicButton from '@components/core/BasicButton';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
+import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -176,8 +178,23 @@ class ScenarioView extends React.Component<Props> {
     );
   }
 
+  _showScenarioFaq = () => {
+    const { componentId, campaignId, processedScenario } = this.props;
+    Navigation.push<ScenarioFaqProps>(componentId, {
+      component: {
+        name: 'Guide.ScenarioFaq',
+        passProps: {
+          scenario: processedScenario.id.scenarioId,
+          campaignId,
+        },
+      },
+    });
+  };
+
   render() {
     const { componentId, fontScale, width, processedScenario } = this.props;
+    const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
+      processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
     return (
       <KeyboardAvoidingView
         style={styles.keyboardView}
@@ -187,6 +204,12 @@ class ScenarioView extends React.Component<Props> {
       >
         <KeepAwake />
         <ScrollView contentContainerStyle={styles.container}>
+          { !!hasInterludeFaq && (
+            <BasicButton
+              title={t`Interlude FAQ`}
+              onPress={this._showScenarioFaq}
+            />
+          ) }
           <StepsComponent
             componentId={componentId}
             fontScale={fontScale}

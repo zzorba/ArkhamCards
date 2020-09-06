@@ -9391,8 +9391,8 @@
 },
 {
   "id": "the_pallid_mask",
-  "scenario_name": "The Pallid Mask",
-  "full_name": "Scenario VI: The Pallid Mask",
+  "scenario_name": "La máscara pálida",
+  "full_name": "Escenario VI: La máscara pálida",
   "setup": [
     "check_did_not_escape_gaze",
     "check_ishimaru_haruko",
@@ -9437,12 +9437,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You are stirred awake by dirty, stale air and dust in your throat. You are lying on a slab of cold stone inside a lightless underground passageway. How did you get here? And where is “here” exactly? A shiver courses up your body, and your hair stands on end. Rising to your feet, you take stock of your surroundings. Bones decorate the walls and ceiling around you, open-mouthed skulls peering back at you everywhere you look."
+      "text": "Te despiertan el aire sucio y rancio y el polvo que se cuelan en tu garganta. Estás tendido sobre una losa de fría piedra en un pasadizo subterráneo sin ninguna luz. ¿Cómo has llegado aquí? ¿Y dónde estás exactamente? Un escalofrío te recorre el cuerpo, y se te ponen los pelos de punta. Al levantarte, examinas tus alrededores. Las paredes y el techo están decorados con huesos, y ves cráneos con la boca abierta que te devuelven la mirada allí donde pones los ojos."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The contents of Nigel Engram’s home answer none of your questions about The King in Yellow, but do hint at where you should head next. The old, tattered map you found on his coffee table depicts a section of the infamous Catacombs of Paris. One particular room on the map has been circled with pen, and next to it is written: “The key to opening the Path lies here!” You swallow your fear and head immediately for the entrance to the catacombs underneath Rue de la Tombe-Issoire."
+      "text": "Lo que contenía la casa de Nigel Engram no responde ninguna de tus preguntas sobre El Rey de Amarillo, pero sí te da una pista de tu siguiente destino. El viejo y raído mapa que encontraste en la mesita muestra una sección de las infames catacumbas de París. Una de las salas del mapa está rodeada por un círculo a bolígrafo, y junto a ella hay escrito: “¡Aquí está la llave para abrir el camino!”. Te tragas el miedo y te diriges inmediatamente a la entrada a las catacumbas que hay bajo la Rue de la Tombe-Issoire."
     },
     {
       "id": "entered_catacombs",
@@ -9451,7 +9451,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "entered_catacombs",
-          "text": "you entered the catacombs on your own."
+          "text": "los investigadores entraron en las catacumbas por su cuenta."
         }
       ]
     },
@@ -9462,13 +9462,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "awoke_inside_catacombs",
-          "text": "you awoke inside the catacombs."
+          "text": "los investigadores despertaron en las catacumbas."
         }
       ]
     },
     {
       "id": "check_ishimaru_haruko",
-      "text": "Check Campaign Log. <i>If Ishimaru Haruko is listed under VIPs Interviewed</i>:",
+      "text": "Comprueba el registro de campaña si <i>Ishimaru Haruko aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -9488,11 +9488,11 @@
     {
       "id": "harukos_information",
       "type": "story",
-      "text": "Just past the archway closest to you, you see a familiar symbol etched into the skull of a sheep: rows of concentric semicircles, lined with exotic runes. Two wavy lines descend from the design, leading into the skull’s lower jawbone. You recognize it as the pattern Haruko had shown you. Wondering why it would appear here, you examine the skull in greater detail. As soon as you touch the underside of the skull’s jawbone, its mouth suddenly opens. Bones collapse to the ground as the wall slides to reveal a new path."
+      "text": "Después del arco más cercano, ves un símbolo familiar grabado en el cráneo de una oveja: filas de semicírculos concéntricos y runas exóticas. Dos líneas onduladas bajan desde el diseño hacia la mandíbula inferior del cráneo. Reconoces el dibujo que te mostró Haruko. Preguntándote por qué aparece aquí, examinas el cráneo con atención. En cuanto tocas la parte inferior de la mandíbula del cráneo, su boca se abre de repente. Varios huesos caen al suelo cuando la pared se desliza para revelar un nuevo camino."
     },
     {
       "id": "opened_a_secret_passageway",
-      "text": "Remember that “you opened a secret passageway.”"
+      "text": "Recuerda que “los investigadores abrieron un pasadizo secreto”."
     },
     {
       "id": "gather_encounter_sets",
@@ -9507,7 +9507,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Find the Tomb of Shadows and the Blocked Passage (each one is the revealed side of a Catacombs location). Set them aside, out of play."
+      "text": "Busca la Tumba de sombras y el Pasadizo bloqueado (son lados revelados de un Lugar “Catacumbas”). Ponlos aparte, fuera del juego."
     },
     {
       "id": "check_catacomb_entry",
@@ -9534,27 +9534,27 @@
     },
     {
       "id": "start_random_location",
-      "text": "Put a random Catacombs location (other than the set‐aside Tomb of Shadows or Blocked Passage) into play, Catacombs side faceup. For the remainder of the scenario, that location is referred to as “the starting location.” Place a resource token on this location to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "Pon en juego un Lugar “Catacumbas” aleatorio (que no sea la Tumba de sombras ni el Pasadizo bloqueado puestos aparte), con el lado Catacumbas boca arriba. Durante el resto del escenario, se hará referencia a ese Lugar como “el Lugar inicial”. Pon una ficha de Recursos sobre este Lugar para indicar que se trata del Lugar inicial. <b>No coloques aún a los investigadores aquí.</b>"
     },
     {
       "id": "start_gate_to_hell",
-      "text": "Find The Gate to Hell (it is the revealed side of a Catacombs location). Put The Gate to Hell into play, Catacombs side faceup. For the remainder of the scenario, The Gate to Hell is referred to as “the starting location.” Place a resource token on The Gate to Hell to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "Busca La puerta al Infierno (es un lado revelado de un Lugar “Catacumbas”). Pon en juego La puerta al Infierno, con el lado Catacumbas boca arriba. Durante el resto del escenario, se hará referencia a ese Lugar como “el Lugar inicial”. Pon una ficha de Recursos sobre este Lugar para indicar que se trata del Lugar inicial. <b>No coloques aún a los investigadores aquí.</b>"
     },
     {
       "id": "create_catacombs_deck",
-      "text": "Set all of the other locations aside as a separate “Catacombs Deck.” To do this, perform the following:",
+      "text": "Pon aparte todos los demás Lugares, formando un “mazo de Catacumbas”. Para ello, haz lo siguiente:",
       "bullets": [
         {
-          "text": "Shuffle the set‐aside Tomb of Shadows, the set‐aside Blocked Passage, and 3 other Catacombs locations together to form the bottom 5 cards of the Catacombs Deck, Catacombs side faceup."
+          "text": "Añade la Tumba de sombras y el Pasadizo bloqueado puestos aparte a otros 3 Lugares “Catacumbas” y barájalos para tener las 5 cartas inferiores del mazo de Catacumbas, con el lado Catacumbas boca arriba."
         },
         {
-          "text": "Then, place all of the other Catacombs locations on top, in a random order. All of the cards in the Catacombs Deck should be showing only the Catacombs side, so that the players do not know which is which."
+          "text": "A continuación, coloca todos los demás Lugares “Catacumbas” sobre ellos, en orden aleatorio. Todas las cartas del mazo de Catacumbas deben mostrar sólo el lado Catacumbas, de forma que los jugadores no sepan cuál es cuál."
         }
       ]
     },
     {
       "id": "place_investigators",
-      "text": "Each investigator begins play at the starting location. <i>(Remember to trigger the <b>Forced</b> effect on that location when it is revealed.)</i> If “you opened a secret passageway,” choose a Catacombs location adjacent to the starting location and reveal it."
+      "text": "Cada investigador comienza la partida en el Lugar inicial <i>(recuerda activar el efecto <b>Obligado</b> de ese Lugar cuando sea revelado).</i> Si “los investigadores abrieron un pasadizo secreto”, elige un Lugar “Catacumbas” adyacente al Lugar inicial y revélalo."
     },
     {
       "id": "set_aside_pallid_mask",
@@ -9651,8 +9651,8 @@
     {
       "id": "location_adjacency_rule",
       "type": "rule_reminder",
-      "title": "Location Adjacency in the Catacombs",
-      "text": "During this scenario, locations will be arranged in a set pattern, with new locations from the Catacombs Deck emerging to the left, right, above, or below existing locations, as they are revealed. A location that is put into play to the left, right, above, or below another location should be set next to that location in the manner described, with no other locations in between them.\nA location that is next to another location in this manner is considered <b>adjacent</b>. Locations are only adjacent orthogonally (left, right, above, and below), and are not adjacent diagonally. During this scenario, adjacent locations are considered to be connected to one another.\nYou cannot put a location into play where an existing location already is. If you are given the choice to place a location from the Catacombs Deck in one of multiple spots, and one of those spots is occupied by an existing location, you cannot choose that spot. You must choose a spot unoccupied by a location, if able. If all of the specified spots are occupied by existing locations, the <b>Forced</b> effect fails and no new Catacombs locations are put into play."
+      "title": "Adyacencia de los Lugares en las catacumbas",
+      "text": "Durante este escenario, los Lugares se colocarán de una forma determinada, de forma que los nuevos Lugares del mazo de Catacumbas saldrán a la izquierda, derecha, por arriba o por abajo de los Lugares existentes al ser revelados. Un Lugar que sea puesto en juego a la izquierda, derecha, por arriba o por abajo de otro Lugar debe colocarse junto a dicho Lugar de la manera descrita, sin que haya otros Lugares entre ellos.\nUn Lugar que esté junto a otro de este modo se considera <b>adyacente</b>. Los Lugares sólo están adyacentes a la izquierda, derecha, por arriba o por abajo, y nunca de forma diagonal. Durante este escenario, los Lugares adyacentes se consideran conectados entre sí.\nNo puedes poner en juego un Lugar donde ya haya un Lugar existente. Si se te da la opción de colocar un Lugar del mazo de Catacumbas en uno de varios sitios posibles, y uno de esos sitios ya está ocupado por un Lugar existente, no puedes elegir dicho sitio. Debes elegir un sitio que no esté ocupado por un Lugar si es posible. Si todos los sitios especificados están ocupados por Lugares existentes, el efecto <b>Obligado</b> falla y no se pone en juego ningún nuevo Lugar “Catacumbas”."
     },
     {
       "id": "$play_scenario",
@@ -9689,15 +9689,15 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "How was act 2 advanced?",
+      "text": "¿Cómo se avanzó el Acto 2a?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "The Man in the Pallid Mask was defeated.",
-            "description": "Mark two <b>Conviction</b>.",
+            "text": "El hombre de la máscara pálida fue derrotado.",
+            "description": "Marca dos <b>Convicciones</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -9715,8 +9715,8 @@
           },
           {
             "id": "doubt",
-            "text": "You spent clues to advance.",
-            "description": "Mark two <b>Doubt</b>.",
+            "text": "Los investigadores gastaron pistas para avanzar.",
+            "description": "Marca dos <b>Dudas</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -9754,19 +9754,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "los investigadores conocen la ubicación del portal."
         }
       ]
     },
     {
       "id": "know_site_of_gate_chasing_stranger",
-      "text": "In your Campaign Log, record that <i>you know the site of the gate</i>. Add two tally marks under “Chasing the Stranger.”",
+      "text": "Anota en el registro de campaña que <i>los investigadores conocen la ubicación del portal</i>. Añade 2 marcas en la sección “Persiguiendo al Extranjero”.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "los investigadores conocen la ubicación del portal."
         },
         {
           "type": "campaign_log_count",
@@ -9778,7 +9778,7 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "Each investigator must choose whether or not to read Act II of The King in Yellow. At least one investigator must read Act II.\nIn your Campaign Log, record the names of each investigator who chose to read Act II. Each investigator who read Act II searches the collection for a random basic [[Madness]] or [[Pact]] weakness, and adds it to their deck (does not count toward deck size). Each investigator who read Act II earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Cada investigador debe elegir si lee o no el segundo acto de El Rey de Amarillo. Al menos 1 investigador debe leer el segundo acto.\nAnota en el registro de campaña los nombres de cada investigador que eligiera leer el segundo acto. Cada investigador que lea el segundo acto busca en su colección una Debilidad básica aleatoria [[Locura]] o [[Pacto]] y la añade a su mazo. Esta Debilidad no cuenta para el tamaño de mazo. Cada investigador que lea el segundo acto obtiene 2 puntos de experiencia adicionales por recibir información sobre las maquinaciones del Rey Andrajoso.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -9787,14 +9787,14 @@
         "choices": [
           {
             "id": "read_act_2",
-            "text": "Read Act II",
+            "text": "Lee el segundo acto",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# read Act 2 of The King in Yellow."
+                "text": "#name# leyó el segundo acto de El Rey de Amarillo."
               },
               {
                 "type": "add_weakness",
@@ -9855,7 +9855,7 @@
         "choices": [
           {
             "id": "haruko_killed",
-            "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
+            "text": "¿Está Ishimaru Haruko <i>(Sólo piel y huesos)</i> en la zona de victoria?",
             "steps": [
               "kill_haruko"
             ]
@@ -9866,7 +9866,7 @@
     {
       "id": "kill_haruko",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>.",
+      "text": "Anota a <i>Ishimaru Haruko</i> en la sección “VIP muertos” del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -9957,7 +9957,7 @@
         "physical",
         "mental"
       ],
-      "text": "You are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Dazed as you are, you find it difficult to answer. He points toward the staircase nearby and pushes you away from the catacombs. You stumble onto the Rue de la Tombe-Issoire and slowly make your way to a hotel where you can stay the night.\nSeveral days of research later, the meaning of the strange diagrams you saw within the catacombs still escapes you. You feel as though you have been led on a wild goose chase. Just as you are about to give up, you see a faded yellow book on the table nearest to you. You are stunned to discover that it is the unabridged script of The King in Yellow. Drawn on the cover in black ink is the very same diagram whose meaning you have been struggling to interpret for several sleepless nights. Who had placed it here? How had it come to your hotel room? Regardless, you know what you must do. The play holds the secrets—it has all along—and yet like a fool you have avoided reading Act II out of superstition. Its words cannot harm you any more than the creatures and fanatics you have already encountered. Trembling, you open to the second part, and begin to read.",
+      "text": "Te despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Conmocionado como estás, te resulta difícil responder. Señala la escalera cercana y te saca a empujones de las catacumbas. Sales a trompicones a la Rue de la Tombe-Issoire y te diriges lentamente hacia un hotel en el que puedas pasar la noche.\nTras varios días de investigación, sigues sin entender el significado de los extraños diagramas que viste en las catacumbas. Notas como si te hubieran puesto a buscar una aguja en un pajar. Cuando estás a punto de darte por vencido, ves un desvaído libro amarillo en la mesa que tienes más cerca. Te asombra descubrir que es el guion completo de El Rey de Amarillo. Dibujado con tinta negra en la portada ves el mismo diagrama cuyo significado llevas tratando de interpretar varias noches insomnes. ¿Quién lo ha puesto aquí? ¿Cómo ha llegado a tu habitación? Independientemente de eso, sabes lo que debes hacer. La obra contiene los secretos, lo ha hecho todo el tiempo, y aun así, como un idiota, has evitado leer el segundo acto por pura superstición. Sus palabras no pueden dañarte más que las criaturas y fanáticos que has encontrado. Tembloroso, abres la segunda parte y comienzas a leer.",
       "steps": [
         "know_site_of_gate",
         "read_act_2_choice",
@@ -9970,7 +9970,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "The burned skull holds the key to everything. You are sure of it. You have tried every method available to you in studying the diagram it bears, but the answer eludes you still. You have brought the skull to experts, occultists, and professors. You have even tried speaking with the skull on more than one occasion. Exasperated, you place the skull on your night table and try to get some sleep for the first time since escaping the catacombs. As you fall asleep, you cannot shake the sight of the diagram etched in the skull’s forehead.\nYou awaken with a spark of inspiration and rush to the Musée du Louvre, a famous Parisian museum housing tens of thousands of paintings, drawings, and archaeological finds. You spend days exploring the museum—every display, every collection, every single object of art that might hold a clue to the diagram’s meaning. Finally, you see it: a painting depicting a beautiful island town weathering a torrential storm. Waves crash against the stone of the outer wall, the tide threatening to swallow the island whole. Lightning flashes around the tower of the abbey above the village. A whirlwind of black clouds churns in the sky above. The diagram from the burned skull you hold in your hands is recreated perfectly in the stained glass of the abbey. The title of the piece is “The Path Is Open.”",
+      "text": "El cráneo calcinado es la clave de todo. Estás seguro. Has intentado todos los métodos que tienes a tu disposición para estudiar el diagrama que lleva, pero se te sigue escapando la respuesta. Has llevado el cráneo a expertos, ocultistas y profesores. Incluso has tratado de hablar con el cráneo en más de una ocasión. Exasperado, colocas el cráneo en tu mesilla de noche y tratas de dormir por primera vez desde que escapaste de las catacumbas. Cuando te quedas dormido, no logras borrar la imagen del diagrama grabado en la frente del cráneo.\nTe despiertas con una chispa de inspiración y te diriges corriendo al Musée du Louvre, un famoso museo parisino que alberga decenas de miles de cuadros, dibujos y hallazgos arqueológicos. Pasas días explorando el museo; cada exposición, colección y objeto de arte que podría contener alguna pista sobre el significado del diagrama. Por fin lo ves: un cuadro que muestra una preciosa ciudad isleña que soporta una tormenta torrencial. Las olas chocan contra la piedra de la muralla exterior, y la marea amenaza con engullir la isla entera. Hay destellos de relámpagos alrededor de la torre de la abadía que hay sobre la aldea. Un remolino de nubes negras gira en el cielo. El diagrama del cráneo quemado que tienes en las manos aparece perfectamente recreado en una vidriera de la abadía. El título del cuadro es “El camino está abierto”.",
       "steps": [
         "know_site_of_gate",
         "add_cultists",
@@ -9982,7 +9982,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You fall ceaselessly through the empty abyss. No air slows your descent or courses through your hair. It is a passageway devoid of reality. Finally, you pass through an invisible gateway and enter another realm. Looming above and below you are two skylines, one a warped reflection of the other. A vortex of swirling black clouds and crashing waves lies in between them. You study both sides—the familiar city and its strange mirror. Could this be the path to Carcosa? A passageway between realities, where realms converge? If so, all that is left is to find where this gate appears on Earth. You fall into the vortex below.\nYou are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Your eyes widen with realization and you wrest your arm free from the confused man’s grip. “I have to go at once!”",
+      "text": "Caes sin cesar por un abismo vacío. No hay aire que ralentice tu descenso ni recorra tu pelo. Es un pasaje desprovisto de realidad. Por fin, atraviesas un portal invisible y entras en otro reino. Por encima y por debajo de ti hay dos firmamentos, y uno es el distorsionado reflejo del otro. Entre ellos se encuentra un remolino de nubes negras y olas rompientes. Estudias ambos lados: la familiar ciudad y su extraño reflejo. ¿Podría ser éste el camino a Carcosa? ¿Un pasaje entre realidades, donde convergen los reinos? Si es así, todo lo que debes hacer es encontrar dónde aparece este portal en la Tierra. Te precipitas al vórtice que tienes debajo.\nTe despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Abres los ojos como platos al comprenderlo todo, y te sueltas del agarre del confundido hombre. –¡Debo irme de inmediato!",
       "steps": [
         "know_site_of_gate_chasing_stranger",
         "add_tablets",
@@ -15742,7 +15742,7 @@
   "id": "rtptc",
   "position": 2,
   "version": 1,
-  "name": "Return to The Path to Carcosa",
+  "name": "Regreso a El camino a Carcosa",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -16581,8 +16581,8 @@
 },
 {
   "id": "return_to_a_phantom_of_truth",
-  "scenario_name": "Return to A Phantom of Truth",
-  "full_name": "Scenario V: Return to A Phantom of Truth",
+  "scenario_name": "Regreso a El Fantasma de la Verdad",
+  "full_name": "Escenario V: Regreso a El Fantasma de la Verdad",
   "setup": [
     "app_note",
     "check_king_claimed_victims",
@@ -17408,19 +17408,19 @@
     },
     {
       "id": "choose_locations",
-      "text": "Randomly put 1 of each of the following locations into play: Montmarte, Opéra Garnier, Montparnasse, Grand Guignol, Père Lachaise Cemetery, Canal Saint-Martin, Notre-Dame, Le Marais, and Gardens of Luxembourg. Remove the other versions of those locations from the game."
+      "text": "Elige y pon en juego, al azar, 1 copia de cada uno de los siguientes Lugares: Montmarte, Opéra Garnier, Montparnasse, Grand Guignol, Cementerio Père Lachaise, Canal Saint-Martin, Notre-Dame, Le Marais, y Jardines de Luxembourg. Retira de la partida las otras versiones de esos Lugares."
     },
     {
       "id": "setup_locations",
-      "text": "Put Gare d’Orsay into play. Each investigator begins play at Gare d’Orsay."
+      "text": "Pon en juego el Lugar Gare d’Orsay. Cada investigador comienza la partida en la Gare d’Orsay."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the double‐sided The Organist enemy and both copies of Figure in the Shadows aside, out of play."
+      "text": "Pon aparte, fuera del juego, el Enemigo de doble cara El organista y ambas copias de Figura en las sombras."
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"<b>Forced</b> - After The Organist enters play: Shuffle both set-aside copies of Figure in the Shadows into the encounter deck, along with the encounter discard pile.\"\nAttach the Return to A Phantom of Truth scenario reference card to the scenario reference card as a reminder."
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:\n\"<b>Forced</b> - Después de que El organista entre en juego: Añade la pila de descartes de Encuentros y ambas copias de Figura en las sombras puestas aparte al mazo de Encuentros y barájalo.\"\nVincula la carta de referencia de escenario de Regreso a El Fantasma de la Verdad a la carta de referencia de escenario original como recordatorio."
     }
   ],
   "resolutions": [
@@ -17482,8 +17482,8 @@
 },
 {
   "id": "return_to_black_stars_rise",
-  "scenario_name": "Return to Black Stars Rise",
-  "full_name": "Scenario VII: Return to Black Stars Rise",
+  "scenario_name": "Regreso a Surgen estrellas negras",
+  "full_name": "Escenario VII: Regreso a Surgen estrellas negras",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -18114,22 +18114,22 @@
     },
     {
       "id": "randomize_knights_hall_and_cloister",
-      "text": "Sort each copy of Cloister and Knight's Hall into two piles, based on the encounter set icon on their reverse side.",
+      "text": "Separa todas las copias de Claustro y de la Sala del Caballero en dos montones, en función del icono del conjunto de encuentros de su dorso.",
       "bullets": [
         {
-          "text": "One pile should consist of the original versions of Cloister and Knight's Hall, the other should consist of the new versions included in this encounter set."
+          "text": "Un montón debe estar formado por las versiones originales del Claustro y de la Sala del Caballero, mientras que el otro debe estar formado por las nuevas versiones incluidas en Regreso a Surgen estrellas negras."
         },
         {
-          "text": "Flip each pile over so only the Black Stars Rise encounter set icon is showing."
+          "text": "Dale la vuelta a los montones, de modo que sólo se vea el icono del conjunto de encuentros Surgen estrellas negras."
         },
         {
-          "text": "Randomize the two piles so you cannot tell which is which. Choose one pile at random to remove from the game and one pile at random to use throughout this scenario's setup."
+          "text": "Mueve los dos montones de forma que no sepas cuál es cuál. Elige uno al azar para retirarlo de la partida y usa el otro para la preparación de este escenario."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Both act cards (Act 3a and Act 3c), Beast of Aldebaran, each copy of Tidal Terror, each copy of Rift Seeker, Cloister, Knight’s Hall, Abbey Tower, and Chapel of St. Aubert <i>(remember to use the versions of Abbey Tower, Chapel of St. Aubert, Cloister, and Knight's Hall that were randomly chosen earlier)</i>."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Las dos cartas de Acto (acto 3a y acto 3c), Bestia de Aldebarán, todas las copias del Terror de la marea, todas las copias del Buscador de la grieta, Claustro, Sala del caballero, Torre de la abadía y Capilla de san Auberto <i>(recuerda usar las versiones de la Torre de la abadía, de la Capilla de san Auberto, del Claustro y de la Sala del Caballero que han sido elegidas al azar)</i>."
     }
   ],
   "resolutions": [
@@ -18202,8 +18202,8 @@
 },
 {
   "id": "return_to_curtain_call",
-  "scenario_name": "Return to Curtain Call",
-  "full_name": "Scenario I: Return to Curtain Call",
+  "scenario_name": "Regreso a Se cierra el telón",
+  "full_name": "Escenario I: Regreso a Se cierra el telón",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -18441,11 +18441,11 @@
     },
     {
       "id": "attach_to_royal_emissary",
-      "text": "Attach the Return to Curtain Call scenario reference card to the Royal Emissary. It gains the following text:\n\"This card cannot be detached from Royal Emissary (even if Royal Emissary leaves play).\n<b>Forced</b> - After Royal Emissary is added to the victory display: Place 1 resource on this card, as a warning.\nFor each warning on this card, Royal Emissary gets +1 [per_investigator] health."
+      "text": "Vincula la carta de referencia de escenario de Regreso a Se cierra el telón al Emisario real. Obtiene el siguiente texto:\n\"Esta carta no puede ser desvinculada del Emisario real (incluso si el Emisario real abandona el juego).\n<b>Obligado</b> - Después de que el Emisario real sea añadido a la zona de victoria: Coloca 1 recurso sobre esta carta como advertencia.\nPor cada advertencia que haya sobre esta carta, el Emisario real recibe +1 de salud [per_investigator]."
     },
     {
       "id": "construct_act_deck",
-      "text": "Construct the act deck using all six copies of Act 2a - \"The Stranger.\""
+      "text": "Crea el mazo de Acto usando las seis copias del Acto 2a—\"El Extranjero\"."
     },
     {
       "id": "add_chaos_token",
@@ -18498,8 +18498,8 @@
           },
           {
             "id": "alaran_mists",
-            "text": "Alaran Mists",
-            "description": "Add 1 [cultist] and 1 [tablet] token to the chaos bag.",
+            "text": "Nieblas de Alara",
+            "description": "Añade 1 ficha [cultist] y 1 ficha [tablet] a la bolsa de caos.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -18512,8 +18512,8 @@
           },
           {
             "id": "under_the_city",
-            "text": "Under the City",
-            "description": "Add 1 [cultist] and 1 [elder_thing] token to the chaos bag.",
+            "text": "Bajo la ciudad",
+            "description": "Añade 1 ficha [cultist] y 1 ficha [elder_thing] a la bolsa de caos.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -18526,8 +18526,8 @@
           },
           {
             "id": "here_is_my_reply",
-            "text": "Here Is My Reply",
-            "description": "Add 1 [tablet] and 1 [elder_thing] token to the chaos bag.",
+            "text": "Ésta es mi respuesta",
+            "description": "Añade 1 ficha [tablet] y 1 ficha [elder_thing] a la bolsa de caos.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -19405,8 +19405,8 @@
 },
 {
   "id": "return_to_echoes_of_the_past",
-  "scenario_name": "Return to Echoes of the Past",
-  "full_name": "Scenario III: Return to Echoes of the Past",
+  "scenario_name": "Regreso a Ecos del pasado",
+  "full_name": "Escenario III: Regreso a Ecos del pasado",
   "setup": [
     "intro",
     "check_sebastien_moreau",
@@ -19862,11 +19862,11 @@
     },
     {
       "id": "choose_locations",
-      "text": "Randomly choose one [[Basement]] Historical Society location, one [[Ground Floor]] Historical Society location, one [[Second Floor]] Historical Society location, and one [[Third Floor]] Historical Society location. Remove those locations from the game, without looking at their revealed sides."
+      "text": "Elige al azar un Lugar Sociedad Histórica [[Sótano]], 1 Lugar “Sociedad Histórica” [[Planta baja]], 1 Lugar “Sociedad Histórica” [[Primer piso]] y 1 Lugar “Sociedad Histórica” [[Segundo piso]]. Retira esos Lugares de la partida, sin mirar sus lados revelados."
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Entry Hall, all three copies of Quiet Halls, and the remaining 8 Historical Society locations. Each investigator begins play in the Entry Hall."
+      "text": "Pon los siguientes Lugares en juego: Vestíbulo de entrada, las tres copias de Pasillos tranquilos y los 8 Lugares restantes Sociedad Histórica. Cada investigador comienza la partida en el Vestíbulo de entrada."
     },
     {
       "id": "location_layout",
@@ -19899,11 +19899,11 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Hidden Library, Possessed Oathspeaker, Mr. Peabody, The Tattered Cloak, Clasp of Black Onyx, and both Keeper of the Oath enemies."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: Biblioteca oculta, Juramentado poseído, Sr. Peabody, El Manto Andrajoso, Broche de ónice negro, y ambos Enemigos Guardián del juramento."
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"<b>Forced</b> - After the investigators advance to act 2 or act 3: Spawn a set-aside Keeper of the Oath in any empty Historical Society location.\"\nAttach the Return to Echoes of the Past scenario reference card to the scenario reference card as a reminder."
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:\n\"<b>Obligado</b> - Después de que los investigadores avancen al acto 2 o al acto 3: Haz aparecer un Guardián del juramento puesto aparte en cualquier Lugar Sociedad Histórica vacío.\"\nVincula la carta de referencia de escenario de Regreso a Ecos del pasado a la carta de referencia de escenario original como recordatorio."
     }
   ],
   "resolutions": [
@@ -19973,8 +19973,8 @@
 },
 {
   "id": "return_to_the_last_king",
-  "scenario_name": "Return to The Last King",
-  "full_name": "Scenario II: Return to The Last King",
+  "scenario_name": "Regreso a El Último Rey",
+  "full_name": "Escenario II: Regreso a El Último Rey",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -20249,15 +20249,15 @@
     },
     {
       "id": "remove_agenda_1",
-      "text": "Remove Agenda 1a - \"Fashionably Late\" from the game and replace it with the new Agenda 1a - \"Better Never Than Late.\""
+      "text": "Retira de la partida el Plan 1a—\"Elegantemente tarde\" y sustitúyelo por el nuevo Plan 1a—\"Más vale tarde que nunca\"."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Shocking Display treachery and the new Dianne Devine <i>(Hiding an Oath Unspoken)</i> ally aside, out of play. Remove the original Dianne Devine <i>(Mercurial and Mischevious)</i> from the game."
+      "text": "Pon aparte, fuera del juego, la Traición Exhibición impactante y la nueva versión de Dianne Devine <i>(Ocultando un juramento inconfesable)</i>. Retira de la partida el Enemigo original Dianne Devine <i>(Volátil y malvada)</i>."
     },
     {
       "id": "setup_sickening_reality",
-      "text": "Place the 8 “Sickening Reality” story cards underneath the scenario reference card.",
+      "text": "Coloca las 8 cartas de Historia “Realidad repulsiva” bajo la carta de referencia de escenario.",
       "bullets": [
         {
           "text": "<i>Nota: Estas cartas son de doble cara y tienen cartas de Encuentro en el otro lado. Para no estropear la experiencia de juego, no mires el otro lado a menos que te lo indique un efecto.</i>"
@@ -20334,8 +20334,8 @@
 },
 {
   "id": "return_to_the_pallid_mask",
-  "scenario_name": "Return to The Pallid Mask",
-  "full_name": "Scenario VI: Return to The Pallid Mask",
+  "scenario_name": "Regreso a La máscara pálida",
+  "full_name": "Escenario VI: Regreso a La máscara pálida",
   "setup": [
     "check_did_not_escape_gaze",
     "check_ishimaru_haruko",
@@ -20381,12 +20381,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You are stirred awake by dirty, stale air and dust in your throat. You are lying on a slab of cold stone inside a lightless underground passageway. How did you get here? And where is “here” exactly? A shiver courses up your body, and your hair stands on end. Rising to your feet, you take stock of your surroundings. Bones decorate the walls and ceiling around you, open-mouthed skulls peering back at you everywhere you look."
+      "text": "Te despiertan el aire sucio y rancio y el polvo que se cuelan en tu garganta. Estás tendido sobre una losa de fría piedra en un pasadizo subterráneo sin ninguna luz. ¿Cómo has llegado aquí? ¿Y dónde estás exactamente? Un escalofrío te recorre el cuerpo, y se te ponen los pelos de punta. Al levantarte, examinas tus alrededores. Las paredes y el techo están decorados con huesos, y ves cráneos con la boca abierta que te devuelven la mirada allí donde pones los ojos."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The contents of Nigel Engram’s home answer none of your questions about The King in Yellow, but do hint at where you should head next. The old, tattered map you found on his coffee table depicts a section of the infamous Catacombs of Paris. One particular room on the map has been circled with pen, and next to it is written: “The key to opening the Path lies here!” You swallow your fear and head immediately for the entrance to the catacombs underneath Rue de la Tombe-Issoire."
+      "text": "Lo que contenía la casa de Nigel Engram no responde ninguna de tus preguntas sobre El Rey de Amarillo, pero sí te da una pista de tu siguiente destino. El viejo y raído mapa que encontraste en la mesita muestra una sección de las infames catacumbas de París. Una de las salas del mapa está rodeada por un círculo a bolígrafo, y junto a ella hay escrito: “¡Aquí está la llave para abrir el camino!”. Te tragas el miedo y te diriges inmediatamente a la entrada a las catacumbas que hay bajo la Rue de la Tombe-Issoire."
     },
     {
       "id": "entered_catacombs",
@@ -20395,7 +20395,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "entered_catacombs",
-          "text": "you entered the catacombs on your own."
+          "text": "los investigadores entraron en las catacumbas por su cuenta."
         }
       ]
     },
@@ -20406,13 +20406,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "awoke_inside_catacombs",
-          "text": "you awoke inside the catacombs."
+          "text": "los investigadores despertaron en las catacumbas."
         }
       ]
     },
     {
       "id": "check_ishimaru_haruko",
-      "text": "Check Campaign Log. <i>If Ishimaru Haruko is listed under VIPs Interviewed</i>:",
+      "text": "Comprueba el registro de campaña si <i>Ishimaru Haruko aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -20432,15 +20432,15 @@
     {
       "id": "harukos_information",
       "type": "story",
-      "text": "Just past the archway closest to you, you see a familiar symbol etched into the skull of a sheep: rows of concentric semicircles, lined with exotic runes. Two wavy lines descend from the design, leading into the skull’s lower jawbone. You recognize it as the pattern Haruko had shown you. Wondering why it would appear here, you examine the skull in greater detail. As soon as you touch the underside of the skull’s jawbone, its mouth suddenly opens. Bones collapse to the ground as the wall slides to reveal a new path."
+      "text": "Después del arco más cercano, ves un símbolo familiar grabado en el cráneo de una oveja: filas de semicírculos concéntricos y runas exóticas. Dos líneas onduladas bajan desde el diseño hacia la mandíbula inferior del cráneo. Reconoces el dibujo que te mostró Haruko. Preguntándote por qué aparece aquí, examinas el cráneo con atención. En cuanto tocas la parte inferior de la mandíbula del cráneo, su boca se abre de repente. Varios huesos caen al suelo cuando la pared se desliza para revelar un nuevo camino."
     },
     {
       "id": "opened_a_secret_passageway",
-      "text": "Remember that “you opened a secret passageway.”"
+      "text": "Recuerda que “los investigadores abrieron un pasadizo secreto”."
     },
     {
       "id": "set_aside_cards",
-      "text": "Find the Tomb of Shadows and the Blocked Passage (each one is the revealed side of a Catacombs location). Set them aside, out of play."
+      "text": "Busca la Tumba de sombras y el Pasadizo bloqueado (son lados revelados de un Lugar “Catacumbas”). Ponlos aparte, fuera del juego."
     },
     {
       "id": "check_catacomb_entry",
@@ -20467,15 +20467,15 @@
     },
     {
       "id": "start_random_location",
-      "text": "Put a random Catacombs location (other than the set‐aside Tomb of Shadows or Blocked Passage) into play, Catacombs side faceup. For the remainder of the scenario, that location is referred to as “the starting location.” Place a resource token on this location to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "Pon en juego un Lugar “Catacumbas” aleatorio (que no sea la Tumba de sombras ni el Pasadizo bloqueado puestos aparte), con el lado Catacumbas boca arriba. Durante el resto del escenario, se hará referencia a ese Lugar como “el Lugar inicial”. Pon una ficha de Recursos sobre este Lugar para indicar que se trata del Lugar inicial. <b>No coloques aún a los investigadores aquí.</b>"
     },
     {
       "id": "start_gate_to_hell",
-      "text": "Find The Gate to Hell (it is the revealed side of a Catacombs location). Put The Gate to Hell into play, Catacombs side faceup. For the remainder of the scenario, The Gate to Hell is referred to as “the starting location.” Place a resource token on The Gate to Hell to mark it as the starting location. <b>Do not place investigators here yet.</b>"
+      "text": "Busca La puerta al Infierno (es un lado revelado de un Lugar “Catacumbas”). Pon en juego La puerta al Infierno, con el lado Catacumbas boca arriba. Durante el resto del escenario, se hará referencia a ese Lugar como “el Lugar inicial”. Pon una ficha de Recursos sobre este Lugar para indicar que se trata del Lugar inicial. <b>No coloques aún a los investigadores aquí.</b>"
     },
     {
       "id": "place_investigators",
-      "text": "Each investigator begins play at the starting location. <i>(Remember to trigger the <b>Forced</b> effect on that location when it is revealed.)</i> If “you opened a secret passageway,” choose a Catacombs location adjacent to the starting location and reveal it."
+      "text": "Cada investigador comienza la partida en el Lugar inicial <i>(recuerda activar el efecto <b>Obligado</b> de ese Lugar cuando sea revelado).</i> Si “los investigadores abrieron un pasadizo secreto”, elige un Lugar “Catacumbas” adyacente al Lugar inicial y revélalo."
     },
     {
       "id": "set_aside_pallid_mask",
@@ -20572,8 +20572,8 @@
     {
       "id": "location_adjacency_rule",
       "type": "rule_reminder",
-      "title": "Location Adjacency in the Catacombs",
-      "text": "During this scenario, locations will be arranged in a set pattern, with new locations from the Catacombs Deck emerging to the left, right, above, or below existing locations, as they are revealed. A location that is put into play to the left, right, above, or below another location should be set next to that location in the manner described, with no other locations in between them.\nA location that is next to another location in this manner is considered <b>adjacent</b>. Locations are only adjacent orthogonally (left, right, above, and below), and are not adjacent diagonally. During this scenario, adjacent locations are considered to be connected to one another.\nYou cannot put a location into play where an existing location already is. If you are given the choice to place a location from the Catacombs Deck in one of multiple spots, and one of those spots is occupied by an existing location, you cannot choose that spot. You must choose a spot unoccupied by a location, if able. If all of the specified spots are occupied by existing locations, the <b>Forced</b> effect fails and no new Catacombs locations are put into play."
+      "title": "Adyacencia de los Lugares en las catacumbas",
+      "text": "Durante este escenario, los Lugares se colocarán de una forma determinada, de forma que los nuevos Lugares del mazo de Catacumbas saldrán a la izquierda, derecha, por arriba o por abajo de los Lugares existentes al ser revelados. Un Lugar que sea puesto en juego a la izquierda, derecha, por arriba o por abajo de otro Lugar debe colocarse junto a dicho Lugar de la manera descrita, sin que haya otros Lugares entre ellos.\nUn Lugar que esté junto a otro de este modo se considera <b>adyacente</b>. Los Lugares sólo están adyacentes a la izquierda, derecha, por arriba o por abajo, y nunca de forma diagonal. Durante este escenario, los Lugares adyacentes se consideran conectados entre sí.\nNo puedes poner en juego un Lugar donde ya haya un Lugar existente. Si se te da la opción de colocar un Lugar del mazo de Catacumbas en uno de varios sitios posibles, y uno de esos sitios ya está ocupado por un Lugar existente, no puedes elegir dicho sitio. Debes elegir un sitio que no esté ocupado por un Lugar si es posible. Si todos los sitios especificados están ocupados por Lugares existentes, el efecto <b>Obligado</b> falla y no se pone en juego ningún nuevo Lugar “Catacumbas”."
     },
     {
       "id": "$play_scenario",
@@ -20610,15 +20610,15 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "How was act 2 advanced?",
+      "text": "¿Cómo se avanzó el Acto 2a?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "The Man in the Pallid Mask was defeated.",
-            "description": "Mark two <b>Conviction</b>.",
+            "text": "El hombre de la máscara pálida fue derrotado.",
+            "description": "Marca dos <b>Convicciones</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -20636,8 +20636,8 @@
           },
           {
             "id": "doubt",
-            "text": "You spent clues to advance.",
-            "description": "Mark two <b>Doubt</b>.",
+            "text": "Los investigadores gastaron pistas para avanzar.",
+            "description": "Marca dos <b>Dudas</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -20675,19 +20675,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "los investigadores conocen la ubicación del portal."
         }
       ]
     },
     {
       "id": "know_site_of_gate_chasing_stranger",
-      "text": "In your Campaign Log, record that <i>you know the site of the gate</i>. Add two tally marks under “Chasing the Stranger.”",
+      "text": "Anota en el registro de campaña que <i>los investigadores conocen la ubicación del portal</i>. Añade 2 marcas en la sección “Persiguiendo al Extranjero”.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "know_site_of_gate",
-          "text": "you know the site of the gate."
+          "text": "los investigadores conocen la ubicación del portal."
         },
         {
           "type": "campaign_log_count",
@@ -20699,7 +20699,7 @@
     },
     {
       "id": "read_act_2_choice",
-      "text": "Each investigator must choose whether or not to read Act II of The King in Yellow. At least one investigator must read Act II.\nIn your Campaign Log, record the names of each investigator who chose to read Act II. Each investigator who read Act II searches the collection for a random basic [[Madness]] or [[Pact]] weakness, and adds it to their deck (does not count toward deck size). Each investigator who read Act II earns 2 additional experience as they gain insight into the machinations of the Tattered King.",
+      "text": "Cada investigador debe elegir si lee o no el segundo acto de El Rey de Amarillo. Al menos 1 investigador debe leer el segundo acto.\nAnota en el registro de campaña los nombres de cada investigador que eligiera leer el segundo acto. Cada investigador que lea el segundo acto busca en su colección una Debilidad básica aleatoria [[Locura]] o [[Pacto]] y la añade a su mazo. Esta Debilidad no cuenta para el tamaño de mazo. Cada investigador que lea el segundo acto obtiene 2 puntos de experiencia adicionales por recibir información sobre las maquinaciones del Rey Andrajoso.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -20708,14 +20708,14 @@
         "choices": [
           {
             "id": "read_act_2",
-            "text": "Read Act II",
+            "text": "Lee el segundo acto",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# read Act 2 of The King in Yellow."
+                "text": "#name# leyó el segundo acto de El Rey de Amarillo."
               },
               {
                 "type": "add_weakness",
@@ -20776,7 +20776,7 @@
         "choices": [
           {
             "id": "haruko_killed",
-            "text": "Is Ishimaru Haruko <i>(Just Skin and Bones)</i> in the victory display?",
+            "text": "¿Está Ishimaru Haruko <i>(Sólo piel y huesos)</i> en la zona de victoria?",
             "steps": [
               "kill_haruko"
             ]
@@ -20787,7 +20787,7 @@
     {
       "id": "kill_haruko",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ishimaru Haruko</i>.",
+      "text": "Anota a <i>Ishimaru Haruko</i> en la sección “VIP muertos” del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -20882,22 +20882,22 @@
     },
     {
       "id": "create_catacombs_deck",
-      "text": "Set all of the other locations aside as a separate “Catacombs Deck.” To do this, perform the following:",
+      "text": "Pon aparte todos los demás Lugares, formando un “mazo de Catacumbas”. Para ello, haz lo siguiente:",
       "bullets": [
         {
-          "text": "Randomly choose 4 Catacombs locations and remove them from the game, without looking at them."
+          "text": "Deja aparte La puerta al Infierno (es un lado revelado de un Lugar “Catacumbas”), elige al azar 5 Lugares Catacumbas y retíralos de la partida sin mirarlos, a continuación vuelve a añadir La puerta al infierno a los lugares que no se retiraron."
         },
         {
-          "text": "Shuffle the set‐aside Tomb of Shadows, the set‐aside Blocked Passage, and 3 other Catacombs locations together to form the bottom 5 cards of the Catacombs Deck, Catacombs side faceup."
+          "text": "Añade la Tumba de sombras y el Pasadizo bloqueado puestos aparte a otros 3 Lugares “Catacumbas” y barájalos para tener las 5 cartas inferiores del mazo de Catacumbas, con el lado Catacumbas boca arriba."
         },
         {
-          "text": "Then, place all of the other Catacombs locations on top, in a random order. All of the cards in the Catacombs Deck should be showing only the Catacombs side, so that the players do not know which is which."
+          "text": "A continuación, coloca todos los demás Lugares “Catacumbas” sobre ellos, en orden aleatorio. Todas las cartas del mazo de Catacumbas deben mostrar sólo el lado Catacumbas, de forma que los jugadores no sepan cuál es cuál."
         }
       ]
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"For the purposes of Corpse Dweller's spawn ability, The Man in the Pallid Mask does not count as a [[Humanoid]] enemy.\nWhile it is act 2, The Man in the Pallid Mask cannot leave the Tomb of Shadows.\"\nAttach the Return to The Pallid Mask scenario reference card to the scenario reference card as a reminder."
+      "text": "Durante este escenario, se aplica la siguiente regla adicional:\n\"A efectos de la capacidad de aparición del Morador de cadáver, El hombre de la máscara pálida no cuenta como Enemigo [[Humanoide]].\nMientras esté en juego el acto 2, El hombre de la máscara pálida no puede abandonar la Tumba de sombras.\"\nVincula la carta de referencia de escenario de Regreso a La máscara pálida a la carta de referencia de escenario original como recordatorio."
     }
   ],
   "resolutions": [
@@ -20909,7 +20909,7 @@
         "physical",
         "mental"
       ],
-      "text": "You are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Dazed as you are, you find it difficult to answer. He points toward the staircase nearby and pushes you away from the catacombs. You stumble onto the Rue de la Tombe-Issoire and slowly make your way to a hotel where you can stay the night.\nSeveral days of research later, the meaning of the strange diagrams you saw within the catacombs still escapes you. You feel as though you have been led on a wild goose chase. Just as you are about to give up, you see a faded yellow book on the table nearest to you. You are stunned to discover that it is the unabridged script of The King in Yellow. Drawn on the cover in black ink is the very same diagram whose meaning you have been struggling to interpret for several sleepless nights. Who had placed it here? How had it come to your hotel room? Regardless, you know what you must do. The play holds the secrets—it has all along—and yet like a fool you have avoided reading Act II out of superstition. Its words cannot harm you any more than the creatures and fanatics you have already encountered. Trembling, you open to the second part, and begin to read.",
+      "text": "Te despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Conmocionado como estás, te resulta difícil responder. Señala la escalera cercana y te saca a empujones de las catacumbas. Sales a trompicones a la Rue de la Tombe-Issoire y te diriges lentamente hacia un hotel en el que puedas pasar la noche.\nTras varios días de investigación, sigues sin entender el significado de los extraños diagramas que viste en las catacumbas. Notas como si te hubieran puesto a buscar una aguja en un pajar. Cuando estás a punto de darte por vencido, ves un desvaído libro amarillo en la mesa que tienes más cerca. Te asombra descubrir que es el guion completo de El Rey de Amarillo. Dibujado con tinta negra en la portada ves el mismo diagrama cuyo significado llevas tratando de interpretar varias noches insomnes. ¿Quién lo ha puesto aquí? ¿Cómo ha llegado a tu habitación? Independientemente de eso, sabes lo que debes hacer. La obra contiene los secretos, lo ha hecho todo el tiempo, y aun así, como un idiota, has evitado leer el segundo acto por pura superstición. Sus palabras no pueden dañarte más que las criaturas y fanáticos que has encontrado. Tembloroso, abres la segunda parte y comienzas a leer.",
       "steps": [
         "know_site_of_gate",
         "read_act_2_choice",
@@ -20922,7 +20922,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "The burned skull holds the key to everything. You are sure of it. You have tried every method available to you in studying the diagram it bears, but the answer eludes you still. You have brought the skull to experts, occultists, and professors. You have even tried speaking with the skull on more than one occasion. Exasperated, you place the skull on your night table and try to get some sleep for the first time since escaping the catacombs. As you fall asleep, you cannot shake the sight of the diagram etched in the skull’s forehead.\nYou awaken with a spark of inspiration and rush to the Musée du Louvre, a famous Parisian museum housing tens of thousands of paintings, drawings, and archaeological finds. You spend days exploring the museum—every display, every collection, every single object of art that might hold a clue to the diagram’s meaning. Finally, you see it: a painting depicting a beautiful island town weathering a torrential storm. Waves crash against the stone of the outer wall, the tide threatening to swallow the island whole. Lightning flashes around the tower of the abbey above the village. A whirlwind of black clouds churns in the sky above. The diagram from the burned skull you hold in your hands is recreated perfectly in the stained glass of the abbey. The title of the piece is “The Path Is Open.”",
+      "text": "El cráneo calcinado es la clave de todo. Estás seguro. Has intentado todos los métodos que tienes a tu disposición para estudiar el diagrama que lleva, pero se te sigue escapando la respuesta. Has llevado el cráneo a expertos, ocultistas y profesores. Incluso has tratado de hablar con el cráneo en más de una ocasión. Exasperado, colocas el cráneo en tu mesilla de noche y tratas de dormir por primera vez desde que escapaste de las catacumbas. Cuando te quedas dormido, no logras borrar la imagen del diagrama grabado en la frente del cráneo.\nTe despiertas con una chispa de inspiración y te diriges corriendo al Musée du Louvre, un famoso museo parisino que alberga decenas de miles de cuadros, dibujos y hallazgos arqueológicos. Pasas días explorando el museo; cada exposición, colección y objeto de arte que podría contener alguna pista sobre el significado del diagrama. Por fin lo ves: un cuadro que muestra una preciosa ciudad isleña que soporta una tormenta torrencial. Las olas chocan contra la piedra de la muralla exterior, y la marea amenaza con engullir la isla entera. Hay destellos de relámpagos alrededor de la torre de la abadía que hay sobre la aldea. Un remolino de nubes negras gira en el cielo. El diagrama del cráneo quemado que tienes en las manos aparece perfectamente recreado en una vidriera de la abadía. El título del cuadro es “El camino está abierto”.",
       "steps": [
         "know_site_of_gate",
         "add_cultists",
@@ -20934,7 +20934,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You fall ceaselessly through the empty abyss. No air slows your descent or courses through your hair. It is a passageway devoid of reality. Finally, you pass through an invisible gateway and enter another realm. Looming above and below you are two skylines, one a warped reflection of the other. A vortex of swirling black clouds and crashing waves lies in between them. You study both sides—the familiar city and its strange mirror. Could this be the path to Carcosa? A passageway between realities, where realms converge? If so, all that is left is to find where this gate appears on Earth. You fall into the vortex below.\nYou are shaken awake by a police officer and lifted to your feet. You feel as though the weight of a train has slammed into your head. The pain is unbearable. The man shines a flashlight in your eyes and asks you several questions in French. Your eyes widen with realization and you wrest your arm free from the confused man’s grip. “I have to go at once!”",
+      "text": "Caes sin cesar por un abismo vacío. No hay aire que ralentice tu descenso ni recorra tu pelo. Es un pasaje desprovisto de realidad. Por fin, atraviesas un portal invisible y entras en otro reino. Por encima y por debajo de ti hay dos firmamentos, y uno es el distorsionado reflejo del otro. Entre ellos se encuentra un remolino de nubes negras y olas rompientes. Estudias ambos lados: la familiar ciudad y su extraño reflejo. ¿Podría ser éste el camino a Carcosa? ¿Un pasaje entre realidades, donde convergen los reinos? Si es así, todo lo que debes hacer es encontrar dónde aparece este portal en la Tierra. Te precipitas al vórtice que tienes debajo.\nTe despierta el zarandeo de un agente de policía que te pone en pie. Te sientes como si un tren se hubiera estrellado contra tu cabeza. El dolor es insoportable. El hombre te apunta con una linterna a los ojos y te hace varias preguntas en francés. Abres los ojos como platos al comprenderlo todo, y te sueltas del agarre del confundido hombre. –¡Debo irme de inmediato!",
       "steps": [
         "know_site_of_gate_chasing_stranger",
         "add_tablets",
@@ -20947,8 +20947,8 @@
 },
 {
   "id": "return_to_the_unspeakable_oath",
-  "scenario_name": "Return to The Unspeakable Oath",
-  "full_name": "Scenario IV: Return to The Unspeakable Oath",
+  "scenario_name": "Regreso a El juramento inconfesable",
+  "full_name": "Escenario IV: Regreso a El juramento inconfesable",
   "setup": [
     "check_followers_of_the_sign_found_way",
     "intro_3",
@@ -21548,7 +21548,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Daniel Chesterfield, Host of Insanity, Radical Treatment, and each copy of Patient Confinement."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Daniel Chesterfield, el Enemigo Portador de la locura, la Traición Tratamiento radical, y todas las copias de Aislamiento de pacientes."
     },
     {
       "id": "select_act_2",
@@ -21594,12 +21594,12 @@
     {
       "id": "more_or_equal_conviction_act_2_v3",
       "bullet_type": "small",
-      "text": "Because you have more (or equal) <b>Conviction</b> than <b>Doubt</b>, use Act 2—”The Really Bad Ones” (v. III)."
+      "text": "Como tu cantidad de <b>Convicciones</b> es mayor o igual que la de <b>Dudas</b>, usa el Acto 2—“Los realmente graves” (v. III)."
     },
     {
       "id": "more_doubt_act_2_v4",
       "bullet_type": "small",
-      "text": "Because you have more <b>Doubt</b> than <b>Conviction</b>, use Act 2—”The Really Bad Ones” (v. IV)."
+      "text": "Como tu cantidad de <b>Dudas</b> es mayor que la de <b>Convicciones</b>, usa el Acto 2—“Los realmente graves” (v. IV)."
     }
   ],
   "resolutions": [
@@ -32296,8 +32296,8 @@
 },
 {
   "id": "blob_that_ate_everything",
-  "scenario_name": "The Blob That Ate Everything",
-  "full_name": "The Blob That Ate Everything",
+  "scenario_name": "La masa que lo devoraba todo",
+  "full_name": "La masa que lo devoraba todo",
   "xp_cost": 2,
   "setup": [
     "xp_cost",
@@ -32330,12 +32330,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<i>Incident Report: 8L-08</i>\n<i>Thursday, 07/05/1928</i>\n<i>Blackwater, MA</i>\n\n<i>0312 hours - Impact event just outside of Blackwater. Intercepted police call, agents sent to investigate. Interviewed local farmer, Ron Graham; claims meteor was several feet wide, greenish hue. Crater roughly 100 yards in diameter. Radiation detected in outlying area. Recommend immediate quarantine and further observation by research team. Situation under control.</i>"
+      "text": "<i>Informe del incidente: 8L-08</i>\n<i>Jueves, 07/05/1928</i>\n<i>Blackwater, Massachusetts</i>\n\n<i>0312 horas - Suceso de impacto a las afueras de Blackwater. Se intercepta una llamada a la policía y se envían agentes para investigar. Se interroga al granjero local Ron Graham; éste afirma que el meteorito tenía varios metros de ancho y un tono verdoso. El diámetro del cráter era de casi 100 metros. Se detectó radiación en la zona circundante. Se recomienda cuarentena inmediata y observación por parte del equipo de investigación. Situación bajo control.</i>"
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "It wasn't under control.\nThat was the report the G-men took when they first arrived. For the next few days, the town of Blackwater was on lockdown. The impact was all that was talked about in the papers, but not much was known aside from the enormous crater and the effect it had on the countryside. Nobody was allowed to leave the town, and only those approved by the shadow government agency was allowed to enter. Those unfortunate few included high-ranking government agent, and a team of researchers from the nearby Miskatonic University, who were summoned to investigate the meteor itself. For the rest of the town's inhabitants, it was a strange occurence, nothing more… that is, until the meteor <i>hatched</i>.\nI saw it with my own eyes. When the anomaly emerged, the first thing it did was devour the team of researchers who have been sent to collect and study samples from the meteor. The next thing it did was devour their lab equipment. Then Ron Graham's tractor. Then his house, in its entirety. It continued to grow and spread, devouring everything in its path. I barely escaped with my life.\nWhen the army arrived, they thought they could kill it with bullets and shells. Everything they threw at the creature was devoured, one round after the next. Then it split into hundreds of smaller pieces of itself, and the army was quickly overwhelmed. While the battle raged on, myself and others back in town saw lights and shapes in the sky above. Something was up there, waiting. Biding time.\nThe quarantine still holds, and we're stuck in the middle of it. It won't be long before the anomaly has grown large enough to devour everything in Blackwater. And if that happens, who could possibly stop its rampage?"
+      "text": "No estaba bajo control.\nÉse fue el informe de los tipos del gobierno cuando llegaron. Durante los días siguientes, la ciudad de Blackwater sufrió un cierre de emergencia. En los periódicos sólo se hablaba del impacto, pero no se sabía mucho más aparte del enorme cráter y el efecto que tuvo en el campo. Nadie podía salir de la ciudad, y sólo podían entrar quienes contaban con el permiso de la oscura agencia gubernamental. Esos pocos desafortunados incluían agentes del gobierno de alto rango y un equipo de investigadores de la cercana Universidad Miskatonic, a quienes se llamó para investigar el meteorito. Para el resto de habitantes de la ciudad, fue un suceso extraño y nada más... Hasta que el meteorito <i>eclosionó</i>, claro.\nLo vi con mis propios ojos. Cuando brotó la anomalía, lo primero que hizo fue devorar al grupo de investigadores que habían sido enviados a reunir y estudiar muestras del meteorito. Lo siguiente que hizo fuer devorar su equipo de laboratorio. Luego el tractor de Ron Graham. Luego su casa, enterita. Siguió creciendo y extendiéndose, devorándolo todo a su paso. Apenas logré escapar con vida.\nCuando llegó el ejercito, pensaron que podrían matarla con balas y proyectiles. Todo lo que dispararon contra la criatura fue devorado, andanada tras andanada. Después se dividió en cientos de partes más pequeñas de sí misma, y el ejército se vio sobrepasado en muy poco tiempo. Mientras la batalla arreciaba, tanto yo como otros habitantes de la ciudad vimos luces y siluetas en el cielo. Había algo allí arriba, esperando. Aguardando su momento.\nLa cuarentena sigue instaurada, y estamos atrapados en ella. No pasará mucho tiempo hasta que la anomalía sea lo bastante grande como para devorar todo lo que hay en Blackwater. Y si eso ocurre, ¿quién podrá detener su devastación?"
     },
     {
       "id": "gather_encounter_sets",
@@ -32356,33 +32356,33 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Search <i>The Blob That Ate Everything</i> encounter set for the following encounter cards and set them aside out of play: Vulnerable Heart, 1 copy of Grasping Ooze, 1 copy of Cubic Ooze, and both copies of Oozewraith."
+      "text": "Busca en el conjunto de encuentros <i>La masa que lo devoraba todo</i> las siguientes cartas de Encuentro y déjalas aparte, fuera del juego: Corazón vulnerable, 1 copia del Cieno aferrador, 1 copia del Cieno cúbico y ambas coplas del Espectro de cieno."
     },
     {
       "id": "setup_blob",
-      "text": "Put the Subject 8L-08 enemy into play next to the agenda deck. It is not at any location."
+      "text": "Pon en juego el Enemigo Sujeto 8L-08 junto al mazo de Plan. No está en ningún Lugar."
     },
     {
       "id": "setup_locations",
-      "text": "Set up the locations acccording to the guidelines below.",
+      "text": "Prepara los Lugares según las siguientes indicaciones.",
       "bullets": [
         {
-          "text": "Shuffle the Quarantine Zone locations together and remove 1 of them from the game."
+          "text": "Baraja los Lugares Zona de cuarentena y retira de la partida 1 de ellos."
         },
         {
-          "text": "Put The Crater into play."
+          "text": "Pon en juego El cráter."
         },
         {
-          "text": "Take the Research Site, the Temporary HQ, and 2 random Quarantine Zone locations. Shuffle them and place each of them connected to the Crater, in a random order."
+          "text": "Coge los Lugares Lugar de investigación, CG temporal y 2 Zona de cuarentena aleatorias. Barájalos y colócalos conectados a El cráter, en orden aleatorio."
         },
         {
-          "text": "Take the Fungus Mound and 3 random Qurantine Zone locations. Shuffle them and place each of them in 1 of the 4 positions in the outer ring, farthest from the Crater."
+          "text": "Coge los Lugares Montículo fúngico y 3 Zona de cuarentena aleatorias. Barájalos y coloca cada uno de ellos en 1 de las 4 posiciones del círculo exterior más alejadas de El cráter."
         },
         {
-          "text": "Put the remaining Quarantine Zone locations into play."
+          "text": "Pon en juego los Lugares Zona de cuarentena restantes."
         },
         {
-          "text": "Each investigator begins play at the Temporary HQ."
+          "text": "Cada investigador comienza la partida en el CG temporal."
         }
       ]
     },
@@ -32423,12 +32423,12 @@
     {
       "id": "one_countermeasure",
       "bullet_type": "small",
-      "text": "Place 1 resource on the scenario reference card as a countermeasure."
+      "text": "Coloca 1 recurso sobre la carta de referencia de escenario como contramedida."
     },
     {
       "id": "two_countermeasure",
       "bullet_type": "small",
-      "text": "Place 2 resources on the scenario reference card as a countermeasures."
+      "text": "Coloca 2 recursos sobre la carta de referencia de escenario como contramedidas."
     },
     {
       "id": "encounter_deck",
@@ -32437,37 +32437,37 @@
     {
       "id": "devour_rule",
       "type": "rule_reminder",
-      "title": "Devour",
-      "text": "During this scenario, Subject 8L-08 can \"devour\" a variety of things.",
+      "title": "Devorar",
+      "text": "Durante este escenario, el Sujeto 8L-08 puede \"devorar\" todo tipo de cosas.",
       "bullets": [
         {
-          "text": "If a card is devoured, it is placed beneath Subject 8L-08. Cards beneath Subject 8L-08 are considered out of play. Each devoured card is returned to its owner's deck at the end of the game. If an investigator is devoured, he or she is killed."
+          "text": "Si una carta es devorada, se coloca bajo el Sujeto 8L-08. Las cartas que haya bajo el Sujeto 8L-08 se consideran fuera del juego. Todas las cartas devoradas vuelven al mazo de su propietario al final de la partida. Si un investigador es devorado, muere."
         },
         {
-          "text": "If a token is devoured, it is placed in the token pool."
+          "text": "Si una ficha es devorada, se coloca en la reserva de fichas."
         },
         {
-          "text": "When choosing a location to be devoured, you cannot choose to devour a location if it causes another location to have no valid connections."
+          "text": "Al elegir un Lugar para que sea devorado, no puedes elegir devorar un Lugar si eso hace que otro Lugar se quede sin conexiones válidas."
         },
         {
-          "text": "Subject 8L-08 can also devour certain aspect of reality or metaphysical objects. If it does so, you will be instructed of the consequences."
+          "text": "El Sujeto 8L-08 también puede devorar algunos aspectos de la realidad u objetos metafísicos. Si lo hace, se te informará de las consecuencias."
         }
       ]
     },
     {
       "id": "countermeasures_rule",
       "type": "rule_reminder",
-      "title": "Countermeasures",
-      "text": "Countermeasures represent supplies, research, or military equipment which may aid the investigators in their survival. Countermeasures may be spent via certain card abilities in order to trigger powerful effects. However, gaining new countermeasures is rare, so be careful how you spend them!"
+      "title": "Contramedidas",
+      "text": "Las contramedidas representan suministros, investigación o equipo militar que pueden ayudar a los investigadores a sobrevivir. Las contramedidas se pueden gastar mediante algunas capacidades de cartas para activar potentes efectos. Sin embargo, obtener nuevas contramedidas es muy poco frecuente, ¡así que gástalas con cabeza!"
     },
     {
       "id": "blob_x_rule",
       "type": "rule_reminder",
-      "title": "Blob X",
-      "text": "Many of the enemies in this scenario are pieces of the anomaly which have broken apart and have their own sentience. Defeating these enemies damages the anomaly. As an enemy with <b>Blox X</b> is defeated, deal X damage to Subject 8L-08.",
+      "title": "Masa X",
+      "text": "Muchos de los Enemigos de este escenario son trozos de la anomalía que se han desprendido y adquirido consciencia. Derrotar a estos Enemigos hace daño a la anomalía. Cuando un Enemigo con <b>Masa X</b> sea derrotado, inflige X puntos de daño al Sujeto 8L-08.",
       "bullets": [
         {
-          "text": "Enemies with <b>Blox X</b> are not placed in the victory display when they are defeated unless they also have <b>Victory X</b>."
+          "text": "Los Enemigos con <b>Masa X</b> no se colocan en la zona de victoria cuando son derrotados, salvo que también tengan <b>Victoria X</b>."
         }
       ]
     },
@@ -32478,7 +32478,7 @@
       "input": {
         "type": "counter",
         "text": "Zona de victoria:",
-        "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
+        "confirm_text": "Cada investigador obtiene 3 puntos de experiencia adicionales por haber salvado el tejido de la existencia.",
         "effects": [
           {
             "type": "earn_xp",
@@ -32495,24 +32495,24 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "blob_devoured_universe",
-          "text": "Subject 8L-08 devoured the entire universe."
+          "text": "el Sujeto 8L-08 devoró todo el universo."
         }
       ]
     },
     {
       "id": "reality_acid",
       "type": "table",
-      "title": "Reality Acid",
+      "title": "Ácido de la realidad",
       "bullet_type": "none",
-      "text": "<smallcaps>Subject 8L-08 opens its maw, and devours…</smallcaps>\n<i>(If the combination of chaos tokens revealed is not listed, or if the listed aspect cannot be devoured, reveal two new chaos tokens and consult the chart again.)</i> ",
+      "text": "<smallcaps>El sujeto 8L-08 abre sus fauces y devora…</smallcaps>\n<i>(Si la combinación de fichas de Caos revelada no aparece en la lista, o si el aspecto indicado no puede ser devorado, revela dos nuevas fichas de Caos y vuelve a consultar la tabla.)</i>",
       "header": {
         "cells": [
           {
-            "text": "<b>Chaos Tokens</b>\n<i>(in any order)</i>",
+            "text": "<b>Fichas de Caos</b>\n<i>(en cualquier orden)</i>",
             "size": 2
           },
           {
-            "text": "<center><b>Aspect of Reality Devoured</b></center>",
+            "text": "<center><b>Aspecto de la realidad devorado</b></center>",
             "size": 4
           }
         ]
@@ -32529,7 +32529,7 @@
               "size": 1
             },
             {
-              "text": "…the non-[[Elite]] enemy nearest to you.",
+              "text": "…el Enemigo que no sea [[Élite]] más cercano a ti.",
               "size": 4
             }
           ]
@@ -32545,7 +32545,7 @@
               "size": 1
             },
             {
-              "text": "…a treachery at your location.",
+              "text": "...una Traición que esté en tu Lugar.",
               "size": 4
             }
           ]
@@ -32557,11 +32557,11 @@
               "size": 1
             },
             {
-              "text": "‑1 to ‑8",
+              "text": "‑1 a ‑8",
               "size": 1
             },
             {
-              "text": "…1 horror and 1 damage from your investigator card.",
+              "text": "…1 de horror y 1 de daño de tu carta de investigador.",
               "size": 4
             }
           ]
@@ -32577,7 +32577,7 @@
               "size": 1
             },
             {
-              "text": "…your greatest flaw. Search your deck for any 1 weakness card. It is devoured.",
+              "text": "...tu mayor punto débil. Busca 1 carta de Debilidad cualquiera en tu mazo para que sea devorada.",
               "size": 4
             }
           ]
@@ -32593,7 +32593,7 @@
               "size": 1
             },
             {
-              "text": "…the [elder_sign] token just revealed.",
+              "text": "…la ficha [elder_sign] recién revelada.",
               "size": 4
             }
           ]
@@ -32609,7 +32609,7 @@
               "size": 1
             },
             {
-              "text": "…your caution. Resolve Reality Acid three more times, ignoring this result.",
+              "text": "...tu cautela. Resuelve Ácido de la realidad 3 veces más, ignorando este resultado.",
               "size": 4
             }
           ]
@@ -32625,7 +32625,7 @@
               "size": 1
             },
             {
-              "text": "…your ignorance. Discover 1 clue at your location.",
+              "text": "…tu ignorancia. Descubre 1 pista en tu Lugar.",
               "size": 4
             }
           ]
@@ -32637,11 +32637,11 @@
               "size": 1
             },
             {
-              "text": "‑1 to ‑8",
+              "text": "‑1 a ‑8",
               "size": 1
             },
             {
-              "text": "…friendships. Until the end of the round, investigators cannot commit cards to each others' skill tests.",
+              "text": "...amistades. Hasta el final de la ronda, los investigadores no pueden asignar cartas en las pruebas de habilidad de los demás.",
               "size": 4
             }
           ]
@@ -32657,7 +32657,7 @@
               "size": 1
             },
             {
-              "text": "…your player reference card.",
+              "text": "...tu carta de referencia de jugador.",
               "size": 4
             }
           ]
@@ -32673,7 +32673,7 @@
               "size": 1
             },
             {
-              "text": "…1 [per_investigator] clues from your location.",
+              "text": "…1 pista [per_investigator] de tu Lugar.",
               "size": 4
             }
           ]
@@ -32689,7 +32689,7 @@
               "size": 1
             },
             {
-              "text": "…your voice. Until the end of the round, you cannot speak or make noise.",
+              "text": "...tu voz. No puedes hablar ni hacer ningún ruido hasta el final de la ronda.",
               "size": 4
             }
           ]
@@ -32705,7 +32705,7 @@
               "size": 1
             },
             {
-              "text": "…your group's food and drinks. It cannot be consumed until your group has dealt at least 3 damage to Subject 8L-08.",
+              "text": "...la comida y bebida de tu grupo. Nadie puede consumir nada hasta que tu grupo haya infligido al menos 3 puntos de daño al Sujeto 8L-08.",
               "size": 4
             }
           ]
@@ -32721,7 +32721,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of language. Until the end of the investigation phase, you can only speak in gibberish.",
+              "text": "...el concepto de lenguaje. Sólo puedes hablar de forma ininteligible hasta el final de la fase de Investigación.",
               "size": 4
             }
           ]
@@ -32737,7 +32737,7 @@
               "size": 1
             },
             {
-              "text": "…light. Until the end of the round, investigators must play with all nearby light sources turned off or covered (except for flashlights).",
+              "text": "...la luz. Hasta el final de la ronda, los investigadores deben jugar con todas las fuentes de luz cercanas apagadas o tapadas (excepto las linternas).",
               "size": 4
             }
           ]
@@ -32753,7 +32753,7 @@
               "size": 1
             },
             {
-              "text": "…itself, and then regurgitates itself. Deal 1 damage to Subject 8L-08.",
+              "text": "...a sí mismo, y luego se regurgita. Inflige 1 punto de daño al Sujeto 8L-08.",
               "size": 4
             }
           ]
@@ -32769,7 +32769,7 @@
               "size": 1
             },
             {
-              "text": "…all damage from each [[Manifold]] enemy.",
+              "text": "...todo el daño de cada Enemigo [[Excecencia]].",
               "size": 4
             }
           ]
@@ -32781,11 +32781,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "…all of the supplies, ammo, charges, and secrets among assets you control.",
+              "text": "...toda la munición, suministros, cargas y secretos que haya en los Apoyos que controlas.",
               "size": 4
             }
           ]
@@ -32801,7 +32801,7 @@
               "size": 1
             },
             {
-              "text": "…your hope. Until the end of the next mythos phase, set your base [willpower] to 0.",
+              "text": "...tu esperanza. Hasta el final de la próxima fase de Mitos, establece tu [willpower] básica en 0.",
               "size": 4
             }
           ]
@@ -32817,7 +32817,7 @@
               "size": 1
             },
             {
-              "text": "…your curiosity. Until the end of the next mythos phase, set your base [intellect] to 0.",
+              "text": "...tu curiosidad. Hasta el final de la próxima fase de Mitos, establece tu [intellect] básico en 0.",
               "size": 4
             }
           ]
@@ -32833,7 +32833,7 @@
               "size": 1
             },
             {
-              "text": "…your precision. Until the end of the next mythos phase, set your base [combat] to 0.",
+              "text": "...tu precisión. Hasta el final de la próxima fase de Mitos, establece tu [combat] básico en 0.",
               "size": 4
             }
           ]
@@ -32849,7 +32849,7 @@
               "size": 1
             },
             {
-              "text": "…your attention. Until the end of the next mythos phase, set your base [agility] to 0.",
+              "text": "...tu atención. Hasta el final de la próxima fase de Mitos, establece tu [agility] básica en 0.",
               "size": 4
             }
           ]
@@ -32865,7 +32865,7 @@
               "size": 1
             },
             {
-              "text": "…your versatility. Until the end of the round, you cannot play or use cards that do not match your investigator's class.",
+              "text": "...tu versatilidad. Hasta el final de la ronda, no puedes jugar ni usar cartas que no coincidan con la clase de tu investigador.",
               "size": 4
             }
           ]
@@ -32881,7 +32881,7 @@
               "size": 1
             },
             {
-              "text": "…your cell phone.",
+              "text": "...tu móvil.",
               "size": 4
             }
           ]
@@ -32897,7 +32897,7 @@
               "size": 1
             },
             {
-              "text": "…the chaos bag. Remove all tokens from it and place them in a different container.",
+              "text": "...la bolsa de caos. Retira todas las fichas de ella y mételas en otro recipiente.",
               "size": 4
             }
           ]
@@ -32909,11 +32909,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "…level 1 - 5 cards of your choice with at least 5 total levels from among your deck, discard pile, hand, and play area.",
+              "text": "...cartas de nivel 1-5 de tu elección que tengan al menos 5 niveles en total, elegidas de entre tu mazo, pila de descartes, mano y zona de juego.",
               "size": 4
             }
           ]
@@ -32929,7 +32929,7 @@
               "size": 1
             },
             {
-              "text": "…the top three cards of your deck.",
+              "text": "...las 3 primeras cartas de tu mazo.",
               "size": 4
             }
           ]
@@ -32945,7 +32945,7 @@
               "size": 1
             },
             {
-              "text": "…the top 3 cards of your discard pile.",
+              "text": "...las 3 primeras cartas de tu pila de descartes.",
               "size": 4
             }
           ]
@@ -32961,7 +32961,7 @@
               "size": 1
             },
             {
-              "text": "…the deckbox you store your deck in.",
+              "text": "...la caja de mazo en la que guardas tu mazo.",
               "size": 4
             }
           ]
@@ -32977,7 +32977,7 @@
               "size": 1
             },
             {
-              "text": "…your investigator's card sleeve.",
+              "text": "...la funda de la carta de tu investigador.",
               "size": 4
             }
           ]
@@ -32989,11 +32989,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "…your party's teamwork. Each investigator loses 1 action.",
+              "text": "...el trabajo en equipo de tu grupo. Cada investigador pierde 1 acción.",
               "size": 4
             }
           ]
@@ -33009,7 +33009,7 @@
               "size": 1
             },
             {
-              "text": "…a [[Talent]], [[Connection]], or [[Condition]] asset you control.",
+              "text": "...un Apoyo [[Talento]], [[Contacto]], o [[Estado]] que controles.",
               "size": 4
             }
           ]
@@ -33021,11 +33021,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "…your sense of time. Until you advance the agenda, investigators cannot use time-keeping devices, ask about the time, or trigger abilities on any card with \"time\", \"watch\", or \"chrono\" in its title.",
+              "text": "...tu noción del tiempo. Hasta que hagas avanzar el plan, los investigadores no pueden emplear dispositivos de medición del tiempo, preguntar por el tiempo o la hora ni activar capacidades de cartas en cuyo nombre se incluya \"Crono\", \"Reloj\", \"Tiempo\" o \"Momento\".",
               "size": 4
             }
           ]
@@ -33033,7 +33033,7 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
@@ -33041,7 +33041,7 @@
               "size": 1
             },
             {
-              "text": "…your investigator mini card. (Use something else to mark your location.)",
+              "text": "...tu carta pequeña de Investigador (usa otra cosa para indicar tu ubicación).",
               "size": 4
             }
           ]
@@ -33049,7 +33049,7 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
@@ -33057,7 +33057,7 @@
               "size": 1
             },
             {
-              "text": "…your house. Search the collection for Your House (Core #124); it is devoured.",
+              "text": "...tu casa. Busca Tu casa (Básico 124) en la colección para que quede devorada.",
               "size": 4
             }
           ]
@@ -33065,15 +33065,15 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "…your soul. Record in your Campaign Log that <i>you have no soul.</i>",
+              "text": "...tu alma. Anota en el registro de campaña que <i>no tienes alma</i>.",
               "size": 4
             }
           ]
@@ -33089,7 +33089,7 @@
               "size": 1
             },
             {
-              "text": "…the highest-cost [[Ally]] asset you control.",
+              "text": "...el Apoyo [[Aliado]] de mayor coste que controles.",
               "size": 4
             }
           ]
@@ -33105,7 +33105,7 @@
               "size": 1
             },
             {
-              "text": "…all event cards in your hand.",
+              "text": "...todas las cartas de Evento de tu mano.",
               "size": 4
             }
           ]
@@ -33121,7 +33121,7 @@
               "size": 1
             },
             {
-              "text": "…all of your resources.",
+              "text": "...todos tus recursos.",
               "size": 4
             }
           ]
@@ -33137,7 +33137,7 @@
               "size": 1
             },
             {
-              "text": "…all skill cards in your hand.",
+              "text": "...todas las cartas de Habilidad de tu mano.",
               "size": 4
             }
           ]
@@ -33153,7 +33153,7 @@
               "size": 1
             },
             {
-              "text": "…all cards that have been exiled.",
+              "text": "...todas las cartas que hayan sido exiliadas.",
               "size": 4
             }
           ]
@@ -33169,7 +33169,7 @@
               "size": 1
             },
             {
-              "text": "…your identity. Until the end of the round, treat your investigator's text box as if it were blank (including [[Traits]]).",
+              "text": "...tu identidad. Hasta el final de la ronda, considera el cuadro de texto impreso de tu investigador como si estuviera en blanco (incluyendo los [[Rasgos]]).",
               "size": 4
             }
           ]
@@ -33185,7 +33185,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of speed. Until the end of the round, investigators cannot gain or take additional actions.",
+              "text": "...el concepto de la velocidad. Hasta el final de la ronda, los investigadores no pueden obtener ni realizar acciones adicionales.",
               "size": 4
             }
           ]
@@ -33201,7 +33201,7 @@
               "size": 1
             },
             {
-              "text": "…your sense of urgency. Until the end of the round, you cannot move.",
+              "text": "...tu presteza. No puedes moverte hasta el final de la ronda.",
               "size": 4
             }
           ]
@@ -33217,7 +33217,7 @@
               "size": 1
             },
             {
-              "text": "…your potential. Until the end of the round, your skills cannot be increased.",
+              "text": "...tu potencial. Tus habilidades no pueden aumentar hasta el final de la ronda.",
               "size": 4
             }
           ]
@@ -33233,7 +33233,7 @@
               "size": 1
             },
             {
-              "text": "…your patience. Place 1 doom on the current agenda.",
+              "text": "...tu paciencia. Coloca 1 ficha de Perdición sobre el plan en curso.",
               "size": 4
             }
           ]
@@ -33249,7 +33249,7 @@
               "size": 1
             },
             {
-              "text": "…all [[Spell]] and [[Ritual]] assets you control.",
+              "text": "…todos los Apoyos [[Hechizo]] y [[Ritual]] que controles.",
               "size": 4
             }
           ]
@@ -33265,7 +33265,7 @@
               "size": 1
             },
             {
-              "text": "…all [[Item]] assets you control.",
+              "text": "…todos los Apoyos [[Objeto]] que controles.",
               "size": 4
             }
           ]
@@ -33281,7 +33281,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of a \"discard pile.\" Until the end of the next mythos phase, each card that would be placed in any investigator's discard pile is instead devoured.",
+              "text": "...el concepto de \"pila de descartes\". Hasta el final de la próxima fase de Mitos, todas las cartas que fuesen a ser colocadas en la pila de descartes de cualquier investigador en vez de eso son devoradas.",
               "size": 4
             }
           ]
@@ -33297,7 +33297,7 @@
               "size": 1
             },
             {
-              "text": "…one of your hands. For the remainder of the game, you have 1 fewer hand slot.",
+              "text": "...una de tus manos. Durante el resto de la partida, tienes 1 espacio de mano menos.",
               "size": 4
             }
           ]
@@ -33313,7 +33313,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of success. The next time an investigator would succeed at a test by 2 or more, that investigator instead automatically fails.",
+              "text": "...el concepto de éxito. La próxima vez que un investigador fuese a tener éxito en una prueba por 2 o más, en lugar de eso el investigador fracasa automáticamente.",
               "size": 4
             }
           ]
@@ -33329,7 +33329,7 @@
               "size": 1
             },
             {
-              "text": "…1 countermeasure.",
+              "text": "...1 contramedida.",
               "size": 4
             }
           ]
@@ -33341,11 +33341,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "-4 a -8",
               "size": 1
             },
             {
-              "text": "…the concept of easiness. Until lthe end of the game, flip the scenario reference card to its Hard/Expert side.",
+              "text": "...el concepto de la facilidad. Hasta el final de la partida, dale la vuelta a la carta de referencia de escenario para mostrar su lado Difícil/Experto.",
               "size": 4
             }
           ]
@@ -33359,7 +33359,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "blob_contained",
-          "text": "the anomaly was contained."
+          "text": "la anomalía fue contenida."
         }
       ]
     },
@@ -33376,7 +33376,7 @@
     },
     {
       "id": "earn_assets",
-      "text": "For each of the following assets that are in play, any one investigator may choose to add that asset to their deck.",
+      "text": "Por cada uno de los siguientes Apoyos que estén en juego, un investigador cualquiera puede elegir añadir dicho Apoyo a su mazo.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -33393,7 +33393,7 @@
         "choices": [
           {
             "id": "in_play",
-            "text": "In play",
+            "text": "En juego",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -33426,7 +33426,7 @@
     },
     {
       "id": "earn_asset_85029",
-      "text": "Any one investigator may choose to add Universal Solvent to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Disolvente universal a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -33455,7 +33455,7 @@
     },
     {
       "id": "earn_asset_85030",
-      "text": "Any one investigator may choose to add Pet Oozeling to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Vástago de cieno mascota a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -33484,7 +33484,7 @@
     },
     {
       "id": "earn_asset_85031",
-      "text": "Any one investigator may choose to add Mi-Go Weapon to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Arma Mi-Go a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -33513,7 +33513,7 @@
     },
     {
       "id": "earn_asset_85032",
-      "text": "Any one investigator may choose to add Lt. Wilson Stewart to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Un investigador cualquiera puede elegir añadir el Tte. Wilson Stewart a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "add_card",
@@ -33544,7 +33544,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "Nothing is left of Blackwater now. The quarantine is broken. The anomaly cannot be contained. First it will spread throughout the countryside, devouring all in its path. Soon all of Massachusetts will be devoured. Then the entirety of New England. It has burrowed beneath the ground and cannot be stopped even by the oceans. No continent is safe. Every living organism on the planet will be devoured. And then, so too will the Earth.\n…but that won't be the end.\nNot even the void of space can stop the creature's growth. In time, it will continue to expand and devour until there is nothing left but the cold emptiness of space and the blob that ate everything.",
+      "text": "Ya no queda nada de Blackwater. La cuarentena se ha roto. La anomalía no puede ser contenida. Primero se extenderá por el campo, devorando todo cuanto haya en su camino. Muy pronto, todo Massachusetts será devorado. Después, Nueva Inglaterra entera. Se ha metido bajo la tierra, y ni siquiera los océanos la detendrán. Ningún continente está a salvo. Todos los organismos vivientes del planeta serán devorados. Y después, la misma Tierra.\n...pero eso no será el fin.\nNi siquiera el vacío del espacio puede detener el crecimiento de la criatura. Con el tiempo, seguirá expandiéndose y devorando hasta que no quede nada salvo el frío espacio y la masa que lo devoraba todo.",
       "steps": [
         "blob_devoured_universe",
         "lose_campaign"
@@ -33553,7 +33553,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "<i>Incident Report: 8L-08, continued</i>\n<i>Wednesday, 07/11/1928</i>\n<i>Blackwater, MA</i>\n<i>0742 hours - Contact made with ████████████ subject. Subject ███████████ meteor; researchers are unsure whether meteor served as an avenue for ██████████ or as some kind of ██████████████. Initiated immediate emergency response procedures. At roughly 0500 hours, subject was eliminated by third party. As per operational protocol, samples have been collected and sent to ██████ for further study. Agents are currently scrubbing remainder of subject's presence from quarantine zone. Strongly recommend immediate expunging of previous conflicting incident report.</i>\n<i>Citizens of Blackwater have been informed ██████████ quarantine ████████ contagion of airborne virus. ███████ several infections ████████; medical teams en route to confirm.</i>\n<i>Agents are attempting to meet with unlicensed combatants for debriefing. Due to sensitive nature of incident, recommend release followed by close observation. Story must be kept ████████████. ████████████████████████████████████████████.</i>\n<i>Destroy the incident report immediately. Additional instructions to follow.</i>",
+      "text": "<i>Informe del incidente: 8L-08, continuación</i>\n<i>Miércoles, 11/07/1928</i>\n<i>Blackwater, Massachusetts</i>\n\n<i>0742 horas - Se estableció contacto con el sujeto ████████████. El sujeto ███████████ meteorito; los investigadores no están seguros de si la finalidad del meteorito era ██████████ o bien una especie de ██████████████. Se iniciaron inmediatamente los procedimientos de respuesta de emergencia. Aproximadamente a las 0500 horas, el sujeto fue eliminado por terceros. Siguiendo el protocolo de operaciones, se recogieron muestras y se enviaron a ██████ para su estudio. En este momento, hay agentes eliminando los restos de la presencia del sujeto en la zona de cuarentena. Se recomienda encarecidamente la supresión del anterior informe del incidente por contradecir éste.</i>\n<i>Se ha informado a los ciudadanos de Blackwater de ██████████ y de la cuarentena ████████ por contagio de un virus de transmisión aérea. ███████ varias infecciones ████████; hay equipos médicos de camino para confirmarlo.</i>\n<i>Los agentes intentan localizar a los combatientes no autorizados para interrogarlos. Debido a la naturaleza sensible del incidente, se recomienda su liberación bajo vigilancia estrecha. La historia debe mantenerse ████████████. ████████████████████████████████████████████.</i>\n<i>Destruyan este informe del incidente de inmediato. Se transmitirán instrucciones adicionales.</i>",
       "steps": [
         "blob_contained",
         "earn_assets",
@@ -34812,7 +34812,7 @@
         "choices": [
           {
             "id": "in_play",
-            "text": "In play",
+            "text": "En juego",
             "effects": [
               {
                 "type": "campaign_log_cards",
