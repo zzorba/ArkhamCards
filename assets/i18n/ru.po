@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-09-02 09:44-0500\n"
+"PO-Revision-Date: 2020-09-06 08:59+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4414,21 +4414,23 @@ msgstr ""
 
 #: src/components/settings/LanguagePicker.tsx:68
 msgid "Confirm"
-msgstr ""
+msgstr "Подтвердить"
 
 #: src/components/settings/LanguagePicker.tsx:69
 msgid ""
 "Changing app language requires downloading the translated card information from "
 "ArkhamDB. This requires network and can take some time."
 msgstr ""
+"Для изменения языка необходимо загрузить перевод карт из ArkhamDB. Этот процесс требует "
+"интернет-соединения и займет какое-то время."
 
 #: src/components/card/FetchCardsGate.tsx:132 src/components/settings/LanguagePicker.tsx:72
 msgid "Download now"
-msgstr ""
+msgstr "Загрузить сейчас"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:109
 msgid "Doesn't get any"
-msgstr ""
+msgstr "Не получили"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:247
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
@@ -4468,13 +4470,13 @@ msgstr "Начальные травмы можно изменить после �
 #: src/components/filter/PackFilterView.tsx:31 src/components/nav/helper.ts:31
 #: src/components/nav/helper.ts:123 src/components/nav/helper.ts:182
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: src/components/deck/DeckChecklistView/index.tsx:48
 #: src/components/deck/DeckDetailView/index.tsx:565
 #: src/components/deck/DeckDetailView/index.tsx:1714
 msgid "Checklist"
-msgstr ""
+msgstr "Контрольный список"
 
 #: src/lib/DeckValidation.ts:255
 msgid "Limit 1 Covenant per deck."
@@ -4482,25 +4484,25 @@ msgstr ""
 
 #: src/components/card/CardFaqView.tsx:144
 msgid "Checking for FAQ"
-msgstr ""
+msgstr "Проверяем FAQ"
 
 #: src/components/card/CardFaqView.tsx:144
 msgid "No entries at this time."
-msgstr ""
+msgstr "На данный момент записей нет."
 
 #: src/components/card/CardFaqView.tsx:150
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
-msgstr ""
+msgstr "Последнее обновление: ${ lastUpdated }"
 
 #: src/components/settings/LanguagePicker.tsx:34
 #, javascript-format
 msgid "Default (${ systemLanguage })"
-msgstr ""
+msgstr "По-умолчанию (${ systemLanguage })"
 
 #: src/components/card/FetchCardsGate.tsx:128
 msgid "Download language cards"
-msgstr ""
+msgstr "Загрузить переводы карт"
 
 #: src/components/card/FetchCardsGate.tsx:129
 #, javascript-format
@@ -4510,31 +4512,35 @@ msgid ""
 "\n"
 "You can override your language preference for this app in Settings."
 msgstr ""
+"Хотите ли вы загрузить перевод карт из ArkhamDB, что бы он соответствовал языку вашего "
+"телефона (${ lang })?\n"
+"\n"
+"Вы можете изменить языковые предпочтения в любое время в Настройках."
 
 #: src/components/card/FetchCardsGate.tsx:131
 msgid "Not now"
-msgstr ""
+msgstr "Не сейчас"
 
 #: src/lib/datetime.ts:59
 msgid "Updated today"
-msgstr ""
+msgstr "Обновлено сегодня"
 
 #: src/lib/datetime.ts:62
 msgid "Updated yesterday"
-msgstr ""
+msgstr "Обновлено вчера"
 
 #: src/lib/datetime.ts:66
 #, javascript-format
 msgid "Updated ${ dayOfWeek }"
-msgstr ""
+msgstr "Обновлено ${ dayOfWeek }"
 
 #: src/lib/datetime.ts:69
 msgid "Updated ${ dateString }"
-msgstr ""
+msgstr "Обновлено ${ dateString }"
 
 #: src/components/settings/LanguagePicker.tsx:102
 msgid "Language"
-msgstr ""
+msgstr "Язык"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:28
 #, javascript-format
@@ -4611,12 +4617,12 @@ msgstr[2] "${ investigator.name } получает ${ effect.physical } физи
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name } <b>сошёл с ума</b>."
+msgstr "${ investigator.name } <b>сошла с ума</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:34
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "Сыщик ${ investigator.name } <b>убит</b>."
+msgstr "Сыщик ${ investigator.name } <b>убита</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:39
 msgctxt "feminine"
