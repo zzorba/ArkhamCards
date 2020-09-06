@@ -1,12 +1,12 @@
 import React from 'react';
 import {
   Linking,
-  ScrollView,
   StyleSheet,
   Platform,
   View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
+import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 import Swiper from 'react-native-swiper';
@@ -280,7 +280,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     return (
       <ScrollView
         key={itemIndex}
-        style={styles.wrapper}
         overScrollMode="never"
         bounces={false}
         contentContainerStyle={styles.contentContainer}
@@ -320,6 +319,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     if (!card) {
       return <View style={styles.wrapper} />;
     }
+    const cardHeight = height - (renderFooter ? FOOTER_HEIGHT : 0);
     return (
       <View
         style={styles.wrapper}
@@ -327,9 +327,8 @@ class CardDetailSwipeView extends React.Component<Props, State> {
         <Swiper
           index={initialIndex}
           width={width}
-          height={height - (renderFooter ? FOOTER_HEIGHT : 0)}
-          style={{ backgroundColor: COLORS.background }}
-          containerStyle={{ flex: 1, backgroundColor: COLORS.background }}
+          style={styles.contentContainer}
+          containerStyle={{ flex: 1, flexDirection: 'column', backgroundColor: COLORS.background }}
           loadMinimal
           loadMinimalSize={1}
           loadMinimalLoader={<View style={[styles.wrapper, { width, height }]} />}
