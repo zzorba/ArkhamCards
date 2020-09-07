@@ -218,6 +218,10 @@
           "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
         },
         {
+          "question": "If I am instructed to replay a scenario, do any effects from a previous resolution or interlude that refer to “the next scenario” apply? What about effects from the introduction that refer to “this scenario?”",
+          "answer": "Yes to both. If the previous resolution or interlude affects “the next scenario,” or if the scenario introduction affects “this scenario,” it should be construed to mean any playthrough of that scenario, including multiple playthroughs if the players are forced to replay it"
+        },
+        {
           "question": "Does Charon’s Obol trigger its effects if a resolution instructs me to replay a scenario?",
           "answer": "Charon’s Obol’s effects occur “When earning experience during the resolution of a scenario…” Therefore, Charon’s Obol will not trigger when you are instructed to replay a scenario, because such resolutions state that “No experience points are earned from your previous game.”"
         }

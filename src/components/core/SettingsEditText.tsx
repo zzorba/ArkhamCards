@@ -155,6 +155,7 @@ export default class SettingsEditText extends Component<Props> {
         onPress={this.openDialog}
       >
         <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+          <View>
           <Text
             numberOfLines={1}
             {...titleProps}
@@ -162,31 +163,38 @@ export default class SettingsEditText extends Component<Props> {
           >
             { title }
           </Text>
+          </View>
+          <View>
+            <Text
+              numberOfLines={1}
+              {...valueProps}
+              style={[style.defaultValueStyle, valueStyle]}
+            >
+              { (value) || valuePlaceholder }
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    ) : (
+      <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+        <View>
+          <Text
+            numberOfLines={1}
+            {...titleProps}
+            style={[style.defaultTitleStyle, titleStyle]}
+          >
+            { title }
+          </Text>
+        </View>
+        <View>
           <Text
             numberOfLines={1}
             {...valueProps}
             style={[style.defaultValueStyle, valueStyle]}
           >
-            { (value) || valuePlaceholder }
+            { (isFunction(valueFormat) ? valueFormat(value) : value) || valuePlaceholder }
           </Text>
         </View>
-      </TouchableOpacity>
-    ) : (
-      <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
-        <Text
-          numberOfLines={1}
-          {...titleProps}
-          style={[style.defaultTitleStyle, titleStyle]}
-        >
-          { title }
-        </Text>
-        <Text
-          numberOfLines={1}
-          {...valueProps}
-          style={[style.defaultValueStyle, valueStyle]}
-        >
-          { (isFunction(valueFormat) ? valueFormat(value) : value) || valuePlaceholder }
-        </Text>
         <View style={[style.defaultDisabledOverlayStyle, disabledOverlayStyle]} />
       </View>
     );

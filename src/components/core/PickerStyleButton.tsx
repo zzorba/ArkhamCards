@@ -35,7 +35,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color={colors ? colors.textColor : '#000'}
+              color={colors ? colors.textColor : COLORS.darkText}
             />
           </View>
         );
@@ -44,7 +44,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
           <MaterialIcons
             name="keyboard-arrow-right"
             size={30}
-            color={colors ? colors.textColor : '#000'}
+            color={colors ? colors.textColor : COLORS.darkText}
           />
         );
       case 'delete':
@@ -53,7 +53,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={colors ? colors.textColor : '#000'}
+              color={colors ? colors.textColor : COLORS.darkText}
             />
           </View>
         );

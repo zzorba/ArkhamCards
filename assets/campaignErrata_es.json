@@ -1,4 +1,288 @@
 {
-  "cards": [],
-  "faq": []
+  "cards": [
+    {
+      "encounter_code": "blood_on_the_altar",
+      "cards": [
+        {
+          "code": ["02205"],
+          "text": "La primera capacidad de esta carta debería decir: “<b>Obligado</b> – Después de que fracases en una prueba de habilidad al investigar las Ruinas calci- nadas: Dale la vuelta a 1 ficha de Pista de las Ruinas calcinadas para que muestre su lado de perdición.”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_house_always_wins",
+      "cards": [
+        {
+          "code": ["02079"],
+          "text": "Estas cartas tienen el rasgo [[Humanoide]] en lugar de [[Humano]]."
+        },
+        {
+          "code": ["02078"],
+          "text": "Los rasgos de este Enemigo deberían ser “[[Humanoide]] · [[Criminal]] · [[Élite]]”."
+        },
+        {
+          "code": ["02082"],
+          "text": "El título correcto de esta carta es “Levantando sospechas”, no “Levan- tando sospechosas”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "essex_county_express",
+      "cards": [
+        {
+          "code": ["02174"],
+          "text": "Esta carta debería decir: “Gasta 3 recursos: Descubre 1 pista en el Vagón de lujo.”."
+        }
+      ]
+    }
+    {
+      "encounter_code": "naomis_crew",
+      "cards": [
+        {
+          "code": ["02097", "02098"],
+          "text": "Estas cartas tienen el rasgo [[Humanoide]] en lugar de [[Humano]]."
+        }
+      ]
+    },
+    {
+      "encounter_code": "decay",
+      "cards": [
+        {
+          "code": ["03102"],
+          "text": "La capacidad <b>Revelación</b> de esta carta debería decir: “Descarta Apoyos [[Objeto]] de tu zona de juego y/o de tu mano...”"
+        }
+      ]
+    },
+    {
+      "encounter_code": "echoes_of_the_past",
+      "cards": [
+        {
+          "code": ["03121", "03122", "03123"],
+          "text": "El primer párrafo del texto de reglas de cada uno de estos planes debería decir: “Omite el paso “Coloca 1 ficha de Perdición sobre el plan en curso” de la fase de Mitos.”."
+        },
+        {
+          "code": ["03130", "03132"],
+          "text": "Esta carta debería decir: “Al investigar este Lugar, tu [intellect] no puede ser aumentado.”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_unspeakable_oath",
+      "cards": [
+        {
+          "code": ["03178", "03179", "03180", "03181"],
+          "text": "Ninguno de estos Lugares tiene el rasgo [[Manicomio Arkham]]."
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_pallid_mask",
+      "cards": [
+        {
+          "code": ["03252"],
+          "text": "La capacidad de este Enemigo debería decir: “... Si tienes éxito, mira el lado revelado de cualquier Lugar Catacumbas que esté en juego”."
+        },
+        {
+          "code": ["03258"],
+          "text": "La capacidad de este Enemigo debería decir: “... Si tienes éxito, mira el lado revelado de cualquier Lugar Catacumbas que esté en juego”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "dim_carcosa",
+      "cards": [
+        {
+          "code": ["03319"],
+          "text": "La segunda capacidad de este Acto debería decir: “Hastur no puede ser derrotado a menos que ‘los investigadores conozcan el secreto’.”"
+        },
+        {
+          "code": ["03338"],
+          "text": "La capacidad Revelación de esta carta debería decir: “Descarta cartas de tu zona de juego y/o de tu mano...”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "the_wages_of_sin",
+      "cards": [
+        {
+          "code": ["05163"],
+          "text": "La capacidad de esta carta debería decir: “No se les puede dar la vuelta a los Lugares a su lado no [[Espectral]].”."
+        },
+
+        {
+          "code": ["05164"],
+          "text": "La capacidad de esta carta debería decir: “No se les puede dar la vuelta a los Lugares a su lado [[Espectral]].”."
+        },
+        {
+          "code": ["05178b", "05178d", "05178f", "05178h"],
+          "text": "La primera capacidad de esta carta debería decir: “Mantén esta carta en tu zona de amenaza (con este lado boca arriba). Si eres eliminado, dale la vuelta”."
+        },
+        {
+          "code": ["05178h"],
+          "text": "La capacidad Obligado de esta carta debería decir: “Cuando el Espíritu guía sea derrotado por horror: Exílialo.”."
+        }
+      ]
+    },
+    {
+      "encounter_code": "where_doom_awaits",
+      "cards": [
+        {
+          "code": ["02277"],
+          "text": "Hay que invertir el orden de las dos instrucciones de esta carta, del siguiente modo:\n“Retira todas las pistas de cada Lugar que esté en juego. La presencia arcana que ocultaba el camino que sube por la colina ha desaparecido. Revela el Sendero ascendente.”"
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "scenario_code": "blood_on_the_altar",
+      "questions": [
+        {
+          "question": "¿El “montón de sacrificios potenciales” está en juego o fuera del juego? ¿Se encuentran bajo el control de algún jugador? ¿Y qué pasa con las cartas que se han colocado bajo el mazo de Plan?",
+          "answer": "El “montón de sacrificios potenciales” (y las cartas que hay bajo el mazo de Plan) deben considerarse en juego a efectos de las reglas del juego, pero estas cartas no están bajo el control de ningún jugador. Puesto que las cartas están boca abajo, debes tratar de recordar qué Aliados únicos han sido secuestrados y añadidos al montón de sacrificios potenciales sin tener que mirarlo. Además, las cartas del montón de sacrificios potencia- les y de debajo del mazo de Plan no pueden verse afectadas por efectos de cartas de Jugador o por acciones de investigador.\nPor lo tanto, si un Apoyo único es ¡Secuestrado!, un investigador no puede jugar otra copia de ese Apoyo. Además, si un jugador desiste o es derrotado, cualquier carta que posea y que esté en el montón de sacrificios potenciales o boca abajo bajo el mazo de Plan permanecerá allí."
+        },
+        {
+          "question": "¿Qué ocurre si Duke está anotado en la sección “Sacrificados a Yog-Sothoth”? ¿Sigue siendo posible jugar con Pete “Cubo de Basura” sin Duke?",
+          "answer": "Si una carta requerida para crear un mazo (como Duke) es retirada per- manentemente del mazo, también se retira el requisito de incluirla. Si Duke no puede ser incluido en el mazo de Pete “Cubo de Basura” por cualquier motivo, se considera que el requisito se ha eliminado, y Pete puede seguir jugando sin Duke.\nEstá claro que esto supone un importante hándicap, por lo que también puedes elegir retirar a Pete de forma opcional y continuar con un nuevo investigador con 0 puntos de experiencia."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_unspeakable_oath",
+      "questions": [
+        {
+          "question": "¿Es correcta la instrucción de preparación en cuanto a qué versión del Acto 2 – Los realmente graves deben usar los investigadores? ¿Cómo voy a poder acti- var la capacidad de negociar de Daniel Chesterfield (...O al menos, lo que queda de él)?",
+          "answer": "Sí, es correcta; y no, no hay forma de poder activarla (al menos en esta realidad)."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude1",
+      "questions": [
+        {
+          "question": "Si cualquier resolución o interludio contiene efectos que hagan referencia al “siguiente escenario”, ¿se aplican a una historia secundaria?",
+          "answer": "No; estos efectos sólo hacen referencia al siguiente escenario en el orden natural de la campaña (por ejemplo, el Escenario II: “La perdición de Eztli” después de jugar el Escenario I: “Naturaleza salvaje”). Además, los esce- narios V-A y V-B se consideran dos escenarios distintos para estos efectos."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude3",
+      "questions": [
+        {
+          "question": "Si cualquier resolución o interludio contiene efectos que hagan referencia al “siguiente escenario”, ¿se aplican a una historia secundaria?",
+          "answer": "No; estos efectos sólo hacen referencia al siguiente escenario en el orden natural de la campaña (por ejemplo, el Escenario II: “La perdición de Eztli” después de jugar el Escenario I: “Naturaleza salvaje”). Además, los esce- narios V-A y V-B se consideran dos escenarios distintos para estos efectos."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude4",
+      "questions": [
+        {
+          "question": "Si cualquier resolución o interludio contiene efectos que hagan referencia al “siguiente escenario”, ¿se aplican a una historia secundaria?",
+          "answer": "No; estos efectos sólo hacen referencia al siguiente escenario en el orden natural de la campaña (por ejemplo, el Escenario II: “La perdición de Eztli” después de jugar el Escenario I: “Naturaleza salvaje”). Además, los esce- narios V-A y V-B se consideran dos escenarios distintos para estos efectos."
+        }
+      ]
+    },
+    {
+      "scenario_code": "tfa_interlude5",
+      "questions": [
+        {
+          "question": "Si cualquier resolución o interludio contiene efectos que hagan referencia al “siguiente escenario”, ¿se aplican a una historia secundaria?",
+          "answer": "No; estos efectos sólo hacen referencia al siguiente escenario en el orden natural de la campaña (por ejemplo, el Escenario II: “La perdición de Eztli” después de jugar el Escenario I: “Naturaleza salvaje”). Además, los esce- narios V-A y V-B se consideran dos escenarios distintos para estos efectos."
+        }
+      ]
+    },
+    {
+      "scenario_code": "wilds",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "En ese caso, la exploración termina sin más. No se considera una explo- ración “con éxito”, pero tampoco una exploración “sin éxito”. Todos los Lugares robados durante la exploración deben devolverse al mazo de Exploración y barajar éste. La acción del investigador termina."
+        }
+      ]
+    },
+    {
+      "scenario_code": "eztli",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        },
+        {
+          "question": "Si se me indica que vuelva a jugar un escenario, ¿se aplican los efectos de cual- quier resolución o interludio anterior que hagan referencia al “siguiente esce- nario” (o una expresión similar)? ¿Y los efectos de la introducción que hagan referencia a “este escenario”?",
+          "answer": "Sí en ambos casos. Si la resolución o interludio anterior afecta al “siguiente escenario” o si la introducción del escenario afecta a “este esce- nario”, debe entenderse que se refieren a cualquier partida jugada en ese escenario, incluido el caso de que los jugadores deban jugar varias parti- das por verse obligados a repetirlo."
+        },
+        {
+          "question": "¿Se activan los efectos del Óbolo de Caronte ( 308) si una resolución me indica que vuelva a jugar un escenario?",
+          "answer": "Los efectos del Óbolo de Caronte tienen lugar “Al obtener experiencia durante la resolución de un escenario...”. Por lo tanto, el Óbolo de Caronte no se activará cuando debas volver a jugar un escenario, ya que esas resoluciones indican que “No se obtienen puntos de experiencia por la partida anterior.”"
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_boundary_beyond",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "En ese caso, la exploración termina sin más. No se considera una explo- ración “con éxito”, pero tampoco una exploración “sin éxito”. Todos los Lugares robados durante la exploración deben devolverse al mazo de Exploración y barajar éste. La acción del investigador termina."
+        }
+      ]
+    },
+    {
+      "scenario_code": "pillars_of_judgment",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "In such a case, the exploration simply ends. It is neither successful nor unsuccessful. All locations drawn during the exploration should be shuffled back into the exploration deck, and the investigator’s action ends."
+        },
+        {
+          "question": "¿Se activan los efectos del Óbolo de Caronte ( 308) si una resolución me indica que vuelva a jugar un escenario? ¿Y entre los escenarios V-A y V-B?",
+          "answer": "Los efectos del Óbolo de Caronte tienen lugar “Al obtener experiencia durante la resolución de un escenario...”. Por lo tanto, el Óbolo de Caronte no se activará cuando debas volver a jugar un escenario, ya que esas resoluciones indican que “No se obtienen puntos de experiencia por la partida anterior.”\nSin embargo, entre los escenarios V-A y V-B se obtiene experiencia, por lo que el Óbolo de Caronte sí que se activaría, aunque los jugadores no pueden gastar esos puntos de experiencia hasta después de haber jugado el Escenario V-B."
+        },
+        {
+          "question": "Si se me indica que vuelva a jugar un escenario, ¿se aplican los efectos de cual- quier resolución o interludio anterior que hagan referencia al “siguiente esce- nario” (o una expresión similar)? ¿Y los efectos de la introducción que hagan referencia a “este escenario”?",
+          "answer": "Sí en ambos casos. Si la resolución o interludio anterior afecta al “siguiente escenario” o si la introducción del escenario afecta a “este esce- nario”, debe entenderse que se refieren a cualquier partida jugada en ese escenario, incluido el caso de que los jugadores deban jugar varias parti- das por verse obligados a repetirlo."
+        }
+      ]
+    },
+    {
+      "scenario_code": "knyan",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "En ese caso, la exploración termina sin más. No se considera una explo- ración “con éxito”, pero tampoco una exploración “sin éxito”. Todos los Lugares robados durante la exploración deben devolverse al mazo de Exploración y barajar éste. La acción del investigador termina."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_depths_of_yoth",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "En ese caso, la exploración termina sin más. No se considera una explo- ración “con éxito”, pero tampoco una exploración “sin éxito”. Todos los Lugares robados durante la exploración deben devolverse al mazo de Exploración y barajar éste. La acción del investigador termina."
+        }
+      ]
+    },
+    {
+      "scenario_code": "shattered_aeons",
+      "questions": [
+        {
+          "question": "¿Qué ocurre si realizo una acción de <b>explorar</b> y agoto todo el mazo de Explo- ración sin encontrar ni una carta de Traición ni un Lugar de los indicados por la capacidad <b>Explorar</b>?",
+          "answer": "En ese caso, la exploración termina sin más. No se considera una explo- ración “con éxito”, pero tampoco una exploración “sin éxito”. Todos los Lugares robados durante la exploración deben devolverse al mazo de Exploración y barajar éste. La acción del investigador termina."
+        }
+      ]
+    },
+    {
+      "scenario_code": "the_wages_of_sin",
+      "questions": [
+        {
+          "question": "Cuando se le da la vuelta a un Lugar de su lado no [[Espectral]] a su lado [[Espectral]] (y viceversa), ¿qué ocurre con las fichas, cartas Vinculadas y otras cartas que haya en ese Lugar?",
+          "answer": "Cuando se le da la vuelta a uno de esos Lugares de un lado al otro, el Lugar no abandona el juego. Por lo tanto, todas las fichas que hubiera sobre él permanecen sobre el nuevo lado, todas las cartas Vinculadas siguen estando vinculadas y todos los Enemigos, investigadores y Apo- yos que estuvieran en ese Lugar permanecen allí."
+        },
+        {
+          "question": "¿Las cartas Asuntos inacabados que estén en la zona de amenaza de un inves- tigador cuentan como Herejes en juego a efectos de la resolución de este escena- rio (es decir, para saber cuántas herejes fueron liberadas en Arkham)?",
+          "answer": "No. Sólo cuentan las Herejes con el lado de Hereje boca arriba. Sin embargo, ten en cuenta que las cartas Asuntos inacabados de la zona de amenaza de un investigador tampoco contribuirán con sus puntos de vic- toria, de forma normal."
+        }
+      ]
+    }
+  ]
 }

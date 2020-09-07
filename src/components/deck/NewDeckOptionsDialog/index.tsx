@@ -326,6 +326,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           onValueChange={this._onDeckNameChange}
           value={deckName}
           placeholder={this.defaultDeckName()}
+          settingsStyle
         />
         <TabooSetPicker
           color={COLORS.faction[investigator.factionCode()].background}
