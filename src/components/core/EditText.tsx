@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
 import withStyles, { StylesProps } from '@components/core/withStyles';
@@ -42,7 +42,10 @@ function EditText({
       valueStyle={styles.value}
       onValueChange={onValueChange}
       value={value}
-      containerStyle={styles.container}
+      containerStyle={{
+        ...styles.container,
+        paddingLeft: Platform.OS === 'ios' && settingsStyle ? s + xs : m,
+      }}
       positiveButtonTitle={t`Done`}
       negativeButtonTitle={t`Cancel`}
     />
@@ -65,7 +68,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingLeft: s + xs,
     paddingRight: m,
     paddingTop: s,
     paddingBottom: s,

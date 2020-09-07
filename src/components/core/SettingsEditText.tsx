@@ -155,16 +155,16 @@ export default class SettingsEditText extends Component<Props> {
         onPress={this.openDialog}
       >
         <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
-          <View>
-          <Text
-            numberOfLines={1}
-            {...titleProps}
-            style={[style.defaultTitleStyle, titleStyle]}
-          >
-            { title }
-          </Text>
+          <View style={style.titleWrapper}>
+            <Text
+              numberOfLines={1}
+              {...titleProps}
+              style={[style.defaultTitleStyle, titleStyle]}
+            >
+              { title }
+            </Text>
           </View>
-          <View>
+          <View style={style.valueWrapper}>
             <Text
               numberOfLines={1}
               {...valueProps}
@@ -177,7 +177,7 @@ export default class SettingsEditText extends Component<Props> {
       </TouchableOpacity>
     ) : (
       <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
-        <View>
+        <View style={style.titleWrapper}>
           <Text
             numberOfLines={1}
             {...titleProps}
@@ -186,7 +186,7 @@ export default class SettingsEditText extends Component<Props> {
             { title }
           </Text>
         </View>
-        <View>
+        <View style={style.valueWrapper}>
           <Text
             numberOfLines={1}
             {...valueProps}
@@ -212,12 +212,24 @@ const style = StyleSheet.create({
   defaultTitleStyle: {
     flex: 1,
     fontSize: 16,
+    textAlignVertical: 'center',
+  },
+  titleWrapper: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  valueWrapper: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
   defaultValueStyle: {
     color: COLORS.lightText,
     fontSize: 14,
     flex: 1,
     textAlign: 'right',
+    textAlignVertical: 'center',
   },
   defaultDisabledOverlayStyle: {
     backgroundColor: COLORS.disabledOverlay,
