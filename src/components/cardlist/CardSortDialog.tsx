@@ -60,7 +60,6 @@ export function showSortDialog(
     map(sorts, sortToCopy),
     (index: number) => {
       sortChanged(sorts[index]);
-      return 0;
     }
   );
 }

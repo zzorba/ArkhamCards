@@ -206,7 +206,7 @@ export function showCardSwipe(
 export function showOptionDialog(
   title: string,
   options: string[],
-  onSelect: (index: number) => number,
+  onSelect: (index: number) => void,
 ) {
   if (Platform.OS === 'ios') {
     ActionSheetIOS.showActionSheetWithOptions(
@@ -215,7 +215,12 @@ export function showOptionDialog(
         options: [...options, t`Cancel`],
         cancelButtonIndex: options.length,
       },
-      onSelect
+      idx => {
+        if (idx !== options.length) {
+          onSelect(idx);
+        }
+        return 0;
+      }
     );
   } else {
     AndroidDialogPicker.show(

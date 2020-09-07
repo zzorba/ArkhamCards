@@ -404,10 +404,7 @@ class NewCampaignView extends React.Component<Props, State> {
   };
 
   _showDifficultyDialog = () => {
-    showCampaignDifficultyDialog(
-      this._updateDifficulty,
-      this.state.difficulty
-    );
+    showCampaignDifficultyDialog(this._updateDifficulty);
   };
 
   _campaignChanged = (campaignCode: CampaignCycleCode, campaign: string, hasGuide: boolean) => {

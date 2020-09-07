@@ -11,7 +11,6 @@ export function showScenarioDialog(
     scenarios,
     (index: number) => {
       scenarioChanged(scenarios[index]);
-      return 0;
     }
   );
 }

@@ -14,7 +14,6 @@ export function showCampaignDifficultyDialog(
     map(DIFFICULTIES, difficultyString),
     (index: number) => {
       sortChanged(DIFFICULTIES[index])
-      return 0;
     }
   );
 }

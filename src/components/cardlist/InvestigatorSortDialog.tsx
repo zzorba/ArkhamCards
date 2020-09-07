@@ -32,7 +32,6 @@ export function showInvestigatorSortDialog(
     map(sorts, sortToCopy),
     (index: number) => {
       sortChanged(sorts[index]);
-      return 0;
     }
   )
 }
