@@ -319,7 +319,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     if (!card) {
       return <View style={styles.wrapper} />;
     }
-    const cardHeight = height - (renderFooter ? FOOTER_HEIGHT : 0);
     return (
       <View
         style={styles.wrapper}
