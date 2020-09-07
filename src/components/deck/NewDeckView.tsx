@@ -3,6 +3,7 @@ import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import { SORT_BY_PACK, SortType , Deck } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
@@ -72,15 +73,7 @@ export default class NewDeckView extends React.Component<Props, State> {
 
   _showSortDialog = () => {
     Keyboard.dismiss();
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.InvestigatorSort',
-        passProps: {
-          sortChanged: this._sortChanged,
-          selectedSort: this.state.selectedSort,
-        },
-      },
-    });
+    showInvestigatorSortDialog(this._sortChanged);
   };
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {

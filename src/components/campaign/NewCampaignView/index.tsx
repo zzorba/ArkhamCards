@@ -45,6 +45,7 @@ import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
+import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
 import { getNextCampaignId, AppState } from '@reducers';
 import { newCampaign, newLinkedCampaign } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
@@ -403,15 +404,10 @@ class NewCampaignView extends React.Component<Props, State> {
   };
 
   _showDifficultyDialog = () => {
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.CampaignDifficulty',
-        passProps: {
-          difficulty: this.state.difficulty,
-          updateDifficulty: this._updateDifficulty,
-        },
-      },
-    });
+    showCampaignDifficultyDialog(
+      this._updateDifficulty,
+      this.state.difficulty
+    );
   };
 
   _campaignChanged = (campaignCode: CampaignCycleCode, campaign: string, hasGuide: boolean) => {

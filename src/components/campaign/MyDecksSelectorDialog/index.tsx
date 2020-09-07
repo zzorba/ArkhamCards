@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import TabView from '@components/core/TabView';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
@@ -132,15 +133,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
 
   _showSortDialog = () => {
     Keyboard.dismiss();
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.InvestigatorSort',
-        passProps: {
-          sortChanged: this._sortChanged,
-          selectedSort: this.state.selectedSort,
-        },
-      },
-    });
+    showInvestigatorSortDialog(this._sortChanged);
   };
 
   _toggleHideOtherCampaignInvestigators = () => {

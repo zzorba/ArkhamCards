@@ -13,6 +13,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import { SortType } from '@actions/types';
+import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import { updateCardSort } from '@components/filter/actions';
 import { AppState, getMythosMode, getCardSort } from '@reducers';
 import COLORS from '@styles/colors';
@@ -48,16 +49,11 @@ class SortButton extends React.Component<Props> {
 
   _onPress = () => {
     Keyboard.dismiss();
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.Sort',
-        passProps: {
-          sortChanged: this._sortChanged,
-          selectedSort: this.props.sort,
-          hasEncounterCards: this.props.mythosMode,
-        },
-      },
-    });
+    showSortDialog(
+      this._sortChanged,
+      this.props.sort,
+      this.props.mythosMode
+    )
   };
 
   render() {

@@ -15,6 +15,7 @@ import { showCard } from '@components/nav/helper';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CardResultList from '@components/cardlist/CardSearchResultsComponent/CardResultList';
+import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
@@ -81,16 +82,11 @@ class DeckChecklistView extends React.Component<Props, State> {
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const { sort } = this.state;
     if (buttonId === 'sort') {
-      Navigation.showOverlay({
-        component: {
-          name: 'Dialog.Sort',
-          passProps: {
-            sortChanged: this._sortChanged,
-            selectedSort: sort,
-            hasEncounterCards: false,
-          },
-        },
-      });
+      showSortDialog(
+        this._sortChanged,
+        sort,
+        false
+      );
     }
   }
 

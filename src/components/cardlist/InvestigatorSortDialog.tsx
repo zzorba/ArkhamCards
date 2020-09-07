@@ -1,8 +1,7 @@
-import React from 'react';
-import { find, map } from 'lodash';
+import { map } from 'lodash';
 import { t } from 'ttag';
 
-import DialogPicker from '@components/core/DialogPicker';
+import { showOptionDialog } from '@components/nav/helper';
 import {
   SORT_BY_FACTION,
   SORT_BY_PACK,
@@ -10,62 +9,30 @@ import {
   SortType,
 } from '@actions/types';
 
-interface Props {
-  componentId: string;
-  sortChanged: (sort: SortType) => void;
-  selectedSort: SortType;
+function sortToCopy(sort: SortType) {
+  switch (sort) {
+    case SORT_BY_TITLE: return t`Title`;
+    case SORT_BY_FACTION: return t`Faction`;
+    case SORT_BY_PACK: return t`Pack`;
+    default:
+      return 'Unknown Sort';
+  }
 }
 
-export default class InvestigatorSortDialog extends React.Component<Props> {
-  static options() {
-    return {
-      layout: {
-        componentBackgroundColor: 'transparent',
-      },
-    };
-  }
-
-  static sortToCopy(sort: SortType) {
-    switch (sort) {
-      case SORT_BY_TITLE: return t`Title`;
-      case SORT_BY_FACTION: return t`Faction`;
-      case SORT_BY_PACK: return t`Pack`;
-      default:
-        return 'Unknown Sort';
-    }
-  }
-
-  sorts: SortType[] = [
+export function showInvestigatorSortDialog(
+  sortChanged: (sort: SortType) => void
+) {
+  const sorts: SortType[] = [
     SORT_BY_TITLE,
     SORT_BY_FACTION,
     SORT_BY_PACK,
   ];
-
-  _onSortChanged = (sortString: string) => {
-    const {
-      sortChanged,
-    } = this.props;
-    const sort: SortType =
-      find(this.sorts, sort => InvestigatorSortDialog.sortToCopy(sort) === sortString) ||
-      SORT_BY_TITLE;
-
-    sortChanged(sort);
-  };
-
-  render() {
-    const {
-      componentId,
-      selectedSort,
-    } = this.props;
-
-    return (
-      <DialogPicker
-        componentId={componentId}
-        options={map(this.sorts, InvestigatorSortDialog.sortToCopy)}
-        onSelectionChanged={this._onSortChanged}
-        header={t`Sort by`}
-        selectedOption={InvestigatorSortDialog.sortToCopy(selectedSort)}
-      />
-    );
-  }
+  showOptionDialog(
+    t`Sort by`,
+    map(sorts, sortToCopy),
+    (index: number) => {
+      sortChanged(sorts[index]);
+      return 0;
+    }
+  )
 }

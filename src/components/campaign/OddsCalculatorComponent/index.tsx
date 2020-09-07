@@ -15,6 +15,7 @@ import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { CAMPAIGN_COLORS, Scenario, completedScenario } from '@components/campaign/constants';
 import Difficulty from '@components/campaign/Difficulty';
+import { showScenarioDialog } from '@components/campaign/ScenarioDialog';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
@@ -89,16 +90,10 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     if (!currentScenario) {
       return;
     }
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.Scenario',
-        passProps: {
-          scenarioChanged: this._scenarioChanged,
-          scenarios: this.possibleScenarios(),
-          selected: currentScenario.name,
-        },
-      },
-    });
+    showScenarioDialog(
+      this.possibleScenarios(),
+      this._scenarioChanged
+    )
   };
 
   encounterCode(currentScenario?: Scenario) {
