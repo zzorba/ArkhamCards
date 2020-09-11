@@ -6,7 +6,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Schema = AllCampaigns | Log | Errata;
+export type Schema = AllCampaigns | Log | Errata | Rules;
 export type Step =
   | BranchStep
   | EffectsStep
@@ -864,4 +864,18 @@ export interface FaqEntry {
 export interface Question {
   question: string;
   answer: string;
+}
+export interface Rules {
+  rules: Rule[];
+}
+export interface Rule {
+  id: string;
+  title: string;
+  text?: string;
+  table?: {
+    row: {
+      [k: string]: any;
+    }[];
+  }[];
+  rules?: Rule[];
 }

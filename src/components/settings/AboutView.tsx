@@ -42,7 +42,7 @@ export default class AboutView extends React.Component {
         <Text style={typography.text}>
           <Text style={typography.bold}>Translation Support:</Text>
           { '\n' }
-          • Spanish: Midraed, Alvaro, and Casalderrey
+          • Spanish: Midraed, Alvaro, and @TengounplanAH
           { '\n' }
           • French: Fabrice2
           { '\n' }
