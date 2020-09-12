@@ -3412,23 +3412,23 @@ msgid "Check Campaign Log. Because there is ${ count } mark under '${ logEntry.s
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } marks under '${ logEntry.section }'"
 msgstr[0] ""
-"Revisa el Registro de Campaña. Como hay ${ count } marca en '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } marca en '${ logEntry.section }':"
 msgstr[1] ""
-"Revisa el Registro de Campaña. Como hay ${ count } marcas en '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } marcas en '${ logEntry.section }':"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:34
 msgid "Check Campaign Log. Because there is ${ count } entry under '${ logEntry.section }'"
 msgid_plural ""
 "Check Campaign Log. Because there are ${ count } entries under '${ logEntry.section }'"
 msgstr[0] ""
-"Revisa el Registro de Campaña. Como hay ${ count } entrada en '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } entrada en '${ logEntry.section }':"
 msgstr[1] ""
-"Revisa el Registro de Campaña. Como hay ${ count } entradas en '${ logEntry.section }'"
+"Revisa el Registro de Campaña. Como hay ${ count } entradas en '${ logEntry.section }':"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:41
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "Revisa el Registro de Campaña. Como <i>${ entry }</i>"
+msgstr "Revisa el Registro de Campaña. Como <i>${ entry }</i>:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogSectionExistsConditionComponent.tsx:27
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
@@ -3505,7 +3505,7 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "Revisa en ${ logEntry.section } si <i>${ logEntry.text }</i>"
+msgstr "Revisa en las ${ logEntry.section } si <i>${ logEntry.text }</i>"
 
 #: src/components/campaignguide/CampaignGuideView.tsx:100
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:109
