@@ -23,6 +23,7 @@ interface ReduxProps {
 
 export default function withPlayerCards<Props>(
   WrappedComponent: React.ComponentType<Props & PlayerCardProps>,
+  PlaceholderComponent?: React.ComponentType<Props>
 ): React.ComponentType<Props & TabooSetOverride> {
   const mapStateToProps = (
     state: AppState,
@@ -46,6 +47,9 @@ export default function withPlayerCards<Props>(
       } = this.context;
       const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
       if (!playerCards) {
+        if (PlaceholderComponent) {
+          return <PlaceholderComponent {...this.props} />
+        }
         return (
           <View style={styles.activityIndicatorContainer}>
             <ActivityIndicator

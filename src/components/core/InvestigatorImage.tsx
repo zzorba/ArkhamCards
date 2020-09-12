@@ -20,7 +20,7 @@ const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFFFFF' });
 const scaleFactor = isBig ? 1.2 : 1.0;
 
 interface Props {
-  card: Card;
+  card?: Card;
   componentId?: string;
   border?: boolean;
   small?: boolean;
@@ -35,7 +35,7 @@ export default class InvestigatorImage extends React.Component<Props> {
       card,
       componentId,
     } = this.props;
-    if (componentId) {
+    if (componentId && card) {
       showCard(componentId, card.code, card, true);
     }
   };
@@ -60,14 +60,19 @@ export default class InvestigatorImage extends React.Component<Props> {
       card,
       yithian,
     } = this.props;
+    if (card) {
+      return (
+        <FastImage
+          style={this.imageStyle()}
+          source={{
+            uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
+          }}
+          resizeMode="contain"
+        />
+      );
+    }
     return (
-      <FastImage
-        style={this.imageStyle()}
-        source={{
-          uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
-        }}
-        resizeMode="contain"
-      />
+      <View style={[this.imageStyle(), { backgroundColor: COLORS.veryVeryLightBackground }]} />
     );
   }
 
@@ -93,6 +98,27 @@ export default class InvestigatorImage extends React.Component<Props> {
     } = this.props;
     const small = this.small();
     const size = (small ? 65 : 110) * scaleFactor;
+    if (!card) {
+      return (
+        <View style={[styles.container, { width: size, height: size }]}>
+          <View style={styles.relative}>
+            { this.renderStyledImage()}
+          </View>
+          <View style={styles.relative}>
+            { !!border && (
+              <View style={[
+                styles.border,
+                {
+                  borderColor: COLORS.faction.neutral.background,
+                  width: size,
+                  height: size,
+                },
+              ]} />
+            ) }
+          </View>
+        </View>
+      )
+    }
     const faction_icon = FACTION_ICONS[card.factionCode()];
     return (
       <View style={[styles.container, { width: size, height: size }]}>
@@ -134,7 +160,8 @@ export default class InvestigatorImage extends React.Component<Props> {
   }
 
   render() {
-    if (this.props.componentId) {
+    const { componentId, card } = this.props;
+    if (componentId && card) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           { this.renderImage() }

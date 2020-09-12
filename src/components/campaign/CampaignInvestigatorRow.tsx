@@ -8,14 +8,13 @@ import { connect } from 'react-redux';
 
 import { Campaign, Deck } from '@actions/types';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
-import { CardsMap } from '@data/Card';
 import InvestigatorImage from '@components/core/InvestigatorImage';
+import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { getDecks, getLatestCampaignDeckIds, AppState } from '@reducers';
 import { s } from '@styles/space';
 
 interface OwnProps {
   campaigns: Campaign[];
-  investigators: CardsMap;
   fontScale: number;
 }
 
@@ -28,7 +27,7 @@ interface ReduxProps {
   campaignDecks: CampaignDecks[];
 }
 
-type Props = OwnProps & ReduxProps;
+type Props = OwnProps & ReduxProps & PlayerCardProps;
 
 class CampaignInvestigatorRow extends React.Component<Props> {
   _renderInvestigator = (
@@ -103,7 +102,47 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   };
 }
 
-export default connect(mapStateToProps)(CampaignInvestigatorRow);
+class PlaceholderCampaignInvestigatorRow extends React.Component<OwnProps & ReduxProps> {
+  renderPlaceholder(id: number | string) {
+    const { fontScale } = this.props;
+    return (
+      <View key={id} style={styles.investigator}>
+        <InvestigatorImage
+          fontScale={fontScale}
+          border
+          small
+        />
+      </View>
+    );
+  }
+  render() {
+    const {
+      campaignDecks,
+    } = this.props;
+    return map(campaignDecks, ({ campaign, decks }) => {
+      const deckInvestigators = new Set(map(decks, deck => deck.investigator_code));
+      return (
+        <View key={campaign.id} style={styles.row}>
+          { map(decks, deck => this.renderPlaceholder(deck.id)) }
+          { map(
+            filter(
+              campaign.nonDeckInvestigators || [],
+              code => !deckInvestigators.has(code)
+            ),
+            code => this.renderPlaceholder(code)
+          ) }
+        </View>
+      );
+    });
+  }
+}
+
+export default connect(mapStateToProps)(
+  withPlayerCards(
+    CampaignInvestigatorRow,
+    PlaceholderCampaignInvestigatorRow
+  )
+);
 
 const styles = StyleSheet.create({
   row: {

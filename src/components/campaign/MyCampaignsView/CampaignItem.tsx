@@ -15,7 +15,6 @@ import COLORS from '@styles/colors';
 interface Props {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
-  investigators: CardsMap;
   fontScale: number;
 }
 
@@ -31,7 +30,6 @@ export default class CampaignItem extends React.Component<Props> {
   render() {
     const {
       campaign,
-      investigators,
       fontScale,
     } = this.props;
     return (
@@ -43,7 +41,6 @@ export default class CampaignItem extends React.Component<Props> {
           />
           <CampaignInvestigatorRow
             campaigns={[campaign]}
-            investigators={investigators}
             fontScale={fontScale}
           />
         </View>

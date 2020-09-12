@@ -14,7 +14,7 @@ import LinkedCampaignItem from './LinkedCampaignItem';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import COLORS from '@styles/colors';
 
-interface OwnProps {
+interface Props {
   onScroll: (...args: any[]) => void;
   componentId: string;
   campaigns: Campaign[];
@@ -22,12 +22,10 @@ interface OwnProps {
   fontScale: number;
 }
 
-type Props = OwnProps & PlayerCardProps;
-
 interface CampaignItemType {
   campaign: Campaign;
 }
-class CampaignList extends React.Component<Props> {
+export default class CampaignList extends React.Component<Props> {
   _onPress = (id: number, campaign: Campaign) => {
     const {
       componentId,
@@ -94,7 +92,6 @@ class CampaignList extends React.Component<Props> {
 
   _renderItem = ({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
     const {
-      investigators,
       fontScale,
     } = this.props;
     if (campaign.link) {
@@ -102,7 +99,6 @@ class CampaignList extends React.Component<Props> {
         <LinkedCampaignItem
           key={campaign.id}
           campaign={campaign}
-          investigators={investigators}
           onPress={this._onPress}
           fontScale={fontScale}
         />
@@ -112,7 +108,6 @@ class CampaignList extends React.Component<Props> {
       <CampaignItem
         key={campaign.id}
         campaign={campaign}
-        investigators={investigators}
         onPress={this._onPress}
         fontScale={fontScale}
       />
@@ -137,4 +132,3 @@ class CampaignList extends React.Component<Props> {
   }
 }
 
-export default withPlayerCards(CampaignList);
