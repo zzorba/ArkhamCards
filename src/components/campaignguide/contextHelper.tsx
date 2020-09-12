@@ -1,5 +1,4 @@
 import { flatMap, forEach } from 'lodash';
-
 import {
   Deck,
   InvestigatorData,
@@ -11,7 +10,9 @@ import {
   GuideStartSideScenarioInput,
   GuideStartCustomSideScenarioInput,
   InvestigatorTraumaData,
+  DecksMap,
 } from '@actions/types';
+import { createSelector } from 'reselect';
 import { UniversalCampaignProps } from './withUniversalCampaignData';
 import { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -39,6 +40,44 @@ export interface CampaignGuideReduxData {
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
+const campaignGuideCycleCode = (campaign: SingleCampaign, state: AppState) => campaign.cycleCode;
+const campaignGuideLangPreference = (campaign: SingleCampaign, state: AppState) => getLangPreference(state);
+const selectCampaignGuide = createSelector(campaignGuideCycleCode, campaignGuideLangPreference, getCampaignGuide);
+
+const latestCampaignDecksDecks = (campaign: SingleCampaign, state: AppState) => getAllDecks(state);
+const latestCampaignDecksDeckIds = (campaign: SingleCampaign, state: AppState) => getLatestCampaignDeckIds(state, campaign);
+const selectLatestDecks = createSelector(
+  latestCampaignDecksDecks,
+  latestCampaignDecksDeckIds,
+  (decks: DecksMap, latestDeckIds: number[]) => flatMap(latestDeckIds, deckId => decks[deckId])
+);
+
+const cgrdCampaign = (c: SingleCampaign, cg: CampaignGuide, cs: CampaignGuideState, lcs: CampaignGuideState | undefined, ld: Deck[], i: Card[]) => c;
+const cgrdCampaignGuide = (c: SingleCampaign, cg: CampaignGuide, cs: CampaignGuideState, lcs: CampaignGuideState | undefined, ld: Deck[], i: Card[]) => cg;
+const cgrdCampaignState = (c: SingleCampaign, cg: CampaignGuide, cs: CampaignGuideState, lcs: CampaignGuideState | undefined, ld: Deck[], i: Card[]) => cs;
+const cgrdLinkedCampaignState = (c: SingleCampaign, cg: CampaignGuide, cs: CampaignGuideState, lcs: CampaignGuideState | undefined, ld: Deck[], i: Card[]) => lcs;
+const cgrdLatestDecks = (c: SingleCampaign, cg: CampaignGuide, cs: CampaignGuideState, lcs: CampaignGuideState | undefined, ld: Deck[], i: Card[]) => ld;
+const cgrdInvestigators = (c: SingleCampaign, cg: CampaignGuide, cs: CampaignGuideState, lcs: CampaignGuideState | undefined, ld: Deck[], i: Card[]) => i;
+
+const selectCampaignGuideReduxData = createSelector(
+  cgrdCampaign,
+  cgrdCampaignGuide,
+  cgrdCampaignState,
+  cgrdLinkedCampaignState,
+  cgrdLatestDecks,
+  cgrdInvestigators,
+  (campaign, campaignGuide, campaignState, linkedCampaignState, latestDecks, campaignInvestigators) => {
+    return {
+      campaign,
+      campaignGuide,
+      campaignState,
+      linkedCampaignState,
+      latestDecks,
+      campaignInvestigators,
+    };
+  }
+)
+
 export function campaignGuideReduxData(
   campaignId: number,
   investigators: CardsMap,
@@ -48,26 +87,31 @@ export function campaignGuideReduxData(
   if (!campaign) {
     return undefined;
   }
-  const campaignGuide = getCampaignGuide(campaign.cycleCode, getLangPreference(state));
+  const campaignGuide = selectCampaignGuide(campaign, state);
   if (!campaignGuide) {
     return undefined;
   }
   const campaignInvestigators = getLatestCampaignInvestigators(state, investigators, campaign);
-  const decks = getAllDecks(state);
-  const latestDeckIds = getLatestCampaignDeckIds(state, campaign);
+  const campaignState = getCampaignGuideState(state, campaignId);
+  const latestDecks = selectLatestDecks(campaign, state);
+  const linkedCampaignState = campaign.linkedCampaignId ? getCampaignGuideState(state, campaign.linkedCampaignId) : undefined;
 
-  return {
+  return selectCampaignGuideReduxData(
     campaign,
     campaignGuide,
-    campaignState: getCampaignGuideState(state, campaignId),
-    linkedCampaignState: campaign.linkedCampaignId ? getCampaignGuideState(state, campaign.linkedCampaignId) : undefined,
-    latestDecks: flatMap(latestDeckIds, deckId => decks[deckId]),
-    campaignInvestigators,
-  };
+    campaignState,
+    linkedCampaignState,
+    latestDecks,
+    campaignInvestigators
+  );
 }
 
-export function constructCampaignGuideContext(
-  {
+const campaignGuideContextReduxData = (reduxData: CampaignGuideReduxData, universalData: UniversalCampaignProps) => reduxData;
+const campaignGuideContextUniversalData = (reduxData: CampaignGuideReduxData, universalData: UniversalCampaignProps) => universalData;
+export const constructCampaignGuideContext = createSelector(
+  campaignGuideContextReduxData,
+  campaignGuideContextUniversalData,
+  ({
     campaign,
     campaignState,
     campaignGuide,
@@ -76,7 +120,7 @@ export function constructCampaignGuideContext(
     linkedCampaignState,
   }: CampaignGuideReduxData,
   universalData: UniversalCampaignProps,
-): CampaignGuideContextType {
+) => {
   const showChooseDeck = (
     singleInvestigator?: Card,
     callback?: (code: string) => void
@@ -273,7 +317,7 @@ export function constructCampaignGuideContext(
     linkedCampaignState
   );
   const lastUpdated = (typeof campaign.lastUpdated === 'string') ? new Date(Date.parse(campaign.lastUpdated)) : campaign.lastUpdated;
-  return {
+  const result: CampaignGuideContextType = {
     campaignId: campaign.id,
     campaignName: campaign.name,
     campaignGuideVersion: campaign.guideVersion === undefined ? -1 : campaign.guideVersion,
@@ -286,4 +330,5 @@ export function constructCampaignGuideContext(
     playerCards: universalData.cards,
     lastUpdated,
   };
-}
+  return result;
+});

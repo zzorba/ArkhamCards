@@ -9,6 +9,7 @@ import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
+const ATLACH = require('../../../../assets/atlach.jpg');
 
 interface Props {
   code: string;
@@ -41,26 +42,34 @@ export default class LocationCard extends React.Component<Props> {
 
   renderImage() {
     const { code } = this.props;
-    if (code === 'blank') {
-      return null;
+    switch (code) {
+      case 'blank': return null;
+      case 'player_back':
+        return (
+          <FastImage
+            style={styles.verticalCardImage}
+            source={PLAYER_BACK}
+            resizeMode="contain"
+          />
+        );
+      case 'atlach':
+        return (
+          <FastImage
+            style={styles.verticalCardImage}
+            source={ATLACH}
+            resizeMode="contain"
+          />
+        );
+      default:
+        return (
+          <SingleCardWrapper
+            code={code.replace('_back', '')}
+            type="encounter"
+          >
+            { (card: Card) => this._renderCard(card, code.indexOf('_back') !== -1) }
+          </SingleCardWrapper>
+        );
     }
-    if (code === 'player_back') {
-      return (
-        <FastImage
-          style={styles.verticalCardImage}
-          source={PLAYER_BACK}
-          resizeMode="contain"
-        />
-      );
-    }
-    return (
-      <SingleCardWrapper
-        code={code.replace('_back', '')}
-        type="encounter"
-      >
-        { (card: Card) => this._renderCard(card, code.indexOf('_back') !== -1) }
-      </SingleCardWrapper>
-    );
   }
 
   render() {

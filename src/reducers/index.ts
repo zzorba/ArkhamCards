@@ -493,10 +493,12 @@ export function getDefaultFilterState(
   return state.filters.defaults[filterId];
 }
 
+const DEFAULT_GUIDE_STATE = {
+  inputs: [],
+};
+
 export function getGuideState(state: AppState, campaignId: number): CampaignGuideState {
-  return (state.guides && state.guides.all[campaignId]) || {
-    inputs: [],
-  };
+  return (state.guides && state.guides.all[campaignId]) || DEFAULT_GUIDE_STATE;
 }
 
 export function getCampaignGuideState(

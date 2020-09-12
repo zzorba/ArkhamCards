@@ -30216,15 +30216,12 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Location Placement",
-      "horizontal": "normal",
-      "vertical": "half",
+      "horizontal": "half",
+      "vertical": "normal",
       "locations": [
-        ["02050_back", "blank", "02056_back", "blank"],
-        ["blank", "02048_back", "blank", "blank"],
-        ["02049_back", "blank", "02053_back", "02054_back"],
-        ["blank", "02051_back", "blank", "blank"],
-        ["blank", "blank", "blank", "blank"],
-        ["blank", "02052_back", "blank", "blank"]
+        ["blank", "blank", "blank", "02074_back", "blank", "blank"],
+        ["blank", "blank", "blank", "02073_back", "blank", "blank"],
+        ["02070_back", "blank", "02071_back", "blank", "02072_back", "blank"]
       ]
     },
     {
@@ -44884,6 +44881,7 @@
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "encounter_deck",
     "stop_rule",
@@ -44959,6 +44957,18 @@
       ]
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "06295_back", "blank"],
+        ["06297_back", "06296_back", "blank"],
+        ["blank", "06298_back", "06299_back"]
+      ]
+    },
+    {
       "id": "set_aside_cards",
       "text": "Set the following cards aside, out of play: High Priest Not to Be Described, each of the 5 copies of Nyarlathotep, each of the 4 copies of Whispering Chaos, both copies of Myriad Forms, and The Crawling Mist."
     },
@@ -45000,7 +45010,8 @@
               "shuffle_nyarlathotep",
               "shuffle_more_encounter_cards",
               "randomize_forsaken_tower",
-              "forsaken_tower_explanation"
+              "forsaken_tower_explanation",
+              "forsaken_tower_locations"
             ],
             "effects": [
               {
@@ -45141,6 +45152,18 @@
         {
           "text": "The location to the left of The Great Hall is called the “Western Tower.”"
         }
+      ]
+    },
+    {
+      "id": "forsaken_tower_locations",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "06300_back", "blank"],
+        ["06300_back", "06299", "06300_back"],
+        ["blank", "06300_back", "blank"]
       ]
     },
     {
@@ -49085,9 +49108,12 @@
       "type": "location_setup",
       "text": "Atlach-Nacha Diagram",
       "horizontal": "normal",
-      "vertical": "normal",
-      "locations": [["blank"]],
-      "note": "Coming Soon"
+      "vertical": "half",
+      "locations": [
+        ["06347","blank","06348"],
+        ["blank","atlach","blank"],
+        ["06349","blank","06350"]
+      ]
     },
     {
       "id": "shuffle_spinner_of_darkness",
