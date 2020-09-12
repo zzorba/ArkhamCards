@@ -126,6 +126,8 @@ export default class App {
         leftButtonDisabledColor: COLORS.lightText,
         title: {
           color: COLORS.darkText,
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 20,
         },
         background: {
           color: COLORS.background,

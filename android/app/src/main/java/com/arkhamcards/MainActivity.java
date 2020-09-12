@@ -24,4 +24,6 @@ public class MainActivity extends NavigationActivity {
 
         return splash;
     }
+
+
 }

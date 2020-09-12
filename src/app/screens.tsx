@@ -90,9 +90,9 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   }
 
   Navigation.registerComponent('About', providerWrapper(AboutView));
-  Navigation.registerComponent('Browse.Cards', providerWrapper(BrowseCardsView));
+  Navigation.registerComponent('Browse.Cards', providerWrapper(gestureHandlerRootHOC(BrowseCardsView)));
   Navigation.registerComponent('Browse.InvestigatorCards', providerWrapper(InvestigatorCardsView));
-  Navigation.registerComponent('Deck', providerWrapper(DeckDetailView));
+  Navigation.registerComponent('Deck', providerWrapper(gestureHandlerRootHOC(DeckDetailView)));
   Navigation.registerComponent('Deck.Charts', providerWrapper(DeckChartsView));
   Navigation.registerComponent('Deck.History', providerWrapper(DeckHistoryView));
   Navigation.registerComponent('Deck.Checklist', providerWrapper(DeckChecklistView));
@@ -108,8 +108,8 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('Card.Faq', providerWrapper(CardFaqView));
   Navigation.registerComponent('Card.Taboo', providerWrapper(CardTabooView));
   Navigation.registerComponent('Card.Image', providerWrapper(CardImageView));
-  Navigation.registerComponent('My.Campaigns', providerWrapper(MyCampaignsView));
-  Navigation.registerComponent('My.Decks', providerWrapper(MyDecksView));
+  Navigation.registerComponent('My.Campaigns', providerWrapper(gestureHandlerRootHOC(MyCampaignsView)));
+  Navigation.registerComponent('My.Decks', providerWrapper(gestureHandlerRootHOC(MyDecksView)));
   Navigation.registerComponent('Campaign', providerWrapper(CampaignDetailView));
   Navigation.registerComponent('Campaign.New', providerWrapper(NewCampaignView));
   Navigation.registerComponent('Campaign.AddResult', providerWrapper(AddScenarioResultView));

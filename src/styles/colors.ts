@@ -16,14 +16,15 @@ const dark20 = '#475259';
 const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
-const L10: ColorValue = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#D7D3C6', dark: '#656C6F' }) : PlatformColor('@color/L10');
-const L20: ColorValue = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#F5F0E1', dark: '#475259' }) : PlatformColor('@color/L20');
-const L30: ColorValue = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFBF2', dark: '#24303C' }) : PlatformColor('@color/L30');
-const D10: ColorValue = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#656C6F', dark: '#D7D3C6' }) : PlatformColor('@color/D10');
-const D20: ColorValue = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#475259', dark: '#F5F0E1' }) : PlatformColor('@color/D20');
-const D30: ColorValue = Platform.OS === 'ios' ? DynamicColorIOS({ light: '#24303C', dark: '#FFFBF2' }) : PlatformColor('@color/D30');
+const L10: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#D7D3C6', dark: '#656C6F' }) : PlatformColor('@color/L10')) as any as string;
+const L20: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#F5F0E1', dark: '#475259' }) : PlatformColor('@color/L20')) as any as string;
+const L30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFBF2', dark: '#24303C' }) : PlatformColor('@color/L30')) as any as string;
+const D10: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#656C6F', dark: '#D7D3C6' }) : PlatformColor('@color/D10')) as any as string;
+const D20: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#475259', dark: '#F5F0E1' }) : PlatformColor('@color/D20')) as any as string;
+const D30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#24303C', dark: '#FFFBF2' }) : PlatformColor('@color/D30')) as any as string;
 
 export default {
+  shadow: '#2c3945',
   light10,
   light20,
   light30,
@@ -83,7 +84,7 @@ export default {
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5d6d7', dark: '#7a0105' }) : PlatformColor('@color/factionSurvivorLightBackgroundColor')) as any as string,
     },
     neutral: {
-      text: darkText,
+      text: D20,
       background: '#444',
       darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#888888' }) : PlatformColor('@color/factionNeutralDarkBackgroundColor')) as any as string,
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : PlatformColor('@color/factionNeutralLightBackgroundColor')) as any as string,
