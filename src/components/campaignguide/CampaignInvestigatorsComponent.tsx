@@ -234,12 +234,13 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   _updateTraumaData = (code: string, trauma: Trauma) => {
     const { processedCampaign } = this.props;
     const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
-    console.log(`Updating ${code} ${JSON.stringify({ trauma, latestScenario })}`);
-    this.context.campaignState.setInterScenarioInvestigatorData(
-      code,
-      trauma,
-      latestScenario ? latestScenario?.id.encodedScenarioId : undefined
-    );
+    InteractionManager.runAfterInteractions(() => {
+      this.context.campaignState.setInterScenarioInvestigatorData(
+        code,
+        trauma,
+        latestScenario ? latestScenario?.id.encodedScenarioId : undefined
+      );
+    });
   };
 
   _showTraumaDialog = (investigator: Card, traumaData: Trauma) => {
