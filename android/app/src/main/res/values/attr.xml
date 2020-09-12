@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="L10" format="reference" />
+    <attr name="L20" format="reference" />
+    <attr name="L30" format="reference" />
+    <attr name="D10" format="reference" />
+    <attr name="D20" format="reference" />
+    <attr name="D30" format="reference" />
     <attr name="colorPrimaryText" format="reference"  />
     <attr name="colorSecondaryText" format="reference" />
     <attr name="colorBackground" format="reference" />

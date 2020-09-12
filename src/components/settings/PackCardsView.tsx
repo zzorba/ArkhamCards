@@ -39,7 +39,6 @@ export default function PackCardsView({
           componentId={componentId}
           baseQuery={query}
           showNonCollection
-          mythosToggle={false}
         />
       ) }
     </QueryProvider>

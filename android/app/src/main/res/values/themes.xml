@@ -1,5 +1,11 @@
 <resources>
     <style name="ArkhamCards.DayNight" parent="Theme.AppCompat.DayNight.NoActionBar">
+		<item name="L10">@color/L10</item>
+		<item name="L20">@color/L20</item>
+		<item name="L30">@color/L30</item>
+		<item name="D10">@color/D10</item>
+		<item name="D20">@color/D20</item>
+		<item name="D30">@color/D30</item>
 		<item name="colorPrimaryText">@color/colorPrimaryText</item>
 		<item name="colorSecondaryText">@color/colorSecondaryText</item>
 		<item name="colorBackground">@color/colorBackground</item>

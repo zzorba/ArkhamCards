@@ -1,19 +1,15 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { View } from 'react-native';
 interface Props {
   componentId: string;
 }
 
 export default class RulesView extends React.Component<Props> {
+  _rules = require('../../../assets/rules.json');
 
-  constructor(props: Props) {
-    super(props);
-
-    this._rules = require('../../../assets/rules.json');
-  }
   render() {
     return (
-
-    )
+      <View />
+    );
   }
 }

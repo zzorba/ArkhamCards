@@ -11,6 +11,7 @@ import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
 import { getLangPreference, AppState } from '@reducers';
+import MythosButton from '@components/cardlist/CardSearchComponent/MythosButton';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -116,14 +117,7 @@ export default class App {
 
   setDefaultOptions(colorScheme: 'light' | 'dark' | 'no-preference', changeUpdate?:boolean) {
     const darkMode = colorScheme === 'dark';
-    const backgroundColor = Platform.select({
-      ios: COLORS.background,
-      android: darkMode ? '#000000' : '#FFFFFF',
-    });
-    const darkText = Platform.select({
-      ios: COLORS.darkText,
-      android: darkMode ? '#FFFFFF' : '#000000',
-    });
+    const backgroundColor = COLORS.background;
     const defaultOptions: Options = {
       topBar: {
         leftButtonColor: COLORS.lightBlue,
@@ -131,21 +125,17 @@ export default class App {
         rightButtonDisabledColor: COLORS.lightText,
         leftButtonDisabledColor: COLORS.lightText,
         title: {
-          color: darkText,
+          color: COLORS.darkText,
         },
         background: {
-          color: Platform.select({
-            ios: COLORS.background,
-            android: darkMode ? '#000000' : '#FFFFFF',
-          }),
+          color: COLORS.background,
           translucent: false,
         },
         barStyle: darkMode ? 'black' : 'default',
       },
       layout: Platform.select({
         android: {
-          componentBackgroundColor: backgroundColor,
-          // backgroundColor: backgroundColor,
+          componentBackgroundColor: COLORS.background,
         },
         ios: {
           backgroundColor: COLORS.background,
@@ -156,7 +146,7 @@ export default class App {
       },
       bottomTabs: {
         barStyle: darkMode ? 'black' : 'default',
-        backgroundColor: backgroundColor,
+        backgroundColor,
         translucent: true,
       },
       bottomTab: {
@@ -212,6 +202,7 @@ export default class App {
         'Consider using `numColumns` with `FlatList` instead.',
         'Require cycle: node_modules/typeorm/browser/index.js',
       ]);
+      LogBox.ignoreAllLogs(true);
     }
 
     const browseCards = {

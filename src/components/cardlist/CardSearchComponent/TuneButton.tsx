@@ -9,9 +9,8 @@ import {
 import { t } from 'ttag';
 import { Navigation } from 'react-native-navigation';
 import { Brackets } from 'typeorm/browser';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import AppIcon from '@icons/AppIcon';
 import { CardFilterProps } from '@components/filter/CardFilterView';
 import FilterBuilder, { CardFilterData } from '@lib/filters';
 import { AppState, getFilterState, getCardFilterData } from '@reducers';
@@ -34,6 +33,9 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class TuneButton extends React.Component<Props> {
+  static WIDTH = SIZE + 4;
+  static HEIGHT = SIZE;
+
   _onPress = () => {
     const {
       filterId,
@@ -72,12 +74,12 @@ class TuneButton extends React.Component<Props> {
       filters,
       lightButton,
     } = this.props;
-    const defaultColor = COLORS.navButton;
+    const defaultColor = COLORS.M;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress}>
           <View style={styles.touchable}>
-            <MaterialIcons name="tune" size={28} color={lightButton ? 'white' : defaultColor} />
+            <AppIcon name="filter" size={22} color={lightButton ? 'white' : defaultColor} />
             { filters && <View style={styles.chiclet} /> }
           </View>
         </TouchableOpacity>
@@ -103,10 +105,10 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 
 export default connect(mapStateToProps)(TuneButton);
 
-const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 8 : 0);
+const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 4 : 0);
 const styles = StyleSheet.create({
   container: {
-    marginLeft: Platform.OS === 'android' ? 8 : 12,
+    marginLeft: Platform.OS === 'android' ? 8 : 0,
     width: SIZE + EXTRA_ANDROID_WIDTH,
     height: SIZE,
     position: 'relative',
@@ -115,6 +117,9 @@ const styles = StyleSheet.create({
     padding: 4,
     width: SIZE + EXTRA_ANDROID_WIDTH,
     height: SIZE,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   chiclet: {
     borderColor: 'white',

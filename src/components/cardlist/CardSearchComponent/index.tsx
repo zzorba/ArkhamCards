@@ -3,7 +3,7 @@ import { forEach } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import {
@@ -19,6 +19,10 @@ import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleF
 import { iconsMap } from '@app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import COLORS from '@styles/colors';
+import MythosButton from './MythosButton';
+import TuneButton from './TuneButton';
+import SortButton from './SortButton';
+import { Platform } from 'react-native';
 
 
 interface ReduxProps {
@@ -64,6 +68,81 @@ interface State {
   visible: boolean;
   filters?: FilterState;
 }
+
+interface CardSearchNavigationOptions {
+  componentId: string;
+  modal?: boolean;
+  lightButton?: boolean;
+  mythosToggle?: boolean;
+  baseQuery?: Brackets;
+  title?: string;
+}
+export function navigationOptions(
+  {
+    componentId,
+    modal,
+    lightButton,
+    mythosToggle,
+    baseQuery,
+  }: CardSearchNavigationOptions
+){
+  const mythosButton: OptionsTopBarButton = {
+    id: 'mythos',
+    component: {
+      name: 'MythosButton',
+      passProps: {
+        filterId: componentId,
+        lightButton,
+      },
+      width: MythosButton.WIDTH,
+      height: MythosButton.HEIGHT,
+    },
+    enabled: true
+  };
+
+  const rightButtons: OptionsTopBarButton[] = [{
+    id: 'filter',
+    component: {
+      name: 'TuneButton',
+      passProps: {
+        filterId: componentId,
+        baseQuery,
+        modal,
+        lightButton,
+      },
+      width: TuneButton.WIDTH,
+      height: TuneButton.HEIGHT,
+    },
+    testID: t`Filters`,
+    enabled: true,
+  }, {
+    id: 'sort',
+    component: {
+      name: 'SortButton',
+      passProps: {
+        filterId: componentId,
+        lightButton,
+      },
+      width: SortButton.WIDTH,
+      height: SortButton.HEIGHT,
+    },
+    testID: t`Filters`,
+  }];
+  if (mythosToggle && Platform.OS === 'android') {
+    rightButtons.push(mythosButton);
+  }
+  const topBarOptions: OptionsTopBar = {
+    rightButtons,
+  };
+  if (mythosToggle && Platform.OS === 'ios') {
+    topBarOptions.leftButtons = [mythosButton];
+  }
+
+  return {
+    topBar: topBarOptions,
+  };
+}
+
 class CardSearchComponent extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
   state: State = {
@@ -83,56 +162,15 @@ class CardSearchComponent extends React.Component<Props, State> {
       mythosToggle,
     } = this.props;
 
-    const rightButtons = [{
-      id: 'filter',
-      component: {
-        name: 'TuneButton',
-        passProps: {
-          filterId: componentId,
-          baseQuery: baseQuery,
-          model: modal,
+    Navigation.mergeOptions(componentId,
+      navigationOptions(
+        {
+          componentId,
+          baseQuery,
+          mythosToggle,
           lightButton: !!onDeckCountChange,
-        },
-        testID: t`Filters`,
-      },
-      enabled: true,
-      icon: iconsMap.tune,
-      color: COLORS.navButton,
-    }, {
-      id: 'sort',
-      component: {
-        name: 'SortButton',
-        passProps: {
-          filterId: componentId,
-          lightButton: !!onDeckCountChange,
-        },
-        testID: t`Filters`,
-      },
-    }];
-    if (mythosToggle) {
-      rightButtons.push({
-        id: 'mythos',
-        component: {
-          name: 'MythosButton',
-          passProps: {
-            filterId: componentId,
-            lightButton: !!onDeckCountChange,
-          },
-          testID: t`Show Encounter Cards`,
-        },
-      });
-    }
-    if (onDeckCountChange) {
-      forEach(rightButtons, button => {
-        button.color = 'white';
-      });
-    }
-
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtons,
-      },
-    });
+        }
+      ));
   }
 
   _clearSearchFilters = () => {

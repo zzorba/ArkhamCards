@@ -1,15 +1,17 @@
 import React from 'react';
+import { t } from 'ttag';
 
 import { SortType, SORT_BY_TYPE } from '@actions/types';
-import CardSearchComponent from './CardSearchComponent';
+import CardSearchComponent, { navigationOptions } from './CardSearchComponent';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
+import { Navigation } from 'react-native-navigation';
 
 interface Props {
   componentId: string;
   sort?: SortType;
 }
 
-class CardSearchView extends React.PureComponent<Props> {
+class CardSearchView extends React.Component<Props> {
   render() {
     const {
       componentId,
