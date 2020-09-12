@@ -494,7 +494,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -562,11 +562,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "los investigadores abrieron el camino de arriba."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "los investigadores abrieron el camino de abajo."
           },
           {
             "id": "police_are_suspicious",
@@ -1283,7 +1283,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1351,11 +1351,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "los investigadores abrieron el camino de arriba."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "los investigadores abrieron el camino de abajo."
           },
           {
             "id": "police_are_suspicious",
@@ -2848,11 +2848,11 @@
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "el gato negro les pidió ayuda a los demás."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "el gato negro compartió conocimientos sobre el Mundo subterráneo."
           },
           {
             "id": "black_cat_warned_the_others",
@@ -2860,43 +2860,43 @@
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "el puente fue completado."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "el puente fue destruido."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "la Dra. Maheswaran está viva."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "la Dra. Maheswaran ha desaparecido."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "la doctora Maheswaran se unió a la investigación."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "la doctora Maheswaran se quedó con sus pacientes."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "se desconoce el destino de la Dra. Maheswaran."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "los investigadores encontraron una salida del Mundo subterráneo."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "los investigadores no lograron escapar."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "los investigadores están solos."
           },
           {
             "id": "possess_silver_key",
@@ -2904,31 +2904,31 @@
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph Carter no sobrevivió al descenso."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph escapó del hospital por su cuenta."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph escapó del hospital con los investigadores."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph Carter sobrevivió al descenso."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "los investigadores volvieron a la realidad."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "los investigadores siguen en las Tierras del Sueño."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "los investigadores están atrapados en el reino de Atlach-Nacha."
           },
           {
             "id": "you_asked_for_it",

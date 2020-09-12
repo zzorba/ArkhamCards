@@ -6062,8 +6062,8 @@
 },
 {
   "id": "black_stars_rise",
-  "scenario_name": "Black Stars Rise",
-  "full_name": "Scenario VII: Black Stars Rise",
+  "scenario_name": "Surgen estrellas negras",
+  "full_name": "Escenario VII: Surgen estrellas negras",
   "setup": [
     "intro",
     "check_ashleigh_clarke",
@@ -6088,11 +6088,11 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "The island commune of Mont Saint-Michel lies off the northwestern coast of France. It is beautiful, elegant, and enigmatic—a place out of a fairy tale. Only this tale is one of horrors and madness. During low tide, you would be able to reach the island on foot by crossing the tidal causeway that emerges from the sea. However, by the time you reach the coast, the tide is much higher than you’d anticipated. Dark clouds cover the sky, and a distant crash of thunder signals the start of the oncoming storm. You find a boat whose captain is willing to take you to the island, and prepare for the ritual to come."
+      "text": "La comunidad isleña de Mont Saint-Michel se encuentra en la costa noroeste de Francia. Es preciosa, elegante y enigmática; un lugar sacado de un cuento de hadas. Sólo que este cuento está lleno de horrores y locura. Durante la marea baja, podrías alcanzar la isla a pie cruzando el paso que emerge del mar. Sin embargo, para cuando llegas a la costa, la marea está mucho más alta de lo que esperabas. Oscuras nubes cubren el cielo, y un lejano trueno señala el inicio de la tormenta que se avecina. Encuentras un barco cuyo capitán está dispuesto a llevarte a la isla, y te preparas para el ritual que va a producirse."
     },
     {
       "id": "check_ashleigh_clarke",
-      "text": "Check Campaign Log. <i>If Ashleigh Clarke is listed under VIPs Interviewed</i>:",
+      "text": "Comprueba el registro de campaña si <i>Ashleigh Clarke aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -6112,11 +6112,11 @@
     {
       "id": "ashleighs_information",
       "type": "story",
-      "text": "You recall the night where this all began, and your thoughts drift to the mesmerizing song Ashleigh sang that night. Somehow you remember the lyrics perfectly after all this time, and its haunting melody is ingrained in your mind. “Above the city the storm clouds rage, and waves crash through the gilded cage... Below the earth the salt water seeps, the shadows fall as the red sun sleeps...” Studying the island that lies before you, illuminated by flashes of lighting and assaulted by tumultuous waves, you can’t help but wonder if Ashleigh was singing about this very moment."
+      "text": "Recuerdas la noche en la que comenzó todo esto, y tus recuerdos vuelven a la cautivadora canción que interpretó Ashleigh aquella noche. De algún modo, recuerdas perfectamente la letra a pesar del tiempo que ha transcurrido, y su espectral melodía está grabada en tu mente. “Arriba, sobre la ciudad, las nubes truenan y las olas chocan contra la jaula dorada... Abajo, en la tierra, el agua salada se filtra, las sombras caen donde el sol rojo dormita”. Al estudiar la isla que tienes delante, iluminada por los destellos de los relámpagos y asaltada por violentas olas, no puedes evitar preguntarte si Ashleigh cantaba sobre este mismo instante."
     },
     {
       "id": "remove_doom_ability",
-      "text": "During this scenario, as a [fast] triggered ability, an investigator may remove 1 doom from an agenda in play. (Group limit once per game.)"
+      "text": "Durante este escenario, como una capacidad activada [fast], un investigador puede retirar 1 ficha de Perdición de un plan que esté en juego. Límite de grupo de una vez por partida."
     },
     {
       "id": "gather_encounter_sets",
@@ -6140,7 +6140,7 @@
         "flood",
         "vortex"
       ],
-      "text": "Be aware that some cards from the <i>Black Stars Rise</i> encounter set have multiple versions, some with <i>The Flood Below</i> encounter set icon on their reverse side, and some with <i>The Vortex Above</i> encounter set icon on their reverse side."
+      "text": "Ten en cuenta que algunas cartas del conjunto de encuentros <i>Surgen estrellas negras</i> tienen varias versiones, unas con el icono de conjunto de encuentros <i>La inundación de abajo</i> en su reverso y otras con el icono de conjunto de encuentros <i>El vórtice de arriba</i> en su reverso."
     },
     {
       "id": "add_chaos_token",
@@ -6198,34 +6198,34 @@
     },
     {
       "id": "agenda_setup",
-      "text": "Sort each copy of the following cards into two separate piles, based on the encounter set icon on their reverse side: Agenda 2a—Let The Storm Rage, Agenda 2c—The Entity Above, Chapel of St. Aubert, and Abbey Tower.",
+      "text": "Separa todas las copias de las siguientes cartas en 2 montones distintos en función del icono de conjunto de encuentros de su reverso: Plan 2a – Que ruja la tormenta, Plan 2c –La entidad de arriba, Capilla de san Auberto y Torre de la abadía.",
       "bullets": [
         {
-          "text": "You should have two piles of exactly four cards. Each pile should have one copy of each of the above listed cards. The cards in the first pile should have The Flood Below encounter set icon on their reverse side, and the cards in the second pile should have The Vortex Above encounter set icon on their reverse side."
+          "text": "Deberías tener 2 montones de 4 cartas cada uno. Cada montón sólo debe contener 1 copia de cada una de las cartas indicadas. Las cartas del primer montón deben tener el icono de conjunto de encuentros La inundación de abajo en su reverso, y las cartas del segundo montón deben tener el icono de conjunto de encuentros El vórtice de arriba en su reverso."
         },
         {
-          "text": "Flip each pile over so that only the Black Stars Rise encounter set icon is showing. Randomize the two piles so you cannot tell which is which."
+          "text": "Dale la vuelta a cada montón, de forma que sólo se vea el icono de conjunto de encuentros Surgen estrellas negras. Aleatoriza los montones para que no sepas cuál es cuál."
         },
         {
-          "text": "Choose one pile at random to remove from the game and one pile at random to use throughout this scenario’s setup. <b>Do not look at the reverse sides of any of the cards in either pile</b>."
+          "text": "Elige 1 montón al azar para retirarlo de la partida, y un montón al azar para usarlo en la preparación del escenario. <b>No mires los reversos de ninguna de las cartas de ninguno de los montones</b>."
         }
       ]
     },
     {
       "id": "no_act_deck",
-      "text": "This scenario does not have an act deck. Instead, it has two agenda decks. One agenda deck is built using agendas 1a, 2a, and 3a. The other agenda deck is built using agendas 1c, 2c, and 3c <i>(remember to use the versions of agendas 2a and 2c that were randomly chosen earlier)</i>."
+      "text": "Este escenario no tiene mazo de Acto. En lugar de eso, tiene 2 mazos de Plan. Un mazo de Plan se crea con los planes 1a, 2a y 3a. El otro mazo de Plan se crea con los planes 1c, 2c y 3c <i>(recuerda usar las versiones de los planes 2a y 2c que han sido elegidas al azar)</i>."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Both act cards (Act 3a and Act 3c), Beast of Aldebaran, each copy of Tidal Terror, each copy of Rift Seeker, Cloister, Knight’s Hall, Abbey Tower, and Chapel of St. Aubert <i>(remember to use the versions of Abbey Tower and Chapel of St. Aubert that were randomly chosen earlier)</i>."
+      "text": "Pon aparte, fuera del juego, las siguientes cartas: Las dos cartas de Acto (acto 3a y acto 3c), Bestia de Aldebarán, todas las copias del Terror de la marea, todas las copias del Buscador de la grieta, Claustro, Sala del caballero, Torre de la abadía y Capilla de san Auberto <i>(recuerda usar las versiones de la Torre de la abadía y de la Capilla de san Auberto que han sido elegidas al azar)</i>."
     },
     {
       "id": "remove_locations",
-      "text": "Choose one of the two Choeur Gothique locations, at random, and set it aside. Remove the other version of Choeur Gothique from the game."
+      "text": "Elige al azar 1 de las dos versiones del Lugar “Coro gótico” y ponla aparte. Retira de la partida la otra versión del Coro gótico."
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two North Tower locations, one of the two Outer Wall locations, and one of the two Broken Steps locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game. Then, put the remaining locations (Porte de l’Avancée, Grand Rue, and Abbey Church) into play. Each investigator begins play at Porte de l’Avancée."
+      "text": "Elige al azar 1 de los dos Lugares “Torre norte”, 1 de los dos Lugares “Muro exterior” y 1 de los dos Lugares “Escalones rotos”. Pon en juego los Lugares elegidos. Retira de la partida las demás versiones de esos Lugares. A continuación, pon en juego los Lugares restantes (Porte de l’Avancée, Grand Rue e Iglesia de la abadía). Cada investigador comienza la partida en la Porte de l’Avancée."
     },
     {
       "id": "location_layout",
@@ -6262,7 +6262,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
+      "text": "Cada investigador busca en su colección una Debilidad básica aleatoria [[Locura]], [[Pacto]], [[Sectario]] o [[Detective]] y la añade a su mazo.",
       "effects": [
         {
           "type": "add_weakness",
@@ -6367,27 +6367,27 @@
     {
       "id": "dual_agendas_rule",
       "type": "rule_reminder",
-      "title": "Dual Agendas",
-      "text": "During this scenario, there are two agenda decks. One represents a means for you and your allies to open the path to Carcosa, and leads to one of the two set‐aside act cards. The other represents a means for Hastur to escape into our world, and spells demise for Earth.\nWhen playing this scenario, while there are two agenda decks in play, players must observe the following additional rules:",
+      "title": "Planes dobles",
+      "text": "Durante este escenario, hay 2 mazos de Plan. Uno representa un medio para que tú y tus aliados abráis el camino a Carcosa, y lleva a una de las dos cartas de Acto puestas aparte. El otro representa un medio para que Hastur escape y entre en nuestro mundo, y supone la perdición de la Tierra.\nAl jugar este escenario, mientras haya 2 mazos de Plan en juego, los jugadores deben seguir estas reglas adicionales:",
       "bullets": [
         {
-          "text": "Whenever 1 or more doom is placed on “the current agenda,” the players may decide which of the two agendas to place this doom on."
+          "text": "Siempre que se coloquen 1 o más fichas de Perdición en “el plan en curso”, los jugadores pueden decidir en cuál de los dos planes colocar esta perdición."
         },
         {
-          "text": "Doom on cards other than the two agendas (such as enemies, locations, or assets) count towards the doom threshold of <b>both</b> agendas."
+          "text": "La perdición que haya en otras cartas que no sean los dos planes (como Enemigos, Lugares o Apoyos) cuenta para los umbrales de perdición de <b>ambos</b> planes."
         },
         {
-          "text": "When one agenda advances, <b>doom on the other agenda is not removed</b>. All other doom in play is removed."
+          "text": "Cuando un plan avance, <b>no se retira la perdición del otro plan</b>. Sí que se retiran todas las demás fichas de Perdición que haya en juego."
         },
         {
-          "text": "If the doom thresholds of both agendas are satisfied during the “Check doom threshold” step of the Mythos phase, choose only one agenda to advance. Then, once you have completed advancing that agenda, check the doom threshold of the other agenda and advance it if its doom threshold is still satisfied."
+          "text": "Si se cumplen los umbrales de perdición de ambos planes durante el paso “Comprobar umbral de perdición” de la fase de Mitos, elige sólo 1 plan para que avance. A continuación, cuando hayas hecho avanzar ese plan, comprueba el umbral de perdición del otro plan y hazlo avanzar si se sigue cumpliendo."
         }
       ]
     },
     {
       "id": "set_aside_location_layout",
       "type": "location_setup",
-      "text": "Set-aside Location Layout (spoilers)",
+      "text": "Distribución de los Lugares sugerida (spoilers)",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -6446,7 +6446,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "Marcar Convicción o Duda",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -6456,14 +6456,14 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "Which should be marked, <b>Conviction</b> or <b>Doubt</b>?",
+      "text": "¿Qué deberías marcar, <b>Convicción</b> o <b>Duda</b>?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "Mark one <b>Conviction</b>.",
+            "text": "Marca una <b>Convicción</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -6481,7 +6481,7 @@
           },
           {
             "id": "doubt",
-            "text": "Mark one <b>Doubt</b>.",
+            "text": "Marca una <b>Duda</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -6519,7 +6519,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_below",
-          "text": "you opened the path below."
+          "text": "los investigadores abrieron el camino de abajo."
         }
       ]
     },
@@ -6530,7 +6530,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_above",
-          "text": "you opened the path above."
+          "text": "los investigadores abrieron el camino de arriba."
         }
       ]
     },
@@ -6575,7 +6575,7 @@
         "choices": [
           {
             "id": "ashleigh_killed",
-            "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
+            "text": "¿Está Ashleigh Clarke <i>(Los cantos deben morir inaudibles)</i> en la zona de victoria?",
             "steps": [
               "kill_ashleigh"
             ]
@@ -6586,7 +6586,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>.",
+      "text": "Anota a <i>Ashleigh Clarke</i> en la sección “VIP muertos” del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -6597,7 +6597,7 @@
     },
     {
       "id": "add_cultists_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] and 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] y 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -6623,7 +6623,7 @@
     },
     {
       "id": "add_cultists_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens and 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] y 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -6649,7 +6649,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "Has sufrido un terrible destino, ¿verdad?"
     },
     {
       "id": "carcosa_merged",
@@ -6658,7 +6658,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
         }
       ]
     },
@@ -6717,7 +6717,7 @@
         "physical",
         "mental"
       ],
-      "text": "You hold your breath as you swim through freezing water toward the spires below. As you get closer, you see ripples throughout the water, as though you are peering into a reflection upon the sea’s surface. You break through the surface and gasp as air fills your lungs.",
+      "text": "Aguantas la respiración mientras buceas por la helada agua hacia las torres de las profundidades. Al acercarte, ves ondas por el agua, como si mirases un reflejo en la superficie del mar. Atraviesas la superficie y jadeas mientras el aire llena tus pulmones.",
       "steps": [
         "opened_path_below",
         "add_cultists_tablets",
@@ -6735,7 +6735,7 @@
         "physical",
         "mental"
       ],
-      "text": "You marvel at the cloud-waves encircling you and fly toward the spires above. The desolate and inscrutable city of Carcosa towers before you. You suddenly realize you are falling—not floating—and a pulling force takes hold of your body.",
+      "text": "Te maravillas ante las nubosas olas que te rodean y vuelas hacia las torres del cielo. La desolada e inescrutable ciudad de Carcosa se alza ante ti. De pronto, te das cuenta de que estás cayendo, y no flotando, y que una fuerza ha hecho presa de tu cuerpo y tira de ti.",
       "steps": [
         "opened_path_above",
         "add_cultists_elder_things",
@@ -6753,7 +6753,7 @@
         "physical",
         "mental"
       ],
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you had escaped the island’s certain doom. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of two suns. You stand overlooking the Lake of Hali. Black stars hang in the heavens above. Beyond, over leagues of tossing cloud- waves, the towers of Carcosa rise behind the shattered moon.",
+      "text": "Cuando despiertas, estás sentado en el coro gótico de la abadía de Mont Saint-Michel. La lluvia ya no golpea el cristal de las ventanas, y tampoco oyes truenos ni el chillido de los horrores alados. De algún modo, has escapado a la perdición segura de la isla. Te acercas a la puerta de la abadía y la abres con inquietud. Una deslumbrante luz te ciega, y levantas la mano para tapar el brillo de dos soles. Te encuentras sobre el Lago de Hali. El cielo que hay sobre tu cabeza está poblado de estrellas negras. Al otro lado, sobre leguas de nubosas olas agitadas, las torres de Carcosa se alzan tras la destrozada luna.",
       "steps": [
         "terrible_fate",
         "carcosa_merged",
@@ -7713,7 +7713,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "Has sufrido un terrible destino, ¿verdad?"
     },
     {
       "id": "carcosa_merged",
@@ -7722,7 +7722,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
         }
       ]
     },
@@ -8654,7 +8654,7 @@
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "Pasas horas dándole vueltas a la información que tienes sobre El Rey de Amarillo. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
+      "text": "Pasas horas dándole vueltas a la información que tienes sobre <u>El Rey de Amarillo</u>. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
     },
     {
       "id": "heed_the_warning",
@@ -9679,7 +9679,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "Marcar Convicción o Duda",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -16199,7 +16199,7 @@
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "Pasas horas dándole vueltas a la información que tienes sobre El Rey de Amarillo. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
+      "text": "Pasas horas dándole vueltas a la información que tienes sobre <u>El Rey de Amarillo</u>. ¿Qué es cierto? ¿Qué es real? Eres el único que puede encontrarle algún sentido a esta locura."
     },
     {
       "id": "heed_the_warning",
@@ -17509,11 +17509,11 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "The island commune of Mont Saint-Michel lies off the northwestern coast of France. It is beautiful, elegant, and enigmatic—a place out of a fairy tale. Only this tale is one of horrors and madness. During low tide, you would be able to reach the island on foot by crossing the tidal causeway that emerges from the sea. However, by the time you reach the coast, the tide is much higher than you’d anticipated. Dark clouds cover the sky, and a distant crash of thunder signals the start of the oncoming storm. You find a boat whose captain is willing to take you to the island, and prepare for the ritual to come."
+      "text": "La comunidad isleña de Mont Saint-Michel se encuentra en la costa noroeste de Francia. Es preciosa, elegante y enigmática; un lugar sacado de un cuento de hadas. Sólo que este cuento está lleno de horrores y locura. Durante la marea baja, podrías alcanzar la isla a pie cruzando el paso que emerge del mar. Sin embargo, para cuando llegas a la costa, la marea está mucho más alta de lo que esperabas. Oscuras nubes cubren el cielo, y un lejano trueno señala el inicio de la tormenta que se avecina. Encuentras un barco cuyo capitán está dispuesto a llevarte a la isla, y te preparas para el ritual que va a producirse."
     },
     {
       "id": "check_ashleigh_clarke",
-      "text": "Check Campaign Log. <i>If Ashleigh Clarke is listed under VIPs Interviewed</i>:",
+      "text": "Comprueba el registro de campaña si <i>Ashleigh Clarke aparece en la sección “VIP interrogados”</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -17533,11 +17533,11 @@
     {
       "id": "ashleighs_information",
       "type": "story",
-      "text": "You recall the night where this all began, and your thoughts drift to the mesmerizing song Ashleigh sang that night. Somehow you remember the lyrics perfectly after all this time, and its haunting melody is ingrained in your mind. “Above the city the storm clouds rage, and waves crash through the gilded cage... Below the earth the salt water seeps, the shadows fall as the red sun sleeps...” Studying the island that lies before you, illuminated by flashes of lighting and assaulted by tumultuous waves, you can’t help but wonder if Ashleigh was singing about this very moment."
+      "text": "Recuerdas la noche en la que comenzó todo esto, y tus recuerdos vuelven a la cautivadora canción que interpretó Ashleigh aquella noche. De algún modo, recuerdas perfectamente la letra a pesar del tiempo que ha transcurrido, y su espectral melodía está grabada en tu mente. “Arriba, sobre la ciudad, las nubes truenan y las olas chocan contra la jaula dorada... Abajo, en la tierra, el agua salada se filtra, las sombras caen donde el sol rojo dormita”. Al estudiar la isla que tienes delante, iluminada por los destellos de los relámpagos y asaltada por violentas olas, no puedes evitar preguntarte si Ashleigh cantaba sobre este mismo instante."
     },
     {
       "id": "remove_doom_ability",
-      "text": "During this scenario, as a [fast] triggered ability, an investigator may remove 1 doom from an agenda in play. (Group limit once per game.)"
+      "text": "Durante este escenario, como una capacidad activada [fast], un investigador puede retirar 1 ficha de Perdición de un plan que esté en juego. Límite de grupo de una vez por partida."
     },
     {
       "id": "flood_below",
@@ -17547,7 +17547,7 @@
         "flood",
         "vortex"
       ],
-      "text": "Be aware that some cards from the <i>Black Stars Rise</i> encounter set have multiple versions, some with <i>The Flood Below</i> encounter set icon on their reverse side, and some with <i>The Vortex Above</i> encounter set icon on their reverse side."
+      "text": "Ten en cuenta que algunas cartas del conjunto de encuentros <i>Surgen estrellas negras</i> tienen varias versiones, unas con el icono de conjunto de encuentros <i>La inundación de abajo</i> en su reverso y otras con el icono de conjunto de encuentros <i>El vórtice de arriba</i> en su reverso."
     },
     {
       "id": "add_chaos_token",
@@ -17605,30 +17605,30 @@
     },
     {
       "id": "agenda_setup",
-      "text": "Sort each copy of the following cards into two separate piles, based on the encounter set icon on their reverse side: Agenda 2a—Let The Storm Rage, Agenda 2c—The Entity Above, Chapel of St. Aubert, and Abbey Tower.",
+      "text": "Separa todas las copias de las siguientes cartas en 2 montones distintos en función del icono de conjunto de encuentros de su reverso: Plan 2a – Que ruja la tormenta, Plan 2c –La entidad de arriba, Capilla de san Auberto y Torre de la abadía.",
       "bullets": [
         {
-          "text": "You should have two piles of exactly four cards. Each pile should have one copy of each of the above listed cards. The cards in the first pile should have The Flood Below encounter set icon on their reverse side, and the cards in the second pile should have The Vortex Above encounter set icon on their reverse side."
+          "text": "Deberías tener 2 montones de 4 cartas cada uno. Cada montón sólo debe contener 1 copia de cada una de las cartas indicadas. Las cartas del primer montón deben tener el icono de conjunto de encuentros La inundación de abajo en su reverso, y las cartas del segundo montón deben tener el icono de conjunto de encuentros El vórtice de arriba en su reverso."
         },
         {
-          "text": "Flip each pile over so that only the Black Stars Rise encounter set icon is showing. Randomize the two piles so you cannot tell which is which."
+          "text": "Dale la vuelta a cada montón, de forma que sólo se vea el icono de conjunto de encuentros Surgen estrellas negras. Aleatoriza los montones para que no sepas cuál es cuál."
         },
         {
-          "text": "Choose one pile at random to remove from the game and one pile at random to use throughout this scenario’s setup. <b>Do not look at the reverse sides of any of the cards in either pile</b>."
+          "text": "Elige 1 montón al azar para retirarlo de la partida, y un montón al azar para usarlo en la preparación del escenario. <b>No mires los reversos de ninguna de las cartas de ninguno de los montones</b>."
         }
       ]
     },
     {
       "id": "no_act_deck",
-      "text": "This scenario does not have an act deck. Instead, it has two agenda decks. One agenda deck is built using agendas 1a, 2a, and 3a. The other agenda deck is built using agendas 1c, 2c, and 3c <i>(remember to use the versions of agendas 2a and 2c that were randomly chosen earlier)</i>."
+      "text": "Este escenario no tiene mazo de Acto. En lugar de eso, tiene 2 mazos de Plan. Un mazo de Plan se crea con los planes 1a, 2a y 3a. El otro mazo de Plan se crea con los planes 1c, 2c y 3c <i>(recuerda usar las versiones de los planes 2a y 2c que han sido elegidas al azar)</i>."
     },
     {
       "id": "remove_locations",
-      "text": "Choose one of the two Choeur Gothique locations, at random, and set it aside. Remove the other version of Choeur Gothique from the game."
+      "text": "Elige al azar 1 de las dos versiones del Lugar “Coro gótico” y ponla aparte. Retira de la partida la otra versión del Coro gótico."
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two North Tower locations, one of the two Outer Wall locations, and one of the two Broken Steps locations, at random. Put the chosen locations into play. Remove the other versions of those locations from the game. Then, put the remaining locations (Porte de l’Avancée, Grand Rue, and Abbey Church) into play. Each investigator begins play at Porte de l’Avancée."
+      "text": "Elige al azar 1 de los dos Lugares “Torre norte”, 1 de los dos Lugares “Muro exterior” y 1 de los dos Lugares “Escalones rotos”. Pon en juego los Lugares elegidos. Retira de la partida las demás versiones de esos Lugares. A continuación, pon en juego los Lugares restantes (Porte de l’Avancée, Grand Rue e Iglesia de la abadía). Cada investigador comienza la partida en la Porte de l’Avancée."
     },
     {
       "id": "location_layout",
@@ -17665,7 +17665,7 @@
     },
     {
       "id": "add_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Pact]], [[Cultist]], or [[Detective]] weakness and adds it to their deck.",
+      "text": "Cada investigador busca en su colección una Debilidad básica aleatoria [[Locura]], [[Pacto]], [[Sectario]] o [[Detective]] y la añade a su mazo.",
       "effects": [
         {
           "type": "add_weakness",
@@ -17770,27 +17770,27 @@
     {
       "id": "dual_agendas_rule",
       "type": "rule_reminder",
-      "title": "Dual Agendas",
-      "text": "During this scenario, there are two agenda decks. One represents a means for you and your allies to open the path to Carcosa, and leads to one of the two set‐aside act cards. The other represents a means for Hastur to escape into our world, and spells demise for Earth.\nWhen playing this scenario, while there are two agenda decks in play, players must observe the following additional rules:",
+      "title": "Planes dobles",
+      "text": "Durante este escenario, hay 2 mazos de Plan. Uno representa un medio para que tú y tus aliados abráis el camino a Carcosa, y lleva a una de las dos cartas de Acto puestas aparte. El otro representa un medio para que Hastur escape y entre en nuestro mundo, y supone la perdición de la Tierra.\nAl jugar este escenario, mientras haya 2 mazos de Plan en juego, los jugadores deben seguir estas reglas adicionales:",
       "bullets": [
         {
-          "text": "Whenever 1 or more doom is placed on “the current agenda,” the players may decide which of the two agendas to place this doom on."
+          "text": "Siempre que se coloquen 1 o más fichas de Perdición en “el plan en curso”, los jugadores pueden decidir en cuál de los dos planes colocar esta perdición."
         },
         {
-          "text": "Doom on cards other than the two agendas (such as enemies, locations, or assets) count towards the doom threshold of <b>both</b> agendas."
+          "text": "La perdición que haya en otras cartas que no sean los dos planes (como Enemigos, Lugares o Apoyos) cuenta para los umbrales de perdición de <b>ambos</b> planes."
         },
         {
-          "text": "When one agenda advances, <b>doom on the other agenda is not removed</b>. All other doom in play is removed."
+          "text": "Cuando un plan avance, <b>no se retira la perdición del otro plan</b>. Sí que se retiran todas las demás fichas de Perdición que haya en juego."
         },
         {
-          "text": "If the doom thresholds of both agendas are satisfied during the “Check doom threshold” step of the Mythos phase, choose only one agenda to advance. Then, once you have completed advancing that agenda, check the doom threshold of the other agenda and advance it if its doom threshold is still satisfied."
+          "text": "Si se cumplen los umbrales de perdición de ambos planes durante el paso “Comprobar umbral de perdición” de la fase de Mitos, elige sólo 1 plan para que avance. A continuación, cuando hayas hecho avanzar ese plan, comprueba el umbral de perdición del otro plan y hazlo avanzar si se sigue cumpliendo."
         }
       ]
     },
     {
       "id": "set_aside_location_layout",
       "type": "location_setup",
-      "text": "Set-aside Location Layout (spoilers)",
+      "text": "Distribución de los Lugares sugerida (spoilers)",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -17849,7 +17849,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "Marcar Convicción o Duda",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -17859,14 +17859,14 @@
     },
     {
       "id": "mark_conviction_or_doubt",
-      "text": "Which should be marked, <b>Conviction</b> or <b>Doubt</b>?",
+      "text": "¿Qué deberías marcar, <b>Convicción</b> o <b>Duda</b>?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "conviction",
-            "text": "Mark one <b>Conviction</b>.",
+            "text": "Marca una <b>Convicción</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -17884,7 +17884,7 @@
           },
           {
             "id": "doubt",
-            "text": "Mark one <b>Doubt</b>.",
+            "text": "Marca una <b>Duda</b>.",
             "effects": [
               {
                 "type": "campaign_log_count",
@@ -17922,7 +17922,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_below",
-          "text": "you opened the path below."
+          "text": "los investigadores abrieron el camino de abajo."
         }
       ]
     },
@@ -17933,7 +17933,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "opened_path_above",
-          "text": "you opened the path above."
+          "text": "los investigadores abrieron el camino de arriba."
         }
       ]
     },
@@ -17978,7 +17978,7 @@
         "choices": [
           {
             "id": "ashleigh_killed",
-            "text": "Is Ashleigh Clarke <i>(Songs Die Unheard)</i> in the victory display?",
+            "text": "¿Está Ashleigh Clarke <i>(Los cantos deben morir inaudibles)</i> en la zona de victoria?",
             "steps": [
               "kill_ashleigh"
             ]
@@ -17989,7 +17989,7 @@
     {
       "id": "kill_ashleigh",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under \"VIPS Slain\", record <i>Ashleigh Clarke</i>.",
+      "text": "Anota a <i>Ashleigh Clarke</i> en la sección “VIP muertos” del registro de campaña.",
       "effects": [
         {
           "type": "campaign_log_cards",
@@ -18000,7 +18000,7 @@
     },
     {
       "id": "add_cultists_elder_things",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] and 2 [elder_thing] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] y 2 fichas [elder_thing] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -18026,7 +18026,7 @@
     },
     {
       "id": "add_cultists_tablets",
-      "text": "Remove all [cultist], [tablet], and [elder_thing] tokens from the chaos bag. Then, add 2 [cultist] tokens and 2 [tablet] tokens to the chaos bag.",
+      "text": "Retira todas las fichas [cultist], [tablet], y [elder_thing] de la bolsa de caos. A continuación, añade 2 fichas [cultist] y 2 fichas [tablet] a la bolsa de caos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -18052,7 +18052,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "Has sufrido un terrible destino, ¿verdad?"
     },
     {
       "id": "carcosa_merged",
@@ -18061,7 +18061,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
         }
       ]
     },
@@ -18154,7 +18154,7 @@
         "physical",
         "mental"
       ],
-      "text": "You hold your breath as you swim through freezing water toward the spires below. As you get closer, you see ripples throughout the water, as though you are peering into a reflection upon the sea’s surface. You break through the surface and gasp as air fills your lungs.",
+      "text": "Aguantas la respiración mientras buceas por la helada agua hacia las torres de las profundidades. Al acercarte, ves ondas por el agua, como si mirases un reflejo en la superficie del mar. Atraviesas la superficie y jadeas mientras el aire llena tus pulmones.",
       "steps": [
         "opened_path_below",
         "add_cultists_tablets",
@@ -18172,7 +18172,7 @@
         "physical",
         "mental"
       ],
-      "text": "You marvel at the cloud-waves encircling you and fly toward the spires above. The desolate and inscrutable city of Carcosa towers before you. You suddenly realize you are falling—not floating—and a pulling force takes hold of your body.",
+      "text": "Te maravillas ante las nubosas olas que te rodean y vuelas hacia las torres del cielo. La desolada e inescrutable ciudad de Carcosa se alza ante ti. De pronto, te das cuenta de que estás cayendo, y no flotando, y que una fuerza ha hecho presa de tu cuerpo y tira de ti.",
       "steps": [
         "opened_path_above",
         "add_cultists_elder_things",
@@ -18190,7 +18190,7 @@
         "physical",
         "mental"
       ],
-      "text": "When you awaken, you are sitting in the choeur gothique of Mont Saint-Michel’s abbey. No rain pelts the glass of the windows above, and you hear no thunder, nor the screeching of winged horrors overhead. Somehow, you had escaped the island’s certain doom. You creep to the door of the abbey and open it with trepidation. A dazzling light sears your eyes, and you lift your hand to block the glare of two suns. You stand overlooking the Lake of Hali. Black stars hang in the heavens above. Beyond, over leagues of tossing cloud- waves, the towers of Carcosa rise behind the shattered moon.",
+      "text": "Cuando despiertas, estás sentado en el coro gótico de la abadía de Mont Saint-Michel. La lluvia ya no golpea el cristal de las ventanas, y tampoco oyes truenos ni el chillido de los horrores alados. De algún modo, has escapado a la perdición segura de la isla. Te acercas a la puerta de la abadía y la abres con inquietud. Una deslumbrante luz te ciega, y levantas la mano para tapar el brillo de dos soles. Te encuentras sobre el Lago de Hali. El cielo que hay sobre tu cabeza está poblado de estrellas negras. Al otro lado, sobre leguas de nubosas olas agitadas, las torres de Carcosa se alzan tras la destrozada luna.",
       "steps": [
         "terrible_fate",
         "carcosa_merged",
@@ -18590,8 +18590,8 @@
 },
 {
   "id": "return_to_dim_carcosa",
-  "scenario_name": "Return to Dim Carcosa",
-  "full_name": "Scenario VIII: Return to Dim Carcosa",
+  "scenario_name": "Regreso a Penumbrosa Carcosa",
+  "full_name": "Escenario VIII: Regreso a Penumbrosa Carcosa",
   "setup": [
     "check_path_below",
     "gather_encounter_sets",
@@ -19154,7 +19154,7 @@
     },
     {
       "id": "terrible_fate",
-      "text": "You’ve met with a terrible fate, haven’t you?"
+      "text": "Has sufrido un terrible destino, ¿verdad?"
     },
     {
       "id": "carcosa_merged",
@@ -19163,7 +19163,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carcosa_merged",
-          "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
         }
       ]
     },
@@ -19282,7 +19282,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Shores of Hali, Dark Spires, and Palace of the King <i>(Hastur's Domain)</i> into play. Remove the old copy of Palace of the King from the game."
+      "text": "Pon en juego las cartas Costas de Hali, Torres oscuras y Palacio del Rey <i>(Dominio de Hastur)</i>. Retira de la partida el Lugar original El palacio del Rey."
     },
     {
       "id": "location_layout",
@@ -19320,11 +19320,11 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set the following locations aside, out of play: Recesses of Your Own Mind, The Throne Room, and Stage of the Ward Theatre."
+      "text": "Deja aparte los siguientes Lugares, fuera de juego: Recovecos de tu propia mente, La sala del trono y Escenario del Teatro Ward."
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"Hastur's health cannot be reduced to less than 2 unless any investigator 'knows the secret.'\"\nAttach the Return to Dim Carcosa scenario reference card to the scenario reference card as a reminder."
+      "text": "Durante este escenario, se aplican las siguientes reglas adicionales:\n\"La salud de Hastur no se puede reducir a menos de 2 [per_investigator] a menos que 'los investigadores conozcan el secreto.'\"\nVincula la carta de referencia de escenario de Regreso a Penumbrosa Carcosa a la carta de referencia de escenario original como recordatorio."
     }
   ],
   "resolutions": [
@@ -20600,7 +20600,7 @@
                 }
               ]
             },
-            "text": "Mark Conviction or Doubt",
+            "text": "Marcar Convicción o Duda",
             "steps": [
               "mark_conviction_or_doubt"
             ]
@@ -50052,7 +50052,7 @@
   "id": "tdeb",
   "position": 1,
   "version": 1,
-  "name": "The Web of Dreams",
+  "name": "La red de los sueños",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -50060,7 +50060,7 @@
     },
     {
       "id": "steps_of_the_bridge",
-      "title": "Steps of the Bridge",
+      "title": "Peldaños del puente",
       "type": "count"
     },
     {
@@ -50294,7 +50294,7 @@
     },
     {
       "id": "ask_8_part_campaign",
-      "text": "It looks like you are playing <i>The Web of Dreams</i> as a 4-part campaign. If there is a separate group playing <i>The Dream-Quest</i>, the app can present you with instructions to send them during each interlude, and wait for their input at appropriate times.",
+      "text": "Parece que estás jugando <i>La red de los sueños</i> como una campaña de cuatro partes. Si hay un grupo separado jugando <i>La búsqueda onírica</i>, la aplicación puede facilitarte instrucciones para enviarles durante cada interludio, así como introducir sus aportaciones en los momentos necesarios.",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -50390,8 +50390,8 @@
 }, "scenarios": [
 {
   "id": "a_thousand_shapes_of_horror",
-  "scenario_name": "A Thousand Shapes of Horror",
-  "full_name": "Scenario II–B: A Thousand Shapes of Horror",
+  "scenario_name": "Mil formas de horror",
+  "full_name": "Escenario II–B: Mil formas de horror",
   "setup": [
     "intro_1",
     "check_black_cat_at_your_side",
@@ -50407,7 +50407,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "To stop the merging between the land of dreams and the waking world, you decide to force your way into the “Dreamlands”—as your new companion Randolph calls the dimension—in your physical body, instead of traveling there in your sleep. “While there are many dangers to this method of travel, I think it is better than the alternative,” Randolph claims. “If we venture there in our sleep, we may become trapped like your companions, unable to wake.” You agree: you can do little good trapped on the other side, especially if you aim to help your dreaming companions.\n“Our first step is to find a key. Even in places where the Dreamlands borders the waking world, one cannot simply walk between them. I once possessed a key to the Gate of Dreams, but I lost it years ago and have been unable to find it since,” he laments."
+      "text": "Para detener la fusión de la tierra del sueño y el mundo de la vigilia, decidís forzar vuestra entrada en las “Tierras del Sueño”, que es el nombre que da a esta dimensión vuestro nuevo amigo Randolph, empleando vuestro cuerpo físico en lugar de viajar durante el sueño.\n–Aunque este método de viaje tiene muchos peligros, creo que es mejor que la alternativa –afirma Randolph–. Si nos adentramos allí mientras dormimos, podríamos quedar atrapados como vuestros compañeros, incapaces de despertar.\nEstáis de acuerdo: poco podréis hacer si os veis atrapados al otro lado, especialmente si queréis ayudar a vuestros compañeros soñadores.\n–El primer paso es encontrar una llave. No se puede pasar de mundo de la vigilia a las Tierras del Sueño sin más, ni siquiera en los lugares donde hacen frontera. Una vez tuve una llave para el Portal de los Sueños, pero la perdí hace años y no he logrado volver a encontrarla desde entonces –se lamenta."
     },
     {
       "id": "check_black_cat_at_your_side",
@@ -50435,17 +50435,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The black cat, perched on a nearby park bench, glares at Randolph with narrow, disdainful eyes. “You lost the key to the Dreamlands?”\nYou share in the cat’s skepticism. Randolph sighs and shakes his head. “Let me explain,” he says to you. “It is not a physical key. It never was. The ‘key’ was the sense of wonder, fantasy, and creativity that sparked my imagination when I was young. These are things we do not value in maturity. It is only natural the key to these kinds of dreams should be lost with age.”\n“What foolishness!” the black cat scolds. “It is not ‘maturity’ to leave one’s imagination behind. You have abandoned the best part of you. You are more a mewling kitten now than any child I have ever met.”\n“Perhaps you are right,” Randolph agrees, downcast. “I forced myself to believe that earthly concerns were more important than juvenile fantasies of gilded spires, perfumed jungles, and twilight realms…and now I fear I shall never see such wonders again.” He turns back toward you, his eyes full of regret. “And worse, I will be unable to guide you."
+      "text": "El gato negro está sobre un banco del parque y mira a Randolph con desdén: –¿Has perdido la llave a las Tierras del Sueño?\nCompartís el escepticismo del gato. Randolph suspira y sacude la cabeza: –Dejad que os lo explique –os dice–. No es una llave física. Nunca lo fue. La “llave” era la sensación de asombro, fantasía y creatividad que espoleaba mi imaginación cuando era joven. Son cosas que no valoramos al llegar a la madurez. Es natural que la llave hacia ese tipo de sueños se pierda con la edad.\n–¡Qué necedad! –refunfuña el gato negro–. Dejar atrás la imaginación no es “madurez”. Has abandonado lo mejor que tenías. Ahora eres un cachorrillo gimoteante peor que cualquier crío que haya conocido.\n–Tal vez tengas razón –conviene Randolph abatido– Me obligué a creer que las preocupaciones terrenales eran más importantes que las fantasías juveniles de torres doradas, selvas perfumadas y reinos crepusculares... Y ahora temo que nunca volveré a ver esas maravillas. –Se gira hacia vosotros, con la mirada llena de remordimiento–. Y peor aún, no podré guiaros."
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "You go through the usual motions: “When was the last time you saw it?” “Where was the last time you used it?” and the like.\nRandolph sighs and shakes his head. “You do not understand. It is not a physical key. It never was. The key was the sense of wonder, fantasy, and creativity that sparked my imagination when I was young. These are things we do not value in maturity. It is only natural the key to these kinds of dreams should be lost with age.”"
+      "text": "Le hacéis las preguntas típicas: “¿Cuándo fue la última vez que la viste?”, “¿dónde la usaste por última vez?”, etc.\nRandolph suspira y sacude la cabeza: –No lo entendéis. No es una llave física. Nunca lo fue. La llave era la sensación de asombro, fantasía y creatividad que espoleaba mi imaginación cuando era joven. Son cosas que no valoramos al llegar a la madurez. Es natural que la llave hacia ese tipo de sueños se pierda con la edad."
     },
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You ask what might have turned Randolph’s mind away from the fantastical and toward more practical concerns. He thinks for a brief time, mulling over the possibilities. Then, his eyes go wide as he realizes something important. “There was an incident many years ago. It was the last time I was involved with something supernatural—that is, before today,” he explains. “I met a friend of mine—Joel Manton— in the graveyard next to the old abandoned house in the Merchant District. The one they call the <i>Unnamable</i>. I didn’t want to believe that it was truly haunted, as the stories told, but in merely repeating the legend, I drew the creature’s ire.”\nYou ask of the creature, and Randolph closes his eyes as a violent shudder courses up his spine. “It cannot be described. All I know is that we barely survived. It was my fault Joel was hurt. From that day forth, I have had no desire to delve into the supernatural or the superstitious. Not because I did not believe, but because I was frightened. Is that why the key eludes me? Is that why I can no longer dream?” The realization hits him, clear as day. “I know where we have to go. That is where I lost the key. That must be where it can be regained!” he exclaims, wide-eyed.\nAs Randolph frantically tries to hail a taxicab, you realize where he means to go: to the house without a name, where the indescribable creature that still haunts his memory resides…"
+      "text": "Preguntáis a Randolph qué podría haber desviado su mente de lo fantástico hacia lo práctico. Se queda pensando unos instantes mientras considera las posibilidades. Entonces, abre los ojos como platos al darse cuenta de algo importante.\n–Hubo un incidente hace muchos años. Fue la última vez que estuve involucrado en algo sobrenatural... Hasta el día de hoy, claro está –os explica–. Me reuní con un amigo mío, Joel Manton, en el cementerio que hay junto a la vieja casa abandonada del Distrito comercial. La que llaman lo innombrable. No quería creer que estuviera encantada de verdad como decían las historias, pero al repetir la leyenda sin más, atraje la ira de la criatura.\nLe preguntáis por la criatura, y Randolph cierra los ojos mientras un violento escalofrío le recorre la espalda: –Es imposible de describir. Sólo sé que apenas salimos con vida. Fue culpa mía que Joel resultara herido. Desde ese día, no he tenido deseo alguno de adentrarme en el mundo de lo sobrenatural y de la superstición. No porque no creyera, sino porque me daba miedo. ¿Es por eso que se me escapa la llave? ¿Es por eso que ya no puedo soñar? –La idea le llega, brillante como el día–. Sé dónde debemos ir. Es allí donde perdí la llave. ¡Debe de ser el lugar donde puedo recuperarla! –exclama con los ojos muy abiertos.\nMientras Randolph trata frenéticamente de parar un taxi, os dais cuenta de adónde quiere ir: a la casa sin nombre, donde reside la criatura que aún le ronda en sus recuerdos…"
     },
     {
       "id": "gather_encounter_sets",
@@ -50463,10 +50463,10 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Burial Ground, Front Porch, Upstairs Hallway, both Downstairs Doorways, and both Upstairs Doorways.",
+      "text": "Pon en juego los siguientes Lugares: Camposanto, Porche delantero, Pasillo del piso de arriba, las dos Puertas del piso de abajo y las dos Puertas del piso de arriba.",
       "bullets": [
         {
-          "text": "Each investigator begins play at the Burial Ground."
+          "text": "Cada investigador comienza la partida en el Camposanto."
         }
       ]
     },
@@ -50501,7 +50501,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: the Attic location, the Unmarked Tomb location, all 6 Mysterious Stairs locations, all 4 Endless Descent treacheries, and The Silver Key story asset."
+      "text": "Deja aparte las siguientes cartas, fuera del juego: el Lugar Ático, el Lugar Tumba anónima, los 6 Lugares Escaleras misteriosas, las 4 Traiciones Descenso infinito y el Apoyo de historia La llave de plata."
     },
     {
       "id": "encounter_deck",
@@ -50514,13 +50514,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "randolph_survived_descent",
-          "text": "Randolph survived the descent."
+          "text": "Randolph Carter sobrevivió al descenso."
         }
       ]
     },
     {
       "id": "possess_silver_key",
-      "text": "In your Campaign Log, record <i>the investigators possess the Silver Key</i>. Any one investigator may choose to add The Silver Key <i>(Key to the Gate of Dreams)</i> to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Anota en el registro de campaña que <i>los investigadores poseen la llave de plata</i>. Un investigador cualquiera puede elegir añadir La llave de plata <i>(Llave del Portal de los Sueños)</i> a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "campaign_log",
@@ -50552,7 +50552,7 @@
     },
     {
       "id": "add_skull",
-      "text": "Your body now walks within the slumbering Dreamlands. Add 1 [skull] token to the chaos bag, for the remainder of the campaign.",
+      "text": "Vuestros cuerpos ahora caminan por las Tierras del Sueño. Añade 1 ficha [skull] a la bolsa de caos durante el resto de la campaña.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -50564,14 +50564,14 @@
     },
     {
       "id": "ask_recovered_strange_key",
-      "text": "Did the investigators “recover a strange key”?",
+      "text": "¿Los investigadores han “recuperado una extraña llave”?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "yes",
-            "text": "Yes",
+            "text": "Sí",
             "steps": [
               "resolution_3"
             ]
@@ -50588,13 +50588,13 @@
     },
     {
       "id": "randolph_did_not_survive_descent",
-      "text": "In your Campaign Log, record <i>Randolph did not survive the descent</i>. If an investigator’s deck contains Randolph Carter <i>(Chained to the Waking World)</i> (<i>The DreamEaters</i> card #79), remove him from that deck for the remainder of the campaign.",
+      "text": "Anotad en el registro de campaña que <i>Randolph Carter no sobrevivió al descenso</i>. Si el mazo de un investigador contiene a Randolph Carter <i>(Encadenado al mundo de la vigilia)</i> (<i>Los devoradores de sueños</i> 79), retíralo de ese mazo durante el resto de la campaña.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "randolph_did_not_survive_descent",
-          "text": "Randolph did not survive the descent."
+          "text": "Randolph Carter no sobrevivió al descenso."
         },
         {
           "type": "remove_card",
@@ -50619,7 +50619,7 @@
     },
     {
       "id": "maybe_skip_interlude",
-      "text": "If you are playing The Web of Dreams as a four-part campaign:",
+      "text": "Si estás jugando La red de los sueños como una campaña de cuatro partes:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -50690,7 +50690,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "This place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You ask Randolph if this is the way to your comatose companions. You almost hope that you are traveling in the wrong direction, so you can leave this awful place behind.\n“I do not know,” he replies, peering out one of the windows along the stairway. “We have traveled beyond the waking world, but this is the lower plane of the Dreamlands, known as the Underworld. It is an inhospitable place. Many of the creatures we have seen crossing over into our world come from this region. Perhaps our key knew this was our true destination?” Your guide examines the arcane key you found in the abandoned house, running his fingers over its arabesques as though recalling its shape, its weight, its texture. His eyes water with the depth of his loss.\nYou offer to hold the key for him, which yanks him from his private thoughts. “Ah. Yes, perhaps that would be best,” he says, handing the delicate artifact to you. It is surprisingly heavy for something that, according to Randolph, is not real.\nWith Randolph and the Silver Key in tow, you continue your descent anew. The Underworld may or may not be where your companions are, but if the creatures invading the world of the waking are indeed from this place, then perhaps here you can find answers.",
+      "text": "Este lugar no se parece en nada a los bosques místicos, encantadoras aldeas medievales y majestuosas vistas de las que escribía Virgil Gray en sus relatos. Ni lo más mínimo: este frío y desolado golfo engulle vuestra esperanza y la sustituye por una sensación de temor vacuo y sin sentido. Le preguntáis a Randolph si éste es el camino hacia vuestros compañeros en coma. Casi os gustaría estar viajando en la dirección equivocada para poder marcharos de este terrible lugar.\n–No lo sé –responde mientras mira por una de las ventanas de la escalera–. Hemos viajado más allá del mundo de la vigilia, pero éste es el plano inferior de las Tierras del Sueño, conocido como el Mundo subterráneo. Es un sitio inhóspito. Muchas de las criaturas que hemos visto al cruzar desde nuestro mundo provienen de esta región. ¿Es posible que nuestra llave supiera que éste era nuestro destino real?\nVuestro guía examina la llave arcana que encontrasteis en la casa abandonada, pasando los dedos por sus arabescos como si estuviera recordando su forma, su peso, su textura... Se le humedecen los ojos por la profundidad de su pérdida.\nLe ofrecéis llevar la llave por él, lo que lo saca de sus pensamientos, y os responde: –Ah. Sí, tal vez sea lo mejor. –Os entrega el delicado artefacto, que es sorprendentemente pesado para algo que, según Randolph, no es real.\nProseguís el descenso con Randolph y la llave de plata. Tanto si el Mundo subterráneo es donde se encuentran vuestros compañeros como si no lo es, si las criaturas que invaden el mundo de la vigilia realmente provienen de este lugar, entonces quizás podáis encontrar respuestas aquí.",
       "investigator_status": [
         "resigned",
         "eliminated",
@@ -50709,7 +50709,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "Your last waking sensation is the rush of noxious, frigid air as you are knocked to the ground by the thrashing, monolithic abomination with no name. The wind is pulled out of your lungs. You cannot scream. You grasp desperately at the ground as the creature tears at your skin and tramples your bones. Somehow you wrench yourself free, escaping through the vortex of bitter, withering wind surrounding the creature. You hear the scrape of peeling plaster. Debris whips past your head. A loose brick hits your shoulder. You wonder if there will even be a building left to tremble at when this is all over.",
+      "text": "Vuestra última sensación consciente es una ráfaga de un gélido aire nocivo mientras la monolítica abominación sin nombre os tira al suelo. Vuestros pulmones se quedan sin aire. No podéis gritar. Os agarráis al suelo desesperadamente mientras la criatura os desgarra la piel y os pisotea los huesos. Lográis liberaros de algún modo y escapar del vórtice de devastador e implacable viento que rodea a la criatura. Oís cómo se rasga el yeso de las paredes. Los escombros pasan volando junto a vuestras cabezas, y algunos ladrillos sueltos os golpean. Os preguntáis si, cuando todo esto acabe, quedará algo del edificio.",
       "steps": [
         "ask_recovered_strange_key"
       ]
@@ -50717,7 +50717,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "You barely hear Randolph shouting to you over the maelstrom of ice-cold air that surrounds you. Despite all odds, you somehow reach him, the indescribable monstrosity hot on your heels. Randolph wrenches open your hand, grabs the key you found in the unnamed house, and clutches it tightly. He closes his eyes and whispers something inaudible. As the abominable torrent crashes into you, everything goes black.\nWhen you awaken, you lie on a flat stone platform overlooking a steep, straight staircase that descends into unknown depths. Behind you, the stairway curls upward into a stone spire that ascends into a hazy mist. In both directions, the entirety of the cavern is dimly lit with grey phosphorescence. Randolph pulls you to your feet. “That was a close one,” he admits. “I never wish to take a journey like that again.” You ask where you are, and he bites his lip, looking out over the bleak, desolate scenery.\n“This is the lower plane of the Dreamlands, known as the Underworld. It is an inhospitable place. Many of the creatures we have seen crossing over into our world come from this region. Perhaps our key knew this was our true destination. I think…I think it is gone now,” your guide explains.\nYou are thunderstruck. Randolph grits his teeth at your reaction and looks away in shame. “Forget it. We no longer need it anyway. Let’s go.” His curt reply echoes off the stone steps. With Randolph leading the way, you continue your descent anew. The Underworld may or may not be where your companions are, but if the creatures invading the world of the waking are indeed from this place, then perhaps here you can find answers.",
+      "text": "Apenas oís los gritos de Randolph por encima del torbellino de aire gélido que os rodea. Pese a todo, lográis alcanzarlo de algún modo, aunque la indescriptible monstruosidad os pisa los talones. Randolph os coge violentamente la llave que encontrasteis en la casa sin nombre y la aferra con fuerte. Cierra los ojos y susurra algo inaudible. Cuando el abominable torrente choca contra vosotros, todo se vuelve negro.\nCuando despertáis, estáis sobre una plataforma de piedra lisa que da a una empinada escalera recta que desciende hacia profundidades desconocidas. A vuestra espalda, la escalera se enrosca hacia una torre de piedra que asciende hacia una difusa niebla. Toda la caverna está iluminada de forma tenue en ambas direcciones con una fosforescencia gris. Randolph os ayuda a poneros en pie: –Ha faltado poco –admite–. No quiero volver a vivir un viaje como ése. –Le preguntáis dónde estáis y se muerde el labio mientras examinar el desolado paisaje.\n–Estamos en el plano inferior de las Tierras del Sueño, conocido como el Mundo subterráneo. Es un sitio inhóspito. Muchas de las criaturas que hemos visto al cruzar desde nuestro mundo provienen de esta región. Es posible que nuestra llave supiera que éste era nuestro destino real. Creo... creo que ahora ha desaparecido –explica vuestro guía.\nOs quedáis impactados. Randolph aprieta la mandíbula al ver vuestra reacción y aparta la mirada avergonzado: –Olvidadlo. En cualquier caso, ya no la necesitamos. Vámonos.\nSu seca respuesta resuena entre los peldaños de piedra. Proseguís el descenso con Randolph a la cabeza. Tanto si el Mundo subterráneo es donde se encuentran vuestros compañeros como si no lo es, si las criaturas que invaden el mundo de la vigilia realmente provienen de este lugar, entonces quizás podáis encontrar respuestas aquí.",
       "steps": [
         "randolph_survived_descent",
         "earn_xp",
@@ -50729,7 +50729,7 @@
     {
       "id": "R4",
       "title": "Resolución 4",
-      "text": "In the debris, you spot it: something glinting within the maelstrom of ice-cold air and dust, something that calls to you, whispers your name. You barely hear Randolph shouting as the indescribable monstrosity crashes into him. Despite all odds, you somehow reach the rubble that was once the attic of the house with no name. You realize now what that elusive glimmer was: the polished reflection of a bright silver key. “Use it!” Randolph screams between cries of agony. The abomination climbs atop his body. “Use it now, while you ca—”\nThe thing cuts Randolph’s cry short as it envelops his body. You clutch the key tightly in your hand and shudder as you watch a thousand shapes of horror devour Randolph whole. You think of your companions, trapped somewhere in a perilous dream far from home, and the key’s glow intensifies, swallowing you as completely as the creature swallowed Randolph. Everything goes white.\nWhen you awaken, you lie on a flat stone platform overlooking a steep, straight staircase that descends into unknown depths. Behind you, the stairway curls upward into a stone spire that ascends into a hazy mist. In both directions, the entirety of the cavern is dimly lit with grey phosphorescence. You search for the Silver Key, but it has vanished. There is no sign of Randolph Carter.\nIt is clear you are no longer in the waking world. Perhaps the key transported your physical body into the Dreamlands, as Randolph claimed it could. But this place is nothing like the mystical forests, charming medieval villages, and majestic panoramas of which Virgil Gray wrote in his stories. No, far from it: this cold, bleak gulf eats away your hope and replaces it with a feeling of empty, meaningless dread. You peer once more up the countless steps behind you. It seems you have no choice now but to move on, deeper into this desolate and perilous realm.",
+      "text": "Lo veis entre los restos: algo reluce dentro del torbellino de aire gélido y polvo, algo que os llama y susurra vuestro nombre. Apenas oís los gritos de Randolph cuando la indescriptible monstruosidad choca contra él. Pese a todo, llegáis de algún modo a los escombros que fueron el ático de la casa sin nombre. Ahora os dais cuenta de lo que era ese elusivo destello: el pulido reflejo de una brillante llave de plata. –¡Usadla! –grita Randolph entre quejidos de agonía. La abominación se sube a su cuerpo–. Usadla ya, mientras podá...\nLa cosa interrumpe en seco el grito de Randolph al envolver su cuerpo. Aferráis la llave con fuerza y os estremecéis al ver cómo mil formas de horror devoran a Randolph por completo. Pensáis en vuestros compañeros, atrapados en algún lugar de un peligroso sueño, lejos de casa, y el brillo de la llave se intensifica y os cubre por completo, igual que la criatura había engullido a Randolph. Todo se vuelve blanco.\nCuando despertáis, estáis sobre una plataforma de piedra lisa que da a una empinada escalera recta que desciende hacia profundidades desconocidas. A vuestra espalda, la escalera se enrosca hacia una torre de piedra que asciende hacia una difusa niebla. Toda la caverna está iluminada de forma tenue en ambas direcciones con una fosforescencia gris. Buscáis la llave de plata, pero se ha desvanecido. No hay ni rastro de Randolph Carter.\nEstá claro que ya no estáis en el mundo de la vigilia. Puede que la llave transportara vuestro cuerpo físico a las Tierras del Sueño, como decía Randolph que podía hacer. Pero este lugar no se parece en nada a los bosques místicos, encantadoras aldeas medievales y majestuosas vistas de las que escribía Virgil Gray en sus relatos. Ni lo más mínimo: este frío y desolado golfo engulle vuestra esperanza y la sustituye por una sensación de temor vacuo y sin sentido. Volvéis a levantar la vista hacia los innumerables peldaños que tenéis detrás. Parece que no tenéis otra elección que seguir adelante y adentraros más en este desolado y peligroso reino.",
       "steps": [
         "randolph_did_not_survive_descent",
         "earn_xp",
@@ -50793,11 +50793,11 @@
     {
       "id": "black_cat_3",
       "type": "story",
-      "text": "<i>Following scenario 1–B, the investigators are confronted outside St. Mary’s Hospital…</i>\n“…You must be their friends,” the enigmatic voice says from above. To your surprise, the quiet voice belongs not to a person, but to a black cat that lounges lazily across a tree branch hanging over the path outside the hospital. “Oh, pick your jaws up off the ground and listen.” The cat rises and leaps onto the top of a nearby fence, walking along it with the kind of grace only cats possess.\n“It is one of the cats of Earth’s Dreamlands,” Randolph proclaims, his voice tinged with merriment, like he was meeting an old friend for the first time in ages. “How long it has been since I have spoken with one of your kind!”\nThe cat’s piercing yellow eyes glare at Randolph for a moment before it returns its gaze to you. “…Sure. In any event, I bear a message from your dreaming friends.”"
+      "text": "<i>Tras el escenario 1–B, los investigadores tienen un encuentro fuera del Hospital de Santa María...</i>\n–Vosotros debéis de ser sus amigos –dice la enigmática voz desde arriba. Para sorpresa vuestra, la queda voz no pertenece a una persona, sino a un gato negro que está tumbado indolentemente sobre la rama de un árbol que cuelga sobre el camino del exterior del hospital–. Os van a entrar moscas en la boca, así que cerradla y escuchad.\nEl gato se levanta, salta sobre una valla cercana y camina por ella con el tipo de gracia que sólo poseen los gatos.\n–Es uno de los gatos de las Tierras del Sueño –proclama Randolph con la voz teñida de alegría, como si se reencontrara con un viejo amigo por primera vez en muchos años–. ¡Cuánto tiempo desde que hablé con uno de vosotros!\nLos penetrantes ojos amarillos miran fulminantemente a Randolph durante un instante antes de volver a posarse en vosotros.\n–Claro... En cualquier caso, traigo un mensaje de vuestros amigos soñadores."
     },
     {
       "id": "connect_campaign_branch",
-      "text": "If you are playing <i>The Web of Dreams</i> (Campaign B) by itself, and there is no Campaign Log for <i>The Dream-Quest</i>:",
+      "text": "Si estás jugando la campaña <i>La red de los sueños</i> (Campaña B) por sí sola y no hay registro de campaña de <i>La búsqueda onírica</i>:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -50824,7 +50824,7 @@
     {
       "id": "4_part_campaign",
       "type": "story",
-      "text": "“Your friends are not the only ones in trouble,” the black cat explains. “There’s a grand conspiracy at work here, and your friends are…well, let’s just say they’re a bit preoccupied with their own problems at the moment. You’re the only ones who can destroy the great web. Forget about your companions and descend into the pitch. It’s the only way. I’ll try to keep your friends safe while you fulfill your task. Do you understand?”"
+      "text": "–Vuestros amigos no son los únicos que están en peligro –os explica el gato negro–. Hay en marcha una gran conspiración, y vuestros amigos están... Bueno, digamos simplemente que en estos momentos están algo ocupados con sus propios problemas. Sois los únicos que pueden destruir la gran red. Olvidad a vuestros compañeros y saltad al campo. Es el único modo. Intentaré mantenerlos a salvo mientras cumplís vuestra misión. ¿Entendido?"
     },
     {
       "id": "on_your_own",
@@ -50833,7 +50833,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "on_your_own",
-          "text": "you are on your own."
+          "text": "los investigadores están solos."
         }
       ]
     },
@@ -50848,7 +50848,7 @@
         "choices": [
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "The black cat shared knowledge of the Dreamlands.",
+            "text": "El gato negro compartió conocimiento sobre las Tierras del Sueño.",
             "steps": [
               "black_cat_shared_knowledge_of_the_dreamlands",
               "black_cat_has_a_hunch"
@@ -50856,7 +50856,7 @@
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "The black cat delivered news of your plight.",
+            "text": "El gato negro llevó noticias del problema de los investigadores.",
             "steps": [
               "black_cat_delivered_news",
               "add_elder_thing_token"
@@ -50873,7 +50873,7 @@
           },
           {
             "id": "threaten_black_cat",
-            "text": "Okay, fine, have it your way then.",
+            "text": "Pues vale, como queráis.",
             "steps": [
               "threaten_black_cat",
               "you_asked_for_it"
@@ -50885,26 +50885,26 @@
     {
       "id": "black_cat_shared_knowledge_of_the_dreamlands",
       "type": "story",
-      "text": "The black cat tells you all about the Dreamlands and about the quest your friends are about to embark upon. “Your friends are in a safe place in the Dreamlands, along with a couple of others. My pet human, Virgil, is one of them. Yes, that Virgil. I see the looks on your faces. They’re also with another dreamer, a man named…hey, wait a minute.” The cat glares suspiciously at Randolph, then yawns. “Huh. You know what? Never mind. I have to check on something.” With that, the cat suddenly departs."
+      "text": "El gato negro os habla de las Tierras del Sueño y de la misión que vuestros amigos están a punto de emprender.\n–Vuestros amigos están en un lugar seguro de las Tierras del Sueño, junto con un par de soñadores más. Virgil, mi mascota humana, es uno de ellos. Sí, ese Virgil. Veo la expresión de vuestros rostros. También están con otro soñador, un hombre llamado... Oye, un momento... –El gato mira con sospecha a Randolph y bosteza–. Vaya. ¿Sabéis qué? Da igual. Tengo que ir a comprobar algo.\nY tras decir eso, el gato se marcha de repente."
     },
     {
       "id": "black_cat_delivered_news",
       "type": "story",
-      "text": "“So, your pals aren’t looking too good. They wanted me to tell you that they’re in a lot of trouble. They can’t wake up until they fulfill this quest, and it’s not going to be easy. The eye of chaos is watching them. You’ve got your work cut out for you, but you also might be their only hope.” The black cat hops down from the fence and starts to walk away. “Now, if you’ll excuse me, I’d better get back to your friends before they all get themselves killed.”"
+      "text": "–La cosa no pinta bien para vuestros compañeros. Me encargaron que os dijera que tienen muchos problemas. No pueden despertar hasta que cumplan esta misión, y no va a ser fácil. El ojo del caos los observa. Tenéis mucho trabajo por delante, pero también podríais ser su única esperanza.\nEl gato negro se baja de la valla de un salto y empieza a alejarse caminando.\n–Ahora, si me disculpáis, será mejor que vuelva con vuestros amigos antes de que acaben muertos o algo así."
     },
     {
       "id": "black_cat_warned_the_others",
       "type": "story",
-      "text": "“Your friends told me to tell you that they’re fine. In fact, they told me to warn you that you’re the ones in real danger. I’d believe them if I were you. There’s a grand conspiracy at work here, and you’re the only ones who can stop it. The best thing you can do is forge onward, for both your sakes. Don’t worry, I’ll stick around for a while. Someone’s gotta keep you alive.”"
+      "text": "–Vuestros amigos me han pedido que os diga que están bien. De hecho, me han pedido que os avise de que quienes estáis en peligro de verdad sois vosotros. Yo en vuestro lugar, me lo creería. Hay en marcha una gran conspiración, y sois los únicos que podéis detenerla. Lo mejor que podéis hacer es continuar, por vuestro bien y el suyo. No os preocupéis, me quedaré por aquí un tiempo. Alguien tiene que manteneros con vida."
     },
     {
       "id": "threaten_black_cat",
       "type": "story",
-      "text": "“Nah, you know what? Forget about it. I’m sure you’ll be fine.” The black cat suddenly leaves without another word."
+      "text": "–Bah, ¿sabéis qué? Olvidadlo. Seguro que os las apañaréis.\nY el gato se marcha de repente sin decir nada más."
     },
     {
       "id": "add_elder_thing_token",
-      "text": "Add 1 [elder_thing] token to the chaos bags for both campaigns.",
+      "text": "Añade 1 ficha [elder_thing] a las bolsas de caos de ambas campañas.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -50939,7 +50939,7 @@
     },
     {
       "id": "add_tablet_token",
-      "text": "Add 1 [tablet] token to the chaos bags for both campaigns.",
+      "text": "Añade 1 ficha [tablet] a las bolsas de caos de ambas campañas.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -51101,7 +51101,7 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "The dreamers awoke.",
+            "text": "Los soñadores se despertaron.",
             "steps": [
               "epilogue_5_reason",
               "epilogue_5",
@@ -51111,7 +51111,7 @@
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "The dreamers stayed in the Dreamlands forever.",
+            "text": "Los soñadores se quedaron en las Tierras del Sueño para siempre.",
             "steps": [
               "epilogue_9_reason",
               "epilogue_9",
@@ -51121,7 +51121,7 @@
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "The dreamers traveled beneath the monastery.",
+            "text": "Los soñadores viajaron bajo el monasterio.",
             "steps": [
               "epilogue_13_reason",
               "epilogue_13",
@@ -51152,7 +51152,7 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "The dreamers awoke.",
+            "text": "Los soñadores se despertaron.",
             "steps": [
               "epilogue_6_reason",
               "epilogue_6",
@@ -51163,7 +51163,7 @@
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "The dreamers stayed in the Dreamlands forever.",
+            "text": "Los soñadores se quedaron en las Tierras del Sueño para siempre.",
             "steps": [
               "epilogue_10_reason",
               "epilogue_10",
@@ -51174,7 +51174,7 @@
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "The dreamers traveled beneath the monastery.",
+            "text": "Los soñadores viajaron bajo el monasterio.",
             "steps": [
               "epilogue_14_reason",
               "epilogue_14",
@@ -51206,7 +51206,7 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "The dreamers awoke.",
+            "text": "Los soñadores se despertaron.",
             "steps": [
               "epilogue_7_reason",
               "epilogue_7",
@@ -51217,7 +51217,7 @@
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "The dreamers stayed in the Dreamlands forever.",
+            "text": "Los soñadores se quedaron en las Tierras del Sueño para siempre.",
             "steps": [
               "epilogue_11_reason",
               "epilogue_11",
@@ -51228,7 +51228,7 @@
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "The dreamers traveled beneath the monastery.",
+            "text": "Los soñadores viajaron bajo el monasterio.",
             "steps": [
               "epilogue_15_reason",
               "epilogue_15",
@@ -51260,7 +51260,7 @@
           },
           {
             "id": "dreamers_awoke",
-            "text": "The dreamers awoke.",
+            "text": "Los soñadores se despertaron.",
             "steps": [
               "epilogue_8_reason",
               "epilogue_8",
@@ -51271,7 +51271,7 @@
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "The dreamers stayed in the Dreamlands forever.",
+            "text": "Los soñadores se quedaron en las Tierras del Sueño para siempre.",
             "steps": [
               "epilogue_12_reason",
               "epilogue_12",
@@ -51282,7 +51282,7 @@
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "The dreamers traveled beneath the monastery.",
+            "text": "Los soñadores viajaron bajo el monasterio.",
             "steps": [
               "epilogue_16_reason",
               "epilogue_16",
@@ -51569,14 +51569,14 @@
         "choices": [
           {
             "id": "cross_out",
-            "text": "Cross off <i>the black cat is searching for the truth.</i>",
+            "text": "Tacha que <i>el gato negro está buscando la verdad.</i>",
             "steps": [
               "cross_off_black_cat_is_searching_for_the_truth"
             ]
           },
           {
             "id": "keep",
-            "text": "No change."
+            "text": "No hay ningún cambio."
           }
         ]
       }
@@ -51623,7 +51623,7 @@
     {
       "id": "great_ones_2",
       "type": "story",
-      "text": "<i>Following scenario 3–B, the investigators have reached a cosmic penumbra between worlds…</i>\nA cat’s low-pitched wail draws your attention to a nearby web. When you arrive, you find the black cat stuck on a patch of particularly sticky web, wriggling back and forth in a vain attempt to free itself. Even with its sharp claws, it seems to be in trouble. You lean over and pull the cat free, and it leaps from your arms to a rocky platform below, the only thing between the cat and an endless void. It hisses for a moment, then stands tall. “Did I ask for your help?” it scolds. “Well, you made it below the Sea of Pitch after all. Now look around you. See all this webbing?” You couldn’t miss it even if you tried; you are surrounded on all sides by webs, treacherous pathways across the aether. “It is a bridge between your world and the Dreamlands. If it is completed, the two will merge. Understand? Unless you want everything to look like that hospital where your friends are sleeping, you have to stop this at all costs. Nothing else matters. <i>Nothing.</i>”"
+      "text": "<i>Tras el escenario 3–B, los investigadores han llegado a una penumbra cósmica entre los mundos...</i>\nEl grave gemido de un gato atrae vuestra atención hacia una telaraña cercana. Cuando llegáis, encontráis al gato negro atrapado en un trozo de una tela particularmente pegajosa, debatiéndose en un vano intento de liberarse. Parece tener problemas a pesar de sus afiladas garras. Os inclináis para sacarlo de allí, y tras hacerlo salta a una plataforma rocosa que hay debajo y que es lo único que hay entre el gato y un vacío infinito. Bufa durante un momento y luego se yergue: –¿Os he pedido ayuda? –os reprocha–. En fin, habéis llegado bajo el Mar de Brea después de todo. Ahora mirad a vuestro alrededor. ¿Veis todas estas redes?\nSería imposible no verlas aunque lo intentarais; estáis rodeados de redes por todas partes, como traicioneros senderos que cruzan el éter.\n–Es un puente entre vuestro mundo y las Tierras del Sueño. Si se completa, ambos se fundirán. ¿Lo entendéis? A menos que queráis que todo tenga el mismo aspecto que el hospital donde duermen vuestros amigos, debéis detener esto a toda costa. Nada más importa. <i>Nada.</i>"
     },
     {
       "id": "skip_rest_of_interlude_cat_mad",
@@ -51697,15 +51697,15 @@
     {
       "id": "transfer_key_story",
       "type": "story",
-      "text": "“Hey, you still have that key?” the black cat asks. You scrounge through your belongings for the key you found in the Unnamable and show it to the cat. “Gimme that,” it demands, jumping and biting it out of your hands before you can protest. “Don’t look at me like that. Your other friends need it more than you.”"
+      "text": "–Eh, ¿aún tenéis esa llave? –pregunta el gato negro. Buscáis entre vuestras cosas la llave que encontrasteis en lo innombrable y se la enseñáis al gato–. Dadme eso –exige a la vez que da un salto y os la quita de un mordisco antes de que podáis protestar–. Y no me miréis así. Vuestros amigos la necesitan más que vosotros."
     },
     {
       "id": "transfer_silver_key",
-      "text": "In the Campaign Log for <i>The Web of Dreams</i> (Campaign B), cross off <i>the investigators possess the Silver Key</i>. Record this in the Campaign Log for <i>The Dream-Quest</i> (Campaign A) instead."
+      "text": "Tacha los investigadores poseen la llave de plata del registro de campaña de <i>La red de los sueños</i> (Campaña B). Anótalo en el registro de campaña de <i>La búsqueda onírica</i> (Campaña A)."
     },
     {
       "id": "transfer_silver_key_card",
-      "text": "If The Silver Key is currently in an investigator’s deck, remove it. Any one investigator in <i>The Dream-Quest</i> (Campaign A) may choose to add The Silver Key to their deck. This card does not count toward that investigator’s deck size."
+      "text": "Si La llave de plata está en el mazo de algún investigador en este momento, retírala. Un investigador cualquiera de <i>La búsqueda onírica</i> (Campaña A) puede elegir añadir La llave de plata a su mazo. Esta carta no cuenta para el tamaño de mazo de ese investigador."
     },
     {
       "id": "check_black_cat_is_searching_for_the_truth",
@@ -51747,16 +51747,16 @@
     {
       "id": "black_cat_searching_for_truth_story",
       "type": "story",
-      "text": "The black cat stops talking as it spots Randolph for the first time. It circles around the man a few times, agitated. For his part, Randolph looks uncharacteristically perturbed by the cat’s presence, even taking a step backward as it closes in. “What is the matter? I’ve not harmed any of your kind,” he says matter-of-factly. “Have I done something to offend you?”\n“Your mere existence offends me,” the cat replies with a hiss. It strolls back toward you, keeping a wary eye on Randolph. “I think I know what is going on now. It all makes sense. I know who is interfering with my sight. Do not trust that <i>thing</i>,” it warns, circling to keep an eye on the blond man behind it. “I have to prepare. I’ll return when the time is right.”"
+      "text": "El gato negro deja de hablar cuando ve a Randolph por primera vez. Agitado, da varias vueltas en torno a él. Por su parte, Randolph parece inusualmente inquieto por la presencia del gato, y hasta da un paso atrás cuando éste se acerca.\n–¿Qué pasa? No he hecho daño a ninguno de los tuyos –dice como si tal cosa–. ¿He hecho algo para ofenderte?\n–Tu mera existencia me ofende –responde el gato con un bufido. Vuelve hacia vosotros sin quitarle el ojo de encima a Randolph–. Creo que ya sé lo que está pasando. Todo tiene sentido. Sé quién está interfiriendo con mi visión. No confiéis en esa <i>cosa</i> –os advierte mientras da una vuelta para seguir mirando al hombre rubio que tiene detrás–. Debo prepararme. Volveré cuando sea el momento."
     },
     {
       "id": "black_cat_knows_the_truth",
-      "text": "Skip the rest of this interlude. In both Campaign Logs, record <i>the black cat knows the truth</i>."
+      "text": "Sáltate el resto de este interludio. Anota en ambos registros de campaña que <i>el gato negro sabe la verdad</i>."
     },
     {
       "id": "resume_interlude_decision",
       "type": "story",
-      "text": "“Oh, before I forget: your friends have almost made it to their destination. If everything happens as I have foreseen, they’ll be able to free themselves. In the meantime, they wanted me to let you know…”"
+      "text": "–Ah, antes de que se me olvide: vuestros amigos casi han llegado a su destino. Si todo ocurre como he predicho, podrán liberarse a sí mismos. Entretanto, querían que os dijera algo..."
     },
     {
       "id": "check_great_ones_decision",
@@ -51770,7 +51770,7 @@
         "choices": [
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "The black cat spoke of Nyarlathotep.",
+            "text": "El gato negro habló de Nyarlathotep.",
             "steps": [
               "nyarlathotep_story",
               "move_cat_to_campaign_a"
@@ -51778,7 +51778,7 @@
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "The black cat spoke ot Atlach-Nacha.",
+            "text": "El gato negro habló de Atlach-Nacha.",
             "steps": [
               "atlach_nacha_story",
               "move_cat_to_campaign_b"
@@ -51786,7 +51786,7 @@
           },
           {
             "id": "black_cat_wanders_off",
-            "text": "The black cat wandered off before taking a message."
+            "text": "El gato negro desaparece antes de coger un mensaje."
           }
         ]
       }
@@ -51794,12 +51794,12 @@
     {
       "id": "nyarlathotep_story",
       "type": "story",
-      "text": "“…the being they face is one with thousands, perhaps an endless number of masks. <smallcaps>Nyarlathotep</smallcaps>, it is called by some. It is manipulative, deceptive, and cunning. It is probably the thing that trapped them in the Dreamlands to begin with. Why, I have no idea. If you want them to survive, they’re probably going to need my help. You’ll be okay here on your own, right?” The black cat doesn’t wait for an answer; without another word, it leaps into the aether below and vanishes."
+      "text": "–... el ser al que se enfrentan tiene millares, o puede que un número infinito de máscaras. Algunos lo llaman <smallcaps>Nyarlathotep</smallcaps>. Es manipulador, engañoso y astuto. Probablemente sea lo que los dejó atrapados en las Tierras del Sueño, aunque desconozco el motivo. Si queréis que sobrevivan, probablemente vayan a necesitar mi ayuda. Vosotros os las apañaréis solos, ¿verdad?\nEl gato negro no espera una respuesta y, sin una palabra más, salta hacia el éter y desaparece."
     },
     {
       "id": "atlach_nacha_story",
       "type": "story",
-      "text": "“…that bridge I just mentioned? The creature weaving it is unlike anything you have ever seen. <smallcaps>Atlach-Nacha</smallcaps> is the name I have heard whispered in the dark corners of the Dreamlands. It is the master and progenitor of all the spiders crawling around these parts. Maybe all parts, really. You’re going to need my help to stop its scheme.”"
+      "text": "–¿... ese puente que acabo de mencionar? La criatura que lo está tejiendo es distinta a cualquier cosa que jamás hayáis visto. El nombre que he oído susurrar en los rincones oscuros de las Tierras del Sueño es <smallcaps>Atlach-Nacha</smallcaps>. Es la señora y progenitora de todas las arañas que merodean por estos lares. Y tal vez de todas partes, la verdad. Vais a necesitar mi ayuda para detener sus planes."
     },
     {
       "id": "move_cat_to_campaign_b",
@@ -52004,11 +52004,11 @@
     {
       "id": "oneironauts_1",
       "type": "story",
-      "text": "<i>Following scenario 2–B, the investigators have finally reached the end of the mysterious stairway…</i>\nThe black cat awaits you at the bottom of the stairs, watching your long descent with distant, unblinking eyes. You are about to ask how the cat got there when it cuts you off. “Don’t bother. You wouldn’t understand.” It curls up on the cold stone floor, lounging amid the bleak environment. "
+      "text": "<i>Tras el escenario 2–B, los investigadores por fin llegan al final de la misteriosa escalera...</i>\nEl gato negro os espera al pie de las escaleras y observa vuestro largo descenso con ojos distantes y sin parpadear. Estáis a punto de preguntarle cómo ha llegado allí cuando os interrumpe: –No os molestéis, no lo entenderíais. –Dicho esto, se hace la rosca sobre el frío suelo de piedra y se acomoda en el desolado entorno."
     },
     {
       "id": "check_randolph_did_not_survive_descent",
-      "text": "<i>If Randolph did not survive the descent</i> and <i>the black cat has a hunch</i>:",
+      "text": "Si <i>Randolph Carter no sobrevivió al descenso</i> y <i>el gato negro tiene una corazonada</i>:",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -52108,11 +52108,11 @@
     {
       "id": "randolph_did_not_survive",
       "type": "story",
-      "text": "“Where’s blondie?” the black cat asks, peering around. You remain silent, in anguish. “Ah. I see.” The cat examines its paw. It doesn’t seem to care that your companion did not survive the descent. “Well, that seems to have resolved itself nicely,” it says to itself cryptically."
+      "text": "–¿Dónde está el rubiales? –pregunta el gato negro mientras mira alrededor. Os sumís en un silencio apesadumbrado–. Ah, ya veo. –El gato se mira la pata. No parece importarle que vuestro compañero no sobreviviera al descenso–. Bueno, parece que eso se ha resuelto satisfactoriamente –se dice a sí mismo de forma enigmática."
     },
     {
       "id": "cross_off_black_cat_has_a_hunch",
-      "text": "In both Campaign Logs, cross off <i>the black cat has a hunch</i>.",
+      "text": "Tacha en ambos registros de campaña que <i>el gato negro tiene una corazonada</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -52157,7 +52157,7 @@
     {
       "id": "you_asked_for_it",
       "type": "story",
-      "text": "“Well, since you clearly don’t need my help, I’ll be off now. Just wanted to check to see if you’re still alive. And look at that! You are. For now. Bye then.” Before you get the chance to reply, the black cat wanders off, its pitch-black fur melding into the darkness of the Underworld."
+      "text": "–Bueno, como está claro que no necesitáis mi ayuda, me voy. Sólo quería comprobar si seguíais vivos. ¡Y mira tú! Sí que lo estáis. Por ahora. Adiós.\nAntes de poder responder, el gato negro se marcha, y su pelaje negro como el carbón se funde con la oscuridad del Mundo subterráneo."
     },
     {
       "id": "skip_rest_of_interlude",
@@ -52175,7 +52175,7 @@
     {
       "id": "resume_interlude",
       "type": "story",
-      "text": "You’ve about had it with this cat’s cryptic half-truths and nonanswers. You rail at the beast. How are you supposed to help when you might as well be stumbling in the dark? The black cat sits up and narrows its gaze. “I did not know if you could be trusted. To be honest, I am still unsure. I have had visions of these events for many, many years now. I know some of what may come to pass, but not everything. You could be the ones who will save all of us…or the fools who herald our doom.” The cat’s justification is convenient, but it does explain how it has known where to find you at every turn. You try to persuade the cat to trust you, but it remains unconvinced. “Tell you what. Beneath the surface of the Sea of Pitch lies a passageway between realms. That is where you need to go to stop this world from merging with yours. Make it there in one piece, and I’ll tell you everything. But first, I have somewhere else to be. Your pals need me, too.”"
+      "text": "Estáis bastante hartos de las medias verdades enigmáticas y respuestas vagas de este gato. Os ponéis a despotricar contra el animal. ¿Cómo se supone que vais a ayudar cuando prácticamente vais dando tumbos en la oscuridad? El gato negro se incorpora y entrecierra los ojos: –No sabía si erais de fiar. Para seros sincero, sigo sin saberlo del todo. Llevo muchos, muchos años teniendo visiones de estos acontecimientos. Sé parte de lo que ocurrirá, pero no todo. Podríais ser quienes nos salven a todos... o los necios que traigan nuestra perdición.\nLa justificación del gato es conveniente, pero explica cómo ha sabido dónde encontraros en todo momento. Intentáis persuadirlo de que confíe en vosotros, pero sigue sin estar convencido.\n–Os diré una cosa. Bajo la superficie del Mar de Brea hay un pasaje entre los reinos. Debéis ir allí para evitar que este mundo se funda con el vuestro. Si llegáis de una pieza, os lo contaré todo. Pero primero tengo que ir a otra parte. Vuestros amigos también me necesitan."
     },
     {
       "id": "check_black_cat_has_a_hunch",
@@ -52207,7 +52207,7 @@
     {
       "id": "black_cat_wanders_off",
       "type": "story",
-      "text": "The black cat wanders off before you can reply, its pitch-black fur melding into the darkness of the Underworld."
+      "text": "El gato negro se marcha antes de que podáis responder, y su pelaje negro como el carbón se funde con la oscuridad del Mundo subterráneo."
     },
     {
       "id": "send_black_cat_wanders_off",
@@ -52220,14 +52220,14 @@
     },
     {
       "id": "black_cat_decision",
-      "text": "The black cat once again offers to pass a message along to your companions. The lead investigator must decide (choose one):",
+      "text": "El gato negro vuelve a ofrecerse a transmitirles un mensaje a vuestros compañeros. El investigador jefe debe decidir (elige uno):",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "black_cat_requested_aid",
-            "text": "<i>Tell your companions that you are in trouble.</i>",
+            "text": "<i>Diles a tus compañeros que tenéis problemas.</i>",
             "description": "The black cat will return to you with aid once this message is delivered. This may put an undue burden on your companions.",
             "steps": [
               "black_cat_requested_aid",
@@ -52237,8 +52237,8 @@
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "<i>Tell your companions about the Underworld.</i>",
-            "description": "The black cat will then go elsewhere.",
+            "text": "<i>Háblales a tus compañeros sobre el Mundo subterráneo.</i>",
+            "description": "El gato negro se irá a otra parte.",
             "steps": [
               "black_cat_shared_knowledge_of_the_underworld",
               "send_black_cat_shared_knowledge_of_the_underworld",
@@ -52247,7 +52247,7 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "<i>Tell your companions that you are safe.</i>",
+            "text": "<i>Diles a tus compañeros que estáis a salvo.</i>",
             "description": "The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
             "steps": [
               "black_cat_warned_the_others",
@@ -52265,7 +52265,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_requested_aid",
-          "text": "the black cat requested aid from the others."
+          "text": "el gato negro les pidió ayuda a los demás."
         }
       ]
     },
@@ -52286,7 +52286,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_shared_knowledge_of_the_underworld",
-          "text": "the black cat shared knowledge of the Underworld."
+          "text": "el gato negro compartió conocimientos sobre el Mundo subterráneo."
         }
       ]
     },
@@ -52358,7 +52358,7 @@
         "choices": [
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "The black cat is searching for the truth.",
+            "text": "El gato negro está buscando la verdad.",
             "steps": [
               "black_cat_is_searching_for_the_truth"
             ]
@@ -52375,7 +52375,7 @@
     },
     {
       "id": "black_cat_is_searching_for_the_truth",
-      "text": "In both Campaign Logs, record <i>the black cat is searching for the truth</i>",
+      "text": "Anota en los dos registros de campaña que <i>el gato negro está buscando la verdad</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -52730,8 +52730,8 @@
 },
 {
   "id": "point_of_no_return",
-  "scenario_name": "Point of No Return",
-  "full_name": "Scenario III–B: Point of No Return",
+  "scenario_name": "Punto sin retorno",
+  "full_name": "Escenario III–B: Punto sin retorno",
   "setup": [
     "check_randolph_did_not_survive_descent",
     "gather_encounter_sets",
@@ -52791,12 +52791,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You have finally reached the Dreamlands, but it is not as you expected. This cyclopean cavern is far from the wondrous lands and fabulous cities described in Virgil Gray’s writings. Perhaps the author never ventured this far underground, never found the horrors that lurk beneath the surface of the Dreamlands. You suspect he wouldn’t have left out tales of such a spine-chilling nature. As you venture into the dark and barren realm, you are filled with hollow despair—an emptiness that gnaws at your heart and mirrors the bleak landscape all around you. You came here to help your friends, and now your only guide through this realm is gone. What if this was all a horrible mistake?\nYou shake these dark thoughts from your mind and focus on the path that lies ahead of you. It’s too late to dwell on what you could have done differently. This is your way forward now. Even if you cannot help your friends, even if you are too late to help Randolph, you have another mission now. Clearly this region of the Dreamlands has something to do with the creatures invading your reality. The answers must lie here. Besides, it’s not like you have much choice anymore.\nYou walk to the edge of a jagged cliff overlooking the cavernous realm below. This realm is staggeringly vast. In the distance, along the cliffs, you see a walled city, of all things. Among its many towers, a black spire rises so high it must pierce the surface of the Dreamlands. To the south is a stretch of plains that looks over the vale below, and you can see shapes moving throughout the grey, phosphorescent light. You hope the beings who inhabit this realm are ones you might be able to reason with. You have your doubts…but at least now you have a plan. Whether or not it is a good plan remains to be seen."
+      "text": "Por fin habéis llegado a las Tierras del Sueño, pero no son como esperabais. Esta ciclópea caverna no se parece en nada a las maravillosas tierras y fabulosas ciudades descritas en los relatos de Virgil Gray. Tal vez el escritor nunca se aventuró a tanta distancia bajo tierra y nunca encontró los horrores que acechan bajo la superficie de las Tierras del Sueño. Sospecháis que no habría dejado de escribir unos relatos de naturaleza tan escalofriante. Al adentraros por el oscuro y desolado reino, os llena una honda desesperación; un vacío que os roe el corazón y refleja el estéril paisaje que os rodea. Habéis venido aquí para ayudar a vuestros amigos, y ahora vuestro único guía en este reino ya no está. ¿Y si habéis cometido un terrible error?\nApartáis esos pensamientos oscuros de vuestra mente y os concentráis en el camino que tenéis delante. Es demasiado tarde como para mortificaros por aquello que podríais haber hecho de otra forma. Debéis seguir por aquí. Aunque no podáis ayudar a vuestros amigos, aunque sea tarde como para ayudar a Randolph, ahora tenéis otra misión. Está claro que esta región de las Tierras del Sueño tiene algo que ver con las criaturas que invaden vuestra realidad. Las respuestas deben de estar aquí. Además, tampoco es que os quede elección.\nCamináis hasta el borde de un escarpado acantilado desde el que se ve el cavernoso reino de más abajo. Es abrumadoramente inmenso. A lo lejos, veis ni más ni menos que una ciudad amurallada sobre los acantilados. Entre sus muchas torres, se alza una negra que es tan alta que debe de perforar la superficie de las Tierras del Sueño. Al sur, una zona de llanuras se extiende hacia el valle, y veis siluetas que se mueven en la fosforescente luz grisácea. Esperáis que se pueda razonar con los seres que viven en este reino. Tenéis vuestras dudas... pero al menos ahora tenéis un plan. Está por ver si es bueno o no."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You have finally reached the Dreamlands, but it is not as you expected. This cyclopean Underworld is far from the wondrous lands and fabulous cities described in Virgil Gray’s writings. Perhaps the author never ventured this far underground, never found the horrors that lurk beneath the surface of the Dreamlands. You suspect he would not have left out tales of such a spine-chilling nature. As you venture into the dark, barren realm, you raise your concerns with Randolph. “It is true that we are farther from your companions than we intended, he affirms. “However, if I may offer another sentiment—perhaps this is a blessing in disguise. Clearly the Underworld has something to do with the creatures invading our reality. I suggest we investigate further while we have the chance. We can return to the surface of the Dreamlands once we have discovered the truth.”\nYou ask Randolph if he has any leads, and he steps to the edge of a jagged cliff overlooking the cavernous realm below. “I have been here before,” he says quietly, getting his bearings. “Those walls in the distance belong to the City of Gugs. To the south is a stretch of plains that looks over the vale below. That plain is where the ghouls live. Perhaps there we can learn more.” You raise your doubts aloud, wondering if such creatures are even capable of peaceful conversation. “They are more intelligent than you think, and could be quite helpful if we convince them to aid us. In fact, there is one I count among my friends, an artist by the name of Richard Pickman. If we are fortunate enough to find him, that might be our best chance.” You still have your doubts…but at least now you have a plan. Whether or not it is a good plan remains to be seen."
+      "text": "Por fin habéis llegado a las Tierras del Sueño, pero no son como esperabais. Esta ciclópea caverna no se parece en nada a las maravillosas tierras y fabulosas ciudades descritas en los relatos de Virgil Gray. Tal vez el escritor nunca se aventuró a tanta distancia bajo tierra y nunca encontró los horrores que acechan bajo la superficie de las Tierras del Sueño. Sospecháis que no habría dejado de escribir unos relatos de naturaleza tan escalofriante. Al adentraros en el oscuro y desolado reino, compartís vuestra preocupación con Randolph: –Es cierto que estamos más lejos de vuestros compañeros de lo que pretendíamos –afirma–. Sin embargo, me gustaría que lo vierais desde otro punto de vista, ya que podríamos decir que no hay mal que por bien no venga. Está claro que el Mundo subterráneo tiene algo que ver con las criaturas que invaden nuestra realidad. Sugiero que lo investiguemos mientras tengamos la oportunidad. Podemos regresar a la superficie de las Tierras del Sueño cuando hayamos descubierto la verdad.\nLe preguntáis a Randolph si sabe por dónde empezar, y se acerca al borde de un escarpado acantilado desde el que se ve el cavernoso reino de más abajo.\n–Ya he estado aquí antes –dice en voz baja mientras se orienta–. Esas murallas que se ven a lo lejos pertenecen a la ciudad de los gugs. Al sur hay una zona de llanuras que se extiende hacia el valle. En la llanura viven los gules. Tal vez podamos descubrir más información allí. –Expresáis vuestras dudas en voz alta, pues os preguntáis si esas criaturas son acaso capaces de conversar pacíficamente–. Son más inteligentes de lo que pensáis, y podrían ser bastante útiles si les convencemos de ayudarnos. De hecho, cuento a uno de ellos entre mis amigos, un artista llamado Richard Pickman. Si tenemos la suerte de encontrarlo, podría ser nuestra mejor baza.\nSeguís teniendo dudas... pero al menos ahora tenéis un plan. Está por ver si es bueno o no."
     },
     {
       "id": "gather_encounter_sets",
@@ -52824,10 +52824,10 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the following locations into play: Vaults of Zin, City of Gugs, Tower of Koth, and Plain of the Ghouls.",
+      "text": "Pon en juego los siguientes Lugares: Las salas de Zin, La ciudad de los gugs, La torre de Koth y La llanura de los gules.",
       "bullets": [
         {
-          "text": "Each investigator begins play at the Vaults of Zin."
+          "text": "Cada investigador comienza la partida en Las salas de Zin."
         },
         {
           "text": "Deja aparte todos los demás Lugares, fuera del juego."
@@ -52836,15 +52836,15 @@
     },
     {
       "id": "search_for_enchanted_woods",
-      "text": "Search the collection for Enchanted Woods <i>(Stone Trapdoor)</i> <i>(The Dream-Eaters #53)</i> and set it aside, out of play."
+      "text": "Busca en la colección el Bosque Encantado <i>(Trampilla de piedra)</i> <i>(Los devoradores de sueños 53)</i> y ponlo aparte, fuera del juego."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Gug Sentinel enemy, the Richard Upton Pickman story asset, and the False Awakening weakness aside, out of play."
+      "text": "Pon aparte, fuera del juego, el Enemigo Centinela gug, el Apoyo de historia Richard Upton Pickman y la Debilidad Falso despertar."
     },
     {
       "id": "setup_act_deck",
-      "text": "Check Campaign Log. Depending on the following circumstances, a different version of act 1 should be used in this scenario. Remove the other version of act 1 from the game"
+      "text": "Comprueba el registro de campaña. En función de las siguientes circunstancias, debe usarse una versión distinta del acto 1 en este escenario. Retira de la partida la otra versión del acto 1."
     },
     {
       "id": "check_randolph_did_not_survive_descent_act",
@@ -52889,16 +52889,16 @@
     {
       "id": "act_1_v1",
       "bullet_type": "small",
-      "text": "Use Act 1a—“Entering the Underworld (v. I).”"
+      "text": "Usa el Acto 1a – “Entrando en el Mundo subterráneo (v. I)”."
     },
     {
       "id": "act_1_v2",
       "bullet_type": "small",
-      "text": "Use Act 1a—“Entering the Underworld (v. II).”"
+      "text": "Usa el Acto 1a – “Entrando en el Mundo subterráneo (v. II)”."
     },
     {
       "id": "check_steps_of_the_bridge",
-      "text": "A wave of pain and nausea washes over you. Check the number of tally marks recorded next to “Steps of the Bridge” in the Campaign Log.",
+      "text": "Una oleada de náuseas y dolor os invade. Comprueba el número de marcas anotadas en la sección “Peldaños del puente” del registro de campaña.",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -52946,17 +52946,17 @@
     {
       "id": "nothing_happens",
       "bullet_type": "small",
-      "text": "Because there are no tally marks recorded, nothing happens."
+      "text": "Como no hay marcas anotadas, no ocurre nada."
     },
     {
       "id": "one_distortion",
       "bullet_type": "small",
-      "text": "Because there are 1–4 tally marks, place 1 damage on the scenario reference card. This represents the distortion within the Dreamlands."
+      "text": "Como hay 1–4 marcas, coloca 1 ficha de Daño sobre la carta de referencia de escenario. Esto representa la distorsión en el interior de las Tierras del Sueño."
     },
     {
       "id": "two_distortion",
       "bullet_type": "small",
-      "text": "Because there are 5 or more tally marks, place 2 damage on the scenario reference card. This represents the distortion within the Dreamlands."
+      "text": "Como hay 5 o más marcas, coloca 2 fichas de Daño sobre la carta de referencia de escenario. Esto representa la distorsión en el interior de las Tierras del Sueño."
     },
     {
       "id": "encounter_deck",
@@ -52965,8 +52965,8 @@
     {
       "id": "locations_in_pnr",
       "type": "rule_reminder",
-      "title": "Locations in Point of No Return",
-      "text": "Each of the locations in this scenario have no unrevealed side, and therefore they enter play with their revealed side faceup. Instead of an unrevealed side, these locations have story cards on their reverse sides. Whenever a location in this scenario enters play <i>(including during setup)</i>, place clues on that location equal to its clue value, as normal.\nLocations can be flipped over in one of two ways. Most are flipped over by the veiled keyword, as described below. Some locations are instead flipped over by an ability printed on that location.\n<b>Once a location has been flipped over and its story text has been read, it cannot be flipped over again for the remainder of the game unless otherwise noted.</b>"
+      "title": "Lugares de Punto sin retorno",
+      "text": "Ninguno de los Lugares de este escenario tiene un lado sin revelar, por lo que entran en juego con el lado revelado boca arriba. En lugar de lado sin revelar, estos Lugares tienen cartas de Historia en el reverso. Siempre que un Lugar entre en juego en este escenario <i>(incluso durante la preparación)</i>, coloca una cantidad de pistas sobre ese Lugar igual a su valor de pista de forma normal.\nHay dos formas de poder darles la vuelta a los Lugares. A la mayoría se les da la vuelta mediante la palabra clave Velado, que se describe a continuación. En cambio, a algunos Lugares sólo se les da la vuelta mediante una capacidad impresa en ellos.\n<b>Cuando se le ha dado la vuelta a un Lugar y se ha leído su texto de historia, no se le puede volver a dar la vuelta durante el resto de la partida a no ser que se indique algo distinto.</b>"
     },
     {
       "id": "veiled",
@@ -52976,11 +52976,11 @@
     },
     {
       "id": "record_steps_of_the_bridge",
-      "text": "For each damage on the scenario reference card, record 1 tally mark next to “Steps of the Bridge” in your Campaign Log",
+      "text": "Por cada ficha de Daño que haya sobre la carta de referencia de escenario, anota 1 marca junto a la sección “Peldaños del puente” del registro de campaña.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Damage:",
+        "text": "Daño:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -52992,7 +52992,7 @@
     },
     {
       "id": "lead_investigator_gains_false_awakening",
-      "text": "The lead investigator has earned the False Awakening weakness <i>(The Dream-Eaters #275)</i> (does not count toward deck size). Add this card to the lead investigator’s deck.",
+      "text": "El investigador jefe ha obtenido la Debilidad Falso despertar <i>(Los devoradores de sueños 275)</i> (no cuenta para el tamaño de mazo). Añade esta carta al mazo del investigador jefe.",
       "effects": [
         {
           "type": "add_card",
@@ -53047,7 +53047,7 @@
     },
     {
       "id": "maybe_skip_interlude",
-      "text": "If you are playing The Web of Dreams as a four-part campaign:",
+      "text": "Si estás jugando La red de los sueños como una campaña de cuatro partes:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -53125,7 +53125,7 @@
                 }
               ]
             },
-            "text": "The investigators found a way out of the Underworld.",
+            "text": "Los investigadores encontraron una salida del Mundo subterráneo.",
             "steps": [
               "found_a_way_out_of_the_underworld"
             ]
@@ -53135,13 +53135,13 @@
     },
     {
       "id": "found_a_way_out_of_the_underworld",
-      "text": "In your Campaign Log, record that <i>the investigators found a way out of the Underworld</i>.",
+      "text": "Anota en el registro de campaña que <i>los investigadores encontraron una salida del Mundo subterráneo</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "found_a_way_out_of_the_underworld",
-          "text": "the investigators found a way out of the Underworld."
+          "text": "los investigadores encontraron una salida del Mundo subterráneo."
         }
       ]
     },
@@ -53171,7 +53171,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "The black, tarry liquid rises around you, consuming you, and you fear that you’ve made a grave mistake. The pressure of the dense liquid surrounds your body, crushing you from all sides. But then you emerge on the other side. You fall for a brief, silent moment before being caught by a glowing, sinewy web. Panicking, you scramble to a nearby platform made of solid rock. Your refuge is one of many, each suspended in the air and connected by thick webbing. Beyond that is a vast, cosmic space, an infinite darkness that stretches as far as the eye can see.",
+      "text": "El negro líquido viscoso sube a vuestro alrededor, consumiéndoos, y teméis haber cometido un grave error. La presión del denso líquido rodea vuestros cuerpos y os aplasta desde todos lados. Pero acabáis por emerger al otro lado. Os quedáis momentáneamente en silencio antes de veros atrapados en una brillante y fibrosa red. Entráis en pánico y corréis hacia una plataforma cercana que está hecha de roca sólida. Vuestro refugio es una de las muchas rocas que están suspendidas en el aire y conectadas por gruesas redes. Más allá hay un vasto espacio cósmico, una oscuridad infinita que se extiende hasta donde alcanza la vista.",
       "steps": [
         "record_steps_of_the_bridge",
         "earn_xp",
@@ -53182,7 +53182,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You brace yourself as another wave of distorted reality crashes into you. This feeling, whatever it is, is growing stronger as time marches on. Someone or something is causing it, but how? Just as you are pondering its meaning, you realize something curious: you aren’t the only one affected. Far from it, in fact; the entirety of the Underworld seems to be changing with each wave of warped energy that flows through the realm. Walls shift, the floor skews, and the dim, phosphorescent light scintillates with a cosmic, otherworldly glow. The ground rumbles as another wave of force rushes through the foundations of the dream world. The rocky surface upon which you stand gives way. You flail in the air, attempting to grab hold of something, anything that you can use to pull yourself up. Your hands wrap around a painted plank of wood. You have no time to question its appearance—survival comes first.\nWhen you pull yourself up, you realize you are curled up on a park bench, surrounded by a thick fog and the grim, gambrel rooftops of Arkham. There is no ground in front of you. Just an open, endless pit into fathomless depths. The Underworld, perhaps? But how is that possible? Virgil’s cat watches you casually from a tree branch that hangs over the park bench. “It won’t stop,” the black cat tells you. “Not until there is nothing left of your world.” You wonder what you could possibly do in the face of such horror. The cat gazes down into the pit below. “It’s waiting for you.”\nAnother rumble. In the distance, you watch with horror as an entire building is sucked into the ground. You think you spot a pedestrian in the distance, but it is no human. If this goes on any longer, your companions won’t have a world to awaken to. You steel yourself, look down into the empty pit, and gulp. “Down you go,” the cat says.\nYou fall. The roar of the wind is deafening as it whips by your head. You can’t possibly survive a fall like this, you think. But instead of splattering against a hard, rocky ground, you are caught by a glowing, sinewy web. Panicking, you scramble to a nearby platform made of solid rock. Your refuge is one of many, each suspended in the air and connected by thick webbing. Beyond that is a vast, cosmic space, an infinite darkness that stretches as far as the eye can see.",
+      "text": "Os preparáis para la siguiente ola de realidad distorsionada que choca contra vosotros. Esta sensación, sea lo que sea, se hace más fuerte a medida que avanza el tiempo. Alguien o algo la provoca, pero ¿cómo? Mientras os hacéis esta pregunta, os dais cuenta de algo curioso: no sois los únicos afectados. Nada más lejos de la verdad; todo el Mundo subterráneo parece estar cambiando con cada oleada de energía disforme que fluye por el reino. Los muros cambian, el suelo se inclina, y la tenue luz fosforescente brilla con un sobrenatural resplandor cósmico. La tierra tiembla cuando otra ola de fuerza recorre los cimientos del mundo onírico. La superficie rocosa sobre la que os encontráis cede. Os agitáis en el aire e intentáis agarraros a algo, a cualquier cosa que podáis emplear para auparos. Aferráis un tablón de madera pintado. No tenéis tiempo de considerar su aspecto, la supervivencia es lo primero.\nCuando os aupáis, os dais cuenta de que estáis hechos un ovillo en el barco de un parque, rodeados por una densa niebla y los sombríos tejados simétricos de Arkham. Frente a vosotros no hay suelo. Sólo un infinito abismo abierto hacia profundidades insondables. ¿Será el Mundo subterráneo? Pero ¿cómo es posible? El gato de Virgil os observa tranquilamente desde la rama de un árbol que cuelga sobre el banco.\n–No se detendrá –dice el gato negro–. Al menos no hasta que no quede nada de vuestro mundo. –Os preguntáis que podéis hacer ante semejante horror. El gato mira el abismo–. Os está esperando.\nOtro temblor. A lo lejos, observáis con terror cómo el suelo se traga un edificio entero. Creéis ver un transeúnte a cierta distancia, pero no es humano. Si esto sigue mucho más tiempo, vuestros compañeros no tendrán un mundo en el que despertar. Hacéis acopio de valor, observáis el vacío abismo y tragáis saliva.\n–Es hora de bajar –dice el gato.\nCaéis. El rugido del viento es ensordecedor alrededor de vuestras cabezas. Pensáis que es imposible que sobreviváis a una caída así. Pero en lugar de acabar espachurrados contra el duro suelo rocoso, os recoge una brillante telaraña fibrosa. Entráis en pánico y corréis hacia una plataforma cercana que está hecha de roca sólida. Vuestro refugio es una de las muchas rocas que están suspendidas en el aire y conectadas por gruesas redes. Más allá hay un vasto espacio cósmico, una oscuridad infinita que se extiende hasta donde alcanza la vista.",
       "steps": [
         "lead_investigator_gains_false_awakening",
         "record_steps_of_the_bridge",
@@ -53211,8 +53211,8 @@
 },
 {
   "id": "waking_nightmare",
-  "scenario_name": "Waking Nightmare",
-  "full_name": "Scenario I–B: Waking Nightmare",
+  "scenario_name": "Pesadilla consciente",
+  "full_name": "Escenario 1–B: Pesadilla consciente",
   "setup": [
     "intro_1",
     "choose_doctor",
@@ -53231,7 +53231,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "It has been more than twenty-four hours since your companions fell asleep. Over the course of the past day, your curiosity has slowly turned to concern and then dread. The problems began when one of your friends started to toss and turn violently in their sleep. You snapped to attention and tried to shake them awake, but it was to no avail. You tried everything. Physical contact was no use, and water did nothing but soak their clothes and bed fruitlessly. Even opening their eyelids did not wake them, and in the process, you noticed that their pupils had fully dilated and their eyes were glazed over with a milky-white fog.\nYou have no idea what this could mean for your friends. Have they managed to find their way to the land Virgil Gray described in his writings? Or has something more sinister taken root within their minds and bodies? Just to be safe, you decide to take your companions to St. Mary’s Hospital. If something ails them physically, perhaps the doctors there can discern what is wrong. Otherwise, you will simply have to watch over them and hope that they return safely to the waking world.\nSt. Mary’s is the only hospital in the town of Arkham, and it is a fixture of its Uptown neighborhood. You explain the situation to Nurse Greenberg, the head nurse at the hospital, who instructs several other nurses to carry your companions into the emergency ward on stretchers. She tells you with a warm, friendly smile that your friends will be examined by Doctor Maheswaran, but other than that, you are left entirely in the dark.\nHours pass. You hear nothing about the status of your companions. You still have not met with Doctor Maheswaran, and you’re starting to grow impatient. You feel something crawling along your arm, and you instinctively brush it away, then wonder if it was an insect or a figment of your imagination. You begin to question whether bringing your friends here was the right choice after all. Eventually, you decide to take matters into your own hands.\nIt is late at night, and the receptionist who instructed you to stay in the waiting room is nowhere to be seen. In fact, there are eerily few people roaming the halls of the hospital. With nobody to stop you, you sneak off into the emergency ward to find your friends. It does not take long for you to find their room. Your companions lie asleep on clean, white cots, their sleep anything but peaceful. They are pale faced and sweaty. One of them tosses and turns in their sleep, their brow furrowed with pain or worry.\nDoctor Maheswaran does not seem surprised by your intrusion. “Shivani Maheswaran,” she introduces herself coldly, without looking up from her clipboard. “You’re the ones who brought them in, right? Before you ask: no, I’ve never seen anything like this before in my life,” she says with a hint of dry impatience. You demand that she tell you everything she knows about their condition and not give you the runaround. With a sigh, she puts her clipboard down and addresses you frankly. “Listen, I may be new to Arkham, but I have seen enough inexplicable maladies in this town to fill entire careers in medicine. I understand why you are concerned. Your friends…” She struggles to find the right words. “They are not simply asleep. It is as if they are hovering somewhere between sleep and unconsciousness, or even death. They are not aware of anything happening around them but appear to be reacting to some kind of internal stimuli.”\nWithout hesitation, you ask if they are dreaming. “Dreaming?” Doctor Maheswaran replies. “It is unlikely, though it might account for their mannerisms. Honestly—and I know this is not exactly reassuring— none of this makes any sense to me, medically speaking.”\nJust then, you see a large, hairy spider crawling on the chest of one of your friends. “Well, that is odd.” Doctor Maheswaran brushes the spider off, and several more emerge from the sheets to take its place. You and the doctor both take several steps back out of pure instinct. You hear heavy footsteps in the hallway outside the emergency ward, and then the lights begin to flicker. “Okay…that is more than simply odd. What in the world is going on out there?” Doctor Maheswaran asks anxiously.\nFor just a moment, you think you hear one of your sleeping companions whisper something. Are they indeed dreaming? And if so, what does their condition have to do with these strange events?"
+      "text": "Han pasado más de veinticuatro horas desde que vuestros compañeros se durmieron. A lo largo del último día, vuestra curiosidad se ha ido convirtiendo en preocupación primero, y en temor después. Los problemas comenzaron cuando uno de vuestros amigos comenzó a debatirse violentamente en sueños. Os sobresaltasteis y tratasteis de despertarlo sacudiéndolo, pero no sirvió de nada. Lo intentasteis todo. El contacto físico no tuvo ningún efecto, el agua no hizo más que empapar la ropa y la cama sin más. Ni siquiera despertó al abrirle los párpados, y al hacerlo visteis que tenía las pupilas totalmente dilatadas, y los ojos vidriosos y con una neblina de color blanco lechoso.\nNo tenéis ni idea de lo que esto podría significar para vuestros amigos. ¿Han logrado encontrar el camino a la tierra que describió Virgil Gray en sus escritos? ¿O algo más siniestro ha entrado en sus mentes y cuerpos? Por si acaso, decidís llevar a vuestros compañeros al Hospital de Santa María. Si lo que les ocurre es físico, quizás los médicos de allí puedan averiguar qué les pasa. Si no es así, tendréis que seguir manteniéndolos en observación y esperar que vuelvan sanos y salvos al mundo de la vigilia.\nEl Santa María es el único hospital de la ciudad de Arkham, y uno de los lugares emblemáticos del barrio de la Periferia. Le explicáis la situación a la enfermera Greenberg, la enfermera jefe del hospital, que ordena a varias enfermeras que lleven a vuestros compañeros al pabellón de urgencias en camilla. Os dice con una cálida y amable sonrisa que a vuestros amigos los va a examinar la doctora Maheswaran, pero aparte de eso, no sabéis nada más.\nPasan las horas. No os dicen nada del estado de vuestros compañeros. Aún no habéis conocido a la doctora Maheswaran, y empezáis a impacientaros. Notáis como si algo os recorriera el brazo, y lo apartáis de forma instintiva, preguntándoos si era un insecto o producto de vuestra imaginación. Empezáis a cuestionaros si habrá sido buena idea traer aquí a vuestros amigos. Al final, decidís tomar cartas en el asunto.\nLa noche está avanzada, y no veis por ninguna parte a la recepcionista que os dijo que os quedarais en la sala de espera. De hecho, es muy extraño que haya tan poca gente por los pasillos del hospital. Al no haber nadie para deteneros, os coláis en el pabellón de urgencias para buscar a vuestros amigos. No tardáis muchos en encontrar su habitación. Vuestros compañeros duermen sobre catres blancos y limpios, pero su sueño es muy agitado. Están pálidos y sudorosos. Uno de ellos se agita en sueños, con el ceño fruncido de dolor o preocupación.\nLa doctora Maheswaran no parece sorprenderse de vuestra intrusión.\n–Shivani Maheswaran –se presenta con frialdad, sin levantar la vista de su portapapeles–. Ustedes son los que los trajeron, ¿verdad? Antes de que pregunten nada: no, nunca he visto algo así en toda mi vida –añade con tono de seca impaciencia.\nLe exigís que os cuente todo lo que sabe sobre su estado y que no se ande con evasivas. Con un suspiro, deja el portapapeles y se dirige a vosotros con franqueza: –Verán, puede que sea nueva en Arkham, pero ya he visto suficientes enfermedades inexplicables en esta ciudad como para llenar toda una vida dedicada a la medicina. Entiendo su preocupación. Sus amigos... –Intenta encontrar las palabras adecuadas–. No están simplemente dormidos. Es como si oscilaran en un punto entre el sueño y la inconsciencia, o incluso la muerte. No son conscientes de nada de lo que ocurre a su alrededor, pero parecen reaccionar ante algún tipo de estímulos internos.\nSin dudarlo, le preguntáis si están soñando.\n–¿Soñando? –contesta la doctora Maheswaran–. Es poco probable, aunque eso podría explicar sus gestos. Sinceramente, y sé que no es precisamente tranquilizador, nada de esto tiene sentido para mí desde el punto de vista médico.\nEn ese momento, veis una enorme araña peluda que camina por el pecho de uno de vuestros amigos.\n–Vaya, qué raro –dice la doctora Maheswaran mientras aparta la araña, pero salen más de entre las sábanas para tomar su lugar.\nTanto la doctora como vosotros dais varios pasos atrás por puro instinto. Oís pasos pesados en el pasillo del exterior del pabellón de urgencias, y en ese momento, las luces comienzan a parpadear.\n–Vale... Eso ya se pasa de raro. ¿Qué diantres está ocurriendo ahí? –pregunta la doctora Maheswaran con nerviosismo.\nPor un instante, creéis oír que uno de vuestros compañeros dormidos susurra algo. ¿Están soñando realmente? Y si es así, ¿qué tiene que ver su estado con estos extraños acontecimientos?"
     },
     {
       "id": "choose_doctor",
@@ -53241,7 +53241,7 @@
         "choices": [
           {
             "id": "doctor_come",
-            "text": "<i>Convince Doctor Maheswaran to come with you while you investigate, for her safety and yours.</i>",
+            "text": "<i>Convencéis a la doctora Maheswaran de que vaya con vosotros mientras investigáis, por su seguridad y la vuestra.</i>",
             "steps": [
               "intro_2",
               "doctor_joined_investigation"
@@ -53249,7 +53249,7 @@
           },
           {
             "id": "doctor_stay",
-            "text": "<i>Convince Doctor Maheswaran to stay with the patients and keep them safe while you investigate.</i>",
+            "text": "<i>Convencéis a la doctora Maheswaran de que se quede con los pacientes y los mantenga a salvo mientras investigáis.</i>",
             "steps": [
               "intro_3",
               "doctor_stayed_with_patients"
@@ -53261,7 +53261,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "“Yes, I suppose that makes sense. There has been no change in their condition for the past few hours, anyway.” Doctor Maheswaran’s gaze shifts nervously to and fro, searching for more spiders. “Also, I’d very much like to get out of this room now, so…lead the way,” she adds. You nod and venture back into the hospital’s waiting room."
+      "text": "–Sí, supongo que tiene sentido. De todas formas, su estado no ha sufrido ningún cambio durante las últimas horas –responde la doctora Maheswaran mientras mira con nerviosismo de un lado a otro por si hay más arañas–. Además, ahora mismo me gustaría mucho salir de esta sala, así que... Ustedes delante –añade.\nAsentís y volvéis hacia la sala de espera del hospital."
     },
     {
       "id": "doctor_joined_investigation",
@@ -53270,14 +53270,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "doctor_joined_investigation",
-          "text": "Dr. Maheswaran joined the investigation."
+          "text": "la doctora Maheswaran se unió a la investigación."
         }
       ]
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "“Yes, of course. Their safety is paramount. But do come back and tell me what is going on, please.” She shivers. “I really hate this place after dark…” You nod and venture back into the hospital’s waiting room."
+      "text": "–Sí, por supuesto. Su seguridad es primordial. Pero vuelvan y cuéntenme lo que está pasando, por favor –Se estremece–. Odio este sitio cuando se hace de noche....\nAsentís y volvéis hacia la sala de espera del hospital."
     },
     {
       "id": "doctor_stayed_with_patients",
@@ -53286,7 +53286,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "doctor_stayed_with_patients",
-          "text": "Dr. Maheswaran stayed with her patients."
+          "text": "la doctora Maheswaran se quedó con sus pacientes."
         }
       ]
     },
@@ -53313,7 +53313,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Waiting Room, Emergency Room, Experimental Therapies Ward, and Records Office into play. Each investigator begins in the Waiting Room."
+      "text": "Pon en juego la Sala de espera, la Sala de urgencias, el Pabellón de terapias experimentales y la Sala de archivos. Cada investigador comienza en la Sala de espera."
     },
     {
       "id": "location_layout",
@@ -53365,23 +53365,23 @@
     },
     {
       "id": "doctor_starts_in_play",
-      "text": "Check Campaign Log. Because <i>Dr. Maheswaran joined the investigation</i>, put Dr. Shivani Maheswaran into play, under the lead investigator’s control."
+      "text": "Consulta el registro de campaña. Como <i>la doctora Maheswaran se unió a la investigación</i>, pon en juego a la Dra. Shivani Maheswaran bajo el control del investigador jefe."
     },
     {
       "id": "doctor_set_aside",
-      "text": "Check Campaign Log. Because <i>Dr. Maheswaran stayed with her patients</i>,  set Dr. Shivani Maheswaran aside, out of play."
+      "text": "Consulta el registro de campaña. Como <i>la doctora Maheswaran se quedó con sus pacientes</i>, pon aparte a la Dra. Shivani Maheswaran, fuera del juego."
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each of the remaining locations aside, out of play."
+      "text": "Pon aparte todos los Lugares restantes, fuera del juego."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Randolph Carter <i>(Chained to the Waking World)</i>, all 3 of the Outbreak treacheries, and both of the Corrupted Orderly enemies."
+      "text": "Pon aparte las siguientes cartas, fuera del juego: Randolph Carter <i>(Encadenado al mundo de la vigilia)</i>, las 3 Traiciones Brote y los dos Enemigos Auxiliar corrompido."
     },
     {
       "id": "set_aside_infestation_begins",
-      "text": "Set the double-sided The Infestation Begins story card aside, out of play. This story card has a different scenario reference card on its other side and will enter play during the natural course of the scenario."
+      "text": "Pon aparte la carta de Historia de doble cara Comienza la infestación, fuera del juego. Esta carta de Historia tiene una carta de referencia de escenario distinta en su otro lado y entrará en juego durante el curso natural del escenario."
     },
     {
       "id": "encounter_deck",
@@ -53394,7 +53394,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "doctors_fate_unknown",
-          "text": "Dr. Maheswaran’s fate is unknown."
+          "text": "se desconoce el destino de la Dra. Maheswaran."
         }
       ]
     },
@@ -53405,19 +53405,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "doctor_is_alive",
-          "text": "Dr. Maheswaran is alive."
+          "text": "la Dra. Maheswaran está viva."
         }
       ]
     },
     {
       "id": "doctor_is_missing",
-      "text": "In your Campaign Log, record <i>Dr. Maheswaran is missing</i>. Perhaps you could have saved her. The lead investigator suffers 1 mental trauma.",
+      "text": "Anota en el registro de campaña que <i>la Dra. Maheswaran ha desaparecido</i>. Tal vez podríais haberla salvado. El investigador jefe sufre 1 trauma mental.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "doctor_is_missing",
-          "text": "Dr. Maheswaran is missing."
+          "text": "la Dra. Maheswaran ha desaparecido."
         },
         {
           "type": "trauma",
@@ -53428,13 +53428,13 @@
     },
     {
       "id": "randolph_escaped_hospital_alone",
-      "text": "In your Campaign Log, record <i>Randolph escaped the hospital on his own</i>. Any one investigator may choose to add Randolph Carter <i>(Chained to the Waking World)</i> (The Dream-Eaters card #79) to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Anota en el registro de campaña que <i>Randolph escapó del hospital por su cuenta</i>. Un investigador cualquiera puede elegir añadir a su mazo a Randolph Carter <i>(Encadenado al mundo de la vigilia)</i> (carta 79 de Los devoradores de sueños). Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "randolph_escaped_hospital_alone",
-          "text": "Randolph escaped the hospital on his own."
+          "text": "Randolph escapó del hospital por su cuenta."
         },
         {
           "type": "add_card",
@@ -53445,13 +53445,13 @@
     },
     {
       "id": "randolph_escaped_hospital_with_investigators",
-      "text": "In your Campaign Log, record <i>Randolph escaped the hospital with the investigators</i>. Any one investigator may choose to add Randolph Carter <i>(Chained to the Waking World)</i> (The Dream-Eaters card #79) to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Anota en el registro de campaña que <i>Randolph escapó del hospital con los investigadores</i>. Un investigador cualquiera puede elegir añadir a su mazo a Randolph Carter <i>(Encadenado al mundo de la vigilia)</i> (carta 79 de Los devoradores de sueños). Esta carta no cuenta para el tamaño de mazo de ese investigador.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "randolph_escaped_hospital_with_investigators",
-          "text": "Randolph escaped the hospital with the investigators."
+          "text": "Randolph escapó del hospital con los investigadores."
         },
         {
           "type": "add_card",
@@ -53477,11 +53477,11 @@
     },
     {
       "id": "record_steps_of_the_bridge",
-      "text": "For each location that was infested when the game ended, record 1 tally mark next to “Steps of the Bridge” in your Campaign Log.",
+      "text": "Por cada Lugar que estuviera infestado cuando acabó la partida, anota 1 marca junto a la sección “Peldaños del puente” del registro de campaña.",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Infested locations:",
+        "text": "Lugares infestados:",
         "effects": [
           {
             "type": "campaign_log_count",
@@ -53521,7 +53521,7 @@
     },
     {
       "id": "remove_infestation_bag",
-      "text": "Remove the infestation bag and all infestation tokens from the game. <i>(There is no need to keep or record them.)</i>"
+      "text": "Retira de la partida la bolsa de infestación y todas las fichas de infestación <i>(no es necesario guardarlas ni anotarlas)</i>"
     },
     {
       "id": "resolution_5",
@@ -53535,13 +53535,13 @@
     },
     {
       "id": "dreamers_grow_weaker",
-      "text": "Your companions’ condition has worsened."
+      "text": "El estado de vuestros compañeros ha empeorado."
     },
     {
       "id": "maybe_send_dreamers_grow_weaker",
       "type": "branch",
       "bullet_type": "small",
-      "text": "If you are playing <i>The Web of Dreams</i> and <i>The Dream-Quest</i> as an interconnected eight-part campaign:",
+      "text": "Como estás jugando <i>La red de los sueños</i> y <i>La búsqueda onírica</i> como una campaña interconectada de ocho partes:",
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
@@ -53559,7 +53559,7 @@
     {
       "id": "send_dreamers_grow_weaker",
       "bullet_type": "small",
-      "text": "Record in Campaign A’s Campaign Log <i>the dreamers grow weaker</i>.",
+      "text": "Anota en el registro de campaña de la campaña A que <i>los soñadores se debilitan</i>.",
       "type": "input",
       "input": {
         "type": "send_campaign_link",
@@ -53634,7 +53634,7 @@
         "physical",
         "mental"
       ],
-      "text": "With panic overtaking your mind, you run through the main exit of St. Mary’s Hospital, putting as much distance as you can between you and this accursed infestation. The moment you get home, you collapse from exhaustion.\nThe next day, you wake and check the morning papers, expecting to see tales of chaos at St. Mary’s and of an infestation of arachnids. However, there is no news regarding the hospital at all. Did last night’s events occur too late for the <i>Arkham Advertiser</i> to report on them? Was it all just a bad dream? You put on your coat and head back to the hospital to confirm that what you saw last night was real.\nWhen you arrive at St. Mary’s, you expect to see the building—or perhaps all of Uptown—covered in spiderwebs. But instead, to your surprise, it is perfectly clean. Patients, nurses, and doctors walk through its halls like none of last night’s events transpired. Before you can find your sleeping companions, however, a blond-haired man with heavy bags under his eyes approaches you and places a hand on your shoulder.\n“Good morning. We should talk.”",
+      "text": "El pánico invade vuestras mentes y salís corriendo por la salida principal del Hospital de Santa María, poniendo tanta tierra de por medio como podéis entre vosotros y esta maldita infestación. En cuanto llegáis a casa, os derrumbáis de agotamiento.\nAl día siguiente, os despertáis y revisáis los periódicos de la mañana, esperando ver historias sobre el caos en el Santa María y sobre una infestación de arácnidos. Sin embargo, no hay ninguna noticia sobre el hospital. ¿Acaso los acontecimientos del Santa María sucedieron demasiado tarde como para que el Arkham Advertiser pudiera informar de ellos? ¿Fue todo un mal sueño? Os ponéis los abrigos y volvéis al hospital para confirmar que lo que visteis anoche fue real.\nCuando llegáis al Santa María, esperáis ver el edificio, o incluso toda la Periferia, cubierto de telarañas. En lugar de eso, y para sorpresa vuestra, está perfectamente limpio. Por el lugar caminan pacientes, enfermeras y médicos como si los acontecimientos de la pasada noche no hubieran tenido lugar. Sin embargo, antes de que podáis buscar a vuestros compañeros dormidos, un hombre rubio con grandes bolsas bajo los ojos se acerca a vosotros y os pone la mano en el hombro.\n–Buenos días. Deberíamos hablar",
       "steps": [
         "record_steps_of_the_bridge",
         "doctors_fate_unknown",
@@ -53659,7 +53659,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "Before you depart from the hospital, Doctor Maheswaran announces that she is going to check on her patients, and you decide to join her. You head back to the emergency ward and find that your companions are still unconscious. Doctor Maheswaran checks their eyes, takes their pulses, and shakes her head. “It’s even worse than before. Whatever internal stimuli they are reacting to, they are causing the patients’ minds and bodies a great deal of stress.” She sits down next to one of her patients and shakes her head. “I’ll stay here. You go talk to that patient and get to the bottom of this, okay? Oh, and if you find any more spiders, squash one for me, please.” As you leave, you swear to your sleeping friends that you will get to the bottom of this and save them.",
+      "text": "Antes de que os marchéis del hospital, la doctora Maheswaran anuncia que va a comprobar el estado de sus pacientes, así que decidís ir con ella. Volvéis al pabellón de urgencias y descubrís que vuestros compañeros siguen inconscientes. La doctora Maheswaran examina sus ojos, les toma el pulso y sacude la cabeza.\n–Es aún peor que antes. Sean lo que sean esos estímulos internos ante los que están reaccionando, hacen que las mentes y cuerpos de los pacientes sufran una gran cantidad de estrés –Se sienta junto a uno de sus pacientes y vuelve a sacudir la cabeza–. Me quedaré aquí. Ustedes vayan a hablar con ese paciente y lleguen al fondo de este asunto, ¿de acuerdo? Ah, y si encuentran más arañas, aplasten una de mi parte, por favor.\nAl marcharos, les juráis a vuestros amigos durmientes que encontraréis una solución para salvarlos.",
       "steps": [
         "doctor_is_alive",
         "dreamers_grow_weaker",
@@ -53671,7 +53671,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "Before you depart from the hospital, you search high and low for Doctor Maheswaran, but she is nowhere to be found. You head back to the emergency ward to check on your companions and find that they are still unconscious. In fact, their condition seems to have grown worse. Their foreheads are covered in sweat, and blood drips from their closed eyes. One of them is whispering something in their sleep, a repeated phrase in a language you cannot understand. As you leave, you swear to your sleeping friends that you will get to the bottom of this and save them.",
+      "text": "Antes de marcharos del hospital, buscáis a la doctora Maheswaran por todas partes, pero no aparece por ningún lado. Volvéis al pabellón de urgencias para comprobar el estado de vuestros compañeros y descubrís que siguen inconscientes. De hecho, su estado parece haber empeorado. Tienen las frentes empapadas de sudor, y de sus ojos cerrados gotea sangre. Uno de ellos susurra algo en sueños, una frase repetida en un idioma que no lográis entender. Al marcharos, les juráis a vuestros amigos durmientes que encontraréis una solución para salvarlos.",
       "steps": [
         "doctor_is_missing",
         "dreamers_grow_weaker",
@@ -53683,7 +53683,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "Before you depart from the hospital, you go back to the emergency ward to check on Doctor Maheswaran. The door to the room where your companions are staying is sealed shut, so you knock on the door and ask if she is there. On the other side, you hear furniture being shifted aside and knocked over. An exhausted Shivani Maheswaran cracks open the door and peers at you with bloodshot eyes. “Oh, thank goodness it is you.” She lets you in and collapses onto a nearby chair. “Those… <i>things</i> tried to get into the room. I had to barricade myself inside to stop them.” You inform her that the danger has passed and thank her for watching over your friends. “I’ll continue to keep an eye on them,” she says. “Just please, tell me there are no more spiders out there, or I’m taking the first train out of this town.” As you leave, you swear to your sleeping friends that you will get to the bottom of this and save them.",
+      "text": "Antes de marcharos del hospital, volvéis al pabellón de urgencias para ver cómo está la doctora Maheswaran. La puerta de la sala en la que se encuentran vuestros compañeros está cerrada a cal y canto, así que llamáis y preguntáis si está allí. Al otro lado, oís cómo arrastra y tira unos muebles. Una agotada Shivani Maheswaran abre la puerta una rendija y os mira con ojos inyectados en sangre.\n–Oh, gracias al cielo que son ustedes –Os deja entrar y se derrumba en una silla cercana–. Esas... <i>cosas</i> trataron de entrar en la sala. Tuve que encerrarme dentro con una barricada para detenerlas.\nLe informáis de que el peligro ha pasado y le dais las gracias por cuidar de vuestros amigos.\n–Seguiré teniéndolos en observación –os dice–. Pero, por favor, díganme que no hay más arañas ahí fuera o me cojo el primer tren que salga de la ciudad.\nAl marcharos, les juráis a vuestros amigos durmientes que encontraréis una solución para salvarlos.",
       "steps": [
         "doctor_is_alive",
         "maybe_send_dreamers_are_strong",
@@ -53694,7 +53694,7 @@
     {
       "id": "R4",
       "title": "Resolución 4",
-      "text": "With panic overtaking your mind and no idea how you can escape, you flee anywhere your feet will take you. Hideous monsters begin to close in around you, and you envision yourself wrapped in webs, waiting to be a spider’s meal. Eventually you come to a dead end: a room covered from floor to ceiling in thick, sticky webs. The skittering of spider legs follows close behind, and you realize you have no hope to escape unless there is a path behind the webs. There is no choice remaining for you. You run headlong into the webs, ripping and tearing at them with the ferocity of a cornered animal. It is tough work, but eventually you see a light behind the webs—perhaps an escape route.\nOnce you cross through the webs, you are no longer in the dark, sterile halls of St. Mary’s, but in a narrow, web-covered cavern. You dare not tarry or go back the way you came, so you run through the dark, cramped cave with no idea where it might lead. Glancing through the cobwebs to your left and right, you see not just hard rock, but the glimmering of lights, like a sea of stars looming beyond the silken threads. Eventually, you emerge from another wall of webs, only to find yourself in an alleyway in Arkham’s Merchant District, near the Miskatonic River. You have neither the time nor the desire to analyze this, instead deciding to put as much distance as you can between you and the hospital. The moment you get home, you collapse from exhaustion.\nThe next day, you wake and check the morning papers, expecting to see tales of chaos at St. Mary’s and of an infestation of arachnids. However, there is no news regarding the hospital at all. Did last night’s events occur too late for the Arkham Advertiser to report on them? Was it all just a bad dream? You put on your coat and head back to the hospital to confirm that what you saw last night was real.\nWhen you arrive at St. Mary’s, you expect to see the building—or perhaps all of Uptown—covered in spiderwebs. Instead, to your surprise, it is perfectly clean. Patients, nurses, and doctors walk through its halls like none of last night’s events transpired. You ask the receptionist if you can see Doctor Maheswaran, but he shakes his head. “I’m sorry, but I don’t think she’s here today. She left in the middle of her shift last night, and nobody has seen her since. Is there somebody else I can reach for you?”\nSomething is not right. None of this makes any sense. You are about to demand to see your sleeping companions when a blond-haired man with heavy bags under his eyes approaches you and places a hand on your shoulder.\n“Good morning. We should talk.”",
+      "text": "El pánico invade vuestras mentes y no tenéis ni idea de cómo escapar, así que huis allí donde os llevan los pies. Los horrendos monstruos comienzan a acortar distancias, y ya os imagináis envueltos en redes y a la espera de ser devorados por una araña. Al final, acabáis en un callejón sin salida: una sala cubierta de gruesas telarañas pegajosas desde el suelo hasta el techo. El correteo de las patas de las arañas se acerca, y os dais cuenta de que no tenéis la menor esperanza de escapar salvo que haya un camino tras las telarañas. No os queda elección. Corréis directos hacia las redes, rompiéndolas y desgarrándolas con la ferocidad de un animal acorralado. Es un trabajo duro, pero al final veis una luz tras las redes; tal vez sea una ruta de huida.\nCuando cruzáis las telarañas, ya no estáis en los oscuros pasillos estériles del Santa María, sino en una angosta caverna cubierta de telas de araña. No os atrevéis a demoraros ni a volver por donde habéis venido, así que corréis por la oscura y estrecha cueva sin la menor idea de adónde conduce. Dais rápidos vistazos a las telas que tenéis a izquierda y a derecha, y no veis solamente roca, sino el destello de unas luces, como un mar de estrellas que asomara tras los hilos de seda. Al final, salís de otro muro de telarañas para encontraros en un callejón del Distrito comercial de Arkham, junto al río Miskatonic. No tenéis ni tiempo ni ganas de analizar lo que ocurre, por lo que en cambio decidís poner tanta tierra de por medio como podéis entre vosotros y el hospital. En cuanto llegáis a casa, os derrumbáis de agotamiento.\nAl día siguiente, os despertáis y revisáis los periódicos de la mañana, esperando ver historias sobre el caos en el Santa María y sobre una infestación de arácnidos. Sin embargo, no hay ninguna noticia sobre el hospital. ¿Acaso los acontecimientos del Santa María sucedieron demasiado tarde como para que el Arkham Advertiser pudiera informar de ellos? ¿Fue todo un mal sueño? Os ponéis los abrigos y volvéis al hospital para confirmar que lo que visteis anoche fue real.\nCuando llegáis al Santa María, esperáis ver el edificio, o incluso toda la Periferia, cubiertas de telarañas. En lugar de eso, y para sorpresa vuestra, está perfectamente limpio. Por el lugar caminan pacientes, enfermeras y médicos como si los acontecimientos de la pasada noche no hubieran tenido lugar. Le preguntáis al recepcionista si podéis ver a la doctora Maheswaran, pero éste sacude la cabeza y responde: –Lo lamento, pero creo que hoy no ha venido. Se marchó anoche en mitad de su guardia y nadie la ha visto desde entonces. ¿Quieren ver a otro médico en su lugar?\nAlgo no va bien. Nada de esto tiene sentido. Estáis a punto de pedir que os dejen ver a vuestros compañeros dormidos cuando un hombre rubio con grandes bolsas bajo los ojos se acerca a vosotros y os pone la mano en el hombro.\n–Buenos días. Deberíamos hablar.",
       "steps": [
         "maybe_record_8_steps_of_bridge",
         "doctor_is_missing",
@@ -53706,7 +53706,7 @@
     {
       "id": "R5",
       "title": "Resolution 5",
-      "text": "You depart from the hospital with the blond-haired man in tow, and he introduces himself more fully. The man, whose name is Randolph Carter, tells you that he is a “dreamer,” like Virgil Gray and your friends: one with the ability to traverse the divide between the waking world and a parallel dimension that was created by, is sustained by, and dwells within the dreams of all living organisms on Earth—a realm he calls <smallcaps>The Dreamlands</smallcaps>. “It is a place of both dreams and nightmares,” he explains. “And I’m afraid your friends are trapped there as we speak.”\nYou ask if there is anything you can do to aid them. Randolph ponders this for a moment, then replies: “Normally, dreamers can return to the real world simply by willing themselves awake, but for some reason, your friends are unable to do so. If you truly wish to help them, you too must enter the Dreamlands and find them. But forcing your way into the Dreamlands is not easy. Such paths are usually accessible only to experienced dreamers, and only in sleep. Still, there are some places where the Dreamlands touch the waking world, and in those places, with the right tools, you may enter the Dreamlands in your physical body. I know of such a place, not far from here. However—”\nBefore Randolph is able to finish his sentence, he is interrupted by a mysterious voice…",
+      "text": "Os marcháis del hospital seguidos por el hombre rubio, que se presenta de forma más completa. El hombre, cuyo nombre es Randolph Carter, os dice que es un “soñador”, como Virgil Gray y vuestros amigos: uno con la capacidad de atravesar la frontera que separa el mundo de la vigilia de una dimensión paralela que fue creada por los sueños de todos los organismos vivientes de la Tierra y que se sustenta de dichos sueños y mora en ellos; un reino que llama las <smallcaps>Tierras del Sueño</smallcaps>.\n–Es un lugar tanto de sueños como de pesadillas –explica–. Y me temo que vuestros amigos están atrapados allí en este momento.\nLe preguntáis si podéis hacer algo por ayudarlos. Randolph medita unos instantes y luego contesta: –Normalmente, los soñadores pueden volver al mundo real simplemente deseando despertarse, pero por algún motivo, vuestros amigos no pueden hacerlo. Si de verdad queréis ayudarlos, tendréis que entrar también en las Tierras del Sueño y encontrarlos. Pero forzar el acceso a las Tierras del Sueño no es sencillo. Se trata de caminos que normalmente sólo son accesibles para soñadores experimentados, y sólo mientras duermen. Aun así, hay lugares en los que las Tierras del Sueño tocan el mundo de la vigilia; y en esos lugares, con las herramientas adecuadas, podéis entrar en las Tierras del Sueño con vuestros cuerpos físicos. Conozco un lugar así que no está lejos de aquí. Sin embargo...\nAntes de que Randolph pueda terminar la frase, una voz misteriosa lo interrumpe.",
       "steps": [
         "earn_xp",
         "remove_infestation_bag",
@@ -53718,8 +53718,8 @@
 },
 {
   "id": "weaver_of_the_cosmos",
-  "scenario_name": "Weaver of the Cosmos",
-  "full_name": "Scenario IV: Weaver of the Cosmos",
+  "scenario_name": "Tejedora del cosmos",
+  "full_name": "Escenario IV–B: Tejedora del cosmos",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -53734,7 +53734,7 @@
     {
       "id": "weaver_intro",
       "type": "story",
-      "text": "Everything has led to this. Virgil's writing, your companions' never-ending sleep, St. Mary's, the black cat, all of it. You have no choice but to press on. This transdimensional space is home to a creature that would obliterate your world and replace it with a new reality, a nightmarescape of pitch-black darkness and creatures that prey on your kind. If you cannot stop its weaving, there will be no Earth left to wake up to. You have to do something, even if it means your end."
+      "text": "Todo ha llevado hasta aquí. Los relatos de Virgil, el sueño interminable de vuestros compañeros, el hospital Santa María, el gato negro... Todo. No tenéis más elección que seguir adelante. Este espacio transdimensional es el hogar de una criatura que pretende aniquilar vuestro mundo y sustituirlo por una nueva realidad: un paisaje de pesadilla de oscuridad insondable y criaturas que dan caza a los humanos. Si no lográis detener su tejido, no quedará una Tierra en la que despertar. Tenéis que hacer algo aunque suponga vuestro fin."
     },
     {
       "id": "gather_encounter_sets",
@@ -53750,23 +53750,23 @@
     },
     {
       "id": "shuffle_great_web",
-      "text": "Shuffle each copy of The Great Web and put 4 of them into play at random, in a vertical line.",
+      "text": "Añade todas las copias de La gran red y pon 4 de ellas en juego al azar, formando una línea vertical.",
       "bullets": [
         {
-          "text": "Each investigator begins play at the topmost The Great Web location."
+          "text": "Cada investigador comienza la partida en el Lugar La gran red superior."
         },
         {
-          "text": "Set each other The Great Web location aside, out of play."
+          "text": "Deja aparte todos los demás Lugares La gran red, fuera del juego."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The double-sided Atlach-Nacha card, the 4 Legs of Atlach-Nacha enemies, and both copies of The Spinner in Darkness."
+      "text": "Deja aparte las siguientes cartas, fuera del juego: la carta Atlach-Nacha de doble cara, los 4 Enemigos Patas de Atlach-Nacha y ambas copias de La tejedora en la oscuridad."
     },
     {
       "id": "check_steps_of_bridge",
-      "text": "Check the number of tally marks recorded next to \"Steps of the Bridge\" in the Campaign Log.",
+      "text": "Comprueba el número de marcas anotadas en la sección “Peldaños del puente” del registro de campaña.",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -53856,27 +53856,27 @@
     {
       "id": "nothing_happens",
       "bullet_type": "small",
-      "text": "Because there are 2 or fewer tally marks recorded, nothing happens."
+      "text": "Como hay 2 o menos marcas anotadas, no ocurre nada."
     },
     {
       "id": "place_one_doom",
       "bullet_type": "small",
-      "text": "Because there are 3-5 tally marks, place 1 doom on the bottommost location."
+      "text": "Como hay 3–5 marcas anotadas, coloca 1 ficha de Perdición sobre el Lugar inferior."
     },
     {
       "id": "place_two_doom",
       "bullet_type": "small",
-      "text": "Because there are 6-8 tally marks, place 2 doom on the bottommost location."
+      "text": "Como hay 6–8 marcas anotadas, coloca 2 fichas de Perdición sobre el Lugar inferior."
     },
     {
       "id": "place_three_doom",
       "bullet_type": "small",
-      "text": "Because there are 9-11 tally marks, place 3 doom on the bottommost location."
+      "text": "Como hay 9–11 marcas anotadas, coloca 3 fichas de Perdición sobre el Lugar inferior."
     },
     {
       "id": "place_four_doom",
       "bullet_type": "small",
-      "text": "Because there are 12 or more tally marks, place 4 doom on the bottommost location."
+      "text": "Como hay 12 o más marcas anotadas, coloca 4 fichas de Perdición sobre el Lugar inferior."
     },
     {
       "id": "shuffle_encounter_deck",
@@ -53886,7 +53886,7 @@
       "id": "stop_rule",
       "type": "rule_reminder",
       "title": "Stop!",
-      "text": "At this point, you are ready to begin playing <i>Weaver of the Cosmosl</i>. Do not read the interlude or rules text below just yet. You will be instructed to read them at a later point in time, during the course of the scenario."
+      "text": "En este momento, ya puedes empezar a jugar <i>Tejedora del cosmos</i>. Ignora el interludio y los textos de reglas que hay a continuación de momento. Se te indicará que los leas en un momento posterior del escenario."
     },
     {
       "id": "$play_scenario",
@@ -53906,7 +53906,7 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: The Spider Queen",
+            "text": "Interludio del escenario: La reina araña",
             "steps": [
               "spider_queen_1",
               "check_campaign_log",
@@ -53934,16 +53934,16 @@
     {
       "id": "spider_queen_1",
       "type": "story",
-      "text": "You climb a precipice of stone and behold the enormity of the spider's bridge and the <i>thing</i> astride it: Atlach-Nacha, god of spiders, accompanied by its horde of weavers. The many-legged monstrosities continuously intertwine strands of cosmic web, toiling endlessly with nightmarish fervor. As the awful creatures weave each thread, you feel reality and dreams distort, collide, and crash together. In the distance, waves of dream break upon the rocks of reality, and reality collapses upon itself into the surging, amorphous dream. You can barely comprehend the strange, shifting vistas. A sticky web hangs off the side of your vantage point, like a silken ladder leading down to your doom."
+      "text": "Trepáis por un precipicio de piedra y contempláis la enormidad del puente de la araña y la <i>cosa</i> que está a horcajadas sobre él: Atlach-Nacha, dios de las arañas, acompañado por su horda de tejedoras. Las monstruosidades de muchas patas entretejen constantemente hilos de tela cósmica, trabajando de forma incesante con un fervor de pesadilla. Con cada hilo que tejen las terribles criaturas, notáis cómo se distorsionan sueños y realidad, cómo impactan y chocan entre sí. A lo lejos, olas de sueño rompen sobre las rocas de la realidad, y ésta se colapsa sobre sí misma en forma de un amorfo sueño creciente. Apenas lográis asimilar el extraño paisaje cambiante. Una pegajosa red cuelga de un lateral de vuestra plataforma, como una escalera de seda que lleva hacia vuestra perdición."
     },
     {
       "id": "check_campaign_log",
-      "text": "Check Campaign Log."
+      "text": "Comprueba el registro de campaña."
     },
     {
       "id": "check_randolph_survived_descent_and_black_cat_knows_truth",
       "bullet_type": "small",
-      "text": "<i>If Randolph survived the descent</i> and <i>the black cat knows the truth.</i>",
+      "text": "Si <i>Randolph Carter sobrevivió al descenso</i> y <i>el gato negro sabe la verdad.</i>",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -53991,7 +53991,7 @@
       "id": "check_randolph_survived_the_descent",
       "bullet_type": "small",
       "type": "branch",
-      "text": "Otherwise, <i>if Randolph survived the descent</i>.",
+      "text": "En cambio, si <i>Randolph Carter sobrevivió al descenso</i>.",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -54019,7 +54019,7 @@
       "id": "check_randolph_did_not_survive_descent",
       "bullet_type": "small",
       "type": "branch",
-      "text": "<i>If Randolph did not survive the descent</i>.",
+      "text": "Si <i>Randolph Carter no sobrevivió al descenso</i>.",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -54034,21 +54034,21 @@
     {
       "id": "spider_queen_2",
       "type": "story",
-      "text": "You are about to climb down the web to the platform below, when you hear the black cat's voice from behind your companion, Randolph. \"Drop it,\" the voice commands. A sinister grin spreads across Randolph's face as he drops a jagged onyx blad, which clatters to the ground.\n\"So you have seen through my mask?\" he says. \"No matter. You will complete the errand upon which I have sent you, regardless. Your world depends on it.\"\nBewildered, you ask why Randolph is acting this way. The black cat jumps onto your shoulder and perches there, its gaze never leaving your erstwhile companion. \"I figured it out a little while ago. He's not Randolph. He never was. Just an interloper in Randolph's skin.\"\n\"Interloper?\" Randolph thunders with anger. \"You, cat, are the interloper! Yes, I know what you are. This is not your place. But enough talk.\" A smile crawls along his lips once more. \"You have a task to perform. Goodbye, then… for now.\" With his warning complete, Not-Randolph walks off of the edge of the platform and falls into oblivion."
+      "text": "Estáis a punto de bajar por la red hacia la plataforma de más abajo cuando oís la voz del gato negro a la espalda de Randolph, vuestro compañero: –Suéltala –dice la voz. Una sonrisa siniestra cruza el rostro de Randolph cuando deja caer una hoja dentada de ónice que resuena contra el suelo.\n–Así que has visto tras mi disfraz –dice–. Da igual. En cualquier caso, completaréis esta misión en la que os he hecho embarcaros. Vuestro mundo depende de ello.\nAsombrados, le preguntáis a Randolph por qué actúa así. El gato negro salta sobre el hombro de uno de vosotros y se acomoda allí, sin apartar la mirada de vuestro antiguo compañero: –Lo adiviné hace un tiempo. No es Randolph. Nunca lo fue. Es sólo un impostor con la piel de Randolph.\n–¿Impostor? –brama Randolph con ira–. ¡El impostor eres tú, gato! Sí, sé lo que eres. Éste no es tu sitio. Pero basta de cháchara. –Una sonrisa vuelve a asomar en sus labios–. Tenéis una tarea que realizar. Adiós... por ahora.\nTras su amenaza, el ser que no es Randolph camina hasta el borde de la plataforma y se deja caer hacia el olvido."
     },
     {
       "id": "spider_queen_3",
       "type": "story",
-      "text": "You begin to climb down the web to the platform below, from which you can reach the edge of the bridge and Atlach-Nacha itself. Halfway down, the suspended platform jolts and starts to sway violently from side to side. You grip the silken threads tightly, hoping that the sticky web will keep you from falling. You look to Randolph to make sure he is okay, and it is then that you notice he is not climbing above you as you had suspected he would. You look up to find your companion scowling at you from above, a blade of onyx in his hands. He has cut a segment of the web upon which you are climbing. You plummet to the rocks below, landing painfully on your back. When you look back up at Randolph, his countenance has changed.\n\"Foolish mortals. I was never going to allow you to save your companions. You have an errand of mine to run, and that is your sole purpose. If you wish to live, complete this task for me.\" He peers across at the unfathomble spider that looms before you. \"I shall be the one to claim your world—not that thing.\" Then, Not-Randolph simply turns and walks away."
+      "text": "Comenzáis a descender por la red hacia la plataforma de abajo, desde la que podéis llegar al borde del puente y a Atlach-Nacha. A medio camino, la plataforma suspendida da una sacudida y empieza a oscilar violentamente de lado a lado. Os aferráis a los hilos de seda, esperando que la pegajosa red evite que os caigáis. Miráis a Randolph para aseguraros de que está bien, y es entonces cuando os dais cuenta de que no está trepando como pensabais que haría. Al levantar la vista, veis que vuestro compañero os mira con desdén desde arriba y tiene una hoja de ónice en la mano. Ha cortado un trozo de la tela sobre la que trepáis. No tenéis tiempo de preguntarle qué está haciendo antes de que corte la tela por completo. Os precipitáis hacia las rocas de debajo y aterrizáis dolorosamente de espaldas. Al volver a mirar a Randolph, su expresión adusta ha cambiado.\n–Necios mortales. Nunca tuve intención de permitir que salvarais a vuestros compañeros. Tenéis una tarea mía que cumplir, y ése es vuestro único propósito. Si queréis vivir, completad este encargo. –Mira hacia la inenarrable araña que se alza ante vosotros–. Seré yo quien se haga con vuestro mundo, y no esa cosa.\nDicho eso, el ser que no es Randolph se limita a darse la vuelta y marcharse."
     },
     {
       "id": "spider_queen_4",
       "type": "story",
-      "text": "The creature is close to completing its design. Its legs move about swiftly, spinning thread after thread of cosmic silk with unearthly determination. It scarcely even recognizes your presence. Perhaps if you can sever its legs, or tear apart the webbing on which it stands…"
+      "text": "A la criatura le falta poco para completar su diseño. Sus patas se mueven con rapidez, tejiendo hilo tras hilo de seda cósmica con determinación inhumana.\nApenas reconoce vuestra presencia. Tal vez si le cortáis las patas o rompéis la tela sobre la que se apoya…"
     },
     {
       "id": "remove_randolph_carter",
-      "text": "If an investigator’s deck contains Randolph Carter <i>(Chained to the Waking World)</i> <i>(The Dream-Eaters card #79)</i>, remove him from that deck for the remainder of the campaign.",
+      "text": "Si el mazo de un investigador contiene a Randolph Carter <i>(Encadenado al mundo de la vigilia)</i> <i>(Los devoradores de sueños 79)</i>, retíralo de ese mazo durante el resto de la campaña.",
       "effects": [
         {
           "type": "remove_card",
@@ -54063,7 +54063,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "trapped_in_atlach_nachas_realm",
-          "text": "the investigators are trapped in Atlach-Nacha's realm."
+          "text": "los investigadores están atrapados en el reino de Atlach-Nacha."
         }
       ]
     },
@@ -54123,27 +54123,27 @@
     },
     {
       "id": "remove_each_location",
-      "text": "Remove each location from the game except for the bottommost location. Shift that location upward so it is at the top of the play area. Shuffle the remaining set-aside The Great Web locations and place 7 of them in a circle, along with the investigators' location (as the topmost location in the circle). Until the end of the scenario, each location is connected to each location next to it <i>(clockwise or counterclockwise from it)</i>."
+      "text": "Retira cada Lugar de la partida excepto el inferior. Mueve ese Lugar hacia arriba, de forma que esté en la parte superior del área de juego. Baraja los Lugares La gran red puestos aparte restantes y coloca 7 de ellos en círculo junto con el Lugar de los investigadores (como Lugar superior del círculo). Hasta el final del escenario, cada Lugar está conectado a cada Lugar que tenga adyacente <i>(en el sentido de las agujas del reloj y al revés)</i>."
     },
     {
       "id": "assemble_atlach_nacha",
-      "text": "Assemble Atlach-Nacha by performing the following steps, in order:",
+      "text": "Forma a Atlach-Nacha realizando los siguientes pasos en orden:",
       "bullets": [
         {
-          "text": "Find the double-sided Atlach-Nacha card and flip it to the side that only has art on it."
+          "text": "Busca la carta de Atlach-Nacha de doble cara y dale la vuelta para mostrar el lado que sólo tiene ilustración."
         },
         {
-          "text": "Arrange the 4 Legs of Atlach-Nacha enemies next to it, as depicted in the following diagram"
+          "text": "Coloca los 4 Enemigos Patas de Atlach-Nacha junto a la carta anterior, como muestra la siguiente diagrama."
         },
         {
-          "text": "Place the assembled Atlach-Nacha in the center of the play area, between all 8 locations, so one corner of each Legs of Atlach-Nacha enemy touches a different location <i>(see suggested play area)</i>."
+          "text": "Coloca este conjunto de Atlach-Nacha en el centro de la zona de juego, entre los 8 Lugares, de forma que una esquina de cada Enemigo Patas de Atlach-Nacha toque un Lugar distinto <i>(consulta la zona de juego sugerida)</i>."
         }
       ]
     },
     {
       "id": "layout_atlach_nacha",
       "type": "location_setup",
-      "text": "Atlach-Nacha Diagram",
+      "text": "Diagrama de Atlach-Nacha",
       "horizontal": "normal",
       "vertical": "half",
       "locations": [
@@ -54166,29 +54166,29 @@
     },
     {
       "id": "shuffle_spinner_of_darkness",
-      "text": "Shuffle each set-aside copy of The Spinner in Darkness into the encounter deck, along with the encounter discard pile."
+      "text": "Añade la pila de descartes de Encuentros y todas las copias puestas aparte de La tejedora en la oscuridad al mazo de Encuentros y baraja éste."
     },
     {
       "id": "read_atlach_nacha_rules",
-      "text": "Read the rules for \"Atlach-Nacha,\" as follows."
+      "text": "Lee las siguientes reglas de “Atlach-Nacha”."
     },
     {
       "id": "atlach_nacha_rule",
       "type": "rule_reminder",
       "title": "Atlach-Nacha",
-      "text": "Atlach-Nacha's form comprises multiple Legs of Atlach-Nacha enemies. Each of these enemies operates as a separate enemy with the massive keyword and is considered to be engaged with each investigator at its location, like most massive enemies.",
+      "text": "La forma de Atlach-Nacha se compone de varios Enemigos Patas de Atlach-Nacha. Cada uno de esos Enemigos funciona como un Enemigo individual con la palabra clave Descomunal y se considera enfrentado a cada investigador que esté en su Lugar, como la mayoría de Enemigos Descomunal.",
       "bullets": [
         {
-          "text": "Each Legs of Atlach-Nacha enemy is considered to be at the location its corner is physically bordering, as depicted in the diagram below."
+          "text": "Cada Enemigo Patas de Atlach-Nacha se considera en el Lugar cuya esquina está tocando, como muestra el diagrama abajo."
         },
         {
-          "text": "Atlach-Nacha's center card and each Legs of Atlach-Nacha enemy should remain in the same formation at all times, even if one card is removed from the formation. If one card moves, all cards in the formation must likewise move."
+          "text": "La carta central de Atlach-Nacha y cada Enemigo Patas de Atlach-Nacha debe permanecer en la misma formación en todo momento, incluso si se retira una carta de la formación. Si una carta se mueve, todas las cartas de la formación deben moverse del mismo modo."
         },
         {
-          "text": "<b>As a result, Legs of Atlach-Nacha cards cannot move or be moved except by effects that \"spin\" Atlach-Nacha.</b>"
+          "text": "<b>Por lo tanto, las cartas Patas de Atlach-Nacha no pueden moverse ni ser movidas excepto por efectos que “giren” a Atlach-Nacha.</b>"
         },
         {
-          "text": "If you are instructed to \"spin\" Atlach-Nacha one or more times, rotate all of the cards in the center (each remaining Legs of Atlach-Nacha card, as well as the center card) in the indicated direction such that each of the Legs of Atlach-Nacha enemies moves clockwise that many locations."
+          "text": "Si se te indica que “gires” a Atlach-Nacha una o más veces, gira todas las cartas del centro (tanto la carta central como todas las cartas Patas de Atlach-Nacha restantes) en la dirección indicada, de forma que cada Enemigo Patas de Atlach-Nacha se mueva esa cantidad de Lugares en el sentido de las agujas del reloj."
         }
       ]
     },
@@ -54198,7 +54198,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they have prevented the Dreamlands and Earth from merging.",
+        "confirm_text": "Cada investigador obtiene 5 puntos de experiencia adicionales por haber evitado que las Tierras del Sueño se fundan con la realidad.",
         "text": "Zona de victoria:",
         "effects": [
           {
@@ -54216,13 +54216,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "bridge_was_completed",
-          "text": "the bridge was completed."
+          "text": "el puente fue completado."
         }
       ]
     },
     {
       "id": "all_killed",
-      "text": "Each investigator is <b>killed</b>",
+      "text": "Todos los investigadores <b>mueren</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -54238,7 +54238,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "bridge_was_destroyed",
-          "text": "the bridge was destroyed."
+          "text": "el puente fue destruido."
         }
       ]
     },
@@ -54249,7 +54249,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "returned_to_reality",
-          "text": "the investigators returned to reality."
+          "text": "los investigadores volvieron a la realidad."
         }
       ]
     },
@@ -54260,7 +54260,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "never_escaped",
-          "text": "the investigators never escaped."
+          "text": "los investigadores no lograron escapar."
         }
       ]
     },
@@ -54271,13 +54271,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "still_in_the_dreamlands",
-          "text": "the investigators are still in the Dreamlands."
+          "text": "los investigadores siguen en las Tierras del Sueño."
         }
       ]
     },
     {
       "id": "two_physical_trauma",
-      "text": "Each investigator suffers 2 physical trauma from their fierce fight with the spider god.",
+      "text": "Cada investigador sufre 2 traumas físicos por su encarnizado combate con el dios araña.",
       "effects": [
         {
           "type": "trauma",
@@ -54288,7 +54288,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each investigator is driven <b>insane</b>",
+      "text": "Todos los investigadores se vuelven <b>locos</b>.",
       "effects": [
         {
           "type": "trauma",
@@ -54299,7 +54299,7 @@
     },
     {
       "id": "maybe_lose_campaign",
-      "text": "If you are playing <i>The Web of Dreams</i> as a four-part campaign:",
+      "text": "Si estás jugando <i>La red de los sueños</i> como una campaña de cuatro partes:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -54343,7 +54343,7 @@
     },
     {
       "id": "maybe_win_campaign",
-      "text": "If you are playing <i>The Web of Dreams</i> as a four-part campaign:",
+      "text": "Si estás jugando <i>La red de los sueños</i> como una campaña de cuatro partes:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -54394,7 +54394,7 @@
     },
     {
       "id": "maybe_win_never_seen_again",
-      "text": "If you are playing <i>The Web of Dreams</i> as a four-part campaign:",
+      "text": "Si estás jugando <i>La red de los sueños</i> como una campaña de cuatro partes:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -54421,7 +54421,7 @@
     {
       "id": "win_never_seen_again",
       "bullet_type": "small",
-      "text": "The investigators win the campaign… and are never seen or heard from again.",
+      "text": "Los investigadores ganan la campaña... pero nunca se vuelve a saber de ellos.",
       "effects": [
         {
           "type": "campaign_data",
@@ -54437,7 +54437,7 @@
     },
     {
       "id": "resolution_1_branch",
-      "text": "Check Campaign Log. Resolve the topmost option that applies."
+      "text": "Comprueba el registro de campaña. Resuelve la primera opción, en orden, que se aplique a la situación."
     },
     {
       "id": "check_found_a_way_out_of_the_underworld",
@@ -54580,7 +54580,7 @@
     {
       "id": "no_resolution",
       "title": "No se ha llegado a ninguna resolución\n(todos los investigadores fueron derrotados)",
-      "text": "You awaken trapped inside something tight and sticky. Your arms are bound to your sides, and no matter how fiercely you struggle, you cannot seem to move except to wiggle your fingers helplessly. Slowly, dread creeps its way through your mind as you realize the situation you are in. As you cannot move your head, you are forced to watch as the eight-legged creature emerges from the darkness. It makes no sound as it steps onto the web. Its many eyes reflect your terrified expression. Its mandibles drip with hunger. You only wish you could look away.",
+      "text": "Despertáis atrapados dentro de algo pegajoso y ajustado. Tenéis los brazos atados a los costados, y da igual lo mucho que os debatáis, porque no parecéis poder moveros más allá de agitar los dedos desesperadamente. Lentamente, el temor invade vuestra mente al daros cuenta de la situación en la que os encontráis. Como no podéis mover la cabeza, os veis obligados a contemplar cómo la criatura de ocho patas surge de la oscuridad. No hace ningún sonido mientras se coloca sobre la red. Su multitud de ojos reflejan vuestra expresión aterrada. Sus mandíbulas gotean hambrientas. Ojalá pudierais apartar la vista.",
       "steps": [
         "bridge_was_completed",
         "all_killed",
@@ -54590,7 +54590,7 @@
     {
       "id": "R1",
       "title": "Resolución 1",
-      "text": "You clutch a silken thread, the only thing keeping you from plummeting through the endless depths of the void.",
+      "text": "Os aferráis a un hilo de seda, que es lo único que impide que os precipitéis en la infinita profundidad del vacío.",
       "steps": [
         "bridge_was_destroyed",
         "earn_xp_plus_5",
@@ -54601,7 +54601,7 @@
     {
       "id": "R2",
       "title": "Resolución 2",
-      "text": "You scramble for hours in the dark, sticky web-infested void between worlds. When you reach the end of the bridge of cosmic webs, you are met with a terrible sight. The void that once surrounded you fades into a dusky evening, and a familiar skyline of clustering gambrel roofs stands before you. To your dismay, the entirety of the town has been infested by the brood of Atlach-Nacha. Thick webbing extends from the gloomy streets to the tallest rooftops. Spiders and ghasts prowl through the city's once-busy avenues, seeking human prey to devour—or worse, to imprison forever in cocoons of unbreakable web. You drop to your knees, overtaken by despiar. How far does this corruption reach? Is it just Arkham, or…?",
+      "text": "Pasáis horas recorriendo el oscuro y pegajoso vacío lleno de redes que hay entre los mundos. Cuando llegáis al final del puente de telas cósmicas, os recibe una terrible visión. El vacío que os rodeaba se convierte en una oscura tarde, y tenéis ante vosotros las familiares siluetas de grupos de tejados simétricos. Para consternación vuestra, toda la ciudad está infestada por la progenie de Atlach-Nacha. Gruesas redes se extienden desde las penumbrosas calles hasta los tejados más altos. Hay arañas y ghasts merodeando por las antes bulliciosas avenidas de la ciudad en busca de presas humanas que devorar... o peor, que encerrar para siempre en capullos de tela irrompible. Caéis de rodillas, presas de la desesperación. ¿Hasta dónde llega esta corrupción? ¿Es sólo Arkham o...?",
       "steps": [
         "bridge_was_completed",
         "send_bridge_was_completed",
@@ -54612,7 +54612,7 @@
     {
       "id": "R3",
       "title": "Resolución 3",
-      "text": "In the distance, you can see the tower that loomed behind the spider god as it spun its web, the entrance beckoning you closer. You recall the Tower of Koth in the Underworld and the way to the surface. Is this the root of that same tower? Does it penetrate through this world-between-worlds? If so, you might be able to escape. Instead of climbing back the way you came, you swing your web from side to side and make a leap through the void, landing at the base of the tower. Then you begin the long climb up—above the surface of the Sea of Pitch, under the ground below the City of Gugs, then farther upward still. Finally, after miles and miles of restless travel, you push aside the stone slab at the top of the tower, and you emerge in the Enchanted Wood. You seal the entrance behind you. Nothing from the hellish Underworld can follow you here. For the first time since entering the Dreamlands, you breathe a sigh of relief. Recalling the first chapter's of Virgil Gray's story, you follow a narrow path through the woods until you reach a staircase of solid stone that ascends into the clouds. It is time to return home.",
+      "text": "Veis a lo lejos la torre que se levantaba tras el dios araña mientras tejía su red, con su entrada llamándoos para que os acercaseis. Recordáis la torre de Koth en el Mundo subterráneo y el camino hacia la superficie. ¿Se trata de la raíz de esa misma torre? ¿Atraviesa este mundo entre los mundos? Si es así, tal vez podáis escapar. En lugar de trepar por donde vinisteis, hacéis oscilar vuestra tela de un lado a otro y saltáis por el vacío para aterrizar a los pies de la torre. Luego empezáis el largo ascenso, sobre la superficie del Mar de Brea, bajo el suelo que hay bajo la ciudad de los gugs y más arriba aún. Por fin, tras kilómetros y kilómetros de viajar sin descanso, apartáis la losa de piedra que hay en lo alto de la torre y salís al Bosque Encantado. Dejáis la entrada bien cerrada. Nada del infernal Mundo subterráneo puede seguiros aquí. Por primera vez desde que entrasteis en las Tierras del Sueño, dais un suspiro de alivio. Recordáis el primer capítulo de la historia de Virgil Gray y seguís un angosto sendero por el bosque hasta llegar a una escalera de piedra sólido que sube hacia las nubes. Es hora de regresar a casa.",
       "steps": [
         "returned_to_reality",
         "send_returned_to_reality",
@@ -54623,7 +54623,7 @@
     {
       "id": "R4",
       "title": "Resolución 4",
-      "text": "You have stopped the spider god from completing its web, but in the process, you have cut off your only means of escape as well. You are fated to wander this hellish world-between-worlds, searching in vain for any hope of escape. Your only solace is that you have prevented this cruel future from being that of every person on Earth. Perhaps if you still possessed the Silver Key, you might have had a way out. Try as you might, in this dismal, cavernous void below the bottomless Sea of Pitch, you cannot muster the will to forge your own.",
+      "text": "Habéis evitado que el dios araña complete su tela, pero al hacerlo os habéis quedado sin vuestra única ruta de escape. Estáis condenados a vagar por este infernal mundo entre los mundos, buscando en vano alguna esperanza de huir. Vuestro único consuelo es que habéis evitado que este cruel futuro sea también el de todos los habitantes de la Tierra. Tal vez si aún tuvierais la llave de plata, podríais lograr salir. Por mucho que lo intentéis, estando en este descorazonador vacío cavernoso bajo el Mar de Brea sin fondo, no lográis reunir la fuerza de voluntad necesaria para forjaros una.",
       "steps": [
         "never_escaped",
         "send_never_escaped",
@@ -54633,8 +54633,8 @@
     },
     {
       "id": "R5",
-      "title": "Resoultion 5",
-      "text": "You ahve stopped the spider god from completing its web, but in the process, you have cut off the quickest way for you to return home. So, with your task complete, you begin the long climb towards reality. You are lucky that remnants of the web-bridge still remain intact, or you would have been stranded in this hellish world between worlds. It takes many hours for you to retrace your steps to the Underworld. You eventually emerge from the thick, tar-like Sea of Pitch, close to the shoreline. To your dismay, you realize that you are on the opposite shore of the sea from the dark vale from which you once embarked. With no way to cross the deadly sea, you'll have to find another way out of this barren expanse. Days pass as you continue to explore the Underworld, reaching darker and more forbidden lands as you travel deeper and deeper below the crust of the Earth's Dreamlands. Though you eventually find a stairway up, it is very different from the one leading to the Unnamable: a spiraling otherworldy series of steps that reach dizzying heights and break all laws of reality. When you reach the top, your heart sinks. There is no sign of Arkham here. You are greeted instead by a strange, ruined city and its half-human denizens. The creatures inform you that you have reached the lost city of \"Sarkomand.\" It appears your return journey is far from over.",
+      "title": "Resolución 5",
+      "text": "Habéis evitado que el dios araña complete su tela, pero al hacerlo, habéis cortado la forma más rápida de volver a casa. Tras haber completado vuestra tarea, comenzáis el largo ascenso hacia la realidad. Tenéis suerte de que los restos de puente de tela sigan intactos, porque de otro modo estaríais atrapados en este infernal mundo entre los mundos. Os lleva muchas horas desandar vuestros pasos hacia el Mundo subterráneo. Por fin emergéis del denso Mar de Brea, cerca de la costa. Para consternación vuestra, os dais cuenta de que estáis en la costa opuesta al valle oscuro desde el que partisteis. No tenéis ninguna forma de cruzar el letal mar, así que tendréis que encontrar otro modo de salir de esta tierra baldía. Pasa un día tras otro mientras seguís explorando el Mundo subterráneo, llegando a tierras cada vez más oscuras y prohibidas a medida que os adentráis más y más bajo la corteza de las Tierras del Sueño. Aunque acabáis por encontrar una escalera que sube, es muy distinta de la que llevaba a lo innombrable: una serie de sobrenaturales peldaños en espiral que alcanzan alturas vertiginosas y rompen todas las leyes de la realidad. Cuando llegáis arriba, se os encoge el corazón. Aquí no hay ni rastro de Arkham. En vez de eso, tenéis ante vosotros una extraña ciudad en ruinas habitada por medio humanos. Las criaturas os informan de que habéis llegado a la ciudad perdida de “Sarkomand”. Parece que vuestro viaje de regreso no ha hecho más que empezar.",
       "steps": [
         "still_in_the_dreamlands",
         "send_still_in_the_dreamlands",

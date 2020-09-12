@@ -486,15 +486,15 @@
         "entries": [
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "при побеге из лечебницы на сыщиков напали."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "вы очнулись в катакомбах."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "Каркоза слилась с нашей реальностью и Хастур теперь правит в обоих мирах."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -502,71 +502,71 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "вы уничтожили Одержимого Клятвой."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "вы не укрылись от глаз призрака."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "вы сами спустились в катакомбы."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "сыщики сбежали из лечебницы."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "вы сбежали с вечеринки."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "служители Знака нашли путь."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "вы нашли Найджела Энграма."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "вы нашли дом Найджела."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "вы попались Хастуру в когти."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "вы приняли предупреждение Дэниела."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "вы проигнорировали предупреждение Дэниела."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "вы прервали тайную встречу."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "Король получил свою жертву."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "вы узнали, где находятся врата."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "вы не стали брать ониксовую застёжку."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "вы открыли Верхний путь."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "вы открыли Нижний путь."
           },
           {
             "id": "police_are_suspicious",
@@ -574,19 +574,19 @@
           },
           {
             "id": "possessed",
-            "text": "#name# was possessed."
+            "text": "#name# одержим."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "сыщики не дали Хастуру сбежать из заточения."
           },
           {
             "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
+            "text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "вы убили чудовищ с вечеринки."
           },
           {
             "id": "stranger_is_on_to_you",
@@ -594,7 +594,7 @@
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "вы взяли ониксовую застёжку."
           },
           {
             "id": "tried_to_warn_police",
@@ -602,7 +602,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "вы не смогли найти Найджела."
           },
           {
             "id": "blob_contained",
@@ -707,7 +707,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "хотя бы один сыщик одержим."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1275,15 +1275,15 @@
         "entries": [
           {
             "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
+            "text": "при побеге из лечебницы на сыщиков напали."
           },
           {
             "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
+            "text": "вы очнулись в катакомбах."
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "Каркоза слилась с нашей реальностью и Хастур теперь правит в обоих мирах."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1291,71 +1291,71 @@
           },
           {
             "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
+            "text": "вы уничтожили Одержимого Клятвой."
           },
           {
             "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
+            "text": "вы не укрылись от глаз призрака."
           },
           {
             "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
+            "text": "вы сами спустились в катакомбы."
           },
           {
             "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
+            "text": "сыщики сбежали из лечебницы."
           },
           {
             "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
+            "text": "вы сбежали с вечеринки."
           },
           {
             "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
+            "text": "служители Знака нашли путь."
           },
           {
             "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
+            "text": "вы нашли Найджела Энграма."
           },
           {
             "id": "found_nigels_home",
-            "text": "you found Nigel's home."
+            "text": "вы нашли дом Найджела."
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "вы попались Хастуру в когти."
           },
           {
             "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
+            "text": "вы приняли предупреждение Дэниела."
           },
           {
             "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
+            "text": "вы проигнорировали предупреждение Дэниела."
           },
           {
             "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
+            "text": "вы прервали тайную встречу."
           },
           {
             "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
+            "text": "Король получил свою жертву."
           },
           {
             "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
+            "text": "вы узнали, где находятся врата."
           },
           {
             "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
+            "text": "вы не стали брать ониксовую застёжку."
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "вы открыли Верхний путь."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "вы открыли Нижний путь."
           },
           {
             "id": "police_are_suspicious",
@@ -1363,19 +1363,19 @@
           },
           {
             "id": "possessed",
-            "text": "#name# was possessed."
+            "text": "#name# одержим."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "сыщики не дали Хастуру сбежать из заточения."
           },
           {
             "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
+            "text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "вы убили чудовищ с вечеринки."
           },
           {
             "id": "stranger_is_on_to_you",
@@ -1383,7 +1383,7 @@
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "вы взяли ониксовую застёжку."
           },
           {
             "id": "tried_to_warn_police",
@@ -1391,7 +1391,7 @@
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "вы не смогли найти Найджела."
           },
           {
             "id": "blob_contained",
@@ -1496,7 +1496,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "хотя бы один сыщик одержим."
           },
           {
             "id": "tpm_conviction_or_doubt",

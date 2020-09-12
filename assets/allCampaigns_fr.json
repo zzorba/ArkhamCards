@@ -8654,7 +8654,7 @@
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into The King in Yellow. What is true? What is real? Only you can sort through this madness."
+      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness."
     },
     {
       "id": "heed_the_warning",
@@ -16199,7 +16199,7 @@
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into The King in Yellow. What is true? What is real? Only you can sort through this madness."
+      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness."
     },
     {
       "id": "heed_the_warning",
