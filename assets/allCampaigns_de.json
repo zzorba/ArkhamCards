@@ -19324,7 +19324,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"Hastur's health cannot be reduced to less than 2 unless any investigator 'knows the secret.'\"\nAttach the Return to Dim Carcosa scenario reference card to the scenario reference card as a reminder."
+      "text": "For the duration of this scenario, the following additional rules apply:\n\"Hastur's health cannot be reduced to less than 2 [per_investigator] unless any investigator 'knows the secret.'\"\nAttach the Return to Dim Carcosa scenario reference card to the scenario reference card as a reminder."
     }
   ],
   "resolutions": [
@@ -53719,7 +53719,7 @@
 {
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Weaver of the Cosmos",
-  "full_name": "Scenario IV: Weaver of the Cosmos",
+  "full_name": "Scenario IV-B: Weaver of the Cosmos",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
