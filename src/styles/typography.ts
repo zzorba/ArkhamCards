@@ -23,12 +23,12 @@ export default StyleSheet.create({
   cardName: {
     fontFamily: 'Alegreya-Medium',
     fontSize: 20 * sizeScale,
-    lineHeight: 22 * sizeScale,
+    lineHeight: 20 * sizeScale,
   },
   cardSubName: {
     fontFamily: 'Alegreya-Italic',
     fontSize: 14 * sizeScale,
-    lineHeight: 16 * sizeScale,
+    lineHeight: 14 * sizeScale,
     color: COLORS.lightText,
   },
   text: {

@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
   },
   cardNameBlock: {
     marginLeft: xs,
-    marginTop: xs + s,
+    marginTop: s,
     marginBottom: xs,
     marginRight: xs / 2,
     flexDirection: 'column',
