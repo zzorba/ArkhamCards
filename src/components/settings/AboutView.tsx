@@ -42,13 +42,13 @@ export default class AboutView extends React.Component {
         <Text style={typography.text}>
           <Text style={typography.bold}>Translation Support:</Text>
           { '\n' }
-          • Spanish: Midraed, Alvaro, and @TengounplanAH
+          • Spanish: @TengounplanAH, Midraed and Alvaro
           { '\n' }
           • French: Fabrice2
           { '\n' }
           • German: Hauke
           { '\n' }
-          • Russian:
+          • Russian: Sarnetsky
         </Text>
         <Text style={typography.text}>
           <Text style={typography.bold}>Additional Support:</Text>
@@ -56,19 +56,17 @@ export default class AboutView extends React.Component {
           • Digital chaos bag + odds calculator: Joshua Payne (@suxur)
           { '\n' }
           • Tooling and build support: Akaan
+          { '\n' }
+          • Fall 2020 Redesign + Thematic Icons: Sarnetsky
         </Text>
         <Text style={typography.small}>
           <Text style={typography.bold}>Icon Attribution:</Text>
-          { '\n' }
-          • 'deck of cards' icon by Daniel Solis from the Noun Project.
           { '\n' }
           • 'FAQ' icon by Gregor Cresnar from the Noun Project.
           { '\n' }
           • 'Cards' icon by Dmitriy Ivanov from the Noun Project.
           { '\n' }
           • 'flip over' icon by Nathan Smith from the Noun Project.
-          { '\n' }
-          • 'books'  by Mr Balind from the Noun Project.
         </Text>
         <TouchableOpacity onPress={this._octopusLink}>
           <Text style={typography.small}>

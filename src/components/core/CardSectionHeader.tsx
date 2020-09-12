@@ -108,7 +108,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     if (section.subTitle) {
       return (
         <View style={styles.subHeaderRow}>
-          <Text style={typography.text}>
+          <Text style={[typography.text, styles.subHeaderText]}>
             { section.subTitle }
           </Text>
         </View>
@@ -150,13 +150,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   subHeaderRow: {
-    backgroundColor: COLORS.veryLightBackground,
+    backgroundColor: COLORS.veryVeryLightBackground, //COLORS.L10
     paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
+  },
+  subHeaderText: {
+    //color: COLORS.D10,
+    //fontWeight: '500',
   },
   headerRow: {
     backgroundColor: COLORS.lightBackground,

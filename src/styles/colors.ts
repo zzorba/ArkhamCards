@@ -40,8 +40,8 @@ export default {
 
   disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFFFF99', dark: '#00000099' }) : PlatformColor('@color/disabledOverlayColor')) as any as string,
   modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('@color/colorLightBackground')) as any as string,
-  darkText: D30,
-  lightText,
+  darkText: D30 as any as string,
+  lightText: D10 as any as string,
   veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor') : '#888') as any as string,
   background: Platform.select({
     'ios': PlatformColor('systemBackgroundColor'),

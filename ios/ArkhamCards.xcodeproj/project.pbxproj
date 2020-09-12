@@ -29,6 +29,9 @@
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		655BAD76248739AD00854210 /* ArkhamCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */; };
 		6585116A250D33C500DCB842 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65851169250D33C500DCB842 /* Theme.xcassets */; };
+		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
+		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
+		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
 		658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 658AF45324FAAD4D00874CA7 /* Conkordia.ttf */; };
 		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
@@ -92,6 +95,9 @@
 		655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkhamCardsUITests.swift; sourceTree = "<group>"; };
 		655BAD77248739AD00854210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65851169250D33C500DCB842 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
+		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
+		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
+		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
 		658AF45324FAAD4D00874CA7 /* Conkordia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
 		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
 		65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */,
+				6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */,
+				6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */,
 				658AF45324FAAD4D00874CA7 /* Conkordia.ttf */,
 				6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */,
 				65F2F38124D47DE700B716AB /* campaignLogs_es.json */,
@@ -366,6 +375,7 @@
 				65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				65F2F37F24D47C5D00B716AB /* allCampaigns_es.json in Resources */,
+				65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
 				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
 				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
@@ -375,7 +385,9 @@
 				65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */,
 				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
 				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
+				65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */,
 				02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */,
+				6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +613,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -645,7 +657,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

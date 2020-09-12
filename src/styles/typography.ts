@@ -4,7 +4,7 @@ import { isBig, m, s } from './space';
 import COLORS from './colors';
 const sizeScale = 1;
 
-export const SMALL_FONT_SIZE = 12 * sizeScale;
+export const SMALL_FONT_SIZE = 14 * sizeScale;
 
 export default StyleSheet.create({
   header: {
@@ -19,6 +19,17 @@ export default StyleSheet.create({
     fontSize: isBig ? 18 : 14,
     lineHeight: isBig ? 22 : 18,
     color: COLORS.darkText,
+  },
+  cardName: {
+    fontFamily: 'Alegreya-Medium',
+    fontSize: 20 * sizeScale,
+    lineHeight: 22 * sizeScale,
+  },
+  cardSubName: {
+    fontFamily: 'Alegreya-Italic',
+    fontSize: 14 * sizeScale,
+    lineHeight: 16 * sizeScale,
+    color: COLORS.lightText,
   },
   text: {
     fontFamily: 'System',

@@ -62,6 +62,9 @@
 	<array>
 		<string>Conkordia.ttf</string>
 		<string>Teutonic.ttf</string>
+		<string>Alegreya-Regular.ttf</string>
+		<string>Alegreya-Italic.ttf</string>
+		<string>Alegreya-Medium.ttf</string>
 		<string>forgotten.ttf</string>
 		<string>circle.ttf</string>
 		<string>arkhamicons.ttf</string>

@@ -175,7 +175,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <ArkhamIcon
           name={skill}
           size={SKILL_ICON_SIZE}
-          color={COLORS.faction.neutral.text}
+          color={COLORS.lightText}
         />
       </View>
     ));
@@ -268,7 +268,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
           <Text style={[
-            typography.text,
+            typography.cardName,
             { color },
             invalid ? { textDecorationLine: 'line-through' } : {},
           ]} numberOfLines={1} ellipsizeMode="clip">
@@ -285,7 +285,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           { this.renderSkillIcons() }
           { !!card.renderSubname && (
             <View style={styles.row}>
-              <Text style={[typography.small, styles.subname, { color }]} numberOfLines={1} ellipsizeMode="clip">
+              <Text style={[typography.cardSubName, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
                 { card.renderSubname }
               </Text>
             </View>
@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
   },
   cardNameBlock: {
     marginLeft: xs,
-    marginTop: xs,
+    marginTop: xs + s,
     marginBottom: xs,
     marginRight: xs / 2,
     flexDirection: 'column',
