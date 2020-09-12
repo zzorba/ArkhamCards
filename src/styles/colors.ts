@@ -40,7 +40,7 @@ export default {
 
   disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFFFF99', dark: '#00000099' }) : PlatformColor('@color/disabledOverlayColor')) as any as string,
   modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('@color/colorLightBackground')) as any as string,
-  darkText,
+  darkText: D30,
   lightText,
   veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor') : '#888') as any as string,
   background: Platform.select({
@@ -52,32 +52,32 @@ export default {
   veryVeryLightBackground: (Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : PlatformColor('@color/colorVeryVeryLightBackground')) as any as string,
   divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#888888') as any as string,
   faction: {
-    mystic: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331b9', dark: '#af89fa' }) : PlatformColor('@color/factionMysticTextColor')) as any as string,
-      background: '#4331b9',
-      darkBackground: '#4331b9',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d9d6f1', dark: '#46018f' }) : PlatformColor('@color/factionMysticLightBackgroundColor')) as any as string,
-    },
-    seeker: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#db7c07', dark: '#fcb447' }) : PlatformColor('@color/factionSeekerTextColor')) as any as string,
-      background: '#db7c07',
-      darkBackground: '#db7c07',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#bf5c00' }) : PlatformColor('@color/factionSeekerLightBackgroundColor')) as any as string,
-    },
     guardian: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#1072c2', dark: '#62cefc' }) : PlatformColor('@color/factionGuardianTextColor')) as any as string,
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#1072C2', dark: '#1D92F1' }) : PlatformColor('@color/factionGuardianTextColor')) as any as string,
       background: '#2b80c5',
       darkBackground: '#2b80c5',
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d5e6f3', dark: '#004880' }) : PlatformColor('@color/factionGuardianLightBackgroundColor')) as any as string,
     },
+    seeker: {
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#DB7C07', dark: '#EFA345' }) : PlatformColor('@color/factionSeekerTextColor')) as any as string,
+      background: '#db7c07',
+      darkBackground: '#db7c07',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#bf5c00' }) : PlatformColor('@color/factionSeekerLightBackgroundColor')) as any as string,
+    },
     rogue: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#52cc66' }) : PlatformColor('@color/factionRogueTextColor')) as any as string,
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#48B14F' }) : PlatformColor('@color/factionRogueTextColor')) as any as string,
       background: '#107116',
       darkBackground: '#107116',
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#015906' }) : PlatformColor('@color/factionRogueLightBackgroundColor')) as any as string,
     },
+    mystic: {
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331B9', dark: '#6B5BD6' }) : PlatformColor('@color/factionMysticTextColor')) as any as string,
+      background: '#4331b9',
+      darkBackground: '#4331b9',
+      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d9d6f1', dark: '#46018f' }) : PlatformColor('@color/factionMysticLightBackgroundColor')) as any as string,
+    },
     survivor: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc3038', dark: '#ff6b73' }) : PlatformColor('@color/factionSurvivorTextColor')) as any as string,
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#CC3038', dark: '#D34E54' }) : PlatformColor('@color/factionSurvivorTextColor')) as any as string,
       background: '#cc3038',
       darkBackground: '#cc3038',
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5d6d7', dark: '#7a0105' }) : PlatformColor('@color/factionSurvivorLightBackgroundColor')) as any as string,
