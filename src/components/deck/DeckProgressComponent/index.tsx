@@ -21,7 +21,6 @@ import space, { l, m, s } from '@styles/space';
 
 interface OwnProps {
   componentId: string;
-  fontScale: number;
   deck: Deck;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
@@ -74,7 +73,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       showTraumaDialog,
       showDeckUpgrade,
       editable,
-      fontScale,
       hideCampaign,
     } = this.props;
     if (!editable) {
@@ -85,7 +83,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
         <CardSectionHeader
           investigator={investigator}
           section={{ superTitle: t`Campaign` }}
-          fontScale={fontScale}
         />
         { !!campaign && !hideCampaign && (
           <View style={styles.campaign}>
@@ -100,7 +97,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
                 investigator={investigator}
                 investigatorData={this.investigatorData()}
                 showTraumaDialog={showTraumaDialog}
-                fontScale={fontScale}
               />
             ) }
           </View>
@@ -123,7 +119,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       cards,
       parsedDeck,
       xpAdjustment,
-      fontScale,
       editable,
       tabooSetId,
       renderFooter,
@@ -144,7 +139,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
         { this.renderCampaignSection() }
         <ChangesFromPreviousDeck
           componentId={componentId}
-          fontScale={fontScale}
           title={title}
           cards={cards}
           parsedDeck={parsedDeck}

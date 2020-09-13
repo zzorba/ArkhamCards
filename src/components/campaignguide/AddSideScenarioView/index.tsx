@@ -163,7 +163,6 @@ class AddSideScenarioView extends React.Component<Props, State> {
 
   render() {
     const {
-      fontScale,
       componentId,
       campaignData: {
         campaignGuide,
@@ -201,7 +200,6 @@ class AddSideScenarioView extends React.Component<Props, State> {
                   componentId={componentId}
                   scenario={scenario}
                   onPress={this._onPress}
-                  fontScale={fontScale}
                 />
               );
             }) }
@@ -244,7 +242,6 @@ class AddSideScenarioView extends React.Component<Props, State> {
                   componentId={componentId}
                   scenario={scenario}
                   onPress={this._onPress}
-                  fontScale={fontScale}
                 />
               );
             }) }
@@ -257,7 +254,6 @@ class AddSideScenarioView extends React.Component<Props, State> {
         <TabView
           tabs={tabs}
           onTabChange={this._onTabChange}
-          fontScale={fontScale}
         />
         { this.renderCustomDialog() }
       </>

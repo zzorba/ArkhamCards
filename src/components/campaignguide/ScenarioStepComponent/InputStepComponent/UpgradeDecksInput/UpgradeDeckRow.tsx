@@ -29,7 +29,6 @@ import COLORS from '@styles/colors';
 interface Props {
   componentId: string;
   id: string;
-  fontScale: number;
   campaignState: CampaignStateHelper;
   scenarioState: ScenarioStateHelper;
   investigator: Card;
@@ -179,7 +178,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
   };
 
   _renderDeltas = (cards: Card[], deltas: Slots) => {
-    const { fontScale } = this.props;
     return map(
       sortBy(cards, card => card.name),
       card => (
@@ -188,7 +186,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
           onPress={this._showCard}
           card={card}
           count={deltas[card.code]}
-          fontScale={fontScale}
           deltaCountMode
           backgroundColor="transparent"
         />
@@ -200,7 +197,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     const {
       campaignLog,
       investigator,
-      fontScale,
     } = this.props;
     const deltas = campaignLog.storyAssetChanges(investigator.code);
     const cards: string[] = flatMap(deltas, (count, code) => count !== 0 ? code : []);
@@ -212,7 +208,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         <CardSectionHeader
           investigator={investigator}
           section={{ superTitle: t`Campaign cards` }}
-          fontScale={fontScale}
         />
         <CardListWrapper codes={cards} type="player">
           { (cards: Card[]) => this._renderDeltas(cards, deltas) }
@@ -263,14 +258,13 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
   };
 
   renderXpSection(choices?: NumberChoices) {
-    const { investigator, fontScale, editable } = this.props;
+    const { investigator, editable } = this.props;
     const xp = this.xp(choices);
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <>
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
         <BasicListRow>
@@ -310,7 +304,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       investigator,
       campaignLog,
       editable,
-      fontScale,
     } = this.props;
     const physicalAdjust = this.physicalAdjust(choices);
     const mentalAdjust = this.mentalAdjust(choices);
@@ -332,7 +325,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         { (!locked || physical !== 0 || mental !== 0 || killedAdjust || insaneAdjust) && (
           <CardSectionHeader
             investigator={investigator}
-            fontScale={fontScale}
             section={{ superTitle: t`Trauma` }}
           />
         ) }
@@ -340,7 +332,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
           <>
             <CardSectionHeader
               investigator={investigator}
-              fontScale={fontScale}
               section={{ subTitle: t`Physical` }}
             />
             <BasicListRow>
@@ -389,7 +380,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
           <>
             <CardSectionHeader
               investigator={investigator}
-              fontScale={fontScale}
               section={{ subTitle: t`Mental` }}
             />
             <BasicListRow>
@@ -563,7 +553,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       saveDeckChanges,
       saveDeckUpgrade,
       editable,
-      fontScale,
     } = this.props;
     if (!deck) {
       return (this.renderCampaignSection(choices));
@@ -576,7 +565,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         componentId={componentId}
         ref={this.deckUpgradeComponent}
         deck={deck}
-        fontScale={fontScale}
         investigator={investigator}
         campaignSection={this.renderCampaignSection(choices, deck)}
         startingXp={campaignLog.earnedXp(investigator.code)}
@@ -597,7 +585,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     const {
       investigator,
       campaignLog,
-      fontScale,
     } = this.props;
     const choices = this.props.scenarioState.numberChoices(this.choiceId());
     const isYithian = (campaignLog.storyAssets(investigator.code)[BODY_OF_A_YITHIAN] || 0) > 0;
@@ -606,7 +593,6 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
         investigator={investigator}
         yithian={isYithian}
         button={this.deckButton(choices)}
-        fontScale={fontScale}
       >
         { this.renderDetails(choices) }
       </InvestigatorRow>

@@ -14,7 +14,6 @@ import NavButton from '@components/core/NavButton';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 
 interface OwnProps {
-  fontScale: number;
   weaknessSet: WeaknessSet;
   showDrawDialog: () => void;
 }
@@ -41,7 +40,6 @@ class WeaknessSetSection extends React.Component<Props> {
     const {
       weaknessSet,
       weaknessCards,
-      fontScale,
       showDrawDialog,
     } = this.props;
     const counts = WeaknessSetSection.computeCount(weaknessSet, weaknessCards);
@@ -49,7 +47,7 @@ class WeaknessSetSection extends React.Component<Props> {
       return null;
     }
     return (
-      <NavButton fontScale={fontScale} onPress={showDrawDialog}>
+      <NavButton onPress={showDrawDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
             { t`Basic Weakness Set` }

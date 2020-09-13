@@ -8,7 +8,6 @@ import { Navigation } from 'react-native-navigation';
 import { filter } from 'lodash';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import LocationSetupButton from './LocationSetupButton';
 import TableStepComponent from './TableStepComponent';
@@ -30,22 +29,24 @@ import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
   step: ScenarioStep;
-  fontScale: number;
   width: number;
   border?: boolean;
   switchCampaignScenario: () => void;
 }
 
-class ScenarioStepComponent extends React.Component<Props & StylesProps> {
+export default class ScenarioStepComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderContent(campaignGuide: CampaignGuide, campaignId: number): React.ReactNode {
     const {
       componentId,
       step: { step, campaignLog },
-      fontScale,
       width,
       border,
       switchCampaignScenario,
@@ -102,7 +103,6 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
         return (
           <InputStepComponent
             componentId={componentId}
-            fontScale={fontScale}
             step={step}
             campaignLog={campaignLog}
             switchCampaignScenario={switchCampaignScenario}
@@ -112,7 +112,6 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
         return (
           <EffectsStepComponent
             componentId={componentId}
-            fontScale={fontScale}
             width={width}
             step={step}
             campaignLog={campaignLog}
@@ -134,7 +133,8 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
   }
 
   render() {
-    const { step, border, gameFont } = this.props;
+    const { step, border } = this.props;
+    const { gameFont } = this.context;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignGuide, campaignId }: CampaignGuideContextType) => (
@@ -181,8 +181,6 @@ class ScenarioStepComponent extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(ScenarioStepComponent);
 
 const styles = StyleSheet.create({
   title: {

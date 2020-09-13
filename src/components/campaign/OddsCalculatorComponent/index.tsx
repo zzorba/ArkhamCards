@@ -28,7 +28,6 @@ import COLORS from '@styles/colors';
 interface Props {
   campaign: Campaign;
   chaosBag: ChaosBag;
-  fontScale: number;
   cycleScenarios?: Scenario[];
   scenarioByCode?: { [code: string]: Scenario };
   allInvestigators: Card[];
@@ -344,7 +343,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
 
   renderContent(campaign: Campaign) {
     const {
-      fontScale,
       chaosBag,
     } = this.props;
     const {
@@ -383,7 +381,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           <Text style={typography.label}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={chaosBag}
-            fontScale={fontScale}
           />
         </View>
         { this.renderInvestigatorRows() }

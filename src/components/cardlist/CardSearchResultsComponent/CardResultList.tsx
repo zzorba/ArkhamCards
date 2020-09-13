@@ -58,6 +58,7 @@ import { s, m } from '@styles/space';
 import COLORS from '@styles/colors';
 import SearchResultButton from '../SearchResultButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StyleContext from '@styles/StyleContext';
 
 function funLoadingMessages() {
   return [
@@ -74,7 +75,6 @@ function funLoadingMessages() {
 
 interface OwnProps {
   componentId: string;
-  fontScale: number;
   query?: Brackets;
   filterQuery?: Brackets;
   searchTerm?: string;
@@ -568,7 +568,7 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
-    const { fontScale, investigator } = this.props;
+    const { investigator } = this.props;
     return (
       <CardSectionHeader
         section={section.header}
@@ -578,7 +578,6 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
-    const { fontScale } = this.props;
     const {
       showNonCollection,
     } = this.state;
@@ -588,19 +587,22 @@ class CardResultList extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={{ height: rowNonCollectionHeight(fontScale) }}>
-          <SearchResultButton
-            icon="edit"
-            title={t`Edit Collection`}
-            onPress={this._editCollectionSettings}
-          />
-        </View>
+        <StyleContext.Consumer>
+          { ({ fontScale }) => (
+            <View style={{ height: rowNonCollectionHeight(fontScale) }}>
+              <SearchResultButton
+                icon="edit"
+                title={t`Edit Collection`}
+                onPress={this._editCollectionSettings}
+              />
+            </View>
+          ) }
+        </StyleContext.Consumer>
       );
     }
     return (
       <ShowNonCollectionFooter
         id={section.id}
-        fontScale={fontScale}
         title={ngettext(
           msgid`Show ${section.nonCollectionCount} non-collection card`,
           `Show ${section.nonCollectionCount} non-collection cards`,
@@ -614,7 +616,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       limits,
       hasSecondCore,
-      fontScale,
       onDeckCountChange,
       renderCard,
     } = this.props;
@@ -672,7 +673,6 @@ class CardResultList extends React.Component<Props, State> {
   }
 
   _renderFooter = (liveState: LiveState, refreshing?: boolean) => {
-    const { fontScale } = this.props;
     const { spoilerCardsCount } = liveState;
     const {
       showSpoilerCards,
@@ -772,7 +772,6 @@ class CardResultList extends React.Component<Props, State> {
 
   _renderResults = (dbState?: DbState, refreshing?: boolean) => {
     const {
-      fontScale,
       show_spoilers,
       handleScroll,
       renderHeader,
@@ -799,92 +798,98 @@ class CardResultList extends React.Component<Props, State> {
         </View>
       );
     }
-    const { cards, deckSections, deckCardCounts } = dbState;
-    const filteredDeckSections = filterCard ?
-      flatMap(deckSections, section => {
-        const data = filter(section.data, card => filterCard(card));
-        if (!data.length) {
-          return [];
-        }
-        return {
-          ...section,
-          data,
-        };
-      }) : deckSections;
-    const groupedCards = partition(
-      filterCard ? filter(cards, card => filterCard(card)) : cards,
-      card => {
-        return show_spoilers[card.pack_code] ||
-          !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
-      });
-
-    const liveState: LiveState = {
-      deckSections: filteredDeckSections,
-      deckCardCounts,
-      cards: this.bucketCards(groupedCards[0], 'cards'),
-      cardsCount: groupedCards[0].length,
-      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
-      spoilerCardsCount: groupedCards[1].length,
-    };
-    this.latestData = liveState;
-    const data = this.getData(liveState, !!refreshing);
-    let offset = 0;
-    const elementHeights = map(
-      flatMap(data, section => {
-        return concat(
-          [cardSectionHeaderHeight(section.header, fontScale)], // Header
-          map(section.data || [], () => rowHeight(fontScale)), // Rows
-          [section.nonCollectionCount ? rowNonCollectionHeight(fontScale) : 0] // Footer (not used)
-        );
-      }),
-      (size) => {
-        const result = {
-          length: size,
-          offset: offset,
-        };
-        offset = offset + size;
-        return result;
-      });
-    const getItemLayout = (
-      data: SectionListData<Card>[] | null,
-      index: number
-    ): {
-      index: number;
-      length: number;
-      offset: number;
-    } => {
-      return {
-        ...elementHeights[index],
-        index,
-      };
-    };
     return (
-      <SectionList
-        contentInset={{ top: SEARCH_BAR_HEIGHT }}
-        contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
-        refreshControl={
-          <RefreshControl
-            refreshing={!!refreshing}
-            onRefresh={this._refreshInDeck}
-          />
-        }
-        onScroll={handleScroll}
-        onScrollBeginDrag={this._handleScrollBeginDrag}
-        sections={data}
-        renderSectionHeader={this._renderSectionHeader}
-        renderSectionFooter={this._renderSectionFooter}
-        renderItem={this._renderCard}
-        initialNumToRender={30}
-        keyExtractor={this._cardToKey}
-        extraData={this.state.deckCardCounts}
-        getItemLayout={getItemLayout}
-        ListHeaderComponent={renderHeader}
-        ListFooterComponent={this._renderFooter(liveState, refreshing)}
-        stickySectionHeadersEnabled={false}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        scrollEventThrottle={1}
-      />
+      <StyleContext.Consumer>
+        { ({ fontScale }) => {
+          const { cards, deckSections, deckCardCounts } = dbState;
+          const filteredDeckSections = filterCard ?
+            flatMap(deckSections, section => {
+              const data = filter(section.data, card => filterCard(card));
+              if (!data.length) {
+                return [];
+              }
+              return {
+                ...section,
+                data,
+              };
+            }) : deckSections;
+          const groupedCards = partition(
+            filterCard ? filter(cards, card => filterCard(card)) : cards,
+            card => {
+              return show_spoilers[card.pack_code] ||
+                !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
+            });
+
+          const liveState: LiveState = {
+            deckSections: filteredDeckSections,
+            deckCardCounts,
+            cards: this.bucketCards(groupedCards[0], 'cards'),
+            cardsCount: groupedCards[0].length,
+            spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
+            spoilerCardsCount: groupedCards[1].length,
+          };
+          this.latestData = liveState;
+          const data = this.getData(liveState, !!refreshing);
+          let offset = 0;
+          const elementHeights = map(
+            flatMap(data, section => {
+              return concat(
+                [cardSectionHeaderHeight(section.header, fontScale)], // Header
+                map(section.data || [], () => rowHeight(fontScale)), // Rows
+                [section.nonCollectionCount ? rowNonCollectionHeight(fontScale) : 0] // Footer (not used)
+              );
+            }),
+            (size) => {
+              const result = {
+                length: size,
+                offset: offset,
+              };
+              offset = offset + size;
+              return result;
+            });
+          const getItemLayout = (
+            data: SectionListData<Card>[] | null,
+            index: number
+          ): {
+            index: number;
+            length: number;
+            offset: number;
+          } => {
+            return {
+              ...elementHeights[index],
+              index,
+            };
+          };
+          return (
+            <SectionList
+              contentInset={{ top: SEARCH_BAR_HEIGHT }}
+              contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+              refreshControl={
+                <RefreshControl
+                  refreshing={!!refreshing}
+                  onRefresh={this._refreshInDeck}
+                />
+              }
+              onScroll={handleScroll}
+              onScrollBeginDrag={this._handleScrollBeginDrag}
+              sections={data}
+              renderSectionHeader={this._renderSectionHeader}
+              renderSectionFooter={this._renderSectionFooter}
+              renderItem={this._renderCard}
+              initialNumToRender={30}
+              keyExtractor={this._cardToKey}
+              extraData={this.state.deckCardCounts}
+              getItemLayout={getItemLayout}
+              ListHeaderComponent={renderHeader}
+              ListFooterComponent={this._renderFooter(liveState, refreshing)}
+              stickySectionHeadersEnabled={false}
+              keyboardShouldPersistTaps="always"
+              keyboardDismissMode="on-drag"
+              scrollEventThrottle={1}
+            />
+          );
+        } }
+      </StyleContext.Consumer>
     );
   };
 

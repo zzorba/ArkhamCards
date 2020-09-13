@@ -23,7 +23,6 @@ import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   campaign: Campaign;
   latestDeckIds: number[];
   decks: DecksMap;
@@ -237,7 +236,6 @@ export default class DecksSection extends React.Component<Props, State> {
       componentId,
       campaign,
       cards,
-      fontScale,
       showTraumaDialog,
       incSpentXp,
       decSpentXp,
@@ -257,7 +255,6 @@ export default class DecksSection extends React.Component<Props, State> {
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={this._showDeckUpgradeDialog}
-        fontScale={fontScale}
         playerCards={cards}
         chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
         deck={deck}

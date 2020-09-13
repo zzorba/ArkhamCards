@@ -20,7 +20,6 @@ interface OwnProps {
   componentId?: string;
   card?: Card;
   width: number;
-  fontScale: number;
 }
 
 interface ReduxProps {
@@ -68,7 +67,6 @@ class BondedCardsComponent extends React.Component<Props> {
     const {
       componentId,
       width,
-      fontScale,
     } = this.props;
     if (!bondedCards) {
       return null;
@@ -94,7 +92,6 @@ class BondedCardsComponent extends React.Component<Props> {
                 key={card.code}
                 card={card}
                 width={width}
-                fontScale={fontScale}
               />
             )) }
           </React.Fragment>
@@ -110,7 +107,6 @@ class BondedCardsComponent extends React.Component<Props> {
                 componentId={componentId}
                 card={card}
                 width={width}
-                fontScale={fontScale}
               />
             )) }
           </React.Fragment>

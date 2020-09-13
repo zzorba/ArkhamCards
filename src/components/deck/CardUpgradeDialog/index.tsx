@@ -9,8 +9,8 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import CardUpgradeOption from './CardUpgradeOption';
 import DeckProblemRow from '@components/core/DeckProblemRow';
-import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
@@ -211,7 +211,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       componentId,
       tabooSetId,
       width,
-      fontScale,
     } = this.props;
     const {
       slots,
@@ -229,7 +228,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         />
         <CardDetailComponent
           componentId={componentId}
-          fontScale={fontScale}
           card={card}
           showSpoilers
           tabooSetId={tabooSetId}
@@ -269,7 +267,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       cards,
       meta,
       xpAdjustment,
-      fontScale,
     } = this.props;
     const {
       parsedDeck,
@@ -286,7 +283,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         meta={meta}
         cards={cards}
         xpAdjustment={xpAdjustment}
-        fontScale={fontScale}
         controls={controls}
       />
     );
@@ -295,7 +291,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
   render() {
     const {
       investigator,
-      fontScale,
     } = this.props;
     const {
       slots,
@@ -319,7 +314,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
                 problem={{ reason: 'too_many_copies' }}
                 color={isSurvivor ? COLORS.black : COLORS.white}
                 fontSize={14}
-                fontScale={fontScale}
               />
             </View>
           ) }

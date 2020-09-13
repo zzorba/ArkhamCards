@@ -8,7 +8,6 @@ import { t } from 'ttag';
 import { iconsMap } from '@app/NavIcons';
 import { Slots, SORT_BY_TYPE, SortType } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { showCard } from '@components/nav/helper';
@@ -37,7 +36,7 @@ interface ReduxActionProps {
   setDeckChecklistCard: (id: number, card: string, value: boolean) => void;
 }
 
-type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps & DimensionsProps;
+type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps;
 interface State {
   sort: SortType;
 }
@@ -110,7 +109,7 @@ class DeckChecklistView extends React.Component<Props, State> {
   };
 
   _renderCard = (card: Card) => {
-    const { slots, fontScale, checklist } = this.props;
+    const { slots, checklist } = this.props;
     return (
       <CardSearchResult
         card={card}
@@ -118,7 +117,6 @@ class DeckChecklistView extends React.Component<Props, State> {
         onToggleChange={this._toggleCard}
         onPress={this._pressCard}
         toggleValue={checklist.has(card.code)}
-        fontScale={fontScale}
         backgroundColor="transparent"
       />
     )
@@ -143,12 +141,11 @@ class DeckChecklistView extends React.Component<Props, State> {
   }
 
   render() {
-    const { componentId, fontScale, slots } = this.props;
+    const { componentId, slots } = this.props;
     const { sort } = this.state;
     return (
       <CardResultList
         componentId={componentId}
-        fontScale={fontScale}
         visible
         deckCardCounts={slots}
         originalDeckSlots={slots}
@@ -182,9 +179,7 @@ export default withPlayerCards<NavigationProps & DeckChecklistProps>(
   connect<ReduxProps, ReduxActionProps, NavigationProps & DeckChecklistProps & PlayerCardProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(
-    withDimensions(DeckChecklistView)
-  )
+  )(DeckChecklistView)
 );
 
 const styles = StyleSheet.create({

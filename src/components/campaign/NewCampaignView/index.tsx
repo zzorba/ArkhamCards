@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import EditText from '@components/core/EditText';
@@ -42,7 +41,6 @@ import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
@@ -55,6 +53,7 @@ import { EditChaosBagProps } from '../EditChaosBagDialog';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 type OwnProps = NavigationProps & PlayerCardProps & InjectedDialogProps;
 
@@ -87,9 +86,7 @@ interface ReduxActionProps {
 
 type Props = OwnProps &
   ReduxProps &
-  ReduxActionProps &
-  DimensionsProps &
-  StylesProps;
+  ReduxActionProps;
 
 interface State {
   hasGuide: boolean;
@@ -111,6 +108,9 @@ interface State {
 }
 
 class NewCampaignView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -456,7 +456,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
-    const { fontScale, gameFont } = this.props;
+    const { gameFont } = this.context;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.block}>
@@ -464,7 +464,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { t`Chaos Bag` }
         </Text>
         <View style={space.marginTopS}>
-          <ChaosBagLine fontScale={fontScale} chaosBag={chaosBag} />
+          <ChaosBagLine chaosBag={chaosBag} />
         </View>
       </View>
     );
@@ -484,9 +484,10 @@ class NewCampaignView extends React.Component<Props, State> {
   renderWeaknessSetSection() {
     const {
       componentId,
-      fontScale,
-      gameFont,
     } = this.props;
+    const {
+      gameFont,
+    } = this.context;
     return (
       <View style={[space.paddingBottomS, styles.underline]}>
         <View style={styles.block}>
@@ -500,7 +501,6 @@ class NewCampaignView extends React.Component<Props, State> {
         <View style={[space.paddingXs, space.paddingRightS]}>
           <WeaknessSetPackChooserComponent
             componentId={componentId}
-            fontScale={fontScale}
             compact
             onSelectedPacksChanged={this._onWeaknessPackChange}
           />
@@ -527,7 +527,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBag() {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     const { guided } = this.state;
     if (guided) {
       return null;
@@ -538,14 +538,14 @@ class NewCampaignView extends React.Component<Props, State> {
         { this.renderChaosBagSection() }
       </View>
     ) : (
-      <NavButton fontScale={fontScale} onPress={this._showChaosBagDialog} color={COLORS.black}>
+      <NavButton onPress={this._showChaosBagDialog} color={COLORS.black}>
         { this.renderChaosBagSection() }
       </NavButton>
     );
   }
 
   renderCampaignLogSection() {
-    const { gameFont } = this.props;
+    const { gameFont } = this.context;
     if (this.isGuided()) {
       return null;
     }
@@ -619,9 +619,10 @@ class NewCampaignView extends React.Component<Props, State> {
       componentId,
       captureViewRef,
       nextId,
-      fontScale,
-      gameFont,
     } = this.props;
+    const {
+      gameFont,
+    } = this.context;
 
     const {
       guided,
@@ -675,7 +676,6 @@ class NewCampaignView extends React.Component<Props, State> {
               </View>
               <DeckSelector
                 componentId={componentId}
-                fontScale={fontScale}
                 campaignId={nextId}
                 deckIds={deckIds}
                 investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
@@ -725,9 +725,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect(mapStateToProps, mapDispatchToProps)(
   withPlayerCards(
     withDialogs(
-      withDimensions(
-        withStyles(NewCampaignView)
-      )
+      NewCampaignView
     )
   )
 );

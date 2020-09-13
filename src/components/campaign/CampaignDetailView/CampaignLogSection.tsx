@@ -7,7 +7,6 @@ import EditCampaignNotesComponent from '../EditCampaignNotesComponent';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   campaignNotes: CampaignNotes;
   scenarioCount: number;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
@@ -37,12 +36,10 @@ export default class CampaignLogSection extends React.Component<Props> {
       showAddSectionDialog,
       allInvestigators,
       scenarioCount,
-      fontScale,
     } = this.props;
     return (
       <EditCampaignNotesComponent
         key={scenarioCount}
-        fontScale={fontScale}
         componentId={componentId}
         campaignNotes={campaignNotes}
         allInvestigators={allInvestigators}

@@ -6,6 +6,7 @@ import {
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   tabs: {
@@ -13,7 +14,6 @@ interface Props {
     title: string;
     node: React.ReactNode;
   }[];
-  fontScale: number;
   onTabChange: (key: string) => void;
   scrollEnabled?: boolean;
 }
@@ -30,6 +30,9 @@ interface TabRoute extends Route {
 const initialLayout = { width: Dimensions.get('window').width };
 
 export default class ArkhamTabView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     index: 0,
   };
@@ -45,7 +48,7 @@ export default class ArkhamTabView extends React.Component<Props, State> {
   _renderTabBar = (props: SceneRendererProps & {
     navigationState: NavigationState<TabRoute>;
   }) => {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     return (
       <TabBar
         {...props}

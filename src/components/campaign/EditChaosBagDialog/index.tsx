@@ -180,7 +180,6 @@ class EditChaosBagDialog extends React.Component<Props, State> {
   render() {
     const {
       trackDeltas,
-      fontScale,
     } = this.props;
     const {
       chaosBag,
@@ -197,7 +196,6 @@ class EditChaosBagDialog extends React.Component<Props, State> {
             return (
               <ChaosTokenRow
                 key={id}
-                fontScale={fontScale}
                 id={id}
                 originalCount={originalCount || 0}
                 count={chaosBag[id] || 0}

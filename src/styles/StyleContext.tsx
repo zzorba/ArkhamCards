@@ -8,11 +8,13 @@ export interface StyleContextType {
   fontScale: number;
 }
 
-export const StyleContext = React.createContext<StyleContextType>({
+export const DEFAULLT_STYLE_CONTEXT = {
   darkMode: false,
   colors: LIGHT_THEME,
   gameFont: 'Teutonic',
   fontScale: 1.0,
-});
+};
+
+export const StyleContext = React.createContext<StyleContextType>(DEFAULLT_STYLE_CONTEXT);
 
 export default StyleContext;

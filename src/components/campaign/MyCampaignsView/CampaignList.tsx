@@ -20,7 +20,6 @@ interface Props {
   componentId: string;
   campaigns: Campaign[];
   footer: React.ReactElement;
-  fontScale: number;
 }
 
 interface CampaignItemType {
@@ -92,16 +91,12 @@ export default class CampaignList extends React.Component<Props> {
   };
 
   _renderItem = ({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
-    const {
-      fontScale,
-    } = this.props;
     if (campaign.link) {
       return (
         <LinkedCampaignItem
           key={campaign.id}
           campaign={campaign}
           onPress={this._onPress}
-          fontScale={fontScale}
         />
       );
     }
@@ -110,7 +105,6 @@ export default class CampaignList extends React.Component<Props> {
         key={campaign.id}
         campaign={campaign}
         onPress={this._onPress}
-        fontScale={fontScale}
       />
     );
   };

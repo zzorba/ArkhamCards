@@ -16,7 +16,6 @@ interface OwnProps {
   deck: Deck;
   cards: CardsMap;
   investigator: Card;
-  fontScale: number;
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
 }
 
@@ -50,7 +49,7 @@ class DeckXpSection extends React.Component<Props> {
   };
 
   render() {
-    const { deck, investigator, previousDeck, fontScale, cards, showDeckUpgrade } = this.props;
+    const { deck, investigator, previousDeck, cards, showDeckUpgrade } = this.props;
     if (!previousDeck && !showDeckUpgrade) {
       return null;
     }
@@ -70,7 +69,6 @@ class DeckXpSection extends React.Component<Props> {
     return (
       <>
         <CardSectionHeader
-          fontScale={fontScale}
           investigator={investigator}
           section={{ superTitle: t`Experience points` }}
         />

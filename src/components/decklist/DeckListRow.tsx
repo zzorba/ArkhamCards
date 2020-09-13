@@ -21,7 +21,6 @@ import COLORS from '@styles/colors';
 
 interface Props {
   deck: Deck;
-  fontScale: number;
   previousDeck?: Deck;
   deckToCampaign?: { [deck_id: number]: Campaign };
   cards: CardsMap;
@@ -89,7 +88,6 @@ export default class DeckListRow extends React.Component<Props> {
       previousDeck,
       cards,
       details,
-      fontScale,
     } = this.props;
     if (details) {
       return details;
@@ -133,7 +131,6 @@ export default class DeckListRow extends React.Component<Props> {
           <DeckProblemRow
             problem={{ reason: deck.problem }}
             color={COLORS.darkText}
-            fontScale={fontScale}
           />
         ) }
         { !!dateStr && (
@@ -152,7 +149,6 @@ export default class DeckListRow extends React.Component<Props> {
       investigator,
       compact,
       subDetails,
-      fontScale,
     } = this.props;
     if (!deck || !investigator) {
       return (
@@ -169,7 +165,6 @@ export default class DeckListRow extends React.Component<Props> {
     return (
       <InvestigatorRow
         investigator={investigator}
-        fontScale={fontScale}
         bigImage={!compact}
         noFactionIcon={!compact}
         eliminated={this.killedOrInsane()}

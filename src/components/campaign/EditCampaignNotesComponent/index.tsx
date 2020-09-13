@@ -17,7 +17,6 @@ import { s, xs } from '@styles/space';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   allInvestigators: Card[];
   campaignNotes: CampaignNotes;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;

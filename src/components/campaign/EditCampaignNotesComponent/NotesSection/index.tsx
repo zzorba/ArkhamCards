@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 
 import NoteRow from './NoteRow';
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { s, xs } from '@styles/space';
 import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   notesChanged: (index: number, notes: string[]) => void;
@@ -21,7 +21,10 @@ interface Props {
   isInvestigator?: boolean;
 }
 
-class NotesSection extends React.Component<Props & StylesProps> {
+export default class NotesSection extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   notes() {
     return [
       ...this.props.notes,
@@ -62,8 +65,8 @@ class NotesSection extends React.Component<Props & StylesProps> {
       title,
       isInvestigator,
       showDialog,
-      gameFont,
     } = this.props;
+    const { gameFont } = this.context;
     const notes = this.notes();
     return (
       <View style={isInvestigator ? {} : styles.container}>
@@ -101,8 +104,6 @@ class NotesSection extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(NotesSection);
 
 const styles = StyleSheet.create({
   container: {

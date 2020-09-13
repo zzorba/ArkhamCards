@@ -29,7 +29,6 @@ import SideMenu from 'react-native-side-menu';
 
 import {
   SettingsButton,
-  SettingsCategoryHeader,
 } from '@lib/react-native-settings-components';
 import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
@@ -37,6 +36,7 @@ import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDi
 import Dialog from '@components/core/Dialog';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
 import { iconsMap } from '@app/NavIcons';
 import {
@@ -77,6 +77,7 @@ import { m } from '@styles/space';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const SHOW_DESCRIPTION_EDITOR = false;
 const SHOW_CHECKLIST_EDITOR = true;
@@ -155,6 +156,9 @@ interface State {
 }
 
 class DeckDetailView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static getDerivedStateFromProps(props: Props, state: State) {
     const result: Partial<State> = {};
     if (props.cards !== state.calculatedCards) {
@@ -582,6 +586,7 @@ class DeckDetailView extends React.Component<Props, State> {
       ignoreDeckLimitSlots,
       xpAdjustment,
     } = this.state;
+    const { colors } = this.context;
     if (!deck) {
       return;
     }
@@ -623,7 +628,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -638,6 +643,7 @@ class DeckDetailView extends React.Component<Props, State> {
       previousDeck,
       cards,
     } = this.props;
+    const { colors } = this.context;
     if (!deck) {
       return;
     }
@@ -679,7 +685,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -696,6 +702,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       parsedDeck,
     } = this.state;
+    const { colors } = this.context;
     if (!deck) {
       return;
     }
@@ -724,7 +731,7 @@ class DeckDetailView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -1274,6 +1281,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       viewRef,
     } = this.props;
+    const { colors } = this.context;
     const {
       deleting,
       deleteError,
@@ -1296,7 +1304,7 @@ class DeckDetailView extends React.Component<Props, State> {
       <Dialog title={t`Deleting`} visible={deleting} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />
@@ -1308,6 +1316,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       viewRef,
     } = this.props;
+    const { colors } = this.context;
     const {
       saving,
       saveError,
@@ -1330,7 +1339,7 @@ class DeckDetailView extends React.Component<Props, State> {
       <Dialog title={t`Saving`} visible={saving} viewRef={viewRef}>
         <ActivityIndicator
           style={styles.spinner}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />
@@ -1427,7 +1436,6 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       componentId,
       cards,
-      fontScale,
     } = this.props;
     const {
       parsedDeck,
@@ -1440,7 +1448,6 @@ class DeckDetailView extends React.Component<Props, State> {
     return (
       <DeckNavFooter
         componentId={componentId}
-        fontScale={fontScale}
         parsedDeck={parsedDeck}
         meta={meta}
         cards={cards}
@@ -1615,6 +1622,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       isPrivate,
     } = this.props;
+    const { colors } = this.context;
     const {
       nameChange,
       hasPendingEdits,
@@ -1630,12 +1638,8 @@ class DeckDetailView extends React.Component<Props, State> {
     const adjustment = xpAdjustment >= 0 ? `+${xpAdjustment}` : `${xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
-      <ScrollView style={styles.menu}>
-        <SettingsCategoryHeader
-          title={t`Deck`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+      <ScrollView style={[styles.menu, { backgroundColor: colors.background }]}>
+        <CardSectionHeader section={{ title: t`Deck` }} />
         { editable && (
           <>
             <SettingsButton
@@ -1644,21 +1648,21 @@ class DeckDetailView extends React.Component<Props, State> {
               description={nameChange || deck.name}
               descriptionStyle={styles.text}
               titleStyle={styles.text}
-              containerStyle={styles.button}
+              containerStyle={{ backgroundColor: colors.background }}
             />
             { SHOW_DESCRIPTION_EDITOR && (
               <SettingsButton
                 onPress={this._showEditDescription}
                 title={t`Description`}
                 titleStyle={styles.text}
-                containerStyle={styles.button}
-              />
+                containerStyle={{ backgroundColor: colors.background }}
+                />
             ) }
             <SettingsButton
               onPress={this._showTabooPicker}
               title={t`Taboo List`}
               titleStyle={styles.text}
-              containerStyle={styles.button}
+              containerStyle={{ backgroundColor: colors.background }}
               description={tabooSet ? tabooSet.date_start : t`None`}
               descriptionStyle={styles.text}
             />
@@ -1666,7 +1670,7 @@ class DeckDetailView extends React.Component<Props, State> {
               <SettingsButton
                 title={t`Deck Id`}
                 titleStyle={styles.text}
-                containerStyle={styles.button}
+                containerStyle={{ backgroundColor: colors.background }}
                 description={`${deck.id}`}
                 descriptionStyle={styles.text}
                 onPress={this._showEditDetailsVisible}
@@ -1675,18 +1679,14 @@ class DeckDetailView extends React.Component<Props, State> {
             ) }
           </>
         ) }
-        <SettingsCategoryHeader
-          title={t`Cards`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+        <CardSectionHeader section={{ title: t`Cards`}} />
         { editable && (
           <>
             <SettingsButton
               onPress={this._onEditPressed}
               title={t`Edit Cards`}
               titleStyle={styles.text}
-              containerStyle={styles.button}
+              containerStyle={{ backgroundColor: colors.background }}
               description={ngettext(
                 msgid`${normalCardCount} Card (${totalCardCount} Total)`,
                 `${normalCardCount} Cards (${totalCardCount} Total)`,
@@ -1698,13 +1698,13 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._onEditSpecialPressed}
               title={t`Story Assets`}
               titleStyle={styles.text}
-              containerStyle={styles.button}
+              containerStyle={{ backgroundColor: colors.background }}
             />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Weaknesses`}
               titleStyle={styles.text}
-              containerStyle={styles.button}
+              containerStyle={{ backgroundColor: colors.background }}
             />
           </>
         ) }
@@ -1713,33 +1713,29 @@ class DeckDetailView extends React.Component<Props, State> {
             onPress={this._onChecklistPressed}
             title={t`Checklist`}
             titleStyle={styles.text}
-            containerStyle={styles.button}
-          />
+            containerStyle={{ backgroundColor: colors.background }}
+            />
         ) }
         <SettingsButton
           onPress={this._showCardCharts}
           title={t`Charts`}
           titleStyle={styles.text}
-          containerStyle={styles.button}
-        />
+          containerStyle={{ backgroundColor: colors.background }}
+          />
         <SettingsButton
           onPress={this._showDrawSimulator}
           title={t`Draw Simulator`}
           titleStyle={styles.text}
-          containerStyle={styles.button}
-        />
+          containerStyle={{ backgroundColor: colors.background }}
+          />
         { editable && (
           <>
-            <SettingsCategoryHeader
-              title={t`Campaign`}
-              titleStyle={styles.categoryText}
-              containerStyle={styles.categoryContainer}
-            />
+            <CardSectionHeader section={{ title: t`Campaign`}} />
             <SettingsButton
               onPress={this._onUpgradePressed}
               title={t`Upgrade Deck`}
               titleStyle={styles.text}
-              containerStyle={styles.button}
+              containerStyle={{ backgroundColor: colors.background }}
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
               descriptionStyle={styles.text}
@@ -1749,7 +1745,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 onPress={this._showEditDetailsVisible}
                 title={t`Available XP`}
                 titleStyle={styles.text}
-                containerStyle={styles.button}
+                containerStyle={{ backgroundColor: colors.background }}
                 description={xpString}
                 descriptionStyle={styles.text}
               />
@@ -1759,42 +1755,38 @@ class DeckDetailView extends React.Component<Props, State> {
                 onPress={this._showUpgradeHistory}
                 title={t`Upgrade History`}
                 titleStyle={styles.text}
-                containerStyle={styles.button}
+                containerStyle={{ backgroundColor: colors.background }}
               />
             ) }
           </>
         ) }
-        <SettingsCategoryHeader
-          title={t`Options`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+        <CardSectionHeader section={{ title: t`Options`}} />
         <SettingsButton
           onPress={this._toggleCopyDialog}
           title={t`Clone`}
           titleStyle={styles.text}
-          containerStyle={styles.button}
-        />
+          containerStyle={{ backgroundColor: colors.background }}
+          />
         { deck.local ? (
           <SettingsButton
             onPress={this._uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
             titleStyle={styles.text}
-            containerStyle={styles.button}
-          />
+            containerStyle={{ backgroundColor: colors.background }}
+            />
         ) : (
           <SettingsButton
             title={t`View on ArkhamDB`}
             onPress={this._viewDeck}
             titleStyle={styles.text}
-            containerStyle={styles.button}
-          />
+            containerStyle={{ backgroundColor: colors.background }}
+            />
         ) }
         { !!isPrivate && (
           <SettingsButton
             title={t`Delete`}
             titleStyle={styles.destructive}
-            containerStyle={styles.button}
+            containerStyle={{ backgroundColor: colors.background }}
             onPress={this._deleteDeckPrompt}
           />
         ) }
@@ -1810,7 +1802,6 @@ class DeckDetailView extends React.Component<Props, State> {
   ) {
     const {
       componentId,
-      fontScale,
       isPrivate,
       captureViewRef,
       cards,
@@ -1834,6 +1825,7 @@ class DeckDetailView extends React.Component<Props, State> {
       meta,
       tabooOpen,
     } = this.state;
+    const { colors } = this.context;
 
     const editable = !!isPrivate && !!deck && !deck.next_deck;
     const showTaboo: boolean = !!(
@@ -1842,10 +1834,9 @@ class DeckDetailView extends React.Component<Props, State> {
       ));
     return (
       <View>
-        <View style={styles.container} ref={captureViewRef}>
+        <View style={[styles.container, { backgroundColor: colors.background }] } ref={captureViewRef}>
           <DeckViewTab
             componentId={componentId}
-            fontScale={fontScale}
             inCollection={inCollection}
             parallelInvestigators={parallelInvestigators}
             deck={deck}
@@ -1898,6 +1889,7 @@ class DeckDetailView extends React.Component<Props, State> {
       deck,
       tabooSets,
     } = this.props;
+    const { colors } = this.context;
     const {
       loaded,
       parsedDeck,
@@ -1905,10 +1897,10 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.state;
     if (!deck) {
       return (
-        <View style={styles.activityIndicatorContainer}>
+        <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
           <ActivityIndicator
             style={styles.spinner}
-            color={COLORS.lightText}
+            color={colors.lightText}
             size="small"
             animating
           />
@@ -1922,10 +1914,10 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     if (!loaded || !parsedDeck) {
       return (
-        <View style={styles.activityIndicatorContainer}>
+        <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
           <ActivityIndicator
             style={styles.spinner}
-            color={COLORS.lightText}
+            color={colors.lightText}
             size="small"
             animating
           />
@@ -1939,7 +1931,7 @@ class DeckDetailView extends React.Component<Props, State> {
     ) : undefined;
     const menuWidth = Math.min(width * 0.60, 240);
     return (
-      <View style={styles.flex} ref={captureViewRef}>
+      <View style={[styles.flex, { backgroundColor: colors.background }]} ref={captureViewRef}>
         <SideMenu
           isOpen={this.state.menuOpen}
           onChange={this._menuOpenChange}
@@ -2013,13 +2005,11 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   container: {
     position: 'relative',
     height: '100%',
     width: '100%',
-    backgroundColor: COLORS.background,
   },
   spinner: {
     height: 80,
@@ -2028,7 +2018,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   errorMargin: {
     padding: m,
@@ -2036,7 +2025,6 @@ const styles = StyleSheet.create({
   menu: {
     borderLeftWidth: 2,
     borderColor: COLORS.darkGray,
-    backgroundColor: COLORS.background,
   },
   destructive: {
     color: COLORS.red,
@@ -2049,8 +2037,5 @@ const styles = StyleSheet.create({
   },
   text: {
     color: COLORS.darkText,
-  },
-  button: {
-    backgroundColor: COLORS.background,
   },
 });

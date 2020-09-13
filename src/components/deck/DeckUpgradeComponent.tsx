@@ -24,7 +24,6 @@ import COLORS from '@styles/colors';
 interface OwnProps {
   investigator: Card;
   deck: Deck;
-  fontScale: number;
   startingXp?: number;
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
@@ -170,7 +169,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       investigator,
       componentId,
       campaignSection,
-      fontScale,
     } = this.props;
     const {
       xp,
@@ -202,7 +200,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
         { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
         <BasicListRow>
@@ -222,7 +219,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
             <CardSectionHeader
               section={{ superTitle: t`Exiled cards` }}
               investigator={investigator}
-              fontScale={fontScale}
             />
           )}
           exileCounts={exileCounts}

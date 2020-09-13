@@ -301,7 +301,6 @@ class CardFilterView extends React.Component<Props> {
       },
       onToggleChange,
       onFilterChange,
-      fontScale,
       cardData: {
         allUses,
         allFactions,
@@ -350,7 +349,6 @@ class CardFilterView extends React.Component<Props> {
             onToggleChange={onToggleChange}
             max={defaultFilterState.level[1]}
             height={2}
-            fontScale={fontScale}
           >
             <View>
               <ToggleFilter
@@ -377,7 +375,6 @@ class CardFilterView extends React.Component<Props> {
               selection={types}
               setting="types"
               onFilterChange={onFilterChange}
-              fontScale={fontScale}
             />
           ) }
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
@@ -388,7 +385,6 @@ class CardFilterView extends React.Component<Props> {
               selection={subTypes}
               setting="subTypes"
               onFilterChange={onFilterChange}
-              fontScale={fontScale}
             />
           ) }
         </View>
@@ -403,7 +399,6 @@ class CardFilterView extends React.Component<Props> {
             toggleName="costEnabled"
             onToggleChange={onToggleChange}
             max={defaultFilterState.cost[1]}
-            fontScale={fontScale}
           />
         ) }
         { hasSkill && (
@@ -412,7 +407,6 @@ class CardFilterView extends React.Component<Props> {
             onFilterChange={onFilterChange}
             enabled={skillEnabled}
             onToggleChange={onToggleChange}
-            fontScale={fontScale}
           />
         ) }
         <View>
@@ -424,21 +418,18 @@ class CardFilterView extends React.Component<Props> {
               selection={traits}
               setting="traits"
               onFilterChange={onFilterChange}
-              fontScale={fontScale}
             />
           ) }
           { indexOf(allTypeCodes, 'enemy') !== -1 && (
             <NavButton
               text={this.enemyFilterText()}
               onPress={this._onEnemyPress}
-              fontScale={fontScale}
             />
           ) }
           { indexOf(allTypeCodes, 'location') !== -1 && (
             <NavButton
               text={this.locationFilterText()}
               onPress={this._onLocationPress}
-              fontScale={fontScale}
             />
           ) }
         </View>
@@ -450,7 +441,6 @@ class CardFilterView extends React.Component<Props> {
             selection={slots}
             setting="slots"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
         { (uses.length > 0 || allUses.length > 0) && (
@@ -461,7 +451,6 @@ class CardFilterView extends React.Component<Props> {
             selection={uses}
             setting="uses"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
         <View style={[styles.toggleStack, space.paddingBottomS]}>
@@ -552,14 +541,12 @@ class CardFilterView extends React.Component<Props> {
             selection={encounters}
             setting="encounters"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
         { (packs.length > 0 || allPacks.length > 1) && (
           <NavButton
             text={this.selectedPacksText()}
             onPress={this._onPacksPress}
-            fontScale={fontScale}
           />
         ) }
         { (illustrators.length > 0 || allIllustrators.length > 0) && (
@@ -570,7 +557,6 @@ class CardFilterView extends React.Component<Props> {
             selection={illustrators}
             setting="illustrators"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
       </ScrollView>

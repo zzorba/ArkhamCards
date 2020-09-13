@@ -11,13 +11,13 @@ import { DeckProblem, DeckProblemType } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
 import typography, { SMALL_FONT_SIZE } from '@styles/typography';
 import space from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   problem: DeckProblem;
   color: string;
   noFontScaling?: boolean;
   fontSize?: number;
-  fontScale: number;
 }
 
 export default function DeckProblemRow({
@@ -25,7 +25,6 @@ export default function DeckProblemRow({
   color,
   noFontScaling,
   fontSize,
-  fontScale,
 }: Props) {
   const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
     too_few_cards: t`Not enough cards.`,
@@ -36,23 +35,28 @@ export default function DeckProblemRow({
     investigator: t`Doesn't comply with the Investigator requirements.`,
   };
   return (
-    <View style={styles.problemRow}>
-      <View style={space.marginRightXs}>
-        <AppIcon
-          name="warning"
-          size={SMALL_FONT_SIZE * (noFontScaling ? 1 : fontScale)}
-          color={color}
-        />
-      </View>
-      <Text
-        style={[typography.small, { color }, { fontSize: fontSize || SMALL_FONT_SIZE }, styles.problemText]}
-        numberOfLines={2}
-        ellipsizeMode="tail"
-        allowFontScaling={!noFontScaling}
-      >
-        { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
-      </Text>
-    </View>
+    <StyleContext.Consumer>
+      { ({ fontScale }) => (
+        <View style={styles.problemRow}>
+          <View style={space.marginRightXs}>
+            <AppIcon
+              name="warning"
+              size={SMALL_FONT_SIZE * (noFontScaling ? 1 : fontScale)}
+              color={color}
+            />
+          </View>
+          <Text
+            style={[typography.small, { color }, { fontSize: fontSize || SMALL_FONT_SIZE }, styles.problemText]}
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            allowFontScaling={!noFontScaling}
+          >
+            { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
+          </Text>
+        </View>
+      ) }
+    </StyleContext.Consumer>
+
   );
 }
 

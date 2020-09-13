@@ -167,14 +167,13 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   renderChaosToken() {
     const {
       chaosBagResults,
-      fontScale,
     } = this.props;
 
     const iconKey = chaosBagResults.drawnTokens[chaosBagResults.drawnTokens.length - 1] || undefined;
 
     return (
       <TouchableOpacity onPress={this._handleDrawTokenPressed}>
-        <ChaosToken iconKey={iconKey} fontScale={fontScale} />
+        <ChaosToken iconKey={iconKey} />
       </TouchableOpacity>
     );
   }
@@ -182,7 +181,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
   renderDrawnTokens() {
     const {
       chaosBagResults,
-      fontScale,
     } = this.props;
 
     const drawnTokens = chaosBagResults.drawnTokens;
@@ -190,7 +188,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
       return drawnTokens.slice(0, drawnTokens.length - 1).map(function(token, index) {
         return (
           <ChaosToken
-            fontScale={fontScale}
             key={index}
             iconKey={token}
             small
@@ -210,7 +207,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       campaignId,
       chaosBagResults,
-      fontScale,
     } = this.props;
 
     const sealedTokens = chaosBagResults.sealedTokens;
@@ -223,7 +219,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
           sealed
           id={token.id}
           iconKey={token.icon}
-          fontScale={fontScale}
         />
       );
     });

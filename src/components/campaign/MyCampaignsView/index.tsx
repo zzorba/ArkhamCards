@@ -165,7 +165,7 @@ class MyCampaignsView extends React.Component<Props, State> {
   }
 
   render() {
-    const { componentId, fontScale } = this.props;
+    const { componentId } = this.props;
     const { search } = this.state;
     const campaigns = this.filteredCampaigns();
     return (
@@ -180,7 +180,6 @@ class MyCampaignsView extends React.Component<Props, State> {
             componentId={componentId}
             campaigns={campaigns}
             footer={this.renderFooter(campaigns)}
-            fontScale={fontScale}
           />
         ) }
       </CollapsibleSearchBox>

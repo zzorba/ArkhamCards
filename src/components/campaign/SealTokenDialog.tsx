@@ -73,7 +73,6 @@ class SealTokenDialog extends React.Component<Props> {
       campaignId,
       chaosBag,
       chaosBagResults,
-      fontScale,
     } = this.props;
 
     const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
@@ -111,7 +110,6 @@ class SealTokenDialog extends React.Component<Props> {
           campaignId={campaignId}
           canDisable
           iconKey={token}
-          fontScale={fontScale}
         />
       );
     });

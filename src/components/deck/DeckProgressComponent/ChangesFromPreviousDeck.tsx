@@ -10,7 +10,6 @@ import Card, { CardsMap } from '@data/Card';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
   xpAdjustment: number;
@@ -91,7 +90,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       parsedDeck: {
         investigator,
       },
-      fontScale,
     } = this.props;
     const cards = this.cards(slots);
     if (!cards.length) {
@@ -103,7 +101,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           section={{ title }}
-          fontScale={fontScale}
         />
         { map(cards, card => (
           <CardSearchResult
@@ -111,7 +108,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
             onPress={this._showCard}
             card={card}
             count={slots[card.code]}
-            fontScale={fontScale}
             deltaCountMode
           />
         )) }
@@ -141,7 +137,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         investigator,
         changes,
       },
-      fontScale,
       editable,
     } = this.props;
 
@@ -163,7 +158,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         <CardSectionHeader
           investigator={investigator}
           section={{ title: t`No Changes` }}
-          fontScale={fontScale}
         />
       );
     }
@@ -175,7 +169,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         investigator,
         changes,
       },
-      fontScale,
       title,
       onTitlePress,
     } = this.props;
@@ -190,7 +183,6 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
             superTitle: title || t`Card changes`,
             onPress: onTitlePress ? this._onTitlePress : undefined,
           }}
-          fontScale={fontScale}
         />
         { this.renderEdits() }
       </>

@@ -293,7 +293,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       refreshNetworkStatus,
       networkType,
       isConnected,
-      fontScale,
     } = this.props;
     const {
       saving,
@@ -334,7 +333,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           setTabooSet={this._setTabooSetId}
         />
         <CardSectionHeader
-          fontScale={fontScale}
           investigator={investigator}
           section={{ superTitle: t`Required Cards` }}
         />
@@ -351,7 +349,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           );
         }) }
         <CardSectionHeader
-          fontScale={fontScale}
           investigator={investigator}
           section={{ superTitle: t`Deck Type` }}
         />

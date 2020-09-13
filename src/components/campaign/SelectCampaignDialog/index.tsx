@@ -85,12 +85,10 @@ class SelectCampaignDialog extends React.Component<Props> {
   }
 
   renderCampaign(packCode: CampaignCycleCode) {
-    const { fontScale } = this.props;
     const guideComingSoon = (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
     return (
       <CycleItem
         key={packCode}
-        fontScale={fontScale}
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}

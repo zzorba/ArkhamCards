@@ -152,7 +152,6 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
       width,
       onToggleChange,
       onFilterChange,
-      fontScale,
     } = this.props;
     const { colors } = this.context;
     return (
@@ -167,7 +166,6 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           enabled={enemyFightEnabled}
           toggleName="enemyFightEnabled"
           onToggleChange={onToggleChange}
-          fontScale={fontScale}
         />
         <SliderChooser
           label={t`Health`}
@@ -180,7 +178,6 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           toggleName="enemyHealthEnabled"
           onToggleChange={onToggleChange}
           height={1}
-          fontScale={fontScale}
         >
           <View>
             <ToggleFilter
@@ -201,7 +198,6 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           enabled={enemyEvadeEnabled}
           toggleName="enemyEvadeEnabled"
           onToggleChange={onToggleChange}
-          fontScale={fontScale}
         />
         <SliderChooser
           label={t`Damage`}
@@ -213,7 +209,6 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           enabled={enemyDamageEnabled}
           toggleName="enemyDamageEnabled"
           onToggleChange={onToggleChange}
-          fontScale={fontScale}
         />
         <SliderChooser
           label={t`Horror`}
@@ -225,7 +220,6 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
           enabled={enemyHorrorEnabled}
           toggleName="enemyHorrorEnabled"
           onToggleChange={onToggleChange}
-          fontScale={fontScale}
         />
         { this.renderToggles() }
       </ScrollView>

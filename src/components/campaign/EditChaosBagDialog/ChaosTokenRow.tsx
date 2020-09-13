@@ -13,7 +13,6 @@ import COLORS from '@styles/colors';
 
 interface Props {
   id: ChaosTokenType;
-  fontScale: number;
   mutateCount: (id: ChaosTokenType, mutate: (count: number) => number) => void;
   originalCount: number;
   count: number;
@@ -38,13 +37,12 @@ export default class ChaosTokenRow extends React.PureComponent<Props> {
     mutateCount(id, count => Math.max(count - 1, 0));
   };
 
-  static renderTokens(id: ChaosTokenType, count: number, fontScale: number, status?: 'added' | 'removed') {
+  static renderTokens(id: ChaosTokenType, count: number, status?: 'added' | 'removed') {
     return (
       <View style={styles.row}>
         { map(range(0, count), (idx) => (
           <ChaosToken
             key={`${status}-${idx}`}
-            fontScale={fontScale}
             id={id}
             status={status}
           />
@@ -58,25 +56,24 @@ export default class ChaosTokenRow extends React.PureComponent<Props> {
       id,
       count,
       originalCount,
-      fontScale,
     } = this.props;
     if (count > originalCount) {
       return (
         <View style={styles.row}>
-          { (originalCount > 0) && ChaosTokenRow.renderTokens(id, originalCount, fontScale) }
-          { ChaosTokenRow.renderTokens(id, (count - originalCount), fontScale, 'added') }
+          { (originalCount > 0) && ChaosTokenRow.renderTokens(id, originalCount) }
+          { ChaosTokenRow.renderTokens(id, (count - originalCount), 'added') }
         </View>
       );
     }
     if (count < originalCount) {
       return (
         <View style={styles.row}>
-          { count > 0 && ChaosTokenRow.renderTokens(id, count, fontScale) }
-          { ChaosTokenRow.renderTokens(id, (originalCount - count), fontScale, 'removed') }
+          { count > 0 && ChaosTokenRow.renderTokens(id, count) }
+          { ChaosTokenRow.renderTokens(id, (originalCount - count), 'removed') }
         </View>
       );
     }
-    return ChaosTokenRow.renderTokens(id, count, fontScale);
+    return ChaosTokenRow.renderTokens(id, count);
 
   }
 
@@ -85,12 +82,11 @@ export default class ChaosTokenRow extends React.PureComponent<Props> {
       id,
       count,
       limit,
-      fontScale,
     } = this.props;
     return (
       <View style={styles.mainRow}>
         <View style={styles.row}>
-          <ChaosToken id={id} fontScale={fontScale} />
+          <ChaosToken id={id} />
           <PlusMinusButtons
             count={count}
             onIncrement={this._increment}

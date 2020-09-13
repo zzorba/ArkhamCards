@@ -11,9 +11,9 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import typography from '@styles/typography';
 import { xs, s, isBig } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
-  fontScale: number;
   text?: string;
   onPress: () => void;
   indent?: boolean;
@@ -22,35 +22,39 @@ interface Props {
   disabled?: boolean;
   color?: string;
 }
-export default function NavButton({ disabled, text, fontScale, onPress, color, indent, children, noBorder }: Props) {
+export default function NavButton({ disabled, text, onPress, color, indent, children, noBorder }: Props) {
   return (
-    <TouchableOpacity onPress={onPress} disabled={!!disabled}>
-      <View style={[
-        styles.container,
-        indent ? styles.indentedContainer : {},
-        noBorder ? {} : styles.bottomBorder,
-      ]}>
-        { text ? (
+    <StyleContext.Consumer>
+      { ({ fontScale }) => (
+        <TouchableOpacity onPress={onPress} disabled={!!disabled}>
           <View style={[
-            styles.text,
-            { minHeight: 22 + 18 * fontScale * (isBig ? 1.2 : 1.0) },
+            styles.container,
+            indent ? styles.indentedContainer : {},
+            noBorder ? {} : styles.bottomBorder,
           ]}>
-            <Text style={typography.text} numberOfLines={1}>
-              { text }
-            </Text>
+            { text ? (
+              <View style={[
+                styles.text,
+                { minHeight: 22 + 18 * fontScale * (isBig ? 1.2 : 1.0) },
+              ]}>
+                <Text style={typography.text} numberOfLines={1}>
+                  { text }
+                </Text>
+              </View>
+            ) : <View style={styles.flex}>{ children }</View> }
+            <View style={styles.icon}>
+              { !disabled && (
+                <MaterialIcons
+                  name="keyboard-arrow-right"
+                  size={30}
+                  color={color || 'rgb(0, 122,255)'}
+                />
+              ) }
+            </View>
           </View>
-        ) : <View style={styles.flex}>{ children }</View> }
-        <View style={styles.icon}>
-          { !disabled && (
-            <MaterialIcons
-              name="keyboard-arrow-right"
-              size={30}
-              color={color || 'rgb(0, 122,255)'}
-            />
-          ) }
-        </View>
-      </View>
-    </TouchableOpacity>
+        </TouchableOpacity>
+      ) }
+    </StyleContext.Consumer>
   );
 }
 

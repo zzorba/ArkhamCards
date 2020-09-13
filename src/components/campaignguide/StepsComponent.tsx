@@ -7,7 +7,6 @@ import ScenarioStep from '@data/scenario/ScenarioStep';
 interface Props {
   steps: ScenarioStep[];
   componentId: string;
-  fontScale: number;
   width: number;
   switchCampaignScenario: () => void;
 }
@@ -17,7 +16,6 @@ export default class StepsComponent extends React.Component<Props> {
     const {
       steps,
       componentId,
-      fontScale,
       width,
       switchCampaignScenario,
     } = this.props;
@@ -25,7 +23,6 @@ export default class StepsComponent extends React.Component<Props> {
       <ScenarioStepComponent
         key={`${step.step.id}_${idx}`}
         componentId={componentId}
-        fontScale={fontScale}
         width={width}
         step={step}
         switchCampaignScenario={switchCampaignScenario}

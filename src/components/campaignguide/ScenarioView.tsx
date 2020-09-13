@@ -39,6 +39,7 @@ const RESET_ENABLED = false;
 class ScenarioView extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
+
   undoEnabled: boolean;
 
   static options() {
@@ -192,7 +193,7 @@ class ScenarioView extends React.Component<Props> {
   };
 
   render() {
-    const { componentId, fontScale, width, processedScenario } = this.props;
+    const { componentId, width, processedScenario } = this.props;
     const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
       processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
     return (
@@ -219,7 +220,7 @@ class ScenarioView extends React.Component<Props> {
           />
           <View style={styles.footer} />
         </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
     );
   }
 }

@@ -150,10 +150,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           width: costIconSize(fontScale),
           height: costIconSize(fontScale),
         }]}>
-          <CardCostIcon
-            card={card}
-            fontScale={fontScale}
-          />
+          <CardCostIcon card={card} />
         </View>
       );
     }
@@ -331,7 +328,6 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       );
       return (
         <CardQuantityComponent
-          fontScale={fontScale}
           count={count || 0}
           limit={Math.max(count || 0, typeof limit === 'number' ? limit : deck_limit)}
           countChanged={this._onDeckCountChange}

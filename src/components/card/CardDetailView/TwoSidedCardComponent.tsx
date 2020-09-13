@@ -34,6 +34,7 @@ import Card from '@data/Card';
 import COLORS from '@styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const BLURRED_ACT = require('../../../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../../../assets/blur-agenda.jpeg');
@@ -70,7 +71,6 @@ interface Props {
   notFirst?: boolean;
   simple?: boolean;
   width: number;
-  fontScale: number;
 }
 
 interface State {
@@ -78,6 +78,9 @@ interface State {
 }
 
 export default class TwoSidedCardComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -202,7 +205,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderMetadata(card: Card) {
-    const { fontScale } = this.props;
     return (
       <View style={styles.metadataBlock}>
         { this.renderType(card) }
@@ -216,12 +218,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <View style={styles.statLineRow}>
               <InvestigatorStatLine
                 investigator={card}
-                fontScale={fontScale}
               />
             </View>
             <HealthSanityLine
               investigator={card}
-              fontScale={fontScale}
             />
           </>
         ) }
@@ -230,7 +230,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTestIcons(card: Card) {
-    const { fontScale } = this.props;
+    const { colors, fontScale } = this.context;
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -254,7 +254,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             key={idx}
             name={skill.substring(6)}
             size={SKILL_ICON_SIZE * fontScale}
-            color={COLORS.darkText}
+            color={colors.darkText}
           />))
         }
       </View>
@@ -408,7 +408,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     subname?: string,
     factionColor?: string
   ) {
-    const { fontScale } = this.props;
+    const { colors } = this.context;
     return (
       <React.Fragment>
         <View style={styles.titleRow}>
@@ -416,7 +416,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <View style={styles.costIcon}>
               <CardCostIcon
                 card={card}
-                fontScale={fontScale}
                 inverted
                 linked={this.props.linked}
               />
@@ -426,7 +425,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <Text style={[
               typography.text,
               space.marginLeftS,
-              { color: factionColor ? '#FFFFFF' : COLORS.darkText },
+              { color: factionColor ? '#FFFFFF' : colors.darkText },
             ]}>
               { `${name}${card.is_unique ? ' ✷' : ''}` }
             </Text>
@@ -434,7 +433,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               <Text style={[
                 typography.small,
                 space.marginLeftS,
-                { color: factionColor ? '#FFFFFF' : COLORS.darkText },
+                { color: factionColor ? '#FFFFFF' : colors.darkText },
               ]}>
                 { subname }
               </Text>
@@ -451,7 +450,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     name: string,
     subname?: string,
   ) {
-    const color = COLORS.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
+    const { colors } = this.context;
+    const color = colors.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
     return (
       <View style={[styles.cardTitle, {
         backgroundColor: color,
@@ -496,14 +496,13 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       componentId,
       simple,
       width,
-      fontScale,
     } = this.props;
+    const { colors } = this.context;
     if (card.linked_card) {
       return (
         <View key={key}>
           <TwoSidedCardComponent
             componentId={componentId}
-            fontScale={fontScale}
             card={card.linked_card}
             linked
             notFirst={!isFirst}
@@ -529,8 +528,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
         <View style={[styles.card, {
-          backgroundColor: COLORS.background,
-          borderColor: COLORS.faction[
+          backgroundColor: colors.background,
+          borderColor: colors.faction[
             card.faction2_code ? 'dual' : card.factionCode()
           ].background,
         }]}>
@@ -557,7 +556,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               }
               { !!card.back_text && (
                 <View style={[styles.gameTextBlock, {
-                  borderColor: COLORS.faction[card.faction2_code ?
+                  borderColor: colors.faction[card.faction2_code ?
                     'dual' : card.factionCode()
                   ].background,
                 }]}>
@@ -576,7 +575,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTabooButton() {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     return (
       <Button
         grow
@@ -589,7 +588,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderFaqButton() {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     return (
       <Button
         grow
@@ -601,13 +600,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardFooter(card: Card) {
-    const { componentId, fontScale } = this.props;
+    const { componentId } = this.props;
+    const { colors, fontScale } = this.context;
     return (
       <React.Fragment>
         <View style={[styles.column, styles.flex]}>
           { !!card.illustrator && (
             <Text style={[typography.cardText, styles.illustratorText]}>
-              <AppIcon name="paintbrush" size={16 * fontScale} color={COLORS.darkText} />
+              <AppIcon name="paintbrush" size={16 * fontScale} color={colors.darkText} />
               { ` ${card.illustrator}` }
             </Text>
           ) }
@@ -619,7 +619,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                     <EncounterIcon
                       encounter_code={card.encounter_code}
                       size={16 * fontScale}
-                      color={COLORS.darkText}
+                      color={colors.darkText}
                     />
                     { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
                       ngettext(
@@ -634,7 +634,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                       <EncounterIcon
                         encounter_code={card.cycle_code || card.pack_code}
                         size={16 * fontScale}
-                        color={COLORS.darkText}
+                        color={colors.darkText}
                       />
                       { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
                     </Text>
@@ -645,7 +645,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                   <EncounterIcon
                     encounter_code={card.cycle_code || card.pack_code}
                     size={16 * fontScale}
-                    color={COLORS.darkText}
+                    color={colors.darkText}
                   />
                   { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
                 </Text>
@@ -691,7 +691,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     isHorizontal: boolean,
     flavorFirst: boolean
   ) {
-    const { simple, fontScale } = this.props;
+    const { simple } = this.props;
+    const { fontScale } = this.context;
     return (
       <>
         { !!card.text && (
@@ -716,7 +717,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         { !simple && !!card.flavor && !flavorFirst &&
           <CardFlavorTextComponent text={card.flavor} />
         }
-        <CardTabooTextBlock card={card} fontScale={fontScale} />
+        <CardTabooTextBlock card={card} />
       </>
     );
   }
@@ -732,8 +733,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const {
       simple,
       width,
-      fontScale,
     } = this.props;
+    const { colors, fontScale } = this.context;
     if ((card.hidden || backFirst) &&
       ((card.hidden && card.type_code !== 'investigator') || card.spoiler) &&
       !this.state.showBack &&
@@ -752,7 +753,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         <View style={[
           styles.card,
           {
-            borderColor: COLORS.faction[
+            borderColor: colors.faction[
               card.faction2_code ? 'dual' : card.factionCode()
             ].background,
           },
@@ -760,7 +761,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           { this.renderTitle(card, card.name, card.subname) }
           <View style={styles.cardBody}>
             <View style={[styles.typeBlock, {
-              backgroundColor: COLORS.background,
+              backgroundColor: colors.background,
             }]}>
               <View style={styles.row}>
                 <View style={styles.mainColumn}>
@@ -777,10 +778,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { (card.type_code !== 'enemy' && card.type_code !== 'investigator' && (
                 (card.health && card.health > 0) || (card.sanity && card.sanity > 0))
               ) && (
-                <HealthSanityLine
-                  investigator={card}
-                  fontScale={fontScale}
-                />
+                <HealthSanityLine investigator={card} />
               ) }
               { isFirst && !simple && this.renderCardFooter(card) }
             </View>

@@ -14,6 +14,7 @@ import { createFactionIcons } from '@app_constants';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFFFFF' });
 
@@ -26,10 +27,12 @@ interface Props {
   small?: boolean;
   killedOrInsane?: boolean;
   yithian?: boolean;
-  fontScale: number;
 }
 
 export default class InvestigatorImage extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       card,
@@ -41,7 +44,8 @@ export default class InvestigatorImage extends React.Component<Props> {
   };
 
   small() {
-    const { small, fontScale } = this.props;
+    const { small } = this.props;
+    const { fontScale } = this.context;
     return small || toggleButtonMode(fontScale);
   }
 

@@ -9,6 +9,7 @@ import {
 } from '@reducers';
 import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
 import { CampaignGuideReduxData, campaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignGuideInputProps {
   campaignId: number;
@@ -40,6 +41,9 @@ export default function withCampaignGuideContext<Props>(
     UniversalCampaignProps &
     ReduxProps
   > {
+    static contextType = StyleContext;
+    context!: StyleContextType;
+
     render() {
       const {
         campaignData,
@@ -51,7 +55,8 @@ export default function withCampaignGuideContext<Props>(
       }
       const context = constructCampaignGuideContext(
         campaignData as CampaignGuideReduxData,
-        this.props
+        this.props,
+        this.context
       );
       return (
         <CampaignGuideContext.Provider value={context}>

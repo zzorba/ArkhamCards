@@ -16,13 +16,12 @@ import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
 import space, { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId?: string;
   card: Card;
   width: number;
-  fontScale: number;
   showSpoilers: boolean;
   tabooSetId?: number;
   toggleShowSpoilers?: (code: string) => void;
@@ -31,9 +30,8 @@ interface Props {
 }
 
 export default class CardDetailComponent extends React.Component<Props> {
-  public static defaultProps = {
-    simple: false,
-  };
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   _editSpoilersPressed = () => {
     const { componentId } = this.props;
@@ -70,8 +68,8 @@ export default class CardDetailComponent extends React.Component<Props> {
       componentId,
       card,
       width,
-      fontScale,
     } = this.props;
+    const { fontScale } = this.context;
     if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }
@@ -91,7 +89,6 @@ export default class CardDetailComponent extends React.Component<Props> {
           componentId={componentId}
           investigator={card}
           width={width}
-          fontScale={fontScale}
         />
       </View>
     );
@@ -111,11 +108,11 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       simple,
       width,
-      fontScale,
     } = this.props;
+    const { colors } = this.context;
     if (this.shouldBlur()) {
       return (
-        <View key={card.code} style={[styles.viewContainer, { width }]}>
+        <View key={card.code} style={[styles.viewContainer, { backgroundColor: colors.background, width }]}>
           <Text style={[space.marginS]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
@@ -125,19 +122,17 @@ export default class CardDetailComponent extends React.Component<Props> {
       );
     }
     return (
-      <View key={card.code} style={[styles.viewContainer, { width }]}>
+      <View key={card.code} style={[styles.viewContainer, { backgroundColor: colors.background, width }]}>
         <TwoSidedCardComponent
           componentId={componentId}
           card={card}
           width={width}
-          fontScale={fontScale}
-          simple={simple}
+          simple={!!simple}
         />
         <BondedCardsComponent
           componentId={componentId}
           card={card}
           width={width}
-          fontScale={fontScale}
         />
         { this.renderInvestigatorCardsLink() }
       </View>
@@ -147,7 +142,6 @@ export default class CardDetailComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   viewContainer: {
-    backgroundColor: COLORS.background,
     flexDirection: 'column',
     alignItems: 'center',
   },

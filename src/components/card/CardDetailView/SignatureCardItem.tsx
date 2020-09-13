@@ -7,14 +7,12 @@ interface Props {
   componentId?: string;
   card: Card;
   width: number;
-  fontScale: number;
 }
 
-export default function SignatureCardItem({ card, componentId, width, fontScale }: Props) {
+export default function SignatureCardItem({ card, componentId, width }: Props) {
   return (
     <TwoSidedCardComponent
       componentId={componentId}
-      fontScale={fontScale}
       card={card}
       width={width}
     />

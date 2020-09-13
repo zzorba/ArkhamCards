@@ -22,7 +22,6 @@ class CampaignLogView extends React.Component<Props> {
       campaignId,
       campaignGuide,
       campaignLog,
-      fontScale,
       componentId,
     } = this.props;
     return (
@@ -32,7 +31,6 @@ class CampaignLogView extends React.Component<Props> {
           campaignId={campaignId}
           campaignGuide={campaignGuide}
           campaignLog={campaignLog}
-          fontScale={fontScale}
         />
       </ScrollView>
     );

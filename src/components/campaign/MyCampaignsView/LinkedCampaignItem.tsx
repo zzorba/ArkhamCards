@@ -17,7 +17,6 @@ import COLORS from '@styles/colors';
 interface OwnProps {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
-  fontScale: number;
 }
 
 interface ReduxProps {
@@ -41,7 +40,6 @@ class LinkedCampaignItem extends React.Component<Props> {
       campaign,
       campaignA,
       campaignB,
-      fontScale,
     } = this.props;
     return (
       <TouchableOpacity onPress={this._onPress}>
@@ -54,7 +52,6 @@ class LinkedCampaignItem extends React.Component<Props> {
           { !!campaignA && !!campaignB && (
             <CampaignInvestigatorRow
               campaigns={[campaignA, campaignB]}
-              fontScale={fontScale}
             />
           ) }
         </View>
