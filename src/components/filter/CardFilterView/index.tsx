@@ -22,6 +22,7 @@ import { CARD_FACTION_CODES } from '@app_constants';
 import { getAllPacks, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   allPacks: Pack[];
@@ -36,6 +37,9 @@ export type CardFilterProps = FilterFunctionProps & OwnProps;
 type Props = OwnProps & ReduxProps & FilterProps;
 
 class CardFilterView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -314,9 +318,10 @@ class CardFilterView extends React.Component<Props> {
         hasSkill,
       },
     } = this.props;
+    const { colors } = this.context;
 
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={{ backgroundColor: colors.background }}>
         <FactionChooser
           factions={allFactions}
           selection={factions}
@@ -591,7 +596,6 @@ const styles = StyleSheet.create({
   toggleStack: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
   },
   toggleRow: {
     flexDirection: 'row',
@@ -601,8 +605,5 @@ const styles = StyleSheet.create({
     width: '50%',
     flexDirection: 'column',
     alignItems: 'flex-end',
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });
