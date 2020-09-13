@@ -238,13 +238,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
         { !!mythosToggle && (
           <BasicButton
             onPress={toggleMythosMode}
-            title={mythosMode ? t`Search Player Cards` : t`Search Encounter Cards`}
+            title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
           />
         ) }
         { !!hasFilters && (
           <BasicButton
             onPress={clearSearchFilters}
-            title={t`Clear Search Filters`}
+            title={t`Clear search filters`}
           />
         ) }
       </View>
@@ -271,7 +271,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
         { !searchText && (
           <View style={[styles.toggle, space.marginS]}>
             <Text style={[typography.text, styles.toggleText]}>
-              { t`Search Game Text` }
+              { t`Search game text` }
             </Text>
             <Switch value={false} onValueChange={this._toggleSearchText} />
           </View>
@@ -279,7 +279,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
         { !searchBack && (
           <View style={[styles.toggle, space.marginS]}>
             <Text style={[typography.text, styles.toggleText]}>
-              { t`Search Card Backs` }
+              { t`Search card backs` }
             </Text>
             <Switch value={false} onValueChange={this._toggleSearchBack} />
           </View>

@@ -16,9 +16,7 @@ import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsCo
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { FilterState } from '@lib/filters';
 import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from '@components/filter/actions';
-import { iconsMap } from '@app/NavIcons';
 import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
-import COLORS from '@styles/colors';
 import MythosButton from './MythosButton';
 import TuneButton from './TuneButton';
 import SortButton from './SortButton';

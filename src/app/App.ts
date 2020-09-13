@@ -75,7 +75,7 @@ export default class App {
   async initialAppStart(store: Store<AppState, Action>): Promise<boolean> {
     try {
       const previousCrash = await Crashes.hasCrashedInLastSession();
-      if (previousCrash) {
+      if (previousCrash && !__DEV__) {
         const report = await Crashes.lastSessionCrashReport();
         const deltaSeconds = App.crashDeltaSeconds(report);
         if (deltaSeconds < 20) {
@@ -128,6 +128,11 @@ export default class App {
           color: COLORS.darkText,
           fontFamily: 'Alegreya-Medium',
           fontSize: 20,
+        },
+        subtitle: {
+          color: COLORS.darkText,
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 14,
         },
         background: {
           color: COLORS.background,

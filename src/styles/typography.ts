@@ -37,6 +37,13 @@ export default StyleSheet.create({
     lineHeight: 20 * sizeScale,
     color: COLORS.L30,
   },
+  subHeaderText: {
+    fontFamily: 'Alegreya-Medium',
+    fontVariant: ['small-caps'],
+    fontSize: 18 * sizeScale,
+    lineHeight: 18 * sizeScale,
+    color: COLORS.D10,
+  },
   text: {
     fontFamily: 'System',
     fontSize: 18 * sizeScale,

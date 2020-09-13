@@ -272,6 +272,9 @@ class CardResultList extends React.Component<Props, State> {
             title: {
               text: t`Spoiler Settings`,
             },
+            backButton: {
+              title: t`Back`,
+            },
           },
         },
       },
@@ -597,8 +600,8 @@ class CardResultList extends React.Component<Props, State> {
         id={section.id}
         fontScale={fontScale}
         title={ngettext(
-          msgid`Show ${section.nonCollectionCount} Non-Collection Card`,
-          `Show ${section.nonCollectionCount} Non-Collection Cards`,
+          msgid`Show ${section.nonCollectionCount} non-collection card`,
+          `Show ${section.nonCollectionCount} non-collection cards`,
           section.nonCollectionCount)}
         onPress={this._showNonCollectionCards}
       />
@@ -684,22 +687,22 @@ class CardResultList extends React.Component<Props, State> {
         <View style={styles.footer}>
           <BasicButton
             onPress={this._editSpoilerSettings}
-            title={t`Edit Spoiler Settings`}
+            title={t`Edit spoiler settings`}
           />
           { this.renderEmptyState(liveState, refreshing) }
         </View>
       );
     }
     const spoilerCount = ngettext(
-      msgid`Show ${spoilerCardsCount} Spoiler`,
-      `Show ${spoilerCardsCount} Spoilers`,
+      msgid`Show ${spoilerCardsCount} spoiler`,
+      `Show ${spoilerCardsCount} spoilers`,
       spoilerCardsCount);
     return (
       <View style={styles.footer}>
         <BasicButton onPress={this._enableSpoilers} title={spoilerCount} />
         <BasicButton
           onPress={this._editSpoilerSettings}
-          title={t`Edit Spoiler Settings`}
+          title={t`Edit spoiler settings`}
         />
         { this.renderEmptyState(liveState, refreshing) }
       </View>

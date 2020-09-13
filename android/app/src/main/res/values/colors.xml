@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="L10">#D7D3C6</color>
-    <color name="L20">#F5F0E1</color>
-    <color name="L30">#FFFBF2</color>
     <color name="D10">#656C6F</color>
     <color name="D20">#475259</color>
     <color name="D30">#24303C</color>
+    <color name="L10">#D7D3C6</color>
+    <color name="L20">#F5F0E1</color>
+    <color name="L30">#FFFBF2</color>
     <color name="background">#FFFFFF</color>
     <color name="primaryColor">#2E407B</color>
     <color name="colorPrimaryText">#000000</color>

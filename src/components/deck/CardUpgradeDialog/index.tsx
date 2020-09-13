@@ -252,8 +252,8 @@ class CardUpgradeDialog extends React.Component<Props, State> {
           <BasicButton
             key="non-collection"
             title={ngettext(
-              msgid`Show ${nonCollection.length} Non-Collection Card`,
-              `Show ${nonCollection.length} Non-Collection Cards`,
+              msgid`Show ${nonCollection.length} non-collection card`,
+              `Show ${nonCollection.length} non-collection cards`,
               nonCollection.length
             )}
             onPress={this._showNonCollection}

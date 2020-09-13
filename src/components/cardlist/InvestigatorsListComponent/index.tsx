@@ -295,8 +295,8 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       <ShowNonCollectionFooter
         id={section.id}
         title={ngettext(
-          msgid`Show ${section.nonCollectionCount} Non-Collection Investigator`,
-          `Show ${section.nonCollectionCount} Non-Collection Investigators`,
+          msgid`Show ${section.nonCollectionCount} non-collection investigator`,
+          `Show ${section.nonCollectionCount} non-collection investigators`,
           section.nonCollectionCount
         )}
         onPress={this._showNonCollectionCards}

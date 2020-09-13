@@ -34,6 +34,9 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
   if (section.placeholder) {
     return m;
   }
+  if (section.subTitle) {
+    return fontScale * 20 + 6 * 2;
+  }
   return fontScale * 22 + (section.superTitle ? s : xs) * 2;
 }
 
@@ -76,6 +79,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     const {
       investigator,
       section,
+      fontScale,
     } = this.props;
     if (section.placeholder) {
       return (
@@ -107,8 +111,8 @@ export default class CardSectionHeader extends React.Component<Props> {
     }
     if (section.subTitle) {
       return (
-        <View style={styles.subHeaderRow}>
-          <Text style={[typography.text, styles.subHeaderText]}>
+        <View style={[styles.subHeaderRow, { height: cardSectionHeaderHeight(section, fontScale) }]}>
+          <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.subTitle }
           </Text>
         </View>
@@ -118,7 +122,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     if (section.title) {
       return (
         <View style={styles.headerRow}>
-          <Text style={typography.text}>
+          <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.title }
           </Text>
         </View>
@@ -153,14 +157,14 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.veryVeryLightBackground, //COLORS.L10
     paddingLeft: m,
     paddingRight: s,
-    paddingTop: xs,
-    paddingBottom: xs,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderColor: COLORS.divider,
   },
   subHeaderText: {
-    //color: COLORS.D10,
-    //fontWeight: '500',
+    marginTop: 6,
   },
   headerRow: {
     backgroundColor: COLORS.lightBackground,
