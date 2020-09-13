@@ -203,23 +203,25 @@ class ScenarioView extends React.Component<Props> {
         keyboardVerticalOffset={100}
       >
         <KeepAwake />
-        <ScrollView contentContainerStyle={styles.container}>
-          { !!hasInterludeFaq && (
-            <BasicButton
-              title={t`Interlude FAQ`}
-              onPress={this._showScenarioFaq}
+        <View style={styles.wrapper}>
+          <ScrollView contentContainerStyle={styles.container}>
+            { !!hasInterludeFaq && (
+              <BasicButton
+                title={t`Interlude FAQ`}
+                onPress={this._showScenarioFaq}
+              />
+            ) }
+            <StepsComponent
+              componentId={componentId}
+              fontScale={fontScale}
+              width={width}
+              steps={processedScenario.steps}
+              switchCampaignScenario={this._switchCampaignScenario}
             />
-          ) }
-          <StepsComponent
-            componentId={componentId}
-            fontScale={fontScale}
-            width={width}
-            steps={processedScenario.steps}
-            switchCampaignScenario={this._switchCampaignScenario}
-          />
-          <View style={styles.footer} />
-        </ScrollView>
-      </KeyboardAvoidingView>
+            <View style={styles.footer} />
+          </ScrollView>
+        </View>
+    </KeyboardAvoidingView>
     );
   }
 }
@@ -233,6 +235,10 @@ const styles = StyleSheet.create({
     marginTop: 64,
   },
   container: {
+    backgroundColor: COLORS.background,
+  },
+  wrapper: {
+    flex: 1,
     backgroundColor: COLORS.background,
   },
   keyboardView: {
