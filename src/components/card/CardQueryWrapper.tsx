@@ -9,11 +9,12 @@ import { QuerySort } from '@data/types';
 import DbRender from '@components/data/DbRender';
 import { getTabooSet, AppState } from '@reducers';
 
-interface Props {
+interface Props<T> {
   name: string;
   query?: Brackets;
   sort?: QuerySort[];
-  children: (cards: Card[], loading: boolean) => React.ReactNode;
+  children: (cards: Card[], loading: boolean, extraProps?: T) => React.ReactNode;
+  extraProps?: T;
 }
 
 interface ReduxProps {
@@ -24,10 +25,10 @@ interface Data {
   cards: Card[];
 }
 
-class CardQueryWrapper extends React.Component<Props & ReduxProps> {
+class CardQueryWrapper<T=undefined> extends React.Component<Props<T> & ReduxProps> {
   _render = (data?: Data) => {
-    const { children } = this.props;
-    return children(data ? data.cards : [], !data);
+    const { children, extraProps } = this.props;
+    return children(data ? data.cards : [], !data, extraProps);
   };
 
   _getData = async(db: Database): Promise<Data> => {
@@ -43,9 +44,9 @@ class CardQueryWrapper extends React.Component<Props & ReduxProps> {
   };
 
   render() {
-    const { name, query, tabooSetId, sort } = this.props;
+    const { name, query, tabooSetId, sort, extraProps} = this.props;
     return (
-      <DbRender name={name} getData={this._getData} ids={[query, tabooSetId, sort]}>
+      <DbRender name={name} getData={this._getData} ids={[query, tabooSetId, sort]} extraProps={extraProps}>
         { this._render }
       </DbRender>
     );
@@ -60,6 +61,6 @@ function mapStateToProps(
   };
 }
 
-export default connect<ReduxProps, unknown, Props, AppState>(
+export default connect<ReduxProps, unknown, Props<any>, AppState>(
   mapStateToProps
-)(CardQueryWrapper) as React.ComponentType<Props>;
+)(CardQueryWrapper) as React.ComponentType<Props<any>>;

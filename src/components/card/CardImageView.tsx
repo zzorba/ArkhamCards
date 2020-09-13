@@ -26,67 +26,46 @@ interface State {
   flipped: boolean;
 }
 
-class CardImageView extends React.Component<Props, State> {
-  _navEventListener?: EventSubscription;
-  doubleCard: boolean = false;
+interface CardImageDetailProps {
+  componentId: string;
+  card: Card;
+  flipped: boolean;
+  width: number;
+  height: number;
+}
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      flipped: false,
-    };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'flip') {
-      this._flip();
-    }
-  }
-
-  _flip = () => {
-    this.setState({
-      flipped: !this.state.flipped,
-    });
-  };
-
-  _renderContent = (card: Card) => {
+class CardImageDetail extends React.Component<CardImageDetailProps> {
+  componentDidMount() {
     const {
       componentId,
-      height,
-      width,
+      card,
     } = this.props;
-    const {
-      flipped,
-    } = this.state;
-
     const doubleCard: boolean = card.double_sided ||
       !!(card.linked_card && card.linked_card.imagesrc);
-    if (doubleCard !== this.doubleCard) {
-      this.doubleCard = doubleCard;
-      if (doubleCard) {
-        Navigation.mergeOptions(componentId, {
-          topBar: {
-            rightButtons: [{
-              id: 'flip',
-              icon: iconsMap.flip_card,
-              color: '#FFFFFF',
-              testID: t`Flip Card`,
-            }],
-          },
-        });
-      }
+    if (doubleCard) {
+      Navigation.mergeOptions(componentId, {
+        topBar: {
+          rightButtons: [{
+            id: 'flip',
+            icon: iconsMap.flip_card,
+            color: '#FFFFFF',
+          }],
+        },
+      });
     }
+  }
 
+  render() {
+    const {
+      card,
+      height,
+      width,
+      flipped,
+    } = this.props;
     const cardRatio = 68 / 95;
     const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
     const cardWidth = width - 16;
+
     if (card.double_sided || (card.linked_card && card.linked_card.imagesrc)) {
       if (!flipped) {
         return (
@@ -145,13 +124,53 @@ class CardImageView extends React.Component<Props, State> {
       </ViewControl>
     );
   }
+}
+
+class CardImageView extends React.Component<Props, State> {
+  _navEventListener?: EventSubscription;
+  doubleCard: boolean = false;
+
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      flipped: false,
+    };
+
+    this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    this._navEventListener && this._navEventListener.remove();
+  }
+
+  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+    if (buttonId === 'flip') {
+      this.flip();
+    }
+  }
+
+  flip() {
+    const { flipped } = this.state;
+    this.setState({
+      flipped: !flipped,
+    });
+  };
 
   render() {
-    const { id } = this.props;
+    const { id, width, height, componentId } = this.props;
     return (
       <View style={styles.container}>
-        <SingleCardWrapper code={id} type="encounter">
-          { this._renderContent }
+        <SingleCardWrapper code={id} type="encounter" extraProps={this.state.flipped}>
+          { (card: Card, flipped?: boolean) => (
+            <CardImageDetail
+              card={card}
+              width={width}
+              height={height}
+              componentId={componentId}
+              flipped={!!flipped}
+            />
+          ) }
         </SingleCardWrapper>
       </View>
     );

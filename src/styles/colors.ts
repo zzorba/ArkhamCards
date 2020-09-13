@@ -90,7 +90,7 @@ export default {
       lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : PlatformColor('@color/factionNeutralLightBackgroundColor')) as any as string,
     },
     dual: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#868600', dark: '#bfbf4d' }) : PlatformColor('@color/factionDualTextColor')) as any as string,
+      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#868600', dark: '#E9D06C' }) : PlatformColor('@color/factionDualTextColor')) as any as string,
       background: '#9a9a00',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',

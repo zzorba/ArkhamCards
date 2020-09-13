@@ -28,7 +28,7 @@
     <color name="factionNeutralBackgroundColor">#888888</color>
     <color name="factionNeutralDarkBackgroundColor">#888888</color>
     <color name="factionNeutralLightBackgroundColor">#292929</color>
-    <color name="factionDualTextColor">#bfbf4d</color>
+    <color name="factionDualTextColor">#E9D06C</color>
     <color name="factionMythosBackgroundColor">#444444</color>
     <color name="factionMythosDarkBackgroundColor">#444444</color>
     <color name="factionMythosLightBackgroundColor">#000000</color>
