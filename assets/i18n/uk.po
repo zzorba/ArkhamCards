@@ -778,7 +778,7 @@ msgstr ""
 #: src/components/campaign/CampaignDetailView/index.tsx:461
 #: src/components/campaign/CampaignEditWeaknessDialog.tsx:39
 #: src/components/campaign/EditChaosBagDialog/index.tsx:59
-#: src/components/campaign/MyCampaignsView/CampaignList.tsx:42
+#: src/components/campaign/MyCampaignsView/CampaignList.tsx:40
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:76
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:123
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:147
@@ -1131,9 +1131,9 @@ msgstr ""
 msgid "Illustrators"
 msgstr ""
 
-#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:62
-#: src/components/cardlist/CardSearchComponent/index.tsx:96
-#: src/components/cardlist/CardSearchComponent/index.tsx:109
+#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:64
+#: src/components/cardlist/CardSearchComponent/index.tsx:114
+#: src/components/cardlist/CardSearchComponent/index.tsx:127
 #: src/components/filter/CardFilterView/index.tsx:586
 msgid "Filters"
 msgstr ""
@@ -1206,8 +1206,8 @@ msgstr ""
 msgid "Connect to ArkhamDB"
 msgstr ""
 
-#: src/app/App.ts:235
-#: src/app/App.ts:295
+#: src/app/App.ts:228
+#: src/app/App.ts:288
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:359
 #: src/components/campaignguide/CampaignGuideView.tsx:125
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:147
@@ -1721,7 +1721,7 @@ msgstr ""
 msgid "Deck Id"
 msgstr ""
 
-#: src/app/App.ts:283
+#: src/app/App.ts:276
 #: src/components/deck/DeckDetailView/index.tsx:1679
 msgid "Cards"
 msgstr ""
@@ -1864,12 +1864,6 @@ msgstr ""
 #, javascript-format
 msgid "Level ${ level }"
 msgstr ""
-
-#: src/components/deck/CardUpgradeDialog/index.tsx:254
-msgid "Show ${ nonCollection.length } Non-Collection Card"
-msgid_plural "Show ${ nonCollection.length } Non-Collection Cards"
-msgstr[0] ""
-msgstr[1] ""
 
 #: src/components/core/ChooserButton.tsx:30
 #, javascript-format
@@ -2043,13 +2037,6 @@ msgstr ""
 msgid "Unknown card: ${ req.code }"
 msgstr ""
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:297
-#, javascript-format
-msgid "Show ${ section.nonCollectionCount } Non-Collection Investigator"
-msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Investigators"
-msgstr[0] ""
-msgstr[1] ""
-
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:345
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr ""
@@ -2097,25 +2084,6 @@ msgstr ""
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:69
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr ""
-
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:599
-#, javascript-format
-msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
-msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
-msgstr[0] ""
-msgstr[1] ""
-
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:687
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:702
-msgid "Edit Spoiler Settings"
-msgstr ""
-
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:693
-#, javascript-format
-msgid "Show ${ spoilerCardsCount } Spoiler"
-msgid_plural "Show ${ spoilerCardsCount } Spoilers"
-msgstr[0] ""
-msgstr[1] ""
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:659
 #, javascript-format
@@ -2182,45 +2150,21 @@ msgstr ""
 msgid "Search for a card"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
-msgid "Search Player Cards"
-msgstr ""
-
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
-msgid "Search Encounter Cards"
-msgstr ""
-
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:247
-msgid "Clear Search Filters"
-msgstr ""
-
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:268
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:274
-msgid "Search Game Text"
-msgstr ""
-
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
-msgid "Search Card Backs"
-msgstr ""
-
-#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:59
+#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:61
 msgid "Apply"
 msgstr ""
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:121
-msgid "Show Encounter Cards"
-msgstr ""
-
-#: src/components/cardlist/CardSearchComponent/index.tsx:160
+#: src/components/cardlist/CardSearchComponent/index.tsx:196
 msgid "Encounter Cards"
 msgstr ""
 
-#: src/app/App.ts:223
-#: src/components/cardlist/CardSearchComponent/index.tsx:160
+#: src/app/App.ts:216
+#: src/components/cardlist/CardSearchComponent/index.tsx:196
 msgid "Player Cards"
 msgstr ""
 
@@ -2432,7 +2376,7 @@ msgstr ""
 msgid "No one"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:354
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:355
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:181
 msgid "Delete Campaign"
 msgstr ""
@@ -2958,17 +2902,17 @@ msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:315
 #: src/components/campaign/DeckList.tsx:95
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:316
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:317
 msgid "Add Investigator"
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:321
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:323
 msgid "Finished removing investigators"
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:330
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:330
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:331
 msgid "Killed and Insane Investigators"
 msgstr ""
 
@@ -3823,14 +3767,14 @@ msgstr ""
 msgid "Only Show Previous Campaign Members"
 msgstr ""
 
-#: src/app/App.ts:253
-#: src/app/App.ts:307
+#: src/app/App.ts:246
+#: src/app/App.ts:300
 #: src/components/campaign/MyCampaignsView/index.tsx:46
 #: src/components/settings/MergeBackupView/index.tsx:239
 msgid "Campaigns"
 msgstr ""
 
-#: src/components/campaign/MyCampaignsView/CampaignList.tsx:49
+#: src/components/campaign/MyCampaignsView/CampaignList.tsx:47
 msgid "Edit name"
 msgstr ""
 
@@ -3949,8 +3893,8 @@ msgstr ""
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr ""
 
-#: src/app/App.ts:271
-#: src/app/App.ts:319
+#: src/app/App.ts:264
+#: src/app/App.ts:312
 msgid "Settings"
 msgstr ""
 
@@ -4349,18 +4293,18 @@ msgstr ""
 msgid "Select items to import"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:261
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:262
 msgid "Investigator trauma"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:263
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:264
 msgid ""
 "You can only edit trauma here between scenarios.\n"
 "\n"
 "During scenario play it can be edited using the scenario guide."
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:264
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:265
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr ""
 
@@ -4496,6 +4440,58 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioView.tsx:209
 msgid "Interlude FAQ"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:254
+msgid "Show ${ nonCollection.length } non-collection card"
+msgid_plural "Show ${ nonCollection.length } non-collection cards"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:297
+#, javascript-format
+msgid "Show ${ section.nonCollectionCount } non-collection investigator"
+msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:599
+#, javascript-format
+msgid "Show ${ section.nonCollectionCount } non-collection card"
+msgid_plural "Show ${ section.nonCollectionCount } non-collection cards"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:687
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:702
+msgid "Edit spoiler settings"
+msgstr ""
+
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:693
+#, javascript-format
+msgid "Show ${ spoilerCardsCount } spoiler"
+msgid_plural "Show ${ spoilerCardsCount } spoilers"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
+msgid "Search player cards"
+msgstr ""
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
+msgid "Search encounter cards"
+msgstr ""
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:247
+msgid "Clear search filters"
+msgstr ""
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:274
+msgid "Search game text"
+msgstr ""
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
+msgid "Search card backs"
 msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:199

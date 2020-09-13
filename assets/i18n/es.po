@@ -234,7 +234,7 @@ msgstr "Contiene demasiadas cartas limitadas."
 #: src/components/campaign/CampaignDetailView/index.tsx:461
 #: src/components/campaign/CampaignEditWeaknessDialog.tsx:39
 #: src/components/campaign/EditChaosBagDialog/index.tsx:59
-#: src/components/campaign/MyCampaignsView/CampaignList.tsx:42
+#: src/components/campaign/MyCampaignsView/CampaignList.tsx:40
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:76
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:123
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:147
@@ -386,7 +386,7 @@ msgstr "Pack"
 msgid "Connect to ArkhamDB"
 msgstr "Conectar a ArkhamDB"
 
-#: src/app/App.ts:235 src/app/App.ts:295
+#: src/app/App.ts:228 src/app/App.ts:288
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:359
 #: src/components/campaignguide/CampaignGuideView.tsx:125
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:147
@@ -1493,7 +1493,7 @@ msgstr "Dificultad"
 msgid "Create Campaign"
 msgstr "Crear Campaña"
 
-#: src/app/App.ts:253 src/app/App.ts:307
+#: src/app/App.ts:246 src/app/App.ts:300
 #: src/components/campaign/MyCampaignsView/index.tsx:46
 #: src/components/settings/MergeBackupView/index.tsx:239
 msgid "Campaigns"
@@ -1711,13 +1711,6 @@ msgstr "Pareces estar desconectado. ¿Actualizar la conexión?"
 msgid "Search"
 msgstr "Buscar"
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:297
-#, javascript-format
-msgid "Show ${ section.nonCollectionCount } Non-Collection Investigator"
-msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Investigators"
-msgstr[0] "Mostrar ${section.nonCollectionCount} Investigador fuera de la colección"
-msgstr[1] "Mostrar ${section.nonCollectionCount} Investigadores fuera de la colección"
-
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:345
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "No hay investigadores que coincidan con ”${searchTerm}”."
@@ -1915,25 +1908,6 @@ msgstr "Tratando de entender las secuencias anidadas"
 msgid "Taking three damage and three horror"
 msgstr "Recibiendo tres de Daño y tres de Horror"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:599
-#, javascript-format
-msgid "Show ${ section.nonCollectionCount } Non-Collection Card"
-msgid_plural "Show ${ section.nonCollectionCount } Non-Collection Cards"
-msgstr[0] "Mostrar ${section.nonCollectionCount} carta fuera de la colección"
-msgstr[1] "Mostrar ${section.nonCollectionCount} cartas fuera de la colección"
-
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:687
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:702
-msgid "Edit Spoiler Settings"
-msgstr "Editar Configuraciones de Spoiler"
-
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:693
-#, javascript-format
-msgid "Show ${ spoilerCardsCount } Spoiler"
-msgid_plural "Show ${ spoilerCardsCount } Spoilers"
-msgstr[0] "Mostrar ${spoilerCardsCount} spoiler"
-msgstr[1] "Mostrar ${spoilerCardsCount} spoilers"
-
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:659
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
@@ -1961,43 +1935,23 @@ msgstr "Todas las cartas"
 msgid "Search for a card"
 msgstr "Buscar una carta"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
-msgid "Search Player Cards"
-msgstr "Buscar Cartas de Jugador"
-
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
-msgid "Search Encounter Cards"
-msgstr "Buscar Cartas de Encuentros"
-
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:247
-msgid "Clear Search Filters"
-msgstr "Limpiar Filtros de Búsqueda"
-
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:268
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Limpia búsqueda por \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:274
-msgid "Search Game Text"
-msgstr "Buscar Texto de Juego"
-
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
-msgid "Search Card Backs"
-msgstr "Buscar Dorsos de Cartas"
-
-#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:59
+#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:61
 msgid "Apply"
 msgstr "Aplicar"
 
-#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:62
-#: src/components/cardlist/CardSearchComponent/index.tsx:96
-#: src/components/cardlist/CardSearchComponent/index.tsx:109
+#: src/components/cardlist/CardSearchComponent/TuneButton.tsx:64
+#: src/components/cardlist/CardSearchComponent/index.tsx:114
+#: src/components/cardlist/CardSearchComponent/index.tsx:127
 #: src/components/filter/CardFilterView/index.tsx:586
 msgid "Filters"
 msgstr "Filtros"
 
-#: src/app/App.ts:223 src/components/cardlist/CardSearchComponent/index.tsx:160
+#: src/app/App.ts:216 src/components/cardlist/CardSearchComponent/index.tsx:196
 msgid "Player Cards"
 msgstr "Cartas de Jugador"
 
@@ -2077,11 +2031,11 @@ msgstr "No cumple con los requisitos del Investigador."
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "5 por encima... espero no robar el tentáculo"
 
-#: src/app/App.ts:283 src/components/deck/DeckDetailView/index.tsx:1679
+#: src/app/App.ts:276 src/components/deck/DeckDetailView/index.tsx:1679
 msgid "Cards"
 msgstr "Cartas"
 
-#: src/app/App.ts:271 src/app/App.ts:319
+#: src/app/App.ts:264 src/app/App.ts:312
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -2394,10 +2348,6 @@ msgid ""
 msgstr ""
 "Dorsos\n"
 "De Cartas"
-
-#: src/components/cardlist/CardSearchComponent/index.tsx:121
-msgid "Show Encounter Cards"
-msgstr "Mostrar cartas de encuentro"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent.tsx:625
 #, javascript-format
@@ -2746,7 +2696,7 @@ msgstr ""
 "Dorsos\n"
 "De Cartas"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:160
+#: src/components/cardlist/CardSearchComponent/index.tsx:196
 msgid "Encounter Cards"
 msgstr "Cartas de Encuentro"
 
@@ -2922,12 +2872,6 @@ msgstr "Cartas del mazo"
 #: src/components/deck/DeckDetailView/index.tsx:1744
 msgid "Save changes before upgrading"
 msgstr "Guarda cambios antes de actualizar"
-
-#: src/components/deck/CardUpgradeDialog/index.tsx:254
-msgid "Show ${ nonCollection.length } Non-Collection Card"
-msgid_plural "Show ${ nonCollection.length } Non-Collection Cards"
-msgstr[0] "Mostrar ${ nonCollection.length } carta fuera de la colección"
-msgstr[1] "Mostrar ${ nonCollection.length } cartas fuera de la colección"
 
 #: src/components/campaign/OddsCalculatorComponent/constants.ts:33
 msgid "Number of clues on your location"
@@ -3533,16 +3477,16 @@ msgstr "Seleccionar mazo"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:315
 #: src/components/campaign/DeckList.tsx:95
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:316
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:317
 msgid "Add Investigator"
 msgstr "Añadir Investigador"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:330
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:330
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:331
 msgid "Killed and Insane Investigators"
 msgstr "Investigadores muertos y locos"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:354
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:355
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:181
 msgid "Delete Campaign"
 msgstr "Borrar Campaña"
@@ -3556,7 +3500,7 @@ msgstr "Guía aún no disponible"
 msgid "Choose an Investigator"
 msgstr "Elige un investigador"
 
-#: src/components/campaign/MyCampaignsView/CampaignList.tsx:49
+#: src/components/campaign/MyCampaignsView/CampaignList.tsx:47
 msgid "Edit name"
 msgstr "Editar nombre"
 
@@ -3936,7 +3880,7 @@ msgid "Remove investigators"
 msgstr "Eliminar investigadores"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:321
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:323
 msgid "Finished removing investigators"
 msgstr "Terminado de eliminar investigadores"
 
@@ -4419,11 +4363,11 @@ msgstr "Importar datos seleccionados"
 msgid "Select items to import"
 msgstr "Selecciona elementos para importar"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:261
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:262
 msgid "Investigator trauma"
 msgstr "Trauma del investigador"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:263
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:264
 msgid ""
 "You can only edit trauma here between scenarios.\n"
 "\n"
@@ -4433,7 +4377,7 @@ msgstr ""
 "\n"
 "Durante el escenario, edítalos usando la guía del escenario."
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:264
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:265
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr ""
 "Los traumas iniciales pueden ser ajustados después de completar la \"Preparación de la "
@@ -4579,6 +4523,58 @@ msgstr "FAQ escenario"
 #: src/components/campaignguide/ScenarioView.tsx:209
 msgid "Interlude FAQ"
 msgstr "FAQ interludio"
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:254
+msgid "Show ${ nonCollection.length } non-collection card"
+msgid_plural "Show ${ nonCollection.length } non-collection cards"
+msgstr[0] "Mostrar ${ nonCollection.length } carta fuera de la colección"
+msgstr[1] "Mostrar ${ nonCollection.length } cartas fuera de la colección"
+
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:297
+#, javascript-format
+msgid "Show ${ section.nonCollectionCount } non-collection investigator"
+msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
+msgstr[0] "Mostrar ${section.nonCollectionCount} investigador fuera de la colección"
+msgstr[1] "Mostrar ${section.nonCollectionCount} Investigadores fuera de la colección"
+
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:599
+#, javascript-format
+msgid "Show ${ section.nonCollectionCount } non-collection card"
+msgid_plural "Show ${ section.nonCollectionCount } non-collection cards"
+msgstr[0] "Mostrar ${section.nonCollectionCount} carta fuera de la colección"
+msgstr[1] "Mostrar ${section.nonCollectionCount} cartas fuera de la colección"
+
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:687
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:702
+msgid "Edit spoiler settings"
+msgstr "Editar configuraciones de spoiler"
+
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:693
+#, javascript-format
+msgid "Show ${ spoilerCardsCount } spoiler"
+msgid_plural "Show ${ spoilerCardsCount } spoilers"
+msgstr[0] "Mostrar ${spoilerCardsCount} spoiler"
+msgstr[1] "Mostrar ${spoilerCardsCount} spoilers"
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
+msgid "Search player cards"
+msgstr "Buscar cartas de jugador"
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:241
+msgid "Search encounter cards"
+msgstr "Buscar cartas de encuentros"
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:247
+msgid "Clear search filters"
+msgstr "Limpiar filtros de búsqueda"
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:274
+msgid "Search game text"
+msgstr "Buscar texto de juego"
+
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:282
+msgid "Search card backs"
+msgstr "Buscar dorsos de cartas"
 
 #: src/components/deck/DrawSimulatorView.tsx:199
 msgctxt "Draw Cards"
