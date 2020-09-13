@@ -24,7 +24,7 @@ class ScenarioFaqView extends React.Component<Props, State> {
     showSpoilers: false,
   };
 
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

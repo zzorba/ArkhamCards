@@ -13,7 +13,7 @@ import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
 
 class CardLocationFilterView extends React.Component<FilterProps> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

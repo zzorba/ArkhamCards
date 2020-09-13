@@ -42,7 +42,7 @@ interface State {
   sort: SortType;
 }
 class DeckChecklistView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return  {
       topBar: {
         title: {

@@ -36,7 +36,7 @@ export type CardFilterProps = FilterFunctionProps & OwnProps;
 type Props = OwnProps & ReduxProps & FilterProps;
 
 class CardFilterView extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

@@ -24,7 +24,7 @@ interface ReduxProps {
 type Props = NavigationProps & CampaignChaosBagProps & ReduxProps;
 
 class CampaignChaosBagView extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         rightButtons: [{

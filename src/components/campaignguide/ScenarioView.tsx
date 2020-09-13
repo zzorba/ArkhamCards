@@ -41,7 +41,7 @@ class ScenarioView extends React.Component<Props> {
   context!: CampaignGuideContextType;
   undoEnabled: boolean;
 
-  static get options() {
+  static options() {
     return ScenarioView.dynamicOptions(false);
   }
 

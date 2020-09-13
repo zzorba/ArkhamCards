@@ -32,7 +32,7 @@ interface State {
 }
 
 class MyDecksView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

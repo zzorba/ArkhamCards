@@ -43,7 +43,7 @@ type Props = NavigationProps &
   DimensionsProps;
 
 class SelectCampaignDialog extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

@@ -27,7 +27,7 @@ interface State {
 }
 
 export default class NewDeckView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -62,7 +62,7 @@ export default class NewDeckView extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    Navigation.mergeOptions(this.props.componentId, NewDeckView.options);
+    Navigation.mergeOptions(this.props.componentId, NewDeckView.options());
   }
 
   componentWillUnmount() {

@@ -27,7 +27,7 @@ interface ReduxActionProps {
 type Props = NavigationProps & ReduxProps & ReduxActionProps & DimensionsProps;
 
 class CollectionEditView extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

@@ -21,7 +21,7 @@ interface OwnProps {
 type Props = OwnProps & PlayerCardProps;
 
 class EditAssignedWeaknessComponent extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

@@ -49,7 +49,7 @@ interface State {
 }
 
 class EditSpecialDeckCardsView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         backButton: {

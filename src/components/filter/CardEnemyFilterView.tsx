@@ -13,7 +13,7 @@ import COLORS from '@styles/colors';
 import space from '@styles/space';
 
 class CardEnemyFilterView extends React.Component<FilterProps> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         backButton: {

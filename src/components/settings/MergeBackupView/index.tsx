@@ -57,7 +57,7 @@ interface State {
 }
 
 class MergeBackupView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

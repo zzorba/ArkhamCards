@@ -27,7 +27,7 @@ interface ReduxProps {
 type Props = NavigationProps & SealTokenDialogProps & ReduxProps & DimensionsProps;
 
 class SealTokenDialog extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -52,7 +52,7 @@ class SealTokenDialog extends React.Component<Props> {
   }
 
   componentDidMount() {
-    Navigation.mergeOptions(this.props.componentId, SealTokenDialog.options);
+    Navigation.mergeOptions(this.props.componentId, SealTokenDialog.options());
   }
 
   componentWillUnmount() {

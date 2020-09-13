@@ -65,7 +65,7 @@ interface State {
 }
 
 class CardDetailView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         backButton: {
@@ -98,7 +98,7 @@ class CardDetailView extends React.Component<Props, State> {
 
   componentDidAppear() {
     const { componentId } = this.props;
-    Navigation.mergeOptions(componentId, CardDetailView.options);
+    Navigation.mergeOptions(componentId, CardDetailView.options());
   }
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {

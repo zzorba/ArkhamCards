@@ -17,7 +17,7 @@ interface Props {
   noCapitalize?: boolean;
 }
 export default class DialogOption extends React.Component<Props> {
-  static get options() {
+  static options() {
     return ({
       overlay: {
         interceptTouchOutside: true,

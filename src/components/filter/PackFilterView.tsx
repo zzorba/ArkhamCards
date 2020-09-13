@@ -24,7 +24,7 @@ interface ReduxProps {
 
 type Props = OwnProps & ReduxProps & FilterProps;
 class PackFilterView extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         backButton: {

@@ -21,7 +21,7 @@ export interface EncounterCardErrataProps extends CampaignGuideInputProps {
 type Props = EncounterCardErrataProps & CampaignGuideProps & DimensionsProps;
 
 class EncounterCardErrataView extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

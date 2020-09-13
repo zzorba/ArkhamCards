@@ -42,7 +42,7 @@ interface State {
 type Props = EditChaosBagProps & NavigationProps & DimensionsProps;
 
 class EditChaosBagDialog extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         leftButtons: [

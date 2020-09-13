@@ -55,7 +55,7 @@ interface State {
 }
 
 class DeckUpgradeDialog extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         tintColor: 'white',

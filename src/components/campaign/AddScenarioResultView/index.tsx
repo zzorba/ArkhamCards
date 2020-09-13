@@ -65,7 +65,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
   _navEventListener?: EventSubscription;
   _doSave!: (showDeckUpgrade: boolean) => void;
 
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {

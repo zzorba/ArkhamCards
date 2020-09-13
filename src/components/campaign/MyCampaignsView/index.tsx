@@ -39,7 +39,7 @@ interface State {
 }
 
 class MyCampaignsView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
