@@ -20,6 +20,12 @@ export default StyleSheet.create({
     lineHeight: isBig ? 22 : 18,
     color: COLORS.darkText,
   },
+  searchLabel: {
+    fontFamily: 'Alegreya-Regular',
+    fontSize: 16 * sizeScale,
+    lineHeight: 20 * sizeScale,
+    color: COLORS.L20,
+  },
   cardName: {
     fontFamily: 'Alegreya-Medium',
     fontSize: 20 * sizeScale,

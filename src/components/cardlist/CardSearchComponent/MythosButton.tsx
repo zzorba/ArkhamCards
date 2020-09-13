@@ -8,13 +8,12 @@ import {
   View,
   Easing
 } from 'react-native';
-import { Appearance } from 'react-native-appearance';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 
 import { AnimatedArkhamIcon } from '@icons/ArkhamIcon';
 import { toggleMythosMode } from '@components/filter/actions';
 import { AppState, getMythosMode } from '@reducers';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const SIZE = 32;
 
@@ -38,6 +37,9 @@ interface State {
 }
 
 class MythosButton extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static WIDTH = SIZE * 2 + 4
   static HEIGHT = SIZE;
 
@@ -69,24 +71,23 @@ class MythosButton extends React.Component<Props, State> {
   };
 
   render() {
-    const { mythosMode } = this.props;
     const { toggleAnim } = this.state;
-    const darkMode = Appearance.getColorScheme() === 'dark';
+    const { colors } = this.context;
 
     const investigatorColor = toggleAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: darkMode ? [COLORS.light30, COLORS.dark10] : [COLORS.dark30, COLORS.light10],
+      outputRange: [colors.D30, colors.L10],
     });
     const mythosColor = toggleAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: darkMode ? [COLORS.dark10, COLORS.light30] : [COLORS.light10, COLORS.dark30],
+      outputRange: [colors.L10, colors.D30],
     });
     const movingCircleX = toggleAnim.interpolate({
       inputRange: [0, 1],
       outputRange: [0, SIZE],
     });
 
-    const backgroundColor = darkMode ? COLORS.dark10 : COLORS.light10;
+    const backgroundColor = colors.L10;
 
     return (
       <View style={styles.container}>

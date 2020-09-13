@@ -23,6 +23,7 @@ import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 import space, { m, s, xs } from '@styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -51,6 +52,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps & LoginStateProps & NetworkStatusProps & DimensionsProps;
 
 class MyDecksComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _reLogin = () => {
     this.props.login();
   };
@@ -138,11 +142,12 @@ class MyDecksComponent extends React.Component<Props> {
       signedIn,
       width,
     } = this.props;
+    const { colors } = this.context;
     if (signedIn) {
       return null;
     }
     return (
-      <View style={[styles.signInFooter, { width }]}>
+      <View style={[styles.signInFooter, { backgroundColor: colors.L20, width }]}>
         <Text style={[typography.text, space.marginBottomM]}>
           { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
         </Text>
@@ -250,7 +255,6 @@ const styles = StyleSheet.create({
   signInFooter: {
     padding: m,
     marginTop: s,
-    backgroundColor: COLORS.lightBackground,
   },
   footer: {
     width: '100%',

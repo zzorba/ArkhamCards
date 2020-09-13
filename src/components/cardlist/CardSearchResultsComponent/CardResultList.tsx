@@ -56,6 +56,8 @@ import { showCard, showCardSwipe } from '@components/nav/helper';
 import typography from '@styles/typography';
 import { s, m } from '@styles/space';
 import COLORS from '@styles/colors';
+import SearchResultButton from '../SearchResultButton';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 function funLoadingMessages() {
   return [
@@ -571,7 +573,6 @@ class CardResultList extends React.Component<Props, State> {
       <CardSectionHeader
         section={section.header}
         investigator={investigator}
-        fontScale={fontScale}
       />
     );
   };
@@ -588,7 +589,8 @@ class CardResultList extends React.Component<Props, State> {
       // Already pressed it, so show a button to edit collection.
       return (
         <View style={{ height: rowNonCollectionHeight(fontScale) }}>
-          <BasicButton
+          <SearchResultButton
+            icon="edit"
             title={t`Edit Collection`}
             onPress={this._editCollectionSettings}
           />
@@ -625,7 +627,6 @@ class CardResultList extends React.Component<Props, State> {
     return (
       <CardSearchResult
         card={card}
-        fontScale={fontScale}
         count={deckCardCounts && deckCardCounts[card.code]}
         onDeckCountChange={onDeckCountChange}
         id={id}
@@ -671,6 +672,7 @@ class CardResultList extends React.Component<Props, State> {
   }
 
   _renderFooter = (liveState: LiveState, refreshing?: boolean) => {
+    const { fontScale } = this.props;
     const { spoilerCardsCount } = liveState;
     const {
       showSpoilerCards,
@@ -685,7 +687,8 @@ class CardResultList extends React.Component<Props, State> {
     if (showSpoilerCards) {
       return (
         <View style={styles.footer}>
-          <BasicButton
+          <SearchResultButton
+            icon="edit"
             onPress={this._editSpoilerSettings}
             title={t`Edit spoiler settings`}
           />
@@ -699,8 +702,13 @@ class CardResultList extends React.Component<Props, State> {
       spoilerCardsCount);
     return (
       <View style={styles.footer}>
-        <BasicButton onPress={this._enableSpoilers} title={spoilerCount} />
-        <BasicButton
+        <SearchResultButton
+          icon="search"
+          onPress={this._enableSpoilers}
+          title={spoilerCount}
+        />
+        <SearchResultButton
+          icon="edit"
           onPress={this._editSpoilerSettings}
           title={t`Edit spoiler settings`}
         />
@@ -852,6 +860,8 @@ class CardResultList extends React.Component<Props, State> {
     };
     return (
       <SectionList
+        contentInset={{ top: SEARCH_BAR_HEIGHT }}
+        contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
         refreshControl={
           <RefreshControl
             refreshing={!!refreshing}

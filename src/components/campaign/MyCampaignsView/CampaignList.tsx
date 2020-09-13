@@ -13,6 +13,7 @@ import { LinkedCampaignGuideProps } from '@components/campaignguide/LinkedCampai
 import LinkedCampaignItem from './LinkedCampaignItem';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import COLORS from '@styles/colors';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface Props {
   onScroll: (...args: any[]) => void;
@@ -118,6 +119,8 @@ export default class CampaignList extends React.Component<Props> {
     const { campaigns, footer, onScroll } = this.props;
     return (
       <FlatList
+        contentInset={{ top: SEARCH_BAR_HEIGHT }}
+        contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
         onScroll={onScroll}
         data={map(campaigns, campaign => {
           return {

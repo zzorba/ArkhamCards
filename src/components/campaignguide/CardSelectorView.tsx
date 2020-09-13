@@ -17,6 +17,7 @@ import Card from '@data/Card';
 import { combineQueries, where } from '@data/query';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -177,7 +178,11 @@ class CardSelectorView extends React.Component<Props, State> {
         prompt={t`Search`}
       >
         { onScroll => (
-          <ScrollView onScroll={onScroll}>
+          <ScrollView
+            onScroll={onScroll}
+            contentInset={{ top: SEARCH_BAR_HEIGHT }}
+            contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+          >
             <QueryProvider<QueryProps, Brackets>
               query={query}
               searchTerm={searchTerm}

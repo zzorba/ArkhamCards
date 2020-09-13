@@ -1,8 +1,9 @@
 import React from 'react';
 import { throttle } from 'lodash';
 import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View } from 'react-native';
+
 import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   prompt: string;
@@ -17,17 +18,24 @@ interface Props {
 interface State {
   visible: boolean;
   advancedOpen: boolean;
-  anim: Animated.Value;
+  scrollAnim: Animated.Value;
+  advancedToggleAnim: Animated.Value;
 }
 
-export const SEARCH_OPTIONS_HEIGHT = 44;
+export function searchOptionsHeight(fontScale: number) {
+  return 20 + (fontScale * 20 + 8) * 3 + 12;
+}
 const SCROLL_DISTANCE_BUFFER = 50;
 
 export default class CollapsibleSearchBox extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     visible: true,
     advancedOpen: false,
-    anim: new Animated.Value(SEARCH_BAR_HEIGHT),
+    scrollAnim: new Animated.Value(1),
+    advancedToggleAnim: new Animated.Value(0),
   };
 
   _handleScroll!: (...args: any[]) => void;
@@ -87,7 +95,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
 
   _showHeader = () => {
     if (!this.state.visible) {
-      this.animate(true);
+      this.animateScroll(true);
     }
   };
 
@@ -97,35 +105,36 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
       visible,
     } = this.state;
     if (visible && searchTerm === '') {
-      this.animate(false);
+      this.animateScroll(false);
     }
   }
 
-  animate(visible: boolean) {
-    const { anim, advancedOpen } = this.state;
-    const height = SEARCH_BAR_HEIGHT + (advancedOpen ? SEARCH_OPTIONS_HEIGHT : 0);
-    anim.stopAnimation(() => {
-      Animated.timing(anim, {
-        toValue: visible ? height : 0,
-        duration: 350,
-        useNativeDriver: false,
-      }).start();
-    });
-    this.setState({
-      visible,
-    });
+  animateScroll(visible: boolean) {
+    const { scrollAnim, advancedOpen } = this.state;
+    if (!advancedOpen) {
+      scrollAnim.stopAnimation(() => {
+        Animated.timing(scrollAnim, {
+          toValue: visible ? 1 : 0,
+          duration: 350,
+          useNativeDriver: false,
+        }).start();
+      });
+      this.setState({
+        visible,
+      });
+    }
   }
 
   _toggleAdvanced = () => {
     const {
-      anim,
+      advancedToggleAnim,
       advancedOpen,
     } = this.state;
 
-    anim.stopAnimation(() => {
-      Animated.timing(anim, {
-        toValue: SEARCH_BAR_HEIGHT + (!advancedOpen ? SEARCH_OPTIONS_HEIGHT : 0),
-        duration: 200,
+    advancedToggleAnim.stopAnimation(() => {
+      Animated.timing(advancedToggleAnim, {
+        toValue: !advancedOpen ? 1 : 0,
+        duration: 250,
         useNativeDriver: false,
       }).start();
     });
@@ -136,22 +145,52 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
 
   render() {
     const { advancedOptions, children, prompt, searchTerm, onSearchChange } = this.props;
-    const { advancedOpen, anim } = this.state;
+    const { advancedOpen, scrollAnim, advancedToggleAnim } = this.state;
+    const { colors, fontScale } = this.context;
+    const scrollY = advancedOpen ? 0 : scrollAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: [-SEARCH_BAR_HEIGHT, 0],
+    });
+    const advancedToggleHeight = searchOptionsHeight(fontScale)
+    const controlHeight = advancedToggleAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: [-(SEARCH_BAR_HEIGHT + advancedToggleHeight), SEARCH_BAR_HEIGHT],
+    });
     return (
-      <View style={styles.wrapper}>
-        <Animated.View style={[styles.slider, { height: anim }]}>
-          <SearchBox
-            onChangeText={onSearchChange}
-            placeholder={prompt}
-            advancedOpen={advancedOpen}
-            toggleAdvanced={advancedOptions ? this._toggleAdvanced : undefined}
-            value={searchTerm}
-          />
-          { !!advancedOptions && advancedOptions }
-        </Animated.View>
-        <View style={styles.container}>
+      <View style={[styles.wrapper, { backgroundColor: colors.background }]}>
+        <View style={[styles.container, { backgroundColor: colors.background, borderColor: colors.divider }]}>
           { children(this._handleScroll) }
         </View>
+        <Animated.View style={[
+          styles.slider,
+          {
+            backgroundColor: colors.background,
+            transform: [{ translateY: scrollY }],
+            height: SEARCH_BAR_HEIGHT,
+          },
+        ]}>
+          { !!advancedOptions && (
+            <Animated.View style={[
+              styles.advancedOptions,
+              {
+                backgroundColor: colors.L20,
+                height: searchOptionsHeight(fontScale),
+                transform: [{ translateY: controlHeight }],
+              }
+            ]}>
+              { advancedOptions }
+            </Animated.View>
+          ) }
+          <View style={styles.fixed}>
+            <SearchBox
+              onChangeText={onSearchChange}
+              placeholder={prompt}
+              advancedOpen={advancedOpen}
+              toggleAdvanced={advancedOptions ? this._toggleAdvanced : undefined}
+              value={searchTerm}
+            />
+          </View>
+        </Animated.View>
       </View>
     );
   }
@@ -161,19 +200,39 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
 const styles = StyleSheet.create({
   slider: {
     width: '100%',
-    backgroundColor: COLORS.background,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  fixed: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
   },
   wrapper: {
     position: 'relative',
-    backgroundColor: COLORS.background,
     flex: 1,
   },
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
+  },
+  advancedOptions: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
+    flexDirection: 'column',
   },
 });

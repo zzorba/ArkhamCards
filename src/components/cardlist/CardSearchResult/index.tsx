@@ -17,17 +17,16 @@ import Button from '@components/core/Button';
 import Switch from '@components/core/Switch';
 import Card from '@data/Card';
 import { createFactionIcons, SKILLS, SkillCodeType } from '@app_constants';
-import COLORS from '@styles/colors';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '@styles/typography';
 import { isBig, s, xs } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const FACTION_ICONS = createFactionIcons({ colorChoice: 'text' });
 
 interface Props {
   card: Card;
-  fontScale: number;
   id?: string;
   count?: number;
   onPress?: (card: Card) => void;
@@ -45,6 +44,9 @@ interface Props {
 }
 
 export default class CardSearchResult extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       id,
@@ -81,7 +83,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   };
 
   renderFactionIcon(card: Card, size: number): ReactNode {
-    const { fontScale } = this.props;
+    const { fontScale, colors } = this.context;
     const SMALL_ICON_SIZE = (isBig ? 38 : 26) * fontScale;
 
     if (!card.encounter_code && card.linked_card) {
@@ -93,7 +95,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <EncounterIcon
           encounter_code={card.encounter_code}
           size={size}
-          color={COLORS.darkText}
+          color={colors.darkText}
         />
       );
     }
@@ -101,7 +103,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
     ) {
       return (
-        <ArkhamIcon name="weakness" size={size} color={COLORS.faction.neutral.text} />
+        <ArkhamIcon name="weakness" size={size} color={colors.faction.neutral.text} />
       );
     }
     const ICON_SIZE = iconSize(fontScale);
@@ -110,7 +112,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <EncounterIcon
           encounter_code={card.pack_code}
           size={ICON_SIZE}
-          color={COLORS.darkText}
+          color={colors.darkText}
         />
       );
     }
@@ -133,7 +135,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   }
 
   renderIcon(card: Card): ReactNode {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     if (card.hidden && card.linked_card) {
       return this.renderIcon(card.linked_card);
     }
@@ -165,7 +167,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     );
   }
 
-  static skillIcon(fontScale: number, skill: SkillCodeType, count: number): ReactNode[] {
+  skillIcon(skill: SkillCodeType, count: number): ReactNode[] {
+    const { colors, fontScale } = this.context;
     if (count === 0) {
       return [];
     }
@@ -175,16 +178,16 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <ArkhamIcon
           name={skill}
           size={SKILL_ICON_SIZE}
-          color={COLORS.lightText}
+          color={colors.lightText}
         />
       </View>
     ));
   }
 
   renderDualFactionIcons() {
+    const { fontScale, colors } = this.context;
     const {
       card,
-      fontScale,
     } = this.props;
     if (!card.faction2_code) {
       return null;
@@ -196,14 +199,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           <ArkhamIcon
             name={card.factionCode()}
             size={SKILL_ICON_SIZE}
-            color={COLORS.faction[card.factionCode()].text}
+            color={colors.faction[card.factionCode()].text}
           />
         </View>
         <View style={styles.skillIcon}>
           <ArkhamIcon
             name={card.faction2_code}
             size={SKILL_ICON_SIZE}
-            color={COLORS.faction[card.faction2_code].text}
+            color={colors.faction[card.faction2_code].text}
           />
         </View>
       </View>
@@ -213,7 +216,6 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   renderSkillIcons() {
     const {
       card,
-      fontScale,
     } = this.props;
     if (card.type_code === 'investigator' || (
       card.skill_willpower === null &&
@@ -226,15 +228,15 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.skillIcons}>
         { flatMap(SKILLS, (skill: SkillCodeType) =>
-          CardSearchResult.skillIcon(fontScale, skill, card.skillCount(skill))) }
+          this.skillIcon(skill, card.skillCount(skill))) }
       </View>
     );
   }
 
   renderTabooBlock() {
+    const { colors, fontScale } = this.context;
     const {
       card,
-      fontScale,
     } = this.props;
     if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
       return null;
@@ -243,26 +245,26 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     return (
       <View style={styles.tabooBlock}>
         { !!card.extra_xp && (
-          <Text style={[typography.small, styles.extraXp]} numberOfLines={1} ellipsizeMode="clip">
+          <Text style={[typography.small, styles.extraXp, { color: colors.taboo }]} numberOfLines={1} ellipsizeMode="clip">
             { repeat(card.extra_xp > 0 ? '•' : '-', Math.abs(card.extra_xp)) }
           </Text>
         ) }
         { !!(card.taboo_set_id && card.taboo_set_id > 0) && (
-          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color={COLORS.taboo} />
+          <ArkhamIcon name="tablet" size={TABOO_ICON_SIZE} color={colors.taboo} />
         ) }
       </View>
     );
   }
 
   renderCardName() {
+    const { colors, fontScale } = this.context;
     const {
       card,
       invalid,
-      fontScale,
     } = this.props;
     const color = (card.faction2_code ?
-      COLORS.faction.dual :
-      COLORS.faction[card.factionCode()]
+      colors.faction.dual :
+      colors.faction[card.factionCode()]
     ).text;
     return (
       <View style={styles.cardNameBlock}>
@@ -277,7 +279,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           { this.renderTabooBlock() }
           { !!card.advanced && (
             <View style={styles.tabooBlock}>
-              <ArkhamIcon name="parallel" size={18 * fontScale} color={COLORS.darkText} />
+              <ArkhamIcon name="parallel" size={18 * fontScale} color={colors.darkText} />
             </View>
           ) }
         </View>
@@ -318,8 +320,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       limit,
       hasSecondCore,
       showZeroCount,
-      fontScale,
     } = this.props;
+    const { fontScale } = this.context;
     if (onDeckCountChange) {
       const deck_limit: number = Math.min(
         card.pack_code === 'core' ?
@@ -383,15 +385,18 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       onPress,
       onPressId,
       onDeckCountChange,
-      fontScale,
       backgroundColor,
     } = this.props;
+    const { colors, fontScale } = this.context;
     return (
       <View style={[
         styles.rowContainer,
         styles.rowBorder,
-        { minHeight: rowHeight(fontScale) },
-        backgroundColor ? { backgroundColor } : {},
+        {
+          borderColor: colors.divider,
+          minHeight: rowHeight(fontScale),
+          backgroundColor: backgroundColor || colors.background,
+        },
         !onDeckCountChange ? styles.rowPadding : {},
       ]}>
         <TouchableOpacity
@@ -429,17 +434,20 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   render() {
     const {
       card,
-      fontScale,
       backgroundColor,
       onDeckCountChange,
     } = this.props;
+    const { fontScale, colors } = this.context;
     if (!card) {
       return (
         <View style={[
           styles.rowContainer,
           styles.rowBorder,
-          { minHeight: rowHeight(fontScale) },
-          backgroundColor ? { backgroundColor } : {},
+          {
+            borderColor: colors.divider,
+            minHeight: rowHeight(fontScale),
+            backgroundColor: backgroundColor || colors.background,
+          },
           !onDeckCountChange ? styles.rowPadding : {},
         ]}>
           <View style={styles.cardNameBlock}>
@@ -457,8 +465,11 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <View style={[
           styles.rowContainer,
           styles.rowBorder,
-          { minHeight: rowHeight(fontScale) },
-          backgroundColor ? { backgroundColor } : {},
+          {
+            borderColor: colors.divider,
+            minHeight: rowHeight(fontScale),
+            backgroundColor: backgroundColor || colors.background,
+          },
           !onDeckCountChange ? styles.rowPadding : {},
         ]}>
           <Text>No Text</Text>;
@@ -472,7 +483,6 @@ export default class CardSearchResult extends React.PureComponent<Props> {
 
 const styles = StyleSheet.create({
   rowContainer: {
-    backgroundColor: COLORS.background,
     position: 'relative',
     width: '100%',
     flexDirection: 'row',
@@ -483,7 +493,6 @@ const styles = StyleSheet.create({
   },
   rowBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.gray,
   },
   cardNameBlock: {
     marginLeft: xs,
@@ -549,7 +558,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   extraXp: {
-    color: COLORS.taboo,
     marginRight: xs,
   },
   upgradeButton: {

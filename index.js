@@ -1,6 +1,5 @@
 import React from 'react';
-import { AppearanceProvider, Appearance } from 'react-native-appearance';
-import { ThemeProvider } from 'react-native-elements';
+import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 import { Navigation } from 'react-native-navigation';
@@ -10,31 +9,8 @@ import DatabaseProvider from './src/data/DatabaseProvider';
 import { registerScreens } from './src/app/screens';
 import configureStore from './src/app/store';
 import App from './src/app/App';
+import StyleProvider from './src/styles/StyleProvider';
 
-const theme = {
-  Button: {
-    raised: true,
-    disabledTitleStyle: {
-      color: '#444444',
-    },
-    disabledStyle: {
-      backgroundColor: '#dddddd',
-    },
-  },
-};
-
-const darkTheme = {
-  Button: {
-    raised: true,
-    disabledTitleStyle: {
-      color: '#bbbbbb',
-    },
-    disabledStyle: {
-      backgroundColor: '#111111',
-    },
-  },
-
-};
 
 function MyProvider({ store: { redux, persistor }, children}) {
   return (
@@ -42,9 +18,9 @@ function MyProvider({ store: { redux, persistor }, children}) {
       <Provider store={redux}>
         <PersistGate loading={null} persistor={persistor}>
           <DatabaseProvider>
-            <ThemeProvider theme={Appearance.getColorScheme() === 'dark' ? darkTheme : theme}>
+            <StyleProvider>
               { children }
-            </ThemeProvider>
+            </StyleProvider>
           </DatabaseProvider>
         </PersistGate>
       </Provider>

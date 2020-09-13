@@ -11,6 +11,8 @@ import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { NavigationProps } from '@components/nav/types';
 import SelectRow from './SelectRow';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 export interface SearchSelectProps {
   placeholder: string;
@@ -32,6 +34,9 @@ interface Item {
 }
 
 export default class SearchMultiSelectView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
   constructor(props: Props) {
     super(props);
@@ -109,6 +114,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
   };
 
   getValues(): string[] {
+    const { colors } = this.context;
     const {
       values,
     } = this.props;
@@ -131,6 +137,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       selection,
       search,
     } = this.state;
+    const { colors } = this.context;
 
     const selectedSet = new Set(selection);
     const values = this.getValues();
@@ -148,6 +155,9 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       >
         { onScroll => (
           <FlatList
+            contentInset={{ top: SEARCH_BAR_HEIGHT }}
+            contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+            contentContainerStyle={{ backgroundColor: colors.background }}
             data={data}
             onScroll={onScroll}
             renderItem={this._renderItem}

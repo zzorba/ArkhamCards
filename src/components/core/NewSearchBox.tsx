@@ -5,8 +5,6 @@ import {
   View,
 } from 'react-native';
 import { Input } from 'react-native-elements';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';

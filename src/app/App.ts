@@ -117,7 +117,7 @@ export default class App {
 
   setDefaultOptions(colorScheme: 'light' | 'dark' | 'no-preference', changeUpdate?:boolean) {
     const darkMode = colorScheme === 'dark';
-    const backgroundColor = COLORS.background;
+    const backgroundColor = COLORS.L30;
     const defaultOptions: Options = {
       topBar: {
         leftButtonColor: COLORS.lightBlue,
@@ -135,18 +135,18 @@ export default class App {
           fontSize: 14,
         },
         background: {
-          color: COLORS.background,
+          color: COLORS.L30,
           translucent: false,
         },
         barStyle: darkMode ? 'black' : 'default',
       },
       layout: Platform.select({
         android: {
-          componentBackgroundColor: COLORS.background,
+          componentBackgroundColor: COLORS.L30,
         },
         ios: {
-          backgroundColor: COLORS.background,
-          componentBackgroundColor: COLORS.background,
+          backgroundColor: COLORS.L30,
+          componentBackgroundColor: COLORS.L30,
         },
       }),
       navigationBar: {

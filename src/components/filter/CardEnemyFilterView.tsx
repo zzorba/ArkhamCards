@@ -11,10 +11,15 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 class CardEnemyFilterView extends React.Component<FilterProps> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
-    return {
+    static options() {
+      return {
       topBar: {
         backButton: {
           title: t`Back`,
@@ -149,8 +154,9 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
       onFilterChange,
       fontScale,
     } = this.props;
+    const { colors } = this.context;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={{ backgroundColor: colors.background }}>
         <SliderChooser
           label={t`Fight`}
           width={width}
@@ -256,8 +262,5 @@ const styles = StyleSheet.create({
   toggleRow: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });
