@@ -1,16 +1,18 @@
 import React from 'react';
 import {
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import { Input } from 'react-native-elements';
 
+import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import space from '@styles/space';
 
-export const SEARCH_BAR_HEIGHT = 58;
+export const SEARCH_BAR_HEIGHT = 60;
+export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
 interface Props {
   onChangeText: (search: string) => void;
   placeholder: string;
@@ -18,24 +20,38 @@ interface Props {
   toggleAdvanced?: () => void;
   advancedOpen?: boolean;
 }
+
 export default class SearchBox extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderToggleButton() {
     const {
       toggleAdvanced,
       advancedOpen,
     } = this.props;
     if (!toggleAdvanced) {
-      return null;
+      return undefined;
     }
     return (
       <TouchableOpacity style={styles.toggleButton} onPress={toggleAdvanced}>
-        <View style={styles.icon}>
-          <MaterialCommunityIcons
-            name={advancedOpen ? 'chevron-double-up' : 'dots-horizontal'}
-            size={32}
-            color="#888"
-          />
-        </View>
+        { advancedOpen ? (
+          <View style={[styles.icon, { backgroundColor: COLORS.D10 }] }>
+            <AppIcon
+              name="dismiss"
+              size={22}
+              color={COLORS.L10}
+            />
+          </View>
+        ) : (
+          <View style={[styles.icon, { backgroundColor: COLORS.L10 }] }>
+            <AppIcon
+              name="dots"
+              size={24}
+              color={COLORS.D10}
+            />
+          </View>
+        ) }
       </TouchableOpacity>
     );
   }
@@ -47,24 +63,41 @@ export default class SearchBox extends React.Component<Props> {
       toggleAdvanced,
       value,
     } = this.props;
+    const { colors, fontScale } = this.context;
 
     return (
-      <View style={[styles.container, !toggleAdvanced ? styles.underline : {}]}>
-        <View style={styles.searchInputWrapper}>
-          <TextInput
-            style={styles.searchInput}
-            clearButtonMode="always"
-            autoCorrect={false}
-            autoCapitalize="none"
-            allowFontScaling={false}
-            onChangeText={onChangeText}
-            placeholder={placeholder}
-            placeholderTextColor={COLORS.lightText}
-            value={value}
-          />
-          { this.renderToggleButton() }
-        </View>
-      </View>
+      <Input
+        clearButtonMode="always"
+        autoCorrect={false}
+        autoCapitalize="none"
+        containerStyle={[styles.container, { backgroundColor: colors.L20, borderColor: colors.divider }, !toggleAdvanced ? styles.underline : {}]}
+        inputContainerStyle={[
+          styles.searchInput,
+          {
+            backgroundColor: colors.L20,
+            borderColor: colors.L10,
+          },
+        ]}
+        inputStyle={{
+          fontFamily: 'Alegreya-Regular',
+          fontSize: 20,
+          lineHeight: 20,
+          color: colors.darkText,
+          textAlignVertical: 'center',
+        }}
+        allowFontScaling={false}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        placeholderTextColor={colors.D20}
+        leftIcon={<View style={space.marginRightXs}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
+        rightIcon={this.renderToggleButton()}
+        rightIconContainerStyle={{
+          position: 'absolute',
+          right: -3,
+          top: -5 ,
+        }}
+        value={value}
+      />
     );
   }
 }
@@ -72,35 +105,39 @@ export default class SearchBox extends React.Component<Props> {
 const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: 1,
-    borderColor: COLORS.divider,
   },
   container: {
-    backgroundColor: COLORS.background,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 10,
+    paddingBottom: 10,
     width: '100%',
-  },
-  searchInputWrapper: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: COLORS.background,
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 8,
-    paddingBottom: 8,
     height: SEARCH_BAR_HEIGHT,
   },
   searchInput: {
-    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    borderRadius: SEARCH_BAR_INPUT_HEIGHT / 2,
+    height: SEARCH_BAR_INPUT_HEIGHT,
+    borderWidth: 1,
+    paddingBottom: 0,
+    marginBottom: 0,
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
     padding: 10,
+    position: 'relative',
     fontFamily: 'System',
     fontSize: 18,
-    color: COLORS.darkText,
-    backgroundColor: COLORS.veryVeryLightBackground,
-    borderRadius: 10,
   },
   icon: {
-    width: 32,
-    height: 32,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   toggleButton: {
     marginLeft: 8,

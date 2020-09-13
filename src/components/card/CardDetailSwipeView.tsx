@@ -23,6 +23,7 @@ import { Slots } from '@actions/types';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   showSpoilers: { [pack_code: string]: boolean };
@@ -54,6 +55,9 @@ interface State {
 }
 
 class CardDetailSwipeView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(passProps: CardDetailSwipeProps) {
     return {
       topBar: {
@@ -277,12 +281,13 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       width,
       fontScale,
     } = this.props;
+    const { colors } = this.context;
     return (
       <ScrollView
         key={itemIndex}
         overScrollMode="never"
         bounces={false}
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={{ backgroundColor: colors.background }}
       >
         <CardDetailComponent
           componentId={componentId}
@@ -315,22 +320,23 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     const {
       deckCardCounts,
     } = this.state;
+    const { colors } = this.context;
     const card = this.currentCard();
     if (!card) {
-      return <View style={styles.wrapper} />;
+      return <View style={[styles.wrapper, { backgroundColor: colors.background }]} />;
     }
     return (
       <View
-        style={styles.wrapper}
+        style={[styles.wrapper, { backgroundColor: colors.background }]}
       >
         <Swiper
           index={initialIndex}
           width={width}
-          style={styles.contentContainer}
-          containerStyle={{ flex: 1, flexDirection: 'column', backgroundColor: COLORS.background }}
+          style={{ backgroundColor: colors.background }}
+          containerStyle={{ flex: 1, flexDirection: 'column', backgroundColor: colors.background }}
           loadMinimal
           loadMinimalSize={1}
-          loadMinimalLoader={<View style={[styles.wrapper, { width, height }]} />}
+          loadMinimalLoader={<View style={[styles.wrapper, { width, height, backgroundColor: colors.background }]} />}
           showsPagination={false}
           onIndexChanged={this._onIndexChange}
           loop={false}
@@ -367,10 +373,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
-  },
-  contentContainer: {
-    backgroundColor: COLORS.background,
   },
   gutter: {
     position: 'absolute',

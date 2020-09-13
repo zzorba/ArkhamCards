@@ -11,8 +11,12 @@ import SliderChooser from './SliderChooser';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 class CardLocationFilterView extends React.Component<FilterProps> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -39,8 +43,9 @@ class CardLocationFilterView extends React.Component<FilterProps> {
       onToggleChange,
       onFilterChange,
     } = this.props;
+    const { colors } = this.context;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={{ backgroundColor: colors.background}}>
         <SliderChooser
           label={t`Shroud`}
           width={width}
@@ -115,8 +120,5 @@ const styles = StyleSheet.create({
     marginTop: xs,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

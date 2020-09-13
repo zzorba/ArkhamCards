@@ -4,12 +4,10 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StyleProp,
 } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
@@ -17,6 +15,7 @@ import Card from '@data/Card';
 import typography from '@styles/typography';
 import space, { m, s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   superTitle?: string;
@@ -34,7 +33,10 @@ interface Props {
 }
 
 const ICON_SIZE = 60;
-class InvestigatorRow extends React.Component<Props & StylesProps> {
+export default class InvestigatorRow extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       onPress,
@@ -64,13 +66,19 @@ class InvestigatorRow extends React.Component<Props & StylesProps> {
       noFactionIcon,
       superTitle,
       fontScale,
-      gameFont,
     } = this.props;
+    const { colors, gameFont } = this.context;
     return (
-      <View style={styles.wrapper}>
+      <View style={[
+        styles.wrapper,
+        {
+          borderColor: colors.divider,
+          backgroundColor: colors.background,
+        },
+      ]}>
         <View style={[
           styles.headerColor,
-          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
+          { backgroundColor: colors.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
         ]} />
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
@@ -89,7 +97,11 @@ class InvestigatorRow extends React.Component<Props & StylesProps> {
             />
           </View>
           <View style={[styles.titleColumn, button ? styles.buttonColumn : {}, noFactionIcon ? space.marginRightM : {}]}>
-            <Text style={[superTitle ? typography.gameFont : typography.bigGameFont, { fontFamily: gameFont }, styles.title]}>
+            <Text style={[
+              superTitle ? typography.gameFont : typography.bigGameFont,
+              { fontFamily: gameFont, color: colors.darkText },
+              styles.title,
+            ]}>
               { description ? `${investigator.name}: ${description}` : investigator.name }
             </Text>
             { !!button && button }
@@ -100,7 +112,7 @@ class InvestigatorRow extends React.Component<Props & StylesProps> {
                 <ArkhamIcon
                   name={CardCostIcon.factionIcon(investigator)}
                   size={ICON_SIZE}
-                  color={COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].background}
+                  color={colors.faction[eliminated ? 'dead' : investigator.factionCode()].background}
                 />
               ) }
             </View>
@@ -120,7 +132,7 @@ class InvestigatorRow extends React.Component<Props & StylesProps> {
         { !!children && children }
         <View style={[
           styles.headerColor,
-          { backgroundColor: COLORS.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
+          { backgroundColor: colors.faction[eliminated ? 'dead' : investigator.factionCode()].darkBackground },
         ]} />
       </View>
     );
@@ -141,14 +153,10 @@ class InvestigatorRow extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(InvestigatorRow);
-
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'column',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
   },
   row: {
     flexDirection: 'row',

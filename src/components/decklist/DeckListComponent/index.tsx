@@ -18,6 +18,7 @@ import { fetchPublicDeck } from '@components/deck/actions';
 import { getAllDecks, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space, { s } from '@styles/space';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface OwnProps {
   deckIds: number[];

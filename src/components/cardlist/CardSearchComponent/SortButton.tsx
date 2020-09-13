@@ -14,7 +14,7 @@ import { SortType } from '@actions/types';
 import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import { updateCardSort } from '@components/filter/actions';
 import { AppState, getMythosMode, getCardSort } from '@reducers';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const SIZE = 36;
 
@@ -37,6 +37,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 class SortButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static WIDTH = SIZE + 4;
   static HEIGHT = SIZE;
 
@@ -61,12 +64,12 @@ class SortButton extends React.Component<Props> {
     const {
       lightButton,
     } = this.props;
-    const defaultColor = COLORS.M;
+    const { colors } = this.context;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress} testID="Sort">
           <View style={styles.touchable}>
-            <AppIcon name="sort" size={22} color={lightButton ? 'white' : defaultColor} />
+            <AppIcon name="sort" size={22} color={lightButton ? 'white' : colors.M} />
           </View>
         </TouchableOpacity>
       </View>

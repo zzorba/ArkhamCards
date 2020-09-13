@@ -11,6 +11,8 @@ import DeckListRow from '@components/decklist/DeckListRow';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   deckIds: number[];
@@ -34,6 +36,9 @@ interface Item {
 }
 
 class DeckList extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _renderItem = ({ item: { deckId } }: { item: Item }) => {
     const {
       investigators,
@@ -95,15 +100,18 @@ class DeckList extends React.Component<Props> {
       header,
       footer,
     } = this.props;
+    const { colors } = this.context;
     const items = this.getItems();
     return (
       <FlatList
+        contentInset={{ top: SEARCH_BAR_HEIGHT }}
+        contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
         onScroll={onScroll}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
         refreshing={refreshing}
         onRefresh={onRefresh}
-        style={styles.container}
+        style={[styles.container, { backgroundColor: colors.background }]}
         data={items}
         renderItem={this._renderItem}
         extraData={decks}
@@ -120,6 +128,5 @@ export default withPlayerCards(DeckList);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

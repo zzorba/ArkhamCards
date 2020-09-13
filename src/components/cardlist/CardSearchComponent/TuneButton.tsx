@@ -15,6 +15,7 @@ import { CardFilterProps } from '@components/filter/CardFilterView';
 import FilterBuilder, { CardFilterData } from '@lib/filters';
 import { AppState, getFilterState, getCardFilterData } from '@reducers';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const SIZE = 36;
 
@@ -33,6 +34,9 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class TuneButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static WIDTH = SIZE + 4;
   static HEIGHT = SIZE;
 
@@ -74,12 +78,12 @@ class TuneButton extends React.Component<Props> {
       filters,
       lightButton,
     } = this.props;
-    const defaultColor = COLORS.M;
+    const { colors } = this.context;
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={this._onPress}>
           <View style={styles.touchable}>
-            <AppIcon name="filter" size={22} color={lightButton ? 'white' : defaultColor} />
+            <AppIcon name="filter" size={22} color={lightButton ? 'white' : colors.M} />
             { filters && <View style={styles.chiclet} /> }
           </View>
         </TouchableOpacity>

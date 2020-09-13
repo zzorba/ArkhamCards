@@ -26,6 +26,7 @@ import ShowNonCollectionFooter, { rowNonCollectionHeight } from '@components/car
 import { getTabooSet, getPacksInCollection, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface OwnProps {
   componentId: string;
@@ -380,6 +381,8 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       >
         { onScroll => (
           <SectionList
+            contentInset={{ top: SEARCH_BAR_HEIGHT }}
+            contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
             onScroll={onScroll}
             onScrollBeginDrag={this._handleScrollBeginDrag}
             sections={this.groupedInvestigators()}

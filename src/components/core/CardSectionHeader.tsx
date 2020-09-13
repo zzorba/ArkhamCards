@@ -12,8 +12,8 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import Card from '@data/Card';
 import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import { m, s, xs, iconSizeScale } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardSectionHeaderData {
   superTitle?: string;
@@ -26,7 +26,6 @@ export interface CardSectionHeaderData {
 
 interface Props {
   investigator?: Card;
-  fontScale: number;
   section: CardSectionHeaderData;
 }
 
@@ -41,9 +40,12 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
 }
 
 export default class CardSectionHeader extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
+    const { colors, fontScale } = this.context;
     const {
-      fontScale,
       section: {
         superTitleIcon,
       },
@@ -52,7 +54,10 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <View style={[
         styles.superHeaderRow,
-        { backgroundColor: COLORS.faction[investigator.factionCode()].darkBackground },
+        {
+          backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
+          borderColor: colors.divider,
+        },
       ]}>
         <View style={styles.superHeaderPadding}>
           <Text style={[typography.text, styles.superHeaderText]}>
@@ -76,14 +81,14 @@ export default class CardSectionHeader extends React.Component<Props> {
   }
 
   render() {
+    const { colors, fontScale } = this.context;
     const {
       investigator,
       section,
-      fontScale,
     } = this.props;
     if (section.placeholder) {
       return (
-        <View style={styles.placeholder} />
+        <View style={[styles.placeholder, { backgroundColor: colors.background }]} />
       );
     }
     if (section.superTitle) {
@@ -111,7 +116,14 @@ export default class CardSectionHeader extends React.Component<Props> {
     }
     if (section.subTitle) {
       return (
-        <View style={[styles.subHeaderRow, { height: cardSectionHeaderHeight(section, fontScale) }]}>
+        <View style={[
+          styles.subHeaderRow,
+          {
+            backgroundColor: colors.L10,
+            borderColor: colors.divider,
+            height: cardSectionHeaderHeight(section, fontScale),
+          },
+        ]}>
           <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.subTitle }
           </Text>
@@ -121,7 +133,10 @@ export default class CardSectionHeader extends React.Component<Props> {
 
     if (section.title) {
       return (
-        <View style={styles.headerRow}>
+        <View style={[styles.headerRow, {
+          backgroundColor: colors.L20,
+          borderColor: colors.divider,
+        }]}>
           <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.title }
           </Text>
@@ -138,7 +153,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   placeholder: {
-    backgroundColor: COLORS.background,
     height: m,
   },
   superHeaderPadding: {
@@ -148,31 +162,26 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingLeft: s,
     paddingRight: xs,
-    borderColor: COLORS.divider,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   subHeaderRow: {
-    backgroundColor: COLORS.veryVeryLightBackground, //COLORS.L10
     paddingLeft: m,
     paddingRight: s,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   subHeaderText: {
     marginTop: 6,
   },
   headerRow: {
-    backgroundColor: COLORS.lightBackground,
     paddingLeft: m,
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

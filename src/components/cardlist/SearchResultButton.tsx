@@ -5,45 +5,51 @@ import { RectButton } from 'react-native-gesture-handler';
 import AppIcon from '@icons/AppIcon';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   icon: 'search' | 'edit' | 'expand';
   title: string;
   onPress: () => void;
-  fontScale: number;
 }
 
 export default class SearchResultButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static Height(fontScale: number) {
     return (fontScale * 18) + 20 + 20;
   }
 
   renderIcon() {
-    const { fontScale } = this.props;
+    const { colors, fontScale } = this.context;
     switch (this.props.icon) {
       case 'search':
-        return <AppIcon name="search" size={18 * fontScale} color={COLORS.L20} />
+        return <AppIcon name="search" size={18 * fontScale} color={colors.L20} />
       case 'edit':
-        return <AppIcon name="edit" size={18 * fontScale} color={COLORS.L20} />
+        return <View style={styles.editIcon}><AppIcon name="edit" size={16 * fontScale} color={colors.L20} /></View>
       case 'expand':
-        return <AppIcon name="plus" size={18 * fontScale} color={COLORS.L20} />
+        return <AppIcon name="plus" size={18 * fontScale} color={colors.L20} />
     }
   }
+
   render() {
-    const { title, onPress, fontScale } = this.props;
+    const { title, onPress } = this.props;
+    const { colors, fontScale } = this.context;
     const height = 18 * fontScale + 20;
     return (
-      <View style={styles.wrapper}>
+      <View style={[styles.wrapper, { backgroundColor: colors.background }]}>
         <RectButton
           style={[
             styles.buttonStyle, {
+              backgroundColor: colors.M,
               height,
               borderRadius: height / 2,
               paddingLeft: height / 4,
             },
           ]}
-          underlayColor={COLORS.light20}
-          rippleColor="#D7D3C6"
+          underlayColor={colors.L20}
+          rippleColor={colors.L10}
           onPress={onPress}
         >
           <View pointerEvents="box-none" style={styles.row}>
@@ -60,13 +66,12 @@ export default class SearchResultButton extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginLeft: 12,
-    marginRight: 12,
-    marginTop: 10,
-    marginBottom: 10,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   buttonStyle: {
-    backgroundColor: COLORS.M,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     shadowColor: COLORS.shadow,
@@ -78,5 +83,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  editIcon: {
+    marginLeft: 2,
   },
 });
