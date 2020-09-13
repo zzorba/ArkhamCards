@@ -121,6 +121,10 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, MyDecksSelectorDialog.deckOptions(this.props));
+  }
+
   componentWillUnmount() {
     this._navEventListener.remove();
   }
