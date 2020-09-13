@@ -11,11 +11,11 @@ import Switch from '@components/core/Switch';
 import typography from '@styles/typography';
 import { isBig, s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   label: string;
   height: number;
-  fontScale: number;
   children: ReactNode;
   enabled: boolean;
   toggleName: string;
@@ -27,6 +27,9 @@ interface State {
 }
 
 export default class AccordionItem extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -85,9 +88,8 @@ export default class AccordionItem extends React.Component<Props, State> {
     const {
       height,
       children,
-      fontScale,
     } = this.props;
-
+    const { fontScale } = this.context;
     const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
 
     const containerHeight = this.state.heightAnim.interpolate({

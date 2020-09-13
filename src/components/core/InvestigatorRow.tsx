@@ -29,7 +29,6 @@ interface Props {
   onRemove?: (card: Card) => void;
   children?: React.ReactElement | React.ReactElement[];
   noFactionIcon?: boolean;
-  fontScale: number;
 }
 
 const ICON_SIZE = 60;
@@ -65,7 +64,6 @@ export default class InvestigatorRow extends React.Component<Props> {
       bigImage,
       noFactionIcon,
       superTitle,
-      fontScale,
     } = this.props;
     const { colors, gameFont } = this.context;
     return (
@@ -93,7 +91,6 @@ export default class InvestigatorRow extends React.Component<Props> {
               yithian={yithian}
               small={!bigImage}
               border
-              fontScale={fontScale}
             />
           </View>
           <View style={[styles.titleColumn, button ? styles.buttonColumn : {}, noFactionIcon ? space.marginRightM : {}]}>

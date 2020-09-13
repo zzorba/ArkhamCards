@@ -5,7 +5,6 @@ import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { Campaign, InvestigatorData, Trauma } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
@@ -16,11 +15,10 @@ import typography from '@styles/typography';
 import { s, l } from '@styles/space';
 import COLORS from '@styles/colors';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   campaignData: CampaignGuideContextType;
   processedCampaign: ProcessedCampaign;
-  fontScale: number;
   updateCampaign: (
     id: number,
     sparseCampaign: Partial<Campaign>,
@@ -30,8 +28,6 @@ interface OwnProps {
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
-type Props = OwnProps & StylesProps;
-
 interface State {
   spentXp: {
     [code: string]: number;
@@ -40,7 +36,7 @@ interface State {
   appState: AppStateStatus;
 }
 
-class CampaignInvestigatorsComponent extends React.Component<Props, State> {
+export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   _navEventListener: EventSubscription;
 
   static contextType = CampaignGuideContext;
@@ -274,15 +270,16 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
       campaignData: {
         playerCards,
       },
-      fontScale,
       componentId,
       deleteCampaign,
-      gameFont,
     } = this.props;
     const {
       removeMode,
       spentXp,
     } = this.state;
+    const {
+      style: { gameFont },
+    } = this.context;
     const canEditTrauma = this.canEditTrauma();
     return (
       <CampaignGuideContext.Consumer>
@@ -304,7 +301,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
                   decSpentXp={this._decXp}
                   deck={latestDecks[investigator.code]}
                   componentId={componentId}
-                  fontScale={fontScale}
                   investigator={investigator}
                   traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
                   chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
@@ -344,7 +340,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
                     campaignId={campaignId}
                     deck={latestDecks[investigator.code]}
                     componentId={componentId}
-                    fontScale={fontScale}
                     investigator={investigator}
                     traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
                   />
@@ -364,8 +359,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
     );
   }
 }
-
-export default withStyles(CampaignInvestigatorsComponent);
 
 const styles = StyleSheet.create({
   header: {

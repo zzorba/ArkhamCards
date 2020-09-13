@@ -10,6 +10,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
@@ -18,12 +19,14 @@ export function costIconSize(fontScale: number) {
 
 interface Props {
   card: Card;
-  fontScale: number;
   inverted?: boolean;
   linked?: boolean;
 }
 
 export default class CardCostIcon extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   cardCost() {
     const {
       card,
@@ -79,9 +82,9 @@ export default class CardCostIcon extends React.PureComponent<Props> {
   render() {
     const {
       card,
-      fontScale,
       inverted,
     } = this.props;
+    const { fontScale } = this.context;
     const color = this.color();
     const level = (card.xp === null || card.xp === undefined) ?
       'none' : `${card.xp}`;

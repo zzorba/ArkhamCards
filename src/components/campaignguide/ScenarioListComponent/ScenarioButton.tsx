@@ -8,7 +8,6 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { showScenario } from '@components/campaignguide/nav';
 import NavButton from '@components/core/NavButton';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
@@ -23,14 +22,13 @@ interface Props {
   campaignId: number;
   campaignGuide: CampaignGuide;
   scenario: ProcessedScenario;
-  fontScale: number;
   linked: boolean;
   showLinkedScenario?: (
     scenarioId: string
   ) => void;
 }
 
-class ScenarioButton extends React.Component<Props & StylesProps> {
+export default class ScenarioButton extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
@@ -66,7 +64,10 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
   };
 
   renderIcon() {
-    const { scenario, fontScale } = this.props;
+    const { scenario } = this.props;
+    const {
+      style: { fontScale },
+    } = this.context;
     const iconSize = 24 * fontScale;
     switch (scenario.type) {
       case 'locked':
@@ -113,7 +114,10 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
   }
 
   renderContent() {
-    const { scenario, gameFont } = this.props;
+    const { scenario } = this.props;
+    const {
+      style: { gameFont },
+    } = this.context;
     switch (scenario.type) {
       case 'locked':
         return (
@@ -144,10 +148,9 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
   }
 
   render() {
-    const { scenario, fontScale } = this.props;
+    const { scenario } = this.props;
     return (
       <NavButton
-        fontScale={fontScale}
         onPress={this._onPress}
         disabled={(scenario.type === 'locked' || scenario.type === 'skipped')}
       >
@@ -163,8 +166,6 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(ScenarioButton);
 
 const styles = StyleSheet.create({
   flex: {

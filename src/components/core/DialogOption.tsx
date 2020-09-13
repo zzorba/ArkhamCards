@@ -8,15 +8,19 @@ import {
 } from 'react-native';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   text: string;
-  fontScale: number;
   onPress: (text: string) => void;
   selected: boolean;
   noCapitalize?: boolean;
 }
+
 export default class DialogOption extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return ({
       overlay: {
@@ -36,10 +40,10 @@ export default class DialogOption extends React.Component<Props> {
   render() {
     const {
       text,
-      fontScale,
       selected,
       noCapitalize,
     } = this.props;
+    const { fontScale } = this.context;
     return (
       <View style={[styles.item, { height: 50 * fontScale }]}>
         <TouchableOpacity onPress={this._onPress} testID={`Sort-${text}`}>

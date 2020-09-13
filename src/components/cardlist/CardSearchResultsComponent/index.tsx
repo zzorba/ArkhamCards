@@ -32,7 +32,6 @@ const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
-  fontScale: number;
   baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -387,7 +386,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       tabooSetOverride,
       investigator,
       storyOnly,
-      fontScale,
       initialSort,
       mythosToggle,
       baseQuery,
@@ -421,7 +419,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                   <>
                     <CardResultList
                       componentId={componentId}
-                      fontScale={fontScale}
                       tabooSetOverride={tabooSetOverride}
                       query={query}
                       filterQuery={filterQuery || undefined}

@@ -339,7 +339,6 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       componentId,
       onDeckSelect,
       onInvestigatorSelect,
-      fontScale,
     } = this.props;
     const deckTab = (
       <DeckSelectorTab
@@ -380,7 +379,6 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         <TabView
           tabs={tabs}
           onTabChange={this._onTabChange}
-          fontScale={fontScale}
         />
       );
     }

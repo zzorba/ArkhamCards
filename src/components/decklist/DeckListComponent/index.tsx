@@ -13,12 +13,10 @@ import DeckList from './DeckList';
 import { Campaign, Deck, DecksMap } from '@actions/types';
 import Card from '@data/Card';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { fetchPublicDeck } from '@components/deck/actions';
 import { getAllDecks, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space, { s } from '@styles/space';
-import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface OwnProps {
   deckIds: number[];
@@ -41,8 +39,7 @@ interface ReduxActionProps {
 
 type Props = OwnProps &
   ReduxProps &
-  ReduxActionProps &
-  DimensionsProps;
+  ReduxActionProps;
 
 interface State {
   searchTerm: string;
@@ -138,7 +135,6 @@ class DeckListComponent extends React.Component<Props, State> {
       decks,
       deckIds,
       deckToCampaign,
-      fontScale,
     } = this.props;
     const { searchTerm } = this.state;
     return (
@@ -154,7 +150,6 @@ class DeckListComponent extends React.Component<Props, State> {
             footer={this._renderFooter}
             searchTerm={searchTerm}
             deckToCampaign={deckToCampaign}
-            fontScale={fontScale}
             onRefresh={onRefresh}
             refreshing={refreshing}
             decks={decks}
@@ -180,9 +175,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(
-  withDimensions(DeckListComponent)
-);
+)(DeckListComponent);
 
 const styles = StyleSheet.create({
   header: {

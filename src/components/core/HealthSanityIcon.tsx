@@ -7,6 +7,7 @@ import {
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import TextStroke from './TextStroke';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
@@ -16,7 +17,6 @@ export function costIconSize(fontScale: number) {
 interface Props {
   count: number | null;
   type: 'health' | 'sanity';
-  fontScale: number;
 }
 
 function num(value: number | null) {
@@ -30,6 +30,9 @@ function num(value: number | null) {
 }
 
 export default class HealthSanityIcon extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   color(dark: boolean) {
     const {
       type,
@@ -43,9 +46,9 @@ export default class HealthSanityIcon extends React.PureComponent<Props> {
   render() {
     const {
       type,
-      fontScale,
       count,
     } = this.props;
+    const { fontScale } = this.context;
     const scaleFactor = ((fontScale - 1) / 2 + 1);
     const ICON_SIZE = 46 * scaleFactor;
     const style = {

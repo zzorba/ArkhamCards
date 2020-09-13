@@ -11,7 +11,6 @@ import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   campaignId: number;
   processedCampaign: ProcessedCampaign;
   campaignData: CampaignGuideContextType;
@@ -23,7 +22,6 @@ interface Props {
 export default class ScenarioListTab extends React.Component<Props> {
   render() {
     const {
-      fontScale,
       componentId,
       campaignId,
       processedCampaign,
@@ -38,7 +36,6 @@ export default class ScenarioListTab extends React.Component<Props> {
         { map(processedCampaign.scenarios, (scenario, idx) => (
           <ScenarioButton
             key={idx}
-            fontScale={fontScale}
             componentId={componentId}
             scenario={scenario}
             campaignId={campaignId}

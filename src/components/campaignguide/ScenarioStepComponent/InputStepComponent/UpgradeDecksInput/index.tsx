@@ -10,7 +10,6 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from '@actions/types';
@@ -34,13 +33,12 @@ interface ReduxActionProps {
 
 interface OwnProps {
   componentId: string;
-  fontScale: number;
   id: string;
   latestDecks: LatestDecks;
   campaignState: CampaignStateHelper;
 }
 
-type Props = OwnProps & ReduxActionProps & StylesProps;
+type Props = OwnProps & ReduxActionProps;
 
 interface State {
   unsavedEdits: {
@@ -154,11 +152,12 @@ class UpgradeDecksInput extends React.Component<Props, State> {
       id,
       saveDeckChanges,
       saveDeckUpgrade,
-      fontScale,
       latestDecks,
       campaignState,
-      gameFont,
     } = this.props;
+    const {
+      style: { gameFont },
+    } = this.context;
     const hasDecision = scenarioState.decision(id) !== undefined;
     return (
       <View>
@@ -174,7 +173,6 @@ class UpgradeDecksInput extends React.Component<Props, State> {
                 key={investigator.code}
                 investigator={investigator}
                 description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
-                fontScale={fontScale}
                 eliminated
               />
             );
@@ -183,7 +181,6 @@ class UpgradeDecksInput extends React.Component<Props, State> {
             <UpgradeDeckRow
               key={investigator.code}
               id={id}
-              fontScale={fontScale}
               componentId={componentId}
               saveDeckChanges={saveDeckChanges}
               saveDeckUpgrade={saveDeckUpgrade}
@@ -236,7 +233,7 @@ export default connect<{}, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
-  withStyles(UpgradeDecksInput)
+  UpgradeDecksInput
 );
 
 const styles = StyleSheet.create({

@@ -28,6 +28,7 @@ import {
   getLatestCampaignDeckIds,
   getLangPreference,
 } from '@reducers';
+import { StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignGuideReduxData {
   campaign: SingleCampaign;
@@ -106,11 +107,25 @@ export function campaignGuideReduxData(
   );
 }
 
-const campaignGuideContextReduxData = (reduxData: CampaignGuideReduxData, universalData: UniversalCampaignProps) => reduxData;
-const campaignGuideContextUniversalData = (reduxData: CampaignGuideReduxData, universalData: UniversalCampaignProps) => universalData;
+const campaignGuideContextReduxData = (
+  reduxData: CampaignGuideReduxData,
+  universalData: UniversalCampaignProps,
+  styleContext: StyleContextType
+) => reduxData;
+const campaignGuideContextUniversalData = (
+  reduxData: CampaignGuideReduxData,
+  universalData: UniversalCampaignProps,
+  styleContext: StyleContextType
+) => universalData;
+const campaignGuideStyleContext = (
+  reduxData: CampaignGuideReduxData,
+  universalData: UniversalCampaignProps,
+  styleContext: StyleContextType
+) => styleContext;
 export const constructCampaignGuideContext = createSelector(
   campaignGuideContextReduxData,
   campaignGuideContextUniversalData,
+  campaignGuideStyleContext,
   ({
     campaign,
     campaignState,
@@ -120,6 +135,7 @@ export const constructCampaignGuideContext = createSelector(
     linkedCampaignState,
   }: CampaignGuideReduxData,
   universalData: UniversalCampaignProps,
+  style: StyleContextType
 ) => {
   const showChooseDeck = (
     singleInvestigator?: Card,
@@ -329,6 +345,7 @@ export const constructCampaignGuideContext = createSelector(
     adjustedInvestigatorData: campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
     playerCards: universalData.cards,
     lastUpdated,
+    style,
   };
   return result;
 });

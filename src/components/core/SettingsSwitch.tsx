@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import { s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -16,25 +16,27 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle, gameFont }: Props & StylesProps) {
+export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
   return (
-    <SwitchRow
-      title={title}
-      titleStyle={settingsStyle ? undefined : {
-        ...typography.mediumGameFont,
-        fontFamily: gameFont,
-      }}
-      containerStyle={styles.switch}
-      descriptionStyle={typography.label}
-      description={description}
-      onValueChange={onValueChange}
-      value={value}
-      disabled={disabled}
-    />
+    <StyleContext.Consumer>
+      { ({ gameFont }) => (
+        <SwitchRow
+          title={title}
+          titleStyle={settingsStyle ? undefined : {
+            ...typography.mediumGameFont,
+            fontFamily: gameFont,
+          }}
+          containerStyle={styles.switch}
+          descriptionStyle={typography.label}
+          description={description}
+          onValueChange={onValueChange}
+          value={value}
+          disabled={disabled}
+        />
+      )}
+    </StyleContext.Consumer>
   );
 }
-
-export default withStyles(SettingsSwitch);
 
 const styles = StyleSheet.create({
   switch: {

@@ -14,7 +14,6 @@ interface Props {
   investigator: Card;
   investigatorData?: InvestigatorData;
   showTraumaDialog: (investigator: Card, traumaData: Trauma) => void;
-  fontScale: number;
   sectionHeader?: boolean;
 }
 
@@ -41,7 +40,6 @@ export default class EditTraumaComponent extends React.Component<Props> {
     const {
       investigator,
       sectionHeader,
-      fontScale,
     } = this.props;
     const traumaString = investigator.traumaString(this.traumaData());
     if (sectionHeader) {
@@ -49,12 +47,10 @@ export default class EditTraumaComponent extends React.Component<Props> {
         <>
           <CardSectionHeader
             investigator={investigator}
-            fontScale={fontScale}
             section={{ superTitle: t`Trauma` }}
           />
           <NavButton
             text={traumaString}
-            fontScale={fontScale}
             onPress={this._editTraumaPressed}
           />
         </>

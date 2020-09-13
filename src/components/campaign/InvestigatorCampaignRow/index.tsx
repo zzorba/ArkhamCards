@@ -28,7 +28,6 @@ interface Props {
   incSpentXp: (code: string) => void;
   decSpentXp: (code: string) => void;
   traumaAndCardData: TraumaAndCardData;
-  fontScale: number;
   playerCards: CardsMap;
   chooseDeckForInvestigator?: (investigator: Card) => void;
   deck?: Deck;
@@ -45,15 +44,11 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   };
 
   _renderStoryAsset = (card: Card) => {
-    const {
-      fontScale,
-    } = this.props;
     return (
       <CardSearchResult
         key={card.code}
         onPress={this._onCardPress}
         card={card}
-        fontScale={fontScale}
       />
     );
   };
@@ -71,7 +66,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   renderXp() {
     const {
       investigator,
-      fontScale,
       componentId,
       deck,
       playerCards,
@@ -86,7 +80,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
           deck={deck}
           cards={playerCards}
           investigator={investigator}
-          fontScale={fontScale}
           showDeckUpgrade={showDeckUpgrade}
         />
       );
@@ -97,7 +90,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     return (
       <>
         <CardSectionHeader
-          fontScale={fontScale}
           investigator={investigator}
           section={{ superTitle: t`Experience points` }}
         />
@@ -139,7 +131,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   }
 
   renderStoryAssets() {
-    const { traumaAndCardData, investigator, fontScale } = this.props;
+    const { traumaAndCardData, investigator } = this.props;
     const storyAssets = traumaAndCardData.storyAssets || [];
     if (!storyAssets.length) {
       return null;
@@ -148,7 +140,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       <>
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Campaign cards` }}
         />
         { map(storyAssets, asset => (
@@ -177,7 +168,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
   renderDetail() {
     const {
       investigator,
-      fontScale,
       removeInvestigator,
       deck,
     } = this.props;
@@ -195,7 +185,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         { this.renderXp() }
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Trauma` }}
         />
         { this.renderTrauma() }
@@ -272,7 +261,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
     const {
       investigator,
       traumaAndCardData,
-      fontScale,
     } = this.props;
     const eliminated = investigator.eliminated(traumaAndCardData);
     return (
@@ -282,7 +270,6 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         button={this.renderButton(eliminated)}
         eliminated={eliminated}
         yithian={!!find(traumaAndCardData.storyAssets || [], asset => asset === BODY_OF_A_YITHIAN)}
-        fontScale={fontScale}
       >
         { eliminated ? undefined : this.renderDetail() }
       </InvestigatorRow>

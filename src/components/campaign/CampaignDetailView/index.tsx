@@ -557,7 +557,6 @@ class CampaignDetailView extends React.Component<Props, State> {
       showTraumaDialog,
       showTextEditDialog,
       allInvestigators,
-      fontScale,
       decks,
       cards,
     } = this.props;
@@ -565,19 +564,16 @@ class CampaignDetailView extends React.Component<Props, State> {
       <ScrollView style={styles.flex}>
         <ScenarioSection
           campaign={campaign}
-          fontScale={fontScale}
           addScenarioResult={this._addScenarioResult}
           viewScenarios={this._viewScenarios}
         />
         <ChaosBagSection
-          fontScale={fontScale}
           chaosBag={campaign.chaosBag}
           showChaosBag={this._drawChaosBag}
           showOddsCalculator={this._oddsCalculatorPressed}
         />
         <DecksSection
           componentId={componentId}
-          fontScale={fontScale}
           campaign={campaign}
           weaknessSet={campaign.weaknessSet}
           latestDeckIds={latestDeckIds || []}
@@ -593,13 +589,11 @@ class CampaignDetailView extends React.Component<Props, State> {
           decSpentXp={this._decSpentXp}
         />
         <WeaknessSetSection
-          fontScale={fontScale}
           weaknessSet={campaign.weaknessSet}
           showDrawDialog={this._showDrawWeakness}
         />
         <CampaignLogSection
           componentId={componentId}
-          fontScale={fontScale}
           campaignNotes={campaign.campaignNotes}
           scenarioCount={(campaign.scenarioResults || []).length}
           allInvestigators={allInvestigators}

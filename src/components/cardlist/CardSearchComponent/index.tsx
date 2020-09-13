@@ -268,7 +268,6 @@ class CardSearchComponent extends React.Component<Props, State> {
       mythosMode,
       selectedSort,
       storyOnly,
-      fontScale,
       sort,
       mythosToggle,
     } = this.props;
@@ -278,7 +277,6 @@ class CardSearchComponent extends React.Component<Props, State> {
     return (
       <CardSearchResultsComponent
         componentId={componentId}
-        fontScale={fontScale}
         baseQuery={baseQuery}
         mythosToggle={mythosToggle}
         mythosMode={mythosMode}

@@ -15,7 +15,6 @@ import space from '@styles/space';
 import COLORS from '@styles/colors';
 
 interface Props {
-  fontScale: number;
   chaosBag: ChaosBag;
   showChaosBag: () => void;
   showOddsCalculator: () => void;
@@ -23,7 +22,6 @@ interface Props {
 
 export default function ChaosBagSection(props: Props) {
   const {
-    fontScale,
     showChaosBag,
     chaosBag,
     showOddsCalculator,
@@ -31,7 +29,6 @@ export default function ChaosBagSection(props: Props) {
   return (
     <>
       <NavButton
-        fontScale={fontScale}
         onPress={showChaosBag}
         noBorder
       >
@@ -41,7 +38,6 @@ export default function ChaosBagSection(props: Props) {
           </Text>
           <View style={space.marginTopS}>
             <ChaosBagLine
-              fontScale={fontScale}
               chaosBag={chaosBag}
             />
           </View>

@@ -6,15 +6,14 @@ import {
   Text,
 } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { CampaignCycleCode } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import { s, iconSizeScale } from '@styles/space';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
-  fontScale: number;
   packCode: CampaignCycleCode;
   text: string;
   description?: string;
@@ -22,7 +21,9 @@ interface Props {
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
 
-class CycleItem extends React.Component<Props & StylesProps> {
+export default class CycleItem extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
   _onPress = () => {
     this.props.onPress(this.props.packCode, this.props.text);
   };
@@ -31,11 +32,13 @@ class CycleItem extends React.Component<Props & StylesProps> {
     const {
       packCode,
       text,
-      fontScale,
       disabled,
       description,
-      gameFont,
     } = this.props;
+    const {
+      gameFont,
+      fontScale,
+    } = this.context;
     return (
       <View style={[styles.campaignRow, disabled ? styles.disabled : {}]}>
         <View style={styles.campaignIcon}>
@@ -74,8 +77,6 @@ class CycleItem extends React.Component<Props & StylesProps> {
     return this.renderContent();
   }
 }
-
-export default withStyles(CycleItem);
 
 const styles = StyleSheet.create({
   campaignRow: {

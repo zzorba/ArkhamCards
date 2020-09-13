@@ -29,7 +29,6 @@ interface Props {
   meta: DeckMeta;
   xpAdjustment: number;
   controls?: React.ReactNode;
-  fontScale: number;
 }
 
 export default class DeckNavFooter extends React.Component<Props> {
@@ -54,7 +53,6 @@ export default class DeckNavFooter extends React.Component<Props> {
       parsedDeck: {
         problem,
       },
-      fontScale,
     } = this.props;
 
     if (!problem) {
@@ -66,7 +64,6 @@ export default class DeckNavFooter extends React.Component<Props> {
         problem={problem}
         color="#FFFFFF"
         noFontScaling
-        fontScale={fontScale}
       />
     );
   }

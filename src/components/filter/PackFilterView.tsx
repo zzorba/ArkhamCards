@@ -82,7 +82,6 @@ class PackFilterView extends React.Component<Props> {
       filters: {
         packs,
       },
-      fontScale,
     } = this.props;
     if (!allPacks.length) {
       return (
@@ -101,7 +100,6 @@ class PackFilterView extends React.Component<Props> {
     return (
       <PackListComponent
         coreSetName={t`Core Set`}
-        fontScale={fontScale}
         componentId={componentId}
         packs={allPacks}
         checkState={selected}

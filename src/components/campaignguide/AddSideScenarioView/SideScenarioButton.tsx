@@ -15,7 +15,6 @@ import COLORS from '@styles/colors';
 interface Props {
   componentId: string;
   scenario: Scenario;
-  fontScale: number;
   onPress: (scenario: Scenario) => void;
 }
 
@@ -75,11 +74,10 @@ export default class SideScenarioButton extends React.Component<Props> {
   }
 
   render() {
-    const { fontScale, scenario } = this.props;
+    const { scenario } = this.props;
     const xpCost = scenario.xp_cost || 0;
     return (
       <NavButton
-        fontScale={fontScale}
         onPress={scenario.side_scenario_type === 'challenge' && scenario.challenge ?
           this._onPressChallenge : this._onPress}
       >

@@ -20,7 +20,6 @@ interface OwnProps {
   footer: (empty: boolean) => React.ReactElement;
   searchTerm: string;
   deckToCampaign?: { [id: number]: Campaign };
-  fontScale: number;
   onRefresh?: () => void;
   refreshing?: boolean;
   decks: DecksMap;
@@ -45,7 +44,6 @@ class DeckList extends React.Component<Props> {
       decks,
       cards,
       deckToCampaign,
-      fontScale,
       deckClicked,
     } = this.props;
 
@@ -56,7 +54,6 @@ class DeckList extends React.Component<Props> {
     return (
       <DeckListRow
         key={deckId}
-        fontScale={fontScale}
         deck={deck}
         previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}
         cards={cards}

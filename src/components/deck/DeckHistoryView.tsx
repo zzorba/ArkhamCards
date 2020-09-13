@@ -103,7 +103,7 @@ class DeckHistoryView extends React.Component<Props> {
   };
 
   render() {
-    const { componentId, cards, fontScale } = this.props;
+    const { componentId, cards } = this.props;
     const decks = this.historicDecks();
 
     return (
@@ -113,7 +113,6 @@ class DeckHistoryView extends React.Component<Props> {
             key={deck.deck.id}
             title={this.deckTitle(deck, decks.length - idx)}
             onTitlePress={this._onDeckPress}
-            fontScale={fontScale}
             componentId={componentId}
             deck={deck.deck}
             parsedDeck={deck}

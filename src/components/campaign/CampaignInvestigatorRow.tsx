@@ -15,7 +15,6 @@ import { s } from '@styles/space';
 
 interface OwnProps {
   campaigns: Campaign[];
-  fontScale: number;
 }
 
 interface CampaignDecks {
@@ -37,7 +36,6 @@ class CampaignInvestigatorRow extends React.Component<Props> {
   ) => {
     const {
       investigators,
-      fontScale,
     } = this.props;
     const { investigatorData } = campaign;
     const card = investigators[code];
@@ -53,7 +51,6 @@ class CampaignInvestigatorRow extends React.Component<Props> {
             yithian={yithian}
             border
             small
-            fontScale={fontScale}
           />
         </View>
       );
@@ -104,11 +101,9 @@ function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
 
 class PlaceholderCampaignInvestigatorRow extends React.Component<OwnProps & ReduxProps> {
   renderPlaceholder(id: number | string) {
-    const { fontScale } = this.props;
     return (
       <View key={id} style={styles.investigator}>
         <InvestigatorImage
-          fontScale={fontScale}
           border
           small
         />

@@ -27,7 +27,6 @@ interface Props {
   componentId: string;
   coreSetName?: string;
   packs: Pack[];
-  fontScale: number;
   checkState?: { [pack_code: string]: boolean};
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_number: number, checked: boolean) => void;
@@ -99,11 +98,9 @@ export default class PackListComponent extends React.Component<Props> {
   };
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Pack> }) => {
-    const { fontScale } = this.props;
     return (
       <CardSectionHeader
         section={{ subTitle: section.title }}
-        fontScale={fontScale}
       />
     );
   };

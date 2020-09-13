@@ -5,6 +5,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import withCampaignGuideContext, { CampaignGuideProps, CampaignGuideInputProps } from './withCampaignGuideContext';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;
@@ -14,6 +15,9 @@ export default function withScenarioGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & ScenarioGuideContextType>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
   class ScenarioDataComponent extends React.Component<Props & CampaignGuideProps & ScenarioGuideInputProps> {
+    static contextType = StyleContext;
+    context!: StyleContextType;
+
     render() {
       const {
         campaignData: {
@@ -36,6 +40,7 @@ export default function withScenarioGuideContext<Props>(
       const context: ScenarioGuideContextType = {
         processedScenario,
         scenarioState,
+        style: this.context,
       };
       return (
         <ScenarioGuideContext.Provider value={context}>
@@ -43,6 +48,7 @@ export default function withScenarioGuideContext<Props>(
             {...this.props as Props}
             processedScenario={processedScenario}
             scenarioState={scenarioState}
+            style={this.context}
           />
         </ScenarioGuideContext.Provider>
       );

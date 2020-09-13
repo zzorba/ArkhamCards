@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { DisplayChoice } from '@data/scenario';
@@ -9,6 +8,7 @@ import { BulletType } from '@data/scenario/types';
 import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   code: string;
@@ -24,7 +24,10 @@ interface Props {
   firstItem: boolean;
 }
 
-class ChoiceListItemComponent extends React.Component<Props & StylesProps> {
+export default class ChoiceListItemComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onChoiceChange = (idx: number) => {
     const {
       onChoiceChange,
@@ -43,8 +46,8 @@ class ChoiceListItemComponent extends React.Component<Props & StylesProps> {
       editable,
       optional,
       firstItem,
-      gameFont,
     } = this.props;
+    const { gameFont } = this.context;
     if (detailed) {
       return (
         <>
@@ -96,8 +99,6 @@ class ChoiceListItemComponent extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(ChoiceListItemComponent);
 
 const styles = StyleSheet.create({
   nameText: {

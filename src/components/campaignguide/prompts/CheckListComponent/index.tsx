@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from 'react-native';
 import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -35,11 +34,9 @@ export interface CheckListComponentProps {
   button?: React.ReactNode;
 }
 
-interface OwnProps extends CheckListComponentProps {
+interface Props extends CheckListComponentProps {
   items: ListItem[];
 }
-
-type Props = OwnProps & StylesProps;
 
 interface State {
   selectedChoice: {
@@ -47,7 +44,7 @@ interface State {
   };
 }
 
-class CheckListComponent extends React.Component<Props, State> {
+export default class CheckListComponent extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -149,7 +146,10 @@ class CheckListComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, items, bulletType, text, checkText, button, gameFont } = this.props;
+    const { id, items, bulletType, text, checkText, button } = this.props;
+    const {
+      style: { gameFont },
+    } = this.context;
     const { selectedChoice } = this.state;
     return (
       <ScenarioGuideContext.Consumer>
@@ -204,8 +204,6 @@ class CheckListComponent extends React.Component<Props, State> {
     );
   }
 }
-
-export default withStyles(CheckListComponent);
 
 const styles = StyleSheet.create({
   prompt: {

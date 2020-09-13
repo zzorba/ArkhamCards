@@ -9,7 +9,6 @@ import Card from '@data/Card';
 interface Props {
   card: Card;
   count: number;
-  fontScale: number;
   onChange: (card: Card, count: number) => void;
   onPress?: (card: Card) => void;
   limit: number;
@@ -69,7 +68,6 @@ export default class CardToggleRow extends React.Component<Props, State> {
       card,
       limit,
       onPress,
-      fontScale,
       value,
     } = this.props;
     const {
@@ -89,7 +87,6 @@ export default class CardToggleRow extends React.Component<Props, State> {
           onToggleChange={this._onCardOneToggle}
           onPress={onPress}
           toggleValue={one}
-          fontScale={fontScale}
           backgroundColor="transparent"
         />
         { (limit > 1) && (
@@ -99,7 +96,6 @@ export default class CardToggleRow extends React.Component<Props, State> {
             onToggleChange={this._onCardTwoToggle}
             onPress={onPress}
             toggleValue={two}
-            fontScale={fontScale}
             backgroundColor="transparent"
           />
         ) }
@@ -110,7 +106,6 @@ export default class CardToggleRow extends React.Component<Props, State> {
             onToggleChange={this._onCardThreeToggle}
             onPress={onPress}
             toggleValue={three}
-            fontScale={fontScale}
             backgroundColor="transparent"
           />
         ) }

@@ -4,21 +4,25 @@ import {
   Text,
 } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
 import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   step: ResolutionStep;
 }
 
-class ResolutionStepComponent extends React.Component<Props & StylesProps> {
+export default class ResolutionStepComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   render() {
-    const { step, gameFont } = this.props;
+    const { step } = this.props;
+    const { gameFont } = this.context;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ processedScenario }: ScenarioGuideContextType) => {
@@ -57,5 +61,3 @@ class ResolutionStepComponent extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(ResolutionStepComponent);

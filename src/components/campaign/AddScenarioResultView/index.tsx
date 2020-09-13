@@ -269,7 +269,6 @@ class AddScenarioResultView extends React.Component<Props, State> {
       showTextEditDialog,
       captureViewRef,
       allInvestigators,
-      fontScale,
     } = this.props;
     const {
       xp,
@@ -302,7 +301,6 @@ class AddScenarioResultView extends React.Component<Props, State> {
           { !!notes && (
             <CampaignLogSection
               componentId={componentId}
-              fontScale={fontScale}
               scenarioCount={scenarioResults.length}
               campaignNotes={notes}
               allInvestigators={allInvestigators}

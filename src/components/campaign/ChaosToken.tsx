@@ -5,11 +5,11 @@ import { ChaosTokenType } from '@app_constants';
 import ChaosTokenIcon from '@components/core/ChaosTokenIcon';
 import { iconSizeScale } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const CHAOS_TOKEN_BACKGROUND = require('../../../assets/chaos-token-background.jpg');
 
 interface OwnProps {
-  fontScale: number;
   iconKey?: ChaosTokenType;
   small?: boolean;
 }
@@ -17,8 +17,12 @@ interface OwnProps {
 type Props = OwnProps;
 
 export default class ChaosToken extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderIcon() {
-    const { iconKey, small, fontScale } = this.props;
+    const { iconKey, small } = this.props;
+    const { fontScale } = this.context;
     const size = small ? 25 : 50;
     const scale = ((fontScale - 1) / 4 + 1);
     if (iconKey) {

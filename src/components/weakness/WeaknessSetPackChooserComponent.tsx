@@ -11,7 +11,6 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 interface OwnProps {
   componentId: string;
   onSelectedPacksChanged: (packs: string[]) => void;
-  fontScale: number;
   compact?: boolean;
 }
 
@@ -82,7 +81,6 @@ class WeaknessSetPackChooserComponent extends React.Component<Props, State> {
       componentId,
       in_collection,
       compact,
-      fontScale,
     } = this.props;
     const {
       override,
@@ -92,7 +90,6 @@ class WeaknessSetPackChooserComponent extends React.Component<Props, State> {
       <PackListComponent
         componentId={componentId}
         packs={weaknessPacks}
-        fontScale={fontScale}
         checkState={{ ...in_collection, ...override }}
         setChecked={this._onPackCheck}
         baseQuery={BASIC_WEAKNESS_QUERY}

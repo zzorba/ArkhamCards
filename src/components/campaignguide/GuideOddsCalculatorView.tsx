@@ -42,7 +42,6 @@ class GuideOddsCalculatorView extends React.Component<Props> {
     const {
       campaign,
       chaosBag,
-      fontScale,
       cycleScenarios,
       scenarioByCode,
     } = this.props;
@@ -56,7 +55,6 @@ class GuideOddsCalculatorView extends React.Component<Props> {
           <OddsCalculatorComponent
             campaign={campaign}
             chaosBag={chaosBag}
-            fontScale={fontScale}
             cycleScenarios={cycleScenarios}
             scenarioByCode={scenarioByCode}
             allInvestigators={allInvestigators}

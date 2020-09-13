@@ -74,7 +74,6 @@ class CardSelectorComponent extends React.Component<Props> {
       cards,
       counts,
       header,
-      fontScale,
       toggleCard,
     } = this.props;
     const matchingCards = this.cards();
@@ -93,7 +92,6 @@ class CardSelectorComponent extends React.Component<Props> {
           return (
             <CardToggleRow
               key={code}
-              fontScale={fontScale}
               card={card}
               onPress={this._onCardPress}
               onChange={this._onChange}

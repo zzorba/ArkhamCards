@@ -109,7 +109,6 @@ class CampaignGuideView extends React.Component<Props> {
     const {
       campaignId,
       campaignData,
-      fontScale,
       componentId,
       updateCampaign,
       showTraumaDialog,
@@ -133,7 +132,6 @@ class CampaignGuideView extends React.Component<Props> {
             </View>
             <CampaignInvestigatorsComponent
               componentId={componentId}
-              fontScale={fontScale}
               deleteCampaign={this._deleteCampaign}
               updateCampaign={updateCampaign}
               campaignData={campaignData}
@@ -152,7 +150,6 @@ class CampaignGuideView extends React.Component<Props> {
               campaignId={campaignId}
               campaignData={campaignData}
               processedCampaign={processedCampaign}
-              fontScale={fontScale}
               componentId={componentId}
             />
           </ScrollView>
@@ -168,7 +165,6 @@ class CampaignGuideView extends React.Component<Props> {
               campaignGuide={campaignGuide}
               campaignLog={processedCampaign.campaignLog}
               componentId={componentId}
-              fontScale={fontScale}
             />
           </ScrollView>
         ),
@@ -179,7 +175,6 @@ class CampaignGuideView extends React.Component<Props> {
       <TabView
         tabs={tabs}
         onTabChange={this._onTabChange}
-        fontScale={fontScale}
       />
     );
   }

@@ -267,7 +267,6 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const {
       decks,
       investigators,
-      fontScale,
     } = this.props;
     const {
       selectedDeckId,
@@ -284,7 +283,6 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       <View>
         { !!selectedDeckId && (
           <NavButton
-            fontScale={fontScale}
             text={message}
             onPress={this._onPressInvestigator}
           />

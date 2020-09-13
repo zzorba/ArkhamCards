@@ -13,6 +13,7 @@ import space from '@styles/space';
 import typography from '@styles/typography';
 import { CardErrata } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface EncounterCardErrataProps extends CampaignGuideInputProps {
   encounterSets: string[];
@@ -21,6 +22,9 @@ export interface EncounterCardErrataProps extends CampaignGuideInputProps {
 type Props = EncounterCardErrataProps & CampaignGuideProps & DimensionsProps;
 
 class EncounterCardErrataView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -35,7 +39,7 @@ class EncounterCardErrataView extends React.Component<Props> {
   }
 
   _renderErrata = (errata: CardErrata, key: number, allCards: CardsMap) => {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     const cardsByName = groupBy(
       flatMap(errata.code, code => {
         const card = allCards[code];

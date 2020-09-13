@@ -176,7 +176,6 @@ class CardDetailView extends React.Component<Props, State> {
       showSpoilers,
       tabooSetId,
       width,
-      fontScale,
       id,
     } = this.props;
     return (
@@ -197,7 +196,6 @@ class CardDetailView extends React.Component<Props, State> {
             <ScrollView style={styles.wrapper}>
               <CardDetailComponent
                 width={width}
-                fontScale={fontScale}
                 componentId={componentId}
                 card={card}
                 showSpoilers={showSpoilers || this.state.showSpoilers}

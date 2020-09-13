@@ -136,11 +136,10 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderItem = ({ item }: SectionListRenderItemInfo<Card>) => {
-    const { hideDeckbuildingRules, fontScale } = this.props;
+    const { hideDeckbuildingRules } = this.props;
     return (
       <InvestigatorRow
         key={item.code}
-        fontScale={fontScale}
         investigator={item}
         onPress={this._onPress}
         button={this.deckbuildingDetails(item)}
@@ -274,7 +273,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
-    const { fontScale } = this.props;
+    const { fontScale } = this.context;
     const {
       showNonCollection,
     } = this.state;
@@ -301,7 +300,6 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           section.nonCollectionCount
         )}
         onPress={this._showNonCollectionCards}
-        fontScale={fontScale}
       />
     );
   };

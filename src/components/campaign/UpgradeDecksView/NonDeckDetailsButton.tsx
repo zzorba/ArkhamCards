@@ -11,7 +11,6 @@ import typography from '@styles/typography';
 
 interface Props {
   investigator: Card;
-  fontScale: number;
   saved: boolean;
   saveXp: (investigator: Card, xp: number) => void;
 }
@@ -44,14 +43,13 @@ export default class NonDeckDetailsButton extends React.Component<Props, State> 
   };
 
   render() {
-    const { investigator, fontScale, saved } = this.props;
+    const { investigator, saved } = this.props;
     const { xp } = this.state;
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <View>
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
         <BasicListRow>

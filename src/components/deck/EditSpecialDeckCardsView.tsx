@@ -11,7 +11,6 @@ import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeak
 import { CardDetailProps } from '@components/card/CardDetailView';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { NavigationProps } from '@components/nav/types';
@@ -40,7 +39,7 @@ interface ReduxProps {
   campaign?: Campaign;
 }
 
-type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps & DimensionsProps;
+type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps;
 
 interface State {
   slots: Slots;
@@ -295,7 +294,6 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   renderBasicWeaknessSection() {
     const {
       cards,
-      fontScale,
     } = this.props;
     const {
       slots,
@@ -321,7 +319,6 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
             card={card}
             count={slots[card.code]}
             onPress={this._cardPressed}
-            fontScale={fontScale}
           />
         )) }
         { this.renderDrawWeaknessButton() }
@@ -332,7 +329,6 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   renderStorySection() {
     const {
       cards,
-      fontScale,
     } = this.props;
     const {
       slots,
@@ -358,7 +354,6 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
             card={card}
             count={slots[card.code]}
             onPress={this._cardPressed}
-            fontScale={fontScale}
           />
         )) }
         <BasicButton
@@ -422,7 +417,7 @@ export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
   connect<ReduxProps, unknown, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
     mapStateToProps
   )(
-    withDimensions(EditSpecialDeckCardsView)
+    EditSpecialDeckCardsView
   )
 );
 

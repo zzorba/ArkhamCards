@@ -16,7 +16,6 @@ import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 interface OwnProps {
   componentId: string;
   investigator: Card;
-  fontScale: number;
   deckId: number;
   encounterCodes: string[];
   scenarioName?: string;
@@ -63,7 +62,6 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       componentId,
       scenarioName,
       investigator,
-      fontScale,
     } = this.props;
     const {
       storyCounts,
@@ -76,7 +74,6 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       <CardSectionHeader
         investigator={investigator}
         section={{ superTitle: scenarioName ? t`Story cards to add - ${scenarioName}` : t`Story cards to add` }}
-        fontScale={fontScale}
       />
     );
     const slots: Slots = {};
@@ -101,7 +98,6 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
     const {
       componentId,
       investigator,
-      fontScale,
     } = this.props;
     const {
       storyCounts,
@@ -114,7 +110,6 @@ class StoryCardSelectorComponent extends React.Component<Props, State> {
       <CardSectionHeader
         investigator={investigator}
         section={{ superTitle: t`Story Cards - Existing` }}
-        fontScale={fontScale}
       />
     );
     const slots: Slots = {};

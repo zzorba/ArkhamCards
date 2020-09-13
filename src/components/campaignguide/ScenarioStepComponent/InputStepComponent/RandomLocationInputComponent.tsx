@@ -15,7 +15,6 @@ import COLORS from '@styles/colors';
 
 interface Props {
   input: RandomLocationInput;
-  fontScale: number;
 }
 
 interface State {
@@ -77,7 +76,7 @@ export default class RandomLocationInputComponent extends React.Component<Props,
   };
 
   _renderCards = (cards: Card[], choices: number[]) => {
-    const { input, fontScale } = this.props;
+    const { input } = this.props;
     const selectedCards = flatMap(choices, idx => cards[idx] || []);
     if (!input.multiple) {
       return (
@@ -112,7 +111,6 @@ export default class RandomLocationInputComponent extends React.Component<Props,
             <CardSearchResult
               key={card.code}
               card={card}
-              fontScale={fontScale}
             />
           )) }
         </View>

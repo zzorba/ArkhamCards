@@ -4,7 +4,6 @@ import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
@@ -16,18 +15,22 @@ import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import typography from '@styles/typography';
 import space, { m, s } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
   campaignId: number;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
-  fontScale: number;
 }
 
-class CampaignLogComponent extends React.Component<Props & StylesProps> {
+export default class CampaignLogComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
-    const { campaignLog, campaignGuide, gameFont } = this.props;
+    const { campaignLog, campaignGuide } = this.props;
+    const { gameFont } = this.context;
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
@@ -153,7 +156,8 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
   };
 
   renderChaosBag() {
-    const { campaignLog, fontScale, gameFont } = this.props;
+    const { campaignLog } = this.props;
+    const { gameFont } = this.context;
     if (!keys(campaignLog.chaosBag).length) {
       return null;
     }
@@ -167,7 +171,6 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
         </View>
         <ChaosBagLine
           chaosBag={campaignLog.chaosBag}
-          fontScale={fontScale}
         />
         <BasicButton
           title={t`Draw chaos tokens`}
@@ -200,8 +203,6 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(CampaignLogComponent);
 
 const styles = StyleSheet.create({
   wrapper: {

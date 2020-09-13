@@ -11,7 +11,6 @@ import { ChaosTokenType } from '@app_constants';
 
 interface OwnProps {
   campaignId: number;
-  fontScale: number;
   id: string;
   iconKey: ChaosTokenType;
   sealed?: boolean;
@@ -67,7 +66,6 @@ class SealTokenButton extends React.Component<Props> {
       iconKey,
       sealed,
       canDisable,
-      fontScale,
     } = this.props;
     return (
       <TouchableHighlight
@@ -76,7 +74,7 @@ class SealTokenButton extends React.Component<Props> {
         underlayColor="transparent"
         delayPressIn={0}
       >
-        <ChaosToken iconKey={iconKey} fontScale={fontScale} small />
+        <ChaosToken iconKey={iconKey} small />
       </TouchableHighlight>
     );
   }

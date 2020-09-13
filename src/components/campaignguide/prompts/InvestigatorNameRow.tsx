@@ -5,50 +5,53 @@ import Card from '@data/Card';
 import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
-import withStyles, { StylesProps } from '@components/core/withStyles';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   investigator: Card;
   detail?: string;
 }
 
-function InvestigatorNameRow({
+export default function InvestigatorNameRow({
   investigator,
   detail,
-  gameFont,
-}: Props & StylesProps) {
-  const backgroundColor = COLORS.faction[investigator.factionCode()].background;
+}: Props) {
   return (
-    <View style={[
-      styles.investigatorRow,
-      space.paddingS,
-      space.paddingLeftM,
-      { backgroundColor },
-    ]}>
-      <View>
-        <Text style={[
-          typography.mediumGameFont,
-          { fontFamily: gameFont },
-          styles.investigatorText,
-        ]}>
-          { investigator.name }
-        </Text>
-      </View>
-      <View>
-        { !!detail && (
-          <Text style={[
-            typography.text,
-            styles.investigatorText,
+    <StyleContext.Consumer>
+      { ({ gameFont }) => {
+        const backgroundColor = COLORS.faction[investigator.factionCode()].background;
+        return (
+          <View style={[
+            styles.investigatorRow,
+            space.paddingS,
+            space.paddingLeftM,
+            { backgroundColor },
           ]}>
-            { detail }
-          </Text>
-        ) }
-      </View>
-    </View>
-  );
+            <View>
+              <Text style={[
+                typography.mediumGameFont,
+                { fontFamily: gameFont },
+                styles.investigatorText,
+              ]}>
+                { investigator.name }
+              </Text>
+            </View>
+            <View>
+              { !!detail && (
+                <Text style={[
+                  typography.text,
+                  styles.investigatorText,
+                ]}>
+                  { detail }
+                </Text>
+              ) }
+            </View>
+          </View>
+        );
+      }}
+    </StyleContext.Consumer>
+  )
 }
-
-export default withStyles(InvestigatorNameRow);
 
 const styles = StyleSheet.create({
   investigatorText: {

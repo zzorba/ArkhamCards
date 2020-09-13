@@ -21,8 +21,7 @@ export interface DrawSimulatorProps {
 }
 
 type Props = DrawSimulatorProps &
-  PlayerCardProps &
-  DimensionsProps;
+  PlayerCardProps;
 
 interface State {
   shuffledDeck: string[];
@@ -227,7 +226,6 @@ class DrawSimulatorView extends React.Component<Props, State> {
   };
 
   _renderCardItem = ({ item }: { item: Item }) => {
-    const { fontScale } = this.props;
     const card = this.props.cards[item.code];
     if (!card) {
       return null;
@@ -238,7 +236,6 @@ class DrawSimulatorView extends React.Component<Props, State> {
         id={item.key}
         card={card}
         onPressId={this._toggleSelection}
-        fontScale={fontScale}
         backgroundColor={item.selected ? COLORS.veryLightBackground : undefined}
       />
     );
@@ -270,9 +267,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
   }
 }
 
-export default withPlayerCards<DrawSimulatorProps>(
-  withDimensions(DrawSimulatorView)
-);
+export default withPlayerCards<DrawSimulatorProps>(DrawSimulatorView);
 
 const styles = StyleSheet.create({
   container: {

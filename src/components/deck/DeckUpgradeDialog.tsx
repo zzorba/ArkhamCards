@@ -13,7 +13,6 @@ import { t } from 'ttag';
 
 import DeckUpgradeComponent from './DeckUpgradeComponent';
 import { Campaign, Deck, Slots } from '@actions/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
@@ -47,7 +46,7 @@ interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
 }
 
-type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps & TraumaProps & DimensionsProps;
+type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps & TraumaProps;
 
 interface State {
   storyEncounterCodes: string[];
@@ -175,7 +174,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       componentId,
       campaign,
       showTraumaDialog,
-      fontScale,
     } = this.props;
     const {
       storyEncounterCodes,
@@ -192,14 +190,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
             investigator={investigator}
             investigatorData={this.investigatorData()}
             showTraumaDialog={showTraumaDialog}
-            fontScale={fontScale}
             sectionHeader
           />
         ) }
         <StoryCardSelectorComponent
           componentId={componentId}
           investigator={investigator}
-          fontScale={fontScale}
           deckId={deck.id}
           updateStoryCounts={this._onStoryCountsChange}
           encounterCodes={storyEncounterCodes}
@@ -216,7 +212,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       campaign,
       saveDeckChanges,
       saveDeckUpgrade,
-      fontScale,
     } = this.props;
     const {
       storyCounts,
@@ -243,7 +238,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           deck={deck}
           investigator={investigator}
           startingXp={xp}
-          fontScale={fontScale}
           storyCounts={storyCounts}
           ignoreStoryCounts={{}}
           upgradeCompleted={this._deckUpgradeComplete}
@@ -278,7 +272,7 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDe
 )(
   withPlayerCards<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps>(
     withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
-      withDimensions(DeckUpgradeDialog)
+      DeckUpgradeDialog
     )
   )
 );

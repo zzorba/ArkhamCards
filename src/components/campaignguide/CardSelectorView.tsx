@@ -73,7 +73,7 @@ class CardSelectorView extends React.Component<Props, State> {
   };
 
   _render = (cards: Card[], loading: boolean) => {
-    const { fontScale, uniqueName } = this.props;
+    const { uniqueName } = this.props;
     const { selection, searchTerm } = this.state;
     if (loading) {
       return (
@@ -98,7 +98,6 @@ class CardSelectorView extends React.Component<Props, State> {
       card => (
         <CardToggleRow
           key={card.code}
-          fontScale={fontScale}
           card={card}
           onChange={this._onChange}
           count={selection[card.code] ? 1 : 0}
@@ -131,7 +130,7 @@ class CardSelectorView extends React.Component<Props, State> {
   }
 
   renderStoryCards(searchTerm: string) {
-    const { fontScale, query } = this.props;
+    const { query } = this.props;
     const { storyToggle } = this.state;
     if (!storyToggle) {
       return (
@@ -144,7 +143,6 @@ class CardSelectorView extends React.Component<Props, State> {
     return (
       <>
         <CardSectionHeader
-          fontScale={fontScale}
           section={{ title: t`Story assets` }}
         />
         <QueryProvider<QueryProps, Brackets>

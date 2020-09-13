@@ -209,7 +209,6 @@ function bondedSections(
 
 interface Props {
   componentId: string;
-  fontScale: number;
   deck: Deck;
   parallelInvestigators: Card[];
   hideCampaign?: boolean;
@@ -376,14 +375,12 @@ export default class DeckViewTab extends React.Component<Props, State> {
       parsedDeck: {
         investigator,
       },
-      fontScale,
     } = this.props;
     return (
       <CardSectionHeader
         key={section.id}
         section={section as CardSectionHeaderData}
         investigator={investigator}
-        fontScale={fontScale}
       />
     );
   }
@@ -398,7 +395,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
         },
       },
       showCardUpgradeDialog,
-      fontScale,
     } = this.props;
     const card = this.props.cards[item.id];
     if (!card) {
@@ -418,7 +414,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
         onUpgrade={upgradeEnabled ? showCardUpgradeDialog : undefined}
         onPressId={this._showSwipeCard}
         count={count}
-        fontScale={fontScale}
       />
     );
   };
@@ -429,7 +424,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
         investigator,
       },
       problem,
-      fontScale,
     } = this.props;
 
     if (!problem) {
@@ -444,7 +438,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
           problem={problem}
           color={isSurvivor ? COLORS.black : COLORS.white}
           fontSize={14}
-          fontScale={fontScale}
         />
       </View>
     );
@@ -604,7 +597,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
       parsedDeck: {
         slots,
       },
-      fontScale,
       cards,
     } = this.props;
     const investigator = (
@@ -624,7 +616,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
             <View style={styles.header}>
               <View style={styles.headerTextColumn}>
                 <InvestigatorStatLine
-                  fontScale={fontScale}
                   investigator={investigator}
                 />
                 { !!investigator.text && (
@@ -642,18 +633,16 @@ export default class DeckViewTab extends React.Component<Props, State> {
                     componentId={componentId}
                     yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
                     border
-                    fontScale={fontScale}
                   />
                 </View>
                 <HealthSanityLine
                   investigator={investigator}
-                  fontScale={fontScale}
                 />
               </View>
             </View>
           </View>
           <View style={styles.headerLeftMargin}>
-            <CardTabooTextBlock card={investigator} fontScale={fontScale} />
+            <CardTabooTextBlock card={investigator} />
           </View>
         </TouchableOpacity>
       </View>
@@ -699,7 +688,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
       isPrivate,
       showTraumaDialog,
       xpAdjustment,
-      fontScale,
       showDeckUpgrade,
       showDeckHistory,
       editable,
@@ -713,7 +701,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
     return (
       <DeckProgressComponent
         componentId={componentId}
-        fontScale={fontScale}
         cards={cards}
         deck={deck}
         parsedDeck={parsedDeck}
