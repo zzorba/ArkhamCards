@@ -146,6 +146,7 @@ export default class App {
         },
         ios: {
           backgroundColor: COLORS.background,
+          componentBackgroundColor: COLORS.background,
         },
       }),
       navigationBar: {
