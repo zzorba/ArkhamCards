@@ -213,7 +213,6 @@ class ScenarioView extends React.Component<Props> {
           ) }
           <StepsComponent
             componentId={componentId}
-            fontScale={fontScale}
             width={width}
             steps={processedScenario.steps}
             switchCampaignScenario={this._switchCampaignScenario}
