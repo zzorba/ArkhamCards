@@ -37,7 +37,7 @@ class TuneButton extends React.Component<Props> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
-  static WIDTH = SIZE + 4;
+  static WIDTH = SIZE + (Platform.OS === 'android' ? 16 : 0);
   static HEIGHT = SIZE;
 
   _onPress = () => {
