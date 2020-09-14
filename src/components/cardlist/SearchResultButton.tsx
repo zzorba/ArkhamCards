@@ -4,7 +4,6 @@ import { RectButton } from 'react-native-gesture-handler';
 
 import AppIcon from '@icons/AppIcon';
 import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {

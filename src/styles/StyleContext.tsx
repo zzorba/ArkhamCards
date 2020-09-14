@@ -12,7 +12,7 @@ export const DEFAULLT_STYLE_CONTEXT = {
   darkMode: false,
   colors: LIGHT_THEME,
   gameFont: 'Teutonic',
-  fontScale: 1.0,
+  fontScale: 1,
 };
 
 export const StyleContext = React.createContext<StyleContextType>(DEFAULLT_STYLE_CONTEXT);

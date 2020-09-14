@@ -28,8 +28,8 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
     } = this.props;
     return (
       <StyleContext.Consumer>
-        { ({ fontScale }) => (
-          <View style={[styles.border, { height: rowNonCollectionHeight(fontScale) }]}>
+        { ({ fontScale, colors }) => (
+          <View style={[styles.border, { borderColor: colors.divider, height: rowNonCollectionHeight(fontScale) }]}>
             <SearchResultButton
               icon="expand"
               title={title}
@@ -45,6 +45,5 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
 const styles = StyleSheet.create({
   border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });
