@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
   buttonStyle: {
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
-    shadowColor: COLORS.shadow,
-    shadowOpacity: 0.3,
+    shadowColor: '#000000',
+    shadowOpacity: 0.25,
   },
   row: {
     flexDirection: 'row',
