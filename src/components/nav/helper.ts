@@ -50,7 +50,7 @@ export function getDeckOptions(
       },
     },
     layout: {
-      backgroundColor: COLORS.background,
+      backgroundColor: COLORS.L30,
     },
     bottomTabs: {
       visible: false,

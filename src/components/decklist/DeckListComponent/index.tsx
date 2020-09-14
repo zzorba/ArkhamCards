@@ -17,6 +17,7 @@ import { fetchPublicDeck } from '@components/deck/actions';
 import { getAllDecks, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space, { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   deckIds: number[];
@@ -26,6 +27,7 @@ interface OwnProps {
   deckToCampaign?: { [id: number]: Campaign };
   customHeader?: ReactNode;
   customFooter?: ReactNode;
+  searchControls?: ReactNode;
   isEmpty?: boolean;
 }
 
@@ -45,7 +47,14 @@ interface State {
   searchTerm: string;
 }
 
+function searchOptionsHeight(fontScale: number) {
+  return 20 + (fontScale * 20 + 8) + 12;
+}
+
 class DeckListComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -77,6 +86,7 @@ class DeckListComponent extends React.Component<Props, State> {
       }
     });
   }
+
   _renderHeader = () => {
     const {
       customHeader,
@@ -135,13 +145,19 @@ class DeckListComponent extends React.Component<Props, State> {
       decks,
       deckIds,
       deckToCampaign,
+      searchControls,
     } = this.props;
+    const { fontScale } = this.context;
     const { searchTerm } = this.state;
     return (
       <CollapsibleSearchBox
         searchTerm={searchTerm}
         onSearchChange={this._searchChanged}
         prompt={t`Search decks`}
+        advancedOptions={searchControls ? {
+          controls: searchControls,
+          height: searchOptionsHeight(fontScale),
+        } : undefined}
       >
         { onScroll => (
           <DeckList

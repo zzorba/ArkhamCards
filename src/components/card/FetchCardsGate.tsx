@@ -19,6 +19,7 @@ import { localizedName, getSystemLanguage } from '@lib/i18n';
 import typography from '@styles/typography';
 import { l, s } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -152,38 +153,44 @@ class FetchCardsGate extends React.Component<Props> {
       error,
       children,
     } = this.props;
-    if (error) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <View style={styles.errorBlock}>
-            <Text style={[typography.text, styles.error]}>
-              { t`Error loading cards, make sure your network is working.` }
-            </Text>
-            <Text style={[typography.text, styles.error]}>
-              { error }
-            </Text>
-          </View>
-          <BasicButton onPress={this._doFetch} title={t`Try Again`} />
-        </View>
-      );
-    }
-    if (loading || this.props.fetchNeeded) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <Text style={typography.text}>
-            { t`Loading latest cards...` }
-          </Text>
-          <ActivityIndicator
-            style={styles.spinner}
-            size="small"
-            animating
-            color={COLORS.lightText}
-          />
-        </View>
-      );
-    }
+    return (
+      <StyleContext.Consumer>
+        { ({ colors }) => {
+          if (error) {
+            return (
+              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background}]}>
+                <View style={styles.errorBlock}>
+                  <Text style={[typography.text, styles.error]}>
+                    { t`Error loading cards, make sure your network is working.` }
+                  </Text>
+                  <Text style={[typography.text, styles.error]}>
+                    { error }
+                  </Text>
+                </View>
+                <BasicButton onPress={this._doFetch} title={t`Try Again`} />
+              </View>
+            );
+          }
+          if (loading || this.props.fetchNeeded) {
+            return (
+              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background}]}>
+                <Text style={typography.text}>
+                  { t`Loading latest cards...` }
+                </Text>
+                <ActivityIndicator
+                  style={styles.spinner}
+                  size="small"
+                  animating
+                  color={colors.lightText}
+                />
+              </View>
+            );
+          }
 
-    return children;
+          return children;
+        } }
+      </StyleContext.Consumer>
+    );
   }
 }
 

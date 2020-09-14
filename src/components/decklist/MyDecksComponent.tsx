@@ -157,17 +157,13 @@ class MyDecksComponent extends React.Component<Props> {
   }
 
   renderHeader() {
-    const {
-      customHeader,
-    } = this.props;
     const error = this.renderError();
-    if (!customHeader && !error) {
+    if (!error) {
       return null;
     }
     return (
       <View style={styles.stack}>
         { error }
-        { !!customHeader && customHeader }
       </View>
     );
   }
@@ -184,6 +180,7 @@ class MyDecksComponent extends React.Component<Props> {
       onlyDeckIds,
       deckToCampaign,
       signedIn,
+      customHeader,
     } = this.props;
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterDeckIdsSet = new Set(filterDeckIds);
@@ -196,6 +193,7 @@ class MyDecksComponent extends React.Component<Props> {
     });
     return (
       <DeckListComponent
+        searchControls={customHeader}
         customHeader={this.renderHeader()}
         customFooter={this.renderFooter()}
         deckIds={deckIds}

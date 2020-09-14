@@ -27,6 +27,7 @@ import { getTabooSet, getPacksInCollection, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 
 interface OwnProps {
   componentId: string;
@@ -269,7 +270,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
-    return <BasicSectionHeader title={section.title} />;
+    return <CardSectionHeader section={{ title: section.title }} />;
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {

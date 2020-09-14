@@ -944,6 +944,7 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     margin: m,
+    paddingTop: SEARCH_BAR_HEIGHT,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',

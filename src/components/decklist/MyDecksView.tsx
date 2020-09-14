@@ -15,7 +15,8 @@ import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
-import { m, xs } from '@styles/space';
+import { s, xs } from '@styles/space';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface OwnProps {
   componentId: string;
@@ -116,10 +117,9 @@ class MyDecksView extends React.Component<Props, State> {
         <Text style={[typography.small, styles.searchOption]}>
           { t`Hide ArkhamDB Decks` }
         </Text>
-        <Switch
+        <ArkhamSwitch
           value={localDecksOnly}
           onValueChange={this._toggleLocalDecksOnly}
-          trackColor={COLORS.switchTrackColor}
         />
       </View>
     );
@@ -171,12 +171,9 @@ export default withFetchCardsGate(
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingLeft: m,
-    paddingRight: m,
+    flex: 1,
   },
   searchOption: {
     marginRight: 2,
