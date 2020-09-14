@@ -12,6 +12,7 @@ import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListCo
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;
@@ -48,6 +49,8 @@ export default class NewDeckView extends React.Component<Props, State> {
       },
     };
   }
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   _navEventListener?: EventSubscription;
   constructor(props: Props) {
@@ -110,11 +113,12 @@ export default class NewDeckView extends React.Component<Props, State> {
       filterInvestigators,
       onlyInvestigators,
     } = this.props;
+    const { colors } = this.context;
     const {
       selectedSort,
     } = this.state;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
         <InvestigatorsListComponent
           componentId={componentId}
           filterInvestigators={filterInvestigators}
@@ -130,6 +134,5 @@ export default class NewDeckView extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

@@ -89,7 +89,7 @@ export default class SearchBox extends React.Component<Props> {
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={colors.D20}
-        leftIcon={<View style={space.marginRightXs}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
+        leftIcon={<View style={[space.marginBottomS, space.marginRightXs]}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
         rightIcon={this.renderToggleButton()}
         rightIconContainerStyle={{
           position: 'absolute',

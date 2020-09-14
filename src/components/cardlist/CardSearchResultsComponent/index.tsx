@@ -16,7 +16,7 @@ import {
 } from '@actions/types';
 import QueryProvider from '@components/data/QueryProvider';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import CollapsibleSearchBox, { searchOptionsHeight } from '@components/core/CollapsibleSearchBox';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
 import Switch from '@components/core/Switch';
 import FilterBuilder, { FilterState } from '@lib/filters';
@@ -63,6 +63,10 @@ interface State {
   searchTerm?: string;
   searchCode?: number;
   searchQuery?: RegExp;
+}
+
+function searchOptionsHeight(fontScale: number) {
+  return 20 + (fontScale * 20 + 8) * 3 + 12;
 }
 
 type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
@@ -200,12 +204,12 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchFlavor,
       searchBack,
     } = this.state;
-    const { colors } = this.context;
+    const { colors, fontScale } = this.context;
     return (
-      <View style={styles.textSearchOptions}>
-        <View style={[styles.column, { alignItems: 'center' }]}>
-          <Text style={[typography.cardName, { color: colors.L10 }]}>
-            {t`Search in:` }
+      <>
+        <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
+          <Text style={[typography.cardName, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+            { t`Search in:` }
           </Text>
         </View>
         <View style={styles.column}>
@@ -237,7 +241,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             />
           </View>
         </View>
-      </View>
+      </>
     );
   }
 
@@ -392,13 +396,15 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       mythosMode,
       filters,
     } = this.props;
-    const {
-      searchTerm,
-    } = this.state;
+    const { fontScale } = this.context;
+    const { searchTerm } = this.state;
     return (
       <CollapsibleSearchBox
         prompt={t`Search for a card`}
-        advancedOptions={this.renderSearchOptions()}
+        advancedOptions={{
+          controls: this.renderSearchOptions(),
+          height: searchOptionsHeight(fontScale),
+        }}
         searchTerm={searchTerm || ''}
         onSearchChange={this._searchUpdated}
       >
@@ -469,14 +475,6 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     minWidth: '60%',
-  },
-  textSearchOptions: {
-    paddingLeft: xs,
-    paddingRight: m + s,
-    paddingBottom: xs,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between'
   },
   column: {
     flexDirection: 'column',

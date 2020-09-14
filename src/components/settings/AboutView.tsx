@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import CardTextComponent from '@components/card/CardTextComponent';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 

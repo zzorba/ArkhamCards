@@ -17,7 +17,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import typography from '@styles/typography';
 import { s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   deck: Deck;
@@ -34,6 +34,9 @@ interface Props {
 }
 
 export default class DeckListRow extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       deck,
@@ -89,6 +92,7 @@ export default class DeckListRow extends React.Component<Props> {
       cards,
       details,
     } = this.props;
+    const { colors } = this.context;
     if (details) {
       return details;
     }
@@ -130,7 +134,7 @@ export default class DeckListRow extends React.Component<Props> {
         { !!deck.problem && (
           <DeckProblemRow
             problem={{ reason: deck.problem }}
-            color={COLORS.darkText}
+            color={colors.darkText}
           />
         ) }
         { !!dateStr && (
@@ -150,13 +154,14 @@ export default class DeckListRow extends React.Component<Props> {
       compact,
       subDetails,
     } = this.props;
+    const { colors } = this.context;
     if (!deck || !investigator) {
       return (
         <View style={styles.row}>
           <ActivityIndicator
             style={styles.loading}
             size="large"
-            color={COLORS.lightText}
+            color={colors.lightText}
           />
         </View>
       );
@@ -189,13 +194,14 @@ export default class DeckListRow extends React.Component<Props> {
       investigator,
       viewDeckButton,
     } = this.props;
+    const { colors } = this.context;
     if (!deck || !investigator) {
       return (
         <View style={styles.row}>
           <ActivityIndicator
             style={styles.loading}
             size="large"
-            color={COLORS.lightText}
+            color={colors.lightText}
           />
         </View>
       );

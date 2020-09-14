@@ -15,7 +15,7 @@ import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
 import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface PackCycle extends SectionListData<Pack> {
   title: string;
@@ -39,6 +39,9 @@ interface Props {
 }
 
 export default class PackListComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _keyExtractor = (item: Pack) => {
     return item.code;
   };
@@ -113,6 +116,7 @@ export default class PackListComponent extends React.Component<Props> {
       renderFooter,
       noFlatList,
     } = this.props;
+    const { colors } = this.context;
     if (!packs.length) {
       return (
         <View>
@@ -140,7 +144,7 @@ export default class PackListComponent extends React.Component<Props> {
       });
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: colors.background}]}>
         <SectionList
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
@@ -159,6 +163,5 @@ export default class PackListComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

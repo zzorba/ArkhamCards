@@ -10,7 +10,6 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import DeckListRow from '@components/decklist/DeckListRow';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
