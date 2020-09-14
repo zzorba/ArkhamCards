@@ -18,8 +18,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
   context!: StyleContextType;
 
   static options() {
-    static options() {
-      return {
+    return {
       topBar: {
         backButton: {
           title: t`Back`,
