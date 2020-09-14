@@ -16,7 +16,6 @@ import { msgid, ngettext, t } from 'ttag';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import BasicSectionHeader from '@components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
@@ -28,6 +27,8 @@ import typography from '@styles/typography';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CardSectionHeader from '@components/core/CardSectionHeader';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import SearchResultButton from '../SearchResultButton';
 
 interface OwnProps {
   componentId: string;
@@ -61,6 +62,9 @@ interface Section extends SectionListData<Card> {
 }
 
 class InvestigatorsListComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {
@@ -284,12 +288,11 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={{ height: rowNonCollectionHeight(fontScale) }}>
-          <BasicButton
-            title={t`Edit Collection`}
-            onPress={this._editCollection}
-          />
-        </View>
+        <SearchResultButton
+          icon="edit"
+          title={t`Edit Collection`}
+          onPress={this._editCollection}
+        />
       );
     }
     return (
