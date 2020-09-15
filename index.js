@@ -3,6 +3,7 @@ import { AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 import { Navigation } from 'react-native-navigation';
+import Crashes, { ErrorReport } from 'appcenter-crashes';
 import 'reflect-metadata';
 
 import DatabaseProvider from './src/data/DatabaseProvider';
@@ -29,6 +30,13 @@ function MyProvider({ store: { redux, persistor }, children}) {
 }
 
 const { store, persistor } = configureStore({});
+
+function shouldProcess() {
+  return !__DEV__;
+}
+Crashes.setListener({
+  shouldProcess,
+});
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 let app = null;
