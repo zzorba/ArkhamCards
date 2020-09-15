@@ -25,20 +25,21 @@ import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { CardFaqProps } from '@components/card/CardFaqView';
 import { CardTabooProps } from '@components/card/CardTabooView';
-import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
+import { InvestigatorCardsProps } from '@components/cardlist/InvestigatorCardsView';
 import Button from '@components/core/Button';
 import BasicButton from '@components/core/BasicButton';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 
-import PlayerCardImage from './PlayerCardImage';
+import PlayerCardImage from '../PlayerCardImage';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardDetailHeader from './CardDetailHeader';
+import CardFooterInfo from './CardFooterInfo';
 
-const BLURRED_ACT = require('../../../../assets/blur-act.jpeg');
-const BLURRED_AGENDA = require('../../../../assets/blur-agenda.jpeg');
-const PLAYER_BACK = require('../../../../assets/player-back.png');
-const ENCOUNTER_BACK = require('../../../../assets/encounter-back.png');
+const BLURRED_ACT = require('../../../../../assets/blur-act.jpeg');
+const BLURRED_AGENDA = require('../../../../../assets/blur-agenda.jpeg');
+const PLAYER_BACK = require('../../../../../assets/player-back.png');
+const ENCOUNTER_BACK = require('../../../../../assets/encounter-back.png');
 const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color={COLORS.darkText} />
 );
@@ -473,57 +474,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
 
   renderCardFooter(card: Card) {
     const { componentId } = this.props;
-    const { colors, fontScale } = this.context;
     return (
       <React.Fragment>
         <View style={[styles.column, styles.flex]}>
-          { !!card.illustrator && (
-            <Text style={[typography.cardText, styles.illustratorText]}>
-              <AppIcon name="paintbrush" size={16 * fontScale} color={colors.darkText} />
-              { ` ${card.illustrator}` }
-            </Text>
-          ) }
-          { !!card.pack_name &&
-            <View style={styles.setRow}>
-              { !!card.encounter_name && !!card.encounter_code ? (
-                <>
-                  <Text style={typography.cardText}>
-                    <EncounterIcon
-                      encounter_code={card.encounter_code}
-                      size={16 * fontScale}
-                      color={colors.darkText}
-                    />
-                    { ` ${card.encounter_name} #${card.encounter_position}. ${card.quantity && card.quantity > 1 ?
-                      ngettext(
-                        msgid`\n${card.quantity} copy.`,
-                        `\n${card.quantity} copies.`,
-                        card.quantity
-                      ) : ''
-                    }` }
-                  </Text>
-                  { card.encounter_name !== card.cycle_name && (
-                    <Text style={typography.cardText}>
-                      <EncounterIcon
-                        encounter_code={card.cycle_code || card.pack_code}
-                        size={16 * fontScale}
-                        color={colors.darkText}
-                      />
-                      { ` ${card.cycle_name} #${(card.position || 0) % 1000}.` }
-                    </Text>
-                  ) }
-                </>
-              ) : (
-                <Text style={typography.cardText}>
-                  <EncounterIcon
-                    encounter_code={card.cycle_code || card.pack_code}
-                    size={16 * fontScale}
-                    color={colors.darkText}
-                  />
-                  { ` ${card.pack_name} #${(card.position || 0) % 1000}.` }
-                </Text>
-              ) }
-            </View>
-          }
+          <CardFooterInfo card={card} />
         </View>
         { !!componentId && (
           <View style={styles.twoColumn}>
@@ -760,6 +714,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    shadowColor: '#000000',
+    shadowOpacity: 0.25,
   },
   gameTextBlock: {
     borderLeftWidth: 4,

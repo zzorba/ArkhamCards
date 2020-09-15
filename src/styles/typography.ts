@@ -37,6 +37,18 @@ export default StyleSheet.create({
     lineHeight: 18 * sizeScale,
     color: COLORS.lightText,
   },
+  cardNumber: {
+    fontFamily: 'Alegreya-Regular',
+    fontSize: 14 * sizeScale,
+    lineHeight: 14 * sizeScale,
+    color: COLORS.darkText,
+  },
+  cardSmall: {
+    fontFamily: 'Alegreya-Regular',
+    fontSize: 10 * sizeScale,
+    lineHeight: 14 * sizeScale,
+    color: COLORS.darkText,
+  },
   cardButton: {
     fontFamily: 'Alegreya-Regular',
     fontSize: 18 * sizeScale,
