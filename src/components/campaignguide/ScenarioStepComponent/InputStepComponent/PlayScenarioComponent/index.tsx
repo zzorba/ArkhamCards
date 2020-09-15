@@ -49,7 +49,6 @@ export default class PlayScenarioComponent extends React.Component<Props> {
   };
 
 
-
   _showScenarioFaq = () => {
     const { componentId, campaignId } = this.props;
     Navigation.push<ScenarioFaqProps>(componentId, {

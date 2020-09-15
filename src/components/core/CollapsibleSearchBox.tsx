@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   slider: {
     width: '100%',

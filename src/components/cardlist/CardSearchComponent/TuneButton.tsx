@@ -14,7 +14,6 @@ import AppIcon from '@icons/AppIcon';
 import { CardFilterProps } from '@components/filter/CardFilterView';
 import FilterBuilder, { CardFilterData } from '@lib/filters';
 import { AppState, getFilterState, getCardFilterData } from '@reducers';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const SIZE = 36;

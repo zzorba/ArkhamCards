@@ -33,5 +33,5 @@ export function showInvestigatorSortDialog(
     (index: number) => {
       sortChanged(sorts[index]);
     }
-  )
+  );
 }

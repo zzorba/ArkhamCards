@@ -36,7 +36,7 @@ const icons: {
   settings: [30, COLORS.button, AppIcon],
   add: [28, COLORS.button],
   deck: [28, COLORS.button, AppIcon],
-  faq: [28, COLORS.button, AppIcon],
+  wild: [28, COLORS.button, ArkhamIcon],
   flip_card: [28, COLORS.button, AppIcon],
   book: [28, COLORS.button, AppIcon],
   share: [28, COLORS.button, AppIcon],

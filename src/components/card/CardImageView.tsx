@@ -6,7 +6,6 @@ import {
 import FastImage from 'react-native-fast-image';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
-import { t } from 'ttag';
 
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -155,7 +154,7 @@ class CardImageView extends React.Component<Props, State> {
     this.setState({
       flipped: !flipped,
     });
-  };
+  }
 
   render() {
     const { id, width, height, componentId } = this.props;

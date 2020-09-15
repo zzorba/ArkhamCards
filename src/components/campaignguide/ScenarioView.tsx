@@ -235,10 +235,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.background,
   },
-  wrapper: {
-    flex: 1,
-    backgroundColor: COLORS.background,
-  },
   keyboardView: {
     flex: 1,
     flexDirection: 'column',

@@ -19,7 +19,7 @@ export default class ArkhamSwitch extends React.Component<Props> {
   render() {
     const { value } = this.props;
     const { colors } = this.context;
-    return  (
+    return (
       <TouchableOpacity onPress={this._onPress}>
         <View style={styles.icon}>
           <AppIcon size={28} name="check-circle" color={colors.L10} />
@@ -30,7 +30,7 @@ export default class ArkhamSwitch extends React.Component<Props> {
           )}
         </View>
       </TouchableOpacity>
-    )
+    );
   }
 }
 

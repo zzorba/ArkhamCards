@@ -10,7 +10,6 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import SliderChooser from './SliderChooser';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import { xs } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 class CardLocationFilterView extends React.Component<FilterProps> {
@@ -44,7 +43,7 @@ class CardLocationFilterView extends React.Component<FilterProps> {
     } = this.props;
     const { colors } = this.context;
     return (
-      <ScrollView contentContainerStyle={{ backgroundColor: colors.background}}>
+      <ScrollView contentContainerStyle={{ backgroundColor: colors.background }}>
         <SliderChooser
           label={t`Shroud`}
           width={width}

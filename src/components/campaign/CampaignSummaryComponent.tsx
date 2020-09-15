@@ -64,7 +64,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     }
     return (
       <View style={space.marginTopXs}>
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+        <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
           { t`Not yet started` }
         </Text>
       </View>

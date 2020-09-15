@@ -1,7 +1,6 @@
 import React from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
@@ -92,7 +91,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     showScenarioDialog(
       this.possibleScenarios(),
       this._scenarioChanged
-    )
+    );
   };
 
   encounterCode(currentScenario?: Scenario) {

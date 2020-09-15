@@ -50,7 +50,7 @@ export default function InvestigatorNameRow({
         );
       }}
     </StyleContext.Consumer>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

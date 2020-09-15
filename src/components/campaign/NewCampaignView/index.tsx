@@ -527,7 +527,6 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBag() {
-    const { fontScale } = this.context;
     const { guided } = this.state;
     if (guided) {
       return null;

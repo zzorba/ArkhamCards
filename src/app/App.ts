@@ -1,7 +1,7 @@
 import Crashes from 'appcenter-crashes';
 import { forEach } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
-import { TouchableOpacity, Platform, Linking, LogBox, Alert } from 'react-native';
+import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
@@ -11,7 +11,6 @@ import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
 import { getLangPreference, AppState } from '@reducers';
-import MythosButton from '@components/cardlist/CardSearchComponent/MythosButton';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -191,8 +190,8 @@ export default class App {
               passProps: {
                 startApp: () => {
                   this.startApp(lang);
-                }
-              }
+                },
+              },
             },
           }],
         },

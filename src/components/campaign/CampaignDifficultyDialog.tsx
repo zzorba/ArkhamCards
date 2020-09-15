@@ -13,7 +13,7 @@ export function showCampaignDifficultyDialog(
     t`Selected Difficulty`,
     map(DIFFICULTIES, difficultyString),
     (index: number) => {
-      sortChanged(DIFFICULTIES[index])
+      sortChanged(DIFFICULTIES[index]);
     }
   );
 }

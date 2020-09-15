@@ -120,7 +120,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               { value }
             </Text>
           ) }
-        { !disabled && this.renderWidget() }
+          { !disabled && this.renderWidget() }
         </View>
       </View>
     );

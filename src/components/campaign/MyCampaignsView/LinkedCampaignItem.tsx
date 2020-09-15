@@ -7,7 +7,6 @@ import {
 import { connect } from 'react-redux';
 
 import { Campaign, CUSTOM } from '@actions/types';
-import { CardsMap } from '@data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { getCampaign, AppState } from '@reducers';

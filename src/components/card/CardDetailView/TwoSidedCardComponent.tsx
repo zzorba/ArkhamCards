@@ -11,13 +11,12 @@ import DeviceInfo from 'react-native-device-info';
 import { msgid, ngettext, t, jt } from 'ttag';
 
 import {
-  CORE_FACTION_CODES,
   RANDOM_BASIC_WEAKNESS,
 } from '@app_constants';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
 import typography from '@styles/typography';
-import space, { isBig, xs, s } from '@styles/space';
+import { isBig, xs, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
@@ -29,12 +28,12 @@ import { CardTabooProps } from '@components/card/CardTabooView';
 import { InvestigatorCardsProps } from '../../cardlist/InvestigatorCardsView';
 import Button from '@components/core/Button';
 import BasicButton from '@components/core/BasicButton';
-import CardCostIcon from '@components/core/CardCostIcon';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 
 import PlayerCardImage from './PlayerCardImage';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardDetailHeader from './CardDetailHeader';
 
 const BLURRED_ACT = require('../../../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../../../assets/blur-agenda.jpeg');
@@ -43,7 +42,6 @@ const ENCOUNTER_BACK = require('../../../../assets/encounter-back.png');
 const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color={COLORS.darkText} />
 );
-const ICON_SIZE = isBig ? 44 : 28;
 const SKILL_ICON_SIZE = isBig ? 26 : 16;
 
 const SKILL_FIELDS = [
@@ -274,7 +272,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     );
   }
 
-
   renderPlaydata(card: Card) {
     if (card.type_code === 'scenario') {
       return null;
@@ -331,135 +328,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       );
     }
     return null;
-  }
-
-  renderFactionIcon(card: Card) {
-    const color = '#FFF';
-    if (card.spoiler) {
-      const encounter_code = card.encounter_code ||
-        (card.linked_card && card.linked_card.encounter_code);
-      return (
-        <View style={styles.factionIcon}>
-          { !!encounter_code && (
-            <EncounterIcon
-              encounter_code={encounter_code}
-              size={ICON_SIZE}
-              color={color}
-            />
-          ) }
-        </View>
-      );
-    }
-    if (card.subtype_code &&
-      (card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness')
-    ) {
-      return (
-        <View style={styles.factionIcon}>
-          <ArkhamIcon
-            name="weakness"
-            size={ICON_SIZE}
-            color={color}
-          />
-        </View>
-      );
-    }
-
-    if (card.type_code !== 'scenario' && card.type_code !== 'location' &&
-      card.type_code !== 'act' && card.type_code !== 'agenda') {
-      if (card.faction2_code) {
-        return (
-          <React.Fragment>
-            <View style={styles.factionIcon}>
-              { !!card.faction_code &&
-                (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) && (
-                <ArkhamIcon
-                  name={card.faction_code}
-                  size={ICON_SIZE + 4}
-                  color="#FFF"
-                />
-              ) }
-            </View>
-            <View style={styles.factionIcon}>
-              { !!card.faction2_code &&
-                (CORE_FACTION_CODES.indexOf(card.faction2_code) !== -1) && (
-                <ArkhamIcon
-                  name={card.faction2_code}
-                  size={ICON_SIZE + 4}
-                  color="#FFF"
-                />
-              ) }
-            </View>
-          </React.Fragment>
-        );
-      }
-      return (
-        <View style={styles.factionIcon}>
-          { (!!card.faction_code && CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-            <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color={color} /> }
-        </View>
-      );
-    }
-    return null;
-  }
-
-  renderTitleContent(
-    card: Card,
-    name: string,
-    subname?: string,
-    factionColor?: string
-  ) {
-    const { colors } = this.context;
-    return (
-      <React.Fragment>
-        <View style={styles.titleRow}>
-          { (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') && (
-            <View style={styles.costIcon}>
-              <CardCostIcon
-                card={card}
-                inverted
-                linked={this.props.linked}
-              />
-            </View>
-          ) }
-          <View style={styles.column}>
-            <Text style={[
-              typography.text,
-              space.marginLeftS,
-              { color: factionColor ? '#FFFFFF' : colors.darkText },
-            ]}>
-              { `${name}${card.is_unique ? ' ✷' : ''}` }
-            </Text>
-            { !!subname && (
-              <Text style={[
-                typography.small,
-                space.marginLeftS,
-                { color: factionColor ? '#FFFFFF' : colors.darkText },
-              ]}>
-                { subname }
-              </Text>
-            ) }
-          </View>
-        </View>
-        { this.renderFactionIcon(card) }
-      </React.Fragment>
-    );
-  }
-
-  renderTitle(
-    card: Card,
-    name: string,
-    subname?: string,
-  ) {
-    const { colors } = this.context;
-    const color = colors.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
-    return (
-      <View style={[styles.cardTitle, {
-        backgroundColor: color,
-        borderColor: color,
-      }]}>
-        { this.renderTitleContent(card, name, subname, color) }
-      </View>
-    );
   }
 
   backSource(card: Card, isHorizontal: boolean) {
@@ -524,17 +392,21 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         </View>
       );
     }
-
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
         <View style={[styles.card, {
           backgroundColor: colors.background,
-          borderColor: colors.faction[
-            card.faction2_code ? 'dual' : card.factionCode()
-          ].background,
         }]}>
-          { this.renderTitle(card, card.back_name || card.name) }
-          <View style={styles.cardBody}>
+          <CardDetailHeader card={card} back width={width} linked={!!this.props.linked} />
+          <View style={[
+            styles.cardBody,
+            {
+              borderColor: colors.faction[
+                card.faction2_code ? 'dual' : card.factionCode()
+              ].background,
+              backgroundColor: colors.background,
+            },
+          ]}>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
                 <View style={styles.metadataBlock}>
@@ -692,7 +564,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     flavorFirst: boolean
   ) {
     const { simple } = this.props;
-    const { fontScale } = this.context;
     return (
       <>
         { !!card.text && (
@@ -734,7 +605,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       simple,
       width,
     } = this.props;
-    const { colors, fontScale } = this.context;
+    const { colors } = this.context;
     if ((card.hidden || backFirst) &&
       ((card.hidden && card.type_code !== 'investigator') || card.spoiler) &&
       !this.state.showBack &&
@@ -750,16 +621,17 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const isTablet = Platform.OS === 'ios' && DeviceInfo.isTablet();
     return (
       <View style={[styles.container, styles.containerPadding]} key={key}>
-        <View style={[
-          styles.card,
-          {
-            borderColor: colors.faction[
-              card.faction2_code ? 'dual' : card.factionCode()
-            ].background,
-          },
-        ]}>
-          { this.renderTitle(card, card.name, card.subname) }
-          <View style={styles.cardBody}>
+        <View style={styles.card}>
+          <CardDetailHeader card={card} width={width} linked={!!this.props.linked} />
+          <View style={[
+            styles.cardBody,
+            {
+              backgroundColor: colors.background,
+              borderColor: colors.faction[
+                card.faction2_code ? 'dual' : card.factionCode()
+              ].background,
+            },
+          ]}>
             <View style={[styles.typeBlock, {
               backgroundColor: colors.background,
             }]}>
@@ -819,12 +691,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
 }
 
 const styles = StyleSheet.create({
-  titleRow: {
-    flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
   row: {
     width: '100%',
     flexDirection: 'row',
@@ -880,23 +746,20 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 768,
     marginTop: 2,
-    borderWidth: 1,
-    borderRadius: 4,
+    //    borderBottomLeftRadius: 8,
+    //    borderBottomRightRadius: 8,
+    //    borderWidth: 1,
   },
   cardBody: {
     paddingTop: xs,
     paddingLeft: s,
     paddingRight: s + 1,
     paddingBottom: xs,
-  },
-  cardTitle: {
-    paddingRight: s,
-    paddingTop: xs,
-    paddingBottom: xs,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
     borderBottomWidth: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
   gameTextBlock: {
     borderLeftWidth: 4,
@@ -932,14 +795,6 @@ const styles = StyleSheet.create({
     paddingTop: xs,
     paddingBottom: xs,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: isBig ? 'center' : 'flex-start',
-    maxWidth: 768,
-  },
-  costIcon: {
-    marginLeft: xs,
-  },
   testIconRow: {
     flexDirection: 'row',
   },
@@ -949,7 +804,5 @@ const styles = StyleSheet.create({
   },
   testIcon: {
     marginLeft: 2,
-  },
-  factionIcon: {
   },
 });

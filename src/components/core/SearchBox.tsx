@@ -63,7 +63,7 @@ export default class SearchBox extends React.Component<Props> {
       toggleAdvanced,
       value,
     } = this.props;
-    const { colors, fontScale } = this.context;
+    const { colors } = this.context;
 
     return (
       <Input

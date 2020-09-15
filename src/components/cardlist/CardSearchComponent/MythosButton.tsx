@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   View,
-  Easing
+  Easing,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 
@@ -101,7 +101,7 @@ class MythosButton extends React.Component<Props, State> {
               },
             ]} />
             <View style={styles.iconWrapper}>
-              <Animated.Text style={{ color: investigatorColor}}>
+              <Animated.Text style={{ color: investigatorColor }}>
                 <AnimatedArkhamIcon
                   name={'per_investigator'}
                   size={24}
@@ -109,7 +109,7 @@ class MythosButton extends React.Component<Props, State> {
               </Animated.Text>
             </View>
             <View style={styles.iconWrapper}>
-              <Animated.Text style={{ color: mythosColor}}>
+              <Animated.Text style={{ color: mythosColor }}>
                 <AnimatedArkhamIcon
                   name={'auto_fail'}
                   size={24}
@@ -137,18 +137,12 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default connect(mapStateToProps, mapDispatchToProps)(MythosButton);
 
-const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 8 : 0);
 const styles = StyleSheet.create({
   container: {
     width: MythosButton.WIDTH,
     height: MythosButton.HEIGHT,
     position: 'relative',
     marginBottom: 8,
-  },
-  touchable: {
-    padding: 6,
-    width: SIZE + EXTRA_ANDROID_WIDTH,
-    height: SIZE,
   },
   iconWrapper: {
     width: SIZE,

@@ -121,7 +121,7 @@ export default class InvestigatorImage extends React.Component<Props> {
             ) }
           </View>
         </View>
-      )
+      );
     }
     const faction_icon = FACTION_ICONS[card.factionCode()];
     return (

@@ -31,7 +31,6 @@ import { msgid, ngettext, t } from 'ttag';
 import DbRender from '@components/data/DbRender';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import BasicButton from '@components/core/BasicButton';
 import { addFilterSet } from '@components/filter/actions';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -652,7 +651,7 @@ class CardResultList extends React.Component<Props, State> {
       cardsCount,
       spoilerCardsCount,
     } = liveState;
-    if  (!query) {
+    if (!query) {
       return null;
     }
     if (!refreshing && (cardsCount + spoilerCardsCount) === 0) {

@@ -90,7 +90,7 @@ export default function(
     };
   }
   if (action.type === SET_DECK_CHECKLIST_CARD) {
-    const currentChecklist = (state.checklist || {})[action.id] || []
+    const currentChecklist = (state.checklist || {})[action.id] || [];
     const checklist = action.value ? [
       ...currentChecklist,
       action.card,
@@ -322,7 +322,7 @@ export default function(
         }
       );
     const checklist = {
-      ...(state.checklist || {})
+      ...(state.checklist || {}),
     };
     if (checklist[action.id]) {
       delete checklist[action.id];

@@ -18,12 +18,11 @@ import QueryProvider from '@components/data/QueryProvider';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
-import Switch from '@components/core/Switch';
 import FilterBuilder, { FilterState } from '@lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@data/query';
 import Card from '@data/Card';
 import typography from '@styles/typography';
-import { m, s, xs } from '@styles/space';
+import { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
 import SearchResultButton from '../SearchResultButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -170,7 +169,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     this.setState({
       searchTerm: text,
     }, () => {
-      const { searchTerm } = this.state;
       this._debouncedUpdateSeacrh();
     });
   };
@@ -467,14 +465,6 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     width: '100%',
-  },
-  toggle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  toggleText: {
-    minWidth: '60%',
   },
   column: {
     flexDirection: 'column',

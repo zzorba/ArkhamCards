@@ -44,7 +44,7 @@ class CardQueryWrapper<T=undefined> extends React.Component<Props<T> & ReduxProp
   };
 
   render() {
-    const { name, query, tabooSetId, sort, extraProps} = this.props;
+    const { name, query, tabooSetId, sort, extraProps } = this.props;
     return (
       <DbRender name={name} getData={this._getData} ids={[query, tabooSetId, sort]} extraProps={extraProps}>
         { this._render }
