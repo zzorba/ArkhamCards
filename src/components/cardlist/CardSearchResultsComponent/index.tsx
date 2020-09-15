@@ -24,7 +24,7 @@ import Card from '@data/Card';
 import typography from '@styles/typography';
 import { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';
-import SearchResultButton from '../SearchResultButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const DIGIT_REGEX = /^[0-9]+$/;
@@ -256,14 +256,14 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <View>
         { !!mythosToggle && (
-          <SearchResultButton
+          <ArkhamButton
             icon="search"
             onPress={toggleMythosMode}
             title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
           />
         ) }
         { !!hasFilters && (
-          <SearchResultButton
+          <ArkhamButton
             icon="search"
             onPress={clearSearchFilters}
             title={t`Clear search filters`}
@@ -285,21 +285,21 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <View>
         { !!searchTerm && (
-          <SearchResultButton
+          <ArkhamButton
             icon="search"
             onPress={this._clearSearchTerm}
             title={t`Clear "${searchTerm}" search`}
           />
         ) }
         { !searchText && (
-          <SearchResultButton
+          <ArkhamButton
             icon="search"
             onPress={this._toggleSearchText}
             title={t`Search game text`}
           />
         ) }
         { !searchBack && (
-          <SearchResultButton
+          <ArkhamButton
             icon="search"
             onPress={this._toggleSearchBack}
             title={t`Search card backs`}

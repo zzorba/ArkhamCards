@@ -4,11 +4,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import SearchResultButton from '@components/cardlist/SearchResultButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 
 export function rowNonCollectionHeight(fontScale: number) {
-  return SearchResultButton.Height(fontScale);
+  return ArkhamButton.Height(fontScale);
 }
 
 interface Props {
@@ -29,7 +29,7 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
       <StyleContext.Consumer>
         { ({ fontScale, colors }) => (
           <View style={[styles.border, { borderColor: colors.divider, height: rowNonCollectionHeight(fontScale) }]}>
-            <SearchResultButton
+            <ArkhamButton
               icon="expand"
               title={title}
               onPress={this._onPress}
