@@ -55,7 +55,7 @@ import { showCard, showCardSwipe } from '@components/nav/helper';
 import typography from '@styles/typography';
 import { s, m } from '@styles/space';
 import COLORS from '@styles/colors';
-import SearchResultButton from '../SearchResultButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 
@@ -589,7 +589,7 @@ class CardResultList extends React.Component<Props, State> {
         <StyleContext.Consumer>
           { ({ fontScale }) => (
             <View style={{ height: rowNonCollectionHeight(fontScale) }}>
-              <SearchResultButton
+              <ArkhamButton
                 icon="edit"
                 title={t`Edit Collection`}
                 onPress={this._editCollectionSettings}
@@ -686,7 +686,7 @@ class CardResultList extends React.Component<Props, State> {
     if (showSpoilerCards) {
       return (
         <View style={styles.footer}>
-          <SearchResultButton
+          <ArkhamButton
             icon="edit"
             onPress={this._editSpoilerSettings}
             title={t`Edit spoiler settings`}
@@ -701,12 +701,12 @@ class CardResultList extends React.Component<Props, State> {
       spoilerCardsCount);
     return (
       <View style={styles.footer}>
-        <SearchResultButton
+        <ArkhamButton
           icon="search"
           onPress={this._enableSpoilers}
           title={spoilerCount}
         />
-        <SearchResultButton
+        <ArkhamButton
           icon="edit"
           onPress={this._editSpoilerSettings}
           title={t`Edit spoiler settings`}

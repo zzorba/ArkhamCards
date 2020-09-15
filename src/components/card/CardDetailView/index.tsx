@@ -25,12 +25,10 @@ export function rightButtonsForCard(card?: Card, color?: string) {
     icon: iconsMap.web,
     id: 'share',
     color: color || COLORS.M,
-    testID: t`Share`,
   }, {
     icon: iconsMap.wild,
     id: 'faq',
     color: color || COLORS.M,
-    testID: t`FAQ`,
   }];
   if (card &&
     card.type_code === 'investigator' &&
@@ -40,7 +38,6 @@ export function rightButtonsForCard(card?: Card, color?: string) {
       icon: iconsMap.deck,
       id: 'deck',
       color: color || COLORS.M,
-      testID: t`Deckbuilding Cards`,
     });
   }
   return rightButtons;

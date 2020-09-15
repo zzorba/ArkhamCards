@@ -8,9 +8,8 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import typography from '@styles/typography';
-import AppIcon from '@icons/AppIcon';
-import Button from '@components/core/Button';
 import BasicButton from '@components/core/BasicButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import Card from '@data/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
@@ -69,7 +68,6 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       width,
     } = this.props;
-    const { fontScale } = this.context;
     if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }
@@ -78,13 +76,11 @@ export default class CardDetailComponent extends React.Component<Props> {
         <Text style={[typography.header, styles.sectionHeader]}>
           { t`Deckbuilding` }
         </Text>
-        <View style={[styles.buttonContainer, styles.buttonPadding]}>
-          <Button
-            onPress={this._showInvestigatorCards}
-            text={t`Deckbuilding Cards`}
-            icon={<AppIcon name="deck" size={22 * fontScale} color="white" />}
-          />
-        </View>
+        <ArkhamButton
+          icon="deck"
+          title={t`Show all available cards`}
+          onPress={this._showInvestigatorCards}
+        />
         <SignatureCardsComponent
           componentId={componentId}
           investigator={card}

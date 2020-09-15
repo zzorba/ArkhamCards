@@ -27,7 +27,7 @@ import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import SearchResultButton from '../SearchResultButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface OwnProps {
   componentId: string;
@@ -286,7 +286,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <SearchResultButton
+        <ArkhamButton
           icon="edit"
           title={t`Edit Collection`}
           onPress={this._editCollection}
