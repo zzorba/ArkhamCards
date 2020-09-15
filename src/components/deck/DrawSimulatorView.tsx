@@ -11,7 +11,6 @@ import { c, t } from 'ttag';
 
 import { Slots } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
 import COLORS from '@styles/colors';

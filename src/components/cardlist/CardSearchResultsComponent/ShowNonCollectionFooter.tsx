@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 
 import SearchResultButton from '@components/cardlist/SearchResultButton';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 export function rowNonCollectionHeight(fontScale: number) {

@@ -11,7 +11,6 @@ import { CampaignDetailProps } from '@components/campaign/CampaignDetailView';
 import { CampaignGuideProps } from '@components/campaignguide/CampaignGuideView';
 import { LinkedCampaignGuideProps } from '@components/campaignguide/LinkedCampaignGuideView';
 import LinkedCampaignItem from './LinkedCampaignItem';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 

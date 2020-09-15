@@ -5,7 +5,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks } from '@data/scenario';
 import Card, { CardsMap } from '@data/Card';
-import StyleContext, { DEFAULLT_STYLE_CONTEXT, StyleContextType } from '@styles/StyleContext';
+import { DEFAULLT_STYLE_CONTEXT, StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignGuideContextType {
   campaignId: number;

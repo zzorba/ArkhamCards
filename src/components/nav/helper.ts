@@ -64,7 +64,7 @@ export function getDeckOptions(
       text: (investigator ? investigator.name : t`Deck`),
       color: '#FFFFFF',
     };
-    options.topBar.subtitle =  {
+    options.topBar.subtitle = {
       text: title,
       color: '#FFFFFF',
     };
@@ -227,11 +227,11 @@ export function showOptionDialog(
       {
         title,
         items: options,
-        cancelText: t`Cancel`
+        cancelText: t`Cancel`,
       },
       onSelect
-    )
-  };
+    );
+  }
 }
 
 export default {

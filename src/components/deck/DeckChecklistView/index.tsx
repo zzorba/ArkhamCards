@@ -42,7 +42,7 @@ interface State {
 }
 class DeckChecklistView extends React.Component<Props, State> {
   static options() {
-    return  {
+    return {
       topBar: {
         title: {
           text: t`Checklist`,
@@ -54,8 +54,8 @@ class DeckChecklistView extends React.Component<Props, State> {
             id: 'sort',
             color: COLORS.white,
             testID: t`Sort`,
-          }
-        ]
+          },
+        ],
       },
     };
   }
@@ -72,7 +72,7 @@ class DeckChecklistView extends React.Component<Props, State> {
     this._navEventListener && this._navEventListener.remove();
   }
 
-  _sortChanged = (sort: SortType) =>  {
+  _sortChanged = (sort: SortType) => {
     this.setState({
       sort,
     });
@@ -119,7 +119,7 @@ class DeckChecklistView extends React.Component<Props, State> {
         toggleValue={checklist.has(card.code)}
         backgroundColor="transparent"
       />
-    )
+    );
   };
 
   _handleScroll = () => {};
@@ -149,7 +149,7 @@ class DeckChecklistView extends React.Component<Props, State> {
         visible
         deckCardCounts={slots}
         originalDeckSlots={slots}
-        onDeckCountChange={() => {}}
+        onDeckCountChange={this._handleScroll}
         sort={sort}
         renderHeader={this._renderHeader}
         renderCard={this._renderCard}

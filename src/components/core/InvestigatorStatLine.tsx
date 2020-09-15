@@ -8,7 +8,7 @@ import {
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
 import { TINY_PHONE } from '@styles/sizes';
-import { isBig, m, s, xs } from '@styles/space';
+import { isBig, s, xs } from '@styles/space';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
@@ -20,12 +20,12 @@ interface Props {
 export default function InvestigatorStatLine({ investigator }: Props) {
   return (
     <StyleContext.Consumer>
-      { ({ fontScale }) => {
+      { ({ fontScale, colors }) => {
         const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 26;
         return (
           <View style={styles.skillRow}>
-            <View style={styles.skillIconBlock}>
-              <Text style={typography.mediumGameFont}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
                 { investigator.skill_willpower || 0 }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
@@ -40,13 +40,13 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                   <ArkhamIcon
                     name="skill_willpower"
                     size={ICON_SIZE}
-                    color={COLORS.skill.willpower.default}
+                    color={colors.skill.willpower.icon}
                   />
                 </View>
               </View>
             </View>
-            <View style={styles.skillIconBlock}>
-              <Text style={typography.mediumGameFont}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
                 { investigator.skill_intellect || 0 }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
@@ -61,13 +61,13 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                   <ArkhamIcon
                     name="skill_intellect"
                     size={ICON_SIZE}
-                    color={COLORS.skill.intellect.default}
+                    color={colors.skill.intellect.icon}
                   />
                 </View>
               </View>
             </View>
-            <View style={styles.skillIconBlock}>
-              <Text style={typography.mediumGameFont}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
                 { investigator.skill_combat || 0 }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
@@ -82,13 +82,13 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                   <ArkhamIcon
                     name="skill_combat"
                     size={ICON_SIZE}
-                    color={COLORS.skill.combat.default}
+                    color={colors.skill.combat.icon}
                   />
                 </View>
               </View>
             </View>
-            <View style={styles.skillIconBlock}>
-              <Text style={typography.mediumGameFont}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
                 { investigator.skill_agility || 0 }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
@@ -103,7 +103,7 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                   <ArkhamIcon
                     name="skill_agility"
                     size={ICON_SIZE - 1}
-                    color={COLORS.skill.agility.default}
+                    color={colors.skill.agility.icon}
                   />
                 </View>
               </View>
@@ -117,14 +117,11 @@ export default function InvestigatorStatLine({ investigator }: Props) {
 const styles = StyleSheet.create({
   skillIconBlock: {
     flexDirection: 'row',
-    borderRadius: 16,
+    borderRadius: 4 ,
     paddingTop: 2,
     paddingLeft: s,
     paddingRight: s,
-    marginLeft: TINY_PHONE ? 0 : s,
-    marginRight: TINY_PHONE ? xs : m,
-    borderWidth: TINY_PHONE ? 0 : 1,
-    borderColor: COLORS.divider,
+    marginRight: TINY_PHONE ? xs : xs,
     backgroundColor: TINY_PHONE ? 'transparent' : COLORS.veryLightBackground,
   },
   skillIcon: {
@@ -139,7 +136,7 @@ const styles = StyleSheet.create({
   skillRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     marginBottom: s,
   },
 });

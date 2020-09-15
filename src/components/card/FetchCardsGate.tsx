@@ -51,12 +51,6 @@ interface OwnProps {
 
 type Props = ReduxProps & ReduxActionProps & OwnProps;
 
-const FULL_TRANSLATION_LANGS = new Set([
-  'en',
-  'ru',
-  'es',
-]);
-
 /**
  * Simple component to block children rendering until cards/packs are loaded.
  */
@@ -158,7 +152,7 @@ class FetchCardsGate extends React.Component<Props> {
         { ({ colors }) => {
           if (error) {
             return (
-              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background}]}>
+              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
                 <View style={styles.errorBlock}>
                   <Text style={[typography.text, styles.error]}>
                     { t`Error loading cards, make sure your network is working.` }
@@ -173,7 +167,7 @@ class FetchCardsGate extends React.Component<Props> {
           }
           if (loading || this.props.fetchNeeded) {
             return (
-              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background}]}>
+              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
                 <Text style={typography.text}>
                   { t`Loading latest cards...` }
                 </Text>

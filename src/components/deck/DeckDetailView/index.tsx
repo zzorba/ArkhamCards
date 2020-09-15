@@ -1656,7 +1656,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 title={t`Description`}
                 titleStyle={styles.text}
                 containerStyle={{ backgroundColor: colors.background }}
-                />
+              />
             ) }
             <SettingsButton
               onPress={this._showTabooPicker}
@@ -1679,7 +1679,7 @@ class DeckDetailView extends React.Component<Props, State> {
             ) }
           </>
         ) }
-        <CardSectionHeader section={{ title: t`Cards`}} />
+        <CardSectionHeader section={{ title: t`Cards` }} />
         { editable && (
           <>
             <SettingsButton
@@ -1714,23 +1714,23 @@ class DeckDetailView extends React.Component<Props, State> {
             title={t`Checklist`}
             titleStyle={styles.text}
             containerStyle={{ backgroundColor: colors.background }}
-            />
+          />
         ) }
         <SettingsButton
           onPress={this._showCardCharts}
           title={t`Charts`}
           titleStyle={styles.text}
           containerStyle={{ backgroundColor: colors.background }}
-          />
+        />
         <SettingsButton
           onPress={this._showDrawSimulator}
           title={t`Draw Simulator`}
           titleStyle={styles.text}
           containerStyle={{ backgroundColor: colors.background }}
-          />
+        />
         { editable && (
           <>
-            <CardSectionHeader section={{ title: t`Campaign`}} />
+            <CardSectionHeader section={{ title: t`Campaign` }} />
             <SettingsButton
               onPress={this._onUpgradePressed}
               title={t`Upgrade Deck`}
@@ -1760,27 +1760,27 @@ class DeckDetailView extends React.Component<Props, State> {
             ) }
           </>
         ) }
-        <CardSectionHeader section={{ title: t`Options`}} />
+        <CardSectionHeader section={{ title: t`Options` }} />
         <SettingsButton
           onPress={this._toggleCopyDialog}
           title={t`Clone`}
           titleStyle={styles.text}
           containerStyle={{ backgroundColor: colors.background }}
-          />
+        />
         { deck.local ? (
           <SettingsButton
             onPress={this._uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
             titleStyle={styles.text}
             containerStyle={{ backgroundColor: colors.background }}
-            />
+          />
         ) : (
           <SettingsButton
             title={t`View on ArkhamDB`}
             onPress={this._viewDeck}
             titleStyle={styles.text}
             containerStyle={{ backgroundColor: colors.background }}
-            />
+          />
         ) }
         { !!isPrivate && (
           <SettingsButton
@@ -2028,12 +2028,6 @@ const styles = StyleSheet.create({
   },
   destructive: {
     color: COLORS.red,
-  },
-  categoryContainer: {
-    backgroundColor: COLORS.veryLightBackground,
-  },
-  categoryText: {
-    color: COLORS.lightText,
   },
   text: {
     color: COLORS.darkText,

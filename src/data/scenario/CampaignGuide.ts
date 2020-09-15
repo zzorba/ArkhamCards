@@ -9,7 +9,6 @@ import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
 import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question } from './types';
-import FaqEntry from '@data/FaqEntry';
 
 export interface CampaignLog {
   campaignId: string;

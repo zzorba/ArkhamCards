@@ -28,7 +28,6 @@ import {
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
-import AppIcon from '@icons/AppIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
@@ -652,18 +651,10 @@ export default class DeckViewTab extends React.Component<Props, State> {
   _renderHeader = () => {
     const {
       buttons,
-      width,
     } = this.props;
 
     return (
       <View style={styles.headerWrapper}>
-        <View style={[styles.kraken, { width: width * 2, top: -width / 3, left: -width * 0.75 }]}>
-          <AppIcon
-            name="kraken"
-            size={width}
-            color={COLORS.veryVeryLightBackground}
-          />
-        </View>
         <View style={styles.headerBlock}>
           { this.renderProblem() }
           <View style={styles.containerWrapper}>
@@ -768,10 +759,6 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     position: 'relative',
-  },
-  kraken: {
-    position: 'absolute',
-    top: -50,
   },
   column: {
     flex: 1,

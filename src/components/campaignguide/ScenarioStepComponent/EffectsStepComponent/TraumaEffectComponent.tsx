@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { map } from 'lodash';
-import { c, t, msgid, ngettext } from 'ttag';
+import { c, t, msgid } from 'ttag';
 
 import SetupStepWrapper from '../../SetupStepWrapper';
 import InvestigatorSelectorWrapper from '../../InvestigatorSelectorWrapper';
@@ -30,7 +30,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
     }
     if (effect.killed) {
       return male ?
-        c('masculine').t`${investigator.name} is <b>killed</b>.`:
+        c('masculine').t`${investigator.name} is <b>killed</b>.` :
         c('feminine').t`${investigator.name} is <b>killed</b>.`;
     }
     if (effect.mental_or_physical) {
@@ -65,7 +65,7 @@ export default class TraumaEffectComponent extends React.Component<Props> {
             msgid`${investigator.name} heals ${mental} mental trauma.`,
             `${investigator.name} heals ${mental} mental trauma.`,
             mental
-          ) ;
+          );
       }
       return male ?
         c('masculine').ngettext(

@@ -1,10 +1,20 @@
-import { Theme } from "react-native-elements";
+import { TextStyle } from 'react-native';
+
+export interface ThemeFonts {
+  gameFont: TextStyle;
+  mediumGameFont: TextStyle;
+}
+
 
 export interface FactionColors {
   text: string;
   background: string;
   darkBackground: string;
   lightBackground: string;
+}
+
+export interface SkillColor {
+  icon: string;
 }
 
 export interface ThemeColors {
@@ -31,6 +41,13 @@ export interface ThemeColors {
     dual: FactionColors;
     dead: FactionColors;
   };
+  skill: {
+    willpower: SkillColor;
+    intellect: SkillColor;
+    combat: SkillColor;
+    agility: SkillColor;
+    wild: SkillColor;
+  }
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -109,6 +126,23 @@ export const LIGHT_THEME: ThemeColors = {
       lightBackground: '#000000',
     },
   },
+  skill: {
+    willpower: {
+      icon: '#165385',
+    },
+    intellect: {
+      icon: '#7A2D6C',
+    },
+    combat: {
+      icon: '#8D181E',
+    },
+    agility: {
+      icon: '#0D6813',
+    },
+    wild: {
+      icon: '#635120',
+    },
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -122,7 +156,7 @@ export const DARK_THEME: ThemeColors = {
   lightText: light10,
   darkText: light30,
   divider: dark10,
-    taboo: 'purple',
+  taboo: 'purple',
   M: medium,
   faction: {
     guardian: {
@@ -178,6 +212,23 @@ export const DARK_THEME: ThemeColors = {
       background: '#444',
       darkBackground: '#444444',
       lightBackground: '#000000',
+    },
+  },
+  skill: {
+    willpower: {
+      icon: '#2C7FC0',
+    },
+    intellect: {
+      icon: '#7C3C85',
+    },
+    combat: {
+      icon: '#AE4236',
+    },
+    agility: {
+      icon: '#14854D',
+    },
+    wild: {
+      icon: '#8A7D5A',
     },
   },
 };

@@ -29,25 +29,25 @@ export default StyleSheet.create({
   cardName: {
     fontFamily: 'Alegreya-Medium',
     fontSize: 20 * sizeScale,
-    lineHeight: 20 * sizeScale,
+    lineHeight: 24 * sizeScale,
   },
   cardSubName: {
     fontFamily: 'Alegreya-Italic',
     fontSize: 14 * sizeScale,
-    lineHeight: 14 * sizeScale,
+    lineHeight: 18 * sizeScale,
     color: COLORS.lightText,
   },
   cardButton: {
     fontFamily: 'Alegreya-Regular',
     fontSize: 18 * sizeScale,
-    lineHeight: 20 * sizeScale,
+    lineHeight: 22 * sizeScale,
     color: COLORS.L30,
   },
   subHeaderText: {
     fontFamily: 'Alegreya-Medium',
-    fontVariant: ['small-caps'],
+    // fontVariant: ['small-caps'],
     fontSize: 18 * sizeScale,
-    lineHeight: 18 * sizeScale,
+    lineHeight: 22 * sizeScale,
     color: COLORS.D10,
   },
   text: {

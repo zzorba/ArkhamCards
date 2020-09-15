@@ -1,5 +1,4 @@
 import React from 'react';
-import DeviceInfo from 'react-native-device-info';
 import { Dimensions, ScaledSize } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 

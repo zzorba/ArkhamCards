@@ -24,11 +24,11 @@ export default class SearchResultButton extends React.Component<Props> {
     const { colors, fontScale } = this.context;
     switch (this.props.icon) {
       case 'search':
-        return <AppIcon name="search" size={18 * fontScale} color={colors.L20} />
+        return <AppIcon name="search" size={18 * fontScale} color={colors.L20} />;
       case 'edit':
-        return <View style={styles.editIcon}><AppIcon name="edit" size={16 * fontScale} color={colors.L20} /></View>
+        return <View style={styles.editIcon}><AppIcon name="edit" size={16 * fontScale} color={colors.L20} /></View>;
       case 'expand':
-        return <AppIcon name="plus" size={18 * fontScale} color={colors.L20} />
+        return <AppIcon name="plus" size={18 * fontScale} color={colors.L20} />;
     }
   }
 
@@ -59,7 +59,7 @@ export default class SearchResultButton extends React.Component<Props> {
           </View>
         </RectButton>
       </View>
-    )
+    );
   }
 }
 

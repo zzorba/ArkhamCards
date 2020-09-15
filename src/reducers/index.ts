@@ -28,7 +28,6 @@ import {
   SORT_BY_TYPE,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-import { State } from 'react-native-gesture-handler';
 
 const packsPersistConfig = {
   key: 'packs',

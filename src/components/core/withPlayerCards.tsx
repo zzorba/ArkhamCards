@@ -49,12 +49,12 @@ export default function withPlayerCards<Props>(
       const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
       if (!playerCards) {
         if (PlaceholderComponent) {
-          return <PlaceholderComponent {...this.props} />
+          return <PlaceholderComponent {...this.props} />;
         }
         return (
           <StyleContext.Consumer>
             { ({ colors }) => (
-              <View style={[styles.activityIndicatorContainer,  { backgroundColor: colors.background }]}>
+              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
                 <ActivityIndicator
                   style={styles.spinner}
                   color={colors.lightText}

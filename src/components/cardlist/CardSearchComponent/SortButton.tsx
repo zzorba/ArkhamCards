@@ -57,7 +57,7 @@ class SortButton extends React.Component<Props> {
       this._sortChanged,
       this.props.sort,
       this.props.mythosMode
-    )
+    );
   };
 
   render() {

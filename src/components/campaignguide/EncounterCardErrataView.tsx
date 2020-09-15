@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { flatMap, forEach, map, min, max, uniq, groupBy } from 'lodash';
+import { flatMap, forEach, map, min, max, groupBy } from 'lodash';
 import { t } from 'ttag';
 
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -107,7 +107,7 @@ class EncounterCardErrataView extends React.Component<Props> {
           );
         } }
       </CardListWrapper>
-    )
+    );
   }
 }
 

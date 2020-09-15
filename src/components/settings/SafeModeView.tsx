@@ -121,7 +121,7 @@ class SafeModeView extends React.Component<Props, State> {
     await (await this.context.db.tabooSets()).createQueryBuilder().delete().execute();
   }
 
-  _clearCache = async () => {
+  _clearCache = async() => {
     const {
       clearDecks,
     } = this.props;
@@ -164,7 +164,7 @@ class SafeModeView extends React.Component<Props, State> {
           />
         </ScrollView>
       </SafeAreaView>
-    )
+    );
   }
 }
 
@@ -198,6 +198,6 @@ const styles = StyleSheet.create({
   },
   settings: {
     backgroundColor: COLORS.background,
-  }
+  },
 });
 

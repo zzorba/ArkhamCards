@@ -114,7 +114,6 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
   };
 
   getValues(): string[] {
-    const { colors } = this.context;
     const {
       values,
     } = this.props;

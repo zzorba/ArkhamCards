@@ -32,8 +32,8 @@ export default function EditText({
           title={title}
           titleStyle={
             settingsStyle ?
-            { ...typography.label, paddingLeft: 0 } :
-            { ...typography.mediumGameFont, fontFamily: gameFont }}
+              { ...typography.label, paddingLeft: 0 } :
+              { ...typography.mediumGameFont, fontFamily: gameFont }}
           dialogDescription={dialogDescription}
           valuePlaceholder={placeholder}
           valueProps={{

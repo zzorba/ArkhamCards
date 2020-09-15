@@ -6,8 +6,7 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { map, sortBy } from 'lodash';
 import { connect } from 'react-redux';
-import { msgid, ngettext } from 'ttag';
-import { t } from 'ttag';
+import { msgid, ngettext, t } from 'ttag';
 
 import { AppState } from '@reducers';
 import BasicButton from '@components/core/BasicButton';

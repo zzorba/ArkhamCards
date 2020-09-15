@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { forEach } from 'lodash';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
@@ -95,7 +94,7 @@ export function navigationOptions(
       width: MythosButton.WIDTH,
       height: MythosButton.HEIGHT,
     },
-    enabled: true
+    enabled: true,
   };
 
   const rightButtons: OptionsTopBarButton[] = [{
@@ -155,7 +154,6 @@ class CardSearchComponent extends React.Component<Props, State> {
     const {
       componentId,
       baseQuery,
-      modal,
       onDeckCountChange,
       mythosToggle,
     } = this.props;

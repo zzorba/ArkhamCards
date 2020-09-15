@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 
 const darkText = (Platform.OS === 'ios' ? PlatformColor('labelColor') : PlatformColor('@color/colorPrimaryText')) as any as string;
-const lightText = (Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : PlatformColor('@color/colorSecondaryText')) as any as string;
 
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -110,20 +109,24 @@ export default {
   },
   skill: {
     willpower: {
-      default: '#003961',
+      default: '#165385',
       light: '#506A85',
+      dark: '#2C7FC0',
     },
     intellect: {
-      default: '#4e1a45',
+      default: '#7A2D6C',
       light: '#7B5373',
+      dark: '#7C3C85',
     },
     combat: {
-      default: '#661e09',
+      default: '#8D181E',
       light: '#8D5648',
+      dark: '#AE4236',
     },
     agility: {
-      default: '#00543a',
+      default: '#0D6813',
       light: '#417F6C',
+      dark: '#14854D',
     },
     wild: {
       default: '#635120',

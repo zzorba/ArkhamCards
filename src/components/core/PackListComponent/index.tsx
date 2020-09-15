@@ -144,7 +144,7 @@ export default class PackListComponent extends React.Component<Props> {
       });
 
     return (
-      <View style={[styles.container, { backgroundColor: colors.background}]}>
+      <View style={[styles.container, { backgroundColor: colors.background }]}>
         <SectionList
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}

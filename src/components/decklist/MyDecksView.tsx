@@ -1,6 +1,6 @@
 import React from 'react';
 import { find, filter, throttle } from 'lodash';
-import { Platform, Text, StyleSheet, Switch, View } from 'react-native';
+import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -15,7 +15,6 @@ import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import typography from '@styles/typography';
-import { s, xs } from '@styles/space';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface OwnProps {

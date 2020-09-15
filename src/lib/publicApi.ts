@@ -1,11 +1,9 @@
 import { chunk, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert } from 'react-native';
-import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
 import Card from '@data/Card';
 import Database from '@data/Database';
-import EncounterSet from '@data/EncounterSet';
 import TabooSet from '@data/TabooSet';
 import FaqEntry from '@data/FaqEntry';
 
@@ -169,7 +167,7 @@ export const syncCards = async function(
     await cards.createQueryBuilder().delete().execute();
     await encounterSets.createQueryBuilder().delete().execute();
     await tabooSets.createQueryBuilder().delete().execute();
-    console.log(await cards.count() + ' cards after delete');
+    console.log(`${await cards.count() } cards after delete`);
     const cardsToInsert: Card[] = [];
     forEach(json, cardJson => {
       try {
@@ -184,11 +182,11 @@ export const syncCards = async function(
       }
     });
     const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
-    //console.log('Parsed all cards');
+    // console.log('Parsed all cards');
     await insertChunk(normalCards, async(c: Card[]) => {
       await cards.insert(c);
     });
-    //console.log(`Inserting linked cards.`);
+    // console.log(`Inserting linked cards.`);
     for (let i = 0; i < linkedCards.length; i++) {
       // console.log(`Inserting ${linkedCards[i].code} - ${linkedCards[i].name}`)
       await cards.insert(linkedCards[i]);
@@ -198,7 +196,7 @@ export const syncCards = async function(
       .getMany();
     const cardsByName = values(groupBy(playerCards, card => card.real_name));
 
-    //console.log(`Working on upgrades now.`);
+    // console.log(`Working on upgrades now.`);
     for (let i = 0; i < cardsByName.length; i++) {
       const cardsGroup = cardsByName[i];
       if (cardsGroup.length > 1) {

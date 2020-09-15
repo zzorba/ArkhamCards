@@ -24,12 +24,12 @@ export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{
     icon: iconsMap.web,
     id: 'share',
-    color: color || COLORS.navButton,
+    color: color || COLORS.M,
     testID: t`Share`,
   }, {
-    icon: iconsMap.faq,
+    icon: iconsMap.wild,
     id: 'faq',
-    color: color || COLORS.navButton,
+    color: color || COLORS.M,
     testID: t`FAQ`,
   }];
   if (card &&
@@ -39,7 +39,7 @@ export function rightButtonsForCard(card?: Card, color?: string) {
     rightButtons.push({
       icon: iconsMap.deck,
       id: 'deck',
-      color: color || COLORS.navButton,
+      color: color || COLORS.M,
       testID: t`Deckbuilding Cards`,
     });
   }
