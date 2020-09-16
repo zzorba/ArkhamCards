@@ -26,7 +26,6 @@ export default class ExileCardDialog extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Save`,
           id: 'save',
-          showAsAction: 'ifRoom',
           color: COLORS.navButton,
           testID: t`Save`,
         }],
@@ -46,6 +45,10 @@ export default class ExileCardDialog extends React.Component<Props, State> {
     this._doSave = throttle(this.doSave.bind(this), 200);
 
     this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, ExileCardDialog.options());
   }
 
   componentWillUnmount() {

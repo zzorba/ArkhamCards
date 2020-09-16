@@ -100,8 +100,8 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('Deck.Description', providerWrapper(DeckDescriptionView));
   Navigation.registerComponent('Deck.Edit', providerWrapper(DeckEditView));
   Navigation.registerComponent('Deck.EditSpecial', providerWrapper(EditSpecialDeckCardsView));
-  Navigation.registerComponent('Deck.Upgrade', providerWrapper(DeckUpgradeDialog));
-  Navigation.registerComponent('Deck.New', providerWrapper(NewDeckView));
+  Navigation.registerComponent('Deck.Upgrade', providerWrapper(gestureHandlerRootHOC(DeckUpgradeDialog)));
+  Navigation.registerComponent('Deck.New', providerWrapper(gestureHandlerRootHOC(NewDeckView)));
   Navigation.registerComponent('Deck.NewOptions', providerWrapper(NewDeckOptionsDialog));
   Navigation.registerComponent('Card', providerWrapper(CardDetailView));
   Navigation.registerComponent('Card.Swipe', providerWrapper(CardDetailSwipeView));

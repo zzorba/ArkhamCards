@@ -27,7 +27,7 @@ export default class SearchBox extends React.Component<Props> {
       advancedOpen,
     } = this.props;
     if (!toggleAdvanced) {
-      return null;
+      return undefined;
     }
     return (
       <TouchableOpacity style={styles.toggleButton} onPress={toggleAdvanced}>

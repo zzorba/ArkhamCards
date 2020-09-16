@@ -27,6 +27,7 @@ import { getDeck, getCampaign, getTabooSet, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+import BasicButton from '@components/core/BasicButton';
 
 export interface UpgradeDeckProps {
   id: number;
@@ -63,7 +64,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           text: t`Save`,
           color: 'white',
           id: 'save',
-          showAsAction: 'ifRoom',
           testID: t`Save`,
         }],
         backButton: {
@@ -95,15 +95,23 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, DeckUpgradeDialog.options());
+  }
+
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }
 
+  _save = () => {
+    if (this.deckUpgradeComponent.current) {
+      this.deckUpgradeComponent.current.save();
+    }
+  };
+
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'save') {
-      if (this.deckUpgradeComponent.current) {
-        this.deckUpgradeComponent.current.save();
-      }
+      this._save();
     }
   }
 
@@ -245,6 +253,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           upgradeCompleted={this._deckUpgradeComplete}
           campaignSection={this.renderCampaignSection(deck)}
         />
+        <BasicButton onPress={this._save} title={t`Save`} />
       </ScrollView>
     );
   }

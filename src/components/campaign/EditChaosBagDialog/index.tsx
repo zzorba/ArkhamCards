@@ -9,7 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
@@ -42,7 +42,7 @@ interface State {
 type Props = EditChaosBagProps & NavigationProps & DimensionsProps;
 
 class EditChaosBagDialog extends React.Component<Props, State> {
-  static options() {
+  static options(): Options {
     return {
       topBar: {
         leftButtons: [
@@ -89,6 +89,7 @@ class EditChaosBagDialog extends React.Component<Props, State> {
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
+    Navigation.mergeOptions(this.props.componentId, EditChaosBagDialog.options());
   }
 
   componentWillUnmount() {

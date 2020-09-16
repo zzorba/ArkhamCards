@@ -69,6 +69,10 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     };
   }
 
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, EditSpecialDeckCardsView.options());
+  }
+
   _cardPressed = (card: Card) => {
     Navigation.push<CardDetailProps>(this.props.componentId, {
       component: {

@@ -4133,7 +4133,7 @@
     },
     {
       "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life.",
+      "text": "The lead investigator earns 1 experience, as they refused to let the night’s events destroy their life.",
       "effects": [
         {
           "type": "earn_xp",
@@ -13704,7 +13704,7 @@
     },
     {
       "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life.",
+      "text": "The lead investigator earns 1 experience, as they refused to let the night’s events destroy their life.",
       "effects": [
         {
           "type": "earn_xp",

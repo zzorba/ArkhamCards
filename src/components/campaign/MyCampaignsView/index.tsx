@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
@@ -39,7 +39,7 @@ interface State {
 }
 
 class MyCampaignsView extends React.Component<Props, State> {
-  static options() {
+  static options(): Options {
     return {
       topBar: {
         title: {
@@ -67,6 +67,10 @@ class MyCampaignsView extends React.Component<Props, State> {
 
     this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
     this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, MyCampaignsView.options());
   }
 
   componentWillUnmount() {

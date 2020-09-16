@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { EventSubscription, Navigation } from 'react-native-navigation';
+import { EventSubscription, Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
@@ -24,16 +24,14 @@ interface ReduxProps {
 type Props = NavigationProps & CampaignChaosBagProps & ReduxProps;
 
 class CampaignChaosBagView extends React.Component<Props> {
-  static options() {
+  static options(): Options {
     return {
       topBar: {
         rightButtons: [{
           systemItem: 'save',
           text: t`Edit`,
           id: 'edit',
-          showAsAction: 'ifRoom',
           color: COLORS.navButton,
-          testID: t`Edit`,
         }],
       },
     };
@@ -45,6 +43,10 @@ class CampaignChaosBagView extends React.Component<Props> {
     super(props);
 
     this._navEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidMount() {
+    Navigation.mergeOptions(this.props.componentId, CampaignChaosBagView.options());
   }
 
   componentWillUnmount() {

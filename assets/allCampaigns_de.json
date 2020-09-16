@@ -23897,7 +23897,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Ausrüstung anpassen",
             "steps": [
               "adjust_supplies_choice",
               "gain_sticky_goop"
@@ -25728,7 +25728,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Several hours after you wake, your laborious descent pays dividends. The red glow emanating from the bottom of the steps grows brighter with each step. The stone floor finally levels off, and the choking tunnel walls open to reveal a labyrinthine network of immense, far-reaching caverns. Littered throughout the caverns are the ruins of a vast city, the likes of which you have never seen. The elaborate stone architecture has been worn away by ages of abandonment, but you sense that there is a history here that runs deeper than you can even fathom. When you turn around to question Ichtaca, you notice a faint yellow glow in her eyes, her pupils narrowed and contracted. “Yoth...the last refuge of Valusia...” she quietly intones.\nJust then, a terrifying roar echoes throughout the cavern. The walls and floor shake with tremendous force, and the red glow that permeates the area brightens. A flood of hisses emerges from the tunnels all around you. Ichtaca walks to the edge of a nearby precipice and looks out over the vast depths. “He is here. I feel his presence. The Father of the Serpents...<b>Yig</b>.”"
+      "text": "Mehrere Stunden nachdem du erwacht bist, tragen die Mühen des Abstiegs endlich Früchte. Das rote Glühen am Fuß der Treppe wird mit jedem Schritt stärker. Schließlich erreichst du einen ebenen Steinboden und der beklemmend enge Tunnel mündet in ein labyrinthartiges Netzwerk riesiger weitreichender Höhlen. In den Höhlen befinden sich die Ruinen einer großen Stadt, die mit nichts zu vergleichen ist, was du in deinem Leben bisher gesehen hast. Man sieht der ausgefeilten Steinarchitektur zwar an, dass sie bereits seit sehr langer Zeit verlassen ist, aber du spürst deutlich, dass dieser Ort eine viel weitreichendere Geschichte hat, als du dir vorstellen kannst. Als du dich umdrehst, um Ichtaca danach zu fragen, bemerkst du ein schwaches gelbes Leuchten in ihren Augen und siehst, dass sich ihre Pupillen zusammengezogen haben. „Yoth ... die letzte Zuflucht von Valusia ...“, intoniert sie leise. \nIm nächsten Moment hallt ein furchterregendes Brüllen durch die Höhle. Die Wände und der Boden beben heftig und das rote Glühen, das die gesamte Umgebung durchdringt, wird heller. Aus den Tunneln um dich herum dringt eine Flut von Zischgeräuschen. Ichtaca tritt an den Rand eines nahegelegenen Steilhangs und blickt über die weite Schlucht. „Er ist hier. Ich spüre seine Gegenwart. Der Vater der Schlangen ... <b>Yig</b>.“"
     },
     {
       "id": "check_forging_own_path",
@@ -25757,17 +25757,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
+      "text": "Du erkennst nun, dass Ichtaca ganz eigene Pläne verfolgt. Genau wie Alejandro – beide haben dich benutzt und dir die Wahrheit vorenthalten. Du erhebst deine Waffe und forderst Antworten von Ichtaca. Sie wirkt überrascht. „Yig fordert, dass das Relikt zum Nexus gebracht wird“, antwortet sie angespannt. Ihre Augen glühen hell und auf ihrer Haut bilden sich Schuppen. Du kneifst die Augen zusammen und versuchst sie an den Rand des Steilhangs zu treiben, damit sie nicht entkommen kann. „Wir können das Relikt nicht in die Hände der Bruderschaft fallen lassen, das ist wahr ... Denn es wird benötigt, um den Ruhm Valusias wiederherzustellen. Yig hat mich gerufen und ich muss ihm gehorchen.“ Noch bevor du reagieren kannst, lässt sie sich über die Kante in die Tiefe fallen."
     },
     {
       "id": "ichtaca_set_against_forging_own_path",
-      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>. Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "Im Kampagnenlogbuch wird notiert: <i>Ichtaca hat sich gegen dich gestellt</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ichtaca hat sich gegen dich gestellt."
         },
         {
           "type": "add_chaos_token",
@@ -25806,12 +25806,12 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "You approach Ichtaca and rest a hand on her shoulder. Your companion takes a deep breath and turns to face you. Her eyes are cast downward in shame, and they have returned to their normal color. “I...I’m sorry. I have brought you to your ruin. He called out to me, long ago, told me of my heritage, of my people. I did his bidding willingly.”\nShe clenches her fists, her gaze meeting yours. “But now I realize I was wrong. Humanity deserves its time on Earth. You may have inherited it from far more powerful forces, but it is humanity’s time, not theirs.” You don’t completely understand what she is saying, but you understand the implication. Whatever Ichtaca truly is, she is on your side. A calm silence lingers between you, an unspoken bond that joins you as one. “We must get to the Nexus and prevent the serpents from recovering the relic,” she explains after a few moments, breaking the silence. You nod in agreement."
+      "text": "Du trittst zu Ichtaca und legst eine Hand auf ihre Schulter. Deine Gefährtin atmet tief ein und wendet sich dir zu. Sie blickt beschämt zu Boden und ihre Augen haben wieder ihre normale Farbe. „Es ... es tut mir leid. Ich habe dich ins Verderben geführt. Er hat schon vor langer Zeit nach mir gerufen, mir von meinem Erbe erzählt, von meinem Volk. Ich habe willig seine Anweisungen befolgt.“ Sie ballt die Faust und sieht dir in die Augen. \n„Aber jetzt erkenne ich, dass das falsch war. Die Menschheit hat ein Anrecht auf ihre Zeit auf der Erde. Ihr habt sie zwar von deutlich mächtigeren Wesen geerbt, aber jetzt ist es die Zeit der Menschen, nicht die jener Wesen.“ Du verstehst nicht alles, was sie da sagt, aber was sie meint, ist klar. Was auch immer Ichtaca in Wirklichkeit ist, sie steht auf deiner Seite. Das Schweigen zwischen euch wirkt beruhigend, ihr seid durch ein unausgesprochenes Band miteinander verbunden. „Wir müssen weiter zum Nexus, um zu verhindern, dass die Schlangen das Relikt zurückgewinnen“, bricht sie nach einigen Momenten das Schweigen. Du nickst zustimmend."
     },
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You hesitate, unsure what to do next. What are Ichtaca’s true motives? Why has she led you here? Before you have the chance to react, she draws her bow and aims an arrow at your heart. “Thank you for aiding me this far,” Ichtaca says curtly, “but the time has come for us to part ways. Yig has called, and I must answer.” Her yellow eyes narrow and shine brightly."
+      "text": "Du zögerst, weil du nicht weißt, wie es nun weitergehen soll. Was sind Ichtacas wahre Motive? Warum hat sie dich hierher geführt? Noch bevor du reagieren kannst, spannt sie ihren Bogen und zielt mit einem Pfeil auf dein Herz. „Danke für deine Hilfe auf dem Weg hierher“, sagt sie mit barscher Stimme, „aber hier trennen sich unsere Wege. Yig hat nach mir gerufen und ich muss ihm gehorchen.“ Ihre gelben Augen werden schmal und leuchten hell auf."
     },
     {
       "id": "ichtaca_set_against",
@@ -25820,7 +25820,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ichtaca hat sich gegen dich gestellt."
         }
       ]
     },
@@ -25844,7 +25844,7 @@
     {
       "id": "lose_ichtaca",
       "bullet_type": "small",
-      "text": "Remove Ichtaca from all investigator’s deck for the remainder of the campaign.",
+      "text": "Entferne Ichtaca aus allen Ermittlerdecks für den Rest der Kampagne.",
       "effects": [
         {
           "type": "remove_card",
@@ -25896,23 +25896,23 @@
     {
       "id": "intro_5",
       "type": "story",
-      "text": "“You must leave this place at once. This is not humanity’s battle. It is ours. We cannot let you or the Brotherhood foil our plans. Not now, not when we are so close.” Her hand wavers for a moment, and her eyes flicker again. You can tell that something is tearing at her, weighing on her mind. Finally, she speaks again. “Go now. Before I change my mind. And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "„Du musst sofort weg von hier. Das ist nicht der Kampf der Menschen. Es ist unser Kampf. Wir können nicht zulassen, dass die Bruderschaft unsere Pläne durchkreuzt. Nicht jetzt, wo wir es schon fast geschafft haben.“ Für einen Moment zittert ihre Hand und ihr Blick flackert wieder. Du erkennst, dass sie innerlich zerrissen ist und etwas schwer auf ihr lastet. Dann fährt sie fort. „Geh jetzt. Bevor ich es mir anders überlege. Und wenn du leben willst, folge mir nicht. Ich werde dir keine zweite Chance geben.“ Ichtaca verlässt dich, aber sie lässt dich nicht aus den Augen, bis sie in der Ferne verschwindet. Trotz ihrer Warnung hast du das Gefühl, dass dir nichts anderes übrig bleibt, als ihr zu folgen. Wer außer dir kann die Menschheit schützen?"
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": "Now drop your weapons.” The betrayal stings your chest, and you are gripped with anger and despair. Thoughts of escape flash across your mind, but you have seen her skill with a bow—with her steady aim, you would be dead before you took two steps. You have no choice but to comply. Your weapons clatter to the ground, one at a time. “Good. Now the relic: hand it to me.” Grimacing, you take a few steps forward and offer the relic to Ichtaca."
+      "text": "„Jetzt lass deine Waffe fallen.“ Der Schmerz über den Verrat wühlt in deiner Brust. Wut und Verzweiflung überkommen dich. Kurz erwägst du zu fliehen, aber du hast gesehen, wie geschickt sie mit dem Bogen ist – so gut wie sie ziehlen kann, wärst du tot, ehe du auch nur zwei Schritte getan hättest. Dir bleibt keine andere Wahl, du musst ihr gehorchen. Deine Waffen fallen eine nach der anderen klappernd zu Boden. „Gut. Und nun gib mir das Relikt.“ Mit wutverzerrter Miene trittst du einige Schritte vor und hältst Ichtaca das Relikt hin."
     },
     {
       "id": "check_pocketknife",
-      "text": "Check your supplies to see if any investigator has a pocketknife.",
+      "text": "Überprüfe deine Ausrüstung, ob ein Ermittler ein Taschenmesser hat.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Taschenmesser",
         "options": [
           {
             "boolCondition": true,
@@ -25934,16 +25934,16 @@
     {
       "id": "intro_7",
       "type": "story",
-      "text": "As Ichtaca reaches out to grab the relic, you pull out your concealed pocketknife and quickly attack, catching her by surprise. The blade cuts deeply across her forearm. Blood sprays across your chest, and she staggers with pain, gripping her arm. Her heel clips a rock near the edge of the precipice, and she tumbles over the side of the ledge, her scream growing distant as she falls. You barely have time to recover from the shock of what just happened, as another colossal roar fills the cavern, and the ground shakes. You gather your belongings and continue your descent."
+      "text": "Als Ichtaca nach dem Relikt greift, ziehst du dein verstecktes Taschenmesser heraus und nutzt das Überraschungsmoment, um sie anzugreifen. Die Klinge dringt tief in ihren Unterarm. Blut spritzt auf deine Brust und sie greift schmerzerfüllt nach ihrem Arm. Mit der Ferse löst sie einen Stein aus dem Rand des Steilhanges, dann taumelt sie über die Klippe und ihr Schrei wird immer leiser, während sie in die Tiefe fällt. Dir bleibt kaum Zeit, um dich von dem Schock zu erholen, als ein weiteres gewaltiges Brüllen die Höhle erfüllt und der Boden zu beben beginnt. Du suchst deine Sachen zusammen und setzt deinen Abstieg fort."
     },
     {
       "id": "intro_8",
       "type": "story",
-      "text": "Ichtaca grabs the relic. You can see the skin on the back of her hand growing hard and scaly. You take a few steps back, knuckles white with anger. “Go now. Before I change my mind,” she says. “And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "Ichtaca greift nach dem Relikt. Du siehst, dass die Haut auf der Rückseite ihrer Hand bereits hart und schuppig wird. Du trittst einige Schritte zurück und ballst wütend die Faust, bis deine Fingerknöchel weiß werden. „Geh jetzt. Bevor ich es mir anders überlege“, sagt sie. „Und wenn du leben willst, folge mir nicht. Ich werde dir keine zweite Chance geben.“ Ichtaca verlässt dich, aber sie lässt dich nicht aus den Augen, bis sie in der Ferne verschwindet. Trotz ihrer Warnung hast du das Gefühl, dass dir nichts anderes übrig bleibt, als ihr zu folgen. Wer außer dir kann die Menschheit schützen?"
     },
     {
       "id": "lost_relic",
-      "text": "In your Campaign Log, cross off <i>the investigators found the missing relic</i> and record <i>the relic is missing</i>.",
+      "text": "Im Kampagnenlogbuch wird gestrichen: <i>Die Ermittler haben das verschwundene Relikt gefunden</i>. Im Kampagnenlogbuch wird notiert: <i>Das Relikt ist verschwunden</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -25955,7 +25955,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "Das Relikt ist verschwunden."
         }
       ]
     },
@@ -25978,7 +25978,7 @@
     },
     {
       "id": "remove_relic",
-      "text": "Remove The Relic of Ages from all investigator’s decks for the remainder of the campaign.",
+      "text": "Entferne das Relikt der Zeitalter aus allen Ermittlerdecks für den Rest der Kampagne.",
       "effects": [
         {
           "type": "remove_card",
@@ -25989,7 +25989,7 @@
     {
       "id": "check_yigs_fury",
       "type": "branch",
-      "text": "Check Campaign Log to see how many marks are under 'Yig's Fury'",
+      "text": "Überprüfe im Kampagnenlogbuch die Zählstriche unter „Yigs Zorn“",
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
@@ -26132,32 +26132,32 @@
     {
       "id": "fury_0",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 0, search the gathered encounter cards for Yig and each copy of Pit Warden. Remove those cards from the game."
+      "text": "Falls dort 0 Zählstriche sind, werden die herausgesuchten Begegnungskarten nach Yig und jeder Kopie von Grubenwächter durchsucht. Diese Karten werden aus dem Spiel entfernt."
     },
     {
       "id": "fury_1_to_5",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 1 and 5, no changes are made."
+      "text": "Falls sich dort 1–5 Zählstriche befinden, wird nichts geändert."
     },
     {
       "id": "fury_6_to_10",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 6 and 10, remove agenda 1a from the game. The game begins at agenda 2a."
+      "text": "Falls sich dort 6–10 Zählstriche befinden, wird Agenda 1a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 2a.Falls sich dort 11–14 Zählstriche befinden, werden Agenda 1a und 2a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 3a."
     },
     {
       "id": "fury_11_to_14",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 11 and 14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
+      "text": "Falls sich dort 11–14 Zählstriche befinden, werden Agenda 1a und 2a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 3a."
     },
     {
       "id": "fury_15_to_17",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 15 and 17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
+      "text": "Falls sich dort 15–17 Zählstriche befinden, werden Agenda 1a, 2a und 3a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 4a."
     },
     {
       "id": "fury_18_to_20",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 18 and 20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a.",
+      "text": "Falls sich dort 18–20 Zählstriche befinden, werden Agenda 1a, 2a, 3a und 4a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 5a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -26170,7 +26170,7 @@
     {
       "id": "fury_21",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a.",
+      "text": "Falls sich dort 21 oder mehr Zählstriche befinden, werden Agenda 1a, 2a, 3a, 4a und 5a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 6a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -26188,11 +26188,11 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each of the 10 single-sided locations aside, out of play. Draw one of those locations at random other than Steps of Yoth, and put it into play. Each investigator begins play at the randomly chosen location."
+      "text": "Die 10 einseitig bedruckten Orte werden als nicht im Spiel befindlich beiseitegelegt. Einer dieser Orte mit Ausnahme von Stufen von Yoth wird zufällig gezogen und ins Spiel gebracht. Jeder Ermittler beginnt das Spiel an dem zufällig bestimmten Ort."
     },
     {
       "id": "maybe_setup_harbinger",
-      "text": "Check Campaign Notes. If <i>the Harbinger is still alive.</i>",
+      "text": "Überprüfe das Kampagnenlogbuch, <i>ob der Vorbote noch am Leben ist.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -26235,7 +26235,7 @@
     {
       "id": "put_harbinger_in_pursuit",
       "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+      "text": "Durchsuche die Sammlung nach dem Vorboten von Valusia und platziere auf ihm Schaden in Höhe des im Kampagnenlogbuch in Klammern notierten Wertes. Da es Agenda 5a oder 6a ist, bewege den Vorbote von Valusia in die Verfolgungszone."
     },
     {
       "id": "check_agenda_6",
@@ -26263,19 +26263,19 @@
     },
     {
       "id": "set_aside_yig",
-      "text": "Set the Yig enemy aside, out of play."
+      "text": "Der Gegner Yig wird als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "put_yig_in_pursuit",
-      "text": "Because it is agenda 6a, put the set-aside Yig enemy in the pursuit area."
+      "text": "Da es Agenda 6a ist, bewege den beiseitegelegten Gegner Yig in die Verfolgungszone."
     },
     {
       "id": "setup_depth",
-      "text": "Place 1 resource token on the scenario reference card, under “Current Depth.” For the remainder of the scenario, the number of resources under “Current Depth” indicates the current depth level. (See “Depth Level,” below.)"
+      "text": "Es wird 1 Ressourcenmarker neben „Aktuelle Tiefe“ auf die Szenarioübersichtskarte gelegt. Für den Rest des Szenarios entspricht die Anzahl der Ressourcenmarker unter „Aktuelle Tiefe“ der aktuellen Tiefenstufe. (Siehe „Tiefenstufe“ weiter unten.)"
     },
     {
       "id": "set_aside_relic",
-      "text": "Set the Relic of Ages (<i>Repossess the Past</i>) aside, out of play."
+      "text": "Das Relikt der Zeitalter (<i>Lasse die Vergangenheit wieder aufleben</i>) wird als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "set_aside_poison",
@@ -26288,14 +26288,14 @@
     {
       "id": "depth_level_rule",
       "type": "rule_reminder",
-      "title": "Depth Level",
-      "text": "Throughout this scenario, the number of resources under “Current Depth” on the scenario reference card indicates the current depth level. As the investigators journey deeper into Yoth by completing act 1, resources are added to the current depth level, and play continues until the investigators reach a certain depth level, or are defeated. Deeper levels of Yoth are deadlier, but the deeper the level the investigators are able to reach, the better the resolution of this scenario will be.\nThe current depth level has no game effect on its own; however, some encounter card effects may change or become stronger depending on the current depth level."
+      "title": "Tiefenstufe",
+      "text": "In diesem Szenario gibt die Anzahl der Ressourcen unter „Aktuelle Tiefe“ auf der Szenarioübersichtskarte die aktuelle Tiefenstufe an. Wenn die Ermittler tiefer nach Yoth vordringen, indem sie Szene 1 abschließen, werden Ressourcen zur aktuellen Tiefenstufe hinzugefügt und das Spiel geht weiter, bis die Ermittler eine bestimmte Stufe erreicht haben oder besiegt werden. Tiefere Stufen von Yoth sind tödlicher, aber je tiefer die Stufe ist, die die Ermittler erreichen, desto besser wird die Auflösung des Szenarios für sie. Die aktuelle Tiefenstufe hat keinen eigenen Spieleffekt, aber einige Begegnungskarteneffekte können sich abhängig von der aktuellen Tiefenstufe verändern oder stärker werden."
     },
     {
       "id": "pursuit_rule",
       "type": "rule_reminder",
-      "title": "Pursuit",
-      "text": "Some cards in this scenario reference an area called the “pursuit area.” The pursuit area is an out-of-play area next to the act and agenda deck which enemies can enter and leave via card effects. Generally speaking, enemies in play will move to the pursuit area whenever the investigators reach the next depth level. <b>Although the pursuit area is out of play, whenever an enemy moves to the pursuit area, it keeps all tokens and attachments.</b>\nEnemies in the pursuit area are considered to be “in pursuit.” Enemies that are in pursuit are considered to be out of play, and cannot be affected by player cards or investigator actions. However, enemies that are in pursuit can re-enter play by a variety of card abilities."
+      "title": "Verfolgung",
+      "text": "Einige Karten in diesem Szenario beziehen sich auf eine Zone namens „Die Verfolgungszone“. Die Verfolgungszone ist eine Zone außerhalb des Spiels, neben den Szenen- und Agendadecks, die Gegner durch Karteneffekte betreten und verlassen können. Im Allgemeinen werden Gegner im Spiel in die Verfolgungszone bewegt, sobald die Ermittler die nächste Tiefenstufe erreichen. <b>Obwohl sich die Verfolgungszone nicht im Spiel befindet, behalten Gegner, die in die Verfolgungszone bewegt werden, alle Marker und Verstärkungen.</b> \nGegner in der Verfolgungszone gelten als „verfolgend.“ Verfolgende Gegner gelten als außerhalb des Spiels und können nicht von Spielerkarten oder Aktionen der Ermittler betroffen werden. Aber verfolgende Gegner können durch eine Reihe von Kartenfähigkeiten erneut ins Spiel kommen."
     },
     {
       "id": "fell_into_depths",
@@ -26304,7 +26304,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fell_into_depths",
-          "text": "the investigators fell into the depths."
+          "text": "Die Ermittler sind in die Tiefe gestürzt."
         }
       ]
     },
@@ -26313,14 +26313,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Depth level when the scenario ended:",
+        "text": "Die Tiefenstufe am Ende des Szenarios:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "hidden",
             "id": "final_depth",
             "operation": "set_input",
-            "text": "#X# depth"
+            "text": "Tiefenstufe"
           }
         ]
       }
@@ -26368,7 +26368,7 @@
     },
     {
       "id": "depth_1_fall",
-      "text": "Because the current depth level is 1, the fall is fatal, and the darkness of N’kai devours the shattered corpses. Each investigator is <b>killed</b>. The investigators lose the campaign.",
+      "text": "Da die aktuelle Tiefenstufe 1 war, ist der Fall tödlich und die Dunkelheit von N’kai verschlingt die zerschmetterten Körper der Ermittler. Jeder Ermittler ist <b>getötet</b>. Die Ermittler verlieren die Kampagne.",
       "effects": [
         {
           "type": "trauma",
@@ -26389,7 +26389,7 @@
     },
     {
       "id": "depth_2_fall",
-      "text": "Because the current depth level is 2, each investigator suffers 2 physical trauma and searches the collection for a random basic Injury weakness, adding it to their deck.",
+      "text": "Da die aktuelle Tiefenstufe 2 war, erleidet jeder Ermittler 2 körperliche Traumata, durchsucht die Sammlung nach einer zufälligen Verletzung- Schwäche und fügt sie seinem Deck hinzu.",
       "effects": [
         {
           "type": "trauma",
@@ -26445,7 +26445,7 @@
     },
     {
       "id": "depth_3_fall",
-      "text": "Because the current depth level is 3, each investigator suffers 1 physical trauma.",
+      "text": "Falls die aktuelle Tiefenstufe 3 war, erleidet jeder Ermittler 1 körperliches Trauma.",
       "effects": [
         {
           "type": "trauma",
@@ -26461,7 +26461,7 @@
     },
     {
       "id": "depth_4_fall",
-      "text": "Because the current depth level is 4, you suffer no ill effects.",
+      "text": "Falls die aktuelle Tiefenstufe 4 war, erleiden die Ermittler keine negativen Effekte.",
       "effects": [
         {
           "type": "earn_xp",
@@ -26546,7 +26546,7 @@
       "input": {
         "type": "counter",
         "text": "Siegpunktestapel",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Jeder Ermittler verdient zusätzliche Erfahrungspunkte in Höhe der aktuellen Tiefenstufe.",
         "effects": [
           {
             "type": "earn_xp",
@@ -26562,7 +26562,7 @@
       "input": {
         "type": "counter",
         "text": "Siegpunktestapel",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Jeder Ermittler verdient zusätzliche Erfahrungspunkte in Höhe der aktuellen Tiefenstufe.",
         "effects": [
           {
             "type": "earn_xp",
@@ -26579,7 +26579,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "nexus_is_near",
-          "text": "the nexus is near."
+          "text": "Der Nexus ist nah."
         }
       ]
     },
@@ -26640,7 +26640,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Ausrüstung anpassen",
             "steps": [
               "cross_out_rope"
             ],
@@ -26690,7 +26690,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the set-aside Steps of Yoth and 4 of the remaining single-sided locations and shuffling them together.",
+      "text": "Das Erkundungsdeck wird erstellt. Dafür wird die beiseitegelegte Karte Stufen von Yoth und 4 zufällig bestimmte der verbleibenden einseitig bedruckten Orte zusammengemischt.",
       "bullets": [
         {
           "text": "Shuffle the Perils of Yoth treachery into the exploration deck."
@@ -26798,7 +26798,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
+      "text": "Nach stundenlanger Wanderung hast du gerade mal die Oberfläche dieses gewaltigen unterirdischen Reiches angekratzt. Die Menschheit könnte Jahre damit verbringen, Karten von diesen Tunneln anzufertigen und würde damit doch nie fertig werden. Egal wie schnell du in die Tiefe vordringst, die Schlangen, die dich jagen, sind dir dicht auf den Fersen. Du bist ein Eindringling in ihrer Heimat und sie kennen diese höllischen Tunnel besser als du. Deine Verletzungen machen dich langsam und Furcht erschwert dir jede Entscheidung. Dein Tod durch diese Kreaturen scheint unausweichlich. Verzweiflung bohrt sich ihren Weg in deinen Verstand. Als die Schlangen dich schließlich einholen, überquerst du gerade eine der vielen langen Steinbrücken, die über eine breite Schlucht führen. Schlangenartige Kreaturen greifen dich von beiden Seiten der Schlucht an ihre Speerspitzen drängen dich gefährlich nah an den Rand der Brücke. Ein kleiner Stein bricht unter deiner Ferse aus der Brücke, löst sich und fällt in die tintenschwarze Tiefe unter dir. Du hörst ihn nicht auf dem Boden aufschlagen. Diesmal besteht keine Hoffnung auf Entkommen oder Flucht – dir bleibt nichts anderes übrig, als dein Schicksal zu akzeptieren. Die Speerspitzen drängen dich noch weiter an die Kante. Du schließt deine Augen und lässt dich fallen.",
       "steps": [
         "fell_into_depths",
         "record_final_depth",
@@ -26813,7 +26813,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
+      "text": "Auch wenn alles gegen dich zu stehen schien, schaffst du es irgendwie, dein Ziel zu erreichen. Das verräterische rote Leuchten, das dich seit deiner Ankunft in Yoth umgeben hat, verblasst und wird durch eine undurchdringliche tintenschwarze Dunkelheit ersetzt. Der Nexus muss ganz nah sein ... du fühlst es.",
       "steps": [
         "nexus_is_near",
         "check_harbinger",
@@ -27291,7 +27291,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Ausrüstung anpassen",
             "steps": [
               "adjust_supplies_choice",
               "gain_mysterious_scepter"
@@ -28519,7 +28519,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "Das Relikt ist verschwunden."
         }
       ]
     },
@@ -28717,7 +28717,7 @@
         "branches": [
           {
             "id": "cross_out_supplies",
-            "text": "Adjust supplies",
+            "text": "Ausrüstung anpassen",
             "steps": [
               "cross_out_medicine"
             ]
@@ -29162,7 +29162,7 @@
           },
           {
             "id": "pocketknife",
-            "name": "Pocketknife",
+            "name": "Taschenmesser",
             "description": "Zu klein, um als verlässliche Waffe zu dienen, aber dafür gut zu verbergen.",
             "cost": 2
           },
@@ -59343,8 +59343,8 @@
 },
 {
   "id": "the_depths_of_yoth",
-  "scenario_name": "The Depths of Yoth",
-  "full_name": "Scenario VII: The Depths of Yoth",
+  "scenario_name": "Die Tiefen von Yoth",
+  "full_name": "Szenario VII: Die Tiefen von Yoth",
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -59366,7 +59366,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Several hours after you wake, your laborious descent pays dividends. The red glow emanating from the bottom of the steps grows brighter with each step. The stone floor finally levels off, and the choking tunnel walls open to reveal a labyrinthine network of immense, far-reaching caverns. Littered throughout the caverns are the ruins of a vast city, the likes of which you have never seen. The elaborate stone architecture has been worn away by ages of abandonment, but you sense that there is a history here that runs deeper than you can even fathom. When you turn around to question Ichtaca, you notice a faint yellow glow in her eyes, her pupils narrowed and contracted. “Yoth...the last refuge of Valusia...” she quietly intones.\nJust then, a terrifying roar echoes throughout the cavern. The walls and floor shake with tremendous force, and the red glow that permeates the area brightens. A flood of hisses emerges from the tunnels all around you. Ichtaca walks to the edge of a nearby precipice and looks out over the vast depths. “He is here. I feel his presence. The Father of the Serpents...<b>Yig</b>.”"
+      "text": "Mehrere Stunden nachdem du erwacht bist, tragen die Mühen des Abstiegs endlich Früchte. Das rote Glühen am Fuß der Treppe wird mit jedem Schritt stärker. Schließlich erreichst du einen ebenen Steinboden und der beklemmend enge Tunnel mündet in ein labyrinthartiges Netzwerk riesiger weitreichender Höhlen. In den Höhlen befinden sich die Ruinen einer großen Stadt, die mit nichts zu vergleichen ist, was du in deinem Leben bisher gesehen hast. Man sieht der ausgefeilten Steinarchitektur zwar an, dass sie bereits seit sehr langer Zeit verlassen ist, aber du spürst deutlich, dass dieser Ort eine viel weitreichendere Geschichte hat, als du dir vorstellen kannst. Als du dich umdrehst, um Ichtaca danach zu fragen, bemerkst du ein schwaches gelbes Leuchten in ihren Augen und siehst, dass sich ihre Pupillen zusammengezogen haben. „Yoth ... die letzte Zuflucht von Valusia ...“, intoniert sie leise. \nIm nächsten Moment hallt ein furchterregendes Brüllen durch die Höhle. Die Wände und der Boden beben heftig und das rote Glühen, das die gesamte Umgebung durchdringt, wird heller. Aus den Tunneln um dich herum dringt eine Flut von Zischgeräuschen. Ichtaca tritt an den Rand eines nahegelegenen Steilhangs und blickt über die weite Schlucht. „Er ist hier. Ich spüre seine Gegenwart. Der Vater der Schlangen ... <b>Yig</b>.“"
     },
     {
       "id": "check_forging_own_path",
@@ -59395,17 +59395,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
+      "text": "Du erkennst nun, dass Ichtaca ganz eigene Pläne verfolgt. Genau wie Alejandro – beide haben dich benutzt und dir die Wahrheit vorenthalten. Du erhebst deine Waffe und forderst Antworten von Ichtaca. Sie wirkt überrascht. „Yig fordert, dass das Relikt zum Nexus gebracht wird“, antwortet sie angespannt. Ihre Augen glühen hell und auf ihrer Haut bilden sich Schuppen. Du kneifst die Augen zusammen und versuchst sie an den Rand des Steilhangs zu treiben, damit sie nicht entkommen kann. „Wir können das Relikt nicht in die Hände der Bruderschaft fallen lassen, das ist wahr ... Denn es wird benötigt, um den Ruhm Valusias wiederherzustellen. Yig hat mich gerufen und ich muss ihm gehorchen.“ Noch bevor du reagieren kannst, lässt sie sich über die Kante in die Tiefe fallen."
     },
     {
       "id": "ichtaca_set_against_forging_own_path",
-      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>. Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "Im Kampagnenlogbuch wird notiert: <i>Ichtaca hat sich gegen dich gestellt</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ichtaca hat sich gegen dich gestellt."
         },
         {
           "type": "add_chaos_token",
@@ -59444,12 +59444,12 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "You approach Ichtaca and rest a hand on her shoulder. Your companion takes a deep breath and turns to face you. Her eyes are cast downward in shame, and they have returned to their normal color. “I...I’m sorry. I have brought you to your ruin. He called out to me, long ago, told me of my heritage, of my people. I did his bidding willingly.”\nShe clenches her fists, her gaze meeting yours. “But now I realize I was wrong. Humanity deserves its time on Earth. You may have inherited it from far more powerful forces, but it is humanity’s time, not theirs.” You don’t completely understand what she is saying, but you understand the implication. Whatever Ichtaca truly is, she is on your side. A calm silence lingers between you, an unspoken bond that joins you as one. “We must get to the Nexus and prevent the serpents from recovering the relic,” she explains after a few moments, breaking the silence. You nod in agreement."
+      "text": "Du trittst zu Ichtaca und legst eine Hand auf ihre Schulter. Deine Gefährtin atmet tief ein und wendet sich dir zu. Sie blickt beschämt zu Boden und ihre Augen haben wieder ihre normale Farbe. „Es ... es tut mir leid. Ich habe dich ins Verderben geführt. Er hat schon vor langer Zeit nach mir gerufen, mir von meinem Erbe erzählt, von meinem Volk. Ich habe willig seine Anweisungen befolgt.“ Sie ballt die Faust und sieht dir in die Augen. \n„Aber jetzt erkenne ich, dass das falsch war. Die Menschheit hat ein Anrecht auf ihre Zeit auf der Erde. Ihr habt sie zwar von deutlich mächtigeren Wesen geerbt, aber jetzt ist es die Zeit der Menschen, nicht die jener Wesen.“ Du verstehst nicht alles, was sie da sagt, aber was sie meint, ist klar. Was auch immer Ichtaca in Wirklichkeit ist, sie steht auf deiner Seite. Das Schweigen zwischen euch wirkt beruhigend, ihr seid durch ein unausgesprochenes Band miteinander verbunden. „Wir müssen weiter zum Nexus, um zu verhindern, dass die Schlangen das Relikt zurückgewinnen“, bricht sie nach einigen Momenten das Schweigen. Du nickst zustimmend."
     },
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You hesitate, unsure what to do next. What are Ichtaca’s true motives? Why has she led you here? Before you have the chance to react, she draws her bow and aims an arrow at your heart. “Thank you for aiding me this far,” Ichtaca says curtly, “but the time has come for us to part ways. Yig has called, and I must answer.” Her yellow eyes narrow and shine brightly."
+      "text": "Du zögerst, weil du nicht weißt, wie es nun weitergehen soll. Was sind Ichtacas wahre Motive? Warum hat sie dich hierher geführt? Noch bevor du reagieren kannst, spannt sie ihren Bogen und zielt mit einem Pfeil auf dein Herz. „Danke für deine Hilfe auf dem Weg hierher“, sagt sie mit barscher Stimme, „aber hier trennen sich unsere Wege. Yig hat nach mir gerufen und ich muss ihm gehorchen.“ Ihre gelben Augen werden schmal und leuchten hell auf."
     },
     {
       "id": "ichtaca_set_against",
@@ -59458,7 +59458,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ichtaca hat sich gegen dich gestellt."
         }
       ]
     },
@@ -59482,7 +59482,7 @@
     {
       "id": "lose_ichtaca",
       "bullet_type": "small",
-      "text": "Remove Ichtaca from all investigator’s deck for the remainder of the campaign.",
+      "text": "Entferne Ichtaca aus allen Ermittlerdecks für den Rest der Kampagne.",
       "effects": [
         {
           "type": "remove_card",
@@ -59534,23 +59534,23 @@
     {
       "id": "intro_5",
       "type": "story",
-      "text": "“You must leave this place at once. This is not humanity’s battle. It is ours. We cannot let you or the Brotherhood foil our plans. Not now, not when we are so close.” Her hand wavers for a moment, and her eyes flicker again. You can tell that something is tearing at her, weighing on her mind. Finally, she speaks again. “Go now. Before I change my mind. And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "„Du musst sofort weg von hier. Das ist nicht der Kampf der Menschen. Es ist unser Kampf. Wir können nicht zulassen, dass die Bruderschaft unsere Pläne durchkreuzt. Nicht jetzt, wo wir es schon fast geschafft haben.“ Für einen Moment zittert ihre Hand und ihr Blick flackert wieder. Du erkennst, dass sie innerlich zerrissen ist und etwas schwer auf ihr lastet. Dann fährt sie fort. „Geh jetzt. Bevor ich es mir anders überlege. Und wenn du leben willst, folge mir nicht. Ich werde dir keine zweite Chance geben.“ Ichtaca verlässt dich, aber sie lässt dich nicht aus den Augen, bis sie in der Ferne verschwindet. Trotz ihrer Warnung hast du das Gefühl, dass dir nichts anderes übrig bleibt, als ihr zu folgen. Wer außer dir kann die Menschheit schützen?"
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": "Now drop your weapons.” The betrayal stings your chest, and you are gripped with anger and despair. Thoughts of escape flash across your mind, but you have seen her skill with a bow—with her steady aim, you would be dead before you took two steps. You have no choice but to comply. Your weapons clatter to the ground, one at a time. “Good. Now the relic: hand it to me.” Grimacing, you take a few steps forward and offer the relic to Ichtaca."
+      "text": "„Jetzt lass deine Waffe fallen.“ Der Schmerz über den Verrat wühlt in deiner Brust. Wut und Verzweiflung überkommen dich. Kurz erwägst du zu fliehen, aber du hast gesehen, wie geschickt sie mit dem Bogen ist – so gut wie sie ziehlen kann, wärst du tot, ehe du auch nur zwei Schritte getan hättest. Dir bleibt keine andere Wahl, du musst ihr gehorchen. Deine Waffen fallen eine nach der anderen klappernd zu Boden. „Gut. Und nun gib mir das Relikt.“ Mit wutverzerrter Miene trittst du einige Schritte vor und hältst Ichtaca das Relikt hin."
     },
     {
       "id": "check_pocketknife",
-      "text": "Check your supplies to see if any investigator has a pocketknife.",
+      "text": "Überprüfe deine Ausrüstung, ob ein Ermittler ein Taschenmesser hat.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Taschenmesser",
         "options": [
           {
             "boolCondition": true,
@@ -59572,16 +59572,16 @@
     {
       "id": "intro_7",
       "type": "story",
-      "text": "As Ichtaca reaches out to grab the relic, you pull out your concealed pocketknife and quickly attack, catching her by surprise. The blade cuts deeply across her forearm. Blood sprays across your chest, and she staggers with pain, gripping her arm. Her heel clips a rock near the edge of the precipice, and she tumbles over the side of the ledge, her scream growing distant as she falls. You barely have time to recover from the shock of what just happened, as another colossal roar fills the cavern, and the ground shakes. You gather your belongings and continue your descent."
+      "text": "Als Ichtaca nach dem Relikt greift, ziehst du dein verstecktes Taschenmesser heraus und nutzt das Überraschungsmoment, um sie anzugreifen. Die Klinge dringt tief in ihren Unterarm. Blut spritzt auf deine Brust und sie greift schmerzerfüllt nach ihrem Arm. Mit der Ferse löst sie einen Stein aus dem Rand des Steilhanges, dann taumelt sie über die Klippe und ihr Schrei wird immer leiser, während sie in die Tiefe fällt. Dir bleibt kaum Zeit, um dich von dem Schock zu erholen, als ein weiteres gewaltiges Brüllen die Höhle erfüllt und der Boden zu beben beginnt. Du suchst deine Sachen zusammen und setzt deinen Abstieg fort."
     },
     {
       "id": "intro_8",
       "type": "story",
-      "text": "Ichtaca grabs the relic. You can see the skin on the back of her hand growing hard and scaly. You take a few steps back, knuckles white with anger. “Go now. Before I change my mind,” she says. “And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "Ichtaca greift nach dem Relikt. Du siehst, dass die Haut auf der Rückseite ihrer Hand bereits hart und schuppig wird. Du trittst einige Schritte zurück und ballst wütend die Faust, bis deine Fingerknöchel weiß werden. „Geh jetzt. Bevor ich es mir anders überlege“, sagt sie. „Und wenn du leben willst, folge mir nicht. Ich werde dir keine zweite Chance geben.“ Ichtaca verlässt dich, aber sie lässt dich nicht aus den Augen, bis sie in der Ferne verschwindet. Trotz ihrer Warnung hast du das Gefühl, dass dir nichts anderes übrig bleibt, als ihr zu folgen. Wer außer dir kann die Menschheit schützen?"
     },
     {
       "id": "lost_relic",
-      "text": "In your Campaign Log, cross off <i>the investigators found the missing relic</i> and record <i>the relic is missing</i>.",
+      "text": "Im Kampagnenlogbuch wird gestrichen: <i>Die Ermittler haben das verschwundene Relikt gefunden</i>. Im Kampagnenlogbuch wird notiert: <i>Das Relikt ist verschwunden</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -59593,7 +59593,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "Das Relikt ist verschwunden."
         }
       ]
     },
@@ -59616,7 +59616,7 @@
     },
     {
       "id": "remove_relic",
-      "text": "Remove The Relic of Ages from all investigator’s decks for the remainder of the campaign.",
+      "text": "Entferne das Relikt der Zeitalter aus allen Ermittlerdecks für den Rest der Kampagne.",
       "effects": [
         {
           "type": "remove_card",
@@ -59640,7 +59640,7 @@
     {
       "id": "check_yigs_fury",
       "type": "branch",
-      "text": "Check Campaign Log to see how many marks are under 'Yig's Fury'",
+      "text": "Überprüfe im Kampagnenlogbuch die Zählstriche unter „Yigs Zorn“",
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
@@ -59783,32 +59783,32 @@
     {
       "id": "fury_0",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 0, search the gathered encounter cards for Yig and each copy of Pit Warden. Remove those cards from the game."
+      "text": "Falls dort 0 Zählstriche sind, werden die herausgesuchten Begegnungskarten nach Yig und jeder Kopie von Grubenwächter durchsucht. Diese Karten werden aus dem Spiel entfernt."
     },
     {
       "id": "fury_1_to_5",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 1 and 5, no changes are made."
+      "text": "Falls sich dort 1–5 Zählstriche befinden, wird nichts geändert."
     },
     {
       "id": "fury_6_to_10",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 6 and 10, remove agenda 1a from the game. The game begins at agenda 2a."
+      "text": "Falls sich dort 6–10 Zählstriche befinden, wird Agenda 1a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 2a.Falls sich dort 11–14 Zählstriche befinden, werden Agenda 1a und 2a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 3a."
     },
     {
       "id": "fury_11_to_14",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 11 and 14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
+      "text": "Falls sich dort 11–14 Zählstriche befinden, werden Agenda 1a und 2a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 3a."
     },
     {
       "id": "fury_15_to_17",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 15 and 17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
+      "text": "Falls sich dort 15–17 Zählstriche befinden, werden Agenda 1a, 2a und 3a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 4a."
     },
     {
       "id": "fury_18_to_20",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 18 and 20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a.",
+      "text": "Falls sich dort 18–20 Zählstriche befinden, werden Agenda 1a, 2a, 3a und 4a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 5a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -59821,7 +59821,7 @@
     {
       "id": "fury_21",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a.",
+      "text": "Falls sich dort 21 oder mehr Zählstriche befinden, werden Agenda 1a, 2a, 3a, 4a und 5a aus dem Spiel entfernt. Das Spiel beginnt mit Agenda 6a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -59839,11 +59839,11 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each of the 10 single-sided locations aside, out of play. Draw one of those locations at random other than Steps of Yoth, and put it into play. Each investigator begins play at the randomly chosen location."
+      "text": "Die 10 einseitig bedruckten Orte werden als nicht im Spiel befindlich beiseitegelegt. Einer dieser Orte mit Ausnahme von Stufen von Yoth wird zufällig gezogen und ins Spiel gebracht. Jeder Ermittler beginnt das Spiel an dem zufällig bestimmten Ort."
     },
     {
       "id": "maybe_setup_harbinger",
-      "text": "Check Campaign Notes. If <i>the Harbinger is still alive.</i>",
+      "text": "Überprüfe das Kampagnenlogbuch, <i>ob der Vorbote noch am Leben ist.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59886,12 +59886,12 @@
     {
       "id": "put_harbinger_in_pursuit",
       "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+      "text": "Durchsuche die Sammlung nach dem Vorboten von Valusia und platziere auf ihm Schaden in Höhe des im Kampagnenlogbuch in Klammern notierten Wertes. Da es Agenda 5a oder 6a ist, bewege den Vorbote von Valusia in die Verfolgungszone."
     },
     {
       "id": "set_aside_harbinger",
       "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and set it aside. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log."
+      "text": "Durchsuche die Sammlung nach dem Vorboten von Valusia und lege ihn beiseite. Auf ihm wird Schaden in Höhe des im Kampagnenlogbuch in Klammern notierten Schadens platziert."
     },
     {
       "id": "check_agenda_6",
@@ -59919,23 +59919,23 @@
     },
     {
       "id": "set_aside_yig",
-      "text": "Set the Yig enemy aside, out of play."
+      "text": "Der Gegner Yig wird als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "put_yig_in_pursuit",
-      "text": "Because it is agenda 6a, put the set-aside Yig enemy in the pursuit area."
+      "text": "Da es Agenda 6a ist, bewege den beiseitegelegten Gegner Yig in die Verfolgungszone."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the set-aside Steps of Yoth and 4 of the remaining single-sided locations and shuffling them together."
+      "text": "Das Erkundungsdeck wird erstellt. Dafür wird die beiseitegelegte Karte Stufen von Yoth und 4 zufällig bestimmte der verbleibenden einseitig bedruckten Orte zusammengemischt."
     },
     {
       "id": "setup_depth",
-      "text": "Place 1 resource token on the scenario reference card, under “Current Depth.” For the remainder of the scenario, the number of resources under “Current Depth” indicates the current depth level. (See “Depth Level,” below.)"
+      "text": "Es wird 1 Ressourcenmarker neben „Aktuelle Tiefe“ auf die Szenarioübersichtskarte gelegt. Für den Rest des Szenarios entspricht die Anzahl der Ressourcenmarker unter „Aktuelle Tiefe“ der aktuellen Tiefenstufe. (Siehe „Tiefenstufe“ weiter unten.)"
     },
     {
       "id": "set_aside_relic",
-      "text": "Set the Relic of Ages (<i>Repossess the Past</i>) aside, out of play."
+      "text": "Das Relikt der Zeitalter (<i>Lasse die Vergangenheit wieder aufleben</i>) wird als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "set_aside_poison",
@@ -59948,14 +59948,14 @@
     {
       "id": "depth_level_rule",
       "type": "rule_reminder",
-      "title": "Depth Level",
-      "text": "Throughout this scenario, the number of resources under “Current Depth” on the scenario reference card indicates the current depth level. As the investigators journey deeper into Yoth by completing act 1, resources are added to the current depth level, and play continues until the investigators reach a certain depth level, or are defeated. Deeper levels of Yoth are deadlier, but the deeper the level the investigators are able to reach, the better the resolution of this scenario will be.\nThe current depth level has no game effect on its own; however, some encounter card effects may change or become stronger depending on the current depth level."
+      "title": "Tiefenstufe",
+      "text": "In diesem Szenario gibt die Anzahl der Ressourcen unter „Aktuelle Tiefe“ auf der Szenarioübersichtskarte die aktuelle Tiefenstufe an. Wenn die Ermittler tiefer nach Yoth vordringen, indem sie Szene 1 abschließen, werden Ressourcen zur aktuellen Tiefenstufe hinzugefügt und das Spiel geht weiter, bis die Ermittler eine bestimmte Stufe erreicht haben oder besiegt werden. Tiefere Stufen von Yoth sind tödlicher, aber je tiefer die Stufe ist, die die Ermittler erreichen, desto besser wird die Auflösung des Szenarios für sie. Die aktuelle Tiefenstufe hat keinen eigenen Spieleffekt, aber einige Begegnungskarteneffekte können sich abhängig von der aktuellen Tiefenstufe verändern oder stärker werden."
     },
     {
       "id": "pursuit_rule",
       "type": "rule_reminder",
-      "title": "Pursuit",
-      "text": "Some cards in this scenario reference an area called the “pursuit area.” The pursuit area is an out-of-play area next to the act and agenda deck which enemies can enter and leave via card effects. Generally speaking, enemies in play will move to the pursuit area whenever the investigators reach the next depth level. <b>Although the pursuit area is out of play, whenever an enemy moves to the pursuit area, it keeps all tokens and attachments.</b>\nEnemies in the pursuit area are considered to be “in pursuit.” Enemies that are in pursuit are considered to be out of play, and cannot be affected by player cards or investigator actions. However, enemies that are in pursuit can re-enter play by a variety of card abilities."
+      "title": "Verfolgung",
+      "text": "Einige Karten in diesem Szenario beziehen sich auf eine Zone namens „Die Verfolgungszone“. Die Verfolgungszone ist eine Zone außerhalb des Spiels, neben den Szenen- und Agendadecks, die Gegner durch Karteneffekte betreten und verlassen können. Im Allgemeinen werden Gegner im Spiel in die Verfolgungszone bewegt, sobald die Ermittler die nächste Tiefenstufe erreichen. <b>Obwohl sich die Verfolgungszone nicht im Spiel befindet, behalten Gegner, die in die Verfolgungszone bewegt werden, alle Marker und Verstärkungen.</b> \nGegner in der Verfolgungszone gelten als „verfolgend.“ Verfolgende Gegner gelten als außerhalb des Spiels und können nicht von Spielerkarten oder Aktionen der Ermittler betroffen werden. Aber verfolgende Gegner können durch eine Reihe von Kartenfähigkeiten erneut ins Spiel kommen."
     },
     {
       "id": "fell_into_depths",
@@ -59964,7 +59964,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fell_into_depths",
-          "text": "the investigators fell into the depths."
+          "text": "Die Ermittler sind in die Tiefe gestürzt."
         }
       ]
     },
@@ -59973,14 +59973,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Depth level when the scenario ended:",
+        "text": "Die Tiefenstufe am Ende des Szenarios:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "hidden",
             "id": "final_depth",
             "operation": "set_input",
-            "text": "#X# depth"
+            "text": "Tiefenstufe"
           }
         ]
       }
@@ -60028,7 +60028,7 @@
     },
     {
       "id": "depth_1_fall",
-      "text": "Because the current depth level is 1, the fall is fatal, and the darkness of N’kai devours the shattered corpses. Each investigator is <b>killed</b>. The investigators lose the campaign.",
+      "text": "Da die aktuelle Tiefenstufe 1 war, ist der Fall tödlich und die Dunkelheit von N’kai verschlingt die zerschmetterten Körper der Ermittler. Jeder Ermittler ist <b>getötet</b>. Die Ermittler verlieren die Kampagne.",
       "effects": [
         {
           "type": "trauma",
@@ -60049,7 +60049,7 @@
     },
     {
       "id": "depth_2_fall",
-      "text": "Because the current depth level is 2, each investigator suffers 2 physical trauma and searches the collection for a random basic Injury weakness, adding it to their deck.",
+      "text": "Da die aktuelle Tiefenstufe 2 war, erleidet jeder Ermittler 2 körperliche Traumata, durchsucht die Sammlung nach einer zufälligen Verletzung- Schwäche und fügt sie seinem Deck hinzu.",
       "effects": [
         {
           "type": "trauma",
@@ -60105,7 +60105,7 @@
     },
     {
       "id": "depth_3_fall",
-      "text": "Because the current depth level is 3, each investigator suffers 1 physical trauma.",
+      "text": "Falls die aktuelle Tiefenstufe 3 war, erleidet jeder Ermittler 1 körperliches Trauma.",
       "effects": [
         {
           "type": "trauma",
@@ -60121,7 +60121,7 @@
     },
     {
       "id": "depth_4_fall",
-      "text": "Because the current depth level is 4, you suffer no ill effects.",
+      "text": "Falls die aktuelle Tiefenstufe 4 war, erleiden die Ermittler keine negativen Effekte.",
       "effects": [
         {
           "type": "earn_xp",
@@ -60206,7 +60206,7 @@
       "input": {
         "type": "counter",
         "text": "Siegpunktestapel",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Jeder Ermittler verdient zusätzliche Erfahrungspunkte in Höhe der aktuellen Tiefenstufe.",
         "effects": [
           {
             "type": "earn_xp",
@@ -60222,7 +60222,7 @@
       "input": {
         "type": "counter",
         "text": "Siegpunktestapel",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Jeder Ermittler verdient zusätzliche Erfahrungspunkte in Höhe der aktuellen Tiefenstufe.",
         "effects": [
           {
             "type": "earn_xp",
@@ -60239,7 +60239,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "nexus_is_near",
-          "text": "the nexus is near."
+          "text": "Der Nexus ist nah."
         }
       ]
     },
@@ -60300,7 +60300,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Ausrüstung anpassen",
             "steps": [
               "cross_out_rope"
             ],
@@ -60348,7 +60348,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
+      "text": "Nach stundenlanger Wanderung hast du gerade mal die Oberfläche dieses gewaltigen unterirdischen Reiches angekratzt. Die Menschheit könnte Jahre damit verbringen, Karten von diesen Tunneln anzufertigen und würde damit doch nie fertig werden. Egal wie schnell du in die Tiefe vordringst, die Schlangen, die dich jagen, sind dir dicht auf den Fersen. Du bist ein Eindringling in ihrer Heimat und sie kennen diese höllischen Tunnel besser als du. Deine Verletzungen machen dich langsam und Furcht erschwert dir jede Entscheidung. Dein Tod durch diese Kreaturen scheint unausweichlich. Verzweiflung bohrt sich ihren Weg in deinen Verstand. Als die Schlangen dich schließlich einholen, überquerst du gerade eine der vielen langen Steinbrücken, die über eine breite Schlucht führen. Schlangenartige Kreaturen greifen dich von beiden Seiten der Schlucht an ihre Speerspitzen drängen dich gefährlich nah an den Rand der Brücke. Ein kleiner Stein bricht unter deiner Ferse aus der Brücke, löst sich und fällt in die tintenschwarze Tiefe unter dir. Du hörst ihn nicht auf dem Boden aufschlagen. Diesmal besteht keine Hoffnung auf Entkommen oder Flucht – dir bleibt nichts anderes übrig, als dein Schicksal zu akzeptieren. Die Speerspitzen drängen dich noch weiter an die Kante. Du schließt deine Augen und lässt dich fallen.",
       "steps": [
         "fell_into_depths",
         "record_final_depth",
@@ -60362,7 +60362,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
+      "text": "Auch wenn alles gegen dich zu stehen schien, schaffst du es irgendwie, dein Ziel zu erreichen. Das verräterische rote Leuchten, das dich seit deiner Ankunft in Yoth umgeben hat, verblasst und wird durch eine undurchdringliche tintenschwarze Dunkelheit ersetzt. Der Nexus muss ganz nah sein ... du fühlst es.",
       "steps": [
         "nexus_is_near",
         "check_harbinger",
@@ -61722,7 +61722,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "Das Relikt ist verschwunden."
         }
       ]
     },
@@ -61959,7 +61959,7 @@
           },
           {
             "id": "pocketknife",
-            "name": "Pocketknife",
+            "name": "Taschenmesser",
             "description": "Zu klein, um als verlässliche Waffe zu dienen, aber dafür gut zu verbergen.",
             "cost": 2
           },
