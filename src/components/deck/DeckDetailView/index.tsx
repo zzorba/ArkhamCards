@@ -485,13 +485,14 @@ class DeckDetailView extends React.Component<Props, State> {
       id: 'menu',
       icon: iconsMap.menu,
       color: 'white',
+      accessibilityLabel: t`Menu`,
     }];
     if (hasPendingEdits) {
       rightButtons.push({
         text: t`Save`,
         id: 'save',
         color: 'white',
-        testID: t`Save`,
+        accessibilityLabel: t`Save`,
       });
     }
     return rightButtons;

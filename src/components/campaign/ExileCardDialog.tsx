@@ -26,8 +26,8 @@ export default class ExileCardDialog extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Save`,
           id: 'save',
-          color: COLORS.navButton,
-          testID: t`Save`,
+          color: COLORS.M,
+          accessibilityLabel: t`Save`,
         }],
       },
     };

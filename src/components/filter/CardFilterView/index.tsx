@@ -45,7 +45,7 @@ class CardFilterView extends React.Component<Props> {
       topBar: {
         title: {
           text: t`Filter`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
       },
     };

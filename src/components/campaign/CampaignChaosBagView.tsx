@@ -31,7 +31,8 @@ class CampaignChaosBagView extends React.Component<Props> {
           systemItem: 'save',
           text: t`Edit`,
           id: 'edit',
-          color: COLORS.navButton,
+          color: COLORS.M,
+          accessibilityLabel: t`Edit Chaos Bag`,
         }],
       },
     };

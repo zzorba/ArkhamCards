@@ -291,8 +291,8 @@ class NewCampaignView extends React.Component<Props, State> {
           text: t`Done`,
           id: 'save',
           enabled: campaignCode !== CUSTOM || !!name,
-          color: COLORS.navButton,
-          testID: t`Done`,
+          color: COLORS.M,
+          accessibilityLabel: t`Done`,
         }],
       },
     });

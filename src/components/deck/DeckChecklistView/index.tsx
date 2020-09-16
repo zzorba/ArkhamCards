@@ -53,7 +53,7 @@ class DeckChecklistView extends React.Component<Props, State> {
             icon: iconsMap.sort,
             id: 'sort',
             color: COLORS.white,
-            testID: t`Sort`,
+            accessibilityLabel: t`Sort`,
           },
         ],
       },
@@ -191,6 +191,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   clearText: {
-    color: COLORS.navButton,
+    color: COLORS.M,
   },
 });

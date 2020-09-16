@@ -67,10 +67,10 @@ class AddScenarioResultView extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Save`,
           id: 'save',
-          color: COLORS.navButton,
+          color: COLORS.M,
           enabled: scenarioResult && !!(scenarioResult.scenario &&
             (scenarioResult.interlude || scenarioResult.resolution !== '')),
-          testID: t`Save`,
+          accessibilityLabel: t`Save`,
         }],
       },
     });

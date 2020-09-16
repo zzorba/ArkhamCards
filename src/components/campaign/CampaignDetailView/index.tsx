@@ -87,7 +87,8 @@ class CampaignDetailView extends React.Component<Props, State> {
         rightButtons: [{
           icon: iconsMap.menu,
           id: 'menu',
-          color: COLORS.navButton,
+          color: COLORS.M,
+          accessibilityLabel: t`Menu`,
         }],
       },
     };

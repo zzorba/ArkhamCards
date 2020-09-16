@@ -177,12 +177,12 @@ export default function withFilterFunctions<P>(
             [{
               text: t`Clear`,
               id: 'clear',
-              color: COLORS.navButton,
-              testID: t`Clear`,
+              color: COLORS.M,
+              accessibilityLabel: t`Clear`,
             }] : [],
           title: {
             text: title,
-            color: COLORS.navButton,
+            color: COLORS.M,
           },
           subtitle: {
             text: ngettext(
@@ -190,7 +190,7 @@ export default function withFilterFunctions<P>(
               `${count} Cards`,
               count
             ),
-            color: COLORS.navButton,
+            color: COLORS.M,
           },
         },
       });

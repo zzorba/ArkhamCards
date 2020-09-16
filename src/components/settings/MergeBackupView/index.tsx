@@ -67,7 +67,8 @@ class MergeBackupView extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Import`,
           id: 'import',
-          color: COLORS.navButton,
+          color: COLORS.M,
+          accessibilityLabel: t`Import`,
         }],
       },
     };
@@ -87,8 +88,9 @@ class MergeBackupView extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Import`,
           id: 'import',
-          color: COLORS.navButton,
+          color: COLORS.M,
           enabled: this.canImport(),
+          accessibilityLabel: t`Import`,
         }],
       },
     });

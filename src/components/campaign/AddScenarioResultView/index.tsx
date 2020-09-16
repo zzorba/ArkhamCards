@@ -78,7 +78,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Save`,
           id: 'save',
-          color: COLORS.navButton,
+          color: COLORS.M,
         }],
       },
     };
@@ -126,7 +126,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
           text: t`Save`,
           id: 'save',
           enabled: this.saveEnabled(),
-          color: COLORS.navButton,
+          color: COLORS.M,
         }],
       },
     });

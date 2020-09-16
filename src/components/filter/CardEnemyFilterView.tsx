@@ -22,7 +22,7 @@ class CardEnemyFilterView extends React.Component<FilterProps> {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
         title: {
           text: t`Enemy Filters`,

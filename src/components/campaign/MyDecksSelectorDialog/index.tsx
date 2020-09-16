@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
@@ -57,7 +57,7 @@ interface State {
 }
 
 class MyDecksSelectorDialog extends React.Component<Props, State> {
-  static deckOptions(passProps: Props) {
+  static deckOptions(passProps: Props): Options {
     return {
       topBar: {
         title: {
@@ -66,20 +66,20 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
-          color: COLORS.navButton,
-          testID: t`Cancel`,
+          color: COLORS.M,
+          accessibilityLabel: t`Cancel`,
         }],
         rightButtons: passProps.onlyShowSelected ? [] : [{
           icon: iconsMap.add,
           id: 'add',
-          color: COLORS.navButton,
-          testID: t`New Deck`,
+          color: COLORS.M,
+          accessibilityLabel: t`New Deck`,
         }],
       },
     };
   }
 
-  static investigatorOptions() {
+  static investigatorOptions(): Options {
     return {
       topBar: {
         title: {
@@ -88,14 +88,14 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
-          color: COLORS.navButton,
-          testID: t`Cancel`,
+          color: COLORS.M,
+          accessibilityLabel: t`Cancel`,
         }],
         rightButtons: [{
           icon: iconsMap.sort,
           id: 'sort',
-          color: COLORS.navButton,
-          testID: t`Sort`,
+          color: COLORS.M,
+          accessibilityLabel: t`Sort`,
         }],
       },
     };
