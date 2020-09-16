@@ -164,7 +164,7 @@ export const DARK_THEME: ThemeColors = {
   M: medium,
   faction: {
     guardian: {
-      text: '#1D92F1',
+      text: '#5CB4FD',
       background: '#1072C2',
       darkBackground: '#2b80c5',
       lightBackground: '#004880',
@@ -182,13 +182,13 @@ export const DARK_THEME: ThemeColors = {
       lightBackground: '#015906',
     },
     mystic: {
-      text: '#6B5BD6',
+      text: '#BA81F2',
       background: '#7554AB',
       darkBackground: '#7554AB',
       lightBackground: '#46018f',
     },
     survivor: {
-      text: '#D34E54',
+      text: '#EE4A53',
       background: '#CC3038',
       darkBackground: '#cc3038',
       lightBackground: '#7a0105',

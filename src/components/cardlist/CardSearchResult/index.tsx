@@ -116,12 +116,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         />
       );
     }
-    if (card.faction2_code) {
-      const icon = FACTION_ICONS.dual;
-      return !!icon && icon(size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE);
-    }
-    const icon = FACTION_ICONS[card.factionCode()];
-    return !!icon && icon(size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE);
+    const faction = card.factionCode();
+    return (
+      <ArkhamIcon
+        name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
+        size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
+        color={colors.faction[faction].text}
+      />
+    )
   }
 
   static cardCost(card: Card): string {

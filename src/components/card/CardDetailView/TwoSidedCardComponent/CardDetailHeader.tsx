@@ -64,17 +64,31 @@ function HeaderPattern({ card, width }: { card: Card, width: number }) {
   }
 }
 
+function DualFactionIcons({ card }: { card: Card }) {
+  if (!card.faction2_code || !card.faction_code) {
+    return null;
+  }
+  return (
+    <>
+      <ArkhamIcon name={card.faction_code} size={36} color="white" />
+      <ArkhamIcon name={card.faction2_code} size={36} color="white" />
+    </>
+  )
+}
 function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
   const color = '#FFF';
   if (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') {
     return (
-      <View style={styles.costIcon}>
-        <CardCostIcon
-          card={card}
-          inverted
-          linked={linked}
-        />
-      </View>
+      <>
+        <DualFactionIcons card={card} />
+        <View style={styles.costIcon}>
+          <CardCostIcon
+            card={card}
+            inverted
+            linked={linked}
+          />
+        </View>
+      </>
     );
   }
 
@@ -168,7 +182,7 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
 
 export default function CardDetailHeader({ card, width, back, linked }: Props) {
   const { colors } = useContext(StyleContext);
-  const color = colors.faction[card.factionCode()].background;
+  const color = colors.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
   if (back && (card.name === card.back_name || !card.back_name)) {
     return null;
   }
