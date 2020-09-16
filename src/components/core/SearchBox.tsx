@@ -9,7 +9,6 @@ import { Input } from 'react-native-elements';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import space from '@styles/space';
 
 export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
@@ -79,9 +78,10 @@ export default class SearchBox extends React.Component<Props> {
           },
         ]}
         inputStyle={{
+          marginTop: 6,
           fontFamily: 'Alegreya-Regular',
           fontSize: 20,
-          lineHeight: 20,
+          lineHeight: 24,
           color: colors.darkText,
           textAlignVertical: 'center',
         }}
@@ -89,7 +89,7 @@ export default class SearchBox extends React.Component<Props> {
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={colors.D20}
-        leftIcon={<View style={[space.marginBottomS, space.marginRightXs]}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
+        leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
         rightIcon={this.renderToggleButton()}
         rightIconContainerStyle={{
           position: 'absolute',
@@ -106,6 +106,9 @@ const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: 1,
   },
+  searchIcon: {
+    marginRight: 4,
+  },
   container: {
     paddingLeft: 8,
     paddingRight: 8,
@@ -121,7 +124,6 @@ const styles = StyleSheet.create({
     borderRadius: SEARCH_BAR_INPUT_HEIGHT / 2,
     height: SEARCH_BAR_INPUT_HEIGHT,
     borderWidth: 1,
-    paddingBottom: 0,
     marginBottom: 0,
     marginTop: 0,
     marginLeft: 0,
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     fontFamily: 'System',
     fontSize: 18,
+    lineHeight: 22,
   },
   icon: {
     width: 36,

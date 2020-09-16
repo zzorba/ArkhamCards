@@ -41,7 +41,7 @@ export default class NewDeckView extends React.Component<Props, State> {
           testID: t`Cancel`,
         }],
         rightButtons: [{
-          icon: iconsMap['sort-by-alpha'],
+          icon: iconsMap.sort,
           id: 'sort',
           color: COLORS.navButton,
           testID: t`Sort`,
@@ -100,7 +100,7 @@ export default class NewDeckView extends React.Component<Props, State> {
           onCreateDeck,
         },
         options: {
-          ...getDeckOptions(investigator, false, t`New Deck`),
+          ...getDeckOptions({ title: t`NewDeck`, }, investigator),
           bottomTabs: {},
         },
       },

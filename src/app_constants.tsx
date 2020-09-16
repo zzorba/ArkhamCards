@@ -101,6 +101,7 @@ export const SKILLS: SkillCodeType[] = [
 ];
 
 export type SpecialChaosTokenType =
+  'bless' | 'curse' |
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
 

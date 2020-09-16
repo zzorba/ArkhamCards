@@ -97,6 +97,8 @@ interface OwnProps {
   mythosMode?: boolean;
   initialSort?: SortType;
   renderCard?: (card: Card) => React.ReactElement;
+  noSearch?: boolean;
+  extraData?: any;
 }
 
 interface ReduxProps {
@@ -151,6 +153,7 @@ interface State {
   };
   loadingMessage: string;
   dirty: boolean;
+  extraData?: any;
 }
 
 interface CardBucket extends SectionListData<Card> {
@@ -193,6 +196,7 @@ class CardResultList extends React.Component<Props, State> {
       deckCardCounts,
       visible,
       mythosMode,
+      extraData,
     } = this.props;
     const {
       dirty,
@@ -207,7 +211,8 @@ class CardResultList extends React.Component<Props, State> {
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||
         prevProps.in_collection !== this.props.in_collection ||
-        prevProps.tabooSetId !== this.props.tabooSetId
+        prevProps.tabooSetId !== this.props.tabooSetId ||
+        prevProps.extraData !== this.props.extraData
     ) {
       if (visible) {
         /* eslint-disable react/no-did-update-set-state */
@@ -215,17 +220,20 @@ class CardResultList extends React.Component<Props, State> {
           dirty: false,
           showNonCollection: {},
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+          extraData: updateDeckCardCounts ? { extraData, deckCardCounts } : { extraData, deckCardCounts: this.state.deckCardCounts },
         });
       } else if (!dirty) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           dirty: true,
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+          extraData: updateDeckCardCounts ? { extraData, deckCardCounts } : { extraData, deckCardCounts: this.state.deckCardCounts },
         });
       }
     } else if (updateDeckCardCounts) {
       this.setState({
         deckCardCounts: deckCardCounts,
+        extraData: { extraData, deckCardCounts },
       });
     }
   }
@@ -775,6 +783,8 @@ class CardResultList extends React.Component<Props, State> {
       handleScroll,
       renderHeader,
       filterCard,
+      noSearch,
+      extraData,
     } = this.props;
     const {
       loadingMessage,
@@ -861,8 +871,8 @@ class CardResultList extends React.Component<Props, State> {
           };
           return (
             <SectionList
-              contentInset={{ top: SEARCH_BAR_HEIGHT }}
-              contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+              contentInset={noSearch ? undefined : { top: SEARCH_BAR_HEIGHT }}
+              contentOffset={noSearch ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
               refreshControl={
                 <RefreshControl
                   refreshing={!!refreshing}
@@ -877,7 +887,7 @@ class CardResultList extends React.Component<Props, State> {
               renderItem={this._renderCard}
               initialNumToRender={30}
               keyExtractor={this._cardToKey}
-              extraData={this.state.deckCardCounts}
+              extraData={extraData}
               getItemLayout={getItemLayout}
               ListHeaderComponent={renderHeader}
               ListFooterComponent={this._renderFooter(liveState, refreshing)}

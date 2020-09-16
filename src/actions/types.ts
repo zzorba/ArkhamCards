@@ -214,6 +214,8 @@ export interface InvestigatorCampaignNoteCount {
 export const NEW_CHAOS_BAG_RESULTS = {
   drawnTokens: [],
   sealedTokens: [],
+  blessTokens: 0,
+  curseTokens: 0,
   totalDrawnTokens: 0,
 };
 
@@ -223,6 +225,8 @@ export interface ChaosBagResults {
     id: string;
     icon: ChaosTokenType;
   }[];
+  blessTokens?: number;
+  curseTokens?: number;
   totalDrawnTokens: number;
 }
 
@@ -601,6 +605,15 @@ export interface UpdateChaosBagResultsAction {
   now: Date;
 }
 
+export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
+export interface AdjustBlessCurseAction {
+  type: typeof ADJUST_BLESS_CURSE;
+  id: number;
+  bless: boolean;
+  direction: 'inc' | 'dec';
+  now: Date;
+}
+
 export const CLEAN_BROKEN_CAMPAIGNS = 'CLEAN_BROKEN_CAMPAIGNS';
 export interface CleanBrokenCampaignsAction {
   type: typeof CLEAN_BROKEN_CAMPAIGNS;
@@ -948,6 +961,7 @@ export type CampaignActions =
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
+  AdjustBlessCurseAction |
   EnsureUuidAction;
 
 export type GuideActions =

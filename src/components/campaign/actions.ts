@@ -38,6 +38,8 @@ import {
   UpdateChaosBagResultsAction,
   DeleteCampaignAction,
   RestoreBackupAction,
+  AdjustBlessCurseAction,
+  ADJUST_BLESS_CURSE,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import { AppState, getCampaign } from '@reducers';
@@ -238,6 +240,22 @@ export function updateChaosBagResults(
       type: UPDATE_CHAOS_BAG_RESULTS,
       id,
       chaosBagResults,
+      now: new Date(),
+    });
+  };
+}
+
+export function adjustBlessCurseChaosBagResults(
+  id: number,
+  type: 'bless' | 'curse',
+  direction: 'inc' | 'dec'
+): ThunkAction<void, AppState, null, AdjustBlessCurseAction> {
+  return (dispatch) => {
+    dispatch({
+      type: ADJUST_BLESS_CURSE,
+      id,
+      bless: type === 'bless',
+      direction,
       now: new Date(),
     });
   };

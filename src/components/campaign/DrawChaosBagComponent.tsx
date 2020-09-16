@@ -12,14 +12,17 @@ import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
 import { ChaosBagResults } from '@actions/types';
 import typography from '@styles/typography';
+import PlusMinusTokens from '@components/core/PlusMinusButtons';
 import ChaosToken from './ChaosToken';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { updateChaosBagResults } from './actions';
+import { adjustBlessCurseChaosBagResults, updateChaosBagResults } from './actions';
 import { AppState, getChaosBagResults } from '@reducers';
 import { SealTokenDialogProps } from './SealTokenDialog';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
 import space, { s } from '@styles/space';
+import PlusMinusButtons from '@components/core/PlusMinusButtons';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -34,6 +37,7 @@ interface ReduxProps {
 
 interface ReduxActionProps {
   updateChaosBagResults: (id: number, chaosBagResults: ChaosBagResults) => void;
+  adjustBlessCurseChaosBagResults: (id: number, type: 'bless' | 'curse', direction: 'inc' | 'dec') => void;
 }
 
 interface State {
@@ -46,6 +50,9 @@ type Props = OwnProps &
   DimensionsProps;
 
 class CampaignChaosBagView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -245,17 +252,37 @@ class CampaignChaosBagView extends React.Component<Props, State> {
 
     if (chaosBagResults.drawnTokens.length > 1) {
       return (
-        <BasicButton title={t`Clear Tokens`} onPress={this._handleClearTokensPressed} />
+        <BasicButton title={t`Return Tokens`} onPress={this._handleClearTokensPressed} />
       );
     }
     return null;
   }
 
+  _incBless = () => {
+    const { campaignId, adjustBlessCurseChaosBagResults } = this.props;
+    adjustBlessCurseChaosBagResults(campaignId, 'bless', 'inc');
+  };
+
+  _decBless = () => {
+    const { campaignId, adjustBlessCurseChaosBagResults } = this.props;
+    adjustBlessCurseChaosBagResults(campaignId, 'bless', 'dec');
+  };
+
+  _incCurse = () => {
+    const { campaignId, adjustBlessCurseChaosBagResults } = this.props;
+    adjustBlessCurseChaosBagResults(campaignId, 'curse', 'inc');
+  };
+
+  _decCurse = () => {
+    const { campaignId, adjustBlessCurseChaosBagResults } = this.props;
+    adjustBlessCurseChaosBagResults(campaignId, 'curse', 'dec');
+  };
+
   render() {
     const {
       chaosBagResults,
     } = this.props;
-
+    const { colors } = this.context;
     return (
       <ScrollView style={styles.containerBottom}>
         <KeepAwake />
@@ -297,6 +324,27 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             onPress={this._handleSealTokensPressed}
           />
         </View>
+        <View style={styles.header}>
+          <Text style={typography.text}>
+            { t`Bless / Curse Tokens` }
+          </Text>
+        </View>
+        <View style={styles.container}>
+          <PlusMinusButtons
+            count={chaosBagResults.blessTokens || 0}
+            onIncrement={this._incBless}
+            onDecrement={this._decBless}
+            max={10}
+            countRender={<Text style={[typography.cardName, { color: colors.darkText }]}>{ chaosBagResults.blessTokens || 0 }</Text>}
+          />
+          <PlusMinusButtons
+            count={chaosBagResults.curseTokens || 0}
+            onIncrement={this._incCurse}
+            onDecrement={this._decCurse}
+            max={10}
+            countRender={<Text style={[typography.cardName, { color: colors.darkText }]}>{ chaosBagResults.curseTokens || 0 }</Text>}
+          />
+        </View>
       </ScrollView>
     );
   }
@@ -314,7 +362,8 @@ function mapStateToProps(
 function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     updateChaosBagResults,
-  } as any, dispatch);
+    adjustBlessCurseChaosBagResults,
+  }, dispatch);
 }
 
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(

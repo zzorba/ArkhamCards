@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   View,
@@ -14,32 +14,28 @@ interface Props {
   status?: 'added' | 'removed';
 }
 export default function ChaosToken({ id, status }: Props) {
-  return (
-    <StyleContext.Consumer>
-      { ({ fontScale }) => {
-        let color = '#eeeeee';
-        switch (status) {
-          case 'added': color = '#cfe3d0'; break;
-          case 'removed': color = '#f5d6d7'; break;
-        }
-        const SCALE = ((fontScale - 1) / 4 + 1);
-        const SIZE = 36 * SCALE * iconSizeScale;
+  const { colors, fontScale } = useContext(StyleContext);
+  let color = colors.L20;
+  switch (status) {
+    case 'added': color = colors.faction.rogue.lightBackground; break;
+    case 'removed': color = colors.faction.survivor.lightBackground; break;
+  }
+  const SCALE = ((fontScale - 1) / 4 + 1);
+  const SIZE = 36 * SCALE * iconSizeScale;
 
-        return (
-          <View style={[
-            styles.button,
-            space.marginRightS,
-            {
-              width: SIZE,
-              height: SIZE,
-              backgroundColor: color,
-            },
-          ]}>
-            <ChaosTokenIcon icon={id} size={28 * SCALE * iconSizeScale} />
-          </View>
-        );
-      } }
-    </StyleContext.Consumer>
+  return (
+    <View style={[
+      styles.button,
+      space.marginRightS,
+      {
+        width: SIZE,
+        height: SIZE,
+        backgroundColor: color,
+        borderColor: colors.D30,
+      },
+    ]}>
+      <ChaosTokenIcon icon={id} size={28 * SCALE * iconSizeScale} color={colors.darkText} />
+    </View>
   );
 }
 
@@ -49,7 +45,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#000000',
     borderWidth: 1,
   },
 });

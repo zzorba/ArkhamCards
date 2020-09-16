@@ -1,6 +1,6 @@
 import React from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -41,7 +41,7 @@ interface State {
   sort: SortType;
 }
 class DeckChecklistView extends React.Component<Props, State> {
-  static options() {
+  static options(): Options {
     return {
       topBar: {
         title: {
@@ -50,7 +50,7 @@ class DeckChecklistView extends React.Component<Props, State> {
         },
         rightButtons: [
           {
-            icon: iconsMap['sort-by-alpha'],
+            icon: iconsMap.sort,
             id: 'sort',
             color: COLORS.white,
             testID: t`Sort`,
@@ -59,6 +59,7 @@ class DeckChecklistView extends React.Component<Props, State> {
       },
     };
   }
+
   state: State = {
     sort: SORT_BY_TYPE,
   };
@@ -141,7 +142,7 @@ class DeckChecklistView extends React.Component<Props, State> {
   }
 
   render() {
-    const { componentId, slots } = this.props;
+    const { componentId, slots, checklist } = this.props;
     const { sort } = this.state;
     return (
       <CardResultList
@@ -154,6 +155,8 @@ class DeckChecklistView extends React.Component<Props, State> {
         renderHeader={this._renderHeader}
         renderCard={this._renderCard}
         handleScroll={this._handleScroll}
+        extraData={checklist}
+        noSearch
       />
     );
   }
@@ -172,7 +175,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     setDeckChecklistCard,
     resetDeckChecklist,
-  } as any, dispatch);
+  }, dispatch);
 }
 
 export default withPlayerCards<NavigationProps & DeckChecklistProps>(

@@ -25,6 +25,7 @@ import {
   WeaknessSet,
   CampaignActions,
   ChaosBagResults,
+  ADJUST_BLESS_CURSE,
 } from '@actions/types';
 
 export interface CampaignsState {
@@ -321,6 +322,24 @@ export default function(
       chaosBagResults: {
         ...state.chaosBagResults || {},
         [action.id]: action.chaosBagResults,
+      },
+    };
+  }
+  if (action.type === ADJUST_BLESS_CURSE) {
+    const chaosBagResults = {
+      ...((state.chaosBagResults || {})[action.id] || NEW_CHAOS_BAG_RESULTS),
+    };
+    if (action.bless) {
+      chaosBagResults.blessTokens = (chaosBagResults.blessTokens || 0) + (action.direction === 'inc' ? 1 : -1);
+    } else {
+      chaosBagResults.curseTokens = (chaosBagResults.curseTokens || 0) + (action.direction === 'inc' ? 1 : -1);
+    }
+
+    return {
+      ...state,
+      chaosBagResults: {
+        ...state.chaosBagResults || {},
+        [action.id]: chaosBagResults,
       },
     };
   }
