@@ -153,11 +153,11 @@ export default function CardFlavorTextComponent(
       onLinkPress={onLinkPress}
       styles={{
         paragraph: {
-          fontSize: (fontAdjustment || 1) * (isBig ? 24 : 14),
+          fontFamily: 'Alegreya-Italic',
+          lineHeight: 16,
+          fontSize: (fontAdjustment || 1) * 14,
           marginTop: 4,
           marginBottom: 4,
-          fontWeight: '400',
-          fontStyle: 'italic',
           color: color || COLORS.darkText,
         },
       }}

@@ -22,7 +22,6 @@ export default function BoldItalicHtmlTagNode(
 
 const styles = StyleSheet.create({
   boldText: {
-    fontStyle: 'italic',
-    fontWeight: isBig ? '500' : '700',
+    fontFamily: 'Alegreya-ExtraBoldItalic',
   },
 });

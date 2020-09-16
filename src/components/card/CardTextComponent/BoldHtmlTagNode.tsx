@@ -22,6 +22,6 @@ export default function BoldHtmlTagNode(
 
 const styles = StyleSheet.create({
   boldText: {
-    fontWeight: isBig ? '500' : '700',
+    fontFamily: 'Alegreya-Bold',
   },
 });

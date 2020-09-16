@@ -24,11 +24,10 @@ export default function EmphasisHtmlTagNode(
 
 const styles = StyleSheet.create({
   boldItalicText: {
-    fontStyle: 'italic',
+    fontFamily: 'Alegreya-ExtraBoldItalic',
     fontWeight: '700',
   },
   italicText: {
-    fontStyle: 'italic',
-    fontWeight: '200',
+    fontFamily: 'Alegreya-Italic',
   },
 });

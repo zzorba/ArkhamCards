@@ -21,7 +21,7 @@ export default function SmallCapsNode(
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'System',
+    fontFamily: 'Alegreya-Bold',
     fontStyle: 'normal',
     fontWeight: '600',
     textTransform: 'uppercase',
