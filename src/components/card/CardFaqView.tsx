@@ -25,6 +25,7 @@ import { getTabooSet, AppState } from '@reducers';
 import typography from '@styles/typography';
 import { m } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 export interface CardFaqProps {
   id: string;
@@ -156,17 +157,21 @@ class CardFaqView extends React.Component<Props, State> {
 
   render() {
     return (
-      <ScrollView
-        contentContainerStyle={styles.container}
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.faqLoading}
-            onRefresh={this._loadFaq}
-          />
-        }
-      >
-        { this.renderFaqContent() }
-      </ScrollView>
+      <StyleContext.Consumer>
+        { ({ colors }) => (
+          <ScrollView
+            contentContainerStyle={[styles.container, { backgroundColor: colors.background }]}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.faqLoading}
+                onRefresh={this._loadFaq}
+              />
+            }
+          >
+            { this.renderFaqContent() }
+          </ScrollView>
+        ) }
+      </StyleContext.Consumer>
     );
   }
 }
@@ -198,7 +203,6 @@ export default connect<ReduxProps, unknown, NavigationProps & CardFaqProps, AppS
 const styles = StyleSheet.create({
   container: {
     padding: m,
-    backgroundColor: COLORS.background,
   },
   error: {
     color: 'red',

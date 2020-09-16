@@ -94,13 +94,15 @@ export default class CardCostIcon extends React.PureComponent<Props> {
     const style = { width: costIconSize(fontScale), height: costIconSize(fontScale) };
     return (
       <View style={[styles.level, style]}>
-        <View style={[styles.levelIcon, style]}>
-          <AppIcon
-            name={`${inverted ? '' : 'inverted_'}level_${level}`}
-            size={ICON_SIZE}
-            color={inverted ? color : COLORS.costTintIcon}
-          />
-        </View>
+        { !inverted && (
+          <View style={[styles.levelIcon, style]}>
+            <AppIcon
+              name={`${inverted ? '' : 'inverted_'}level_${level}`}
+              size={ICON_SIZE}
+              color={inverted ? color : COLORS.costTintIcon}
+            />
+          </View>
+        ) }
         <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}

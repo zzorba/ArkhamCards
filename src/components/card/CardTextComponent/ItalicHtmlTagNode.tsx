@@ -25,8 +25,7 @@ export default function ItalicHtmlTagNode(
 
 const styles = StyleSheet.create({
   italicText: {
-    fontStyle: 'italic',
-    fontWeight: '300',
+    fontFamily: 'Alegreya-Italic',
     color: COLORS.darkText,
   },
 });

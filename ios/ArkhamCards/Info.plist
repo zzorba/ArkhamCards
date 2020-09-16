@@ -61,6 +61,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Conkordia.ttf</string>
+		<string>Alegreya-ExtraBold.ttf</string>
+		<string>Alegreya-ExtraBoldItalic.ttf</string>
+		<string>Alegreya-MediumItalic.ttf</string>
+		<string>Alegreya-BoldItalic.ttf</string>
 		<string>Teutonic.ttf</string>
 		<string>Alegreya-Regular.ttf</string>
 		<string>Alegreya-Italic.ttf</string>

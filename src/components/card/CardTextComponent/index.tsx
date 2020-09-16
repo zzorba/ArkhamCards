@@ -227,6 +227,7 @@ export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
           marginRight: 4,
         },
         paragraph: {
+          fontFamily: 'Alegreya-Regular',
           fontSize: (fontAdjustment || 1) * (isBig ? 24 : 14),
           marginTop: 4,
           marginBottom: 4,

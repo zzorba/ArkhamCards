@@ -81,7 +81,6 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   function providerWrapper<Props>(
     ScreenComponenet: React.ComponentType<Props>,
   ) {
-
     return () => (props: Props) => (
       <Provider store={store}>
         <ScreenComponenet {...props} />

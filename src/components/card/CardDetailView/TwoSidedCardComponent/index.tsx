@@ -35,6 +35,7 @@ import PlayerCardImage from '../PlayerCardImage';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardDetailHeader from './CardDetailHeader';
 import CardFooterInfo from './CardFooterInfo';
+import CardFooterButton from './CardFooterButton';
 
 const BLURRED_ACT = require('../../../../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../../../../assets/blur-agenda.jpeg');
@@ -44,6 +45,7 @@ const PER_INVESTIGATOR_ICON = (
   <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color={COLORS.darkText} />
 );
 const SKILL_ICON_SIZE = isBig ? 26 : 16;
+const MAX_WIDTH = 768;
 
 const SKILL_FIELDS = [
   'skill_willpower',
@@ -393,19 +395,21 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         </View>
       );
     }
+    const noHeader = (card.name === card.back_name || !card.back_name);
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
         <View style={[styles.card, {
           backgroundColor: colors.background,
+          borderColor: colors.faction[
+            card.faction2_code ? 'dual' : card.factionCode()
+          ].background,
+          borderTopWidth: noHeader ? 1 : 0,
         }]}>
-          <CardDetailHeader card={card} back width={width} linked={!!this.props.linked} />
-          <View style={[
+          { noHeader && <CardDetailHeader card={card} back width={Math.min(768, width)} linked={!!this.props.linked} /> }
+          <View removeClippedSubviews style={[
             styles.cardBody,
             {
-              borderColor: colors.faction[
-                card.faction2_code ? 'dual' : card.factionCode()
-              ].background,
-              backgroundColor: colors.background,
+              backgroundColor: noHeader ? 'transparent' : colors.background,
             },
           ]}>
             <View style={styles.typeBlock}>
@@ -429,9 +433,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               }
               { !!card.back_text && (
                 <View style={[styles.gameTextBlock, {
-                  borderColor: colors.faction[card.faction2_code ?
-                    'dual' : card.factionCode()
-                  ].background,
+                  borderColor: colors.M,
                 }]}>
                   <CardTextComponent text={card.back_text} />
                 </View>)
@@ -442,6 +444,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             </View>
             { isFirst && this.renderCardFooter(card) }
           </View>
+          { isFirst && <CardFooterButton icon="faq" title={t`FAQ`} onPress={this._showFaq} /> }
         </View>
       </View>
     );
@@ -474,12 +477,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
 
   renderCardFooter(card: Card) {
     const { componentId } = this.props;
-    return (
-      <React.Fragment>
-        <View style={[styles.column, styles.flex]}>
-          <CardFooterInfo card={card} />
-        </View>
-        { !!componentId && (
+    /*
+            { !!componentId && (
           <View style={styles.twoColumn}>
             <View style={[styles.halfColumn, { paddingRight: s }]}>
               { this.renderFaqButton() }
@@ -491,7 +490,13 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             </View>
           </View>
         ) }
-      </React.Fragment>
+  */
+    return (
+      <>
+        <View style={[styles.column, styles.flex]}>
+          <CardFooterInfo card={card} />
+        </View>
+      </>
     );
   }
 
@@ -518,13 +523,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     flavorFirst: boolean
   ) {
     const { simple } = this.props;
+    const { colors } = this.context;
     return (
       <>
         { !!card.text && (
           <View style={[styles.gameTextBlock, {
-            borderColor: COLORS.faction[card.faction2_code ?
-              'dual' : card.factionCode()
-            ].background,
+            borderColor: colors.M,
           }]}>
             <CardTextComponent text={card.text} />
           </View>)
@@ -575,16 +579,18 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const isTablet = Platform.OS === 'ios' && DeviceInfo.isTablet();
     return (
       <View style={[styles.container, styles.containerPadding]} key={key}>
-        <View style={styles.card}>
-          <CardDetailHeader card={card} width={width} linked={!!this.props.linked} />
+        <View style={[
+          styles.card,
+          {
+            borderColor: colors.faction[
+              card.faction2_code ? 'dual' : card.factionCode()
+            ].background,
+          },
+        ]}>
+          <CardDetailHeader card={card} width={Math.min(768, width)} linked={!!this.props.linked} />
           <View style={[
             styles.cardBody,
-            {
-              backgroundColor: colors.background,
-              borderColor: colors.faction[
-                card.faction2_code ? 'dual' : card.factionCode()
-              ].background,
-            },
+            { backgroundColor: colors.background, },
           ]}>
             <View style={[styles.typeBlock, {
               backgroundColor: colors.background,
@@ -609,6 +615,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { isFirst && !simple && this.renderCardFooter(card) }
             </View>
           </View>
+          { isFirst && !simple && <CardFooterButton icon="faq" title={t`FAQ`} onPress={this._showFaq} /> }
         </View>
       </View>
     );
@@ -697,30 +704,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   card: {
+    position: 'relative',
     width: '100%',
-    maxWidth: 768,
+    maxWidth: MAX_WIDTH,
     marginTop: 2,
-    //    borderBottomLeftRadius: 8,
-    //    borderBottomRightRadius: 8,
-    //    borderWidth: 1,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderTopWidth: 0,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    shadowColor: '#000000',
+    shadowOpacity: 0.25,
   },
   cardBody: {
     paddingTop: xs,
     paddingLeft: s,
     paddingRight: s + 1,
     paddingBottom: xs,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderBottomWidth: 1,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 8,
-    shadowColor: '#000000',
-    shadowOpacity: 0.25,
   },
   gameTextBlock: {
-    borderLeftWidth: 4,
+    borderLeftWidth: 2,
     paddingLeft: s,
     marginBottom: s,
     marginRight: s,

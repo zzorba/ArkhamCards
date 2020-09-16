@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { CORE_FACTION_CODES } from '@app_constants';
@@ -44,7 +44,7 @@ function HeaderPattern({ card, width }: { card: Card, width: number }) {
     case 'mystic':
       return (
         <View style={styles.pattern}>
-          <AppIcon size={width / RATIO} name="mystic_pattern" color="#FFFFFF22" />
+          <AppIcon size={width / RATIO} name="mystic_pattern" color="#FFFFFF18" />
         </View>
       );
     case 'survivor':
@@ -64,8 +64,20 @@ function HeaderPattern({ card, width }: { card: Card, width: number }) {
   }
 }
 
-function FactionIcon({ card }: { card: Card }) {
+function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
   const color = '#FFF';
+  if (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') {
+    return (
+      <View style={styles.costIcon}>
+        <CardCostIcon
+          card={card}
+          inverted
+          linked={linked}
+        />
+      </View>
+    );
+  }
+
   if (card.spoiler) {
     const encounter_code = card.encounter_code ||
       (card.linked_card && card.linked_card.encounter_code);
@@ -125,29 +137,20 @@ function FactionIcon({ card }: { card: Card }) {
     }
     return (
       <View>
-        { (!!card.faction_code && CORE_FACTION_CODES.indexOf(card.faction_code) !== -1) &&
-          <ArkhamIcon name={card.faction_code} size={ICON_SIZE + 4} color={color} /> }
+        { (!!card.faction_code && (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1 || card.faction_code === 'neutral')) &&
+          <ArkhamIcon name={card.faction_code === 'neutral' ? 'elder_sign' : card.faction_code} size={ICON_SIZE + 4} color={color} /> }
       </View>
     );
   }
   return null;
 }
 
-function HeaderContent({ card, linked, back }: { card: Card, linked: boolean, back: boolean}) {
+function HeaderContent({ card, back }: { card: Card, back: boolean}) {
   const name = (back ? card.back_name : card.name) || card.name;
   const subname = back ? undefined : card.subname;
   return (
     <>
       <View style={styles.titleRow} removeClippedSubviews>
-        { (card.type_code === 'skill' || card.type_code === 'asset' || card.type_code === 'event') && (
-          <View style={styles.costIcon}>
-            <CardCostIcon
-              card={card}
-              inverted
-              linked={linked}
-            />
-          </View>
-        ) }
         <View style={styles.column}>
           <Text style={[typography.cardName, space.marginLeftS, { color: '#FFFFFF' }]}>
             { `${name}${card.is_unique ? ' ✷' : ''}` }
@@ -164,39 +167,25 @@ function HeaderContent({ card, linked, back }: { card: Card, linked: boolean, ba
 }
 
 export default function CardDetailHeader({ card, width, back, linked }: Props) {
-  return (
-    <StyleContext.Consumer>
-      { ({ colors }) => {
-        const color = colors.faction[card.factionCode()].background;
-        if (back && (card.name === card.back_name || !card.back_name)) {
-          return (
-            <View style={[styles.placeholder, { borderColor: color }]} />
-          );
-        }
+  const { colors } = useContext(StyleContext);
+  const color = colors.faction[card.factionCode()].background;
+  if (back && (card.name === card.back_name || !card.back_name)) {
+    return null;
+  }
 
-        return (
-          <View style={[styles.cardTitle, {
-            backgroundColor: color,
-            borderColor: color,
-          }]}>
-            <HeaderPattern card={card} width={width} />
-            <HeaderContent card={card} linked={linked} back={!!back} />
-            <FactionIcon card={card} />
-          </View>
-        );
-      } }
-    </StyleContext.Consumer>
+  return (
+    <View style={[styles.cardTitle, {
+      backgroundColor: color,
+      borderColor: color,
+    }]}>
+      <HeaderPattern card={card} width={width} />
+      <HeaderContent card={card} back={!!back} />
+      <FactionIcon card={card} linked={linked} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  placeholder: {
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
-    borderWidth: 1,
-    borderBottomWidth: 0,
-    height: 12,
-  },
   cardTitle: {
     paddingRight: s,
     paddingTop: xs,
@@ -207,7 +196,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'relative',
   },
   pattern: {
     position: 'absolute',

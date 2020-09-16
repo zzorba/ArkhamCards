@@ -21,7 +21,7 @@ export default function UnderlineHtmlTagNode(
 
 const styles = StyleSheet.create({
   boldText: {
-    fontWeight: '700',
+    fontFamily: 'Alegreya-Bold',
     textDecorationLine: 'underline',
   },
 });
