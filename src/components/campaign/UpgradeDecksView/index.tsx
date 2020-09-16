@@ -74,10 +74,6 @@ class UpgradeDecksView extends React.Component<Props> {
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  componentDidMount() {
-    Navigation.mergeOptions(this.props.componentId, UpgradeDecksView.options(this.props));
-  }
-
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }

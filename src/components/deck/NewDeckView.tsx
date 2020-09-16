@@ -61,10 +61,6 @@ export default class NewDeckView extends React.Component<Props, State> {
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  componentDidMount() {
-    Navigation.mergeOptions(this.props.componentId, NewDeckView.options());
-  }
-
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }

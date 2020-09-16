@@ -67,7 +67,6 @@ class DeckChecklistView extends React.Component<Props, State> {
 
   componentDidMount() {
     this._navEventListener = Navigation.events().bindComponent(this);
-    Navigation.mergeOptions(this.props.componentId, DeckChecklistView.options());
   }
 
   componentWillUnmount() {

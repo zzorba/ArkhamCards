@@ -89,7 +89,6 @@ class EditChaosBagDialog extends React.Component<Props, State> {
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this._handleBackPress);
-    Navigation.mergeOptions(this.props.componentId, EditChaosBagDialog.options());
   }
 
   componentWillUnmount() {

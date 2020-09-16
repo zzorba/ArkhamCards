@@ -45,10 +45,6 @@ class CampaignChaosBagView extends React.Component<Props> {
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  componentDidMount() {
-    Navigation.mergeOptions(this.props.componentId, CampaignChaosBagView.options());
-  }
-
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }
