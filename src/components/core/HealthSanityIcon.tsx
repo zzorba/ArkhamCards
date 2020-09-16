@@ -1,77 +1,56 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
-  Text,
   StyleSheet,
   View,
 } from 'react-native';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import TextStroke from './TextStroke';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
-  return 48 * scaleFactor;
+  return 32 * scaleFactor;
 }
 
 interface Props {
-  count: number | null;
+  count?: number;
   type: 'health' | 'sanity';
 }
 
-function num(value: number | null) {
-  if (value === null) {
-    return '-';
-  }
-  if (value < 0) {
-    return 'X';
-  }
-  return value;
-}
-
-export default class HealthSanityIcon extends React.PureComponent<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  color(dark: boolean) {
-    const {
-      type,
-    } = this.props;
-    switch (type) {
-      case 'health': return dark ? '#911017' : '#a74045';
-      case 'sanity': return dark ? '#0c2445' : '#3d506a';
-    }
-  }
-
-  render() {
-    const {
-      type,
-      count,
-    } = this.props;
-    const { fontScale } = this.context;
-    const scaleFactor = ((fontScale - 1) / 2 + 1);
-    const ICON_SIZE = 46 * scaleFactor;
-    const style = {
-      width: costIconSize(fontScale) * 1.4,
-      height: costIconSize(fontScale),
-    };
-    return (
-      <View style={[styles.wrapper, style]}>
-        <View style={[styles.icon, style]}>
-          <ArkhamIcon
-            name={type}
-            size={ICON_SIZE}
-            color={this.color(false)}
-          />
-        </View>
-        <View style={[styles.icon, type === 'health' ? styles.healthText : styles.sanityText, style]}>
-          <TextStroke color={this.color(true)} stroke={3}>
-            <Text style={styles.count}>{ num(count) }</Text>
-          </TextStroke>
-        </View>
+export default function HealthSanityIcon({ type, count }: Props) {
+  const { fontScale, colors } = useContext(StyleContext);
+  const scaleFactor = ((fontScale - 1) / 2 + 1);
+  const ICON_SIZE = 32 * scaleFactor;
+  const NUMBER_SIZE = 28 * scaleFactor;
+  const style = {
+    width: costIconSize(fontScale) * 1.4,
+    height: costIconSize(fontScale),
+  };
+  return (
+    <View style={[styles.wrapper, style]}>
+      <View style={[styles.icon, type === 'health' ? styles.healthIcon : styles.sanityIcon, style]}>
+        <ArkhamIcon
+          name={type}
+          size={ICON_SIZE * (type === 'health' ? 1.05 : 1)}
+          color={colors[type]}
+        />
       </View>
-    );
-  }
+      <View style={[styles.icon, type === 'health' ? styles.healthText : styles.sanityText, style]}>
+        <ArkhamIcon
+          name={`num${typeof count === 'number' ? count : 'Null'}-fill`}
+          size={NUMBER_SIZE}
+          color="white"
+        />
+      </View>
+      <View style={[styles.icon, type === 'health' ? styles.healthText : styles.sanityText, style]}>
+        <ArkhamIcon
+          name={`num${typeof count === 'number' ? count : 'Null'}-outline`}
+          size={NUMBER_SIZE}
+          color={colors[type]}
+        />
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -86,16 +65,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  healthText: {
-    left: -2,
-  },
-  sanityText: {
+  healthIcon: {
     top: -2,
   },
-  count: {
-    fontFamily: 'Teutonic',
-    fontWeight: '600',
-    fontSize: 36,
-    color: '#FFFFFF',
+  sanityIcon: {
+
+  },
+  healthText: {
+    left: -2,
+    top: -3,
+  },
+  sanityText: {
+    top: -3,
   },
 });

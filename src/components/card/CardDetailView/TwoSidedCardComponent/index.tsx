@@ -279,7 +279,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     if (card.type_code === 'scenario') {
       return null;
     }
-    const costString = card.costString(this.props.linked);
     const doom = num(card.doom);
     const shroud = num(card.shroud);
     const clues = num(card.clues);
@@ -288,14 +287,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       '';
     return (
       <View style={styles.statsBlock}>
-        { !!(card.xp || costString) && (
-          <Text style={typography.cardText}>
-            { card.xp ?
-              (`${costString}${costString ? '. ' : ''}${t`Level: ${card.xp}.`}`) :
-              costString
-            }
-          </Text>
-        ) }
         { card.type_code === 'agenda' && (
           <Text style={typography.cardText}>
             { t`Doom: ${doom}` }
