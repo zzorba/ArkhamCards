@@ -47,7 +47,9 @@ export interface ThemeColors {
     combat: SkillColor;
     agility: SkillColor;
     wild: SkillColor;
-  }
+  };
+  health: string;
+  sanity: string;
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -143,6 +145,8 @@ export const LIGHT_THEME: ThemeColors = {
       icon: '#635120',
     },
   },
+  health: '#8D181E',
+  sanity: '#165385',
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -231,4 +235,6 @@ export const DARK_THEME: ThemeColors = {
       icon: '#8A7D5A',
     },
   },
+  health: '#AE4236',
+  sanity: '#2C7FC0',
 };
