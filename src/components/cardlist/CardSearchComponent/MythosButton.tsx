@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   Animated,
-  Platform,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
@@ -34,6 +33,7 @@ type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 interface State {
   toggleAnim: Animated.Value;
+  mythosMode: boolean;
 }
 
 class MythosButton extends React.Component<Props, State> {
@@ -48,8 +48,26 @@ class MythosButton extends React.Component<Props, State> {
 
     this.state = {
       toggleAnim: new Animated.Value(props.mythosMode ? 1 : 0),
+      mythosMode: props.mythosMode,
     };
   }
+
+  componentDidUpdate(prevProps: Props) {
+    const { mythosMode } = this.props;
+    if (mythosMode !== prevProps.mythosMode) {
+      Animated.timing(
+        this.state.toggleAnim,
+        {
+          toValue: mythosMode ? 1 : 0,
+          duration: 250,
+          useNativeDriver: false,
+          easing: Easing.exp,
+        }
+      ).start();
+    }
+  }
+
+
 
   _onPress = () => {
     const {
@@ -58,16 +76,6 @@ class MythosButton extends React.Component<Props, State> {
       mythosMode,
     } = this.props;
     toggleMythosMode(filterId, !mythosMode);
-
-    Animated.timing(
-      this.state.toggleAnim,
-      {
-        toValue: !mythosMode ? 1 : 0,
-        duration: 250,
-        useNativeDriver: false,
-        easing: Easing.exp,
-      }
-    ).start();
   };
 
   render() {

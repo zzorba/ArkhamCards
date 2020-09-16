@@ -4,6 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
@@ -22,11 +23,16 @@ export default function InvestigatorStatLine({ investigator }: Props) {
     <StyleContext.Consumer>
       { ({ fontScale, colors }) => {
         const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 26;
+        const willpower = investigator.skill_willpower || 0;
+        const intellect = investigator.skill_intellect || 0;
+        const combat = investigator.skill_combat || 0;
+        const agility = investigator.skill_agility || 0;
+
         return (
           <View style={styles.skillRow}>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Willpower: ${willpower}`}>
               <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { investigator.skill_willpower || 0 }
+                { willpower}
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
                 <View style={[styles.icon, { top: 1 }]}>
@@ -45,9 +51,9 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                 </View>
               </View>
             </View>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Intellect: ${intellect}`}>
               <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { investigator.skill_intellect || 0 }
+                { intellect }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
                 <View style={styles.icon}>
@@ -66,9 +72,9 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                 </View>
               </View>
             </View>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Combat: ${combat}`}>
               <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { investigator.skill_combat || 0 }
+                { combat }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
                 <View style={styles.icon}>
@@ -87,9 +93,9 @@ export default function InvestigatorStatLine({ investigator }: Props) {
                 </View>
               </View>
             </View>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]}>
+            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Agility: ${agility}`}>
               <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { investigator.skill_agility || 0 }
+                { agility }
               </Text>
               <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
                 <View style={[styles.icon, { top: 1 }]}>

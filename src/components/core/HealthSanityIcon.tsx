@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
@@ -17,6 +18,13 @@ interface Props {
   type: 'health' | 'sanity';
 }
 
+function label(type: 'health' | 'sanity', count?: number) {
+  if (count === null || count === undefined) {
+    return type === 'health' ? t`Health: none` : t`Sanity: none`;
+  }
+  return type === 'health' ? t`Health: ${count}` : t`Sanity: ${count}`;
+}
+
 export default function HealthSanityIcon({ type, count }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const scaleFactor = ((fontScale - 1) / 2 + 1);
@@ -27,7 +35,7 @@ export default function HealthSanityIcon({ type, count }: Props) {
     height: costIconSize(fontScale),
   };
   return (
-    <View style={[styles.wrapper, style]}>
+    <View style={[styles.wrapper, style]} accessibilityLabel={label(type, count)}>
       <View style={[styles.icon, type === 'health' ? styles.healthIcon : styles.sanityIcon, style]}>
         <ArkhamIcon
           name={type}

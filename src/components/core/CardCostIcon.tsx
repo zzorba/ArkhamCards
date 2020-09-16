@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -69,14 +70,22 @@ export default class CardCostIcon extends React.PureComponent<Props> {
     return 'elder_sign';
   }
 
-  color() {
-    const {
-      card,
-    } = this.props;
-    if (card.faction2_code) {
-      return COLORS.faction.dual.background;
+  label() {
+    const { card } = this.props;
+    const level = card.xp || t`None`;
+    switch (card.type_code) {
+      case 'skill':
+        return t`Faction: ${card.faction_name}, Level: ${level}`;
+      case 'asset':
+      case 'event': {
+        const cost = this.cardCost();
+        return t`Faction: ${card.faction_name}, Cost: ${cost}, Level: ${level}`;
+      }
+      case 'investigator':
+        return t`Faction: ${card.faction_name}`;
+      default:
+        return t`Encounter set: ${card.encounter_name}`;
     }
-    return COLORS.faction[card.factionCode()].background;
   }
 
   render() {
@@ -84,22 +93,21 @@ export default class CardCostIcon extends React.PureComponent<Props> {
       card,
       inverted,
     } = this.props;
-    const { fontScale } = this.context;
-    const color = this.color();
-    const level = (card.xp === null || card.xp === undefined) ?
-      'none' : `${card.xp}`;
-
+    const { fontScale, colors } = this.context;
+    const color = card.faction2_code ? colors.faction.dual.text : colors.faction[card.factionCode()].text;
+    const textColor = !inverted  ? colors.background : 'white';
+    const level = (card.xp === null || card.xp === undefined) ? 'none' : `${card.xp}`;
     const scaleFactor = ((fontScale - 1) / 2 + 1);
     const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
     const style = { width: costIconSize(fontScale), height: costIconSize(fontScale) };
     return (
-      <View style={[styles.level, style]}>
+      <View style={[styles.level, style]} accessibilityLabel={this.label()}>
         { !inverted && (
           <View style={[styles.levelIcon, style]}>
             <AppIcon
               name={`${inverted ? '' : 'inverted_'}level_${level}`}
               size={ICON_SIZE}
-              color={inverted ? color : COLORS.costTintIcon}
+              color={inverted ? color : colors.background}
             />
           </View>
         ) }
@@ -122,7 +130,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
           ) : (
             <Text style={[
               styles.costNumber,
-              { fontSize: (isBig ? 32 : 23) * scaleFactor },
+              { fontSize: (isBig ? 32 : 23) * scaleFactor, color: textColor },
             ]} allowFontScaling={false}>
               { this.cardCost() }
             </Text>
