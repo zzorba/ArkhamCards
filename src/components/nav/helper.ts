@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActionSheetIOS, Platform } from 'react-native';
-import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import { t } from 'ttag';
 
@@ -15,11 +15,20 @@ import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 
 export function getDeckOptions(
+  {
+    inputOptions={},
+    modal,
+    title,
+    noTitle,
+  }: {
+    inputOptions?: Options;
+    modal?: boolean;
+    title?: string;
+    noTitle?: boolean;
+  }={},
   investigator?: Card,
-  modal?: boolean,
-  title?: string,
-  noTitle?: boolean,
 ): Options {
+  const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
   const options: Options = {
     statusBar: {
       style: 'light',
@@ -31,6 +40,7 @@ export function getDeckOptions(
       backButton: {
         title: t`Back`,
         color: '#FFFFFF',
+        ...topBarOptions.backButton,
       },
       leftButtons: modal ? [
         Platform.OS === 'ios' ? {
@@ -42,12 +52,13 @@ export function getDeckOptions(
           id: 'androidBack',
           color: 'white',
         },
-      ] : [],
+      ] : topBarOptions.leftButtons || [],
       background: {
         color: COLORS.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
         ].darkBackground,
       },
+      rightButtons: topBarOptions.rightButtons,
     },
     layout: {
       backgroundColor: COLORS.L30,
@@ -95,7 +106,10 @@ export function showDeckModal(
         component: {
           name: 'Deck',
           passProps,
-          options: getDeckOptions(investigator, true, deck.name),
+          options: getDeckOptions({
+            modal: true,
+            title: deck.name,
+          }, investigator),
         },
       }],
     },
@@ -140,7 +154,9 @@ export function showCardCharts(
       passProps: {
         parsedDeck,
       },
-      options: getDeckOptions(parsedDeck.investigator, false, t`Charts`),
+      options: getDeckOptions({
+        title: t`Charts`,
+      }, parsedDeck.investigator),
     },
   });
 }
@@ -159,7 +175,9 @@ export function showDrawSimulator(
       passProps: {
         slots,
       },
-      options: getDeckOptions(investigator, false, t`Draw Simulator`),
+      options: getDeckOptions({
+        title: t`Draw Simulator`,
+      }, investigator),
     },
   });
 }
@@ -176,7 +194,7 @@ export function showCardSwipe(
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
 ) {
   const options = investigator ?
-    getDeckOptions(investigator, false, '') :
+    getDeckOptions({ title: '' }, investigator) :
     {
       topBar: {
         backButton: {

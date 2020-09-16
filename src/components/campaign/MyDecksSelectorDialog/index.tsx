@@ -92,7 +92,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
           testID: t`Cancel`,
         }],
         rightButtons: [{
-          icon: iconsMap['sort-by-alpha'],
+          icon: iconsMap.sort,
           id: 'sort',
           color: COLORS.navButton,
           testID: t`Sort`,

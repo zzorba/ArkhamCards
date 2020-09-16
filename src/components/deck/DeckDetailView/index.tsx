@@ -50,7 +50,7 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '@components/core/withPlayerCards';
-import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
+import DeckChecklistView, { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import { parseDeck, parseBasicDeck } from '@lib/parseDeck';
@@ -565,9 +565,7 @@ class DeckDetailView extends React.Component<Props, State> {
           slots,
           tabooSetOverride,
         },
-        options: {
-          ...getDeckOptions(investigator, false, t`Checklist`, true),
-        },
+        options: getDeckOptions({ title: t`Checklist`, noTitle: true }, investigator),
       },
     });
   };
@@ -1181,7 +1179,7 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!parsedDeck) {
       return;
     }
-    const options = getDeckOptions(parsedDeck.investigator, false);
+    const options = getDeckOptions({}, parsedDeck.investigator);
 
     Navigation.push<DeckDescriptionProps>(componentId, {
       component: {
@@ -1418,7 +1416,7 @@ class DeckDetailView extends React.Component<Props, State> {
       updateSlots: this._updateSlots,
     };
 
-    const options = getDeckOptions(parsedDeck.investigator, false, card.name);
+    const options = getDeckOptions({ title: card.name }, parsedDeck.investigator);
 
     Navigation.push<CardUpgradeDialogProps>(componentId, {
       component: {
@@ -1585,7 +1583,7 @@ class DeckDetailView extends React.Component<Props, State> {
       menuOpen: false,
     });
     if (parsedDeck) {
-      const options = getDeckOptions(parsedDeck.investigator, false, t`Upgrade History`);
+      const options = getDeckOptions({ title: t`Upgrade History` },parsedDeck.investigator);
 
       Navigation.push<DeckHistoryProps>(componentId, {
         component: {
