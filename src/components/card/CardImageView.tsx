@@ -6,6 +6,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import ViewControl from 'react-native-zoom-view';
 import { Navigation, EventSubscription } from 'react-native-navigation';
+import { t } from 'ttag';
 
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -48,6 +49,7 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
             id: 'flip',
             icon: iconsMap.flip_card,
             color: '#FFFFFF',
+            accessibilityLabel: t`Flip Card`,
           }],
         },
       });

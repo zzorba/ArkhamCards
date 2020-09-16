@@ -50,13 +50,13 @@ class EditChaosBagDialog extends React.Component<Props, State> {
             systemItem: 'cancel',
             text: t`Cancel`,
             id: 'back',
-            color: COLORS.navButton,
-            testID: t`Cancel`,
+            color: COLORS.M,
+            accessibilityLabel: t`Cancel`,
           } : {
             icon: iconsMap['arrow-back'],
             id: 'androidBack',
-            color: COLORS.navButton,
-            testID: t`Back`,
+            color: COLORS.M,
+            accessibilityLabel: t`Back`,
           },
         ],
         rightButtons: [{
@@ -64,8 +64,8 @@ class EditChaosBagDialog extends React.Component<Props, State> {
           text: t`Save`,
           id: 'save',
           showAsAction: 'ifRoom',
-          color: COLORS.navButton,
-          testID: t`Save`,
+          color: COLORS.M,
+          accessibilityLabel: t`Save`,
         }],
       },
     };

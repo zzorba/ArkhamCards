@@ -137,6 +137,9 @@ export default class App {
           color: COLORS.L30,
           translucent: false,
         },
+        backButton: {
+          color: COLORS.M,
+        },
         barStyle: darkMode ? 'black' : 'default',
       },
       layout: Platform.select({
@@ -235,8 +238,8 @@ export default class App {
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
-              color: COLORS.navButton,
-              testID: 'NewDeck',
+              color: COLORS.M,
+              accessibilityLabel: t`New Deck`,
             }],
           },
         },
@@ -253,8 +256,8 @@ export default class App {
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
-              color: COLORS.navButton,
-              testID: 'NewCampaign',
+              color: COLORS.M,
+              accessibilityLabel: t`New Campaign`,
             }],
           },
         },

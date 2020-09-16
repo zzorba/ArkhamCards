@@ -48,8 +48,8 @@ class MyCampaignsView extends React.Component<Props, State> {
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
-          color: COLORS.navButton,
-          testID: t`New Campaign`,
+          color: COLORS.M,
+          accessibilityLabel: t`New Campaign`,
         }],
       },
     };

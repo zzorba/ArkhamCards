@@ -85,8 +85,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           rightButtons: [{
             icon: iconsMap.edit,
             id: 'edit',
-            color: COLORS.navButton,
-            testID: t`Edit Assigned Weaknesses`,
+            color: COLORS.M,
+            accessibilityLabel: t`Edit Assigned Weaknesses`,
           }],
         },
       });

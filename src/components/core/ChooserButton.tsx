@@ -35,18 +35,18 @@ export default class ChooserButton extends React.Component<Props> {
           topBar: {
             title: {
               text: t`Select ${title}`,
-              color: COLORS.navButton,
+              color: COLORS.M,
             },
             backButton: {
               title: t`Back`,
-              color: COLORS.navButton,
+              color: COLORS.M,
             },
             rightButtons: selection && selection.length > 0 ?
               [{
                 text: t`Clear`,
                 id: 'clear',
-                color: COLORS.navButton,
-                testID: t`Clear`,
+                color: COLORS.M,
+                accessibilityLabel: t`Clear`,
               }] : [],
           },
         },

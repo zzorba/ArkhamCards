@@ -95,6 +95,7 @@ export function navigationOptions(
       height: MythosButton.HEIGHT,
     },
     enabled: true,
+    accessibilityLabel: t`Encounter Card Toggle`,
   };
 
   const rightButtons: OptionsTopBarButton[] = [{
@@ -110,7 +111,7 @@ export function navigationOptions(
       width: TuneButton.WIDTH,
       height: TuneButton.HEIGHT,
     },
-    testID: t`Filters`,
+    accessibilityLabel: t`Filters`,
     enabled: true,
   }, {
     id: 'sort',
@@ -123,7 +124,7 @@ export function navigationOptions(
       width: SortButton.WIDTH,
       height: SortButton.HEIGHT,
     },
-    testID: t`Filters`,
+    accessibilityLabel: t`Sort`,
   }];
   if (mythosToggle && Platform.OS === 'android') {
     rightButtons.push(mythosButton);

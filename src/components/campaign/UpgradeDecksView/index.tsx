@@ -57,8 +57,8 @@ class UpgradeDecksView extends React.Component<Props> {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
-          color: COLORS.navButton,
-          testID: t`Cancel`,
+          color: COLORS.M,
+          accessibilityLabel: t`Cancel`,
         }],
       },
     };

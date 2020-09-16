@@ -50,17 +50,19 @@ class ScenarioView extends React.Component<Props> {
     const rightButtons = RESET_ENABLED ? [{
       icon: iconsMap.replay,
       id: 'reset',
-      color: COLORS.navButton,
+      color: COLORS.M,
     }] : [{
       icon: iconsMap.menu,
       id: 'log',
-      color: COLORS.navButton,
+      color: COLORS.M,
+      accessibilityLabel: t`Campaign Log`,
     }];
     if (undo) {
       rightButtons.push({
         icon: iconsMap.undo,
         id: 'undo',
-        color: COLORS.navButton,
+        color: COLORS.M,
+        accessibilityLabel: t`Undo`,
       });
     }
     return {

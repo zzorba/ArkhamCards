@@ -63,12 +63,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           text: t`Save`,
           color: 'white',
           id: 'save',
-          testID: t`Save`,
+          accessibilityLabel: t`Save`,
         }],
         backButton: {
           title: t`Cancel`,
           color: 'white',
-          testID: t`Cancel`,
+          accessibilityLabel: t`Cancel`,
         },
       },
     };

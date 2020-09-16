@@ -136,7 +136,7 @@ export function showCard(
         topBar: {
           backButton: {
             title: t`Back`,
-            color: COLORS.navButton,
+            color: COLORS.M,
           },
         },
       },
@@ -199,7 +199,7 @@ export function showCardSwipe(
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
       },
     };

@@ -29,7 +29,7 @@ class PackFilterView extends React.Component<Props> {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
         title: {
           text: t`Select Packs`,

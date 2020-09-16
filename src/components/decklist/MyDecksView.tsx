@@ -41,8 +41,8 @@ class MyDecksView extends React.Component<Props, State> {
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
-          color: COLORS.navButton,
-          testID: t`New Deck`,
+          color: COLORS.M,
+          accessibilityLabel: t`New Deck`,
         }],
       },
     };

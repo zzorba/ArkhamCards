@@ -42,12 +42,13 @@ export default class CampaignList extends React.Component<Props> {
           campaign.guided ? {
             icon: iconsMap.edit,
             id: 'edit',
-            color: COLORS.navButton,
-            testID: t`Edit name`,
+            color: COLORS.M,
+            accessibilityLabel: t`Edit name`,
           } : {
             icon: iconsMap.menu,
             id: 'menu',
-            color: COLORS.navButton,
+            color: COLORS.M,
+            accessibilityLabel: t`Menu`,
           },
         ],
       },
