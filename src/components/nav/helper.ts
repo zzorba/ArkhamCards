@@ -16,7 +16,7 @@ import COLORS from '@styles/colors';
 
 export function getDeckOptions(
   {
-    inputOptions={},
+    inputOptions = {},
     modal,
     title,
     noTitle,
@@ -25,7 +25,7 @@ export function getDeckOptions(
     modal?: boolean;
     title?: string;
     noTitle?: boolean;
-  }={},
+  } = {},
   investigator?: Card,
 ): Options {
   const topBarOptions: OptionsTopBar = inputOptions.topBar || {};

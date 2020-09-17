@@ -13,10 +13,7 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import SideMenu from 'react-native-side-menu';
 import { t } from 'ttag';
 
-import {
-  SettingsButton,
-  SettingsCategoryHeader,
-} from '@lib/react-native-settings-components';
+import { SettingsButton } from '@lib/react-native-settings-components';
 import BasicButton from '@components/core/BasicButton';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
@@ -498,7 +495,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           titleStyle={styles.text}
           containerStyle={backgroundStyle}
         />
-        <CardSectionHeader section={{ title: t`Chaos Bag`}} />
+        <CardSectionHeader section={{ title: t`Chaos Bag` }} />
         <SettingsButton
           title={t`Edit Tokens`}
           onPress={this._editChaosBag}
@@ -517,7 +514,7 @@ class CampaignDetailView extends React.Component<Props, State> {
           titleStyle={styles.text}
           containerStyle={backgroundStyle}
         />
-        <CardSectionHeader section={{ title: t`Weakness Set`}} />
+        <CardSectionHeader section={{ title: t`Weakness Set` }} />
         <SettingsButton
           title={t`Draw Basic Weakness`}
           onPress={this._showDrawWeakness}

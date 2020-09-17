@@ -25,9 +25,9 @@ import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { getBackupData, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
-import COLORS from '@styles/colors';
 import { campaignFromJson } from '@lib/cloudHelper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface BackupProps {
   safeMode?: boolean;
@@ -44,6 +44,9 @@ interface ReduxActionProps {
 type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
 class BackupView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   componentDidMount() {
     this.props.ensureUuid();
   }
@@ -187,10 +190,11 @@ class BackupView extends React.Component<Props> {
     const {
       safeMode,
     } = this.props;
+    const { colors } = this.context;
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.list}>
-          <CardSectionHeader section={{ title: t`Backup`}} />
+      <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
+        <ScrollView style={{ backgroundColor: colors.L20 }}>
+          <CardSectionHeader section={{ title: t`Backup` }} />
           <SettingsItem
             onPress={this._exportCampaignData}
             text={t`Backup Campaign Data`}
@@ -229,9 +233,5 @@ export default withDialogs(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.veryLightBackground,
-  },
-  list: {
-    backgroundColor: COLORS.veryLightBackground,
   },
 });

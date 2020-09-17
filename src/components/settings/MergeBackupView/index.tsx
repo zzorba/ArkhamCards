@@ -4,8 +4,6 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { Navigation } from 'react-native-navigation';
@@ -238,7 +236,7 @@ class MergeBackupView extends React.Component<Props, State> {
     const { backgroundStyle, colors } = this.context;
     const { importCampaigns, importDecks } = this.state;
     return (
-      <SafeAreaView style={[styles.container, { backgroundColor: colors.L20}]}>
+      <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
         <ScrollView style={backgroundStyle}>
           <CardSectionHeader section={{ title: t`Campaigns` }} />
           <CampaignMergeSection

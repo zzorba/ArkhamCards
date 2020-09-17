@@ -24,7 +24,6 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import { getAllDecks, AppState, getLangPreference, getLangChoice } from '@reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface OwnProps {

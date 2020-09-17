@@ -68,7 +68,6 @@ class MythosButton extends React.Component<Props, State> {
   }
 
 
-
   _onPress = () => {
     const {
       filterId,

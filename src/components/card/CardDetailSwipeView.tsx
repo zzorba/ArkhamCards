@@ -329,7 +329,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
           index={initialIndex}
           width={width}
           style={backgroundStyle}
-          containerStyle={[backgroundStyle, { flex: 1, flexDirection: 'column'}]}
+          containerStyle={[backgroundStyle, { flex: 1, flexDirection: 'column' }]}
           loadMinimal
           loadMinimalSize={1}
           loadMinimalLoader={<View style={[styles.wrapper, backgroundStyle, { width, height }]} />}

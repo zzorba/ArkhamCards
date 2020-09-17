@@ -11,7 +11,6 @@ import { AppState, getLangPreference, getLangChoice } from '@reducers';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import SettingsItem from './SettingsItem';
 import { BackupProps } from './BackupView';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface OwnProps {

@@ -11,7 +11,6 @@ import Card from '@data/Card';
 import { TINY_PHONE } from '@styles/sizes';
 import { isBig, s, xs } from '@styles/space';
 import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {

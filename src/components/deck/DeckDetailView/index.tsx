@@ -50,7 +50,7 @@ import {
 import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import withPlayerCards, { TabooSetOverride, PlayerCardProps } from '@components/core/withPlayerCards';
-import DeckChecklistView, { DeckChecklistProps } from '@components/deck/DeckChecklistView';
+import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import { parseDeck, parseBasicDeck } from '@lib/parseDeck';
@@ -1824,7 +1824,7 @@ class DeckDetailView extends React.Component<Props, State> {
       meta,
       tabooOpen,
     } = this.state;
-    const { colors, backgroundStyle } = this.context;
+    const { backgroundStyle } = this.context;
 
     const editable = !!isPrivate && !!deck && !deck.next_deck;
     const showTaboo: boolean = !!(

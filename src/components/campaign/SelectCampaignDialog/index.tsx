@@ -120,7 +120,7 @@ class SelectCampaignDialog extends React.Component<Props> {
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign(CUSTOM) }
         { otherCampaigns.length > 0 && (
-          <CardSectionHeader section={{ title: t`Other Campaigns`}} />
+          <CardSectionHeader section={{ title: t`Other Campaigns` }} />
         ) }
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
         <ArkhamButton
@@ -146,8 +146,5 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-  },
-  button: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

@@ -116,7 +116,7 @@ export default class PackListComponent extends React.Component<Props> {
       renderFooter,
       noFlatList,
     } = this.props;
-    const { colors, backgroundStyle } = this.context;
+    const { backgroundStyle } = this.context;
     if (!packs.length) {
       return (
         <View>

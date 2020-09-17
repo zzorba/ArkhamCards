@@ -2,14 +2,13 @@ import React from 'react';
 import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { cloneDeep, countBy, find, shuffle, sum, sumBy } from 'lodash';
+import { cloneDeep, find, shuffle, sumBy } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
 import BasicButton from '@components/core/BasicButton';
 import { ChaosBag } from '@app_constants';
-import COLORS from '@styles/colors';
 import { ChaosBagResults } from '@actions/types';
 import typography from '@styles/typography';
 import CounterRow from '@components/core/CounterRow';

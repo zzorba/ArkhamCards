@@ -1,10 +1,7 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { t } from 'ttag';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
-import { BorderlessButton, TouchableOpacity } from 'react-native-gesture-handler';
 import typography from '@styles/typography';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
@@ -50,5 +47,5 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-  }
+  },
 });

@@ -18,7 +18,6 @@ import { getLangPreference, AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';
 import typography from '@styles/typography';
 import { l, s } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 const REFETCH_DAYS = 7;
