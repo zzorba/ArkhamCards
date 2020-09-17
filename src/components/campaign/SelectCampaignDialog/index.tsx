@@ -26,6 +26,7 @@ import { campaignName } from '../constants';
 import { NavigationProps } from '@components/nav/types';
 import { getPacksInCollection, AppState } from '@reducers';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
@@ -43,6 +44,9 @@ type Props = NavigationProps &
   DimensionsProps;
 
 class SelectCampaignDialog extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -101,6 +105,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     const {
       in_collection,
     } = this.props;
+    const { backgroundStyle, borderStyle } = this.context;
     const partitionedCampaigns = partition(
       ALL_CAMPAIGNS,
       pack_code => (in_collection[pack_code] || (
@@ -110,7 +115,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     const otherCampaigns = partitionedCampaigns[1];
 
     return (
-      <ScrollView style={styles.flex}>
+      <ScrollView style={[styles.flex, backgroundStyle]}>
         { myCampaigns.length > 0 && (
           <BasicSectionHeader
             title={t`My Campaigns`}
@@ -124,7 +129,7 @@ class SelectCampaignDialog extends React.Component<Props> {
           />
         ) }
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        <View style={styles.button}>
+        <View style={[styles.button, borderStyle]}>
           <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
         </View>
       </ScrollView>
@@ -145,10 +150,8 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   button: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

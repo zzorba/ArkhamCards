@@ -25,8 +25,8 @@ import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/
 import { getDeck, getCampaign, getTabooSet, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import BasicButton from '@components/core/BasicButton';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface UpgradeDeckProps {
   id: number;
@@ -55,6 +55,9 @@ interface State {
 }
 
 class DeckUpgradeDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -220,6 +223,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       storyCounts,
     } = this.state;
+    const { backgroundStyle } = this.context;
     const investigator = this.investigator();
     if (!deck || !investigator) {
       return null;
@@ -228,7 +232,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const xp = latestScenario ? (latestScenario.xp || 0) : 0;
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, backgroundStyle]}>
         <View style={space.paddingM}>
           <Text style={typography.text}>
             { t`Upgrading your deck allows changes and experience to be tracked over the course of a campaign.` }
@@ -285,6 +289,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
 });

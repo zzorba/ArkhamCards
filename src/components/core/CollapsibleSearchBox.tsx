@@ -174,20 +174,20 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
   render() {
     const { advancedOptions, children, prompt, searchTerm, onSearchChange } = this.props;
     const { advancedOpen, scrollAnim } = this.state;
-    const { colors } = this.context;
+    const { backgroundStyle, borderStyle, colors } = this.context;
     const scrollY = advancedOpen ? 0 : scrollAnim.interpolate({
       inputRange: [0, 1],
       outputRange: [-SEARCH_BAR_HEIGHT, 0],
     });
     return (
-      <View style={[styles.wrapper, { backgroundColor: colors.background }]}>
-        <View style={[styles.container, { backgroundColor: colors.background, borderColor: colors.divider }]}>
+      <View style={[styles.wrapper, backgroundStyle]}>
+        <View style={[styles.container, backgroundStyle, borderStyle]}>
           { children(this._handleScroll) }
         </View>
         <Animated.View style={[
           styles.slider,
+          backgroundStyle,
           {
-            backgroundColor: colors.background,
             transform: [{ translateY: scrollY }],
             height: SEARCH_BAR_HEIGHT,
           },

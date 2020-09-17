@@ -25,6 +25,7 @@ import { updateCampaign } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface UpgradeDecksProps {
   id: number;
@@ -45,6 +46,9 @@ interface ReduxActionProps {
 type Props = NavigationProps & UpgradeDecksProps & PlayerCardProps & ReduxProps & ReduxActionProps & DimensionsProps;
 
 class UpgradeDecksView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(passProps: UpgradeDecksProps) {
     return {
       topBar: {
@@ -151,11 +155,12 @@ class UpgradeDecksView extends React.Component<Props> {
       cards,
       investigators,
     } = this.props;
+    const { backgroundStyle } = this.context;
     if (!campaign) {
       return null;
     }
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <View style={space.marginS}>
           <Text style={typography.label}>
             { t`By upgrading a deck, you can track XP and story card upgrades as your campaign develops.\n\nPrevious versions of your deck will still be accessible.` }
@@ -216,7 +221,6 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    backgroundColor: COLORS.background,
   },
   footer: {
     height: 100,

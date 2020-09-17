@@ -124,6 +124,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
       updateCampaign,
       showTraumaDialog,
     } = this.props;
+    const { backgroundStyle } = this.context;
     if (!campaignDataA || !campaignDataB) {
       return null;
     }
@@ -149,7 +150,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'investigators',
         title: t`Decks`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <CampaignGuideSummary
               difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
               campaignGuide={contextA.campaignGuide}
@@ -190,7 +191,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'scenarios',
         title: t`Scenarios`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <LinkedScenarioListComponent
               componentId={componentId}
               campaignA={processedCampaignA}
@@ -205,7 +206,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'log',
         title: t`Log`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <CampaignGuideSummary
               difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
               campaignGuide={contextA.campaignGuide}
@@ -286,9 +287,3 @@ export default withUniversalCampaignData<LinkedCampaignGuideProps & NavigationPr
     )
   )
 );
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.background,
-  },
-});

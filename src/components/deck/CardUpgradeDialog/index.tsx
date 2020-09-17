@@ -22,6 +22,7 @@ import {
   getPacksInCollection,
   AppState,
 } from '@reducers';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -56,6 +57,9 @@ interface State {
 type Props = CardUpgradeDialogProps & ReduxProps & NavigationProps & DimensionsProps;
 
 class CardUpgradeDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {
@@ -205,7 +209,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     );
   }
 
-  renderCard(card: Card) {
+  _renderCard = (card: Card) => {
     const {
       componentId,
       tabooSetId,
@@ -214,9 +218,10 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     const {
       slots,
     } = this.state;
+    const { borderStyle } = this.context;
 
     return (
-      <View style={styles.column} key={card.code}>
+      <View style={[styles.column, borderStyle]} key={card.code}>
         <CardUpgradeOption
           key={card.code}
           card={card}
@@ -235,7 +240,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
         />
       </View>
     );
-  }
+  };
 
   renderCards() {
     const namedCards = this.namedCards();
@@ -244,7 +249,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       card => this.inCollection(card));
     return (
       <>
-        { inCollection.map(card => this.renderCard(card)) }
+        { inCollection.map(this._renderCard) }
         { nonCollection.length > 0 ? (
           <BasicButton
             key="non-collection"
@@ -294,12 +299,13 @@ class CardUpgradeDialog extends React.Component<Props, State> {
     const {
       slots,
     } = this.state;
+    const { backgroundStyle } = this.context;
     const overLimit = this.overLimit(slots);
 
     const isSurvivor = investigator.faction_code === 'survivor';
     return (
       <View
-        style={styles.wrapper}
+        style={[styles.wrapper, backgroundStyle]}
       >
         <ScrollView
           overScrollMode="never"
@@ -340,13 +346,11 @@ const styles = StyleSheet.create({
     paddingTop: m,
     paddingBottom: m,
     flexDirection: 'column',
-    borderBottomColor: COLORS.gray,
     borderBottomWidth: 1,
   },
   wrapper: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
   problemBox: {
     flex: 1,

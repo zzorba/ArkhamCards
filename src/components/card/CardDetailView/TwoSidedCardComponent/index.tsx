@@ -359,7 +359,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       simple,
       width,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, backgroundStyle } = this.context;
     if (card.linked_card) {
       return (
         <View key={key}>
@@ -389,8 +389,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const noHeader = (card.name === card.back_name || !card.back_name);
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
-        <View style={[styles.card, {
-          backgroundColor: colors.background,
+        <View style={[styles.card, backgroundStyle, {
           borderColor: colors.faction[
             card.faction2_code ? 'dual' : card.factionCode()
           ].background,
@@ -554,7 +553,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       simple,
       width,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, backgroundStyle } = this.context;
     if ((card.hidden || backFirst) &&
       ((card.hidden && card.type_code !== 'investigator') || card.spoiler) &&
       !this.state.showBack &&
@@ -581,11 +580,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           <CardDetailHeader card={card} width={Math.min(768, width)} linked={!!this.props.linked} />
           <View style={[
             styles.cardBody,
-            { backgroundColor: colors.background, },
+            backgroundStyle,
           ]}>
-            <View style={[styles.typeBlock, {
-              backgroundColor: colors.background,
-            }]}>
+            <View style={[styles.typeBlock, backgroundStyle]}>
               <View style={styles.row}>
                 <View style={styles.mainColumn}>
                   { this.renderMetadata(card) }

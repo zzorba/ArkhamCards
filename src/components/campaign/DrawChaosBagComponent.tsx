@@ -307,10 +307,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       chaosBagResults,
     } = this.props;
+    const { colors, backgroundStyle, borderStyle } = this.context;
     return (
-      <ScrollView style={styles.containerBottom}>
+      <ScrollView style={styles.containerBottom} contentContainerStyle={backgroundStyle}>
         <KeepAwake />
-        <View style={styles.containerTop}>
+        <View style={[styles.containerTop, borderStyle]}>
           <View style={styles.chaosTokenView}>
             { this.renderChaosToken() }
           </View>
@@ -318,11 +319,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             { this.renderDrawButton() }
           </View>
         </View>
-        <View style={styles.header}>
-          <Text style={typography.text}>
+        <View style={[styles.header, { backgroundColor: colors.L10 }]}>
+          <Text style={typography.subHeaderText}>
             { t`Drawn` }
           </Text>
-          <Text style={typography.small}>
+          <Text style={typography.subHeaderText}>
             { t`Total` } ({ chaosBagResults.totalDrawnTokens })
           </Text>
         </View>
@@ -334,8 +335,8 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             { this.renderClearButton() }
           </View>
         </View>
-        <View style={styles.header}>
-          <Text style={typography.text}>
+        <View style={[styles.header, { backgroundColor: colors.L10 }]}>
+          <Text style={typography.subHeaderText}>
             { t`Bless / Curse Tokens` }
           </Text>
         </View>
@@ -357,8 +358,8 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             label={t`Curse`}
           />
         </View>
-        <View style={styles.header}>
-          <Text style={typography.text}>
+        <View style={[styles.header, { backgroundColor: colors.L10 }]}>
+          <Text style={typography.subHeaderText}>
             { t`Sealed Tokens` }
           </Text>
         </View>
@@ -403,7 +404,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
   drawButtonView: {
     flex: 1,
@@ -429,16 +429,12 @@ const styles = StyleSheet.create({
   },
   containerTop: {
     alignItems: 'center',
-    backgroundColor: COLORS.background,
-    borderBottomColor: COLORS.divider,
     borderBottomWidth: 1,
-    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     padding: s,
   },
   containerBottom: {
-    backgroundColor: COLORS.background,
     flex: 1,
     flexDirection: 'column',
   },

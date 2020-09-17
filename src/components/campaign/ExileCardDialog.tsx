@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import { Slots } from '@actions/types';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -20,6 +20,10 @@ interface State {
 }
 
 export default class ExileCardDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+
   static options() {
     return {
       topBar: {
@@ -81,13 +85,13 @@ export default class ExileCardDialog extends React.Component<Props, State> {
       id,
       componentId,
     } = this.props;
-
+    const { backgroundStyle } = this.context;
     const {
       exileCounts,
     } = this.state;
 
     return (
-      <ScrollView style={styles.wrapper}>
+      <ScrollView style={[styles.wrapper, backgroundStyle]}>
         <ExileCardSelectorComponent
           componentId={componentId}
           id={id}
@@ -102,6 +106,5 @@ export default class ExileCardDialog extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

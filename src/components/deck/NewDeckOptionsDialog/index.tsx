@@ -35,6 +35,7 @@ import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -68,6 +69,9 @@ interface State {
 }
 
 class NewDeckOptionsDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onOkayPress!: () => void;
 
   constructor(props: Props) {
@@ -294,6 +298,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       networkType,
       isConnected,
     } = this.props;
+    const { colors } = this.context;
     const {
       saving,
       deckName,
@@ -306,7 +311,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       return (
         <ActivityIndicator
           style={styles.spinner}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />
@@ -328,7 +333,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           settingsStyle
         />
         <TabooSetPicker
-          color={COLORS.faction[investigator.factionCode()].background}
+          color={colors.faction[investigator.factionCode()].background}
           tabooSetId={tabooSetId}
           setTabooSet={this._setTabooSetId}
         />
@@ -396,13 +401,14 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       saving,
       optionSelected,
     } = this.state;
+    const { backgroundStyle } = this.context;
     const investigator = this.investigator();
     if (!investigator) {
       return null;
     }
     const okDisabled = saving || !find(optionSelected, selected => selected);
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         { this.renderFormContent(investigator) }
         { !saving && (
           <>
@@ -452,8 +458,5 @@ export default withPlayerCards<NavigationProps & NewDeckOptionsProps>(
 const styles = StyleSheet.create({
   spinner: {
     height: 80,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

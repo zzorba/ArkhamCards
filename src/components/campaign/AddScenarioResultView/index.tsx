@@ -27,6 +27,7 @@ import Card from '@data/Card';
 import { getCampaign, getLatestCampaignInvestigators, AppState } from '@reducers';
 import { m } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface AddScenarioResultProps {
   id: number;
@@ -62,6 +63,9 @@ interface State {
 }
 
 class AddScenarioResultView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
   _doSave!: (showDeckUpgrade: boolean) => void;
 
@@ -270,6 +274,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
       captureViewRef,
       allInvestigators,
     } = this.props;
+    const { backgroundStyle, borderStyle } = this.context;
     const {
       xp,
     } = this.state;
@@ -277,11 +282,11 @@ class AddScenarioResultView extends React.Component<Props, State> {
     const notes = this.campaignNotes();
     const scenarioResults = (campaign && campaign.scenarioResults) || [];
     return (
-      <View style={styles.flex} ref={captureViewRef}>
+      <View style={[styles.flex, backgroundStyle]} ref={captureViewRef}>
         { this.renderAddSectionDialog() }
         <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
           { this.renderScenarios() }
-          <View style={styles.bottomBorder}>
+          <View style={[styles.bottomBorder, borderStyle]}>
             <XpComponent xp={xp} onChange={this._xpChanged} />
           </View>
           { hasDecks && (
@@ -291,7 +296,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
               disabled={!this.saveEnabled()}
             />
           ) }
-          <View style={styles.bottomBorder}>
+          <View style={[styles.bottomBorder, borderStyle]}>
             <BasicButton
               title={hasDecks ? t`Only Save` : t`Save`}
               onPress={this._saveAndDismiss}
@@ -353,10 +358,8 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   flex: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

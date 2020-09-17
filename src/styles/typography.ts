@@ -30,6 +30,7 @@ export default StyleSheet.create({
     fontFamily: 'Alegreya-Medium',
     fontSize: 20 * sizeScale,
     lineHeight: 24 * sizeScale,
+    color: COLORS.darkText,
   },
   cardSubName: {
     fontFamily: 'Alegreya-Italic',

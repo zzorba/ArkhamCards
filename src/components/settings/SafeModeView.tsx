@@ -12,6 +12,7 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import SettingsItem from './SettingsItem';
 import { BackupProps } from './BackupView';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -139,31 +140,35 @@ class SafeModeView extends React.Component<Props, State> {
     }
 
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.settings}>
-          <SettingsItem
-            navigation
-            onPress={this._backupPressed}
-            text={t`Backup Data`}
-          />
-          { cacheCleared ? (
-            <SettingsItem
-              navigation
-              text={t`Cache cleared`}
-            />
-          ) : (
-            <SettingsItem
-              navigation
-              onPress={this._clearCache}
-              text={t`Clear cache`}
-            />
-          ) }
-          <BasicButton
-            onPress={this._launchApp}
-            title={t`Done`}
-          />
-        </ScrollView>
-      </SafeAreaView>
+      <StyleContext.Consumer>
+        { ({ backgroundStyle }) => (
+          <SafeAreaView style={[styles.container, backgroundStyle]}>
+            <ScrollView style={[styles.container, backgroundStyle]} contentContainerStyle={backgroundStyle}>
+              <SettingsItem
+                navigation
+                onPress={this._backupPressed}
+                text={t`Backup Data`}
+              />
+              { cacheCleared ? (
+                <SettingsItem
+                  navigation
+                  text={t`Cache cleared`}
+                />
+              ) : (
+                <SettingsItem
+                  navigation
+                  onPress={this._clearCache}
+                  text={t`Clear cache`}
+                />
+              ) }
+              <BasicButton
+                onPress={this._launchApp}
+                title={t`Done`}
+              />
+            </ScrollView>
+          </SafeAreaView>
+        ) }
+      </StyleContext.Consumer>
     );
   }
 }
@@ -194,10 +199,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
-  },
-  settings: {
-    backgroundColor: COLORS.background,
   },
 });
 

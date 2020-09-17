@@ -62,14 +62,14 @@ export default class SearchBox extends React.Component<Props> {
       toggleAdvanced,
       value,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, borderStyle } = this.context;
 
     return (
       <Input
         clearButtonMode="always"
         autoCorrect={false}
         autoCapitalize="none"
-        containerStyle={[styles.container, { backgroundColor: colors.L20, borderColor: colors.divider }, !toggleAdvanced ? styles.underline : {}]}
+        containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : {}]}
         inputContainerStyle={[
           styles.searchInput,
           {

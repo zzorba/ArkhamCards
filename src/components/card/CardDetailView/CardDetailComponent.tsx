@@ -105,10 +105,10 @@ export default class CardDetailComponent extends React.Component<Props> {
       simple,
       width,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, backgroundStyle } = this.context;
     if (this.shouldBlur()) {
       return (
-        <View key={card.code} style={[styles.viewContainer, { backgroundColor: colors.background, width }]}>
+        <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
           <Text style={[space.marginS]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
@@ -118,7 +118,7 @@ export default class CardDetailComponent extends React.Component<Props> {
       );
     }
     return (
-      <View key={card.code} style={[styles.viewContainer, { backgroundColor: colors.background, width }]}>
+      <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
         <TwoSidedCardComponent
           componentId={componentId}
           card={card}

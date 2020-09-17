@@ -195,18 +195,18 @@ class ScenarioView extends React.Component<Props> {
   };
 
   render() {
-    const { componentId, width, processedScenario } = this.props;
+    const { componentId, width, processedScenario, style: { backgroundStyle } } = this.props;
     const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
       processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
     return (
       <KeyboardAvoidingView
-        style={styles.keyboardView}
+        style={[styles.keyboardView, backgroundStyle]}
         behavior="position"
         enabled
         keyboardVerticalOffset={100}
       >
         <KeepAwake />
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
           { !!hasInterludeFaq && (
             <BasicButton
               title={t`Interlude FAQ`}
@@ -234,13 +234,9 @@ const styles = StyleSheet.create({
   footer: {
     marginTop: 64,
   },
-  container: {
-    backgroundColor: COLORS.background,
-  },
   keyboardView: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    backgroundColor: COLORS.background,
   },
 });

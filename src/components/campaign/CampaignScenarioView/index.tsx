@@ -17,7 +17,6 @@ import { Campaign, ScenarioResult } from '@actions/types';
 import { getCampaign, AppState } from '@reducers';
 import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignScenarioProps {
@@ -69,12 +68,13 @@ class CampaignScenarioView extends React.Component<Props> {
       campaign,
       cycleScenarios,
     } = this.props;
+    const { backgroundStyle } = this.context;
     if (!campaign) {
       return null;
     }
     const hasCompletedScenario = completedScenario(campaign.scenarioResults);
     return (
-      <ScrollView style={[styles.container, space.paddingS]}>
+      <ScrollView style={[styles.container, backgroundStyle, space.paddingS]}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
         <Text style={typography.smallLabel}>
           { t`SCENARIOS` }
@@ -115,7 +115,6 @@ export default connect(mapStateToPropsFix)(CampaignScenarioView);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   disabled: {
     color: '#bdbdbd',

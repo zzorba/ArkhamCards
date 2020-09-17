@@ -317,10 +317,10 @@ class CardFilterView extends React.Component<Props> {
         hasSkill,
       },
     } = this.props;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
 
     return (
-      <ScrollView contentContainerStyle={{ backgroundColor: colors.background }}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         <FactionChooser
           factions={allFactions}
           selection={factions}

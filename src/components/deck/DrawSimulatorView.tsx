@@ -13,7 +13,7 @@ import { Slots } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -35,6 +35,9 @@ interface Item {
 }
 
 class DrawSimulatorView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _drawOne = this.draw.bind(this, 1);
   _drawTwo = this.draw.bind(this, 2);
   _drawFive = this.draw.bind(this, 5);
@@ -165,12 +168,13 @@ class DrawSimulatorView extends React.Component<Props, State> {
       drawnCards,
       selectedCards,
     } = this.state;
+    const { colors } = this.context;
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (
       <View style={styles.controlsContainer}>
-        <View style={styles.drawButtonRow}>
-          <Text style={styles.text}>{ t`Draw: ` }</Text>
+        <View style={[styles.drawButtonRow, { backgroundColor: colors.L10 }]}>
+          <Text style={[styles.text, { color: colors.darkText }]}>{ t`Draw: ` }</Text>
           <View style={styles.buttonContainer}>
             <Button
               title="1"
@@ -200,7 +204,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
             />
           </View>
         </View>
-        <View style={styles.wrapButtonRow}>
+        <View style={[styles.wrapButtonRow, { backgroundColor: colors.L10 }]}>
           <View style={styles.buttonContainer}>
             <Button
               title={t`Redraw`}
@@ -226,6 +230,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
 
   _renderCardItem = ({ item }: { item: Item }) => {
     const card = this.props.cards[item.code];
+    const { colors } = this.context;
     if (!card) {
       return null;
     }
@@ -235,7 +240,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
         id={item.key}
         card={card}
         onPressId={this._toggleSelection}
-        backgroundColor={item.selected ? COLORS.veryLightBackground : undefined}
+        backgroundColor={item.selected ? colors.L20 : undefined}
       />
     );
   };
@@ -245,6 +250,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
       drawnCards,
       selectedCards,
     } = this.state;
+    const { backgroundStyle } = this.context;
     const selectedSet = new Set(selectedCards);
     const data = map(drawnCards, cardKey => {
       const parts = cardKey.split('-');
@@ -255,7 +261,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
       };
     });
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, backgroundStyle]}>
         { this._renderHeader() }
         <FlatList
           data={data}
@@ -272,7 +278,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
   controlsContainer: {
     flexDirection: 'column',
@@ -286,19 +291,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.veryVeryLightBackground,
   },
   wrapButtonRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.veryVeryLightBackground,
     flexWrap: 'wrap',
   },
   text: {
     fontFamily: 'System',
     fontSize: 18,
     lineHeight: 22,
-    color: COLORS.darkText,
   },
   buttonContainer: {
     flex: 1,

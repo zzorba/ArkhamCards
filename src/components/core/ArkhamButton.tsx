@@ -7,7 +7,7 @@ import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
-  icon: 'search' | 'edit' | 'expand' | 'deck';
+  icon: 'search' | 'edit' | 'expand' | 'deck' | 'card';
   title: string;
   onPress: () => void;
 }
@@ -23,6 +23,8 @@ export default class ArkhamButton extends React.Component<Props> {
   renderIcon() {
     const { colors, fontScale } = this.context;
     switch (this.props.icon) {
+      case 'card':
+        return <View style={styles.cardIcon}><AppIcon name="cards" size={22 * fontScale} color={colors.L20} /></View>;
       case 'deck':
         return <View style={styles.deckIcon}><AppIcon name="deck" size={24 * fontScale} color={colors.L20} /></View>;
       case 'search':
@@ -36,10 +38,10 @@ export default class ArkhamButton extends React.Component<Props> {
 
   render() {
     const { title, onPress } = this.props;
-    const { colors, fontScale } = this.context;
+    const { colors, backgroundStyle, fontScale } = this.context;
     const height = 18 * fontScale + 20;
     return (
-      <View style={[styles.wrapper, { backgroundColor: colors.background }]}>
+      <View style={[styles.wrapper, backgroundStyle]}>
         <RectButton
           style={[
             styles.buttonStyle, {
@@ -80,6 +82,10 @@ const styles = StyleSheet.create({
   },
   deckIcon: {
     marginTop: -4,
+  },
+  cardIcon: {
+    marginTop: -2,
+    marginRight: -4,
   },
   row: {
     flexDirection: 'row',

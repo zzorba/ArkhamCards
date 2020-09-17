@@ -278,13 +278,13 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       tabooSetId,
       width,
     } = this.props;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
     return (
       <ScrollView
         key={itemIndex}
         overScrollMode="never"
         bounces={false}
-        contentContainerStyle={{ backgroundColor: colors.background }}
+        contentContainerStyle={backgroundStyle}
       >
         <CardDetailComponent
           componentId={componentId}
@@ -316,23 +316,23 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     const {
       deckCardCounts,
     } = this.state;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
     const card = this.currentCard();
     if (!card) {
-      return <View style={[styles.wrapper, { backgroundColor: colors.background }]} />;
+      return <View style={[styles.wrapper, backgroundStyle]} />;
     }
     return (
       <View
-        style={[styles.wrapper, { backgroundColor: colors.background }]}
+        style={[styles.wrapper, backgroundStyle]}
       >
         <Swiper
           index={initialIndex}
           width={width}
-          style={{ backgroundColor: colors.background }}
-          containerStyle={{ flex: 1, flexDirection: 'column', backgroundColor: colors.background }}
+          style={backgroundStyle}
+          containerStyle={[backgroundStyle, { flex: 1, flexDirection: 'column'}]}
           loadMinimal
           loadMinimalSize={1}
-          loadMinimalLoader={<View style={[styles.wrapper, { width, height, backgroundColor: colors.background }]} />}
+          loadMinimalLoader={<View style={[styles.wrapper, backgroundStyle, { width, height }]} />}
           showsPagination={false}
           onIndexChanged={this._onIndexChange}
           loop={false}

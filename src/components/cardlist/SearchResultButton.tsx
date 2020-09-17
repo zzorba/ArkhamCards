@@ -34,10 +34,10 @@ export default class SearchResultButton extends React.Component<Props> {
 
   render() {
     const { title, onPress } = this.props;
-    const { colors, fontScale } = this.context;
+    const { colors, backgroundStyle, fontScale } = this.context;
     const height = 18 * fontScale + 20;
     return (
-      <View style={[styles.wrapper, { backgroundColor: colors.background }]}>
+      <View style={[styles.wrapper, backgroundStyle]}>
         <RectButton
           style={[
             styles.buttonStyle, {

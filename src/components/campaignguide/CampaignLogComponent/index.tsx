@@ -186,8 +186,9 @@ export default class CampaignLogComponent extends React.Component<Props> {
 
   render() {
     const { campaignGuide } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <View style={styles.wrapper}>
+      <View style={backgroundStyle}>
         { this.renderChaosBag() }
         { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
@@ -205,9 +206,6 @@ export default class CampaignLogComponent extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: COLORS.background,
-  },
   section: {
     padding: m,
     paddingLeft: m + s,

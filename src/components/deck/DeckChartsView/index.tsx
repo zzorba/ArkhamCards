@@ -11,7 +11,7 @@ import CostChart from './CostChart';
 import SlotsChart from './SlotsChart';
 import SkillIconChart from './SkillIconChart';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const INCLUDE_SLOTS_CHART = false;
 
@@ -22,6 +22,9 @@ export interface DeckChartsProps {
 type Props = DeckChartsProps & DimensionsProps;
 
 class DeckChartsView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   render() {
     const {
       parsedDeck,
@@ -30,9 +33,11 @@ class DeckChartsView extends React.Component<Props> {
     if (!parsedDeck) {
       return null;
     }
+    const { backgroundStyle } = this.context;
     return (
       <ScrollView contentContainerStyle={[
         styles.container,
+        backgroundStyle,
         space.paddingSideS,
         space.paddingTopM,
       ]}>
@@ -51,6 +56,5 @@ const styles = StyleSheet.create({
   container: {
     paddingBottom: 64,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
 });

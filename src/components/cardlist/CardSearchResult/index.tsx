@@ -385,13 +385,13 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       onDeckCountChange,
       backgroundColor,
     } = this.props;
-    const { colors, fontScale } = this.context;
+    const { colors, borderStyle, fontScale } = this.context;
     return (
       <View style={[
         styles.rowContainer,
         styles.rowBorder,
+        borderStyle,
         {
-          borderColor: colors.divider,
           minHeight: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
@@ -435,14 +435,14 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       backgroundColor,
       onDeckCountChange,
     } = this.props;
-    const { fontScale, colors } = this.context;
+    const { fontScale, colors, borderStyle } = this.context;
     if (!card) {
       return (
         <View style={[
           styles.rowContainer,
           styles.rowBorder,
+          borderStyle,
           {
-            borderColor: colors.divider,
             minHeight: rowHeight(fontScale),
             backgroundColor: backgroundColor || colors.background,
           },
@@ -463,8 +463,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         <View style={[
           styles.rowContainer,
           styles.rowBorder,
+          borderStyle,
           {
-            borderColor: colors.divider,
             minHeight: rowHeight(fontScale),
             backgroundColor: backgroundColor || colors.background,
           },

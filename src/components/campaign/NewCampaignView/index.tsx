@@ -487,9 +487,10 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.props;
     const {
       gameFont,
+      borderStyle,
     } = this.context;
     return (
-      <View style={[space.paddingBottomS, styles.underline]}>
+      <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
         <View style={styles.block}>
           <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Weakness Set` }
@@ -527,24 +528,25 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBag() {
+    const { borderStyle, colors } = this.context;
     const { guided } = this.state;
     if (guided) {
       return null;
     }
     const hasDefinedChaosBag = this.hasDefinedChaosBag();
     return hasDefinedChaosBag ? (
-      <View style={styles.underline}>
+      <View style={[styles.underline, borderStyle]}>
         { this.renderChaosBagSection() }
       </View>
     ) : (
-      <NavButton onPress={this._showChaosBagDialog} color={COLORS.black}>
+      <NavButton onPress={this._showChaosBagDialog} color={colors.background}>
         { this.renderChaosBagSection() }
       </NavButton>
     );
   }
 
   renderCampaignLogSection() {
-    const { gameFont } = this.context;
+    const { gameFont, borderStyle } = this.context;
     if (this.isGuided()) {
       return null;
     }
@@ -553,7 +555,7 @@ class NewCampaignView extends React.Component<Props, State> {
       undefined :
       this._deleteCampaignNoteSection;
     return (
-      <View style={styles.underline}>
+      <View style={[styles.underline, borderStyle]}>
         <View style={styles.block}>
           <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Campaign Log` }
@@ -621,6 +623,7 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.props;
     const {
       gameFont,
+      backgroundStyle,
     } = this.context;
 
     const {
@@ -635,8 +638,8 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <View ref={captureViewRef} style={styles.container}>
-        <ScrollView contentContainerStyle={styles.container}>
+      <View ref={captureViewRef} style={backgroundStyle}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
           <CampaignSelector
             componentId={componentId}
             campaignChanged={this._campaignChanged}
@@ -667,7 +670,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { this.renderChaosBag() }
           { this.renderCampaignLogSection() }
           { campaignCode !== TDE && (
-            <View style={styles.underline}>
+            <View style={[styles.underline, borderStyle]}>
               <View style={styles.block}>
                 <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
                   { t`Investigators` }
@@ -732,7 +735,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   footer: {
     minHeight: 100,
@@ -741,8 +743,5 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

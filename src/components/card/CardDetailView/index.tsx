@@ -19,6 +19,7 @@ import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { getShowSpoilers, getTabooSet, AppState } from '@reducers';
 import Card from '@data/Card';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{
@@ -65,6 +66,9 @@ interface State {
 }
 
 class CardDetailView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -178,8 +182,9 @@ class CardDetailView extends React.Component<Props, State> {
       width,
       id,
     } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={styles.wrapper} />}>
+      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={[styles.wrapper, backgroundStyle]} />}>
         { (card: Card) => {
           if (!this.navUpdated) {
             this.navUpdated = true;
@@ -193,7 +198,7 @@ class CardDetailView extends React.Component<Props, State> {
             return null;
           }
           return (
-            <ScrollView style={styles.wrapper}>
+            <ScrollView style={[styles.wrapper, backgroundStyle]}>
               <CardDetailComponent
                 width={width}
                 componentId={componentId}
@@ -230,6 +235,5 @@ connect<ReduxProps, unknown, NavigationProps & CardDetailProps, AppState>(mapSta
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

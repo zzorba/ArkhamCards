@@ -65,14 +65,12 @@ export default class InvestigatorRow extends React.Component<Props> {
       noFactionIcon,
       superTitle,
     } = this.props;
-    const { colors, gameFont } = this.context;
+    const { backgroundStyle, borderStyle, colors, gameFont } = this.context;
     return (
       <View style={[
         styles.wrapper,
-        {
-          borderColor: colors.divider,
-          backgroundColor: colors.background,
-        },
+        backgroundStyle,
+        borderStyle,
       ]}>
         <View style={[
           styles.headerColor,

@@ -113,12 +113,12 @@ export default class NewDeckView extends React.Component<Props, State> {
       filterInvestigators,
       onlyInvestigators,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, backgroundStyle } = this.context;
     const {
       selectedSort,
     } = this.state;
     return (
-      <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <View style={[styles.container, backgroundStyle]}>
         <InvestigatorsListComponent
           componentId={componentId}
           filterInvestigators={filterInvestigators}

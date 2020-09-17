@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { login } from '@actions';
 import { AppState } from '@reducers';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   render: (
@@ -34,6 +35,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 class LoginStateComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   render() {
     const {
       loading,
@@ -46,11 +50,12 @@ class LoginStateComponent extends React.Component<Props> {
     if (noWrapper) {
       return render(login, signedIn, error);
     }
+    const { backgroundStyle } = this.context;
     return (
       <View style={styles.wrapper}>
         { render(login, signedIn, error) }
         { !!loading && (
-          <View style={styles.activityIndicatorContainer}>
+          <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
             <ActivityIndicator
               style={{ height: 80 }}
               color={COLORS.lightText}
@@ -89,7 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   activityIndicatorContainer: {
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

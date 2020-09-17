@@ -15,6 +15,7 @@ import Card from '@data/Card';
 import { HEADER_HEIGHT } from '@styles/sizes';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
+import { StyleContextType } from '@styles/StyleContext';
 
 export interface CardImageProps {
   id: string;
@@ -35,6 +36,8 @@ interface CardImageDetailProps {
 }
 
 class CardImageDetail extends React.Component<CardImageDetailProps> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
   componentDidMount() {
     const {
       componentId,
@@ -63,6 +66,7 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
       width,
       flipped,
     } = this.props;
+    const { backgroundStyle } = this.context;
     const cardRatio = 68 / 95;
     const cardHeight = (height - HEADER_HEIGHT) * cardRatio;
     const cardWidth = width - 16;
@@ -75,7 +79,7 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
             cropHeight={height - HEADER_HEIGHT}
             imageWidth={cardWidth}
             imageHeight={cardHeight}
-            style={styles.pinchZoom}
+            style={[styles.container, backgroundStyle]}
           >
             <FastImage
               style={{ height: cardHeight, width: cardWidth }}
@@ -93,8 +97,8 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
           cropHeight={height - HEADER_HEIGHT}
           imageWidth={cardWidth}
           imageHeight={cardHeight}
-          style={styles.pinchZoom}
-        >
+          style={[styles.container, backgroundStyle]}
+          >
           <FastImage
             style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
@@ -113,8 +117,8 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
         cropHeight={height - HEADER_HEIGHT}
         imageWidth={cardWidth}
         imageHeight={cardHeight}
-        style={styles.pinchZoom}
-      >
+        style={[styles.container, backgroundStyle]}
+        >
         <FastImage
           style={{ height: cardHeight, width: cardWidth }}
           resizeMode="contain"
@@ -160,8 +164,9 @@ class CardImageView extends React.Component<Props, State> {
 
   render() {
     const { id, width, height, componentId } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, backgroundStyle]}>
         <SingleCardWrapper code={id} type="encounter" extraProps={this.state.flipped}>
           { (card: Card, flipped?: boolean) => (
             <CardImageDetail
@@ -183,10 +188,5 @@ export default withDimensions(CardImageView);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
-  },
-  pinchZoom: {
-    flex: 1,
-    backgroundColor: COLORS.background,
   },
 });
