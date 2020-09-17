@@ -1,9 +1,3 @@
-import React, { ReactNode } from 'react';
-import { mapValues } from 'lodash';
-
-import ArkhamIcon from '@icons/ArkhamIcon';
-import COLORS from '@styles/colors';
-
 export type TypeCodeType =
   'asset' |
   'event' |
@@ -203,26 +197,6 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   auto_fail: 1,
   elder_sign: 1,
 };
-
-export function createFactionIcons({
-  defaultColor,
-  colorChoice = 'text',
-}: {
-  defaultColor?: string;
-  colorChoice?: 'text' | 'background'
-}): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
-  return mapValues(COLORS.faction, (color, faction) => {
-    return function factionIcon(size: number) {
-      return (
-        <ArkhamIcon
-          name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
-          size={size}
-          color={defaultColor || color[colorChoice]}
-        />
-      );
-    };
-  });
-}
 
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';

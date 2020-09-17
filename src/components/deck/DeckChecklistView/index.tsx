@@ -123,7 +123,9 @@ class DeckChecklistView extends React.Component<Props, State> {
     );
   };
 
-  _handleScroll = () => {};
+  _handleScroll = () => {
+    // intentionally blank.
+  };
 
   _clearChecklist = () => {
     const { id, resetDeckChecklist } = this.props;

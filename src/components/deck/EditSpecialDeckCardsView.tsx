@@ -1,11 +1,10 @@
 import React from 'react';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { EditDeckProps } from './DeckEditView';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import { CardDetailProps } from '@components/card/CardDetailView';
@@ -19,7 +18,6 @@ import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/Card';
 import { getCampaign, AppState } from '@reducers';
 import COLORS from '@styles/colors';
-import { l, s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -420,8 +418,5 @@ export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-  },
-  headerText: {
-    paddingLeft: s,
   },
 });

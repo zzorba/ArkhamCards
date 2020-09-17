@@ -100,7 +100,7 @@ export default class NewDeckView extends React.Component<Props, State> {
           onCreateDeck,
         },
         options: {
-          ...getDeckOptions({ title: t`NewDeck`, }, investigator),
+          ...getDeckOptions({ title: t`NewDeck` }, investigator),
           bottomTabs: {},
         },
       },
@@ -113,7 +113,7 @@ export default class NewDeckView extends React.Component<Props, State> {
       filterInvestigators,
       onlyInvestigators,
     } = this.props;
-    const { colors, backgroundStyle } = this.context;
+    const { backgroundStyle } = this.context;
     const {
       selectedSort,
     } = this.state;

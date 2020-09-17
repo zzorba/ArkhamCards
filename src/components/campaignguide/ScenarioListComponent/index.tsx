@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { map } from 'lodash';
 
 import { ProcessedCampaign } from '@data/scenario';
@@ -26,7 +26,7 @@ export default function ScenarioListTab({
     campaignState,
   },
   showLinkedScenario,
-}: Props)  {
+}: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   return (
     <View style={[space.paddingBottomL, backgroundStyle]}>

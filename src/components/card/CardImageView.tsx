@@ -13,7 +13,6 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import { iconsMap } from '@app/NavIcons';
 import Card from '@data/Card';
 import { HEADER_HEIGHT } from '@styles/sizes';
-import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -99,7 +98,7 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
           imageWidth={cardWidth}
           imageHeight={cardHeight}
           style={[styles.container, backgroundStyle]}
-          >
+        >
           <FastImage
             style={{ height: cardHeight, width: cardWidth }}
             resizeMode="contain"
@@ -119,7 +118,7 @@ class CardImageDetail extends React.Component<CardImageDetailProps> {
         imageWidth={cardWidth}
         imageHeight={cardHeight}
         style={[styles.container, backgroundStyle]}
-        >
+      >
         <FastImage
           style={{ height: cardHeight, width: cardWidth }}
           resizeMode="contain"

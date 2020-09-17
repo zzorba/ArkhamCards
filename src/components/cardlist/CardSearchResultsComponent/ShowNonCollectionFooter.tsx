@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -16,29 +16,21 @@ interface Props {
   title: string;
   onPress: (id: string) => void;
 }
-export default class ShowNonCollectionFooter extends React.Component<Props> {
-  _onPress = () => {
-    this.props.onPress(this.props.id);
-  }
+export default function ShowNonCollectionFooter({ id, title, onPress }: Props) {
+  const { fontScale, borderStyle } = useContext(StyleContext);
+  const handleOnPress = () => {
+    onPress(id);
+  };
 
-  render() {
-    const {
-      title,
-    } = this.props;
-    return (
-      <StyleContext.Consumer>
-        { ({ fontScale, colors, borderStyle }) => (
-          <View style={[styles.border, borderStyle, { height: rowNonCollectionHeight(fontScale) }]}>
-            <ArkhamButton
-              icon="expand"
-              title={title}
-              onPress={this._onPress}
-            />
-          </View>
-        ) }
-      </StyleContext.Consumer>
-    );
-  }
+  return (
+    <View style={[styles.border, borderStyle, { height: rowNonCollectionHeight(fontScale) }]}>
+      <ArkhamButton
+        icon="expand"
+        title={title}
+        onPress={handleOnPress}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

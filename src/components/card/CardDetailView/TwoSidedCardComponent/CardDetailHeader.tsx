@@ -73,7 +73,7 @@ function DualFactionIcons({ card }: { card: Card }) {
       <ArkhamIcon name={card.faction_code} size={36} color="white" />
       <ArkhamIcon name={card.faction2_code} size={36} color="white" />
     </>
-  )
+  );
 }
 function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
   const color = '#FFF';

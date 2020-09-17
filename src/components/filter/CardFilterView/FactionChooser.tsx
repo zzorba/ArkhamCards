@@ -8,6 +8,7 @@ import { ButtonGroup } from 'react-native-elements';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { FactionCodeType } from '@app_constants';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 function factionToIconName(faction: FactionCodeType) {
   if (faction === 'neutral') {
@@ -26,6 +27,9 @@ interface Props {
 }
 
 export default class FactionChooser extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _updateIndex = (indexes: number[]) => {
     const {
       factions,
@@ -40,7 +44,7 @@ export default class FactionChooser extends React.Component<Props> {
       factions,
       selection,
     } = this.props;
-
+    const { colors } = this.context;
     if (factions.length <= 1) {
       return null;
     }
@@ -58,7 +62,7 @@ export default class FactionChooser extends React.Component<Props> {
             <ArkhamIcon
               name={iconName}
               size={iconName !== faction ? 28 : 32}
-              color={selected ? COLORS.faction[faction].text : '#bdbdbd'}
+              color={selected ? colors.faction[faction].text : '#bdbdbd'}
             />
           );
         },

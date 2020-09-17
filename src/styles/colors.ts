@@ -37,14 +37,10 @@ export default {
   D20,
   D30,
   M: medium,
-
   disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFFFF99', dark: '#00000099' }) : PlatformColor('@color/disabledOverlayColor')) as any as string,
   modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('@color/colorLightBackground')) as any as string,
   darkText: D30 as any as string,
   lightText: D10 as any as string,
-  veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor') : '#888') as any as string,
-  veryLightBackground: (Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : PlatformColor('@color/colorVeryLightBackground')) as any as string,
-  veryVeryLightBackground: (Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : PlatformColor('@color/colorVeryVeryLightBackground')) as any as string,
   divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#888888') as any as string,
   faction: {
     guardian: {

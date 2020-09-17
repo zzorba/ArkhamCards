@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DeviceInfo from 'react-native-device-info';
-import { msgid, ngettext, t, jt } from 'ttag';
+import { t, jt } from 'ttag';
 
 import {
   RANDOM_BASIC_WEAKNESS,
@@ -19,7 +19,6 @@ import typography from '@styles/typography';
 import { isBig, xs, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
-import EncounterIcon from '@icons/EncounterIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
@@ -466,7 +465,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardFooter(card: Card) {
-    const { componentId } = this.props;
     /*
             { !!componentId && (
           <View style={styles.twoColumn}>
@@ -654,17 +652,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
   },
-  halfColumn: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  twoColumn: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-  },
   mainColumn: {
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -722,9 +709,6 @@ const styles = StyleSheet.create({
   slotBlock: {
     marginBottom: s,
   },
-  setRow: {
-    marginBottom: xs,
-  },
   typeBlock: {
     marginTop: xs,
   },
@@ -734,9 +718,6 @@ const styles = StyleSheet.create({
   traitsText: {
     fontWeight: isBig ? '500' : '700',
     fontStyle: 'italic',
-  },
-  illustratorText: {
-    marginBottom: xs,
   },
   buttonContainerPadding: {
     paddingLeft: s,

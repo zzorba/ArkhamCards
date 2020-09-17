@@ -9,7 +9,7 @@ import CampaignMergeItem from './CampaignMergeItem';
 import { Campaign } from '@actions/types';
 import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -23,6 +23,9 @@ interface State {
   open: boolean;
 }
 export default class CampaignMergeSection extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     open: false,
   };
@@ -53,6 +56,7 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
   renderHeader() {
     const { title, campaigns, inverted, values } = this.props;
     const { open } = this.state;
+    const { colors, borderStyle } = this.context;
     const selected = sumBy(campaigns, campaign => {
       if (inverted) {
         return values[campaign.id] ? 0 : 1;
@@ -60,7 +64,7 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
       return values[campaign.id] ? 1 : 0;
     });
     return (
-      <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
+      <View style={[styles.headerRow, { backgroundColor: colors.L10 }, borderStyle, space.paddingS, space.paddingLeftM]}>
         <Text style={typography.label}>
           { title } ({selected} / {campaigns.length})
         </Text>
@@ -69,7 +73,7 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
             <MaterialIcons
               name={open ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
               size={24}
-              color={COLORS.darkText}
+              color={colors.darkText}
             />
           </View>
         ) }
@@ -108,8 +112,6 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.veryVeryLightBackground,
-    borderColor: COLORS.divider,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   icon: {

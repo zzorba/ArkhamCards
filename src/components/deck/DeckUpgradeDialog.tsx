@@ -97,10 +97,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     this._navEventListener = Navigation.events().bindComponent(this);
   }
 
-  componentDidMount() {
-
-  }
-
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }

@@ -19,7 +19,7 @@ import FlavorSmallCapsNode from './FlavorSmallCapsNode';
 import FlavorRightNode from './FlavorRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
-import { isBig, xs } from '@styles/space';
+import { xs } from '@styles/space';
 
 const BreakTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),

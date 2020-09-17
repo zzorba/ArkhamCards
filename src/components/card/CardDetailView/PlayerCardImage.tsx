@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,12 +11,12 @@ import { t } from 'ttag';
 
 import { CardImageProps } from '@components/card/CardImageView';
 import EncounterIcon from '@icons/EncounterIcon';
-import { createFactionIcons } from '@app_constants';
+import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
-const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFF' });
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 
 interface Props {
@@ -24,13 +24,94 @@ interface Props {
   card: Card;
 }
 
-export default class PlayerCardImage extends React.Component<Props> {
-  _onPress = () => {
-    const {
-      componentId,
-      card,
-    } = this.props;
+function imageStyle(card: Card) {
+  switch (card.type_code) {
+    case 'enemy': return styles.enemyImage;
+    case 'investigator': return styles.investigatorImage;
+    case 'agenda': return styles.agendaImage;
+    case 'act': return styles.actImage;
+    case 'location': return styles.locationImage;
+    case 'treachery': return styles.treacheryImage;
+    default: return {};
+  }
+}
+
+function ImagePlaceholder({ card }: { card: Card }) {
+  if (card.encounter_code) {
+    return (
+      <View style={[
+        styles.placeholder,
+        { backgroundColor: '#444' },
+      ]}>
+        <Text style={styles.placeholderIcon}>
+          <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
+        </Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={[
+      styles.placeholder,
+      { backgroundColor: (card.faction2_code ?
+        COLORS.faction.dual :
+        COLORS.faction[card.factionCode()]).background,
+      },
+    ]}>
+      <Text style={styles.placeholderIcon}>
+        <FactionIcon
+          faction={card.faction2_code ? 'dual' : card.factionCode()}
+          defaultColor="#FFFFFF"
+          size={55}
+        />
+      </Text>
+    </View>
+  );
+}
+
+function ImageContent({ card }: { card: Card }) {
+  const filename = (card.type_code === 'location' && card.double_sided) ?
+    card.backimagesrc :
+    card.imagesrc;
+
+  const horizontal = card.type_code === 'act' ||
+    card.type_code === 'investigator' ||
+    card.type_code === 'agenda';
+
+  if (isBig && !horizontal) {
+    return (
+      <View style={styles.verticalContainer}>
+        <FastImage
+          style={styles.verticalContainer}
+          source={{
+            uri: `https://arkhamdb.com${filename}`,
+          }}
+          resizeMode="contain"
+        />
+      </View>
+    );
+  }
+  return (
+    <View style={styles.container}>
+      <ImagePlaceholder card={card} />
+      <View style={styles.container}>
+        <FastImage
+          style={[styles.image, imageStyle(card)]}
+          source={{
+            uri: `https://arkhamdb.com${filename}`,
+          }}
+          resizeMode="contain"
+        />
+      </View>
+    </View>
+  );
+}
+
+export default function PlayerCardImage({ componentId, card }: Props) {
+  const { colors } = useContext(StyleContext);
+  const onPress = () => {
     if (componentId) {
+      const faction = card.factionCode();
       Navigation.push<CardImageProps>(componentId, {
         component: {
           name: 'Card.Image',
@@ -44,7 +125,7 @@ export default class PlayerCardImage extends React.Component<Props> {
                 color: '#FFFFFF',
               },
               background: {
-                color: card.faction_code ? COLORS.faction[card.faction_code].background : COLORS.darkText,
+                color: faction ? colors.faction[faction].background : colors.darkText,
               },
               title: {
                 text: card.name,
@@ -62,122 +143,22 @@ export default class PlayerCardImage extends React.Component<Props> {
     }
   };
 
-  imageStyle() {
-    const {
-      card,
-    } = this.props;
-    switch (card.type_code) {
-      case 'enemy': return styles.enemyImage;
-      case 'investigator': return styles.investigatorImage;
-      case 'agenda': return styles.agendaImage;
-      case 'act': return styles.actImage;
-      case 'location': return styles.locationImage;
-      case 'treachery': return styles.treacheryImage;
-      default: return {};
-    }
-  }
-
-  renderPlaceholder() {
-    const {
-      card,
-    } = this.props;
-    if (card.encounter_code) {
-      return (
-        <View style={[
-          styles.placeholder,
-          { backgroundColor: '#444' },
-        ]}>
-          <Text style={styles.placeholderIcon}>
-            <EncounterIcon encounter_code={card.encounter_code} size={55} color="#FFF" />
-          </Text>
-        </View>
-      );
-    }
-
-    const faction_icon = card.faction2_code ?
-      FACTION_ICONS.dual :
-      FACTION_ICONS[card.factionCode()];
-    if (faction_icon) {
-      return (
-        <View style={[
-          styles.placeholder,
-          { backgroundColor: (card.faction2_code ?
-            COLORS.faction.dual :
-            COLORS.faction[card.factionCode()]).background,
-          },
-        ]}>
-          <Text style={styles.placeholderIcon}>
-            { faction_icon(55) }
-          </Text>
-        </View>
-      );
-    }
-    return null;
-  }
-
-  renderContent() {
-    const {
-      card,
-    } = this.props;
-    const filename = (card.type_code === 'location' && card.double_sided) ?
-      card.backimagesrc :
-      card.imagesrc;
-
-    const horizontal = card.type_code === 'act' ||
-      card.type_code === 'investigator' ||
-      card.type_code === 'agenda';
-
-    if (isBig && !horizontal) {
-      return (
-        <View style={styles.verticalContainer}>
-          <FastImage
-            style={styles.verticalContainer}
-            source={{
-              uri: `https://arkhamdb.com${filename}`,
-            }}
-            resizeMode="contain"
-          />
-        </View>
-      );
-    }
+  if (!card.imagesrc) {
     return (
       <View style={styles.container}>
-        { this.renderPlaceholder() }
-        <View style={styles.container}>
-          <FastImage
-            style={[styles.image, this.imageStyle()]}
-            source={{
-              uri: `https://arkhamdb.com${filename}`,
-            }}
-            resizeMode="contain"
-          />
-        </View>
+        <ImagePlaceholder card={card} />
       </View>
     );
   }
 
-  render() {
-    const {
-      card,
-      componentId,
-    } = this.props;
-    if (!card.imagesrc) {
-      return (
-        <View style={styles.container}>
-          { this.renderPlaceholder() }
-        </View>
-      );
-    }
-
-    if (componentId) {
-      return (
-        <TouchableOpacity onPress={this._onPress}>
-          { this.renderContent() }
-        </TouchableOpacity>
-      );
-    }
-    return this.renderContent();
+  if (componentId) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <ImageContent card={card} />
+      </TouchableOpacity>
+    );
   }
+  return <ImageContent card={card} />;
 }
 
 const styles = StyleSheet.create({

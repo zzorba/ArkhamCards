@@ -16,14 +16,13 @@ import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import Button from '@components/core/Button';
 import Switch from '@components/core/Switch';
 import Card from '@data/Card';
-import { createFactionIcons, SKILLS, SkillCodeType } from '@app_constants';
+import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
 import typography from '@styles/typography';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-const FACTION_ICONS = createFactionIcons({ colorChoice: 'text' });
 
 interface Props {
   card: Card;
@@ -123,7 +122,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
         color={colors.faction[faction].text}
       />
-    )
+    );
   }
 
   static cardCost(card: Card): string {

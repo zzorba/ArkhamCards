@@ -24,7 +24,6 @@ import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
 import typography from '@styles/typography';
 import { m } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 export interface CardFaqProps {

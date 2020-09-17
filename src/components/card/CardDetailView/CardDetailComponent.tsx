@@ -14,7 +14,7 @@ import Card from '@data/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
-import space, { m, s, xs } from '@styles/space';
+import space, { m, s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -105,7 +105,7 @@ export default class CardDetailComponent extends React.Component<Props> {
       simple,
       width,
     } = this.props;
-    const { colors, backgroundStyle } = this.context;
+    const { backgroundStyle } = this.context;
     if (this.shouldBlur()) {
       return (
         <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
@@ -140,15 +140,6 @@ const styles = StyleSheet.create({
   viewContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  buttonPadding: {
-    marginLeft: s,
-    marginTop: xs,
-    marginBottom: xs,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
   },
   sectionHeader: {
     marginTop: m + s,

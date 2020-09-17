@@ -24,8 +24,8 @@ import { getBackupData, getAllPacks, AppState, getLangPreference, getLangChoice 
 import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
-import COLORS from '@styles/colors';
 import CardSectionHeader from '@components/core/CardSectionHeader';
+import StyleContext from '@styles/StyleContext';
 
 interface ReduxProps {
   backupData: {
@@ -215,7 +215,7 @@ class DiagnosticsView extends React.Component<Props> {
     }
     return (
       <>
-        <CardSectionHeader section={{ title: t`Debug`}} />
+        <CardSectionHeader section={{ title: t`Debug` }} />
         <SettingsItem
           onPress={this._crash}
           text={'Crash'}
@@ -230,25 +230,30 @@ class DiagnosticsView extends React.Component<Props> {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.list}>
-          <CardSectionHeader section={{ title: t`Backup`}} />
-          <SettingsItem
-            onPress={this._exportCampaignData}
-            text={t`Backup Campaign Data`}
-          />
-          <SettingsItem
-            onPress={this._importCampaignData}
-            text={t`Restore Campaign Data`}
-          />
-          <CardSectionHeader section={{ title: t`Caches` }} />
-          <SettingsItem
-            onPress={this._clearCache}
-            text={t`Clear cache`}
-          />
-          { this.renderDebugSection() }
-        </ScrollView>
-      </SafeAreaView>
+      <StyleContext.Consumer>
+        { ({ colors }) => (
+          <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
+            <ScrollView style={{ backgroundColor: colors.L20 }}>
+              <CardSectionHeader section={{ title: t`Backup` }} />
+              <SettingsItem
+                onPress={this._exportCampaignData}
+                text={t`Backup Campaign Data`}
+              />
+              <SettingsItem
+                onPress={this._importCampaignData}
+                text={t`Restore Campaign Data`}
+              />
+              <CardSectionHeader section={{ title: t`Caches` }} />
+              <SettingsItem
+                onPress={this._clearCache}
+                text={t`Clear cache`}
+              />
+              { this.renderDebugSection() }
+            </ScrollView>
+          </SafeAreaView>
+        ) }
+      </StyleContext.Consumer>
+
     );
   }
 }
@@ -280,9 +285,5 @@ export default withDialogs(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.veryLightBackground,
-  },
-  list: {
-    backgroundColor: COLORS.veryLightBackground,
   },
 });

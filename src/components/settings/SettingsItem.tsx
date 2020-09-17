@@ -11,11 +11,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import {
   SettingsButton,
 } from '@lib/react-native-settings-components';
-import COLORS from '@styles/colors';
 import typography from '@styles/typography';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { color } from 'react-native-reanimated';
 
 interface Props {
   loading?: boolean;
@@ -24,7 +22,9 @@ interface Props {
   onPress?: () => void;
 }
 export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
-  const dummyOnPress = () => {};
+  const dummyOnPress = () => {
+    // Ignore me
+  };
   const { colors } = useContext(StyleContext);
   if (loading) {
     return (

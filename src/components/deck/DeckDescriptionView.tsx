@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { RichTextEditor, RichTextToolbar } from 'react-native-zss-rich-text-editor';
 
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface DeckDescriptionProps {

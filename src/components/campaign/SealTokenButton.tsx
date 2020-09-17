@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
