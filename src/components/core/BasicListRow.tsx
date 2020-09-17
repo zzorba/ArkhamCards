@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   children: React.ReactNode | React.ReactNode[];
 }
 
 export default function BasicListRow({ children }: Props) {
+  const { colors } = useContext(StyleContext);
   return (
-    <View style={[styles.labeledRow, space.paddingS, styles.border]}>
+    <View style={[styles.labeledRow, space.paddingS, { borderColor: colors.divider }]}>
       <View style={[styles.row, space.paddingSideS]}>
         { children }
       </View>
@@ -22,10 +23,7 @@ export default function BasicListRow({ children }: Props) {
 const styles = StyleSheet.create({
   labeledRow: {
     flexDirection: 'column',
-  },
-  border: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   row: {
     flexDirection: 'row',

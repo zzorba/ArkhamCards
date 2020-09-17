@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { cloneDeep, shuffle } from 'lodash';
+import { cloneDeep, countBy, find, shuffle, sum, sumBy } from 'lodash';
 import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
@@ -12,7 +12,7 @@ import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
 import { ChaosBagResults } from '@actions/types';
 import typography from '@styles/typography';
-import PlusMinusTokens from '@components/core/PlusMinusButtons';
+import CounterRow from '@components/core/CounterRow';
 import ChaosToken from './ChaosToken';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { adjustBlessCurseChaosBagResults, updateChaosBagResults } from './actions';
@@ -21,7 +21,6 @@ import { SealTokenDialogProps } from './SealTokenDialog';
 import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
 import space, { s } from '@styles/space';
-import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
@@ -63,6 +62,10 @@ class CampaignChaosBagView extends React.Component<Props, State> {
 
   _handleClearTokensPressed = () => {
     this.clearTokens();
+  };
+
+  _handleClearTokensRemoveBlessCursePressed = () => {
+    this.clearTokens(true);
   };
 
   _handleDrawTokenPressed = () => {
@@ -126,9 +129,11 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.props;
 
     const currentChaosBag = cloneDeep(chaosBag);
+    currentChaosBag.bless = chaosBagResults.blessTokens || 0;
+    currentChaosBag.curse = chaosBagResults.curseTokens || 0;
+
     const drawnTokens = [...chaosBagResults.drawnTokens];
     const sealedTokens = [...chaosBagResults.sealedTokens].map(token => token.icon);
-
     const drawnAndSealedTokens = drawnTokens.concat(sealedTokens);
 
     drawnAndSealedTokens.forEach(function(token) {
@@ -144,6 +149,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
       drawnTokens.push(newIconKey);
 
       const newChaosBagResults = {
+        ...chaosBagResults,
         drawnTokens: drawnTokens,
         sealedTokens: chaosBagResults.sealedTokens,
         totalDrawnTokens: chaosBagResults.totalDrawnTokens + 1,
@@ -155,15 +161,19 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     }
   }
 
-  clearTokens() {
+  clearTokens(removeBlessCurse?: boolean) {
     const {
       campaignId,
       chaosBagResults,
       updateChaosBagResults,
     } = this.props;
+    const blessToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'bless' ? 1 : 0) : 0;
+    const curseToRemove = removeBlessCurse ? sumBy(chaosBagResults.drawnTokens, token => token === 'curse' ? 1 : 0) : 0;
 
     const newChaosBagResults: ChaosBagResults = {
       drawnTokens: [],
+      blessTokens: (chaosBagResults.blessTokens || 0) - blessToRemove,
+      curseTokens: (chaosBagResults.curseTokens || 0) - curseToRemove,
       sealedTokens: chaosBagResults.sealedTokens,
       totalDrawnTokens: chaosBagResults.totalDrawnTokens,
     };
@@ -241,7 +251,13 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     } = this.state;
 
     if (chaosBagResults.drawnTokens.length > 0) {
-      return <BasicButton title={t`Set aside and draw another`} onPress={this._handleAddAndDrawAgainPressed} disabled={isChaosBagEmpty} />;
+      return (
+        <BasicButton
+          title={isChaosBagEmpty ? t`Chaos bag is empty` : t`Set aside and draw another`}
+          onPress={this._handleAddAndDrawAgainPressed}
+          disabled={isChaosBagEmpty}
+        />
+      );
     }
   }
 
@@ -249,8 +265,17 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       chaosBagResults,
     } = this.props;
-
     if (chaosBagResults.drawnTokens.length > 1) {
+      const hasBlessCurse = find(chaosBagResults.drawnTokens, token => token === 'bless' || token === 'curse');
+      if (hasBlessCurse) {
+        return (
+          <>
+            <BasicButton title={t`Return Non Bless / Curse Tokens`} onPress={this._handleClearTokensRemoveBlessCursePressed} />
+            <BasicButton title={t`Return All Tokens`} onPress={this._handleClearTokensPressed} />
+          </>
+        );
+      }
+
       return (
         <BasicButton title={t`Return Tokens`} onPress={this._handleClearTokensPressed} />
       );
@@ -282,7 +307,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       chaosBagResults,
     } = this.props;
-    const { colors } = this.context;
     return (
       <ScrollView style={styles.containerBottom}>
         <KeepAwake />
@@ -312,6 +336,29 @@ class CampaignChaosBagView extends React.Component<Props, State> {
         </View>
         <View style={styles.header}>
           <Text style={typography.text}>
+            { t`Bless / Curse Tokens` }
+          </Text>
+        </View>
+        <View style={styles.container}>
+          <CounterRow
+            value={chaosBagResults.blessTokens || 0}
+            inc={this._incBless}
+            dec={this._decBless}
+            min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'bless' ? 1 : 0)}
+            max={10}
+            label={t`Bless`}
+          />
+          <CounterRow
+            value={chaosBagResults.curseTokens || 0}
+            inc={this._incCurse}
+            dec={this._decCurse}
+            min={sumBy(chaosBagResults.sealedTokens, token => token.icon === 'curse' ? 1 : 0)}
+            max={10}
+            label={t`Curse`}
+          />
+        </View>
+        <View style={styles.header}>
+          <Text style={typography.text}>
             { t`Sealed Tokens` }
           </Text>
         </View>
@@ -322,27 +369,6 @@ class CampaignChaosBagView extends React.Component<Props, State> {
           <BasicButton
             title={t`Seal Tokens`}
             onPress={this._handleSealTokensPressed}
-          />
-        </View>
-        <View style={styles.header}>
-          <Text style={typography.text}>
-            { t`Bless / Curse Tokens` }
-          </Text>
-        </View>
-        <View style={styles.container}>
-          <PlusMinusButtons
-            count={chaosBagResults.blessTokens || 0}
-            onIncrement={this._incBless}
-            onDecrement={this._decBless}
-            max={10}
-            countRender={<Text style={[typography.cardName, { color: colors.darkText }]}>{ chaosBagResults.blessTokens || 0 }</Text>}
-          />
-          <PlusMinusButtons
-            count={chaosBagResults.curseTokens || 0}
-            onIncrement={this._incCurse}
-            onDecrement={this._decCurse}
-            max={10}
-            countRender={<Text style={[typography.cardName, { color: colors.darkText }]}>{ chaosBagResults.curseTokens || 0 }</Text>}
           />
         </View>
       </ScrollView>

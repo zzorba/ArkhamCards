@@ -161,6 +161,8 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_thing',
   'auto_fail',
   'elder_sign',
+  'bless',
+  'curse',
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {

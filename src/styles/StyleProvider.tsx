@@ -8,6 +8,7 @@ import StyleContext from './StyleContext';
 import { AppState, getLangPreference } from '@reducers';
 import { Appearance, ColorSchemeName, AppearancePreferences } from 'react-native-appearance';
 import { DARK_THEME, LIGHT_THEME } from './theme';
+import typography from './typography';
 
 interface OwnProps {
   children: React.ReactNode;
@@ -87,6 +88,7 @@ class StyleProvider extends React.Component<Props, State> {
       <StyleContext.Provider value={{
         darkMode,
         fontScale,
+        typography,
         colors: darkMode ? DARK_THEME : LIGHT_THEME,
         gameFont: lang === 'ru' ? 'Conkordia' : 'Teutonic',
       }}>
