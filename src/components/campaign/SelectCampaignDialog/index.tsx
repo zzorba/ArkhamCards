@@ -3,14 +3,11 @@ import { map, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import BasicSectionHeader from '@components/core/BasicSectionHeader';
 import {
   CUSTOM,
   ALL_CAMPAIGNS,
@@ -25,8 +22,9 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import { campaignName } from '../constants';
 import { NavigationProps } from '@components/nav/types';
 import { getPacksInCollection, AppState } from '@reducers';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
@@ -105,7 +103,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     const {
       in_collection,
     } = this.props;
-    const { backgroundStyle, borderStyle } = this.context;
+    const { backgroundStyle } = this.context;
     const partitionedCampaigns = partition(
       ALL_CAMPAIGNS,
       pack_code => (in_collection[pack_code] || (
@@ -117,21 +115,19 @@ class SelectCampaignDialog extends React.Component<Props> {
     return (
       <ScrollView style={[styles.flex, backgroundStyle]}>
         { myCampaigns.length > 0 && (
-          <BasicSectionHeader
-            title={t`My Campaigns`}
-          />
+          <CardSectionHeader section={{ title: t`My Campaigns` }} />
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign(CUSTOM) }
         { otherCampaigns.length > 0 && (
-          <BasicSectionHeader
-            title={t`Other Campaigns`}
-          />
+          <CardSectionHeader section={{ title: t`Other Campaigns`}} />
         ) }
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        <View style={[styles.button, borderStyle]}>
-          <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
-        </View>
+        <ArkhamButton
+          icon="edit"
+          onPress={this._editCollection}
+          title={t`Edit Collection`}
+        />
       </ScrollView>
     );
   }

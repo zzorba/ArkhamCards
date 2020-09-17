@@ -159,7 +159,7 @@ class CampaignGuideView extends React.Component<Props> {
         key: 'log',
         title: t`Log`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <CampaignLogComponent
               campaignId={campaignId}
               campaignGuide={campaignGuide}

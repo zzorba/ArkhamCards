@@ -18,7 +18,6 @@ import base64 from 'react-native-base64';
 import Share from 'react-native-share';
 import { t } from 'ttag';
 
-import CategoryHeader from './CategoryHeader';
 import { MergeBackupProps } from './MergeBackupView';
 import { Campaign, BackupState } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
@@ -28,6 +27,7 @@ import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
 import COLORS from '@styles/colors';
 import { campaignFromJson } from '@lib/cloudHelper';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 
 export interface BackupProps {
   safeMode?: boolean;
@@ -190,9 +190,7 @@ class BackupView extends React.Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
-          <CategoryHeader
-            title={t`Backup`}
-          />
+          <CardSectionHeader section={{ title: t`Backup`}} />
           <SettingsItem
             onPress={this._exportCampaignData}
             text={t`Backup Campaign Data`}

@@ -172,10 +172,10 @@ export default class PickerComponent extends React.Component<Props> {
             itemText: typography.label,
             itemColor: colors ? colors.modalColor : COLORS.lightBlue,
             scrollView: {
-              backgroundColor: COLORS.background,
+              backgroundColor: this.context.colors.background,
             },
             itemWrapper: {
-              backgroundColor: COLORS.background,
+              backgroundColor: this.context.colors.background,
             },
           },
         }}
@@ -184,11 +184,11 @@ export default class PickerComponent extends React.Component<Props> {
           backgroundColor: 'transparent',
         }}
         titleStyle={settingsStyle ? {
-          color: colors ? colors.textColor : COLORS.darkText,
+          color: colors ? colors.textColor : this.context.colors.darkText,
         } : {
           ...typography.mediumGameFont,
           fontFamily: gameFont,
-          color: colors ? colors.textColor : COLORS.darkText,
+          color: colors ? colors.textColor : this.context.colors.darkText,
           fontWeight: '600',
         }}
         valueProps={{
@@ -197,7 +197,7 @@ export default class PickerComponent extends React.Component<Props> {
         }}
         valueStyle={{
           ...typography.label,
-          color: colors ? colors.textColor : COLORS.darkText,
+          color: colors ? colors.textColor : this.context.colors.darkText,
           fontWeight: '400',
           textAlign: 'right',
         }}
@@ -208,7 +208,7 @@ export default class PickerComponent extends React.Component<Props> {
           justifyContent: 'space-between',
           backgroundColor: colors ? colors.backgroundColor : 'transparent',
           borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
-          borderColor: COLORS.divider,
+          borderColor: this.context.colors.divider,
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,
         }}
         widgetStyle={{}}

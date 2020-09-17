@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
 import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -17,32 +16,31 @@ interface Props {
 }
 
 export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
+  const { gameFont, colors } = useContext(StyleContext);
   return (
-    <StyleContext.Consumer>
-      { ({ gameFont }) => (
-        <SwitchRow
-          title={title}
-          titleStyle={settingsStyle ? undefined : {
-            ...typography.mediumGameFont,
-            fontFamily: gameFont,
-          }}
-          containerStyle={styles.switch}
-          descriptionStyle={typography.label}
-          description={description}
-          onValueChange={onValueChange}
-          value={value}
-          disabled={disabled}
-        />
-      )}
-    </StyleContext.Consumer>
+    <SwitchRow
+      title={title}
+      titleStyle={settingsStyle ? undefined : {
+        ...typography.mediumGameFont,
+        fontFamily: gameFont,
+      }}
+      containerStyle={{
+        ...styles.switch,
+        backgroundColor: colors.background,
+        borderColor: colors.divider,
+      }}
+      descriptionStyle={typography.label}
+      description={description}
+      onValueChange={onValueChange}
+      value={value}
+      disabled={disabled}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   switch: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
     paddingTop: s,
     paddingBottom: s,
   },

@@ -18,12 +18,12 @@ import isFunction from 'lodash/isFunction';
 import { TouchableProps } from 'react-native-svg';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -34,7 +34,6 @@ const style = StyleSheet.create({
     fontSize: 16,
   },
   defaultValueStyle: {
-    color: COLORS.lightText,
     fontSize: 14,
     flex: 1,
     paddingLeft: 8,
@@ -92,6 +91,9 @@ interface Props {
 }
 
 class SettingsEditText extends Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static defaultProps = {
     containerProps: {},
     containerStyle: {},
@@ -164,13 +166,13 @@ class SettingsEditText extends Component<Props> {
       titleProps, titleStyle, valueProps, valueStyle, valuePlaceholder, valueFormat,
       disabledOverlayStyle, touchableProps, value,
     } = this.props;
-
+    const { backgroundStyle, colors } = this.context;
     return (!disabled) ? (
       <TouchableOpacity
         {...touchableProps}
         onPress={this.openDialog}
       >
-        <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+        <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
           <Text
             numberOfLines={1}
             {...titleProps}
@@ -181,14 +183,14 @@ class SettingsEditText extends Component<Props> {
           <Text
             numberOfLines={1}
             {...valueProps}
-            style={[style.defaultValueStyle, valueStyle]}
+            style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
           >
             {(value) || valuePlaceholder}
           </Text>
         </View>
       </TouchableOpacity>
     ) : (
-      <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+      <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
         <Text
           numberOfLines={1}
           {...titleProps}
@@ -199,7 +201,7 @@ class SettingsEditText extends Component<Props> {
         <Text
           numberOfLines={1}
           {...valueProps}
-          style={[style.defaultValueStyle, valueStyle]}
+          style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
         >
           {(isFunction(valueFormat) ? valueFormat(value) : value) || valuePlaceholder}
         </Text>

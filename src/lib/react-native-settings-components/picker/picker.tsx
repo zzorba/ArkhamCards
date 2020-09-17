@@ -7,12 +7,12 @@ import { t } from 'ttag';
 
 import PickerModal, { ModalStyle, PickerItem } from './picker.modal';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -77,6 +77,9 @@ interface State {
   pickerOpen: boolean;
 }
 class SettingsPicker extends Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     pickerValue: [],
     pickerOpen: false,
@@ -182,7 +185,7 @@ class SettingsPicker extends Component<Props, State> {
       widget, widgetStyle,
     } = this.props;
     const { pickerOpen, pickerValue } = this.state;
-
+    const { backgroundStyle } = this.context;
     return (
       <View style={{ width: '100%' }}>
         {(!disabled) ? (
@@ -198,7 +201,7 @@ class SettingsPicker extends Component<Props, State> {
               onSelectItem={this.onSelectItem}
               renderCloseBtn={renderCloseBtn}
             />
-            <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+            <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
               <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>
                 {title}
               </Text>
@@ -209,7 +212,7 @@ class SettingsPicker extends Component<Props, State> {
             </View>
           </TouchableOpacity>
         ) : (
-          <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+          <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
             <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>{title}</Text>
             <Text
               {...valueProps}

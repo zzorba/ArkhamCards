@@ -13,6 +13,7 @@ import VariableTokenInput from './VariableTokenInput';
 import { InvestigatorElderSign } from './types';
 import { elderSign, modifiers } from './constants';
 import { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface InvestigatorOddsProps {
   chaosBag: ChaosBag;
@@ -30,6 +31,9 @@ interface State {
 }
 
 export default class InvestigatorOddsComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -153,7 +157,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
       testDifficulty,
       chaosBag,
     } = this.props;
-
+    const { colors } = this.context;
     const willpower = investigator.skill_willpower || 0;
     const intellect = investigator.skill_intellect || 0;
     const combat = investigator.skill_combat || 0;
@@ -162,7 +166,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
     const specialTokenValues = this.specialTokenValues(elderSignEffect);
     return (
       <React.Fragment>
-        <View style={[styles.headerRow]}>
+        <View style={[styles.headerRow, { backgroundColor: colors.L20 }]}>
           <Text style={typography.text}>
             { investigator.name }
           </Text>
@@ -203,7 +207,6 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
 
 const styles = StyleSheet.create({
   headerRow: {
-    backgroundColor: COLORS.lightBackground,
     paddingTop: 5,
     paddingRight: 15,
     paddingBottom: 5,

@@ -7,6 +7,7 @@ import { t } from 'ttag';
 import { Slots } from '@actions/types';
 import ExileCardSelectorComponent from './ExileCardSelectorComponent';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import COLORS from '@styles/colors';
 
 interface Props {
   componentId: string;

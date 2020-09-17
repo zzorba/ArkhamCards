@@ -624,6 +624,7 @@ class NewCampaignView extends React.Component<Props, State> {
     const {
       gameFont,
       backgroundStyle,
+      borderStyle,
     } = this.context;
 
     const {

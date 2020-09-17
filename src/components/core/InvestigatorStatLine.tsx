@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -19,105 +19,104 @@ interface Props {
 }
 
 export default function InvestigatorStatLine({ investigator }: Props) {
-  return (
-    <StyleContext.Consumer>
-      { ({ fontScale, colors }) => {
-        const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 26;
-        const willpower = investigator.skill_willpower || 0;
-        const intellect = investigator.skill_intellect || 0;
-        const combat = investigator.skill_combat || 0;
-        const agility = investigator.skill_agility || 0;
+  const { fontScale, colors } = useContext(StyleContext);
+  const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 26;
+  const willpower = investigator.skill_willpower || 0;
+  const intellect = investigator.skill_intellect || 0;
+  const combat = investigator.skill_combat || 0;
+  const agility = investigator.skill_agility || 0;
 
-        return (
-          <View style={styles.skillRow}>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Willpower: ${willpower}`}>
-              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { willpower}
-              </Text>
-              <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
-                <View style={[styles.icon, { top: 1 }]}>
-                  <ArkhamIcon
-                    name="skill_willpower_inverted"
-                    size={ICON_SIZE}
-                    color="#FFF"
-                  />
-                </View>
-                <View style={[styles.icon, { top: 1 }]}>
-                  <ArkhamIcon
-                    name="skill_willpower"
-                    size={ICON_SIZE}
-                    color={colors.skill.willpower.icon}
-                  />
-                </View>
-              </View>
-            </View>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Intellect: ${intellect}`}>
-              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { intellect }
-              </Text>
-              <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
-                <View style={styles.icon}>
-                  <ArkhamIcon
-                    name="skill_intellect_inverted"
-                    size={ICON_SIZE}
-                    color="#FFF"
-                  />
-                </View>
-                <View style={styles.icon}>
-                  <ArkhamIcon
-                    name="skill_intellect"
-                    size={ICON_SIZE}
-                    color={colors.skill.intellect.icon}
-                  />
-                </View>
-              </View>
-            </View>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Combat: ${combat}`}>
-              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { combat }
-              </Text>
-              <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
-                <View style={styles.icon}>
-                  <ArkhamIcon
-                    name="skill_combat_inverted"
-                    size={ICON_SIZE}
-                    color="#FFF"
-                  />
-                </View>
-                <View style={styles.icon}>
-                  <ArkhamIcon
-                    name="skill_combat"
-                    size={ICON_SIZE}
-                    color={colors.skill.combat.icon}
-                  />
-                </View>
-              </View>
-            </View>
-            <View style={[styles.skillIconBlock, { backgroundColor: colors.L20 }]} accessibilityLabel={t`Agility: ${agility}`}>
-              <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
-                { agility }
-              </Text>
-              <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
-                <View style={[styles.icon, { top: 1 }]}>
-                  <ArkhamIcon
-                    name="skill_agility_inverted"
-                    size={ICON_SIZE - 1}
-                    color="#FFF"
-                  />
-                </View>
-                <View style={[styles.icon, { top: 1 }]}>
-                  <ArkhamIcon
-                    name="skill_agility"
-                    size={ICON_SIZE - 1}
-                    color={colors.skill.agility.icon}
-                  />
-                </View>
-              </View>
-            </View>
+  const skillIconBlockStyle = [
+    styles.skillIconBlock,
+    { backgroundColor: TINY_PHONE ? 'transparent' : colors.L20 },
+  ];
+  return (
+    <View style={styles.skillRow}>
+      <View style={skillIconBlockStyle} accessibilityLabel={t`Willpower: ${willpower}`}>
+        <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
+          { willpower}
+        </Text>
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={[styles.icon, { top: 1 }]}>
+            <ArkhamIcon
+              name="skill_willpower_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
           </View>
-        );
-      } }
-    </StyleContext.Consumer>
+          <View style={[styles.icon, { top: 1 }]}>
+            <ArkhamIcon
+              name="skill_willpower"
+              size={ICON_SIZE}
+              color={colors.skill.willpower.icon}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={skillIconBlockStyle} accessibilityLabel={t`Intellect: ${intellect}`}>
+        <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
+          { intellect }
+        </Text>
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_intellect_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_intellect"
+              size={ICON_SIZE}
+              color={colors.skill.intellect.icon}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={skillIconBlockStyle} accessibilityLabel={t`Combat: ${combat}`}>
+        <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
+          { combat }
+        </Text>
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_combat_inverted"
+              size={ICON_SIZE}
+              color="#FFF"
+            />
+          </View>
+          <View style={styles.icon}>
+            <ArkhamIcon
+              name="skill_combat"
+              size={ICON_SIZE}
+              color={colors.skill.combat.icon}
+            />
+          </View>
+        </View>
+      </View>
+      <View style={skillIconBlockStyle} accessibilityLabel={t`Agility: ${agility}`}>
+        <Text style={[typography.mediumGameFont, { color: colors.darkText }]}>
+          { agility }
+        </Text>
+        <View style={[styles.skillIcon, { width: ICON_SIZE }]}>
+          <View style={[styles.icon, { top: 1 }]}>
+            <ArkhamIcon
+              name="skill_agility_inverted"
+              size={ICON_SIZE - 1}
+              color="#FFF"
+            />
+          </View>
+          <View style={[styles.icon, { top: 1 }]}>
+            <ArkhamIcon
+              name="skill_agility"
+              size={ICON_SIZE - 1}
+              color={colors.skill.agility.icon}
+            />
+          </View>
+        </View>
+      </View>
+    </View>
   );
 }
 const styles = StyleSheet.create({
@@ -128,7 +127,6 @@ const styles = StyleSheet.create({
     paddingLeft: s,
     paddingRight: s,
     marginRight: TINY_PHONE ? xs : xs,
-    backgroundColor: TINY_PHONE ? 'transparent' : COLORS.veryLightBackground,
   },
   skillIcon: {
     marginLeft: 2,
