@@ -15,7 +15,7 @@ import Card from '@data/Card';
 import { HEADER_HEIGHT } from '@styles/sizes';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
-import { StyleContextType } from '@styles/StyleContext';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardImageProps {
   id: string;
@@ -38,6 +38,7 @@ interface CardImageDetailProps {
 class CardImageDetail extends React.Component<CardImageDetailProps> {
   static contextType = StyleContext;
   context!: StyleContextType;
+
   componentDidMount() {
     const {
       componentId,

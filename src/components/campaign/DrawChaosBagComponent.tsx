@@ -424,7 +424,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: s,
-    backgroundColor: COLORS.lightBackground,
     height: 40,
   },
   containerTop: {

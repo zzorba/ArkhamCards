@@ -3,7 +3,6 @@ import { Platform, StyleSheet } from 'react-native';
 import { t } from 'ttag';
 
 import SettingsEditText from './SettingsEditText';
-import COLORS from '@styles/colors';
 import { m, s, xs } from '@styles/space';
 import typography from '@styles/typography';
 import StyleContext from '@styles/StyleContext';
@@ -27,7 +26,7 @@ export default function EditText({
 }: Props) {
   return (
     <StyleContext.Consumer>
-      { ({ gameFont }) => (
+      { ({ gameFont, colors }) => (
         <SettingsEditText
           title={title}
           titleStyle={
@@ -40,11 +39,16 @@ export default function EditText({
             numberOfLines: 2,
             ellipsizeMode: 'clip',
           }}
-          valueStyle={styles.value}
+          valueStyle={{
+            ...styles.value,
+            color: colors.darkText,
+          }}
           onValueChange={onValueChange}
           value={value}
           containerStyle={{
             ...styles.container,
+            backgroundColor: colors.background,
+            borderColor: colors.divider,
             paddingLeft: Platform.OS === 'ios' && settingsStyle ? s + xs : m,
           }}
           positiveButtonTitle={t`Done`}
@@ -59,13 +63,10 @@ const styles = StyleSheet.create({
   value: {
     fontFamily: 'System',
     fontSize: 16,
-    color: COLORS.darkText,
     textAlign: 'left',
   },
   container: {
-    backgroundColor: COLORS.background,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

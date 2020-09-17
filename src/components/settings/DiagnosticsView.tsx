@@ -14,7 +14,6 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import CategoryHeader from './CategoryHeader';
 import { Campaign, CampaignGuideState, Deck, Pack } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { clearDecks } from '@actions';
@@ -26,6 +25,7 @@ import { fetchCards } from '@components/card/actions';
 import { restoreBackup } from '@components/campaign/actions';
 import SettingsItem from './SettingsItem';
 import COLORS from '@styles/colors';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 
 interface ReduxProps {
   backupData: {
@@ -215,9 +215,7 @@ class DiagnosticsView extends React.Component<Props> {
     }
     return (
       <>
-        <CategoryHeader
-          title={t`Debug`}
-        />
+        <CardSectionHeader section={{ title: t`Debug`}} />
         <SettingsItem
           onPress={this._crash}
           text={'Crash'}
@@ -234,9 +232,7 @@ class DiagnosticsView extends React.Component<Props> {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.list}>
-          <CategoryHeader
-            title={t`Backup`}
-          />
+          <CardSectionHeader section={{ title: t`Backup`}} />
           <SettingsItem
             onPress={this._exportCampaignData}
             text={t`Backup Campaign Data`}
@@ -245,9 +241,7 @@ class DiagnosticsView extends React.Component<Props> {
             onPress={this._importCampaignData}
             text={t`Restore Campaign Data`}
           />
-          <CategoryHeader
-            title={t`Caches`}
-          />
+          <CardSectionHeader section={{ title: t`Caches` }} />
           <SettingsItem
             onPress={this._clearCache}
             text={t`Clear cache`}

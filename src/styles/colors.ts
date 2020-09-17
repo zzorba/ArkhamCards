@@ -43,11 +43,6 @@ export default {
   darkText: D30 as any as string,
   lightText: D10 as any as string,
   veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor') : '#888') as any as string,
-  background: Platform.select({
-    'ios': PlatformColor('systemBackgroundColor'),
-    'android': PlatformColor('@color/colorBackground'),
-  }) as any as string,
-  lightBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('@color/colorLightBackground')) as any as string,
   veryLightBackground: (Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : PlatformColor('@color/colorVeryLightBackground')) as any as string,
   veryVeryLightBackground: (Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : PlatformColor('@color/colorVeryVeryLightBackground')) as any as string,
   divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#888888') as any as string,

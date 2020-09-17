@@ -4,12 +4,12 @@ import {
 } from 'react-native';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
     position: 'relative',
   },
   wrapper: {
@@ -60,6 +60,9 @@ interface Props {
 }
 
 class SettingsButton extends Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static defaultProps = {
     containerProps: {},
     containerStyle: {},
@@ -90,12 +93,13 @@ class SettingsButton extends Component<Props> {
       descriptionStyle = {},
       description = null,
     } = this.props;
+    const { backgroundStyle } = this.context;
 
     return (
       <TouchableOpacity
         activeOpacity={0.8}
         {...containerProps}
-        style={[style.defaultContainerStyle, containerStyle]}
+        style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}
         onPress={onPress}
       >
         <View style={style.wrapper}>
