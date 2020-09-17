@@ -78,9 +78,15 @@ class SealTokenDialog extends React.Component<Props> {
     const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
     const tokens: ChaosTokenType[] = sortBy<ChaosTokenType>(
       unsortedTokens,
-      token => CHAOS_TOKEN_ORDER[token]);
-    const tokenParts = flatMap(tokens,
-      token => map(range(0, chaosBag[token]), () => token));
+      token => CHAOS_TOKEN_ORDER[token]
+    );
+    const blessTokens: ChaosTokenType[] = map(range(0, chaosBagResults.blessTokens || 0), () => 'bless');
+    const curseTokens: ChaosTokenType[] = map(range(0, chaosBagResults.curseTokens || 0), () => 'curse');
+    const tokenParts: ChaosTokenType[] = [
+      ...flatMap(tokens, token => map(range(0, chaosBag[token]), () => token)),
+      ...blessTokens,
+      ...curseTokens,
+    ];
 
     const sealedTokens = chaosBagResults.sealedTokens;
 
