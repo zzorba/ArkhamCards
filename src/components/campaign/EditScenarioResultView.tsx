@@ -21,6 +21,7 @@ import { getCampaign, AppState } from '@reducers';
 import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface EditScenarioResultProps {
   campaignId: number;
@@ -41,6 +42,9 @@ interface State {
 }
 
 class AddScenarioResultView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
   _doSave!: () => void;
 
@@ -139,6 +143,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
   };
 
   render() {
+    const { backgroundStyle } = this.context;
     const {
       scenarioResult,
     } = this.state;
@@ -153,7 +158,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
       resolution,
     } = scenarioResult;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <View style={space.marginSideS}>
           <Text style={typography.smallLabel}>
             { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
@@ -204,7 +209,6 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    backgroundColor: COLORS.background,
   },
   footer: {
     height: 100,

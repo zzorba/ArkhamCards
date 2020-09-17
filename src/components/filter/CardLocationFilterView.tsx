@@ -41,9 +41,9 @@ class CardLocationFilterView extends React.Component<FilterProps> {
       onToggleChange,
       onFilterChange,
     } = this.props;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
     return (
-      <ScrollView contentContainerStyle={{ backgroundColor: colors.background }}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         <SliderChooser
           label={t`Shroud`}
           width={width}

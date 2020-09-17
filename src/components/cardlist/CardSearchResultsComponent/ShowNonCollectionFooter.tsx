@@ -27,8 +27,8 @@ export default class ShowNonCollectionFooter extends React.Component<Props> {
     } = this.props;
     return (
       <StyleContext.Consumer>
-        { ({ fontScale, colors }) => (
-          <View style={[styles.border, { borderColor: colors.divider, height: rowNonCollectionHeight(fontScale) }]}>
+        { ({ fontScale, colors, borderStyle }) => (
+          <View style={[styles.border, borderStyle, { height: rowNonCollectionHeight(fontScale) }]}>
             <ArkhamButton
               icon="expand"
               title={title}

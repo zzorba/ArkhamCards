@@ -6,6 +6,7 @@ import {
 import { RichTextEditor, RichTextToolbar } from 'react-native-zss-rich-text-editor';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface DeckDescriptionProps {
   description: string;
@@ -15,6 +16,9 @@ export interface DeckDescriptionProps {
 type Props = DeckDescriptionProps;
 
 export default class DeckDescriptionView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   richtext!: RichTextEditor;
 
   _captureRef = (ref: RichTextEditor) => {
@@ -26,8 +30,9 @@ export default class DeckDescriptionView extends React.Component<Props> {
   };
 
   render() {
+    const { backgroundStyle } = this.context;
     return (
-      <SafeAreaView style={styles.wrapper}>
+      <SafeAreaView style={[styles.wrapper, backgroundStyle]}>
         <RichTextEditor
           ref={this._captureRef}
           // @ts-ignore TS2769
@@ -47,6 +52,5 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
 });

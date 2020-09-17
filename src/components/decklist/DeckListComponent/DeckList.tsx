@@ -96,7 +96,7 @@ class DeckList extends React.Component<Props> {
       header,
       footer,
     } = this.props;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
     const items = this.getItems();
     return (
       <FlatList
@@ -107,7 +107,7 @@ class DeckList extends React.Component<Props> {
         keyboardDismissMode="on-drag"
         refreshing={refreshing}
         onRefresh={onRefresh}
-        style={[styles.container, { backgroundColor: colors.background }]}
+        style={[styles.container, backgroundStyle]}
         data={items}
         renderItem={this._renderItem}
         extraData={decks}

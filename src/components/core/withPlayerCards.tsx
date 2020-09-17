@@ -6,7 +6,6 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import TabooSet from '@data/TabooSet';
 import DatabaseContext, { PlayerCards, DatabaseContextType } from '@data/DatabaseContext';
 import { AppState, getTabooSet } from '@reducers';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 export interface PlayerCardProps extends PlayerCards {
@@ -53,8 +52,8 @@ export default function withPlayerCards<Props>(
         }
         return (
           <StyleContext.Consumer>
-            { ({ colors }) => (
-              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
+            { ({ colors, backgroundStyle }) => (
+              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
                 <ActivityIndicator
                   style={styles.spinner}
                   color={colors.lightText}
@@ -87,7 +86,6 @@ export default function withPlayerCards<Props>(
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

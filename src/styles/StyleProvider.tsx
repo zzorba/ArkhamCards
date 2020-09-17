@@ -84,13 +84,20 @@ class StyleProvider extends React.Component<Props, State> {
     const { lang } = this.props;
     const { colorScheme, fontScale } = this.state;
     const darkMode = colorScheme === 'dark';
+    const colors = darkMode ? DARK_THEME : LIGHT_THEME;
     return (
       <StyleContext.Provider value={{
         darkMode,
         fontScale,
         typography,
-        colors: darkMode ? DARK_THEME : LIGHT_THEME,
+        colors,
         gameFont: lang === 'ru' ? 'Conkordia' : 'Teutonic',
+        backgroundStyle: {
+          backgroundColor: colors.background,
+        },
+        borderStyle: {
+          borderColor: colors.divider,
+        },
       }}>
         <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
           { this.props.children }

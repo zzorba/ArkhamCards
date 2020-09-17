@@ -25,7 +25,7 @@ export default function CounterRow({ inc, dec, value, label, max, min }: Props) 
     <BasicListRow>
       <View style={styles.row}>
         <View>
-          <Text style={typography.label}>
+          <Text style={typography.cardName}>
             { label }
           </Text>
         </View>

@@ -12,6 +12,7 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import { getLangPreference, AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface ReduxProps {
   lang: string;
@@ -98,28 +99,32 @@ class LanguagePicker extends React.Component<Props> {
     } = this.props;
     const allLanguages = languages();
     return (
-      <SinglePickerComponent
-        title={t`Language`}
-        description={t`Note: not all cards have translations available.`}
-        onChoiceChange={this._onLanguageChange}
-        selectedIndex={findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
-        choices={map(allLanguages, lang => {
-          return {
-            text: lang.label,
-          };
-        })}
-        colors={{
-          modalColor: COLORS.lightBlue,
-          modalTextColor: '#FFF',
-          backgroundColor: COLORS.background,
-          textColor: COLORS.darkText,
-        }}
-        editable={!cardsLoading}
-        settingsStyle
-        noBorder
-        hideWidget
-        formatLabel={this._formatLabel}
-      />
+      <StyleContext.Consumer>
+        { ({ colors }) => (
+          <SinglePickerComponent
+            title={t`Language`}
+            description={t`Note: not all cards have translations available.`}
+            onChoiceChange={this._onLanguageChange}
+            selectedIndex={findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
+            choices={map(allLanguages, lang => {
+              return {
+                text: lang.label,
+              };
+            })}
+            colors={{
+              modalColor: COLORS.lightBlue,
+              modalTextColor: '#FFF',
+              backgroundColor: colors.background,
+              textColor: colors.darkText,
+            }}
+            editable={!cardsLoading}
+            settingsStyle
+            noBorder
+            hideWidget
+            formatLabel={this._formatLabel}
+          />
+        ) }
+      </StyleContext.Consumer>
     );
   }
 }

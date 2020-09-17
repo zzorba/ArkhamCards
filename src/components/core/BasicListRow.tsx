@@ -9,9 +9,9 @@ interface Props {
 }
 
 export default function BasicListRow({ children }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { borderStyle } = useContext(StyleContext);
   return (
-    <View style={[styles.labeledRow, space.paddingS, { borderColor: colors.divider }]}>
+    <View style={[styles.labeledRow, space.paddingS, borderStyle]}>
       <View style={[styles.row, space.paddingSideS]}>
         { children }
       </View>

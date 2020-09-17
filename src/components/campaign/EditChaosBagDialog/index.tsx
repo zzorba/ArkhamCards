@@ -184,10 +184,11 @@ class EditChaosBagDialog extends React.Component<Props, State> {
     const {
       chaosBag,
     } = this.state;
+    const { backgroundStyle, borderStyle } = this.context;
     const ogChaosBag = this.props.chaosBag;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={[styles.row, space.paddingS]}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <View style={[styles.row, borderStyle, space.paddingS]}>
           <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
         </View>
         { map(sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]),
@@ -218,9 +219,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

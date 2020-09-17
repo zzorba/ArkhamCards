@@ -8,6 +8,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { BulletType } from '@data/scenario/types';
 import COLORS from '@styles/colors';
 import space, { s, m, xs } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   bulletType?: BulletType;
@@ -18,6 +19,9 @@ interface Props {
 }
 
 export default class SetupStepWrapper extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderBalancedSpacing() {
     const { bulletType } = this.props;
     switch (bulletType) {
@@ -31,6 +35,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
   }
   renderBullet() {
     const { bulletType } = this.props;
+    const { colors } = this.context;
     switch (bulletType) {
       case 'none':
         return <View style={styles.bullet} />;
@@ -40,7 +45,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
             <ArkhamIcon
               name="bullet"
               size={20}
-              color={COLORS.darkText}
+              color={colors.darkText}
             />
           </View>
         );
@@ -64,7 +69,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
       hasTitle,
       reverseSpacing,
     } = this.props;
-
+    const { colors } = this.context;
     if (reverseSpacing) {
       return (
         <View style={[
@@ -85,7 +90,12 @@ export default class SetupStepWrapper extends React.Component<Props> {
         styles.step,
         space.paddingS,
         space.paddingSideM,
-        border ? styles.border : {},
+        border ? {
+          borderTopWidth: StyleSheet.hairlineWidth,
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderColor: colors.divider,
+          backgroundColor: colors.background,
+        } : {},
         hasTitle ? { paddingTop: 0, paddingBottom: 0 } : {},
       ]}>
         { this.renderBullet() }
@@ -99,12 +109,6 @@ export default class SetupStepWrapper extends React.Component<Props> {
 
 
 const styles = StyleSheet.create({
-  border: {
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
-  },
   step: {
     flexDirection: 'row',
     alignItems: 'flex-start',

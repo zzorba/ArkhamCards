@@ -18,6 +18,7 @@ import FilterBuilder, { FilterState } from '@lib/filters';
 import { NavigationProps } from '@components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from '@reducers';
 import { combineQueriesOpt } from '@data/query';
+import StyleContext from '@styles/StyleContext';
 
 export interface FilterProps {
   componentId: string;
@@ -214,18 +215,22 @@ export default function withFilterFunctions<P>(
         return null;
       }
       return (
-        <View style={styles.wrapper}>
-          <WrappedComponent
-            componentId={componentId}
-            filters={(currentFilters || defaultFilterState) as FilterState}
-            defaultFilterState={defaultFilterState as FilterState}
-            width={width}
-            pushFilterView={this._pushFilterView}
-            onToggleChange={this._onToggleChange}
-            onFilterChange={this._onFilterChange}
-            {...otherProps as P}
-          />
-        </View>
+        <StyleContext.Consumer>
+          { ({ backgroundStyle }) => (
+            <View style={[styles.wrapper, backgroundStyle]}>
+              <WrappedComponent
+                componentId={componentId}
+                filters={(currentFilters || defaultFilterState) as FilterState}
+                defaultFilterState={defaultFilterState as FilterState}
+                width={width}
+                pushFilterView={this._pushFilterView}
+                onToggleChange={this._onToggleChange}
+                onFilterChange={this._onFilterChange}
+                {...otherProps as P}
+              />
+            </View>
+          ) }
+        </StyleContext.Consumer>
       );
     }
   }
@@ -265,6 +270,5 @@ export default function withFilterFunctions<P>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

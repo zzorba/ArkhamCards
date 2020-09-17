@@ -136,7 +136,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       selection,
       search,
     } = this.state;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
 
     const selectedSet = new Set(selection);
     const values = this.getValues();
@@ -156,7 +156,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
           <FlatList
             contentInset={{ top: SEARCH_BAR_HEIGHT }}
             contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
-            contentContainerStyle={{ backgroundColor: colors.background }}
+            contentContainerStyle={backgroundStyle}
             data={data}
             onScroll={onScroll}
             renderItem={this._renderItem}

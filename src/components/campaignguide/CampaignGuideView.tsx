@@ -21,7 +21,7 @@ import withCampaignGuideContext, {
 } from '@components/campaignguide/withCampaignGuideContext';
 import { NavigationProps } from '@components/nav/types';
 import { s, m } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
@@ -32,6 +32,7 @@ interface ReduxActionProps {
   ) => void;
   deleteCampaign: (id: number) => void;
 }
+
 type Props = CampaignGuideProps &
   ReduxActionProps &
   NavigationProps &
@@ -41,6 +42,9 @@ type Props = CampaignGuideProps &
   TraumaProps;
 
 class CampaignGuideView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener!: EventSubscription;
   constructor(props: Props) {
     super(props);
@@ -50,7 +54,6 @@ class CampaignGuideView extends React.Component<Props> {
   componentWillUnmount() {
     this._navEventListener && this._navEventListener.remove();
   }
-
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'edit') {
@@ -63,11 +66,7 @@ class CampaignGuideView extends React.Component<Props> {
       showTextEditDialog,
       campaignData: { campaignName },
     } = this.props;
-    showTextEditDialog(
-      t`Name`,
-      campaignName,
-      this._updateCampaignName
-    );
+    showTextEditDialog(t`Name`, campaignName, this._updateCampaignName);
   }
 
   _updateCampaignName = (name: string) => {
@@ -117,14 +116,15 @@ class CampaignGuideView extends React.Component<Props> {
       campaignGuide,
       campaignState,
     } = campaignData;
+    const { backgroundStyle, borderStyle } = this.context;
     const processedCampaign = campaignGuide.processAllScenarios(campaignState);
     const tabs = [
       {
         key: 'investigators',
         title: t`Decks`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
-            <View style={[styles.section, styles.bottomBorder]}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
+            <View style={[styles.section, styles.bottomBorder, borderStyle]}>
               <CampaignGuideSummary
                 difficulty={processedCampaign.campaignLog.campaignData.difficulty}
                 campaignGuide={campaignGuide}
@@ -145,7 +145,7 @@ class CampaignGuideView extends React.Component<Props> {
         key: 'scenarios',
         title: t`Scenarios`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <ScenarioListComponent
               campaignId={campaignId}
               campaignData={campaignData}
@@ -205,9 +205,5 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

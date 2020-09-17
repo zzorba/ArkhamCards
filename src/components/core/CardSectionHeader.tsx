@@ -44,7 +44,7 @@ export default class CardSectionHeader extends React.Component<Props> {
   context!: StyleContextType;
 
   renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
-    const { colors, fontScale } = this.context;
+    const { colors, borderStyle, fontScale } = this.context;
     const {
       section: {
         superTitleIcon,
@@ -54,9 +54,9 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <View style={[
         styles.superHeaderRow,
+        borderStyle,
         {
           backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
-          borderColor: colors.divider,
         },
       ]}>
         <View style={styles.superHeaderPadding}>
@@ -81,14 +81,14 @@ export default class CardSectionHeader extends React.Component<Props> {
   }
 
   render() {
-    const { colors, fontScale } = this.context;
+    const { colors, borderStyle, backgroundStyle, fontScale } = this.context;
     const {
       investigator,
       section,
     } = this.props;
     if (section.placeholder) {
       return (
-        <View style={[styles.placeholder, { backgroundColor: colors.background }]} />
+        <View style={[styles.placeholder, backgroundStyle]} />
       );
     }
     if (section.superTitle) {
@@ -118,9 +118,9 @@ export default class CardSectionHeader extends React.Component<Props> {
       return (
         <View style={[
           styles.subHeaderRow,
+          borderStyle,
           {
             backgroundColor: colors.L10,
-            borderColor: colors.divider,
             height: cardSectionHeaderHeight(section, fontScale),
           },
         ]}>
@@ -133,9 +133,8 @@ export default class CardSectionHeader extends React.Component<Props> {
 
     if (section.title) {
       return (
-        <View style={[styles.headerRow, {
+        <View style={[styles.headerRow, borderStyle, {
           backgroundColor: colors.L20,
-          borderColor: colors.divider,
         }]}>
           <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.title }

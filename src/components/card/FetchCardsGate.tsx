@@ -149,10 +149,10 @@ class FetchCardsGate extends React.Component<Props> {
     } = this.props;
     return (
       <StyleContext.Consumer>
-        { ({ colors }) => {
+        { ({ colors, backgroundStyle }) => {
           if (error) {
             return (
-              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
+              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
                 <View style={styles.errorBlock}>
                   <Text style={[typography.text, styles.error]}>
                     { t`Error loading cards, make sure your network is working.` }
@@ -167,7 +167,7 @@ class FetchCardsGate extends React.Component<Props> {
           }
           if (loading || this.props.fetchNeeded) {
             return (
-              <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
+              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
                 <Text style={typography.text}>
                   { t`Loading latest cards...` }
                 </Text>
@@ -218,7 +218,6 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

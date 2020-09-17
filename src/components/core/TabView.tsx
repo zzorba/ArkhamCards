@@ -48,15 +48,15 @@ export default class ArkhamTabView extends React.Component<Props, State> {
   _renderTabBar = (props: SceneRendererProps & {
     navigationState: NavigationState<TabRoute>;
   }) => {
-    const { fontScale } = this.context;
+    const { backgroundStyle, fontScale, colors } = this.context;
     return (
       <TabBar
         {...props}
         scrollEnabled={this.props.scrollEnabled || (fontScale > 1)}
         activeColor={COLORS.lightBlue}
-        inactiveColor={COLORS.lightText}
+        inactiveColor={colors.lightText}
         indicatorStyle={{ backgroundColor: COLORS.lightBlue }}
-        style={{ backgroundColor: COLORS.background }}
+        style={backgroundStyle}
       />
     );
   };

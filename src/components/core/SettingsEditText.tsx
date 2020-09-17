@@ -18,6 +18,7 @@ import DialogAndroid from 'react-native-dialogs';
 import { TouchableProps } from 'react-native-svg';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   containerProps?: ViewProps;
@@ -46,6 +47,9 @@ interface Props {
 }
 
 export default class SettingsEditText extends Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static constants = {
     iosDialogInputType: {
       DEFAULT: 'plain-text',
@@ -148,13 +152,14 @@ export default class SettingsEditText extends Component<Props> {
       titleProps, titleStyle, valueProps, valueStyle, valuePlaceholder, valueFormat,
       disabledOverlayStyle, touchableProps, value,
     } = this.props;
+    const { backgroundStyle, colors } = this.context;
 
     return (!disabled) ? (
       <TouchableOpacity
         {...touchableProps}
         onPress={this.openDialog}
       >
-        <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+        <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
           <View style={style.titleWrapper}>
             <Text
               numberOfLines={1}
@@ -168,7 +173,7 @@ export default class SettingsEditText extends Component<Props> {
             <Text
               numberOfLines={1}
               {...valueProps}
-              style={[style.defaultValueStyle, valueStyle]}
+              style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
             >
               { (value) || valuePlaceholder }
             </Text>
@@ -176,7 +181,7 @@ export default class SettingsEditText extends Component<Props> {
         </View>
       </TouchableOpacity>
     ) : (
-      <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+      <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
         <View style={style.titleWrapper}>
           <Text
             numberOfLines={1}
@@ -190,7 +195,7 @@ export default class SettingsEditText extends Component<Props> {
           <Text
             numberOfLines={1}
             {...valueProps}
-            style={[style.defaultValueStyle, valueStyle]}
+            style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
           >
             { (isFunction(valueFormat) ? valueFormat(value) : value) || valuePlaceholder }
           </Text>
@@ -205,7 +210,6 @@ const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -225,7 +229,6 @@ const style = StyleSheet.create({
     justifyContent: 'center',
   },
   defaultValueStyle: {
-    color: COLORS.lightText,
     fontSize: 14,
     flex: 1,
     textAlign: 'right',

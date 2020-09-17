@@ -22,7 +22,7 @@ import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from 
 import Card from '@data/Card';
 import typography from '@styles/typography';
 import { s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   campaign: Campaign;
@@ -50,6 +50,9 @@ const SCENARIO_CODE_FIXER: {
 };
 
 export default class OddsCalculatorComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -349,6 +352,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       currentScenario,
       currentScenarioCard,
     } = this.state;
+    const { borderStyle } = this.context;
     const scenarioText = currentScenarioCard && (
       (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
         currentScenarioCard.back_text :
@@ -356,7 +360,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     );
     return (
       <>
-        <View style={styles.sectionRow}>
+        <View style={[styles.sectionRow, borderStyle]}>
           { campaign.cycleCode !== CUSTOM && !!currentScenario && (
             <BackgroundIcon
               code={currentScenario.code}
@@ -376,7 +380,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           />
         </View>
         { this.renderSpecialTokenInputs() }
-        <View style={styles.sectionRow}>
+        <View style={[styles.sectionRow, borderStyle]}>
           <Text style={typography.label}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={chaosBag}
@@ -388,14 +392,15 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
   }
 
   render() {
+    const { backgroundStyle, borderStyle, colors } = this.context;
     const { campaign } = this.props;
     const {
       testDifficulty,
     } = this.state;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, backgroundStyle]}>
         <KeepAwake />
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container, backgroundStyle]}>
           { this.renderContent(campaign) }
           <View style={styles.finePrint}>
             <Text style={typography.small}>
@@ -404,10 +409,10 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           </View>
         </ScrollView>
         <SafeAreaView>
-          <View style={styles.footer}>
-            <View style={[styles.countRow, styles.footerRow]}>
+          <View style={[styles.footer, borderStyle]}>
+            <View style={[styles.countRow, styles.footerRow, { backgroundColor: colors.L20 }]}>
               <Text style={typography.text}>{ t`Difficulty` }</Text>
-              <Text style={[{ color: COLORS.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
+              <Text style={[{ color: colors.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
                 { testDifficulty }
               </Text>
               <PlusMinusButtons
@@ -429,20 +434,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
   sectionRow: {
     padding: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   footer: {
     borderTopWidth: 1,
-    borderColor: COLORS.divider,
   },
   footerRow: {
     padding: s,
-    backgroundColor: COLORS.lightBackground,
   },
   countRow: {
     flexDirection: 'row',

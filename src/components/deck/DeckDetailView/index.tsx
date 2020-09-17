@@ -1621,7 +1621,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       isPrivate,
     } = this.props;
-    const { colors } = this.context;
+    const { backgroundStyle } = this.context;
     const {
       nameChange,
       hasPendingEdits,
@@ -1637,7 +1637,7 @@ class DeckDetailView extends React.Component<Props, State> {
     const adjustment = xpAdjustment >= 0 ? `+${xpAdjustment}` : `${xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
-      <ScrollView style={[styles.menu, { backgroundColor: colors.background }]}>
+      <ScrollView style={[styles.menu, backgroundStyle]}>
         <CardSectionHeader section={{ title: t`Deck` }} />
         { editable && (
           <>
@@ -1647,21 +1647,21 @@ class DeckDetailView extends React.Component<Props, State> {
               description={nameChange || deck.name}
               descriptionStyle={styles.text}
               titleStyle={styles.text}
-              containerStyle={{ backgroundColor: colors.background }}
+              containerStyle={backgroundStyle}
             />
             { SHOW_DESCRIPTION_EDITOR && (
               <SettingsButton
                 onPress={this._showEditDescription}
                 title={t`Description`}
                 titleStyle={styles.text}
-                containerStyle={{ backgroundColor: colors.background }}
+                containerStyle={backgroundStyle}
               />
             ) }
             <SettingsButton
               onPress={this._showTabooPicker}
               title={t`Taboo List`}
               titleStyle={styles.text}
-              containerStyle={{ backgroundColor: colors.background }}
+              containerStyle={backgroundStyle}
               description={tabooSet ? tabooSet.date_start : t`None`}
               descriptionStyle={styles.text}
             />
@@ -1669,7 +1669,7 @@ class DeckDetailView extends React.Component<Props, State> {
               <SettingsButton
                 title={t`Deck Id`}
                 titleStyle={styles.text}
-                containerStyle={{ backgroundColor: colors.background }}
+                containerStyle={backgroundStyle}
                 description={`${deck.id}`}
                 descriptionStyle={styles.text}
                 onPress={this._showEditDetailsVisible}
@@ -1685,7 +1685,7 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._onEditPressed}
               title={t`Edit Cards`}
               titleStyle={styles.text}
-              containerStyle={{ backgroundColor: colors.background }}
+              containerStyle={backgroundStyle}
               description={ngettext(
                 msgid`${normalCardCount} Card (${totalCardCount} Total)`,
                 `${normalCardCount} Cards (${totalCardCount} Total)`,
@@ -1697,13 +1697,13 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._onEditSpecialPressed}
               title={t`Story Assets`}
               titleStyle={styles.text}
-              containerStyle={{ backgroundColor: colors.background }}
+              containerStyle={backgroundStyle}
             />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Weaknesses`}
               titleStyle={styles.text}
-              containerStyle={{ backgroundColor: colors.background }}
+              containerStyle={backgroundStyle}
             />
           </>
         ) }
@@ -1712,20 +1712,20 @@ class DeckDetailView extends React.Component<Props, State> {
             onPress={this._onChecklistPressed}
             title={t`Checklist`}
             titleStyle={styles.text}
-            containerStyle={{ backgroundColor: colors.background }}
+            containerStyle={backgroundStyle}
           />
         ) }
         <SettingsButton
           onPress={this._showCardCharts}
           title={t`Charts`}
           titleStyle={styles.text}
-          containerStyle={{ backgroundColor: colors.background }}
+          containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._showDrawSimulator}
           title={t`Draw Simulator`}
           titleStyle={styles.text}
-          containerStyle={{ backgroundColor: colors.background }}
+          containerStyle={backgroundStyle}
         />
         { editable && (
           <>
@@ -1734,7 +1734,7 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._onUpgradePressed}
               title={t`Upgrade Deck`}
               titleStyle={styles.text}
-              containerStyle={{ backgroundColor: colors.background }}
+              containerStyle={backgroundStyle}
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
               descriptionStyle={styles.text}
@@ -1744,7 +1744,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 onPress={this._showEditDetailsVisible}
                 title={t`Available XP`}
                 titleStyle={styles.text}
-                containerStyle={{ backgroundColor: colors.background }}
+                containerStyle={backgroundStyle}
                 description={xpString}
                 descriptionStyle={styles.text}
               />
@@ -1754,7 +1754,7 @@ class DeckDetailView extends React.Component<Props, State> {
                 onPress={this._showUpgradeHistory}
                 title={t`Upgrade History`}
                 titleStyle={styles.text}
-                containerStyle={{ backgroundColor: colors.background }}
+                containerStyle={backgroundStyle}
               />
             ) }
           </>
@@ -1764,28 +1764,28 @@ class DeckDetailView extends React.Component<Props, State> {
           onPress={this._toggleCopyDialog}
           title={t`Clone`}
           titleStyle={styles.text}
-          containerStyle={{ backgroundColor: colors.background }}
+          containerStyle={backgroundStyle}
         />
         { deck.local ? (
           <SettingsButton
             onPress={this._uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
             titleStyle={styles.text}
-            containerStyle={{ backgroundColor: colors.background }}
+            containerStyle={backgroundStyle}
           />
         ) : (
           <SettingsButton
             title={t`View on ArkhamDB`}
             onPress={this._viewDeck}
             titleStyle={styles.text}
-            containerStyle={{ backgroundColor: colors.background }}
+            containerStyle={backgroundStyle}
           />
         ) }
         { !!isPrivate && (
           <SettingsButton
             title={t`Delete`}
             titleStyle={styles.destructive}
-            containerStyle={{ backgroundColor: colors.background }}
+            containerStyle={backgroundStyle}
             onPress={this._deleteDeckPrompt}
           />
         ) }
@@ -1824,7 +1824,7 @@ class DeckDetailView extends React.Component<Props, State> {
       meta,
       tabooOpen,
     } = this.state;
-    const { colors } = this.context;
+    const { colors, backgroundStyle } = this.context;
 
     const editable = !!isPrivate && !!deck && !deck.next_deck;
     const showTaboo: boolean = !!(
@@ -1833,7 +1833,7 @@ class DeckDetailView extends React.Component<Props, State> {
       ));
     return (
       <View>
-        <View style={[styles.container, { backgroundColor: colors.background }] } ref={captureViewRef}>
+        <View style={[styles.container, backgroundStyle] } ref={captureViewRef}>
           <DeckViewTab
             componentId={componentId}
             inCollection={inCollection}
@@ -1888,7 +1888,7 @@ class DeckDetailView extends React.Component<Props, State> {
       deck,
       tabooSets,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, backgroundStyle } = this.context;
     const {
       loaded,
       parsedDeck,
@@ -1896,7 +1896,7 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.state;
     if (!deck) {
       return (
-        <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
+        <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
           <ActivityIndicator
             style={styles.spinner}
             color={colors.lightText}
@@ -1913,7 +1913,7 @@ class DeckDetailView extends React.Component<Props, State> {
     }
     if (!loaded || !parsedDeck) {
       return (
-        <View style={[styles.activityIndicatorContainer, { backgroundColor: colors.background }]}>
+        <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
           <ActivityIndicator
             style={styles.spinner}
             color={colors.lightText}
@@ -1930,7 +1930,7 @@ class DeckDetailView extends React.Component<Props, State> {
     ) : undefined;
     const menuWidth = Math.min(width * 0.60, 240);
     return (
-      <View style={[styles.flex, { backgroundColor: colors.background }]} ref={captureViewRef}>
+      <View style={[styles.flex, backgroundStyle]} ref={captureViewRef}>
         <SideMenu
           isOpen={this.state.menuOpen}
           onChange={this._menuOpenChange}

@@ -19,8 +19,10 @@ import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/Card';
 import { getCampaign, AppState } from '@reducers';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import { l, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface EditSpecialCardsProps {
   deck: Deck;
@@ -48,6 +50,9 @@ interface State {
 }
 
 class EditSpecialDeckCardsView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -284,7 +289,8 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       campaignId,
     } = this.props;
     return (
-      <BasicButton
+      <ArkhamButton
+        icon="card"
         title={t`Draw Basic Weakness`}
         onPress={campaignId ? this._showCampaignWeaknessDialog : this._drawWeakness}
       />
@@ -308,11 +314,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
-        <View style={styles.header}>
-          <Text style={[typography.small, styles.headerText]}>
-            { t`BASIC WEAKNESS` }
-          </Text>
-        </View>
+        <CardSectionHeader section={{ title: t`Basic weakness` }} />
         { map(sortBy(weaknesses, card => card.name), card => (
           <CardSearchResult
             key={card.code}
@@ -343,11 +345,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
-        <View style={styles.header}>
-          <Text style={[typography.small, styles.headerText]}>
-            { t`STORY` }
-          </Text>
-        </View>
+        <CardSectionHeader section={{ title: t`Story` }} />
         { map(sortBy(storyCards, card => card.name), card => (
           <CardSearchResult
             key={card.code}
@@ -356,7 +354,8 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
             onPress={this._cardPressed}
           />
         )) }
-        <BasicButton
+        <ArkhamButton
+          icon="edit"
           title={t`Edit Story Cards`}
           onPress={this._editStoryPressed}
         />
@@ -375,11 +374,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     } = this.state;
 
     const header = (
-      <View style={styles.header}>
-        <Text style={[typography.small, styles.headerText]}>
-          { t`DO NOT COUNT TOWARDS DECK SIZE` }
-        </Text>
-      </View>
+      <CardSectionHeader section={{ title: t`Do not count towards deck size` }} />
     );
     return (
       <CardSelectorComponent
@@ -394,8 +389,9 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   }
 
   render() {
+    const { backgroundStyle } = this.context;
     return (
-      <ScrollView style={styles.wrapper}>
+      <ScrollView style={[styles.wrapper, backgroundStyle]}>
         { this.renderIgnoreCardsSection() }
         { this.renderStorySection() }
         { this.renderBasicWeaknessSection() }
@@ -424,12 +420,6 @@ export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
-  },
-  header: {
-    marginTop: l,
-    borderBottomWidth: 1,
-    borderColor: COLORS.divider,
   },
   headerText: {
     paddingLeft: s,
