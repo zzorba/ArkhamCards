@@ -8,7 +8,6 @@ import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -22,7 +21,7 @@ export default class ResolutionStepComponent extends React.Component<Props> {
 
   render() {
     const { step } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ processedScenario }: ScenarioGuideContextType) => {

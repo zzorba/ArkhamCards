@@ -7,7 +7,6 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import { SettingsPicker } from '@lib/react-native-settings-components';
 import { DisplayChoice } from '@data/scenario';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface PickerProps {
@@ -121,7 +120,7 @@ export default class PickerComponent extends React.Component<Props> {
       hideWidget,
       modalTitle,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
         return {

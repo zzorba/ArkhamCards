@@ -14,7 +14,6 @@ import EncounterIcon from '@icons/EncounterIcon';
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
@@ -37,6 +36,7 @@ function imageStyle(card: Card) {
 }
 
 function ImagePlaceholder({ card }: { card: Card }) {
+  const { colors } = useContext(StyleContext);
   if (card.encounter_code) {
     return (
       <View style={[
@@ -54,8 +54,8 @@ function ImagePlaceholder({ card }: { card: Card }) {
     <View style={[
       styles.placeholder,
       { backgroundColor: (card.faction2_code ?
-        COLORS.faction.dual :
-        COLORS.faction[card.factionCode()]).background,
+        colors.faction.dual :
+        colors.faction[card.factionCode()]).background,
       },
     ]}>
       <Text style={styles.placeholderIcon}>

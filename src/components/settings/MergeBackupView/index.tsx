@@ -63,7 +63,6 @@ class MergeBackupView extends React.Component<Props, State> {
       topBar: {
         title: {
           text: t`Select items to import`,
-          color: COLORS.darkText,
         },
         rightButtons: [{
           text: t`Import`,

@@ -93,6 +93,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       cards,
       xpAdjustment,
     } = this.props;
+    const { colors } = this.context;
     const {
       slots,
       ignoreDeckLimitSlots,
@@ -125,7 +126,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -196,6 +197,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       cards,
       deck,
     } = this.props;
+    const { colors } = this.context;
     const {
       slots,
     } = this.state;
@@ -221,7 +223,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -236,6 +238,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       deck,
       cards,
     } = this.props;
+    const { colors } = this.context;
     const {
       slots,
       unsavedAssignedWeaknesses,
@@ -267,7 +270,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },

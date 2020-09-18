@@ -14,7 +14,6 @@ import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '@reducers';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface OwnProps {
@@ -105,6 +104,7 @@ class MyDecksView extends React.Component<Props, State> {
     const {
       localDecksOnly,
     } = this.state;
+    const { typography } = this.context;
     const hasLocalDeck = find(myDecks, deckId => deckId < 0) !== null;
     const hasOnlineDeck = find(myDecks, deckId => deckId > 0) !== null;
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {

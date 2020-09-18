@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import CardTextComponent from '@components/card/CardTextComponent';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import { s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 export interface Props {
   symbol: string;
@@ -17,51 +17,49 @@ export interface Props {
   decrement: (symbol: string) => void;
 }
 
-export default class VariableTokenInput extends React.Component<Props> {
-  _increment = () => {
-    const { increment, symbol } = this.props;
+export default function VariableTokenInput({
+  text,
+  value,
+  symbol,
+  color,
+  increment,
+  decrement,
+}: Props) {
+  const { borderStyle, typography } = useContext(StyleContext);
+  const inc = () => {
     increment(symbol);
   };
 
-  _decrement = () => {
-    const { decrement, symbol } = this.props;
+  const dec = () => {
     decrement(symbol);
   };
 
-  render() {
-    const {
-      text,
-      value,
-      symbol,
-      color,
-    } = this.props;
-    return (
-      <View style={styles.skillRow}>
-        <View style={[styles.row, styles.colorBox, { backgroundColor: color }]}>
-          <ArkhamIcon
-            name={symbol}
-            size={28}
-            color={COLORS.white}
-          />
-        </View>
-        <View style={styles.text}>
-          <CardTextComponent text={text} />
-        </View>
-        <View style={[styles.row, { paddingRight: s }]}>
-          <Text style={[typography.text, styles.counterText]}>
-            { value }
-          </Text>
-          <PlusMinusButtons
-            count={value}
-            size={36}
-            onIncrement={this._increment}
-            onDecrement={this._decrement}
-            color="dark"
-          />
-        </View>
+  return (
+    <View style={[styles.skillRow, borderStyle]}>
+      <View style={[styles.row, styles.colorBox, { backgroundColor: color }]}>
+        <ArkhamIcon
+          name={symbol}
+          size={28}
+          color={COLORS.white}
+        />
       </View>
-    );
-  }
+      <View style={styles.text}>
+        <CardTextComponent text={text} />
+      </View>
+      <View style={[styles.row, { paddingRight: s }]}>
+        <Text style={[typography.text, styles.counterText]}>
+          { value }
+        </Text>
+        <PlusMinusButtons
+          count={value}
+          size={36}
+          onIncrement={inc}
+          onDecrement={dec}
+          color="dark"
+        />
+      </View>
+    </View>
+  );
 }
 
 
@@ -90,7 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   counterText: {
     fontSize: 22,

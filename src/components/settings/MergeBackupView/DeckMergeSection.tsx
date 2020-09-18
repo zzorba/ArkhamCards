@@ -7,7 +7,6 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import DeckMergeItem from './DeckMergeItem';
 import { Deck } from '@actions/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import { CardsMap } from '@data/Card';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -63,7 +62,7 @@ export default class DeckMergeSection extends React.Component<Props, State> {
   renderHeader() {
     const { title, decks, values, inverted } = this.props;
     const { open } = this.state;
-    const { colors, borderStyle } = this.context;
+    const { colors, borderStyle, typography } = this.context;
     const selected = sumBy(decks, deck => {
       if (inverted) {
         return values[deck.id] ? 0 : 1;

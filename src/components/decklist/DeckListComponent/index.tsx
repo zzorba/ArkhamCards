@@ -15,7 +15,6 @@ import Card from '@data/Card';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
 import { getAllDecks, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space, { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -107,6 +106,7 @@ class DeckListComponent extends React.Component<Props, State> {
     const {
       searchTerm,
     } = this.state;
+    const { typography } = this.context;
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>

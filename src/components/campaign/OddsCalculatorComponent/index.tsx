@@ -20,7 +20,6 @@ import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -352,7 +351,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       currentScenario,
       currentScenarioCard,
     } = this.state;
-    const { borderStyle } = this.context;
+    const { borderStyle, typography } = this.context;
     const scenarioText = currentScenarioCard && (
       (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
         currentScenarioCard.back_text :
@@ -392,7 +391,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
   }
 
   render() {
-    const { backgroundStyle, borderStyle, colors } = this.context;
+    const { backgroundStyle, borderStyle, colors, typography } = this.context;
     const { campaign } = this.props;
     const {
       testDifficulty,

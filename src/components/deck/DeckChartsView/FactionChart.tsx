@@ -13,8 +13,7 @@ import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
 import { PLAYER_FACTION_CODES, FactionCodeType } from '@app_constants';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -47,6 +46,9 @@ const DEFAULT_ITEM = {
 };
 
 export default class FactionChart extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   getFactionData(faction: FactionCodeType): Item {
     const counts = this.props.parsedDeck.factionCounts[faction] || [0, 0];
     return {
@@ -69,6 +71,7 @@ export default class FactionChart extends React.PureComponent<Props> {
 
   render() {
     const { width } = this.props;
+    const { colors, typography } = this.context;
     const barData = filter(
       PLAYER_FACTION_CODES.map(code => this.getFactionData(code)),
       data => data.count > 0 || data.dual > 0
@@ -106,7 +109,7 @@ export default class FactionChart extends React.PureComponent<Props> {
               labels={this._getDualValue}
               style={{
                 data: {
-                  fill: COLORS.faction.dual.background,
+                  fill: colors.faction.dual.background,
                 },
                 labels: {
                   fill: 'white',
@@ -127,7 +130,7 @@ export default class FactionChart extends React.PureComponent<Props> {
               labels={this._getTotalValue}
               style={{
                 data: {
-                  fill: ({ datum }: { datum: Item }) => COLORS.faction[datum.faction].background,
+                  fill: ({ datum }: { datum: Item }) => colors.faction[datum.faction].background,
                 },
                 labels: {
                   fill: 'white',

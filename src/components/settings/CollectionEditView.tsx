@@ -12,7 +12,7 @@ import { NavigationProps } from '@components/nav/types';
 import { Pack } from '@actions/types';
 import { setInCollection, setCycleInCollection } from '@actions';
 import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   packs: Pack[];
@@ -26,6 +26,9 @@ interface ReduxActionProps {
 type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class CollectionEditView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -44,6 +47,7 @@ class CollectionEditView extends React.Component<Props> {
       setInCollection,
       setCycleInCollection,
     } = this.props;
+    const { typography } = this.context;
     if (!packs.length) {
       return (
         <View>

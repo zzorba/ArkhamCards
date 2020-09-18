@@ -19,7 +19,6 @@ import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
 import CardQuantityComponent from './CardQuantityComponent';
-import typography from '@styles/typography';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -117,11 +116,13 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     }
     const faction = card.factionCode();
     return (
-      <ArkhamIcon
-        name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
-        size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
-        color={colors.faction[faction].text}
-      />
+      <View style={styles.investigatorFactionIcon}>
+        <ArkhamIcon
+          name={(card.faction2_code || faction === 'neutral') ? 'elder_sign' : faction}
+          size={size === ICON_SIZE ? ICON_SIZE : SMALL_ICON_SIZE}
+          color={colors.faction[faction].text}
+        />
+      </View>
     );
   }
 
@@ -232,7 +233,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   }
 
   renderTabooBlock() {
-    const { colors, fontScale } = this.context;
+    const { colors, fontScale, typography } = this.context;
     const {
       card,
     } = this.props;
@@ -255,7 +256,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   }
 
   renderCardName() {
-    const { colors, fontScale } = this.context;
+    const { colors, fontScale, typography } = this.context;
     const {
       card,
       invalid,
@@ -319,7 +320,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       hasSecondCore,
       showZeroCount,
     } = this.props;
-    const { fontScale } = this.context;
+    const { fontScale, typography } = this.context;
     if (onDeckCountChange) {
       const deck_limit: number = Math.min(
         card.pack_code === 'core' ?
@@ -434,7 +435,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       backgroundColor,
       onDeckCountChange,
     } = this.props;
-    const { fontScale, colors, borderStyle } = this.context;
+    const { fontScale, colors, borderStyle, typography } = this.context;
     if (!card) {
       return (
         <View style={[
@@ -559,5 +560,8 @@ const styles = StyleSheet.create({
   },
   upgradeButton: {
     marginRight: s,
+  },
+  investigatorFactionIcon: {
+    marginBottom: 4,
   },
 });

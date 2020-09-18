@@ -430,7 +430,6 @@ class CampaignDetailView extends React.Component<Props, State> {
             topBar: {
               title: {
                 text: t`Chaos Bag`,
-                color: COLORS.black,
               },
             },
           },
@@ -458,7 +457,6 @@ class CampaignDetailView extends React.Component<Props, State> {
             topBar: {
               title: {
                 text: t`Draw Weaknesses`,
-                color: COLORS.black,
               },
               backButton: {
                 title: t`Back`,
@@ -471,61 +469,61 @@ class CampaignDetailView extends React.Component<Props, State> {
   };
 
   renderSideMenu(campaign: Campaign) {
-    const { backgroundStyle, borderStyle } = this.context;
+    const { backgroundStyle, borderStyle, typography } = this.context;
     return (
       <ScrollView style={[styles.menu, borderStyle, backgroundStyle]}>
         <CardSectionHeader section={{ title: t`Campaign` }} />
         <SettingsButton
           onPress={this._editNamePressed}
           title={t`Name`}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           description={campaign.name}
-          descriptionStyle={styles.text}
+          descriptionStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._viewScenarios}
           title={t`Scenario History`}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._addScenarioResult}
           title={t`Record Scenario Results`}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <CardSectionHeader section={{ title: t`Chaos Bag` }} />
         <SettingsButton
           title={t`Edit Tokens`}
           onPress={this._editChaosBag}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Draw Tokens`}
           onPress={this._drawChaosBag}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Odds Calculator`}
           onPress={this._oddsCalculatorPressed}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <CardSectionHeader section={{ title: t`Weakness Set` }} />
         <SettingsButton
           title={t`Draw Basic Weakness`}
           onPress={this._showDrawWeakness}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <CardSectionHeader section={{ title: t`Options` }} />
         <SettingsButton
           onPress={this._showShareSheet}
           title={t`Share`}
-          titleStyle={styles.text}
+          titleStyle={typography.black}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
@@ -676,8 +674,5 @@ const styles = StyleSheet.create({
   },
   destructive: {
     color: COLORS.red,
-  },
-  text: {
-    color: COLORS.darkText,
   },
 });

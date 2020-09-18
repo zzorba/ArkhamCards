@@ -5,8 +5,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space, { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -38,7 +36,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color={colors ? colors.textColor : COLORS.darkText}
+              color={colors ? colors.textColor : this.context.colors.darkText}
             />
           </View>
         );
@@ -47,7 +45,7 @@ export default class PickerStyleButton extends React.Component<Props> {
           <MaterialIcons
             name="keyboard-arrow-right"
             size={30}
-            color={colors ? colors.textColor : COLORS.darkText}
+            color={colors ? colors.textColor : this.context.colors.darkText}
           />
         );
       case 'delete':
@@ -56,7 +54,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={colors ? colors.textColor : COLORS.darkText}
+              color={colors ? colors.textColor : this.context.colors.darkText}
             />
           </View>
         );
@@ -74,12 +72,16 @@ export default class PickerStyleButton extends React.Component<Props> {
       settingsStyle,
       widget,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, borderStyle, typography } = this.context;
     return (
-      <View style={[style.defaultContainerStyle, {
-        backgroundColor: colors ? colors.backgroundColor : 'transparent',
-        borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
-      }]}>
+      <View style={[
+        style.defaultContainerStyle,
+        borderStyle,
+        {
+          backgroundColor: colors ? colors.backgroundColor : 'transparent',
+          borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
+        },
+      ]}>
         <View style={[
           style.textColumn,
           space.paddingLeftM,
@@ -97,7 +99,7 @@ export default class PickerStyleButton extends React.Component<Props> {
                   fontFamily: gameFont,
                   fontWeight: '600',
                 },
-              { color: colors ? colors.textColor : COLORS.darkText },
+              { color: colors ? colors.textColor : this.context.colors.darkText },
             ]}
           >
             { title }
@@ -110,7 +112,7 @@ export default class PickerStyleButton extends React.Component<Props> {
                 style.defaultValueStyle,
                 typography.label,
                 {
-                  color: colors ? colors.textColor : COLORS.darkText,
+                  color: colors ? colors.textColor : this.context.colors.darkText,
                   fontWeight: '400',
                   flex: 4,
                   textAlign: 'right',
@@ -151,14 +153,12 @@ const style = StyleSheet.create({
     backgroundColor: 'transparent',
     alignItems: 'center',
     flexDirection: 'row',
-    borderColor: COLORS.divider,
   },
   defaultTitleStyle: {
     fontSize: 16,
     minWidth: 100,
   },
   defaultValueStyle: {
-    color: COLORS.lightText,
     fontSize: 14,
   },
   textColumn: {

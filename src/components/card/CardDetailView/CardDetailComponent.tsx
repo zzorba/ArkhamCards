@@ -7,7 +7,6 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import typography from '@styles/typography';
 import BasicButton from '@components/core/BasicButton';
 import ArkhamButton from '@components/core/ArkhamButton';
 import Card from '@data/Card';
@@ -68,6 +67,7 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       width,
     } = this.props;
+    const { typography } = this.context;
     if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }

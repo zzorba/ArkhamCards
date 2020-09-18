@@ -12,6 +12,7 @@ export interface StyleContextType {
   typography: typeof typography;
   backgroundStyle: ViewStyle;
   borderStyle: ViewStyle;
+  disabledStyle: ViewStyle;
 }
 
 export const DEFAULLT_STYLE_CONTEXT = {
@@ -26,6 +27,9 @@ export const DEFAULLT_STYLE_CONTEXT = {
   borderStyle: {
     borderColor: LIGHT_THEME.divider,
   },
+  disabledStyle: {
+    backgroundColor: LIGHT_THEME.disableOverlay,
+  }
 };
 
 export const StyleContext = React.createContext<StyleContextType>(DEFAULLT_STYLE_CONTEXT);

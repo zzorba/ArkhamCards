@@ -9,7 +9,6 @@ import {
 import NoteRow from './NoteRow';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { s, xs } from '@styles/space';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -66,7 +65,7 @@ export default class NotesSection extends React.Component<Props> {
       isInvestigator,
       showDialog,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     const notes = this.notes();
     return (
       <View style={isInvestigator ? {} : styles.container}>

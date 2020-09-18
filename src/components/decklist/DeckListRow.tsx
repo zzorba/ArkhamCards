@@ -15,7 +15,6 @@ import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
-import typography from '@styles/typography';
 import { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -92,7 +91,7 @@ export default class DeckListRow extends React.Component<Props> {
       cards,
       details,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, typography } = this.context;
     if (details) {
       return details;
     }

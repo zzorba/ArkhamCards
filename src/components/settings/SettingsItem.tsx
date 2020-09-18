@@ -11,7 +11,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import {
   SettingsButton,
 } from '@lib/react-native-settings-components';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -25,7 +24,7 @@ export default function SettingsItem({ loading, navigation, text, onPress }: Pro
   const dummyOnPress = () => {
     // Ignore me
   };
-  const { colors } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   if (loading) {
     return (
       <View style={[styles.wrapper, space.paddingXs]}>

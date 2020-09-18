@@ -12,7 +12,6 @@ import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuide
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType, Effect, Option } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 
 interface Props {
@@ -102,7 +101,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
   renderCount(count: number) {
     const { delta } = this.props;
     const {
-      style: { gameFont },
+      style: { gameFont, typography },
     } = this.context;
     return (
       <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
@@ -116,7 +115,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
   renderPrompt(count?: number) {
     const { prompt } = this.props;
     const {
-      style: { gameFont },
+      style: { gameFont, typography },
     } = this.context;
     const value = this.currentValue();
     return (

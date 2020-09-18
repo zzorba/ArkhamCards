@@ -12,7 +12,7 @@ import PackListComponent from '@components/core/PackListComponent';
 import { getAllPacks, AppState } from '@reducers';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -24,6 +24,9 @@ interface ReduxProps {
 
 type Props = OwnProps & ReduxProps & FilterProps;
 class PackFilterView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -83,6 +86,7 @@ class PackFilterView extends React.Component<Props> {
         packs,
       },
     } = this.props;
+    const { typography } = this.context;
     if (!allPacks.length) {
       return (
         <View>

@@ -10,7 +10,6 @@ import KeepAwake from 'react-native-keep-awake';
 import BasicButton from '@components/core/BasicButton';
 import { ChaosBag } from '@app_constants';
 import { ChaosBagResults } from '@actions/types';
-import typography from '@styles/typography';
 import CounterRow from '@components/core/CounterRow';
 import ChaosToken from './ChaosToken';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -198,6 +197,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       chaosBagResults,
     } = this.props;
+    const { typography } = this.context;
 
     const drawnTokens = chaosBagResults.drawnTokens;
     if (drawnTokens.length > 1) {
@@ -306,7 +306,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       chaosBagResults,
     } = this.props;
-    const { colors, backgroundStyle, borderStyle } = this.context;
+    const { colors, backgroundStyle, borderStyle, typography } = this.context;
     return (
       <ScrollView style={styles.containerBottom} contentContainerStyle={backgroundStyle}>
         <KeepAwake />

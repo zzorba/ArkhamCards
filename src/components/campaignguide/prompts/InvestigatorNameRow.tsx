@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -16,40 +14,36 @@ export default function InvestigatorNameRow({
   investigator,
   detail,
 }: Props) {
+  const { gameFont, colors, borderStyle, typography } = useContext(StyleContext);
+  const backgroundColor = colors.faction[investigator.factionCode()].background;
   return (
-    <StyleContext.Consumer>
-      { ({ gameFont }) => {
-        const backgroundColor = COLORS.faction[investigator.factionCode()].background;
-        return (
-          <View style={[
-            styles.investigatorRow,
-            space.paddingS,
-            space.paddingLeftM,
-            { backgroundColor },
+    <View style={[
+      styles.investigatorRow,
+      borderStyle,
+      space.paddingS,
+      space.paddingLeftM,
+      { backgroundColor },
+    ]}>
+      <View>
+        <Text style={[
+          typography.mediumGameFont,
+          { fontFamily: gameFont },
+          styles.investigatorText,
+        ]}>
+          { investigator.name }
+        </Text>
+      </View>
+      <View>
+        { !!detail && (
+          <Text style={[
+            typography.text,
+            styles.investigatorText,
           ]}>
-            <View>
-              <Text style={[
-                typography.mediumGameFont,
-                { fontFamily: gameFont },
-                styles.investigatorText,
-              ]}>
-                { investigator.name }
-              </Text>
-            </View>
-            <View>
-              { !!detail && (
-                <Text style={[
-                  typography.text,
-                  styles.investigatorText,
-                ]}>
-                  { detail }
-                </Text>
-              ) }
-            </View>
-          </View>
-        );
-      }}
-    </StyleContext.Consumer>
+            { detail }
+          </Text>
+        ) }
+      </View>
+    </View>
   );
 }
 
@@ -64,6 +58,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

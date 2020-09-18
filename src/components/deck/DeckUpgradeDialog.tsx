@@ -23,7 +23,6 @@ import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import Card from '@data/Card';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { getDeck, getCampaign, getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import BasicButton from '@components/core/BasicButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -219,7 +218,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const {
       storyCounts,
     } = this.state;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     const investigator = this.investigator();
     if (!deck || !investigator) {
       return null;

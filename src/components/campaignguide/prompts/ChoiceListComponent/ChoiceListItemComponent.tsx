@@ -5,7 +5,6 @@ import ChooseOneListComponent from '../ChooseOneListComponent';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { DisplayChoice } from '@data/scenario';
 import { BulletType } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -47,12 +46,13 @@ export default class ChoiceListItemComponent extends React.Component<Props> {
       optional,
       firstItem,
     } = this.props;
-    const { gameFont } = this.context;
+    const { borderStyle, typography, gameFont } = this.context;
     if (detailed) {
       return (
         <>
           <View style={[
             styles.headerRow,
+            borderStyle,
             space.paddingS,
             space.paddingLeftM,
             color ? { backgroundColor: color } : {},
@@ -110,6 +110,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

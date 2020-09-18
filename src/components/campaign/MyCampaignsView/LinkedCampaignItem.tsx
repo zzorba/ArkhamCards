@@ -11,7 +11,7 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { getCampaign, AppState } from '@reducers';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   campaign: Campaign;
@@ -26,6 +26,9 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class LinkedCampaignItem extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       campaign,
@@ -40,9 +43,10 @@ class LinkedCampaignItem extends React.Component<Props> {
       campaignA,
       campaignB,
     } = this.props;
+    const { borderStyle } = this.context;
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.container}>
+        <View style={[styles.container, borderStyle]}>
           <CampaignSummaryComponent
             campaign={campaign}
             hideScenario
@@ -77,7 +81,6 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',

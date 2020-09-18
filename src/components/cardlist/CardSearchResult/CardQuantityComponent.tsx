@@ -12,9 +12,7 @@ import Button from '@components/core/Button';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CountButton from './CountButton';
 import { rowHeight, buttonWidth, BUTTON_PADDING, toggleButtonMode } from './constants';
-import typography from '@styles/typography';
 import { s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -145,7 +143,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
       count,
       slideAnim,
     } = this.state;
-    const { fontScale } = this.context;
+    const { fontScale, borderStyle } = this.context;
     const drawerWidth = BUTTON_PADDING + (buttonWidth(fontScale) + BUTTON_PADDING) * (limit + 1);
 
     const translateX = slideAnim.interpolate({
@@ -168,6 +166,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
         <View style={styles.drawer} pointerEvents="box-none">
           <Animated.View style={[
             styles.slideDrawer,
+            borderStyle,
             {
               height: rowHeight(fontScale),
               width: drawerWidth,
@@ -202,7 +201,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
       showZeroCount,
       forceBig,
     } = this.props;
-    const { fontScale } = this.context;
+    const { fontScale, typography } = this.context;
     if (toggleButtonMode(fontScale) && !forceBig) {
       return this.renderTiny();
     }
@@ -272,7 +271,6 @@ const styles = StyleSheet.create({
     overflow: 'visible',
   },
   slideDrawer: {
-    borderColor: COLORS.divider,
     borderLeftWidth: 1,
   },
   gradient: {

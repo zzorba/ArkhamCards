@@ -52,9 +52,7 @@ import { combineQueries, where } from '@data/query';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState, getLangPreference } from '@reducers';
 import Card from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import typography from '@styles/typography';
 import { s, m } from '@styles/space';
-import COLORS from '@styles/colors';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
@@ -664,16 +662,21 @@ class CardResultList extends React.Component<Props, State> {
     }
     if (!refreshing && (cardsCount + spoilerCardsCount) === 0) {
       return (
-        <View>
-          <View style={styles.emptyText}>
-            <Text style={typography.text}>
-              { searchTerm ?
-                t`No matching cards for "${searchTerm}"` :
-                t`No matching cards` }
-            </Text>
-          </View>
-          { this.props.expandSearchControls }
-        </View>
+        <StyleContext.Consumer>
+          { ({ borderStyle, typography }) => (
+            <View>
+              <View style={[styles.emptyText, borderStyle]}>
+                <Text style={typography.text}>
+                  { searchTerm ?
+                    t`No matching cards for "${searchTerm}"` :
+                    t`No matching cards` }
+                </Text>
+              </View>
+              { this.props.expandSearchControls }
+            </View>
+          ) }
+        </StyleContext.Consumer>
+
       );
     }
     return this.props.expandSearchControls;
@@ -792,19 +795,23 @@ class CardResultList extends React.Component<Props, State> {
 
     if (!dbState || this.hasMajorChange(dbState)) {
       return (
-        <View style={styles.loading}>
-          <View style={styles.loadingText}>
-            <Text style={typography.text}>
-              { `${loadingMessage}...` }
-            </Text>
-          </View>
-          <ActivityIndicator
-            style={[{ height: 80 }]}
-            color={COLORS.lightText}
-            size="small"
-            animating
-          />
-        </View>
+        <StyleContext.Consumer>
+          { ({ colors, typography }) => (
+            <View style={styles.loading}>
+              <View style={styles.loadingText}>
+                <Text style={typography.text}>
+                  { `${loadingMessage}...` }
+                </Text>
+              </View>
+              <ActivityIndicator
+                style={[{ height: 80 }]}
+                color={colors.lightText}
+                size="small"
+                animating
+              />
+            </View>
+          ) }
+        </StyleContext.Consumer>
       );
     }
     return (
@@ -969,6 +976,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderColor: COLORS.divider,
   },
 });

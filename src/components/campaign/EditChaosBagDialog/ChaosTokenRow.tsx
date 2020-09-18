@@ -9,7 +9,7 @@ import { ChaosTokenType } from '@app_constants';
 import ChaosToken from '@components/core/ChaosToken';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   id: ChaosTokenType;
@@ -20,6 +20,9 @@ interface Props {
 }
 
 export default class ChaosTokenRow extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _increment = () => {
     const {
       id,
@@ -83,8 +86,9 @@ export default class ChaosTokenRow extends React.PureComponent<Props> {
       count,
       limit,
     } = this.props;
+    const { borderStyle } = this.context;
     return (
-      <View style={styles.mainRow}>
+      <View style={[styles.mainRow, borderStyle]}>
         <View style={styles.row}>
           <ChaosToken id={id} />
           <PlusMinusButtons
@@ -112,7 +116,6 @@ const styles = StyleSheet.create({
     paddingTop: xs,
     paddingBottom: xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   row: {
     flexDirection: 'row',

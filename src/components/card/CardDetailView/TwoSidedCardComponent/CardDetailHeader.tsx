@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { CORE_FACTION_CODES } from '@app_constants';
@@ -7,7 +7,6 @@ import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
 import CardCostIcon from '@components/core/CardCostIcon';
 import space, { s, xs } from '@styles/space';
-import typography from '@styles/typography';
 import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
@@ -150,7 +149,7 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
       );
     }
     return (
-      <View>
+      <View style={styles.factionIcon}>
         { (!!card.faction_code && (CORE_FACTION_CODES.indexOf(card.faction_code) !== -1 || card.faction_code === 'neutral')) &&
           <ArkhamIcon name={card.faction_code === 'neutral' ? 'elder_sign' : card.faction_code} size={ICON_SIZE + 4} color={color} /> }
       </View>
@@ -160,6 +159,7 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
 }
 
 function HeaderContent({ card, back }: { card: Card, back: boolean}) {
+  const { typography } = useContext(StyleContext);
   const name = (back ? card.back_name : card.name) || card.name;
   const subname = back ? undefined : card.subname;
   return (
@@ -229,5 +229,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+  },
+  factionIcon: {
+    marginBottom: 4,
   },
 });

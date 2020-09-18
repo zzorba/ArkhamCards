@@ -11,7 +11,6 @@ import {
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { m, s, xs, iconSizeScale } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -44,7 +43,7 @@ export default class CardSectionHeader extends React.Component<Props> {
   context!: StyleContextType;
 
   renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
-    const { colors, borderStyle, fontScale } = this.context;
+    const { colors, borderStyle, fontScale, typography } = this.context;
     const {
       section: {
         superTitleIcon,
@@ -81,7 +80,7 @@ export default class CardSectionHeader extends React.Component<Props> {
   }
 
   render() {
-    const { colors, borderStyle, backgroundStyle, fontScale } = this.context;
+    const { colors, borderStyle, backgroundStyle, fontScale, typography } = this.context;
     const {
       investigator,
       section,

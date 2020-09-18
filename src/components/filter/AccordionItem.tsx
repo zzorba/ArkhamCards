@@ -8,9 +8,7 @@ import {
 } from 'react-native';
 
 import Switch from '@components/core/Switch';
-import typography from '@styles/typography';
 import { isBig, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -71,6 +69,7 @@ export default class AccordionItem extends React.Component<Props, State> {
       label,
       enabled,
     } = this.props;
+    const { typography } = this.context;
     return (
       <View style={styles.row}>
         <Text style={typography.text}>
@@ -89,7 +88,7 @@ export default class AccordionItem extends React.Component<Props, State> {
       height,
       children,
     } = this.props;
-    const { fontScale } = this.context;
+    const { fontScale, borderStyle } = this.context;
     const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
 
     const containerHeight = this.state.heightAnim.interpolate({
@@ -98,7 +97,7 @@ export default class AccordionItem extends React.Component<Props, State> {
       extrapolate: 'clamp',
     });
     return (
-      <Animated.View style={[styles.container, { height: containerHeight }]}>
+      <Animated.View style={[styles.container, borderStyle, { height: containerHeight }]}>
         { this.renderLabel() }
         { children }
       </Animated.View>
@@ -113,7 +112,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     overflow: 'hidden',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   row: {
     paddingTop: xs,

@@ -7,7 +7,6 @@ import {
 
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -58,7 +57,7 @@ export default class EditCountComponent extends React.Component<Props, State> {
     const {
       title,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     const {
       count,
     } = this.state;

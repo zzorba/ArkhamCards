@@ -10,8 +10,8 @@ import { t } from 'ttag';
 
 import ChartLabel from './ChartLabel';
 import { ParsedDeck } from '@actions/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -24,6 +24,9 @@ interface Item {
   value: number;
 }
 export default class CostChart extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   specialCost(index: number) {
     if (index === -2) {
       return 'X';
@@ -53,6 +56,7 @@ export default class CostChart extends React.PureComponent<Props> {
       },
       width,
     } = this.props;
+    const { typography } = this.context;
     const barData = filter(
       map(costHistogram, (_, idx) => this.getCostData(idx)),
       item => item.alwaysShow || item.value > 0

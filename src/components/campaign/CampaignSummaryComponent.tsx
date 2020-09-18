@@ -5,7 +5,6 @@ import { t } from 'ttag';
 
 import { CAMPAIGN_COLORS, campaignNames } from './constants';
 import { Campaign, CUSTOM } from '@actions/types';
-import typography from '@styles/typography';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
@@ -21,6 +20,7 @@ interface Props {
 export default class CampaignSummaryComponent extends React.Component<Props> {
   static contextType = StyleContext;
   context!: StyleContextType;
+
   latestScenario() {
     return last(this.props.campaign.scenarioResults);
   }
@@ -30,7 +30,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       campaign,
       name,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
     return (
       <>
@@ -46,7 +46,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
 
   renderLastScenario() {
     const { hideScenario, campaign } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     if (hideScenario) {
       return null;
     }

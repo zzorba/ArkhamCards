@@ -120,11 +120,11 @@ export default class CardCostIcon extends React.PureComponent<Props> {
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
           { card.type_code === 'skill' ? (
-            <View>
+            <View style={[styles.factionIcon, card.factionCode() === 'neutral' ? { marginBottom: 0 } : {}]}>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color="white"
-                size={ICON_SIZE / 2}
+                color={colors.background}
+                size={ICON_SIZE / 1.8}
               />
             </View>
           ) : (
@@ -160,5 +160,8 @@ const styles = StyleSheet.create({
     paddingTop: 3,
     fontFamily: 'Teutonic',
     color: COLORS.white,
+  },
+  factionIcon: {
+    marginBottom: 4,
   },
 });

@@ -3,9 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType } from '@data/scenario/types';
-import typography from '@styles/typography';
 import { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -44,7 +42,7 @@ export default class CounterListItemComponent extends React.Component<Props> {
 
   renderCount() {
     const { color } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     return (
       <View style={styles.count}>
         <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, color ? typography.white : {}]}>
@@ -63,10 +61,11 @@ export default class CounterListItemComponent extends React.Component<Props> {
       value,
       editable,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, borderStyle, typography } = this.context;
     return (
       <View style={[
         styles.promptRow,
+        borderStyle,
         color ? { backgroundColor: color } : {},
       ]}>
         <View style={styles.column}>
@@ -106,7 +105,6 @@ const styles = StyleSheet.create({
   },
   promptRow: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     padding: m,
     paddingTop: s,
     paddingBottom: s,

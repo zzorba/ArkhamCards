@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { head } from 'lodash';
 import {
   StyleSheet,
@@ -9,7 +9,7 @@ import { t } from 'ttag';
 
 import { DeckProblem, DeckProblemType } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
-import typography, { SMALL_FONT_SIZE } from '@styles/typography';
+import { SMALL_FONT_SIZE } from '@styles/typography';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -26,6 +26,7 @@ export default function DeckProblemRow({
   noFontScaling,
   fontSize,
 }: Props) {
+  const { typography } = useContext(StyleContext);
   const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
     too_few_cards: t`Not enough cards.`,
     too_many_cards: t`Too many cards.`,

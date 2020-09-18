@@ -21,9 +21,7 @@ import CardResultList from './CardResultList';
 import FilterBuilder, { FilterState } from '@lib/filters';
 import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@data/query';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -202,7 +200,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchFlavor,
       searchBack,
     } = this.state;
-    const { colors, fontScale } = this.context;
+    const { colors, fontScale, typography } = this.context;
     return (
       <>
         <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
@@ -212,7 +210,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
         </View>
         <View style={styles.column}>
           <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption]}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.black]}>
               { t`Game Text` }
             </Text>
             <ArkhamSwitch
@@ -221,7 +219,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             />
           </View>
           <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption]}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.black]}>
               { t`Flavor Text` }
             </Text>
             <ArkhamSwitch
@@ -230,7 +228,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             />
           </View>
           <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption]}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.black]}>
               { t`Card Backs` }
             </Text>
             <ArkhamSwitch
@@ -474,7 +472,6 @@ const styles = StyleSheet.create({
   searchOption: {
     marginLeft: s,
     marginRight: xs,
-    color: COLORS.darkText,
   },
   row: {
     flexDirection: 'row',

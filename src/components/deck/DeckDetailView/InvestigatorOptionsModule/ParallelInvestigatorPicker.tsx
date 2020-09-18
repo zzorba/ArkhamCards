@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
 
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   investigator: Card;
@@ -16,64 +17,49 @@ interface Props {
   editWarning: boolean;
 }
 
-export default class ParallelInvestigatorPicker extends React.Component<Props> {
-  _onChange = (index: number) => {
-    const {
-      onChange,
-      parallelInvestigators,
-      type,
-    } = this.props;
+export default function ParallelInvestigatorPicker({
+  investigator,
+  parallelInvestigators,
+  type,
+  disabled,
+  editWarning,
+  selection,
+  onChange,
+}: Props) {
+  const { colors } = useContext(StyleContext);
+  const onChoiceChange = (index: number) => {
     onChange(
       type,
       index === 0 ? undefined : parallelInvestigators[index - 1].code
     );
   };
 
-  selectedIndex(): number {
-    const {
-      selection,
-      parallelInvestigators,
-    } = this.props;
-    if (!selection) {
-      return 0;
-    }
-    // Not found: -1 + 1 = 0
-    return 1 + findIndex(parallelInvestigators, card => card.code === selection.code);
-  }
-
-  render() {
-    const {
-      investigator,
-      parallelInvestigators,
-      type,
-      disabled,
-      editWarning,
-    } = this.props;
-    const investigatorFaction = investigator.factionCode();
-    return (
-      <SinglePickerComponent
-        settingsStyle
-        title={type === 'alternate_front' ? t`Card Front` : t`Card Back`}
-        editable={!disabled}
-        description={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
-        colors={{
-          modalColor: investigatorFaction ?
-            COLORS.faction[investigatorFaction].background :
-            COLORS.lightBlue,
-          modalTextColor: 'white',
-          backgroundColor: 'transparent',
-          textColor: COLORS.darkText,
-        }}
-        choices={[
-          { text: t`Original` },
-          ...map(parallelInvestigators, (card) => {
-            return { text: card.pack_name };
-          }),
-        ]}
-        selectedIndex={this.selectedIndex()}
-        onChoiceChange={this._onChange}
-        noBorder
-      />
-    );
-  }
+  // Not found: -1 + 1 = 0
+  const selectedIndex = selection ? (1 + findIndex(parallelInvestigators, card => card.code === selection.code)) : 0;
+  const investigatorFaction = investigator.factionCode();
+  return (
+    <SinglePickerComponent
+      settingsStyle
+      title={type === 'alternate_front' ? t`Card Front` : t`Card Back`}
+      editable={!disabled}
+      description={editWarning ? t`Parallel investigator options should only be selected at deck creation time, not between scenarios.` : undefined}
+      colors={{
+        modalColor: investigatorFaction ?
+          colors.faction[investigatorFaction].background :
+          COLORS.lightBlue,
+        modalTextColor: 'white',
+        backgroundColor: 'transparent',
+        textColor: colors.darkText,
+      }}
+      choices={[
+        { text: t`Original` },
+        ...map(parallelInvestigators, (card) => {
+          return { text: card.pack_name };
+        }),
+      ]}
+      selectedIndex={selectedIndex}
+      onChoiceChange={onChoiceChange}
+      noBorder
+    />
+  );
 }

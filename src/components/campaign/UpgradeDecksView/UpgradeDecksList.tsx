@@ -13,10 +13,10 @@ import { Deck, InvestigatorData, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import Card, { CardsMap } from '@data/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
-import typography from '@styles/typography';
 import { showDeckModal } from '@components/nav/helper';
 import DeckRow from '../DeckRow';
 import { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   campaignId: number;
@@ -38,6 +38,9 @@ interface State {
 }
 
 export default class UpgradeDecksList extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     saved: {},
   };
@@ -79,6 +82,7 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
       investigatorData,
       originalDeckIds,
     } = this.props;
+    const { typography } = this.context;
     const eliminated = investigator.eliminated(investigatorData[investigator.code]);
     if (eliminated) {
       return null;

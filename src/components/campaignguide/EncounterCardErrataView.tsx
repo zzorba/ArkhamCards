@@ -8,9 +8,7 @@ import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideT
 import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
 import Card, { CardsMap } from '@data/Card';
 import CardListWrapper from '@components/card/CardListWrapper';
-import COLORS from '@styles/colors';
 import space from '@styles/space';
-import typography from '@styles/typography';
 import { CardErrata } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -39,7 +37,7 @@ class EncounterCardErrataView extends React.Component<Props> {
   }
 
   _renderErrata = (errata: CardErrata, key: number, allCards: CardsMap) => {
-    const { fontScale } = this.context;
+    const { fontScale, colors, typography } = this.context;
     const cardsByName = groupBy(
       flatMap(errata.code, code => {
         const card = allCards[code];
@@ -59,7 +57,7 @@ class EncounterCardErrataView extends React.Component<Props> {
                   <EncounterIcon
                     encounter_code={cards[0].cycle_code}
                     size={16 * fontScale}
-                    color={COLORS.darkText}
+                    color={colors.darkText}
                   />
                 ) }
                 &nbsp;
@@ -78,6 +76,7 @@ class EncounterCardErrataView extends React.Component<Props> {
 
   render() {
     const { encounterSets, campaignData } = this.props;
+    const { colors } = this.context;
     const errata = campaignData.campaignGuide.cardErrata(encounterSets);
     return (
       <CardListWrapper
@@ -94,7 +93,7 @@ class EncounterCardErrataView extends React.Component<Props> {
               { loading ? (
                 <ActivityIndicator
                   style={space.paddingM}
-                  color={COLORS.lightText}
+                  color={colors.lightText}
                   size="large"
                   animating
                 />

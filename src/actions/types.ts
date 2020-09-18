@@ -274,6 +274,7 @@ export const TCU = 'tcu';
 export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
+export const TIC = 'tic';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -288,7 +289,8 @@ export type CampaignCycleCode =
   typeof TCU |
   typeof TDE |
   typeof TDEA |
-  typeof TDEB;
+  typeof TDEB |
+  typeof TIC;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -303,6 +305,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDE,
   TDEA,
   TDEB,
+  TIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([

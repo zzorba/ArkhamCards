@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import CardTextComponent from '@components/card/CardTextComponent';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   text: string;
@@ -10,11 +11,12 @@ interface Props {
 }
 
 export default function CampaignGuideTextComponent({ text, flavor }: Props) {
+  const { colors } = useContext(StyleContext);
   if (flavor) {
     return (
       <CardFlavorTextComponent
         text={text.replace(/\n/g, '\n\n')}
-        color={COLORS.darkText}
+        color={colors.darkText}
         fontAdjustment={1.1}
       />
     );

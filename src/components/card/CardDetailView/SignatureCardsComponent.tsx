@@ -15,7 +15,7 @@ import Card from '@data/Card';
 import { where } from '@data/query';
 import { getTabooSet, AppState } from '@reducers';
 import space, { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface SignatureCards {
   requiredCards: Card[];
@@ -34,12 +34,15 @@ interface OwnProps {
 type Props = OwnProps & ReduxProps;
 
 class SignatureCardsComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   _render = (signatureCards?: SignatureCards) => {
     const {
       componentId,
       width,
     } = this.props;
+    const { typography } = this.context;
     if (!signatureCards) {
       return null;
     }
@@ -47,12 +50,10 @@ class SignatureCardsComponent extends React.Component<Props> {
       requiredCards,
       alternateCards,
     } = signatureCards;
-
     const [advancedCards, altCards] = partition(alternateCards, card => !!card.advanced);
-
     return (
       <View style={space.marginBottomS}>
-        <Text style={styles.header}>
+        <Text style={[styles.header, typography.black]}>
           { t`Required Cards` }
         </Text>
         { !!(requiredCards && requiredCards.length) && (
@@ -67,7 +68,7 @@ class SignatureCardsComponent extends React.Component<Props> {
         ) }
         { !!(altCards && altCards.length) && (
           <React.Fragment>
-            <Text style={styles.header}>
+            <Text style={[styles.header, typography.black]}>
               { t`Alternate Cards` }
             </Text>
             { map(altCards, card => (
@@ -82,7 +83,7 @@ class SignatureCardsComponent extends React.Component<Props> {
         ) }
         { !!(advancedCards && advancedCards.length) && (
           <React.Fragment>
-            <Text style={styles.header}>
+            <Text style={[styles.header, typography.black]}>
               { t`Advanced Cards` }
             </Text>
             { map(advancedCards, card => (
@@ -156,6 +157,5 @@ const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: '600',
     fontFamily: 'System',
-    color: COLORS.darkText,
   },
 });

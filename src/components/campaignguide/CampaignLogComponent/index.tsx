@@ -12,9 +12,7 @@ import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import typography from '@styles/typography';
 import space, { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -30,12 +28,12 @@ export default class CampaignLogComponent extends React.Component<Props> {
 
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, borderStyle, typography } = this.context;
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <View style={styles.section}>
+          <View style={[styles.section, borderStyle]}>
             <Text style={[typography.bigGameFont, { fontFamily: gameFont }]}>
               { title }: { count }
             </Text>
@@ -46,7 +44,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
         const section = campaignLog.investigatorSections[id];
         if (!section) {
           return (
-            <View style={styles.section}>
+            <View style={[styles.section, borderStyle]}>
               <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline]}>
                 { title }
               </Text>
@@ -76,7 +74,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
       default: {
         const section = campaignLog.sections[id];
         return (
-          <View style={styles.section}>
+          <View style={[styles.section, borderStyle]}>
             <View style={space.paddingBottomM}>
               <Text style={[
                 typography.bigGameFont,
@@ -157,13 +155,13 @@ export default class CampaignLogComponent extends React.Component<Props> {
 
   renderChaosBag() {
     const { campaignLog } = this.props;
-    const { gameFont } = this.context;
+    const { borderStyle, gameFont, typography } = this.context;
     if (!keys(campaignLog.chaosBag).length) {
       return null;
     }
     const tokenCount = sum(values(campaignLog.chaosBag));
     return (
-      <View style={styles.section}>
+      <View style={[styles.section, borderStyle]}>
         <View style={space.paddingBottomM}>
           <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline, typography.center]}>
             { t`Chaos Bag` }{ ` (${tokenCount})` }
@@ -211,7 +209,6 @@ const styles = StyleSheet.create({
     paddingLeft: m + s,
     paddingRight: m + s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   crossedOut: {
     textDecorationLine: 'line-through',

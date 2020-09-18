@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { keys, map, range, sortBy } from 'lodash';
 import {
   StyleSheet,
@@ -9,8 +9,6 @@ import {
 import ChaosTokenIcon from './ChaosTokenIcon';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
 import space, { iconSizeScale } from '@styles/space';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -18,6 +16,7 @@ interface Props {
 }
 
 export default function ChaosBagLine({ chaosBag }: Props) {
+  const { colors, typography } = useContext(StyleContext);
   const bagKeys = sortBy(
     keys(chaosBag),
     (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
@@ -34,7 +33,7 @@ export default function ChaosBagLine({ chaosBag }: Props) {
                   <ChaosTokenIcon
                     icon={token}
                     size={24 * iconSizeScale * fontScale}
-                    color={COLORS.darkText}
+                    color={colors.darkText}
                   />
                   { !isLast && <Text style={typography.header}>, </Text> }
                 </View>

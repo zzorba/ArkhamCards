@@ -6,27 +6,28 @@ import {
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithText } from './types';
-import COLORS from '@styles/colors';
+import { StyleContextType } from '@styles/StyleContext';
 
-export default function StrikethroughTextNode(
-  node: Node & WithText,
-  output: OutputFunction,
-  state: RenderState
-) {
+export default function StrikethroughTextNode({ colors }: StyleContextType) {
   return (
-    <Text
-      key={state.key}
-      style={styles.strikeText}
-    >
-      { node.text }
-    </Text>
-  );
+    node: Node & WithText,
+    output: OutputFunction,
+    state: RenderState
+  ) => {
+    return (
+      <Text
+        key={state.key}
+        style={[styles.strikeText, { textDecorationColor: colors.darkText }]}
+      >
+        { node.text }
+      </Text>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   strikeText: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',
-    textDecorationColor: COLORS.darkText,
   },
 });

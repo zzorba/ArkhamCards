@@ -50,7 +50,7 @@ class LoginStateComponent extends React.Component<Props> {
     if (noWrapper) {
       return render(login, signedIn, error);
     }
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, colors } = this.context;
     return (
       <View style={styles.wrapper}>
         { render(login, signedIn, error) }
@@ -58,7 +58,7 @@ class LoginStateComponent extends React.Component<Props> {
           <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
             <ActivityIndicator
               style={{ height: 80 }}
-              color={COLORS.lightText}
+              color={colors.lightText}
               size="small"
               animating
             />

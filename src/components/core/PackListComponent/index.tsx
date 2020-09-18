@@ -14,7 +14,6 @@ import { t } from 'ttag';
 import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface PackCycle extends SectionListData<Pack> {
@@ -116,7 +115,7 @@ export default class PackListComponent extends React.Component<Props> {
       renderFooter,
       noFlatList,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     if (!packs.length) {
       return (
         <View>

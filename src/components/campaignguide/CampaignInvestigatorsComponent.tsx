@@ -11,7 +11,6 @@ import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRo
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { s, l } from '@styles/space';
 import COLORS from '@styles/colors';
 
@@ -278,7 +277,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       spentXp,
     } = this.state;
     const {
-      style: { gameFont },
+      style: { gameFont, borderStyle, typography },
     } = this.context;
     const canEditTrauma = this.canEditTrauma();
     return (
@@ -328,7 +327,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
                   </Text>
                 </View>
               ) }
-              <View style={styles.bottomBorder}>
+              <View style={[styles.bottomBorder, borderStyle]}>
                 { map(killedInvestigators, investigator => (
                   <InvestigatorCampaignRow
                     key={investigator.code}
@@ -367,6 +366,5 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

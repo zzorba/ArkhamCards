@@ -22,7 +22,6 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getTabooSet, getPacksInCollection, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CardSectionHeader from '@components/core/CardSectionHeader';
@@ -112,6 +111,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
 
   deckbuildingDetails(investigator: Card) {
     const { cards, hideDeckbuildingRules } = this.props;
+    const { typography } = this.context;
     if (hideDeckbuildingRules || !investigator.deck_requirements) {
       return null;
     }
@@ -331,12 +331,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderFooter = () => {
-    const {
-      customFooter,
-    } = this.props;
-    const {
-      searchTerm,
-    } = this.state;
+    const { customFooter } = this.props;
+    const { searchTerm } = this.state;
+    const { typography } = this.context;
     if (searchTerm && this.groupedInvestigators().length === 0) {
       return (
         <>

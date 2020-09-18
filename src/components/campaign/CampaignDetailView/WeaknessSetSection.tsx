@@ -8,10 +8,10 @@ import {
 
 import { t } from 'ttag';
 import { WeaknessSet } from '@actions/types';
-import typography from '@styles/typography';
 import Card from '@data/Card';
 import NavButton from '@components/core/NavButton';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   weaknessSet: WeaknessSet;
@@ -21,6 +21,9 @@ interface OwnProps {
 type Props = OwnProps & PlayerCardProps;
 
 class WeaknessSetSection extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static computeCount(set: WeaknessSet, allCards: Card[]) {
     if (!set) {
       return {
@@ -42,6 +45,7 @@ class WeaknessSetSection extends React.Component<Props> {
       weaknessCards,
       showDrawDialog,
     } = this.props;
+    const { typography } = this.context;
     const counts = WeaknessSetSection.computeCount(weaknessSet, weaknessCards);
     if (counts.total === 0) {
       return null;

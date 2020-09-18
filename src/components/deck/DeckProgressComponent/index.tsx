@@ -16,8 +16,8 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { fetchPublicDeck, fetchPrivateDeck } from '@components/deck/actions';
-import typography from '@styles/typography';
 import space, { l, m, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -49,6 +49,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxActionProps;
 
 class DeckProgressComponent extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   investigatorData() {
     const {
       campaign,
@@ -75,6 +78,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       editable,
       hideCampaign,
     } = this.props;
+    const { typography } = this.context;
     if (!editable) {
       return null;
     }

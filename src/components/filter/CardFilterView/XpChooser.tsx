@@ -8,6 +8,7 @@ import { ButtonGroup } from 'react-native-elements';
 import { t } from 'ttag';
 
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
@@ -20,6 +21,9 @@ interface Props {
 }
 
 export default class XpChooser extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   levelRanges() {
     const {
       maxLevel,
@@ -60,6 +64,7 @@ export default class XpChooser extends React.Component<Props> {
       maxLevel,
       enabled,
     } = this.props;
+    const { typography } = this.context;
 
     if (maxLevel <= 1) {
       return null;
@@ -80,7 +85,7 @@ export default class XpChooser extends React.Component<Props> {
         t`Level ${startXp}` :
         t`Level ${startXp} - ${endXp}`;
       return {
-        element: () => (<Text style={styles.text}>{ xp }</Text>),
+        element: () => (<Text style={typography.black}>{ xp }</Text>),
       };
     });
     return (
@@ -101,9 +106,6 @@ export default class XpChooser extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     height: 40,
-  },
-  text: {
-    color: COLORS.darkText,
   },
   button: {
     backgroundColor: COLORS.toggleButton,

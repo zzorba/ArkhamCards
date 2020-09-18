@@ -8,7 +8,7 @@ import DialogComponent from '@lib/react-native-dialog';
 import { t } from 'ttag';
 
 import Dialog from '@components/core/Dialog';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export type AddSectionFunction = (
   name: string,
@@ -30,6 +30,9 @@ interface State {
 }
 
 export default class AddCampaignNoteSectionDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _textInputRef = React.createRef<TextInput>();
 
   constructor(props: Props) {
@@ -109,6 +112,7 @@ export default class AddCampaignNoteSectionDialog extends React.Component<Props,
       isCount,
       perInvestigator,
     } = this.state;
+    const { typography } = this.context;
 
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (

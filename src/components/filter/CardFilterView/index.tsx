@@ -317,7 +317,7 @@ class CardFilterView extends React.Component<Props> {
         hasSkill,
       },
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, borderStyle } = this.context;
 
     return (
       <ScrollView contentContainerStyle={backgroundStyle}>
@@ -453,7 +453,7 @@ class CardFilterView extends React.Component<Props> {
             onFilterChange={onFilterChange}
           />
         ) }
-        <View style={[styles.toggleStack, space.paddingBottomS]}>
+        <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
           <View style={[styles.toggleRow, space.marginTopXs]}>
             <View style={styles.toggleColumn}>
               <ToggleFilter
@@ -581,7 +581,6 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   toggleStack: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   toggleRow: {
     flexDirection: 'row',

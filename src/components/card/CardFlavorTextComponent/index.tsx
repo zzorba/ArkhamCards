@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -9,7 +9,6 @@ import {
 } from 'react-native-markdown-view';
 
 import { WithChildren, WithText, WithIconName, State } from '../CardTextComponent/types';
-import COLORS from '@styles/colors';
 import ArkhamIconNode from '../CardTextComponent/ArkhamIconNode';
 import FlavorItalicNode from './FlavorItalicNode';
 import FlavorBoldNode from './FlavorBoldNode';
@@ -20,6 +19,7 @@ import FlavorRightNode from './FlavorRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const BreakTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
@@ -31,14 +31,16 @@ const BreakTagRule: MarkdownRule<WithText, State> = {
 };
 
 
-const ArkhamIconRule: MarkdownRule<WithIconName, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
-  order: 1,
-  parse: (capture) => {
-    return { name: capture[1] };
-  },
-  render: ArkhamIconNode,
-};
+function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
+    order: 1,
+    parse: (capture) => {
+      return { name: capture[1] };
+    },
+    render: ArkhamIconNode(style),
+  };
+}
 
 const CiteTagRule: MarkdownRule<WithText, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<cite>(.+?)<\\/cite>')),
@@ -78,16 +80,18 @@ const BoldHtmlTagRule: MarkdownRule<WithText, State> = {
   render: FlavorBoldNode,
 };
 
-const FancyHtmlTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>([\\s\\S]+?)<\\/fancy>')),
-  order: 2,
-  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-    return {
-      children: nestedParse(capture[1], state),
-    };
-  },
-  render: FlavorFancyNode,
-};
+const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<fancy>([\\s\\S]+?)<\\/fancy>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorFancyNode(style),
+  };
+}
 
 const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),
@@ -132,6 +136,7 @@ interface Props {
 export default function CardFlavorTextComponent(
   { text, onLinkPress, color, fontAdjustment }: Props
 ) {
+  const context = useContext(StyleContext);
   // Text that has hyperlinks uses a different style for the icons.
   return (
     <MarkdownView
@@ -139,12 +144,12 @@ export default function CardFlavorTextComponent(
         marginBottom: xs,
       }}
       rules={{
-        iconTag: ArkhamIconRule,
+        iconTag: ArkhamIconRule(context),
         bTag: BoldHtmlTagRule,
         uTag: UnderlineHtmlTagRule,
         brTag: BreakTagRule,
         citeTag: CiteTagRule,
-        fancyTag: FancyHtmlTagRule,
+        fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule,
@@ -158,7 +163,7 @@ export default function CardFlavorTextComponent(
           fontSize: (fontAdjustment || 1) * 14,
           marginTop: 4,
           marginBottom: 4,
-          color: color || COLORS.darkText,
+          color: color || context.colors.darkText,
         },
       }}
     >

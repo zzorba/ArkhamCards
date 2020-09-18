@@ -8,7 +8,6 @@ import { Navigation } from 'react-native-navigation';
 import { ScenarioResult } from '@actions/types';
 import { Scenario } from '../constants';
 import { EditScenarioResultProps } from '../EditScenarioResultView';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 
@@ -48,7 +47,7 @@ export default class ScenarioResultRow extends React.Component<Props> {
       scenarioByCode,
       editable,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     const resolution = scenarioResult.resolution ?
       `: ${scenarioResult.resolution}` : '';
     const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];

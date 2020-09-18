@@ -6,7 +6,7 @@ import { t } from 'ttag';
 
 import CardListWrapper from '@components/card/CardListWrapper';
 import Card from '@data/Card';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props<T=undefined> {
   code: string;
@@ -17,8 +17,12 @@ interface Props<T=undefined> {
 }
 
 export default class SingleCardWrapper<T=undefined> extends React.Component<Props<T>> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _render = (cards: Card[], loading: boolean): React.ReactNode => {
     const { code, children, loadingComponent, extraProps } = this.props;
+    const { typography } = this.context;
     if (!cards || !cards.length || !cards[0]) {
       if (loading) {
         return loadingComponent || null;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,9 +8,8 @@ import {
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Switch from '@components/core/Switch';
-import typography from '@styles/typography';
 import { s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 const ICON_SIZE = 28;
 
@@ -23,49 +22,35 @@ interface Props {
   style?: ViewStyle;
 }
 
-export default class ToggleFilter extends React.Component<Props> {
-  _onToggle = () => {
-    const {
-      onChange,
-      setting,
-      value,
-    } = this.props;
-    onChange(setting, !value);
-  }
-
-  renderLabel() {
-    const {
-      label,
-      icon,
-    } = this.props;
-    if (icon) {
-      return (
-        <View style={styles.icon}>
-          <ArkhamIcon name={icon} size={ICON_SIZE} color={COLORS.darkText} />
-        </View>
-      );
-    }
+function Label({ label, icon }: { label?: string; icon?: string }) {
+  const { colors, typography } = useContext(StyleContext);
+  if (icon) {
     return (
-      <Text style={[typography.text, styles.labelText]}>{ label }</Text>
-    );
-  }
-
-  render() {
-    const {
-      style,
-    } = this.props;
-    return (
-      <View style={[styles.row, style]}>
-        <View style={styles.label}>
-          { this.renderLabel() }
-        </View>
-        <Switch
-          value={this.props.value}
-          onValueChange={this._onToggle}
-        />
+      <View style={styles.icon}>
+        <ArkhamIcon name={icon} size={ICON_SIZE} color={colors.darkText} />
       </View>
     );
   }
+  return (
+    <Text style={[typography.text, styles.labelText]}>{ label }</Text>
+  );
+}
+
+export default function ToggleFilter({ onChange, setting, label, value, icon, style }: Props) {
+  const onToggle = () => {
+    onChange(setting, !value);
+  }
+  return (
+    <View style={[styles.row, style]}>
+      <View style={styles.label}>
+        <Label label={label} icon={icon} />
+      </View>
+      <Switch
+        value={value}
+        onValueChange={onToggle}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

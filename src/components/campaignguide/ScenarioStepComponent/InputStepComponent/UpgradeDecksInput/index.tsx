@@ -22,9 +22,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { AppState } from '@reducers';
-import typography from '@styles/typography';
 import { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 
 interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
@@ -156,12 +154,12 @@ class UpgradeDecksInput extends React.Component<Props, State> {
       campaignState,
     } = this.props;
     const {
-      style: { gameFont },
+      style: { gameFont, borderStyle, typography },
     } = this.context;
     const hasDecision = scenarioState.decision(id) !== undefined;
     return (
       <View>
-        <View style={styles.header}>
+        <View style={[styles.header, borderStyle]}>
           <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.right]}>
             { t`Update decks with scenario results` }
           </Text>
@@ -242,6 +240,5 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     paddingTop: s + m,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

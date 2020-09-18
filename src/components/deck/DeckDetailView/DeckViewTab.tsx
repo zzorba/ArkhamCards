@@ -43,7 +43,7 @@ import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import COLORS from '@styles/colors';
 import { isBig, m, s, xs } from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -258,6 +258,9 @@ interface State {
 }
 
 export default class DeckViewTab extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     limitedSlots: false,
   };
@@ -505,6 +508,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       xpAdjustment,
       editable,
     } = this.props;
+    const { colors } = this.context;
     if (!changes) {
       return null;
     }
@@ -518,7 +522,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
         onPress={showEditNameDialog}
         colors={{
           backgroundColor: 'transparent',
-          textColor: COLORS.darkText,
+          textColor: colors.darkText,
         }}
         widget="nav"
         noBorder
@@ -552,6 +556,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       tabooOpen,
       editable,
     } = this.props;
+    const { colors, typography } = this.context;
     return (
       <View style={styles.optionsContainer}>
         { (tabooOpen || showTaboo || !!tabooSet) && (
@@ -560,7 +565,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
             disabled={!editable}
             tabooSetId={tabooSetId}
             setTabooSet={setTabooSet}
-            color={COLORS.faction[
+            color={colors.faction[
               investigator ? investigator.factionCode() : 'neutral'
             ].darkBackground}
             transparent

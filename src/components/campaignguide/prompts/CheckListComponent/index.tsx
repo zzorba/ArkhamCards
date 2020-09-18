@@ -10,9 +10,7 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from '@actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
-import typography from '@styles/typography';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
 
 export interface ListItem {
   code: string;
@@ -148,59 +146,54 @@ export default class CheckListComponent extends React.Component<Props, State> {
   render() {
     const { id, items, bulletType, text, checkText, button } = this.props;
     const {
-      style: { gameFont },
+      style: { gameFont, borderStyle, typography },
+      scenarioState,
     } = this.context;
     const { selectedChoice } = this.state;
+    const choiceList = scenarioState.stringChoices(id);
+    const hasDecision = choiceList !== undefined;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => {
-          const choiceList = scenarioState.stringChoices(id);
-          const hasDecision = choiceList !== undefined;
-          return (
-            <>
-              { !!text && (
-                <SetupStepWrapper bulletType={bulletType}>
-                  <CampaignGuideTextComponent text={text} />
-                </SetupStepWrapper>
-              ) }
-              <View style={styles.prompt}>
-                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-                  { checkText }
-                </Text>
-              </View>
-              { map(items, (item, idx) => {
-                const selected = choiceList !== undefined ? (
-                  choiceList[item.code] !== undefined
-                ) : (
-                  selectedChoice[item.code] !== undefined
-                );
-                return (
-                  <CheckListItemComponent
-                    key={idx}
-                    {...item}
-                    selected={selected}
-                    onChoiceToggle={this._onChoiceToggle}
-                    editable={!hasDecision}
-                  />
-                );
-              }) }
-              { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
-                <View style={styles.row}>
-                  <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
-                    { t`None` }
-                  </Text>
-                </View>
-              ) }
-              { !hasDecision && !!button && (
-                <View style={styles.bottomBorder}>
-                  { button }
-                </View>
-              ) }
-              { this.renderSaveButton(hasDecision) }
-            </>
+      <>
+        { !!text && (
+          <SetupStepWrapper bulletType={bulletType}>
+            <CampaignGuideTextComponent text={text} />
+          </SetupStepWrapper>
+        ) }
+        <View style={[styles.prompt, borderStyle]}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+            { checkText }
+          </Text>
+        </View>
+        { map(items, (item, idx) => {
+          const selected = choiceList !== undefined ? (
+            choiceList[item.code] !== undefined
+          ) : (
+            selectedChoice[item.code] !== undefined
           );
-        } }
-      </ScenarioGuideContext.Consumer>
+          return (
+            <CheckListItemComponent
+              key={idx}
+              {...item}
+              selected={selected}
+              onChoiceToggle={this._onChoiceToggle}
+              editable={!hasDecision}
+            />
+          );
+        }) }
+        { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
+          <View style={[styles.row, borderStyle]}>
+            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
+              { t`None` }
+            </Text>
+          </View>
+        ) }
+        { !hasDecision && !!button && (
+          <View style={[styles.bottomBorder, borderStyle]}>
+            { button }
+          </View>
+        ) }
+        { this.renderSaveButton(hasDecision) }
+      </>
     );
   }
 }
@@ -212,11 +205,9 @@ const styles = StyleSheet.create({
     paddingRight: m,
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     padding: s,
     paddingLeft: m,
     paddingRight: m,
@@ -226,7 +217,6 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   nameText: {
     fontWeight: '600',

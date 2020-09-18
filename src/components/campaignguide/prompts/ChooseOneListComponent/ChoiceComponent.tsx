@@ -7,7 +7,7 @@ import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   choice: DisplayChoice;
@@ -20,6 +20,9 @@ interface Props {
 }
 
 export default class ChoiceComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const { onSelect, index } = this.props;
     onSelect(index);
@@ -45,10 +48,12 @@ export default class ChoiceComponent extends React.Component<Props> {
       color,
       noBullet,
     } = this.props;
+    const { borderStyle } = this.context;
     if (editable) {
       return (
         <View style={[
           styles.row,
+          borderStyle,
           index === 0 ? { borderTopWidth: StyleSheet.hairlineWidth } : {},
         ]}>
           <View style={styles.padding}>
@@ -68,7 +73,7 @@ export default class ChoiceComponent extends React.Component<Props> {
     }
     if (noBullet) {
       return (
-        <View style={styles.bottomBorder}>
+        <View style={[styles.bottomBorder, borderStyle]}>
           <BinaryResult
             result={selected}
             bulletType="none"
@@ -87,6 +92,7 @@ export default class ChoiceComponent extends React.Component<Props> {
       </BinaryResult>
     );
   }
+
   render() {
     const {
       editable,
@@ -108,7 +114,6 @@ const styles = StyleSheet.create({
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'row',
   },
   padding: {
@@ -121,7 +126,6 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   bullet: {
     marginRight: m,
