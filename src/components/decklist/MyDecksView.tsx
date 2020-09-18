@@ -15,6 +15,7 @@ import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -31,6 +32,9 @@ interface State {
 }
 
 class MyDecksView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
