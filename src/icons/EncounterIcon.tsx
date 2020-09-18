@@ -8,6 +8,7 @@ import DreamEatersIcon from './DreamEatersIcon';
 import DunwichIcon from './DunwichIcon';
 import ForgottenIcon from './ForgottenIcon';
 import StandaloneIcon from './StandaloneIcon';
+import InnsmouthIcon from './InnsmouthIcon';
 
 interface Props {
   encounter_code: string;
@@ -19,8 +20,13 @@ export default class EncounterIcon extends React.PureComponent<Props> {
   arkhamIcon(name: string, size: number, color: string) {
     return (<ArkhamIcon name={name} size={size} color={color} />);
   }
+
   coreIcon(name: string, size: number, color: string) {
     return (<CoreSetIcon name={name} size={size} color={color} />);
+  }
+
+  innsmouthIcon(name: string, size: number, color: string) {
+    return (<InnsmouthIcon name={name} size={size} color={color} />);
   }
 
   dunwichIcon(name: string, size: number, color: string) {
@@ -405,6 +411,33 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'pnr':
       case 'point_of_no_return':
         return this.dreamIcon('point_of_no_return', size, color);
+      case 'in_too_deep':
+      case 'itd':
+      case 'devils_reef':
+      case 'def':
+      case 'hhg':
+      case 'horror_in_high_gear':
+      case 'a_light_in_the_fog':
+      case 'lif':
+      case 'lair_of_dagon':
+      case 'lod':
+      case 'itm':
+      case 'into_the_maelstrom':
+      case 'tic':
+      case 'the_innsmouth_conspiracy':
+        return this.innsmouthIcon('tic', size, color);
+      case 'agents_of_dagon':
+      case 'agents_of_hydra':
+      case 'locals':
+      case 'disappearance_of_elina_harper':
+      case 'fog_over_innsmouth':
+      case 'shattered_memories':
+      case 'syzygy':
+      case 'flooded_caves':
+      case 'grotto_of_despair':
+      case 'malfunction':
+        return this.innsmouthIcon(encounter_code, size, color);
+
       default:
         return this.coreIcon('core', size, color);
     }
