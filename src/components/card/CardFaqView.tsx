@@ -22,7 +22,7 @@ import { showCard } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
-import { m } from '@styles/space';
+import space, { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 export interface CardFaqProps {
@@ -147,9 +147,11 @@ class CardFaqView extends React.Component<Props, State> {
               ) }
             </View>
             { !!lastUpdated && (
-              <Text style={typography.small}>
-                { t`Last Updated: ${lastUpdated}` }
-              </Text>
+              <View style={space.marginTopS}>
+                <Text style={typography.text}>
+                  { t`Last Updated: ${lastUpdated}` }
+                </Text>
+              </View>
             ) }
           </View>
         ) }

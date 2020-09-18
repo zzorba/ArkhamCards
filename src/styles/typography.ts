@@ -64,13 +64,13 @@ export default StyleSheet.create({
     color: COLORS.D10,
   },
   text: {
-    fontFamily: 'System',
+    fontFamily: 'Alegreya-Regular',
     fontSize: 18 * sizeScale,
     lineHeight: 22 * sizeScale,
     color: COLORS.darkText,
   },
   small: {
-    fontFamily: 'System',
+    fontFamily: 'Alegreya-Regular',
     fontSize: SMALL_FONT_SIZE,
     lineHeight: 18 * sizeScale,
     color: COLORS.darkText,

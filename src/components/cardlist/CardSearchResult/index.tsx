@@ -392,7 +392,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         styles.rowBorder,
         borderStyle,
         {
-          minHeight: rowHeight(fontScale),
+          height: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
         !onDeckCountChange ? styles.rowPadding : {},
@@ -443,7 +443,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           styles.rowBorder,
           borderStyle,
           {
-            minHeight: rowHeight(fontScale),
+            height: rowHeight(fontScale),
             backgroundColor: backgroundColor || colors.background,
           },
           !onDeckCountChange ? styles.rowPadding : {},
@@ -465,7 +465,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           styles.rowBorder,
           borderStyle,
           {
-            minHeight: rowHeight(fontScale),
+            height: rowHeight(fontScale),
             backgroundColor: backgroundColor || colors.background,
           },
           !onDeckCountChange ? styles.rowPadding : {},

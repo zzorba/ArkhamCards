@@ -102,14 +102,14 @@ function deckToSections(
     if (assetCount > 0) {
       result.push({
         id: `assets${special ? '-special' : ''}`,
-        title: t`Assets (${assetCount})`,
+        subTitle: t`Assets (${assetCount})`,
         data: [],
       });
     }
     forEach(assets, (subAssets, idx) => {
       result.push({
         id: `asset${special ? '-special' : ''}-${idx}`,
-        subTitle: subAssets.type,
+        title: subAssets.type,
         data: map(subAssets.data, c => {
           return {
             ...c,
@@ -140,7 +140,7 @@ function deckToSections(
       const count = sumBy(cardIds, c => c.quantity);
       result.push({
         id: `${localizedName}-${special ? '-special' : ''}`,
-        title: `${localizedName} (${count})`,
+        subTitle: `${localizedName} (${count})`,
         data: map(cardIds, c => {
           return {
             ...c,
