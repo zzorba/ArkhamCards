@@ -33,7 +33,6 @@ const style = StyleSheet.create({
     flex: 0,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -93,7 +92,7 @@ class SettingsButton extends Component<Props> {
       descriptionStyle = {},
       description = null,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, disabledStyle } = this.context;
 
     return (
       <TouchableOpacity
@@ -128,7 +127,7 @@ class SettingsButton extends Component<Props> {
           ) : null}
           {(disabled) ? (
             <View
-              style={[style.defaultDisabledOverlayStyle, (disabledOverlayStyle) ? disabledOverlayStyle : null]}
+              style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabledOverlayStyle) ? disabledOverlayStyle : null]}
             />
           ) : null}
         </View>

@@ -41,7 +41,6 @@ const style = StyleSheet.create({
     textAlign: 'right',
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -166,7 +165,7 @@ class SettingsEditText extends Component<Props> {
       titleProps, titleStyle, valueProps, valueStyle, valuePlaceholder, valueFormat,
       disabledOverlayStyle, touchableProps, value,
     } = this.props;
-    const { backgroundStyle, colors } = this.context;
+    const { backgroundStyle, colors, disabledStyle } = this.context;
     return (!disabled) ? (
       <TouchableOpacity
         {...touchableProps}
@@ -205,7 +204,7 @@ class SettingsEditText extends Component<Props> {
         >
           {(isFunction(valueFormat) ? valueFormat(value) : value) || valuePlaceholder}
         </Text>
-        <View style={[style.defaultDisabledOverlayStyle, disabledOverlayStyle]} />
+        <View style={[style.defaultDisabledOverlayStyle, disabledStyle, disabledOverlayStyle]} />
       </View>
     );
   }

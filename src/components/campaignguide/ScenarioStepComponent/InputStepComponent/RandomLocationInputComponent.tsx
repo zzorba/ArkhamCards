@@ -78,9 +78,12 @@ export default class RandomLocationInputComponent extends React.Component<Props,
   _renderCards = (cards: Card[], choices: number[]) => {
     const { input } = this.props;
     const selectedCards = flatMap(choices, idx => cards[idx] || []);
+    const {
+      style: { borderStyle },
+    } = this.context;
     if (!input.multiple) {
       return (
-        <View style={styles.wrapper}>
+        <View style={[styles.wrapper, borderStyle]}>
           <PickerStyleButton
             id="single"
             title={t`Random location`}
@@ -106,7 +109,7 @@ export default class RandomLocationInputComponent extends React.Component<Props,
           disabled={choices.length === 0}
           onPress={this._clearLocations}
         />
-        <View style={selectedCards.length ? styles.wrapper : {}}>
+        <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
           { map(selectedCards, card => (
             <CardSearchResult
               key={card.code}
@@ -141,7 +144,6 @@ export default class RandomLocationInputComponent extends React.Component<Props,
 const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   container: {
     marginTop: m,

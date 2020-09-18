@@ -5,8 +5,7 @@ import FastImage from 'react-native-fast-image';
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import Card from '@data/Card';
 import { m } from '@styles/space';
-import COLORS from '@styles/colors';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
@@ -20,11 +19,15 @@ interface Props {
 }
 
 export default class LocationCard extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _renderCard = (card: Card, back: boolean) => {
+    const { colors, borderStyle, typography } = this.context;
     const image = back ? card.backimagesrc : card.imagesrc;
     if (!image) {
       return (
-        <View style={styles.singleCardWrapper}>
+        <View style={[styles.singleCardWrapper, borderStyle, { backgroundColor: colors.faction.mythos.background }]}>
           <Text style={typography.text}>{ card.name }</Text>
         </View>
       );
@@ -105,9 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: COLORS.divider,
     padding: m,
-    backgroundColor: COLORS.faction.mythos.background,
     width: '100%',
     height: '100%',
     borderRadius: 8,

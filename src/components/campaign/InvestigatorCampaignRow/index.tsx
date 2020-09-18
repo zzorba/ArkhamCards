@@ -15,9 +15,9 @@ import InvestigatorRow from '@components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card, { CardsMap } from '@data/Card';
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import PickerStyleButton from '@components/core/PickerStyleButton';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -38,6 +38,9 @@ interface Props {
 }
 
 export default class InvestigatorCampaignRow extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onCardPress = (card: Card) => {
     const { componentId } = this.props;
     showCard(componentId, card.code, card, true);
@@ -73,6 +76,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       totalXp,
       showDeckUpgrade,
     } = this.props;
+    const { typography } = this.context;
     if (deck) {
       return (
         <DeckXpSection

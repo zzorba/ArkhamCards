@@ -5,7 +5,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Switch from '@components/core/Switch';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { ChaosBag, ChaosTokenValue, SpecialTokenValue } from '@app_constants';
 import COLORS from '@styles/colors';
 import SkillOddsRow from './SkillOddsRow';
@@ -69,6 +68,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
 
   renderElderSignOptions(elderSignEffect: InvestigatorElderSign) {
     const { counterValue, switchValue } = this.state;
+    const { borderStyle, typography } = this.context;
     switch (elderSignEffect.type) {
       case 'constant':
         return null;
@@ -85,7 +85,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
         );
       case 'switch':
         return (
-          <View style={styles.skillRow}>
+          <View style={[styles.skillRow, borderStyle]}>
             <View style={styles.row}>
               <View style={styles.elderSignBox}>
                 <ArkhamIcon
@@ -157,7 +157,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
       testDifficulty,
       chaosBag,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, typography } = this.context;
     const willpower = investigator.skill_willpower || 0;
     const intellect = investigator.skill_intellect || 0;
     const combat = investigator.skill_combat || 0;
@@ -231,6 +231,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

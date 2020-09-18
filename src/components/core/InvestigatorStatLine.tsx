@@ -10,7 +10,6 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
 import { TINY_PHONE } from '@styles/sizes';
 import { isBig, s, xs } from '@styles/space';
-import typography from '@styles/typography';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -18,7 +17,7 @@ interface Props {
 }
 
 export default function InvestigatorStatLine({ investigator }: Props) {
-  const { fontScale, colors } = useContext(StyleContext);
+  const { fontScale, colors, typography } = useContext(StyleContext);
   const ICON_SIZE = fontScale * (isBig ? 1.2 : 1.0) * 26;
   const willpower = investigator.skill_willpower || 0;
   const intellect = investigator.skill_intellect || 0;

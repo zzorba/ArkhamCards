@@ -16,8 +16,8 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import Card from '@data/Card';
 import { combineQueries, where } from '@data/query';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -43,6 +43,9 @@ interface State {
 }
 
 class CardSelectorView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -75,11 +78,12 @@ class CardSelectorView extends React.Component<Props, State> {
   _render = (cards: Card[], loading: boolean) => {
     const { uniqueName } = this.props;
     const { selection, searchTerm } = this.state;
+    const { colors } = this.context;
     if (loading) {
       return (
         <ActivityIndicator
           style={space.paddingM}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />

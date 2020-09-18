@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import AppIcon from '@icons/AppIcon';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -34,7 +33,7 @@ export default class SearchResultButton extends React.Component<Props> {
 
   render() {
     const { title, onPress } = this.props;
-    const { colors, backgroundStyle, fontScale } = this.context;
+    const { colors, backgroundStyle, fontScale, typography } = this.context;
     const height = 18 * fontScale + 20;
     return (
       <View style={[styles.wrapper, backgroundStyle]}>

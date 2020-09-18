@@ -23,8 +23,7 @@ import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -49,6 +48,9 @@ interface State {
 }
 
 export default class UpgradeDeckRow extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   deckUpgradeComponent: React.RefObject<DeckUpgradeComponent> = React.createRef<DeckUpgradeComponent>();
 
   static choiceId(stepId: string, investigator: Card) {
@@ -259,6 +261,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
 
   renderXpSection(choices?: NumberChoices) {
     const { investigator, editable } = this.props;
+    const { typography } = this.context;
     const xp = this.xp(choices);
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
@@ -305,6 +308,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       campaignLog,
       editable,
     } = this.props;
+    const { colors, typography } = this.context;
     const physicalAdjust = this.physicalAdjust(choices);
     const mentalAdjust = this.mentalAdjust(choices);
     const killedAdjust = this.killedAdjust(choices);
@@ -338,7 +342,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <Text style={[typography.text]}>
                 { physicalDeltaString }
                 { !locked && (
-                  <Text style={[typography.text, { color: COLORS.lightText }]}>
+                  <Text style={[typography.text, { color: colors.lightText }]}>
                     { t` (New Total: ${totalPhysical})` }
                   </Text>
                 ) }
@@ -363,7 +367,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
             { !locked ? (
               <Switch
                 value={this.state.killed}
-                customColor={COLORS.faction[investigator.factionCode()].background}
+                customColor={colors.faction[investigator.factionCode()].background}
                 onValueChange={this._toggleKilled}
                 disabled={this.state.insane}
               />
@@ -371,7 +375,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <MaterialCommunityIcons
                 name="check"
                 size={18}
-                color={COLORS.darkText}
+                color={colors.darkText}
               />
             ) }
           </BasicListRow>
@@ -386,7 +390,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <Text style={typography.text}>
                 { mentalDeltaString }
                 { !locked && (
-                  <Text style={[typography.text, { color: COLORS.lightText }]}>
+                  <Text style={[typography.text, { color: colors.lightText }]}>
                     { t` (New Total: ${totalMental})` }
                   </Text>
                 ) }
@@ -410,7 +414,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
             </Text>
             { !locked ? (
               <Switch
-                customColor={COLORS.faction[investigator.factionCode()].background}
+                customColor={colors.faction[investigator.factionCode()].background}
                 value={this.state.insane}
                 onValueChange={this._toggleInsane}
                 disabled={this.state.killed}
@@ -419,7 +423,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
               <MaterialCommunityIcons
                 name="check"
                 size={18}
-                color={COLORS.darkText}
+                color={colors.darkText}
               />
             ) }
           </BasicListRow>

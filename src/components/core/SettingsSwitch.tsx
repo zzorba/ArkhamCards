@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
-import typography from '@styles/typography';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -16,7 +15,7 @@ interface Props {
 }
 
 export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
-  const { gameFont, colors } = useContext(StyleContext);
+  const { gameFont, colors, typography } = useContext(StyleContext);
   return (
     <SwitchRow
       title={title}
@@ -26,7 +25,6 @@ export default function SettingsSwitch({ title, description, onValueChange, valu
       }}
       containerStyle={{
         ...styles.switch,
-        backgroundColor: colors.background,
         borderColor: colors.divider,
       }}
       descriptionStyle={typography.label}

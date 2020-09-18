@@ -17,8 +17,8 @@ import CardResultList from '@components/cardlist/CardSearchResultsComponent/Card
 import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface DeckChecklistProps {
   investigator: string;
@@ -41,6 +41,9 @@ interface State {
   sort: SortType;
 }
 class DeckChecklistView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(): Options {
     return {
       topBar: {
@@ -134,6 +137,7 @@ class DeckChecklistView extends React.Component<Props, State> {
 
   _renderHeader = () => {
     const { checklist } = this.props;
+    const { typography } = this.context;
     return (
       <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
         <TouchableOpacity onPress={this._clearChecklist} disabled={!checklist.size}>

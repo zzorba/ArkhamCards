@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { CampaignCycleCode, CampaignDifficulty } from '@actions/types';
 import { CAMPAIGN_COLORS, difficultyString } from '@components/campaign/constants';
-import typography from '@styles/typography';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -21,7 +20,7 @@ export default function CampaignSummaryComponent({
   difficulty,
   inverted,
 }: Props) {
-  const { backgroundStyle, borderStyle, colors } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
   const difficultyText = difficulty && difficultyString(difficulty);
   const color = CAMPAIGN_COLORS[campaignGuide.campaignCycleCode() as CampaignCycleCode];
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
 import Switch from '@components/core/Switch';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   value: string;
@@ -15,34 +16,22 @@ interface Props {
   onSelectChanged: (value: string, selected: boolean) => void;
 }
 
-export default class SelectRow extends React.Component<Props> {
-  _onCheckPress = () => {
-    const {
-      value,
-      selected,
-      onSelectChanged,
-    } = this.props;
+export default function SelectRow({ value, selected, onSelectChanged }: Props) {
+  const { typography, borderStyle } = useContext(StyleContext);
+  const onCheckPress = () => {
     onSelectChanged(value, !selected);
   };
-
-  render() {
-    const {
-      value,
-      selected,
-    } = this.props;
-
-    return (
-      <View style={[styles.row, space.paddingRightS]}>
-        <Text style={[styles.title, space.marginLeftS]}>
-          { value }
-        </Text>
-        <Switch
-          value={selected}
-          onValueChange={this._onCheckPress}
-        />
-      </View>
-    );
-  }
+  return (
+    <View style={[styles.row, borderStyle, space.paddingRightS]}>
+      <Text style={[styles.title, typography.black, space.marginLeftS]}>
+        { value }
+      </Text>
+      <Switch
+        value={selected}
+        onValueChange={onCheckPress}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -52,12 +41,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderColor: COLORS.divider,
   },
   title: {
     fontSize: 20,
     fontFamily: 'System',
     flex: 1,
-    color: COLORS.darkText,
   },
 });

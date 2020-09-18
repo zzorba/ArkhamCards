@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,9 +8,7 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import typography from '@styles/typography';
 import { xs, s, isBig } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -23,38 +21,36 @@ interface Props {
   color?: string;
 }
 export default function NavButton({ disabled, text, onPress, color, indent, children, noBorder }: Props) {
+  const { fontScale, borderStyle, typography } = useContext(StyleContext);
   return (
-    <StyleContext.Consumer>
-      { ({ fontScale }) => (
-        <TouchableOpacity onPress={onPress} disabled={!!disabled}>
+    <TouchableOpacity onPress={onPress} disabled={!!disabled}>
+      <View style={[
+        styles.container,
+        indent ? styles.indentedContainer : {},
+        noBorder ? {} : styles.bottomBorder,
+        noBorder ? {} : borderStyle,
+      ]}>
+        { text ? (
           <View style={[
-            styles.container,
-            indent ? styles.indentedContainer : {},
-            noBorder ? {} : styles.bottomBorder,
+            styles.text,
+            { minHeight: 22 + 18 * fontScale * (isBig ? 1.2 : 1.0) },
           ]}>
-            { text ? (
-              <View style={[
-                styles.text,
-                { minHeight: 22 + 18 * fontScale * (isBig ? 1.2 : 1.0) },
-              ]}>
-                <Text style={typography.text} numberOfLines={1}>
-                  { text }
-                </Text>
-              </View>
-            ) : <View style={styles.flex}>{ children }</View> }
-            <View style={styles.icon}>
-              { !disabled && (
-                <MaterialIcons
-                  name="keyboard-arrow-right"
-                  size={30}
-                  color={color || 'rgb(0, 122,255)'}
-                />
-              ) }
-            </View>
+            <Text style={typography.text} numberOfLines={1}>
+              { text }
+            </Text>
           </View>
-        </TouchableOpacity>
-      ) }
-    </StyleContext.Consumer>
+        ) : <View style={styles.flex}>{ children }</View> }
+        <View style={styles.icon}>
+          { !disabled && (
+            <MaterialIcons
+              name="keyboard-arrow-right"
+              size={30}
+              color={color || 'rgb(0, 122,255)'}
+            />
+          ) }
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 }
 
@@ -69,7 +65,6 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   indentedContainer: {
     paddingLeft: 18,

@@ -31,7 +31,6 @@ import { Deck, Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/Card';
 import { getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
@@ -298,7 +297,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       networkType,
       isConnected,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, typography } = this.context;
     const {
       saving,
       deckName,

@@ -15,7 +15,6 @@ import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { NavigationProps } from '@components/nav/types';
 import { Campaign, ScenarioResult } from '@actions/types';
 import { getCampaign, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -55,7 +54,7 @@ class CampaignScenarioView extends React.Component<Props> {
   };
 
   renderPendingScenario(scenario: Scenario, idx: number) {
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     return (
       <Text style={[typography.gameFont, styles.disabled, { fontFamily: gameFont }]} key={idx}>
         { scenario.name }
@@ -68,7 +67,7 @@ class CampaignScenarioView extends React.Component<Props> {
       campaign,
       cycleScenarios,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     if (!campaign) {
       return null;
     }

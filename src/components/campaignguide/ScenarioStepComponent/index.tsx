@@ -25,7 +25,6 @@ import InputStepComponent from './InputStepComponent';
 import RuleReminderStepComponent from './RuleReminderStepComponent';
 import StoryStepComponent from './StoryStepComponent';
 import ScenarioStep from '@data/scenario/ScenarioStep';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import CampaignGuide from '@data/scenario/CampaignGuide';
@@ -134,7 +133,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
 
   render() {
     const { step, border } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignGuide, campaignId }: CampaignGuideContextType) => (

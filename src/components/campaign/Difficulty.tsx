@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { difficultyString } from './constants';
 import { CampaignDifficulty } from '@actions/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -12,7 +11,7 @@ interface Props {
 }
 
 export default function Difficulty({ difficulty }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   return (
     <View style={styles.row}>
       <View style={[styles.difficulty, { backgroundColor: colors.L10 }, space.paddingSideXs]}>

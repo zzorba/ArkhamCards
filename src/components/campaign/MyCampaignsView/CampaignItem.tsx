@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -9,40 +9,32 @@ import { Campaign, CUSTOM } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
 }
 
-export default class CampaignItem extends React.Component<Props> {
-  _onPress = () => {
-    const {
-      campaign,
-      onPress,
-    } = this.props;
+export default function CampaignItem({ campaign, onPress }: Props) {
+  const { borderStyle } = useContext(StyleContext);
+  const handleOnPress = () => {
     onPress(campaign.id, campaign);
   };
 
-  render() {
-    const {
-      campaign,
-    } = this.props;
-    return (
-      <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.container}>
-          <CampaignSummaryComponent
-            campaign={campaign}
-            name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
-          />
-          <CampaignInvestigatorRow
-            campaigns={[campaign]}
-          />
-        </View>
-      </TouchableOpacity>
-    );
-  }
+  return (
+    <TouchableOpacity onPress={handleOnPress}>
+      <View style={[styles.container, borderStyle]}>
+        <CampaignSummaryComponent
+          campaign={campaign}
+          name={campaign.cycleCode !== CUSTOM ? campaign.name : undefined}
+        />
+        <CampaignInvestigatorRow
+          campaigns={[campaign]}
+        />
+      </View>
+    </TouchableOpacity>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -51,7 +43,6 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',

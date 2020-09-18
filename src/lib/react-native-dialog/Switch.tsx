@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Platform, StyleSheet, Switch, Text, View, SwitchProps, TextStyle } from 'react-native';
 
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props extends SwitchProps {
   label?: string;
   labelStyle?: TextStyle;
 }
 
-export default class DialogSwitch extends React.PureComponent<Props> {
-  static displayName = 'DialogSwitch';
-
-  render() {
-    const { label, labelStyle, ...otherProps } = this.props;
-    return (
-      <View style={styles.switchWrapper}>
-        <Text style={[styles.label, labelStyle]}>{label}</Text>
-        <Switch {...otherProps} />
-      </View>
-    );
-  }
+export default function DialogSwitch({ label, labelStyle, ...otherProps }: Props) {
+  const { typography } = useContext(StyleContext);
+  return (
+    <View style={styles.switchWrapper}>
+      <Text style={[styles.label, typography.black, labelStyle]}>{label}</Text>
+      <Switch {...otherProps} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -45,13 +42,11 @@ const styles = StyleSheet.create({
       flex: 1,
       paddingRight: 8,
       fontSize: 13,
-      color: COLORS.darkText,
     },
     default: {
       flex: 1,
       paddingRight: 8,
       fontSize: 16,
-      color: COLORS.darkText,
     },
   }),
 });

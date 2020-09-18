@@ -18,7 +18,6 @@ import { NavigationProps } from '@components/nav/types';
 import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
 import { getCampaign, AppState } from '@reducers';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -143,7 +142,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
   };
 
   render() {
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     const {
       scenarioResult,
     } = this.state;

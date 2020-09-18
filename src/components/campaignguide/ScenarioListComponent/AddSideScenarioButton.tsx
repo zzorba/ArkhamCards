@@ -9,8 +9,8 @@ import { AddSideScenarioProps } from '@components/campaignguide/AddSideScenarioV
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -21,6 +21,9 @@ interface Props {
 }
 
 export default class AddSideScenarioButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       componentId,
@@ -115,6 +118,7 @@ export default class AddSideScenarioButton extends React.Component<Props> {
   }
 
   render() {
+    const { typography } = this.context;
     const disabled = !this.canAddScenario();
     return (
       <>

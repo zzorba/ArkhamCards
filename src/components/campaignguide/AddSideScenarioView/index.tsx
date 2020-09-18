@@ -15,7 +15,6 @@ import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps }
 import TabView from '@components/core/TabView';
 import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
@@ -114,6 +113,9 @@ class AddSideScenarioView extends React.Component<Props, State> {
       customXpCost,
       viewRef,
     } = this.state;
+    const {
+      style: { typography },
+    } = this.context;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
       <Dialog

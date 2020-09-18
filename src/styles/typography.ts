@@ -177,4 +177,7 @@ export default StyleSheet.create({
   uppercase: {
     textTransform: 'uppercase',
   },
+  black: {
+    color: COLORS.darkText,
+  },
 });

@@ -50,6 +50,7 @@ export interface ThemeColors {
   };
   health: string;
   sanity: string;
+  disableOverlay: string;
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -71,6 +72,7 @@ export const LIGHT_THEME: ThemeColors = {
   darkText: dark30,
   taboo: 'purple',
   divider: light10,
+  disableOverlay: '#FFFBF299',
   M: medium,
   faction: {
     guardian: {
@@ -162,6 +164,7 @@ export const DARK_THEME: ThemeColors = {
   divider: dark10,
   taboo: 'purple',
   M: medium,
+  disableOverlay: '#24303C99',
   faction: {
     guardian: {
       text: '#5CB4FD',
@@ -196,7 +199,7 @@ export const DARK_THEME: ThemeColors = {
     neutral: {
       text: light20,
       background: dark20,
-      darkBackground: '#888888',
+      darkBackground: '#444444',
       lightBackground: '#292929',
     },
     dual: {
@@ -214,7 +217,7 @@ export const DARK_THEME: ThemeColors = {
     mythos: {
       text: light30,
       background: '#444',
-      darkBackground: '#444444',
+      darkBackground: '#000000',
       lightBackground: '#000000',
     },
   },

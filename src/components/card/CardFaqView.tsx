@@ -22,7 +22,6 @@ import { showCard } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
 import { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -127,30 +126,34 @@ class CardFaqView extends React.Component<Props, State> {
     const faqEntry = head(faqEntries);
     const lastUpdated = faqEntry && faqEntry.fetched && faqEntry.fetched.toISOString().slice(0, 10);
     return (
-      <View>
-        { !!faqError && (
-          <Text style={[typography.text, styles.error]}>
-            { faqError }
-          </Text>
+      <StyleContext.Consumer>
+        { ({ typography }) => (
+          <View>
+            { !!faqError && (
+              <Text style={[typography.text, styles.error]}>
+                { faqError }
+              </Text>
+            ) }
+            <View>
+              { (faqEntry && faqEntry.text) ? (
+                <CardTextComponent
+                  text={faqEntry.text}
+                  onLinkPress={this._linkPressed}
+                />
+              ) : (
+                <Text style={typography.text}>
+                  { faqLoading ? t`Checking for FAQ` : t`No entries at this time.` }
+                </Text>
+              ) }
+            </View>
+            { !!lastUpdated && (
+              <Text style={typography.small}>
+                { t`Last Updated: ${lastUpdated}` }
+              </Text>
+            ) }
+          </View>
         ) }
-        <View>
-          { (faqEntry && faqEntry.text) ? (
-            <CardTextComponent
-              text={faqEntry.text}
-              onLinkPress={this._linkPressed}
-            />
-          ) : (
-            <Text style={typography.text}>
-              { faqLoading ? t`Checking for FAQ` : t`No entries at this time.` }
-            </Text>
-          ) }
-        </View>
-        { !!lastUpdated && (
-          <Text style={typography.small}>
-            { t`Last Updated: ${lastUpdated}` }
-          </Text>
-        ) }
-      </View>
+      </StyleContext.Consumer>
     );
   }
 

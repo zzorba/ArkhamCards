@@ -98,6 +98,9 @@ class StyleProvider extends React.Component<Props, State> {
         borderStyle: {
           borderColor: colors.divider,
         },
+        disabledStyle: {
+          backgroundColor: colors.disableOverlay,
+        },
       }}>
         <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
           { this.props.children }

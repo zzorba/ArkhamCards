@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import StyleContext from '@styles/StyleContext';
-import typography from '@styles/typography';
 import ArkhamIcon from '@icons/ArkhamIcon';
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 }
 
 export default function CardFooterButton({ title, onPress }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   const height = 18 * fontScale + 20;
   return (
     <TouchableOpacity

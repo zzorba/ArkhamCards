@@ -15,7 +15,6 @@ import {
 } from '@app_constants';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
-import typography from '@styles/typography';
 import { isBig, xs, s } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -28,7 +27,6 @@ import { InvestigatorCardsProps } from '@components/cardlist/InvestigatorCardsVi
 import Button from '@components/core/Button';
 import BasicButton from '@components/core/BasicButton';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
 
 import PlayerCardImage from '../PlayerCardImage';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -40,9 +38,6 @@ const BLURRED_ACT = require('../../../../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../../../../assets/blur-agenda.jpeg');
 const PLAYER_BACK = require('../../../../../assets/player-back.png');
 const ENCOUNTER_BACK = require('../../../../../assets/encounter-back.png');
-const PER_INVESTIGATOR_ICON = (
-  <ArkhamIcon name="per_investigator" size={isBig ? 22 : 12} color={COLORS.darkText} />
-);
 const SKILL_ICON_SIZE = isBig ? 26 : 16;
 const MAX_WIDTH = 768;
 
@@ -188,6 +183,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   };
 
   renderType(card: Card) {
+    const { typography } = this.context;
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -205,6 +201,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderMetadata(card: Card) {
+    const { typography } = this.context;
     return (
       <View style={styles.metadataBlock}>
         { this.renderType(card) }
@@ -230,7 +227,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderTestIcons(card: Card) {
-    const { colors, fontScale } = this.context;
+    const { colors, fontScale, typography } = this.context;
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -262,6 +259,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderSlot(card: Card) {
+    const { typography } =this.context;
     if (!card.slot) {
       return null;
     }
@@ -275,6 +273,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderPlaydata(card: Card) {
+    const { colors, typography } = this.context;
     if (card.type_code === 'scenario') {
       return null;
     }
@@ -282,7 +281,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const shroud = num(card.shroud);
     const clues = num(card.clues);
     const perInvestigatorClues = (card.clues && card.clues > 0 && !card.clues_fixed) ?
-      PER_INVESTIGATOR_ICON :
+      <ArkhamIcon name="per_investigator" size={12} color={colors.darkText} /> :
       '';
     return (
       <View style={styles.statsBlock}>
@@ -309,11 +308,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderHealthAndSanity(card: Card) {
+    const { colors, typography } = this.context;
     if (card.type_code === 'enemy') {
       return (
         <Text style={typography.cardText}>
           { `${t`Fight`}: ${num(card.enemy_fight)}. ${t`Health`}: ${num(card.health)}` }
-          { !!card.health_per_investigator && PER_INVESTIGATOR_ICON }
+          { !!card.health_per_investigator && <ArkhamIcon name="per_investigator" size={12} color={colors.darkText} /> }
           { `. ${t`Evade`}: ${num(card.enemy_evade)}. ` }
           { '\n' }
           { `${t`Damage`}: ${num(card.enemy_damage)}. ${t`Horror`}: ${num(card.enemy_horror)}. ` }
@@ -358,7 +358,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       simple,
       width,
     } = this.props;
-    const { colors, backgroundStyle } = this.context;
+    const { colors, backgroundStyle, typography } = this.context;
     if (card.linked_card) {
       return (
         <View key={key}>
@@ -511,7 +511,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     flavorFirst: boolean
   ) {
     const { simple } = this.props;
-    const { colors } = this.context;
+    const { colors, typography } = this.context;
     return (
       <>
         { !!card.text && (

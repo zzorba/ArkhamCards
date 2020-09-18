@@ -4,14 +4,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import AppIcon from '@icons/AppIcon';
 import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
-import typography from '@styles/typography';
 import EncounterIcon from '@icons/EncounterIcon';
 
 interface Props {
   card: Card;
 }
 export default function CardFooterInfo({ card }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   return (
     <View style={[styles.wrapper, { borderColor: colors.L10 }]}>
       <View style={styles.illustrator}>

@@ -14,7 +14,6 @@ import CampaignGuideContext, { CampaignGuideContextType } from '@components/camp
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { ProcessedScenario } from '@data/scenario';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space, { s } from '@styles/space';
 
 interface Props {
@@ -66,7 +65,7 @@ export default class ScenarioButton extends React.Component<Props> {
   renderIcon() {
     const { scenario } = this.props;
     const {
-      style: { fontScale },
+      style: { fontScale, colors },
     } = this.context;
     const iconSize = 24 * fontScale;
     switch (scenario.type) {
@@ -75,7 +74,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="lock"
             size={iconSize}
-            color={COLORS.lightText}
+            color={colors.lightText}
           />
         );
       case 'completed':
@@ -107,7 +106,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="close-box-outline"
             size={iconSize}
-            color={COLORS.lightText}
+            color={colors.lightText}
           />
         );
     }
@@ -116,12 +115,12 @@ export default class ScenarioButton extends React.Component<Props> {
   renderContent() {
     const { scenario } = this.props;
     const {
-      style: { gameFont },
+      style: { gameFont, colors, typography },
     } = this.context;
     switch (scenario.type) {
       case 'locked':
         return (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.locked]} numberOfLines={2}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont, color: colors.lightText }]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
@@ -180,9 +179,6 @@ const styles = StyleSheet.create({
   },
   skipped: {
     textDecorationLine: 'line-through',
-  },
-  locked: {
-    color: COLORS.lightText,
   },
   playable: {
     textDecorationLine: 'underline',

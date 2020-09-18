@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { DynamicColorIOS, KeyboardAvoidingView, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import AnimatedModal from 'react-native-modal';
 
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 const IOS_MODAL_ANIMATION = {
   from: { opacity: 0, scale: 1.2 },
@@ -22,89 +23,91 @@ interface Props {
   visible?: boolean;
 }
 
-export default class DialogContainer extends React.PureComponent<Props> {
-  render() {
-    const {
-      blurComponentIOS,
-      buttonSeparatorStyle = {},
-      children,
-      contentStyle = {},
-      footerStyle = {},
-      headerStyle = {},
-      blurStyle = {},
-      visible = false,
-      ...otherProps
-    } = this.props;
-    const titleChildrens: React.ReactNode[] = [];
-    const descriptionChildrens: React.ReactNode[] = [];
-    const buttonChildrens: React.ReactNode[] = [];
-    const otherChildrens: React.ReactNode[] = [];
-    React.Children.forEach(children, (child: any) => {
-      if (!child) {
-        return;
+export default function DialogContainer({
+  blurComponentIOS,
+  buttonSeparatorStyle = {},
+  children,
+  contentStyle = {},
+  footerStyle = {},
+  headerStyle = {},
+  blurStyle = {},
+  visible = false,
+  ...otherProps
+}: Props) {
+  const { borderStyle } = useContext(StyleContext);
+  const titleChildrens: React.ReactNode[] = [];
+  const descriptionChildrens: React.ReactNode[] = [];
+  const buttonChildrens: React.ReactNode[] = [];
+  const otherChildrens: React.ReactNode[] = [];
+  React.Children.forEach(children, (child: any) => {
+    if (!child) {
+      return;
+    }
+    if (
+      child.type &&
+      child.type.name === 'DialogTitle' ||
+      child.type.displayName === 'DialogTitle'
+    ) {
+      titleChildrens.push(child);
+    } else if (
+      child.type.name === 'DialogDescription' ||
+      child.type.displayName === 'DialogDescription'
+    ) {
+      descriptionChildrens.push(child);
+    } else if (
+      child.type.name === 'DialogButton' ||
+      child.type.displayName === 'DialogButton'
+    ) {
+      if (Platform.OS === 'ios' && buttonChildrens.length > 0) {
+        buttonChildrens.push(
+          <View style={[styles.buttonSeparator, borderStyle, buttonSeparatorStyle]} />
+        );
       }
-      if (
-        child.type &&
-        child.type.name === 'DialogTitle' ||
-        child.type.displayName === 'DialogTitle'
-      ) {
-        titleChildrens.push(child);
-      } else if (
-        child.type.name === 'DialogDescription' ||
-        child.type.displayName === 'DialogDescription'
-      ) {
-        descriptionChildrens.push(child);
-      } else if (
-        child.type.name === 'DialogButton' ||
-        child.type.displayName === 'DialogButton'
-      ) {
-        if (Platform.OS === 'ios' && buttonChildrens.length > 0) {
-          buttonChildrens.push(
-            <View style={[styles.buttonSeparator, buttonSeparatorStyle]} />
-          );
-        }
-        buttonChildrens.push(child);
-      } else {
-        otherChildrens.push(child);
-      }
-    });
-    return (
-      <AnimatedModal
-        backdropOpacity={0.3}
-        style={styles.modal}
-        isVisible={visible}
-        animationIn={Platform.OS === 'ios' ? IOS_MODAL_ANIMATION : 'zoomIn'}
-        animationOut={'fadeOut'}
-        {...otherProps}
+      buttonChildrens.push(child);
+    } else {
+      otherChildrens.push(child);
+    }
+  });
+  return (
+    <AnimatedModal
+      backdropOpacity={0.3}
+      style={styles.modal}
+      isVisible={visible}
+      animationIn={Platform.OS === 'ios' ? IOS_MODAL_ANIMATION : 'zoomIn'}
+      animationOut={'fadeOut'}
+      {...otherProps}
+    >
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={styles.container}
       >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          style={styles.container}
-        >
-          <View style={[styles.content, contentStyle]}>
-            {Platform.OS === 'ios' && blurComponentIOS}
-            {Platform.OS === 'ios' && !blurComponentIOS && (
-              <View style={[styles.blur, blurStyle]} />
-            )}
-            <View style={[styles.header, headerStyle]}>
-              {titleChildrens}
-              {descriptionChildrens}
-            </View>
-            {otherChildrens}
-            {Boolean(buttonChildrens.length) && (
-              <View style={[styles.footer, footerStyle]}>
-                {buttonChildrens.map((x, i) =>
-                  React.cloneElement(x as any, {
-                    key: `dialog-button-${i}`,
-                  })
-                )}
-              </View>
-            )}
+        <View style={[styles.content, contentStyle]}>
+          {Platform.OS === 'ios' && blurComponentIOS}
+          {Platform.OS === 'ios' && !blurComponentIOS && (
+            <View style={[styles.blur, blurStyle]} />
+          )}
+          <View style={[styles.header, headerStyle]}>
+            {titleChildrens}
+            {descriptionChildrens}
           </View>
-        </KeyboardAvoidingView>
-      </AnimatedModal>
-    );
-  }
+          {otherChildrens}
+          {Boolean(buttonChildrens.length) && (
+            <View style={[
+              styles.footer,
+              borderStyle,
+              footerStyle,
+            ]}>
+              { buttonChildrens.map((x, i) =>
+                React.cloneElement(x as any, {
+                  key: `dialog-button-${i}`,
+                })
+              ) }
+            </View>
+          )}
+        </View>
+      </KeyboardAvoidingView>
+    </AnimatedModal>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -158,7 +161,6 @@ const styles = StyleSheet.create({
     ios: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      borderTopColor: COLORS.divider,
       borderTopWidth: StyleSheet.hairlineWidth,
       height: 46,
     },
@@ -171,7 +173,6 @@ const styles = StyleSheet.create({
   }),
   buttonSeparator: {
     height: '100%',
-    backgroundColor: COLORS.divider,
     width: StyleSheet.hairlineWidth,
   },
 });

@@ -9,8 +9,6 @@ import {
 import { CampaignCycleCode } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import { s, iconSizeScale } from '@styles/space';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -42,9 +40,11 @@ export default class CycleItem extends React.Component<Props> {
       fontScale,
       backgroundStyle,
       borderStyle,
+      disabledStyle,
+      typography,
     } = this.context;
     return (
-      <View style={[styles.campaignRow, backgroundStyle, borderStyle, disabled ? styles.disabled : {}]}>
+      <View style={[styles.campaignRow, backgroundStyle, borderStyle, disabled ? disabledStyle : {}]}>
         <View style={styles.campaignIcon}>
           <EncounterIcon
             encounter_code={packCode}
@@ -105,8 +105,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     flex: 1,
-  },
-  disabled: {
-    backgroundColor: COLORS.disabledOverlay,
   },
 });

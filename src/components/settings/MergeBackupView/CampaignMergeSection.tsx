@@ -7,7 +7,6 @@ import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
 import CampaignMergeItem from './CampaignMergeItem';
 import { Campaign } from '@actions/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -56,7 +55,7 @@ export default class CampaignMergeSection extends React.Component<Props, State> 
   renderHeader() {
     const { title, campaigns, inverted, values } = this.props;
     const { open } = this.state;
-    const { colors, borderStyle } = this.context;
+    const { colors, borderStyle, typography } = this.context;
     const selected = sumBy(campaigns, campaign => {
       if (inverted) {
         return values[campaign.id] ? 0 : 1;

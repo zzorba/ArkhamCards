@@ -12,9 +12,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import space, { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -65,7 +63,7 @@ export default class InvestigatorRow extends React.Component<Props> {
       noFactionIcon,
       superTitle,
     } = this.props;
-    const { backgroundStyle, borderStyle, colors, gameFont } = this.context;
+    const { backgroundStyle, borderStyle, colors, gameFont, typography } = this.context;
     return (
       <View style={[
         styles.wrapper,
@@ -95,7 +93,6 @@ export default class InvestigatorRow extends React.Component<Props> {
             <Text style={[
               superTitle ? typography.gameFont : typography.bigGameFont,
               { fontFamily: gameFont, color: colors.darkText },
-              styles.title,
             ]}>
               { description ? `${investigator.name}: ${description}` : investigator.name }
             </Text>
@@ -181,9 +178,6 @@ const styles = StyleSheet.create({
   },
   buttonColumn: {
     alignSelf: 'flex-start',
-  },
-  title: {
-    color: COLORS.darkText,
   },
   headerColor: {
     height: 16,

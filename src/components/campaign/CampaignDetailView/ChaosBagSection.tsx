@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,9 +10,8 @@ import BasicButton from '@components/core/BasicButton';
 import { ChaosBag } from '@app_constants';
 import NavButton from '@components/core/NavButton';
 import ChaosBagLine from '@components/core/ChaosBagLine';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   chaosBag: ChaosBag;
@@ -20,12 +19,12 @@ interface Props {
   showOddsCalculator: () => void;
 }
 
-export default function ChaosBagSection(props: Props) {
-  const {
-    showChaosBag,
-    chaosBag,
-    showOddsCalculator,
-  } = props;
+export default function ChaosBagSection({
+  showChaosBag,
+  chaosBag,
+  showOddsCalculator,
+}: Props) {
+  const { borderStyle, typography } = useContext(StyleContext);
   return (
     <>
       <NavButton
@@ -43,7 +42,7 @@ export default function ChaosBagSection(props: Props) {
           </View>
         </View>
       </NavButton>
-      <View style={styles.bottomBorder}>
+      <View style={[styles.bottomBorder, borderStyle]}>
         <BasicButton
           title={t`Odds Calculator`}
           onPress={showOddsCalculator}
@@ -56,6 +55,5 @@ export default function ChaosBagSection(props: Props) {
 const styles = StyleSheet.create({
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

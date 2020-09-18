@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import Card from '@data/Card';
 import space from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   card: Card;
@@ -20,6 +20,9 @@ interface Props {
 }
 
 export default class CardUpgradeOption extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _inc = () => {
     const {
       onIncrement,
@@ -41,6 +44,7 @@ export default class CardUpgradeOption extends React.Component<Props> {
       count,
       card,
     } = this.props;
+    const { typography } = this.context;
     const level = card.xp || 0;
     return (
       <View>

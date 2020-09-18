@@ -5,8 +5,8 @@ import { msgid, ngettext } from 'ttag';
 import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ChoiceListItemComponent from '@components/campaignguide/prompts/ChoiceListComponent/ChoiceListItemComponent';
-import COLORS from '@styles/colors';
 import Card from '@data/Card';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   step: XpCountStep;
@@ -14,6 +14,9 @@ interface Props {
 }
 
 export default class XpCountComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onChoiceChange = () => {
     // intentionally empty.
   };
@@ -34,6 +37,7 @@ export default class XpCountComponent extends React.Component<Props> {
   }
   render() {
     const { campaignLog } = this.props;
+    const { colors } = this.context;
     return (
       <>
         { map(campaignLog.investigators(false), (investigator, idx) => {
@@ -44,7 +48,7 @@ export default class XpCountComponent extends React.Component<Props> {
               key={investigator.code}
               code={investigator.code}
               name={investigator.name}
-              color={COLORS.faction[investigator.factionCode()].background}
+              color={colors.faction[investigator.factionCode()].background}
               choices={[{
                 text: ngettext(
                   msgid`${xp} general / ${resupplyPointsString} XP`,

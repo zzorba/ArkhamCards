@@ -15,7 +15,6 @@ import TabooSet from '@data/TabooSet';
 import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { l, m, xs, s } from '@styles/space';
-import typography from '@styles/typography';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardTabooProps {
@@ -39,6 +38,7 @@ export default class CardTabooView extends React.Component<Props> {
   context!: StyleContextType;
 
   renderContent(card: Card, taboo: Card, tabooSets: TabooSetMap) {
+    const { typography } = this.context;
     const tabooSet = taboo.taboo_set_id && tabooSets[taboo.taboo_set_id];
     if (taboo.taboo_placeholder) {
       return null;
@@ -107,7 +107,7 @@ export default class CardTabooView extends React.Component<Props> {
     const {
       id,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     return (
       <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <DbRender name="taboo" getData={this._getData} ids={[id]}>

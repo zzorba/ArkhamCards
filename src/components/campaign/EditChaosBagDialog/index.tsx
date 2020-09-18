@@ -23,7 +23,6 @@ import {
   ChaosBag,
   ChaosTokenType,
 } from '@app_constants';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 
@@ -184,7 +183,7 @@ class EditChaosBagDialog extends React.Component<Props, State> {
     const {
       chaosBag,
     } = this.state;
-    const { backgroundStyle, borderStyle } = this.context;
+    const { backgroundStyle, borderStyle, typography } = this.context;
     const ogChaosBag = this.props.chaosBag;
     return (
       <ScrollView contentContainerStyle={backgroundStyle}>

@@ -13,7 +13,6 @@ import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constant
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const scaleFactor = isBig ? 1.2 : 1.0;
@@ -99,6 +98,7 @@ export default class InvestigatorImage extends React.Component<Props> {
       killedOrInsane,
       border,
     } = this.props;
+    const { colors } = this.context;
     const small = this.small();
     const size = (small ? 65 : 110) * scaleFactor;
     if (!card) {
@@ -112,7 +112,7 @@ export default class InvestigatorImage extends React.Component<Props> {
               <View style={[
                 styles.border,
                 {
-                  borderColor: COLORS.faction.neutral.background,
+                  borderColor: colors.faction.neutral.background,
                   width: size,
                   height: size,
                 },
@@ -130,7 +130,7 @@ export default class InvestigatorImage extends React.Component<Props> {
             {
               width: size,
               height: size,
-              backgroundColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
+              backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
             },
           ]}>
             <Text style={styles.placeholderIcon} allowFontScaling={false}>
@@ -148,7 +148,7 @@ export default class InvestigatorImage extends React.Component<Props> {
             <View style={[
               styles.border,
               {
-                borderColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
+                borderColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
                 width: size,
                 height: size,
               },

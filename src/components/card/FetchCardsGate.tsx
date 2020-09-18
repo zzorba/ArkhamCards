@@ -16,7 +16,6 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { getLangPreference, AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';
-import typography from '@styles/typography';
 import { l, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -148,7 +147,7 @@ class FetchCardsGate extends React.Component<Props> {
     } = this.props;
     return (
       <StyleContext.Consumer>
-        { ({ colors, backgroundStyle }) => {
+        { ({ colors, backgroundStyle, typography }) => {
           if (error) {
             return (
               <View style={[styles.activityIndicatorContainer, backgroundStyle]}>

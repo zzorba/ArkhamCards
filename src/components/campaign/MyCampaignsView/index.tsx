@@ -19,9 +19,9 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from '@reducers';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import { m } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -39,6 +39,9 @@ interface State {
 }
 
 class MyCampaignsView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(): Options {
     return {
       topBar: {
@@ -125,6 +128,7 @@ class MyCampaignsView extends React.Component<Props, State> {
   }
 
   renderConditionalFooter(campaigns: Campaign[]) {
+    const { typography } = this.context;
     const {
       search,
     } = this.state;

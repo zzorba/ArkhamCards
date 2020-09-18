@@ -50,7 +50,6 @@ import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -456,7 +455,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.block}>
@@ -488,6 +487,7 @@ class NewCampaignView extends React.Component<Props, State> {
     const {
       gameFont,
       borderStyle,
+      typography,
     } = this.context;
     return (
       <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
@@ -546,7 +546,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderCampaignLogSection() {
-    const { gameFont, borderStyle } = this.context;
+    const { gameFont, borderStyle, typography } = this.context;
     if (this.isGuided()) {
       return null;
     }
@@ -625,8 +625,8 @@ class NewCampaignView extends React.Component<Props, State> {
       gameFont,
       backgroundStyle,
       borderStyle,
+      typography,
     } = this.context;
-
     const {
       guided,
       deckIds,

@@ -5,7 +5,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import { isBig } from '@styles/space';
 
 import { WithIconName } from './types';
-import COLORS from '@styles/colors';
+import { StyleContextType } from '@styles/StyleContext';
 
 const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   Action: 'action',
@@ -16,17 +16,19 @@ const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   'auto-fail': 'auto_fail',
 };
 
-export default function ArkhamIconNode(
-  node: Node & WithIconName,
-  output: OutputFunction,
-  state: RenderState
-) {
+export default function ArkhamIconNode({ colors }: StyleContextType) {
   return (
-    <ArkhamIcon
-      key={state.key}
-      name={BAD_ICON_NAMES[node.name] || node.name}
-      size={isBig ? 24 : 16}
-      color={COLORS.darkText}
-    />
-  );
+    node: Node & WithIconName,
+    output: OutputFunction,
+    state: RenderState
+  ) => {
+    return (
+      <ArkhamIcon
+        key={state.key}
+        name={BAD_ICON_NAMES[node.name] || node.name}
+        size={isBig ? 24 : 16}
+        color={colors.darkText}
+      />
+    );
+  };
 }

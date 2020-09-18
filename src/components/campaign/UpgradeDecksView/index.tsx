@@ -18,7 +18,6 @@ import Card from '@data/Card';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState } from '@reducers';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import typography from '@styles/typography';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { updateCampaign } from '@components/campaign/actions';
@@ -114,6 +113,7 @@ class UpgradeDecksView extends React.Component<Props> {
       componentId,
       id,
     } = this.props;
+    const { colors } = this.context;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -136,7 +136,7 @@ class UpgradeDecksView extends React.Component<Props> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -155,7 +155,7 @@ class UpgradeDecksView extends React.Component<Props> {
       cards,
       investigators,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     if (!campaign) {
       return null;
     }

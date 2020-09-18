@@ -11,9 +11,7 @@ import BasicButton from '@components/core/BasicButton';
 import { Campaign } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from '@components/core/NavButton';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -32,7 +30,7 @@ export default class ScenarioSection extends React.Component<Props> {
         scenarioResults,
       },
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, typography } = this.context;
 
     if (scenarioResults.length === 0) {
       return (
@@ -60,6 +58,7 @@ export default class ScenarioSection extends React.Component<Props> {
       addScenarioResult,
       viewScenarios,
     } = this.props;
+    const { borderStyle } = this.context;
     return (
       <React.Fragment>
         <NavButton onPress={viewScenarios} noBorder>
@@ -72,7 +71,7 @@ export default class ScenarioSection extends React.Component<Props> {
             <CampaignSummaryComponent campaign={campaign} />
           </View>
         </NavButton>
-        <View style={styles.bottomBorder}>
+        <View style={[styles.bottomBorder, borderStyle]}>
           <BasicButton
             title={t`Record Scenario Results`}
             onPress={addScenarioResult}
@@ -91,6 +90,5 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

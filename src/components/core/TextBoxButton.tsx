@@ -10,9 +10,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import typography from '@styles/typography';
 import { xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props extends TextInputProps {
   value: string;
@@ -29,13 +28,12 @@ interface State {
 }
 
 export default class TextBoxButton extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
-    this.state = {
-      height: 24,
-    };
-  }
+  state = {
+    height: 24,
+  };
 
   _updateSize = (event: LayoutChangeEvent) => {
     this.setState({
@@ -52,6 +50,7 @@ export default class TextBoxButton extends React.Component<Props, State> {
       textStyle = {},
       ...otherProps
     } = this.props;
+    const { colors, typography } = this.context;
     return (
       <View style={styles.container}>
         <TextInput
@@ -63,14 +62,15 @@ export default class TextBoxButton extends React.Component<Props, State> {
           <Text style={[
             typography.text,
             styles.input,
+            { color: colors.lightText },
             textStyle,
             multiline ? { height: this.state.height + 12 } : {},
             crossedOut ? {
               textDecorationLine: 'line-through',
               textDecorationStyle: 'solid',
-              textDecorationColor: COLORS.lightText,
+              textDecorationColor: colors.lightText,
             } : {},
-            value ? { color: COLORS.darkText } : { color: COLORS.lightText },
+            value ? { color: colors.darkText } : { color: colors.lightText },
           ]}
           onLayout={multiline ? this._updateSize : undefined}>
             { value || placeholder }
@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    color: COLORS.lightText,
     width: '100%',
   },
 });

@@ -32,7 +32,6 @@ const style = StyleSheet.create({
     paddingRight: 16,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -89,7 +88,7 @@ class SettingsSwitch extends Component<Props> {
       disabledOverlayStyle, switchWrapperProps, switchWrapperStyle, value,
       trackColor, onValueChange, descriptionProps, descriptionStyle, description,
     } = this.props;
-    const { backgroundStyle, colors } = this.context;
+    const { backgroundStyle, colors, disabledStyle } = this.context;
     return (
       <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
         <View style={style.titleWrapper}>
@@ -109,7 +108,7 @@ class SettingsSwitch extends Component<Props> {
           ) : null}
           {(disabled) ? (
             <View
-              style={[style.defaultDisabledOverlayStyle, (disabled) ? disabledOverlayStyle : null]}
+              style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabled) ? disabledOverlayStyle : null]}
             />
           ) : null}
         </View>

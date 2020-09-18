@@ -14,7 +14,7 @@ import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
 import { getAllPacks, getPackSpoilers, AppState } from '@reducers';
 import space from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   packs: Pack[];
@@ -29,6 +29,9 @@ interface ReduxActionProps {
 type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class SpoilersView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _renderHeader = (): React.ReactElement => {
     return (
       <View style={space.paddingS}>
@@ -47,6 +50,7 @@ class SpoilersView extends React.Component<Props> {
       setPackSpoiler,
       setCyclePackSpoiler,
     } = this.props;
+    const { typography } = this.context;
     if (!packs.length) {
       return (
         <View>

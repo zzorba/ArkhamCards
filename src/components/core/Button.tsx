@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import typography from '@styles/typography';
 import space, { s, xs } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   text?: string;
@@ -34,6 +34,7 @@ export default function Button({
   color = 'default',
   grow,
 }: Props) {
+  const { typography } = useContext(StyleContext);
   let containerStyle: ViewStyle = styles.centerContainer;
   switch (align) {
     case 'left': containerStyle = styles.leftContainer; break;

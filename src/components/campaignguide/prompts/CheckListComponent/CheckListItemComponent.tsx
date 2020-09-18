@@ -4,9 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -37,13 +35,14 @@ export default class CheckListItemComponent extends React.Component<Props> {
       color,
       selected,
     } = this.props;
-    const { gameFont } = this.context;
+    const { gameFont, borderStyle, colors, typography } = this.context;
     if (!editable && !selected) {
       return null;
     }
     return (
       <View style={[
         styles.row,
+        borderStyle,
         space.paddingS,
         space.paddingSideM,
         color ? { backgroundColor: color } : {},
@@ -67,7 +66,7 @@ export default class CheckListItemComponent extends React.Component<Props> {
           <MaterialCommunityIcons
             name="check"
             size={18}
-            color={color ? 'white' : COLORS.darkText}
+            color={color ? 'white' : colors.darkText}
           />
         ) }
       </View>
@@ -81,7 +80,6 @@ const styles = StyleSheet.create({
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -13,12 +13,12 @@ import { DeckMeta, ParsedDeck } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import { CardsMap } from '@data/Card';
-import typography from '@styles/typography';
 import { TINY_PHONE } from '@styles/sizes';
 import COLORS from '@styles/colors';
 import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { m, s, xs } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const SHOW_CHARTS_BUTTON = true;
 
@@ -32,6 +32,9 @@ interface Props {
 }
 
 export default class DeckNavFooter extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _showCardCharts = () => {
     const {
       componentId,
@@ -119,6 +122,7 @@ export default class DeckNavFooter extends React.Component<Props> {
         totalCardCount,
       },
     } = this.props;
+    const { colors, typography } = this.context;
     const cardCountString = ngettext(
       msgid`${normalCardCount} Card (${totalCardCount} Total)`,
       `${normalCardCount} Cards (${totalCardCount} Total)`,
@@ -127,7 +131,7 @@ export default class DeckNavFooter extends React.Component<Props> {
     const xpString = this.xpString();
     return (
       <View style={styles.borderWrapper}>
-        <View style={[styles.wrapper, { backgroundColor: COLORS.faction[investigator.factionCode()].darkBackground }]}>
+        <View style={[styles.wrapper, { backgroundColor: colors.faction[investigator.factionCode()].darkBackground }]}>
           <View style={styles.left}>
             <View style={styles.row}>
               <Text style={[

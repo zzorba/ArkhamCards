@@ -20,7 +20,6 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space, { m, s, xs } from '@styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -93,7 +92,7 @@ class MyDecksComponent extends React.Component<Props> {
       isConnected,
       width,
     } = this.props;
-
+    const { typography } = this.context;
     if (!error && networkType !== NetInfoStateType.none) {
       return null;
     }
@@ -142,7 +141,7 @@ class MyDecksComponent extends React.Component<Props> {
       signedIn,
       width,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, typography } = this.context;
     if (signedIn) {
       return null;
     }

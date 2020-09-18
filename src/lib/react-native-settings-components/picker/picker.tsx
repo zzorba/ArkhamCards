@@ -23,14 +23,12 @@ const style = StyleSheet.create({
     fontSize: 16,
   },
   defaultValueStyle: {
-    color: COLORS.lightText,
     fontSize: 14,
     flex: 0,
     paddingLeft: 8,
     paddingRight: 16,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -185,7 +183,7 @@ class SettingsPicker extends Component<Props, State> {
       widget, widgetStyle,
     } = this.props;
     const { pickerOpen, pickerValue } = this.state;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, colors, disabledStyle } = this.context;
     return (
       <View style={{ width: '100%' }}>
         {(!disabled) ? (
@@ -205,7 +203,7 @@ class SettingsPicker extends Component<Props, State> {
               <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>
                 {title}
               </Text>
-              <Text {...valueProps} style={[style.defaultValueStyle, valueStyle]}>
+              <Text {...valueProps} style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}>
                 {this.generateValStr()}
               </Text>
               { widget && <View style={widgetStyle}>{widget}</View> }
@@ -216,11 +214,11 @@ class SettingsPicker extends Component<Props, State> {
             <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>{title}</Text>
             <Text
               {...valueProps}
-              style={[style.defaultValueStyle, valueStyle]}
+              style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
             >
               {this.generateValStr()}
             </Text>
-            <View style={[style.defaultDisabledOverlayStyle, disabledOverlayStyle]} />
+            <View style={[style.defaultDisabledOverlayStyle, disabledStyle, disabledOverlayStyle]} />
           </View>
         )}
       </View>

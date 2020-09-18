@@ -13,7 +13,7 @@ import SettingsItem from './SettingsItem';
 import { t } from 'ttag';
 import { logout, login } from '@actions';
 import { AppState } from '@reducers';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   settings?: boolean;
@@ -32,6 +32,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 class LoginButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _logOutPressed = () => {
     Alert.alert(
       t`Are you sure you want to sign out?`,
@@ -51,12 +54,12 @@ class LoginButton extends React.Component<Props> {
       loading,
       login,
     } = this.props;
-
+    const { colors } = this.context;
     if (loading) {
       return (
         <ActivityIndicator
           style={[{ height: 60 }]}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="small"
           animating
         />
