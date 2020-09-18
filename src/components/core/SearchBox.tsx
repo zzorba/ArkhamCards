@@ -9,6 +9,7 @@ import { Input } from 'react-native-elements';
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import space from '@styles/space';
 
 export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
@@ -24,34 +25,59 @@ export default class SearchBox extends React.Component<Props> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
+  _clear = () => {
+    this.props.onChangeText('');
+  };
+
+  renderClearButton(rightPadding?: boolean) {
+    const { value } = this.props;
+    if (!value) {
+      return undefined;
+    }
+    return (
+      <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={this._clear}>
+        <View style={styles.closeIcon}>
+          <AppIcon name="dismiss" size={18} color={COLORS.D20} />
+        </View>
+      </TouchableOpacity>
+    );
+  }
   renderToggleButton() {
     const {
       toggleAdvanced,
       advancedOpen,
+      value,
     } = this.props;
     if (!toggleAdvanced) {
-      return undefined;
+      return (
+        <View style={styles.rightButtons}>
+          { this.renderClearButton() }
+        </View>
+      );
     }
     return (
-      <TouchableOpacity style={styles.toggleButton} onPress={toggleAdvanced}>
-        { advancedOpen ? (
-          <View style={[styles.icon, { backgroundColor: COLORS.D10 }] }>
-            <AppIcon
-              name="dismiss"
-              size={22}
-              color={COLORS.L10}
-            />
-          </View>
-        ) : (
-          <View style={[styles.icon, { backgroundColor: COLORS.L10 }] }>
-            <AppIcon
-              name="dots"
-              size={24}
-              color={COLORS.D10}
-            />
-          </View>
-        ) }
-      </TouchableOpacity>
+      <View style={styles.rightButtons}>
+        { this.renderClearButton(true) }
+        <TouchableOpacity onPress={toggleAdvanced}>
+          { advancedOpen ? (
+            <View style={[styles.closeIcon, { backgroundColor: COLORS.D10 }] }>
+              <AppIcon
+                name="dismiss"
+                size={22}
+                color={COLORS.L10}
+              />
+            </View>
+          ) : (
+            <View style={[styles.icon, { backgroundColor: COLORS.L10 }] }>
+              <AppIcon
+                name="dots"
+                size={24}
+                color={COLORS.D10}
+              />
+            </View>
+          ) }
+        </TouchableOpacity>
+      </View>
     );
   }
 
@@ -66,9 +92,10 @@ export default class SearchBox extends React.Component<Props> {
 
     return (
       <Input
-        clearButtonMode="always"
+        clearButtonMode="never"
         autoCorrect={false}
         autoCapitalize="none"
+        multiline={false}
         containerStyle={[styles.container, borderStyle, { backgroundColor: colors.L20 }, !toggleAdvanced ? styles.underline : {}]}
         inputContainerStyle={[
           styles.searchInput,
@@ -85,6 +112,7 @@ export default class SearchBox extends React.Component<Props> {
           color: colors.darkText,
           textAlignVertical: 'center',
         }}
+        underlineColorAndroid="rgba(0,0,0,0)"
         allowFontScaling={false}
         onChangeText={onChangeText}
         placeholder={placeholder}
@@ -92,9 +120,7 @@ export default class SearchBox extends React.Component<Props> {
         leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
         rightIcon={this.renderToggleButton()}
         rightIconContainerStyle={{
-          position: 'absolute',
-          right: -3,
-          top: -5 ,
+          marginRight: -13,
         }}
         value={value}
       />
@@ -132,7 +158,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     fontFamily: 'System',
     fontSize: 18,
-    lineHeight: 22,
+    lineHeight: 24,
   },
   icon: {
     width: 36,
@@ -143,6 +169,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleButton: {
+  },
+  rightButtons: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
     marginLeft: 8,
+  },
+  closeIcon: {
+    width: 24,
+    height: 36,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

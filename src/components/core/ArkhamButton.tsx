@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
 
+import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -41,7 +41,7 @@ export default class ArkhamButton extends React.Component<Props> {
     const height = 18 * fontScale + 20;
     return (
       <View style={[styles.wrapper, backgroundStyle]}>
-        <RectButton
+        <Ripple
           style={[
             styles.buttonStyle, {
               backgroundColor: colors.M,
@@ -50,7 +50,6 @@ export default class ArkhamButton extends React.Component<Props> {
               paddingLeft: height / 4,
             },
           ]}
-          underlayColor={colors.L20}
           rippleColor={colors.L10}
           onPress={onPress}
         >
@@ -60,7 +59,7 @@ export default class ArkhamButton extends React.Component<Props> {
               { title }
             </Text>
           </View>
-        </RectButton>
+        </Ripple>
       </View>
     );
   }

@@ -160,10 +160,10 @@ export default class App {
         translucent: true,
       },
       bottomTab: {
-        iconColor: darkMode ? '#bbb' : '#444',
-        textColor: darkMode ? '#eee' : '#000',
-        selectedIconColor: COLORS.lightBlue,
-        selectedTextColor: COLORS.lightBlue,
+        iconColor: COLORS.M,
+        textColor: COLORS.M,
+        selectedIconColor: COLORS.D30,
+        selectedTextColor: COLORS.D30,
       },
     };
     Navigation.setDefaultOptions(defaultOptions);

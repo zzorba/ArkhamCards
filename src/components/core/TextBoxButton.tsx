@@ -84,8 +84,6 @@ export default class TextBoxButton extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: xs,
-    borderBottomWidth: 1,
-    borderColor: '#a8a8a8',
     overflow: 'hidden',
     marginBottom: xs,
   },

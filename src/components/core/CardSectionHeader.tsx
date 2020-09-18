@@ -10,6 +10,7 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
+import Ripple from '@lib/react-native-material-ripple';
 import Card from '@data/Card';
 import { m, s, xs, iconSizeScale } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -32,8 +33,8 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
   if (section.placeholder) {
     return m;
   }
-  if (section.subTitle) {
-    return fontScale * 20 + 6 * 2;
+  if (section.subTitle || section.title) {
+    return fontScale * 20 + 8 * 2;
   }
   return fontScale * 22 + (section.superTitle ? s : xs) * 2;
 }
@@ -45,37 +46,29 @@ export default class CardSectionHeader extends React.Component<Props> {
   renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
     const { colors, borderStyle, fontScale, typography } = this.context;
     const {
-      section: {
-        superTitleIcon,
-      },
+      section,
     } = this.props;
     const SMALL_EDIT_ICON_SIZE = 30 * iconSizeScale * fontScale;
     return (
-      <View style={[
-        styles.superHeaderRow,
-        borderStyle,
-        {
-          backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
-        },
-      ]}>
+      <>
         <View style={styles.superHeaderPadding}>
-          <Text style={[typography.text, styles.superHeaderText]}>
+          <Text style={[typography.cardName, styles.superHeaderText]}>
             { superTitle }
           </Text>
         </View>
         { !noIcon && (
           <View style={[
             { width: SMALL_EDIT_ICON_SIZE, height: SMALL_EDIT_ICON_SIZE },
-            superTitleIcon ? { marginRight: xs } : {},
+            section.superTitleIcon ? { marginRight: xs } : {},
           ]}>
             <MaterialIcons
-              name={superTitleIcon || 'keyboard-arrow-right'}
+              name={section.superTitleIcon || 'keyboard-arrow-right'}
               color="#FFF"
               size={SMALL_EDIT_ICON_SIZE}
             />
           </View>
         ) }
-      </View>
+      </>
     );
   }
 
@@ -87,7 +80,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     } = this.props;
     if (section.placeholder) {
       return (
-        <View style={[styles.placeholder, backgroundStyle]} />
+        <View style={[styles.placeholder, backgroundStyle, { height: cardSectionHeaderHeight(section, fontScale)}]} />
       );
     }
     if (section.superTitle) {
@@ -95,23 +88,35 @@ export default class CardSectionHeader extends React.Component<Props> {
         return null;
       }
       if (section.onPress) {
-        if (Platform.OS === 'ios' || !TouchableNativeFeedback.canUseNativeForeground()) {
-          return (
-            <TouchableOpacity onPress={section.onPress}>
-              { this.renderSuperTitle(investigator, section.superTitle) }
-            </TouchableOpacity>
-          );
-        }
         return (
-          <TouchableNativeFeedback
+          <Ripple
             onPress={section.onPress}
-            useForeground
+            style={[
+              styles.superHeaderRow,
+              borderStyle,
+              {
+                height: cardSectionHeaderHeight(section, fontScale),
+                backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
+              },
+            ]}
+            rippleColor={colors.faction[investigator.factionCode()].text}
           >
             { this.renderSuperTitle(investigator, section.superTitle) }
-          </TouchableNativeFeedback>
+          </Ripple>
         );
       }
-      return this.renderSuperTitle(investigator, section.superTitle, true);
+      return (
+        <View style={[
+          styles.superHeaderRow,
+          borderStyle,
+          {
+            height: cardSectionHeaderHeight(section, fontScale),
+            backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
+          },
+        ]}>
+          { this.renderSuperTitle(investigator, section.superTitle, true) }
+        </View>
+      );
     }
     if (section.subTitle) {
       return (
@@ -132,9 +137,14 @@ export default class CardSectionHeader extends React.Component<Props> {
 
     if (section.title) {
       return (
-        <View style={[styles.headerRow, borderStyle, {
-          backgroundColor: colors.L20,
-        }]}>
+        <View style={[
+          styles.subHeaderRow,
+          borderStyle,
+          {
+            backgroundColor: colors.L20,
+            height: cardSectionHeaderHeight(section, fontScale),
+          },
+        ]}>
           <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.title }
           </Text>
@@ -173,13 +183,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   subHeaderText: {
-    marginTop: 6,
+    marginTop: 2,
   },
   headerRow: {
     paddingLeft: m,
     paddingRight: s,
-    paddingTop: xs,
-    paddingBottom: xs,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

@@ -601,7 +601,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
               { isFirst && !simple && this.renderCardFooter(card) }
             </View>
           </View>
-          { isFirst && !simple && <CardFooterButton icon="faq" title={t`FAQ`} onPress={this._showFaq} /> }
+          { isFirst && !simple && (
+            <CardFooterButton
+              onPressFaq={this._showFaq}
+              onPressTaboo={
+                (card.taboo_set_id === 0 || card.taboo_placeholder) ? this._showTaboo : undefined
+              }
+            />
+          ) }
         </View>
       </View>
     );
