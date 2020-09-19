@@ -177,13 +177,13 @@ class SettingsView extends React.Component<Props> {
                 title={t`Swipe between card results`}
                 value={!showCardsingleCardView}
                 onValueChange={this._swipeBetweenCardsChanged}
-                settingsStyle
+                style="settings"
               />
               <SettingsSwitch
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
                 onValueChange={this._alphabetizeEncounterSetsChanged}
-                settingsStyle
+                style="settings"
               />
               <SettingsItem
                 navigation

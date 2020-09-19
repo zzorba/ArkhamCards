@@ -118,7 +118,12 @@ export default class PackRow extends React.Component<Props> {
     return (
       <View style={[styles.row,
         { backgroundColor, height: rowHeight },
-        compact ? { height: lineHeight * fontScale + 14 } : { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.divider },
+        compact ? {
+          height: lineHeight * fontScale + 20,
+        } : {
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderColor: colors.divider,
+        },
       ]}>
         <TouchableOpacity style={styles.touchable} onPress={this._onPress}>
           <View style={styles.touchableContent}>

@@ -93,7 +93,7 @@ export default class PickerStyleButton extends React.Component<Props> {
             style={[
               style.defaultTitleStyle,
               space.paddingRightS,
-              settingsStyle ? {} :
+              settingsStyle ? typography.text :
                 {
                   ...typography.mediumGameFont,
                   fontFamily: gameFont,
@@ -110,7 +110,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               ellipsizeMode="tail"
               style={[
                 style.defaultValueStyle,
-                typography.small,
+                typography.large,
                 {
                   color: colors ? colors.textColor : this.context.colors.darkText,
                   fontWeight: '400',

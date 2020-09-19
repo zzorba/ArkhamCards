@@ -362,7 +362,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
-            settingsStyle
+            style="settings"
           />
         ) : (
           <SettingsItem
@@ -383,7 +383,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             title={t`Use Starter Deck`}
             value={starterDeck}
             onValueChange={this._onStarterDeckChange}
-            settingsStyle
+            style="settings"
           />
         ) }
       </>

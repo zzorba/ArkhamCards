@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, SwitchProps, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { t } from 'ttag';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 
-interface Props {
+interface Props extends TouchableOpacityProps {
   value: boolean;
   onValueChange: (checked: boolean) => void;
 }
@@ -18,15 +18,15 @@ export default class ArkhamSwitch extends React.Component<Props> {
     onValueChange(!value);
   }
   render() {
-    const { value } = this.props;
+    const { value, onValueChange, disabled, ...props } = this.props;
     const { colors } = this.context;
     return (
-      <TouchableOpacity onPress={this._onPress} accessibilityLabel={value ? t`Disable` : t`Enable`}>
+      <TouchableOpacity onPress={this._onPress} accessibilityLabel={value ? t`Disable` : t`Enable`} disabled={disabled} {...props}>
         <View style={styles.icon}>
-          <AppIcon size={28} name="check-circle" color={colors.L10} />
+          <AppIcon size={28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
           { !!value && (
             <View style={styles.check}>
-              <AppIcon size={20} name="check" color={colors.M} />
+              <AppIcon size={20} name="check" color={disabled ? colors.L20 : colors.M} />
             </View>
           )}
         </View>

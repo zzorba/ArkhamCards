@@ -36,6 +36,7 @@ import CardDetailHeader from './CardDetailHeader';
 import CardFooterInfo from './CardFooterInfo';
 import CardFooterButton from './CardFooterButton';
 import ArkhamButton from '@components/core/ArkhamButton';
+import InvestigatorImage from '@components/core/InvestigatorImage';
 
 const BLURRED_ACT = require('../../../../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../../../../assets/blur-agenda.jpeg');
@@ -494,10 +495,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View style={styles.column}>
         <View style={styles.playerImage}>
-          <PlayerCardImage
-            card={card}
-            componentId={this.props.componentId}
-          />
+          { card.type_code === 'investigator' ? (
+            <InvestigatorImage card={card} />
+          ) : (
+            <PlayerCardImage
+              card={card}
+              componentId={this.props.componentId}
+            />
+          ) }
         </View>
       </View>
     );
@@ -749,8 +754,8 @@ const styles = StyleSheet.create({
   },
   testIcon: {
     marginRight: xs,
-    padding: 2,
-    paddingBottom: 4,
+    padding: 4,
+    paddingTop: 2,
     borderRadius: 8,
   },
   testIconColumn: {

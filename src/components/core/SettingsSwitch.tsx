@@ -11,18 +11,27 @@ interface Props {
   value: boolean;
   onValueChange: (value: boolean) => void;
   disabled?: boolean;
-  settingsStyle?: boolean;
+  style: 'settings' | 'game';
 }
 
-export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
+export default function SettingsSwitch({ title, description, onValueChange, value, disabled, style }: Props) {
   const { gameFont, colors, typography } = useContext(StyleContext);
+  let titleStyle = typography.small;
+  switch (style) {
+    case 'settings':
+      titleStyle = typography.text;
+      break;
+    case 'game':
+      titleStyle = {
+        ...typography.mediumGameFont,
+        fontFamily: gameFont,
+      };
+      break;
+  }
   return (
     <SwitchRow
       title={title}
-      titleStyle={settingsStyle ? undefined : {
-        ...typography.mediumGameFont,
-        fontFamily: gameFont,
-      }}
+      titleStyle={titleStyle}
       containerStyle={{
         ...styles.switch,
         borderColor: colors.divider,

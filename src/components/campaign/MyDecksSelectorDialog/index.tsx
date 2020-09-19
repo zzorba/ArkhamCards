@@ -244,7 +244,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       return undefined;
     }
     return {
-      controls: <View>{ elements }</View>,
+      controls: <View style={styles.searchOptions}>{ elements }</View>,
       height: 20 + elements.length * (fontScale * 20 + 8) + 12,
     };
   }
@@ -434,5 +434,11 @@ const styles = StyleSheet.create({
   },
   searchOption: {
     marginRight: 2,
+  },
+  searchOptions: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    width: '100%',
   },
 });
