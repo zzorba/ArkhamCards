@@ -582,7 +582,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
         { this.renderAvailableExperienceButton() }
         { limitedSlots && (
           <View style={styles.toggleRow}>
-            <Text style={typography.label}>
+            <Text style={typography.small}>
               { t`Show limited splash` }
             </Text>
             <Switch

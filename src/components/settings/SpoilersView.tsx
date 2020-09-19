@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -33,9 +32,10 @@ class SpoilersView extends React.Component<Props> {
   context!: StyleContextType;
 
   _renderHeader = (): React.ReactElement => {
+    const { typography } = this.context;
     return (
       <View style={space.paddingS}>
-        <Text style={styles.headerText}>
+        <Text style={typography.small}>
           { t`Mark the scenarios you've played through to make the results start showing up in search results.` }
         </Text>
       </View>
@@ -89,10 +89,3 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(SpoilersView);
-
-const styles = StyleSheet.create({
-  headerText: {
-    fontFamily: 'System',
-    fontSize: 14,
-  },
-});

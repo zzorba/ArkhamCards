@@ -75,8 +75,8 @@ class CampaignScenarioView extends React.Component<Props> {
     return (
       <ScrollView style={[styles.container, backgroundStyle, space.paddingS]}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
-        <Text style={typography.smallLabel}>
-          { t`SCENARIOS` }
+        <Text style={[typography.small, typography.uppercase]}>
+          { t`Scenarios` }
         </Text>
         { map(campaign.scenarioResults, this._renderScenarioResult) }
         { map(

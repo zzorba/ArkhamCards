@@ -1,5 +1,5 @@
 import React from 'react';
-import { concat, filter, flatMap, keys, throttle, uniqBy, uniq } from 'lodash';
+import { concat, filter, flatMap, flatten, keys, throttle, uniqBy, uniq } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
@@ -16,7 +16,7 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import InvestigatorSelectorTab from './InvestigatorSelectorTab';
 import DeckSelectorTab from './DeckSelectorTab';
 import { NewDeckProps } from '@components/deck/NewDeckView';
-import Switch from '@components/core/Switch';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { NavigationProps } from '@components/nav/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { Deck, DecksMap, Campaign, SortType, SORT_BY_PACK } from '@actions/types';
@@ -25,6 +25,8 @@ import Card from '@data/Card';
 import { getAllDecks, getCampaign, getCampaigns, getLatestCampaignDeckIds, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 
 export interface MyDecksSelectorProps {
   campaignId: number;
@@ -57,6 +59,9 @@ interface State {
 }
 
 class MyDecksSelectorDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static deckOptions(passProps: Props): Options {
     return {
       topBar: {
@@ -184,58 +189,64 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
     }
   }
 
-  renderCustomHeader(forDecks: boolean) {
+  searchOptions(forDecks: boolean): SearchOptions | undefined {
     const {
       campaign,
       onlyShowSelected,
       singleInvestigator,
       simpleOptions,
     } = this.props;
+    const { typography, fontScale } = this.context;
     const {
       hideOtherCampaignDecks,
       hideEliminatedInvestigators,
       onlyShowPreviousCampaignMembers,
     } = this.state;
     if (onlyShowSelected) {
-      return null;
+      return undefined;
     }
-    return (
-      <View>
-        { forDecks && (
-          <View style={styles.row}>
-            <Text style={styles.searchOption}>
-              { t`Hide Decks From Other Campaigns` }
-            </Text>
-            <Switch
-              value={hideOtherCampaignDecks}
-              onValueChange={this._toggleHideOtherCampaignInvestigators}
-            />
-          </View>
-        ) }
-        { !!campaign && !singleInvestigator && !simpleOptions && (
-          <View style={styles.row}>
-            <Text style={styles.searchOption}>
-              { t`Hide Killed and Insane Investigators` }
-            </Text>
-            <Switch
-              value={hideEliminatedInvestigators}
-              onValueChange={this._toggleHideEliminatedInvestigators}
-            />
-          </View>
-        ) }
-        { !!campaign && !singleInvestigator && !simpleOptions && (
-          <View style={styles.row}>
-            <Text style={styles.searchOption}>
-              { t`Only Show Previous Campaign Members` }
-            </Text>
-            <Switch
-              value={onlyShowPreviousCampaignMembers}
-              onValueChange={this._toggleOnlyShowPreviousCampaignMembers}
-            />
-          </View>
-        ) }
-      </View>
-    );
+    const elements = flatten([
+      forDecks ? [(
+        <View style={styles.row} key={0}>
+          <Text style={[typography.small, styles.searchOption]}>
+            { t`Hide Decks From Other Campaigns` }
+          </Text>
+          <ArkhamSwitch
+            value={hideOtherCampaignDecks}
+            onValueChange={this._toggleHideOtherCampaignInvestigators}
+          />
+        </View>
+      )] : [],
+      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
+        <View style={styles.row} key={1}>
+          <Text style={[typography.small, styles.searchOption]}>
+          { t`Hide Killed and Insane Investigators` }
+          </Text>
+          <ArkhamSwitch
+            value={hideEliminatedInvestigators}
+            onValueChange={this._toggleHideEliminatedInvestigators}
+          />
+        </View>
+      )] : [],
+      (!!campaign && !singleInvestigator && !simpleOptions) ? [(
+        <View style={styles.row} key={2}>
+          <Text style={[typography.small, styles.searchOption]}>
+            { t`Only Show Previous Campaign Members` }
+          </Text>
+          <ArkhamSwitch
+            value={onlyShowPreviousCampaignMembers}
+            onValueChange={this._toggleOnlyShowPreviousCampaignMembers}
+          />
+        </View>
+      )] : []
+    ]);
+    if (!elements.length) {
+      return undefined;
+    }
+    return {
+      controls: <View>{ elements }</View>,
+      height: 20 + elements.length * (fontScale * 20 + 8) + 12,
+    };
   }
 
   filterInvestigators() {
@@ -344,7 +355,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       <DeckSelectorTab
         componentId={componentId}
         onDeckSelect={onDeckSelect}
-        customHeader={this.renderCustomHeader(true)}
+        searchOptions={this.searchOptions(true)}
         filterDeckIds={this.filterDeckIds()}
         onlyDeckIds={this.onlyDeckIds()}
         filterInvestigators={this.filterInvestigators()}
@@ -366,7 +377,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
               componentId={componentId}
               sort={this.state.selectedSort}
               onInvestigatorSelect={onInvestigatorSelect}
-              customHeader={this.renderCustomHeader(false)}
+              searchOptions={this.searchOptions(false)}
               filterDeckIds={this.filterDeckIds()}
               onlyDeckIds={this.onlyDeckIds()}
               filterInvestigators={this.filterInvestigators()}
@@ -422,9 +433,6 @@ const styles = StyleSheet.create({
     paddingRight: s,
   },
   searchOption: {
-    fontFamily: 'System',
-    fontSize: 12,
-    marginLeft: 10,
     marginRight: 2,
   },
 });

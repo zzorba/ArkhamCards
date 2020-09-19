@@ -25,10 +25,10 @@ function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge
     <SingleCardWrapper code={challenge.investigator} type="player">
       { investigator => (
         <View style={styles.flex}>
-          <Text style={[typography.label, space.paddingTopS]}>
+          <Text style={[typography.small, space.paddingTopS]}>
             { t`${investigator.name} Challenge Scenario` }
           </Text>
-          <Text style={[typography.label, typography.darkGray, space.paddingTopS]}>
+          <Text style={[typography.small, typography.light, space.paddingTopS]}>
             { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
           </Text>
         </View>
@@ -90,7 +90,7 @@ export default function SideScenarioButton({ scenario, onPress, componentId }: P
           { (scenario.side_scenario_type === 'challenge' && !!scenario.challenge) ? (
             <ChallengeBlock challenge={scenario.challenge} scenario={scenario} />
           ) : (
-            <Text style={[typography.label, typography.darkGray, space.paddingTopS]}>
+            <Text style={[typography.small, typography.light, space.paddingTopS]}>
               { t`Experience cost: ${xpCost}` }
             </Text>
           ) }

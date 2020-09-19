@@ -5,10 +5,9 @@ import {
   View,
 } from 'react-native';
 
-import Switch from '@components/core/Switch';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface Props {
   value: string;
@@ -23,10 +22,10 @@ export default function SelectRow({ value, selected, onSelectChanged }: Props) {
   };
   return (
     <View style={[styles.row, borderStyle, space.paddingRightS]}>
-      <Text style={[styles.title, typography.black, space.marginLeftS]}>
+      <Text style={[typography.large, typography.dark, space.marginLeftS]}>
         { value }
       </Text>
-      <Switch
+      <ArkhamSwitch
         value={selected}
         onValueChange={onCheckPress}
       />
@@ -41,10 +40,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-  },
-  title: {
-    fontSize: 20,
-    fontFamily: 'System',
-    flex: 1,
   },
 });

@@ -166,11 +166,11 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
     <>
       <View style={styles.titleRow} removeClippedSubviews>
         <View style={styles.column}>
-          <Text style={[typography.cardName, space.marginLeftS, { color: '#FFFFFF' }]}>
+          <Text style={[typography.large, space.marginLeftS, { color: '#FFFFFF' }]}>
             { `${name}${card.is_unique ? ' ✷' : ''}` }
           </Text>
           { !!subname && (
-            <Text style={[typography.cardSubName, space.marginLeftS, { color: '#FFFFFF' }]}>
+            <Text style={[typography.small, typography.italic, typography.light, space.marginLeftS, { color: '#FFFFFF' }]}>
               { card.subname }
             </Text>
           ) }

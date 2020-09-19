@@ -6,12 +6,14 @@ import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { m, s, xs } from '@styles/space';
 
+export interface SearchOptions {
+  controls: React.ReactNode;
+  height: number;
+}
+
 interface Props {
   prompt: string;
-  advancedOptions?: {
-    controls: React.ReactNode;
-    height: number;
-  };
+  advancedOptions?: SearchOptions;
   searchTerm: string;
   onSearchChange: (text: string) => void;
   children: (

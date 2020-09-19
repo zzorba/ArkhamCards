@@ -162,7 +162,7 @@ class UpgradeDecksView extends React.Component<Props> {
     return (
       <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <View style={space.marginS}>
-          <Text style={typography.label}>
+          <Text style={typography.small}>
             { t`By upgrading a deck, you can track XP and story card upgrades as your campaign develops.\n\nPrevious versions of your deck will still be accessible.` }
           </Text>
         </View>

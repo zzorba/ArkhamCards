@@ -47,7 +47,7 @@ export default class CardTabooView extends React.Component<Props> {
     return (
       <View key={taboo.id}>
         { !!tabooSet && (
-          <Text style={[typography.bigLabel, styles.tabooHeader]}>
+          <Text style={[typography.large, styles.tabooHeader]}>
             { `${tabooSet.name} - ${tabooSet.date_start}` }
           </Text>
         ) }

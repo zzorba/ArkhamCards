@@ -495,7 +495,7 @@ class NewCampaignView extends React.Component<Props, State> {
           <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Weakness Set` }
           </Text>
-          <Text style={typography.label}>
+          <Text style={typography.small}>
             { t`Include all basic weaknesses from these expansions` }
           </Text>
         </View>
@@ -698,7 +698,7 @@ class NewCampaignView extends React.Component<Props, State> {
           <View style={styles.footer}>
             { this.isGuided() && (
               <View style={styles.block}>
-                <Text style={typography.label}>
+                <Text style={typography.small}>
                   { t`If you encounter any problems with the campaign guide system, please let me know at arkhamcards@gmail.com.` }
                 </Text>
               </View>

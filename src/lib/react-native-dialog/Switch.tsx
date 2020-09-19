@@ -13,7 +13,7 @@ export default function DialogSwitch({ label, labelStyle, ...otherProps }: Props
   const { typography } = useContext(StyleContext);
   return (
     <View style={styles.switchWrapper}>
-      <Text style={[styles.label, typography.black, labelStyle]}>{label}</Text>
+      <Text style={[styles.label, typography.dark, labelStyle]}>{label}</Text>
       <Switch {...otherProps} />
     </View>
   );

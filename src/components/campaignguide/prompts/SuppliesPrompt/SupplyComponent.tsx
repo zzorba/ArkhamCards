@@ -51,15 +51,15 @@ export default function SupplyComponent({
     ]}>
       <View style={[styles.textBlock, space.paddingS, space.paddingSideM]}>
         <Text style={typography.text}>
-          <Text style={[typography.bold, typography.black]}>
+          <Text style={[typography.bold, typography.dark]}>
             { supply.name }
           </Text>
           { ' ' }
-          { editable && <Text style={[styles.cost, typography.black]}>{ costString }</Text> }
+          { editable && <Text style={[styles.cost, typography.dark]}>{ costString }</Text> }
         </Text>
         <Text
           numberOfLines={2}
-          style={[typography.small, typography.italic, typography.black]}
+          style={[typography.small, typography.italic, typography.dark]}
         >
           { supply.description }
         </Text>

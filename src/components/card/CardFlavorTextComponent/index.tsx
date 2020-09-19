@@ -21,14 +21,16 @@ import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-const BreakTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
-  order: 1,
-  parse: () => {
-    return { text: '\n' };
-  },
-  render: FlavorUnderlineNode,
-};
+function BreakTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<br\\/*>')),
+    order: 1,
+    parse: () => {
+      return { text: '\n' };
+    },
+    render: FlavorUnderlineNode(style),
+  };
+}
 
 
 function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
@@ -155,7 +157,7 @@ export default function CardFlavorTextComponent(
         iconTag: ArkhamIconRule(context),
         bTag: BoldHtmlTagRule(context),
         uTag: UnderlineHtmlTagRule(context),
-        brTag: BreakTagRule,
+        brTag: BreakTagRule(context),
         citeTag: CiteTagRule,
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,

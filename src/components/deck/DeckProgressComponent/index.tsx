@@ -8,7 +8,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
@@ -106,7 +106,8 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           </View>
         ) }
         { !!showDeckUpgrade && (
-          <BasicButton
+          <ArkhamButton
+            icon="up"
             title={t`Upgrade Deck with XP`}
             onPress={showDeckUpgrade}
           />
@@ -155,7 +156,8 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           onTitlePress={onTitlePress}
         />
         { !!editable && !!deck.previous_deck && !!showDeckHistory && (
-          <BasicButton
+          <ArkhamButton
+            icon="deck"
             title={t`Upgrade History`}
             onPress={showDeckHistory}
           />

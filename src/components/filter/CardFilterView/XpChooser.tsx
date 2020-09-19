@@ -85,7 +85,7 @@ export default class XpChooser extends React.Component<Props> {
         t`Level ${startXp}` :
         t`Level ${startXp} - ${endXp}`;
       return {
-        element: () => (<Text style={typography.black}>{ xp }</Text>),
+        element: () => (<Text style={typography.dark}>{ xp }</Text>),
       };
     });
     return (

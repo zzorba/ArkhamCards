@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+// @ts-ignore
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
-  icon: 'search' | 'edit' | 'expand' | 'deck' | 'card';
+  icon: 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up';
   title: string;
   onPress: () => void;
 }
@@ -32,6 +34,8 @@ export default class ArkhamButton extends React.Component<Props> {
         return <View style={styles.editIcon}><AppIcon name="edit" size={16 * fontScale} color={colors.L20} /></View>;
       case 'expand':
         return <AppIcon name="plus" size={18 * fontScale} color={colors.L20} />;
+      case 'up':
+        return <View style={styles.upIcon}><MaterialCommunityIcons name="arrow-up-bold" size={22 * fontScale} color={colors.L20} /></View>;
     }
   }
 
@@ -55,7 +59,7 @@ export default class ArkhamButton extends React.Component<Props> {
         >
           <View pointerEvents="box-none" style={styles.row}>
             { this.renderIcon() }
-            <Text style={[typography.cardButton, { marginLeft: height / 4 }]}>
+            <Text style={[typography.button, { marginLeft: height / 4 }]}>
               { title }
             </Text>
           </View>
@@ -94,5 +98,8 @@ const styles = StyleSheet.create({
   },
   editIcon: {
     marginLeft: 2,
+  },
+  upIcon: {
+    marginTop: -2,
   },
 });

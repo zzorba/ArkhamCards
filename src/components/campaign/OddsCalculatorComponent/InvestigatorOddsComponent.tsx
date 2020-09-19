@@ -96,7 +96,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
               </View>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={typography.label} numberOfLines={2}>
+              <Text style={typography.small} numberOfLines={2}>
                 { elderSignEffect.text }
               </Text>
             </View>

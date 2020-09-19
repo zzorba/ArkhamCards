@@ -30,12 +30,12 @@ export default function CardTabooTextBlock({ card }: Props) {
         <View style={styles.tabooIcon}>
           <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={COLORS.taboo} />
         </View>
-        <Text style={typography.cardText}>
+        <Text style={typography.small}>
           { t`Taboo List Changes` }
         </Text>
       </View>
       { !!card.extra_xp && (
-        <Text style={typography.cardText}>
+        <Text style={typography.small}>
           { card.extra_xp > 0 ?
             t`Additional XP: ${card.extra_xp}.` :
             t`XP Discount: ${card.extra_xp}.` }

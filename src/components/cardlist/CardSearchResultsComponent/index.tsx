@@ -19,7 +19,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@data/query';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY } from '@data/query';
 import Card from '@data/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -101,7 +101,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      where('c.altArtInvestigator != true AND c.back_linked is null AND not c.hidden'),
+      BASIC_QUERY,
       queryParts,
       'and'
     );
@@ -204,13 +204,13 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <>
         <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
-          <Text style={[typography.cardName, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+          <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
             { t`Search in:` }
           </Text>
         </View>
         <View style={styles.column}>
           <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.black]}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
               { t`Game Text` }
             </Text>
             <ArkhamSwitch
@@ -219,7 +219,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             />
           </View>
           <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.black]}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
               { t`Flavor Text` }
             </Text>
             <ArkhamSwitch
@@ -228,7 +228,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
             />
           </View>
           <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.black]}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
               { t`Card Backs` }
             </Text>
             <ArkhamSwitch

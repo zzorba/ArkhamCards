@@ -67,15 +67,17 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       width,
     } = this.props;
-    const { typography } = this.context;
+    const { typography, colors } = this.context;
     if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }
     return (
       <View style={styles.investigatorContent}>
-        <Text style={[typography.header, styles.sectionHeader]}>
-          { t`Deckbuilding` }
-        </Text>
+        <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
+          <Text style={[typography.large, typography.center, typography.uppercase]}>
+            { t`Deckbuilding` }
+          </Text>
+        </View>
         <ArkhamButton
           icon="deck"
           title={t`Show all available cards`}
@@ -127,7 +129,7 @@ export default class CardDetailComponent extends React.Component<Props> {
         />
         <BondedCardsComponent
           componentId={componentId}
-          card={card}
+          cards={[card]}
           width={width}
         />
         { this.renderInvestigatorCardsLink() }
@@ -142,11 +144,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   sectionHeader: {
-    marginTop: m + s,
     paddingLeft: s,
   },
   investigatorContent: {
     width: '100%',
     maxWidth: 768,
+  },
+  deckbuildingSection: {
+    marginTop: m + s,
+    marginLeft: -8,
+    marginRight: -8,
+    marginBottom: 8,
+    padding: 4,
+    paddingTop: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

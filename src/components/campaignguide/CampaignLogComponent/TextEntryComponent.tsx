@@ -19,7 +19,7 @@ export default function TextEntryComponent({ text, crossedOut, entry }: Props) {
     text;
   return (
     <Text style={[
-      typography.bigLabel,
+      typography.large,
       space.marginBottomS,
       crossedOut ? typography.strike : {},
     ]}>

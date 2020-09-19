@@ -16,7 +16,7 @@ export default function FlavorFancyNode({ typography }: StyleContextType) {
     state: RenderState
   ) => {
     return (
-      <Text key={state.key} style={[styles.text, typography.black]}>
+      <Text key={state.key} style={[styles.text, typography.dark]}>
         { output(node.children, state) }
       </Text>
     );

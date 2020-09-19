@@ -188,7 +188,7 @@ class EditChaosBagDialog extends React.Component<Props, State> {
     return (
       <ScrollView contentContainerStyle={backgroundStyle}>
         <View style={[styles.row, borderStyle, space.paddingS]}>
-          <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
+          <Text style={[typography.large, typography.bold]}>{t`In Bag`}</Text>
         </View>
         { map(sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]),
           id => {

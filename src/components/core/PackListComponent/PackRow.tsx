@@ -16,6 +16,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { PackCardsProps } from '@components/settings/PackCardsView';
 import { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import typography from '@styles/typography';
 
 interface Props {
   componentId: string;
@@ -107,16 +108,17 @@ export default class PackRow extends React.Component<Props> {
       compact,
       nameOverride,
     } = this.props;
-    const { colors } = this.context;
+    const { colors, fontScale } = this.context;
     const mythosPack = true;
     const backgroundColor = (whiteBackground || mythosPack) ? colors.background : colors.L20;
     const iconSize = (mythosPack || compact) ? 24 : 28;
-    const fontSize = (mythosPack || compact) ? 16 : 22;
+    const fontSize = ((mythosPack || compact) ? 16 : 22) * fontScale;
+    const lineHeight = ((mythosPack || compact) ? 20 : 26) * fontScale;
     const rowHeight = mythosPack ? 50 : 60;
     return (
       <View style={[styles.row,
         { backgroundColor, height: rowHeight },
-        compact ? { height: 40 } : { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.divider },
+        compact ? { height: lineHeight * fontScale + 14 } : { borderBottomWidth: StyleSheet.hairlineWidth, borderColor: colors.divider },
       ]}>
         <TouchableOpacity style={styles.touchable} onPress={this._onPress}>
           <View style={styles.touchableContent}>
@@ -128,7 +130,7 @@ export default class PackRow extends React.Component<Props> {
               />
             </View>
             <Text
-              style={[styles.title, { color: colors.darkText, fontSize }]}
+              style={[typography.large, { color: colors.darkText, fontSize, lineHeight }]}
               numberOfLines={2}
               ellipsizeMode="tail"
             >
@@ -175,12 +177,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    marginLeft: s,
-    fontSize: 20,
-    fontFamily: 'System',
-    flex: 1,
   },
   checkbox: {
     marginRight: s,

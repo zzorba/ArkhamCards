@@ -1,7 +1,7 @@
 import { filter, findIndex, flatMap, forEach, keys, map, values } from 'lodash';
 
 import { QueryParams } from '@data/types';
-import { combineQueriesOpt, where } from '@data/query';
+import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
 import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
 import { Brackets } from 'typeorm/browser';
@@ -603,6 +603,18 @@ export default class FilterBuilder {
     return result;
   }
 
+  bondedFilter(field: 'real_name' | 'bonded_name', bonded_names: string[]): Brackets | undefined {
+    const bondedClause = combineQueriesOpt(
+      this.complexVectorClause(
+        field,
+        bonded_names,
+        valueName => `(c.${field} = :${valueName})`
+      ), 'or');
+    if (!bondedClause) {
+      return undefined;
+    }
+    return combineQueries(BASIC_QUERY, [bondedClause], 'and');
+  }
 
   factionFilter(factions: FactionCodeType[]): Brackets[] {
     return this.complexVectorClause(

@@ -14,6 +14,7 @@ export const ON_YOUR_OWN_RESTRICTION = new Brackets(
   { negate: true }
 );
 
+export const BASIC_QUERY = where('(c.altArtInvestigator != true AND (c.back_linked is null OR NOT c.back_linked) AND (c.hidden is null OR NOT c.hidden))');
 export const SCENARIO_CARDS_QUERY = where('c.type_code = "scenario"');
 export const BASIC_WEAKNESS_QUERY = where(
   `c.type_code != "scenario" AND c.subtype_code = "basicweakness" AND c.code != "${RANDOM_BASIC_WEAKNESS}"`

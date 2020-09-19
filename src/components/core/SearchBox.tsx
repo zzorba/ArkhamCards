@@ -36,7 +36,7 @@ export default class SearchBox extends React.Component<Props> {
     }
     return (
       <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={this._clear}>
-        <View style={styles.closeIcon}>
+        <View style={styles.dismissIcon}>
           <AppIcon name="dismiss" size={18} color={COLORS.D20} />
         </View>
       </TouchableOpacity>
@@ -156,9 +156,6 @@ const styles = StyleSheet.create({
     marginRight: 0,
     padding: 10,
     position: 'relative',
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 24,
   },
   icon: {
     width: 36,
@@ -177,6 +174,14 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   closeIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dismissIcon: {
     width: 24,
     height: 36,
     flexDirection: 'row',

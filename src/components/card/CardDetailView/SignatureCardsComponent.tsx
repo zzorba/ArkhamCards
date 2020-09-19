@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { flatMap, map, partition } from 'lodash';
 import {
-  StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import { t } from 'ttag';
@@ -11,6 +9,8 @@ import { t } from 'ttag';
 import Database from '@data/Database';
 import DbRender from '@components/data/DbRender';
 import SignatureCardItem from './SignatureCardItem';
+import CardDetailSectionHeader from './CardDetailSectionHeader';
+import BondedCardsComponent from './BondedCardsComponent';
 import Card from '@data/Card';
 import { where } from '@data/query';
 import { getTabooSet, AppState } from '@reducers';
@@ -53,24 +53,22 @@ class SignatureCardsComponent extends React.Component<Props> {
     const [advancedCards, altCards] = partition(alternateCards, card => !!card.advanced);
     return (
       <View style={space.marginBottomS}>
-        <Text style={[styles.header, typography.black]}>
-          { t`Required Cards` }
-        </Text>
         { !!(requiredCards && requiredCards.length) && (
-          map(requiredCards, card => (
-            <SignatureCardItem
-              key={card.code}
-              componentId={componentId}
-              card={card}
-              width={width}
-            />
-          ))
+          <>
+            <CardDetailSectionHeader title={t`Required Cards`} />
+            { map(requiredCards, card => (
+              <SignatureCardItem
+                key={card.code}
+                componentId={componentId}
+                card={card}
+                width={width}
+              />
+            )) }
+          </>
         ) }
         { !!(altCards && altCards.length) && (
-          <React.Fragment>
-            <Text style={[styles.header, typography.black]}>
-              { t`Alternate Cards` }
-            </Text>
+          <>
+            <CardDetailSectionHeader title={t`Alternate Cards`} />
             { map(altCards, card => (
               <SignatureCardItem
                 key={card.code}
@@ -79,13 +77,11 @@ class SignatureCardsComponent extends React.Component<Props> {
                 width={width}
               />
             )) }
-          </React.Fragment>
+          </>
         ) }
         { !!(advancedCards && advancedCards.length) && (
-          <React.Fragment>
-            <Text style={[styles.header, typography.black]}>
-              { t`Advanced Cards` }
-            </Text>
+          <>
+            <CardDetailSectionHeader title={t`Advanced Cards`} />
             { map(advancedCards, card => (
               <SignatureCardItem
                 key={card.code}
@@ -94,8 +90,17 @@ class SignatureCardsComponent extends React.Component<Props> {
                 width={width}
               />
             )) }
-          </React.Fragment>
+          </>
         ) }
+        <BondedCardsComponent
+          componentId={componentId}
+          width={width}
+          cards={[
+            ...(requiredCards || []),
+            ...(altCards || []),
+            ...(advancedCards || [])
+          ]}
+        />
       </View>
     );
   };
@@ -148,14 +153,3 @@ function mapStateToProps(state: AppState): ReduxProps {
 export default connect<ReduxProps, unknown, OwnProps, AppState>(
   mapStateToProps
 )(SignatureCardsComponent);
-
-const styles = StyleSheet.create({
-  header: {
-    marginTop: m + s,
-    paddingLeft: s,
-    fontSize: 24,
-    lineHeight: 32,
-    fontWeight: '600',
-    fontFamily: 'System',
-  },
-});

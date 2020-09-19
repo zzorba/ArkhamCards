@@ -27,7 +27,7 @@ export default function SettingsSwitch({ title, description, onValueChange, valu
         ...styles.switch,
         borderColor: colors.divider,
       }}
-      descriptionStyle={typography.label}
+      descriptionStyle={typography.small}
       description={description}
       onValueChange={onValueChange}
       value={value}

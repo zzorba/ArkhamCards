@@ -15,7 +15,7 @@ export default function Difficulty({ difficulty }: Props) {
   return (
     <View style={styles.row}>
       <View style={[styles.difficulty, { backgroundColor: colors.L10 }, space.paddingSideXs]}>
-        <Text style={[typography.smallLabel, { color: colors.darkText, textTransform: 'uppercase' }]}>
+        <Text style={[typography.small, { color: colors.darkText, textTransform: 'uppercase' }]}>
           { difficultyString(difficulty) }
         </Text>
       </View>
