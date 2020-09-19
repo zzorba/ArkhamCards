@@ -37,11 +37,10 @@ export default function SkillIcon({ skill, size }: Props) {
 const styles = StyleSheet.create({
   skillIcon: {
     position: 'relative',
-    marginLeft: 2,
   },
   icon: {
     position: 'absolute',
-    top: 0,
+    top: -1,
     left: 0,
   },
 });

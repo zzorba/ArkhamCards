@@ -1,5 +1,5 @@
 import React from 'react';
-import { flatMap, map, range } from 'lodash';
+import { flatMap, flatten, map, range } from 'lodash';
 import {
   Platform,
   StyleSheet,
@@ -195,10 +195,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     }
     return (
       <Text style={[typography.small, typography.bold]}>
-        { card.subtype_name ?
-          `${card.type_name}. ${card.subtype_name}` :
-          card.type_name }
-        { (card.type_code === 'agenda' || card.type_code === 'act') ? ` ${card.stage}` : '' }
+        { flatten([
+          [card.type_name],
+          card.subtype_name ? [card.subtype_name] : [],
+          card.slot ? [card.slot] : [],
+          (card.type_code === 'agenda' || card.type_code === 'act') ? [t`Stage ${card.stage}`] : []
+        ]).join(' · ') }
       </Text>
     );
   }
@@ -361,7 +363,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     isFirst: boolean,
     key: string
   ) {
-    console.log(card.linked_card);
     const {
       componentId,
       simple,

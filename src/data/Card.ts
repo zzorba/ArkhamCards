@@ -143,6 +143,9 @@ export default class Card {
   @Column('integer', { nullable: true })
   public encounter_position?: number;
 
+  @Column('integer', { nullable: true })
+  public encounter_size?: number;
+
   @Column('boolean', { nullable: true })
   public exceptional?: boolean;
 
@@ -788,16 +791,17 @@ export default class Card {
       altArtInvestigator,
     };
     if (result.hidden && result.linked_card) {
-      console.log(`Reversing link of ${result.name} to ${result.linked_card.name} so ${result.linked_card.name} is the FRONT.`);
       return {
         ...result.linked_card,
         back_linked: null,
+        hidden: null,
         linked_to_code: result.code,
         linked_to_name: result.name,
         linked_card: {
           ...result,
           linked_card: undefined,
           back_linked: true,
+          hidden: true,
           linked_to_code: result.linked_card.code,
           linked_to_name: result.linked_card.name,
         },
