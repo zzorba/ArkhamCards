@@ -1,19 +1,55 @@
-import React, { useContext } from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import { Alert, Platform, StyleSheet } from 'react-native';
+// @ts-ignore TS7016
+import DialogAndroid from 'react-native-dialogs';
 import { t } from 'ttag';
 
-import SettingsEditText from './SettingsEditText';
 import { m, s, xs } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import PickerStyleButton from './PickerStyleButton';
 
 interface Props {
   title: string;
   dialogDescription?: string;
   placeholder?: string;
   value?: string;
-  onValueChange: (text: string) => void;
+  onValueChange: (text?: string) => void;
   settingsStyle?: boolean;
 }
+
+async function openDialog({
+  title,
+  dialogDescription,
+  value,
+  onValueChange
+}: Props) {
+  if (Platform.OS === 'ios') {
+    Alert.prompt(
+      title,
+      dialogDescription,
+      [
+        { text: t`Cancel`, onPress: () => {
+          // intentionally empty
+        }, style: 'cancel' },
+        {
+          text: t`Done`,
+          onPress: onValueChange,
+        },
+      ],
+      'plain-text',
+      (value) || '',
+    );
+  } else {
+    const { action, text } = await DialogAndroid.prompt(title, dialogDescription, {
+      defaultValue: value || '',
+      positiveText: t`Done`,
+      negativeText: t`Cncel`,
+      keyboardType: null,
+    });
+    if (action === DialogAndroid.actionPositive) {
+      onValueChange(text);
+    }
+  }
+};
 
 export default function EditText({
   title,
@@ -23,35 +59,15 @@ export default function EditText({
   onValueChange,
   settingsStyle,
 }: Props) {
-  const { gameFont, colors, typography } = useContext(StyleContext);
+  const showDialog = () => openDialog({ title, dialogDescription, value, onValueChange });
   return (
-    <SettingsEditText
+    <PickerStyleButton
+      id="edit"
       title={title}
-      titleStyle={
-        settingsStyle ?
-          { ...typography.large, paddingLeft: 0 } :
-          { ...typography.mediumGameFont, fontFamily: gameFont }}
-      dialogDescription={dialogDescription}
-      valuePlaceholder={placeholder}
-      valueProps={{
-        numberOfLines: 2,
-        ellipsizeMode: 'clip',
-      }}
-      valueStyle={{
-        ...typography.large,
-        ...typography.left,
-        color: colors.darkText,
-      }}
-      onValueChange={onValueChange}
-      value={value}
-      containerStyle={{
-        ...styles.container,
-        backgroundColor: colors.background,
-        borderColor: colors.divider,
-        paddingLeft: Platform.OS === 'ios' && settingsStyle ? s + xs : m,
-      }}
-      positiveButtonTitle={t`Done`}
-      negativeButtonTitle={t`Cancel`}
+      value={value || placeholder}
+      onPress={showDialog}
+      widget="nav"
+      settingsStyle={settingsStyle}
     />
   );
 }

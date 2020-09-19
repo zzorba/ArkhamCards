@@ -115,15 +115,15 @@ class ScenarioSection extends React.Component<Props, State> {
     }, this._updateManagedScenario);
   };
 
-  _customScenarioTextChanged = (value: string) => {
+  _customScenarioTextChanged = (value?: string) => {
     this.setState({
-      customScenario: value,
+      customScenario: value || '',
     }, this._updateManagedScenario);
   };
 
-  _resolutionChanged = (value: string) => {
+  _resolutionChanged = (value?: string) => {
     this.setState({
-      resolution: value,
+      resolution: value || '',
     }, this._updateManagedScenario);
   };
 
@@ -154,6 +154,7 @@ class ScenarioSection extends React.Component<Props, State> {
           title={t`Show Interludes`}
           value={showInterludes}
           onValueChange={this._toggleShowInterludes}
+          style="settings"
         />
         <SinglePickerComponent
           title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}

@@ -25,6 +25,7 @@ export default class CampaignMergeItem extends React.Component<Props> {
         description={campaignName(campaign.cycleCode) || undefined}
         value={inverted ? !value : value}
         onValueChange={this._onValueChange}
+        style="game"
       />
     );
   }

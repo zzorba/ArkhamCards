@@ -8,7 +8,7 @@ import { t } from 'ttag';
 
 import Card from '@data/Card';
 import { TINY_PHONE } from '@styles/sizes';
-import { s, xs } from '@styles/space';
+import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import SkillIcon from '@components/core/SkillIcon';
 
@@ -59,11 +59,11 @@ export default function InvestigatorStatLine({ investigator }: Props) {
 const styles = StyleSheet.create({
   skillIconBlock: {
     flexDirection: 'row',
-    borderRadius: 4 ,
+    borderRadius: 4,
     paddingTop: 2,
     paddingLeft: s,
     paddingRight: s,
-    marginRight: TINY_PHONE ? xs : xs,
+    marginRight: xs,
   },
   skillIcon: {
     marginLeft: 2,

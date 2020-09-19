@@ -213,9 +213,9 @@ class NewCampaignView extends React.Component<Props, State> {
     });
   };
 
-  _onNameChange = (name: string) => {
+  _onNameChange = (name?: string) => {
     this.setState({
-      name: name,
+      name: name || '',
     }, this._updateNavigationButtons);
   };
 
@@ -657,6 +657,7 @@ class NewCampaignView extends React.Component<Props, State> {
               description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
               onValueChange={this._toggleGuided}
               value={guided}
+              style="game"
             />
           ) }
           { !this.isGuided() && (

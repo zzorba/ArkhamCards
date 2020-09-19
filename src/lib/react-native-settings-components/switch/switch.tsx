@@ -5,6 +5,7 @@ import {
 
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
@@ -116,7 +117,7 @@ class SettingsSwitch extends Component<Props> {
           {...switchWrapperProps}
           style={[style.defaultSwitchWrapperStyle, switchWrapperStyle]}
         >
-          <Switch
+          <ArkhamSwitch
             value={value}
             trackColor={trackColor}
             onValueChange={onValueChange}
