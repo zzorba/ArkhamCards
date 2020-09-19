@@ -34,8 +34,8 @@ export default function CardFooterInfo({ card }: Props) {
             </Text>
             <Text style={typography.small}>
               { card.quantity && card.quantity > 1 ?
-                `${card.encounter_position} - ${card.encounter_position + card.quantity}` :
-                card.encounter_position }
+                `${card.encounter_position} - ${card.encounter_position + card.quantity - 1}` :
+                card.encounter_position } / {card.encounter_size || 0}
             </Text>
           </View>
         ) }

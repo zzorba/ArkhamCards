@@ -187,6 +187,20 @@ export const syncCards = async function(
     const flatCards = flatMap(dedupedCards, (c: Card) => {
       return c.linked_card ? [c, c.linked_card] : [c];
     });
+    const encounter_card_counts: {
+      [encounter_code: string]: number | undefined;
+    } = {};
+    forEach(flatCards, card => {
+      if (!card.hidden && card.encounter_code) {
+        encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
+      }
+    });
+    forEach(flatCards, card => {
+      if (card.encounter_code) {
+        card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
+        encounter_card_counts
+      }
+    })
     forEach(groupBy(flatCards, card => card.id), (dupes, id) => {
       if (dupes.length > 1) {
         forEach(dupes, (dupe, idx) => {

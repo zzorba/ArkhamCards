@@ -627,9 +627,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       deckCardCounts,
     } = this.state;
-    if (card.linked_card) {
-      console.log(card.linked_card.name);
-    }
     if (renderCard) {
       return renderCard(card);
     }

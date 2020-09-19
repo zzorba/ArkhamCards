@@ -4,14 +4,16 @@ import {
   Text,
   View,
 } from 'react-native';
-import { map, range } from 'lodash';
+import { map, range, flatten } from 'lodash';
 import { t } from 'ttag';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
 import { TINY_PHONE } from '@styles/sizes';
-import { s, xs } from '@styles/space';
+import space, { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import SkillIcon from '@components/core/SkillIcon';
+import HealthSanityIcon from './HealthSanityIcon';
 
 interface Props {
   enemy: Card;
@@ -27,16 +29,21 @@ export default function EnemyStatLine({ enemy }: Props) {
     styles.iconBlock,
     { backgroundColor: colors.L20 },
   ];
+
+  const damageLine = flatten([
+    (enemy.enemy_damage || 0) > 0 ? [`Damage: ${enemy.enemy_damage || 0}.`] : [],
+    (enemy.enemy_horror || 0) > 0 ? [`Horror: ${enemy.enemy_horror || 0}.`] : [],
+  ]).join(' ');
   return (
     <>
       <View style={styles.iconRow}>
         <View style={skillIconBlockStyle} accessibilityLabel={t`Fight: ${fight}`}>
-          <Text style={[typography.mediumGameFont, { color: colors.fight }]}>
+          <View style={space.marginRightS}>
+            <SkillIcon skill="combat" size={24} />
+          </View>
+          <Text style={typography.mediumGameFont}>
             { fight }
           </Text>
-          <View style={styles.icon}>
-            <ArkhamIcon name="combat" size={20 * fontScale} color={colors.fight} />
-          </View>
         </View>
         <View style={skillIconBlockStyle} accessibilityLabel={enemy.health_per_investigator ?
           t`Health: ${health} per investigator` : t`Health: ${health}`}>
@@ -50,32 +57,20 @@ export default function EnemyStatLine({ enemy }: Props) {
           ) }
         </View>
         <View style={skillIconBlockStyle} accessibilityLabel={t`Evade: ${evade}`}>
-          <Text style={[typography.mediumGameFont, { color: colors.evade }]}>
-            { evade }
-          </Text>
-          <View style={styles.icon}>
-            <ArkhamIcon name="agility" size={20 * fontScale} color={colors.evade} />
+          <View style={space.marginRightS}>
+            <Text style={typography.mediumGameFont}>
+              { evade }
+            </Text>
           </View>
+          <SkillIcon skill="agility" size={24} />
         </View>
       </View>
-      <View style={styles.iconRow}>
+      <View style={styles.iconRow} accessibilityLabel={damageLine}>
         { map(range(0, enemy.enemy_damage || 0), idx => (
-          <View style={{ width: 24 * fontScale }} key={idx}>
-            <ArkhamIcon
-              name="health"
-              size={24 * fontScale}
-              color={colors.health}
-            />
-          </View>
+          <HealthSanityIcon key={idx} type="health" />
         )) }
         { map(range(0, enemy.enemy_horror || 0), idx => (
-          <View style={{ width: 30 * fontScale }} key={idx}>
-            <ArkhamIcon
-              name="sanity"
-              size={24 * fontScale}
-              color={colors.sanity}
-            />
-          </View>
+          <HealthSanityIcon key={idx} type="sanity" />
         )) }
       </View>
     </>
@@ -85,8 +80,10 @@ const styles = StyleSheet.create({
   iconBlock: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 4 ,
-    paddingTop: 2,
+    paddingTop: xs,
+    paddingBottom: xs,
     paddingLeft: s,
     paddingRight: s,
     marginRight: TINY_PHONE ? xs : xs,
