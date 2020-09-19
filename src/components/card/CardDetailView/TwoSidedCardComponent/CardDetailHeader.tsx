@@ -161,7 +161,7 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
 function HeaderContent({ card, back }: { card: Card, back: boolean}) {
   const { typography } = useContext(StyleContext);
   const name = (back ? card.back_name : card.name) || card.name;
-  const subname = back ? undefined : card.subname;
+  const subname = (card.type_code !== 'location' && back) ? undefined : card.subname;
   return (
     <>
       <View style={styles.titleRow} removeClippedSubviews>

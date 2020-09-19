@@ -25,11 +25,12 @@ import { CardFaqProps } from '@components/card/CardFaqView';
 import { CardTabooProps } from '@components/card/CardTabooView';
 import { InvestigatorCardsProps } from '@components/cardlist/InvestigatorCardsView';
 import Button from '@components/core/Button';
-import EnemyStatLine from '@components/core/EnemyStatLine';
 import Card from '@data/Card';
 import SkillIcon from '@components/core/SkillIcon';
 
 import PlayerCardImage from '../PlayerCardImage';
+import EnemyStatLine from './EnemyStatLine';
+import SlotIcon from './SlotIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardDetailHeader from './CardDetailHeader';
 import CardFooterInfo from './CardFooterInfo';
@@ -214,7 +215,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             </Text>
           ) }
         </View>
-        { this.renderTestIcons(card) }
+        <View style={styles.row}>
+          { this.renderTestIcons(card) }
+          { this.renderSlot(card) }
+        </View>
         { card.type_code === 'investigator' && (
           <View style={styles.statLineRow}>
             <InvestigatorStatLine
@@ -277,16 +281,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderSlot(card: Card) {
-    const { typography } =this.context;
-    if (!card.slot) {
+    if (!card.real_slot) {
       return null;
     }
     return (
-      <View style={styles.slotBlock}>
-        <Text style={typography.cardText}>
-          { t`Slot: ${card.slot}` }
-        </Text>
-      </View>
+      <SlotIcon slot={card.real_slot} />
     );
   }
 
@@ -313,7 +312,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             { jt`Clues: ${clues}${perInvestigatorClues}` }
           </Text>
         ) }
-        { this.renderSlot(card) }
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
           <Text style={typography.cardText}>
@@ -325,7 +323,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderHealthAndSanity(card: Card) {
-    const { colors, typography } = this.context;
     if (card.type_code === 'enemy') {
       return (
         <EnemyStatLine enemy={card} />
@@ -364,6 +361,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     isFirst: boolean,
     key: string
   ) {
+    console.log(card.linked_card);
     const {
       componentId,
       simple,
@@ -385,11 +383,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
         </View>
       );
     }
-    if (!card.double_sided) {
+    if (!card.double_sided || card.type_code === 'scenario') {
       return null;
     }
 
-    if (!backFirst && card.spoiler && !this.state.showBack && card.type_code !== 'scenario') {
+    if (!backFirst && card.spoiler && !this.state.showBack) {
       return (
         <ArkhamButton
           title={t`Show back`}
@@ -605,6 +603,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 { this.renderImage(card) }
               </View>
               { !isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
+              { card.type_code === 'scenario' && !!card.back_text && (
+                <View style={[styles.gameTextBlock, {
+                  marginTop: m,
+                  borderColor: colors.M,
+                }]}>
+                  <CardTextComponent text={card.back_text} />
+                </View>)
+              }
               { isFirst && !simple && this.renderCardFooter(card) }
             </View>
           </View>

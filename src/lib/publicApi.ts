@@ -1,4 +1,4 @@
-import { chunk, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
+import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, uniqBy, values } from 'lodash';
 import { Alert } from 'react-native';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
@@ -6,6 +6,7 @@ import Card from '@data/Card';
 import Database from '@data/Database';
 import TabooSet from '@data/TabooSet';
 import FaqEntry from '@data/FaqEntry';
+import { normal } from 'react-native-color-matrix-image-filters';
 
 export const syncTaboos = async function(
   db: Database,
@@ -181,16 +182,36 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
-    const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
+    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => !!c.linked_card ? [c.code] : []));
+    const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+    const flatCards = flatMap(dedupedCards, (c: Card) => {
+      return c.linked_card ? [c, c.linked_card] : [c];
+    });
+    forEach(groupBy(flatCards, card => card.id), (dupes, id) => {
+      if (dupes.length > 1) {
+        forEach(dupes, (dupe, idx) => {
+          dupe.id = `${dupe.id}_${idx}`;
+        });
+      }
+    });
+
+    const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
     // console.log('Parsed all cards');
+    await insertChunk(flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), async(c: Card[]) => {
+      await cards.insert(c);
+    });
+    // console.log('Inserted back-link cards');
+    await insertChunk(linkedCards, async(c: Card[]) => {
+      await cards.insert(c);
+    });
+    // console.log('Inserted front link cards');
     await insertChunk(normalCards, async(c: Card[]) => {
       await cards.insert(c);
     });
-    // console.log(`Inserting linked cards.`);
-    for (let i = 0; i < linkedCards.length; i++) {
-      // console.log(`Inserting ${linkedCards[i].code} - ${linkedCards[i].name}`)
-      await cards.insert(linkedCards[i]);
-    }
+    // console.log('Inserted normal cards');
+    console.log('Inserted front link cards');
+
+
     const playerCards = await cards.createQueryBuilder()
       .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
       .getMany();

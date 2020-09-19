@@ -253,7 +253,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     return (
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <CardQuantityComponent
-          key={card.code}
+          key={card.id}
           count={deckCardCounts[card.code] || 0}
           countChanged={this._countChanged}
           limit={deck_limit}
