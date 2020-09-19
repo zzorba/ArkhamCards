@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import Switch from '@components/core/Switch';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -45,7 +45,7 @@ export default function ToggleFilter({ onChange, setting, label, value, icon, st
       <View style={styles.label}>
         <Label label={label} icon={icon} />
       </View>
-      <Switch
+      <ArkhamSwitch
         value={value}
         onValueChange={onToggle}
       />

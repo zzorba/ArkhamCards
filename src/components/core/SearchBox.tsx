@@ -5,9 +5,11 @@ import {
   View,
 } from 'react-native';
 import { Input } from 'react-native-elements';
+import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import COLORS from '@styles/colors';
+import ToggleButton from '@components/core/ToggleButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import space from '@styles/space';
 
@@ -58,25 +60,7 @@ export default class SearchBox extends React.Component<Props> {
     return (
       <View style={styles.rightButtons}>
         { this.renderClearButton(true) }
-        <TouchableOpacity onPress={toggleAdvanced}>
-          { advancedOpen ? (
-            <View style={[styles.closeIcon, { backgroundColor: COLORS.D10 }] }>
-              <AppIcon
-                name="dismiss"
-                size={22}
-                color={colors.L10}
-              />
-            </View>
-          ) : (
-            <View style={[styles.icon, { backgroundColor: COLORS.L10 }] }>
-              <AppIcon
-                name="dots"
-                size={24}
-                color={colors.D10}
-              />
-            </View>
-          ) }
-        </TouchableOpacity>
+        <ToggleButton accessibilityLabel={t`Search options`} value={!!advancedOpen} onPress={toggleAdvanced} icon="dots" />
       </View>
     );
   }
