@@ -20,6 +20,7 @@ import SealTokenButton from './SealTokenButton';
 import { flattenChaosBag } from './campaignUtil';
 import space, { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 
 interface OwnProps {
   componentId: string;
@@ -318,14 +319,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             { this.renderDrawButton() }
           </View>
         </View>
-        <View style={[styles.header, { backgroundColor: colors.L10 }]}>
-          <Text style={typography.subHeaderText}>
-            { t`Drawn` }
-          </Text>
-          <Text style={typography.subHeaderText}>
-            { t`Total` } ({ chaosBagResults.totalDrawnTokens })
-          </Text>
-        </View>
+        <CardSectionHeader section={{ subTitle: t`Drawn`, subTitleDetail: t`Total (${chaosBagResults.totalDrawnTokens})` }} />
         <View style={styles.container}>
           <View style={styles.drawnTokenRow}>
             { this.renderDrawnTokens() }
@@ -334,11 +328,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             { this.renderClearButton() }
           </View>
         </View>
-        <View style={[styles.header, { backgroundColor: colors.L10 }]}>
-          <Text style={typography.subHeaderText}>
-            { t`Bless / Curse Tokens` }
-          </Text>
-        </View>
+        <CardSectionHeader section={{ subTitle: t`Bless / Curse Tokens` }} />
         <View style={styles.container}>
           <CounterRow
             value={chaosBagResults.blessTokens || 0}
@@ -357,11 +347,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
             label={t`Curse`}
           />
         </View>
-        <View style={[styles.header, { backgroundColor: colors.L10 }]}>
-          <Text style={typography.subHeaderText}>
-            { t`Sealed Tokens` }
-          </Text>
-        </View>
+        <CardSectionHeader section={{ subTitle: t`Sealed Tokens` }} />
         <View style={styles.container}>
           { chaosBagResults.sealedTokens.length > 0 && <View style={styles.drawnTokenRow}>
             { this.renderSealedTokens() }

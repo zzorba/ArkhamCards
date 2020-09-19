@@ -196,10 +196,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <Text style={[typography.small, typography.bold]}>
         { flatten([
-          [card.type_name],
+          [(card.type_code === 'agenda' || card.type_code === 'act') ? `${card.type_name} ${card.stage}` : card.type_name],
           card.subtype_name ? [card.subtype_name] : [],
           card.slot ? [card.slot] : [],
-          (card.type_code === 'agenda' || card.type_code === 'act') ? [t`Stage ${card.stage}`] : []
         ]).join(' · ') }
       </Text>
     );
@@ -305,18 +304,18 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     return (
       <View>
         { card.type_code === 'agenda' && (
-          <Text style={typography.cardText}>
+          <Text style={typography.small}>
             { t`Doom: ${doom}` }
           </Text>
         ) }
         { !!(card.type_code === 'act' && card.clues && card.clues > 0) && (
-          <Text style={typography.cardText}>
+          <Text style={typography.small}>
             { jt`Clues: ${clues}${perInvestigatorClues}` }
           </Text>
         ) }
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
-          <Text style={typography.cardText}>
+          <Text style={typography.small}>
             { jt`Shroud: ${shroud}. Clues: ${clues}${perInvestigatorClues}.` }
           </Text>)
         }
@@ -416,14 +415,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
                 <View style={styles.metadataBlock}>
-                  <Text style={[typography.cardText, styles.typeText]}>
-                    { card.type_name }
-                    { (card.type_code === 'act' || card.type_code === 'agenda') ?
-                      ` ${card.stage}` :
-                      '' }
-                  </Text>
+                  { this.renderType(card) }
                   { !!card.traits && (
-                    <Text style={[typography.cardText, styles.traitsText]}>
+                    <Text style={[typography.small, styles.traitsText]}>
                       { card.traits }
                     </Text>
                   ) }
@@ -527,12 +521,12 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           </View>)
         }
         { ('victory' in card && card.victory !== null) &&
-          <Text style={[typography.cardText, styles.typeText]}>
+          <Text style={[typography.small, typography.bold]}>
             { t`Victory: ${card.victory}.` }
           </Text>
         }
         { ('vengeance' in card && card.vengeance !== null) &&
-          <Text style={[typography.cardText, styles.typeText]}>
+          <Text style={[typography.small, typography.bold]}>
             { t`Vengeance: ${card.vengeance}.` }
           </Text>
         }
@@ -756,6 +750,7 @@ const styles = StyleSheet.create({
   testIcon: {
     marginRight: xs,
     padding: 2,
+    paddingBottom: 4,
     borderRadius: 8,
   },
   testIconColumn: {

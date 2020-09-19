@@ -3,11 +3,12 @@ import { Navigation } from 'react-native-navigation';
 
 import MyDecksComponent from '@components/decklist/MyDecksComponent';
 import { Deck } from '@actions/types';
+import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 
 interface Props {
   componentId: string;
   onDeckSelect: (deck: Deck) => void;
-  customHeader: React.ReactNode;
+  searchOptions?: SearchOptions;
 
   onlyDeckIds?: number[];
   onlyInvestigators?: string[];
@@ -28,7 +29,7 @@ export default class DeckSelectorTab extends React.Component<Props> {
   render() {
     const {
       componentId,
-      customHeader,
+      searchOptions,
       filterInvestigators,
       filterDeckIds,
       onlyDeckIds,
@@ -38,7 +39,7 @@ export default class DeckSelectorTab extends React.Component<Props> {
     return (
       <MyDecksComponent
         componentId={componentId}
-        customHeader={customHeader}
+        searchOptions={searchOptions}
         deckClicked={this._deckSelected}
         onlyDeckIds={onlyDeckIds}
         onlyInvestigators={onlyInvestigators}

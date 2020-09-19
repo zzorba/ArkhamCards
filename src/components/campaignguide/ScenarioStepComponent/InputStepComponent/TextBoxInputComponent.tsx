@@ -65,7 +65,7 @@ export default class TextBoxInputComponent extends React.Component<Props, State>
               <SetupStepWrapper>
                 { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
                 <TextInput
-                  style={[styles.textInput, borderStyle, typography.black]}
+                  style={[styles.textInput, borderStyle, typography.dark]}
                   onChangeText={this._onChangeText}
                   onSubmitEditing={this._submit}
                   returnKeyType="done"

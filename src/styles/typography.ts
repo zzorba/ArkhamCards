@@ -5,35 +5,17 @@ import COLORS from './colors';
 const sizeScale = 1;
 
 export default StyleSheet.create({
-  header: {
-    fontFamily: 'System',
-    fontSize: 24 * sizeScale,
-    lineHeight: 32 * sizeScale,
-    fontWeight: '600',
-    color: COLORS.darkText,
-  },
-  cardText: {
-    fontFamily: 'System',
-    fontSize: isBig ? 18 : 14,
-    lineHeight: isBig ? 22 : 18,
-    color: COLORS.darkText,
-  },
   searchLabel: {
     fontFamily: 'Alegreya-Regular',
     fontSize: 16 * sizeScale,
     lineHeight: 20 * sizeScale,
     color: COLORS.L20,
   },
-  cardName: {
-    fontFamily: 'Alegreya-Medium',
-    fontSize: 20 * sizeScale,
-    lineHeight: 24 * sizeScale,
-    color: COLORS.darkText,
-  },
-  cardSubName: {
-    fontFamily: 'Alegreya-Italic',
+  smallLabel: {
+    fontFamily: 'Alegreya-Regular',
     fontSize: 14 * sizeScale,
     lineHeight: 18 * sizeScale,
+    letterSpacing: 0.3,
     color: COLORS.lightText,
   },
   small: {
@@ -42,7 +24,19 @@ export default StyleSheet.create({
     lineHeight: 18 * sizeScale,
     color: COLORS.darkText,
   },
-  cardButton: {
+  large: {
+    fontFamily: 'Alegreya-Medium',
+    fontSize: 20 * sizeScale,
+    lineHeight: 24 * sizeScale,
+    color: COLORS.darkText,
+  },
+  header: {
+    fontFamily: 'Alegreya-Bold',
+    fontSize: 24 * sizeScale,
+    lineHeight: 32 * sizeScale,
+    color: COLORS.darkText,
+  },
+  button: {
     fontFamily: 'Alegreya-Regular',
     fontSize: 18 * sizeScale,
     lineHeight: 22 * sizeScale,
@@ -61,41 +55,18 @@ export default StyleSheet.create({
     lineHeight: 22 * sizeScale,
     color: COLORS.darkText,
   },
-  smallLabel: {
-    fontFamily: 'System',
-    fontSize: 12 * sizeScale,
-    lineHeight: 18 * sizeScale,
-    letterSpacing: 0.3,
-    color: COLORS.lightText,
-  },
-  categoryHeader: {
-    fontFamily: 'System',
-    fontSize: 12 * sizeScale,
-    lineHeight: 18 * sizeScale,
-    letterSpacing: 0.3,
-    color: COLORS.darkText,
-  },
-  label: {
-    fontFamily: 'System',
-    fontSize: 16 * sizeScale,
-    marginRight: 8 * sizeScale,
-    color: COLORS.darkText,
-  },
-  bigLabel: {
-    fontFamily: 'System',
-    fontSize: 22 * sizeScale,
-    lineHeight: 28 * sizeScale,
-    color: COLORS.darkText,
-  },
   regular: {
     fontFamily: 'Alegreya-Regular',
+    fontWeight: '400',
   },
   bold: {
     fontFamily: 'Alegreya-Bold',
+    fontWeight: '700',
     color: COLORS.darkText,
   },
   boldItalic: {
     fontFamily: 'Alegreya-ExtraBoldItalic',
+    fontWeight: '700',
     color: COLORS.darkText,
   },
   italic: {
@@ -135,41 +106,28 @@ export default StyleSheet.create({
   right: {
     textAlign: 'right',
   },
-  strike: {
-    textDecorationLine: 'line-through',
-  },
   center: {
     textAlign: 'center',
   },
-  error: {
-    color: COLORS.red,
+  strike: {
+    textDecorationLine: 'line-through',
   },
   underline: {
     textDecorationLine: 'underline',
   },
-  settingsLabel: {
-    flex: 1,
-    paddingLeft: m,
-    paddingRight: s,
-    fontSize: 16,
-  },
-  settingsValue: {
-    color: COLORS.darkGray,
-    fontSize: 14,
-    flex: 0,
-    paddingLeft: s,
-    paddingRight: m,
-  },
-  darkGray: {
-    color: COLORS.lightText,
+  uppercase: {
+    textTransform: 'uppercase',
   },
   white: {
     color: COLORS.white,
   },
-  uppercase: {
-    textTransform: 'uppercase',
+  error: {
+    color: COLORS.red,
   },
-  black: {
+  dark: {
     color: COLORS.darkText,
+  },
+  light: {
+    color: COLORS.lightText,
   },
 });

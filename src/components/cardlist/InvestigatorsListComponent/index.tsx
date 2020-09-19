@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
-import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
 import Card from '@data/Card';
@@ -35,7 +35,7 @@ interface OwnProps {
   onPress: (investigator: Card) => void;
   filterInvestigators?: string[];
   onlyInvestigators?: string[];
-  customHeader?: React.ReactNode;
+  searchOptions?: SearchOptions;
   customFooter?: React.ReactNode;
 }
 
@@ -354,19 +354,8 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     );
   };
 
-  _renderCustomHeader = (): React.ReactElement | null => {
-    const { customHeader } = this.props;
-    if (!customHeader) {
-      return null;
-    }
-    return (
-      <>
-        { customHeader }
-      </>
-    );
-  };
-
   render() {
+    const { searchOptions } = this.props;
     const {
       searchTerm,
     } = this.state;
@@ -375,6 +364,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
         prompt={t`Search`}
         searchTerm={searchTerm}
         onSearchChange={this._searchUpdated}
+        advancedOptions={searchOptions}
       >
         { onScroll => (
           <SectionList
@@ -385,7 +375,6 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
             sections={this.groupedInvestigators()}
             renderSectionHeader={this._renderSectionHeader}
             renderSectionFooter={this._renderSectionFooter}
-            ListHeaderComponent={this._renderCustomHeader}
             ListFooterComponent={this._renderFooter}
             renderItem={this._renderItem}
             initialNumToRender={24}

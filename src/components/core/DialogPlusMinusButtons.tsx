@@ -34,7 +34,7 @@ export default function DialogPlusMinusButtons({
         { label }
       </Text>
       <View style={styles.buttonsRow}>
-        <Text style={[typography.label, styles.labelText]}>
+        <Text style={[typography.small, styles.labelText]}>
           { value }
         </Text>
         <PlusMinusButtons

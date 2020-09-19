@@ -380,7 +380,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
         </View>
         { this.renderSpecialTokenInputs() }
         <View style={[styles.sectionRow, borderStyle]}>
-          <Text style={typography.label}>{ t`Chaos Bag` }</Text>
+          <Text style={typography.small}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={chaosBag}
           />

@@ -4,11 +4,12 @@ import { Navigation } from 'react-native-navigation';
 import { SortType } from '@actions/types';
 import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListComponent';
 import Card from '@data/Card';
+import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 
 interface Props {
   componentId: string;
   onInvestigatorSelect: (card: Card) => void;
-  customHeader: React.ReactNode;
+  searchOptions?: SearchOptions;
   sort: SortType;
 
   onlyDeckIds?: number[];
@@ -29,7 +30,7 @@ export default class InvestigatorSelectorTab extends React.Component<Props> {
   render() {
     const {
       componentId,
-      customHeader,
+      searchOptions,
       filterInvestigators,
       sort,
     } = this.props;
@@ -39,7 +40,7 @@ export default class InvestigatorSelectorTab extends React.Component<Props> {
         componentId={componentId}
         hideDeckbuildingRules
         sort={sort}
-        customHeader={customHeader}
+        searchOptions={searchOptions}
         onPress={this._investigatorSelected}
         filterInvestigators={filterInvestigators}
       />

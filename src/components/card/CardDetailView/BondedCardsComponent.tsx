@@ -1,24 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { map } from 'lodash';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { find, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
 import Database from '@data/Database';
 import DbRender from '@components/data/DbRender';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from '@data/Card';
-import { where } from '@data/query';
 import { getTabooSet, AppState } from '@reducers';
-import { m, s } from '@styles/space';
+import CardDetailSectionHeader from './CardDetailSectionHeader';
+import FilterBuilder from '@lib/filters';
 
 interface OwnProps {
   componentId?: string;
-  card?: Card;
+  cards: Card[];
   width: number;
 }
 
@@ -35,25 +30,32 @@ interface BondedCards {
 
 class BondedCardsComponent extends React.Component<Props> {
   async bondedToCards(db: Database): Promise<Card[]> {
-    const { card, tabooSetId } = this.props;
-    if (!card || !card.bonded_name) {
+    const { cards, tabooSetId } = this.props;
+    if (!find(cards, card => !!card.bonded_name)) {
       return [];
     }
-    return await db.getCards(
-      where('c.real_name = :bonded_name', { bonded_name: card.bonded_name }),
-      tabooSetId
+    const filterBuilder = new FilterBuilder('bonded_to');
+    const query = filterBuilder.bondedFilter(
+      'real_name',
+      flatMap(cards, card => card.bonded_name ? [card.bonded_name] : [])
     );
+    if (!query) {
+      return [];
+    }
+    return await db.getCards(query, tabooSetId);
   }
 
   async bondedFromCards(db: Database): Promise<Card[]> {
-    const { card, tabooSetId } = this.props;
-    if (!card) {
+    const { cards, tabooSetId } = this.props;
+    if (!cards) {
       return [];
     }
-    return await db.getCards(
-      where('c.bonded_name == :real_name', { real_name: card.real_name }),
-      tabooSetId
-    );
+    const filterBuilder = new FilterBuilder('bonded_from');
+    const query = filterBuilder.bondedFilter('bonded_name', map(cards, card => card.real_name));
+    if (!query) {
+      return [];
+    }
+    return await db.getCards(query, tabooSetId);
   }
 
   _getBondedCards = async(db: Database): Promise<BondedCards> => {
@@ -80,12 +82,10 @@ class BondedCardsComponent extends React.Component<Props> {
       return null;
     }
     return (
-      <React.Fragment>
+      <>
         { !!(bonded_to_cards && bonded_to_cards.length) && (
-          <React.Fragment>
-            <View style={styles.bondedContainer}>
-              <Text style={styles.header}>{ t`Bonded` }</Text>
-            </View>
+          <>
+            <CardDetailSectionHeader title={t`Bonded`} />
             { map(bonded_to_cards, card => (
               <TwoSidedCardComponent
                 componentId={componentId}
@@ -94,13 +94,11 @@ class BondedCardsComponent extends React.Component<Props> {
                 width={width}
               />
             )) }
-          </React.Fragment>
+          </>
         ) }
         { !!(bonded_from_cards && bonded_from_cards.length) && (
-          <React.Fragment>
-            <View style={styles.bondedContainer}>
-              <Text style={styles.header}>{ t`Bound Cards` }</Text>
-            </View>
+          <>
+            <CardDetailSectionHeader title={t`Bound Cards`} />
             { map(bonded_from_cards, card => (
               <TwoSidedCardComponent
                 key={card.code}
@@ -109,18 +107,18 @@ class BondedCardsComponent extends React.Component<Props> {
                 width={width}
               />
             )) }
-          </React.Fragment>
+          </>
         ) }
-      </React.Fragment>
+      </>
     );
   };
 
   render() {
     const {
-      card,
+      cards,
     } = this.props;
     return (
-      <DbRender name="bonded" getData={this._getBondedCards} ids={card ? [card.id] : []}>
+      <DbRender name="bonded" getData={this._getBondedCards} ids={map(cards, c => c.id)}>
         { this._render }
       </DbRender>
     );
@@ -136,18 +134,3 @@ function mapStateToProps(state: AppState): ReduxProps {
 export default connect<ReduxProps, unknown, OwnProps, AppState>(
   mapStateToProps
 )(BondedCardsComponent);
-
-const styles = StyleSheet.create({
-  header: {
-    marginTop: m + s,
-    paddingLeft: s,
-    fontSize: 24,
-    lineHeight: 32,
-    fontWeight: '600',
-    fontFamily: 'System',
-  },
-  bondedContainer: {
-    width: '100%',
-    maxWidth: 768,
-  },
-});

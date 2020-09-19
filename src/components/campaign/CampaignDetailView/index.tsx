@@ -476,54 +476,54 @@ class CampaignDetailView extends React.Component<Props, State> {
         <SettingsButton
           onPress={this._editNamePressed}
           title={t`Name`}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           description={campaign.name}
-          descriptionStyle={typography.black}
+          descriptionStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._viewScenarios}
           title={t`Scenario History`}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._addScenarioResult}
           title={t`Record Scenario Results`}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <CardSectionHeader section={{ title: t`Chaos Bag` }} />
         <SettingsButton
           title={t`Edit Tokens`}
           onPress={this._editChaosBag}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Draw Tokens`}
           onPress={this._drawChaosBag}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Odds Calculator`}
           onPress={this._oddsCalculatorPressed}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <CardSectionHeader section={{ title: t`Weakness Set` }} />
         <SettingsButton
           title={t`Draw Basic Weakness`}
           onPress={this._showDrawWeakness}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <CardSectionHeader section={{ title: t`Options` }} />
         <SettingsButton
           onPress={this._showShareSheet}
           title={t`Share`}
-          titleStyle={typography.black}
+          titleStyle={typography.dark}
           containerStyle={backgroundStyle}
         />
         <SettingsButton

@@ -81,7 +81,7 @@ export default class FactionChart extends React.PureComponent<Props> {
     }
     return (
       <View style={styles.wrapper}>
-        <Text style={[typography.bigLabel, typography.center]}>
+        <Text style={[typography.large, typography.center]}>
           { t`Card Factions` }
         </Text>
         <VictoryChart width={width}>
@@ -90,8 +90,9 @@ export default class FactionChart extends React.PureComponent<Props> {
               axis: { stroke: 'none' },
               tickLabels: {
                 fontSize: 18,
-                fontFamily: 'System',
+                fontFamily: typography.large.fontFamily,
                 fontWeight: '400',
+                fill: colors.darkText,
               },
             }}
             tickLabelComponent={
@@ -114,7 +115,7 @@ export default class FactionChart extends React.PureComponent<Props> {
                 labels: {
                   fill: 'white',
                   fontSize: 14,
-                  fontFamily: 'System',
+                  fontFamily: typography.bold.fontFamily,
                   fontWeight: '700',
                 },
               }}
@@ -135,7 +136,7 @@ export default class FactionChart extends React.PureComponent<Props> {
                 labels: {
                   fill: 'white',
                   fontSize: 14,
-                  fontFamily: 'System',
+                  fontFamily: typography.bold.fontFamily,
                   fontWeight: '700',
                 },
               }}

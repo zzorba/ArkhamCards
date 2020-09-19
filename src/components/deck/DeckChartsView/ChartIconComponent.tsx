@@ -36,7 +36,7 @@ export default class ChartIconComponent extends React.Component<Props> {
       case 'neutral':
       case 'dual':
       case 'mythos':
-        return colors.faction[text].background;
+        return colors.faction[text].text;
       case 'willpower':
       case 'agility':
       case 'combat':
@@ -44,7 +44,7 @@ export default class ChartIconComponent extends React.Component<Props> {
       case 'wild':
         return colors.skill[text].icon;
       default:
-        return '#444';
+        return colors.M;
     }
   }
 

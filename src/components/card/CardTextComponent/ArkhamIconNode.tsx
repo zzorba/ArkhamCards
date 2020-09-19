@@ -13,6 +13,7 @@ const BAD_ICON_NAMES: { [key: string]: string | undefined} = {
   lightning: 'free',
   lighting: 'free',
   fast: 'free',
+  willlpower: 'willpower',
   'auto-fail': 'auto_fail',
 };
 

@@ -269,7 +269,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       <View style={styles.cardNameBlock}>
         <View style={styles.row}>
           <Text style={[
-            typography.cardName,
+            typography.large,
             { color },
             invalid ? { textDecorationLine: 'line-through' } : {},
           ]} numberOfLines={1} ellipsizeMode="clip">
@@ -286,7 +286,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           { this.renderSkillIcons() }
           { !!card.renderSubname && (
             <View style={styles.row}>
-              <Text style={[typography.cardSubName, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
+              <Text style={[typography.small, typography.italic, typography.light,, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
                 { card.renderSubname }
               </Text>
             </View>

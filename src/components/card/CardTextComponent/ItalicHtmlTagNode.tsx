@@ -14,7 +14,7 @@ export default function ItalicHtmlTagNode({ typography }: StyleContextType) {
     return (
       <Text
         key={state.key}
-        style={[typography.italic, typography.black]}
+        style={[typography.italic, typography.dark]}
       >
         { output(node.children, state) }
       </Text>

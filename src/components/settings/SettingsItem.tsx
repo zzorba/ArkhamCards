@@ -43,7 +43,7 @@ export default function SettingsItem({ loading, navigation, text, onPress }: Pro
     <SettingsButton
       onPress={onPress || dummyOnPress}
       title={text}
-      titleStyle={{ color: colors.darkText }}
+      titleStyle={typography.text}
       containerStyle={{
         backgroundColor: colors.background,
         borderColor: colors.divider,

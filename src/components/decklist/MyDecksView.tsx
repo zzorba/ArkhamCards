@@ -31,6 +31,10 @@ interface State {
   localDecksOnly: boolean;
 }
 
+function searchOptionsHeight(fontScale: number) {
+  return 20 + (fontScale * 20 + 8) + 12;
+}
+
 class MyDecksView extends React.Component<Props, State> {
   static contextType = StyleContext;
   context!: StyleContextType;
@@ -150,10 +154,14 @@ class MyDecksView extends React.Component<Props, State> {
   }
 
   render() {
+    const { fontScale } = this.context;
     return (
       <MyDecksComponent
         componentId={this.props.componentId}
-        customHeader={this.renderCustomHeader()}
+        searchOptions={{
+          controls: this.renderCustomHeader(),
+          height: searchOptionsHeight(fontScale),
+        }}
         customFooter={this.renderCustomFooter()}
         deckClicked={this._deckNavClicked}
         onlyDeckIds={this.onlyDeckIds()}

@@ -16,33 +16,29 @@ interface Props {
 }
 
 export default function ChaosBagLine({ chaosBag }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors, fontScale, typography } = useContext(StyleContext);
   const bagKeys = sortBy(
     keys(chaosBag),
     (token: ChaosTokenType) => CHAOS_TOKEN_ORDER[token]);
   return (
-    <StyleContext.Consumer>
-      { ({ fontScale }) => (
-        <View style={[styles.row, space.marginBottomXs]}>
-          { map(bagKeys, (token: ChaosTokenType, tokenIdx: number) => (
-            map(range(0, chaosBag[token] || 0), idx => {
-              const isLast = (idx === ((chaosBag[token] || 0) - 1)) &&
-                (tokenIdx === (bagKeys.length - 1));
-              return (
-                <View key={`${token}-${idx}`} style={styles.commaView}>
-                  <ChaosTokenIcon
-                    icon={token}
-                    size={24 * iconSizeScale * fontScale}
-                    color={colors.darkText}
-                  />
-                  { !isLast && <Text style={typography.header}>, </Text> }
-                </View>
-              );
-            })
-          )) }
-        </View>
-      ) }
-    </StyleContext.Consumer>
+    <View style={[styles.row, space.marginBottomXs]}>
+      { map(bagKeys, (token: ChaosTokenType, tokenIdx: number) => (
+        map(range(0, chaosBag[token] || 0), idx => {
+          const isLast = (idx === ((chaosBag[token] || 0) - 1)) &&
+            (tokenIdx === (bagKeys.length - 1));
+          return (
+            <View key={`${token}-${idx}`} style={styles.commaView}>
+              <ChaosTokenIcon
+                icon={token}
+                size={24 * iconSizeScale * fontScale}
+                color={colors.darkText}
+              />
+              { !isLast && <Text style={typography.header}>, </Text> }
+            </View>
+          );
+        })
+      )) }
+    </View>
   );
 }
 

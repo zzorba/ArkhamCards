@@ -110,7 +110,7 @@ export default class PickerStyleButton extends React.Component<Props> {
               ellipsizeMode="tail"
               style={[
                 style.defaultValueStyle,
-                typography.label,
+                typography.small,
                 {
                   color: colors ? colors.textColor : this.context.colors.darkText,
                   fontWeight: '400',

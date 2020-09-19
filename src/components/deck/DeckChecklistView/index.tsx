@@ -141,7 +141,7 @@ class DeckChecklistView extends React.Component<Props, State> {
     return (
       <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
         <TouchableOpacity onPress={this._clearChecklist} disabled={!checklist.size}>
-          <Text style={[typography.text, checklist.size ? styles.clearText : typography.darkGray]}>{t`Clear`}</Text>
+          <Text style={[typography.text, checklist.size ? styles.clearText : typography.light]}>{t`Clear`}</Text>
         </TouchableOpacity>
       </View>
     );

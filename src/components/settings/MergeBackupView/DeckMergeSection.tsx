@@ -71,7 +71,7 @@ export default class DeckMergeSection extends React.Component<Props, State> {
     });
     return (
       <View style={[styles.headerRow, { backgroundColor: colors.L10 }, borderStyle, space.paddingS, space.paddingLeftM]}>
-        <Text style={typography.label}>
+        <Text style={typography.small}>
           { title } ({selected} / {decks.length})
         </Text>
         { !inverted && (

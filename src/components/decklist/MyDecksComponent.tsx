@@ -23,6 +23,7 @@ import COLORS from '@styles/colors';
 import space, { m, s, xs } from '@styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { SearchOptions } from '@components/core/CollapsibleSearchBox';
 
 interface OwnProps {
   componentId: string;
@@ -31,7 +32,7 @@ interface OwnProps {
   onlyInvestigators?: string[];
   filterDeckIds?: number[];
   filterInvestigators?: string[];
-  customHeader?: ReactNode;
+  searchOptions?: SearchOptions;
   customFooter?: ReactNode;
 }
 
@@ -179,7 +180,7 @@ class MyDecksComponent extends React.Component<Props> {
       onlyDeckIds,
       deckToCampaign,
       signedIn,
-      customHeader,
+      searchOptions,
     } = this.props;
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterDeckIdsSet = new Set(filterDeckIds);
@@ -192,7 +193,7 @@ class MyDecksComponent extends React.Component<Props> {
     });
     return (
       <DeckListComponent
-        searchControls={customHeader}
+        searchOptions={searchOptions}
         customHeader={this.renderHeader()}
         customFooter={this.renderFooter()}
         deckIds={deckIds}

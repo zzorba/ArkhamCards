@@ -14,6 +14,7 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import typography from '@styles/typography';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -174,7 +175,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
     return (
       <View style={styles.controlsContainer}>
         <View style={[styles.drawButtonRow, { backgroundColor: colors.L10 }]}>
-          <Text style={[styles.text, { color: colors.darkText }]}>{ t`Draw: ` }</Text>
+          <Text style={[typography.button, { color: colors.darkText }]}>{ t`Draw: ` }</Text>
           <View style={styles.buttonContainer}>
             <Button
               title="1"
@@ -296,11 +297,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-  },
-  text: {
-    fontFamily: 'System',
-    fontSize: 18,
-    lineHeight: 22,
   },
   buttonContainer: {
     flex: 1,

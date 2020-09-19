@@ -29,7 +29,7 @@ export default function EditText({
       title={title}
       titleStyle={
         settingsStyle ?
-          { ...typography.label, paddingLeft: 0 } :
+          { ...typography.large, paddingLeft: 0 } :
           { ...typography.mediumGameFont, fontFamily: gameFont }}
       dialogDescription={dialogDescription}
       valuePlaceholder={placeholder}
@@ -38,7 +38,8 @@ export default function EditText({
         ellipsizeMode: 'clip',
       }}
       valueStyle={{
-        ...styles.value,
+        ...typography.large,
+        ...typography.left,
         color: colors.darkText,
       }}
       onValueChange={onValueChange}
@@ -56,11 +57,6 @@ export default function EditText({
 }
 
 const styles = StyleSheet.create({
-  value: {
-    fontFamily: 'System',
-    fontSize: 16,
-    textAlign: 'left',
-  },
   container: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',

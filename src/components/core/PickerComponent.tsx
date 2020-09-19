@@ -168,7 +168,7 @@ export default class PickerComponent extends React.Component<Props> {
             },
           },
           list: {
-            itemText: typography.label,
+            itemText: typography.small,
             itemColor: colors ? colors.modalColor : COLORS.lightBlue,
             scrollView: {
               backgroundColor: this.context.colors.background,
@@ -183,6 +183,7 @@ export default class PickerComponent extends React.Component<Props> {
           backgroundColor: 'transparent',
         }}
         titleStyle={settingsStyle ? {
+          ...typography.text,
           color: colors ? colors.textColor : this.context.colors.darkText,
         } : {
           ...typography.mediumGameFont,
@@ -195,7 +196,7 @@ export default class PickerComponent extends React.Component<Props> {
           ellipsizeMode: 'tail',
         }}
         valueStyle={{
-          ...typography.label,
+          ...typography.large,
           color: colors ? colors.textColor : this.context.colors.darkText,
           fontWeight: '400',
           textAlign: 'right',

@@ -40,7 +40,7 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
         >
           <View pointerEvents="box-none" style={styles.row}>
             <ArkhamIcon name="wild" size={18 * fontScale} color={colors.D20} />
-            <Text style={[typography.cardButton, { marginLeft: height / 4, color: colors.D20 }]}>
+            <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
               { t`FAQ` }
             </Text>
           </View>
@@ -61,7 +61,7 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
         >
           <View pointerEvents="box-none" style={styles.row}>
             <AppIcon name="taboo" size={18 * fontScale} color={colors.D20} />
-            <Text style={[typography.cardButton, { marginLeft: height / 4, color: colors.D20 }]}>
+            <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
               { t`Taboo` }
             </Text>
           </View>
@@ -83,7 +83,7 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
     >
       <View pointerEvents="box-none" style={styles.row}>
         <ArkhamIcon name="wild" size={18 * fontScale} color={colors.D20} />
-        <Text style={[typography.cardButton, { marginLeft: height / 4, color: colors.D20 }]}>
+        <Text style={[typography.button, { marginLeft: height / 4, color: colors.D20 }]}>
           { t`FAQ` }
         </Text>
       </View>

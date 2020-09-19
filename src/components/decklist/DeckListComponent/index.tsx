@@ -12,7 +12,7 @@ import { t } from 'ttag';
 import DeckList from './DeckList';
 import { Campaign, Deck, DecksMap } from '@actions/types';
 import Card from '@data/Card';
-import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
 import { getAllDecks, AppState } from '@reducers';
 import space, { s } from '@styles/space';
@@ -26,7 +26,7 @@ interface OwnProps {
   deckToCampaign?: { [id: number]: Campaign };
   customHeader?: ReactNode;
   customFooter?: ReactNode;
-  searchControls?: ReactNode;
+  searchOptions?: SearchOptions;
   isEmpty?: boolean;
 }
 
@@ -44,10 +44,6 @@ type Props = OwnProps &
 
 interface State {
   searchTerm: string;
-}
-
-function searchOptionsHeight(fontScale: number) {
-  return 20 + (fontScale * 20 + 8) + 12;
 }
 
 class DeckListComponent extends React.Component<Props, State> {
@@ -145,7 +141,7 @@ class DeckListComponent extends React.Component<Props, State> {
       decks,
       deckIds,
       deckToCampaign,
-      searchControls,
+      searchOptions,
     } = this.props;
     const { fontScale } = this.context;
     const { searchTerm } = this.state;
@@ -154,10 +150,7 @@ class DeckListComponent extends React.Component<Props, State> {
         searchTerm={searchTerm}
         onSearchChange={this._searchChanged}
         prompt={t`Search decks`}
-        advancedOptions={searchControls ? {
-          controls: searchControls,
-          height: searchOptionsHeight(fontScale),
-        } : undefined}
+        advancedOptions={searchOptions}
       >
         { onScroll => (
           <DeckList

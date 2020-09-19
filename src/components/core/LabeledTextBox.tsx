@@ -32,7 +32,7 @@ export default function LabeledTextBox({
   const viewStyle = column ? styles.column : styles.row;
   return (
     <View style={[viewStyle, style]}>
-      <Text style={[column ? typography.smallLabel : typography.label, { color: colors.darkText }]}>
+      <Text style={[column ? typography.smallLabel : typography.small, { color: colors.darkText }]}>
         { column ? label.toUpperCase() : `${label}:` }
       </Text>
       <TouchableOpacity onPress={onPress} style={column ? {} : styles.grow}>

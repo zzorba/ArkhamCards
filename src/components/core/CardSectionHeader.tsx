@@ -20,6 +20,7 @@ export interface CardSectionHeaderData {
   superTitleIcon?: string;
   title?: string;
   subTitle?: string;
+  subTitleDetail?: string;
   placeholder?: boolean;
   onPress?: () => void;
 }
@@ -52,7 +53,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     return (
       <>
         <View style={styles.superHeaderPadding}>
-          <Text style={[typography.cardName, styles.superHeaderText]}>
+          <Text style={[typography.large, styles.superHeaderText]}>
             { superTitle }
           </Text>
         </View>
@@ -131,6 +132,11 @@ export default class CardSectionHeader extends React.Component<Props> {
           <Text style={[typography.subHeaderText, styles.subHeaderText]}>
             { section.subTitle }
           </Text>
+          { !!section.subTitleDetail && (
+            <Text style={[typography.subHeaderText, styles.subHeaderText]}>
+              { section.subTitleDetail }
+            </Text>
+          )}
         </View>
       );
     }
@@ -177,9 +183,9 @@ const styles = StyleSheet.create({
   subHeaderRow: {
     paddingLeft: m,
     paddingRight: s,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   subHeaderText: {

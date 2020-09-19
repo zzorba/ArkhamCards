@@ -56,14 +56,14 @@ export default class CostChart extends React.PureComponent<Props> {
       },
       width,
     } = this.props;
-    const { typography } = this.context;
+    const { typography, colors } = this.context;
     const barData = filter(
       map(costHistogram, (_, idx) => this.getCostData(idx)),
       item => item.alwaysShow || item.value > 0
     );
     return (
       <View style={[styles.wrapper, space.marginBottomL, { width }]}>
-        <Text style={[typography.bigLabel, typography.center]}>
+        <Text style={[typography.large, typography.center]}>
           { t`Card Costs` }
         </Text>
         <VictoryChart width={width}>
@@ -72,8 +72,9 @@ export default class CostChart extends React.PureComponent<Props> {
               axis: { stroke: 'none' },
               tickLabels: {
                 fontSize: 18,
-                fontFamily: 'System',
+                fontFamily: typography.large.fontFamily,
                 fontWeight: '400',
+                fill: colors.darkText,
               },
             }}
           />
@@ -91,7 +92,7 @@ export default class CostChart extends React.PureComponent<Props> {
               labels: {
                 fill: 'white',
                 fontSize: 14,
-                fontFamily: 'System',
+                fontFamily: typography.bold.fontFamily,
                 fontWeight: '700',
               },
             }}
