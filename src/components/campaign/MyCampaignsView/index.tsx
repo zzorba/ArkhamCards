@@ -22,6 +22,7 @@ import { getAllDecks, getCampaigns, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import { m } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface OwnProps {
   componentId: string;
@@ -159,7 +160,8 @@ class MyCampaignsView extends React.Component<Props, State> {
     return (
       <View>
         { this.renderConditionalFooter(campaigns) }
-        <BasicButton
+        <ArkhamButton
+          icon="campaign"
           title={t`New Campaign`}
           onPress={this._showNewCampaignDialog}
         />

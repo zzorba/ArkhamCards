@@ -21,7 +21,7 @@ interface Props {
   color?: string;
 }
 export default function NavButton({ disabled, text, onPress, color, indent, children, noBorder }: Props) {
-  const { fontScale, borderStyle, typography } = useContext(StyleContext);
+  const { fontScale, borderStyle, typography, colors } = useContext(StyleContext);
   return (
     <TouchableOpacity onPress={onPress} disabled={!!disabled}>
       <View style={[
@@ -45,7 +45,7 @@ export default function NavButton({ disabled, text, onPress, color, indent, chil
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={color || 'rgb(0, 122,255)'}
+              color={color || colors.M}
             />
           ) }
         </View>

@@ -350,7 +350,7 @@ class CardFilterView extends React.Component<Props> {
             max={defaultFilterState.level[1]}
             height={2}
           >
-            <View>
+            <View style={styles.xpSection}>
               <ToggleFilter
                 label={t`Exceptional`}
                 setting="exceptional"
@@ -589,6 +589,11 @@ const styles = StyleSheet.create({
   toggleColumn: {
     width: '50%',
     flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
+  xpSection: {
+    flexDirection: 'column',
+    width: '100%',
     alignItems: 'flex-end',
   },
 });

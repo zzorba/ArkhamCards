@@ -16,6 +16,7 @@ import { getMyDecksState, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface OwnProps {
   componentId: string;
@@ -134,11 +135,13 @@ class MyDecksView extends React.Component<Props, State> {
 
   renderCustomFooter() {
     return (
-      <BasicButton
-        title={t`New Deck`}
-        onPress={this._showNewDeckDialog}
-        grow
-      />
+      <View style={styles.button}>
+        <ArkhamButton
+          icon="deck"
+          title={t`New Deck`}
+          onPress={this._showNewDeckDialog}
+        />
+      </View>
     );
   }
 
@@ -188,5 +191,8 @@ const styles = StyleSheet.create({
   },
   searchOption: {
     marginRight: 2,
+  },
+  button: {
+    flex: 1,
   },
 });

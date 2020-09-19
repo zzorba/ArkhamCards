@@ -100,7 +100,8 @@ export default class SkillIconChooser extends React.Component<Props> {
 const styles = StyleSheet.create({
   toggleRow: {
     marginTop: xs,
+    width: '100%',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
   },
 });
