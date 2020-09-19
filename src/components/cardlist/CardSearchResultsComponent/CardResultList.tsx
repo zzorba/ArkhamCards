@@ -21,6 +21,7 @@ import {
   View,
   SectionListData,
   SectionListRenderItemInfo,
+  Platform,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -878,12 +879,14 @@ class CardResultList extends React.Component<Props, State> {
           };
           return (
             <SectionList
-              contentInset={noSearch ? undefined : { top: SEARCH_BAR_HEIGHT }}
-              contentOffset={noSearch ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
+              contentInset={noSearch || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
+              contentOffset={noSearch || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
+              contentContainerStyle={noSearch || Platform.OS === 'ios' ? undefined : { marginTop: SEARCH_BAR_HEIGHT }}
               refreshControl={
                 <RefreshControl
                   refreshing={!!refreshing}
                   onRefresh={this._refreshInDeck}
+                  progressViewOffset={SEARCH_BAR_HEIGHT}
                 />
               }
               onScroll={handleScroll}

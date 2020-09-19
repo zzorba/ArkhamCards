@@ -8,7 +8,7 @@ import AppIcon from '@icons/AppIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
-  icon: 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up';
+  icon: 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign';
   title: string;
   onPress: () => void;
 }
@@ -30,6 +30,8 @@ export default class ArkhamButton extends React.Component<Props> {
         return <View style={styles.deckIcon}><AppIcon name="deck" size={24 * fontScale} color={colors.L20} /></View>;
       case 'search':
         return <AppIcon name="search" size={18 * fontScale} color={colors.L20} />;
+      case 'campaign':
+        return <AppIcon name="book" size={18 * fontScale} color={colors.L20} />;
       case 'edit':
         return <View style={styles.editIcon}><AppIcon name="edit" size={16 * fontScale} color={colors.L20} /></View>;
       case 'expand':

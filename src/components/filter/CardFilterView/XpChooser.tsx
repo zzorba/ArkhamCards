@@ -2,13 +2,10 @@ import React from 'react';
 import { flatMap, map, max, min } from 'lodash';
 import {
   Text,
-  StyleSheet,
 } from 'react-native';
-import { ButtonGroup, colors } from 'react-native-elements';
 import { t } from 'ttag';
 
 import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
