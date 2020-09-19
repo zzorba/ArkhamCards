@@ -8,7 +8,7 @@ import { t } from 'ttag';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
 
-export function costIconSize(fontScale: number) {
+export function iconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
   return 32 * scaleFactor;
 }
@@ -28,11 +28,11 @@ function label(type: 'health' | 'sanity', count?: number) {
 export default function HealthSanityIcon({ type, count }: Props) {
   const { fontScale, colors } = useContext(StyleContext);
   const scaleFactor = ((fontScale - 1) / 2 + 1);
-  const ICON_SIZE = 32 * scaleFactor;
-  const NUMBER_SIZE = 28 * scaleFactor;
+  const ICON_SIZE = 26 * scaleFactor;
+  const NUMBER_SIZE = 24 * scaleFactor;
   const style = {
-    width: costIconSize(fontScale) * 1.4,
-    height: costIconSize(fontScale),
+    width: iconSize(fontScale) * 1.4,
+    height: iconSize(fontScale),
   };
   return (
     <View style={[styles.wrapper, style]} accessibilityLabel={label(type, count)}>

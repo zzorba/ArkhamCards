@@ -6,7 +6,7 @@ import {
 
 import Card from '@data/Card';
 import { xs } from '@styles/space';
-import HealthSanityIcon from './HealthSanityIcon';
+import HealthSanityNumberIcon from './HealthSanityNumberIcon';
 
 interface Props {
   investigator: Card;
@@ -15,8 +15,8 @@ interface Props {
 export default function HealthSanityLine({ investigator }: Props) {
   return (
     <View style={styles.skillRow}>
-      <HealthSanityIcon count={investigator.health} type="health" />
-      <HealthSanityIcon count={investigator.sanity} type="sanity" />
+      <HealthSanityNumberIcon count={investigator.health} type="health" />
+      <HealthSanityNumberIcon count={investigator.sanity} type="sanity" />
     </View>
   );
 }

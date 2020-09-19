@@ -15,8 +15,8 @@ export default function CardFooterInfo({ card }: Props) {
     <View style={[styles.wrapper, { borderColor: colors.L10 }]}>
       <View style={styles.illustrator}>
         { !!card.illustrator && (
-          <Text style={typography.cardSmall}>
-            <AppIcon name="paintbrush" size={12 * fontScale} color={colors.D10} />
+          <Text style={typography.small}>
+            <AppIcon name="paintbrush" size={14 * fontScale} color={colors.D10} />
             { ` ${card.illustrator}` }
           </Text>
         ) }
@@ -24,15 +24,15 @@ export default function CardFooterInfo({ card }: Props) {
       <View style={styles.cardNumber}>
         { !!card.encounter_name && !!card.encounter_code && !!card.encounter_position && (
           <View style={styles.row}>
-            <Text style={typography.cardSmall}>
+            <Text style={typography.small}>
               { card.encounter_name }&nbsp;
               <EncounterIcon
                 encounter_code={card.encounter_code}
-                size={11 * fontScale}
+                size={14 * fontScale}
                 color={colors.D10}
               />&nbsp;
             </Text>
-            <Text style={typography.cardNumber}>
+            <Text style={typography.small}>
               { card.quantity && card.quantity > 1 ?
                 `${card.encounter_position} - ${card.encounter_position + card.quantity}` :
                 card.encounter_position }
@@ -40,7 +40,7 @@ export default function CardFooterInfo({ card }: Props) {
           </View>
         ) }
         <View style={styles.row}>
-          <Text style={typography.cardSmall}>
+          <Text style={typography.small}>
             { card.cycle_name }&nbsp;
             <EncounterIcon
               encounter_code={card.cycle_code || card.pack_code}
@@ -48,7 +48,7 @@ export default function CardFooterInfo({ card }: Props) {
               color={colors.D10}
             />&nbsp;
           </Text>
-          <Text style={typography.cardNumber}>
+          <Text style={typography.small}>
             { (card.position || 0) % 1000 }
           </Text>
         </View>

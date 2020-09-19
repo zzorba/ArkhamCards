@@ -25,7 +25,8 @@ export default function FlavorFancyNode({ typography }: StyleContextType) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: isBig ? 28 : 18,
+    fontSize: 18,
+    lineHeight: 22,
     fontFamily: 'AnkeCalligraphicFG',
   },
 });

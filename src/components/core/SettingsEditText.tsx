@@ -17,7 +17,6 @@ import {
 import DialogAndroid from 'react-native-dialogs';
 import { TouchableProps } from 'react-native-svg';
 
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {

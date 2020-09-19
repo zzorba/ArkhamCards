@@ -51,34 +51,40 @@ const CiteTagRule: MarkdownRule<WithText, State> = {
   render: CiteTagNode,
 };
 
-const UnderlineHtmlTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<u>(.+?)<\\/u>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
-  },
-  render: FlavorUnderlineNode,
-};
+function UnderlineHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<u>(.+?)<\\/u>')),
+    order: 1,
+    parse: (capture) => {
+      return { text: capture[1] };
+    },
+    render: FlavorUnderlineNode(style),
+  };
+}
 
-const ItalicHtmlTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
-  order: 2,
-  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-    return {
-      children: nestedParse(capture[1], state),
-    };
-  },
-  render: FlavorItalicNode,
-};
+function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<i>([\\s\\S]+?)<\\/i>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorItalicNode(style),
+  };
+}
 
-const BoldHtmlTagRule: MarkdownRule<WithText, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
-  order: 1,
-  parse: (capture) => {
-    return { text: capture[1] };
-  },
-  render: FlavorBoldNode,
-};
+function BoldHtmlTagRule(style: StyleContextType): MarkdownRule<WithText, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<b>(.+?)<\\/b>')),
+    order: 1,
+    parse: (capture) => {
+      return { text: capture[1] };
+    },
+    render: FlavorBoldNode(style),
+  };
+}
 
 const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, State> => {
   return {
@@ -115,16 +121,18 @@ const RightHtmlTagRule: MarkdownRule<WithChildren, State> = {
   render: FlavorRightNode,
 };
 
-const SmallCapsHtmlTagRule: MarkdownRule<WithChildren, State> = {
-  match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
-  order: 2,
-  parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
-    return {
-      children: nestedParse(capture[1], state),
-    };
-  },
-  render: FlavorSmallCapsNode,
-};
+function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<smallcaps>([\\s\\S]+?)<\\/smallcaps>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: FlavorSmallCapsNode(style),
+  };
+}
 
 interface Props {
   text: string;
@@ -145,15 +153,15 @@ export default function CardFlavorTextComponent(
       }}
       rules={{
         iconTag: ArkhamIconRule(context),
-        bTag: BoldHtmlTagRule,
-        uTag: UnderlineHtmlTagRule,
+        bTag: BoldHtmlTagRule(context),
+        uTag: UnderlineHtmlTagRule(context),
         brTag: BreakTagRule,
         citeTag: CiteTagRule,
         fancyTag: FancyHtmlTagRule(context),
         centerTag: CenterHtmlTagRule,
         rightTag: RightHtmlTagRule,
-        iTag: ItalicHtmlTagRule,
-        smallCapsTag: SmallCapsHtmlTagRule,
+        iTag: ItalicHtmlTagRule(context),
+        smallCapsTag: SmallCapsHtmlTagRule(context),
       }}
       onLinkPress={onLinkPress}
       styles={{

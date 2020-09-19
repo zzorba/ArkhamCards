@@ -4,8 +4,6 @@ import { isBig, m, s } from './space';
 import COLORS from './colors';
 const sizeScale = 1;
 
-export const SMALL_FONT_SIZE = 14 * sizeScale;
-
 export default StyleSheet.create({
   header: {
     fontFamily: 'System',
@@ -38,16 +36,10 @@ export default StyleSheet.create({
     lineHeight: 18 * sizeScale,
     color: COLORS.lightText,
   },
-  cardNumber: {
+  small: {
     fontFamily: 'Alegreya-Regular',
     fontSize: 14 * sizeScale,
-    lineHeight: 14 * sizeScale,
-    color: COLORS.darkText,
-  },
-  cardSmall: {
-    fontFamily: 'Alegreya-Regular',
-    fontSize: 10 * sizeScale,
-    lineHeight: 14 * sizeScale,
+    lineHeight: 18 * sizeScale,
     color: COLORS.darkText,
   },
   cardButton: {
@@ -68,16 +60,6 @@ export default StyleSheet.create({
     fontSize: 18 * sizeScale,
     lineHeight: 22 * sizeScale,
     color: COLORS.darkText,
-  },
-  small: {
-    fontFamily: 'Alegreya-Regular',
-    fontSize: SMALL_FONT_SIZE,
-    lineHeight: 18 * sizeScale,
-    color: COLORS.darkText,
-  },
-  italic: {
-    fontWeight: '300',
-    fontStyle: 'italic',
   },
   smallLabel: {
     fontFamily: 'System',
@@ -105,9 +87,19 @@ export default StyleSheet.create({
     lineHeight: 28 * sizeScale,
     color: COLORS.darkText,
   },
+  regular: {
+    fontFamily: 'Alegreya-Regular',
+  },
   bold: {
-    fontWeight: '700',
+    fontFamily: 'Alegreya-Bold',
     color: COLORS.darkText,
+  },
+  boldItalic: {
+    fontFamily: 'Alegreya-ExtraBoldItalic',
+    color: COLORS.darkText,
+  },
+  italic: {
+    fontFamily: 'Alegreya-Italic',
   },
   gameFont: {
     fontFamily: 'Teutonic',

@@ -1,16 +1,16 @@
 import { Platform } from 'react-native';
 
-import { isBig } from '@styles/space';
+import { isBig, isTablet } from '@styles/space';
 import { TINY_PHONE } from '@styles/sizes';
 
 function halfFontScale(fontScale: number) {
   return (fontScale - 1) / 2 + 1;
 }
 export function rowHeight(fontScale: number) {
-  return (isBig ? 58 : 48) * fontScale;
+  return (isTablet ? 58 : 48) * fontScale;
 }
 export function iconSize(fontScale: number) {
-  return (isBig ? 46 : 32) * halfFontScale(fontScale);
+  return 32 * halfFontScale(fontScale);
 }
 
 export const BUTTON_PADDING = 12;

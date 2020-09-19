@@ -18,6 +18,8 @@ export interface SkillColor {
 }
 
 export interface ThemeColors {
+  fight: string;
+  evade: string;
   L10: string;
   L20: string;
   L30: string;
@@ -61,6 +63,8 @@ const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
 export const LIGHT_THEME: ThemeColors = {
+  fight: '#8D181E',
+  evade: '#0D6813',
   L10: light10,
   L20: light20,
   L30: light30,
@@ -152,6 +156,8 @@ export const LIGHT_THEME: ThemeColors = {
 };
 
 export const DARK_THEME: ThemeColors = {
+  fight: '#AE4236',
+  evade: '#0D6813',
   D10: light10,
   D20: light20,
   D30: light30,

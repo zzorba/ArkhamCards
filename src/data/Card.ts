@@ -13,6 +13,17 @@ const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
 
+
+function arkham_num(value: number | null | undefined) {
+  if (value === null || value === undefined) {
+    return '-';
+  }
+  if (value < 0) {
+    return 'X';
+  }
+  return `${value}`;
+}
+
 const FEMININE_INVESTIGATORS = new Set([
   '01002', // Daisy Walker
   '01004', // Agnes Baker
@@ -310,6 +321,16 @@ export default class Card {
 
   public grammarGenderMasculine(): boolean {
     return !FEMININE_INVESTIGATORS.has(this.code);
+  }
+
+  public enemyFight(): string {
+    return arkham_num(this.enemy_fight);
+  }
+  public enemyEvade(): string {
+    return arkham_num(this.enemy_evade);
+  }
+  public enemyHealth(): string {
+    return arkham_num(this.health);
   }
 
   isBasicWeakness(): boolean {

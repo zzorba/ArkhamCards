@@ -1,27 +1,22 @@
+import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithText } from './types';
 
-export default function UnderlineHtmlTagNode(
-  node: Node & WithText,
-  output: OutputFunction,
-  state: RenderState
-) {
+export default function UnderlineHtmlTagNode({ typography }: StyleContextType) {
   return (
-    <Text key={state.key} style={styles.boldText}>
-      { node.text }
-    </Text>
-  );
+    node: Node & WithText,
+    output: OutputFunction,
+    state: RenderState
+  ) => {
+    return (
+      <Text key={state.key} style={[typography.bold, typography.underline]}>
+        { node.text }
+      </Text>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  boldText: {
-    fontFamily: 'Alegreya-Bold',
-    textDecorationLine: 'underline',
-  },
-});
