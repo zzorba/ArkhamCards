@@ -11,11 +11,11 @@ import DeviceInfo from 'react-native-device-info';
 import { t, jt } from 'ttag';
 
 import {
-  RANDOM_BASIC_WEAKNESS,
+  RANDOM_BASIC_WEAKNESS, SkillCodeType,
 } from '@app_constants';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
-import { isBig, xs, s } from '@styles/space';
+import { isBig, xs, s, m } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
@@ -25,20 +25,22 @@ import { CardFaqProps } from '@components/card/CardFaqView';
 import { CardTabooProps } from '@components/card/CardTabooView';
 import { InvestigatorCardsProps } from '@components/cardlist/InvestigatorCardsView';
 import Button from '@components/core/Button';
-import BasicButton from '@components/core/BasicButton';
+import EnemyStatLine from '@components/core/EnemyStatLine';
 import Card from '@data/Card';
+import SkillIcon from '@components/core/SkillIcon';
 
 import PlayerCardImage from '../PlayerCardImage';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardDetailHeader from './CardDetailHeader';
 import CardFooterInfo from './CardFooterInfo';
 import CardFooterButton from './CardFooterButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 const BLURRED_ACT = require('../../../../../assets/blur-act.jpeg');
 const BLURRED_AGENDA = require('../../../../../assets/blur-agenda.jpeg');
 const PLAYER_BACK = require('../../../../../assets/player-back.png');
 const ENCOUNTER_BACK = require('../../../../../assets/encounter-back.png');
-const SKILL_ICON_SIZE = isBig ? 26 : 16;
+const SKILL_ICON_SIZE = 24;
 const MAX_WIDTH = 768;
 
 const SKILL_FIELDS = [
@@ -191,7 +193,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
     return (
-      <Text style={[typography.cardText, styles.typeText]}>
+      <Text style={[typography.small, typography.bold]}>
         { card.subtype_name ?
           `${card.type_name}. ${card.subtype_name}` :
           card.type_name }
@@ -204,30 +206,37 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const { typography } = this.context;
     return (
       <View style={styles.metadataBlock}>
-        { this.renderType(card) }
-        { !!card.traits && (
-          <Text style={[typography.cardText, styles.traitsText]}>
-            { card.traits }
-          </Text>
-        ) }
+        <View style={styles.column}>
+          { this.renderType(card) }
+          { !!card.traits && (
+            <Text style={[typography.small, typography.boldItalic]}>
+              { card.traits }
+            </Text>
+          ) }
+        </View>
+        { this.renderTestIcons(card) }
         { card.type_code === 'investigator' && (
-          <>
-            <View style={styles.statLineRow}>
-              <InvestigatorStatLine
-                investigator={card}
-              />
-            </View>
+          <View style={styles.statLineRow}>
+            <InvestigatorStatLine
+              investigator={card}
+            />
+          </View>
+        ) }
+        { (card.type_code === 'investigator' || (
+            card.type_code === 'asset' && (card.health || 0 !== 0 || card.sanity || 0 !== 0)
+          )) && (
+          <View style={card.type_code === 'asset' ? styles.statLineRow : undefined}>
             <HealthSanityLine
               investigator={card}
             />
-          </>
+          </View>
         ) }
       </View>
     );
   }
 
   renderTestIcons(card: Card) {
-    const { colors, fontScale, typography } = this.context;
+    const { colors } = this.context;
     if (card.type_code === 'investigator') {
       return null;
     }
@@ -240,19 +249,28 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     if (skills.length === 0) {
       return null;
     }
+    const accessibilityLabel = t`Test Icons: ` + map(SKILL_FIELDS, skill => {
+      // @ts-ignore
+      const count = card[skill] || 0;
+      switch (skill) {
+        case 'skill_willpower': return t`Willpower: ${count}`;
+        case 'skill_intellect': return t`Intellect: ${count}`;
+        case 'skill_combat': return t`Combat: ${count}`;
+        case 'skill_agility': return t`Agility: ${count}`;
+        case 'skill_wild': return t`Wild: ${count}`;
+        default: return '';
+      }
+    }).join(',');
+
     return (
-      <View style={styles.testIconRow}>
-        <Text style={typography.cardText}>
-          { t`Test Icons: ` }
-        </Text>
+      <View style={styles.testIconRow} accessibilityLabel={accessibilityLabel}>
         { map(skills, (skill, idx) => (
-          <ArkhamIcon
-            style={styles.testIcon}
-            key={idx}
-            name={skill.substring(6)}
-            size={SKILL_ICON_SIZE * fontScale}
-            color={colors.darkText}
-          />))
+          <View style={[styles.testIcon, { backgroundColor: colors.L20 }]} key={idx}>
+            <SkillIcon
+              skill={skill.substring(6) as SkillCodeType}
+              size={SKILL_ICON_SIZE}
+            />
+          </View>))
         }
       </View>
     );
@@ -284,7 +302,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <ArkhamIcon name="per_investigator" size={12} color={colors.darkText} /> :
       '';
     return (
-      <View style={styles.statsBlock}>
+      <View>
         { card.type_code === 'agenda' && (
           <Text style={typography.cardText}>
             { t`Doom: ${doom}` }
@@ -295,7 +313,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             { jt`Clues: ${clues}${perInvestigatorClues}` }
           </Text>
         ) }
-        { this.renderTestIcons(card) }
         { this.renderSlot(card) }
         { this.renderHealthAndSanity(card) }
         { card.type_code === 'location' && (
@@ -311,13 +328,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const { colors, typography } = this.context;
     if (card.type_code === 'enemy') {
       return (
-        <Text style={typography.cardText}>
-          { `${t`Fight`}: ${num(card.enemy_fight)}. ${t`Health`}: ${num(card.health)}` }
-          { !!card.health_per_investigator && <ArkhamIcon name="per_investigator" size={12} color={colors.darkText} /> }
-          { `. ${t`Evade`}: ${num(card.enemy_evade)}. ` }
-          { '\n' }
-          { `${t`Damage`}: ${num(card.enemy_damage)}. ${t`Horror`}: ${num(card.enemy_horror)}. ` }
-        </Text>
+        <EnemyStatLine enemy={card} />
       );
     }
     return null;
@@ -380,12 +391,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
 
     if (!backFirst && card.spoiler && !this.state.showBack && card.type_code !== 'scenario') {
       return (
-        <View style={[styles.container, styles.buttonContainerPadding, { width }]} key={key}>
-          <BasicButton title={t`Show back`} onPress={this._toggleShowBack} />
-        </View>
+        <ArkhamButton
+          title={t`Show back`}
+          onPress={this._toggleShowBack}
+          icon="expand"
+        />
       );
     }
-    const noHeader = (card.name === card.back_name || !card.back_name);
+    const noHeader = (card.name === card.back_name || !card.back_name) && !backFirst;
     return (
       <View style={[styles.container, styles.containerPadding, { width }]} key={key}>
         <View style={[styles.card, backgroundStyle, {
@@ -394,7 +407,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           ].background,
           borderTopWidth: noHeader ? 1 : 0,
         }]}>
-          { noHeader && <CardDetailHeader card={card} back width={Math.min(768, width)} linked={!!this.props.linked} /> }
+          { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width)} linked={!!this.props.linked} /> }
           <View removeClippedSubviews style={[
             styles.cardBody,
             {
@@ -433,7 +446,14 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             </View>
             { isFirst && this.renderCardFooter(card) }
           </View>
-          { isFirst && <CardFooterButton icon="faq" title={t`FAQ`} onPress={this._showFaq} /> }
+          { isFirst && (
+            <CardFooterButton
+              onPressFaq={this._showFaq}
+              onPressTaboo={
+                (card.taboo_set_id === 0 || card.taboo_placeholder) ? this._showTaboo : undefined
+              }
+            />
+          ) }
         </View>
       </View>
     );
@@ -465,20 +485,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderCardFooter(card: Card) {
-    /*
-            { !!componentId && (
-          <View style={styles.twoColumn}>
-            <View style={[styles.halfColumn, { paddingRight: s }]}>
-              { this.renderFaqButton() }
-            </View>
-            <View style={[styles.halfColumn, { paddingLeft: s }]}>
-              { (card.taboo_set_id === 0 || card.taboo_placeholder) && (
-                this.renderTabooButton()
-              ) }
-            </View>
-          </View>
-        ) }
-  */
     return (
       <>
         <View style={[styles.column, styles.flex]}>
@@ -558,12 +564,15 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       card.code !== RANDOM_BASIC_WEAKNESS
     ) {
       return (
-        <View style={[styles.container, styles.buttonContainerPadding, { width }]} key={key}>
-          <BasicButton title={(card.hidden || backFirst) ? t`Show back` : t`Show front`} onPress={this._toggleShowBack} />
-        </View>
+        <ArkhamButton
+          title={(card.hidden || backFirst) ? t`Show back` : t`Show front`}
+          onPress={this._toggleShowBack}
+          icon="expand"
+        />
       );
     }
 
+    const noHeader = (card.name === card.back_name || !card.back_name) && backFirst;
     const isTablet = Platform.OS === 'ios' && DeviceInfo.isTablet();
     return (
       <View style={[styles.container, styles.containerPadding]} key={key}>
@@ -573,12 +582,15 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             borderColor: colors.faction[
               card.faction2_code ? 'dual' : card.factionCode()
             ].background,
+            borderTopWidth: noHeader ? 1 : 0,
           },
         ]}>
-          <CardDetailHeader card={card} width={Math.min(768, width)} linked={!!this.props.linked} />
+          { !noHeader && <CardDetailHeader card={card} width={Math.min(768, width)} linked={!!this.props.linked} /> }
           <View style={[
             styles.cardBody,
-            backgroundStyle,
+            {
+              backgroundColor: noHeader ? 'transparent' : colors.background,
+            },
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
               <View style={styles.row}>
@@ -593,11 +605,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 { this.renderImage(card) }
               </View>
               { !isTablet && this.renderCardText(card, backFirst, isHorizontal, flavorFirst) }
-              { (card.type_code !== 'enemy' && card.type_code !== 'investigator' && (
-                (card.health && card.health > 0) || (card.sanity && card.sanity > 0))
-              ) && (
-                <HealthSanityLine investigator={card} />
-              ) }
               { isFirst && !simple && this.renderCardFooter(card) }
             </View>
           </View>
@@ -668,7 +675,7 @@ const styles = StyleSheet.create({
   playerImage: {
     marginTop: 2,
     marginBottom: s,
-    marginLeft: xs,
+    marginLeft: s,
   },
   metadataBlock: {
     marginBottom: s,
@@ -710,9 +717,6 @@ const styles = StyleSheet.create({
     marginBottom: s,
     marginRight: s,
   },
-  statsBlock: {
-    marginBottom: s,
-  },
   slotBlock: {
     marginBottom: s,
   },
@@ -734,12 +738,23 @@ const styles = StyleSheet.create({
   },
   testIconRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 2,
+    marginBottom: 2,
   },
   statLineRow: {
     flexDirection: 'row',
     marginTop: s,
   },
   testIcon: {
-    marginLeft: 2,
+    marginRight: xs,
+    padding: 2,
+    borderRadius: 8,
+  },
+  testIconColumn: {
+    marginTop: 2,
+  },
+  typeAndTraits: {
+    marginRight: s,
   },
 });

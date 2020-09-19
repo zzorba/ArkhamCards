@@ -9,7 +9,6 @@ import { t } from 'ttag';
 
 import { DeckProblem, DeckProblemType } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
-import { SMALL_FONT_SIZE } from '@styles/typography';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -42,12 +41,12 @@ export default function DeckProblemRow({
           <View style={space.marginRightXs}>
             <AppIcon
               name="warning"
-              size={SMALL_FONT_SIZE * (noFontScaling ? 1 : fontScale)}
+              size={14 * (noFontScaling ? 1 : fontScale)}
               color={color}
             />
           </View>
           <Text
-            style={[typography.small, { color }, { fontSize: fontSize || SMALL_FONT_SIZE }, styles.problemText]}
+            style={[typography.small, { color }, { fontSize: fontSize || 14 }, styles.problemText]}
             numberOfLines={2}
             ellipsizeMode="tail"
             allowFontScaling={!noFontScaling}

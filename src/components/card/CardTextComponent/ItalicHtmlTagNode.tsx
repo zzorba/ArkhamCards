@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { Text } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
 import { WithChildren } from './types';
@@ -17,15 +14,10 @@ export default function ItalicHtmlTagNode({ typography }: StyleContextType) {
     return (
       <Text
         key={state.key}
-        style={[styles.italicText, typography.black]}
+        style={[typography.italic, typography.black]}
       >
         { output(node.children, state) }
       </Text>
     );
   }
 }
-const styles = StyleSheet.create({
-  italicText: {
-    fontFamily: 'Alegreya-Italic',
-  },
-});

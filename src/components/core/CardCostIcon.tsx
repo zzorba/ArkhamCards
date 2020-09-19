@@ -123,7 +123,7 @@ export default class CardCostIcon extends React.PureComponent<Props> {
             <View style={[styles.factionIcon, card.factionCode() === 'neutral' ? { marginBottom: 0 } : {}]}>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color={colors.background}
+                color={inverted ? 'white' : colors.background}
                 size={ICON_SIZE / 1.8}
               />
             </View>

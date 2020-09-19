@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   checkbox: {
-    width: 60,
+    marginRight: s,
     flexDirection: 'row',
     alignItems: 'center',
   },

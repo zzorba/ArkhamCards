@@ -15,7 +15,7 @@ export default function BlockquoteHtmlTagNode(
   return (
     <Text key={state.key} style={styles.blockquote}>
       { '\n\n' }
-      { output(node.children, Object.assign({}, state, { blockquote: true })) }
+      { output(node.children, { ...state, blockquote: true }) }
       { '\n\n' }
     </Text>
   );

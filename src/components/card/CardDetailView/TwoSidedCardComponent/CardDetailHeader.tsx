@@ -49,7 +49,7 @@ function HeaderPattern({ card, width }: { card: Card, width: number }) {
     case 'survivor':
       return (
         <View style={styles.pattern}>
-          <AppIcon size={width / RATIO} name="survivor_pattern" color="#00000022" />
+          <AppIcon size={width / RATIO / 1.1} name="survivor_pattern" color="#00000022" />
         </View>
       );
     case 'neutral':
@@ -183,9 +183,6 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
 export default function CardDetailHeader({ card, width, back, linked }: Props) {
   const { colors } = useContext(StyleContext);
   const color = colors.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
-  if (back && (card.name === card.back_name || !card.back_name)) {
-    return null;
-  }
 
   return (
     <View style={[styles.cardTitle, {
