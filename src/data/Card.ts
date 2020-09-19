@@ -1,4 +1,4 @@
-import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToOne } from 'typeorm/browser';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToOne, OneToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
@@ -271,9 +271,9 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
-  @ManyToOne(() => Card, card => card.id)
+  @OneToOne(() => Card, { cascade: true, eager: true })
   @Index()
-  @JoinColumn()
+  @JoinColumn({ name: 'linked_card_id' })
   public linked_card?: Card;
 
   @Column('boolean', { nullable: true })
@@ -750,7 +750,7 @@ export default class Card {
       // json.code === '98013' || // Silas for TIC
       json.code === '99001'; // PROMO Marie
 
-    return {
+    const result = {
       ...json,
       ...eskills,
       id: json.code,
@@ -787,6 +787,23 @@ export default class Card {
       enemy_damage,
       altArtInvestigator,
     };
+    if (result.hidden && result.linked_card) {
+      console.log(`Reversing link of ${result.name} to ${result.linked_card.name} so ${result.linked_card.name} is the FRONT.`);
+      return {
+        ...result.linked_card,
+        back_linked: null,
+        linked_to_code: result.code,
+        linked_to_name: result.name,
+        linked_card: {
+          ...result,
+          linked_card: undefined,
+          back_linked: true,
+          linked_to_code: result.linked_card.code,
+          linked_to_name: result.linked_card.name,
+        },
+      };
+    }
+    return result;
   }
 
   static placeholderTabooCard(

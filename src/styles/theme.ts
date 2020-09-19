@@ -156,8 +156,8 @@ export const LIGHT_THEME: ThemeColors = {
 };
 
 export const DARK_THEME: ThemeColors = {
-  fight: '#AE4236',
-  evade: '#0D6813',
+  fight: '#EE4A53',
+  evade: '#48B14F',
   D10: light10,
   D20: light20,
   D30: light30,

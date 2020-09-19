@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 4 ,
     paddingTop: 2,
-    paddingLeft: xs,
-    paddingRight: xs,
+    paddingLeft: s,
+    paddingRight: s,
     marginRight: TINY_PHONE ? xs : xs,
   },
   skillIcon: {

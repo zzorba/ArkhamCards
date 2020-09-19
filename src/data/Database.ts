@@ -1,5 +1,5 @@
 import { findIndex, forEach, pull } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder } from 'typeorm/browser';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult } from 'typeorm/browser';
 
 import Card from './Card';
 import EncounterSet from './EncounterSet';
@@ -12,14 +12,14 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  static SCHEMA_VERSION: number = 11;
+  static SCHEMA_VERSION: number = 12;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
   listeners: DatabaseListener[] = [];
 
   constructor(latestVersion?: number) {
-    const recreate = !latestVersion || latestVersion < Database.SCHEMA_VERSION;
+    const recreate = !latestVersion || latestVersion !== Database.SCHEMA_VERSION;
 
     this.connectionP = createConnection({
       type: 'react-native',
@@ -68,7 +68,8 @@ export default class Database {
 
   async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
     const cards = await this.cards();
-    return cards.createQueryBuilder('c').leftJoinAndSelect('c.linked_card', 'linked_card');
+    return cards.createQueryBuilder('c')
+      .leftJoinAndSelect('c.linked_card', 'linked_card');
   }
 
   async tabooSets(): Promise<Repository<TabooSet>> {
@@ -97,6 +98,18 @@ export default class Database {
     if (index !== -1) {
       connection.subscribers.splice(index, 1);
     }
+  }
+
+  async insertCards(
+    cards: Card[]
+  ): Promise<InsertResult> {
+    const query =  (await this.cards())
+      .createQueryBuilder()
+      .insert()
+      .into(Card)
+      .values(cards)
+      .orIgnore();
+    return await query.execute();
   }
 
   async getCards(

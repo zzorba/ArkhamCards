@@ -46,8 +46,8 @@ export default class SearchBox extends React.Component<Props> {
     const {
       toggleAdvanced,
       advancedOpen,
-      value,
     } = this.props;
+    const { colors } = this.context;
     if (!toggleAdvanced) {
       return (
         <View style={styles.rightButtons}>
@@ -64,7 +64,7 @@ export default class SearchBox extends React.Component<Props> {
               <AppIcon
                 name="dismiss"
                 size={22}
-                color={COLORS.L10}
+                color={colors.L10}
               />
             </View>
           ) : (
@@ -72,7 +72,7 @@ export default class SearchBox extends React.Component<Props> {
               <AppIcon
                 name="dots"
                 size={24}
-                color={COLORS.D10}
+                color={colors.D10}
               />
             </View>
           ) }

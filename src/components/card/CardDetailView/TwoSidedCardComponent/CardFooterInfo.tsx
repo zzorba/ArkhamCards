@@ -16,7 +16,7 @@ export default function CardFooterInfo({ card }: Props) {
       <View style={styles.illustrator}>
         { !!card.illustrator && (
           <Text style={typography.small}>
-            <AppIcon name="paintbrush" size={14 * fontScale} color={colors.D10} />
+            <AppIcon name="paintbrush" size={14 * fontScale} color={colors.D20} />
             { ` ${card.illustrator}` }
           </Text>
         ) }
@@ -29,7 +29,7 @@ export default function CardFooterInfo({ card }: Props) {
               <EncounterIcon
                 encounter_code={card.encounter_code}
                 size={14 * fontScale}
-                color={colors.D10}
+                color={colors.darkText}
               />&nbsp;
             </Text>
             <Text style={typography.small}>
@@ -44,8 +44,8 @@ export default function CardFooterInfo({ card }: Props) {
             { card.cycle_name }&nbsp;
             <EncounterIcon
               encounter_code={card.cycle_code || card.pack_code}
-              size={11 * fontScale}
-              color={colors.D10}
+              size={14 * fontScale}
+              color={colors.darkText}
             />&nbsp;
           </Text>
           <Text style={typography.small}>
