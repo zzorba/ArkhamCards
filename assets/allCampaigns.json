@@ -27704,7 +27704,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Supply points to purchase (2 expeirence each)",
+        "text": "Supply points to purchase (2 experience each)",
         "max": 5,
         "show_special_xp": "resupply_points",
         "effects": [
