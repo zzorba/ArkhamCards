@@ -24,6 +24,12 @@ export default StyleSheet.create({
     lineHeight: 18 * sizeScale,
     color: COLORS.darkText,
   },
+  tiny: {
+    fontFamily: 'Alegreya-Regular',
+    fontSize: 12 * sizeScale,
+    lineHeight: 15 * sizeScale,
+    color: COLORS.darkText,
+  },
   large: {
     fontFamily: 'Alegreya-Medium',
     fontSize: 20 * sizeScale,

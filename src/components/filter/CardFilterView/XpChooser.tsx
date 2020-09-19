@@ -4,9 +4,10 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { ButtonGroup } from 'react-native-elements';
+import { ButtonGroup, colors } from 'react-native-elements';
 import { t } from 'ttag';
 
+import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -64,7 +65,7 @@ export default class XpChooser extends React.Component<Props> {
       maxLevel,
       enabled,
     } = this.props;
-    const { typography } = this.context;
+    const { colors, typography } = this.context;
 
     if (maxLevel <= 1) {
       return null;
@@ -85,32 +86,15 @@ export default class XpChooser extends React.Component<Props> {
         t`Level ${startXp}` :
         t`Level ${startXp} - ${endXp}`;
       return {
-        element: () => (<Text style={typography.dark}>{ xp }</Text>),
+        element: (selected: boolean) => (<Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>{ xp }</Text>),
       };
     });
     return (
-      <ButtonGroup
-        // @ts-ignore
+      <ArkhamButtonGroup
         onPress={this._updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}
-        buttonStyle={styles.button}
-        selectedButtonStyle={styles.selectedButton}
-        containerStyle={styles.container}
-        selectMultiple
       />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: 40,
-  },
-  button: {
-    backgroundColor: COLORS.toggleButton,
-  },
-  selectedButton: {
-    backgroundColor: COLORS.selectedToggleButton,
-  },
-});

@@ -6,8 +6,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
-import Switch from '@components/core/Switch';
+import ToggleButton from '@components/core/ToggleButton';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -75,9 +76,12 @@ export default class AccordionItem extends React.Component<Props, State> {
         <Text style={typography.text}>
           { label }
         </Text>
-        <Switch
+        <ToggleButton
+          accessibilityLabel={t`Enable`}
           value={enabled}
-          onValueChange={this._togglePressed}
+          onPress={this._togglePressed}
+          size={20}
+          icon="expand"
         />
       </View>
     );

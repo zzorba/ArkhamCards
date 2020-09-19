@@ -23,13 +23,6 @@ const D20: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4752
 const D30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#24303C', dark: '#FFFBF2' }) : PlatformColor('@color/D30')) as any as string;
 
 export default {
-  shadow: '#2c3945',
-  light10,
-  light20,
-  light30,
-  dark10,
-  dark20,
-  dark30,
   L10,
   L20,
   L30,
