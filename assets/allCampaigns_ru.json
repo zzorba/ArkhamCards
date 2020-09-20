@@ -34005,6 +34005,11 @@
           "section": "campaign_notes",
           "id": "rougarou_continues_to_haunt_the_bayou",
           "text": "ругару продолжает наводить ужас на болота."
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "81029"
         }
       ]
     },

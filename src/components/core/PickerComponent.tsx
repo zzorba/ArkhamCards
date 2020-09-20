@@ -163,6 +163,7 @@ export default class PickerComponent extends React.Component<Props> {
               color: colors ? colors.modalTextColor : COLORS.white,
             } ,
             description: {
+              ...typography.small,
               paddingTop: 8,
               color: colors ? colors.modalTextColor : COLORS.white,
             },
