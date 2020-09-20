@@ -119,6 +119,7 @@ export default class CardDetailComponent extends React.Component<Props> {
         </View>
       );
     }
+
     return (
       <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
         <TwoSidedCardComponent

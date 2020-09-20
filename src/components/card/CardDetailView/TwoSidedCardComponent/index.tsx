@@ -300,7 +300,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     const shroud = num(card.shroud);
     const clues = num(card.clues);
     const perInvestigatorClues = (card.clues && card.clues > 0 && !card.clues_fixed) ?
-      <ArkhamIcon name="per_investigator" size={12} color={colors.darkText} /> :
+      <ArkhamIcon key="per_investigator" name="per_investigator" size={12} color={colors.darkText} /> :
       '';
     return (
       <View>

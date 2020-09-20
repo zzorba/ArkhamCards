@@ -189,15 +189,24 @@ export const syncCards = async function(
     const encounter_card_counts: {
       [encounter_code: string]: number | undefined;
     } = {};
+
+    const bondedNames: string[] = [];
     forEach(flatCards, card => {
       if (!card.hidden && card.encounter_code) {
         encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
       }
+      if (card.bonded_name) {
+        bondedNames.push(card.bonded_name);
+      }
     });
+    const bondedSet = new Set(bondedNames);
     forEach(flatCards, card => {
       if (card.encounter_code) {
         card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
         encounter_card_counts;
+      }
+      if (bondedSet.has(card.real_name)) {
+        card.bonded_from = true;
       }
     });
     forEach(groupBy(flatCards, card => card.id), dupes => {

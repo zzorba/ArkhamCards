@@ -20,50 +20,8 @@ interface Props {
   linked: boolean;
 }
 
-const RATIO = 7.0;
 const ICON_SIZE = 28;
 const HEIGHT = 48;
-
-function HeaderPattern({ card, width }: { card: Card, width: number }) {
-  switch (card.factionCode()) {
-    case 'guardian':
-      return (
-        <View style={styles.pattern}>
-          <AppIcon size={width / RATIO} name="guardian_pattern" color="#FFFFFF22" />
-        </View>
-      );
-    case 'seeker':
-      return (
-        <FactionPattern width={width - 18} height={48} faction="seeker" />
-      );
-    case 'rogue':
-      return (
-        <View style={styles.pattern}>
-          <AppIcon size={width / RATIO} name="rogue_pattern" color="#FFFFFF11" />
-        </View>
-      );
-    case 'mystic':
-      return (
-        <View style={styles.pattern}>
-          <AppIcon size={width / RATIO} name="mystic_pattern" color="#FFFFFF18" />
-        </View>
-      );
-    case 'survivor':
-      return (
-        <View style={styles.pattern}>
-          <AppIcon size={width / RATIO / 1.1} name="survivor_pattern" color="#00000022" />
-        </View>
-      );
-    case 'neutral':
-      return (
-        <View style={styles.pattern}>
-          <AppIcon size={width / RATIO} name="neutral_pattern" color="#FFFFFF11" />
-        </View>
-      );
-    default:
-      return null;
-  }
-}
 
 function DualFactionIcons({ card }: { card: Card }) {
   if (!card.faction2_code || !card.faction_code) {

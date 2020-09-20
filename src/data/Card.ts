@@ -62,6 +62,7 @@ export default class Card {
   @Column('text')
   public name!: string;
 
+  @Index()
   @Column('text')
   public real_name!: string;
 
@@ -305,6 +306,9 @@ export default class Card {
   public uses?: string;
   @Column('text', { nullable: true })
   public bonded_name?: string;
+  @Column('boolean', { nullable: true })
+  public bonded_from?: boolean;
+
   @Column('boolean', { nullable: true })
   public seal?: boolean;
   @Column('boolean', { nullable: true })
@@ -790,7 +794,8 @@ export default class Card {
       enemy_damage,
       altArtInvestigator,
     };
-    if (result.hidden && result.linked_card) {
+    if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
+      console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
       return {
         ...result.linked_card,
         back_linked: null,

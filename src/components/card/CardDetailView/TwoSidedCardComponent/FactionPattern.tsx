@@ -1,14 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 import {
-  ClipPath,
   Svg,
   Defs,
   Pattern,
   Path,
-  Use,
-  TransformObject,
-  Rect,
 } from 'react-native-svg';
 import MysticPattern from '../../../../../assets/mystic_pattern.svg';
 import SeekerPattern from '../../../../../assets/seeker_pattern.svg';
@@ -139,7 +135,7 @@ function HeaderPath({ width, height }: { width: number; height: number}) {
   );
 }
 
-export default function FactionPattern({ width, height, faction }: Props) {
+const FactionPatternComponent = React.memo(function FactionPattern({ width, height, faction }: Props) {
   return (
     <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity: 0.1 } : {}]}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
@@ -150,7 +146,9 @@ export default function FactionPattern({ width, height, faction }: Props) {
       </Svg>
     </View>
   );
-};
+});
+
+export default FactionPatternComponent;
 
 const styles = StyleSheet.create({
   pattern: {

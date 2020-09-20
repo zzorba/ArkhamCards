@@ -47,7 +47,7 @@ class BondedCardsComponent extends React.Component<Props> {
 
   async bondedFromCards(db: Database): Promise<Card[]> {
     const { cards, tabooSetId } = this.props;
-    if (!cards) {
+    if (!find(cards, card => !!card.bonded_from)) {
       return [];
     }
     const filterBuilder = new FilterBuilder('bonded_from');
