@@ -132,6 +132,7 @@ export const syncCards = async function(
     }
   });
   cycleNames[50] = {};
+  cycleNames[60] = {};
   cycleNames[70] = {};
   cycleNames[80] = {};
   cycleNames[90] = {};
