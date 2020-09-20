@@ -71,12 +71,15 @@ export function getDeckOptions(
   };
   if (!noTitle && options.topBar) {
     options.topBar.title = {
-      fontWeight: 'bold',
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20,
       text: (investigator ? investigator.name : t`Deck`),
       color: '#FFFFFF',
     };
     options.topBar.subtitle = {
       text: title,
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 14,
       color: '#FFFFFF',
     };
   }

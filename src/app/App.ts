@@ -128,14 +128,20 @@ export default class App {
     colorScheme: 'light' | 'dark' | 'no-preference',
     changeUpdate?: boolean
   ) {
-    console.log(`Updating default options with ${colorScheme} vs ${this.currentThemeOverride}`);
     const system = !this.currentThemeOverride;
+    const systemPreference = colorScheme === 'dark';
     const darkMode = system ? colorScheme === 'dark' : this.currentThemeOverride === 'dark';
     const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+
+    const ios12 = Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) < 13;
     const defaultOptions: Options = {
+      statusBar: {
+        backgroundColor: colors.background,
+        style: darkMode ? 'light' : 'dark',
+      },
       topBar: {
-        leftButtonColor: COLORS.lightBlue,
-        rightButtonColor: COLORS.lightBlue,
+        leftButtonColor: colors.M,
+        rightButtonColor: colors.M,
         rightButtonDisabledColor: colors.lightText,
         leftButtonDisabledColor: colors.lightText,
         title: {
@@ -149,8 +155,9 @@ export default class App {
           fontSize: 14,
         },
         background: {
-          color: colors.L30,
           translucent: false,
+          color: ios12 ? colors.ios12Background : colors.L30,
+          clipToBounds: false,
         },
         backButton: {
           color: colors.M,
@@ -172,7 +179,8 @@ export default class App {
       bottomTabs: {
         backgroundColor: colors.background,
         barStyle: darkMode ? 'black' : 'default',
-        translucent: system,
+        // Bug with RNN, translucent always inherits the system setting.
+        translucent: ios12 || systemPreference === darkMode,
       },
       bottomTab: {
         iconColor: colors.M,
@@ -292,6 +300,8 @@ export default class App {
         },
       },
     };
+
+    const appearance = Appearance.getColorScheme();
     const tabs = [{
       stack: {
         id: BROWSE_CARDS,
@@ -342,7 +352,7 @@ export default class App {
       },
     }];
 
-    this.setDefaultOptions(Appearance.getColorScheme());
+    this.setDefaultOptions(appearance);
 
     Navigation.setRoot({
       root: {

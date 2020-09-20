@@ -125,11 +125,11 @@ export default function PlayerCardImage({ componentId, card }: Props) {
                 color: '#FFFFFF',
               },
               background: {
-                color: faction ? colors.faction[faction].background : colors.darkText,
+                color: faction ? colors.faction[faction].background : colors.background,
               },
               title: {
                 text: card.name,
-                color: '#FFFFFF',
+                color: faction ? '#FFFFFF' : colors.darkText,
               },
             },
             bottomTabs: {

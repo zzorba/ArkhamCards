@@ -74,7 +74,7 @@ class CardDetailView extends React.Component<Props, State> {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: '#007AFF',
+          color: COLORS.M,
         },
       },
     };
