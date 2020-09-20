@@ -39,7 +39,11 @@ function RepeatPattern({ patternWidth, children }: { patternWidth: number; child
   );
 }
 
-function StretchPattern({ patternWidth, width, children }: { patternWidth: number; width: number; children: React.ReactNode }) {
+function StretchPattern({
+  patternWidth,
+  width,
+  children,
+}: { patternWidth: number; width: number; children: React.ReactNode }) {
   if (width < patternWidth) {
     return (
       <RepeatPattern patternWidth={patternWidth}>
@@ -65,7 +69,7 @@ function StretchPattern({ patternWidth, width, children }: { patternWidth: numbe
 }
 
 
-function HeaderPattern({ faction, width }: { faction : string, width: number }) {
+function HeaderPattern({ faction, width }: { faction : string; width: number }) {
   switch (faction) {
     case 'guardian':
       return (
@@ -113,9 +117,7 @@ function HeaderPattern({ faction, width }: { faction : string, width: number }) 
   }
 }
 
-
-
-function HeaderPath({ width, height }: { width: number; height: number}) {
+function HeaderPath({ width, height, opacity }: { width: number; height: number; opacity: number; }) {
   const topWidth = width - 16;
   const sideHeight = height - 8;
 
@@ -130,19 +132,20 @@ function HeaderPath({ width, height }: { width: number; height: number}) {
         z
       `}
       fill="url(#FactionPattern)"
-      fillOpacity={0.1}
+      fillOpacity={opacity}
     />
   );
 }
 
 const FactionPatternComponent = React.memo(function FactionPattern({ width, height, faction }: Props) {
+  const opacity = (faction === 'seeker' || faction === 'neutral') ? 0.07 : 0.1;
   return (
-    <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity: 0.1 } : {}]}>
+    <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity } : {}]}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
         <Defs>
           <HeaderPattern faction={faction} width={width} />
         </Defs>
-        <HeaderPath width={width} height={height} />
+        <HeaderPath width={width} height={height} opacity={opacity} />
       </Svg>
     </View>
   );

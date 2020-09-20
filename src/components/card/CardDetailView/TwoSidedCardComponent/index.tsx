@@ -15,7 +15,7 @@ import {
 } from '@app_constants';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
 import HealthSanityLine from '@components/core/HealthSanityLine';
-import { isBig, xs, s, m } from '@styles/space';
+import { isTablet, xs, s, m } from '@styles/space';
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
@@ -406,7 +406,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           ].background,
           borderTopWidth: noHeader ? 1 : 0,
         }]}>
-          { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width)} linked={!!this.props.linked} /> }
+          { !noHeader && <CardDetailHeader card={card} back width={Math.min(768, width - s * 2)} linked={!!this.props.linked} /> }
           <View removeClippedSubviews style={[
             styles.cardBody,
             {
@@ -418,7 +418,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
                 <View style={styles.metadataBlock}>
                   { this.renderType(card) }
                   { !!card.traits && (
-                    <Text style={[typography.small, styles.traitsText]}>
+                    <Text style={[typography.small, typography.boldItalic]}>
                       { card.traits }
                     </Text>
                   ) }
@@ -571,7 +571,6 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     }
 
     const noHeader = (card.name === card.back_name || !card.back_name) && backFirst;
-    const isTablet = Platform.OS === 'ios' && DeviceInfo.isTablet();
     return (
       <View style={[styles.container, styles.containerPadding]} key={key}>
         <View style={[
@@ -583,7 +582,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             borderTopWidth: noHeader ? 1 : 0,
           },
         ]}>
-          { !noHeader && <CardDetailHeader card={card} width={Math.min(768, width)} linked={!!this.props.linked} /> }
+          { !noHeader && <CardDetailHeader card={card} width={Math.min(768, width - s * 2)} linked={!!this.props.linked} /> }
           <View style={[
             styles.cardBody,
             {
@@ -727,10 +726,6 @@ const styles = StyleSheet.create({
   },
   typeBlock: {
     marginTop: xs,
-  },
-  traitsText: {
-    fontWeight: isBig ? '500' : '700',
-    fontStyle: 'italic',
   },
   testIconRow: {
     flexDirection: 'row',

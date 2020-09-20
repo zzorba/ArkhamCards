@@ -149,7 +149,7 @@ export default function CardDetailHeader({ card, width, back, linked }: Props) {
       backgroundColor: color,
       borderColor: color,
     }]} removeClippedSubviews>
-      <FactionPattern faction={card.factionCode()} width={width - s * 2} height={48} />
+      <FactionPattern faction={card.factionCode()} width={width} height={48} />
       <HeaderContent card={card} back={!!back} />
       <FactionIcon card={card} linked={linked} />
     </View>
