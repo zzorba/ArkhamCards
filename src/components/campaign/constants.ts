@@ -253,7 +253,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`The Grotto of Despair`, code: 'grotto_of_despair', pack_code: 'tic' },
       { name: t`Puzzle pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
       { name: t`The Disappearance of Elina Harper`, code: 'disapearance_of_elina_harper', pack_code: 'tic' },
-      { name: t`The Syzygium`, code: 'syzygium', pack_code: 'tic', interlude: true },
+      { name: t`The Syzygy`, code: 'syzygy', pack_code: 'tic', interlude: true },
       { name: t`In Too Deep`, code: 'in_too_deep', pack_code: 'itc' },
       { name: t`Devil Reef`, code: 'devil_reef', pack_code: 'def' },
       { name: t`Under the Waves`, code: 'under_the_waves', pack_code: 'def', interlude: true },
