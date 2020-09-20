@@ -8,7 +8,7 @@ import { t } from 'ttag';
 
 import Card from '@data/Card';
 import { TINY_PHONE } from '@styles/sizes';
-import { m, s, xs } from '@styles/space';
+import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import SkillIcon from '@components/core/SkillIcon';
 
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function InvestigatorStatLine({ investigator }: Props) {
-  const { fontScale, colors, typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const willpower = investigator.skill_willpower || 0;
   const intellect = investigator.skill_intellect || 0;
   const combat = investigator.skill_combat || 0;
@@ -64,15 +64,6 @@ const styles = StyleSheet.create({
     paddingLeft: s,
     paddingRight: s,
     marginRight: xs,
-  },
-  skillIcon: {
-    marginLeft: 2,
-    position: 'relative',
-  },
-  icon: {
-    position: 'absolute',
-    top: 0,
-    left: 2,
   },
   skillRow: {
     flexDirection: 'row',

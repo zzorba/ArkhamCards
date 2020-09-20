@@ -14,7 +14,6 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import typography from '@styles/typography';
 
 export interface DrawSimulatorProps {
   slots: Slots;
@@ -169,7 +168,7 @@ class DrawSimulatorView extends React.Component<Props, State> {
       drawnCards,
       selectedCards,
     } = this.state;
-    const { colors } = this.context;
+    const { colors, typography } = this.context;
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (

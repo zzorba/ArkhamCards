@@ -1,4 +1,4 @@
-import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, uniqBy, values } from 'lodash';
+import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert } from 'react-native';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
@@ -6,7 +6,6 @@ import Card from '@data/Card';
 import Database from '@data/Database';
 import TabooSet from '@data/TabooSet';
 import FaqEntry from '@data/FaqEntry';
-import { normal } from 'react-native-color-matrix-image-filters';
 
 export const syncTaboos = async function(
   db: Database,
@@ -182,7 +181,7 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
-    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => !!c.linked_card ? [c.code] : []));
+    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code] : []));
     const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
     const flatCards = flatMap(dedupedCards, (c: Card) => {
       return c.linked_card ? [c, c.linked_card] : [c];
@@ -198,10 +197,10 @@ export const syncCards = async function(
     forEach(flatCards, card => {
       if (card.encounter_code) {
         card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
-        encounter_card_counts
+        encounter_card_counts;
       }
-    })
-    forEach(groupBy(flatCards, card => card.id), (dupes, id) => {
+    });
+    forEach(groupBy(flatCards, card => card.id), dupes => {
       if (dupes.length > 1) {
         forEach(dupes, (dupe, idx) => {
           dupe.id = `${dupe.id}_${idx}`;

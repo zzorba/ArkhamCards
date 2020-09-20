@@ -6,7 +6,6 @@ import { cloneDeep, isArray, join, trim } from 'lodash';
 import { t } from 'ttag';
 
 import PickerModal, { ModalStyle, PickerItem } from './picker.modal';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const style = StyleSheet.create({

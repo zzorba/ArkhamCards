@@ -9,6 +9,8 @@ import {
   SetLanguageChoiceAction,
   CardFetchSuccessAction,
   CARD_FETCH_SUCCESS,
+  SET_THEME,
+  SetThemeAction,
 } from '@actions/types';
 
 interface SettingsState {
@@ -16,6 +18,7 @@ interface SettingsState {
   singleCardView?: boolean;
   alphabetizeEncounterSets?: boolean;
   lang?: string;
+  theme?: 'dark' | 'light';
 }
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
@@ -25,7 +28,7 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   lang: 'system',
 };
 
-type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction;
+type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction;
 
 
 export default function(
@@ -33,6 +36,12 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
+    case SET_THEME: {
+      return {
+        ...state,
+        theme: action.theme === 'system' ? undefined : action.theme,
+      };
+    }
     case SET_LANGUAGE_CHOICE: {
       return {
         ...state,

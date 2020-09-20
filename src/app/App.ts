@@ -10,7 +10,8 @@ import { t } from 'ttag';
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
-import { getLangPreference, AppState } from '@reducers';
+import { getLangPreference, AppState, getThemeOverride } from '@reducers';
+import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -27,10 +28,13 @@ TouchableOpacity.defaultProps = {
 export default class App {
   started: boolean;
   currentLang: string;
+  currentThemeOverride?: 'light' | 'dark';
 
   constructor(store: Store<AppState, Action>) {
     this.started = false;
     this.currentLang = 'en';
+    this.currentThemeOverride = undefined;
+
     store.subscribe(this.onStoreUpdate.bind(this, store));
 
     this.initialAppStart(store).then(safeMode => {
@@ -93,15 +97,21 @@ export default class App {
 
   onStoreUpdate(store: Store<AppState, Action>, appStart?: boolean) {
     if (this.started || appStart) {
-      const lang = getLangPreference(store.getState());
+      const state = store.getState();
+      const lang = getLangPreference(state);
+      const themeOverride = getThemeOverride(state);
       // handle a root change
       // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
       if (!this.started || this.currentLang !== lang) {
         this.started = true;
         this.currentLang = lang;
+        this.currentThemeOverride = themeOverride;
         iconsLoaded.then(() => {
           this.startApp(lang);
         }).catch(error => console.log(error));
+      } else if (this.currentThemeOverride !== themeOverride) {
+        this.currentThemeOverride = themeOverride;
+        this.setDefaultOptions(Appearance.getColorScheme(), true);
       }
     }
   }
@@ -114,56 +124,61 @@ export default class App {
     });
   };
 
-  setDefaultOptions(colorScheme: 'light' | 'dark' | 'no-preference', changeUpdate?:boolean) {
-    const darkMode = colorScheme === 'dark';
-    const backgroundColor = COLORS.L30;
+  setDefaultOptions(
+    colorScheme: 'light' | 'dark' | 'no-preference',
+    changeUpdate?: boolean
+  ) {
+    console.log(`Updating default options with ${colorScheme} vs ${this.currentThemeOverride}`);
+    const system = !this.currentThemeOverride;
+    const darkMode = system ? colorScheme === 'dark' : this.currentThemeOverride === 'dark';
+    const colors = darkMode ? DARK_THEME : LIGHT_THEME;
     const defaultOptions: Options = {
       topBar: {
         leftButtonColor: COLORS.lightBlue,
         rightButtonColor: COLORS.lightBlue,
-        rightButtonDisabledColor: COLORS.lightText,
-        leftButtonDisabledColor: COLORS.lightText,
+        rightButtonDisabledColor: colors.lightText,
+        leftButtonDisabledColor: colors.lightText,
         title: {
-          color: COLORS.darkText,
+          color: colors.darkText,
           fontFamily: 'Alegreya-Medium',
           fontSize: 20,
         },
         subtitle: {
-          color: COLORS.darkText,
+          color: colors.darkText,
           fontFamily: 'Alegreya-Medium',
           fontSize: 14,
         },
         background: {
-          color: COLORS.L30,
+          color: colors.L30,
           translucent: false,
         },
         backButton: {
-          color: COLORS.M,
+          color: colors.M,
         },
         barStyle: darkMode ? 'black' : 'default',
       },
       layout: Platform.select({
         android: {
-          componentBackgroundColor: COLORS.L30,
+          componentBackgroundColor: colors.L30,
         },
         ios: {
-          backgroundColor: COLORS.L30,
-          componentBackgroundColor: COLORS.L30,
+          backgroundColor: colors.L30,
+          componentBackgroundColor: colors.L30,
         },
       }),
       navigationBar: {
         backgroundColor: 'default',
       },
       bottomTabs: {
+        backgroundColor: colors.background,
         barStyle: darkMode ? 'black' : 'default',
-        backgroundColor,
-        translucent: true,
+        translucent: system,
       },
       bottomTab: {
-        iconColor: COLORS.M,
-        textColor: COLORS.M,
-        selectedIconColor: COLORS.D30,
-        selectedTextColor: COLORS.D30,
+        iconColor: colors.M,
+        textColor: colors.M,
+        selectedIconColor: colors.D30,
+        selectedTextColor: colors.D30,
       },
     };
     Navigation.setDefaultOptions(defaultOptions);
@@ -175,10 +190,12 @@ export default class App {
   }
 
   startSafeMode(store: Store<AppState, Action>) {
-    const lang = getLangPreference(store.getState());
+    const state = store.getState();
+    const lang = getLangPreference(state);
     changeLocale(lang || 'en');
     this.started = true;
     this.currentLang = lang;
+    this.currentThemeOverride = getThemeOverride(state);
     Navigation.setRoot({
       root: {
         stack: {

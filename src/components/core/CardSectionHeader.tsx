@@ -1,10 +1,7 @@
 import React from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  TouchableNativeFeedback,
   View,
 } from 'react-native';
 // @ts-ignore
@@ -45,7 +42,7 @@ export default class CardSectionHeader extends React.Component<Props> {
   context!: StyleContextType;
 
   renderSuperTitle(investigator: Card, superTitle: string, noIcon?: boolean) {
-    const { colors, borderStyle, fontScale, typography } = this.context;
+    const { fontScale, typography } = this.context;
     const {
       section,
     } = this.props;
@@ -81,7 +78,7 @@ export default class CardSectionHeader extends React.Component<Props> {
     } = this.props;
     if (section.placeholder) {
       return (
-        <View style={[styles.placeholder, backgroundStyle, { height: cardSectionHeaderHeight(section, fontScale)}]} />
+        <View style={[styles.placeholder, backgroundStyle, { height: cardSectionHeaderHeight(section, fontScale) }]} />
       );
     }
     if (section.superTitle) {
@@ -190,13 +187,5 @@ const styles = StyleSheet.create({
   },
   subHeaderText: {
     marginTop: 2,
-  },
-  headerRow: {
-    paddingLeft: m,
-    paddingRight: s,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

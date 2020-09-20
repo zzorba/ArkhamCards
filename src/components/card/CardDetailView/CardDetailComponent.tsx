@@ -143,9 +143,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  sectionHeader: {
-    paddingLeft: s,
-  },
   investigatorContent: {
     width: '100%',
     maxWidth: 768,

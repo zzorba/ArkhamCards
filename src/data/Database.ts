@@ -103,7 +103,7 @@ export default class Database {
   async insertCards(
     cards: Card[]
   ): Promise<InsertResult> {
-    const query =  (await this.cards())
+    const query = (await this.cards())
       .createQueryBuilder()
       .insert()
       .into(Card)

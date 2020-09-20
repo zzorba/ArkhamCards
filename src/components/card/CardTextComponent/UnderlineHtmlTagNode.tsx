@@ -18,5 +18,5 @@ export default function UnderlineHtmlTagNode({ typography }: StyleContextType) {
         { node.text }
       </Text>
     );
-  }
+  };
 }

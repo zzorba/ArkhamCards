@@ -11,7 +11,6 @@ import Card from '@data/Card';
 import { RandomLocationInput } from '@data/scenario/types';
 import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import { m, l } from '@styles/space';
-import COLORS from '@styles/colors';
 
 interface Props {
   input: RandomLocationInput;

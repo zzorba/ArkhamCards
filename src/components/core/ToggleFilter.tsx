@@ -39,7 +39,7 @@ function Label({ label, icon }: { label?: string; icon?: string }) {
 export default function ToggleFilter({ onChange, setting, label, value, icon, style }: Props) {
   const onToggle = () => {
     onChange(setting, !value);
-  }
+  };
   return (
     <View style={[styles.row, style]}>
       <View style={styles.label}>

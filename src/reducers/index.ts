@@ -540,3 +540,9 @@ export function getCardLang(
   }
   return state.cards.lang || 'en';
 }
+
+export function getThemeOverride(
+  state: AppState,
+): 'dark' | 'light' | undefined {
+  return state.settings.theme;
+}

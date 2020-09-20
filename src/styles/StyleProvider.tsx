@@ -2,13 +2,14 @@ import React from 'react';
 import DeviceInfo from 'react-native-device-info';
 import { EventSubscription } from 'react-native';
 import { connect } from 'react-redux';
+import { Appearance, ColorSchemeName, AppearancePreferences } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
 
 import StyleContext from './StyleContext';
-import { AppState, getLangPreference } from '@reducers';
-import { Appearance, ColorSchemeName, AppearancePreferences } from 'react-native-appearance';
+import { AppState, getLangPreference, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
+import COLORS from './colors';
 
 interface OwnProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ interface OwnProps {
 
 interface ReduxProps {
   lang: string;
+  themeOverride?: 'dark' | 'light';
 }
 
 type Props = OwnProps & ReduxProps;
@@ -81,17 +83,18 @@ class StyleProvider extends React.Component<Props, State> {
   }
 
   render() {
-    const { lang } = this.props;
+    const { lang, themeOverride } = this.props;
     const { colorScheme, fontScale } = this.state;
-    const darkMode = colorScheme === 'dark';
+    const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
     const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+    const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
     return (
       <StyleContext.Provider value={{
         darkMode,
         fontScale,
-        typography,
+        typography: typography(themeOverride ? colors : COLORS, gameFont),
         colors,
-        gameFont: lang === 'ru' ? 'Conkordia' : 'Teutonic',
+        gameFont,
         backgroundStyle: {
           backgroundColor: colors.background,
         },
@@ -114,6 +117,7 @@ class StyleProvider extends React.Component<Props, State> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     lang: getLangPreference(state),
+    themeOverride: getThemeOverride(state),
   };
 }
 

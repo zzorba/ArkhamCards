@@ -220,7 +220,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
       (!!campaign && !singleInvestigator && !simpleOptions) ? [(
         <View style={styles.row} key={1}>
           <Text style={[typography.small, styles.searchOption]}>
-          { t`Hide Killed and Insane Investigators` }
+            { t`Hide Killed and Insane Investigators` }
           </Text>
           <ArkhamSwitch
             value={hideEliminatedInvestigators}
@@ -238,7 +238,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             onValueChange={this._toggleOnlyShowPreviousCampaignMembers}
           />
         </View>
-      )] : []
+      )] : [],
     ]);
     if (!elements.length) {
       return undefined;

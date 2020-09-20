@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import ThemePicker from './ThemePicker';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import SettingsSwitch from '@components/core/SettingsSwitch';
@@ -46,7 +47,6 @@ interface ReduxActionProps {
   setSingleCardView: (value: boolean) => void;
   setAlphabetizeEncounterSets: (value: boolean) => void;
 }
-
 
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
@@ -173,17 +173,18 @@ class SettingsView extends React.Component<Props> {
               />
               <LanguagePicker />
               <CardSectionHeader section={{ title: t`Preferences` }} />
+              <ThemePicker />
               <SettingsSwitch
                 title={t`Swipe between card results`}
                 value={!showCardsingleCardView}
                 onValueChange={this._swipeBetweenCardsChanged}
-                style="settings"
+                settingsStyle
               />
               <SettingsSwitch
                 title={t`Alphabetize guide encounter sets`}
                 value={alphabetizeEncounterSets}
                 onValueChange={this._alphabetizeEncounterSetsChanged}
-                style="settings"
+                settingsStyle
               />
               <SettingsItem
                 navigation

@@ -19,7 +19,7 @@ interface Props {
 export default function InvestigatorCounterComponent({
   id, limits, requiredTotal, countText, description,
 }: Props) {
-  const { scenarioInvestigators, style: { colors }} = useContext(ScenarioStepContext);
+  const { scenarioInvestigators, style: { colors } } = useContext(ScenarioStepContext);
   return (
     <CounterListComponent
       id={id}

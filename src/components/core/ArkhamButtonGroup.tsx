@@ -1,7 +1,7 @@
 import StyleContext from '@styles/StyleContext';
 import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { find, filter, map } from 'lodash';
+import { filter, map } from 'lodash';
 
 import Ripple from '@lib/react-native-material-ripple';
 
@@ -34,8 +34,8 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
       style={[
         styles.button,
         { height, backgroundColor: selected ? colors.L10 : colors.M },
-        idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2} : {},
-        last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2} : {},
+        idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
+        last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
       ]}
     >
       { content.element(selected) }
@@ -48,7 +48,7 @@ export default function ArkhamButtonGroup({
   selectedIndexes,
   onPress,
 }: Props) {
-  const { colors, fontScale } =  useContext(StyleContext);
+  const { colors, fontScale } = useContext(StyleContext);
   const selection = new Set(selectedIndexes);
   const onPressIndex = (idx: number) => {
     if (selection.has(idx)) {
@@ -62,7 +62,7 @@ export default function ArkhamButtonGroup({
     <View style={styles.wrapper}>
       <View style={[styles.buttonWrapper, { borderRadius: height / 2, height, backgroundColor: colors.M }]}>
         { map(buttons, (button, idx) => {
-          const last = idx === (buttons.length -1);
+          const last = idx === (buttons.length - 1);
           return (
             <>
               <SingleButton
@@ -81,7 +81,7 @@ export default function ArkhamButtonGroup({
               ) }
             </>
           );
-        } )}
+        })}
       </View>
     </View>
   );

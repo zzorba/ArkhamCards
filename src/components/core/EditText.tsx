@@ -1,10 +1,9 @@
 import React from 'react';
-import { Alert, Platform, StyleSheet } from 'react-native';
+import { Alert, Platform } from 'react-native';
 // @ts-ignore TS7016
 import DialogAndroid from 'react-native-dialogs';
 import { t } from 'ttag';
 
-import { m, s, xs } from '@styles/space';
 import PickerStyleButton from './PickerStyleButton';
 
 interface Props {
@@ -20,7 +19,7 @@ async function openDialog({
   title,
   dialogDescription,
   value,
-  onValueChange
+  onValueChange,
 }: Props) {
   if (Platform.OS === 'ios') {
     Alert.prompt(
@@ -49,7 +48,7 @@ async function openDialog({
       onValueChange(text);
     }
   }
-};
+}
 
 export default function EditText({
   title,
@@ -71,15 +70,3 @@ export default function EditText({
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: m,
-    paddingTop: s,
-    paddingBottom: s,
-  },
-});

@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 
-import { isBig, isTablet } from '@styles/space';
+import { isTablet } from '@styles/space';
 import { TINY_PHONE } from '@styles/sizes';
 
 function halfFontScale(fontScale: number) {

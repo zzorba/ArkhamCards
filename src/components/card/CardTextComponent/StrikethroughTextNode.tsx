@@ -22,7 +22,7 @@ export default function StrikethroughTextNode({ colors }: StyleContextType) {
         { node.text }
       </Text>
     );
-  }
+  };
 }
 
 const styles = StyleSheet.create({

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Platform, StyleSheet, Switch, Text, View, SwitchProps, TextStyle } from 'react-native';
 
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props extends SwitchProps {

@@ -5,7 +5,6 @@ import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 're
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { Deck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';

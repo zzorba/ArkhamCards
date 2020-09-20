@@ -100,9 +100,9 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     });
   }
 
-  _onDeckNameChange = (value: string) => {
+  _onDeckNameChange = (value?: string) => {
     this.setState({
-      deckName: value,
+      deckName: value || '',
     });
   };
 
@@ -362,7 +362,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
             onValueChange={this._onDeckTypeChange}
-            style="settings"
+            settingsStyle
           />
         ) : (
           <SettingsItem
@@ -383,7 +383,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             title={t`Use Starter Deck`}
             value={starterDeck}
             onValueChange={this._onStarterDeckChange}
-            style="settings"
+            settingsStyle
           />
         ) }
       </>

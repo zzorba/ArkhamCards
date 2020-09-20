@@ -8,7 +8,6 @@ import { Input } from 'react-native-elements';
 import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
-import COLORS from '@styles/colors';
 import ToggleButton from '@components/core/ToggleButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import space from '@styles/space';
@@ -33,13 +32,14 @@ export default class SearchBox extends React.Component<Props> {
 
   renderClearButton(rightPadding?: boolean) {
     const { value } = this.props;
+    const { colors } = this.context;
     if (!value) {
       return undefined;
     }
     return (
       <TouchableOpacity style={rightPadding ? space.marginRightS : undefined} onPress={this._clear}>
         <View style={styles.dismissIcon}>
-          <AppIcon name="dismiss" size={18} color={COLORS.D20} />
+          <AppIcon name="dismiss" size={18} color={colors.D20} />
         </View>
       </TouchableOpacity>
     );
@@ -49,7 +49,6 @@ export default class SearchBox extends React.Component<Props> {
       toggleAdvanced,
       advancedOpen,
     } = this.props;
-    const { colors } = this.context;
     if (!toggleAdvanced) {
       return (
         <View style={styles.rightButtons}>
@@ -101,7 +100,7 @@ export default class SearchBox extends React.Component<Props> {
         onChangeText={onChangeText}
         placeholder={placeholder}
         placeholderTextColor={colors.D20}
-        leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={COLORS.M} size={18} /></View>}
+        leftIcon={<View style={styles.searchIcon}><AppIcon name="search" color={colors.M} size={18} /></View>}
         rightIcon={this.renderToggleButton()}
         rightIconContainerStyle={{
           marginRight: -13,
@@ -141,29 +140,11 @@ const styles = StyleSheet.create({
     padding: 10,
     position: 'relative',
   },
-  icon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  toggleButton: {
-  },
   rightButtons: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginLeft: 8,
-  },
-  closeIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   dismissIcon: {
     width: 24,

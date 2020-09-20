@@ -307,7 +307,7 @@ class CampaignChaosBagView extends React.Component<Props, State> {
     const {
       chaosBagResults,
     } = this.props;
-    const { colors, backgroundStyle, borderStyle, typography } = this.context;
+    const { backgroundStyle, borderStyle } = this.context;
     return (
       <ScrollView style={styles.containerBottom} contentContainerStyle={backgroundStyle}>
         <KeepAwake />
@@ -403,13 +403,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: s,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: s,
-    height: 40,
   },
   containerTop: {
     alignItems: 'center',

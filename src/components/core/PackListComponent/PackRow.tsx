@@ -16,7 +16,6 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { PackCardsProps } from '@components/settings/PackCardsView';
 import { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import typography from '@styles/typography';
 
 interface Props {
   componentId: string;
@@ -108,7 +107,7 @@ export default class PackRow extends React.Component<Props> {
       compact,
       nameOverride,
     } = this.props;
-    const { colors, fontScale } = this.context;
+    const { colors, fontScale, typography } = this.context;
     const mythosPack = true;
     const backgroundColor = (whiteBackground || mythosPack) ? colors.background : colors.L20;
     const iconSize = (mythosPack || compact) ? 24 : 28;

@@ -286,7 +286,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
           { this.renderSkillIcons() }
           { !!card.renderSubname && (
             <View style={styles.row}>
-              <Text style={[typography.small, typography.italic, typography.light,, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
+              <Text style={[typography.small, typography.italic, typography.light, styles.subname]} numberOfLines={1} ellipsizeMode="clip">
                 { card.renderSubname }
               </Text>
             </View>

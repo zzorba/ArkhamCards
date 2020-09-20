@@ -99,7 +99,7 @@ const FancyHtmlTagRule = (style: StyleContextType): MarkdownRule<WithChildren, S
     },
     render: FlavorFancyNode(style),
   };
-}
+};
 
 const CenterHtmlTagRule: MarkdownRule<WithChildren, State> = {
   match: SimpleMarkdown.inlineRegex(new RegExp('^<center>([\\s\\S]+?)<\\/center>')),

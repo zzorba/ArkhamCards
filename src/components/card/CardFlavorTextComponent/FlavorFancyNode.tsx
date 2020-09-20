@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import { isBig } from '@styles/space';
 import { WithChildren } from '../CardTextComponent/types';
 import { StyleContextType } from '@styles/StyleContext';
 

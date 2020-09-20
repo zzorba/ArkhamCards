@@ -21,5 +21,5 @@ export default function EmphasisHtmlTagNode({ typography }: StyleContextType) {
         { output(node.children, state) }
       </Text>
     );
-  }
+  };
 }

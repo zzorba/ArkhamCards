@@ -657,7 +657,6 @@ class NewCampaignView extends React.Component<Props, State> {
               description={guided ? t`Use app for scenario setup & resolutions` : t`Track campaign log and resolutions manually`}
               onValueChange={this._toggleGuided}
               value={guided}
-              style="game"
             />
           ) }
           { !this.isGuided() && (

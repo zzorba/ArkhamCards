@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 
 import CardTextComponent from '@components/card/CardTextComponent';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {

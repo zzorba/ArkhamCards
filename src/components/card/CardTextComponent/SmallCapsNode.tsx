@@ -19,7 +19,7 @@ export default function SmallCapsNode({ typography }: StyleContextType) {
         { output(node.children, state) }
       </Text>
     );
-  }
+  };
 }
 
 const styles = StyleSheet.create({

@@ -10,7 +10,6 @@ import { Navigation, EventSubscription, Options } from 'react-native-navigation'
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import BasicButton from '@components/core/BasicButton';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import CampaignList from './CampaignList';

@@ -2,7 +2,6 @@ import React from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {

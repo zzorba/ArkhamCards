@@ -67,7 +67,7 @@ export default function CardFooterButton({ onPressFaq, onPressTaboo }: Props) {
           </View>
         </Ripple>
       </View>
-    )
+    );
   }
   return (
     <Ripple

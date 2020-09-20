@@ -10,7 +10,7 @@ interface Props extends ChoiceListComponentProps {
 }
 
 export default function InvestigatorChoicePrompt({ investigators, ...otherProps }: Props) {
-  const { scenarioInvestigators, style: { colors }} = useContext(ScenarioStepContext);
+  const { scenarioInvestigators, style: { colors } } = useContext(ScenarioStepContext);
   return (
     <ChoiceListComponent
       {...otherProps}

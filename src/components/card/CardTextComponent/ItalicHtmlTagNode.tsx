@@ -19,5 +19,5 @@ export default function ItalicHtmlTagNode({ typography }: StyleContextType) {
         { output(node.children, state) }
       </Text>
     );
-  }
+  };
 }
