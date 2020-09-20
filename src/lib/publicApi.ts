@@ -181,7 +181,7 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
-    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code] : []));
+    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card] : []));
     const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
     const flatCards = flatMap(dedupedCards, (c: Card) => {
       return c.linked_card ? [c, c.linked_card] : [c];

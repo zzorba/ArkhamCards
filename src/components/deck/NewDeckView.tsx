@@ -100,7 +100,7 @@ export default class NewDeckView extends React.Component<Props, State> {
           onCreateDeck,
         },
         options: {
-          ...getDeckOptions({ title: t`NewDeck` }, investigator),
+          ...getDeckOptions({ title: t`New Deck` }, investigator),
           bottomTabs: {},
         },
       },

@@ -59,7 +59,7 @@ export default function(colors: TypographyColors, gameFont: string): Typography 
     small: {
       fontFamily: 'Alegreya-Regular',
       fontSize: 14 * sizeScale,
-      lineHeight: 18 * sizeScale,
+      lineHeight: 16 * sizeScale,
       color: colors.darkText,
     },
     tiny: {
@@ -71,7 +71,7 @@ export default function(colors: TypographyColors, gameFont: string): Typography 
     large: {
       fontFamily: 'Alegreya-Medium',
       fontSize: 20 * sizeScale,
-      lineHeight: 24 * sizeScale,
+      lineHeight: 20 * sizeScale,
       color: colors.darkText,
     },
     header: {
@@ -83,7 +83,7 @@ export default function(colors: TypographyColors, gameFont: string): Typography 
     button: {
       fontFamily: 'Alegreya-Regular',
       fontSize: 18 * sizeScale,
-      lineHeight: 22 * sizeScale,
+      lineHeight: 20 * sizeScale,
       color: colors.L30,
     },
     subHeaderText: {
