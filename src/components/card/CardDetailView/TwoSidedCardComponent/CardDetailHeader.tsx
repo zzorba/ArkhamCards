@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { ClipPath, Defs, LinearGradient, Circle, Svg, Rect, Mask, Use, Stop } from 'react-native-svg';
 
+
+import FactionPattern from './FactionPattern';
 import { CORE_FACTION_CODES } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
 import Card from '@data/Card';
@@ -19,6 +22,7 @@ interface Props {
 
 const RATIO = 7.0;
 const ICON_SIZE = 28;
+const HEIGHT = 48;
 
 function HeaderPattern({ card, width }: { card: Card, width: number }) {
   switch (card.factionCode()) {
@@ -30,9 +34,7 @@ function HeaderPattern({ card, width }: { card: Card, width: number }) {
       );
     case 'seeker':
       return (
-        <View style={styles.pattern}>
-          <AppIcon size={width / 8} name="seeker_pattern" color="#00000022" />
-        </View>
+        <FactionPattern width={width - 18} height={48} faction="seeker" />
       );
     case 'rogue':
       return (
@@ -188,8 +190,8 @@ export default function CardDetailHeader({ card, width, back, linked }: Props) {
     <View style={[styles.cardTitle, {
       backgroundColor: color,
       borderColor: color,
-    }]}>
-      <HeaderPattern card={card} width={width} />
+    }]} removeClippedSubviews>
+      <FactionPattern faction={card.factionCode()} width={width - s * 2} height={48} />
       <HeaderContent card={card} back={!!back} />
       <FactionIcon card={card} linked={linked} />
     </View>
@@ -201,7 +203,7 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: xs,
     paddingBottom: xs,
-    minHeight: 48,
+    minHeight: HEIGHT,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     flexDirection: 'row',

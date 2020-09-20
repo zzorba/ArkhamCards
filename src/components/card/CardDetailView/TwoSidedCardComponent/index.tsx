@@ -716,6 +716,8 @@ const styles = StyleSheet.create({
     paddingLeft: s,
     paddingRight: s + 1,
     paddingBottom: xs,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
   },
   gameTextBlock: {
     borderLeftWidth: 2,
