@@ -14,7 +14,7 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import Button from '@components/core/Button';
-import Switch from '@components/core/Switch';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
@@ -419,8 +419,8 @@ export default class CardSearchResult extends React.PureComponent<Props> {
         { this.renderCount() }
         { !!onToggleChange && (
           <View style={styles.switchButton}>
-            <Switch
-              value={toggleValue}
+            <ArkhamSwitch
+              value={!!toggleValue}
               onValueChange={this._onToggleChange}
             />
           </View>

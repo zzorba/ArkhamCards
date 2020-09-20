@@ -28,6 +28,7 @@ export default class RequiredCardSwitch extends React.Component<Props> {
     return (
       <SettingsSwitch
         disabled={disabled}
+        noDisableText
         title={label}
         value={value}
         onValueChange={this._onValueChange}

@@ -167,7 +167,8 @@ export const syncCards = async function(
     await cards.createQueryBuilder().delete().execute();
     await encounterSets.createQueryBuilder().delete().execute();
     await tabooSets.createQueryBuilder().delete().execute();
-    console.log(`${await cards.count() } cards after delete`);
+    await db.clearCache();
+    // console.log(`${await cards.count() } cards after delete`);
     const cardsToInsert: Card[] = [];
     forEach(json, cardJson => {
       try {

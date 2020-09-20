@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import Switch from '@components/core/Switch';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import {
   Campaign,
@@ -44,6 +43,7 @@ import TabooSet from '@data/TabooSet';
 import COLORS from '@styles/colors';
 import { isBig, m, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -585,7 +585,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
             <Text style={typography.small}>
               { t`Show limited splash` }
             </Text>
-            <Switch
+            <ArkhamSwitch
               value={this.state.limitedSlots}
               onValueChange={this._toggleLimitedSlots}
             />

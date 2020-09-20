@@ -50,19 +50,29 @@ const FEMININE_INVESTIGATORS = new Set([
 ]);
 
 @Entity('card')
-@Index(['code', 'taboo_set_id'], { unique: true })
+@Index('code_taboo', ['code', 'taboo_set_id'], { unique: true })
+@Index('sort_type', ['sort_by_type', 'renderName', 'xp'])
+@Index('sort_faction', ['sort_by_faction', 'renderName', 'xp'])
+@Index('sort_faction_pack', ['sort_by_faction_pack', 'code'])
+@Index('sort_cost', ['cost', 'renderName', 'xp'])
+@Index('sort_pack', ['sort_by_pack', 'position'])
+@Index('sort_pack_encounter', ['sort_by_pack', 'encounter_code', 'encounter_position'])
+@Index('sort_name_xp', ['renderName', 'xp'])
+@Index('encounter_query_index',[
+  'taboo_set_id', 'altArtInvestigator', 'back_linked', 'hidden', 'encounter_code'
+])
 export default class Card {
   @PrimaryColumn('text')
   public id!: string;
 
-  @Index()
+  @Index('code')
   @Column('text')
   public code!: string;
 
   @Column('text')
   public name!: string;
 
-  @Index()
+  @Index('real_name')
   @Column('text')
   public real_name!: string;
 
@@ -85,7 +95,7 @@ export default class Card {
   @Column('text', { nullable: true })
   public taboo_text_change?: string;
 
-  @Index()
+  @Index('pack_code')
   @Column('text')
   public pack_code!: string;
 
@@ -107,7 +117,7 @@ export default class Card {
   @Column('text', { nullable: true })
   public real_slot?: string;
 
-  @Index()
+  @Index('faction_code')
   @Column('text', { nullable: true })
   public faction_code?: FactionCodeType;
 
@@ -135,6 +145,7 @@ export default class Card {
   @Column('integer', { nullable: true })
   public enemy_evade?: number;
 
+  @Index('encounter_code')
   @Column('text', { nullable: true })
   public encounter_code?: string;
 
@@ -150,7 +161,7 @@ export default class Card {
   @Column('boolean', { nullable: true })
   public exceptional?: boolean;
 
-  @Index()
+  @Index('xp')
   @Column('integer', { nullable: true })
   public xp?: number;
 
@@ -213,7 +224,7 @@ export default class Card {
   @Column('integer', { nullable: true })
   public sanity?: number;
 
-  @Index()
+  @Index('deck_limit')
   @Column('integer', { nullable: true })
   public deck_limit?: number;
   @Column('text', { nullable: true })

@@ -1,5 +1,5 @@
 import { findIndex, forEach, pull } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult } from 'typeorm/browser';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, getManager } from 'typeorm/browser';
 
 import Card from './Card';
 import EncounterSet from './EncounterSet';
@@ -12,7 +12,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  static SCHEMA_VERSION: number = 13;
+  static SCHEMA_VERSION: number = 14;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -27,11 +27,12 @@ export default class Database {
       location: 'default',
       logging: [
         'error',
-        // 'query',
+        //'query',
         'schema',
       ],
       dropSchema: recreate,
       synchronize: recreate,
+      // maxQueryExecutionTime: 4000,
       // migrations:['migrations/migration.js'],
       entities: [
         Card,
@@ -97,6 +98,13 @@ export default class Database {
     const index = findIndex(connection.subscribers, sub => sub === subscriber);
     if (index !== -1) {
       connection.subscribers.splice(index, 1);
+    }
+  }
+
+  async clearCache(): Promise<void> {
+    const connection = await this.connectionP;
+    if (connection.queryResultCache) {
+      await connection.queryResultCache.clear();
     }
   }
 

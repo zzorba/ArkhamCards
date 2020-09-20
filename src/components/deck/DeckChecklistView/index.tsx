@@ -137,11 +137,11 @@ class DeckChecklistView extends React.Component<Props, State> {
 
   _renderHeader = () => {
     const { checklist } = this.props;
-    const { typography } = this.context;
+    const { typography, colors } = this.context;
     return (
       <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
         <TouchableOpacity onPress={this._clearChecklist} disabled={!checklist.size}>
-          <Text style={[typography.text, checklist.size ? styles.clearText : typography.light]}>{t`Clear`}</Text>
+          <Text style={[typography.text, checklist.size ? typography.light : { color: colors.L10 }]}>{t`Clear`}</Text>
         </TouchableOpacity>
       </View>
     );

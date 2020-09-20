@@ -12,9 +12,10 @@ interface Props {
   onValueChange: (value: boolean) => void;
   disabled?: boolean;
   settingsStyle?: boolean;
+  noDisableText?: boolean;
 }
 
-export default function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle }: Props) {
+export default function SettingsSwitch({ title, description, noDisableText, onValueChange, value, disabled, settingsStyle }: Props) {
   const { gameFont, colors, typography } = useContext(StyleContext);
   const titleStyle = settingsStyle ? typography.text : {
     ...typography.mediumGameFont,
@@ -31,6 +32,7 @@ export default function SettingsSwitch({ title, description, onValueChange, valu
       descriptionStyle={typography.small}
       description={description}
       onValueChange={onValueChange}
+      disabledOverlayStyle={noDisableText ? { backgroundColor: 'transparent' } : undefined}
       value={value}
       disabled={disabled}
     />
