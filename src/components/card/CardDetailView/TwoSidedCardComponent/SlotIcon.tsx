@@ -25,9 +25,9 @@ function Icon({ slot, inverted, color }: { slot: string; inverted?: boolean; col
     case 'body':
       return <ArkhamIcon name={`body${inverted ? '_inverted' : ''}`} size={26} color={color} />;
     case 'hand':
-      return <ArkhamIcon name={`${slot}${inverted ? '_inverted' : ''}`} size={22} color={color} />
+      return <ArkhamIcon name={`${slot}${inverted ? '_inverted' : ''}`} size={22} color={color} />;
     case 'tarot':
-      return <AppIcon name="cards" size={22} color={color} />
+      return <AppIcon name="cards" size={22} color={color} />;
     default:
       return <Text>{slot}</Text>;
   }

@@ -8,7 +8,6 @@ import {
   ParseState,
 } from 'react-native-markdown-view';
 
-import { isBig } from '@styles/space';
 import { WithChildren, WithIconName, WithText, State } from './types';
 import ArkhamIconNode from './ArkhamIconNode';
 import BlockquoteHtmlTagNode from './BlockquoteHtmlTagNode';

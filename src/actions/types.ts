@@ -305,7 +305,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDE,
   TDEA,
   TDEB,
-  TIC,
+  // TIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -373,6 +373,11 @@ export interface SingleCampaign extends Campaign {
   finishedScenarios: string[];
 }
 
+export const SET_THEME = 'SET_THEME';
+export interface SetThemeAction {
+  type: typeof SET_THEME;
+  theme: 'dark' | 'light' | 'system';
+}
 
 export const SET_TABOO_SET = 'SET_TABOO_SET';
 export interface SetTabooSetAction {

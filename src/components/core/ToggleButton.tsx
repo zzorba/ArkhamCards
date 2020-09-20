@@ -12,7 +12,7 @@ interface Props {
   icon: 'dots' | 'expand';
 }
 
-export default function ToggleButton({ onPress, value, accessibilityLabel, size=24, icon }: Props) {
+export default function ToggleButton({ onPress, value, accessibilityLabel, size = 24, icon }: Props) {
   const { colors } = useContext(StyleContext);
   const SIZE = size * 1.5;
   return (
@@ -21,7 +21,7 @@ export default function ToggleButton({ onPress, value, accessibilityLabel, size=
         <View style={[styles.closeIcon, { width: SIZE, height: SIZE, backgroundColor: colors.D10 }] }>
           <AppIcon
             name="dismiss"
-            size={size-2}
+            size={size - 2}
             color={colors.L10}
           />
         </View>

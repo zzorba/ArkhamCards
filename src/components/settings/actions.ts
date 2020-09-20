@@ -7,12 +7,20 @@ import {
   SetSingleCardViewAction,
   SetAlphabetizeEncounterSetsAction,
   EnsureUuidAction,
+  SET_THEME,
 } from '@actions/types';
 
 export function setTabooSet(tabooId?: number): SetTabooSetAction {
   return {
     type: SET_TABOO_SET,
     tabooId,
+  };
+}
+
+export function setTheme(theme: 'light' | 'dark' | 'system') {
+  return {
+    type: SET_THEME,
+    theme,
   };
 }
 

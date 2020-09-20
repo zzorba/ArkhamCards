@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 
 import { login } from '@actions';
 import { AppState } from '@reducers';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {

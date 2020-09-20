@@ -24,7 +24,6 @@ import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@d
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import { m } from '@styles/space';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {

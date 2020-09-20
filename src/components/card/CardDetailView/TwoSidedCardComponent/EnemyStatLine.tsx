@@ -20,7 +20,7 @@ interface Props {
 }
 
 export default function EnemyStatLine({ enemy }: Props) {
-  const { colors, fontScale, typography } = useContext(StyleContext);
+  const { colors, typography } = useContext(StyleContext);
   const fight = enemy.enemyFight();
   const health = enemy.enemyHealth();
   const evade = enemy.enemyEvade();

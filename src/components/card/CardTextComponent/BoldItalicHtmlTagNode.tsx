@@ -18,5 +18,5 @@ export default function BoldItalicHtmlTagNode({ typography }: StyleContextType) 
         { node.text }
       </Text>
     );
-  }
+  };
 }

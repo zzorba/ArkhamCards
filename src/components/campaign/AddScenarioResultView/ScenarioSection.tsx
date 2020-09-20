@@ -154,7 +154,7 @@ class ScenarioSection extends React.Component<Props, State> {
           title={t`Show Interludes`}
           value={showInterludes}
           onValueChange={this._toggleShowInterludes}
-          style="settings"
+          settingsStyle
         />
         <SinglePickerComponent
           title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}

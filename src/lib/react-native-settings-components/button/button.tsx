@@ -3,7 +3,6 @@ import {
   StyleSheet, Text, TextProps, TextStyle, TouchableOpacity, View, ViewProps, ViewStyle,
 } from 'react-native';
 
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const style = StyleSheet.create({

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, Switch, Text, View, ViewProps, ViewStyle, TextProps, TextStyle, SwitchProps,
+  StyleSheet, Text, View, ViewProps, ViewStyle, TextProps, TextStyle, SwitchProps,
 } from 'react-native';
 
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 

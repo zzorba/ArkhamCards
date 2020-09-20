@@ -1,15 +1,16 @@
 import React from 'react';
 
 import { LIGHT_THEME, ThemeColors } from './theme';
-import typography from '@styles/typography';
+import typography, { Typography } from '@styles/typography';
 import { ViewStyle } from 'react-native';
+import COLORS from '@styles/colors';
 
 export interface StyleContextType {
   darkMode: boolean;
   colors: ThemeColors;
   gameFont: string;
   fontScale: number;
-  typography: typeof typography;
+  typography: Typography;
   backgroundStyle: ViewStyle;
   borderStyle: ViewStyle;
   disabledStyle: ViewStyle;
@@ -20,7 +21,7 @@ export const DEFAULLT_STYLE_CONTEXT = {
   colors: LIGHT_THEME,
   gameFont: 'Teutonic',
   fontScale: 1,
-  typography,
+  typography: typography(COLORS, 'Teutonic'),
   backgroundStyle: {
     backgroundColor: LIGHT_THEME.background,
   },
@@ -29,7 +30,7 @@ export const DEFAULLT_STYLE_CONTEXT = {
   },
   disabledStyle: {
     backgroundColor: LIGHT_THEME.disableOverlay,
-  }
+  },
 };
 
 export const StyleContext = React.createContext<StyleContextType>(DEFAULLT_STYLE_CONTEXT);

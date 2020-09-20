@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 
 import Card from '@data/Card';
 import PickerStyleButton from './PickerStyleButton';
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {

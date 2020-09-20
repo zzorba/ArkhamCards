@@ -5,16 +5,7 @@ import {
   DynamicColorIOS,
 } from 'react-native';
 
-const darkText = (Platform.OS === 'ios' ? PlatformColor('labelColor') : PlatformColor('@color/colorPrimaryText')) as any as string;
-
-const light10 = '#D7D3C6';
-const light20 = '#F5F0E1';
-const light30 = '#FFFBF2';
-const dark10 = '#656C6F';
-const dark20 = '#475259';
-const dark30 = '#24303C';
 const medium = '#9B9B9B';
-
 const L10: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#D7D3C6', dark: '#656C6F' }) : PlatformColor('@color/L10')) as any as string;
 const L20: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#F5F0E1', dark: '#475259' }) : PlatformColor('@color/L20')) as any as string;
 const L30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFBF2', dark: '#24303C' }) : PlatformColor('@color/L30')) as any as string;

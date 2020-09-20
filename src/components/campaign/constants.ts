@@ -254,7 +254,7 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Puzzle pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
       { name: t`The Disappearance of Elina Harper`, code: 'disapearance_of_elina_harper', pack_code: 'tic' },
       { name: t`The Syzygium`, code: 'syzygium', pack_code: 'tic', interlude: true },
-      { name: t`In Too Deep`, code: 'in_too_deep', pack_code: 'itc'},
+      { name: t`In Too Deep`, code: 'in_too_deep', pack_code: 'itc' },
       { name: t`Devil Reef`, code: 'devil_reef', pack_code: 'def' },
       { name: t`Under the Waves`, code: 'under_the_waves', pack_code: 'def', interlude: true },
       { name: t`Horror in High Gear`, code: 'horror_in_high_gear', pack_code: 'hhg' },
@@ -395,7 +395,7 @@ export function getCampaignLog(
           t`Possible Suspects`,
           t`Possible Hideouts`,
         ],
-      }
+      };
     case CUSTOM:
       return {
         sections: [

@@ -229,8 +229,8 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
           </View>
         ) }
         { (card.type_code === 'investigator' || (
-            card.type_code === 'asset' && (card.health || 0 !== 0 || card.sanity || 0 !== 0)
-          )) && (
+          card.type_code === 'asset' && ((card.health || 0) !== 0 || (card.sanity || 0) !== 0)
+        )) && (
           <View style={card.type_code === 'asset' ? styles.statLineRow : undefined}>
             <HealthSanityLine
               investigator={card}
@@ -723,24 +723,12 @@ const styles = StyleSheet.create({
     marginBottom: s,
     marginRight: s,
   },
-  slotBlock: {
-    marginBottom: s,
-  },
   typeBlock: {
     marginTop: xs,
-  },
-  typeText: {
-    fontWeight: isBig ? '500' : '700',
   },
   traitsText: {
     fontWeight: isBig ? '500' : '700',
     fontStyle: 'italic',
-  },
-  buttonContainerPadding: {
-    paddingLeft: s,
-    paddingRight: s,
-    paddingTop: xs,
-    paddingBottom: xs,
   },
   testIconRow: {
     flexDirection: 'row',
@@ -757,11 +745,5 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingTop: 2,
     borderRadius: 8,
-  },
-  testIconColumn: {
-    marginTop: 2,
-  },
-  typeAndTraits: {
-    marginRight: s,
   },
 });

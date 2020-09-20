@@ -5,7 +5,6 @@ import { StyleSheet, View } from 'react-native';
 import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { FactionCodeType } from '@app_constants';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 function factionToIconName(faction: FactionCodeType) {
@@ -79,15 +78,6 @@ export default class FactionChooser extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: 40,
-  },
-  button: {
-    backgroundColor: COLORS.toggleButton,
-  },
-  selectedButton: {
-    backgroundColor: COLORS.selectedToggleButton,
-  },
   icon: {
     width: 32,
     height: 36,

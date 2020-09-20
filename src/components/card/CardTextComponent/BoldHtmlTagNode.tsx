@@ -18,5 +18,5 @@ export default function BoldHtmlTagNode({ typography }: StyleContextType) {
         { output(node.children, state) }
       </Text>
     );
-  }
+  };
 }

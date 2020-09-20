@@ -43,7 +43,6 @@ export default class DeckMergeItem extends React.Component<Props> {
         description={this.description()}
         value={inverted ? !value : value}
         onValueChange={this._onValueChange}
-        style="game"
       />
     );
   }

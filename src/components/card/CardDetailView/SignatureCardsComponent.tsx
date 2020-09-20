@@ -14,7 +14,7 @@ import BondedCardsComponent from './BondedCardsComponent';
 import Card from '@data/Card';
 import { where } from '@data/query';
 import { getTabooSet, AppState } from '@reducers';
-import space, { m, s } from '@styles/space';
+import space from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface SignatureCards {
@@ -42,7 +42,6 @@ class SignatureCardsComponent extends React.Component<Props> {
       componentId,
       width,
     } = this.props;
-    const { typography } = this.context;
     if (!signatureCards) {
       return null;
     }
@@ -98,7 +97,7 @@ class SignatureCardsComponent extends React.Component<Props> {
           cards={[
             ...(requiredCards || []),
             ...(altCards || []),
-            ...(advancedCards || [])
+            ...(advancedCards || []),
           ]}
         />
       </View>

@@ -143,7 +143,6 @@ class DeckListComponent extends React.Component<Props, State> {
       deckToCampaign,
       searchOptions,
     } = this.props;
-    const { fontScale } = this.context;
     const { searchTerm } = this.state;
     return (
       <CollapsibleSearchBox

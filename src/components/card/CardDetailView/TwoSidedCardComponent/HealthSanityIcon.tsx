@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
-import space from '@styles/space';
 
 interface Props {
   type: 'health' | 'sanity';

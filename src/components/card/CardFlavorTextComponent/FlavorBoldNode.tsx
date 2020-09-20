@@ -1,7 +1,6 @@
 import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
@@ -19,5 +18,5 @@ export default function FlavorBoldNode({ typography }: StyleContextType) {
         { node.text }
       </Text>
     );
-  }
+  };
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native';
 
 import { SkillCodeType } from '@app_constants';
 import StyleContext from '@styles/StyleContext';
@@ -31,7 +31,7 @@ export default function SkillIcon({ skill, size }: Props) {
         />
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

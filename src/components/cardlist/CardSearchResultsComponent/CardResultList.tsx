@@ -817,7 +817,7 @@ class CardResultList extends React.Component<Props, State> {
     }
     return (
       <StyleContext.Consumer>
-        { ({ fontScale }) => {
+        { ({ fontScale, colors }) => {
           const { cards, deckSections, deckCardCounts } = dbState;
           const filteredDeckSections = filterCard ?
             flatMap(deckSections, section => {
@@ -886,6 +886,7 @@ class CardResultList extends React.Component<Props, State> {
                 <RefreshControl
                   refreshing={!!refreshing}
                   onRefresh={this._refreshInDeck}
+                  tintColor={colors.lightText}
                   progressViewOffset={SEARCH_BAR_HEIGHT}
                 />
               }

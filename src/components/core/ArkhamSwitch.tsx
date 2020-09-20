@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SwitchProps, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { t } from 'ttag';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';

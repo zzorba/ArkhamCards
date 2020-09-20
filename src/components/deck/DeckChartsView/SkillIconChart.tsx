@@ -14,7 +14,6 @@ import { ParsedDeck } from '@actions/types';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { colors } from 'react-native-elements';
 
 interface Props {
   parsedDeck: ParsedDeck;
