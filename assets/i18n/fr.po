@@ -12,152 +12,152 @@ msgstr ""
 "Language-Team: \n"
 "x-generator: Poedit 2.4.1\n"
 
-#: src/data/Card.ts:485
+#: src/data/Card.ts:498
 msgid "Guardian / Rogue"
 msgstr "Guardien / Truand"
 
-#: src/data/Card.ts:486
+#: src/data/Card.ts:499
 msgid "Rogue / Survivor"
 msgstr "Truand / Survivant"
 
-#: src/data/Card.ts:487
+#: src/data/Card.ts:500
 msgid "Survivor / Seeker"
 msgstr "Survivant / Chercheur"
 
-#: src/data/Card.ts:488
+#: src/data/Card.ts:501
 msgid "Seeker / Mystic"
 msgstr "Chercheur / Mystique"
 
-#: src/data/Card.ts:489
+#: src/data/Card.ts:502
 msgid "Mystic / Guardian"
 msgstr "Mystique / Guardien"
 
-#: src/data/Card.ts:479
-#: src/data/Card.ts:498
+#: src/data/Card.ts:492
+#: src/data/Card.ts:511
 msgid "Guardian"
 msgstr "Guardien"
 
-#: src/data/Card.ts:480
-#: src/data/Card.ts:504
+#: src/data/Card.ts:493
+#: src/data/Card.ts:517
 msgid "Seeker"
 msgstr "Chercheur"
 
-#: src/data/Card.ts:481
-#: src/data/Card.ts:502
+#: src/data/Card.ts:494
+#: src/data/Card.ts:515
 msgid "Mystic"
 msgstr "Mystique"
 
-#: src/data/Card.ts:482
-#: src/data/Card.ts:500
+#: src/data/Card.ts:495
+#: src/data/Card.ts:513
 msgid "Rogue"
 msgstr "Truand"
 
-#: src/data/Card.ts:483
-#: src/data/Card.ts:506
+#: src/data/Card.ts:496
+#: src/data/Card.ts:519
 msgid "Survivor"
 msgstr "Survivant"
 
-#: src/data/Card.ts:484
-#: src/data/Card.ts:508
+#: src/data/Card.ts:497
+#: src/data/Card.ts:521
 msgid "Neutral"
 msgstr "Neutre"
 
-#: src/data/Card.ts:490
-#: src/data/Card.ts:521
-#: src/data/Card.ts:555
-#: src/data/Card.ts:572
+#: src/data/Card.ts:503
+#: src/data/Card.ts:534
+#: src/data/Card.ts:568
+#: src/data/Card.ts:585
 msgid "Weakness"
 msgstr "Faiblesse"
 
-#: src/data/Card.ts:491
-#: src/data/Card.ts:516
+#: src/data/Card.ts:504
+#: src/data/Card.ts:529
 msgid "Mythos"
 msgstr "Mythe"
 
-#: src/data/Card.ts:524
+#: src/data/Card.ts:537
 msgid "Unknown"
 msgstr "Inconnu"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:374
-#: src/data/Card.ts:538
-#: src/data/Card.ts:622
+#: src/data/Card.ts:551
+#: src/data/Card.ts:635
 msgid "Investigator"
 msgstr "Investigateur"
 
-#: src/data/Card.ts:539
-#: src/data/Card.ts:584
+#: src/data/Card.ts:552
+#: src/data/Card.ts:597
 msgid "Asset: Hand"
 msgstr "Soutien: Main"
 
-#: src/data/Card.ts:540
-#: src/data/Card.ts:586
+#: src/data/Card.ts:553
+#: src/data/Card.ts:599
 msgid "Asset: Hand x2"
 msgstr "Soutien: Main x2"
 
-#: src/data/Card.ts:549
-#: src/data/Card.ts:602
+#: src/data/Card.ts:562
+#: src/data/Card.ts:615
 msgid "Asset: Hand. Arcane"
 msgstr "Soutien: Main. Arcanes"
 
-#: src/data/Card.ts:550
-#: src/data/Card.ts:600
+#: src/data/Card.ts:563
+#: src/data/Card.ts:613
 msgid "Asset: Body. Hand x2"
 msgstr "Soutien: corps. Main x2"
 
-#: src/data/Card.ts:541
-#: src/data/Card.ts:588
+#: src/data/Card.ts:554
+#: src/data/Card.ts:601
 msgid "Asset: Accessory"
 msgstr "Soutien: Accessoire"
 
-#: src/data/Card.ts:542
-#: src/data/Card.ts:590
+#: src/data/Card.ts:555
+#: src/data/Card.ts:603
 msgid "Asset: Ally"
 msgstr "Soutien: Allié"
 
-#: src/data/Card.ts:543
-#: src/data/Card.ts:592
+#: src/data/Card.ts:556
+#: src/data/Card.ts:605
 msgid "Asset: Arcane"
 msgstr "Soutien: Arcane"
 
-#: src/data/Card.ts:544
-#: src/data/Card.ts:594
+#: src/data/Card.ts:557
+#: src/data/Card.ts:607
 msgid "Asset: Arcane x2"
 msgstr "Soutien: Arcane x2"
 
-#: src/data/Card.ts:545
-#: src/data/Card.ts:596
+#: src/data/Card.ts:558
+#: src/data/Card.ts:609
 msgid "Asset: Body"
 msgstr "Soutien: Corps"
 
-#: src/data/Card.ts:546
-#: src/data/Card.ts:580
+#: src/data/Card.ts:559
+#: src/data/Card.ts:593
 msgid "Asset: Permanent"
 msgstr "Soutien: Permanent"
 
-#: src/data/Card.ts:547
-#: src/data/Card.ts:598
+#: src/data/Card.ts:560
+#: src/data/Card.ts:611
 msgid "Asset: Tarot"
 msgstr "Soutien: Tarot"
 
-#: src/data/Card.ts:551
-#: src/data/Card.ts:606
+#: src/data/Card.ts:564
+#: src/data/Card.ts:619
 msgid "Asset: Other"
 msgstr "Soutien: Autre"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:130
-#: src/data/Card.ts:552
-#: src/data/Card.ts:612
+#: src/data/Card.ts:565
+#: src/data/Card.ts:625
 msgid "Event"
 msgstr "Événement"
 
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:131
-#: src/data/Card.ts:553
-#: src/data/Card.ts:617
+#: src/data/Card.ts:566
+#: src/data/Card.ts:630
 msgid "Skill"
 msgstr "Compétence"
 
-#: src/data/Card.ts:554
 #: src/data/Card.ts:567
+#: src/data/Card.ts:580
 msgid "Basic Weakness"
 msgstr "Faiblesse de Base"
 
@@ -165,37 +165,37 @@ msgstr "Faiblesse de Base"
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:161
 #: src/components/campaign/EditScenarioResultView.tsx:163
 #: src/components/campaign/ScenarioDialog.tsx:10
-#: src/data/Card.ts:556
-#: src/data/Card.ts:624
-#: src/data/Card.ts:675
+#: src/data/Card.ts:569
+#: src/data/Card.ts:637
+#: src/data/Card.ts:688
 msgid "Scenario"
 msgstr "Scénario"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:349
-#: src/data/Card.ts:557
 #: src/data/Card.ts:570
-#: src/data/Card.ts:577
-#: src/data/Card.ts:610
-#: src/data/Card.ts:615
-#: src/data/Card.ts:620
+#: src/data/Card.ts:583
+#: src/data/Card.ts:590
+#: src/data/Card.ts:623
+#: src/data/Card.ts:628
+#: src/data/Card.ts:633
 msgid "Story"
 msgstr "Histoire"
 
-#: src/data/Card.ts:671
+#: src/data/Card.ts:684
 #, javascript-format
 msgid "Act ${ json.stage }"
 msgstr "Acte ${json.stage}"
 
-#: src/data/Card.ts:673
+#: src/data/Card.ts:686
 msgid "Agenda ${ json.stage }"
 msgstr "Agenda ${json.stage}"
 
-#: src/data/Card.ts:685
+#: src/data/Card.ts:698
 #, javascript-format
 msgid "Act ${ linked_card.stage }"
 msgstr "Acte ${linked_card.stage}"
 
-#: src/data/Card.ts:687
+#: src/data/Card.ts:700
 msgid "Agenda ${ linked_card.stage }"
 msgstr "Agenda ${linked_card.stage}"
 
@@ -281,7 +281,7 @@ msgstr "Contient trop de cartes limitées."
 #: src/components/card/CardDetailSwipeView.tsx:116
 #: src/components/card/CardDetailSwipeView.tsx:187
 #: src/components/card/CardDetailView/PlayerCardImage.tsx:124
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:174
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:172
 #: src/components/card/CardDetailView/index.tsx:76
 #: src/components/card/CardDetailView/index.tsx:163
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:284
@@ -296,8 +296,8 @@ msgstr "Contient trop de cartes limitées."
 #: src/components/filter/CardEnemyFilterView.tsx:24
 #: src/components/filter/PackFilterView.tsx:34
 #: src/components/nav/helper.ts:41
-#: src/components/nav/helper.ts:138
-#: src/components/nav/helper.ts:201
+#: src/components/nav/helper.ts:141
+#: src/components/nav/helper.ts:204
 msgid "Back"
 msgstr "Retour"
 
@@ -334,7 +334,7 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:65
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:145
 #: src/components/campaignguide/CampaignGuideView.tsx:102
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:191
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:201
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:114
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:130
 #: src/components/core/CountEditDialog.tsx:120
@@ -353,8 +353,8 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:420
 #: src/components/deck/NewDeckView.tsx:41
 #: src/components/deck/authHelper.ts:32
-#: src/components/nav/helper.ts:233
-#: src/components/nav/helper.ts:248
+#: src/components/nav/helper.ts:236
+#: src/components/nav/helper.ts:251
 #: src/components/settings/BackupView.tsx:71
 #: src/components/settings/BackupView.tsx:112
 #: src/components/settings/BackupView.tsx:147
@@ -415,8 +415,8 @@ msgstr "Pack"
 msgid "Connect to ArkhamDB"
 msgstr "Se connecter à ArkhamDB"
 
-#: src/app/App.ts:253
-#: src/app/App.ts:313
+#: src/app/App.ts:259
+#: src/app/App.ts:321
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:369
 #: src/components/campaignguide/CampaignGuideView.tsx:124
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:151
@@ -429,7 +429,7 @@ msgstr "Decks"
 msgid "Hide ArkhamDB Decks"
 msgstr "Masquer les decks d’ArkhamDB"
 
-#: src/app/App.ts:259
+#: src/app/App.ts:265
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:81
 #: src/components/deck/CopyDeckDialog/index.tsx:183
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:205
@@ -455,8 +455,8 @@ msgid "Reauthorize"
 msgstr "Réautoriser"
 
 #: src/components/deck/DeckDetailView/index.tsx:1640
-#: src/components/nav/helper.ts:75
-#: src/components/nav/helper.ts:98
+#: src/components/nav/helper.ts:76
+#: src/components/nav/helper.ts:101
 msgid "Deck"
 msgstr "Deck"
 
@@ -1002,13 +1002,13 @@ msgstr "Traumatisme mental"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:104
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:365
-#: src/data/Card.ts:390
+#: src/data/Card.ts:403
 msgid "Killed"
 msgstr "Tué"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:114
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:413
-#: src/data/Card.ts:393
+#: src/data/Card.ts:406
 msgid "Insane"
 msgstr "Dément"
 
@@ -1430,12 +1430,12 @@ msgstr "Personnes disparues-Penny White"
 msgid "Missing Persons - Valentino Rivas"
 msgstr "Personnes disparues-Valentino Rivas"
 
-#: src/data/Card.ts:396
+#: src/data/Card.ts:409
 #, javascript-format
 msgid "${ traumaData.physical } Physical"
 msgstr "${ traumaData.physical } physique"
 
-#: src/data/Card.ts:399
+#: src/data/Card.ts:412
 msgid "${ traumaData.mental } Mental"
 msgstr "${ traumaData.mental } mental"
 
@@ -1443,8 +1443,8 @@ msgstr "${ traumaData.mental } mental"
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:167
 #: src/components/core/CardCostIcon.tsx:75
 #: src/components/deck/DeckDetailView/index.tsx:1664
-#: src/data/Card.ts:386
-#: src/data/Card.ts:402
+#: src/data/Card.ts:399
+#: src/data/Card.ts:415
 msgid "None"
 msgstr "Aucun"
 
@@ -1472,7 +1472,7 @@ msgstr "Sélectionnez une Campagne"
 msgid "Campaign"
 msgstr "Campagne"
 
-#: src/app/App.ts:277
+#: src/app/App.ts:283
 #: src/components/campaign/MyCampaignsView/index.tsx:55
 #: src/components/campaign/MyCampaignsView/index.tsx:95
 #: src/components/campaign/MyCampaignsView/index.tsx:164
@@ -1528,7 +1528,7 @@ msgid "Not Now"
 msgstr "Pas maintenant"
 
 #: src/components/campaign/campaignHelper.ts:54
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:212
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:222
 #: src/components/deck/CopyDeckDialog/index.tsx:354
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:165
 #: src/components/deck/DeckDetailView/index.tsx:1294
@@ -1565,8 +1565,8 @@ msgstr "Difficulté"
 msgid "Create Campaign"
 msgstr "Créer une campagne"
 
-#: src/app/App.ts:271
-#: src/app/App.ts:325
+#: src/app/App.ts:277
+#: src/app/App.ts:333
 #: src/components/campaign/MyCampaignsView/index.tsx:49
 #: src/components/settings/MergeBackupView/index.tsx:240
 msgid "Campaigns"
@@ -2023,7 +2023,7 @@ msgstr "Appliquer"
 msgid "Filters"
 msgstr "Filtres"
 
-#: src/app/App.ts:241
+#: src/app/App.ts:247
 #: src/components/cardlist/CardSearchComponent/index.tsx:195
 msgid "Player Cards"
 msgstr "Cartes de joueur"
@@ -2040,38 +2040,38 @@ msgstr "Cartes alternatives"
 #: src/components/card/CardDetailSwipeView.tsx:161
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:44
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:87
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:144
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:474
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:142
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:472
 #: src/components/card/CardDetailView/index.tsx:34
 #: src/components/card/CardDetailView/index.tsx:138
 msgid "FAQ"
 msgstr "FAQ"
 
 #: src/components/card/CardDetailSwipeView.tsx:184
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:171
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:169
 #: src/components/card/CardDetailView/index.tsx:160
 msgid "Allowed Cards"
 msgstr "Cartes autorisées"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:258
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:256
 msgid "Test Icons: "
 msgstr "Icônes de test: "
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:394
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:566
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:392
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:564
 msgid "Show back"
 msgstr "Afficher le dos"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:530
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:528
 #, javascript-format
 msgid "Victory: ${ card.victory }."
 msgstr "Victoire: ${card.victory}."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:535
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:533
 msgid "Vengeance: ${ card.vengeance }."
 msgstr "Vengeance: ${card.vengeance}."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:566
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:564
 msgid "Show front"
 msgstr "Montrer le dessus"
 
@@ -2100,13 +2100,13 @@ msgstr "Ne respecte pas les exigences de construction de l’Investigateur."
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Jusqu’à 5, j’espère que je ne tire pas le tentacule"
 
-#: src/app/App.ts:301
+#: src/app/App.ts:309
 #: src/components/deck/DeckDetailView/index.tsx:1680
 msgid "Cards"
 msgstr "Cartes"
 
-#: src/app/App.ts:289
-#: src/app/App.ts:337
+#: src/app/App.ts:295
+#: src/app/App.ts:345
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -2174,7 +2174,7 @@ msgid "Loading latest cards..."
 msgstr "Chargement des dernières cartes..."
 
 #: src/components/deck/DeckDetailView/index.tsx:1719
-#: src/components/nav/helper.ts:158
+#: src/components/nav/helper.ts:161
 msgid "Charts"
 msgstr "Graphiques"
 
@@ -2205,7 +2205,7 @@ msgid "Bound Cards"
 msgstr "Cartes liées"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:65
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:462
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:460
 msgid "Taboo"
 msgstr "Tabou"
 
@@ -2443,16 +2443,16 @@ msgstr "Sauvegarde…"
 msgid "Flip Card"
 msgstr "Retourner la Carte"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:309
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:307
 msgid "Doom: ${ doom }"
 msgstr "Chaos: ${doom}"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:314
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:312
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "Indices: ${clues} ${perInvestigatorClues}"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:320
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:318
 #, javascript-format
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr "Occulte: ${shroud}. Indices: ${clues} ${perInvestigatorClues}."
@@ -2861,7 +2861,7 @@ msgid "Weaknesses"
 msgstr "Modifier les faiblesses affectées"
 
 #: src/components/deck/DeckDetailView/index.tsx:1725
-#: src/components/nav/helper.ts:179
+#: src/components/nav/helper.ts:182
 msgid "Draw Simulator"
 msgstr "Simulateur de tirage"
 
@@ -3039,7 +3039,7 @@ msgstr ""
 msgid "${ changes.spentXp } of ${ adjustedXp }"
 msgstr ""
 
-#: src/data/Card.ts:433
+#: src/data/Card.ts:446
 #, javascript-format
 msgid "Cost: ${ actualCost }"
 msgstr ""
@@ -3080,8 +3080,8 @@ msgstr ""
 msgid "Too many off-class cards for Versatile"
 msgstr ""
 
-#: src/data/Card.ts:548
-#: src/data/Card.ts:604
+#: src/data/Card.ts:561
+#: src/data/Card.ts:617
 msgid "Asset: Ally. Arcane"
 msgstr ""
 
@@ -3121,7 +3121,7 @@ msgstr ""
 msgid "${ listOfThings }, and ${ lastThing }"
 msgstr ""
 
-#: src/data/Card.ts:322
+#: src/data/Card.ts:335
 #, javascript-format
 msgid "${ this.name } <i>(${ this.subname })</i>"
 msgstr ""
@@ -3536,16 +3536,16 @@ msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:317
 #: src/components/campaign/DeckList.tsx:94
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:312
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
 msgid "Add Investigator"
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:332
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:326
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:336
 msgid "Killed and Insane Investigators"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:349
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:359
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:183
 msgid "Delete Campaign"
 msgstr ""
@@ -3876,7 +3876,7 @@ msgid "Add side scenario"
 msgstr ""
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:181
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:193
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:203
 msgid "Remove deck"
 msgstr ""
 
@@ -3884,11 +3884,11 @@ msgstr ""
 msgid "Remove investigator"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:188
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:198
 msgid "Remove deck from campaign"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:189
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:199
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
@@ -3897,11 +3897,11 @@ msgid ""
 "scenarios."
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:209
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:219
 msgid "Cannot remove"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:210
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:220
 msgid ""
 "Since this investigator has participated in one or more scenarios during "
 "this campaign, they cannot be removed.\n"
@@ -3911,12 +3911,12 @@ msgid ""
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:285
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:176
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:186
 msgid "Remove investigators"
 msgstr ""
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:323
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:318
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:328
 msgid "Finished removing investigators"
 msgstr ""
 
@@ -4218,20 +4218,20 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:29
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:84
 #, javascript-format
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:33
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:88
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:53
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:109
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
@@ -4356,18 +4356,18 @@ msgstr ""
 msgid "Select items to import"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:257
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:267
 msgid "Investigator trauma"
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:259
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:269
 msgid ""
 "You can only edit trauma here between scenarios.\n"
 "\n"
 "During scenario play it can be edited using the scenario guide."
 msgstr ""
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:260
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:270
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr ""
 
@@ -4693,25 +4693,25 @@ msgstr ""
 msgid "Evade: ${ evade }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:262
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:260
 #, javascript-format
 msgid "Willpower: ${ count }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:263
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:261
 msgid "Intellect: ${ count }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:264
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:262
 #, javascript-format
 msgid "Combat: ${ count }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:265
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:263
 msgid "Agility: ${ count }"
 msgstr ""
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:266
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:264
 #, javascript-format
 msgid "Wild: ${ count }"
 msgstr ""
@@ -4815,6 +4815,10 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:256
 msgid "The Syzygy"
+msgstr ""
+
+#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:134
+msgid "Coming soon"
 msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201
