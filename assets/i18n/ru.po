@@ -4498,7 +4498,7 @@ msgstr "Последнее обновление: ${ lastUpdated }"
 #: src/components/settings/LanguagePicker.tsx:34
 #, javascript-format
 msgid "Default (${ systemLanguage })"
-msgstr "По-умолчанию (${ systemLanguage })"
+msgstr "По умолчанию (${ systemLanguage })"
 
 #: src/components/card/FetchCardsGate.tsx:128
 msgid "Download language cards"
