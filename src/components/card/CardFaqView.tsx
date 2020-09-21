@@ -162,7 +162,7 @@ class CardFaqView extends React.Component<Props, State> {
   render() {
     return (
       <StyleContext.Consumer>
-        { ({ backgroundStyle, colors}) => (
+        { ({ backgroundStyle, colors }) => (
           <ScrollView
             contentContainerStyle={[styles.container, backgroundStyle]}
             refreshControl={

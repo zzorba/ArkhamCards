@@ -95,7 +95,7 @@ class DeckXpSection extends React.Component<Props> {
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   const previousDeck = (
     props.deck.previous_deck &&
-    getDeck(state, props.deck.previous_deck)
+    getDeck(props.deck.previous_deck)(state)
   ) || undefined;
   return {
     previousDeck,

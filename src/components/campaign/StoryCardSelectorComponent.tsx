@@ -203,7 +203,7 @@ function mapStateToProps(
   props: OwnProps
 ): ReduxProps {
   return {
-    deck: getDeck(state, props.deckId) || undefined,
+    deck: getDeck(props.deckId)(state) || undefined,
     tabooSetId: getTabooSet(state),
   };
 }

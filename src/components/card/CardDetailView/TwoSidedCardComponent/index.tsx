@@ -1,13 +1,11 @@
 import React from 'react';
 import { flatMap, flatten, map, range } from 'lodash';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import DeviceInfo from 'react-native-device-info';
 import { t, jt } from 'ttag';
 
 import {

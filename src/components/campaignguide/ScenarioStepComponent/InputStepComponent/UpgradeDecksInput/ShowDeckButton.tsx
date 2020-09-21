@@ -53,7 +53,7 @@ class ShowDeckButton extends React.Component<Props> {
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    deck: getDeck(state, props.deckId) || undefined,
+    deck: getDeck(props.deckId)(state) || undefined,
   };
 }
 export default connect(mapStateToProps)(ShowDeckButton);

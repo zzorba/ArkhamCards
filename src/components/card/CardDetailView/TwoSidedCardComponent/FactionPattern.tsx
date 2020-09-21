@@ -92,7 +92,7 @@ function HeaderPattern({ faction, width }: { faction : string; width: number }) 
     case 'mystic':
       return (
         <RepeatPattern patternWidth={360}>
-         <MysticPattern />
+          <MysticPattern />
         </RepeatPattern>
       );
     case 'survivor':

@@ -165,10 +165,10 @@ class DeckRow extends React.Component<Props> {
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const deck = getDeck(state, props.id);
+  const deck = getDeck(props.id)(state);
   const previousDeck = deck &&
     deck.previous_deck &&
-    getDeck(state, deck.previous_deck);
+    getDeck(deck.previous_deck)(state);
   return {
     theDeck: deck || undefined,
     thePreviousDeck: previousDeck || undefined,

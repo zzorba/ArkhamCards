@@ -1,5 +1,5 @@
 import { findIndex, forEach, pull } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, getManager } from 'typeorm/browser';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult } from 'typeorm/browser';
 
 import Card from './Card';
 import EncounterSet from './EncounterSet';
@@ -27,7 +27,7 @@ export default class Database {
       location: 'default',
       logging: [
         'error',
-        //'query',
+        // 'query',
         'schema',
       ],
       dropSchema: recreate,

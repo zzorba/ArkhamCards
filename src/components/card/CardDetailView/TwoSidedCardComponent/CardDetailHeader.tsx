@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ClipPath, Defs, LinearGradient, Circle, Svg, Rect, Mask, Use, Stop } from 'react-native-svg';
-
 
 import FactionPattern from './FactionPattern';
 import { CORE_FACTION_CODES } from '@app_constants';
-import AppIcon from '@icons/AppIcon';
 import Card from '@data/Card';
 import StyleContext from '@styles/StyleContext';
 import CardCostIcon from '@components/core/CardCostIcon';
@@ -167,11 +164,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  pattern: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
   },
   titleRow: {
     flexDirection: 'row',

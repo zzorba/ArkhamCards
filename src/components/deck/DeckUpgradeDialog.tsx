@@ -255,7 +255,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, props: UpgradeDeckProps): ReduxProps {
   return {
-    deck: getDeck(state, props.id) || undefined,
+    deck: getDeck(props.id)(state) || undefined,
     campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
     tabooSetId: getTabooSet(state),
   };

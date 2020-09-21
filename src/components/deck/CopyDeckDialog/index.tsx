@@ -365,7 +365,7 @@ function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): Re
   if (!props.deckId) {
     return {};
   }
-  const deck = getDeck(state, props.deckId);
+  const deck = getDeck(props.deckId)(state);
   let baseDeck: Deck | undefined = getBaseDeck(state, props.deckId);
   if (baseDeck && baseDeck.id === props.deckId) {
     baseDeck = undefined;

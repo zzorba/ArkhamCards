@@ -1953,9 +1953,9 @@ function mapStateToProps(
   props: NavigationProps & DeckDetailProps & TabooSetOverrideProps
 ): ReduxProps & TabooSetOverride {
   const id = getEffectiveDeckId(state, props.id);
-  const deck = getDeck(state, id) || undefined;
+  const deck = getDeck(id)(state) || undefined;
   const previousDeck = (
-    deck && deck.previous_deck && getDeck(state, deck.previous_deck)
+    deck && deck.previous_deck && getDeck(deck.previous_deck)(state)
   ) || undefined;
   const tabooSetOverride = props.tabooSetOverride !== undefined ?
     props.tabooSetOverride :

@@ -124,6 +124,17 @@ export default class ScenarioButton extends React.Component<Props> {
             { this.name() }
           </Text>
         );
+      case 'placeholder':
+        return (
+          <>
+            <Text style={[typography.gameFont, { fontFamily: gameFont, color: colors.lightText }]} numberOfLines={2}>
+              { this.name() }
+            </Text>
+            <Text style={[typography.small, { color: colors.lightText }]} numberOfLines={1}>
+              { t`Coming soon` }
+            </Text>
+          </>
+        );
       case 'completed':
         return (
           <Text style={[typography.gameFont, { fontFamily: gameFont }]} numberOfLines={2}>

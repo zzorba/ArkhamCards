@@ -33,6 +33,7 @@ interface State {
   };
   removeMode: boolean;
   appState: AppStateStatus;
+  xpDirty: boolean;
 }
 
 export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
@@ -53,6 +54,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
     this.state = {
       spentXp,
       removeMode: false,
+      xpDirty: false,
       appState: AppState.currentState,
     };
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -77,6 +79,12 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
 
     this._navEventListener && this._navEventListener.remove();
     InteractionManager.runAfterInteractions(this._syncCampaignData);
+  }
+
+  componentDidDisappear() {
+    if (this.state.xpDirty) {
+      this._syncCampaignData();
+    }
   }
 
   _syncCampaignData = () => {
@@ -154,6 +162,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         ...this.state.spentXp,
         [code]: (this.state.spentXp[code] || 0) + 1,
       },
+      xpDirty: true,
     });
   };
 
@@ -163,6 +172,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
         ...this.state.spentXp,
         [code]: Math.max(0, (this.state.spentXp[code] || 0) - 1),
       },
+      xpDirty: true,
     });
   };
 

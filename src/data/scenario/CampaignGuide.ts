@@ -345,7 +345,7 @@ export default class CampaignGuide {
         }];
       }
       return [{
-        type: 'playable',
+        type: scenarioGuide.scenarioType() === 'placeholder' ? 'placeholder' : 'playable' ,
         id,
         scenarioGuide,
         latestCampaignLog: campaignLog,

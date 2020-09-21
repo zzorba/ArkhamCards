@@ -338,16 +338,17 @@ export function getEffectiveDeckId(state: AppState, id: number): number {
   return id;
 }
 
-export function getDeck(state: AppState, id: number): Deck | null {
-  if (!id) {
+export function getDeck(id: number) {
+  return (state: AppState) => {
+    if (!id) {
+      return null;
+    }
+    if (id in state.decks.all) {
+      return state.decks.all[id];
+    }
     return null;
-  }
-  if (id in state.decks.all) {
-    return state.decks.all[id];
-  }
-  return null;
+  };
 }
-
 
 const getDecksAllDecksSelector = (state: AppState, deckIds: number[]) => state.decks.all;
 const getDecksDeckIdsSelector = (state: AppState, deckIds: number[]) => deckIds;

@@ -58,9 +58,7 @@ const FEMININE_INVESTIGATORS = new Set([
 @Index('sort_pack', ['sort_by_pack', 'position'])
 @Index('sort_pack_encounter', ['sort_by_pack', 'encounter_code', 'encounter_position'])
 @Index('sort_name_xp', ['renderName', 'xp'])
-@Index('encounter_query_index',[
-  'taboo_set_id', 'altArtInvestigator', 'back_linked', 'hidden', 'encounter_code'
-])
+@Index('encounter_query_index', ['taboo_set_id', 'altArtInvestigator', 'back_linked', 'hidden', 'encounter_code'])
 export default class Card {
   @PrimaryColumn('text')
   public id!: string;
