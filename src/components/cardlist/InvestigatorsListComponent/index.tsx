@@ -2,6 +2,7 @@ import React from 'react';
 import { filter, forEach, map, sortBy } from 'lodash';
 import {
   Keyboard,
+  Platform,
   SectionList,
   SectionListData,
   SectionListRenderItemInfo,
@@ -354,6 +355,13 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     );
   };
 
+  _renderHeader = () => {
+    if (Platform.OS === 'android') {
+      return <View style={styles.searchBarPadding} />
+    }
+    return null;
+  }
+
   render() {
     const { searchOptions } = this.props;
     const {
@@ -368,13 +376,14 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       >
         { onScroll => (
           <SectionList
-            contentInset={{ top: SEARCH_BAR_HEIGHT }}
-            contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
             onScroll={onScroll}
             onScrollBeginDrag={this._handleScrollBeginDrag}
             sections={this.groupedInvestigators()}
             renderSectionHeader={this._renderSectionHeader}
             renderSectionFooter={this._renderSectionFooter}
+            ListHeaderComponent={this._renderHeader}
             ListFooterComponent={this._renderFooter}
             renderItem={this._renderItem}
             initialNumToRender={24}
@@ -408,5 +417,8 @@ export default connect<ReduxProps, unknown, OwnProps, AppState>(
 const styles = StyleSheet.create({
   footer: {
     marginBottom: 60,
+  },
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
   },
 });

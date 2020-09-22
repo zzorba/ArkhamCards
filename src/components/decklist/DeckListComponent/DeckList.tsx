@@ -1,7 +1,9 @@
 import React from 'react';
-import { filter, map } from 'lodash';
+import { filter, isUndefined, map } from 'lodash';
 import {
   FlatList,
+  Platform,
+  RefreshControl,
   StyleSheet,
 } from 'react-native';
 
@@ -96,17 +98,25 @@ class DeckList extends React.Component<Props> {
       header,
       footer,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, colors } = this.context;
     const items = this.getItems();
     return (
       <FlatList
-        contentInset={{ top: SEARCH_BAR_HEIGHT }}
-        contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+        refreshControl={
+          <RefreshControl
+            refreshing={!!refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.lightText}
+            progressViewOffset={SEARCH_BAR_HEIGHT}
+          />
+        }
+        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
         onScroll={onScroll}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
-        refreshing={refreshing}
-        onRefresh={onRefresh}
+        //refreshing={refreshing}
+        //onRefresh={onRefresh}
         style={[styles.container, backgroundStyle]}
         data={items}
         renderItem={this._renderItem}

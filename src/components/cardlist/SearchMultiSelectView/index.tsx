@@ -3,6 +3,9 @@ import { filter, map } from 'lodash';
 import {
   FlatList,
   Keyboard,
+  Platform,
+  StyleSheet,
+  View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -128,6 +131,13 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
   }
 
+  _renderHeader = () => {
+    if (Platform.OS === 'android') {
+      return <View style={styles.searchBarPadding} />;
+    }
+    return null;
+  };
+
   render() {
     const {
       placeholder,
@@ -154,8 +164,8 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       >
         { onScroll => (
           <FlatList
-            contentInset={{ top: SEARCH_BAR_HEIGHT }}
-            contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
             contentContainerStyle={backgroundStyle}
             data={data}
             onScroll={onScroll}
@@ -163,9 +173,16 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
             keyExtractor={this._keyExtractor}
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
+            ListHeaderComponent={this._renderHeader}
           />
         ) }
       </CollapsibleSearchBox>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

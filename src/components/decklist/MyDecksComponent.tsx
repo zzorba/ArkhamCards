@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import {
   Button,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -24,6 +25,7 @@ import space, { m, s, xs } from '@styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface OwnProps {
   componentId: string;
@@ -157,14 +159,21 @@ class MyDecksComponent extends React.Component<Props> {
   }
 
   renderHeader() {
+    const { searchOptions } = this.props;
+    const searchPadding = !!searchOptions && Platform.OS === 'android';
     const error = this.renderError();
-    if (!error) {
+    if (!error && !searchPadding) {
       return null;
     }
     return (
-      <View style={styles.stack}>
-        { error }
-      </View>
+      <>
+        { !!error && (
+          <View style={styles.stack}>
+            { error }
+          </View>
+        ) }
+        { searchPadding && <View style={styles.searchBarPlaceholder} /> }
+      </>
     );
   }
 
@@ -261,5 +270,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  searchBarPlaceholder: {
+    height: SEARCH_BAR_HEIGHT,
   },
 });

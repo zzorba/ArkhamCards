@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, ActivityIndicator } from 'react-native';
+import { ScrollView, ActivityIndicator, Platform, View, StyleSheet } from 'react-native';
 import { filter, forEach, keys, map, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
@@ -182,9 +182,10 @@ class CardSelectorView extends React.Component<Props, State> {
         { onScroll => (
           <ScrollView
             onScroll={onScroll}
-            contentInset={{ top: SEARCH_BAR_HEIGHT }}
-            contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
           >
+            { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
             <QueryProvider<QueryProps, Brackets>
               query={query}
               searchTerm={searchTerm}
@@ -205,3 +206,9 @@ class CardSelectorView extends React.Component<Props, State> {
 }
 
 export default withDimensions(CardSelectorView);
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

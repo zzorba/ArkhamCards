@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, ListRenderItemInfo, Keyboard } from 'react-native';
+import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet } from 'react-native';
 import { map } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -109,12 +109,21 @@ export default class CampaignList extends React.Component<Props> {
     );
   };
 
+  _renderHeader = () => {
+    if (Platform.OS === 'android') {
+      return (
+        <View style={styles.searchBarPadding} />
+      );
+    }
+    return null;
+  };
+
   render() {
     const { campaigns, footer, onScroll } = this.props;
     return (
       <FlatList
-        contentInset={{ top: SEARCH_BAR_HEIGHT }}
-        contentOffset={{ x: 0, y: -SEARCH_BAR_HEIGHT }}
+        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
         onScroll={onScroll}
         data={map(campaigns, campaign => {
           return {
@@ -123,9 +132,16 @@ export default class CampaignList extends React.Component<Props> {
           };
         })}
         renderItem={this._renderItem}
+        ListHeaderComponent={this._renderHeader}
         ListFooterComponent={footer}
       />
     );
   }
 }
 
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

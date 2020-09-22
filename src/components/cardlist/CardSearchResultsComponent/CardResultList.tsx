@@ -683,6 +683,21 @@ class CardResultList extends React.Component<Props, State> {
     return this.props.expandSearchControls;
   }
 
+  _renderHeader = () => {
+    const { renderHeader, noSearch } = this.props;
+    const searchBarPadding = !noSearch && Platform.OS === 'android';
+    if (!searchBarPadding && !renderHeader) {
+      return null;
+    }
+
+    return (
+      <>
+        { searchBarPadding && <View style={styles.searchBarPadding} /> }
+        { !!renderHeader &&  renderHeader() }
+      </>
+    )
+  };
+
   _renderFooter = (liveState: LiveState, refreshing?: boolean) => {
     const { spoilerCardsCount } = liveState;
     const {
@@ -799,6 +814,7 @@ class CardResultList extends React.Component<Props, State> {
         <StyleContext.Consumer>
           { ({ colors, typography }) => (
             <View style={styles.loading}>
+              { !noSearch && <View style={styles.searchBarPadding} />}
               <View style={styles.loadingText}>
                 <Text style={typography.text}>
                   { `${loadingMessage}...` }
@@ -881,13 +897,12 @@ class CardResultList extends React.Component<Props, State> {
             <SectionList
               contentInset={noSearch || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
               contentOffset={noSearch || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
-              contentContainerStyle={noSearch || Platform.OS === 'ios' ? undefined : { marginTop: SEARCH_BAR_HEIGHT }}
               refreshControl={
                 <RefreshControl
                   refreshing={!!refreshing}
                   onRefresh={this._refreshInDeck}
                   tintColor={colors.lightText}
-                  progressViewOffset={SEARCH_BAR_HEIGHT}
+                  progressViewOffset={noSearch ? 0 : SEARCH_BAR_HEIGHT}
                 />
               }
               onScroll={handleScroll}
@@ -900,7 +915,7 @@ class CardResultList extends React.Component<Props, State> {
               keyExtractor={this._cardToKey}
               extraData={extraData}
               getItemLayout={getItemLayout}
-              ListHeaderComponent={renderHeader}
+              ListHeaderComponent={this._renderHeader}
               ListFooterComponent={this._renderFooter(liveState, refreshing)}
               stickySectionHeadersEnabled={false}
               keyboardShouldPersistTaps="always"
@@ -980,5 +995,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomWidth: 1,
+  },
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
   },
 });
