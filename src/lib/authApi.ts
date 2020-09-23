@@ -125,7 +125,7 @@ export function newCustomDeck(
   name: string,
   slots: { [code: string]: number },
   ignoreDeckLimitSlots: { [code: string]: number },
-  problem: string,
+  problem?: string,
   tabooSetId?: number,
   meta?: DeckMeta
 ) {

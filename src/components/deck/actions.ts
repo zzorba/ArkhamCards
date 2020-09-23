@@ -296,6 +296,7 @@ export interface NewDeckParams {
   ignoreDeckLimitSlots?: Slots;
   tabooSetId?: number;
   meta?: DeckMeta;
+  problem?: string;
 }
 export const saveNewDeck: ActionCreator<
   ThunkAction<Promise<Deck>, AppState, unknown, Action>
@@ -316,6 +317,7 @@ export const saveNewDeck: ActionCreator<
           params.slots,
           params.tabooSetId,
           params.meta,
+          params.problem
         );
         dispatch(setNewDeck(deck.id, deck));
         setTimeout(() => {
@@ -327,7 +329,7 @@ export const saveNewDeck: ActionCreator<
           params.deckName,
           params.slots,
           params.ignoreDeckLimitSlots || {},
-          'too_few_cards',
+          params.problem || '',
           params.tabooSetId,
           params.meta
         );
@@ -369,6 +371,7 @@ export const saveClonedDeck: ActionCreator<
         ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
         tabooSetId: cloneDeck.taboo_id,
         meta: cloneDeck.meta,
+        problem: cloneDeck.problem
       })).then(deck => {
         setTimeout(() => {
           dispatch(saveDeckChanges(

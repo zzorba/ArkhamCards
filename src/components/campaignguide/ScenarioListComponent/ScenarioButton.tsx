@@ -69,6 +69,7 @@ export default class ScenarioButton extends React.Component<Props> {
     } = this.context;
     const iconSize = 24 * fontScale;
     switch (scenario.type) {
+      case 'placeholder':
       case 'locked':
         return (
           <MaterialCommunityIcons

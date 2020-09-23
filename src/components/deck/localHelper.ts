@@ -10,7 +10,8 @@ export function newLocalDeck(
   investigator_code: string,
   slots: Slots,
   tabooSetId?: number,
-  meta?: DeckMeta
+  meta?: DeckMeta,
+  problem?: string,
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
@@ -25,7 +26,7 @@ export function newLocalDeck(
     ignoreDeckLimitSlots: {},
     local: true,
     uuid: uuid.v4(),
-    problem: 'too_few_cards',
+    problem,
     version: '0.1',
   };
 }

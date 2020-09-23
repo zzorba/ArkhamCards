@@ -206,6 +206,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         investigatorCode: investigator.code,
         slots: slots,
         tabooSetId,
+        problem: (starterDeck && starterDecks[investigator.code]) ? undefined : 'too_few_cards'
       }).then(
         this._showNewDeck,
         () => {
