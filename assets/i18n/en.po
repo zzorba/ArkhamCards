@@ -200,7 +200,7 @@ msgstr ""
 #: src/components/campaign/SelectCampaignDialog/index.tsx:129
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:265
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:601
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:291
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:292
 #: src/components/deck/EditSpecialDeckCardsView.tsx:189
 #: src/components/settings/CollectionEditView.tsx:36
 #: src/components/settings/SettingsView.tsx:80
@@ -344,7 +344,7 @@ msgstr ""
 #: src/components/deck/DeckUpgradeDialog.tsx:71
 #: src/components/deck/DeckUpgradeDialog.tsx:73
 #: src/components/deck/EditSpecialDeckCardsView.tsx:190
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:420
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:421
 #: src/components/deck/NewDeckView.tsx:41
 #: src/components/deck/authHelper.ts:32
 #: src/components/nav/helper.ts:236
@@ -405,7 +405,7 @@ msgstr ""
 msgid "Pack"
 msgstr ""
 
-#: src/components/decklist/MyDecksComponent.tsx:154
+#: src/components/decklist/MyDecksComponent.tsx:156
 msgid "Connect to ArkhamDB"
 msgstr ""
 
@@ -427,7 +427,7 @@ msgstr ""
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:81
 #: src/components/deck/CopyDeckDialog/index.tsx:183
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:205
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:232
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:233
 #: src/components/deck/NewDeckView.tsx:35
 #: src/components/deck/NewDeckView.tsx:103
 #: src/components/decklist/MyDecksView.tsx:52
@@ -567,7 +567,7 @@ msgid "Sign out of ArkhamDB"
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:1493
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:370
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:371
 #: src/components/settings/LoginButton.tsx:80
 #: src/components/settings/LoginButton.tsx:83
 msgid "Sign in to ArkhamDB"
@@ -758,8 +758,8 @@ msgstr ""
 msgid "Select Packs"
 msgstr ""
 
-#: src/components/cardlist/SearchMultiSelectView/index.tsx:65
 #: src/components/cardlist/SearchMultiSelectView/index.tsx:68
+#: src/components/cardlist/SearchMultiSelectView/index.tsx:71
 #: src/components/core/ChooserButton.tsx:46
 #: src/components/core/ChooserButton.tsx:49
 #: src/components/deck/DeckChecklistView/index.tsx:144
@@ -1688,7 +1688,7 @@ msgstr ""
 #: src/components/campaignguide/CampaignGuideView.tsx:69
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:76
 #: src/components/deck/DeckDetailView/index.tsx:1645
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:327
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:328
 msgid "Name"
 msgstr ""
 
@@ -1730,30 +1730,30 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:236
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:237
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:238
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:239
 msgid "${ investigator.name } Investigates"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:240
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:241
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:242
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:243
 msgid "The ${ investigator.name } Job"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:244
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:245
 #, javascript-format
 msgid "${ investigator.name } on the Road"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:246
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:247
 msgid "${ investigator.name } Does It All"
 msgstr ""
 
@@ -1762,33 +1762,33 @@ msgid "NAME"
 msgstr ""
 
 #: src/components/deck/CopyDeckDialog/index.tsx:295
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:361
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:362
 msgid "Create on ArkhamDB"
 msgstr ""
 
 #: src/components/deck/CopyDeckDialog/index.tsx:304
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:377
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:378
 msgid "You seem to be offline. Refresh Network?"
 msgstr ""
 
 #: src/components/campaignguide/CardSelectorView.tsx:180
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:364
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:372
 msgid "Search"
 msgstr ""
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:343
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:344
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr ""
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:357
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:160
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:164
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:168
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:170
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:161
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:165
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:169
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:171
 msgid "N/A"
 msgstr ""
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:166
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:167
 msgid "All Investigators"
 msgstr ""
 
@@ -2016,7 +2016,7 @@ msgid "Player Cards"
 msgstr ""
 
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:57
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:341
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:342
 msgid "Required Cards"
 msgstr ""
 
@@ -2066,7 +2066,7 @@ msgstr ""
 msgid "Deckbuilding Cards"
 msgstr ""
 
-#: src/components/decklist/MyDecksComponent.tsx:121
+#: src/components/decklist/MyDecksComponent.tsx:123
 #, javascript-format
 msgid ""
 "An unexpected error occurred (${ error }). If restarting the app doesn't "
@@ -2209,7 +2209,7 @@ msgid ""
 msgstr ""
 
 #: src/components/deck/DeckDetailView/index.tsx:1494
-#: src/components/decklist/MyDecksComponent.tsx:152
+#: src/components/decklist/MyDecksComponent.tsx:154
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
 "decks with others.\n"
@@ -2399,11 +2399,11 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:751
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:766
 msgid "In Deck"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:761
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:776
 msgid "All Eligible Cards"
 msgstr ""
 
@@ -2470,11 +2470,11 @@ msgstr ""
 msgid "Deck Size"
 msgstr ""
 
-#: src/components/decklist/MyDecksComponent.tsx:104
+#: src/components/decklist/MyDecksComponent.tsx:106
 msgid "Unable to update: you appear to be offline."
 msgstr ""
 
-#: src/components/decklist/MyDecksComponent.tsx:113
+#: src/components/decklist/MyDecksComponent.tsx:115
 msgid ""
 "We're having trouble updating your decks at this time. If the problem "
 "persists tap here to reauthorize."
@@ -2616,16 +2616,16 @@ msgid "Steps of the Bridge"
 msgstr ""
 
 #: src/components/deck/CopyDeckDialog/index.tsx:292
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:357
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:358
 msgid "Deck Type"
 msgstr ""
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:121
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:122
 #, javascript-format
 msgid "${ investigator.deck_requirements.size } Cards"
 msgstr ""
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:128
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:129
 msgid "Unknown card: ${ req.code }"
 msgstr ""
 
@@ -3479,15 +3479,15 @@ msgstr ""
 msgid "In your Campaign Log, record that:"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:328
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:329
 msgid "Enter a name for this deck."
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:383
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:384
 msgid "Use Starter Deck"
 msgstr ""
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:415
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:416
 msgid "Create deck"
 msgstr ""
 
@@ -4396,7 +4396,7 @@ msgid_plural "Show ${ nonCollection.length } non-collection cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:299
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:300
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection investigator"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
@@ -4410,12 +4410,12 @@ msgid_plural "Show ${ section.nonCollectionCount } non-collection cards"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:704
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:724
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:719
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:739
 msgid "Edit spoiler settings"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:710
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:725
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } spoiler"
 msgid_plural "Show ${ spoilerCardsCount } spoilers"
@@ -4702,7 +4702,7 @@ msgstr ""
 msgid "The Syzygy"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:134
+#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:135
 msgid "Coming soon"
 msgstr ""
 
