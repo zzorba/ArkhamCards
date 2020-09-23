@@ -26233,11 +26233,6 @@
       }
     },
     {
-      "id": "put_harbinger_in_pursuit",
-      "bullet_type": "small",
-      "text": "Busca el Heraldo de Valusia en la colección y coloca sobre él una cantidad de daño igual a la cantidad de daño anotada entre paréntesis en el registro de campaña. Como está en juego el plan 5a o 6a, mueve el Enemigo Heraldo de Valusia puesto aparte a la zona de persecución (consulta “Persecución” más adelante)."
-    },
-    {
       "id": "check_agenda_6",
       "hidden": true,
       "type": "branch",
@@ -26685,8 +26680,13 @@
       ]
     },
     {
+      "id": "put_harbinger_in_pursuit",
+      "bullet_type": "small",
+      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+    },
+    {
       "id": "set_aside_harbinger",
-      "text": "Busca el nuevo Heraldo de Valusia <i>(El durmiente regresa)</i> en la colección y ponlo aparte, fuera del juego. Si el Heraldo de Valusia fuese a entrar en juego durante este escenario, usa esta versión en lugar de la original."
+      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one. "
     },
     {
       "id": "create_exploration_deck",
@@ -44333,7 +44333,7 @@
   "campaign":
 {
   "id": "tdea",
-  "position": 1,
+  "position": 5,
   "version": 1,
   "name": "La búsqueda onírica",
   "campaign_log": [
@@ -50055,7 +50055,7 @@
   "campaign":
 {
   "id": "tdeb",
-  "position": 1,
+  "position": 6,
   "version": 1,
   "name": "La red de los sueños",
   "campaign_log": [

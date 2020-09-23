@@ -26233,11 +26233,6 @@
       }
     },
     {
-      "id": "put_harbinger_in_pursuit",
-      "bullet_type": "small",
-      "text": "Durchsuche die Sammlung nach dem Vorboten von Valusia und platziere auf ihm Schaden in Höhe des im Kampagnenlogbuch in Klammern notierten Wertes. Da es Agenda 5a oder 6a ist, bewege den Vorbote von Valusia in die Verfolgungszone."
-    },
-    {
       "id": "check_agenda_6",
       "hidden": true,
       "type": "branch",
@@ -26685,8 +26680,13 @@
       ]
     },
     {
+      "id": "put_harbinger_in_pursuit",
+      "bullet_type": "small",
+      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+    },
+    {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one. "
     },
     {
       "id": "create_exploration_deck",
@@ -44333,7 +44333,7 @@
   "campaign":
 {
   "id": "tdea",
-  "position": 1,
+  "position": 5,
   "version": 1,
   "name": "The Dream-Quest",
   "campaign_log": [
@@ -50055,7 +50055,7 @@
   "campaign":
 {
   "id": "tdeb",
-  "position": 1,
+  "position": 6,
   "version": 1,
   "name": "The Web of Dreams",
   "campaign_log": [
