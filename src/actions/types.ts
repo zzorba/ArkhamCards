@@ -380,6 +380,13 @@ export interface SetThemeAction {
   theme: 'dark' | 'light' | 'system';
 }
 
+export const SET_FONT_SCALE = 'SET_FONT_SCALE';
+export interface SetFontScaleAction {
+  type: typeof SET_FONT_SCALE;
+  fontScale: number;
+}
+
+
 export const SET_TABOO_SET = 'SET_TABOO_SET';
 export interface SetTabooSetAction {
   type: typeof SET_TABOO_SET;

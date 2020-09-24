@@ -169,8 +169,8 @@ export default function CardFlavorTextComponent(
       styles={{
         paragraph: {
           fontFamily: 'Alegreya-Italic',
-          lineHeight: (fontAdjustment || 1) * 18,
-          fontSize: (fontAdjustment || 1) * 14,
+          fontSize: 16 * context.fontScale,
+          lineHeight: 20 * context.fontScale,
           marginTop: 4,
           marginBottom: 4,
           color: color || context.colors.darkText,

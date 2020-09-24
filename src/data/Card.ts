@@ -261,17 +261,17 @@ export default class Card {
   public skill_wild?: number;
 
   // Effective skills (add wilds to them)
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_willpower?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_intellect?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_combat?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_agility?: number;
-  @Column('text', { nullable: true })
+  @Column('text', { nullable: true, select: false })
   public linked_to_code?: string;
-  @Column('text', { nullable: true })
+  @Column('text', { nullable: true, select: false })
   public linked_to_name?: string;
 
   @Column('simple-array', { nullable: true })
@@ -289,7 +289,7 @@ export default class Card {
   @JoinColumn({ name: 'linked_card_id' })
   public linked_card?: Card;
 
-  @Column('boolean', { nullable: true })
+  @Column('boolean', { nullable: true, select: false  })
   public back_linked?: boolean;
 
   // Derived data.
@@ -307,7 +307,7 @@ export default class Card {
   public traits_normalized?: string;
   @Column('text', { nullable: true })
   public real_traits_normalized?: string;
-  @Column('text', { nullable: true })
+  @Column('text', { nullable: true, select: false })
   public slots_normalized?: string;
   @Column('text', { nullable: true })
   public real_slots_normalized?: string;
@@ -318,17 +318,17 @@ export default class Card {
   @Column('boolean', { nullable: true })
   public bonded_from?: boolean;
 
-  @Column('boolean', { nullable: true })
+  @Column('boolean', { nullable: true, select: false  })
   public seal?: boolean;
-  @Column('boolean', { nullable: true })
+  @Column('boolean', { nullable: true, select: false  })
   public heals_horror?: boolean;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false  })
   public sort_by_type?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false  })
   public sort_by_faction?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false  })
   public sort_by_faction_pack?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false  })
   public sort_by_pack?: number;
 
   public cardName(): string {

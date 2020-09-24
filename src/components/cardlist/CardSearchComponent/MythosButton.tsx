@@ -108,7 +108,7 @@ class MythosButton extends React.Component<Props, State> {
               },
             ]} />
             <View style={styles.iconWrapper}>
-              <Animated.Text style={{ color: investigatorColor }}>
+              <Animated.Text style={{ color: investigatorColor }} allowFontScaling={false}>
                 <AnimatedArkhamIcon
                   name={'per_investigator'}
                   size={24}
@@ -116,7 +116,7 @@ class MythosButton extends React.Component<Props, State> {
               </Animated.Text>
             </View>
             <View style={styles.iconWrapper}>
-              <Animated.Text style={{ color: mythosColor }}>
+              <Animated.Text style={{ color: mythosColor }} allowFontScaling={false}>
                 <AnimatedArkhamIcon
                   name={'auto_fail'}
                   size={24}

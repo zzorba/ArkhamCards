@@ -16,14 +16,12 @@ export default function CampaignGuideTextComponent({ text, flavor }: Props) {
       <CardFlavorTextComponent
         text={text.replace(/\n/g, '\n\n')}
         color={colors.darkText}
-        fontAdjustment={1.2}
       />
     );
   }
   return (
     <CardTextComponent
       text={text.replace(/\n/g, '\n\n')}
-      fontAdjustment={1.2}
     />
   );
 }

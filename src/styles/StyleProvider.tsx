@@ -6,7 +6,7 @@ import { Appearance, ColorSchemeName, AppearancePreferences } from 'react-native
 import { ThemeProvider } from 'react-native-elements';
 
 import StyleContext from './StyleContext';
-import { AppState, getLangPreference, getThemeOverride } from '@reducers';
+import { AppState, getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 import COLORS from './colors';
@@ -18,6 +18,7 @@ interface OwnProps {
 interface ReduxProps {
   lang: string;
   themeOverride?: 'dark' | 'light';
+  appFontScale: number;
 }
 
 type Props = OwnProps & ReduxProps;
@@ -83,8 +84,9 @@ class StyleProvider extends React.Component<Props, State> {
   }
 
   render() {
-    const { lang, themeOverride } = this.props;
-    const { colorScheme, fontScale } = this.state;
+    const { lang, themeOverride, appFontScale } = this.props;
+    const { colorScheme } = this.state;
+    const fontScale = appFontScale * this.state.fontScale;
     const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
     const colors = darkMode ? DARK_THEME : LIGHT_THEME;
     const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
@@ -92,7 +94,7 @@ class StyleProvider extends React.Component<Props, State> {
       <StyleContext.Provider value={{
         darkMode,
         fontScale,
-        typography: typography(themeOverride ? colors : COLORS, gameFont),
+        typography: typography(appFontScale, themeOverride ? colors : COLORS, gameFont),
         colors,
         gameFont,
         backgroundStyle: {
@@ -118,6 +120,7 @@ function mapStateToProps(state: AppState): ReduxProps {
   return {
     lang: getLangPreference(state),
     themeOverride: getThemeOverride(state),
+    appFontScale: getAppFontScale(state),
   };
 }
 

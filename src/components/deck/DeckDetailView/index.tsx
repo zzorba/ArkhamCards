@@ -1644,33 +1644,33 @@ class DeckDetailView extends React.Component<Props, State> {
               onPress={this._showEditDetailsVisible}
               title={t`Name`}
               description={nameChange || deck.name}
-              descriptionStyle={typography.dark}
-              titleStyle={typography.dark}
+              descriptionStyle={typography.small}
+              titleStyle={typography.text}
               containerStyle={backgroundStyle}
             />
             { SHOW_DESCRIPTION_EDITOR && (
               <SettingsButton
                 onPress={this._showEditDescription}
                 title={t`Description`}
-                titleStyle={typography.dark}
+                titleStyle={typography.text}
                 containerStyle={backgroundStyle}
               />
             ) }
             <SettingsButton
               onPress={this._showTabooPicker}
               title={t`Taboo List`}
-              titleStyle={typography.dark}
+              titleStyle={typography.text}
               containerStyle={backgroundStyle}
               description={tabooSet ? tabooSet.date_start : t`None`}
-              descriptionStyle={typography.dark}
+              descriptionStyle={typography.small}
             />
             { !deck.local && (
               <SettingsButton
                 title={t`Deck Id`}
-                titleStyle={typography.dark}
+                titleStyle={typography.text}
                 containerStyle={backgroundStyle}
                 description={`${deck.id}`}
-                descriptionStyle={typography.dark}
+                descriptionStyle={typography.small}
                 onPress={this._showEditDetailsVisible}
                 disabled
               />
@@ -1683,25 +1683,25 @@ class DeckDetailView extends React.Component<Props, State> {
             <SettingsButton
               onPress={this._onEditPressed}
               title={t`Edit Cards`}
-              titleStyle={typography.dark}
+              titleStyle={typography.text}
               containerStyle={backgroundStyle}
               description={ngettext(
                 msgid`${normalCardCount} Card (${totalCardCount} Total)`,
                 `${normalCardCount} Cards (${totalCardCount} Total)`,
                 normalCardCount
               )}
-              descriptionStyle={typography.dark}
+              descriptionStyle={typography.small}
             />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Story Assets`}
-              titleStyle={typography.dark}
+              titleStyle={typography.text}
               containerStyle={backgroundStyle}
             />
             <SettingsButton
               onPress={this._onEditSpecialPressed}
               title={t`Weaknesses`}
-              titleStyle={typography.dark}
+              titleStyle={typography.text}
               containerStyle={backgroundStyle}
             />
           </>
@@ -1710,20 +1710,20 @@ class DeckDetailView extends React.Component<Props, State> {
           <SettingsButton
             onPress={this._onChecklistPressed}
             title={t`Checklist`}
-            titleStyle={typography.dark}
+            titleStyle={typography.text}
             containerStyle={backgroundStyle}
           />
         ) }
         <SettingsButton
           onPress={this._showCardCharts}
           title={t`Charts`}
-          titleStyle={typography.dark}
+          titleStyle={typography.text}
           containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._showDrawSimulator}
           title={t`Draw Simulator`}
-          titleStyle={typography.dark}
+          titleStyle={typography.text}
           containerStyle={backgroundStyle}
         />
         { editable && (
@@ -1732,27 +1732,27 @@ class DeckDetailView extends React.Component<Props, State> {
             <SettingsButton
               onPress={this._onUpgradePressed}
               title={t`Upgrade Deck`}
-              titleStyle={typography.dark}
+              titleStyle={typography.text}
               containerStyle={backgroundStyle}
               disabled={!!hasPendingEdits}
               description={hasPendingEdits ? t`Save changes before upgrading` : undefined}
-              descriptionStyle={typography.dark}
+              descriptionStyle={typography.small}
             />
             { !!deck.previous_deck && (
               <SettingsButton
                 onPress={this._showEditDetailsVisible}
                 title={t`Available XP`}
-                titleStyle={typography.dark}
+                titleStyle={typography.text}
                 containerStyle={backgroundStyle}
                 description={xpString}
-                descriptionStyle={typography.dark}
+                descriptionStyle={typography.small}
               />
             ) }
             { !!deck.previous_deck && (
               <SettingsButton
                 onPress={this._showUpgradeHistory}
                 title={t`Upgrade History`}
-                titleStyle={typography.dark}
+                titleStyle={typography.text}
                 containerStyle={backgroundStyle}
               />
             ) }
@@ -1762,21 +1762,21 @@ class DeckDetailView extends React.Component<Props, State> {
         <SettingsButton
           onPress={this._toggleCopyDialog}
           title={t`Clone`}
-          titleStyle={typography.dark}
+          titleStyle={typography.text}
           containerStyle={backgroundStyle}
         />
         { deck.local ? (
           <SettingsButton
             onPress={this._uploadToArkhamDB}
             title={t`Upload to ArkhamDB`}
-            titleStyle={typography.dark}
+            titleStyle={typography.text}
             containerStyle={backgroundStyle}
           />
         ) : (
           <SettingsButton
             title={t`View on ArkhamDB`}
             onPress={this._viewDeck}
-            titleStyle={typography.dark}
+            titleStyle={typography.text}
             containerStyle={backgroundStyle}
           />
         ) }

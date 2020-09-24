@@ -8,6 +8,8 @@ import {
   SetAlphabetizeEncounterSetsAction,
   EnsureUuidAction,
   SET_THEME,
+  SET_FONT_SCALE,
+  SetFontScaleAction,
 } from '@actions/types';
 
 export function setTabooSet(tabooId?: number): SetTabooSetAction {
@@ -21,6 +23,14 @@ export function setTheme(theme: 'light' | 'dark' | 'system') {
   return {
     type: SET_THEME,
     theme,
+  };
+}
+
+
+export function setFontSize(fontScale: number): SetFontScaleAction {
+  return {
+    type: SET_FONT_SCALE,
+    fontScale,
   };
 }
 

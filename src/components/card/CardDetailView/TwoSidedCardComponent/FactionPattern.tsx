@@ -22,17 +22,18 @@ interface Props {
 }
 
 // flip horizontally: transform={`translate(${width},0) scale(-1,1)`}
-function RepeatPattern({ patternWidth, children }: { patternWidth: number; children: React.ReactNode }) {
+function RepeatPattern({ patternWidth, height, children }: { patternWidth: number; height: number; children: React.ReactNode }) {
   return (
     <Pattern
       id="FactionPattern"
       patternUnits="userSpaceOnUse"
       patternContentUnits="userSpaceOnUse"
+      patternTransform={`scale(1,${height / 48})`}
       x="0"
       y="0"
       width={patternWidth}
-      height={48}
-      viewBox={`0 0 ${patternWidth} 48`}
+      height={height}
+      viewBox={`0 0 ${patternWidth} ${height}`}
     >
       { children }
     </Pattern>
@@ -42,11 +43,12 @@ function RepeatPattern({ patternWidth, children }: { patternWidth: number; child
 function StretchPattern({
   patternWidth,
   width,
+  height,
   children,
-}: { patternWidth: number; width: number; children: React.ReactNode }) {
+}: { patternWidth: number; width: number; height: number; children: React.ReactNode }) {
   if (width < patternWidth) {
     return (
-      <RepeatPattern patternWidth={patternWidth}>
+      <RepeatPattern patternWidth={patternWidth} height={height}>
         { children }
       </RepeatPattern>
     );
@@ -56,12 +58,12 @@ function StretchPattern({
       id="FactionPattern"
       patternUnits="userSpaceOnUse"
       patternContentUnits="userSpaceOnUse"
-      patternTransform={`scale(${width / patternWidth},1)`}
+      patternTransform={`scale(${width / patternWidth},${height / 48})`}
       x="0"
       y="0"
       width={width}
-      height={48}
-      viewBox={`0 0 ${width} 48`}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
     >
       { children }
     </Pattern>
@@ -69,48 +71,48 @@ function StretchPattern({
 }
 
 
-function HeaderPattern({ faction, width }: { faction : string; width: number }) {
+function HeaderPattern({ faction, width, height }: { faction : string; width: number; height: number }) {
   switch (faction) {
     case 'guardian':
       return (
-        <StretchPattern patternWidth={344} width={width}>
+        <StretchPattern patternWidth={344} width={width} height={height}>
           <GuardianPattern />
         </StretchPattern>
       );
     case 'seeker':
       return (
-        <RepeatPattern patternWidth={360}>
+        <RepeatPattern patternWidth={360} height={height}>
           <SeekerPattern />
         </RepeatPattern>
       );
     case 'rogue':
       return (
-        <RepeatPattern patternWidth={360}>
+        <RepeatPattern patternWidth={360} height={height}>
           <RoguePattern />
         </RepeatPattern>
       );
     case 'mystic':
       return (
-        <RepeatPattern patternWidth={360}>
+        <RepeatPattern patternWidth={360} height={height}>
           <MysticPattern />
         </RepeatPattern>
       );
     case 'survivor':
       return (
-        <RepeatPattern patternWidth={360}>
+        <RepeatPattern patternWidth={360} height={height}>
           <SurvivorPattern />
         </RepeatPattern>
       );
     case 'mythos':
       return (
-        <StretchPattern patternWidth={360} width={width}>
+        <StretchPattern patternWidth={360} width={width} height={height}>
           <MythosPattern />
         </StretchPattern>
       );
     case 'neutral':
     default:
       return (
-        <RepeatPattern patternWidth={360}>
+        <RepeatPattern patternWidth={360} height={height}>
           <NeutralPattern />
         </RepeatPattern>
       );
@@ -143,7 +145,7 @@ const FactionPatternComponent = React.memo(function FactionPattern({ width, heig
     <View style={[styles.pattern, { width, height }, Platform.OS === 'android' ? { opacity } : {}]}>
       <Svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
         <Defs>
-          <HeaderPattern faction={faction} width={width} />
+          <HeaderPattern faction={faction} width={width} height={height} />
         </Defs>
         <HeaderPath width={width} height={height} opacity={opacity} />
       </Svg>

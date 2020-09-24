@@ -547,3 +547,9 @@ export function getThemeOverride(
 ): 'dark' | 'light' | undefined {
   return state.settings.theme;
 }
+
+export function getAppFontScale(
+  state: AppState
+): number {
+  return state.settings.fontScale || 1.0;
+}

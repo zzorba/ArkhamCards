@@ -12,6 +12,7 @@ import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import ThemePicker from './ThemePicker';
+import FontSizePicker from './FontSizePicker';
 import LanguagePicker from './LanguagePicker';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import SettingsSwitch from '@components/core/SettingsSwitch';
@@ -174,6 +175,7 @@ class SettingsView extends React.Component<Props> {
               <LanguagePicker />
               <CardSectionHeader section={{ title: t`Preferences` }} />
               <ThemePicker />
+              <FontSizePicker />
               <SettingsSwitch
                 title={t`Swipe between card results`}
                 value={!showCardsingleCardView}

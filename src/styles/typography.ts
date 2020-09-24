@@ -1,7 +1,6 @@
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
 import COLORS from './colors';
-const sizeScale = 1;
 
 export interface TypographyColors {
   D10: string;
@@ -41,62 +40,62 @@ export interface Typography {
   light: TextStyle;
 }
 
-export default function(colors: TypographyColors, gameFont: string): Typography {
+export default function(fontScale: number, colors: TypographyColors, gameFont: string): Typography {
   return StyleSheet.create({
     searchLabel: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 16 * sizeScale,
-      lineHeight: 20 * sizeScale,
+      fontSize: 16 * fontScale,
+      lineHeight: 20 * fontScale,
       color: colors.L20,
     },
     smallLabel: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 14 * sizeScale,
-      lineHeight: 18 * sizeScale,
+      fontSize: 14 * fontScale,
+      lineHeight: 18 * fontScale,
       letterSpacing: 0.3,
       color: colors.lightText,
     },
     small: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 14 * sizeScale,
-      lineHeight: 16 * sizeScale,
+      fontSize: 16 * fontScale,
+      lineHeight: 18 * fontScale,
       color: colors.darkText,
     },
     tiny: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 12 * sizeScale,
-      lineHeight: 14 * sizeScale,
+      fontSize: 12 * fontScale,
+      lineHeight: 14 * fontScale,
       color: colors.darkText,
     },
     large: {
       fontFamily: 'Alegreya-Medium',
-      fontSize: 20 * sizeScale,
-      lineHeight: 20 * sizeScale,
+      fontSize: 20 * fontScale,
+      lineHeight: 20 * fontScale,
       color: colors.darkText,
     },
     header: {
       fontFamily: 'Alegreya-Bold',
-      fontSize: 24 * sizeScale,
-      lineHeight: 32 * sizeScale,
+      fontSize: 24 * fontScale,
+      lineHeight: 32 * fontScale,
       color: colors.darkText,
     },
     button: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 18 * sizeScale,
-      lineHeight: 20 * sizeScale,
+      fontSize: 18 * fontScale,
+      lineHeight: 20 * fontScale,
       color: colors.L30,
     },
     subHeaderText: {
       fontFamily: 'Alegreya-Medium',
       // fontVariant: ['small-caps'],
-      fontSize: 18 * sizeScale,
-      lineHeight: 22 * sizeScale,
+      fontSize: 18 * fontScale,
+      lineHeight: 22 * fontScale,
       color: colors.D10,
     },
     text: {
       fontFamily: 'Alegreya-Regular',
-      fontSize: 18 * sizeScale,
-      lineHeight: 22 * sizeScale,
+      fontSize: 18 * fontScale,
+      lineHeight: 22 * fontScale,
       color: colors.darkText,
     },
     regular: {
@@ -118,29 +117,29 @@ export default function(colors: TypographyColors, gameFont: string): Typography 
     },
     gameFont: {
       fontFamily: gameFont,
-      fontSize: 18 * sizeScale,
-      lineHeight: 26 * sizeScale,
+      fontSize: 18 * fontScale,
+      lineHeight: 26 * fontScale,
       color: colors.darkText,
     },
     mediumGameFont: {
       fontFamily: gameFont,
-      fontSize: 24 * sizeScale,
-      lineHeight: 30 * sizeScale,
+      fontSize: 24 * fontScale,
+      lineHeight: 30 * fontScale,
       color: colors.darkText,
     },
     bigGameFont: {
       fontFamily: gameFont,
-      fontSize: 28 * sizeScale,
-      lineHeight: 36 * sizeScale,
+      fontSize: 28 * fontScale,
+      lineHeight: 36 * fontScale,
       color: colors.darkText,
     },
     dialogLabel: Platform.select({
       ios: {
-        fontSize: 13 * sizeScale,
+        fontSize: 13 * fontScale,
         color: colors.darkText,
       },
       android: {
-        fontSize: 16 * sizeScale,
+        fontSize: 16 * fontScale,
         color: colors.darkText,
       },
     }) as TextStyle,

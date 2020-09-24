@@ -251,8 +251,8 @@ export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
         },
         paragraph: {
           ...context.typography.small,
-          fontSize: (fontAdjustment || 1) * 14,
-          lineHeight: (fontAdjustment || 1) * 18,
+          fontSize: 16 * context.fontScale,
+          lineHeight: 20 * context.fontScale,
           marginTop: 4,
           marginBottom: 4,
         },

@@ -210,7 +210,7 @@ msgstr ""
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:292
 #: src/components/deck/EditSpecialDeckCardsView.tsx:189
 #: src/components/settings/CollectionEditView.tsx:36
-#: src/components/settings/SettingsView.tsx:80
+#: src/components/settings/SettingsView.tsx:81
 msgid "Edit Collection"
 msgstr ""
 
@@ -533,7 +533,7 @@ msgstr ""
 #: src/components/settings/BackupView.tsx:197
 #: src/components/settings/DiagnosticsView.tsx:237
 #: src/components/settings/SafeModeView.tsx:106
-#: src/components/settings/SettingsView.tsx:96
+#: src/components/settings/SettingsView.tsx:97
 msgid "Backup"
 msgstr ""
 
@@ -580,18 +580,18 @@ msgstr ""
 msgid "Sign in to ArkhamDB"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:84
+#: src/components/settings/SettingsView.tsx:85
 msgid "Edit Spoilers"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:88
-#: src/components/settings/SettingsView.tsx:192
+#: src/components/settings/SettingsView.tsx:89
+#: src/components/settings/SettingsView.tsx:194
 msgid "Diagnostics"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:92
-#: src/components/settings/SettingsView.tsx:194
-#: src/components/settings/SettingsView.tsx:198
+#: src/components/settings/SettingsView.tsx:93
+#: src/components/settings/SettingsView.tsx:196
+#: src/components/settings/SettingsView.tsx:200
 msgid "About Arkham Cards"
 msgstr ""
 
@@ -610,36 +610,36 @@ msgstr ""
 #: src/components/settings/SafeModeView.tsx:87
 #: src/components/settings/SafeModeView.tsx:109
 #: src/components/settings/SafeModeView.tsx:165
-#: src/components/settings/SettingsView.tsx:67
+#: src/components/settings/SettingsView.tsx:68
 msgid "Done"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:122
+#: src/components/settings/SettingsView.tsx:123
 msgid "Updating cards"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:125
+#: src/components/settings/SettingsView.tsx:126
 msgid "Error: Check for Cards Again"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:126
+#: src/components/settings/SettingsView.tsx:127
 msgid "Check for New Cards on ArkhamDB"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:145
+#: src/components/settings/SettingsView.tsx:146
 msgid "Account"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:164
+#: src/components/settings/SettingsView.tsx:165
 msgid "Card Data"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:156
+#: src/components/settings/SettingsView.tsx:157
 msgid "Card Collection"
 msgstr ""
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:281
-#: src/components/settings/SettingsView.tsx:161
+#: src/components/settings/SettingsView.tsx:162
 msgid "Spoiler Settings"
 msgstr ""
 
@@ -2127,7 +2127,7 @@ msgstr ""
 msgid "Note: not all cards have translations available."
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:152
+#: src/components/settings/SettingsView.tsx:153
 msgid "Card Settings"
 msgstr ""
 
@@ -2443,11 +2443,11 @@ msgstr ""
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:175
+#: src/components/settings/SettingsView.tsx:176
 msgid "Preferences"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:178
+#: src/components/settings/SettingsView.tsx:180
 msgid "Swipe between card results"
 msgstr ""
 
@@ -4072,7 +4072,7 @@ msgstr ""
 msgid "Scenario or Interlude"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:184
+#: src/components/settings/SettingsView.tsx:186
 msgid "Alphabetize guide encounter sets"
 msgstr ""
 
@@ -4106,7 +4106,7 @@ msgstr ""
 msgid "Select resolution"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:203
+#: src/components/settings/SettingsView.tsx:205
 msgid "Contact us"
 msgstr ""
 
@@ -4154,7 +4154,7 @@ msgid "Unexpected file type"
 msgstr ""
 
 #: src/components/settings/SafeModeView.tsx:149
-#: src/components/settings/SettingsView.tsx:150
+#: src/components/settings/SettingsView.tsx:151
 msgid "Backup Data"
 msgstr ""
 
@@ -4371,7 +4371,7 @@ msgstr ""
 msgid "Cache cleared"
 msgstr ""
 
-#: src/components/settings/SettingsView.tsx:168
+#: src/components/settings/SettingsView.tsx:169
 msgid "Rules"
 msgstr ""
 
@@ -4711,6 +4711,40 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:135
 msgid "Coming soon"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:22
+msgid "Smaller"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:26
+msgid "Default"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:30
+msgid "Medium"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:34
+msgid "Large"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:38
+msgid "X-Large"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:42
+msgid "XX-Large"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:51
+msgid "Font Size"
+msgstr ""
+
+#: src/components/settings/FontSizePicker.tsx:61
+msgid ""
+"This can be used to make the app font size larger, though it may impact "
+"layout on some screens."
 msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201

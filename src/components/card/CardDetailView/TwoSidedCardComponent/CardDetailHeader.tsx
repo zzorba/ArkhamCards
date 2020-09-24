@@ -138,7 +138,7 @@ function HeaderContent({ card, back }: { card: Card, back: boolean}) {
 }
 
 export default function CardDetailHeader({ card, width, back, linked }: Props) {
-  const { colors } = useContext(StyleContext);
+  const { colors, fontScale } = useContext(StyleContext);
   const color = colors.faction[card.faction2_code ? 'dual' : card.factionCode()].background;
 
   return (
@@ -146,7 +146,7 @@ export default function CardDetailHeader({ card, width, back, linked }: Props) {
       backgroundColor: color,
       borderColor: color,
     }]} removeClippedSubviews>
-      <FactionPattern faction={card.factionCode()} width={width} height={48} />
+      <FactionPattern faction={card.factionCode()} width={width} height={30 + 18 * fontScale} />
       <HeaderContent card={card} back={!!back} />
       <FactionIcon card={card} linked={linked} />
     </View>
