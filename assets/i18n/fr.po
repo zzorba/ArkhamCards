@@ -340,13 +340,14 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/core/CountEditDialog.tsx:120
 #: src/components/core/EditText.tsx:29
 #: src/components/core/TextEditDialog.tsx:209
+#: src/components/deck/CardUpgradeDialog/index.tsx:405
 #: src/components/deck/CopyDeckDialog/index.tsx:350
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:161
 #: src/components/deck/DeckDetailView/index.tsx:440
 #: src/components/deck/DeckDetailView/index.tsx:520
-#: src/components/deck/DeckDetailView/index.tsx:1497
-#: src/components/deck/DeckDetailView/index.tsx:1506
-#: src/components/deck/DeckDetailView/index.tsx:1551
+#: src/components/deck/DeckDetailView/index.tsx:1521
+#: src/components/deck/DeckDetailView/index.tsx:1530
+#: src/components/deck/DeckDetailView/index.tsx:1575
 #: src/components/deck/DeckUpgradeDialog.tsx:71
 #: src/components/deck/DeckUpgradeDialog.tsx:73
 #: src/components/deck/EditSpecialDeckCardsView.tsx:190
@@ -454,7 +455,7 @@ msgstr "Réessayer"
 msgid "Reauthorize"
 msgstr "Réautoriser"
 
-#: src/components/deck/DeckDetailView/index.tsx:1640
+#: src/components/deck/DeckDetailView/index.tsx:1664
 #: src/components/nav/helper.ts:76
 #: src/components/nav/helper.ts:101
 msgid "Deck"
@@ -466,7 +467,7 @@ msgid "Available weaknesses"
 msgstr "Faiblesses disponibles"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:344
-#: src/components/deck/DeckDetailView/index.tsx:1337
+#: src/components/deck/DeckDetailView/index.tsx:1359
 #: src/components/weakness/WeaknessDrawComponent.tsx:285
 msgid "Saving"
 msgstr "Sauvegarde"
@@ -575,7 +576,7 @@ msgstr "Reconnecter le compte"
 msgid "Sign out of ArkhamDB"
 msgstr "Déconnexion d’ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:1493
+#: src/components/deck/DeckDetailView/index.tsx:1517
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:371
 #: src/components/settings/LoginButton.tsx:80
 #: src/components/settings/LoginButton.tsx:83
@@ -1442,7 +1443,7 @@ msgstr "${ traumaData.mental } mental"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:186
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:167
 #: src/components/core/CardCostIcon.tsx:75
-#: src/components/deck/DeckDetailView/index.tsx:1664
+#: src/components/deck/DeckDetailView/index.tsx:1688
 #: src/data/Card.ts:399
 #: src/data/Card.ts:415
 msgid "None"
@@ -1467,7 +1468,7 @@ msgstr "Sélectionnez une Campagne"
 #: src/components/campaign/CampaignDetailView/index.tsx:87
 #: src/components/campaign/CampaignDetailView/index.tsx:475
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:91
-#: src/components/deck/DeckDetailView/index.tsx:1731
+#: src/components/deck/DeckDetailView/index.tsx:1755
 #: src/components/deck/DeckProgressComponent/index.tsx:89
 msgid "Campaign"
 msgstr "Campagne"
@@ -1531,8 +1532,8 @@ msgstr "Pas maintenant"
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:222
 #: src/components/deck/CopyDeckDialog/index.tsx:354
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:165
-#: src/components/deck/DeckDetailView/index.tsx:1294
-#: src/components/deck/DeckDetailView/index.tsx:1329
+#: src/components/deck/DeckDetailView/index.tsx:1316
+#: src/components/deck/DeckDetailView/index.tsx:1351
 msgid "Okay"
 msgstr "Ok"
 
@@ -1592,13 +1593,13 @@ msgstr "On dirait que vous avez fait quelques changements qui n’ont pas été 
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:134
 #: src/components/deck/DeckDetailView/index.tsx:509
-#: src/components/deck/DeckDetailView/index.tsx:1361
+#: src/components/deck/DeckDetailView/index.tsx:1383
 msgid "Save Changes"
 msgstr "Sauvegarder les modifications"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:139
 #: src/components/deck/DeckDetailView/index.tsx:514
-#: src/components/deck/DeckDetailView/index.tsx:1365
+#: src/components/deck/DeckDetailView/index.tsx:1387
 msgid "Discard Changes"
 msgstr "Abandonner les modifications"
 
@@ -1617,7 +1618,7 @@ msgstr "Expérience"
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:86
 #: src/components/deck/DeckDetailView/index.tsx:724
-#: src/components/deck/DeckDetailView/index.tsx:1734
+#: src/components/deck/DeckDetailView/index.tsx:1758
 msgid "Upgrade Deck"
 msgstr "Améliorer le Deck"
 
@@ -1632,6 +1633,7 @@ msgstr "Supprimer"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:218
 #: src/components/campaign/UpgradeDecksView/index.tsx:131
+#: src/components/deck/CardUpgradeDialog/index.tsx:401
 msgid "Upgrade"
 msgstr "Mise à jour"
 
@@ -1668,8 +1670,8 @@ msgstr "${counts.assigned}/${counts.total} ont été tirées."
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:110
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:113
 #: src/components/deck/DeckDetailView/index.tsx:439
-#: src/components/deck/DeckDetailView/index.tsx:1545
-#: src/components/deck/DeckDetailView/index.tsx:1785
+#: src/components/deck/DeckDetailView/index.tsx:1569
+#: src/components/deck/DeckDetailView/index.tsx:1809
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -1696,7 +1698,7 @@ msgstr "Interlude"
 #: src/components/campaign/NewCampaignView/index.tsx:649
 #: src/components/campaignguide/CampaignGuideView.tsx:69
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:76
-#: src/components/deck/DeckDetailView/index.tsx:1645
+#: src/components/deck/DeckDetailView/index.tsx:1669
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:328
 msgid "Name"
 msgstr "Nom"
@@ -1830,7 +1832,7 @@ msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
 msgstr "XP: ${ spentXp } de ${ adjustedExperience } (${ adjustment })"
 
 #: src/components/DeckNavFooter/index.tsx:126
-#: src/components/deck/DeckDetailView/index.tsx:1688
+#: src/components/deck/DeckDetailView/index.tsx:1712
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
@@ -1850,40 +1852,40 @@ msgstr "Ennemi"
 msgid "Treachery"
 msgstr "Traitrise"
 
-#: src/components/deck/DeckDetailView/index.tsx:1533
+#: src/components/deck/DeckDetailView/index.tsx:1557
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
 msgstr "Supprimer cette version (${deck.version})"
 
-#: src/components/deck/DeckDetailView/index.tsx:1538
-#: src/components/deck/DeckDetailView/index.tsx:1545
+#: src/components/deck/DeckDetailView/index.tsx:1562
+#: src/components/deck/DeckDetailView/index.tsx:1569
 msgid "Delete all versions"
 msgstr "Supprimer toutes les versions"
 
-#: src/components/deck/DeckDetailView/index.tsx:1556
+#: src/components/deck/DeckDetailView/index.tsx:1580
 msgid "Delete deck"
 msgstr "Supprimer le deck"
 
-#: src/components/deck/DeckDetailView/index.tsx:1557
+#: src/components/deck/DeckDetailView/index.tsx:1581
 msgid "Are you sure you want to delete this deck?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce deck?"
 
-#: src/components/deck/DeckDetailView/index.tsx:1483
+#: src/components/deck/DeckDetailView/index.tsx:1507
 msgid "Save Local Changes"
 msgstr "Enregistrer les modifications locales"
 
-#: src/components/deck/DeckDetailView/index.tsx:1484
+#: src/components/deck/DeckDetailView/index.tsx:1508
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr ""
 "Veuillez enregistrer toutes les modifications locales de ce deck avant de "
 "partager à ArkhamDB"
 
-#: src/components/deck/DeckDetailView/index.tsx:1488
+#: src/components/deck/DeckDetailView/index.tsx:1512
 msgid "Unsupported Operation"
 msgstr "Opération non supportée"
 
-#: src/components/deck/DeckDetailView/index.tsx:1502
-#: src/components/deck/DeckDetailView/index.tsx:1771
+#: src/components/deck/DeckDetailView/index.tsx:1526
+#: src/components/deck/DeckDetailView/index.tsx:1795
 msgid "Upload to ArkhamDB"
 msgstr "Télécharger vers ArkhamDB"
 
@@ -1891,7 +1893,7 @@ msgstr "Télécharger vers ArkhamDB"
 msgid "Special Cards"
 msgstr "Cartes spéciales"
 
-#: src/components/deck/DeckDetailView/index.tsx:1777
+#: src/components/deck/DeckDetailView/index.tsx:1801
 msgid "View on ArkhamDB"
 msgstr "Voir sur ArkhamDB"
 
@@ -1915,8 +1917,8 @@ msgstr "Le deck a été supprimé"
 msgid "OK"
 msgstr "OK"
 
-#: src/components/deck/DeckDetailView/index.tsx:1289
-#: src/components/deck/DeckDetailView/index.tsx:1324
+#: src/components/deck/DeckDetailView/index.tsx:1311
+#: src/components/deck/DeckDetailView/index.tsx:1346
 msgid "Error"
 msgstr "Erreur"
 
@@ -2101,7 +2103,7 @@ msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Jusqu’à 5, j’espère que je ne tire pas le tentacule"
 
 #: src/app/App.ts:311
-#: src/components/deck/DeckDetailView/index.tsx:1680
+#: src/components/deck/DeckDetailView/index.tsx:1704
 msgid "Cards"
 msgstr "Cartes"
 
@@ -2150,7 +2152,7 @@ msgid "Card Settings"
 msgstr "Paramètres de la carte"
 
 #: src/components/core/TabooSetPicker.tsx:59
-#: src/components/deck/DeckDetailView/index.tsx:1661
+#: src/components/deck/DeckDetailView/index.tsx:1685
 #: src/components/settings/SettingsTabooPicker.tsx:33
 msgid "Taboo List"
 msgstr "Liste de tabou"
@@ -2173,7 +2175,7 @@ msgstr "Réessayer"
 msgid "Loading latest cards..."
 msgstr "Chargement des dernières cartes..."
 
-#: src/components/deck/DeckDetailView/index.tsx:1719
+#: src/components/deck/DeckDetailView/index.tsx:1743
 #: src/components/nav/helper.ts:161
 msgid "Charts"
 msgstr "Graphiques"
@@ -2245,7 +2247,7 @@ msgstr ""
 "Sinon, vous pouvez tirer des faiblesses aléatoires de votre collection "
 "entière."
 
-#: src/components/deck/DeckDetailView/index.tsx:1494
+#: src/components/deck/DeckDetailView/index.tsx:1518
 #: src/components/decklist/MyDecksComponent.tsx:154
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -2358,7 +2360,7 @@ msgstr ""
 msgid "Sort"
 msgstr "Trier"
 
-#: src/components/deck/DeckDetailView/index.tsx:1503
+#: src/components/deck/DeckDetailView/index.tsx:1527
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
@@ -2489,7 +2491,7 @@ msgstr ""
 "Vous pouvez choisir de toujours voir les tabous et les decks de "
 "l’établissement avec eux dans les paramètres."
 
-#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:54
+#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:76
 #, javascript-format
 msgid "Level ${ level }"
 msgstr "Niveau ${level}"
@@ -2816,7 +2818,7 @@ msgstr ""
 "Remarque : La taille du deck ne doit être sélectionnée qu'au moment de la "
 "création du deck, et non entre les scénarios."
 
-#: src/components/deck/DeckDetailView/index.tsx:1685
+#: src/components/deck/DeckDetailView/index.tsx:1709
 msgid "Edit Cards"
 msgstr "Modifier les cartes"
 
@@ -2828,7 +2830,7 @@ msgstr ""
 "Remarque : La faction secondaire ne doit être sélectionnée qu'au moment de "
 "la création du deck, et non entre les scénarios."
 
-#: src/components/deck/DeckDetailView/index.tsx:1489
+#: src/components/deck/DeckDetailView/index.tsx:1513
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time.\n"
@@ -2843,29 +2845,29 @@ msgstr ""
 "Si vous souhaitez le télécharger, vous pouvez utiliser Clone pour "
 "télécharger un clone du deck actuel."
 
-#: src/components/deck/DeckDetailView/index.tsx:1637
+#: src/components/deck/DeckDetailView/index.tsx:1661
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) XP"
 
-#: src/components/deck/DeckDetailView/index.tsx:1764
+#: src/components/deck/DeckDetailView/index.tsx:1788
 msgid "Clone"
 msgstr "Clôner"
 
-#: src/components/deck/DeckDetailView/index.tsx:1697
+#: src/components/deck/DeckDetailView/index.tsx:1721
 msgid "Story Assets"
 msgstr "Soutiens d'histoire"
 
-#: src/components/deck/DeckDetailView/index.tsx:1703
+#: src/components/deck/DeckDetailView/index.tsx:1727
 msgid "Weaknesses"
 msgstr "Modifier les faiblesses affectées"
 
-#: src/components/deck/DeckDetailView/index.tsx:1725
+#: src/components/deck/DeckDetailView/index.tsx:1749
 #: src/components/nav/helper.ts:182
 msgid "Draw Simulator"
 msgstr "Simulateur de tirage"
 
-#: src/components/deck/DeckDetailView/index.tsx:1744
+#: src/components/deck/DeckDetailView/index.tsx:1768
 msgid "Available XP"
 msgstr "XP disponible"
 
@@ -2918,7 +2920,7 @@ msgid "Weakness Set"
 msgstr "Ensemble des Faiblesses"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:522
-#: src/components/deck/DeckDetailView/index.tsx:1761
+#: src/components/deck/DeckDetailView/index.tsx:1785
 msgid "Options"
 msgstr "Options"
 
@@ -2926,7 +2928,7 @@ msgstr "Options"
 msgid "Deck Cards"
 msgstr "Cartes du Deck"
 
-#: src/components/deck/DeckDetailView/index.tsx:1738
+#: src/components/deck/DeckDetailView/index.tsx:1762
 msgid "Save changes before upgrading"
 msgstr "Sauvegarder les modifications avant d'améliorer"
 
@@ -2969,7 +2971,7 @@ msgid ""
 "situations."
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1302
+#: src/components/deck/DeckDetailView/index.tsx:1324
 msgid "Deleting"
 msgstr ""
 
@@ -3052,8 +3054,8 @@ msgstr ""
 msgid "Card changes"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1586
-#: src/components/deck/DeckDetailView/index.tsx:1754
+#: src/components/deck/DeckDetailView/index.tsx:1610
+#: src/components/deck/DeckDetailView/index.tsx:1778
 #: src/components/deck/DeckProgressComponent/index.tsx:161
 #. Actually compute the diffs.
 msgid "Upgrade History"
@@ -3188,7 +3190,7 @@ msgid ""
 "course of a campaign."
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1654
+#: src/components/deck/DeckDetailView/index.tsx:1678
 msgid "Description"
 msgstr ""
 
@@ -3606,11 +3608,11 @@ msgstr ""
 msgid "Create deck"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1496
+#: src/components/deck/DeckDetailView/index.tsx:1520
 msgid "Sign In"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1505
+#: src/components/deck/DeckDetailView/index.tsx:1529
 msgid "Upload"
 msgstr ""
 
@@ -3786,11 +3788,11 @@ msgstr ""
 msgid "Looks like we are having trouble loading this deck for some reason"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1669
+#: src/components/deck/DeckDetailView/index.tsx:1693
 msgid "Deck Id"
 msgstr ""
 
-#: src/components/deck/DeckDetailView/index.tsx:1906
+#: src/components/deck/DeckDetailView/index.tsx:1930
 msgid "Delete Deck"
 msgstr ""
 
@@ -4392,7 +4394,7 @@ msgstr ""
 
 #: src/components/deck/DeckChecklistView/index.tsx:51
 #: src/components/deck/DeckDetailView/index.tsx:568
-#: src/components/deck/DeckDetailView/index.tsx:1712
+#: src/components/deck/DeckDetailView/index.tsx:1736
 msgid "Checklist"
 msgstr ""
 
@@ -4505,7 +4507,8 @@ msgstr ""
 msgid "Interlude FAQ"
 msgstr ""
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:256
+#: src/components/deck/CardUpgradeDialog/index.tsx:472
+#, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
 msgstr[0] "Montrer ${ nonCollection.length } carte hors collection"
@@ -4821,38 +4824,97 @@ msgstr ""
 msgid "Coming soon"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:22
+#: src/components/settings/FontSizePicker.tsx:21
 msgid "Smaller"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:26
+#: src/components/settings/FontSizePicker.tsx:25
 msgid "Default"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:30
+#: src/components/settings/FontSizePicker.tsx:29
 msgid "Medium"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:34
+#: src/components/settings/FontSizePicker.tsx:33
 msgid "Large"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:38
+#: src/components/settings/FontSizePicker.tsx:37
 msgid "X-Large"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:42
+#: src/components/settings/FontSizePicker.tsx:41
 msgid "XX-Large"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:51
+#: src/components/settings/FontSizePicker.tsx:50
 msgid "Font Size"
 msgstr ""
 
-#: src/components/settings/FontSizePicker.tsx:61
+#: src/components/settings/FontSizePicker.tsx:60
 msgid ""
 "This can be used to make the app font size larger, though it may impact "
 "layout on some screens."
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:95
+msgid ""
+"Keep level ${ level } after upgrade\n"
+"Won't count towards deck size"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:385
+msgid "Shrewd Analysis Rule"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:387
+#, javascript-format
+msgid "This upgrade will cost ${ xpCost } experience."
+msgid_plural "This upgrade will cost ${ xpCost } experience."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:392
+#, javascript-format
+msgid ""
+"Two random cards will be chosen among the following choice:\n"
+"\n"
+"${ upgradeCards }"
+msgid_plural ""
+"Two random cards will be chosen among the following choices:\n"
+"\n"
+"${ upgradeCards }"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:397
+msgid "You can edit your collection under Settings to adjust the eligible choices."
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:443
+msgid ""
+"<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
+"card, you may instead pay the full experience cost on the higher level "
+"version and leave the lower level version in your deck (it does not count "
+"towards your deck size or the number of copies of that card in your deck)."
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:451
+msgid ""
+"<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
+"Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
+"\n"
+"<i>Note: the app handles this by adjusting experience to account for the "
+"'free' upgrade.</i>"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:458
+msgid "Upgrade results"
+msgstr ""
+
+#: src/components/deck/CardUpgradeDialog/index.tsx:464
+msgid "Upgrade with Shrewd Analysis"
 msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201
