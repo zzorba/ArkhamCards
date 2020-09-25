@@ -18,6 +18,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
+import UpgradeCardButton from './UpgradeCardButton';
 import CardQuantityComponent from './CardQuantityComponent';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -340,20 +341,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     if (count !== 0) {
       return (
         <View style={styles.countWrapper}>
-          { !!onUpgrade && (
-            <Button
-              style={styles.upgradeButton}
-              size="small"
-              onPress={this._onUpgradePressed}
-              icon={
-                <MaterialCommunityIcons
-                  size={18 * fontScale}
-                  color="#FFF"
-                  name="arrow-up-bold"
-                />
-              }
-            />
-          ) }
+          { !!onUpgrade && <UpgradeCardButton onPress={this._onUpgradePressed} /> }
           <View style={styles.count}>
             <Text style={typography.text}>
               { this.countText(count) }

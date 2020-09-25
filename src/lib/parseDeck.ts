@@ -294,16 +294,14 @@ function getDeckChanges(
   const newDeckSize = validation.getDeckSize();
   let extraDeckSize = newDeckSize - oldDeckSize;
 
-  const previousIgnoreDeckLimitSlots = previousDeck.ignoreDeckLimitSlots || {};
   const changedCards: Slots = {};
   forEach(
     uniq(union(keys(slots), keys(previousDeck.slots))),
     code => {
-      const ignoreDelta = (ignoreDeckLimitSlots[code] || 0) - (previousIgnoreDeckLimitSlots[code] || 0);
       const exiledCount = exiledCards[code] || 0;
       const newCount = slots[code] || 0;
       const oldCount = previousDeck.slots[code] || 0;
-      const delta = (newCount + exiledCount) - oldCount - ignoreDelta;
+      const delta = (newCount + exiledCount) - oldCount;
       if (delta !== 0) {
         changedCards[code] = delta;
       }

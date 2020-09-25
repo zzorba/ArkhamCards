@@ -1224,6 +1224,28 @@ class DeckDetailView extends React.Component<Props, State> {
     });
   };
 
+  _updateXpAdjustment = (xpAdjustment: number) => {
+    const {
+      nameChange,
+      slots,
+      ignoreDeckLimitSlots,
+      meta,
+      tabooSetId,
+    } = this.state;
+    const pendingEdits = this.hasPendingEdits(
+      slots,
+      ignoreDeckLimitSlots,
+      meta,
+      xpAdjustment,
+      nameChange,
+      tabooSetId,
+    );
+    this.setState({
+      xpAdjustment,
+      hasPendingEdits: pendingEdits,
+    });
+  };
+
   _updateDeckDetails = (name: string, xpAdjustment: number) => {
     const {
       slots,
@@ -1414,6 +1436,8 @@ class DeckDetailView extends React.Component<Props, State> {
       slots: parsedDeck.slots,
       xpAdjustment: xpAdjustment,
       updateSlots: this._updateSlots,
+      updateIgnoreDeckLimitSlots: this._updateIgnoreDeckLimitSlots,
+      updateXpAdjustment: this._updateXpAdjustment,
     };
 
     const options = getDeckOptions({ title: card.name }, parsedDeck.investigator);

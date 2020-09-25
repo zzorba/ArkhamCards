@@ -200,9 +200,20 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
 
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';
+export const SHREWD_ANALYSIS_CODE = '04106';
+export const PARALLEL_SKIDS_CODE = '90008';
 export const BODY_OF_A_YITHIAN = '04244';
 export const RANDOM_BASIC_WEAKNESS = '01000';
 export const VERSATILE_CODE = '06167';
 export const ON_YOUR_OWN_CODE = '53010';
 export const DEJA_VU_CODE = '60531';
 export const ACE_OF_RODS_CODE = '05040';
+
+export const UNIDENTIFIED_UNTRANSLATED = new Set([
+  '02021', // Strange Solution
+  '03025', // Archaic Glyphs
+  '04022', // Ancient Stones
+  '06112', // Dream Diary
+  '07022', // Cryptic Grimore
+  '60210', // Forbidden Tome
+]);

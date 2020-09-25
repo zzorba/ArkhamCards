@@ -15,8 +15,14 @@ interface Props {
   card: Card;
   code: string;
   count: number;
+  ignoreCount: number;
   onIncrement: (code: string) => void;
   onDecrement: (code: string) => void;
+
+  onIgnore?: {
+    onIncrement: (code: string) => void;
+    onDecrement: (code: string) => void;
+  };
 }
 
 export default class CardUpgradeOption extends React.Component<Props> {
@@ -39,10 +45,26 @@ export default class CardUpgradeOption extends React.Component<Props> {
     onDecrement(code);
   };
 
+  _incIgnore = () => {
+    const { onIgnore, code } = this.props;
+    if (onIgnore) {
+      onIgnore.onIncrement(code);
+    }
+  };
+
+  _decIgnore = () => {
+    const { onIgnore, code } = this.props;
+    if (onIgnore) {
+      onIgnore.onDecrement(code);
+    }
+  };
+
   render() {
     const {
       count,
       card,
+      onIgnore,
+      ignoreCount,
     } = this.props;
     const { typography } = this.context;
     const level = card.xp || 0;
@@ -66,6 +88,26 @@ export default class CardUpgradeOption extends React.Component<Props> {
             color="dark"
           />
         </View>
+        { !!onIgnore && (
+          <View style={[styles.buttonsRow, space.paddingSideS]}>
+            <View style={styles.buttonLabel}>
+              <Text style={typography.dialogLabel}>
+                { t`Keep level ${level} after upgrade\nWon't count towards deck size` }
+              </Text>
+            </View>
+            <Text style={[typography.dialogLabel, styles.countText]}>
+              { ignoreCount }
+            </Text>
+            <PlusMinusButtons
+              count={ignoreCount}
+              max={count}
+              onIncrement={this._incIgnore}
+              onDecrement={this._decIgnore}
+              size={36}
+              color="dark"
+            />
+          </View>
+        ) }
       </View>
     );
   }

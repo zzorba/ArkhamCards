@@ -4,14 +4,14 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.2.0)
   - AppAuth/Core (1.2.0)
   - AppAuth/ExternalUserAgent (1.2.0)
-  - appcenter-analytics (3.1.1):
+  - appcenter-analytics (3.1.2):
     - AppCenter/Analytics
     - AppCenterReactNativeShared
     - React
-  - appcenter-core (3.1.1):
+  - appcenter-core (3.1.2):
     - AppCenterReactNativeShared
     - React
-  - appcenter-crashes (3.1.1):
+  - appcenter-crashes (3.1.2):
     - AppCenter/Crashes
     - AppCenterReactNativeShared
     - React
@@ -315,8 +315,8 @@ PODS:
     - React
   - RNColorMatrixImageFilters (5.2.5):
     - React
-  - RNDeviceInfo (5.6.4):
-    - React
+  - RNDeviceInfo (6.0.4):
+    - React-Core
   - RNFastImage (8.3.2):
     - React
     - SDWebImage (~> 5.8)
@@ -325,7 +325,7 @@ PODS:
     - React
   - RNGestureHandler (1.8.0):
     - React
-  - RNKeychain (6.1.1):
+  - RNKeychain (6.2.0):
     - React
   - RNLocalize (1.4.1):
     - React
@@ -523,9 +523,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   AppCenter: aba7de06e4c2184f90dc84f7866bd07f82427d69
-  appcenter-analytics: bce201b504c8138d235e6f42de1f36d30d2cd7f5
-  appcenter-core: 086ab16077baef60368c6a119af6e9e127406286
-  appcenter-crashes: 10790bf670f79150f1654d79f76c10a8b4936688
+  appcenter-analytics: 86931681ba39a34856727e415d39e7d4693ad7fe
+  appcenter-core: 1cca3f4d1f01e820710dc82e14ad2b4806a4f907
+  appcenter-crashes: 5da5dca952c3d1a3eea2d596748d94ec0412fbd1
   AppCenterReactNativeShared: b9fa50d999e830e03f086f487b1aa0f9772088c1
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
@@ -568,11 +568,11 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNColorMatrixImageFilters: b63046039affa237c9e8e10a79052fbc7fb9d963
-  RNDeviceInfo: a576aac2f2927eb7e0058a27dad811c8e7cd1474
+  RNDeviceInfo: 5eb11f4aef9395cca403c0c92dff458252fc0b2c
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
-  RNKeychain: db956c02a018f7dd3a0ea8a6cf3087bc1894bf2b
+  RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
   RNReanimated: 7de2dca51deacff78bb880f63c1389a24311b376
   RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491

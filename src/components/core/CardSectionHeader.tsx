@@ -34,7 +34,7 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
   if (section.subTitle || section.title) {
     return fontScale * 20 + 8 * 2;
   }
-  return fontScale * 22 + (section.superTitle ? s : xs) * 2;
+  return fontScale * 20 + s * 2;
 }
 
 export default class CardSectionHeader extends React.Component<Props> {
@@ -161,13 +161,16 @@ export default class CardSectionHeader extends React.Component<Props> {
 const styles = StyleSheet.create({
   superHeaderText: {
     color: '#FFFFFF',
-    fontWeight: '500',
+    textAlignVertical: 'center',
   },
   placeholder: {
     height: m,
   },
   superHeaderPadding: {
     padding: s,
+    paddingTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   superHeaderRow: {
     borderBottomWidth: 1,
