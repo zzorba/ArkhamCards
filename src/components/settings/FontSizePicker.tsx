@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { useColorScheme } from 'react-native-appearance';
 import { findIndex } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { setFontSize } from './actions';
-import { getAppFontScale, getThemeOverride } from '@reducers';
+import { getAppFontScale } from '@reducers';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import StyleContext from '@styles/StyleContext';
 import COLORS from '@styles/colors';

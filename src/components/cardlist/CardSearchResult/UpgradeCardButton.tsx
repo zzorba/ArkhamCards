@@ -19,13 +19,13 @@ export default function UpgradeButton({ onPress }: Props) {
         backgroundColor: colors.M,
       },
     ]} onPress={onPress} rippleColor={colors.L10} rippleSize={100}>
-       <MaterialCommunityIcons
-          size={18 * fontScale}
-          color="#FFF"
-          name="arrow-up-bold"
-        />
+      <MaterialCommunityIcons
+        size={18 * fontScale}
+        color="#FFF"
+        name="arrow-up-bold"
+      />
     </Ripple>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

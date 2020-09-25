@@ -693,9 +693,9 @@ class CardResultList extends React.Component<Props, State> {
     return (
       <>
         { searchBarPadding && <View style={styles.searchBarPadding} /> }
-        { !!renderHeader &&  renderHeader() }
+        { !!renderHeader && renderHeader() }
       </>
-    )
+    );
   };
 
   _renderFooter = (liveState: LiveState, refreshing?: boolean) => {
@@ -800,7 +800,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       show_spoilers,
       handleScroll,
-      renderHeader,
       filterCard,
       noSearch,
       extraData,

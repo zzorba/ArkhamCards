@@ -140,11 +140,10 @@ interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
   color?: string;
-  fontAdjustment?: number;
 }
 
 export default function CardFlavorTextComponent(
-  { text, onLinkPress, color, fontAdjustment }: Props
+  { text, onLinkPress, color }: Props
 ) {
   const context = useContext(StyleContext);
   // Text that has hyperlinks uses a different style for the icons.

@@ -207,11 +207,10 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
 
 interface Props {
   text: string;
-  fontAdjustment?: number;
   onLinkPress?: (url: string) => void;
 }
 
-export default function CardText({ text, onLinkPress, fontAdjustment }: Props) {
+export default function CardText({ text, onLinkPress }: Props) {
   const context = useContext(StyleContext);
   const cleanText = text
     .replace(/&rarr;/g, '→')

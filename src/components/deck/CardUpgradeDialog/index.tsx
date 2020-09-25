@@ -16,7 +16,7 @@ import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
-import { m, s, xs } from '@styles/space';
+import space, { m, s, xs } from '@styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
 import { parseDeck } from '@lib/parseDeck';
 import {
@@ -24,7 +24,6 @@ import {
   AppState,
 } from '@reducers';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import space from '@styles/space';
 import { PARALLEL_SKIDS_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -98,7 +97,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
 
   _onIncrementIgnore = (code: string) => {
     const {
-      cards,
       updateIgnoreDeckLimitSlots,
     } = this.props;
     const {
@@ -122,7 +120,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
 
   _onDecrementIgnore = (code: string) => {
     const {
-      cards,
       updateIgnoreDeckLimitSlots,
     } = this.props;
     const {
@@ -335,7 +332,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
   _doShrewdAnalysis = () => {
     const { slots, ignoreDeckLimitSlots, xpAdjustment } = this.state;
     const namedCards = this.namedCards();
-    const [inCollection, nonCollection] = partition(
+    const [inCollection] = partition(
       namedCards,
       card => this.inCollection(card) || slots[card.code] > 0);
     const [baseCards, eligibleCards] = partition(inCollection, card => this.shrewdAnalysisRule(card));
@@ -344,7 +341,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       const firstCard = shuffle(eligibleCards)[0];
       const secondCard = shuffle(eligibleCards)[0];
       const xpCost = (firstCard.xp || 0) + (firstCard.extra_xp || 0) - ((baseCard.xp || 0) + (baseCard.extra_xp || 0));
-
       const {
         updateSlots,
         updateXpAdjustment,
@@ -376,7 +372,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
   _askShrewdAnalysis = () => {
     const { slots } = this.state;
     const namedCards = this.namedCards();
-    const [inCollection, nonCollection] = partition(
+    const [inCollection] = partition(
       namedCards,
       card => this.inCollection(card) || slots[card.code] > 0);
     const [baseCards, eligibleCards] = partition(inCollection, card => this.shrewdAnalysisRule(card));
@@ -384,20 +380,22 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       const baseCard = baseCards[0];
       const sampleCard = eligibleCards[0];
       const xpCost = (sampleCard.xp || 0) + (sampleCard.extra_xp || 0) - ((baseCard.xp || 0) + (baseCard.extra_xp || 0));
-      const upgradeCards = map(eligibleCards, eligibleCards => eligibleCards.subname || eligibleCards.name).join('\n');s
+      const upgradeCards = map(eligibleCards, eligibleCards => eligibleCards.subname || eligibleCards.name).join('\n');
       Alert.alert(
         t`Shrewd Analysis Rule`,
-        ngettext(
-          msgid`This upgrade will cost ${xpCost} experience.`,
-          `This upgrade will cost ${xpCost} experience.`,
-          xpCost
-        ) + '\n\n' +
-        ngettext(
-          msgid`Two random cards will be chosen among the following choice:\n\n${upgradeCards}`,
-          `Two random cards will be chosen among the following choices:\n\n${upgradeCards}`,
-          upgradeCards.length
-        ) + '\n\n' +
-        t`You can edit your collection under Settings to adjust the eligible choices.`,
+        [
+          ngettext(
+            msgid`This upgrade will cost ${xpCost} experience.`,
+            `This upgrade will cost ${xpCost} experience.`,
+            xpCost
+          ),
+          ngettext(
+            msgid`Two random cards will be chosen among the following choice:\n\n${upgradeCards}`,
+            `Two random cards will be chosen among the following choices:\n\n${upgradeCards}`,
+            upgradeCards.length
+          ),
+          t`You can edit your collection under Settings to adjust the eligible choices.`,
+        ].join('\n\n'),
         [
           {
             text: t`Upgrade`,
@@ -406,7 +404,7 @@ class CardUpgradeDialog extends React.Component<Props, State> {
           {
             text: t`Cancel`,
             style: 'cancel',
-          }
+          },
         ]
       );
     }

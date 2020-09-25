@@ -1,5 +1,5 @@
 import React from 'react';
-import { filter, isUndefined, map } from 'lodash';
+import { filter, map } from 'lodash';
 import {
   FlatList,
   Platform,
@@ -115,8 +115,6 @@ class DeckList extends React.Component<Props> {
         onScroll={onScroll}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
-        //refreshing={refreshing}
-        //onRefresh={onRefresh}
         style={[styles.container, backgroundStyle]}
         data={items}
         renderItem={this._renderItem}

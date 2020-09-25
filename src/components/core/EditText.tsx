@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Alert, Platform } from 'react-native';
 // @ts-ignore TS7016
 import DialogAndroid from 'react-native-dialogs';
@@ -58,7 +58,10 @@ export default function EditText({
   onValueChange,
   settingsStyle,
 }: Props) {
-  const showDialog = () => openDialog({ title, dialogDescription, value, onValueChange });
+  const showDialog = useCallback(
+    () => openDialog({ title, dialogDescription, value, onValueChange }),
+    [title, dialogDescription, value, onValueChange]
+  );
   return (
     <PickerStyleButton
       id="edit"

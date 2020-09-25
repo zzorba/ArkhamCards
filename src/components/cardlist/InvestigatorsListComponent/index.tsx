@@ -357,10 +357,10 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
 
   _renderHeader = () => {
     if (Platform.OS === 'android') {
-      return <View style={styles.searchBarPadding} />
+      return <View style={styles.searchBarPadding} />;
     }
     return null;
-  }
+  };
 
   render() {
     const { searchOptions } = this.props;

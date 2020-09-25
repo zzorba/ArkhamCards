@@ -371,7 +371,7 @@ export const saveClonedDeck: ActionCreator<
         ignoreDeckLimitSlots: cloneDeck.ignoreDeckLimitSlots,
         tabooSetId: cloneDeck.taboo_id,
         meta: cloneDeck.meta,
-        problem: cloneDeck.problem
+        problem: cloneDeck.problem,
       })).then(deck => {
         setTimeout(() => {
           dispatch(saveDeckChanges(

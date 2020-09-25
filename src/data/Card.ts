@@ -289,7 +289,7 @@ export default class Card {
   @JoinColumn({ name: 'linked_card_id' })
   public linked_card?: Card;
 
-  @Column('boolean', { nullable: true, select: false  })
+  @Column('boolean', { nullable: true, select: false })
   public back_linked?: boolean;
 
   // Derived data.
@@ -318,17 +318,17 @@ export default class Card {
   @Column('boolean', { nullable: true })
   public bonded_from?: boolean;
 
-  @Column('boolean', { nullable: true, select: false  })
+  @Column('boolean', { nullable: true, select: false })
   public seal?: boolean;
-  @Column('boolean', { nullable: true, select: false  })
+  @Column('boolean', { nullable: true, select: false })
   public heals_horror?: boolean;
-  @Column('integer', { nullable: true, select: false  })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
-  @Column('integer', { nullable: true, select: false  })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction?: number;
-  @Column('integer', { nullable: true, select: false  })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction_pack?: number;
-  @Column('integer', { nullable: true, select: false  })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
 
   public cardName(): string {

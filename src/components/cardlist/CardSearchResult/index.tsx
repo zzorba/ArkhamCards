@@ -7,13 +7,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
-import Button from '@components/core/Button';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
@@ -321,7 +318,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       hasSecondCore,
       showZeroCount,
     } = this.props;
-    const { fontScale, typography } = this.context;
+    const { typography } = this.context;
     if (onDeckCountChange) {
       const deck_limit: number = Math.min(
         card.pack_code === 'core' ?
@@ -545,9 +542,6 @@ const styles = StyleSheet.create({
   },
   extraXp: {
     marginRight: xs,
-  },
-  upgradeButton: {
-    marginRight: s,
   },
   investigatorFactionIcon: {
     marginBottom: 4,
