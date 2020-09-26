@@ -296,7 +296,7 @@ export interface NewDeckParams {
   ignoreDeckLimitSlots?: Slots;
   tabooSetId?: number;
   meta?: DeckMeta;
-  problem?: string;
+  problem?: DeckProblemType;
 }
 export const saveNewDeck: ActionCreator<
   ThunkAction<Promise<Deck>, AppState, unknown, Action>
@@ -329,7 +329,7 @@ export const saveNewDeck: ActionCreator<
           params.deckName,
           params.slots,
           params.ignoreDeckLimitSlots || {},
-          params.problem || '',
+          params.problem,
           params.tabooSetId,
           params.meta
         );

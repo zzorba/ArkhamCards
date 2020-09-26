@@ -11,7 +11,7 @@ export function newLocalDeck(
   slots: Slots,
   tabooSetId?: number,
   meta?: DeckMeta,
-  problem?: string,
+  problem?: DeckProblemType,
 ): Deck {
   const timestamp = (new Date()).toISOString();
   return {
