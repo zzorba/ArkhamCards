@@ -31,10 +31,10 @@ import { Deck, Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/Card';
 import { getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -68,6 +68,9 @@ interface State {
 }
 
 class NewDeckOptionsDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onOkayPress!: () => void;
 
   constructor(props: Props) {
@@ -97,9 +100,9 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
     });
   }
 
-  _onDeckNameChange = (value: string) => {
+  _onDeckNameChange = (value?: string) => {
     this.setState({
-      deckName: value,
+      deckName: value || '',
     });
   };
 
@@ -203,6 +206,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         investigatorCode: investigator.code,
         slots: slots,
         tabooSetId,
+        problem: (starterDeck && starterDecks[investigator.code]) ? undefined : 'too_few_cards',
       }).then(
         this._showNewDeck,
         () => {
@@ -293,8 +297,8 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       refreshNetworkStatus,
       networkType,
       isConnected,
-      fontScale,
     } = this.props;
+    const { colors, typography } = this.context;
     const {
       saving,
       deckName,
@@ -307,7 +311,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       return (
         <ActivityIndicator
           style={styles.spinner}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />
@@ -326,14 +330,14 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           onValueChange={this._onDeckNameChange}
           value={deckName}
           placeholder={this.defaultDeckName()}
+          settingsStyle
         />
         <TabooSetPicker
-          color={COLORS.faction[investigator.factionCode()].background}
+          color={colors.faction[investigator.factionCode()].background}
           tabooSetId={tabooSetId}
           setTabooSet={this._setTabooSetId}
         />
         <CardSectionHeader
-          fontScale={fontScale}
           investigator={investigator}
           section={{ superTitle: t`Required Cards` }}
         />
@@ -350,7 +354,6 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
           );
         }) }
         <CardSectionHeader
-          fontScale={fontScale}
           investigator={investigator}
           section={{ superTitle: t`Deck Type` }}
         />
@@ -398,13 +401,14 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       saving,
       optionSelected,
     } = this.state;
+    const { backgroundStyle } = this.context;
     const investigator = this.investigator();
     if (!investigator) {
       return null;
     }
     const okDisabled = saving || !find(optionSelected, selected => selected);
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         { this.renderFormContent(investigator) }
         { !saving && (
           <>
@@ -454,8 +458,5 @@ export default withPlayerCards<NavigationProps & NewDeckOptionsProps>(
 const styles = StyleSheet.create({
   spinner: {
     height: 80,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

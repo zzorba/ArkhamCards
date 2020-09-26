@@ -10,7 +10,6 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import UpgradeDeckRow from './UpgradeDeckRow';
 import { Deck, Slots } from '@actions/types';
@@ -23,9 +22,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { AppState } from '@reducers';
-import typography from '@styles/typography';
 import { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
 
 interface ReduxActionProps {
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
@@ -34,13 +31,12 @@ interface ReduxActionProps {
 
 interface OwnProps {
   componentId: string;
-  fontScale: number;
   id: string;
   latestDecks: LatestDecks;
   campaignState: CampaignStateHelper;
 }
 
-type Props = OwnProps & ReduxActionProps & StylesProps;
+type Props = OwnProps & ReduxActionProps;
 
 interface State {
   unsavedEdits: {
@@ -154,15 +150,16 @@ class UpgradeDecksInput extends React.Component<Props, State> {
       id,
       saveDeckChanges,
       saveDeckUpgrade,
-      fontScale,
       latestDecks,
       campaignState,
-      gameFont,
     } = this.props;
+    const {
+      style: { gameFont, borderStyle, typography },
+    } = this.context;
     const hasDecision = scenarioState.decision(id) !== undefined;
     return (
       <View>
-        <View style={styles.header}>
+        <View style={[styles.header, borderStyle]}>
           <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.right]}>
             { t`Update decks with scenario results` }
           </Text>
@@ -174,7 +171,6 @@ class UpgradeDecksInput extends React.Component<Props, State> {
                 key={investigator.code}
                 investigator={investigator}
                 description={investigator.traumaString(campaignLog.traumaAndCardData(investigator.code))}
-                fontScale={fontScale}
                 eliminated
               />
             );
@@ -183,7 +179,6 @@ class UpgradeDecksInput extends React.Component<Props, State> {
             <UpgradeDeckRow
               key={investigator.code}
               id={id}
-              fontScale={fontScale}
               componentId={componentId}
               saveDeckChanges={saveDeckChanges}
               saveDeckUpgrade={saveDeckUpgrade}
@@ -236,7 +231,7 @@ export default connect<{}, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
 )(
-  withStyles(UpgradeDecksInput)
+  UpgradeDecksInput
 );
 
 const styles = StyleSheet.create({
@@ -245,6 +240,5 @@ const styles = StyleSheet.create({
     paddingBottom: xs,
     paddingTop: s + m,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

@@ -7,11 +7,10 @@ import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import Card from '@data/Card';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   investigator: Card;
-  fontScale: number;
   saved: boolean;
   saveXp: (investigator: Card, xp: number) => void;
 }
@@ -21,6 +20,9 @@ interface State {
 }
 
 export default class NonDeckDetailsButton extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     xp: 0,
   };
@@ -44,14 +46,14 @@ export default class NonDeckDetailsButton extends React.Component<Props, State> 
   };
 
   render() {
-    const { investigator, fontScale, saved } = this.props;
+    const { investigator, saved } = this.props;
     const { xp } = this.state;
+    const { typography } = this.context;
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <View>
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
         <BasicListRow>

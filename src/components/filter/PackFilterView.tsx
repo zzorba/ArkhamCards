@@ -12,7 +12,7 @@ import PackListComponent from '@components/core/PackListComponent';
 import { getAllPacks, AppState } from '@reducers';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -24,12 +24,15 @@ interface ReduxProps {
 
 type Props = OwnProps & ReduxProps & FilterProps;
 class PackFilterView extends React.Component<Props> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
         title: {
           text: t`Select Packs`,
@@ -82,8 +85,8 @@ class PackFilterView extends React.Component<Props> {
       filters: {
         packs,
       },
-      fontScale,
     } = this.props;
+    const { typography } = this.context;
     if (!allPacks.length) {
       return (
         <View>
@@ -101,7 +104,6 @@ class PackFilterView extends React.Component<Props> {
     return (
       <PackListComponent
         coreSetName={t`Core Set`}
-        fontScale={fontScale}
         componentId={componentId}
         packs={allPacks}
         checkState={selected}

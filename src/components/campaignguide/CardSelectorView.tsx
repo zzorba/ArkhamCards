@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, ActivityIndicator } from 'react-native';
+import { ScrollView, ActivityIndicator, Platform, View, StyleSheet } from 'react-native';
 import { filter, forEach, keys, map, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
@@ -16,7 +16,8 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import Card from '@data/Card';
 import { combineQueries, where } from '@data/query';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -42,6 +43,9 @@ interface State {
 }
 
 class CardSelectorView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -72,13 +76,14 @@ class CardSelectorView extends React.Component<Props, State> {
   };
 
   _render = (cards: Card[], loading: boolean) => {
-    const { fontScale, uniqueName } = this.props;
+    const { uniqueName } = this.props;
     const { selection, searchTerm } = this.state;
+    const { colors } = this.context;
     if (loading) {
       return (
         <ActivityIndicator
           style={space.paddingM}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />
@@ -97,7 +102,6 @@ class CardSelectorView extends React.Component<Props, State> {
       card => (
         <CardToggleRow
           key={card.code}
-          fontScale={fontScale}
           card={card}
           onChange={this._onChange}
           count={selection[card.code] ? 1 : 0}
@@ -130,7 +134,7 @@ class CardSelectorView extends React.Component<Props, State> {
   }
 
   renderStoryCards(searchTerm: string) {
-    const { fontScale, query } = this.props;
+    const { query } = this.props;
     const { storyToggle } = this.state;
     if (!storyToggle) {
       return (
@@ -143,7 +147,6 @@ class CardSelectorView extends React.Component<Props, State> {
     return (
       <>
         <CardSectionHeader
-          fontScale={fontScale}
           section={{ title: t`Story assets` }}
         />
         <QueryProvider<QueryProps, Brackets>
@@ -177,7 +180,12 @@ class CardSelectorView extends React.Component<Props, State> {
         prompt={t`Search`}
       >
         { onScroll => (
-          <ScrollView onScroll={onScroll}>
+          <ScrollView
+            onScroll={onScroll}
+            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          >
+            { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
             <QueryProvider<QueryProps, Brackets>
               query={query}
               searchTerm={searchTerm}
@@ -198,3 +206,9 @@ class CardSelectorView extends React.Component<Props, State> {
 }
 
 export default withDimensions(CardSelectorView);
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

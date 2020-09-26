@@ -8,13 +8,12 @@ import {
 
 import { t } from 'ttag';
 import { WeaknessSet } from '@actions/types';
-import typography from '@styles/typography';
 import Card from '@data/Card';
 import NavButton from '@components/core/NavButton';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
-  fontScale: number;
   weaknessSet: WeaknessSet;
   showDrawDialog: () => void;
 }
@@ -22,6 +21,9 @@ interface OwnProps {
 type Props = OwnProps & PlayerCardProps;
 
 class WeaknessSetSection extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static computeCount(set: WeaknessSet, allCards: Card[]) {
     if (!set) {
       return {
@@ -41,15 +43,15 @@ class WeaknessSetSection extends React.Component<Props> {
     const {
       weaknessSet,
       weaknessCards,
-      fontScale,
       showDrawDialog,
     } = this.props;
+    const { typography } = this.context;
     const counts = WeaknessSetSection.computeCount(weaknessSet, weaknessCards);
     if (counts.total === 0) {
       return null;
     }
     return (
-      <NavButton fontScale={fontScale} onPress={showDrawDialog}>
+      <NavButton onPress={showDrawDialog}>
         <View style={styles.padding}>
           <Text style={typography.text}>
             { t`Basic Weakness Set` }

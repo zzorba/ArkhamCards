@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { SettingsSwitch as SwitchRow } from '@lib/react-native-settings-components';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
 import { s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -14,33 +12,36 @@ interface Props {
   onValueChange: (value: boolean) => void;
   disabled?: boolean;
   settingsStyle?: boolean;
+  noDisableText?: boolean;
 }
 
-function SettingsSwitch({ title, description, onValueChange, value, disabled, settingsStyle, gameFont }: Props & StylesProps) {
+export default function SettingsSwitch({ title, description, noDisableText, onValueChange, value, disabled, settingsStyle }: Props) {
+  const { gameFont, colors, typography } = useContext(StyleContext);
+  const titleStyle = settingsStyle ? typography.text : {
+    ...typography.mediumGameFont,
+    fontFamily: gameFont,
+  };
   return (
     <SwitchRow
       title={title}
-      titleStyle={settingsStyle ? undefined : {
-        ...typography.mediumGameFont,
-        fontFamily: gameFont,
+      titleStyle={titleStyle}
+      containerStyle={{
+        ...styles.switch,
+        borderColor: colors.divider,
       }}
-      containerStyle={styles.switch}
-      descriptionStyle={typography.label}
+      descriptionStyle={typography.small}
       description={description}
       onValueChange={onValueChange}
+      disabledOverlayStyle={noDisableText ? { backgroundColor: 'transparent' } : undefined}
       value={value}
       disabled={disabled}
     />
   );
 }
 
-export default withStyles(SettingsSwitch);
-
 const styles = StyleSheet.create({
   switch: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
     paddingTop: s,
     paddingBottom: s,
   },

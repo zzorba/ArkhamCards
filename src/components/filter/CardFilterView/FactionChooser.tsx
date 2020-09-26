@@ -1,13 +1,11 @@
 import React from 'react';
 import { flatMap, map } from 'lodash';
-import {
-  StyleSheet,
-} from 'react-native';
-import { ButtonGroup } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native';
 
+import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { FactionCodeType } from '@app_constants';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 function factionToIconName(faction: FactionCodeType) {
   if (faction === 'neutral') {
@@ -26,6 +24,9 @@ interface Props {
 }
 
 export default class FactionChooser extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _updateIndex = (indexes: number[]) => {
     const {
       factions,
@@ -40,7 +41,7 @@ export default class FactionChooser extends React.Component<Props> {
       factions,
       selection,
     } = this.props;
-
+    const { colors } = this.context;
     if (factions.length <= 1) {
       return null;
     }
@@ -52,41 +53,33 @@ export default class FactionChooser extends React.Component<Props> {
         selectedIndexes.push(idx);
       }
       return {
-        element: () => {
+        element: (selected: boolean) => {
           const iconName = factionToIconName(faction);
           return (
-            <ArkhamIcon
-              name={iconName}
-              size={iconName !== faction ? 28 : 32}
-              color={selected ? COLORS.faction[faction].text : '#bdbdbd'}
-            />
+            <View style={[styles.icon, (faction === 'mythos' || faction === 'neutral') ? { height: 28 } : {}]}>
+              <ArkhamIcon
+                name={iconName}
+                size={iconName !== faction ? 28 : 32}
+                color={selected ? colors.faction[faction].text : colors.L10}
+              />
+            </View>
           );
         },
       };
     });
     return (
-      <ButtonGroup
-        // @ts-ignore
+      <ArkhamButtonGroup
         onPress={this._updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}
-        buttonStyle={styles.button}
-        selectedButtonStyle={styles.selectedButton}
-        containerStyle={styles.container}
-        selectMultiple
       />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: 40,
-  },
-  button: {
-    backgroundColor: COLORS.toggleButton,
-  },
-  selectedButton: {
-    backgroundColor: COLORS.selectedToggleButton,
+  icon: {
+    width: 32,
+    height: 36,
   },
 });

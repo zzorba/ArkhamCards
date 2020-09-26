@@ -4,12 +4,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
 import AppIcon from '@icons/AppIcon';
 import ArkhamIcon from '@icons/ArkhamIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export function costIconSize(fontScale: number) {
   const scaleFactor = ((fontScale - 1) / 2 + 1);
@@ -18,12 +20,14 @@ export function costIconSize(fontScale: number) {
 
 interface Props {
   card: Card;
-  fontScale: number;
   inverted?: boolean;
   linked?: boolean;
 }
 
 export default class CardCostIcon extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   cardCost() {
     const {
       card,
@@ -66,38 +70,47 @@ export default class CardCostIcon extends React.PureComponent<Props> {
     return 'elder_sign';
   }
 
-  color() {
-    const {
-      card,
-    } = this.props;
-    if (card.faction2_code) {
-      return COLORS.faction.dual.background;
+  label() {
+    const { card } = this.props;
+    const level = card.xp || t`None`;
+    switch (card.type_code) {
+      case 'skill':
+        return t`Faction: ${card.faction_name}, Level: ${level}`;
+      case 'asset':
+      case 'event': {
+        const cost = this.cardCost();
+        return t`Faction: ${card.faction_name}, Cost: ${cost}, Level: ${level}`;
+      }
+      case 'investigator':
+        return t`Faction: ${card.faction_name}`;
+      default:
+        return t`Encounter set: ${card.encounter_name}`;
     }
-    return COLORS.faction[card.factionCode()].background;
   }
 
   render() {
     const {
       card,
-      fontScale,
       inverted,
     } = this.props;
-    const color = this.color();
-    const level = (card.xp === null || card.xp === undefined) ?
-      'none' : `${card.xp}`;
-
+    const { fontScale, colors } = this.context;
+    const color = card.faction2_code ? colors.faction.dual.text : colors.faction[card.factionCode()].text;
+    const textColor = !inverted ? colors.background : 'white';
+    const level = (card.xp === null || card.xp === undefined) ? 'none' : `${card.xp}`;
     const scaleFactor = ((fontScale - 1) / 2 + 1);
     const ICON_SIZE = (isBig ? 46 : 32) * scaleFactor;
     const style = { width: costIconSize(fontScale), height: costIconSize(fontScale) };
     return (
-      <View style={[styles.level, style]}>
-        <View style={[styles.levelIcon, style]}>
-          <AppIcon
-            name={`${inverted ? '' : 'inverted_'}level_${level}`}
-            size={ICON_SIZE}
-            color={inverted ? color : COLORS.costTintIcon}
-          />
-        </View>
+      <View style={[styles.level, style]} accessibilityLabel={this.label()}>
+        { !inverted && (
+          <View style={[styles.levelIcon, style]}>
+            <AppIcon
+              name={`${inverted ? '' : 'inverted_'}level_${level}`}
+              size={ICON_SIZE}
+              color={inverted ? color : colors.background}
+            />
+          </View>
+        ) }
         <View style={[styles.levelIcon, style]}>
           <AppIcon
             name={`${inverted ? 'inverted_' : ''}level_${level}`}
@@ -107,17 +120,17 @@ export default class CardCostIcon extends React.PureComponent<Props> {
         </View>
         <View style={[styles.levelIcon, style, styles.cost]}>
           { card.type_code === 'skill' ? (
-            <View>
+            <View style={[styles.factionIcon, card.factionCode() === 'neutral' ? { marginBottom: 0 } : {}]}>
               <ArkhamIcon
                 name={CardCostIcon.factionIcon(card)}
-                color="white"
-                size={ICON_SIZE / 2}
+                color={inverted ? 'white' : colors.background}
+                size={ICON_SIZE / 1.8}
               />
             </View>
           ) : (
             <Text style={[
               styles.costNumber,
-              { fontSize: (isBig ? 32 : 23) * scaleFactor },
+              { fontSize: (isBig ? 32 : 23) * scaleFactor, color: textColor },
             ]} allowFontScaling={false}>
               { this.cardCost() }
             </Text>
@@ -147,5 +160,8 @@ const styles = StyleSheet.create({
     paddingTop: 3,
     fontFamily: 'Teutonic',
     color: COLORS.white,
+  },
+  factionIcon: {
+    marginBottom: 4,
   },
 });

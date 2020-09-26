@@ -15,7 +15,6 @@ import Card, { CardsMap } from '@data/Card';
 
 export interface DeckListProps {
   componentId: string;
-  fontScale: number;
   campaignId: number;
   deckIds: number[];
   investigatorIds: string[];

@@ -160,5 +160,6 @@ module.exports = {
     'react-native/split-platform-components': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     'react/jsx-curly-spacing': 'off',
+    'react/display-name': 'off',
   }
 }

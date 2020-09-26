@@ -11,10 +11,12 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import ThemePicker from './ThemePicker';
+import FontSizePicker from './FontSizePicker';
 import LanguagePicker from './LanguagePicker';
-import CategoryHeader from './CategoryHeader';
 import SettingsTabooPicker from './SettingsTabooPicker';
 import SettingsSwitch from '@components/core/SettingsSwitch';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 import { clearDecks } from '@actions';
 import { fetchCards } from '@components/card/actions';
 import { setSingleCardView, setAlphabetizeEncounterSets } from './actions';
@@ -24,7 +26,7 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import { getAllDecks, AppState, getLangPreference, getLangChoice } from '@reducers';
 import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -46,7 +48,6 @@ interface ReduxActionProps {
   setSingleCardView: (value: boolean) => void;
   setAlphabetizeEncounterSets: (value: boolean) => void;
 }
-
 
 type Props = OwnProps & ReduxProps & ReduxActionProps;
 
@@ -138,69 +139,75 @@ class SettingsView extends React.Component<Props> {
   render() {
     const { cardsLoading, showCardsingleCardView, alphabetizeEncounterSets } = this.props;
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.list}>
-          <CategoryHeader title={t`Account`} />
-          <LoginButton settings />
-          <SettingsItem
-            navigation
-            onPress={this._backupPressed}
-            text={t`Backup Data`}
-          />
-          <CategoryHeader title={t`Card Settings`} />
-          <SettingsItem
-            navigation
-            onPress={this._myCollectionPressed}
-            text={t`Card Collection`}
-          />
-          <SettingsItem
-            navigation
-            onPress={this._editSpoilersPressed}
-            text={t`Spoiler Settings`}
-          />
-          <SettingsTabooPicker />
-          <CategoryHeader title={t`Card Data`} />
-          <SettingsItem
-            navigation
-            onPress={this._rules}
-            text={t`Rules`}
-          />
-          <SettingsItem
-            onPress={cardsLoading ? undefined : this._doSyncCards}
-            text={this.syncCardsText()}
-          />
-          <LanguagePicker />
-          <CategoryHeader title={t`Preferences`} />
-          <SettingsSwitch
-            title={t`Swipe between card results`}
-            value={!showCardsingleCardView}
-            onValueChange={this._swipeBetweenCardsChanged}
-            settingsStyle
-          />
-          <SettingsSwitch
-            title={t`Alphabetize guide encounter sets`}
-            value={alphabetizeEncounterSets}
-            onValueChange={this._alphabetizeEncounterSetsChanged}
-            settingsStyle
-          />
-          <SettingsItem
-            navigation
-            onPress={this._diagnosticsPressed}
-            text={t`Diagnostics`}
-          />
-          <CategoryHeader title={t`About Arkham Cards`} />
-          <SettingsItem
-            navigation
-            onPress={this._aboutPressed}
-            text={t`About Arkham Cards`}
-          />
-          <SettingsItem
-            navigation
-            onPress={this._contactPressed}
-            text={t`Contact us`}
-          />
-        </ScrollView>
-      </SafeAreaView>
+      <StyleContext.Consumer>
+        { ({ backgroundStyle, colors }) => (
+          <SafeAreaView style={[styles.container, backgroundStyle]}>
+            <ScrollView style={[styles.list, { backgroundColor: colors.L20 }]}>
+              <CardSectionHeader section={{ title: t`Account` }} />
+              <LoginButton settings />
+              <SettingsItem
+                navigation
+                onPress={this._backupPressed}
+                text={t`Backup Data`}
+              />
+              <CardSectionHeader section={{ title: t`Card Settings` }} />
+              <SettingsItem
+                navigation
+                onPress={this._myCollectionPressed}
+                text={t`Card Collection`}
+              />
+              <SettingsItem
+                navigation
+                onPress={this._editSpoilersPressed}
+                text={t`Spoiler Settings`}
+              />
+              <SettingsTabooPicker />
+              <CardSectionHeader section={{ title: t`Card Data` }} />
+              <SettingsItem
+                navigation
+                onPress={this._rules}
+                text={t`Rules`}
+              />
+              <SettingsItem
+                onPress={cardsLoading ? undefined : this._doSyncCards}
+                text={this.syncCardsText()}
+              />
+              <LanguagePicker />
+              <CardSectionHeader section={{ title: t`Preferences` }} />
+              <ThemePicker />
+              <FontSizePicker />
+              <SettingsSwitch
+                title={t`Swipe between card results`}
+                value={!showCardsingleCardView}
+                onValueChange={this._swipeBetweenCardsChanged}
+                settingsStyle
+              />
+              <SettingsSwitch
+                title={t`Alphabetize guide encounter sets`}
+                value={alphabetizeEncounterSets}
+                onValueChange={this._alphabetizeEncounterSetsChanged}
+                settingsStyle
+              />
+              <SettingsItem
+                navigation
+                onPress={this._diagnosticsPressed}
+                text={t`Diagnostics`}
+              />
+              <CardSectionHeader section={{ title: t`About Arkham Cards` }} />
+              <SettingsItem
+                navigation
+                onPress={this._aboutPressed}
+                text={t`About Arkham Cards`}
+              />
+              <SettingsItem
+                navigation
+                onPress={this._contactPressed}
+                text={t`Contact us`}
+              />
+            </ScrollView>
+          </SafeAreaView>
+        ) }
+      </StyleContext.Consumer>
     );
   }
 }
@@ -234,10 +241,8 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   list: {
     flex: 1,
-    backgroundColor: COLORS.veryLightBackground,
   },
 });

@@ -3,14 +3,11 @@ import { map, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
-  View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
-import BasicSectionHeader from '@components/core/BasicSectionHeader';
 import {
   CUSTOM,
   ALL_CAMPAIGNS,
@@ -25,7 +22,9 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import { campaignName } from '../constants';
 import { NavigationProps } from '@components/nav/types';
 import { getPacksInCollection, AppState } from '@reducers';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface SelectCampagaignProps {
   campaignChanged: (packCode: CampaignCycleCode, text: string, hasGuide: boolean) => void;
@@ -43,7 +42,10 @@ type Props = NavigationProps &
   DimensionsProps;
 
 class SelectCampaignDialog extends React.Component<Props> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
@@ -85,12 +87,10 @@ class SelectCampaignDialog extends React.Component<Props> {
   }
 
   renderCampaign(packCode: CampaignCycleCode) {
-    const { fontScale } = this.props;
     const guideComingSoon = (packCode !== CUSTOM && !GUIDED_CAMPAIGNS.has(packCode));
     return (
       <CycleItem
         key={packCode}
-        fontScale={fontScale}
         packCode={packCode}
         onPress={this._onPress}
         text={campaignName(packCode) || t`Custom`}
@@ -103,6 +103,7 @@ class SelectCampaignDialog extends React.Component<Props> {
     const {
       in_collection,
     } = this.props;
+    const { backgroundStyle } = this.context;
     const partitionedCampaigns = partition(
       ALL_CAMPAIGNS,
       pack_code => (in_collection[pack_code] || (
@@ -112,23 +113,21 @@ class SelectCampaignDialog extends React.Component<Props> {
     const otherCampaigns = partitionedCampaigns[1];
 
     return (
-      <ScrollView style={styles.flex}>
+      <ScrollView style={[styles.flex, backgroundStyle]}>
         { myCampaigns.length > 0 && (
-          <BasicSectionHeader
-            title={t`My Campaigns`}
-          />
+          <CardSectionHeader section={{ title: t`My Campaigns` }} />
         ) }
         { map(myCampaigns, pack_code => this.renderCampaign(pack_code)) }
         { this.renderCampaign(CUSTOM) }
         { otherCampaigns.length > 0 && (
-          <BasicSectionHeader
-            title={t`Other Campaigns`}
-          />
+          <CardSectionHeader section={{ title: t`Other Campaigns` }} />
         ) }
         { map(otherCampaigns, pack_code => this.renderCampaign(pack_code)) }
-        <View style={styles.button}>
-          <BasicButton onPress={this._editCollection} title={t`Edit Collection`} />
-        </View>
+        <ArkhamButton
+          icon="edit"
+          onPress={this._editCollection}
+          title={t`Edit Collection`}
+        />
       </ScrollView>
     );
   }
@@ -147,10 +146,5 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.background,
-  },
-  button: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

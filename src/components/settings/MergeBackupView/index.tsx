@@ -4,8 +4,6 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { Navigation } from 'react-native-navigation';
@@ -22,9 +20,9 @@ import { AppState } from '@reducers';
 import { mergeCampaigns, CampaignMergeResult, mergeDecks, DeckMergeResult } from '@lib/cloudHelper';
 import { restoreComplexBackup } from '@components/campaign/actions';
 import COLORS from '@styles/colors';
-import space from '@styles/space';
-import typography from '@styles/typography';
 import { NavigationProps } from '@components/nav/types';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 
 export interface MergeBackupProps {
   backupData: BackupState;
@@ -57,17 +55,20 @@ interface State {
 }
 
 class MergeBackupView extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
           text: t`Select items to import`,
-          color: COLORS.darkText,
         },
         rightButtons: [{
           text: t`Import`,
           id: 'import',
-          color: COLORS.navButton,
+          color: COLORS.M,
+          accessibilityLabel: t`Import`,
         }],
       },
     };
@@ -87,8 +88,9 @@ class MergeBackupView extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Import`,
           id: 'import',
-          color: COLORS.navButton,
+          color: COLORS.M,
           enabled: this.canImport(),
+          accessibilityLabel: t`Import`,
         }],
       },
     });
@@ -230,15 +232,12 @@ class MergeBackupView extends React.Component<Props, State> {
 
   render() {
     const { campaignMerge, deckMerge, investigators } = this.props;
+    const { backgroundStyle, colors } = this.context;
     const { importCampaigns, importDecks } = this.state;
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.list}>
-          <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
-            <Text style={typography.bigLabel}>
-              { t`Campaigns` }
-            </Text>
-          </View>
+      <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
+        <ScrollView style={backgroundStyle}>
+          <CardSectionHeader section={{ title: t`Campaigns` }} />
           <CampaignMergeSection
             title={t`New:`}
             campaigns={campaignMerge.newCampaigns}
@@ -265,11 +264,7 @@ class MergeBackupView extends React.Component<Props, State> {
             values={importCampaigns}
             onValueChange={this._onCampaignChange}
           />
-          <View style={[styles.headerRow, space.paddingS, space.paddingLeftM]}>
-            <Text style={typography.bigLabel}>
-              { t`Decks` }
-            </Text>
-          </View>
+          <CardSectionHeader section={{ title: t`Decks` }} />
           <DeckMergeSection
             title={t`New:`}
             decks={deckMerge.newDecks}
@@ -337,18 +332,7 @@ export default withPlayerCards(
 );
 
 const styles = StyleSheet.create({
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: COLORS.lightBackground,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-  },
   container: {
     flex: 1,
-    backgroundColor: COLORS.veryLightBackground,
-  },
-  list: {
-    backgroundColor: COLORS.background,
   },
 });

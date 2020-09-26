@@ -11,7 +11,7 @@ import { t } from 'ttag';
 import Dialog from './Dialog';
 import PlusMinusButtons from './PlusMinusButtons';
 import space from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -29,6 +29,9 @@ interface State {
 }
 
 export default class CountEditDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -88,6 +91,7 @@ export default class CountEditDialog extends React.Component<Props, State> {
       title,
       viewRef,
     } = this.props;
+    const { typography } = this.context;
     const {
       originalCount,
       count,

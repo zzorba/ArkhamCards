@@ -9,7 +9,6 @@ import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/Card';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
-import COLORS from '@styles/colors';
 
 interface Props {
   id: string;
@@ -122,6 +121,9 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       defaultLabel,
       investigatorToValue,
     } = this.props;
+    const {
+      style: { borderStyle },
+    } = this.context;
     const choice = scenarioState.stringChoices(id);
     const investigators = this.investigators(scenarioInvestigators);
     const selectedIndex = this.getSelectedIndex(investigators, choice);
@@ -129,6 +131,7 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       <>
         <View style={[
           styles.wrapper,
+          borderStyle,
           id !== '$lead_investigator' ? styles.topBorder : {},
         ]}>
           <SinglePickerComponent
@@ -175,7 +178,6 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
 const styles = StyleSheet.create({
   wrapper: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   topBorder: {
     borderTopWidth: StyleSheet.hairlineWidth,

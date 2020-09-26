@@ -7,17 +7,20 @@ import {
   View,
 } from 'react-native';
 
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   text: string;
-  fontScale: number;
   onPress: (text: string) => void;
   selected: boolean;
   noCapitalize?: boolean;
 }
+
 export default class DialogOption extends React.Component<Props> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return ({
       overlay: {
         interceptTouchOutside: true,
@@ -36,12 +39,12 @@ export default class DialogOption extends React.Component<Props> {
   render() {
     const {
       text,
-      fontScale,
       selected,
       noCapitalize,
     } = this.props;
+    const { fontScale, borderStyle } = this.context;
     return (
-      <View style={[styles.item, { height: 50 * fontScale }]}>
+      <View style={[styles.item, borderStyle, { height: 50 * fontScale }]}>
         <TouchableOpacity onPress={this._onPress} testID={`Sort-${text}`}>
           <Text
             style={[styles.itemText, { fontSize: text.length > 30 ? 14 : 22 }]}
@@ -59,7 +62,6 @@ const styles = StyleSheet.create({
   item: {
     width: '100%',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   itemText: {
     color: 'rgb(0,122,255)',

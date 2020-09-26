@@ -6,7 +6,7 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import TabooSet from '@data/TabooSet';
 import DatabaseContext, { PlayerCards, DatabaseContextType } from '@data/DatabaseContext';
 import { AppState, getTabooSet } from '@reducers';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 export interface PlayerCardProps extends PlayerCards {
   tabooSetId?: number;
@@ -23,6 +23,7 @@ interface ReduxProps {
 
 export default function withPlayerCards<Props>(
   WrappedComponent: React.ComponentType<Props & PlayerCardProps>,
+  PlaceholderComponent?: React.ComponentType<Props>
 ): React.ComponentType<Props & TabooSetOverride> {
   const mapStateToProps = (
     state: AppState,
@@ -46,15 +47,22 @@ export default function withPlayerCards<Props>(
       } = this.context;
       const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
       if (!playerCards) {
+        if (PlaceholderComponent) {
+          return <PlaceholderComponent {...this.props} />;
+        }
         return (
-          <View style={styles.activityIndicatorContainer}>
-            <ActivityIndicator
-              style={styles.spinner}
-              color={COLORS.lightText}
-              size="small"
-              animating
-            />
-          </View>
+          <StyleContext.Consumer>
+            { ({ colors, backgroundStyle }) => (
+              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+                <ActivityIndicator
+                  style={styles.spinner}
+                  color={colors.lightText}
+                  size="small"
+                  animating
+                />
+              </View>
+            ) }
+          </StyleContext.Consumer>
         );
       }
       return (
@@ -78,7 +86,6 @@ export default function withPlayerCards<Props>(
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

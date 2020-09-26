@@ -214,6 +214,8 @@ export interface InvestigatorCampaignNoteCount {
 export const NEW_CHAOS_BAG_RESULTS = {
   drawnTokens: [],
   sealedTokens: [],
+  blessTokens: 0,
+  curseTokens: 0,
   totalDrawnTokens: 0,
 };
 
@@ -223,6 +225,8 @@ export interface ChaosBagResults {
     id: string;
     icon: ChaosTokenType;
   }[];
+  blessTokens?: number;
+  curseTokens?: number;
   totalDrawnTokens: number;
 }
 
@@ -270,6 +274,7 @@ export const TCU = 'tcu';
 export const TDE = 'tde';
 export const TDEA = 'tdea';
 export const TDEB = 'tdeb';
+export const TIC = 'tic';
 
 export type CampaignCycleCode =
   typeof CUSTOM |
@@ -284,7 +289,8 @@ export type CampaignCycleCode =
   typeof TCU |
   typeof TDE |
   typeof TDEA |
-  typeof TDEB;
+  typeof TDEB |
+  typeof TIC;
 
 export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   CORE,
@@ -299,6 +305,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDE,
   TDEA,
   TDEB,
+  TIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([
@@ -314,6 +321,7 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDE,
   TDEA,
   TDEB,
+  // TIC,
 ]);
 
 export interface CustomCampaignLog {
@@ -364,6 +372,18 @@ export interface Campaign {
 export interface SingleCampaign extends Campaign {
   latestScenario?: ScenarioResult;
   finishedScenarios: string[];
+}
+
+export const SET_THEME = 'SET_THEME';
+export interface SetThemeAction {
+  type: typeof SET_THEME;
+  theme: 'dark' | 'light' | 'system';
+}
+
+export const SET_FONT_SCALE = 'SET_FONT_SCALE';
+export interface SetFontScaleAction {
+  type: typeof SET_FONT_SCALE;
+  fontScale: number;
 }
 
 
@@ -598,6 +618,15 @@ export interface UpdateChaosBagResultsAction {
   type: typeof UPDATE_CHAOS_BAG_RESULTS;
   id: number;
   chaosBagResults: ChaosBagResults;
+  now: Date;
+}
+
+export const ADJUST_BLESS_CURSE = 'ADJUST_BLESS_CURSE';
+export interface AdjustBlessCurseAction {
+  type: typeof ADJUST_BLESS_CURSE;
+  id: number;
+  bless: boolean;
+  direction: 'inc' | 'dec';
   now: Date;
 }
 
@@ -948,6 +977,7 @@ export type CampaignActions =
   UpdateChaosBagResultsAction |
   CampaignAddInvestigatorAction |
   CampaignRemoveInvestigatorAction |
+  AdjustBlessCurseAction |
   EnsureUuidAction;
 
 export type GuideActions =

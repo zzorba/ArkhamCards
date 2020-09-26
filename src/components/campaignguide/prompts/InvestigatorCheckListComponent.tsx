@@ -7,7 +7,6 @@ import CheckListComponent from './CheckListComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
 
 interface Props {
   id: string;
@@ -68,6 +67,9 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
       allowNewDecks,
       defaultState,
     } = this.props;
+    const {
+      style: { colors },
+    } = this.context;
     const investigators = filter(allInvestigators, this._filterInvestigator);
     return (
       <CheckListComponent
@@ -81,7 +83,7 @@ export default class InvestigatorCheckListComponent extends React.Component<Prop
             return {
               code: investigator.code,
               name: investigator.name,
-              color: COLORS.faction[investigator.factionCode()].background,
+              color: colors.faction[investigator.factionCode()].background,
             };
           })
         }

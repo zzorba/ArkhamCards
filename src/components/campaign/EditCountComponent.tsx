@@ -5,12 +5,11 @@ import {
   Text,
 } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-interface OwnProps {
+interface Props {
   countChanged: (index: number, count: number) => void;
   index: number;
   title: string;
@@ -22,9 +21,10 @@ interface State {
   count?: number;
 }
 
-type Props = OwnProps & StylesProps;
+export default class EditCountComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
-class EditCountComponent extends React.Component<Props, State> {
   _countChanged!: (index: number, count: number) => void;
 
   constructor(props: Props) {
@@ -56,8 +56,8 @@ class EditCountComponent extends React.Component<Props, State> {
   render() {
     const {
       title,
-      gameFont,
     } = this.props;
+    const { gameFont, typography } = this.context;
     const {
       count,
     } = this.state;
@@ -81,8 +81,6 @@ class EditCountComponent extends React.Component<Props, State> {
     );
   }
 }
-
-export default withStyles(EditCountComponent);
 
 const styles = StyleSheet.create({
   margin: {

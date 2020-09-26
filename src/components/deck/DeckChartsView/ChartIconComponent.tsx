@@ -2,7 +2,7 @@ import React from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   x: number;
@@ -13,6 +13,9 @@ interface Props {
 const SIZE = 32;
 
 export default class ChartIconComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   iconGlyphs: { [name: string]: number };
 
   constructor(props: Props) {
@@ -22,6 +25,7 @@ export default class ChartIconComponent extends React.Component<Props> {
 
   color() {
     const { text } = this.props;
+    const { colors } = this.context;
     switch (text) {
       case 'mystic':
       case 'rogue':
@@ -31,15 +35,15 @@ export default class ChartIconComponent extends React.Component<Props> {
       case 'neutral':
       case 'dual':
       case 'mythos':
-        return COLORS.faction[text].background;
+        return colors.faction[text].text;
       case 'willpower':
       case 'agility':
       case 'combat':
       case 'intellect':
       case 'wild':
-        return COLORS.skill[text].default;
+        return colors.skill[text].icon;
       default:
-        return '#444';
+        return colors.M;
     }
   }
 

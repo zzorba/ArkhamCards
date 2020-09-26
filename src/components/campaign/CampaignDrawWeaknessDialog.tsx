@@ -24,6 +24,7 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import { CampaignEditWeaknessProps } from './CampaignEditWeaknessDialog';
 import { xs } from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignDrawWeaknessProps {
   campaignId: number;
@@ -62,6 +63,9 @@ interface State {
 }
 
 class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener: EventSubscription;
   _showEditWeaknessDialog!: () => void;
   constructor(props: Props) {
@@ -85,8 +89,8 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
           rightButtons: [{
             icon: iconsMap.edit,
             id: 'edit',
-            color: COLORS.navButton,
-            testID: t`Edit Assigned Weaknesses`,
+            color: COLORS.M,
+            accessibilityLabel: t`Edit Assigned Weaknesses`,
           }],
         },
       });
@@ -267,13 +271,13 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
     const {
       decks,
       investigators,
-      fontScale,
     } = this.props;
     const {
       selectedDeckId,
       replaceRandomBasicWeakness,
       deckSlots,
     } = this.state;
+    const { borderStyle } = this.context;
     const deck = selectedDeckId && decks[selectedDeckId];
     const investigator = deck && investigators[deck.investigator_code];
     const investigatorName = investigator ? investigator.name : '';
@@ -284,14 +288,13 @@ class CampaignDrawWeaknessDialog extends React.Component<Props, State> {
       <View>
         { !!selectedDeckId && (
           <NavButton
-            fontScale={fontScale}
             text={message}
             onPress={this._onPressInvestigator}
           />
         ) }
         { hasRandomBasicWeakness && (
           <ToggleFilter
-            style={styles.toggleRow}
+            style={{ ...styles.toggleRow, ...borderStyle }}
             label={t`Replace Random Weakness`}
             setting="replaceRandomBasicWeakness"
             value={replaceRandomBasicWeakness}
@@ -417,6 +420,5 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
-    borderColor: COLORS.divider,
   },
 });

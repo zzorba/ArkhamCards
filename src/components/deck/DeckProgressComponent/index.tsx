@@ -8,7 +8,7 @@ import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import ChangesFromPreviousDeck from './ChangesFromPreviousDeck';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import CampaignSummaryComponent from '@components/campaign/CampaignSummaryComponent';
@@ -16,12 +16,11 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { fetchPublicDeck, fetchPrivateDeck } from '@components/deck/actions';
-import typography from '@styles/typography';
 import space, { l, m, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
-  fontScale: number;
   deck: Deck;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
@@ -50,6 +49,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxActionProps;
 
 class DeckProgressComponent extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   investigatorData() {
     const {
       campaign,
@@ -74,9 +76,9 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       showTraumaDialog,
       showDeckUpgrade,
       editable,
-      fontScale,
       hideCampaign,
     } = this.props;
+    const { typography } = this.context;
     if (!editable) {
       return null;
     }
@@ -85,7 +87,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
         <CardSectionHeader
           investigator={investigator}
           section={{ superTitle: t`Campaign` }}
-          fontScale={fontScale}
         />
         { !!campaign && !hideCampaign && (
           <View style={styles.campaign}>
@@ -100,13 +101,13 @@ class DeckProgressComponent extends React.PureComponent<Props> {
                 investigator={investigator}
                 investigatorData={this.investigatorData()}
                 showTraumaDialog={showTraumaDialog}
-                fontScale={fontScale}
               />
             ) }
           </View>
         ) }
         { !!showDeckUpgrade && (
-          <BasicButton
+          <ArkhamButton
+            icon="up"
             title={t`Upgrade Deck with XP`}
             onPress={showDeckUpgrade}
           />
@@ -123,7 +124,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
       cards,
       parsedDeck,
       xpAdjustment,
-      fontScale,
       editable,
       tabooSetId,
       renderFooter,
@@ -144,7 +144,6 @@ class DeckProgressComponent extends React.PureComponent<Props> {
         { this.renderCampaignSection() }
         <ChangesFromPreviousDeck
           componentId={componentId}
-          fontScale={fontScale}
           title={title}
           cards={cards}
           parsedDeck={parsedDeck}
@@ -157,7 +156,8 @@ class DeckProgressComponent extends React.PureComponent<Props> {
           onTitlePress={onTitlePress}
         />
         { !!editable && !!deck.previous_deck && !!showDeckHistory && (
-          <BasicButton
+          <ArkhamButton
+            icon="deck"
             title={t`Upgrade History`}
             onPress={showDeckHistory}
           />

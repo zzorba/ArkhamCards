@@ -1,103 +1,86 @@
 import {
+  ColorValue,
   Platform,
   PlatformColor,
   DynamicColorIOS,
 } from 'react-native';
 
-const darkText = (Platform.OS === 'ios' ? PlatformColor('labelColor') : PlatformColor('?attr/colorPrimaryText')) as any as string;
-const lightText = (Platform.OS === 'ios' ? PlatformColor('secondaryLabelColor') : PlatformColor('?attr/colorSecondaryText')) as any as string;
+const medium = '#9B9B9B';
+const L10: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#D7D3C6', dark: '#656C6F' }) : PlatformColor('@color/L10')) as any as string;
+const L20: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#F5F0E1', dark: '#475259' }) : PlatformColor('@color/L20')) as any as string;
+const L30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFBF2', dark: '#24303C' }) : PlatformColor('@color/L30')) as any as string;
+const D10: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#656C6F', dark: '#D7D3C6' }) : PlatformColor('@color/D10')) as any as string;
+const D20: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#475259', dark: '#F5F0E1' }) : PlatformColor('@color/D20')) as any as string;
+const D30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#24303C', dark: '#FFFBF2' }) : PlatformColor('@color/D30')) as any as string;
 
 export default {
-  disabledOverlay: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFFFF99', dark: '#00000099' }) : PlatformColor('?attr/disabledOverlayColor')) as any as string,
-  modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
-  darkText,
-  lightText,
-  veryLightText: (Platform.OS === 'ios' ? PlatformColor('tertiaryLabelColor') : '#888') as any as string,
-  background: (Platform.OS === 'ios' ? PlatformColor('systemBackgroundColor') : PlatformColor('?attr/colorBackground')) as any as string,
-  lightBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('?attr/colorLightBackground')) as any as string,
-  veryLightBackground: (Platform.OS === 'ios' ? PlatformColor('secondarySystemFillColor') : PlatformColor('?attr/colorVeryLightBackground')) as any as string,
-  veryVeryLightBackground: (Platform.OS === 'ios' ? PlatformColor('tertiarySystemFillColor') : PlatformColor('?attr/colorVeryVeryLightBackground')) as any as string,
-  divider: (Platform.OS === 'ios' ? PlatformColor('separatorColor') : '#888888') as any as string,
+  L10,
+  L20,
+  L30,
+  D10,
+  D20,
+  D30,
+  M: medium,
+  modalBackground: (Platform.OS === 'ios' ? PlatformColor('systemFillColor') : PlatformColor('@color/colorLightBackground')) as any as string,
+  darkText: D30 as any as string,
+  lightText: D10 as any as string,
   faction: {
-    mystic: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#4331b9', dark: '#af89fa' }) : PlatformColor('?attr/factionMysticTextColor')) as any as string,
-      background: '#4331b9',
-      darkBackground: '#4331b9',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d9d6f1', dark: '#46018f' }) : PlatformColor('?attr/factionMysticLightBackgroundColor')) as any as string,
+    guardian: {
+      darkBackground: '#2b80c5',
     },
     seeker: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#db7c07', dark: '#fcb447' }) : PlatformColor('?attr/factionSeekerTextColor')) as any as string,
-      background: '#db7c07',
       darkBackground: '#db7c07',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#fbe6d4', dark: '#bf5c00' }) : PlatformColor('?attr/factionSeekerLightBackgroundColor')) as any as string,
-    },
-    guardian: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#1072c2', dark: '#62cefc' }) : PlatformColor('?attr/factionGuardianTextColor')) as any as string,
-      background: '#2b80c5',
-      darkBackground: '#2b80c5',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#d5e6f3', dark: '#004880' }) : PlatformColor('?attr/factionGuardianLightBackgroundColor')) as any as string,
     },
     rogue: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#107116', dark: '#52cc66' }) : PlatformColor('?attr/factionRogueTextColor')) as any as string,
-      background: '#107116',
       darkBackground: '#107116',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cfe3d0', dark: '#015906' }) : PlatformColor('?attr/factionRogueLightBackgroundColor')) as any as string,
+    },
+    mystic: {
+      darkBackground: '#4331b9',
     },
     survivor: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc3038', dark: '#ff6b73' }) : PlatformColor('?attr/factionSurvivorTextColor')) as any as string,
-      background: '#cc3038',
       darkBackground: '#cc3038',
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5d6d7', dark: '#7a0105' }) : PlatformColor('?attr/factionSurvivorLightBackgroundColor')) as any as string,
     },
     neutral: {
-      text: darkText,
-      background: '#444',
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#444444', dark: '#888888' }) : PlatformColor('?attr/factionNeutralDarkBackgroundColor')) as any as string,
-      lightBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#e6e6e6', dark: '#292929' }) : PlatformColor('?attr/factionNeutralLightBackgroundColor')) as any as string,
+      darkBackground: '#444444',
     },
     dual: {
-      text: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#868600', dark: '#bfbf4d' }) : PlatformColor('?attr/factionDualTextColor')) as any as string,
-      background: '#9a9a00',
       darkBackground: '#c0c000',
-      lightBackground: '#f2f2cc',
     },
     dead: {
-      text: '#704214',
-      background: '#704214',
       darkBackground: '#5a3510',
-      lightBackground: '#d4c6b9',
     },
     mythos: {
-      text: darkText,
-      background: '#444',
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000000', dark: '#444444' }) : PlatformColor('?attr/factionMythosDarkBackgroundColor')) as any as string,
-      lightBackground: '#000000',
+      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000000', dark: '#444444' }) : PlatformColor('@color/factionMythosDarkBackgroundColor')) as any as string,
     },
   },
   skill: {
     willpower: {
-      default: '#003961',
+      default: '#165385',
       light: '#506A85',
+      dark: '#2C7FC0',
     },
     intellect: {
-      default: '#4e1a45',
+      default: '#7A2D6C',
       light: '#7B5373',
+      dark: '#7C3C85',
     },
     combat: {
-      default: '#661e09',
+      default: '#8D181E',
       light: '#8D5648',
+      dark: '#AE4236',
     },
     agility: {
-      default: '#00543a',
+      default: '#0D6813',
       light: '#417F6C',
+      dark: '#14854D',
     },
     wild: {
       default: '#635120',
       light: '#8A7D5A',
     },
   },
-  costTintIcon: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5f5f5', dark: '#202020' }) : PlatformColor('?attr/costTintIcon')) as any as string,
-  scenarioGreen: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#2E5344', dark: '#1fab73' }) : PlatformColor('?attr/campaignScenarioGreen')) as any as string,
+  costTintIcon: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#f5f5f5', dark: '#202020' }) : PlatformColor('@color/costTintIcon')) as any as string,
+  scenarioGreen: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#2E5344', dark: '#1fab73' }) : PlatformColor('@color/campaignScenarioGreen')) as any as string,
   veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
   darkBlue: 'rgb(0, 78, 100)',
@@ -121,11 +104,11 @@ export default {
     DynamicColorIOS({
       light: '#f6f6f6',
       dark: '#363636',
-    }) : PlatformColor('?attr/toggleButtonColor')) as any as string,
+    }) : PlatformColor('@color/toggleButtonColor')) as any as string,
 
   selectedToggleButton: (Platform.OS === 'ios' ?
     DynamicColorIOS({
       light: '#dddddd',
       dark: '#111',
-    }) : PlatformColor('?attr/selectedToggleButtonColor')) as any as string,
+    }) : PlatformColor('@color/selectedToggleButtonColor')) as any as string,
 };

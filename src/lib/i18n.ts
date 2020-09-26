@@ -1,9 +1,9 @@
 import { findBestAvailableLanguage } from 'react-native-localize';
 
 export const ALL_LANGUAGES = [
-  'en',
   'es',
   'ru',
+  'en',
   'de',
   'fr',
   'it',

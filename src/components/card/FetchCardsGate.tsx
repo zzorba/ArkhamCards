@@ -16,9 +16,8 @@ import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 import { fetchCards, dismissUpdatePrompt } from './actions';
 import { getLangPreference, AppState } from '@reducers';
 import { localizedName, getSystemLanguage } from '@lib/i18n';
-import typography from '@styles/typography';
 import { l, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 const REFETCH_DAYS = 7;
 const REPROMPT_DAYS = 3;
@@ -49,12 +48,6 @@ interface OwnProps {
 }
 
 type Props = ReduxProps & ReduxActionProps & OwnProps;
-
-const FULL_TRANSLATION_LANGS = new Set([
-  'en',
-  'ru',
-  'es',
-]);
 
 /**
  * Simple component to block children rendering until cards/packs are loaded.
@@ -152,38 +145,44 @@ class FetchCardsGate extends React.Component<Props> {
       error,
       children,
     } = this.props;
-    if (error) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <View style={styles.errorBlock}>
-            <Text style={[typography.text, styles.error]}>
-              { t`Error loading cards, make sure your network is working.` }
-            </Text>
-            <Text style={[typography.text, styles.error]}>
-              { error }
-            </Text>
-          </View>
-          <BasicButton onPress={this._doFetch} title={t`Try Again`} />
-        </View>
-      );
-    }
-    if (loading || this.props.fetchNeeded) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <Text style={typography.text}>
-            { t`Loading latest cards...` }
-          </Text>
-          <ActivityIndicator
-            style={styles.spinner}
-            size="small"
-            animating
-            color={COLORS.lightText}
-          />
-        </View>
-      );
-    }
+    return (
+      <StyleContext.Consumer>
+        { ({ colors, backgroundStyle, typography }) => {
+          if (error) {
+            return (
+              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+                <View style={styles.errorBlock}>
+                  <Text style={[typography.text, styles.error]}>
+                    { t`Error loading cards, make sure your network is working.` }
+                  </Text>
+                  <Text style={[typography.text, styles.error]}>
+                    { error }
+                  </Text>
+                </View>
+                <BasicButton onPress={this._doFetch} title={t`Try Again`} />
+              </View>
+            );
+          }
+          if (loading || this.props.fetchNeeded) {
+            return (
+              <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+                <Text style={typography.text}>
+                  { t`Loading latest cards...` }
+                </Text>
+                <ActivityIndicator
+                  style={styles.spinner}
+                  size="small"
+                  animating
+                  color={colors.lightText}
+                />
+              </View>
+            );
+          }
 
-    return children;
+          return children;
+        } }
+      </StyleContext.Consumer>
+    );
   }
 }
 
@@ -217,7 +216,6 @@ export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
 
 const styles = StyleSheet.create({
   activityIndicatorContainer: {
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,

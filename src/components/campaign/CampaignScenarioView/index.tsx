@@ -9,16 +9,14 @@ import {
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import ScenarioResultRow from './ScenarioResultRow';
 import { campaignScenarios, Scenario, completedScenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { NavigationProps } from '@components/nav/types';
 import { Campaign, ScenarioResult } from '@actions/types';
 import { getCampaign, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignScenarioProps {
   id: number;
@@ -30,9 +28,12 @@ interface ReduxProps {
   scenarioByCode?: { [code: string]: Scenario };
 }
 
-type Props = NavigationProps & CampaignScenarioProps & ReduxProps & StylesProps;
+type Props = NavigationProps & CampaignScenarioProps & ReduxProps;
 
 class CampaignScenarioView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _renderScenarioResult = (scenarioResult: ScenarioResult, idx: number) => {
     const {
       componentId,
@@ -53,7 +54,7 @@ class CampaignScenarioView extends React.Component<Props> {
   };
 
   renderPendingScenario(scenario: Scenario, idx: number) {
-    const { gameFont } = this.props;
+    const { gameFont, typography } = this.context;
     return (
       <Text style={[typography.gameFont, styles.disabled, { fontFamily: gameFont }]} key={idx}>
         { scenario.name }
@@ -66,15 +67,16 @@ class CampaignScenarioView extends React.Component<Props> {
       campaign,
       cycleScenarios,
     } = this.props;
+    const { backgroundStyle, typography } = this.context;
     if (!campaign) {
       return null;
     }
     const hasCompletedScenario = completedScenario(campaign.scenarioResults);
     return (
-      <ScrollView style={[styles.container, space.paddingS]}>
+      <ScrollView style={[styles.container, backgroundStyle, space.paddingS]}>
         <CampaignSummaryComponent campaign={campaign} hideScenario />
-        <Text style={typography.smallLabel}>
-          { t`SCENARIOS` }
+        <Text style={[typography.small, typography.uppercase]}>
+          { t`Scenarios` }
         </Text>
         { map(campaign.scenarioResults, this._renderScenarioResult) }
         { map(
@@ -107,12 +109,11 @@ function mapStateToPropsFix(
   return {};
 }
 
-export default connect(mapStateToPropsFix)(withStyles(CampaignScenarioView));
+export default connect(mapStateToPropsFix)(CampaignScenarioView);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   disabled: {
     color: '#bdbdbd',

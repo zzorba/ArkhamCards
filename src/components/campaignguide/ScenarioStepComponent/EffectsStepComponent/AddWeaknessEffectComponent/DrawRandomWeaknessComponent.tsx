@@ -11,7 +11,6 @@ import InvestigatorButton from '@components/core/InvestigatorButton';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import COLORS from '@styles/colors';
 
 interface OwnProps {
   id: string;
@@ -109,10 +108,13 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
 
   render() {
     const { id, investigators, cards, scenarioState } = this.props;
+    const {
+      style: { borderStyle },
+    } = this.context;
     const choices = scenarioState.stringChoices(`${id}_weakness`);
     return (
       <>
-        <View style={styles.wrapper}>
+        <View style={[styles.wrapper, borderStyle]}>
           { map(investigators, investigator => {
             const choice = choices !== undefined ? choices[investigator.code][0] :
               this.state.choices[investigator.code];
@@ -141,6 +143,5 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
 const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

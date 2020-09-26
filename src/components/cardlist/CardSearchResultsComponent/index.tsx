@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { debounce, throttle } from 'throttle-debounce';
+import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
   Text,
@@ -9,28 +9,26 @@ import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import {
   SORT_BY_ENCOUNTER_SET,
   SortType,
   Slots,
 } from '@actions/types';
 import QueryProvider from '@components/data/QueryProvider';
-import CollapsibleSearchBox, { SEARCH_OPTIONS_HEIGHT } from '@components/core/CollapsibleSearchBox';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
-import Switch from '@components/core/Switch';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries } from '@data/query';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY } from '@data/query';
 import Card from '@data/Card';
-import typography from '@styles/typography';
-import space, { isTablet, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import { s, xs } from '@styles/space';
+import ArkhamButton from '@components/core/ArkhamButton';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
-  fontScale: number;
   baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -64,9 +62,16 @@ interface State {
   searchQuery?: RegExp;
 }
 
+function searchOptionsHeight(fontScale: number) {
+  return 20 + (fontScale * 20 + 8) * 3 + 12;
+}
+
 type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
 type FilterQueryProps = Pick<Props, 'filters'>
 export default class CardSearchResultsComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static filterBuilder = new FilterBuilder('filters');
 
   static filterQuery({
@@ -96,7 +101,7 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
-      where('c.altArtInvestigator != true AND c.back_linked is null AND not c.hidden'),
+      BASIC_QUERY,
       queryParts,
       'and'
     );
@@ -162,7 +167,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     this.setState({
       searchTerm: text,
     }, () => {
-      const { searchTerm } = this.state;
       this._debouncedUpdateSeacrh();
     });
   };
@@ -196,30 +200,44 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       searchFlavor,
       searchBack,
     } = this.state;
+    const { colors, fontScale, typography } = this.context;
     return (
-      <View style={styles.textSearchOptions}>
-        <Text style={[typography.smallLabel, styles.searchOption]}>
-          { isTablet ? t`Game Text` : t`Game\nText` }
-        </Text>
-        <Switch
-          value={searchText}
-          onValueChange={this._toggleSearchText}
-        />
-        <Text style={[typography.smallLabel, styles.searchOption]}>
-          { isTablet ? t`Flavor Text` : t`Flavor\nText` }
-        </Text>
-        <Switch
-          value={searchFlavor}
-          onValueChange={this._toggleSearchFlavor}
-        />
-        <Text style={[typography.smallLabel, styles.searchOption]}>
-          { isTablet ? t`Card Backs` : t`Card\nBacks` }
-        </Text>
-        <Switch
-          value={searchBack}
-          onValueChange={this._toggleSearchBack}
-        />
-      </View>
+      <>
+        <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
+          <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+            { t`Search in:` }
+          </Text>
+        </View>
+        <View style={styles.column}>
+          <View style={styles.row}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+              { t`Game Text` }
+            </Text>
+            <ArkhamSwitch
+              value={searchText}
+              onValueChange={this._toggleSearchText}
+            />
+          </View>
+          <View style={styles.row}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+              { t`Flavor Text` }
+            </Text>
+            <ArkhamSwitch
+              value={searchFlavor}
+              onValueChange={this._toggleSearchFlavor}
+            />
+          </View>
+          <View style={styles.row}>
+            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+              { t`Card Backs` }
+            </Text>
+            <ArkhamSwitch
+              value={searchBack}
+              onValueChange={this._toggleSearchBack}
+            />
+          </View>
+        </View>
+      </>
     );
   }
 
@@ -236,15 +254,17 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <View>
         { !!mythosToggle && (
-          <BasicButton
+          <ArkhamButton
+            icon="search"
             onPress={toggleMythosMode}
-            title={mythosMode ? t`Search Player Cards` : t`Search Encounter Cards`}
+            title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
           />
         ) }
         { !!hasFilters && (
-          <BasicButton
+          <ArkhamButton
+            icon="search"
             onPress={clearSearchFilters}
-            title={t`Clear Search Filters`}
+            title={t`Clear search filters`}
           />
         ) }
       </View>
@@ -263,26 +283,25 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     return (
       <View>
         { !!searchTerm && (
-          <BasicButton
+          <ArkhamButton
+            icon="search"
             onPress={this._clearSearchTerm}
             title={t`Clear "${searchTerm}" search`}
           />
         ) }
         { !searchText && (
-          <View style={[styles.toggle, space.marginS]}>
-            <Text style={[typography.text, styles.toggleText]}>
-              { t`Search Game Text` }
-            </Text>
-            <Switch value={false} onValueChange={this._toggleSearchText} />
-          </View>
+          <ArkhamButton
+            icon="search"
+            onPress={this._toggleSearchText}
+            title={t`Search game text`}
+          />
         ) }
         { !searchBack && (
-          <View style={[styles.toggle, space.marginS]}>
-            <Text style={[typography.text, styles.toggleText]}>
-              { t`Search Card Backs` }
-            </Text>
-            <Switch value={false} onValueChange={this._toggleSearchBack} />
-          </View>
+          <ArkhamButton
+            icon="search"
+            onPress={this._toggleSearchBack}
+            title={t`Search card backs`}
+          />
         ) }
         { this.renderExpandModesButtons(hasFilters) }
       </View>
@@ -367,20 +386,21 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       tabooSetOverride,
       investigator,
       storyOnly,
-      fontScale,
       initialSort,
       mythosToggle,
       baseQuery,
       mythosMode,
       filters,
     } = this.props;
-    const {
-      searchTerm,
-    } = this.state;
+    const { fontScale } = this.context;
+    const { searchTerm } = this.state;
     return (
       <CollapsibleSearchBox
         prompt={t`Search for a card`}
-        advancedOptions={this.renderSearchOptions()}
+        advancedOptions={{
+          controls: this.renderSearchOptions(),
+          height: searchOptionsHeight(fontScale),
+        }}
         searchTerm={searchTerm || ''}
         onSearchChange={this._searchUpdated}
       >
@@ -401,7 +421,6 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
                   <>
                     <CardResultList
                       componentId={componentId}
-                      fontScale={fontScale}
                       tabooSetOverride={tabooSetOverride}
                       query={query}
                       filterQuery={filterQuery || undefined}
@@ -444,27 +463,19 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     width: '100%',
-    backgroundColor: 'red',
   },
-  toggle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  toggleText: {
-    minWidth: '60%',
-  },
-  textSearchOptions: {
-    paddingLeft: xs,
-    paddingRight: s,
-    paddingBottom: xs,
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: SEARCH_OPTIONS_HEIGHT,
+  column: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
   },
   searchOption: {
     marginLeft: s,
     marginRight: xs,
-    color: COLORS.darkText,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });

@@ -22,9 +22,8 @@ import { showCard } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
-import { m } from '@styles/space';
-import COLORS from '@styles/colors';
+import space, { m } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 export interface CardFaqProps {
   id: string;
@@ -127,46 +126,57 @@ class CardFaqView extends React.Component<Props, State> {
     const faqEntry = head(faqEntries);
     const lastUpdated = faqEntry && faqEntry.fetched && faqEntry.fetched.toISOString().slice(0, 10);
     return (
-      <View>
-        { !!faqError && (
-          <Text style={[typography.text, styles.error]}>
-            { faqError }
-          </Text>
+      <StyleContext.Consumer>
+        { ({ typography }) => (
+          <View>
+            { !!faqError && (
+              <Text style={[typography.text, styles.error]}>
+                { faqError }
+              </Text>
+            ) }
+            <View>
+              { (faqEntry && faqEntry.text) ? (
+                <CardTextComponent
+                  text={faqEntry.text}
+                  onLinkPress={this._linkPressed}
+                />
+              ) : (
+                <Text style={typography.text}>
+                  { faqLoading ? t`Checking for FAQ` : t`No entries at this time.` }
+                </Text>
+              ) }
+            </View>
+            { !!lastUpdated && (
+              <View style={space.marginTopS}>
+                <Text style={typography.text}>
+                  { t`Last Updated: ${lastUpdated}` }
+                </Text>
+              </View>
+            ) }
+          </View>
         ) }
-        <View>
-          { (faqEntry && faqEntry.text) ? (
-            <CardTextComponent
-              text={faqEntry.text}
-              onLinkPress={this._linkPressed}
-            />
-          ) : (
-            <Text style={typography.text}>
-              { faqLoading ? t`Checking for FAQ` : t`No entries at this time.` }
-            </Text>
-          ) }
-        </View>
-        { !!lastUpdated && (
-          <Text style={typography.small}>
-            { t`Last Updated: ${lastUpdated}` }
-          </Text>
-        ) }
-      </View>
+      </StyleContext.Consumer>
     );
   }
 
   render() {
     return (
-      <ScrollView
-        contentContainerStyle={styles.container}
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.faqLoading}
-            onRefresh={this._loadFaq}
-          />
-        }
-      >
-        { this.renderFaqContent() }
-      </ScrollView>
+      <StyleContext.Consumer>
+        { ({ backgroundStyle, colors }) => (
+          <ScrollView
+            contentContainerStyle={[styles.container, backgroundStyle]}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.faqLoading}
+                onRefresh={this._loadFaq}
+                tintColor={colors.lightText}
+              />
+            }
+          >
+            { this.renderFaqContent() }
+          </ScrollView>
+        ) }
+      </StyleContext.Consumer>
     );
   }
 }
@@ -198,7 +208,6 @@ export default connect<ReduxProps, unknown, NavigationProps & CardFaqProps, AppS
 const styles = StyleSheet.create({
   container: {
     padding: m,
-    backgroundColor: COLORS.background,
   },
   error: {
     color: 'red',

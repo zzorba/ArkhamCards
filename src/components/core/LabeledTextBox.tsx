@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,8 +8,7 @@ import {
 } from 'react-native';
 
 import TextBoxButton from './TextBoxButton';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   label: string;
@@ -29,10 +28,11 @@ export default function LabeledTextBox({
   column,
   style,
 }: Props) {
+  const { colors, typography } = useContext(StyleContext);
   const viewStyle = column ? styles.column : styles.row;
   return (
     <View style={[viewStyle, style]}>
-      <Text style={[column ? typography.smallLabel : typography.label, { color: COLORS.darkText }]}>
+      <Text style={[column ? typography.smallLabel : typography.small, { color: colors.darkText }]}>
         { column ? label.toUpperCase() : `${label}:` }
       </Text>
       <TouchableOpacity onPress={onPress} style={column ? {} : styles.grow}>

@@ -13,7 +13,6 @@ import { t } from 'ttag';
 
 import DeckUpgradeComponent from './DeckUpgradeComponent';
 import { Campaign, Deck, Slots } from '@actions/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
@@ -24,9 +23,9 @@ import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import Card from '@data/Card';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { getDeck, getCampaign, getTabooSet, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import BasicButton from '@components/core/BasicButton';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface UpgradeDeckProps {
   id: number;
@@ -46,7 +45,7 @@ interface ReduxActionProps {
   updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
 }
 
-type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps & TraumaProps & DimensionsProps;
+type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps & TraumaProps;
 
 interface State {
   storyEncounterCodes: string[];
@@ -55,7 +54,10 @@ interface State {
 }
 
 class DeckUpgradeDialog extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         tintColor: 'white',
@@ -63,13 +65,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           text: t`Save`,
           color: 'white',
           id: 'save',
-          showAsAction: 'ifRoom',
-          testID: t`Save`,
+          accessibilityLabel: t`Save`,
         }],
         backButton: {
           title: t`Cancel`,
           color: 'white',
-          testID: t`Cancel`,
+          accessibilityLabel: t`Cancel`,
         },
       },
     };
@@ -99,11 +100,15 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     this._navEventListener && this._navEventListener.remove();
   }
 
+  _save = () => {
+    if (this.deckUpgradeComponent.current) {
+      this.deckUpgradeComponent.current.save();
+    }
+  };
+
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     if (buttonId === 'save') {
-      if (this.deckUpgradeComponent.current) {
-        this.deckUpgradeComponent.current.save();
-      }
+      this._save();
     }
   }
 
@@ -171,7 +176,6 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       componentId,
       campaign,
       showTraumaDialog,
-      fontScale,
     } = this.props;
     const {
       storyEncounterCodes,
@@ -188,14 +192,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
             investigator={investigator}
             investigatorData={this.investigatorData()}
             showTraumaDialog={showTraumaDialog}
-            fontScale={fontScale}
             sectionHeader
           />
         ) }
         <StoryCardSelectorComponent
           componentId={componentId}
           investigator={investigator}
-          fontScale={fontScale}
           deckId={deck.id}
           updateStoryCounts={this._onStoryCountsChange}
           encounterCodes={storyEncounterCodes}
@@ -212,11 +214,11 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       campaign,
       saveDeckChanges,
       saveDeckUpgrade,
-      fontScale,
     } = this.props;
     const {
       storyCounts,
     } = this.state;
+    const { backgroundStyle, typography } = this.context;
     const investigator = this.investigator();
     if (!deck || !investigator) {
       return null;
@@ -225,7 +227,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
     const xp = latestScenario ? (latestScenario.xp || 0) : 0;
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container, backgroundStyle]}>
         <View style={space.paddingM}>
           <Text style={typography.text}>
             { t`Upgrading your deck allows changes and experience to be tracked over the course of a campaign.` }
@@ -239,12 +241,12 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           deck={deck}
           investigator={investigator}
           startingXp={xp}
-          fontScale={fontScale}
           storyCounts={storyCounts}
           ignoreStoryCounts={{}}
           upgradeCompleted={this._deckUpgradeComplete}
           campaignSection={this.renderCampaignSection(deck)}
         />
+        <BasicButton onPress={this._save} title={t`Save`} />
       </ScrollView>
     );
   }
@@ -253,7 +255,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, props: UpgradeDeckProps): ReduxProps {
   return {
-    deck: getDeck(state, props.id) || undefined,
+    deck: getDeck(props.id)(state) || undefined,
     campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
     tabooSetId: getTabooSet(state),
   };
@@ -273,7 +275,7 @@ export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDe
 )(
   withPlayerCards<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps>(
     withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
-      withDimensions(DeckUpgradeDialog)
+      DeckUpgradeDialog
     )
   )
 );
@@ -282,6 +284,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
 });

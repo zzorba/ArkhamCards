@@ -18,13 +18,13 @@ import FilterBuilder, { FilterState } from '@lib/filters';
 import { NavigationProps } from '@components/nav/types';
 import { getFilterState, getDefaultFilterState, AppState } from '@reducers';
 import { combineQueriesOpt } from '@data/query';
+import StyleContext from '@styles/StyleContext';
 
 export interface FilterProps {
   componentId: string;
   filters: FilterState;
   defaultFilterState: FilterState;
   width: number;
-  fontScale: number;
   pushFilterView: (screen: string) => void;
   onToggleChange: (setting: string, value: boolean) => void;
   onFilterChange: (setting: string, value: any) => void;
@@ -178,12 +178,12 @@ export default function withFilterFunctions<P>(
             [{
               text: t`Clear`,
               id: 'clear',
-              color: COLORS.navButton,
-              testID: t`Clear`,
+              color: COLORS.M,
+              accessibilityLabel: t`Clear`,
             }] : [],
           title: {
             text: title,
-            color: COLORS.navButton,
+            color: COLORS.M,
           },
           subtitle: {
             text: ngettext(
@@ -191,7 +191,7 @@ export default function withFilterFunctions<P>(
               `${count} Cards`,
               count
             ),
-            color: COLORS.navButton,
+            color: COLORS.M,
           },
         },
       });
@@ -208,7 +208,6 @@ export default function withFilterFunctions<P>(
         /* eslint-disable @typescript-eslint/no-unused-vars */
         filterId,
         width,
-        fontScale,
         currentFilters,
         ...otherProps
       } = this.props;
@@ -216,19 +215,22 @@ export default function withFilterFunctions<P>(
         return null;
       }
       return (
-        <View style={styles.wrapper}>
-          <WrappedComponent
-            componentId={componentId}
-            filters={(currentFilters || defaultFilterState) as FilterState}
-            defaultFilterState={defaultFilterState as FilterState}
-            width={width}
-            fontScale={fontScale}
-            pushFilterView={this._pushFilterView}
-            onToggleChange={this._onToggleChange}
-            onFilterChange={this._onFilterChange}
-            {...otherProps as P}
-          />
-        </View>
+        <StyleContext.Consumer>
+          { ({ backgroundStyle }) => (
+            <View style={[styles.wrapper, backgroundStyle]}>
+              <WrappedComponent
+                componentId={componentId}
+                filters={(currentFilters || defaultFilterState) as FilterState}
+                defaultFilterState={defaultFilterState as FilterState}
+                width={width}
+                pushFilterView={this._pushFilterView}
+                onToggleChange={this._onToggleChange}
+                onFilterChange={this._onFilterChange}
+                {...otherProps as P}
+              />
+            </View>
+          ) }
+        </StyleContext.Consumer>
       );
     }
   }
@@ -268,6 +270,5 @@ export default function withFilterFunctions<P>(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

@@ -17,14 +17,12 @@ import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorCo
 import Card from '@data/Card';
 import { DeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import typography from '@styles/typography';
 import space, { m } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   investigator: Card;
   deck: Deck;
-  fontScale: number;
   startingXp?: number;
   campaignSection?: React.ReactNode;
   storyCounts: Slots;
@@ -44,6 +42,9 @@ interface State {
 }
 
 export default class DeckUpgradeComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _saveUpgrade!: (isRetry?: boolean) => void;
   constructor(props: Props) {
     super(props);
@@ -170,7 +171,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       investigator,
       componentId,
       campaignSection,
-      fontScale,
     } = this.props;
     const {
       xp,
@@ -178,6 +178,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       saving,
       error,
     } = this.state;
+    const { colors, typography } = this.context;
     if (!deck) {
       return null;
     }
@@ -189,7 +190,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
           </Text>
           <ActivityIndicator
             style={space.marginTopM}
-            color={COLORS.lightText}
+            color={colors.lightText}
             size="large"
             animating
           />
@@ -202,7 +203,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
         { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
         <CardSectionHeader
           investigator={investigator}
-          fontScale={fontScale}
           section={{ superTitle: t`Experience points` }}
         />
         <BasicListRow>
@@ -222,7 +222,6 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
             <CardSectionHeader
               section={{ superTitle: t`Exiled cards` }}
               investigator={investigator}
-              fontScale={fontScale}
             />
           )}
           exileCounts={exileCounts}

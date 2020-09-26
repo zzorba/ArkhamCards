@@ -12,7 +12,7 @@ import CampaignGuideContext, { CampaignGuideContextType } from '@components/camp
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import Card from '@data/Card';
 import { Scenario, ChallengeData } from '@data/scenario/types';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 export interface ChallengeScenarioProps {
   scenario: Scenario;
@@ -42,34 +42,38 @@ export default class ChallengeScenarioView extends React.Component<Props> {
       challenge,
     } = this.props;
     return (
-      <View style={styles.wrapper}>
-        <ScrollView contentContainerStyle={styles.scrollView}>
-          <SingleCardWrapper code={challenge.investigator} type="player">
-            { investigator => (
-              <View>
-                <SetupStepWrapper bulletType="none">
-                  <CampaignGuideTextComponent text={this.introText(investigator)} />
-                </SetupStepWrapper>
-                <SetupStepWrapper>
-                  <CampaignGuideTextComponent
-                    text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
-                  />
-                </SetupStepWrapper>
-                { map(challenge.requirements, (req, idx) => (
-                  <SetupStepWrapper key={idx}>
-                    <CampaignGuideTextComponent text={req.text} />
-                  </SetupStepWrapper>
-                )) }
-              </View>
-            ) }
-          </SingleCardWrapper>
-          <SetupStepWrapper bulletType="none">
-            <CampaignGuideTextComponent text={t`The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually.`} />
-          </SetupStepWrapper>
+      <StyleContext.Consumer>
+        {({ backgroundStyle }) => (
+          <View style={[styles.wrapper, backgroundStyle]}>
+            <ScrollView contentContainerStyle={styles.scrollView}>
+              <SingleCardWrapper code={challenge.investigator} type="player">
+                { investigator => (
+                  <View>
+                    <SetupStepWrapper bulletType="none">
+                      <CampaignGuideTextComponent text={this.introText(investigator)} />
+                    </SetupStepWrapper>
+                    <SetupStepWrapper>
+                      <CampaignGuideTextComponent
+                        text={t`${investigator.name} must be chosen as one of the investigators when playing this scenario.`}
+                      />
+                    </SetupStepWrapper>
+                    { map(challenge.requirements, (req, idx) => (
+                      <SetupStepWrapper key={idx}>
+                        <CampaignGuideTextComponent text={req.text} />
+                      </SetupStepWrapper>
+                    )) }
+                  </View>
+                ) }
+              </SingleCardWrapper>
+              <SetupStepWrapper bulletType="none">
+                <CampaignGuideTextComponent text={t`The app does not enforce Challenge Scenario prerequisites, so please confirm that they apply manually.`} />
+              </SetupStepWrapper>
 
-          <BasicButton title={t`Play this scenario`} onPress={this._onPress} />
-        </ScrollView>
-      </View>
+              <BasicButton title={t`Play this scenario`} onPress={this._onPress} />
+            </ScrollView>
+          </View>
+        ) }
+      </StyleContext.Consumer>
     );
   }
 }
@@ -77,7 +81,6 @@ export default class ChallengeScenarioView extends React.Component<Props> {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   scrollView: {
     paddingBottom: 32,

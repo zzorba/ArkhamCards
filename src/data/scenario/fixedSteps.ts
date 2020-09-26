@@ -260,11 +260,16 @@ function statusToString(
   status: InvestigatorStatus
 ): string {
   switch (status) {
-    case 'alive': return t`Alive`;
-    case 'resigned': return t`Resigned`;
-    case 'physical': return t`Defeated: physical trauma`;
-    case 'mental': return t`Defeated: mental trauma`;
-    case 'eliminated': return t`Defeated: no trauma`;
+    case 'alive':
+      return t`Alive`;
+    case 'resigned':
+      return t`Resigned`;
+    case 'physical':
+      return t`Defeated: physical trauma`;
+    case 'mental':
+      return t`Defeated: mental trauma`;
+    case 'eliminated':
+      return t`Defeated: no trauma`;
   }
 }
 

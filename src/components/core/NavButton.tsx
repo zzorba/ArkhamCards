@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,12 +8,10 @@ import {
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import typography from '@styles/typography';
 import { xs, s, isBig } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
-  fontScale: number;
   text?: string;
   onPress: () => void;
   indent?: boolean;
@@ -22,13 +20,15 @@ interface Props {
   disabled?: boolean;
   color?: string;
 }
-export default function NavButton({ disabled, text, fontScale, onPress, color, indent, children, noBorder }: Props) {
+export default function NavButton({ disabled, text, onPress, color, indent, children, noBorder }: Props) {
+  const { fontScale, borderStyle, typography, colors } = useContext(StyleContext);
   return (
     <TouchableOpacity onPress={onPress} disabled={!!disabled}>
       <View style={[
         styles.container,
         indent ? styles.indentedContainer : {},
         noBorder ? {} : styles.bottomBorder,
+        noBorder ? {} : borderStyle,
       ]}>
         { text ? (
           <View style={[
@@ -45,7 +45,7 @@ export default function NavButton({ disabled, text, fontScale, onPress, color, i
             <MaterialIcons
               name="keyboard-arrow-right"
               size={30}
-              color={color || 'rgb(0, 122,255)'}
+              color={color || colors.M}
             />
           ) }
         </View>
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   indentedContainer: {
     paddingLeft: 18,

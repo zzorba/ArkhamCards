@@ -24,7 +24,7 @@ import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@d
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import { m } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -46,6 +46,9 @@ interface QueryProps {
 }
 
 export default class CardChoicePrompt extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static FILTER_BUILDER = new FilterBuilder('ccp');
   state: State = {
     extraCards: [],
@@ -135,10 +138,11 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
       text,
       input,
     } = this.props;
+    const { colors, borderStyle } = this.context;
     if (loading) {
       return (
-        <View style={styles.loadingRow}>
-          <ActivityIndicator size="small" animating color={COLORS.lightText} />
+        <View style={[styles.loadingRow, borderStyle]}>
+          <ActivityIndicator size="small" animating color={colors.lightText} />
         </View>
       );
     }
@@ -350,6 +354,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

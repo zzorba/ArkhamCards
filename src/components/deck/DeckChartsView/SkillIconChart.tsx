@@ -12,8 +12,8 @@ import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
 import { SKILLS, SkillCodeType } from '@app_constants';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -26,6 +26,9 @@ interface Item {
 }
 
 export default class SkillIconChart extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   getSkillData(skill: SkillCodeType): Item {
     return {
       skill,
@@ -39,11 +42,12 @@ export default class SkillIconChart extends React.PureComponent<Props> {
 
   render() {
     const { width } = this.props;
+    const { typography, colors } = this.context;
     const barData = map(SKILLS, skill => this.getSkillData(skill));
 
     return (
       <View style={[styles.wrapper, { width }]}>
-        <Text style={[typography.bigLabel, typography.center]}>
+        <Text style={[typography.large, typography.center]}>
           { t`Skill Icons` }
         </Text>
         <VictoryChart width={width}>
@@ -52,8 +56,9 @@ export default class SkillIconChart extends React.PureComponent<Props> {
               axis: { stroke: 'none' },
               tickLabels: {
                 fontSize: 18,
-                fontFamily: 'System',
+                fontFamily: typography.large.fontFamily,
                 fontWeight: '400',
+                fill: colors.darkText,
               },
             }}
             // @ts-ignore TS2739
@@ -73,7 +78,7 @@ export default class SkillIconChart extends React.PureComponent<Props> {
               labels: {
                 fill: 'white',
                 fontSize: 14,
-                fontFamily: 'System',
+                fontFamily: typography.bold.fontFamily,
                 fontWeight: '700',
               },
             }}

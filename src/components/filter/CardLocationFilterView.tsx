@@ -10,10 +10,13 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import SliderChooser from './SliderChooser';
 import withFilterFunctions, { FilterProps } from './withFilterFunctions';
 import { xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 class CardLocationFilterView extends React.Component<FilterProps> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
@@ -35,16 +38,15 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         hauntedEnabled,
       },
       width,
-      fontScale,
       onToggleChange,
       onFilterChange,
     } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         <SliderChooser
           label={t`Shroud`}
           width={width}
-          fontScale={fontScale}
           max={defaultFilterState.shroud[1]}
           values={shroud}
           setting="shroud"
@@ -56,7 +58,6 @@ class CardLocationFilterView extends React.Component<FilterProps> {
         <SliderChooser
           label={t`Clues`}
           width={width}
-          fontScale={fontScale}
           max={defaultFilterState.clues[1]}
           values={clues}
           setting="clues"
@@ -115,8 +116,5 @@ const styles = StyleSheet.create({
     marginTop: xs,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { CampaignCycleCode, CampaignDifficulty } from '@actions/types';
 import { CAMPAIGN_COLORS, difficultyString } from '@components/campaign/constants';
-import typography from '@styles/typography';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import CampaignGuide from '@data/scenario/CampaignGuide';
-import COLORS from '@styles/colors';
 import { m, s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   campaignGuide: CampaignGuide;
@@ -16,38 +15,38 @@ interface Props {
   inverted?: boolean;
 }
 
-export default class CampaignSummaryComponent extends React.Component<Props> {
-  render() {
-    const {
-      campaignGuide,
-      difficulty,
-      inverted,
-    } = this.props;
-    const difficultyText = difficulty && difficultyString(difficulty);
-    const color = CAMPAIGN_COLORS[campaignGuide.campaignCycleCode() as CampaignCycleCode];
-    return (
-      <View style={[
-        styles.row,
-        inverted ? { backgroundColor: color } : {},
-        inverted ? styles.section : {},
-        inverted ? styles.bottomBorder : {},
-      ]}>
-        <BackgroundIcon
-          code={campaignGuide.campaignCycleCode()}
-          color={inverted ? COLORS.darkText : color}
-          small
-        />
-        <View>
-          <GameHeader text={campaignGuide.campaignName()} />
-          { difficultyText && (
-            <Text style={typography.text}>
-              { difficultyText }
-            </Text>
-          ) }
-        </View>
+export default function CampaignSummaryComponent({
+  campaignGuide,
+  difficulty,
+  inverted,
+}: Props) {
+  const { backgroundStyle, borderStyle, colors, typography } = useContext(StyleContext);
+  const difficultyText = difficulty && difficultyString(difficulty);
+  const color = CAMPAIGN_COLORS[campaignGuide.campaignCycleCode() as CampaignCycleCode];
+  return (
+    <View style={[
+      styles.row,
+      backgroundStyle,
+      inverted ? { backgroundColor: color } : {},
+      inverted ? styles.section : {},
+      inverted ? styles.bottomBorder : {},
+      inverted ? borderStyle : {},
+    ]}>
+      <BackgroundIcon
+        code={campaignGuide.campaignCycleCode()}
+        color={inverted ? colors.darkText : color}
+        small
+      />
+      <View>
+        <GameHeader text={campaignGuide.campaignName()} />
+        { difficultyText && (
+          <Text style={typography.text}>
+            { difficultyText }
+          </Text>
+        ) }
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -57,7 +56,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingTop: 24,
     paddingBottom: 24,
-    backgroundColor: COLORS.background,
   },
   section: {
     padding: m,
@@ -66,6 +64,5 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

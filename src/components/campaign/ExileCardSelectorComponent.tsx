@@ -52,7 +52,7 @@ class ExileCardSelectorComponent extends React.Component<Props> {
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    deck: getDeck(state, props.id) || undefined,
+    deck: getDeck(props.id)(state) || undefined,
   };
 }
 

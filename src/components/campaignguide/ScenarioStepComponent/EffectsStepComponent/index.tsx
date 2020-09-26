@@ -20,7 +20,6 @@ import space from '@styles/space';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   width: number;
   step: EffectsStep;
   campaignLog: GuidedCampaignLog;
@@ -41,7 +40,6 @@ export default class EffectsStepComponent extends React.Component<Props> {
       step,
       campaignLog,
       componentId,
-      fontScale,
       width,
       switchCampaignScenario,
     } = this.props;
@@ -128,7 +126,6 @@ export default class EffectsStepComponent extends React.Component<Props> {
                 <ScenarioStepComponent
                   key={step.step.id}
                   componentId={componentId}
-                  fontScale={fontScale}
                   width={width}
                   step={step}
                   border={border}

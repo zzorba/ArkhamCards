@@ -1,9 +1,6 @@
 import React from 'react';
 import { map } from 'lodash';
-import {
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import { ScrollView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -17,7 +14,7 @@ import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCar
 import { Deck, DeckMeta, DecksMap, ParsedDeck, Slots } from '@actions/types';
 import { AppState, getAllDecks } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface DeckHistoryProps {
   id: number;
@@ -34,6 +31,8 @@ interface ReduxProps {
 type Props = NavigationProps & DimensionsProps & DeckHistoryProps & PlayerCardProps & ReduxProps;
 
 class DeckHistoryView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   historicDecks(): ParsedDeck [] {
     const {
@@ -97,23 +96,22 @@ class DeckHistoryView extends React.Component<Props> {
           id: parsedDeck.deck.id,
           isPrivate: true,
         },
-        options: getDeckOptions(parsedDeck.investigator, false, parsedDeck.deck.name),
+        options: getDeckOptions({ title: parsedDeck.deck.name }, parsedDeck.investigator),
       },
     });
   };
 
   render() {
-    const { componentId, cards, fontScale } = this.props;
+    const { componentId, cards } = this.props;
     const decks = this.historicDecks();
-
+    const { backgroundStyle } = this.context;
     return (
-      <ScrollView contentContainerStyle={styles.wrapper}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         { map(decks, (deck, idx) => (
           <DeckProgressComponent
             key={deck.deck.id}
             title={this.deckTitle(deck, decks.length - idx)}
             onTitlePress={this._onDeckPress}
-            fontScale={fontScale}
             componentId={componentId}
             deck={deck.deck}
             parsedDeck={deck}
@@ -143,9 +141,3 @@ export default connect<ReduxProps, null, NavigationProps & DeckHistoryProps, App
     withDimensions(DeckHistoryView)
   )
 );
-
-const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: COLORS.background,
-  },
-});

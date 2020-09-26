@@ -12,10 +12,10 @@ import { t } from 'ttag';
 
 import { Pack } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
-import Switch from '@components/core/Switch';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { PackCardsProps } from '@components/settings/PackCardsView';
 import { s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -31,6 +31,9 @@ interface Props {
 }
 
 export default class PackRow extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       pack,
@@ -104,16 +107,22 @@ export default class PackRow extends React.Component<Props> {
       compact,
       nameOverride,
     } = this.props;
-
+    const { colors, fontScale, typography } = this.context;
     const mythosPack = true;
-    const backgroundColor = (whiteBackground || mythosPack) ? COLORS.background : COLORS.lightBackground;
+    const backgroundColor = (whiteBackground || mythosPack) ? colors.background : colors.L20;
     const iconSize = (mythosPack || compact) ? 24 : 28;
-    const fontSize = (mythosPack || compact) ? 16 : 22;
+    const fontSize = ((mythosPack || compact) ? 16 : 22) * fontScale;
+    const lineHeight = ((mythosPack || compact) ? 20 : 26) * fontScale;
     const rowHeight = mythosPack ? 50 : 60;
     return (
       <View style={[styles.row,
         { backgroundColor, height: rowHeight },
-        compact ? { height: 40 } : styles.bottomBorder,
+        compact ? {
+          height: lineHeight * fontScale + 20,
+        } : {
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderColor: colors.divider,
+        },
       ]}>
         <TouchableOpacity style={styles.touchable} onPress={this._onPress}>
           <View style={styles.touchableContent}>
@@ -121,11 +130,11 @@ export default class PackRow extends React.Component<Props> {
               <EncounterIcon
                 encounter_code={pack.code}
                 size={iconSize}
-                color={COLORS.darkText}
+                color={colors.darkText}
               />
             </View>
             <Text
-              style={[styles.title, { color: COLORS.darkText, fontSize }]}
+              style={[typography.large, { color: colors.darkText, fontSize, lineHeight }]}
               numberOfLines={2}
               ellipsizeMode="tail"
             >
@@ -135,8 +144,8 @@ export default class PackRow extends React.Component<Props> {
         </TouchableOpacity>
         { !!setChecked && (
           <View style={[styles.checkbox, { height: rowHeight }]}>
-            <Switch
-              value={checked}
+            <ArkhamSwitch
+              value={!!checked}
               onValueChange={this._onCheckPress}
             />
           </View>
@@ -152,10 +161,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  bottomBorder: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   touchable: {
     height: 50,
@@ -177,14 +182,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    marginLeft: s,
-    fontSize: 20,
-    fontFamily: 'System',
-    flex: 1,
-  },
   checkbox: {
-    width: 60,
+    marginRight: s,
     flexDirection: 'row',
     alignItems: 'center',
   },

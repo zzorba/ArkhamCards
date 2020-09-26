@@ -7,11 +7,11 @@ import {
   View,
 } from 'react-native';
 import { startsWith, throttle } from 'lodash';
+import { t } from 'ttag';
 
 import DialogComponent from '@lib/react-native-dialog';
-import { t } from 'ttag';
 import Dialog from './Dialog';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -34,6 +34,9 @@ interface State {
   height: number;
 }
 export default class TextEditDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _textInputRef = React.createRef<TextInput>();
   _throttledUpdateSize!: (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void;
 
@@ -163,6 +166,7 @@ export default class TextEditDialog extends React.Component<Props, State> {
       text,
       height,
     } = this.state;
+    const { typography } = this.context;
 
     const textChanged = isCrossedOut ?
       text !== originalText.substring(1) :

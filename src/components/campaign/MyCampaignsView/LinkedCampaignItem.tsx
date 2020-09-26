@@ -7,18 +7,15 @@ import {
 import { connect } from 'react-redux';
 
 import { Campaign, CUSTOM } from '@actions/types';
-import { CardsMap } from '@data/Card';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import CampaignInvestigatorRow from '../CampaignInvestigatorRow';
 import { getCampaign, AppState } from '@reducers';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   campaign: Campaign;
   onPress: (id: number, campaign: Campaign) => void;
-  investigators: CardsMap;
-  fontScale: number;
 }
 
 interface ReduxProps {
@@ -29,6 +26,9 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class LinkedCampaignItem extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       campaign,
@@ -42,12 +42,11 @@ class LinkedCampaignItem extends React.Component<Props> {
       campaign,
       campaignA,
       campaignB,
-      investigators,
-      fontScale,
     } = this.props;
+    const { borderStyle } = this.context;
     return (
       <TouchableOpacity onPress={this._onPress}>
-        <View style={styles.container}>
+        <View style={[styles.container, borderStyle]}>
           <CampaignSummaryComponent
             campaign={campaign}
             hideScenario
@@ -56,8 +55,6 @@ class LinkedCampaignItem extends React.Component<Props> {
           { !!campaignA && !!campaignB && (
             <CampaignInvestigatorRow
               campaigns={[campaignA, campaignB]}
-              investigators={investigators}
-              fontScale={fontScale}
             />
           ) }
         </View>
@@ -84,7 +81,6 @@ const styles = StyleSheet.create({
     paddingRight: s,
     paddingTop: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'relative',

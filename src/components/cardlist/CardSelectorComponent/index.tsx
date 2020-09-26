@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react';
 import { filter, flatMap, keys, sortBy } from 'lodash';
 
-import { Slots } from '@actions/types';
-import { SortType } from '@actions/types';
+import { Slots, SortType } from '@actions/types';
 import Card from '@data/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
@@ -30,7 +29,7 @@ class CardSelectorComponent extends React.Component<Props> {
       toggleCard,
     } = this.props;
     if (toggleCard) {
-       toggleCard(card.code, count > 0);
+      toggleCard(card.code, count > 0);
     } else if (updateCounts) {
       updateCounts({
         ...counts,
@@ -74,7 +73,6 @@ class CardSelectorComponent extends React.Component<Props> {
       cards,
       counts,
       header,
-      fontScale,
       toggleCard,
     } = this.props;
     const matchingCards = this.cards();
@@ -93,7 +91,6 @@ class CardSelectorComponent extends React.Component<Props> {
           return (
             <CardToggleRow
               key={code}
-              fontScale={fontScale}
               card={card}
               onPress={this._onCardPress}
               onChange={this._onChange}

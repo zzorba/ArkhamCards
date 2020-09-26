@@ -21,6 +21,7 @@ import {
   View,
   SectionListData,
   SectionListRenderItemInfo,
+  Platform,
 } from 'react-native';
 import { Brackets } from 'typeorm/browser';
 import { bindActionCreators, Dispatch, Action } from 'redux';
@@ -31,7 +32,6 @@ import { msgid, ngettext, t } from 'ttag';
 import DbRender from '@components/data/DbRender';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import BasicButton from '@components/core/BasicButton';
 import { addFilterSet } from '@components/filter/actions';
 import ShowNonCollectionFooter, { rowNonCollectionHeight } from './ShowNonCollectionFooter';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
@@ -53,9 +53,10 @@ import { combineQueries, where } from '@data/query';
 import { getPackSpoilers, getPacksInCollection, getTabooSet, AppState, getLangPreference } from '@reducers';
 import Card from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
-import typography from '@styles/typography';
 import { s, m } from '@styles/space';
-import COLORS from '@styles/colors';
+import ArkhamButton from '@components/core/ArkhamButton';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StyleContext from '@styles/StyleContext';
 
 function funLoadingMessages() {
   return [
@@ -72,7 +73,6 @@ function funLoadingMessages() {
 
 interface OwnProps {
   componentId: string;
-  fontScale: number;
   query?: Brackets;
   filterQuery?: Brackets;
   searchTerm?: string;
@@ -96,6 +96,8 @@ interface OwnProps {
   mythosMode?: boolean;
   initialSort?: SortType;
   renderCard?: (card: Card) => React.ReactElement;
+  noSearch?: boolean;
+  extraData?: any;
 }
 
 interface ReduxProps {
@@ -150,6 +152,7 @@ interface State {
   };
   loadingMessage: string;
   dirty: boolean;
+  extraData?: any;
 }
 
 interface CardBucket extends SectionListData<Card> {
@@ -192,6 +195,7 @@ class CardResultList extends React.Component<Props, State> {
       deckCardCounts,
       visible,
       mythosMode,
+      extraData,
     } = this.props;
     const {
       dirty,
@@ -206,7 +210,8 @@ class CardResultList extends React.Component<Props, State> {
         prevProps.searchTerm !== this.props.searchTerm ||
         prevProps.show_spoilers !== this.props.show_spoilers ||
         prevProps.in_collection !== this.props.in_collection ||
-        prevProps.tabooSetId !== this.props.tabooSetId
+        prevProps.tabooSetId !== this.props.tabooSetId ||
+        prevProps.extraData !== this.props.extraData
     ) {
       if (visible) {
         /* eslint-disable react/no-did-update-set-state */
@@ -214,17 +219,20 @@ class CardResultList extends React.Component<Props, State> {
           dirty: false,
           showNonCollection: {},
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+          extraData: updateDeckCardCounts ? { extraData, deckCardCounts } : { extraData, deckCardCounts: this.state.deckCardCounts },
         });
       } else if (!dirty) {
         /* eslint-disable react/no-did-update-set-state */
         this.setState({
           dirty: true,
           deckCardCounts: updateDeckCardCounts ? deckCardCounts : this.state.deckCardCounts,
+          extraData: updateDeckCardCounts ? { extraData, deckCardCounts } : { extraData, deckCardCounts: this.state.deckCardCounts },
         });
       }
     } else if (updateDeckCardCounts) {
       this.setState({
         deckCardCounts: deckCardCounts,
+        extraData: { extraData, deckCardCounts },
       });
     }
   }
@@ -271,6 +279,9 @@ class CardResultList extends React.Component<Props, State> {
           topBar: {
             title: {
               text: t`Spoiler Settings`,
+            },
+            backButton: {
+              title: t`Back`,
             },
           },
         },
@@ -563,18 +574,16 @@ class CardResultList extends React.Component<Props, State> {
   };
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
-    const { fontScale, investigator } = this.props;
+    const { investigator } = this.props;
     return (
       <CardSectionHeader
         section={section.header}
         investigator={investigator}
-        fontScale={fontScale}
       />
     );
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
-    const { fontScale } = this.props;
     const {
       showNonCollection,
     } = this.state;
@@ -584,21 +593,25 @@ class CardResultList extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={{ height: rowNonCollectionHeight(fontScale) }}>
-          <BasicButton
-            title={t`Edit Collection`}
-            onPress={this._editCollectionSettings}
-          />
-        </View>
+        <StyleContext.Consumer>
+          { ({ fontScale }) => (
+            <View style={{ height: rowNonCollectionHeight(fontScale) }}>
+              <ArkhamButton
+                icon="edit"
+                title={t`Edit Collection`}
+                onPress={this._editCollectionSettings}
+              />
+            </View>
+          ) }
+        </StyleContext.Consumer>
       );
     }
     return (
       <ShowNonCollectionFooter
         id={section.id}
-        fontScale={fontScale}
         title={ngettext(
-          msgid`Show ${section.nonCollectionCount} Non-Collection Card`,
-          `Show ${section.nonCollectionCount} Non-Collection Cards`,
+          msgid`Show ${section.nonCollectionCount} non-collection card`,
+          `Show ${section.nonCollectionCount} non-collection cards`,
           section.nonCollectionCount)}
         onPress={this._showNonCollectionCards}
       />
@@ -609,7 +622,6 @@ class CardResultList extends React.Component<Props, State> {
     const {
       limits,
       hasSecondCore,
-      fontScale,
       onDeckCountChange,
       renderCard,
     } = this.props;
@@ -622,7 +634,6 @@ class CardResultList extends React.Component<Props, State> {
     return (
       <CardSearchResult
         card={card}
-        fontScale={fontScale}
         count={deckCardCounts && deckCardCounts[card.code]}
         onDeckCountChange={onDeckCountChange}
         id={id}
@@ -647,25 +658,45 @@ class CardResultList extends React.Component<Props, State> {
       cardsCount,
       spoilerCardsCount,
     } = liveState;
-    if  (!query) {
+    if (!query) {
       return null;
     }
     if (!refreshing && (cardsCount + spoilerCardsCount) === 0) {
       return (
-        <View>
-          <View style={styles.emptyText}>
-            <Text style={typography.text}>
-              { searchTerm ?
-                t`No matching cards for "${searchTerm}"` :
-                t`No matching cards` }
-            </Text>
-          </View>
-          { this.props.expandSearchControls }
-        </View>
+        <StyleContext.Consumer>
+          { ({ borderStyle, typography }) => (
+            <View>
+              <View style={[styles.emptyText, borderStyle]}>
+                <Text style={typography.text}>
+                  { searchTerm ?
+                    t`No matching cards for "${searchTerm}"` :
+                    t`No matching cards` }
+                </Text>
+              </View>
+              { this.props.expandSearchControls }
+            </View>
+          ) }
+        </StyleContext.Consumer>
+
       );
     }
     return this.props.expandSearchControls;
   }
+
+  _renderHeader = () => {
+    const { renderHeader, noSearch } = this.props;
+    const searchBarPadding = !noSearch && Platform.OS === 'android';
+    if (!searchBarPadding && !renderHeader) {
+      return null;
+    }
+
+    return (
+      <>
+        { searchBarPadding && <View style={styles.searchBarPadding} /> }
+        { !!renderHeader && renderHeader() }
+      </>
+    );
+  };
 
   _renderFooter = (liveState: LiveState, refreshing?: boolean) => {
     const { spoilerCardsCount } = liveState;
@@ -682,24 +713,30 @@ class CardResultList extends React.Component<Props, State> {
     if (showSpoilerCards) {
       return (
         <View style={styles.footer}>
-          <BasicButton
+          <ArkhamButton
+            icon="edit"
             onPress={this._editSpoilerSettings}
-            title={t`Edit Spoiler Settings`}
+            title={t`Edit spoiler settings`}
           />
           { this.renderEmptyState(liveState, refreshing) }
         </View>
       );
     }
     const spoilerCount = ngettext(
-      msgid`Show ${spoilerCardsCount} Spoiler`,
-      `Show ${spoilerCardsCount} Spoilers`,
+      msgid`Show ${spoilerCardsCount} spoiler`,
+      `Show ${spoilerCardsCount} spoilers`,
       spoilerCardsCount);
     return (
       <View style={styles.footer}>
-        <BasicButton onPress={this._enableSpoilers} title={spoilerCount} />
-        <BasicButton
+        <ArkhamButton
+          icon="search"
+          onPress={this._enableSpoilers}
+          title={spoilerCount}
+        />
+        <ArkhamButton
+          icon="edit"
           onPress={this._editSpoilerSettings}
-          title={t`Edit Spoiler Settings`}
+          title={t`Edit spoiler settings`}
         />
         { this.renderEmptyState(liveState, refreshing) }
       </View>
@@ -761,11 +798,11 @@ class CardResultList extends React.Component<Props, State> {
 
   _renderResults = (dbState?: DbState, refreshing?: boolean) => {
     const {
-      fontScale,
       show_spoilers,
       handleScroll,
-      renderHeader,
       filterCard,
+      noSearch,
+      extraData,
     } = this.props;
     const {
       loadingMessage,
@@ -773,105 +810,120 @@ class CardResultList extends React.Component<Props, State> {
 
     if (!dbState || this.hasMajorChange(dbState)) {
       return (
-        <View style={styles.loading}>
-          <View style={styles.loadingText}>
-            <Text style={typography.text}>
-              { `${loadingMessage}...` }
-            </Text>
-          </View>
-          <ActivityIndicator
-            style={[{ height: 80 }]}
-            color={COLORS.lightText}
-            size="small"
-            animating
-          />
-        </View>
+        <StyleContext.Consumer>
+          { ({ colors, typography }) => (
+            <View style={styles.loading}>
+              { !noSearch && <View style={styles.searchBarPadding} />}
+              <View style={styles.loadingText}>
+                <Text style={typography.text}>
+                  { `${loadingMessage}...` }
+                </Text>
+              </View>
+              <ActivityIndicator
+                style={[{ height: 80 }]}
+                color={colors.lightText}
+                size="small"
+                animating
+              />
+            </View>
+          ) }
+        </StyleContext.Consumer>
       );
     }
-    const { cards, deckSections, deckCardCounts } = dbState;
-    const filteredDeckSections = filterCard ?
-      flatMap(deckSections, section => {
-        const data = filter(section.data, card => filterCard(card));
-        if (!data.length) {
-          return [];
-        }
-        return {
-          ...section,
-          data,
-        };
-      }) : deckSections;
-    const groupedCards = partition(
-      filterCard ? filter(cards, card => filterCard(card)) : cards,
-      card => {
-        return show_spoilers[card.pack_code] ||
-          !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
-      });
-
-    const liveState: LiveState = {
-      deckSections: filteredDeckSections,
-      deckCardCounts,
-      cards: this.bucketCards(groupedCards[0], 'cards'),
-      cardsCount: groupedCards[0].length,
-      spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
-      spoilerCardsCount: groupedCards[1].length,
-    };
-    this.latestData = liveState;
-    const data = this.getData(liveState, !!refreshing);
-    let offset = 0;
-    const elementHeights = map(
-      flatMap(data, section => {
-        return concat(
-          [cardSectionHeaderHeight(section.header, fontScale)], // Header
-          map(section.data || [], () => rowHeight(fontScale)), // Rows
-          [section.nonCollectionCount ? rowNonCollectionHeight(fontScale) : 0] // Footer (not used)
-        );
-      }),
-      (size) => {
-        const result = {
-          length: size,
-          offset: offset,
-        };
-        offset = offset + size;
-        return result;
-      });
-    const getItemLayout = (
-      data: SectionListData<Card>[] | null,
-      index: number
-    ): {
-      index: number;
-      length: number;
-      offset: number;
-    } => {
-      return {
-        ...elementHeights[index],
-        index,
-      };
-    };
     return (
-      <SectionList
-        refreshControl={
-          <RefreshControl
-            refreshing={!!refreshing}
-            onRefresh={this._refreshInDeck}
-          />
-        }
-        onScroll={handleScroll}
-        onScrollBeginDrag={this._handleScrollBeginDrag}
-        sections={data}
-        renderSectionHeader={this._renderSectionHeader}
-        renderSectionFooter={this._renderSectionFooter}
-        renderItem={this._renderCard}
-        initialNumToRender={30}
-        keyExtractor={this._cardToKey}
-        extraData={this.state.deckCardCounts}
-        getItemLayout={getItemLayout}
-        ListHeaderComponent={renderHeader}
-        ListFooterComponent={this._renderFooter(liveState, refreshing)}
-        stickySectionHeadersEnabled={false}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        scrollEventThrottle={1}
-      />
+      <StyleContext.Consumer>
+        { ({ fontScale, colors }) => {
+          const { cards, deckSections, deckCardCounts } = dbState;
+          const filteredDeckSections = filterCard ?
+            flatMap(deckSections, section => {
+              const data = filter(section.data, card => filterCard(card));
+              if (!data.length) {
+                return [];
+              }
+              return {
+                ...section,
+                data,
+              };
+            }) : deckSections;
+          const groupedCards = partition(
+            filterCard ? filter(cards, card => filterCard(card)) : cards,
+            card => {
+              return show_spoilers[card.pack_code] ||
+                !(card.spoiler || (card.linked_card && card.linked_card.spoiler));
+            });
+
+          const liveState: LiveState = {
+            deckSections: filteredDeckSections,
+            deckCardCounts,
+            cards: this.bucketCards(groupedCards[0], 'cards'),
+            cardsCount: groupedCards[0].length,
+            spoilerCards: this.bucketCards(groupedCards[1], 'spoiler'),
+            spoilerCardsCount: groupedCards[1].length,
+          };
+          this.latestData = liveState;
+          const data = this.getData(liveState, !!refreshing);
+          let offset = 0;
+          const elementHeights = map(
+            flatMap(data, section => {
+              return concat(
+                [cardSectionHeaderHeight(section.header, fontScale)], // Header
+                map(section.data || [], () => rowHeight(fontScale)), // Rows
+                [section.nonCollectionCount ? rowNonCollectionHeight(fontScale) : 0] // Footer (not used)
+              );
+            }),
+            (size) => {
+              const result = {
+                length: size,
+                offset: offset,
+              };
+              offset = offset + size;
+              return result;
+            });
+          const getItemLayout = (
+            data: SectionListData<Card>[] | null,
+            index: number
+          ): {
+            index: number;
+            length: number;
+            offset: number;
+          } => {
+            return {
+              ...elementHeights[index],
+              index,
+            };
+          };
+          return (
+            <SectionList
+              contentInset={noSearch || Platform.OS === 'android' ? undefined : { top: SEARCH_BAR_HEIGHT }}
+              contentOffset={noSearch || Platform.OS === 'android' ? undefined : { x: 0, y: -SEARCH_BAR_HEIGHT }}
+              refreshControl={
+                <RefreshControl
+                  refreshing={!!refreshing}
+                  onRefresh={this._refreshInDeck}
+                  tintColor={colors.lightText}
+                  progressViewOffset={noSearch ? 0 : SEARCH_BAR_HEIGHT}
+                />
+              }
+              onScroll={handleScroll}
+              onScrollBeginDrag={this._handleScrollBeginDrag}
+              sections={data}
+              renderSectionHeader={this._renderSectionHeader}
+              renderSectionFooter={this._renderSectionFooter}
+              renderItem={this._renderCard}
+              initialNumToRender={30}
+              keyExtractor={this._cardToKey}
+              extraData={extraData}
+              getItemLayout={getItemLayout}
+              ListHeaderComponent={this._renderHeader}
+              ListFooterComponent={this._renderFooter(liveState, refreshing)}
+              stickySectionHeadersEnabled={false}
+              keyboardShouldPersistTaps="always"
+              keyboardDismissMode="on-drag"
+              scrollEventThrottle={1}
+            />
+          );
+        } }
+      </StyleContext.Consumer>
     );
   };
 
@@ -926,6 +978,7 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     margin: m,
+    paddingTop: SEARCH_BAR_HEIGHT,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -941,6 +994,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     borderBottomWidth: 1,
-    borderColor: COLORS.divider,
+  },
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
   },
 });

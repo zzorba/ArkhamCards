@@ -9,7 +9,6 @@ import CampaignGuideContext, { CampaignGuideContextType } from '@components/camp
 
 interface Props {
   componentId: string;
-  fontScale: number;
   campaignA: ProcessedCampaign;
   campaignDataA: CampaignGuideContextType;
   campaignB: ProcessedCampaign;
@@ -68,7 +67,6 @@ export default class LinkedScenarioListComponent extends React.Component<Props> 
   render() {
     const {
       componentId,
-      fontScale,
       campaignA,
       campaignDataA,
       campaignB,
@@ -86,7 +84,6 @@ export default class LinkedScenarioListComponent extends React.Component<Props> 
             campaignId={campaignDataA.campaignId}
             campaignData={campaignDataA}
             processedCampaign={campaignA}
-            fontScale={fontScale}
             componentId={componentId}
             showLinkedScenario={this._showCampaignScenarioB}
           />
@@ -101,7 +98,6 @@ export default class LinkedScenarioListComponent extends React.Component<Props> 
             campaignId={campaignDataB.campaignId}
             campaignData={campaignDataB}
             processedCampaign={campaignB}
-            fontScale={fontScale}
             componentId={componentId}
             showLinkedScenario={this._showCampaignScenarioA}
           />

@@ -6,11 +6,10 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import BasicButton from '@components/core/BasicButton';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { CUSTOM, Campaign, DecksMap } from '@actions/types';
 import CampaignList from './CampaignList';
@@ -19,9 +18,10 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
 import { getAllDecks, getCampaigns, AppState } from '@reducers';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import { m } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface OwnProps {
   componentId: string;
@@ -39,7 +39,10 @@ interface State {
 }
 
 class MyCampaignsView extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options(): Options {
     return {
       topBar: {
         title: {
@@ -48,8 +51,8 @@ class MyCampaignsView extends React.Component<Props, State> {
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
-          color: COLORS.navButton,
-          testID: t`New Campaign`,
+          color: COLORS.M,
+          accessibilityLabel: t`New Campaign`,
         }],
       },
     };
@@ -125,6 +128,7 @@ class MyCampaignsView extends React.Component<Props, State> {
   }
 
   renderConditionalFooter(campaigns: Campaign[]) {
+    const { typography } = this.context;
     const {
       search,
     } = this.state;
@@ -155,7 +159,8 @@ class MyCampaignsView extends React.Component<Props, State> {
     return (
       <View>
         { this.renderConditionalFooter(campaigns) }
-        <BasicButton
+        <ArkhamButton
+          icon="campaign"
           title={t`New Campaign`}
           onPress={this._showNewCampaignDialog}
         />
@@ -165,7 +170,7 @@ class MyCampaignsView extends React.Component<Props, State> {
   }
 
   render() {
-    const { componentId, fontScale } = this.props;
+    const { componentId } = this.props;
     const { search } = this.state;
     const campaigns = this.filteredCampaigns();
     return (
@@ -180,7 +185,6 @@ class MyCampaignsView extends React.Component<Props, State> {
             componentId={componentId}
             campaigns={campaigns}
             footer={this.renderFooter(campaigns)}
-            fontScale={fontScale}
           />
         ) }
       </CollapsibleSearchBox>

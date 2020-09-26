@@ -1,137 +1,177 @@
 import { Platform, StyleSheet, TextStyle } from 'react-native';
 
-import { isBig, m, s } from './space';
 import COLORS from './colors';
-const sizeScale = 1;
 
-export const SMALL_FONT_SIZE = 12 * sizeScale;
+export interface TypographyColors {
+  D10: string;
+  L30: string;
+  L20: string;
+  lightText: string;
+  darkText: string;
+}
 
-export default StyleSheet.create({
-  header: {
-    fontFamily: 'System',
-    fontSize: 24 * sizeScale,
-    lineHeight: 32 * sizeScale,
-    fontWeight: '600',
-    color: COLORS.darkText,
-  },
-  cardText: {
-    fontFamily: 'System',
-    fontSize: isBig ? 18 : 14,
-    lineHeight: isBig ? 22 : 18,
-    color: COLORS.darkText,
-  },
-  text: {
-    fontFamily: 'System',
-    fontSize: 18 * sizeScale,
-    lineHeight: 22 * sizeScale,
-    color: COLORS.darkText,
-  },
-  small: {
-    fontFamily: 'System',
-    fontSize: SMALL_FONT_SIZE,
-    lineHeight: 18 * sizeScale,
-    color: COLORS.darkText,
-  },
-  italic: {
-    fontWeight: '300',
-    fontStyle: 'italic',
-  },
-  smallLabel: {
-    fontFamily: 'System',
-    fontSize: 12 * sizeScale,
-    lineHeight: 18 * sizeScale,
-    letterSpacing: 0.3,
-    color: COLORS.lightText,
-  },
-  categoryHeader: {
-    fontFamily: 'System',
-    fontSize: 12 * sizeScale,
-    lineHeight: 18 * sizeScale,
-    letterSpacing: 0.3,
-    color: COLORS.darkText,
-  },
-  label: {
-    fontFamily: 'System',
-    fontSize: 16 * sizeScale,
-    marginRight: 8 * sizeScale,
-    color: COLORS.darkText,
-  },
-  bigLabel: {
-    fontFamily: 'System',
-    fontSize: 22 * sizeScale,
-    lineHeight: 28 * sizeScale,
-    color: COLORS.darkText,
-  },
-  bold: {
-    fontWeight: '700',
-    color: COLORS.darkText,
-  },
-  gameFont: {
-    fontFamily: 'Teutonic',
-    fontSize: 18 * sizeScale,
-    lineHeight: 26 * sizeScale,
-    color: COLORS.darkText,
-  },
-  mediumGameFont: {
-    fontFamily: 'Teutonic',
-    fontSize: 24 * sizeScale,
-    lineHeight: 30 * sizeScale,
-    color: COLORS.darkText,
-  },
-  bigGameFont: {
-    fontFamily: 'Teutonic',
-    fontSize: 28 * sizeScale,
-    lineHeight: 36 * sizeScale,
-    color: COLORS.darkText,
-  },
-  dialogLabel: Platform.select({
-    ios: {
-      fontSize: 13 * sizeScale,
-      color: COLORS.darkText,
+export interface Typography {
+  searchLabel: TextStyle;
+  smallLabel: TextStyle;
+  small: TextStyle;
+  tiny: TextStyle;
+  large: TextStyle;
+  header: TextStyle;
+  button: TextStyle;
+  subHeaderText: TextStyle;
+  text: TextStyle;
+  regular: TextStyle;
+  bold: TextStyle;
+  boldItalic: TextStyle;
+  italic: TextStyle;
+  gameFont: TextStyle;
+  mediumGameFont: TextStyle;
+  bigGameFont: TextStyle;
+  dialogLabel: TextStyle;
+  left: TextStyle;
+  right: TextStyle;
+  center: TextStyle;
+  strike: TextStyle;
+  underline: TextStyle;
+  uppercase: TextStyle;
+  white: TextStyle;
+  error: TextStyle;
+  dark: TextStyle;
+  light: TextStyle;
+}
+
+export default function(fontScale: number, colors: TypographyColors, gameFont: string): Typography {
+  return StyleSheet.create({
+    searchLabel: {
+      fontFamily: 'Alegreya-Regular',
+      fontSize: 16 * fontScale,
+      lineHeight: 20 * fontScale,
+      color: colors.L20,
     },
-    android: {
-      fontSize: 16 * sizeScale,
-      color: COLORS.darkText,
+    smallLabel: {
+      fontFamily: 'Alegreya-Regular',
+      fontSize: 14 * fontScale,
+      lineHeight: 18 * fontScale,
+      letterSpacing: 0.3,
+      color: colors.lightText,
     },
-  }) as TextStyle,
-  left: {
-    textAlign: 'left',
-  },
-  right: {
-    textAlign: 'right',
-  },
-  strike: {
-    textDecorationLine: 'line-through',
-  },
-  center: {
-    textAlign: 'center',
-  },
-  error: {
-    color: COLORS.red,
-  },
-  underline: {
-    textDecorationLine: 'underline',
-  },
-  settingsLabel: {
-    flex: 1,
-    paddingLeft: m,
-    paddingRight: s,
-    fontSize: 16,
-  },
-  settingsValue: {
-    color: COLORS.darkGray,
-    fontSize: 14,
-    flex: 0,
-    paddingLeft: s,
-    paddingRight: m,
-  },
-  darkGray: {
-    color: COLORS.lightText,
-  },
-  white: {
-    color: COLORS.white,
-  },
-  uppercase: {
-    textTransform: 'uppercase',
-  },
-});
+    small: {
+      fontFamily: 'Alegreya-Regular',
+      fontSize: 16 * fontScale,
+      lineHeight: 18 * fontScale,
+      color: colors.darkText,
+    },
+    tiny: {
+      fontFamily: 'Alegreya-Regular',
+      fontSize: 12 * fontScale,
+      lineHeight: 14 * fontScale,
+      color: colors.darkText,
+    },
+    large: {
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20 * fontScale,
+      lineHeight: 20 * fontScale,
+      color: colors.darkText,
+    },
+    header: {
+      fontFamily: 'Alegreya-Bold',
+      fontSize: 24 * fontScale,
+      lineHeight: 32 * fontScale,
+      color: colors.darkText,
+    },
+    button: {
+      fontFamily: 'Alegreya-Regular',
+      fontSize: 18 * fontScale,
+      lineHeight: 20 * fontScale,
+      color: colors.L30,
+    },
+    subHeaderText: {
+      fontFamily: 'Alegreya-Medium',
+      // fontVariant: ['small-caps'],
+      fontSize: 18 * fontScale,
+      lineHeight: 22 * fontScale,
+      color: colors.D10,
+    },
+    text: {
+      fontFamily: 'Alegreya-Regular',
+      fontSize: 18 * fontScale,
+      lineHeight: 22 * fontScale,
+      color: colors.darkText,
+    },
+    regular: {
+      fontFamily: 'Alegreya-Regular',
+      fontWeight: '400',
+    },
+    bold: {
+      fontFamily: 'Alegreya-Bold',
+      fontWeight: '700',
+      color: colors.darkText,
+    },
+    boldItalic: {
+      fontFamily: 'Alegreya-ExtraBoldItalic',
+      fontWeight: '700',
+      color: colors.darkText,
+    },
+    italic: {
+      fontFamily: 'Alegreya-Italic',
+    },
+    gameFont: {
+      fontFamily: gameFont,
+      fontSize: 18 * fontScale,
+      lineHeight: 26 * fontScale,
+      color: colors.darkText,
+    },
+    mediumGameFont: {
+      fontFamily: gameFont,
+      fontSize: 24 * fontScale,
+      lineHeight: 30 * fontScale,
+      color: colors.darkText,
+    },
+    bigGameFont: {
+      fontFamily: gameFont,
+      fontSize: 28 * fontScale,
+      lineHeight: 36 * fontScale,
+      color: colors.darkText,
+    },
+    dialogLabel: Platform.select({
+      ios: {
+        fontSize: 13 * fontScale,
+        color: colors.darkText,
+      },
+      android: {
+        fontSize: 16 * fontScale,
+        color: colors.darkText,
+      },
+    }) as TextStyle,
+    left: {
+      textAlign: 'left',
+    },
+    right: {
+      textAlign: 'right',
+    },
+    center: {
+      textAlign: 'center',
+    },
+    strike: {
+      textDecorationLine: 'line-through',
+    },
+    underline: {
+      textDecorationLine: 'underline',
+    },
+    uppercase: {
+      textTransform: 'uppercase',
+    },
+    white: {
+      color: COLORS.white,
+    },
+    error: {
+      color: COLORS.red,
+    },
+    dark: {
+      color: colors.darkText,
+    },
+    light: {
+      color: colors.lightText,
+    },
+  });
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import typography from '@styles/typography';
 import space, { s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   label: string;
@@ -27,13 +27,14 @@ export default function DialogPlusMinusButtons({
   dec,
   disabled,
 }: Props) {
+  const { typography } = useContext(StyleContext);
   return (
     <View style={[styles.counterColumn, space.paddingTopXs]}>
       <Text style={typography.dialogLabel}>
         { label }
       </Text>
       <View style={styles.buttonsRow}>
-        <Text style={[typography.label, styles.labelText]}>
+        <Text style={[typography.small, styles.labelText]}>
           { value }
         </Text>
         <PlusMinusButtons

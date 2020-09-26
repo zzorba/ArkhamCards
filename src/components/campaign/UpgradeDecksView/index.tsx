@@ -18,13 +18,13 @@ import Card from '@data/Card';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState } from '@reducers';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import typography from '@styles/typography';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { updateCampaign } from '@components/campaign/actions';
 import UpgradeDecksList from './UpgradeDecksList';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import space, { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface UpgradeDecksProps {
   id: number;
@@ -45,6 +45,9 @@ interface ReduxActionProps {
 type Props = NavigationProps & UpgradeDecksProps & PlayerCardProps & ReduxProps & ReduxActionProps & DimensionsProps;
 
 class UpgradeDecksView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(passProps: UpgradeDecksProps) {
     return {
       topBar: {
@@ -57,8 +60,8 @@ class UpgradeDecksView extends React.Component<Props> {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
-          color: COLORS.navButton,
-          testID: t`Cancel`,
+          color: COLORS.M,
+          accessibilityLabel: t`Cancel`,
         }],
       },
     };
@@ -110,6 +113,7 @@ class UpgradeDecksView extends React.Component<Props> {
       componentId,
       id,
     } = this.props;
+    const { colors } = this.context;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -132,7 +136,7 @@ class UpgradeDecksView extends React.Component<Props> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -146,25 +150,24 @@ class UpgradeDecksView extends React.Component<Props> {
       id,
       campaign,
       componentId,
-      fontScale,
       allInvestigators,
       decks,
       cards,
       investigators,
     } = this.props;
+    const { backgroundStyle, typography } = this.context;
     if (!campaign) {
       return null;
     }
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <View style={space.marginS}>
-          <Text style={typography.label}>
+          <Text style={typography.small}>
             { t`By upgrading a deck, you can track XP and story card upgrades as your campaign develops.\n\nPrevious versions of your deck will still be accessible.` }
           </Text>
         </View>
         <UpgradeDecksList
           componentId={componentId}
-          fontScale={fontScale}
           campaignId={id}
           investigatorData={campaign.investigatorData}
           allInvestigators={allInvestigators}
@@ -218,7 +221,6 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    backgroundColor: COLORS.background,
   },
   footer: {
     height: 100,

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Card from '@data/Card';
 import PickerStyleButton from './PickerStyleButton';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   investigator: Card;
@@ -19,6 +19,7 @@ export default function InvestigatorButton({
   onPress,
   disabled,
 }: Props) {
+  const { colors } = useContext(StyleContext);
   return (
     <PickerStyleButton
       title={investigator.name}
@@ -27,7 +28,7 @@ export default function InvestigatorButton({
       onPress={onPress}
       disabled={disabled}
       colors={{
-        backgroundColor: COLORS.faction[investigator.factionCode()].background,
+        backgroundColor: colors.faction[investigator.factionCode()].background,
         textColor: 'white',
       }}
       widget={widget}

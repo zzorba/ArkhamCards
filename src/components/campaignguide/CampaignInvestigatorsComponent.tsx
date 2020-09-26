@@ -5,22 +5,19 @@ import { find, findLast, flatMap, forEach, map, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { Campaign, InvestigatorData, Trauma } from '@actions/types';
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { s, l } from '@styles/space';
 import COLORS from '@styles/colors';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   campaignData: CampaignGuideContextType;
   processedCampaign: ProcessedCampaign;
-  fontScale: number;
   updateCampaign: (
     id: number,
     sparseCampaign: Partial<Campaign>,
@@ -30,17 +27,16 @@ interface OwnProps {
   showTraumaDialog: (investigator: Card, traumaData: Trauma, onUpdate?: (code: string, trauma: Trauma) => void) => void;
 }
 
-type Props = OwnProps & StylesProps;
-
 interface State {
   spentXp: {
     [code: string]: number;
   };
   removeMode: boolean;
   appState: AppStateStatus;
+  xpDirty: boolean;
 }
 
-class CampaignInvestigatorsComponent extends React.Component<Props, State> {
+export default class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   _navEventListener: EventSubscription;
 
   static contextType = CampaignGuideContext;
@@ -58,6 +54,7 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
     this.state = {
       spentXp,
       removeMode: false,
+      xpDirty: false,
       appState: AppState.currentState,
     };
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -82,6 +79,12 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
 
     this._navEventListener && this._navEventListener.remove();
     InteractionManager.runAfterInteractions(this._syncCampaignData);
+  }
+
+  componentDidDisappear() {
+    if (this.state.xpDirty) {
+      this._syncCampaignData();
+    }
   }
 
   _syncCampaignData = () => {
@@ -159,6 +162,7 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
         ...this.state.spentXp,
         [code]: (this.state.spentXp[code] || 0) + 1,
       },
+      xpDirty: true,
     });
   };
 
@@ -168,6 +172,7 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
         ...this.state.spentXp,
         [code]: Math.max(0, (this.state.spentXp[code] || 0) - 1),
       },
+      xpDirty: true,
     });
   };
 
@@ -234,12 +239,13 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   _updateTraumaData = (code: string, trauma: Trauma) => {
     const { processedCampaign } = this.props;
     const latestScenario = findLast(processedCampaign.scenarios, s => s.type === 'completed');
-    console.log(`Updating ${code} ${JSON.stringify({ trauma, latestScenario })}`);
-    this.context.campaignState.setInterScenarioInvestigatorData(
-      code,
-      trauma,
-      latestScenario ? latestScenario?.id.encodedScenarioId : undefined
-    );
+    InteractionManager.runAfterInteractions(() => {
+      this.context.campaignState.setInterScenarioInvestigatorData(
+        code,
+        trauma,
+        latestScenario ? latestScenario?.id.encodedScenarioId : undefined
+      );
+    });
   };
 
   _showTraumaDialog = (investigator: Card, traumaData: Trauma) => {
@@ -273,15 +279,16 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
       campaignData: {
         playerCards,
       },
-      fontScale,
       componentId,
       deleteCampaign,
-      gameFont,
     } = this.props;
     const {
       removeMode,
       spentXp,
     } = this.state;
+    const {
+      style: { gameFont, borderStyle, typography },
+    } = this.context;
     const canEditTrauma = this.canEditTrauma();
     return (
       <CampaignGuideContext.Consumer>
@@ -303,7 +310,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
                   decSpentXp={this._decXp}
                   deck={latestDecks[investigator.code]}
                   componentId={componentId}
-                  fontScale={fontScale}
                   investigator={investigator}
                   traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
                   chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
@@ -331,7 +337,7 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
                   </Text>
                 </View>
               ) }
-              <View style={styles.bottomBorder}>
+              <View style={[styles.bottomBorder, borderStyle]}>
                 { map(killedInvestigators, investigator => (
                   <InvestigatorCampaignRow
                     key={investigator.code}
@@ -343,7 +349,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
                     campaignId={campaignId}
                     deck={latestDecks[investigator.code]}
                     componentId={componentId}
-                    fontScale={fontScale}
                     investigator={investigator}
                     traumaAndCardData={campaignLog.traumaAndCardData(investigator.code)}
                   />
@@ -364,8 +369,6 @@ class CampaignInvestigatorsComponent extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(CampaignInvestigatorsComponent);
-
 const styles = StyleSheet.create({
   header: {
     padding: s,
@@ -373,6 +376,5 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

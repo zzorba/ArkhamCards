@@ -28,7 +28,6 @@ interface Props {
   step: InputStep;
   componentId: string;
   campaignLog: GuidedCampaignLog;
-  fontScale: number;
   switchCampaignScenario: () => void;
 }
 
@@ -40,7 +39,6 @@ export default class InputStepComponent extends React.Component<Props> {
       step,
       campaignLog,
       componentId,
-      fontScale,
       switchCampaignScenario,
     } = this.props;
     switch (step.input.type) {
@@ -138,7 +136,6 @@ export default class InputStepComponent extends React.Component<Props> {
               <UpgradeDecksInput
                 id={step.id}
                 componentId={componentId}
-                fontScale={fontScale}
                 latestDecks={latestDecks}
                 campaignState={campaignState}
               />
@@ -204,7 +201,6 @@ export default class InputStepComponent extends React.Component<Props> {
         return (
           <RandomLocationInputComponent
             input={step.input}
-            fontScale={fontScale}
           />
         );
       default: {

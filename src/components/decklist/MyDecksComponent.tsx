@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import {
   Button,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -20,9 +21,11 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import DeckListComponent from '@components/decklist/DeckListComponent';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space, { m, s, xs } from '@styles/space';
 import { getAllDecks, getMyDecksState, getDeckToCampaignMap, AppState } from '@reducers';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { SearchOptions } from '@components/core/CollapsibleSearchBox';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 interface OwnProps {
   componentId: string;
@@ -31,7 +34,7 @@ interface OwnProps {
   onlyInvestigators?: string[];
   filterDeckIds?: number[];
   filterInvestigators?: string[];
-  customHeader?: ReactNode;
+  searchOptions?: SearchOptions;
   customFooter?: ReactNode;
 }
 
@@ -51,6 +54,9 @@ interface ReduxActionProps {
 type Props = OwnProps & ReduxProps & ReduxActionProps & LoginStateProps & NetworkStatusProps & DimensionsProps;
 
 class MyDecksComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _reLogin = () => {
     this.props.login();
   };
@@ -89,7 +95,7 @@ class MyDecksComponent extends React.Component<Props> {
       isConnected,
       width,
     } = this.props;
-
+    const { typography } = this.context;
     if (!error && networkType !== NetInfoStateType.none) {
       return null;
     }
@@ -138,11 +144,12 @@ class MyDecksComponent extends React.Component<Props> {
       signedIn,
       width,
     } = this.props;
+    const { colors, typography } = this.context;
     if (signedIn) {
       return null;
     }
     return (
-      <View style={[styles.signInFooter, { width }]}>
+      <View style={[styles.signInFooter, { backgroundColor: colors.L20, width }]}>
         <Text style={[typography.text, space.marginBottomM]}>
           { t`ArkhamDB is a popular deck building site where you can manage and share decks with others.\n\nSign in to access your decks or share decks you have created with others.` }
         </Text>
@@ -152,18 +159,21 @@ class MyDecksComponent extends React.Component<Props> {
   }
 
   renderHeader() {
-    const {
-      customHeader,
-    } = this.props;
+    const { searchOptions } = this.props;
+    const searchPadding = !!searchOptions && Platform.OS === 'android';
     const error = this.renderError();
-    if (!customHeader && !error) {
+    if (!error && !searchPadding) {
       return null;
     }
     return (
-      <View style={styles.stack}>
-        { error }
-        { !!customHeader && customHeader }
-      </View>
+      <>
+        { !!error && (
+          <View style={styles.stack}>
+            { error }
+          </View>
+        ) }
+        { searchPadding && <View style={styles.searchBarPlaceholder} /> }
+      </>
     );
   }
 
@@ -179,6 +189,7 @@ class MyDecksComponent extends React.Component<Props> {
       onlyDeckIds,
       deckToCampaign,
       signedIn,
+      searchOptions,
     } = this.props;
     const onlyInvestigatorSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterDeckIdsSet = new Set(filterDeckIds);
@@ -191,6 +202,7 @@ class MyDecksComponent extends React.Component<Props> {
     });
     return (
       <DeckListComponent
+        searchOptions={searchOptions}
         customHeader={this.renderHeader()}
         customFooter={this.renderFooter()}
         deckIds={deckIds}
@@ -250,7 +262,6 @@ const styles = StyleSheet.create({
   signInFooter: {
     padding: m,
     marginTop: s,
-    backgroundColor: COLORS.lightBackground,
   },
   footer: {
     width: '100%',
@@ -259,5 +270,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
+  },
+  searchBarPlaceholder: {
+    height: SEARCH_BAR_HEIGHT,
   },
 });

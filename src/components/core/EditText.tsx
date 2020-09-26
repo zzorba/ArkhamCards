@@ -1,67 +1,75 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useCallback } from 'react';
+import { Alert, Platform } from 'react-native';
+// @ts-ignore TS7016
+import DialogAndroid from 'react-native-dialogs';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
-import SettingsEditText from './SettingsEditText';
-import COLORS from '@styles/colors';
-import { m, s } from '@styles/space';
-import typography from '@styles/typography';
+import PickerStyleButton from './PickerStyleButton';
 
 interface Props {
   title: string;
   dialogDescription?: string;
   placeholder?: string;
   value?: string;
-  onValueChange: (text: string) => void;
+  onValueChange: (text?: string) => void;
+  settingsStyle?: boolean;
 }
 
-function EditText({
+async function openDialog({
+  title,
+  dialogDescription,
+  value,
+  onValueChange,
+}: Props) {
+  if (Platform.OS === 'ios') {
+    Alert.prompt(
+      title,
+      dialogDescription,
+      [
+        { text: t`Cancel`, onPress: () => {
+          // intentionally empty
+        }, style: 'cancel' },
+        {
+          text: t`Done`,
+          onPress: onValueChange,
+        },
+      ],
+      'plain-text',
+      (value) || '',
+    );
+  } else {
+    const { action, text } = await DialogAndroid.prompt(title, dialogDescription, {
+      defaultValue: value || '',
+      positiveText: t`Done`,
+      negativeText: t`Cncel`,
+      keyboardType: null,
+    });
+    if (action === DialogAndroid.actionPositive) {
+      onValueChange(text);
+    }
+  }
+}
+
+export default function EditText({
   title,
   dialogDescription,
   placeholder,
   value,
   onValueChange,
-  gameFont,
-}: Props & StylesProps) {
+  settingsStyle,
+}: Props) {
+  const showDialog = useCallback(
+    () => openDialog({ title, dialogDescription, value, onValueChange }),
+    [title, dialogDescription, value, onValueChange]
+  );
   return (
-    <SettingsEditText
+    <PickerStyleButton
+      id="edit"
       title={title}
-      titleStyle={{ ...typography.mediumGameFont, fontFamily: gameFont }}
-      dialogDescription={dialogDescription}
-      valuePlaceholder={placeholder}
-      valueProps={{
-        numberOfLines: 2,
-        ellipsizeMode: 'clip',
-      }}
-      valueStyle={styles.value}
-      onValueChange={onValueChange}
-      value={value}
-      containerStyle={styles.container}
-      positiveButtonTitle={t`Done`}
-      negativeButtonTitle={t`Cancel`}
+      value={value || placeholder}
+      onPress={showDialog}
+      widget="nav"
+      settingsStyle={settingsStyle}
     />
   );
 }
-
-export default withStyles(EditText);
-
-const styles = StyleSheet.create({
-  value: {
-    fontFamily: 'System',
-    fontSize: 16,
-    color: COLORS.darkText,
-    textAlign: 'left',
-  },
-  container: {
-    backgroundColor: COLORS.background,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    paddingLeft: m,
-    paddingTop: s,
-    paddingBottom: s,
-  },
-});

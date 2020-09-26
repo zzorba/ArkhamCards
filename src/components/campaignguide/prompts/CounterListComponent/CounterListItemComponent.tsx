@@ -1,12 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType } from '@data/scenario/types';
-import typography from '@styles/typography';
 import { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   code: string;
@@ -21,7 +19,10 @@ interface Props {
   editable: boolean;
 }
 
-class CounterListItemComponent extends React.Component<Props & StylesProps> {
+export default class CounterListItemComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _inc = () => {
     const {
       onInc,
@@ -40,7 +41,8 @@ class CounterListItemComponent extends React.Component<Props & StylesProps> {
   };
 
   renderCount() {
-    const { color, gameFont } = this.props;
+    const { color } = this.props;
+    const { gameFont, typography } = this.context;
     return (
       <View style={styles.count}>
         <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, color ? typography.white : {}]}>
@@ -58,11 +60,12 @@ class CounterListItemComponent extends React.Component<Props & StylesProps> {
       color,
       value,
       editable,
-      gameFont,
     } = this.props;
+    const { gameFont, borderStyle, typography } = this.context;
     return (
       <View style={[
         styles.promptRow,
+        borderStyle,
         color ? { backgroundColor: color } : {},
       ]}>
         <View style={styles.column}>
@@ -94,8 +97,6 @@ class CounterListItemComponent extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(CounterListItemComponent);
-
 const styles = StyleSheet.create({
   count: {
     paddingLeft: xs,
@@ -104,7 +105,6 @@ const styles = StyleSheet.create({
   },
   promptRow: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     padding: m,
     paddingTop: s,
     paddingBottom: s,

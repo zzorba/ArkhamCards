@@ -1,12 +1,11 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import { ScrollView } from 'react-native';
 
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import CampaignLogComponent from './CampaignLogComponent';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 export interface CampaignLogProps {
   campaignId: number;
@@ -14,35 +13,23 @@ export interface CampaignLogProps {
   campaignLog: GuidedCampaignLog;
 }
 
-type Props = CampaignLogProps & NavigationProps & DimensionsProps;
+type Props = CampaignLogProps & NavigationProps;
 
-class CampaignLogView extends React.Component<Props> {
-  render() {
-    const {
-      campaignId,
-      campaignGuide,
-      campaignLog,
-      fontScale,
-      componentId,
-    } = this.props;
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <CampaignLogComponent
-          componentId={componentId}
-          campaignId={campaignId}
-          campaignGuide={campaignGuide}
-          campaignLog={campaignLog}
-          fontScale={fontScale}
-        />
-      </ScrollView>
-    );
-  }
+export default function CampaignLogView({
+  campaignId,
+  campaignGuide,
+  campaignLog,
+  componentId,
+}: Props) {
+  const { backgroundStyle } = useContext(StyleContext);
+  return (
+    <ScrollView contentContainerStyle={backgroundStyle}>
+      <CampaignLogComponent
+        componentId={componentId}
+        campaignId={campaignId}
+        campaignGuide={campaignGuide}
+        campaignLog={campaignLog}
+      />
+    </ScrollView>
+  );
 }
-
-export default withDimensions(CampaignLogView);
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.background,
-  },
-});

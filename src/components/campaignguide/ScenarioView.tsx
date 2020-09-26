@@ -39,9 +39,10 @@ const RESET_ENABLED = false;
 class ScenarioView extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
+
   undoEnabled: boolean;
 
-  static get options() {
+  static options() {
     return ScenarioView.dynamicOptions(false);
   }
 
@@ -49,17 +50,19 @@ class ScenarioView extends React.Component<Props> {
     const rightButtons = RESET_ENABLED ? [{
       icon: iconsMap.replay,
       id: 'reset',
-      color: COLORS.navButton,
+      color: COLORS.M,
     }] : [{
       icon: iconsMap.menu,
       id: 'log',
-      color: COLORS.navButton,
+      color: COLORS.M,
+      accessibilityLabel: t`Campaign Log`,
     }];
     if (undo) {
       rightButtons.push({
         icon: iconsMap.undo,
         id: 'undo',
-        color: COLORS.navButton,
+        color: COLORS.M,
+        accessibilityLabel: t`Undo`,
       });
     }
     return {
@@ -192,18 +195,18 @@ class ScenarioView extends React.Component<Props> {
   };
 
   render() {
-    const { componentId, fontScale, width, processedScenario } = this.props;
+    const { componentId, width, processedScenario, style: { backgroundStyle } } = this.props;
     const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
       processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;
     return (
       <KeyboardAvoidingView
-        style={styles.keyboardView}
+        style={[styles.keyboardView, backgroundStyle]}
         behavior="position"
         enabled
         keyboardVerticalOffset={100}
       >
         <KeepAwake />
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
           { !!hasInterludeFaq && (
             <BasicButton
               title={t`Interlude FAQ`}
@@ -212,7 +215,6 @@ class ScenarioView extends React.Component<Props> {
           ) }
           <StepsComponent
             componentId={componentId}
-            fontScale={fontScale}
             width={width}
             steps={processedScenario.steps}
             switchCampaignScenario={this._switchCampaignScenario}
@@ -232,13 +234,9 @@ const styles = StyleSheet.create({
   footer: {
     marginTop: 64,
   },
-  container: {
-    backgroundColor: COLORS.background,
-  },
   keyboardView: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    backgroundColor: 'transparent',
   },
 });

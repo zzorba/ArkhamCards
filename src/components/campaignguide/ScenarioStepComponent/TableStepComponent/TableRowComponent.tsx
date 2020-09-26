@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { TableRow } from '@data/scenario/types';
-import COLORS from '@styles/colors';
 import { s, xs } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   row: TableRow;
@@ -20,11 +20,13 @@ const ROW_COLORS = {
 };
 
 export default function TableRowComponent({ row, background, last }: Props) {
+  const { borderStyle } = useContext(StyleContext);
   return (
     <View style={styles.row}>
       { map(row.cells, (cell, idx) => (
         <View style={[
           styles.cell,
+          borderStyle,
           {
             flex: cell.size,
             backgroundColor: ROW_COLORS[background],
@@ -47,7 +49,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderLeftWidth: 2,
     borderRightWidth: 0,
-    borderColor: COLORS.divider,
     justifyContent: 'center',
     padding: xs,
   },

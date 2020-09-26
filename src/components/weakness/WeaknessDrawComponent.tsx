@@ -23,9 +23,8 @@ import ToggleFilter from '@components/core/ToggleFilter';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
 import { CARD_RATIO, HEADER_HEIGHT, TABBAR_HEIGHT } from '@styles/sizes';
-import typography from '@styles/typography';
 import space, { s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const PLAYER_BACK = require('../../../assets/player-back.png');
 
@@ -55,6 +54,9 @@ interface State {
 }
 
 class WeaknessDrawComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onHeaderLayout!: (event: LayoutChangeEvent) => void;
   _onFlippedHeaderLayout!: (event: LayoutChangeEvent) => void;
 
@@ -267,7 +269,6 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
       customFlippedHeader,
       saving,
       campaignMode,
-      fontScale,
     } = this.props;
     const {
       selectedTraits,
@@ -277,13 +278,14 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
       standalone,
       multiplayer,
     } = this.state;
+    const { colors, typography } = this.context;
     if (saving) {
       return (
         <View style={[styles.buttonWrapper, { height: headerHeight }]}>
           <Text style={typography.text}>{ t`Saving` }</Text>
           <ActivityIndicator
             style={[{ height: 80 }]}
-            color={COLORS.lightText}
+            color={colors.lightText}
             size="small"
             animating
           />
@@ -316,7 +318,6 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
           values={this.allTraits()}
           selection={selectedTraits}
           onChange={this._onTraitsChange}
-          fontScale={fontScale}
         />
         <View style={styles.toggleRow}>
           <View style={styles.toggleColumn}>
@@ -343,7 +344,6 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   }
 
   renderCardImage(card: Card, width: number) {
-    const { fontScale } = this.props;
     if (card.imagesrc) {
       return (
         <FastImage
@@ -360,7 +360,6 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
         <CardDetailComponent
           card={card}
           width={width}
-          fontScale={fontScale}
           showSpoilers
         />
       </View>
@@ -368,6 +367,7 @@ class WeaknessDrawComponent extends React.Component<Props, State> {
   }
 
   renderCard() {
+    const { typography } = this.context;
     const {
       selectedTraits,
       nextCard,

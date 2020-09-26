@@ -1679,9 +1679,9 @@
       "text": "Any one investigator may choose to add Professor Warren Rice to their deck. This card does not count toward that investigator’s deck size.",
       "effects": [
         {
-          "type": "add_card",
-          "investigator": "choice",
-          "card": "02061"
+        "type": "add_card",
+        "investigator": "choice",
+        "card": "02061"
         }
       ]
     },
@@ -4133,7 +4133,7 @@
     },
     {
       "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life.",
+      "text": "The lead investigator earns 1 experience, as they refused to let the night’s events destroy their life.",
       "effects": [
         {
           "type": "earn_xp",
@@ -7491,7 +7491,7 @@
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into The King in Yellow. What is true? What is real? Only you can sort through this madness."
+      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness."
     },
     {
       "id": "heed_the_warning",
@@ -13704,7 +13704,7 @@
     },
     {
       "id": "lead_investigator_xp",
-      "text": "The lead investigator earns 1 experience, as they refuses to let the night’s events destroy their life.",
+      "text": "The lead investigator earns 1 experience, as they refused to let the night’s events destroy their life.",
       "effects": [
         {
           "type": "earn_xp",
@@ -14827,7 +14827,7 @@
     {
       "id": "ignore_the_warning",
       "type": "story",
-      "text": "For hours, you struggle with this insight into The King in Yellow. What is true? What is real? Only you can sort through this madness."
+      "text": "For hours, you struggle with this insight into <u>The King in Yellow</u>. What is true? What is real? Only you can sort through this madness."
     },
     {
       "id": "heed_the_warning",
@@ -17952,7 +17952,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rules apply:\n\"Hastur's health cannot be reduced to less than 2 unless any investigator 'knows the secret.'\"\nAttach the Return to Dim Carcosa scenario reference card to the scenario reference card as a reminder."
+      "text": "For the duration of this scenario, the following additional rules apply:\n\"Hastur's health cannot be reduced to less than 2 [per_investigator] unless any investigator 'knows the secret.'\"\nAttach the Return to Dim Carcosa scenario reference card to the scenario reference card as a reminder."
     }
   ],
   "resolutions": [
@@ -24861,11 +24861,6 @@
       }
     },
     {
-      "id": "put_harbinger_in_pursuit",
-      "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
-    },
-    {
       "id": "check_agenda_6",
       "hidden": true,
       "type": "branch",
@@ -25313,8 +25308,13 @@
       ]
     },
     {
+      "id": "put_harbinger_in_pursuit",
+      "bullet_type": "small",
+      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+    },
+    {
       "id": "set_aside_harbinger",
-      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one."
+      "text": "Search the collection for the new Harbinger of Valusia <i>(The Sleeper Returns)</i> and set it aside, out of play. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. If the Harbinger of Valusia would enter play during this scenario, use this version instead of the original one. "
     },
     {
       "id": "create_exploration_deck",
@@ -27704,7 +27704,7 @@
       "type": "input",
       "input": {
         "type": "investigator_counter",
-        "text": "Supply points to purchase (2 expeirence each)",
+        "text": "Supply points to purchase (2 experience each)",
         "max": 5,
         "show_special_xp": "resupply_points",
         "effects": [
@@ -30216,15 +30216,12 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Location Placement",
-      "horizontal": "normal",
-      "vertical": "half",
+      "horizontal": "half",
+      "vertical": "normal",
       "locations": [
-        ["02050_back", "blank", "02056_back", "blank"],
-        ["blank", "02048_back", "blank", "blank"],
-        ["02049_back", "blank", "02053_back", "02054_back"],
-        ["blank", "02051_back", "blank", "blank"],
-        ["blank", "blank", "blank", "blank"],
-        ["blank", "02052_back", "blank", "blank"]
+        ["blank", "blank", "blank", "02074_back", "blank", "blank"],
+        ["blank", "blank", "blank", "02073_back", "blank", "blank"],
+        ["02070_back", "blank", "02071_back", "blank", "02072_back", "blank"]
       ]
     },
     {
@@ -31383,10 +31380,14 @@
           "section": "campaign_notes",
           "id": "rougarou_continues_to_haunt_the_bayou",
           "text": "the Rougarou continues to haunt the bayou."
+        },
+        {
+          "type": "add_card",
+          "investigator": "lead_investigator",
+          "card": "81029"
         }
       ]
     },
-
     {
       "id": "resolution_1",
       "type": "resolution",
@@ -40471,7 +40472,7 @@
   "campaign":
 {
   "id": "tdea",
-  "position": 1,
+  "position": 5,
   "version": 1,
   "name": "The Dream-Quest",
   "campaign_log": [
@@ -44884,6 +44885,7 @@
     "check_carried_to_the_cold_wastes",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "set_aside_cards",
     "encounter_deck",
     "stop_rule",
@@ -44959,6 +44961,18 @@
       ]
     },
     {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "06295_back", "blank"],
+        ["06297_back", "06296_back", "blank"],
+        ["blank", "06298_back", "06299_back"]
+      ]
+    },
+    {
       "id": "set_aside_cards",
       "text": "Set the following cards aside, out of play: High Priest Not to Be Described, each of the 5 copies of Nyarlathotep, each of the 4 copies of Whispering Chaos, both copies of Myriad Forms, and The Crawling Mist."
     },
@@ -45000,7 +45014,8 @@
               "shuffle_nyarlathotep",
               "shuffle_more_encounter_cards",
               "randomize_forsaken_tower",
-              "forsaken_tower_explanation"
+              "forsaken_tower_explanation",
+              "forsaken_tower_locations"
             ],
             "effects": [
               {
@@ -45141,6 +45156,18 @@
         {
           "text": "The location to the left of The Great Hall is called the “Western Tower.”"
         }
+      ]
+    },
+    {
+      "id": "forsaken_tower_locations",
+      "type": "location_setup",
+      "text": "Location Placement",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        ["blank", "06300_back", "blank"],
+        ["06300_back", "06299", "06300_back"],
+        ["blank", "06300_back", "blank"]
       ]
     },
     {
@@ -45541,7 +45568,7 @@
   "campaign":
 {
   "id": "tdeb",
-  "position": 1,
+  "position": 6,
   "version": 1,
   "name": "The Web of Dreams",
   "campaign_log": [
@@ -48700,7 +48727,7 @@
 {
   "id": "weaver_of_the_cosmos",
   "scenario_name": "Weaver of the Cosmos",
-  "full_name": "Scenario IV: Weaver of the Cosmos",
+  "full_name": "Scenario IV-B: Weaver of the Cosmos",
   "setup": [
     "weaver_intro",
     "gather_encounter_sets",
@@ -49085,9 +49112,12 @@
       "type": "location_setup",
       "text": "Atlach-Nacha Diagram",
       "horizontal": "normal",
-      "vertical": "normal",
-      "locations": [["blank"]],
-      "note": "Coming Soon"
+      "vertical": "half",
+      "locations": [
+        ["06347","blank","06348"],
+        ["blank","atlach","blank"],
+        ["06349","blank","06350"]
+      ]
     },
     {
       "id": "shuffle_spinner_of_darkness",
@@ -56912,6 +56942,1166 @@
       "steps": ["maybe_add_tablet_token", "cleared_path_to_temple", "alejandro_followed_to_ruins", "ichtaca_is_wary", "record_vengeance", "earn_xp", "check_investigators_poisoned"]
     }
   ]
+}
+]}
+,
+{
+  "campaign":
+{
+  "id": "tic",
+  "position": 7,
+  "version": 1,
+  "name": "The Innsmouth Conspiracy",
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Campaign Notes"
+    },
+    {
+      "id": "recovered_memories",
+      "title": "Recovered Memories"
+    },
+    {
+      "id": "possible_suspects",
+      "title": "Possible Suspects"
+    },
+    {
+      "id": "possible_hideouts",
+      "title": "Possible Hideouts"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
+    }
+  ],
+  "scenarios": [
+    "grotto_of_despair",
+    "puzzle_pieces",
+    "disappearance_of_elina_harper",
+    "syzygy",
+    "in_too_deep",
+    "devil_reef",
+    "under_the_waves",
+    "horror_in_high_gear",
+    "a_light_in_the_fog",
+    "the_lair_of_dagon",
+    "hidden_truths",
+    "into_the_maelstrom",
+    "tic_epilogue"
+  ],
+  "setup": [
+    "prologue",
+    "choose_investigators",
+    "difficulty_choice"
+  ],
+  "steps": [
+    {
+      "id": "prologue",
+      "type": "story",
+      "title": "They blossom in the depths",
+      "text": "\"It was a city of great expanse and compact construction, but with a ghostly lack of visible signs of life.\"\n- H. P. Lovecraft, The Shadow Over Innsmouth"
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
+    {
+      "id": "difficulty_choice",
+      "text": "Choose difficulty level:",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [{
+          "id": "easy",
+          "text": "Easy <i>(I want to experience the story)</i>",
+          "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "easy"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "+1", "+1", "0", "0", "0", "-1", "-1", "-1", "-2", "-2", "skull", "skull", "cultist", "cultist", "tablet", "tablet", "elder_thing", "elder_thing", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "standard",
+          "text": "Standard <i>(I want a challenge)</i>",
+          "description": "+1, 0, 0, -1, -1, -1 -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "standard"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "+1", "0", "0", "-1", "-1", "-1", "-2", "-2", "-3", "-4", "skull", "skull", "cultist", "cultist", "tablet", "tablet", "elder_thing", "elder_thing", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hard",
+          "text": "Hard <i>(I want a true nightmare)</i>",
+          "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "hard"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "0", "0", "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-5", "skull", "skull", "cultist", "cultist", "tablet", "tablet", "elder_thing", "elder_thing", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "expert",
+          "text": "Expert <i>(I want Arkham Horror)</i>",
+          "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+          "effects": [
+            {
+              "type": "campaign_data",
+              "setting": "difficulty",
+              "value": "expert"
+            },
+            {
+              "type": "add_chaos_token",
+              "tokens": [
+                "0", "-1", "-1", "-2", "-2", "-3", "-3", "-4", "-4", "-5", "-6", "-8", "skull", "skull", "cultist", "cultist", "tablet", "tablet", "elder_thing", "elder_thing", "auto_fail", "elder_sign"
+              ]
+            }
+          ]
+        }]
+      }
+    }
+  ]
+}
+, "scenarios": [
+{
+  "id": "a_light_in_the_fog",
+  "scenario_name": "A Light in the Fog",
+  "full_name": "Scenario VI: A Light in the Fog",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "devil_reef",
+  "scenario_name": "Devil Reef",
+  "full_name": "Scenario IV: Devil Reef",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "disappearance_of_elina_harper",
+  "scenario_name": "The Dissappearance of Elina Harper",
+  "full_name": "Scenario II: The Dissappearance of Elina Harper",
+  "setup": [
+    "intro_1",
+    "info_summary",
+    "intro_2",
+    "investigator_setup",
+    "$upgrade_decks",
+    "gather_encounter_sets",
+    "setup_locations",
+    "setup_track_deck",
+    "set_aside_agenda_act",
+    "set_aside_cards",
+    "encounter_deck",
+    "find_agent_harper_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "info_summary",
+      "type": "rule_reminder",
+      "text": "The following is a summary of the information investigators have learned about the city of Innsmouth.",
+      "bullets": [
+        {
+          "text": "From the market square is the grocery store of the retail chain First Well recognizable nationally. The business is run by a young man run out of Arkham named Brian Burnham. The idea that anyone else from Arkham is here, fills you with hope - and also with a little pity for the boy."
+        },
+        {
+
+          "text": "Gilman House, the only Innsmouth hotel, is owned by Othera Gilman. The shabby appearance of the building evokes Inside you regret not just a day trip to Innsmouth to have undertaken."
+        },
+        {
+          "text": "If you follow the road from Gilman House, you come across, cramped between a dreary restaurant and a drugstore on \"The Small Book Store\". The business derives its name not only from its size, but also from its name Exeunt owner Joyce Little. Mr. Sargent doesn't seem to be doing much for her interested."
+        },
+        {
+          "text": "To the north, on Manuxet, is the Marsh Refinery, the heart of the city's only industry. Joe speaks about their owner Barnabas - whom he calls \"the old Marsh\" - with a certain amount of awe and admiration."
+        },
+        {
+          "text": "Mr. Sargent advises you to avoid the old bridge on Fish Street that Broken in years ago and has not been repaired since is. Now it serves as a retreat for tramps. \"And hear you not on the Trunk’nbold Zadok, ”warns the bus driver. \"His Stories are just stories. Nothing more.\""
+        },
+        {
+          "text": "Further to the east, past Water Street, is the port of Innsmouth. Sargent warns you not to get in the way of the dockers to come because they are a fun bunch, the strangers are not are used to - especially you should go to the not so friendly ones Watch out for Robert Friendly, whose name is Sargent with a certain Express hostility in voice."
+        },
+        {
+          "text": "In the north on the New Church Square there is an old Masonic temple, which is now an organization called the “Esoteric Order of Dagon ”has taken over. What in the old, dilapidated building is really going on remains a mystery to everyone."
+        }
+      ]
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "investigator_setup",
+      "title": "Investigator Setup",
+      "text": "Agent Dawson has told the investigators their job and they on theirs Mission prepared. Each investigator may now use his experience points output, which in the campaign log under \"Unissued EP\" are noted."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "disappearance_of_elina_harper",
+        "agents_of_dagon",
+        "fog_over_innsmouth",
+        "the_locals",
+        "chilling_cold",
+        "locked_doors",
+        "nightgaunts",
+        "arkham"
+      ],
+      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the location, act, agenda, or scenario reference cards from that set"
+    },
+    {
+      "id": "setup_locations",
+      "text": "The following locations are brought into play: Innsmouth Market Square, Marsh Refinery, Innsmouth Harbor, Fish Street Bridge, First National Grocery Store, Gilman House and Der Kleine Buchladen.",
+      "bullets": [
+        {
+          "text": "Each investigator starts the game in the marketplace of Innsmouth."
+        }
+      ]
+    },
+    {
+      "id": "setup_track_deck",
+      "text": "The track deck is prepared by following the steps below be performed:",
+      "bullets": [
+        {
+          "text": "The double-sided overview map Agent Harper will find next to on the scenario overview card."
+        },
+        {
+          "text": "The 6 unique opponents with the Suspect trait and the 6 unilateral locations with the hiding feature are divided into 2 separate Split Stack: A stack should only consist of suspect opponents consist, the other just hiding places."
+        },
+        {
+          "text": "1 card from each pile is determined at random (1 suspect opponent and 1 hiding place) and hidden without looking at it, placed under the overview map to find Agent Harper."
+        },
+        {
+          "text": "The 10 remaining cards of the 2 piles become a deck mixed together, called the track deck. This deck is placed next to the scenario overview map."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_agenda_act",
+      "text": "Agenda 3 and Scene 2 are set aside as not in play. (They will not be used when creating the agenda and scene deck used.)"
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "The following cards are set aside as not in play: the Thomas Dawson and Elina Harper Story Advantage Cards, both Copies of the Enemy Hunter Dark Skinner and the Enemies Winged."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "find_agent_harper_rule",
+      "title": "Find Agent Harper",
+      "type": "rule_reminder",
+      "text": "In this scenario, the task of investigators is to find out which suspect opponent kidnapped Agent Harper and on which one Hiding place she is being held. It does this by allowing investigators to discover clues that they can spend to get cards out of the View or pull the track deck.\nEach card in the track deck represents either one of the possible Suspect opponent or a possible hiding place. Since the correct Opponent and location can be found under Agent Harper's overview map no card in the track deck would be the right solution. The number of possible Opponents and locations can be reduced by the elimination process, by investigating these cards or putting them into play. in the Campaign log, these enemies and locations can be crossed out.\nWhen the investigators are sure who the kidnapper is and where Agent Harper can be found, they can use the investigation target ability on Use scene 1a to advance. But be careful - the time to find out the truth is short, so investigators may there is nothing left but to guess ..."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "the_accusation",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_accusation",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Scenario Interlude: The Accusation",
+            "steps": [
+              "accusation_story",
+              "accusation_steps",
+              "accusation_setup"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "the_accusation",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience points equal to Victory X value of all cards in the victory point pile. Note these experience points in the campaign log under \"Unissued XP\". These experience points are allowed not yet issued. The investigators will instructed spend these experience points at a later date.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unissued_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "accusation_story",
+      "bullet_type": "none",
+      "text": "With the knowledge gathered, investigators must make an allegation to find out who kidnapped Elina Harper and where it is kept hidden. To make the accusation the investigators must have 1 suspect opponent and 1 hiding place from the Select options listed on the Find Agent Harper overview card. Note: the suspect cannot be an opponent currently in the Game or in the victory point pile. The hiding place cannot either be the location currently in play. Investigators should remember think before making your choice"
+    },
+    {
+      "id": "accusation_steps",
+      "text": "Once the allegation has been made, the following happens:",
+      "bullets": [
+        {
+          "text": "The suspect opponent and the hiding place under the map Finding Agent Harper is revealed. In the campaign log are listed under \"Possible suspects / Possible hiding places\" of the correct suspect opponents and the correct hiding place circled."
+        },
+        {
+          "text": "If no card matches the allegation, they are Investigators are on the wrong track and must give up immediately."
+        },
+        {
+          "text": "If only 1 of the 2 cards matches the allegation, the investigators are only partially right and are allowed to use the scenario Continue. You have been doing this with your careless determination however, the citizens of Innsmouth upset. The overview map Finding Agent Harper is turned over and the enemy is on top of this Side of the map appears in Innsmouth Market Place."
+        },
+        {
+          "text": "If both cards match the allegation, have the investigators agree and are allowed to proceed with the scenario."
+        }
+      ]
+    },
+    {
+      "id": "accusation_setup",
+      "text": "The final scene and agenda are prepared as follows:",
+      "bullets": [
+        {
+          "text": "The scene moves directly to the set aside scene 2a."
+        },
+        {
+          "text": "The agenda immediately advances to Agenda 3a, which was set aside."
+        },
+        {
+          "text": "The hiding place, which can be found under the Agent Harper map found is brought into play. In addition, on the site 1 [per_investigator] clues placed. The Elina story advantage card that was set aside Harper is placed under this location to indicate that Elina Harper is being held here."
+        },
+        {
+          "text": "The suspect opponent who is under the Agent Harper card found appears at Elina Harper's place. His Reveal ability is ignored. For the rest of the In scenarios this opponent is considered \"the kidnapper\"."
+        },
+        {
+          "text": "The track deck is removed from the game."
+        },
+        {
+          "text": "Now the investigators can use the final scene and agenda Continue"
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "mission_failed",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "mission_failed",
+          "text": "the mission failed."
+        }
+      ]
+    },
+    {
+      "id": "mission_success",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "mission_success",
+          "text": "the mission succeeded."
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "No resolution was reached\n(each investigator resigned or was defeated)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "blah blah blah\n<innsmouth>Intruders drown in the deep</innsmouth>",
+      "steps": ["resolution_1"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_failed"]
+    },
+    {
+      "id": "R2",
+      "title": "Resolution 2",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_success"]
+    },
+    {
+      "id": "R3",
+      "title": "Resolution 3",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_success"]
+    },
+    {
+      "id": "R4",
+      "title": "Resolution 4",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_success"]
+    },
+    {
+      "id": "R5",
+      "title": "Resolution 5",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_success"]
+    },
+    {
+      "id": "R6",
+      "title": "Resolution 6",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_success"]
+    },
+    {
+      "id": "R7",
+      "title": "Resolution 7",
+      "text": "blah blah blah",
+      "steps": ["earn_xp", "mission_success"]
+    }
+  ]
+}
+,
+{
+  "id": "grotto_of_despair",
+  "scenario_name": "The Grotto of Despair",
+  "full_name": "Scenario I: The Grotto of Despair",
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "set_aside_locations",
+    "setup_tidal_tunnel_locations",
+    "set_aside_tidal_tunnel",
+    "set_aside_cards",
+    "setup_flood_markers",
+    "encounter_deck",
+    "tidal_tunnel_rule",
+    "the_deeps_rule",
+    "location_connectivity_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You open your eyes with a languor, as if you had slept through the day. Your senses are in no hurry to want to return to you. You blink and try to see something in the pitch black darkness that surrounds you. Dull, throbbing pain permeates every fiber of your body. Your skin is cold and numb, your clothes soaked. Hardly ordered thoughts and confused memories are buzzing through your head. You don't have the faintest idea where you are or how you got here.\nYou try to concentrate, your heart is racing in your chest. You are lying on a rough stone floor in a shallow puddle of ice-cold water.\nKnowing that panic will only make the situation worse, you consciously take several deep breaths. You are trying to remember something - anything - that will help you retrace your steps. But without success. You can remember who you are, but you cannot remember the events of the recent past. So you sit up and examine your surroundings more closely.\nThe room appears to be a naturally created cave. Seaweed hangs from the ceiling, the stone walls and floor are damp and covered with silt. A rhythmic drop echoes through the otherwise quiet cave. This grotto must have been under water recently. Because of the tides, maybe? You swallow your fear and try not to think about it any further. If the tide is low now ...? It runs down your spine as cold as ice. When you look at the ceiling above you, to your surprise, you see a metal plate in the rough stone. Its polished surface doesn't seem to match the rest of the natural cave. You call for help in the hope that someone can hear you.\nThe answer to that terrifies you to the core: a terrible croak and gurgling that pervades the tunnels - a sound that cannot be of human origin."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Setup",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "grotto_of_despair",
+        "creatures_from_the_deep",
+        "flooded_caves",
+        "rising_tide",
+        "shattered_memories",
+        "agents_of_cthulhu",
+        "rats"
+      ],
+      "subtext": "Note: The encounter set symbols for the <i>Tidal Tunnels</i> locations are only shown on the revealed side of the location (see “Tidal Tunnels” on the following page)."
+    },
+    {
+      "id": "setup_keys",
+      "text": "The keys are placed as follows:",
+      "bullets": [
+        {
+          "text": "The blue and green keys are set aside faceup."
+        },
+        {
+          "text": "The red, yellow and purple keys are set aside face down and shuffled so that the investigators do not know which is which."
+        },
+        {
+          "text": "The black and white keys are removed from the game. They are not used in this scenario."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the Unknown Chamber into play. Each investigator begins play in the Unknown Chamber."
+    },
+    {
+      "id": "set_aside_locations",
+      "text": "Set the following cards aside, out of play: Idol Chamber, Altar for Dagon, and Locked Exit (each of these locations is on the back of a Tidal Tunnel location)."
+    },
+    {
+      "id": "setup_tidal_tunnel_locations",
+      "text": "The remaining tidal tunnel locations are shuffled and 3 random ones placed on the right, left and under the unknown chamber with the covered side up."
+    },
+    {
+      "id": "set_aside_tidal_tunnel",
+      "text": "The remaining Tidal Tunnels locations are set aside as not in play."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "The following cards are set aside as not in play: the opponent The Amalgam, both copies of the treachery card Blind Sight and all 3 copies of the treachery card From the Depths."
+    },
+    {
+      "id": "setup_flood_markers",
+      "text": "The flood markers are added to the marker pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to form the encounter deck."
+    },
+    {
+      "id": "tidal_tunnel_rule",
+      "title": "Tidal Tunnel",
+      "type": "rule_reminder",
+      "text": "Places with the veiled \"tidal tunnel\" side are available in several encounter sets. (In this scenario, for example, there are shrouded tidal tunnels from the <i>Flooded Caves</i> encounter set and the <i>Grotto of Despair</i> encounter set.) Because these cards can come from several different encounter sets, they have no encounter set icons on their cloaked side. In order to determine which set a tidal tunnel belongs to, its revealed side must be checked afterwards."
+    },
+    {
+      "id": "the_deeps_rule",
+      "title": "The Deeps",
+      "type": "rule_reminder",
+      "text": "Some cards in this scenario refer to a zone called “The Deep”. The depth is a zone that is not in play next to the agenda and scene deck, which the opponent The Amalgam can enter and leave through card effects. As long as the amalgam is in the depths, it is not in play and cannot be affected by player cards or investigator actions.",
+      "bullets": [
+        {
+          "text": "<b>As soon as the amalgam moves out of the game into the depths, all markers (except key markers) are removed from him.</b> Key Tokens on the Enemy The amalgam is not removed once he enters the depths unless he has been defeated by an investigator. In that case, the investigator takes control of his key."
+        }
+      ]
+    },
+    {
+      "id": "location_connectivity_rule",
+      "title": "Location Connectivity",
+      "text": "During this scenario, the locations are laid out in a predefined pattern, with new locations from the tide tunnel deck being created on the right, left and below existing locations. <i>(Note: the tidal tunnel deck does not yet exist at the beginning of the scenario. During the scenario, players are instructed when and how to create it.)</i>",
+      "bullets": [
+        {
+          "text": "<b>During this scenario, neighboring locations are considered to be connected.</b>"
+        },
+        {
+          "text": "A location that is brought into play to the left, right, or below another location should be placed next to the location in the manner described so that there are no other locations between the two locations. A place that is next to another place is considered to be \"neighboring\"."
+        },
+        {
+          "text": "Places are only orthogonally adjacent (right, left, above, below), but not diagonally."
+        },
+        {
+          "text": "Places cannot be brought into play at a point where another place is already. If you are instructed to move a new location from the tidal tunnel deck to a location that is already occupied by an existing location, the new location does not come into play."
+        }
+      ]
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience points equal to Victory X value of all cards in the victory point pile. Note these experience points in the campaign log under \"Unissued XP\". These experience points are allowed not yet issued. The investigators will instructed spend these experience points at a later date.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Victory display:",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unissued_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "flashback_1",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_1",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback I",
+            "steps": [
+              "flashback_1_story",
+              "flashback_1_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_1",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_2",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_2",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback II",
+            "steps": [
+              "flashback_2_story",
+              "flashback_2_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_2",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_3",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_3",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback III",
+            "steps": [
+              "flashback_3_story",
+              "flashback_3_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_3",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_4",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_4",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback IV",
+            "steps": [
+              "flashback_4_story",
+              "flashback_4_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_4",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "flashback_1_story",
+      "title": "Flashback I",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "flashback_1_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "recovered_memories",
+          "id": "meeting_with_thomas_dawson",
+          "text": "a meeting with Thomas Dawson."
+        }
+      ]
+    },
+    {
+      "id": "flashback_2_story",
+      "title": "Flashback II",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "flashback_2_effects",
+      "text": "In the campaign log, under “Recovered Memories“ note <i>a fight with a terrible devil</i>. For the remainder of the campaign, remove 1 [cultist] marker from the chaos bag.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "recovered_memories",
+          "id": "fight_with_a_terrible_devil",
+          "text": "a fight with a terrible devil."
+        },
+        {
+          "type": "remove_chaos_token",
+          "tokens": ["cultist"]
+        }
+      ]
+    },
+    {
+      "id": "flashback_3_story",
+      "title": "Flashback III",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "flashback_3_effects",
+      "text": "In the campaign log, under “Recovered Memories” <i>the decision to stay together</i> is noted. Remove 1 [tablet] token from the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "recovered_memories",
+          "id": "decided_to_stay_together",
+          "text": "decided to stay together."
+        },
+        {
+          "type": "remove_chaos_token",
+          "tokens": ["tablet"]
+        }
+      ]
+    },
+    {
+      "id": "flashback_4_story",
+      "title": "Flashback IV",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "flashback_4_effects",
+      "text": "In the campaign log, under “Recovered Memories” <i>an encounter with a secret cult</i> is noted. Remove 1 [elder_thing] token from the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "recovered_memories",
+          "id": "encountered_a_secret_cult",
+          "text": "an encounter with a secret cult."
+        },
+        {
+          "type": "remove_chaos_token",
+          "tokens": ["elder_thing"]
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "No resolution was reached\n(each investigator was defeated)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You cough the water and sand out of your lungs. Cold, dark sea water washes around you as you spit a mouthful of acrid salt water back into the surging waters.\nYou can feel warm hands rolling onto your back and you Lift into an upright sitting position. \"Thank God you are alive\", someone says. In the tense voice you can clearly hear the rhythmic Indian accent, as well as the unshakable self-confidence of a trained professional. When your gaze becomes clear again, you look into a blood-red sky, where the full moon can be seen directly below the darkened sun. \"We have no time to lose. Come on, get up.\"\nYou wipe the burning salt water from your eyes. Your strength is only slowly returning. Your savior poses as one Woman with long black hair out. Her tattered trench coat has seen better days. In her dirt-smeared you can see a few scratches on your face. “You seem confused. Why are you looking at me like that? ”The stranger asks you.",
+      "steps": ["earn_xp"]
+    },
+    {
+      "id": "R1",
+      "title": "Resolution 1",
+      "text": "Some distance away the sky turns blood red and the full moon hangs directly below the darkened sun. You are about to close your eyes and surrender to unconsciousness when a strange voice makes you startle. \"Oh, you're still alive!\" In the tense voice you can clearly hear the rhythmic Indian accent, as well as the unshakable self-confidence of a trained professional. In front of you is a woman with long black hair. Her tattered trench coat has seen better days. You can see a few scratches on her dirty face. “You seem confused. Why are you looking at me like that? ”The stranger asks you.",
+      "steps": ["earn_xp"]
+    }
+  ]
+}
+,
+{
+  "id": "hidden_truths",
+  "scenario_name": "Hidden Truths",
+  "full_name": "Interlude IV: Hidden Truths",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "horror_in_high_gear",
+  "scenario_name": "Horror in High Gear",
+  "full_name": "Scenario V: Horror in High Gear",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "in_too_deep",
+  "scenario_name": "In Too Deep",
+  "full_name": "Scenario III: In Too Deep",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "into_the_maelstrom",
+  "scenario_name": "Into the Maelstrom",
+  "full_name": "Scenario VIII: Into the Maelstrom",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "puzzle_pieces",
+  "scenario_name": "Puzzle Pieces",
+  "full_name": "Interlude I: Puzzle Pieces",
+  "type": "interlude",
+  "setup": [
+    "intro",
+    "check_meeting_with_thomas_dawson",
+    "check_no_recovered_memories",
+    "check_fight_with_a_terrible_devil",
+    "check_decided_to_stay_together",
+    "check_encountered_a_secret_cult",
+    "outro"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You have no idea who this woman is and how she knows you, but she does seems to be more familiar with you. You rummage through your memories and try to find out where and when the first meeting with her took place may have, but you are unsuccessful. You are convinced one facing total strangers. After waking up without You don't feel memories in the cold, wet prison either Mood to socialize. Your fear and your distrust must be you are written on the forehead, because the woman takes a step back and frowns.\"What's happening? What is wrong?\"\nYou answer with the counter-question whether you should know them.\"You can really don't remember? Well, that doesn't make things any easier. On what can you remember? Can <i>you</i> relate to anything at all recall?\"\nYou tell the woman about the flashes of thought that you have previously experienced ...\n<i>Check the Reclaimed Memories section in the Campaign log. Read each one that fits your situation below standing section.</i>"
+    },
+    {
+      "id": "check_meeting_with_thomas_dawson",
+      "type": "branch",
+      "text": "If a meeting with Thomas Dawson under \"Recovered memories\" is noted:",
+      "condition": {
+        "type": "campaign_log",
+        "section": "recovered_memories",
+        "id": "meeting_with_thomas_dawson",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["thomas_dawson_story", "thomas_dawson_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "thomas_dawson_story",
+      "type": "story",
+      "text": "You put one and one together and ask the woman if she's a miss Harper is. \"Ah, so you remember me?\" Asks her with a teasing grin. But you shake your head and explain to her that you can only remember it from one man named Thomas Dawson to have been hired to find her. “But that was… Oh. You must have forgotten a lot. And as for Dawson, where is he? Did you see him down there?\"\nYour thoughts wander to the twisted, mutilated face back that sparked the memories. Agent Harper's expression darkens as she looks you in the eye. “I see… I wish I had never gotten to this lost city. These brutes will have to pay for it. ”You ask them who they are for blames Dawson's death. She raises her eyebrows and replies: “Right, you can't remember it. So far as I know, both you and him were the last time See entering the esoteric Order of Dagon. Draw your own Conclusions from this.\""
+    },
+    {
+      "id": "thomas_dawson_effects",
+      "text": "The conspiracy expands. Every investigator makes a note 1 additional experience point under \"XP not spent\".",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unissued_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_no_recovered_memories",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "recovered_memories",
+        "id": "$num_entries",
+        "max": 4,
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["no_recovered_memories_story"]
+          }
+        ],
+        "defaultOption": {}
+      }
+    },
+    {
+      "id": "no_recovered_memories_story",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "check_fight_with_a_terrible_devil",
+      "type": "branch",
+      "text": "If <i>a fight with a terrible devil</i> under \"Recovered memories\" is noted:",
+      "condition": {
+        "type": "campaign_log",
+        "section": "recovered_memories",
+        "id": "fight_with_a_terrible_devil",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["devil_fight_story", "devil_fight_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "devil_fight_story",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "devil_fight_effects",
+      "text": "The conspiracy expands. Every investigator makes a note 1 additional experience point under \"XP not spent\".",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unissued_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_decided_to_stay_together",
+      "type": "branch",
+      "text": "If <i>decided to stay together</i> under \"Recovered memories\" is noted:",
+      "condition": {
+        "type": "campaign_log",
+        "section": "recovered_memories",
+        "id": "decided_to_stay_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["stayed_together_story", "stayed_together_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "stayed_together_story",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "stayed_together_effects",
+      "text": "The conspiracy expands. Every investigator makes a note 1 additional experience point under \"XP not spent\".",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unissued_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_encountered_a_secret_cult",
+      "type": "branch",
+      "text": "If <i>encountered a secret cult</i> under \"Recovered memories\" is noted:",
+      "condition": {
+        "type": "campaign_log",
+        "section": "recovered_memories",
+        "id": "encountered_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["encountered_a_secret_cult_story", "encountered_a_secret_cult_effects"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "encountered_a_secret_cult_story",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "encountered_a_secret_cult_effects",
+      "text": "The conspiracy expands. Every investigator makes a note 1 additional experience point under \"XP not spent\".",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unissued_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "type": "story",
+      "text": "You point towards the strange blood-red sky behind Agent Harper and notice the strange constellation that the sun and moon occupy. “It started shortly after you and Agent Dawson got into headquarters of the order, ”she explains to you. “That was almost three days ago. I have no idea what that means. But I can't imagine that it's a good thing. All doors in Innsmouth have recently been locked. No Soul can be seen outside. You're lucky I found out where I had to look for you.\"\nYour mind is racing. The last thing you can remember before going in awakened in the damp cave is that you are in for a pleasant summer night Arkham. Now you are in another city and yours Memories are more than sketchy. You wonder out loud what day it is. Agent Harper replies, “September 24th. I don't know exactly when you will arrived in Innsmouth or how many of your memories you lost to have. Do you remember anything else? Something?\"\nAs you ponder, the water laps your feet. Within minutes the tide raised the water several centimeters. It looks too it does not look as if the increase will soon subside. Your gaze remains rest on the woman as she tired-eyed, troubled Clothes and the red welts on her wrists stand in front of you - and suddenly you can remember something.\n<i>\"Wake up. We're almost there.”</i> The memory lurks at the abyss of yours Consciousness and threatens to pull you into the darkness. \"Hey. Wake up, I said.“ You grip your forehead as a sudden pain is yours Skulls threatened to smash. \"Wake up, damn it!\"\nThe darkness tugs at the edges of your vision. And suddenly you get from flooded with even more returning memories ..."
+    }
+  ]
+}
+,
+{
+  "id": "syzygy",
+  "scenario_name": "Syzygy",
+  "full_name": "Interlude II: Syzygy",
+  "type": "interlude",
+  "setup": [
+    "syzygy_1",
+    "check_mission_failed",
+    "syzygy_4",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "syzygy_1",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "check_mission_failed",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_failed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["syzygy_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_mission_succeeded"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["syzygy_3", "earn_elina_harper"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "syzygy_2",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "syzygy_3",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "earn_elina_harper",
+      "text": "Any one investigator may add the Elina Harper story asset to their deck. This card does not count against the investigators deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "TODO"
+        }
+      ]
+    },
+    {
+      "id": "syzygy_4",
+      "type": "story",
+      "text": "blah blah blah"
+    },
+    {
+      "id": "spend_xp",
+      "text": "With this returned fragment of your memory the events of your past become a little clearer. Each investigator can now spend his experience points that are in the Campaign log are noted under \"XP not issued\"."
+    }
+  ]
+}
+,
+{
+  "id": "the_lair_of_dagon",
+  "scenario_name": "The Lair of Dagon",
+  "full_name": "Scenario VII: The Lair of Dagon",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "tic_epilogue",
+  "scenario_name": "Epilogue",
+  "full_name": "Epilogue",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}
+,
+{
+  "id": "under_the_waves",
+  "scenario_name": "Under the Waves",
+  "full_name": "Interlude III: Under the Waves",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
 }
 ]}
 ]

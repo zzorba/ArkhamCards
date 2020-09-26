@@ -1,41 +1,16 @@
-import React from 'react';
 import { t } from 'ttag';
 
-import DialogPicker from '@components/core/DialogPicker';
+import { showOptionDialog } from '@components/nav/helper';
 
-interface Props {
-  componentId: string;
-  scenarioChanged: (scenario: string) => void;
-  selected: string;
-  scenarios: string[];
-}
-
-export default class ScenarioDialog extends React.Component<Props> {
-  static options() {
-    return {
-      layout: {
-        componentBackgroundColor: 'transparent',
-      },
-    };
-  }
-
-  render() {
-    const {
-      componentId,
-      scenarioChanged,
-      selected,
-      scenarios,
-    } = this.props;
-
-    return (
-      <DialogPicker
-        componentId={componentId}
-        header={t`Scenario`}
-        options={scenarios}
-        onSelectionChanged={scenarioChanged}
-        selectedOption={selected}
-        noCapitalize
-      />
-    );
-  }
+export function showScenarioDialog(
+  scenarios: string[],
+  scenarioChanged: (scenario: string) => void
+) {
+  showOptionDialog(
+    t`Scenario`,
+    scenarios,
+    (index: number) => {
+      scenarioChanged(scenarios[index]);
+    }
+  );
 }

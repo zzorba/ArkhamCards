@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   ActivityIndicator,
   Text,
@@ -11,9 +11,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 import {
   SettingsButton,
 } from '@lib/react-native-settings-components';
-import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   loading?: boolean;
@@ -21,45 +20,46 @@ interface Props {
   text: string;
   onPress?: () => void;
 }
-export default class SettingsItem extends React.Component<Props> {
-  /* eslint-disable @typescript-eslint/no-empty-function */
-  _dummyOnPress = () => {};
-
-  render() {
-    const { loading, navigation, text, onPress } = this.props;
-    if (loading) {
-      return (
-        <View style={[styles.wrapper, space.paddingXs]}>
-          <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
-          <ActivityIndicator
-            style={[styles.spinner, space.marginLeftM]}
-            color={COLORS.lightText}
-            size="small"
-            animating
-          />
-        </View>
-      );
-
-    }
+export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
+  const dummyOnPress = () => {
+    // Ignore me
+  };
+  const { colors, typography } = useContext(StyleContext);
+  if (loading) {
     return (
-      <SettingsButton
-        onPress={onPress || this._dummyOnPress}
-        title={text}
-        titleStyle={{ color: COLORS.darkText }}
-        containerStyle={styles.categoryContainer}
-        rightIcon={navigation ? (
-          <MaterialCommunityIcons
-            size={28}
-            color={COLORS.button}
-            name="chevron-right"
-          />
-        ) : undefined}
-        disabled={!onPress}
-      />
+      <View style={[styles.wrapper, space.paddingXs]}>
+        <Text style={[typography.text, space.marginLeftS]}>{ text }</Text>
+        <ActivityIndicator
+          style={[styles.spinner, space.marginLeftM]}
+          color={colors.lightText}
+          size="small"
+          animating
+        />
+      </View>
     );
-  }
-}
 
+  }
+  return (
+    <SettingsButton
+      onPress={onPress || dummyOnPress}
+      title={text}
+      titleStyle={typography.text}
+      containerStyle={{
+        backgroundColor: colors.background,
+        borderColor: colors.divider,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+      }}
+      rightIcon={navigation ? (
+        <MaterialCommunityIcons
+          size={28}
+          color={colors.M}
+          name="chevron-right"
+        />
+      ) : undefined}
+      disabled={!onPress}
+    />
+  );
+}
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
@@ -68,10 +68,5 @@ const styles = StyleSheet.create({
   },
   spinner: {
     height: 20,
-  },
-  categoryContainer: {
-    backgroundColor: COLORS.background,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

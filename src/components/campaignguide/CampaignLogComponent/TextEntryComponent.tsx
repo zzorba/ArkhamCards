@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text } from 'react-native';
 import { upperFirst } from 'lodash';
 
 import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   text: string;
@@ -13,12 +13,13 @@ interface Props {
 }
 
 export default function TextEntryComponent({ text, crossedOut, entry }: Props) {
+  const { typography } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
     text;
   return (
     <Text style={[
-      typography.bigLabel,
+      typography.large,
       space.marginBottomS,
       crossedOut ? typography.strike : {},
     ]}>

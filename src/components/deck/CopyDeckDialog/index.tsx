@@ -17,9 +17,9 @@ import { login } from '@actions';
 import { Deck } from '@actions/types';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { getDeck, getBaseDeck, getLatestDeck, AppState } from '@reducers';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -51,6 +51,9 @@ interface State {
 }
 
 class CopyDeckDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onOkayPress!: () => void;
   constructor(props: Props) {
     super(props);
@@ -208,6 +211,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
     const {
       selectedDeckId,
     } = this.state;
+    const { typography } = this.context;
     const parsedCurrentDeck = deck && parseBasicDeck(deck, cards);
     const parsedBaseDeck = baseDeck && parseBasicDeck(baseDeck, cards);
     const parsedLatestDeck = latestDeck && parseBasicDeck(latestDeck, cards);
@@ -261,11 +265,12 @@ class CopyDeckDialog extends React.Component<Props, State> {
       offlineDeck,
       error,
     } = this.state;
+    const { colors, typography } = this.context;
     if (saving) {
       return (
         <ActivityIndicator
           style={styles.spinner}
-          color={COLORS.lightText}
+          color={colors.lightText}
           size="large"
           animating
         />
@@ -320,6 +325,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
       saving,
       selectedDeckId,
     } = this.state;
+    const { typography } = this.context;
     const investigator = this.investigator();
     if (!investigator) {
       return null;
@@ -359,7 +365,7 @@ function mapStateToProps(state: AppState, props: OwnProps & PlayerCardProps): Re
   if (!props.deckId) {
     return {};
   }
-  const deck = getDeck(state, props.deckId);
+  const deck = getDeck(props.deckId)(state);
   let baseDeck: Deck | undefined = getBaseDeck(state, props.deckId);
   if (baseDeck && baseDeck.id === props.deckId) {
     baseDeck = undefined;

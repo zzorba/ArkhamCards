@@ -16,7 +16,6 @@ interface OwnProps {
     deck?: Deck,
     investigator?: Card
   ) => void;
-  fontScale: number;
 }
 
 interface ReduxProps {
@@ -57,7 +56,6 @@ class InvestigatorDeckRow extends React.Component<Props> {
       theDeck,
       investigators,
       deckRemoved,
-      fontScale,
     } = this.props;
     if (!theDeck) {
       return null;
@@ -70,17 +68,16 @@ class InvestigatorDeckRow extends React.Component<Props> {
       <InvestigatorRow
         investigator={investigator}
         onRemove={deckRemoved ? this._onRemove : undefined}
-        fontScale={fontScale}
       />
     );
   }
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const deck = getDeck(state, props.id);
+  const deck = getDeck(props.id)(state);
   const previousDeck = deck &&
     deck.previous_deck &&
-    getDeck(state, deck.previous_deck);
+    getDeck(deck.previous_deck)(state);
   return {
     theDeck: deck || undefined,
     thePreviousDeck: previousDeck || undefined,

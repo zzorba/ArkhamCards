@@ -6,18 +6,23 @@ import { t } from 'ttag';
 
 import CardListWrapper from '@components/card/CardListWrapper';
 import Card from '@data/Card';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-interface Props {
+interface Props<T=undefined> {
   code: string;
   type: 'player' | 'encounter';
-  children: (card: Card) => React.ReactNode | null;
+  extraProps?: T;
+  children: (card: Card, extraProps?: T) => React.ReactNode | null;
   loadingComponent?: React.ReactNode;
 }
 
-export default class SingleCardWrapper extends React.Component<Props> {
+export default class SingleCardWrapper<T=undefined> extends React.Component<Props<T>> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _render = (cards: Card[], loading: boolean): React.ReactNode => {
-    const { code, children, loadingComponent } = this.props;
+    const { code, children, loadingComponent, extraProps } = this.props;
+    const { typography } = this.context;
     if (!cards || !cards.length || !cards[0]) {
       if (loading) {
         return loadingComponent || null;
@@ -28,15 +33,16 @@ export default class SingleCardWrapper extends React.Component<Props> {
         </Text>
       );
     }
-    return children(cards[0]);
+    return children(cards[0], extraProps);
   };
 
   render() {
-    const { code, type } = this.props;
+    const { code, type, extraProps } = this.props;
     return (
       <CardListWrapper
         codes={[code]}
         type={type}
+        extraProps={extraProps}
       >
         { this._render }
       </CardListWrapper>

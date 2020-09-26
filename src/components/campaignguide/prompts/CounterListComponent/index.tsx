@@ -3,14 +3,11 @@ import { Text, View, StyleSheet } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { NumberChoices } from '@actions/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
 
 export interface CounterItem {
   code: string;
@@ -20,7 +17,7 @@ export interface CounterItem {
   limit?: number;
 }
 
-interface OwnProps {
+interface Props {
   id: string;
   items: CounterItem[];
   countText?: string;
@@ -33,9 +30,7 @@ interface State {
   };
 }
 
-type Props = OwnProps & StylesProps;
-
-class CounterListComponent extends React.Component<Props, State> {
+export default class CounterListComponent extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -125,56 +120,52 @@ class CounterListComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, items, countText, gameFont } = this.props;
+    const { id, items, countText } = this.props;
+    const {
+      style: { gameFont, borderStyle, typography },
+      scenarioState,
+    } = this.context;
+    const choiceList = scenarioState.numberChoices(id);
+    const hasDecision = choiceList !== undefined;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => {
-          const choiceList = scenarioState.numberChoices(id);
-          const hasDecision = choiceList !== undefined;
+      <View>
+        <View style={[
+          styles.prompt,
+          borderStyle,
+          space.paddingTopS,
+          space.paddingRightM,
+        ]}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+            { countText }
+          </Text>
+        </View>
+        { map(items, ({ code, name, description, limit, color }, idx) => {
+          const value = this.getValue(code, choiceList);
           return (
-            <View>
-              <View style={[
-                styles.prompt,
-                space.paddingTopS,
-                space.paddingRightM,
-              ]}>
-                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-                  { countText }
-                </Text>
-              </View>
-              { map(items, ({ code, name, description, limit, color }, idx) => {
-                const value = this.getValue(code, choiceList);
-                return (
-                  <CounterListItemComponent
-                    key={idx}
-                    value={value}
-                    code={code}
-                    name={name}
-                    description={description}
-                    onInc={this._onInc}
-                    onDec={this._onDec}
-                    limit={limit}
-                    editable={!hasDecision}
-                    color={color}
-                  />
-                );
-              }) }
-              { this.renderSaveButton(hasDecision) }
-            </View>
+            <CounterListItemComponent
+              key={idx}
+              value={value}
+              code={code}
+              name={name}
+              description={description}
+              onInc={this._onInc}
+              onDec={this._onDec}
+              limit={limit}
+              editable={!hasDecision}
+              color={color}
+            />
           );
-        } }
-      </ScenarioGuideContext.Consumer>
+        }) }
+        { this.renderSaveButton(hasDecision) }
+      </View>
     );
   }
 }
-
-export default withStyles(CounterListComponent);
 
 const styles = StyleSheet.create({
   prompt: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

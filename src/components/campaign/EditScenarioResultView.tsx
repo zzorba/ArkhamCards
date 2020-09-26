@@ -18,9 +18,9 @@ import { NavigationProps } from '@components/nav/types';
 import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
 import { getCampaign, AppState } from '@reducers';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface EditScenarioResultProps {
   campaignId: number;
@@ -41,6 +41,9 @@ interface State {
 }
 
 class AddScenarioResultView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
   _doSave!: () => void;
 
@@ -67,10 +70,10 @@ class AddScenarioResultView extends React.Component<Props, State> {
         rightButtons: [{
           text: t`Save`,
           id: 'save',
-          color: COLORS.navButton,
+          color: COLORS.M,
           enabled: scenarioResult && !!(scenarioResult.scenario &&
             (scenarioResult.interlude || scenarioResult.resolution !== '')),
-          testID: t`Save`,
+          accessibilityLabel: t`Save`,
         }],
       },
     });
@@ -139,6 +142,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
   };
 
   render() {
+    const { backgroundStyle, typography } = this.context;
     const {
       scenarioResult,
     } = this.state;
@@ -153,7 +157,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
       resolution,
     } = scenarioResult;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <View style={space.marginSideS}>
           <Text style={typography.smallLabel}>
             { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
@@ -204,7 +208,6 @@ const styles = StyleSheet.create({
     paddingBottom: s,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    backgroundColor: COLORS.background,
   },
   footer: {
     height: 100,

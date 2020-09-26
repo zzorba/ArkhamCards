@@ -2,12 +2,11 @@ import React from 'react';
 import { flatMap, map, max, min } from 'lodash';
 import {
   Text,
-  StyleSheet,
 } from 'react-native';
-import { ButtonGroup } from 'react-native-elements';
 import { t } from 'ttag';
 
-import COLORS from '@styles/colors';
+import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
@@ -20,6 +19,9 @@ interface Props {
 }
 
 export default class XpChooser extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   levelRanges() {
     const {
       maxLevel,
@@ -60,6 +62,7 @@ export default class XpChooser extends React.Component<Props> {
       maxLevel,
       enabled,
     } = this.props;
+    const { colors, typography } = this.context;
 
     if (maxLevel <= 1) {
       return null;
@@ -80,35 +83,15 @@ export default class XpChooser extends React.Component<Props> {
         t`Level ${startXp}` :
         t`Level ${startXp} - ${endXp}`;
       return {
-        element: () => (<Text style={styles.text}>{ xp }</Text>),
+        element: (selected: boolean) => (<Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>{ xp }</Text>),
       };
     });
     return (
-      <ButtonGroup
-        // @ts-ignore
+      <ArkhamButtonGroup
         onPress={this._updateIndex}
         selectedIndexes={selectedIndexes}
         buttons={buttons}
-        buttonStyle={styles.button}
-        selectedButtonStyle={styles.selectedButton}
-        containerStyle={styles.container}
-        selectMultiple
       />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: 40,
-  },
-  text: {
-    color: COLORS.darkText,
-  },
-  button: {
-    backgroundColor: COLORS.toggleButton,
-  },
-  selectedButton: {
-    backgroundColor: COLORS.selectedToggleButton,
-  },
-});

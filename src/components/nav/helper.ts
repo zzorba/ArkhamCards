@@ -1,6 +1,7 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import { Navigation, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { ActionSheetIOS, Platform } from 'react-native';
+import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
+import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import { t } from 'ttag';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
@@ -14,11 +15,20 @@ import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 
 export function getDeckOptions(
+  {
+    inputOptions = {},
+    modal,
+    title,
+    noTitle,
+  }: {
+    inputOptions?: Options;
+    modal?: boolean;
+    title?: string;
+    noTitle?: boolean;
+  } = {},
   investigator?: Card,
-  modal?: boolean,
-  title?: string,
-  noTitle?: boolean,
 ): Options {
+  const topBarOptions: OptionsTopBar = inputOptions.topBar || {};
   const options: Options = {
     statusBar: {
       style: 'light',
@@ -30,6 +40,7 @@ export function getDeckOptions(
       backButton: {
         title: t`Back`,
         color: '#FFFFFF',
+        ...topBarOptions.backButton,
       },
       leftButtons: modal ? [
         Platform.OS === 'ios' ? {
@@ -41,15 +52,16 @@ export function getDeckOptions(
           id: 'androidBack',
           color: 'white',
         },
-      ] : [],
+      ] : topBarOptions.leftButtons || [],
       background: {
         color: COLORS.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
         ].darkBackground,
       },
+      rightButtons: topBarOptions.rightButtons,
     },
     layout: {
-      backgroundColor: COLORS.background,
+      backgroundColor: COLORS.L30,
     },
     bottomTabs: {
       visible: false,
@@ -59,12 +71,15 @@ export function getDeckOptions(
   };
   if (!noTitle && options.topBar) {
     options.topBar.title = {
-      fontWeight: 'bold',
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 20,
       text: (investigator ? investigator.name : t`Deck`),
       color: '#FFFFFF',
     };
-    options.topBar.subtitle =  {
+    options.topBar.subtitle = {
       text: title,
+      fontFamily: 'Alegreya-Medium',
+      fontSize: 14,
       color: '#FFFFFF',
     };
   }
@@ -94,7 +109,10 @@ export function showDeckModal(
         component: {
           name: 'Deck',
           passProps,
-          options: getDeckOptions(investigator, true, deck.name),
+          options: getDeckOptions({
+            modal: true,
+            title: deck.name,
+          }, investigator),
         },
       }],
     },
@@ -121,7 +139,7 @@ export function showCard(
         topBar: {
           backButton: {
             title: t`Back`,
-            color: COLORS.navButton,
+            color: COLORS.M,
           },
         },
       },
@@ -139,7 +157,9 @@ export function showCardCharts(
       passProps: {
         parsedDeck,
       },
-      options: getDeckOptions(parsedDeck.investigator, false, t`Charts`),
+      options: getDeckOptions({
+        title: t`Charts`,
+      }, parsedDeck.investigator),
     },
   });
 }
@@ -158,7 +178,9 @@ export function showDrawSimulator(
       passProps: {
         slots,
       },
-      options: getDeckOptions(investigator, false, t`Draw Simulator`),
+      options: getDeckOptions({
+        title: t`Draw Simulator`,
+      }, investigator),
     },
   });
 }
@@ -175,12 +197,12 @@ export function showCardSwipe(
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
 ) {
   const options = investigator ?
-    getDeckOptions(investigator, false, '') :
+    getDeckOptions({ title: '' }, investigator) :
     {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
       },
     };
@@ -202,8 +224,40 @@ export function showCardSwipe(
   });
 }
 
+export function showOptionDialog(
+  title: string,
+  options: string[],
+  onSelect: (index: number) => void,
+) {
+  if (Platform.OS === 'ios') {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        title: title,
+        options: [...options, t`Cancel`],
+        cancelButtonIndex: options.length,
+      },
+      idx => {
+        if (idx !== options.length) {
+          onSelect(idx);
+        }
+        return 0;
+      }
+    );
+  } else {
+    AndroidDialogPicker.show(
+      {
+        title,
+        items: options,
+        cancelText: t`Cancel`,
+      },
+      onSelect
+    );
+  }
+}
+
 export default {
   showDeckModal,
   getDeckOptions,
   showCard,
+  showOptionDialog,
 };

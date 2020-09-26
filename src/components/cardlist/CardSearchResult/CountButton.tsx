@@ -8,13 +8,12 @@ import {
 } from 'react-native';
 
 import { rowHeight, buttonWidth, BUTTON_PADDING } from './constants';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const DEPRESS_HEIGHT = 6;
 
 interface Props {
   count: number;
-  fontScale: number;
   text?: string;
   selected?: boolean;
   onPress: (count: number) => void;
@@ -25,6 +24,9 @@ interface State {
 }
 
 export default class CountButton extends React.PureComponent<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -73,11 +75,11 @@ export default class CountButton extends React.PureComponent<Props, State> {
     const {
       text,
       selected,
-      fontScale,
     } = this.props;
     const {
       anim,
     } = this.state;
+    const { fontScale, typography } = this.context;
     const translateY = anim.interpolate({
       inputRange: [0, 1],
       outputRange: [0, DEPRESS_HEIGHT],

@@ -3,7 +3,6 @@ import { concat, filter, find, findIndex, forEach, head, last, map } from 'lodas
 import { View } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { Campaign, SingleCampaign, DecksMap, Pack, ScenarioResult, CUSTOM } from '@actions/types';
@@ -116,32 +115,16 @@ class ScenarioSection extends React.Component<Props, State> {
     }, this._updateManagedScenario);
   };
 
-  _customScenarioTextChanged = (value: string) => {
+  _customScenarioTextChanged = (value?: string) => {
     this.setState({
-      customScenario: value,
+      customScenario: value || '',
     }, this._updateManagedScenario);
   };
 
-  _resolutionChanged = (value: string) => {
+  _resolutionChanged = (value?: string) => {
     this.setState({
-      resolution: value,
+      resolution: value || '',
     }, this._updateManagedScenario);
-  };
-
-  _showScenarioDialog = () => {
-    const {
-      selectedScenario,
-    } = this.state;
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.Scenario',
-        passProps: {
-          scenarioChanged: this._scenarioChanged,
-          scenarios: this.possibleScenarios(),
-          selected: selectedScenario === CUSTOM ? CUSTOM : selectedScenario.name,
-        },
-      },
-    });
   };
 
   possibleScenarios() {
@@ -171,6 +154,7 @@ class ScenarioSection extends React.Component<Props, State> {
           title={t`Show Interludes`}
           value={showInterludes}
           onValueChange={this._toggleShowInterludes}
+          settingsStyle
         />
         <SinglePickerComponent
           title={selectedScenario !== CUSTOM && selectedScenario.interlude ? t`Interlude` : t`Scenario`}

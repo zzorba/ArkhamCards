@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6505E52224DA64AC001DF983 /* libswiftCore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6505E52124DA64AC001DF983 /* libswiftCore.tbd */; };
+		651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 651B383A251ACF8900D9D054 /* AboutDead.ttf */; };
 		652421212054950E00FF6DB9 /* carcosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652420F42054950D00FF6DB9 /* carcosa.ttf */; };
 		652421232054951A00FF6DB9 /* coreset.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421222054951A00FF6DB9 /* coreset.ttf */; };
 		652421252054954F00FF6DB9 /* dunwich.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 652421242054954F00FF6DB9 /* dunwich.ttf */; };
@@ -28,7 +29,17 @@
 		655226B5205D68D70065A1F7 /* standalone.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65522688205D68D70065A1F7 /* standalone.ttf */; };
 		655226F4205EEAF10065A1F7 /* app.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 655226C7205EEAF00065A1F7 /* app.ttf */; };
 		655BAD76248739AD00854210 /* ArkhamCardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */; };
+		6585116A250D33C500DCB842 /* Theme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65851169250D33C500DCB842 /* Theme.xcassets */; };
+		6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */; };
+		65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */; };
+		65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */; };
+		65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65851173250F047800DCB842 /* Alegreya-Bold.ttf */; };
 		658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 658AF45324FAAD4D00874CA7 /* Conkordia.ttf */; };
+		659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */; };
+		659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */; };
+		659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */; };
+		659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */; };
+		659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 659EB1C425146635007E69E0 /* innsmouth.ttf */; };
 		65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65A43C65233EE33F00A79EA3 /* dreameaters.ttf */; };
 		65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556782820BA144600C18EC4 /* forgotten.ttf */; };
 		65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */; };
@@ -71,6 +82,7 @@
 		6505E51F24DA59A4001DF983 /* libReact-jsi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-jsi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6505E52124DA64AC001DF983 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/swift/libswiftCore.tbd; sourceTree = DEVELOPER_DIR; };
 		6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ArkhamCards.entitlements; path = ArkhamCards/ArkhamCards.entitlements; sourceTree = "<group>"; };
+		651B383A251ACF8900D9D054 /* AboutDead.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AboutDead.ttf; path = ../assets/AboutDead.ttf; sourceTree = "<group>"; };
 		652420F42054950D00FF6DB9 /* carcosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carcosa.ttf; path = ../assets/carcosa.ttf; sourceTree = "<group>"; };
 		652421222054951A00FF6DB9 /* coreset.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = coreset.ttf; path = ../assets/coreset.ttf; sourceTree = "<group>"; };
 		652421242054954F00FF6DB9 /* dunwich.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dunwich.ttf; path = ../assets/dunwich.ttf; sourceTree = "<group>"; };
@@ -90,7 +102,17 @@
 		655BAD73248739AD00854210 /* ArkhamCardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArkhamCardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		655BAD75248739AD00854210 /* ArkhamCardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkhamCardsUITests.swift; sourceTree = "<group>"; };
 		655BAD77248739AD00854210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65851169250D33C500DCB842 /* Theme.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Theme.xcassets; sourceTree = "<group>"; };
+		6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Regular.ttf"; path = "../assets/Alegreya-Regular.ttf"; sourceTree = "<group>"; };
+		6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Italic.ttf"; path = "../assets/Alegreya-Italic.ttf"; sourceTree = "<group>"; };
+		65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Medium.ttf"; path = "../assets/Alegreya-Medium.ttf"; sourceTree = "<group>"; };
+		65851173250F047800DCB842 /* Alegreya-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-Bold.ttf"; path = "../assets/Alegreya-Bold.ttf"; sourceTree = "<group>"; };
 		658AF45324FAAD4D00874CA7 /* Conkordia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Conkordia.ttf; path = ../assets/Conkordia.ttf; sourceTree = "<group>"; };
+		659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-MediumItalic.ttf"; path = "../assets/Alegreya-MediumItalic.ttf"; sourceTree = "<group>"; };
+		659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-BoldItalic.ttf"; path = "../assets/Alegreya-BoldItalic.ttf"; sourceTree = "<group>"; };
+		659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBold.ttf"; path = "../assets/Alegreya-ExtraBold.ttf"; sourceTree = "<group>"; };
+		659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Alegreya-ExtraBoldItalic.ttf"; path = "../assets/Alegreya-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		659EB1C425146635007E69E0 /* innsmouth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = innsmouth.ttf; path = ../assets/innsmouth.ttf; sourceTree = "<group>"; };
 		65A43C65233EE33F00A79EA3 /* dreameaters.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dreameaters.ttf; path = ../assets/dreameaters.ttf; sourceTree = "<group>"; };
 		65C3FAC6242037840014ED97 /* AnkeCalligraphicFG.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AnkeCalligraphicFG.ttf; path = ../assets/AnkeCalligraphicFG.ttf; sourceTree = "<group>"; };
 		65CA4CEA212893160084A1CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -140,6 +162,16 @@
 		13B07FAE1A68108700A75B9A /* ArkhamCards */ = {
 			isa = PBXGroup;
 			children = (
+				651B383A251ACF8900D9D054 /* AboutDead.ttf */,
+				659EB1C425146635007E69E0 /* innsmouth.ttf */,
+				659EB1C025118E2F007E69E0 /* Alegreya-ExtraBold.ttf */,
+				659EB1C125118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf */,
+				659EB1BE25118D77007E69E0 /* Alegreya-BoldItalic.ttf */,
+				659EB1BC25118C55007E69E0 /* Alegreya-MediumItalic.ttf */,
+				65851173250F047800DCB842 /* Alegreya-Bold.ttf */,
+				65851171250D6DB200DCB842 /* Alegreya-Medium.ttf */,
+				6585116E250D6C0500DCB842 /* Alegreya-Italic.ttf */,
+				6585116D250D6C0500DCB842 /* Alegreya-Regular.ttf */,
 				658AF45324FAAD4D00874CA7 /* Conkordia.ttf */,
 				6505E52324DDD6F0001DF983 /* ArkhamCards.entitlements */,
 				65F2F38124D47DE700B716AB /* campaignLogs_es.json */,
@@ -174,6 +206,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				6543ABA721C19C570098803A /* ArkhamCards-Bridging-Header.h */,
 				65F8DBA3247EEBC100286F16 /* Bridge.swift */,
+				65851169250D33C500DCB842 /* Theme.xcassets */,
 			);
 			name = ArkhamCards;
 			sourceTree = "<group>";
@@ -347,31 +380,42 @@
 			files = (
 				65BC36EE20BA1F1100CBA56B /* forgotten.ttf in Resources */,
 				658AF45424FAAD4E00874CA7 /* Conkordia.ttf in Resources */,
+				651B383B251ACF8900D9D054 /* AboutDead.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				652EB73C226BAF8400F6D790 /* en.po.json in Resources */,
 				652EB742226BAFA800F6D790 /* it.po.json in Resources */,
+				65851174250F047800DCB842 /* Alegreya-Bold.ttf in Resources */,
+				6585116A250D33C500DCB842 /* Theme.xcassets in Resources */,
 				655226B5205D68D70065A1F7 /* standalone.ttf in Resources */,
 				652421252054954F00FF6DB9 /* dunwich.ttf in Resources */,
+				659EB1BF25118D77007E69E0 /* Alegreya-BoldItalic.ttf in Resources */,
 				65EB59152047B67600CC5820 /* arkhamicons.ttf in Resources */,
+				659EB1C525146636007E69E0 /* innsmouth.ttf in Resources */,
 				655226F4205EEAF10065A1F7 /* app.ttf in Resources */,
 				65A43C66233EE33F00A79EA3 /* dreameaters.ttf in Resources */,
 				65F8DB9E247EE0B500286F16 /* ko.po.json in Resources */,
+				659EB1BD25118C55007E69E0 /* Alegreya-MediumItalic.ttf in Resources */,
 				65CF51E0220386F400A1D2FA /* circle.ttf in Resources */,
 				65C3FAC7242037850014ED97 /* AnkeCalligraphicFG.ttf in Resources */,
 				65447A8724154F2600961717 /* allCampaigns.json in Resources */,
 				65F8DBA0247EE0B500286F16 /* uk.po.json in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				65F2F37F24D47C5D00B716AB /* allCampaigns_es.json in Resources */,
+				65851170250D6C0500DCB842 /* Alegreya-Italic.ttf in Resources */,
+				659EB1C325118E2F007E69E0 /* Alegreya-ExtraBoldItalic.ttf in Resources */,
 				652421212054950E00FF6DB9 /* carcosa.ttf in Resources */,
 				652421232054951A00FF6DB9 /* coreset.ttf in Resources */,
 				652EB740226BAF9C00F6D790 /* fr.po.json in Resources */,
 				65D3FA06210FF315000F8B9D /* Teutonic.ttf in Resources */,
 				65447A8924154F3200961717 /* campaignLogs.json in Resources */,
+				659EB1C225118E2F007E69E0 /* Alegreya-ExtraBold.ttf in Resources */,
 				65F8DB9F247EE0B500286F16 /* pl.po.json in Resources */,
 				65F2F38224D47DE800B716AB /* campaignLogs_es.json in Resources */,
 				652EB73A226BAF7800F6D790 /* de.po.json in Resources */,
 				652EB73E226BAF9300F6D790 /* es.po.json in Resources */,
+				65851172250D6DB200DCB842 /* Alegreya-Medium.ttf in Resources */,
 				02D002FD495C486485296EE5 /* AppCenter-Config.plist in Resources */,
+				6585116F250D6C0500DCB842 /* Alegreya-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +641,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
@@ -615,7 +659,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.5.10;
+				MARKETING_VERSION = 2.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -641,7 +685,7 @@
 				CODE_SIGN_ENTITLEMENTS = ArkhamCards/ArkhamCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 54773FU58P;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,7 +702,7 @@
 				INFOPLIST_FILE = ArkhamCards/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.5.10;
+				MARKETING_VERSION = 2.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

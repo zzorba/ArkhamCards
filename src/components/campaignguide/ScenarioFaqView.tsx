@@ -6,10 +6,9 @@ import { t } from 'ttag';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
 import space from '@styles/space';
-import typography from '@styles/typography';
 import { Question } from '@data/scenario/types';
 import BasicButton from '@components/core/BasicButton';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface ScenarioFaqProps extends CampaignGuideInputProps {
   scenario: string;
@@ -20,11 +19,14 @@ interface State {
   showSpoilers: boolean;
 }
 class ScenarioFaqView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     showSpoilers: false,
   };
 
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -38,8 +40,9 @@ class ScenarioFaqView extends React.Component<Props, State> {
   }
 
   _renderErrata = (errata: Question, key: number) => {
+    const { borderStyle } = this.context;
     return (
-      <View style={[styles.entry, space.paddingM]} key={key}>
+      <View style={[styles.entry, borderStyle, space.paddingM]} key={key}>
         <CampaignGuideTextComponent text={errata.question} flavor />
         <CampaignGuideTextComponent text={errata.answer} />
       </View>
@@ -55,10 +58,11 @@ class ScenarioFaqView extends React.Component<Props, State> {
   render() {
     const { scenario, campaignData } = this.props;
     const { showSpoilers } = this.state;
+    const { borderStyle, typography } = this.context;
     const errata = campaignData.campaignGuide.scenarioFaq(scenario);
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <View style={[space.paddingM, styles.header]}>
+        <View style={[space.paddingM, styles.header, borderStyle]}>
           <Text style={typography.text}>
             { t`The following questions contain light spoilers for this scenario.` }
           </Text>
@@ -79,11 +83,9 @@ const styles = StyleSheet.create({
   },
   header: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   entry: {
     flexDirection: 'column',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

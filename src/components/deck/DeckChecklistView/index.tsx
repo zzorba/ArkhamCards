@@ -1,6 +1,6 @@
 import React from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
@@ -8,17 +8,17 @@ import { t } from 'ttag';
 import { iconsMap } from '@app/NavIcons';
 import { Slots, SORT_BY_TYPE, SortType } from '@actions/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { showCard } from '@components/nav/helper';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CardResultList from '@components/cardlist/CardSearchResultsComponent/CardResultList';
+import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface DeckChecklistProps {
   investigator: string;
@@ -36,13 +36,16 @@ interface ReduxActionProps {
   setDeckChecklistCard: (id: number, card: string, value: boolean) => void;
 }
 
-type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps & DimensionsProps;
+type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps;
 interface State {
   sort: SortType;
 }
 class DeckChecklistView extends React.Component<Props, State> {
-  static get options() {
-    return  {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options(): Options {
+    return {
       topBar: {
         title: {
           text: t`Checklist`,
@@ -50,15 +53,16 @@ class DeckChecklistView extends React.Component<Props, State> {
         },
         rightButtons: [
           {
-            icon: iconsMap['sort-by-alpha'],
+            icon: iconsMap.sort,
             id: 'sort',
             color: COLORS.white,
-            testID: t`Sort`,
-          }
-        ]
+            accessibilityLabel: t`Sort`,
+          },
+        ],
       },
     };
   }
+
   state: State = {
     sort: SORT_BY_TYPE,
   };
@@ -72,7 +76,7 @@ class DeckChecklistView extends React.Component<Props, State> {
     this._navEventListener && this._navEventListener.remove();
   }
 
-  _sortChanged = (sort: SortType) =>  {
+  _sortChanged = (sort: SortType) => {
     this.setState({
       sort,
     });
@@ -81,16 +85,11 @@ class DeckChecklistView extends React.Component<Props, State> {
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
     const { sort } = this.state;
     if (buttonId === 'sort') {
-      Navigation.showOverlay({
-        component: {
-          name: 'Dialog.Sort',
-          passProps: {
-            sortChanged: this._sortChanged,
-            selectedSort: sort,
-            hasEncounterCards: false,
-          },
-        },
-      });
+      showSortDialog(
+        this._sortChanged,
+        sort,
+        false
+      );
     }
   }
 
@@ -114,7 +113,7 @@ class DeckChecklistView extends React.Component<Props, State> {
   };
 
   _renderCard = (card: Card) => {
-    const { slots, fontScale, checklist } = this.props;
+    const { slots, checklist } = this.props;
     return (
       <CardSearchResult
         card={card}
@@ -122,13 +121,14 @@ class DeckChecklistView extends React.Component<Props, State> {
         onToggleChange={this._toggleCard}
         onPress={this._pressCard}
         toggleValue={checklist.has(card.code)}
-        fontScale={fontScale}
         backgroundColor="transparent"
       />
-    )
+    );
   };
 
-  _handleScroll = () => {};
+  _handleScroll = () => {
+    // intentionally blank.
+  };
 
   _clearChecklist = () => {
     const { id, resetDeckChecklist } = this.props;
@@ -137,30 +137,32 @@ class DeckChecklistView extends React.Component<Props, State> {
 
   _renderHeader = () => {
     const { checklist } = this.props;
+    const { typography, colors } = this.context;
     return (
       <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
         <TouchableOpacity onPress={this._clearChecklist} disabled={!checklist.size}>
-          <Text style={[typography.text, checklist.size ? styles.clearText : typography.darkGray]}>{t`Clear`}</Text>
+          <Text style={[typography.text, checklist.size ? typography.light : { color: colors.L10 }]}>{t`Clear`}</Text>
         </TouchableOpacity>
       </View>
     );
   }
 
   render() {
-    const { componentId, fontScale, slots } = this.props;
+    const { componentId, slots, checklist } = this.props;
     const { sort } = this.state;
     return (
       <CardResultList
         componentId={componentId}
-        fontScale={fontScale}
         visible
         deckCardCounts={slots}
         originalDeckSlots={slots}
-        onDeckCountChange={() => {}}
+        onDeckCountChange={this._handleScroll}
         sort={sort}
         renderHeader={this._renderHeader}
         renderCard={this._renderCard}
         handleScroll={this._handleScroll}
+        extraData={checklist}
+        noSearch
       />
     );
   }
@@ -179,24 +181,19 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   return bindActionCreators({
     setDeckChecklistCard,
     resetDeckChecklist,
-  } as any, dispatch);
+  }, dispatch);
 }
 
 export default withPlayerCards<NavigationProps & DeckChecklistProps>(
   connect<ReduxProps, ReduxActionProps, NavigationProps & DeckChecklistProps & PlayerCardProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(
-    withDimensions(DeckChecklistView)
-  )
+  )(DeckChecklistView)
 );
 
 const styles = StyleSheet.create({
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-  },
-  clearText: {
-    color: COLORS.navButton,
   },
 });

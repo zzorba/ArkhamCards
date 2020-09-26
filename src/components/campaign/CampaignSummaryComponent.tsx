@@ -4,13 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
 import { CAMPAIGN_COLORS, campaignNames } from './constants';
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { Campaign, CUSTOM } from '@actions/types';
-import typography from '@styles/typography';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
 import BackgroundIcon from './BackgroundIcon';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   campaign: Campaign;
@@ -18,7 +17,10 @@ interface Props {
   hideScenario?: boolean;
 }
 
-class CampaignSummaryComponent extends React.Component<Props & StylesProps> {
+export default class CampaignSummaryComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   latestScenario() {
     return last(this.props.campaign.scenarioResults);
   }
@@ -27,8 +29,8 @@ class CampaignSummaryComponent extends React.Component<Props & StylesProps> {
     const {
       campaign,
       name,
-      gameFont,
     } = this.props;
+    const { gameFont, typography } = this.context;
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
     return (
       <>
@@ -43,7 +45,8 @@ class CampaignSummaryComponent extends React.Component<Props & StylesProps> {
   }
 
   renderLastScenario() {
-    const { hideScenario, campaign, gameFont } = this.props;
+    const { hideScenario, campaign } = this.props;
+    const { gameFont, typography } = this.context;
     if (hideScenario) {
       return null;
     }
@@ -61,7 +64,7 @@ class CampaignSummaryComponent extends React.Component<Props & StylesProps> {
     }
     return (
       <View style={space.marginTopXs}>
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+        <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
           { t`Not yet started` }
         </Text>
       </View>
@@ -105,8 +108,6 @@ class CampaignSummaryComponent extends React.Component<Props & StylesProps> {
     );
   }
 }
-
-export default withStyles(CampaignSummaryComponent);
 
 const styles = StyleSheet.create({
   row: {

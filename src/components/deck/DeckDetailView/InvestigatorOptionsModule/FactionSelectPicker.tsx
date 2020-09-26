@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { findIndex, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -6,6 +6,7 @@ import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { FactionCodeType } from '@app_constants';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   name: string;
@@ -17,51 +18,42 @@ interface Props {
   editWarning: boolean;
 }
 
-export default class FactionSelectPicker extends React.Component<Props> {
-  _onChange = (index: number) => {
-    const {
-      onChange,
-      factions,
-    } = this.props;
+export default function FactionSelectPicker({
+  factions,
+  selection,
+  name,
+  investigatorFaction,
+  disabled,
+  editWarning,
+  onChange,
+}: Props){
+  const { colors } = useContext(StyleContext);
+  const onChoiceChange = (index: number) => {
     onChange(factions[index]);
   };
 
-  _codeToLabel = (faction: string) => {
-    return Card.factionCodeToName(faction, t`Select Faction`);
-  };
-
-  render() {
-    const {
-      factions,
-      selection,
-      name,
-      investigatorFaction,
-      disabled,
-      editWarning,
-    } = this.props;
-    return (
-      <SinglePickerComponent
-        settingsStyle
-        title={name}
-        editable={!disabled}
-        description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
-        colors={{
-          modalColor: investigatorFaction ?
-            COLORS.faction[investigatorFaction].background :
-            COLORS.lightBlue,
-          modalTextColor: 'white',
-          backgroundColor: 'transparent',
-          textColor: COLORS.darkText,
-        }}
-        choices={map(factions, size => {
-          return {
-            text: this._codeToLabel(size),
-          };
-        })}
-        selectedIndex={selection ? findIndex(factions, faction => faction === selection) : 0}
-        onChoiceChange={this._onChange}
-        noBorder
-      />
-    );
-  }
+  return (
+    <SinglePickerComponent
+      settingsStyle
+      title={name}
+      editable={!disabled}
+      description={editWarning ? t`Note: Secondary faction should only be selected at deck creation time, not between scenarios.` : undefined}
+      colors={{
+        modalColor: investigatorFaction ?
+          colors.faction[investigatorFaction].background :
+          COLORS.lightBlue,
+        modalTextColor: 'white',
+        backgroundColor: 'transparent',
+        textColor: colors.darkText,
+      }}
+      choices={map(factions, faction => {
+        return {
+          text: Card.factionCodeToName(faction, t`Select Faction`),
+        };
+      })}
+      selectedIndex={selection ? findIndex(factions, faction => faction === selection) : 0}
+      onChoiceChange={onChoiceChange}
+      noBorder
+    />
+  );
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { filter, map } from 'lodash';
 import {
   FlatList,
+  Platform,
+  RefreshControl,
   StyleSheet,
 } from 'react-native';
 
@@ -10,7 +12,8 @@ import { searchMatchesText } from '@components/core/searchHelpers';
 import DeckListRow from '@components/decklist/DeckListRow';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import Card from '@data/Card';
-import COLORS from '@styles/colors';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   deckIds: number[];
@@ -18,7 +21,6 @@ interface OwnProps {
   footer: (empty: boolean) => React.ReactElement;
   searchTerm: string;
   deckToCampaign?: { [id: number]: Campaign };
-  fontScale: number;
   onRefresh?: () => void;
   refreshing?: boolean;
   decks: DecksMap;
@@ -34,13 +36,15 @@ interface Item {
 }
 
 class DeckList extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _renderItem = ({ item: { deckId } }: { item: Item }) => {
     const {
       investigators,
       decks,
       cards,
       deckToCampaign,
-      fontScale,
       deckClicked,
     } = this.props;
 
@@ -51,7 +55,6 @@ class DeckList extends React.Component<Props> {
     return (
       <DeckListRow
         key={deckId}
-        fontScale={fontScale}
         deck={deck}
         previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}
         cards={cards}
@@ -95,15 +98,24 @@ class DeckList extends React.Component<Props> {
       header,
       footer,
     } = this.props;
+    const { backgroundStyle, colors } = this.context;
     const items = this.getItems();
     return (
       <FlatList
+        refreshControl={
+          <RefreshControl
+            refreshing={!!refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.lightText}
+            progressViewOffset={SEARCH_BAR_HEIGHT}
+          />
+        }
+        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
         onScroll={onScroll}
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag"
-        refreshing={refreshing}
-        onRefresh={onRefresh}
-        style={styles.container}
+        style={[styles.container, backgroundStyle]}
         data={items}
         renderItem={this._renderItem}
         extraData={decks}
@@ -120,6 +132,5 @@ export default withPlayerCards(DeckList);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

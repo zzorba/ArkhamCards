@@ -8,8 +8,8 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import COLORS from '@styles/colors';
 import { iconSizeScale } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   count: number;
@@ -29,16 +29,19 @@ interface Props {
 }
 
 export default class PlusMinusButtons extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   disabledColor() {
     const {
       color,
     } = this.props;
+    const { colors } = this.context;
     switch (color) {
-      case 'dark': return COLORS.lightText;
-      case 'light': return COLORS.lightText;
+      case 'dark': return colors.lightText;
+      case 'light': return colors.lightText;
       case 'white': return 'white';
-      default:
-        return COLORS.veryLightText;
+      default: return colors.M;
     }
   }
 
@@ -46,11 +49,12 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     const {
       color,
     } = this.props;
+    const { colors } = this.context;
     switch (color) {
-      case 'dark': return COLORS.darkText;
-      case 'light': return COLORS.background;
+      case 'dark': return colors.darkText;
+      case 'light': return colors.background;
       case 'white': return 'white';
-      default: return COLORS.lightText;
+      default: return colors.lightText;
     }
   }
 

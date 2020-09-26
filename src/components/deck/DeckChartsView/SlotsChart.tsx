@@ -12,7 +12,7 @@ import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
 import { SLOTS, SlotCodeType } from '@app_constants';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   parsedDeck: ParsedDeck;
@@ -25,6 +25,9 @@ interface Item {
 }
 
 export default class SlotIconChart extends React.PureComponent<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   getSlotData(slot: SlotCodeType): Item {
     return {
       slot: slot.replace(' ', '-'),
@@ -38,6 +41,7 @@ export default class SlotIconChart extends React.PureComponent<Props> {
 
   render() {
     const { width } = this.props;
+    const { typography, colors } = this.context;
     const barData = filter(
       map(SLOTS, slot => this.getSlotData(slot)),
       data => data.value > 0
@@ -45,7 +49,7 @@ export default class SlotIconChart extends React.PureComponent<Props> {
 
     return (
       <View style={[styles.wrapper, { width }]}>
-        <Text style={[typography.bigLabel, typography.center]}>
+        <Text style={[typography.large, typography.center]}>
           { t`Slots` }
         </Text>
         <VictoryChart width={width}>
@@ -54,8 +58,9 @@ export default class SlotIconChart extends React.PureComponent<Props> {
               axis: { stroke: 'none' },
               tickLabels: {
                 fontSize: 18,
-                fontFamily: 'System',
+                fontFamily: typography.large.fontFamily,
                 fontWeight: '400',
+                fill: colors.darkText,
               },
             }}
             // @ts-ignore TS2739
@@ -75,7 +80,7 @@ export default class SlotIconChart extends React.PureComponent<Props> {
               labels: {
                 fill: 'white',
                 fontSize: 14,
-                fontFamily: 'System',
+                fontFamily: typography.bold.fontFamily,
                 fontWeight: '700',
               },
             }}

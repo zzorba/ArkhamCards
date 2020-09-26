@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -9,13 +8,12 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import { Pack } from '@actions/types';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { setPackSpoiler, setCyclePackSpoiler } from '@actions';
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
 import { getAllPacks, getPackSpoilers, AppState } from '@reducers';
 import space from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   packs: Pack[];
@@ -27,13 +25,17 @@ interface ReduxActionProps {
   setCyclePackSpoiler: (cycle: number, value: boolean) => void;
 }
 
-type Props = NavigationProps & ReduxProps & ReduxActionProps & DimensionsProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class SpoilersView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _renderHeader = (): React.ReactElement => {
+    const { typography } = this.context;
     return (
       <View style={space.paddingS}>
-        <Text style={styles.headerText}>
+        <Text style={typography.small}>
           { t`Mark the scenarios you've played through to make the results start showing up in search results.` }
         </Text>
       </View>
@@ -47,8 +49,8 @@ class SpoilersView extends React.Component<Props> {
       show_spoilers,
       setPackSpoiler,
       setCyclePackSpoiler,
-      fontScale,
     } = this.props;
+    const { typography } = this.context;
     if (!packs.length) {
       return (
         <View>
@@ -60,7 +62,6 @@ class SpoilersView extends React.Component<Props> {
       <PackListComponent
         componentId={componentId}
         packs={packs}
-        fontScale={fontScale}
         renderHeader={this._renderHeader}
         checkState={show_spoilers}
         setChecked={setPackSpoiler}
@@ -87,13 +88,4 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(
-  withDimensions(SpoilersView)
-);
-
-const styles = StyleSheet.create({
-  headerText: {
-    fontFamily: 'System',
-    fontSize: 14,
-  },
-});
+)(SpoilersView);

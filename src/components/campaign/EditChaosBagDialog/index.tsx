@@ -9,7 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
@@ -23,7 +23,6 @@ import {
   ChaosBag,
   ChaosTokenType,
 } from '@app_constants';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 
@@ -42,7 +41,7 @@ interface State {
 type Props = EditChaosBagProps & NavigationProps & DimensionsProps;
 
 class EditChaosBagDialog extends React.Component<Props, State> {
-  static get options() {
+  static options(): Options {
     return {
       topBar: {
         leftButtons: [
@@ -50,13 +49,13 @@ class EditChaosBagDialog extends React.Component<Props, State> {
             systemItem: 'cancel',
             text: t`Cancel`,
             id: 'back',
-            color: COLORS.navButton,
-            testID: t`Cancel`,
+            color: COLORS.M,
+            accessibilityLabel: t`Cancel`,
           } : {
             icon: iconsMap['arrow-back'],
             id: 'androidBack',
-            color: COLORS.navButton,
-            testID: t`Back`,
+            color: COLORS.M,
+            accessibilityLabel: t`Back`,
           },
         ],
         rightButtons: [{
@@ -64,8 +63,8 @@ class EditChaosBagDialog extends React.Component<Props, State> {
           text: t`Save`,
           id: 'save',
           showAsAction: 'ifRoom',
-          color: COLORS.navButton,
-          testID: t`Save`,
+          color: COLORS.M,
+          accessibilityLabel: t`Save`,
         }],
       },
     };
@@ -180,16 +179,16 @@ class EditChaosBagDialog extends React.Component<Props, State> {
   render() {
     const {
       trackDeltas,
-      fontScale,
     } = this.props;
     const {
       chaosBag,
     } = this.state;
+    const { backgroundStyle, borderStyle, typography } = this.context;
     const ogChaosBag = this.props.chaosBag;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <View style={[styles.row, space.paddingS]}>
-          <Text style={[typography.bigLabel, typography.bold]}>In Bag</Text>
+      <ScrollView contentContainerStyle={backgroundStyle}>
+        <View style={[styles.row, borderStyle, space.paddingS]}>
+          <Text style={[typography.large, typography.bold]}>{t`In Bag`}</Text>
         </View>
         { map(sortBy(CHAOS_TOKENS, x => CHAOS_TOKEN_ORDER[x]),
           id => {
@@ -197,7 +196,6 @@ class EditChaosBagDialog extends React.Component<Props, State> {
             return (
               <ChaosTokenRow
                 key={id}
-                fontScale={fontScale}
                 id={id}
                 originalCount={originalCount || 0}
                 count={chaosBag[id] || 0}
@@ -220,9 +218,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

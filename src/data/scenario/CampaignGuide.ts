@@ -9,7 +9,6 @@ import CampaignStateHelper from './CampaignStateHelper';
 import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
 import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question } from './types';
-import FaqEntry from '@data/FaqEntry';
 
 export interface CampaignLog {
   campaignId: string;
@@ -346,7 +345,7 @@ export default class CampaignGuide {
         }];
       }
       return [{
-        type: 'playable',
+        type: scenarioGuide.scenarioType() === 'placeholder' ? 'placeholder' : 'playable' ,
         id,
         scenarioGuide,
         latestCampaignLog: campaignLog,

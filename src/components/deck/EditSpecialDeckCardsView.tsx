@@ -1,17 +1,15 @@
 import React from 'react';
 import { forEach, keys, map, sortBy } from 'lodash';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { EditDeckProps } from './DeckEditView';
 import { CampaignDrawWeaknessProps } from '@components/campaign/CampaignDrawWeaknessDialog';
 import { CardDetailProps } from '@components/card/CardDetailView';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { NavigationProps } from '@components/nav/types';
@@ -20,8 +18,9 @@ import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/Card';
 import { getCampaign, AppState } from '@reducers';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
-import { l, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 export interface EditSpecialCardsProps {
   deck: Deck;
@@ -40,7 +39,7 @@ interface ReduxProps {
   campaign?: Campaign;
 }
 
-type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps & DimensionsProps;
+type Props = NavigationProps & EditSpecialCardsProps & ReduxProps & PlayerCardProps;
 
 interface State {
   slots: Slots;
@@ -49,7 +48,10 @@ interface State {
 }
 
 class EditSpecialDeckCardsView extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         backButton: {
@@ -91,6 +93,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       cards,
       xpAdjustment,
     } = this.props;
+    const { colors } = this.context;
     const {
       slots,
       ignoreDeckLimitSlots,
@@ -123,7 +126,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -194,6 +197,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       cards,
       deck,
     } = this.props;
+    const { colors } = this.context;
     const {
       slots,
     } = this.state;
@@ -219,7 +223,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -234,6 +238,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       deck,
       cards,
     } = this.props;
+    const { colors } = this.context;
     const {
       slots,
       unsavedAssignedWeaknesses,
@@ -265,7 +270,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -285,7 +290,8 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
       campaignId,
     } = this.props;
     return (
-      <BasicButton
+      <ArkhamButton
+        icon="card"
         title={t`Draw Basic Weakness`}
         onPress={campaignId ? this._showCampaignWeaknessDialog : this._drawWeakness}
       />
@@ -295,7 +301,6 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   renderBasicWeaknessSection() {
     const {
       cards,
-      fontScale,
     } = this.props;
     const {
       slots,
@@ -310,18 +315,13 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
-        <View style={styles.header}>
-          <Text style={[typography.small, styles.headerText]}>
-            { t`BASIC WEAKNESS` }
-          </Text>
-        </View>
+        <CardSectionHeader section={{ title: t`Basic weakness` }} />
         { map(sortBy(weaknesses, card => card.name), card => (
           <CardSearchResult
             key={card.code}
             card={card}
             count={slots[card.code]}
             onPress={this._cardPressed}
-            fontScale={fontScale}
           />
         )) }
         { this.renderDrawWeaknessButton() }
@@ -332,7 +332,6 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   renderStorySection() {
     const {
       cards,
-      fontScale,
     } = this.props;
     const {
       slots,
@@ -347,21 +346,17 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
-        <View style={styles.header}>
-          <Text style={[typography.small, styles.headerText]}>
-            { t`STORY` }
-          </Text>
-        </View>
+        <CardSectionHeader section={{ title: t`Story` }} />
         { map(sortBy(storyCards, card => card.name), card => (
           <CardSearchResult
             key={card.code}
             card={card}
             count={slots[card.code]}
             onPress={this._cardPressed}
-            fontScale={fontScale}
           />
         )) }
-        <BasicButton
+        <ArkhamButton
+          icon="edit"
           title={t`Edit Story Cards`}
           onPress={this._editStoryPressed}
         />
@@ -380,11 +375,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     } = this.state;
 
     const header = (
-      <View style={styles.header}>
-        <Text style={[typography.small, styles.headerText]}>
-          { t`DO NOT COUNT TOWARDS DECK SIZE` }
-        </Text>
-      </View>
+      <CardSectionHeader section={{ title: t`Do not count towards deck size` }} />
     );
     return (
       <CardSelectorComponent
@@ -399,8 +390,9 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
   }
 
   render() {
+    const { backgroundStyle } = this.context;
     return (
-      <ScrollView style={styles.wrapper}>
+      <ScrollView style={[styles.wrapper, backgroundStyle]}>
         { this.renderIgnoreCardsSection() }
         { this.renderStorySection() }
         { this.renderBasicWeaknessSection() }
@@ -422,21 +414,12 @@ export default withPlayerCards<NavigationProps & EditSpecialCardsProps>(
   connect<ReduxProps, unknown, NavigationProps & EditSpecialCardsProps & PlayerCardProps, AppState>(
     mapStateToProps
   )(
-    withDimensions(EditSpecialDeckCardsView)
+    EditSpecialDeckCardsView
   )
 );
 
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
-  },
-  header: {
-    marginTop: l,
-    borderBottomWidth: 1,
-    borderColor: COLORS.divider,
-  },
-  headerText: {
-    paddingLeft: s,
   },
 });

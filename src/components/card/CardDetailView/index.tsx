@@ -19,18 +19,19 @@ import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
 import { getShowSpoilers, getTabooSet, AppState } from '@reducers';
 import Card from '@data/Card';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export function rightButtonsForCard(card?: Card, color?: string) {
   const rightButtons = [{
     icon: iconsMap.web,
     id: 'share',
-    color: color || COLORS.navButton,
-    testID: t`Share`,
+    color: color || COLORS.M,
+    accessibilityLabel: t`Share`,
   }, {
-    icon: iconsMap.faq,
+    icon: iconsMap.wild,
     id: 'faq',
-    color: color || COLORS.navButton,
-    testID: t`FAQ`,
+    color: color || COLORS.M,
+    accessibilityLabel: t`FAQ`,
   }];
   if (card &&
     card.type_code === 'investigator' &&
@@ -39,8 +40,8 @@ export function rightButtonsForCard(card?: Card, color?: string) {
     rightButtons.push({
       icon: iconsMap.deck,
       id: 'deck',
-      color: color || COLORS.navButton,
-      testID: t`Deckbuilding Cards`,
+      color: color || COLORS.M,
+      accessibilityLabel: t`Deckbuilding Cards`,
     });
   }
   return rightButtons;
@@ -65,12 +66,15 @@ interface State {
 }
 
 class CardDetailView extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: '#007AFF',
+          color: COLORS.M,
         },
       },
     };
@@ -98,7 +102,7 @@ class CardDetailView extends React.Component<Props, State> {
 
   componentDidAppear() {
     const { componentId } = this.props;
-    Navigation.mergeOptions(componentId, CardDetailView.options);
+    Navigation.mergeOptions(componentId, CardDetailView.options());
   }
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
@@ -176,11 +180,11 @@ class CardDetailView extends React.Component<Props, State> {
       showSpoilers,
       tabooSetId,
       width,
-      fontScale,
       id,
     } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={styles.wrapper} />}>
+      <SingleCardWrapper code={id} type="encounter" loadingComponent={<View style={[styles.wrapper, backgroundStyle]} />}>
         { (card: Card) => {
           if (!this.navUpdated) {
             this.navUpdated = true;
@@ -194,10 +198,9 @@ class CardDetailView extends React.Component<Props, State> {
             return null;
           }
           return (
-            <ScrollView style={styles.wrapper}>
+            <ScrollView style={[styles.wrapper, backgroundStyle]}>
               <CardDetailComponent
                 width={width}
-                fontScale={fontScale}
                 componentId={componentId}
                 card={card}
                 showSpoilers={showSpoilers || this.state.showSpoilers}
@@ -232,6 +235,5 @@ connect<ReduxProps, unknown, NavigationProps & CardDetailProps, AppState>(mapSta
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

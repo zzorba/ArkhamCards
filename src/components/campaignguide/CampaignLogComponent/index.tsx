@@ -4,7 +4,6 @@ import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import { GuideChaosBagProps } from '@components/campaignguide/GuideChaosBagView';
 import { GuideOddsCalculatorProps } from '@components/campaignguide/GuideOddsCalculatorView';
@@ -13,26 +12,28 @@ import CampaignLogSuppliesComponent from './CampaignLogSuppliesComponent';
 import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import typography from '@styles/typography';
 import space, { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
   campaignId: number;
   campaignGuide: CampaignGuide;
   campaignLog: GuidedCampaignLog;
-  fontScale: number;
 }
 
-class CampaignLogComponent extends React.Component<Props & StylesProps> {
+export default class CampaignLogComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
-    const { campaignLog, campaignGuide, gameFont } = this.props;
+    const { campaignLog, campaignGuide } = this.props;
+    const { gameFont, borderStyle, typography } = this.context;
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
-          <View style={styles.section}>
+          <View style={[styles.section, borderStyle]}>
             <Text style={[typography.bigGameFont, { fontFamily: gameFont }]}>
               { title }: { count }
             </Text>
@@ -43,7 +44,7 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
         const section = campaignLog.investigatorSections[id];
         if (!section) {
           return (
-            <View style={styles.section}>
+            <View style={[styles.section, borderStyle]}>
               <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline]}>
                 { title }
               </Text>
@@ -73,7 +74,7 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
       default: {
         const section = campaignLog.sections[id];
         return (
-          <View style={styles.section}>
+          <View style={[styles.section, borderStyle]}>
             <View style={space.paddingBottomM}>
               <Text style={[
                 typography.bigGameFont,
@@ -153,13 +154,14 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
   };
 
   renderChaosBag() {
-    const { campaignLog, fontScale, gameFont } = this.props;
+    const { campaignLog } = this.props;
+    const { borderStyle, gameFont, typography } = this.context;
     if (!keys(campaignLog.chaosBag).length) {
       return null;
     }
     const tokenCount = sum(values(campaignLog.chaosBag));
     return (
-      <View style={styles.section}>
+      <View style={[styles.section, borderStyle]}>
         <View style={space.paddingBottomM}>
           <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline, typography.center]}>
             { t`Chaos Bag` }{ ` (${tokenCount})` }
@@ -167,7 +169,6 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
         </View>
         <ChaosBagLine
           chaosBag={campaignLog.chaosBag}
-          fontScale={fontScale}
         />
         <BasicButton
           title={t`Draw chaos tokens`}
@@ -183,8 +184,9 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
 
   render() {
     const { campaignGuide } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <View style={styles.wrapper}>
+      <View style={backgroundStyle}>
         { this.renderChaosBag() }
         { flatMap(campaignGuide.campaignLogSections(), log => {
           if (log.type === 'hidden') {
@@ -201,18 +203,12 @@ class CampaignLogComponent extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(CampaignLogComponent);
-
 const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: COLORS.background,
-  },
   section: {
     padding: m,
     paddingLeft: m + s,
     paddingRight: m + s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   crossedOut: {
     textDecorationLine: 'line-through',

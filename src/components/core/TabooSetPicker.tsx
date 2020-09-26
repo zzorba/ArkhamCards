@@ -1,13 +1,13 @@
 import React from 'react';
 import { findIndex, map } from 'lodash';
 import { format } from 'date-fns';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import connectDb from '@components/data/connectDb';
 import Database from '@data/Database';
 import SinglePickerComponent from './SinglePickerComponent';
 import TabooSet from '@data/TabooSet';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   color: string;
@@ -26,6 +26,8 @@ interface DbProps {
 type Props = OwnProps & DbProps;
 
 class TabooSetPicker extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   _onTabooChange = (tabooId: number | null) => {
     const { tabooSets } = this.props;
@@ -48,6 +50,7 @@ class TabooSetPicker extends React.Component<Props> {
       transparent,
       open,
     } = this.props;
+    const { colors } = this.context;
     const selectedIndex = !tabooSetId ?
       -1 :
       findIndex(tabooSets, set => set && set.id === tabooSetId);
@@ -56,7 +59,7 @@ class TabooSetPicker extends React.Component<Props> {
         title={t`Taboo List`}
         description={description}
         optional
-        defaultLabel={t`None`}
+        defaultLabel={c('Taboo List').t`None`}
         onChoiceChange={this._onTabooChange}
         selectedIndex={selectedIndex}
         choices={map(tabooSets, set => {
@@ -67,8 +70,8 @@ class TabooSetPicker extends React.Component<Props> {
         colors={{
           modalColor: color,
           modalTextColor: '#FFFFFF',
-          backgroundColor: transparent ? 'transparent' : COLORS.background,
-          textColor: COLORS.darkText,
+          backgroundColor: transparent ? 'transparent' : colors.background,
+          textColor: colors.darkText,
         }}
         editable={!disabled}
         open={open}

@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, Switch, Text, View, ViewProps, ViewStyle, TextProps, TextStyle, SwitchProps,
+  StyleSheet, Text, View, ViewProps, ViewStyle, TextProps, TextStyle, SwitchProps,
 } from 'react-native';
 
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
   defaultTitleStyle: {
     flex: 0,
-    color: COLORS.darkText,
     paddingLeft: 16,
     paddingRight: 8,
     fontSize: 16,
@@ -33,7 +32,6 @@ const style = StyleSheet.create({
     paddingRight: 16,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -65,6 +63,9 @@ interface Props {
   switchProps: SwitchProps;
 }
 class SettingsSwitch extends Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static defaultProps = {
     containerProps: {},
     containerStyle: {},
@@ -87,13 +88,13 @@ class SettingsSwitch extends Component<Props> {
       disabledOverlayStyle, switchWrapperProps, switchWrapperStyle, value,
       trackColor, onValueChange, descriptionProps, descriptionStyle, description,
     } = this.props;
-
+    const { backgroundStyle, colors, disabledStyle } = this.context;
     return (
-      <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+      <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
         <View style={style.titleWrapper}>
           <Text
             {...titleProps}
-            style={[style.defaultTitleStyle, titleStyle]}
+            style={[style.defaultTitleStyle, { color: colors.darkText }, titleStyle]}
           >
             {title}
           </Text>
@@ -107,7 +108,7 @@ class SettingsSwitch extends Component<Props> {
           ) : null}
           {(disabled) ? (
             <View
-              style={[style.defaultDisabledOverlayStyle, (disabled) ? disabledOverlayStyle : null]}
+              style={[style.defaultDisabledOverlayStyle, disabledStyle, (disabled) ? disabledOverlayStyle : null]}
             />
           ) : null}
         </View>
@@ -115,7 +116,7 @@ class SettingsSwitch extends Component<Props> {
           {...switchWrapperProps}
           style={[style.defaultSwitchWrapperStyle, switchWrapperStyle]}
         >
-          <Switch
+          <ArkhamSwitch
             value={value}
             trackColor={trackColor}
             onValueChange={onValueChange}

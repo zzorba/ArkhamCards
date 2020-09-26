@@ -89,6 +89,9 @@ export default StyleSheet.create({
   marginTopS: {
     marginTop: s,
   },
+  marginLeftXs: {
+    marginLeft: xs,
+  },
   marginLeftS: {
     marginLeft: s,
   },

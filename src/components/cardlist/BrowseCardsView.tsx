@@ -9,7 +9,7 @@ interface Props {
   sort?: SortType;
 }
 
-class CardSearchView extends React.PureComponent<Props> {
+class CardSearchView extends React.Component<Props> {
   render() {
     const {
       componentId,

@@ -7,7 +7,6 @@ import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
 
 interface Props {
   id: string;
@@ -19,12 +18,12 @@ interface State {
 }
 
 export default class TextBoxInputComponent extends React.Component<Props, State> {
+  static contextType = ScenarioStepContext;
+  context!: ScenarioStepContextType;
+
   state: State = {
     text: '',
   };
-
-  static contextType = ScenarioStepContext;
-  context!: ScenarioStepContextType;
 
   _submit = (
     { nativeEvent: { text } }: NativeSyntheticEvent<TextInputSubmitEditingEventData>
@@ -51,6 +50,9 @@ export default class TextBoxInputComponent extends React.Component<Props, State>
 
   render() {
     const { id, prompt } = this.props;
+    const {
+      style: { borderStyle, typography },
+    } = this.context;
     return (
       <ScenarioStepContext.Consumer>
         { ({ scenarioState }: ScenarioStepContextType) => {
@@ -63,7 +65,7 @@ export default class TextBoxInputComponent extends React.Component<Props, State>
               <SetupStepWrapper>
                 { !!prompt && <CampaignGuideTextComponent text={prompt} /> }
                 <TextInput
-                  style={styles.textInput}
+                  style={[styles.textInput, borderStyle, typography.dark]}
                   onChangeText={this._onChangeText}
                   onSubmitEditing={this._submit}
                   returnKeyType="done"
@@ -87,11 +89,9 @@ const styles = StyleSheet.create({
     marginTop: s,
     marginRight: m,
     borderWidth: 1,
-    borderColor: COLORS.divider,
     borderRadius: 4,
     padding: 8,
     paddingTop: 12,
     paddingBottom: 12,
-    color: COLORS.darkText,
   },
 });

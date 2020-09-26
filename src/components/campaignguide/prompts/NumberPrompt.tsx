@@ -6,17 +6,15 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '../SetupStepWrapper';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType, Effect, Option } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 
-interface OwnProps {
+interface Props {
   id: string;
   bulletType?: BulletType;
   prompt: string;
@@ -30,13 +28,11 @@ interface OwnProps {
   text?: string;
 }
 
-type Props = OwnProps & StylesProps;
-
 interface State {
   value: number;
 }
 
-class NumberPrompt extends React.Component<Props, State> {
+export default class NumberPrompt extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -103,7 +99,10 @@ class NumberPrompt extends React.Component<Props, State> {
   };
 
   renderCount(count: number) {
-    const { delta, gameFont } = this.props;
+    const { delta } = this.props;
+    const {
+      style: { gameFont, typography },
+    } = this.context;
     return (
       <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
         <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center]}>
@@ -114,7 +113,10 @@ class NumberPrompt extends React.Component<Props, State> {
   }
 
   renderPrompt(count?: number) {
-    const { prompt, gameFont } = this.props;
+    const { prompt } = this.props;
+    const {
+      style: { gameFont, typography },
+    } = this.context;
     const value = this.currentValue();
     return (
       <View style={styles.promptRow}>
@@ -180,8 +182,6 @@ class NumberPrompt extends React.Component<Props, State> {
     );
   }
 }
-
-export default withStyles(NumberPrompt);
 
 const styles = StyleSheet.create({
   count: {

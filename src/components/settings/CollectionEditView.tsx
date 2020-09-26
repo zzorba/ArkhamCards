@@ -8,12 +8,11 @@ import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import PackListComponent from '@components/core/PackListComponent';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import { Pack } from '@actions/types';
 import { setInCollection, setCycleInCollection } from '@actions';
 import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   packs: Pack[];
@@ -24,10 +23,13 @@ interface ReduxActionProps {
   setInCollection: (code: string, value: boolean) => void;
   setCycleInCollection: (cycle: number, value: boolean) => void;
 }
-type Props = NavigationProps & ReduxProps & ReduxActionProps & DimensionsProps;
+type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class CollectionEditView extends React.Component<Props> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
@@ -44,8 +46,8 @@ class CollectionEditView extends React.Component<Props> {
       in_collection,
       setInCollection,
       setCycleInCollection,
-      fontScale,
     } = this.props;
+    const { typography } = this.context;
     if (!packs.length) {
       return (
         <View>
@@ -56,7 +58,6 @@ class CollectionEditView extends React.Component<Props> {
     return (
       <PackListComponent
         coreSetName={t`Second Core Set`}
-        fontScale={fontScale}
         componentId={componentId}
         packs={packs}
         checkState={in_collection}
@@ -84,6 +85,4 @@ function mapDispatchToProps(dispatch: Dispatch<Action>) {
 export default connect<ReduxProps, ReduxActionProps, NavigationProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(
-  withDimensions(CollectionEditView)
-);
+)(CollectionEditView);

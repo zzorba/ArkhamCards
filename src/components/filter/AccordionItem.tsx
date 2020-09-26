@@ -6,16 +6,15 @@ import {
   Text,
   View,
 } from 'react-native';
+import { t } from 'ttag';
 
-import Switch from '@components/core/Switch';
-import typography from '@styles/typography';
+import ToggleButton from '@components/core/ToggleButton';
 import { isBig, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   label: string;
   height: number;
-  fontScale: number;
   children: ReactNode;
   enabled: boolean;
   toggleName: string;
@@ -27,6 +26,9 @@ interface State {
 }
 
 export default class AccordionItem extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -68,14 +70,18 @@ export default class AccordionItem extends React.Component<Props, State> {
       label,
       enabled,
     } = this.props;
+    const { typography } = this.context;
     return (
       <View style={styles.row}>
         <Text style={typography.text}>
           { label }
         </Text>
-        <Switch
+        <ToggleButton
+          accessibilityLabel={t`Enable`}
           value={enabled}
-          onValueChange={this._togglePressed}
+          onPress={this._togglePressed}
+          size={20}
+          icon="expand"
         />
       </View>
     );
@@ -85,9 +91,8 @@ export default class AccordionItem extends React.Component<Props, State> {
     const {
       height,
       children,
-      fontScale,
     } = this.props;
-
+    const { fontScale, borderStyle } = this.context;
     const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
 
     const containerHeight = this.state.heightAnim.interpolate({
@@ -96,7 +101,7 @@ export default class AccordionItem extends React.Component<Props, State> {
       extrapolate: 'clamp',
     });
     return (
-      <Animated.View style={[styles.container, { height: containerHeight }]}>
+      <Animated.View style={[styles.container, borderStyle, { height: containerHeight }]}>
         { this.renderLabel() }
         { children }
       </Animated.View>
@@ -111,7 +116,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     overflow: 'hidden',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   row: {
     paddingTop: xs,

@@ -9,6 +9,10 @@ import {
   SetLanguageChoiceAction,
   CardFetchSuccessAction,
   CARD_FETCH_SUCCESS,
+  SET_THEME,
+  SetThemeAction,
+  SET_FONT_SCALE,
+  SetFontScaleAction,
 } from '@actions/types';
 
 interface SettingsState {
@@ -16,6 +20,8 @@ interface SettingsState {
   singleCardView?: boolean;
   alphabetizeEncounterSets?: boolean;
   lang?: string;
+  theme?: 'dark' | 'light';
+  fontScale?: number;
 }
 
 const DEFAULT_SETTINGS_STATE: SettingsState = {
@@ -23,9 +29,10 @@ const DEFAULT_SETTINGS_STATE: SettingsState = {
   singleCardView: false,
   alphabetizeEncounterSets: false,
   lang: 'system',
+  fontScale: undefined,
 };
 
-type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction;
+type SettingAction = SetLanguageChoiceAction | SetTabooSetAction | SetSingleCardViewAction | SetAlphabetizeEncounterSetsAction | CardFetchSuccessAction | SetThemeAction | SetFontScaleAction;
 
 
 export default function(
@@ -33,6 +40,17 @@ export default function(
   action: SettingAction
 ): SettingsState {
   switch (action.type) {
+    case SET_FONT_SCALE:
+      return {
+        ...state,
+        fontScale: action.fontScale,
+      };
+    case SET_THEME: {
+      return {
+        ...state,
+        theme: action.theme === 'system' ? undefined : action.theme,
+      };
+    }
     case SET_LANGUAGE_CHOICE: {
       return {
         ...state,

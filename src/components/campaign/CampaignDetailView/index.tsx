@@ -13,13 +13,11 @@ import { Navigation, EventSubscription } from 'react-native-navigation';
 import SideMenu from 'react-native-side-menu';
 import { t } from 'ttag';
 
-import {
-  SettingsButton,
-  SettingsCategoryHeader,
-} from '@lib/react-native-settings-components';
+import { SettingsButton } from '@lib/react-native-settings-components';
 import BasicButton from '@components/core/BasicButton';
 import { Campaign, CampaignNotes, DecksMap, InvestigatorData, WeaknessSet } from '@actions/types';
 import CampaignLogSection from './CampaignLogSection';
+import CardSectionHeader from '@components/core/CardSectionHeader';
 import ChaosBagSection from './ChaosBagSection';
 import DecksSection from './DecksSection';
 import ScenarioSection from './ScenarioSection';
@@ -43,6 +41,7 @@ import { updateCampaign, updateCampaignSpentXp, deleteCampaign, cleanBrokenCampa
 import { NavigationProps } from '@components/nav/types';
 import { getCampaign, getAllDecks, getLatestCampaignDeckIds, getLatestCampaignInvestigators, AppState } from '@reducers';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CampaignDetailProps {
   id: number;
@@ -78,6 +77,9 @@ interface State {
 }
 
 class CampaignDetailView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(passProps: Props) {
     return {
       topBar: {
@@ -87,7 +89,8 @@ class CampaignDetailView extends React.Component<Props, State> {
         rightButtons: [{
           icon: iconsMap.menu,
           id: 'menu',
-          color: COLORS.navButton,
+          color: COLORS.M,
+          accessibilityLabel: t`Menu`,
         }],
       },
     };
@@ -427,7 +430,6 @@ class CampaignDetailView extends React.Component<Props, State> {
             topBar: {
               title: {
                 text: t`Chaos Bag`,
-                color: COLORS.black,
               },
             },
           },
@@ -455,7 +457,6 @@ class CampaignDetailView extends React.Component<Props, State> {
             topBar: {
               title: {
                 text: t`Draw Weaknesses`,
-                color: COLORS.black,
               },
               backButton: {
                 title: t`Back`,
@@ -468,83 +469,68 @@ class CampaignDetailView extends React.Component<Props, State> {
   };
 
   renderSideMenu(campaign: Campaign) {
+    const { backgroundStyle, borderStyle, typography } = this.context;
     return (
-      <ScrollView style={styles.menu}>
-        <SettingsCategoryHeader
-          title={t`Campaign`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+      <ScrollView style={[styles.menu, borderStyle, backgroundStyle]}>
+        <CardSectionHeader section={{ title: t`Campaign` }} />
         <SettingsButton
           onPress={this._editNamePressed}
           title={t`Name`}
-          titleStyle={styles.text}
+          titleStyle={typography.text}
           description={campaign.name}
-          descriptionStyle={styles.text}
-          containerStyle={styles.button}
+          descriptionStyle={typography.small}
+          containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._viewScenarios}
           title={t`Scenario History`}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
         <SettingsButton
           onPress={this._addScenarioResult}
           title={t`Record Scenario Results`}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
-        <SettingsCategoryHeader
-          title={t`Chaos Bag`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+        <CardSectionHeader section={{ title: t`Chaos Bag` }} />
         <SettingsButton
           title={t`Edit Tokens`}
           onPress={this._editChaosBag}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Draw Tokens`}
           onPress={this._drawChaosBag}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Odds Calculator`}
           onPress={this._oddsCalculatorPressed}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
-        <SettingsCategoryHeader
-          title={t`Weakness Set`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+        <CardSectionHeader section={{ title: t`Weakness Set` }} />
         <SettingsButton
           title={t`Draw Basic Weakness`}
           onPress={this._showDrawWeakness}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
-        <SettingsCategoryHeader
-          title={t`Options`}
-          titleStyle={styles.categoryText}
-          containerStyle={styles.categoryContainer}
-        />
+        <CardSectionHeader section={{ title: t`Options` }} />
         <SettingsButton
           onPress={this._showShareSheet}
           title={t`Share`}
-          titleStyle={styles.text}
-          containerStyle={styles.button}
+          titleStyle={typography.text}
+          containerStyle={backgroundStyle}
         />
         <SettingsButton
           title={t`Delete`}
           titleStyle={styles.destructive}
           onPress={this._deletePressed}
-          containerStyle={styles.button}
+          containerStyle={backgroundStyle}
         />
       </ScrollView>
     );
@@ -557,27 +543,24 @@ class CampaignDetailView extends React.Component<Props, State> {
       showTraumaDialog,
       showTextEditDialog,
       allInvestigators,
-      fontScale,
       decks,
       cards,
     } = this.props;
+    const { backgroundStyle } = this.context;
     return (
-      <ScrollView style={styles.flex}>
+      <ScrollView style={[styles.flex, backgroundStyle]}>
         <ScenarioSection
           campaign={campaign}
-          fontScale={fontScale}
           addScenarioResult={this._addScenarioResult}
           viewScenarios={this._viewScenarios}
         />
         <ChaosBagSection
-          fontScale={fontScale}
           chaosBag={campaign.chaosBag}
           showChaosBag={this._drawChaosBag}
           showOddsCalculator={this._oddsCalculatorPressed}
         />
         <DecksSection
           componentId={componentId}
-          fontScale={fontScale}
           campaign={campaign}
           weaknessSet={campaign.weaknessSet}
           latestDeckIds={latestDeckIds || []}
@@ -593,13 +576,11 @@ class CampaignDetailView extends React.Component<Props, State> {
           decSpentXp={this._decSpentXp}
         />
         <WeaknessSetSection
-          fontScale={fontScale}
           weaknessSet={campaign.weaknessSet}
           showDrawDialog={this._showDrawWeakness}
         />
         <CampaignLogSection
           componentId={componentId}
-          fontScale={fontScale}
           campaignNotes={campaign.campaignNotes}
           scenarioCount={(campaign.scenarioResults || []).length}
           allInvestigators={allInvestigators}
@@ -617,6 +598,7 @@ class CampaignDetailView extends React.Component<Props, State> {
       captureViewRef,
       width,
     } = this.props;
+    const { backgroundStyle } = this.context;
 
     if (!campaign) {
       return (
@@ -631,7 +613,7 @@ class CampaignDetailView extends React.Component<Props, State> {
     }
     const menuWidth = Math.min(width * 0.60, 240);
     return (
-      <View style={styles.flex} ref={captureViewRef}>
+      <View style={[styles.flex, backgroundStyle]} ref={captureViewRef}>
         <SideMenu
           isOpen={this.state.menuOpen}
           onChange={this._menuOpenChange}
@@ -686,26 +668,11 @@ export default withPlayerCards<NavigationProps & CampaignDetailProps>(
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   menu: {
     borderLeftWidth: 2,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
   },
   destructive: {
     color: COLORS.red,
-  },
-  categoryText: {
-    color: COLORS.lightText,
-  },
-  categoryContainer: {
-    backgroundColor: COLORS.veryLightBackground,
-  },
-  text: {
-    color: COLORS.darkText,
-  },
-  button: {
-    backgroundColor: COLORS.background,
   },
 });

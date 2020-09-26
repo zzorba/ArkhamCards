@@ -3,11 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import Switch from '@components/core/Switch';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   code: string;
@@ -18,7 +16,10 @@ interface Props {
   editable: boolean;
 }
 
-class CheckListItemComponent extends React.Component<Props & StylesProps> {
+export default class CheckListItemComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _toggle = () => {
     const {
       onChoiceToggle,
@@ -33,14 +34,15 @@ class CheckListItemComponent extends React.Component<Props & StylesProps> {
       editable,
       color,
       selected,
-      gameFont,
     } = this.props;
+    const { gameFont, borderStyle, colors, typography } = this.context;
     if (!editable && !selected) {
       return null;
     }
     return (
       <View style={[
         styles.row,
+        borderStyle,
         space.paddingS,
         space.paddingSideM,
         color ? { backgroundColor: color } : {},
@@ -64,7 +66,7 @@ class CheckListItemComponent extends React.Component<Props & StylesProps> {
           <MaterialCommunityIcons
             name="check"
             size={18}
-            color={color ? 'white' : COLORS.darkText}
+            color={color ? 'white' : colors.darkText}
           />
         ) }
       </View>
@@ -72,15 +74,12 @@ class CheckListItemComponent extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(CheckListItemComponent);
-
 const styles = StyleSheet.create({
   nameText: {
     fontWeight: '600',
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

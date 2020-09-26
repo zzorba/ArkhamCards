@@ -1,6 +1,6 @@
 import React from 'react';
 import { filter, flatMap, map, range, uniq, sortBy } from 'lodash';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import MultiPickerComponent from '@components/core/MultiPickerComponent';
@@ -92,7 +92,7 @@ export default class SelectWeaknessTraitsComponent extends React.Component<Props
               };
             }
           )}
-          defaultLabel={t`All`}
+          defaultLabel={c('Weakness Card').t`All`}
         />
         { this.renderButton() }
       </>

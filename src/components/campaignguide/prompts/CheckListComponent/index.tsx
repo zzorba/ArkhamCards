@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from 'react-native';
 import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import CheckListItemComponent from './CheckListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
@@ -11,9 +10,7 @@ import SetupStepWrapper from '../../SetupStepWrapper';
 import { StringChoices } from '@actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
-import typography from '@styles/typography';
 import { m, s } from '@styles/space';
-import COLORS from '@styles/colors';
 
 export interface ListItem {
   code: string;
@@ -35,11 +32,9 @@ export interface CheckListComponentProps {
   button?: React.ReactNode;
 }
 
-interface OwnProps extends CheckListComponentProps {
+interface Props extends CheckListComponentProps {
   items: ListItem[];
 }
-
-type Props = OwnProps & StylesProps;
 
 interface State {
   selectedChoice: {
@@ -47,7 +42,7 @@ interface State {
   };
 }
 
-class CheckListComponent extends React.Component<Props, State> {
+export default class CheckListComponent extends React.Component<Props, State> {
   static contextType = ScenarioGuideContext;
   context!: ScenarioGuideContextType;
 
@@ -149,63 +144,59 @@ class CheckListComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, items, bulletType, text, checkText, button, gameFont } = this.props;
+    const { id, items, bulletType, text, checkText, button } = this.props;
+    const {
+      style: { gameFont, borderStyle, typography },
+      scenarioState,
+    } = this.context;
     const { selectedChoice } = this.state;
+    const choiceList = scenarioState.stringChoices(id);
+    const hasDecision = choiceList !== undefined;
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => {
-          const choiceList = scenarioState.stringChoices(id);
-          const hasDecision = choiceList !== undefined;
-          return (
-            <>
-              { !!text && (
-                <SetupStepWrapper bulletType={bulletType}>
-                  <CampaignGuideTextComponent text={text} />
-                </SetupStepWrapper>
-              ) }
-              <View style={styles.prompt}>
-                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
-                  { checkText }
-                </Text>
-              </View>
-              { map(items, (item, idx) => {
-                const selected = choiceList !== undefined ? (
-                  choiceList[item.code] !== undefined
-                ) : (
-                  selectedChoice[item.code] !== undefined
-                );
-                return (
-                  <CheckListItemComponent
-                    key={idx}
-                    {...item}
-                    selected={selected}
-                    onChoiceToggle={this._onChoiceToggle}
-                    editable={!hasDecision}
-                  />
-                );
-              }) }
-              { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
-                <View style={styles.row}>
-                  <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
-                    { t`None` }
-                  </Text>
-                </View>
-              ) }
-              { !hasDecision && !!button && (
-                <View style={styles.bottomBorder}>
-                  { button }
-                </View>
-              ) }
-              { this.renderSaveButton(hasDecision) }
-            </>
+      <>
+        { !!text && (
+          <SetupStepWrapper bulletType={bulletType}>
+            <CampaignGuideTextComponent text={text} />
+          </SetupStepWrapper>
+        ) }
+        <View style={[styles.prompt, borderStyle]}>
+          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+            { checkText }
+          </Text>
+        </View>
+        { map(items, (item, idx) => {
+          const selected = choiceList !== undefined ? (
+            choiceList[item.code] !== undefined
+          ) : (
+            selectedChoice[item.code] !== undefined
           );
-        } }
-      </ScenarioGuideContext.Consumer>
+          return (
+            <CheckListItemComponent
+              key={idx}
+              {...item}
+              selected={selected}
+              onChoiceToggle={this._onChoiceToggle}
+              editable={!hasDecision}
+            />
+          );
+        }) }
+        { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
+          <View style={[styles.row, borderStyle]}>
+            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
+              { t`None` }
+            </Text>
+          </View>
+        ) }
+        { !hasDecision && !!button && (
+          <View style={[styles.bottomBorder, borderStyle]}>
+            { button }
+          </View>
+        ) }
+        { this.renderSaveButton(hasDecision) }
+      </>
     );
   }
 }
-
-export default withStyles(CheckListComponent);
 
 const styles = StyleSheet.create({
   prompt: {
@@ -214,11 +205,9 @@ const styles = StyleSheet.create({
     paddingRight: m,
     justifyContent: 'flex-end',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   row: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     padding: s,
     paddingLeft: m,
     paddingRight: m,
@@ -228,7 +217,6 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   nameText: {
     fontWeight: '600',

@@ -12,21 +12,19 @@ import SideScenarioButton from './SideScenarioButton';
 import { NavigationProps } from '@components/nav/types';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import TabView from '@components/core/TabView';
 import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 export interface AddSideScenarioProps extends CampaignGuideInputProps {
   latestScenarioId: ScenarioId;
 }
 
-type Props = NavigationProps & DimensionsProps & AddSideScenarioProps & CampaignGuideProps;
+type Props = NavigationProps & AddSideScenarioProps & CampaignGuideProps;
 
 interface State {
   customDialogVisible: boolean;
@@ -115,6 +113,9 @@ class AddSideScenarioView extends React.Component<Props, State> {
       customXpCost,
       viewRef,
     } = this.state;
+    const {
+      style: { typography },
+    } = this.context;
     const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
     return (
       <Dialog
@@ -163,120 +164,118 @@ class AddSideScenarioView extends React.Component<Props, State> {
 
   render() {
     const {
-      fontScale,
       componentId,
       campaignData: {
         campaignGuide,
         campaignState,
       },
     } = this.props;
-    const processedCampaign = campaignGuide.processAllScenarios(campaignState);
-    const tabs = [
-      {
-        key: 'scenarios',
-        title: t`Side`,
-        node: (
-          <ScrollView contentContainerStyle={styles.scrollView}>
-            <View style={styles.header}>
-              <SetupStepWrapper bulletType="none">
-                <CampaignGuideTextComponent
-                  text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign. Each sidestory may only be played once per campaign.\nThe experience required to play these scenarios will be deducted automatically at the end of the scenario.`} />
-              </SetupStepWrapper>
-            </View>
-            { flatMap(campaignGuide.sideScenarios(), scenario => {
-              if (scenario.side_scenario_type === 'challenge') {
-                return null;
-              }
-              const alreadyPlayed = !!find(
-                processedCampaign.scenarios,
-                playedScenario => playedScenario.id.scenarioId === scenario.id
-              );
-              if (alreadyPlayed) {
-                // Already played this one.
-                return [];
-              }
-              return (
-                <SideScenarioButton
-                  key={scenario.id}
-                  componentId={componentId}
-                  scenario={scenario}
-                  onPress={this._onPress}
-                  fontScale={fontScale}
-                />
-              );
-            }) }
-            <BasicButton
-              title={t`Custom scenario`}
-              onPress={this._customScenarioPressed}
-            />
-          </ScrollView>
-        ),
-      },
-      {
-        key: 'challenge',
-        title: t`Challenge`,
-        node: (
-          <ScrollView contentContainerStyle={styles.scrollView}>
-            <View style={styles.header}>
-              <SetupStepWrapper bulletType="none">
-                <CampaignGuideTextComponent text={t`Challenge scenarios are special print-and-play scenarios that utilize existing products in the <i>Arkham Horror: The Card Game</i> collection, along with additional print-and-play cards, to create new content. These scenarios are designed with certain prerequisites in mind, in order to craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section.`} />
-              </SetupStepWrapper>
-              <BasicButton
-                onPress={this._challengeScenario}
-                title={t`Download printable cards`}
-              />
-            </View>
-            { flatMap(campaignGuide.sideScenarios(), scenario => {
-              if (scenario.side_scenario_type !== 'challenge') {
-                return null;
-              }
-              const alreadyPlayed = !!find(
-                processedCampaign.scenarios,
-                playedScenario => playedScenario.id.scenarioId === scenario.id
-              );
-              if (alreadyPlayed) {
-                // Already played this one.
-                return [];
-              }
-              return (
-                <SideScenarioButton
-                  key={scenario.id}
-                  componentId={componentId}
-                  scenario={scenario}
-                  onPress={this._onPress}
-                  fontScale={fontScale}
-                />
-              );
-            }) }
-          </ScrollView>
-        ),
-      },
-    ];
     return (
-      <>
-        <TabView
-          tabs={tabs}
-          onTabChange={this._onTabChange}
-          fontScale={fontScale}
-        />
-        { this.renderCustomDialog() }
-      </>
+      <StyleContext.Consumer>
+        { ({ backgroundStyle, borderStyle }) => {
+          const processedCampaign = campaignGuide.processAllScenarios(campaignState);
+          const tabs = [
+            {
+              key: 'scenarios',
+              title: t`Side`,
+              node: (
+                <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
+                  <View style={[styles.header, borderStyle]}>
+                    <SetupStepWrapper bulletType="none">
+                      <CampaignGuideTextComponent
+                        text={t`A side-story is a scenario that may be played between any two scenarios of an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs each investigator in the campaign a certain amount of experience. Weaknesses, trauma, experience, and rewards granted by playing a side-story stay with the investigators for the remainder of the campaign. Each sidestory may only be played once per campaign.\nThe experience required to play these scenarios will be deducted automatically at the end of the scenario.`} />
+                    </SetupStepWrapper>
+                  </View>
+                  { flatMap(campaignGuide.sideScenarios(), scenario => {
+                    if (scenario.side_scenario_type === 'challenge') {
+                      return null;
+                    }
+                    const alreadyPlayed = !!find(
+                      processedCampaign.scenarios,
+                      playedScenario => playedScenario.id.scenarioId === scenario.id
+                    );
+                    if (alreadyPlayed) {
+                      // Already played this one.
+                      return [];
+                    }
+                    return (
+                      <SideScenarioButton
+                        key={scenario.id}
+                        componentId={componentId}
+                        scenario={scenario}
+                        onPress={this._onPress}
+                      />
+                    );
+                  }) }
+                  <BasicButton
+                    title={t`Custom scenario`}
+                    onPress={this._customScenarioPressed}
+                  />
+                </ScrollView>
+              ),
+            },
+            {
+              key: 'challenge',
+              title: t`Challenge`,
+              node: (
+                <ScrollView contentContainerStyle={[styles.scrollView, backgroundStyle]}>
+                  <View style={[styles.header, borderStyle]}>
+                    <SetupStepWrapper bulletType="none">
+                      <CampaignGuideTextComponent text={t`Challenge scenarios are special print-and-play scenarios that utilize existing products in the <i>Arkham Horror: The Card Game</i> collection, along with additional print-and-play cards, to create new content. These scenarios are designed with certain prerequisites in mind, in order to craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section.`} />
+                    </SetupStepWrapper>
+                    <BasicButton
+                      onPress={this._challengeScenario}
+                      title={t`Download printable cards`}
+                    />
+                  </View>
+                  { flatMap(campaignGuide.sideScenarios(), scenario => {
+                    if (scenario.side_scenario_type !== 'challenge') {
+                      return null;
+                    }
+                    const alreadyPlayed = !!find(
+                      processedCampaign.scenarios,
+                      playedScenario => playedScenario.id.scenarioId === scenario.id
+                    );
+                    if (alreadyPlayed) {
+                      // Already played this one.
+                      return [];
+                    }
+                    return (
+                      <SideScenarioButton
+                        key={scenario.id}
+                        componentId={componentId}
+                        scenario={scenario}
+                        onPress={this._onPress}
+                      />
+                    );
+                  }) }
+                </ScrollView>
+              ),
+            },
+          ];
+          return (
+            <>
+              <TabView
+                tabs={tabs}
+                onTabChange={this._onTabChange}
+              />
+              { this.renderCustomDialog() }
+            </>
+          );
+        } }
+      </StyleContext.Consumer>
     );
   }
 }
 
-export default withCampaignGuideContext(
-  withDimensions(AddSideScenarioView)
-);
+export default withCampaignGuideContext(AddSideScenarioView);
 
 
 const styles = StyleSheet.create({
   scrollView: {
     paddingBottom: 32,
-    backgroundColor: COLORS.background,
   },
   header: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

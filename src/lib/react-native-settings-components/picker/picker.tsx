@@ -6,13 +6,12 @@ import { cloneDeep, isArray, join, trim } from 'lodash';
 import { t } from 'ttag';
 
 import PickerModal, { ModalStyle, PickerItem } from './picker.modal';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
     minHeight: 50,
-    backgroundColor: COLORS.background,
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -23,14 +22,12 @@ const style = StyleSheet.create({
     fontSize: 16,
   },
   defaultValueStyle: {
-    color: COLORS.lightText,
     fontSize: 14,
     flex: 0,
     paddingLeft: 8,
     paddingRight: 16,
   },
   defaultDisabledOverlayStyle: {
-    backgroundColor: COLORS.disabledOverlay,
     position: 'absolute',
     top: 0,
     right: 0,
@@ -77,6 +74,9 @@ interface State {
   pickerOpen: boolean;
 }
 class SettingsPicker extends Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     pickerValue: [],
     pickerOpen: false,
@@ -182,7 +182,7 @@ class SettingsPicker extends Component<Props, State> {
       widget, widgetStyle,
     } = this.props;
     const { pickerOpen, pickerValue } = this.state;
-
+    const { backgroundStyle, colors, disabledStyle } = this.context;
     return (
       <View style={{ width: '100%' }}>
         {(!disabled) ? (
@@ -198,26 +198,26 @@ class SettingsPicker extends Component<Props, State> {
               onSelectItem={this.onSelectItem}
               renderCloseBtn={renderCloseBtn}
             />
-            <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+            <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
               <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>
                 {title}
               </Text>
-              <Text {...valueProps} style={[style.defaultValueStyle, valueStyle]}>
+              <Text {...valueProps} style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}>
                 {this.generateValStr()}
               </Text>
               { widget && <View style={widgetStyle}>{widget}</View> }
             </View>
           </TouchableOpacity>
         ) : (
-          <View {...containerProps} style={[style.defaultContainerStyle, containerStyle]}>
+          <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
             <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>{title}</Text>
             <Text
               {...valueProps}
-              style={[style.defaultValueStyle, valueStyle]}
+              style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
             >
               {this.generateValStr()}
             </Text>
-            <View style={[style.defaultDisabledOverlayStyle, disabledOverlayStyle]} />
+            <View style={[style.defaultDisabledOverlayStyle, disabledStyle, disabledOverlayStyle]} />
           </View>
         )}
       </View>

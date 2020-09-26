@@ -13,10 +13,10 @@ import { Deck, InvestigatorData, ParsedDeck } from '@actions/types';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import Card, { CardsMap } from '@data/Card';
 import { parseBasicDeck } from '@lib/parseDeck';
-import typography from '@styles/typography';
 import { showDeckModal } from '@components/nav/helper';
 import DeckRow from '../DeckRow';
 import { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   campaignId: number;
@@ -25,10 +25,8 @@ interface Props {
   investigatorData: InvestigatorData;
   originalDeckIds: Set<number>;
   componentId: string;
-  fontScale: number;
   decks: Deck[];
   allInvestigators: Card[];
-
   cards: CardsMap;
   investigators: CardsMap;
 }
@@ -40,6 +38,9 @@ interface State {
 }
 
 export default class UpgradeDecksList extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     saved: {},
   };
@@ -81,6 +82,7 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
       investigatorData,
       originalDeckIds,
     } = this.props;
+    const { typography } = this.context;
     const eliminated = investigator.eliminated(investigatorData[investigator.code]);
     if (eliminated) {
       return null;
@@ -125,7 +127,6 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
   _renderDeck = (deckId: number) => {
     const {
       componentId,
-      fontScale,
       cards,
       investigators,
     } = this.props;
@@ -133,7 +134,6 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
     return (
       <DeckRow
         key={deckId}
-        fontScale={fontScale}
         componentId={componentId}
         id={deckId}
         cards={cards}
@@ -162,7 +162,6 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
       decks,
       investigatorData,
       allInvestigators,
-      fontScale,
     } = this.props;
     const { saved } = this.state;
     const investigators = filter(
@@ -181,11 +180,9 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
             <InvestigatorRow
               key={investigator.code}
               investigator={investigator}
-              fontScale={fontScale}
             >
               <NonDeckDetailsButton
                 investigator={investigator}
-                fontScale={fontScale}
                 saved={saved[investigator.code] || false}
                 saveXp={this._saveXp}
               />

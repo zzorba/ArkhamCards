@@ -28,7 +28,6 @@ import {
   SORT_BY_TYPE,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-import { State } from 'react-native-gesture-handler';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -339,16 +338,17 @@ export function getEffectiveDeckId(state: AppState, id: number): number {
   return id;
 }
 
-export function getDeck(state: AppState, id: number): Deck | null {
-  if (!id) {
+export function getDeck(id: number) {
+  return (state: AppState) => {
+    if (!id) {
+      return null;
+    }
+    if (id in state.decks.all) {
+      return state.decks.all[id];
+    }
     return null;
-  }
-  if (id in state.decks.all) {
-    return state.decks.all[id];
-  }
-  return null;
+  };
 }
-
 
 const getDecksAllDecksSelector = (state: AppState, deckIds: number[]) => state.decks.all;
 const getDecksDeckIdsSelector = (state: AppState, deckIds: number[]) => deckIds;
@@ -493,10 +493,12 @@ export function getDefaultFilterState(
   return state.filters.defaults[filterId];
 }
 
+const DEFAULT_GUIDE_STATE = {
+  inputs: [],
+};
+
 export function getGuideState(state: AppState, campaignId: number): CampaignGuideState {
-  return (state.guides && state.guides.all[campaignId]) || {
-    inputs: [],
-  };
+  return (state.guides && state.guides.all[campaignId]) || DEFAULT_GUIDE_STATE;
 }
 
 export function getCampaignGuideState(
@@ -538,4 +540,16 @@ export function getCardLang(
     return state.cards.card_lang;
   }
   return state.cards.lang || 'en';
+}
+
+export function getThemeOverride(
+  state: AppState,
+): 'dark' | 'light' | undefined {
+  return state.settings.theme;
+}
+
+export function getAppFontScale(
+  state: AppState
+): number {
+  return state.settings.fontScale || 1.0;
 }

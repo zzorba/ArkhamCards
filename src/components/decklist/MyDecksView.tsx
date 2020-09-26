@@ -1,11 +1,10 @@
 import React from 'react';
 import { find, filter, throttle } from 'lodash';
-import { Platform, Text, StyleSheet, Switch, View } from 'react-native';
+import { Platform, Text, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 
-import BasicButton from '@components/core/BasicButton';
 import { Deck } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
@@ -14,8 +13,9 @@ import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import MyDecksComponent from './MyDecksComponent';
 import { getMyDecksState, AppState } from '@reducers';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
-import { m, xs } from '@styles/space';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface OwnProps {
   componentId: string;
@@ -31,8 +31,15 @@ interface State {
   localDecksOnly: boolean;
 }
 
+function searchOptionsHeight(fontScale: number) {
+  return 20 + (fontScale * 20 + 8) + 12;
+}
+
 class MyDecksView extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
@@ -41,8 +48,8 @@ class MyDecksView extends React.Component<Props, State> {
         rightButtons: [{
           icon: iconsMap.add,
           id: 'add',
-          color: COLORS.navButton,
-          testID: t`New Deck`,
+          color: COLORS.M,
+          accessibilityLabel: t`New Deck`,
         }],
       },
     };
@@ -105,6 +112,7 @@ class MyDecksView extends React.Component<Props, State> {
     const {
       localDecksOnly,
     } = this.state;
+    const { typography } = this.context;
     const hasLocalDeck = find(myDecks, deckId => deckId < 0) !== null;
     const hasOnlineDeck = find(myDecks, deckId => deckId > 0) !== null;
     if (!localDecksOnly && !(hasLocalDeck && hasOnlineDeck)) {
@@ -116,10 +124,9 @@ class MyDecksView extends React.Component<Props, State> {
         <Text style={[typography.small, styles.searchOption]}>
           { t`Hide ArkhamDB Decks` }
         </Text>
-        <Switch
+        <ArkhamSwitch
           value={localDecksOnly}
           onValueChange={this._toggleLocalDecksOnly}
-          trackColor={COLORS.switchTrackColor}
         />
       </View>
     );
@@ -127,11 +134,13 @@ class MyDecksView extends React.Component<Props, State> {
 
   renderCustomFooter() {
     return (
-      <BasicButton
-        title={t`New Deck`}
-        onPress={this._showNewDeckDialog}
-        grow
-      />
+      <View style={styles.button}>
+        <ArkhamButton
+          icon="deck"
+          title={t`New Deck`}
+          onPress={this._showNewDeckDialog}
+        />
+      </View>
     );
   }
 
@@ -147,10 +156,14 @@ class MyDecksView extends React.Component<Props, State> {
   }
 
   render() {
+    const { fontScale } = this.context;
     return (
       <MyDecksComponent
         componentId={this.props.componentId}
-        customHeader={this.renderCustomHeader()}
+        searchOptions={{
+          controls: this.renderCustomHeader(),
+          height: searchOptionsHeight(fontScale),
+        }}
         customFooter={this.renderCustomFooter()}
         deckClicked={this._deckNavClicked}
         onlyDeckIds={this.onlyDeckIds()}
@@ -171,14 +184,14 @@ export default withFetchCardsGate(
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingTop: xs,
-    paddingBottom: xs,
-    paddingLeft: m,
-    paddingRight: m,
+    flex: 1,
   },
   searchOption: {
     marginRight: 2,
+  },
+  button: {
+    flex: 1,
   },
 });

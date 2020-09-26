@@ -1,12 +1,12 @@
 import React from 'react';
 import {
   Linking,
-  ScrollView,
   StyleSheet,
   Platform,
   View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
+import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { t } from 'ttag';
 import Swiper from 'react-native-swiper';
@@ -23,6 +23,7 @@ import { Slots } from '@actions/types';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   showSpoilers: { [pack_code: string]: boolean };
@@ -54,12 +55,15 @@ interface State {
 }
 
 class CardDetailSwipeView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(passProps: CardDetailSwipeProps) {
     return {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: passProps.whiteNav ? 'white' : '#007AFF',
+          color: passProps.whiteNav ? 'white' : COLORS.M,
         },
       },
     };
@@ -103,7 +107,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       whiteNav,
     } = this.props;
     const card = this.currentCard();
-    const buttonColor = whiteNav ? 'white' : COLORS.navButton;
+    const buttonColor = whiteNav ? 'white' : COLORS.M;
     const rightButtons = rightButtonsForCard(card, buttonColor);
     Navigation.mergeOptions(componentId, {
       topBar: {
@@ -232,7 +236,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     const {
       hasSecondCore,
       onDeckCountChange,
-      fontScale,
     } = this.props;
     const {
       deckCardCounts,
@@ -250,8 +253,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     return (
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <CardQuantityComponent
-          key={card.code}
-          fontScale={fontScale}
+          key={card.id}
           count={deckCardCounts[card.code] || 0}
           countChanged={this._countChanged}
           limit={deck_limit}
@@ -275,19 +277,17 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       componentId,
       tabooSetId,
       width,
-      fontScale,
     } = this.props;
+    const { backgroundStyle } = this.context;
     return (
       <ScrollView
         key={itemIndex}
-        style={styles.wrapper}
         overScrollMode="never"
         bounces={false}
-        contentContainerStyle={styles.contentContainer}
+        contentContainerStyle={backgroundStyle}
       >
         <CardDetailComponent
           componentId={componentId}
-          fontScale={fontScale}
           card={card}
           showSpoilers={this.showSpoilers(card)}
           tabooSetId={tabooSetId}
@@ -316,23 +316,23 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     const {
       deckCardCounts,
     } = this.state;
+    const { backgroundStyle } = this.context;
     const card = this.currentCard();
     if (!card) {
-      return <View style={styles.wrapper} />;
+      return <View style={[styles.wrapper, backgroundStyle]} />;
     }
     return (
       <View
-        style={styles.wrapper}
+        style={[styles.wrapper, backgroundStyle]}
       >
         <Swiper
           index={initialIndex}
           width={width}
-          height={height}
-          style={{ backgroundColor: COLORS.background }}
-          containerStyle={{ flex: 1, backgroundColor: COLORS.background }}
+          style={backgroundStyle}
+          containerStyle={[backgroundStyle, { flex: 1, flexDirection: 'column' }]}
           loadMinimal
           loadMinimalSize={1}
-          loadMinimalLoader={<View style={[styles.wrapper, { width, height }]} />}
+          loadMinimalLoader={<View style={[styles.wrapper, backgroundStyle, { width, height }]} />}
           showsPagination={false}
           onIndexChanged={this._onIndexChange}
           loop={false}
@@ -369,10 +369,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
-  },
-  contentContainer: {
-    backgroundColor: COLORS.background,
   },
   gutter: {
     position: 'absolute',

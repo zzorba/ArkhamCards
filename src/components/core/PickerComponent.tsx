@@ -4,11 +4,10 @@ import { isArray, map } from 'lodash';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { SettingsPicker } from '@lib/react-native-settings-components';
 import { DisplayChoice } from '@data/scenario';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface PickerProps {
   choices: DisplayChoice[];
@@ -44,13 +43,14 @@ interface MultiConfig {
   selectedIndex?: number[];
 }
 
-interface OwnProps extends PickerProps {
+interface Props extends PickerProps {
   config: SingleConfig | MultiConfig;
 }
 
-type Props = OwnProps & StylesProps;
+export default class PickerComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
-class PickerComponent extends React.Component<Props> {
   pickerRef?: SettingsPicker;
 
   _capturePickerRef = (ref: SettingsPicker) => {
@@ -119,8 +119,8 @@ class PickerComponent extends React.Component<Props> {
       settingsStyle,
       hideWidget,
       modalTitle,
-      gameFont,
     } = this.props;
+    const { gameFont, typography } = this.context;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
         return {
@@ -163,18 +163,19 @@ class PickerComponent extends React.Component<Props> {
               color: colors ? colors.modalTextColor : COLORS.white,
             } ,
             description: {
+              ...typography.small,
               paddingTop: 8,
               color: colors ? colors.modalTextColor : COLORS.white,
             },
           },
           list: {
-            itemText: typography.label,
+            itemText: typography.small,
             itemColor: colors ? colors.modalColor : COLORS.lightBlue,
             scrollView: {
-              backgroundColor: COLORS.background,
+              backgroundColor: this.context.colors.background,
             },
             itemWrapper: {
-              backgroundColor: COLORS.background,
+              backgroundColor: this.context.colors.background,
             },
           },
         }}
@@ -183,11 +184,12 @@ class PickerComponent extends React.Component<Props> {
           backgroundColor: 'transparent',
         }}
         titleStyle={settingsStyle ? {
-          color: colors ? colors.textColor : COLORS.darkText,
+          ...typography.text,
+          color: colors ? colors.textColor : this.context.colors.darkText,
         } : {
           ...typography.mediumGameFont,
           fontFamily: gameFont,
-          color: colors ? colors.textColor : COLORS.darkText,
+          color: colors ? colors.textColor : this.context.colors.darkText,
           fontWeight: '600',
         }}
         valueProps={{
@@ -195,8 +197,8 @@ class PickerComponent extends React.Component<Props> {
           ellipsizeMode: 'tail',
         }}
         valueStyle={{
-          ...typography.label,
-          color: colors ? colors.textColor : COLORS.darkText,
+          ...typography.large,
+          color: colors ? colors.textColor : this.context.colors.darkText,
           fontWeight: '400',
           textAlign: 'right',
         }}
@@ -207,7 +209,7 @@ class PickerComponent extends React.Component<Props> {
           justifyContent: 'space-between',
           backgroundColor: colors ? colors.backgroundColor : 'transparent',
           borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
-          borderColor: COLORS.divider,
+          borderColor: this.context.colors.divider,
           borderTopWidth: topBorder ? StyleSheet.hairlineWidth : undefined,
         }}
         widgetStyle={{}}
@@ -224,5 +226,3 @@ class PickerComponent extends React.Component<Props> {
     );
   }
 }
-
-export default withStyles(PickerComponent);

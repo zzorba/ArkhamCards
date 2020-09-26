@@ -61,7 +61,6 @@ export default function(
       },
       mythos: {
         ...state.mythos,
-        [action.id]: !action.mythosToggle,
       },
       sorts: {
         ...state.sorts,

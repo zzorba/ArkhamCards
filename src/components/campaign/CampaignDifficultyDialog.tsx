@@ -1,48 +1,19 @@
-import React from 'react';
-import { find, map } from 'lodash';
+import { map } from 'lodash';
 
 import { t } from 'ttag';
 import { CampaignDifficulty, DIFFICULTIES } from '@actions/types';
-import DialogPicker from '@components/core/DialogPicker';
+import { showOptionDialog } from '@components/nav/helper';
 import { difficultyString } from './constants';
 
-interface Props {
-  componentId: string;
-  updateDifficulty: (difficulty: CampaignDifficulty) => void;
-  difficulty: CampaignDifficulty;
-}
 
-export default class CampaignDifficultyDialog extends React.Component<Props> {
-  static options() {
-    return {
-      layout: {
-        componentBackgroundColor: 'transparent',
-      },
-    };
-  }
-  _onChoice = (value: string) => {
-    const difficulty = find(DIFFICULTIES, code =>
-      difficultyString(code) === value);
-    if (difficulty) {
-      this.props.updateDifficulty(difficulty);
+export function showCampaignDifficultyDialog(
+  sortChanged: (difficulty: CampaignDifficulty) => void
+) {
+  showOptionDialog(
+    t`Selected Difficulty`,
+    map(DIFFICULTIES, difficultyString),
+    (index: number) => {
+      sortChanged(DIFFICULTIES[index]);
     }
-  }
-
-  render() {
-    const {
-      componentId,
-      difficulty,
-    } = this.props;
-    const options = map(DIFFICULTIES, code => difficultyString(code));
-
-    return (
-      <DialogPicker
-        componentId={componentId}
-        header={t`Selected Difficulty`}
-        options={options}
-        onSelectionChanged={this._onChoice}
-        selectedOption={difficultyString(difficulty)}
-      />
-    );
-  }
+  );
 }

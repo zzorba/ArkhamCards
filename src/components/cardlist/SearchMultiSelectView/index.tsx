@@ -3,6 +3,9 @@ import { filter, map } from 'lodash';
 import {
   FlatList,
   Keyboard,
+  Platform,
+  StyleSheet,
+  View,
 } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -11,6 +14,8 @@ import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import { NavigationProps } from '@components/nav/types';
 import SelectRow from './SelectRow';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 
 export interface SearchSelectProps {
   placeholder: string;
@@ -32,6 +37,9 @@ interface Item {
 }
 
 export default class SearchMultiSelectView extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
   constructor(props: Props) {
     super(props);
@@ -59,8 +67,8 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
           [{
             text: t`Clear`,
             id: 'clear',
-            color: COLORS.navButton,
-            testID: t`Clear`,
+            color: COLORS.M,
+            accessibilityLabel: t`Clear`,
           }] : [],
       },
     });
@@ -123,6 +131,13 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       search === '' || (!!value && value.toLowerCase().includes(lowerCaseSearch)));
   }
 
+  _renderHeader = () => {
+    if (Platform.OS === 'android') {
+      return <View style={styles.searchBarPadding} />;
+    }
+    return null;
+  };
+
   render() {
     const {
       placeholder,
@@ -131,6 +146,7 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       selection,
       search,
     } = this.state;
+    const { backgroundStyle } = this.context;
 
     const selectedSet = new Set(selection);
     const values = this.getValues();
@@ -148,15 +164,25 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
       >
         { onScroll => (
           <FlatList
+            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+            contentContainerStyle={backgroundStyle}
             data={data}
             onScroll={onScroll}
             renderItem={this._renderItem}
             keyExtractor={this._keyExtractor}
             keyboardShouldPersistTaps="always"
             keyboardDismissMode="on-drag"
+            ListHeaderComponent={this._renderHeader}
           />
         ) }
       </CollapsibleSearchBox>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

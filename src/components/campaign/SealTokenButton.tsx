@@ -1,17 +1,15 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
 import { Action, bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { updateChaosBagResults } from './actions';
-import ChaosToken from './ChaosToken';
+import ChaosTokenButton from './ChaosTokenButton';
 import { ChaosBagResults } from '@actions/types';
 import { AppState, getChaosBagResults } from '@reducers';
 import { ChaosTokenType } from '@app_constants';
 
 interface OwnProps {
   campaignId: number;
-  fontScale: number;
   id: string;
   iconKey: ChaosTokenType;
   sealed?: boolean;
@@ -54,6 +52,7 @@ class SealTokenButton extends React.Component<Props> {
     }
 
     const newChaosBagResults = {
+      ...chaosBagResults,
       drawnTokens: chaosBagResults.drawnTokens,
       sealedTokens: newSealedTokens,
       totalDrawnTokens: chaosBagResults.totalDrawnTokens,
@@ -67,17 +66,13 @@ class SealTokenButton extends React.Component<Props> {
       iconKey,
       sealed,
       canDisable,
-      fontScale,
     } = this.props;
     return (
-      <TouchableHighlight
-        style={sealed && canDisable && { opacity: 0.2 }}
+      <ChaosTokenButton
+        selected={!!(sealed && canDisable)}
         onPress={this._toggleSealToken}
-        underlayColor="transparent"
-        delayPressIn={0}
-      >
-        <ChaosToken iconKey={iconKey} fontScale={fontScale} small />
-      </TouchableHighlight>
+        iconKey={iconKey}
+      />
     );
   }
 }

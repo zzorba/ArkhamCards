@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, ScrollView, StyleSheet } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { EventSubscription, Navigation } from 'react-native-navigation';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { connect } from 'react-redux';
@@ -16,12 +16,12 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
 import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
 import { getCampaign, AppState } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;
@@ -47,11 +47,13 @@ type Props = LinkedCampaignGuideProps &
   ReduxProps &
   ReduxActionProps &
   NavigationProps &
-  DimensionsProps &
   InjectedDialogProps &
   TraumaProps;
 
 class LinkedCampaignGuideView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener!: EventSubscription;
   constructor(props: Props) {
     super(props);
@@ -118,21 +120,23 @@ class LinkedCampaignGuideView extends React.Component<Props> {
     const {
       campaignDataA,
       campaignDataB,
-      fontScale,
       componentId,
       updateCampaign,
       showTraumaDialog,
     } = this.props;
+    const { backgroundStyle } = this.context;
     if (!campaignDataA || !campaignDataB) {
       return null;
     }
     const contextA = constructCampaignGuideContext(
       campaignDataA,
-      this.props
+      this.props,
+      this.context
     );
     const contextB = constructCampaignGuideContext(
       campaignDataB,
-      this.props
+      this.props,
+      this.context
     );
     const processedCampaignA = contextA.campaignGuide.processAllScenarios(
       contextA.campaignState
@@ -146,7 +150,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'investigators',
         title: t`Decks`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <CampaignGuideSummary
               difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
               campaignGuide={contextA.campaignGuide}
@@ -155,7 +159,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             <CampaignGuideContext.Provider value={contextA}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
-                fontScale={fontScale}
                 updateCampaign={updateCampaign}
                 processedCampaign={processedCampaignA}
                 campaignData={contextA}
@@ -170,7 +173,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             <CampaignGuideContext.Provider value={contextB}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
-                fontScale={fontScale}
                 updateCampaign={updateCampaign}
                 processedCampaign={processedCampaignB}
                 campaignData={contextB}
@@ -189,10 +191,9 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'scenarios',
         title: t`Scenarios`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <LinkedScenarioListComponent
               componentId={componentId}
-              fontScale={fontScale}
               campaignA={processedCampaignA}
               campaignDataA={contextA}
               campaignB={processedCampaignB}
@@ -205,7 +206,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         key: 'log',
         title: t`Log`,
         node: (
-          <ScrollView contentContainerStyle={styles.container}>
+          <ScrollView contentContainerStyle={backgroundStyle}>
             <CampaignGuideSummary
               difficulty={processedCampaignA.campaignLog.campaignData.difficulty}
               campaignGuide={contextA.campaignGuide}
@@ -217,7 +218,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 campaignGuide={contextA.campaignGuide}
                 campaignLog={processedCampaignA.campaignLog}
                 componentId={componentId}
-                fontScale={fontScale}
               />
             </CampaignGuideContext.Provider>
             <CampaignGuideSummary
@@ -231,7 +231,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
                 campaignGuide={contextB.campaignGuide}
                 campaignLog={processedCampaignB.campaignLog}
                 componentId={componentId}
-                fontScale={fontScale}
               />
             </CampaignGuideContext.Provider>
           </ScrollView>
@@ -243,7 +242,6 @@ class LinkedCampaignGuideView extends React.Component<Props> {
       <TabView
         tabs={tabs}
         onTabChange={this._onTabChange}
-        fontScale={fontScale}
       />
     );
   }
@@ -279,21 +277,13 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   } as any, dispatch);
 }
 
-export default withDimensions<LinkedCampaignGuideProps & NavigationProps>(
-  withUniversalCampaignData<LinkedCampaignGuideProps & NavigationProps & DimensionsProps>(
-    connect<ReduxProps, ReduxActionProps, LinkedCampaignGuideProps & NavigationProps & UniversalCampaignProps, AppState>(
-      mapStateToProps,
-      mapDispatchToProps
-    )(
-      withDialogs(
-        withTraumaDialog(LinkedCampaignGuideView, { hideKilledInsane: true })
-      )
+export default withUniversalCampaignData<LinkedCampaignGuideProps & NavigationProps>(
+  connect<ReduxProps, ReduxActionProps, LinkedCampaignGuideProps & NavigationProps & UniversalCampaignProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+  )(
+    withDialogs(
+      withTraumaDialog(LinkedCampaignGuideView, { hideKilledInsane: true })
     )
   )
 );
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.background,
-  },
-});

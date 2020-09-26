@@ -18,7 +18,6 @@ type RenderDeckDetails = (
 
 export interface DeckRowProps {
   componentId: string;
-  fontScale: number;
   id: number;
   deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
   investigators: CardsMap;
@@ -135,7 +134,6 @@ class DeckRow extends React.Component<Props> {
       cards,
       compact,
       viewDeckButton,
-      fontScale,
       killedOrInsane,
       skipRender,
     } = this.props;
@@ -152,7 +150,6 @@ class DeckRow extends React.Component<Props> {
     return (
       <DeckListRow
         deck={theDeck}
-        fontScale={fontScale}
         previousDeck={thePreviousDeck}
         cards={cards}
         onPress={this._onDeckPress}
@@ -168,10 +165,10 @@ class DeckRow extends React.Component<Props> {
 }
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const deck = getDeck(state, props.id);
+  const deck = getDeck(props.id)(state);
   const previousDeck = deck &&
     deck.previous_deck &&
-    getDeck(state, deck.previous_deck);
+    getDeck(deck.previous_deck)(state);
   return {
     theDeck: deck || undefined,
     thePreviousDeck: previousDeck || undefined,

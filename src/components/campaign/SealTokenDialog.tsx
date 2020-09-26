@@ -27,7 +27,7 @@ interface ReduxProps {
 type Props = NavigationProps & SealTokenDialogProps & ReduxProps & DimensionsProps;
 
 class SealTokenDialog extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -36,8 +36,8 @@ class SealTokenDialog extends React.Component<Props> {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
-          color: COLORS.navButton,
-          testID: t`Cancel`,
+          color: COLORS.M,
+          accessibilityLabel: t`Cancel`,
         }],
       },
     };
@@ -73,15 +73,20 @@ class SealTokenDialog extends React.Component<Props> {
       campaignId,
       chaosBag,
       chaosBagResults,
-      fontScale,
     } = this.props;
 
     const unsortedTokens: ChaosTokenType[] = keys(chaosBag) as ChaosTokenType[];
     const tokens: ChaosTokenType[] = sortBy<ChaosTokenType>(
       unsortedTokens,
-      token => CHAOS_TOKEN_ORDER[token]);
-    const tokenParts = flatMap(tokens,
-      token => map(range(0, chaosBag[token]), () => token));
+      token => CHAOS_TOKEN_ORDER[token]
+    );
+    const blessTokens: ChaosTokenType[] = map(range(0, chaosBagResults.blessTokens || 0), () => 'bless');
+    const curseTokens: ChaosTokenType[] = map(range(0, chaosBagResults.curseTokens || 0), () => 'curse');
+    const tokenParts: ChaosTokenType[] = [
+      ...flatMap(tokens, token => map(range(0, chaosBag[token]), () => token)),
+      ...blessTokens,
+      ...curseTokens,
+    ];
 
     const sealedTokens = chaosBagResults.sealedTokens;
 
@@ -111,7 +116,6 @@ class SealTokenDialog extends React.Component<Props> {
           campaignId={campaignId}
           canDisable
           iconKey={token}
-          fontScale={fontScale}
         />
       );
     });

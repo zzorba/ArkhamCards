@@ -6,15 +6,12 @@ import {
   Text,
 } from 'react-native';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { CampaignCycleCode } from '@actions/types';
 import EncounterIcon from '@icons/EncounterIcon';
 import { s, iconSizeScale } from '@styles/space';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
-  fontScale: number;
   packCode: CampaignCycleCode;
   text: string;
   description?: string;
@@ -22,7 +19,10 @@ interface Props {
   onPress: (packCode: CampaignCycleCode, text: string) => void;
 }
 
-class CycleItem extends React.Component<Props & StylesProps> {
+export default class CycleItem extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     this.props.onPress(this.props.packCode, this.props.text);
   };
@@ -31,18 +31,25 @@ class CycleItem extends React.Component<Props & StylesProps> {
     const {
       packCode,
       text,
-      fontScale,
       disabled,
       description,
-      gameFont,
     } = this.props;
+    const {
+      colors,
+      gameFont,
+      fontScale,
+      backgroundStyle,
+      borderStyle,
+      disabledStyle,
+      typography,
+    } = this.context;
     return (
-      <View style={[styles.campaignRow, disabled ? styles.disabled : {}]}>
+      <View style={[styles.campaignRow, backgroundStyle, borderStyle, disabled ? disabledStyle : {}]}>
         <View style={styles.campaignIcon}>
           <EncounterIcon
             encounter_code={packCode}
             size={36 * iconSizeScale * fontScale}
-            color={COLORS.darkText}
+            color={colors.darkText}
           />
         </View>
         <View style={styles.column}>
@@ -75,18 +82,14 @@ class CycleItem extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(CycleItem);
-
 const styles = StyleSheet.create({
   campaignRow: {
     paddingTop: s,
     paddingBottom: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
   },
   campaignText: {
     marginLeft: s,
@@ -102,8 +105,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     flex: 1,
-  },
-  disabled: {
-    backgroundColor: COLORS.disabledOverlay,
   },
 });

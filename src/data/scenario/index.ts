@@ -27,7 +27,7 @@ interface PlayedScenario extends BasicScenario {
 }
 
 interface UnplayedScenario extends BasicScenario {
-  type: 'locked' | 'playable' | 'skipped';
+  type: 'locked' | 'playable' | 'skipped' | 'placeholder';
   canUndo: false;
   closeOnUndo: false;
   steps: ScenarioStep[];

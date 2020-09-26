@@ -1,4 +1,4 @@
-import { Entity, Index, Column, PrimaryColumn, JoinColumn, ManyToOne } from 'typeorm/browser';
+import { Entity, Index, Column, PrimaryColumn, JoinColumn, OneToOne } from 'typeorm/browser';
 import { forEach, filter, keys, map, min } from 'lodash';
 import { t } from 'ttag';
 
@@ -12,6 +12,17 @@ const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
+
+
+function arkham_num(value: number | null | undefined) {
+  if (value === null || value === undefined) {
+    return '-';
+  }
+  if (value < 0) {
+    return 'X';
+  }
+  return `${value}`;
+}
 
 const FEMININE_INVESTIGATORS = new Set([
   '01002', // Daisy Walker
@@ -39,18 +50,27 @@ const FEMININE_INVESTIGATORS = new Set([
 ]);
 
 @Entity('card')
-@Index(['code', 'taboo_set_id'], { unique: true })
+@Index('code_taboo', ['code', 'taboo_set_id'], { unique: true })
+@Index('sort_type', ['sort_by_type', 'renderName', 'xp'])
+@Index('sort_faction', ['sort_by_faction', 'renderName', 'xp'])
+@Index('sort_faction_pack', ['sort_by_faction_pack', 'code'])
+@Index('sort_cost', ['cost', 'renderName', 'xp'])
+@Index('sort_pack', ['sort_by_pack', 'position'])
+@Index('sort_pack_encounter', ['sort_by_pack', 'encounter_code', 'encounter_position'])
+@Index('sort_name_xp', ['renderName', 'xp'])
+@Index('encounter_query_index', ['taboo_set_id', 'altArtInvestigator', 'back_linked', 'hidden', 'encounter_code'])
 export default class Card {
   @PrimaryColumn('text')
   public id!: string;
 
-  @Index()
+  @Index('code')
   @Column('text')
   public code!: string;
 
   @Column('text')
   public name!: string;
 
+  @Index('real_name')
   @Column('text')
   public real_name!: string;
 
@@ -73,7 +93,7 @@ export default class Card {
   @Column('text', { nullable: true })
   public taboo_text_change?: string;
 
-  @Index()
+  @Index('pack_code')
   @Column('text')
   public pack_code!: string;
 
@@ -95,7 +115,7 @@ export default class Card {
   @Column('text', { nullable: true })
   public real_slot?: string;
 
-  @Index()
+  @Index('faction_code')
   @Column('text', { nullable: true })
   public faction_code?: FactionCodeType;
 
@@ -123,6 +143,7 @@ export default class Card {
   @Column('integer', { nullable: true })
   public enemy_evade?: number;
 
+  @Index('encounter_code')
   @Column('text', { nullable: true })
   public encounter_code?: string;
 
@@ -132,10 +153,13 @@ export default class Card {
   @Column('integer', { nullable: true })
   public encounter_position?: number;
 
+  @Column('integer', { nullable: true })
+  public encounter_size?: number;
+
   @Column('boolean', { nullable: true })
   public exceptional?: boolean;
 
-  @Index()
+  @Index('xp')
   @Column('integer', { nullable: true })
   public xp?: number;
 
@@ -198,7 +222,7 @@ export default class Card {
   @Column('integer', { nullable: true })
   public sanity?: number;
 
-  @Index()
+  @Index('deck_limit')
   @Column('integer', { nullable: true })
   public deck_limit?: number;
   @Column('text', { nullable: true })
@@ -237,17 +261,17 @@ export default class Card {
   public skill_wild?: number;
 
   // Effective skills (add wilds to them)
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_willpower?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_intellect?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_combat?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public eskill_agility?: number;
-  @Column('text', { nullable: true })
+  @Column('text', { nullable: true, select: false })
   public linked_to_code?: string;
-  @Column('text', { nullable: true })
+  @Column('text', { nullable: true, select: false })
   public linked_to_name?: string;
 
   @Column('simple-array', { nullable: true })
@@ -260,12 +284,12 @@ export default class Card {
   @Column('simple-json', { nullable: true })
   public deck_options?: DeckOption[];
 
-  @ManyToOne(() => Card, card => card.id)
+  @OneToOne(() => Card, { cascade: true, eager: true })
   @Index()
-  @JoinColumn()
+  @JoinColumn({ name: 'linked_card_id' })
   public linked_card?: Card;
 
-  @Column('boolean', { nullable: true })
+  @Column('boolean', { nullable: true, select: false })
   public back_linked?: boolean;
 
   // Derived data.
@@ -283,7 +307,7 @@ export default class Card {
   public traits_normalized?: string;
   @Column('text', { nullable: true })
   public real_traits_normalized?: string;
-  @Column('text', { nullable: true })
+  @Column('text', { nullable: true, select: false })
   public slots_normalized?: string;
   @Column('text', { nullable: true })
   public real_slots_normalized?: string;
@@ -292,16 +316,19 @@ export default class Card {
   @Column('text', { nullable: true })
   public bonded_name?: string;
   @Column('boolean', { nullable: true })
+  public bonded_from?: boolean;
+
+  @Column('boolean', { nullable: true, select: false })
   public seal?: boolean;
-  @Column('boolean', { nullable: true })
+  @Column('boolean', { nullable: true, select: false })
   public heals_horror?: boolean;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_faction_pack?: number;
-  @Column('integer', { nullable: true })
+  @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
 
   public cardName(): string {
@@ -310,6 +337,16 @@ export default class Card {
 
   public grammarGenderMasculine(): boolean {
     return !FEMININE_INVESTIGATORS.has(this.code);
+  }
+
+  public enemyFight(): string {
+    return arkham_num(this.enemy_fight);
+  }
+  public enemyEvade(): string {
+    return arkham_num(this.enemy_evade);
+  }
+  public enemyHealth(): string {
+    return arkham_num(this.health);
   }
 
   isBasicWeakness(): boolean {
@@ -729,7 +766,7 @@ export default class Card {
       // json.code === '98013' || // Silas for TIC
       json.code === '99001'; // PROMO Marie
 
-    return {
+    const result = {
       ...json,
       ...eskills,
       id: json.code,
@@ -766,6 +803,25 @@ export default class Card {
       enemy_damage,
       altArtInvestigator,
     };
+    if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
+      console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
+      return {
+        ...result.linked_card,
+        back_linked: null,
+        hidden: null,
+        linked_to_code: result.code,
+        linked_to_name: result.name,
+        linked_card: {
+          ...result,
+          linked_card: undefined,
+          back_linked: true,
+          hidden: true,
+          linked_to_code: result.linked_card.code,
+          linked_to_name: result.linked_card.name,
+        },
+      };
+    }
+    return result;
   }
 
   static placeholderTabooCard(

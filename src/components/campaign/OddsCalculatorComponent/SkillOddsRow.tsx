@@ -4,8 +4,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { t } from 'ttag';
 
-import typography from '@styles/typography';
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { ChaosBag, ChaosTokenType, SkillCodeType, SpecialTokenValue, isSpecialToken, ChaosTokenValue } from '@app_constants';
 import { flattenChaosBag } from '@components/campaign/campaignUtil';
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -13,6 +11,7 @@ import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import COLORS from '@styles/colors';
 import { add, binomdist, formatPercentageText, subtract } from './oddsHelper';
 import { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface SkillOddsRowProps {
   chaosBag: ChaosBag;
@@ -22,7 +21,7 @@ export interface SkillOddsRowProps {
   testDifficulty: number;
 }
 
-type Props = SkillOddsRowProps & StylesProps;
+type Props = SkillOddsRowProps;
 
 interface State {
   boosts: {
@@ -31,7 +30,10 @@ interface State {
   collapsed: boolean;
 }
 
-class SkillOddsRow extends React.Component<Props, State> {
+export default class SkillOddsRow extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -217,12 +219,13 @@ class SkillOddsRow extends React.Component<Props, State> {
     const {
       type,
     } = this.props;
+    const { borderStyle, typography } = this.context;
     const color = COLORS.skill[type];
     const backgroundColor = light ? color.light : color.default;
     return (
-      <View key={title} style={[styles.additionalRow, { backgroundColor }]}>
-        <Text style={styles.additionalRowText}>{ title }</Text>
-        <Text style={styles.additionalRowText}>{ formatPercentageText(value) }</Text>
+      <View key={title} style={[styles.additionalRow, borderStyle, { backgroundColor }]}>
+        <Text style={[typography.text, styles.additionalRowText]}>{ title }</Text>
+        <Text style={[typography.text, styles.additionalRowText]}>{ formatPercentageText(value) }</Text>
       </View>
     );
   }
@@ -232,8 +235,8 @@ class SkillOddsRow extends React.Component<Props, State> {
       stat,
       type,
       testDifficulty,
-      gameFont,
     } = this.props;
+    const { gameFont, borderStyle, typography } = this.context;
     const {
       boosts,
       collapsed,
@@ -271,7 +274,7 @@ class SkillOddsRow extends React.Component<Props, State> {
     rows.push({ title: t`Succeed Twice In A Row`, value: successTwice });
     return (
       <React.Fragment>
-        <TouchableOpacity style={styles.skillRow}
+        <TouchableOpacity style={[styles.skillRow, borderStyle]}
           onPress={this._toggleAdditionalRows}
         >
           <View style={styles.row}>
@@ -307,8 +310,6 @@ class SkillOddsRow extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(SkillOddsRow);
-
 const styles = StyleSheet.create({
   skillBox: {
     height: 50,
@@ -333,10 +334,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   additionalRowText: {
-    ...typography.text,
     color: COLORS.white,
   },
   skillRow: {
@@ -345,6 +344,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

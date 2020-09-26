@@ -18,7 +18,7 @@ module.exports = {
           '@app': './src/app',
           '@actions': './src/actions',
           '@components': './src/components',
-          '@app_constants': './src/app_constants.tsx',
+          '@app_constants': './src/app_constants.ts',
           '@data': './src/data',
           '@icons': './src/icons',
           '@lib': './src/lib',

@@ -1,9 +1,3 @@
-import React, { ReactNode } from 'react';
-import { mapValues } from 'lodash';
-
-import ArkhamIcon from '@icons/ArkhamIcon';
-import COLORS from '@styles/colors';
-
 export type TypeCodeType =
   'asset' |
   'event' |
@@ -101,6 +95,7 @@ export const SKILLS: SkillCodeType[] = [
 ];
 
 export type SpecialChaosTokenType =
+  'bless' | 'curse' |
   'skull' | 'cultist' | 'tablet' | 'elder_thing' |
   'auto_fail' | 'elder_sign';
 
@@ -160,6 +155,8 @@ export const SPECIAL_TOKENS: SpecialChaosTokenType[] = [
   'elder_thing',
   'auto_fail',
   'elder_sign',
+  'bless',
+  'curse',
 ];
 
 export const CHAOS_TOKEN_COLORS: { [skill: string]: string } = {
@@ -201,31 +198,22 @@ export const CHAOS_BAG_TOKEN_COUNTS: ChaosBag = {
   elder_sign: 1,
 };
 
-export function createFactionIcons({
-  defaultColor,
-  colorChoice = 'text',
-}: {
-  defaultColor?: string;
-  colorChoice?: 'text' | 'background'
-}): { [faction in FactionCodeType | 'dual']?: (size: number) => ReactNode } {
-  return mapValues(COLORS.faction, (color, faction) => {
-    return function factionIcon(size: number) {
-      return (
-        <ArkhamIcon
-          name={(faction === 'neutral' || faction === 'dual') ? 'elder_sign' : faction}
-          size={size}
-          color={defaultColor || color[colorChoice]}
-        />
-      );
-    };
-  });
-}
-
 export const ARCANE_RESEARCH_CODE = '04109';
 export const ADAPTABLE_CODE = '02110';
+export const SHREWD_ANALYSIS_CODE = '04106';
+export const PARALLEL_SKIDS_CODE = '90008';
 export const BODY_OF_A_YITHIAN = '04244';
 export const RANDOM_BASIC_WEAKNESS = '01000';
 export const VERSATILE_CODE = '06167';
 export const ON_YOUR_OWN_CODE = '53010';
 export const DEJA_VU_CODE = '60531';
 export const ACE_OF_RODS_CODE = '05040';
+
+export const UNIDENTIFIED_UNTRANSLATED = new Set([
+  '02021', // Strange Solution
+  '03025', // Archaic Glyphs
+  '04022', // Ancient Stones
+  '06112', // Dream Diary
+  '07022', // Cryptic Grimore
+  '60210', // Forbidden Tome
+]);

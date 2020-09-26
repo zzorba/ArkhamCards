@@ -494,7 +494,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -534,7 +534,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur te tiene en su poder."
           },
           {
             "id": "heeded_daniels_warning",
@@ -562,11 +562,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "los investigadores abrieron el camino de arriba."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "los investigadores abrieron el camino de abajo."
           },
           {
             "id": "police_are_suspicious",
@@ -574,11 +574,11 @@
           },
           {
             "id": "possessed",
-            "text": "#name# was possessed."
+            "text": "#name# fue poseído."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "los investigadores impidieron que Hastur escapara de su prisión."
           },
           {
             "id": "read_act_2",
@@ -707,7 +707,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "uno o más investigadores fueron poseídos."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1283,7 +1283,7 @@
           },
           {
             "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+            "text": "el reino de Carcosa se fusionó con el nuestro, y Hastur gobierna en ambos."
           },
           {
             "id": "chose_not_to_warn_police",
@@ -1323,7 +1323,7 @@
           },
           {
             "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
+            "text": "Hastur te tiene en su poder."
           },
           {
             "id": "heeded_daniels_warning",
@@ -1351,11 +1351,11 @@
           },
           {
             "id": "opened_path_above",
-            "text": "you opened the path above."
+            "text": "los investigadores abrieron el camino de arriba."
           },
           {
             "id": "opened_path_below",
-            "text": "you opened the path below."
+            "text": "los investigadores abrieron el camino de abajo."
           },
           {
             "id": "police_are_suspicious",
@@ -1363,11 +1363,11 @@
           },
           {
             "id": "possessed",
-            "text": "#name# was possessed."
+            "text": "#name# fue poseído."
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
+            "text": "los investigadores impidieron que Hastur escapara de su prisión."
           },
           {
             "id": "read_act_2",
@@ -1496,7 +1496,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "uno o más investigadores fueron poseídos."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -2512,143 +2512,143 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "el gato negro está con los soñadores."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "el gato negro está con los soñadores."
           },
           {
             "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
+            "text": "el gato negro llevó noticias del problema de los investigadores."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "el gato negro tiene una corazonada."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "el gato negro está buscando la verdad."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "el gato negro sabe la verdad."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
+            "text": "el gato negro compartió conocimiento sobre las Tierras del Sueño."
           },
           {
             "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
+            "text": "el gato negro habló de Atlach-Nacha."
           },
           {
             "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
+            "text": "el gato negro habló de Nyarlathotep."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "el gato negro advirtió a los demás."
           },
           {
             "id": "broken_the_law_of_ulthar",
-            "text": "#name# has broken the law of Ulthar."
+            "text": "#name# ha quebrantado la ley de Ulthar."
           },
           {
             "id": "captured",
-            "text": "#name# was captured."
+            "text": "#name# fue capturado/a."
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "llevaron a los investigadores al desierto frío."
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "los gatos obtuvieron su tributo de los zoogs ."
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "los soñadores se despertaron."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "los soñadores desterraron a Nyarlathotep."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "los soñadores escaparon de las garras de Nyarlathotep."
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "los soñadores se debilitan."
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "los soñadores conocen otro camino."
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "los soñadores se quedaron en las Tierras del Sueño para siempre."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monasteryr."
+            "text": "los soñadores viajaron bajo el monasterio."
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "los investigadores entraron en el templo por la fuerza."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "la invasión de Nyarlathotep ha comenzado."
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "los investigadores parlamentaron con los zoogs."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "los investigadores poseen la llave de plata."
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "Randolph Carter no sobrevivió al viaje."
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Randolph Carter evitó la captura."
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "Randolph Carter sobrevivió al viaje."
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Randolph Carter fue capturado."
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "Randolph Carter salvó a los investigadores."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "los soñadores se extraviaron del camino."
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "pues vale, como queráis."
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "los investigadores viajaron al desierto frío."
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Virgil fue capturado."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "los investigadores se lo han buscado."
           },
           {
             "id": "blob_contained",
@@ -2828,111 +2828,111 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "el gato negro está con los soñadores."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "el gato negro está con los soñadores."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "el gato negro tiene una corazonada."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "el gato negro está buscando la verdad."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "el gato negro sabe la verdad."
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "el gato negro les pidió ayuda a los demás."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "el gato negro compartió conocimientos sobre el Mundo subterráneo."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "el gato negro advirtió a los demás."
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "el puente fue completado."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "el puente fue destruido."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "la Dra. Maheswaran está viva."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "la Dra. Maheswaran ha desaparecido."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "la doctora Maheswaran se unió a la investigación."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "la doctora Maheswaran se quedó con sus pacientes."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "se desconoce el destino de la Dra. Maheswaran."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "los investigadores encontraron una salida del Mundo subterráneo."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "los investigadores no lograron escapar."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "los investigadores están solos."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "los investigadores poseen la llave de plata."
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph Carter no sobrevivió al descenso."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph escapó del hospital por su cuenta."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph escapó del hospital con los investigadores."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph Carter sobrevivió al descenso."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "los investigadores volvieron a la realidad."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "los investigadores siguen en las Tierras del Sueño."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "los investigadores están atrapados en el reino de Atlach-Nacha."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "los investigadores se lo han buscado."
           },
           {
             "id": "blob_contained",

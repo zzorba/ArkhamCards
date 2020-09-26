@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { Trauma } from '@actions/types';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   investigator?: Card;
@@ -17,7 +17,11 @@ interface Props {
   mutateTrauma: (updateTrauma: (trauma: Trauma) => Trauma) => void;
   hideKilledInsane?: boolean;
 }
+
 export default class EditTraumaDialogContent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _incPhysical = () => {
     const {
       investigator,
@@ -73,6 +77,7 @@ export default class EditTraumaDialogContent extends React.Component<Props> {
       },
       hideKilledInsane,
     } = this.props;
+    const { typography } = this.context;
     const health = investigator ? (investigator.health || 0) : 0;
     const sanity = investigator ? (investigator.sanity || 0) : 0;
 

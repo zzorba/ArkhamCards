@@ -15,8 +15,7 @@ import TabooSet from '@data/TabooSet';
 import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { l, m, xs, s } from '@styles/space';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardTabooProps {
   id: string;
@@ -35,7 +34,11 @@ interface TabooData {
 type Props = NavigationProps & CardTabooProps;
 
 export default class CardTabooView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderContent(card: Card, taboo: Card, tabooSets: TabooSetMap) {
+    const { typography } = this.context;
     const tabooSet = taboo.taboo_set_id && tabooSets[taboo.taboo_set_id];
     if (taboo.taboo_placeholder) {
       return null;
@@ -44,7 +47,7 @@ export default class CardTabooView extends React.Component<Props> {
     return (
       <View key={taboo.id}>
         { !!tabooSet && (
-          <Text style={[typography.bigLabel, styles.tabooHeader]}>
+          <Text style={[typography.large, styles.tabooHeader]}>
             { `${tabooSet.name} - ${tabooSet.date_start}` }
           </Text>
         ) }
@@ -104,8 +107,9 @@ export default class CardTabooView extends React.Component<Props> {
     const {
       id,
     } = this.props;
+    const { backgroundStyle, typography } = this.context;
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
         <DbRender name="taboo" getData={this._getData} ids={[id]}>
           { this._renderData }
         </DbRender>
@@ -124,7 +128,6 @@ export default class CardTabooView extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     margin: m,
-    backgroundColor: COLORS.background,
   },
   header: {
     marginTop: l,

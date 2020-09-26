@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import EditText from '@components/core/EditText';
@@ -42,18 +41,18 @@ import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
+import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
 import { getNextCampaignId, AppState } from '@reducers';
 import { newCampaign, newLinkedCampaign } from '@components/campaign/actions';
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { EditChaosBagProps } from '../EditChaosBagDialog';
-import typography from '@styles/typography';
 import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 type OwnProps = NavigationProps & PlayerCardProps & InjectedDialogProps;
 
@@ -86,9 +85,7 @@ interface ReduxActionProps {
 
 type Props = OwnProps &
   ReduxProps &
-  ReduxActionProps &
-  DimensionsProps &
-  StylesProps;
+  ReduxActionProps;
 
 interface State {
   hasGuide: boolean;
@@ -110,7 +107,10 @@ interface State {
 }
 
 class NewCampaignView extends React.Component<Props, State> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
@@ -213,9 +213,9 @@ class NewCampaignView extends React.Component<Props, State> {
     });
   };
 
-  _onNameChange = (name: string) => {
+  _onNameChange = (name?: string) => {
     this.setState({
-      name: name,
+      name: name || '',
     }, this._updateNavigationButtons);
   };
 
@@ -290,8 +290,8 @@ class NewCampaignView extends React.Component<Props, State> {
           text: t`Done`,
           id: 'save',
           enabled: campaignCode !== CUSTOM || !!name,
-          color: COLORS.navButton,
-          testID: t`Done`,
+          color: COLORS.M,
+          accessibilityLabel: t`Done`,
         }],
       },
     });
@@ -403,15 +403,7 @@ class NewCampaignView extends React.Component<Props, State> {
   };
 
   _showDifficultyDialog = () => {
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.CampaignDifficulty',
-        passProps: {
-          difficulty: this.state.difficulty,
-          updateDifficulty: this._updateDifficulty,
-        },
-      },
-    });
+    showCampaignDifficultyDialog(this._updateDifficulty);
   };
 
   _campaignChanged = (campaignCode: CampaignCycleCode, campaign: string, hasGuide: boolean) => {
@@ -463,7 +455,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
-    const { fontScale, gameFont } = this.props;
+    const { gameFont, typography } = this.context;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.block}>
@@ -471,7 +463,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { t`Chaos Bag` }
         </Text>
         <View style={space.marginTopS}>
-          <ChaosBagLine fontScale={fontScale} chaosBag={chaosBag} />
+          <ChaosBagLine chaosBag={chaosBag} />
         </View>
       </View>
     );
@@ -491,23 +483,25 @@ class NewCampaignView extends React.Component<Props, State> {
   renderWeaknessSetSection() {
     const {
       componentId,
-      fontScale,
-      gameFont,
     } = this.props;
+    const {
+      gameFont,
+      borderStyle,
+      typography,
+    } = this.context;
     return (
-      <View style={[space.paddingBottomS, styles.underline]}>
+      <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
         <View style={styles.block}>
           <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Weakness Set` }
           </Text>
-          <Text style={typography.label}>
+          <Text style={typography.small}>
             { t`Include all basic weaknesses from these expansions` }
           </Text>
         </View>
         <View style={[space.paddingXs, space.paddingRightS]}>
           <WeaknessSetPackChooserComponent
             componentId={componentId}
-            fontScale={fontScale}
             compact
             onSelectedPacksChanged={this._onWeaknessPackChange}
           />
@@ -534,25 +528,25 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBag() {
-    const { fontScale } = this.props;
+    const { borderStyle, colors } = this.context;
     const { guided } = this.state;
     if (guided) {
       return null;
     }
     const hasDefinedChaosBag = this.hasDefinedChaosBag();
     return hasDefinedChaosBag ? (
-      <View style={styles.underline}>
+      <View style={[styles.underline, borderStyle]}>
         { this.renderChaosBagSection() }
       </View>
     ) : (
-      <NavButton fontScale={fontScale} onPress={this._showChaosBagDialog} color={COLORS.black}>
+      <NavButton onPress={this._showChaosBagDialog} color={colors.background}>
         { this.renderChaosBagSection() }
       </NavButton>
     );
   }
 
   renderCampaignLogSection() {
-    const { gameFont } = this.props;
+    const { gameFont, borderStyle, typography } = this.context;
     if (this.isGuided()) {
       return null;
     }
@@ -561,7 +555,7 @@ class NewCampaignView extends React.Component<Props, State> {
       undefined :
       this._deleteCampaignNoteSection;
     return (
-      <View style={styles.underline}>
+      <View style={[styles.underline, borderStyle]}>
         <View style={styles.block}>
           <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
             { t`Campaign Log` }
@@ -626,10 +620,13 @@ class NewCampaignView extends React.Component<Props, State> {
       componentId,
       captureViewRef,
       nextId,
-      fontScale,
-      gameFont,
     } = this.props;
-
+    const {
+      gameFont,
+      backgroundStyle,
+      borderStyle,
+      typography,
+    } = this.context;
     const {
       guided,
       deckIds,
@@ -642,8 +639,8 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <View ref={captureViewRef} style={styles.container}>
-        <ScrollView contentContainerStyle={styles.container}>
+      <View ref={captureViewRef} style={backgroundStyle}>
+        <ScrollView contentContainerStyle={backgroundStyle}>
           <CampaignSelector
             componentId={componentId}
             campaignChanged={this._campaignChanged}
@@ -674,7 +671,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { this.renderChaosBag() }
           { this.renderCampaignLogSection() }
           { campaignCode !== TDE && (
-            <View style={styles.underline}>
+            <View style={[styles.underline, borderStyle]}>
               <View style={styles.block}>
                 <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
                   { t`Investigators` }
@@ -682,7 +679,6 @@ class NewCampaignView extends React.Component<Props, State> {
               </View>
               <DeckSelector
                 componentId={componentId}
-                fontScale={fontScale}
                 campaignId={nextId}
                 deckIds={deckIds}
                 investigatorIds={filter(investigatorIds, code => !investigatorToDeck[code])}
@@ -702,7 +698,7 @@ class NewCampaignView extends React.Component<Props, State> {
           <View style={styles.footer}>
             { this.isGuided() && (
               <View style={styles.block}>
-                <Text style={typography.label}>
+                <Text style={typography.small}>
                   { t`If you encounter any problems with the campaign guide system, please let me know at arkhamcards@gmail.com.` }
                 </Text>
               </View>
@@ -732,9 +728,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect(mapStateToProps, mapDispatchToProps)(
   withPlayerCards(
     withDialogs(
-      withDimensions(
-        withStyles(NewCampaignView)
-      )
+      NewCampaignView
     )
   )
 );
@@ -742,7 +736,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(
 const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   footer: {
     minHeight: 100,
@@ -751,8 +744,5 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
-  },
-  container: {
-    backgroundColor: COLORS.background,
   },
 });

@@ -3,6 +3,7 @@ import { Keyboard, StyleSheet, View } from 'react-native';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { t } from 'ttag';
 
+import { showInvestigatorSortDialog } from '@components/cardlist/InvestigatorSortDialog';
 import { SORT_BY_PACK, SortType , Deck } from '@actions/types';
 import { iconsMap } from '@app/NavIcons';
 import { NewDeckOptionsProps } from './NewDeckOptionsDialog';
@@ -11,6 +12,7 @@ import InvestigatorsListComponent from '@components/cardlist/InvestigatorsListCo
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface NewDeckProps {
   onCreateDeck: (deck: Deck) => void;
@@ -26,7 +28,7 @@ interface State {
 }
 
 export default class NewDeckView extends React.Component<Props, State> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -35,18 +37,20 @@ export default class NewDeckView extends React.Component<Props, State> {
         leftButtons: [{
           icon: iconsMap.close,
           id: 'close',
-          color: COLORS.navButton,
-          testID: t`Cancel`,
+          color: COLORS.M,
+          accessibilityLabel: t`Cancel`,
         }],
         rightButtons: [{
-          icon: iconsMap['sort-by-alpha'],
+          icon: iconsMap.sort,
           id: 'sort',
-          color: COLORS.navButton,
-          testID: t`Sort`,
+          color: COLORS.M,
+          accessibilityLabel: t`Sort`,
         }],
       },
     };
   }
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   _navEventListener?: EventSubscription;
   constructor(props: Props) {
@@ -72,15 +76,7 @@ export default class NewDeckView extends React.Component<Props, State> {
 
   _showSortDialog = () => {
     Keyboard.dismiss();
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.InvestigatorSort',
-        passProps: {
-          sortChanged: this._sortChanged,
-          selectedSort: this.state.selectedSort,
-        },
-      },
-    });
+    showInvestigatorSortDialog(this._sortChanged);
   };
 
   navigationButtonPressed({ buttonId }: { buttonId: string }) {
@@ -104,7 +100,7 @@ export default class NewDeckView extends React.Component<Props, State> {
           onCreateDeck,
         },
         options: {
-          ...getDeckOptions(investigator, false, t`New Deck`),
+          ...getDeckOptions({ title: t`New Deck` }, investigator),
           bottomTabs: {},
         },
       },
@@ -117,11 +113,12 @@ export default class NewDeckView extends React.Component<Props, State> {
       filterInvestigators,
       onlyInvestigators,
     } = this.props;
+    const { backgroundStyle } = this.context;
     const {
       selectedSort,
     } = this.state;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, backgroundStyle]}>
         <InvestigatorsListComponent
           componentId={componentId}
           filterInvestigators={filterInvestigators}
@@ -137,6 +134,5 @@ export default class NewDeckView extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

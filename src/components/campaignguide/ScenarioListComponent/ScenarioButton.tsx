@@ -8,14 +8,12 @@ import { t } from 'ttag';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import { showScenario } from '@components/campaignguide/nav';
 import NavButton from '@components/core/NavButton';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { ProcessedScenario } from '@data/scenario';
 import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space, { s } from '@styles/space';
 
 interface Props {
@@ -23,14 +21,13 @@ interface Props {
   campaignId: number;
   campaignGuide: CampaignGuide;
   scenario: ProcessedScenario;
-  fontScale: number;
   linked: boolean;
   showLinkedScenario?: (
     scenarioId: string
   ) => void;
 }
 
-class ScenarioButton extends React.Component<Props & StylesProps> {
+export default class ScenarioButton extends React.Component<Props> {
   static contextType = CampaignGuideContext;
   context!: CampaignGuideContextType;
 
@@ -66,15 +63,19 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
   };
 
   renderIcon() {
-    const { scenario, fontScale } = this.props;
+    const { scenario } = this.props;
+    const {
+      style: { fontScale, colors },
+    } = this.context;
     const iconSize = 24 * fontScale;
     switch (scenario.type) {
+      case 'placeholder':
       case 'locked':
         return (
           <MaterialCommunityIcons
             name="lock"
             size={iconSize}
-            color={COLORS.lightText}
+            color={colors.lightText}
           />
         );
       case 'completed':
@@ -106,20 +107,34 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
           <MaterialCommunityIcons
             name="close-box-outline"
             size={iconSize}
-            color={COLORS.lightText}
+            color={colors.lightText}
           />
         );
     }
   }
 
   renderContent() {
-    const { scenario, gameFont } = this.props;
+    const { scenario } = this.props;
+    const {
+      style: { gameFont, colors, typography },
+    } = this.context;
     switch (scenario.type) {
       case 'locked':
         return (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.locked]} numberOfLines={2}>
+          <Text style={[typography.gameFont, { fontFamily: gameFont, color: colors.lightText }]} numberOfLines={2}>
             { this.name() }
           </Text>
+        );
+      case 'placeholder':
+        return (
+          <>
+            <Text style={[typography.gameFont, { fontFamily: gameFont, color: colors.lightText }]} numberOfLines={2}>
+              { this.name() }
+            </Text>
+            <Text style={[typography.small, { color: colors.lightText }]} numberOfLines={1}>
+              { t`Coming soon` }
+            </Text>
+          </>
         );
       case 'completed':
         return (
@@ -144,10 +159,9 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
   }
 
   render() {
-    const { scenario, fontScale } = this.props;
+    const { scenario } = this.props;
     return (
       <NavButton
-        fontScale={fontScale}
         onPress={this._onPress}
         disabled={(scenario.type === 'locked' || scenario.type === 'skipped')}
       >
@@ -164,8 +178,6 @@ class ScenarioButton extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(ScenarioButton);
-
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
@@ -179,9 +191,6 @@ const styles = StyleSheet.create({
   },
   skipped: {
     textDecorationLine: 'line-through',
-  },
-  locked: {
-    color: COLORS.lightText,
   },
   playable: {
     textDecorationLine: 'underline',

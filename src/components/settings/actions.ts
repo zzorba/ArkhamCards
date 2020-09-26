@@ -7,12 +7,30 @@ import {
   SetSingleCardViewAction,
   SetAlphabetizeEncounterSetsAction,
   EnsureUuidAction,
+  SET_THEME,
+  SET_FONT_SCALE,
+  SetFontScaleAction,
 } from '@actions/types';
 
 export function setTabooSet(tabooId?: number): SetTabooSetAction {
   return {
     type: SET_TABOO_SET,
     tabooId,
+  };
+}
+
+export function setTheme(theme: 'light' | 'dark' | 'system') {
+  return {
+    type: SET_THEME,
+    theme,
+  };
+}
+
+
+export function setFontSize(fontScale: number): SetFontScaleAction {
+  return {
+    type: SET_FONT_SCALE,
+    fontScale,
   };
 }
 

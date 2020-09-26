@@ -14,7 +14,7 @@ import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
 import { AppState, getCampaign } from '@reducers';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface GuideOddsCalculatorProps {
   campaignId: number;
@@ -31,6 +31,9 @@ interface ReduxProps {
 type Props = NavigationProps & GuideOddsCalculatorProps & ReduxProps & PlayerCardProps & DimensionsProps;
 
 class GuideOddsCalculatorView extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   allInvestigators(): Card[] {
     const {
       investigators,
@@ -42,10 +45,10 @@ class GuideOddsCalculatorView extends React.Component<Props> {
     const {
       campaign,
       chaosBag,
-      fontScale,
       cycleScenarios,
       scenarioByCode,
     } = this.props;
+    const { colors } = this.context;
     if (!campaign) {
       return null;
     }
@@ -56,7 +59,6 @@ class GuideOddsCalculatorView extends React.Component<Props> {
           <OddsCalculatorComponent
             campaign={campaign}
             chaosBag={chaosBag}
-            fontScale={fontScale}
             cycleScenarios={cycleScenarios}
             scenarioByCode={scenarioByCode}
             allInvestigators={allInvestigators}
@@ -64,7 +66,7 @@ class GuideOddsCalculatorView extends React.Component<Props> {
           />
         ) : (
           <View style={styles.loading}>
-            <ActivityIndicator size="small" color={COLORS.lightText} />
+            <ActivityIndicator size="small" color={colors.lightText} />
           </View>
         ) }
       </CardQueryWrapper>

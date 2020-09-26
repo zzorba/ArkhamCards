@@ -17,13 +17,12 @@ import { maybeShowWeaknessPrompt } from '../campaignHelper';
 import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, WeaknessSet } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
-import typography from '@styles/typography';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
-  fontScale: number;
   campaign: Campaign;
   latestDeckIds: number[];
   decks: DecksMap;
@@ -43,6 +42,9 @@ interface State {
   removeMode: boolean;
 }
 export default class DecksSection extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     removeMode: false,
   };
@@ -198,6 +200,7 @@ export default class DecksSection extends React.Component<Props, State> {
       componentId,
       campaign,
     } = this.props;
+    const { colors } = this.context;
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -220,7 +223,7 @@ export default class DecksSection extends React.Component<Props, State> {
               color: 'white',
             },
             background: {
-              color: COLORS.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
             },
           },
         },
@@ -237,7 +240,6 @@ export default class DecksSection extends React.Component<Props, State> {
       componentId,
       campaign,
       cards,
-      fontScale,
       showTraumaDialog,
       incSpentXp,
       decSpentXp,
@@ -257,7 +259,6 @@ export default class DecksSection extends React.Component<Props, State> {
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}
         showDeckUpgrade={this._showDeckUpgradeDialog}
-        fontScale={fontScale}
         playerCards={cards}
         chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
         deck={deck}
@@ -299,13 +300,14 @@ export default class DecksSection extends React.Component<Props, State> {
       investigatorData,
       decks,
     } = this.props;
+    const { borderStyle, typography } = this.context;
     const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId] || []);
     const { removeMode } = this.state;
     const [killedInvestigators, aliveInvestigators] = partition(allInvestigators, investigator => {
       return investigator.eliminated(investigatorData[investigator.code]);
     });
     return (
-      <View style={styles.underline}>
+      <View style={[styles.underline, borderStyle]}>
         { flatMap(aliveInvestigators, investigator => {
           const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
           return this.renderInvestigator(investigator, false, deck);
@@ -324,7 +326,7 @@ export default class DecksSection extends React.Component<Props, State> {
           /> : this.renderRemoveButton(aliveInvestigators)
         }
         { killedInvestigators.length > 0 && (
-          <View style={styles.underline}>
+          <View style={[styles.underline, borderStyle]}>
             <View style={space.paddingS}>
               <Text style={typography.text}>
                 { t`Killed and Insane Investigators` }
@@ -344,6 +346,5 @@ export default class DecksSection extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   underline: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

@@ -14,8 +14,7 @@ import { t } from 'ttag';
 import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
-import typography from '@styles/typography';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface PackCycle extends SectionListData<Pack> {
   title: string;
@@ -27,7 +26,6 @@ interface Props {
   componentId: string;
   coreSetName?: string;
   packs: Pack[];
-  fontScale: number;
   checkState?: { [pack_code: string]: boolean};
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_number: number, checked: boolean) => void;
@@ -40,6 +38,9 @@ interface Props {
 }
 
 export default class PackListComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _keyExtractor = (item: Pack) => {
     return item.code;
   };
@@ -99,11 +100,9 @@ export default class PackListComponent extends React.Component<Props> {
   };
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Pack> }) => {
-    const { fontScale } = this.props;
     return (
       <CardSectionHeader
         section={{ subTitle: section.title }}
-        fontScale={fontScale}
       />
     );
   };
@@ -116,6 +115,7 @@ export default class PackListComponent extends React.Component<Props> {
       renderFooter,
       noFlatList,
     } = this.props;
+    const { backgroundStyle, typography } = this.context;
     if (!packs.length) {
       return (
         <View>
@@ -143,7 +143,7 @@ export default class PackListComponent extends React.Component<Props> {
       });
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, backgroundStyle]}>
         <SectionList
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
@@ -162,6 +162,5 @@ export default class PackListComponent extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
 });

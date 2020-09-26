@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -6,27 +6,44 @@ import { t } from 'ttag';
 import EncounterIcon from '@icons/EncounterIcon';
 import NavButton from '@components/core/NavButton';
 import { ChallengeData, Scenario } from '@data/scenario/types';
-import typography from '@styles/typography';
 import space, { s, m } from '@styles/space';
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import { ChallengeScenarioProps } from '@components/campaignguide/ChallengeScenarioView';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
   scenario: Scenario;
-  fontScale: number;
   onPress: (scenario: Scenario) => void;
 }
 
-export default class SideScenarioButton extends React.Component<Props> {
-  _onPress = () => {
-    const { scenario, onPress } = this.props;
+function ChallengeBlock({ scenario, challenge }: { scenario: Scenario; challenge: ChallengeData }) {
+  const { typography } = useContext(StyleContext);
+  const xpCost = scenario.xp_cost || 0;
+  const challengeCost = xpCost + challenge.xp_cost;
+  return (
+    <SingleCardWrapper code={challenge.investigator} type="player">
+      { investigator => (
+        <View style={styles.flex}>
+          <Text style={[typography.small, space.paddingTopS]}>
+            { t`${investigator.name} Challenge Scenario` }
+          </Text>
+          <Text style={[typography.small, typography.light, space.paddingTopS]}>
+            { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
+          </Text>
+        </View>
+      ) }
+    </SingleCardWrapper>
+  );
+}
+export default function SideScenarioButton({ scenario, onPress, componentId }: Props) {
+  const { typography, colors } = useContext(StyleContext);
+
+  const _onPress = () => {
     onPress(scenario);
   };
 
-  _onPressChallenge = () => {
-    const { componentId, scenario, onPress } = this.props;
+  const _onPressChallenge = () => {
     if (scenario.challenge) {
       Navigation.push<ChallengeScenarioProps>(componentId, {
         component: {
@@ -53,60 +70,34 @@ export default class SideScenarioButton extends React.Component<Props> {
       });
     }
   };
-
-  renderChallengeData(challenge: ChallengeData) {
-    const { scenario } = this.props;
-    const xpCost = scenario.xp_cost || 0;
-    const challengeCost = xpCost + challenge.xp_cost;
-    return (
-      <SingleCardWrapper code={challenge.investigator} type="player">
-        { investigator => (
-          <View style={styles.flex}>
-            <Text style={[typography.label, space.paddingTopS]}>
-              { t`${investigator.name} Challenge Scenario` }
-            </Text>
-            <Text style={[typography.label, typography.darkGray, space.paddingTopS]}>
-              { t`Experience cost: ${challengeCost} for ${investigator.name}, ${xpCost} for each other investigator` }
-            </Text>
-          </View>
-        ) }
-      </SingleCardWrapper>
-    );
-  }
-
-  render() {
-    const { fontScale, scenario } = this.props;
-    const xpCost = scenario.xp_cost || 0;
-    return (
-      <NavButton
-        fontScale={fontScale}
-        onPress={scenario.side_scenario_type === 'challenge' && scenario.challenge ?
-          this._onPressChallenge : this._onPress}
-      >
-        <View style={[styles.row, space.paddingTopS, space.paddingBottomS]}>
-          <View style={styles.icon}>
-            <EncounterIcon
-              encounter_code={scenario.id}
-              size={28}
-              color={COLORS.darkText}
-            />
-          </View>
-          <View style={styles.column}>
-            <Text style={typography.text}>
-              { scenario.scenario_name }
-            </Text>
-            { (scenario.side_scenario_type === 'challenge' && !!scenario.challenge) ? (
-              this.renderChallengeData(scenario.challenge)
-            ) : (
-              <Text style={[typography.label, typography.darkGray, space.paddingTopS]}>
-                { t`Experience cost: ${xpCost}` }
-              </Text>
-            ) }
-          </View>
+  const xpCost = scenario.xp_cost || 0;
+  return (
+    <NavButton
+      onPress={scenario.side_scenario_type === 'challenge' && scenario.challenge ? _onPressChallenge : _onPress}
+    >
+      <View style={[styles.row, space.paddingTopS, space.paddingBottomS]}>
+        <View style={styles.icon}>
+          <EncounterIcon
+            encounter_code={scenario.id}
+            size={28}
+            color={colors.darkText}
+          />
         </View>
-      </NavButton>
-    );
-  }
+        <View style={styles.column}>
+          <Text style={typography.text}>
+            { scenario.scenario_name }
+          </Text>
+          { (scenario.side_scenario_type === 'challenge' && !!scenario.challenge) ? (
+            <ChallengeBlock challenge={scenario.challenge} scenario={scenario} />
+          ) : (
+            <Text style={[typography.small, typography.light, space.paddingTopS]}>
+              { t`Experience cost: ${xpCost}` }
+            </Text>
+          ) }
+        </View>
+      </View>
+    </NavButton>
+  );
 }
 
 const styles = StyleSheet.create({

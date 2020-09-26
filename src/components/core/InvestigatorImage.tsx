@@ -10,38 +10,39 @@ import { Sepia } from 'react-native-color-matrix-image-filters';
 
 import { showCard } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
-import { createFactionIcons } from '@app_constants';
+import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
-import COLORS from '@styles/colors';
-
-const FACTION_ICONS = createFactionIcons({ defaultColor: '#FFFFFF' });
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 const scaleFactor = isBig ? 1.2 : 1.0;
 
 interface Props {
-  card: Card;
+  card?: Card;
   componentId?: string;
   border?: boolean;
   small?: boolean;
   killedOrInsane?: boolean;
   yithian?: boolean;
-  fontScale: number;
 }
 
 export default class InvestigatorImage extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onPress = () => {
     const {
       card,
       componentId,
     } = this.props;
-    if (componentId) {
+    if (componentId && card) {
       showCard(componentId, card.code, card, true);
     }
   };
 
   small() {
-    const { small, fontScale } = this.props;
+    const { small } = this.props;
+    const { fontScale } = this.context;
     return small || toggleButtonMode(fontScale);
   }
 
@@ -60,14 +61,20 @@ export default class InvestigatorImage extends React.Component<Props> {
       card,
       yithian,
     } = this.props;
+    const { colors } = this.context;
+    if (card) {
+      return (
+        <FastImage
+          style={this.imageStyle()}
+          source={{
+            uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
+          }}
+          resizeMode="contain"
+        />
+      );
+    }
     return (
-      <FastImage
-        style={this.imageStyle()}
-        source={{
-          uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
-        }}
-        resizeMode="contain"
-      />
+      <View style={[this.imageStyle(), { backgroundColor: colors.L20 }]} />
     );
   }
 
@@ -91,27 +98,46 @@ export default class InvestigatorImage extends React.Component<Props> {
       killedOrInsane,
       border,
     } = this.props;
+    const { colors } = this.context;
     const small = this.small();
     const size = (small ? 65 : 110) * scaleFactor;
-    const faction_icon = FACTION_ICONS[card.factionCode()];
+    if (!card) {
+      return (
+        <View style={[styles.container, { width: size, height: size }]}>
+          <View style={styles.relative}>
+            { this.renderStyledImage()}
+          </View>
+          <View style={styles.relative}>
+            { !!border && (
+              <View style={[
+                styles.border,
+                {
+                  borderColor: colors.faction.neutral.background,
+                  width: size,
+                  height: size,
+                },
+              ]} />
+            ) }
+          </View>
+        </View>
+      );
+    }
     return (
       <View style={[styles.container, { width: size, height: size }]}>
-        { !!faction_icon && (
-          <View style={styles.relative}>
-            <View style={[
-              styles.placeholder,
-              {
-                width: size,
-                height: size,
-                backgroundColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
-              },
-            ]}>
-              <Text style={styles.placeholderIcon} allowFontScaling={false}>
-                { faction_icon(small ? 40 : 55) }
-              </Text>
-            </View>
+        <View style={styles.relative}>
+          <View style={[
+            styles.placeholder,
+            {
+              width: size,
+              height: size,
+              backgroundColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
+            },
+          ]}>
+            <Text style={styles.placeholderIcon} allowFontScaling={false}>
+              <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={small ? 40 : 55} />
+            </Text>
           </View>
-        ) }
+        </View>
         { !!card.imagesrc && (
           <View style={styles.relative}>
             { this.renderStyledImage() }
@@ -122,7 +148,7 @@ export default class InvestigatorImage extends React.Component<Props> {
             <View style={[
               styles.border,
               {
-                borderColor: COLORS.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
+                borderColor: colors.faction[killedOrInsane ? 'dead' : card.factionCode()].background,
                 width: size,
                 height: size,
               },
@@ -134,7 +160,8 @@ export default class InvestigatorImage extends React.Component<Props> {
   }
 
   render() {
-    if (this.props.componentId) {
+    const { componentId, card } = this.props;
+    if (componentId && card) {
       return (
         <TouchableOpacity onPress={this._onPress}>
           { this.renderImage() }

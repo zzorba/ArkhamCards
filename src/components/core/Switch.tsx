@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Platform,
   Switch,
@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props extends SwitchProps {
   customColor?: string;
@@ -13,6 +14,7 @@ interface Props extends SwitchProps {
 }
 
 export default function CustomSwitch({ customColor, customTrackColor, ...otherProps }: Props) {
+  const { colors } = useContext(StyleContext);
   if (Platform.OS === 'android') {
     return (
       <Switch
@@ -31,7 +33,7 @@ export default function CustomSwitch({ customColor, customTrackColor, ...otherPr
         false: customTrackColor,
         true: customTrackColor,
       } : undefined}
-      ios_backgroundColor={COLORS.background}
+      ios_backgroundColor={colors.background}
       {...otherProps}
     />
   );

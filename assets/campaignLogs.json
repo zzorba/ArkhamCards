@@ -3515,5 +3515,190 @@
         "cost": 3
       }
     ]
+  },
+  {
+    "campaignId": "tic",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "mission_failed",
+            "text": "the mission failed."
+          },
+          {
+            "id": "mission_success",
+            "text": "the mission succeeded."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "flashback_1",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_2",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_3",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_4",
+            "text": "dummy"
+          },
+          {
+            "id": "the_accusation",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#name#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "recovered_memories",
+        "entries": [
+          {
+            "id": "decided_to_stay_together",
+            "text": "decided to stay together."
+          },
+          {
+            "id": "encountered_a_secret_cult",
+            "text": "an encounter with a secret cult."
+          },
+          {
+            "id": "fight_with_a_terrible_devil",
+            "text": "a fight with a terrible devil."
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "a meeting with Thomas Dawson."
+          }
+        ]
+      }
+    ],
+    "supplies": []
   }
 ]

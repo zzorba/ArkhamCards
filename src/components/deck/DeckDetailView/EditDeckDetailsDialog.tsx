@@ -13,7 +13,7 @@ import Dialog from '@components/core/Dialog';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import COLORS from '@styles/colors';
 import space, { m } from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   name: string;
@@ -34,6 +34,9 @@ interface State {
 }
 
 export default class EditDeckDetailsDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     name: '',
     xpAdjustment: 0,
@@ -113,6 +116,7 @@ export default class EditDeckDetailsDialog extends React.Component<Props, State>
       name,
       xpAdjustment,
     } = this.state;
+    const { typography } = this.context;
     const okDisabled = !name.length;
     return (
       <Dialog

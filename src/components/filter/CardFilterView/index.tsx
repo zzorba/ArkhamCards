@@ -22,6 +22,7 @@ import { CARD_FACTION_CODES } from '@app_constants';
 import { getAllPacks, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface ReduxProps {
   allPacks: Pack[];
@@ -36,12 +37,15 @@ export type CardFilterProps = FilterFunctionProps & OwnProps;
 type Props = OwnProps & ReduxProps & FilterProps;
 
 class CardFilterView extends React.Component<Props> {
-  static get options() {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
+  static options() {
     return {
       topBar: {
         title: {
           text: t`Filter`,
-          color: COLORS.navButton,
+          color: COLORS.M,
         },
       },
     };
@@ -297,7 +301,6 @@ class CardFilterView extends React.Component<Props> {
       },
       onToggleChange,
       onFilterChange,
-      fontScale,
       cardData: {
         allUses,
         allFactions,
@@ -314,9 +317,10 @@ class CardFilterView extends React.Component<Props> {
         hasSkill,
       },
     } = this.props;
+    const { backgroundStyle, borderStyle } = this.context;
 
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={backgroundStyle}>
         <FactionChooser
           factions={allFactions}
           selection={factions}
@@ -345,9 +349,8 @@ class CardFilterView extends React.Component<Props> {
             onToggleChange={onToggleChange}
             max={defaultFilterState.level[1]}
             height={2}
-            fontScale={fontScale}
           >
-            <View>
+            <View style={styles.xpSection}>
               <ToggleFilter
                 label={t`Exceptional`}
                 setting="exceptional"
@@ -372,7 +375,6 @@ class CardFilterView extends React.Component<Props> {
               selection={types}
               setting="types"
               onFilterChange={onFilterChange}
-              fontScale={fontScale}
             />
           ) }
           { (subTypes.length > 0 || allSubTypes.length > 0) && (
@@ -383,7 +385,6 @@ class CardFilterView extends React.Component<Props> {
               selection={subTypes}
               setting="subTypes"
               onFilterChange={onFilterChange}
-              fontScale={fontScale}
             />
           ) }
         </View>
@@ -398,7 +399,6 @@ class CardFilterView extends React.Component<Props> {
             toggleName="costEnabled"
             onToggleChange={onToggleChange}
             max={defaultFilterState.cost[1]}
-            fontScale={fontScale}
           />
         ) }
         { hasSkill && (
@@ -407,7 +407,6 @@ class CardFilterView extends React.Component<Props> {
             onFilterChange={onFilterChange}
             enabled={skillEnabled}
             onToggleChange={onToggleChange}
-            fontScale={fontScale}
           />
         ) }
         <View>
@@ -419,21 +418,18 @@ class CardFilterView extends React.Component<Props> {
               selection={traits}
               setting="traits"
               onFilterChange={onFilterChange}
-              fontScale={fontScale}
             />
           ) }
           { indexOf(allTypeCodes, 'enemy') !== -1 && (
             <NavButton
               text={this.enemyFilterText()}
               onPress={this._onEnemyPress}
-              fontScale={fontScale}
             />
           ) }
           { indexOf(allTypeCodes, 'location') !== -1 && (
             <NavButton
               text={this.locationFilterText()}
               onPress={this._onLocationPress}
-              fontScale={fontScale}
             />
           ) }
         </View>
@@ -445,7 +441,6 @@ class CardFilterView extends React.Component<Props> {
             selection={slots}
             setting="slots"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
         { (uses.length > 0 || allUses.length > 0) && (
@@ -456,10 +451,9 @@ class CardFilterView extends React.Component<Props> {
             selection={uses}
             setting="uses"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
-        <View style={[styles.toggleStack, space.paddingBottomS]}>
+        <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
           <View style={[styles.toggleRow, space.marginTopXs]}>
             <View style={styles.toggleColumn}>
               <ToggleFilter
@@ -547,14 +541,12 @@ class CardFilterView extends React.Component<Props> {
             selection={encounters}
             setting="encounters"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
         { (packs.length > 0 || allPacks.length > 1) && (
           <NavButton
             text={this.selectedPacksText()}
             onPress={this._onPacksPress}
-            fontScale={fontScale}
           />
         ) }
         { (illustrators.length > 0 || allIllustrators.length > 0) && (
@@ -565,7 +557,6 @@ class CardFilterView extends React.Component<Props> {
             selection={illustrators}
             setting="illustrators"
             onFilterChange={onFilterChange}
-            fontScale={fontScale}
           />
         ) }
       </ScrollView>
@@ -590,8 +581,6 @@ export default connect(mapStateToProps)(
 const styles = StyleSheet.create({
   toggleStack: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
-    backgroundColor: COLORS.background,
   },
   toggleRow: {
     flexDirection: 'row',
@@ -602,7 +591,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-end',
   },
-  container: {
-    backgroundColor: COLORS.background,
+  xpSection: {
+    flexDirection: 'column',
+    width: '100%',
+    alignItems: 'flex-end',
   },
 });

@@ -1,7 +1,7 @@
 import Crashes from 'appcenter-crashes';
 import { forEach } from 'lodash';
 import { Navigation, Options } from 'react-native-navigation';
-import { TouchableOpacity, Platform, Linking, LogBox, Alert } from 'react-native';
+import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
@@ -10,7 +10,8 @@ import { t } from 'ttag';
 import { changeLocale } from './i18n';
 import { iconsLoaded, iconsMap } from './NavIcons';
 import COLORS from '@styles/colors';
-import { getLangPreference, AppState } from '@reducers';
+import { getLangPreference, AppState, getThemeOverride } from '@reducers';
+import { DARK_THEME, LIGHT_THEME } from '@styles/theme';
 
 const BROWSE_CARDS = 'BROWSE_CARDS';
 const BROWSE_DECKS = 'BROWSE_DECKS';
@@ -27,10 +28,13 @@ TouchableOpacity.defaultProps = {
 export default class App {
   started: boolean;
   currentLang: string;
+  currentThemeOverride?: 'light' | 'dark';
 
   constructor(store: Store<AppState, Action>) {
     this.started = false;
     this.currentLang = 'en';
+    this.currentThemeOverride = undefined;
+
     store.subscribe(this.onStoreUpdate.bind(this, store));
 
     this.initialAppStart(store).then(safeMode => {
@@ -74,7 +78,7 @@ export default class App {
   async initialAppStart(store: Store<AppState, Action>): Promise<boolean> {
     try {
       const previousCrash = await Crashes.hasCrashedInLastSession();
-      if (previousCrash) {
+      if (previousCrash && !__DEV__) {
         const report = await Crashes.lastSessionCrashReport();
         const deltaSeconds = App.crashDeltaSeconds(report);
         if (deltaSeconds < 20) {
@@ -93,15 +97,21 @@ export default class App {
 
   onStoreUpdate(store: Store<AppState, Action>, appStart?: boolean) {
     if (this.started || appStart) {
-      const lang = getLangPreference(store.getState());
+      const state = store.getState();
+      const lang = getLangPreference(state);
+      const themeOverride = getThemeOverride(state);
       // handle a root change
       // if your app doesn't change roots in runtime, you can remove onStoreUpdate() altogether
       if (!this.started || this.currentLang !== lang) {
         this.started = true;
         this.currentLang = lang;
+        this.currentThemeOverride = themeOverride;
         iconsLoaded.then(() => {
           this.startApp(lang);
         }).catch(error => console.log(error));
+      } else if (this.currentThemeOverride !== themeOverride) {
+        this.currentThemeOverride = themeOverride;
+        this.setDefaultOptions(Appearance.getColorScheme(), true);
       }
     }
   }
@@ -114,56 +124,69 @@ export default class App {
     });
   };
 
-  setDefaultOptions(colorScheme: 'light' | 'dark' | 'no-preference', changeUpdate?:boolean) {
-    const darkMode = colorScheme === 'dark';
-    const backgroundColor = Platform.select({
-      ios: COLORS.background,
-      android: darkMode ? '#000000' : '#FFFFFF',
-    });
-    const darkText = Platform.select({
-      ios: COLORS.darkText,
-      android: darkMode ? '#FFFFFF' : '#000000',
-    });
+  setDefaultOptions(
+    colorScheme: 'light' | 'dark' | 'no-preference',
+    changeUpdate?: boolean
+  ) {
+    const system = !this.currentThemeOverride;
+    const systemPreference = colorScheme === 'dark';
+    const darkMode = system ? colorScheme === 'dark' : this.currentThemeOverride === 'dark';
+    const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+
+    const ios12 = Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) < 13;
     const defaultOptions: Options = {
+      statusBar: {
+        backgroundColor: colors.background,
+        style: darkMode ? 'light' : 'dark',
+      },
       topBar: {
-        leftButtonColor: COLORS.lightBlue,
-        rightButtonColor: COLORS.lightBlue,
-        rightButtonDisabledColor: COLORS.lightText,
-        leftButtonDisabledColor: COLORS.lightText,
+        leftButtonColor: colors.M,
+        rightButtonColor: colors.M,
+        rightButtonDisabledColor: colors.lightText,
+        leftButtonDisabledColor: colors.lightText,
         title: {
-          color: darkText,
+          color: colors.darkText,
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 20,
+        },
+        subtitle: {
+          color: colors.darkText,
+          fontFamily: 'Alegreya-Medium',
+          fontSize: 14,
         },
         background: {
-          color: Platform.select({
-            ios: COLORS.background,
-            android: darkMode ? '#000000' : '#FFFFFF',
-          }),
           translucent: false,
+          color: ios12 ? colors.ios12Background : colors.L30,
+          clipToBounds: false,
+        },
+        backButton: {
+          color: colors.M,
         },
         barStyle: darkMode ? 'black' : 'default',
       },
       layout: Platform.select({
         android: {
-          componentBackgroundColor: backgroundColor,
-          // backgroundColor: backgroundColor,
+          componentBackgroundColor: colors.L30,
         },
         ios: {
-          backgroundColor: COLORS.background,
+          backgroundColor: colors.L30,
+          componentBackgroundColor: colors.L30,
         },
       }),
       navigationBar: {
         backgroundColor: 'default',
       },
       bottomTabs: {
+        backgroundColor: colors.background,
         barStyle: darkMode ? 'black' : 'default',
-        backgroundColor: backgroundColor,
-        translucent: true,
+        // Bug with RNN, translucent always inherits the system setting.
+        translucent: ios12 || systemPreference === darkMode,
       },
       bottomTab: {
-        iconColor: darkMode ? '#bbb' : '#444',
-        textColor: darkMode ? '#eee' : '#000',
-        selectedIconColor: COLORS.lightBlue,
-        selectedTextColor: COLORS.lightBlue,
+        iconColor: colors.M,
+        textColor: colors.M,
+        selectedIconColor: colors.D30,
+        selectedTextColor: colors.D30,
       },
     };
     Navigation.setDefaultOptions(defaultOptions);
@@ -175,10 +198,12 @@ export default class App {
   }
 
   startSafeMode(store: Store<AppState, Action>) {
-    const lang = getLangPreference(store.getState());
+    const state = store.getState();
+    const lang = getLangPreference(state);
     changeLocale(lang || 'en');
     this.started = true;
     this.currentLang = lang;
+    this.currentThemeOverride = getThemeOverride(state);
     Navigation.setRoot({
       root: {
         stack: {
@@ -193,8 +218,8 @@ export default class App {
               passProps: {
                 startApp: () => {
                   this.startApp(lang);
-                }
-              }
+                },
+              },
             },
           }],
         },
@@ -212,6 +237,7 @@ export default class App {
         'Consider using `numColumns` with `FlatList` instead.',
         'Require cycle: node_modules/typeorm/browser/index.js',
       ]);
+      LogBox.ignoreAllLogs(true);
     }
 
     const browseCards = {
@@ -237,8 +263,8 @@ export default class App {
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
-              color: COLORS.navButton,
-              testID: 'NewDeck',
+              color: COLORS.M,
+              accessibilityLabel: t`New Deck`,
             }],
           },
         },
@@ -255,8 +281,8 @@ export default class App {
             rightButtons: [{
               icon: iconsMap.add,
               id: 'add',
-              color: COLORS.navButton,
-              testID: 'NewCampaign',
+              color: COLORS.M,
+              accessibilityLabel: t`New Campaign`,
             }],
           },
         },
@@ -274,6 +300,8 @@ export default class App {
         },
       },
     };
+
+    const appearance = Appearance.getColorScheme();
     const tabs = [{
       stack: {
         id: BROWSE_CARDS,
@@ -324,7 +352,7 @@ export default class App {
       },
     }];
 
-    this.setDefaultOptions(Appearance.getColorScheme());
+    this.setDefaultOptions(appearance);
 
     Navigation.setRoot({
       root: {

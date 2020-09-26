@@ -7,29 +7,30 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
 import BasicButton from '@components/core/BasicButton';
 import { Campaign } from '@actions/types';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import NavButton from '@components/core/NavButton';
-import typography from '@styles/typography';
 import space from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
-  fontScale: number;
   campaign: Campaign;
   viewScenarios: () => void;
   addScenarioResult: () => void;
 }
-class ScenarioSection extends React.Component<Props & StylesProps> {
+
+export default class ScenarioSection extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderCompletedScenarios() {
     const {
       campaign: {
         scenarioResults,
       },
-      gameFont,
     } = this.props;
+    const { gameFont, typography } = this.context;
 
     if (scenarioResults.length === 0) {
       return (
@@ -54,13 +55,13 @@ class ScenarioSection extends React.Component<Props & StylesProps> {
   render() {
     const {
       campaign,
-      fontScale,
       addScenarioResult,
       viewScenarios,
     } = this.props;
+    const { borderStyle } = this.context;
     return (
       <React.Fragment>
-        <NavButton fontScale={fontScale} onPress={viewScenarios} noBorder>
+        <NavButton onPress={viewScenarios} noBorder>
           <View style={[
             styles.section,
             space.paddingBottomS,
@@ -70,7 +71,7 @@ class ScenarioSection extends React.Component<Props & StylesProps> {
             <CampaignSummaryComponent campaign={campaign} />
           </View>
         </NavButton>
-        <View style={styles.bottomBorder}>
+        <View style={[styles.bottomBorder, borderStyle]}>
           <BasicButton
             title={t`Record Scenario Results`}
             onPress={addScenarioResult}
@@ -81,8 +82,6 @@ class ScenarioSection extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(ScenarioSection);
-
 const styles = StyleSheet.create({
   section: {
     flexDirection: 'column',
@@ -91,6 +90,5 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
 });

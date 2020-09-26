@@ -9,15 +9,16 @@ import Card from '@data/Card';
 import { combineQueriesOpt } from '@data/query';
 import FilterBuilder from '@lib/filters';
 
-interface Props {
+interface Props<T> {
   codes: string[];
   type: 'player' | 'encounter';
-  children: (cards: Card[], loading: boolean) => React.ReactNode | null;
+  children: (cards: Card[], loading: boolean, extraProps?: T) => React.ReactNode | null;
+  extraProps?: T;
 }
 
-type QueryProps = Pick<Props, 'codes'>
+type QueryProps<T> = Pick<Props<T>, 'codes'>
 
-class CardListWrapper extends React.Component<Props & PlayerCardProps> {
+class CardListWrapper<T> extends React.Component<Props<T> & PlayerCardProps> {
   static FILTER_BUILDER = new FilterBuilder('clw');
 
   static query({ codes }: { codes: string[] }) {
@@ -28,21 +29,21 @@ class CardListWrapper extends React.Component<Props & PlayerCardProps> {
   }
 
   render() {
-    const { cards, investigators, codes, children, type } = this.props;
+    const { cards, investigators, codes, children, type, extraProps } = this.props;
     if (type === 'player') {
       const playerCards = flatMap(codes, code => cards[code] || investigators[code] || []);
-      return children(playerCards, false);
+      return children(playerCards, false, extraProps);
     }
     if (!codes.length) {
-      return children([], false);
+      return children([], false, extraProps);
     }
     return (
-      <QueryProvider<QueryProps, Brackets | undefined>
+      <QueryProvider<QueryProps<T>, Brackets | undefined>
         codes={codes}
         getQuery={CardListWrapper.query}
       >
         { query => (
-          <CardQueryWrapper name="card-list" query={query}>
+          <CardQueryWrapper name="card-list" query={query} extraProps={extraProps}>
             { children }
           </CardQueryWrapper>
         ) }

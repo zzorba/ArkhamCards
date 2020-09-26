@@ -11,11 +11,9 @@ import Card from '@data/Card';
 import { RandomLocationInput } from '@data/scenario/types';
 import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import { m, l } from '@styles/space';
-import COLORS from '@styles/colors';
 
 interface Props {
   input: RandomLocationInput;
-  fontScale: number;
 }
 
 interface State {
@@ -77,11 +75,14 @@ export default class RandomLocationInputComponent extends React.Component<Props,
   };
 
   _renderCards = (cards: Card[], choices: number[]) => {
-    const { input, fontScale } = this.props;
+    const { input } = this.props;
     const selectedCards = flatMap(choices, idx => cards[idx] || []);
+    const {
+      style: { borderStyle },
+    } = this.context;
     if (!input.multiple) {
       return (
-        <View style={styles.wrapper}>
+        <View style={[styles.wrapper, borderStyle]}>
           <PickerStyleButton
             id="single"
             title={t`Random location`}
@@ -107,12 +108,11 @@ export default class RandomLocationInputComponent extends React.Component<Props,
           disabled={choices.length === 0}
           onPress={this._clearLocations}
         />
-        <View style={selectedCards.length ? styles.wrapper : {}}>
+        <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
           { map(selectedCards, card => (
             <CardSearchResult
               key={card.code}
               card={card}
-              fontScale={fontScale}
             />
           )) }
         </View>
@@ -143,7 +143,6 @@ export default class RandomLocationInputComponent extends React.Component<Props,
 const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   container: {
     marginTop: m,

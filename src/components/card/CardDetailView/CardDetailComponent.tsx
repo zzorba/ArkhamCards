@@ -7,22 +7,19 @@ import {
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import typography from '@styles/typography';
-import AppIcon from '@icons/AppIcon';
-import Button from '@components/core/Button';
 import BasicButton from '@components/core/BasicButton';
+import ArkhamButton from '@components/core/ArkhamButton';
 import Card from '@data/Card';
 import BondedCardsComponent from './BondedCardsComponent';
 import TwoSidedCardComponent from './TwoSidedCardComponent';
 import SignatureCardsComponent from './SignatureCardsComponent';
-import space, { m, s, xs } from '@styles/space';
-import COLORS from '@styles/colors';
+import space, { m, s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId?: string;
   card: Card;
   width: number;
-  fontScale: number;
   showSpoilers: boolean;
   tabooSetId?: number;
   toggleShowSpoilers?: (code: string) => void;
@@ -31,9 +28,8 @@ interface Props {
 }
 
 export default class CardDetailComponent extends React.Component<Props> {
-  public static defaultProps = {
-    simple: false,
-  };
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   _editSpoilersPressed = () => {
     const { componentId } = this.props;
@@ -70,28 +66,27 @@ export default class CardDetailComponent extends React.Component<Props> {
       componentId,
       card,
       width,
-      fontScale,
     } = this.props;
+    const { typography, colors } = this.context;
     if (!card || card.type_code !== 'investigator' || card.encounter_code !== null) {
       return null;
     }
     return (
       <View style={styles.investigatorContent}>
-        <Text style={[typography.header, styles.sectionHeader]}>
-          { t`Deckbuilding` }
-        </Text>
-        <View style={[styles.buttonContainer, styles.buttonPadding]}>
-          <Button
-            onPress={this._showInvestigatorCards}
-            text={t`Deckbuilding Cards`}
-            icon={<AppIcon name="deck" size={22 * fontScale} color="white" />}
-          />
+        <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
+          <Text style={[typography.large, typography.center, typography.uppercase]}>
+            { t`Deckbuilding` }
+          </Text>
         </View>
+        <ArkhamButton
+          icon="deck"
+          title={t`Show all available cards`}
+          onPress={this._showInvestigatorCards}
+        />
         <SignatureCardsComponent
           componentId={componentId}
           investigator={card}
           width={width}
-          fontScale={fontScale}
         />
       </View>
     );
@@ -111,11 +106,11 @@ export default class CardDetailComponent extends React.Component<Props> {
       card,
       simple,
       width,
-      fontScale,
     } = this.props;
+    const { backgroundStyle } = this.context;
     if (this.shouldBlur()) {
       return (
-        <View key={card.code} style={[styles.viewContainer, { width }]}>
+        <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
           <Text style={[space.marginS]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
@@ -124,20 +119,19 @@ export default class CardDetailComponent extends React.Component<Props> {
         </View>
       );
     }
+
     return (
-      <View key={card.code} style={[styles.viewContainer, { width }]}>
+      <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
         <TwoSidedCardComponent
           componentId={componentId}
           card={card}
           width={width}
-          fontScale={fontScale}
-          simple={simple}
+          simple={!!simple}
         />
         <BondedCardsComponent
           componentId={componentId}
-          card={card}
+          cards={[card]}
           width={width}
-          fontScale={fontScale}
         />
         { this.renderInvestigatorCardsLink() }
       </View>
@@ -147,25 +141,22 @@ export default class CardDetailComponent extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   viewContainer: {
-    backgroundColor: COLORS.background,
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  buttonPadding: {
-    marginLeft: s,
-    marginTop: xs,
-    marginBottom: xs,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  sectionHeader: {
-    marginTop: m + s,
-    paddingLeft: s,
   },
   investigatorContent: {
     width: '100%',
     maxWidth: 768,
+  },
+  deckbuildingSection: {
+    marginTop: m + s,
+    marginLeft: -8,
+    marginRight: -8,
+    marginBottom: 8,
+    padding: 4,
+    paddingTop: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

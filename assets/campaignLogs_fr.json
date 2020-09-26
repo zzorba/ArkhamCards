@@ -1,0 +1,3519 @@
+[
+  {
+    "campaignId": "core",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "arkham_succumbed",
+            "text": "Arkham a succombé à la terrible vengeance d’Umôrdhoth."
+          },
+          {
+            "id": "ghoul_priest_alive",
+            "text": "le Prêtre Goule est toujours vivant."
+          },
+          {
+            "id": "house_burned",
+            "text": "votre maison a entièrement brûlé."
+          },
+          {
+            "id": "house_standing",
+            "text": "votre maison est toujours debout."
+          },
+          {
+            "id": "lita_finds_others",
+            "text": "Lita a dû trouver d’autres personnes pour soutenir sa cause."
+          },
+          {
+            "id": "lita_sacrificed",
+            "text": "les investigateurs ont sacrifié Lita Chantler à Umôrdhoth."
+          },
+          {
+            "id": "past_midnight",
+            "text": "il est minuit passé."
+          },
+          {
+            "id": "ritual_broken",
+            "text": "le rituel pour invoquer Umôrdhoth a été rompu."
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "les investigateurs ont repoussé Umôrdhoth."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "dwl",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_silas_bishop",
+            "text": "les investigateurs ont banni Silas Bishop."
+          },
+          {
+            "id": "bone_to_pick",
+            "text": "le gang O’Bannion a un compte à régler avec les investigateurs."
+          },
+          {
+            "id": "brood_escaped",
+            "text": "#W# Rejetons se sont évanouis dans la nature."
+          },
+          {
+            "id": "calmed_townsfolk",
+            "text": "vous avez calmé les villageois."
+          },
+          {
+            "id": "closed_tear",
+            "text": "les investigateurs ont fermé la faille dans la réalité."
+          },
+          {
+            "id": "destroyed_necronomicon",
+            "text": "les investigateurs ont détruit le Necronomicon."
+          },
+          {
+            "id": "earl_sawyer_survived",
+            "text": "Earl Sawyer a survécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "entered_the_gate",
+            "text": "les investigateurs ont franchi le portail."
+          },
+          {
+            "id": "experiment_defeated",
+            "text": "l'Expérience a été vaincue."
+          },
+          {
+            "id": "failed_to_recover_necronomicon",
+            "text": "les investigateurs n'ont pas réussi à retrouver le Necronomicon."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "les investigateurs n’ont pas réussi à sauver les étudiants."
+          },
+          {
+            "id": "francis_morgan_kidnapped",
+            "text": "Le Dr Francis Morgan a été enlevé."
+          },
+          {
+            "id": "francis_morgan_rescued",
+            "text": "les investigateurs ont secouru le Dr Francis Morgan."
+          },
+          {
+            "id": "francis_morgan_survived",
+            "text": "Le Dr Francis Morgan a sur­vécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "henry_armitage_kidnapped",
+            "text": "Le Dr Henry Armitage a été enlevé."
+          },
+          {
+            "id": "henry_armitage_rescued",
+            "text": "les investigateurs ont secouru le Dr Henry Armitage."
+          },
+          {
+            "id": "henry_armitage_survived",
+            "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+          },
+          {
+            "id": "investigators_delayed",
+            "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
+          },
+          {
+            "id": "killed_silas_bishop",
+            "text": "les investigateurs ont abrégé les souff\\u001erances de Silas Bishop."
+          },
+          {
+            "id": "naomi_has_back",
+            "text": "Naomi surveille les arrières des investigateurs."
+          },
+          {
+            "id": "necronomicon_stolen",
+            "text": "le Necronomicon a été volé."
+          },
+          {
+            "id": "no_brood_escaped",
+            "text": "Aucun Rejeton ne s’est évanoui dans la nature."
+          },
+          {
+            "id": "restored_silas_bishop",
+            "text": "les investigateurs ont rendu sa forme à Silas Bishop."
+          },
+          {
+            "id": "ritual_completed",
+            "text": "le rituel a été accompli."
+          },
+          {
+            "id": "students_rescued",
+            "text": "les étudiants ont été sauvés."
+          },
+          {
+            "id": "took_necronomicon",
+            "text": "les investigateurs ont gardé le Necronomicon."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "les investigateurs ont été inconscients pendant plusieurs heures."
+          },
+          {
+            "id": "warned_townsfolk",
+            "text": "vous avez averti les villageois."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "Le Professeur Warren Rice a été enlevé."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "les investigateurs ont secouru le professeur Warren Rice."
+          },
+          {
+            "id": "warren_rice_survived",
+            "text": "Le Professeur Warren Rice a survécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "yog_sothoth_became_one_with_reality",
+            "text": "Yog-Sothoth a anéanti la barrière entre les mondes et ne fait plus qu’un avec la réalité."
+          },
+          {
+            "id": "yog_sothoth_escaped",
+            "text": "Yog-Sothoth a brisé la barrière entre les mondes et ne fait plus qu’un avec la réalité."
+          },
+          {
+            "id": "yog_sothoth_fled",
+            "text": "Yog-Sothoth a fui vers une autre dimension."
+          },
+          {
+            "id": "zebulon_whateley_survived",
+            "text": "Zebulon Whateley a survécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "tmm_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "sacrificed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "ptc",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "the investigators were attacked as they escaped the Asylum."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "you awoke inside the catacombs."
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "you chose not to go to the police."
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "you destroyed the oathspeaker."
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "you did not escape the gaze of the phantom."
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "you entered the catacombs on your own."
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "the investigators escaped the Asylum."
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "you fled the dinner party."
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "the followers of the sign have found the way forward."
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "you found Nigel Engram."
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "you found Nigel's home."
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "Hastur has you in his grasp."
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "you heeded Daniel’s warning."
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "you ignored Daniel’s warning."
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "you intruded on a secret meeting."
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "the King claimed its victims."
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "you know the site of the gate."
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "you left the onyx clasp behind."
+          },
+          {
+            "id": "opened_path_above",
+            "text": "you opened the path above."
+          },
+          {
+            "id": "opened_path_below",
+            "text": "you opened the path below."
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "the police are suspicious of you."
+          },
+          {
+            "id": "possessed",
+            "text": "#name# was possessed."
+          },
+          {
+            "id": "prevented_hasturs_escape",
+            "text": "the investigators prevented Hastur from escaping his prison."
+          },
+          {
+            "id": "read_act_2",
+            "text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "slayed_the_monsters",
+            "text": "you slayed the monsters at the dinner party."
+          },
+          {
+            "id": "stranger_is_on_to_you",
+            "text": "the Stranger is on to you."
+          },
+          {
+            "id": "took_onyx_clasp",
+            "text": "you took the onyx clasp."
+          },
+          {
+            "id": "tried_to_warn_police",
+            "text": "you tried to warn the police."
+          },
+          {
+            "id": "unable_to_find_nigel",
+            "text": "you were unable to find Nigel."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "bsr_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "cca_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "possessed",
+            "text": "one or more investigators was possessed."
+          },
+          {
+            "id": "tpm_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "vips_interviewed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      },
+      {
+        "section": "vips_slain",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "03065b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03066b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03067b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03068b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03069b",
+            "text": "#nom#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtdwl",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "banished_silas_bishop",
+            "text": "les investigateurs ont banni Silas Bishop."
+          },
+          {
+            "id": "bone_to_pick",
+            "text": "le gang O’Bannion a un compte à régler avec les investigateurs."
+          },
+          {
+            "id": "brood_escaped",
+            "text": "#W# Rejetons se sont évanouis dans la nature."
+          },
+          {
+            "id": "calmed_townsfolk",
+            "text": "vous avez calmé les villageois."
+          },
+          {
+            "id": "closed_tear",
+            "text": "les investigateurs ont fermé la faille dans la réalité."
+          },
+          {
+            "id": "destroyed_necronomicon",
+            "text": "les investigateurs ont détruit le Necronomicon."
+          },
+          {
+            "id": "earl_sawyer_survived",
+            "text": "Earl Sawyer a survécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "entered_the_gate",
+            "text": "les investigateurs ont franchi le portail."
+          },
+          {
+            "id": "experiment_defeated",
+            "text": "l'Expérience a été vaincue."
+          },
+          {
+            "id": "failed_to_recover_necronomicon",
+            "text": "les investigateurs n'ont pas réussi à retrouver le Necronomicon."
+          },
+          {
+            "id": "failed_to_save_students",
+            "text": "les investigateurs n’ont pas réussi à sauver les étudiants."
+          },
+          {
+            "id": "francis_morgan_kidnapped",
+            "text": "Le Dr Francis Morgan a été enlevé."
+          },
+          {
+            "id": "francis_morgan_rescued",
+            "text": "les investigateurs ont secouru le Dr Francis Morgan."
+          },
+          {
+            "id": "francis_morgan_survived",
+            "text": "Le Dr Francis Morgan a sur­vécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "henry_armitage_kidnapped",
+            "text": "Le Dr Henry Armitage a été enlevé."
+          },
+          {
+            "id": "henry_armitage_rescued",
+            "text": "les investigateurs ont secouru le Dr Henry Armitage."
+          },
+          {
+            "id": "henry_armitage_survived",
+            "text": "Le Dr Henry Armitage a survécu à L’Héritage de Dunwich."
+          },
+          {
+            "id": "investigators_delayed",
+            "text": "les investigateurs ont été retardés lors de leur voyage vers Dunwich."
+          },
+          {
+            "id": "killed_silas_bishop",
+            "text": "les investigateurs ont abrégé les souff\\u001erances de Silas Bishop."
+          },
+          {
+            "id": "naomi_has_back",
+            "text": "Naomi surveille les arrières des investigateurs."
+          },
+          {
+            "id": "necronomicon_stolen",
+            "text": "le Necronomicon a été volé."
+          },
+          {
+            "id": "no_brood_escaped",
+            "text": "Aucun Rejeton ne s’est évanoui dans la nature."
+          },
+          {
+            "id": "restored_silas_bishop",
+            "text": "les investigateurs ont rendu sa forme à Silas Bishop."
+          },
+          {
+            "id": "ritual_completed",
+            "text": "le rituel a été accompli."
+          },
+          {
+            "id": "students_rescued",
+            "text": "les étudiants ont été sauvés."
+          },
+          {
+            "id": "took_necronomicon",
+            "text": "les investigateurs ont gardé le Necronomicon."
+          },
+          {
+            "id": "unconscious_for_several_hours",
+            "text": "les investigateurs ont été inconscients pendant plusieurs heures."
+          },
+          {
+            "id": "warned_townsfolk",
+            "text": "vous avez averti les villageois."
+          },
+          {
+            "id": "warren_rice_kidnapped",
+            "text": "Le Professeur Warren Rice a été enlevé."
+          },
+          {
+            "id": "warren_rice_rescued",
+            "text": "les investigateurs ont secouru le professeur Warren Rice."
+          },
+          {
+            "id": "warren_rice_survived",
+            "text": "Le Professeur Warren Rice a survécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "yog_sothoth_became_one_with_reality",
+            "text": "Yog-Sothoth a anéanti la barrière entre les mondes et ne fait plus qu’un avec la réalité."
+          },
+          {
+            "id": "yog_sothoth_escaped",
+            "text": "Yog-Sothoth a brisé la barrière entre les mondes et ne fait plus qu’un avec la réalité."
+          },
+          {
+            "id": "yog_sothoth_fled",
+            "text": "Yog-Sothoth a fui vers une autre dimension."
+          },
+          {
+            "id": "zebulon_whateley_survived",
+            "text": "Zebulon Whateley a survécu à L'Héritage de Dunwich."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "tmm_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "sacrificed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtnotz",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "arkham_succumbed",
+            "text": "Arkham a succombé à la terrible vengeance d’Umôrdhoth."
+          },
+          {
+            "id": "ghoul_priest_alive",
+            "text": "le Prêtre Goule est toujours vivant."
+          },
+          {
+            "id": "house_burned",
+            "text": "votre maison a entièrement brûlé."
+          },
+          {
+            "id": "house_standing",
+            "text": "votre maison est toujours debout."
+          },
+          {
+            "id": "lita_finds_others",
+            "text": "Lita a dû trouver d’autres personnes pour soutenir sa cause."
+          },
+          {
+            "id": "lita_sacrificed",
+            "text": "les investigateurs ont sacrifié Lita Chantler à Umôrdhoth."
+          },
+          {
+            "id": "past_midnight",
+            "text": "il est minuit passé."
+          },
+          {
+            "id": "ritual_broken",
+            "text": "le rituel pour invoquer Umôrdhoth a été rompu."
+          },
+          {
+            "id": "umordhoth_repelled",
+            "text": "les investigateurs ont repoussé Umôrdhoth."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "cultists_escaped",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      },
+      {
+        "section": "cultists_interrogated",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rtptc",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "the investigators were attacked as they escaped the Asylum."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "you awoke inside the catacombs."
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "you chose not to go to the police."
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "you destroyed the oathspeaker."
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "you did not escape the gaze of the phantom."
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "you entered the catacombs on your own."
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "the investigators escaped the Asylum."
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "you fled the dinner party."
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "the followers of the sign have found the way forward."
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "you found Nigel Engram."
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "you found Nigel's home."
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "Hastur has you in his grasp."
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "you heeded Daniel’s warning."
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "you ignored Daniel’s warning."
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "you intruded on a secret meeting."
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "the King claimed its victims."
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "you know the site of the gate."
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "you left the onyx clasp behind."
+          },
+          {
+            "id": "opened_path_above",
+            "text": "you opened the path above."
+          },
+          {
+            "id": "opened_path_below",
+            "text": "you opened the path below."
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "the police are suspicious of you."
+          },
+          {
+            "id": "possessed",
+            "text": "#name# was possessed."
+          },
+          {
+            "id": "prevented_hasturs_escape",
+            "text": "the investigators prevented Hastur from escaping his prison."
+          },
+          {
+            "id": "read_act_2",
+            "text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "slayed_the_monsters",
+            "text": "you slayed the monsters at the dinner party."
+          },
+          {
+            "id": "stranger_is_on_to_you",
+            "text": "the Stranger is on to you."
+          },
+          {
+            "id": "took_onyx_clasp",
+            "text": "you took the onyx clasp."
+          },
+          {
+            "id": "tried_to_warn_police",
+            "text": "you tried to warn the police."
+          },
+          {
+            "id": "unable_to_find_nigel",
+            "text": "you were unable to find Nigel."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "bsr_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "cca_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "possessed",
+            "text": "one or more investigators was possessed."
+          },
+          {
+            "id": "tpm_conviction_or_doubt",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "vips_interviewed",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          }
+        ]
+      },
+      {
+        "section": "vips_slain",
+        "entries": [
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "03065b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03066b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03067b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03068b",
+            "text": "#nom#"
+          },
+          {
+            "id": "03069b",
+            "text": "#nom#"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "rttfa",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alejandro_followed_to_ruins",
+            "text": "Alejandro followed the investigators into the ruins."
+          },
+          {
+            "id": "alejandro_is_missing",
+            "text": "Alejandro is missing."
+          },
+          {
+            "id": "alejandro_on_his_own",
+            "text": "Alejandro is continuing his research on his own."
+          },
+          {
+            "id": "alejandro_recovered_relic",
+            "text": "Alejandro recovered the Relic of Ages."
+          },
+          {
+            "id": "alejandro_remained_at_camp",
+            "text": "Alejandro chose to remain at camp."
+          },
+          {
+            "id": "alejandro_remembers_everything",
+            "text": "Alejandro remembers everything."
+          },
+          {
+            "id": "alejandro_set_against",
+            "text": "Alejandro is set against you."
+          },
+          {
+            "id": "braziers_are_lit",
+            "text": "the braziers are lit."
+          },
+          {
+            "id": "braziers_remain_unlit",
+            "text": "the braziers remain unlit."
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "the investigators cleared a path to the Eztli ruins."
+          },
+          {
+            "id": "cooperated_with_yithians",
+            "text": "the investigators cooperated with the Yithians."
+          },
+          {
+            "id": "earned_alejandros_trust",
+            "text": "the investigators have earned Alejandro’s trust."
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "the investigators have earned Ichtaca’s trust."
+          },
+          {
+            "id": "fabric_of_time_unwoven",
+            "text": "the fabric of time is unwoven."
+          },
+          {
+            "id": "fell_into_depths",
+            "text": "the investigators fell into the depths."
+          },
+          {
+            "id": "forged_bond_with_ichtaca",
+            "text": "the investigators forged a bond with Ichtaca."
+          },
+          {
+            "id": "forging_own_path",
+            "text": "you are forging your own path."
+          },
+          {
+            "id": "found_missing_relic",
+            "text": "the investigators found the missing relic."
+          },
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "the investigators gave custody of the relic to Alejandro."
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          },
+          {
+            "id": "had_memories_expunged",
+            "text": "the investigators had their memories expunged."
+          },
+          {
+            "id": "harbinger_alive",
+            "text": "the Harbinger is still alive (#X# damage)."
+          },
+          {
+            "id": "ichtaca_has_confidence",
+            "text": "Ichtaca has confidence in you."
+          },
+          {
+            "id": "ichtaca_in_the_dark",
+            "text": "Ichtaca is in the dark."
+          },
+          {
+            "id": "ichtaca_is_wary",
+            "text": "Ichtaca is wary of the investigators."
+          },
+          {
+            "id": "ichtaca_observed_progress",
+            "text": "Ichtaca observed your progress with keen interest."
+          },
+          {
+            "id": "ichtaca_set_against",
+            "text": "Ichtaca is set against you."
+          },
+          {
+            "id": "ichtacas_faith_restored",
+            "text": "Ichtaca’s faith is restored."
+          },
+          {
+            "id": "investigators_recovered_relic",
+            "text": "the investigators recovered the Relic of Ages."
+          },
+          {
+            "id": "investigators_saved_serpents",
+            "text": "the investigators saved the civilization of the Serpents."
+          },
+          {
+            "id": "investigators_saved_yithians",
+            "text": "the investigators saved the civilization of the Yithians."
+          },
+          {
+            "id": "jungle_watches",
+            "text": "the jungle watches (#name# x#X#)."
+          },
+          {
+            "id": "mapped_way_forward",
+            "text": "the investigators mapped out the way forward."
+          },
+          {
+            "id": "mended_tear_in_time",
+            "text": "the investigators mended the tear in time."
+          },
+          {
+            "id": "nexus_is_near",
+            "text": "the nexus is near."
+          },
+          {
+            "id": "paths_known",
+            "text": "#X# paths are known to you."
+          },
+          {
+            "id": "process_backfired",
+            "text": "the process backfired."
+          },
+          {
+            "id": "process_backfired_spectacularly",
+            "text": "the process backfired spectacularly."
+          },
+          {
+            "id": "process_was_perfected",
+            "text": "the process was perfected."
+          },
+          {
+            "id": "process_was_successful",
+            "text": "the process was successful."
+          },
+          {
+            "id": "recruited_help_of_another_expedition",
+            "text": "the investigators recruited the help of another expedition."
+          },
+          {
+            "id": "relic_is_missing",
+            "text": "the relic is missing."
+          },
+          {
+            "id": "rescued_alejandro",
+            "text": "the investigators rescued Alejandro."
+          },
+          {
+            "id": "resisted_captivity",
+            "text": "the investigators resisted captivity."
+          },
+          {
+            "id": "sealed_relic_of_ages_forever",
+            "text": "the investigators sealed the Relic of Ages forever."
+          },
+          {
+            "id": "turned_back_time",
+            "text": "the investigarors turned back time."
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "the investigators were forced to wait for additional supplies."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "agenda_5",
+            "text": "hidden"
+          },
+          {
+            "id": "agenda_6",
+            "text": "hidden"
+          },
+          {
+            "id": "doy_cross_off_rope",
+            "text": "dummy"
+          },
+          {
+            "id": "final_depth",
+            "text": "#X# depth"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "Ichtaca left without you."
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "listened to Ichtaca's tale."
+          },
+          {
+            "id": "rtdoe_gain_mysterious_scepter",
+            "text": "dummy"
+          },
+          {
+            "id": "rthote2_gain_sticky_goop",
+            "text": "dummy"
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# tasks were completed"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "sticky_goop",
+        "name": "Sticky Goop",
+        "description": "A mysterious scepter you found in a subterranean swamp.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "mysterious_scepter",
+        "name": "Mysterious Scepter",
+        "description": "A mysterious scepter you found in the throne room.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "key_of_eztli",
+        "name": "Key of Eztli",
+        "description": "The Key of Eztli.",
+        "cost": 0,
+        "multiple": false
+      },
+      {
+        "id": "gasoline",
+        "name": "Gasoline",
+        "description": "Enough for a long journey bycar.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Food and water for one person. A must-have for any journey.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Medicine",
+        "description": "To stave off disease, infection, or venom.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "Pendant",
+        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "cost": 1
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Can be refilled at streams and rivers.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Compass",
+        "description": "Can guide you when you are hopelessly lost.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Pickaxe",
+        "description": "For breaking apart rocky surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Blanket",
+        "description": "For warmth at night.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Chalk",
+        "description": "For writing on rough stone surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Binoculars",
+        "description": "To help you see faraway places.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "Pocketknife",
+        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "cost": 2
+      },
+      {
+        "id": "torches",
+        "name": "Torches",
+        "description": "Can light up dark areas, or set sconces alight.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Rope",
+        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "cost": 3
+      },
+      {
+        "id": "map",
+        "name": "Map",
+        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "cost": 3
+      }
+    ]
+  },
+  {
+    "campaignId": "tcu",
+    "sections": [
+      {
+        "section": "$input_value",
+        "entries": [
+          {
+            "id": "claimed_by_specters",
+            "text": "#name# was claimed by specters."
+          },
+          {
+            "id": "disappeared_into_the_mist",
+            "text": "#name# disappeared into the mist."
+          },
+          {
+            "id": "pulled_into_the_spectral_realm",
+            "text": "#name# was pulled into the spectral realm."
+          },
+          {
+            "id": "taken_by_the_watcher",
+            "text": "#name# was taken by the Watcher."
+          }
+        ]
+      },
+      {
+        "section": "05046",
+        "entries": [
+          {
+            "id": "alive",
+            "text": "Gavriella is alive."
+          },
+          {
+            "id": "dead",
+            "text": "Gavriella Mizrah is dead."
+          },
+          {
+            "id": "on_gavriellas_trail",
+            "text": "the investigators are on Gavriella’s trail."
+          }
+        ]
+      },
+      {
+        "section": "05047",
+        "entries": [
+          {
+            "id": "alive",
+            "text": "Jerome is alive."
+          },
+          {
+            "id": "dead",
+            "text": "Jerome Davids is dead."
+          },
+          {
+            "id": "on_jeromes_trail",
+            "text": "the investigators are on Jerome’s trail."
+          }
+        ]
+      },
+      {
+        "section": "05048",
+        "entries": [
+          {
+            "id": "alive",
+            "text": "Valentino is alive."
+          },
+          {
+            "id": "dead",
+            "text": "Valentino Rivas is dead."
+          },
+          {
+            "id": "on_valentinos_trail",
+            "text": "the investigators are on Valentino's trail."
+          }
+        ]
+      },
+      {
+        "section": "05049",
+        "entries": [
+          {
+            "id": "alive",
+            "text": "Penny is alive."
+          },
+          {
+            "id": "dead",
+            "text": "Penny White is dead."
+          },
+          {
+            "id": "on_pennys_trail",
+            "text": "the investigators are on Penny's trail."
+          }
+        ]
+      },
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "accepted_fate",
+            "text": "you have accepted your fate."
+          },
+          {
+            "id": "anette_mason_is_possessed_by_evil",
+            "text": "Anette Mason is possessed by evil."
+          },
+          {
+            "id": "anette_taught_you_the_spells_of_old",
+            "text": "Anette taught you the spells of old."
+          },
+          {
+            "id": "arrested_anette",
+            "text": "the investigators arrested Anette."
+          },
+          {
+            "id": "arrested_sanford",
+            "text": "the investigators arrested Sanford."
+          },
+          {
+            "id": "asked_anette_for_assistance",
+            "text": "the investigators asked Anette for assistance."
+          },
+          {
+            "id": "asked_sanford_for_assistance",
+            "text": "the investigators asked Sanford for assistance."
+          },
+          {
+            "id": "assumed_control_of_the_silver_twilight_lodge",
+            "text": "the investigators assumed control of the Silver Twilight Lodge."
+          },
+          {
+            "id": "azathoth_devoured_the_universe",
+            "text": "Azathoth devoured the universe."
+          },
+          {
+            "id": "azathoth_slumbers",
+            "text": "Azathoth slumbers… for now."
+          },
+          {
+            "id": "being_hunted",
+            "text": "you are being hunted."
+          },
+          {
+            "id": "carl_sanford_possesses_the_secrets_of_the_universe",
+            "text": "Carl Sanford possesses the secrets of the universe."
+          },
+          {
+            "id": "continued_alone",
+            "text": "the investigators continued alone."
+          },
+          {
+            "id": "deceiving_the_lodge",
+            "text": "the investigators are deceiving the Lodge."
+          },
+          {
+            "id": "discovered_how_to_open_the_puzzle_box",
+            "text": "the investigators discovered how to open the puzzle box.."
+          },
+          {
+            "id": "doom_draws_ever_closer",
+            "text": "doom draws ever closer."
+          },
+          {
+            "id": "enemies_of_the_lodge",
+            "text": "the investigators are enemies of the Lodge."
+          },
+          {
+            "id": "guardian_of_the_trap_defeated",
+            "text": "the guardian of the trap emerged and was defeated."
+          },
+          {
+            "id": "guardian_of_the_trap_emerged",
+            "text": "the guardian of the trap emerged."
+          },
+          {
+            "id": "heretics_released",
+            "text": "#X# heretics were unleashed unto Arkham."
+          },
+          {
+            "id": "hid_knowledge_of_coven",
+            "text": "the investigators hid their knowledge of the coven."
+          },
+          {
+            "id": "inducted_into_the_inner_circle",
+            "text": "the investigators were inducted into the Inner Circle."
+          },
+          {
+            "id": "investigators_escaped_the_spectral_realm",
+            "text": "the investigators escaped the spectral realm."
+          },
+          {
+            "id": "josef_disappeared_into_the_mist",
+            "text": "Josef disappeared into the mist."
+          },
+          {
+            "id": "josef_is_alive",
+            "text": "Josef is alive and well."
+          },
+          {
+            "id": "kept_mementos_hidden",
+            "text": "the investigators kept their mementos hidden."
+          },
+          {
+            "id": "lead_investigator_joins_pipers",
+            "text": "#name# joins the pipers of Azathoth."
+          },
+          {
+            "id": "learned_nothing_of_the_lodges_schemes",
+            "text": "the investigators learned nothing of the Lodge’s schemes."
+          },
+          {
+            "id": "members_of_the_lodge",
+            "text": "the investigators are members of the Lodge."
+          },
+          {
+            "id": "never_seen_again",
+            "text": "the investigators are never seen or heard from again."
+          },
+          {
+            "id": "path_winds_before_you",
+            "text": "the path winds before you: #X#"
+          },
+          {
+            "id": "pieces_of_evidence",
+            "text": "#X# pieces of evidence were left behind."
+          },
+          {
+            "id": "rejected_fate",
+            "text": "you have rejected your fate."
+          },
+          {
+            "id": "rescued_josef",
+            "text": "the investigators rescued Josef."
+          },
+          {
+            "id": "sided_with_the_coven",
+            "text": "the investigators sided with the coven."
+          },
+          {
+            "id": "sided_with_the_lodge",
+            "text": "the investigators sided with the Lodge."
+          },
+          {
+            "id": "signed_the_black_book",
+            "text": "the investigators signed the Black Book of Azathoth."
+          },
+          {
+            "id": "survived_the_watchers_embrace",
+            "text": "the investigators survived the watcher’s embrace."
+          },
+          {
+            "id": "told_lodge_about_coven",
+            "text": "the investigators told the Lodge about the coven."
+          },
+          {
+            "id": "true_work_of_silver_twilight_lodge_has_begun",
+            "text": "the true work of the Silver Twilight Lodge has begun."
+          },
+          {
+            "id": "witches_spell_broken",
+            "text": "the witches' spell was broken."
+          },
+          {
+            "id": "witches_spell_cast",
+            "text": "the witches' spell was cast."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "a_record_of_those_lost",
+            "text": "dummy"
+          },
+          {
+            "id": "act_3_v2",
+            "text": "dummy"
+          },
+          {
+            "id": "left_column",
+            "text": "dummy"
+          },
+          {
+            "id": "right_column",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "uad_no_investigators_alive",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      },
+      {
+        "section": "mementos",
+        "entries": [
+          {
+            "id": "corn_husk_doll",
+            "text": "Corn Husk Doll"
+          },
+          {
+            "id": "gilmans_journal",
+            "text": "Gilman's Journal"
+          },
+          {
+            "id": "keziahs_formulae",
+            "text": "Keziah's Formulae"
+          },
+          {
+            "id": "mesmerizing_flute",
+            "text": "Mesmerizing Flute"
+          },
+          {
+            "id": "ritual_components",
+            "text": "Ritual Components"
+          },
+          {
+            "id": "scrap_of_torn_shadow",
+            "text": "Scrap of Torn Shadow"
+          },
+          {
+            "id": "wisp_of_spectral_mist",
+            "text": "Wisp of Spectral Mist"
+          },
+          {
+            "id": "worn_crucific",
+            "text": "Worn Crucifix"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tdea",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "black_cat_at_your_side",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_delivered_news",
+            "text": "the black cat delivered news of your plight."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "the black cat has a hunch."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "the black cat is searching for the truth."
+          },
+          {
+            "id": "black_cat_knows_the_truth",
+            "text": "the black cat knows the truth."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_dreamlands",
+            "text": "the black cat shared knowledge of the Dreamlands."
+          },
+          {
+            "id": "black_cat_spoke_of_atlach_nacha",
+            "text": "the black cat spoke of Atlach-Nacha."
+          },
+          {
+            "id": "black_cat_spoke_of_nyarlathotep",
+            "text": "the black cat spoke of Nyarlathotep."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "the black cat warned the others."
+          },
+          {
+            "id": "broken_the_law_of_ulthar",
+            "text": "#name# has broken the law of Ulthar."
+          },
+          {
+            "id": "captured",
+            "text": "#name# was captured."
+          },
+          {
+            "id": "carried_to_the_cold_wastes",
+            "text": "the investigators were carried to the Cold Wastes."
+          },
+          {
+            "id": "cats_collected_their_tribute",
+            "text": "the cats collected their tribute from the Zoogs."
+          },
+          {
+            "id": "dreamers_awoke",
+            "text": "the dreamers awoke."
+          },
+          {
+            "id": "dreamers_banished_nyarlathotep",
+            "text": "the dreamers banished Nyarlathotep."
+          },
+          {
+            "id": "dreamers_escaped_nyarlathoteps_grasp",
+            "text": "the dreamers escaped from Nyarlathotep's grasp."
+          },
+          {
+            "id": "dreamers_grow_weaker",
+            "text": "the dreamers grow weaker."
+          },
+          {
+            "id": "dreamers_know_of_another_path",
+            "text": "the dreamers know of another path."
+          },
+          {
+            "id": "dreamers_stayed_in_dreamlands_forever",
+            "text": "the dreamers stayed in the Dreamlands forever."
+          },
+          {
+            "id": "dreamers_traveled_beneath_the_monastery",
+            "text": "the dreamers traveled beneath the monasteryr."
+          },
+          {
+            "id": "forced_way_into_temple",
+            "text": "the investigators forced their way into the temple."
+          },
+          {
+            "id": "nyarlathoteps_invasion_has_begun",
+            "text": "Nyarlathotep's invasion has begun."
+          },
+          {
+            "id": "parleyed_with_zoogs",
+            "text": "the investigators parleyed with the Zoogs."
+          },
+          {
+            "id": "possess_silver_key",
+            "text": "the investigators possess the Silver Key."
+          },
+          {
+            "id": "randolph_did_not_survive_the_voyage",
+            "text": "Randolph Carter did not survive the voyage."
+          },
+          {
+            "id": "randolph_eluded_capture",
+            "text": "Randolph eluded capture."
+          },
+          {
+            "id": "randolph_survived_the_voyage",
+            "text": "Randolph survived the voyage."
+          },
+          {
+            "id": "randolph_was_captured",
+            "text": "Randolph was captured."
+          },
+          {
+            "id": "saved_by_randolph_carter",
+            "text": "the investigators were saved by Randolph Carter."
+          },
+          {
+            "id": "strayed_from_the_path",
+            "text": "the dreamers strayed from the path."
+          },
+          {
+            "id": "threaten_black_cat",
+            "text": "okay, fine, have it your way then."
+          },
+          {
+            "id": "travelled_to_the_cold_wastes",
+            "text": "the investigators traveled to the Cold Wastes."
+          },
+          {
+            "id": "virgil_was_captured",
+            "text": "Virgil was captured."
+          },
+          {
+            "id": "you_asked_for_it",
+            "text": "you asked for it."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "drifter_dream",
+            "text": "#nom#"
+          },
+          {
+            "id": "everyone_captured",
+            "text": "dummy"
+          },
+          {
+            "id": "forbidden_lands",
+            "text": "dummy"
+          },
+          {
+            "id": "grand_design",
+            "text": "dummy"
+          },
+          {
+            "id": "half_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "interconnected_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "minar",
+            "text": "dummy"
+          },
+          {
+            "id": "oriab",
+            "text": "dummy"
+          },
+          {
+            "id": "someone_escaped",
+            "text": "dummy"
+          },
+          {
+            "id": "timeless_realm",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tdeb",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "black_cat_at_your_side",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "the black cat is at your side."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "the black cat has a hunch."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "the black cat is searching for the truth."
+          },
+          {
+            "id": "black_cat_knows_the_truth",
+            "text": "the black cat knows the truth."
+          },
+          {
+            "id": "black_cat_requested_aid",
+            "text": "the black cat requested aid from the others."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_underworld",
+            "text": "the black cat shared knowledge of the Underworld."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "the black cat warned the others."
+          },
+          {
+            "id": "bridge_was_completed",
+            "text": "the bridge was completed."
+          },
+          {
+            "id": "bridge_was_destroyed",
+            "text": "the bridge was destroyed."
+          },
+          {
+            "id": "doctor_is_alive",
+            "text": "Dr. Maheswaran is alive."
+          },
+          {
+            "id": "doctor_is_missing",
+            "text": "Dr. Maheswaran is missing."
+          },
+          {
+            "id": "doctor_joined_investigation",
+            "text": "Dr. Maheswaran joined the investigation."
+          },
+          {
+            "id": "doctor_stayed_with_patients",
+            "text": "Dr. Maheswaran stayed with her patients."
+          },
+          {
+            "id": "doctors_fate_unknown",
+            "text": "Dr. Maheswaran’s fate is unknown."
+          },
+          {
+            "id": "found_a_way_out_of_the_underworld",
+            "text": "the investigators found a way out of the Underworld."
+          },
+          {
+            "id": "never_escaped",
+            "text": "the investigators never escaped."
+          },
+          {
+            "id": "on_your_own",
+            "text": "you are on your own."
+          },
+          {
+            "id": "possess_silver_key",
+            "text": "the investigators possess the Silver Key."
+          },
+          {
+            "id": "randolph_did_not_survive_descent",
+            "text": "Randolph did not survive the descent."
+          },
+          {
+            "id": "randolph_escaped_hospital_alone",
+            "text": "Randolph escaped the hospital on his own."
+          },
+          {
+            "id": "randolph_escaped_hospital_with_investigators",
+            "text": "Randolph escaped the hospital with the investigators."
+          },
+          {
+            "id": "randolph_survived_descent",
+            "text": "Randolph survived the descent."
+          },
+          {
+            "id": "returned_to_reality",
+            "text": "the investigators returned to reality."
+          },
+          {
+            "id": "still_in_the_dreamlands",
+            "text": "the investigators are still in the Dreamlands."
+          },
+          {
+            "id": "trapped_in_atlach_nachas_realm",
+            "text": "the investigators are trapped in Atlach-Nacha's realm."
+          },
+          {
+            "id": "you_asked_for_it",
+            "text": "you asked for it."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "half_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "interconnected_campaign",
+            "text": "dummy"
+          },
+          {
+            "id": "spider_queen",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": []
+  },
+  {
+    "campaignId": "tfa",
+    "sections": [
+      {
+        "section": "campaign_notes",
+        "entries": [
+          {
+            "id": "alejandro_followed_to_ruins",
+            "text": "Alejandro followed the investigators into the ruins."
+          },
+          {
+            "id": "alejandro_is_missing",
+            "text": "Alejandro is missing."
+          },
+          {
+            "id": "alejandro_on_his_own",
+            "text": "Alejandro is continuing his research on his own."
+          },
+          {
+            "id": "alejandro_recovered_relic",
+            "text": "Alejandro recovered the Relic of Ages."
+          },
+          {
+            "id": "alejandro_remained_at_camp",
+            "text": "Alejandro chose to remain at camp."
+          },
+          {
+            "id": "alejandro_remembers_everything",
+            "text": "Alejandro remembers everything."
+          },
+          {
+            "id": "alejandro_set_against",
+            "text": "Alejandro is set against you."
+          },
+          {
+            "id": "braziers_are_lit",
+            "text": "the braziers are lit."
+          },
+          {
+            "id": "braziers_remain_unlit",
+            "text": "the braziers remain unlit."
+          },
+          {
+            "id": "cleared_path_to_temple",
+            "text": "the investigators cleared a path to the Eztli ruins."
+          },
+          {
+            "id": "cooperated_with_yithians",
+            "text": "the investigators cooperated with the Yithians."
+          },
+          {
+            "id": "earned_alejandros_trust",
+            "text": "the investigators have earned Alejandro’s trust."
+          },
+          {
+            "id": "earned_ichtacas_trust",
+            "text": "the investigators have earned Ichtaca’s trust."
+          },
+          {
+            "id": "fabric_of_time_unwoven",
+            "text": "the fabric of time is unwoven."
+          },
+          {
+            "id": "fell_into_depths",
+            "text": "the investigators fell into the depths."
+          },
+          {
+            "id": "forged_bond_with_ichtaca",
+            "text": "the investigators forged a bond with Ichtaca."
+          },
+          {
+            "id": "forging_own_path",
+            "text": "you are forging your own path."
+          },
+          {
+            "id": "found_missing_relic",
+            "text": "the investigators found the missing relic."
+          },
+          {
+            "id": "gave_relic_to_alejandro",
+            "text": "the investigators gave custody of the relic to Alejandro."
+          },
+          {
+            "id": "gave_relic_to_harlan",
+            "text": "the investigators gave custody of the relic to Harlan Earnstone."
+          },
+          {
+            "id": "had_memories_expunged",
+            "text": "the investigators had their memories expunged."
+          },
+          {
+            "id": "harbinger_alive",
+            "text": "the Harbinger is still alive (#X# damage)."
+          },
+          {
+            "id": "ichtaca_has_confidence",
+            "text": "Ichtaca has confidence in you."
+          },
+          {
+            "id": "ichtaca_in_the_dark",
+            "text": "Ichtaca is in the dark."
+          },
+          {
+            "id": "ichtaca_is_wary",
+            "text": "Ichtaca is wary of the investigators."
+          },
+          {
+            "id": "ichtaca_observed_progress",
+            "text": "Ichtaca observed your progress with keen interest."
+          },
+          {
+            "id": "ichtaca_set_against",
+            "text": "Ichtaca is set against you."
+          },
+          {
+            "id": "ichtacas_faith_restored",
+            "text": "Ichtaca’s faith is restored."
+          },
+          {
+            "id": "investigators_recovered_relic",
+            "text": "the investigators recovered the Relic of Ages."
+          },
+          {
+            "id": "investigators_saved_serpents",
+            "text": "the investigators saved the civilization of the Serpents."
+          },
+          {
+            "id": "investigators_saved_yithians",
+            "text": "the investigators saved the civilization of the Yithians."
+          },
+          {
+            "id": "jungle_watches",
+            "text": "the jungle watches (#name# x#X#)."
+          },
+          {
+            "id": "mapped_way_forward",
+            "text": "the investigators mapped out the way forward."
+          },
+          {
+            "id": "mended_tear_in_time",
+            "text": "the investigators mended the tear in time."
+          },
+          {
+            "id": "nexus_is_near",
+            "text": "the nexus is near."
+          },
+          {
+            "id": "paths_known",
+            "text": "#X# paths are known to you."
+          },
+          {
+            "id": "process_backfired",
+            "text": "the process backfired."
+          },
+          {
+            "id": "process_backfired_spectacularly",
+            "text": "the process backfired spectacularly."
+          },
+          {
+            "id": "process_was_perfected",
+            "text": "the process was perfected."
+          },
+          {
+            "id": "process_was_successful",
+            "text": "the process was successful."
+          },
+          {
+            "id": "relic_is_missing",
+            "text": "the relic is missing."
+          },
+          {
+            "id": "rescued_alejandro",
+            "text": "the investigators rescued Alejandro."
+          },
+          {
+            "id": "resisted_captivity",
+            "text": "the investigators resisted captivity."
+          },
+          {
+            "id": "sealed_relic_of_ages_forever",
+            "text": "the investigators sealed the Relic of Ages forever."
+          },
+          {
+            "id": "turned_back_time",
+            "text": "the investigarors turned back time."
+          },
+          {
+            "id": "wait_for_additional_supplies",
+            "text": "the investigators were forced to wait for additional supplies."
+          },
+          {
+            "id": "blob_contained",
+            "text": "the anomaly was contained."
+          },
+          {
+            "id": "blob_devoured_universe",
+            "text": "Subject 8L-08 devoured the entire universe."
+          },
+          {
+            "id": "coh_cnidathqua_retreated",
+            "text": "Cnidathqua retreated to nurse its wounds."
+          },
+          {
+            "id": "coh_many_were_sacrificed_to_cnidathqua",
+            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          },
+          {
+            "id": "coh_sun_banished_cnidathqua",
+            "text": "the sun banished Cnidathqua into the depths."
+          },
+          {
+            "id": "meh_excelsior_claims_another_victim",
+            "text": "the Excelsior claims another victim."
+          },
+          {
+            "id": "meh_excelsior_is_quiet_for_now",
+            "text": "the Excelsior is quiet, for now."
+          },
+          {
+            "id": "meh_fled_scene_of_the_crime",
+            "text": "the investigators fled the scene of the crime."
+          },
+          {
+            "id": "meh_murders_continue_unsolved",
+            "text": "the murders continue, unsolved."
+          },
+          {
+            "id": "rougarou_continues_to_haunt_the_bayou",
+            "text": "the Rougarou continues to haunt the bayou."
+          },
+          {
+            "id": "rougarou_destroyed_and_curse_is_lifted",
+            "text": "the Rougarou is destroyed, and the curse is lifted."
+          },
+          {
+            "id": "rougarou_escaped_and_embrace_curse",
+            "text": "the Rougarou escaped, and you embraced the curse."
+          },
+          {
+            "id": "tes_aware_of_xzharahs_plan",
+            "text": "you are aware of Xzharah’s plans."
+          },
+          {
+            "id": "tes_brotherhood_schemes_continue",
+            "text": "the Brotherhood’s schemes continue unabated."
+          },
+          {
+            "id": "tes_curse_of_slumber_lifted",
+            "text": "the curse of slumber was lifted."
+          },
+          {
+            "id": "tes_dreamers_in_the_abyss",
+            "text": "dreamers in the abyss (#X#)"
+          },
+          {
+            "id": "tes_escaped_brotherhood",
+            "text": "Brotherhood Agents Who Escaped: #name#"
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_day_of_reckoning_is_coming",
+            "text": "the Day of Reckoning is coming."
+          },
+          {
+            "id": "tnu_joined_xzharah",
+            "text": "you joined forces with Xzharah."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_the_abyss_was_saved",
+            "text": "the Abyss was saved."
+          }
+        ]
+      },
+      {
+        "section": "hidden",
+        "entries": [
+          {
+            "id": "agenda_5",
+            "text": "hidden"
+          },
+          {
+            "id": "agenda_6",
+            "text": "hidden"
+          },
+          {
+            "id": "doy_cross_off_rope",
+            "text": "dummy"
+          },
+          {
+            "id": "final_depth",
+            "text": "#X# depth"
+          },
+          {
+            "id": "ichtaca_left_without_you",
+            "text": "Ichtaca left without you."
+          },
+          {
+            "id": "listened_to_ichtaca",
+            "text": "listened to Ichtaca's tale."
+          },
+          {
+            "id": "tasks_completed",
+            "text": "#X# tasks were completed"
+          },
+          {
+            "id": "wilds_add_chaos_token",
+            "text": "dummy"
+          },
+          {
+            "id": "$input_value",
+            "text": "#nom#"
+          },
+          {
+            "id": "meh_did_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_did_not_cover_up",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_have_clues",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_no_innocents_killed",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_are_on_your_side",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_police_dont_believe_you",
+            "text": "dummy"
+          },
+          {
+            "id": "meh_the_truth",
+            "text": "dummy"
+          }
+        ]
+      }
+    ],
+    "supplies": [
+      {
+        "id": "gasoline",
+        "name": "Gasoline",
+        "description": "Enough for a long journey bycar.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "provisions",
+        "name": "Provisions",
+        "description": "Food and water for one person. A must-have for any journey.",
+        "cost": 1,
+        "multiple": true
+      },
+      {
+        "id": "medicine",
+        "name": "Medicine",
+        "description": "To stave off disease, infection, or venom.",
+        "cost": 2,
+        "multiple": true
+      },
+      {
+        "id": "pendant",
+        "name": "Pendant",
+        "description": "Useless, but fond memories bring comfort to travelers far from home.",
+        "cost": 1
+      },
+      {
+        "id": "canteen",
+        "name": "Canteen",
+        "description": "Can be refilled at streams and rivers.",
+        "cost": 2
+      },
+      {
+        "id": "compass",
+        "name": "Compass",
+        "description": "Can guide you when you are hopelessly lost.",
+        "cost": 2
+      },
+      {
+        "id": "pickaxe",
+        "name": "Pickaxe",
+        "description": "For breaking apart rocky surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "blanket",
+        "name": "Blanket",
+        "description": "For warmth at night.",
+        "cost": 2
+      },
+      {
+        "id": "chalk",
+        "name": "Chalk",
+        "description": "For writing on rough stone surfaces.",
+        "cost": 2
+      },
+      {
+        "id": "binoculars",
+        "name": "Binoculars",
+        "description": "To help you see faraway places.",
+        "cost": 2
+      },
+      {
+        "id": "pocketknife",
+        "name": "Pocketknife",
+        "description": "Too small to be used as a reliable weapon, but easily concealed.",
+        "cost": 2
+      },
+      {
+        "id": "torches",
+        "name": "Torches",
+        "description": "Can light up dark areas, or set sconces alight.",
+        "cost": 3
+      },
+      {
+        "id": "rope",
+        "name": "Rope",
+        "description": "Several long coils of strong rope. Vital for climbing and spelunking.",
+        "cost": 3
+      },
+      {
+        "id": "map",
+        "name": "Map",
+        "description": "Unmarked for now, but with time, you may be able to map out your surroundings.",
+        "cost": 3
+      }
+    ]
+  }
+]

@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { t } from 'ttag';
 
-import Switch from '@components/core/Switch';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import {
   Campaign,
@@ -28,7 +27,6 @@ import {
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardTabooTextBlock from '@components/card/CardTabooTextBlock';
-import AppIcon from '@icons/AppIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
@@ -44,7 +42,8 @@ import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import COLORS from '@styles/colors';
 import { isBig, m, s, xs } from '@styles/space';
-import typography from '@styles/typography';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -103,14 +102,14 @@ function deckToSections(
     if (assetCount > 0) {
       result.push({
         id: `assets${special ? '-special' : ''}`,
-        title: t`Assets (${assetCount})`,
+        subTitle: t`Assets (${assetCount})`,
         data: [],
       });
     }
     forEach(assets, (subAssets, idx) => {
       result.push({
         id: `asset${special ? '-special' : ''}-${idx}`,
-        subTitle: subAssets.type,
+        title: subAssets.type,
         data: map(subAssets.data, c => {
           return {
             ...c,
@@ -141,7 +140,7 @@ function deckToSections(
       const count = sumBy(cardIds, c => c.quantity);
       result.push({
         id: `${localizedName}-${special ? '-special' : ''}`,
-        title: `${localizedName} (${count})`,
+        subTitle: `${localizedName} (${count})`,
         data: map(cardIds, c => {
           return {
             ...c,
@@ -209,7 +208,6 @@ function bondedSections(
 
 interface Props {
   componentId: string;
-  fontScale: number;
   deck: Deck;
   parallelInvestigators: Card[];
   hideCampaign?: boolean;
@@ -260,6 +258,9 @@ interface State {
 }
 
 export default class DeckViewTab extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   state: State = {
     limitedSlots: false,
   };
@@ -376,14 +377,12 @@ export default class DeckViewTab extends React.Component<Props, State> {
       parsedDeck: {
         investigator,
       },
-      fontScale,
     } = this.props;
     return (
       <CardSectionHeader
         key={section.id}
         section={section as CardSectionHeaderData}
         investigator={investigator}
-        fontScale={fontScale}
       />
     );
   }
@@ -398,7 +397,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
         },
       },
       showCardUpgradeDialog,
-      fontScale,
     } = this.props;
     const card = this.props.cards[item.id];
     if (!card) {
@@ -418,7 +416,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
         onUpgrade={upgradeEnabled ? showCardUpgradeDialog : undefined}
         onPressId={this._showSwipeCard}
         count={count}
-        fontScale={fontScale}
       />
     );
   };
@@ -429,7 +426,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
         investigator,
       },
       problem,
-      fontScale,
     } = this.props;
 
     if (!problem) {
@@ -444,7 +440,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
           problem={problem}
           color={isSurvivor ? COLORS.black : COLORS.white}
           fontSize={14}
-          fontScale={fontScale}
         />
       </View>
     );
@@ -513,6 +508,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       xpAdjustment,
       editable,
     } = this.props;
+    const { colors } = this.context;
     if (!changes) {
       return null;
     }
@@ -526,7 +522,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
         onPress={showEditNameDialog}
         colors={{
           backgroundColor: 'transparent',
-          textColor: COLORS.darkText,
+          textColor: colors.darkText,
         }}
         widget="nav"
         noBorder
@@ -560,6 +556,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       tabooOpen,
       editable,
     } = this.props;
+    const { colors, typography } = this.context;
     return (
       <View style={styles.optionsContainer}>
         { (tabooOpen || showTaboo || !!tabooSet) && (
@@ -568,7 +565,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
             disabled={!editable}
             tabooSetId={tabooSetId}
             setTabooSet={setTabooSet}
-            color={COLORS.faction[
+            color={colors.faction[
               investigator ? investigator.factionCode() : 'neutral'
             ].darkBackground}
             transparent
@@ -585,10 +582,10 @@ export default class DeckViewTab extends React.Component<Props, State> {
         { this.renderAvailableExperienceButton() }
         { limitedSlots && (
           <View style={styles.toggleRow}>
-            <Text style={typography.label}>
+            <Text style={typography.small}>
               { t`Show limited splash` }
             </Text>
-            <Switch
+            <ArkhamSwitch
               value={this.state.limitedSlots}
               onValueChange={this._toggleLimitedSlots}
             />
@@ -604,7 +601,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
       parsedDeck: {
         slots,
       },
-      fontScale,
       cards,
     } = this.props;
     const investigator = (
@@ -624,7 +620,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
             <View style={styles.header}>
               <View style={styles.headerTextColumn}>
                 <InvestigatorStatLine
-                  fontScale={fontScale}
                   investigator={investigator}
                 />
                 { !!investigator.text && (
@@ -642,18 +637,16 @@ export default class DeckViewTab extends React.Component<Props, State> {
                     componentId={componentId}
                     yithian={(slots[BODY_OF_A_YITHIAN] || 0) > 0}
                     border
-                    fontScale={fontScale}
                   />
                 </View>
                 <HealthSanityLine
                   investigator={investigator}
-                  fontScale={fontScale}
                 />
               </View>
             </View>
           </View>
           <View style={styles.headerLeftMargin}>
-            <CardTabooTextBlock card={investigator} fontScale={fontScale} />
+            <CardTabooTextBlock card={investigator} />
           </View>
         </TouchableOpacity>
       </View>
@@ -663,18 +656,10 @@ export default class DeckViewTab extends React.Component<Props, State> {
   _renderHeader = () => {
     const {
       buttons,
-      width,
     } = this.props;
 
     return (
       <View style={styles.headerWrapper}>
-        <View style={[styles.kraken, { width: width * 2, top: -width / 3, left: -width * 0.75 }]}>
-          <AppIcon
-            name="kraken"
-            size={width}
-            color={COLORS.veryVeryLightBackground}
-          />
-        </View>
         <View style={styles.headerBlock}>
           { this.renderProblem() }
           <View style={styles.containerWrapper}>
@@ -699,7 +684,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
       isPrivate,
       showTraumaDialog,
       xpAdjustment,
-      fontScale,
       showDeckUpgrade,
       showDeckHistory,
       editable,
@@ -713,7 +697,6 @@ export default class DeckViewTab extends React.Component<Props, State> {
     return (
       <DeckProgressComponent
         componentId={componentId}
-        fontScale={fontScale}
         cards={cards}
         deck={deck}
         parsedDeck={parsedDeck}
@@ -781,10 +764,6 @@ const styles = StyleSheet.create({
   },
   headerWrapper: {
     position: 'relative',
-  },
-  kraken: {
-    position: 'absolute',
-    top: -50,
   },
   column: {
     flex: 1,

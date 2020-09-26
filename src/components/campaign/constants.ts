@@ -16,6 +16,7 @@ import {
   TDE,
   TDEA,
   TDEB,
+  TIC,
   CampaignDifficulty,
   CampaignCycleCode,
   CustomCampaignLog,
@@ -52,6 +53,7 @@ export function campaignName(cycleCode: CampaignCycleCode): string | null {
     case TDE: return t`The Dream-Eaters`;
     case TDEA: return t`The Dream-Quest`;
     case TDEB: return t`The Web of Dreams`;
+    case TIC: return t`The Innsmouth Conspiracy`;
     case CUSTOM: return null;
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -247,6 +249,21 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Weaver of the Cosmos`, code: 'weaver_of_the_cosmos', pack_code: 'woc' },
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
+    case TIC: return [
+      { name: t`The Grotto of Despair`, code: 'grotto_of_despair', pack_code: 'tic' },
+      { name: t`Puzzle pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
+      { name: t`The Disappearance of Elina Harper`, code: 'disapearance_of_elina_harper', pack_code: 'tic' },
+      { name: t`The Syzygy`, code: 'syzygy', pack_code: 'tic', interlude: true },
+      { name: t`In Too Deep`, code: 'in_too_deep', pack_code: 'itc' },
+      { name: t`Devil Reef`, code: 'devil_reef', pack_code: 'def' },
+      { name: t`Under the Waves`, code: 'under_the_waves', pack_code: 'def', interlude: true },
+      { name: t`Horror in High Gear`, code: 'horror_in_high_gear', pack_code: 'hhg' },
+      { name: t`A Light in the Fog`, code: 'a_light_in_the_fog', pack_code: 'lif' },
+      { name: t`The Lair of Dagon`, code: 'lair_of_dagon', pack_code: 'lod' },
+      { name: t`Hidden Truths`, code: 'hidden_truths', pack_code: 'lod', interlude: true },
+      { name: t`Into the Maelstrom`, code: 'into_the_maelstrom', pack_code: 'itm' },
+      { name: t`Epilogue`, code: 'epligoue', pack_code: 'itm', interlude: true },
+    ];
     case TDE: return [];
     case CUSTOM: return [];
     default: {
@@ -271,6 +288,7 @@ export function campaignNames() {
     tdea: t`The Dream-Quest`,
     tdeb: t`The Web of Dreams`,
     tcu: t`The Circle Undone`,
+    tic: t`The Innsmouth Conspiracy`,
   };
 }
 
@@ -291,6 +309,7 @@ export const CAMPAIGN_COLORS = {
   tde: BLUE,
   tdea: BLUE,
   tdeb: BLUE,
+  tic: GREEN,
   custom: BLUE,
 };
 
@@ -368,6 +387,15 @@ export function getCampaignLog(
           t`Steps of the Bridge`,
         ],
       };
+    case TIC:
+      return {
+        sections: [
+          t`Campaign Notes`,
+          t`Recovered Memories`,
+          t`Possible Suspects`,
+          t`Possible Hideouts`,
+        ],
+      };
     case CUSTOM:
       return {
         sections: [
@@ -431,6 +459,13 @@ const TDEB_BAG: ChaosBagByDifficulty = {
   [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
   [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 1, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+};
+
+const TIC_BAG: ChaosBagByDifficulty = {
+  [CampaignDifficulty.EASY]: { '+1': 2, '0': 3, '-1': 3, '-2': 2, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.STANDARD]: { '+1': 1, '0': 2, '-1': 3, '-2': 2, '-3': 1, '-4': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.HARD]: { '0': 3, '-1': 2, '-2': 2, '-3': 2, '-4': 1, '-5': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
+  [CampaignDifficulty.EXPERT]: { '0': 1, '-1': 2, '-2': 2, '-3': 2, '-4': 2, '-5': 1, '-6': 1, '-8': 1, skull: 2, cultist: 2, tablet: 2, elder_thing: 2, auto_fail: 1, elder_sign: 1 },
 };
 
 function basicScenarioRewards(encounterCode: string) {
@@ -501,6 +536,8 @@ export function getChaosBag(
       return TDEA_BAG[difficulty];
     case TDEB:
       return TDEB_BAG[difficulty];
+    case TIC:
+      return TIC_BAG[difficulty];
     default: {
       /* eslint-disable @typescript-eslint/no-unused-vars */
       const _exhaustiveCheck: never = cycleCode;

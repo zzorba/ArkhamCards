@@ -127,11 +127,13 @@ interface UniversalActionsProps {
 
 export type UniversalCampaignProps = ReduxProps & ReduxActionProps & PlayerCardProps & UniversalActionsProps;
 
+const NO_PROPS: ReduxProps = {};
+
 export default function withUniversalCampaignData<Props>(
   WrappedComponent: React.ComponentType<Props & UniversalCampaignProps & UniversalActionsProps>
 ): React.ComponentType<Props> {
   const mapStateToProps = (): ReduxProps => {
-    return {};
+    return NO_PROPS;
   };
   const mapDispatchToProps = (
     dispatch: Dispatch<Action>

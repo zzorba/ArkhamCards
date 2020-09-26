@@ -1,7 +1,6 @@
 import React from 'react';
 import { filter, find, flatMap, forEach, head, map } from 'lodash';
 import { ScrollView, StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import KeepAwake from 'react-native-keep-awake';
 
@@ -15,19 +14,18 @@ import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { CAMPAIGN_COLORS, Scenario, completedScenario } from '@components/campaign/constants';
 import Difficulty from '@components/campaign/Difficulty';
+import { showScenarioDialog } from '@components/campaign/ScenarioDialog';
 import GameHeader from '@components/campaign/GameHeader';
 import BackgroundIcon from '@components/campaign/BackgroundIcon';
 import { Campaign, CampaignDifficulty, CUSTOM } from '@actions/types';
 import { ChaosBag, CHAOS_TOKEN_COLORS, SPECIAL_TOKENS, SpecialTokenValue } from '@app_constants';
 import Card from '@data/Card';
-import typography from '@styles/typography';
 import { s } from '@styles/space';
-import COLORS from '@styles/colors';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   campaign: Campaign;
   chaosBag: ChaosBag;
-  fontScale: number;
   cycleScenarios?: Scenario[];
   scenarioByCode?: { [code: string]: Scenario };
   allInvestigators: Card[];
@@ -51,6 +49,9 @@ const SCENARIO_CODE_FIXER: {
 };
 
 export default class OddsCalculatorComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   constructor(props: Props) {
     super(props);
 
@@ -89,16 +90,10 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     if (!currentScenario) {
       return;
     }
-    Navigation.showOverlay({
-      component: {
-        name: 'Dialog.Scenario',
-        passProps: {
-          scenarioChanged: this._scenarioChanged,
-          scenarios: this.possibleScenarios(),
-          selected: currentScenario.name,
-        },
-      },
-    });
+    showScenarioDialog(
+      this.possibleScenarios(),
+      this._scenarioChanged
+    );
   };
 
   encounterCode(currentScenario?: Scenario) {
@@ -349,7 +344,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
 
   renderContent(campaign: Campaign) {
     const {
-      fontScale,
       chaosBag,
     } = this.props;
     const {
@@ -357,6 +351,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       currentScenario,
       currentScenarioCard,
     } = this.state;
+    const { borderStyle, typography } = this.context;
     const scenarioText = currentScenarioCard && (
       (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
         currentScenarioCard.back_text :
@@ -364,7 +359,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
     );
     return (
       <>
-        <View style={styles.sectionRow}>
+        <View style={[styles.sectionRow, borderStyle]}>
           { campaign.cycleCode !== CUSTOM && !!currentScenario && (
             <BackgroundIcon
               code={currentScenario.code}
@@ -384,11 +379,10 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           />
         </View>
         { this.renderSpecialTokenInputs() }
-        <View style={styles.sectionRow}>
-          <Text style={typography.label}>{ t`Chaos Bag` }</Text>
+        <View style={[styles.sectionRow, borderStyle]}>
+          <Text style={typography.small}>{ t`Chaos Bag` }</Text>
           <ChaosBagLine
             chaosBag={chaosBag}
-            fontScale={fontScale}
           />
         </View>
         { this.renderInvestigatorRows() }
@@ -397,14 +391,15 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
   }
 
   render() {
+    const { backgroundStyle, borderStyle, colors, typography } = this.context;
     const { campaign } = this.props;
     const {
       testDifficulty,
     } = this.state;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, backgroundStyle]}>
         <KeepAwake />
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container, backgroundStyle]}>
           { this.renderContent(campaign) }
           <View style={styles.finePrint}>
             <Text style={typography.small}>
@@ -413,10 +408,10 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           </View>
         </ScrollView>
         <SafeAreaView>
-          <View style={styles.footer}>
-            <View style={[styles.countRow, styles.footerRow]}>
+          <View style={[styles.footer, borderStyle]}>
+            <View style={[styles.countRow, styles.footerRow, { backgroundColor: colors.L20 }]}>
               <Text style={typography.text}>{ t`Difficulty` }</Text>
-              <Text style={[{ color: COLORS.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
+              <Text style={[{ color: colors.darkText, fontSize: 30, marginLeft: 10, marginRight: 10 }]}>
                 { testDifficulty }
               </Text>
               <PlusMinusButtons
@@ -438,20 +433,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: COLORS.background,
   },
   sectionRow: {
     padding: s,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: COLORS.divider,
   },
   footer: {
     borderTopWidth: 1,
-    borderColor: COLORS.divider,
   },
   footerRow: {
     padding: s,
-    backgroundColor: COLORS.lightBackground,
   },
   countRow: {
     flexDirection: 'row',

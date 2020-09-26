@@ -29,7 +29,7 @@ type Props = NavigationProps &
   DimensionsProps;
 
 class CampaignEditWeaknessDialog extends React.Component<Props> {
-  static get options() {
+  static options() {
     return {
       topBar: {
         title: {
@@ -64,7 +64,6 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
     const {
       componentId,
       weaknessSet,
-      fontScale,
     } = this.props;
     if (!weaknessSet) {
       return null;
@@ -72,7 +71,6 @@ class CampaignEditWeaknessDialog extends React.Component<Props> {
     return (
       <EditAssignedWeaknessComponent
         componentId={componentId}
-        fontScale={fontScale}
         weaknessSet={weaknessSet}
         updateAssignedCards={this._updateAssignedCards}
       />

@@ -1,28 +1,22 @@
+import { StyleContextType } from '@styles/StyleContext';
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
 
-import { isBig } from '@styles/space';
 import { WithText } from './types';
 
-export default function BoldItalicHtmlTagNode(
-  node: Node & WithText,
-  output: OutputFunction,
-  state: RenderState
-) {
+export default function BoldItalicHtmlTagNode({ typography }: StyleContextType) {
   return (
-    <Text key={state.key} style={styles.boldText}>
-      { node.text }
-    </Text>
-  );
+    node: Node & WithText,
+    output: OutputFunction,
+    state: RenderState
+  ) => {
+    return (
+      <Text key={state.key} style={typography.boldItalic}>
+        { node.text }
+      </Text>
+    );
+  };
 }
-
-const styles = StyleSheet.create({
-  boldText: {
-    fontStyle: 'italic',
-    fontWeight: isBig ? '500' : '700',
-  },
-});

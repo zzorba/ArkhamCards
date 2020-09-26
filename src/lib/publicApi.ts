@@ -1,11 +1,9 @@
-import { chunk, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
+import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
 import { Alert } from 'react-native';
-import { t } from 'ttag';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
 import Card from '@data/Card';
 import Database from '@data/Database';
-import EncounterSet from '@data/EncounterSet';
 import TabooSet from '@data/TabooSet';
 import FaqEntry from '@data/FaqEntry';
 
@@ -134,6 +132,7 @@ export const syncCards = async function(
     }
   });
   cycleNames[50] = {};
+  cycleNames[60] = {};
   cycleNames[70] = {};
   cycleNames[80] = {};
   cycleNames[90] = {};
@@ -169,7 +168,8 @@ export const syncCards = async function(
     await cards.createQueryBuilder().delete().execute();
     await encounterSets.createQueryBuilder().delete().execute();
     await tabooSets.createQueryBuilder().delete().execute();
-    console.log(await cards.count() + ' cards after delete');
+    await db.clearCache();
+    // console.log(`${await cards.count() } cards after delete`);
     const cardsToInsert: Card[] = [];
     forEach(json, cardJson => {
       try {
@@ -183,22 +183,65 @@ export const syncCards = async function(
         console.log(cardJson);
       }
     });
-    const [linkedCards, normalCards] = partition(cardsToInsert, card => !!card.linked_card);
-    //console.log('Parsed all cards');
+    const linkedSet = new Set(flatMap(cardsToInsert, (c: Card) => c.linked_card ? [c.code, c.linked_card] : []));
+    const dedupedCards = filter(cardsToInsert, (c: Card) => !!c.linked_card || !linkedSet.has(c.code));
+    const flatCards = flatMap(dedupedCards, (c: Card) => {
+      return c.linked_card ? [c, c.linked_card] : [c];
+    });
+    const encounter_card_counts: {
+      [encounter_code: string]: number | undefined;
+    } = {};
+
+    const bondedNames: string[] = [];
+    forEach(flatCards, card => {
+      if (!card.hidden && card.encounter_code) {
+        encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
+      }
+      if (card.bonded_name) {
+        bondedNames.push(card.bonded_name);
+      }
+    });
+    const bondedSet = new Set(bondedNames);
+    forEach(flatCards, card => {
+      if (card.encounter_code) {
+        card.encounter_size = encounter_card_counts[card.encounter_code] || 0;
+        encounter_card_counts;
+      }
+      if (bondedSet.has(card.real_name)) {
+        card.bonded_from = true;
+      }
+    });
+    forEach(groupBy(flatCards, card => card.id), dupes => {
+      if (dupes.length > 1) {
+        forEach(dupes, (dupe, idx) => {
+          dupe.id = `${dupe.id}_${idx}`;
+        });
+      }
+    });
+
+    const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
+    // console.log('Parsed all cards');
+    await insertChunk(flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), async(c: Card[]) => {
+      await cards.insert(c);
+    });
+    // console.log('Inserted back-link cards');
+    await insertChunk(linkedCards, async(c: Card[]) => {
+      await cards.insert(c);
+    });
+    // console.log('Inserted front link cards');
     await insertChunk(normalCards, async(c: Card[]) => {
       await cards.insert(c);
     });
-    //console.log(`Inserting linked cards.`);
-    for (let i = 0; i < linkedCards.length; i++) {
-      // console.log(`Inserting ${linkedCards[i].code} - ${linkedCards[i].name}`)
-      await cards.insert(linkedCards[i]);
-    }
+    // console.log('Inserted normal cards');
+    console.log('Inserted front link cards');
+
+
     const playerCards = await cards.createQueryBuilder()
       .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
       .getMany();
     const cardsByName = values(groupBy(playerCards, card => card.real_name));
 
-    //console.log(`Working on upgrades now.`);
+    // console.log(`Working on upgrades now.`);
     for (let i = 0; i < cardsByName.length; i++) {
       const cardsGroup = cardsByName[i];
       if (cardsGroup.length > 1) {

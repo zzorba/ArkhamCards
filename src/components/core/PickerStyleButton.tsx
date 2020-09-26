@@ -5,10 +5,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 
-import withStyles, { StylesProps } from '@components/core/withStyles';
-import COLORS from '@styles/colors';
-import typography from '@styles/typography';
 import space, { s } from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   title: string;
@@ -25,7 +23,10 @@ interface Props {
   settingsStyle?: boolean;
 }
 
-class PickerStyleButton extends React.Component<Props & StylesProps> {
+export default class PickerStyleButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   renderWidget() {
     const { widget, colors } = this.props;
     switch (widget) {
@@ -35,7 +36,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
             <MaterialCommunityIcons
               name="shuffle-variant"
               size={24}
-              color={colors ? colors.textColor : '#000'}
+              color={colors ? colors.textColor : this.context.colors.darkText}
             />
           </View>
         );
@@ -44,7 +45,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
           <MaterialIcons
             name="keyboard-arrow-right"
             size={30}
-            color={colors ? colors.textColor : '#000'}
+            color={colors ? colors.textColor : this.context.colors.darkText}
           />
         );
       case 'delete':
@@ -53,7 +54,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
             <MaterialIcons
               name="delete"
               size={26}
-              color={colors ? colors.textColor : '#000'}
+              color={colors ? colors.textColor : this.context.colors.darkText}
             />
           </View>
         );
@@ -70,13 +71,17 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
       noBorder,
       settingsStyle,
       widget,
-      gameFont,
     } = this.props;
+    const { gameFont, borderStyle, typography } = this.context;
     return (
-      <View style={[style.defaultContainerStyle, {
-        backgroundColor: colors ? colors.backgroundColor : 'transparent',
-        borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
-      }]}>
+      <View style={[
+        style.defaultContainerStyle,
+        borderStyle,
+        {
+          backgroundColor: colors ? colors.backgroundColor : 'transparent',
+          borderBottomWidth: noBorder ? undefined : StyleSheet.hairlineWidth,
+        },
+      ]}>
         <View style={[
           style.textColumn,
           space.paddingLeftM,
@@ -88,13 +93,13 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
             style={[
               style.defaultTitleStyle,
               space.paddingRightS,
-              settingsStyle ? {} :
+              settingsStyle ? typography.text :
                 {
                   ...typography.mediumGameFont,
                   fontFamily: gameFont,
                   fontWeight: '600',
                 },
-              { color: colors ? colors.textColor : COLORS.darkText },
+              { color: colors ? colors.textColor : this.context.colors.darkText },
             ]}
           >
             { title }
@@ -105,9 +110,9 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
               ellipsizeMode="tail"
               style={[
                 style.defaultValueStyle,
-                typography.label,
+                typography.large,
                 {
-                  color: colors ? colors.textColor : COLORS.darkText,
+                  color: colors ? colors.textColor : this.context.colors.darkText,
                   fontWeight: '400',
                   flex: 4,
                   textAlign: 'right',
@@ -117,7 +122,7 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
               { value }
             </Text>
           ) }
-        { !disabled && this.renderWidget() }
+          { !disabled && this.renderWidget() }
         </View>
       </View>
     );
@@ -141,8 +146,6 @@ class PickerStyleButton extends React.Component<Props & StylesProps> {
   }
 }
 
-export default withStyles(PickerStyleButton);
-
 const style = StyleSheet.create({
   defaultContainerStyle: {
     padding: 0,
@@ -150,14 +153,12 @@ const style = StyleSheet.create({
     backgroundColor: 'transparent',
     alignItems: 'center',
     flexDirection: 'row',
-    borderColor: COLORS.divider,
   },
   defaultTitleStyle: {
     fontSize: 16,
     minWidth: 100,
   },
   defaultValueStyle: {
-    color: COLORS.lightText,
     fontSize: 14,
   },
   textColumn: {

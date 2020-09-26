@@ -2,6 +2,7 @@ import React from 'react';
 import { filter, forEach, map, sortBy } from 'lodash';
 import {
   Keyboard,
+  Platform,
   SectionList,
   SectionListData,
   SectionListRenderItemInfo,
@@ -13,19 +14,20 @@ import { connect } from 'react-redux';
 import { Navigation, EventSubscription } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
-import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import BasicButton from '@components/core/BasicButton';
+import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import BasicSectionHeader from '@components/core/BasicSectionHeader';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import ShowNonCollectionFooter, { rowNonCollectionHeight } from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
+import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
 import { getTabooSet, getPacksInCollection, AppState } from '@reducers';
-import typography from '@styles/typography';
 import space from '@styles/space';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import CardSectionHeader from '@components/core/CardSectionHeader';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import ArkhamButton from '@components/core/ArkhamButton';
 
 interface OwnProps {
   componentId: string;
@@ -34,7 +36,7 @@ interface OwnProps {
   onPress: (investigator: Card) => void;
   filterInvestigators?: string[];
   onlyInvestigators?: string[];
-  customHeader?: React.ReactNode;
+  searchOptions?: SearchOptions;
   customFooter?: React.ReactNode;
 }
 
@@ -59,6 +61,9 @@ interface Section extends SectionListData<Card> {
 }
 
 class InvestigatorsListComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
 
   constructor(props: Props) {
@@ -107,6 +112,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
 
   deckbuildingDetails(investigator: Card) {
     const { cards, hideDeckbuildingRules } = this.props;
+    const { typography } = this.context;
     if (hideDeckbuildingRules || !investigator.deck_requirements) {
       return null;
     }
@@ -135,11 +141,10 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderItem = ({ item }: SectionListRenderItemInfo<Card>) => {
-    const { hideDeckbuildingRules, fontScale } = this.props;
+    const { hideDeckbuildingRules } = this.props;
     return (
       <InvestigatorRow
         key={item.code}
-        fontScale={fontScale}
         investigator={item}
         onPress={this._onPress}
         button={this.deckbuildingDetails(item)}
@@ -269,11 +274,10 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
-    return <BasicSectionHeader title={section.title} />;
+    return <CardSectionHeader section={{ title: section.title }} />;
   };
 
   _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
-    const { fontScale } = this.props;
     const {
       showNonCollection,
     } = this.state;
@@ -283,24 +287,22 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     if (showNonCollection[section.id]) {
       // Already pressed it, so show a button to edit collection.
       return (
-        <View style={{ height: rowNonCollectionHeight(fontScale) }}>
-          <BasicButton
-            title={t`Edit Collection`}
-            onPress={this._editCollection}
-          />
-        </View>
+        <ArkhamButton
+          icon="edit"
+          title={t`Edit Collection`}
+          onPress={this._editCollection}
+        />
       );
     }
     return (
       <ShowNonCollectionFooter
         id={section.id}
         title={ngettext(
-          msgid`Show ${section.nonCollectionCount} Non-Collection Investigator`,
-          `Show ${section.nonCollectionCount} Non-Collection Investigators`,
+          msgid`Show ${section.nonCollectionCount} non-collection investigator`,
+          `Show ${section.nonCollectionCount} non-collection investigators`,
           section.nonCollectionCount
         )}
         onPress={this._showNonCollectionCards}
-        fontScale={fontScale}
       />
     );
   };
@@ -330,12 +332,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
   }
 
   _renderFooter = () => {
-    const {
-      customFooter,
-    } = this.props;
-    const {
-      searchTerm,
-    } = this.state;
+    const { customFooter } = this.props;
+    const { searchTerm } = this.state;
+    const { typography } = this.context;
     if (searchTerm && this.groupedInvestigators().length === 0) {
       return (
         <>
@@ -356,19 +355,15 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     );
   };
 
-  _renderCustomHeader = (): React.ReactElement | null => {
-    const { customHeader } = this.props;
-    if (!customHeader) {
-      return null;
+  _renderHeader = () => {
+    if (Platform.OS === 'android') {
+      return <View style={styles.searchBarPadding} />;
     }
-    return (
-      <>
-        { customHeader }
-      </>
-    );
+    return null;
   };
 
   render() {
+    const { searchOptions } = this.props;
     const {
       searchTerm,
     } = this.state;
@@ -377,15 +372,18 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
         prompt={t`Search`}
         searchTerm={searchTerm}
         onSearchChange={this._searchUpdated}
+        advancedOptions={searchOptions}
       >
         { onScroll => (
           <SectionList
+            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
             onScroll={onScroll}
             onScrollBeginDrag={this._handleScrollBeginDrag}
             sections={this.groupedInvestigators()}
             renderSectionHeader={this._renderSectionHeader}
             renderSectionFooter={this._renderSectionFooter}
-            ListHeaderComponent={this._renderCustomHeader}
+            ListHeaderComponent={this._renderHeader}
             ListFooterComponent={this._renderFooter}
             renderItem={this._renderItem}
             initialNumToRender={24}
@@ -419,5 +417,8 @@ export default connect<ReduxProps, unknown, OwnProps, AppState>(
 const styles = StyleSheet.create({
   footer: {
     marginBottom: 60,
+  },
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
   },
 });
