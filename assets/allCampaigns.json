@@ -56991,11 +56991,92 @@
     "tic_epilogue"
   ],
   "setup": [
+    "setup_campaign_log",
     "prologue",
     "choose_investigators",
-    "difficulty_choice"
+    "difficulty_choice",
+    "keys_rule",
+    "flood_token_rule"
   ],
   "steps": [
+    {
+      "id": "setup_campaign_log",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "burnham",
+          "text": "Brian Burnham"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "gilman",
+          "text": "Othera Gilman"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "little",
+          "text": "Joyce Little"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "marsh",
+          "text": "Barnabas Marsh"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "allen",
+          "text": "Zadok Allen"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "friendly",
+          "text": "Robert Friendly"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "prison",
+          "text": "Innsmouth Prison"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "slums",
+          "text": "Shanty town slums"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "bonesaw_lane",
+          "text": "Bonesaw Lane"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "house_on_water_street",
+          "text": "The house on Water Street"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "order_of_dagon",
+          "text": "Esoteric Order of Dagon"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "church_square",
+          "text": "New Church Square"
+        }
+      ]
+    },
     {
       "id": "prologue",
       "type": "story",
@@ -57088,6 +57169,47 @@
           ]
         }]
       }
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "type": "rule_reminder",
+      "text": "Key markers are introduced in this expansion. These stand for important objects or information that the players can get at and which you can use during the scenarios.\nKey markers have two sides. On their back (hidden side) all 7 keys have the same universal key symbol. This allows them to be shuffled at random, without the investigators knowing which marker is which is. Each key is on the front (open side) coded with its own color.\nIf 1 or more keys are used in a scenario, the Scenario Setup instructions indicate how many keys needed and whether these are shuffled face down or face up be put aside. Keys can be through various card effects to join the game. Most of the time they are doing it on an opponent, a place or a story advantage card. An investigator can participate in 3 ways Key:",
+      "bullets": [
+        {
+          "text": "In case a place with a key on it no longer indicates itself an investigator can take control of everyone as a [fast] ability Pick up the key at this location."
+        },
+        {
+          "text": "In case an investigator hits an opponent with a key on it brings to exit the game, that investigator must be in control of take over every key that opponent had on him. (If a such opponent otherwise leaves the game become the keys placed on its place.)"
+        },
+        {
+          "text": "Some card effects can allow an investigator to do the Take control of keys in other ways."
+        }
+      ],
+      "example": "As soon as an investigator takes control of a key, the Token flipped face down (if it is face down) and placed on his investigator card. If an investigator who controls 1 or more keys, is eliminated from the game, each of his keys is placed in his place. An investigator may use any number of his keys as a [action] ability give to another investigator at the same location.\n<b>Keys do not have an independent game effect.</b> Some card effects but can change depending on which keys an investigator controls. Sometimes keys are also needed to progress in a scenario."
+    },
+    {
+      "id": "flood_token_rule",
+      "title": "Flood Tokens",
+      "type": "rule_reminder",
+      "text": "In the course of this campaign it can happen that locations are flooded by scenario map effects. Each place has 1 of 3 different ones Flood levels: A place is either not flooded, partially flooded, or completely flooded. The tide level of a place can be double sided in this one Extension included flood markers are displayed. <b>The tide level one Place has no independent game effect.</b> Some card effects can but change or get stronger as long as an investigator is on you flooded place, especially if the place is completely flooded. A place without a flood marker it is not flooded.",
+      "bullets": [
+        {
+          "text": "If a location is partially flooded, place a flood marker with the \"Partially flooded\" side on top to indicate this."
+        },
+        {
+          "text": "If a place is completely flooded, a flood marker with the “Fully flooded ”side up (or the flood marker is if the place is already partially flooded) to indicate this."
+        },
+        {
+          "text": "If the flood level of a location is \"increased\", it changes from \"not flooded\" to \"partially flooded\" or from \"partially flooded\" to \"Completely flooded\". If the place is completely flooded, the high tide level can no longer be increased."
+        },
+        {
+          "text": "If the flood level of a location is \"lowered\", it changes from \"completely flooded\" to \"partially flooded\" or from \"partially flooded\" to \"Not flooded\". When a place is no longer flooded, its flood marker becomes away."
+        },
+        {
+          "text": "Both partially flooded places and completely flooded places count in Referring to card effects as \"flooded\"."
+        }
+      ]
     }
   ]
 }
@@ -57172,7 +57294,14 @@
     {
       "id": "investigator_setup",
       "title": "Investigator Setup",
-      "text": "Agent Dawson has told the investigators their job and they on theirs Mission prepared. Each investigator may now use his experience points output, which in the campaign log under \"Unissued EP\" are noted."
+      "text": "Agent Dawson has told the investigators their job and they on theirs Mission prepared. Each investigator may now use his experience points output, which in the campaign log under \"Unissued EP\" are noted.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unissued_xp"
+        }
+      ]
     },
     {
       "id": "gather_encounter_sets",
@@ -57242,6 +57371,66 @@
         "type": "play_scenario",
         "branches": [
           {
+            "id": "eliminate_suspects",
+            "text": "Eliminate suspects",
+            "steps": [
+              "eliminate_suspects"
+            ],
+            "repeatable": true,
+            "condition": {
+              "type": "campaign_log_count",
+              "section": "possible_suspects",
+              "id": "$num_entries",
+              "options": [
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                },
+                {
+                  "numCondition": 5
+                },
+                {
+                  "numCondition": 6
+                }
+              ]
+            }
+          },
+          {
+            "id": "eliminate_hideouts",
+            "text": "Eliminate hideouts",
+            "steps": [
+              "eliminate_hideouts"
+            ],
+            "repeatable": true,
+            "condition": {
+              "type": "campaign_log_count",
+              "section": "possible_hideouts",
+              "id": "$num_entries",
+              "options": [
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                },
+                {
+                  "numCondition": 5
+                },
+                {
+                  "numCondition": 6
+                }
+              ]
+            }
+          },
+          {
             "id": "the_accusation",
             "condition": {
               "type": "campaign_log",
@@ -57272,6 +57461,292 @@
       }
     },
     {
+      "id": "eliminate_suspects",
+      "type": "input",
+      "text": "Choose which suspects to eliminate:",
+      "input": {
+        "type": "checklist",
+        "text": "Eliminate",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "burnham",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "burnham",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "gilman",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "gilman",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "little",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "little",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "marsh",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "marsh",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "allen",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "allen",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "friendly",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "friendly",
+                "cross_out": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "eliminate_hideouts",
+      "type": "input",
+      "text": "Choose which hideouts to eliminate:",
+      "input": {
+        "type": "checklist",
+        "text": "Eliminate",
+        "choices": [
+          {
+            "id": "prison",
+            "text": "Innsmouth Prison",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "prison",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "prison",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "slums",
+            "text": "Shanty town slums",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "slums",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "slums",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "bonesaw_lane",
+            "text": "Bonesaw Lane",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "bonesaw_lane",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "bonesaw_lane",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The house on Water Street",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "house_on_water_street",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "house_on_water_street",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "order_of_dagon",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "order_of_dagon",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "church_square",
+            "text": "New Church Square",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "church_square",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "church_square",
+                "cross_out": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "earn_xp",
       "text": "Each investigator earns experience points equal to Victory X value of all cards in the victory point pile. Note these experience points in the campaign log under \"Unissued XP\". These experience points are allowed not yet issued. The investigators will instructed spend these experience points at a later date.",
       "type": "input",
@@ -57290,7 +57765,7 @@
     {
       "id": "accusation_story",
       "bullet_type": "none",
-      "text": "With the knowledge gathered, investigators must make an allegation to find out who kidnapped Elina Harper and where it is kept hidden. To make the accusation the investigators must have 1 suspect opponent and 1 hiding place from the Select options listed on the Find Agent Harper overview card. Note: the suspect cannot be an opponent currently in the Game or in the victory point pile. The hiding place cannot either be the location currently in play. Investigators should remember think before making your choice"
+      "text": "With the knowledge gathered, investigators must make an allegation to find out who kidnapped Elina Harper and where it is kept hidden. To make the accusation the investigators must choose 1 suspect and 1 hiding spot from the options listed on the Find Agent Harper overview card. <i>Note: the suspect cannot be an opponent currently in the Game or in the victory point pile. The hiding place cannot either be the location currently in play.</i> Investigators should think carefully before making a choice."
     },
     {
       "id": "accusation_steps",
@@ -58061,7 +58536,7 @@
         {
           "type": "add_card",
           "investigator": "choice",
-          "card": "TODO"
+          "card": "07063"
         }
       ]
     },
@@ -58072,7 +58547,14 @@
     },
     {
       "id": "spend_xp",
-      "text": "With this returned fragment of your memory the events of your past become a little clearer. Each investigator can now spend his experience points that are in the Campaign log are noted under \"XP not issued\"."
+      "text": "With this returned fragment of your memory the events of your past become a little clearer. Each investigator can now spend his experience points that are in the Campaign log are noted under \"XP not issued\".",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unissued_xp"
+        }
+      ]
     }
   ]
 }

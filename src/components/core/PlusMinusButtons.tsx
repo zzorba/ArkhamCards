@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  AccessibilityActionEvent,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -10,6 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import { iconSizeScale } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { flatten } from 'lodash';
 
 interface Props {
   count: number;
@@ -62,53 +64,69 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     const {
       count,
       max,
-      disabled,
-      disablePlus,
       noFill,
       onIncrement,
       color,
     } = this.props;
     const size = (this.props.size || 36) * iconSizeScale;
     const atMax = max && (count === max);
-    if (count === null || atMax || disabled || disablePlus || max === 0) {
+    if (this.incrementEnabled()) {
       return (
-        <TouchableOpacity disabled>
-          { color === 'light' || color === 'white' ? (
-            <View style={{ width: size, height: size }} />
-          ) : (
-            <MaterialCommunityIcons
-              name="plus-box-outline"
-              size={size}
-              color={this.disabledColor()}
-            />
-          ) }
+        <TouchableOpacity onPress={onIncrement}>
+          <MaterialCommunityIcons
+            name={noFill ? 'plus-box-outline' : 'plus-box'}
+            size={size}
+            color={this.enabledColor()}
+          />
         </TouchableOpacity>
       );
     }
     return (
-      <TouchableOpacity onPress={onIncrement}>
-        <MaterialCommunityIcons
-          name={noFill ? 'plus-box-outline' : 'plus-box'}
-          size={size}
-          color={this.enabledColor()}
-        />
+      <TouchableOpacity disabled>
+        { color === 'light' || color === 'white' ? (
+          <View style={{ width: size, height: size }} />
+        ) : (
+          <MaterialCommunityIcons
+            name="plus-box-outline"
+            size={size}
+            color={this.disabledColor()}
+          />
+        ) }
       </TouchableOpacity>
     );
   }
 
-  renderMinusButton() {
+  incrementEnabled() {
+    const {
+      count,
+      max,
+      disabled,
+      disablePlus,
+    } = this.props;
+    const size = (this.props.size || 36) * iconSizeScale;
+    const atMax = max && (count === max);
+    return !(count === null || atMax || disabled || disablePlus || max === 0);
+  }
+
+  decrementEnabled() {
     const {
       count,
       disabled,
+      allowNegative,
+      min,
+    } = this.props;
+    return (count > (min || 0) || allowNegative) && !disabled;
+  }
+
+  renderMinusButton() {
+    const {
       noFill,
       onDecrement,
-      allowNegative,
       color,
-      min,
       hideDisabledMinus,
     } = this.props;
     const size = (this.props.size || 36) * iconSizeScale;
-    if ((count > (min || 0) || allowNegative) && !disabled) {
+    if (this.decrementEnabled()) {
       return (
         <TouchableOpacity onPress={onDecrement}>
           <MaterialCommunityIcons
@@ -134,10 +152,31 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
     );
   }
 
+  accessibilityActions() {
+    return flatten([
+      this.decrementEnabled() ? [{ name: 'decrement' }] : [],
+      this.incrementEnabled() ? [{ name: 'increment' }] : [],
+    ]);
+  }
+
+  _onAccessibilityAction = (event: AccessibilityActionEvent) => {
+    const { onIncrement, onDecrement } = this.props;
+    if (event.nativeEvent.actionName === 'increment') {
+      onIncrement();
+    } else if (event.nativeEvent.actionName === 'decrement') {
+      onDecrement();
+    }
+  };
+
   render() {
-    const { countRender } = this.props;
+    const { countRender, min, max, count } = this.props;
     return (
-      <View style={this.props.style || styles.row}>
+      <View
+        style={this.props.style || styles.row}
+        accessibilityValue={{ min, max, now: count }}
+        accessibilityActions={this.accessibilityActions()}
+        onAccessibilityAction={this._onAccessibilityAction}
+      >
         { this.renderMinusButton() }
         { countRender }
         { this.renderPlusButton() }

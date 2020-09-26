@@ -114,6 +114,7 @@ export type Input =
   | UseSuppliesInput
   | InvestigatorChoiceInput
   | ChooseOneInput
+  | ChecklistInput
   | CounterInput
   | InvestigatorCounterInput
   | InvestigatorChoiceWithSuppliesInput
@@ -130,6 +131,7 @@ export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
   | CampaignLogCondition
+  | CampaignLogCountCondition
   | CampaignDataChaosBagCondition
   | MultiCondition;
 export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
@@ -201,6 +203,7 @@ export interface EarnXpEffect {
   bonus?: number;
   input_scale?: number;
   special_xp?: SpecialXp;
+  transfer_special_xp?: SpecialXp;
 }
 export interface AddCardEffect {
   type: "add_card";
@@ -346,7 +349,7 @@ export interface CampaignLogCountCondition {
   id: string;
   options: NumOption[];
   max?: number;
-  defaultOption: DefaultOption;
+  defaultOption?: DefaultOption;
 }
 export interface Option {
   boolCondition?: boolean;
@@ -600,9 +603,15 @@ export interface BinaryConditionalChoice {
   text: string;
   description?: string;
   condition?: BinaryChoiceCondition;
+  repeatable?: boolean;
   border?: boolean;
   steps?: string[];
   effects?: Effect[];
+}
+export interface ChecklistInput {
+  type: "checklist";
+  choices: BinaryConditionalChoice[];
+  text: string;
 }
 export interface CounterInput {
   type: "counter";

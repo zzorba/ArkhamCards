@@ -3678,6 +3678,64 @@
         ]
       },
       {
+        "section": "possible_hideouts",
+        "entries": [
+          {
+            "id": "bonesaw_lane",
+            "text": "Bonesaw Lane"
+          },
+          {
+            "id": "church_square",
+            "text": "New Church Square"
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The house on Water Street"
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon"
+          },
+          {
+            "id": "prison",
+            "text": "Innsmouth Prison"
+          },
+          {
+            "id": "slums",
+            "text": "Shanty town slums"
+          }
+        ]
+      },
+      {
+        "section": "possible_suspects",
+        "entries": [
+          {
+            "id": "allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh"
+          }
+        ]
+      },
+      {
         "section": "recovered_memories",
         "entries": [
           {

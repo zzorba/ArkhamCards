@@ -36,6 +36,7 @@ import {
   Option,
   Operand,
   DefaultOption,
+  CampaignLogCountCondition,
 } from './types';
 import GuidedCampaignLog from './GuidedCampaignLog';
 import Card from '@data/Card';
@@ -546,6 +547,15 @@ export function multiConditionResult(
     condition.options
   );
 }
+
+export function campaignLogCountConditionResult(condition: CampaignLogCountCondition, campaignLog: GuidedCampaignLog) {
+  return numberConditionResult(
+    campaignLog.count(condition.section, condition.id),
+    condition.options,
+    condition.defaultOption
+  );
+}
+
 export function conditionResult(
   condition: Condition,
   campaignLog: GuidedCampaignLog
@@ -559,13 +569,8 @@ export function conditionResult(
     case 'campaign_log_section_exists':
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
-    case 'campaign_log_count': {
-      return numberConditionResult(
-        campaignLog.count(condition.section, condition.id),
-        condition.options,
-        condition.defaultOption
-      );
-    }
+    case 'campaign_log_count':
+      return campaignLogCountConditionResult(condition, campaignLog);
     case 'math': {
       switch (condition.operation) {
         case 'equals':

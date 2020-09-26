@@ -756,7 +756,18 @@ export default class GuidedCampaignLog {
       this.getInvestigators(effect.investigator, input),
       investigator => {
         const data = this.campaignData.investigatorData[investigator] || {};
-        if (effect.special_xp) {
+        if (effect.transfer_special_xp) {
+          const specialXp = data.specialXp || {};
+          const availableSpecialXp = (specialXp[effect.transfer_special_xp] || 0);
+          this.campaignData.investigatorData[investigator] = {
+            ...data,
+            availableXp: (data.availableXp || 0) + availableSpecialXp,
+            specialXp: {
+              ...specialXp,
+              [effect.transfer_special_xp]: 0,
+            },
+          };
+        } else if (effect.special_xp) {
           const specialXp = data.specialXp || {};
           const availableSpecialXp = (specialXp[effect.special_xp] || 0) + totalXp;
           if (availableSpecialXp >= 0) {

@@ -19,13 +19,14 @@ import {
   multiConditionResult,
   BinaryResult,
   InvestigatorResult,
+  campaignLogCountConditionResult,
 } from '@data/scenario/conditionHelper';
-import { PersonalizedChoices, UniversalChoices, DisplayChoice } from '@data/scenario';
+import { PersonalizedChoices, UniversalChoices, DisplayChoiceWithId } from '@data/scenario';
 
 export function chooseOneInputChoices(
   choices: BinaryConditionalChoice[],
   campaignLog: GuidedCampaignLog
-): DisplayChoice[] {
+): DisplayChoiceWithId[] {
   return filter(
     choices,
     choice => {
@@ -103,6 +104,17 @@ export function calculateBinaryConditionResult(
     }
     case 'campaign_log':
       return campaignLogConditionResult(condition, campaignLog);
+    case 'campaign_log_count': {
+      const numericResult = campaignLogCountConditionResult(
+        condition,
+        campaignLog
+      )
+      return {
+        type: 'binary',
+        decision: !!numericResult.option,
+        option: numericResult.option,
+      };
+    }
     case 'multi':
       return multiConditionResult(condition, campaignLog);
   }

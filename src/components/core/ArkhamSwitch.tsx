@@ -8,6 +8,8 @@ import AppIcon from '@icons/AppIcon';
 interface Props extends TouchableOpacityProps {
   value: boolean;
   onValueChange: (checked: boolean) => void;
+  enableAccessibilityLabel: string;
+  disableAccessiblitylabel: string;
 }
 export default class ArkhamSwitch extends React.Component<Props> {
   static contextType = StyleContext;
@@ -18,10 +20,15 @@ export default class ArkhamSwitch extends React.Component<Props> {
     onValueChange(!value);
   }
   render() {
-    const { value, onValueChange, disabled, ...props } = this.props;
+    const { value, onValueChange, accessibilityLabel, disabled, ...props } = this.props;
     const { colors } = this.context;
     return (
-      <TouchableOpacity onPress={this._onPress} accessibilityLabel={value ? t`Disable` : t`Enable`} disabled={disabled} {...props}>
+      <TouchableOpacity
+        onPress={this._onPress}
+        accessibilityRole="switch"
+        accessibilityLabel={value ? t`Disable` : t`Enable`}
+        disabled={disabled} {...props}
+      >
         <View style={styles.icon}>
           <AppIcon size={28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
           { !!value && (

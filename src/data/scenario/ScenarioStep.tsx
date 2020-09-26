@@ -548,7 +548,6 @@ export default class ScenarioStep {
                   );
                 }
               }
-
             }
             return this.maybeCreateEffectsStep(
               step.id,
@@ -566,7 +565,7 @@ export default class ScenarioStep {
               return undefined;
             }
             const branch = input.branches[choice];
-            const branchSteps = branch.condition ?
+            const branchSteps = (branch.condition && !branch.repeatable) ?
               (branch.steps || []) :
               map(branch.steps || [], stepId => `${stepId}#${nextIteration}`);
             return this.maybeCreateEffectsStep(
@@ -634,6 +633,29 @@ export default class ScenarioStep {
         return this.maybeCreateEffectsStep(
           step.id,
           this.remainingStepIds,
+          effectsWithInput,
+          scenarioState
+        );
+      }
+      case 'checklist': {
+        const choices = scenarioState.stringChoices(step.id);
+        if (choices === undefined) {
+          return undefined;
+        }
+        const options = chooseOneInputChoices(input.choices, this.campaignLog)
+        const selectedOptions = flatMap(choices, (theChoices, choiceId) => {
+          if (find(theChoices, c => c === 'checked')) {
+            return find(options, o => o.id === choiceId) || [];
+          }
+          return [];
+        });
+        const stepIds = flatMap(selectedOptions, option => option.steps || []);
+        const effectsWithInput = [{
+          effects: flatMap(selectedOptions, option => option.effects || []),
+        }];
+        return this.maybeCreateEffectsStep(
+          step.id,
+          [...stepIds, ...this.remainingStepIds],
           effectsWithInput,
           scenarioState
         );
