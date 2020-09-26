@@ -264,7 +264,7 @@ msgstr "Contiene demasiadas cartas limitadas."
 #: src/components/campaign/CampaignDetailView/index.tsx:403
 #: src/components/campaign/CampaignDetailView/index.tsx:462
 #: src/components/campaign/CampaignEditWeaknessDialog.tsx:39
-#: src/components/campaign/EditChaosBagDialog/index.tsx:58
+#: src/components/campaign/EditChaosBagDialog/index.tsx:62
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:39
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:76
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:124
@@ -321,9 +321,9 @@ msgstr "Robar de colección"
 #: src/components/campaign/CampaignChaosBagView.tsx:85
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:188
 #: src/components/campaign/CampaignDetailView/index.tsx:279
-#: src/components/campaign/EditChaosBagDialog/index.tsx:50
-#: src/components/campaign/EditChaosBagDialog/index.tsx:53
-#: src/components/campaign/EditChaosBagDialog/index.tsx:145
+#: src/components/campaign/EditChaosBagDialog/index.tsx:54
+#: src/components/campaign/EditChaosBagDialog/index.tsx:57
+#: src/components/campaign/EditChaosBagDialog/index.tsx:149
 #: src/components/campaign/EditTraumaDialog.tsx:99
 #: src/components/campaign/MyCampaignsView/index.tsx:98
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:75
@@ -378,8 +378,8 @@ msgstr "Robar Debilidades"
 #: src/components/campaign/AddScenarioResultView/index.tsx:83
 #: src/components/campaign/AddScenarioResultView/index.tsx:130
 #: src/components/campaign/AddScenarioResultView/index.tsx:301
-#: src/components/campaign/EditChaosBagDialog/index.tsx:63
 #: src/components/campaign/EditChaosBagDialog/index.tsx:67
+#: src/components/campaign/EditChaosBagDialog/index.tsx:71
 #: src/components/campaign/EditScenarioResultView.tsx:71
 #: src/components/campaign/EditScenarioResultView.tsx:76
 #: src/components/campaign/EditTraumaDialog.tsx:100
@@ -1582,22 +1582,22 @@ msgstr "No se encontraron campañas buscando por “${search}”."
 msgid "Search campaigns"
 msgstr "Buscar campañas"
 
-#: src/components/campaign/EditChaosBagDialog/index.tsx:131
+#: src/components/campaign/EditChaosBagDialog/index.tsx:135
 msgid "Save changes?"
 msgstr "¿Guardar cambios?"
 
-#: src/components/campaign/EditChaosBagDialog/index.tsx:132
+#: src/components/campaign/EditChaosBagDialog/index.tsx:136
 #: src/components/deck/DeckDetailView/index.tsx:507
 msgid "Looks like you have made some changes that have not been saved."
 msgstr "Parece que realizaste algunos cambios que no se han guardado."
 
-#: src/components/campaign/EditChaosBagDialog/index.tsx:134
+#: src/components/campaign/EditChaosBagDialog/index.tsx:138
 #: src/components/deck/DeckDetailView/index.tsx:509
 #: src/components/deck/DeckDetailView/index.tsx:1383
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
-#: src/components/campaign/EditChaosBagDialog/index.tsx:139
+#: src/components/campaign/EditChaosBagDialog/index.tsx:143
 #: src/components/deck/DeckDetailView/index.tsx:514
 #: src/components/deck/DeckDetailView/index.tsx:1387
 msgid "Discard Changes"
@@ -3203,14 +3203,14 @@ msgstr "Ninguno"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:140
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:108
 #: src/components/campaignguide/prompts/ChooseInvestigatorPrompt.tsx:72
-#: src/components/campaignguide/prompts/ChooseOnePrompt.tsx:84
+#: src/components/campaignguide/prompts/ChooseOnePrompt.tsx:82
 #: src/components/campaignguide/prompts/CounterListComponent/index.tsx:103
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:176
 #: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:139
 msgid "Proceed"
 msgstr "Continuar"
 
-#: src/components/campaignguide/prompts/ChooseOnePrompt.tsx:69
+#: src/components/campaignguide/prompts/ChooseOnePrompt.tsx:67
 msgid "The investigators must decide (choose one):"
 msgstr "Los investigadores deben elegir (elige una):"
 
@@ -3297,7 +3297,7 @@ msgid_plural "${ startText } These sets are indicated by the following icons:"
 msgstr[0] "${ startText } Este conjunto viene indicado por el siguiente ícono:"
 msgstr[1] "${ startText } Estos conjuntos vienen indicados por los siguientes íconos:"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:165
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/index.tsx:176
 msgid "Choose Investigators"
 msgstr "Elige los investigadores"
 
@@ -4726,7 +4726,6 @@ msgstr "Defecto (${ systemSchemeName })"
 msgid "Theme"
 msgstr "Tema"
 
-#: src/components/core/ArkhamSwitch.tsx:24
 #: src/components/filter/AccordionItem.tsx:80
 msgid "Enable"
 msgstr "Habilitar"
@@ -4744,10 +4743,6 @@ msgstr "No cuenta para el tamaño de mazo"
 #: src/components/deck/DeckDetailView/index.tsx:487
 msgid "Menu"
 msgstr "Menú"
-
-#: src/components/core/ArkhamSwitch.tsx:24
-msgid "Disable"
-msgstr "Deshabilitar"
 
 #: src/components/core/CardCostIcon.tsx:78
 #, javascript-format
@@ -4957,7 +4952,7 @@ msgstr ""
 msgid "Possible Hideouts"
 msgstr ""
 
-#: src/components/campaign/EditChaosBagDialog/index.tsx:191
+#: src/components/campaign/EditChaosBagDialog/index.tsx:195
 msgid "In Bag"
 msgstr ""
 
