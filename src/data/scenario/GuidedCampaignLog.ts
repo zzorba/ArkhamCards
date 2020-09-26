@@ -83,6 +83,9 @@ export interface EntrySection {
   crossedOut: {
     [key: string]: true | undefined;
   };
+  decoration?: {
+    [key: string]: 'circle' | undefined;
+  }
   sectionCrossedOut?: boolean;
 }
 
@@ -1086,6 +1089,11 @@ export default class GuidedCampaignLog {
     forEach(ids, id => {
       if (effect.cross_out) {
         section.crossedOut[id] = true;
+      } else if (effect.decorate) {
+        section.decoration = {
+          ...(section.decoration || {}),
+          [id]: effect.decorate,
+        };
       } else if (effect.remove) {
         section.entries = filter(
           section.entries,

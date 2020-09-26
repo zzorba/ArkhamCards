@@ -250,6 +250,7 @@ export interface CampaignLogEffect {
   id: string;
   text?: string;
   cross_out?: boolean;
+  decorate?: "circle";
   remove?: boolean;
 }
 export interface CampaignLogCardsEffect {

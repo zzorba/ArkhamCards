@@ -57442,19 +57442,11 @@
                 }
               ]
             },
+            "repeatable": true,
             "text": "Scenario Interlude: The Accusation",
             "steps": [
               "accusation_story",
-              "accusation_steps",
-              "accusation_setup"
-            ],
-            "effects": [
-              {
-                "type": "campaign_log",
-                "section": "hidden",
-                "id": "the_accusation",
-                "text": "dummy"
-              }
+              "accusation_confirmation"
             ]
           }
         ]
@@ -57766,6 +57758,32 @@
       "id": "accusation_story",
       "bullet_type": "none",
       "text": "With the knowledge gathered, investigators must make an allegation to find out who kidnapped Elina Harper and where it is kept hidden. To make the accusation the investigators must choose 1 suspect and 1 hiding spot from the options listed on the Find Agent Harper overview card. <i>Note: the suspect cannot be an opponent currently in the Game or in the victory point pile. The hiding place cannot either be the location currently in play.</i> Investigators should think carefully before making a choice."
+    },
+    {
+      "id": "accusation_confirmation",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "accuse",
+            "text": "Ready to make an accusation.",
+            "steps": ["accusation_steps", "accusation_setup"],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "the_accusation",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "wait",
+            "text": "Wait until we know more."
+          }
+        ]
+      }
     },
     {
       "id": "accusation_steps",
