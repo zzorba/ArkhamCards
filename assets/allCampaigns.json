@@ -57378,24 +57378,45 @@
             ],
             "repeatable": true,
             "condition": {
-              "type": "campaign_log_count",
-              "section": "possible_suspects",
-              "id": "$num_entries",
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_count",
+                  "section": "possible_suspects",
+                  "id": "$num_entries",
+                  "options": [
+                    {
+                      "numCondition": 2
+                    },
+                    {
+                      "numCondition": 3
+                    },
+                    {
+                      "numCondition": 4
+                    },
+                    {
+                      "numCondition": 5
+                    },
+                    {
+                      "numCondition": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "the_accusation",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
               "options": [
                 {
-                  "numCondition": 2
-                },
-                {
-                  "numCondition": 3
-                },
-                {
-                  "numCondition": 4
-                },
-                {
-                  "numCondition": 5
-                },
-                {
-                  "numCondition": 6
+                  "boolCondition": true
                 }
               ]
             }
@@ -57408,24 +57429,45 @@
             ],
             "repeatable": true,
             "condition": {
-              "type": "campaign_log_count",
-              "section": "possible_hideouts",
-              "id": "$num_entries",
+              "type": "multi",
+              "conditions": [
+                {
+                  "type": "campaign_log_count",
+                  "section": "possible_hideouts",
+                  "id": "$num_entries",
+                  "options": [
+                    {
+                      "numCondition": 2
+                    },
+                    {
+                      "numCondition": 3
+                    },
+                    {
+                      "numCondition": 4
+                    },
+                    {
+                      "numCondition": 5
+                    },
+                    {
+                      "numCondition": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "campaign_log",
+                  "section": "hidden",
+                  "id": "the_accusation",
+                  "options": [
+                    {
+                      "boolCondition": false
+                    }
+                  ]
+                }
+              ],
+              "count": 2,
               "options": [
                 {
-                  "numCondition": 2
-                },
-                {
-                  "numCondition": 3
-                },
-                {
-                  "numCondition": 4
-                },
-                {
-                  "numCondition": 5
-                },
-                {
-                  "numCondition": 6
+                  "boolCondition": true
                 }
               ]
             }
@@ -57756,8 +57798,9 @@
     },
     {
       "id": "accusation_story",
-      "bullet_type": "none",
-      "text": "With the knowledge gathered, investigators must make an allegation to find out who kidnapped Elina Harper and where it is kept hidden. To make the accusation the investigators must choose 1 suspect and 1 hiding spot from the options listed on the Find Agent Harper overview card. <i>Note: the suspect cannot be an opponent currently in the Game or in the victory point pile. The hiding place cannot either be the location currently in play.</i> Investigators should think carefully before making a choice."
+      "type": "rule_reminder",
+      "title": "The Accusation",
+      "text": "With the knowledge gathered, investigators must make an allegation to find out who kidnapped Elina Harper and where it is kept hidden. To make the accusation the investigators must choose 1 suspect and 1 hiding spot from the options listed on the Find Agent Harper overview card. <i>Note: the suspect cannot be an opponent currently in the Game or in the victory point pile. The hiding place cannot either be the location currently in play.</i> <b>Investigators should think carefully before making a choice.</b>"
     },
     {
       "id": "accusation_confirmation",
@@ -57767,8 +57810,15 @@
         "choices": [
           {
             "id": "accuse",
-            "text": "Ready to make an accusation.",
-            "steps": ["accusation_steps", "accusation_setup"],
+            "text": "Make the accusation.",
+            "steps": [
+              "ask_suspect",
+              "ask_hideout",
+              "reveal_hidden_cards",
+              "ask_true_suspect",
+              "ask_true_hideout",
+              "accusation_result"
+            ],
             "effects": [
               {
                 "type": "campaign_log",
@@ -57786,44 +57836,949 @@
       }
     },
     {
-      "id": "accusation_steps",
-      "text": "Once the allegation has been made, the following happens:",
+      "id": "ask_suspect",
+      "type": "input",
+      "text": "Choose the suspect you believe is guilty:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "burnham",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_burnham",
+                "text": "Brian Burnham"
+              }
+            ]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "gilman",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_gilman",
+                "text": "Othera Gilman"
+              }
+            ]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "little",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_little",
+                "text": "Joyce Little"
+              }
+            ]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "marsh",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_marsh",
+                "text": "Barnabas Marsh"
+              }
+            ]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "allen",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_allen",
+                "text": "Zadok Allen"
+              }
+            ]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "friendly",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_friendly",
+                "text": "Robert Friendly"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_hideout",
+      "type": "input",
+      "text": "Choose the location you believe the suspect is hiding at:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "prison",
+            "text": "Innsmouth Prison",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "prison",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_prison",
+                "text": "Innsmouth Prison"
+              }
+            ]
+          },
+          {
+            "id": "slums",
+            "text": "Shanty town slums",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "slums",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_slums",
+                "text": "Shanty town slums"
+              }
+            ]
+          },
+          {
+            "id": "bonesaw_lane",
+            "text": "Bonesaw Lane",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "bonesaw_lane",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_bonesaw_lane",
+                "text": "Bonesaw Lane"
+              }
+            ]
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The house on Water Street",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "house_on_water_street",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_house_on_water_street",
+                "text": "The house on Water Street"
+              }
+            ]
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "order_of_dagon",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_order_of_dagon",
+                "text": "Esoteric Order of Dagon"
+              }
+            ]
+          },
+          {
+            "id": "church_square",
+            "text": "New Church Square",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "church_square",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_church_square",
+                "text": "New Church Square"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "reveal_hidden_cards",
+      "text": "Reveal the hidden suspect and hiding place under the Finding Agent Harper map."
+    },
+    {
+      "id": "ask_true_suspect",
+      "type": "input",
+      "text": "Choose the actual suspect (the hidden card beneath the Finding Agent Harper map):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "burnham",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "burnham",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_burnham"]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "gilman",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "gilman",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_gilman"]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "little",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "little",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_little"]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "marsh",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "marsh",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_marsh"]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "allen",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "allen",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_allen"]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "friendly",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "friendly",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_friendly"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_burnham",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_burnham",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_gilman",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_gilman",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_little",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_little",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_marsh",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_marsh",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_allen",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_allen",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_friendly",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_friendly",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_true_hideout",
+      "type": "input",
+      "text": "Choose the actual hideout (the hidden card beneath the Finding Agent Harper map):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "prison",
+            "text": "Innsmouth Prison",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "prison",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "prison",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_prison"]
+          },
+          {
+            "id": "slums",
+            "text": "Shanty town slums",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "slums",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "slums",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_slums"]
+
+          },
+          {
+            "id": "bonesaw_lane",
+            "text": "Bonesaw Lane",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "bonesaw_lane",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "bonesaw_lane",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_bonesaw_lane"]
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The house on Water Street",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "house_on_water_street",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "house_on_water_street",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_house_on_water_street"]
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "order_of_dagon",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "order_of_dagon",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_order_of_dagon"]
+          },
+          {
+            "id": "church_square",
+            "text": "New Church Square",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "church_square",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "church_square",
+                "decorate": "circle"
+              }
+            ],
+            "steps": ["check_accuse_church_square"]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "check_accuse_prison",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_prison",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_slums",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_slums",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_bonesaw_lane",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_bonesaw_lane",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_house_on_water_street",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_house_on_water_street",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_order_of_dagon",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_order_of_dagon",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_church_square",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_church_square",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "accusation_result",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "correct_guesses",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": ["incorrect_accusation"]
+          },
+          {
+            "numCondition": 1,
+            "steps": ["partly_correct_accusation", "accusation_setup"]
+          },
+          {
+            "numCondition": 2,
+            "steps": ["correct_accusation", "accusation_setup"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "incorrect_accusation",
+      "text": "Because neither the suspect nor the hideout match your accusation:",
       "bullets": [
         {
-          "text": "The suspect opponent and the hiding place under the map Finding Agent Harper is revealed. In the campaign log are listed under \"Possible suspects / Possible hiding places\" of the correct suspect opponents and the correct hiding place circled."
+          "text": "The investigators are on the wrong track and must resign immediately."
         },
         {
-          "text": "If no card matches the allegation, they are Investigators are on the wrong track and must give up immediately."
-        },
-        {
-          "text": "If only 1 of the 2 cards matches the allegation, the investigators are only partially right and are allowed to use the scenario Continue. You have been doing this with your careless determination however, the citizens of Innsmouth upset. The overview map Finding Agent Harper is turned over and the enemy is on top of this Side of the map appears in Innsmouth Market Place."
-        },
-        {
-          "text": "If both cards match the allegation, have the investigators agree and are allowed to proceed with the scenario."
+          "text": "Please choose 'Resolutions' and select 'No resolution (each investigator resigned or was defeated).'"
         }
       ]
     },
     {
-      "id": "accusation_setup",
-      "text": "The final scene and agenda are prepared as follows:",
+      "id": "partly_correct_accusation",
+      "text": "Because your accusation is half correct:",
       "bullets": [
         {
-          "text": "The scene moves directly to the set aside scene 2a."
+          "text": "You have been careless, and the citizens of Innsmouth are upset. Flip over the overview map \"Finding Agent Harper\" and the enemy on this side appears at Innsmouth Marker Place."
+        }
+      ]
+    },
+    {
+      "id": "correct_accusation",
+      "text": "Your accusation is correct."
+    },
+    {
+      "id": "accusation_setup",
+      "text": "The final Act and Agenda are now setup as follows:",
+      "bullets": [
+        {
+          "text": "The scene moves directly to the set aside Act 2a."
         },
         {
-          "text": "The agenda immediately advances to Agenda 3a, which was set aside."
+          "text": "The agenda immediately advances to the set aside Agenda 3a."
         },
         {
-          "text": "The hiding place, which can be found under the Agent Harper map found is brought into play. In addition, on the site 1 [per_investigator] clues placed. The Elina story advantage card that was set aside Harper is placed under this location to indicate that Elina Harper is being held here."
+          "text": "The hiding place, which can be found under the Agent Harper map found, is brought into play. In addition, on the site 1 [per_investigator] clues placed. The Elina Harper story asset card that was set aside is placed under this location to indicate that Elina Harper is being held here."
         },
         {
-          "text": "The suspect opponent who is under the Agent Harper card found appears at Elina Harper's place. His Reveal ability is ignored. For the rest of the In scenarios this opponent is considered \"the kidnapper\"."
+          "text": "The suspect who is under the Agent Harper card found spawns at Elina Harper's location. His Reveal ability is ignored. For the rest of the scenario, this opponent is considered to be \"the kidnapper\"."
         },
         {
           "text": "The track deck is removed from the game."
         },
         {
-          "text": "Now the investigators can use the final scene and agenda Continue"
+          "text": "Continue playing the scenario."
         }
       ]
     },
@@ -57857,7 +58812,7 @@
   ],
   "resolutions": [
     {
-      "id": "no_resolution_defeated",
+      "id": "no_resolution",
       "title": "No resolution was reached\n(each investigator resigned or was defeated)",
       "investigator_status": [
         "resigned",

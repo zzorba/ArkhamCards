@@ -3624,6 +3624,54 @@
         "section": "hidden",
         "entries": [
           {
+            "id": "accuse_allen",
+            "text": "Zadok Allen"
+          },
+          {
+            "id": "accuse_bonesaw_lane",
+            "text": "Bonesaw Lane"
+          },
+          {
+            "id": "accuse_burnham",
+            "text": "Brian Burnham"
+          },
+          {
+            "id": "accuse_church_square",
+            "text": "New Church Square"
+          },
+          {
+            "id": "accuse_friendly",
+            "text": "Robert Friendly"
+          },
+          {
+            "id": "accuse_gilman",
+            "text": "Othera Gilman"
+          },
+          {
+            "id": "accuse_house_on_water_street",
+            "text": "The house on Water Street"
+          },
+          {
+            "id": "accuse_little",
+            "text": "Joyce Little"
+          },
+          {
+            "id": "accuse_marsh",
+            "text": "Barnabas Marsh"
+          },
+          {
+            "id": "accuse_order_of_dagon",
+            "text": "Esoteric Order of Dagon"
+          },
+          {
+            "id": "accuse_prison",
+            "text": "Innsmouth Prison"
+          },
+          {
+            "id": "accuse_slums",
+            "text": "Shanty town slums"
+          },
+          {
             "id": "flashback_1",
             "text": "dummy"
           },
