@@ -528,16 +528,15 @@ export function multiConditionResult(
     subCondition => {
       switch (subCondition.type) {
         case 'campaign_log':
-          return campaignLogConditionResult(subCondition, campaignLog).option ?
-            1 : 0;
+          return campaignLogConditionResult(subCondition, campaignLog).option ? 1 : 0;
+        case 'campaign_log_count':
+          return campaignLogCountConditionResult(subCondition, campaignLog).option ? 1 : 0;
         case 'campaign_data': {
           switch (subCondition.campaign_data) {
             case 'chaos_bag':
-              return campaignDataConditionResult(subCondition, campaignLog).option ?
-                1 : 0;
+              return campaignDataConditionResult(subCondition, campaignLog).option ? 1 : 0;
             case 'version':
-              return campaignDataVersionConditionResult(subCondition, campaignLog).option ?
-                1 : 0;
+              return campaignDataVersionConditionResult(subCondition, campaignLog).option ? 1 : 0;
           }
         }
       }

@@ -17,6 +17,7 @@ import FlavorCenterNode from './FlavorCenterNode';
 import FlavorSmallCapsNode from './FlavorSmallCapsNode';
 import FlavorRightNode from './FlavorRightNode';
 import FlavorUnderlineNode from './FlavorUnderlineNode';
+import InnsmouthNode from './InnsmouthNode';
 import CiteTagNode from './CiteTagNode';
 import { xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -136,6 +137,19 @@ function SmallCapsHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildre
   };
 }
 
+function InnsmouthTagRule(style: StyleContextType): MarkdownRule<WithChildren, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^<innsmouth>([\\s\\S]+?)<\\/innsmouth>')),
+    order: 2,
+    parse: (capture: RegexComponents, nestedParse: NestedParseFunction, state: ParseState) => {
+      return {
+        children: nestedParse(capture[1], state),
+      };
+    },
+    render: InnsmouthNode(style),
+  };
+}
+
 interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
@@ -163,6 +177,7 @@ export default function CardFlavorTextComponent(
         rightTag: RightHtmlTagRule,
         iTag: ItalicHtmlTagRule(context),
         smallCapsTag: SmallCapsHtmlTagRule(context),
+        innsmouthTag: InnsmouthTagRule(context),
       }}
       onLinkPress={onLinkPress}
       styles={{
