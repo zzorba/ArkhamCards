@@ -305,7 +305,7 @@ export const ALL_CAMPAIGNS: CampaignCycleCode[] = [
   TDE,
   TDEA,
   TDEB,
-  // TIC,
+  TIC,
 ];
 
 export const GUIDED_CAMPAIGNS = new Set([

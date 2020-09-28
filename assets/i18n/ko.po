@@ -4642,28 +4642,12 @@ msgstr ""
 msgid "Curse"
 msgstr ""
 
-#: src/components/campaign/constants.ts:253
-msgid "The Grotto of Despair"
-msgstr ""
-
-#: src/components/campaign/constants.ts:254
-msgid "Puzzle pieces"
-msgstr ""
-
-#: src/components/campaign/constants.ts:255
-msgid "The Disappearance of Elina Harper"
-msgstr ""
-
 #: src/components/campaign/constants.ts:257
 msgid "In Too Deep"
 msgstr ""
 
 #: src/components/campaign/constants.ts:258
 msgid "Devil Reef"
-msgstr ""
-
-#: src/components/campaign/constants.ts:259
-msgid "Under the Waves"
 msgstr ""
 
 #: src/components/campaign/constants.ts:260
@@ -4684,10 +4668,6 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:264
 msgid "Into the Maelstrom"
-msgstr ""
-
-#: src/components/campaign/constants.ts:394
-msgid "Recovered Memories"
 msgstr ""
 
 #: src/components/campaign/constants.ts:395
@@ -4801,6 +4781,26 @@ msgstr ""
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:464
 msgid "Upgrade with Shrewd Analysis"
+msgstr ""
+
+#: src/components/campaign/constants.ts:253
+msgid "The Pit of Despair"
+msgstr ""
+
+#: src/components/campaign/constants.ts:254
+msgid "Puzzle Pieces"
+msgstr ""
+
+#: src/components/campaign/constants.ts:255
+msgid "The Vanishing of Elina Harper"
+msgstr ""
+
+#: src/components/campaign/constants.ts:259
+msgid "Beneath the Waves"
+msgstr ""
+
+#: src/components/campaign/constants.ts:394
+msgid "Memories Recovered"
 msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201

@@ -3726,6 +3726,27 @@
         ]
       },
       {
+        "section": "memories_recovered",
+        "entries": [
+          {
+            "id": "decided_to_stay_together",
+            "text": "decided to stay together."
+          },
+          {
+            "id": "encountered_a_secret_cult",
+            "text": "an encounter with a secret cult."
+          },
+          {
+            "id": "fight_with_a_terrible_devil",
+            "text": "a fight with a terrible devil."
+          },
+          {
+            "id": "meeting_with_thomas_dawson",
+            "text": "a meeting with Thomas Dawson."
+          }
+        ]
+      },
+      {
         "section": "possible_hideouts",
         "entries": [
           {
@@ -3780,27 +3801,6 @@
           {
             "id": "marsh",
             "text": "Barnabas Marsh"
-          }
-        ]
-      },
-      {
-        "section": "recovered_memories",
-        "entries": [
-          {
-            "id": "decided_to_stay_together",
-            "text": "decided to stay together."
-          },
-          {
-            "id": "encountered_a_secret_cult",
-            "text": "an encounter with a secret cult."
-          },
-          {
-            "id": "fight_with_a_terrible_devil",
-            "text": "a fight with a terrible devil."
-          },
-          {
-            "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson."
           }
         ]
       }
