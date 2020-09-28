@@ -273,6 +273,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <SkillIcon
               skill={skill.substring(6) as SkillCodeType}
               size={SKILL_ICON_SIZE}
+              weakness={card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness'}
             />
           </View>))
         }

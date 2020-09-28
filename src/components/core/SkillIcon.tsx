@@ -8,9 +8,10 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 interface Props {
   skill: SkillCodeType;
   size: number;
+  weakness?: boolean;
 }
 
-export default function SkillIcon({ skill, size }: Props) {
+export default function SkillIcon({ skill, size, weakness }: Props) {
   const { colors, fontScale } = useContext(StyleContext);
   const ICON_SIZE = fontScale * size;
 
@@ -27,7 +28,7 @@ export default function SkillIcon({ skill, size }: Props) {
         <ArkhamIcon
           name={`skill_${skill}`}
           size={ICON_SIZE}
-          color={colors.skill[skill].icon}
+          color={weakness ? '#000000' : colors.skill[skill].icon}
         />
       </View>
     </View>
