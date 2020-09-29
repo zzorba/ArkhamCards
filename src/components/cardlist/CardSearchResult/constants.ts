@@ -1,13 +1,13 @@
 import { Platform } from 'react-native';
 
-import { isTablet } from '@styles/space';
+import { s, xs } from '@styles/space';
 import { TINY_PHONE } from '@styles/sizes';
 
 function halfFontScale(fontScale: number) {
   return (fontScale - 1) / 2 + 1;
 }
 export function rowHeight(fontScale: number) {
-  return (isTablet ? 58 : 48) * fontScale;
+  return (24 * fontScale) + (18 * fontScale) + xs * 3;
 }
 export function iconSize(fontScale: number) {
   return 32 * halfFontScale(fontScale);

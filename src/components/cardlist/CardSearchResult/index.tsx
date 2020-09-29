@@ -19,6 +19,7 @@ import UpgradeCardButton from './UpgradeCardButton';
 import CardQuantityComponent from './CardQuantityComponent';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { TINY_PHONE } from '@styles/sizes';
 
 
 interface Props {
@@ -280,7 +281,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
             </View>
           ) }
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row, { backgroundColor: 'transparent' }]}>
           { this.renderSkillIcons() }
           { !!card.renderSubname && (
             <View style={styles.row}>
@@ -479,7 +480,7 @@ const styles = StyleSheet.create({
   },
   cardNameBlock: {
     marginLeft: xs,
-    marginTop: s,
+    marginTop: xs,
     marginBottom: xs,
     marginRight: xs / 2,
     flexDirection: 'column',
@@ -495,6 +496,7 @@ const styles = StyleSheet.create({
   },
   skillIcons: {
     flexDirection: 'row',
+    backgroundColor: 'transparent',
   },
   dualFactionIcons: {
     marginLeft: s,

@@ -62960,6 +62960,7 @@
   "steps": [
     {
       "id": "setup_campaign_log",
+      "text": "dummy",
       "hidden": true,
       "effects": [
         {
@@ -63359,7 +63360,7 @@
     {
       "id": "thomas_dawson_story",
       "type": "story",
-      "text": "You put two and two together and ask if the woman is Miss Harper. \"Ah, so you do remember me?\" she asks with a playful smirk, but you shake your head in response and explain that you only remember being hired by a man named Thomas Dawson to find her. \"But that was... oh. You have forgotten a lot, haven't you? Speaking of Dawson, where is he? Did you see him down there?\"\nYour thoughts turn to the twisted, mangled face that triggered your flashback. Agent Harper's expression turns dour as she watches your eyes. \"... I see. I wish he hadn't come to this forsaken town. Those brutes are going to pay for this.\" You ask who she thinks is responsible for Dawson's death, and she raises her eyebrows in response. \"Right, you don't remember. As far as I know, the last time anybody saw either of you was just before you visited the Esoteric Order of Dagon. Draw your own conclusions.\""
+      "text": "You put two and two together and ask if the woman is Miss Harper. \"Ah, so you do remember me?\" she asks with a playful smirk, but you shake your head in response and explain that you only remember being hired by a man named Thomas Dawson to find her. \"But that was... oh. You have forgotten a lot, haven't you? Speaking of Dawson, where is he? Did you see him down there?\"\nYour thoughts turn to the twisted, mangled face that triggered your flashback. Agent Harper's expression turns dour as she watches your eyes. \"...I see. I wish he hadn't come to this forsaken town. Those brutes are going to pay for this.\" You ask who she thinks is responsible for Dawson's death, and she raises her eyebrows in response. \"Right, you don't remember. As far as I know, the last time anybody saw either of you was just before you visited the Esoteric Order of Dagon. Draw your own conclusions.\""
     },
     {
       "id": "thomas_dawson_effects",
@@ -63401,7 +63402,7 @@
     {
       "id": "check_battle_with_a_horrifying_devil",
       "type": "branch",
-      "text": "If <i>a battle t with a horrifying devil</i> is listed under \"Memories Recovered\":",
+      "text": "If <i>a battle with a horrifying devil</i> is listed under \"Memories Recovered\":",
       "condition": {
         "type": "campaign_log",
         "section": "memories_recovered",
@@ -63645,7 +63646,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Your eyes flutter open with the languor of one whoo has slept for days on end. Your senses are in no hurry to return. You blink and struggle to see through the inky black surrounding you. Every inch of you aches with dull, throbbing pain. Your skin is cold and numb, and your clothes waterlogged. Your mind swims with half-articulated thoughts and tangled memories. You have no idea where you are or how you got here.\nYou snap to attention, heart racing in your chest. You lie on a jagged stone floor in a shallow pool of dark, ice-cold water. Knowing panic will only make the situation worse, you take a series of deep, meditative breaths. You try to concentrate on something—anything—that might allow you to retrace your steps, but your mind is blank. You remember who you are, but nothing whatsoever from the recent past. You steady yourself and examine your surroundings.\nThe chamber appears to be a natural cave formation. Kelp dangles from the ceiling. The stone walls and floor are wet and slimy. A rhythmic drip, drip, drip echoes throughout the otherwise silent cave. This cavern has been underwater, and not too long ago. A result of the tides, perhaps? You swallow your fear like a lump of cold iron. If it is low tide now... A cold shudder ripples up your spine. You examine the ceiling and are surprised to see a slab of metal set into the rough stone overhead. Its polished surface is alien to the rest of the natural cavern. You call out for help, hoping somebody can hear.\nYour dread deepens at the reply: an awful croaking and gurgling that permeates the tunnels—a sound no human could make."
+      "text": "Your eyes flutter open with the languor of one who has slept for days on end. Your senses are in no hurry to return. You blink and struggle to see through the inky black surrounding you. Every inch of you aches with dull, throbbing pain. Your skin is cold and numb, and your clothes waterlogged. Your mind swims with half-articulated thoughts and tangled memories. You have no idea where you are or how you got here.\nYou snap to attention, heart racing in your chest. You lie on a jagged stone floor in a shallow pool of dark, ice-cold water. Knowing panic will only make the situation worse, you take a series of deep, meditative breaths. You try to concentrate on something—anything—that might allow you to retrace your steps, but your mind is blank. You remember who you are, but nothing whatsoever from the recent past. You steady yourself and examine your surroundings.\nThe chamber appears to be a natural cave formation. Kelp dangles from the ceiling. The stone walls and floor are wet and slimy. A rhythmic drip, drip, drip echoes throughout the otherwise silent cave. This cavern has been underwater, and not too long ago. A result of the tides, perhaps? You swallow your fear like a lump of cold iron. If it is low tide now... A cold shudder ripples up your spine. You examine the ceiling and are surprised to see a slab of metal set into the rough stone overhead. Its polished surface is alien to the rest of the natural cavern. You call out for help, hoping somebody can hear.\nYour dread deepens at the reply: an awful croaking and gurgling that permeates the tunnels—a sound no human could make."
     },
     {
       "id": "gather_encounter_sets",
@@ -63660,7 +63661,7 @@
         "agents_of_cthulhu",
         "rats"
       ],
-      "subtext": "<i>Note: The encounter set icon for each Tidal Tunnel location appears only on the location's revealed side (see \"Tidal Tunnels\" below for more information)."
+      "subtext": "<i>Note: The encounter set icon for each Tidal Tunnel location appears only on the location's revealed side (see \"Tidal Tunnels\" below for more information).</i>"
     },
     {
       "id": "setup_keys",
@@ -63966,7 +63967,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "meeting_with_thomas_dawson",
-          "text": "a meeting with Thomas Dawson."
+          "text": "a meeting with Thomas Dawson"
         }
       ]
     },
@@ -63984,7 +63985,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "battle_with_a_horrifying_devil",
-          "text": "a battle with a horrifying devil."
+          "text": "a battle with a horrifying devil"
         },
         {
           "type": "remove_chaos_token",
@@ -64008,7 +64009,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "decision_to_stay_together",
-          "text": "a decision to stay together."
+          "text": "a decision to stay together"
         },
         {
           "type": "remove_chaos_token",
@@ -64032,7 +64033,7 @@
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "encounter_with_a_secret_cult",
-          "text": "an encounter with a secret cult."
+          "text": "an encounter with a secret cult"
         },
         {
           "type": "remove_chaos_token",
@@ -64228,7 +64229,7 @@
                 }
               ]
             },
-            "text": "Defeated a Suspect enemy.",
+            "text": "Defeated a suspect enemy.",
             "steps": [
               "ask_defeated_suspect"
             ]
@@ -64237,7 +64238,7 @@
         "branches": [
           {
             "id": "defeated_suspect",
-            "text": "Defeated a Suspect enemy",
+            "text": "Defeated a suspect enemy",
             "repeatable": true,
             "condition": {
               "type": "campaign_log_count",
@@ -64267,102 +64268,18 @@
           },
           {
             "id": "eliminate_suspects",
-            "text": "Eliminate suspects",
+            "text": "Eliminate leads",
             "steps": [
-              "eliminate_suspects"
+              "eliminate_leads"
             ],
             "repeatable": true,
             "condition": {
-              "type": "multi",
-              "conditions": [
-                {
-                  "type": "campaign_log_count",
-                  "section": "possible_suspects",
-                  "id": "$num_entries",
-                  "options": [
-                    {
-                      "numCondition": 2
-                    },
-                    {
-                      "numCondition": 3
-                    },
-                    {
-                      "numCondition": 4
-                    },
-                    {
-                      "numCondition": 5
-                    },
-                    {
-                      "numCondition": 6
-                    }
-                  ]
-                },
-                {
-                  "type": "campaign_log",
-                  "section": "hidden",
-                  "id": "the_accusation",
-                  "options": [
-                    {
-                      "boolCondition": false
-                    }
-                  ]
-                }
-              ],
-              "count": 2,
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_accusation",
               "options": [
                 {
-                  "boolCondition": true
-                }
-              ]
-            }
-          },
-          {
-            "id": "eliminate_hideouts",
-            "text": "Eliminate hideouts",
-            "steps": [
-              "eliminate_hideouts"
-            ],
-            "repeatable": true,
-            "condition": {
-              "type": "multi",
-              "conditions": [
-                {
-                  "type": "campaign_log_count",
-                  "section": "possible_hideouts",
-                  "id": "$num_entries",
-                  "options": [
-                    {
-                      "numCondition": 2
-                    },
-                    {
-                      "numCondition": 3
-                    },
-                    {
-                      "numCondition": 4
-                    },
-                    {
-                      "numCondition": 5
-                    },
-                    {
-                      "numCondition": 6
-                    }
-                  ]
-                },
-                {
-                  "type": "campaign_log",
-                  "section": "hidden",
-                  "id": "the_accusation",
-                  "options": [
-                    {
-                      "boolCondition": false
-                    }
-                  ]
-                }
-              ],
-              "count": 2,
-              "options": [
-                {
-                  "boolCondition": true
+                  "boolCondition": false
                 }
               ]
             }
@@ -64404,7 +64321,7 @@
     {
       "id": "ask_defeated_suspect",
       "type": "input",
-      "text": "Choose which [[Suspect]] enemy was defated (other than \"the kidnapper\"):",
+      "text": "Choose the non-kidnapper [[Suspect]] enemies that were defeated:",
       "input": {
         "type": "checklist",
         "text": "Defeated",
@@ -64435,6 +64352,12 @@
                 "id": "defeated_suspects",
                 "operation": "add",
                 "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "burnham",
+                "cross_out": true
               }
             ]
           },
@@ -64464,6 +64387,12 @@
                 "id": "defeated_suspects",
                 "operation": "add",
                 "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "gilman",
+                "cross_out": true
               }
             ]
           },
@@ -64493,6 +64422,12 @@
                 "id": "defeated_suspects",
                 "operation": "add",
                 "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "little",
+                "cross_out": true
               }
             ]
           },
@@ -64522,6 +64457,12 @@
                 "id": "defeated_suspects",
                 "operation": "add",
                 "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "marsh",
+                "cross_out": true
               }
             ]
           },
@@ -64551,6 +64492,12 @@
                 "id": "defeated_suspects",
                 "operation": "add",
                 "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "allen",
+                "cross_out": true
               }
             ]
           },
@@ -64580,6 +64527,12 @@
                 "id": "defeated_suspects",
                 "operation": "add",
                 "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "friendly",
+                "cross_out": true
               }
             ]
           }
@@ -64587,9 +64540,9 @@
       }
     },
     {
-      "id": "eliminate_suspects",
+      "id": "eliminate_leads",
       "type": "input",
-      "text": "Choose which suspects to eliminate:",
+      "text": "Choose which leads to eliminate:",
       "input": {
         "type": "checklist",
         "text": "Eliminate",
@@ -64725,18 +64678,7 @@
                 "cross_out": true
               }
             ]
-          }
-        ]
-      }
-    },
-    {
-      "id": "eliminate_hideouts",
-      "type": "input",
-      "text": "Choose which hideouts to eliminate:",
-      "input": {
-        "type": "checklist",
-        "text": "Eliminate",
-        "choices": [
+          },
           {
             "id": "innsmouth_jail",
             "text": "Innsmouth Jail",
@@ -65949,7 +65891,7 @@
     {
       "id": "R4",
       "title": "Resolución 4",
-      "text": "Despite her situation, Joyce does little to resist you once you have her restrained. She seems resigned to her fate, her gaze elsewhere as you question her. \"Believe me, if I'd had another method of getting you to back off, I would have used it,\" she says to Agent Harper. \"But you were getting too close. So I did what had to be done.\"\n\"I don't understand. Too close to what, exactly, Ms. Little?\" Harper asks.\n\"There is a secret at the heart of this town. A secret that brings us wealth. A secret that brings us power. A secret that brings us...\" She pauses to find the right words. \"... closer to our destiny.\"\n\"And what kind of secret is that?\" Harper probes.\nJoyce smirks and shakes her head. \"What makes you think I would ever share that with outsiders?\"\n\"Because you assaulted a federal agent, and if you don't tell me what I want to know, your 'destiny' is going to be the inside of a lonely prison cell.\"\nYou watch Ms. Little's confidence shatter. She gulps down the last of her pride. A beat of sweat drips down her forehead. \"It started with the Order,\" she explains quietly.",
+      "text": "Despite her situation, Joyce does little to resist you once you have her restrained. She seems resigned to her fate, her gaze elsewhere as you question her. \"Believe me, if I'd had another method of getting you to back off, I would have used it,\" she says to Agent Harper. \"But you were getting too close. So I did what had to be done.\"\n\"I don't understand. Too close to what, exactly, Ms. Little?\" Harper asks.\n\"There is a secret at the heart of this town. A secret that brings us wealth. A secret that brings us power. A secret that brings us...\" She pauses to find the right words. \"...closer to our destiny.\"\n\"And what kind of secret is that?\" Harper probes.\nJoyce smirks and shakes her head. \"What makes you think I would ever share that with outsiders?\"\n\"Because you assaulted a federal agent, and if you don't tell me what I want to know, your 'destiny' is going to be the inside of a lonely prison cell.\"\nYou watch Ms. Little's confidence shatter. She gulps down the last of her pride. A beat of sweat drips down her forehead. \"It started with the Order,\" she explains quietly.",
       "steps": [
         "earn_xp",
         "mission_success"
