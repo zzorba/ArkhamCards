@@ -19,8 +19,6 @@ import UpgradeCardButton from './UpgradeCardButton';
 import CardQuantityComponent from './CardQuantityComponent';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { TINY_PHONE } from '@styles/sizes';
-
 
 interface Props {
   card: Card;

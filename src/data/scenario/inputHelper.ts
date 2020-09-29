@@ -108,7 +108,7 @@ export function calculateBinaryConditionResult(
       const numericResult = campaignLogCountConditionResult(
         condition,
         campaignLog
-      )
+      );
       return {
         type: 'binary',
         decision: !!numericResult.option,

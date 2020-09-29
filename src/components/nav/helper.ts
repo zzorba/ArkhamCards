@@ -13,6 +13,8 @@ import { Deck, ParsedDeck, Slots } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
+import { CardImageProps } from '@components/card/CardImageView';
+import { ThemeColors } from '@styles/theme';
 
 export function getDeckOptions(
   {
@@ -253,6 +255,38 @@ export function showOptionDialog(
       onSelect
     );
   }
+}
+
+export function showCardImage(componentId: string, card: Card, colors: ThemeColors) {
+  const faction = card.factionCode();
+  Navigation.push<CardImageProps>(componentId, {
+    component: {
+      name: 'Card.Image',
+      passProps: {
+        id: card.code,
+      },
+      options: {
+        topBar: {
+          backButton: {
+            title: t`Back`,
+            color: '#FFFFFF',
+          },
+          background: {
+            color: faction ? colors.faction[faction].background : colors.background,
+          },
+          title: {
+            text: card.name,
+            color: faction ? '#FFFFFF' : colors.darkText,
+          },
+        },
+        bottomTabs: {
+          visible: false,
+          drawBehind: true,
+          animate: true,
+        },
+      },
+    },
+  });
 }
 
 export default {

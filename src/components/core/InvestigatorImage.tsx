@@ -8,7 +8,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
 
-import { showCard } from '@components/nav/helper';
+import { showCard, showCardImage } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
@@ -24,6 +24,7 @@ interface Props {
   small?: boolean;
   killedOrInsane?: boolean;
   yithian?: boolean;
+  imageLink?: boolean;
 }
 
 export default class InvestigatorImage extends React.Component<Props> {
@@ -34,9 +35,15 @@ export default class InvestigatorImage extends React.Component<Props> {
     const {
       card,
       componentId,
+      imageLink,
     } = this.props;
+    const { colors } = this.context;
     if (componentId && card) {
-      showCard(componentId, card.code, card, true);
+      if (imageLink) {
+        showCardImage(componentId, card, colors);
+      } else {
+        showCard(componentId, card.code, card, true);
+      }
     }
   };
 

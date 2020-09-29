@@ -62,14 +62,11 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
 
   renderPlusButton() {
     const {
-      count,
-      max,
       noFill,
       onIncrement,
       color,
     } = this.props;
     const size = (this.props.size || 36) * iconSizeScale;
-    const atMax = max && (count === max);
     if (this.incrementEnabled()) {
       return (
         <TouchableOpacity onPress={onIncrement}>
@@ -103,7 +100,6 @@ export default class PlusMinusButtons extends React.PureComponent<Props> {
       disabled,
       disablePlus,
     } = this.props;
-    const size = (this.props.size || 36) * iconSizeScale;
     const atMax = max && (count === max);
     return !(count === null || atMax || disabled || disablePlus || max === 0);
   }

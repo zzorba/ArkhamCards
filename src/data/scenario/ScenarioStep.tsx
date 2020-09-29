@@ -642,7 +642,7 @@ export default class ScenarioStep {
         if (choices === undefined) {
           return undefined;
         }
-        const options = chooseOneInputChoices(input.choices, this.campaignLog)
+        const options = chooseOneInputChoices(input.choices, this.campaignLog);
         const selectedOptions = flatMap(choices, (theChoices, choiceId) => {
           if (find(theChoices, c => c === 'checked')) {
             return find(options, o => o.id === choiceId) || [];

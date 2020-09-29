@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { upperFirst } from 'lodash';
 
-import AppIcon from '@icons/AppIcon';
 import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -15,7 +14,7 @@ interface Props {
 }
 
 export default function TextEntryComponent({ text, crossedOut, entry, decoration }: Props) {
-  const { colors,  typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
     text;
@@ -25,7 +24,7 @@ export default function TextEntryComponent({ text, crossedOut, entry, decoration
         typography.large,
         space.marginBottomS,
         crossedOut ? typography.strike : undefined,
-        decoration === 'circle' ? typography.underline  : undefined,
+        decoration === 'circle' ? typography.underline : undefined,
         decoration === 'circle' ? typography.bold : undefined,
       ]}>
         { upperFirst(actualText) }
@@ -37,10 +36,5 @@ export default function TextEntryComponent({ text, crossedOut, entry, decoration
 const styles = StyleSheet.create({
   wrapper: {
     position: 'relative',
-  },
-  circle: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
   },
 });

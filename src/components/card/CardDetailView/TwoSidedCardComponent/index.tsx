@@ -488,6 +488,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderImage(card: Card) {
+    const { componentId } = this.props;
     if (card.type_code === 'story' || card.type_code === 'scenario') {
       return null;
     }
@@ -495,11 +496,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <View style={styles.column}>
         <View style={styles.playerImage}>
           { card.type_code === 'investigator' ? (
-            <InvestigatorImage card={card} />
+            <InvestigatorImage card={card} componentId={componentId} imageLink />
           ) : (
             <PlayerCardImage
               card={card}
-              componentId={this.props.componentId}
+              componentId={componentId}
             />
           ) }
         </View>
