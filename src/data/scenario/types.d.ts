@@ -51,7 +51,7 @@ export type Effect =
   | UpgradeDecksEffect
   | FreeformCampaignLogEffect
   | GainSuppliesEffect;
-export type SpecialXp = "resupply_points" | "supply_points" | "unissued_xp";
+export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
   | "all"

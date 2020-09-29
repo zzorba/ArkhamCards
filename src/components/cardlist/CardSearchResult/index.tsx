@@ -504,6 +504,7 @@ const styles = StyleSheet.create({
     marginRight: xs / 2,
   },
   subname: {
+    marginTop: xs,
     marginRight: s,
   },
   factionIcon: {

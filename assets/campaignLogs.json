@@ -3523,6 +3523,30 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "allen_out_for_blood",
+            "text": "Zadok Allen is out for blood."
+          },
+          {
+            "id": "burnham_out_for_blood",
+            "text": "Brian Burnham is out for blood."
+          },
+          {
+            "id": "friendly_out_for_blood",
+            "text": "Robert Friendly is out for blood."
+          },
+          {
+            "id": "gilman_out_for_blood",
+            "text": "Othera Gilman is out for blood."
+          },
+          {
+            "id": "little_out_for_blood",
+            "text": "Joyce Little is out for blood."
+          },
+          {
+            "id": "marsh_out_for_blood",
+            "text": "Barnabas Marsh is out for blood."
+          },
+          {
             "id": "mission_failed",
             "text": "the mission failed."
           },
@@ -3628,16 +3652,8 @@
             "text": "Zadok Allen"
           },
           {
-            "id": "accuse_bonesaw_lane",
-            "text": "Bonesaw Lane"
-          },
-          {
             "id": "accuse_burnham",
             "text": "Brian Burnham"
-          },
-          {
-            "id": "accuse_church_square",
-            "text": "New Church Square"
           },
           {
             "id": "accuse_friendly",
@@ -3649,7 +3665,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The house on Water Street"
+            "text": "The House on Water Street"
           },
           {
             "id": "accuse_little",
@@ -3660,16 +3676,24 @@
             "text": "Barnabas Marsh"
           },
           {
+            "id": "accuse_new_church_green",
+            "text": "New Church Green"
+          },
+          {
             "id": "accuse_order_of_dagon",
             "text": "Esoteric Order of Dagon"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Prison"
+            "text": "Innsmouth Jail"
+          },
+          {
+            "id": "accuse_sawbone_lane",
+            "text": "Sawbone Lane"
           },
           {
             "id": "accuse_slums",
-            "text": "Shanty town slums"
+            "text": "Shoreward Slums"
           },
           {
             "id": "flashback_1",
@@ -3729,16 +3753,16 @@
         "section": "memories_recovered",
         "entries": [
           {
-            "id": "decided_to_stay_together",
-            "text": "decided to stay together."
+            "id": "battle_with_a_horrifying_devil",
+            "text": "a battle with a horrifying devil."
           },
           {
-            "id": "encountered_a_secret_cult",
+            "id": "decision_to_stay_together",
+            "text": "a decision to stay together."
+          },
+          {
+            "id": "encounter_with_a_secret_cult",
             "text": "an encounter with a secret cult."
-          },
-          {
-            "id": "fight_with_a_terrible_devil",
-            "text": "a fight with a terrible devil."
           },
           {
             "id": "meeting_with_thomas_dawson",
@@ -3750,28 +3774,28 @@
         "section": "possible_hideouts",
         "entries": [
           {
-            "id": "bonesaw_lane",
-            "text": "Bonesaw Lane"
-          },
-          {
-            "id": "church_square",
-            "text": "New Church Square"
-          },
-          {
             "id": "house_on_water_street",
-            "text": "The house on Water Street"
+            "text": "The House on Water Street"
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Innsmouth Jail"
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green"
           },
           {
             "id": "order_of_dagon",
             "text": "Esoteric Order of Dagon"
           },
           {
-            "id": "prison",
-            "text": "Innsmouth Prison"
+            "id": "sawbone_lane",
+            "text": "Sawbone Lane"
           },
           {
-            "id": "slums",
-            "text": "Shanty town slums"
+            "id": "shoreward_slums",
+            "text": "Shoreward Slums"
           }
         ]
       },

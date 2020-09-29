@@ -762,8 +762,8 @@ export default class Card {
       json.code === '98001' || // Jenny
       json.code === '98004' || // Roland
       json.code === '98010' || // Carolyn
-      // json.code === '98016' || // Dexter for TIC
-      // json.code === '98013' || // Silas for TIC
+      json.code === '98013' || // Silas
+      json.code === '98016' || // Dexter
       json.code === '99001'; // PROMO Marie
 
     const result = {

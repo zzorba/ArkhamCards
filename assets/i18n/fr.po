@@ -328,7 +328,7 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/campaign/MyCampaignsView/index.tsx:98
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:75
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:97
-#: src/components/campaign/NewCampaignView/index.tsx:397
+#: src/components/campaign/NewCampaignView/index.tsx:398
 #: src/components/campaign/SealTokenDialog.tsx:40
 #: src/components/campaign/UpgradeDecksView/index.tsx:64
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:65
@@ -598,8 +598,8 @@ msgstr "Diagnostics"
 msgid "About Arkham Cards"
 msgstr "À propos de Arkham Cards"
 
-#: src/components/campaign/NewCampaignView/index.tsx:290
-#: src/components/campaign/NewCampaignView/index.tsx:294
+#: src/components/campaign/NewCampaignView/index.tsx:291
+#: src/components/campaign/NewCampaignView/index.tsx:295
 #: src/components/campaign/SealTokenDialog.tsx:128
 #: src/components/campaign/UpgradeDecksView/index.tsx:181
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:135
@@ -1361,7 +1361,7 @@ msgstr "La Nuit de la Zélatrice"
 msgid "The Path to Carcosa"
 msgstr "La Route de Carcosa"
 
-#: src/components/campaign/NewCampaignView/index.tsx:142
+#: src/components/campaign/NewCampaignView/index.tsx:143
 #: src/components/campaign/constants.ts:324
 #: src/components/campaign/constants.ts:333
 #: src/components/campaign/constants.ts:341
@@ -1477,7 +1477,7 @@ msgstr "Campagne"
 #: src/components/campaign/MyCampaignsView/index.tsx:55
 #: src/components/campaign/MyCampaignsView/index.tsx:95
 #: src/components/campaign/MyCampaignsView/index.tsx:164
-#: src/components/campaign/NewCampaignView/index.tsx:117
+#: src/components/campaign/NewCampaignView/index.tsx:118
 msgid "New Campaign"
 msgstr "Nouvelle campagne"
 
@@ -1486,8 +1486,8 @@ msgstr "Nouvelle campagne"
 #: src/components/campaign/CampaignDetailView/index.tsx:400
 #: src/components/campaign/CampaignDetailView/index.tsx:432
 #: src/components/campaign/CampaignDetailView/index.tsx:496
-#: src/components/campaign/NewCampaignView/index.tsx:394
-#: src/components/campaign/NewCampaignView/index.tsx:463
+#: src/components/campaign/NewCampaignView/index.tsx:395
+#: src/components/campaign/NewCampaignView/index.tsx:464
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:383
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:145
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:167
@@ -1496,7 +1496,7 @@ msgid "Chaos Bag"
 msgstr "Réserve du chaos"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:227
-#: src/components/campaign/NewCampaignView/index.tsx:477
+#: src/components/campaign/NewCampaignView/index.tsx:478
 msgid "Campaign Name"
 msgstr "Nom de la Campagne"
 
@@ -1539,30 +1539,30 @@ msgstr "Ok"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:174
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:182
-#: src/components/campaign/NewCampaignView/index.tsx:312
+#: src/components/campaign/NewCampaignView/index.tsx:313
 msgid "(required)"
 msgstr "(requis)"
 
-#: src/components/campaign/NewCampaignView/index.tsx:314
+#: src/components/campaign/NewCampaignView/index.tsx:315
 #, javascript-format
 msgid "My ${ campaign } Campaign"
 msgstr "Ma campagne ${campaign}"
 
-#: src/components/campaign/NewCampaignView/index.tsx:499
+#: src/components/campaign/NewCampaignView/index.tsx:500
 msgid "Include all basic weaknesses from these expansions"
 msgstr "Inclure toutes les faiblesses de base de ces expansions"
 
 #: src/components/campaign/EditCampaignNotesComponent/index.tsx:164
-#: src/components/campaign/NewCampaignView/index.tsx:598
+#: src/components/campaign/NewCampaignView/index.tsx:599
 msgid "Add Log Section"
 msgstr "Ajouter une section de journal"
 
-#: src/components/campaign/NewCampaignView/index.tsx:664
+#: src/components/campaign/NewCampaignView/index.tsx:671
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:413
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: src/components/campaign/NewCampaignView/index.tsx:695
+#: src/components/campaign/NewCampaignView/index.tsx:702
 msgid "Create Campaign"
 msgstr "Créer une campagne"
 
@@ -1695,7 +1695,7 @@ msgstr "Interlude"
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:173
 #: src/components/campaign/CampaignDetailView/index.tsx:478
-#: src/components/campaign/NewCampaignView/index.tsx:649
+#: src/components/campaign/NewCampaignView/index.tsx:650
 #: src/components/campaignguide/CampaignGuideView.tsx:69
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:76
 #: src/components/deck/DeckDetailView/index.tsx:1669
@@ -2043,7 +2043,7 @@ msgstr "Cartes alternatives"
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:44
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:87
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:142
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:472
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:473
 #: src/components/card/CardDetailView/index.tsx:34
 #: src/components/card/CardDetailView/index.tsx:138
 msgid "FAQ"
@@ -2059,21 +2059,21 @@ msgstr "Cartes autorisées"
 msgid "Test Icons: "
 msgstr "Icônes de test: "
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:392
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:564
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:393
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:565
 msgid "Show back"
 msgstr "Afficher le dos"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:528
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:529
 #, javascript-format
 msgid "Victory: ${ card.victory }."
 msgstr "Victoire: ${card.victory}."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:533
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:534
 msgid "Vengeance: ${ card.vengeance }."
 msgstr "Vengeance: ${card.vengeance}."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:564
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:565
 msgid "Show front"
 msgstr "Montrer le dessus"
 
@@ -2207,7 +2207,7 @@ msgid "Bound Cards"
 msgstr "Cartes liées"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:65
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:460
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:461
 msgid "Taboo"
 msgstr "Tabou"
 
@@ -2445,16 +2445,16 @@ msgstr "Sauvegarde…"
 msgid "Flip Card"
 msgstr "Retourner la Carte"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:307
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:308
 msgid "Doom: ${ doom }"
 msgstr "Chaos: ${doom}"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:312
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:313
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "Indices: ${clues} ${perInvestigatorClues}"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:318
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:319
 #, javascript-format
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr "Occulte: ${shroud}. Indices: ${clues} ${perInvestigatorClues}."
@@ -2915,7 +2915,7 @@ msgid "Draw Tokens"
 msgstr "Tirer des jetons"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:515
-#: src/components/campaign/NewCampaignView/index.tsx:496
+#: src/components/campaign/NewCampaignView/index.tsx:497
 msgid "Weakness Set"
 msgstr "Ensemble des Faiblesses"
 
@@ -3565,7 +3565,7 @@ msgstr ""
 msgid "Edit name"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:656
+#: src/components/campaign/NewCampaignView/index.tsx:657
 msgid "Guided Campaign"
 msgstr ""
 
@@ -3658,7 +3658,7 @@ msgstr ""
 msgid "Choose additional card"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:561
+#: src/components/campaign/NewCampaignView/index.tsx:562
 #: src/components/campaignguide/ScenarioView.tsx:58
 #: src/components/campaignguide/ScenarioView.tsx:157
 msgid "Campaign Log"
@@ -4136,19 +4136,19 @@ msgstr ""
 msgid " (Per Investigator)"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:657
+#: src/components/campaign/NewCampaignView/index.tsx:658
 msgid "Use app for scenario setup & resolutions"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:657
+#: src/components/campaign/NewCampaignView/index.tsx:658
 msgid "Track campaign log and resolutions manually"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:677
+#: src/components/campaign/NewCampaignView/index.tsx:684
 msgid "Investigators"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:702
+#: src/components/campaign/NewCampaignView/index.tsx:709
 msgid ""
 "If you encounter any problems with the campaign guide system, please let me "
 "know at arkhamcards@gmail.com."
@@ -4910,6 +4910,14 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:394
 msgid "Memories Recovered"
+msgstr ""
+
+#: src/components/campaign/NewCampaignView/index.tsx:666
+msgid ""
+"Note: this campaign is still being released and so the guide is incomplete "
+"(and may contain some mistakes).\n"
+"As new scenarios are released, I will try to update the app promptly but "
+"there may be some slight delays."
 msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201
