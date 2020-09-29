@@ -56979,7 +56979,7 @@
     "the_pit_of_despair",
     "puzzle_pieces",
     "the_vanishing_of_elina_harper",
-    "syzygy",
+    "the_syzygy",
     "in_too_deep",
     "devil_reef",
     "beneath_the_waves",
@@ -57470,98 +57470,6 @@
 }
 ,
 {
-  "id": "syzygy",
-  "scenario_name": "Syzygy",
-  "full_name": "Interlude II: Syzygy",
-  "type": "interlude",
-  "setup": [
-    "syzygy_1",
-    "check_mission_failed",
-    "syzygy_4",
-    "spend_xp",
-    "$upgrade_decks"
-  ],
-  "steps": [
-    {
-      "id": "syzygy_1",
-      "type": "story",
-      "text": "Light flashes in your mind. Shadows drown your thoughts as the memory fades. You are lying once again on the rocky beach off the coast, your skull pounding in agony. Agent Harper leans over you with worry etched in her brow. \"Hey! Hey, you finally awake?\"\nYou set up, your muscles aching. It looks like the tide rose several more inches while you were out. The cold water laps at your ankles and soaks into your shoes. \"What happened?\" she says. \"What did you see?\""
-    },
-    {
-      "id": "check_mission_failed",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "mission_failed",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["syzygy_2"]
-          },
-          {
-            "boolCondition": false,
-            "steps": ["check_mission_succeeded"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "check_mission_succeeded",
-      "type": "branch",
-      "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "mission_succeeded",
-        "options": [
-          {
-            "boolCondition": true,
-            "steps": ["syzygy_3", "earn_elina_harper"]
-          }
-        ]
-      }
-    },
-    {
-      "id": "syzygy_2",
-      "type": "story",
-      "text": "You tell Harper you remember your mission to find her, but that after a week of searching, you hadn't been able to do so. The last thing you remember was somebody slipping a notebook under your hotel room door with some information regarding an oroganization called the \"Esoteric Order of Dagon.\"\n\"Oh. Yeah, that was me. Sorry I couldn't stick around and chat, but I had some other business to attend to,\" she explains. She tells you that after several days in captivity, she finally managed to get the upper hand against her captor and free herself, but she was injured in the process. As if to prove her story, she opens her trenchcoat, and you see dark bloodstains seeping through her button-up shirt. Several bandages peek out beneath the fabric. \"Just barely missed my kidney. Lucky me, eh?\"\nYou complain that you were wasting your time searching high and low for her, and she scoffs. \"Hardly! You learned more in one week than I did in two. I knew that you were onto something, and I wanted to help out, but I was still being followed. So I dropped off the one solid bit of research I'd found and laid low for a while. It was you who did the rest really.\" Sadly, you remember nothing of \"the rest.\""
-    },
-    {
-      "id": "syzygy_3",
-      "type": "story",
-      "text": "You tell Harper you remember your mission to find her and the interrogation of her kidnapper. She grins. \"Thanks again for that, by the way. I really did have things under control, though,\" she jokes. \"Do you remember anything after that?\"\nYou shake your head. The last thing you remember was the mention of an organization called the \"Esoteric Order of Dagon.\"\nHarper mutters a curse under her breath. \"That's unfortunate. But amnesia or not, at least I know I can trust you. Whether you remember it or not, you've come through for me in the past.\""
-    },
-    {
-      "id": "earn_elina_harper",
-      "text": "Any one investigator may add the Elina Harper story asset to their deck. This card does not count against the investigators deck size.",
-      "effects": [
-        {
-          "type": "add_card",
-          "investigator": "choice",
-          "card": "07063"
-        }
-      ]
-    },
-    {
-      "id": "syzygy_4",
-      "type": "story",
-      "text": "\"Don't worry,\" she says, \"I'll catch you up. There's a lot you still don't remember.\" Just then, a resounding crash of thunder echoes on the eastern horizon, and a powerful wave smashes against the jetties. The sky is a deep crimson red behind blackening storm clouds that swirl around the sun and the moon. The celestial bodies hang together in perfect alignment. \"That can't be good.\" Harper's lips turn rigid with concern. \"Okay, new plan. Let's get back to Innsmouth. I'll explain what I know along the way.\""
-    },
-    {
-      "id": "spend_xp",
-      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
-      "effects": [
-        {
-          "type": "earn_xp",
-          "investigator": "all",
-          "transfer_special_xp": "unspect_xp"
-        }
-      ]
-    }
-  ]
-}
-,
-{
   "id": "the_lair_of_dagon",
   "scenario_name": "The Lair of Dagon",
   "full_name": "Scenario VII: The Lair of Dagon",
@@ -57993,6 +57901,98 @@
       "title": "Resolution 1",
       "text": "In the distance, the sky is a dark crimsono, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back too your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhtymic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
       "steps": ["earn_xp"]
+    }
+  ]
+}
+,
+{
+  "id": "the_syzygy",
+  "scenario_name": "The Syzygy",
+  "full_name": "Interlude II: The Syzygy",
+  "type": "interlude",
+  "setup": [
+    "syzygy_1",
+    "check_mission_failed",
+    "syzygy_4",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "syzygy_1",
+      "type": "story",
+      "text": "Light flashes in your mind. Shadows drown your thoughts as the memory fades. You are lying once again on the rocky beach off the coast, your skull pounding in agony. Agent Harper leans over you with worry etched in her brow. \"Hey! Hey, you finally awake?\"\nYou set up, your muscles aching. It looks like the tide rose several more inches while you were out. The cold water laps at your ankles and soaks into your shoes. \"What happened?\" she says. \"What did you see?\""
+    },
+    {
+      "id": "check_mission_failed",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_failed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["syzygy_2"]
+          },
+          {
+            "boolCondition": false,
+            "steps": ["check_mission_succeeded"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["syzygy_3", "earn_elina_harper"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "syzygy_2",
+      "type": "story",
+      "text": "You tell Harper you remember your mission to find her, but that after a week of searching, you hadn't been able to do so. The last thing you remember was somebody slipping a notebook under your hotel room door with some information regarding an oroganization called the \"Esoteric Order of Dagon.\"\n\"Oh. Yeah, that was me. Sorry I couldn't stick around and chat, but I had some other business to attend to,\" she explains. She tells you that after several days in captivity, she finally managed to get the upper hand against her captor and free herself, but she was injured in the process. As if to prove her story, she opens her trenchcoat, and you see dark bloodstains seeping through her button-up shirt. Several bandages peek out beneath the fabric. \"Just barely missed my kidney. Lucky me, eh?\"\nYou complain that you were wasting your time searching high and low for her, and she scoffs. \"Hardly! You learned more in one week than I did in two. I knew that you were onto something, and I wanted to help out, but I was still being followed. So I dropped off the one solid bit of research I'd found and laid low for a while. It was you who did the rest really.\" Sadly, you remember nothing of \"the rest.\""
+    },
+    {
+      "id": "syzygy_3",
+      "type": "story",
+      "text": "You tell Harper you remember your mission to find her and the interrogation of her kidnapper. She grins. \"Thanks again for that, by the way. I really did have things under control, though,\" she jokes. \"Do you remember anything after that?\"\nYou shake your head. The last thing you remember was the mention of an organization called the \"Esoteric Order of Dagon.\"\nHarper mutters a curse under her breath. \"That's unfortunate. But amnesia or not, at least I know I can trust you. Whether you remember it or not, you've come through for me in the past.\""
+    },
+    {
+      "id": "earn_elina_harper",
+      "text": "Any one investigator may add the Elina Harper story asset to their deck. This card does not count against the investigators deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "07063"
+        }
+      ]
+    },
+    {
+      "id": "syzygy_4",
+      "type": "story",
+      "text": "\"Don't worry,\" she says, \"I'll catch you up. There's a lot you still don't remember.\" Just then, a resounding crash of thunder echoes on the eastern horizon, and a powerful wave smashes against the jetties. The sky is a deep crimson red behind blackening storm clouds that swirl around the sun and the moon. The celestial bodies hang together in perfect alignment. \"That can't be good.\" Harper's lips turn rigid with concern. \"Okay, new plan. Let's get back to Innsmouth. I'll explain what I know along the way.\""
+    },
+    {
+      "id": "spend_xp",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
     }
   ]
 }
@@ -59731,12 +59731,12 @@
       ]
     },
     {
-      "id": "mission_success",
+      "id": "mission_succeeded",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
-          "id": "mission_success",
+          "id": "mission_succeeded",
           "text": "the mission succeeded."
         }
       ]
@@ -59765,37 +59765,37 @@
       "id": "R2",
       "title": "Resolution 2",
       "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser too ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
-      "steps": ["earn_xp", "mission_success"]
+      "steps": ["earn_xp", "mission_succeeded"]
     },
     {
       "id": "R3",
       "title": "Resolution 3",
       "text": "Othera struggles against her bonds, trying like hell to free herself. \"Let me go! You have to let me go!\" she cries. Agent Harper grins, reveling in this turn of events.\n\"Doesn't feel so good, does it?\" she teases.\n\"You don't understand,\" Othera replies. \"Come. Look. You'll see.\" She motions to the door next to her, which you haven't yet searched. Inside is a stash of oil paintings, dozens and dozens of them, all depicting the same thing: a tumultuous maelstrom in the middle of the ocean, over which the sun and the moon hang in perfect alignment against a red-tinged sky. \"What in the hell...?\" Agent Harper wonders aloud as she sorts through the many reproductions.\nOthera bites her lip, and a single tear streaks down her cheek. \"It's the Order,\" she whispers. \"The Order owns us all.\"",
-      "steps": ["earn_xp", "mission_success"]
+      "steps": ["earn_xp", "mission_succeeded"]
     },
     {
       "id": "R4",
       "title": "Resolution 4",
       "text": "Despite her situation, Joyce does little to resist you once you have her restrained. She seems resigned to her fate, her gaze elsewhere as you question her. \"Believe me, if I'd had another method of getting you to back off, I would have used it,\" she says to Agent Harper. \"But you were getting too close. So I did what had to be done.\"\n\"I don't understand. Too close to what, exactly, Ms. Little?\" Harper asks.\n\"There is a secret at the heart of this town. A secret that brings us wealth. A secret that brings us power. A secret that brings us...\" She pauses to find the right words. \"...closer to our destiny.\"\n\"And what kind of secret is that?\" Harper probes.\nJoyce smirks and shakes her head. \"What makes you think I would ever share that with outsiders?\"\n\"Because you assaulted a federal agent, and if you don't tell me what I want to know, your 'destiny' is going to be the inside of a lonely prison cell.\"\nYou watch Ms. Little's confidence shatter. She gulps down the last of her pride. A beat of sweat drips down her forehead. \"It started with the Order,\" she explains quietly.",
-      "steps": ["earn_xp", "mission_success"]
+      "steps": ["earn_xp", "mission_succeeded"]
     },
     {
       "id": "R5",
       "title": "Resolution 5",
       "text": "Barnabas spits in your face as you attempt to interrogate him. \"I ain't tellin' you a word, interloper,\" he barks, his bulging eyes unblinking as he glowers at you with unbridled hate. \"You don't belong here. All o' your kind'll be dead before the week's end.\"\nAgent Harper narrows her eyes at the strange man's remarks. \"What do you mean by that, Marsh? Our kind? What—outsiders?\"\nBarnabas scowls, his bulbous lips curling back to reveal sharp, inhuman teeth. \"Outsiders. Intruders. You're a blight on our fair town. But you'll be purged soon enough.\"\nYou are taken aback by the severity of the old man's threat and his simmering hatred, but Harper simply chortles. \"You call this place 'fair'?\" Ignoring her derision, you warn Barnabas that if he doesn't speak up, he'll be spending a long time behind bars.\n\"Not I,\" he remarks. \"You're the one who'll be locked up, 'n worse. When the Order's done with you, you'll be nothin' but fish food.\"\nYou and Harper exchange a knowing glance. She pries further: \"What Order is this, exactly?\"",
-      "steps": ["earn_xp", "mission_success"]
+      "steps": ["earn_xp", "mission_succeeded"]
     },
     {
       "id": "R6",
       "title": "Resolution 6",
       "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't y seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
-      "steps": ["earn_xp", "mission_success"]
+      "steps": ["earn_xp", "mission_succeeded"]
     },
     {
       "id": "R7",
       "title": "Resolution 7",
       "text": "Robert refruses to say a word until you get him a cigar. You begrudgingly oblige, hoping that your generosity yields dividends. \"I was investigating the docks when he and his cronies nabbed me,\" Agent Harper recounts bitterly. You ask who these \"cronies\" were, and she shrugs. \"Not sure. Dockworkers and sailors, I imagine. Whoever hired Mr. Friendly over here must have a lot of influence over the locals.\"\nAfter handing Robert the cigar he demanded, you are surprised to find him a little more compliant, though no more friendly despite his name. \"Doesn't matter,\" he mutters, blowing out a puff of rank cigar smoke. \"You're all dead men walking. No offense, miss.\"\n\"Offense taken,\" she bites back. \"Care to tell us what you mean by that?\"\n\"The Order,\" he replies with a quiet, unwavering resolve. \"They know everything that happens in this town. Probably out lookin' for me right now. You sure you wanna be here when they find me?\" He flashes a sadistic grin.\nHarper doesn't flinch. \"Yeah, actually. I think I do,\" she replies, cracking her knuckles. \"Now start talking.\"",
-      "steps": ["earn_xp", "mission_success"]
+      "steps": ["earn_xp", "mission_succeeded"]
     }
   ]
 }

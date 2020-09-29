@@ -3565,7 +3565,7 @@
             "text": "the mission failed."
           },
           {
-            "id": "mission_success",
+            "id": "mission_succeeded",
             "text": "the mission succeeded."
           },
           {
