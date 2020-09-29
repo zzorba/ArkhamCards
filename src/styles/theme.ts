@@ -54,6 +54,7 @@ export interface ThemeColors {
   health: string;
   sanity: string;
   disableOverlay: string;
+  scenarioGreen: string;
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -155,6 +156,7 @@ export const LIGHT_THEME: ThemeColors = {
   },
   health: '#8D181E',
   sanity: '#165385',
+  scenarioGreen: '#2E5344',
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -171,7 +173,7 @@ export const DARK_THEME: ThemeColors = {
   lightText: light10,
   darkText: light30,
   divider: dark10,
-  taboo: 'purple',
+  taboo: '#9869f5',
   M: medium,
   disableOverlay: '#24303C99',
   faction: {
@@ -249,4 +251,5 @@ export const DARK_THEME: ThemeColors = {
   },
   health: '#AE4236',
   sanity: '#2C7FC0',
+  scenarioGreen: '#1fab73',
 };

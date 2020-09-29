@@ -331,6 +331,23 @@ export default class Card {
   @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
 
+  public static ELIDED_FIELDS = [
+    'c.seal',
+    'c.heals_horror',
+    'c.sort_by_type',
+    'c.sort_by_faction',
+    'c.sort_by_faction_pack',
+    'c.sort_by_pack',
+    'c.slots_normalized',
+    'c.back_linked',
+    'c.eskill_willpower',
+    'c.eskill_intellect',
+    'c.eskill_combat',
+    'c.eskill_agility',
+    'c.linked_to_code',
+    'c.linked_to_name',
+  ];
+
   public cardName(): string {
     return this.subname ? t`${this.name} <i>(${this.subname})</i>` : this.name;
   }

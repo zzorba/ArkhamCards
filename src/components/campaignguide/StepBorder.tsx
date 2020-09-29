@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import AppIcon from '@icons/AppIcon';
-import COLORS from '@styles/colors';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   type: 'top' | 'bottom';
@@ -11,27 +11,28 @@ interface Props {
 
 const SCALE = 0.1;
 export default function StepBorder({ type, width, margin }: Props) {
+  const { colors } = useContext(StyleContext);
   const lineWidth = width * (1 - 2.3 * SCALE) - margin * 2;
   return (
     <View style={styles.wrapper}>
       { type === 'top' ? (
         <>
           <View style={[styles.topLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={COLORS.scenarioGreen} name="fleur_top_left" />
+            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_top_left" />
           </View>
-          <View style={[styles.topLine, { width: lineWidth, left: (width - lineWidth) / 2 }]} />
+          <View style={[styles.topLine, { backgroundColor: colors.scenarioGreen, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.topRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={COLORS.scenarioGreen} name="fleur_top_right" />
+            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_top_right" />
           </View>
         </>
       ) : (
         <>
           <View style={[styles.bottomLeft, { left: margin }]}>
-            <AppIcon size={width * SCALE} color={COLORS.scenarioGreen} name="fleur_bottom_left" />
+            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_bottom_left" />
           </View>
-          <View style={[styles.bottomLine, { width: lineWidth, left: (width - lineWidth) / 2 }]} />
+          <View style={[styles.bottomLine, { backgroundColor: colors.scenarioGreen, width: lineWidth, left: (width - lineWidth) / 2 }]} />
           <View style={[styles.bottomRight, { right: margin }]}>
-            <AppIcon size={width * SCALE} color={COLORS.scenarioGreen} name="fleur_bottom_right" />
+            <AppIcon size={width * SCALE} color={colors.scenarioGreen} name="fleur_bottom_right" />
           </View>
         </>
       ) }
@@ -53,13 +54,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 2,
     height: 2,
-    backgroundColor: COLORS.scenarioGreen,
   },
   bottomLine: {
     position: 'absolute',
     bottom: 1,
     height: 2,
-    backgroundColor: COLORS.scenarioGreen,
   },
   topRight: {
     position: 'absolute',

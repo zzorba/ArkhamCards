@@ -53,9 +53,10 @@ export const syncTaboos = async function(
       tabooSets.push(TabooSet.fromJson(tabooJson, cards.length));
       for (let j = 0; j < allTabooCards.length; j++) {
         const tabooCode = allTabooCards[j];
-        const card = await cardsRep.createQueryBuilder('card')
-          .where('(card.code = :code AND (card.taboo_set_id is null OR card.taboo_set_id = 0))')
+        const card = await cardsRep.createQueryBuilder('c')
+          .where('(c.code = :code AND (c.taboo_set_id is null OR c.taboo_set_id = 0))')
           .setParameters({ code: tabooCode })
+          .addSelect(Card.ELIDED_FIELDS)
           .getOne();
         if (card) {
           const tabooCard = Card.placeholderTabooCard(tabooJson.id, card);
@@ -65,9 +66,10 @@ export const syncTaboos = async function(
       for (let j = 0; j < cards.length; j++) {
         const cardJson = cards[j];
         const code: string = cardJson.code;
-        const card = await cardsRep.createQueryBuilder()
-          .where('(code = :code AND (taboo_set_id is null OR taboo_set_id = 0))')
+        const card = await cardsRep.createQueryBuilder('c')
+          .where('(c.code = :code AND (c.taboo_set_id is null OR c.taboo_set_id = 0))')
           .setParameters({ code: cardJson.code })
+          .addSelect(Card.ELIDED_FIELDS)
           .getOne();
         if (card) {
           try {

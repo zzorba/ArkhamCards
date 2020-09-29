@@ -94,7 +94,7 @@ class StyleProvider extends React.Component<Props, State> {
       <StyleContext.Provider value={{
         darkMode,
         fontScale,
-        typography: typography(appFontScale, themeOverride ? colors : COLORS, gameFont),
+        typography: typography(appFontScale, colors, gameFont),
         colors,
         gameFont,
         backgroundStyle: {

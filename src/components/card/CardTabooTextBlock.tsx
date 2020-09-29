@@ -20,15 +20,15 @@ interface Props {
 }
 
 export default function CardTabooTextBlock({ card }: Props) {
-  const { fontScale, typography } = useContext(StyleContext);
+  const { fontScale, typography, colors } = useContext(StyleContext);
   if (!card.taboo_set_id || card.taboo_set_id === 0 || card.taboo_placeholder) {
     return null;
   }
   return (
-    <View style={styles.tabooTextBlock}>
+    <View style={[styles.tabooTextBlock, { borderColor: colors.taboo }]}>
       <View style={styles.tabooRow}>
         <View style={styles.tabooIcon}>
-          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={COLORS.taboo} />
+          <ArkhamIcon name="tablet" size={SMALL_ICON_SIZE * fontScale} color={colors.taboo} />
         </View>
         <Text style={typography.small}>
           { t`Taboo List Changes` }
@@ -57,10 +57,9 @@ const styles = StyleSheet.create({
     marginRight: xs,
   },
   tabooTextBlock: {
-    borderLeftWidth: 4,
+    borderLeftWidth: 2,
     paddingLeft: s,
     marginBottom: s,
     marginRight: s,
-    borderColor: COLORS.taboo,
   },
 });
