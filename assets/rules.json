@@ -796,7 +796,7 @@
   },
   {
     "id": "Self_Referential_Text",
-    "title": "Self_Referential_Text",
+    "title": "Self-Referential Text",
     "text": "When a card's ability text refers to its own title, it is referring to itself only, and not to other copies (by title) of the card.\nSelf-referential abilities using the word \"this\" (e.g. \"this card\") refer only to the card on which the ability is located, and not to copies of that card."
   },
   {
@@ -919,8 +919,8 @@
   },
   {
     "id": "Unique",
-    "title": "Unique ([unique])",
-    "text": "A card with the [unique] symbol before its card title is a unique card. There can be no more than one instance of each unique card, by title, in play at any given time.\n- A player cannot bring into play a unique card if a copy of that card (by title) is already in play.\n- If a unique encounter card that shares a title with a unique player card would enter play, discard the player card simultaneously as the encounter card enters play."
+    "title": "Unique (✷)",
+    "text": "A card with the ✷ symbol before its card title is a unique card. There can be no more than one instance of each unique card, by title, in play at any given time.\n- A player cannot bring into play a unique card if a copy of that card (by title) is already in play.\n- If a unique encounter card that shares a title with a unique player card would enter play, discard the player card simultaneously as the encounter card enters play."
   },
   {
     "id": "Upkeep_Phase_Placeholdler",

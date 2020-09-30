@@ -165,7 +165,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
     const elderSignEffect = elderSign(investigator);
     const specialTokenValues = this.specialTokenValues(elderSignEffect);
     return (
-      <React.Fragment>
+      <>
         <View style={[styles.headerRow, { backgroundColor: colors.L20 }]}>
           <Text style={typography.text}>
             { investigator.name }
@@ -200,7 +200,7 @@ export default class InvestigatorOddsComponent extends React.Component<Props, St
           chaosBag={chaosBag}
           specialTokenValues={specialTokenValues}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
