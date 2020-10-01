@@ -34,7 +34,7 @@ export function cardSectionHeaderHeight(section: CardSectionHeaderData, fontScal
   if (section.subTitle || section.title) {
     return fontScale * 20 + 8 * 2;
   }
-  return fontScale * 20 + s * 2;
+  return fontScale * 24 + s * 2;
 }
 
 export default class CardSectionHeader extends React.Component<Props> {
