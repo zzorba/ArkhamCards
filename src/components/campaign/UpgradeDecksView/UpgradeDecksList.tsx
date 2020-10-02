@@ -20,6 +20,7 @@ import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   campaignId: number;
+  lang: string;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   updateInvestigatorXp: (investigator: Card, xp: number) => void;
   investigatorData: InvestigatorData;
@@ -129,11 +130,13 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
       componentId,
       cards,
       investigators,
+      lang,
     } = this.props;
 
     return (
       <DeckRow
         key={deckId}
+        lang={lang}
         componentId={componentId}
         id={deckId}
         cards={cards}

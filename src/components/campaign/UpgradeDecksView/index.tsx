@@ -16,7 +16,7 @@ import { Campaign, Deck, DecksMap, SingleCampaign, ScenarioResult } from '@actio
 import { NavigationProps } from '@components/nav/types';
 import Card from '@data/Card';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState } from '@reducers';
+import { getAllDecks, getLatestCampaignInvestigators, getLatestCampaignDeckIds, getCampaign, AppState, getLangPreference } from '@reducers';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
@@ -32,6 +32,7 @@ export interface UpgradeDecksProps {
 }
 
 interface ReduxProps {
+  lang: string;
   campaign?: SingleCampaign;
   decks: DecksMap;
   allInvestigators: Card[];
@@ -154,6 +155,7 @@ class UpgradeDecksView extends React.Component<Props> {
       decks,
       cards,
       investigators,
+      lang,
     } = this.props;
     const { backgroundStyle, typography } = this.context;
     if (!campaign) {
@@ -169,6 +171,7 @@ class UpgradeDecksView extends React.Component<Props> {
         <UpgradeDecksList
           componentId={componentId}
           campaignId={id}
+          lang={lang}
           investigatorData={campaign.investigatorData}
           allInvestigators={allInvestigators}
           decks={flatMap(latestDeckIds, deckId => decks[deckId] || [])}
@@ -197,6 +200,7 @@ function mapStateToPropsFix(
     decks: getAllDecks(state),
     latestDeckIds,
     allInvestigators,
+    lang: getLangPreference(state),
   };
 }
 

@@ -14,7 +14,7 @@ import { Campaign, Deck, DecksMap } from '@actions/types';
 import Card from '@data/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
-import { getAllDecks, AppState } from '@reducers';
+import { getAllDecks, AppState, getLangPreference } from '@reducers';
 import space, { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -32,6 +32,7 @@ interface OwnProps {
 
 interface ReduxProps {
   decks: DecksMap;
+  lang: string;
 }
 
 interface ReduxActionProps {
@@ -142,6 +143,7 @@ class DeckListComponent extends React.Component<Props, State> {
       deckIds,
       deckToCampaign,
       searchOptions,
+      lang,
     } = this.props;
     const { searchTerm } = this.state;
     return (
@@ -153,6 +155,7 @@ class DeckListComponent extends React.Component<Props, State> {
       >
         { onScroll => (
           <DeckList
+            lang={lang}
             deckIds={deckIds}
             header={this._renderHeader()}
             footer={this._renderFooter}
@@ -173,6 +176,7 @@ class DeckListComponent extends React.Component<Props, State> {
 function mapStateToProps(state: AppState): ReduxProps {
   return {
     decks: getAllDecks(state),
+    lang: getLangPreference(state),
   };
 }
 

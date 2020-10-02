@@ -16,6 +16,7 @@ import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
+  lang: string;
   deckIds: number[];
   header?: React.ReactElement;
   footer: (empty: boolean) => React.ReactElement;
@@ -46,6 +47,7 @@ class DeckList extends React.Component<Props> {
       cards,
       deckToCampaign,
       deckClicked,
+      lang,
     } = this.props;
 
     const deck = decks[deckId];
@@ -54,6 +56,7 @@ class DeckList extends React.Component<Props> {
     }
     return (
       <DeckListRow
+        lang={lang}
         key={deckId}
         deck={deck}
         previousDeck={deck.previous_deck ? decks[deck.previous_deck] : undefined}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import InvestigatorDeckRow from '../InvestigatorDeckRow';
@@ -18,66 +18,63 @@ interface Props extends DeckListProps {
   ) => void;
 }
 
-export default class DeckSelector extends React.Component<Props> {
-  _renderDeck = (
-    deckId: number,
-    cards: CardsMap,
-    investigators: CardsMap
-  ) => {
-    const {
-      deckRemoved,
-    } = this.props;
-    return (
-      <InvestigatorDeckRow
-        key={deckId}
-        id={deckId}
-        investigators={investigators}
-        deckRemoved={deckRemoved}
-      />
-    );
-  };
+export default function DeckSelector(props: Props) {
+  const {
+    investigatorRemoved,
+    deckRemoved,
+    componentId,
+    deckIds,
+    investigatorIds,
+    deckAdded,
+    investigatorAdded,
+    campaignId,
+  } = props;
+  const renderDeck = useCallback(
+    (
+      deckId: number,
+      cards: CardsMap,
+      investigators: CardsMap
+    ) => {
+      return (
+        <InvestigatorDeckRow
+          key={deckId}
+          id={deckId}
+          investigators={investigators}
+          deckRemoved={deckRemoved}
+        />
+      );
+    }, [deckRemoved]);
 
-  _renderInvestigator = (
-    code: string,
-    investigators: CardsMap
-  ) => {
-    const {
-      investigatorRemoved,
-    } = this.props;
-    const investigator = investigators[code];
-    if (!investigator) {
-      return null;
-    }
-    return (
-      <InvestigatorRow
-        key={code}
-        investigator={investigator}
-        onRemove={investigatorRemoved}
-      />
-    );
-  };
+  const renderInvestigator = useCallback(
+    (
+      code: string,
+      investigators: CardsMap
+    ) => {
+      const investigator = investigators[code];
+      if (!investigator) {
+        return null;
+      }
+      return (
+        <InvestigatorRow
+          key={code}
+          investigator={investigator}
+          onRemove={investigatorRemoved}
+        />
+      );
+    }, [investigatorRemoved]
+  );
 
-  render() {
-    const {
-      componentId,
-      deckIds,
-      investigatorIds,
-      deckAdded,
-      investigatorAdded,
-      campaignId,
-    } = this.props;
-    return (
-      <DeckList
-        renderDeck={this._renderDeck}
-        renderInvestigator={this._renderInvestigator}
-        componentId={componentId}
-        campaignId={campaignId}
-        deckIds={deckIds}
-        investigatorIds={investigatorIds}
-        deckAdded={deckAdded}
-        investigatorAdded={investigatorAdded}
-        otherProps={this.props}
-      />
-    );
-  }
+  return (
+    <DeckList
+      renderDeck={renderDeck}
+      renderInvestigator={renderInvestigator}
+      componentId={componentId}
+      campaignId={campaignId}
+      deckIds={deckIds}
+      investigatorIds={investigatorIds}
+      deckAdded={deckAdded}
+      investigatorAdded={investigatorAdded}
+      otherProps={props}
+    />
+  );
 }

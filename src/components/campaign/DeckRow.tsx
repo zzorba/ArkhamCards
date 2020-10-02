@@ -19,6 +19,7 @@ type RenderDeckDetails = (
 export interface DeckRowProps {
   componentId: string;
   id: number;
+  lang: string;
   deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
   investigators: CardsMap;
   cards: CardsMap;
@@ -136,6 +137,7 @@ class DeckRow extends React.Component<Props> {
       viewDeckButton,
       killedOrInsane,
       skipRender,
+      lang,
     } = this.props;
     if (!theDeck) {
       return null;
@@ -150,6 +152,7 @@ class DeckRow extends React.Component<Props> {
     return (
       <DeckListRow
         deck={theDeck}
+        lang={lang}
         previousDeck={thePreviousDeck}
         cards={cards}
         onPress={this._onDeckPress}
