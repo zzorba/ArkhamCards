@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-10-02 18:07+0400\n"
+"PO-Revision-Date: 2020-10-02 18:44+0400\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -4676,7 +4676,7 @@ msgstr "Эррата карты контактов"
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:67
 msgid "The following questions contain light spoilers for this scenario."
-msgstr ""
+msgstr "Следующие вопросы содержат небольшие спойлеры для этого сценария."
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:72
 msgid "Show Spoilers"
@@ -4697,7 +4697,7 @@ msgstr "Скоро"
 
 #: src/components/campaign/CampaignChaosBagView.tsx:35
 msgid "Edit Chaos Bag"
-msgstr "Редактор мешка хаоса"
+msgstr "Редактировать мешок хаоса"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:256
 msgid "Chaos bag is empty"
@@ -4794,7 +4794,7 @@ msgstr ""
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:191
 msgid "In Bag"
-msgstr ""
+msgstr "В мешке"
 
 #: src/components/settings/FontSizePicker.tsx:21
 msgid "Smaller"
@@ -4829,6 +4829,8 @@ msgid ""
 "This can be used to make the app font size larger, though it may impact layout on some "
 "screens."
 msgstr ""
+"Это может быть использовано для увеличения размера шрифта приложения, хотя это может "
+"повлиять на отображение на некоторых экранах."
 
 #: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:95
 msgid ""
@@ -4894,12 +4896,12 @@ msgstr ""
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
 msgid "All"
-msgstr ""
+msgstr "Все"
 
 #: src/components/core/TabooSetPicker.tsx:62
 msgctxt "Taboo List"
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:28
 #, javascript-format
