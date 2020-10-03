@@ -183,6 +183,9 @@ export default class PickerComponent extends React.Component<Props> {
         disabledOverlayStyle={{
           backgroundColor: 'transparent',
         }}
+        titleProps={{
+          numberOfLines: 3,
+        }}
         titleStyle={settingsStyle ? {
           ...typography.text,
           color: colors ? colors.textColor : this.context.colors.darkText,

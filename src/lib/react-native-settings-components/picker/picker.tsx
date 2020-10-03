@@ -23,7 +23,7 @@ const style = StyleSheet.create({
   },
   defaultValueStyle: {
     fontSize: 14,
-    flex: 0,
+    flex: 2,
     paddingLeft: 8,
     paddingRight: 16,
   },
@@ -183,6 +183,7 @@ class SettingsPicker extends Component<Props, State> {
     } = this.props;
     const { pickerOpen, pickerValue } = this.state;
     const { backgroundStyle, colors, disabledStyle } = this.context;
+    const value = this.generateValStr();
     return (
       <View style={{ width: '100%' }}>
         {(!disabled) ? (
@@ -199,24 +200,34 @@ class SettingsPicker extends Component<Props, State> {
               renderCloseBtn={renderCloseBtn}
             />
             <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
-              <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>
-                {title}
-              </Text>
-              <Text {...valueProps} style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}>
-                {this.generateValStr()}
-              </Text>
+              { !!title && (
+                <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>
+                  {title}
+                </Text>
+              ) }
+              { !!value && (
+                <Text {...valueProps} style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}>
+                  { value }
+                </Text>
+              ) }
               { widget && <View style={widgetStyle}>{widget}</View> }
             </View>
           </TouchableOpacity>
         ) : (
           <View {...containerProps} style={[style.defaultContainerStyle, backgroundStyle, containerStyle]}>
-            <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>{title}</Text>
-            <Text
-              {...valueProps}
-              style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
-            >
-              {this.generateValStr()}
-            </Text>
+            { !!title && (
+              <Text {...titleProps} style={[style.defaultTitleStyle, titleStyle]}>
+                {title}
+              </Text>
+            ) }
+            { !!value && (
+              <Text
+                {...valueProps}
+                style={[style.defaultValueStyle, { color: colors.lightText }, valueStyle]}
+              >
+                {value}
+              </Text>
+            ) }
             <View style={[style.defaultDisabledOverlayStyle, disabledStyle, disabledOverlayStyle]} />
           </View>
         )}

@@ -24639,7 +24639,7 @@
     },
     {
       "id": "check_relic_is_missing",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -29951,7 +29951,7 @@
     },
     {
       "id": "check_relic_is_missing_easy",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -29982,7 +29982,7 @@
     },
     {
       "id": "check_relic_is_missing_standard",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -30013,7 +30013,7 @@
     },
     {
       "id": "check_relic_is_missing_hard",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -30044,7 +30044,7 @@
     },
     {
       "id": "check_relic_is_missing_expert",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -57789,7 +57789,7 @@
     },
     {
       "id": "check_relic_is_missing",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -58971,7 +58971,7 @@
     },
     {
       "id": "check_relic_is_missing_easy",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59002,7 +59002,7 @@
     },
     {
       "id": "check_relic_is_missing_standard",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59033,7 +59033,7 @@
     },
     {
       "id": "check_relic_is_missing_hard",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59064,7 +59064,7 @@
     },
     {
       "id": "check_relic_is_missing_expert",
-      "text": "<i>If the relic is missing</i>, the lead investigator reads <b>Growing Concern</b> instead.",
+      "text": "Если <i>реликвия пропала</i>, вместо этого он читает <b>«Растущее беспокойство»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
