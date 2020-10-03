@@ -7,6 +7,7 @@ import { t } from 'ttag';
 
 import PickerModal, { ModalStyle, PickerItem } from './picker.modal';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { xs } from '@styles/space';
 
 const style = StyleSheet.create({
   defaultContainerStyle: {
@@ -16,16 +17,18 @@ const style = StyleSheet.create({
     flexDirection: 'row',
   },
   defaultTitleStyle: {
-    flex: 1,
+    flex: 1.25,
     paddingLeft: 16,
-    paddingRight: 8,
+    paddingRight: 4,
     fontSize: 16,
   },
   defaultValueStyle: {
     fontSize: 14,
     flex: 2,
-    paddingLeft: 8,
+    paddingLeft: 4,
     paddingRight: 16,
+    paddingTop: xs,
+    paddingBottom: xs,
   },
   defaultDisabledOverlayStyle: {
     position: 'absolute',
