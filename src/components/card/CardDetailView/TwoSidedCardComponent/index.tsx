@@ -411,6 +411,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             {
               backgroundColor: noHeader ? 'transparent' : colors.background,
             },
+            !isFirst ? {
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            } : undefined,
           ]}>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
@@ -588,6 +592,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             {
               backgroundColor: noHeader ? 'transparent' : colors.background,
             },
+            !isFirst || simple ? {
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            } : undefined,
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
               <View style={styles.row}>
@@ -715,8 +723,6 @@ const styles = StyleSheet.create({
     paddingLeft: s,
     paddingRight: s + 1,
     paddingBottom: xs,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
   },
   gameTextBlock: {
     borderLeftWidth: 2,
