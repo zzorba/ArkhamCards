@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { difficultyString } from './constants';
 import { CampaignDifficulty } from '@actions/types';
-import space from '@styles/space';
+import space, { xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
 interface Props {
@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
   },
   difficulty: {
     borderRadius: 4,
+    paddingTop: xs,
   },
 });
