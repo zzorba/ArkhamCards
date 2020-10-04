@@ -10,6 +10,7 @@ import { showDeckModal } from '@components/nav/helper';
 import Card, { CardsMap } from '@data/Card';
 import { AppState, getDeck } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -26,6 +27,9 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class DeckXpSection extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _showDeckUpgrade = () => {
     const {
       investigator,
@@ -39,9 +43,11 @@ class DeckXpSection extends React.Component<Props> {
 
   _onPress = () => {
     const { componentId, deck, investigator } = this.props;
+    const { colors } = this.context;
     showDeckModal(
       componentId,
       deck,
+      colors,
       investigator,
       undefined,
       true

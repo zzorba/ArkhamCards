@@ -56,7 +56,7 @@ import { showCard, showCardSwipe } from '@components/nav/helper';
 import { s, m } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import StyleContext from '@styles/StyleContext';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 function funLoadingMessages() {
   return [
@@ -163,8 +163,8 @@ interface CardBucket extends SectionListData<Card> {
 }
 
 class CardResultList extends React.Component<Props, State> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
+  static contextType = StyleContext;
+  context!: StyleContextType;
 
   static randomLoadingMessage() {
     const messages = funLoadingMessages();
@@ -527,11 +527,13 @@ class CardResultList extends React.Component<Props, State> {
       renderFooter,
       singleCardView,
     } = this.props;
+    const { colors } = this.context;
     if (singleCardView) {
       showCard(
         componentId,
         card.code,
         card,
+        colors,
         true,
         tabooSetOverride
       );
@@ -559,6 +561,7 @@ class CardResultList extends React.Component<Props, State> {
         componentId,
         cards,
         index,
+        colors,
         showSpoilerCards,
         tabooSetOverride,
         deckCardCounts,

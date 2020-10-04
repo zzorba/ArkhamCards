@@ -7,6 +7,7 @@ import { Deck } from '@actions/types';
 import { showDeckModal } from '@components/nav/helper';
 import Card from '@data/Card';
 import { AppState, getDeck } from '@reducers';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -20,16 +21,20 @@ interface ReduxProps {
 type Props = OwnProps & ReduxProps;
 
 class ShowDeckButton extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
   _onPress = () => {
     const {
       componentId,
       investigator,
       deck,
     } = this.props;
+    const { colors } = this.context;
     if (deck) {
       showDeckModal(
         componentId,
         deck,
+        colors,
         investigator,
         undefined,
         true

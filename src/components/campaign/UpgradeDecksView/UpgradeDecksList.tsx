@@ -51,7 +51,8 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
       componentId,
       campaignId,
     } = this.props;
-    showDeckModal(componentId, deck, investigator, campaignId);
+    const { colors } = this.context;
+    showDeckModal(componentId, deck, colors, investigator, campaignId);
   }
 
   _upgradeDeckPressed = (deck: Deck, investigator: Card) => {

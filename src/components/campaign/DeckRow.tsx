@@ -8,6 +8,7 @@ import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { getDeck, AppState } from '@reducers';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -50,6 +51,8 @@ type Props =
   ReduxActionProps;
 
 class DeckRow extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
   _onDeckPress = () => {
     const {
       componentId,
@@ -57,7 +60,7 @@ class DeckRow extends React.Component<Props> {
       investigators,
     } = this.props;
     if (theDeck) {
-      showDeckModal(componentId, theDeck, investigators[theDeck.investigator_code]);
+      showDeckModal(componentId, theDeck, this.context.colors, investigators[theDeck.investigator_code]);
     }
   };
 

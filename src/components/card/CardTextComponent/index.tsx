@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import SimpleMarkdown from 'simple-markdown';
 import {
   MarkdownView,
@@ -207,7 +207,7 @@ function ItalicHtmlTagRule(style: StyleContextType): MarkdownRule<WithChildren, 
 
 interface Props {
   text: string;
-  onLinkPress?: (url: string) => void;
+  onLinkPress?: (url: string, context: StyleContextType) => void;
 }
 
 export default function CardText({ text, onLinkPress }: Props) {
@@ -218,6 +218,9 @@ export default function CardText({ text, onLinkPress }: Props) {
     .replace(/(^\s?-|^—\s+)(.+)$/gm,
       onLinkPress ? '<span class="icon-bullet"></span> $2' : '[bullet] $2'
     );
+  const wrappedOnLinkPress = useCallback((url: string) => {
+    onLinkPress && onLinkPress(url, context);
+  }, [onLinkPress]);
 
   // Text that has hyperlinks uses a different style for the icons.
   return (
@@ -256,7 +259,7 @@ export default function CardText({ text, onLinkPress }: Props) {
           marginBottom: 4,
         },
       }}
-      onLinkPress={onLinkPress}
+      onLinkPress={onLinkPress ? wrappedOnLinkPress : undefined}
     >
       { cleanText }
     </MarkdownView>

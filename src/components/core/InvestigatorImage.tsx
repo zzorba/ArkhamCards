@@ -42,7 +42,7 @@ export default class InvestigatorImage extends React.Component<Props> {
       if (imageLink) {
         showCardImage(componentId, card, colors);
       } else {
-        showCard(componentId, card.code, card, true);
+        showCard(componentId, card.code, card, colors, true);
       }
     }
   };

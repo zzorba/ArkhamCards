@@ -103,10 +103,12 @@ class DeckChecklistView extends React.Component<Props, State> {
       componentId,
       tabooSetOverride,
     } = this.props;
+    const { colors } = this.context;
     showCard(
       componentId,
       card.code,
       card,
+      colors,
       true,
       tabooSetOverride
     );

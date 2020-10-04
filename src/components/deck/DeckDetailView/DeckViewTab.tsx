@@ -309,12 +309,14 @@ export default class DeckViewTab extends React.Component<Props, State> {
       componentId,
       tabooSetId,
     } = this.props;
+    const { colors } = this.context;
     const investigator = this.investigatorFront();
     if (investigator) {
       showCard(
         componentId,
         investigator.code,
         investigator,
+        colors,
         false,
         tabooSetId,
       );
@@ -332,12 +334,14 @@ export default class DeckViewTab extends React.Component<Props, State> {
       onDeckCountChange,
       singleCardView,
     } = this.props;
+    const { colors } = this.context;
     const investigator = this.investigatorFront();
     if (singleCardView) {
       showCard(
         componentId,
         card.code,
         card,
+        colors,
         true,
         tabooSetId
       );
@@ -361,6 +365,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       componentId,
       cards,
       index,
+      colors,
       false,
       tabooSetId,
       slots,

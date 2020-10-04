@@ -12,11 +12,11 @@ import { CardDetailSwipeProps } from '@components/card/CardDetailSwipeView';
 import { Deck, ParsedDeck, Slots } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
-import COLORS from '@styles/colors';
 import { CardImageProps } from '@components/card/CardImageView';
 import { ThemeColors } from '@styles/theme';
 
 export function getDeckOptions(
+  colors: ThemeColors,
   {
     inputOptions = {},
     modal,
@@ -56,14 +56,14 @@ export function getDeckOptions(
         },
       ] : topBarOptions.leftButtons || [],
       background: {
-        color: COLORS.faction[
+        color: colors.faction[
           (investigator ? investigator.faction_code : null) || 'neutral'
         ].darkBackground,
       },
       rightButtons: topBarOptions.rightButtons,
     },
     layout: {
-      backgroundColor: COLORS.L30,
+      backgroundColor: colors.L30,
     },
     bottomTabs: {
       visible: false,
@@ -91,6 +91,7 @@ export function getDeckOptions(
 export function showDeckModal(
   componentId: string,
   deck: Deck,
+  colors: ThemeColors,
   investigator?: Card,
   campaignId?: number,
   hideCampaign?: boolean,
@@ -111,7 +112,7 @@ export function showDeckModal(
         component: {
           name: 'Deck',
           passProps,
-          options: getDeckOptions({
+          options: getDeckOptions(colors, {
             modal: true,
             title: deck.name,
           }, investigator),
@@ -125,6 +126,7 @@ export function showCard(
   componentId: string,
   code: string,
   card: Card,
+  colors: ThemeColors,
   showSpoilers?: boolean,
   tabooSetId?: number
 ) {
@@ -141,7 +143,7 @@ export function showCard(
         topBar: {
           backButton: {
             title: t`Back`,
-            color: COLORS.M,
+            color: colors.M,
           },
         },
       },
@@ -151,7 +153,8 @@ export function showCard(
 
 export function showCardCharts(
   componentId: string,
-  parsedDeck: ParsedDeck
+  parsedDeck: ParsedDeck,
+  colors: ThemeColors
 ) {
   Navigation.push<DeckChartsProps>(componentId, {
     component: {
@@ -159,7 +162,7 @@ export function showCardCharts(
       passProps: {
         parsedDeck,
       },
-      options: getDeckOptions({
+      options: getDeckOptions(colors, {
         title: t`Charts`,
       }, parsedDeck.investigator),
     },
@@ -168,7 +171,8 @@ export function showCardCharts(
 
 export function showDrawSimulator(
   componentId: string,
-  parsedDeck: ParsedDeck
+  parsedDeck: ParsedDeck,
+  colors: ThemeColors
 ) {
   const {
     slots,
@@ -180,9 +184,12 @@ export function showDrawSimulator(
       passProps: {
         slots,
       },
-      options: getDeckOptions({
-        title: t`Draw Simulator`,
-      }, investigator),
+      options: getDeckOptions(
+        colors,
+        {
+          title: t`Draw Simulator`,
+        },
+        investigator),
     },
   });
 }
@@ -191,6 +198,7 @@ export function showCardSwipe(
   componentId: string,
   cards: Card[],
   index: number,
+  colors: ThemeColors,
   showSpoilers?: boolean,
   tabooSetId?: number,
   deckCardCounts?: Slots,
@@ -199,12 +207,12 @@ export function showCardSwipe(
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
 ) {
   const options = investigator ?
-    getDeckOptions({ title: '' }, investigator) :
+    getDeckOptions(colors, { title: '' }, investigator) :
     {
       topBar: {
         backButton: {
           title: t`Back`,
-          color: COLORS.M,
+          color: colors.M,
         },
       },
     };

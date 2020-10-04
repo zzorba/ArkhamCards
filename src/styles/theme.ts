@@ -54,6 +54,13 @@ export interface ThemeColors {
   sanity: string;
   disableOverlay: string;
   scenarioGreen: string;
+  campaign:{
+    gold: string;
+    blue: string;
+    teal: string;
+    green: string;
+    purple: string;
+  }
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -155,6 +162,13 @@ export const LIGHT_THEME: ThemeColors = {
   health: '#8D181E',
   sanity: '#165385',
   scenarioGreen: '#2E5344',
+  campaign: {
+    gold: '#c99b3833',
+    blue: '#00408033',
+    teal: '#00666633',
+    purple: '#cc009933',
+    green: '#33660033',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
@@ -249,4 +263,11 @@ export const DARK_THEME: ThemeColors = {
   health: '#AE4236',
   sanity: '#2C7FC0',
   scenarioGreen: '#1fab73',
+  campaign: {
+    gold: '#755a2088',
+    blue: '#395c8088',
+    teal: '#2a666688',
+    purple: '#5a337d88',
+    green: '#33660088',
+  },
 };

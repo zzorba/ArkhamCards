@@ -1,45 +1,13 @@
 import {
-  ColorValue,
   Platform,
   PlatformColor,
   DynamicColorIOS,
 } from 'react-native';
 
 const medium = '#9B9B9B';
-const L30: ColorValue = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#FFFBF2', dark: '#24303C' }) : PlatformColor('@color/L30')) as any as string;
 
 export default {
-  L30,
   M: medium,
-  faction: {
-    guardian: {
-      darkBackground: '#2b80c5',
-    },
-    seeker: {
-      darkBackground: '#db7c07',
-    },
-    rogue: {
-      darkBackground: '#107116',
-    },
-    mystic: {
-      darkBackground: '#4331b9',
-    },
-    survivor: {
-      darkBackground: '#cc3038',
-    },
-    neutral: {
-      darkBackground: '#444444',
-    },
-    dual: {
-      darkBackground: '#c0c000',
-    },
-    dead: {
-      darkBackground: '#5a3510',
-    },
-    mythos: {
-      darkBackground: (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#000000', dark: '#444444' }) : PlatformColor('@color/factionMythosDarkBackgroundColor')) as any as string,
-    },
-  },
   skill: {
     willpower: {
       default: '#165385',

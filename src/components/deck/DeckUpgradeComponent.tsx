@@ -144,7 +144,8 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
   }
 
   _onCardPress = (card: Card) => {
-    showCard(this.props.componentId, card.code, card);
+    const { colors } = this.context;
+    showCard(this.props.componentId, card.code, card, colors);
   };
 
   _onExileCountsChange = (exileCounts: Slots) => {

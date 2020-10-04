@@ -43,7 +43,8 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
 
   _onCardPress = (card: Card) => {
     const { componentId } = this.props;
-    showCard(componentId, card.code, card, true);
+    const { colors } = this.context;
+    showCard(componentId, card.code, card, colors, true);
   };
 
   _renderStoryAsset = (card: Card) => {
@@ -204,10 +205,12 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       investigator,
       deck,
     } = this.props;
+    const { colors } = this.context;
     if (deck) {
       showDeckModal(
         componentId,
         deck,
+        colors,
         investigator,
         campaignId,
         true

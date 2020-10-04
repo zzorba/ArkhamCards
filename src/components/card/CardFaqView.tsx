@@ -23,7 +23,7 @@ import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
 import space, { m } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface CardFaqProps {
   id: string;
@@ -68,22 +68,22 @@ class CardFaqView extends React.Component<Props, State> {
     });
   }
 
-  async openCard(code: string) {
+  async openCard(code: string, { colors }: StyleContextType) {
     const { componentId, tabooSetId } = this.props;
     const card = await this.context.db.getCard(
       where('c.code = :code', { code }),
       tabooSetId
     );
     if (card) {
-      showCard(componentId, code, card);
+      showCard(componentId, code, card, colors);
     }
   }
 
-  _linkPressed = (url: string) => {
+  _linkPressed = (url: string, context: StyleContextType) => {
     const regex = /\/card\/(\d+)/;
     const match = url.match(regex);
     if (match) {
-      this.openCard(match[1]);
+      this.openCard(match[1], context);
     } else if (url.indexOf('arkhamdb.com') !== -1) {
       this.openUrl(url);
     } else if (startsWith(url, '/')) {

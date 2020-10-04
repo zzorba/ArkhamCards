@@ -7,6 +7,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { DeckChanges, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -23,6 +24,9 @@ interface Props {
 }
 
 export default class ChangesFromPreviousDeck extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   cards(slots: Slots): Card[] {
     const {
       cards,
@@ -67,14 +71,16 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       onDeckCountChange,
       singleCardView,
     } = this.props;
+    const { colors } = this.context;
     if (singleCardView) {
-      showCard(componentId, card.code, card, true);
+      showCard(componentId, card.code, card, colors, true);
     } else {
       const allCards = this.allCards();
       showCardSwipe(
         componentId,
         this.allCards(),
         findIndex(allCards, c => c.code === card.code),
+        colors,
         true,
         tabooSetId,
         slots,

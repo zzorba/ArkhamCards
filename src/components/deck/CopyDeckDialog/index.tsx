@@ -134,7 +134,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
       toggleVisible();
     }
     // Change the deck options for required cards, if present.
-    showDeckModal(componentId, deck, investigator);
+    showDeckModal(componentId, deck, this.context.colors, investigator);
   };
 
   selectedDeck(): Deck | undefined {

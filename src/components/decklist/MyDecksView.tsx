@@ -96,7 +96,7 @@ class MyDecksView extends React.Component<Props, State> {
   }
 
   _deckNavClicked = (deck: Deck, investigator?: Card) => {
-    showDeckModal(this.props.componentId, deck, investigator);
+    showDeckModal(this.props.componentId, deck, this.context.colors, investigator);
   };
 
   _toggleLocalDecksOnly = () => {

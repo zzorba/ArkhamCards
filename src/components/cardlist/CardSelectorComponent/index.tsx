@@ -7,6 +7,7 @@ import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -22,6 +23,9 @@ interface OwnProps {
 type Props = OwnProps & PlayerCardProps & DimensionsProps;
 
 class CardSelectorComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _onChange = (card: Card, count: number) => {
     const {
       counts,
@@ -39,7 +43,8 @@ class CardSelectorComponent extends React.Component<Props> {
   };
 
   _onCardPress = (card: Card) => {
-    showCard(this.props.componentId, card.code, card, true);
+    const { colors } = this.context;
+    showCard(this.props.componentId, card.code, card, colors, true);
   };
 
   cards() {
