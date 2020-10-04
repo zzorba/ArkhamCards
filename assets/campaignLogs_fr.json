@@ -3688,8 +3688,8 @@
             "text": "Innsmouth Jail"
           },
           {
-            "id": "accuse_sawbone_lane",
-            "text": "Sawbone Lane"
+            "id": "accuse_sawbone_alley",
+            "text": "Sawbone Alley"
           },
           {
             "id": "accuse_slums",
@@ -3757,8 +3757,8 @@
             "text": "a battle with a horrifying devil"
           },
           {
-            "id": "decision_to_stay_together",
-            "text": "a decision to stay together"
+            "id": "decision_to_stick_together",
+            "text": "a decision to stick together"
           },
           {
             "id": "encounter_with_a_secret_cult",
@@ -3790,8 +3790,8 @@
             "text": "Esoteric Order of Dagon"
           },
           {
-            "id": "sawbone_lane",
-            "text": "Sawbone Lane"
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley"
           },
           {
             "id": "shoreward_slums",

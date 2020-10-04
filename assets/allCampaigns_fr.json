@@ -63014,8 +63014,8 @@
         {
           "type": "campaign_log",
           "section": "possible_hideouts",
-          "id": "sawbone_lane",
-          "text": "Sawbone Lane"
+          "id": "sawbone_alley",
+          "text": "Sawbone Alley"
         },
         {
           "type": "campaign_log",
@@ -63324,7 +63324,7 @@
     "check_meeting_with_thomas_dawson",
     "check_no_memories_recovered",
     "check_battle_with_a_horrifying_devil",
-    "check_decision_to_stay_together",
+    "check_decision_to_stick_together",
     "check_encounter_with_a_secret_cult",
     "outro"
   ],
@@ -63436,13 +63436,13 @@
       ]
     },
     {
-      "id": "check_decision_to_stay_together",
+      "id": "check_decision_to_stick_together",
       "type": "branch",
-      "text": "If <i>a decision to stay together</i> is listed under \"Memories Recovered\":",
+      "text": "If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
       "condition": {
         "type": "campaign_log",
         "section": "memories_recovered",
-        "id": "decision_to_stay_together",
+        "id": "decision_to_stick_together",
         "options": [
           {
             "boolCondition": true,
@@ -63905,13 +63905,13 @@
     },
     {
       "id": "flashback_3_effects",
-      "text": "In the Campaign Log, under “Memories Recovered,“ record <i>a decision to stay together</i>.\nRemove 1 [tablet] token from the chaos bag for the remainder of the campaign.",
+      "text": "In the Campaign Log, under “Memories Recovered,“ record <i>a decision to stick together</i>.\nRemove 1 [tablet] token from the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "memories_recovered",
-          "id": "decision_to_stay_together",
-          "text": "a decision to stay together"
+          "id": "decision_to_stick_together",
+          "text": "a decision to stick together"
         },
         {
           "type": "remove_chaos_token",
@@ -64724,12 +64724,12 @@
             ]
           },
           {
-            "id": "sawbone_lane",
-            "text": "Sawbone Lane",
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley",
             "condition": {
               "type": "campaign_log",
               "section": "possible_hideouts",
-              "id": "sawbone_lane",
+              "id": "sawbone_alley",
               "options": [
                 {
                   "boolCondition": true
@@ -64740,7 +64740,7 @@
               {
                 "type": "campaign_log",
                 "section": "possible_hideouts",
-                "id": "sawbone_lane",
+                "id": "sawbone_alley",
                 "cross_out": true
               }
             ]
@@ -65030,12 +65030,12 @@
             ]
           },
           {
-            "id": "sawbone_lane",
-            "text": "Sawbone Lane",
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley",
             "condition": {
               "type": "campaign_log",
               "section": "possible_hideouts",
-              "id": "sawbone_lane",
+              "id": "sawbone_alley",
               "options": [
                 {
                   "boolCondition": true
@@ -65046,8 +65046,8 @@
               {
                 "type": "campaign_log",
                 "section": "hidden",
-                "id": "accuse_sawbone_lane",
-                "text": "Sawbone Lane"
+                "id": "accuse_sawbone_alley",
+                "text": "Sawbone Alley"
               }
             ]
           },
@@ -65486,12 +65486,12 @@
             ]
           },
           {
-            "id": "sawbone_lane",
-            "text": "Sawbone Lane",
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley",
             "condition": {
               "type": "campaign_log",
               "section": "possible_hideouts",
-              "id": "sawbone_lane",
+              "id": "sawbone_alley",
               "options": [
                 {
                   "boolCondition": true
@@ -65502,12 +65502,12 @@
               {
                 "type": "campaign_log",
                 "section": "possible_hideouts",
-                "id": "sawbone_lane",
+                "id": "sawbone_alley",
                 "decorate": "circle"
               }
             ],
             "steps": [
-              "check_accuse_sawbone_lane"
+              "check_accuse_sawbone_alley"
             ]
           },
           {
@@ -65637,13 +65637,13 @@
       }
     },
     {
-      "id": "check_accuse_sawbone_lane",
+      "id": "check_accuse_sawbone_alley",
       "hidden": true,
       "type": "branch",
       "condition": {
         "type": "campaign_log",
         "section": "hidden",
-        "id": "accuse_sawbone_lane",
+        "id": "accuse_sawbone_alley",
         "options": [
           {
             "boolCondition": true,

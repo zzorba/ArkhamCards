@@ -133,7 +133,6 @@ export default class App {
     const darkMode = system ? colorScheme === 'dark' : this.currentThemeOverride === 'dark';
     const colors = darkMode ? DARK_THEME : LIGHT_THEME;
 
-    const ios12 = Platform.OS === 'ios' && parseInt(`${Platform.Version}`, 10) < 13;
     const defaultOptions: Options = {
       statusBar: {
         backgroundColor: colors.background,
@@ -156,7 +155,7 @@ export default class App {
         },
         background: {
           translucent: false,
-          color: ios12 ? colors.ios12Background : colors.L30,
+          color: colors.L30,
           clipToBounds: false,
         },
         backButton: {
@@ -180,7 +179,7 @@ export default class App {
         backgroundColor: colors.background,
         barStyle: darkMode ? 'black' : 'default',
         // Bug with RNN, translucent always inherits the system setting.
-        translucent: ios12 || systemPreference === darkMode,
+        translucent: systemPreference === darkMode,
       },
       bottomTab: {
         iconColor: colors.M,

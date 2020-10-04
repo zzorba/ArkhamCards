@@ -3702,7 +3702,7 @@
             "text": "Gefängnis von Innsmouth"
           },
           {
-            "id": "accuse_sawbone_lane",
+            "id": "accuse_sawbone_alley",
             "text": "Knochensägergasse"
           },
           {
@@ -3771,7 +3771,7 @@
             "text": "ein Kampf mit einem schrecklichen Teufel"
           },
           {
-            "id": "decision_to_stay_together",
+            "id": "decision_to_stick_together",
             "text": "der Beschluss zusammenzubleiben"
           },
           {
@@ -3804,7 +3804,7 @@
             "text": "Esoterischer Orde n von Dagon"
           },
           {
-            "id": "sawbone_lane",
+            "id": "sawbone_alley",
             "text": "Knochensägergasse"
           },
           {

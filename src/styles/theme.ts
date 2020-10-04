@@ -18,7 +18,6 @@ export interface SkillColor {
 }
 
 export interface ThemeColors {
-  ios12Background: string;
   fight: string;
   evade: string;
   L10: string;
@@ -65,7 +64,6 @@ const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
 export const LIGHT_THEME: ThemeColors = {
-  ios12Background: '#FFFFFF',
   fight: '#8D181E',
   evade: '#0D6813',
   L10: light10,
@@ -160,7 +158,6 @@ export const LIGHT_THEME: ThemeColors = {
 };
 
 export const DARK_THEME: ThemeColors = {
-  ios12Background: '#000000',
   fight: '#EE4A53',
   evade: '#48B14F',
   D10: light10,
