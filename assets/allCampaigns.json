@@ -57181,7 +57181,7 @@
           "text": "If a location with a key on it has no clues, an investigator may take control of each of that location's keys as a [fast] ability."
         },
         {
-          "text": "If an investigator causes an enemy with a key on it to leave play, that investigator may take control of each of the keys that were on that enemy. (If it leaves play through some other means, place its keys on its location.)"
+          "text": "If an investigator causes an enemy with a key on it to leave play, that investigator must take control of each of the keys that were on that enemy. (If it leaves play through some other means, place its keys on its location.)"
         },
         {
           "text": "Some card effects may allow an investigator to take control of keys in other ways."
@@ -57208,7 +57208,7 @@
           "text": "If a location's flood level is \"increased\", it changes from unflooded to partially flooded, or from partially flooded to fully flooded. A fully flooded location cannot have its flood level increased."
         },
         {
-          "text": "If a location's flood level is \"decreased\", it changes from fully flooded to partially flooded, or from partially flooded to unflooded. A a location becomes unflooded, remove its flood token."
+          "text": "If a location's flood level is \"decreased\", it changes from fully flooded to partially flooded, or from partially flooded to unflooded. If a location becomes unflooded, remove its flood token."
         },
         {
           "text": "For the purposes of card effects, both partially flooded locations and fully flooded locations are considered to be \"flooded.\""
@@ -57542,7 +57542,7 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Find each of the following locations and set them aside, out of pay: Idol Chamber, Altar to Dagon, and Sealed Exit <i>(each of these locations is on the reverse side of a Tidal Tunnel location)</i>."
+      "text": "Find each of the following locations and set them aside, out of play: Idol Chamber, Altar to Dagon, and Sealed Exit <i>(each of these locations is on the reverse side of a Tidal Tunnel location)</i>."
     },
     {
       "id": "setup_tidal_tunnel_locations",
@@ -57577,7 +57577,7 @@
       "text": "Some cards in this scenario refer to an area called \"the depths.\" The depths is an out-of-play area next to the act and agenda decks that The Amalgam enemy can enter and leave via card effects. While The Amalgam is in the depths, it is out of play and cannot be affected by player cards or investigator actions.",
       "bullets": [
         {
-          "text": "<b>When The Amalgam moves from play to the depths, remove all tokens from it excepty for its key tokens.</b> Key tokens are not removed from The Amalgam when it enters the depths unless it was defeated by an investigator, in which case that investigator takes control of each of its keys."
+          "text": "<b>When The Amalgam moves from play to the depths, remove all tokens from it except for its key tokens.</b> Key tokens are not removed from The Amalgam when it enters the depths unless it was defeated by an investigator, in which case that investigator takes control of each of its keys."
         }
       ]
     },
@@ -57593,7 +57593,7 @@
           "text": "A location that is put into play below or to the left or right of another location should be set next to that location in the indicated position, with no other locations between them. A location that is next to another location in this manner is considered \"adjacent.\""
         },
         {
-          "text": "Locations are only adjacent orthoganlly (left, right, above, or below); they are not adjacent diagonally."
+          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
         },
         {
           "text": "You cannot put a location into play where an existing location already is. If you are instructed to place a new location from the Tidal Tunnel deck in a spot that is already occupied by an existing location, the new location does not enter play."
@@ -57794,7 +57794,7 @@
     },
     {
       "id": "yellow_key",
-      "text": "Yellow: A calcified piece of chitlin in the shape of a tentacle."
+      "text": "Yellow: A calcified piece of chitin in the shape of a tentacle."
     },
     {
       "id": "purple_key",
