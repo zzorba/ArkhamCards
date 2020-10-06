@@ -63332,7 +63332,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You have no idea who this woman is or how she knows you, yet she seems comfortable and familiar with you. You strain your memory trying to think of how you might have met, but it's no use. You're certain she is a complete stranger. Having woken up in a cold, wet prison with no memories, you aren't feeling very sociable. Your fear and distrust must show, because the woman backs off and narrows her eyes. \"What is it? What's wrong?\"\nYou respond by asking the woman if you know her. \"You truly don't remember? Well, that's going to complicate things. What do you recall? Do you remember anything?\"\nYou relat to the woman the flashes of recollection that you experienced earlier..."
+      "text": "You have no idea who this woman is or how she knows you, yet she seems comfortable and familiar with you. You strain your memory trying to think of how you might have met, but it's no use. You're certain she is a complete stranger. Having woken up in a cold, wet prison with no memories, you aren't feeling very sociable. Your fear and distrust must show, because the woman backs off and narrows her eyes. \"What is it? What's wrong?\"\nYou respond by asking the woman if you know her. \"You truly don't remember? Well, that's going to complicate things. What do you recall? Do you remember anything?\"\nYou relate to the woman the flashes of recollection that you experienced earlier..."
     },
     {
       "id": "check_memories_recovered",
@@ -63598,7 +63598,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set each of the following cards aside, out of play: The Amalgam enemy, both copies of Blindsense treachery, and all 3 copies of the From the Depths treachery."
+      "text": "Set each of the following cards aside, out of play: The Amalgam enemy, both copies of the Blindsense treachery, and all 3 copies of the From the Depths treachery."
     },
     {
       "id": "setup_flood_markers",
@@ -63838,7 +63838,7 @@
     },
     {
       "id": "blue_key",
-      "text": "Blue: an idol of a malformed aquatic creature"
+      "text": "Blue: an idol of a malformed aquatic creature."
     },
     {
       "id": "green_key",
@@ -63881,7 +63881,7 @@
     },
     {
       "id": "flashback_2_effects",
-      "text": "In the Campaign Log, under “Memories Recovered,“ record <i>a battle with a horrifying devil</i>.\nRemove 1 [cultist] token from the chaos bag for the remainder of the campaign.",
+      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a battle with a horrifying devil</i>.\nRemove 1 [cultist] token from the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -63905,7 +63905,7 @@
     },
     {
       "id": "flashback_3_effects",
-      "text": "In the Campaign Log, under “Memories Recovered,“ record <i>a decision to stick together</i>.\nRemove 1 [tablet] token from the chaos bag for the remainder of the campaign.",
+      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a decision to stick together</i>.\nRemove 1 [tablet] token from the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -63929,7 +63929,7 @@
     },
     {
       "id": "flashback_4_effects",
-      "text": "In the Campaign Log, under “Memories Recovered,“ record <i>an encounter with a secret cult</i>.\nRemove 1 [elder_thing] token from the chaos bag for the remainder of the campaign.",
+      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>an encounter with a secret cult</i>.\nRemove 1 [elder_thing] token from the chaos bag for the remainder of the campaign.",
       "effects": [
         {
           "type": "campaign_log",
@@ -63963,7 +63963,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "In the distance, the sky is a dark crimsono, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back too your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhtymic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
+      "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back too your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhtymic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
       "steps": [
         "earn_xp"
       ]
@@ -63986,7 +63986,7 @@
     {
       "id": "syzygy_1",
       "type": "story",
-      "text": "Light flashes in your mind. Shadows drown your thoughts as the memory fades. You are lying once again on the rocky beach off the coast, your skull pounding in agony. Agent Harper leans over you with worry etched in her brow. \"Hey! Hey, you finally awake?\"\nYou set up, your muscles aching. It looks like the tide rose several more inches while you were out. The cold water laps at your ankles and soaks into your shoes. \"What happened?\" she says. \"What did you see?\""
+      "text": "Light flashes in your mind. Shadows drown your thoughts as the memory fades. You are lying once again on the rocky beach off the coast, your skull pounding in agony. Agent Harper leans over you with worry etched in her brow. \"Hey! Hey, you finally awake?\"\nYou sit up, your muscles aching. It looks like the tide rose several more inches while you were out. The cold water laps at your ankles and soaks into your shoes. \"What happened?\" she says. \"What did you see?\""
     },
     {
       "id": "check_mission_failed",
@@ -64108,7 +64108,7 @@
           "text": "Down the street from the Gilman House, tucked between a dismal restaurant and a drugstore, is the Little Bookshop, so named not for its size, but after its owner, Joyce Little. Mr. Sargent doesn't seem to care much for her."
         },
         {
-          "text": "To the north, along the Manuxet, is the Marsh Refining Company, the centerpiece of the town's only industry. Joe speaks of its owner, Barnabas—whom he calls \"Old Man Marsh\"—with a measure of reverance and admiration."
+          "text": "To the north, along the Manuxet, is the Marsh Refining Company, the centerpiece of the town's only industry. Joe speaks of its owner, Barnabas—whom he calls \"Old Man Marsh\"—with a measure of reverence and admiration."
         },
         {
           "text": "Mr. Sargent tells you to avoid the old bridge along Fish Street, which is collapsed from years of disrepair and now serves only as a haunt for the dispossessed. \"An' don' listen to that drunk, Zadok,\" the bus driver warns. \"'Is tales are jus' that. Tales. Nothin' more.\""
@@ -64177,13 +64177,13 @@
           "text": "Randomly choose one card from each pile (one [[Suspect]] enemy and one [[Hideout]] location) and place them facedown beneath the Finding Agent Harper card without looking at them."
         },
         {
-          "text": "Shuffle the ten remaiining cards from the two piles together to form a deck. This deck is called the Leads deck. Place it near the scenario reference card."
+          "text": "Shuffle the ten remaining cards from the two piles together to form a deck. This deck is called the Leads deck. Place it near the scenario reference card."
         }
       ]
     },
     {
       "id": "set_aside_agenda_act",
-      "text": "Set agenda3 and act 2 aside, out of play. <i>(Do not use them when building the agenda deck and act deck.)</i>"
+      "text": "Set agenda 3 and act 2 aside, out of play. <i>(Do not use them when building the agenda deck and act deck.)</i>"
     },
     {
       "id": "set_aside_cards",
@@ -65864,7 +65864,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "You are cleaning up the mess left behind by those who vandalized your hotel room when you hear shuffling outside your door. Fearing the worst, you press up against the wall and wait in perfect silence. There is no escape from your room other than a narrow window of dirty glass that you don't think you can fit through. Your heart thumps loudly in your chest as you wait for whatever is to come—a knock on the door, a break-in anything. You certainly aren't expecting a small leather notebook to slip through the crack under your door, though that's exactly what happens.\nAfter a moment, you breathe a sigh of relief and step forward to examine the notebook. It's an old handwritten accound describing the history of the strange town of Innsmouth as far back as the early eighteen hundreds, though the author goes unnamed. The record seems to focus primarily on Obed Marsh's founding of a strange organization called the Esoteric Order of Dagon. You don't remember any manuscripts of this sort ono sale at the local bookstore, nor do you think the town has any libraries to speak of. Where was this notebook found, and who delivered it to you?\nCuriosity gets the better of you. You open the door to your hotel room, but the dim, dusty hallway lies bare before you. The identity of your benefactor eludes you. Still, you can't pass up a chance like this. For the remainder of the night, you study the record jotting notes in the margin as you draw connections between Innsmouth's past and the events of the past week. One thing becomes clear: whatever the Esoteric Order of Dagon is, its members must be the ones behind Agent Harper's kidnapping. And just as Agent Dawson suspected, their motives seem to have nothing to do with evading prohibition...",
+      "text": "You are cleaning up the mess left behind by those who vandalized your hotel room when you hear shuffling outside your door. Fearing the worst, you press up against the wall and wait in perfect silence. There is no escape from your room other than a narrow window of dirty glass that you don't think you can fit through. Your heart thumps loudly in your chest as you wait for whatever is to come—a knock on the door, a break-in anything. You certainly aren't expecting a small leather notebook to slip through the crack under your door, though that's exactly what happens.\nAfter a moment, you breathe a sigh of relief and step forward to examine the notebook. It's an old handwritten accound describing the history of the strange town of Innsmouth as far back as the early eighteen hundreds, though the author goes unnamed. The record seems to focus primarily on Obed Marsh's founding of a strange organization called the Esoteric Order of Dagon. You don't remember any manuscripts of this sort on sale at the local bookstore, nor do you think the town has any libraries to speak of. Where was this notebook found, and who delivered it to you?\nCuriosity gets the better of you. You open the door to your hotel room, but the dim, dusty hallway lies bare before you. The identity of your benefactor eludes you. Still, you can't pass up a chance like this. For the remainder of the night, you study the record jotting notes in the margin as you draw connections between Innsmouth's past and the events of the past week. One thing becomes clear: whatever the Esoteric Order of Dagon is, its members must be the ones behind Agent Harper's kidnapping. And just as Agent Dawson suspected, their motives seem to have nothing to do with evading prohibition...",
       "steps": [
         "earn_xp",
         "mission_failed"
@@ -65873,7 +65873,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser too ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
+      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser to ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
@@ -65909,7 +65909,7 @@
     {
       "id": "R6",
       "title": "Resolution 6",
-      "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't y seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
+      "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't ye seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
       "steps": [
         "earn_xp",
         "mission_succeeded"
