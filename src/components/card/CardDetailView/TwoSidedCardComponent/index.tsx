@@ -286,7 +286,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
     return (
-      <SlotIcon slot={card.real_slot} />
+      <View style={styles.iconRow}>
+        { map(card.real_slot.split("."), slot => <SlotIcon key={slot} slot={slot.trim()} /> ) }
+      </View>
     );
   }
 
@@ -748,5 +750,9 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingTop: 2,
     borderRadius: 8,
+  },
+  iconRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 });

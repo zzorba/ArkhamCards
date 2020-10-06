@@ -126,7 +126,7 @@ export const LIGHT_THEME: ThemeColors = {
     },
     dual: {
       text: '#868600',
-      background: '#9a9a00',
+      background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
     },
@@ -227,8 +227,8 @@ export const DARK_THEME: ThemeColors = {
       lightBackground: '#292929',
     },
     dual: {
-      text: '#bfbf4d',
-      background: '#9a9a00',
+      text: '#E9D06C',
+      background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
     },

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import StyleContext from '@styles/StyleContext';
-import space from '@styles/space';
+import space, { xs } from '@styles/space';
 
 interface Props {
   slot: string;
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     width: 38,
     height: 38,
     borderRadius: 19,
+    marginLeft: xs,
   },
   icon: {
     position: 'absolute',
