@@ -60,6 +60,7 @@ export interface ThemeColors {
     teal: string;
     green: string;
     purple: string;
+    red: string;
   }
 }
 const light10 = '#D7D3C6';
@@ -166,8 +167,9 @@ export const LIGHT_THEME: ThemeColors = {
     gold: '#c99b3833',
     blue: '#00408033',
     teal: '#00666633',
-    purple: '#cc009933',
-    green: '#33660033',
+    purple: '#46088733',
+    green: '#325c0933',
+    red: '#96000333',
   },
 };
 
@@ -267,7 +269,8 @@ export const DARK_THEME: ThemeColors = {
     gold: '#755a2088',
     blue: '#395c8088',
     teal: '#2a666688',
-    purple: '#5a337d88',
+    purple: '#7c559e88',
     green: '#33660088',
+    red: '#8f474988',
   },
 };

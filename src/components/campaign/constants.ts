@@ -308,8 +308,9 @@ export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
       return colors.campaign.purple;
     case 'tfa':
     case 'rttfa':
+      return colors.campaign.green;
     case 'tic':
-        return colors.campaign.green;
+      return colors.campaign.red;
     case 'dwl':
     case 'rtdwl':
       return colors.campaign.teal;
