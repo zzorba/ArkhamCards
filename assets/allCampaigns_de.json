@@ -63379,19 +63379,29 @@
       "type": "branch",
       "text": "Falls nichts unter „Zurückerlangte Erinnerungen“ notiert ist:",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "memories_recovered",
-        "id": "$num_entries",
-        "max": 4,
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_count",
+            "section": "memories_recovered",
+            "id": "$num_entries",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
-            "numCondition": 0,
+            "boolCondition": true,
             "steps": [
               "no_memories_recovered_story"
             ]
           }
-        ],
-        "defaultOption": {}
+        ]
       }
     },
     {

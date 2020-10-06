@@ -57344,17 +57344,27 @@
       "type": "branch",
       "text": "If nothing is listed under \"Memories Recovered\":",
       "condition": {
-        "type": "campaign_log_count",
-        "section": "memories_recovered",
-        "id": "$num_entries",
-        "max": 4,
-        "options": [
+        "type": "multi",
+        "conditions": [
           {
-            "numCondition": 0,
-            "steps": ["no_memories_recovered_story"]
+            "type": "campaign_log_count",
+            "section": "memories_recovered",
+            "id": "$num_entries",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              }
+            ]
           }
         ],
-        "defaultOption": {}
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": ["no_memories_recovered_story"]
+          }
+        ]
       }
     },
     {
