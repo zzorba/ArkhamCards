@@ -286,7 +286,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
     return (
-      <View style={styles.iconRow}>
+      <View style={styles.iconRow} accessibilityLabel={t`Slot: ${card.slot}`}>
         { map(card.real_slot.split("."), slot => <SlotIcon key={slot} slot={slot.trim()} /> ) }
       </View>
     );

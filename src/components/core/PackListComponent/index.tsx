@@ -57,7 +57,7 @@ export default class PackListComponent extends React.Component<Props> {
       case '50': return t`Return to...`;
       case '60': return t`Investigator Starter Decks`;
       case '70': return t`Standalone`;
-      case '80': return t`Miscelaneous`;
+      case '80': return t`Miscellaneous`;
       case '90': return t`Parallel`;
       default: return 'Unknown';
     }
