@@ -57,7 +57,7 @@ export default class LocationCard extends React.Component<Props> {
             {
               borderWidth: 2,
               borderStyle: 'dashed',
-              backgroundColor: colors.L30,
+              backgroundColor: colors.L20,
             }]} />
         );
       case 'player_back':
