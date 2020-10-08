@@ -63543,6 +63543,7 @@
     "setup_locations",
     "set_aside_locations",
     "setup_tidal_tunnel_locations",
+    "location_layout",
     "set_aside_tidal_tunnel",
     "set_aside_cards",
     "setup_flood_markers",
@@ -63601,6 +63602,25 @@
     {
       "id": "setup_tidal_tunnel_locations",
       "text": "Shuffle the remainder of the Tidal Tunnel locations and randomly put three of them into play below, to the left, and to the right of the Unfamiliar Chamber, unrevealed side faceup."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "07052_back",
+          "07047_back",
+          "07052_back"
+        ],
+        [
+          "blank",
+          "07052_back",
+          "blank"
+        ]
+      ]
     },
     {
       "id": "set_aside_tidal_tunnel",
@@ -64090,6 +64110,7 @@
     "$upgrade_decks",
     "gather_encounter_sets",
     "setup_locations",
+    "location_layout",
     "setup_leads_deck",
     "set_aside_agenda_act",
     "set_aside_cards",
@@ -64171,6 +64192,51 @@
         {
           "text": "Each investigator begins play at the Innsmouth Square."
         }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Расположение локаций",
+      "horizontal": "normal",
+      "vertical": "half",
+      "note": "<i><b>Note</b>: Locations in this diagram with dotted-line borders represent the six possible [[Hideout]] locations. They do not begin in play. They may or may not enter play during the course of the scenario, depending on the actions of the investigators.</i>",
+      "locations": [
+        [
+          "placeholder",
+          "blank",
+          "placeholder",
+          "blank",
+          "placeholder"
+        ],
+        [
+          "blank",
+          "07067_back",
+          "blank",
+          "07063_back",
+          "blank"
+        ],
+        [
+          "07069_back",
+          "blank",
+          "07065_back",
+          "blank",
+          "07066_back"
+        ],
+        [
+          "blank",
+          "07064_back",
+          "blank",
+          "07068_back",
+          "blank"
+        ],
+        [
+          "placeholder",
+          "blank",
+          "placeholder",
+          "blank",
+          "placeholder"
+        ]
       ]
     },
     {
