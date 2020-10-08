@@ -4903,7 +4903,7 @@ msgstr "Hasta el cuello"
 
 #: src/components/campaign/constants.ts:258
 msgid "Devil Reef"
-msgstr ""
+msgstr "Arrecife del Diablo"
 
 #: src/components/campaign/constants.ts:260
 msgid "Horror in High Gear"
@@ -5081,6 +5081,10 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but "
 "there may be some slight delays."
 msgstr ""
+"Nota: está campaña no está todavía completamente publicada y la guía está incompleta "
+"(y puede contener errores).\n"
+"A medida que se publiquen nuevos escenarios, intentaré actualizar la aplicación "
+"enseguida, pero puede haber pequeños retrasos."
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
