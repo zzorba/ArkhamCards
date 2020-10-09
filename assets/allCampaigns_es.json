@@ -339,7 +339,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Distribución de los Lugares sugerida",
-      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "note": "<i><b>Nota</b>: Uno de los Lugares mostrados <b>no</b> estará en juego.</i>",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -11330,7 +11330,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Distribución de los Lugares sugerida",
-      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "note": "<i><b>Nota</b>: Uno de los Lugares mostrados <b>no</b> estará en juego.</i>",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
