@@ -1506,22 +1506,22 @@ msgid "Adjust Weakness Set"
 msgstr "Schwächeset anpassen"
 
 #: src/components/campaign/campaignHelper.ts:43
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains several basic weaknesses"
 msgstr "Dieses Deck enthält mehrere Grundschwächen"
 
 #: src/components/campaign/campaignHelper.ts:44
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "This deck contains a basic weakness"
 msgstr "Dieses Deck enthält eine Grundschwäche"
 
 #: src/components/campaign/campaignHelper.ts:49
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove them from the campaign’s Basic Weakness set?"
 msgstr "Wollen Sie sie aus dem Grundschwächenset der Kampagne entfernen?"
 
 #: src/components/campaign/campaignHelper.ts:50
-#. eslint-disable prefer-template
+#. eslint-disable prefer-template 
 msgid "Do you want to remove it from the campaign’s Basic Weakness set?"
 msgstr "Wollen Sie es aus dem Grundschwächenset der Kampagne entfernen?"
 
@@ -2447,6 +2447,7 @@ msgid "Flip Card"
 msgstr "Drehe Karte"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:310
+#, javascript-format
 msgid "Doom: ${ doom }"
 msgstr "Verderben: ${doom}"
 
@@ -2456,7 +2457,6 @@ msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "Hinweise: ${clues} ${perInvestigatorClues}"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:321
-#, javascript-format
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr "Schleier: ${shroud}. Hinweise: ${clues} ${perInvestigatorClues}."
 
@@ -5096,6 +5096,10 @@ msgstr ""
 "Leitfaden noch unvollständig (und kann Fehler enthalten)\n"
 "Sobald neue Szenarien veröffentlicht werden, wird dieser Leitfaden so "
 "schnell wie möglich angepasst."
+
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:289
+msgid "Slot: ${ card.slot }"
+msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
