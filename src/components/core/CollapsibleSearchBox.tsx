@@ -180,12 +180,22 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
 
   render() {
     const { advancedOptions, children, prompt, searchTerm, onSearchChange, width } = this.props;
-    const { advancedOpen, scrollAnim } = this.state;
+    const { advancedOpen, scrollAnim, advancedToggleAnim } = this.state;
     const { backgroundStyle, borderStyle } = this.context;
     const scrollY = advancedOpen ? 0 : scrollAnim.interpolate({
       inputRange: [0, 1],
       outputRange: [-SEARCH_BAR_HEIGHT, 0],
     });
+    const shadowOpacity = Animated.multiply(
+      advancedToggleAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0.25, 0],
+      }),
+      scrollAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+      }),
+    );
     return (
       <View style={[styles.wrapper, backgroundStyle]}>
         <View style={[styles.container, backgroundStyle, borderStyle]}>
@@ -213,7 +223,7 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
           },
         ]}>
           { this.renderAdvancedOptions() }
-          <View style={[styles.fixed, { width }]}>
+          <Animated.View style={[styles.fixed, { width, shadowOpacity }]}>
             <SearchBox
               onChangeText={onSearchChange}
               placeholder={prompt}
@@ -221,7 +231,7 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
               toggleAdvanced={advancedOptions ? this._toggleAdvanced : undefined}
               value={searchTerm}
             />
-          </View>
+          </Animated.View>
         </Animated.View>
       </View>
     );
@@ -249,6 +259,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
   },
   wrapper: {
     position: 'relative',
