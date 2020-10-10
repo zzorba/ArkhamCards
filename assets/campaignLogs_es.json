@@ -3524,35 +3524,35 @@
         "entries": [
           {
             "id": "allen_out_for_blood",
-            "text": "Zadok Allen is out for blood."
+            "text": "Zadok Allen está sediento de sangre."
           },
           {
             "id": "burnham_out_for_blood",
-            "text": "Brian Burnham is out for blood."
+            "text": "Brian Burnham está sediento de sangre."
           },
           {
             "id": "friendly_out_for_blood",
-            "text": "Robert Friendly is out for blood."
+            "text": "Robert Friendly está sediento de sangre."
           },
           {
             "id": "gilman_out_for_blood",
-            "text": "Othera Gilman is out for blood."
+            "text": "Othera Gilman está sediento de sangre."
           },
           {
             "id": "little_out_for_blood",
-            "text": "Joyce Little is out for blood."
+            "text": "Joyce Little está sediento de sangre."
           },
           {
             "id": "marsh_out_for_blood",
-            "text": "Barnabas Marsh is out for blood."
+            "text": "Barnabas Marsh está sediento de sangre."
           },
           {
             "id": "mission_failed",
-            "text": "the mission failed."
+            "text": "la misión fracasó."
           },
           {
             "id": "mission_succeeded",
-            "text": "the mission succeeded."
+            "text": "la misión tuvo éxito."
           },
           {
             "id": "blob_contained",
@@ -3665,7 +3665,7 @@
           },
           {
             "id": "accuse_house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La casa de Water Street"
           },
           {
             "id": "accuse_little",
@@ -3681,19 +3681,19 @@
           },
           {
             "id": "accuse_order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Orden Esotérica de Dagón"
           },
           {
             "id": "accuse_prison",
-            "text": "Innsmouth Jail"
+            "text": "Cárcel de Innsmouth"
           },
           {
             "id": "accuse_sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Callejón del Matasanos"
           },
           {
             "id": "accuse_slums",
-            "text": "Shoreward Slums"
+            "text": "Suburbios ribereños"
           },
           {
             "id": "flashback_1",
@@ -3754,19 +3754,19 @@
         "entries": [
           {
             "id": "battle_with_a_horrifying_devil",
-            "text": "a battle with a horrifying devil"
+            "text": "una batalla con un horripilante demonio"
           },
           {
             "id": "decision_to_stick_together",
-            "text": "a decision to stick together"
+            "text": "una decisión de no separarse"
           },
           {
             "id": "encounter_with_a_secret_cult",
-            "text": "an encounter with a secret cult"
+            "text": "un encuentro con una secta secreta"
           },
           {
             "id": "meeting_with_thomas_dawson",
-            "text": "a meeting with Thomas Dawson"
+            "text": "una reunión con Thomas Dawson"
           }
         ]
       },
@@ -3775,11 +3775,11 @@
         "entries": [
           {
             "id": "house_on_water_street",
-            "text": "The House on Water Street"
+            "text": "La casa de Water Street"
           },
           {
             "id": "innsmouth_jail",
-            "text": "Innsmouth Jail"
+            "text": "Cárcel de Innsmouth"
           },
           {
             "id": "new_church_green",
@@ -3787,15 +3787,15 @@
           },
           {
             "id": "order_of_dagon",
-            "text": "Esoteric Order of Dagon"
+            "text": "Orden Esotérica de Dagón"
           },
           {
             "id": "sawbone_alley",
-            "text": "Sawbone Alley"
+            "text": "Callejón del Matasanos"
           },
           {
             "id": "shoreward_slums",
-            "text": "Shoreward Slums"
+            "text": "Suburbios ribereños"
           }
         ]
       },

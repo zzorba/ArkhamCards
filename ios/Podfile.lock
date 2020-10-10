@@ -234,8 +234,8 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-netinfo (5.9.6):
-    - React
+  - react-native-netinfo (5.9.7):
+    - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
   - react-native-webview (8.1.2):
@@ -323,8 +323,8 @@ PODS:
     - React
   - RNKeychain (6.2.0):
     - React
-  - RNLocalize (1.4.1):
-    - React
+  - RNLocalize (1.4.2):
+    - React-Core
   - RNReanimated (1.10.2):
     - React
   - RNShare (3.7.0):
@@ -547,7 +547,7 @@ SPEC CHECKSUMS:
   react-native-document-picker: 4921045c5c6c78243010f784eae0a3f4b2af7799
   react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
-  react-native-netinfo: 38a1e0b3e89b48e4b5833ed475d8df5f049f6f90
+  react-native-netinfo: 250dc0ca126512f618a8a2ca6a936577e1f66586
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
   react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
   React-RCTActionSheet: 53ea72699698b0b47a6421cb1c8b4ab215a774aa
@@ -569,7 +569,7 @@ SPEC CHECKSUMS:
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
-  RNLocalize: 49634a6a605dcdeb319e9c42a5c2f1aec508694b
+  RNLocalize: 452d4118e338dee1e5ca3fac4d5a11a4ab26a46a
   RNReanimated: 7de2dca51deacff78bb880f63c1389a24311b376
   RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
