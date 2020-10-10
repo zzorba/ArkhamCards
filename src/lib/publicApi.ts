@@ -2,7 +2,9 @@ import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy,
 import { Alert } from 'react-native';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
+import { Rule as JsonRule } from '@data/scenario/types';
 import Card from '@data/Card';
+import Rule from '@data/Rule';
 import Database from '@data/Database';
 import TabooSet from '@data/TabooSet';
 import FaqEntry from '@data/FaqEntry';
@@ -112,6 +114,19 @@ async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<void
   }
 }
 
+export const syncRules = async function(
+  db: Database,
+  lang?: string
+): Promise<void> {
+  const rules: JsonRule[] = require('../../assets/rules.json');
+  await db.insertRules(
+    flatMap(rules, (jsonRule, index) => {
+      const rule = Rule.parse(lang || 'en', jsonRule, index);
+      return [rule, ...(rule.rules || [])];
+    })
+  );
+};
+
 export const syncCards = async function(
   db: Database,
   packs: Pack[],
@@ -165,12 +180,15 @@ export const syncCards = async function(
     const encounterSets = await db.encounterSets();
     const cards = await db.cards();
     const tabooSets = await db.tabooSets();
+    const rules = await db.rules();
 
     // Delete the tables.
     await cards.createQueryBuilder().delete().execute();
     await encounterSets.createQueryBuilder().delete().execute();
     await tabooSets.createQueryBuilder().delete().execute();
+    await rules.createQueryBuilder().delete().execute();
     await db.clearCache();
+    await syncRules(db, lang);
     // console.log(`${await cards.count() } cards after delete`);
     const cardsToInsert: Card[] = [];
     forEach(json, cardJson => {

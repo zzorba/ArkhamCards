@@ -5,6 +5,7 @@ import Card from './Card';
 import EncounterSet from './EncounterSet';
 import FaqEntry from './FaqEntry';
 import TabooSet from './TabooSet';
+import Rule from './Rule';
 import { QuerySort } from './types';
 import { tabooSetQuery } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
@@ -12,7 +13,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  static SCHEMA_VERSION: number = 14;
+  static SCHEMA_VERSION: number = 17;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -39,6 +40,7 @@ export default class Database {
         EncounterSet,
         FaqEntry,
         TabooSet,
+        Rule,
       ],
     });
   }
@@ -65,6 +67,11 @@ export default class Database {
   async cards(): Promise<Repository<Card>> {
     const connection = await this.connectionP;
     return connection.getRepository(Card);
+  }
+
+  async rules(): Promise<Repository<Rule>> {
+    const connection = await this.connectionP;
+    return connection.getRepository(Rule);
   }
 
   async cardsQuery(): Promise<SelectQueryBuilder<Card>> {
@@ -118,6 +125,34 @@ export default class Database {
       .values(cards)
       .orIgnore();
     return await query.execute();
+  }
+
+  async insertRules(
+    rules: Rule[]
+  ): Promise<InsertResult> {
+    const query = (await this.rules())
+      .createQueryBuilder()
+      .insert()
+      .into(Rule)
+      .values(rules)
+      .orIgnore();
+    return await query.execute();
+  }
+
+  async getRules(
+    page: number,
+    pageSize: number,
+    query?: Brackets
+  ): Promise<Rule[]> {
+    let rulesQuery = (await this.rules()).createQueryBuilder('r');
+    if (query) {
+      rulesQuery = rulesQuery.where(query);
+    }
+    rulesQuery = rulesQuery.leftJoinAndSelect('r.rules', 'rule');
+    return await rulesQuery
+      .orderBy('r.order', 'ASC')
+      .skip(pageSize * page)
+      .take(pageSize).getMany();
   }
 
   async getCards(
