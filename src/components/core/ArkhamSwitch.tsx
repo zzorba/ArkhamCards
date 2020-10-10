@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { StyleSheet, TouchableOpacityProps, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';

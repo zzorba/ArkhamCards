@@ -1,8 +1,9 @@
 import React from 'react';
 import { throttle } from 'lodash';
-import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View } from 'react-native';
+import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
 
 import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { m, s, xs } from '@styles/space';
 
@@ -11,7 +12,7 @@ export interface SearchOptions {
   height: number;
 }
 
-interface Props {
+interface OwnProps {
   prompt: string;
   advancedOptions?: SearchOptions;
   searchTerm: string;
@@ -29,8 +30,9 @@ interface State {
 }
 
 const SCROLL_DISTANCE_BUFFER = 50;
+type Props = OwnProps & DimensionsProps;
 
-export default class CollapsibleSearchBox extends React.Component<Props, State> {
+class CollapsibleSearchBox extends React.Component<Props, State> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
@@ -147,7 +149,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
   };
 
   renderAdvancedOptions() {
-    const { advancedOptions } = this.props;
+    const { advancedOptions, width } = this.props;
     const { advancedToggleAnim } = this.state;
     const { colors } = this.context;
     if (!advancedOptions) {
@@ -162,11 +164,14 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
         styles.advancedOptions,
         {
           backgroundColor: colors.L20,
+          width,
           height: advancedOptions.height,
           transform: [{ translateY: controlHeight }],
         },
       ]}>
-        <View style={[styles.textSearchOptions, { height: advancedOptions.height }]}>
+        <View style={[styles.textSearchOptions, {
+          height: advancedOptions.height,
+        }]}>
           { advancedOptions.controls }
         </View>
       </Animated.View>
@@ -174,7 +179,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
   }
 
   render() {
-    const { advancedOptions, children, prompt, searchTerm, onSearchChange } = this.props;
+    const { advancedOptions, children, prompt, searchTerm, onSearchChange, width } = this.props;
     const { advancedOpen, scrollAnim } = this.state;
     const { backgroundStyle, borderStyle } = this.context;
     const scrollY = advancedOpen ? 0 : scrollAnim.interpolate({
@@ -186,16 +191,29 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
         <View style={[styles.container, backgroundStyle, borderStyle]}>
           { children(this._handleScroll) }
         </View>
+        { advancedOpen && !!advancedOptions && Platform.OS === 'android' && (
+          <View style={[
+            styles.slider,
+            {
+              top: 0,
+              width,
+              height: SEARCH_BAR_HEIGHT + advancedOptions.height,
+              backgroundColor: 'transparent',
+            }
+          ]} />
+        ) }
         <Animated.View style={[
           styles.slider,
           backgroundStyle,
           {
+            width,
             transform: [{ translateY: scrollY }],
             height: SEARCH_BAR_HEIGHT,
+            zIndex: 2,
           },
         ]}>
           { this.renderAdvancedOptions() }
-          <View style={styles.fixed}>
+          <View style={[styles.fixed, { width }]}>
             <SearchBox
               onChangeText={onSearchChange}
               placeholder={prompt}
@@ -210,6 +228,8 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
   }
 }
 
+export default withDimensions(CollapsibleSearchBox);
+
 
 const styles = StyleSheet.create({
   textSearchOptions: {
@@ -221,7 +241,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   slider: {
-    width: '100%',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -230,7 +249,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '100%',
   },
   wrapper: {
     position: 'relative',

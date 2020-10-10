@@ -3,8 +3,8 @@ import { flatMap, map, range, repeat } from 'lodash';
 import {
   Keyboard,
   StyleSheet,
-  Text,
   TouchableOpacity,
+  Text,
   View,
 } from 'react-native';
 
