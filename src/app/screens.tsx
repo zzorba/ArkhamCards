@@ -69,6 +69,7 @@ import SealTokenDialog from '@components/campaign/SealTokenDialog';
 import ScenarioFaqView from '@components/campaignguide/ScenarioFaqView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
 import RulesView from '@components/settings/RulesView';
+import RuleView from '@components/settings/RuleView';
 
 interface ProviderProps<S> {
   store: S;
@@ -156,4 +157,5 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
   Navigation.registerComponent('Rules', providerWrapper(RulesView), () => RulesView);
+  Navigation.registerComponent('Rule', providerWrapper(RuleView), () => RuleView);
 }
