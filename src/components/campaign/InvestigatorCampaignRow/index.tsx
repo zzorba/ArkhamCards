@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, Platform } from 'react-native';
 import { find , map } from 'lodash';
 import { t } from 'ttag';
 
@@ -232,9 +232,11 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       chooseDeckForInvestigator,
       showTraumaDialog,
     } = this.props;
+    const { colors } = this.context;
     const traumaNode = (!!showTraumaDialog && eliminated) && (
       <Button
         title={t`Edit Trauma`}
+        color={Platform.OS === 'ios' ? colors.navButton : undefined}
         onPress={this._showTraumaDialog}
       />
     );
@@ -244,6 +246,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
         <>
           <Button
             title={t`View Deck`}
+            color={Platform.OS === 'ios' ? colors.navButton : undefined}
             onPress={this._viewDeck}
           />
           { traumaNode }
@@ -257,6 +260,7 @@ export default class InvestigatorCampaignRow extends React.Component<Props> {
       <>
         <Button
           title={t`Select Deck`}
+          color={Platform.OS === 'ios' ? colors.navButton : undefined}
           onPress={this._selectDeck}
         />
         { traumaNode }

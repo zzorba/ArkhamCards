@@ -34,7 +34,6 @@ export default {
       light: '#8A7D5A',
     },
   },
-  veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
   darkBlue: 'rgb(0, 78, 100)',
   white: 'rgb(247, 247, 255)',

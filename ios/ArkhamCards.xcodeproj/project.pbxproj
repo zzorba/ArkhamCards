@@ -437,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $PROJECT_DIR/..\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
+			shellScript = "cd $PROJECT_DIR/..\nexport BUNDLE_COMMAND=\"ram-bundle\"\nexport NODE_BINARY=node\n./node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		1000A2C507B5A91925B8E1EB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
