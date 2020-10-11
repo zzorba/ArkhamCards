@@ -37,7 +37,18 @@ const ParagraphTagRule: MarkdownRule<WithChildren, State> = {
 
 function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\]')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=$|[^(])')),
+    order: BASE_ORDER + 1,
+    parse: (capture) => {
+      return { name: capture[1] };
+    },
+    render: ArkhamIconNode(style),
+  };
+}
+
+function ArkhamIconSkillTextRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
+  return {
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\([0-9X]+\))')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };
@@ -242,7 +253,8 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
         iTag: ItalicHtmlTagRule(context),
         smallcapsTag: SmallCapsHtmlTagRule(context),
         center: CenterHtmlTagRule,
-        ...(onLinkPress ? {} : { arkhamIcon: ArkhamIconRule(context) }),
+        arkhamIcon: ArkhamIconRule(context),
+        arkhamIconSkillTestRule: ArkhamIconSkillTextRule(context),
       }}
       style={{ width: '100%' }}
       styles={{
@@ -253,21 +265,35 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
           minWidth: 12,
           marginRight: 4,
         },
+        link: {
+          color: context.colors.navButton,
+        },
         paragraph: {
           ...context.typography.small,
           fontSize: 16 * context.fontScale,
           lineHeight: 20 * context.fontScale,
-          paddingTop: 4,
-          paddingBottom: 4,
+          marginTop: 4,
+          marginBottom: 4,
+        },
+        tableHeaderCell: {
+          minHeight: 40,
+        },
+        tableHeaderCellContent: {
+          ...context.typography.small,
+          ...context.typography.bold,
+          minHeight: 50,
+          paddingTop: 8,
+          paddingBottom: 8,
         },
         tableCell: {
-          minHeight: 80,
+          minHeight: 40,
           flexDirection: 'row',
           flexWrap: 'wrap',
           padding: 8,
           margin: 0,
         },
         tableCellContent: {
+          ...context.typography.small,
           margin: 0,
           padding: 16,
           paddingTop: 16,

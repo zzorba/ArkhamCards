@@ -1,24 +1,21 @@
 import React from 'react';
-import { head, startsWith } from 'lodash';
+import { head } from 'lodash';
 import { connect } from 'react-redux';
 import {
-  Linking,
   RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 import { t } from 'ttag';
 
 import CardTextComponent from './CardTextComponent';
 import Database from '@data/Database';
 import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
-import { where } from '@data/query';
 import FaqEntry from '@data/FaqEntry';
 import connectDb from '@components/data/connectDb';
-import { showCard } from '@components/nav/helper';
+import { openUrl } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
 import { getTabooSet, AppState } from '@reducers';
@@ -62,33 +59,9 @@ class CardFaqView extends React.Component<Props, State> {
     }
   }
 
-  openUrl(url: string) {
-    InAppBrowser.open(url).catch(() => {
-      Linking.openURL(url);
-    });
-  }
-
-  async openCard(code: string, { colors }: StyleContextType) {
+  _linkPressed = async (url: string, context: StyleContextType) => {
     const { componentId, tabooSetId } = this.props;
-    const card = await this.context.db.getCard(
-      where('c.code = :code', { code }),
-      tabooSetId
-    );
-    if (card) {
-      showCard(componentId, code, card, colors);
-    }
-  }
-
-  _linkPressed = (url: string, context: StyleContextType) => {
-    const regex = /\/card\/(\d+)/;
-    const match = url.match(regex);
-    if (match) {
-      this.openCard(match[1], context);
-    } else if (url.indexOf('arkhamdb.com') !== -1) {
-      this.openUrl(url);
-    } else if (startsWith(url, '/')) {
-      this.openUrl(`https://arkhamdb.com${url}`);
-    }
+    await openUrl(url, context, this.context.db, componentId, tabooSetId);
   };
 
   _loadFaq = () => {

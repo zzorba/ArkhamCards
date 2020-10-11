@@ -1,28 +1,65 @@
-import React, { useCallback, useContext, useState} from 'react';
+import React, { useCallback, useContext } from 'react';
 import { map } from 'lodash';
-import { Text, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, View } from 'react-native';
+import { Table, Row, Cell} from 'react-native-table-component';
 
-import Rule from '@data/Rule';
-import StyleContext from '@styles/StyleContext';
+import Rule, { RuleTableRow } from '@data/Rule';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
+import { openUrl } from '@components/nav/helper';
 import { s, m } from '@styles/space';
 import { NavigationProps } from '@components/nav/types';
+import DatabaseContext from '@data/DatabaseContext';
+import { useSelector } from 'react-redux';
+import { getTabooSet } from '@reducers';
 
 export interface RuleViewProps {
   rule: Rule
 }
 
-function RuleComponent({ rule, level, noTitle }: { rule: Rule; level: number; noTitle?: boolean }) {
-  console.log(rule.rules);
+function RuleTable({ table }: { table: RuleTableRow[] }) {
+  const { colors } = useContext(StyleContext);
+  const specialColors: { [key: string]: string } = {
+    green: colors.faction.rogue.lightBackground,
+    red: colors.faction.survivor.lightBackground,
+    grey: colors.faction.neutral.lightBackground,
+  };
+
   return (
-    <View style={{ paddingLeft: s + s * (level + 1), paddingRight: m }}>
-      { !noTitle && <CardFlavorTextComponent text={`<game>${rule.title}</game>`} /> }
-      { !!rule.text && <View style={{ width: '100%' }}><CardTextComponent text={rule.text} /></View>}
-      { !!rule.table && <Text>{JSON.stringify(rule.table)}</Text>}
-      { map(rule.rules || [], (rule, idx) => <RuleComponent key={idx} rule={rule} level={level + 1} />) }
-    </View>
+    <Table>
+      { map(table, (row, idx) => {
+        return (
+          <Row
+            key={idx}
+            data={map(row.row, (cell, idx) => (
+              <Cell key={idx} style={{ backgroundColor: cell.color && specialColors[cell.color], padding: s }} data={<CardTextComponent text={cell.text} />} />
+            ))}
+          />
+        );
+      }) }
+    </Table>
+  );
+}
+
+function RuleComponent({ componentId, rule, level, noTitle }: { componentId: string; rule: Rule; level: number; noTitle?: boolean }) {
+  const { db } = useContext(DatabaseContext);
+  const tabooSetId = useSelector(getTabooSet);
+  const linkPressed = useCallback(
+    (url: string, context: StyleContextType) => {
+      openUrl(url, context, db, componentId, tabooSetId);
+    }, []
+  );
+
+  return (
+    <>
+      <View style={{ paddingLeft: m, paddingRight: m, paddingBottom: m }}>
+        { !noTitle && <CardFlavorTextComponent text={`<game>${rule.title}</game>`} /> }
+        { !!rule.text && <CardTextComponent text={rule.text} onLinkPress={linkPressed} />}
+        { !!rule.table && <RuleTable table={rule.table} /> }
+      </View>
+      { map(rule.rules || [], (rule, idx) => <RuleComponent key={idx} componentId={componentId} rule={rule} level={level + 1} />) }
+    </>
   );
 }
 
@@ -31,7 +68,7 @@ export default function RuleView({ componentId, rule }: Props) {
   const { backgroundStyle } = useContext(StyleContext);
   return (
     <ScrollView contentContainerStyle={backgroundStyle}>
-      <RuleComponent rule={rule} level={0} noTitle />
+      <RuleComponent componentId={componentId} rule={rule} level={0} noTitle />
     </ScrollView>
   )
 }
