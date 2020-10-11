@@ -393,7 +393,7 @@
     "text": "The phrase \"enters play\" refers to any time a card makes a transition from an out-of-play area into a play area (see \"[In Play and Out of Play](#In_Play_and_Out_of_Play)\").\n- If an ability (either on the card itself or from another card) causes a card to enter play in a state different from that specified by the rules, there is no transition to that state. It merely enters play in that state."
   },
   {
-    "id": "Evade_Action",
+    "id": "Evade",
     "title": "Evade, Evade Action",
     "text": "\"Evade\" is an action an investigator may take during his or her turn in the investigation phase.\nTo evade an enemy engaged with an investigator, that investigator makes an agility test against the enemy's evade value (see \"[Skill Tests](#Skill_Tests)\").\nIf the test is successful, the investigator successfully evades the enemy (see below). (This occurs during step 7 of the skill test, per \"[ST.7 Apply skill test results](#Skill_Test_Timing)\".)\nIf the test fails, the investigator does not evade the enemy, and it remains engaged with him or her.\n- If an ability \"automatically\" evades 1 or more enemies, no skill test is made for the evasion attempt.\n- Any time an enemy is evaded (whether by an evade action, or by card ability), the enemy is exhausted (if it was ready) and the engagement is broken. Move the enemy from the investigator's threat area to the investigator's location to mark that it is no longer engaged with that investigator.\n- Unlike the fight and engage action, an investigator can only perform an evade action against an enemy engaged with him or her."
   },

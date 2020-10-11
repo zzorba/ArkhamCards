@@ -44335,7 +44335,7 @@
   "id": "tdea",
   "position": 5,
   "version": 1,
-  "name": "The Dream-Quest",
+  "name": "Die Traumsuche",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -44343,7 +44343,7 @@
     },
     {
       "id": "evidence_of_kadath",
-      "title": "Evidence of Kadath",
+      "title": "Beweis von Kadath",
       "type": "count"
     },
     {
@@ -44377,8 +44377,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "The Waking World Is Only One Reality",
-      "text": "“In light slumber he descended the seventy steps to the cavern of flame and talked of this design to the bearded priests Nasht and Kaman-Thah. And the priests shook their pshent-bearing heads and vowed it would be the death of his soul.”\n– H. P. Lovecraft, The Dream-Quest of Unknown Kadath"
+      "title": "Die wache Welt ist nur eine Realität",
+      "text": "„Im leichten Schlummer stieg er die siebzig Stufen zur Kaverne der Flamme hinab und sprach den bärtigen Priestern von Nasht und Kaman-Thah von diesem Vorhaben. Und die Priester schüttelten ihre pshent-tragenden Häupter und erklärten feierlich, dies bedeute den Tod seiner Seele.“\n– H. P. Lovecraft, Die Traumsuche nach dem unbekannten Kadath"
     },
     {
       "id": "choose_investigators",
@@ -44557,22 +44557,22 @@
     },
     {
       "id": "8_part_campaign",
-      "text": "Each player should build a different investigator deck for each campaign, choosing one of their investigators to be part of Campaign A and one to be part of Campaign B."
+      "text": "Jeder Spieler sollte für jede Kampagne ein eigenes Ermittlerdeck erstellen. Einer seiner Ermittler ist Teil von Kampagne A und ein anderer Ermittler Teil von Kampagne B."
     },
     {
       "id": "separate_chaos_bag",
-      "text": "Note that each campaign has its own separate chaos bag, as described in each campaign’s setup instructions. However, there is no need to build both chaos bags simultaneously. Use the “Chaos Bag” section of each Campaign Log to record the current contents of each chaos bag so you may switch between them easily."
+      "text": "Beide Kampagnen haben ihren eigenen Chaosbeutel, wie in den jeweiligen Vorbereitungsanweisungen beschrieben. Es ist aber nicht nötig, 2 Chaosbeutel gleichzeitig zu füllen. Im Abschnitt „Chaosbeutel“ jedes Kampagnenlogbuchs kann der aktuelle Inhalt jedes Chaosbeutels notiert werden, damit er zwischen den Szenarien leichter ausgetauscht werden kann."
     },
     {
       "id": "ask_8_part_campaign",
-      "text": "It looks like you are playing <i>The Dream-Quest</i> as a 4-part campaign. If there is a separate group playing <i>The Web of Dreams</i>, the app can present you with instructions to send them during each interlude, and wait for their input at appropriate times.",
+      "text": "Scheinbar soll <i>Die Traumsuche</i> als 4-teilige Kampagne gespeilt werden. Wenn eine separate Gruppe <i>Das Netz der Träume</i> spielt, kann die App entsprechende Anweisungen geben, die ihnen während der Zwischenspiele übermittelt werden, und auch auf die entsprechenden Antworten warten.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "8_part_campaign",
-            "text": "Playing as half of an 8-part campaign.",
+            "text": "Als Hälfte einer achtteilige Kampagne spielen.",
             "steps": [
               "8_part_campaign",
               "separate_chaos_bag"
@@ -44588,7 +44588,7 @@
           },
           {
             "id": "4_part_campaign",
-            "text": "Playing as a 4-part campaign.",
+            "text": "Als vierteilige Kampagne spielen.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -44604,38 +44604,38 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "title": "Alamiert",
+      "text": "Immer wenn einem Ermittler eine Fertigkeitsprobe misslingt, während er versucht, einem Gegner mit dem Schlüsselwort „Alarmiert“ zu entkommen, führt jener Gegner nach der Anwendung aller Ergebnisse jener Fertigkeitsprobe einen Angriff gegen den entkommenden Ermittler durch. Ein Gegner wird nicht erschöpft, nachdem er einen Alarmiert-Angriff durchgeführt hat. Dieser Angriff wird durchgeführt, egal ob der Gegner mit dem entkommenden Ermittler in einen Kampf verwickelt ist oder nicht."
     },
     {
       "id": "story",
       "type": "rule_reminder",
       "title": "Story Cards",
-      "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text."
+      "text": "Handlungskarten dienen dem Zweck, die Kampagne mit noch mehr erzählter Handlung zu füllen. Sie befinden sich normalerweise auf der Rückseite einer anderen Szenariokarte. Sobald die Spieler die Anweisung erhalten, eine Handlungskarte abzuhandeln, wird der Handlungstext auf der Karte vorgelesen und der Spieltext auf dieser Karte abgehandelt."
     },
     {
       "id": "swarming",
       "type": "rule_reminder",
-      "title": "Swarming X",
-      "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put an enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the “host enemy.” Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.",
+      "title": "Ausschwärmen X",
+      "text": "Ein Gegner mit dem Schlüsselwort Ausschwärmen X ist Teil einer größeren Gruppe von Gegnern, die gemeinsam vorgehen. Nachdem ein Spieler einen Gegner mit dem Schlüsselwort Ausschwärmen X ins Spiel gebracht hat, werden die obersten X Karten des Spielerdecks als sogenannte Schwarmkarten verdeckt unter dem Gegner platziert, ohne sie sich anzusehen. Der Gegner, unter dem die Schwarmkarten liegen, wird „Wirtsgegner“ genannt. Manche Szenariokarteneffekte können einen Spieler dazu anweisen, einem Gegner Schwarmkarten hinzuzufügen. Dies geschieht nach demselben Verfahren.",
       "bullets": [
         {
-          "text": "If it is ever unclear which investigator should add swarm cards, the lead investigator does so."
+          "text": "Falls unklar ist, welcher Ermittler Schwarmkarten hinzufügen soll, macht dies der Ermittlungsleiter."
         },
         {
-          "text": "Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>"
+          "text": "Jede Schwarmkarte unter dem Wirtsgegner agiert für die meisten Zwecke als eigenständige Instanz jenes Gegners. Jede Schwarmkarte hat die gleichen Werte und den gleichen Text wie die Wirtskarte. <i>(Beispiel: Ist ein Ermittler mit einem Wirtsgegner in einen Kampf verwickelt, der 2 Schwarmkarten unter sich liegen hat, ist der Ermittler mit insgesamt 3 Gegnern in einen Kampf verwickelt.) </i>"
         },
         {
-          "text": "Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them."
+          "text": "Jede Schwarmkarte greift einzeln an, sobald Gegner während der Gegnerphase angreifen. Haben der Wirtsgegner und alle seine Schwarmkarten in diesem Schritt angegriffen, werden sie alle erschöpft."
         },
         {
-          "text": "Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>"
+          "text": "Jede Schwarmkarte kann unabhängig voneinander angegriffen werden und man kann jeder Schwarmkarte unabhängig voneinander Schaden zufügen, aber der Wirtsgegner kann nicht besiegt werden, solange er noch Schwarmkarten unter sich liegen hat. Sobald eine Schwarmkarte besiegt wird, darf überschüssiger Schaden einer anderen Schwarmkarte unter demselben Wirtsgegner oder dem Wirtsgegner selbst zugefügt werden. <i>(Beispiel: Tony Morgan verwendet eine 41er Derringer, um einen heimlichen Zoog mit 2 Schwarmkarten anzugreifen. Der Angriff fügt 2 Schaden zu. Der erste Schadenspunkt besiegt 1 der 2 Schwarmkarten. Überschüssiger Schaden darf der anderen Schwarmkarte zugefügt werden, was ausreicht, um auch sie zu besiegen.) </i>"
         },
         {
-          "text": "Anytime a swarm card leaves play, place it on the bottom of its owner’s deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner."
+          "text": "Jedes Mal wenn eine Schwarmkarte das Spiel verlässt, wird sie unter das Deck ihres Besitzers platziert. Falls unklar ist, wer der Besitzer einer Schwarmkarte ist, darf man sie sich ansehen, um ihren Besitzer zu bestimmen."
         },
         {
-          "text": "The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. (For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)"
+          "text": "Der Wirtsgegner und alle seine Schwarmkarten werden als Einheit bewegt, in Kämpfe verwickelt und erschöpft. (Beispiel: Gelingt es einem Ermittler, einem Wirtsgegner oder einer seiner Schwarmkarten zu entkommen, werden alle Karten dieser Einheit erschöpft und von dem Ermittler gelöst.)"
         }
       ]
     },
@@ -44643,16 +44643,16 @@
       "id": "hidden",
       "type": "rule_reminder",
       "title": "Geheim",
-      "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
+      "text": "Eine Begegnungskarte oder Schwäche mit dem Schlüsselwort Verborgen hat eine Enthüllung-Fähigkeit, die sie geheim der Hand des Spielers hinzufügt. Dies sollte geschehen, ohne den anderen Ermittlern die Karte oder ihren Text zu enthüllen.",
       "bullets": [
         {
-          "text": "While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you."
+          "text": "Solange sich eine Verborgen-Verratskarte auf der Hand eines Spielers befindet, wird sie so behandelt, als ob sie sich in seiner Bedrohungszone befände. Ihre anhaltenden Fähigkeiten sind aktiv und Fähigkeiten auf ihr können ausgelöst werden, aber nur von dem Spieler, der sie auf der Hand hat."
         },
         {
-          "text": "While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you."
+          "text": "Solange sich eine Verborgen-Gegnerkarte auf der Hand eines Spielers befindet, gilt sie nicht als mit dem Spieler in einen Kampf verwickelt oder in seiner Bedrohungszone befindlich. Der Gegner greift nicht an, außer es ist etwas anderes angegeben. Seine anhaltenden Fähigkeiten sind aber aktiv und Fähigkeiten auf ihm können ausgelöst werden, aber nur von dem Spieler, der die Gegnerkarte auf der Hand hat."
         },
         {
-          "text": "A hidden card counts toward your hand size, but it cannot be discarded from your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile."
+          "text": "Eine Verborgen-Karte zählt bei der Bestimmung der Handkarten eines Spielers mit, kann aber nicht von der Hand abgelegt werden, außer auf die auf der Karte beschriebene Art. Sobald Verborgen-Karten abgelegt werden, werden sie auf den entsprechenden Ablagestapel gelegt."
         }
       ],
       "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
@@ -44661,8 +44661,8 @@
 }, "scenarios": [
 {
   "id": "the_black_cat",
-  "scenario_name": "The Black Cat",
-  "full_name": "Interlude I: The Black Cat",
+  "scenario_name": "Die schwarze Katze",
+  "full_name": "Zwischenspiel I: Die schwarze Katze",
   "type": "interlude",
   "setup": [
     "maybe_check_dreamers_grow_weaker",
@@ -44699,14 +44699,14 @@
         "choices": [
           {
             "id": "dreamers_grow_weaker",
-            "text": "The dreamers grow weaker.",
+            "text": "Die Träumer werden schwächer.",
             "steps": [
               "dreamers_grow_weaker"
             ]
           },
           {
             "id": "dreamers_are_strong",
-            "text": "The dreamers are strong."
+            "text": "Die Träumer sind stark."
           }
         ]
       }
@@ -44718,18 +44718,18 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "dreamers_grow_weaker",
-          "text": "the dreamers grow weaker."
+          "text": "die Träumer werden schwächer."
         }
       ]
     },
     {
       "id": "black_cat_1",
       "type": "story",
-      "text": "<i>Following scenario 1–A, the dreamers travel beyond the Enchanted Woods…</i>\nAs you travel out of the Enchanted Woods, you pass through rolling green meadows under a bright-blue, cloudless sky. You speak with the blond-haired man—who introduces himself as Randolph Carter— for several hours along your journey south. You pass through a town Randolph calls Nir and over a stone bridge spanning a wide river. Since the man seems friendly and knowledgeable about both your world and this one, you explain to him your situation: that you had followed the writings of a man named Virgil Gray to reach this strange land, in order to see for yourself the truth of his story. “There is a place in Ulthar where you may yet meet this man for yourself,” Randolph responds. “When we reach Ulthar, I will show you.”\nThe town of Ulthar is not quite what you had imagined. The border of the town is marked by a cobblestone road separating its quaint cottages from the rolling green meadows beyond. Inside the town, narrow cobbled streets are filled almost to capacity with cats of all kinds and colors, which part as you approach. Old peaked roofs and overhanging upper stories arch over the hilly streets; the entire village seems a haphazard cluster of homes and old-fashioned businesses. As you reach the town square near the center of the village, Randolph stops and addresses you with a youthful smile. “Welcome to Ulthar,” he proclaims. “As I mentioned before, you are quite safe here. There is but one paramount law to keep in mind as you traverse this place: in the town of Ulthar, no one may kill a cat.” Given how utterly packed the streets are with cats, you wonder aloud if this is indeed a town run by cats. “Not quite,” Randolph replies, pondering your words, “though I suppose one might call it the center of cat society here in the Dreamlands. The reason for that law’s existence is a story for another time. First, come—I have a feeling we’ll find this ‘Virgil’ fellow you speak of at Einar’s.”\nRandolph leads you through the town square, which is surrounded by buildings adorned with cat motifs in the form of statues, signs, and even stained-glass windows. You eventually arrive at one such building bearing a sign that reads “Einar’s Place.” Inside is a medieval-style tavern filled with long wooden tables. You spot several patrons and three times as many cats. One such patron at the wooden counter feeds one of the cats small strips of dried meat. He is a handsome man in his early thirties, with short dark hair, a strong jaw, and sharp cheekbones. You recognize him instantly as the writer Virgil Gray. In the back of your mind, you wonder if this chance meeting is merely an act of fortune or something preordained, for good or for ill.\nRegardless, you approach the man and introduce yourself, along with Randolph. Virgil shakes your hand and Randolph’s with a joyful smile. “Well met, fellow dreamers!” the writer says, a hint of boyish excitement in his voice. “It is wonderful to meet more fellow believers. I had become so sick and tired of reading about my supposed ‘illness’ in the papers.”\nYou nod your head in agreement and inform Virgil that you intend to find some proof of this discovery to bring back to the waking world. “Don’t you think I tried that?” he replies, stymied. “Sadly, it is impossible for one who is asleep to bring anything from this realm into the real world. This is all imagination, you see. Ideas, concepts, fantasies. You cannot hold a thought in your hands, can you?”\nRandolph interjects. “There is a place within the Dreamlands that may hold the proof you seek. I have seen it in my dreams. I visited there three times, each time just a fleeting moment before I was snatched away by the rising sun…but try as I might, I cannot find the way again. I have spent many nights searching.”\n“Oh?” Virgil asks, intrigued. “And what is this place?”\n“It is a marvelous city,” he describes, his eyes aglow with wonder, “golden and lovely like nothing I have seen before or since. A city beyond the peaks of the unknown mountain Kadath, where no one has ever set foot before. There, veiled within the clouds and crowned by stars, lies the onyx castle of the Great Ones.”\nVirgil idly pets the cat on the countertop next to him as he is absorbed by Randolph’s tale. It is a slender creature with lustrous black fur, dark as the void of space itself. “Then we must find this place! Even if it does not have the proof we seek, it sounds like the adventure of a lifetime. Enough to fill a hundred pages, or more!”\nYou tell Virgil and Randolph that before you commit to such an adventure, you must return to the waking world and tell your companions about your experiences. Just then, another voice, cryptic and quiet, chimes: “Oh, you can’t wake up. The eye is upon you now.”\nYou and the others spin your heads around, searching for the source of the voice. The barkeeper? Another patron? Then Virgil’s black cat stretches and sits up, its piercing yellow eyes reflecting the light of the sun through the window outside. “I have waited a long time for you to seek Kadath,” it says.\n“You can talk?” Virgil says, nearly toppling over his stool as he jumps in surprise.\n“I’m a cat, you dolt. Of course I can talk,” the black cat replies, licking its paw out of boredom. “You have met a thousand cats from Ulthar, and now you are surprised?”\n“But…I thought…” Virgil wipes his brow with his palm.\n“Never mind him,” the black cat says, addressing you directly. “I assure you, you cannot cross back into the waking world until you find Kadath. It is your only way out. In the meantime, I will return and tell your companions about the quest ahead of you.” It hops off of the countertop and walks confidently toward the exit. “Though I imagine their task will be even more arduous…”"
+      "text": "<i>Setzt nach Szenario 1–A an, als die Träumer sich auf ihrer Reise jenseits des Verwunschenen Waldes befinden …</i>\nAls du den Verwunschenen Wald verlässt, wanderst du durch eine hügelige Wiesenlandschaft. Am strahlend blauen Himmel ist keine Wolke zu sehen. Auf deiner Reise nach Süden unterhältst du dich mehrere Stunden mit dem blonden Mann, der sich als Randolph Carter vorstellt. Bei der Stadt Nir, wie sie Randolph nennt, überquerst du einen breiten Fluss über eine Steinbrücke. Da der Mann freundlich wirkt und sich in dieser wie in deiner Welt auszukennen scheint, erklärst du ihm deine Situation, dass du den Erzählungen eines Mannes namens Virgil Gray gefolgt bist, um dieses seltsame Land zu erreichen und selbst zu erleben, ob die Geschichte wahr ist. „In Ulthar gibt es einen Ort, wo du den Mann persönlich treffen kannst“, antwortet Randolph. „Wenn wir in Ulthar ankommen, zeige ich ihn dir.“ \nDie Stadt Ulthar ist nicht gerade das, was du dir vorgestellt hast. Eine Straße aus Kopfsteinpflaster bildet die Grenze der Stadt, welche die malerischen Hütten von der hügeligen Wiesenlandschaft trennt. In der Stadt sind die gepflasterten Straßen fast vollständig mit Katzen sämtlicher Farben bevölkert, die dir den Weg freimachen, wenn du dich ihnen näherst. Alte Spitzgiebeldächer und einander zugeneigte obere Stockwerke bilden eine Art Bogengang über den buckligen Straßen. Die gesamte Stadt scheint eine planlose Aneinanderreihung von Wohnungen und altmodischen Geschäften zu sein. Als du den Marktplatz in der Mitte der Stadt erreichst, hält dich Randolph an und wendet sich mit einem jugendlichen Lächeln an dich. „Willkommen in Ulthar“, verkündet er. „Wie ich bereits vorher erwähnt habe, ist es recht sicher hier. Es gibt hier nur eine wichtige Regel, an die du dich halten solltest, wenn du dich an diesem Ort aufhältst: In der Stadt Ulthar darf niemand eine Katze töten.“ Wegen des Umstands, dass die Straßen mit Katzen übersät sind, willst du wissen, ob die Stadt von Katzen regiert wird. „Nicht ganz“, antwortet dir Randolph, nachdem er über deine Frage nachgedacht hat, „obgleich man die Stadt als Zentrum der Katzengesellschaft in den Traumlanden ansehen kann. Der Grund für die Existenz dieses Gesetzes ist eine andere Geschichte – Ich glaube, dass wir diesen Virgil bei Einar finden werden.“ \nRandolph führt dich über den Marktplatz, der von Gebäuden gesäumt wird, die mit Statuen, Schildern und sogar Buntglasfenstern mit Katzenmotiven verziert sind. Schließlich kommt ihr an ein solches Gebäude, auf dessen Schild „Einars Platz“ prangt. Im Inneren befindet sich eine mit langen Holztischen ausgestattete mittelalterliche Taverne. Du entdeckst mehrere Gäste und genauso viele Katzen. Einer der Gäste füttert an der Holztheke eine der Katzen mit getrockneten Fleischstreifen. Er ist ein stattlicher Mann in den frühen Dreißigern mit kurzem schwarzen Haar und ausgeprägten, spitz zulaufenden Wangenknochen. Du erkennst ihn sofort als den Autor Virgil Gray. Im Hinterkopf nagt die Frage an dir, ob diese Begegnung zufällig oder doch vorherbestimmt ist – zum Guten oder zum Schlechten. \nWie dem auch sei, du näherst dich dem Mann zusammen mit Randolph und stellst euch vor. Mit einem fröhlichen Lächeln schüttelt Virgil dir und Randolph die Hand. „Seid gegrüßt, werte Mitträumer!“, sagt der Autor mit leichter Aufregung in der Stimme. „Ich freue mich, andere zu treffen, die auch an die Sache glauben. Ich habe es satt, in der Zeitung ständig immer nur von meiner ‚Krankheit‘ lesen zu müssen.“ \nDu nickst zustimmend und teilst Virgil mit, dass du einen Beweis für deine Entdeckung suchst, die du in die wache Welt mitnehmen kannst. „Glaubst du etwa nicht, dass ich das nicht schon versucht habe?“, antwortet er matt. „Leider ist es für jemanden, der schläft, unmöglich, etwas aus diesem Reich in die reale Welt mitzunehmen. Das hier ist alles Einbildung, verstehst du? Ideen, Konzepte, Fantasien. Du kannst keinen Gedanken in der Hand festhalten, nicht wahr?“ \nRandolph mischt sich ins Gespräch mit ein. „In den Traumlanden gibt es einen Ort, der euch den Beweis liefern kann, den ihr sucht. Ich habe ihn in meinen Träumen gesehen. Ich habe ihn drei Mal besucht, immer nur ganz kurz, bevor ich von der aufgehenden Sonne zurückgeholt wurde … aber was ich auch versuche, ich kann den Weg dorthin nicht mehr finden. Ich habe viele Nächte mit der Suche danach verbracht.“ \n„Oh?“, fragt Virgil neugierig. „Und was ist das für ein Ort?“ \n„Es ist eine wunderbare Stadt“, beschreibt er euch , wobei seine Augen zu leuchten beginnen, „aus Gold und so schön, wie nichts, das ich seitdem gesehen habe. Eine Stadt jenseits der Gipfel des unbekannten Berges Kadath, wo noch niemand gewesen ist. Dort, verhüllt in Nebel und von den Sternen gekrönt, liegt die Onyxfeste der Großen.“ \nVirgil streichelt beiläufig eine Katze, die in der Nähe auf der Theke sitzt, während er gebannt Randolphs Geschichte zuhört. Sie ist eine schlanke Kreatur mit glänzendem schwarzen Fell, dunkel wie die Leere des Alls selbst. „Dann müssen wir diesen Ort finden! Auch wenn wir dort keinen Beweis finden, hört es sich nach dem Abenteuer des Lebens an. Genug, um hunderte Seiten zu füllen, wenn nicht mehr!“ \nDu erklärst Virgil und Randolph, dass du zuerst in die wache Welt zurückkehren musst, um deinen Gefährten von deinen Erlebnissen zu berichten, bevor du ein solches Abenteuer angehen kannst. Plötzlich vernimmst du eine andere Stimme, wie sie geheimnisvoll leise zu sprechen beginnt: „Oh, du kannst nicht aufwachen. Das Auge ruht nun auf dir.“ \nDu und die anderen wenden ihre Köpfe dem Ursprung der Stimme zu. War es der Wirt hinter der Theke? Ein anderer Gast? Virgils schwarze Katze streckt sich und setzt sich auf. Ihre gelben Augen spiegeln das Sonnenlicht wider, das durch die Fenster von draußen hereindringt. „Lange habe ich darauf gewartet, dass du auf die Suche nach Kadath gehst“, sagt sie. \n„Du kannst sprechen?“, fragt Virgil, wobei er fast seinen Hocker umwirft, als er überrascht aufspringt. \n„Ich bin eine Katze, du Tölpel. Natürlich kann ich sprechen“, antwortet die schwarze Katze und leckt sich gelangweilt ihre Pfote. „Du hast schon tausende Katzen vor mir in Ulthar getroffen. Und jetzt bist du überrascht?“ \n„Aber …ich dachte …“ Virgil wischt sich mit der Handfläche über die Stirn. \n„Achte nicht auf ihn“, sagt die schwarze Katze und wendet sich direkt dir zu. „Ich versichere dir, dass du nicht mehr in die wache Welt wechseln kannst, bevor du Kadath gefunden hast. Das ist der einzige Ausweg. In der Zwischenzeit werde ich zurückkehren und deinen Gefährten von deiner bevorstehenden Suche berichten.“ Sie springt vom Tresen und läuft selbstbewusst auf den Ausgang zu. „Aber ich befürchte, dass ihnen eine noch schwierigere Aufgabe bevorsteht …“"
     },
     {
       "id": "connect_campaign_branch",
-      "text": "If you are playing both <i>The Dream-Quest</i> and <i>The Web of Dreams</i> as an interconnected campaign.",
+      "text": "Falls <i>Die Traumsuche</i> und <i>Das Netz der Träume</i> als verwobene Kampagne gespielt werden.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -44755,12 +44755,12 @@
     {
       "id": "black_cat_vanishes",
       "type": "story",
-      "text": "The enigmatic cat vanishes out the door before you get the chance to respond."
+      "text": "Die rätselhafte Katze verschwindet durch die Tür, bevor du ihr antworten kannst."
     },
     {
       "id": "black_cat_prompt",
       "type": "story",
-      "text": "“What shall I tell your friends in the waking world?”"
+      "text": "„Was soll ich deinen Freunden in der wachen Welt ausrichten?“"
     },
     {
       "id": "black_cat_choice",
@@ -44771,8 +44771,8 @@
         "choices": [
           {
             "id": "black_cat_sent_news",
-            "text": "<i>Tell your companions of your quest, your plight, and your peril.</i>",
-            "description": "The black cat will return to you once this message is delivered. This may put an undue burden on your companions.",
+            "text": "<i>Du erzählst deinen Gefährten von deiner Suche, deiner Notlage und deinem Wagnis.</i>",
+            "description": "Die schwarze Katze wird zu dir zurückkehren, nachdem sie die Botschaft überbracht hat. Es könnte deine Gefährten übermäßig belasten.",
             "steps": [
               "black_cat_delivered_news",
               "send_black_cat_delivered_news",
@@ -44783,7 +44783,7 @@
           },
           {
             "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "<i>Tell your companions about your new friends and about the Dreamlands.</i>",
+            "text": "<i>Du erzählst deinen Gefährten von deinen neuen Freunden und über die Traumlande.</i>",
             "steps": [
               "black_cat_shared_knowledge_of_the_dreamlands",
               "send_black_cat_shared_knowledge_of_the_dreamlands",
@@ -44793,8 +44793,8 @@
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "<i>Tell your companions that they are in danger, and that you are safe.</i>",
-            "description": "The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
+            "text": "<i>Du erzählst deinen Gefährten, dass sie in Gefahr sind, du aber in Sicherheit bist.</i>",
+            "description": "Die schwarze Katze wird bei ihnen bleiben, nachdem sie die Botschaft überbracht hat. Das könnte deine Suche etwas schwieriger machen.",
             "steps": [
               "black_cat_warned_the_others",
               "send_black_cat_warned_the_others",
@@ -44804,8 +44804,8 @@
           },
           {
             "id": "threaten_black_cat",
-            "text": "<i>You don’t trust this creature one bit.</i>",
-            "description": "You threaten the black cat, warning it not to approach your friends under any circumstance. The black cat yawns and vanishes out the door.",
+            "text": "<i>Du traust dieser Kreatur nicht über den Weg.</i>",
+            "description": "Du drohst der schwarzen Katze und warnst sie, sich deinen Freunden auf keinen Fall zu nähern. Die schwarze Katze gähnt und verschwindet durch die Tür.",
             "steps": [
               "threaten_black_cat",
               "send_threaten_black_cat",
@@ -44819,13 +44819,13 @@
     {
       "id": "black_cat_has_a_hunch",
       "bullet_type": "small",
-      "text": "In both Campaign Logs, record that <i>the black cat has a hunch</i>.",
+      "text": "In beiden Kampagnenlogbüchern wird notiert: <i>Die schwarze Katze hat eine Ahnung</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_has_a_hunch",
-          "text": "the black cat has a hunch."
+          "text": "die schwarze Katze hat eine Ahnung."
         }
       ]
     },
@@ -44837,7 +44837,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_delivered_news",
-          "text": "the black cat delivered news of your plight."
+          "text": "die schwarze Katze hat die Neuigkeit über deine Notlage überbracht."
         }
       ]
     },
@@ -44859,14 +44859,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         }
       ]
     },
     {
       "id": "add_elder_thing_token",
       "bullet_type": "small",
-      "text": "Add 1 [elder_thing] token to the chaos bag.",
+      "text": "Füge 1 [elder_thing]-Marker dem Chaosbeutel hinzu.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -44884,7 +44884,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_shared_knowledge_of_the_dreamlands",
-          "text": "the black cat shared knowledge of the Dreamlands."
+          "text": "die schwarze Katze hat das Wissen über die Traumlande geteilt."
         }
       ]
     },
@@ -44906,7 +44906,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_warned_the_others",
-          "text": "the black cat warned the others."
+          "text": "die schwarze Katze hat die anderen gewarnt."
         }
       ]
     },
@@ -44923,7 +44923,7 @@
     {
       "id": "add_tablet_token",
       "bullet_type": "small",
-      "text": "Add 1 [tablet] token to the chaos bag.",
+      "text": "Füge 1 [tablet]-Marker dem Chaosbeutel hinzu.",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -44941,7 +44941,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "threaten_black_cat",
-          "text": "okay, fine, have it your way then."
+          "text": "In Ordnung, gut, dann mach doch, was du willst."
         }
       ]
     },
@@ -44963,7 +44963,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "you_asked_for_it",
-          "text": "you asked for it."
+          "text": "du hast es so gewollt."
         }
       ]
     },
@@ -46305,7 +46305,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side_2",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         }
       ]
     },
@@ -46317,7 +46317,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side_2",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         },
         {
           "type": "remove_chaos_token",
@@ -46887,7 +46887,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         },
         {
           "type": "remove_chaos_token",
@@ -46998,8 +46998,8 @@
 },
 {
   "id": "beyond_the_gates_of_sleep",
-  "scenario_name": "Beyond the Gates of Sleep",
-  "full_name": "Scenario I–A: Beyond the Gates of Sleep",
+  "scenario_name": "Hinter den Toren des Schlafes",
+  "full_name": "Szenario I–A: Hinter den Toren des Schlafes",
   "setup": [
     "dream_intro",
     "choose_dreams",
@@ -47014,11 +47014,11 @@
     {
       "id": "dream_intro",
       "bullet_type": "none",
-      "text": "In player order, each investigator chooses and reads aloud one of the dream entries below that applies to that investigator. “Neutral” dreams may be chosen by any investigator. Each investigator must choose a different dream, if able."
+      "text": "In Spielerreihenfolge wählt jeder Ermittler einen der folgenden Traumberichte, der zu dem entsprechenden Ermittler passt, und liest ihn laut vor. „Neutrale“ Träume dürfen von jedem Ermittler gewählt werden. Jeder Ermittler muss falls möglich einen unterschiedlichen Traum wählen."
     },
     {
       "id": "choose_dreams",
-      "text": "Choose a dream (different if able):",
+      "text": "Wähle einen Traum (unterschiedlich, falls möglich):",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -47028,7 +47028,7 @@
         "choices": [
           {
             "id": "guardian",
-            "text": "Guardian [guardian] dream",
+            "text": "Wächter-[guardian]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47046,7 +47046,7 @@
           },
           {
             "id": "seeker",
-            "text": "Seeker [seeker] dream",
+            "text": "Sucher-[seeker]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47064,7 +47064,7 @@
           },
           {
             "id": "rogue",
-            "text": "Rogue [rogue] dream",
+            "text": "Schurke-[rogue]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47082,7 +47082,7 @@
           },
           {
             "id": "mystic",
-            "text": "Mystic [mystic] dream",
+            "text": "Mystiker-[mystic]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47100,7 +47100,7 @@
           },
           {
             "id": "survivor",
-            "text": "Survivor [survivor] dream",
+            "text": "Überlebender-[survivor]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47118,7 +47118,7 @@
           },
           {
             "id": "criminal",
-            "text": "[[Criminal]] dream",
+            "text": "[[Krimineller]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47136,7 +47136,7 @@
           },
           {
             "id": "drifter",
-            "text": "[[Drifter]] dream",
+            "text": "[[Herumtreiber]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47164,7 +47164,7 @@
           },
           {
             "id": "hunter",
-            "text": "[[Hunter]] dream",
+            "text": "[[Jäger]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47182,7 +47182,7 @@
           },
           {
             "id": "medic",
-            "text": "[[Medic]] or [[Assistant]] dream",
+            "text": "[[Mediziner]]- oder [[Assistent]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47203,7 +47203,7 @@
           },
           {
             "id": "miskatonic",
-            "text": "[[Miskatonic]] or [[Scholar]] dream",
+            "text": "[[Miskatonic]]- oder [[Gelehrter]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47224,7 +47224,7 @@
           },
           {
             "id": "veteran",
-            "text": "[[Veteran]] dream",
+            "text": "[[Veteran]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47242,7 +47242,7 @@
           },
           {
             "id": "wayfarer",
-            "text": "[[Wayfarer]] dream",
+            "text": "[[Wanderer]]-Traum",
             "condition": {
               "type": "investigator",
               "investigator": "each",
@@ -47260,7 +47260,7 @@
           },
           {
             "id": "neutral_1",
-            "text": "Neutral dream (1)",
+            "text": "Neutraler Traum (1)",
             "steps": [
               "neutral_1_dream",
               "neutral_1_dream_effect"
@@ -47268,7 +47268,7 @@
           },
           {
             "id": "neutral_2",
-            "text": "Neutral dream (2)",
+            "text": "Neutraler Traum (2)",
             "steps": [
               "neutral_2_dream",
               "neutral_2_dream_effect"
@@ -47280,72 +47280,72 @@
     {
       "id": "guardian_dream",
       "type": "story",
-      "text": "You circle a sullen hill shrouded in darkness and steeped in fog that seems to swallow all sound. You don’t know what rests within the hill, but it feels older than this world, and it seems like it is watching you. You dare not turn to face the barrow, yet you know you cannot leave it, so instead you endlessly patrol it. In the surrounding hedgerows, you catch glimpses of twisted shadows darting to and fro, but whenever you turn your torch upon them, they vanish. You begin to run but are frozen by a loud knock from behind you. When you turn, the fog parts, and you finally see the base of the hill, where a heavy door of weathered slate calls to you."
+      "text": "Du umrundest einen in Dunkelheit getauchten und von Nebel umhüllten Hügel, der jedes Geräusch zu verschlucken scheint. Du weißt nicht, was unter dem Hügel ruht, aber es fühlt sich älter als diese Welt an und es scheint dich zu beobachten. Du wagst es nicht, den Grabhügel anzusehen. Dennoch kannst du den Ort nicht verlassen, also läufst du schier endlos um ihn herum. In den umgebenden Hecken erhaschst du flüchtige Blicke auf hin und her huschende Schatten, aber immer wenn du die Fackel in ihre Richtung hältst, verschwinden sie. Du fängst an zu rennen, erstarrst aber, als du ein lautes Klopfen hinter dir vernimmst. Als du dich umdrehst, teilt sich der Nebel und du kannst endlich den Fuß des Hügels erkennen, wo eine schwere, verwitterte Schiefertür darauf wartet, dass du eintrittst."
     },
     {
       "id": "guardian_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [guardian] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [guardian]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "seeker_dream",
       "type": "story",
-      "text": "You hurry through the halls of a university you barely recognize, cradling several textbooks in your arms as you scurry past other students and faculty members. You don’t know how it is possible that you forgot the date of your exam, but if you don’t arrive soon, you know you will fail the class. Somehow, you don’t even remember the course’s subject matter or its curriculum, even though you know it is the end of the semester. It is not like you to skip class or forget to study. You can hear the other students snickering to themselves as you pass. When you reach the end of the hall, the classroom door looms ominiously before you."
+      "text": "Du eilst durch die Flure einer Universität, die du kaum wiedererkennst. Du hast einige Lehrbücher unter dem Arm und hastest an anderen Studenten und Fakultätsmitarbeitern vorbei. Dir ist schleierhaft, wie du das Datum deiner Prüfung vergessen konntest. Wenn du nicht schnell ankommst, ist dir klar, dass du durchfallen wirst. Irgendwie kannst du dicht nicht mehr an den Lehrstoff des Kurses oder an den Studienplan erinnern. Du weißt aber, dass es das Ende des Semesters ist. Es ist gar nicht deine Art, Vorlesungen zu schwänzen oder das Lernen zu vergessen. Im Vorbeieilen kannst du die anderen Studenten miteinander kichern hören. Als du das Ende des Flures erreichst, siehst du die Tür des Hörsaals unheilvoll vor dir aufragen."
     },
     {
       "id": "seeker_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [seeker] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [seeker]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "rogue_dream",
       "type": "story",
-      "text": "You conceal a grin as you examine your cards. Jack of diamonds, queen of spades for the nut straight. Your stack of chips is growing larger with each hand, and this will be no different. Bets fly back and forth until it is just you and the man in the white suit across from you. “Are you sure about this?” he taunts, cradling his fingers. You push all of your chips into the center and reveal your king-high straight. “What a shame.” He tsks, revealing a pair of twos. “It appears you have lost everything.” You protest, pointing to your superior hand, but when you examine it again, it has changed. The figures on the face cards are now monstrous shapes with no eyes, many mouths, and tentacled arms. “9♥-10♣-D♦-C♠-N[auto_fail],” the cards read. You gape in shock as you are carried away from the table and ushered out the door."
+      "text": "Du musst dir ein Grinsen verkneifen, als du dir deine Karten ansiehst. Karo Bube und Pik Dame für die derzeit bestmögliche Straße. Der Chip-Stapel vor dir wird mit jeder Hand höher. Diesmal wird es nicht anders sein. Gebote werden abgegeben, bis nur noch du und der Mann im weißen Anzug dir gegenüber im Spiel sind. „Sind Sie sich ganz sicher?”, stichelt er und faltet seine Hände. Du schiebst alle deine Chips in die Mitte und deckst deine Straße mit dem König auf. „Wie schade.“ Er schnalzt mit der Zunge und deckt ein Pärchen auf. „Es sieht wohl so aus, als ob Sie alles verloren hätten.“ Du protestierst und deutest auf deine weit bessere Hand. Aber als du sie dir wieder anschaust, hat sie sich verändert. Die Figuren auf den Bildkarten haben sich in monströse Gestalten ohne Augen und ohne Mund, dafür aber mit Tentakeln verwandelt. Auf den Karten steht: „9♥-10♣-D♦-C♠-N[auto_fail].” Schockiert starrst du auf die Karten, als du vom Tisch weggebracht und zur Tür geleitet wirst."
     },
     {
       "id": "rogue_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [rogue] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [rogue]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "mystic_dream",
       "type": "story",
-      "text": "You traverse an enchanted path full of color and vibrancy. Wisps of light hang in the air, bobbing up and down as you approach. With each step you take, the flora along the path atrophy, following no laws of nature. Flowers once bloomed in your wake; now they shrivel as you pass. Vines wither and die. The wisps mock you for your ignorance, yet you do not slow your pace. As you look upon the fair trees, their leaves begin to fall. The once-green grass is dry, brown, and cracked. But even should the whole forest die, it will be worth reaching the other side. When you do, the trail ends abruptly at an ornate wooden door carved into the trunk of a great redwood."
+      "text": "Du wanderst auf einem Pfad voller Farben und Schwingungen. Irrlichter schweben in der Luft und hüpfen auf und ab, als du dich ihnen näherst. Allen Naturgesetzen widersprechend verkümmert mit jedem deiner Schritte die Flora am Wegesrand. Gerade noch blühende Blumen verwelken und Ranken verdorren, während du an ihnen vorbeigehst. Die Irrlichter verspotten dich ob deiner Unwissenheit, dennoch verlangsamst du deine Schritte nicht. Als du dir die prächtigen Bäume ansiehst, lassen sie ihre Blätter fallen. Das einst grüne Gras ist trocken, braun und geknickt. Doch auch wenn der gesamte Wald dabei sterben sollte, macht es die Sache wert, seine andere Seite zu erreichen. Als du es endlich geschafft hast, endet der Pfad plötzlich an einer verzierten Holztür, die in den Stamm eines großen Mammutbaums geschnitzt ist."
     },
     {
       "id": "mystic_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [mystic] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [mystic]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "survivor_dream",
       "type": "story",
-      "text": "You are fleeing through a dark, cramped hall of vine-covered wood. Something inexplicable chases you through the murk. You are too terrified to turn and look upon your pursuer, but nonetheless you know that if it catches you, it will mean the end of your life. It will pierce your heart, drain your blood, and devour your insides. It is this thought that drives you onward, faster than you have ever run before. You cannot let it reach you. You cannot let it feed. Suddenly, you spot your way out: a sturdy wooden door surrounded by a wall of vines."
+      "text": "Du fliehst durch einen engen, dunklen und mit Ranken bedeckten Flur. Etwas Unerklärliches verfolgt dich durch die Düsternis. Du bist zu verängstigt, um dich umzudrehen und deinen Verfolger anzusehen. Dennoch weißt du, dass es deinen Tod bedeuten würde, wenn dich das Wesen einholen sollte. Es würde dein Herz durchstoßen, dich ausbluten lassen und dann deine Eingeweide verschlingen. Dieser Gedanke lässt dich weiterlaufen, schneller als du jemals zuvor gerannt bist. Es darf dich nicht erreichen. Es darf dich nicht fressen. Plötzlich erkennst du einen Ausweg: eine stabile, von Ranken umgebene Holztür."
     },
     {
       "id": "survivor_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [survivor] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [survivor]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "criminal_dream",
       "type": "story",
-      "text": "The blare of sirens echoes through the streets behind you. They’re gaining on you. They have always been hot on your heels, and you were always one step ahead…until now. You run down an alleyway, and a bright-red glare follows you. They’re going to catch you. They’ll lock you in a cage and throw away the key. Your freedom, your lifestyle, everything you are, everything you love: they’ll take it all away. And why? Just because you wouldn’t play by their rules? When have they ever gotten everything right? You round a corner just as the bulls are about to catch up to you and spot the entrance into a brick building."
+      "text": "Sirenengeheul hallt hinter dir durch die Straßen. Sie holen auf. Sie waren dir schon immer dicht auf den Fersen, aber du warst ihnen immer einen Schritt voraus …bis jetzt. Du rennst die Gasse entlang, dicht gefolgt von einem hellen, roten Licht. Sie werden dich kriegen. Sie werden dich in eine Zelle sperren und den Schlüssel wegwerfen. Deine Freiheit, deinen Lebensstil, alles, was dich ausmachst und was du liebst, werden sie dir wegnehmen. Und warum? Wann haben sie jemals alles richtig gemacht? Kurz bevor dich die Bullen schnappen können, biegst du um eine Ecke und entdeckst den Eingang zu einem Backsteingebäude."
     },
     {
       "id": "criminal_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Criminal]] or [[Illicit]] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [[Krimineller]]- oder [[Illegal]]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "drifter_dream",
       "type": "story",
-      "text": "You meander through a field of flowers, a warm spring breeze nudging your steps forward. A train track divides the field, and as you meet its parallel lines, the roaring clatter of steam and iron lumbers toward you. As the train passes by, you grab onto a ladder hanging from one of its many rusted and weather-beaten cars. Given the appearance of the exterior, the train’s interior is full of unexpected luxury and affluence: Persian rugs hang as decoration, marble staircases wind to dizzying heights, and a crystal chandelier speckles the room with prismatic brilliance. Under the chandelier sits an ornate doorway, its gilded lattices forming the depiction of a fox in a forest."
+      "text": "Du schlenderst über eine Blumenwiese, begleitet von einer warmen Frühlingsbrise, die dich zum Weitergehen aufzufordern scheint. Bahngleise teilen das Feld. Als du die Schienen erreichst, hörst du das tosende Geratter aus Dampf und Eisen auf dich zukommen. Während der Zug an dir vorbeifährt, hältst du dich an einer Leiter fest und ziehst dich auf einen der rostigen, verwitterten Waggons. Das Innere des Zuges hat jedoch nichts mehr mit dem Äußeren zu tun. Hier herrschen Luxus und Wohlstand: Persische Teppiche hängen als Dekoration von den Wänden, marmorne Treppen winden sich in schwindelerregende Höhen und ein Kristallleuchter taucht den Raum in spektralen Glanz. Unter dem Kronleuchter befindet sich ein Durchgang, dessen vergoldete Verzierung einen Fuchs in einem Wald darstellt."
     },
     {
       "id": "drifter_dream_effect",
       "bullet_type": "small",
-      "text": "You may replace a basic weakness in your deck with a different random basic weakness. If you do, suffer 1 trauma of your choice."
+      "text": "Du darfst eine Grundschwäche in deinem Deck durch eine andere zufällige Grundschwäche ersetzen. Falls du dies tust, erleidest du 1 Trauma deiner Wahl."
     },
     {
       "id": "ask_replace_weakness",
@@ -47356,7 +47356,7 @@
         "choices": [
           {
             "id": "replace",
-            "text": "Would you like to replace a basic weakness in your deck?",
+            "text": "Willst du eine Grundschwäche aus deinem Deck ersetzen?",
             "steps": [
               "drifter_replace_weakness"
             ]
@@ -47401,77 +47401,77 @@
     {
       "id": "remove_existing_weakness_on_your_own",
       "bullet_type": "small",
-      "text": "Please remove your the random basic weakness of your choice using the deck editor."
+      "text": "Bitte entferne eine zufällige Grundschwäche deiner Wahl mit dem Deck-Editor."
     },
     {
       "id": "hunter_dream",
       "type": "story",
-      "text": "You stalk your prey through a decrepit house, its halls smelling of mold and dust. The creature you hunt is an abomination from an unnatural world. It threatens humanity’s very existence with its presence. You catch its uncanny shape entering one of the doorways upstairs. It cannot escape now—it is yours. But when you enter its den, you find only a dirty, cracked mirror and your own tired and troubled face reflected in the glass. Where could the aberration have gone? You are sure this is where it retreated to, and yet… you turn back to the entrance and are surprised to see a door where there was none before."
+      "text": "Du stellst deiner Beute in einem baufälligen Haus nach, dessen Flure nach Schimmel und Staub riechen. Die Kreatur, der du nachjagst, ist eine Abscheulichkeit aus einer unnatürlichen Welt. Mit ihrer Anwesenheit allein bedroht sie die bloße Existenz der Menschheit. Du kannst ihre unheimliche Gestalt in einer der Türöffnungen im oberen Stockwerk erkennen. Jetzt kann sie dir nicht mehr entkommen – sie gehört dir. Aber als du ihren Unterschlupf betrittst, findest du nichts weiter als einen schmutzigen, gesplitterten Spiegel und dein müdes, sorgenvolles Antlitz, das sich im Glas reflektiert. Wohin kann die Monstrosität nur verschwunden sein? Du bist dir sicher, dass sie sich hierhin zurückgezogen hat und dennoch … du wendest dich wieder dem Eingang zu und bist überrascht, eine Tür zu sehen, die zuvor noch nicht da war."
     },
     {
       "id": "hunter_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Weapon]] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [[Waffe]]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "medic_dream",
       "type": "story",
-      "text": "You stand in front of a closed casket. Mourners in black clothing stand in a line at your side, waiting for you to say your last words. Tearfully, you place a hand on the casket. The hard, cold wood feels dead under your palm. They confided in you. They relied on you. And in their time of utmost need, you failed them. All of this—the cold casket, the mourning friends and family—it is all because of you. But when you open the casket, there is no body inside: only a long stone passageway leading deep underground. Suddenly, one of the mourners pushes you forward, and you fall over the edge of the casket and down into the pit below, landing painfully on your side. As you rise to your feet, you find your only exit: a stone archway leading somewhere else entirely…"
+      "text": "Du stehst vor einem geschlossenen Sarg. Schwarz gekleidete Trauernde stehen in einer Reihe neben dir und warten darauf, dass du die letzten Worte sprichst. Unter Tränen legst du deine Hand auf den Sarg. Das harte, kalte Holz fühlt sich tot an. Sie hat sich dir anvertraut. Sie hat sich auf dich verlassen. Und als sie dich am nötigsten brauchte, hast du sie enttäuscht. All das – der kalte Sarg, die trauernden Freunde und Familienangehörigen – all das geschieht nur wegen dir. Aber als du den Sarg öffnest, befindet sich keine Leiche darin: nur ein langer Durchgang aus Stein, der tief in den Untergrund führt. Plötzlich schubst dich einer der Trauernden und du fällst über die Kante des Sarges in das Loch darunter. Schmerzhaft landest du auf deiner Seite. Als du aufstehst, erkennst du deinen einzigen Ausgang: ein Steinbogen, der zu einem völlig anderen Ort führt …"
     },
     {
       "id": "medic_dream_effect",
       "bullet_type": "small",
-      "text": "Choose another investigator. They begin this scenario with 2 additional resources and 1 additional card in their opening hand."
+      "text": "Wähle einen anderen Ermittler. Er beginnt dieses Szenario mit 2 zusätzlichen Ressourcen und 1 zusätzlichen Karte auf seiner Starthand."
     },
     {
       "id": "miskatonic_dream",
       "type": "story",
-      "text": "You are in an old, forgotten library, surrounded by the knowledge of the ancients. Hundreds of thousands of tomes line the shelves around you, ascending into an empty void above. The dim halls smell of musty pages and melting wax. Taking one of the thick tomes from a nearby shelf, you begin to read. Although you cannot seem to read any of the words, you are utterly absorbed by the tale the pages weave. Your surroundings fade into triviality as time passes. Nothing matters but the shapes of the crimson ink; all else is meaningless in the face of such stark truths. All around you, the library burns to its foundations. Just as the flames reach you, a door out of the library calls to you. Somehow, it stands unburned among the flames."
+      "text": "Du befindest dich in einer vergessenen Bibliothek, umgeben von uraltem Wissen. Hunderttausende von Büchern ruhen in Regalen, die um dich herum bis in die Leere über dir emporragen. Die düsteren Hallen riechen nach modrigem Papier und geschmolzenem Wachs. Du nimmst einen der großen Wälzer aus einem Regal in der Nähe und fängst an, darin zu blättern. Du kannst zwar kein einziges Wort davon lesen, bist aber gänzlich von der Geschichte gefesselt, welche die Seiten weben. Deine Umgebung löst sich mit der Zeit in Belanglosigkeit auf. Nichts ist mehr wichtig, bis auf die Formen der blutroten Tinte; alles andere ist bedeutungslos im Vergleich zu diesen reinen Wahrheiten. Um dich herum brennt die Bibliothek bis auf die Grundmauern ab. Gerade als dich die Flammen erreichen, springt dir eine Tür, die aus der Bibliothek hinausführt, ins Auge. Die Flammen scheinen ihr nichts anhaben zu können."
     },
     {
       "id": "miskatonic_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Tome]] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [[Buch]]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "veteran_dream",
       "type": "story",
-      "text": "You are in a muddy, soot-filled trench. All around you, the thunderous din of war rages on and on, never ending. Dead litter the trenches: friends and comrades-in-arms who lost their lives over nothing, in a land far from home. You peer over the rim of the trench and into no-man’s-land, a barren waste of broken, charred countryside where death is certain. And there, you see it: a lone wooden door standing among the rubble and dirt. You know it is your only way out. Gripping your rifle tight, you go over the top and run headlong into a hail of deadly bullets, explosions rocking the ground around you."
+      "text": "Du befindest dich in einem schlammigen, verrußten Schützengraben. Um dich herum tobt der donnernde und nicht enden wollende Lärm des Krieges. Die Gräben sind mit Toten übersät: Freunde und Kampfgefährten, die ihr Leben für rein gar nichts verloren haben, in einem Land fern der Heimat. Du spähst über den Rand des Schützengrabens in das Niemandsland hinaus, auf eine karge , zerstörte und verkohlte Einöde, wo einem der Tod gewiss ist. Und dort erkennst du sie: eine einzelne Holztür zwischen Schutt und Schmutz. Du weißt, dass sie dein einziger Weg hier raus ist. Du packst dein Gewehr und stürzt dich Hals über Kopf in einen Hagel aus tödlichen Kugeln, während Explosionen den Boden um dich herum aufreißen."
     },
     {
       "id": "veteran_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for up to 2 [[Tactic]] and/or [[Supply]] cards and begin this scenario with them as additional cards in your opening hand."
+      "text": "Durchsuche dein Deck nach bis zu 2 [[Taktik]]- und/oder [[Vorrat]]-Karten und beginne dieses Szenario mit ihnen als zusätzliche Karten auf deiner Starthand."
     },
     {
       "id": "wayfarer_dream",
       "type": "story",
-      "text": "You trudge chest-deep through a brackish swamp. Impossibly large bulrushes tower over you, and clouds of strange, iridescent insects swarm through the fetid air. With each step, your feet sink deeper into the soft muck, threatening to pull you under. You feel something slick and cold glide across your leg, and you lunge toward dry land—but the more you struggle, the farther you sink. In the blink of an eye, you are consumed whole by the mire, yet you are still falling ever downward. Eventually, you are deposited onto a stone floor along with a small mudslide. You find yourself in a sealed chamber, lit by the paleblue glimmering of strange hieroglyphs. The symbols frame an intricate golden door: the door to the crypt you’ve been searching for."
+      "text": "Du stapfst durch einen brackigen Sumpf. Das Wasser reicht dir bis an die Brust. Unmöglich große Rohrkolben ragen über dir auf und Schwärme seltsamer schillernder Insekten schwirren durch die übel riechende Luft. Mit jedem Schritt sinkst du tiefer in den weichen Schlamm ein, der dich hinabzuziehen droht. Du kannst spüren, wie etwas Glitschiges und Kaltes über dein Bein gleitet. Hastig versuchst du, ein trockenes Stück Land zu erreichen – aber je mehr du dich bemühst, desto weiter sinkst du ein. Augenblicklich wirst du vom Moor verschlungen und fällst dennoch immer weiter hinab. Endlich landest du in einer kleinen Schlammlawine auf einem Steinboden. Du befindest dich in einer geschlossenen Kammer, die durch das hellblaue Leuchten seltsamer Hieroglyphen erhellt wird. Die Symbole umrahmen eine aufwendig gestaltete, goldene Tür. Die Tür zur Krypta, nach der du gesucht hast."
     },
     {
       "id": "wayfarer_dream_effect",
       "bullet_type": "small",
-      "text": "Search your deck for a [[Wayfarer]] or [[Relic]] card and play it <i>(paying its cost)</i>."
+      "text": "Durchsuche dein Deck nach einer [[Wayfarer]]- oder [[Relic]]-Karte und spiele sie <i>(zahle ihre Kosten)</i>."
     },
     {
       "id": "neutral_1_dream",
       "type": "story",
-      "text": "You toss and turn but do not sleep, not even for a moment. Your mind is filled with discomfort and dark thoughts: thoughts of failure, of ineptitude, of loss. Your brow is covered in sweat. No matter how you lie, your bed is either too hot or too cold. Finally, sick of getting nowhere, you rise and head to the sink to splash some water on your face. That is when you realize the layout of your room is not as it was before—and the door to your bathroom has been replaced with a large gateway of onyx and marble."
+      "text": "Die wirfst dich in deinem Bett umher, kannst aber keinen Schlaf finden. In deinem Kopf schwirren unangenehme und düstere Gedanken umher: Gedanken über Scheitern, Unfähigkeit und Verlust. Schweiß rinnt dir deine Stirn hinab. Egal wie du dich hinlegst, dir ist entweder zu heiß oder zu kalt. Der vergeblichen Mühen überdrüssig stehst du auf, um dir am Waschbecken etwas Wasser ins Gesicht zu spritzen. Da erkennst du, dass dein Zimmer nicht mehr wie zuvor aufgebaut ist – die Tür zu deinem Badezimmer ist durch ein großes Tor aus Onyx und Marmor ersetzt worden."
     },
     {
       "id": "neutral_1_dream_effect",
       "bullet_type": "small",
-      "text": "You begin this scenario with 2 additional resources."
+      "text": "Du beginnst dieses Szenario mit 2 zusätzlichen Ressourcen."
     },
     {
       "id": "neutral_2_dream",
       "type": "story",
-      "text": "You sit on the back patio of what seems like your childhood home, but something is off. You don’t recognize your family…the plants in the back yard are arranged differently…and the sky is a patchwork of rotting corpses, raining dismembered body parts onto the landscape. Your not-family watches this precipitation of corpses calmly, discussing the weather it as if it were a banal occurrence. This continues even as the intermittent thudding of hands and feet onto your roof intensifies into a torrent of maimed torsos that causes the ceiling to sag. You run outside, weaving through the deadly rain, and head instinctively toward the edge of your parents’ property. As you hear the crash of the house collapsing behind you, you push away the fallen limbs piling atop an old, familiar spot and are relieved to find the weathered wood of a cellar door."
+      "text": "Du sitzt auf der Terrasse hinter dem Zuhause deiner Kindheit, aber etwas stimmt nicht. Du erkennst deine Familie nicht wieder … die Pflanzen im Hinterhof wachsen an der falschen Stelle … und der Himmel ist ein Flickwerk aus verwesenden Leichen, von dem abgetrennte Körperteile auf die Landschaft hinabregnen. Deine Nicht-Familienmitglieder beobachten diesen grausigen Niederschlag in aller Seelenruhe und unterhalten sich dabei übers Wetter, als ob dieser Vorfall das Normalste der Welt wäre. Sie hören auch nicht damit auf, als das unregelmäßige Aufschlagen der Hände und Füße aufs Dach deines Hauses noch durch eine Flut von verstümmelten Rümpfen verstärkt wird und dabei die Decke zum Absacken bringt. Du läufst davon, weichst dem tödlichen Niederschlag aus und steuerst instinktiv auf die Grenze des Grundstücks deiner Eltern zu. Als du hörst, wie das Haus hinter dir einstürzt, schiebst du an einer altvertrauten Stelle Gliedmaßen zur Seite und bist erleichtert, das verwitterte Holz einer Kellertür zu finden."
     },
     {
       "id": "neutral_2_dream_effect",
       "bullet_type": "small",
-      "text": "You begin this scenario with 1 additional card in your opening hand."
+      "text": "Du beginnst dieses Szenario mit 1 zusätzlichen Karte auf deiner Starthand."
     },
     {
       "id": "gather_encounter_sets",
@@ -47488,26 +47488,26 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Seventy Steps <i>(Of Lighter Slumber)</i> and The Cavern of Flame into play. Each investigator begins at the Seventy Steps <i>(Of Lighter Slumber)</i>."
+      "text": "Die siebzig Stufen <i>(Leichter Schlummer)</i> und die Kaverne der Flamme werden ins Spiel gebracht. Jeder Spieler beginnt das Spiel auf den siebzig Stufen <i>(Leichter Schlummer)</i>."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Randolph Carter <i>(Expert Dreamer)</i>, the Laboring Gug enemy, the two doublesided enemy cards (Nasht and Kaman-Thah), and each of the remaining locations.",
+      "text": "Die folgenden Karten werden als nicht im Spiel befindlich beiseitegelegt: Randolph Carter <i>(Meisterhafter Träumer)</i>, der Gegner Arbeitender Gug, die 2 doppelseitigen Gegnerkarten (Nasht und Kaman-Thah) und jeder übrige Ort.",
       "bullets": [
         {
-          "text": "<i>Note: Nasht and Kaman-Thah are double-sided and have story cards on their other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "<i>Hinweis: Nasht und Kaman-Thah sind doppelseitig und haben Handlungskarten auf ihrer Rückseite. Für ein optimales Spielerlebnis sollte man die Rückseite erst ansehen, wenn ein Effekt dazu auffordert.</i>"
         }
       ]
     },
     {
       "id": "encounter_deck",
-      "text": "This scenario does not begin with an encounter deck in play. Set all of the remaining encounter cards aside, in a single pile. They will be shuffled together at a later time to form the encounter deck. <i>(See “Steps of Slumber”)</i>"
+      "text": "Dieses Szenario beginnt ohne Begegnungsdeck im Spiel. Alle übrigen Begegnungskarten werden auf einem einzigen Stapel beiseitegelegt. Zu einem späteren Zeitpunkt werden sie zusammengemischt und bilden dann das Begegnungsdeck. <i>(Siehe dazu „Stufen des Schlummers“)</i>"
     },
     {
       "id": "steps_of_slumber",
       "type": "rule_reminder",
-      "title": "Steps of Slumber",
-      "text": "At the start of this scenario, there is no encounter deck. This means that the investigators cannot use abilities that interact with the encounter deck in any way. <i>(For example, effects such as those that search the encounter deck, draw cards from the encounter deck, or look at cards in the encounter deck all fail.)</i>\nAdditionally, act 1a has the text: “Do not draw cards from the encounter deck during the mythos phase.”\nAt a certain point in the scenario, the investigators will be instructed to form the encounter deck, and this text will no longer be active. From that point onward, the investigators can interact with the encounter deck as normal."
+      "title": "Stufen des Schlummers",
+      "text": "Zu Beginn des Szenarios gibt es kein Begegnungsdeck. Das bedeutet, dass Ermittler keine Fähigkeiten verwenden können, die mit dem Begegnungsdeck auf jegliche Weise interagieren. <i>(Beispiel: Effekte, die das Begegnungsdeck durchsuchen, Karten vom Begegnungsdeck ziehen oder Karten aus dem Begegnungsdeck ansehen lassen, schlagen fehl.)</i> \nSzene 1a hat zusätzlich den Text: „Ziehe während der Mythosphase keine Karten vom Begegnungsdeck.“ \nZu einem bestimmten Zeitpunkt im Szenario werden die Ermittler dazu angewiesen, das Begegnungsdeck zu erstellen. Dann ist der obige Text nicht mehr aktiv. Von diesem Zeitpunkt an können die Ermittler ganz normal mit dem Begegnungsdeck interagieren."
     },
     {
       "id": "saved_by_randolph_carter",
@@ -47516,13 +47516,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "saved_by_randolph_carter",
-          "text": "the investigators were saved by Randolph Carter."
+          "text": "Die Ermittler wurden von Randolph Carter gerettet."
         }
       ]
     },
     {
       "id": "gain_randolph_carter",
-      "text": "Any one investigator may choose to add Randolph Carter <i>(Expert Dreamer)</i> (<i>The Dream-Eaters</i> card #59) to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Einer der Ermittler darf Randolph Carter <i>(Meisterhafter Träumer)</i> (<i>Die Traumfresser</i>, card #59) seinem Deck hinzufügen. Diese Karte zählt nicht gegen die Deckgröße des Ermittlers.",
       "effects": [
         {
           "type": "add_card",
@@ -47538,7 +47538,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cats_collected_their_tribute",
-          "text": "the cats collected their tribute from the Zoogs."
+          "text": "Die Katzen haben ihren Tribut von den Zoogs eingefordert."
         }
       ]
     },
@@ -47549,7 +47549,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "parleyed_with_zoogs",
-          "text": "the investigators parleyed with the Zoogs."
+          "text": "Die Ermittler haben mit den Zoogs gesprochen."
         }
       ]
     },
@@ -47586,7 +47586,7 @@
                 }
               ]
             },
-            "text": "The dreamers strayed from the path.",
+            "text": "Die Träumer sind vom Pfad abgekommen.",
             "steps": [
               "strayed_from_the_path",
               "maybe_adjust_chaos_bag"
@@ -47650,13 +47650,13 @@
     },
     {
       "id": "strayed_from_the_path",
-      "text": "In your Campaign Log, record that <i>the dreamers strayed from the path.</i>",
+      "text": "Im Kampagnenlogbuch wird notiert, <i>dass die Träumer vom Pfad abgekommen sind.</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "strayed_from_the_path",
-          "text": "the dreamers strayed from the path."
+          "text": "die Träumer sind vom Pfad abgekommen."
         }
       ]
     },
@@ -47668,8 +47668,8 @@
         "choices": [
           {
             "id": "cultist",
-            "text": "Did your slumber grow deeper?",
-            "description": "Add 1 [skull] token.",
+            "text": "Bist du in einen tieferen Schlummer verfallen?",
+            "description": "Füge 1 [skull]-Marker hinzu.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -47690,8 +47690,8 @@
         "choices": [
           {
             "id": "cultist",
-            "text": "Did your slumber grow deeper?",
-            "description": "Add 1 [skull] token.",
+            "text": "Bist du in einen tieferen Schlummer verfallen?",
+            "description": "Füge 1 [skull]-Marker hinzu.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -47712,8 +47712,8 @@
         "choices": [
           {
             "id": "cultist",
-            "text": "Did your slumber grow deeper?",
-            "description": "Add 1 [skull] token.",
+            "text": "Bist du in einen tieferen Schlummer verfallen?",
+            "description": "Füge 1 [skull]-Marker hinzu.",
             "effects": [
               {
                 "type": "add_chaos_token",
@@ -47753,7 +47753,7 @@
         "choices": [
           {
             "id": "act_1",
-            "text": "Act 1, 2, or 3"
+            "text": "Szene 1, 2 oder 3"
           },
           {
             "id": "act_4",
@@ -47866,7 +47866,7 @@
         "physical",
         "mental"
       ],
-      "text": "You are nudged into consciousness by an old, scarred cat. “Hey. You all right, human?”\nI’m dreaming, you remember, and suddenly the talking cat doesn’t seem quite as weird. Exhausted, you manage to rise to your feet, brushing off the dirt caked on your clothing. “You’re lucky you weren’t harmed before we arrived,” a human voice calls out to you. It belongs to a blond-haired man in a brown traveling coat, who leans against a nearby tree. “These woods are not forgiving to the faint of heart.” The scarred cat walks to the man’s side, and the man leans over to pet its back.\nYou ask the man where you are and how he came to this place, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your ordeals.” He turns to the cat and utters a word in an odd language—a password of sorts, you suspect—but the cat simply wanders off toward a hedge, where you see several other cats banded together. “Do it yerself,” it replies.\n“Don’t mind the cats,” the man says to you quietly as the cats depart. “They are useful allies, but also independent creatures with no need for you or me. When we reach Ulthar, you may get the chance to meet others of their kind. But first things first.” Together, you leave the eaves of the enchanted forest behind.",
+      "text": "Du erlangst dein Bewusstsein zurück, als dich eine alte, vernarbte Katze anstupst. „Hey. Ist alles in Ordnung mit dir, Mensch?“ \nIch träume, erinnerst du dich, sodass dir die sprechende Katze schon weniger bizarr erscheint. Erschöpft mühst du dich aufzustehen und klopfst dir den Schmutz von den Kleidern. „Du hattest Glück, nicht zu Schaden gekommen zu sein, bevor wir ankamen“, spricht dich eine menschliche Stimme an, die einem blonden Mann in einem braunen Reisemantel gehört. Er lehnt an einem Baumstamm. „Die Wälder sind nichts für Leute mit schwachen Nerven.“ Die vernarbte Katze läuft zu dem Mann, der sich bückt, um sie über den Rücken zu streicheln. \nDu fragst den Mann, wo du dich befindest und wie du an diesen Ort gekommen bist, aber er unterbricht dich. „Das wirst du noch alles rechtzeitig erfahren. Jetzt müssen wir uns aber auf den Weg nach Ulthar machen. In der Stadt ist es sicher, relativ gesehen. Dort kannst du dich von deiner Tortur erholen.“ Er wendet sich der Katze zu und sagt zu ihr ein Wort in einer seltsamen Sprache – eine Art Passwort, nimmst du an – aber die Katze geht einfach nur auf eine Hecke zu, bei der noch mehrere andere Katzen versammelt sind. „Mach es doch selbst“, antwortet sie ihm. \n„Achte nicht auf die Katzen“, flüstert dir der Mann zu, als die Katzen sich entfernen. „Sie sind nützliche Verbündete, aber auch recht unabhängige Kreaturen, die weder auf dich noch auf mich angewiesen sind. Wenn wir in Ulthar ankommen, lernst du vielleicht noch andere ihrer Art kennen. Aber eins nach dem anderen.“ Zusammen lasst ihr den Verwunschenen Wald hinter euch.",
       "steps": [
         "maybe_check_final_act",
         "saved_by_randolph_carter",
@@ -47880,7 +47880,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "The creatures chitter among themselves, and after a moment, a dozen of them retreat in the direction of the great tree beyond the beaten path. They return shortly afterward carrying a variety of grouse, quail, and pheasants in their mouths. You’re almost certain now that you are going crazy. And yet, the spectacle continues. The creatures timidly drop their “tribute” of birds in front of the cats and quietly depart. “My apologies on behalf of the Zoogs,” the man says as he approaches. “They are curious creatures, and not usually so…agitated. It is good that we showed up when we did.” The leader of the cats jumps on a tree stump and adds, “Yes, yes. Them vile Zoogs have done their part, now let’s do ours and leave this forsaken place. What say yeh?”\nYou cannot contain your excitement. Zoogs, talking cats—everything you have read about is real. You begin to ask the man more about this world, but he cuts you off. “I will explain in due time. For now, we must follow the path to the town of Ulthar. It is a safe place, relatively speaking. There you may recover from your travels.” He turns to the old, scarred cat and utters a word in an odd language—a password of sorts, you suspect—and the cat replies with a quick nod. The rest of the cats, tribute in mouth, take a protective circular formation around you, and together you escape from the eaves of the enchanted forest.",
+      "text": "Die Kreaturen unterhalten sich aufgeregt miteinander. Nach einer Weile zieht sich etwa ein Dutzend von ihnen hinter den großen Baum am Rande eines ausgetretenen Pfades zurück. Kurze Zeit später kehren sie mit einer Auswahl von Auerhahn-, Wachtel- und Fasanenfleisch zwischen ihren Mäulern zurück. Du bist dir fast sicher, verrückt zu werden. Aber das Schauspiel geht noch weiter. Die Kreaturen legen ihren „Tribut“ aus Vögeln ängstlich vor den Katzen nieder und ziehen sich ruhig wieder zurück. „Ich muss mich im Namen der Zoogs entschuldigen“, sagt der Mann, als er sich nähert. „Es sind neugierige Wesen, die gewöhnlich nicht so … aufgebracht sind. Nur gut, dass wir vorbeigekommen sind.“ Der Anführer der Katzen springt auf einen Baumstumpf und fügt hinzu: „Ja, ja. Diese gemeinen Zoogs haben ihre Schuldigkeit getan. Es wird Zeit, von diesem verlassenen Ort zu verschwinden. Was meint ihr?“ \nDu kannst deine Aufregung nicht verbergen. Zoogs, sprechende Katzen – alles, wovon du gelesen hast, ist real. Du willst den Mann mehr über diese Welt fragen, aber er unterbricht dich. „Das wirst du noch alles rechtzeitig erfahren. Jetzt müssen wir uns aber auf den Weg nach Ulthar machen. In der Stadt ist es sicher, relativ gesehen. Dort kannst du dich von deinen Reisen erholen.“ Er wendet sich der Katze zu und sagt zu ihr ein Wort in einer seltsamen Sprache – eine Art Passwort, nimmst du an – und die Katze antwortet ihm mit einem Nicken. Die anderen Katzen nehmen mit dem Tribut in ihren Mäulern eine schützende Kreisformation um dich herum ein und zusammen entkommt ihr aus dem Verwunschenen Wald.",
       "steps": [
         "maybe_adjust_chaos_bag",
         "cats_collected_their_tribute",
@@ -47894,7 +47894,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "You hold a hand up to the new visitors, believing that you can defuse this situation on your own. Had you known these rodent-like creatures were intelligent all along, you might have tried to communicate with them much earlier. You inform them that you are just travelers in this faraway land and that you simply wish to pass through peacefully. The creatures chitter among themselves for a moment: “They are kind!” “They are not with the black cat after all!” “Summon the Council of Sages!” After a short while, several more of them appear, each with withering grey fur and a frail, thin body. The eldest one peeks behind you and states that they will aid you if you get the cats to leave.\nSomehow, you contain your disbelief and politely ask the cats to come back another time. “All right,” the scarred cat replies, “but you ain’t seen the last of us.” The cats retreat to the edge of the woods, though their human companion stays behind with you. Once the cats are out of earshot, one of the elders offers you a gourd of what appears to be fermented tree sap, which you accept graciously.\n“It is the wine of the moon-tree,” the man behind you explains quietly, stepping forward. “The Zoogs do not give such gifts lightly. They are curious creatures, but not without wisdom. Now that you may speak freely with their elders, try asking them a question. They know more of the dealings of this land than you might think.”\nYou describe the author Virgil Gray and ask the Zoogs if they have seen a man fitting that description pass through these woods. You add that he would have walked this path many times. A hush falls over the Zoogs, and some of them immediately depart into the deep foliage. “We have met this human,” one of the elders replies with a flutter just louder than a whisper. “He often comes this way. He is kind but foolish. Take the road to Ulthar. You may meet him.” Then it adds with a low growl: “…but beware the cat that follows him. All cats are liars, but the black cat especially.” You thank the ancient Zoog for its wisdom and depart, led by the blond man and his feline escort. The cats eye you suspiciously after your discussion with the Zoogs. The man breaks the tension. “If you are heading to Ulthar to find this friend of yours, allow me to guide you there. It is a safe place, relatively speaking. There you may recover from your travels.”\nZoogs. Talking cats. This can’t all be a figment of your imagination. Somehow, you can see a layer of truth beneath all of this absurdity. For better or for worse, the Zoog council has confirmed the reality of your situation: the Dreamlands are real, and Virgil Gray is here.",
+      "text": "Du hältst den neuen Besuchern eine Hand hin, weil du glaubst, die Lage alleine entschärfen zu können. Hättest du von Anfang an gewusst, dass diese nagetierartigen Kreaturen intelligent sind, hättest du schon viel früher versucht, dich mit ihnen zu unterhalten. Du teilst ihnen mit, dass du nur ein Reisender in diesem fernen Land bist und dass du nur in Frieden weitergehen willst. Kurze Zeit unterhalten sich die Kreaturen aufgeregt miteinander: „Ist doch ganz nett!“, „Gehört auch nicht zur schwarzen Katze!“, „Ruft den Rat der Weisen ein!“. Kurze Zeit später erscheinen noch mehr von ihnen, alle mit sprödem grauen Fell und gebrechlicher dünner Gestalt. Die Älteste von ihnen wirft einen Blick hinter dich und verkündet, dass sie dir helfen werden, solltest du es schaffen, die Katzen zum Gehen zu bewegen. \nIrgendwie schaffst du es, deine Ungläubigkeit zu verbergen, und bittest die Katzen höflich, zu einer anderen Zeit wiederzukommen. „In Ordnung“, antwortet die vernarbte Katze, „wir sind uns aber nicht das letzte Mal begegnet.“ Die Katzen ziehen sich an den Rand des Waldes zurück, aber ihr menschlicher Gefährte bleibt bei dir zurück. Als die Katzen außer Hörweite sind, bietet dir einer der Ältesten eine Kürbisflasche mit etwas an, das fermentiertes Baumharz zu sein scheint, was du dankbar annimmst. \n„Das ist Wein des Mondbaums“, erklärt der Mann hinter dir ruhig und macht einen Schritt nach vorne. „Die Zoogs machen solche Geschenke nicht leichtfertig. Es sind neugierige Wesen, denen eine gewisse Weisheit nicht abzusprechen ist. Da du jetzt offen mit den Ältesten sprechen kannst, würde ich ihnen Fragen stellen. Sie wissen mehr darüber, was in dem Land vor sich geht, als du glauben magst.“ \nDu beschreibst ihnen den Schriftsteller Virgil Gray und fragst die Zoogs, ob ein Mann, auf den diese Beschreibung passt, durch diese Wälder gekommen ist. Möglicherweise sogar mehrmals, wie du hinzufügst. Stille senkt sich über die Zoogs, manche von ihnen ziehen sich sogar tief ins Blattwerk zurück. „Wir haben diesen Menschen getroffen“, antwortet dir einer der Ältesten, kaum lauter als im Flüsterton. „Er ist hier oft vorbeigekommen. Er ist nett, aber dumm. Folge der Straße nach Ulthar. Dort wirst du ihn vielleicht finden.“ Dann fügt er noch mit einem leichten Knurren hinzu: „… aber hüte dich vor der Katze, die ihm folgt. Alle Katzen sind Lügner, aber die schwarze Katze ist besonders verlogen.“ Du dankst dem uralten Zoog für seine weisen Worte und machst dich im Gefolge des blonden Mannes und seiner tierischen Begleitung auf den Weg. Seit deiner Unterhaltung mit den Zoogs beäugt sie dich misstrauisch. Endlich bricht der Mann das unangenehme Schweigen. „Wenn du nach Ulthar unterwegs bist, um deinen Freund zu finden, dann biete ich mich als Führer an. In der Stadt ist es sicher, relativ gesehen. Dort kannst du dich von deinen Reisen erholen.“ \nZoogs. Sprechende Katzen. Das kannst du dir nicht alles nur einbilden. Irgendwie kannst du ein Fünkchen Wahrheit in all dieser Absurdität erkennen. Fakt ist, dass der Rat der Zoogs deine Situation bestätigt hat: Die Traumlande sind echt und Virgil Gray befindet sich hier.",
       "steps": [
         "maybe_adjust_chaos_bag",
         "parleyed_with_zoogs",
@@ -47909,8 +47909,8 @@
 },
 {
   "id": "dark_side_of_the_moon",
-  "scenario_name": "Dark Side of the Moon",
-  "full_name": "Scenario III–A: Dark Side of the Moon",
+  "scenario_name": "Die dunkle Seite des Mondes",
+  "full_name": "Szenario III-A: Die dunkle Seite des Mondes",
   "setup": [
     "check_someone_captured",
     "gather_encounter_sets",
@@ -47927,7 +47927,7 @@
   "steps": [
     {
       "id": "check_someone_captured",
-      "text": "Check Campaign Log. <i>If at least one investigator was captured.</i>",
+      "text": "Überprüfe das Kampagnenlogbuch. <i>Falls mindestens 1 Ermittler gefangen genommen wurde.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -47953,11 +47953,11 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Over the next few days, you learn more about your captors, but nothing about the black galley’s destination. It seems the Corsairs who hunted you down and captured you were only agents—or perhaps slaves—of a much greater evil: a race of greyish-white toad-like creatures with no eyes and slippery skin concealed beneath a loose disguise of silken clothing. You notice the creatures tend to stay below deck, and none of them deign to interact with you at all. Despite their disguises, the mere sight of one makes you retch. If they are indeed the masters of the Corsairs, this cannot bode well for you. You are kept apart from Virgil, and suspect he is on a different ship entirely.\nMore days pass. You have no way of telling how long it’s been since your capture. You have been kept well fed—that is, if being forced to eat bitter porridge from a dirty clay bowl counts as “well fed.” What concerns you most is the ship itself. Though you are sure it’s still moving, you no longer feel it rock back and forth as the waves push it from side to side, nor do you hear the sounds of the ocean or of gulls cawing over the coast. In fact, you hear very little at all now: only the occasional commands of one of the beasts from below deck, and the shouting of Corsairs in reply. No churning sea. No wind in the sails. Nothing at all.\nPanic seizes your mind. What if you are destined for some strange port from which there can be no return? Could they have have sailed off the face of the planet itself? You have to do something. Escape, somehow. You try desperately to come up with a plan of action, but in vain. Corsairs relentlessly patrol the brig, and even if you managed to slip your bonds and sneak past them, where would you go?\nJust as you begin to lose hope, a familiar face descends from the top deck. It is the ship captain you hired in Dylath-Leen: a chubby, middleaged fellow with a bushy beard and long hair pulled into a bun atop his head. He peeks around, realizes he is alone with you, and runs to your side. “I am so sorry, my friends,” he stammers quietly. “I had no idea who I was dealing with. I was tricked, I swear. I did not know that they were…I did not know…” he trails off, red-faced with guilt. You aren’t entirely sure what he means, but obviously he had something to do with your capture. Regardless, he is your only chance at escape. You tell him all will be forgiven if he helps you. He ponders for a moment, looks around, then finally nods and slices through your bonds with a curved knife.\nFreedom has never tasted so sweet. You stretch your aching muscles and search nearby for your belongings, but there is little time to waste. Keeping a lookout, your rescuer whispers, “There may be a rowboat you can use on the top deck, but we’ll have to be quiet as mice. If they spot—” his voice suddenly catches in his throat, along with a sharp, jagged blade. He makes a dreadful gurgle as blood wells in his mouth, and he collapses. Behind him, a Corsair flashes a sadistic grin at his next victims: you."
+      "text": "Im Laufe der nächsten Tage erfährst du mehr über deine Entführer, jedoch nichts über den Zielhafen der schwarzen Galeere. Es scheint, als wären die Korsaren, die dich gejagt und verschleppt haben, nur Agenten – oder gar Sklaven – eines viel größeren Übels: einer Rasse von gräulich-weißen, augenlosen Krötenwesen mit glitschiger Haut, die sie unter langen Seidengewändern verbergen. Für gewöhnlich bleiben sie unter Deck und lassen sich niemals zu einem Gespräch mit dir herab. Wenn sie tatsächlich die Herren der Korsaren sind, verheißt das nichts Gutes für dich. Virgil wird getrennt von dir gefangen gehalten, vielleicht sogar auf einem ganz anderen Schiff. \nNoch mehr Tage vergehen. Du kannst nicht sagen, wie lange du schon in der Gewalt deiner Entführer bist. Zu essen gibt man dir genug – sofern man bitteren Haferbrei in einer schmutzigen Tonschale als „Essen“ bezeichnen mag. Was dich am meisten verstört, ist das Schiff selbst. Obwohl du ganz sicher eine Bewegung spürst, fühlst du weder das Schaukeln der Wellen, noch hörst du das Rauschen des Meeres oder das Kreischen von Möwen an der Küste. Im Grunde hörst du fast gar nichts, nur den gelegentlichen Befehl eines der Wesen unter Deck oder den Antwortruf eines Korsaren. Kein aufgewühltes Meer. Kein Wind in den Segeln. Einfach gar nichts. \nPanik ergreift dich. Was, wenn ihr einen fremdartigen Hafen ansteuert, von dem es keine Rückkehr gibt? Könntet ihr von der Oberfläche des Planeten fortgesegelt sein? Du musst etwas unternehmen. Irgendwie entkommen. Verzweifelt versuchst du, einen Plan zu schmieden, doch es ist vergebens. Die Korsaren patrouillieren gewissenhaft vor den Zellen, und selbst wenn es dir gelänge, deine Fesseln abzustreifen und an ihnen vorbeizuschleichen, wohin solltest du gehen? \nGerade als dich die Hoffnung verlässt, steigt ein bekanntes Gesicht vom Oberdeck herab. Es ist der Schiffskapitän, den du in Dylath-Leen angeheuert hast: ein beleibter Bursche mittleren Alters mit einem buschigen Bart und langen Haaren, die auf dem Scheitel zu einem Dutt zusammengebunden sind. Er sieht sich um, stellt fest, dass er allein mit dir ist, und kommt zu dir. „Es tut mir so leid, mein Freund“, stammelt er leise. „Ich hatte ja keine Ahnung, mit wem ich es zu tun hatte. Man hat mich reingelegt, das schwöre ich. Ich wusste nicht, dass sie … Ich wusste es nicht …“ Seine Stimme versagt und sein Gesicht wird rot vor Scham. Du weißt nicht genau, was er meint, aber offensichtlich hatte er etwas mit deiner Entführung zu tun. Nichtsdestotrotz ist er deine einzige Hoffnung auf Rettung. Du versprichst, ihm alles zu verzeihen, wenn er dir jetzt hilft. Für einen Moment denkt er nach und schaut sich um, dann nickt er schließlich und durchtrennt deine Fesseln mit einem gekrümmten Messer. \nNoch nie war der Duft der Freiheit so süß. Du streckst deine schmerzenden Glieder und hältst Ausschau nach deinen Habseligkeiten, doch es bleibt nicht viel Zeit. Dein Retter, der nun Schmiere steht, flüstert: „Auf dem Oberdeck gibt es ein Ruderboot, aber wenn wir dort hinwollen, müssen wir mucksmäuschenstill sein. Sollten sie uns bemer…“ Die Worte bleiben ihm im Halse stecken, zusammen mit einer scharfen, gezackten Klinge. Er stößt ein scheußliches Gurgeln aus, als Blut aus seinem Mund sprudelt, und bricht zusammen. Hinter ihm blitzt das sadistische Grinsen eines Korsaren auf, der sich bereits seinem nächsten Opfer zuwendet: dir."
     },
     {
       "id": "check_someone_escaped",
-      "text": "Check Campaign Log. <i>If at least one investigator was not captured.</i>",
+      "text": "Überprüfe das Kampagnenlogbuch. <i>Falls kein Ermittler gefangen genommen wurde.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -47976,7 +47976,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You have little choice if you are to save the Corsairs’ captives: You must sail to the Moon and rescue them yourself, or they will surely become slaves of the beasts who call it home. “They are evil creatures who serve an even greater evil,” Randolph explains as you prepare to set sail. “There are port cities like Dylath-Leen that have dealt with them before, but few know their true identity, for they wear disguises to mask their hideous nature.”\nPerhaps your captain, who shuttled you to and from the various regions of the Dreamlands, dealt with them in the past. Or perhaps not. For the sake of your own sanity, it may be better not to dwell on suspicions of betrayal.\n“How does one even sail to the Moon?” you ask, befuddled. By now, you are no stranger to the oddities of the Dreamlands, having spent weeks exploring its cities, wilds, and places stranger still. Even knowing the laws of physics and astronomy should not apply here, you struggle to imagine how one might sail a ship into space.\n“It will be a long journey,” Randolph answers. “Far across the sea lie the Basalt Pillars of the West. Between these pillars, the ocean plunges off the edge of the world. If we sail off of the precipice between them, we can cross the void of space itself.”\nYou shouldn’t be surprised that the world of Earth’s Dreamlands is flat; after all, everything else here is a fiction, too. Still, you are incredulous. “I have sailed this route before,” Randolph says, sensing your skepticism. “But I fear this time it might be a one-way trip, especially without a crew. We may need to find an altogether different way to unknown Kadath. Are you prepared?”\nYou look to the horizon, where the cerulean sea meets the sky. Somewhere out there, your aid is needed. What’s more, the proof you seek may lie across the sea—over the edge of the very world itself. You prepare to embark."
+      "text": "Du hast keine Wahl. Wenn du deine Reisebegleiter aus den Fängen der Korsaren retten willst, musst du zum Mond segeln und sie befreien, ehe sie von den Bestien, die dort hausen, versklavt werden. „Das sind böse Kreaturen, die einem noch größeren Bösen dienen“, erklärt Randolph, während du die Segel setzt. „In Hafenstädten wie Dylath-Leen gibt es viele, die Geschäfte mit ihnen machen, aber nur wenige kennen ihre wahre Gestalt, denn sie tragen Verkleidungen, um ihre Hässlichkeit zu verschleiern.“ \nVielleicht hatte der Kapitän, mit dem ihr quer durch die Traumlande gereist seid, schon einmal geschäftlich mit ihnen zu tun. Oder vielleicht auch nicht. Um deiner eigenen geistigen Gesundheit willen solltest du dich nicht in Zweifel und Verdächtigungen hineinsteigern. \n„Wie segelt man überhaupt zum Mond?“, fragst du verwirrt. Nach all den Wochen, die du in den Traumlanden, ihren Städten, Wäldern und noch absonderlicheren Orten verbracht hast, sind dir ihre Merkwürdigkeiten nicht mehr fremd. Doch selbst wenn du die Gesetze der Physik und Astronomie außer Acht lässt, tust du dich schwer mit der Vorstellung, ein Schiff könne in den Weltraum segeln. \n„Es wird eine lange Fahrt“, antwortet Randolph. „Weit über dem Meer liegen die Basaltsäulen des Westens. Zwischen diesen Säulen stürzt der Ozean wie ein Wasserfall ins Nichts, und wenn wir dort hindurchsegeln, gelangen wir in die Leere des Alls.“ \nEs sollte dich nicht erstaunen, dass die irdischen Traumlande eine Scheibe sind; schließlich entstammt hier alles dem Reich der Fiktion. Dennoch bist du skeptisch. „Ich bin schon einmal auf dieser Route gesegelt“, sagt Randolph, der deine Vorbehalte zu spüren scheint. „Aber ich fürchte, dieses Mal könnte es eine Fahrt ohne Wiederkehr werden, zumal wir keine Mannschaft haben. Vielleicht müssen wir einen anderen Weg zum unbekannten Kadath finden. Bist du bereit?“ \nDein Blick schweift zum Horizont, wo sich das azurblaue Meer mit dem Himmel vermählt. Irgendwo da draußen wird deine Hilfe gebraucht. Zudem könnte der Beweis, den du suchst, jenseits des Meeres, hinter dem Rand der Welt, zu finden sein. Du machst dich bereit."
     },
     {
       "id": "gather_encounter_sets",
@@ -47991,7 +47991,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put City of the Moon-Beasts, Temple of the Moon Lizard, Moon-Forest, and The Dark Crater into play.",
+      "text": "Die folgenden Orte werden ins Spiel gebracht: Stadt der Mondbestien, Tempel der Mondechse, Mondwald und Der dunkle Krater.",
       "bullets": [
         {
           "text": "Set each other location aside, out of play."
@@ -48000,7 +48000,7 @@
     },
     {
       "id": "check_someone_captured_setup",
-      "text": "Check Campaign Log. <i>If at least one investigator was captured.</i>",
+      "text": "Überprüfe das Kampagnenlogbuch. <i>Falls mindestens 1 Ermittler gefangen genommen wurde.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -48020,16 +48020,16 @@
     {
       "id": "captured_locations",
       "bullet_type": "small",
-      "text": "Put the set-aside Moon-Beast Galley into play, revealed side faceup. This location has no unrevealed side—instead, it has a story card on its reverse side. <i>(For the best experience, do not read the text on its reverse side until you are instructed to do so.)</i>"
+      "text": "Der beiseitegelegte Ort Galeere der Mondbestien wird mit der enthüllten Seite nach oben ins Spiel gebracht. Dieser Ort hat keine verhüllte Seite – statt einer verhüllten Seite hat er eine Handlungskarte auf seiner Rückseite. <i>(Für ein optimales Spielerlebnis sollte der Text auf der Rückseite erst gelesen werden, wenn ein Effekt dazu auffordert.)</i>"
     },
     {
       "id": "captured_starting_location",
       "bullet_type": "small",
-      "text": "Each investigator who was captured begins play in the Moon-Beast Galley. For each investigator who begins the game in the Moon-Beast Galley, place 2 additional clues on it <i>(from the token bank)</i>."
+      "text": "Jeder Ermittler, der gefangen genommen wurde, beginnt das Spiel auf der Galeere der Mondbestien. Für jeden Ermittler, der das Spiel auf der Galeere der Mondbestien beginnt, werden 2 zusätzliche Hinweise <i>(aus dem Markervorrat)</i> darauf platziert."
     },
     {
       "id": "check_someone_escaped_setup",
-      "text": "Check Campaign Log. <i>If at least one investigator was not captured.</i>",
+      "text": "Überprüfe das Kampagnenlogbuch. <i>Falls kein Ermittler gefangen genommen wurde.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -48048,7 +48048,7 @@
     {
       "id": "escaped_starting_location",
       "bullet_type": "small",
-      "text": "Each investigator who was not captured begins play in the Moon-Forest"
+      "text": "Jeder Ermittler der nicht gefangen genommen wurde beginnt das Spiel im Mondwald"
     },
     {
       "id": "check_randolph_captured",
@@ -48070,25 +48070,25 @@
     {
       "id": "set_aside_randolph",
       "bullet_type": "small",
-      "text": "Search each investigator’s deck for Randolph Carter <i>(Expert Dreamer)</i> and set him aside, out of play."
+      "text": "Jedes Ermittlerdeck wird nach Randolph Carter <i>(Meisterhafter Träumer)</i> durchsucht und diese karte als nicht im Spiel befindlich beiseitegelegt."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: the Moon Lizard enemy, the Virgil Gray <i>(Truly Inspired)</i> story asset, The Captain story asset, and the False Awakening weakness."
+      "text": "Folgende Karten werden als nicht im Spiel befindlich beiseitegelegt: der Gegner Mondechse, die Storyvorteilskarten Virgil Gray <i>(Wahrhaftig inspiriert)</i> und Der Kapitän sowie die Schwäche Falsches Erwachen."
     },
     {
       "id": "place_alarm_doom",
-      "text": "Place 1 doom on each investigator card. This doom represents that investigator’s current alarm level <i>(see Alarm Level, below)</i>. It does not count as doom and does not count toward the current agenda’s doom threshold."
+      "text": "Auf jeder Ermittlerkarte wird 1 Verderben platziert. Dieses Verderben steht für die aktuelle Alarmstufe des jeweiligen Ermittlers <i>(siehe Alarmstufe weiter unten)</i>. Diese Marker zählen nicht als Verderben und zählen nicht gegen den Verderbensschwellenwert der aktuellen Agenda."
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "alarm_level",
       "type": "rule_reminder",
-      "title": "Alarm Level",
-      "text": "The setup of this scenario instructs the players to place 1 doom on each investigator card, marking their current “alarm level.” As the investigators attempt to escape from the grasp of the moon-beasts, their respective alarm levels may increase or decrease based on their actions and decisions. A higher alarm level means you are closer to being discovered, which will significantly hinder your attempts to escape.\nIf an effect raises an investigator’s alarm level by any amount, place that much doom on that investigator’s card to represent this. Likewise, if an effect reduces an investigator’s alarm level by any amount, remove that much doom from that investigator’s card.\nEven though it is marked using doom tokens, an investigator’s alarm level is not doom, and does not count toward the agenda’s doom threshold.\nAn investigator’s alarm level has no effect on its own, but it may alter or strengthen other encounter card effects."
+      "title": "Alarmstufe",
+      "text": "Bei der Vorbereitung dieses Szenarios werden die Spieler dazu angewiesen, 1 Verderben auf jeder Ermittlerkarte zu platzieren. Dieser Marker gibt die aktuelle „Alarmstufe“ des jeweiligen Ermittlers an. Während die Ermittler versuchen, sich aus den Fängen der Mondbestien zu befreien, kann sich die Alarmstufe eines Ermittlers erhöhen oder verringern, abhängig von den Aktionen und Entscheidungen des jeweiligen Ermittlers. Eine höhere Alarmstufe bedeutet, dass der Ermittler näher daran ist, entdeckt zu werden, was die Fluchtversuche erheblich erschweren wird. \nFalls ein Effekt die Alarmstufe eines Ermittlers um eine beliebige Anzahl erhöht, wird die gleiche Anzahl Verderben auf der Ermittlerkarte platziert, um dies anzuzeigen. Falls ein Effekt die Alarmstufe eines Ermittlers um eine beliebige Anzahl senkt, wird die gleiche Anzahl Verderben von der Ermittlerkarte entfernt. \nAuch wenn Verderbensmarker verwendet werden, um die Alarmstufe eines Ermittlers anzuzeigen, zählen diese Marker nicht als Verderben und zählen nicht gegen den Verderbensschwellenwert der aktuellen Agenda. \nDie Alarmstufe hat für sich genommen keinen Effekt, kann aber die Effekte von Begegnungskarten verändern oder verstärken."
     },
     {
       "id": "carried_to_the_cold_wastes",
@@ -48097,19 +48097,19 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carried_to_the_cold_wastes",
-          "text": "the investigators were carried to the Cold Wastes."
+          "text": "Die Ermittler wurden in die Kalte Öde gebracht."
         }
       ]
     },
     {
       "id": "randolph_did_not_survive_the_voyage",
-      "text": "In your Campaign Log, record <i>Randolph Carter did not survive the voyage</i>. If an investigator’s deck contains Randolph Carter <i>(Expert Dreamer)</i> <i>(The Dream-Eaters card #59)</i>, remove him from that deck for the remainder of the campaign.",
+      "text": "Im Kampagnenlogbuch wird notiert: <i>Randolph hat die Reise nicht überlebt</i>. Falls sich im Deck eines Ermittlers Randolph Carter <i>(Meisterhafter Träumer)</i><i> (Die Traumfresser</i>, card #59) befindet, wird er für den Rest der Kampagne aus jenem Deck entfernt.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "randolph_did_not_survive_the_voyage",
-          "text": "Randolph Carter did not survive the voyage."
+          "text": "Randolph hat die Reise nicht überlebt."
         },
         {
           "type": "remove_card",
@@ -48119,7 +48119,7 @@
     },
     {
       "id": "lead_investigator_gains_false_awakening",
-      "text": "The lead investigator has earned the False Awakening weakness <i>(The Dream-Eaters #233)</i> (does not count toward deck size). Add this card to the lead investigator’s deck.",
+      "text": "Der Ermittlungsleiter hat die Schwäche Falsches Erwachen <i>(Die Traumfresser, #233)</i> verdient (zählt nicht gegen seine Deckgröße). Sie wird dem Deck des Ermittlungsleiters hinzugefügt.",
       "effects": [
         {
           "type": "add_card",
@@ -48135,7 +48135,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "travelled_to_the_cold_wastes",
-          "text": "the investigators traveled to the Cold Wastes."
+          "text": "Die Ermittler sind in die Kalte Öde gereist."
         }
       ]
     },
@@ -48146,7 +48146,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "randolph_survived_the_voyage",
-          "text": "Randolph survived the voyage."
+          "text": "Randolph hat die Reise überlebt."
         }
       ]
     },
@@ -48167,7 +48167,7 @@
     },
     {
       "id": "record_3_evidence_of_kadath",
-      "text": "Record 3 tally marks next to “Evidence of Kadath” in your Campaign Log.",
+      "text": "Im Kampagnenlogbuch werden unter „Beweis von Kadath“ 3 Zählstriche notiert.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -48218,7 +48218,7 @@
     },
     {
       "id": "maybe_skip_interlude",
-      "text": "If you are playing The Dream-Quest as a four-part campaign:",
+      "text": "Falls Die Traumsuche als vierteilige Kampagne gespielt wird:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -48254,7 +48254,7 @@
     {
       "id": "skip_interlude",
       "bullet_type": "small",
-      "text": "Skip <b>Interlude III: The Great Ones</b>.",
+      "text": "Überspringe <b>Zwischenspiel III: Die Großen</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -48282,7 +48282,7 @@
         "physical",
         "mental"
       ],
-      "text": "Despite your best efforts, your pursuers are too many for you to escape unnoticed. You are cornered and taken captive. Virgil tries his best to resist, but Randolph gives in, knowing that his resistance is futile. You are brought into a large domed temple on the dark side of the Moon and forced to kneel before one of the moon-beasts. It is dressed in grey robes and heavy wrappings, but you see its true visage beneath: its slippery, clammy flesh and its drooling, bulbous lips. “Wonderful,” it praises its henchmen. “Our master will be pleased.” Behind you, Corsairs prevent your escape, while a row of winged things on either side of you squawk rhythmically and flap their wings. A preparation, you suspect, for an unpleasant journey.\nThe moon-beast orders its slaves to haul you onto the winged creatures. “Bring these wretches to the sacrificial pits,” it decrees. “They must be judged for their heresy. The moon lizard shall feed well tonight.”\n“What? No, this isn’t right.” Randolph grits his teeth.\nThere is a bright flash of light, and you <i>awaken</i>. You are sitting atop a comfortless and unfamiliar bed. A wave of relief washes over you at first. Have you finally awoken from this endless dream? Then the still, cold void embraces you, and you realize where you truly are. Instead of four walls and a ceiling, you are surrounded by a bright, starry cosmos. Galaxies and nebulae in the distance seem to stare back at you with unfeeling cruelty. Your bed floats along the thinnest of silver threads. Virgil’s cat sits up at your feet. “You’re not awake,” the black cat says. “Not yet.”\nAnother flash of light. The moon-beast orders its slaves to haul you onto the winged creatures. “Bring these wretches to the High Priest in the Cold Wastes,” it decrees. “They must be judged for their heresy.”\n“Worry not, my friends,” Randolph whispers to you. “Did you hear that? The Cold Wastes is the region wherein unknown Kadath lies. With any luck, they will bring us right to our destination—” Randolph is cut off as the moon-beast grabs him and pulls him to his feet.\n“No, not you. I know of you. You will be a gift. Fodder for the moon lizard. Come.” It drags Randolph away before your very eyes. His screams echo off the walls of the temple and fade as he is hauled underground. Then, borne aloft on dreadful, membranous wings, your mounts carry you into the void of space.",
+      "text": "Trotz aller Bemühungen war die Zahl der Verfolger zu groß, um ihnen unbemerkt zu entkommen. Ihr werdet umzingelt und festgenommen. Virgil wehrt sich nach besten Kräften, während Randolph sich widerstandslos ergibt, wohlwissend, dass es ohnehin zwecklos wäre zu kämpfen. Ihr werdet auf die dunkle Seite des Mondes in einen großen, kuppelgekrönten Tempel gebracht, und vor einer der Mondbestien auf die Knie gezwungen. Sie ist in graue Roben und schwere Tücher gehüllt, doch dahinter siehst du ihr wahres Gesicht: ihre glitschige, feuchte Haut und die triefenden, wulstigen Lippen. „Wunderbar“, sagt sie lobend zu ihren Handlangern. „Unser Herr wird zufrieden sein.“ Hinter euch versperren die Korsaren den Ausgang, während links und rechts geflügelte Wesen in einer Reihe Aufstellung nehmen und rhythmisch krächzend mit den Flügeln schlagen. Es ist, wie du vermutest, die Vorbereitung einer unangenehmen Reise. \nDie Mondbestie lässt euch von ihren Sklaven auf den geflügelten Kreaturen festbinden. „Schafft diese erbärmlichen Wichte zu den Opfergruben“, befiehlt sie. „Ihre Ketzerei muss bestraft werden. Die Mondechse wird heute Nacht ein Festmahl bekommen.“ \n„Was? Nein, das ist nicht richtig.“ Randolph knirscht mit den Zähnen. \nPlötzlich gibt es einen grellen Lichtblitz und du <i>wachst</i> auf. Du sitzt aufrecht in einem ungemütlichen, fremden Bett. Das Erste, was du fühlst, ist Erleichterung. Bist du etwa endlich aus diesem ewigen Traum erwacht? Doch dann spürst du sie, die stille, eiskalte Umarmung der Leere, und du begreifst, wo du wirklich bist. Statt vier Wänden und einer Decke umgibt dich der helle, sternengespickte Kosmos. In der Ferne siehst du Galaxien und Nebel, die dich mit gefühlloser Grausamkeit anstarren. Dein Bett hängt an dünnsten Silberfäden, und zu deinen Füßen sitzt Virgils Katze. „Du bist nicht wach“, sagt die schwarze Katze. „Noch nicht.“ \nEin weiterer Lichtblitz. Die Mondbestie lässt dich von ihren Sklaven auf einer geflügelten Kreatur festbinden. „Bringt diese erbärmlichen Wichte zum Hohepriester in der Kalten Öde“, befiehlt sie. „Ihre Ketzerei muss bestraft werden.“ \n„Keine Sorge“, flüstert Randolph dir zu. „Hast du das gehört? Die Kalte Öde. Dort liegt der unbekannte Kadath. Mit etwas Glück werden sie uns direkt an unser Ziel bri…“ Randolph wird jäh unterbrochen, als die Mondbestie ihn packt und auf die Füße zerrt. \n„Nein, du nicht. Dich kenne ich. Du wirst ein Geschenk sein. Futter für die Mondechse. Komm.“ Vor deinen Augen schleift sie Randolph davon. Seine Schreie hallen von den Tempelmauern wider und verklingen erst, als er im Untergrund verschwunden ist. Und dann wirst du auch schon von grauenhaften Fledermausschwingen emporgehoben und in die Leere des Alls getragen.",
       "steps": [
         "carried_to_the_cold_wastes",
         "randolph_did_not_survive_the_voyage",
@@ -48295,7 +48295,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "As the white galley glides silently back toward the Earth, its captain sings a soft, melodic shanty, which the ship’s oarsmen repeat. You seem to know the language well, despite having never heard it before. You ask after your course, but the bearded man does not reply other than to continue his harmonious song. You plead with him to aid you in your search for unknown Kadath, believing it to be of the utmost importance. “You should not seek to disturb the gods,” the man warns, his song interrupted. “They are far greater than you or I. Do you not see the folly in your ambition?” You beseech him once more, telling him you must bring back proof of the Dreamlands, and cannot return home without the aid of the gods. “Would that be so dire a fate? Look around you.”\nYou do as the captain requests, and are met with a scene of such serene beauty that it leaves you breathless. The seas below glitter in the moonlight like an ocean of diamonds. Along the horizon, you see crystalline coastlines, blissful countrysides, lush mountain vistas, and emerald-green gardens. The air is crisp and cool as you descend below the clouds. Your heart swells with the sweet fragrance of flowers from the nearby coast. Never in all your years in “reality” have you experienced a beauty so <i>real</i>.\nMaybe staying wouldn’t be so bad. You’ve already spent weeks—no, months—in this land. There have been hardships, yes, but could you really return to your mundane reality after everything you’ve seen and experienced in this wondrous land?\nThen, far to the north, you see it. Looming just over the horizon, or perhaps beyond the dreams of Earth itself. A white peak, atop which sits an azure beacon of refracted moonlight. The bearded man follows your gaze. “So be it,” he sighs. He changes course, following now behind a celestial bird whose plumage matches the vibrant sky. “We sail to the abode of the gods themselves.”",
+      "text": "Während das Weiße Schiff lautlos zur Erde zurücksegelt, stimmt der Kapitän ein sanftes, klangvolles Seemannslied an und die Ruderer singen mit. Du scheinst die Sprache gut zu verstehen, obwohl du sie noch nie zuvor gehört hast. Auf deine Frage nach dem Kurs reagiert der bärtige Mann nicht und singt einfach weiter. Überzeugt von der ungemeinen Wichtigkeit deines Auftrags flehst du ihn an, dir bei der Suche nach dem unbekannten Kadath zu helfen. „Man sollte die Götter nicht stören“, sagt der Mann, nachdem er seinen Gesang unterbrochen hat. „Ihre Belange gehen weit über unsere hinaus. Siehst du denn nicht, wie töricht dein Bestreben ist?“ Noch einmal wiederholst du deine inständige Bitte, erklärst ihm, dass du einen Beweis für die Existenz der Traumlande brauchst und ohne die Hilfe der Götter nicht heimkehren kannst. „Wäre es denn so bitter hierzubleiben? Sieh dich nur um.“ \nDu tust wie geheißen und was du siehst, ist so bezaubernd schön, dass es dir den Atem verschlägt. Unter dir glitzert das Meer im Mondlicht wie ein Ozean aus Diamanten. Am Horizont reihen sich kristallklare Küsten, idyllische Landschaften, blühende Gebirgsketten und smaragdgrüne Gärten auf. Die Luft ist frisch und kühl, als ihr die Wolkendecke durchdringt, und der süße Blütenduft der nahegelegenen Küste lässt dein Herz höherschlagen. Nie in all den Jahren der „Realität“ hast du etwas als so real empfunden. \nVielleicht wäre es gar nicht so schlimm, hierbleiben zu müssen. Du hast bereits Wochen – nein, Monate – in diesem Land verbracht. Ja, es gab auch schwere Zeiten, doch könntest du wirklich in die triste Realität zurückkehren, nach allem, was du in diesem wundersamen Land gesehen und erlebt hast? \nUnd dann siehst du ihn, weit im Norden. Knapp über dem Horizont, oder gar jenseits aller irdischen Träume. Ein weißer Gipfel, auf dem ein azurblaues Leuchtfeuer aus gebrochenem Mondschein brennt. Der bärtige Mann folgt deinem Blick. „So soll es sein“, sagt er seufzend. Er ändert den Kurs und folgt nun einem Vogel, dessen Gefieder dem strahlenden Himmel gleicht. „Wir segeln also ins Reich der Götter.“",
       "steps": [
         "travelled_to_the_cold_wastes",
         "randolph_survived_the_voyage",
@@ -48319,7 +48319,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+      "text": "<fancy>Freitag, 1 3. Februar 19 25</fancy>\nIrgendetwas Seltsames ging in Arkham, Massachusetts vor sich.\nDas war für die Bewohner der trostlosen Stadt in New England keine Überraschung, denn Arkham war schon immer bekannt für seine eigenartigen – manche würden sie übernatürlich nennen – Vorkommnisse. Doch dieser Umstand war alles andere als gewöhnlich. \nAlles begann mit der neusten Ausgabe der <i>Geschichten aus Nimmermehr</i>. Ein Autor namens Virgil Gray beschrieb darin eine Reise, die sich in seinen Träumen ereignet hatte – eine Reise, von der er behauptete, sie sich nicht ausgedacht zu haben. Er schrieb über eine lange Wendeltreppe, über eine unerträglich heiße, mit Verstand gesegnete Säule aus Feuer, über einen Baum, der vom Mond kam, und über eine merkwürdige sprechende Katze … um nur einige der wenig glaubhaften Dinge zu erwähnen. Aber es war nicht die außergewöhnliche Geschichte, die dein Interesse an der Sache geweckt hatte. Kurz nach der Veröffentlichung der Erzählung erreichte ein Brief nach dem anderen die Redaktion von <i>Geschichten aus Nimmermehr</i>. Die Leser von Virgils Geschichte behaupteten in den ebenfalls veröffentlichten Briefen, genau den gleichen Traum gehabt zu haben. Es dauerte nicht lange, da griff der <i>Arkham Advertiser</i> die Geschichte auf, sodass die Neuigkeit dieses seltsamen Phänomens schon bald Experten zu Ohren kam.\nVirgil Gray wurde davon überzeugt, sich im örtlichen Sanatorium einer Therapie zu unterziehen. Auch viele andere, welche unter derselben Psychose wie der Autor litten, wurden dort eingewiesen. Die vorherrschende Theorie der Wissenschaftler ist, dass sich Virgils Traum so echt anfühlte, dass er ihn nicht mehr von der Realität unterscheiden konnte, und dass durch seine Schriften seine Wahnvorstellungen wie bei einer Massenhysterie auf andere übertragen werden konnten. Dich überzeugt das nicht. Schließlich ist nicht wirklich viel über den schlichten Akt des Träumens bekannt. Mediziner haben weit auseinandergehende Theorien, was den Zustand des Gehirns im Schlaf betrifft. Erst kürzlich haben Experten, darunter auch Sigmund Freud, die These aufgestellt, dass Träume Manifestationen eigener unterbewusster Sehnsüchte, Ängste oder Obsessionen sein könnten. Wahrsager haben ihrerseits schon lange daran geglaubt, dass man Träume durchleuchten und interpretieren kann, um damit die Vergangenheit oder Zukunft des Träumers zu erkennen. Wenn diese Theorien aber stimmen sollten, wie können dann unterschiedliche Leute – in ganz verschiedenen Lebensumständen – die gleichen geteilten Erfahrungen in ihren Träumen erleben? Was wäre, wenn unser heutiges Verständnis über den Schlaf falsch wäre? Was wäre, wenn es wirklich einen Ort in unserem Unterbewusstsein gäbe, zu dem wir im Schlaf reisen könnten – in ein Land der Träume, das nur jenseits unserer wachen Welt existieren würde?\nDu und deine Gefährten sind zusammengekommen, um diesem seltsamen Phänomen auf den Grund zu gehen. Wenn andere in der Stadt in ihren Träumen in eine andere Welt reisen können, könnt ihr das vielleicht auch. Ihr habt die Gegebenheiten von Virgils Reise nahezu perfekt nachgestellt. Wenn alles gut geht, wird die eine Hälfte von euch eine Reise in dieses „Traumland“ und wieder zurück unternehmen, während die andere Hälfte in der wachen Welt verbleibt und das Schlafverhalten ihrer Gefährten überwacht, um sicherzugehen, dass nichts schiefgeht …"
     }
   ]
 },
@@ -48677,7 +48677,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "locations_rule",
@@ -49119,7 +49119,7 @@
     },
     {
       "id": "maybe_skip_interlude",
-      "text": "If you are playing The Dream-Quest as a four-part campaign:",
+      "text": "Falls Die Traumsuche als vierteilige Kampagne gespielt wird:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -49394,7 +49394,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "stop_rule",
@@ -50099,8 +50099,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "The Waking World Is Only One Reality",
-      "text": "“In light slumber he descended the seventy steps to the cavern of flame and talked of this design to the bearded priests Nasht and Kaman-Thah. And the priests shook their pshent-bearing heads and vowed it would be the death of his soul.”\n– H. P. Lovecraft, The Dream-Quest of Unknown Kadath"
+      "title": "Die wache Welt ist nur eine Realität",
+      "text": "„Im leichten Schlummer stieg er die siebzig Stufen zur Kaverne der Flamme hinab und sprach den bärtigen Priestern von Nasht und Kaman-Thah von diesem Vorhaben. Und die Priester schüttelten ihre pshent-tragenden Häupter und erklärten feierlich, dies bedeute den Tod seiner Seele.“\n– H. P. Lovecraft, Die Traumsuche nach dem unbekannten Kadath"
     },
     {
       "id": "choose_investigators",
@@ -50291,11 +50291,11 @@
     },
     {
       "id": "8_part_campaign",
-      "text": "Each player should build a different investigator deck for each campaign, choosing one of their investigators to be part of Campaign A and one to be part of Campaign B."
+      "text": "Jeder Spieler sollte für jede Kampagne ein eigenes Ermittlerdeck erstellen. Einer seiner Ermittler ist Teil von Kampagne A und ein anderer Ermittler Teil von Kampagne B."
     },
     {
       "id": "separate_chaos_bag",
-      "text": "Note that each campaign has its own separate chaos bag, as described in each campaign’s setup instructions. However, there is no need to build both chaos bags simultaneously. Use the “Chaos Bag” section of each Campaign Log to record the current contents of each chaos bag so you may switch between them easily."
+      "text": "Beide Kampagnen haben ihren eigenen Chaosbeutel, wie in den jeweiligen Vorbereitungsanweisungen beschrieben. Es ist aber nicht nötig, 2 Chaosbeutel gleichzeitig zu füllen. Im Abschnitt „Chaosbeutel“ jedes Kampagnenlogbuchs kann der aktuelle Inhalt jedes Chaosbeutels notiert werden, damit er zwischen den Szenarien leichter ausgetauscht werden kann."
     },
     {
       "id": "ask_8_part_campaign",
@@ -50306,7 +50306,7 @@
         "choices": [
           {
             "id": "8_part_campaign",
-            "text": "Playing as half of an 8-part campaign.",
+            "text": "Als Hälfte einer achtteilige Kampagne spielen.",
             "steps": [
               "8_part_campaign",
               "separate_chaos_bag"
@@ -50322,7 +50322,7 @@
           },
           {
             "id": "4_part_campaign",
-            "text": "Playing as a 4-part campaign.",
+            "text": "Als vierteilige Kampagne spielen.",
             "effects": [
               {
                 "type": "campaign_log",
@@ -50338,38 +50338,38 @@
     {
       "id": "alert",
       "type": "rule_reminder",
-      "title": "Alert",
-      "text": "Each time an investigator fails a skill test while attempting to evade an enemy with the alert keyword, after applying all results for that skill test, that enemy performs an attack against the evading investigator. An enemy does not exhaust after performing an alert attack. This attack occurs whether the enemy is engaged with the evading investigator or not."
+      "title": "Alamiert",
+      "text": "Immer wenn einem Ermittler eine Fertigkeitsprobe misslingt, während er versucht, einem Gegner mit dem Schlüsselwort „Alarmiert“ zu entkommen, führt jener Gegner nach der Anwendung aller Ergebnisse jener Fertigkeitsprobe einen Angriff gegen den entkommenden Ermittler durch. Ein Gegner wird nicht erschöpft, nachdem er einen Alarmiert-Angriff durchgeführt hat. Dieser Angriff wird durchgeführt, egal ob der Gegner mit dem entkommenden Ermittler in einen Kampf verwickelt ist oder nicht."
     },
     {
       "id": "story",
       "type": "rule_reminder",
       "title": "Story Cards",
-      "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text."
+      "text": "Handlungskarten dienen dem Zweck, die Kampagne mit noch mehr erzählter Handlung zu füllen. Sie befinden sich normalerweise auf der Rückseite einer anderen Szenariokarte. Sobald die Spieler die Anweisung erhalten, eine Handlungskarte abzuhandeln, wird der Handlungstext auf der Karte vorgelesen und der Spieltext auf dieser Karte abgehandelt."
     },
     {
       "id": "swarming",
       "type": "rule_reminder",
-      "title": "Swarming X",
-      "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put an enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the “host enemy.” Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.",
+      "title": "Ausschwärmen X",
+      "text": "Ein Gegner mit dem Schlüsselwort Ausschwärmen X ist Teil einer größeren Gruppe von Gegnern, die gemeinsam vorgehen. Nachdem ein Spieler einen Gegner mit dem Schlüsselwort Ausschwärmen X ins Spiel gebracht hat, werden die obersten X Karten des Spielerdecks als sogenannte Schwarmkarten verdeckt unter dem Gegner platziert, ohne sie sich anzusehen. Der Gegner, unter dem die Schwarmkarten liegen, wird „Wirtsgegner“ genannt. Manche Szenariokarteneffekte können einen Spieler dazu anweisen, einem Gegner Schwarmkarten hinzuzufügen. Dies geschieht nach demselben Verfahren.",
       "bullets": [
         {
-          "text": "If it is ever unclear which investigator should add swarm cards, the lead investigator does so."
+          "text": "Falls unklar ist, welcher Ermittler Schwarmkarten hinzufügen soll, macht dies der Ermittlungsleiter."
         },
         {
-          "text": "Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>"
+          "text": "Jede Schwarmkarte unter dem Wirtsgegner agiert für die meisten Zwecke als eigenständige Instanz jenes Gegners. Jede Schwarmkarte hat die gleichen Werte und den gleichen Text wie die Wirtskarte. <i>(Beispiel: Ist ein Ermittler mit einem Wirtsgegner in einen Kampf verwickelt, der 2 Schwarmkarten unter sich liegen hat, ist der Ermittler mit insgesamt 3 Gegnern in einen Kampf verwickelt.) </i>"
         },
         {
-          "text": "Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them."
+          "text": "Jede Schwarmkarte greift einzeln an, sobald Gegner während der Gegnerphase angreifen. Haben der Wirtsgegner und alle seine Schwarmkarten in diesem Schritt angegriffen, werden sie alle erschöpft."
         },
         {
-          "text": "Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>"
+          "text": "Jede Schwarmkarte kann unabhängig voneinander angegriffen werden und man kann jeder Schwarmkarte unabhängig voneinander Schaden zufügen, aber der Wirtsgegner kann nicht besiegt werden, solange er noch Schwarmkarten unter sich liegen hat. Sobald eine Schwarmkarte besiegt wird, darf überschüssiger Schaden einer anderen Schwarmkarte unter demselben Wirtsgegner oder dem Wirtsgegner selbst zugefügt werden. <i>(Beispiel: Tony Morgan verwendet eine 41er Derringer, um einen heimlichen Zoog mit 2 Schwarmkarten anzugreifen. Der Angriff fügt 2 Schaden zu. Der erste Schadenspunkt besiegt 1 der 2 Schwarmkarten. Überschüssiger Schaden darf der anderen Schwarmkarte zugefügt werden, was ausreicht, um auch sie zu besiegen.) </i>"
         },
         {
-          "text": "Anytime a swarm card leaves play, place it on the bottom of its owner’s deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner."
+          "text": "Jedes Mal wenn eine Schwarmkarte das Spiel verlässt, wird sie unter das Deck ihres Besitzers platziert. Falls unklar ist, wer der Besitzer einer Schwarmkarte ist, darf man sie sich ansehen, um ihren Besitzer zu bestimmen."
         },
         {
-          "text": "The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. (For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)"
+          "text": "Der Wirtsgegner und alle seine Schwarmkarten werden als Einheit bewegt, in Kämpfe verwickelt und erschöpft. (Beispiel: Gelingt es einem Ermittler, einem Wirtsgegner oder einer seiner Schwarmkarten zu entkommen, werden alle Karten dieser Einheit erschöpft und von dem Ermittler gelöst.)"
         }
       ]
     },
@@ -50377,16 +50377,16 @@
       "id": "hidden",
       "type": "rule_reminder",
       "title": "Geheim",
-      "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
+      "text": "Eine Begegnungskarte oder Schwäche mit dem Schlüsselwort Verborgen hat eine Enthüllung-Fähigkeit, die sie geheim der Hand des Spielers hinzufügt. Dies sollte geschehen, ohne den anderen Ermittlern die Karte oder ihren Text zu enthüllen.",
       "bullets": [
         {
-          "text": "While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you."
+          "text": "Solange sich eine Verborgen-Verratskarte auf der Hand eines Spielers befindet, wird sie so behandelt, als ob sie sich in seiner Bedrohungszone befände. Ihre anhaltenden Fähigkeiten sind aktiv und Fähigkeiten auf ihr können ausgelöst werden, aber nur von dem Spieler, der sie auf der Hand hat."
         },
         {
-          "text": "While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you."
+          "text": "Solange sich eine Verborgen-Gegnerkarte auf der Hand eines Spielers befindet, gilt sie nicht als mit dem Spieler in einen Kampf verwickelt oder in seiner Bedrohungszone befindlich. Der Gegner greift nicht an, außer es ist etwas anderes angegeben. Seine anhaltenden Fähigkeiten sind aber aktiv und Fähigkeiten auf ihm können ausgelöst werden, aber nur von dem Spieler, der die Gegnerkarte auf der Hand hat."
         },
         {
-          "text": "A hidden card counts toward your hand size, but it cannot be discarded from your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile."
+          "text": "Eine Verborgen-Karte zählt bei der Bestimmung der Handkarten eines Spielers mit, kann aber nicht von der Hand abgelegt werden, außer auf die auf der Karte beschriebene Art. Sobald Verborgen-Karten abgelegt werden, werden sie auf den entsprechenden Ablagestapel gelegt."
         }
       ],
       "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
@@ -50510,7 +50510,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "randolph_survived_descent",
@@ -50746,8 +50746,8 @@
 },
 {
   "id": "the_black_cat",
-  "scenario_name": "The Black Cat",
-  "full_name": "Interlude I: The Black Cat",
+  "scenario_name": "Die schwarze Katze",
+  "full_name": "Zwischenspiel I: Die schwarze Katze",
   "type": "interlude",
   "setup": [
     "check_interconnected_campaign",
@@ -50921,13 +50921,13 @@
     },
     {
       "id": "black_cat_has_a_hunch",
-      "text": "In both Campaign Logs, record that <i>the black cat has a hunch</i>.",
+      "text": "In beiden Kampagnenlogbüchern wird notiert: <i>Die schwarze Katze hat eine Ahnung</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_has_a_hunch",
-          "text": "the black cat has a hunch."
+          "text": "die schwarze Katze hat eine Ahnung."
         }
       ]
     },
@@ -50938,7 +50938,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         }
       ]
     },
@@ -50961,7 +50961,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "you_asked_for_it",
-          "text": "you asked for it."
+          "text": "du hast es so gewollt."
         }
       ]
     },
@@ -51878,7 +51878,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side_2",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         },
         {
           "type": "remove_chaos_token",
@@ -52253,7 +52253,7 @@
           {
             "id": "black_cat_warned_the_others",
             "text": "<i>Tell your companions that you are safe.</i>",
-            "description": "The black cat will stay with them once this message is delivered. This might make your quest a little more difficult.",
+            "description": "Die schwarze Katze wird bei ihnen bleiben, nachdem sie die Botschaft überbracht hat. Das könnte deine Suche etwas schwieriger machen.",
             "steps": [
               "black_cat_warned_the_others",
               "send_black_cat_warned_the_others",
@@ -52312,7 +52312,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_warned_the_others",
-          "text": "the black cat warned the others."
+          "text": "die schwarze Katze hat die anderen gewarnt."
         }
       ]
     },
@@ -52522,7 +52522,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         }
       ]
     },
@@ -52534,7 +52534,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "black_cat_at_your_side",
-          "text": "the black cat is at your side."
+          "text": "die schwarze Katze ist an deiner Seite."
         },
         {
           "type": "remove_chaos_token",
@@ -52965,7 +52965,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "locations_in_pnr",
@@ -53088,7 +53088,7 @@
     {
       "id": "skip_interlude",
       "bullet_type": "small",
-      "text": "Skip <b>Interlude III: The Great Ones</b>.",
+      "text": "Überspringe <b>Zwischenspiel III: Die Großen</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -53210,7 +53210,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "<fancy>Friday, February 13th, 1922</fancy>\nSomething odd was happening in Arkham, Massachusetts.\nTypically, this would not be a surprise to the residents of the dreary New England town. Indeed, Arkham has always been well-known for its strange—some would say supernatural—occurrences. The nature of this particular circumstance, however, was anything but typical.\nIt all began in the latest issue of <i>Tales from Nevermore</i>. A writer by the name of Virgil Gray described a journey he had taken in his dreams—a journey he claimed was not a work of fiction on his part. He wrote of a long, spiraling staircase, an unbearably hot pillar of sentient fire, a tree that came from the moon, and a curious talking cat…among other things equally difficult to believe. But it wasn’t this extraordinary tale that first drew your attention. Soon after Virgil’s tale was published, <i>Tales from Nevermore</i> began to receive and publish letter after letter from those who had read Virgil’s story and claimed to have experienced the same exact dream. Before long, the Arkham Advertiser picked up the story, and news of this strange phenomenon reached the ears of experts.\nVirgil Gray was convinced to undergo therapy at the local asylum, and many more who shared in the writer’s psychosis were committed as well. The prevailing theory among academics is that Virgil’s dream felt so real that he could not separate fact from fiction, and his writings spread his delusions to others like a form of shared hysteria. You remain unconvinced. After all, there is much that is not known about the simple act of dreaming. Medical experts have wildly differing theories on the state of one’s brain during sleep. Recently, experts like Sigmund Freud have proposed that dreams are manifestations of one’s subconscious desires, fears, or obsessions. Fortune tellers, for their part, have long believed that dreams can be sifted and interpreted in order to tell the dreamer’s past or future. But if these theories are true, how could multiple parties—all from very different walks of life—have the same shared experiences in their dreams? What if our modern understanding of sleep is all wrong? What if there really is a place our consciousness travels to when we sleep—a land of dreams that exists beyond our waking world?\nYou and your companions have gathered together to get to the bottom of this strange phenomenon. If others in town can travel to another world in their dreams, perhaps you can, too. You’ve re-created the circumstances of Virgil’s journey perfectly. If all goes well, half of you will take the trip to this “dreamland” and back. The rest will stay in the waking world, studying your companions’ sleep patterns to ensure nothing goes wrong…"
+      "text": "<fancy>Freitag, 1 3. Februar 19 25</fancy>\nIrgendetwas Seltsames ging in Arkham, Massachusetts vor sich.\nDas war für die Bewohner der trostlosen Stadt in New England keine Überraschung, denn Arkham war schon immer bekannt für seine eigenartigen – manche würden sie übernatürlich nennen – Vorkommnisse. Doch dieser Umstand war alles andere als gewöhnlich. \nAlles begann mit der neusten Ausgabe der <i>Geschichten aus Nimmermehr</i>. Ein Autor namens Virgil Gray beschrieb darin eine Reise, die sich in seinen Träumen ereignet hatte – eine Reise, von der er behauptete, sie sich nicht ausgedacht zu haben. Er schrieb über eine lange Wendeltreppe, über eine unerträglich heiße, mit Verstand gesegnete Säule aus Feuer, über einen Baum, der vom Mond kam, und über eine merkwürdige sprechende Katze … um nur einige der wenig glaubhaften Dinge zu erwähnen. Aber es war nicht die außergewöhnliche Geschichte, die dein Interesse an der Sache geweckt hatte. Kurz nach der Veröffentlichung der Erzählung erreichte ein Brief nach dem anderen die Redaktion von <i>Geschichten aus Nimmermehr</i>. Die Leser von Virgils Geschichte behaupteten in den ebenfalls veröffentlichten Briefen, genau den gleichen Traum gehabt zu haben. Es dauerte nicht lange, da griff der <i>Arkham Advertiser</i> die Geschichte auf, sodass die Neuigkeit dieses seltsamen Phänomens schon bald Experten zu Ohren kam.\nVirgil Gray wurde davon überzeugt, sich im örtlichen Sanatorium einer Therapie zu unterziehen. Auch viele andere, welche unter derselben Psychose wie der Autor litten, wurden dort eingewiesen. Die vorherrschende Theorie der Wissenschaftler ist, dass sich Virgils Traum so echt anfühlte, dass er ihn nicht mehr von der Realität unterscheiden konnte, und dass durch seine Schriften seine Wahnvorstellungen wie bei einer Massenhysterie auf andere übertragen werden konnten. Dich überzeugt das nicht. Schließlich ist nicht wirklich viel über den schlichten Akt des Träumens bekannt. Mediziner haben weit auseinandergehende Theorien, was den Zustand des Gehirns im Schlaf betrifft. Erst kürzlich haben Experten, darunter auch Sigmund Freud, die These aufgestellt, dass Träume Manifestationen eigener unterbewusster Sehnsüchte, Ängste oder Obsessionen sein könnten. Wahrsager haben ihrerseits schon lange daran geglaubt, dass man Träume durchleuchten und interpretieren kann, um damit die Vergangenheit oder Zukunft des Träumers zu erkennen. Wenn diese Theorien aber stimmen sollten, wie können dann unterschiedliche Leute – in ganz verschiedenen Lebensumständen – die gleichen geteilten Erfahrungen in ihren Träumen erleben? Was wäre, wenn unser heutiges Verständnis über den Schlaf falsch wäre? Was wäre, wenn es wirklich einen Ort in unserem Unterbewusstsein gäbe, zu dem wir im Schlaf reisen könnten – in ein Land der Träume, das nur jenseits unserer wachen Welt existieren würde?\nDu und deine Gefährten sind zusammengekommen, um diesem seltsamen Phänomen auf den Grund zu gehen. Wenn andere in der Stadt in ihren Träumen in eine andere Welt reisen können, könnt ihr das vielleicht auch. Ihr habt die Gegebenheiten von Virgils Reise nahezu perfekt nachgestellt. Wenn alles gut geht, wird die eine Hälfte von euch eine Reise in dieses „Traumland“ und wieder zurück unternehmen, während die andere Hälfte in der wachen Welt verbleibt und das Schlafverhalten ihrer Gefährten überwacht, um sicherzugehen, dass nichts schiefgeht …"
     }
   ]
 },
@@ -53390,7 +53390,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle each of the remaining encounter cards together to form the encounter deck."
+      "text": "Die übrigen Begegnungskarten werden zum Begegnungsdeck zusammengemischt."
     },
     {
       "id": "doctors_fate_unknown",
