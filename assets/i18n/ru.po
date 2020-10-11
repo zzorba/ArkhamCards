@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2020-10-02 18:44+0400\n"
+"PO-Revision-Date: 2020-10-11 18:55+0300\n"
 "POT-Creation-Date: 2020-08-10 07:39-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -944,7 +944,7 @@ msgstr "Улики"
 #: src/components/filter/CardFilterView/index.tsx:256
 #: src/components/filter/CardLocationFilterView.tsx:82
 msgid "Haunted"
-msgstr "Скверна"
+msgstr "Нечистое"
 
 #: src/components/filter/CardLocationFilterView.tsx:23
 #: src/components/filter/CardLocationFilterView.tsx:97
@@ -3129,7 +3129,7 @@ msgid ""
 "The experience required to play these scenarios will be deducted automatically at the "
 "end of the scenario."
 msgstr ""
-"История-ответвление - это сценарий, который проходится между двумя другими сценариями "
+"История-ответвление — это сценарий, который проходится между двумя другими сценариями "
 "кампании <i>Ужас Аркхэма. Карточная игра</i>. Для игры в историю-ответвление в кампании "
 "каждый сыщик должен заплатить определённое количество опыта. Слабости, травмы, опыт и "
 "награды полученные сыщиками при прохождении этого сценария ответвления остаются до конца "
@@ -4434,7 +4434,7 @@ msgstr "Безопасный режим"
 
 #: src/components/settings/SafeModeView.tsx:67
 msgid "The app drew an Auto-Fail"
-msgstr ""
+msgstr "Приложение вытянуло автопровал"
 
 #: src/components/settings/SafeModeView.tsx:68
 msgid ""
@@ -4526,7 +4526,7 @@ msgstr "Набор контактов: ${ card.encounter_name }"
 
 #: src/components/core/EditText.tsx:44
 msgid "Cncel"
-msgstr ""
+msgstr "Отмена"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:23
 msgid "Health: none"
@@ -4534,7 +4534,7 @@ msgstr "Здоровье: нет"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:23
 msgid "Sanity: none"
-msgstr ""
+msgstr "Рассудок: нет"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:25
 #, javascript-format
@@ -4543,7 +4543,7 @@ msgstr "Здоровье: ${ count }"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:25
 msgid "Sanity: ${ count }"
-msgstr ""
+msgstr "Рассудок: ${ count }"
 
 #: src/components/core/InvestigatorStatLine.tsx:32
 #, javascript-format
@@ -4614,15 +4614,15 @@ msgstr "Очистить фильтр поиска"
 
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:296
 msgid "Search game text"
-msgstr ""
+msgstr "Искать по тексту карт"
 
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:303
 msgid "Search card backs"
-msgstr ""
+msgstr "Искать на обороте"
 
 #: src/components/cardlist/CardSearchComponent/index.tsx:98
 msgid "Encounter Card Toggle"
-msgstr ""
+msgstr "Переключатель карт контактов"
 
 #: src/components/card/CardDetailView/CardDetailComponent.tsx:83
 msgid "Show all available cards"
@@ -4631,7 +4631,7 @@ msgstr "Показать все доступные карты"
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:40
 #, javascript-format
 msgid "Fight: ${ fight }"
-msgstr ""
+msgstr "Бой: ${ fight }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:49
 msgid "Health: ${ health } per investigator"
@@ -4685,11 +4685,11 @@ msgstr "Показать спойлеры"
 #: src/components/campaignguide/ScenarioFaqView.tsx:33
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:151
 msgid "Scenario FAQ"
-msgstr ""
+msgstr "FAQ по сценариям"
 
 #: src/components/campaignguide/ScenarioView.tsx:212
 msgid "Interlude FAQ"
-msgstr ""
+msgstr "FAQ по интерлюдиям"
 
 #: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:135
 msgid "Coming soon"
@@ -4840,15 +4840,15 @@ msgstr ""
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:385
 msgid "Shrewd Analysis Rule"
-msgstr ""
+msgstr "Правило «Тонкого анализа»"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:387
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Это улучшение будет стоить ${ xpCost } опыта."
+msgstr[1] "Это улучшение будет стоить ${ xpCost } опыта."
+msgstr[2] "Это улучшение будет стоить ${ xpCost } опыта."
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:392
 #, javascript-format
@@ -4861,12 +4861,21 @@ msgid_plural ""
 "\n"
 "${ upgradeCards }"
 msgstr[0] ""
+"Случайным образом будут выбраны 2 карты из следующих:\n"
+"\n"
+"${ upgradeCards }"
 msgstr[1] ""
+"Случайным образом будут выбраны 2 карты из следующих:\n"
+"\n"
+"${ upgradeCards }"
 msgstr[2] ""
+"Случайным образом будут выбраны 2 карты из следующих:\n"
+"\n"
+"${ upgradeCards }"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:397
 msgid "You can edit your collection under Settings to adjust the eligible choices."
-msgstr ""
+msgstr "Вы можете настроить свою коллекцию в Настройках, чтобы изменить доступные карты."
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:443
 msgid ""
@@ -4884,14 +4893,19 @@ msgid ""
 "<i>Note: the app handles this by adjusting experience to account for the 'free' upgrade."
 "</i>"
 msgstr ""
+"<b>Тонкий анализ</b>: Если выполнены условия кампании, вы можете использовать «Тонкий "
+"анализ», чтобы улучшить две карты случайным образом, заплатив опыт только за одну.\n"
+"\n"
+"<i>Обратите внимание: приложение увеличит количество полученного вами опыта, чтобы "
+"второе улучшение было «бесплатным».</i>"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:458
 msgid "Upgrade results"
-msgstr ""
+msgstr "Результаты улучшения"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:464
 msgid "Upgrade with Shrewd Analysis"
-msgstr ""
+msgstr "Улучшить «Тонким анализом»"
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
@@ -5048,4 +5062,4 @@ msgstr[2] "${ investigator.name } получает ${ effect.physical } физи
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:95
 msgctxt "Weakness Card"
 msgid "All"
-msgstr ""
+msgstr "Все"
