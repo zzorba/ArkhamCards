@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -53,9 +52,9 @@ export default class ArkhamTabView extends React.Component<Props, State> {
       <TabBar
         {...props}
         scrollEnabled={this.props.scrollEnabled || (fontScale > 1)}
-        activeColor={COLORS.lightBlue}
+        activeColor={colors.navButton}
         inactiveColor={colors.lightText}
-        indicatorStyle={{ backgroundColor: COLORS.lightBlue }}
+        indicatorStyle={{ backgroundColor: colors.navButton }}
         style={backgroundStyle}
       />
     );
