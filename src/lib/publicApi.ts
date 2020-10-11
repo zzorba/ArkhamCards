@@ -114,11 +114,21 @@ async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<void
   }
 }
 
+function rulesJson(lang?: string) {
+  switch (lang) {
+    case 'es':
+      return require('../../assets/rules_es.json');
+    case 'en':
+    default:
+      return require('../../assets/rules.json');
+  }
+}
+
 export const syncRules = async function(
   db: Database,
   lang?: string
 ): Promise<void> {
-  const rules: JsonRule[] = require('../../assets/rules.json');
+  const rules: JsonRule[] = rulesJson(lang);
   await db.insertRules(
     flatMap(rules, (jsonRule, index) => {
       const rule = Rule.parse(lang || 'en', jsonRule, index);
