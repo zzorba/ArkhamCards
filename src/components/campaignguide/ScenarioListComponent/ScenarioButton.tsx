@@ -83,7 +83,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="checkbox-marked"
             size={iconSize}
-            color={COLORS.lightBlue}
+            color={colors.navButton}
           />
         );
       case 'started':
@@ -91,7 +91,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="checkbox-intermediate"
             size={iconSize}
-            color={COLORS.lightBlue}
+            color={colors.navButton}
           />
         );
       case 'playable':
@@ -99,7 +99,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="checkbox-blank-outline"
             size={iconSize}
-            color={COLORS.lightBlue}
+            color={colors.navButton}
           />
         );
       case 'skipped':
@@ -107,7 +107,7 @@ export default class ScenarioButton extends React.Component<Props> {
           <MaterialCommunityIcons
             name="close-box-outline"
             size={iconSize}
-            color={colors.lightText}
+            color={colors.navButton}
           />
         );
     }
