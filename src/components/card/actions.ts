@@ -26,7 +26,7 @@ import {
   TabooCache,
   CardSetSchemaVersionAction,
 } from '@actions/types';
-import { getCardLang, AppState } from '@reducers/index';
+import { getCardLang, AppState, getPacksInCollection, getPackSpoilers } from '@reducers/index';
 import { syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/Database';
 
@@ -71,7 +71,10 @@ export function fetchCards(
     });
     const packs = await dispatch(fetchPacks(cardLang));
     try {
-      const cardCache = await syncCards(db, packs, cardLang, cardsCache(getState(), cardLang));
+      const state = getState();
+      const in_collection = getPacksInCollection(state);
+      const spoilers = getPackSpoilers(state);
+      const cardCache = await syncCards(db, packs, in_collection, spoilers, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
           db,

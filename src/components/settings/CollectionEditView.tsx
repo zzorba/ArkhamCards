@@ -13,6 +13,8 @@ import { Pack } from '@actions/types';
 import { setInCollection, setCycleInCollection } from '@actions';
 import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 
 interface ReduxProps {
   packs: Pack[];
@@ -20,14 +22,14 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  setInCollection: (code: string, value: boolean) => void;
-  setCycleInCollection: (cycle: number, value: boolean) => void;
+  setInCollection: (code: string, value: boolean, db: Database) => void;
+  setCycleInCollection: (cycle_code: string, value: boolean, db: Database) => void;
 }
 type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class CollectionEditView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
 
   static options() {
     return {
@@ -39,32 +41,47 @@ class CollectionEditView extends React.Component<Props> {
     };
   }
 
+  _setInCollection = (code: string, value: boolean) => {
+    const { setInCollection } = this.props;
+    const { db } = this.context;
+    setInCollection(code, value, db);
+  };
+
+  _setCycleInCollection = (cycle_code: string, value: boolean) => {
+    const { setCycleInCollection } = this.props;
+    const { db } = this.context;
+    setCycleInCollection(cycle_code, value, db);
+  };
+
   render() {
     const {
       componentId,
       packs,
       in_collection,
-      setInCollection,
-      setCycleInCollection,
     } = this.props;
-    const { typography } = this.context;
-    if (!packs.length) {
-      return (
-        <View>
-          <Text style={typography.text}>{t`Loading`}</Text>
-        </View>
-      );
-    }
     return (
-      <PackListComponent
-        coreSetName={t`Second Core Set`}
-        componentId={componentId}
-        packs={packs}
-        checkState={in_collection}
-        setChecked={setInCollection}
-        setCycleChecked={setCycleInCollection}
-      />
-    );
+      <StyleContext.Consumer>
+        { ({ typography }) => {
+          if (!packs.length) {
+            return (
+              <View>
+                <Text style={typography.text}>{t`Loading`}</Text>
+              </View>
+            );
+          }
+          return (
+            <PackListComponent
+              coreSetName={t`Second Core Set`}
+              componentId={componentId}
+              packs={packs}
+              checkState={in_collection}
+              setChecked={this._setInCollection}
+              setCycleChecked={this._setCycleInCollection}
+            />
+          );
+        } }
+      </StyleContext.Consumer>
+    )
   }
 }
 

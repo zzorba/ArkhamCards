@@ -22,7 +22,7 @@ interface Props {
   pack: Pack;
   cycle: Pack[];
   setChecked?: (pack_code: string, checked: boolean) => void;
-  setCycleChecked?: (cycle_position: number, checked: boolean) => void;
+  setCycleChecked?: (cycle_code: string, checked: boolean) => void;
   checked?: boolean;
   whiteBackground?: boolean;
   baseQuery?: Brackets;
@@ -90,7 +90,7 @@ export default class PackRow extends React.Component<Props> {
           },
           { text: t`Yes`,
             onPress: () => {
-              setCycleChecked(pack.cycle_position, value);
+              setCycleChecked(pack.code, value);
             },
           },
         ],

@@ -536,14 +536,14 @@ export const SET_IN_COLLECTION = 'SET_IN_COLLECTION';
 export interface SetInCollectionAction {
   type: typeof SET_IN_COLLECTION;
   code?: string;
-  cycle?: number;
+  cycle_code?: string;
   value: boolean;
 }
 export const SET_PACK_SPOILER = 'SET_PACK_SPOILER';
 export interface SetPackSpoilerAction {
   type: typeof SET_PACK_SPOILER;
   code?: string;
-  cycle?: number;
+  cycle_code?: string;
   value: boolean;
 }
 export const NEW_CAMPAIGN = 'NEW_CAMPAIGN';

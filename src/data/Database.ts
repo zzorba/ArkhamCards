@@ -13,7 +13,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  static SCHEMA_VERSION: number = 16;
+  static SCHEMA_VERSION: number = 17;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -180,6 +180,24 @@ export default class Database {
     return await cardsQuery.getCount();
   }
 
+  async setCardSpoiler(where: Brackets, value: boolean): Promise<void> {
+    const query = (await this.cards())
+      .createQueryBuilder()
+      .update(Card)
+      .set({ spoiler: value })
+      .where(where);
+    await query.execute();
+  }
+
+  async setCardInCollection(where: Brackets, value: boolean): Promise<void> {
+    const query = (await this.cards())
+      .createQueryBuilder()
+      .update(Card)
+      .set({ in_collection: value })
+      .where(where);
+    await query.execute();
+  }
+
   private async applyCardsQuery(
     query?: Brackets,
     tabooSetId?: number,
@@ -191,7 +209,6 @@ export default class Database {
       cardsQuery = cardsQuery.andWhere(query);
     }
     if (sort && sort.length) {
-      console.log("Apply sorts");
       const [firstSort, ...restSorts] = sort;
       cardsQuery = cardsQuery.orderBy(firstSort.s, firstSort.direction);
       forEach(restSorts, ({ s, direction }) => {

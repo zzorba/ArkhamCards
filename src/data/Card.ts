@@ -318,6 +318,11 @@ export default class Card {
   @Column('boolean', { nullable: true })
   public bonded_from?: boolean;
 
+  @Column('boolean', { nullable: true })
+  public in_collection?: boolean;
+  @Column('boolean', { nullable: true })
+  public non_spoiler?: boolean;
+
   @Column('boolean', { nullable: true, select: false })
   public seal?: boolean;
   @Column('boolean', { nullable: true, select: false })

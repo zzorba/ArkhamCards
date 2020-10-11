@@ -111,7 +111,7 @@ class MyDecksComponent extends React.Component<Props> {
     if (error === 'badAccessToken') {
       return (
         <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error, { width }]}>
-          <Text style={[typography.small, styles.errorText]}>
+          <Text style={[typography.small, styles.errorText, space.paddingS]}>
             { t`We're having trouble updating your decks at this time. If the problem persists tap here to reauthorize.` }
           </Text>
         </TouchableOpacity>
@@ -119,7 +119,7 @@ class MyDecksComponent extends React.Component<Props> {
     }
     return (
       <TouchableOpacity onPress={this._reLogin} style={[styles.banner, styles.error, { width }]}>
-        <Text style={[typography.small, styles.errorText]}>
+        <Text style={[typography.small, styles.errorText, space.paddingS]}>
           { t`An unexpected error occurred (${error}). If restarting the app doesn't fix the problem, tap here to reauthorize.` }
         </Text>
       </TouchableOpacity>

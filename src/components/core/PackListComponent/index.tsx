@@ -28,7 +28,7 @@ interface Props {
   packs: Pack[];
   checkState?: { [pack_code: string]: boolean};
   setChecked: (pack_code: string, checked: boolean) => void;
-  setCycleChecked?: (cycle_number: number, checked: boolean) => void;
+  setCycleChecked?: (cycle_code: string, checked: boolean) => void;
   renderHeader?: () => React.ReactElement;
   renderFooter?: () => React.ReactElement;
   whiteBackground?: boolean;

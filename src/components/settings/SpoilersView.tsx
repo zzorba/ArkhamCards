@@ -14,6 +14,8 @@ import { NavigationProps } from '@components/nav/types';
 import { getAllPacks, getPackSpoilers, AppState } from '@reducers';
 import space from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import Database from '@data/Database';
+import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
 
 interface ReduxProps {
   packs: Pack[];
@@ -21,25 +23,40 @@ interface ReduxProps {
 }
 
 interface ReduxActionProps {
-  setPackSpoiler: (code: string, value: boolean) => void;
-  setCyclePackSpoiler: (cycle: number, value: boolean) => void;
+  setPackSpoiler: (code: string, value: boolean, db: Database) => void;
+  setCyclePackSpoiler: (cycle_code: string, value: boolean, db: Database) => void;
 }
 
 type Props = NavigationProps & ReduxProps & ReduxActionProps;
 
 class SpoilersView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+  static contextType = DatabaseContext;
+  context!: DatabaseContextType;
 
   _renderHeader = (): React.ReactElement => {
-    const { typography } = this.context;
     return (
-      <View style={space.paddingS}>
-        <Text style={typography.small}>
-          { t`Mark the scenarios you've played through to make the results start showing up in search results.` }
-        </Text>
-      </View>
+      <StyleContext.Consumer>
+        { ({ typography }) => (
+          <View style={space.paddingS}>
+            <Text style={typography.small}>
+              { t`Mark the scenarios you've played through to make the results start showing up in search results.` }
+            </Text>
+          </View>
+        ) }
+      </StyleContext.Consumer>
     );
+  };
+
+  _setPackSpoiler = (code: string, value: boolean) => {
+    const { setPackSpoiler } = this.props;
+    const { db } = this.context;
+    setPackSpoiler(code, value, db);
+  };
+
+  _setCyclePackSpoiler = (cycle_code: string, value: boolean) => {
+    const { setCyclePackSpoiler } = this.props;
+    const { db } = this.context;
+    setCyclePackSpoiler(cycle_code, value, db);
   };
 
   render() {
@@ -47,26 +64,29 @@ class SpoilersView extends React.Component<Props> {
       componentId,
       packs,
       show_spoilers,
-      setPackSpoiler,
-      setCyclePackSpoiler,
     } = this.props;
-    const { typography } = this.context;
-    if (!packs.length) {
-      return (
-        <View>
-          <Text style={typography.text}>{ t`Loading` }</Text>
-        </View>
-      );
-    }
     return (
-      <PackListComponent
-        componentId={componentId}
-        packs={packs}
-        renderHeader={this._renderHeader}
-        checkState={show_spoilers}
-        setChecked={setPackSpoiler}
-        setCycleChecked={setCyclePackSpoiler}
-      />
+      <StyleContext.Consumer>
+        { ({ typography }) => {
+          if (!packs.length) {
+            return (
+              <View>
+                <Text style={typography.text}>{ t`Loading` }</Text>
+              </View>
+            );
+          }
+          return (
+            <PackListComponent
+              componentId={componentId}
+              packs={packs}
+              renderHeader={this._renderHeader}
+              checkState={show_spoilers}
+              setChecked={this._setPackSpoiler}
+              setCycleChecked={this._setCyclePackSpoiler}
+            />
+          );
+        } }
+      </StyleContext.Consumer>
     );
   }
 }

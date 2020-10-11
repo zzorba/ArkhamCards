@@ -1,5 +1,5 @@
 import React from 'react';
-import { difference, forEach, filter, map, union } from 'lodash';
+import { difference, forEach, find, filter, map, union } from 'lodash';
 import {
   Text,
   View,
@@ -59,7 +59,7 @@ class PackFilterView extends React.Component<Props> {
     );
   };
 
-  _setCycleChecked = (cycle_position: number, value: boolean) => {
+  _setCycleChecked = (cycle_code: string, value: boolean) => {
     const {
       onFilterChange,
       filters: {
@@ -67,15 +67,18 @@ class PackFilterView extends React.Component<Props> {
       },
       allPacks,
     } = this.props;
-    const deltaPacks = map(
-      filter(allPacks, pack => pack.cycle_position === cycle_position),
-      pack => pack.name
-    );
+    const cyclePack = find(allPacks, pack => pack.code == cycle_code);
+    if (cyclePack) {
+      const deltaPacks = map(
+        filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position),
+        pack => pack.name
+      );
 
-    onFilterChange(
-      'packs',
-      value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
-    );
+      onFilterChange(
+        'packs',
+        value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
+      );
+    }
   };
 
   render() {

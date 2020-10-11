@@ -275,5 +275,5 @@ export const DARK_THEME: ThemeColors = {
     green: '#33660088',
     red: '#8f474988',
   },
-  navButton: '#7abaff',
+  navButton: '#4aa1ff',
 };

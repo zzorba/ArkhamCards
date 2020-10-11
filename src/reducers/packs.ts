@@ -1,4 +1,4 @@
-import { forEach } from 'lodash';
+import { find, forEach } from 'lodash';
 
 import {
   UPDATE_PROMPT_DISMISSED,
@@ -89,16 +89,19 @@ export default function(
       } else {
         delete new_collection[action.code];
       }
-    } else if (action.cycle) {
-      forEach(state.all, pack => {
-        if (pack.cycle_position === action.cycle) {
-          if (action.value) {
-            new_collection[pack.code] = true;
-          } else {
-            delete new_collection[pack.code];
+    } else if (action.cycle_code) {
+      const cyclePack = find(state.all, pack => pack.code == action.cycle_code);
+      if (cyclePack) {
+        forEach(state.all, pack => {
+          if (pack.cycle_position === cyclePack.cycle_position) {
+            if (action.value) {
+              new_collection[pack.code] = true;
+            } else {
+              delete new_collection[pack.code];
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     return Object.assign({},
@@ -115,16 +118,19 @@ export default function(
       } else {
         delete new_spoilers[action.code];
       }
-    } else if (action.cycle) {
-      forEach(state.all, pack => {
-        if (pack.cycle_position === action.cycle) {
-          if (action.value) {
-            new_spoilers[pack.code] = true;
-          } else {
-            delete new_spoilers[pack.code];
+    } else if (action.cycle_code) {
+      const cyclePack = find(state.all, pack => pack.code == action.cycle_code);
+      if (cyclePack) {
+        forEach(state.all, pack => {
+          if (pack.cycle_position === cyclePack.cycle_position) {
+            if (action.value) {
+              new_spoilers[pack.code] = true;
+            } else {
+              delete new_spoilers[pack.code];
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     return Object.assign({},
