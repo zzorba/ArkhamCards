@@ -4649,9 +4649,9 @@ msgstr[2] "Показать ${ section.nonCollectionCount } сыщиков не 
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection card"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection cards"
-msgstr[0] "Показать ${ nonCollection.length } карту не в коллекции"
-msgstr[1] "Показать ${ nonCollection.length } карты не в коллекции"
-msgstr[2] "Показать ${ nonCollection.length } карт не в коллекции"
+msgstr[0] "Показать ${ section.nonCollectionCount } карту не в коллекции"
+msgstr[1] "Показать ${ section.nonCollectionCount } карты не в коллекции"
+msgstr[2] "Показать ${ section.nonCollectionCount } карт не в коллекции"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:722
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:742
