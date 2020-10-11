@@ -2,11 +2,15 @@ import { Entity, Index, Column, PrimaryColumn, ManyToOne, OneToMany } from 'type
 import { Rule as JsonRule } from '@data/scenario/types';
 import { map } from 'lodash';
 
-interface RuleTableCell {
-  [k: string]: any;
+class RuleTableCell {
+  @Column('text', { nullable: true })
+  public color?: string;
+
+  @Column('text')
+  public text!: string;
 }
 
-class RuleTableRow {
+export class RuleTableRow {
   @Column('simple-json', { nullable: true })
   public row!: RuleTableCell[];
 }
@@ -34,7 +38,7 @@ export default class Rule {
   @OneToMany(() => Rule, rule => rule.parentRule, { cascade: true, eager: true })
   public rules?: Rule[];
 
-  @ManyToOne(type => Rule, rule => rule.rules, { cascade: true, eager: true })
+  @ManyToOne(type => Rule, rule => rule.rules)
   public parentRule?: Rule;
 
   static parse(lang: string, rule: JsonRule, order?: number): Rule {
@@ -46,7 +50,12 @@ export default class Rule {
     result.text = rule.text;
     result.table = rule.table ? map(rule.table, jsonTableRow => {
       const tableRow = new RuleTableRow();
-      tableRow.row = jsonTableRow.row;
+      tableRow.row = map(jsonTableRow.row, cellJson => {
+        const cell = new RuleTableCell();
+        cell.color = cellJson.color || undefined;
+        cell.text = cellJson.text;
+        return cell;
+      });
       return tableRow;
     }) : undefined;
     result.rules = rule.rules ? map(rule.rules, jsonSubRule => {

@@ -1,7 +1,8 @@
 import React from 'react';
-import { ActionSheetIOS, Platform } from 'react-native';
+import { ActionSheetIOS, Platform, Linking } from 'react-native';
 import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
+import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 import { t } from 'ttag';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
@@ -14,6 +15,10 @@ import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
 import { CardImageProps } from '@components/card/CardImageView';
 import { ThemeColors } from '@styles/theme';
+import { StyleContextType } from '@styles/StyleContext';
+import Database from '@data/Database';
+import { where } from '@data/query';
+import { startsWith } from 'lodash';
 
 export function getDeckOptions(
   colors: ThemeColors,
@@ -297,9 +302,71 @@ export function showCardImage(componentId: string, card: Card, colors: ThemeColo
   });
 }
 
+export async function openUrl(
+  url: string,
+  context: StyleContextType,
+  db: Database,
+  componentId: string,
+  tabooSetId?: number,
+) {
+  const card_regex = /\/card\/(\d+)/;
+  const card_match = url.match(card_regex);
+
+  if (card_match) {
+    const code = card_match[1];
+    const card = await db.getCard(
+      where('c.code = :code', { code }),
+      tabooSetId
+    );
+    if (card) {
+      showCard(componentId, code, card, context.colors);
+      return;
+    }
+  }
+
+  const rule_regex = /^((https:\/\/arkhamdb.com)?\/rules)?#(.+)$/;
+  const rule_match = url.match(rule_regex);
+  if (rule_match) {
+    const rule_id = rule_match[3];
+    const rules = await db.getRules(0, 1, where('r.id = :rule_id', { rule_id }));
+    if (rules.length) {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Rule',
+          passProps: {
+            rule: rules[0],
+          },
+          options: {
+            topBar: {
+              backButton: {
+                title: t`Back`,
+              },
+              title: {
+                text: rules[0].title,
+              },
+            },
+          },
+        },
+      });
+      return;
+    }
+  }
+
+  if (startsWith(url, '/')) {
+    url = `https://arkhamdb.com${url}`;
+  }
+
+  if (url.indexOf('arkhamdb.com') !== -1) {
+    InAppBrowser.open(url).catch(() => {
+      Linking.openURL(url);
+    });
+  }
+}
+
 export default {
   showDeckModal,
   getDeckOptions,
   showCard,
   showOptionDialog,
+  openUrl,
 };

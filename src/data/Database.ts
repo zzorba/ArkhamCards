@@ -13,7 +13,7 @@ import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
 type DatabaseListener = () => void;
 
 export default class Database {
-  static SCHEMA_VERSION: number = 17;
+  static SCHEMA_VERSION: number = 15;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -144,11 +144,10 @@ export default class Database {
     pageSize: number,
     query?: Brackets
   ): Promise<Rule[]> {
-    let rulesQuery = (await this.rules()).createQueryBuilder('r');
+    let rulesQuery = (await this.rules()).createQueryBuilder('r').leftJoinAndSelect('r.rules', 'sub_rules');
     if (query) {
       rulesQuery = rulesQuery.where(query);
     }
-    rulesQuery = rulesQuery.leftJoinAndSelect('r.rules', 'rule');
     return await rulesQuery
       .orderBy('r.order', 'ASC')
       .skip(pageSize * page)

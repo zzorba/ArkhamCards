@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
-import { ListRenderItemInfo, FlatList, View } from 'react-native';
-import Collapsible from 'react-native-collapsible';
+import { ListRenderItemInfo, FlatList, View, Platform } from 'react-native';
+import { t } from 'ttag';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Brackets } from 'typeorm/browser';
 
@@ -13,6 +13,9 @@ import { s, m } from '@styles/space';
 import DatabaseContext from '@data/DatabaseContext';
 import { Navigation } from 'react-native-navigation';
 import { RuleViewProps } from './RuleView';
+import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
+import { where } from '@data/query';
 
 interface Props {
   componentId: string;
@@ -37,12 +40,12 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
     });
   }, []);
   return (
-    <View style={{ paddingLeft: s + s * (level + 1), paddingRight: m }}>
+    <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} />
-        { map(rule.rules || [], subRule => (
-            <CardTextComponent text={`- ${subRule.title}`} />
-        )) }
+        { rule.rules && rule.rules.length > 0 && (
+          <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(', ')} />
+          ) }
       </TouchableOpacity>
     </View>
   );
@@ -59,8 +62,38 @@ interface AppendPagedRules {
   page: number;
 }
 
+interface SearchResults {
+  rules: Rule[];
+  term: string;
+}
+
 
 export default function RulesView({ componentId }: Props) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState<SearchResults>({
+    term: '',
+    rules: [],
+  });
+  const updateSearch = useCallback((searchTerm: string) => {
+    setSearchTerm(searchTerm);
+    if (searchTerm == searchResults.term) {
+      return;
+    }
+    if (!searchTerm) {
+      setSearchResults({
+        term: '',
+        rules: [],
+      });
+    }
+    db.getRules(
+      0,
+      100,
+      where(`r.parentRule is null AND (r.title LIKE '%' || :searchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules_title is not null AND sub_rules_title LIKE '%' || :searchTerm || '%') OR (sub_rules_text is not null AND sub_rules_text LIKE '%' || :searchTerm || '%'))`, { searchTerm })
+    ).then((rules: Rule[]) => setSearchResults({
+      term: searchTerm,
+      rules,
+    }), console.log);
+  },[]);
   const [rules, appendRules] = useReducer<Reducer<PagedRules, AppendPagedRules>>(
     (state: PagedRules, action: AppendPagedRules): PagedRules => {
       return {
@@ -99,21 +132,34 @@ export default function RulesView({ componentId }: Props) {
     }
   }, []);
   const renderItem = ({ item, index }: ListRenderItemInfo<Rule>) => <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
-  const data = flatMap(
+  const data = searchTerm ? searchResults.rules : flatMap(
     sortBy(keys(rules.rules), parseInt),
     idx => rules.rules[idx]
   );
   return (
-    <FlatList
-      data={data}
-      renderItem={renderItem}
-      onEndReachedThreshold={1}
-      onEndReached={fetchMore}
-      updateCellsBatchingPeriod={0}
-      initialNumToRender={30}
-      maxToRenderPerBatch={30}
-      pagingEnabled={!rules.endReached}
-      windowSize={30}
-    />
+    <CollapsibleSearchBox
+      prompt={t`Search rules`}
+      searchTerm={searchTerm}
+      onSearchChange={updateSearch}
+    >
+    { (onScroll) => (
+      <FlatList
+        onScroll={onScroll}
+        data={data}
+        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+
+        renderItem={renderItem}
+        onEndReachedThreshold={1}
+        onEndReached={fetchMore}
+        updateCellsBatchingPeriod={0}
+        initialNumToRender={30}
+        maxToRenderPerBatch={30}
+        pagingEnabled={!rules.endReached}
+        windowSize={30}
+      />
+    ) }
+    </CollapsibleSearchBox>
+
   );
 }
