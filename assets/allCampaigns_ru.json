@@ -21918,7 +21918,7 @@
           "text": "In some scenarios, there are additional changes to the explore rules. These changes are noted on the setup card for each scenario."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Пример. У замысла 1a «Экспедиция в джунгли» есть свойство: «[action]: Разведка. Возьмите верхнюю карту колоды разведки. Если это связанная локация, введите её в игру и переместитесь туда». Урсула Даунс хочет отыскать новую локацию, находясь в «Лагере экспедиции». Она тратит своё первое действие на разведку и берёт верхнюю карту колоды разведки. Это локация «Петляющая тропа». Поскольку она не связана с «Лагерем экспедиции», Урсула кладёт её рядом с колодой разведки и берёт следующую карту. На этот раз ей попадается напасть «Припасы на исходе», которая разыгрывается по обычным правилам и отправляется в сброс контактов. Разведка безуспешна, и Урсула замешивает «Петляющую тропу» обратно в колоду разведки. Затем она решает провести ещё одну разведку и тратит на это второе действие. Теперь она берёт локацию «Тернистый путь», которая связана с «Лагерем экспедиции». В результате успешной разведки Урсула вводит в игру «Тернистый путь», кладёт на него указанное число улик и перемещается туда сама.</i>"
     }
   ]
 }, "scenarios": [
@@ -28162,7 +28162,7 @@
     },
     {
       "id": "setup_act_ab",
-      "text": "Составьте колоду сцен а/Ь следующим образом:",
+      "text": "Составьте колоду сцен а/b следующим образом:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -28187,12 +28187,12 @@
     {
       "id": "act_ab_harlan_in_trouble",
       "bullet_type": "small",
-      "text": "Так как <i>сыщики передали реликвию Харлану</i>, удалите из колоды а/Ь карту «Реликвия пропала!», оба экземпляра «На выставке» и 1 случайный экземпляр «Проклятия Харлана»."
+      "text": "Так как <i>сыщики передали реликвию Харлану</i>, удалите из колоды а/b карту «Реликвия пропала!», оба экземпляра «На выставке» и 1 случайный экземпляр «Проклятия Харлана»."
     },
     {
       "id": "act_ab_relic_is_missing",
       "bullet_type": "small",
-      "text": "Так как <i>Алехандро добыл Реликвию веков</i> или <i>сыщики передали реликвию Алехандро</i>, удалите из колоды а/Ь карту «Харлан в опасности!», оба экземпляра «Проклятия Харлана» и 1 случайный экземпляр «На выставке»."
+      "text": "Так как <i>Алехандро добыл Реликвию веков</i> или <i>сыщики передали реликвию Алехандро</i>, удалите из колоды а/b карту «Харлан в опасности!», оба экземпляра «Проклятия Харлана» и 1 случайный экземпляр «На выставке»."
     },
     {
       "id": "setup_act_cd",
@@ -54763,7 +54763,7 @@
           "text": "Когда односторонняя локация из колоды разведки входит в игру, положите на неё указанное число улик."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Пример. У замысла 1a «Экспедиция в джунгли» есть свойство: «[action]: Разведка. Возьмите верхнюю карту колоды разведки. Если это связанная локация, введите её в игру и переместитесь туда». Урсула Даунс хочет отыскать новую локацию, находясь в «Лагере экспедиции». Она тратит своё первое действие на разведку и берёт верхнюю карту колоды разведки. Это локация «Петляющая тропа». Поскольку она не связана с «Лагерем экспедиции», Урсула кладёт её рядом с колодой разведки и берёт следующую карту. На этот раз ей попадается напасть «Припасы на исходе», которая разыгрывается по обычным правилам и отправляется в сброс контактов. Разведка безуспешна, и Урсула замешивает «Петляющую тропу» обратно в колоду разведки. Затем она решает провести ещё одну разведку и тратит на это второе действие. Теперь она берёт локацию «Тернистый путь», которая связана с «Лагерем экспедиции». В результате успешной разведки Урсула вводит в игру «Тернистый путь», кладёт на него указанное число улик и перемещается туда сама.</i>"
     },
     {
       "id": "difficulty_choice",
@@ -61271,7 +61271,7 @@
     },
     {
       "id": "setup_act_ab",
-      "text": "Составьте колоду сцен а/Ь следующим образом:",
+      "text": "Составьте колоду сцен а/b следующим образом:",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -61296,12 +61296,12 @@
     {
       "id": "act_ab_harlan_in_trouble",
       "bullet_type": "small",
-      "text": "Так как <i>сыщики передали реликвию Харлану</i>, удалите из колоды а/Ь карту «Реликвия пропала!», оба экземпляра «На выставке» и 1 случайный экземпляр «Проклятия Харлана»."
+      "text": "Так как <i>сыщики передали реликвию Харлану</i>, удалите из колоды а/b карту «Реликвия пропала!», оба экземпляра «На выставке» и 1 случайный экземпляр «Проклятия Харлана»."
     },
     {
       "id": "act_ab_relic_is_missing",
       "bullet_type": "small",
-      "text": "Так как <i>Алехандро добыл Реликвию веков</i> или <i>сыщики передали реликвию Алехандро</i>, удалите из колоды а/Ь карту «Харлан в опасности!», оба экземпляра «Проклятия Харлана» и 1 случайный экземпляр «На выставке»."
+      "text": "Так как <i>Алехандро добыл Реликвию веков</i> или <i>сыщики передали реликвию Алехандро</i>, удалите из колоды а/b карту «Харлан в опасности!», оба экземпляра «Проклятия Харлана» и 1 случайный экземпляр «На выставке»."
     },
     {
       "id": "setup_act_cd",

@@ -21918,7 +21918,7 @@
           "text": "Algunos escenarios contienen cambios adicionales para las reglas de <b>Explorar</b>. Verás esos cambios en la carta de preparación de cada escenario."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Ejemplo: El plan 1a (Expedición en tierra salvaje) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es la Senda enrevesada. Puesto que la Senda enrevesada es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Escaso de suministros, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver la Senda enrevesada que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Sendero de espinas, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Sendero de espinas se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Sendero de espinas.</i>"
     }
   ]
 }, "scenarios": [
@@ -36184,7 +36184,7 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River."
+      "example": "<i>Ejemplo: El plan 1a (La búsqueda del portal) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es el Oasis del desierto. Puesto que el Oasis del desierto es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Tormenta de arena, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver el Oasis del desierto que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Río Nilo, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Río Nilo se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Río Nilo.</i>"
     },
     {
       "id": "story_cards",
@@ -36566,7 +36566,7 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
+      "example": "<i>Ejemplo: El plan 1a (La búsqueda del portal) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es el Oasis del desierto. Puesto que el Oasis del desierto es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Tormenta de arena, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver el Oasis del desierto que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Río Nilo, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Río Nilo se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Río Nilo.</i>"
     },
     {
       "id": "strength_of_the_abyss",
@@ -39099,7 +39099,7 @@
           "text": "Los efectos de algunas cartas pueden permitir que los investigadores tomen el control de las llaves de otras formas."
         }
       ],
-      "example": "When an investigator takes control of a key, they place that key on their investigator card. If an investigator who controls 1 or more keys is eliminated, place each of those keys on their location. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location."
+      "example": "Cuando un investigador tome el control de una llave, la coloca en su carta de Investigador. Si un investigador que controle 1 o más llaves es eliminado, coloca todas esas llaves en su Lugar. Como capacidad [action], un investigador puede darle cualquier cantidad de sus llaves a otro investigador que esté en el mismo Lugar."
     },
     {
       "id": "guardian_of_the_trap_emerged",
@@ -39535,7 +39535,7 @@
           "text": "Cuando se haya resuelto una incursión en un Lugar, sobre él no pueden colocarse brechas causadas por otras incursiones durante el resto de esa fase."
         }
       ],
-      "example": "<i>For example: A breach is about to be placed on Rivertown, which has 3 breaches on it. Instead, an <b>incursion</b> is resolved at Rivertown. First, all of the breaches on Rivertown are removed. Then, 1 doom is placed on Rivertown. Finally, 1 breach is placed on each of the locations connected to Rivertown. This may cause another incursion at one of those locations.</i>"
+      "example": "<i>Por ejemplo: va a colocarse una brecha sobre el Barrio Fluvial, que tiene 3 brechas. En lugar de eso, se resuelve una <b>incursión</b> en el Barrio Fluvial. En primer lugar, se retiran todas las brechas del Barrio Fluvial. A continuación, se coloca 1 ficha de Perdición en el Barrio Fluvial. Por último, se coloca 1 brecha en cada uno de los Lugares conectados al Barrio Fluvial, Esto podría provocar otra incursión en uno de esos Lugares.</i>"
     },
     {
       "id": "$play_scenario",
@@ -44655,7 +44655,7 @@
           "text": "Una carta Oculto cuenta para tu tamaño de la mano, pero no se puede descartar de tu mano por <i>ningún</i> medio excepto mediante los descritos en la carta. Al ser descartadas, las cartas Oculto se colocan en la pila de descartes apropiada."
         }
       ],
-      "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+      "example": "Para una mejor experiencia, los jugadores no deberían salirse del personaje ni compartir información sobre las cartas Oculto de su mano."
     }
   ]
 }, "scenarios": [
@@ -50389,7 +50389,7 @@
           "text": "Una carta Oculto cuenta para tu tamaño de la mano, pero no se puede descartar de tu mano por <i>ningún</i> medio excepto mediante los descritos en la carta. Al ser descartadas, las cartas Oculto se colocan en la pila de descartes apropiada."
         }
       ],
-      "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+      "example": "Para una mejor experiencia, los jugadores no deberían salirse del personaje ni compartir información sobre las cartas Oculto de su mano."
     }
   ]
 }, "scenarios": [
@@ -54763,7 +54763,7 @@
           "text": "Cuando se ponga en juego un Lugar de una sola cara desde el mazo de Exploración, coloca sobre ese Lugar una cantidad de pistas igual a su valor de pista."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Ejemplo: El plan 1a (Expedición en tierra salvaje) tiene la siguiente capacidad: “[action]: <b>Explorar</b>. Roba la primera carta del mazo de Exploración. Si es un Lugar conectado, ponlo en juego y muévete a él.”. Ursula Downs está en el Campamento de expedición y quiere encontrar un nuevo Lugar al que viajar. Gasta su primera acción para explorar y roba la primera carta del mazo de Exploración. La carta que roba es la Senda enrevesada. Puesto que la Senda enrevesada es un Lugar que no está conectado al Campamento de expedición, lo coloca junto al mazo de Exploración y roba la siguiente carta de dicho mazo. Esta vez, roba la carta de Traición Escaso de suministros, por lo que la resuelve de forma normal y la coloca en la pila de descartes de Encuentros. Su exploración no ha tenido éxito, y debe devolver la Senda enrevesada que robó anteriormente al mazo de Exploración y barajarlo. Ursula decide explorar una vez más, gastando una segunda acción. Esta vez, roba el Sendero de espinas, que está conectado al Campamento de expedición. Su exploración tiene éxito. El Sendero de espinas se pone en juego con tantas pistas encima como su valor de pista, y Ursula se mueve inmediatamente del Campamento de expedición al Sendero de espinas.</i>"
     },
     {
       "id": "difficulty_choice",
@@ -63041,7 +63041,7 @@
       "id": "prologue",
       "type": "story",
       "title": "Prosperan en las profundidades",
-      "text": "“Era un núcleo urbano muy extenso, de casas apretadas, pero carente de signos de vida.”\n–H. P. Lovecraft, “ La Sombra sobre Innsmouth”"
+      "text": "“Era un núcleo urbano muy extenso, de casas apretadas, pero carente de signos de vida.”\n–H. P. Lovecraft, “La Sombra sobre Innsmouth”"
     },
     {
       "id": "choose_investigators",
@@ -63227,7 +63227,7 @@
           "text": "Los efectos de algunas cartas pueden permitir a un investigador tomar el control de las llaves de otros modos."
         }
       ],
-      "example": "When an investigator takes control of a key, they flip it faceup (if it is facedown) and place it on their investigator card. If an investigator who controls one or more keys is eliminated, place each of their keys on their locations. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location.\n<b>Keys have no inherent game effect.</b> However, some card effects may change depending on which keys an investigator controls. Additionally, keys may sometimes be required in order to progress during a scenario."
+      "example": "Cuando un investigador toma el control de una llave, la pone boca arriba (si estaba boca abajo) y la coloca sobre su carta de Investigador. Si un investigador que controla una o más llaves es eliminado, coloca cada una de sus llaves sobre su Lugar. Como capacidad [action], un investigador puede darle cualquier cantidad de sus llaves a otro investigador que esté en su mismo Lugar.\n<b>Las llaves no tienen ningún efecto de juego de por sí.</b> Sin embargo, los efectos de algunas cartas pueden cambiar en función de qué llaves controle un investigador. Además, es posible que a veces sean necesarias llaves para progresar durante un escenario."
     },
     {
       "id": "flood_token_rule",
