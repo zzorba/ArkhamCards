@@ -171,10 +171,12 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
 
   _showCard = (card: Card) => {
     const { componentId } = this.props;
+    const { colors } = this.context;
     showCard(
       componentId,
       card.code,
       card,
+      colors,
       true
     );
   };
@@ -485,6 +487,7 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
       showDeckModal(
         componentId,
         deck,
+        this.context.colors,
         investigator,
         undefined,
         true

@@ -27,7 +27,7 @@ export default class Database {
       location: 'default',
       logging: [
         'error',
-        // 'query',
+        //'query',
         'schema',
       ],
       dropSchema: recreate,
@@ -157,6 +157,7 @@ export default class Database {
       cardsQuery = cardsQuery.andWhere(query);
     }
     if (sort && sort.length) {
+      console.log("Apply sorts");
       const [firstSort, ...restSorts] = sort;
       cardsQuery = cardsQuery.orderBy(firstSort.s, firstSort.direction);
       forEach(restSorts, ({ s, direction }) => {

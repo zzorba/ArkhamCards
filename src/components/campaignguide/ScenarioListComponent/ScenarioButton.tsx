@@ -163,7 +163,7 @@ export default class ScenarioButton extends React.Component<Props> {
     return (
       <NavButton
         onPress={this._onPress}
-        disabled={(scenario.type === 'locked' || scenario.type === 'skipped')}
+        disabled={(scenario.type === 'locked' || scenario.type === 'skipped' || scenario.type === 'placeholder')}
       >
         <View style={styles.wrapper}>
           <View style={[space.marginLeftS, space.marginRightM]}>

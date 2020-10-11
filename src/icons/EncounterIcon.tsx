@@ -426,21 +426,24 @@ export default class EncounterIcon extends React.PureComponent<Props> {
       case 'tic':
       case 'the_innsmouth_conspiracy':
         return this.innsmouthIcon('tic', size, color);
-      case 'creatures_from_the_deep':
+      case 'creatures_of_the_deep':
         return this.innsmouthIcon('creatures_from_below', size, color);
       case 'the_locals':
       case 'locals':
         return this.innsmouthIcon('locals', size, color);
+      case 'the_vanishing_of_elina_harper':
+        return this.innsmouthIcon('disappearance_of_elina_harper', size, color);
+      case 'the_pit_of_despair':
+        return this.innsmouthIcon('grotto_of_despair', size, color);
+      case 'flooded_caverns':
+        return this.innsmouthIcon('flooded_caves', size, color);
 
       case 'agents_of_dagon':
       case 'agents_of_hydra':
       case 'rising_tide':
-      case 'disappearance_of_elina_harper':
       case 'fog_over_innsmouth':
       case 'shattered_memories':
       case 'syzygy':
-      case 'flooded_caves':
-      case 'grotto_of_despair':
       case 'malfunction':
         return this.innsmouthIcon(encounter_code, size, color);
 

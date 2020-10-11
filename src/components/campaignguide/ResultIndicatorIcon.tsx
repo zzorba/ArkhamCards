@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -6,14 +6,15 @@ import {
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
-import COLORS from '@styles/colors';
 import space from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   result: boolean;
 }
 
 export default function ResultIndicatorIcon({ result }: Props) {
+  const { colors } = useContext(StyleContext);
   return (
     <View style={[
       styles.icon,
@@ -23,7 +24,7 @@ export default function ResultIndicatorIcon({ result }: Props) {
       <MaterialCommunityIcons
         name={result ? 'thumb-up-outline' : 'thumb-down-outline'}
         size={24}
-        color={COLORS.scenarioGreen}
+        color={colors.scenarioGreen}
       />
     </View>
   );

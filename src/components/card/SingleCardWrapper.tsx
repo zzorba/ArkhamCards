@@ -7,6 +7,7 @@ import { t } from 'ttag';
 import CardListWrapper from '@components/card/CardListWrapper';
 import Card from '@data/Card';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props<T=undefined> {
   code: string;
@@ -28,7 +29,7 @@ export default class SingleCardWrapper<T=undefined> extends React.Component<Prop
         return loadingComponent || null;
       }
       return (
-        <Text style={typography.text}>
+        <Text style={[typography.text, space.paddingM]}>
           { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
         </Text>
       );

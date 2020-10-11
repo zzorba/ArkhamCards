@@ -6,7 +6,6 @@ import {
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import { BulletType } from '@data/scenario/types';
-import COLORS from '@styles/colors';
 import space, { s, m, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
@@ -55,7 +54,7 @@ export default class SetupStepWrapper extends React.Component<Props> {
             <ArkhamIcon
               name="guide_bullet"
               size={22}
-              color={COLORS.scenarioGreen}
+              color={colors.scenarioGreen}
             />
           </View>
         );

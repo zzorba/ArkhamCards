@@ -2,7 +2,7 @@ import Config from 'react-native-config';
 import { keys, map } from 'lodash';
 
 import { getAccessToken } from './auth';
-import { Deck, DeckMeta } from '@actions/types';
+import { Deck, DeckMeta, DeckProblemType } from '@actions/types';
 
 interface Params {
   [key: string]: string | number;
@@ -125,7 +125,7 @@ export function newCustomDeck(
   name: string,
   slots: { [code: string]: number },
   ignoreDeckLimitSlots: { [code: string]: number },
-  problem?: string,
+  problem?: DeckProblemType,
   tabooSetId?: number,
   meta?: DeckMeta
 ) {
@@ -135,7 +135,7 @@ export function newCustomDeck(
       deck.name,
       slots,
       ignoreDeckLimitSlots,
-      problem,
+      problem || '',
       0,
       0,
       tabooSetId,

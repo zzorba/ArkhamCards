@@ -19,6 +19,7 @@ import { s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
+  lang: string;
   deck: Deck;
   previousDeck?: Deck;
   deckToCampaign?: { [deck_id: number]: Campaign };
@@ -90,6 +91,7 @@ export default class DeckListRow extends React.Component<Props> {
       previousDeck,
       cards,
       details,
+      lang,
     } = this.props;
     const { colors, typography } = this.context;
     if (details) {
@@ -107,7 +109,7 @@ export default class DeckListRow extends React.Component<Props> {
     const date: undefined | string = deck.date_update || deck.date_creation;
     const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
     const scenarioCount = deck.scenarioCount || 0;
-    const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate)) : undefined;
+    const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
     const traumaData = campaign && campaign.investigatorData[investigator.code];
     return (
       <View>

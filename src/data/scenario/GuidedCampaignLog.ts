@@ -83,6 +83,9 @@ export interface EntrySection {
   crossedOut: {
     [key: string]: true | undefined;
   };
+  decoration?: {
+    [key: string]: 'circle' | undefined;
+  }
   sectionCrossedOut?: boolean;
 }
 
@@ -756,7 +759,18 @@ export default class GuidedCampaignLog {
       this.getInvestigators(effect.investigator, input),
       investigator => {
         const data = this.campaignData.investigatorData[investigator] || {};
-        if (effect.special_xp) {
+        if (effect.transfer_special_xp) {
+          const specialXp = data.specialXp || {};
+          const availableSpecialXp = (specialXp[effect.transfer_special_xp] || 0);
+          this.campaignData.investigatorData[investigator] = {
+            ...data,
+            availableXp: (data.availableXp || 0) + availableSpecialXp,
+            specialXp: {
+              ...specialXp,
+              [effect.transfer_special_xp]: 0,
+            },
+          };
+        } else if (effect.special_xp) {
           const specialXp = data.specialXp || {};
           const availableSpecialXp = (specialXp[effect.special_xp] || 0) + totalXp;
           if (availableSpecialXp >= 0) {
@@ -1075,6 +1089,11 @@ export default class GuidedCampaignLog {
     forEach(ids, id => {
       if (effect.cross_out) {
         section.crossedOut[id] = true;
+      } else if (effect.decorate) {
+        section.decoration = {
+          ...(section.decoration || {}),
+          [id]: effect.decorate,
+        };
       } else if (effect.remove) {
         section.entries = filter(
           section.entries,

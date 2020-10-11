@@ -6,15 +6,13 @@ import {
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { Navigation } from 'react-native-navigation';
-import { t } from 'ttag';
 
-import { CardImageProps } from '@components/card/CardImageView';
 import EncounterIcon from '@icons/EncounterIcon';
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { showCardImage } from '@components/nav/helper';
 
 const SCALE_FACTOR = isBig ? 1.2 : 1.0;
 
@@ -111,35 +109,7 @@ export default function PlayerCardImage({ componentId, card }: Props) {
   const { colors } = useContext(StyleContext);
   const onPress = () => {
     if (componentId) {
-      const faction = card.factionCode();
-      Navigation.push<CardImageProps>(componentId, {
-        component: {
-          name: 'Card.Image',
-          passProps: {
-            id: card.code,
-          },
-          options: {
-            topBar: {
-              backButton: {
-                title: t`Back`,
-                color: '#FFFFFF',
-              },
-              background: {
-                color: faction ? colors.faction[faction].background : colors.background,
-              },
-              title: {
-                text: card.name,
-                color: faction ? '#FFFFFF' : colors.darkText,
-              },
-            },
-            bottomTabs: {
-              visible: false,
-              drawBehind: true,
-              animate: true,
-            },
-          },
-        },
-      });
+      showCardImage(componentId, card, colors);
     }
   };
 

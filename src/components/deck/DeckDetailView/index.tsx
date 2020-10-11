@@ -565,7 +565,7 @@ class DeckDetailView extends React.Component<Props, State> {
           slots,
           tabooSetOverride,
         },
-        options: getDeckOptions({ title: t`Checklist`, noTitle: true }, investigator),
+        options: getDeckOptions(this.context.colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
   };
@@ -1179,7 +1179,7 @@ class DeckDetailView extends React.Component<Props, State> {
     if (!parsedDeck) {
       return;
     }
-    const options = getDeckOptions({}, parsedDeck.investigator);
+    const options = getDeckOptions(this.context.colors,{}, parsedDeck.investigator);
 
     Navigation.push<DeckDescriptionProps>(componentId, {
       component: {
@@ -1440,7 +1440,7 @@ class DeckDetailView extends React.Component<Props, State> {
       updateXpAdjustment: this._updateXpAdjustment,
     };
 
-    const options = getDeckOptions({ title: card.name }, parsedDeck.investigator);
+    const options = getDeckOptions(this.context.colors, { title: card.name }, parsedDeck.investigator);
 
     Navigation.push<CardUpgradeDialogProps>(componentId, {
       component: {
@@ -1586,11 +1586,12 @@ class DeckDetailView extends React.Component<Props, State> {
   _showCardCharts = () => {
     const { componentId } = this.props;
     const { parsedDeck } = this.state;
+    const { colors } = this.context;
     this.setState({
       menuOpen: false,
     });
     if (parsedDeck) {
-      showCardCharts(componentId, parsedDeck);
+      showCardCharts(componentId, parsedDeck, colors);
     }
   };
 
@@ -1607,7 +1608,7 @@ class DeckDetailView extends React.Component<Props, State> {
       menuOpen: false,
     });
     if (parsedDeck) {
-      const options = getDeckOptions({ title: t`Upgrade History` },parsedDeck.investigator);
+      const options = getDeckOptions(this.context.colors, { title: t`Upgrade History` },parsedDeck.investigator);
 
       Navigation.push<DeckHistoryProps>(componentId, {
         component: {
@@ -1628,11 +1629,12 @@ class DeckDetailView extends React.Component<Props, State> {
   _showDrawSimulator = () => {
     const { componentId } = this.props;
     const { parsedDeck } = this.state;
+    const { colors } = this.context;
     this.setState({
       menuOpen: false,
     });
     if (parsedDeck) {
-      showDrawSimulator(componentId, parsedDeck);
+      showDrawSimulator(componentId, parsedDeck, colors);
     }
   };
 

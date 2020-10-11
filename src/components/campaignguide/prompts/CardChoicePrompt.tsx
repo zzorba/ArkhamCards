@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { find, flatMap, keys, map, uniq } from 'lodash';
+import { find, flatMap, keys, map, uniq, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
@@ -129,10 +129,11 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
   };
 
   _renderCards = (
-    cards: Card[],
+    rawCards: Card[],
     loading: boolean,
     includeNonDeckButton: boolean
   ): Element | null => {
+    const cards = uniqBy(rawCards, card => card.code);
     const {
       id,
       text,

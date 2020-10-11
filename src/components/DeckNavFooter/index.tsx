@@ -40,7 +40,8 @@ export default class DeckNavFooter extends React.Component<Props> {
       componentId,
       parsedDeck,
     } = this.props;
-    showCardCharts(componentId, parsedDeck);
+    const { colors } = this.context;
+    showCardCharts(componentId, parsedDeck, colors);
   };
 
   _showCardSimulator = () => {
@@ -48,7 +49,8 @@ export default class DeckNavFooter extends React.Component<Props> {
       componentId,
       parsedDeck,
     } = this.props;
-    showDrawSimulator(componentId, parsedDeck);
+    const { colors } = this.context;
+    showDrawSimulator(componentId, parsedDeck, colors);
   };
 
   renderProblem() {

@@ -3,7 +3,7 @@ import { last } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 import { t } from 'ttag';
 
-import { CAMPAIGN_COLORS, campaignNames } from './constants';
+import { campaignNames, campaignColor } from './constants';
 import { Campaign, CUSTOM } from '@actions/types';
 import Difficulty from './Difficulty';
 import GameHeader from './GameHeader';
@@ -89,12 +89,13 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     const {
       campaign,
     } = this.props;
+    const { colors } = this.context;
     return (
       <View style={styles.row}>
         { campaign.cycleCode !== CUSTOM && (
           <BackgroundIcon
             code={campaign.cycleCode}
-            color={CAMPAIGN_COLORS[campaign.cycleCode]}
+            color={campaignColor(campaign.cycleCode, colors)}
           />
         ) }
         <View>

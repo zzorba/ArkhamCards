@@ -44,6 +44,7 @@ export default class SearchBox extends React.Component<Props> {
       </TouchableOpacity>
     );
   }
+
   renderToggleButton() {
     const {
       toggleAdvanced,

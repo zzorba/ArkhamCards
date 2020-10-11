@@ -8,6 +8,7 @@ import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { getDeck, AppState } from '@reducers';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -19,6 +20,7 @@ type RenderDeckDetails = (
 export interface DeckRowProps {
   componentId: string;
   id: number;
+  lang: string;
   deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
   investigators: CardsMap;
   cards: CardsMap;
@@ -49,6 +51,8 @@ type Props =
   ReduxActionProps;
 
 class DeckRow extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
   _onDeckPress = () => {
     const {
       componentId,
@@ -56,7 +60,7 @@ class DeckRow extends React.Component<Props> {
       investigators,
     } = this.props;
     if (theDeck) {
-      showDeckModal(componentId, theDeck, investigators[theDeck.investigator_code]);
+      showDeckModal(componentId, theDeck, this.context.colors, investigators[theDeck.investigator_code]);
     }
   };
 
@@ -136,6 +140,7 @@ class DeckRow extends React.Component<Props> {
       viewDeckButton,
       killedOrInsane,
       skipRender,
+      lang,
     } = this.props;
     if (!theDeck) {
       return null;
@@ -150,6 +155,7 @@ class DeckRow extends React.Component<Props> {
     return (
       <DeckListRow
         deck={theDeck}
+        lang={lang}
         previousDeck={thePreviousDeck}
         cards={cards}
         onPress={this._onDeckPress}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View, Text, TouchableOpacity, StyleSheet, TextStyle, ViewStyle,
 } from 'react-native';
+import { m, s } from '@styles/space';
 
 const style = StyleSheet.create({
   itemWrapper: {
@@ -9,9 +10,13 @@ const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
+    paddingTop: s,
+    paddingBottom: s,
   },
   indicatorWrapper: {
-    padding: 20,
+    padding: s,
+    paddingLeft: m,
+    paddingRight: m,
     justifyContent: 'center',
     alignItems: 'center',
   },

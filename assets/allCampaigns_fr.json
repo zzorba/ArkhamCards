@@ -62903,4 +62903,3111 @@
     }
   ]
 }]}
+,
+{
+  "campaign":
+{
+  "id": "tic",
+  "position": 7,
+  "version": 1,
+  "name": "The Innsmouth Conspiracy",
+  "campaign_log": [
+    {
+      "id": "campaign_notes",
+      "title": "Notes de Campagne"
+    },
+    {
+      "id": "memories_recovered",
+      "title": "Memories Recovered"
+    },
+    {
+      "id": "possible_suspects",
+      "title": "Possible Suspects"
+    },
+    {
+      "id": "possible_hideouts",
+      "title": "Possible Hideouts"
+    },
+    {
+      "id": "hidden",
+      "type": "hidden",
+      "title": "Hidden"
+    }
+  ],
+  "scenarios": [
+    "the_pit_of_despair",
+    "puzzle_pieces",
+    "the_vanishing_of_elina_harper",
+    "the_syzygy",
+    "in_too_deep",
+    "devil_reef",
+    "beneath_the_waves",
+    "horror_in_high_gear",
+    "a_light_in_the_fog",
+    "the_lair_of_dagon",
+    "hidden_truths",
+    "into_the_maelstrom",
+    "tic_epilogue"
+  ],
+  "setup": [
+    "setup_campaign_log",
+    "prologue",
+    "choose_investigators",
+    "difficulty_choice",
+    "keys_rule",
+    "flood_token_rule"
+  ],
+  "steps": [
+    {
+      "id": "setup_campaign_log",
+      "text": "dummy",
+      "hidden": true,
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "burnham",
+          "text": "Brian Burnham"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "gilman",
+          "text": "Othera Gilman"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "little",
+          "text": "Joyce Little"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "marsh",
+          "text": "Barnabas Marsh"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "allen",
+          "text": "Zadok Allen"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_suspects",
+          "id": "friendly",
+          "text": "Robert Friendly"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "innsmouth_jail",
+          "text": "Innsmouth Jail"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "shoreward_slums",
+          "text": "Shoreward Slums"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "sawbone_alley",
+          "text": "Sawbone Alley"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "house_on_water_street",
+          "text": "The House on Water Street"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "order_of_dagon",
+          "text": "Esoteric Order of Dagon"
+        },
+        {
+          "type": "campaign_log",
+          "section": "possible_hideouts",
+          "id": "new_church_green",
+          "text": "New Church Green"
+        }
+      ]
+    },
+    {
+      "id": "prologue",
+      "type": "story",
+      "title": "In the Deep, They Thrive",
+      "text": "“It was a town of wide extent and dense construction, yet one with a portentous dearth of visible life.”\n- H. P. Lovecraft, “The Shadow Over Innsmouth”"
+    },
+    {
+      "id": "choose_investigators",
+      "type": "input",
+      "input": {
+        "type": "scenario_investigators"
+      }
+    },
+    {
+      "id": "difficulty_choice",
+      "text": "Choisir le niveau de difficulté :",
+      "type": "input",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "easy",
+            "text": "Facile <i>(Je veux juste suivre l’histoire)</i>",
+            "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "easy"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "+1",
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "cultist",
+                  "tablet",
+                  "tablet",
+                  "elder_thing",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "text": "Standard <i>(Je veux relever un défi)</i>",
+            "description": "+1, 0, 0, -1, -1, -1 -2, -2, -3, -4, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "standard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "+1",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-4",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "cultist",
+                  "tablet",
+                  "tablet",
+                  "elder_thing",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "hard",
+            "text": "Difficile <i>(Je veux un véritable cauchemar)</i>",
+            "description": "0, 0, 0, -1, -1, -2, -2, -3, -3, -4, -5, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "hard"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-5",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "cultist",
+                  "tablet",
+                  "tablet",
+                  "elder_thing",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "expert",
+            "text": "Expert <i>(Je veux l’Horreur à Arkham)</i>",
+            "description": "0, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [tablet], [elder_thing], [elder_thing], [auto_fail], [elder_sign]",
+            "effects": [
+              {
+                "type": "campaign_data",
+                "setting": "difficulty",
+                "value": "expert"
+              },
+              {
+                "type": "add_chaos_token",
+                "tokens": [
+                  "0",
+                  "-1",
+                  "-1",
+                  "-2",
+                  "-2",
+                  "-3",
+                  "-3",
+                  "-4",
+                  "-4",
+                  "-5",
+                  "-6",
+                  "-8",
+                  "skull",
+                  "skull",
+                  "cultist",
+                  "cultist",
+                  "tablet",
+                  "tablet",
+                  "elder_thing",
+                  "elder_thing",
+                  "auto_fail",
+                  "elder_sign"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "type": "rule_reminder",
+      "text": "This expansion introduces key tokens that represent important objects or pieces of information that can be claimed and used during scenarios.\nKey tokens have two sides. When facedown, all seven keys have the same universal key symbol, so they can be randomized without the investigators knowing which is which. When faceup, each key is color coded with a unique color.\nIf a scenario uses one or more keys, the setup of that scenario indicates how many are set aside and whether they should be faceup or randomized facedown. Keys can enter play via several different card effects, and they are usually placed on enemy, location, or story asset. Keys can be acquired in any of three ways:",
+      "bullets": [
+        {
+          "text": "If a location with a key on it has no clues, an investigator may take control of each of that location's keys as a [fast] ability."
+        },
+        {
+          "text": "If an investigator causes an enemy with a key on it to leave play, that investigator must take control of each of the keys that were on that enemy. (If it leaves play through some other means, place its keys on its location.)"
+        },
+        {
+          "text": "Some card effects may allow an investigator to take control of keys in other ways."
+        }
+      ],
+      "example": "When an investigator takes control of a key, they flip it faceup (if it is facedown) and place it on their investigator card. If an investigator who controls one or more keys is eliminated, place each of their keys on their locations. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location.\n<b>Keys have no inherent game effect.</b> However, some card effects may change depending on which keys an investigator controls. Additionally, keys may sometimes be required in order to progress during a scenario."
+    },
+    {
+      "id": "flood_token_rule",
+      "title": "Flood Tokens",
+      "type": "rule_reminder",
+      "text": "Throughout the campaign, scenario card effects can flood locations. Each location has one of three different flood levels: it is either unflooded, partially flooded, or fully flooded. A location's flood level can be tracked using the double-sided flood tokens included in this deluxe box. <b>A location's flood level has no inherent game effect.</b> However, some card effects may change or become stronger while you are at a flooded location, particularly if that location is fully flooded.",
+      "bullets": [
+        {
+          "text": "A location with no flood tokens is unflooded."
+        },
+        {
+          "text": "If a location becomes partially flooded, place a flood token on it with the partially flooded side faceup to designate this."
+        },
+        {
+          "text": "If a location becomes fully fooded, place a flood token on it with the fully flooded side faceup (or if it is already partially flooded, flip its flood token over) to desginate this."
+        },
+        {
+          "text": "If a location's flood level is \"increased\", it changes from unflooded to partially flooded, or from partially flooded to fully flooded. A fully flooded location cannot have its flood level increased."
+        },
+        {
+          "text": "If a location's flood level is \"decreased\", it changes from fully flooded to partially flooded, or from partially flooded to unflooded. If a location becomes unflooded, remove its flood token."
+        },
+        {
+          "text": "For the purposes of card effects, both partially flooded locations and fully flooded locations are considered to be \"flooded.\""
+        }
+      ]
+    }
+  ]
+}, "scenarios": [
+{
+  "id": "a_light_in_the_fog",
+  "scenario_name": "A Light in the Fog",
+  "full_name": "Scenario VI: A Light in the Fog",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "beneath_the_waves",
+  "scenario_name": "Beneath the Waves",
+  "full_name": "Interlude III: Beneath the Waves",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "devil_reef",
+  "scenario_name": "Devil Reef",
+  "full_name": "Scenario IV: Devil Reef",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "hidden_truths",
+  "scenario_name": "Hidden Truths",
+  "full_name": "Interlude IV: Hidden Truths",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "horror_in_high_gear",
+  "scenario_name": "Horror in High Gear",
+  "full_name": "Scenario V: Horror in High Gear",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "in_too_deep",
+  "scenario_name": "In Too Deep",
+  "full_name": "Scenario III: In Too Deep",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "into_the_maelstrom",
+  "scenario_name": "Into the Maelstrom",
+  "full_name": "Scenario VIII: Into the Maelstrom",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "puzzle_pieces",
+  "scenario_name": "Puzzle Pieces",
+  "full_name": "Interlude I: Puzzle Pieces",
+  "type": "interlude",
+  "setup": [
+    "intro",
+    "check_memories_recovered",
+    "check_meeting_with_thomas_dawson",
+    "check_no_memories_recovered",
+    "check_battle_with_a_horrifying_devil",
+    "check_decision_to_stick_together",
+    "check_encounter_with_a_secret_cult",
+    "outro"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "You have no idea who this woman is or how she knows you, yet she seems comfortable and familiar with you. You strain your memory trying to think of how you might have met, but it's no use. You're certain she is a complete stranger. Having woken up in a cold, wet prison with no memories, you aren't feeling very sociable. Your fear and distrust must show, because the woman backs off and narrows her eyes. \"What is it? What's wrong?\"\nYou respond by asking the woman if you know her. \"You truly don't remember? Well, that's going to complicate things. What do you recall? Do you remember anything?\"\nYou relate to the woman the flashes of recollection that you experienced earlier..."
+    },
+    {
+      "id": "check_memories_recovered",
+      "text": "Check the \"Memories Recovered\" section of the Campaign Log. Read each of the sections below that apply to your situation."
+    },
+    {
+      "id": "check_meeting_with_thomas_dawson",
+      "type": "branch",
+      "text": "If <i>a meeting with Thomas Dawson</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "meeting_with_thomas_dawson",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "thomas_dawson_story",
+              "thomas_dawson_effects"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "thomas_dawson_story",
+      "type": "story",
+      "text": "You put two and two together and ask if the woman is Miss Harper. \"Ah, so you do remember me?\" she asks with a playful smirk, but you shake your head in response and explain that you only remember being hired by a man named Thomas Dawson to find her. \"But that was... oh. You have forgotten a lot, haven't you? Speaking of Dawson, where is he? Did you see him down there?\"\nYour thoughts turn to the twisted, mangled face that triggered your flashback. Agent Harper's expression turns dour as she watches your eyes. \"...I see. I wish he hadn't come to this forsaken town. Those brutes are going to pay for this.\" You ask who she thinks is responsible for Dawson's death, and she raises her eyebrows in response. \"Right, you don't remember. As far as I know, the last time anybody saw either of you was just before you visited the Esoteric Order of Dagon. Draw your own conclusions.\""
+    },
+    {
+      "id": "thomas_dawson_effects",
+      "text": "The conspiracy deepens. Every investigator records 1 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_no_memories_recovered",
+      "type": "branch",
+      "text": "If nothing is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log_count",
+            "section": "memories_recovered",
+            "id": "$num_entries",
+            "max": 4,
+            "options": [
+              {
+                "numCondition": 0
+              }
+            ]
+          }
+        ],
+        "count": 1,
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "no_memories_recovered_story"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_memories_recovered_story",
+      "type": "story",
+      "text": "You shake your head. You remember nothing. \"That's going to make this difficult,\" the woman says with a sigh. \"All right. Well, I'll tell you what I know. I am Agent Elina Harper. My understanding is that you were hired by my boss, Agent Thomas Dawson, thanks to your deeper understanding of... well, of things that don't really make sense to the rest of us.\" You ask what task you were hired to perform, and the woman smirks. \"You were hired to find me, actually. The Order wasn't too happy about that. It's a bit of a long story. Let's get out of here first, and then I can catch you up on all of that.\""
+    },
+    {
+      "id": "check_battle_with_a_horrifying_devil",
+      "type": "branch",
+      "text": "If <i>a battle with a horrifying devil</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "battle_with_a_horrifying_devil",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "devil_fight_story",
+              "devil_fight_effects"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "devil_fight_story",
+      "type": "story",
+      "text": "You tell Agent Harper about your battle with some kind of aquatic creature. \"Devil Reef,\" she says, shuddering. \"Whatever is going on in this town, Devil Reef is at the heart of it. Let's hope we don't have to head back that way anytime soon... and let's hope that <i>thing</i> stays dead.\""
+    },
+    {
+      "id": "devil_fight_effects",
+      "text": "The conspiracy deepens. Every investigator records 1 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_decision_to_stick_together",
+      "type": "branch",
+      "text": "If <i>a decision to stick together</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "decision_to_stick_together",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "stayed_together_story",
+              "stayed_together_effects"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "stayed_together_story",
+      "type": "story",
+      "text": "\"So you and Dawson were looking for me together, then? Interesting.\" She considers this for a moment. \"I guess even the extraordinary Captain Dawson can be rattled from time to time. It's somewhat gratifying to know he cared that much about finding me. Still...\" her gaze wanders towards the horizon. \"All right, Dawson. I'll make sure you didn't die in vain. I'll burn this whole town to the ground if I have to.\""
+    },
+    {
+      "id": "stayed_together_effects",
+      "text": "The conspiracy deepens. Every investigator records 1 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "check_encounter_with_a_secret_cult",
+      "type": "branch",
+      "text": "If <i>an encounter with a secret cult</i> is listed under \"Memories Recovered\":",
+      "condition": {
+        "type": "campaign_log",
+        "section": "memories_recovered",
+        "id": "encounter_with_a_secret_cult",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "encounter_with_a_secret_cult_story",
+              "encounter_with_a_secret_cult_effects"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "encounter_with_a_secret_cult_story",
+      "type": "story",
+      "text": "You describe your memory from inside some kind of cult headquarters. \"Sounds like that must have taken place inside the Esoteric Order of Dagon building on the north side of town,\" Agent Harper reasons. \"That organization is vile: I just know it. I have no evidence to bring back, though, and it sounds like you've forgotten everything you learned.\" She curses under her breath."
+    },
+    {
+      "id": "encounter_with_a_secret_cult_effects",
+      "text": "The conspiracy deepens. Every investigator records 1 additional experience under \"Unspent Experience.\"",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "special_xp": "unspect_xp",
+          "bonus": 1
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "type": "story",
+      "text": "You point to the strange, crimson horizon behind Agent Harper and note aloud the alignment of the sun and the moon. \"That began just after you and Agent Dawson entered the Order's headquarters,\" she explains. \"That was almost three days ago. I have no idea what it means, but I can't imagine it is anything good. All of Innsmouth's been locked tight lately. Not a soul in sight. You're lucky I figured out where to look for you.\"\nYour mind reels. The last thing you remember before waking up in that dank pit was enjoying a pleasant late-summer's eve in Arkham. Now you're in another town altogether, and your memory is filled with gaping holes. You wonder aloud what the date is, and Agent Harper replies: \"It's the twenty-fourth of September. I don't know when exactly you arrived in Innsmouth or how much of your memory is missing. Isn't there anything else you remember? Anything at all?\"\nThe water sloshes against your feet as you struggle to remember. In minutes, the tide has risen several inches, and there's no sign of it slowing down. You fix your gaze on the woman who stands before you—her weary eyes, her disheveled clothes, the red marks on her wrists—and something triggers in your recollection.\n\"Wake up. We're almost there.\" The memory lurks at the precipice of your consciousness, threatening to draw you into the darkness. \"Hey. Wake up, I said.\" You clutch your forehead as searing pain bounces throughout your skull. \"Wake up, dammit!\"\nDarkness pulls at the edges of your vision. More memories come flooding back..."
+    }
+  ]
+},
+{
+  "id": "the_lair_of_dagon",
+  "scenario_name": "The Lair of Dagon",
+  "full_name": "Scenario VII: The Lair of Dagon",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+},
+{
+  "id": "the_pit_of_despair",
+  "scenario_name": "The Pit of Despair",
+  "full_name": "Scenario I: The Pit of Despair",
+  "setup": [
+    "intro",
+    "gather_encounter_sets",
+    "setup_keys",
+    "setup_locations",
+    "set_aside_locations",
+    "setup_tidal_tunnel_locations",
+    "location_layout",
+    "set_aside_tidal_tunnel",
+    "set_aside_cards",
+    "setup_flood_markers",
+    "encounter_deck",
+    "tidal_tunnel_rule",
+    "the_depths_rule",
+    "location_connectivity_rule",
+    "flashbacks_rule",
+    "keys_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro",
+      "type": "story",
+      "text": "Your eyes flutter open with the languor of one who has slept for days on end. Your senses are in no hurry to return. You blink and struggle to see through the inky black surrounding you. Every inch of you aches with dull, throbbing pain. Your skin is cold and numb, and your clothes are waterlogged. Your mind swims with half-articulated thoughts and tangled memories. You have no idea where you are or how you got here.\nYou snap to attention, heart racing in your chest. You lie on a jagged stone floor in a shallow pool of dark, ice-cold water. Knowing panic will only make the situation worse, you take a series of deep, meditative breaths. you try to remember something—anything—that might allow you to retrace your steps, but your mind is blank. You remember who you are, but nothing whatsoever from the recent past. You steady yourself and examine your surroundings.\nThe chamber appears to be a natural cave formation. Kelp dangles from the ceiling. The stone walls and floor are wet and slimy. A rhythmic drip, drip, drip echoes throughout the otherwise silent cave. This cavern has been underwater, and not too long ago. A result of the tides, perhaps? You swallow your fear like a lump of cold iron. If it is low tide now... A cold shudder ripples up your spine. You examine the ceiling and are surprised to see a slab of metal set into the rough stone overhead. Its polished surface is alien to the rest of the natural cavern. You call out for help, hoping somebody can hear.\nYour dread deepens at the reply: an awful croaking and gurgling that permeates the tunnels—a sound no human could make."
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Mise en Place",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_pit_of_despair",
+        "creatures_of_the_deep",
+        "flooded_caverns",
+        "rising_tide",
+        "shattered_memories",
+        "agents_of_cthulhu",
+        "rats"
+      ],
+      "subtext": "<i>Note: The encounter set icon for each Tidal Tunnel location appears only on the location's revealed side (see \"Tidal Tunnels\" below for more information).</i>"
+    },
+    {
+      "id": "setup_keys",
+      "text": "Place each key as follows:",
+      "bullets": [
+        {
+          "text": "Set the blue and green keys aside, faceup."
+        },
+        {
+          "text": "Set the red, yellow, and purple keys aside, facedown. Shuffle them so you do not know which is which."
+        },
+        {
+          "text": "Remove the black and white keys from the game. They are not used in this scenario."
+        }
+      ]
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the Unfamiliar Chamber location into play. Each investigator begins play at the Unfamiliar Chamber."
+    },
+    {
+      "id": "set_aside_locations",
+      "text": "Find each of the following locations and set them aside, out of play: Idol Chamber, Altar to Dagon, and Sealed Exit <i>(each of these locations is on the reverse side of a Tidal Tunnel location)</i>."
+    },
+    {
+      "id": "setup_tidal_tunnel_locations",
+      "text": "Shuffle the remainder of the Tidal Tunnel locations and randomly put three of them into play below, to the left, and to the right of the Unfamiliar Chamber, unrevealed side faceup."
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Suggestion de Placement des Lieux",
+      "horizontal": "normal",
+      "vertical": "normal",
+      "locations": [
+        [
+          "07052_back",
+          "07047_back",
+          "07052_back"
+        ],
+        [
+          "blank",
+          "07052_back",
+          "blank"
+        ]
+      ]
+    },
+    {
+      "id": "set_aside_tidal_tunnel",
+      "text": "Set the rest of the Tidal Tunnel locations aside, out of play."
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set each of the following cards aside, out of play: The Amalgam enemy, both copies of the Blindsense treachery, and all 3 copies of the From the Depths treachery."
+    },
+    {
+      "id": "setup_flood_markers",
+      "text": "Add the flood tokens to the token pool."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "tidal_tunnel_rule",
+      "title": "Tidal Tunnels",
+      "type": "rule_reminder",
+      "text": "Locations with unrevealed Tidal Tunnel sides exist in multiple encounter sets. (For example, in this scenario, both the <i>Flooded Caverns</i> encounter set and <i>The Pit of Despair</i> encounter set contain unrevealed Tidal Tunnel locations). Because these locations can come from multiple different encounter sets, they have no encounter set icon on their unrevealed side. To see which encounter set a Tidal Tunnel location belongs to, check its revealed side."
+    },
+    {
+      "id": "the_depths_rule",
+      "title": "The Depths",
+      "type": "rule_reminder",
+      "text": "Some cards in this scenario refer to an area called \"the depths.\" The depths is an out-of-play area next to the act and agenda decks that The Amalgam enemy can enter and leave via card effects. While The Amalgam is in the depths, it is out of play and cannot be affected by player cards or investigator actions.",
+      "bullets": [
+        {
+          "text": "<b>When The Amalgam moves from play to the depths, remove all tokens from it except for its key tokens.</b> Key tokens are not removed from The Amalgam when it enters the depths unless it was defeated by an investigator, in which case that investigator takes control of each of its keys."
+        }
+      ]
+    },
+    {
+      "id": "location_connectivity_rule",
+      "title": "Location Adjacency in the Pit",
+      "text": "During this scenario, locations are arranged in a set pattern, with new locations from the Tidal Tunnel deck emerging below, to the left, or to the right of existing locations. <i>(Note: The Tidal Tunnel deck does not exist at the beginning of this scenario. You will be instructed when and how to create it at a later time during this scenario.)</i>",
+      "bullets": [
+        {
+          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+        },
+        {
+          "text": "A location that is put into play below or to the left or right of another location should be set next to that location in the indicated position, with no other locations between them. A location that is next to another location in this manner is considered \"adjacent.\""
+        },
+        {
+          "text": "Locations are only adjacent orthogonally (left, right, above, or below); they are not adjacent diagonally."
+        },
+        {
+          "text": "You cannot put a location into play where an existing location already is. If you are instructed to place a new location from the Tidal Tunnel deck in a spot that is already occupied by an existing location, the new location does not enter play."
+        }
+      ]
+    },
+    {
+      "id": "flashbacks_rule",
+      "title": "Flashbacks",
+      "text": "Throughout <i>The Innsmouth Conspiracy</i> campaign, you will occasionally be instructed to read \"flashback\" sequences. Each flashback contains a piece of your fractured memories. If you glimpse enough of those memories, perhaps you can cobble together a greater understanding of the events that have led you to this point. Some flashbacks might also provide additional benefits in the form of additional experience or the removal of harmful symbols from the chaos bag."
+    },
+    {
+      "id": "keys_rule",
+      "title": "Keys",
+      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Pile de victoire :",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "branches": [
+          {
+            "id": "keys",
+            "text": "Keys",
+            "steps": [
+              "ask_keys"
+            ]
+          },
+          {
+            "id": "flashback_1",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_1",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback I",
+            "steps": [
+              "flashback_1_story",
+              "flashback_1_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_1",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_2",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_2",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback II",
+            "steps": [
+              "flashback_2_story",
+              "flashback_2_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_2",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_3",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_3",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback III",
+            "steps": [
+              "flashback_3_story",
+              "flashback_3_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_3",
+                "text": "dummy"
+              }
+            ]
+          },
+          {
+            "id": "flashback_4",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "flashback_4",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Flashback IV",
+            "steps": [
+              "flashback_4_story",
+              "flashback_4_effects"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "flashback_4",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_keys",
+      "type": "input",
+      "text": "Which keys do you want to read the representation of:",
+      "input": {
+        "type": "checklist",
+        "text": "Read",
+        "choices": [
+          {
+            "id": "blue",
+            "text": "Blue",
+            "steps": [
+              "blue_key"
+            ]
+          },
+          {
+            "id": "green",
+            "text": "Green",
+            "steps": [
+              "green_key"
+            ]
+          },
+          {
+            "id": "red",
+            "text": "Red",
+            "steps": [
+              "red_key"
+            ]
+          },
+          {
+            "id": "yellow",
+            "text": "Yellow",
+            "steps": [
+              "yellow_key"
+            ]
+          },
+          {
+            "id": "purple",
+            "text": "Purple",
+            "steps": [
+              "purple_key"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "blue_key",
+      "text": "Blue: an idol of a malformed aquatic creature."
+    },
+    {
+      "id": "green_key",
+      "text": "Green: An emerald key with four prongs."
+    },
+    {
+      "id": "red_key",
+      "text": "Red: A piece of amber in the shape of a fish's heart that whispers something alien to you when you hold it."
+    },
+    {
+      "id": "yellow_key",
+      "text": "Yellow: A calcified piece of chitin in the shape of a tentacle."
+    },
+    {
+      "id": "purple_key",
+      "text": "Purple: A jagged key of twisted marble and onyx."
+    },
+    {
+      "id": "flashback_1_story",
+      "title": "Flashback I",
+      "type": "story",
+      "text": "You stand in a small office, examining a worn photograph in a well-polished wooden frame. In the photo, a squad of men in military uniforms pose in front of a Bristol F.2 Fighter plane. Several of the men wear tan British uniforms, but one sports the olive overcoat and khakis of an American soldier. His sleeves each bear a rectangular patch striped vertically with a captain's paired silver bars. At the bottom of the photograph, in black ink, cursive handwriting reads \"British Fourth Army, outside St. Quentin, 1918.\"\nThe door to the office opens suddenly, startling you. You put the photograph down and turn to address the man entering. You identify him immediately by his dark-brown skin, his strong jaw, and his broad shoulders. It is Thomas Dawson—the American from the photograph—though he has aged a bit since his war days, and heavy bags hang under his eyes. \"One war ends; a new one begins,\" he says quietly. \"Only this enemy is even harder to root out.\"\nYou ask the man what a war hero is doing in the investigative business, and he chuckles softly in response. \"War hero? I don't know where you heard that from. I was just doing my duty.\" You shake your head but do not argue further. You suspect that the squadron Captain Dawson rescued would disagree as well.\n\"In any event, I suppose you're wondering why I summoned you here to Boston,\" he says, gesturing for you to take a seat in front of his desk. You sit and respond to his remark with affirmation, wondering aloud why a telephone call would not have sufficed. \"This is a... sensitive matter,\" he replies. \"A few days ago, I lost contact with one of my agents, a Miss Elina Harper. I had her investigating several strange reports I've received in the past few months, all concerning a town called Innsmouth. Do you know the place? It's along the coast to the north of your town of Arkham, just by Ipswich.\"\nYou know the place. Though most have never heard of the shadowed, decrepit seaport, those who do hear only ill rumors. From what you understand, the town used to be lively port before the War of 1812, but it has since become dingy and run-down. The only railway line that runs through Innsmouth is abandoned, and there are no references to the town on any maps or in any guidebooks you have ever seen.\n\"Perhaps she's found something curious or has gone into hiding, but I suspect foul play. It could be mob work, but I doubt it. I'm not sending any more agents until I know for sure. However, I have some room in our discretionary budget to hire a third party, such as yourself.\" You assume Agent Dawson is dancing around the truth, which is that you are expendable. \"I know it isn't much to go on, but I need to know the status of Agent Harper. Even bad news would be better than no news, at this point. If you do me this favor, our agency will be in your debt.\" You ask which agency Dawson is referring to. A smirk tugs at his lips.\nWhen you snap back to the present, you still gaze at Agent Dawson's face, only his smirk is twisted in a haunting visage of agony. It is just one of the many faces that writhe in torment throughout this repulsive creature's scaly, pulsating flesh."
+    },
+    {
+      "id": "flashback_1_effects",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "meeting_with_thomas_dawson",
+          "text": "a meeting with Thomas Dawson"
+        }
+      ]
+    },
+    {
+      "id": "flashback_2_story",
+      "title": "Flashback II",
+      "type": "story",
+      "text": "An old fishing vessel rocks side to side beneath your feat, assaulted by tempestuous waters and tentacles of some enormous creature looming just beneath the waves. \"Somebody kill that damned thing!\" the ship's captain shouts. A loud crash erupts across the vessel, and the hull howls in protest as a vast tentacle encircles it and draws tight. \"It's got us in its grip! It ain't goin' nowhere. Now's your chance!\" the grizzled, old captain yells. With fire in your eyes, you raise your weapon and swing...\nYou return to the present, a sickness churning in your stomach. The skeletal remains of the creature stare back at you. What on Earth was that thing?"
+    },
+    {
+      "id": "flashback_2_effects",
+      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a battle with a horrifying devil</i>.\nRemove 1 [cultist] token from the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "battle_with_a_horrifying_devil",
+          "text": "a battle with a horrifying devil"
+        },
+        {
+          "type": "remove_chaos_token",
+          "tokens": [
+            "cultist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flashback_3_story",
+      "title": "Flashback III",
+      "type": "story",
+      "text": "\"Hey, take a look at this.\" Your employer shoves a strange figurine into your hands. It is hewn of emerald stone and looks vaguely aquatic, with two unblinking eyes and a row of sharp teeth. A piece of heart-shaped amber is embedded in its center. \"What do you make of it?\"\nYou reply that you have seen nothing quite like it before, but it does happen to match the descriptions you have heard of the \"devils\" that skulk about the reefs a couples of miles beyond the harbour. \"Something fishy is going on here, if you'll pardon my saying,\" the man mutters, folding his arms across his chest. \"I'm glad I roped you in on this case. It's looking less and less like mob work with each passing hour.\" You nod in agreement and hand the strange figurine back to the agent. Everything about this town feels foul to you. \"Let's stick together from here on out,\" your companion says, his voice darkening."
+    },
+    {
+      "id": "flashback_3_effects",
+      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a decision to stick together</i>.\nRemove 1 [tablet] token from the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "decision_to_stick_together",
+          "text": "a decision to stick together"
+        },
+        {
+          "type": "remove_chaos_token",
+          "tokens": [
+            "tablet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flashback_4_story",
+      "title": "Flashback IV",
+      "type": "story",
+      "text": "You stand before a terrible onyx statue in a dark, dingy basement. It smells of stale, dank air and rotting fish. The statue depicts a creature that is a hybrid of both fish and human, covered in hideous misshapen scales. Grotesque gills and fins blend with tortured human features. Its large, round eyes glare at you. In the distance, you hear the faint chanting of some kind of ceremony. \"Y'ha-nthlei! Y'ha-nthlei!\" the voices cry. Just as you begin to make out the strange syllables, a splash behind you catches your attention. You duck behind the onyx statue and wait patiently as several figures approach where you stood just moments before. You hold your breath. The gentle sloshing of their steps as they wade through the water passes and fades into the distance. You allow a brief sigh of relief, but begin to follow close behind..."
+    },
+    {
+      "id": "flashback_4_effects",
+      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>an encounter with a secret cult</i>.\nRemove 1 [elder_thing] token from the chaos bag for the remainder of the campaign.",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "memories_recovered",
+          "id": "encounter_with_a_secret_cult",
+          "text": "an encounter with a secret cult"
+        },
+        {
+          "type": "remove_chaos_token",
+          "tokens": [
+            "elder_thing"
+          ]
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution_defeated",
+      "title": "Aucune conclusion n'a été atteinte\n(tous les investigateurs ont été vaincus)",
+      "investigator_status": [
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "You sputter and cough up an entire lungful of dirty water and sand. Cold, dark seawater laps at your skin as you spit the last of the bitter salt taste back into the rolling tide.\nA pair of warm hands shoves you onto your back and pulls you up into a sitting position. \"Thank goodness you're alive,\" someone says. Even through the strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. As your eyes adjust, they take in a sky of dark crimson, the full moon hanging just below the blackened sun. \"We have no time to spare. Come on: get up.\"\nYou wipe stinging salt water from your eyes, your strength returning slowly. Your savior is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. What are you looking at me like that?\" the stranger asks.",
+      "steps": [
+        "earn_xp"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Conclusion 1",
+      "text": "In the distance, the sky is a dark crimson, and the full moon hangs just below the blackened sun. You are about to close your eyes and surrender to unconsciousness when a stranger's voice startles you back too your feet. \"Oh! You are alive?\" Even through her strained voice, you can hear a rhythmic Indian accent and the unwavering confidence of a trained professional. Standing in front of you is a woman with long, raven-black hair. Her tattered trench coat has seen better days, and bruises splash across her dirt-covered skin. \"You seem confused. Why are you looking at me like that?\" the stranger asks.",
+      "steps": [
+        "earn_xp"
+      ]
+    }
+  ]
+},
+{
+  "id": "the_syzygy",
+  "scenario_name": "The Syzygy",
+  "full_name": "Interlude II: The Syzygy",
+  "type": "interlude",
+  "setup": [
+    "syzygy_1",
+    "check_mission_failed",
+    "syzygy_4",
+    "spend_xp",
+    "$upgrade_decks"
+  ],
+  "steps": [
+    {
+      "id": "syzygy_1",
+      "type": "story",
+      "text": "Light flashes in your mind. Shadows drown your thoughts as the memory fades. You are lying once again on the rocky beach off the coast, your skull pounding in agony. Agent Harper leans over you with worry etched in her brow. \"Hey! Hey, you finally awake?\"\nYou sit up, your muscles aching. It looks like the tide rose several more inches while you were out. The cold water laps at your ankles and soaks into your shoes. \"What happened?\" she says. \"What did you see?\""
+    },
+    {
+      "id": "check_mission_failed",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_failed",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "syzygy_2"
+            ]
+          },
+          {
+            "boolCondition": false,
+            "steps": [
+              "check_mission_succeeded"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_mission_succeeded",
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "campaign_notes",
+        "id": "mission_succeeded",
+        "options": [
+          {
+            "boolCondition": true,
+            "steps": [
+              "syzygy_3",
+              "earn_elina_harper"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "syzygy_2",
+      "type": "story",
+      "text": "You tell Harper you remember your mission to find her, but that after a week of searching, you hadn't been able to do so. The last thing you remember was somebody slipping a notebook under your hotel room door with some information regarding an oroganization called the \"Esoteric Order of Dagon.\"\n\"Oh. Yeah, that was me. Sorry I couldn't stick around and chat, but I had some other business to attend to,\" she explains. She tells you that after several days in captivity, she finally managed to get the upper hand against her captor and free herself, but she was injured in the process. As if to prove her story, she opens her trenchcoat, and you see dark bloodstains seeping through her button-up shirt. Several bandages peek out beneath the fabric. \"Just barely missed my kidney. Lucky me, eh?\"\nYou complain that you were wasting your time searching high and low for her, and she scoffs. \"Hardly! You learned more in one week than I did in two. I knew that you were onto something, and I wanted to help out, but I was still being followed. So I dropped off the one solid bit of research I'd found and laid low for a while. It was you who did the rest really.\" Sadly, you remember nothing of \"the rest.\""
+    },
+    {
+      "id": "syzygy_3",
+      "type": "story",
+      "text": "You tell Harper you remember your mission to find her and the interrogation of her kidnapper. She grins. \"Thanks again for that, by the way. I really did have things under control, though,\" she jokes. \"Do you remember anything after that?\"\nYou shake your head. The last thing you remember was the mention of an organization called the \"Esoteric Order of Dagon.\"\nHarper mutters a curse under her breath. \"That's unfortunate. But amnesia or not, at least I know I can trust you. Whether you remember it or not, you've come through for me in the past.\""
+    },
+    {
+      "id": "earn_elina_harper",
+      "text": "Any one investigator may add the Elina Harper story asset to their deck. This card does not count against the investigators deck size.",
+      "effects": [
+        {
+          "type": "add_card",
+          "investigator": "choice",
+          "card": "07083"
+        }
+      ]
+    },
+    {
+      "id": "syzygy_4",
+      "type": "story",
+      "text": "\"Don't worry,\" she says, \"I'll catch you up. There's a lot you still don't remember.\" Just then, a resounding crash of thunder echoes on the eastern horizon, and a powerful wave smashes against the jetties. The sky is a deep crimson red behind blackening storm clouds that swirl around the sun and the moon. The celestial bodies hang together in perfect alignment. \"That can't be good.\" Harper's lips turn rigid with concern. \"Okay, new plan. Let's get back to Innsmouth. I'll explain what I know along the way.\""
+    },
+    {
+      "id": "spend_xp",
+      "text": "With a fragment of your memories returned to you, past events have become clearer. Each investigator may now spend the experience recorded under \"Unspent Experience\" in your Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "the_vanishing_of_elina_harper",
+  "scenario_name": "The Vanishing of Elina Harper",
+  "full_name": "Scenario II: The Vanishing of Elina Harper",
+  "setup": [
+    "intro_1",
+    "info_summary",
+    "intro_2",
+    "investigator_setup",
+    "$upgrade_decks",
+    "gather_encounter_sets",
+    "setup_locations",
+    "location_layout",
+    "setup_leads_deck",
+    "set_aside_agenda_act",
+    "set_aside_cards",
+    "encounter_deck",
+    "find_agent_harper_rule",
+    "$play_scenario"
+  ],
+  "steps": [
+    {
+      "id": "intro_1",
+      "type": "story",
+      "text": "<center><game>WEDNESDAY, AUGUST 17, 1927</game></center>\n<center><game>FIVE WEEKS EARLIER</game></center>\n\"Wake up, dammit!\" Agent Dawson shakes you awake with his right hand. You are in the passenger seat of a pristine, state-of-the-art motorcar, its polished body glowing with light from the moon as it rolls through the foggy Massuchusetts countryside. \"We're almost there,\" Dawson informs you. Unfortunately, Innsmouth lacks a working railroad, which you would have preferred. There is a bus that runs from Boston to Newburyport and another that runs from Newburyport to Innsmouth... but Dawson had insisted on driving you there himself, perhaps to provide you an escape route should things go sour, or to show off his expensive automobile. Probably both.\nAs you arrive in Innsmouth, the stale odor of day-old fish and decrepit, musty buildings washes over you. Many of the buildings along the western side of the town seem to be abandoned, though you occasionally spot figures in some of the windows. You imagine Agent Dawson's opulent car must make quite an impression in such a dirty and dingy town. You joke that perhaps he should have driven here in a jalopy, to which he replies with a smirk: \"That's never been my style.\"\nEventually, you reach a defunct railroad station that was given up years ago. A few train cars sit abandoned on the tracks, and the depot is boarded up and condemned. Dawson suddenly grimaces and points to another vehicle in the open lot. \"That's Agent Harper's breezer. Let's park here and continue on foot. We can move through the town a little easier that way,\" he reasons.\nYou check Agent Harper's vehicle before continuing, but it contains no clues as to her whereabouts. From there, you head eastward beside the Manuxet River, passing numerous deserted warehouses, sodden alleyways, and standoffish townsfolk. \"Harper's got to be somewhere in this forsaken town. Residents don't look all too friendly. Wouldn't be surprised if she drew too much attention from a local mob or the like...\" Dawson begins to contemplate aloud. You ask how he knows his agent isn't simply keeping a low profile. \"Ah yes—well, we have a code phrase for that. If she had sent me a letter saying she 'had some errands to run,' that would have signalled that she would be out of touch for a short while. Without that signal, I have to assume the worst.\" To the northeast, several factory buildings loom over the rest of the town's sagging gambrel roofs, cupolas, and widow's walks. None of the locals stop to greet you along your way. Given the repulsive countenance that many of them bear, their aversion to the usual small-town pleasantries is a relief.\nEventually, you reach the town square just south of Manuxet, though even these crumbling brick buildings that surround the supposed heart of the town inspire little confidence in Agent Harper's safety. An old bus idles nearby, its greasy-looking driver leaning against the door and eyeing you suspiciously. With little else to go on, you decide to split up, knowing that you can cover much more ground that way. \"Canvass the locals and learn more about this town,\" Dawson says. \"Find out who the big shots are in this hellhole. One of them is bound to know where Harper was last seen, or who she was with. I'm going to see if I can find where she was hiding out and look for some sign of her. Meet up with me here at 1900 hours. Understood?\" You nod in agreement and go your separate ways.\nThe first person you check with is the bus driver, who probably has a decent understanding of the town. His coarse, greyish skin is the first thing you notice, followed swiftly by unusually deep and shadowed creases in the flesh of his neck, almost as if he were prematurely aged. His bulging eyes are unsettling, and you're suddenly unsure whether you've seen him blink even once as you approach. You start to offer your hand as you introduce yourself, then think better of it, just in case the man has some kind of disease you've never heard of. He introduces himself as Joe Sargent and gives you a useful—if cursory—rundown of some of the nearby buildings."
+    },
+    {
+      "id": "info_summary",
+      "type": "rule_reminder",
+      "text": "What follows is a summary of the information conveyed to the investigators about the town of Innsmouth.",
+      "bullets": [
+        {
+          "text": "In plain view of the town square is a grocery of the First National chain, run by a youngster by the name of Brian Burnham, an outsider from Arkham. The idea that somebody else from Arkham might be here fills you with some degree of hope, and perhaps a little bit of pity for the boy."
+        },
+        {
+          "text": "The Gilman House, owned by Othera Gilman, is the only hotel in town. Considering its shabby appearance, you suddenly wish you'd only planned a day trip."
+        },
+        {
+          "text": "Down the street from the Gilman House, tucked between a dismal restaurant and a drugstore, is the Little Bookshop, so named not for its size, but after its owner, Joyce Little. Mr. Sargent doesn't seem to care much for her."
+        },
+        {
+          "text": "To the north, along the Manuxet, is the Marsh Refining Company, the centerpiece of the town's only industry. Joe speaks of its owner, Barnabas—whom he calls \"Old Man Marsh\"—with a measure of reverence and admiration."
+        },
+        {
+          "text": "Mr. Sargent tells you to avoid the old bridge along Fish Street, which is collapsed from years of disrepair and now serves only as a haunt for the dispossessed. \"An' don' listen to that drunk, Zadok,\" the bus driver warns. \"'Is tales are jus' that. Tales. Nothin' more.\""
+        },
+        {
+          "text": "Farther east, past Water Street, lies Innsmouth Harbour. Sargent warns you not to get in the way of the dockworkers or their business, for they are a rowdy bunch who aren't used to outsiders—especially the ironicaly-named Robert Friendly, whose name Sargent utters with a hint of hostility."
+        },
+        {
+          "text": "To the north, on New Church Green, there exists an old Masonic Hall, now given over to an organization referred to as the \"Esoteric Order of Dagon.\" What truly goes on inside this old, decrepit building is anyone's guess."
+        }
+      ]
+    },
+    {
+      "id": "intro_2",
+      "type": "story",
+      "text": "Finally, Mr. Sargent asks you what you're doing in Innsmouth. You dodge the question with one of your own, asking him if he has seen anybody around town matching Agent Harper's description. He pauses, then shakes his head. \"Never seen 'er,\" he mutters, refusing to meet your gaze.\nYou spend the rest of the day learning the layout of the town and attempting in vain to make conversation with the locals. The more time you spend in this strange, squalid town, the more you wish you had never taken Agent Dawson up on his offer. There is something foul in the air here, something rotten and fetid that disturbs you to your core.\nLater that night, you meet up with Agent Dawson in the now-deserted town square and share what you have learned. \"Take a look at this,\" he says, handing you a creased, ink-stained letter addressed to him. \"Turns out Harper had a room at that disgusting old hotel. Still does, technically, but it seemed like she hadn't been around for a few days. I broke in and found this among her things.\"\nJudging from the unmailed letter, it seems Agent Harper knew something in town was tracking her movements. <i>I'm being followed</i>, the missive explains. <i>Don't know how they know, but they know. It's like the whole town is in on something. I have no contacts here whom I trust. I'm going to require more than one agent to sort this out, I fear--</i>\nThe letter is cut short. \"Well, she has more than one agent now,\" Dawson says bitterly once you are done reading. \"There's only one reason she wouldn't have sent this letter. Harper's in danger, and somebody in this balled-up town knows where she is.\" Together, you begin to formulate a plan to find Agent Harper. First, narrow down her last known location. Second, find out who knew she was in town. Then... pay them a visit."
+    },
+    {
+      "id": "investigator_setup",
+      "title": "Investigator Setup",
+      "text": "Agent Dawson has briefed you on your task and prepared you for this mission. Each investigator may now spend the experience recorded under \"Unspent Experience\" in the Campaign Log.",
+      "effects": [
+        {
+          "type": "earn_xp",
+          "investigator": "all",
+          "transfer_special_xp": "unspect_xp"
+        }
+      ]
+    },
+    {
+      "id": "gather_encounter_sets",
+      "title": "Mise en Place",
+      "type": "encounter_sets",
+      "encounter_sets": [
+        "the_vanishing_of_elina_harper",
+        "agents_of_dagon",
+        "fog_over_innsmouth",
+        "the_locals",
+        "chilling_cold",
+        "locked_doors",
+        "nightgaunts",
+        "arkham"
+      ],
+      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the five treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather any other cards from that encounter set."
+    },
+    {
+      "id": "setup_locations",
+      "text": "Put the following locations into play: Innsmouth Square, Marsh Refinery, Innsmouth Harbour, Fish Street Bridge, First National Grocery, Gilman House, and The Little Bookshop.",
+      "bullets": [
+        {
+          "text": "Each investigator begins play at the Innsmouth Square."
+        }
+      ]
+    },
+    {
+      "id": "location_layout",
+      "type": "location_setup",
+      "text": "Suggestion de Placement des Lieux",
+      "horizontal": "normal",
+      "vertical": "half",
+      "note": "<i><b>Note</b>: Locations in this diagram with dotted-line borders represent the six possible [[Hideout]] locations. They do not begin in play. They may or may not enter play during the course of the scenario, depending on the actions of the investigators.</i>",
+      "locations": [
+        [
+          "placeholder",
+          "blank",
+          "placeholder",
+          "blank",
+          "placeholder"
+        ],
+        [
+          "blank",
+          "07067_back",
+          "blank",
+          "07063_back",
+          "blank"
+        ],
+        [
+          "07069_back",
+          "blank",
+          "07065_back",
+          "blank",
+          "07066_back"
+        ],
+        [
+          "blank",
+          "07064_back",
+          "blank",
+          "07068_back",
+          "blank"
+        ],
+        [
+          "placeholder",
+          "blank",
+          "placeholder",
+          "blank",
+          "placeholder"
+        ]
+      ]
+    },
+    {
+      "id": "setup_leads_deck",
+      "text": "Prepare the Leads deck. This is done by performing the following steps:",
+      "bullets": [
+        {
+          "text": "Put the double-sided Finding Agent Harper reference card into play, next to the scenario reference card."
+        },
+        {
+          "text": "Find the six unique enemies with the [[Suspect]] trait and the six single-sided locations with the [[Hideout]] trait. Split them into two piles: one pile for the [[Suspect]] enemies and one pile for the [[Hideout]] locations."
+        },
+        {
+          "text": "Randomly choose one card from each pile (one [[Suspect]] enemy and one [[Hideout]] location) and place them facedown beneath the Finding Agent Harper card without looking at them."
+        },
+        {
+          "text": "Shuffle the ten remaining cards from the two piles together to form a deck. This deck is called the Leads deck. Place it near the scenario reference card."
+        }
+      ]
+    },
+    {
+      "id": "set_aside_agenda_act",
+      "text": "Set agenda 3 and act 2 aside, out of play. <i>(Do not use them when building the agenda deck and act deck.)</i>"
+    },
+    {
+      "id": "set_aside_cards",
+      "text": "Set each of the following cards aside, out of play: the Thomas Dawson and Elina Harper story assets, both copies of the Hunting Nightgaunt enemy, and the Winged One enemy."
+    },
+    {
+      "id": "encounter_deck",
+      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+    },
+    {
+      "id": "find_agent_harper_rule",
+      "title": "Find Agent Harper",
+      "type": "rule_reminder",
+      "text": "In this scenario, you are tasked with figuring out which [[Suspect]] enemy has kidnapped Agent Harper and which [[Hideout]] location holds her. This is done by discovering and spending clues to look at and draw cards from the Leads deck.\nEach card in the Leads deck represents one of the possible [[Suspect]] enemies or one of the possible [[Hideout]] locations. Since the correct enemy and location are facedown beneath Finding Agent Harper, none of the cards in the Leads deck can be the correct choice. Therefore, by looking at cards from the Leads deck or by putting them into play, you can narrow down the list of possible enemies and locations by process of elimination. As you eliminate possible enemies and locations, use the options below to cross off entries in your Campaign Log and discover the truth.\nOnce you are confident in your information, use the [[Objective]] ability on act 1a to advance. But beware—you only have so much time to find the truth, and you may have to guess..."
+    },
+    {
+      "id": "$play_scenario",
+      "type": "input",
+      "input": {
+        "type": "play_scenario",
+        "campaign_log": [
+          {
+            "id": "suspect_defeated",
+            "condition": {
+              "type": "campaign_log_count",
+              "section": "hidden",
+              "id": "defeated_suspects",
+              "options": [
+                {
+                  "numCondition": 0
+                },
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "text": "Defeated a suspect enemy.",
+            "steps": [
+              "ask_defeated_suspect"
+            ]
+          }
+        ],
+        "branches": [
+          {
+            "id": "defeated_suspect",
+            "text": "Defeated a suspect enemy",
+            "repeatable": true,
+            "condition": {
+              "type": "campaign_log_count",
+              "section": "hidden",
+              "id": "defeated_suspects",
+              "options": [
+                {
+                  "numCondition": 0
+                },
+                {
+                  "numCondition": 1
+                },
+                {
+                  "numCondition": 2
+                },
+                {
+                  "numCondition": 3
+                },
+                {
+                  "numCondition": 4
+                }
+              ]
+            },
+            "steps": [
+              "ask_defeated_suspect"
+            ]
+          },
+          {
+            "id": "eliminate_suspects",
+            "text": "Eliminate leads",
+            "steps": [
+              "eliminate_leads"
+            ],
+            "repeatable": true,
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_accusation",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            }
+          },
+          {
+            "id": "the_accusation",
+            "condition": {
+              "type": "campaign_log",
+              "section": "hidden",
+              "id": "the_accusation",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "text": "Scenario Interlude: The Accusation",
+            "steps": [
+              "accusation_story",
+              "ask_suspect",
+              "ask_hideout",
+              "reveal_hidden_cards",
+              "ask_true_suspect",
+              "ask_true_hideout",
+              "accusation_result"
+            ],
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "the_accusation",
+                "text": "dummy"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_defeated_suspect",
+      "type": "input",
+      "text": "Choose the non-kidnapper [[Suspect]] enemies that were defeated:",
+      "input": {
+        "type": "checklist",
+        "text": "Defeated",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "burnham_out_for_blood",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "burnham_out_for_blood",
+                "text": "Brian Burnham is out for blood."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "defeated_suspects",
+                "operation": "add",
+                "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "burnham",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "gilman_out_for_blood",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "gilman_out_for_blood",
+                "text": "Othera Gilman is out for blood."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "defeated_suspects",
+                "operation": "add",
+                "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "gilman",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "little_out_for_blood",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "little_out_for_blood",
+                "text": "Joyce Little is out for blood."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "defeated_suspects",
+                "operation": "add",
+                "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "little",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "marsh_out_for_blood",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "marsh_out_for_blood",
+                "text": "Barnabas Marsh is out for blood."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "defeated_suspects",
+                "operation": "add",
+                "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "marsh",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "allen_out_for_blood",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "allen_out_for_blood",
+                "text": "Zadok Allen is out for blood."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "defeated_suspects",
+                "operation": "add",
+                "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "allen",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "campaign_notes",
+              "id": "friendly_out_for_blood",
+              "options": [
+                {
+                  "boolCondition": false
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "campaign_notes",
+                "id": "friendly_out_for_blood",
+                "text": "Robert Friendly is out for blood."
+              },
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "defeated_suspects",
+                "operation": "add",
+                "value": 1
+              },
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "friendly",
+                "cross_out": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "eliminate_leads",
+      "type": "input",
+      "text": "Choose which leads to eliminate:",
+      "input": {
+        "type": "checklist",
+        "text": "Eliminate",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "burnham",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "burnham",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "gilman",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "gilman",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "little",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "little",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "marsh",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "marsh",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "allen",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "allen",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "friendly",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "friendly",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "innsmouth_jail",
+            "text": "Innsmouth Jail",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "innsmouth_jail",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "innsmouth_jail",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Shoreward Slums",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "shoreward_slums",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "shoreward_slums",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "sawbone_alley",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "sawbone_alley",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The House on Water Street",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "house_on_water_street",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "house_on_water_street",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "order_of_dagon",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "order_of_dagon",
+                "cross_out": true
+              }
+            ]
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "new_church_green",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "new_church_green",
+                "cross_out": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "earn_xp",
+      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "type": "input",
+      "input": {
+        "type": "counter",
+        "text": "Pile de victoire :",
+        "effects": [
+          {
+            "type": "earn_xp",
+            "investigator": "all",
+            "special_xp": "unspect_xp"
+          }
+        ]
+      }
+    },
+    {
+      "id": "accusation_story",
+      "type": "rule_reminder",
+      "title": "The Accusation",
+      "text": "Using the knowledge you've gathered, you must make an accusation in an attempt to locate who has kidnapped Elina Harper and where she is hidden. In order to make this accusation, the players must choose one [[Suspect]] enemy and one [[Hideout]] location from among the options listed on the Finding Agent Harper reference card. Note: the [[Suspect]] cannot be an enemy who is is currently in play or in the victory display, nor can the [[Hideout]] be a location that is currently in play. Use this information to narrow down your choices."
+    },
+    {
+      "id": "ask_suspect",
+      "type": "input",
+      "text": "Choose the suspect you believe is guilty:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "burnham",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_burnham",
+                "text": "Brian Burnham"
+              }
+            ]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "gilman",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_gilman",
+                "text": "Othera Gilman"
+              }
+            ]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "little",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_little",
+                "text": "Joyce Little"
+              }
+            ]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "marsh",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_marsh",
+                "text": "Barnabas Marsh"
+              }
+            ]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "allen",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_allen",
+                "text": "Zadok Allen"
+              }
+            ]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "friendly",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_friendly",
+                "text": "Robert Friendly"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_hideout",
+      "type": "input",
+      "text": "Choose the location you believe the suspect is hiding at:",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "innsmouth_jail",
+            "text": "Innsmouth Jail",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "innsmouth_jail",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_prison",
+                "text": "Innsmouth Jail"
+              }
+            ]
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Shoreward Slums",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "shoreward_slums",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_slums",
+                "text": "Shoreward Slums"
+              }
+            ]
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "sawbone_alley",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_sawbone_alley",
+                "text": "Sawbone Alley"
+              }
+            ]
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The House on Water Street",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "house_on_water_street",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_house_on_water_street",
+                "text": "The House on Water Street"
+              }
+            ]
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "order_of_dagon",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_order_of_dagon",
+                "text": "Esoteric Order of Dagon"
+              }
+            ]
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "new_church_green",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "hidden",
+                "id": "accuse_new_church_green",
+                "text": "New Church Green"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "reveal_hidden_cards",
+      "text": "Reveal the [[Suspect]] enemy and the [[Hideout]] location that are facedown beneath Finding Agent Harper."
+    },
+    {
+      "id": "ask_true_suspect",
+      "type": "input",
+      "text": "Select the correct [[Suspect]] (the hidden enemy card):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "burnham",
+            "text": "Brian Burnham",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "burnham",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "burnham",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_burnham"
+            ]
+          },
+          {
+            "id": "gilman",
+            "text": "Othera Gilman",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "gilman",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "gilman",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_gilman"
+            ]
+          },
+          {
+            "id": "little",
+            "text": "Joyce Little",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "little",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "little",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_little"
+            ]
+          },
+          {
+            "id": "marsh",
+            "text": "Barnabas Marsh",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "marsh",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "marsh",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_marsh"
+            ]
+          },
+          {
+            "id": "allen",
+            "text": "Zadok Allen",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "allen",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "allen",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_allen"
+            ]
+          },
+          {
+            "id": "friendly",
+            "text": "Robert Friendly",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_suspects",
+              "id": "friendly",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_suspects",
+                "id": "friendly",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_friendly"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_burnham",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_burnham",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_gilman",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_gilman",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_little",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_little",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_marsh",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_marsh",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_allen",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_allen",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_friendly",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_friendly",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ask_true_hideout",
+      "type": "input",
+      "text": "Select the correct [[Hideout]] (the hidden location card):",
+      "input": {
+        "type": "choose_one",
+        "choices": [
+          {
+            "id": "innsmouth_jail",
+            "text": "Innsmouth Jail",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "innsmouth_jail",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "innsmouth_jail",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_prison"
+            ]
+          },
+          {
+            "id": "shoreward_slums",
+            "text": "Shoreward Slums",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "shoreward_slums",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "shoreward_slums",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_slums"
+            ]
+          },
+          {
+            "id": "sawbone_alley",
+            "text": "Sawbone Alley",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "sawbone_alley",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "sawbone_alley",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_sawbone_alley"
+            ]
+          },
+          {
+            "id": "house_on_water_street",
+            "text": "The House on Water Street",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "house_on_water_street",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "house_on_water_street",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_house_on_water_street"
+            ]
+          },
+          {
+            "id": "order_of_dagon",
+            "text": "Esoteric Order of Dagon",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "order_of_dagon",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "order_of_dagon",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_order_of_dagon"
+            ]
+          },
+          {
+            "id": "new_church_green",
+            "text": "New Church Green",
+            "condition": {
+              "type": "campaign_log",
+              "section": "possible_hideouts",
+              "id": "new_church_green",
+              "options": [
+                {
+                  "boolCondition": true
+                }
+              ]
+            },
+            "effects": [
+              {
+                "type": "campaign_log",
+                "section": "possible_hideouts",
+                "id": "new_church_green",
+                "decorate": "circle"
+              }
+            ],
+            "steps": [
+              "check_accuse_new_church_green"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_prison",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_prison",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_slums",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_slums",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_sawbone_alley",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_sawbone_alley",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_house_on_water_street",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_house_on_water_street",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_order_of_dagon",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_order_of_dagon",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "check_accuse_new_church_green",
+      "hidden": true,
+      "type": "branch",
+      "condition": {
+        "type": "campaign_log",
+        "section": "hidden",
+        "id": "accuse_new_church_green",
+        "options": [
+          {
+            "boolCondition": true,
+            "effects": [
+              {
+                "type": "campaign_log_count",
+                "section": "hidden",
+                "id": "correct_guesses",
+                "operation": "add",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "accusation_result",
+      "type": "branch",
+      "hidden": true,
+      "condition": {
+        "type": "campaign_log_count",
+        "section": "hidden",
+        "id": "correct_guesses",
+        "options": [
+          {
+            "numCondition": 0,
+            "steps": [
+              "incorrect_accusation"
+            ]
+          },
+          {
+            "numCondition": 1,
+            "steps": [
+              "partly_correct_accusation",
+              "accusation_setup"
+            ]
+          },
+          {
+            "numCondition": 2,
+            "steps": [
+              "correct_accusation",
+              "accusation_setup"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "incorrect_accusation",
+      "text": "Because neither the [[Suspect]] nor the [[Hideout]] match your accusation:",
+      "bullets": [
+        {
+          "text": "The investigators are on the wrong track and must resign immediately."
+        },
+        {
+          "text": "Please choose 'Resolutions' and choose 'No resolution (each investigator resigned or was defeated).'"
+        }
+      ]
+    },
+    {
+      "id": "partly_correct_accusation",
+      "text": "Because your accusation is partially correct:",
+      "bullets": [
+        {
+          "text": "The investigators may proceed, but they have have angered the citizens of Innsmouth during their careless investigation. Flip over the Finding Agent Harper reference card and spawn the enemy on its other side at the Innsmouth Square."
+        }
+      ]
+    },
+    {
+      "id": "correct_accusation",
+      "text": "Because your accusation is correct:",
+      "bullets": [
+        {
+          "text": "The investigators may proceed."
+        }
+      ]
+    },
+    {
+      "id": "accusation_setup",
+      "text": "In order to setup the final act and agenda, do the following:",
+      "bullets": [
+        {
+          "text": "Advance the act directly to the set-aside act 2a."
+        },
+        {
+          "text": "Advance the agenda directly to the set-aside agenda 3a."
+        },
+        {
+          "text": "Put the [[Hideout]] location that was beneath Finding Agent Harper into play. Add 1 [per_investigator] clues to that location. Place the set-aside Elina Harper story asset beneath this location to indicate that this is where Elina Harper has been captured."
+        },
+        {
+          "text": "Spawn the [[Suspect]] enemy that was beneath Finding Agent Harper at Elina Harper's location, ignoring their <b>Revelation</b> ability. For the remainder of the scenario, this enemy is referred to as \"the kidnapper.\""
+        },
+        {
+          "text": "Remove the Leads deck from the game."
+        },
+        {
+          "text": "You are now ready to proceed with the final act and agenda."
+        }
+      ]
+    },
+    {
+      "id": "resolution_1",
+      "type": "resolution",
+      "resolution": "R1"
+    },
+    {
+      "id": "mission_failed",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "mission_failed",
+          "text": "the mission failed."
+        }
+      ]
+    },
+    {
+      "id": "mission_succeeded",
+      "effects": [
+        {
+          "type": "campaign_log",
+          "section": "campaign_notes",
+          "id": "mission_succeeded",
+          "text": "the mission succeeded."
+        }
+      ]
+    }
+  ],
+  "resolutions": [
+    {
+      "id": "no_resolution",
+      "title": "Aucune conclusion n'est atteinte\n(tous les investigateurs ont abandonné ou été vaincus)",
+      "investigator_status": [
+        "resigned",
+        "eliminated",
+        "physical",
+        "mental"
+      ],
+      "text": "The town of Innsmouth has proven more hostile and unwelcoming than you could have ever imagined. At every turn, you are stalked by sordid brutes and disfigured silhouttes: figures that crawl on all fours and watch you from the shadows with bulging, unblinking eyes. Fearing that you have drawn too much attentin to your investigation, you retreat to your hotel room only to find it ransacked. Your luggage is ravaged, its contents strewn about. Much of your gear has been stolen. Scrawled on the wall in black paint is a warning:\n<innsmouth>INTERLOPERS DROWN IN THE DEEP</innsmouth>",
+      "steps": [
+        "resolution_1"
+      ]
+    },
+    {
+      "id": "R1",
+      "title": "Conclusion 1",
+      "text": "You are cleaning up the mess left behind by those who vandalized your hotel room when you hear shuffling outside your door. Fearing the worst, you press up against the wall and wait in perfect silence. There is no escape from your room other than a narrow window of dirty glass that you don't think you can fit through. Your heart thumps loudly in your chest as you wait for whatever is to come—a knock on the door, a break-in anything. You certainly aren't expecting a small leather notebook to slip through the crack under your door, though that's exactly what happens.\nAfter a moment, you breathe a sigh of relief and step forward to examine the notebook. It's an old handwritten accound describing the history of the strange town of Innsmouth as far back as the early eighteen hundreds, though the author goes unnamed. The record seems to focus primarily on Obed Marsh's founding of a strange organization called the Esoteric Order of Dagon. You don't remember any manuscripts of this sort on sale at the local bookstore, nor do you think the town has any libraries to speak of. Where was this notebook found, and who delivered it to you?\nCuriosity gets the better of you. You open the door to your hotel room, but the dim, dusty hallway lies bare before you. The identity of your benefactor eludes you. Still, you can't pass up a chance like this. For the remainder of the night, you study the record jotting notes in the margin as you draw connections between Innsmouth's past and the events of the past week. One thing becomes clear: whatever the Esoteric Order of Dagon is, its members must be the ones behind Agent Harper's kidnapping. And just as Agent Dawson suspected, their motives seem to have nothing to do with evading prohibition...",
+      "steps": [
+        "earn_xp",
+        "mission_failed"
+      ]
+    },
+    {
+      "id": "R2",
+      "title": "Conclusion 2",
+      "text": "\"P-please miss, y-you have to believe me!\" Brian stammers. Agent Harper stands over the seventeen-year-old and taps threatingly oon the holster of her firearm. \"I didn't have a choice, I'm telling you! It was the Order! Th-they made me do it!\"\nHarper rolls her eyes and turns too you. \"I can't believe I was abducted by this goof. Certainly a low point in my career.\" You offer that it was precisely his bumbling nature that allowed the boy to catch her off guard. \"I suppose you're right. Anyhow, what's done is done. What do you make of all this?\" she asks, crossing her arms. \"The boy seems to think it was wiser to ambush a federal agent than run afoull of this 'Order.' Think he's telling the truth?\"\nYou might have miscalculated Mr. Burnham's capabilities, but he certainly seems to be more afraid of this Order than he is of you. With a sigh, you nod.\n\"All right, kid,\" Agent Harper says, hauling the boy to his feet. \"Time for you to talk. Tell us everything.\"",
+      "steps": [
+        "earn_xp",
+        "mission_succeeded"
+      ]
+    },
+    {
+      "id": "R3",
+      "title": "Conclusion 3",
+      "text": "Othera struggles against her bonds, trying like hell to free herself. \"Let me go! You have to let me go!\" she cries. Agent Harper grins, reveling in this turn of events.\n\"Doesn't feel so good, does it?\" she teases.\n\"You don't understand,\" Othera replies. \"Come. Look. You'll see.\" She motions to the door next to her, which you haven't yet searched. Inside is a stash of oil paintings, dozens and dozens of them, all depicting the same thing: a tumultuous maelstrom in the middle of the ocean, over which the sun and the moon hang in perfect alignment against a red-tinged sky. \"What in the hell...?\" Agent Harper wonders aloud as she sorts through the many reproductions.\nOthera bites her lip, and a single tear streaks down her cheek. \"It's the Order,\" she whispers. \"The Order owns us all.\"",
+      "steps": [
+        "earn_xp",
+        "mission_succeeded"
+      ]
+    },
+    {
+      "id": "R4",
+      "title": "Conclusion 4",
+      "text": "Despite her situation, Joyce does little to resist you once you have her restrained. She seems resigned to her fate, her gaze elsewhere as you question her. \"Believe me, if I'd had another method of getting you to back off, I would have used it,\" she says to Agent Harper. \"But you were getting too close. So I did what had to be done.\"\n\"I don't understand. Too close to what, exactly, Ms. Little?\" Harper asks.\n\"There is a secret at the heart of this town. A secret that brings us wealth. A secret that brings us power. A secret that brings us...\" She pauses to find the right words. \"...closer to our destiny.\"\n\"And what kind of secret is that?\" Harper probes.\nJoyce smirks and shakes her head. \"What makes you think I would ever share that with outsiders?\"\n\"Because you assaulted a federal agent, and if you don't tell me what I want to know, your 'destiny' is going to be the inside of a lonely prison cell.\"\nYou watch Ms. Little's confidence shatter. She gulps down the last of her pride. A beat of sweat drips down her forehead. \"It started with the Order,\" she explains quietly.",
+      "steps": [
+        "earn_xp",
+        "mission_succeeded"
+      ]
+    },
+    {
+      "id": "R5",
+      "title": "Resolution 5",
+      "text": "Barnabas spits in your face as you attempt to interrogate him. \"I ain't tellin' you a word, interloper,\" he barks, his bulging eyes unblinking as he glowers at you with unbridled hate. \"You don't belong here. All o' your kind'll be dead before the week's end.\"\nAgent Harper narrows her eyes at the strange man's remarks. \"What do you mean by that, Marsh? Our kind? What—outsiders?\"\nBarnabas scowls, his bulbous lips curling back to reveal sharp, inhuman teeth. \"Outsiders. Intruders. You're a blight on our fair town. But you'll be purged soon enough.\"\nYou are taken aback by the severity of the old man's threat and his simmering hatred, but Harper simply chortles. \"You call this place 'fair'?\" Ignoring her derision, you warn Barnabas that if he doesn't speak up, he'll be spending a long time behind bars.\n\"Not I,\" he remarks. \"You're the one who'll be locked up, 'n worse. When the Order's done with you, you'll be nothin' but fish food.\"\nYou and Harper exchange a knowing glance. She pries further: \"What Order is this, exactly?\"",
+      "steps": [
+        "earn_xp",
+        "mission_succeeded"
+      ]
+    },
+    {
+      "id": "R6",
+      "title": "Resolution 6",
+      "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't ye seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
+      "steps": [
+        "earn_xp",
+        "mission_succeeded"
+      ]
+    },
+    {
+      "id": "R7",
+      "title": "Resolution 7",
+      "text": "Robert refruses to say a word until you get him a cigar. You begrudgingly oblige, hoping that your generosity yields dividends. \"I was investigating the docks when he and his cronies nabbed me,\" Agent Harper recounts bitterly. You ask who these \"cronies\" were, and she shrugs. \"Not sure. Dockworkers and sailors, I imagine. Whoever hired Mr. Friendly over here must have a lot of influence over the locals.\"\nAfter handing Robert the cigar he demanded, you are surprised to find him a little more compliant, though no more friendly despite his name. \"Doesn't matter,\" he mutters, blowing out a puff of rank cigar smoke. \"You're all dead men walking. No offense, miss.\"\n\"Offense taken,\" she bites back. \"Care to tell us what you mean by that?\"\n\"The Order,\" he replies with a quiet, unwavering resolve. \"They know everything that happens in this town. Probably out lookin' for me right now. You sure you wanna be here when they find me?\" He flashes a sadistic grin.\nHarper doesn't flinch. \"Yeah, actually. I think I do,\" she replies, cracking her knuckles. \"Now start talking.\"",
+      "steps": [
+        "earn_xp",
+        "mission_succeeded"
+      ]
+    }
+  ]
+},
+{
+  "id": "tic_epilogue",
+  "scenario_name": "Épilogue",
+  "full_name": "Épilogue",
+  "type": "placeholder",
+  "setup": [],
+  "steps": []
+}]}
 ]

@@ -27,7 +27,7 @@ export default class LocationCard extends React.Component<Props> {
     const image = back ? card.backimagesrc : card.imagesrc;
     if (!image) {
       return (
-        <View style={[styles.singleCardWrapper, borderStyle, { backgroundColor: colors.faction.mythos.background }]}>
+        <View style={[styles.singleCardWrapper, borderStyle, { borderWidth: 1, borderRadius: 8, backgroundColor: colors.faction.mythos.background }]}>
           <Text style={typography.text}>{ card.name }</Text>
         </View>
       );
@@ -44,9 +44,22 @@ export default class LocationCard extends React.Component<Props> {
   };
 
   renderImage() {
+    const { colors, borderStyle } = this.context;
     const { code } = this.props;
     switch (code) {
-      case 'blank': return null;
+      case 'blank':
+        return null;
+      case 'placeholder':
+        return (
+          <View style={[
+            styles.singleCardWrapper,
+            borderStyle,
+            {
+              borderWidth: 2,
+              borderStyle: 'dashed',
+              backgroundColor: colors.L20,
+            }]} />
+        );
       case 'player_back':
         return (
           <FastImage

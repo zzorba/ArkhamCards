@@ -3,7 +3,6 @@ import React from 'react';
 import { LIGHT_THEME, ThemeColors } from './theme';
 import typography, { Typography } from '@styles/typography';
 import { ViewStyle } from 'react-native';
-import COLORS from '@styles/colors';
 
 export interface StyleContextType {
   darkMode: boolean;
@@ -21,7 +20,7 @@ export const DEFAULLT_STYLE_CONTEXT = {
   colors: LIGHT_THEME,
   gameFont: 'Teutonic',
   fontScale: 1,
-  typography: typography(COLORS, 'Teutonic'),
+  typography: typography(1.0, LIGHT_THEME, 'Teutonic'),
   backgroundStyle: {
     backgroundColor: LIGHT_THEME.background,
   },

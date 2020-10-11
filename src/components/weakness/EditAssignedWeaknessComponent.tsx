@@ -10,6 +10,7 @@ import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/Card';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import CardSearchResult from '../cardlist/CardSearchResult';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface OwnProps {
   componentId: string;
@@ -20,6 +21,9 @@ interface OwnProps {
 type Props = OwnProps & PlayerCardProps;
 
 class EditAssignedWeaknessComponent extends React.Component<Props> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options() {
     return {
       topBar: {
@@ -47,7 +51,8 @@ class EditAssignedWeaknessComponent extends React.Component<Props> {
   };
 
   _cardPressed = (card: Card) => {
-    showCard(this.props.componentId, card.code, card, true);
+    const { colors } = this.context;
+    showCard(this.props.componentId, card.code, card, colors, true);
   };
 
   render() {

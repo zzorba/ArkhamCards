@@ -130,6 +130,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       campaign,
       updateCampaign,
     } = this.props;
+    const { colors } = this.context;
     if (campaign) {
       const investigatorData = this.investigatorData();
       if (investigatorData) {
@@ -140,14 +141,15 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
       }
     }
     if (showNewDeck) {
-      showDeckModal(componentId, deck, this.investigator());
+      showDeckModal(componentId, deck, colors, this.investigator());
     } else {
       Navigation.pop(componentId);
     }
   }
 
   _onCardPress = (card: Card) => {
-    showCard(this.props.componentId, card.code, card);
+    const { colors } = this.context;
+    showCard(this.props.componentId, card.code, card, colors);
   };
 
   _onStoryCountsChange = (storyCounts: Slots) => {

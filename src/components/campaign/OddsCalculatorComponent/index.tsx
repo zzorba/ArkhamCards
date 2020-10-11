@@ -12,7 +12,7 @@ import { add, subtract } from './oddsHelper';
 import CardTextComponent from '@components/card/CardTextComponent';
 import ChaosBagLine from '@components/core/ChaosBagLine';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { CAMPAIGN_COLORS, Scenario, completedScenario } from '@components/campaign/constants';
+import { campaignColor, Scenario, completedScenario } from '@components/campaign/constants';
 import Difficulty from '@components/campaign/Difficulty';
 import { showScenarioDialog } from '@components/campaign/ScenarioDialog';
 import GameHeader from '@components/campaign/GameHeader';
@@ -351,7 +351,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       currentScenario,
       currentScenarioCard,
     } = this.state;
-    const { borderStyle, typography } = this.context;
+    const { borderStyle, colors, typography } = this.context;
     const scenarioText = currentScenarioCard && (
       (difficulty === CampaignDifficulty.HARD || difficulty === CampaignDifficulty.EXPERT) ?
         currentScenarioCard.back_text :
@@ -363,7 +363,7 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           { campaign.cycleCode !== CUSTOM && !!currentScenario && (
             <BackgroundIcon
               code={currentScenario.code}
-              color={CAMPAIGN_COLORS[campaign.cycleCode]}
+              color={campaignColor(campaign.cycleCode, colors)}
             />
           ) }
           <View style={styles.button}>

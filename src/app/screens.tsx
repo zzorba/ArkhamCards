@@ -68,6 +68,7 @@ import WeaknessDrawDialog from '@components/weakness/WeaknessDrawDialog';
 import SealTokenDialog from '@components/campaign/SealTokenDialog';
 import ScenarioFaqView from '@components/campaignguide/ScenarioFaqView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
+import RulesView from '@components/settings/RulesView';
 
 interface ProviderProps<S> {
   store: S;
@@ -154,4 +155,5 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
   Navigation.registerComponent('SortButton', providerWrapper(SortButton), () => SortButton);
   Navigation.registerComponent('TuneButton', providerWrapper(TuneButton), () => TuneButton);
   Navigation.registerComponent('MythosButton', providerWrapper(MythosButton), () => MythosButton);
+  Navigation.registerComponent('Rules', providerWrapper(RulesView), () => RulesView);
 }

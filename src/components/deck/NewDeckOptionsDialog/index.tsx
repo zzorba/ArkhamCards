@@ -120,13 +120,14 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       componentId,
       onCreateDeck,
     } = this.props;
+    const { colors } = this.context;
     const investigator = this.investigator();
     this.setState({
       saving: false,
     });
     // Change the deck options for required cards, if present.
     onCreateDeck && onCreateDeck(deck);
-    showDeckModal(componentId, deck, investigator);
+    showDeckModal(componentId, deck, colors, investigator);
   };
 
   getSlots() {

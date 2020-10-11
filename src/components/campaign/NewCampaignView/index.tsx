@@ -26,6 +26,7 @@ import {
   Deck,
   Slots,
   WeaknessSet,
+  INCOMPLETE_GUIDED_CAMPAIGNS,
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import CampaignSelector from './CampaignSelector';
@@ -658,6 +659,12 @@ class NewCampaignView extends React.Component<Props, State> {
               onValueChange={this._toggleGuided}
               value={guided}
             />
+          ) }
+          { hasGuide && guided && INCOMPLETE_GUIDED_CAMPAIGNS.has(campaignCode) && (
+            <View style={[styles.block, styles.underline, borderStyle]}>
+              <Text style={typography.text}>
+                { t`Note: this campaign is still being released and so the guide is incomplete (and may contain some mistakes).\nAs new scenarios are released, I will try to update the app promptly but there may be some slight delays.` }</Text>
+            </View>
           ) }
           { !this.isGuided() && (
             <PickerStyleButton

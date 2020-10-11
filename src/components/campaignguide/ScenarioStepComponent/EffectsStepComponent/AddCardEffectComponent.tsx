@@ -26,8 +26,8 @@ export default class AddCardEffectComponent extends React.Component<Props> {
         <CampaignGuideTextComponent
           text={
             card.advanced ?
-              t`${investigator.name} earns ${card.name} (Advanced)` :
-              t`${investigator.name} earns ${card.name}`}
+              t`${investigator.name} earns ${card.name} (Advanced).` :
+              t`${investigator.name} earns ${card.name}.`}
         />
       </SetupStepWrapper>
     ));

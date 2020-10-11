@@ -11,6 +11,7 @@ import UpgradeDecksInput from './UpgradeDecksInput';
 import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CheckListPrompt from '@components/campaignguide/prompts/CheckListPrompt';
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import UseSuppliesPrompt from '@components/campaignguide/prompts/UseSuppliesPrompt';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
@@ -62,6 +63,16 @@ export default class InputStepComponent extends React.Component<Props> {
             picker={step.input.style === 'picker'}
           />
         );
+      case 'checklist': {
+        return (
+          <CheckListPrompt
+            id={step.id}
+            text={step.text}
+            bulletType={step.bullet_type}
+            input={step.input}
+          />
+        );
+      }
       case 'counter':
         return (
           <NumberPrompt

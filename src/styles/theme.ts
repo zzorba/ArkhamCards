@@ -18,7 +18,6 @@ export interface SkillColor {
 }
 
 export interface ThemeColors {
-  ios12Background: string;
   fight: string;
   evade: string;
   L10: string;
@@ -54,6 +53,15 @@ export interface ThemeColors {
   health: string;
   sanity: string;
   disableOverlay: string;
+  scenarioGreen: string;
+  campaign:{
+    gold: string;
+    blue: string;
+    teal: string;
+    green: string;
+    purple: string;
+    red: string;
+  }
 }
 const light10 = '#D7D3C6';
 const light20 = '#F5F0E1';
@@ -64,7 +72,6 @@ const dark30 = '#24303C';
 const medium = '#9B9B9B';
 
 export const LIGHT_THEME: ThemeColors = {
-  ios12Background: '#FFFFFF',
   fight: '#8D181E',
   evade: '#0D6813',
   L10: light10,
@@ -119,7 +126,7 @@ export const LIGHT_THEME: ThemeColors = {
     },
     dual: {
       text: '#868600',
-      background: '#9a9a00',
+      background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
     },
@@ -155,10 +162,18 @@ export const LIGHT_THEME: ThemeColors = {
   },
   health: '#8D181E',
   sanity: '#165385',
+  scenarioGreen: '#2E5344',
+  campaign: {
+    gold: '#c99b3833',
+    blue: '#00408033',
+    teal: '#00666633',
+    purple: '#46088733',
+    green: '#325c0933',
+    red: '#96000333',
+  },
 };
 
 export const DARK_THEME: ThemeColors = {
-  ios12Background: '#000000',
   fight: '#EE4A53',
   evade: '#48B14F',
   D10: light10,
@@ -171,7 +186,7 @@ export const DARK_THEME: ThemeColors = {
   lightText: light10,
   darkText: light30,
   divider: dark10,
-  taboo: 'purple',
+  taboo: '#9869f5',
   M: medium,
   disableOverlay: '#24303C99',
   faction: {
@@ -212,8 +227,8 @@ export const DARK_THEME: ThemeColors = {
       lightBackground: '#292929',
     },
     dual: {
-      text: '#bfbf4d',
-      background: '#9a9a00',
+      text: '#E9D06C',
+      background: '#cfb13a',
       darkBackground: '#c0c000',
       lightBackground: '#f2f2cc',
     },
@@ -249,4 +264,13 @@ export const DARK_THEME: ThemeColors = {
   },
   health: '#AE4236',
   sanity: '#2C7FC0',
+  scenarioGreen: '#1fab73',
+  campaign: {
+    gold: '#755a2088',
+    blue: '#395c8088',
+    teal: '#2a666688',
+    purple: '#7c559e88',
+    green: '#33660088',
+    red: '#8f474988',
+  },
 };

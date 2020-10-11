@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { upperFirst } from 'lodash';
 
 import { CampaignLogEntry } from '@data/scenario/GuidedCampaignLog';
@@ -10,20 +10,31 @@ interface Props {
   text: string;
   crossedOut?: boolean;
   entry: CampaignLogEntry;
+  decoration?: 'circle';
 }
 
-export default function TextEntryComponent({ text, crossedOut, entry }: Props) {
+export default function TextEntryComponent({ text, crossedOut, entry, decoration }: Props) {
   const { typography } = useContext(StyleContext);
   const actualText = entry.type === 'count' ?
     text.replace('#X#', `${entry.count}`) :
     text;
   return (
-    <Text style={[
-      typography.large,
-      space.marginBottomS,
-      crossedOut ? typography.strike : {},
-    ]}>
-      { upperFirst(actualText) }
-    </Text>
+    <View style={styles.wrapper}>
+      <Text style={[
+        typography.large,
+        space.marginBottomS,
+        crossedOut ? typography.strike : undefined,
+        decoration === 'circle' ? typography.underline : undefined,
+        decoration === 'circle' ? typography.bold : undefined,
+      ]}>
+        { upperFirst(actualText) }
+      </Text>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    position: 'relative',
+  },
+});

@@ -28,6 +28,7 @@ import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import StyleContext from '@styles/StyleContext';
 
+const NATIVE_RULES = false;
 interface OwnProps {
   componentId: string;
 }
@@ -102,7 +103,11 @@ class SettingsView extends React.Component<Props> {
   }
 
   _rules = () => {
-    Linking.openURL('https://arkhamdb.com/rules');
+    if (NATIVE_RULES) {
+      this.navButtonPressed('Rules', t`Rules`);
+    } else {
+      Linking.openURL('https://arkhamdb.com/rules');
+    }
   };
 
   _doSyncCards = () => {

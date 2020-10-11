@@ -96,7 +96,7 @@ class DeckHistoryView extends React.Component<Props> {
           id: parsedDeck.deck.id,
           isPrivate: true,
         },
-        options: getDeckOptions({ title: parsedDeck.deck.name }, parsedDeck.investigator),
+        options: getDeckOptions(this.context.colors, { title: parsedDeck.deck.name }, parsedDeck.investigator),
       },
     });
   };

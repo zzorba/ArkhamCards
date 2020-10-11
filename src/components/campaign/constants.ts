@@ -1,4 +1,3 @@
-import { Platform, PlatformColor, DynamicColorIOS } from 'react-native';
 import { find, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -24,6 +23,7 @@ import {
 } from '@actions/types';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
+import { ThemeColors } from '@styles/theme';
 
 export function difficultyString(difficulty: CampaignDifficulty): string {
   switch (difficulty) {
@@ -250,13 +250,13 @@ export function campaignScenarios(cycleCode: CampaignCycleCode): Scenario[] {
       { name: t`Epilogue`, code: 'epligoue', pack_code: 'wgd', interlude: true },
     ];
     case TIC: return [
-      { name: t`The Grotto of Despair`, code: 'grotto_of_despair', pack_code: 'tic' },
-      { name: t`Puzzle pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
-      { name: t`The Disappearance of Elina Harper`, code: 'disapearance_of_elina_harper', pack_code: 'tic' },
+      { name: t`The Pit of Despair`, code: 'the_pit_of_despair', pack_code: 'tic' },
+      { name: t`Puzzle Pieces`, code: 'puzzle_pieces', pack_code: 'tic', interlude: true },
+      { name: t`The Vanishing of Elina Harper`, code: 'the_vanishing_of_elina_harper', pack_code: 'tic' },
       { name: t`The Syzygy`, code: 'syzygy', pack_code: 'tic', interlude: true },
       { name: t`In Too Deep`, code: 'in_too_deep', pack_code: 'itc' },
       { name: t`Devil Reef`, code: 'devil_reef', pack_code: 'def' },
-      { name: t`Under the Waves`, code: 'under_the_waves', pack_code: 'def', interlude: true },
+      { name: t`Beneath the Waves`, code: 'beneath_the_waves', pack_code: 'def', interlude: true },
       { name: t`Horror in High Gear`, code: 'horror_in_high_gear', pack_code: 'hhg' },
       { name: t`A Light in the Fog`, code: 'a_light_in_the_fog', pack_code: 'lif' },
       { name: t`The Lair of Dagon`, code: 'lair_of_dagon', pack_code: 'lod' },
@@ -292,26 +292,30 @@ export function campaignNames() {
   };
 }
 
-const BLUE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00408033', dark: '#00408088' }) : PlatformColor('?attr/campaignBlueColor')) as any as string;
-const TEAL = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#00666633', dark: '#00666688' }) : PlatformColor('?attr/campaignTealColor')) as any as string;
-const PURPLE = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#cc990033', dark: '#cc990088' }) : PlatformColor('?attr/campaignPurpleColor')) as any as string;
-const GREEN = (Platform.OS === 'ios' ? DynamicColorIOS({ light: '#33660033', dark: '#33660088' }) : PlatformColor('?attr/campaignGreenColor')) as any as string;
-export const CAMPAIGN_COLORS = {
-  core: BLUE,
-  rtnotz: BLUE,
-  dwl: TEAL,
-  rtdwl: TEAL,
-  ptc: PURPLE,
-  rtptc: PURPLE,
-  tfa: GREEN,
-  rttfa: GREEN,
-  tcu: BLUE,
-  tde: BLUE,
-  tdea: BLUE,
-  tdeb: BLUE,
-  tic: GREEN,
-  custom: BLUE,
-};
+export function campaignColor(cycle: CampaignCycleCode, colors: ThemeColors) {
+  switch (cycle) {
+    case 'core':
+    case 'rtnotz':
+    case 'tcu':
+    case 'custom':
+      return colors.campaign.blue;
+    case 'ptc':
+    case 'rtptc':
+      return colors.campaign.gold;
+    case 'tdea':
+    case 'tdeb':
+    case 'tde':
+      return colors.campaign.purple;
+    case 'tfa':
+    case 'rttfa':
+      return colors.campaign.green;
+    case 'tic':
+      return colors.campaign.red;
+    case 'dwl':
+    case 'rtdwl':
+      return colors.campaign.teal;
+  }
+}
 
 export function getCampaignLog(
   cycleCode: CampaignCycleCode
@@ -391,7 +395,7 @@ export function getCampaignLog(
       return {
         sections: [
           t`Campaign Notes`,
-          t`Recovered Memories`,
+          t`Memories Recovered`,
           t`Possible Suspects`,
           t`Possible Hideouts`,
         ],

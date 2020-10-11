@@ -5,8 +5,22 @@ import {
   isAfter,
   startOfDay,
 } from 'date-fns';
+import { de, es, ru, it, fr, ko, uk, pl } from 'date-fns/locale';
 import { t } from 'ttag';
 
+const LOCALE_MAP: {
+  [key: string]: undefined | { locale: any };
+} = {
+  en: undefined,
+  de: { locale: de },
+  es: { locale: es },
+  ru: { locale: ru },
+  it: { locale: it },
+  fr: { locale: fr },
+  ko: { locale: ko },
+  uk: { locale: uk },
+  pl: { locale: pl },
+}
 /**
  * Formats a timestamp into a string with year and month, e.g. "2017-2".
  */
@@ -52,7 +66,7 @@ export function toDateStringMonthName(timestamp: number) {
   return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 }
 
-export function toRelativeDateString(date: Date) {
+export function toRelativeDateString(date: Date, locale: string) {
   const nowDate = new Date();
   const startOfNowDate = startOfDay(nowDate);
   if (isAfter(date, startOfNowDate)) {
@@ -62,10 +76,10 @@ export function toRelativeDateString(date: Date) {
     return t`Updated yesterday`;
   }
   if (isAfter(date, addDays(startOfNowDate, -7))) {
-    const dayOfWeek = format(date, 'EEEE');
+    const dayOfWeek = format(date, 'EEEE', LOCALE_MAP[locale]);
     return t`Updated ${dayOfWeek}`;
   }
-  const dateString = format(date, 'MMMM d, yyyy');
+  const dateString = format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
   return t`Updated ${dateString}`;
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
 } from 'react-native';
 import { Node, OutputFunction, RenderState } from 'react-native-markdown-view';
@@ -13,15 +12,10 @@ export default function BlockquoteHtmlTagNode(
   state: RenderState
 ) {
   return (
-    <Text key={state.key} style={styles.blockquote}>
+    <Text key={state.key}>
       { '\n\n' }
       { output(node.children, { ...state, blockquote: true }) }
       { '\n\n' }
     </Text>
   );
 }
-
-const styles = StyleSheet.create({
-  blockquote: {
-  },
-});

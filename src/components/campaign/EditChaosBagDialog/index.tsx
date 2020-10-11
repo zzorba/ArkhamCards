@@ -25,6 +25,7 @@ import {
 } from '@app_constants';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 export interface EditChaosBagProps {
   chaosBag: ChaosBag;
@@ -41,6 +42,9 @@ interface State {
 type Props = EditChaosBagProps & NavigationProps & DimensionsProps;
 
 class EditChaosBagDialog extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   static options(): Options {
     return {
       topBar: {

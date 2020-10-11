@@ -70,7 +70,7 @@ export default function(fontScale: number, colors: TypographyColors, gameFont: s
     large: {
       fontFamily: 'Alegreya-Medium',
       fontSize: 20 * fontScale,
-      lineHeight: 20 * fontScale,
+      lineHeight: 24 * fontScale,
       color: colors.darkText,
     },
     header: {

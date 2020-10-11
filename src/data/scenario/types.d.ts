@@ -51,7 +51,7 @@ export type Effect =
   | UpgradeDecksEffect
   | FreeformCampaignLogEffect
   | GainSuppliesEffect;
-export type SpecialXp = "resupply_points" | "supply_points" | "unissued_xp";
+export type SpecialXp = "resupply_points" | "supply_points" | "unspect_xp";
 export type InvestigatorSelector =
   | "lead_investigator"
   | "all"
@@ -114,6 +114,7 @@ export type Input =
   | UseSuppliesInput
   | InvestigatorChoiceInput
   | ChooseOneInput
+  | ChecklistInput
   | CounterInput
   | InvestigatorCounterInput
   | InvestigatorChoiceWithSuppliesInput
@@ -130,6 +131,7 @@ export type BinaryChoiceCondition =
   | BinaryCardCondition
   | CampaignDataInvestigatorCondition
   | CampaignLogCondition
+  | CampaignLogCountCondition
   | CampaignDataChaosBagCondition
   | MultiCondition;
 export type LocationConnector = "purple_moon" | "blue_triangle" | "red_square" | "orange_heart" | "green_diamond";
@@ -173,7 +175,12 @@ export interface BranchStep {
 }
 export interface MultiCondition {
   type: "multi";
-  conditions: (CampaignLogCondition | CampaignDataChaosBagCondition | CampaignDataVersionCondition)[];
+  conditions: (
+    | CampaignLogCondition
+    | CampaignDataChaosBagCondition
+    | CampaignLogCountCondition
+    | CampaignDataVersionCondition
+  )[];
   count: number;
   options: BoolOption[];
 }
@@ -201,6 +208,7 @@ export interface EarnXpEffect {
   bonus?: number;
   input_scale?: number;
   special_xp?: SpecialXp;
+  transfer_special_xp?: SpecialXp;
 }
 export interface AddCardEffect {
   type: "add_card";
@@ -247,6 +255,7 @@ export interface CampaignLogEffect {
   id: string;
   text?: string;
   cross_out?: boolean;
+  decorate?: "circle";
   remove?: boolean;
 }
 export interface CampaignLogCardsEffect {
@@ -334,19 +343,13 @@ export interface NumOption {
   effects?: Effect[];
   steps?: string[];
 }
-export interface CampaignDataVersionCondition {
-  type: "campaign_data";
-  campaign_data: "version";
-  min_version: number;
-  options: BoolOption[];
-}
 export interface CampaignLogCountCondition {
   type: "campaign_log_count";
   section: string;
   id: string;
   options: NumOption[];
   max?: number;
-  defaultOption: DefaultOption;
+  defaultOption?: DefaultOption;
 }
 export interface Option {
   boolCondition?: boolean;
@@ -355,6 +358,12 @@ export interface Option {
   border?: boolean;
   effects?: Effect[];
   steps?: string[];
+}
+export interface CampaignDataVersionCondition {
+  type: "campaign_data";
+  campaign_data: "version";
+  min_version: number;
+  options: BoolOption[];
 }
 export interface MathCompareCondition {
   type: "math";
@@ -600,9 +609,15 @@ export interface BinaryConditionalChoice {
   text: string;
   description?: string;
   condition?: BinaryChoiceCondition;
+  repeatable?: boolean;
   border?: boolean;
   steps?: string[];
   effects?: Effect[];
+}
+export interface ChecklistInput {
+  type: "checklist";
+  choices: BinaryConditionalChoice[];
+  text: string;
 }
 export interface CounterInput {
   type: "counter";

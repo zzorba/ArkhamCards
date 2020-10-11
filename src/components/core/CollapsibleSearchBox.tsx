@@ -1,8 +1,9 @@
 import React from 'react';
 import { throttle } from 'lodash';
-import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View } from 'react-native';
+import { Animated, NativeSyntheticEvent, NativeScrollEvent, StyleSheet, View, Platform } from 'react-native';
 
 import SearchBox, { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
+import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { m, s, xs } from '@styles/space';
 
@@ -11,7 +12,7 @@ export interface SearchOptions {
   height: number;
 }
 
-interface Props {
+interface OwnProps {
   prompt: string;
   advancedOptions?: SearchOptions;
   searchTerm: string;
@@ -29,8 +30,9 @@ interface State {
 }
 
 const SCROLL_DISTANCE_BUFFER = 50;
+type Props = OwnProps & DimensionsProps;
 
-export default class CollapsibleSearchBox extends React.Component<Props, State> {
+class CollapsibleSearchBox extends React.Component<Props, State> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
@@ -147,7 +149,7 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
   };
 
   renderAdvancedOptions() {
-    const { advancedOptions } = this.props;
+    const { advancedOptions, width } = this.props;
     const { advancedToggleAnim } = this.state;
     const { colors } = this.context;
     if (!advancedOptions) {
@@ -162,11 +164,14 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
         styles.advancedOptions,
         {
           backgroundColor: colors.L20,
+          width,
           height: advancedOptions.height,
           transform: [{ translateY: controlHeight }],
         },
       ]}>
-        <View style={[styles.textSearchOptions, { height: advancedOptions.height }]}>
+        <View style={[styles.textSearchOptions, {
+          height: advancedOptions.height,
+        }]}>
           { advancedOptions.controls }
         </View>
       </Animated.View>
@@ -174,28 +179,51 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
   }
 
   render() {
-    const { advancedOptions, children, prompt, searchTerm, onSearchChange } = this.props;
-    const { advancedOpen, scrollAnim } = this.state;
+    const { advancedOptions, children, prompt, searchTerm, onSearchChange, width } = this.props;
+    const { advancedOpen, scrollAnim, advancedToggleAnim } = this.state;
     const { backgroundStyle, borderStyle } = this.context;
     const scrollY = advancedOpen ? 0 : scrollAnim.interpolate({
       inputRange: [0, 1],
       outputRange: [-SEARCH_BAR_HEIGHT, 0],
     });
+    const shadowOpacity = Animated.multiply(
+      advancedToggleAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0.25, 0],
+      }),
+      scrollAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+      }),
+    );
     return (
       <View style={[styles.wrapper, backgroundStyle]}>
         <View style={[styles.container, backgroundStyle, borderStyle]}>
           { children(this._handleScroll) }
         </View>
+        { advancedOpen && !!advancedOptions && Platform.OS === 'android' && (
+          <View style={[
+            styles.slider,
+            {
+              top: 0,
+              width,
+              height: SEARCH_BAR_HEIGHT + advancedOptions.height,
+              backgroundColor: 'transparent',
+            }
+          ]} />
+        ) }
         <Animated.View style={[
           styles.slider,
           backgroundStyle,
           {
+            width,
             transform: [{ translateY: scrollY }],
             height: SEARCH_BAR_HEIGHT,
+            zIndex: 2,
           },
         ]}>
           { this.renderAdvancedOptions() }
-          <View style={styles.fixed}>
+          <Animated.View style={[styles.fixed, { width, shadowOpacity }]}>
             <SearchBox
               onChangeText={onSearchChange}
               placeholder={prompt}
@@ -203,12 +231,14 @@ export default class CollapsibleSearchBox extends React.Component<Props, State> 
               toggleAdvanced={advancedOptions ? this._toggleAdvanced : undefined}
               value={searchTerm}
             />
-          </View>
+          </Animated.View>
         </Animated.View>
       </View>
     );
   }
 }
+
+export default withDimensions(CollapsibleSearchBox);
 
 
 const styles = StyleSheet.create({
@@ -221,7 +251,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   slider: {
-    width: '100%',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -230,7 +259,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '100%',
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 8,
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
   },
   wrapper: {
     position: 'relative',

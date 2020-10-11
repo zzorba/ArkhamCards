@@ -273,6 +273,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             <SkillIcon
               skill={skill.substring(6) as SkillCodeType}
               size={SKILL_ICON_SIZE}
+              weakness={card.subtype_code === 'weakness' || card.subtype_code === 'basicweakness'}
             />
           </View>))
         }
@@ -285,7 +286,9 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
     return (
-      <SlotIcon slot={card.real_slot} />
+      <View style={styles.iconRow} accessibilityLabel={t`Slot: ${card.slot}`}>
+        { map(card.real_slot.split("."), slot => <SlotIcon key={slot} slot={slot.trim()} /> ) }
+      </View>
     );
   }
 
@@ -410,6 +413,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             {
               backgroundColor: noHeader ? 'transparent' : colors.background,
             },
+            !isFirst ? {
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            } : undefined,
           ]}>
             <View style={styles.typeBlock}>
               { card.type_code !== 'investigator' && (
@@ -487,6 +494,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
   }
 
   renderImage(card: Card) {
+    const { componentId } = this.props;
     if (card.type_code === 'story' || card.type_code === 'scenario') {
       return null;
     }
@@ -494,11 +502,11 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       <View style={styles.column}>
         <View style={styles.playerImage}>
           { card.type_code === 'investigator' ? (
-            <InvestigatorImage card={card} />
+            <InvestigatorImage card={card} componentId={componentId} imageLink />
           ) : (
             <PlayerCardImage
               card={card}
-              componentId={this.props.componentId}
+              componentId={componentId}
             />
           ) }
         </View>
@@ -586,6 +594,10 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
             {
               backgroundColor: noHeader ? 'transparent' : colors.background,
             },
+            !isFirst || simple ? {
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+            } : undefined,
           ]}>
             <View style={[styles.typeBlock, backgroundStyle]}>
               <View style={styles.row}>
@@ -713,8 +725,6 @@ const styles = StyleSheet.create({
     paddingLeft: s,
     paddingRight: s + 1,
     paddingBottom: xs,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
   },
   gameTextBlock: {
     borderLeftWidth: 2,
@@ -740,5 +750,9 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingTop: 2,
     borderRadius: 8,
+  },
+  iconRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 });

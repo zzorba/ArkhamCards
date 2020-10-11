@@ -25,7 +25,7 @@ export default function InvestigatorStatLine({ investigator }: Props) {
 
   const skillIconBlockStyle = [
     styles.skillIconBlock,
-    { backgroundColor: TINY_PHONE ? 'transparent' : colors.L20 },
+    { backgroundColor: colors.L20 },
   ];
   return (
     <View style={styles.skillRow}>
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 4,
     paddingTop: 2,
-    paddingLeft: s,
-    paddingRight: s,
+    paddingLeft: TINY_PHONE ? xs : s,
+    paddingRight: TINY_PHONE ? xs : s,
     marginRight: xs,
   },
   skillRow: {

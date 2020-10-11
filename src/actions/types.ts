@@ -321,7 +321,11 @@ export const GUIDED_CAMPAIGNS = new Set([
   TDE,
   TDEA,
   TDEB,
-  // TIC,
+  TIC,
+]);
+
+export const INCOMPLETE_GUIDED_CAMPAIGNS = new Set([
+  TIC,
 ]);
 
 export interface CustomCampaignLog {

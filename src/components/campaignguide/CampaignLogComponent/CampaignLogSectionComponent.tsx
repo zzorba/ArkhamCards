@@ -28,6 +28,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
     const { campaignGuide, sectionId } = this.props;
     const logEntry = campaignGuide.logEntry(sectionId, entry.id);
     const crossedOut = section.crossedOut[entry.id];
+    const decoration = (section.decoration || {})[entry.id];
     switch (logEntry.type) {
       case 'supplies': {
         if (entry.type !== 'count') {
@@ -73,6 +74,7 @@ export default class CampaignLogSectionComponent extends React.Component<Props> 
             text={logEntry.text}
             crossedOut={crossedOut}
             entry={entry}
+            decoration={decoration}
           />
         );
       case 'section_count':

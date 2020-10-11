@@ -4,6 +4,7 @@ import AnimatedModal from 'react-native-modal';
 
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
+import colors from '@styles/colors';
 
 const IOS_MODAL_ANIMATION = {
   from: { opacity: 0, scale: 1.2 },
@@ -34,7 +35,7 @@ export default function DialogContainer({
   visible = false,
   ...otherProps
 }: Props) {
-  const { borderStyle } = useContext(StyleContext);
+  const { borderStyle, colors } = useContext(StyleContext);
   const titleChildrens: React.ReactNode[] = [];
   const descriptionChildrens: React.ReactNode[] = [];
   const buttonChildrens: React.ReactNode[] = [];
@@ -81,7 +82,7 @@ export default function DialogContainer({
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.container}
       >
-        <View style={[styles.content, contentStyle]}>
+        <View style={[styles.content, { backgroundColor: colors.background }, contentStyle]}>
           {Platform.OS === 'ios' && blurComponentIOS}
           {Platform.OS === 'ios' && !blurComponentIOS && (
             <View style={[styles.blur, blurStyle]} />
@@ -133,14 +134,12 @@ const styles = StyleSheet.create({
   content: Platform.select({
     ios: {
       width: 270,
-      backgroundColor: COLORS.modalBackground,
       flexDirection: 'column',
       borderRadius: 13,
       overflow: 'hidden',
     },
     default: {
       flexDirection: 'column',
-      backgroundColor: COLORS.modalBackground,
       borderRadius: 3,
       padding: 16,
       margin: 16,

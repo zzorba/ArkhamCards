@@ -25,7 +25,7 @@ export default function CardFooterInfo({ card }: Props) {
         ) }
       </View>
       <View style={styles.cardNumber}>
-        { !!card.encounter_name && !!card.encounter_code && !!card.encounter_position && (
+        { (!!card.encounter_name && !!card.encounter_code && !!card.encounter_position) && (
           <View style={[styles.row, styles.encounterRow]}>
             <Text style={typography.tiny}>
               { card.encounter_name }
@@ -59,6 +59,13 @@ export default function CardFooterInfo({ card }: Props) {
             { (card.position || 0) % 1000 }
           </Text>
         </View>
+        { !card.encounter_name && card.pack_name !== card.cycle_name && (
+          <View style={[styles.row, styles.encounterRow]}>
+            <Text style={typography.tiny}>
+              { card.pack_name }
+            </Text>
+          </View>
+        ) }
       </View>
     </View>
   );
