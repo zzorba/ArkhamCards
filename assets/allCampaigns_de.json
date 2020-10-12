@@ -21918,7 +21918,7 @@
           "text": "In manchen Szenarien gibt es zusätzliche Regeländerungen für das Erkunden. Diese Änderungen sind auf der Vorbereitungskarte des jeweiligen Szenarios vermerkt."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Beispiel: Agenda 1a —„Expedition in die Wildnis“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dahin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, an den sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist Im Kreis gegangen. Weil Im Kreis gegangen ein Ort ist, der nicht mit Expeditionslager verbunden ist, wird er neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Karte Unzureichende Ausrüstung, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Im Kreis gegangen, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich, eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie Dornenpfad, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Dornenpfad wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort aus dem Expeditionslager zum Dornenpfad.</i>"
     }
   ]
 }, "scenarios": [
@@ -30917,7 +30917,7 @@
   "campaign":
 {
   "id": "side",
-  "name": "Side Scenarios",
+  "name": "Nebengeschichte",
   "position": 0,
   "version": 1,
   "campaign_log": [],
@@ -30957,7 +30957,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -30998,7 +30998,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "+1, 0, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -4, -5, -6, -8, [skull], [skull], [cultist], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31065,7 +31065,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, 0, -1, -1, -1, -2, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31101,7 +31101,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "+1, 0, 0, 0, -1, -1, -3, -4, -5, -6, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31163,7 +31163,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31201,7 +31201,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31267,7 +31267,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, +1, 0, 0, -1, -1, -1, -2, -2, -3, -3, -4, -6, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31305,7 +31305,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -2, -3, -3, -4, -4, -5, -7, [skull], [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31371,7 +31371,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, 0, -1, -2, -2, -3, -4, -5, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31405,7 +31405,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "0, 0, 0, -1, -1, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31465,7 +31465,7 @@
             "choices": [
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, -1, -1, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31496,7 +31496,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "0, -1, -2, -3, -4, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31554,7 +31554,7 @@
             "choices": [
               {
                 "id": "easy",
-                "text": "Easy",
+                "text": "Einfach",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31588,7 +31588,7 @@
               },
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31622,7 +31622,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31656,7 +31656,7 @@
               },
               {
                 "id": "expert",
-                "text": "Expert",
+                "text": "Experte",
                 "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31715,7 +31715,7 @@
             "choices": [
               {
                 "id": "easy",
-                "text": "Easy",
+                "text": "Einfach",
                 "description": "+1, +1, 0, 0, 0, -1, -1, -1, -2, -2, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31749,7 +31749,7 @@
               },
               {
                 "id": "standard",
-                "text": "Standard",
+                "text": "Normal",
                 "description": "+1, 0, 0, -1, -1, -1, -2, -2, -3, -4, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31783,7 +31783,7 @@
               },
               {
                 "id": "hard",
-                "text": "Hard",
+                "text": "Schwer",
                 "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, -6, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -31817,7 +31817,7 @@
               },
               {
                 "id": "expert",
-                "text": "Expert",
+                "text": "Experte",
                 "description": "0, -1, -2, -3, -4, -5, -6, -7, -8, [skull], [skull], [cultist], [tablet], [elder_thing], [auto_fail], [elder_sign]",
                 "effects": [
                   {
@@ -36184,7 +36184,7 @@
           "text": "Sobald ein einseitig bedruckter Ort vom Erkundungsdeck ins Spiel gebracht wird, gibt dessen Hinweiswert an, wie viele Hinweise zu diesem Zeitpunkt auf dem Ort platziert werden."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River."
+      "example": "<i>Beispiel: Szene 1a – „Die Suche nach dem Tor“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dorthin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, zu dem sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist die Oase in der Wüste. Weil die Oase in der Wüste ein Ort ist, der nicht mit dem Expeditionslager verbunden ist, wird sie neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Verratskarte Sandsturm, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Oase in der Wüste, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie den Nil, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Der Nil wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort vom Expeditionslager zum Nil.</i>"
     },
     {
       "id": "story_cards",
@@ -36566,7 +36566,7 @@
           "text": "Sobald ein einseitig bedruckter Ort vom Erkundungsdeck ins Spiel gebracht wird, gibt dessen Hinweiswert an, wie viele Hinweise zu diesem Zeitpunkt auf dem Ort platziert werden."
         }
       ],
-      "example": "<i>Example: Act 1a—“Search for the Gate” has the following ability: “[action]: <b>Explore</b>. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Desert Oasis. Because Desert Oasis is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Sandstorm treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Desert Oasis that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Nile River, which is connected to the Expedition Camp. Her exploration is successful. Nile River is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Nile River.</i>"
+      "example": "<i>Beispiel: Szene 1a – „Die Suche nach dem Tor“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dorthin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, zu dem sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist die Oase in der Wüste. Weil die Oase in der Wüste ein Ort ist, der nicht mit dem Expeditionslager verbunden ist, wird sie neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Verratskarte Sandsturm, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Oase in der Wüste, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie den Nil, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Der Nil wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort vom Expeditionslager zum Nil.</i>"
     },
     {
       "id": "strength_of_the_abyss",
@@ -44655,7 +44655,7 @@
           "text": "Eine Verborgen-Karte zählt bei der Bestimmung der Handkarten eines Spielers mit, kann aber nicht von der Hand abgelegt werden, außer auf die auf der Karte beschriebene Art. Sobald Verborgen-Karten abgelegt werden, werden sie auf den entsprechenden Ablagestapel gelegt."
         }
       ],
-      "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+      "example": "Für ein optimales Spielerlebnis sollten die Spieler ihre Charaktere „verkörpern“ und keine Informationen über Verborgen-Karten auf ihrer Hand mit anderen Spielern teilen."
     }
   ]
 }, "scenarios": [
@@ -50389,7 +50389,7 @@
           "text": "Eine Verborgen-Karte zählt bei der Bestimmung der Handkarten eines Spielers mit, kann aber nicht von der Hand abgelegt werden, außer auf die auf der Karte beschriebene Art. Sobald Verborgen-Karten abgelegt werden, werden sie auf den entsprechenden Ablagestapel gelegt."
         }
       ],
-      "example": "For the best experience, players are encouraged to stay “in character” and not share information about hidden cards in their hand."
+      "example": "Für ein optimales Spielerlebnis sollten die Spieler ihre Charaktere „verkörpern“ und keine Informationen über Verborgen-Karten auf ihrer Hand mit anderen Spielern teilen."
     }
   ]
 }, "scenarios": [
@@ -54763,7 +54763,7 @@
           "text": "Wenn ein einseitig bedruckter Ort vom Erkundungsdeck ins Spiel gebracht wird, gibt dessen Hinweiswert an, wie viele Hinweise zu diesem Zeitpunkt auf dem Ort platziert werden."
         }
       ],
-      "example": "<i>Example: Agenda 1a—“Expedition into the Wild” has the following ability: “[action]: Explore. Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+      "example": "<i>Beispiel: Agenda 1a —„Expedition in die Wildnis“ hat folgende Fähigkeit: „[action]: <b>Erkunden</b>. Ziehe die oberste Karte des Erkundungsdecks. Falls es ein verbundener Ort ist, bringe ihn ins Spiel und bewege dich dahin.“ Ursula Downs ist im Expeditionslager und möchte einen neuen Ort finden, an den sie reisen kann. Sie gibt ihre erste Aktion aus, um zu erkunden. Sie zieht die oberste Karte des Erkundungsdecks. Die Karte, die sie zieht, ist Im Kreis gegangen. Weil Im Kreis gegangen ein Ort ist, der nicht mit Expeditionslager verbunden ist, wird er neben dem Erkundungsdeck platziert und Ursula zieht die nächste Karte des Erkundungsdecks. Jetzt zieht sie die Karte Unzureichende Ausrüstung, die sie normal abhandelt und auf den Begegnungs-Ablagestapel legt. Ihr Erkunden ist nicht erfolgreich und sie muss die Karte Im Kreis gegangen, die sie zuvor gezogen hat, zurück ins Erkundungsdeck mischen. Ursula entscheidet sich, eine zweite Aktion auszugeben, um erneut zu erkunden. Jetzt zieht sie Dornenpfad, der mit dem Expeditionslager verbunden ist. Ihr Erkunden ist erfolgreich. Dornenpfad wird mit Hinweisen in Höhe seines Hinweiswertes ins Spiel gebracht und Ursula bewegt sich sofort aus dem Expeditionslager zum Dornenpfad.</i>"
     },
     {
       "id": "difficulty_choice",
@@ -63227,7 +63227,7 @@
           "text": "Manche Karteneffekte können es einem Ermittler erlauben, die Kontrolle über Schlüssel auf andere Arten zu übernehmen."
         }
       ],
-      "example": "When an investigator takes control of a key, they flip it faceup (if it is facedown) and place it on their investigator card. If an investigator who controls one or more keys is eliminated, place each of their keys on their locations. As an [action] ability, an investigator may give any number of their keys to another investigator at the same location.\n<b>Keys have no inherent game effect.</b> However, some card effects may change depending on which keys an investigator controls. Additionally, keys may sometimes be required in order to progress during a scenario."
+      "example": "Sobald ein Ermittler die Kontrolle über einen Schlüssel übernimmt, wird der Marker auf die Vorderseite umgedreht (falls er verdeckt ist) und auf seiner Ermittlerkarte platziert. Falls ein Ermittler, der 1\u001coder mehr Schlüssel kontrolliert, aus dem Spiel ausscheidet, wird jeder seiner Schlüssel auf seinem Ort platziert. Als [action]-Fähigkeit darf ein Ermittler eine beliebige Anzahl seiner Schlüssel einem anderen Ermittler am selben Ort geben. \n<b>Schlüssel haben keinen eigenständigen Spieleffekt.</b> Manche Karteneffekte können sich aber ändern, je nachdem, welche Schlüssel ein Ermittler kontrolliert. Manchmal sind Schlüssel auch für den Fortschritt in einem Szenario nötig."
     },
     {
       "id": "flood_token_rule",
