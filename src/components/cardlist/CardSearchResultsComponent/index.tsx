@@ -53,7 +53,6 @@ interface Props {
 }
 
 interface State {
-  headerVisible: boolean;
   searchText: boolean;
   searchFlavor: boolean;
   searchBack: boolean;
@@ -113,33 +112,12 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
     super(props);
 
     this.state = {
-      headerVisible: true,
       searchText: false,
       searchFlavor: false,
       searchBack: false,
     };
 
     this._debouncedUpdateSeacrh = debounce(50, this._updateTermSearch);
-  }
-
-  _showHeader = () => {
-    if (!this.state.headerVisible) {
-      this.setState({
-        headerVisible: true,
-      });
-    }
-  };
-
-  _hideHeader = () => {
-    const {
-      headerVisible,
-      searchTerm,
-    } = this.state;
-    if (headerVisible && !searchTerm) {
-      this.setState({
-        headerVisible: false,
-      });
-    }
   }
 
   _toggleSearchText = () => {

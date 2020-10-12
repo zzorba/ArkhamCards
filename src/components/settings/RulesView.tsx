@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
 import { ListRenderItemInfo, FlatList, View, Platform } from 'react-native';
 import { t } from 'ttag';
@@ -6,7 +6,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Brackets } from 'typeorm/browser';
 
 import Rule from '@data/Rule';
-import StyleContext from '@styles/StyleContext';
 import CardFlavorTextComponent from '@components/card/CardFlavorTextComponent';
 import CardTextComponent from '@components/card/CardTextComponent';
 import { s, m } from '@styles/space';
@@ -108,7 +107,6 @@ export default function RulesView({ componentId }: Props) {
     endReached: false,
   });
   const { db } = useContext(DatabaseContext);
-  const { colors } = useContext(StyleContext);
   const [page, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
     if (!rules.endReached) {
       db.getRules(
@@ -132,10 +130,10 @@ export default function RulesView({ componentId }: Props) {
     }
   }, []);
   const renderItem = ({ item, index }: ListRenderItemInfo<Rule>) => <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
-  const data = searchTerm ? searchResults.rules : flatMap(
+  const data = useMemo(() => searchTerm ? searchResults.rules : flatMap(
     sortBy(keys(rules.rules), parseInt),
     idx => rules.rules[idx]
-  );
+  ), [searchTerm, searchResults, rules]);
   return (
     <CollapsibleSearchBox
       prompt={t`Search rules`}
@@ -148,14 +146,12 @@ export default function RulesView({ componentId }: Props) {
         data={data}
         contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
         contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-
         renderItem={renderItem}
-        onEndReachedThreshold={1}
+        onEndReachedThreshold={2}
         onEndReached={fetchMore}
-        updateCellsBatchingPeriod={0}
+        updateCellsBatchingPeriod={50}
         initialNumToRender={30}
         maxToRenderPerBatch={30}
-        pagingEnabled={!rules.endReached}
         windowSize={30}
       />
     ) }
