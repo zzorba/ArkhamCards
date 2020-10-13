@@ -45345,7 +45345,7 @@
               {
                 "type": "campaign_data",
                 "setting": "skip_scenario",
-                "scenario": "epilogue"
+                "scenario": "tde_epilogue"
               }
             ]
           },
@@ -45400,7 +45400,7 @@
               {
                 "type": "campaign_data",
                 "setting": "skip_scenario",
-                "scenario": "epilogue"
+                "scenario": "tde_epilogue"
               }
             ]
           },
@@ -45439,7 +45439,7 @@
               {
                 "type": "campaign_data",
                 "setting": "skip_scenario",
-                "scenario": "epilogue"
+                "scenario": "tde_epilogue"
               }
             ]
           },
@@ -49269,7 +49269,7 @@
               {
                 "type": "campaign_data",
                 "setting": "skip_scenario",
-                "scenario": "epilogue"
+                "scenario": "tde_epilogue"
               }
             ]
           },
@@ -49308,7 +49308,7 @@
               {
                 "type": "campaign_data",
                 "setting": "skip_scenario",
-                "scenario": "epilogue"
+                "scenario": "tde_epilogue"
               }
             ]
           },
@@ -49363,7 +49363,7 @@
         {
           "type": "campaign_data",
           "setting": "skip_scenario",
-          "scenario": "epilogue"
+          "scenario": "tde_epilogue"
         },
         {
           "type": "campaign_data",
