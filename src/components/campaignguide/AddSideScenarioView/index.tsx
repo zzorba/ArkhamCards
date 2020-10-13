@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking, Platform, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DialogComponent from '@lib/react-native-dialog';
 import { find, flatMap } from 'lodash';
@@ -17,6 +17,7 @@ import { ScenarioId } from '@data/scenario';
 import { Scenario } from '@data/scenario/types';
 import space from '@styles/space';
 import SetupStepWrapper from '../SetupStepWrapper';
+import DownloadParallelCardsButton from './DownloadParallelCardsButton';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import StyleContext from '@styles/StyleContext';
 
@@ -158,10 +159,6 @@ class AddSideScenarioView extends React.Component<Props, State> {
   /* eslint-disable @typescript-eslint/no-empty-function */
   _onTabChange = () => {};
 
-  _challengeScenario = () => {
-    Linking.openURL('https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/');
-  }
-
   render() {
     const {
       componentId,
@@ -223,10 +220,7 @@ class AddSideScenarioView extends React.Component<Props, State> {
                     <SetupStepWrapper bulletType="none">
                       <CampaignGuideTextComponent text={t`Challenge scenarios are special print-and-play scenarios that utilize existing products in the <i>Arkham Horror: The Card Game</i> collection, along with additional print-and-play cards, to create new content. These scenarios are designed with certain prerequisites in mind, in order to craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight Games under the \"Parallel Investigators\" section.`} />
                     </SetupStepWrapper>
-                    <BasicButton
-                      onPress={this._challengeScenario}
-                      title={t`Download printable cards`}
-                    />
+                    <DownloadParallelCardsButton />
                   </View>
                   { flatMap(campaignGuide.sideScenarios(), scenario => {
                     if (scenario.side_scenario_type !== 'challenge') {
