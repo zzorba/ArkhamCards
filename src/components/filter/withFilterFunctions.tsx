@@ -38,14 +38,13 @@ export interface FilterFunctionProps {
 }
 
 interface Options {
-  title: string;
   clearTraits?: string[];
 }
 
 export default function withFilterFunctions<P>(
   WrappedComponent: React.ComponentType<P & FilterProps>,
+  getTitle: () => string,
   {
-    title,
     clearTraits,
   }: Options
 ): React.ComponentType<NavigationProps & FilterFunctionProps & P> {
@@ -182,7 +181,7 @@ export default function withFilterFunctions<P>(
               accessibilityLabel: t`Clear`,
             }] : [],
           title: {
-            text: title,
+            text: getTitle(),
             color: COLORS.M,
           },
           subtitle: {

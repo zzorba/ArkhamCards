@@ -574,7 +574,8 @@ function mapStateToProps(state: AppState): ReduxProps {
 export default connect(mapStateToProps)(
   withFilterFunctions(
     CardFilterView,
-    { title: t`Filters` }
+    () => t`Filters`,
+    {}
   )
 );
 

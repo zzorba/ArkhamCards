@@ -93,8 +93,8 @@ class CardLocationFilterView extends React.Component<FilterProps> {
 
 export default withFilterFunctions(
   CardLocationFilterView,
+  () => t`Location Filters`,
   {
-    title: t`Location Filters`,
     clearTraits: [
       'shroud',
       'shroudEnabled',
