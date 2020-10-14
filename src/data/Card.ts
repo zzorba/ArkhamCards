@@ -826,7 +826,7 @@ export default class Card {
       altArtInvestigator,
     };
     if (result.type_code === 'story' && result.linked_card && result.linked_card.type_code === 'location') {
-      console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
+      // console.log(`Reversing ${result.name} to ${result.linked_card.name}`);
       return {
         ...result.linked_card,
         back_linked: null,
