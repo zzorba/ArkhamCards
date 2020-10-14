@@ -212,6 +212,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             { t`Hide Decks From Other Campaigns` }
           </Text>
           <ArkhamSwitch
+            useGestureHandler
             value={hideOtherCampaignDecks}
             onValueChange={this._toggleHideOtherCampaignInvestigators}
           />
@@ -223,6 +224,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             { t`Hide Killed and Insane Investigators` }
           </Text>
           <ArkhamSwitch
+            useGestureHandler
             value={hideEliminatedInvestigators}
             onValueChange={this._toggleHideEliminatedInvestigators}
           />
@@ -234,6 +236,7 @@ class MyDecksSelectorDialog extends React.Component<Props, State> {
             { t`Only Show Previous Campaign Members` }
           </Text>
           <ArkhamSwitch
+            useGestureHandler
             value={onlyShowPreviousCampaignMembers}
             onValueChange={this._toggleOnlyShowPreviousCampaignMembers}
           />

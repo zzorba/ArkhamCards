@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacityProps, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
+import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 
 interface Props extends TouchableOpacityProps {
+  useGestureHandler?: boolean;
   value: boolean;
   onValueChange: (checked: boolean) => void;
   accessibilityLabel?: string;
@@ -19,10 +20,11 @@ export default class ArkhamSwitch extends React.Component<Props> {
     onValueChange(!value);
   }
   render() {
-    const { value, onValueChange, accessibilityLabel, disabled, ...props } = this.props;
+    const { value, onValueChange, accessibilityLabel, disabled, useGestureHandler, ...props } = this.props;
     const { colors } = this.context;
+    const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
     return (
-      <TouchableOpacity
+      <TouchableComponent
         onPress={this._onPress}
         accessibilityRole="switch"
         accessibilityLabel={accessibilityLabel}
@@ -37,7 +39,7 @@ export default class ArkhamSwitch extends React.Component<Props> {
             </View>
           )}
         </View>
-      </TouchableOpacity>
+      </TouchableComponent>
     );
   }
 }

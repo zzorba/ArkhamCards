@@ -7,6 +7,7 @@ import BasicButton from '@components/core/BasicButton';
 import { getLangPreference } from '@reducers';
 
 const URLS: { [lang: string]: string | undefined } = {
+  de: 'https://asmodee.de/Arkham-Horror-LCG-Print_Play',
   fr: 'http://www.fantasyflightgames.fr/jeux/collection/horreur_a_arkham_lcg',
   es: 'http://www.fantasyflightgames.es/juegos/coleccion/arkham_horror_el_juego_de_cartas',
 };

@@ -1,8 +1,7 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState, useReducer, Reducer, ReducerWithoutAction } from 'react';
 import { flatMap, keys, map, sortBy } from 'lodash';
-import { ListRenderItemInfo, FlatList, View, Platform } from 'react-native';
+import { TouchableOpacity, ListRenderItemInfo, FlatList, View, Platform, StyleSheet } from 'react-native';
 import { t } from 'ttag';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Brackets } from 'typeorm/browser';
 
 import Rule from '@data/Rule';
@@ -153,9 +152,17 @@ export default function RulesView({ componentId }: Props) {
         initialNumToRender={30}
         maxToRenderPerBatch={30}
         windowSize={30}
+        ListHeaderComponent={(Platform.OS === 'android') ? (
+          <View style={styles.searchBarPadding} />
+        ) : undefined}
       />
     ) }
     </CollapsibleSearchBox>
-
   );
 }
+
+const styles = StyleSheet.create({
+  searchBarPadding: {
+    height: SEARCH_BAR_HEIGHT,
+  },
+});

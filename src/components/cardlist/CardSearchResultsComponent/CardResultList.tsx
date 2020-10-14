@@ -477,14 +477,30 @@ class CardResultList extends React.Component<Props, State> {
     this.setState({
       loadingMessage: CardResultList.randomLoadingMessage(),
     });
-    const cards: Card[] = query ? await db.getCards(
-      combineQueries(
-        query,
-        [
-          ...(filterQuery ? [filterQuery] : []),
-        ],
-        'and'
-      ),
+
+    const combinedQuery = query && combineQueries(
+      query,
+      [
+        ...(filterQuery ? [filterQuery] : []),
+      ],
+      'and'
+    );
+    /*
+    const start = new Date();
+    const in_collection_counts = combinedQuery ? await db.getCardGroupCount('c.sort_by_type', combineQueries(
+      combinedQuery,
+      [where('c.in_collection = true')],
+      'and'
+    ), tabooSetId) : [];
+    const spoiler_counts = combinedQuery ? await db.getCardGroupCount('c.sort_by_type', combineQueries(
+      combinedQuery,
+      [where('c.encounter_code is null OR c.non_spoiler = true')],
+      'and'
+    ), tabooSetId) : [];
+    console.log({ in_collection_counts, spoiler_counts, delta: (new Date().getTime() - start.getTime())});
+    */
+    const cards: Card[] = combinedQuery ? await db.getCards(
+      combinedQuery,
       tabooSetId,
       this.getSort()
     ) : [];

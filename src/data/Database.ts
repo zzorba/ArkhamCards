@@ -180,6 +180,15 @@ export default class Database {
     return await cardsQuery.getCount();
   }
 
+  async getCardGroupCount(
+    groupBy: string,
+    query?: Brackets,
+    tabooSetId?: number
+  ) {
+    const cardsQuery = await this.applyCardsQuery(query, tabooSetId, undefined, groupBy);
+    return await cardsQuery.select(`${groupBy}, count(*) as count`).getRawMany();
+  }
+
   async setCardSpoiler(where: Brackets, value: boolean): Promise<void> {
     const query = (await this.cards())
       .createQueryBuilder()
@@ -201,7 +210,8 @@ export default class Database {
   private async applyCardsQuery(
     query?: Brackets,
     tabooSetId?: number,
-    sort?: QuerySort[]
+    sort?: QuerySort[],
+    groupBy?: string
   ): Promise<SelectQueryBuilder<Card>> {
     let cardsQuery = await this.cardsQuery();
     cardsQuery.where(tabooSetQuery(tabooSetId));
@@ -214,6 +224,9 @@ export default class Database {
       forEach(restSorts, ({ s, direction }) => {
         cardsQuery = cardsQuery.addOrderBy(s, direction);
       });
+    }
+    if (groupBy) {
+      cardsQuery = cardsQuery.groupBy(groupBy)
     }
     return cardsQuery;
   }

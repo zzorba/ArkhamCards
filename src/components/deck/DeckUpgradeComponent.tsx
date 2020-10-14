@@ -179,13 +179,13 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       saving,
       error,
     } = this.state;
-    const { colors, typography } = this.context;
+    const { colors, typography, backgroundStyle } = this.context;
     if (!deck) {
       return null;
     }
     if (saving) {
       return (
-        <View style={[styles.container, styles.saving]}>
+        <View style={[styles.container, styles.saving, backgroundStyle]}>
           <Text style={typography.text}>
             { t`Saving...` }
           </Text>

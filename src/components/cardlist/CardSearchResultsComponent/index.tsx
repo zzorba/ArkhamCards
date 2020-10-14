@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useContext, useState } from 'react';
 import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
@@ -24,6 +24,7 @@ import Card from '@data/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { getStoredState } from 'redux-persist';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -67,234 +68,264 @@ function searchOptionsHeight(fontScale: number) {
 
 type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
 type FilterQueryProps = Pick<Props, 'filters'>
-export default class CardSearchResultsComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
 
-  static filterBuilder = new FilterBuilder('filters');
+const FILTER_BUILDER = new FilterBuilder('filters');
+function getFilterQuery({ filters }: FilterQueryProps): Brackets | undefined {
+  return filters && FILTER_BUILDER.filterToQuery(filters);
+}
 
-  static filterQuery({
-    filters,
-  }: FilterQueryProps): Brackets | undefined {
-    return filters && CardSearchResultsComponent.filterBuilder.filterToQuery(filters);
-  }
-
-  static query({
-    baseQuery,
-    mythosToggle,
-    selectedSort,
-    mythosMode,
-  }: QueryProps): Brackets {
-    const queryParts: Brackets[] = [];
-    if (mythosToggle) {
-      if (mythosMode) {
-        queryParts.push(MYTHOS_CARDS_QUERY);
-      } else {
-        queryParts.push(PLAYER_CARDS_QUERY);
-      }
+function getQuery({
+  baseQuery,
+  mythosToggle,
+  selectedSort,
+  mythosMode,
+}: QueryProps): Brackets {
+  const queryParts: Brackets[] = [];
+  if (mythosToggle) {
+    if (mythosMode) {
+      queryParts.push(MYTHOS_CARDS_QUERY);
+    } else {
+      queryParts.push(PLAYER_CARDS_QUERY);
     }
-    if (baseQuery) {
-      queryParts.push(baseQuery);
-    }
-    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
-    }
-    return combineQueries(
-      BASIC_QUERY,
-      queryParts,
-      'and'
-    );
   }
-
-  _debouncedUpdateSeacrh: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      searchText: false,
-      searchFlavor: false,
-      searchBack: false,
-    };
-
-    this._debouncedUpdateSeacrh = debounce(50, this._updateTermSearch);
+  if (baseQuery) {
+    queryParts.push(baseQuery);
   }
+  if (selectedSort === SORT_BY_ENCOUNTER_SET) {
+    queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
+  }
+  return combineQueries(
+    BASIC_QUERY,
+    queryParts,
+    'and'
+  );
+}
 
-  _toggleSearchText = () => {
-    const searchText = !this.state.searchText;
-    this.setState({
-      searchText,
-    });
-  };
+interface SearchState {
+  searchCode?: number;
+  searchQuery?: RegExp;
+}
 
-  _toggleSearchFlavor = () => {
-    const searchFlavor = !this.state.searchFlavor;
-    this.setState({
-      searchFlavor,
-    });
-  };
+function SearchOptions({
+  searchText,
+  searchFlavor,
+  searchBack,
+  toggleSearchText,
+  toggleSearchFlavor,
+  toggleSearchBack,
+}: {
+  searchText: boolean;
+  searchFlavor: boolean;
+  searchBack: boolean;
+  toggleSearchText: () => void;
+  toggleSearchFlavor: () => void;
+  toggleSearchBack: () => void;
+}) {
+  const { colors, fontScale, typography } = useContext(StyleContext);
+  return (
+    <>
+      <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
+        <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
+          { t`Search in:` }
+        </Text>
+      </View>
+      <View style={styles.column}>
+        <View style={styles.row}>
+          <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+            { t`Game Text` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={searchText}
+            onValueChange={toggleSearchText}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+            { t`Flavor Text` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={searchFlavor}
+            onValueChange={toggleSearchFlavor}
+          />
+        </View>
+        <View style={styles.row}>
+          <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
+            { t`Card Backs` }
+          </Text>
+          <ArkhamSwitch
+            useGestureHandler
+            value={searchBack}
+            onValueChange={toggleSearchBack}
+          />
+        </View>
+      </View>
+    </>
+  );
+}
 
-  _toggleSearchBack = () => {
-    const searchBack = !this.state.searchBack;
-    this.setState({
-      searchBack,
-    });
-  };
+function ExpandModesButtons({
+  hasFilters,
+  mythosToggle,
+  toggleMythosMode,
+  clearSearchFilters,
+  mythosMode,
+}: {
+  hasFilters: boolean;
+  mythosToggle?: boolean;
+  toggleMythosMode: () => void;
+  clearSearchFilters: () => void;
+  mythosMode?: boolean;
+}) {
+  if (!mythosToggle && !hasFilters) {
+    return null;
+  }
+  return (
+    <View>
+      { !!mythosToggle && (
+        <ArkhamButton
+          icon="search"
+          onPress={toggleMythosMode}
+          title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
+        />
+      ) }
+      { !!hasFilters && (
+        <ArkhamButton
+          icon="search"
+          onPress={clearSearchFilters}
+          title={t`Clear search filters`}
+        />
+      ) }
+    </View>
+  );
+}
 
-  _searchUpdated = (text: string) => {
-    this.setState({
-      searchTerm: text,
-    }, () => {
-      this._debouncedUpdateSeacrh();
-    });
-  };
+function ExpandSearchButtons({
+  hasFilters,
+  mythosToggle,
+  toggleMythosMode,
+  clearSearchFilters,
+  mythosMode,
+  searchTerm,
+  searchText,
+  searchBack,
+  clearSearchTerm,
+  toggleSearchText,
+  toggleSearchBack,
+}: {
+  hasFilters: boolean;
+  mythosToggle?: boolean;
+  toggleMythosMode: () => void;
+  clearSearchFilters: () => void;
+  searchText: boolean;
+  searchTerm?: string;
+  searchBack: boolean;
+  mythosMode?: boolean;
+  clearSearchTerm: () => void;
+  toggleSearchText: () => void;
+  toggleSearchBack: () => void;
+}) {
+  if (!searchTerm) {
+    return (
+      <ExpandModesButtons
+        hasFilters={hasFilters}
+        mythosToggle={mythosToggle}
+        toggleMythosMode={toggleMythosMode}
+        clearSearchFilters={clearSearchFilters}
+        mythosMode={mythosMode}
+      />
+    )
+  }
+  return (
+    <View>
+      { !!searchTerm && (
+        <ArkhamButton
+          icon="search"
+          onPress={clearSearchTerm}
+          title={t`Clear "${searchTerm}" search`}
+        />
+      ) }
+      { !searchText && (
+        <ArkhamButton
+          icon="search"
+          onPress={toggleSearchText}
+          title={t`Search game text`}
+        />
+      ) }
+      { !searchBack && (
+        <ArkhamButton
+          icon="search"
+          onPress={toggleSearchBack}
+          title={t`Search card backs`}
+        />
+      ) }
+      <ExpandModesButtons
+        hasFilters={hasFilters}
+        mythosToggle={mythosToggle}
+        toggleMythosMode={toggleMythosMode}
+        clearSearchFilters={clearSearchFilters}
+        mythosMode={mythosMode}
+      />
+    </View>
+  );
+}
 
-  _clearSearchTerm = () => {
-    this._searchUpdated('');
-  };
-
-  _updateTermSearch = async() => {
-    const {
-      searchTerm,
-    } = this.state;
+export default function({
+  componentId,
+  baseQuery,
+  mythosToggle,
+  showNonCollection,
+  selectedSort,
+  filters,
+  mythosMode,
+  visible,
+  toggleMythosMode,
+  clearSearchFilters,
+  tabooSetOverride,
+  investigator,
+  originalDeckSlots,
+  deckCardCounts,
+  onDeckCountChange,
+  limits,
+  renderHeader,
+  renderFooter,
+  storyOnly,
+  initialSort,
+}: Props) {
+  const { fontScale } = useContext(StyleContext);
+  const [searchText, setSearchText] = useState(false);
+  const [searchFlavor, setSearchFlavor] = useState(false);
+  const [searchBack, setSearchBack] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
+  const [searchState, setSearchState] = useState<SearchState>({});
+  const toggleSearchText = useCallback(() => setSearchText(!searchText), [searchText]);
+  const toggleSearchFlavor = useCallback(() => setSearchFlavor(!searchFlavor), [searchFlavor]);
+  const toggleSearchBack = useCallback(() => setSearchBack(!searchBack), [searchBack]);
+  const clearSearchTerm = useCallback(() => setSearchTerm(''), []);
+  const updateSearch = useCallback((searchTerm: string) => {
     if (!searchTerm) {
-      this.setState({
-        searchQuery: undefined,
-        searchCode: undefined,
-      });
+      setSearchState({});
       return;
     }
     const searchCode = DIGIT_REGEX.test(searchTerm) ? parseInt(searchTerm, 10) : undefined;
     const term = searchTerm.replace(/“|”/g, '"').replace(/‘|’/, '\'');
-    this.setState({
+    setSearchState({
       searchQuery: new RegExp(`.*${RegexEscape(term)}.*`, 'i'),
       searchCode,
     });
-  };
+  }, []);
+  const debouncedUpdateSearch = debounce(50, updateSearch);
+  const searchUpdated = useCallback((text: string) => {
+    setSearchTerm(text);
+    debouncedUpdateSearch(text);
+  }, []);
 
-  renderSearchOptions() {
+  const filterCardText = useCallback((card: Card): boolean => {
     const {
-      searchText,
-      searchFlavor,
-      searchBack,
-    } = this.state;
-    const { colors, fontScale, typography } = this.context;
-    return (
-      <>
-        <View style={[styles.column, { alignItems: 'center', flex: 1 }]}>
-          <Text style={[typography.large, { color: colors.M, fontSize: 20 * fontScale, fontFamily: 'Alegreya-Bold' }]}>
-            { t`Search in:` }
-          </Text>
-        </View>
-        <View style={styles.column}>
-          <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
-              { t`Game Text` }
-            </Text>
-            <ArkhamSwitch
-              value={searchText}
-              onValueChange={this._toggleSearchText}
-            />
-          </View>
-          <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
-              { t`Flavor Text` }
-            </Text>
-            <ArkhamSwitch
-              value={searchFlavor}
-              onValueChange={this._toggleSearchFlavor}
-            />
-          </View>
-          <View style={styles.row}>
-            <Text style={[typography.searchLabel, styles.searchOption, typography.dark]}>
-              { t`Card Backs` }
-            </Text>
-            <ArkhamSwitch
-              value={searchBack}
-              onValueChange={this._toggleSearchBack}
-            />
-          </View>
-        </View>
-      </>
-    );
-  }
-
-  renderExpandModesButtons(hasFilters: boolean) {
-    const {
-      mythosToggle,
-      toggleMythosMode,
-      clearSearchFilters,
-      mythosMode,
-    } = this.props;
-    if (!mythosToggle && !hasFilters) {
-      return null;
-    }
-    return (
-      <View>
-        { !!mythosToggle && (
-          <ArkhamButton
-            icon="search"
-            onPress={toggleMythosMode}
-            title={mythosMode ? t`Search player cards` : t`Search encounter cards`}
-          />
-        ) }
-        { !!hasFilters && (
-          <ArkhamButton
-            icon="search"
-            onPress={clearSearchFilters}
-            title={t`Clear search filters`}
-          />
-        ) }
-      </View>
-    );
-  }
-
-  renderExpandSearchButtons(hasFilters: boolean) {
-    const {
-      searchTerm,
-      searchText,
-      searchBack,
-    } = this.state;
-    if (!searchTerm) {
-      return this.renderExpandModesButtons(hasFilters);
-    }
-    return (
-      <View>
-        { !!searchTerm && (
-          <ArkhamButton
-            icon="search"
-            onPress={this._clearSearchTerm}
-            title={t`Clear "${searchTerm}" search`}
-          />
-        ) }
-        { !searchText && (
-          <ArkhamButton
-            icon="search"
-            onPress={this._toggleSearchText}
-            title={t`Search game text`}
-          />
-        ) }
-        { !searchBack && (
-          <ArkhamButton
-            icon="search"
-            onPress={this._toggleSearchBack}
-            title={t`Search card backs`}
-          />
-        ) }
-        { this.renderExpandModesButtons(hasFilters) }
-      </View>
-    );
-  }
-
-  _filterCardText = (card: Card): boolean => {
-    const {
-      searchText,
-      searchFlavor,
-      searchBack,
-      searchTerm,
       searchQuery,
       searchCode,
-    } = this.state;
+    } = searchState;
     if (searchCode && card.position === searchCode) {
       return true;
     }
@@ -347,92 +378,95 @@ export default class CardSearchResultsComponent extends React.Component<Props, S
       }
     }
     return false;
-  };
+  }, [searchState]);
 
-  render() {
-    const {
-      componentId,
-      originalDeckSlots,
-      deckCardCounts,
-      onDeckCountChange,
-      limits,
-      renderHeader,
-      renderFooter,
-      showNonCollection,
-      selectedSort,
-      visible,
-      tabooSetOverride,
-      investigator,
-      storyOnly,
-      initialSort,
-      mythosToggle,
-      baseQuery,
-      mythosMode,
-      filters,
-    } = this.props;
-    const { fontScale } = this.context;
-    const { searchTerm } = this.state;
-    return (
-      <CollapsibleSearchBox
-        prompt={t`Search for a card`}
-        advancedOptions={{
-          controls: this.renderSearchOptions(),
-          height: searchOptionsHeight(fontScale),
-        }}
-        searchTerm={searchTerm || ''}
-        onSearchChange={this._searchUpdated}
-      >
-        { (handleScroll) => (
-          <QueryProvider<QueryProps, Brackets>
-            baseQuery={baseQuery}
-            mythosToggle={mythosToggle}
-            selectedSort={selectedSort}
-            mythosMode={mythosToggle && mythosMode}
-            getQuery={CardSearchResultsComponent.query}
-          >
-            { query => (
-              <QueryProvider<FilterQueryProps, Brackets | undefined>
-                filters={filters}
-                getQuery={CardSearchResultsComponent.filterQuery}
-              >
-                { filterQuery => (
-                  <>
-                    <CardResultList
-                      componentId={componentId}
-                      tabooSetOverride={tabooSetOverride}
-                      query={query}
-                      filterQuery={filterQuery || undefined}
-                      filterCard={this._filterCardText}
-                      searchTerm={searchTerm}
-                      sort={selectedSort}
-                      investigator={investigator}
-                      originalDeckSlots={originalDeckSlots}
-                      deckCardCounts={deckCardCounts}
-                      onDeckCountChange={onDeckCountChange}
-                      limits={limits}
-                      handleScroll={handleScroll}
-                      expandSearchControls={this.renderExpandSearchButtons(!!filterQuery)}
-                      visible={visible}
-                      renderHeader={renderHeader}
-                      renderFooter={renderFooter}
-                      showNonCollection={showNonCollection}
-                      storyOnly={storyOnly}
-                      mythosToggle={mythosToggle}
-                      mythosMode={mythosToggle && mythosMode}
-                      initialSort={initialSort}
-                    />
-                    { !!renderFooter && <View style={styles.footer}>
+  const controls = (
+    <SearchOptions
+      searchText={searchText}
+      searchFlavor={searchFlavor}
+      searchBack={searchBack}
+      toggleSearchText={toggleSearchText}
+      toggleSearchFlavor={toggleSearchFlavor}
+      toggleSearchBack={toggleSearchBack}
+    />
+  );
+
+  return (
+    <CollapsibleSearchBox
+      prompt={t`Search for a card`}
+      advancedOptions={{
+        controls,
+        height: searchOptionsHeight(fontScale),
+      }}
+      searchTerm={searchTerm || ''}
+      onSearchChange={searchUpdated}
+    >
+      { (handleScroll) => (
+        <QueryProvider<QueryProps, Brackets>
+          baseQuery={baseQuery}
+          mythosToggle={mythosToggle}
+          selectedSort={selectedSort}
+          mythosMode={mythosToggle && mythosMode}
+          getQuery={getQuery}
+        >
+          { query => (
+            <QueryProvider<FilterQueryProps, Brackets | undefined>
+              filters={filters}
+              getQuery={getFilterQuery}
+            >
+              { filterQuery => (
+                <>
+                  <CardResultList
+                    componentId={componentId}
+                    tabooSetOverride={tabooSetOverride}
+                    query={query}
+                    filterQuery={filterQuery || undefined}
+                    filterCard={filterCardText}
+                    searchTerm={searchTerm}
+                    sort={selectedSort}
+                    investigator={investigator}
+                    originalDeckSlots={originalDeckSlots}
+                    deckCardCounts={deckCardCounts}
+                    onDeckCountChange={onDeckCountChange}
+                    limits={limits}
+                    handleScroll={handleScroll}
+                    expandSearchControls={(
+                      <ExpandSearchButtons
+                        hasFilters={!!filterQuery}
+                        mythosToggle={mythosToggle}
+                        toggleMythosMode={toggleMythosMode}
+                        clearSearchFilters={clearSearchFilters}
+                        mythosMode={mythosMode}
+                        searchTerm={searchTerm}
+                        searchText={searchText}
+                        searchBack={searchBack}
+                        clearSearchTerm={clearSearchTerm}
+                        toggleSearchText={toggleSearchText}
+                        toggleSearchBack={toggleSearchBack}
+                      />
+                    )}
+                    visible={visible}
+                    renderHeader={renderHeader}
+                    renderFooter={renderFooter}
+                    showNonCollection={showNonCollection}
+                    storyOnly={storyOnly}
+                    mythosToggle={mythosToggle}
+                    mythosMode={mythosToggle && mythosMode}
+                    initialSort={initialSort}
+                  />
+                  { !!renderFooter && (
+                    <View style={styles.footer}>
                       { renderFooter() }
-                    </View> }
-                  </>
-                ) }
-              </QueryProvider>
-            ) }
-          </QueryProvider>
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+                    </View>
+                  ) }
+                </>
+              ) }
+            </QueryProvider>
+          ) }
+        </QueryProvider>
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
 
 const styles = StyleSheet.create({
