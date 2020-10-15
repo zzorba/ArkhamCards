@@ -78,7 +78,7 @@ msgstr "Mythe"
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:374
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:377
 #: src/data/Card.ts:573
 #: src/data/Card.ts:657
 msgid "Investigator"
@@ -205,7 +205,7 @@ msgstr "Deuxième Boite de base"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:129
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:265
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:604
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:620
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:292
 #: src/components/deck/EditSpecialDeckCardsView.tsx:189
 #: src/components/settings/CollectionEditView.tsx:38
@@ -333,7 +333,7 @@ msgstr "Tirez une carte à partir de la collection"
 #: src/components/campaign/SealTokenDialog.tsx:40
 #: src/components/campaign/UpgradeDecksView/index.tsx:65
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:65
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:145
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:146
 #: src/components/campaignguide/CampaignGuideView.tsx:102
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:201
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:114
@@ -419,7 +419,7 @@ msgstr "Se connecter à ArkhamDB"
 
 #: src/app/App.ts:260
 #: src/app/App.ts:322
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:369
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:372
 #: src/components/campaignguide/CampaignGuideView.tsx:124
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:151
 #: src/components/decklist/MyDecksView.tsx:46
@@ -439,7 +439,7 @@ msgstr "Masquer les decks d’ArkhamDB"
 #: src/components/deck/NewDeckView.tsx:35
 #: src/components/deck/NewDeckView.tsx:103
 #: src/components/decklist/MyDecksView.tsx:52
-#: src/components/decklist/MyDecksView.tsx:140
+#: src/components/decklist/MyDecksView.tsx:141
 msgid "New Deck"
 msgstr "Nouveau Deck"
 
@@ -736,7 +736,7 @@ msgid "Horror"
 msgstr "Horreur"
 
 #: src/components/filter/CardEnemyFilterView.tsx:28
-#: src/components/filter/CardEnemyFilterView.tsx:232
+#: src/components/filter/CardEnemyFilterView.tsx:231
 msgid "Enemy Filters"
 msgstr "Filtres d'ennemis"
 
@@ -756,7 +756,7 @@ msgid "Haunted"
 msgstr "Hanté"
 
 #: src/components/filter/CardLocationFilterView.tsx:23
-#: src/components/filter/CardLocationFilterView.tsx:97
+#: src/components/filter/CardLocationFilterView.tsx:96
 msgid "Location Filters"
 msgstr "Filtres de localisation"
 
@@ -774,8 +774,8 @@ msgstr "Sélection de packs"
 #: src/components/core/ChooserButton.tsx:46
 #: src/components/core/ChooserButton.tsx:49
 #: src/components/deck/DeckChecklistView/index.tsx:146
-#: src/components/filter/withFilterFunctions.tsx:179
-#: src/components/filter/withFilterFunctions.tsx:182
+#: src/components/filter/withFilterFunctions.tsx:178
+#: src/components/filter/withFilterFunctions.tsx:181
 msgid "Clear"
 msgstr "Effacer"
 
@@ -955,7 +955,7 @@ msgid "Count"
 msgstr "Nombre"
 
 #: src/components/campaign/AddCampaignNoteSectionDialog.tsx:147
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:149
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:150
 msgid "Add"
 msgstr "Ajouter"
 
@@ -1018,11 +1018,11 @@ msgstr "Dément"
 msgid "Hide Decks From Other Campaigns"
 msgstr "Masquer les decks d’autres campagnes"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:223
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:224
 msgid "Hide Killed and Insane Investigators"
 msgstr "Masquer les investigateurs tués et déments"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:234
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:236
 msgid "Only Show Previous Campaign Members"
 msgstr "Afficher uniquement les membres de la campagne précédente"
 
@@ -1793,6 +1793,7 @@ msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "Aucun investigateur correspondant pour \"${searchTerm}\"."
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:357
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:219
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:161
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:165
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:169
@@ -1931,7 +1932,7 @@ msgstr "Modifier"
 msgid "SELECT DECK VERSION TO COPY"
 msgstr "SÉLECTIONNER LA VERSION DU DECK À COPIER"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:135
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:136
 #: src/components/deck/CopyDeckDialog/index.tsx:286
 msgid "Required"
 msgstr "Requis"
@@ -1957,61 +1958,72 @@ msgid "Encounter Set"
 msgstr "Ensemble de rencontre"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:63
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:114
 msgid "Investigating for clues"
 msgstr "Enquêter sur les indices"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:64
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:115
 msgid "Cursing at the tentacle token"
 msgstr "Maudit avec le jeton de tentacule"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:65
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:116
 msgid "Drawing a mythos card with surge"
 msgstr "Tirer une carte de Mythe avec Renfort"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:66
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:117
 msgid "Placing doom on the agenda"
 msgstr "Placer une Fatalité sur l'Agenda"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:67
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:118
 msgid "Reticulating spines"
 msgstr "Reticulating spines"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:68
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:119
 msgid "Trying to make sense of the Time Warp FAQ"
 msgstr "Essayer de donner un sens à la FAQ Time Warp"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:69
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:120
 msgid "Taking three damage and three horror"
 msgstr "Subbissez Trois dégâts et trois horreurs"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:675
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:691
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Pas de cartes correspondantes pour \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:676
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:692
 msgid "No matching cards"
 msgstr "Pas de cartes correspondantes"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:347
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:199
 msgid "Cost: None"
 msgstr "Coût: aucun"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:349
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:204
 #, javascript-format
 msgid "Cost: ${ card.cost }"
 msgstr "Coût: ${card.cost}"
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:353
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:359
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:214
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:228
 msgid "All Cards"
 msgstr "Toutes les cartes"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:399
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:396
 msgid "Search for a card"
 msgstr "Rechercher une carte"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:289
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:246
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
 msgstr "Effacer \"${searchTerm}\" recherche"
@@ -2100,6 +2112,7 @@ msgid "Doesn't comply with the Investigator requirements."
 msgstr "Ne respecte pas les exigences de construction de l’Investigateur."
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:70
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:121
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Jusqu’à 5, j’espère que je ne tire pas le tentacule"
 
@@ -2497,11 +2510,11 @@ msgstr ""
 msgid "Level ${ level }"
 msgstr "Niveau ${level}"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:769
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:785
 msgid "In Deck"
 msgstr "dans le Deck"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:779
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:795
 msgid "All Eligible Cards"
 msgstr "Toutes les cartes admissibles"
 
@@ -2520,7 +2533,7 @@ msgstr ""
 msgid "Pack Filters"
 msgstr "Filtres par Pack"
 
-#: src/components/filter/withFilterFunctions.tsx:189
+#: src/components/filter/withFilterFunctions.tsx:188
 #, javascript-format
 msgid "${ count } Card"
 msgid_plural "${ count } Cards"
@@ -2745,19 +2758,19 @@ msgstr "Cartes liées (${ count })"
 msgid "New Name"
 msgstr "NOUVEAU NOM"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:214
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:135
 msgid "Game Text"
 msgstr ""
 "Jeu\n"
 "Texte"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:223
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:145
 msgid "Flavor Text"
 msgstr ""
 "Saveur\n"
 "Texte"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:232
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:155
 msgid "Card Backs"
 msgstr ""
 "Carte\n"
@@ -3928,19 +3941,19 @@ msgstr ""
 msgid "Experience cost: ${ xpCost }"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:122
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:123
 msgid "Custom side scenario"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:131
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:132
 msgid "Scenario Name"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:139
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:140
 msgid "Experience Cost"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:211
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:208
 msgid "Custom scenario"
 msgstr ""
 
@@ -4059,15 +4072,15 @@ msgid ""
 "for each other investigator"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:180
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:177
 msgid "Side"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:219
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:216
 msgid "Challenge"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:224
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:221
 msgid ""
 "Challenge scenarios are special print-and-play scenarios that utilize "
 "existing products in the <i>Arkham Horror: The Card Game</i> collection, "
@@ -4078,7 +4091,7 @@ msgid ""
 "section."
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:228
+#: src/components/campaignguide/AddSideScenarioView/DownloadParallelCardsButton.tsx:26
 msgid "Download printable cards"
 msgstr ""
 
@@ -4201,7 +4214,7 @@ msgstr ""
 msgid "Record Trauma"
 msgstr ""
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:186
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:183
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
 "an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
@@ -4523,42 +4536,42 @@ msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
 msgstr[0] "Afficher ${section.nonCollectionCount} investigateur hors collection"
 msgstr[1] "Afficher ${section.nonCollectionCount} investigateurs hors collection"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:615
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:631
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection card"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection cards"
 msgstr[0] "Afficher ${section.nonCollectionCount} carte hors collection"
 msgstr[1] "Afficher ${section.nonCollectionCount} cartes hors collection"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:722
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:742
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:738
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:758
 msgid "Edit spoiler settings"
 msgstr "Modifier les paramètres du spoiler"
 
-#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:728
+#: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:744
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } spoiler"
 msgid_plural "Show ${ spoilerCardsCount } spoilers"
 msgstr[0] "Afficher ${spoilerCardsCount} spoiler"
 msgstr[1] "Afficher ${spoilerCardsCount} spoilers"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:260
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:190
 msgid "Search player cards"
 msgstr "Rechercher des cartes de joueur"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:260
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:190
 msgid "Search encounter cards"
 msgstr "Rechercher des cartes de rencontre"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:267
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:197
 msgid "Clear search filters"
 msgstr "Effacer les filtres de recherche"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:296
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:253
 msgid "Search game text"
 msgstr "Rechercher le texte du jeu"
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:303
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:260
 msgid "Search card backs"
 msgstr "Recherche de Dos de carte"
 
@@ -4663,7 +4676,7 @@ msgstr ""
 msgid "Search options"
 msgstr ""
 
-#: src/components/cardlist/CardSearchResultsComponent/index.tsx:208
+#: src/components/cardlist/CardSearchResultsComponent/index.tsx:129
 msgid "Search in:"
 msgstr ""
 
@@ -4926,7 +4939,7 @@ msgstr ""
 msgid "Slot: ${ card.slot }"
 msgstr ""
 
-#: src/components/settings/RulesView.tsx:141
+#: src/components/settings/RulesView.tsx:138
 msgid "Search rules"
 msgstr ""
 
