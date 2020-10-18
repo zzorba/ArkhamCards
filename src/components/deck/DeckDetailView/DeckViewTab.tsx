@@ -363,9 +363,10 @@ export default class DeckViewTab extends React.Component<Props, State> {
     });
     showCardSwipe(
       componentId,
-      cards,
+      map(cards, card => card.code),
       index,
       colors,
+      cards,
       false,
       tabooSetId,
       slots,

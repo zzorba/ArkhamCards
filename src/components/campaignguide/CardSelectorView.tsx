@@ -14,7 +14,7 @@ import { NavigationProps } from '@components/nav/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import Card from '@data/Card';
-import { combineQueries, where } from '@data/query';
+import { combineQueries, MYTHOS_CARDS_QUERY, where } from '@data/query';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -119,7 +119,7 @@ class CardSelectorView extends React.Component<Props, State> {
 
   static storyCardsQuery({ query }: QueryProps): Brackets {
     return combineQueries(
-      where('c.encounter_code is not null'),
+      MYTHOS_CARDS_QUERY,
       query ? [query] : [],
       'and'
     );

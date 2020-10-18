@@ -7,8 +7,9 @@ import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
+export type ArkhamButtonIcon = 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign';
 interface Props {
-  icon: 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign';
+  icon: ArkhamButtonIcon;
   title: string;
   onPress: () => void;
 }

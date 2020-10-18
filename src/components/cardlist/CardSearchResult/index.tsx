@@ -85,7 +85,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       return this.renderFactionIcon(card.linked_card, size);
     }
 
-    if (card.spoiler && card.encounter_code) {
+    if (card.mythos_card && card.encounter_code) {
       return (
         <EncounterIcon
           encounter_code={card.encounter_code}

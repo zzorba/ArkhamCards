@@ -122,9 +122,6 @@ export function setInCollection(code: string, value: boolean, db: Database): Thu
       code,
       value,
     });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardInCollection(where('pack_code = :code', { code }), value);
-    });
   };
 }
 
@@ -134,9 +131,6 @@ export function setCycleInCollection(cycle_code: string, value: boolean, db: Dat
       type: SET_IN_COLLECTION,
       cycle_code,
       value,
-    });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardInCollection(where('cycle_code = :cycle_code', { cycle_code }), value);
     });
   };
 }
@@ -148,9 +142,6 @@ export function setPackSpoiler(code: string, value: boolean, db: Database): Thun
       code,
       value,
     });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardSpoiler(where('encounter_code is not null AND pack_code = :code', { code }), value);
-    });
   };
 }
 
@@ -160,9 +151,6 @@ export function setCyclePackSpoiler(cycle_code: string, value: boolean, db: Data
       type: SET_PACK_SPOILER,
       cycle_code,
       value,
-    });
-    InteractionManager.runAfterInteractions(() => {
-      db.setCardSpoiler(where('encounter_code is not null AND cycle_code = :cycle_code', { cycle_code }), value);
     });
   };
 }

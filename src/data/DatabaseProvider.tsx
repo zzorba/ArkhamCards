@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, InteractionManager } from 'react-native';
+import { Alert, InteractionManager, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
 import Database from './Database';
@@ -24,9 +24,11 @@ class DatabaseProvider extends React.Component<Props> {
     if (theDatabase === null) {
       theDatabase = new Database(props.schemaVersion);
       InteractionManager.runAfterInteractions(() => {
-        if (theDatabase) {
-          theDatabase.reloadPlayerCards();
-        }
+        setTimeout(() => {
+          if (theDatabase) {
+            theDatabase.reloadPlayerCards();
+          }
+        }, Platform.OS === 'android' ? 500 : 0);
       });
     }
   }

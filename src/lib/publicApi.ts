@@ -140,8 +140,6 @@ export const syncRules = async function(
 export const syncCards = async function(
   db: Database,
   packs: Pack[],
-  in_collection: { [key: string]: boolean | undefined },
-  spoilers: { [key: string]: boolean | undefined },
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
@@ -207,12 +205,6 @@ export const syncCards = async function(
       try {
         const card = Card.fromJson(cardJson, packsByCode, cycleNames, lang || 'en');
         if (card) {
-          if (in_collection[card.pack_code]) {
-            card.in_collection = true;
-          }
-          if (card.encounter_code && !spoilers[card.pack_code]) {
-            card.spoiler = true;
-          }
           cardsToInsert.push(card);
         }
       } catch (e) {

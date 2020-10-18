@@ -28,7 +28,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Deck.EditSpecial': return require('@components/deck/EditSpecialDeckCardsView').default;
     case 'Deck.NewOptions': return require('@components/deck/NewDeckOptionsDialog').default;
     case 'Card': return require('@components/card/CardDetailView').default;
-    case 'Card.Swipe': return require('@components/card/CardDetailSwipeView').default;
+    case 'Card.Swipe': return require('@components/card/DbCardDetailSwipeView').default;
     case 'Card.Faq': return require('@components/card/CardFaqView').default;
     case 'Card.Taboo': return require('@components/card/CardTabooView').default;
     case 'Card.Image': return require('@components/card/CardImageView').default;

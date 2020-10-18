@@ -389,7 +389,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       return null;
     }
 
-    if (!backFirst && card.spoiler && !this.state.showBack) {
+    if (!backFirst && card.mythos_card && !this.state.showBack) {
       return (
         <ArkhamButton
           title={t`Show back`}
@@ -563,7 +563,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
     } = this.props;
     const { colors, backgroundStyle } = this.context;
     if ((card.hidden || backFirst) &&
-      ((card.hidden && card.type_code !== 'investigator') || card.spoiler) &&
+      ((card.hidden && card.type_code !== 'investigator') || card.mythos_card) &&
       !this.state.showBack &&
       card.code !== RANDOM_BASIC_WEAKNESS
     ) {
@@ -650,7 +650,7 @@ export default class TwoSidedCardComponent extends React.Component<Props, State>
       card.type_code === 'agenda';
     const backFirst = !linked &&
       (!!card.double_sided || (card.linked_card && !card.linked_card.hidden)) &&
-      !(isHorizontal || !card.spoiler) &&
+      !(isHorizontal || !card.mythos_card) &&
       card.type_code !== 'scenario';
 
     const sideA = backFirst && this.renderCardBack(card, backFirst, isHorizontal, flavorFirst, !notFirst, 'sideA');
