@@ -16,8 +16,9 @@ import { s, xs } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
+  code: string;
   count: number;
-  countChanged: (count: number) => void;
+  countChanged: (code: string, count: number) => void;
   limit: number;
   showZeroCount?: boolean;
   forceBig?: boolean;
@@ -36,7 +37,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
   static contextType = StyleContext;
   context!: StyleContextType;
 
-  _throttledCountChange!: (count: number) => void;
+  _throttledCountChange!: (code: string, count: number) => void;
   constructor(props: Props) {
     super(props);
 
@@ -67,12 +68,13 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
 
   _increment = () => {
     const {
+      code,
       limit,
     } = this.props;
     this.setState(state => {
       const count = Math.min((state.count || 0) + 1, limit);
       if (count !== state.count) {
-        this._throttledCountChange(count);
+        this._throttledCountChange(code, count);
       }
       return {
         count,
@@ -81,10 +83,11 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
   };
 
   _decrement = () => {
+    const { code } = this.props;
     this.setState(state => {
       const count = Math.max((state.count || 0) - 1, 0);
       if (count !== state.count) {
-        this._throttledCountChange(count);
+        this._throttledCountChange(code, count);
       }
       return {
         count,
@@ -93,6 +96,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
   };
 
   _selectCount = (count: number) => {
+    const { code } = this.props;
     const { fontScale } = this.context;
     this.setState({
       count: count,
@@ -101,7 +105,7 @@ export default class CardQuantityComponent extends React.PureComponent<Props, St
         if (toggleButtonMode(fontScale)) {
           this._toggle();
         }
-        this._throttledCountChange(count);
+        this._throttledCountChange(code, count);
       }, 0);
     });
   }
