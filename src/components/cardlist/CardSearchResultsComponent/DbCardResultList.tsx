@@ -437,11 +437,11 @@ export default function({
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const [feed, fullFeed, refreshing, fetchMore, showSpoilerCards] = sectionFeed(componentId, query, sort, tabooSetId, filterQuery);
   const dispatch = useDispatch();
+  useEffect(showHeader, [query, filterQuery, tabooSetId, sort]);
   // showHeader when somethings drastic happens.
   useEffect(() => {
-    showHeader();
     dispatch(addDbFilterSet(componentId, db, query, sort, tabooSetId));
-  }, [query, tabooSetId, sort]);
+  }, [query, tabooSetId]);
 
   const cardOnPressId = useCallback((id: string, card: Card) => {
     cardPressed && cardPressed(card);
