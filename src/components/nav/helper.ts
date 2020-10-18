@@ -1,15 +1,16 @@
 import React from 'react';
 import { ActionSheetIOS, Platform, Linking } from 'react-native';
-import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle, NavigationButtonPressedEvent } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
 import { t } from 'ttag';
+import { map } from 'lodash';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
 import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
 import { DeckDetailProps } from '@components/deck/DeckDetailView';
 import { CardDetailProps } from '@components/card/CardDetailView';
-import { CardDetailSwipeProps } from '@components/card/CardDetailSwipeView';
+import { CardDetailSwipeProps } from '@components/card/DbCardDetailSwipeView';
 import { Deck, ParsedDeck, Slots } from '@actions/types';
 import Card from '@data/Card';
 import { iconsMap } from '@app/NavIcons';
@@ -201,9 +202,10 @@ export function showDrawSimulator(
 
 export function showCardSwipe(
   componentId: string,
-  cards: Card[],
+  codes: string[],
   index: number,
   colors: ThemeColors,
+  initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
   deckCardCounts?: Slots,
@@ -221,13 +223,15 @@ export function showCardSwipe(
         },
       },
     };
+  console.log(`Swiping to ${index}`);
   Navigation.push<CardDetailSwipeProps>(componentId, {
     component: {
       name: 'Card.Swipe',
       passProps: {
-        cards,
+        cardCodes: codes,
+        initialCards,
         initialIndex: index,
-        showSpoilers: !!showSpoilers,
+        showAllSpoilers: !!showSpoilers,
         tabooSetId,
         deckCardCounts,
         onDeckCountChange,
@@ -328,7 +332,7 @@ export async function openUrl(
   const rule_match = url.match(rule_regex);
   if (rule_match) {
     const rule_id = rule_match[3];
-    const rules = await db.getRules(0, 1, where('r.id = :rule_id', { rule_id }));
+    const rules = await db.getRulesPaged(0, 1, where('r.id = :rule_id', { rule_id }));
     if (rules.length) {
       Navigation.push(componentId, {
         component: {

@@ -1,19 +1,25 @@
-import { findIndex, forEach, pull } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult } from 'typeorm/browser';
+import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition } from 'typeorm/browser';
 
-import Card from './Card';
+import Card, { PartialCard } from './Card';
 import EncounterSet from './EncounterSet';
 import FaqEntry from './FaqEntry';
 import TabooSet from './TabooSet';
 import Rule from './Rule';
 import { QuerySort } from './types';
-import { tabooSetQuery } from './query';
+import { tabooSetQuery, where } from './query';
 import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
+import { SortType } from '@actions/types';
 
 type DatabaseListener = () => void;
 
+export interface SectionCount {
+  id: string | number | null;
+  count: number;
+}
+
 export default class Database {
-  static SCHEMA_VERSION: number = 17;
+  static SCHEMA_VERSION: number = 22;
   connectionP: Promise<Connection>;
 
   state?: PlayerCardState;
@@ -28,7 +34,7 @@ export default class Database {
       location: 'default',
       logging: [
         'error',
-        //'query',
+        // 'query',
         'schema',
       ],
       dropSchema: recreate,
@@ -43,6 +49,9 @@ export default class Database {
         Rule,
       ],
     });
+    this.connectionP.then(connection => {
+//      connection.query('EXPLAIN QUERY PLAN SELECT "c"."sort_by_type", count(*) as count FROM "card" "c" LEFT JOIN "card" "linked_card" ON "linked_card"."id"="c"."linked_card_id" WHERE ("c"."taboo_set_id" is null OR "c"."taboo_set_id" = 2) AND ((("c"."browse_visible") AND ("c"."deck_limit" >= 0)) AND ("c"."encounter_code" is not null AND ("c"."non_spoiler" is null or "c"."non_spoiler" = false))) GROUP BY "c"."sort_by_type"').then(console.log)
+    })
   }
 
   addListener(change: () => void) {
@@ -139,7 +148,7 @@ export default class Database {
     return await query.execute();
   }
 
-  async getRules(
+  async getRulesPaged(
     page: number,
     pageSize: number,
     query?: Brackets
@@ -151,7 +160,65 @@ export default class Database {
     return await rulesQuery
       .orderBy('r.order', 'ASC')
       .skip(pageSize * page)
-      .take(pageSize).getMany();
+      .take(pageSize)
+      .getMany();
+  }
+
+  async getDistinctFields(
+    field: string,
+    query?: Brackets,
+    tabooSetId?: number,
+    processValue?: (value: string) => string[],
+  ): Promise<string[]> {
+    const cards = await this.cards();
+    let cardsQuery = cards.createQueryBuilder('c')
+      .select(`distinct c.${field} as value, linked_card.${field} as linked_value`)
+      .leftJoin('c.linked_card', 'linked_card');
+    cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
+    if (query) {
+      cardsQuery = cardsQuery.andWhere(query);
+    }
+    const results = await cardsQuery.getRawMany();
+    return sortedUniq(sortBy(flatMap(results, (result) => {
+      const values: string[] = [];
+      if (result.value !== null) {
+        values.push(result.value);
+      }
+      if (result.linked_value !== null) {
+        values.push(result.linked_value)
+      }
+      if (processValue) {
+        return flatMap(values, processValue);
+      }
+      return values;
+    }), x => x));
+  }
+
+  async getPartialCards(
+    query?: Brackets,
+    tabooSetId?: number,
+    sort?: SortType,
+  ): Promise<PartialCard[]> {
+    const cards = await this.cards();
+    let cardsQuery = cards.createQueryBuilder('c')
+      .select(PartialCard.selectStatement(sort))
+      .leftJoin('c.linked_card', 'linked_card');
+    cardsQuery = cardsQuery.where(tabooSetQuery(tabooSetId));
+    if (query) {
+      cardsQuery = cardsQuery.andWhere(query);
+    }
+    const sortQuery = Card.querySort(sort);
+    if (sortQuery.length) {
+      const orderBy: OrderByCondition = {};
+      forEach(sortQuery, ({ s, direction }) => {
+        orderBy[s] = direction;
+      });
+      cardsQuery.orderBy(orderBy)
+    }
+    const time = new Date();
+    const result = await cardsQuery.getRawMany();
+    console.log(`Elapsed: ${new Date().getTime() - time.getTime()}`);
+    return flatMap(result, raw => PartialCard.fromRaw(raw, sort) || []);
   }
 
   async getCards(
@@ -162,6 +229,17 @@ export default class Database {
     const cardsQuery = await this.applyCardsQuery(query, tabooSetId, sort);
     return await cardsQuery.getMany();
   }
+
+  async getCardsByIds(
+    ids: string[]
+  ): Promise<Card[]> {
+    const cards = await this.cards();
+    return await cards.createQueryBuilder('c')
+      .leftJoinAndSelect('c.linked_card', 'linked_card')
+      .where(where(`c.id IN (:...cardIds)`, { cardIds: ids }))
+      .getMany();
+  }
+
 
   async getCard(
     query?: Brackets,
@@ -182,29 +260,13 @@ export default class Database {
 
   async getCardGroupCount(
     groupBy: string,
+    extractor: (item: any) => SectionCount,
     query?: Brackets,
     tabooSetId?: number
-  ) {
+  ): Promise<SectionCount[]> {
     const cardsQuery = await this.applyCardsQuery(query, tabooSetId, undefined, groupBy);
-    return await cardsQuery.select(`${groupBy}, count(*) as count`).getRawMany();
-  }
-
-  async setCardSpoiler(where: Brackets, value: boolean): Promise<void> {
-    const query = (await this.cards())
-      .createQueryBuilder()
-      .update(Card)
-      .set({ spoiler: value })
-      .where(where);
-    await query.execute();
-  }
-
-  async setCardInCollection(where: Brackets, value: boolean): Promise<void> {
-    const query = (await this.cards())
-      .createQueryBuilder()
-      .update(Card)
-      .set({ in_collection: value })
-      .where(where);
-    await query.execute();
+    const results = await cardsQuery.select(`${groupBy}, count(*) as count`).getRawMany();
+    return map(results, extractor);
   }
 
   private async applyCardsQuery(
@@ -219,11 +281,11 @@ export default class Database {
       cardsQuery = cardsQuery.andWhere(query);
     }
     if (sort && sort.length) {
-      const [firstSort, ...restSorts] = sort;
-      cardsQuery = cardsQuery.orderBy(firstSort.s, firstSort.direction);
-      forEach(restSorts, ({ s, direction }) => {
-        cardsQuery = cardsQuery.addOrderBy(s, direction);
+      const orderBy: OrderByCondition = {};
+      forEach(sort, ({ s, direction }) => {
+        orderBy[s] = direction;
       });
+      cardsQuery.orderBy(orderBy)
     }
     if (groupBy) {
       cardsQuery = cardsQuery.groupBy(groupBy)

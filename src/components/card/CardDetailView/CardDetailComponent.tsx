@@ -50,7 +50,7 @@ export default class CardDetailComponent extends React.Component<Props> {
     if (showSpoilers) {
       return false;
     }
-    return card && card.spoiler;
+    return card && card.mythos_card;
   }
 
   _showInvestigatorCards = () => {
@@ -107,11 +107,11 @@ export default class CardDetailComponent extends React.Component<Props> {
       simple,
       width,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     if (this.shouldBlur()) {
       return (
         <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
-          <Text style={[space.marginS]}>
+          <Text style={[typography.text, space.paddingM]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
           <BasicButton onPress={this._toggleShowSpoilers} title="Show card" />

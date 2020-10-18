@@ -193,7 +193,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           if (!i) {
             return false;
           }
-          if (i.altArtInvestigator || i.spoiler) {
+          if (i.altArtInvestigator || i.mythos_card) {
             return false;
           }
           if (filterInvestigatorsSet.has(i.code)) {

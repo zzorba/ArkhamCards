@@ -56,7 +56,7 @@ export default class FactionChooser extends React.Component<Props> {
         element: (selected: boolean) => {
           const iconName = factionToIconName(faction);
           return (
-            <View style={[styles.icon, (faction === 'mythos' || faction === 'neutral') ? { height: 28 } : {}]}>
+            <View key={faction} style={[styles.icon, (faction === 'mythos' || faction === 'neutral') ? { height: 28 } : {}]}>
               <ArkhamIcon
                 name={iconName}
                 size={iconName !== faction ? 28 : 32}

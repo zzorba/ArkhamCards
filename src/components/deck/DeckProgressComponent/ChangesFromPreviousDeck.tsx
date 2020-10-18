@@ -78,9 +78,10 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
       const allCards = this.allCards();
       showCardSwipe(
         componentId,
-        this.allCards(),
+        map(allCards, card => card.code),
         findIndex(allCards, c => c.code === card.code),
         colors,
+        allCards,
         true,
         tabooSetId,
         slots,

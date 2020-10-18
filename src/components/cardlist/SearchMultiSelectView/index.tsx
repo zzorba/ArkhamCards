@@ -22,6 +22,7 @@ export interface SearchSelectProps {
   onChange: (selection: string[]) => void;
   values: string[];
   selection?: string[];
+  capitalize?: boolean;
 }
 
 type Props = NavigationProps & SearchSelectProps;
@@ -101,11 +102,13 @@ export default class SearchMultiSelectView extends React.Component<Props, State>
   };
 
   _renderItem = ({ item }: { item: Item }) => {
+    const { capitalize } = this.props;
     return (
       <SelectRow
         value={item.value}
         selected={item.selected}
         onSelectChanged={this._onSelectChanged}
+        capitalize={capitalize}
       />
     );
   };
