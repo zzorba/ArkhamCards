@@ -26,6 +26,7 @@ export async function calculateDefaultDbFilterState(
   const cards = await db.cards();
   let factionsQuery = cards.createQueryBuilder('c')
     .select('distinct c.faction_code as faction_code')
+    .leftJoin('c.linked_card', 'linked_card')
     .where(tabooSetQuery(tabooSetId));
   let cardsQuery = cards.createQueryBuilder('c')
     .select([

@@ -18,7 +18,7 @@ import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY } from '@data/query';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt } from '@data/query';
 import Card from '@data/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -45,7 +45,7 @@ interface Props {
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
-  renderHeader?: () => React.ReactElement;
+  header?: React.ReactElement;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
 
@@ -254,7 +254,7 @@ export default function({
   deckCardCounts,
   onDeckCountChange,
   limits,
-  renderHeader,
+  header,
   renderFooter,
   storyOnly,
   initialSort,
@@ -346,6 +346,59 @@ export default function({
     return false;
   }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
 
+  const textQuery = useMemo(() => {
+    const {
+      searchCode,
+    } = searchState;
+    const parts: Brackets[] = [];
+    if (searchCode) {
+      parts.push(where(`c.position = :searchCode`, { searchCode }));
+    }
+    if (searchTerm === '' || !searchTerm) {
+      return combineQueriesOpt(parts, 'and');
+    }
+    const safeSearchTerm = `%${searchTerm}%`;
+    console.log(safeSearchTerm);
+    if (searchBack) {
+      parts.push(where([
+        'c.name like :searchTerm',
+        '(c.linked_card is not null AND c.linked_card.name like :searchTerm)',
+        '(c.back_name is not null AND c.back_name like :searchTerm)',
+        '(c.linked_card is not null AND c.linked_card.back_name is not null and c.linked_card.back_name like :searchTerm)',
+        '(c.subname is not null AND c.subname like :searchTerm)',
+        '(c.linked_card is not null AND c.linked_card.subname is not null AND c.linked_card.subname like :searchTerm)'
+      ].join(' OR '), { searchTerm: safeSearchTerm }));
+    } else {
+      parts.push(where('c.renderName like :searchTerm OR (c.renderSubname is not null AND c.renderSubname like :searchTerm)', { searchTerm: safeSearchTerm }))
+    }
+    if (searchText) {
+      parts.push(where([
+        '(c.text is not null AND c.text like :searchTerm)',
+        '(c.traits is not null AND c.traits like :searchTerm)',
+      ].join(' OR '), { searchTerm: safeSearchTerm }));
+      if (searchBack) {
+        parts.push(where([
+          '(c.linked_card is not null AND c.linked_card.text is not null AND c.linked_card.text like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.traits AND c.linked_card.traits like :searchTerm)',
+          '(c.back_text is not null AND c.back_text like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.back_text is not null AND c.linked_card.back_text like :searchTerm)',
+        ].join(' OR '), { searchTerm: safeSearchTerm }));
+      }
+    }
+    if (searchFlavor) {
+      parts.push(where('(c.flavor is not null AND c.flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
+      '(c.linked_card is no'
+      if (searchBack) {
+        parts.push(where([
+          '(c.back_flavor is not null AND c.back_flavor like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.flavor is not null AND c.linked_card.flavor like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.back_flavor is not null AND c.linked_card.back_flavor like :searchTerm)',
+        ].join(' OR '), { searchTerm: safeSearchTerm }));
+      }
+    }
+    return combineQueriesOpt(parts, 'or');
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
+
   const controls = (
     <SearchOptions
       searchText={searchText}
@@ -396,7 +449,7 @@ export default function({
             tabooSetOverride={tabooSetOverride}
             query={query}
             filterQuery={filterQuery || undefined}
-            filterCard={filterCardText}
+            textQuery={textQuery}
             searchTerm={searchTerm}
             sort={selectedSort}
             investigator={investigator}
@@ -421,13 +474,12 @@ export default function({
                 toggleSearchBack={toggleSearchBack}
               />
             )}
-            visible={visible}
-            renderHeader={renderHeader}
+            header={header}
             renderFooter={renderFooter}
             showNonCollection={showNonCollection}
             storyOnly={storyOnly}
             mythosToggle={mythosToggle}
-            mythosMode={mythosToggle && mythosMode}
+//            mythosMode={mythosToggle && mythosMode}
             initialSort={initialSort}
           />
           { !!renderFooter && (

@@ -215,9 +215,7 @@ export default class Database {
       });
       cardsQuery.orderBy(orderBy)
     }
-    const time = new Date();
     const result = await cardsQuery.getRawMany();
-    console.log(`Elapsed: ${new Date().getTime() - time.getTime()}`);
     return flatMap(result, raw => PartialCard.fromRaw(raw, sort) || []);
   }
 
