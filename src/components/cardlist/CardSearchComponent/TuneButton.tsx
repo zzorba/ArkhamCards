@@ -46,6 +46,7 @@ class TuneButton extends React.Component<Props> {
       modal,
       cardData,
     } = this.props;
+    console.log(`Pressed: ${cardData}`);
     if (!cardData) {
       return;
     }
@@ -56,7 +57,6 @@ class TuneButton extends React.Component<Props> {
           filterId,
           baseQuery,
           modal,
-          cardData,
         },
         options: {
           topBar: {

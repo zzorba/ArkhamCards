@@ -115,7 +115,7 @@ export function isSpecialCard(card?: Card): boolean {
       card.permanent ||
       card.subtype_code === 'weakness' ||
       card.subtype_code === 'basicweakness' ||
-      card.spoiler ||
+      card.mythos_card ||
       card.has_restrictions
     )
   );

@@ -14,18 +14,17 @@ export const ON_YOUR_OWN_RESTRICTION = new Brackets(
   { negate: true }
 );
 
-export const BASIC_QUERY = where('(c.altArtInvestigator != true AND (c.back_linked is null OR NOT c.back_linked) AND (c.hidden is null OR NOT c.hidden))');
+export const BASIC_QUERY = where('c.browse_visible');
 export const SCENARIO_CARDS_QUERY = where('c.type_code = "scenario"');
 export const BASIC_WEAKNESS_QUERY = where(
   `c.type_code != "scenario" AND c.subtype_code = "basicweakness" AND c.code != "${RANDOM_BASIC_WEAKNESS}"`
 );
 export const STORY_CARDS_QUERY = where(
-  `((c.deck_limit >= 0) AND (c.spoiler = true OR (c.subtype_code is not null AND c.has_restrictions = false))) OR c.code = "${RANDOM_BASIC_WEAKNESS}" OR c.code = "${ACE_OF_RODS_CODE}"`
+  `((c.deck_limit >= 0) AND (c.mythos_card = true OR (c.subtype_code is not null AND c.has_restrictions = false))) OR c.code = "${RANDOM_BASIC_WEAKNESS}" OR c.code = "${ACE_OF_RODS_CODE}"`
 );
-export const MYTHOS_CARDS_QUERY = where(
-  'c.encounter_code is not null OR linked_card.encounter_code is not null'
-);
-export const PLAYER_CARDS_QUERY = where('c.deck_limit >= 0');
+export const MYTHOS_CARDS_QUERY = where('c.mythos_card');
+export const PLAYER_CARDS_QUERY = where('c.deck_limit > 0');
+export const BROWSE_CARDS_QUERY = where('c.deck_limit > 0 OR c.bonded_name is not null');
 
 export function tabooSetQuery(tabooSetId?: number) {
   return `(c.taboo_set_id is null OR c.taboo_set_id = ${tabooSetId || 0})`;

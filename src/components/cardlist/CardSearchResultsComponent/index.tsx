@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
@@ -14,17 +14,16 @@ import {
   SortType,
   Slots,
 } from '@actions/types';
-import QueryProvider from '@components/data/QueryProvider';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import CardResultList from './CardResultList';
 import FilterBuilder, { FilterState } from '@lib/filters';
-import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY } from '@data/query';
+import { MYTHOS_CARDS_QUERY, PLAYER_CARDS_QUERY, where, combineQueries, BASIC_QUERY, BROWSE_CARDS_QUERY, combineQueriesOpt } from '@data/query';
 import Card from '@data/Card';
 import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { getStoredState } from 'redux-persist';
+import StyleContext from '@styles/StyleContext';
+import DbCardResultList from './DbCardResultList';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -46,7 +45,7 @@ interface Props {
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
-  renderHeader?: () => React.ReactElement;
+  header?: React.ReactElement;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
 
@@ -66,40 +65,7 @@ function searchOptionsHeight(fontScale: number) {
   return 20 + (fontScale * 20 + 8) * 3 + 12;
 }
 
-type QueryProps = Pick<Props, 'baseQuery' | 'mythosToggle' | 'selectedSort' | 'mythosMode'>;
-type FilterQueryProps = Pick<Props, 'filters'>
-
 const FILTER_BUILDER = new FilterBuilder('filters');
-function getFilterQuery({ filters }: FilterQueryProps): Brackets | undefined {
-  return filters && FILTER_BUILDER.filterToQuery(filters);
-}
-
-function getQuery({
-  baseQuery,
-  mythosToggle,
-  selectedSort,
-  mythosMode,
-}: QueryProps): Brackets {
-  const queryParts: Brackets[] = [];
-  if (mythosToggle) {
-    if (mythosMode) {
-      queryParts.push(MYTHOS_CARDS_QUERY);
-    } else {
-      queryParts.push(PLAYER_CARDS_QUERY);
-    }
-  }
-  if (baseQuery) {
-    queryParts.push(baseQuery);
-  }
-  if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-    queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
-  }
-  return combineQueries(
-    BASIC_QUERY,
-    queryParts,
-    'and'
-  );
-}
 
 interface SearchState {
   searchCode?: number;
@@ -288,7 +254,7 @@ export default function({
   deckCardCounts,
   onDeckCountChange,
   limits,
-  renderHeader,
+  header,
   renderFooter,
   storyOnly,
   initialSort,
@@ -378,7 +344,60 @@ export default function({
       }
     }
     return false;
-  }, [searchState]);
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
+
+  const textQuery = useMemo(() => {
+    const {
+      searchCode,
+    } = searchState;
+    const parts: Brackets[] = [];
+    if (searchCode) {
+      parts.push(where(`c.position = :searchCode`, { searchCode }));
+    }
+    if (searchTerm === '' || !searchTerm) {
+      return combineQueriesOpt(parts, 'and');
+    }
+    const safeSearchTerm = `%${searchTerm}%`;
+    console.log(safeSearchTerm);
+    if (searchBack) {
+      parts.push(where([
+        'c.name like :searchTerm',
+        '(c.linked_card is not null AND c.linked_card.name like :searchTerm)',
+        '(c.back_name is not null AND c.back_name like :searchTerm)',
+        '(c.linked_card is not null AND c.linked_card.back_name is not null and c.linked_card.back_name like :searchTerm)',
+        '(c.subname is not null AND c.subname like :searchTerm)',
+        '(c.linked_card is not null AND c.linked_card.subname is not null AND c.linked_card.subname like :searchTerm)'
+      ].join(' OR '), { searchTerm: safeSearchTerm }));
+    } else {
+      parts.push(where('c.renderName like :searchTerm OR (c.renderSubname is not null AND c.renderSubname like :searchTerm)', { searchTerm: safeSearchTerm }))
+    }
+    if (searchText) {
+      parts.push(where([
+        '(c.text is not null AND c.text like :searchTerm)',
+        '(c.traits is not null AND c.traits like :searchTerm)',
+      ].join(' OR '), { searchTerm: safeSearchTerm }));
+      if (searchBack) {
+        parts.push(where([
+          '(c.linked_card is not null AND c.linked_card.text is not null AND c.linked_card.text like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.traits AND c.linked_card.traits like :searchTerm)',
+          '(c.back_text is not null AND c.back_text like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.back_text is not null AND c.linked_card.back_text like :searchTerm)',
+        ].join(' OR '), { searchTerm: safeSearchTerm }));
+      }
+    }
+    if (searchFlavor) {
+      parts.push(where('(c.flavor is not null AND c.flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
+      '(c.linked_card is no'
+      if (searchBack) {
+        parts.push(where([
+          '(c.back_flavor is not null AND c.back_flavor like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.flavor is not null AND c.linked_card.flavor like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.back_flavor is not null AND c.linked_card.back_flavor like :searchTerm)',
+        ].join(' OR '), { searchTerm: safeSearchTerm }));
+      }
+    }
+    return combineQueriesOpt(parts, 'or');
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
 
   const controls = (
     <SearchOptions
@@ -391,6 +410,28 @@ export default function({
     />
   );
 
+  const query = useMemo(() => {
+    const queryParts: Brackets[] = [];
+    if (mythosToggle) {
+      if (mythosMode) {
+        queryParts.push(MYTHOS_CARDS_QUERY);
+      } else {
+        queryParts.push(BROWSE_CARDS_QUERY);
+      }
+    }
+    if (baseQuery) {
+      queryParts.push(baseQuery);
+    }
+    if (selectedSort === SORT_BY_ENCOUNTER_SET) {
+      //queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
+    }
+    return combineQueries(
+      BASIC_QUERY,
+      queryParts,
+      'and'
+    );
+  }, [baseQuery, mythosToggle, selectedSort, mythosToggle, mythosMode]);
+  const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters), [filters]);
   return (
     <CollapsibleSearchBox
       prompt={t`Search for a card`}
@@ -401,69 +442,52 @@ export default function({
       searchTerm={searchTerm || ''}
       onSearchChange={searchUpdated}
     >
-      { (handleScroll) => (
-        <QueryProvider<QueryProps, Brackets>
-          baseQuery={baseQuery}
-          mythosToggle={mythosToggle}
-          selectedSort={selectedSort}
-          mythosMode={mythosToggle && mythosMode}
-          getQuery={getQuery}
-        >
-          { query => (
-            <QueryProvider<FilterQueryProps, Brackets | undefined>
-              filters={filters}
-              getQuery={getFilterQuery}
-            >
-              { filterQuery => (
-                <>
-                  <CardResultList
-                    componentId={componentId}
-                    tabooSetOverride={tabooSetOverride}
-                    query={query}
-                    filterQuery={filterQuery || undefined}
-                    filterCard={filterCardText}
-                    searchTerm={searchTerm}
-                    sort={selectedSort}
-                    investigator={investigator}
-                    originalDeckSlots={originalDeckSlots}
-                    deckCardCounts={deckCardCounts}
-                    onDeckCountChange={onDeckCountChange}
-                    limits={limits}
-                    handleScroll={handleScroll}
-                    expandSearchControls={(
-                      <ExpandSearchButtons
-                        hasFilters={!!filterQuery}
-                        mythosToggle={mythosToggle}
-                        toggleMythosMode={toggleMythosMode}
-                        clearSearchFilters={clearSearchFilters}
-                        mythosMode={mythosMode}
-                        searchTerm={searchTerm}
-                        searchText={searchText}
-                        searchBack={searchBack}
-                        clearSearchTerm={clearSearchTerm}
-                        toggleSearchText={toggleSearchText}
-                        toggleSearchBack={toggleSearchBack}
-                      />
-                    )}
-                    visible={visible}
-                    renderHeader={renderHeader}
-                    renderFooter={renderFooter}
-                    showNonCollection={showNonCollection}
-                    storyOnly={storyOnly}
-                    mythosToggle={mythosToggle}
-                    mythosMode={mythosToggle && mythosMode}
-                    initialSort={initialSort}
-                  />
-                  { !!renderFooter && (
-                    <View style={styles.footer}>
-                      { renderFooter() }
-                    </View>
-                  ) }
-                </>
-              ) }
-            </QueryProvider>
+      { (handleScroll, showHeader) => (
+        <>
+          <DbCardResultList
+            componentId={componentId}
+            tabooSetOverride={tabooSetOverride}
+            query={query}
+            filterQuery={filterQuery || undefined}
+            textQuery={textQuery}
+            searchTerm={searchTerm}
+            sort={selectedSort}
+            investigator={investigator}
+            originalDeckSlots={originalDeckSlots}
+            deckCardCounts={deckCardCounts}
+            onDeckCountChange={onDeckCountChange}
+            limits={limits}
+            handleScroll={handleScroll}
+            showHeader={showHeader}
+            expandSearchControls={(
+              <ExpandSearchButtons
+                hasFilters={!!filterQuery}
+                mythosToggle={mythosToggle}
+                toggleMythosMode={toggleMythosMode}
+                clearSearchFilters={clearSearchFilters}
+                mythosMode={mythosMode}
+                searchTerm={searchTerm}
+                searchText={searchText}
+                searchBack={searchBack}
+                clearSearchTerm={clearSearchTerm}
+                toggleSearchText={toggleSearchText}
+                toggleSearchBack={toggleSearchBack}
+              />
+            )}
+            header={header}
+            renderFooter={renderFooter}
+            showNonCollection={showNonCollection}
+            storyOnly={storyOnly}
+            mythosToggle={mythosToggle}
+//            mythosMode={mythosToggle && mythosMode}
+            initialSort={initialSort}
+          />
+          { !!renderFooter && (
+            <View style={styles.footer}>
+              { renderFooter() }
+            </View>
           ) }
-        </QueryProvider>
+        </>
       ) }
     </CollapsibleSearchBox>
   );

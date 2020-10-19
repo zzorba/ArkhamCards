@@ -485,20 +485,7 @@ class CardResultList extends React.Component<Props, State> {
       ],
       'and'
     );
-    /*
-    const start = new Date();
-    const in_collection_counts = combinedQuery ? await db.getCardGroupCount('c.sort_by_type', combineQueries(
-      combinedQuery,
-      [where('c.in_collection = true')],
-      'and'
-    ), tabooSetId) : [];
-    const spoiler_counts = combinedQuery ? await db.getCardGroupCount('c.sort_by_type', combineQueries(
-      combinedQuery,
-      [where('c.encounter_code is null OR c.non_spoiler = true')],
-      'and'
-    ), tabooSetId) : [];
-    console.log({ in_collection_counts, spoiler_counts, delta: (new Date().getTime() - start.getTime())});
-    */
+
     const cards: Card[] = combinedQuery ? await db.getCards(
       combinedQuery,
       tabooSetId,
@@ -544,6 +531,9 @@ class CardResultList extends React.Component<Props, State> {
       singleCardView,
     } = this.props;
     const { colors } = this.context;
+
+    cardPressed && cardPressed(card);
+
     if (singleCardView) {
       showCard(
         componentId,
@@ -560,7 +550,6 @@ class CardResultList extends React.Component<Props, State> {
       showSpoilerCards,
     } = this.state;
 
-    cardPressed && cardPressed(card);
     const [sectionId, cardIndex] = id.split('.');
     let index = 0;
     const cards: Card[] = [];
@@ -575,9 +564,10 @@ class CardResultList extends React.Component<Props, State> {
       });
       showCardSwipe(
         componentId,
-        cards,
+        map(cards, card => card.code),
         index,
         colors,
+        cards,
         showSpoilerCards,
         tabooSetOverride,
         deckCardCounts,

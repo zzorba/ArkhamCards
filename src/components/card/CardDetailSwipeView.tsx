@@ -35,7 +35,7 @@ export interface CardDetailSwipeProps {
   cards: Card[];
   initialIndex: number;
   whiteNav: boolean;
-  showSpoilers?: boolean;
+  showAllSpoilers?: boolean;
   tabooSetId?: number;
   deckCardCounts?: Slots;
   onDeckCountChange?: (code: string, count: number) => void;
@@ -50,7 +50,6 @@ type Props = NavigationProps &
 interface State {
   deckCardCounts?: Slots;
   showSpoilers: { [code: string]: boolean };
-  lastIndex: number;
   index: number;
 }
 
@@ -78,7 +77,6 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       showSpoilers: {},
       deckCardCounts: props.deckCardCounts,
       index: props.initialIndex,
-      lastIndex: props.initialIndex === 0 ? 0 : props.initialIndex,
     };
 
     this._navEventListener = Navigation.events().bindComponent(this);
@@ -204,30 +202,30 @@ class CardDetailSwipeView extends React.Component<Props, State> {
 
   showSpoilers(card?: Card) {
     const {
+      showAllSpoilers,
       showSpoilers,
     } = this.props;
     if (!card) {
       return false;
     }
-    if (showSpoilers || showSpoilers[card.pack_code] || this.state.showSpoilers[card.code]) {
+    if (showAllSpoilers || showSpoilers[card.pack_code] || this.state.showSpoilers[card.code]) {
       return true;
     }
     return false;
   }
 
-  _countChanged = (count: number) => {
+  _countChanged = (code: string, count: number) => {
     const {
       onDeckCountChange,
     } = this.props;
     const { deckCardCounts } = this.state;
-    const card = this.currentCard();
-    if (card && onDeckCountChange) {
-      onDeckCountChange(card.code, count);
+    if (onDeckCountChange) {
+      onDeckCountChange(code, count);
     }
     this.setState({
       deckCardCounts: {
         ...deckCardCounts,
-        [card.code]: count,
+        [code]: count,
       },
     });
   };
@@ -254,6 +252,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <CardQuantityComponent
           key={card.id}
+          code={card.code}
           count={deckCardCounts[card.code] || 0}
           countChanged={this._countChanged}
           limit={deck_limit}

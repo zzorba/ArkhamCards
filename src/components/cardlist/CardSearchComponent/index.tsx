@@ -236,21 +236,6 @@ class CardSearchComponent extends React.Component<Props, State> {
     toggleFilter(componentId, key, value);
   };
 
-  _renderHeader = () => {
-    const { filters } = this.props;
-    return (
-      <XpChooser
-        onFilterChange={this._onFilterChange}
-        onToggleChange={this._onToggleChange}
-        maxLevel={5}
-        levels={filters?.level || [0,5]}
-        enabled={filters?.levelEnabled || false}
-        exceptional={filters?.exceptional || false}
-        nonExceptional={filters?.nonExceptional || false}
-      />
-    );
-  };
-
   render() {
     const {
       componentId,
@@ -290,7 +275,17 @@ class CardSearchComponent extends React.Component<Props, State> {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={onDeckCountChange}
         limits={limits}
-        renderHeader={deckCardCounts ? this._renderHeader : undefined}
+        header={deckCardCounts ? (
+          <XpChooser
+            onFilterChange={this._onFilterChange}
+            onToggleChange={this._onToggleChange}
+            maxLevel={5}
+            levels={filters?.level || [0,5]}
+            enabled={filters?.levelEnabled || false}
+            exceptional={filters?.exceptional || false}
+            nonExceptional={filters?.nonExceptional || false}
+          />
+        ) : undefined}
         renderFooter={renderFooter}
         visible={visible}
         storyOnly={storyOnly}

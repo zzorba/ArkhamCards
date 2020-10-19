@@ -29,17 +29,25 @@ export function SingleButton({ idx, content, last, onPressIndex, height, selecte
   };
 
   return (
-    <Ripple
-      onPress={onPress}
-      style={[
-        styles.button,
-        { height, backgroundColor: selected ? colors.L10 : colors.M },
-        idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
-        last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
-      ]}
-    >
-      { content.element(selected) }
-    </Ripple>
+    <>
+      <Ripple
+        onPress={onPress}
+        style={[
+          styles.button,
+          { height, backgroundColor: selected ? colors.L10 : colors.M },
+          idx === 0 ? { borderTopLeftRadius: height / 2, borderBottomLeftRadius: height / 2 } : {},
+          last ? { borderBottomRightRadius: height / 2, borderTopRightRadius: height / 2 } : {},
+        ]}
+      >
+        { content.element(selected) }
+      </Ripple>
+      { !last && (
+        <View
+          key={`divider-${idx}`}
+          style={[styles.divider, { marginLeft: -1.5, height: height - 16, backgroundColor: colors.L10 }]}
+        />
+      ) }
+    </>
   );
 }
 
@@ -64,22 +72,14 @@ export default function ArkhamButtonGroup({
         { map(buttons, (button, idx) => {
           const last = idx === (buttons.length - 1);
           return (
-            <>
-              <SingleButton
-                idx={idx}
-                key={idx}
-                content={button}
-                selected={selection.has(idx)}
-                last={last}
-                onPressIndex={onPressIndex} height={height}
-              />
-              { !last && (
-                <View
-                  key={`divider-${idx}`}
-                  style={[styles.divider, { marginLeft: -1.5, height: height - 16, backgroundColor: colors.L10 }]}
-                />
-              ) }
-            </>
+            <SingleButton
+              idx={idx}
+              key={idx}
+              content={button}
+              selected={selection.has(idx)}
+              last={last}
+              onPressIndex={onPressIndex} height={height}
+            />
           );
         })}
       </View>

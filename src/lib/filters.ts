@@ -11,16 +11,12 @@ export interface CardFilterData {
   hasCost: boolean;
   hasXp: boolean;
   hasSkill: boolean;
-  allUses: string[];
+  hasSlot: boolean;
+  hasUses: boolean;
+  hasLocation: boolean;
+  hasEnemy: boolean;
+  hasWeakness: boolean;
   allFactions: FactionCodeType[];
-  allTraits: string[];
-  allTypes: string[];
-  allTypeCodes: string[];
-  allSubTypes: string[];
-  allPacks: string[];
-  allSlots: string[];
-  allEncounters: string[];
-  allIllustrators: string[];
 }
 export async function calculateAllCardFilterData(cards: Card[], db: Database): Promise<CardFilterData> {
   const result = calculateCardFilterData(cards);

@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { difference, forEach, find, filter, map, union } from 'lodash';
 import {
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { t } from 'ttag';
 import { Pack } from '@actions/types';
 import PackListComponent from '@components/core/PackListComponent';
-import { getAllPacks, AppState } from '@reducers';
-import withFilterFunctions, { FilterProps } from './withFilterFunctions';
+import { getAllPacks } from '@reducers';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
+import { NavigationProps } from '@components/nav/types';
 
 interface OwnProps {
   componentId: string;
@@ -22,33 +23,16 @@ interface ReduxProps {
   allPacks: Pack[];
 }
 
-type Props = OwnProps & ReduxProps & FilterProps;
-class PackFilterView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        backButton: {
-          title: t`Back`,
-          color: COLORS.M,
-        },
-        title: {
-          text: t`Select Packs`,
-        },
-      },
-    };
-  }
-
-  _setChecked = (code: string, value: boolean) => {
-    const {
-      onFilterChange,
-      filters: {
-        packs,
-      },
-      allPacks,
-    } = this.props;
+const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
+  const {
+    filters,
+    onFilterChange,
+  } = useFilterFunctions(props, {
+    title: t`Pack Filters`,
+  });
+  const { packs } = filters;
+  const allPacks = useSelector(getAllPacks);
+  const setChecked = useCallback((code: string, value: boolean) => {
     const deltaPacks = map(
       filter(allPacks, pack => pack.code === code),
       pack => pack.name
@@ -57,16 +41,9 @@ class PackFilterView extends React.Component<Props> {
       'packs',
       value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
     );
-  };
+  }, [packs, onFilterChange, allPacks]);
 
-  _setCycleChecked = (cycle_code: string, value: boolean) => {
-    const {
-      onFilterChange,
-      filters: {
-        packs,
-      },
-      allPacks,
-    } = this.props;
+  const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
     const cyclePack = find(allPacks, pack => pack.code == cycle_code);
     if (cyclePack) {
       const deltaPacks = map(
@@ -79,50 +56,47 @@ class PackFilterView extends React.Component<Props> {
         value ? union(packs, deltaPacks) : difference(packs, deltaPacks)
       );
     }
-  };
-
-  render() {
-    const {
-      componentId,
-      allPacks,
-      filters: {
-        packs,
-      },
-    } = this.props;
-    const { typography } = this.context;
-    if (!allPacks.length) {
-      return (
-        <View>
-          <Text style={typography.text}>{t`Loading`}</Text>
-        </View>
-      );
-    }
+  }, [onFilterChange, packs, allPacks]);
+  const { typography } = useContext(StyleContext);
+  if (!allPacks.length) {
+    return (
+      <View>
+        <Text style={typography.text}>{t`Loading`}</Text>
+      </View>
+    );
+  }
+  const selected = useMemo(() => {
     const selectedPackNames = new Set(packs || []);
-    const selected: { [pack_code: string]: boolean } = {};
+    const result: { [pack_code: string]: boolean } = {};
     forEach(allPacks, pack => {
       if (selectedPackNames.has(pack.name)) {
         selected[pack.code] = true;
       }
     });
-    return (
-      <PackListComponent
-        coreSetName={t`Core Set`}
-        componentId={componentId}
-        packs={allPacks}
-        checkState={selected}
-        setChecked={this._setChecked}
-        setCycleChecked={this._setCycleChecked}
-      />
-    );
-  }
+    return result;
+  }, [allPacks, packs]);
+  return (
+    <PackListComponent
+      coreSetName={t`Core Set`}
+      componentId={props.componentId}
+      packs={allPacks}
+      checkState={selected}
+      setChecked={setChecked}
+      setCycleChecked={setCycleChecked}
+    />
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
+PackFilterView.options = () => {
   return {
-    allPacks: getAllPacks(state),
+    topBar: {
+      backButton: {
+        title: t`Back`,
+        color: COLORS.M,
+      },
+      title: {
+        text: t`Select Packs`,
+      },
+    },
   };
-}
-
-export default connect(mapStateToProps)(
-  withFilterFunctions(PackFilterView, () => t`Pack Filters`, {})
-);
+};
+export default PackFilterView;

@@ -19,10 +19,11 @@ import {
 } from '@actions/types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { FilterState, calculateCardFilterData, calculateAllCardFilterData } from '@lib/filters';
-import calculateDefaultFilterState from '@components/filter/DefaultFilterState';
+import { calculateDefaultDbFilterState, calculateDefaultFilterState } from '@components/filter/DefaultFilterState';
 import Card from '@data/Card';
 import Database from '@data/Database';
 import { AppState } from '@reducers';
+import { Brackets } from 'typeorm/browser';
 
 export function toggleMythosMode(
   id: string,
@@ -80,6 +81,28 @@ export function updateFilter(
     id,
     key,
     value,
+  };
+}
+
+
+export function addDbFilterSet(
+  id: string,
+  db: Database,
+  query: Brackets,
+  sort?: SortType,
+  tabooSetId?: number,
+  mythosToggle?: boolean
+): ThunkAction<void, AppState, unknown, AddFilterSetAction> {
+  return async(dispatch: ThunkDispatch<AppState, unknown, AddFilterSetAction>): Promise<void> => {
+    const [filters, cardData] = await calculateDefaultDbFilterState(db, query, tabooSetId);
+    dispatch({
+      type: ADD_FILTER_SET,
+      id,
+      filters,
+      sort,
+      mythosToggle,
+      cardData,
+    });
   };
 }
 

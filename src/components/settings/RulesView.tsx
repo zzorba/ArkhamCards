@@ -83,7 +83,7 @@ export default function RulesView({ componentId }: Props) {
         rules: [],
       });
     }
-    db.getRules(
+    db.getRulesPaged(
       0,
       100,
       where(`r.parentRule is null AND (r.title LIKE '%' || :searchTerm || '%' OR r.text LIKE '%' || :searchTerm || '%' OR (sub_rules_title is not null AND sub_rules_title LIKE '%' || :searchTerm || '%') OR (sub_rules_text is not null AND sub_rules_text LIKE '%' || :searchTerm || '%'))`, { searchTerm })
@@ -108,7 +108,7 @@ export default function RulesView({ componentId }: Props) {
   const { db } = useContext(DatabaseContext);
   const [page, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
     if (!rules.endReached) {
-      db.getRules(
+      db.getRulesPaged(
         page,
         PAGE_SIZE,
         new Brackets(qb => qb.where('r.parentRule is null'))
