@@ -127,6 +127,7 @@ type Item = SectionHeaderItem | CardItem | ButtonItem | LoadingItem;
 
 interface PartialCardItem {
   type: 'pc';
+  prefix?: string;
   card: PartialCard;
 }
 
@@ -194,6 +195,50 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
   };
 }
 
+function useDeckQuery(deckCardCounts: Slots, originalDeckSlots?: Slots): [Brackets | undefined, boolean, () => void] {
+  const [refreshCounter, setRefreshCounter] = useState(0);
+  const [updateCounter, setUpdateCounter] = useState(-1);
+  const refreshDeck = useCallback(() => {
+    setRefreshCounter(updateCounter);
+  }, [refreshCounter, updateCounter]);
+
+  useEffect(() => {
+    setUpdateCounter(updateCounter + 1);
+  }, [deckCardCounts]);
+  const hasDeckChanges = (updateCounter > refreshCounter);
+
+  const deckCodes = useMemo(() => {
+    if (!originalDeckSlots) {
+      return [];
+    }
+    return filter(
+      uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
+      code => originalDeckSlots[code] > 0 ||
+        (deckCardCounts && deckCardCounts[code] > 0)
+    );
+  }, [refreshCounter]);
+  const deckQuery = useMemo(() => {
+    if (!deckCodes.length) {
+      return undefined;
+    }
+    return where(`c.code in (:...codes)`, { codes: deckCodes });
+  }, [deckCodes]);
+
+  return [deckQuery, hasDeckChanges, refreshDeck];
+}
+
+interface SectionFeedProps {
+  componentId: string;
+  query: Brackets;
+  sort?: SortType;
+  tabooSetId?: number;
+  filterQuery?: Brackets;
+  textQuery?: Brackets;
+  showAllNonCollection?: boolean;
+  deckCardCounts: Slots;
+  originalDeckSlots?: Slots;
+  storyOnly?: boolean;
+}
 
 
 interface SectionFeed {
@@ -202,24 +247,58 @@ interface SectionFeed {
   refreshing: boolean;
   fetchMore?: () => void;
   showSpoilerCards: boolean;
+  refreshDeck?: () => void;
 }
 
-function useSectionFeed(
-  componentId: string,
-  query: Brackets,
-  sort?: SortType,
-  tabooSetId?: number,
-  filterQuery?: Brackets,
-  textQuery?: Brackets,
-  showAllNonCollection?: boolean
-): SectionFeed {
+function useSectionFeed({
+  componentId,
+  query,
+  sort,
+  tabooSetId,
+  filterQuery,
+  textQuery,
+  showAllNonCollection,
+  storyOnly,
+  originalDeckSlots,
+  deckCardCounts,
+}: SectionFeedProps): SectionFeed {
   const { db } = useContext(DatabaseContext);
   const packSpoiler = useSelector(getPackSpoilers);
   const [expandButtonPressed, setExpandButtonPressed] = useState(false);
   const packInCollection = useSelector(getPacksInCollection);
   const [showNonCollection, updateShowNonCollection] = useToggles({});
+  const storyQuery = storyOnly ? query : undefined;
+  const [deckCards, setDeckCards] = useState<PartialCard[]>([]);
   const [mainQueryCards, setMainQueryCards] = useState<PartialCard[]>([]);
   const [textQueryCards, setTextQueryCards] = useState<PartialCard[]>([]);
+  const [deckQuery, hasDeckChanges, refreshDeck] = useDeckQuery(deckCardCounts, originalDeckSlots);
+
+  useEffect(() => {
+    let ignore = false;
+    if (!deckQuery) {
+      setDeckCards([]);
+    } else {
+      db.getPartialCards(
+        combineQueries(
+          deckQuery,
+          [
+            ...(storyQuery ? [storyQuery] : []),
+            ...(filterQuery ? [filterQuery] : []),
+            ...(textQuery ? [textQuery] : []),
+          ],
+          'and'
+        ),
+        tabooSetId,
+        sort
+      ).then(cards => {
+        if (!ignore) {
+          console.log(map(cards, c => c.renderName));
+          setDeckCards(cards);
+        }
+      });
+    }
+    return () => { ignore = true; };
+  }, [filterQuery, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
 
@@ -239,9 +318,42 @@ function useSectionFeed(
     });
   }, [componentId]);
   const [visibleCards, partialItems, spoilerCardsCount] = useMemo(() => {
-    const items: PartialItem[] = []
+    const items: PartialItem[] = deckCards.length ? [] : [];
     const result: PartialCard[] = [];
     let currentSectionId: string | undefined = undefined;
+    if (deckCards.length) {
+      items.push({
+        type: 'header',
+        id: 'deck_superheader',
+        header: {
+          superTitle: t`In Deck`,
+          superTitleIcon: 'refresh',
+          onPress: hasDeckChanges ? refreshDeck : undefined,
+        },
+      });
+      forEach(deckCards, card => {
+        if (!currentSectionId || card.headerId !== currentSectionId) {
+          items.push({
+            type: 'header',
+            id: `deck_${card.headerId}`,
+            header: {
+              subTitle: card.headerTitle,
+            },
+          });
+          currentSectionId = card.headerId;
+        }
+        result.push(card);
+        items.push({ type: 'pc', prefix: 'deck', card });
+      });
+      items.push({
+        type: 'header',
+        id: 'all_cards',
+        header: {
+          superTitle: t`All Eligible Cards`,
+        },
+      });
+    }
+    currentSectionId = undefined;
     let currentNonCollection: PartialCard[] = [];
     const [nonSpoilerCards, spoilerCards] = partition(partialCards, card => {
       if (!showAllNonCollection && card.pack_code !== 'core' && !packInCollection[card.pack_code]) {
@@ -309,7 +421,7 @@ function useSectionFeed(
       appendFooterButtons(currentSectionId, showSpoilers ? 1 : 0);
     }
     return [result, items, spoilerCards.length];
-  }, [partialCards, showNonCollection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, updateShowNonCollection, showAllNonCollection]);
+  }, [partialCards, deckCards, showNonCollection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, updateShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
 
   const { cards, fetchMore } = useCardFetcher(visibleCards);
   const [refreshing, setRefreshing] = useState(true);
@@ -416,7 +528,7 @@ function useSectionFeed(
       loadingSection = false;
       result.push({
         type: 'card',
-        id: `${headerId}.${id}`,
+        id: item.prefix ? `${item.prefix}_${headerId}.${id}` : `${headerId}.${id}`,
         card,
       });
     });
@@ -457,141 +569,8 @@ function useSectionFeed(
     refreshing: refreshing || (feedLoading && !expandButtonPressed),
     fetchMore,
     showSpoilerCards: showSpoilers,
+    refreshDeck: hasDeckChanges ? refreshDeck : undefined,
   };
-}
-
-function useDeckFeed(
-  deckCardCounts: Slots,
-  originalDeckSlots?: Slots,
-  storyQuery?: Brackets,
-  tabooSetId?: number,
-  filterQuery?: Brackets,
-  textQuery?: Brackets,
-  sort?: SortType
-): [Item[], PartialCard[], boolean, () => void] {
-  const { db } = useContext(DatabaseContext);
-  const [deckCards, setDeckCards] = useState<PartialCard[]>([]);
-  const [refreshCounter, setRefreshCounter] = useState(0);
-  const [updateCounter, setUpdateCounter] = useState(-1);
-  const { cards, fetchMore } = useCardFetcher(deckCards);
-  const refreshDeck = useCallback(() => {
-    setRefreshCounter(updateCounter);
-  }, [refreshCounter, updateCounter]);
-
-  useEffect(() => {
-    setUpdateCounter(updateCounter + 1);
-  }, [deckCardCounts]);
-  const hasDeckChanges = (updateCounter > refreshCounter);
-
-  const deckCodes = useMemo(() => {
-    if (!originalDeckSlots) {
-      return [];
-    }
-    return filter(
-      uniq(concat(keys(originalDeckSlots), keys(deckCardCounts))),
-      code => originalDeckSlots[code] > 0 ||
-        (deckCardCounts && deckCardCounts[code] > 0)
-    );
-  }, [refreshCounter]);
-  const deckQuery = useMemo(() => {
-    if (!deckCodes.length) {
-      return undefined;
-    }
-    return where(`c.code in (:...codes)`, { codes: deckCodes });
-  }, [deckCodes]);
-
-  useEffect(() => {
-    let ignore = false;
-    if (!deckQuery) {
-      setDeckCards([]);
-    } else {
-      db.getPartialCards(
-        combineQueries(
-          deckQuery,
-          [
-            ...(storyQuery ? [storyQuery] : []),
-            ...(filterQuery ? [filterQuery] : []),
-            ...(textQuery ? [textQuery] : []),
-          ],
-          'and'
-        ),
-        tabooSetId,
-        sort
-      ).then(cards => {
-        if (!ignore) {
-          setDeckCards(cards);
-        }
-      });
-    }
-    return () => { ignore = true; };
-  }, [filterQuery, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort])
-
-  const [visibleCards, partialItems] = useMemo(() => {
-    const items: PartialItem[] = [];
-    const result: PartialCard[] = [];
-    let currentSectionId: string | undefined = undefined;
-    forEach(deckCards, card => {
-      if (!currentSectionId || card.headerId !== currentSectionId) {
-        items.push({
-          type: 'header',
-          id: `deck_${card.headerId}`,
-          header: {
-            subTitle: card.headerTitle,
-          },
-        });
-        currentSectionId = card.headerId;
-      }
-      result.push(card);
-      items.push({ type: 'pc', card });
-    });
-    return [result, items];
-  }, [deckCards]);
-
-  const items = useMemo(() => {
-    const result: Item[] = partialItems.length || hasDeckChanges ? [{
-      type: 'header',
-      id: 'deck_superheader',
-      header: {
-        superTitle: t`In Deck`,
-        superTitleIcon: 'refresh',
-        onPress: hasDeckChanges ? refreshDeck : undefined,
-      },
-    }] : [];
-    let loadingSection = false;
-    forEach(partialItems, item => {
-      if (item.type !== 'pc') {
-        result.push(item);
-        loadingSection = false;
-        return;
-      }
-      const { headerId, id } = item.card;
-      const card = cards[id];
-      if (!card) {
-        if (!loadingSection) {
-          result.push({ type: 'loading', id: id });
-          loadingSection = true;
-        }
-        return;
-      }
-      loadingSection = false;
-      result.push({
-        type: 'card',
-        id: `deck_${headerId}.${id}`,
-        card,
-      });
-    });
-    result.push({
-      type: 'header',
-      id: 'all_cards',
-      header: {
-        superTitle: t`All Eligible Cards`,
-      },
-    });
-    return result;
-  }, [hasDeckChanges, visibleCards, cards, refreshDeck]);
-
-  const refreshing = !!originalDeckSlots && !!find(visibleCards, c => !cards[c.id]) && refreshCounter === 0;
-  return [items, visibleCards, refreshing, refreshDeck];
 }
 
 export default function({
@@ -632,24 +611,24 @@ export default function({
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const {
-    feed: mainFeed,
-    fullFeed: mainFullFeed,
-    refreshing: mainRefreshing,
+    feed,
+    fullFeed,
+    refreshing,
     fetchMore,
     showSpoilerCards,
-  } = useSectionFeed(componentId, query, sort, tabooSetId, filterQuery, textQuery, showNonCollection);
-  const [deckFeed, deckFullFeed, deckRefreshing, refreshDeck] = useDeckFeed(
-    deckCardCounts,
-    originalDeckSlots,
-    storyOnly ? query : undefined,
+    refreshDeck,
+  } = useSectionFeed({
+    componentId,
+    query,
+    sort,
     tabooSetId,
     filterQuery,
     textQuery,
-    sort
-  );
-  const refreshing = mainRefreshing || deckRefreshing;
-  const feed = useMemo(() => [...deckFeed, ...mainFeed], [mainFeed, deckFeed]);
-  const fullFeed = useMemo(() => [...deckFullFeed, ...mainFullFeed], [deckFullFeed, mainFullFeed]);
+    showAllNonCollection: showNonCollection,
+    deckCardCounts,
+    originalDeckSlots,
+    storyOnly,
+  });
   const dispatch = useDispatch();
   useEffect(() => {
   // showHeader when somethings drastic happens, and get a new error message.
