@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 
+import AppIcon from '@icons/AppIcon';
 import { AnimatedArkhamIcon } from '@icons/ArkhamIcon';
 import { toggleMythosMode } from '@components/filter/actions';
 import { AppState, getMythosMode } from '@reducers';
@@ -40,7 +41,7 @@ class MythosButton extends React.Component<Props, State> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
-  static WIDTH = SIZE * 2 + 4
+  static WIDTH = SIZE * 2 + 12
   static HEIGHT = SIZE;
 
   constructor(props: Props) {
@@ -59,7 +60,7 @@ class MythosButton extends React.Component<Props, State> {
         this.state.toggleAnim,
         {
           toValue: mythosMode ? 1 : 0,
-          duration: 250,
+          duration: 400,
           useNativeDriver: false,
           easing: Easing.exp,
         }
@@ -91,13 +92,16 @@ class MythosButton extends React.Component<Props, State> {
     });
     const movingCircleX = toggleAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, SIZE],
+      outputRange: [0, SIZE + 2.5],
     });
 
     const backgroundColor = colors.L10;
 
     return (
       <View style={styles.container}>
+        <View style={styles.buttonFrame}>
+          <AppIcon name="mythos_button_frame" size={SIZE+5} color={backgroundColor} />
+        </View>
         <TouchableWithoutFeedback onPress={this._onPress}>
           <View style={[styles.buttonContainer, { borderColor: backgroundColor }]}>
             <Animated.View style={[
@@ -148,6 +152,8 @@ const styles = StyleSheet.create({
   container: {
     width: MythosButton.WIDTH,
     height: MythosButton.HEIGHT,
+    paddingLeft: 2,
+    paddingTop: 2,
     position: 'relative',
     marginBottom: 8,
   },
@@ -166,19 +172,19 @@ const styles = StyleSheet.create({
     top: 1,
     left: 1,
   },
+  buttonFrame: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'relative',
-    width: SIZE * 2 + 4,
+    width: SIZE * 2 + 5,
     height: SIZE + 4,
     paddingTop: 1,
     paddingLeft: 1,
     paddingRight: 1,
-    borderWidth: 1,
-    borderTopLeftRadius: SIZE / 2,
-    borderBottomLeftRadius: SIZE / 2,
-    borderTopRightRadius: SIZE / 2,
-    borderBottomRightRadius: SIZE / 2,
   },
 });
