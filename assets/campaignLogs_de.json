@@ -2855,11 +2855,11 @@
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "Die schwarze Katze hat die anderen um Hilfe gebeten."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "Die schwarze Katze hat das Wissen über die Unterwelt geteilt."
           },
           {
             "id": "black_cat_warned_the_others",
@@ -2867,43 +2867,43 @@
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "Die Brücke wurde fertiggestellt."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "Die Brücke wurde zerstört."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "Dr. Maheswaran ist am Leben."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "Dr. Maheswaran wird vermisst."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "Dr. Maheswaran hat sich den Ermittlern angeschlossen."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "Dr. Maheswaran ist bei ihren Patienten geblieben."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "Dr. Maheswarans Schicksal ist ungewiss."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "Die Ermittler haben einen Weg aus der Unterwelt gefunden."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "Die Ermittler sind niemals entkommen."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "Die Ermittler sind auf sich allein gestellt."
           },
           {
             "id": "possess_silver_key",
@@ -2911,31 +2911,31 @@
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph hat den Abstieg nicht überlebt."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph ist alleine aus dem Krankenhaus geflohen."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph ist mit den Ermittlern aus dem Krankenhaus geflohen."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph hat den Abstieg überlebt."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "Die Ermittler sind in die Realität zurückgekehrt."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "Die Ermittler sind immer noch in den Traumlanden."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "Die Ermittler sind in Atlach-Nachas Reich gefangen."
           },
           {
             "id": "you_asked_for_it",

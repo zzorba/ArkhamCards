@@ -123,6 +123,7 @@ export class PartialCard {
 
 @Entity('card')
 @Index('code_taboo', ['code', 'taboo_set_id'], { unique: true })
+@Index('player_cards', ['browse_visible'])
 @Index('sort_type', ['browse_visible', 'taboo_set_id', 'sort_by_type', 'renderName', 'xp'])
 @Index('sort_faction', ['browse_visible', 'taboo_set_id', 'sort_by_faction', 'renderName', 'xp'])
 @Index('sort_faction_pack', ['browse_visible', 'taboo_set_id', 'sort_by_faction_pack', 'code'])
@@ -394,6 +395,7 @@ export default class Card {
   public seal?: boolean;
   @Column('boolean', { nullable: true })
   public heals_horror?: boolean;
+
   @Column('integer', { nullable: true, select: false })
   public sort_by_type?: number;
   @Column('text', { nullable: true, select: false })
@@ -412,14 +414,13 @@ export default class Card {
   public sort_by_encounter_set_header?: string;
   @Column('integer', { nullable: true, select: false })
   public sort_by_pack?: number;
-  @Column('boolean')
-  public browse_visible!: boolean;
+  @Column('integer', { nullable: true, select: false })
+  public browse_visible!: number;
+
   @Column('boolean')
   public mythos_card!: boolean;
 
   public static ELIDED_FIELDS = [
-    'c.seal',
-    'c.heals_horror',
     'c.slots_normalized',
     'c.back_linked',
     'c.eskill_willpower',
@@ -437,6 +438,7 @@ export default class Card {
     'c.sort_by_cost_header',
     'c.sort_by_encounter_set_header',
     'c.sort_by_pack',
+    'c.browse_visible',
   ];
 
   public cardName(): string {
@@ -953,7 +955,19 @@ export default class Card {
         },
       };
     }
-    result.browse_visible = (!result.altArtInvestigator && !result.back_linked && !result.hidden);
+    result.browse_visible = 0;
+    if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
+      if (result.encounter_code != null) {
+        // It's an encounter card.
+        result.browse_visible += 2;
+      }
+      if (result.deck_limit > 0 || result.bonded_name) {
+        // It goesin a deck.
+        result.browse_visible += 1;
+      }
+    } else if (result.altArtInvestigator) {
+      result.browse_visible += 4;
+    }
     result.mythos_card = !!result.encounter_code || !!result.linked_card?.encounter_code;
     result.spoiler = result.spoiler || (result.linked_card && result.linked_card.spoiler);
     return result;

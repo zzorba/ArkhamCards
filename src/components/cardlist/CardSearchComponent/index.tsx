@@ -23,7 +23,6 @@ import { Platform } from 'react-native';
 
 
 interface ReduxProps {
-  tabooSetId?: number;
   filters?: FilterState;
   mythosMode: boolean;
   selectedSort?: SortType;
@@ -297,7 +296,6 @@ class CardSearchComponent extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    tabooSetId: getTabooSet(state, props.tabooSetOverride),
     filters: getFilterState(state, props.componentId),
     mythosMode: getMythosMode(state, props.componentId),
     selectedSort: getCardSort(state, props.componentId),

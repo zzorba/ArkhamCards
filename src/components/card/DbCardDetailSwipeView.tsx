@@ -130,7 +130,7 @@ function DbCardDetailSwipeView(props: Props) {
   useNavigationButtonPressed(({ buttonId }) => {
     if (currentCard) {
       if (buttonId === 'share') {
-        Linking.openURL(`https://arkhamdb.com/card/${card.code}#reviews-header`);
+        Linking.openURL(`https://arkhamdb.com/card/${currentCard.code}#reviews-header`);
       } else if (buttonId === 'deck') {
         showInvestigatorCards(currentCard.code);
       } else if (buttonId === 'faq') {

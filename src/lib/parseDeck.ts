@@ -578,7 +578,7 @@ export function parseDeck(
       return {
         id,
         quantity: slots[id],
-        invalid: !validation.canIncludeCard(card, false),
+        invalid: !validation.canIncludeCard(card, false) || (card.deck_limit !== undefined && slots[id] > card.deck_limit),
         limited: validation.isCardLimited(card),
       };
     });

@@ -3,7 +3,7 @@ import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from '@actions/types';
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import withPlayerCards, { PlayerCardProps, TabooSetOverride } from '@components/core/withPlayerCards';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import QueryProvider from '@components/data/QueryProvider';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
@@ -15,10 +15,9 @@ import { parseDeck } from '@lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
 import { NavigationProps } from '@components/nav/types';
 
-export interface EditDeckProps {
+interface OwnProps {
   deck: Deck;
   previousDeck?: Deck;
-  tabooSetId?: number;
   xpAdjustment?: number;
   storyOnly?: boolean;
   slots: Slots;
@@ -27,7 +26,9 @@ export interface EditDeckProps {
   updateSlots: (slots: Slots) => void;
 }
 
-type Props = NavigationProps & EditDeckProps & PlayerCardProps & DimensionsProps;
+export type EditDeckProps = OwnProps & TabooSetOverride;
+
+type Props = NavigationProps & OwnProps & PlayerCardProps & DimensionsProps;
 
 interface State {
   deckCardCounts: Slots;

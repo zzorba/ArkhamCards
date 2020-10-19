@@ -656,6 +656,7 @@ class DeckDetailView extends React.Component<Props, State> {
       xpAdjustment,
       tabooSetId,
     } = this.state;
+    console.log(`Pushing: ${deck.taboo_id} live(${tabooSetId})`);
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.Edit',
@@ -667,7 +668,7 @@ class DeckDetailView extends React.Component<Props, State> {
           ignoreDeckLimitSlots: ignoreDeckLimitSlots,
           updateSlots: this._updateSlots,
           xpAdjustment: xpAdjustment,
-          tabooSetId: tabooSetId !== undefined ? tabooSetId : deck.taboo_id,
+          tabooSetOverride: tabooSetId !== undefined ? tabooSetId : (deck.taboo_id || 0),
         },
         options: {
           statusBar: {

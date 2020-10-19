@@ -609,6 +609,7 @@ export default function({
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
+  console.log(`Taboo: ${tabooSetId} vs ${tabooSetOverride}`);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const {
     feed,

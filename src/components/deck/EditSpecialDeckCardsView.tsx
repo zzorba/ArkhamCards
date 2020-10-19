@@ -110,6 +110,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
           ignoreDeckLimitSlots,
           updateSlots: this._updateSlots,
           xpAdjustment: xpAdjustment,
+          tabooSetOverride: deck.taboo_id || 0,
           storyOnly: true,
         },
         options: {
