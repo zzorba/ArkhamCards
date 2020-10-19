@@ -214,19 +214,18 @@ class CardDetailSwipeView extends React.Component<Props, State> {
     return false;
   }
 
-  _countChanged = (count: number) => {
+  _countChanged = (code: string, count: number) => {
     const {
       onDeckCountChange,
     } = this.props;
     const { deckCardCounts } = this.state;
-    const card = this.currentCard();
-    if (card && onDeckCountChange) {
-      onDeckCountChange(card.code, count);
+    if (onDeckCountChange) {
+      onDeckCountChange(code, count);
     }
     this.setState({
       deckCardCounts: {
         ...deckCardCounts,
-        [card.code]: count,
+        [code]: count,
       },
     });
   };
@@ -253,6 +252,7 @@ class CardDetailSwipeView extends React.Component<Props, State> {
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
         <CardQuantityComponent
           key={card.id}
+          code={card.code}
           count={deckCardCounts[card.code] || 0}
           countChanged={this._countChanged}
           limit={deck_limit}

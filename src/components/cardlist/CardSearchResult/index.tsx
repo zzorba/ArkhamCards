@@ -65,12 +65,12 @@ export default class CardSearchResult extends React.PureComponent<Props> {
     onUpgrade && onUpgrade(card);
   };
 
-  _onDeckCountChange = (count: number) => {
+  _onDeckCountChange = (code: string, count: number) => {
     const {
       onDeckCountChange,
       card,
     } = this.props;
-    onDeckCountChange && onDeckCountChange(card.code, count);
+    onDeckCountChange && onDeckCountChange(code, count);
   };
 
   _renderCountButton = (count: number) => {
@@ -328,6 +328,7 @@ export default class CardSearchResult extends React.PureComponent<Props> {
       return (
         <CardQuantityComponent
           count={count || 0}
+          code={card.code}
           limit={Math.max(count || 0, typeof limit === 'number' ? limit : deck_limit)}
           countChanged={this._onDeckCountChange}
           showZeroCount={showZeroCount}
