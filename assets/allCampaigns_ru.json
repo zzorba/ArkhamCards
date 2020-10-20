@@ -23897,7 +23897,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Проверьте припасы",
             "steps": [
               "adjust_supplies_choice",
               "gain_sticky_goop"
@@ -25268,7 +25268,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You remember very little of the next few days. Your consciousness fades in and out as your body grips with exhaustion, and your mind feebly attempts to comprehend what exactly has happened to you.\nThe inhabitants of this place are the same creatures you saw Alejandro consorting with: immense corrugated cones of clammy flesh, with four thick limbs extending from the top. They are horrifying to look upon, but they do not harm you as you expected they might. Your first few days are spent restrained and questioned by the creatures, several of which are somehow able to communicate in English. Others reproduce your language using an odd futuristic machine, played like a musical instrument. You are reminded strangely of the jazz piano at the Nightingale. It is only then that you realize your body has been altered. You have no hands or fingers to play the keys, no legs to walk upon, no lungs to scream out. You are one of them now, one of the creatures that has taken you captive, and your original body is nowhere to be seen.\nDespite your captivity, the creatures do not seem intent on harming you. Instead, they merely interview you, asking all manner of questions about a broad range of topics: your society, your profession, your technology, your ecosystem, your human body. Their thirst for knowledge is unyielding, unending. Their questions range from the mundane to the complex. They implore you to write copiously in your own language, taking anything you write to store away in their vast archives. You are informed that you will be able to roam the city freely if you comply."
+      "text": "Следующие дни почти не остаются у вас в памяти. Сознание то угасает, то возвращается в ваше истерзанное усталостью тело, пока разум пытается понять, что всё-таки с вами произошло. \nВ этом месте живут те же существа, с которыми вы видели Алехандро: огромные складчатые конусы студенистой плоти, из вершины которых растут четыре толстые конечности. Они выглядят грозно, но, против ожидания, не причиняют вам вреда. Поначалу существа держат вас взаперти и допрашивают. Одни каким-то образом говорят по-английски, другие имитируют вашу речь с помощью причудливого футуристичного устройства, словно играя на музыкальном инструменте. Внезапно вы вспоминаете пианино в джазовом клубе «Соловей» и только тогда осознаёте, что ваше тело изменилось. У вас нет ни рук, ни пальцев, чтобы нажимать на клавиши, нет ног, чтобы ходить, нет лёгких, чтобы кричать. Вы стали одним из н и х , одним из существ, которые взяли вас в плен, и вокруг нет и следа вашего человеческого тела. \nНесмотря на то, что существа держат вас в плену, они, похоже, не намерены причинять вам вред. Они просто расспрашивают вас, интересуясь самым широким кругом тем: вашим обществом, вашей профессией, технологиями, экосистемой, человеческим телом. Их жажда знаний ненасытна, безгранична. Одни вопросы очень просты, другие ставят вас в тупик. Существа просят вас вести подробные записи на вашем языке и уносят всё написанное в свои необъятные архивы. В обмен на сотрудничество они обещают разрешить вам передвигаться по городу."
     },
     {
       "id": "choose_to_cooperate",
@@ -25279,7 +25279,7 @@
         "choices": [
           {
             "id": "cooperate",
-            "text": "<i>Cooperate and tell the creatures everything you know.</i>",
+            "text": "<i>Пойти навстречу и рассказать всё, что вам известно.</i>",
             "steps": [
               "intro_2",
               "cooperated_with_yithians"
@@ -25287,7 +25287,7 @@
           },
           {
             "id": "resist",
-            "text": "<i>Refuse and resist captivity.</i>",
+            "text": "<i>Отказаться и вырваться из плена.</i>",
             "steps": [
               "intro_3",
               "resisted_captivity"
@@ -25299,7 +25299,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You cooperate with the creatures, hoping to earn your freedom. You are sick of captivity, and perhaps you will be able to find a way home if you are able to roam the city at will. The creatures seem pleased that you are answering their questions, though their mannerisms are still completely alien to you. Days turn to weeks, perhaps even longer. It is difficult to tell. Finally, one of the creatures informs you that you are free to roam the halls of the city, with several restrictions: You are not allowed to do harm to your new body, for it belongs to another of their race, and you are not allowed to leave the city. Your restraints are lifted, and the creature watches with keen interest as you get used to your conical body."
+      "text": "Вы помогаете существам в надежде получить свободу. Плен вас гнетёт; к тому же, если вы сможете ходить по городу, у вас появится шанс найти дорогу домой. Похоже, существа довольны вашей сговорчивостью, хотя их эмоции остаются для вас полной загадкой. Дни складываются в недели, вы теряете ощущение времени. Наконец одно из существ сообщает, что вы теперь вправе свободно передвигаться, но не должны наносить вред своему телу, поскольку оно принадлежит другому представителю их вида, и не можете покидать пределы города. Ваши оковы снимают, и существо с любопытством наблюдает за тем, как вы привыкаете к своему новому обличью."
     },
     {
       "id": "cooperated_with_yithians",
@@ -25308,14 +25308,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cooperated_with_yithians",
-          "text": "the investigators cooperated with the Yithians."
+          "text": "сыщики подчинились йитианам."
         }
       ]
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "These creatures abducted you and even stole you from your own body. You refuse to give your captors even a single answer. You’d spit in their faces if you could—if you knew how to spit with such body, and if you knew which one of the creatures’ four distensible appendages was a face. Breaking free of your restrains is a hopeless endeavor, but you struggle to escape regardless. Your efforts do not go unnoticed, and one of the creatures is assigned to watch you. It seems more concerned with preventing you from harming your body than preventing you from escaping. After many days of captivity, you find a way to use this to your advantage. You struggle so hard against your restraints that they pierce into your leathery, cold flesh, drawing out a bit of viscous slime-blood. Your guard quickly apporoaches, clicking its claws together repeatedly. It undoes your restraints, and the moment it does, your claw appendages strike at what you believe to be the creature’s throat. It collapses to the floor, writhing in pain."
+      "text": "Эти твари не только похитили вас, но и лишили тела. Они не получат от вас ни единого ответа. Вы бы плюнули им в лицо, если бы знали, как сделать это в таком облике и какой из четырёх гибких отростков можно считать лицом. Вырваться из оков — безнадёжная затея, но тем не менее вы пытаетесь освободиться. Заметив ваши усилия, существа приставляют к вам стражника. Судя во всему, его больше заботит сохранность вашего тела, нежели сами попытки обрести свободу. После многих дней заключения вы понимаете, как использовать это к собственной пользе. Вы так сильно вырываетесь, что путы впиваются в вашу холодную кожистую плоть и из порезов выступает немного густой, слизистой крови. Охранник не мешкая подходит ближе, непрестанно пощёлкивая клешнями. Он снимает оковы, и в этот самый момент ваши клешни наносят удар туда, где у него должно быть горло. Тварь падает на пол, корчась от боли."
     },
     {
       "id": "resisted_captivity",
@@ -25324,21 +25324,21 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "resisted_captivity",
-          "text": "the investigators resisted captivity."
+          "text": "сыщики вырвались из плена."
         }
       ]
     },
     {
       "id": "set_aside_unique_assets",
-      "text": "Before drawing opening hands, each investigator searches their deck and play area for all unique [[Item]] assets. Set each of those assets aside, out of play. They do not exist in this time period."
+      "text": "Прежде чем набирать стартовую руку, каждый сыщик находит в своей колоде и игровой зоне все уникальные активы-[[вещи]]. Отложите все такие активы в сторону. В этом времени их не существует."
     },
     {
       "id": "set_aside_alejandro",
-      "text": "Before drawing opening hands, if a player has Alejandro Vela in their deck, search that investigator’s deck for Alejandro Vela and set him aside, out of play."
+      "text": "Прежде чем набирать стартовые руки, если карта «Алехандро Вела» находится в колоде какого-либо сыщика, найдите эту карту и отложите в сторону."
     },
     {
       "id": "body_of_yithian",
-      "text": "Replace each player’s investigator card with a Body of a Yithian investigator card (see <b>Body of a Yithian</b>, below)."
+      "text": "Замените карту сыщика каждого игрока картой «Тело йитианина» (см. раздел «Тело йитианина» ниже)."
     },
     {
       "id": "check_cooperated",
@@ -25367,12 +25367,12 @@
     {
       "id": "setup_locations_cooperated",
       "bullet_type": "small",
-      "text": "Put the Interview Room (<i>Arrival Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Arrival Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "text": "Введите в игру карту «Дознавательская (зал прибытия)» (это одна из трёх локаций «Дознавательская»). Все сыщики начинают игру в «Дознавательской (зал прибытия)». Перемешайте две другие локации «Дознавательская» и также введите их в игру."
     },
     {
       "id": "yithian_observer_cooperated",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for a Yithian Observer and spawn it unengaged in the lead investigator’s location (note that it gains aloof due to the text on act 1a). Then, each investigator gains 1 clue from the token pool."
+      "text": "Найдите среди отобранных карт контактов одного «Йитианского наблюдателя» и выложите его не сражающимся в локацию ведущего сыщика (этот враг считается Осторожным согласно тексту сцены 1а). Затем каждый сыщик получает 1 улику из резерва."
     },
     {
       "id": "check_resisted",
@@ -25395,12 +25395,12 @@
     {
       "id": "setup_locations_resisted",
       "bullet_type": "small",
-      "text": "Put the Interview Room (<i>Restraining Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Restraining Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "text": "Введите в игру карту «Дознавательская (зал изоляции)» (это одна из трёх локаций «Дознавательская»). Все сыщики начинают игру в «Дознавательской (зал изоляции)». Перемешайте две другие локации «Дознавательская» и также введите их в игру."
     },
     {
       "id": "yithian_observer_resisted",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for a Yithian Observer and place it in the victory display."
+      "text": "Найдите среди отобранных карт контактов одного «Йитианского наблюдателя» и добавьте его к победному счёту."
     },
     {
       "id": "location_layout",
@@ -25431,7 +25431,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set The Custodian aside, out of play."
+      "text": "Отложите в сторону карту «Смотритель»."
     },
     {
       "id": "encounter_deck",
@@ -25440,23 +25440,23 @@
     {
       "id": "body_of_yithian_rule",
       "type": "rule_reminder",
-      "title": "Body of a Yithian",
-      "text": "During the setup for this scenario, each investigator is instructed to replace their investigator card with one of the Body of a Yithian investigator cards provided in this Mythos Pack.",
+      "title": "Тело йитианина",
+      "text": "При подготовке к этому сценарию каждый игрок должен заменить свою карту сыщика картой «Тело йитианина», которая входит в это дополнение.",
       "bullets": [
         {
-          "text": "Each investigator’s deck remains the same, but for the duration of this scenario, they must use a Body of a Yithian investigator card, and therefore cannot use any of their investigator’s abilities. Each investigator should still use their investigator mini- card so they can tell who is who."
+          "text": "Колода каждого сыщика остаётся прежней, однако на протяжении этого сценария он должен использовать карту сыщика «Тело йитианина» и поэтому не может применять свойства своего сыщика. Каждый сыщик по-прежнему пользуется мини-картой своего сыщика, чтобы было понятно, кто есть кто."
         },
         {
-          "text": "Any trauma that would normally be placed on your investigator is transferred to your Body of a Yithian investigator card."
+          "text": "Поместите на вашу карту «Тело йитианина» все раны и ужас от травм, которые должны были положить на свою карту сыщика."
         },
         {
-          "text": "Any cards that were attached to or placed underneath your investigator card are attached to or placed underneath your Body of a Yithian card."
+          "text": "Карты, которые прикрепляются к вашей карте сыщика или подкладываются под неё, прикрепите к своей карте «Тело йитианина» или подложите под неё."
         },
         {
-          "text": "For the duration of the scenario, your Body of a Yithian card has the same card title as your former investigator card. <i>For example: If you were playing as Wendy Adams, treat the Body of a Yithian card as if its title were “Wendy Adams” for the duration of this scenario.</i>"
+          "text": "На протяжении этого сценария ваша карта «Тело йитианина» называется так же, как ваша бывшая карта сыщика. <i>Например, если вы играли за Венди Адамс, в этом сценарии считайте, что ваша карта «Тело йитианина» называется «Венди Адамс».</i>"
         },
         {
-          "text": "The Body of a Yithian card bears the encounter set icon for The City of Archives, and therefore cannot be used in any scenario other than The City of Archives unless otherwise noted."
+          "text": "Карта «Тело йитианина» отмечена символом набора контактов «Город архивов», поэтому её нельзя использовать в иных сценариях, кроме «Города архивов», если не сказано иного."
         }
       ]
     },
@@ -25467,7 +25467,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "had_memories_expunged",
-          "text": "the investigators had their memories expunged."
+          "text": "сыщикам стёрли память."
         }
       ]
     },
@@ -25551,13 +25551,13 @@
     },
     {
       "id": "process_was_successful",
-      "text": "Because 5 tasks were completed, record in your Campaign Log that <i>the process was successful</i>. Each investigator earns 2 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Поскольку выполнены 5 пунктов, запишите в журнал кампании, что <i>перенос прошёл успешно</i>. Каждый сыщик получает 2 опыта дополнительно, проникнув в тайны истории Земли.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_was_successful",
-          "text": "the process was successful."
+          "text": "перенос прошёл успешно."
         },
         {
           "type": "earn_xp",
@@ -25568,13 +25568,13 @@
     },
     {
       "id": "process_backfired",
-      "text": "Because 4 tasks were completed, record in your Campaign Log that <i>the process backfired</i>. Each investigator earns 1 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Поскольку выполнены 4 пункта, запишите в журнал кампании, что <i>перенос прошёл неудачно</i>. Каждый сыщик получает 1 опыт дополнительно, проникнув в тайны истории Земли.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_backfired",
-          "text": "the process backfired."
+          "text": "перенос прошёл неудачно."
         },
         {
           "type": "earn_xp",
@@ -25585,13 +25585,13 @@
     },
     {
       "id": "process_backfired_spectacularly",
-      "text": "Because only 3 tasks were completed, record in your Campaign Log that <i>the process backfired spectacularly</i>.",
+      "text": "Поскольку выполнены 3 пункта, запишите в журнал кампании, что <i>перенос прошёл крайне неудачно</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_backfired_spectacularly",
-          "text": "the process backfired spectacularly."
+          "text": "перенос прошёл крайне неудачно."
         }
       ]
     },
@@ -25641,7 +25641,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Tasks on act 2b that were completed:",
+        "text": "Пункты на сцене 2b, которые вы выполнили:",
         "min": 3,
         "max": 8,
         "effects": [
@@ -25650,7 +25650,7 @@
             "section": "hidden",
             "id": "tasks_completed",
             "operation": "set_input",
-            "text": "#X# tasks were completed"
+            "text": "Выполнено #X# пунктов"
           }
         ]
       }
@@ -25663,7 +25663,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_was_perfected",
-          "text": "the process was perfected."
+          "text": "перенос прошёл безупречно."
         },
         {
           "type": "earn_xp",
@@ -25682,7 +25682,7 @@
         "physical",
         "mental"
       ],
-      "text": "“Alejandro, what are you—?” You suddenly cry out. A nurse stands over you, peering into your eyes with a small light. You push the nurse away and rise to your feet, suddenly puzzled and disoriented. Despite the nurse’s protests, you wobble feebly out of the room. You are in a hospital, its white halls smelling faintly of disinfectant and other chemicals. Just moments prior, hadn’t you been exploring some kind of underground cavern?... You cannot recall.\n“Excuse me? Come back, you must rest!” The nurse calls out to you, gripping your forearm and pulling you back to your cot. She examines you closely while you recover from the shock of being transported so far in so short a time. “Who is Alejandro?” she asks, and you struggle to recall. The name doesn’t ring a bell.\nYou ask the nurse how you came to be here, wondering why she isn’t surprised at your sudden appearance. “Why, you admitted yourself to St. Mary’s just last night. Do you not remember?” You have no memory of this, and you are starting to grow concerned. “You were acting a little strangely, if I may be so bold. And you spoke in a strange fashion, almost as if English weren’t your first language. But now I see that you probably just drank a little bit too much.” She notices your questioning expression and smiles. “Don’t worry. We get that kind of thing quite often these days, now that all the bars and pubs are on the up-and-up again.”\nYou examine your face in the mirror. You are tired and older than you remember. Something important lies on the very edge of your memory, fuzzy and blurred. It takes about a minute before the significance of the nurse’s last statement catches up to you. Turning back toward the nurse, you ask what year it is, terrified of the answer.\n“Why, 1934 of course. My, you must have had a heck of a night!” She chuckles.",
+      "text": "Внезапно вы слышите собственный крик: «Алехандро, что ты…» Над вами стоит медсестра, светя вам в глаза фонариком. Вы отталкиваете её и в смятении вскакиваете на ноги. Несмотря на её протесты, вы, пошатываясь, выходите из комнаты. Вы в больнице: белёные стены коридора пахнут хлоркой и прочими химикатами. Разве вы только что не исследовали какую-то пещеру?.. Вы не помните.\n«Простите, — кричит медсестра. — Вернитесь, вам надо отдохнуть». Она берёт вас за локоть и ведёт обратно к койке. Пока вы приходите в себя от столь далёкого и стремительного путешествия, сестра внимательно рассматривает вас. «Кто такой Алехандро?» — интересуется она, и вы силитесь вспомнить. Но это имя ничего вам не говорит.\nВы спрашиваете медсестру, как оказались здесь и почему она не удивлена вашим внезапным появлением. «Так вы же только вчера вечером явились в больницу святой Марии. Неужто забыли?» — Вы не помните ничего подобного, и это вас беспокоит. — «Осмелюсь сказать, вы вели себя странновато. И говорили чудно,́ словно английский вам не родной. Но теперь вижу, что вы, должно быть, просто чуток перебрали. — Заметив ваше удивление, она улыбается: — Да не беспокойтесь. Теперь такое частенько случается, с тех пор как бары да кабаки снова открылись».\nОтражение в зеркале выглядит уставшим и более старым, чем вы помните. Где-то в тумане на краю вашей памяти прячется что-то крайне важное. Только через минуту до вас доходит смысл последних слов медсестры. Вы оборачиваетесь к ней и спрашиваете, какой сейчас год, боясь услышать ответ.\n«Ну конечно, 1934-й, — усмехается она. — Боже, ну и бурная у вас выдалась ночка».",
       "steps": [
         "had_memories_expunged",
         "all_insane",
@@ -25692,7 +25692,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "You awaken on the cold stone surface of the cavern floor, your mind dizzy from its journey through time and space.",
+      "text": "Вы приходите в себя на холодном каменном полу пещеры. Ваша голова кружится после перемещения во времени и пространстве.",
       "steps": [
         "record_number_of_tasks",
         "check_number_of_tasks",
@@ -25728,7 +25728,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Several hours after you wake, your laborious descent pays dividends. The red glow emanating from the bottom of the steps grows brighter with each step. The stone floor finally levels off, and the choking tunnel walls open to reveal a labyrinthine network of immense, far-reaching caverns. Littered throughout the caverns are the ruins of a vast city, the likes of which you have never seen. The elaborate stone architecture has been worn away by ages of abandonment, but you sense that there is a history here that runs deeper than you can even fathom. When you turn around to question Ichtaca, you notice a faint yellow glow in her eyes, her pupils narrowed and contracted. “Yoth...the last refuge of Valusia...” she quietly intones.\nJust then, a terrifying roar echoes throughout the cavern. The walls and floor shake with tremendous force, and the red glow that permeates the area brightens. A flood of hisses emerges from the tunnels all around you. Ichtaca walks to the edge of a nearby precipice and looks out over the vast depths. “He is here. I feel his presence. The Father of the Serpents...<b>Yig</b>.”"
+      "text": "Через несколько часов после пробуждения ваш утомительный спуск приносит плоды. С каждым шагом красный свет, струящийся от подножия лестницы, становится ярче. Наконец каменный пол выравнивается, а тесные стены туннеля расходятся, открывая вид на бесконечный лабиринт необъятных пещер. Их усеивают руины огромного города, подобных которым вы никогда не видели. От долгого запустения грандиозные каменные здания обветшали, но вы чувствуете, что история этого места древнее, чем вы способны осознать. Вопросительно обернувшись к Ичтаке, вы видите, что её зрачки сужены, а глаза тускло светятся жёлтым. «Йот… Последнее прибежище Валузии…» — еле слышно произносит она.\nВнезапно по пещере разносится леденящий душу рык. Стены и пол неистово содрогаются, а заливающий пространство красный свет становится ярче. Со всех сторон из туннелей выплёскивается громкое шипение. Ичтака подходит к краю ближайшего обрыва и всматривается в бездонные глубины. «Он здесь. Я чувствую его. Отец Змей… <b>Йиг</b>»."
     },
     {
       "id": "check_forging_own_path",
@@ -25757,17 +25757,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
+      "text": "Теперь вы понимаете, что Ичтака ведёт свою игру. Как и Алехандро — они оба использовали вас в своих целях, скрывая правду. Без лишних слов вы хватаетесь за оружие и требуете объяснений. «Йиг велит доставить реликвию к Средоточию», — с трепетом отвечает Ичтака. Свет в её глазах разгорается, а кожа начинает покрываться чешуёй. Вы прищуриваетесь и оттесняете её к самому краю пропасти, лишая пути к побегу. «Реликвия действительно не должна попасть в руки Братства… Ибо только Валузии суждено возродиться в былой славе! Йиг зовёт, и я должна явиться». Прежде чем вы успеваете что-то сделать, она бросается с обрыва в бездну."
     },
     {
       "id": "ichtaca_set_against_forging_own_path",
-      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>. Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "Запишите в журнал кампании, что <i>Ичтака настроена против вас</i>. Добавьте в мешок хаоса 1 жетон [elder_thing] до конца кампании.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ичтака настроена против вас."
         },
         {
           "type": "add_chaos_token",
@@ -25806,12 +25806,12 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "You approach Ichtaca and rest a hand on her shoulder. Your companion takes a deep breath and turns to face you. Her eyes are cast downward in shame, and they have returned to their normal color. “I...I’m sorry. I have brought you to your ruin. He called out to me, long ago, told me of my heritage, of my people. I did his bidding willingly.”\nShe clenches her fists, her gaze meeting yours. “But now I realize I was wrong. Humanity deserves its time on Earth. You may have inherited it from far more powerful forces, but it is humanity’s time, not theirs.” You don’t completely understand what she is saying, but you understand the implication. Whatever Ichtaca truly is, she is on your side. A calm silence lingers between you, an unspoken bond that joins you as one. “We must get to the Nexus and prevent the serpents from recovering the relic,” she explains after a few moments, breaking the silence. You nod in agreement."
+      "text": "Вы подходите к Ичтаке и кладёте руку ей на плечо. Воительница делает глубокий вдох и поворачивается к вам. Её виновато опущенные глаза снова приобрели обычный цвет. «П-простите меня. Я привела вас к гибели. Он воззвал ко мне, ещё давно, рассказал о моём наследии, о моём народе. Я была рада исполнить его волю. — Она сжимает кулаки и смотрит вам прямо в глаза. — Но теперь я вижу, что ошибалась. Человечество заслуживает жить на этой планете. Пусть она досталась вам от куда более могущественных сил, но сейчас время человечества — не их время». Вы не вполне её понимаете, но главное ясно: кем бы Ичтака ни была на самом деле, она на вашей стороне. В умиротворённой тишине вы чувствуете, как между ней и вами возникает незримая нерушимая связь. «Нужно добраться до Средоточия и не дать змеям захватить реликвию», — говорит она после минутного молчания. Вы киваете в знак согласия."
     },
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You hesitate, unsure what to do next. What are Ichtaca’s true motives? Why has she led you here? Before you have the chance to react, she draws her bow and aims an arrow at your heart. “Thank you for aiding me this far,” Ichtaca says curtly, “but the time has come for us to part ways. Yig has called, and I must answer.” Her yellow eyes narrow and shine brightly."
+      "text": "Вы медлите, не зная, как поступить. Что на самом деле нужно Ичтаке? Зачем она привела вас сюда? Прежде чем вы успеваете что-то сделать, Ичтака достаёт лук и направляет стрелу вам в сердце. «Спасибо, что помогли добраться сюда, — сухо произносит она, — но теперь наши пути расходятся. Йиг зовёт, и я должна явиться». Её блестящие жёлтые глаза сужаются."
     },
     {
       "id": "ichtaca_set_against",
@@ -25820,7 +25820,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ичтака настроена против вас."
         }
       ]
     },
@@ -25844,7 +25844,7 @@
     {
       "id": "lose_ichtaca",
       "bullet_type": "small",
-      "text": "Remove Ichtaca from all investigator’s deck for the remainder of the campaign.",
+      "text": "Если карта «Ичтака» находится в колоде какого-либо сыщика, удалите её из этой колоды до конца кампании.",
       "effects": [
         {
           "type": "remove_card",
@@ -25896,23 +25896,23 @@
     {
       "id": "intro_5",
       "type": "story",
-      "text": "“You must leave this place at once. This is not humanity’s battle. It is ours. We cannot let you or the Brotherhood foil our plans. Not now, not when we are so close.” Her hand wavers for a moment, and her eyes flicker again. You can tell that something is tearing at her, weighing on her mind. Finally, she speaks again. “Go now. Before I change my mind. And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "«Вы должны немедленно уйти отсюда. Это наша битва, а не людская. Мы не позволим ни вам, ни Братству нарушить наши планы. Не сейчас, когда успех так близок». Её рука подрагивает, а глаза снова вспыхивают. Вы видите, что она встревожена, что-то не даёт ей покоя. Наконец она продолжает: «Уходите, пока я не передумала. И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": "Now drop your weapons.” The betrayal stings your chest, and you are gripped with anger and despair. Thoughts of escape flash across your mind, but you have seen her skill with a bow—with her steady aim, you would be dead before you took two steps. You have no choice but to comply. Your weapons clatter to the ground, one at a time. “Good. Now the relic: hand it to me.” Grimacing, you take a few steps forward and offer the relic to Ichtaca."
+      "text": "«Бросьте оружие». Предательство жалит вас в самое сердце, наполняя его гневом и отчаянием. На какой-то миг вы задумываетесь о бегстве, но вспоминаете, как мастерски Ичтака стреляет из лука: вы будете мертвы, не пробежав и пары шагов. Вам остаётся только подчиниться. Вы по очереди роняете оружие на землю. «Отлично. Теперь отдайте мне реликвию». Скривившись, вы делаете несколько шагов вперёд и протягиваете ей реликвию."
     },
     {
       "id": "check_pocketknife",
-      "text": "Check your supplies to see if any investigator has a pocketknife.",
+      "text": "Проверьте, есть ли среди припасов у кого-либо из сыщиков складной нож.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Складной нож",
         "options": [
           {
             "boolCondition": true,
@@ -25934,16 +25934,16 @@
     {
       "id": "intro_7",
       "type": "story",
-      "text": "As Ichtaca reaches out to grab the relic, you pull out your concealed pocketknife and quickly attack, catching her by surprise. The blade cuts deeply across her forearm. Blood sprays across your chest, and she staggers with pain, gripping her arm. Her heel clips a rock near the edge of the precipice, and she tumbles over the side of the ledge, her scream growing distant as she falls. You barely have time to recover from the shock of what just happened, as another colossal roar fills the cavern, and the ground shakes. You gather your belongings and continue your descent."
+      "text": "Когда Ичтака протягивает руку к реликвии, вы резко выхватываете припрятанный нож и наносите предательнице внезапный удар. Лезвие глубоко рассекает ей предплечье, заливая вашу грудь кровью. Ичтака отшатывается, схватившись за раненую руку, запинается о камень и падает в пропасть. Вскоре её вопль затихает. Вы едва успеваете прийти в себя после случившегося, как раздаётся ещё один ужасный рык и земля сотрясается. Подобрав свои вещи, вы продолжаете спуск."
     },
     {
       "id": "intro_8",
       "type": "story",
-      "text": "Ichtaca grabs the relic. You can see the skin on the back of her hand growing hard and scaly. You take a few steps back, knuckles white with anger. “Go now. Before I change my mind,” she says. “And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "Ичтака хватает реликвию. Вы видите, что кожа на тыльной стороне её ладоней стала жёсткой и чешуйчатой. Сжав побелевшие от гнева кулаки, вы отступаете. «Уходите, пока я не передумала, — произносит она. — И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
     {
       "id": "lost_relic",
-      "text": "In your Campaign Log, cross off <i>the investigators found the missing relic</i> and record <i>the relic is missing</i>.",
+      "text": "Вычеркните из журнала заметку <i>«Сыщики нашли пропавшую реликвию»</i> и запишите, что <i>реликвия пропала</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -25955,7 +25955,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "реликвия пропала."
         }
       ]
     },
@@ -25978,7 +25978,7 @@
     },
     {
       "id": "remove_relic",
-      "text": "Remove The Relic of Ages from all investigator’s decks for the remainder of the campaign.",
+      "text": "Если карта «Реликвия веков» находится в колоде какого-либо сыщика, удалите её из этой колоды до конца кампании.",
       "effects": [
         {
           "type": "remove_card",
@@ -25989,7 +25989,7 @@
     {
       "id": "check_yigs_fury",
       "type": "branch",
-      "text": "Check Campaign Log to see how many marks are under 'Yig's Fury'",
+      "text": "Подсчитайте отметки в графе журнала «Ярость Йига»",
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
@@ -26132,32 +26132,32 @@
     {
       "id": "fury_0",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 0, search the gathered encounter cards for Yig and each copy of Pit Warden. Remove those cards from the game."
+      "text": "Поскольку там нет отметок, найдите среди отобранных карт контактов «Йига» и всех «Стражей глубин». Удалите эти карты из игры."
     },
     {
       "id": "fury_1_to_5",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 1 and 5, no changes are made."
+      "text": "Поскольку там 1–5 отметок, ничего не меняется."
     },
     {
       "id": "fury_6_to_10",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 6 and 10, remove agenda 1a from the game. The game begins at agenda 2a."
+      "text": "Поскольку там 6–10 отметок, удалите из игры замысел 1a. Игра начинается с замысла 2a."
     },
     {
       "id": "fury_11_to_14",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 11 and 14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
+      "text": "Поскольку там 11–14 отметок, удалите из игры замыслы 1a и 2a. Игра начинается с замысла 3a."
     },
     {
       "id": "fury_15_to_17",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 15 and 17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
+      "text": "Поскольку там 15–17 отметок, удалите из игры замыслы 1a, 2a и 3a. Игра начинается с замысла 4a."
     },
     {
       "id": "fury_18_to_20",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 18 and 20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a.",
+      "text": "Поскольку там 18–20 отметок, удалите из игры замыслы 1a, 2a, 3a и 4a. Игра начинается с замысла 5a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -26170,7 +26170,7 @@
     {
       "id": "fury_21",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a.",
+      "text": "Поскольку там 21 отметка или больше, удалите из игры замыслы 1a, 2a, 3a, 4a и 5a. Игра начинается с замысла 6a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -26188,11 +26188,11 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each of the 10 single-sided locations aside, out of play. Draw one of those locations at random other than Steps of Yoth, and put it into play. Each investigator begins play at the randomly chosen location."
+      "text": "Отложите в сторону все 10 односторонних локаций. Случайным образом возьмите одну из них (кроме «Ступеней Йота») и введите в игру. Все сыщики начинают игру в этой локации."
     },
     {
       "id": "maybe_setup_harbinger",
-      "text": "Check Campaign Notes. If <i>the Harbinger is still alive.</i>",
+      "text": "Сверьтесь с журналом. Если <i>Предвестник ещё жив.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -26258,19 +26258,19 @@
     },
     {
       "id": "set_aside_yig",
-      "text": "Set the Yig enemy aside, out of play."
+      "text": "Отложите в сторону «Йига»."
     },
     {
       "id": "put_yig_in_pursuit",
-      "text": "Because it is agenda 6a, put the set-aside Yig enemy in the pursuit area."
+      "text": "Поскольку сейчас замысел 6a, переместите отложенного «Йига» в зону преследования."
     },
     {
       "id": "setup_depth",
-      "text": "Place 1 resource token on the scenario reference card, under “Current Depth.” For the remainder of the scenario, the number of resources under “Current Depth” indicates the current depth level. (See “Depth Level,” below.)"
+      "text": "Положите 1 жетон ресурса в область «Текущая глубина» на памятке сценария. До конца сценария число ресурсов в данной области указывает на текущую глубину (см. «Глубина» ниже)."
     },
     {
       "id": "set_aside_relic",
-      "text": "Set the Relic of Ages (<i>Repossess the Past</i>) aside, out of play."
+      "text": "Отложите в сторону карту «Реликвия веков (возвращает прошлое)»."
     },
     {
       "id": "set_aside_poison",
@@ -26283,14 +26283,14 @@
     {
       "id": "depth_level_rule",
       "type": "rule_reminder",
-      "title": "Depth Level",
-      "text": "Throughout this scenario, the number of resources under “Current Depth” on the scenario reference card indicates the current depth level. As the investigators journey deeper into Yoth by completing act 1, resources are added to the current depth level, and play continues until the investigators reach a certain depth level, or are defeated. Deeper levels of Yoth are deadlier, but the deeper the level the investigators are able to reach, the better the resolution of this scenario will be.\nThe current depth level has no game effect on its own; however, some encounter card effects may change or become stronger depending on the current depth level."
+      "title": "Глубина",
+      "text": "В этом сценарии число ресурсов в области «Текущая глубина» на памятке сценария указывает на текущую глубину. По мере того как сыщики заходят всё дальше в Йот, завершая сцену 1, к текущей глубине добавляются ресурсы, и игра продолжается, пока сыщики не достигнут определённой глубины или не будут побеждены. Чем дальше в Йот, тем опаснее, но чем глубже заберутся сыщики, тем благоприятнее будет исход сценария.\nСама по себе текущая глубина не влияет на игру, однако эффекты некоторых карт контактов могут измениться или стать сильнее в зависимости от текущей глубины."
     },
     {
       "id": "pursuit_rule",
       "type": "rule_reminder",
-      "title": "Pursuit",
-      "text": "Some cards in this scenario reference an area called the “pursuit area.” The pursuit area is an out-of-play area next to the act and agenda deck which enemies can enter and leave via card effects. Generally speaking, enemies in play will move to the pursuit area whenever the investigators reach the next depth level. <b>Although the pursuit area is out of play, whenever an enemy moves to the pursuit area, it keeps all tokens and attachments.</b>\nEnemies in the pursuit area are considered to be “in pursuit.” Enemies that are in pursuit are considered to be out of play, and cannot be affected by player cards or investigator actions. However, enemies that are in pursuit can re-enter play by a variety of card abilities."
+      "title": "Преследование",
+      "text": "На некоторых картах этого сценария упоминается зона преследования. Это особая внеигровая зона рядом с колодами сцен и замыслов. Враги могут входить в зону преследования и выходить из неё посредством эффектов карт. Как правило, враги перемещаются из игры в зону преследования всякий раз, когда сыщики достигают очередной глубины. <b>Хотя зона преследования находится вне игры, при перемещении в эту зону с врага не сбрасываются жетоны и прикреплённые карты. </b>\nВраги в зоне преследования называются преследующими. Преследующие враги находятся вне игры, поэтому на них не влияют карты игроков и действия сыщиков. Однако преследующие враги могут вернуться в игру с помощью свойств карт."
     },
     {
       "id": "fell_into_depths",
@@ -26299,7 +26299,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fell_into_depths",
-          "text": "the investigators fell into the depths."
+          "text": "сыщики упали в глубины."
         }
       ]
     },
@@ -26308,14 +26308,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Depth level when the scenario ended:",
+        "text": "Проверьте текущую глубину на конец сценария:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "hidden",
             "id": "final_depth",
             "operation": "set_input",
-            "text": "#X# depth"
+            "text": "Глубина: #X#"
           }
         ]
       }
@@ -26363,7 +26363,7 @@
     },
     {
       "id": "depth_1_fall",
-      "text": "Because the current depth level is 1, the fall is fatal, and the darkness of N’kai devours the shattered corpses. Each investigator is <b>killed</b>. The investigators lose the campaign.",
+      "text": "Поскольку текущая глубина равна 1, падение оказывается смертельным и тьма Н’кая поглощает разбитые вдребезги тела. Все сыщики <b>убиты</b>. Сыщики проиграли кампанию.",
       "effects": [
         {
           "type": "trauma",
@@ -26384,7 +26384,7 @@
     },
     {
       "id": "depth_2_fall",
-      "text": "Because the current depth level is 2, each investigator suffers 2 physical trauma and searches the collection for a random basic Injury weakness, adding it to their deck.",
+      "text": "Поскольку текущая глубина равна 2, каждый сыщик получает 2 физические травмы, находит в комплекте 1 случайную базовую слабость-[[повреждение]] и включает её в свою колоду.",
       "effects": [
         {
           "type": "trauma",
@@ -26440,7 +26440,7 @@
     },
     {
       "id": "depth_3_fall",
-      "text": "Because the current depth level is 3, each investigator suffers 1 physical trauma.",
+      "text": "Поскольку текущая глубина равна 3, каждый сыщик получает 1 физическую травму.",
       "effects": [
         {
           "type": "trauma",
@@ -26456,7 +26456,7 @@
     },
     {
       "id": "depth_4_fall",
-      "text": "Because the current depth level is 4, you suffer no ill effects.",
+      "text": "Поскольку текущая глубина равна 4, с вами не происходит ничего плохого.",
       "effects": [
         {
           "type": "earn_xp",
@@ -26541,7 +26541,7 @@
       "input": {
         "type": "counter",
         "text": "Победный счёт:",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Каждый сыщик получает дополнительно столько опыта, какова текущая глубина.",
         "effects": [
           {
             "type": "earn_xp",
@@ -26557,7 +26557,7 @@
       "input": {
         "type": "counter",
         "text": "Победный счёт:",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Каждый сыщик получает дополнительно столько опыта, какова текущая глубина.",
         "effects": [
           {
             "type": "earn_xp",
@@ -26574,7 +26574,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "nexus_is_near",
-          "text": "the nexus is near."
+          "text": "Средоточие близко."
         }
       ]
     },
@@ -26635,7 +26635,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Проверьте припасы",
             "steps": [
               "cross_out_rope"
             ],
@@ -26690,7 +26690,7 @@
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the set-aside Steps of Yoth and 4 of the remaining single-sided locations and shuffling them together.",
+      "text": "Соберите и перемешайте колоду разведки. В неё входят отложенная локация «Ступени Йота» и 4 случайные односторонние локации из оставшихся.",
       "bullets": [
         {
           "text": "Shuffle the Perils of Yoth treachery into the exploration deck."
@@ -26798,7 +26798,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
+      "text": "Вы идёте уже много часов, но не видели и малой части этого бескрайнего подземного мира. Люди могли бы веками наносить его на карту — но так и не обойти целиком. Как быстро вы бы ни спускались в глубины, змеи всё время дышат вам в затылок. Вы вторглись на их территорию, и они куда лучше вас знают эти адские туннели. Раны замедляют ваш шаг, ужас мешает принимать верные решения, и смерть от рук этих тварей кажется неизбежной. Червь отчаяния проникает в ваш разум. Вы пересекаете широкую тёмную пропасть по одному из бесчисленных каменных мостов, когда змеи наконец настигают вас. Они приближаются с обеих сторон, гоня вас наконечниками копий к опасному краю моста. Небольшой кусок камня под вашей ногой откалывается и летит в кромешную пустоту. Вы не слышите его удара о дно пропасти. Надежды на спасение нет — вы можете только принять свою судьбу. Остриё копья подталкивает вас ещё ближе к краю. Вы закрываете глаза и падаете.",
       "steps": [
         "fell_into_depths",
         "record_final_depth",
@@ -26813,7 +26813,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
+      "text": "Всё было против вас — но вы добрались до цели. Назойливый красный свет, который окутывал вас от самого входа в Йот, уступает место непроницаемо-чёрной темноте. Средоточие должно быть рядом… Вы ощущаете его.",
       "steps": [
         "nexus_is_near",
         "check_harbinger",
@@ -27291,7 +27291,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Проверьте припасы",
             "steps": [
               "adjust_supplies_choice",
               "gain_mysterious_scepter"
@@ -28519,7 +28519,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "реликвия пропала."
         }
       ]
     },
@@ -28717,7 +28717,7 @@
         "branches": [
           {
             "id": "cross_out_supplies",
-            "text": "Adjust supplies",
+            "text": "Проверьте припасы",
             "steps": [
               "cross_out_medicine"
             ]
@@ -29162,7 +29162,7 @@
           },
           {
             "id": "pocketknife",
-            "name": "Pocketknife",
+            "name": "Складной нож",
             "description": "Маловат для полноценного оружия, зато легко спрятать.",
             "cost": 2
           },
@@ -30328,8 +30328,8 @@
 },
 {
   "id": "tfa_interlude4",
-  "scenario_name": "Those Held Captive",
-  "full_name": "Interlude IV: Those Held Captive",
+  "scenario_name": "На свободе",
+  "full_name": "Интерлюдия IV: На свободе",
   "type": "interlude",
   "setup": [
     "check_process_backfired",
@@ -30351,7 +30351,7 @@
     {
       "id": "check_process_backfired",
       "type": "branch",
-      "text": "Check Campaign Log. If <i>the process backfired</i>...",
+      "text": "Сверьтесь с журналом. Если <i>перенос прошёл неудачно</i>…",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -30375,7 +30375,7 @@
     {
       "id": "check_process_backfired_spectacularly",
       "type": "branch",
-      "text": "Check Campaign Log. If <i>the process backfired spectacularly</i>...",
+      "text": "Сверьтесь с журналом. Если <i>перенос прошёл крайне неудачно</i>…",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -30393,7 +30393,7 @@
     {
       "id": "reveal_one_token",
       "type": "input",
-      "text": "Each investigator reveals a random chaos token from the chaos bag. Consult the list below to see what side effects result from your mishap.",
+      "text": "Каждый сыщик вытягивает из мешка случайный жетон хаоса. Найдите в списке ниже побочные эффекты вашей неудачи.",
       "input": {
         "type": "investigator_choice",
         "investigator": "all",
@@ -30402,14 +30402,14 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign] or +1 token.",
-            "description": "Suffer no ill efects.",
+            "text": "[elder_sign] или +1.",
+            "description": "Не происходит ничего плохого.",
             "effects": []
           },
           {
             "id": "skull_or_number",
-            "text": "[skull] token or any number other than +1",
-            "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[skull] или жетон с любым числом, кроме +1",
+            "description": "Вы получаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -30420,8 +30420,8 @@
           },
           {
             "id": "bad_stuff",
-            "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
-            "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[cultist], [tablet], [elder_thing], или [auto_fail]",
+            "description": "До конца кампании вы должны использовать карту «Тело йитианина» вместо своей обычной карты сыщика. Кроме того, вы приобретаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -30441,7 +30441,7 @@
     {
       "id": "reveal_two_tokens",
       "type": "input",
-      "text": "Each investigator reveals two random chaos token from the chaos bag, choosing the token that is lower on the list to resolve, and ignoring the other. Consult the list below to see what side effects result from your mishap.",
+      "text": "Каждый сыщик вытягивает два жетона, выбирает и разыгрывает тот из них, что находится ближе к концу списка, а другой игнорирует. Найдите в списке ниже побочные эффекты вашей неудачи.",
       "input": {
         "type": "investigator_choice",
         "investigator": "all",
@@ -30450,14 +30450,14 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign] or +1 token.",
-            "description": "Suffer no ill efects.",
+            "text": "[elder_sign] или +1.",
+            "description": "Не происходит ничего плохого.",
             "effects": []
           },
           {
             "id": "skull_or_number",
-            "text": "[skull] token or any number other than +1",
-            "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[skull] или жетон с любым числом, кроме +1",
+            "description": "Вы получаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -30468,8 +30468,8 @@
           },
           {
             "id": "bad_stuff",
-            "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
-            "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[cultist], [tablet], [elder_thing], или [auto_fail]",
+            "description": "До конца кампании вы должны использовать карту «Тело йитианина» вместо своей обычной карты сыщика. Кроме того, вы приобретаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -30488,12 +30488,12 @@
     },
     {
       "id": "explain_mind_recovered",
-      "text": "Check the chaos bag and the Campaign Log. If all of the following are true, the lead investigator reads <b>A Mind Recovered</b>. If any of the following are not true, the lead investigator reads <b>Forever Lost</b> instead."
+      "text": "Проверьте мешок хаоса и сверьтесь с журналом. Если всё из нижеуказанного верно, ведущий сыщик читает <b>«Исцелённый разум»</b>. Если хоть что-нибудь из нижеуказанного неверно, вместо этого он читает <b>«Потерянный навсегда»</b>."
     },
     {
       "id": "check_tablets",
       "bullet_type": "small",
-      "text": "There are 2 or more [tablet] tokens in the chaos bag.",
+      "text": "В мешке хаоса 2 жетона [tablet] или больше.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -30547,7 +30547,7 @@
         "choices": [
           {
             "id": "rescued_custodian",
-            "text": "Was the Custodian was under an investigator’s control when the previous scenario ended?",
+            "text": "Находился ли в конце предыдущего сценария «Смотритель» под контролем сыщика?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -30620,7 +30620,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "alejandro_set_against",
-                "text": "Alejandro is set against you."
+                "text": "Алехандро настроен против вас."
               },
               {
                 "type": "remove_card",
@@ -30643,7 +30643,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "alejandro_remembers_everything",
-                "text": "Alejandro remembers everything."
+                "text": "Алехандро всё помнит."
               },
               {
                 "type": "add_chaos_token",
@@ -30659,33 +30659,33 @@
     {
       "id": "mind_recovered",
       "type": "story",
-      "title": "A Mind Recovered",
-      "text": "You turn your attention to your surroundings. Though the creatures that ambushed you are nowhere to be found, Alejandro lies on the ground nearby, stirring into consciousness. To your surprise, he appears just as confused as you are. At first, it seems as though he recalls nothing of the previous expedition or the Eztli relic, but then his eyes suddenly spark with recognition. He grips your shoulder tightly and gazes at you as though for the first time in years. “I do remember! We shared one mind for some time, the creature and I. It wished to find the Eztli relic, though for what purpose, I do not know.” He slumps backward against the stone wall, recovering from the sudden influx of memories. “You believed me at every turn, even when the creature had control. You saved me from that abysmal place and brought me back to humanity. For this, I cannot begin to repay you.” He shakes your hand vigorously, filled with a sudden and intense resolve. “We will right all of this, you and I. Then, we will tell the world what we have seen.”"
+      "title": "Исцелённый разум",
+      "text": "Вы осматриваетесь. Напавших на вас существ нигде не видно, зато поблизости лежит Алехандро, который тоже медленно приходит в сознание. К вашему удивлению, он выглядит озадаченным не меньше, чем вы. Поначалу кажется, будто он ничего не помнит о предыдущей экспедиции в руины Эцтли, но внезапно в его глазах вспыхивает осознание. Он крепко вцепляется в ваше плечо и смотрит так, словно не видел вас несколько лет. «Помню! Какое-то время у нас с тем существом был один мозг на двоих. Оно хотело отыскать реликвию эцтли, не знаю зачем. — Он оседает на пол и прислоняется к каменной стене, приходя в себя после внезапного наплыва воспоминаний. — А вы верили мне каждую минуту, даже когда внутри сидела та тварь. Вы спасли меня из того ужасного места и вернули человеческий облик. Даже не представляю, как отблагодарить вас. — Он решительно трясёт вам руки, переполненный неизвестно откуда взявшейся энергией. — Мы с вами обязательно всё исправим! А потом расскажем миру обо всём, что видели»."
     },
     {
       "id": "alejandro_remembers_everything",
       "bullet_type": "small",
-      "text": "In your Campaign Log, record that <i>Alejandro remembers everything</i>. Add 1 [tablet] token to the chaos bag for the remainder of the campaign."
+      "text": "Запишите в журнал кампании, что <i>Алехандро всё помнит</i>. Добавьте в мешок хаоса 1 жетон [tablet] до конца кампании."
     },
     {
       "id": "forever_lost",
       "type": "story",
-      "title": "Forever Lost",
-      "text": "You turn your attention to your surroundings. Both Alejandro and the creatures that ambushed you are nowhere to be found. You wonder how long Alejandro was in league with them, and why. Perhaps you will never know. However, you suspect this is not the last you will see of him."
+      "title": "Потерянный навсегда",
+      "text": "Вы осматриваетесь. Нигде не видно ни Алехандро, ни напавших на вас существ. Вы задумываетесь, как давно учёный перешёл на их сторону и почему. Скорее всего, вы никогда этого не узнаете. И тем не менее вам кажется, что вы ещё встретитесь."
     },
     {
       "id": "alejandro_set_against",
       "bullet_type": "small",
-      "text": "In your Campaign Log, record that <i>Alejandro is set against you</i>. If Alejandro Vela is part of an investigator’s deck, remove him from that investigator’s deck for the remainder of the campaign."
+      "text": "Запишите в журнал кампании, что <i>Алехандро настроен против вас</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её из этой колоды до конца кампании."
     },
     {
       "id": "find_stone_gate",
       "type": "story",
-      "text": "The narrow steps on the other side of the stone doorway seem almost endless. Though a dim red glow emanates from deeper within the cavern, no matter how many steps you traverse, the glow does not brighten. It almost seems to grow more distant with each step, mocking your tenacity. After a short while, you come to a small ledge where a stone gate bars your passage deeper into the cavern. The gate bears a familiar carved pattern, faded from age and disrepair, and seeping with an oddly discolored purulence."
+      "text": "Крутая лестница по ту сторону каменного проёма кажется бесконечной. Где-то далеко внизу мерцает алое свечение, но сколько бы вы ни спускались, оно не становится ярче. Напротив, вам кажется, что с каждым шагом оно тускнеет, словно поддразнивая вас. Вскоре вы оказываетесь на небольшой площадке, где ваш путь преграждает каменная дверь. На её поверхности вырезан знакомый узор, выцветший от времени и небрежения. Из него сочится странная бесцветная слизь."
     },
     {
       "id": "check_chalk",
-      "text": "Check your supplies to see if any investigator has chalk.",
+      "text": "Проверьте, есть ли среди припасов у кого-либо из сыщиков мел.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -30728,8 +30728,8 @@
     {
       "id": "the_way_is_open",
       "type": "story",
-      "title": "The Way is Open",
-      "text": "The situation sparks your memory, and you consult the expedition journal. The pattern is similar to one found in the Eztli ruins. Using your chalk and the drawings in your journal as a reference, you restore the glyph in its entirety, and the grooves glow brightly once more. The stone gate lifts on its own, and you are able to continue onward."
+      "title": "Путь открыт",
+      "text": "При виде узора вы кое-что вспоминаете и заглядываете в дневник экспедиции. Рельеф на двери совпадает с теми, что были найдены в руинах Эцтли. Сверяясь с набросками из дневника, вы мелом дорисовываете символ, и его линии ярко вспыхивают. Каменная дверь поднимается, и вы продолжаете спуск."
     },
     {
       "id": "no_ill_effects",
@@ -30739,13 +30739,13 @@
     {
       "id": "the_way_is_shut",
       "type": "story",
-      "title": "The Way is Shut",
-      "text": "You are unsure how to proceed. After debating the merits of each of your options, you decide that brute force may be the only solution. It takes all of your strength to lift the stone, and you open the way forward for each of you one at a time. It is no simple task, and your body aches tremendously from the effort."
+      "title": "Путь закрыт",
+      "text": "Вы не знаете, что делать дальше. Обсудив несколько вариантов, вы решаете, что тут поможет только грубая сила. Вам едва хватает мо́чи поднять каменную плиту — и вы должны сделать это столько раз, сколько у вас спутников. Когда все оказываются внутри, каждый ваш мускул немилосердно болит от нечеловеческого напряжения."
     },
     {
       "id": "no_mulligan",
       "bullet_type": "small",
-      "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan.."
+      "text": "Набирая стартовую руку в следующем сценарии, сыщики не могут заменять карты."
     },
     {
       "id": "eat_provisions",
@@ -30779,7 +30779,7 @@
       "id": "low_on_rations",
       "type": "story",
       "title": "Еда на исходе",
-      "text": "Hours later, you are almost too weary to go on. Every inch of your body aches with intense pain. There is nothing in this desolate cavern to eat but the occasional wild mushroom, and although temptation gnaws at your insides, you cannot tell which are toxic and which are healthy..."
+      "text": "Несколько часов спустя вы почти валитесь с ног от усталости. Каждый дюйм вашего тела неистово болит. В этих запустелых пещерах не найти ничего съестного, кроме случайных грибов, и хотя голод точит вас изнутри, вы не решаетесь их попробовать, не зная, какие ядовиты, а какие безвредны…"
     },
     {
       "id": "fewer_resources",
@@ -30845,12 +30845,12 @@
       "id": "poison_spreads",
       "type": "story",
       "title": "The Poison Spreads",
-      "text": "The poison has spread to nearly every part of your body. Your skin pales, and you are covered in cold feverish sweat. Simply rising to your feet requires a tremendous effort, and you get no rest at night despite your exhaustion. It won’t be long now before the poison claims your life."
+      "text": "Отрава добралась почти до всех уголков вашего тела. Вы бледны и покрыты холодным лихорадочным по́том. Вам невероятно тяжело даже подняться на ноги, а ночью вы не можете уснуть, несмотря на усталость. Уже совсем скоро яд заберёт вашу жизнь."
     },
     {
       "id": "stop_and_rest",
       "type": "story",
-      "text": "After descending hundreds and hundreds of steps, you decide to stop and rest. Though your watch tells you that night has fallen, the lack of natural sky is starting to affect your internal clock. With no flat ledge in sight, each member of your party claims one of the many narrow steps to sleep on."
+      "text": "Пройдя сотни и сотни ступеней вниз, вы решаете остановиться на отдых. Хронометр утверждает, что на поверхности уже ночь, однако без солнечного света ваши внутренние часы начинают давать сбой. Поблизости нет ни одной плоской поверхности, поэтому каждый из вас устраивается спать на одной из узких ступеней."
     },
     {
       "id": "check_blanket",
@@ -30902,13 +30902,13 @@
       "id": "tossing_and_turning",
       "type": "story",
       "title": "Беспокойно ворочаясь",
-      "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
+      "text": "Сон долго не идёт к вам. Почти ничего не защищает вас от жестокого холода пещеры, и вы несколько часов дрожите, пока не засыпаете от изнеможения. Но и во сне вы ворочаетесь и каждый час просыпаетесь оттого, что чуть не упали со ступеньки. Когда наступает «утро», вы чувствуете ещё большую усталость, чем вечером."
     },
     {
       "id": "restful_sleep",
       "title": "Здоровый сон",
       "type": "story",
-      "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
+      "text": "Конечно, вам не хватает настоящей кровати, но одеяло хотя бы защищает от пронизывающего холода подземелья. Когда наступает «утро», ваше тело требует поспать ещё, но вы знаете, что должны двигаться вперёд и как можно быстрее добраться до Средоточия…"
     }
   ]
 }]}
@@ -58391,8 +58391,8 @@
 },
 {
   "id": "the_city_of_archives",
-  "scenario_name": "The City of Archives",
-  "full_name": "Scenario VI: The City of Archives",
+  "scenario_name": "Город архивов",
+  "full_name": "Сценарий VI: Город архивов",
   "setup": [
     "intro_1",
     "choose_to_cooperate",
@@ -58412,7 +58412,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You remember very little of the next few days. Your consciousness fades in and out as your body grips with exhaustion, and your mind feebly attempts to comprehend what exactly has happened to you.\nThe inhabitants of this place are the same creatures you saw Alejandro consorting with: immense corrugated cones of clammy flesh, with four thick limbs extending from the top. They are horrifying to look upon, but they do not harm you as you expected they might. Your first few days are spent restrained and questioned by the creatures, several of which are somehow able to communicate in English. Others reproduce your language using an odd futuristic machine, played like a musical instrument. You are reminded strangely of the jazz piano at the Nightingale. It is only then that you realize your body has been altered. You have no hands or fingers to play the keys, no legs to walk upon, no lungs to scream out. You are one of them now, one of the creatures that has taken you captive, and your original body is nowhere to be seen.\nDespite your captivity, the creatures do not seem intent on harming you. Instead, they merely interview you, asking all manner of questions about a broad range of topics: your society, your profession, your technology, your ecosystem, your human body. Their thirst for knowledge is unyielding, unending. Their questions range from the mundane to the complex. They implore you to write copiously in your own language, taking anything you write to store away in their vast archives. You are informed that you will be able to roam the city freely if you comply."
+      "text": "Следующие дни почти не остаются у вас в памяти. Сознание то угасает, то возвращается в ваше истерзанное усталостью тело, пока разум пытается понять, что всё-таки с вами произошло. \nВ этом месте живут те же существа, с которыми вы видели Алехандро: огромные складчатые конусы студенистой плоти, из вершины которых растут четыре толстые конечности. Они выглядят грозно, но, против ожидания, не причиняют вам вреда. Поначалу существа держат вас взаперти и допрашивают. Одни каким-то образом говорят по-английски, другие имитируют вашу речь с помощью причудливого футуристичного устройства, словно играя на музыкальном инструменте. Внезапно вы вспоминаете пианино в джазовом клубе «Соловей» и только тогда осознаёте, что ваше тело изменилось. У вас нет ни рук, ни пальцев, чтобы нажимать на клавиши, нет ног, чтобы ходить, нет лёгких, чтобы кричать. Вы стали одним из н и х , одним из существ, которые взяли вас в плен, и вокруг нет и следа вашего человеческого тела. \nНесмотря на то, что существа держат вас в плену, они, похоже, не намерены причинять вам вред. Они просто расспрашивают вас, интересуясь самым широким кругом тем: вашим обществом, вашей профессией, технологиями, экосистемой, человеческим телом. Их жажда знаний ненасытна, безгранична. Одни вопросы очень просты, другие ставят вас в тупик. Существа просят вас вести подробные записи на вашем языке и уносят всё написанное в свои необъятные архивы. В обмен на сотрудничество они обещают разрешить вам передвигаться по городу."
     },
     {
       "id": "choose_to_cooperate",
@@ -58423,7 +58423,7 @@
         "choices": [
           {
             "id": "cooperate",
-            "text": "<i>Cooperate and tell the creatures everything you know.</i>",
+            "text": "<i>Пойти навстречу и рассказать всё, что вам известно.</i>",
             "steps": [
               "intro_2",
               "cooperated_with_yithians"
@@ -58431,7 +58431,7 @@
           },
           {
             "id": "resist",
-            "text": "<i>Refuse and resist captivity.</i>",
+            "text": "<i>Отказаться и вырваться из плена.</i>",
             "steps": [
               "intro_3",
               "resisted_captivity"
@@ -58443,7 +58443,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You cooperate with the creatures, hoping to earn your freedom. You are sick of captivity, and perhaps you will be able to find a way home if you are able to roam the city at will. The creatures seem pleased that you are answering their questions, though their mannerisms are still completely alien to you. Days turn to weeks, perhaps even longer. It is difficult to tell. Finally, one of the creatures informs you that you are free to roam the halls of the city, with several restrictions: You are not allowed to do harm to your new body, for it belongs to another of their race, and you are not allowed to leave the city. Your restraints are lifted, and the creature watches with keen interest as you get used to your conical body."
+      "text": "Вы помогаете существам в надежде получить свободу. Плен вас гнетёт; к тому же, если вы сможете ходить по городу, у вас появится шанс найти дорогу домой. Похоже, существа довольны вашей сговорчивостью, хотя их эмоции остаются для вас полной загадкой. Дни складываются в недели, вы теряете ощущение времени. Наконец одно из существ сообщает, что вы теперь вправе свободно передвигаться, но не должны наносить вред своему телу, поскольку оно принадлежит другому представителю их вида, и не можете покидать пределы города. Ваши оковы снимают, и существо с любопытством наблюдает за тем, как вы привыкаете к своему новому обличью."
     },
     {
       "id": "cooperated_with_yithians",
@@ -58452,14 +58452,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "cooperated_with_yithians",
-          "text": "the investigators cooperated with the Yithians."
+          "text": "сыщики подчинились йитианам."
         }
       ]
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "These creatures abducted you and even stole you from your own body. You refuse to give your captors even a single answer. You’d spit in their faces if you could—if you knew how to spit with such body, and if you knew which one of the creatures’ four distensible appendages was a face. Breaking free of your restrains is a hopeless endeavor, but you struggle to escape regardless. Your efforts do not go unnoticed, and one of the creatures is assigned to watch you. It seems more concerned with preventing you from harming your body than preventing you from escaping. After many days of captivity, you find a way to use this to your advantage. You struggle so hard against your restraints that they pierce into your leathery, cold flesh, drawing out a bit of viscous slime-blood. Your guard quickly apporoaches, clicking its claws together repeatedly. It undoes your restraints, and the moment it does, your claw appendages strike at what you believe to be the creature’s throat. It collapses to the floor, writhing in pain."
+      "text": "Эти твари не только похитили вас, но и лишили тела. Они не получат от вас ни единого ответа. Вы бы плюнули им в лицо, если бы знали, как сделать это в таком облике и какой из четырёх гибких отростков можно считать лицом. Вырваться из оков — безнадёжная затея, но тем не менее вы пытаетесь освободиться. Заметив ваши усилия, существа приставляют к вам стражника. Судя во всему, его больше заботит сохранность вашего тела, нежели сами попытки обрести свободу. После многих дней заключения вы понимаете, как использовать это к собственной пользе. Вы так сильно вырываетесь, что путы впиваются в вашу холодную кожистую плоть и из порезов выступает немного густой, слизистой крови. Охранник не мешкая подходит ближе, непрестанно пощёлкивая клешнями. Он снимает оковы, и в этот самый момент ваши клешни наносят удар туда, где у него должно быть горло. Тварь падает на пол, корчась от боли."
     },
     {
       "id": "resisted_captivity",
@@ -58468,7 +58468,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "resisted_captivity",
-          "text": "the investigators resisted captivity."
+          "text": "сыщики вырвались из плена."
         }
       ]
     },
@@ -58486,15 +58486,15 @@
     },
     {
       "id": "set_aside_unique_assets",
-      "text": "Before drawing opening hands, each investigator searches their deck and play area for all unique [[Item]] assets. Set each of those assets aside, out of play. They do not exist in this time period."
+      "text": "Прежде чем набирать стартовую руку, каждый сыщик находит в своей колоде и игровой зоне все уникальные активы-[[вещи]]. Отложите все такие активы в сторону. В этом времени их не существует."
     },
     {
       "id": "set_aside_alejandro",
-      "text": "Before drawing opening hands, if a player has Alejandro Vela in their deck, search that investigator’s deck for Alejandro Vela and set him aside, out of play."
+      "text": "Прежде чем набирать стартовые руки, если карта «Алехандро Вела» находится в колоде какого-либо сыщика, найдите эту карту и отложите в сторону."
     },
     {
       "id": "body_of_yithian",
-      "text": "Replace each player’s investigator card with a Body of a Yithian investigator card (see <b>Body of a Yithian</b>, below)."
+      "text": "Замените карту сыщика каждого игрока картой «Тело йитианина» (см. раздел «Тело йитианина» ниже)."
     },
     {
       "id": "check_cooperated",
@@ -58523,12 +58523,12 @@
     {
       "id": "setup_locations_cooperated",
       "bullet_type": "small",
-      "text": "Put the Interview Room (<i>Arrival Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Arrival Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "text": "Введите в игру карту «Дознавательская (зал прибытия)» (это одна из трёх локаций «Дознавательская»). Все сыщики начинают игру в «Дознавательской (зал прибытия)». Перемешайте две другие локации «Дознавательская» и также введите их в игру."
     },
     {
       "id": "yithian_observer_cooperated",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for a Yithian Observer and spawn it unengaged in the lead investigator’s location (note that it gains aloof due to the text on act 1a). Then, each investigator gains 1 clue from the token pool."
+      "text": "Найдите среди отобранных карт контактов одного «Йитианского наблюдателя» и выложите его не сражающимся в локацию ведущего сыщика (этот враг считается Осторожным согласно тексту сцены 1а). Затем каждый сыщик получает 1 улику из резерва."
     },
     {
       "id": "check_resisted",
@@ -58551,16 +58551,16 @@
     {
       "id": "setup_locations_resisted",
       "bullet_type": "small",
-      "text": "Put the Interview Room (<i>Restraining Chamber</i>) into play (it is one of the three Interview Room locations). Each investigator begins play in the Interview Room (<i>Restraining Chamber</i>). Randomize the other two Interview Room locations and put them into play, as well."
+      "text": "Введите в игру карту «Дознавательская (зал изоляции)» (это одна из трёх локаций «Дознавательская»). Все сыщики начинают игру в «Дознавательской (зал изоляции)». Перемешайте две другие локации «Дознавательская» и также введите их в игру."
     },
     {
       "id": "yithian_observer_resisted",
       "bullet_type": "small",
-      "text": "Search the gathered encounter sets for a Yithian Observer and place it in the victory display."
+      "text": "Найдите среди отобранных карт контактов одного «Йитианского наблюдателя» и добавьте его к победному счёту."
     },
     {
       "id": "setup_locations",
-      "text": "Put the three Halls of Pnakotus locations into play. Set each remaining location aside, out of play."
+      "text": "Введите в игру три локации «Залы Пнакота». Отложите в сторону все оставшиеся локации."
     },
     {
       "id": "location_layout",
@@ -58591,7 +58591,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set The Custodian aside, out of play."
+      "text": "Отложите в сторону карту «Смотритель»."
     },
     {
       "id": "encounter_deck",
@@ -58600,23 +58600,23 @@
     {
       "id": "body_of_yithian_rule",
       "type": "rule_reminder",
-      "title": "Body of a Yithian",
-      "text": "During the setup for this scenario, each investigator is instructed to replace their investigator card with one of the Body of a Yithian investigator cards provided in this Mythos Pack.",
+      "title": "Тело йитианина",
+      "text": "При подготовке к этому сценарию каждый игрок должен заменить свою карту сыщика картой «Тело йитианина», которая входит в это дополнение.",
       "bullets": [
         {
-          "text": "Each investigator’s deck remains the same, but for the duration of this scenario, they must use a Body of a Yithian investigator card, and therefore cannot use any of their investigator’s abilities. Each investigator should still use their investigator mini- card so they can tell who is who."
+          "text": "Колода каждого сыщика остаётся прежней, однако на протяжении этого сценария он должен использовать карту сыщика «Тело йитианина» и поэтому не может применять свойства своего сыщика. Каждый сыщик по-прежнему пользуется мини-картой своего сыщика, чтобы было понятно, кто есть кто."
         },
         {
-          "text": "Any trauma that would normally be placed on your investigator is transferred to your Body of a Yithian investigator card."
+          "text": "Поместите на вашу карту «Тело йитианина» все раны и ужас от травм, которые должны были положить на свою карту сыщика."
         },
         {
-          "text": "Any cards that were attached to or placed underneath your investigator card are attached to or placed underneath your Body of a Yithian card."
+          "text": "Карты, которые прикрепляются к вашей карте сыщика или подкладываются под неё, прикрепите к своей карте «Тело йитианина» или подложите под неё."
         },
         {
-          "text": "For the duration of the scenario, your Body of a Yithian card has the same card title as your former investigator card. <i>For example: If you were playing as Wendy Adams, treat the Body of a Yithian card as if its title were “Wendy Adams” for the duration of this scenario.</i>"
+          "text": "На протяжении этого сценария ваша карта «Тело йитианина» называется так же, как ваша бывшая карта сыщика. <i>Например, если вы играли за Венди Адамс, в этом сценарии считайте, что ваша карта «Тело йитианина» называется «Венди Адамс».</i>"
         },
         {
-          "text": "The Body of a Yithian card bears the encounter set icon for The City of Archives, and therefore cannot be used in any scenario other than The City of Archives unless otherwise noted."
+          "text": "Карта «Тело йитианина» отмечена символом набора контактов «Город архивов», поэтому её нельзя использовать в иных сценариях, кроме «Города архивов», если не сказано иного."
         }
       ]
     },
@@ -58627,7 +58627,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "had_memories_expunged",
-          "text": "the investigators had their memories expunged."
+          "text": "сыщикам стёрли память."
         }
       ]
     },
@@ -58663,7 +58663,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Tasks on act 2b that were completed:",
+        "text": "Пункты на сцене 2b, которые вы выполнили:",
         "min": 3,
         "max": 6,
         "effects": [
@@ -58672,7 +58672,7 @@
             "section": "hidden",
             "id": "tasks_completed",
             "operation": "set_input",
-            "text": "#X# tasks were completed"
+            "text": "Выполнено #X# пунктов"
           }
         ]
       }
@@ -58730,13 +58730,13 @@
     },
     {
       "id": "process_was_perfected",
-      "text": "Because all 6 tasks were completed, record in your Campaign Log that <i>the process was perfected</i>. Each investigator earns 4 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Поскольку выполнены все 6 пунктов, запишите в журнал кампании, что <i>перенос прошёл безупречно</i>. Каждый сыщик получает 4 опыта дополнительно, проникнув в тайны истории Земли.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_was_perfected",
-          "text": "the process was perfected."
+          "text": "перенос прошёл безупречно."
         },
         {
           "type": "earn_xp",
@@ -58747,13 +58747,13 @@
     },
     {
       "id": "process_was_successful",
-      "text": "Because 5 tasks were completed, record in your Campaign Log that <i>the process was successful</i>. Each investigator earns 2 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Поскольку выполнены 5 пунктов, запишите в журнал кампании, что <i>перенос прошёл успешно</i>. Каждый сыщик получает 2 опыта дополнительно, проникнув в тайны истории Земли.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_was_successful",
-          "text": "the process was successful."
+          "text": "перенос прошёл успешно."
         },
         {
           "type": "earn_xp",
@@ -58764,13 +58764,13 @@
     },
     {
       "id": "process_backfired",
-      "text": "Because 4 tasks were completed, record in your Campaign Log that <i>the process backfired</i>. Each investigator earns 1 bonus experience as they gain insight into the secrets of the Earth.",
+      "text": "Поскольку выполнены 4 пункта, запишите в журнал кампании, что <i>перенос прошёл неудачно</i>. Каждый сыщик получает 1 опыт дополнительно, проникнув в тайны истории Земли.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_backfired",
-          "text": "the process backfired."
+          "text": "перенос прошёл неудачно."
         },
         {
           "type": "earn_xp",
@@ -58781,13 +58781,13 @@
     },
     {
       "id": "process_backfired_spectacularly",
-      "text": "Because only 3 tasks were completed, record in your Campaign Log that <i>the process backfired spectacularly</i>.",
+      "text": "Поскольку выполнены 3 пункта, запишите в журнал кампании, что <i>перенос прошёл крайне неудачно</i>.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "process_backfired_spectacularly",
-          "text": "the process backfired spectacularly."
+          "text": "перенос прошёл крайне неудачно."
         }
       ]
     },
@@ -58816,7 +58816,7 @@
         "physical",
         "mental"
       ],
-      "text": "“Alejandro, what are you—?” You suddenly cry out. A nurse stands over you, peering into your eyes with a small light. You push the nurse away and rise to your feet, suddenly puzzled and disoriented. Despite the nurse’s protests, you wobble feebly out of the room. You are in a hospital, its white halls smelling faintly of disinfectant and other chemicals. Just moments prior, hadn’t you been exploring some kind of underground cavern?... You cannot recall.\n“Excuse me? Come back, you must rest!” The nurse calls out to you, gripping your forearm and pulling you back to your cot. She examines you closely while you recover from the shock of being transported so far in so short a time. “Who is Alejandro?” she asks, and you struggle to recall. The name doesn’t ring a bell.\nYou ask the nurse how you came to be here, wondering why she isn’t surprised at your sudden appearance. “Why, you admitted yourself to St. Mary’s just last night. Do you not remember?” You have no memory of this, and you are starting to grow concerned. “You were acting a little strangely, if I may be so bold. And you spoke in a strange fashion, almost as if English weren’t your first language. But now I see that you probably just drank a little bit too much.” She notices your questioning expression and smiles. “Don’t worry. We get that kind of thing quite often these days, now that all the bars and pubs are on the up-and-up again.”\nYou examine your face in the mirror. You are tired and older than you remember. Something important lies on the very edge of your memory, fuzzy and blurred. It takes about a minute before the significance of the nurse’s last statement catches up to you. Turning back toward the nurse, you ask what year it is, terrified of the answer.\n“Why, 1934 of course. My, you must have had a heck of a night!” She chuckles.",
+      "text": "Внезапно вы слышите собственный крик: «Алехандро, что ты…» Над вами стоит медсестра, светя вам в глаза фонариком. Вы отталкиваете её и в смятении вскакиваете на ноги. Несмотря на её протесты, вы, пошатываясь, выходите из комнаты. Вы в больнице: белёные стены коридора пахнут хлоркой и прочими химикатами. Разве вы только что не исследовали какую-то пещеру?.. Вы не помните.\n«Простите, — кричит медсестра. — Вернитесь, вам надо отдохнуть». Она берёт вас за локоть и ведёт обратно к койке. Пока вы приходите в себя от столь далёкого и стремительного путешествия, сестра внимательно рассматривает вас. «Кто такой Алехандро?» — интересуется она, и вы силитесь вспомнить. Но это имя ничего вам не говорит.\nВы спрашиваете медсестру, как оказались здесь и почему она не удивлена вашим внезапным появлением. «Так вы же только вчера вечером явились в больницу святой Марии. Неужто забыли?» — Вы не помните ничего подобного, и это вас беспокоит. — «Осмелюсь сказать, вы вели себя странновато. И говорили чудно,́ словно английский вам не родной. Но теперь вижу, что вы, должно быть, просто чуток перебрали. — Заметив ваше удивление, она улыбается: — Да не беспокойтесь. Теперь такое частенько случается, с тех пор как бары да кабаки снова открылись».\nОтражение в зеркале выглядит уставшим и более старым, чем вы помните. Где-то в тумане на краю вашей памяти прячется что-то крайне важное. Только через минуту до вас доходит смысл последних слов медсестры. Вы оборачиваетесь к ней и спрашиваете, какой сейчас год, боясь услышать ответ.\n«Ну конечно, 1934-й, — усмехается она. — Боже, ну и бурная у вас выдалась ночка».",
       "steps": [
         "had_memories_expunged",
         "all_insane",
@@ -58826,7 +58826,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "You awaken on the cold stone surface of the cavern floor, your mind dizzy from its journey through time and space.",
+      "text": "Вы приходите в себя на холодном каменном полу пещеры. Ваша голова кружится после перемещения во времени и пространстве.",
       "steps": [
         "record_number_of_tasks",
         "check_number_of_tasks",
@@ -59348,8 +59348,8 @@
 },
 {
   "id": "the_depths_of_yoth",
-  "scenario_name": "The Depths of Yoth",
-  "full_name": "Scenario VII: The Depths of Yoth",
+  "scenario_name": "Глубины Йота",
+  "full_name": "Сценарий VII: Глубины Йота",
   "setup": [
     "intro_1",
     "check_forging_own_path",
@@ -59371,7 +59371,7 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "Several hours after you wake, your laborious descent pays dividends. The red glow emanating from the bottom of the steps grows brighter with each step. The stone floor finally levels off, and the choking tunnel walls open to reveal a labyrinthine network of immense, far-reaching caverns. Littered throughout the caverns are the ruins of a vast city, the likes of which you have never seen. The elaborate stone architecture has been worn away by ages of abandonment, but you sense that there is a history here that runs deeper than you can even fathom. When you turn around to question Ichtaca, you notice a faint yellow glow in her eyes, her pupils narrowed and contracted. “Yoth...the last refuge of Valusia...” she quietly intones.\nJust then, a terrifying roar echoes throughout the cavern. The walls and floor shake with tremendous force, and the red glow that permeates the area brightens. A flood of hisses emerges from the tunnels all around you. Ichtaca walks to the edge of a nearby precipice and looks out over the vast depths. “He is here. I feel his presence. The Father of the Serpents...<b>Yig</b>.”"
+      "text": "Через несколько часов после пробуждения ваш утомительный спуск приносит плоды. С каждым шагом красный свет, струящийся от подножия лестницы, становится ярче. Наконец каменный пол выравнивается, а тесные стены туннеля расходятся, открывая вид на бесконечный лабиринт необъятных пещер. Их усеивают руины огромного города, подобных которым вы никогда не видели. От долгого запустения грандиозные каменные здания обветшали, но вы чувствуете, что история этого места древнее, чем вы способны осознать. Вопросительно обернувшись к Ичтаке, вы видите, что её зрачки сужены, а глаза тускло светятся жёлтым. «Йот… Последнее прибежище Валузии…» — еле слышно произносит она.\nВнезапно по пещере разносится леденящий душу рык. Стены и пол неистово содрогаются, а заливающий пространство красный свет становится ярче. Со всех сторон из туннелей выплёскивается громкое шипение. Ичтака подходит к краю ближайшего обрыва и всматривается в бездонные глубины. «Он здесь. Я чувствую его. Отец Змей… <b>Йиг</b>»."
     },
     {
       "id": "check_forging_own_path",
@@ -59400,17 +59400,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You realize now that Ichtaca has her own agenda. Alejandro, as well—both have been using you for their own ends, keeping you from the truth. You raise a weapon and demand answers from her, catching her by surprise. “Yig demands the relic be brought to the Nexus,” she responds anxiously. Her eyes glow brightly, and her skin starts to scale over. Your eyes narrow, and you move to corner her against the edge of the precipice, so she cannot escape. “The relic cannot be trusted to the hands of Brotherhood: this much is true...For it is Valusia that shall be restored to glory. Yig has called, and I must answer.” Before you can react, she throws herself off the edge and into the depths below."
+      "text": "Теперь вы понимаете, что Ичтака ведёт свою игру. Как и Алехандро — они оба использовали вас в своих целях, скрывая правду. Без лишних слов вы хватаетесь за оружие и требуете объяснений. «Йиг велит доставить реликвию к Средоточию», — с трепетом отвечает Ичтака. Свет в её глазах разгорается, а кожа начинает покрываться чешуёй. Вы прищуриваетесь и оттесняете её к самому краю пропасти, лишая пути к побегу. «Реликвия действительно не должна попасть в руки Братства… Ибо только Валузии суждено возродиться в былой славе! Йиг зовёт, и я должна явиться». Прежде чем вы успеваете что-то сделать, она бросается с обрыва в бездну."
     },
     {
       "id": "ichtaca_set_against_forging_own_path",
-      "text": "In your Campaign Log, record that <i>Ichtaca is set against you</i>. Add 1 [elder_thing] token to the chaos bag for the remainder of the campaign.",
+      "text": "Запишите в журнал кампании, что <i>Ичтака настроена против вас</i>. Добавьте в мешок хаоса 1 жетон [elder_thing] до конца кампании.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ичтака настроена против вас."
         },
         {
           "type": "add_chaos_token",
@@ -59449,12 +59449,12 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "You approach Ichtaca and rest a hand on her shoulder. Your companion takes a deep breath and turns to face you. Her eyes are cast downward in shame, and they have returned to their normal color. “I...I’m sorry. I have brought you to your ruin. He called out to me, long ago, told me of my heritage, of my people. I did his bidding willingly.”\nShe clenches her fists, her gaze meeting yours. “But now I realize I was wrong. Humanity deserves its time on Earth. You may have inherited it from far more powerful forces, but it is humanity’s time, not theirs.” You don’t completely understand what she is saying, but you understand the implication. Whatever Ichtaca truly is, she is on your side. A calm silence lingers between you, an unspoken bond that joins you as one. “We must get to the Nexus and prevent the serpents from recovering the relic,” she explains after a few moments, breaking the silence. You nod in agreement."
+      "text": "Вы подходите к Ичтаке и кладёте руку ей на плечо. Воительница делает глубокий вдох и поворачивается к вам. Её виновато опущенные глаза снова приобрели обычный цвет. «П-простите меня. Я привела вас к гибели. Он воззвал ко мне, ещё давно, рассказал о моём наследии, о моём народе. Я была рада исполнить его волю. — Она сжимает кулаки и смотрит вам прямо в глаза. — Но теперь я вижу, что ошибалась. Человечество заслуживает жить на этой планете. Пусть она досталась вам от куда более могущественных сил, но сейчас время человечества — не их время». Вы не вполне её понимаете, но главное ясно: кем бы Ичтака ни была на самом деле, она на вашей стороне. В умиротворённой тишине вы чувствуете, как между ней и вами возникает незримая нерушимая связь. «Нужно добраться до Средоточия и не дать змеям захватить реликвию», — говорит она после минутного молчания. Вы киваете в знак согласия."
     },
     {
       "id": "intro_4",
       "type": "story",
-      "text": "You hesitate, unsure what to do next. What are Ichtaca’s true motives? Why has she led you here? Before you have the chance to react, she draws her bow and aims an arrow at your heart. “Thank you for aiding me this far,” Ichtaca says curtly, “but the time has come for us to part ways. Yig has called, and I must answer.” Her yellow eyes narrow and shine brightly."
+      "text": "Вы медлите, не зная, как поступить. Что на самом деле нужно Ичтаке? Зачем она привела вас сюда? Прежде чем вы успеваете что-то сделать, Ичтака достаёт лук и направляет стрелу вам в сердце. «Спасибо, что помогли добраться сюда, — сухо произносит она, — но теперь наши пути расходятся. Йиг зовёт, и я должна явиться». Её блестящие жёлтые глаза сужаются."
     },
     {
       "id": "ichtaca_set_against",
@@ -59463,7 +59463,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "ichtaca_set_against",
-          "text": "Ichtaca is set against you."
+          "text": "Ичтака настроена против вас."
         }
       ]
     },
@@ -59487,7 +59487,7 @@
     {
       "id": "lose_ichtaca",
       "bullet_type": "small",
-      "text": "Remove Ichtaca from all investigator’s deck for the remainder of the campaign.",
+      "text": "Если карта «Ичтака» находится в колоде какого-либо сыщика, удалите её из этой колоды до конца кампании.",
       "effects": [
         {
           "type": "remove_card",
@@ -59539,23 +59539,23 @@
     {
       "id": "intro_5",
       "type": "story",
-      "text": "“You must leave this place at once. This is not humanity’s battle. It is ours. We cannot let you or the Brotherhood foil our plans. Not now, not when we are so close.” Her hand wavers for a moment, and her eyes flicker again. You can tell that something is tearing at her, weighing on her mind. Finally, she speaks again. “Go now. Before I change my mind. And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "«Вы должны немедленно уйти отсюда. Это наша битва, а не людская. Мы не позволим ни вам, ни Братству нарушить наши планы. Не сейчас, когда успех так близок». Её рука подрагивает, а глаза снова вспыхивают. Вы видите, что она встревожена, что-то не даёт ей покоя. Наконец она продолжает: «Уходите, пока я не передумала. И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
     {
       "id": "intro_6",
       "type": "story",
-      "text": "Now drop your weapons.” The betrayal stings your chest, and you are gripped with anger and despair. Thoughts of escape flash across your mind, but you have seen her skill with a bow—with her steady aim, you would be dead before you took two steps. You have no choice but to comply. Your weapons clatter to the ground, one at a time. “Good. Now the relic: hand it to me.” Grimacing, you take a few steps forward and offer the relic to Ichtaca."
+      "text": "«Бросьте оружие». Предательство жалит вас в самое сердце, наполняя его гневом и отчаянием. На какой-то миг вы задумываетесь о бегстве, но вспоминаете, как мастерски Ичтака стреляет из лука: вы будете мертвы, не пробежав и пары шагов. Вам остаётся только подчиниться. Вы по очереди роняете оружие на землю. «Отлично. Теперь отдайте мне реликвию». Скривившись, вы делаете несколько шагов вперёд и протягиваете ей реликвию."
     },
     {
       "id": "check_pocketknife",
-      "text": "Check your supplies to see if any investigator has a pocketknife.",
+      "text": "Проверьте, есть ли среди припасов у кого-либо из сыщиков складной нож.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
         "investigator": "any",
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Складной нож",
         "options": [
           {
             "boolCondition": true,
@@ -59577,16 +59577,16 @@
     {
       "id": "intro_7",
       "type": "story",
-      "text": "As Ichtaca reaches out to grab the relic, you pull out your concealed pocketknife and quickly attack, catching her by surprise. The blade cuts deeply across her forearm. Blood sprays across your chest, and she staggers with pain, gripping her arm. Her heel clips a rock near the edge of the precipice, and she tumbles over the side of the ledge, her scream growing distant as she falls. You barely have time to recover from the shock of what just happened, as another colossal roar fills the cavern, and the ground shakes. You gather your belongings and continue your descent."
+      "text": "Когда Ичтака протягивает руку к реликвии, вы резко выхватываете припрятанный нож и наносите предательнице внезапный удар. Лезвие глубоко рассекает ей предплечье, заливая вашу грудь кровью. Ичтака отшатывается, схватившись за раненую руку, запинается о камень и падает в пропасть. Вскоре её вопль затихает. Вы едва успеваете прийти в себя после случившегося, как раздаётся ещё один ужасный рык и земля сотрясается. Подобрав свои вещи, вы продолжаете спуск."
     },
     {
       "id": "intro_8",
       "type": "story",
-      "text": "Ichtaca grabs the relic. You can see the skin on the back of her hand growing hard and scaly. You take a few steps back, knuckles white with anger. “Go now. Before I change my mind,” she says. “And if you wish to live, do not follow. I will not give you a second chance.” Ichtaca swiftly departs, eyes trained on you until she leaves your sight. Despite her warning, you feel that you have no choice but to follow. If you don’t, who will protect humanity?"
+      "text": "Ичтака хватает реликвию. Вы видите, что кожа на тыльной стороне её ладоней стала жёсткой и чешуйчатой. Сжав побелевшие от гнева кулаки, вы отступаете. «Уходите, пока я не передумала, — произносит она. — И если хотите жить, не смейте идти за мной. Второго шанса не будет». Ичтака стремительно удаляется, не сводя с вас взгляда, пока не скрывается из виду. Несмотря на предостережение, вам остаётся только последовать за ней. Если не вы спасёте человечество, то кто?"
     },
     {
       "id": "lost_relic",
-      "text": "In your Campaign Log, cross off <i>the investigators found the missing relic</i> and record <i>the relic is missing</i>.",
+      "text": "Вычеркните из журнала заметку <i>«Сыщики нашли пропавшую реликвию»</i> и запишите, что <i>реликвия пропала</i>.",
       "effects": [
         {
           "type": "campaign_log",
@@ -59598,7 +59598,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "реликвия пропала."
         }
       ]
     },
@@ -59621,7 +59621,7 @@
     },
     {
       "id": "remove_relic",
-      "text": "Remove The Relic of Ages from all investigator’s decks for the remainder of the campaign.",
+      "text": "Если карта «Реликвия веков» находится в колоде какого-либо сыщика, удалите её из этой колоды до конца кампании.",
       "effects": [
         {
           "type": "remove_card",
@@ -59645,7 +59645,7 @@
     {
       "id": "check_yigs_fury",
       "type": "branch",
-      "text": "Check Campaign Log to see how many marks are under 'Yig's Fury'",
+      "text": "Подсчитайте отметки в графе журнала «Ярость Йига»",
       "condition": {
         "type": "campaign_log_count",
         "section": "yigs_fury",
@@ -59788,32 +59788,32 @@
     {
       "id": "fury_0",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 0, search the gathered encounter cards for Yig and each copy of Pit Warden. Remove those cards from the game."
+      "text": "Поскольку там нет отметок, найдите среди отобранных карт контактов «Йига» и всех «Стражей глубин». Удалите эти карты из игры."
     },
     {
       "id": "fury_1_to_5",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 1 and 5, no changes are made."
+      "text": "Поскольку там 1–5 отметок, ничего не меняется."
     },
     {
       "id": "fury_6_to_10",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 6 and 10, remove agenda 1a from the game. The game begins at agenda 2a."
+      "text": "Поскольку там 6–10 отметок, удалите из игры замысел 1a. Игра начинается с замысла 2a."
     },
     {
       "id": "fury_11_to_14",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 11 and 14, remove agendas 1a and 2a from the game. The game begins at agenda 3a."
+      "text": "Поскольку там 11–14 отметок, удалите из игры замыслы 1a и 2a. Игра начинается с замысла 3a."
     },
     {
       "id": "fury_15_to_17",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 15 and 17, remove agendas 1a, 2a, and 3a from the game. The game begins at agenda 4a."
+      "text": "Поскольку там 15–17 отметок, удалите из игры замыслы 1a, 2a и 3a. Игра начинается с замысла 4a."
     },
     {
       "id": "fury_18_to_20",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is between 18 and 20, remove agendas 1a, 2a, 3a, and 4a from the game. The game begins at agenda 5a.",
+      "text": "Поскольку там 18–20 отметок, удалите из игры замыслы 1a, 2a, 3a и 4a. Игра начинается с замысла 5a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -59826,7 +59826,7 @@
     {
       "id": "fury_21",
       "bullet_type": "small",
-      "text": "Because Yig's Fury is 21 or higher, remove agendas 1a, 2a, 3a, 4a, and 5a from the game. The game begins at agenda 6a.",
+      "text": "Поскольку там 21 отметка или больше, удалите из игры замыслы 1a, 2a, 3a, 4a и 5a. Игра начинается с замысла 6a.",
       "effects": [
         {
           "type": "campaign_log",
@@ -59844,11 +59844,11 @@
     },
     {
       "id": "set_aside_locations",
-      "text": "Set each of the 10 single-sided locations aside, out of play. Draw one of those locations at random other than Steps of Yoth, and put it into play. Each investigator begins play at the randomly chosen location."
+      "text": "Отложите в сторону все 10 односторонних локаций. Случайным образом возьмите одну из них (кроме «Ступеней Йота») и введите в игру. Все сыщики начинают игру в этой локации."
     },
     {
       "id": "maybe_setup_harbinger",
-      "text": "Check Campaign Notes. If <i>the Harbinger is still alive.</i>",
+      "text": "Сверьтесь с журналом. Если <i>Предвестник ещё жив.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59891,12 +59891,12 @@
     {
       "id": "put_harbinger_in_pursuit",
       "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log. Because it is agenda 5a or 6a, place it in the pursuit area. (See “Pursuit,” below.)"
+      "text": "Найдите в комплекте «Предвестника Валузии», поместите на него столько ран, сколько отмечено в скобках в журнале. Поскольку сейчас замысел 5a или 6a, поместите «Предвестника Валузии» в зону преследования (см. «Преследование» ниже)."
     },
     {
       "id": "set_aside_harbinger",
       "bullet_type": "small",
-      "text": "Search the collection for the Harbinger of Valusia and set it aside. Place damage on it equal to the amount of damage recorded in parentheses in your Campaign Log."
+      "text": "Найдите в комплекте «Предвестника Валузии» и отложите его в сторону. Поместите на него столько ран, сколько отмечено в скобках в журнале."
     },
     {
       "id": "check_agenda_6",
@@ -59924,23 +59924,23 @@
     },
     {
       "id": "set_aside_yig",
-      "text": "Set the Yig enemy aside, out of play."
+      "text": "Отложите в сторону «Йига»."
     },
     {
       "id": "put_yig_in_pursuit",
-      "text": "Because it is agenda 6a, put the set-aside Yig enemy in the pursuit area."
+      "text": "Поскольку сейчас замысел 6a, переместите отложенного «Йига» в зону преследования."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the set-aside Steps of Yoth and 4 of the remaining single-sided locations and shuffling them together."
+      "text": "Соберите и перемешайте колоду разведки. В неё входят отложенная локация «Ступени Йота» и 4 случайные односторонние локации из оставшихся."
     },
     {
       "id": "setup_depth",
-      "text": "Place 1 resource token on the scenario reference card, under “Current Depth.” For the remainder of the scenario, the number of resources under “Current Depth” indicates the current depth level. (See “Depth Level,” below.)"
+      "text": "Положите 1 жетон ресурса в область «Текущая глубина» на памятке сценария. До конца сценария число ресурсов в данной области указывает на текущую глубину (см. «Глубина» ниже)."
     },
     {
       "id": "set_aside_relic",
-      "text": "Set the Relic of Ages (<i>Repossess the Past</i>) aside, out of play."
+      "text": "Отложите в сторону карту «Реликвия веков (возвращает прошлое)»."
     },
     {
       "id": "set_aside_poison",
@@ -59953,14 +59953,14 @@
     {
       "id": "depth_level_rule",
       "type": "rule_reminder",
-      "title": "Depth Level",
-      "text": "Throughout this scenario, the number of resources under “Current Depth” on the scenario reference card indicates the current depth level. As the investigators journey deeper into Yoth by completing act 1, resources are added to the current depth level, and play continues until the investigators reach a certain depth level, or are defeated. Deeper levels of Yoth are deadlier, but the deeper the level the investigators are able to reach, the better the resolution of this scenario will be.\nThe current depth level has no game effect on its own; however, some encounter card effects may change or become stronger depending on the current depth level."
+      "title": "Глубина",
+      "text": "В этом сценарии число ресурсов в области «Текущая глубина» на памятке сценария указывает на текущую глубину. По мере того как сыщики заходят всё дальше в Йот, завершая сцену 1, к текущей глубине добавляются ресурсы, и игра продолжается, пока сыщики не достигнут определённой глубины или не будут побеждены. Чем дальше в Йот, тем опаснее, но чем глубже заберутся сыщики, тем благоприятнее будет исход сценария.\nСама по себе текущая глубина не влияет на игру, однако эффекты некоторых карт контактов могут измениться или стать сильнее в зависимости от текущей глубины."
     },
     {
       "id": "pursuit_rule",
       "type": "rule_reminder",
-      "title": "Pursuit",
-      "text": "Some cards in this scenario reference an area called the “pursuit area.” The pursuit area is an out-of-play area next to the act and agenda deck which enemies can enter and leave via card effects. Generally speaking, enemies in play will move to the pursuit area whenever the investigators reach the next depth level. <b>Although the pursuit area is out of play, whenever an enemy moves to the pursuit area, it keeps all tokens and attachments.</b>\nEnemies in the pursuit area are considered to be “in pursuit.” Enemies that are in pursuit are considered to be out of play, and cannot be affected by player cards or investigator actions. However, enemies that are in pursuit can re-enter play by a variety of card abilities."
+      "title": "Преследование",
+      "text": "На некоторых картах этого сценария упоминается зона преследования. Это особая внеигровая зона рядом с колодами сцен и замыслов. Враги могут входить в зону преследования и выходить из неё посредством эффектов карт. Как правило, враги перемещаются из игры в зону преследования всякий раз, когда сыщики достигают очередной глубины. <b>Хотя зона преследования находится вне игры, при перемещении в эту зону с врага не сбрасываются жетоны и прикреплённые карты. </b>\nВраги в зоне преследования называются преследующими. Преследующие враги находятся вне игры, поэтому на них не влияют карты игроков и действия сыщиков. Однако преследующие враги могут вернуться в игру с помощью свойств карт."
     },
     {
       "id": "fell_into_depths",
@@ -59969,7 +59969,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fell_into_depths",
-          "text": "the investigators fell into the depths."
+          "text": "сыщики упали в глубины."
         }
       ]
     },
@@ -59978,14 +59978,14 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Depth level when the scenario ended:",
+        "text": "Проверьте текущую глубину на конец сценария:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "hidden",
             "id": "final_depth",
             "operation": "set_input",
-            "text": "#X# depth"
+            "text": "Глубина: #X#"
           }
         ]
       }
@@ -60033,7 +60033,7 @@
     },
     {
       "id": "depth_1_fall",
-      "text": "Because the current depth level is 1, the fall is fatal, and the darkness of N’kai devours the shattered corpses. Each investigator is <b>killed</b>. The investigators lose the campaign.",
+      "text": "Поскольку текущая глубина равна 1, падение оказывается смертельным и тьма Н’кая поглощает разбитые вдребезги тела. Все сыщики <b>убиты</b>. Сыщики проиграли кампанию.",
       "effects": [
         {
           "type": "trauma",
@@ -60054,7 +60054,7 @@
     },
     {
       "id": "depth_2_fall",
-      "text": "Because the current depth level is 2, each investigator suffers 2 physical trauma and searches the collection for a random basic Injury weakness, adding it to their deck.",
+      "text": "Поскольку текущая глубина равна 2, каждый сыщик получает 2 физические травмы, находит в комплекте 1 случайную базовую слабость-[[повреждение]] и включает её в свою колоду.",
       "effects": [
         {
           "type": "trauma",
@@ -60110,7 +60110,7 @@
     },
     {
       "id": "depth_3_fall",
-      "text": "Because the current depth level is 3, each investigator suffers 1 physical trauma.",
+      "text": "Поскольку текущая глубина равна 3, каждый сыщик получает 1 физическую травму.",
       "effects": [
         {
           "type": "trauma",
@@ -60126,7 +60126,7 @@
     },
     {
       "id": "depth_4_fall",
-      "text": "Because the current depth level is 4, you suffer no ill effects.",
+      "text": "Поскольку текущая глубина равна 4, с вами не происходит ничего плохого.",
       "effects": [
         {
           "type": "earn_xp",
@@ -60211,7 +60211,7 @@
       "input": {
         "type": "counter",
         "text": "Победный счёт:",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Каждый сыщик получает дополнительно столько опыта, какова текущая глубина.",
         "effects": [
           {
             "type": "earn_xp",
@@ -60227,7 +60227,7 @@
       "input": {
         "type": "counter",
         "text": "Победный счёт:",
-        "confirm_text": "Each investigator earns additional experience equal to the current depth level.",
+        "confirm_text": "Каждый сыщик получает дополнительно столько опыта, какова текущая глубина.",
         "effects": [
           {
             "type": "earn_xp",
@@ -60244,7 +60244,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "nexus_is_near",
-          "text": "the nexus is near."
+          "text": "Средоточие близко."
         }
       ]
     },
@@ -60305,7 +60305,7 @@
                 }
               ]
             },
-            "text": "Adjust supplies",
+            "text": "Проверьте припасы",
             "steps": [
               "cross_out_rope"
             ],
@@ -60353,7 +60353,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "After hours and hours of travel, you’ve only just scratched the surface of this boundless subterranean world. Humanity could spend centuries mapping out these tunnels and never complete the task. No matter how quickly you plumb the depths, the serpents chasing you are hot on your tail. You are intruders in their home, and they know these hellish tunnels better than you. With your wounds slowing you down and panic seeping into every one of your decisions, your death at the hands of these creatures is inevitable. Despair worms its way into your mind. When the serpents inevitably catch up to you, you are crossing one of the cavern’s many long bridges of stone that span a wide, dark chasm. Serpent creatures on both sides of the chasm flank you, spear tips corralling you against the precarious edge of the bridge. A small hunk of stone cracks at your heel and detaches, falling into the inky void below. You do not hear it strike the floor of the chasm. There is no hope to escape or flee this time—you have no choice but to accept your fate. The spear tips press you closer to the edge. You close your eyes and fall.",
+      "text": "Вы идёте уже много часов, но не видели и малой части этого бескрайнего подземного мира. Люди могли бы веками наносить его на карту — но так и не обойти целиком. Как быстро вы бы ни спускались в глубины, змеи всё время дышат вам в затылок. Вы вторглись на их территорию, и они куда лучше вас знают эти адские туннели. Раны замедляют ваш шаг, ужас мешает принимать верные решения, и смерть от рук этих тварей кажется неизбежной. Червь отчаяния проникает в ваш разум. Вы пересекаете широкую тёмную пропасть по одному из бесчисленных каменных мостов, когда змеи наконец настигают вас. Они приближаются с обеих сторон, гоня вас наконечниками копий к опасному краю моста. Небольшой кусок камня под вашей ногой откалывается и летит в кромешную пустоту. Вы не слышите его удара о дно пропасти. Надежды на спасение нет — вы можете только принять свою судьбу. Остриё копья подталкивает вас ещё ближе к краю. Вы закрываете глаза и падаете.",
       "steps": [
         "fell_into_depths",
         "record_final_depth",
@@ -60367,7 +60367,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "Somehow, despite the odds stacked against you, you’ve reached your destination. The telltale red glow that has enveloped you since you entered Yoth recedes, replaced with an unpierceable inky darkness. The Nexus must be close... You can feel it.",
+      "text": "Всё было против вас — но вы добрались до цели. Назойливый красный свет, который окутывал вас от самого входа в Йот, уступает место непроницаемо-чёрной темноте. Средоточие должно быть рядом… Вы ощущаете его.",
       "steps": [
         "nexus_is_near",
         "check_harbinger",
@@ -60380,8 +60380,8 @@
 },
 {
   "id": "tfa_interlude4",
-  "scenario_name": "Those Held Captive",
-  "full_name": "Interlude IV: Those Held Captive",
+  "scenario_name": "На свободе",
+  "full_name": "Интерлюдия IV: На свободе",
   "type": "interlude",
   "setup": [
     "check_process_backfired",
@@ -60403,7 +60403,7 @@
     {
       "id": "check_process_backfired",
       "type": "branch",
-      "text": "Check Campaign Log. If <i>the process backfired</i>...",
+      "text": "Сверьтесь с журналом. Если <i>перенос прошёл неудачно</i>…",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -60427,7 +60427,7 @@
     {
       "id": "check_process_backfired_spectacularly",
       "type": "branch",
-      "text": "Check Campaign Log. If <i>the process backfired spectacularly</i>...",
+      "text": "Сверьтесь с журналом. Если <i>перенос прошёл крайне неудачно</i>…",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -60445,7 +60445,7 @@
     {
       "id": "reveal_one_token",
       "type": "input",
-      "text": "Each investigator reveals a random chaos token from the chaos bag. Consult the list below to see what side effects result from your mishap.",
+      "text": "Каждый сыщик вытягивает из мешка случайный жетон хаоса. Найдите в списке ниже побочные эффекты вашей неудачи.",
       "input": {
         "type": "investigator_choice",
         "investigator": "all",
@@ -60454,14 +60454,14 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign] or +1 token.",
-            "description": "Suffer no ill efects.",
+            "text": "[elder_sign] или +1.",
+            "description": "Не происходит ничего плохого.",
             "effects": []
           },
           {
             "id": "skull_or_number",
-            "text": "[skull] token or any number other than +1",
-            "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[skull] или жетон с любым числом, кроме +1",
+            "description": "Вы получаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -60472,8 +60472,8 @@
           },
           {
             "id": "bad_stuff",
-            "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
-            "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[cultist], [tablet], [elder_thing], или [auto_fail]",
+            "description": "До конца кампании вы должны использовать карту «Тело йитианина» вместо своей обычной карты сыщика. Кроме того, вы приобретаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -60493,7 +60493,7 @@
     {
       "id": "reveal_two_tokens",
       "type": "input",
-      "text": "Each investigator reveals two random chaos token from the chaos bag, choosing the token that is lower on the list to resolve, and ignoring the other. Consult the list below to see what side effects result from your mishap.",
+      "text": "Каждый сыщик вытягивает два жетона, выбирает и разыгрывает тот из них, что находится ближе к концу списка, а другой игнорирует. Найдите в списке ниже побочные эффекты вашей неудачи.",
       "input": {
         "type": "investigator_choice",
         "investigator": "all",
@@ -60502,14 +60502,14 @@
         "choices": [
           {
             "id": "elder_sign",
-            "text": "[elder_sign] or +1 token.",
-            "description": "Suffer no ill efects.",
+            "text": "[elder_sign] или +1.",
+            "description": "Не происходит ничего плохого.",
             "effects": []
           },
           {
             "id": "skull_or_number",
-            "text": "[skull] token or any number other than +1",
-            "description": "Gain the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[skull] или жетон с любым числом, кроме +1",
+            "description": "Вы получаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -60520,8 +60520,8 @@
           },
           {
             "id": "bad_stuff",
-            "text": "[cultist], [tablet], [elder_thing], or [auto_fail] token",
-            "description": "You must use the Body of a Yithian investigator card as their investigator card for the remainder of the campaign. He or she also gains the Out of Body Experience weakness, and must add it to their deck.",
+            "text": "[cultist], [tablet], [elder_thing], или [auto_fail]",
+            "description": "До конца кампании вы должны использовать карту «Тело йитианина» вместо своей обычной карты сыщика. Кроме того, вы приобретаете слабость «Внетелесный опыт» и должны включить её в свою колоду.",
             "effects": [
               {
                 "type": "add_card",
@@ -60540,12 +60540,12 @@
     },
     {
       "id": "explain_mind_recovered",
-      "text": "Check the chaos bag and the Campaign Log. If all of the following are true, the lead investigator reads <b>A Mind Recovered</b>. If any of the following are not true, the lead investigator reads <b>Forever Lost</b> instead."
+      "text": "Проверьте мешок хаоса и сверьтесь с журналом. Если всё из нижеуказанного верно, ведущий сыщик читает <b>«Исцелённый разум»</b>. Если хоть что-нибудь из нижеуказанного неверно, вместо этого он читает <b>«Потерянный навсегда»</b>."
     },
     {
       "id": "check_tablets",
       "bullet_type": "small",
-      "text": "There are 2 or more [tablet] tokens in the chaos bag.",
+      "text": "В мешке хаоса 2 жетона [tablet] или больше.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -60599,7 +60599,7 @@
         "choices": [
           {
             "id": "rescued_custodian",
-            "text": "Was the Custodian was under an investigator’s control when the previous scenario ended?",
+            "text": "Находился ли в конце предыдущего сценария «Смотритель» под контролем сыщика?",
             "effects": [
               {
                 "type": "campaign_log",
@@ -60672,7 +60672,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "alejandro_set_against",
-                "text": "Alejandro is set against you."
+                "text": "Алехандро настроен против вас."
               },
               {
                 "type": "remove_card",
@@ -60695,7 +60695,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "alejandro_remembers_everything",
-                "text": "Alejandro remembers everything."
+                "text": "Алехандро всё помнит."
               },
               {
                 "type": "add_chaos_token",
@@ -60711,33 +60711,33 @@
     {
       "id": "mind_recovered",
       "type": "story",
-      "title": "A Mind Recovered",
-      "text": "You turn your attention to your surroundings. Though the creatures that ambushed you are nowhere to be found, Alejandro lies on the ground nearby, stirring into consciousness. To your surprise, he appears just as confused as you are. At first, it seems as though he recalls nothing of the previous expedition or the Eztli relic, but then his eyes suddenly spark with recognition. He grips your shoulder tightly and gazes at you as though for the first time in years. “I do remember! We shared one mind for some time, the creature and I. It wished to find the Eztli relic, though for what purpose, I do not know.” He slumps backward against the stone wall, recovering from the sudden influx of memories. “You believed me at every turn, even when the creature had control. You saved me from that abysmal place and brought me back to humanity. For this, I cannot begin to repay you.” He shakes your hand vigorously, filled with a sudden and intense resolve. “We will right all of this, you and I. Then, we will tell the world what we have seen.”"
+      "title": "Исцелённый разум",
+      "text": "Вы осматриваетесь. Напавших на вас существ нигде не видно, зато поблизости лежит Алехандро, который тоже медленно приходит в сознание. К вашему удивлению, он выглядит озадаченным не меньше, чем вы. Поначалу кажется, будто он ничего не помнит о предыдущей экспедиции в руины Эцтли, но внезапно в его глазах вспыхивает осознание. Он крепко вцепляется в ваше плечо и смотрит так, словно не видел вас несколько лет. «Помню! Какое-то время у нас с тем существом был один мозг на двоих. Оно хотело отыскать реликвию эцтли, не знаю зачем. — Он оседает на пол и прислоняется к каменной стене, приходя в себя после внезапного наплыва воспоминаний. — А вы верили мне каждую минуту, даже когда внутри сидела та тварь. Вы спасли меня из того ужасного места и вернули человеческий облик. Даже не представляю, как отблагодарить вас. — Он решительно трясёт вам руки, переполненный неизвестно откуда взявшейся энергией. — Мы с вами обязательно всё исправим! А потом расскажем миру обо всём, что видели»."
     },
     {
       "id": "alejandro_remembers_everything",
       "bullet_type": "small",
-      "text": "In your Campaign Log, record that <i>Alejandro remembers everything</i>. Add 1 [tablet] token to the chaos bag for the remainder of the campaign."
+      "text": "Запишите в журнал кампании, что <i>Алехандро всё помнит</i>. Добавьте в мешок хаоса 1 жетон [tablet] до конца кампании."
     },
     {
       "id": "forever_lost",
       "type": "story",
-      "title": "Forever Lost",
-      "text": "You turn your attention to your surroundings. Both Alejandro and the creatures that ambushed you are nowhere to be found. You wonder how long Alejandro was in league with them, and why. Perhaps you will never know. However, you suspect this is not the last you will see of him."
+      "title": "Потерянный навсегда",
+      "text": "Вы осматриваетесь. Нигде не видно ни Алехандро, ни напавших на вас существ. Вы задумываетесь, как давно учёный перешёл на их сторону и почему. Скорее всего, вы никогда этого не узнаете. И тем не менее вам кажется, что вы ещё встретитесь."
     },
     {
       "id": "alejandro_set_against",
       "bullet_type": "small",
-      "text": "In your Campaign Log, record that <i>Alejandro is set against you</i>. If Alejandro Vela is part of an investigator’s deck, remove him from that investigator’s deck for the remainder of the campaign."
+      "text": "Запишите в журнал кампании, что <i>Алехандро настроен против вас</i>. Если карта «Алехандро Вела» находится в колоде какого-либо сыщика, удалите её из этой колоды до конца кампании."
     },
     {
       "id": "find_stone_gate",
       "type": "story",
-      "text": "The narrow steps on the other side of the stone doorway seem almost endless. Though a dim red glow emanates from deeper within the cavern, no matter how many steps you traverse, the glow does not brighten. It almost seems to grow more distant with each step, mocking your tenacity. After a short while, you come to a small ledge where a stone gate bars your passage deeper into the cavern. The gate bears a familiar carved pattern, faded from age and disrepair, and seeping with an oddly discolored purulence."
+      "text": "Крутая лестница по ту сторону каменного проёма кажется бесконечной. Где-то далеко внизу мерцает алое свечение, но сколько бы вы ни спускались, оно не становится ярче. Напротив, вам кажется, что с каждым шагом оно тускнеет, словно поддразнивая вас. Вскоре вы оказываетесь на небольшой площадке, где ваш путь преграждает каменная дверь. На её поверхности вырезан знакомый узор, выцветший от времени и небрежения. Из него сочится странная бесцветная слизь."
     },
     {
       "id": "check_chalk",
-      "text": "Check your supplies to see if any investigator has chalk.",
+      "text": "Проверьте, есть ли среди припасов у кого-либо из сыщиков мел.",
       "type": "branch",
       "condition": {
         "type": "check_supplies",
@@ -60780,8 +60780,8 @@
     {
       "id": "the_way_is_open",
       "type": "story",
-      "title": "The Way is Open",
-      "text": "The situation sparks your memory, and you consult the expedition journal. The pattern is similar to one found in the Eztli ruins. Using your chalk and the drawings in your journal as a reference, you restore the glyph in its entirety, and the grooves glow brightly once more. The stone gate lifts on its own, and you are able to continue onward."
+      "title": "Путь открыт",
+      "text": "При виде узора вы кое-что вспоминаете и заглядываете в дневник экспедиции. Рельеф на двери совпадает с теми, что были найдены в руинах Эцтли. Сверяясь с набросками из дневника, вы мелом дорисовываете символ, и его линии ярко вспыхивают. Каменная дверь поднимается, и вы продолжаете спуск."
     },
     {
       "id": "no_ill_effects",
@@ -60791,13 +60791,13 @@
     {
       "id": "the_way_is_shut",
       "type": "story",
-      "title": "The Way is Shut",
-      "text": "You are unsure how to proceed. After debating the merits of each of your options, you decide that brute force may be the only solution. It takes all of your strength to lift the stone, and you open the way forward for each of you one at a time. It is no simple task, and your body aches tremendously from the effort."
+      "title": "Путь закрыт",
+      "text": "Вы не знаете, что делать дальше. Обсудив несколько вариантов, вы решаете, что тут поможет только грубая сила. Вам едва хватает мо́чи поднять каменную плиту — и вы должны сделать это столько раз, сколько у вас спутников. Когда все оказываются внутри, каждый ваш мускул немилосердно болит от нечеловеческого напряжения."
     },
     {
       "id": "no_mulligan",
       "bullet_type": "small",
-      "text": "When drawing opening hands during the next scenario, investigators cannot take a mulligan.."
+      "text": "Набирая стартовую руку в следующем сценарии, сыщики не могут заменять карты."
     },
     {
       "id": "eat_provisions",
@@ -60831,7 +60831,7 @@
       "id": "low_on_rations",
       "type": "story",
       "title": "Еда на исходе",
-      "text": "Hours later, you are almost too weary to go on. Every inch of your body aches with intense pain. There is nothing in this desolate cavern to eat but the occasional wild mushroom, and although temptation gnaws at your insides, you cannot tell which are toxic and which are healthy..."
+      "text": "Несколько часов спустя вы почти валитесь с ног от усталости. Каждый дюйм вашего тела неистово болит. В этих запустелых пещерах не найти ничего съестного, кроме случайных грибов, и хотя голод точит вас изнутри, вы не решаетесь их попробовать, не зная, какие ядовиты, а какие безвредны…"
     },
     {
       "id": "fewer_resources",
@@ -60897,12 +60897,12 @@
       "id": "poison_spreads",
       "type": "story",
       "title": "The Poison Spreads",
-      "text": "The poison has spread to nearly every part of your body. Your skin pales, and you are covered in cold feverish sweat. Simply rising to your feet requires a tremendous effort, and you get no rest at night despite your exhaustion. It won’t be long now before the poison claims your life."
+      "text": "Отрава добралась почти до всех уголков вашего тела. Вы бледны и покрыты холодным лихорадочным по́том. Вам невероятно тяжело даже подняться на ноги, а ночью вы не можете уснуть, несмотря на усталость. Уже совсем скоро яд заберёт вашу жизнь."
     },
     {
       "id": "stop_and_rest",
       "type": "story",
-      "text": "After descending hundreds and hundreds of steps, you decide to stop and rest. Though your watch tells you that night has fallen, the lack of natural sky is starting to affect your internal clock. With no flat ledge in sight, each member of your party claims one of the many narrow steps to sleep on."
+      "text": "Пройдя сотни и сотни ступеней вниз, вы решаете остановиться на отдых. Хронометр утверждает, что на поверхности уже ночь, однако без солнечного света ваши внутренние часы начинают давать сбой. Поблизости нет ни одной плоской поверхности, поэтому каждый из вас устраивается спать на одной из узких ступеней."
     },
     {
       "id": "check_blanket",
@@ -60954,13 +60954,13 @@
       "id": "tossing_and_turning",
       "type": "story",
       "title": "Беспокойно ворочаясь",
-      "text": "Sleep does not come easily for you. Barely any layers protect you from the bitter cold of the underground cavern, and you lie shivering for hours before exhaustion finally claims you. You awaken every hour or so as the shifting of your body almost causes you to tumble off your stone perch. When “morning” comes, you are even more weary than you were the previous night."
+      "text": "Сон долго не идёт к вам. Почти ничего не защищает вас от жестокого холода пещеры, и вы несколько часов дрожите, пока не засыпаете от изнеможения. Но и во сне вы ворочаетесь и каждый час просыпаетесь оттого, что чуть не упали со ступеньки. Когда наступает «утро», вы чувствуете ещё большую усталость, чем вечером."
     },
     {
       "id": "restful_sleep",
       "title": "Здоровый сон",
       "type": "story",
-      "text": "Though you long for a proper bed, at least your blanket protects you from the frigid chill that permeates the cavern. When “morning” arrives, your body longs for more sleep, but you know you must press onward and reach the Nexus as fast as you can..."
+      "text": "Конечно, вам не хватает настоящей кровати, но одеяло хотя бы защищает от пронизывающего холода подземелья. Когда наступает «утро», ваше тело требует поспать ещё, но вы знаете, что должны двигаться вперёд и как можно быстрее добраться до Средоточия…"
     }
   ]
 },
@@ -61727,7 +61727,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "relic_is_missing",
-          "text": "the relic is missing."
+          "text": "реликвия пропала."
         }
       ]
     },
@@ -61964,7 +61964,7 @@
           },
           {
             "id": "pocketknife",
-            "name": "Pocketknife",
+            "name": "Складной нож",
             "description": "Маловат для полноценного оружия, зато легко спрятать.",
             "cost": 2
           },
