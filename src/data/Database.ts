@@ -74,7 +74,6 @@ export default class Database {
   }
 
   private _updatePlayerCards = (state: PlayerCardState) => {
-    // console.log('PLAYER CARDS UDPATED');
     this.playerState = state;
     forEach(this.listeners, listener => listener());
   };

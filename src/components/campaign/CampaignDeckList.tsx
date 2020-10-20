@@ -13,7 +13,7 @@ import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import Card, { CardsMap } from '@data/Card';
 
-export interface DeckListProps {
+export interface CampaignDeckListProps {
   componentId: string;
   campaignId: number;
   deckIds: number[];
@@ -22,7 +22,7 @@ export interface DeckListProps {
   investigatorAdded?: (investigator: Card) => void;
 }
 
-interface OwnProps extends DeckListProps {
+interface OwnProps extends CampaignDeckListProps {
   renderDeck: (
     deckId: number,
     cards: CardsMap,
@@ -35,7 +35,7 @@ interface OwnProps extends DeckListProps {
   otherProps?: any;
 }
 
-class DeckList extends React.Component<OwnProps & PlayerCardProps> {
+class CampaignDeckList extends React.Component<OwnProps & PlayerCardProps> {
   _showDeckSelector = () => {
     const {
       deckIds,
@@ -100,4 +100,4 @@ class DeckList extends React.Component<OwnProps & PlayerCardProps> {
   }
 }
 
-export default withPlayerCards<OwnProps>(DeckList);
+export default withPlayerCards<OwnProps>(CampaignDeckList);

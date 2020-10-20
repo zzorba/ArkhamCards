@@ -37,7 +37,21 @@ export default async function syncPlayerCards(
         return investigators;
       }
     );
-    updateInvestigatorContext(investigatorsByTaboo);
+    const investigatorCards: {
+      [key: string]: CardsMap;
+    } = {};
+    forEach(investigatorsByTaboo, (tabooSet, tabooSetId) => {
+      if (tabooSetId === '0') {
+        investigatorCards[tabooSetId] = tabooSet;
+      } else {
+        const baseTaboos = investigatorsByTaboo['0'];
+        investigatorCards[tabooSetId] = {
+          ...baseTaboos,
+          ...tabooSet,
+        };
+      }
+    });
+    updateInvestigatorContext(investigatorCards);
 
     const cards = await cardsP;
     const playerCards: {

@@ -28,6 +28,9 @@ interface ReduxActionProps {
 
 type Props = ReduxProps & ReduxActionProps;
 
+interface State {
+  tempLang?: number;
+}
 function languages() {
   const systemLang = getSystemLanguage();
   const systemLanguage = localizedName(systemLang);
@@ -42,9 +45,11 @@ function languages() {
   ];
 }
 
-class LanguagePicker extends React.Component<Props> {
+class LanguagePicker extends React.Component<Props, State> {
   static contextType = DatabaseContext;
   context!: DatabaseContextType;
+
+  state: State = {};
 
   _formatLabel = (idx: number) => {
     if (idx === 0) {
@@ -53,6 +58,14 @@ class LanguagePicker extends React.Component<Props> {
     }
     return languages()[idx].label;
   };
+
+  componentDidUpdate(prevProps: Props) {
+    if (!this.props.cardsLoading && prevProps.cardsLoading && this.state.tempLang) {
+      this.setState({
+        tempLang: undefined,
+      });
+    }
+  }
 
   _onLanguageChange = (index: number) => {
     const newLang = languages()[index].value;
@@ -72,6 +85,9 @@ class LanguagePicker extends React.Component<Props> {
             {
               text: t`Download now`,
               onPress: () => {
+                this.setState({
+                  tempLang: index,
+                });
                 fetchCards(
                   this.context.db,
                   newCardLang,
@@ -97,6 +113,7 @@ class LanguagePicker extends React.Component<Props> {
       lang,
       useSystemLang,
     } = this.props;
+    const { tempLang } = this.state;
     const allLanguages = languages();
     return (
       <StyleContext.Consumer>
@@ -105,7 +122,7 @@ class LanguagePicker extends React.Component<Props> {
             title={t`Language`}
             description={t`Note: not all cards have translations available.`}
             onChoiceChange={this._onLanguageChange}
-            selectedIndex={findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
+            selectedIndex={tempLang !== undefined ? tempLang : findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
             choices={map(allLanguages, lang => {
               return {
                 text: lang.label,
