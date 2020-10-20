@@ -68,7 +68,7 @@ class BackupView extends React.Component<Props> {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
-      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json')) {
+      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json') && !res.name.endsWith('.null')) {
         Alert.alert(
           t`Unexpected file type`,
           t`This app expects an Arkham Cards backup file (.acb/.json)`,

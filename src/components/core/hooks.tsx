@@ -1,26 +1,26 @@
-import React, { Reducer, useEffect, useReducer } from 'react';
-import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle, NavigationButtonPressedEvent, ComponentDidAppearEvent } from 'react-native-navigation';
-import { forEach, initial } from 'lodash';
+import React, { Reducer, useCallback, useEffect, useReducer } from 'react';
+import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent } from 'react-native-navigation';
+import { forEach, debounce } from 'lodash';
 
 import { Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-
 
 export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
   componentId: string,
   deps: any[],
 ) {
+  const debouncedHandler = useCallback(debounce(handler, 1000, { leading: true }), [handler]);
   useEffect(() => {
     const sub = Navigation.events().registerNavigationButtonPressedListener((event: NavigationButtonPressedEvent) => {
       if (event.componentId === componentId) {
-        handler(event)
+        debouncedHandler(event);
       }
     })
     return () => {
-      sub.remove()
+      sub.remove();
     }
-  }, [componentId, ...deps])
+  }, [componentId, ...deps]);
 }
 
 export function useComponentDidAppear(

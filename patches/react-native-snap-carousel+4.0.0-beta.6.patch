@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts b/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
+index 398a9b4..5928c9a 100644
+--- a/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
++++ b/node_modules/react-native-snap-carousel/lib/typescript/carousel/Carousel.d.ts
+@@ -27,6 +27,7 @@ export declare class Carousel<TData> extends React.Component<CarouselProps<TData
+         shouldOptimizeUpdates: boolean;
+         useExperimentalSnap: boolean;
+         useScrollView: boolean;
++        disableIntervalMomentum: boolean;
+     };
+     _activeItem: number;
+     _onScrollActiveItem: number;

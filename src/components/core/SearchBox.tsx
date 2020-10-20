@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -91,7 +92,7 @@ export default class SearchBox extends React.Component<Props> {
         inputStyle={{
           marginTop: 6,
           fontFamily: 'Alegreya-Regular',
-          fontSize: 20,
+          fontSize: Platform.OS === 'android' ? 16 : 20,
           lineHeight: 24,
           color: colors.darkText,
           textAlignVertical: 'center',

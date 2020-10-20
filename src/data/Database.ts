@@ -1,5 +1,5 @@
 import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition } from 'typeorm/browser';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
 
 import Card, { PartialCard } from './Card';
 import EncounterSet from './EncounterSet';
@@ -127,6 +127,14 @@ export default class Database {
     if (connection.queryResultCache) {
       await connection.queryResultCache.clear();
     }
+  }
+
+  async startTransaction(): Promise<QueryRunner> {
+    const connection = await this.connectionP;
+    const queryRunner = connection.createQueryRunner()
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    return queryRunner;
   }
 
   async insertCards(

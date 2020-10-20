@@ -148,6 +148,7 @@ export default class PackListComponent extends React.Component<Props> {
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
           sections={groups}
+          initialNumToRender={30}
           renderSectionHeader={this._renderSectionHeader}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
