@@ -249,6 +249,7 @@ function DbCardDetailSwipeView(props: Props) {
         itemWidth={width}
         useExperimentalSnap
         onScrollIndexChanged={setIndex}
+        disableIntervalMomentum
       />
       { footer }
       { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
