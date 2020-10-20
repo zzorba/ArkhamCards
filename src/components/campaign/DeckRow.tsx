@@ -157,7 +157,6 @@ class DeckRow extends React.Component<Props> {
         deck={theDeck}
         lang={lang}
         previousDeck={thePreviousDeck}
-        cards={cards}
         onPress={this._onDeckPress}
         investigator={investigator}
         details={this.renderDetails()}

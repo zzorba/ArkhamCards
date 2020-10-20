@@ -18,8 +18,8 @@ import {
   SortType,
 } from '@actions/types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { FilterState, calculateCardFilterData, calculateAllCardFilterData } from '@lib/filters';
-import { calculateDefaultDbFilterState, calculateDefaultFilterState } from '@components/filter/DefaultFilterState';
+import { FilterState } from '@lib/filters';
+import { calculateDefaultDbFilterState } from '@components/filter/DefaultFilterState';
 import Card from '@data/Card';
 import Database from '@data/Database';
 import { AppState } from '@reducers';
@@ -88,38 +88,13 @@ export function updateFilter(
 export function addDbFilterSet(
   id: string,
   db: Database,
-  query: Brackets,
+  query?: Brackets,
   sort?: SortType,
   tabooSetId?: number,
   mythosToggle?: boolean
 ): ThunkAction<void, AppState, unknown, AddFilterSetAction> {
   return async(dispatch: ThunkDispatch<AppState, unknown, AddFilterSetAction>): Promise<void> => {
     const [filters, cardData] = await calculateDefaultDbFilterState(db, query, tabooSetId);
-    dispatch({
-      type: ADD_FILTER_SET,
-      id,
-      filters,
-      sort,
-      mythosToggle,
-      cardData,
-    });
-  };
-}
-
-export function addFilterSet(
-  id: string,
-  cards: Card[],
-  db: Database,
-  sort?: SortType,
-  mythosToggle?: boolean
-): ThunkAction<void, AppState, unknown, AddFilterSetAction> {
-  return async(dispatch: ThunkDispatch<AppState, unknown, AddFilterSetAction>): Promise<void> => {
-    const filters = calculateDefaultFilterState(cards);
-
-    const cardData = mythosToggle ?
-      (await calculateAllCardFilterData(cards, db)) :
-      calculateCardFilterData(cards);
-
     dispatch({
       type: ADD_FILTER_SET,
       id,

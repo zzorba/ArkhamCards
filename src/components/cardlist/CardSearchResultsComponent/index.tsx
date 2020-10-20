@@ -357,7 +357,6 @@ export default function({
       return combineQueriesOpt(parts, 'and');
     }
     const safeSearchTerm = `%${searchTerm}%`;
-    console.log(safeSearchTerm);
     if (searchBack) {
       parts.push(where([
         'c.name like :searchTerm',

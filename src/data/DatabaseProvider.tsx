@@ -23,13 +23,11 @@ class DatabaseProvider extends React.Component<Props> {
 
     if (theDatabase === null) {
       theDatabase = new Database(props.schemaVersion);
-      InteractionManager.runAfterInteractions(() => {
-        setTimeout(() => {
-          if (theDatabase) {
-            theDatabase.reloadPlayerCards();
-          }
-        }, Platform.OS === 'android' ? 500 : 0);
-      });
+      setTimeout(() => {
+        if (theDatabase) {
+          theDatabase.reloadPlayerCards();
+        }
+      }, Platform.OS === 'android' ? 500 : 25);
     }
   }
 
@@ -53,8 +51,9 @@ class DatabaseProvider extends React.Component<Props> {
     return (
       <DatabaseContext.Provider value={{
         db: theDatabase,
-        playerCardsByTaboo: theDatabase.state?.playerCards,
-        tabooSets: theDatabase.state?.tabooSets || [],
+        playerCardsByTaboo: theDatabase.playerState?.playerCards,
+        investigatorCardsByTaboo: theDatabase.investigatorState,
+        tabooSets: theDatabase.playerState?.tabooSets || [],
       }}>
         { this.props.children }
       </DatabaseContext.Provider>

@@ -656,7 +656,6 @@ class DeckDetailView extends React.Component<Props, State> {
       xpAdjustment,
       tabooSetId,
     } = this.state;
-    console.log(`Pushing: ${deck.taboo_id} live(${tabooSetId})`);
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.Edit',

@@ -25,7 +25,6 @@ export default class QueryProvider<T, S> extends React.PureComponent<Props<T, S>
     const ignoreFields = ['children', 'getQuery'];
     const diff = deepDiff(omit(this.props, ignoreFields), omit(prevProps, ignoreFields));
     if (diff) {
-      // console.log(diff);
       this.updateQuery();
     }
   }

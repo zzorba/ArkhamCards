@@ -40,7 +40,7 @@ import {
   Slots,
   SORT_BY_TYPE,
 } from '@actions/types';
-import { combineQueries, where } from '@data/query';
+import { combineQueries, combineQueriesOpt, where } from '@data/query';
 import { getPacksInCollection, getTabooSet, AppState, getPackSpoilers } from '@reducers';
 import Card, { CardsMap, PartialCard } from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
@@ -52,7 +52,7 @@ import { useCards, useSlots, useToggles } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
-  query: Brackets;
+  query?: Brackets;
   tabooSetOverride?: number;
   originalDeckSlots?: Slots;
   filterQuery?: Brackets;
@@ -71,8 +71,8 @@ interface Props {
   header?: React.ReactElement;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   noSearch?: boolean;
-  handleScroll: (...args: any[]) => void;
-  showHeader: () => void;
+  handleScroll?: (...args: any[]) => void;
+  showHeader?: () => void;
   storyOnly?: boolean;
   showNonCollection?: boolean;
 }
@@ -229,7 +229,7 @@ function useDeckQuery(deckCardCounts: Slots, originalDeckSlots?: Slots): [Bracke
 
 interface SectionFeedProps {
   componentId: string;
-  query: Brackets;
+  query?: Brackets;
   sort?: SortType;
   tabooSetId?: number;
   filterQuery?: Brackets;
@@ -292,7 +292,6 @@ function useSectionFeed({
         sort
       ).then(cards => {
         if (!ignore) {
-          console.log(map(cards, c => c.renderName));
           setDeckCards(cards);
         }
       });
@@ -437,13 +436,15 @@ function useSectionFeed({
     updateShowNonCollection({ type: 'clear' });
     setShowSpoilers(false);
     setExpandButtonPressed(false);
+    if (!query) {
+      setMainQueryCards([]);
+      setRefreshing(false);
+      return;
+    }
 
     // const start = new Date();
     db.getPartialCards(
-      combineQueries(query,
-        [
-          ...(filterQuery ? [filterQuery]: []),
-        ], 'and'),
+      combineQueries(query, filterQuery ? [filterQuery]: [], 'and'),
       tabooSetId,
       sort
     ).then((cards: PartialCard[]) => {
@@ -451,8 +452,6 @@ function useSectionFeed({
       if (!ignore) {
         setMainQueryCards(cards);
         setRefreshing(false);
-      } else {
-        console.log('inputs changed, rejecting page of results.')
       }
     }, console.log);
     return () => { ignore = true; };
@@ -462,21 +461,25 @@ function useSectionFeed({
     if (textQuery) {
       let ignore = false;
       const delayedSearch = debounce(() => {
-        // Look for textual card changes.
-        const start = new Date();
+        if (!query) {
+          setTextQueryCards([]);
+          return;
+        }
+          // Look for textual card changes.
+        //const start = new Date();
         db.getPartialCards(
           combineQueries(query,
             [
               ...(filterQuery ? [filterQuery]: []),
               ...(textQuery ? [textQuery] : []),
-            ], 'and'),
+            ],
+            'and'
+          ),
           tabooSetId,
           sort
         ).then((cards: PartialCard[]) => {
-          if (ignore) {
-            console.log(`Ignoring text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
-          } else {
-            console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+          if (!ignore) {
+            //console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
             setTextQueryCards(cards);
           }
         });
@@ -609,7 +612,6 @@ export default function({
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
-  console.log(`Taboo: ${tabooSetId} vs ${tabooSetOverride}`);
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const {
     feed,
@@ -633,7 +635,7 @@ export default function({
   const dispatch = useDispatch();
   useEffect(() => {
   // showHeader when somethings drastic happens, and get a new error message.
-  showHeader();
+  showHeader && showHeader();
     setLoadingMessage(getRandomLoadingMessage());
   }, [query, filterQuery, tabooSetId, sort]);
   useEffect(() => {

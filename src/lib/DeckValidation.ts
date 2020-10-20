@@ -143,7 +143,6 @@ export default class DeckValidation {
 
     // too many copies of one card
     const copiesAndDeckLimit = this.getCopiesAndDeckLimit(cards);
-    console.log(copiesAndDeckLimit);
     if(findKey(
         copiesAndDeckLimit,
         value => value.nb_copies > value.deck_limit) != null) {

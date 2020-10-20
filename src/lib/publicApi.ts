@@ -1,5 +1,5 @@
-import { chunk, filter, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
-import { Alert } from 'react-native';
+import { chunk, filter, find, flatMap, forEach, groupBy, head, map, partition, sortBy, uniq, values } from 'lodash';
+import { Alert, Platform } from 'react-native';
 
 import { CardCache, TabooCache, Pack } from '@actions/types';
 import { Rule as JsonRule } from '@data/scenario/types';
@@ -42,7 +42,22 @@ export const syncTaboos = async function(
     })
   );
   const cardsRep = await db.cards();
+
   await cardsRep.createQueryBuilder().where('taboo_set_id > 0').delete().execute();
+
+  await cardsRep.createQueryBuilder()
+    .update()
+    .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards})
+    .set({ taboo_set_id: 0 })
+    .execute();
+  const baseTabooCards: Card[] = flatMap(await Promise.all(map(allTabooCards, code => {
+    return cardsRep.createQueryBuilder('c')
+      .where('c.code = :code AND c.taboo_set_id = 0')
+      .leftJoin('c.linked_card', 'linked_card')
+      .setParameters({ code })
+      .addSelect(Card.ELIDED_FIELDS)
+      .getOne();
+  })), x => x ? [x] : []);
 
   const tabooSetsRep = await db.tabooSets();
   await tabooSetsRep.createQueryBuilder().delete().execute();
@@ -53,34 +68,20 @@ export const syncTaboos = async function(
     const cards = JSON.parse(tabooJson.cards);
     try {
       tabooSets.push(TabooSet.fromJson(tabooJson, cards.length));
-      for (let j = 0; j < allTabooCards.length; j++) {
-        const tabooCode = allTabooCards[j];
-        const card = await cardsRep.createQueryBuilder('c')
-          .where('(c.code = :code AND (c.taboo_set_id is null OR c.taboo_set_id = 0))')
-          .setParameters({ code: tabooCode })
-          .addSelect(Card.ELIDED_FIELDS)
-          .getOne();
-        if (card) {
-          const tabooCard = Card.placeholderTabooCard(tabooJson.id, card);
-          cardsRep.insert(tabooCard);
-        }
-      }
+      const tabooCardsToSave: {
+        [key: string]: Card | undefined;
+      } = {};
+      forEach(baseTabooCards, card => {
+        tabooCardsToSave[card.code] = Card.placeholderTabooCard(tabooJson.id, card);
+      });
+
       for (let j = 0; j < cards.length; j++) {
         const cardJson = cards[j];
         const code: string = cardJson.code;
-        const card = await cardsRep.createQueryBuilder('c')
-          .where('(c.code = :code AND (c.taboo_set_id is null OR c.taboo_set_id = 0))')
-          .setParameters({ code: cardJson.code })
-          .addSelect(Card.ELIDED_FIELDS)
-          .getOne();
+        const card = tabooCardsToSave[code];
         if (card) {
           try {
-            // Mark the original card as the 'vanilla' version.
-            if (card.taboo_set_id !== 0) {
-              await cardsRep.update({ id: card.id }, { taboo_set_id: 0 });
-            }
-            const tabooCard = Card.fromTabooCardJson(tabooJson.id, cardJson, card);
-            await cardsRep.save(tabooCard);
+            tabooCardsToSave[code] = Card.fromTabooCardJson(tabooJson.id, cardJson, card);
           } catch (e) {
             Alert.alert(`${e}`);
             console.log(e);
@@ -89,9 +90,14 @@ export const syncTaboos = async function(
           console.log(`Could not find old card: ${code}`);
         }
       }
+      const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
+      // await cards.save(cardsToInsert);
+      await insertChunk(cardsToInsert, async cards => {
+        await db.insertCards(cards);
+      }, 4);
     } catch (e) {
-      Alert.alert(`${e}`);
       console.log(e);
+      Alert.alert(`${e}`);
     }
   }
 
@@ -106,12 +112,9 @@ export const syncTaboos = async function(
   };
 };
 
-async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<void>) {
-  const chunkThings = chunk(things, 10);
-  for (let i = 0; i < chunkThings.length; i++) {
-    const toInsert = chunkThings[i];
-    await insert(toInsert);
-  }
+async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
+  const chunkThings = chunk(things, Platform.OS === 'ios' ? 50 : maxInsert || 10);
+  await Promise.all(map(chunkThings, async toInsert => await insert(toInsert)));
 }
 
 function rulesJson(lang?: string) {
@@ -129,11 +132,12 @@ export const syncRules = async function(
   lang?: string
 ): Promise<void> {
   const rules: JsonRule[] = rulesJson(lang);
-  await db.insertRules(
+  await insertChunk(
     flatMap(rules, (jsonRule, index) => {
       const rule = Rule.parse(lang || 'en', jsonRule, index);
       return [rule, ...(rule.rules || [])];
-    })
+    }),
+    async rules => await db.insertRules(rules)
   );
 };
 
@@ -263,9 +267,6 @@ export const syncCards = async function(
       await cards.insert(c);
     });
     // console.log('Inserted normal cards');
-    console.log('Inserted front link cards');
-
-
     const playerCards = await cards.createQueryBuilder()
       .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
       .getMany();

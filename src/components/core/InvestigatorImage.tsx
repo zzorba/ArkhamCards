@@ -7,6 +7,11 @@ import {
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Sepia } from 'react-native-color-matrix-image-filters';
+import {
+  Placeholder,
+  PlaceholderMedia,
+  Fade,
+} from 'rn-placeholder';
 
 import { showCard, showCardImage } from '@components/nav/helper';
 import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constants';
@@ -111,21 +116,12 @@ export default class InvestigatorImage extends React.Component<Props> {
     if (!card) {
       return (
         <View style={[styles.container, { width: size, height: size }]}>
-          <View style={styles.relative}>
-            { this.renderStyledImage()}
-          </View>
-          <View style={styles.relative}>
-            { !!border && (
-              <View style={[
-                styles.border,
-                {
-                  borderColor: colors.faction.neutral.background,
-                  width: size,
-                  height: size,
-                },
-              ]} />
-            ) }
-          </View>
+          <Placeholder Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}>
+            <PlaceholderMedia
+              color={colors.L10}
+              style={[styles.container, { width: size, height: size }, styles.border, { borderColor: border ? colors.M : colors.L10 }]}
+            />
+          </Placeholder>
         </View>
       );
     }

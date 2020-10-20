@@ -15,6 +15,9 @@ export interface DatabaseContextType {
   playerCardsByTaboo?: {
     [key: string]: PlayerCards;
   };
+  investigatorCardsByTaboo?: {
+    [key: string]: CardsMap;
+  };
   tabooSets: TabooSet[];
 }
 

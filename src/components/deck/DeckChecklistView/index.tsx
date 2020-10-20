@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
 import { Navigation, EventSubscription, Options } from 'react-native-navigation';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
@@ -13,12 +13,13 @@ import { NavigationProps } from '@components/nav/types';
 import { showCard } from '@components/nav/helper';
 import { setDeckChecklistCard, resetDeckChecklist } from '@components/deck/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import CardResultList from '@components/cardlist/CardSearchResultsComponent/CardResultList';
+import DbCardResultList from '@components/cardlist/CardSearchResultsComponent/DbCardResultList';
 import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface DeckChecklistProps {
   investigator: string;
@@ -31,79 +32,34 @@ interface ReduxProps {
   checklist: Set<string>;
 }
 
-interface ReduxActionProps {
-  resetDeckChecklist: (id: number) => void;
-  setDeckChecklistCard: (id: number, card: string, value: boolean) => void;
-}
 
-type Props = DeckChecklistProps & PlayerCardProps & ReduxProps & ReduxActionProps & NavigationProps;
-interface State {
-  sort: SortType;
-}
-class DeckChecklistView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+type Props = DeckChecklistProps & NavigationProps;
 
-  static options(): Options {
-    return {
-      topBar: {
-        title: {
-          text: t`Checklist`,
-          color: COLORS.white,
-        },
-        rightButtons: [
-          {
-            icon: iconsMap.sort,
-            id: 'sort',
-            color: COLORS.white,
-            accessibilityLabel: t`Sort`,
-          },
-        ],
-      },
-    };
-  }
-
-  state: State = {
-    sort: SORT_BY_TYPE,
-  };
-  _navEventListener?: EventSubscription;
-
-  componentDidMount() {
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _sortChanged = (sort: SortType) => {
-    this.setState({
-      sort,
-    });
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const { sort } = this.state;
+function DeckChecklistView({
+  componentId,
+  investigator,
+  id,
+  slots,
+  tabooSetOverride,
+}: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const checklist = useSelector((state: AppState) => getDeckChecklist(state, id));
+  const dispatch = useDispatch();
+  const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'sort') {
       showSortDialog(
-        this._sortChanged,
+        setSort,
         sort,
         false
       );
     }
-  }
+  }, componentId, [sort, setSort]);
+  const toggleCard = useCallback((card: Card, value: boolean) => {
+    dispatch(setDeckChecklistCard(id, card.code, value));
+  }, [setDeckChecklistCard, id]);
 
-  _toggleCard = (card: Card, value: boolean) => {
-    const { setDeckChecklistCard, id } = this.props;
-    setDeckChecklistCard(id, card.code, value);
-  };
-
-  _pressCard = (card: Card) => {
-    const {
-      componentId,
-      tabooSetOverride,
-    } = this.props;
-    const { colors } = this.context;
+  const pressCard = useCallback((card: Card) => {
     showCard(
       componentId,
       card.code,
@@ -112,86 +68,69 @@ class DeckChecklistView extends React.Component<Props, State> {
       true,
       tabooSetOverride
     );
-  };
+  }, [tabooSetOverride, componentId, colors]);
 
-  _renderCard = (card: Card) => {
-    const { slots, checklist } = this.props;
+  const renderCard = useCallback((card: Card) => {
     return (
       <CardSearchResult
         card={card}
         count={slots[card.code]}
-        onToggleChange={this._toggleCard}
-        onPress={this._pressCard}
+        onToggleChange={toggleCard}
+        onPress={pressCard}
         toggleValue={checklist.has(card.code)}
         backgroundColor="transparent"
       />
     );
-  };
+  }, [slots, checklist, toggleCard, pressCard]);
 
-  _handleScroll = () => {
-    // intentionally blank.
-  };
+  const clearChecklist = useCallback(() => {
+    dispatch(resetDeckChecklist(id));
+  }, [resetDeckChecklist, dispatch, id]);
 
-  _clearChecklist = () => {
-    const { id, resetDeckChecklist } = this.props;
-    resetDeckChecklist(id);
-  };
-
-  _renderHeader = () => {
-    const { checklist } = this.props;
-    const { typography, colors } = this.context;
+  const header = useMemo(() => {
     return (
       <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
-        <TouchableOpacity onPress={this._clearChecklist} disabled={!checklist.size}>
-          <Text style={[typography.text, checklist.size ? typography.light : { color: colors.L10 }]}>{t`Clear`}</Text>
+        <TouchableOpacity onPress={clearChecklist} disabled={!checklist.size}>
+          <Text style={[typography.text, checklist.size ? typography.light : { color: colors.L10 }]}>
+            { t`Clear` }
+          </Text>
         </TouchableOpacity>
       </View>
     );
-  }
+  }, [checklist, typography, colors, clearChecklist]);
 
-  render() {
-    const { componentId, slots, checklist } = this.props;
-    const { sort } = this.state;
-    return (
-      <CardResultList
-        componentId={componentId}
-        visible
-        deckCardCounts={slots}
-        originalDeckSlots={slots}
-        onDeckCountChange={this._handleScroll}
-        sort={sort}
-        renderHeader={this._renderHeader}
-        renderCard={this._renderCard}
-        handleScroll={this._handleScroll}
-        extraData={checklist}
-        noSearch
-      />
-    );
-  }
+  return (
+    <DbCardResultList
+      componentId={componentId}
+      deckCardCounts={slots}
+      originalDeckSlots={slots}
+      sort={sort}
+      header={header}
+      renderCard={renderCard}
+      noSearch
+    />
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & DeckChecklistProps & PlayerCardProps
-): ReduxProps {
+DeckChecklistView.options = (): Options => {
   return {
-    checklist: getDeckChecklist(state, props.id),
+    topBar: {
+      title: {
+        text: t`Checklist`,
+        color: COLORS.white,
+      },
+      rightButtons: [
+        {
+          icon: iconsMap.sort,
+          id: 'sort',
+          color: COLORS.white,
+          accessibilityLabel: t`Sort`,
+        },
+      ],
+    },
   };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    setDeckChecklistCard,
-    resetDeckChecklist,
-  }, dispatch);
-}
-
-export default withPlayerCards<NavigationProps & DeckChecklistProps>(
-  connect<ReduxProps, ReduxActionProps, NavigationProps & DeckChecklistProps & PlayerCardProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DeckChecklistView)
-);
+};
+export default DeckChecklistView;
 
 const styles = StyleSheet.create({
   headerRow: {

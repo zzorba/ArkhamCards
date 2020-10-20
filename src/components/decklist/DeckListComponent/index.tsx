@@ -1,24 +1,24 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   Keyboard,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { forEach } from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import DeckList from './DeckList';
-import { Campaign, Deck, DecksMap } from '@actions/types';
+import { Campaign, Deck } from '@actions/types';
 import Card from '@data/Card';
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import { fetchPublicDeck } from '@components/deck/actions';
-import { getAllDecks, AppState, getLangPreference } from '@reducers';
+import { getAllDecks, getLangPreference } from '@reducers';
 import space, { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
-interface OwnProps {
+interface Props {
   deckIds: number[];
   deckClicked: (deck: Deck, investigator?: Card) => void;
   onRefresh?: () => void;
@@ -30,80 +30,40 @@ interface OwnProps {
   isEmpty?: boolean;
 }
 
-interface ReduxProps {
-  decks: DecksMap;
-  lang: string;
-}
-
-interface ReduxActionProps {
-  fetchPublicDeck: (id: number, useDeckEndpoint: boolean) => void;
-}
-
-type Props = OwnProps &
-  ReduxProps &
-  ReduxActionProps;
-
-interface State {
-  searchTerm: string;
-}
-
-class DeckListComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      searchTerm: '',
-    };
-  }
-
-  _deckClicked = (deck: Deck, investigator?: Card) => {
+export default function DeckListComponent({
+  deckIds,
+  deckClicked,
+  onRefresh,
+  refreshing,
+  deckToCampaign,
+  customHeader,
+  customFooter,
+  searchOptions,
+  isEmpty,
+}: Props) {
+  const { typography } = useContext(StyleContext);
+  const [searchTerm, setSearchTerm] = useState('');
+  const decks = useSelector(getAllDecks);
+  const lang = useSelector(getLangPreference);
+  const handleDeckClick = useCallback((deck: Deck, investigator?: Card) => {
     Keyboard.dismiss();
-    this.props.deckClicked(deck, investigator);
-  };
-
-  _searchChanged = (searchTerm: string) => {
-    this.setState({
-      searchTerm,
-    });
-  };
-
-  componentDidMount() {
-    const {
-      deckIds,
-      decks,
-      fetchPublicDeck,
-    } = this.props;
-    deckIds.forEach(deckId => {
+    deckClicked(deck, investigator);
+  }, [deckClicked]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    forEach(deckIds, deckId => {
       if (!decks[deckId] && deckId > 0) {
-        fetchPublicDeck(deckId, false);
+        dispatch(fetchPublicDeck(deckId, false));
       }
     });
-  }
+  },[]);
+  const header = useMemo(() => (
+    <View style={styles.header}>
+      { !!customHeader && customHeader }
+    </View>
+  ),[customHeader])
 
-  _renderHeader = () => {
-    const {
-      customHeader,
-    } = this.props;
-    return (
-      <View style={styles.header}>
-        { !!customHeader && customHeader }
-      </View>
-    );
-  };
-
-  _renderFooter = (empty: boolean) => {
-    const {
-      isEmpty,
-      refreshing,
-      customFooter,
-    } = this.props;
-    const {
-      searchTerm,
-    } = this.state;
-    const { typography } = this.context;
+  const renderFooter = useCallback((empty: boolean) => {
     if (isEmpty && !refreshing) {
       return (
         <View style={styles.footer}>
@@ -133,61 +93,32 @@ class DeckListComponent extends React.Component<Props, State> {
         { customFooter }
       </View>
     );
-  };
-
-  render() {
-    const {
-      onRefresh,
-      refreshing,
-      decks,
-      deckIds,
-      deckToCampaign,
-      searchOptions,
-      lang,
-    } = this.props;
-    const { searchTerm } = this.state;
-    return (
-      <CollapsibleSearchBox
-        searchTerm={searchTerm}
-        onSearchChange={this._searchChanged}
-        prompt={t`Search decks`}
-        advancedOptions={searchOptions}
-      >
-        { onScroll => (
-          <DeckList
-            lang={lang}
-            deckIds={deckIds}
-            header={this._renderHeader()}
-            footer={this._renderFooter}
-            searchTerm={searchTerm}
-            deckToCampaign={deckToCampaign}
-            onRefresh={onRefresh}
-            refreshing={refreshing}
-            decks={decks}
-            onScroll={onScroll}
-            deckClicked={this._deckClicked}
-          />
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+  }, [isEmpty, refreshing, customFooter, searchTerm, typography]);
+  return (
+    <CollapsibleSearchBox
+      searchTerm={searchTerm}
+      onSearchChange={setSearchTerm}
+      prompt={t`Search decks`}
+      advancedOptions={searchOptions}
+    >
+      { onScroll => (
+        <DeckList
+          lang={lang}
+          deckIds={deckIds}
+          header={header}
+          footer={renderFooter}
+          searchTerm={searchTerm}
+          deckToCampaign={deckToCampaign}
+          onRefresh={onRefresh}
+          refreshing={refreshing}
+          decks={decks}
+          onScroll={onScroll}
+          deckClicked={handleDeckClick}
+        />
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    decks: getAllDecks(state),
-    lang: getLangPreference(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({ fetchPublicDeck }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(DeckListComponent);
 
 const styles = StyleSheet.create({
   header: {

@@ -7,7 +7,7 @@ import { t, ngettext, msgid } from 'ttag';
 
 import DatabaseContext from '@data/DatabaseContext';
 import { getFilterState, getDefaultFilterState, AppState, getCardFilterData } from '@reducers';
-import FilterBuilder, { CardFilterData, FilterState } from '@lib/filters';
+import FilterBuilder, { CardFilterData, DefaultCardFilterData, FilterState, defaultFilterState as DefaultFilterState } from '@lib/filters';
 import { combineQueriesOpt } from '@data/query';
 import deepDiff from 'deep-diff';
 import StyleContext from '@styles/StyleContext';
@@ -134,9 +134,11 @@ export default function useFilterFunctions({
   }, [filterId, dispatch]);
 
   return {
-    filters: currentFilters || defaultFilterState,
-    defaultFilterState,
-    cardFilterData,
+    // Note: these defaults should never come into play, but make type-system happy
+    // with suitable defaults.
+    filters: (currentFilters || defaultFilterState || DefaultFilterState),
+    defaultFilterState: defaultFilterState || DefaultFilterState,
+    cardFilterData: cardFilterData || DefaultCardFilterData,
     pushFilterView,
     onToggleChange,
     onFilterChange,

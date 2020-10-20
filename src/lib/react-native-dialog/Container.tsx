@@ -85,7 +85,7 @@ export default function DialogContainer({
         <View style={[styles.content, { backgroundColor: colors.background }, contentStyle]}>
           {Platform.OS === 'ios' && blurComponentIOS}
           {Platform.OS === 'ios' && !blurComponentIOS && (
-            <View style={[styles.blur, blurStyle]} />
+            <View style={[styles.blur, blurStyle, { backgroundColor: colors.L20 }]} />
           )}
           <View style={[styles.header, headerStyle]}>
             {titleChildrens}
@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
   },
   blur: {
     position: 'absolute',
-    backgroundColor: Platform.OS === 'ios' ? DynamicColorIOS({ light: 'white', dark: '#222' }) : 'white',
     top: 0,
     left: 0,
     bottom: 0,

@@ -223,7 +223,6 @@ export function showCardSwipe(
         },
       },
     };
-  console.log(`Swiping to ${index}`);
   Navigation.push<CardDetailSwipeProps>(componentId, {
     component: {
       name: 'Card.Swipe',

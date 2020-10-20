@@ -8,7 +8,7 @@ import TabooSet from './TabooSet';
 import Rule from './Rule';
 import { QuerySort } from './types';
 import { tabooSetQuery, where } from './query';
-import syncPlayerCards, { PlayerCardState } from './syncPlayerCards';
+import syncPlayerCards, { InvestigatorCardState, PlayerCardState } from './syncPlayerCards';
 import { SortType } from '@actions/types';
 
 type DatabaseListener = () => void;
@@ -22,7 +22,8 @@ export default class Database {
   static SCHEMA_VERSION: number = 25;
   connectionP: Promise<Connection>;
 
-  state?: PlayerCardState;
+  playerState?: PlayerCardState;
+  investigatorState?: InvestigatorCardState;
   listeners: DatabaseListener[] = [];
 
   constructor(latestVersion?: number) {
@@ -64,12 +65,17 @@ export default class Database {
 
   reloadPlayerCards() {
     // console.log('RELOADING PLAYER CARDS');
-    return syncPlayerCards(this, this._updatePlayerCards);
+    return syncPlayerCards(this, this._updateInvestigatorCards,  this._updatePlayerCards);
+  }
+
+  private _updateInvestigatorCards = (state: InvestigatorCardState) => {
+    this.investigatorState = state;
+    forEach(this.listeners, listener => listener());
   }
 
   private _updatePlayerCards = (state: PlayerCardState) => {
     // console.log('PLAYER CARDS UDPATED');
-    this.state = state;
+    this.playerState = state;
     forEach(this.listeners, listener => listener());
   };
 
