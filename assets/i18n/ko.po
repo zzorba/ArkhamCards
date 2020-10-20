@@ -1446,7 +1446,7 @@ msgstr "${ investigator.name }의 모험"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:240
 msgid "${ investigator.name } Investigates"
-msgstr "${ investigator.name }는 조사한다"
+msgstr "조사하는 ${ investigator.name }"
 
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:242
 #, javascript-format
@@ -1581,17 +1581,17 @@ msgstr "경험치"
 #: src/components/deck/DeckDetailView/DeckViewTab.tsx:526
 #, javascript-format
 msgid "${ changes.spentXp } of ${ adjustedXp }"
-msgstr "${ adjustedXp } 중 ${ changes.spentXp } 소비"
+msgstr "${ changes.spentXp }/${ adjustedXp }"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:103
 #, javascript-format
 msgid "XP: ${ spentXp } of ${ adjustedExperience } (${ adjustment })"
-msgstr "경험치: ${ adjustedExperience } 중 ${ spentXp } 소비 (${ adjustment })"
+msgstr "경험치: ${ spentXp }/${ adjustedExperience } (${ adjustment })"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:105
 #, javascript-format
 msgid "XP: ${ spentXp } of ${ adjustedExperience } (+0)"
-msgstr "경험치: ${ adjustedExperience } 중 ${ spentXp } 소비 (+0)"
+msgstr "경험치: ${ spentXp }/${ adjustedExperience } (+0)"
 
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:123
 msgid "Deck Details"
@@ -1929,7 +1929,7 @@ msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
 msgstr ""
-"덱의 사본을 만들어 다른 캠페인에 사용하거나 다른 향상을 선택하는데 활용할 수 있씁니다."
+"덱의 사본을 만들어 다른 캠페인에 사용하거나 다른 향상을 선택하는데 활용할 수 있습니다."
 
 #: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:76
 #, javascript-format
@@ -1974,22 +1974,22 @@ msgstr "조사자 덱 구성 제한을 만족하지 않습니다."
 #: src/components/core/TextEditDialog.tsx:180
 #. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Note: This entry is crossed out"
-msgstr ""
+msgstr "참고: 이 항목은 X표 되어있습니다"
 
 #: src/components/core/TextEditDialog.tsx:214
 #. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Uncross Out"
-msgstr ""
+msgstr "X표 해제"
 
 #: src/components/core/TextEditDialog.tsx:214
 #. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Cross Out"
-msgstr ""
+msgstr "X표 하기"
 
 #: src/components/core/TextEditDialog.tsx:221
 #. const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
 msgid "Add Another"
-msgstr ""
+msgstr "다른 것 추가"
 
 #: src/components/core/PackListComponent/PackRow.tsx:83
 #. This is the lead pack in a cycle.
@@ -2005,12 +2005,12 @@ msgstr "모든 사이클을 체크 해제하시겠습니까?"
 #. This is the lead pack in a cycle.
 #, javascript-format
 msgid "Mark all packs in the ${ pack.name } cycle?"
-msgstr "${ pack.name }사이클에 포함된 모든 팩을 체크하시겠습니까?"
+msgstr "${ pack.name } 사이클에 포함된 모든 팩을 체크하시겠습니까?"
 
 #: src/components/core/PackListComponent/PackRow.tsx:86
 #. This is the lead pack in a cycle.
 msgid "Clear all packs in the ${ pack.name } cycle?"
-msgstr "${ pack.name }사이클에 포함된 모든 팩을 체크 해제하시겠습니까?"
+msgstr "${ pack.name } 사이클에 포함된 모든 팩을 체크 해제하시겠습니까?"
 
 #: src/components/campaignguide/prompts/BinaryPrompt.tsx:50
 #: src/components/core/PackListComponent/PackRow.tsx:89
@@ -2114,7 +2114,7 @@ msgstr "미지의 카드: ${ req.code }"
 
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:344
 msgid "No matching investigators for \"${ searchTerm }\"."
-msgstr "\"${ searchTerm }\"과 일치하는 조사자가 없습니다."
+msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 조사자가 없습니다."
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:357
 #: src/components/cardlist/InvestigatorsListComponent/index.tsx:161
@@ -2173,7 +2173,7 @@ msgstr "5 높은 테스트에서 촉수 나오지 않기를 기도하는 중"
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:753
 #, javascript-format
 msgid "No matching cards for \"${ searchTerm }\""
-msgstr "\"${ searchTerm }\"와 일치하는 카드가 존재하지 않습니다."
+msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 카드가 존재하지 않습니다."
 
 #: src/components/cardlist/CardSearchResultsComponent/CardResultList.tsx:682
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:754
@@ -2225,7 +2225,7 @@ msgstr "카드 검색"
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:211
 #, javascript-format
 msgid "Clear \"${ searchTerm }\" search"
-msgstr "\"${ searchTerm }\" 검색 초기화"
+msgstr "\"${ searchTerm }\" 검색 조건 초기화"
 
 #: src/components/cardlist/CardSearchComponent/TuneButton.tsx:64
 msgid "Apply"
@@ -2510,7 +2510,7 @@ msgstr "${ supplyName } 사용 (${ desiredCount })"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:109
 msgid "Reads \"${ badThing.condition }\""
-msgstr "\"${ badThing.condition }\"를 읽습니다"
+msgstr "\"${ badThing.condition }\" 항목을 읽습니다"
 
 #: src/components/campaignguide/prompts/SuppliesPrompt/SupplyComponent.tsx:40
 #, javascript-format
@@ -2719,12 +2719,12 @@ msgstr "시나리오를 지금 바로 시작합니다"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:45
 msgid "Who will add ${ card.name } to their deck?"
-msgstr "어떤 조사자가 ${ card.name }를 덱에 추가하시겠습니까?"
+msgstr "어떤 조사자가 ${ card.name } 카드를 덱에 추가하시겠습니까?"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:25
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
-msgstr "당신의 캠페인 기록지 중 \"${ section }\" 항목에, ${ card.name }을 기록합니다."
+msgstr "당신의 캠페인 기록지 중 \"${ section }\" 항목에, ${ card.name } 항목을 기록합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:40
 msgid "In your Campaign Log, record that <i>${ text }</i>"
@@ -2733,7 +2733,7 @@ msgstr "당신의 캠페인 기록지에, <i>${ text }</i>라고 기록합니다
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:57
 #, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "당신의 캠페인 기록지에, <i>${ logEntry.text }</i>를 X표시 합니다."
+msgstr "당신의 캠페인 기록지에, <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:58
 #, javascript-format
@@ -2742,7 +2742,7 @@ msgid ""
 "logEntry.text }</i>"
 msgstr ""
 "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, "
-"<i>${ logEntry.text }</i>를 X표시 합니다."
+"<i>${ logEntry.text }</i> 항목에 X표시를 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:64
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
@@ -2768,11 +2768,11 @@ msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:66
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
-msgstr "${ card.name }를 제거합니다 (${ input.length })"
+msgstr "${ card.name } 카드를 제거합니다 (${ input.length })"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:81
 msgid "Who will remove ${ card.name } from their deck?"
-msgstr "어떤 조사자가 ${ card.name }를 덱에서 제거하시겠습니까?"
+msgstr "어떤 조사자가 ${ card.name } 카드를 덱에서 제거하시겠습니까?"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:124
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
@@ -2797,12 +2797,12 @@ msgstr "당신이 <b>${ difficulty }</b> 난이도를 즐기고 있기 때문에
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:56
 msgid "Because you have already completed <b>${ scenarioName }</b>:"
-msgstr "당신이 이미 <b>${ scenarioName }</b>를 완료했기 때문에:"
+msgstr "당신이 이미 <b>${ scenarioName }</b> 시나리오를 완료했기 때문에:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignDataConditionComponent.tsx:57
 #, javascript-format
 msgid "Because you have not yet completed <b>${ scenarioName }</b>:"
-msgstr "당신이 아직 <b>${ scenarioName }</b>를 완료하지 않았기 때문에:"
+msgstr "당신이 아직 <b>${ scenarioName }</b> 시나리오를 완료하지 않았기 때문에:"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:28
 #, javascript-format
@@ -2836,7 +2836,7 @@ msgstr[1] ""
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:41
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i>가 있으므로"
+msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i> 항목이 있으므로"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogSectionExistsConditionComponent.tsx:27
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
@@ -2851,11 +2851,11 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list }가 ${ supplyName }를 가지고 있으므로, 해당 조사자들은"
-"<b>${ sectionName }</b>을 읽어야만 합니다."
+"${ list } 조사자는 ${ supplyName } 보급품을 가지고 있으므로, 해당 조사자들은"
+"<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 msgstr[1] ""
-"${ list } 모두가 ${ supplyName }를 가지고 있으므로, 모든 조사자들은"
-"<b>${ sectionName }</b>을 읽어야만 합니다."
+"${ list } 모든 조사자가 ${ supplyName } 보급품을 가지고 있으므로, 모든 조사자들은"
+"<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CheckSuppliesConditionComponent.tsx:43
 #, javascript-format
@@ -2866,31 +2866,31 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list }가 ${ supplyName }를 가지고 있지 않으므로, 해당 조사자들은"
-"<b>${ sectionName }</b>을 읽어야만 합니다."
+"${ list } 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 해당 조사자들은"
+"<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 msgstr[1] ""
-"${ list } 모두가 ${ supplyName }를 가지고 있지 않으므로, 모든 조사자들은"
-"<b>${ sectionName }</b>을 읽어야만 합니다."
+"${ list } 모든 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 모든 조사자들은"
+"<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:51
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
-msgstr[0] "조사자들은 <b>${ prompt }</b>를 읽어야만 합니다."
-msgstr[1] "조사자들은 <b>${ prompt }</b>를 읽어야만 합니다."
+msgstr[0] "{ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
+msgstr[1] "{ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:34
 #, javascript-format
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
-msgstr "\"${ cardName }\"를 덱에 넣은 있는 조사자가 있습니까?"
+msgstr "\"${ cardName }\" 카드를 덱에 넣은 있는 조사자가 있습니까?"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:36
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
-msgstr "\"${ cardName }\"를 덱에 넣은 조사자가 쓰러졌습니까?"
+msgstr "\"${ cardName }\" 카드를 덱에 넣은 조사자가 쓰러졌습니까?"
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:38
 #, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "\"${ cardName }\"를 덱에 넣은 모든 조사자들은: "
+msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자들은: "
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/ScenarioDataConditionComponent.tsx:28
 msgid "Because there is ${ playerCount } player in the game:"
@@ -2912,7 +2912,7 @@ msgid ""
 "If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
 "your Campaign Log."
 msgstr ""
-"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i>가 없으면."
+"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 없으면."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:28
 #, javascript-format
@@ -2920,19 +2920,19 @@ msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
-"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i>가 있으면."
+"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "${ logEntry.section }를 확인합니다. <i>${ logEntry.text }</i>가 있으면"
+msgstr "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:52
 msgid "Choose Side-Scenario"
-msgstr "독립 시나리오 선택"
+msgstr "외전 시나리오 선택"
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:126
 msgid "Add side scenario"
-msgstr "독립 시나리오 추가"
+msgstr "외전 시나리오 추가"
 
 #: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:41
 #, javascript-format
@@ -3900,7 +3900,7 @@ msgstr "캠페인 가이드 사용"
 #: src/components/campaign/MyCampaignsView/index.tsx:140
 #, javascript-format
 msgid "No matching campaigns for \"${ search }\"."
-msgstr "\"${ search }\"와 일치하는 캠페인이 없습니다."
+msgstr "\"${ search }\" 검색 조건과 일치하는 캠페인이 없습니다."
 
 #: src/components/campaign/MyCampaignsView/index.tsx:148
 msgid ""
@@ -3934,7 +3934,7 @@ msgstr "노트 추가"
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:177
 #, javascript-format
 msgid "Remove ${ investigator.name }?"
-msgstr "${ investigator.name }를 제거하시겠습니까?"
+msgstr "${ investigator.name } 조사자를 제거하시겠습니까?"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:183
 msgid "Remove"
@@ -3952,7 +3952,7 @@ msgstr "기본 약점 세트"
 #: src/components/campaign/CampaignDetailView/WeaknessSetSection.tsx:60
 #, javascript-format
 msgid "${ counts.assigned } / ${ counts.total } have been drawn."
-msgstr "${ counts.assigned } / ${ counts.total }가 뽑혔습니다."
+msgstr "${ counts.assigned } / ${ counts.total } 약점이 뽑혔습니다."
 
 #: src/components/campaign/CampaignDetailView/index.tsx:276
 #, javascript-format
@@ -4003,7 +4003,7 @@ msgstr "저장만 하기"
 #: src/components/DeckNavFooter/index.tsx:88
 #, javascript-format
 msgid "XP: ${ experience }"
-msgstr "경험치: "
+msgstr "경험치: ${ experience }"
 
 #: src/components/DeckNavFooter/index.tsx:91
 #, javascript-format
@@ -4069,7 +4069,7 @@ msgid ""
 "${ investigator.name } must be chosen as one of the investigators when "
 "playing this scenario."
 msgstr ""
-"${ investigator.name }는 이 시나리오를 플레이하는 조사자 중 하나로 선택되어야만 합니다."
+"${ investigator.name } 조사자는 이 시나리오를 플레이하는 조사자 중 하나로 선택되어야만 합니다."
 
 #: src/components/campaignguide/ChallengeScenarioView.tsx:69
 msgid ""
@@ -4087,21 +4087,21 @@ msgstr ""
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:29
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name } (Advanced)."
-msgstr "${ investigator.name }는 ${ card.name } (강화된)을/를 획득합니다."
+msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 획득합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:30
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name }."
-msgstr "${ investigator.name }는 ${ card.name }을/를 획득합니다."
+msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 획득합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:33
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
-msgstr "${ investigator.name }는 ${ card.name } (강화된)을/를 제거합니다."
+msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 제거합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:34
 msgid "${ investigator.name } removes ${ card.name }"
-msgstr "${ investigator.name }는 ${ card.name }을/를 제거합니다."
+msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합니다."
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:62
 msgid "Challenge Scenario"
@@ -4198,7 +4198,7 @@ msgstr "경험치 저장"
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:69
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
-msgstr "$사용 가능 경험치 { xp }, (${ parsedDeck.changes.spentXp } 소비함)"
+msgstr "사용 가능 경험치 ${ xp }, (${ parsedDeck.changes.spentXp } 소비함)"
 
 #: src/components/campaign/NewCampaignView/CampaignNoteSectionRow.tsx:33
 msgid " (Per Investigator)"
@@ -4947,7 +4947,7 @@ msgid ""
 "Keep level ${ level } after upgrade\n"
 "Won't count towards deck size"
 msgstr ""
-"향상 후 레벨 ${ level }를 유지합니다\n"
+"향상 후 레벨 ${ level } 카드를 유지합니다\n"
 "덱 크기에 영향을 미치지 않습니다"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:385
@@ -5089,13 +5089,13 @@ msgstr "없음"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name }은 <b>미칩니다</b>."
+msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:33
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name }은/는 <b>사망합니다</b>."
+msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:38
 #, javascript-format
@@ -5103,7 +5103,7 @@ msgctxt "masculine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
 "choice)</i>."
-msgstr "${ investigator.name }은/는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 선택합니다)</i>."
+msgstr "${ investigator.name } 조사자는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 선택합니다)</i>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:44
 #, javascript-format
@@ -5115,58 +5115,58 @@ msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
 "effect.physical } physical trauma."
 msgstr[0] ""
-"${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }와 "
-"육체적 트라우마 ${ effect.physical }을/를 받습니다."
+"${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } "
+"육체적 트라우마를 ${ effect.physical } 받습니다."
 msgstr[1] ""
-"${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }와 "
-"육체적 트라우마 ${ effect.physical }을/를 받습니다."
+"${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } "
+"육체적 트라우마를 ${ effect.physical } 받습니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:59
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name }은/는 정신적 트라우마 ${ mental }을/를 회복합니다."
-msgstr[1] "${ investigator.name }은/는 정신적 트라우마 ${ mental }을/를 회복합니다."
+msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
+msgstr[1] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:71
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }을/를 받습니다."
-msgstr[1] "${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }을/를 받습니다."
+msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 받습니다."
+msgstr[1] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 받습니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:86
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name }은/는 신체적 트라우마 ${ physical }을/를 회복합니다."
-msgstr[1] "${ investigator.name }은/는 신체적 트라우마 ${ physical }을/를 회복합니다."
+msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ physical } 회복합니다."
+msgstr[1] "${ investigator.name } 조사자는 신체적 트라우마를 ${ physical } 회복합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:97
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name }은/는 신체적 트라우마 ${ effect.physical }을/를 받습니다."
-msgstr[1] "${ investigator.name }은/는 신체적 트라우마 ${ effect.physical }을/를 받습니다."
+msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
+msgstr[1] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr "${ investigator.name }은 <b>미칩니다</b>."
+msgstr "${ investigator.name } 조사자는 <b>미칩니다</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:34
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr "${ investigator.name }은/는 <b>사망합니다</b>."
+msgstr "${ investigator.name } 조사자는 <b>사망합니다</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:39
 msgctxt "feminine"
 msgid ""
 "${ investigator.name } suffers 1 physical or mental trauma <i>(their "
 "choice)</i>."
-msgstr "${ investigator.name }은/는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 선택합니다)</i>."
+msgstr "${ investigator.name } 조사자는 육체적 트라우마 1 또는 정신적 트라우마 1을 받습니다 <i>(본인이 선택합니다)</i>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:49
 #, javascript-format
@@ -5178,42 +5178,42 @@ msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ "
 "effect.physical } physical trauma."
 msgstr[0] ""
-"${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }와 "
-"육체적 트라우마 ${ effect.physical }을/를 받습니다."
+"${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } "
+"육체적 트라우마를 ${ effect.physical } 받습니다."
 msgstr[1] ""
-"${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }와 "
-"육체적 트라우마 ${ effect.physical }을/를 받습니다."
+"${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } "
+"육체적 트라우마를 ${ effect.physical } 받습니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:64
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] "${ investigator.name }은/는 정신적 트라우마 ${ mental }을/를 회복합니다."
-msgstr[1] "${ investigator.name }은/는 정신적 트라우마 ${ mental }을/를 회복합니다."
+msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
+msgstr[1] "${ investigator.name } 조사자는 정신적 트라우마를 ${ mental } 회복합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:76
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] "${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }을/를 받습니다."
-msgstr[1] "${ investigator.name }은/는 정신적 트라우마 ${ effect.mental }을/를 받습니다."
+msgstr[0] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 받습니다."
+msgstr[1] "${ investigator.name } 조사자는 정신적 트라우마를 ${ effect.mental } 받습니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:90
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] "${ investigator.name }은/는 신체적 트라우마 ${ physical }을/를 회복합니다."
-msgstr[1] "${ investigator.name }은/는 신체적 트라우마 ${ physical }을/를 회복합니다."
+msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ physical } 회복합니다."
+msgstr[1] "${ investigator.name } 조사자는 신체적 트라우마를 ${ physical } 회복합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:102
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] "${ investigator.name }은/는 신체적 트라우마 ${ effect.physical }을/를 받습니다."
-msgstr[1] "${ investigator.name }은/는 신체적 트라우마 ${ effect.physical }을/를 받습니다."
+msgstr[0] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
+msgstr[1] "${ investigator.name } 조사자는 신체적 트라우마를 ${ effect.physical } 받습니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:95
 msgctxt "Weakness Card"
