@@ -187,7 +187,7 @@ export default function DeckListRow({
       </View>
     );
   }
-  if (viewDeckButton) {
+  if (viewDeckButton || !investigator) {
     return contents;
   }
   return (
