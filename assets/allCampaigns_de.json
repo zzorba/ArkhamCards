@@ -32284,8 +32284,8 @@
 },
 {
   "id": "blob_that_ate_everything",
-  "scenario_name": "The Blob That Ate Everything",
-  "full_name": "The Blob That Ate Everything",
+  "scenario_name": "Der Blob, der alles fraß",
+  "full_name": "Der Blob, der alles fraß",
   "xp_cost": 2,
   "setup": [
     "xp_cost",
@@ -32318,12 +32318,12 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "<i>Incident Report: 8L-08</i>\n<i>Thursday, 07/05/1928</i>\n<i>Blackwater, MA</i>\n\n<i>0312 hours - Impact event just outside of Blackwater. Intercepted police call, agents sent to investigate. Interviewed local farmer, Ron Graham; claims meteor was several feet wide, greenish hue. Crater roughly 100 yards in diameter. Radiation detected in outlying area. Recommend immediate quarantine and further observation by research team. Situation under control.</i>"
+      "text": "<i>Vorfallsbericht: 8L-08</i>\n<i>Donnerstag, 5. Juli 1928</i>\n<i>Blackwater, MA</i>\n\n<i>0312 Uhr – Einschlag direkt außerhalb von Blackwater. Polizeinotruf abgefangen, Agenten zur Untersuchung entsandt. Befragung des ansässigen Farmers, Ron Graham; nach Aussage ist Meteor mehrere Meter groß, grünlicher Farbton. Durchmesser des Kraters: ca.100 Meter. Strahlung in Umgebung festgestellt. Sofortige Quarantäne und weitere Untersuchungen durch ein Forschungsteam empfohlen. Situation unter Kontrolle.</i>"
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "It wasn't under control.\nThat was the report the G-men took when they first arrived. For the next few days, the town of Blackwater was on lockdown. The impact was all that was talked about in the papers, but not much was known aside from the enormous crater and the effect it had on the countryside. Nobody was allowed to leave the town, and only those approved by the shadow government agency was allowed to enter. Those unfortunate few included high-ranking government agent, and a team of researchers from the nearby Miskatonic University, who were summoned to investigate the meteor itself. For the rest of the town's inhabitants, it was a strange occurence, nothing more… that is, until the meteor <i>hatched</i>.\nI saw it with my own eyes. When the anomaly emerged, the first thing it did was devour the team of researchers who have been sent to collect and study samples from the meteor. The next thing it did was devour their lab equipment. Then Ron Graham's tractor. Then his house, in its entirety. It continued to grow and spread, devouring everything in its path. I barely escaped with my life.\nWhen the army arrived, they thought they could kill it with bullets and shells. Everything they threw at the creature was devoured, one round after the next. Then it split into hundreds of smaller pieces of itself, and the army was quickly overwhelmed. While the battle raged on, myself and others back in town saw lights and shapes in the sky above. Something was up there, waiting. Biding time.\nThe quarantine still holds, and we're stuck in the middle of it. It won't be long before the anomaly has grown large enough to devour everything in Blackwater. And if that happens, who could possibly stop its rampage?"
+      "text": "Doch sie war nicht unter Kontrolle. \nDies war der Bericht, den die Männer der Behörde verfasst hatten, als sie dort als Erste eingetroffen waren. Für die folgenden paar Tage wurde die Stadt Blackwater abgeriegelt. Der Einschlag beherrschte die Schlagzeilen. Dennoch war wenig mehr bekannt, als der riesige Krater und die Auswirkungen, die er auf die umgebende Landschaft hatte. Niemand durfte die Stadt verlassen und nur diejenigen, die von der rätselhaften Regierungsbehörde die Erlaubnis hatten, durften in die Stadt hinein. Unter diesen wenigen Unglücklichen waren hochrangige Agenten der Regierung und ein Forscherteam der nahe gelegenen Miskatonic Universität, die herbeizitiert worden waren, um den Meteor selbst zu untersuchen. Für die Einwohner war das alles nur ein seltsames Ereignis, nichts weiter … bis etwas aus dem Meteor schlüpfte.\nIch habe es mit meinen eigenen Augen gesehen. Als die Anomalie erschien, verschlang sie als Erstes das gesamte Forscherteam, das zum Meteor geschickt worden war, um Proben zu nehmen und sie zu untersuchen. Als Nächstes verschlang sie die gesamte Laborausrüstung. Danach Ron Grahams Traktor. Dann sein Haus, sein komplettes Haus. Die Anomalie wuchs weiter, breitete sich aus und verschlang alles, was ihr in die Quere kam. Ich bin gerade noch so mit meinem Leben davongekommen. \nAls die Armee eintraf, glaubte sie, das Ding mit Patronen und Granaten töten zu können. Alles, was sie der Kreatur entgegenwarfen, wurde von ihr verschlungen, eine Kugel nach der anderen. Dann teilte sie sich in hunderte kleinere Stücke auf, wodurch die Armee schon sehr bald an ihre Grenzen stieß. Während das Gefecht noch anhielt, entdeckten ich und andere am Himmel über der Stadt Lichter und Formen. Etwas war dort oben und wartete auf den richtigen Augenblick. \nDie Quarantäne wird noch immer aufrechterhalten und wir stecken mittendrin. Es wird nicht mehr lange dauern, bis die Anomalie so groß geworden ist, damit sie alles in Blackwater verschlingen kann. Und wenn das passiert, wer soll sie dann noch aufhalten können?"
     },
     {
       "id": "gather_encounter_sets",
@@ -32344,33 +32344,33 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Search <i>The Blob That Ate Everything</i> encounter set for the following encounter cards and set them aside out of play: Vulnerable Heart, 1 copy of Grasping Ooze, 1 copy of Cubic Ooze, and both copies of Oozewraith."
+      "text": "Folgende Begegnungskarten werden aus dem Begegnungsset Der Blob, der alles fraß herausgesucht und als nicht im Spiel befindlich beiseitegelegt: Das verwundbare Herz, 1 Kopie von Greifender Schleim, 1 Kopie von Kubischer Schleim und beide Kopien von Schleimgespenst."
     },
     {
       "id": "setup_blob",
-      "text": "Put the Subject 8L-08 enemy into play next to the agenda deck. It is not at any location."
+      "text": "Der Gegner Subjekt 8L-08 wird neben dem Agendadeck ins Spiel gebracht. Er befindet sich an keinem Ort."
     },
     {
       "id": "setup_locations",
-      "text": "Set up the locations acccording to the guidelines below.",
+      "text": "Die Orte werden nach den unten angegebenen Vorgaben platziert.",
       "bullets": [
         {
-          "text": "Shuffle the Quarantine Zone locations together and remove 1 of them from the game."
+          "text": "Die Orte Quarantänezone werden gemischt und 1 Ort davon aus dem Spiel entfernt."
         },
         {
-          "text": "Put The Crater into play."
+          "text": "Der Krater wird ins Spiel gebracht."
         },
         {
-          "text": "Take the Research Site, the Temporary HQ, and 2 random Quarantine Zone locations. Shuffle them and place each of them connected to the Crater, in a random order."
+          "text": "Die Orte Forschungsgelände, Provisorisches HQ und 2 zufällige Orte Quarantänezone werden gemischt und in zufälliger Position mit dem Krater verbunden an seinen 4 Seiten um ihm herum platziert."
         },
         {
-          "text": "Take the Fungus Mound and 3 random Qurantine Zone locations. Shuffle them and place each of them in 1 of the 4 positions in the outer ring, farthest from the Crater."
+          "text": "Der Ort Pilzhügel und 3 zufällige Orte Quarantänezone werden gemischt und in zufälliger Anordnung auf 1 der 4 Positionen im äußeren Ring (am weitesten vom Krater entfernt) platziert."
         },
         {
-          "text": "Put the remaining Quarantine Zone locations into play."
+          "text": "Die übrigen Orte Quarantänezone werden ins Spiel gebracht."
         },
         {
-          "text": "Each investigator begins play at the Temporary HQ."
+          "text": "Jeder Ermittler beginnt das Spiel im provisorischen HQ."
         }
       ]
     },
@@ -32411,12 +32411,12 @@
     {
       "id": "one_countermeasure",
       "bullet_type": "small",
-      "text": "Place 1 resource on the scenario reference card as a countermeasure."
+      "text": "Platziere 1 Ressource als Gegenmaßnahme auf der Szenarioübersichtskarte."
     },
     {
       "id": "two_countermeasure",
       "bullet_type": "small",
-      "text": "Place 2 resources on the scenario reference card as a countermeasures."
+      "text": "Platziere 2 Ressource als Gegenmaßnahme auf der Szenarioübersichtskarte."
     },
     {
       "id": "encounter_deck",
@@ -32425,37 +32425,37 @@
     {
       "id": "devour_rule",
       "type": "rule_reminder",
-      "title": "Devour",
-      "text": "During this scenario, Subject 8L-08 can \"devour\" a variety of things.",
+      "title": "Verschlingen",
+      "text": "In diesem Szenario kann Subjekt 8L-08 verschiedene Dinge „verschlingen“.",
       "bullets": [
         {
-          "text": "If a card is devoured, it is placed beneath Subject 8L-08. Cards beneath Subject 8L-08 are considered out of play. Each devoured card is returned to its owner's deck at the end of the game. If an investigator is devoured, he or she is killed."
+          "text": "Falls eine Karte verschlungen wird, wird sie unter Subjekt 8L-08 gelegt. Karten unter Subjekt 8L-08 gelten als nicht im Spiel befindlich. Jede verschlungene Karte wird am Ende des Spiels zurück in das Deck ihres Besitzers geschickt. Falls ein Ermittler verschlungen wird, wird er getötet."
         },
         {
-          "text": "If a token is devoured, it is placed in the token pool."
+          "text": "Falls ein Marker verschlungen wird, wird er in den Markervorrat zurückgelegt."
         },
         {
-          "text": "When choosing a location to be devoured, you cannot choose to devour a location if it causes another location to have no valid connections."
+          "text": "Sobald ein Ort zum Verschlingen gewählt wird, kann dieser Ort nicht zum Verschlingen gewählt werden, falls es dazu führt, dass ein anderer Ort dadurch keine gültige Verbindung mehr hat."
         },
         {
-          "text": "Subject 8L-08 can also devour certain aspect of reality or metaphysical objects. If it does so, you will be instructed of the consequences."
+          "text": "Subjekt 8L-08 kann auch bestimmte Aspekte der Realität und metaphysische Objekte verschlingen. Wenn es das tut, sind die Konsequenzen angegeben."
         }
       ]
     },
     {
       "id": "countermeasures_rule",
       "type": "rule_reminder",
-      "title": "Countermeasures",
-      "text": "Countermeasures represent supplies, research, or military equipment which may aid the investigators in their survival. Countermeasures may be spent via certain card abilities in order to trigger powerful effects. However, gaining new countermeasures is rare, so be careful how you spend them!"
+      "title": "Gegenmaßnahmen",
+      "text": "Gegenmaßnahmen stellen Vorräte, Forschungen oder militärische Ausrüstung dar, die den Ermittlern bei ihrem Überlebenskampf helfen können. Gegenmaßnahmen können durch bestimmte Kartenfähigkeiten ausgegeben werden, um mächtige Effekte auszulösen. Es ist aber sehr schwer, Gegenmaßnahmen zu erhalten, deshalb sollten sie mit Bedacht eingesetzt werden!"
     },
     {
       "id": "blob_x_rule",
       "type": "rule_reminder",
       "title": "Blob X",
-      "text": "Many of the enemies in this scenario are pieces of the anomaly which have broken apart and have their own sentience. Defeating these enemies damages the anomaly. As an enemy with <b>Blox X</b> is defeated, deal X damage to Subject 8L-08.",
+      "text": "Viele Gegner dieses Szenarios sind ein Stück der auseinandergebrochenen Anomalie, die dennoch ihr eigenes Bewusstsein haben. Das Besiegen dieser Gegner schadet der Anomalie. Wird ein Gegner mit dem Text <b>Blob X</b> besiegt, wird Subjekt 8L-08 X Schaden zugefügt.",
       "bullets": [
         {
-          "text": "Enemies with <b>Blox X</b> are not placed in the victory display when they are defeated unless they also have <b>Victory X</b>."
+          "text": "Gegner mit dem Text <b>Blob X</b> werden nicht auf den Siegpunktestapel gelegt, sobald sie besiegt werden, außer wenn sie zusätzlich den Text <b>Sieg X</b> haben."
         }
       ]
     },
@@ -32466,7 +32466,7 @@
       "input": {
         "type": "counter",
         "text": "Siegpunktestapel:",
-        "confirm_text": "Each investigator earns 3 bonus experience as they have saved the fabric of existence.",
+        "confirm_text": "Jeder Ermittler verdient 3 zusätzliche Erfahrungspunkte, da er das Gefüge der Existenz bewahrt hat.",
         "effects": [
           {
             "type": "earn_xp",
@@ -32483,24 +32483,24 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "blob_devoured_universe",
-          "text": "Subject 8L-08 devoured the entire universe."
+          "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
         }
       ]
     },
     {
       "id": "reality_acid",
       "type": "table",
-      "title": "Reality Acid",
+      "title": "Realitätssäure",
       "bullet_type": "none",
-      "text": "<smallcaps>Subject 8L-08 opens its maw, and devours…</smallcaps>\n<i>(If the combination of chaos tokens revealed is not listed, or if the listed aspect cannot be devoured, reveal two new chaos tokens and consult the chart again.)</i> ",
+      "text": "<smallcaps>Subjekt 8L-08 öffnet seinen Schlund und verschlingt …</smallcaps>\n<i>(Falls die Kombination der enthüllten Chaos marker nicht aufgeführt ist oder falls der Aspekt nicht verschlungen werden kann, enthülle 2 neue Chaosmarker und ziehe erneut die Tabelle zurate.)</i> ",
       "header": {
         "cells": [
           {
-            "text": "<b>Chaos Tokens</b>\n<i>(in any order)</i>",
+            "text": "<b>Chaosmarker</b>\n<i>(in beliebiger Reihenfolge)</i>",
             "size": 2
           },
           {
-            "text": "<center><b>Aspect of Reality Devoured</b></center>",
+            "text": "<center><b>Aspekt der verschlungenen Realität</b></center>",
             "size": 4
           }
         ]
@@ -32517,7 +32517,7 @@
               "size": 1
             },
             {
-              "text": "…the non-[[Elite]] enemy nearest to you.",
+              "text": "… den nächstgelegenen Nicht-[[Elite]]-Gegner.",
               "size": 4
             }
           ]
@@ -32533,7 +32533,7 @@
               "size": 1
             },
             {
-              "text": "…a treachery at your location.",
+              "text": "… eine Verratskarte an deinem Ort.",
               "size": 4
             }
           ]
@@ -32545,11 +32545,11 @@
               "size": 1
             },
             {
-              "text": "‑1 to ‑8",
+              "text": "‑1 bis ‑8",
               "size": 1
             },
             {
-              "text": "…1 horror and 1 damage from your investigator card.",
+              "text": "… 1 Horror und 1 Schaden von deiner Ermittlerkarte.",
               "size": 4
             }
           ]
@@ -32565,7 +32565,7 @@
               "size": 1
             },
             {
-              "text": "…your greatest flaw. Search your deck for any 1 weakness card. It is devoured.",
+              "text": "… deine größte Schwäche. Durchsuche dein Deck nach 1 beliebigen Schwäche karte. Sie wird verschlungen.",
               "size": 4
             }
           ]
@@ -32581,7 +32581,7 @@
               "size": 1
             },
             {
-              "text": "…the [elder_sign] token just revealed.",
+              "text": "… den gerade enthüllten [elder_sign]-Marker.",
               "size": 4
             }
           ]
@@ -32597,7 +32597,7 @@
               "size": 1
             },
             {
-              "text": "…your caution. Resolve Reality Acid three more times, ignoring this result.",
+              "text": "… deine Vorsicht. Handle Realitätssäure drei weitere Male ab und ignoriere dieses Ergebnis.",
               "size": 4
             }
           ]
@@ -32613,7 +32613,7 @@
               "size": 1
             },
             {
-              "text": "…your ignorance. Discover 1 clue at your location.",
+              "text": "… deine Unwissenheit. Entdecke 1 Hinweis an deinem Ort.",
               "size": 4
             }
           ]
@@ -32625,11 +32625,11 @@
               "size": 1
             },
             {
-              "text": "‑1 to ‑8",
+              "text": "‑1 bis ‑8",
               "size": 1
             },
             {
-              "text": "…friendships. Until the end of the round, investigators cannot commit cards to each others' skill tests.",
+              "text": "… Freundschaften. Bis zum Ende der Runde können Ermittler keine Karten zu Fertigkeitsproben anderer Ermittler beitragen.",
               "size": 4
             }
           ]
@@ -32645,7 +32645,7 @@
               "size": 1
             },
             {
-              "text": "…your player reference card.",
+              "text": "… deine Referenzkarte.",
               "size": 4
             }
           ]
@@ -32661,7 +32661,7 @@
               "size": 1
             },
             {
-              "text": "…1 [per_investigator] clues from your location.",
+              "text": "…1 [per_investigator] Hinweise an deinem Ort.",
               "size": 4
             }
           ]
@@ -32677,7 +32677,7 @@
               "size": 1
             },
             {
-              "text": "…your voice. Until the end of the round, you cannot speak or make noise.",
+              "text": "… deine Stimme. Bis zum Ende der Runde kannst du weder sprechen noch Geräusche von dir geben.",
               "size": 4
             }
           ]
@@ -32693,7 +32693,7 @@
               "size": 1
             },
             {
-              "text": "…your group's food and drinks. It cannot be consumed until your group has dealt at least 3 damage to Subject 8L-08.",
+              "text": "… Essen und Getränke deiner Gruppe. Ihr dürft erst wieder essen und trinken, bis ihr Subjekt 8L-08 3 Schaden zugefügt habt.",
               "size": 4
             }
           ]
@@ -32709,7 +32709,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of language. Until the end of the investigation phase, you can only speak in gibberish.",
+              "text": "… das Konzept der Sprache. Bis zum Ende der Ermittlungsphase kannst du nur noch Kauderwelsch sprechen.",
               "size": 4
             }
           ]
@@ -32725,7 +32725,7 @@
               "size": 1
             },
             {
-              "text": "…light. Until the end of the round, investigators must play with all nearby light sources turned off or covered (except for flashlights).",
+              "text": "… das Licht. Bis zum Ende der Runde müssen die Ermittler alle Lichtquellen in der Nähe ausschalten oder abdecken (mit Ausnahme von Taschenlampen).",
               "size": 4
             }
           ]
@@ -32741,7 +32741,7 @@
               "size": 1
             },
             {
-              "text": "…itself, and then regurgitates itself. Deal 1 damage to Subject 8L-08.",
+              "text": "… sich selbst und würgt sich wieder hervor. Füge Subjekt 8L-08 1 Schaden zu.",
               "size": 4
             }
           ]
@@ -32757,7 +32757,7 @@
               "size": 1
             },
             {
-              "text": "…all damage from each [[Manifold]] enemy.",
+              "text": "… sämtlichen Schaden von jedem [[Duplikat]]-Gegner.",
               "size": 4
             }
           ]
@@ -32769,11 +32769,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "…all of the supplies, ammo, charges, and secrets among assets you control.",
+              "text": "… sämtliche Vorräte, Munition, Ladungen und Geheimnisse auf Vorteilskarten, die du kontrollierst.",
               "size": 4
             }
           ]
@@ -32789,7 +32789,7 @@
               "size": 1
             },
             {
-              "text": "…your hope. Until the end of the next mythos phase, set your base [willpower] to 0.",
+              "text": "… deine Hoffnung. Setze deinen Grund-[willpower]-Fertigkeitswert bis zum Ende der nächsten Mythosphase auf 0 fest.",
               "size": 4
             }
           ]
@@ -32805,7 +32805,7 @@
               "size": 1
             },
             {
-              "text": "…your curiosity. Until the end of the next mythos phase, set your base [intellect] to 0.",
+              "text": "… deine Neugier. Setze deinen Grund-[intellect]-Fertigkeitswert bis zum Ende der nächsten Mythosphase auf 0 fest.",
               "size": 4
             }
           ]
@@ -32821,7 +32821,7 @@
               "size": 1
             },
             {
-              "text": "…your precision. Until the end of the next mythos phase, set your base [combat] to 0.",
+              "text": "… deine Genauigkeit. Setze deinen Grund-[combat]-Fertigkeitswert bis zum Ende der nächsten Mythosphase auf 0 fest.",
               "size": 4
             }
           ]
@@ -32837,7 +32837,7 @@
               "size": 1
             },
             {
-              "text": "…your attention. Until the end of the next mythos phase, set your base [agility] to 0.",
+              "text": "… deine Aufmerksamkeit. Setze deinen Grund-[agility]-Fertigkeitswert bis zum Ende der nächsten Mythosphase auf 0 fest.",
               "size": 4
             }
           ]
@@ -32853,7 +32853,7 @@
               "size": 1
             },
             {
-              "text": "…your versatility. Until the end of the round, you cannot play or use cards that do not match your investigator's class.",
+              "text": "… deine Flexibilität. Bis zum Ende der Runde kannst du keine Karten spielen oder verwenden, die nicht zur Klasse deines Ermittlers gehören.",
               "size": 4
             }
           ]
@@ -32869,7 +32869,7 @@
               "size": 1
             },
             {
-              "text": "…your cell phone.",
+              "text": "… dein Handy.",
               "size": 4
             }
           ]
@@ -32885,7 +32885,7 @@
               "size": 1
             },
             {
-              "text": "…the chaos bag. Remove all tokens from it and place them in a different container.",
+              "text": "… den Chaosbeutel. Entferne alle Marker aus dem Beutel und lege sie in einen anderen Behälter.",
               "size": 4
             }
           ]
@@ -32897,11 +32897,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "…level 1 - 5 cards of your choice with at least 5 total levels from among your deck, discard pile, hand, and play area.",
+              "text": "… Karten deiner Wahl der Stufe 1–5 aus deinem Deck, aus deinem Ablagestapel, von deiner Hand und aus deiner Spielzone mit einer Gesamtstufe von mindestens 5.",
               "size": 4
             }
           ]
@@ -32917,7 +32917,7 @@
               "size": 1
             },
             {
-              "text": "…the top three cards of your deck.",
+              "text": "… die obersten 3 Karten deines Decks.",
               "size": 4
             }
           ]
@@ -32933,7 +32933,7 @@
               "size": 1
             },
             {
-              "text": "…the top 3 cards of your discard pile.",
+              "text": "… die obersten 3 Karten deines Ablagestapels.",
               "size": 4
             }
           ]
@@ -32949,7 +32949,7 @@
               "size": 1
             },
             {
-              "text": "…the deckbox you store your deck in.",
+              "text": "… den Behälter, in dem du dein Deck aufbewahrst.",
               "size": 4
             }
           ]
@@ -32965,7 +32965,7 @@
               "size": 1
             },
             {
-              "text": "…your investigator's card sleeve.",
+              "text": "… die Kartenhülle deiner Ermittlerkarte.",
               "size": 4
             }
           ]
@@ -32977,11 +32977,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "…your party's teamwork. Each investigator loses 1 action.",
+              "text": "… das Teamwork deiner Gruppe. Jeder Ermittler verliert 1\u001fAktion.",
               "size": 4
             }
           ]
@@ -32997,7 +32997,7 @@
               "size": 1
             },
             {
-              "text": "…a [[Talent]], [[Connection]], or [[Condition]] asset you control.",
+              "text": "… eine [[Talent]]-, [[Verbindung]]- oder [[Zustand]]-Vorteilskarte, die du kontrollierst.",
               "size": 4
             }
           ]
@@ -33009,11 +33009,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "…your sense of time. Until you advance the agenda, investigators cannot use time-keeping devices, ask about the time, or trigger abilities on any card with \"time\", \"watch\", or \"chrono\" in its title.",
+              "text": "… das Zeitgefühl. Bis von der Agenda vorgerückt wird, können die Ermittler keine Zeitmesser verwenden, nicht nach der Zeit fragen und keine Fähigkeiten auf Karten auslösen, welche die Worte „Zeit“, „Uhr“ oder „Chrono“ im Namen haben.",
               "size": 4
             }
           ]
@@ -33021,7 +33021,7 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
@@ -33029,7 +33029,7 @@
               "size": 1
             },
             {
-              "text": "…your investigator mini card. (Use something else to mark your location.)",
+              "text": "… deine kleine Ermittlerkarte. (Verwende etwas anderes, um deinen Ort anzuzeigen.)",
               "size": 4
             }
           ]
@@ -33037,7 +33037,7 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
@@ -33045,7 +33045,7 @@
               "size": 1
             },
             {
-              "text": "…your house. Search the collection for Your House (Core #124); it is devoured.",
+              "text": "…dein Haus. Durchsuche deine Sammlung nach der Karte Dein Haus (Grundspiel, #124); es wird verschlungen.",
               "size": 4
             }
           ]
@@ -33053,15 +33053,15 @@
         {
           "cells": [
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "…your soul. Record in your Campaign Log that <i>you have no soul.</i>",
+              "text": "… deine Seele. Notiere in deinem Kampagnenlogbuch, <i>dass du keine Seele hast.</i>",
               "size": 4
             }
           ]
@@ -33077,7 +33077,7 @@
               "size": 1
             },
             {
-              "text": "…the highest-cost [[Ally]] asset you control.",
+              "text": "… die [[Verbündeter]]-Vorteilskarte mit den höchsten Kosten, die du kontrollierst.",
               "size": 4
             }
           ]
@@ -33093,7 +33093,7 @@
               "size": 1
             },
             {
-              "text": "…all event cards in your hand.",
+              "text": "… alle Ereigniskarten auf deiner Hand.",
               "size": 4
             }
           ]
@@ -33109,7 +33109,7 @@
               "size": 1
             },
             {
-              "text": "…all of your resources.",
+              "text": "… alle deine Ressourcen.",
               "size": 4
             }
           ]
@@ -33125,7 +33125,7 @@
               "size": 1
             },
             {
-              "text": "…all skill cards in your hand.",
+              "text": "… alle Fertigkeitskarten auf deiner Hand.",
               "size": 4
             }
           ]
@@ -33141,7 +33141,7 @@
               "size": 1
             },
             {
-              "text": "…all cards that have been exiled.",
+              "text": "… alle Karten, die ins Exil geschickt wurden.",
               "size": 4
             }
           ]
@@ -33157,7 +33157,7 @@
               "size": 1
             },
             {
-              "text": "…your identity. Until the end of the round, treat your investigator's text box as if it were blank (including [[Traits]]).",
+              "text": "…deine Identität. Bis zum Ende der Runde wird das Textfeld deines Ermittlers so behandelt, also ob es leer wäre (mit Ausnahme von [[Merkmalen]]).",
               "size": 4
             }
           ]
@@ -33173,7 +33173,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of speed. Until the end of the round, investigators cannot gain or take additional actions.",
+              "text": "… das Konzept der Geschwindigkeit. Bis zum Ende der Runde können Ermittler keine zusätzlichen Aktionen erhalten oder nehmen.",
               "size": 4
             }
           ]
@@ -33189,7 +33189,7 @@
               "size": 1
             },
             {
-              "text": "…your sense of urgency. Until the end of the round, you cannot move.",
+              "text": "… deinen Sinn für Dringlichkeit. Bis zum Ende der Runde kannst du dich nicht bewegen.",
               "size": 4
             }
           ]
@@ -33205,7 +33205,7 @@
               "size": 1
             },
             {
-              "text": "…your potential. Until the end of the round, your skills cannot be increased.",
+              "text": "… dein Potenzial. Bis zum Ende der Runde können deine Fertigkeiten nicht erhöht werden.",
               "size": 4
             }
           ]
@@ -33221,7 +33221,7 @@
               "size": 1
             },
             {
-              "text": "…your patience. Place 1 doom on the current agenda.",
+              "text": "… deine Geduld. Platziere 1 Verderben auf der aktuellen Agenda.",
               "size": 4
             }
           ]
@@ -33237,7 +33237,7 @@
               "size": 1
             },
             {
-              "text": "…all [[Spell]] and [[Ritual]] assets you control.",
+              "text": "… alle [[Zauber]]- und [[Ritual]]-Vorteilskarten, die du kontrollierst.",
               "size": 4
             }
           ]
@@ -33253,7 +33253,7 @@
               "size": 1
             },
             {
-              "text": "…all [[Item]] assets you control.",
+              "text": "… alle [[Gegenstand]]-Vorteilskarten, die du kontrollierst.",
               "size": 4
             }
           ]
@@ -33269,7 +33269,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of a \"discard pile.\" Until the end of the next mythos phase, each card that would be placed in any investigator's discard pile is instead devoured.",
+              "text": "… das Konzept des „Ablagestapels“. Bis zum Ende der nächsten Mythosphase wird jede Karte, die auf den Ablagestapel gelegt werden würde, stattdessen verschlungen.",
               "size": 4
             }
           ]
@@ -33285,7 +33285,7 @@
               "size": 1
             },
             {
-              "text": "…one of your hands. For the remainder of the game, you have 1 fewer hand slot.",
+              "text": "… eine deiner Hände. Für den Rest des Spiels hast du einen Hand-Slot weniger.",
               "size": 4
             }
           ]
@@ -33301,7 +33301,7 @@
               "size": 1
             },
             {
-              "text": "…the concept of success. The next time an investigator would succeed at a test by 2 or more, that investigator instead automatically fails.",
+              "text": "… das Konzept von Erfolg. Das nächste Mal, bei dem einem Ermittler eine Probe um 2 oder mehr gelingen würde, misslingt jenem Ermittler die Probe automatisch.",
               "size": 4
             }
           ]
@@ -33317,7 +33317,7 @@
               "size": 1
             },
             {
-              "text": "…1 countermeasure.",
+              "text": "… 1 Gegenmaßnahme.",
               "size": 4
             }
           ]
@@ -33329,11 +33329,11 @@
               "size": 1
             },
             {
-              "text": "‑4 to ‑8",
+              "text": "‑4 bis ‑8",
               "size": 1
             },
             {
-              "text": "…the concept of easiness. Until lthe end of the game, flip the scenario reference card to its Hard/Expert side.",
+              "text": "… das Konzept der Einfachheit. Bis zum Ende des Spiels wird die Szenarioübersichtskarte auf die Schwer/Experte-Seite umgedreht.",
               "size": 4
             }
           ]
@@ -33347,7 +33347,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "blob_contained",
-          "text": "the anomaly was contained."
+          "text": "Die Anomalie wurde eingedämmt."
         }
       ]
     },
@@ -33364,7 +33364,7 @@
     },
     {
       "id": "earn_assets",
-      "text": "For each of the following assets that are in play, any one investigator may choose to add that asset to their deck.",
+      "text": "Für jede der folgenden Vorteilskarten, die im Spiel ist, darf 1\u001fbeliebiger Ermittler wählen, jene Vorteilskarte seinem Deck hinzuzufügen.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -33381,7 +33381,7 @@
         "choices": [
           {
             "id": "in_play",
-            "text": "In play",
+            "text": "Im Spiel",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -33414,7 +33414,7 @@
     },
     {
       "id": "earn_asset_85029",
-      "text": "Any one investigator may choose to add Universal Solvent to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Ein beliebiger Ermittler wählen, Universelles Lösungsmittel seinem Deck hinzuzufügen. Diese Karte zählt nicht gegen die Deckgröße jenes Ermittlers.",
       "effects": [
         {
           "type": "add_card",
@@ -33443,7 +33443,7 @@
     },
     {
       "id": "earn_asset_85030",
-      "text": "Any one investigator may choose to add Pet Oozeling to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Ein beliebiger Ermittler wählen, Zahmer Schleimling seinem Deck hinzuzufügen. Diese Karte zählt nicht gegen die Deckgröße jenes Ermittlers.",
       "effects": [
         {
           "type": "add_card",
@@ -33472,7 +33472,7 @@
     },
     {
       "id": "earn_asset_85031",
-      "text": "Any one investigator may choose to add Mi-Go Weapon to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Ein beliebiger Ermittler wählen, Mi-Go-Waffe seinem Deck hinzuzufügen. Diese Karte zählt nicht gegen die Deckgröße jenes Ermittlers.",
       "effects": [
         {
           "type": "add_card",
@@ -33501,7 +33501,7 @@
     },
     {
       "id": "earn_asset_85032",
-      "text": "Any one investigator may choose to add Lt. Wilson Stewart to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Ein beliebiger Ermittler wählen, Lt. Wilson Stewart seinem Deck hinzuzufügen. Diese Karte zählt nicht gegen die Deckgröße jenes Ermittlers.",
       "effects": [
         {
           "type": "add_card",
@@ -33532,7 +33532,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "Nothing is left of Blackwater now. The quarantine is broken. The anomaly cannot be contained. First it will spread throughout the countryside, devouring all in its path. Soon all of Massachusetts will be devoured. Then the entirety of New England. It has burrowed beneath the ground and cannot be stopped even by the oceans. No continent is safe. Every living organism on the planet will be devoured. And then, so too will the Earth.\n…but that won't be the end.\nNot even the void of space can stop the creature's growth. In time, it will continue to expand and devour until there is nothing left but the cold emptiness of space and the blob that ate everything.",
+      "text": "Von Blackwater ist nichts mehr übrig. Die Quarantäne ist durchbrochen. Die Anomalie kann nicht mehr eingedämmt werden. Zuerst wird sie sich auf dem Land ausbreiten und alles in ihrem Weg verschlingen. Schon bald wird ganz Massachusetts verschlungen sein. Dann das gesamte New England. Sie hat sich auch in die Erde gegraben und kann nicht einmal von den Ozeanen aufgehalten werden. Kein Kontinent ist mehr sicher. Jeder lebende Organismus auf diesem Planeten wird verschlungen werden. Und dann kommt die Erde selbst an die Reihe. \n… aber auch das wird nicht das Ende sein. \nAuch die Leere des Alls wird dem Wachstum dieser Kreatur nicht Einhalt gebieten können. Mit der Zeit wird sie sich weiter ausdehnen und alles verschlingen, bis nur noch das kalte Nichts des Alls übrig ist – und der Blob, der alles fraß.",
       "steps": [
         "blob_devoured_universe",
         "lose_campaign"
@@ -33541,7 +33541,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "<i>Incident Report: 8L-08, continued</i>\n<i>Wednesday, 07/11/1928</i>\n<i>Blackwater, MA</i>\n<i>0742 hours - Contact made with ████████████ subject. Subject ███████████ meteor; researchers are unsure whether meteor served as an avenue for ██████████ or as some kind of ██████████████. Initiated immediate emergency response procedures. At roughly 0500 hours, subject was eliminated by third party. As per operational protocol, samples have been collected and sent to ██████ for further study. Agents are currently scrubbing remainder of subject's presence from quarantine zone. Strongly recommend immediate expunging of previous conflicting incident report.</i>\n<i>Citizens of Blackwater have been informed ██████████ quarantine ████████ contagion of airborne virus. ███████ several infections ████████; medical teams en route to confirm.</i>\n<i>Agents are attempting to meet with unlicensed combatants for debriefing. Due to sensitive nature of incident, recommend release followed by close observation. Story must be kept ████████████. ████████████████████████████████████████████.</i>\n<i>Destroy the incident report immediately. Additional instructions to follow.</i>",
+      "text": "<i>Vorfallsbericht: 8L-08, Fortsetzung</i>\n<i>Mittwoch, 11. Juli 1928</i>\n<i>Blackwater, MA</i>\n<i>0742 Uhr – Kontakt mit ████████████████ Subjekt hergestellt. Subjekt ██████████ Meteors; Forscher sind uneins, ob Meteor ein Vehikel für █████████oder ein ████████████████ darstellt. Sofortige Notfall-Prozeduren eingeleitet. Subjekt wurde gegen 0500 Uhr von Außenstehenden eliminiert. Gemäß Operationsprotokoll wurden Proben genommen und zur weiteren Untersuchung nach █████ geschickt. Derzeitig findet Tilgung sämtlicher Überreste des Subjekts in der Quarantänezone durch Agenten statt. Es wird dringend empfohlen, den letzten widersprüchlichen Vorfallsbericht unverzüglich zu vernichten.</i>\n<i>Bürger von Blackwater wurden informiert, dass Quarantäne ███████ durch die Luft übertragbaren Virus verhängt wurde. █████████ mehrere Infektionen █████ medizinische Teams zur Bestätigung auf dem Weg.</i>\n<i>Agenten versuchen sich mit unautorisierten Kämpfern zur Einsatznachbesprechung zu treffen. Wegen prekärer Natur des Vorfalls wird Freilassung mit folgender intensiver Überwachung empfohlen. Vorfall ██████████ behandeln. ██████████████████████████████</i>\n<i>Diesen Vorfallsbericht sofort vernichten. Weitere Anweisungen folgen.</i>",
       "steps": [
         "blob_contained",
         "earn_assets",
@@ -33557,8 +33557,8 @@
 },
 {
   "id": "carnevale_of_horrors",
-  "scenario_name": "Carnevale of Horrors",
-  "full_name": "Carnevale of Horrors",
+  "scenario_name": "Karneval des Schreckens",
+  "full_name": "Karneval des Schreckens",
   "xp_cost": 3,
   "setup": [
     "xp_cost",
@@ -33588,7 +33588,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "\"Look,\" Sheriff Engel insists, \"I know it sounds crazy, but that's really all there is to it.\" He sighs and sits back down, pouring a cup of joe for you and one for himself. \"A dame in Uptown spotted a cracked egg wearing this mask and holdin' a bloody butcher's cleaver,\" he says, motioning to the black leather mask sitting on his desk. It has a comicaly long nose and a strange symbol scrawled in yellow on its forehead. \"So, she calls it in. My boys and I picked him up on the corner of Saltonstall & Garrison.\" The sheriff's jaw clenches and his brows furrow as he recounts the story. \"Fella did nothing but laugh as we slapped the bracelets on him. Called himself Zanni. Said nothing except the 'carnival is coming'; whatever the hell that meant. Wasn't until the next day we found the victim's body. Defense wanted him in a straitjacket. We were happy to oblige.\"\nThere isn't much time to spare. If your research is right, there is more to this case than meets the eye. This \"Zanni\" wasn't talking about Darke's Carnival, but rather the Carnevale of Venice, which begins just before the next full moon."
+      "text": "\"Hör mal\", behaart Sherriff Engel, \"ich weiß, das klingt verrückt, aber es ist die Wahrheit.\" Seufzend lehnt er sich zurück und gießt dir und sich selbst einen Becher Kaffee ein. \"Eine Dame hat einen Verrückten in der Oberstadt gesehen, der diese Maske trug und ein blutiges Schlachterbeil bei sich hatte\", sagt er und zeigt auf die schwarze Ledermaske auf seinem Schreibtisch. Die Nase ist merkwürdig langgezogen und auf die Stirn ist ein absonderliches gelbes Symbol eingraviert. \"Deshalb hat sie es gemeldet. Meine Jungs und ich haben ihn an der Ecke Saltonstall & Garrison aufgegriffen.\" mit zusammengebissenen Zähnen und gerunzelter Stirn erzählt die der Sheriff auch den Rest der Geschichte. \"Der Bursche lachte einfach nur, als die Handschellen zuschnappten. Er nannte sich Zanni. Er sagte nichts als 'Der Karneval steht bevor', was auch immer er damit gemeint hat. Erst am nächsten Tag fanden wir die Leiche des Opfers. Die Verteidigung forderte, ihm eine Zwangsjacke anzulegen. Wir sind dem nur zu gern nachgekommen.\"\nDir bleibt nicht viel Zeit. Falls das, was du bei deinen Nachforschungen herausgefunden hast, die Wahrheit ist, steckt hinter diesem Fall mehr, als auf den ersten Blick ersichtlich ist. Dieser \"Zanni\" hat nicht von Darkes Karneval gesprochen, sondern vom Karneval in Venedig, der kurz vor dem nächsten Vollmond beginnt ..."
     },
     {
       "id": "gather_encounter_sets",
@@ -33600,19 +33600,19 @@
     },
     {
       "id": "remove_random_location",
-      "text": "Choose 1 location at random and remove it from the game. If San Marco Basilica or Canal-side is chosen, randomly choose a different location instead."
+      "text": "1 zufällig bestimmter Ort wird aus dem Spiel entfernt. Falls es sich um den Markusdom oder das Kanalufer handelt, wird stattdessen ein anderer Ort zufällig bestimmt."
     },
     {
       "id": "setup_locations",
-      "text": "Put the other 8 locations into play, in a random circular formation. Each investigator begins play in San Marco Basilica. Put Abbess Allegria Di Biase into play at San Marco Basilica."
+      "text": "Die übrigen 8 Orte werden ins Spiel gebracht und zufällig in einem Kreis platziert. Jeder Ermittler beginnt das Spiel im Markusdom. Äbtissin Allegria Di Biase wird im Markusdom ins Spiel gebracht."
     },
     {
       "id": "setup_masked_people",
-      "text": "Shuffle the 7 Masked Carnevale-Goers and put 1 into play at each location other than San Marco Basilica, Masked Carnevale-Goers side face-up. Do not look at their other sides."
+      "text": "Die 7 Maskierten Karnevalbesucher werden gemischt und jeweils 1 davon wird mit der Seite Maskierter Karnevalbesucher nach oben an jedem Ort außer dem Markusdom ins Spiel gebracht. Die anderen Kartenseiten dürfen nicht angesehen werden."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Gilded Volto."
+      "text": "Folgende Karten werden als nicht im Spiel befindlich beiseitegelegt: Cnidathqua, Pantalone, Medico Della Peste, Bauta, Vergoldeter Volto."
     },
     {
       "id": "encounter_deck",
@@ -33621,20 +33621,20 @@
     {
       "id": "circle_rule",
       "type": "rule_reminder",
-      "title": "Location Setup",
-      "text": "In this scenario, locations are placed in a circle. Due to the parade during the Carnevale, each location is connectd only to the location in the clockwise direction. This means that investigators and monsters can only travel (or count the nearest location) in the clockwise direction unless otherwise noted."
+      "title": "Vorbereitung der Orte",
+      "text": "In diesem Szenario werden die Orte in einem Kreis platziert. Aufgrund der Parade während des Karnevals ist jeder Ort nur mit dem Ort im Uhrzeigersinn neben ihm verbunden. Deshalb können Ermittler und Monster nur zum nächstgelegenen Ort im Uhrzeigersinn reisen (oder ihn bestimmen), falls nicht ausdrücklich etwas anderes angegeben ist."
     },
     {
       "id": "counter_clockwise_rule",
       "type": "rule_reminder",
-      "title": "Counter-clockwise",
-      "text": "Some cards instruct the players to find the nearest location in the counter-clockwise direction. This is an exception to the above rule and should be followed as though locations are connected counter-clockwise."
+      "title": "Gegen den Uhrzeigersinn",
+      "text": "Einige Karten enthalten die Anweisung für den Spieler, den nächstgelegenen Ort gegen den Uhrzeigersinn zu finden. Dabei handelt es dich um eine Ausnahme zur obigen Regel, die so befolgt werden sollte, als ob die Orte gegen den Uhrzeigersinn verbunden wären."
     },
     {
       "id": "across_from_rule",
       "type": "rule_reminder",
-      "title": "\"Across from\"",
-      "text": "The location \"across from\" another l ocation is the farthest location, equidistant in both the clockwise and counter-clockwise directions. For hte purpose of this scenario, \"across from your location\" and \"across from you\" have the same meaning."
+      "title": "\"Gegenüber\"",
+      "text": "Der Ort \"gegenüber\" von einem anderen Ort ist der am weitesten entfernte Ort, der sich sowohl im als auch gegen der Uhrzeigersinn gleich weit von dem aktuellen Ort entfernt befindet. In diesem Szenario haben die Formulierungen \"gegenüber von deinem Ort\" und \"gegenüber von dir\" dieselbe Bedeutung."
     },
     {
       "id": "earn_xp",
@@ -33658,7 +33658,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_many_were_sacrificed_to_cnidathqua",
-          "text": "many were sacrificed to Cnidathqua during the Carnevale."
+          "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
         }
       ]
     },
@@ -33669,7 +33669,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_sun_banished_cnidathqua",
-          "text": "the sun banished Cnidathqua into the depths."
+          "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
         }
       ]
     },
@@ -33680,7 +33680,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "coh_cnidathqua_retreated",
-          "text": "Cnidathqua retreated to nurse its wounds."
+          "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
         }
       ]
     },
@@ -33690,7 +33690,7 @@
     },
     {
       "id": "choose_masks",
-      "title": "Additional Rewards",
+      "title": "Zusätzliche Belohnungen",
       "text": "In player order, each investigator may choose one of the following [[Mask]] cards to add to his or her deck: Pantalone, Medico Della Peste, Bauta, Gilded Volto. The chosen card does not count towards that investigator's deck size.",
       "type": "input",
       "input": {
@@ -33733,7 +33733,7 @@
           },
           {
             "id": "82026",
-            "text": "Gilded Volto",
+            "text": "Vergoldeter Volto",
             "effects": [
               {
                 "type": "add_card",
@@ -33748,27 +33748,27 @@
     {
       "id": "ask_innocent_revelers_saved",
       "type": "input",
-      "text": "How many Innocent Revelers are underneath the act deck?",
+      "text": "Wie viele Unschuldiger Feiernder-Karten sind unter dem Szenendeck?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "none",
-            "text": "None",
+            "text": "Keiner",
             "steps": [
               "ask_innocent_revelers_killed"
             ]
           },
           {
             "id": "one_or_two",
-            "text": "One or Two",
+            "text": "Einer oder zwei",
             "steps": [
               "no_further_rewards"
             ]
           },
           {
             "id": "three",
-            "text": "Three",
+            "text": "Drei",
             "steps": [
               "abbess_satisfied",
               "earn_abbess"
@@ -33780,22 +33780,22 @@
     {
       "id": "no_further_rewards",
       "bullet_type": "small",
-      "text": "No further rewards."
+      "text": "Keine weiteren Belohnungen."
     },
     {
       "id": "ask_innocent_revelers_killed",
-      "text": "How many Innocent Revelers are underneath the agenda deck?",
+      "text": "Wie viele Unschuldiger Feiernder-Karten sind unter dem Agendadeck?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "none",
-            "text": "None"
+            "text": "Keiner"
           },
           {
             "id": "one_or_more",
-            "text": "One or more",
+            "text": "Einer oder mehr",
             "steps": [
               "sacrifice_made",
               "random_weakness"
@@ -34805,7 +34805,7 @@
         "choices": [
           {
             "id": "in_play",
-            "text": "In play",
+            "text": "Im Spiel",
             "effects": [
               {
                 "type": "campaign_log_cards",
