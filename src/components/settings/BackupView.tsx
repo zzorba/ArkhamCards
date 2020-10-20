@@ -43,6 +43,14 @@ interface ReduxActionProps {
 
 type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
+
+async function safeReadFile(file: string): string {
+  try {
+    return await RNFS.readFile(file, 'utf8');
+  } catch (error) {
+    return await RNFS.readFile(file, 'ascii');
+  }
+}
 class BackupView extends React.Component<Props> {
   static contextType = StyleContext;
   context!: StyleContextType;
@@ -75,7 +83,7 @@ class BackupView extends React.Component<Props> {
         return;
       }
       // We got the file
-      const json = JSON.parse(await RNFS.readFile(res.fileCopyUri));
+      const json = JSON.parse(await safeReadFile(res.fileCopyUri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));
