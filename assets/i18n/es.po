@@ -215,22 +215,22 @@ msgstr "Segunda Caja Básica"
 msgid "Edit Collection"
 msgstr "Editar Colección"
 
-#: src/components/decklist/DeckListComponent/index.tsx:101
+#: src/components/decklist/DeckListComponent/index.tsx:102
 msgid "Search decks"
 msgstr "Buscar mazos"
 
-#: src/components/decklist/DeckListComponent/index.tsx:84
+#: src/components/decklist/DeckListComponent/index.tsx:85
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
 msgstr "No hay mazos que coincidan con “${ searchTerm }”."
 
-#: src/components/decklist/DeckListRow.tsx:113
+#: src/components/decklist/DeckListRow.tsx:107
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] "${scenarioCount} escenario completado"
 msgstr[1] "${ scenarioCount } escenarios completados"
 
-#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:71
+#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:69
 #: src/components/decklist/DeckListRow.tsx:48
 msgid "${ xp } available experience"
 msgstr "${xp} de experiencia disponible"
@@ -362,9 +362,9 @@ msgstr "Robar de colección"
 #: src/components/deck/authHelper.ts:32
 #: src/components/nav/helper.ts:254
 #: src/components/nav/helper.ts:269
-#: src/components/settings/BackupView.tsx:71
-#: src/components/settings/BackupView.tsx:112
-#: src/components/settings/BackupView.tsx:147
+#: src/components/settings/BackupView.tsx:79
+#: src/components/settings/BackupView.tsx:120
+#: src/components/settings/BackupView.tsx:155
 #: src/components/settings/DiagnosticsView.tsx:119
 #: src/components/settings/LanguagePicker.tsx:99
 #: src/components/settings/LoginButton.tsx:45
@@ -453,7 +453,7 @@ msgid "Authorization error"
 msgstr "Error de autorización"
 
 #: src/components/deck/authHelper.ts:21
-#: src/components/settings/BackupView.tsx:68
+#: src/components/settings/BackupView.tsx:76
 msgid "Try again"
 msgstr "Intentar nuevamente"
 
@@ -510,7 +510,7 @@ msgstr "Cancelar"
 msgid "Problem with import"
 msgstr "Problema con la importación"
 
-#: src/components/settings/BackupView.tsx:106
+#: src/components/settings/BackupView.tsx:114
 #: src/components/settings/DiagnosticsView.tsx:88
 msgid "Restore campaign data?"
 msgstr "¿Restaurar datos de campaña?"
@@ -519,7 +519,7 @@ msgstr "¿Restaurar datos de campaña?"
 msgid "Paste Backup Here"
 msgstr "Pegar respaldo aquí"
 
-#: src/components/settings/BackupView.tsx:144
+#: src/components/settings/BackupView.tsx:152
 #: src/components/settings/DiagnosticsView.tsx:116
 msgid "Backup campaign data?"
 msgstr "¿Respaldar datos de campaña?"
@@ -534,24 +534,24 @@ msgstr ""
 "intentando mover tus datos de campaña desde un dispositivo a otro. "
 "Solamente copia los datos y pégalos en la otra aplicación."
 
-#: src/components/settings/BackupView.tsx:150
+#: src/components/settings/BackupView.tsx:158
 #: src/components/settings/DiagnosticsView.tsx:122
 msgid "Export Campaign Data"
 msgstr "Exportar datos de campaña"
 
-#: src/components/settings/BackupView.tsx:197
+#: src/components/settings/BackupView.tsx:205
 #: src/components/settings/DiagnosticsView.tsx:237
 #: src/components/settings/SafeModeView.tsx:106
 #: src/components/settings/SettingsView.tsx:98
 msgid "Backup"
 msgstr "Copia de seguridad"
 
-#: src/components/settings/BackupView.tsx:200
+#: src/components/settings/BackupView.tsx:208
 #: src/components/settings/DiagnosticsView.tsx:240
 msgid "Backup Campaign Data"
 msgstr "Respaldar datos de campaña"
 
-#: src/components/settings/BackupView.tsx:205
+#: src/components/settings/BackupView.tsx:213
 #: src/components/settings/DiagnosticsView.tsx:244
 msgid "Restore Campaign Data"
 msgstr "Restaurar datos de campaña"
@@ -607,7 +607,7 @@ msgstr "Acerca de Arkham Cards"
 #: src/components/campaign/NewCampaignView/index.tsx:291
 #: src/components/campaign/NewCampaignView/index.tsx:295
 #: src/components/campaign/SealTokenDialog.tsx:128
-#: src/components/campaign/UpgradeDecksView/index.tsx:184
+#: src/components/campaign/UpgradeDecksView/index.tsx:180
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:135
 #: src/components/campaignguide/ScenarioStepComponent/index.tsx:170
 #: src/components/core/CountEditDialog.tsx:124
@@ -1620,7 +1620,7 @@ msgstr "Descartar Cambios"
 msgid "Add note"
 msgstr "Agregar nota"
 
-#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:74
+#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:72
 #, javascript-format
 msgid "${ totalXp } total"
 msgstr "${totalXp} total"
@@ -1996,11 +1996,11 @@ msgstr "Tratando de entender las secuencias anidadas"
 msgid "Taking three damage and three horror"
 msgstr "Recibiendo tres de Daño y tres de Horror"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:755
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:787
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "No hay cartas que coincidan con \"${searchTerm}\""
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:756
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:788
 msgid "No matching cards"
 msgstr "No hay cartas que coincidan"
 
@@ -2026,13 +2026,13 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: src/components/cardlist/CardSearchComponent/TuneButton.tsx:66
-#: src/components/cardlist/CardSearchComponent/index.tsx:113
+#: src/components/cardlist/CardSearchComponent/index.tsx:119
 #: src/components/filter/CardFilterView/index.tsx:61
 msgid "Filters"
 msgstr "Filtros"
 
 #: src/app/App.ts:249
-#: src/components/cardlist/CardSearchComponent/index.tsx:194
+#: src/components/cardlist/CardSearchComponent/index.tsx:203
 msgid "Player Cards"
 msgstr "Cartas de Jugador"
 
@@ -2227,7 +2227,7 @@ msgstr "Cambios Lista de tabúes"
 msgid "Additional XP: ${ card.extra_xp }."
 msgstr "XP adicional: ${ card.extra_xp }."
 
-#: src/components/decklist/DeckListComponent/index.tsx:72
+#: src/components/decklist/DeckListComponent/index.tsx:73
 msgid ""
 "No decks yet.\n"
 "\n"
@@ -2357,7 +2357,7 @@ msgstr ""
 "todos los mazos."
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:103
-#: src/components/cardlist/CardSearchComponent/index.tsx:126
+#: src/components/cardlist/CardSearchComponent/index.tsx:132
 #: src/components/deck/DeckChecklistView/index.tsx:125
 #: src/components/deck/NewDeckView.tsx:47
 msgid "Sort"
@@ -2477,7 +2477,7 @@ msgstr "Velo: ${shroud}. Pistas: ${clues} ${perInvestigatorClues}."
 msgid "Update investigator decks"
 msgstr "Actualizar mazos de investigadores"
 
-#: src/components/campaign/UpgradeDecksView/index.tsx:168
+#: src/components/campaign/UpgradeDecksView/index.tsx:166
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
 "campaign develops.\n"
@@ -2757,7 +2757,7 @@ msgstr "Cartas enlazadas (${ count })"
 msgid "New Name"
 msgstr "Nuevo Nombre"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:194
+#: src/components/cardlist/CardSearchComponent/index.tsx:203
 msgid "Encounter Cards"
 msgstr "Cartas de Encuentro"
 
@@ -2797,7 +2797,7 @@ msgstr "Sellar fichas de Caos"
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "Descuento de XP: ${ card.extra_xp }."
 
-#: src/components/campaign/DeckList.tsx:94
+#: src/components/campaign/CampaignDeckList.tsx:94
 msgid "Add Investigator Deck"
 msgstr "Añadir mazo de investigador"
 
@@ -3573,8 +3573,8 @@ msgstr "Ver Mazo"
 msgid "Select Deck"
 msgstr "Seleccionar mazo"
 
+#: src/components/campaign/CampaignDeckList.tsx:94
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:317
-#: src/components/campaign/DeckList.tsx:94
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
 msgid "Add Investigator"
 msgstr "Añadir Investigador"
@@ -3813,7 +3813,7 @@ msgstr[1] ""
 msgid "All local decks and campaigns will be overridden"
 msgstr "Todos los mazos y campañas locales se sobrescribirán"
 
-#: src/components/settings/BackupView.tsx:109
+#: src/components/settings/BackupView.tsx:117
 #: src/components/settings/DiagnosticsView.tsx:94
 msgid "Import data"
 msgstr "Importar datos"
@@ -4058,7 +4058,7 @@ msgstr "Derrotado: trauma mental"
 msgid "Defeated: no trauma"
 msgstr "Derrotado: sin traumas"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:592
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:594
 msgid "Show limited splash"
 msgstr "Mostrar cartas limitadas de otras clases"
 
@@ -4229,7 +4229,7 @@ msgstr "Regreso a Las profundidades de Yoth"
 msgid "Save XP"
 msgstr "Guardar XP"
 
-#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:69
+#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:67
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
 msgstr "${ xp } experiencia disponible, (${ parsedDeck.changes.spentXp } gastada)"
@@ -4384,7 +4384,7 @@ msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } de experiencia de reabastecimiento disponible"
 msgstr[1] "${ specialXp } de experiencia de reabastecimiento disponibles"
 
-#: src/components/settings/BackupView.tsx:65
+#: src/components/settings/BackupView.tsx:73
 msgid "Unexpected file type"
 msgstr "Tipo de archivo inesperado"
 
@@ -4393,11 +4393,11 @@ msgstr "Tipo de archivo inesperado"
 msgid "Backup Data"
 msgstr "Realizar copia de seguridad"
 
-#: src/components/settings/BackupView.tsx:66
+#: src/components/settings/BackupView.tsx:74
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "La aplicación espera un archivo Arkham Cards backup (.acb)"
 
-#: src/components/settings/BackupView.tsx:107
+#: src/components/settings/BackupView.tsx:115
 msgid ""
 "This feature will let you restore data from a lost device. If you were "
 "signed into ArkhamDB, please reauthorize before importing campaign data.\n"
@@ -4411,7 +4411,7 @@ msgstr ""
 "Después de seleccionar una copia de seguridad podrás elegir qué datos "
 "respaldar."
 
-#: src/components/settings/BackupView.tsx:145
+#: src/components/settings/BackupView.tsx:153
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
@@ -4420,15 +4420,15 @@ msgstr ""
 "campañas locales. También puede ser utilizado para traspasar los datos a "
 "otro dispositivo."
 
-#: src/components/settings/BackupView.tsx:173
+#: src/components/settings/BackupView.tsx:181
 msgid "Save backup"
 msgstr "Guardar copia de seguridad"
 
-#: src/components/settings/BackupView.tsx:132
+#: src/components/settings/BackupView.tsx:140
 msgid "Cannot request access"
 msgstr "No se puede solicitar acceso"
 
-#: src/components/settings/BackupView.tsx:132
+#: src/components/settings/BackupView.tsx:140
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write "
 "external files. Please visit your System settings to adjust this "
@@ -4804,7 +4804,7 @@ msgstr "Combate: ${ combat }"
 msgid "Agility: ${ agility }"
 msgstr "Agilidad: ${ agility }"
 
-#: src/components/core/SearchBox.tsx:63
+#: src/components/core/SearchBox.tsx:65
 msgid "Search options"
 msgstr "Opciones de búsqueda"
 
@@ -4812,7 +4812,7 @@ msgstr "Opciones de búsqueda"
 msgid "Search in:"
 msgstr "Buscar en:"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:97
+#: src/components/cardlist/CardSearchComponent/index.tsx:103
 msgid "Encounter Card Toggle"
 msgstr "Interruptor Cartas Encuentros"
 
@@ -5118,6 +5118,10 @@ msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "Mostrar ${ nonCollectionCount } carta fuera de la colección"
 msgstr[1] "Mostrar ${ nonCollectionCount } cartas fuera de la colección"
+
+#: src/components/cardlist/CardSearchComponent/index.tsx:274
+msgid "Hide versatile cards"
+msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"

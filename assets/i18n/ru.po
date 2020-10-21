@@ -461,9 +461,9 @@ msgstr "Отменить"
 #: src/components/deck/authHelper.ts:32
 #: src/components/nav/helper.ts:254
 #: src/components/nav/helper.ts:269
-#: src/components/settings/BackupView.tsx:71
-#: src/components/settings/BackupView.tsx:112
-#: src/components/settings/BackupView.tsx:147
+#: src/components/settings/BackupView.tsx:79
+#: src/components/settings/BackupView.tsx:120
+#: src/components/settings/BackupView.tsx:155
 #: src/components/settings/DiagnosticsView.tsx:119
 #: src/components/settings/LanguagePicker.tsx:99
 #: src/components/settings/LoginButton.tsx:45
@@ -617,48 +617,48 @@ msgstr ""
 "Убедитесь, что они точно совпадают с данными из раздела Резервная копия "
 "приложения Arkham Cards."
 
-#: src/components/settings/BackupView.tsx:65
+#: src/components/settings/BackupView.tsx:73
 msgid "Unexpected file type"
 msgstr "Неизвестный формат"
 
 #: src/components/deck/authHelper.ts:21
-#: src/components/settings/BackupView.tsx:68
+#: src/components/settings/BackupView.tsx:76
 msgid "Try again"
 msgstr "Попытаться снова"
 
-#: src/components/settings/BackupView.tsx:106
+#: src/components/settings/BackupView.tsx:114
 #: src/components/settings/DiagnosticsView.tsx:88
 msgid "Restore campaign data?"
 msgstr "Восстановить кампанию?"
 
-#: src/components/settings/BackupView.tsx:109
+#: src/components/settings/BackupView.tsx:117
 #: src/components/settings/DiagnosticsView.tsx:94
 msgid "Import data"
 msgstr "Импортировать"
 
-#: src/components/settings/BackupView.tsx:144
+#: src/components/settings/BackupView.tsx:152
 #: src/components/settings/DiagnosticsView.tsx:116
 msgid "Backup campaign data?"
 msgstr "Сделать резервную копию кампании?"
 
-#: src/components/settings/BackupView.tsx:150
+#: src/components/settings/BackupView.tsx:158
 #: src/components/settings/DiagnosticsView.tsx:122
 msgid "Export Campaign Data"
 msgstr "Экспортировать"
 
-#: src/components/settings/BackupView.tsx:197
+#: src/components/settings/BackupView.tsx:205
 #: src/components/settings/DiagnosticsView.tsx:237
 #: src/components/settings/SafeModeView.tsx:106
 #: src/components/settings/SettingsView.tsx:98
 msgid "Backup"
 msgstr "Резервная копия"
 
-#: src/components/settings/BackupView.tsx:200
+#: src/components/settings/BackupView.tsx:208
 #: src/components/settings/DiagnosticsView.tsx:240
 msgid "Backup Campaign Data"
 msgstr "Сделать резервную копию кампании"
 
-#: src/components/settings/BackupView.tsx:205
+#: src/components/settings/BackupView.tsx:213
 #: src/components/settings/DiagnosticsView.tsx:244
 msgid "Restore Campaign Data"
 msgstr "Восстановить кампанию"
@@ -819,7 +819,7 @@ msgstr "О приложении"
 #: src/components/campaign/NewCampaignView/index.tsx:291
 #: src/components/campaign/NewCampaignView/index.tsx:295
 #: src/components/campaign/SealTokenDialog.tsx:128
-#: src/components/campaign/UpgradeDecksView/index.tsx:184
+#: src/components/campaign/UpgradeDecksView/index.tsx:180
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:135
 #: src/components/campaignguide/ScenarioStepComponent/index.tsx:170
 #: src/components/core/CountEditDialog.tsx:124
@@ -1217,12 +1217,12 @@ msgid "Illustrators"
 msgstr "Иллюстраторы"
 
 #: src/components/cardlist/CardSearchComponent/TuneButton.tsx:66
-#: src/components/cardlist/CardSearchComponent/index.tsx:113
+#: src/components/cardlist/CardSearchComponent/index.tsx:119
 #: src/components/filter/CardFilterView/index.tsx:61
 msgid "Filters"
 msgstr "Фильтры"
 
-#: src/components/decklist/DeckListRow.tsx:113
+#: src/components/decklist/DeckListRow.tsx:107
 msgid "${ scenarioCount } scenario completed"
 msgid_plural "${ scenarioCount } scenarios completed"
 msgstr[0] "Завершён ${ scenarioCount } сценарий"
@@ -1234,7 +1234,7 @@ msgstr[2] "Завершено ${ scenarioCount } сценариев"
 msgid "${ xp } available experience, ${ parsedDeck.changes.spentXp } spent"
 msgstr "Доступно опыта: ${ xp }, потрачено: ${ parsedDeck.changes.spentXp }"
 
-#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:71
+#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:69
 #: src/components/decklist/DeckListRow.tsx:48
 msgid "${ xp } available experience"
 msgstr "Доступно опыта: ${ xp }"
@@ -1308,7 +1308,7 @@ msgstr "Новая колода"
 msgid "Hide ArkhamDB Decks"
 msgstr "Скрыть колоды с ArkhamDB"
 
-#: src/components/decklist/DeckListComponent/index.tsx:72
+#: src/components/decklist/DeckListComponent/index.tsx:73
 msgid ""
 "No decks yet.\n"
 "\n"
@@ -1318,12 +1318,12 @@ msgstr ""
 "\n"
 "Нажмите кнопку +, чтобы создать новую."
 
-#: src/components/decklist/DeckListComponent/index.tsx:84
+#: src/components/decklist/DeckListComponent/index.tsx:85
 #, javascript-format
 msgid "No matching decks for \"${ searchTerm }\"."
 msgstr "По запросу «${ searchTerm }» колод не найдено."
 
-#: src/components/decklist/DeckListComponent/index.tsx:101
+#: src/components/decklist/DeckListComponent/index.tsx:102
 msgid "Search decks"
 msgstr "Поиск по колодам"
 
@@ -1460,7 +1460,7 @@ msgid "Draw Weaknesses"
 msgstr "Взять слабости"
 
 #: src/components/campaign/MyDecksSelectorDialog/index.tsx:103
-#: src/components/cardlist/CardSearchComponent/index.tsx:126
+#: src/components/cardlist/CardSearchComponent/index.tsx:132
 #: src/components/deck/DeckChecklistView/index.tsx:125
 #: src/components/deck/NewDeckView.tsx:47
 msgid "Sort"
@@ -1628,7 +1628,7 @@ msgstr "Опыт"
 msgid "${ changes.spentXp } of ${ adjustedXp }"
 msgstr "${ changes.spentXp } из ${ adjustedXp }"
 
-#: src/components/deck/DeckDetailView/DeckViewTab.tsx:592
+#: src/components/deck/DeckDetailView/DeckViewTab.tsx:594
 msgid "Show limited splash"
 msgstr "Карты ограниченного пула"
 
@@ -2218,11 +2218,11 @@ msgstr "Получаем 3 раны и 3 ужаса"
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "Семь против двух, лишь бы не щупальца"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:755
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:787
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "Нет карт по запросу «${ searchTerm }»"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:756
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:788
 msgid "No matching cards"
 msgstr "Нет подходящих карт"
 
@@ -2267,12 +2267,12 @@ msgstr "Найти карту"
 msgid "Apply"
 msgstr "Применить"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:194
+#: src/components/cardlist/CardSearchComponent/index.tsx:203
 msgid "Encounter Cards"
 msgstr "Карты контактов"
 
 #: src/app/App.ts:249
-#: src/components/cardlist/CardSearchComponent/index.tsx:194
+#: src/components/cardlist/CardSearchComponent/index.tsx:203
 msgid "Player Cards"
 msgstr "Карты игроков"
 
@@ -2526,8 +2526,8 @@ msgstr ""
 msgid "Remove investigators"
 msgstr "Удалить сыщиков"
 
+#: src/components/campaign/CampaignDeckList.tsx:94
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:317
-#: src/components/campaign/DeckList.tsx:94
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
 msgid "Add Investigator"
 msgstr "Добавить сыщика"
@@ -3344,7 +3344,7 @@ msgstr "Сохранить в колоду ${ investigator.name }"
 msgid "Not yet started"
 msgstr "Ещё не начата"
 
-#: src/components/campaign/DeckList.tsx:94
+#: src/components/campaign/CampaignDeckList.tsx:94
 msgid "Add Investigator Deck"
 msgstr "Добавить колоду сыщика"
 
@@ -3909,12 +3909,12 @@ msgstr "Сохранить опыт"
 msgid "Upgrade deck"
 msgstr "Улучшить колоду"
 
-#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:69
+#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:67
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
 msgstr "${ xp } опыта доступно, (${ parsedDeck.changes.spentXp } потрачено)"
 
-#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:74
+#: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:72
 #, javascript-format
 msgid "${ totalXp } total"
 msgstr "всего ${ totalXp }"
@@ -3929,7 +3929,7 @@ msgstr "Обновить колоды сыщиков"
 msgid "Upgrade"
 msgstr "Улучшить"
 
-#: src/components/campaign/UpgradeDecksView/index.tsx:168
+#: src/components/campaign/UpgradeDecksView/index.tsx:166
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
 "campaign develops.\n"
@@ -4358,11 +4358,11 @@ msgstr "Опыт: ${ changes.spentXp } из ${ adjustedExperience }"
 msgid "Settings"
 msgstr "Настройки"
 
-#: src/components/settings/BackupView.tsx:66
+#: src/components/settings/BackupView.tsx:74
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "Это приложение ожидает файл резервной копии Arkham Cards (.acb/.json)"
 
-#: src/components/settings/BackupView.tsx:107
+#: src/components/settings/BackupView.tsx:115
 msgid ""
 "This feature will let you restore data from a lost device. If you were "
 "signed into ArkhamDB, please reauthorize before importing campaign data.\n"
@@ -4375,7 +4375,7 @@ msgstr ""
 "После выбора резервной копии, вы сможете указать, какие данные необходимо "
 "импортировать."
 
-#: src/components/settings/BackupView.tsx:145
+#: src/components/settings/BackupView.tsx:153
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
@@ -4383,15 +4383,15 @@ msgstr ""
 "Эта опция позволит вам сохранить ваши локальные колоды и кампании. Так же "
 "эта функция поможет перенести их на другое устройство."
 
-#: src/components/settings/BackupView.tsx:173
+#: src/components/settings/BackupView.tsx:181
 msgid "Save backup"
 msgstr "Сохранить резервную копию"
 
-#: src/components/settings/BackupView.tsx:132
+#: src/components/settings/BackupView.tsx:140
 msgid "Cannot request access"
 msgstr "Невозможно запросить доступ"
 
-#: src/components/settings/BackupView.tsx:132
+#: src/components/settings/BackupView.tsx:140
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write "
 "external files. Please visit your System settings to adjust this "
@@ -4754,7 +4754,7 @@ msgstr "Бой: ${ combat }"
 msgid "Agility: ${ agility }"
 msgstr "Ловкость: ${ agility }"
 
-#: src/components/core/SearchBox.tsx:63
+#: src/components/core/SearchBox.tsx:65
 msgid "Search options"
 msgstr "Опции поиска"
 
@@ -4802,7 +4802,7 @@ msgstr "Искать по тексту карт"
 msgid "Search card backs"
 msgstr "Искать на обороте"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:97
+#: src/components/cardlist/CardSearchComponent/index.tsx:103
 msgid "Encounter Card Toggle"
 msgstr "Переключатель карт контактов"
 
@@ -5127,6 +5127,10 @@ msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "Показать ${ nonCollectionCount } карту не в коллекции"
 msgstr[1] "Показать ${ nonCollectionCount } карты не в коллекции"
 msgstr[2] "Показать ${ nonCollectionCount } карт не в коллекции"
+
+#: src/components/cardlist/CardSearchComponent/index.tsx:274
+msgid "Hide versatile cards"
+msgstr ""
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
