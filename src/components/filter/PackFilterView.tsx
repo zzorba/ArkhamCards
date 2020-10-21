@@ -5,23 +5,14 @@ import {
   View,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-
 import { t } from 'ttag';
-import { Pack } from '@actions/types';
+
 import PackListComponent from '@components/core/PackListComponent';
 import { getAllPacks } from '@reducers';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import useFilterFunctions, { FilterFunctionProps } from './useFilterFunctions';
 import { NavigationProps } from '@components/nav/types';
-
-interface OwnProps {
-  componentId: string;
-}
-
-interface ReduxProps {
-  allPacks: Pack[];
-}
 
 const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const {
@@ -58,6 +49,17 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
     }
   }, [onFilterChange, packs, allPacks]);
   const { typography } = useContext(StyleContext);
+  const selected = useMemo(() => {
+    const selectedPackNames = new Set(packs || []);
+    const result: { [pack_code: string]: boolean } = {};
+    forEach(allPacks, pack => {
+      if (selectedPackNames.has(pack.name)) {
+        result[pack.code] = true;
+      }
+    });
+    return result;
+  }, [allPacks, packs]);
+
   if (!allPacks.length) {
     return (
       <View>
@@ -65,16 +67,6 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
       </View>
     );
   }
-  const selected = useMemo(() => {
-    const selectedPackNames = new Set(packs || []);
-    const result: { [pack_code: string]: boolean } = {};
-    forEach(allPacks, pack => {
-      if (selectedPackNames.has(pack.name)) {
-        selected[pack.code] = true;
-      }
-    });
-    return result;
-  }, [allPacks, packs]);
   return (
     <PackListComponent
       coreSetName={t`Core Set`}

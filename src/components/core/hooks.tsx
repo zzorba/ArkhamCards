@@ -213,6 +213,15 @@ export function useInvestigatorCards(tabooSetOverride?: number): CardsMap | unde
   return investigatorCardsByTaboo?.[`${tabooSetId || 0}`];
 }
 
+
+export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined {
+  const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
+  const { playerCardsByTaboo } = useContext(DatabaseContext);
+  const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
+  return playerCards?.weaknessCards;
+}
+
+
 export function useParsedDeck(
   deck: Deck,
   {

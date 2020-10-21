@@ -957,12 +957,12 @@ export default class Card {
     }
     result.browse_visible = 0;
     if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
-      if (result.encounter_code != null) {
+      if (!!result.encounter_code) {
         // It's an encounter card.
         result.browse_visible += 2;
       }
       if (result.deck_limit > 0 || result.bonded_name) {
-        // It goesin a deck.
+        // It goes in a deck.
         result.browse_visible += 1;
       }
     } else if (result.altArtInvestigator) {

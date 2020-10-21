@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useRef, useMemo, useReducer, useState, Reducer, ReducerWithoutAction } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   flatMap,
   forEach,
@@ -7,7 +7,6 @@ import {
   filter,
   find,
   take,
-  dropWhile,
   partition,
   debounce,
   uniq,
@@ -35,12 +34,8 @@ import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
 import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
-import {
-  SortType,
-  Slots,
-  SORT_BY_TYPE,
-} from '@actions/types';
-import { combineQueries, combineQueriesOpt, where } from '@data/query';
+import { SortType, Slots, SORT_BY_TYPE } from '@actions/types';
+import { combineQueries, where } from '@data/query';
 import { getPacksInCollection, getTabooSet, AppState, getPackSpoilers } from '@reducers';
 import Card, { CardsMap, PartialCard } from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';

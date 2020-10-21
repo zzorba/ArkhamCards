@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { filter, groupBy, map } from 'lodash';
 import {
   SectionList,
@@ -14,7 +14,7 @@ import { t } from 'ttag';
 import { Pack } from '@actions/types';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import PackRow from './PackRow';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface PackCycle extends SectionListData<Pack> {
   title: string;
@@ -29,7 +29,7 @@ interface Props {
   checkState?: { [pack_code: string]: boolean};
   setChecked: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
-  renderHeader?: () => React.ReactElement;
+  header?: React.ReactElement;
   renderFooter?: () => React.ReactElement;
   whiteBackground?: boolean;
   baseQuery?: Brackets;
@@ -37,43 +37,52 @@ interface Props {
   noFlatList?: boolean;
 }
 
-export default class PackListComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function keyExtractor(item: Pack) {
+  return item.code;
+}
 
-  _keyExtractor = (item: Pack) => {
-    return item.code;
-  };
-
-  cycleName(position: string): string {
-    switch (position) {
-      case '1': return t`Core Set`;
-      case '2': return t`The Dunwich Legacy`;
-      case '3': return t`The Path to Carcosa`;
-      case '4': return t`The Forgotten Age`;
-      case '5': return t`The Circle Undone`;
-      case '6': return t`The Dream-Eaters`;
-      case '7': return t`The Innsmouth Conspiracy`;
-      case '50': return t`Return to...`;
-      case '60': return t`Investigator Starter Decks`;
-      case '70': return t`Standalone`;
-      case '80': return t`Miscellaneous`;
-      case '90': return t`Parallel`;
-      default: return 'Unknown';
-    }
+function cycleName(position: string): string {
+  switch (position) {
+    case '1': return t`Core Set`;
+    case '2': return t`The Dunwich Legacy`;
+    case '3': return t`The Path to Carcosa`;
+    case '4': return t`The Forgotten Age`;
+    case '5': return t`The Circle Undone`;
+    case '6': return t`The Dream-Eaters`;
+    case '7': return t`The Innsmouth Conspiracy`;
+    case '50': return t`Return to...`;
+    case '60': return t`Investigator Starter Decks`;
+    case '70': return t`Standalone`;
+    case '80': return t`Miscellaneous`;
+    case '90': return t`Parallel`;
+    default: return 'Unknown';
   }
+}
 
-  renderPack(pack: Pack) {
-    const {
-      packs,
-      checkState,
-      setChecked,
-      setCycleChecked,
-      whiteBackground,
-      baseQuery,
-      compact,
-      coreSetName,
-    } = this.props;
+function renderSectionHeader({ section }: { section: SectionListData<Pack> }) {
+  return (
+    <CardSectionHeader
+      section={{ subTitle: section.title }}
+    />
+  );
+}
+
+export default function PackListComponent({
+  componentId,
+  coreSetName,
+  packs,
+  checkState,
+  setChecked,
+  setCycleChecked,
+  header,
+  renderFooter,
+  whiteBackground,
+  baseQuery,
+  compact,
+  noFlatList,
+}: Props) {
+  const { backgroundStyle, typography } = useContext(StyleContext);
+  const renderPack = useCallback((pack: Pack) => {
     const cyclePacks: Pack[] = pack.position === 1 ? filter(packs, p => {
       return (pack.cycle_position === p.cycle_position &&
         pack.id !== p.id);
@@ -81,7 +90,7 @@ export default class PackListComponent extends React.Component<Props> {
     return (
       <PackRow
         key={pack.id}
-        componentId={this.props.componentId}
+        componentId={componentId}
         pack={pack}
         nameOverride={pack.code === 'core' ? coreSetName : undefined}
         cycle={cyclePacks}
@@ -93,71 +102,54 @@ export default class PackListComponent extends React.Component<Props> {
         compact={compact}
       />
     );
-  }
+  }, [packs, checkState, setChecked, setCycleChecked, whiteBackground, baseQuery, compact, coreSetName]);
 
-  _renderItem = ({ item }: SectionListRenderItemInfo<Pack>) => {
-    return this.renderPack(item);
-  };
+  const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Pack>) => {
+    return renderPack(item);
+  }, [renderPack]);
 
-  _renderSectionHeader = ({ section }: { section: SectionListData<Pack> }) => {
+
+  if (!packs.length) {
     return (
-      <CardSectionHeader
-        section={{ subTitle: section.title }}
-      />
-    );
-  };
-
-  render() {
-    const {
-      packs,
-      checkState,
-      renderHeader,
-      renderFooter,
-      noFlatList,
-    } = this.props;
-    const { backgroundStyle, typography } = this.context;
-    if (!packs.length) {
-      return (
-        <View>
-          <Text style={typography.text}>{t`Loading`}</Text>
-        </View>
-      );
-    }
-    if (noFlatList) {
-      return (
-        <View style={styles.container}>
-          { !!renderHeader && renderHeader() }
-          { map(packs, item => this.renderPack(item)) }
-          { !!renderFooter && renderFooter() }
-        </View>
-      );
-    }
-    const groups: PackCycle[] = map(
-      groupBy(packs, pack => pack.cycle_position),
-      (group, key) => {
-        return {
-          title: this.cycleName(`${key}`),
-          id: key,
-          data: group,
-        };
-      });
-
-    return (
-      <View style={[styles.container, backgroundStyle]}>
-        <SectionList
-          ListHeaderComponent={renderHeader}
-          ListFooterComponent={renderFooter}
-          sections={groups}
-          initialNumToRender={30}
-          renderSectionHeader={this._renderSectionHeader}
-          renderItem={this._renderItem}
-          keyExtractor={this._keyExtractor}
-          stickySectionHeadersEnabled={false}
-          extraData={checkState}
-        />
+      <View>
+        <Text style={typography.text}>{t`Loading`}</Text>
       </View>
     );
   }
+  if (noFlatList) {
+    return (
+      <View style={styles.container}>
+        { !!header && header }
+        { map(packs, item => renderPack(item)) }
+        { !!renderFooter && renderFooter() }
+      </View>
+    );
+  }
+  const groups: PackCycle[] = map(
+    groupBy(packs, pack => pack.cycle_position),
+    (group, key) => {
+      return {
+        title: cycleName(`${key}`),
+        id: key,
+        data: group,
+      };
+    });
+
+  return (
+    <View style={[styles.container, backgroundStyle]}>
+      <SectionList
+        ListHeaderComponent={header}
+        ListFooterComponent={renderFooter}
+        sections={groups}
+        initialNumToRender={30}
+        renderSectionHeader={renderSectionHeader}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        stickySectionHeadersEnabled={false}
+        extraData={checkState}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

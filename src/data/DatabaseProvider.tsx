@@ -1,11 +1,10 @@
 import React from 'react';
-import { Alert, InteractionManager, Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
 import Database from './Database';
 import DatabaseContext, { PlayerCards } from './DatabaseContext';
 import { AppState } from '@reducers';
-import { TabooSetOverride } from '@components/core/withPlayerCards';
 import { CardsMap } from './Card';
 import TabooSet from './TabooSet';
 

@@ -1,5 +1,4 @@
 import { Action } from 'redux';
-import { InteractionManager } from 'react-native';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import {
@@ -115,7 +114,7 @@ export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-export function setInCollection(code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_IN_COLLECTION,
@@ -125,7 +124,7 @@ export function setInCollection(code: string, value: boolean, db: Database): Thu
   };
 }
 
-export function setCycleInCollection(cycle_code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_IN_COLLECTION,
@@ -135,7 +134,7 @@ export function setCycleInCollection(cycle_code: string, value: boolean, db: Dat
   };
 }
 
-export function setPackSpoiler(code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_PACK_SPOILER,
@@ -145,7 +144,7 @@ export function setPackSpoiler(code: string, value: boolean, db: Database): Thun
   };
 }
 
-export function setCyclePackSpoiler(cycle_code: string, value: boolean, db: Database): ThunkAction<void, AppState, unknown, Action> {
+export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
     dispatch({
       type: SET_PACK_SPOILER,
