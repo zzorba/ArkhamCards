@@ -22,7 +22,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import usePlayerCards from  '@components/core/usePlayerCards';
+import { usePlayerCards } from  '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
@@ -32,7 +32,7 @@ interface Props {
   deckToCampaign?: { [deck_id: number]: Campaign };
   investigator?: Card;
   onPress?: (deck: Deck, investigator?: Card) => void;
-  details?: React.ReactElement;
+  details?: ReactNode;
   subDetails?: ReactNode;
   compact?: boolean;
   viewDeckButton?: boolean;
@@ -58,7 +58,7 @@ interface DetailProps {
   campaign?: Campaign;
   deck: Deck;
   previousDeck?: Deck;
-  details?: React.ReactElement;
+  details?: ReactNode;
   lang: string;
   eliminated: boolean;
 }
@@ -75,7 +75,11 @@ function DeckListRowDetails({
   const { colors, typography } = useContext(StyleContext);
   const cards = usePlayerCards(deck.taboo_id || 0);
   if (details) {
-    return details;
+    return (
+      <>
+        { details }
+      </>
+    );
   }
   const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
   if (!parsedDeck || !investigator) {

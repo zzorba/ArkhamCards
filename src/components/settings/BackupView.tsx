@@ -44,7 +44,7 @@ interface ReduxActionProps {
 type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
 
-async function safeReadFile(file: string): string {
+async function safeReadFile(file: string): Promise<string> {
   try {
     return await RNFS.readFile(file, 'utf8');
   } catch (error) {

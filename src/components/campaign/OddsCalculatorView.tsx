@@ -8,7 +8,7 @@ import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
 import { AppState, getCampaign } from '@reducers';
-import useInvestigatorCards from '@components/core/usePlayerCards';
+import { useInvestigatorCards } from '@components/core/hooks';
 
 export interface OddsCalculatorProps {
   campaignId: number;

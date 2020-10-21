@@ -13,7 +13,7 @@ import DeckListRow from '@components/decklist/DeckListRow';
 import Card from '@data/Card';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import useInvestigatorCards from '@components/core/useInvestigatorCards';
+import { useInvestigatorCards } from '@components/core/hooks';
 
 interface Props {
   lang: string;

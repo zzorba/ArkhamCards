@@ -12,6 +12,7 @@ import AppIcon from '@icons/AppIcon';
 import ToggleButton from '@components/core/ToggleButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import space from '@styles/space';
+import ArkhamSwitch from './ArkhamSwitch';
 
 export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;

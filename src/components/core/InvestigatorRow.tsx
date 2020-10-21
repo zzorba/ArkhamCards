@@ -31,7 +31,7 @@ interface Props {
   bigImage?: boolean;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
-  children?: React.ReactElement | React.ReactElement[];
+  children?: React.ReactNode;
   noFactionIcon?: boolean;
 }
 
