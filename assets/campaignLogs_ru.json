@@ -1613,11 +1613,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "светильники зажглись."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "светильники не горят."
           },
           {
             "id": "cleared_path_to_temple",
@@ -1637,7 +1637,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "ткань времени расплетена."
           },
           {
             "id": "fell_into_depths",
@@ -1701,11 +1701,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "сыщики спасли цивилизацию змей."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "сыщики спасли цивилизацию йитиан."
           },
           {
             "id": "jungle_watches",
@@ -1717,7 +1717,7 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "сыщики залатали прореху в ткани времени."
           },
           {
             "id": "nexus_is_near",
@@ -1761,11 +1761,11 @@
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "сыщики навсегда запечатали Реликвию веков."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "сыщики обратили время вспять."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -3112,11 +3112,11 @@
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "светильники зажглись."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "светильники не горят."
           },
           {
             "id": "cleared_path_to_temple",
@@ -3136,7 +3136,7 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "ткань времени расплетена."
           },
           {
             "id": "fell_into_depths",
@@ -3200,11 +3200,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "сыщики спасли цивилизацию змей."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "сыщики спасли цивилизацию йитиан."
           },
           {
             "id": "jungle_watches",
@@ -3216,7 +3216,7 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "сыщики залатали прореху в ткани времени."
           },
           {
             "id": "nexus_is_near",
@@ -3256,11 +3256,11 @@
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "сыщики навсегда запечатали Реликвию веков."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "сыщики обратили время вспять."
           },
           {
             "id": "wait_for_additional_supplies",

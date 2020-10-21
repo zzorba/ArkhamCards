@@ -21934,7 +21934,7 @@
     {
       "id": "check_turned_back_time",
       "type": "branch",
-      "text": "Check Campaign Log. Read the following only <i>if the investigators turned back time</i>.",
+      "text": "Сверьтесь с журналом. Читайте дальше, только если сыщики <i>обратили время вспять</i>.",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -21959,7 +21959,7 @@
     {
       "id": "turned_back_time",
       "type": "story",
-      "text": "There is only one way to stop all of this from ever happening. Before you arrived and set all of these events into motion, the Eztli ruins were asleep, and the relic was relatively safe in its prison of obscurity. Had it not been for Alejandro’s desire to find it, it might have remained undiscovered for centuries. With your new understanding of the relic’s capabilities, you can return to the past and set things right. You can seal it away forever and prevent your past selves from having ever found it... even if it costs you your own life."
+      "text": "Есть только один способ сделать так, чтобы ничего этого не произошло. Пока не появились вы и не запустили всю эту цепь событий, развалины Эцтли спали, а всеми забытая реликвия пребывала в относительной безопасности. Если бы не страстное желание Алехандро отыскать её, она могла бы оставаться там веками. Теперь, когда вам известно, на что способна реликвия, вы можете вернуться во времени и всё исправить. Вы можете запечатать реликвию навсегда и не позволить самим себе из прошлого найти её… Даже если это будет стоить вам жизни."
     },
     {
       "id": "proceed_secret_scenario",
@@ -24053,21 +24053,21 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "The silver-blue flames that have guided you through these passages are the only vestige of hope you have remaining. One by one, the braziers lead you onward. Someone or something placed these devices here. The technology is not unlike what you have seen in the caverns of K’n-yan, or in the Eztli ruins where the relic was first found. However, it seems whoever ventured this deep below the crust of the Earth must have turned and fled, for the final brazier has been toppled and broken, and you see no more of them ahead. Thankfully, you do not need to travel in the darkness for very long. Within minutes, you come upon a huge stone doorway: no doubt the entrance to the Nexus."
+      "text": "Серебристо-синие путеводные огни — последняя крупица надежды, оставшаяся у вас в этих туннелях. Вы идёте вперёд, от одного светильника к другому. Некто — или нечто? — оставил их здесь. Что-то подобное вы видели и в пещерах К’ньяна, и в руинах Эцтли, где обнаружили реликвию. Впрочем, тот, кто забрался так глубоко под поверхность земли, видимо, в конце концов развернулся и бежал: последний светильник повален и разбит, и за ним снова сгущается тьма. К счастью, ненадолго: через несколько минут вы подходите к огромной каменной двери, без сомнения ведущей в Средоточие."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Since you possess no light to guide you, you have spent every waking moment with part of your body pressed against the cavern wall, using the cold stone to navigate without losing course. As you travel, your fingers find warm, smooth grooves along the wall: the same dormant technology that existed in the Eztli ruins. You are clearly not the first to enter this abyssal place. However, whoever came here before you must have fled before their work was done, since the channels did not light to guide your way or glare with anger as you approached. Hours pass as you make your way gradually in the dark, until finally you come upon a huge stone doorway: no doubt the entrance to the Nexus."
+      "text": "Вы движетесь в кромешной тьме, постоянно прижимаясь к холодной каменной стене пещеры, чтобы не сбиться с пути. Ваши пальцы нащупывают на стенах гладкие тёплые бороздки, такие же, как в руинах Эцтли. Кто-то явно спускался в эту бездну до вас — но, видимо, бежал, так и не окончив работу: бороздки не светятся, указывая вам путь, и не вспыхивают яростно от вашего присутствия. Вы бредёте сквозь мрак много часов, пока не подходите к огромной каменной двери, без сомнения ведущей в Средоточие."
     },
     {
       "id": "two_fewer_cards",
-      "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
+      "text": "Набирая стартовую руку в этом сценарии, каждый сыщик берёт на 2 карты меньше."
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "Your hand traces over the lines carved in the doorway. An inscription. A warning to turn back, for to open this passage is to invite doom. It is too dark to recognize the language, but you know it is not one spoken by humanity in this day and age. You have no idea how you can understand the engraving. Perhaps some last remnant of memory from your time in Pnakotus, lost city of the Yithians. Or perhaps you are truly mad, discerning meaning from natural indentations in the stone wall. After all, it has been almost a week since you have seen natural light."
+      "text": "Вы проводите пальцами по линиям, вырезанным в камне. Это надпись. Предупреждение не идти дальше, ибо за этим порогом — погибель. В темноте не разобрать язык, но вы уверены, что он не знаком никому из живущих ныне людей. Вы не знаете, почему смогли понять надпись. Возможно, это смутное воспоминание о жизни в Пнакоте, утраченном городе йитиан. А может быть, вы всё-таки сошли с ума и находите смысл в естественных неровностях камня. Как-никак, вы уже почти неделю не видели солнечного света."
     },
     {
       "id": "check_found_missing_relic",
@@ -24112,12 +24112,12 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "The stone doorway is sealed shut when you arrive, but as soon as you approach, the artifact begins to shake and hum loudly. Grooves along the door flicker alight with a shimmering glow, and suddenly the door shifts open of its own accord. You grip the artifact tightly and enter."
+      "text": "Каменная дверь плотно закрыта, но как только вы подходите, реликвия начинает неистово гудеть и вибрировать. Бороздки на камне вспыхивают мерцающим светом, и внезапно дверь отодвигается сама собой. Вы входите, не выпуская реликвию из рук."
     },
     {
       "id": "intro_5",
       "type": "story",
-      "text": "The stone doorway is already open when you arrive. Grooves along the door are lit with a shimmering glow. The Brotherhood must already be here. You have arrived with only moments to spare."
+      "text": "Каменная дверь отворена, бороздки на её поверхности мерцают светом. Должно быть, Братство уже здесь. Нельзя терять ни минуты."
     },
     {
       "id": "check_chaos_bag_tokens",
@@ -24160,7 +24160,7 @@
     },
     {
       "id": "more_tablets",
-      "text": "Because there are more [tablet] tokens in the chaos bag than [cultist] tokens:"
+      "text": "Поскольку в мешке хаоса жетонов [tablet] больше, чем жетонов [cultist]:"
     },
     {
       "id": "gather_tablets",
@@ -24172,19 +24172,19 @@
     },
     {
       "id": "more_cultists",
-      "text": "Because there are more [cultist] tokens in the chaos bag than [tablet] tokens:"
+      "text": "Поскольку в мешке хаоса жетонов [cultist] больше, чем жетонов [tablet]:"
     },
     {
       "id": "equal_tablets_and_cultists",
-      "text": "Because there are an equal number of [cultist] and [tablet] tokens in the chaos bag:"
+      "text": "Поскольку в мешке хаоса поровну жетонов [cultist] и [tablet]"
     },
     {
       "id": "setup_nexus",
-      "text": "Put the Nexus of N’kai into play. Each investigator begins play in the Nexus of N’kai."
+      "text": "Введите в игру локацию «Средоточие Н’кая». Все сыщики начинают игру в «Средоточии Н’кая»."
     },
     {
       "id": "set_aside_enemies",
-      "text": "Set the 2 enemy cards depicted here aside, out of play: Ichtaca (Scion of Yig) and Alejandro Vela (Or, Is He?).",
+      "text": "Отложите в сторону 2 изображённые справа карты врагов: «Ичтака (дитя Йига)» и «Алехандро Вела (он ли это?)».",
       "bullets": [
         {
           "text": "<i>Обратите внимание: эти карты двусторонние, с картой сюжета на обороте. Чтобы игра была интереснее, не смотрите обратную сторону таких карт, пока не получите указания сделать это.</i>"
@@ -24193,7 +24193,7 @@
     },
     {
       "id": "add_vengeance_cards",
-      "text": "Check Campaign Log. For every 10 tally marks under “Yig’s Fury,” place the top card of the lead investigator’s deck in the victory display, facedown. For the remainder of the scenario, treat each of those cards as if it has Vengeance 1."
+      "text": "Сверьтесь с журналом. За каждые 10 отметок в графе «Ярость Йига» положите 1 карту с верха колоды ведущего сыщика рубашкой вверх на победный счёт. До конца сценария считайте, что у каждой такой карты есть Возмездие 1."
     },
     {
       "id": "encounter_deck",
@@ -24201,7 +24201,7 @@
     },
     {
       "id": "lose",
-      "text": "Because all investigators have been killed by the fall trauma, the investigators <b>lose</b> the campaign.",
+      "text": "Поскольку все сыщики погибли при падении, сыщики проиграли кампанию.",
       "effects": [
         {
           "type": "campaign_data",
@@ -24217,7 +24217,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mended_tear_in_time",
-          "text": "the investigators mended the tear in time."
+          "text": "сыщики залатали прореху в ткани времени."
         }
       ]
     },
@@ -24228,7 +24228,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_saved_serpents",
-          "text": "the investigators saved the civilization of the Serpents."
+          "text": "сыщики спасли цивилизацию змей."
         }
       ]
     },
@@ -24239,7 +24239,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_saved_yithians",
-          "text": "the investigators saved the civilization of the Yithians."
+          "text": "сыщики спасли цивилизацию йитиан."
         }
       ]
     },
@@ -24250,7 +24250,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fabric_of_time_unwoven",
-          "text": "the fabric of time is unwoven."
+          "text": "ткань времени расплетена."
         }
       ]
     },
@@ -24261,7 +24261,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "turned_back_time",
-          "text": "the investigarors turned back time."
+          "text": "сыщики обратили время вспять."
         }
       ]
     },
@@ -24277,7 +24277,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each investigator is driven insane.",
+      "text": "Все сыщики сошли с ума.",
       "effects": [
         {
           "type": "trauma",
@@ -24299,11 +24299,11 @@
     },
     {
       "id": "win_but",
-      "text": "The Earth is saved, and the investigators win the campaign..."
+      "text": "Земля спасена, сыщики победили в кампании..."
     },
     {
       "id": "cannot_transfer_characters",
-      "text": "...But the investigators have reshaped the world, existing in another time altogether. These investigators cannot be transferred to a different campaign. (You must start fresh.)",
+      "text": "…Но сыщики изменили мир и оказались в ином времени. Этих сыщиков нельзя перенести в другую кампанию (вы должны начать с нуля).",
       "effects": [
         {
           "type": "campaign_data",
@@ -24314,7 +24314,7 @@
     },
     {
       "id": "two_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from the expedition into N’kai.",
+      "text": "Каждый сыщик получает 2 физические и 2 ментальные травмы, поскольку никогда не сможет полностью оправиться после экспедиции в Н’кай.",
       "effects": [
         {
           "type": "trauma",
@@ -24326,7 +24326,7 @@
     },
     {
       "id": "attached_locations_to_victory_display",
-      "text": "Each location attached to the Relic of Ages with Victory X is added to the victory display."
+      "text": "Положите на победный счёт все локации с победными значениями, прикреплённые к «Реликвии веков»."
     },
     {
       "id": "earn_xp_plus_5",
@@ -24334,7 +24334,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
+        "confirm_text": "Каждый сыщик получает 5 опыта дополнительно за то, что сумел восстановить расколотую временную линию и спасти Землю от катастрофы.",
         "text": "Победный счёт:",
         "effects": [
           {
@@ -24428,7 +24428,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nIt is difficult for me to convey my unabridged thoughts on the events that occurred during the summer of 1925. Of course, I gave my full account to Harlan—who I suspect is the only person willing to vouch for my story—but I have not sat down to record it on paper until now. Perhaps I would rather these events had been a figment of my imagination.\nIn truth, I have no idea how we made it out of the caverns beneath the jungle alive. Simply reaching the abyssal place was a hellish ordeal. My memory of our return trip is muddled and disarrayed. We scrambled in the dark for what seemed like ages. We were out of food, out of supplies, out of hope—but somehow, we found a way out.\nOur reward for preventing calamity was scorn and ridicule. No upstanding paper or university would publish our findings, and of course we possessed no proof of our expedition save for our scars and nightmares. I wish I could say that my memory of these events has faded with each passing day, but I will never forget the alien city we explored in our conical bodies, the serpents that pursued us in red-litten Yoth, the formless abomination that lived in the depths of the Earth...\nPerhaps that is why I fear making a written account of our findings—because these memories will crystallize and become etched in my mind, forever damning me to a life of terror and dismay. Still, the world needs to know what we saw. What we did.",
+      "text": "<right><fancy> 17 декабря 1925 года, четверг</fancy></right>\nС огромным трудом сажусь за полный отчёт о событиях лета 1925 года. Конечно, мне пришлось рассказать обо всём Харлану — пожалуй, единственному, кто готов был нам поверить, — но только теперь я предаю свои воспоминания бумаге. Хотелось бы, чтобы они оказались лишь плодом моего воображения. \nСказать по правде, не представляю, как мы выбрались из пещер живыми. Спуститься в эти бездны уже было адовым испытанием. Смутно помню только отдельные моменты обратного пути. Мы целую вечность карабкались вверх в полной темноте. У нас не осталось еды, припасов, надежды — но всё же мы нашли путь наружу. \nНаградой за спасение мира нам стали презрение и насмешки. Ни один приличный журнал или университет не опубликовал бы результаты нашей экспедиции — да у нас и не было никаких свидетельств, кроме шрамов и кошмаров. Хотелось бы сказать, что с каждым днём память об этом лете угасает, но мне никогда не забыть ни город пришельцев, где мы жили в конических телах, ни рептилий, гнавших нас по залитому багровым светом Йоту, ни бесформенное чудовище, обитающее в глубинах Земли…\nВозможно, я боюсь составлять письменный отчёт о нашей экспедиции именно потому, что тогда все эти воспоминания примут форму и навеки вонзятся мне в разум, обрекая на жизнь в страхе и безысходности. Но мир должен знать, что мы испытали. И что мы сделали.",
       "steps": [
         "mended_tear_in_time",
         "two_physical_and_mental_trauma",
@@ -24442,7 +24442,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "Transposed to a different time, Valusia and the children of Yig live on. Preserved by the new timeline you have created, you and the Serpent People are safe from the events that caused their homeland’s destruction long ago, in another time. All of your past transgressions against serpent-kind are forgiven, and you are given the chance to live in the paradise-kingdom of Valusia, remade in Yig’s image. Although you may have turned your back on humanity, you take comfort in the fact that the Earth has been saved from complete ruin. Due to your actions, you are valued and respected among the Serpents and in the eyes of your new Father. Your new life is cozy and full of wonders you could never have predicted. And yet, from time to time, you look out into the wilds beyond Valusia and wonder if there is something else you could have done...",
+      "text": "Переместившись во времени, Валузия и дети Йига процветают. Созданная вами временная линия надёжно защищает вас и людей-змей от невзгод, которые в ином времени привели к падению их царства. Ваши былые прегрешения против рептилий прощены, и теперь вы живёте в райской Валузии, преображённые по подобию Йига. Хотя вы и отринули человечество, вас утешает то, что Земля избежала полного уничтожения. Своими действиями вы заслужили почёт и уважение змеиного народа и его Отца. Ваша жизнь полна удовольствий и чудес, которые вы раньше и представить не могли. И всё же порой вы вглядываетесь в дикие земли за пределами Валузии и думаете, могли ли поступить иначе…",
       "steps": [
         "investigators_saved_serpents",
         "skip_epilogue",
@@ -24453,7 +24453,7 @@
     {
       "id": "R3",
       "title": "Исход 3",
-      "text": "Transposed to a different time, Pnakotus and the Great Race of Yith live on. Preserved by the new timeline you have created, you and the Yithians are safe from the extraterrestrials who ended their kind long ago, in another time. You are brought into the city and given freedoms other captive minds never received. Although at first, you long for your former life, the emotion fades the more time you spend in this strange new Earth. You roam the world on titan airships and delve into the collective knowledge of the Yithians, accumulated in their vast archives from centuries of research. Your studies unveil secrets that no other human will ever know. You experience technological advances that humanity would weep to discover. And you prepare for an accursed future that may still yet come to pass..",
+      "text": "Переместившись во времени, Пнакот и Великая Раса Йит процветают. Созданная вами временная линия надёжно защищает вас и йитиан от пришельцев, которые уничтожили их в ином времени. В городе вы получили свободу, какой никогда не знал ни один пленный разум. Хотя поначалу вы тоскуете по былой жизни, с каждым днём, проведённым на этой причудливой новой Земле, ваши чувства угасают. Вы странствуете по свету на исполинских аэростатах и погружаетесь в бездонные архивы йитиан, наполненные знаниями множества веков. Вы познаёте тайны, которые никогда не будут известны человечеству. Пользуетесь технологиями, за которые люди отдали бы что угодно. И готовитесь к роковому будущему, которое всё ещё может наступить.",
       "steps": [
         "investigators_saved_yithians",
         "skip_epilogue",
@@ -24464,7 +24464,7 @@
     {
       "id": "R4",
       "title": "Исход 4",
-      "text": "Reality as you know it will never be the same, but perhaps this is not the end of the world. After all, time is just one dimension: a dimension humanity barely understands. We experience time, but we cannot see it. We can measure it, but we cannot alter it. So what if the fourth dimension has split into hundreds of thousands of planes of existence? Our feeble human minds cannot comprehend the outcome, but the universe still survives, its ever-expanding boundaries no longer limited by the confines of time.",
+      "text": "Реальность никогда не будет прежней, но, возможно, это ещё не конец света. В конце концов, время — всего лишь одно из измерений, пусть и не вполне понятное человечеству. Мы пребываем во времени, но не видим его. Измеряем его, но не можем изменить. Так что же будет, если четвёртое измерение расщепится на сотни тысяч планов существования? Человеческому разуму не под силу воспринять такое, но вселенная продолжает жить и расширяться, больше не скованная рамками времени.",
       "steps": [
         "fabric_of_time_unwoven",
         "all_insane",
@@ -24475,7 +24475,7 @@
     {
       "id": "R5",
       "title": "Исход 5",
-      "text": "All of this was set into motion when the Eztli ruins were first intruded upon. Ichtaca’s original warning was her last vestige of humanity speaking to you. She wanted you and the other explorers to turn back, but curiosity and greed got the better of you. Until that day, balance had been kept. Alejandro sought the relic for his own devices. Ichtaca heard the call of her master and obeyed. However, humanity is the true cause of this chaos. You know now what you must do. You know now how you can save everyone.",
+      "text": "Всё это началось в тот день, когда вы потревожили руины Эцтли. В тот день, когда Ичтака убеждала вас повернуть вспять — и это было последним проблеском её человечности, — но любопытство и жадность сделали вас слепыми. До того дня равновесие сохранялось. Алехандро разыскивал реликвию в собственных целях. Ичтака услышала голос своего повелителя и подчинилась. Но истинная причина этого хаоса — люди. Теперь вы знаете, что должны сделать. Знаете, как всех спасти.",
       "steps": [
         "turned_back_time",
         "attached_locations_to_victory_display",
@@ -24589,7 +24589,7 @@
     },
     {
       "id": "two_fewer_cards",
-      "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
+      "text": "Набирая стартовую руку в этом сценарии, каждый сыщик берёт на 2 карты меньше."
     },
     {
       "id": "check_found_missing_relic",
@@ -26424,7 +26424,7 @@
     },
     {
       "id": "lose",
-      "text": "Because all investigators have been killed by the fall trauma, the investigators <b>lose</b> the campaign.",
+      "text": "Поскольку все сыщики погибли при падении, сыщики проиграли кампанию.",
       "effects": [
         {
           "type": "campaign_data",
@@ -29368,11 +29368,11 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You stand in front of the main temple of the Eztli, sweat pouring down your skin due to the hot, damp jungle air. Stunned, you examine your surroundings. José and Maria stand next to you, gaping in wonder at the temple’s sophisticated architecture. Their packs are bulging with the extra supplies they were able to acquire from Alejandro’s contacts in Mexico City. Alejandro himself stands at the rear of the group, grinning.\nYour consciousness has been snapped so far back that your mind aches from the force of it. Your body shudders, and you struggle to resist collapsing out of exhaustion. Though you have altered fate, your true task still remains ahead of you. As the rest of the expedition sets up camp and prepares to explore the ruins, you sneak off to fulfill your purpose, leaving Alejandro and the rest of your group behind. They wouldn’t understand. They haven’t seen what you have seen."
+      "text": "Вы обнаруживаете себя перед главным храмом Эцтли. В жарком сыром воздухе джунглей ваше тело немилосердно потеет. Вы оторопело осматриваетесь. Рядом с вами стоят Хосе и Мария, зачарованно разглядывая причудливые очертания храма. Их рюкзаки набиты припасами, раздобытыми благодаря связям Алехандро в Мехико. Сам Алехандро стоит позади, широко улыбаясь.\nВаше сознание скакнуло так далеко в прошлое, что разум едва выдерживает такую нагрузку. Дрожа, вы пытаетесь не упасть наземь от усталости. Хотя вы уже изменили прошлое, настоящая работа ещё впереди. Пока остальные участники экспедиции разбивают лагерь и готовятся исследовать город, вы ускользаете от них и Алехандро, чтобы выполнить свою цель. Они не поймут. Они не видели того, что видели вы."
     },
     {
       "id": "cross_off_everything",
-      "text": "In your Campaign Log, cross off all entries after the first three entries.\nThe crossed-off entries have been undone by your actions.",
+      "text": "Вычеркните все заметки в журнале кампании, кроме первых трёх.\nВы сделали так, чтобы вычеркнутых событий не произошло.",
       "effects": [
         {
           "type": "campaign_log",
@@ -29607,7 +29607,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You stand near the main temple of the Eztli, sweat pouring down your skin due to the hot, damp jungle air. Stunned, you examine your surroundings. Several tents are set up in the clearing in front of the temple. José stands guard along the border of your camp, and you can see Maria packing equipment and provisions into her backpack, getting ready for her journey to the northern edge of the jungle, as you had instructed. Alejandro sits on a log in the center of the camp, decrypting the inscription he found near the temple’s entryway.\nYour consciousness has been snapped so far back that your mind aches from the force of it. Your body shudders, and you struggle to resist collapsing out of exhaustion. Though you have altered fate, your true task still remains ahead of you. As the rest of the expedition prepares to explore the ruins, you sneak off to fulfill your purpose, leaving Alejandro and the rest of your group behind. They wouldn’t understand. They haven’t seen what you have seen."
+      "text": "Вы обнаруживаете себя перед главным храмом Эцтли. В жарком сыром воздухе джунглей ваше тело немилосердно потеет. Вы оторопело осматриваетесь. На поляне у храма разбито несколько палаток. Хосе охраняет лагерь, а Мария складывает в рюкзак еду и оборудование, чтобы отправиться к северному краю джунглей, как вы и велели. Алехандро сидит на бревне посреди лагеря, расшифровывая надпись, которую нашли у входа в храм.\nВаше сознание скакнуло так далеко в прошлое, что разум едва выдерживает такую нагрузку. Дрожа, вы пытаетесь не упасть наземь от усталости. Хотя вы уже изменили прошлое, настоящая работа ещё впереди. Пока остальные участники экспедиции готовятся исследовать город, вы ускользаете от них и Алехандро, чтобы выполнить свою цель. Они не поймут. Они не видели того, что видели вы."
     },
     {
       "id": "build_act_deck",
@@ -29615,11 +29615,11 @@
       "encounter_sets": [
         "turn_back_time"
       ],
-      "text": "When building the act deck, use the three new act cards provided in the <i>Turn Back Time</i> encounter set instead of the original act deck from <i>The Doom of Eztli</i>."
+      "text": "Собирая колоду сцен, используйте три новые карты сцен из набора контактов «Обратить время вспять» вместо первоначальной колоды сцен из «Погибели эцтли»."
     },
     {
       "id": "remove_relic_from_deck",
-      "text": "Remove the Relic of Ages (<i>Repossess the Past</i>) from its owner’s deck and set it aside, out of play.",
+      "text": "Удалите из колоды владельца карту «Реликвия веков (возвращает прошлое)» и отложите её в сторону.",
       "effects": [
         {
           "type": "remove_card",
@@ -29629,15 +29629,15 @@
     },
     {
       "id": "remove_relic",
-      "text": "Remove the Relic of Ages (<i>...A Device, of Some Sort</i>) from the game."
+      "text": "Удалите из игры карту «Реликвия веков (какое-то устройство)»."
     },
     {
       "id": "setup_locations",
-      "text": "Put the Entryway into play. Each investigator begins play at the Entryway."
+      "text": "Введите в игру локацию «Главный вход». Все сыщики начинают игру в локации «Главный вход»."
     },
     {
       "id": "add_elder_thing_token",
-      "text": "Add 1 [elder_thing] token to the chaos bag, for the remainder of the campaign.",
+      "text": "До конца кампании добавьте в мешок хаоса 1 жетон [elder_thing].",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -29710,7 +29710,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fabric_of_time_unwoven",
-          "text": "the fabric of time is unwoven."
+          "text": "ткань времени расплетена."
         }
       ]
     },
@@ -29721,7 +29721,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sealed_relic_of_ages_forever",
-          "text": "the investigators sealed the Relic of Ages forever."
+          "text": "сыщики навсегда запечатали Реликвию веков."
         }
       ]
     },
@@ -29795,7 +29795,7 @@
         "physical",
         "mental"
       ],
-      "text": "With your failure, the paradox of clashing timelines catches up to you. Despite all you have done, the events of the future cannot be unmade. You will always find the relic. You will always fail to preserve it. And the Nexus will always falter.\nReality as you know it will never be the same, but perhaps this is not the end of the world. After all, time is just one dimension: a dimension humanity barely understands. We experience time, but we cannot see it. We can measure it, but we cannot alter it. So what if the fourth dimension has split into hundreds of thousands of planes of existence? Our feeble human minds cannot comprehend the outcome, but the universe still survives, its ever-expanding boundaries no longer limited by the confines of time.",
+      "text": "Потерпев неудачу, вы падаете жертвой временного парадокса. Несмотря на ваши усилия, будущее не изменить. Вы неизбежно найдёте реликвию. Не сможете её сберечь. И Средоточие выйдет из строя.\nРеальность никогда не будет прежней, но, возможно, это ещё не конец света. В конце концов, время — всего лишь одно из измерений, пусть и не вполне понятное человечеству. Мы пребываем во времени, но не видим его. Измеряем его, но не можем изменить. Так что же будет, если четвёртое измерение расщепится на сотни тысяч планов существования? Человеческому разуму не под силу воспринять такое, но вселенная продолжает жить и расширяться, больше не скованная рамками времени.",
       "steps": [
         "fabric_of_time_unwoven",
         "all_insane",
@@ -29805,7 +29805,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nNo one else has ever learned of the events that truly occurred during the summer of 1925, and no one ever will, for I intend to keep this journal locked in my safe-deposit box once I have finished writing in it. I seek only to preserve my own record of these events, for I do not wish the passage of time to erase them completely. After all, these are not my memories, but the memories of my other self: the self who ventured through time and space to save humanity.\nIt is difficult to explain how we did what we did. After all that happened—Ichtaca, Alejandro, the city of the Yithians, Yoth—it turns out the true doom of humanity had occurred much, much earlier: when we first left to find the Eztli. We brought all of these events upon ourselves. In order to prevent this calamity, we had to seal the relic away forever. I remember these events as though I myself had experienced them, though for me, the expedition had gone much differently. We reached the central chamber of the Eztli ruins, but it was sealed shut, and nothing—not even the TNT that José had brought from the trucks—could breach the entrance. Although we returned to Arkham with proof that the Eztli existed, no other expedition would ever find them or their ruins again. My other self perished in those ruins—but I remember. Somehow, I remember everything.",
+      "text": "<right><fancy>17 декабря 1925 года, четверг</fancy></right>\nНикто больше не знает, что на самом деле произошло летом 1925 года, и никто никогда не узнает, потому что я запру этот дневник в банковской ячейке, как только закончу его. Всё, чего я хочу, это зафиксировать свои воспоминания о случившемся, прежде чем время окончательно сотрёт их. В конце концов, это ведь не мои воспоминания, а воспоминания иной версии меня — версии, которая пронзила время и пространство, чтобы спасти человечество.\nСложно объяснить, как мы справились. После всего, что с нами было: Ичтака, Алехандро, город йитиан, Йот, — стало ясно, \nчто на самом деле судьба человечества решилась, когда мы впервые отправились на поиски Эцтли. Мы сами оказались \nпричиной всех бед. Чтобы предотвратить катастрофу, нужно было запечатать реликвию навсегда. Я помню эти события,\nкак если бы они происходили со мной, хотя для меня экспедиция пошла совсем иначе. Мы добрались до центральной залы руин, но вход был наглухо заложен, и ничто, даже динамит, за которым Хосе сходил к грузовикам, не смогло пробить стену. И хотя мы привезли в Аркхэм доказательства существования Эцтли, ни одна экспедиция больше не найдёт ни города, ни племени. Моё другое «я» сгинуло в тех руинах, — но я всё помню. Не знаю, каким образом, но помню всё.",
       "steps": [
         "sealed_relic_of_ages_forever",
         "earn_xp",
@@ -29817,8 +29817,8 @@
 },
 {
   "id": "tfa_interlude5",
-  "scenario_name": "The Darkness",
-  "full_name": "Interlude V: The Darkness",
+  "scenario_name": "Во тьме",
+  "full_name": "Интерлюдия V: Во тьме",
   "type": "interlude",
   "setup": [
     "check_fell_into_depths",
@@ -29874,16 +29874,16 @@
     {
       "id": "darkness_1",
       "type": "story",
-      "text": "You stir awake, lying facedown on the cold, hard stone of the cavern. You are bruised and battered but, somehow, alive. It takes several minutes before you regain enough of your strength to stand. You are absolutely and hopelessly lost within the impossibly vast caverns, enveloped by pitch-black darkness. Have you survived all this way only to perish here, lost to all humanity?"
+      "text": "Вы приходите в себя, лёжа ничком на холодном твёрдом камне пещеры. На вас нет живого места — и тем не менее вы остались\nв живых. Несколько минут вы собираетесь с силами, чтобы подняться на ноги. Вы окончательно и безнадёжно заблудились в этих невозможно огромных пещерах, заполненных непроглядной тьмой. Неужели вы выжили только для того, чтобы сгинуть здесь, вдали от всего человечества?"
     },
     {
       "id": "darkness_2",
       "type": "story",
-      "text": "The grim, blood-red caverns and resentful cities of Yoth hold no candle to the terrifying depths that lie below them. You are in the deepest level of this subterranean realm now: the caverns Ichtaca referred to as “N’kai.” Nothing could have prepared you for the impervious murk that surrounds you on all sides, an inky darkness that none of your light sources can penetrate. You grope around in the darkness until you feel the jagged wall of the cavern and begin to follow it aimlessly, desperately hoping to find the way forward. A grim realization dawns on you: Even should you complete your task, you will surely never find a way back to the surface. The overwhelming darkness of the cavern fills you with a dread you have never before experienced. You cannot see your hands as you grope about in the darkness, nor can you tell if you are in a narrow tunnel or a vast open space. The ground beside you could extend for miles or abruptly become a bottomless cavern, and you would not be able to tell the difference unless you stepped there. Hours pass as you stumble in the dark, slowly, carefully, nervously. Every step could be your last."
+      "text": "Зловещие, озарённые багрянцем пещеры и города Йота не идут ни в какое сравнение с глубинами, которые лежат под ними. Вы достигли нижних пределов подземного мира — мест, которые Ичтака называла Н’каем. Ничто не могло подготовить вас к непроницаемому мраку, окружающему со всех сторон, к кромешной тьме, которую не может рассеять ни один фонарь. Вы бродите вслепую, пока не нащупаете щербатую стену пещеры, а затем движетесь вдоль неё в отчаянной надежде найти выход. К вам приходит мрачная мысль: даже если вы справитесь со своей миссией, вам никогда не вернуться на поверхность. Гнетущая тьма пещеры вселяет в вас ужас, равного которому вы никогда не знали. Во мраке вы не видите собственных рук, не знаете, идёте ли по узкому коридору или по огромному залу. Пол под ногами может простираться на мили вперёд — а может внезапно обернуться бездонной пропастью, и вы не узнаете об этом, пока не шагнёте. Часами вы бредёте в темноте — медленно, осторожно, беспокойно. Каждый ваш шаг может оказаться последним."
     },
     {
       "id": "check_found_missing_relic",
-      "text": "Check Campaign Log. <i>If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming</b>.",
+      "text": "Сверьтесь с журналом. Если сыщики <i>сыщики нашли пропавшую реликвию</i>, ведущий сыщик читает <b>«Мистический гул»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -30077,11 +30077,11 @@
       "id": "arcane_thrumming",
       "type": "story",
       "title": "Мистический гул",
-      "text": "Worried that your fall may have damaged the Eztli relic, you pull it out of your pack and examine it. Oddly, the device seems completely undamaged. It vibrates with a growing intensity, humming louder now than ever before."
+      "text": "Тревожась за сохранность реликвии, вы достаёте её и ощупываете. Удивительно, но устройство совсем не пострадало. Оно всё сильнее гудит и вибрирует."
     },
     {
       "id": "check_investigators_recovered_relic",
-      "text": "Check Campaign Log. <i>If the investigators recovered the Relic of Ages</i>, and <i>if you are forging your own path</i>, read <b>Final Dawning</b>. Otherwise, you suffer no ill effects.",
+      "text": "Сверьтесь с журналом. Если <i>сыщики добыли Реликвию веков<i> и </i>вы идёте собственным путём</i>, читайте <b>«Последнее прозрение»</b>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -30133,45 +30133,45 @@
     {
       "id": "final_dawning",
       "type": "story",
-      "title": "Final Dawning",
-      "text": "Without Alejandro or Ichtaca to distract you, you find yourself studying the relic intently. Both of your “guides” have only fed you lies. They hid the relic’s true nature from you, manipulating you in an attempt to bring the relic to this very place. After your experience with the Great Race of Yith, you think you understand why. The technology behind the device’s design is far beyond what any human could accomplish, but quite possible for the Yithians. You even recognize some elements of the relic’s construction from the technology in Pnakotus. Somehow, it ended up in the hands of the Eztli, who defended it with care from all manner of creatures. Creatures that predate humanity. Creatures who wished to use it to turn back time. And now that the relic is in your possession, only you can stop this from occurring."
+      "title": "Последнее прозрение",
+      "text": "Отделавшись и от Алехандро, и от Ичтаки, вы принимаетесь тщательно изучать реликвию. Оба ваших спутника только дурачили вас. Они скрывали от вас истинную природу реликвии, манипулируя вами, чтобы доставить её в это самое место. Теперь, после времени, проведённого с Великой Расой Йит, вы, кажется, понимаете, зачем они это делали. Человечество никогда не смогло бы создать подобное устройство — в отличие от йитиан. Вы даже узнаёте некоторые детали реликвии: такие же попадались вам в Пнакоте. Каким-то образом реликвия попала к эцтли, которые оберегали её от врагов. От тех, кто древнее человечества. От тех, кто хотел с её помощью повернуть время вспять. А теперь реликвия досталась вам — и только вы можете им помешать."
     },
     {
       "id": "swap_relic",
       "bullet_type": "small",
-      "text": "The investigator with Relic of Ages in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>)."
+      "text": "Сыщик, в чьей колоде находится «Реликвия веков», заменяет эту карту на её новую версию из этого дополнения — «Реликвия веков (возвращает прошлое)»."
     },
     {
       "id": "growing_concern",
       "type": "story",
       "title": "Растущее беспокойство",
-      "text": "As you rise to your feet, the ground rumbles and growls. Something deep below you is moving. Shifting. Mutating."
+      "text": "Когда вы поднимаетесь на ноги, земля с грохотом сотрясается. Что-то ворочается в глубине. Движется. Изменяется."
     },
     {
       "id": "add_easy_token",
-      "text": "Because you are playing on <b>Easy</b> difficulty, add a -3 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Лёгком</b> уровне сложности, добавьте в мешок хаоса жетон –3 до конца кампании."
     },
     {
       "id": "add_standard_token",
-      "text": "Because you are playing on <b>Standard</b> difficulty, add a -4 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Обычном</b> уровне сложности, добавьте в мешок хаоса жетон –4 до конца кампании."
     },
     {
       "id": "add_hard_token",
-      "text": "Because you are playing on <b>Hard</b> difficulty, add a -5 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Сложном</b> уровне, добавьте в мешок хаоса жетон –5 до конца кампании."
     },
     {
       "id": "add_expert_token",
-      "text": "Because you are playing on <b>Expert</b> difficulty, add a -7 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Экстремальном</b> уровне сложности, добавьте в мешок хаоса жетон –7 до конца кампании."
     },
     {
       "id": "find_brazier",
       "type": "story",
-      "text": "After hours of slow progress, you eventually stumble into a brazier, filled with marble cubes."
+      "text": "Несколько часов спустя вы находите похожий на жаровню светильник, чаша которого наполнена мраморными кубиками."
     },
     {
       "id": "check_torches",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has torches, they read <b>Torchlight</b>. Otherwise, read <b>The Abyss</b>.",
+      "text": "Проверьте припасы. Если у любого сыщика есть факелы, он читает «Свет пламени». В противном случае читайте «Бездна».",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -30195,7 +30195,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "braziers_are_lit",
-                "text": "the braziers are lit."
+                "text": "светильники зажглись."
               }
             ],
             "steps": [
@@ -30218,7 +30218,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "braziers_remain_unlit",
-                "text": "the braziers remain unlit."
+                "text": "светильники не горят."
               }
             ],
             "steps": [
@@ -30231,26 +30231,26 @@
     {
       "id": "torchlight",
       "type": "story",
-      "title": "Torchlight",
-      "text": "Though the light from your torches is snuffed by the overpowering darkness of this realm, you decide to try to light the brazier with the flames. To your surprise, after you hold the torch against the strange cubes for several moments, the brazier erupts in a fury of blue and silver flames, consuming your torch and almost melting your hand to the bone. Though the light from the brilliant flame only reaches a few yards around you, more braziers light up in the distance, their flames guiding your path forward. At least, you hope..."
+      "title": "Свет пламени",
+      "text": "Хотя гнетущая темнота этих мест и поглощает всякий свет, вы всё-таки зажигаете факел и подносите к загадочным кубикам. К вашему удивлению, почти сразу из светильника вырываются неистовые языки синего и серебряного пламени, которые пожирают факел и едва не сжигают вашу руку. Света сияющего огня хватает всего на несколько метров, но вдалеке загораются новые светильники, указывая вам дальнейший путь. По крайней мере, вы на это надеетесь…"
     },
     {
       "id": "braziers_are_lit",
-      "text": "In your Campaign Log, record that <i>the braziers are lit</i>."
+      "text": "Запишите в журнал кампании, что <i>светильники зажглись</i>."
     },
     {
       "id": "the_abyss",
       "type": "story",
-      "title": "The Abyss",
-      "text": "The odd material inside does not seem to accept any source of fire you use to try to light it. Your hope is snuffed out along with the light around you. Miserable, you prepare to endure the darkness ahead."
+      "title": "Бездна",
+      "text": "Вы перепробовали все источники огня, которые у вас были, но странный светильник не желает загораться. Вместе со светом угасает и ваша надежда. В подавленном настроении вы готовитесь продолжать путь в темноте."
     },
     {
       "id": "braziers_remain_unlit",
-      "text": "In your Campaign Log, record that <i>the braziers remain unlit</i>."
+      "text": "Запишите в журнал кампании, что <i>светильники не горят</i>."
     },
     {
       "id": "check_map_no_braziers",
-      "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<.i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -30262,7 +30262,7 @@
     {
       "id": "check_map_braziers",
       "type": "branch",
-      "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<.i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -30294,21 +30294,21 @@
     {
       "id": "reading_signs",
       "type": "story",
-      "title": "Reading Signs",
-      "text": "As you traverse the caverns, something catches your attention: streams of cold, gentle water that drip down the walls of the cavern. Curious, you unfold the previous expedition’s map and sit by one of the lit braziers, mentally retracing your steps. If your calculations are correct, you have traveled much farther south than you could have possibly guessed. Could it be these caverns extend all the way to the coastline? Do the caverns never end?"
+      "title": "Изучая знаки",
+      "text": "По дороге ваше внимание привлекают струйки прохладной воды, которые плавно стекают по стенам пещеры. Заинтересовавшись, вы разворачиваете карту предыдущей экспедиции и садитесь под одним из горящих светильников, мысленно восстанавливая свой путь. Если ваши расчёты верны, вы забрались куда дальше на юг, чем могли подумать. Могут ли эти пещеры простираться до самого побережья? Есть ли у них вообще конец?"
     },
     {
       "id": "map_xp",
-      "text": "Each investigator with a map earns 2 additional experience as he or she gains insight into the caverns that dwell beneath the surface of the Earth."
+      "text": "Каждый сыщик, у которого есть карта, получает 2 опыта дополнительно, проникнув глубже в секреты пещер под поверхностью Земли."
     },
     {
       "id": "time_passes",
       "type": "story",
-      "text": "You have no sense of how much time passes in the cold, terrible abyss of N’kai."
+      "text": "Вы совсем потеряли счёт времени в леденящей тело и душу бездне Н’кая."
     },
     {
       "id": "provisions_and_medicine_gone",
-      "text": "Cross off all provisions and medicine the investigators have remaining in their supplies.",
+      "text": "Вычеркните из припасов сыщиков всю оставшуюся провизию и аптечки.",
       "effects": [
         {
           "type": "campaign_log",
@@ -54914,7 +54914,7 @@
     {
       "id": "check_turned_back_time",
       "type": "branch",
-      "text": "Check Campaign Log. Read the following only <i>if the investigators turned back time</i>.",
+      "text": "Сверьтесь с журналом. Читайте дальше, только если сыщики <i>обратили время вспять</i>.",
       "condition": {
         "type": "campaign_log",
         "section": "campaign_notes",
@@ -54939,7 +54939,7 @@
     {
       "id": "turned_back_time",
       "type": "story",
-      "text": "There is only one way to stop all of this from ever happening. Before you arrived and set all of these events into motion, the Eztli ruins were asleep, and the relic was relatively safe in its prison of obscurity. Had it not been for Alejandro’s desire to find it, it might have remained undiscovered for centuries. With your new understanding of the relic’s capabilities, you can return to the past and set things right. You can seal it away forever and prevent your past selves from having ever found it... even if it costs you your own life."
+      "text": "Есть только один способ сделать так, чтобы ничего этого не произошло. Пока не появились вы и не запустили всю эту цепь событий, развалины Эцтли спали, а всеми забытая реликвия пребывала в относительной безопасности. Если бы не страстное желание Алехандро отыскать её, она могла бы оставаться там веками. Теперь, когда вам известно, на что способна реликвия, вы можете вернуться во времени и всё исправить. Вы можете запечатать реликвию навсегда и не позволить самим себе из прошлого найти её… Даже если это будет стоить вам жизни."
     },
     {
       "id": "proceed_secret_scenario",
@@ -57152,8 +57152,8 @@
 },
 {
   "id": "shattered_aeons",
-  "scenario_name": "Shattered Aeons",
-  "full_name": "Scenario VIII: Shattered Aeons",
+  "scenario_name": "Расколотая вечность",
+  "full_name": "Сценарий VIII: Расколотая вечность",
   "setup": [
     "check_braziers_are_lit",
     "check_found_missing_relic",
@@ -57214,21 +57214,21 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "The silver-blue flames that have guided you through these passages are the only vestige of hope you have remaining. One by one, the braziers lead you onward. Someone or something placed these devices here. The technology is not unlike what you have seen in the caverns of K’n-yan, or in the Eztli ruins where the relic was first found. However, it seems whoever ventured this deep below the crust of the Earth must have turned and fled, for the final brazier has been toppled and broken, and you see no more of them ahead. Thankfully, you do not need to travel in the darkness for very long. Within minutes, you come upon a huge stone doorway: no doubt the entrance to the Nexus."
+      "text": "Серебристо-синие путеводные огни — последняя крупица надежды, оставшаяся у вас в этих туннелях. Вы идёте вперёд, от одного светильника к другому. Некто — или нечто? — оставил их здесь. Что-то подобное вы видели и в пещерах К’ньяна, и в руинах Эцтли, где обнаружили реликвию. Впрочем, тот, кто забрался так глубоко под поверхность земли, видимо, в конце концов развернулся и бежал: последний светильник повален и разбит, и за ним снова сгущается тьма. К счастью, ненадолго: через несколько минут вы подходите к огромной каменной двери, без сомнения ведущей в Средоточие."
     },
     {
       "id": "intro_2",
       "type": "story",
-      "text": "Since you possess no light to guide you, you have spent every waking moment with part of your body pressed against the cavern wall, using the cold stone to navigate without losing course. As you travel, your fingers find warm, smooth grooves along the wall: the same dormant technology that existed in the Eztli ruins. You are clearly not the first to enter this abyssal place. However, whoever came here before you must have fled before their work was done, since the channels did not light to guide your way or glare with anger as you approached. Hours pass as you make your way gradually in the dark, until finally you come upon a huge stone doorway: no doubt the entrance to the Nexus."
+      "text": "Вы движетесь в кромешной тьме, постоянно прижимаясь к холодной каменной стене пещеры, чтобы не сбиться с пути. Ваши пальцы нащупывают на стенах гладкие тёплые бороздки, такие же, как в руинах Эцтли. Кто-то явно спускался в эту бездну до вас — но, видимо, бежал, так и не окончив работу: бороздки не светятся, указывая вам путь, и не вспыхивают яростно от вашего присутствия. Вы бредёте сквозь мрак много часов, пока не подходите к огромной каменной двери, без сомнения ведущей в Средоточие."
     },
     {
       "id": "two_fewer_cards",
-      "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
+      "text": "Набирая стартовую руку в этом сценарии, каждый сыщик берёт на 2 карты меньше."
     },
     {
       "id": "intro_3",
       "type": "story",
-      "text": "Your hand traces over the lines carved in the doorway. An inscription. A warning to turn back, for to open this passage is to invite doom. It is too dark to recognize the language, but you know it is not one spoken by humanity in this day and age. You have no idea how you can understand the engraving. Perhaps some last remnant of memory from your time in Pnakotus, lost city of the Yithians. Or perhaps you are truly mad, discerning meaning from natural indentations in the stone wall. After all, it has been almost a week since you have seen natural light."
+      "text": "Вы проводите пальцами по линиям, вырезанным в камне. Это надпись. Предупреждение не идти дальше, ибо за этим порогом — погибель. В темноте не разобрать язык, но вы уверены, что он не знаком никому из живущих ныне людей. Вы не знаете, почему смогли понять надпись. Возможно, это смутное воспоминание о жизни в Пнакоте, утраченном городе йитиан. А может быть, вы всё-таки сошли с ума и находите смысл в естественных неровностях камня. Как-никак, вы уже почти неделю не видели солнечного света."
     },
     {
       "id": "check_found_missing_relic",
@@ -57273,12 +57273,12 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "The stone doorway is sealed shut when you arrive, but as soon as you approach, the artifact begins to shake and hum loudly. Grooves along the door flicker alight with a shimmering glow, and suddenly the door shifts open of its own accord. You grip the artifact tightly and enter."
+      "text": "Каменная дверь плотно закрыта, но как только вы подходите, реликвия начинает неистово гудеть и вибрировать. Бороздки на камне вспыхивают мерцающим светом, и внезапно дверь отодвигается сама собой. Вы входите, не выпуская реликвию из рук."
     },
     {
       "id": "intro_5",
       "type": "story",
-      "text": "The stone doorway is already open when you arrive. Grooves along the door are lit with a shimmering glow. The Brotherhood must already be here. You have arrived with only moments to spare."
+      "text": "Каменная дверь отворена, бороздки на её поверхности мерцают светом. Должно быть, Братство уже здесь. Нельзя терять ни минуты."
     },
     {
       "id": "gather_encounter_sets",
@@ -57332,7 +57332,7 @@
     },
     {
       "id": "more_tablets",
-      "text": "Because there are more [tablet] tokens in the chaos bag than [cultist] tokens:"
+      "text": "Поскольку в мешке хаоса жетонов [tablet] больше, чем жетонов [cultist]:"
     },
     {
       "id": "gather_tablets",
@@ -57344,7 +57344,7 @@
     },
     {
       "id": "more_cultists",
-      "text": "Because there are more [cultist] tokens in the chaos bag than [tablet] tokens:"
+      "text": "Поскольку в мешке хаоса жетонов [cultist] больше, чем жетонов [tablet]:"
     },
     {
       "id": "gather_cultists",
@@ -57355,7 +57355,7 @@
     },
     {
       "id": "equal_tablets_and_cultists",
-      "text": "Because there are an equal number of [cultist] and [tablet] tokens in the chaos bag:"
+      "text": "Поскольку в мешке хаоса поровну жетонов [cultist] и [tablet]"
     },
     {
       "id": "gather_equal_tablets_and_cultists",
@@ -57368,11 +57368,11 @@
     },
     {
       "id": "setup_nexus",
-      "text": "Put the Nexus of N’kai into play. Each investigator begins play in the Nexus of N’kai."
+      "text": "Введите в игру локацию «Средоточие Н’кая». Все сыщики начинают игру в «Средоточии Н’кая»."
     },
     {
       "id": "set_aside_enemies",
-      "text": "Set the 2 enemy cards depicted here aside, out of play: Ichtaca (Scion of Yig) and Alejandro Vela (Or, Is He?).",
+      "text": "Отложите в сторону 2 изображённые справа карты врагов: «Ичтака (дитя Йига)» и «Алехандро Вела (он ли это?)».",
       "bullets": [
         {
           "text": "<i>Обратите внимание: эти карты двусторонние, с картой сюжета на обороте. Чтобы игра была интереснее, не смотрите обратную сторону таких карт, пока не получите указания сделать это.</i>"
@@ -57381,15 +57381,15 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Formless Spawn, Relic of Ages (Unleash the Timestream), A Pocket in Time, Act 4a—“Paradise Lost”, Act 4a—“Timelock”, and the 6 single- sided [[Shattered]] locations."
+      "text": "Отложите в сторону карты «Бесформенная тварь», «Реликвия веков (высвобождает поток времени)», «Временной карман», сцену 4а «Утраченный рай», сцену 4a «Ловушка времени» и 6 односторонних [[расколотых]] локаций."
     },
     {
       "id": "create_exploration_deck",
-      "text": "Create the exploration deck. This is done by taking the 3 remaining single-sided locations and shuffling them together, along with 1 copy each of the following encounter cards: Wracked by Time, Between Worlds, and Ancient Evils."
+      "text": "Соберите и перемешайте колоду разведки. В неё входят 3 оставшиеся односторонние локации и по одному экземпляру напастей «Сокрушительное время», «Междумирье» и «Древнее зло»."
     },
     {
       "id": "add_vengeance_cards",
-      "text": "Check Campaign Log. For every 10 tally marks under “Yig’s Fury,” place the top card of the lead investigator’s deck in the victory display, facedown. For the remainder of the scenario, treat each of those cards as if it has Vengeance 1."
+      "text": "Сверьтесь с журналом. За каждые 10 отметок в графе «Ярость Йига» положите 1 карту с верха колоды ведущего сыщика рубашкой вверх на победный счёт. До конца сценария считайте, что у каждой такой карты есть Возмездие 1."
     },
     {
       "id": "encounter_deck",
@@ -57397,7 +57397,7 @@
     },
     {
       "id": "lose",
-      "text": "Because all investigators have been killed by the fall trauma, the investigators <b>lose</b> the campaign.",
+      "text": "Поскольку все сыщики погибли при падении, сыщики проиграли кампанию.",
       "effects": [
         {
           "type": "campaign_data",
@@ -57413,7 +57413,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "mended_tear_in_time",
-          "text": "the investigators mended the tear in time."
+          "text": "сыщики залатали прореху в ткани времени."
         }
       ]
     },
@@ -57424,7 +57424,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_saved_serpents",
-          "text": "the investigators saved the civilization of the Serpents."
+          "text": "сыщики спасли цивилизацию змей."
         }
       ]
     },
@@ -57435,7 +57435,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_saved_yithians",
-          "text": "the investigators saved the civilization of the Yithians."
+          "text": "сыщики спасли цивилизацию йитиан."
         }
       ]
     },
@@ -57446,7 +57446,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fabric_of_time_unwoven",
-          "text": "the fabric of time is unwoven."
+          "text": "ткань времени расплетена."
         }
       ]
     },
@@ -57457,7 +57457,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "turned_back_time",
-          "text": "the investigarors turned back time."
+          "text": "сыщики обратили время вспять."
         }
       ]
     },
@@ -57473,7 +57473,7 @@
     },
     {
       "id": "all_insane",
-      "text": "Each investigator is driven insane.",
+      "text": "Все сыщики сошли с ума.",
       "effects": [
         {
           "type": "trauma",
@@ -57495,11 +57495,11 @@
     },
     {
       "id": "win_but",
-      "text": "The Earth is saved, and the investigators win the campaign..."
+      "text": "Земля спасена, сыщики победили в кампании..."
     },
     {
       "id": "cannot_transfer_characters",
-      "text": "...But the investigators have reshaped the world, existing in another time altogether. These investigators cannot be transferred to a different campaign. (You must start fresh.)",
+      "text": "…Но сыщики изменили мир и оказались в ином времени. Этих сыщиков нельзя перенести в другую кампанию (вы должны начать с нуля).",
       "effects": [
         {
           "type": "campaign_data",
@@ -57510,7 +57510,7 @@
     },
     {
       "id": "two_physical_and_mental_trauma",
-      "text": "Each investigator suffers 2 physical trauma and 2 mental trauma, as they never fully recovers from the expedition into N’kai.",
+      "text": "Каждый сыщик получает 2 физические и 2 ментальные травмы, поскольку никогда не сможет полностью оправиться после экспедиции в Н’кай.",
       "effects": [
         {
           "type": "trauma",
@@ -57522,7 +57522,7 @@
     },
     {
       "id": "attached_locations_to_victory_display",
-      "text": "Each location attached to the Relic of Ages with Victory X is added to the victory display."
+      "text": "Положите на победный счёт все локации с победными значениями, прикреплённые к «Реликвии веков»."
     },
     {
       "id": "earn_xp_plus_5",
@@ -57530,7 +57530,7 @@
       "type": "input",
       "input": {
         "type": "counter",
-        "confirm_text": "Each investigator earns 5 bonus experience, as they has mended the shattered timeline and saved the Earth from catastrophe.",
+        "confirm_text": "Каждый сыщик получает 5 опыта дополнительно за то, что сумел восстановить расколотую временную линию и спасти Землю от катастрофы.",
         "text": "Победный счёт:",
         "effects": [
           {
@@ -57579,7 +57579,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nIt is difficult for me to convey my unabridged thoughts on the events that occurred during the summer of 1925. Of course, I gave my full account to Harlan—who I suspect is the only person willing to vouch for my story—but I have not sat down to record it on paper until now. Perhaps I would rather these events had been a figment of my imagination.\nIn truth, I have no idea how we made it out of the caverns beneath the jungle alive. Simply reaching the abyssal place was a hellish ordeal. My memory of our return trip is muddled and disarrayed. We scrambled in the dark for what seemed like ages. We were out of food, out of supplies, out of hope—but somehow, we found a way out.\nOur reward for preventing calamity was scorn and ridicule. No upstanding paper or university would publish our findings, and of course we possessed no proof of our expedition save for our scars and nightmares. I wish I could say that my memory of these events has faded with each passing day, but I will never forget the alien city we explored in our conical bodies, the serpents that pursued us in red-litten Yoth, the formless abomination that lived in the depths of the Earth...\nPerhaps that is why I fear making a written account of our findings—because these memories will crystallize and become etched in my mind, forever damning me to a life of terror and dismay. Still, the world needs to know what we saw. What we did.",
+      "text": "<right><fancy> 17 декабря 1925 года, четверг</fancy></right>\nС огромным трудом сажусь за полный отчёт о событиях лета 1925 года. Конечно, мне пришлось рассказать обо всём Харлану — пожалуй, единственному, кто готов был нам поверить, — но только теперь я предаю свои воспоминания бумаге. Хотелось бы, чтобы они оказались лишь плодом моего воображения. \nСказать по правде, не представляю, как мы выбрались из пещер живыми. Спуститься в эти бездны уже было адовым испытанием. Смутно помню только отдельные моменты обратного пути. Мы целую вечность карабкались вверх в полной темноте. У нас не осталось еды, припасов, надежды — но всё же мы нашли путь наружу. \nНаградой за спасение мира нам стали презрение и насмешки. Ни один приличный журнал или университет не опубликовал бы результаты нашей экспедиции — да у нас и не было никаких свидетельств, кроме шрамов и кошмаров. Хотелось бы сказать, что с каждым днём память об этом лете угасает, но мне никогда не забыть ни город пришельцев, где мы жили в конических телах, ни рептилий, гнавших нас по залитому багровым светом Йоту, ни бесформенное чудовище, обитающее в глубинах Земли…\nВозможно, я боюсь составлять письменный отчёт о нашей экспедиции именно потому, что тогда все эти воспоминания примут форму и навеки вонзятся мне в разум, обрекая на жизнь в страхе и безысходности. Но мир должен знать, что мы испытали. И что мы сделали.",
       "steps": [
         "mended_tear_in_time",
         "two_physical_and_mental_trauma",
@@ -57593,7 +57593,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "Transposed to a different time, Valusia and the children of Yig live on. Preserved by the new timeline you have created, you and the Serpent People are safe from the events that caused their homeland’s destruction long ago, in another time. All of your past transgressions against serpent-kind are forgiven, and you are given the chance to live in the paradise-kingdom of Valusia, remade in Yig’s image. Although you may have turned your back on humanity, you take comfort in the fact that the Earth has been saved from complete ruin. Due to your actions, you are valued and respected among the Serpents and in the eyes of your new Father. Your new life is cozy and full of wonders you could never have predicted. And yet, from time to time, you look out into the wilds beyond Valusia and wonder if there is something else you could have done...",
+      "text": "Переместившись во времени, Валузия и дети Йига процветают. Созданная вами временная линия надёжно защищает вас и людей-змей от невзгод, которые в ином времени привели к падению их царства. Ваши былые прегрешения против рептилий прощены, и теперь вы живёте в райской Валузии, преображённые по подобию Йига. Хотя вы и отринули человечество, вас утешает то, что Земля избежала полного уничтожения. Своими действиями вы заслужили почёт и уважение змеиного народа и его Отца. Ваша жизнь полна удовольствий и чудес, которые вы раньше и представить не могли. И всё же порой вы вглядываетесь в дикие земли за пределами Валузии и думаете, могли ли поступить иначе…",
       "steps": [
         "investigators_saved_serpents",
         "skip_epilogue",
@@ -57604,7 +57604,7 @@
     {
       "id": "R3",
       "title": "Исход 3",
-      "text": "Transposed to a different time, Pnakotus and the Great Race of Yith live on. Preserved by the new timeline you have created, you and the Yithians are safe from the extraterrestrials who ended their kind long ago, in another time. You are brought into the city and given freedoms other captive minds never received. Although at first, you long for your former life, the emotion fades the more time you spend in this strange new Earth. You roam the world on titan airships and delve into the collective knowledge of the Yithians, accumulated in their vast archives from centuries of research. Your studies unveil secrets that no other human will ever know. You experience technological advances that humanity would weep to discover. And you prepare for an accursed future that may still yet come to pass..",
+      "text": "Переместившись во времени, Пнакот и Великая Раса Йит процветают. Созданная вами временная линия надёжно защищает вас и йитиан от пришельцев, которые уничтожили их в ином времени. В городе вы получили свободу, какой никогда не знал ни один пленный разум. Хотя поначалу вы тоскуете по былой жизни, с каждым днём, проведённым на этой причудливой новой Земле, ваши чувства угасают. Вы странствуете по свету на исполинских аэростатах и погружаетесь в бездонные архивы йитиан, наполненные знаниями множества веков. Вы познаёте тайны, которые никогда не будут известны человечеству. Пользуетесь технологиями, за которые люди отдали бы что угодно. И готовитесь к роковому будущему, которое всё ещё может наступить.",
       "steps": [
         "investigators_saved_yithians",
         "skip_epilogue",
@@ -57615,7 +57615,7 @@
     {
       "id": "R4",
       "title": "Исход 4",
-      "text": "Reality as you know it will never be the same, but perhaps this is not the end of the world. After all, time is just one dimension: a dimension humanity barely understands. We experience time, but we cannot see it. We can measure it, but we cannot alter it. So what if the fourth dimension has split into hundreds of thousands of planes of existence? Our feeble human minds cannot comprehend the outcome, but the universe still survives, its ever-expanding boundaries no longer limited by the confines of time.",
+      "text": "Реальность никогда не будет прежней, но, возможно, это ещё не конец света. В конце концов, время — всего лишь одно из измерений, пусть и не вполне понятное человечеству. Мы пребываем во времени, но не видим его. Измеряем его, но не можем изменить. Так что же будет, если четвёртое измерение расщепится на сотни тысяч планов существования? Человеческому разуму не под силу воспринять такое, но вселенная продолжает жить и расширяться, больше не скованная рамками времени.",
       "steps": [
         "fabric_of_time_unwoven",
         "all_insane",
@@ -57626,7 +57626,7 @@
     {
       "id": "R5",
       "title": "Исход 5",
-      "text": "All of this was set into motion when the Eztli ruins were first intruded upon. Ichtaca’s original warning was her last vestige of humanity speaking to you. She wanted you and the other explorers to turn back, but curiosity and greed got the better of you. Until that day, balance had been kept. Alejandro sought the relic for his own devices. Ichtaca heard the call of her master and obeyed. However, humanity is the true cause of this chaos. You know now what you must do. You know now how you can save everyone.",
+      "text": "Всё это началось в тот день, когда вы потревожили руины Эцтли. В тот день, когда Ичтака убеждала вас повернуть вспять — и это было последним проблеском её человечности, — но любопытство и жадность сделали вас слепыми. До того дня равновесие сохранялось. Алехандро разыскивал реликвию в собственных целях. Ичтака услышала голос своего повелителя и подчинилась. Но истинная причина этого хаоса — люди. Теперь вы знаете, что должны сделать. Знаете, как всех спасти.",
       "steps": [
         "turned_back_time",
         "attached_locations_to_victory_display",
@@ -57739,7 +57739,7 @@
     },
     {
       "id": "two_fewer_cards",
-      "text": "Each investigator begins this scenario with 2 fewer cards in their opening hand."
+      "text": "Набирая стартовую руку в этом сценарии, каждый сыщик берёт на 2 карты меньше."
     },
     {
       "id": "check_found_missing_relic",
@@ -58837,8 +58837,8 @@
 },
 {
   "id": "tfa_interlude5",
-  "scenario_name": "The Darkness",
-  "full_name": "Interlude V: The Darkness",
+  "scenario_name": "Во тьме",
+  "full_name": "Интерлюдия V: Во тьме",
   "type": "interlude",
   "setup": [
     "check_fell_into_depths",
@@ -58894,16 +58894,16 @@
     {
       "id": "darkness_1",
       "type": "story",
-      "text": "You stir awake, lying facedown on the cold, hard stone of the cavern. You are bruised and battered but, somehow, alive. It takes several minutes before you regain enough of your strength to stand. You are absolutely and hopelessly lost within the impossibly vast caverns, enveloped by pitch-black darkness. Have you survived all this way only to perish here, lost to all humanity?"
+      "text": "Вы приходите в себя, лёжа ничком на холодном твёрдом камне пещеры. На вас нет живого места — и тем не менее вы остались\nв живых. Несколько минут вы собираетесь с силами, чтобы подняться на ноги. Вы окончательно и безнадёжно заблудились в этих невозможно огромных пещерах, заполненных непроглядной тьмой. Неужели вы выжили только для того, чтобы сгинуть здесь, вдали от всего человечества?"
     },
     {
       "id": "darkness_2",
       "type": "story",
-      "text": "The grim, blood-red caverns and resentful cities of Yoth hold no candle to the terrifying depths that lie below them. You are in the deepest level of this subterranean realm now: the caverns Ichtaca referred to as “N’kai.” Nothing could have prepared you for the impervious murk that surrounds you on all sides, an inky darkness that none of your light sources can penetrate. You grope around in the darkness until you feel the jagged wall of the cavern and begin to follow it aimlessly, desperately hoping to find the way forward. A grim realization dawns on you: Even should you complete your task, you will surely never find a way back to the surface. The overwhelming darkness of the cavern fills you with a dread you have never before experienced. You cannot see your hands as you grope about in the darkness, nor can you tell if you are in a narrow tunnel or a vast open space. The ground beside you could extend for miles or abruptly become a bottomless cavern, and you would not be able to tell the difference unless you stepped there. Hours pass as you stumble in the dark, slowly, carefully, nervously. Every step could be your last."
+      "text": "Зловещие, озарённые багрянцем пещеры и города Йота не идут ни в какое сравнение с глубинами, которые лежат под ними. Вы достигли нижних пределов подземного мира — мест, которые Ичтака называла Н’каем. Ничто не могло подготовить вас к непроницаемому мраку, окружающему со всех сторон, к кромешной тьме, которую не может рассеять ни один фонарь. Вы бродите вслепую, пока не нащупаете щербатую стену пещеры, а затем движетесь вдоль неё в отчаянной надежде найти выход. К вам приходит мрачная мысль: даже если вы справитесь со своей миссией, вам никогда не вернуться на поверхность. Гнетущая тьма пещеры вселяет в вас ужас, равного которому вы никогда не знали. Во мраке вы не видите собственных рук, не знаете, идёте ли по узкому коридору или по огромному залу. Пол под ногами может простираться на мили вперёд — а может внезапно обернуться бездонной пропастью, и вы не узнаете об этом, пока не шагнёте. Часами вы бредёте в темноте — медленно, осторожно, беспокойно. Каждый ваш шаг может оказаться последним."
     },
     {
       "id": "check_found_missing_relic",
-      "text": "Check Campaign Log. <i>If the investigators found the missing relic</i>, the lead investigator reads <b>Arcane Thrumming</b>.",
+      "text": "Сверьтесь с журналом. Если сыщики <i>сыщики нашли пропавшую реликвию</i>, ведущий сыщик читает <b>«Мистический гул»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59097,11 +59097,11 @@
       "id": "arcane_thrumming",
       "type": "story",
       "title": "Мистический гул",
-      "text": "Worried that your fall may have damaged the Eztli relic, you pull it out of your pack and examine it. Oddly, the device seems completely undamaged. It vibrates with a growing intensity, humming louder now than ever before."
+      "text": "Тревожась за сохранность реликвии, вы достаёте её и ощупываете. Удивительно, но устройство совсем не пострадало. Оно всё сильнее гудит и вибрирует."
     },
     {
       "id": "check_investigators_recovered_relic",
-      "text": "Check Campaign Log. <i>If the investigators recovered the Relic of Ages</i>, and <i>if you are forging your own path</i>, read <b>Final Dawning</b>. Otherwise, you suffer no ill effects.",
+      "text": "Сверьтесь с журналом. Если <i>сыщики добыли Реликвию веков<i> и </i>вы идёте собственным путём</i>, читайте <b>«Последнее прозрение»</b>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -59153,45 +59153,45 @@
     {
       "id": "final_dawning",
       "type": "story",
-      "title": "Final Dawning",
-      "text": "Without Alejandro or Ichtaca to distract you, you find yourself studying the relic intently. Both of your “guides” have only fed you lies. They hid the relic’s true nature from you, manipulating you in an attempt to bring the relic to this very place. After your experience with the Great Race of Yith, you think you understand why. The technology behind the device’s design is far beyond what any human could accomplish, but quite possible for the Yithians. You even recognize some elements of the relic’s construction from the technology in Pnakotus. Somehow, it ended up in the hands of the Eztli, who defended it with care from all manner of creatures. Creatures that predate humanity. Creatures who wished to use it to turn back time. And now that the relic is in your possession, only you can stop this from occurring."
+      "title": "Последнее прозрение",
+      "text": "Отделавшись и от Алехандро, и от Ичтаки, вы принимаетесь тщательно изучать реликвию. Оба ваших спутника только дурачили вас. Они скрывали от вас истинную природу реликвии, манипулируя вами, чтобы доставить её в это самое место. Теперь, после времени, проведённого с Великой Расой Йит, вы, кажется, понимаете, зачем они это делали. Человечество никогда не смогло бы создать подобное устройство — в отличие от йитиан. Вы даже узнаёте некоторые детали реликвии: такие же попадались вам в Пнакоте. Каким-то образом реликвия попала к эцтли, которые оберегали её от врагов. От тех, кто древнее человечества. От тех, кто хотел с её помощью повернуть время вспять. А теперь реликвия досталась вам — и только вы можете им помешать."
     },
     {
       "id": "swap_relic",
       "bullet_type": "small",
-      "text": "The investigator with Relic of Ages in their deck swaps it with the new version of Relic of Ages included in this Mythos Pack: Relic of Ages (<i>Repossess the Past</i>)."
+      "text": "Сыщик, в чьей колоде находится «Реликвия веков», заменяет эту карту на её новую версию из этого дополнения — «Реликвия веков (возвращает прошлое)»."
     },
     {
       "id": "growing_concern",
       "type": "story",
       "title": "Растущее беспокойство",
-      "text": "As you rise to your feet, the ground rumbles and growls. Something deep below you is moving. Shifting. Mutating."
+      "text": "Когда вы поднимаетесь на ноги, земля с грохотом сотрясается. Что-то ворочается в глубине. Движется. Изменяется."
     },
     {
       "id": "add_easy_token",
-      "text": "Because you are playing on <b>Easy</b> difficulty, add a -3 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Лёгком</b> уровне сложности, добавьте в мешок хаоса жетон –3 до конца кампании."
     },
     {
       "id": "add_standard_token",
-      "text": "Because you are playing on <b>Standard</b> difficulty, add a -4 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Обычном</b> уровне сложности, добавьте в мешок хаоса жетон –4 до конца кампании."
     },
     {
       "id": "add_hard_token",
-      "text": "Because you are playing on <b>Hard</b> difficulty, add a -5 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Сложном</b> уровне, добавьте в мешок хаоса жетон –5 до конца кампании."
     },
     {
       "id": "add_expert_token",
-      "text": "Because you are playing on <b>Expert</b> difficulty, add a -7 token to the chaos bag for the remainder of the campaign."
+      "text": "Поскольку вы играете на <b>Экстремальном</b> уровне сложности, добавьте в мешок хаоса жетон –7 до конца кампании."
     },
     {
       "id": "find_brazier",
       "type": "story",
-      "text": "After hours of slow progress, you eventually stumble into a brazier, filled with marble cubes."
+      "text": "Несколько часов спустя вы находите похожий на жаровню светильник, чаша которого наполнена мраморными кубиками."
     },
     {
       "id": "check_torches",
       "type": "branch",
-      "text": "Check your supplies. If any investigator has torches, they read <b>Torchlight</b>. Otherwise, read <b>The Abyss</b>.",
+      "text": "Проверьте припасы. Если у любого сыщика есть факелы, он читает «Свет пламени». В противном случае читайте «Бездна».",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -59215,7 +59215,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "braziers_are_lit",
-                "text": "the braziers are lit."
+                "text": "светильники зажглись."
               }
             ],
             "steps": [
@@ -59238,7 +59238,7 @@
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "braziers_remain_unlit",
-                "text": "the braziers remain unlit."
+                "text": "светильники не горят."
               }
             ],
             "steps": [
@@ -59251,26 +59251,26 @@
     {
       "id": "torchlight",
       "type": "story",
-      "title": "Torchlight",
-      "text": "Though the light from your torches is snuffed by the overpowering darkness of this realm, you decide to try to light the brazier with the flames. To your surprise, after you hold the torch against the strange cubes for several moments, the brazier erupts in a fury of blue and silver flames, consuming your torch and almost melting your hand to the bone. Though the light from the brilliant flame only reaches a few yards around you, more braziers light up in the distance, their flames guiding your path forward. At least, you hope..."
+      "title": "Свет пламени",
+      "text": "Хотя гнетущая темнота этих мест и поглощает всякий свет, вы всё-таки зажигаете факел и подносите к загадочным кубикам. К вашему удивлению, почти сразу из светильника вырываются неистовые языки синего и серебряного пламени, которые пожирают факел и едва не сжигают вашу руку. Света сияющего огня хватает всего на несколько метров, но вдалеке загораются новые светильники, указывая вам дальнейший путь. По крайней мере, вы на это надеетесь…"
     },
     {
       "id": "braziers_are_lit",
-      "text": "In your Campaign Log, record that <i>the braziers are lit</i>."
+      "text": "Запишите в журнал кампании, что <i>светильники зажглись</i>."
     },
     {
       "id": "the_abyss",
       "type": "story",
-      "title": "The Abyss",
-      "text": "The odd material inside does not seem to accept any source of fire you use to try to light it. Your hope is snuffed out along with the light around you. Miserable, you prepare to endure the darkness ahead."
+      "title": "Бездна",
+      "text": "Вы перепробовали все источники огня, которые у вас были, но странный светильник не желает загораться. Вместе со светом угасает и ваша надежда. В подавленном настроении вы готовитесь продолжать путь в темноте."
     },
     {
       "id": "braziers_remain_unlit",
-      "text": "In your Campaign Log, record that <i>the braziers remain unlit</i>."
+      "text": "Запишите в журнал кампании, что <i>светильники не горят</i>."
     },
     {
       "id": "check_map_no_braziers",
-      "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<.i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -59282,7 +59282,7 @@
     {
       "id": "check_map_braziers",
       "type": "branch",
-      "text": "Check Campaign Log. <i>If the braziers are lit</i>, check your supplies. If any investigator has a map, they read <b>Reading Signs</b>.",
+      "text": "Сверьтесь с журналом. Если <i>светильники зажглись<.i>, проверьте припасы. Если у любого сыщика есть карта, он читает <b>«Изучая знаки»</b>.",
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
@@ -59314,21 +59314,21 @@
     {
       "id": "reading_signs",
       "type": "story",
-      "title": "Reading Signs",
-      "text": "As you traverse the caverns, something catches your attention: streams of cold, gentle water that drip down the walls of the cavern. Curious, you unfold the previous expedition’s map and sit by one of the lit braziers, mentally retracing your steps. If your calculations are correct, you have traveled much farther south than you could have possibly guessed. Could it be these caverns extend all the way to the coastline? Do the caverns never end?"
+      "title": "Изучая знаки",
+      "text": "По дороге ваше внимание привлекают струйки прохладной воды, которые плавно стекают по стенам пещеры. Заинтересовавшись, вы разворачиваете карту предыдущей экспедиции и садитесь под одним из горящих светильников, мысленно восстанавливая свой путь. Если ваши расчёты верны, вы забрались куда дальше на юг, чем могли подумать. Могут ли эти пещеры простираться до самого побережья? Есть ли у них вообще конец?"
     },
     {
       "id": "map_xp",
-      "text": "Each investigator with a map earns 2 additional experience as he or she gains insight into the caverns that dwell beneath the surface of the Earth."
+      "text": "Каждый сыщик, у которого есть карта, получает 2 опыта дополнительно, проникнув глубже в секреты пещер под поверхностью Земли."
     },
     {
       "id": "time_passes",
       "type": "story",
-      "text": "You have no sense of how much time passes in the cold, terrible abyss of N’kai."
+      "text": "Вы совсем потеряли счёт времени в леденящей тело и душу бездне Н’кая."
     },
     {
       "id": "provisions_and_medicine_gone",
-      "text": "Cross off all provisions and medicine the investigators have remaining in their supplies.",
+      "text": "Вычеркните из припасов сыщиков всю оставшуюся провизию и аптечки.",
       "effects": [
         {
           "type": "campaign_log",
@@ -60094,7 +60094,7 @@
     },
     {
       "id": "lose",
-      "text": "Because all investigators have been killed by the fall trauma, the investigators <b>lose</b> the campaign.",
+      "text": "Поскольку все сыщики погибли при падении, сыщики проиграли кампанию.",
       "effects": [
         {
           "type": "campaign_data",
@@ -62020,8 +62020,8 @@
 },
 {
   "id": "turn_back_time",
-  "scenario_name": "Turn Back Time",
-  "full_name": "Scenario IX: Turn Back Time",
+  "scenario_name": "Обратить время вспять",
+  "full_name": "Сценарий IX: Обратить время вспять",
   "setup": [
     "check_wait_for_additional_supplies",
     "cross_off_everything",
@@ -62081,11 +62081,11 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "You stand in front of the main temple of the Eztli, sweat pouring down your skin due to the hot, damp jungle air. Stunned, you examine your surroundings. José and Maria stand next to you, gaping in wonder at the temple’s sophisticated architecture. Their packs are bulging with the extra supplies they were able to acquire from Alejandro’s contacts in Mexico City. Alejandro himself stands at the rear of the group, grinning.\nYour consciousness has been snapped so far back that your mind aches from the force of it. Your body shudders, and you struggle to resist collapsing out of exhaustion. Though you have altered fate, your true task still remains ahead of you. As the rest of the expedition sets up camp and prepares to explore the ruins, you sneak off to fulfill your purpose, leaving Alejandro and the rest of your group behind. They wouldn’t understand. They haven’t seen what you have seen."
+      "text": "Вы обнаруживаете себя перед главным храмом Эцтли. В жарком сыром воздухе джунглей ваше тело немилосердно потеет. Вы оторопело осматриваетесь. Рядом с вами стоят Хосе и Мария, зачарованно разглядывая причудливые очертания храма. Их рюкзаки набиты припасами, раздобытыми благодаря связям Алехандро в Мехико. Сам Алехандро стоит позади, широко улыбаясь.\nВаше сознание скакнуло так далеко в прошлое, что разум едва выдерживает такую нагрузку. Дрожа, вы пытаетесь не упасть наземь от усталости. Хотя вы уже изменили прошлое, настоящая работа ещё впереди. Пока остальные участники экспедиции разбивают лагерь и готовятся исследовать город, вы ускользаете от них и Алехандро, чтобы выполнить свою цель. Они не поймут. Они не видели того, что видели вы."
     },
     {
       "id": "cross_off_everything",
-      "text": "In your Campaign Log, cross off all entries after the first three entries.\nThe crossed-off entries have been undone by your actions.",
+      "text": "Вычеркните все заметки в журнале кампании, кроме первых трёх.\nВы сделали так, чтобы вычеркнутых событий не произошло.",
       "effects": [
         {
           "type": "campaign_log",
@@ -62320,7 +62320,7 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "You stand near the main temple of the Eztli, sweat pouring down your skin due to the hot, damp jungle air. Stunned, you examine your surroundings. Several tents are set up in the clearing in front of the temple. José stands guard along the border of your camp, and you can see Maria packing equipment and provisions into her backpack, getting ready for her journey to the northern edge of the jungle, as you had instructed. Alejandro sits on a log in the center of the camp, decrypting the inscription he found near the temple’s entryway.\nYour consciousness has been snapped so far back that your mind aches from the force of it. Your body shudders, and you struggle to resist collapsing out of exhaustion. Though you have altered fate, your true task still remains ahead of you. As the rest of the expedition prepares to explore the ruins, you sneak off to fulfill your purpose, leaving Alejandro and the rest of your group behind. They wouldn’t understand. They haven’t seen what you have seen."
+      "text": "Вы обнаруживаете себя перед главным храмом Эцтли. В жарком сыром воздухе джунглей ваше тело немилосердно потеет. Вы оторопело осматриваетесь. На поляне у храма разбито несколько палаток. Хосе охраняет лагерь, а Мария складывает в рюкзак еду и оборудование, чтобы отправиться к северному краю джунглей, как вы и велели. Алехандро сидит на бревне посреди лагеря, расшифровывая надпись, которую нашли у входа в храм.\nВаше сознание скакнуло так далеко в прошлое, что разум едва выдерживает такую нагрузку. Дрожа, вы пытаетесь не упасть наземь от усталости. Хотя вы уже изменили прошлое, настоящая работа ещё впереди. Пока остальные участники экспедиции готовятся исследовать город, вы ускользаете от них и Алехандро, чтобы выполнить свою цель. Они не поймут. Они не видели того, что видели вы."
     },
     {
       "id": "gather_encounter_sets",
@@ -62344,11 +62344,11 @@
       "encounter_sets": [
         "turn_back_time"
       ],
-      "text": "When building the act deck, use the three new act cards provided in the <i>Turn Back Time</i> encounter set instead of the original act deck from <i>The Doom of Eztli</i>."
+      "text": "Собирая колоду сцен, используйте три новые карты сцен из набора контактов «Обратить время вспять» вместо первоначальной колоды сцен из «Погибели эцтли»."
     },
     {
       "id": "remove_relic_from_deck",
-      "text": "Remove the Relic of Ages (<i>Repossess the Past</i>) from its owner’s deck and set it aside, out of play.",
+      "text": "Удалите из колоды владельца карту «Реликвия веков (возвращает прошлое)» и отложите её в сторону.",
       "effects": [
         {
           "type": "remove_card",
@@ -62358,11 +62358,11 @@
     },
     {
       "id": "remove_relic",
-      "text": "Remove the Relic of Ages (<i>...A Device, of Some Sort</i>) from the game."
+      "text": "Удалите из игры карту «Реликвия веков (какое-то устройство)»."
     },
     {
       "id": "setup_locations",
-      "text": "Put the Entryway into play. Each investigator begins play at the Entryway."
+      "text": "Введите в игру локацию «Главный вход». Все сыщики начинают игру в локации «Главный вход»."
     },
     {
       "id": "create_explore_deck",
@@ -62370,11 +62370,11 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Harbinger of Valusia enemy and the Chamber of Time location aside, out of play."
+      "text": "Отложите в сторону врага «Предвестник Валузии» и локацию «Зал времени»."
     },
     {
       "id": "add_elder_thing_token",
-      "text": "Add 1 [elder_thing] token to the chaos bag, for the remainder of the campaign.",
+      "text": "До конца кампании добавьте в мешок хаоса 1 жетон [elder_thing].",
       "effects": [
         {
           "type": "add_chaos_token",
@@ -62447,7 +62447,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "fabric_of_time_unwoven",
-          "text": "the fabric of time is unwoven."
+          "text": "ткань времени расплетена."
         }
       ]
     },
@@ -62458,7 +62458,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sealed_relic_of_ages_forever",
-          "text": "the investigators sealed the Relic of Ages forever."
+          "text": "сыщики навсегда запечатали Реликвию веков."
         }
       ]
     }
@@ -62473,7 +62473,7 @@
         "physical",
         "mental"
       ],
-      "text": "With your failure, the paradox of clashing timelines catches up to you. Despite all you have done, the events of the future cannot be unmade. You will always find the relic. You will always fail to preserve it. And the Nexus will always falter.\nReality as you know it will never be the same, but perhaps this is not the end of the world. After all, time is just one dimension: a dimension humanity barely understands. We experience time, but we cannot see it. We can measure it, but we cannot alter it. So what if the fourth dimension has split into hundreds of thousands of planes of existence? Our feeble human minds cannot comprehend the outcome, but the universe still survives, its ever-expanding boundaries no longer limited by the confines of time.",
+      "text": "Потерпев неудачу, вы падаете жертвой временного парадокса. Несмотря на ваши усилия, будущее не изменить. Вы неизбежно найдёте реликвию. Не сможете её сберечь. И Средоточие выйдет из строя.\nРеальность никогда не будет прежней, но, возможно, это ещё не конец света. В конце концов, время — всего лишь одно из измерений, пусть и не вполне понятное человечеству. Мы пребываем во времени, но не видим его. Измеряем его, но не можем изменить. Так что же будет, если четвёртое измерение расщепится на сотни тысяч планов существования? Человеческому разуму не под силу воспринять такое, но вселенная продолжает жить и расширяться, больше не скованная рамками времени.",
       "steps": [
         "fabric_of_time_unwoven",
         "all_insane",
@@ -62483,7 +62483,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "<right><fancy>Thursday, December 17th, 1925</fancy></right>\nNo one else has ever learned of the events that truly occurred during the summer of 1925, and no one ever will, for I intend to keep this journal locked in my safe-deposit box once I have finished writing in it. I seek only to preserve my own record of these events, for I do not wish the passage of time to erase them completely. After all, these are not my memories, but the memories of my other self: the self who ventured through time and space to save humanity.\nIt is difficult to explain how we did what we did. After all that happened—Ichtaca, Alejandro, the city of the Yithians, Yoth—it turns out the true doom of humanity had occurred much, much earlier: when we first left to find the Eztli. We brought all of these events upon ourselves. In order to prevent this calamity, we had to seal the relic away forever. I remember these events as though I myself had experienced them, though for me, the expedition had gone much differently. We reached the central chamber of the Eztli ruins, but it was sealed shut, and nothing—not even the TNT that José had brought from the trucks—could breach the entrance. Although we returned to Arkham with proof that the Eztli existed, no other expedition would ever find them or their ruins again. My other self perished in those ruins—but I remember. Somehow, I remember everything.",
+      "text": "<right><fancy>17 декабря 1925 года, четверг</fancy></right>\nНикто больше не знает, что на самом деле произошло летом 1925 года, и никто никогда не узнает, потому что я запру этот дневник в банковской ячейке, как только закончу его. Всё, чего я хочу, это зафиксировать свои воспоминания о случившемся, прежде чем время окончательно сотрёт их. В конце концов, это ведь не мои воспоминания, а воспоминания иной версии меня — версии, которая пронзила время и пространство, чтобы спасти человечество.\nСложно объяснить, как мы справились. После всего, что с нами было: Ичтака, Алехандро, город йитиан, Йот, — стало ясно, \nчто на самом деле судьба человечества решилась, когда мы впервые отправились на поиски Эцтли. Мы сами оказались \nпричиной всех бед. Чтобы предотвратить катастрофу, нужно было запечатать реликвию навсегда. Я помню эти события,\nкак если бы они происходили со мной, хотя для меня экспедиция пошла совсем иначе. Мы добрались до центральной залы руин, но вход был наглухо заложен, и ничто, даже динамит, за которым Хосе сходил к грузовикам, не смогло пробить стену. И хотя мы привезли в Аркхэм доказательства существования Эцтли, ни одна экспедиция больше не найдёт ни города, ни племени. Моё другое «я» сгинуло в тех руинах, — но я всё помню. Не знаю, каким образом, но помню всё.",
       "steps": [
         "sealed_relic_of_ages_forever",
         "earn_xp",
