@@ -16,7 +16,7 @@ export interface OddsCalculatorProps {
 }
 
 const EMPTY_CHAOS_BAG = {};
-export default function OddsCalculatorView({ campaignId, investigatorIds, componentId}: OddsCalculatorProps & NavigationProps) {
+export default function OddsCalculatorView({ campaignId, investigatorIds, componentId }: OddsCalculatorProps & NavigationProps) {
   const campaign = useSelector((state: AppState) => getCampaign(state, campaignId));
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
   const cycleScenarios = useMemo(() => campaign ? campaignScenarios(campaign.cycleCode) : [], [campaign]);

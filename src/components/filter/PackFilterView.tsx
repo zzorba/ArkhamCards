@@ -85,7 +85,7 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
       setCycleChecked={setCycleChecked}
     />
   );
-}
+};
 PackFilterView.options = () => {
   return {
     topBar: {

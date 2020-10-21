@@ -22,7 +22,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards } from  '@components/core/hooks';
+import { usePlayerCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
@@ -88,7 +88,7 @@ function DeckListRowDetails({
         Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}
       >
         <PlaceholderLine color={colors.L10} height={11} width={80} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
-        <PlaceholderLine color={colors.L10} height={11} width={40} style={TINY_PHONE ? { marginBottom: 4 } : undefined}  />
+        <PlaceholderLine color={colors.L10} height={11} width={40} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
         <PlaceholderLine color={colors.L10} height={11} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
         <PlaceholderLine color={colors.L10} height={11} width={60} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
       </Placeholder>
@@ -204,7 +204,7 @@ export default function DeckListRow({
             { subDetails }
           </View>
         )}
-     />
+      />
     );
   }, [colors, previousDeck, yithian, eliminated, deck, campaign, investigator, compact, subDetails]);
 

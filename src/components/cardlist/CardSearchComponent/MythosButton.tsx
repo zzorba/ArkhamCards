@@ -100,7 +100,7 @@ class MythosButton extends React.Component<Props, State> {
     return (
       <View style={styles.container}>
         <View style={styles.buttonFrame}>
-          <AppIcon name="mythos_button_frame" size={SIZE+5} color={backgroundColor} />
+          <AppIcon name="mythos_button_frame" size={SIZE + 5} color={backgroundColor} />
         </View>
         <TouchableWithoutFeedback onPress={this._onPress}>
           <View style={[styles.buttonContainer, { borderColor: backgroundColor }]}>

@@ -27,7 +27,7 @@ export default function SelectRow({ value, selected, onSelectChanged, capitalize
   const text = value.replace('[per_investigator] ', '');
 
   return (
-    <View style={[styles.row, borderStyle, space.paddingRightS, { height: 24 * fontScale + 32}]}>
+    <View style={[styles.row, borderStyle, space.paddingRightS, { height: 24 * fontScale + 32 }]}>
       <Text style={[typography.large, typography.dark, space.marginLeftS]}>
         { has_per_investigator ? <ArkhamIcon name="per_investigator" size={24 * fontScale} color={colors.darkText} /> : ''}
         { has_per_investigator ? ' ' : '' }

@@ -32,7 +32,7 @@ interface ReduxProps {
 }
 
 interface OwnProps {
-  //cardData: CardFilterData;
+  // cardData: CardFilterData;
 }
 
 export type CardFilterProps = FilterFunctionProps & OwnProps;

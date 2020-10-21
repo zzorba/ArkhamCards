@@ -34,7 +34,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
             },
           },
         },
-      }
+      },
     });
   }, []);
   return (
@@ -43,7 +43,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
         <CardFlavorTextComponent text={`<game>${rule.title}</game>`} />
         { rule.rules && rule.rules.length > 0 && (
           <CardTextComponent text={map(rule.rules || [], subRule => subRule.title).join(', ')} />
-          ) }
+        ) }
       </TouchableOpacity>
     </View>
   );
@@ -101,10 +101,10 @@ export default function RulesView({ componentId }: Props) {
         },
         endReached: state.endReached || action.rules.length < PAGE_SIZE,
       };
-  }, {
-    rules: {},
-    endReached: false,
-  });
+    }, {
+      rules: {},
+      endReached: false,
+    });
   const { db } = useContext(DatabaseContext);
   const [page, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
     if (!rules.endReached) {
@@ -139,24 +139,24 @@ export default function RulesView({ componentId }: Props) {
       searchTerm={searchTerm}
       onSearchChange={updateSearch}
     >
-    { (onScroll) => (
-      <FlatList
-        onScroll={onScroll}
-        data={data}
-        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-        renderItem={renderItem}
-        onEndReachedThreshold={2}
-        onEndReached={fetchMore}
-        updateCellsBatchingPeriod={50}
-        initialNumToRender={30}
-        maxToRenderPerBatch={30}
-        windowSize={30}
-        ListHeaderComponent={(Platform.OS === 'android') ? (
-          <View style={styles.searchBarPadding} />
-        ) : undefined}
-      />
-    ) }
+      { (onScroll) => (
+        <FlatList
+          onScroll={onScroll}
+          data={data}
+          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          renderItem={renderItem}
+          onEndReachedThreshold={2}
+          onEndReached={fetchMore}
+          updateCellsBatchingPeriod={50}
+          initialNumToRender={30}
+          maxToRenderPerBatch={30}
+          windowSize={30}
+          ListHeaderComponent={(Platform.OS === 'android') ? (
+            <View style={styles.searchBarPadding} />
+          ) : undefined}
+        />
+      ) }
     </CollapsibleSearchBox>
   );
 }

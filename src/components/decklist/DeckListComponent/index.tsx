@@ -62,7 +62,7 @@ export default function DeckListComponent({
     <View style={styles.header}>
       { !!customHeader && customHeader }
     </View>
-  ), [customHeader])
+  ), [customHeader]);
 
   const renderFooter = useCallback((empty: boolean) => {
     if (isEmpty && !refreshing) {

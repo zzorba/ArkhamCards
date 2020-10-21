@@ -20,7 +20,7 @@ const LOCALE_MAP: {
   ko: { locale: ko },
   uk: { locale: uk },
   pl: { locale: pl },
-}
+};
 /**
  * Formats a timestamp into a string with year and month, e.g. "2017-2".
  */

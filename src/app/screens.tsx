@@ -74,7 +74,7 @@ function getStandardComponent(componentName: string | number) {
     case 'Rule': return require('@components/settings/RuleView').default;
     default: return undefined;
   }
-};
+}
 
 function getRootComponent(name: string | number): any {
   switch (name) {

@@ -78,7 +78,7 @@ interface Props {
 }
 
 function getRandomLoadingMessage() {
-  const messages =  [
+  const messages = [
     t`Investigating for clues`,
     t`Cursing at the tentacle token`,
     t`Drawing a mythos card with surge`,
@@ -155,14 +155,14 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       if (ids.length) {
         setBeingFetched(new Set([
           ...Array.from(beingFetched),
-          ...ids
+          ...ids,
         ]));
         if (fetchSize < 100) {
           setFetchSize(100);
         }
-        const start = new Date();
+        // const start = new Date();
         db.getCardsByIds(ids).then(newCards => {
-          console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`)
+          // console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
           updateCards({ type: 'cards', cards: newCards });
         }, console.log);
       }
@@ -176,7 +176,7 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       fetchMore();
     }
   }, [visibleCards, cards]);
-/*
+  /*
   useEffect(() => {
     // Look for holes in visibleCards after we complete one load, in case we need to load more.
     const visibleCardsAtInitialSpinner = dropWhile(visibleCards, card => !!cards[card.id]);
@@ -296,7 +296,9 @@ function useSectionFeed({
         }
       });
     }
-    return () => { ignore = true; };
+    return () => {
+      ignore = true;
+    };
   }, [filterQuery, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
@@ -381,7 +383,7 @@ function useSectionFeed({
             id: `${prefix}_nc_${sectionId}`,
             onPress: () => {
               setExpandButtonPressed(true);
-              updateShowNonCollection({ type: 'set', key: sectionId, value: true })
+              updateShowNonCollection({ type: 'set', key: sectionId, value: true });
             },
             title: ngettext(
               msgid`Show ${nonCollectionCount} non-collection card`,
@@ -444,7 +446,7 @@ function useSectionFeed({
 
     // const start = new Date();
     db.getPartialCards(
-      combineQueries(query, filterQuery ? [filterQuery]: [], 'and'),
+      combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
       tabooSetId,
       sort
     ).then((cards: PartialCard[]) => {
@@ -454,7 +456,9 @@ function useSectionFeed({
         setRefreshing(false);
       }
     }, console.log);
-    return () => { ignore = true; };
+    return () => {
+      ignore = true;
+    };
   }, [query, filterQuery, sort, tabooSetId]);
 
   useEffect(() => {
@@ -465,12 +469,12 @@ function useSectionFeed({
           setTextQueryCards([]);
           return;
         }
-          // Look for textual card changes.
-        //const start = new Date();
+        // Look for textual card changes.
+        // const start = new Date();
         db.getPartialCards(
           combineQueries(query,
             [
-              ...(filterQuery ? [filterQuery]: []),
+              ...(filterQuery ? [filterQuery] : []),
               ...(textQuery ? [textQuery] : []),
             ],
             'and'
@@ -479,13 +483,15 @@ function useSectionFeed({
           sort
         ).then((cards: PartialCard[]) => {
           if (!ignore) {
-            //console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+            // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
             setTextQueryCards(cards);
           }
         });
       }, 50);
       delayedSearch();
-      return () => { ignore = true; delayedSearch.cancel() }
+      return () => {
+        ignore = true; delayedSearch.cancel();
+      };
     }
   }, [query, filterQuery, textQuery, sort, tabooSetId]);
 
@@ -619,7 +625,7 @@ export default function({
   const handleDeckCountChange = useCallback((code: string, value: number) => {
     onDeckCountChange && onDeckCountChange(code, value);
     setDeckCardCounts({ type: 'set-slot', code, value });
-  }, [onDeckCountChange, setDeckCardCounts])
+  }, [onDeckCountChange, setDeckCardCounts]);
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
@@ -694,11 +700,11 @@ export default function({
       renderFooter,
     );
   }, [feed, fullFeed, showSpoilerCards, tabooSetOverride, deckCardCounts, onDeckCountChange, investigator, renderFooter, colors]);
-  const debouncedCardOnPressId = useCallback(debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId])
+  const debouncedCardOnPressId = useCallback(debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
   const keyExtractor = useCallback((item: Item, index: number) => {
     switch (item.type) {
       case 'button': return `button_${item.id}`;
-      case 'card':  return `card_${item.id}`;
+      case 'card': return `card_${item.id}`;
       case 'header': return `header_${item.id}`;
       case 'loading': return `loading_${item.id}`;
       default: return `${index}`;
@@ -758,7 +764,7 @@ export default function({
           <View style={[borderStyle, styles.loadingRow, { height: rowHeight(fontScale) }]}>
             <ActivityIndicator color={colors.lightText} animating size="small" />
           </View>
-        )
+        );
       default:
         return null;
     }

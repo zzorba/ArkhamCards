@@ -49,7 +49,7 @@ export const syncTaboos = async function(
 
   await cardsRep.createQueryBuilder()
     .update()
-    .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards})
+    .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards })
     .set({ taboo_set_id: 0 })
     .execute();
   VERBOSE && console.log('Found base taboo cards');
@@ -241,7 +241,7 @@ export const syncCards = async function(
       [encounter_code: string]: number | undefined;
     } = {};
 
-    //Clean up all the bonded stuff.
+    // Clean up all the bonded stuff.
     const bondedNames: string[] = [];
     const playerCards: Card[] = [];
     forEach(flatCards, card => {

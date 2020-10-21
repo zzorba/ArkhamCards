@@ -75,7 +75,7 @@ export default function DeckRow({
     if (!thePreviousDeck && theDeck?.previous_deck) {
       dispatch(fetchPrivateDeck(id));
     }
-  }, [theDeck])
+  }, [theDeck]);
   const subDetails = useMemo(() => {
     if (theDeck && renderSubDetails) {
       if (!investigator || !cards) {

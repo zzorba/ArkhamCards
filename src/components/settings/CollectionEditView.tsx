@@ -81,7 +81,7 @@ class CollectionEditView extends React.Component<Props> {
           );
         } }
       </StyleContext.Consumer>
-    )
+    );
   }
 }
 

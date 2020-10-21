@@ -12,7 +12,7 @@ function Spinner({ value, size }: { size: number; value: Animated.Value }) {
   const { colors } = useContext(StyleContext);
   const spin = value.interpolate({
     inputRange: [0, 1],
-    outputRange: ['120deg', '0deg']
+    outputRange: ['120deg', '0deg'],
   });
 
 
@@ -26,7 +26,7 @@ function Spinner({ value, size }: { size: number; value: Animated.Value }) {
     outputRange: [colors.D30, colors.D30, colors.background],
   });
   const opacity = value.interpolate({
-    inputRange: [0, 0.4, .95, 1],
+    inputRange: [0, 0.4, 0.95, 1],
     outputRange: [0, 0.2, 0.2, 0],
   });
 
@@ -38,10 +38,10 @@ function Spinner({ value, size }: { size: number; value: Animated.Value }) {
         <AnimatedAppIcon name="spinner" style={{ fontSize: scale, color, opacity }} />
       </View>
     </Animated.View>
-  )
+  );
 }
 
-const AnimatedAppIcon = Animated.createAnimatedComponent(AppIcon)
+const AnimatedAppIcon = Animated.createAnimatedComponent(AppIcon);
 export default function Loading({ size }: Props) {
   const [value0] = useState(new Animated.Value(0));
   const [value1] = useState(new Animated.Value(0));
@@ -64,7 +64,7 @@ export default function Loading({ size }: Props) {
             easing: Easing.linear,
             useNativeDriver: false,
           })
-        )
+        ),
       ]
     ).start();
   }, []);

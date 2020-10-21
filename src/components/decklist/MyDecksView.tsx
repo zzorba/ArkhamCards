@@ -125,8 +125,8 @@ class MyDecksView extends React.Component<Props, State> {
           { t`Hide ArkhamDB Decks` }
         </Text>
         <ArkhamSwitch
-            useGestureHandler
-            value={localDecksOnly}
+          useGestureHandler
+          value={localDecksOnly}
           onValueChange={this._toggleLocalDecksOnly}
         />
       </View>

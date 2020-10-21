@@ -20,10 +20,10 @@ export function useNavigationButtonPressed(
       if (event.componentId === componentId) {
         debouncedHandler(event);
       }
-    })
+    });
     return () => {
       sub.remove();
-    }
+    };
   }, [componentId, ...deps]);
 }
 
@@ -34,13 +34,13 @@ export function useComponentDidAppear(
   useEffect(() => {
     const sub = Navigation.events().registerComponentDidAppearListener((event: ComponentDidAppearEvent) => {
       if (event.componentId === componentId) {
-        handler(event)
+        handler(event);
       }
-    })
+    });
     return () => {
-      sub.remove()
-    }
-  }, [componentId])
+      sub.remove();
+    };
+  }, [componentId]);
 }
 
 interface ClearAction {
@@ -158,7 +158,6 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
     }
   }, initialState);
 }
-
 
 
 interface AppendCardsAction {

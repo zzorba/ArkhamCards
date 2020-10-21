@@ -200,7 +200,7 @@ function ExpandSearchButtons({
         clearSearchFilters={clearSearchFilters}
         mythosMode={mythosMode}
       />
-    )
+    );
   }
   return (
     <View>
@@ -364,10 +364,10 @@ export default function({
         '(c.back_name is not null AND c.back_name like :searchTerm)',
         '(c.linked_card is not null AND c.linked_card.back_name is not null and c.linked_card.back_name like :searchTerm)',
         '(c.subname is not null AND c.subname like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.subname is not null AND c.linked_card.subname like :searchTerm)'
+        '(c.linked_card is not null AND c.linked_card.subname is not null AND c.linked_card.subname like :searchTerm)',
       ].join(' OR '), { searchTerm: safeSearchTerm }));
     } else {
-      parts.push(where('c.renderName like :searchTerm OR (c.renderSubname is not null AND c.renderSubname like :searchTerm)', { searchTerm: safeSearchTerm }))
+      parts.push(where('c.renderName like :searchTerm OR (c.renderSubname is not null AND c.renderSubname like :searchTerm)', { searchTerm: safeSearchTerm }));
     }
     if (searchText) {
       parts.push(where([
@@ -385,7 +385,7 @@ export default function({
     }
     if (searchFlavor) {
       parts.push(where('(c.flavor is not null AND c.flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
-      '(c.linked_card is no'
+      '(c.linked_card is no';
       if (searchBack) {
         parts.push(where([
           '(c.back_flavor is not null AND c.back_flavor like :searchTerm)',
@@ -421,7 +421,7 @@ export default function({
       queryParts.push(baseQuery);
     }
     if (selectedSort === SORT_BY_ENCOUNTER_SET) {
-      //queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
+      // queryParts.push(where(`c.encounter_code is not null OR linked_card.encounter_code is not null`));
     }
     return combineQueries(
       BASIC_QUERY,
@@ -477,7 +477,7 @@ export default function({
             showNonCollection={showNonCollection}
             storyOnly={storyOnly}
             mythosToggle={mythosToggle}
-//            mythosMode={mythosToggle && mythosMode}
+            //            mythosMode={mythosToggle && mythosMode}
             initialSort={initialSort}
           />
           { !!renderFooter && (
