@@ -9,7 +9,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { scenarioRewards } from '@components/campaign/constants';
 import { Deck, Slots } from '@actions/types';
 import Card from '@data/Card';
-import { PLAYER_CARDS_QUERY, combineQueries, where, MYTHOS_CARDS_QUERY } from '@data/query';
+import { PLAYER_CARDS_QUERY, combineQueries, MYTHOS_CARDS_QUERY } from '@data/query';
 import { getDeck, getTabooSet, AppState } from '@reducers';
 import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 

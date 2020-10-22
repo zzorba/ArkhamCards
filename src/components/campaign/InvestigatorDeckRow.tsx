@@ -1,16 +1,12 @@
-import React from 'react';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { Deck } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
-import { fetchPrivateDeck } from '@components/deck/actions';
-import { getDeck, AppState } from '@reducers';
+import Card from '@data/Card';
+import { useDeck, useInvestigatorCards } from '@components/core/hooks';
 
-interface OwnProps {
+interface Props {
   id: number;
-  investigators: CardsMap;
   deckRemoved?: (
     id: number,
     deck?: Deck,
@@ -18,79 +14,25 @@ interface OwnProps {
   ) => void;
 }
 
-interface ReduxProps {
-  theDeck?: Deck;
-  thePreviousDeck?: Deck;
-}
-
-interface ReduxActionProps {
-  fetchPrivateDeck: (deckId: number) => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps;
-
-class InvestigatorDeckRow extends React.Component<Props> {
-  _onRemove = () => {
-    const {
-      deckRemoved,
-      id,
-      theDeck,
-      investigators,
-    } = this.props;
-    deckRemoved && deckRemoved(id, theDeck, theDeck ? investigators[theDeck.investigator_code] : undefined);
-  };
-
-  componentDidMount() {
-    const {
-      id,
-      theDeck,
-      fetchPrivateDeck,
-    } = this.props;
-    if (!theDeck) {
-      fetchPrivateDeck(id);
-    }
+export default function InvestigatorDeckRow({ id, deckRemoved }: Props) {
+  const [theDeck] = useDeck(id, true);
+  const investigators = useInvestigatorCards(theDeck?.taboo_id || 0);
+  const investigator = theDeck && investigators && investigators[theDeck.investigator_code];
+  const onRemove = useCallback(() => {
+    deckRemoved && deckRemoved(id, theDeck, investigator);
+  }, [
+    deckRemoved,
+    id,
+    theDeck,
+    investigator,
+  ]);
+  if (!theDeck || !investigator) {
+    return null;
   }
-
-  render() {
-    const {
-      theDeck,
-      investigators,
-      deckRemoved,
-    } = this.props;
-    if (!theDeck) {
-      return null;
-    }
-    const investigator = investigators[theDeck.investigator_code];
-    if (!investigator) {
-      return null;
-    }
-    return (
-      <InvestigatorRow
-        investigator={investigator}
-        onRemove={deckRemoved ? this._onRemove : undefined}
-      />
-    );
-  }
+  return (
+    <InvestigatorRow
+      investigator={investigator}
+      onRemove={deckRemoved ? onRemove : undefined}
+    />
+  );
 }
-
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const deck = getDeck(props.id)(state);
-  const previousDeck = deck &&
-    deck.previous_deck &&
-    getDeck(deck.previous_deck)(state);
-  return {
-    theDeck: deck || undefined,
-    thePreviousDeck: previousDeck || undefined,
-  };
-}
-
-function mapDispatchToProps(
-  dispatch: Dispatch<Action>
-): ReduxActionProps {
-  return bindActionCreators({ fetchPrivateDeck }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(InvestigatorDeckRow);

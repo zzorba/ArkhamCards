@@ -1,14 +1,11 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback, useContext, useMemo } from 'react';
 
 import { showDeckModal } from '@components/nav/helper';
 import DeckListRow from '../decklist/DeckListRow';
 import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-import { fetchPrivateDeck } from '@components/deck/actions';
-import { getDeck, AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
-import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import { useDeck, useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 
 type RenderDeckDetails = (
   deck: Deck,
@@ -21,7 +18,6 @@ export interface DeckRowProps {
   componentId: string;
   id: number;
   lang: string;
-  deckRemoved?: (id: number, deck?: Deck, investigator?: Card) => void;
   renderSubDetails?: RenderDeckDetails;
   renderDetails?: RenderDeckDetails;
   killedOrInsane?: boolean;
@@ -31,30 +27,21 @@ export interface DeckRowProps {
 interface Props extends DeckRowProps {
   compact?: boolean;
   viewDeckButton?: boolean;
-  otherProps?: any;
 }
 
 export default function DeckRow({
   componentId,
   id,
   lang,
-  deckRemoved,
   renderSubDetails,
   renderDetails,
   killedOrInsane,
   skipRender,
   compact,
   viewDeckButton,
-  otherProps,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const dispatch = useDispatch();
-  const deckSelector = useCallback(getDeck(id), [id]);
-  const theDeck = useSelector(deckSelector) || undefined;
-  const previousDeckSelector = useCallback((state: AppState) => {
-    return theDeck && theDeck.previous_deck && getDeck(theDeck.previous_deck)(state);
-  }, [theDeck]);
-  const thePreviousDeck = useSelector(previousDeckSelector) || undefined;
+  const [theDeck, thePreviousDeck] = useDeck(id, true);
   const cards = usePlayerCards(theDeck?.taboo_id);
   const investigators = useInvestigatorCards(theDeck?.taboo_id);
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code] || undefined;
@@ -63,19 +50,6 @@ export default function DeckRow({
       showDeckModal(componentId, theDeck, colors, investigator);
     }
   }, [componentId, theDeck, colors, investigator]);
-  const onRemove = useCallback(() => {
-    deckRemoved && deckRemoved(id, theDeck, investigator);
-  }, [deckRemoved, id, theDeck, investigators]);
-  useEffect(() => {
-    if (!theDeck) {
-      dispatch(fetchPrivateDeck(id));
-    }
-  }, []);
-  useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previous_deck) {
-      dispatch(fetchPrivateDeck(id));
-    }
-  }, [theDeck]);
   const subDetails = useMemo(() => {
     if (theDeck && renderSubDetails) {
       if (!investigator || !cards) {

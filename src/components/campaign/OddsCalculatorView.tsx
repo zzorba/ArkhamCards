@@ -3,7 +3,6 @@ import { flatMap, forEach } from 'lodash';
 import { useSelector } from 'react-redux';
 
 import OddsCalculatorComponent from './OddsCalculatorComponent';
-import { NavigationProps } from '@components/nav/types';
 import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
@@ -16,7 +15,7 @@ export interface OddsCalculatorProps {
 }
 
 const EMPTY_CHAOS_BAG = {};
-export default function OddsCalculatorView({ campaignId, investigatorIds, componentId }: OddsCalculatorProps & NavigationProps) {
+export default function OddsCalculatorView({ campaignId, investigatorIds }: OddsCalculatorProps) {
   const campaign = useSelector((state: AppState) => getCampaign(state, campaignId));
   const chaosBag = campaign?.chaosBag || EMPTY_CHAOS_BAG;
   const cycleScenarios = useMemo(() => campaign ? campaignScenarios(campaign.cycleCode) : [], [campaign]);

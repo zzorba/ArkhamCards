@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import { map } from 'lodash';
 import {
   Platform,
@@ -10,8 +10,7 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { Deck } from '@actions/types';
 import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import Card, { CardsMap } from '@data/Card';
+import Card from '@data/Card';
 
 export interface CampaignDeckListProps {
   componentId: string;
@@ -22,28 +21,21 @@ export interface CampaignDeckListProps {
   investigatorAdded?: (investigator: Card) => void;
 }
 
-interface OwnProps extends CampaignDeckListProps {
-  renderDeck: (
-    deckId: number,
-    cards: CardsMap,
-    investigators: CardsMap
-  ) => ReactNode;
-  renderInvestigator?: (
-    investigator: string,
-    investigators: CardsMap
-  ) => ReactNode;
-  otherProps?: any;
+interface Props extends CampaignDeckListProps {
+  renderDeck: (deckId: number) => ReactNode;
+  renderInvestigator?: (investigator: string) => ReactNode;
 }
 
-class CampaignDeckList extends React.Component<OwnProps & PlayerCardProps> {
-  _showDeckSelector = () => {
-    const {
-      deckIds,
-      investigatorIds,
-      deckAdded,
-      investigatorAdded,
-      campaignId,
-    } = this.props;
+export default function CampaignDeckList({
+  campaignId,
+  deckIds,
+  investigatorIds,
+  deckAdded,
+  investigatorAdded,
+  renderDeck,
+  renderInvestigator,
+}: Props) {
+  const showDeckSelector = useCallback(() => {
     if (deckAdded) {
       const passProps: MyDecksSelectorProps = {
         campaignId: campaignId,
@@ -52,7 +44,7 @@ class CampaignDeckList extends React.Component<OwnProps & PlayerCardProps> {
         selectedDeckIds: deckIds,
         selectedInvestigatorIds: investigatorIds,
       };
-      Navigation.showModal({
+      Navigation.showModal<MyDecksSelectorProps>({
         stack: {
           children: [{
             component: {
@@ -68,36 +60,22 @@ class CampaignDeckList extends React.Component<OwnProps & PlayerCardProps> {
         },
       });
     }
-  };
+  }, [deckIds, investigatorIds, deckAdded, investigatorAdded, campaignId]);
 
-  render() {
-    const {
-      deckIds,
-      deckAdded,
-      investigatorAdded,
-      investigatorIds,
-      cards,
-      investigators,
-      renderDeck,
-      renderInvestigator,
-    } = this.props;
-    return (
-      <View>
-        { map(deckIds, deckId => (
-          renderDeck(deckId, cards, investigators)
-        )) }
-        { !!renderInvestigator && map(investigatorIds, investigator => (
-          renderInvestigator(investigator, investigators)
-        )) }
-        { !!deckAdded && (
-          <BasicButton
-            title={investigatorAdded ? t`Add Investigator` : t`Add Investigator Deck`}
-            onPress={this._showDeckSelector}
-          />
-        ) }
-      </View>
-    );
-  }
+  return (
+    <View>
+      { map(deckIds, deckId => (
+        renderDeck(deckId)
+      )) }
+      { !!renderInvestigator && map(investigatorIds, investigator => (
+        renderInvestigator(investigator)
+      )) }
+      { !!deckAdded && (
+        <BasicButton
+          title={investigatorAdded ? t`Add Investigator` : t`Add Investigator Deck`}
+          onPress={showDeckSelector}
+        />
+      ) }
+    </View>
+  );
 }
-
-export default withPlayerCards<OwnProps>(CampaignDeckList);

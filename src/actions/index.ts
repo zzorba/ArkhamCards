@@ -16,11 +16,9 @@ import {
 } from './types';
 import { AppState } from '@reducers';
 
-import Database from '@data/Database';
 import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
 // @ts-ignore
 import { decks } from '@lib/authApi';
-import { where } from '@data/query';
 
 export function login(): ThunkAction<void, AppState, unknown, Action> {
   return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {

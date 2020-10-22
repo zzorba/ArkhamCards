@@ -4,10 +4,11 @@ import { forEach, debounce } from 'lodash';
 
 import { Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-import { useSelector } from 'react-redux';
-import { AppState, getTabooSet } from '@reducers';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState, getDeck, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
+import { fetchPrivateDeck } from '@components/deck/actions';
 
 export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
@@ -219,6 +220,27 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   const { playerCardsByTaboo } = useContext(DatabaseContext);
   const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
   return playerCards?.weaknessCards;
+}
+
+export function useDeck(id: number, fectchIfMissing: boolean) {
+  const dispatch = useDispatch();
+  const deckSelector = useCallback(getDeck(id), [id]);
+  const theDeck = useSelector(deckSelector) || undefined;
+  const previousDeckSelector = useCallback((state: AppState) => {
+    return theDeck && theDeck.previous_deck && getDeck(theDeck.previous_deck)(state);
+  }, [theDeck]);
+  const thePreviousDeck = useSelector(previousDeckSelector) || undefined;
+  useEffect(() => {
+    if (!theDeck && fectchIfMissing) {
+      dispatch(fetchPrivateDeck(id));
+    }
+  }, []);
+  useEffect(() => {
+    if (!thePreviousDeck && theDeck?.previous_deck && fectchIfMissing) {
+      dispatch(fetchPrivateDeck(id));
+    }
+  }, [theDeck]);
+  return [theDeck, thePreviousDeck];
 }
 
 
