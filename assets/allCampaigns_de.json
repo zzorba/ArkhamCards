@@ -33686,12 +33686,12 @@
     },
     {
       "id": "move_innocent_reveler",
-      "text": "Move 1 Innocent Reveler from underneath the act deck to underneath the agenda deck, if able."
+      "text": "1 Unschuldiger Feiernder wird falls möglich von unter dem Szenendeck unter das Agendadeck verschoben."
     },
     {
       "id": "choose_masks",
       "title": "Zusätzliche Belohnungen",
-      "text": "In player order, each investigator may choose one of the following [[Mask]] cards to add to his or her deck: Pantalone, Medico Della Peste, Bauta, Gilded Volto. The chosen card does not count towards that investigator's deck size.",
+      "text": "In Spielerreihenfolge darf jeder Ermittler eine der folgenden [[Maske]]-Karten wählen und seinem Deck hinzufügen. Pantalone, Medico Della Peste, Bauta, Vergoldeter Volto. Die gewählte Karte zählt nicht gegen die Deckgröße des Ermittlers.",
       "type": "input",
       "input": {
         "type": "investigator_choice",
@@ -33807,11 +33807,11 @@
     {
       "id": "abbess_satisfied",
       "type": "story",
-      "text": "\"Grazie mille—thank you for all your help.\" Allegria says as you return to the basilica. \"Thanks to you, there were few casualties. I shudder to think what might have happened had you not arrived. Should you ever require assistance, please do not hesitate to ask.\""
+      "text": "\" Grazie mille - vielen Dank für ihre Hilfe\", sagt Allegria, als du zum Dom zurückkehrst. \"Dank Ihnen gab es nur wenige Toresfälle. Ich zittere beim Gedanken daran, was hätte passieren können, wenn Sie nicht gekommen wären. Sollten Sie jemals Hilfe benötigen, zögern Sie nicht, sich an mich zu wenden.\""
     },
     {
       "id": "earn_abbess",
-      "text": "Any one investigator may choose to add Abbess Allegria Di Biase to their deck. This card does not count toward that investigator’s deck size.",
+      "text": "Ein beliebiger Ermittler kann sich entscheiden Äbtissin Allegria Di Biase seinem Deck hinzuzufügen. Diese Karten zählt nicht gegen die Deckgröße des Ermittlers.",
       "effects": [
         {
           "type": "add_card",
@@ -33823,11 +33823,11 @@
     {
       "id": "sacrifice_made",
       "type": "story",
-      "text": "Too many lives were lost during the eclipse to stop the machinations of Cnidathqua's servants. The beast has been fed, its minions empowered. You find yourself hoping you don't live long enough to see the fallout of your failure."
+      "text": "Zu viele Menschen verloren während der Sonnenfinsternis ihr Leben, um die Machenschaften von Cnidathquas Lakaien aufzuhalten. Die Bestie ist gefüttert worden und seine Handlanger haben mehr Macht erlangt. Du hoffst, dass die Konsequenzen deines Versagens nicht mehr zu deinen Lebzeiten Wirkung zeigen."
     },
     {
       "id": "random_weakness",
-      "text": "Each investigator searches the collection for a random basic [[Madness]], [[Injury]], or [[Monster]] weakness and adds it to their deck for the remainder of the campaign.",
+      "text": "Jeder Ermittler durchsucht die Sammlung nach einer zufälligen Grundschwäche mit dem Schlüsselwort [[Wahnsinn]], [[Verletzung]] oder [[Monster]] und fügt sie für den Rest der Kampagne seinem Deck hinzu.",
       "effects": [
         {
           "type": "add_weakness",
@@ -33851,7 +33851,7 @@
         "physical",
         "mental"
       ],
-      "text": "You sputter awake as an oar gently taps yoru shoulder. \"Tutto bene?\" The goldolier holding the oars says with a concerned expression. You nod and drag yourself onto the docks from his gondola, drenched and aching all over. The city is devestated. Most of the boats in the canal are wrecked. The streets are covered not in confetti, but in blood.",
+      "text": "Du wachst hustend auf und spuckst Wasser aus, als jemand vorsichtig mit einem Ruder an deine Schulter tippt. \"Tutto bene?\", fragt der Gondoliere mit dem Ruder und besorgtem Gesichtsausdruck. Nickend ziehst du dich in die Gondel. Du bist durchnässt und dein gesamter Körper schmerzt. Die Stadt ist völlig verwüstet und die Straßen nicht mehr mit Konfetti bedeckt, sondern mit Blut ...",
       "steps": [
         "many_were_sacrificed_to_cnidathqua",
         "earn_xp",
@@ -33864,7 +33864,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "The city is still recovering from the events during the eclipse. With nearly all evidence of the creature melted away by the hot sun, many attribute the violence during the Carnevale to local crime lord Cascio Di Boerio and his crew. Those that know the truth know better than to speak of the elder creature that lives in Laguna Veneta. With any luck, its name will never be spoken again.",
+      "text": "Noch erholt sich die Stadt von Ereignissen während der Sonnenfinsternis. Da fast alle Beweise für die Existenz der Kreatur in der heißen Sonne geschmolzen sind, schreiben viele die Gewalttaten während des Karnevals dem ortsansässigen Verbrecherboss Cascio Di Boerio und seiner Organisation zu. Diejenigen, welche die Wahrheit kennen, wissen, dass sie nicht über den Großen Alten sprechen sollten, der in der Laguna Veneta lebt. Mit viel Glück wird sein Name nie wieder erwähnt werden.",
       "steps": [
         "sun_banished_cnidathqua",
         "earn_xp",
@@ -33876,7 +33876,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "The creature recoils as globules of its jelly-like flesh rip and tear from its body, splashing into the lagoon. It makes no sound as its torn body sinks into the depths. The chanting in the city plunges into mournful silence. As you return to the canal-side streets, black feathers fall from the sky where bright confetti once fluttered. You can only wonder how long it will take for the creature to recover.",
+      "text": "Die Kreatur zuckt zurück, als Brocken seines gallertartigen Fleisches aus seinem Körper gerissen werden und in die Lagune fallen. Lautlos versinkt der verstümmelte Körper in der Tiefe. Die Gesänge in der Stadt verstummen und es herrscht eine schwerfällige Stille. Als du wieder auf den Straßen am Kanalufer ankommst, fallen schwarze Federn vom Himmel, wo zuvor buntes Konfetti herumgeweht ist. Du fragst dich, wie lange die Kreatur braucht, um sich zu erholen.",
       "steps": [
         "cnidathqua_retreated",
         "earn_xp",
