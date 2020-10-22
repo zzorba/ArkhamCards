@@ -4596,8 +4596,8 @@ msgstr[1] "보유하지 않은 확장에 포함된 ${ nonCollection.length }개�
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection investigator"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
-msgstr[0] "보유하지 않은 확장에 포함된 ${ nonCollection.length }명의 조사자 확인"
-msgstr[1] "보유하지 않은 확장에 포함된 ${ nonCollection.length }명의 조사자 확인"
+msgstr[0] "보유하지 않은 확장에 포함된 ${ section.nonCollectionCount }명의 조사자 확인"
+msgstr[1] "보유하지 않은 확장에 포함된 ${  section.nonCollectionCount }명의 조사자 확인"
 
 #: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:544
 msgid "Edit spoiler settings"
