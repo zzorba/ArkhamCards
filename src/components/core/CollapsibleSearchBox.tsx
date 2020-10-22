@@ -210,7 +210,7 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
               width,
               height: SEARCH_BAR_HEIGHT + advancedOptions.height,
               backgroundColor: 'transparent',
-            }
+            },
           ]} />
         ) }
         <Animated.View style={[

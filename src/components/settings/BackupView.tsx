@@ -43,6 +43,14 @@ interface ReduxActionProps {
 
 type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
 
+
+async function safeReadFile(file: string): Promise<string> {
+  try {
+    return await RNFS.readFile(file, 'utf8');
+  } catch (error) {
+    return await RNFS.readFile(file, 'ascii');
+  }
+}
 class BackupView extends React.Component<Props> {
   static contextType = StyleContext;
   context!: StyleContextType;
@@ -60,7 +68,7 @@ class BackupView extends React.Component<Props> {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
-      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json')) {
+      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json') && !res.name.endsWith('.null')) {
         Alert.alert(
           t`Unexpected file type`,
           t`This app expects an Arkham Cards backup file (.acb/.json)`,
@@ -75,7 +83,7 @@ class BackupView extends React.Component<Props> {
         return;
       }
       // We got the file
-      const json = JSON.parse(await RNFS.readFile(res.fileCopyUri));
+      const json = JSON.parse(await safeReadFile(res.fileCopyUri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));

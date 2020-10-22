@@ -49,7 +49,7 @@ export async function calculateDefaultDbFilterState(
     cardsQuery = cardsQuery.andWhere(query);
     factionsQuery = factionsQuery.andWhere(query);
   }
-  const countsP = cardsQuery.getRawMany()
+  const countsP = cardsQuery.getRawMany();
   const factionsP = factionsQuery.getRawMany();
   const counts = (await countsP)[0];
   const fields = {
@@ -84,7 +84,7 @@ export async function calculateDefaultDbFilterState(
     hasSlot: !!counts.has_slot,
     hasUses: !!counts.has_uses,
     hasSkill: true,
-  }
+  };
   return [filterState, filterData];
 
 }

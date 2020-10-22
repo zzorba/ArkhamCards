@@ -9,7 +9,7 @@ import DeckOption from './DeckOption';
 import { QuerySort } from './types';
 
 const SERPENTS_OF_YIG = '04014';
-const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+\\s(.+)\\)\\..*');
+const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');
 const BONDED_REGEX = new RegExp('.*Bonded\\s*\\((.+?)\\)\\..*');
 const SEAL_REGEX = new RegExp('.*Seal \\(.+\\)\\..*');
 const HEALS_HORROR_REGEX = new RegExp('[Hh]eals? (that much )?((\\d+|all) damage (from that asset )?(and|or) )?((\\d+|all) )?horror');
@@ -851,7 +851,7 @@ export default class Card {
 
     const restrictions = Card.parseRestrictions(json.restrictions);
     const uses_match = json.real_text && json.real_text.match(USES_REGEX);
-    const uses = uses_match ? uses_match[1].toLowerCase() : null;
+    const uses = uses_match ? uses_match[2].toLowerCase() : null;
 
     const bonded_match = json.real_text && json.real_text.match(BONDED_REGEX);
     const bonded_name = bonded_match ? bonded_match[1] : null;
@@ -957,12 +957,12 @@ export default class Card {
     }
     result.browse_visible = 0;
     if ((!result.altArtInvestigator && !result.back_linked && !result.hidden)) {
-      if (result.encounter_code != null) {
+      if (!!result.encounter_code) {
         // It's an encounter card.
         result.browse_visible += 2;
       }
       if (result.deck_limit > 0 || result.bonded_name) {
-        // It goesin a deck.
+        // It goes in a deck.
         result.browse_visible += 1;
       }
     } else if (result.altArtInvestigator) {

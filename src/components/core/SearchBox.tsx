@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Platform,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -11,6 +12,7 @@ import AppIcon from '@icons/AppIcon';
 import ToggleButton from '@components/core/ToggleButton';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import space from '@styles/space';
+import ArkhamSwitch from './ArkhamSwitch';
 
 export const SEARCH_BAR_HEIGHT = 60;
 export const SEARCH_BAR_INPUT_HEIGHT = SEARCH_BAR_HEIGHT - 20;
@@ -91,7 +93,7 @@ export default class SearchBox extends React.Component<Props> {
         inputStyle={{
           marginTop: 6,
           fontFamily: 'Alegreya-Regular',
-          fontSize: 20,
+          fontSize: Platform.OS === 'android' ? 16 : 20,
           lineHeight: 24,
           color: colors.darkText,
           textAlignVertical: 'center',

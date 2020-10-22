@@ -1605,19 +1605,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Алехандро всё помнит."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Алехандро настроен против вас."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "светильники зажглись."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "светильники не горят."
           },
           {
             "id": "cleared_path_to_temple",
@@ -1625,7 +1625,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "сыщики подчинились йитианам."
           },
           {
             "id": "earned_alejandros_trust",
@@ -1637,11 +1637,11 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "ткань времени расплетена."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "сыщики упали в глубины."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -1665,7 +1665,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "сыщикам стёрли память."
           },
           {
             "id": "harbinger_alive",
@@ -1689,7 +1689,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ичтака настроена против вас."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -1701,11 +1701,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "сыщики спасли цивилизацию змей."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "сыщики спасли цивилизацию йитиан."
           },
           {
             "id": "jungle_watches",
@@ -1717,11 +1717,11 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "сыщики залатали прореху в ткани времени."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "Средоточие близко."
           },
           {
             "id": "paths_known",
@@ -1729,19 +1729,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "перенос прошёл неудачно."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "перенос прошёл крайне неудачно."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "перенос прошёл безупречно."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "перенос прошёл успешно."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1749,7 +1749,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "реликвия пропала."
           },
           {
             "id": "rescued_alejandro",
@@ -1757,15 +1757,15 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "сыщики вырвались из плена."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "сыщики навсегда запечатали Реликвию веков."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "сыщики обратили время вспять."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -1878,7 +1878,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "Глубина: #X#"
           },
           {
             "id": "ichtaca_left_without_you",
@@ -1898,7 +1898,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Выполнено #X# пунктов"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -1990,7 +1990,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Складной нож",
         "description": "Маловат для полноценного оружия, зато легко спрятать.",
         "cost": 2
       },
@@ -3104,19 +3104,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Алехандро всё помнит."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Алехандро настроен против вас."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "светильники зажглись."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "светильники не горят."
           },
           {
             "id": "cleared_path_to_temple",
@@ -3124,7 +3124,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "сыщики подчинились йитианам."
           },
           {
             "id": "earned_alejandros_trust",
@@ -3136,11 +3136,11 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "ткань времени расплетена."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "сыщики упали в глубины."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -3164,7 +3164,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "сыщикам стёрли память."
           },
           {
             "id": "harbinger_alive",
@@ -3188,7 +3188,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ичтака настроена против вас."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -3200,11 +3200,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "сыщики спасли цивилизацию змей."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "сыщики спасли цивилизацию йитиан."
           },
           {
             "id": "jungle_watches",
@@ -3216,11 +3216,11 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "сыщики залатали прореху в ткани времени."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "Средоточие близко."
           },
           {
             "id": "paths_known",
@@ -3228,23 +3228,23 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "перенос прошёл неудачно."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "перенос прошёл крайне неудачно."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "перенос прошёл безупречно."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "перенос прошёл успешно."
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "реликвия пропала."
           },
           {
             "id": "rescued_alejandro",
@@ -3252,15 +3252,15 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "сыщики вырвались из плена."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "сыщики навсегда запечатали Реликвию веков."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "сыщики обратили время вспять."
           },
           {
             "id": "wait_for_additional_supplies",
@@ -3373,7 +3373,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "Глубина: #X#"
           },
           {
             "id": "ichtaca_left_without_you",
@@ -3385,7 +3385,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Выполнено #X# пунктов"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3456,7 +3456,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Складной нож",
         "description": "Маловат для полноценного оружия, зато легко спрятать.",
         "cost": 2
       },

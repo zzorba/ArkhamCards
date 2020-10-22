@@ -51,6 +51,7 @@ export default function DeckListComponent({
   }, [deckClicked]);
   const dispatch = useDispatch();
   useEffect(() => {
+    // Only do this once, even though it might want to be done a second time.
     forEach(deckIds, deckId => {
       if (!decks[deckId] && deckId > 0) {
         dispatch(fetchPublicDeck(deckId, false));
@@ -61,7 +62,7 @@ export default function DeckListComponent({
     <View style={styles.header}>
       { !!customHeader && customHeader }
     </View>
-  ),[customHeader])
+  ), [customHeader]);
 
   const renderFooter = useCallback((empty: boolean) => {
     if (isEmpty && !refreshing) {

@@ -28,8 +28,6 @@ interface Props {
   componentId: string;
   decks: Deck[];
   allInvestigators: Card[];
-  cards: CardsMap;
-  investigators: CardsMap;
 }
 
 interface State {
@@ -129,8 +127,6 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
   _renderDeck = (deckId: number) => {
     const {
       componentId,
-      cards,
-      investigators,
       lang,
     } = this.props;
 
@@ -140,8 +136,6 @@ export default class UpgradeDecksList extends React.Component<Props, State> {
         lang={lang}
         componentId={componentId}
         id={deckId}
-        cards={cards}
-        investigators={investigators}
         renderDetails={this._renderDetails}
         otherProps={this.props}
         compact

@@ -1,5 +1,5 @@
 import { findIndex, flatMap, forEach, map, pull, sortBy, sortedUniq } from 'lodash';
-import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition } from 'typeorm/browser';
+import { createConnection, Brackets, Connection, Repository, EntitySubscriberInterface, SelectQueryBuilder, InsertResult, OrderByCondition, QueryRunner } from 'typeorm/browser';
 
 import Card, { PartialCard } from './Card';
 import EncounterSet from './EncounterSet';
@@ -19,7 +19,7 @@ export interface SectionCount {
 }
 
 export default class Database {
-  static SCHEMA_VERSION: number = 25;
+  static SCHEMA_VERSION: number = 26;
   connectionP: Promise<Connection>;
 
   playerState?: PlayerCardState;
@@ -51,8 +51,8 @@ export default class Database {
       ],
     });
     this.connectionP.then(connection => {
-//      connection.query('EXPLAIN QUERY PLAN SELECT "c"."sort_by_type", count(*) as count FROM "card" "c" LEFT JOIN "card" "linked_card" ON "linked_card"."id"="c"."linked_card_id" WHERE ("c"."taboo_set_id" is null OR "c"."taboo_set_id" = 2) AND ((("c"."browse_visible") AND ("c"."deck_limit" >= 0)) AND ("c"."encounter_code" is not null AND ("c"."non_spoiler" is null or "c"."non_spoiler" = false))) GROUP BY "c"."sort_by_type"').then(console.log)
-    })
+      //      connection.query('EXPLAIN QUERY PLAN SELECT "c"."sort_by_type", count(*) as count FROM "card" "c" LEFT JOIN "card" "linked_card" ON "linked_card"."id"="c"."linked_card_id" WHERE ("c"."taboo_set_id" is null OR "c"."taboo_set_id" = 2) AND ((("c"."browse_visible") AND ("c"."deck_limit" >= 0)) AND ("c"."encounter_code" is not null AND ("c"."non_spoiler" is null or "c"."non_spoiler" = false))) GROUP BY "c"."sort_by_type"').then(console.log)
+    });
   }
 
   addListener(change: () => void) {
@@ -65,7 +65,7 @@ export default class Database {
 
   reloadPlayerCards() {
     // console.log('RELOADING PLAYER CARDS');
-    return syncPlayerCards(this, this._updateInvestigatorCards,  this._updatePlayerCards);
+    return syncPlayerCards(this, this._updateInvestigatorCards, this._updatePlayerCards);
   }
 
   private _updateInvestigatorCards = (state: InvestigatorCardState) => {
@@ -74,7 +74,6 @@ export default class Database {
   }
 
   private _updatePlayerCards = (state: PlayerCardState) => {
-    // console.log('PLAYER CARDS UDPATED');
     this.playerState = state;
     forEach(this.listeners, listener => listener());
   };
@@ -128,6 +127,14 @@ export default class Database {
     if (connection.queryResultCache) {
       await connection.queryResultCache.clear();
     }
+  }
+
+  async startTransaction(): Promise<QueryRunner> {
+    const connection = await this.connectionP;
+    const queryRunner = connection.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    return queryRunner;
   }
 
   async insertCards(
@@ -191,7 +198,7 @@ export default class Database {
         values.push(result.value);
       }
       if (result.linked_value !== null) {
-        values.push(result.linked_value)
+        values.push(result.linked_value);
       }
       if (processValue) {
         return flatMap(values, processValue);
@@ -219,7 +226,7 @@ export default class Database {
       forEach(sortQuery, ({ s, direction }) => {
         orderBy[s] = direction;
       });
-      cardsQuery.orderBy(orderBy)
+      cardsQuery.orderBy(orderBy);
     }
     const result = await cardsQuery.getRawMany();
     return flatMap(result, raw => PartialCard.fromRaw(raw, sort) || []);
@@ -289,10 +296,10 @@ export default class Database {
       forEach(sort, ({ s, direction }) => {
         orderBy[s] = direction;
       });
-      cardsQuery.orderBy(orderBy)
+      cardsQuery.orderBy(orderBy);
     }
     if (groupBy) {
-      cardsQuery = cardsQuery.groupBy(groupBy)
+      cardsQuery = cardsQuery.groupBy(groupBy);
     }
     return cardsQuery;
   }

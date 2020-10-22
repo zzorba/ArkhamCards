@@ -9,6 +9,7 @@ import Database from '@data/Database';
 import TabooSet from '@data/TabooSet';
 import FaqEntry from '@data/FaqEntry';
 
+const VERBOSE = false;
 export const syncTaboos = async function(
   db: Database,
   lang?: string,
@@ -41,27 +42,34 @@ export const syncTaboos = async function(
       return map(cards, card => card.code);
     })
   );
+  VERBOSE && console.log('Starting to update Taboos');
   const cardsRep = await db.cards();
-
   await cardsRep.createQueryBuilder().where('taboo_set_id > 0').delete().execute();
+  VERBOSE && console.log('Deleted old Taboo cards');
 
   await cardsRep.createQueryBuilder()
     .update()
-    .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards})
+    .where('code in (:...codes) AND (taboo_set_id is null)', { codes: allTabooCards })
     .set({ taboo_set_id: 0 })
     .execute();
+  VERBOSE && console.log('Found base taboo cards');
+  let queryRunner = await db.startTransaction();
   const baseTabooCards: Card[] = flatMap(await Promise.all(map(allTabooCards, code => {
-    return cardsRep.createQueryBuilder('c')
+    return queryRunner.manager.createQueryBuilder(Card, 'c')
       .where('c.code = :code AND c.taboo_set_id = 0')
       .leftJoin('c.linked_card', 'linked_card')
       .setParameters({ code })
       .addSelect(Card.ELIDED_FIELDS)
       .getOne();
   })), x => x ? [x] : []);
+  await queryRunner.commitTransaction();
+  await queryRunner.release();
+
 
   const tabooSetsRep = await db.tabooSets();
   await tabooSetsRep.createQueryBuilder().delete().execute();
 
+  queryRunner = await db.startTransaction();
   const tabooSets: TabooSet[] = [];
   for (let i = 0; i < json.length; i++) {
     const tabooJson = json[i];
@@ -93,16 +101,17 @@ export const syncTaboos = async function(
       const cardsToInsert = flatMap(values(tabooCardsToSave), card => card ? [card] : []);
       // await cards.save(cardsToInsert);
       await insertChunk(cardsToInsert, async cards => {
-        await db.insertCards(cards);
+        await queryRunner.manager.insert(Card, cards);
       }, 4);
     } catch (e) {
       console.log(e);
       Alert.alert(`${e}`);
     }
   }
+  await queryRunner.commitTransaction();
+  await queryRunner.release();
 
   await tabooSetsRep.insert(tabooSets);
-
   const tabooCount = await cardsRep.createQueryBuilder()
     .where('taboo_set_id > 0')
     .getCount();
@@ -147,6 +156,7 @@ export const syncCards = async function(
   lang?: string,
   cache?: CardCache
 ): Promise<CardCache | null> {
+  VERBOSE && console.log('Starting sync of cards from ArkhamDB');
   const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
   const uri = `https://${langPrefix}arkhamdb.com/api/public/cards/?encounter=1`;
   const packsByCode: { [code: string]: Pack } = {};
@@ -188,9 +198,12 @@ export const syncCards = async function(
     if (response.status === 304 && cache) {
       return cache;
     }
+    VERBOSE && console.log('Got results from ArkhamDB');
 
     const lastModified = response.headers.get('Last-Modified') || undefined;
     const json = await response.json();
+    VERBOSE && console.log('Parsed ArkhamDB json');
+
     const encounterSets = await db.encounterSets();
     const cards = await db.cards();
     const tabooSets = await db.tabooSets();
@@ -202,6 +215,8 @@ export const syncCards = async function(
     await tabooSets.createQueryBuilder().delete().execute();
     await rules.createQueryBuilder().delete().execute();
     await db.clearCache();
+    VERBOSE && console.log('Cleared old database');
+
     await syncRules(db, lang);
     // console.log(`${await cards.count() } cards after delete`);
     const cardsToInsert: Card[] = [];
@@ -226,7 +241,9 @@ export const syncCards = async function(
       [encounter_code: string]: number | undefined;
     } = {};
 
+    // Clean up all the bonded stuff.
     const bondedNames: string[] = [];
+    const playerCards: Card[] = [];
     forEach(flatCards, card => {
       if (!card.hidden && card.encounter_code) {
         encounter_card_counts[card.encounter_code] = (encounter_card_counts[card.encounter_code] || 0) + (card.quantity || 1);
@@ -234,7 +251,26 @@ export const syncCards = async function(
       if (card.bonded_name) {
         bondedNames.push(card.bonded_name);
       }
+      if ((card.deck_limit && card.deck_limit > 0) && !card.spoiler && !(card.xp === undefined || card.xp === null)) {
+        playerCards.push(card);
+      }
     });
+
+    // Handle all upgrade stuff
+    const cardsByName = values(groupBy(playerCards, card => card.real_name));
+    forEach(cardsByName, cardsGroup => {
+      if (cardsGroup.length > 1) {
+        const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
+        if (maxXpCard) {
+          forEach(cardsGroup, card => {
+            const xp = card.xp || 0;
+            card.has_upgrades = xp < (maxXpCard.xp || 0);
+          });
+        }
+      }
+    });
+
+    // Handle all bonded card stuff, and encountercode sizes.
     const bondedSet = new Set(bondedNames);
     forEach(flatCards, card => {
       if (card.encounter_code) {
@@ -245,6 +281,8 @@ export const syncCards = async function(
         card.bonded_from = true;
       }
     });
+
+    // Deal with duplicate ids?
     forEach(groupBy(flatCards, card => card.id), dupes => {
       if (dupes.length > 1) {
         forEach(dupes, (dupe, idx) => {
@@ -254,38 +292,24 @@ export const syncCards = async function(
     });
 
     const [linkedCards, normalCards] = partition(dedupedCards, card => !!card.linked_card);
-    // console.log('Parsed all cards');
+    const queryRunner = await db.startTransaction();
+    VERBOSE && console.log('Parsed all cards');
     await insertChunk(flatMap(linkedCards, c => c.linked_card ? [c.linked_card] : []), async(c: Card[]) => {
-      await cards.insert(c);
+      await queryRunner.manager.insert(Card, c);
     });
     // console.log('Inserted back-link cards');
     await insertChunk(linkedCards, async(c: Card[]) => {
-      await cards.insert(c);
+      await queryRunner.manager.insert(Card, c);
     });
     // console.log('Inserted front link cards');
     await insertChunk(normalCards, async(c: Card[]) => {
-      await cards.insert(c);
+      await queryRunner.manager.insert(Card, c);
+      //      await cards.insert(c);
     });
-    // console.log('Inserted normal cards');
-    const playerCards = await cards.createQueryBuilder()
-      .where('deck_limit > 0 AND spoiler != true AND xp is not null AND (taboo_set_id is null OR taboo_set_id = 0)')
-      .getMany();
-    const cardsByName = values(groupBy(playerCards, card => card.real_name));
+    await queryRunner.commitTransaction();
+    await queryRunner.release();
 
-    // console.log(`Working on upgrades now.`);
-    for (let i = 0; i < cardsByName.length; i++) {
-      const cardsGroup = cardsByName[i];
-      if (cardsGroup.length > 1) {
-        const maxXpCard = head(sortBy(cardsGroup, card => -(card.xp || 0)));
-        if (maxXpCard) {
-          for (let j = 0; j < cardsGroup.length; j++) {
-            const card = cardsGroup[j];
-            const xp = card.xp || 0;
-            await cards.update({ id: card.id }, { has_upgrades: xp < (maxXpCard.xp || 0) });
-          }
-        }
-      }
-    }
+    VERBOSE && console.log('Inserted normal cards');
     const cardCount = await cards.createQueryBuilder('card')
       .where('card.taboo_set_id is null OR card.taboo_set_id = 0')
       .getCount();

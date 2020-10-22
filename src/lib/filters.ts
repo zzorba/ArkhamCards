@@ -27,7 +27,7 @@ export const DefaultCardFilterData: CardFilterData = {
   hasEnemy: true,
   hasWeakness: true,
   allFactions: CARD_FACTION_CODES,
-}
+};
 
 export interface SkillIconsFilters {
   willpower: boolean;

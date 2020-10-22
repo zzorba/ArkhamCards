@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useEffect, useRef, useMemo, useReducer, useState, Reducer, ReducerWithoutAction } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   flatMap,
   forEach,
@@ -7,7 +7,6 @@ import {
   filter,
   find,
   take,
-  dropWhile,
   partition,
   debounce,
   uniq,
@@ -34,13 +33,9 @@ import DatabaseContext from '@data/DatabaseContext';
 import { addDbFilterSet } from '@components/filter/actions';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { rowHeight } from '@components/cardlist/CardSearchResult/constants';
-import CardSectionHeader, { CardSectionHeaderData } from '@components/core/CardSectionHeader';
-import {
-  SortType,
-  Slots,
-  SORT_BY_TYPE,
-} from '@actions/types';
-import { combineQueries, combineQueriesOpt, where } from '@data/query';
+import CardSectionHeader, { CardSectionHeaderData, cardSectionHeaderHeight } from '@components/core/CardSectionHeader';
+import { SortType, Slots, SORT_BY_TYPE } from '@actions/types';
+import { combineQueries, where } from '@data/query';
 import { getPacksInCollection, getTabooSet, AppState, getPackSpoilers } from '@reducers';
 import Card, { CardsMap, PartialCard } from '@data/Card';
 import { showCard, showCardSwipe } from '@components/nav/helper';
@@ -78,7 +73,7 @@ interface Props {
 }
 
 function getRandomLoadingMessage() {
-  const messages =  [
+  const messages = [
     t`Investigating for clues`,
     t`Cursing at the tentacle token`,
     t`Drawing a mythos card with surge`,
@@ -155,14 +150,14 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       if (ids.length) {
         setBeingFetched(new Set([
           ...Array.from(beingFetched),
-          ...ids
+          ...ids,
         ]));
         if (fetchSize < 100) {
           setFetchSize(100);
         }
-        //const start = new Date();
+        // const start = new Date();
         db.getCardsByIds(ids).then(newCards => {
-          //console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`)
+          // console.log(`Got ${newCards.length} cards, elapsed: ${(new Date()).getTime() - start.getTime()}`);
           updateCards({ type: 'cards', cards: newCards });
         }, console.log);
       }
@@ -175,8 +170,8 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       // Initial fetch when we get back first set of results.
       fetchMore();
     }
-  }, [visibleCards]);
-
+  }, [visibleCards, cards]);
+  /*
   useEffect(() => {
     // Look for holes in visibleCards after we complete one load, in case we need to load more.
     const visibleCardsAtInitialSpinner = dropWhile(visibleCards, card => !!cards[card.id]);
@@ -186,7 +181,7 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       fetchMore();
     }
     // Intentionally not listeneing for 'visibleCards' changes because everytime visibleCards changes we do one fetch regardless.
-  }, [cards]);
+  }, [cards]);*/
 
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
@@ -296,7 +291,9 @@ function useSectionFeed({
         }
       });
     }
-    return () => { ignore = true; };
+    return () => {
+      ignore = true;
+    };
   }, [filterQuery, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
@@ -381,7 +378,7 @@ function useSectionFeed({
             id: `${prefix}_nc_${sectionId}`,
             onPress: () => {
               setExpandButtonPressed(true);
-              updateShowNonCollection({ type: 'set', key: sectionId, value: true })
+              updateShowNonCollection({ type: 'set', key: sectionId, value: true });
             },
             title: ngettext(
               msgid`Show ${nonCollectionCount} non-collection card`,
@@ -444,7 +441,7 @@ function useSectionFeed({
 
     // const start = new Date();
     db.getPartialCards(
-      combineQueries(query, filterQuery ? [filterQuery]: [], 'and'),
+      combineQueries(query, filterQuery ? [filterQuery] : [], 'and'),
       tabooSetId,
       sort
     ).then((cards: PartialCard[]) => {
@@ -454,7 +451,9 @@ function useSectionFeed({
         setRefreshing(false);
       }
     }, console.log);
-    return () => { ignore = true; };
+    return () => {
+      ignore = true;
+    };
   }, [query, filterQuery, sort, tabooSetId]);
 
   useEffect(() => {
@@ -465,12 +464,12 @@ function useSectionFeed({
           setTextQueryCards([]);
           return;
         }
-          // Look for textual card changes.
-        //const start = new Date();
+        // Look for textual card changes.
+        // const start = new Date();
         db.getPartialCards(
           combineQueries(query,
             [
-              ...(filterQuery ? [filterQuery]: []),
+              ...(filterQuery ? [filterQuery] : []),
               ...(textQuery ? [textQuery] : []),
             ],
             'and'
@@ -479,13 +478,15 @@ function useSectionFeed({
           sort
         ).then((cards: PartialCard[]) => {
           if (!ignore) {
-            //console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
+            // console.log(`Fetched text cards (${cards.length}) in: ${(new Date()).getTime() - start.getTime()}`);
             setTextQueryCards(cards);
           }
         });
       }, 50);
       delayedSearch();
-      return () => { ignore = true; delayedSearch.cancel() }
+      return () => {
+        ignore = true; delayedSearch.cancel();
+      };
     }
   }, [query, filterQuery, textQuery, sort, tabooSetId]);
 
@@ -576,6 +577,17 @@ function useSectionFeed({
   };
 }
 
+function itemHeight(item: Item, fontScale: number): number {
+  switch (item.type) {
+    case 'button':
+      return ArkhamButton.Height(fontScale);
+    case 'card':
+    case 'loading':
+      return rowHeight(fontScale);
+    case 'header':
+      return cardSectionHeaderHeight(item.header, fontScale);
+  }
+}
 export default function({
   componentId,
   query,
@@ -608,7 +620,7 @@ export default function({
   const handleDeckCountChange = useCallback((code: string, value: number) => {
     onDeckCountChange && onDeckCountChange(code, value);
     setDeckCardCounts({ type: 'set-slot', code, value });
-  }, [onDeckCountChange, setDeckCardCounts])
+  }, [onDeckCountChange, setDeckCardCounts]);
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
@@ -634,10 +646,15 @@ export default function({
   });
   const dispatch = useDispatch();
   useEffect(() => {
-  // showHeader when somethings drastic happens, and get a new error message.
-  showHeader && showHeader();
-    setLoadingMessage(getRandomLoadingMessage());
+    // showHeader when somethings drastic happens, and get a new error message.
+    showHeader && showHeader();
   }, [query, filterQuery, tabooSetId, sort]);
+  useEffect(() => {
+    if (!refreshing) {
+      // Everytime refreshing goes to false, queue up a new fun loading message.
+      setLoadingMessage(getRandomLoadingMessage());
+    }
+  }, [refreshing]);
   useEffect(() => {
     dispatch(addDbFilterSet(componentId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
   }, [query, tabooSetId]);
@@ -678,15 +695,31 @@ export default function({
       renderFooter,
     );
   }, [feed, fullFeed, showSpoilerCards, tabooSetOverride, deckCardCounts, onDeckCountChange, investigator, renderFooter, colors]);
+  const debouncedCardOnPressId = useCallback(debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
   const keyExtractor = useCallback((item: Item, index: number) => {
     switch (item.type) {
       case 'button': return `button_${item.id}`;
-      case 'card':  return `card_${item.id}`;
+      case 'card': return `card_${item.id}`;
       case 'header': return `header_${item.id}`;
       case 'loading': return `loading_${item.id}`;
       default: return `${index}`;
     }
   }, []);
+  const itemOffsets = useMemo(() => {
+    let offset = 0;
+    return map(feed, (item, index) => {
+      const result = {
+        length: itemHeight(item, fontScale),
+        offset,
+        index,
+      };
+      offset += result.length;
+      return result;
+    });
+  }, [feed, fontScale]);
+  const getItemLayout = useCallback((item: Item[] | null | undefined, index: number) => {
+    return itemOffsets[index];
+  }, [itemOffsets, fontScale]);
   const renderItem = useCallback(({ item, index }: ListRenderItemInfo<Item>) => {
     switch (item.type) {
       case 'button':
@@ -707,7 +740,7 @@ export default function({
             card={card}
             count={deckCardCounts && deckCardCounts[card.code]}
             onDeckCountChange={onDeckCountChange ? handleDeckCountChange : undefined}
-            onPressId={cardOnPressId}
+            onPressId={debouncedCardOnPressId}
             id={item.id}
             limit={limits ? limits[card.code] : undefined}
             hasSecondCore={hasSecondCore}
@@ -726,11 +759,11 @@ export default function({
           <View style={[borderStyle, styles.loadingRow, { height: rowHeight(fontScale) }]}>
             <ActivityIndicator color={colors.lightText} animating size="small" />
           </View>
-        )
+        );
       default:
         return null;
     }
-  }, [cardOnPressId, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
+  }, [debouncedCardOnPressId, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {
@@ -800,6 +833,7 @@ export default function({
       onScrollBeginDrag={handleScrollBeginDrag}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
+      getItemLayout={getItemLayout}
       initialNumToRender={40}
       onEndReached={fetchMore}
       onEndReachedThreshold={3}

@@ -1,13 +1,11 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { Navigation, EventSubscription, Options } from 'react-native-navigation';
+import { Options } from 'react-native-navigation';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
 import { Slots, SORT_BY_TYPE, SortType } from '@actions/types';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { AppState, getDeckChecklist } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import { showCard } from '@components/nav/helper';
@@ -18,7 +16,7 @@ import { showSortDialog } from '@components/cardlist/CardSortDialog';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface DeckChecklistProps {

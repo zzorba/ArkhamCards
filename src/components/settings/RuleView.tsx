@@ -1,7 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { map } from 'lodash';
 import { ScrollView, View } from 'react-native';
-import { Table, Row, Cell} from 'react-native-table-component';
+import { Table, Row, Cell } from 'react-native-table-component';
 
 import Rule, { RuleTableRow } from '@data/Rule';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
@@ -70,5 +70,5 @@ export default function RuleView({ componentId, rule }: Props) {
     <ScrollView contentContainerStyle={backgroundStyle}>
       <RuleComponent componentId={componentId} rule={rule} level={0} noTitle />
     </ScrollView>
-  )
+  );
 }

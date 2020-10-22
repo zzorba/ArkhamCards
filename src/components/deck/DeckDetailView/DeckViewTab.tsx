@@ -562,7 +562,7 @@ export default class DeckViewTab extends React.Component<Props, State> {
       tabooOpen,
       editable,
     } = this.props;
-    const { colors, typography } = this.context;
+    const { colors, typography, gameFont } = this.context;
     return (
       <View style={styles.optionsContainer}>
         { (tabooOpen || showTaboo || !!tabooSet) && (
@@ -588,7 +588,9 @@ export default class DeckViewTab extends React.Component<Props, State> {
         { this.renderAvailableExperienceButton() }
         { limitedSlots && (
           <View style={styles.toggleRow}>
-            <Text style={typography.small}>
+            <Text style={[
+              typography.text,
+            ]}>
               { t`Show limited splash` }
             </Text>
             <ArkhamSwitch

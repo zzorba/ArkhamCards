@@ -22,10 +22,10 @@ export default async function syncPlayerCards(
   updateContext: (state: PlayerCardState) => void
 ) {
   try {
-    const tabooSets = await (await db.tabooSets()).createQueryBuilder().getMany();
-    const qb = await db.cardsQuery();
-    const investigatorsP = qb.where(INVESTIGATOR_CARDS_QUERY).getMany();
-    const cardsP = qb.where(PLAYER_CARDS_QUERY).getMany();
+    const tabooSetsP = db.tabooSets().then(ts => ts.createQueryBuilder().getMany());
+    const qbP = db.cardsQuery();
+    const investigatorsP = qbP.then(qb => qb.where(INVESTIGATOR_CARDS_QUERY).getMany());
+    const cardsP = qbP.then(qb => qb.where(PLAYER_CARDS_QUERY).getMany());
     const investigators = await investigatorsP;
     const investigatorsByTaboo = mapValues(
       groupBy(investigators, card => card.taboo_set_id || 0),
@@ -37,7 +37,21 @@ export default async function syncPlayerCards(
         return investigators;
       }
     );
-    updateInvestigatorContext(investigatorsByTaboo);
+    const investigatorCards: {
+      [key: string]: CardsMap;
+    } = {};
+    forEach(investigatorsByTaboo, (tabooSet, tabooSetId) => {
+      if (tabooSetId === '0') {
+        investigatorCards[tabooSetId] = tabooSet;
+      } else {
+        const baseTaboos = investigatorsByTaboo['0'];
+        investigatorCards[tabooSetId] = {
+          ...baseTaboos,
+          ...tabooSet,
+        };
+      }
+    });
+    updateInvestigatorContext(investigatorCards);
 
     const cards = await cardsP;
     const playerCards: {
@@ -89,6 +103,7 @@ export default async function syncPlayerCards(
         };
       }
     });
+    const tabooSets = await tabooSetsP;
     updateContext({
       playerCards,
       tabooSets,

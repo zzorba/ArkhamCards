@@ -153,8 +153,6 @@ class UpgradeDecksView extends React.Component<Props> {
       componentId,
       allInvestigators,
       decks,
-      cards,
-      investigators,
       lang,
     } = this.props;
     const { backgroundStyle, typography } = this.context;
@@ -178,8 +176,6 @@ class UpgradeDecksView extends React.Component<Props> {
           originalDeckIds={this._originalDeckIds}
           showDeckUpgradeDialog={this._showDeckUpgradeDialog}
           updateInvestigatorXp={this._updateInvestigatorXp}
-          cards={cards}
-          investigators={investigators}
         />
         <BasicButton title={t`Done`} onPress={this._close} />
         <View style={styles.footer} />

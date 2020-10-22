@@ -12,7 +12,7 @@ import {
   Placeholder,
   PlaceholderLine,
   Fade,
-} from "rn-placeholder";
+} from 'rn-placeholder';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
 import CardCostIcon from '@components/core/CardCostIcon';
@@ -31,7 +31,7 @@ interface Props {
   bigImage?: boolean;
   onPress?: (card: Card) => void;
   onRemove?: (card: Card) => void;
-  children?: React.ReactElement | React.ReactElement[];
+  children?: React.ReactNode;
   noFactionIcon?: boolean;
 }
 
@@ -63,7 +63,7 @@ export default function InvestigatorRow({
       return colors.faction.dead.darkBackground;
     }
     return colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground;
-  }, [eliminated, investigator, colors])
+  }, [eliminated, investigator, colors]);
 
   const content = useMemo(() => {
     return (

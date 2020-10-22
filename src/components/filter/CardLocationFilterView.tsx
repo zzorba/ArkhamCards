@@ -87,7 +87,7 @@ const CardLocationFilterView = (props: FilterFunctionProps & NavigationProps) =>
       </View>
     </ScrollView>
   );
-}
+};
 
 CardLocationFilterView.options = () => {
   return {

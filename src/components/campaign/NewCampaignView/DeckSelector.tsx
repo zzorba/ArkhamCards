@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import InvestigatorDeckRow from '../InvestigatorDeckRow';
-import DeckList, { DeckListProps } from '../DeckList';
+import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 
-interface Props extends DeckListProps {
+interface Props extends CampaignDeckListProps {
   deckRemoved?: (
     id: number,
     deck?: Deck,
@@ -65,7 +65,7 @@ export default function DeckSelector(props: Props) {
   );
 
   return (
-    <DeckList
+    <CampaignDeckList
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
       componentId={componentId}

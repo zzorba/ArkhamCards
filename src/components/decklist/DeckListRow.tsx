@@ -22,7 +22,7 @@ import { toRelativeDateString } from '@lib/datetime';
 import { parseBasicDeck } from '@lib/parseDeck';
 import { s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import usePlayerCards from  '@components/core/usePlayerCards';
+import { usePlayerCards } from '@components/core/hooks';
 import { TINY_PHONE } from '@styles/sizes';
 
 interface Props {
@@ -53,6 +53,89 @@ function deckXpString(parsedDeck: ParsedDeck) {
   return null;
 }
 
+interface DetailProps {
+  investigator?: Card;
+  campaign?: Campaign;
+  deck: Deck;
+  previousDeck?: Deck;
+  details?: ReactNode;
+  lang: string;
+  eliminated: boolean;
+}
+
+function DeckListRowDetails({
+  investigator,
+  campaign,
+  deck,
+  details,
+  previousDeck,
+  lang,
+  eliminated,
+}: DetailProps) {
+  const { colors, typography } = useContext(StyleContext);
+  const cards = usePlayerCards(deck.taboo_id || 0);
+  if (details) {
+    return (
+      <>
+        { details }
+      </>
+    );
+  }
+  const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
+  if (!parsedDeck || !investigator) {
+    return (
+      <Placeholder
+        Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}
+      >
+        <PlaceholderLine color={colors.L10} height={11} width={80} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+        <PlaceholderLine color={colors.L10} height={11} width={40} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+        <PlaceholderLine color={colors.L10} height={11} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+        <PlaceholderLine color={colors.L10} height={11} width={60} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
+      </Placeholder>
+    );
+  }
+  const xpString = deckXpString(parsedDeck);
+  const date: undefined | string = deck.date_update || deck.date_creation;
+  const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
+  const scenarioCount = deck.scenarioCount || 0;
+  const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
+  const traumaData = campaign && campaign.investigatorData[investigator.code];
+  return (
+    <View>
+      <Text style={typography.small}>
+        { campaign ? campaign.name :
+          ngettext(
+            msgid`${scenarioCount} scenario completed`,
+            `${scenarioCount} scenarios completed`,
+            scenarioCount
+          )
+        }
+      </Text>
+      { eliminated && (
+        <Text style={typography.small}>
+          { investigator.traumaString(traumaData) }
+        </Text>
+      ) }
+      { !!xpString && (
+        <Text style={typography.small}>
+          { xpString }
+        </Text>
+      ) }
+      { !!deck.problem && (
+        <DeckProblemRow
+          problem={{ reason: deck.problem }}
+          color={colors.darkText}
+        />
+      ) }
+      { !!dateStr && (
+        <Text style={typography.small} >
+          { dateStr }
+        </Text>
+      ) }
+    </View>
+  );
+}
+
 export default function DeckListRow({
   lang,
   deck,
@@ -66,11 +149,12 @@ export default function DeckListRow({
   viewDeckButton,
   killedOrInsane,
 }: Props) {
-  const { colors, typography } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   const onDeckPress = useCallback(() => {
     onPress && onPress(deck, investigator);
   }, [deck, investigator, onPress]);
-  const yithian = useMemo(() => (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck]);
+  const yithian = useMemo(() => (deck.slots[BODY_OF_A_YITHIAN] || 0) > 0, [deck.slots]);
+  const campaign = deck && deckToCampaign && deckToCampaign[deck.id];
   const eliminated = useMemo(() => {
     if (killedOrInsane) {
       return true;
@@ -78,69 +162,9 @@ export default function DeckListRow({
     if (!investigator) {
       return false;
     }
-    const campaign = deckToCampaign && deckToCampaign[deck.id];
     const traumaData = campaign && campaign.investigatorData[deck.id];
     return investigator.eliminated(traumaData);
-  }, [killedOrInsane, investigator, deckToCampaign, deck]);
-  const cards = usePlayerCards(deck.taboo_id || 0);
-  const renderDeckDetails = useCallback((investigator?: Card, campaign?: Campaign) => {
-    if (details) {
-      return details;
-    }
-    const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
-    if (!parsedDeck || !investigator) {
-      return (
-        <Placeholder
-          Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}
-        >
-          <PlaceholderLine color={colors.L10} height={11} width={80} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
-          <PlaceholderLine color={colors.L10} height={11} width={40} style={TINY_PHONE ? { marginBottom: 4 } : undefined}  />
-          <PlaceholderLine color={colors.L10} height={11} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
-          <PlaceholderLine color={colors.L10} height={11} width={60} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
-        </Placeholder>
-      );
-    }
-    const xpString = deckXpString(parsedDeck);
-    const date: undefined | string = deck.date_update || deck.date_creation;
-    const parsedDate: number | undefined = date ? Date.parse(date) : undefined;
-    const scenarioCount = deck.scenarioCount || 0;
-    const dateStr = parsedDate ? toRelativeDateString(new Date(parsedDate), lang) : undefined;
-    const traumaData = campaign && campaign.investigatorData[investigator.code];
-    return (
-      <View>
-        <Text style={typography.small}>
-          { campaign ? campaign.name :
-            ngettext(
-              msgid`${scenarioCount} scenario completed`,
-              `${scenarioCount} scenarios completed`,
-              scenarioCount
-            )
-          }
-        </Text>
-        { eliminated && (
-          <Text style={typography.small}>
-            { investigator.traumaString(traumaData) }
-          </Text>
-        ) }
-        { !!xpString && (
-          <Text style={typography.small}>
-            { xpString }
-          </Text>
-        ) }
-        { !!deck.problem && (
-          <DeckProblemRow
-            problem={{ reason: deck.problem }}
-            color={colors.darkText}
-          />
-        ) }
-        { !!dateStr && (
-          <Text style={typography.small} >
-            { dateStr }
-          </Text>
-        ) }
-      </View>
-    );
-  }, [deck, previousDeck, eliminated, cards, details, lang, colors, typography, cards]);
+  }, [killedOrInsane, investigator, campaign, deck]);
 
   const contents = useMemo(() => {
     if (!deck) {
@@ -154,7 +178,6 @@ export default function DeckListRow({
         </View>
       );
     }
-    const campaign = deckToCampaign && deckToCampaign[deck.id];
     return (
       <InvestigatorRow
         investigator={investigator}
@@ -167,15 +190,24 @@ export default function DeckListRow({
           <View style={styles.investigatorBlock}>
             <View style={styles.investigatorBlockRow}>
               <View style={[styles.column, styles.titleColumn]}>
-                { renderDeckDetails(investigator, campaign) }
+                <DeckListRowDetails
+                  deck={deck}
+                  previousDeck={previousDeck}
+                  investigator={investigator}
+                  campaign={campaign}
+                  eliminated={eliminated}
+                  lang={lang}
+                  details={details}
+                />
               </View>
             </View>
             { subDetails }
           </View>
         )}
-     />
+      />
     );
-  }, [colors, renderDeckDetails, yithian, eliminated, deck, deckToCampaign, investigator, compact, subDetails]);
+  }, [colors, previousDeck, yithian, eliminated, deck, campaign, investigator, compact, subDetails]);
+
   if (!deck) {
     return (
       <View style={styles.row}>

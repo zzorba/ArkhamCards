@@ -59,7 +59,7 @@ class CardFaqView extends React.Component<Props, State> {
     }
   }
 
-  _linkPressed = async (url: string, context: StyleContextType) => {
+  _linkPressed = async(url: string, context: StyleContextType) => {
     const { componentId, tabooSetId } = this.props;
     await openUrl(url, context, this.context.db, componentId, tabooSetId);
   };

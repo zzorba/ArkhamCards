@@ -81,9 +81,9 @@ function DbCardDetailSwipeView(props: Props) {
         code => !cards[code]
       );
       db.getCards(where(`c.code IN (:...codes)`, { codes }), tabooSetId)
-      .then(newCards => {
-        updateCards({ type: 'cards', cards: newCards });
-      }, console.log);
+        .then(newCards => {
+          updateCards({ type: 'cards', cards: newCards });
+        }, console.log);
     }
   }, [index, cardCodes, db, cards]);
 
@@ -101,7 +101,7 @@ function DbCardDetailSwipeView(props: Props) {
         },
       });
     }
-  }, [currentCard])
+  }, [currentCard]);
 
   const showInvestigatorCards = useCallback((code: string) => {
     Navigation.push<InvestigatorCardsProps>(componentId, {
@@ -184,7 +184,7 @@ function DbCardDetailSwipeView(props: Props) {
       currentCard.pack_code === 'core' ?
         ((currentCard.quantity || 0) * (hasSecondCore ? 2 : 1)) :
         (currentCard.deck_limit || 0),
-        currentCard.deck_limit || 0
+      currentCard.deck_limit || 0
     );
     return (
       <View style={{ height: FOOTER_HEIGHT, position: 'relative' }}>
@@ -249,6 +249,7 @@ function DbCardDetailSwipeView(props: Props) {
         itemWidth={width}
         useExperimentalSnap
         onScrollIndexChanged={setIndex}
+        disableIntervalMomentum
       />
       { footer }
       { Platform.OS === 'ios' && <View style={[styles.gutter, { height }]} /> }
