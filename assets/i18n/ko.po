@@ -3183,7 +3183,7 @@ msgstr "어려움"
 
 #: src/components/campaign/constants.ts:44
 msgid "Night of the Zealot"
-msgstr ""
+msgstr "광신도의 밤"
 
 #: src/components/campaign/constants.ts:45
 #: src/components/campaign/constants.ts:280
@@ -3216,15 +3216,15 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:106
 msgid "The Gathering"
-msgstr ""
+msgstr "회합"
 
 #: src/components/campaign/constants.ts:107
 msgid "The Midnight Masks"
-msgstr ""
+msgstr "한밤의 가면"
 
 #: src/components/campaign/constants.ts:108
 msgid "The Devourer Below"
-msgstr ""
+msgstr "지하 세계의 포식자"
 
 #: src/components/campaign/constants.ts:111
 #: src/components/campaign/constants.ts:125
@@ -3235,49 +3235,49 @@ msgstr ""
 #: src/components/campaign/constants.ts:231
 #: src/components/campaign/constants.ts:242
 msgid "Prologue"
-msgstr ""
+msgstr "서막"
 
 #: src/components/campaign/constants.ts:112
 msgid "Extracurricular Activity"
-msgstr ""
+msgstr "과외 활동"
 
 #: src/components/campaign/constants.ts:113
 msgid "The House Always Wins"
-msgstr ""
+msgstr "도박장은 언제나 이긴다"
 
 #: src/components/campaign/constants.ts:114
 #: src/components/campaign/constants.ts:128
 msgid "Armitage’s Fate"
-msgstr ""
+msgstr "아미타지의 운명"
 
 #: src/components/campaign/constants.ts:115
 msgid "The Miskatonic Museum"
-msgstr ""
+msgstr "미스캐토닉 박물관"
 
 #: src/components/campaign/constants.ts:116
 msgid "Essex County Express"
-msgstr ""
+msgstr "에식스 카운티 특급열차"
 
 #: src/components/campaign/constants.ts:117
 msgid "Blood on the Altar"
-msgstr ""
+msgstr "제단에 흘린 피"
 
 #: src/components/campaign/constants.ts:118
 #: src/components/campaign/constants.ts:132
 msgid "The Survivors"
-msgstr ""
+msgstr "생존자들"
 
 #: src/components/campaign/constants.ts:119
 msgid "Undimensioned and Unseen"
-msgstr ""
+msgstr "차원 너머에 보이지 않는 존재"
 
 #: src/components/campaign/constants.ts:120
 msgid "Where Doom Awaits"
-msgstr ""
+msgstr "파멸이 기다리는 곳"
 
 #: src/components/campaign/constants.ts:121
 msgid "Lost in Time and Space"
-msgstr ""
+msgstr "시공간을 헤매다"
 
 #: src/components/campaign/constants.ts:122
 #: src/components/campaign/constants.ts:136
@@ -3290,7 +3290,7 @@ msgstr ""
 #: src/components/campaign/constants.ts:250
 #: src/components/campaign/constants.ts:265
 msgid "Epilogue"
-msgstr ""
+msgstr "후일담"
 
 #: src/components/campaign/constants.ts:126
 msgid "Return to Extracurricular Activity"
@@ -3561,7 +3561,7 @@ msgstr ""
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:30
 #: src/components/campaign/constants.ts:279
 msgid "The Night of the Zealot"
-msgstr ""
+msgstr "광신도의 밤"
 
 #: src/components/campaign/NewCampaignView/index.tsx:143
 #: src/components/campaign/constants.ts:328
@@ -3575,19 +3575,19 @@ msgstr ""
 #: src/components/campaign/constants.ts:406
 #: src/components/campaign/constants.ts:414
 msgid "Campaign Notes"
-msgstr ""
+msgstr "캠페인 중요 사항"
 
 #: src/components/campaign/constants.ts:329
 msgid "Cultists We Interrogated"
-msgstr ""
+msgstr "심문한 추종자"
 
 #: src/components/campaign/constants.ts:330
 msgid "Cultists Who Got Away"
-msgstr ""
+msgstr "도망친 추종자"
 
 #: src/components/campaign/constants.ts:338
 msgid "Sacrificed to Yog-Sothoth"
-msgstr ""
+msgstr "요그 소토스에게 바쳐진 제물"
 
 #: src/components/campaign/constants.ts:346
 msgid "VIPs Interviewed"
@@ -3696,7 +3696,7 @@ msgstr ""
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:96
 msgid "Custom"
-msgstr ""
+msgstr "커스텀"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:97
 msgid "Guide not yet available"
