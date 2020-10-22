@@ -93,7 +93,7 @@ function load(lang: string): {
         encounterSets: require('../../../assets/encounterSets_ru.json'),
         errata: require('../../../assets/campaignErrata_ru.json'),
       };
-    case 'de':
+    case 'fr':
       return {
         allLogEntries: require('../../../assets/campaignLogs_fr.json'),
         allCampaigns: require('../../../assets/allCampaigns_fr.json'),

@@ -175,7 +175,7 @@ export default class InputStepComponent extends React.Component<Props> {
               choiceId="chosen"
               checkText={t`Choose Investigators`}
               defaultState
-              min={1}
+              min={step.input.choose_none_steps ? 0 : 1}
               max={4}
               allowNewDecks
             />

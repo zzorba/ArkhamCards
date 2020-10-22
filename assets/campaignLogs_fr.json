@@ -158,31 +158,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -430,7 +430,7 @@
         "entries": [
           {
             "id": "tmm_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -438,31 +438,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -699,11 +699,11 @@
         "entries": [
           {
             "id": "bsr_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "cca_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "possessed",
@@ -711,7 +711,7 @@
           },
           {
             "id": "tpm_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -719,31 +719,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -1029,7 +1029,7 @@
         "entries": [
           {
             "id": "tmm_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -1037,31 +1037,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -1236,31 +1236,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -1488,11 +1488,11 @@
         "entries": [
           {
             "id": "bsr_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "cca_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "possessed",
@@ -1500,7 +1500,7 @@
           },
           {
             "id": "tpm_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -1508,31 +1508,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -1874,7 +1874,7 @@
           },
           {
             "id": "doy_cross_off_rope",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "final_depth",
@@ -1890,11 +1890,11 @@
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "rthote2_gain_sticky_goop",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "tasks_completed",
@@ -1902,7 +1902,7 @@
           },
           {
             "id": "wilds_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -1910,31 +1910,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -2408,27 +2408,27 @@
         "entries": [
           {
             "id": "a_record_of_those_lost",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "act_3_v2",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "left_column",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "right_column",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "uad_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "uad_no_investigators_alive",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -2436,31 +2436,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -2749,39 +2749,39 @@
           },
           {
             "id": "everyone_captured",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "forbidden_lands",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "grand_design",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "half_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "interconnected_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "minar",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "oriab",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "someone_escaped",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "timeless_realm",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -2789,31 +2789,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -3029,15 +3029,15 @@
         "entries": [
           {
             "id": "half_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "interconnected_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "spider_queen",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -3045,31 +3045,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -3369,7 +3369,7 @@
           },
           {
             "id": "doy_cross_off_rope",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "final_depth",
@@ -3389,7 +3389,7 @@
           },
           {
             "id": "wilds_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -3397,31 +3397,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -3697,23 +3697,23 @@
           },
           {
             "id": "flashback_1",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "flashback_2",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "flashback_3",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "flashback_4",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "the_accusation",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -3721,31 +3721,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },

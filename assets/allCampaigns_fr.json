@@ -18,7 +18,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -339,7 +339,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Suggestion de Placement des Lieux",
-      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "note": "<i><b>Note</b>: L'un des lieux ci-dessous <b>ne</b> sera <b>pas</b> en jeu.",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -2648,7 +2648,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "tmm_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -3615,7 +3615,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -4273,7 +4273,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Main Path location into play. Shuffle the 6 copies of Arkham Woods, choose 4 of them at random, and put them into play without looking at their revealed sides. Remove the other 2 from the game. Each investigator begins play at the Main Path."
+      "text": "Mettez en jeu le lieu Chemin Principal. Mélangez les 6 exemplaires du lieu Bois d'Arkham, prenez-en 4 au hasard et mettez-les en jeu sans regarder leur côté révélé. Retirez les 2 exemplaires restants de la partie. Chaque investigateur commence la partie sur le Chemin Principal."
     },
     {
       "id": "set_aside_cards",
@@ -6475,7 +6475,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "bsr_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -6493,7 +6493,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "bsr_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -6992,7 +6992,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "cca_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -9709,7 +9709,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "tpm_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -9728,7 +9728,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "tpm_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -10377,8 +10377,27 @@
       "text": "If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, the campaign continues. (Each player whose investigator has been driven insane must choose a new investigator from the pool of available investigators.)",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Les investigateur ont perdu la campagne.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",
@@ -10683,7 +10702,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -11330,7 +11349,7 @@
       "id": "location_layout",
       "type": "location_setup",
       "text": "Suggestion de Placement des Lieux",
-      "note": "<i><b>Note</b>: One of the below locations will <b>not</b> be in play.</i>",
+      "note": "<i><b>Note</b>: L'un des lieux ci-dessous <b>ne</b> sera <b>pas</b> en jeu.",
       "horizontal": "half",
       "vertical": "normal",
       "locations": [
@@ -13033,7 +13052,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "tmm_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -14370,7 +14389,7 @@
   "campaign":
 {
   "id": "rtnotz",
-  "name": "Return to The Night of the Zealot",
+  "name": "Renouveau La Nuit de la Zélatrice",
   "position": 0,
   "version": 1,
   "campaign_log": [
@@ -14389,7 +14408,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -14564,8 +14583,8 @@
 }, "scenarios": [
 {
   "id": "return_to_the_devourer_below",
-  "scenario_name": "Return to The Devourer Below",
-  "full_name": "Scenario III: Return to The Devourer Below",
+  "scenario_name": "Renouveau Le Dévoreur du Dessous",
+  "full_name": "Chapitre III renouveau Le Dévoreur du Dessous",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -14922,11 +14941,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Main Path location into play. Shuffle the 10 copies of Arkham Woods, choose 4 of them at random, and put them into play without looking at their revealed sides. Remove the other 6 from the game. Each investigator begins play at the Main Path."
+      "text": "Mettez en jeu le lieu Chemin Principal. Mélangez les 10 exemplaires du lieu Bois d'Arkham, prenez-en 4 au hasard et mettez-les en jeu sans regarder leur côté révélé. Retirez les 6 exemplaires restants de la partie. Chaque investigateur commence la partie sur le Chemin Principal."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Ritual Site and Umôrdhoth cards aside, out of play. Flip over the \"Return to The Devourer Below\" scenario card and attach it to Umôrdhoth"
+      "text": "Mettez les cartes Site du Rituel et Umôrdhoth de côté, hors jeu. Retournez \"Renouveau Le Dévoreur du Dessous\" et attachez-la à Umôrdhoth."
     }
   ],
   "resolutions": [
@@ -14987,8 +15006,8 @@
 },
 {
   "id": "return_to_the_gathering",
-  "scenario_name": "Return to The Gathering",
-  "full_name": "Scenario I: Return to the Gathering",
+  "scenario_name": "Renouveau Le Rassemblement",
+  "full_name": "Chapitre I: Renouveau Le Rassemblement",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -15178,26 +15197,26 @@
     },
     {
       "id": "remove_cards",
-      "text": "When gathering cards, make the following changes:"
+      "text": "Quand vous réunissez les cartes, faites les changements suivants:"
     },
     {
       "id": "remove_act_1a",
       "bullet_type": "small",
-      "text": "Remove Act 1a- \"Trapped\" from the game and replace it with the new Act 1a- \"Mysterious Gateway.\""
+      "text": "Retirez de la partie l'Acte 1a- \"Piégés\" et remplacez-le par le nouvel Ate 1a- \"Mystérieux Portail\"."
     },
     {
       "id": "remove_study",
       "bullet_type": "small",
-      "text": "Remove the original Study location from the game and replace it with the new Study <i>Aberrant Gateway</i>."
+      "text": "Retire de la partie le lieu Étude d'origine et remplacez-le par le nouveau lieu Étude (<i>Portail Aberrant</i>)."
     },
     {
       "id": "remove_hallway",
       "bullet_type": "small",
-      "text": "Remove the Hallway location from the game."
+      "text": "Reetirez de la partie le lieu Vestibule d'origine.Mettez en jeu l'Étude (<i>Portail Aberrant</i>). Tous les investigateurs débutent dans l'Étude (<i>Portail Aberrant</i>)."
     },
     {
       "id": "setup_locations",
-      "text": "Put Guest Hall, Bedroom, Bathroom and the new Study <i>(Aberrant Gateway)</i> into play. Each investigator begins play in the Study <i>(Aberrant Gateway)</i>."
+      "text": "Mettez en jeu les nouveaux lieux Aile des Invités, Chambre à Coucher et Salle de Bain."
     },
     {
       "id": "location_layout",
@@ -15223,7 +15242,7 @@
     },
     {
       "id": "randomize_locations",
-      "text": "Choose one of the two Attic locations and one of the two Cellar locations at random, and set them aside, out of play. Remove the other versions of Attic and Cellar from the game."
+      "text": "Prenez au hasard l'un des deux lieux Grenier et l'un des deux lieu Cave et mettez-les de côté, hors jeu. Retirez de la partie l'autre exemplaire du Grenier et de la Cave."
     },
     {
       "id": "set_aside_locations",
@@ -15293,8 +15312,8 @@
 },
 {
   "id": "return_to_the_midnight_masks",
-  "scenario_name": "Return to The Midnight Masks",
-  "full_name": "Scenario II: Return to The Midnight Masks",
+  "scenario_name": "Renouveau Les Masques de Minuit",
+  "full_name": "Chapitre II: Renouveau Les Masques de Minuit",
   "setup": [
     "lita_condition",
     "intro_3",
@@ -15667,29 +15686,29 @@
         "cultists",
         "return_cult"
       ],
-      "text": "Set the <i>Cult of Umôrdhoth</i> encounter sets aside as a separate “Cultist deck.” Shuffle this deck and remove 3 random cards from it, without looking at them. <i>(You should be left with a 5-card Cultist deck.)</i>"
+      "text": "Quand vous construisez le deck Cultiste, ajoutez les 3 nouvelles cartes du set <i>Culte d'Umôrdhoth</i> incluses dans cette extension. Mélangez le deck Cultiste et retirez-en 3 cartes prises au hasard sanss les regarder. (<i>Vous devriez obtenir un deck Cultiste de 5 cartes.</i>)"
     },
     {
       "id": "construct_act_deck",
-      "text": "Construct the act deck using one of the two copies of Agenda 1a- \"Predator or Prey\" at random, without looking at their other sides. Remove the other version of Agenda 1a from the game."
+      "text": "Construisez le deck Intrigue en utilisant l'un des deux exemplaires de l'Intrigue 1a- \"Prédateur ou Proie?\" pris au hasard, sans regarder leur versos. Retirez de la partie l'autre exemplaire de l'Intrigue 1a."
     },
     {
       "id": "setup_locations",
-      "text": "Randomly put 1 of each of the following locations into play: Downtown, Southside, Easttown, Northside, Rivertown, and Miskatonic University. Remove the other versions of those locations from the game. Then, put Graveyeard, St. Mary's Hospital, and Your House into play."
+      "text": "Prenez au hasard l'un des deux lieux Quartier Est, l'un des deux lieux Quartier Nord, l'un des deux lieux Quartier de la Rivière et l'un des deux lieux Université Miskatonic et mettez-les en jeu. retirez de la parti les autres exemplaires du Quartier Est, du Quartier Nord, du Quartier de la Rivière et de l'Université de Miskatonic."
     },
     {
       "id": "one_cultist",
-      "text": "Search the gathered encounter sets for any 1-health [[Cultist]] enemy and spawn it at Southside.",
+      "text": "Cherchez dans le deck de rencontre un ennemi [[Cultist]] ayant 1 vie et générez-le dans le Quartier Sud.",
       "bullet_type": "small"
     },
     {
       "id": "two_cultists",
-      "text": "Search the gathered encounter sets for 2 1-health [[Cultist]] enemies. Spawn 1 at Southside and 1 at Downtown.",
+      "text": "Cherchez dans le deck de rencontre 2 ennemis [[Cultist]] ayant 1 vie. Générez-en 1 dans le Quartier Sud et 1 dans le Centre-Ville.",
       "bullet_type": "small"
     },
     {
       "id": "three_cultists",
-      "text": "Search the gathered encounter sets for 3 1-health [[Cultist]] enemies. Spawn 1 at Southside, 1 at Downtown, and 1 at the Graveyard.",
+      "text": "Cherchez dans les sets de rencontre 3 ennemis [[Cultist]] ayant 1 vie. Générez-en 1 dans le Quartier Sud, 1 dans le Centre-Ville et 1 dans le Cimetière.",
       "bullet_type": "small"
     }
   ],
@@ -17878,7 +17897,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "bsr_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -17896,7 +17915,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "bsr_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -18417,7 +18436,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "cca_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -20630,7 +20649,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "tpm_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -20649,7 +20668,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "tpm_conviction_or_doubt",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -21304,8 +21323,27 @@
       "text": "If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, the campaign continues. (Each player whose investigator has been driven insane must choose a new investigator from the pool of available investigators.)",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Les investigateur ont perdu la campagne.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",
@@ -23940,7 +23978,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "rthote2_gain_sticky_goop",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -26644,7 +26682,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "doy_cross_off_rope",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -27334,7 +27372,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "rtdoe_gain_mysterious_scepter",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -27681,7 +27719,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "wilds_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -34473,7 +34511,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "meh_the_truth",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -34541,7 +34579,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "meh_did_not_cover_up",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -34563,7 +34601,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "meh_have_clues",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -34585,7 +34623,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "meh_no_innocents_killed",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -34673,7 +34711,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "meh_did_cover_up",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -34740,7 +34778,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "meh_police_dont_believe_you",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     },
@@ -34757,7 +34795,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "meh_police_are_on_your_side",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     },
@@ -34774,7 +34812,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "meh_police_are_on_your_side",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     },
@@ -36891,12 +36929,12 @@
     {
       "id": "$input_value",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     },
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -37298,7 +37336,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "a_record_of_those_lost",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -37313,7 +37351,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "a_record_of_those_lost",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     },
@@ -43017,7 +43055,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "act_3_v2",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     },
@@ -43175,7 +43213,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "uad_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -43466,7 +43504,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "left_column",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -43558,7 +43596,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "right_column",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -44152,7 +44190,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "uad_no_investigators_alive",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -44349,7 +44387,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -44542,7 +44580,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "interconnected_campaign",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -44582,7 +44620,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "interconnected_campaign",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -44594,7 +44632,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "half_campaign",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -44642,7 +44680,7 @@
     {
       "id": "hidden",
       "type": "rule_reminder",
-      "title": "Hidden",
+      "title": "Caché",
       "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
       "bullets": [
         {
@@ -47835,7 +47873,7 @@
     {
       "id": "fix_add_three_skulls",
       "hidden": true,
-      "text": "dummy",
+      "text": "leurre",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -48734,7 +48772,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "oriab",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -48763,7 +48801,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "minar",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -48793,7 +48831,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "forbidden_lands",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -48823,7 +48861,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "timeless_realm",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -49181,7 +49219,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "someone_escaped",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     },
@@ -49193,7 +49231,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "everyone_captured",
-          "text": "dummy"
+          "text": "leurre"
         }
       ]
     }
@@ -49438,7 +49476,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "grand_design",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -50071,7 +50109,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -50276,7 +50314,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "interconnected_campaign",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -50316,7 +50354,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "interconnected_campaign",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -50328,7 +50366,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "half_campaign",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -50376,7 +50414,7 @@
     {
       "id": "hidden",
       "type": "rule_reminder",
-      "title": "Hidden",
+      "title": "Caché",
       "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.",
       "bullets": [
         {
@@ -53929,7 +53967,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "spider_queen",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -60314,7 +60352,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "doy_cross_off_rope",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -62750,7 +62788,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "wilds_add_chaos_token",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -62931,7 +62969,7 @@
     {
       "id": "hidden",
       "type": "hidden",
-      "title": "Hidden"
+      "title": "Caché"
     }
   ],
   "scenarios": [
@@ -62960,7 +62998,7 @@
   "steps": [
     {
       "id": "setup_campaign_log",
-      "text": "dummy",
+      "text": "leurre",
       "hidden": true,
       "effects": [
         {
@@ -63735,7 +63773,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "flashback_1",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -63761,7 +63799,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "flashback_2",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -63787,7 +63825,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "flashback_3",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           },
@@ -63813,7 +63851,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "flashback_4",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }
@@ -64387,7 +64425,7 @@
                 "type": "campaign_log",
                 "section": "hidden",
                 "id": "the_accusation",
-                "text": "dummy"
+                "text": "leurre"
               }
             ]
           }

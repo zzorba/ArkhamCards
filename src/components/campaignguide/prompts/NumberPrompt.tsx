@@ -121,7 +121,9 @@ export default class NumberPrompt extends React.Component<Props, State> {
     return (
       <View style={styles.promptRow}>
         <View style={styles.text}>
-          <CampaignGuideTextComponent text={prompt} />
+          <View>
+            <CampaignGuideTextComponent text={prompt} />
+          </View>
           { count !== undefined && (
             <View style={space.paddingLeftS}>
               <Text style={[typography.gameFont, { fontFamily: gameFont }, typography.bold]}>
@@ -202,5 +204,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

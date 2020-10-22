@@ -10377,8 +10377,27 @@
       "text": "Si no hay suficientes investigadores para continuar la campaña, ésta termina y los jugadores pierden. Si no es así, la campaña continúa, y cada jugador cuyo investigador se haya vuelto loco debe elegir un nuevo investigador de entre los investigadores disponibles.",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Los investigadores pierden la campaña.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",
@@ -21304,8 +21323,27 @@
       "text": "Si no hay suficientes investigadores para continuar la campaña, ésta termina y los jugadores pierden. Si no es así, la campaña continúa, y cada jugador cuyo investigador se haya vuelto loco debe elegir un nuevo investigador de entre los investigadores disponibles.",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Los investigadores pierden la campaña.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",

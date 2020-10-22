@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
@@ -375,9 +376,11 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         ) }
         { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
-            <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-              { t`You seem to be offline. Refresh Network?` }
-            </Text>
+            <View style={[space.paddingS, space.paddingLeftM ]}>
+              <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+                { t`You seem to be offline. Refresh Network?` }
+              </Text>
+            </View>
           </TouchableOpacity>
         ) }
         { hasStarterDeck && (

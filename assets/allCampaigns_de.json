@@ -10377,8 +10377,27 @@
       "text": "Falls nicht genug Ermittler übrig sind, um die Kampagne fortzusetzen, ist die Kampagne vorbei und die Spieler haben verloren. Ansonsten geht die Kampagne weiter. (Jeder Spieler, dessen Ermittler wahnsinnig geworden ist, muss einen neuen Ermittler aus dem Vorrat möglicher Ermittler wählen.)",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Die Ermittler verlieren die Kampagne!",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",
@@ -21304,8 +21323,27 @@
       "text": "Falls nicht genug Ermittler übrig sind, um die Kampagne fortzusetzen, ist die Kampagne vorbei und die Spieler haben verloren. Ansonsten geht die Kampagne weiter. (Jeder Spieler, dessen Ermittler wahnsinnig geworden ist, muss einen neuen Ermittler aus dem Vorrat möglicher Ermittler wählen.)",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "Die Ermittler verlieren die Kampagne!",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",

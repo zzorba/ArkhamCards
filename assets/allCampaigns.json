@@ -9047,8 +9047,27 @@
       "text": "If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, the campaign continues. (Each player whose investigator has been driven insane must choose a new investigator from the pool of available investigators.)",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "The investigators lose the campaign.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",
@@ -19932,8 +19951,27 @@
       "text": "If there are not enough investigators to continue the campaign, the campaign is over and the players lose. Otherwise, the campaign continues. (Each player whose investigator has been driven insane must choose a new investigator from the pool of available investigators.)",
       "type": "input",
       "input": {
-        "type": "scenario_investigators"
+        "type": "scenario_investigators",
+        "choose_none_steps": [
+          "lose_campaign"
+        ]
       }
+    },
+    {
+      "id": "lose_campaign",
+      "text": "The investigators lose the campaign.",
+      "effects": [
+        {
+          "type": "campaign_data",
+          "setting": "skip_scenario",
+          "scenario": "ptc_epilogue"
+        },
+        {
+          "type": "campaign_data",
+          "setting": "result",
+          "value": "lose"
+        }
+      ]
     },
     {
       "id": "check_took_onyx_clasp",

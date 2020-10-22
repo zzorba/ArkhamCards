@@ -648,6 +648,7 @@ export interface InvestigatorChoiceWithSuppliesInput {
 }
 export interface ScenarioInvestigatorsInput {
   type: "scenario_investigators";
+  choose_none_steps?: string[];
 }
 export interface PlayScenarioInput {
   type: "play_scenario";
