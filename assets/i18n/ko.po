@@ -5037,12 +5037,11 @@ msgstr "비용: ${ json.cost }"
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "보유하지 않은 확장에 포함된 ${ nonCollectionCount }개의 카드 확인"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "보유하지 않은 확장에 포함된 ${ nonCollectionCount }개의 카드 확인"
 
 #: src/components/cardlist/CardSearchComponent/index.tsx:274
 msgid "Hide versatile cards"
-msgstr ""
+msgstr "다재다능 카드 숨기기"
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
