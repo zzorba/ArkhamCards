@@ -116,42 +116,42 @@ export default class ScenarioButton extends React.Component<Props> {
   renderContent() {
     const { scenario } = this.props;
     const {
-      style: { gameFont, colors, typography },
+      style: { typography },
     } = this.context;
     switch (scenario.type) {
       case 'locked':
         return (
-          <Text style={[typography.gameFont, { fontFamily: gameFont, color: colors.lightText }]} numberOfLines={2}>
+          <Text style={[typography.gameFont, typography.light]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'placeholder':
         return (
           <>
-            <Text style={[typography.gameFont, { fontFamily: gameFont, color: colors.lightText }]} numberOfLines={2}>
+            <Text style={[typography.gameFont, typography.light]} numberOfLines={2}>
               { this.name() }
             </Text>
-            <Text style={[typography.small, { color: colors.lightText }]} numberOfLines={1}>
+            <Text style={[typography.small, typography.light]} numberOfLines={1}>
               { t`Coming soon` }
             </Text>
           </>
         );
       case 'completed':
         return (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]} numberOfLines={2}>
+          <Text style={typography.gameFont} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'started':
       case 'playable':
         return (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.playable]} numberOfLines={2}>
+          <Text style={[typography.gameFont, styles.playable]} numberOfLines={2}>
             { this.name() }
           </Text>
         );
       case 'skipped':
         return (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }, styles.skipped]} numberOfLines={2}>
+          <Text style={[typography.gameFont, styles.skipped]} numberOfLines={2}>
             { this.name() }
           </Text>
         );

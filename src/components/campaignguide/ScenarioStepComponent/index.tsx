@@ -133,7 +133,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
 
   render() {
     const { step, border } = this.props;
-    const { gameFont, typography, colors } = this.context;
+    const { typography, colors } = this.context;
     return (
       <CampaignGuideContext.Consumer>
         { ({ campaignInvestigators, campaignGuide, campaignId }: CampaignGuideContextType) => (
@@ -155,7 +155,7 @@ export default class ScenarioStepComponent extends React.Component<Props> {
                     <View style={styles.titleWrapper}>
                       <Text style={[
                         typography.bigGameFont,
-                        { fontFamily: gameFont, color: colors.scenarioGreen },
+                        { color: colors.scenarioGreen },
                         space.paddingTopL,
                         border ? typography.center : {},
                       ]}>

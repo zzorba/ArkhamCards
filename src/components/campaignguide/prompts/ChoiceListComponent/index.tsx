@@ -178,21 +178,16 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 
   render() {
     const { id, bulletType, text } = this.props;
+    const  { scenarioState } = this.context;
+    const inputChoices = scenarioState.stringChoices(id);
     return (
-      <ScenarioGuideContext.Consumer>
-        { ({ scenarioState }: ScenarioGuideContextType) => {
-          const inputChoices = scenarioState.stringChoices(id);
-          return (
-            <>
-              <SetupStepWrapper bulletType={bulletType}>
-                { !!text && <CampaignGuideTextComponent text={text} /> }
-              </SetupStepWrapper>
-              { this.renderChoices(inputChoices) }
-              { this.renderSaveButton(inputChoices !== undefined) }
-            </>
-          );
-        } }
-      </ScenarioGuideContext.Consumer>
+      <>
+        <SetupStepWrapper bulletType={bulletType}>
+          { !!text && <CampaignGuideTextComponent text={text} /> }
+        </SetupStepWrapper>
+        { this.renderChoices(inputChoices) }
+        { this.renderSaveButton(inputChoices !== undefined) }
+      </>
     );
   }
 }

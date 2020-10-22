@@ -236,7 +236,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
       type,
       testDifficulty,
     } = this.props;
-    const { gameFont, borderStyle, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     const {
       boosts,
       collapsed,
@@ -279,7 +279,7 @@ export default class SkillOddsRow extends React.Component<Props, State> {
         >
           <View style={styles.row}>
             <View style={[styles.skillBox, { backgroundColor: COLORS.skill[type].default }]}>
-              <Text style={[typography.bigGameFont, { fontFamily: gameFont }, styles.skillValue]}>
+              <Text style={[typography.bigGameFont, styles.skillValue]}>
                 { type !== 'wild' ? `${stat}` : '' }<ArkhamIcon name={type} size={28} color={COLORS.white} />
               </Text>
             </View>

@@ -9,10 +9,10 @@ interface Props {
 }
 
 export default function GameHeader({ text }: Props) {
-  const { gameFont, typography } = useContext(StyleContext);
+  const { typography } = useContext(StyleContext);
   return (
     <View style={space.marginTopXs}>
-      <Text style={[typography.bigGameFont, { fontFamily: gameFont }]}>
+      <Text style={typography.bigGameFont}>
         { text }
       </Text>
     </View>

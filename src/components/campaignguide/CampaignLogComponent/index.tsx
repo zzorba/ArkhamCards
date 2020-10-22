@@ -28,13 +28,13 @@ export default class CampaignLogComponent extends React.Component<Props> {
 
   renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
     const { campaignLog, campaignGuide } = this.props;
-    const { gameFont, borderStyle, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
         return (
           <View style={[styles.section, borderStyle]}>
-            <Text style={[typography.bigGameFont, { fontFamily: gameFont }]}>
+            <Text style={typography.bigGameFont}>
               { title }: { count }
             </Text>
           </View>
@@ -45,7 +45,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
         if (!section) {
           return (
             <View style={[styles.section, borderStyle]}>
-              <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline]}>
+              <Text style={[typography.bigGameFont, typography.underline]}>
                 { title }
               </Text>
             </View>
@@ -56,7 +56,6 @@ export default class CampaignLogComponent extends React.Component<Props> {
             <View style={space.paddingBottomM}>
               <Text style={[
                 typography.bigGameFont,
-                { fontFamily: gameFont },
                 typography.underline,
                 typography.center,
               ]}>
@@ -155,7 +154,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
 
   renderChaosBag() {
     const { campaignLog } = this.props;
-    const { borderStyle, gameFont, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     if (!keys(campaignLog.chaosBag).length) {
       return null;
     }
@@ -163,7 +162,7 @@ export default class CampaignLogComponent extends React.Component<Props> {
     return (
       <View style={[styles.section, borderStyle]}>
         <View style={space.paddingBottomM}>
-          <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.underline, typography.center]}>
+          <Text style={[typography.bigGameFont, typography.underline, typography.center]}>
             { t`Chaos Bag` }{ ` (${tokenCount})` }
           </Text>
         </View>

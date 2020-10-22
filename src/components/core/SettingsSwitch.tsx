@@ -16,11 +16,8 @@ interface Props {
 }
 
 export default function SettingsSwitch({ title, description, noDisableText, onValueChange, value, disabled, settingsStyle }: Props) {
-  const { gameFont, colors, typography } = useContext(StyleContext);
-  const titleStyle = settingsStyle ? typography.text : {
-    ...typography.mediumGameFont,
-    fontFamily: gameFont,
-  };
+  const { colors, typography } = useContext(StyleContext);
+  const titleStyle = settingsStyle ? typography.text : typography.mediumGameFont;
   return (
     <SwitchRow
       title={title}

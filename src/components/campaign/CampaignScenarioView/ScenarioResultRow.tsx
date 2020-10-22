@@ -47,13 +47,13 @@ export default class ScenarioResultRow extends React.Component<Props> {
       scenarioByCode,
       editable,
     } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const resolution = scenarioResult.resolution ?
       `: ${scenarioResult.resolution}` : '';
     const scenarioCard = scenarioByCode && scenarioByCode[scenarioResult.scenarioCode];
     const scenarioName = scenarioCard ? scenarioCard.name : scenarioResult.scenario;
     const content = (
-      <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+      <Text style={typography.mediumGameFont}>
         { `${scenarioName}${resolution}` }
       </Text>
     );

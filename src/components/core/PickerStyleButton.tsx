@@ -72,7 +72,7 @@ export default class PickerStyleButton extends React.Component<Props> {
       settingsStyle,
       widget,
     } = this.props;
-    const { gameFont, borderStyle, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     return (
       <View style={[
         style.defaultContainerStyle,
@@ -96,7 +96,6 @@ export default class PickerStyleButton extends React.Component<Props> {
               settingsStyle ? typography.text :
                 {
                   ...typography.mediumGameFont,
-                  fontFamily: gameFont,
                   fontWeight: '600',
                 },
               { color: colors ? colors.textColor : this.context.colors.darkText },

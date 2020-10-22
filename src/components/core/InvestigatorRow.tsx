@@ -49,7 +49,7 @@ export default function InvestigatorRow({
   children,
   noFactionIcon,
 }: Props) {
-  const { backgroundStyle, borderStyle, colors, gameFont, fontScale, typography } = useContext(StyleContext);
+  const { backgroundStyle, borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const { width } = useWindowDimensions();
   const handleOnPress = useCallback(() => {
     onPress && investigator && onPress(investigator);
@@ -84,7 +84,7 @@ export default function InvestigatorRow({
         ) }
         { !!superTitle && (
           <View style={[styles.row, space.paddingLeftM, space.paddingTopS]}>
-            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>{ superTitle }</Text>
+            <Text style={typography.mediumGameFont}>{ superTitle }</Text>
           </View>
         ) }
         <View style={[styles.row, !superTitle ? space.paddingTopS : {}]}>
@@ -101,7 +101,7 @@ export default function InvestigatorRow({
             { investigator ? (
               <Text style={[
                 superTitle ? typography.gameFont : typography.bigGameFont,
-                { fontFamily: gameFont, color: colors.darkText },
+                typography.dark,
               ]}>
                 { description ? `${investigator.name}: ${description}` : investigator.name }
               </Text>
@@ -161,7 +161,7 @@ export default function InvestigatorRow({
     bigImage,
     noFactionIcon,
     superTitle,
-    backgroundStyle, borderStyle, colors, gameFont, typography, fontScale,
+    backgroundStyle, borderStyle, colors, typography, fontScale,
   ]);
 
   if (!onPress) {

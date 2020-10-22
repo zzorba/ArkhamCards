@@ -154,13 +154,13 @@ class UpgradeDecksInput extends React.Component<Props, State> {
       campaignState,
     } = this.props;
     const {
-      style: { gameFont, borderStyle, typography },
+      style: { borderStyle, typography },
     } = this.context;
     const hasDecision = scenarioState.decision(id) !== undefined;
     return (
       <View>
         <View style={[styles.header, borderStyle]}>
-          <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.right]}>
+          <Text style={[typography.bigGameFont, typography.right]}>
             { t`Update decks with scenario results` }
           </Text>
         </View>

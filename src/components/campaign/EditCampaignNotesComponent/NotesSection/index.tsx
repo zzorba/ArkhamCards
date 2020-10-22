@@ -65,13 +65,12 @@ export default class NotesSection extends React.Component<Props> {
       isInvestigator,
       showDialog,
     } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const notes = this.notes();
     return (
       <View style={isInvestigator ? {} : styles.container}>
         <Text style={[
           typography.mediumGameFont,
-          { fontFamily: gameFont },
           typography.center,
           typography.underline,
           styles.margin,

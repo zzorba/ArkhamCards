@@ -30,13 +30,13 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
       campaign,
       name,
     } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const text = campaign.cycleCode === CUSTOM ? campaign.name : campaignNames()[campaign.cycleCode];
     return (
       <>
         <GameHeader text={text} />
         { !!name && (
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.gameFont}>
             { name }
           </Text>
         ) }
@@ -46,7 +46,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
 
   renderLastScenario() {
     const { hideScenario, campaign } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     if (hideScenario) {
       return null;
     }
@@ -56,7 +56,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
         `: ${latestScenario.resolution}` : '';
       return (
         <View style={space.marginTopXs}>
-          <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.gameFont}>
             { `${latestScenario.scenario}${resolution}` }
           </Text>
         </View>
@@ -64,7 +64,7 @@ export default class CampaignSummaryComponent extends React.Component<Props> {
     }
     return (
       <View style={space.marginTopXs}>
-        <Text style={[typography.gameFont, { fontFamily: gameFont }]}>
+        <Text style={typography.gameFont}>
           { t`Not yet started` }
         </Text>
       </View>

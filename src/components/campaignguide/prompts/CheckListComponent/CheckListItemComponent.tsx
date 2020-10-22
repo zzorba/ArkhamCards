@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
@@ -16,62 +16,52 @@ interface Props {
   editable: boolean;
 }
 
-export default class CheckListItemComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _toggle = () => {
-    const {
-      onChoiceToggle,
-      code,
-    } = this.props;
+export default function CheckListItemComponent({
+  code,
+  name,
+  color,
+  selected,
+  onChoiceToggle,
+  editable,
+}: Props) {
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const toggle = useCallback(() => {
     onChoiceToggle(code);
-  };
-
-  render() {
-    const {
-      name,
-      editable,
-      color,
-      selected,
-    } = this.props;
-    const { gameFont, borderStyle, colors, typography } = this.context;
-    if (!editable && !selected) {
-      return null;
-    }
-    return (
-      <View style={[
-        styles.row,
-        borderStyle,
-        space.paddingS,
-        space.paddingSideM,
-        color ? { backgroundColor: color } : {},
-      ]}>
-        <Text style={[
-          typography.mediumGameFont,
-          { fontFamily: gameFont },
-          styles.nameText,
-          color ? { color: 'white' } : {},
-        ]}>
-          { name }
-        </Text>
-        { editable ? (
-          <Switch
-            onValueChange={this._toggle}
-            customColor="white"
-            customTrackColor={color ? '#ccc' : undefined}
-            value={selected}
-          />
-        ) : (
-          <MaterialCommunityIcons
-            name="check"
-            size={18}
-            color={color ? 'white' : colors.darkText}
-          />
-        ) }
-      </View>
-    );
+  }, [onChoiceToggle, code]);
+  if (!editable && !selected) {
+    return null;
   }
+  return (
+    <View style={[
+      styles.row,
+      borderStyle,
+      space.paddingS,
+      space.paddingSideM,
+      color ? { backgroundColor: color } : {},
+    ]}>
+      <Text style={[
+        typography.mediumGameFont,
+        styles.nameText,
+        color ? { color: 'white' } : {},
+      ]}>
+        { name }
+      </Text>
+      { editable ? (
+        <Switch
+          onValueChange={toggle}
+          customColor="white"
+          customTrackColor={color ? '#ccc' : undefined}
+          value={selected}
+        />
+      ) : (
+        <MaterialCommunityIcons
+          name="check"
+          size={18}
+          color={color ? 'white' : colors.darkText}
+        />
+      ) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

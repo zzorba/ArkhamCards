@@ -101,11 +101,11 @@ export default class NumberPrompt extends React.Component<Props, State> {
   renderCount(count: number) {
     const { delta } = this.props;
     const {
-      style: { gameFont, typography },
+      style: { typography },
     } = this.context;
     return (
       <View style={[styles.count, space.paddingSideXs, delta ? styles.countDelta : {}]}>
-        <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center]}>
+        <Text style={[typography.bigGameFont, typography.center]}>
           { delta && count >= 0 ? '+ ' : '' }{ count }
         </Text>
       </View>
@@ -115,7 +115,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
   renderPrompt(count?: number) {
     const { prompt } = this.props;
     const {
-      style: { gameFont, typography },
+      style: { typography },
     } = this.context;
     const value = this.currentValue();
     return (
@@ -126,7 +126,7 @@ export default class NumberPrompt extends React.Component<Props, State> {
           </View>
           { count !== undefined && (
             <View style={space.paddingLeftS}>
-              <Text style={[typography.gameFont, { fontFamily: gameFont }, typography.bold]}>
+              <Text style={[typography.gameFont, typography.bold]}>
                 { count }
               </Text>
             </View>

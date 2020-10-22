@@ -21,7 +21,7 @@ export default class ResolutionStepComponent extends React.Component<Props> {
 
   render() {
     const { step } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     return (
       <ScenarioGuideContext.Consumer>
         { ({ processedScenario }: ScenarioGuideContextType) => {
@@ -39,7 +39,7 @@ export default class ResolutionStepComponent extends React.Component<Props> {
               { (!!resolution.text || resolution.steps.length > 0) && (
                 <View style={space.marginTopM}>
                   <View style={space.marginSideM}>
-                    <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+                    <Text style={typography.mediumGameFont}>
                       { resolution.title }
                     </Text>
                   </View>

@@ -146,7 +146,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
   render() {
     const { id, items, bulletType, text, checkText, button } = this.props;
     const {
-      style: { gameFont, borderStyle, typography },
+      style: { borderStyle, typography },
       scenarioState,
     } = this.context;
     const { selectedChoice } = this.state;
@@ -160,7 +160,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
           </SetupStepWrapper>
         ) }
         <View style={[styles.prompt, borderStyle]}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.mediumGameFont}>
             { checkText }
           </Text>
         </View>
@@ -182,7 +182,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
         }) }
         { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
           <View style={[styles.row, borderStyle]}>
-            <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.nameText]}>
+            <Text style={[typography.mediumGameFont, styles.nameText]}>
               { t`None` }
             </Text>
           </View>

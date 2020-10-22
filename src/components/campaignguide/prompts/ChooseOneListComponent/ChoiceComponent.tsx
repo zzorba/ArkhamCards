@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
@@ -7,7 +7,7 @@ import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import { DisplayChoice } from '@data/scenario';
 import { m, s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   choice: DisplayChoice;
@@ -19,36 +19,30 @@ interface Props {
   color?: string;
 }
 
-export default class ChoiceComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _onPress = () => {
-    const { onSelect, index } = this.props;
+export default function ChoiceComponent({
+  choice,
+  index,
+  selected,
+  editable,
+  onSelect,
+  noBullet,
+  color,
+}: Props) {
+  const { borderStyle } = useContext(StyleContext);
+  const onPress = useCallback(() => {
     onSelect(index);
-  };
+  }, [onSelect, index]);
 
-  renderTextContent() {
-    const {
-      choice,
-    } = this.props;
+  const textContent = useMemo(() => {
     return (
       <>
         { choice.text && <CampaignGuideTextComponent text={choice.text} /> }
         { choice.description && <CampaignGuideTextComponent text={choice.description} /> }
       </>
     );
-  }
+  }, [choice]);
 
-  renderContent() {
-    const {
-      selected,
-      editable,
-      index,
-      color,
-      noBullet,
-    } = this.props;
-    const { borderStyle } = this.context;
+  const content = useMemo(() => {
     if (editable) {
       return (
         <View style={[
@@ -65,7 +59,7 @@ export default class ChoiceComponent extends React.Component<Props> {
               />
             </View>
             <View style={styles.textBlock}>
-              { this.renderTextContent() }
+              { textContent }
             </View>
           </View>
         </View>
@@ -78,7 +72,7 @@ export default class ChoiceComponent extends React.Component<Props> {
             result={selected}
             bulletType="none"
           >
-            { this.renderTextContent() }
+            { textContent }
           </BinaryResult>
         </View>
       );
@@ -88,24 +82,19 @@ export default class ChoiceComponent extends React.Component<Props> {
         result={selected}
         bulletType="small"
       >
-        { this.renderTextContent() }
+        { textContent }
       </BinaryResult>
     );
-  }
+  }, [selected, editable, index, color, noBullet, textContent, borderStyle]);
 
-  render() {
-    const {
-      editable,
-    } = this.props;
-    if (editable) {
-      return (
-        <TouchableOpacity onPress={this._onPress}>
-          { this.renderContent() }
-        </TouchableOpacity>
-      );
-    }
-    return this.renderContent();
+  if (editable) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        { content }
+      </TouchableOpacity>
+    );
   }
+  return content;
 }
 
 const styles = StyleSheet.create({

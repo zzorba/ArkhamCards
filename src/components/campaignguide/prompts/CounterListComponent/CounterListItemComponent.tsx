@@ -42,10 +42,10 @@ export default class CounterListItemComponent extends React.Component<Props> {
 
   renderCount() {
     const { color } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     return (
       <View style={styles.count}>
-        <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, color ? typography.white : {}]}>
+        <Text style={[typography.bigGameFont, typography.center, color ? typography.white : {}]}>
           { this.props.value }
         </Text>
       </View>
@@ -61,7 +61,7 @@ export default class CounterListItemComponent extends React.Component<Props> {
       value,
       editable,
     } = this.props;
-    const { gameFont, borderStyle, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     return (
       <View style={[
         styles.promptRow,
@@ -69,7 +69,7 @@ export default class CounterListItemComponent extends React.Component<Props> {
         color ? { backgroundColor: color } : {},
       ]}>
         <View style={styles.column}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, color ? typography.white : {}]}>
+          <Text style={[typography.mediumGameFont, color ? typography.white : {}]}>
             { name }
           </Text>
           { editable && !!description && (

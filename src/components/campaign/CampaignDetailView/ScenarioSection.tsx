@@ -30,7 +30,7 @@ export default class ScenarioSection extends React.Component<Props> {
         scenarioResults,
       },
     } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
 
     if (scenarioResults.length === 0) {
       return (
@@ -43,7 +43,7 @@ export default class ScenarioSection extends React.Component<Props> {
       <View>
         { map(scenarioResults, ({ scenarioCode, scenario, resolution }) => {
           return (
-            <Text key={scenarioCode} style={[typography.gameFont, { fontFamily: gameFont }]}>
+            <Text key={scenarioCode} style={typography.gameFont}>
               { `${scenario}${resolution ? ` (${resolution})` : ''}` }
             </Text>
           );

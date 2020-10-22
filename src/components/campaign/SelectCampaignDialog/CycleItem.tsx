@@ -36,7 +36,6 @@ export default class CycleItem extends React.Component<Props> {
     } = this.props;
     const {
       colors,
-      gameFont,
       fontScale,
       backgroundStyle,
       borderStyle,
@@ -53,7 +52,7 @@ export default class CycleItem extends React.Component<Props> {
           />
         </View>
         <View style={styles.column}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }, styles.campaignText]}>
+          <Text style={[typography.mediumGameFont, styles.campaignText]}>
             { text }
           </Text>
           { !!description && (

@@ -456,11 +456,11 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.block}>
-        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+        <Text style={typography.mediumGameFont}>
           { t`Chaos Bag` }
         </Text>
         <View style={space.marginTopS}>
@@ -486,14 +486,13 @@ class NewCampaignView extends React.Component<Props, State> {
       componentId,
     } = this.props;
     const {
-      gameFont,
       borderStyle,
       typography,
     } = this.context;
     return (
       <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
         <View style={styles.block}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.mediumGameFont}>
             { t`Weakness Set` }
           </Text>
           <Text style={typography.small}>
@@ -547,7 +546,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderCampaignLogSection() {
-    const { gameFont, borderStyle, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     if (this.isGuided()) {
       return null;
     }
@@ -558,7 +557,7 @@ class NewCampaignView extends React.Component<Props, State> {
     return (
       <View style={[styles.underline, borderStyle]}>
         <View style={styles.block}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.mediumGameFont}>
             { t`Campaign Log` }
           </Text>
         </View>
@@ -623,7 +622,6 @@ class NewCampaignView extends React.Component<Props, State> {
       nextId,
     } = this.props;
     const {
-      gameFont,
       backgroundStyle,
       borderStyle,
       typography,
@@ -680,7 +678,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { campaignCode !== TDE && (
             <View style={[styles.underline, borderStyle]}>
               <View style={styles.block}>
-                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+                <Text style={typography.mediumGameFont}>
                   { t`Investigators` }
                 </Text>
               </View>

@@ -54,9 +54,9 @@ class CampaignScenarioView extends React.Component<Props> {
   };
 
   renderPendingScenario(scenario: Scenario, idx: number) {
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     return (
-      <Text style={[typography.gameFont, styles.disabled, { fontFamily: gameFont }]} key={idx}>
+      <Text style={[typography.gameFont, styles.disabled]} key={idx}>
         { scenario.name }
       </Text>
     );

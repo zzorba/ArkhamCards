@@ -57,13 +57,13 @@ export default class EditCountComponent extends React.Component<Props, State> {
     const {
       title,
     } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const {
       count,
     } = this.state;
     return (
       <BasicListRow>
-        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+        <Text style={typography.mediumGameFont}>
           { title }
         </Text>
         <PlusMinusButtons

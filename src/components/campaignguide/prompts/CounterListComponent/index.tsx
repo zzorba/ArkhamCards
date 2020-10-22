@@ -122,7 +122,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
   render() {
     const { id, items, countText } = this.props;
     const {
-      style: { gameFont, borderStyle, typography },
+      style: { borderStyle, typography },
       scenarioState,
     } = this.context;
     const choiceList = scenarioState.numberChoices(id);
@@ -135,7 +135,7 @@ export default class CounterListComponent extends React.Component<Props, State> 
           space.paddingTopS,
           space.paddingRightM,
         ]}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.mediumGameFont}>
             { countText }
           </Text>
         </View>
