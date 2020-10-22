@@ -3832,14 +3832,16 @@ msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } for each other "
 "investigator"
 msgstr ""
+"Coût en Expérience: ${ challengeCost } pour ${ investigator.name }, ${ xpCost } "
+"pour les autres investigateurs"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:177
 msgid "Side"
-msgstr ""
+msgstr "Secondaire"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:216
 msgid "Challenge"
-msgstr ""
+msgstr "Défi"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:221
 msgid ""
@@ -3849,35 +3851,39 @@ msgid ""
 "craft a challenging puzzle-like experience. Printable cards can be downloaded from Fantasy Flight "
 "Games under the \"Parallel Investigators\" section."
 msgstr ""
+"Les scénarios défi sont des print-and-play utilisant les produits officiels ainsi que certain "
+"cartes spécifiques. Ces scénarios sont créés avec certain prérequis, pour créer une expérience "
+"de type puzzle. Les cartes à imprimer peuvent être téléchargées deupis le site de Fantasy Flight "
+"Games dans la section \"Investigateurs parallels\"."
 
 #: src/components/campaignguide/AddSideScenarioView/DownloadParallelCardsButton.tsx:26
 msgid "Download printable cards"
-msgstr ""
+msgstr "Télécharger les cartes à imprimer"
 
 #: src/components/campaign/constants.ts:189
 msgid "Return to Threads of Fate"
-msgstr ""
+msgstr "Renouveau Les Fils du Destin"
 
 #: src/components/campaign/constants.ts:192
 msgid "Return to Heart of the Elders"
-msgstr ""
+msgstr "Renouveau Le Cœur des Anciens"
 
 #: src/components/campaign/constants.ts:197
 msgid "Return to Shattered Aeons"
-msgstr ""
+msgstr "Renouveau Paradoxes Temporels"
 
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:163
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
-msgstr ""
+msgstr "${ confirmText } <i>(inclus automatiquement)</i>"
 
 #: src/components/campaign/constants.ts:51 src/components/campaign/constants.ts:286
 msgid "Return to The Forgotten Age"
-msgstr ""
+msgstr "Renouveau La Civilisation Oubliée"
 
 #: src/components/campaign/constants.ts:185
 msgid "Return to The Untamed Wilds"
-msgstr ""
+msgstr "Renouveau Une Contrée Sauvage"
 
 #: src/components/campaign/constants.ts:187
 msgid "Return to The Doom of Eztli"
@@ -3885,55 +3891,57 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:190
 msgid "Return to The Boundary Beyond"
-msgstr ""
+msgstr "Renouveau Par-delà les Limites"
 
 #: src/components/campaign/constants.ts:193
 msgid "Return to The City of Archives"
-msgstr ""
+msgstr "Renouveau La Cité des Archives"
 
 #: src/components/campaign/constants.ts:195
 msgid "Return to The Depths of Yoth"
-msgstr ""
+msgstr "Renouveau Les Profondeurs de Yoth"
 
 #: src/components/campaign/UpgradeDecksView/NonDeckDetailsButton.tsx:71
 msgid "Save XP"
-msgstr ""
+msgstr "Enregistrer XP"
 
 #: src/components/campaign/UpgradeDecksView/UpgradeDecksList.tsx:67
 #, javascript-format
 msgid "${ xp } available experience, (${ parsedDeck.changes.spentXp } spent)"
-msgstr ""
+msgstr "${ xp } experience disponible, (${ parsedDeck.changes.spentXp } dépensée)"
 
 #: src/components/campaign/NewCampaignView/CampaignNoteSectionRow.tsx:33
 msgid " (Per Investigator)"
-msgstr ""
+msgstr " (Par Investigateur)"
 
 #: src/components/campaign/NewCampaignView/index.tsx:658
 msgid "Use app for scenario setup & resolutions"
-msgstr ""
+msgstr "Utiliser l'app pour la mise en place et les conclusions"
 
 #: src/components/campaign/NewCampaignView/index.tsx:658
 msgid "Track campaign log and resolutions manually"
-msgstr ""
+msgstr "Suivre le carnet de campagne et les conclusions manuellement"
 
 #: src/components/campaign/NewCampaignView/index.tsx:684
 msgid "Investigators"
-msgstr ""
+msgstr "Investigateurs"
 
 #: src/components/campaign/NewCampaignView/index.tsx:709
 msgid ""
 "If you encounter any problems with the campaign guide system, please let me know at "
 "arkhamcards@gmail.com."
 msgstr ""
+"Si vous rencontrez un problème avec le guide de campagne, faites le moi savoir ici: "
+"arkhamcards@gmail.com."
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:103
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
-msgstr ""
+msgstr "${ spentXp } sur ${ totalXp } dépensées"
 
 #: src/components/campaign/InvestigatorCampaignRow/index.tsx:238
 msgid "Edit Trauma"
-msgstr ""
+msgstr "Maudifier les traumatismes"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:179
 msgid ""
@@ -3941,6 +3949,9 @@ msgid ""
 "\n"
 "The deck will remain on ArkhamDB."
 msgstr ""
+"Êtes-vous sûr de supprimer ce deck de la campagne?\n"
+"\n"
+"Ce deck restera sur ArkhamDB."
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:180
 #, javascript-format
@@ -3949,26 +3960,29 @@ msgid ""
 "\n"
 "Campaign log data associated with them may be lost."
 msgstr ""
+"Êtes-vous sûr de supprimer c ${ investigator.name } de la campagne?\n"
+"\n"
+"Les entrées dans le carnet de campagne associées seront perdues."
 
 #: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:161
 msgid "Scenario or Interlude"
-msgstr ""
+msgstr "Scénario ou Interlude"
 
 #: src/components/settings/SettingsView.tsx:191
 msgid "Alphabetize guide encounter sets"
-msgstr ""
+msgstr "Ordre alphabétique des sets de rencontre"
 
 #: src/data/scenario/fixedSteps.ts:129
 msgid "Draw Weakness"
-msgstr ""
+msgstr "Piocher une faiblesse"
 
 #: src/data/scenario/fixedSteps.ts:150
 msgid "<b>Note:</b> Trauma from investigator defeat is handled during scenario resolution."
-msgstr ""
+msgstr "<b>Note:</b> Les traumatismes liés à la défaite des investigateurs sont traités lors de la résolution du scénario."
 
 #: src/data/scenario/fixedSteps.ts:158
 msgid "Record Trauma"
-msgstr ""
+msgstr "Enregistrer un traumatisme"
 
 #: src/components/campaignguide/AddSideScenarioView/index.tsx:183
 msgid ""
@@ -3980,14 +3994,19 @@ msgid ""
 "The experience required to play these scenarios will be deducted automatically at the end of the "
 "scenario."
 msgstr ""
+"Un scénario secondaire peut être joué entre deux scénarios d'une campages d'<i>Horreur à Arkham: "
+"le jeu de cartes</i>. Jouer ces scénarios coûte a chaque investigateur des points d'expériences. "
+"Faiblesse, traumatisme, expérience et récompenses resterons aquis pour le reste de la campagne. "
+"Chaque scénario secondaire ne peut être joué qu'une fois par campagne.\n"
+"L"expérience requise pour jouer ces scénario sera automatiquement déduite à la fin de ce scénario."
 
 #: src/data/scenario/fixedSteps.ts:59
 msgid "Select resolution"
-msgstr ""
+msgstr "Choisisez une conclusion"
 
 #: src/components/settings/SettingsView.tsx:210
 msgid "Contact us"
-msgstr ""
+msgstr "Contactez nous"
 
 #: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:84
 #, javascript-format
@@ -4014,11 +4033,13 @@ msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario and following interludes "
 "are completed."
 msgstr ""
+"Les scénarios secondaires nepeuvent pas être ajouter avant la fin du scénario précédent et "
+"interlude suivant."
 
 #: src/components/card/SingleCardWrapper.tsx:33
 #, javascript-format
 msgid "Missing card #${ code }. Please try updating cards from ArkhamDB in settings."
-msgstr ""
+msgstr "Carte manquante #${ code }. Essayer de mettre à jour les cartes depuis les paramètres." 
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/InvestigatorCounterInputComponent.tsx:49
 msgid "${ specialXp } resupply experience available"
@@ -4028,15 +4049,15 @@ msgstr[1] ""
 
 #: src/components/settings/BackupView.tsx:73
 msgid "Unexpected file type"
-msgstr ""
+msgstr "Type de fichier inattendu"
 
 #: src/components/settings/SafeModeView.tsx:149 src/components/settings/SettingsView.tsx:156
 msgid "Backup Data"
-msgstr ""
+msgstr "Sauvegarde des données"
 
 #: src/components/settings/BackupView.tsx:74
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
-msgstr ""
+msgstr "Cette App attend un ficher d'Arkham Cards (.acb/.json)"
 
 #: src/components/settings/BackupView.tsx:115
 msgid ""
@@ -4045,86 +4066,94 @@ msgid ""
 "\n"
 "After a backup is selected, you will be able to choose which data to import."
 msgstr ""
+"Cette fonctionalité permet de restorer les données depuis une autre appareil. Si vous étiez connecté "
+"à ArkhamDB, reconectez-vous avant d'importer des données de campagne."
 
 #: src/components/settings/BackupView.tsx:153
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. This can also be used to "
 "move them to another device."
 msgstr ""
+"Ceci vous permet de sauvegarder vos decks et campagnes locaux pour archive. Ceci permet aussi de "
+"les transférer vers un autre appareil."
 
 #: src/components/settings/BackupView.tsx:181
 msgid "Save backup"
-msgstr ""
+msgstr "Enregister la sauvegarde"
 
 #: src/components/settings/BackupView.tsx:140
 msgid "Cannot request access"
-msgstr ""
+msgstr "Ne peut pas demander l'accès"
 
 #: src/components/settings/BackupView.tsx:140
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit "
 "your System settings to adjust this permission, and try again."
 msgstr ""
+"Il semble que vous ayez précédemment refusé à Arkham Cards de lire/écrire des fichiers externes. "
+"Rendez-vousd dansles paramètre pour modifier cette autorisation, et réésayez.
 
 #: src/components/settings/MergeBackupView/DeckMergeItem.tsx:31
 #, javascript-format
 msgid "(${ investigator.name } - ${ scenarioCount } scenario"
 msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(${ investigator.name } - ${ scenarioCount } scenario"
+msgstr[1] "${ investigator.name } - ${ scenarioCount } scenarios"
 
 #: src/components/settings/MergeBackupView/index.tsx:68
 #: src/components/settings/MergeBackupView/index.tsx:71
 #: src/components/settings/MergeBackupView/index.tsx:89
 #: src/components/settings/MergeBackupView/index.tsx:93
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/components/settings/MergeBackupView/index.tsx:217
 msgid "Missing decks"
-msgstr ""
+msgstr "Deck manquant
 
 #: src/components/settings/MergeBackupView/index.tsx:218
 msgid ""
 "It seems like you have chosen to import a campaign without importing one or more non-ArkhamDB decks. "
 "The campaign can still be imported, however the deck information will be removed."
 msgstr ""
+"Il semble que vous ayez choisi d'importer une campagne sans importer de decks ArkhamDB."
+"La campagne peut toujours être importée, mais les informations sur le deck seront supprimées."
 
 #: src/components/settings/MergeBackupView/index.tsx:220
 msgid "Import anyway"
-msgstr ""
+msgstr "Importer quand même"
 
 #: src/components/settings/MergeBackupView/index.tsx:242
 #: src/components/settings/MergeBackupView/index.tsx:269
 msgid "New:"
-msgstr ""
+msgstr "Nouveau:"
 
 #: src/components/settings/MergeBackupView/index.tsx:249
 #: src/components/settings/MergeBackupView/index.tsx:278
 msgid "Updated:"
-msgstr ""
+msgstr "Modifié:"
 
 #: src/components/settings/MergeBackupView/index.tsx:256
 #: src/components/settings/MergeBackupView/index.tsx:287
 msgid "No changes:"
-msgstr ""
+msgstr "Aucun chnagement"
 
 #: src/components/settings/MergeBackupView/index.tsx:262
 #: src/components/settings/MergeBackupView/index.tsx:295
 msgid "Local version appears to be newer:"
-msgstr ""
+msgstr "La version locale semble être plus récente"
 
 #: src/components/settings/MergeBackupView/index.tsx:304
 msgid "Import selected data"
-msgstr ""
+msgstr "Importer les données sélectionnées"
 
 #: src/components/settings/MergeBackupView/index.tsx:65
 msgid "Select items to import"
-msgstr ""
+msgstr "Sélectionnez les éléments à importer"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:267
 msgid "Investigator trauma"
-msgstr ""
+msgstr "Traumatisme de l'investigateur"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:269
 msgid ""
@@ -4132,33 +4161,38 @@ msgid ""
 "\n"
 "During scenario play it can be edited using the scenario guide."
 msgstr ""
+"Vous pouvez modifier lestraumastime qu'entre les scénarios.\n"
+"\n"
+"Durnat un scénario ils peuvent l'être en utilisant le guide de scénario"
 
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:270
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
-msgstr ""
+msgstr "Les traumatismes initiaux peuvent être modifier apres la mise en place de campagne"
 
 #: src/components/settings/LanguagePicker.tsx:82
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmation"
 
 #: src/components/settings/LanguagePicker.tsx:83
 msgid ""
 "Changing app language requires downloading the translated card information from ArkhamDB. This "
 "requires network and can take some time."
 msgstr ""
+"Changer la langue de l'app nécessite le téléchargement des traductions des cartes depuis ArkhamDB. "
+"Ceci nécessite une connexion réseau et peu prendre du temps."
 
 #: src/components/card/FetchCardsGate.tsx:125 src/components/settings/LanguagePicker.tsx:86
 msgid "Download now"
-msgstr ""
+msgstr "Télécharger maintenant"
 
 #: src/components/campaignguide/prompts/UseSuppliesPrompt.tsx:109
 msgid "Doesn't get any"
-msgstr ""
+msgstr "N'a pas de"
 
 #: src/components/deck/DeckChecklistView/index.tsx:117 src/components/deck/DeckDetailView/index.tsx:568
 #: src/components/deck/DeckDetailView/index.tsx:1738
 msgid "Checklist"
-msgstr ""
+msgstr "Liste de contrôle"
 
 #: src/lib/DeckValidation.ts:256
 msgid "Limit 1 Covenant per deck."
@@ -4166,25 +4200,25 @@ msgstr ""
 
 #: src/components/card/CardFaqView.tsx:118
 msgid "Checking for FAQ"
-msgstr ""
+msgstr "Consulter la FAQ"
 
 #: src/components/card/CardFaqView.tsx:118
 msgid "No entries at this time."
-msgstr ""
+msgstr "Aucune entrée pour le moment."
 
 #: src/components/card/CardFaqView.tsx:125
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
-msgstr ""
+msgstr "Dernière mise à jour: ${ lastUpdated }"
 
 #: src/components/settings/LanguagePicker.tsx:38
 #, javascript-format
 msgid "Default (${ systemLanguage })"
-msgstr ""
+msgstr "Par défaut (${ systemLanguage })"
 
 #: src/components/card/FetchCardsGate.tsx:121
 msgid "Download language cards"
-msgstr ""
+msgstr "Télécharger les traductions de cartes"
 
 #: src/components/card/FetchCardsGate.tsx:122
 #, javascript-format
@@ -4194,61 +4228,66 @@ msgid ""
 "\n"
 "You can override your language preference for this app in Settings."
 msgstr ""
+"Voulez-vous télécharger ls modification de cartes depuis ArkhamDB pour correspondre  à la langue "
+"de votre téléphone (${ lang })?\n"
+"\n"
+"Vous pouvez modifier les préférence de langue pour cette app dans Paramètre"
 
 #: src/components/card/FetchCardsGate.tsx:124
 msgid "Not now"
-msgstr ""
+msgstr "Pas maintenant"
 
 #: src/lib/datetime.ts:73
 msgid "Updated today"
-msgstr ""
+msgstr "Mise à jour aujourd'hui"
 
 #: src/lib/datetime.ts:76
 msgid "Updated yesterday"
-msgstr ""
+msgstr "Mise à jour hier"
 
 #: src/lib/datetime.ts:80
 #, javascript-format
 msgid "Updated ${ dayOfWeek }"
-msgstr ""
+msgstr "Mise à jour ${ dayOfWeek }"
 
 #: src/lib/datetime.ts:83
 msgid "Updated ${ dateString }"
-msgstr ""
+msgstr "Mise à jour ${ dateString }"
 
 #: src/components/settings/LanguagePicker.tsx:122
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #: src/components/settings/SafeModeView.tsx:56 src/components/settings/SafeModeView.tsx:71
 msgid "Safe mode"
-msgstr ""
+msgstr "Mode sécurisé"
 
 #: src/components/settings/SafeModeView.tsx:67
 msgid "The app drew an Auto-Fail"
-msgstr ""
+msgstr "L'app à pioché un échec automatique"
 
 #: src/components/settings/SafeModeView.tsx:68
 msgid ""
 "Sorry about that. If the app is crashing on launch, you can enter 'Safe mode' to backup your data."
 msgstr ""
+"Désolé. Si l'app se plante au lancement, vous pouvez passer en "mode sécurisé" pour sauvegarder vos données."
 
 #: src/components/settings/SafeModeView.tsx:70
 msgid "Start normally"
-msgstr ""
+msgstr "Démarer normalement"
 
 #: src/components/settings/SafeModeView.tsx:154
 msgid "Cache cleared"
-msgstr ""
+msgstr "Cache vidé"
 
 #: src/components/settings/SettingsView.tsx:107 src/components/settings/SettingsView.tsx:174
 msgid "Rules"
-msgstr ""
+msgstr "Règles"
 
 #: src/components/campaignguide/EncounterCardErrataView.tsx:30
 #: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:96
 msgid "Encounter Card Errata"
-msgstr ""
+msgstr "Errata de carte rencontre"
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:67
 msgid "The following questions contain light spoilers for this scenario."
@@ -4256,16 +4295,16 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:72
 msgid "Show Spoilers"
-msgstr ""
+msgstr "Afficher les spoilers"
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:33
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:151
 msgid "Scenario FAQ"
-msgstr ""
+msgstr "Scenario FAQ"
 
 #: src/components/campaignguide/ScenarioView.tsx:212
 msgid "Interlude FAQ"
-msgstr ""
+msgstr "Interlude FAQ"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:472
 #, javascript-format
@@ -4315,199 +4354,199 @@ msgstr "Recherche de Dos de carte"
 #: src/components/settings/ThemePicker.tsx:18 src/components/settings/ThemePicker.tsx:32
 #: src/components/settings/ThemePicker.tsx:47
 msgid "Dark"
-msgstr ""
+msgstr "Sombre"
 
 #: src/components/settings/ThemePicker.tsx:18 src/components/settings/ThemePicker.tsx:28
 #: src/components/settings/ThemePicker.tsx:44
 msgid "Light"
-msgstr ""
+msgstr "Clair"
 
 #: src/components/settings/ThemePicker.tsx:24
 #, javascript-format
 msgid "Default (${ systemSchemeName })"
-msgstr ""
+msgstr "Par defaut (${ systemSchemeName })"
 
 #: src/components/settings/ThemePicker.tsx:52
 msgid "Theme"
-msgstr ""
+msgstr "Thème "
 
 #: src/components/filter/AccordionItem.tsx:80
 msgid "Enable"
-msgstr ""
+msgstr "Activer"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:319
 msgid "Basic weakness"
-msgstr ""
+msgstr "Faiblesse de base"
 
 #: src/components/deck/EditSpecialDeckCardsView.tsx:379
 msgid "Do not count towards deck size"
-msgstr ""
+msgstr "Ne compte pas dans le nombre de carte"
 
 #: src/components/campaign/CampaignDetailView/index.tsx:93
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:51
 #: src/components/deck/DeckDetailView/index.tsx:487
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: src/components/core/CardCostIcon.tsx:78
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Level: ${ level }"
-msgstr ""
+msgstr "Faction: ${ card.faction_name }, Niveau: ${ level }"
 
 #: src/components/core/CardCostIcon.tsx:82
 #, javascript-format
 msgid "Faction: ${ card.faction_name }, Cost: ${ cost }, Level: ${ level }"
-msgstr ""
+msgstr "Faction: ${ card.faction_name }, Coût: ${ cost }, Niveau: ${ level }"
 
 #: src/components/core/CardCostIcon.tsx:85
 msgid "Faction: ${ card.faction_name }"
-msgstr ""
+msgstr "Faction: ${ card.faction_name }"
 
 #: src/components/core/CardCostIcon.tsx:87
 #, javascript-format
 msgid "Encounter set: ${ card.encounter_name }"
-msgstr ""
+msgstr "Set de rencontre: ${ card.encounter_name }"
 
 #: src/components/core/EditText.tsx:44
 msgid "Cncel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:23
 msgid "Health: none"
-msgstr ""
+msgstr "Santé: aucun"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:23
 msgid "Sanity: none"
-msgstr ""
+msgstr "Santé mentale: aucune"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:25
 #, javascript-format
 msgid "Health: ${ count }"
-msgstr ""
+msgstr "Santé: ${ count }"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:25
 msgid "Sanity: ${ count }"
-msgstr ""
+msgstr "Santé mentale: ${ count }"
 
 #: src/components/core/InvestigatorStatLine.tsx:32
 #, javascript-format
 msgid "Willpower: ${ willpower }"
-msgstr ""
+msgstr "Volonté: ${ willpower }"
 
 #: src/components/core/InvestigatorStatLine.tsx:38
 msgid "Intellect: ${ intellect }"
-msgstr ""
+msgstr "Intelligence: ${ intellect }"
 
 #: src/components/core/InvestigatorStatLine.tsx:44
 #, javascript-format
 msgid "Combat: ${ combat }"
-msgstr ""
+msgstr "Lutte: ${ combat }"
 
 #: src/components/core/InvestigatorStatLine.tsx:50
 msgid "Agility: ${ agility }"
-msgstr ""
+msgstr "Agilité: ${ agility }"
 
 #: src/components/core/SearchBox.tsx:65
 msgid "Search options"
-msgstr ""
+msgstr "Option de recherche"
 
 #: src/components/cardlist/CardSearchResultsComponent/index.tsx:94
 msgid "Search in:"
-msgstr ""
+msgstr "Rechercher dans:"
 
 #: src/components/cardlist/CardSearchComponent/index.tsx:103
 msgid "Encounter Card Toggle"
-msgstr ""
+msgstr "Afficher les cartes de rencontre"
 
 #: src/components/card/CardDetailView/CardDetailComponent.tsx:83
 msgid "Show all available cards"
-msgstr ""
+msgstr "Montrer toutes les cartes disponibles"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:40
 #, javascript-format
 msgid "Fight: ${ fight }"
-msgstr ""
+msgstr "Combattre: ${ fight }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:49
 msgid "Health: ${ health } per investigator"
-msgstr ""
+msgstr "Santé: ${ health } par investigateur"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:49
 #, javascript-format
 msgid "Health: ${ health }"
-msgstr ""
+msgstr "Santé: ${ health }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:59
 msgid "Evade: ${ evade }"
-msgstr ""
+msgstr "Évasion: ${ evade }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:260
 #, javascript-format
 msgid "Willpower: ${ count }"
-msgstr ""
+msgstr "Volonté: ${ count }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:261
 msgid "Intellect: ${ count }"
-msgstr ""
+msgstr "Intelligence: ${ count }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:262
 #, javascript-format
 msgid "Combat: ${ count }"
-msgstr ""
+msgstr "Lutte: ${ count }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:263
 msgid "Agility: ${ count }"
-msgstr ""
+msgstr "Agilité: ${ count }"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:264
 #, javascript-format
 msgid "Wild: ${ count }"
-msgstr ""
+msgstr "Wild: ${ count }"
 
 #: src/components/campaign/CampaignChaosBagView.tsx:35
 msgid "Edit Chaos Bag"
-msgstr ""
+msgstr "Modifier la réserve du chaos"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:256
 msgid "Chaos bag is empty"
-msgstr ""
+msgstr "La réserve du chaos est vide"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:273
 msgid "Return Non Bless / Curse Tokens"
-msgstr ""
+msgstr "Remettre les jetons non Bénis / Malédictions"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:274
 msgid "Return All Tokens"
-msgstr ""
+msgstr "Remettre tous les jetons"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:280
 msgid "Return Tokens"
-msgstr ""
+msgstr "Remettre les jetons"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:322
 #, javascript-format
 msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr ""
+msgstr "Total (${ chaosBagResults.totalDrawnTokens })"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:331
 msgid "Bless / Curse Tokens"
-msgstr ""
+msgstr "Jeton Bénis / Malédictions"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:339
 msgid "Bless"
-msgstr ""
+msgstr "Bénis"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:347
 msgid "Curse"
-msgstr ""
+msgstr "Malédiction"
 
 #: src/components/campaign/constants.ts:257
 msgid "In Too Deep"
-msgstr ""
+msgstr "Mouillés Jusqu’au Cou"
 
 #: src/components/campaign/constants.ts:258
 msgid "Devil Reef"
-msgstr ""
+msgstr "Le Récif du Diable"
 
 #: src/components/campaign/constants.ts:260
 msgid "Horror in High Gear"
@@ -4531,15 +4570,15 @@ msgstr ""
 
 #: src/components/campaign/constants.ts:399
 msgid "Possible Suspects"
-msgstr ""
+msgstr "Suspects possibles"
 
 #: src/components/campaign/constants.ts:400
 msgid "Possible Hideouts"
-msgstr ""
+msgstr "Les cachettes possibles"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:195
 msgid "In Bag"
-msgstr ""
+msgstr "Dans le sac"
 
 #: src/components/campaign/constants.ts:256
 msgid "The Syzygy"
@@ -4547,45 +4586,47 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:135
 msgid "Coming soon"
-msgstr ""
+msgstr "Prochainement"
 
 #: src/components/settings/FontSizePicker.tsx:21
 msgid "Smaller"
-msgstr ""
+msgstr "Petit"
 
 #: src/components/settings/FontSizePicker.tsx:25
 msgid "Default"
-msgstr ""
+msgstr "Défaut"
 
 #: src/components/settings/FontSizePicker.tsx:29
 msgid "Medium"
-msgstr ""
+msgstr "moyen"
 
 #: src/components/settings/FontSizePicker.tsx:33
 msgid "Large"
-msgstr ""
+msgstr "Grand"
 
 #: src/components/settings/FontSizePicker.tsx:37
 msgid "X-Large"
-msgstr ""
+msgstr "Plus grand"
 
 #: src/components/settings/FontSizePicker.tsx:41
 msgid "XX-Large"
-msgstr ""
+msgstr "Très grand"
 
 #: src/components/settings/FontSizePicker.tsx:50
 msgid "Font Size"
-msgstr ""
+msgstr "Taille de police"
 
 #: src/components/settings/FontSizePicker.tsx:60
 msgid "This can be used to make the app font size larger, though it may impact layout on some screens."
-msgstr ""
+msgstr "Peut être utilisé pour rentre la policeplus large, mais peut impacter la mise en page."
 
 #: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:95
 msgid ""
 "Keep level ${ level } after upgrade\n"
 "Won't count towards deck size"
 msgstr ""
+"Conserver le niveau ${ level } après la mise à jour\n"
+"Ne compte pas dans la taille du deck"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:385
 msgid "Shrewd Analysis Rule"
@@ -4595,8 +4636,8 @@ msgstr ""
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cette  mise à jour coute ${ xpCost } experience"
+msgstr[1] "Ces  mises à jours coutent ${ xpCost } experience"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:392
 #, javascript-format
@@ -4609,11 +4650,17 @@ msgid_plural ""
 "\n"
 "${ upgradeCards }"
 msgstr[0] ""
+"Deux cartes vont être choisies aléatoirement parmis:\n"
+"\n"
+"${ upgradeCards }"
 msgstr[1] ""
+"Deux cartes vont être choisies aléatoirement parmis:\n"
+"\n"
+"${ upgradeCards }"
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:397
 msgid "You can edit your collection under Settings to adjust the eligible choices."
-msgstr ""
+msgstr "Vous pouvez modifier votre collection dans les paamètre pour ajouster les choix."
 
 #: src/components/deck/CardUpgradeDialog/index.tsx:443
 msgid ""
@@ -4665,18 +4712,20 @@ msgid ""
 "As new scenarios are released, I will try to update the app promptly but there may be some slight "
 "delays."
 msgstr ""
+"Cette campagne est encore en cour de sortie et le guide est incomplet (et peu contenir des erreurs)."
+"À chaque nouveau scénario, j'essaye de mettre à niveau l'app le plus rapidement possible mais..."
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:289
 msgid "Slot: ${ card.slot }"
-msgstr ""
+msgstr "Emplacement ${ card.slot }"
 
 #: src/components/settings/RulesView.tsx:138
 msgid "Search rules"
-msgstr ""
+msgstr "Règle derecherche"
 
 #: src/data/Card.ts:614 src/data/Card.ts:648 src/data/Card.ts:684 src/data/Card.ts:703
 msgid "Signature Weakness"
-msgstr ""
+msgstr "Faiblesse signature"
 
 #: src/data/Card.ts:875
 #, javascript-format
@@ -4692,7 +4741,7 @@ msgstr[1] "Montrer ${ nonCollectionCount } cartes hors collection"
 
 #: src/components/cardlist/CardSearchComponent/index.tsx:274
 msgid "Hide versatile cards"
-msgstr ""
+msgstr "Cacher les cartes polyvalentes"
 
 #: src/components/deck/DrawSimulatorView.tsx:201
 msgctxt "Draw Cards"
@@ -4708,19 +4757,19 @@ msgstr "Aucun"
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr ""
+msgstr "${ investigator.name } est devenu <b>dément</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:33
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr ""
+msgstr "${ investigator.name } est <b>mort</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:38
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr ""
+msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(leur choix)</i>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:44
 #, javascript-format
@@ -4729,53 +4778,53 @@ msgid ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:59
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:71
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:86
 #, javascript-format
 msgctxt "masculine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme physique."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes physiques."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:97
 msgctxt "masculine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes physiques."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:29
 msgctxt "feminine"
 msgid "${ investigator.name } is driven <b>insane</b>."
-msgstr ""
+msgstr "${ investigator.name } est devenue <b>démente</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:34
 msgctxt "feminine"
 msgid "${ investigator.name } is <b>killed</b>."
-msgstr ""
+msgstr "${ investigator.name } est <b>morte</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:39
 msgctxt "feminine"
 msgid "${ investigator.name } suffers 1 physical or mental trauma <i>(their choice)</i>."
-msgstr ""
+msgstr "${ investigator.name } souffre d'un traumatisme physique ou mental <i>(leur choix)</i>."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:49
 #, javascript-format
@@ -4784,39 +4833,39 @@ msgid ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
 msgid_plural ""
 "${ investigator.name } suffers ${ effect.mental } mental and ${ effect.physical } physical trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme mental et ${ effect.physical } physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux et ${ effect.physical } physiques."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:64
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ mental } mental trauma."
 msgid_plural "${ investigator.name } heals ${ mental } mental trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme mental."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes mentaux."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:76
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.mental } mental trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.mental } mental trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme mental."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes mentaux."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:90
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } heals ${ physical } physical trauma."
 msgid_plural "${ investigator.name } heals ${ physical } physical trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } se soigne ${ mental } traumatisme physique."
+msgstr[1] "${ investigator.name } se soigne ${ mental } traumatismes physiques."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:102
 #, javascript-format
 msgctxt "feminine"
 msgid "${ investigator.name } suffers ${ effect.physical } physical trauma."
 msgid_plural "${ investigator.name } suffers ${ effect.physical } physical trauma."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "${ investigator.name } souffre de ${ effect.mental } traumatisme physique."
+msgstr[1] "${ investigator.name } souffre de ${ effect.mental } traumatismes physiques."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:95
 msgctxt "Weakness Card"
