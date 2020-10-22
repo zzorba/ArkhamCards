@@ -2875,8 +2875,8 @@ msgstr[1] ""
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:51
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
-msgstr[0] "{ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
-msgstr[1] "{ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
+msgstr[0] "${ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
+msgstr[1] "${ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:34
 #, javascript-format
@@ -3091,7 +3091,7 @@ msgstr "무작위 약점 교체"
 #: src/components/campaign/CampaignDrawWeaknessDialog.tsx:323
 #, javascript-format
 msgid "Save to ${ investigator.name }’s Deck"
-msgstr "{ investigator.name }의 덱을 저장"
+msgstr "${ investigator.name }의 덱을 저장"
 
 #: src/components/campaign/CampaignSummaryComponent.tsx:68
 msgid "Not yet started"
@@ -3134,7 +3134,7 @@ msgstr "결말"
 #: src/components/campaign/EditTraumaDialog.tsx:88
 #, javascript-format
 msgid "${ investigator.firstName }’s Trauma"
-msgstr "{ investigator.firstName }의 트라우마"
+msgstr "${ investigator.firstName }의 트라우마"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:89
 msgid "Physical Trauma"
@@ -4306,8 +4306,8 @@ msgstr "연락하기"
 #, javascript-format
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
-msgstr[0] "{ count } 재보급"
-msgstr[1] "{ count } 재보급"
+msgstr[0] "${ count } 재보급"
+msgstr[1] "${ count } 재보급"
 
 #: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:88
 msgid "${ count } supply point"
