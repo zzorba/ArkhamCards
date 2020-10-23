@@ -1,6 +1,5 @@
-import React from 'react';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { setTabooSet } from './actions';
@@ -9,57 +8,29 @@ import SettingsItem from './SettingsItem';
 import { AppState, getTabooSet } from '@reducers';
 import COLORS from '@styles/colors';
 
-interface ReduxProps {
-  cardsLoading?: boolean;
-  tabooSetId?: number;
-}
 
-interface ReduxActionProps {
-  setTabooSet: (id?: number) => void;
-}
+export default function SettingsTabooPicker() {
+  const dispatch = useDispatch();
+  const onSetTabooSet = useCallback((tabooSetId?: number) => {
+    dispatch(setTabooSet(tabooSetId));
+  }, [dispatch]);
+  const tabooSetId = useSelector(getTabooSet);
+  const cardsLoading = useSelector((state: AppState) => state.cards.loading);
 
-type Props = ReduxProps & ReduxActionProps;
-
-class SettingsTabooPicker extends React.Component<Props> {
-  render() {
-    const {
-      cardsLoading,
-      tabooSetId,
-      setTabooSet,
-    } = this.props;
-    if (cardsLoading) {
-      return (
-        <SettingsItem
-          text={t`Taboo List`}
-        />
-      );
-    }
+  if (cardsLoading) {
     return (
-      <TabooSetPicker
-        color={COLORS.lightBlue}
-        tabooSetId={tabooSetId}
-        setTabooSet={setTabooSet}
-        disabled={cardsLoading}
-        description={t`Changes the default taboo list for newly created decks and search.`}
+      <SettingsItem
+        text={t`Taboo List`}
       />
     );
   }
+  return (
+    <TabooSetPicker
+      color={COLORS.lightBlue}
+      tabooSetId={tabooSetId}
+      setTabooSet={onSetTabooSet}
+      disabled={cardsLoading}
+      description={t`Changes the default taboo list for newly created decks and search.`}
+    />
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    tabooSetId: getTabooSet(state),
-    cardsLoading: state.cards.loading,
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    setTabooSet,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, unknown, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(SettingsTabooPicker);

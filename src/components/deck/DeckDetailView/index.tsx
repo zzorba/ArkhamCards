@@ -1451,18 +1451,13 @@ class DeckDetailView extends React.Component<Props, State> {
     });
   }
 
-  _renderFooter = (
-    slots?: Slots,
-    controls?: React.ReactNode
-  ) => {
+  _renderFooter = (slots?: Slots, controls?: React.ReactNode) => {
     const {
       componentId,
-      cards,
     } = this.props;
     const {
       parsedDeck,
       xpAdjustment,
-      meta,
     } = this.state;
     if (!parsedDeck) {
       return null;
@@ -1471,8 +1466,6 @@ class DeckDetailView extends React.Component<Props, State> {
       <DeckNavFooter
         componentId={componentId}
         parsedDeck={parsedDeck}
-        meta={meta}
-        cards={cards}
         xpAdjustment={xpAdjustment}
         controls={controls}
       />

@@ -36,7 +36,10 @@ export default function ChoiceListItemComponent({
 }: Props) {
   const { borderStyle, typography } = useContext(StyleContext);
 
-  const onSelect = useCallback((idx: number) => {
+  const onSelect = useCallback((idx: number | null) => {
+    if (idx === null) {
+      return;
+    }
     onChoiceChange(code, idx);
   }, [onChoiceChange, code]);
 

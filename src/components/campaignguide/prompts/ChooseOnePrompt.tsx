@@ -34,6 +34,13 @@ export default function ChooseOnePrompt({
   const { scenarioState } = useContext(ScenarioGuideContext);
   const [currentSelectedChoice, setSelectedChoice] = useState<number | undefined>();
 
+  const onChoiceChange = useCallback((index: number | null) => {
+    if (index === null) {
+      return;
+    }
+    setSelectedChoice(index);
+  }, [setSelectedChoice]);
+
   const save = useCallback(() => {
     if (currentSelectedChoice !== undefined) {
       scenarioState.setChoice(id, currentSelectedChoice);
@@ -49,7 +56,7 @@ export default function ChooseOnePrompt({
           title={selectedChoice === undefined ? (text || '') : ''}
           choices={choices}
           selectedIndex={selectedChoice}
-          onChoiceChange={setSelectedChoice}
+          onChoiceChange={onChoiceChange}
           editable={decision === undefined}
           topBorder
         />

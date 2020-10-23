@@ -36,7 +36,7 @@ function RuleComponent({ componentId, rule, level }: { componentId: string; rule
         },
       },
     });
-  }, []);
+  }, [componentId, rule]);
   return (
     <View key={rule.id} style={{ paddingLeft: s + s * (level + 1), paddingRight: m, marginTop: s }}>
       <TouchableOpacity onPress={onPress}>

@@ -28,7 +28,10 @@ export default function FactionSelectPicker({
   onChange,
 }: Props){
   const { colors } = useContext(StyleContext);
-  const onChoiceChange = (index: number) => {
+  const onChoiceChange = (index: number | null) => {
+    if (index === null) {
+      return;
+    }
     onChange(factions[index]);
   };
 

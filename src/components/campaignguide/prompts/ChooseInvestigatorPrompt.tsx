@@ -44,8 +44,12 @@ export default function ChooseInvestigatorPrompt({
   }, [investigators, scenarioInvestigators]);
 
   const onChoiceChange = useCallback((
-    index: number
+    index: number | null
   ) => {
+    if (index === null) {
+      // No choice
+      return;
+    }
     const selectedInvestigator = index === -1 ?
       undefined :
       theInvestigators[index].code;

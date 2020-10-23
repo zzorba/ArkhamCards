@@ -9,7 +9,6 @@ import {
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Pack } from '@actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
@@ -34,6 +33,8 @@ function rangeText(name: string, values: [number, number]) {
 function splitTraits(value: string): string[] {
   return filter(map(value.split('.'), t => t.trim()), t => !!t);
 }
+
+export type CardFilterProps = FilterFunctionProps;
 
 const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const {

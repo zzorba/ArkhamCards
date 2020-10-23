@@ -88,9 +88,7 @@ export default function DeckEditView({
     return (
       <DeckNavFooter
         componentId={componentId}
-        meta={meta}
         parsedDeck={pDeck}
-        cards={cards}
         xpAdjustment={xpAdjustment || 0}
         controls={controls}
       />

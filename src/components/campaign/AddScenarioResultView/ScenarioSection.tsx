@@ -102,10 +102,13 @@ class ScenarioSection extends React.Component<Props, State> {
     });
   };
 
-  _scenarioChanged = (index: number) => {
+  _scenarioChanged = (index: number | null) => {
     const {
       allScenarios,
     } = this.props;
+    if (index === null) {
+      return;
+    }
     const scenarioName = this.possibleScenarios()[index];
     this.setState({
       selectedScenario: find(

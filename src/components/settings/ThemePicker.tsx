@@ -9,6 +9,7 @@ import { getThemeOverride } from '@reducers';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import StyleContext from '@styles/StyleContext';
 import COLORS from '@styles/colors';
+import { InteractionManager } from 'react-native';
 
 export default function ThemePicker() {
   const dispatch = useDispatch();
@@ -33,7 +34,10 @@ export default function ThemePicker() {
       value: 'dark',
     },
   ];
-  const onThemeChange = (index: number) => {
+  const onThemeChange = (index: number | null) => {
+    if (index === null) {
+      return;
+    }
     dispatch(setTheme(choices[index].value));
   };
   const formatLabel = (index: number) => {

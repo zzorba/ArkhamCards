@@ -25,11 +25,11 @@ export default function SpoilersView({ componentId }: NavigationProps) {
       </Text>
     </View>
   ), [typography]);
+
   const dispatch = useDispatch();
   const setChecked = useCallback((code: string, value: boolean) => {
     dispatch(setPackSpoiler(code, value));
   }, [dispatch]);
-
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
     dispatch(setCyclePackSpoiler(cycle_code, value));
   }, [dispatch]);

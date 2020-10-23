@@ -27,7 +27,10 @@ export default function DeckSizeSelectPicker({
   onChange,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const onChoiceChange = (index: number) => {
+  const onChoiceChange = (index: number | null) => {
+    if (index === null) {
+      return;
+    }
     onChange(sizes[index]);
   };
 

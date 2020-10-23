@@ -48,7 +48,10 @@ export default function LanguagePicker() {
     }
   }, [cardsLoading]);
 
-  const onLanguageChange = useCallback((index: number) => {
+  const onLanguageChange = useCallback((index: number | null) => {
+    if (index === null) {
+      return;
+    }
     const newLang = languages()[index].value;
     const systemLang = getSystemLanguage();
     const newCardLang = newLang === 'system' ? systemLang : newLang;

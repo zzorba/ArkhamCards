@@ -484,8 +484,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
   renderFooter(slots?: Slots, controls?: React.ReactNode) {
     const {
       componentId,
-      cards,
-      meta,
     } = this.props;
     const {
       parsedDeck,
@@ -500,8 +498,6 @@ class CardUpgradeDialog extends React.Component<Props, State> {
       <DeckNavFooter
         componentId={componentId}
         parsedDeck={parsedDeck}
-        meta={meta}
-        cards={cards}
         xpAdjustment={xpAdjustment}
         controls={controls}
       />

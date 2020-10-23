@@ -20,10 +20,10 @@ interface Props {
   text: string;
   onPress?: () => void;
 }
+
+function dummyOnPress() {}
+
 export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
-  const dummyOnPress = () => {
-    // Ignore me
-  };
   const { colors, typography } = useContext(StyleContext);
   if (loading) {
     return (
