@@ -22,7 +22,7 @@ export default function WeaknessSetPackChooserComponent({
 }: OwnProps) {
   const [override, setOverride] = useToggles({ core: true });
   const packs = useSelector((state: AppState) => state.packs.all);
-  const in_collection = useSelector((state: AppState) => state.packs.in_collection || EMPTY_IN_COLLECTION)
+  const in_collection = useSelector((state: AppState) => state.packs.in_collection || EMPTY_IN_COLLECTION);
   const weaknessCards = useWeaknessCards();
   const weaknessPacks = useMemo(() => {
     const weaknessPackSet = new Set(

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { AppState, Button, Text } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
+import { Action, Dispatch, bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
@@ -17,7 +19,7 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import DeckUpgradeComponent from '@components/deck/DeckUpgradeComponent';
-import { DeckChanges } from '@components/deck/actions';
+import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
@@ -25,7 +27,7 @@ import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-interface Props {
+interface OwnProps {
   componentId: string;
   id: string;
   campaignState: CampaignStateHelper;
@@ -33,11 +35,16 @@ interface Props {
   investigator: Card;
   deck?: Deck;
   campaignLog: GuidedCampaignLog;
-  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
-  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
 }
+
+interface ReduxActionProps {
+  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
+  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+}
+
+type Props = OwnProps & ReduxActionProps;
 
 interface State {
   xp: number;
@@ -47,7 +54,7 @@ interface State {
   insane: boolean;
 }
 
-export default class UpgradeDeckRow extends React.Component<Props, State> {
+class UpgradeDeckRow extends React.Component<Props, State> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
@@ -606,3 +613,24 @@ export default class UpgradeDeckRow extends React.Component<Props, State> {
     );
   }
 }
+
+/* eslint-disable @typescript-eslint/ban-types */
+function mapStateToProps(): {} {
+  return {};
+}
+
+
+function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
+  return bindActionCreators({
+    saveDeckChanges,
+    saveDeckUpgrade,
+  } as any, dispatch);
+}
+
+/* eslint-disable @typescript-eslint/ban-types */
+export default connect<{}, ReduxActionProps, OwnProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  UpgradeDeckRow
+);

@@ -25,7 +25,7 @@ export default function DeckProblemRow({
   noFontScaling,
   fontSize,
 }: Props) {
-  const { typography } = useContext(StyleContext);
+  const { fontScale, typography } = useContext(StyleContext);
   const DECK_PROBLEM_MESSAGES: { [error in DeckProblemType]: string } = {
     too_few_cards: t`Not enough cards.`,
     too_many_cards: t`Too many cards.`,
@@ -35,28 +35,23 @@ export default function DeckProblemRow({
     investigator: t`Doesn't comply with the Investigator requirements.`,
   };
   return (
-    <StyleContext.Consumer>
-      { ({ fontScale }) => (
-        <View style={styles.problemRow}>
-          <View style={space.marginRightXs}>
-            <AppIcon
-              name="warning"
-              size={14 * (noFontScaling ? 1 : fontScale)}
-              color={color}
-            />
-          </View>
-          <Text
-            style={[typography.small, { color }, { fontSize: fontSize || 14 }, styles.problemText]}
-            numberOfLines={2}
-            ellipsizeMode="tail"
-            allowFontScaling={!noFontScaling}
-          >
-            { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
-          </Text>
-        </View>
-      ) }
-    </StyleContext.Consumer>
-
+    <View style={styles.problemRow}>
+      <View style={space.marginRightXs}>
+        <AppIcon
+          name="warning"
+          size={14 * (noFontScaling ? 1 : fontScale)}
+          color={color}
+        />
+      </View>
+      <Text
+        style={[typography.small, { color }, { fontSize: fontSize || 14 }, styles.problemText]}
+        numberOfLines={2}
+        ellipsizeMode="tail"
+        allowFontScaling={!noFontScaling}
+      >
+        { head(problem.problems) || DECK_PROBLEM_MESSAGES[problem.reason] }
+      </Text>
+    </View>
   );
 }
 

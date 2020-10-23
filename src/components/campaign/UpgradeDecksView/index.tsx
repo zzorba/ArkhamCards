@@ -168,7 +168,6 @@ class UpgradeDecksView extends React.Component<Props> {
         </View>
         <UpgradeDecksList
           componentId={componentId}
-          campaignId={id}
           lang={lang}
           investigatorData={campaign.investigatorData}
           allInvestigators={allInvestigators}

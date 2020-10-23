@@ -19,7 +19,6 @@ import StyleContext from '@styles/StyleContext';
 import { useToggles } from '@components/core/hooks';
 
 interface Props {
-  campaignId: number;
   lang: string;
   showDeckUpgradeDialog: (deck: Deck, investigator?: Card) => void;
   updateInvestigatorXp: (investigator: Card, xp: number) => void;
@@ -43,7 +42,6 @@ function experienceLine(deck: Deck, parsedDeck: ParsedDeck) {
 }
 
 export default function UpgradeDecksList({
-  campaignId,
   lang,
   showDeckUpgradeDialog,
   updateInvestigatorXp,
@@ -96,7 +94,7 @@ export default function UpgradeDecksList({
 
   const saveXp = useCallback((investigator: Card, xp: number) => {
     updateInvestigatorXp(investigator, xp);
-    updateSaved({ type: 'set', key: investigator.code, value: true});
+    updateSaved({ type: 'set', key: investigator.code, value: true });
   }, [updateInvestigatorXp, updateSaved]);
 
   const investigators = filter(

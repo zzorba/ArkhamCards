@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { filter, findIndex, map, keys } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { StringChoices } from '@actions/types';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import Card from '@data/Card';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
+import ScenarioStepContext from '../ScenarioStepContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   id: string;
@@ -22,64 +21,48 @@ interface Props {
   renderResults?: (investigator?: Card) => React.ReactNode;
 }
 
-interface State {
-  selectedInvestigator?: string;
-}
+export default function ChooseInvestigatorPrompt({
+  id,
+  title,
+  choiceId,
+  description,
+  defaultLabel,
+  required,
+  investigators,
+  investigatorToValue,
+  renderResults,
+}: Props): JSX.Element {
+  const { scenarioInvestigators, scenarioState } = useContext(ScenarioStepContext);
+  const { borderStyle } = useContext(StyleContext);
+  const [selectedInvestigator, setSelectedInvestigator] = useState(required && scenarioInvestigators.length > 0 ? scenarioInvestigators[0].code : undefined);
+  const theInvestigators = useMemo(() => {
+    const investigatorSet = investigators && new Set(investigators);
+    return filter(
+      scenarioInvestigators,
+      investigator => !investigatorSet || investigatorSet.has(investigator.code)
+    );
+  }, [investigators, scenarioInvestigators]);
 
-export default class ChooseInvestigatorPrompt extends React.Component<Props, State> {
-  static contextType = ScenarioStepContext;
-  context!: ScenarioStepContextType;
-
-  constructor(props: Props, context: ScenarioStepContextType) {
-    super(props);
-
-    const selectedInvestigator = props.required && context.scenarioInvestigators.length > 0 ?
-      context.scenarioInvestigators[0].code :
-      undefined;
-    this.state = {
-      selectedInvestigator,
-    };
-  }
-
-  _onChoiceChange = (
+  const onChoiceChange = useCallback((
     index: number
   ) => {
-    const investigators = this.investigators(this.context.scenarioInvestigators);
     const selectedInvestigator = index === -1 ?
       undefined :
-      investigators[index].code;
-    this.setState({
-      selectedInvestigator,
-    });
-  };
+      theInvestigators[index].code;
+    setSelectedInvestigator(selectedInvestigator);
+  }, [theInvestigators, setSelectedInvestigator]);
 
-  _save = () => {
-    const { id, choiceId } = this.props;
-    const { selectedInvestigator } = this.state;
-    this.context.scenarioState.setStringChoices(
+  const save = useCallback(() => {
+    scenarioState.setStringChoices(
       id,
       selectedInvestigator === undefined ? {} : {
         [selectedInvestigator]: [choiceId],
       }
     );
-  };
+  }, [id, choiceId, selectedInvestigator, scenarioState]);
 
-  renderSaveButton() {
-    const { required } = this.props;
-    const { selectedInvestigator } = this.state;
-    return (
-      <BasicButton
-        title={t`Proceed`}
-        onPress={this._save}
-        disabled={required && selectedInvestigator === undefined}
-      />
-    );
-  }
-
-  getSelectedIndex(
-    scenarioInvestigators: Card[],
-    choice?: StringChoices
-  ): number {
+  const choice = scenarioState.stringChoices(id);
+  const selectedIndex = useMemo(() => {
     if (choice !== undefined) {
       const investigators = keys(choice);
       if (!investigators.length) {
@@ -87,92 +70,55 @@ export default class ChooseInvestigatorPrompt extends React.Component<Props, Sta
       }
       const code = investigators[0];
       return findIndex(
-        scenarioInvestigators,
+        theInvestigators,
         investigator => investigator.code === code
       );
     }
     return findIndex(
-      scenarioInvestigators,
-      investigator => investigator.code === this.state.selectedInvestigator
+      theInvestigators,
+      investigator => investigator.code === selectedInvestigator
     );
-  }
-
-  investigators(scenarioInvestigators: Card[]): Card[] {
-    const {
-      investigators,
-    } = this.props;
-    const investigatorSet = investigators && new Set(investigators);
-    return filter(
-      scenarioInvestigators,
-      investigator => !investigatorSet || investigatorSet.has(investigator.code)
-    );
-  }
-
-  renderContent(
-    scenarioState: ScenarioStateHelper,
-    scenarioInvestigators: Card[]
-  ) {
-    const {
-      id,
-      description,
-      title,
-      renderResults,
-      required,
-      defaultLabel,
-      investigatorToValue,
-    } = this.props;
-    const {
-      style: { borderStyle },
-    } = this.context;
-    const choice = scenarioState.stringChoices(id);
-    const investigators = this.investigators(scenarioInvestigators);
-    const selectedIndex = this.getSelectedIndex(investigators, choice);
-    return (
-      <>
-        <View style={[
-          styles.wrapper,
-          borderStyle,
-          id !== '$lead_investigator' ? styles.topBorder : {},
-        ]}>
-          <SinglePickerComponent
-            title={title}
-            description={description}
-            defaultLabel={defaultLabel}
-            choices={
-              map(investigators, investigator => {
-                return {
-                  text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
-                  effects: [],
-                };
-              })
-            }
-            optional={!required}
-            selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
-            editable={choice === undefined}
-            onChoiceChange={this._onChoiceChange}
-            topBorder
+  }, [selectedInvestigator, choice, theInvestigators]);
+  return (
+    <>
+      <View style={[
+        styles.wrapper,
+        borderStyle,
+        id !== '$lead_investigator' ? styles.topBorder : {},
+      ]}>
+        <SinglePickerComponent
+          title={title}
+          description={description}
+          defaultLabel={defaultLabel}
+          choices={
+            map(theInvestigators, investigator => {
+              return {
+                text: investigatorToValue ? investigatorToValue(investigator) : investigator.name,
+                effects: [],
+              };
+            })
+          }
+          optional={!required}
+          selectedIndex={selectedIndex === -1 ? undefined : selectedIndex}
+          editable={choice === undefined}
+          onChoiceChange={onChoiceChange}
+          topBorder
+        />
+      </View>
+      { choice !== undefined ?
+        // TODO: need to handle no-choice here?
+        (!!renderResults && renderResults(
+          selectedIndex === -1 ? undefined : theInvestigators[selectedIndex]
+        )) : (
+          <BasicButton
+            title={t`Proceed`}
+            onPress={save}
+            disabled={required && selectedInvestigator === undefined}
           />
-        </View>
-        { choice !== undefined ?
-          // TODO: need to handle no-choice here?
-          (!!renderResults && renderResults(
-            selectedIndex === -1 ? undefined : investigators[selectedIndex]
-          )) :
-          this.renderSaveButton()
-        }
-      </>
-    );
-  }
-
-  render() {
-    return (
-      <ScenarioStepContext.Consumer>
-        { ({ scenarioState, scenarioInvestigators }: ScenarioStepContextType) => {
-          return this.renderContent(scenarioState, scenarioInvestigators);
-        } }
-      </ScenarioStepContext.Consumer>
-    );
-  }
+        )
+      }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

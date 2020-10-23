@@ -6,7 +6,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import { Pack } from '@actions/types';
@@ -15,29 +15,14 @@ import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
-import { CardFilterData } from '@lib/filters';
 import ToggleFilter from '@components/core/ToggleFilter';
-import withFilterFunctions, { FilterFunctionProps, FilterProps } from '../withFilterFunctions';
 import NavButton from '@components/core/NavButton';
-import { CARD_FACTION_CODES } from '@app_constants';
-import { getAllPacks, AppState } from '@reducers';
+import { getAllPacks } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { NavigationProps } from '@components/nav/types';
-import useFilterFunctions from '../useFilterFunctions';
-
-interface ReduxProps {
-  allPacks: Pack[];
-}
-
-interface OwnProps {
-  // cardData: CardFilterData;
-}
-
-export type CardFilterProps = FilterFunctionProps & OwnProps;
-
-type Props = OwnProps & ReduxProps & FilterProps;
+import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 
 function rangeText(name: string, values: [number, number]) {
   if (values[0] === values[1]) {
@@ -49,6 +34,7 @@ function rangeText(name: string, values: [number, number]) {
 function splitTraits(value: string): string[] {
   return filter(map(value.split('.'), t => t.trim()), t => !!t);
 }
+
 const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
   const {
     filters,

@@ -376,7 +376,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         ) }
         { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
-            <View style={[space.paddingS, space.paddingLeftM ]}>
+            <View style={[space.paddingS, space.paddingLeftM]}>
               <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
                 { t`You seem to be offline. Refresh Network?` }
               </Text>

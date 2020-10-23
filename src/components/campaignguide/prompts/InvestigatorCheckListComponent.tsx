@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { map, filter, findIndex } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CheckListComponent from './CheckListComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
-import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
+import CampaignGuideContext from '../CampaignGuideContext';
+import ScenarioStepContext from '../ScenarioStepContext';
 import Card from '@data/Card';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   id: string;
@@ -20,101 +21,77 @@ interface Props {
   filter?: (investigator: Card) => boolean;
 }
 
-export default class InvestigatorCheckListComponent extends React.Component<Props> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
+export default function InvestigatorCheckListComponent({
+  id,
+  choiceId,
+  checkText,
+  defaultState,
+  min,
+  max,
+  allowNewDecks,
+  investigators: investigatorCodes,
+  filter: filterCard,
+}: Props) {
+  const { campaignState, campaignInvestigators } = useContext(CampaignGuideContext);
+  const showAddDeckDialog = useCallback(() => {
+    campaignState.showChooseDeck();
+  }, [campaignState]);
 
-  _showAddDeckDialog = () => {
-    this.context.campaignState.showChooseDeck();
-  };
-
-  _filterInvestigator = (investigator: Card): boolean => {
-    const { investigators, filter } = this.props;
-    if (investigators) {
+  const filterInvestigator = useCallback((investigator: Card): boolean => {
+    if (investigatorCodes) {
       return findIndex(
-        investigators,
+        investigatorCodes,
         code => code === investigator.code
       ) !== -1;
     }
-    if (filter) {
-      return filter(investigator);
+    if (filterCard) {
+      return filterCard(investigator);
     }
     return true;
-  };
+  }, [investigatorCodes, filterCard]);
 
-  addDeckButton() {
-    const {
-      allowNewDecks,
-    } = this.props;
+  const addDeckButton = useMemo(() => {
     if (!allowNewDecks) {
       return null;
     }
     return (
       <BasicButton
-        onPress={this._showAddDeckDialog}
+        onPress={showAddDeckDialog}
         title={t`Add new investigator`}
       />
     );
-  }
+  }, [allowNewDecks, showAddDeckDialog]);
+  const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
+  const investigators = useMemo(() => {
+    console.log('Recomputing investigators which changed.');
+    return filter(
+      allowNewDecks ?
+        filter(campaignInvestigators, investigator => !campaignLog.isEliminated(investigator)) :
+        scenarioInvestigators,
+      filterInvestigator);
+  }, [allowNewDecks, campaignInvestigators, campaignLog, scenarioInvestigators, filterInvestigator]);
 
-  renderContent(allInvestigators: Card[]) {
-    const {
-      id,
-      choiceId,
-      checkText,
-      min,
-      max,
-      allowNewDecks,
-      defaultState,
-    } = this.props;
-    const {
-      style: { colors },
-    } = this.context;
-    const investigators = filter(allInvestigators, this._filterInvestigator);
-    return (
-      <CheckListComponent
-        id={id}
-        choiceId={choiceId}
-        checkText={checkText}
-        defaultState={defaultState}
-        items={map(
-          investigators,
-          investigator => {
-            return {
-              code: investigator.code,
-              name: investigator.name,
-              color: colors.faction[investigator.factionCode()].background,
-            };
-          })
-        }
-        button={this.addDeckButton()}
-        fixedMin={allowNewDecks}
-        min={min}
-        max={max}
-      />
-    );
-  }
-
-  render() {
-    const { allowNewDecks } = this.props;
-    return (
-      <CampaignGuideContext.Consumer>
-        { ({ campaignInvestigators }: CampaignGuideContextType) => {
-          return (
-            <ScenarioStepContext.Consumer>
-              { ({ scenarioInvestigators, campaignLog }: ScenarioStepContextType) => {
-                return this.renderContent(
-                  allowNewDecks ?
-                    filter(
-                      campaignInvestigators,
-                      investigator => !campaignLog.isEliminated(investigator)
-                    ) : scenarioInvestigators
-                );
-              } }
-            </ScenarioStepContext.Consumer>
-          );
-        } }
-      </CampaignGuideContext.Consumer>
-    );
-  }
+  const { colors } = useContext(StyleContext);
+  return (
+    <CheckListComponent
+      id={id}
+      choiceId={choiceId}
+      checkText={checkText}
+      defaultState={defaultState}
+      items={map(
+        investigators,
+        investigator => {
+          return {
+            code: investigator.code,
+            name: investigator.name,
+            color: colors.faction[investigator.factionCode()].background,
+          };
+        })
+      }
+      button={addDeckButton}
+      fixedMin={allowNewDecks}
+      min={min}
+      max={max}
+    />
+  );
 }

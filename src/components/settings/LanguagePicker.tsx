@@ -1,36 +1,17 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { findIndex, map } from 'lodash';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { fetchCards, setLanguageChoice } from '@components/card/actions';
-import Database from '@data/Database';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import DatabaseContext from '@data/DatabaseContext';
 import { getLangPreference, AppState } from '@reducers';
 import { getSystemLanguage, localizedName, ALL_LANGUAGES } from '@lib/i18n';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 
-interface ReduxProps {
-  lang: string;
-  useSystemLang: boolean;
-  cardsLoading?: boolean;
-  cardsError?: string;
-}
-
-interface ReduxActionProps {
-  fetchCards: (db: Database, cardLang: string, langChoice: string) => void;
-  setLanguageChoice: (langChoice: string) => void;
-}
-
-type Props = ReduxProps & ReduxActionProps;
-
-interface State {
-  tempLang?: number;
-}
 function languages() {
   const systemLang = getSystemLanguage();
   const systemLanguage = localizedName(systemLang);
@@ -45,35 +26,30 @@ function languages() {
   ];
 }
 
-class LanguagePicker extends React.Component<Props, State> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
-  state: State = {};
-
-  _formatLabel = (idx: number) => {
-    if (idx === 0) {
-      const systemLang = getSystemLanguage();
-      return localizedName(systemLang);
-    }
-    return languages()[idx].label;
-  };
-
-  componentDidUpdate(prevProps: Props) {
-    if (!this.props.cardsLoading && prevProps.cardsLoading && this.state.tempLang) {
-      this.setState({
-        tempLang: undefined,
-      });
-    }
+function formatLabel(idx: number) {
+  if (idx === 0) {
+    const systemLang = getSystemLanguage();
+    return localizedName(systemLang);
   }
+  return languages()[idx].label;
+}
 
-  _onLanguageChange = (index: number) => {
+export default function LanguagePicker() {
+  const { db } = useContext(DatabaseContext);
+  const dispatch = useDispatch();
+  const [tempLang, setTempLang] = useState<number | undefined>();
+  const cardsLoading = useSelector((state: AppState) => state.cards.loading);
+  const useSystemLang = useSelector((state: AppState) => state.settings.lang === 'system');
+  const lang = useSelector(getLangPreference);
+
+  useEffect(() => {
+    if (!cardsLoading && tempLang !== undefined) {
+      setTempLang(undefined);
+    }
+  }, [cardsLoading]);
+
+  const onLanguageChange = useCallback((index: number) => {
     const newLang = languages()[index].value;
-    const {
-      lang,
-      fetchCards,
-      setLanguageChoice,
-    } = this.props;
     const systemLang = getSystemLanguage();
     const newCardLang = newLang === 'system' ? systemLang : newLang;
     if (newCardLang !== lang) {
@@ -85,14 +61,8 @@ class LanguagePicker extends React.Component<Props, State> {
             {
               text: t`Download now`,
               onPress: () => {
-                this.setState({
-                  tempLang: index,
-                });
-                fetchCards(
-                  this.context.db,
-                  newCardLang,
-                  newLang
-                );
+                setTempLang(index);
+                dispatch(fetchCards(db, newCardLang, newLang));
               },
             },
             {
@@ -103,66 +73,37 @@ class LanguagePicker extends React.Component<Props, State> {
         );
       }, 200);
     } else {
-      setLanguageChoice(newLang);
+      dispatch(setLanguageChoice(newLang));
     }
-  };
+  }, [lang, dispatch, setTempLang, db]);
 
-  render() {
-    const {
-      cardsLoading,
-      lang,
-      useSystemLang,
-    } = this.props;
-    const { tempLang } = this.state;
-    const allLanguages = languages();
-    return (
-      <StyleContext.Consumer>
-        { ({ colors }) => (
-          <SinglePickerComponent
-            title={t`Language`}
-            description={t`Note: not all cards have translations available.`}
-            onChoiceChange={this._onLanguageChange}
-            selectedIndex={tempLang !== undefined ? tempLang : findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
-            choices={map(allLanguages, lang => {
-              return {
-                text: lang.label,
-              };
-            })}
-            colors={{
-              modalColor: COLORS.lightBlue,
-              modalTextColor: '#FFF',
-              backgroundColor: colors.background,
-              textColor: colors.darkText,
-            }}
-            editable={!cardsLoading}
-            settingsStyle
-            noBorder
-            hideWidget
-            formatLabel={this._formatLabel}
-          />
-        ) }
-      </StyleContext.Consumer>
-    );
-  }
+  const allLanguages = languages();
+  return (
+    <StyleContext.Consumer>
+      { ({ colors }) => (
+        <SinglePickerComponent
+          title={t`Language`}
+          description={t`Note: not all cards have translations available.`}
+          onChoiceChange={onLanguageChange}
+          selectedIndex={tempLang !== undefined ? tempLang : findIndex(allLanguages, x => useSystemLang ? x.value === 'system' : x.value === lang)}
+          choices={map(allLanguages, lang => {
+            return {
+              text: lang.label,
+            };
+          })}
+          colors={{
+            modalColor: COLORS.lightBlue,
+            modalTextColor: '#FFF',
+            backgroundColor: colors.background,
+            textColor: colors.darkText,
+          }}
+          editable={!cardsLoading}
+          settingsStyle
+          noBorder
+          hideWidget
+          formatLabel={formatLabel}
+        />
+      ) }
+    </StyleContext.Consumer>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    cardsLoading: state.cards.loading,
-    cardsError: state.cards.error || undefined,
-    useSystemLang: state.settings.lang === 'system',
-    lang: getLangPreference(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    fetchCards,
-    setLanguageChoice,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, unknown, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(LanguagePicker);

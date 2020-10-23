@@ -132,7 +132,6 @@ class AddWeaknessEffectComponent extends React.Component<Props> {
             weaknessCards={weaknessCards}
             choices={chosenTraits}
             save={this._saveTraits}
-            scenarioState={scenarioState}
           />
         ) }
         { (!effect.select_traits || chosenTraits !== undefined) && (

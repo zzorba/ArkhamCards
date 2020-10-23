@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -11,12 +11,8 @@ interface Props {
   componentId: string;
 }
 
-export default class LocationSetupButton extends React.Component<Props> {
-  _press = () => {
-    const {
-      componentId,
-      step,
-    } = this.props;
+export default function LocationSetupButton({ componentId, step }: Props) {
+  const onPress = useCallback(() => {
     Navigation.push<LocationSetupProps>(componentId, {
       component: {
         name: 'Guide.LocationSetup',
@@ -35,12 +31,8 @@ export default class LocationSetupButton extends React.Component<Props> {
         },
       },
     });
-  };
-
-  render() {
-    const { step } = this.props;
-    return (
-      <BasicButton title={step.text} onPress={this._press} />
-    );
-  }
+  }, [componentId, step]);
+  return (
+    <BasicButton title={step.text} onPress={onPress} />
+  );
 }

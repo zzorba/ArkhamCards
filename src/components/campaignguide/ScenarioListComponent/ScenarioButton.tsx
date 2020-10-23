@@ -13,7 +13,6 @@ import NavButton from '@components/core/NavButton';
 import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { ProcessedScenario } from '@data/scenario';
-import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
 
 interface Props {

@@ -178,7 +178,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
 
   render() {
     const { id, bulletType, text } = this.props;
-    const  { scenarioState } = this.context;
+    const { scenarioState } = this.context;
     const inputChoices = scenarioState.stringChoices(id);
     return (
       <>

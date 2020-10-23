@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { Linking } from 'react-native';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';

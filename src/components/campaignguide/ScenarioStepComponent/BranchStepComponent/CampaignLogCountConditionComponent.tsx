@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { msgid, ngettext, t } from 'ttag';
 
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import SetupStepWrapper from '../../SetupStepWrapper';
-import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
+import CampaignGuideContext from '../../CampaignGuideContext';
 import {
   BranchStep,
   CampaignLogCountCondition,
 } from '@data/scenario/types';
-import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 
 interface Props {
@@ -18,9 +17,10 @@ interface Props {
 }
 
 // TODO: fix this.
-export default class CampaignLogCountConditionComponent extends React.Component<Props> {
-  getPrompt(campaignGuide: CampaignGuide, count: number) {
-    const { condition, campaignLog } = this.props;
+// BUT IN WHAT WAY PAST DANIEL!
+export default function CampaignLogCountConditionComponent({ step, condition, campaignLog }: Props) {
+  const { campaignGuide } = useContext(CampaignGuideContext);
+  const getPrompt = useCallback((count: number) => {
     const logEntry = campaignGuide.logEntry(condition.section, condition.id);
     switch (logEntry.type) {
       case 'section_count':
@@ -43,26 +43,17 @@ export default class CampaignLogCountConditionComponent extends React.Component<
       default:
         return 'Some other count condition';
     }
-  }
+  }, [campaignGuide, condition, campaignLog]);
 
-  render(): React.ReactNode {
-    const { step, condition, campaignLog } = this.props;
-    if (condition.section === 'hidden') {
-      return null;
-    }
-    return (
-      <CampaignGuideContext.Consumer>
-        { ({ campaignGuide }: CampaignGuideContextType) => {
-          const count = campaignLog.count(condition.section, condition.id);
-          return (
-            <SetupStepWrapper bulletType={step.bullet_type}>
-              <CampaignGuideTextComponent
-                text={step.text || this.getPrompt(campaignGuide, count)}
-              />
-            </SetupStepWrapper>
-          );
-        } }
-      </CampaignGuideContext.Consumer>
-    );
+  if (condition.section === 'hidden') {
+    return null;
   }
+  const count = campaignLog.count(condition.section, condition.id);
+  return (
+    <SetupStepWrapper bulletType={step.bullet_type}>
+      <CampaignGuideTextComponent
+        text={step.text || getPrompt(count)}
+      />
+    </SetupStepWrapper>
+  );
 }

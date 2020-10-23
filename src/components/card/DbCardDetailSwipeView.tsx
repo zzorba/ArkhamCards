@@ -1,20 +1,17 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
-  FlatList,
   Linking,
   StyleSheet,
   Platform,
   View,
   useWindowDimensions,
-  InteractionManager,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import { t } from 'ttag';
-import { find, filter, flatMap, initial, map, slice } from 'lodash';
-import Swiper from 'react-native-swiper';
+import { find, filter, map, slice } from 'lodash';
 
 import { FOOTER_HEIGHT } from '@components/DeckNavFooter/constants';
 import CardDetailComponent from './CardDetailView/CardDetailComponent';

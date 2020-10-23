@@ -3,7 +3,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
@@ -11,10 +10,8 @@ import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
 import { Pack } from '@actions/types';
 import { setInCollection, setCycleInCollection } from '@actions';
-import { getAllPacks, getPacksInCollection, AppState } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
-import { Collection } from 'typeorm';
-
+import { getAllPacks, getPacksInCollection } from '@reducers';
+import StyleContext from '@styles/StyleContext';
 
 interface ReduxProps {
   packs: Pack[];
