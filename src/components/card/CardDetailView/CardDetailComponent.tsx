@@ -73,16 +73,18 @@ export default class CardDetailComponent extends React.Component<Props> {
     }
     return (
       <View style={styles.investigatorContent}>
-        <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
-          <Text style={[typography.large, typography.center, typography.uppercase]}>
-            { t`Deckbuilding` }
-          </Text>
+        <View style={styles.maxWidth}>
+          <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
+            <Text style={[typography.large, typography.center, typography.uppercase]}>
+              { t`Deckbuilding` }
+            </Text>
+          </View>
+          <ArkhamButton
+            icon="deck"
+            title={t`Show all available cards`}
+            onPress={this._showInvestigatorCards}
+          />
         </View>
-        <ArkhamButton
-          icon="deck"
-          title={t`Show all available cards`}
-          onPress={this._showInvestigatorCards}
-        />
         <SignatureCardsComponent
           componentId={componentId}
           investigator={card}
@@ -121,18 +123,20 @@ export default class CardDetailComponent extends React.Component<Props> {
     }
 
     return (
-      <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
-        <TwoSidedCardComponent
-          componentId={componentId}
-          card={card}
-          width={width}
-          simple={!!simple}
-        />
-        <BondedCardsComponent
-          componentId={componentId}
-          cards={[card]}
-          width={width}
-        />
+      <View key={card.code} style={[styles.viewContainer, backgroundStyle]}>
+        <View style={{ width }}>
+          <TwoSidedCardComponent
+            componentId={componentId}
+            card={card}
+            width={width}
+            simple={!!simple}
+          />
+          <BondedCardsComponent
+            componentId={componentId}
+            cards={[card]}
+            width={width}
+          />
+        </View>
         { this.renderInvestigatorCardsLink() }
       </View>
     );
@@ -145,6 +149,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   investigatorContent: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  maxWidth: {
     width: '100%',
     maxWidth: 768,
   },
