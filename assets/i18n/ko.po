@@ -102,7 +102,7 @@ msgstr "${ things[0] } 와 ${ things[1] }"
 #: src/lib/stringHelper.ts:12
 #, javascript-format
 msgid "${ listOfThings }, and ${ lastThing }"
-msgstr "${ listOfThings }, 그리고 ${ lastThing }"
+msgstr "${ listOfThings }, ${ lastThing }"
 
 #: src/data/Card.ts:445
 #, javascript-format
@@ -459,7 +459,7 @@ msgstr "취소"
 
 #: src/data/scenario/fixedSteps.ts:189
 msgid "In your Campaign Log, record that:"
-msgstr "당신의 캠페인 기록지에, 다음을 기록합니다."
+msgstr "당신의 캠페인 기록지에 다음을 기록합니다."
 
 #: src/data/scenario/fixedSteps.ts:207
 msgid "Choose lead investigator"
@@ -475,7 +475,7 @@ msgstr "생존"
 
 #: src/data/scenario/fixedSteps.ts:266
 msgid "Resigned"
-msgstr "은퇴"
+msgstr "탈출"
 
 #: src/data/scenario/fixedSteps.ts:336
 msgid "Investigator status at end of scenario:"
@@ -484,7 +484,7 @@ msgstr "시나리오 종료시 조사자 상태"
 #: src/data/scenario/fixedSteps.ts:386
 #, javascript-format
 msgid "Proceed to <b>${ nextScenarioName }</b>."
-msgstr "<b>${ nextScenarioName }</b>로 진행합니다."
+msgstr "<b>${ nextScenarioName }</b>으로 진행합니다."
 
 #: src/components/campaign/CampaignEditWeaknessDialog.tsx:36
 #: src/components/weakness/EditAssignedWeaknessComponent.tsx:31
@@ -1048,7 +1048,7 @@ msgstr "필터"
 
 #: src/components/filter/CardFilterView/index.tsx:137
 msgid "Packs: All"
-msgstr "팩: 모두"
+msgstr "팩: 전부"
 
 #: src/components/filter/CardFilterView/index.tsx:167
 #, javascript-format
@@ -1065,7 +1065,7 @@ msgstr "조사자당 체력"
 
 #: src/components/filter/CardFilterView/index.tsx:235
 msgid "Enemies: All"
-msgstr "적: 모두"
+msgstr "적: 전부"
 
 #: src/components/filter/CardFilterView/index.tsx:238
 #, javascript-format
@@ -1078,7 +1078,7 @@ msgstr "고정 단서"
 
 #: src/components/filter/CardFilterView/index.tsx:280
 msgid "Locations: All"
-msgstr "장소: 모두"
+msgstr "장소: 전부"
 
 #: src/components/filter/CardFilterView/index.tsx:283
 #, javascript-format
@@ -1478,7 +1478,7 @@ msgstr "덱의 이름을 입력해주십시오."
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:57
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:343
 msgid "Required Cards"
-msgstr "필요한 카드"
+msgstr "필요 카드"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:292
 #: src/components/deck/NewDeckOptionsDialog/index.tsx:359
@@ -1533,7 +1533,7 @@ msgstr "캠페인"
 
 #: src/components/deck/DeckProgressComponent/index.tsx:111
 msgid "Upgrade Deck with XP"
-msgstr "경험치를 통해 덱 향상하기"
+msgstr "경험치를 소비해 덱 향상하기"
 
 #: src/components/deck/DeckDetailView/index.tsx:1611
 #: src/components/deck/DeckDetailView/index.tsx:1780
@@ -1989,12 +1989,12 @@ msgstr "다른 것 추가"
 #: src/components/core/PackListComponent/PackRow.tsx:83
 #. This is the lead pack in a cycle.
 msgid "Mark entire cycle?"
-msgstr "모든 사이클을 체크하시겠습니까?"
+msgstr "사이클 전체를 체크하시겠습니까?"
 
 #: src/components/core/PackListComponent/PackRow.tsx:83
 #. This is the lead pack in a cycle.
 msgid "Clear entire cycle?"
-msgstr "모든 사이클을 체크 해제하시겠습니까?"
+msgstr "사이클 전체를 체크 해제하시겠습니까?"
 
 #: src/components/core/PackListComponent/PackRow.tsx:85
 #. This is the lead pack in a cycle.
@@ -2023,7 +2023,7 @@ msgstr "네"
 #: src/components/campaign/constants.ts:281
 #: src/components/core/PackListComponent/index.tsx:51
 msgid "The Dunwich Legacy"
-msgstr ""
+msgstr "던위치의 유산"
 
 #: src/components/campaign/constants.ts:283
 #: src/components/core/PackListComponent/index.tsx:52
@@ -2402,7 +2402,7 @@ msgstr "시나리오"
 #: src/components/campaignguide/CampaignGuideView.tsx:160
 #: src/components/campaignguide/LinkedCampaignGuideView.tsx:207
 msgid "Log"
-msgstr "기록"
+msgstr "기록지"
 
 #: src/components/campaignguide/CardSelectorView.tsx:142
 msgid "Show story assets from other campaigns"
@@ -2688,7 +2688,7 @@ msgstr "결말"
 
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:175
 msgid "Start playing the scenario now."
-msgstr "시나리오를 지금 바로 시작합니다"
+msgstr "이제 시나리오를 시작합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:45
 msgid "Who will add ${ card.name } to their deck?"
@@ -2701,12 +2701,12 @@ msgstr "당신의 캠페인 기록지 중 \"${ section }\" 항목에, ${ card.na
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:40
 msgid "In your Campaign Log, record that <i>${ text }</i>"
-msgstr "당신의 캠페인 기록지에, <i>${ text }</i>라고 기록합니다."
+msgstr "당신의 캠페인 기록지에 <i>${ text }</i>라고 기록합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:57
 #, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
-msgstr "당신의 캠페인 기록지에, <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
+msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:58
 #, javascript-format
@@ -2719,7 +2719,7 @@ msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:64
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
-msgstr "당신의 캠페인 기록지에, <i>${ logEntry.text }</i>라고 기록합니다."
+msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i>라고 기록합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:65
 #, javascript-format
@@ -2787,10 +2787,10 @@ msgid_plural ""
 "logEntry.section }'"
 msgstr[0] ""
 "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 마크가 "
-"${ count }개 이하이므로"
+"${ count }개 이하이므로 다음 지시를 수행합니다."
 msgstr[1] ""
 "캠페인 기록지를 확인합니다. '${ logEntry.section }' 아래 표시된 마크가 "
-"${ count }개 이하이므로"
+"${ count }개 이하이므로 다음 지시를 수행합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:34
 msgid ""
@@ -2809,7 +2809,7 @@ msgstr[1] ""
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogCountConditionComponent.tsx:41
 #, javascript-format
 msgid "Check Campaign Log. Because <i>${ entry }</i>"
-msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i> 항목이 있으므로"
+msgstr "캠페인 기록지를 확인합니다. <i>${ entry }</i> 항목이 있으므로, 다음 지시를 수행합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogSectionExistsConditionComponent.tsx:27
 msgid "Check Campaign Log, is the <i>${ logEntry.section }</i> not crossed off?"
@@ -2824,10 +2824,10 @@ msgid_plural ""
 "Since ${ list } all have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자는 ${ supplyName } 보급품을 가지고 있으므로, 해당 조사자들은"
+"${ list } 조사자는 ${ supplyName } 보급품을 가지고 있으므로, 해당 조사자는 "
 "<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 msgstr[1] ""
-"${ list } 모든 조사자가 ${ supplyName } 보급품을 가지고 있으므로, 모든 조사자들은"
+"${ list } 모든 조사자가 ${ supplyName } 보급품을 가지고 있으므로, 모든 조사자는 "
 "<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CheckSuppliesConditionComponent.tsx:43
@@ -2839,10 +2839,10 @@ msgid_plural ""
 "Since ${ list } do not have a ${ supplyName }, they must read <b>${ "
 "sectionName }</b>."
 msgstr[0] ""
-"${ list } 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 해당 조사자들은"
+"${ list } 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 해당 조사자는"
 "<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 msgstr[1] ""
-"${ list } 모든 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 모든 조사자들은"
+"${ list } 모든 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 모든 조사자는"
 "<b>${ sectionName }</b> 항목을 읽어야만 합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:51
@@ -2863,13 +2863,13 @@ msgstr "\"${ cardName }\" 카드를 덱에 넣은 조사자가 쓰러졌습니�
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:38
 #, javascript-format
 msgid "For each investigator with \"${ cardName }\" in their deck:"
-msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자들은: "
+msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자는: "
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/ScenarioDataConditionComponent.tsx:28
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
-msgstr[0] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있으므로:"
-msgstr[1] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있으므로:"
+msgstr[0] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있으므로, 다음 지시를 수행합니다."
+msgstr[1] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있으므로, 다음 지시를 수행합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/TraumaConditionComponent.tsx:24
 msgid "If the lead investigator was <b>killed</b>."
@@ -2893,11 +2893,12 @@ msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
 "Campaign Log."
 msgstr ""
-"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면."
+"당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, "
+"다음 지시를 수행합니다."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:44
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
-msgstr "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면"
+msgstr "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면, 다음 지시를 수행합니다."
 
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:52
 msgid "Choose Side-Scenario"
@@ -2990,7 +2991,7 @@ msgstr "조사자 제거"
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:317
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
 msgid "Add Investigator"
-msgstr "소사자 추가"
+msgstr "조사자 추가"
 
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:323
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:328
@@ -3000,7 +3001,7 @@ msgstr "조사자 제거가 완료되었습니다"
 #: src/components/campaign/CampaignDetailView/DecksSection.tsx:332
 #: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:336
 msgid "Killed and Insane Investigators"
-msgstr "사망하거나 미친 조사자들"
+msgstr "사망하거나 미친 조사자"
 
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:94
 #, javascript-format
@@ -3885,7 +3886,7 @@ msgid ""
 "trauma, the chaos bag, basic weaknesses, campaign notes and the experience "
 "values for all decks."
 msgstr ""
-"아직 아무 캠페인도 없습니다.\n"
+"아직 생성된 캠페인이 하나도 없습니다.\n"
 "\n"
 "+ 버튼을 눌러 새로운 캠페인을 만들어 보십시오.\n"
 "\n"
@@ -4137,7 +4138,7 @@ msgstr ""
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:163
 #, javascript-format
 msgid "${ confirmText } <i>(included automatically)</i>"
-msgstr "${ confirmText } <i>(자동으로 포함됨)</i>"
+msgstr "${ confirmText } (이 항목으로 얻는 경험치는 자동으로 포함됩니다)."
 
 #: src/components/campaign/constants.ts:51
 #: src/components/campaign/constants.ts:286
@@ -4187,7 +4188,7 @@ msgstr "수동으로 캠페인 기록지와 결말을 추적합니다 (영어입
 
 #: src/components/campaign/NewCampaignView/index.tsx:684
 msgid "Investigators"
-msgstr "조사자들"
+msgstr "조사자"
 
 #: src/components/campaign/NewCampaignView/index.tsx:709
 msgid ""
@@ -4300,7 +4301,8 @@ msgid ""
 "Side scenarios cannot be added to a campaign until the previous scenario "
 "and following interludes are completed."
 msgstr ""
-"외전 시나리오는 캠페인의 이전 시나리오가 끝나고 막간으 해결하기 전에는 추가할 수 없습니다."
+"외전 시나리오는 캠페인의 이전 시나리오가 끝내고, 해당 시나리오에 이어지는 "
+"막간을 해결하기 전에는 추가할 수 없습니다."
 
 #: src/components/card/SingleCardWrapper.tsx:33
 #, javascript-format
@@ -4561,12 +4563,12 @@ msgstr "캐시 초기화"
 #: src/components/settings/SettingsView.tsx:107
 #: src/components/settings/SettingsView.tsx:174
 msgid "Rules"
-msgstr "규칙"
+msgstr "규칙(영문)"
 
 #: src/components/campaignguide/EncounterCardErrataView.tsx:30
 #: src/components/campaignguide/ScenarioStepComponent/EncounterSetStepComponent.tsx:96
 msgid "Encounter Card Errata"
-msgstr "조우 카드 오류"
+msgstr "조우 카드 정오표"
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:67
 msgid "The following questions contain light spoilers for this scenario."
@@ -4741,7 +4743,7 @@ msgstr "조우 카드 토글"
 
 #: src/components/card/CardDetailView/CardDetailComponent.tsx:83
 msgid "Show all available cards"
-msgstr "모든 대상 카드 보기"
+msgstr "모든 사용 가능한 카드 보기"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/EnemyStatLine.tsx:40
 #, javascript-format
@@ -4807,7 +4809,7 @@ msgstr "토큰 되돌리기"
 #: src/components/campaign/DrawChaosBagComponent.tsx:322
 #, javascript-format
 msgid "Total (${ chaosBagResults.totalDrawnTokens })"
-msgstr "전체 (${ chaosBagResults.totalDrawnTokens })"
+msgstr "뽑은 토큰 (${ chaosBagResults.totalDrawnTokens })"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:331
 msgid "Bless / Curse Tokens"
