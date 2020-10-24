@@ -51,9 +51,15 @@ interface IncAction {
 interface DecAction {
   type: 'dec';
 }
-export function useCounter(initialValue: number, { min, max }: { min?: number; max?: number }): [number, () => void, () => void] {
-  const [value, updateValue] = useReducer((state: number, action: IncAction | DecAction) => {
+interface SetAction {
+  type: 'set';
+  value: number;
+}
+export function useCounter(initialValue: number, { min, max }: { min?: number; max?: number }): [number, () => void, () => void, (value: number) => void] {
+  const [value, updateValue] = useReducer((state: number, action: IncAction | DecAction | SetAction) => {
     switch (action.type) {
+      case 'set':
+        return action.value
       case 'inc':
         if (max) {
           return Math.min(max, state + 1);
@@ -72,7 +78,10 @@ export function useCounter(initialValue: number, { min, max }: { min?: number; m
   const dec = useCallback(() => {
     updateValue({ type: 'dec' });
   }, [updateValue]);
-  return [value, inc, dec];
+  const set = useCallback((value: number) => {
+    updateValue({ type: 'set', value})
+  }, [updateValue]);
+  return [value, inc, dec, set];
 }
 
 interface ClearAction {

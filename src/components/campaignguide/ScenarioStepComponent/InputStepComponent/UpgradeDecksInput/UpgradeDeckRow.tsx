@@ -18,7 +18,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
 import InvestigatorRow from '@components/core/InvestigatorRow';
-import DeckUpgradeComponent from '@components/deck/DeckUpgradeComponent';
+import DeckUpgradeComponent, { DeckUpgradeHandles } from '@components/deck/DeckUpgradeComponent';
 import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card from '@data/Card';
@@ -58,7 +58,7 @@ class UpgradeDeckRow extends React.Component<Props, State> {
   static contextType = StyleContext;
   context!: StyleContextType;
 
-  deckUpgradeComponent: React.RefObject<DeckUpgradeComponent> = React.createRef<DeckUpgradeComponent>();
+  deckUpgradeComponent: React.RefObject<DeckUpgradeHandles> = React.createRef<DeckUpgradeHandles>();
 
   static choiceId(stepId: string, investigator: Card) {
     return `${stepId}#${investigator.code}`;

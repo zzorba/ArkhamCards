@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import DeckUpgradeComponent from './DeckUpgradeComponent';
+import DeckUpgradeComponent, { DeckUpgradeHandles } from './DeckUpgradeComponent';
 import { Deck, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
 import { showDeckModal } from '@components/nav/helper';
@@ -39,7 +39,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [deck] = useDeck(id, {});
   const campaign = useCampaign(campaignId);
-  const deckUpgradeComponent = useRef<DeckUpgradeComponent>(null);
+  const deckUpgradeComponent = useRef<DeckUpgradeHandles>(null);
 
   const latestScenario = useMemo(() => campaign && last(campaign.scenarioResults || []), [campaign]);
   const scenarioName = latestScenario ? latestScenario.scenario : undefined;
@@ -153,7 +153,6 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
           </Text>
         </View>
         <DeckUpgradeComponent
-          ref={deckUpgradeComponent}
           componentId={componentId}
           deck={deck}
           investigator={investigator}
@@ -164,7 +163,8 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
           saveDeckChanges={performSaveDeckChanges}
           upgradeCompleted={deckUpgradeComplete}
           campaignSection={campaignSection}
-          saveButton
+          saveButtonText={t`Save`}
+          ref={deckUpgradeComponent}
         />
       </ScrollView>
     </View>
