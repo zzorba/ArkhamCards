@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { find, map } from 'lodash';
 import {
   Dimensions,
 } from 'react-native';
 import { TabView, SceneRendererProps, NavigationState, TabBar, Route } from 'react-native-tab-view';
 
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   tabs: {
@@ -28,62 +28,51 @@ interface TabRoute extends Route {
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-export default class ArkhamTabView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Props) {
+  const { backgroundStyle, fontScale, colors} = useContext(StyleContext);
+  const [index, setIndex] = useState(0);
 
-  state: State = {
-    index: 0,
-  };
-
-  _setIndex = (index: number) => {
-    const { onTabChange, tabs } = this.props;
-    this.setState({
-      index,
-    });
+  const onSetIndex = useCallback((index: number) => {
+    setIndex(index);
     onTabChange(tabs[index].key);
-  };
+  }, [onTabChange, setIndex, tabs]);
 
-  _renderTabBar = (props: SceneRendererProps & {
+  const renderTabBar = useCallback((props: SceneRendererProps & {
     navigationState: NavigationState<TabRoute>;
   }) => {
-    const { backgroundStyle, fontScale, colors } = this.context;
     return (
       <TabBar
         {...props}
-        scrollEnabled={this.props.scrollEnabled || (fontScale > 1)}
+        scrollEnabled={scrollEnabled || (fontScale > 1)}
         activeColor={colors.navButton}
         inactiveColor={colors.lightText}
         indicatorStyle={{ backgroundColor: colors.navButton }}
         style={backgroundStyle}
       />
     );
-  };
+  }, [backgroundStyle, fontScale, colors, scrollEnabled]);
 
-  _renderTab = ({ route }: { route: { key: string } }) => {
-    const { tabs } = this.props;
+  const renderTab = useCallback(({ route }: { route: { key: string } }) => {
     const tab = find(tabs, t => t.key === route.key);
     return tab && tab.node;
-  };
+  }, [tabs]);
 
-  render() {
-    const { tabs } = this.props;
-    const { index } = this.state;
-    const routes: TabRoute[] = map(tabs, tab => {
-      return {
-        key: tab.key,
-        title: tab.title,
-      };
-    });
-
-    return (
-      <TabView
-        renderTabBar={this._renderTabBar}
-        navigationState={{ index, routes }}
-        renderScene={this._renderTab}
-        onIndexChange={this._setIndex}
-        initialLayout={initialLayout}
-      />
-    );
-  }
+  const routes: TabRoute[] = useMemo(() => map(tabs, tab => {
+    return {
+      key: tab.key,
+      title: tab.title,
+    };
+  }), [tabs]);
+  const navigationState = useMemo(() => {
+    return { index, routes };
+  }, [index, routes]);
+  return (
+    <TabView
+      renderTabBar={renderTabBar}
+      navigationState={navigationState}
+      renderScene={renderTab}
+      onIndexChange={setIndex}
+      initialLayout={initialLayout}
+    />
+  );
 }

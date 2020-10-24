@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // @ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import AppIcon from '@icons/AppIcon';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 export type ArkhamButtonIcon = 'search' | 'edit' | 'expand' | 'deck' | 'card' | 'up' | 'campaign';
 interface Props {
@@ -14,17 +14,10 @@ interface Props {
   onPress: () => void;
 }
 
-export default class ArkhamButton extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static Height(fontScale: number) {
-    return (fontScale * 18) + 20 + 20;
-  }
-
-  renderIcon() {
-    const { colors, fontScale } = this.context;
-    switch (this.props.icon) {
+function ArkhamButton({ icon, title, onPress}: Props) {
+  const { colors, backgroundStyle, fontScale, typography } = useContext(StyleContext);
+  const iconNode = useMemo(() => {
+    switch (icon) {
       case 'card':
         return <View style={styles.cardIcon}><AppIcon name="cards" size={22 * fontScale} color={colors.L20} /></View>;
       case 'deck':
@@ -38,39 +31,44 @@ export default class ArkhamButton extends React.Component<Props> {
       case 'expand':
         return <AppIcon name="plus" size={18 * fontScale} color={colors.L20} />;
       case 'up':
-        return <View style={styles.upIcon}><MaterialCommunityIcons name="arrow-up-bold" size={22 * fontScale} color={colors.L20} /></View>;
-    }
-  }
-
-  render() {
-    const { title, onPress } = this.props;
-    const { colors, backgroundStyle, fontScale, typography } = this.context;
-    const height = 18 * fontScale + 20;
-    return (
-      <View style={[styles.wrapper, backgroundStyle]}>
-        <Ripple
-          style={[
-            styles.buttonStyle, {
-              backgroundColor: colors.M,
-              height,
-              borderRadius: height / 2,
-              paddingLeft: height / 4,
-            },
-          ]}
-          rippleColor={colors.L10}
-          onPress={onPress}
-        >
-          <View pointerEvents="box-none" style={styles.row}>
-            { this.renderIcon() }
-            <Text style={[typography.button, { marginLeft: height / 4 }]}>
-              { title }
-            </Text>
+        return (
+          <View style={styles.upIcon}>
+            <MaterialCommunityIcons name="arrow-up-bold" size={22 * fontScale} color={colors.L20} />
           </View>
-        </Ripple>
-      </View>
-    );
-  }
+        );
+    }
+  }, [colors, fontScale, icon]);
+
+  const height = 18 * fontScale + 20;
+  return (
+    <View style={[styles.wrapper, backgroundStyle]}>
+      <Ripple
+        style={[
+          styles.buttonStyle, {
+            backgroundColor: colors.M,
+            height,
+            borderRadius: height / 2,
+            paddingLeft: height / 4,
+          },
+        ]}
+        rippleColor={colors.L10}
+        onPress={onPress}
+      >
+        <View pointerEvents="box-none" style={styles.row}>
+          { iconNode }
+          <Text style={[typography.button, { marginLeft: height / 4 }]}>
+            { title }
+          </Text>
+        </View>
+      </Ripple>
+    </View>
+  );
 }
+
+ArkhamButton.Height = (fontScale: number) => {
+  return (fontScale * 18) + 20 + 20;
+};
+export default ArkhamButton;
 
 const styles = StyleSheet.create({
   wrapper: {

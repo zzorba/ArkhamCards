@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
 
 import { ChaosTokenType } from '@app_constants';
 import ChaosTokenIcon from '@components/core/ChaosTokenIcon';
 import { iconSizeScale } from '@styles/space';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 const CHAOS_TOKEN_BACKGROUND = require('../../../assets/chaos-token-background.jpg');
 
@@ -16,13 +16,10 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-export default class ChaosToken extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function ChaosToken({ iconKey, small }: Props) {
+  const { fontScale } = useContext(StyleContext);
 
-  renderIcon() {
-    const { iconKey, small } = this.props;
-    const { fontScale } = this.context;
+  const icon = useMemo(() => {
     const size = small ? 25 : 50;
     const scale = ((fontScale - 1) / 4 + 1);
     if (iconKey) {
@@ -36,20 +33,16 @@ export default class ChaosToken extends React.Component<Props> {
       );
     }
     return null;
-  }
+  }, [iconKey, small, fontScale]);
 
-  render() {
-    const { small } = this.props;
-    const circleStyle = small ? [styles.circle, styles.circleSmall] : [styles.circle, styles.circleLarge];
-
-    return (
-      <View style={circleStyle}>
-        <ImageBackground source={CHAOS_TOKEN_BACKGROUND} style={styles.token}>
-          { this.renderIcon() }
-        </ImageBackground>
-      </View>
-    );
-  }
+  const circleStyle = small ? [styles.circle, styles.circleSmall] : [styles.circle, styles.circleLarge];
+  return (
+    <View style={circleStyle}>
+      <ImageBackground source={CHAOS_TOKEN_BACKGROUND} style={styles.token}>
+        { icon }
+      </ImageBackground>
+    </View>
+  );
 }
 
 const circleLarge = 150 * iconSizeScale;

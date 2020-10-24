@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { map } from 'lodash';
 import {
   StyleSheet,
@@ -19,13 +19,8 @@ interface Props {
   showDialog: ShowTextEditDialog;
 }
 
-export default class InvestigatorSectionList extends React.Component<Props> {
-  renderDeckRow(investigator: Card) {
-    const {
-      investigatorNotes,
-      updateInvestigatorNotes,
-      showDialog,
-    } = this.props;
+export default function InvestigatorSectionList({ componentId, allInvestigators, updateInvestigatorNotes, investigatorNotes, showDialog }: Props) {
+  const renderDeckRow = useCallback((investigator: Card) => {
     return (
       <InvestigatorSectionRow
         key={investigator.code}
@@ -35,20 +30,13 @@ export default class InvestigatorSectionList extends React.Component<Props> {
         showDialog={showDialog}
       />
     );
-  }
+  }, [investigatorNotes, updateInvestigatorNotes, showDialog]);
 
-  render() {
-    const {
-      allInvestigators,
-    } = this.props;
-    return (
-      <View style={styles.investigatorNotes}>
-        { map(allInvestigators, investigator =>
-          this.renderDeckRow(investigator)
-        ) }
-      </View>
-    );
-  }
+  return (
+    <View style={styles.investigatorNotes}>
+      { map(allInvestigators, investigator => renderDeckRow(investigator)) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

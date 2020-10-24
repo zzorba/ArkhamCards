@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { startsWith } from 'lodash';
 import {
   StyleSheet,
@@ -19,51 +19,35 @@ interface Props {
   showDialog: ShowTextEditDialog;
 }
 
-export default class NoteRow extends React.Component<Props> {
-  _onChange = (note: string) => {
-    const {
-      index,
-      updateNote,
-    } = this.props;
+export default function NoteRow({ title, index, note, updateNote, last, showDialog }: Props) {
+  const onChange = useCallback((note: string) => {
     updateNote(index, note);
-  };
+  }, [index, updateNote]);
 
-  _onPress = () => {
-    const {
-      title,
-      note,
-      showDialog,
-      last,
-    } = this.props;
+  const onPress = useCallback(() => {
     showDialog(
       title,
       note,
-      this._onChange,
+      onChange,
       note !== '', 3,
-      last ? this._onChange : undefined
+      last ? onChange : undefined
     );
-  };
+  }, [title, note, showDialog, last, onChange]);
 
-  render() {
-    const {
-      note,
-      last,
-    } = this.props;
-    return (
-      <View style={styles.row}>
-        <TouchableOpacity onPress={this._onPress}>
-          <TextBoxButton
-            crossedOut={startsWith(note, '~')}
-            value={startsWith(note, '~') ? note.substring(1) : note}
-            placeholder={last ? t`Add note` : undefined}
-            pointerEvents="none"
-            ellipsizeMode="tail"
-            multiline
-          />
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.row}>
+      <TouchableOpacity onPress={onPress}>
+        <TextBoxButton
+          crossedOut={startsWith(note, '~')}
+          value={startsWith(note, '~') ? note.substring(1) : note}
+          placeholder={last ? t`Add note` : undefined}
+          pointerEvents="none"
+          ellipsizeMode="tail"
+          multiline
+        />
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

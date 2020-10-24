@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { Deck } from '@actions/types';
@@ -12,34 +12,23 @@ interface Props {
   investigator: Card;
   onPress: (deck: Deck, investigator: Card) => void;
 }
-export default class DeckRowButton extends React.Component<Props> {
-  _onPress = () => {
-    const {
-      onPress,
-      deck,
-      investigator,
-    } = this.props;
+export default function DeckRowButton({ icon, text, deck, investigator, onPress}: Props) {
+  const onButtonPress = useCallback(() => {
     onPress(deck, investigator);
-  };
+  }, [onPress, deck, investigator]);
 
-  render() {
-    const {
-      icon,
-      text,
-    } = this.props;
-    return (
-      <Button
-        icon={icon}
-        text={text}
-        style={styles.button}
-        size="small"
-        align="left"
-        color="white"
-        onPress={this._onPress}
-        grow
-      />
-    );
-  }
+  return (
+    <Button
+      icon={icon}
+      text={text}
+      style={styles.button}
+      size="small"
+      align="left"
+      color="white"
+      onPress={onButtonPress}
+      grow
+    />
+  );
 }
 
 const styles = StyleSheet.create({
