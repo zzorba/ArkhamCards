@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { map } from 'lodash';
 import {
   View,
@@ -7,11 +7,7 @@ import {
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
-import {
-  InvestigatorNotes,
-  InvestigatorCampaignNoteSection,
-  InvestigatorCampaignNoteCount,
-} from '@actions/types';
+import { InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
 
 interface Props {
@@ -21,38 +17,25 @@ interface Props {
   showDialog: ShowTextEditDialog;
 }
 
-export default class InvestigatorSectionRow extends React.Component<Props> {
-  _notesChanged = (index: number, notes: string[]) => {
-    const {
-      investigator,
-      updateInvestigatorNotes,
-      investigatorNotes,
-    } = this.props;
+export default function InvestigatorSectionRow({ investigator, updateInvestigatorNotes, investigatorNotes, showDialog }: Props) {
+  const notesChanged = useCallback((index: number, notes: string[]) => {
     const sections = (investigatorNotes.sections || []).slice();
     const newNotes = Object.assign({}, sections[index].notes, { [investigator.code]: notes });
     sections[index] = Object.assign({}, sections[index], { notes: newNotes });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { sections }));
-  };
+  }, [investigator, updateInvestigatorNotes, investigatorNotes]);
 
-  _countChanged = (index: number, count: number) => {
-    const {
-      investigator,
-      updateInvestigatorNotes,
-      investigatorNotes,
-    } = this.props;
+  const countChanged = useCallback((index: number, count: number) => {
     const counts = (investigatorNotes.counts || []).slice();
     const newCounts = Object.assign({}, counts[index].counts, { [investigator.code]: count });
     counts[index] = Object.assign({}, counts[index], { counts: newCounts });
     updateInvestigatorNotes(Object.assign({}, investigatorNotes, { counts }));
-  };
+  }, [investigator, updateInvestigatorNotes, investigatorNotes]);
 
-  renderSections(investigator: Card, sections: InvestigatorCampaignNoteSection[]) {
-    const {
-      showDialog,
-    } = this.props;
+  const notesSection = useMemo(() => {
     return (
       <View>
-        { map(sections, (section, idx) => {
+        { map(investigatorNotes.sections, (section, idx) => {
           const name = investigator.firstName || 'Unknown';
           const title = `${name}’s ${section.title}`;
           return (
@@ -61,7 +44,7 @@ export default class InvestigatorSectionRow extends React.Component<Props> {
               title={title}
               notes={section.notes[investigator.code] || []}
               index={idx}
-              notesChanged={this._notesChanged}
+              notesChanged={notesChanged}
               showDialog={showDialog}
               isInvestigator
             />
@@ -69,12 +52,12 @@ export default class InvestigatorSectionRow extends React.Component<Props> {
         }) }
       </View>
     );
-  }
+  }, [investigator, investigatorNotes.sections, notesChanged, showDialog]);
 
-  renderCounts(investigator: Card, counts: InvestigatorCampaignNoteCount[]) {
+  const countsSection = useMemo(() => {
     return (
       <View>
-        { map(counts, (section, idx) => {
+        { map(investigatorNotes.counts, (section, idx) => {
           const name = investigator.firstName ?
             investigator.firstName.toUpperCase() :
             'Unknown';
@@ -85,28 +68,19 @@ export default class InvestigatorSectionRow extends React.Component<Props> {
               index={idx}
               title={title}
               count={section.counts[investigator.code] || 0}
-              countChanged={this._countChanged}
+              countChanged={countChanged}
               isInvestigator
             />
           );
         }) }
       </View>
     );
-  }
+  }, [investigator, investigatorNotes.counts, countChanged]);
 
-  render() {
-    const {
-      investigator,
-      investigatorNotes: {
-        sections,
-        counts,
-      },
-    } = this.props;
-    return (
-      <View>
-        { this.renderSections(investigator, sections) }
-        { this.renderCounts(investigator, counts) }
-      </View>
-    );
-  }
+  return (
+    <View>
+      { notesSection }
+      { countsSection }
+    </View>
+  );
 }

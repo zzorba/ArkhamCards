@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { connect, useSelector } from 'react-redux';
 import { EventSubscription, Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -9,6 +9,8 @@ import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, getCampaign } from '@reducers';
+import { useNavigationButtonPressed } from '@components/core/hooks';
+import { Campaign } from '@data/scenario/types';
 
 export interface CampaignChaosBagProps {
   componentId: string;
@@ -23,48 +25,14 @@ interface ReduxProps {
 
 type Props = NavigationProps & CampaignChaosBagProps & ReduxProps;
 
-class CampaignChaosBagView extends React.Component<Props> {
-  static options(): Options {
-    return {
-      topBar: {
-        rightButtons: [{
-          systemItem: 'save',
-          text: t`Edit`,
-          id: 'edit',
-          color: COLORS.M,
-          accessibilityLabel: t`Edit Chaos Bag`,
-        }],
-      },
-    };
-  }
+function CampaignChaosBagView({ componentId, campaignId, updateChaosBag, trackDeltas }: Props) {
+  const chaosBagSelector = useCallback((state: AppState) => {
+    const campaign = getCampaign(state, campaignId);
+    return (campaign && campaign.chaosBag) || {};
+  }, [campaignId]);
+  const chaosBag = useSelector(chaosBagSelector);
 
-  _navEventListener?: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    const { componentId } = this.props;
-    if (buttonId === 'back' || buttonId === 'androidBack') {
-      Navigation.pop(componentId);
-    } else if (buttonId === 'edit') {
-      this._showChaosBagDialog();
-    }
-  }
-
-  _showChaosBagDialog = () => {
-    const {
-      componentId,
-      chaosBag,
-      updateChaosBag,
-    } = this.props;
+  const showChaosBagDialog = useCallback(() => {
     if (!updateChaosBag) {
       return;
     }
@@ -88,37 +56,38 @@ class CampaignChaosBagView extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [componentId, chaosBag, updateChaosBag]);
 
-  render() {
-    const {
-      componentId,
-      campaignId,
-      chaosBag,
-      trackDeltas,
-    } = this.props;
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'back' || buttonId === 'androidBack') {
+      Navigation.pop(componentId);
+    } else if (buttonId === 'edit') {
+      showChaosBagDialog();
+    }
+  }, componentId, [componentId, showChaosBagDialog]);
 
-    return (
-      <DrawChaosBagComponent
-        componentId={componentId}
-        campaignId={campaignId}
-        chaosBag={chaosBag}
-        trackDeltas={trackDeltas}
-      />
-    );
-  }
+  return (
+    <DrawChaosBagComponent
+      componentId={componentId}
+      campaignId={campaignId}
+      chaosBag={chaosBag}
+      trackDeltas={trackDeltas}
+    />
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & CampaignChaosBagProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
+CampaignChaosBagView.options = (): Options => {
   return {
-    chaosBag: (campaign && campaign.chaosBag) || {},
+    topBar: {
+      rightButtons: [{
+        systemItem: 'save',
+        text: t`Edit`,
+        id: 'edit',
+        color: COLORS.M,
+        accessibilityLabel: t`Edit Chaos Bag`,
+      }],
+    },
   };
-}
+};
 
-export default connect<ReduxProps, unknown, NavigationProps & CampaignChaosBagProps, AppState>(
-  mapStateToProps
-)(CampaignChaosBagView);
+export default CampaignChaosBagView;

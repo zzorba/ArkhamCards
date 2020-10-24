@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
@@ -11,26 +11,20 @@ interface Props {
   isInvestigator?: boolean;
 }
 
-export default class XpComponent extends React.Component<Props> {
-  _countChanged = (index: number, count: number) => {
-    this.props.onChange(count);
-  };
+export default function XpComponent({ xp, onChange, isInvestigator }: Props) {
+  const countChanged = useCallback((index: number, count: number) => {
+    onChange(count);
+  }, [onChange]);
 
-  render() {
-    const {
-      xp,
-      isInvestigator,
-    } = this.props;
-    return (
-      <View style={isInvestigator ? space.marginRightXs : {}}>
-        <EditCountComponent
-          countChanged={this._countChanged}
-          index={0}
-          title={t`Experience`}
-          count={xp || 0}
-          isInvestigator={isInvestigator}
-        />
-      </View>
-    );
-  }
+  return (
+    <View style={isInvestigator ? space.marginRightXs : {}}>
+      <EditCountComponent
+        countChanged={countChanged}
+        index={0}
+        title={t`Experience`}
+        count={xp || 0}
+        isInvestigator={isInvestigator}
+      />
+    </View>
+  );
 }

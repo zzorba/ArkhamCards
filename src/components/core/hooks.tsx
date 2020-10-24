@@ -115,6 +115,19 @@ export function useToggles(initialState: Toggles) {
   }, initialState);
 }
 
+export function useFlag(initialValue: boolean): [boolean, () => void, (value: boolean) => void] {
+  const [value, updateState] = useReducer((state: boolean, action: { type: 'toggle' } | { type: 'set', value: boolean }) => {
+    switch (action.type) {
+      case 'toggle':
+        return !state;
+      case 'set':
+        return action.value;
+    }
+  }, initialValue);
+  const toggle = useCallback(() => updateState({ type: 'toggle' }), [updateState]);
+  const set = useCallback((value: boolean) => updateState({ type: 'set', value }), [updateState]);
+  return [value, toggle, set];
+}
 
 interface ClearAction {
   type: 'clear';
@@ -253,7 +266,7 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useCamapign(campaignId?: number): Campaign | undefined {
+export function useCampaign(campaignId?: number): Campaign | undefined {
   const selector = useCallback((state: AppState) => {
     if (campaignId) {
       return getCampaign(state, campaignId);

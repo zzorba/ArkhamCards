@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { map, keys } from 'lodash';
 import { t } from 'ttag';
 
@@ -16,30 +16,25 @@ interface Props {
   id: string;
   effect: RemoveCardEffect;
   input?: string[];
-  skipCampaignLog?: boolean;
   campaignLog: GuidedCampaignLog;
 }
 
-export default class RemoveCardEffectComponent extends React.Component<Props> {
-  _renderInvestigators = (
-    investigators: Card[],
-    card: Card
-  ) => {
-    return map(investigators, (investigator, idx) => (
-      <SetupStepWrapper bulletType="small" key={idx}>
-        <CampaignGuideTextComponent
-          text={
-            card.advanced ?
-              t`${investigator.name} removes ${card.name} (Advanced)` :
-              t`${investigator.name} removes ${card.name}`
-          }
-        />
-      </SetupStepWrapper>
-    ));
-  };
+function renderInvestigators(investigators: Card[], card: Card) {
+  return map(investigators, (investigator, idx) => (
+    <SetupStepWrapper bulletType="small" key={idx}>
+      <CampaignGuideTextComponent
+        text={
+          card.advanced ?
+            t`${investigator.name} removes ${card.name} (Advanced)` :
+            t`${investigator.name} removes ${card.name}`
+        }
+      />
+    </SetupStepWrapper>
+  ));
+}
 
-  _renderCard = (card: Card): Element | null => {
-    const { id, effect, input, campaignLog } = this.props;
+export default function RemoveCardEffectComponent({ id, effect, input, campaignLog }: Props) {
+  const renderCard = useCallback((card: Card): Element | null => {
     if (!effect.investigator) {
       // These are always spelled out.
       return null;
@@ -77,26 +72,23 @@ export default class RemoveCardEffectComponent extends React.Component<Props> {
         id={id}
         investigator={effect.investigator}
         fixedInvestigator={effect.fixed_investigator}
-        render={this._renderInvestigators}
+        render={renderInvestigators}
         description={t`Who will remove ${card.name} from their deck?`}
         extraArg={card}
       />
     );
-  };
+  }, [id, effect, input, campaignLog]);
 
-  render() {
-    const { effect } = this.props;
-    if (effect.card === '$input_value') {
-      // We always write these out.
-      return null;
-    }
-    return (
-      <SingleCardWrapper
-        code={this.props.effect.card}
-        type="player"
-      >
-        { this._renderCard }
-      </SingleCardWrapper>
-    );
+  if (effect.card === '$input_value') {
+    // We always write these out.
+    return null;
   }
+  return (
+    <SingleCardWrapper
+      code={effect.card}
+      type="player"
+    >
+      { renderCard }
+    </SingleCardWrapper>
+  );
 }

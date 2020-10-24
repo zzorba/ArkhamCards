@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
@@ -10,9 +10,9 @@ import { showDeckModal } from '@components/nav/helper';
 import Card, { CardsMap } from '@data/Card';
 import { AppState, getDeck } from '@reducers';
 import { parseBasicDeck } from '@lib/parseDeck';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   deck: Deck;
   cards: CardsMap;
@@ -20,30 +20,20 @@ interface OwnProps {
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
 }
 
-interface ReduxProps {
-  previousDeck?: Deck;
-}
+export default function DeckXpSection({ componentId, deck, cards, investigator, showDeckUpgrade }: Props) {
+  const { colors } = useContext(StyleContext);
+  const previousDeckSelector = useCallback((state: AppState) => {
+    return (deck.previous_deck && getDeck(deck.previous_deck)(state)) || undefined;
+  }, [deck.previous_deck]);
+  const previousDeck = useSelector(previousDeckSelector);
 
-type Props = OwnProps & ReduxProps;
-
-class DeckXpSection extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _showDeckUpgrade = () => {
-    const {
-      investigator,
-      deck,
-      showDeckUpgrade,
-    } = this.props;
+  const showDeckUpgradePress = useCallback(() => {
     if (deck && showDeckUpgrade) {
       showDeckUpgrade(investigator, deck);
     }
-  };
+  }, [investigator, deck, showDeckUpgrade]);
 
-  _onPress = () => {
-    const { componentId, deck, investigator } = this.props;
-    const { colors } = this.context;
+  const onPress = useCallback(() => {
     showDeckModal(
       componentId,
       deck,
@@ -52,60 +42,44 @@ class DeckXpSection extends React.Component<Props> {
       undefined,
       true
     );
-  };
+  }, [colors, componentId, deck, investigator]);
 
-  render() {
-    const { deck, investigator, previousDeck, cards, showDeckUpgrade } = this.props;
+  const parsedDeck = useMemo(() => {
     if (!previousDeck && !showDeckUpgrade) {
-      return null;
+      return undefined;
     }
-    const parsedDeck = parseBasicDeck(
-      deck,
-      cards,
-      previousDeck
-    );
-    if (!parsedDeck) {
-      return null;
-    }
-    const { changes } = parsedDeck;
-    if (!changes && !showDeckUpgrade) {
-      return null;
-    }
-    const availableXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
-    return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Experience points` }}
-        />
-        { !!changes && (
-          <PickerStyleButton
-            id="xp"
-            title={`${changes.spentXp} of ${availableXp} spent`}
-            onPress={this._onPress}
-            widget="nav"
-            settingsStyle
-          />
-        ) }
-        { !!showDeckUpgrade && (
-          <BasicButton
-            title={t`Upgrade Deck`}
-            onPress={this._showDeckUpgrade}
-          />
-        ) }
-      </>
-    );
+    return parseBasicDeck(deck, cards, previousDeck);
+  }, [previousDeck, deck, cards]);
+
+  if (!parsedDeck) {
+    return null;
   }
+  const { changes } = parsedDeck;
+  if (!changes && !showDeckUpgrade) {
+    return null;
+  }
+  const availableXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
+  return (
+    <>
+      <CardSectionHeader
+        investigator={investigator}
+        section={{ superTitle: t`Experience points` }}
+      />
+      { !!changes && (
+        <PickerStyleButton
+          id="xp"
+          title={`${changes.spentXp} of ${availableXp} spent`}
+          onPress={onPress}
+          widget="nav"
+          settingsStyle
+        />
+      ) }
+      { !!showDeckUpgrade && (
+        <BasicButton
+          title={t`Upgrade Deck`}
+          onPress={showDeckUpgradePress}
+        />
+      ) }
+    </>
+  );
 }
-
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const previousDeck = (
-    props.deck.previous_deck &&
-    getDeck(props.deck.previous_deck)(state)
-  ) || undefined;
-  return {
-    previousDeck,
-  };
-}
-
-export default connect(mapStateToProps)(DeckXpSection);

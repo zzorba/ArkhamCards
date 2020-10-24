@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { CampaignNotes } from '@actions/types';
@@ -21,32 +21,30 @@ interface Props {
   allInvestigators: Card[];
 }
 
-export default class CampaignLogSection extends React.Component<Props> {
-  _updateCampaignNotes = (campaignNotes: CampaignNotes) => {
+export default function CampaignLogSection({
+  componentId,
+  campaignNotes,
+  scenarioCount,
+  updateCampaignNotes,
+  showTextEditDialog,
+  showAddSectionDialog,
+  allInvestigators,
+}: Props) {
+  const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
     setTimeout(() => {
-      this.props.updateCampaignNotes(campaignNotes);
+      updateCampaignNotes(campaignNotes);
     }, 0);
-  };
+  }, [updateCampaignNotes]);
 
-  render() {
-    const {
-      componentId,
-      campaignNotes,
-      showTextEditDialog,
-      showAddSectionDialog,
-      allInvestigators,
-      scenarioCount,
-    } = this.props;
-    return (
-      <EditCampaignNotesComponent
-        key={scenarioCount}
-        componentId={componentId}
-        campaignNotes={campaignNotes}
-        allInvestigators={allInvestigators}
-        updateCampaignNotes={this._updateCampaignNotes}
-        showDialog={showTextEditDialog}
-        showAddSectionDialog={showAddSectionDialog}
-      />
-    );
-  }
+  return (
+    <EditCampaignNotesComponent
+      key={scenarioCount}
+      componentId={componentId}
+      campaignNotes={campaignNotes}
+      allInvestigators={allInvestigators}
+      updateCampaignNotes={delayedUpdateCampaignNotes}
+      showDialog={showTextEditDialog}
+      showAddSectionDialog={showAddSectionDialog}
+    />
+  );
 }

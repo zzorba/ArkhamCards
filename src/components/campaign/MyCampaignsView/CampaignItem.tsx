@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -18,9 +18,9 @@ interface Props {
 
 export default function CampaignItem({ campaign, onPress }: Props) {
   const { borderStyle } = useContext(StyleContext);
-  const handleOnPress = () => {
+  const handleOnPress = useCallback(() => {
     onPress(campaign.id, campaign);
-  };
+  }, [onPress, campaign]);
 
   return (
     <TouchableOpacity onPress={handleOnPress}>

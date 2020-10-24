@@ -23,7 +23,7 @@ import Card from '@data/Card';
 import space from '@styles/space';
 import BasicButton from '@components/core/BasicButton';
 import StyleContext from '@styles/StyleContext';
-import { useCamapign, useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import { useCampaign, useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';
 import { saveDeckChanges, saveDeckUpgrade, DeckChanges } from './actions';
 import { AppState } from '@reducers';
@@ -38,7 +38,7 @@ type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [deck] = useDeck(id, {});
-  const campaign = useCamapign(campaignId);
+  const campaign = useCampaign(campaignId);
   const deckUpgradeComponent = useRef<DeckUpgradeComponent>(null);
 
   const latestScenario = useMemo(() => campaign && last(campaign.scenarioResults || []), [campaign]);

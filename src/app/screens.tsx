@@ -64,7 +64,6 @@ function getStandardComponent(componentName: string | number) {
     case 'My.Spoilers': return require('@components/settings/SpoilersView').default;
     case 'Dialog.CardUpgrade': return require('@components/deck/CardUpgradeDialog').default;
     case 'Dialog.EditChaosBag': return require('@components/campaign/EditChaosBagDialog').default;
-    case 'Dialog.ExileCards': return require('@components/campaign/ExileCardDialog').default;
     case 'Dialog.Campaign': return require('@components/campaign/SelectCampaignDialog').default;
     case 'Dialog.CampaignDrawWeakness': return require('@components/campaign/CampaignDrawWeaknessDialog').default;
     case 'Dialog.CampaignEditWeakness': return require('@components/campaign/CampaignEditWeaknessDialog').default;

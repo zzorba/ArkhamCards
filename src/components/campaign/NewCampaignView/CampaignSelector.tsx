@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
@@ -15,60 +15,49 @@ interface Props {
   ) => void;
 }
 
-interface State {
+interface CampaignState {
   selectedCampaign: string;
   selectedCampaignCode: CampaignCycleCode;
   customCampaign?: string;
   hasGuide: boolean;
 }
-export default class CampaignSelector extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
 
-    this.state = {
-      hasGuide: true,
-      selectedCampaign: t`The Night of the Zealot`,
-      selectedCampaignCode: CORE,
-    };
-  }
-
-  componentDidMount() {
-    this._updateManagedCampaign();
-  }
-
-  _updateManagedCampaign = () => {
+export default function CampaignSelector({ componentId, campaignChanged }: Props) {
+  const [campaignState, setCampaignState] = useState<CampaignState>({
+    hasGuide: true,
+    selectedCampaign: t`The Night of the Zealot`,
+    selectedCampaignCode: CORE,
+  });
+  useEffect(() => {
     const {
       selectedCampaign,
       selectedCampaignCode,
       customCampaign,
       hasGuide,
-    } = this.state;
-    this.props.campaignChanged(
+    } = campaignState;
+    campaignChanged(
       selectedCampaignCode,
       selectedCampaignCode === CUSTOM ?
         (customCampaign || 'Custom Campaign') :
         selectedCampaign,
       hasGuide
     );
-  };
+  }, [campaignState])
 
-  _campaignChanged = (code: CampaignCycleCode, text: string, hasGuide: boolean) => {
-    this.setState({
+  const handleCampaignChanged = useCallback((code: CampaignCycleCode, text: string, hasGuide: boolean) => {
+    setCampaignState({
       selectedCampaign: text,
       selectedCampaignCode: code,
       hasGuide,
-    }, this._updateManagedCampaign);
-  };
+    });
+  }, [setCampaignState]);
 
-  _campaignPressed = () => {
-    const {
-      componentId,
-    } = this.props;
+  const campaignPressed = useCallback(() => {
     Navigation.push<SelectCampagaignProps>(componentId, {
       component: {
         name: 'Dialog.Campaign',
         passProps: {
-          campaignChanged: this._campaignChanged,
+          campaignChanged: handleCampaignChanged,
         },
         options: {
           topBar: {
@@ -79,21 +68,19 @@ export default class CampaignSelector extends React.Component<Props, State> {
         },
       },
     });
-  };
+  }, [componentId, handleCampaignChanged]);
 
-  render() {
-    const {
-      selectedCampaign,
-    } = this.state;
+  const {
+    selectedCampaign,
+  } = campaignState;
 
-    return (
-      <PickerStyleButton
-        title={t`Campaign`}
-        value={selectedCampaign}
-        id="campaign"
-        onPress={this._campaignPressed}
-        widget="nav"
-      />
-    );
-  }
+  return (
+    <PickerStyleButton
+      title={t`Campaign`}
+      value={selectedCampaign}
+      id="campaign"
+      onPress={campaignPressed}
+      widget="nav"
+    />
+  );
 }
