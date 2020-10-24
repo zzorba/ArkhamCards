@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function InvestigatorDeckRow({ id, deckRemoved }: Props) {
-  const [theDeck] = useDeck(id, true);
+  const [theDeck] = useDeck(id, { fetchIfMissing: true });
   const investigators = useInvestigatorCards(theDeck?.taboo_id || 0);
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code];
   const onRemove = useCallback(() => {

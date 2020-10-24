@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { last } from 'lodash';
 import {
   View,
@@ -6,26 +6,27 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { Action } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { useDispatch } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DeckUpgradeComponent from './DeckUpgradeComponent';
-import { Campaign, Deck, Slots } from '@actions/types';
+import { Deck, Slots } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import { showDeckModal, showCard } from '@components/nav/helper';
+import { showDeckModal } from '@components/nav/helper';
 import StoryCardSelectorComponent from '@components/campaign/StoryCardSelectorComponent';
 import { updateCampaign } from '@components/campaign/actions';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import Card from '@data/Card';
-import { saveDeckUpgrade, saveDeckChanges, DeckChanges } from '@components/deck/actions';
-import { getDeck, getCampaign, getTabooSet, AppState } from '@reducers';
 import space from '@styles/space';
 import BasicButton from '@components/core/BasicButton';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCamapign, useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import useTraumaDialog from '@components/campaign/useTraumaDialog';
+import { saveDeckChanges, saveDeckUpgrade, DeckChanges } from './actions';
+import { AppState } from '@reducers';
 
 export interface UpgradeDeckProps {
   id: number;
@@ -33,158 +34,87 @@ export interface UpgradeDeckProps {
   showNewDeck: boolean;
 }
 
-interface ReduxProps {
-  deck?: Deck;
-  campaign?: Campaign;
-  tabooSetId?: number;
-}
+type DeckDispatch = ThunkDispatch<AppState, any, Action>;
+function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: UpgradeDeckProps & NavigationProps) {
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const [deck] = useDeck(id, {});
+  const campaign = useCamapign(campaignId);
+  const deckUpgradeComponent = useRef<DeckUpgradeComponent>(null);
 
-interface ReduxActionProps {
-  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
-  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
-  updateCampaign: (id: number, sparseCampaign: Partial<Campaign>) => void;
-}
+  const latestScenario = useMemo(() => campaign && last(campaign.scenarioResults || []), [campaign]);
+  const scenarioName = latestScenario ? latestScenario.scenario : undefined;
+  const storyEncounterCodes = useMemo(() => latestScenario && latestScenario.scenarioCode ? [latestScenario.scenarioCode] : [], [latestScenario]);
 
-type Props = NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps & TraumaProps;
+  const [storyCounts, updateStoryCounts] = useSlots({});
+  const investigators = useInvestigatorCards(deck?.taboo_id);
+  const dispatch = useDispatch();
+  const deckDispatch: DeckDispatch = useDispatch();
 
-interface State {
-  storyEncounterCodes: string[];
-  storyCounts: Slots;
-  scenarioName?: string;
-}
+  const {
+    showTraumaDialog,
+    investigatorDataUpdates,
+    traumaDialog,
+  } = useTraumaDialog({});
 
-class DeckUpgradeDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options() {
-    return {
-      topBar: {
-        tintColor: 'white',
-        rightButtons: [{
-          text: t`Save`,
-          color: 'white',
-          id: 'save',
-          accessibilityLabel: t`Save`,
-        }],
-        backButton: {
-          title: t`Cancel`,
-          color: 'white',
-          accessibilityLabel: t`Cancel`,
-        },
-      },
-    };
-  }
-
-  deckUpgradeComponent: React.RefObject<DeckUpgradeComponent> = React.createRef<DeckUpgradeComponent>();
-
-  _navEventListener?: EventSubscription;
-  constructor(props: Props) {
-    super(props);
-
-    const latestScenario = props.campaign && last(props.campaign.scenarioResults || []);
-    const storyEncounterCodes = latestScenario && latestScenario.scenarioCode ?
-      [latestScenario.scenarioCode] :
-      [];
-
-    this.state = {
-      scenarioName: latestScenario ? latestScenario.scenario : undefined,
-      storyEncounterCodes,
-      storyCounts: {},
-    };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _save = () => {
-    if (this.deckUpgradeComponent.current) {
-      this.deckUpgradeComponent.current.save();
-    }
-  };
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'save') {
-      this._save();
-    }
-  }
-
-  investigator(): Card | undefined {
-    const {
-      deck,
-      investigators,
-    } = this.props;
-    if (!deck) {
-      return undefined;
-    }
-    return investigators[deck.investigator_code];
-  }
-
-  _deckUpgradeComplete = (deck: Deck) => {
-    const {
-      showNewDeck,
-      componentId,
-      campaign,
-      updateCampaign,
-    } = this.props;
-    const { colors } = this.context;
-    if (campaign) {
-      const investigatorData = this.investigatorData();
-      if (investigatorData) {
-        updateCampaign(
-          campaign.id,
-          { investigatorData }
-        );
-      }
-    }
-    if (showNewDeck) {
-      showDeckModal(componentId, deck, colors, this.investigator());
-    } else {
-      Navigation.pop(componentId);
-    }
-  }
-
-  _onCardPress = (card: Card) => {
-    const { colors } = this.context;
-    showCard(this.props.componentId, card.code, card, colors);
-  };
-
-  _onStoryCountsChange = (storyCounts: Slots) => {
-    this.setState({
-      storyCounts,
-    });
-  };
-
-  investigatorData() {
-    const {
-      campaign,
-      investigatorDataUpdates,
-    } = this.props;
+  const investigatorData = useMemo(() => {
     if (!campaign) {
       return undefined;
     }
-    return Object.assign(
-      {},
-      campaign.investigatorData || {},
-      investigatorDataUpdates
-    );
-  }
+    return {
+      ...(campaign.investigatorData || {}),
+      ...investigatorDataUpdates,
+    };
+  }, [campaign, investigatorDataUpdates]);
 
-  renderCampaignSection(deck: Deck) {
-    const {
-      componentId,
-      campaign,
-      showTraumaDialog,
-    } = this.props;
-    const {
-      storyEncounterCodes,
-      scenarioName,
-    } = this.state;
-    const investigator = this.investigator();
-    if (!campaign || !investigator) {
+  const save = useCallback(() => {
+    if (deckUpgradeComponent.current) {
+      deckUpgradeComponent.current.save();
+    }
+  }, [deckUpgradeComponent]);
+
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'save') {
+      save();
+    }
+  }, componentId, [save]);
+
+  const investigator: Card | undefined = useMemo(() => {
+    if (!deck || !investigators) {
+      return undefined;
+    }
+    return investigators[deck.investigator_code];
+  }, [deck, investigators]);
+
+  const deckUpgradeComplete = useCallback((deck: Deck) => {
+    if (campaign) {
+      if (investigatorData) {
+        dispatch(updateCampaign(
+          campaign.id,
+          { investigatorData }
+        ));
+      }
+    }
+    if (showNewDeck) {
+      showDeckModal(componentId, deck, colors, investigator);
+    } else {
+      Navigation.pop(componentId);
+    }
+  }, [showNewDeck, componentId, campaign, updateCampaign, colors, investigator, investigatorData]);
+
+  const onStoryCountsChange = useCallback((storyCounts: Slots) => {
+    updateStoryCounts({ type: 'sync', slots: storyCounts });
+  }, [updateStoryCounts]);
+
+  const performSaveDeckChanges = useCallback((deck: Deck, changes: DeckChanges): Promise<Deck> => {
+    return deckDispatch(saveDeckChanges(deck, changes));
+  }, [deckDispatch]);
+
+  const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
+    return deckDispatch(saveDeckUpgrade(deck, xp, exileCounts));
+  }, [deckDispatch]);
+
+  const campaignSection = useMemo(() => {
+    if (!deck || !campaign || !investigator) {
       return null;
     }
     return (
@@ -192,7 +122,7 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
         { !campaign.guided && (
           <EditTraumaComponent
             investigator={investigator}
-            investigatorData={this.investigatorData()}
+            investigatorData={investigatorData}
             showTraumaDialog={showTraumaDialog}
             sectionHeader
           />
@@ -201,34 +131,21 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           componentId={componentId}
           investigator={investigator}
           deckId={deck.id}
-          updateStoryCounts={this._onStoryCountsChange}
+          updateStoryCounts={onStoryCountsChange}
           encounterCodes={storyEncounterCodes}
           scenarioName={scenarioName}
         />
       </>
     );
+  }, [deck, componentId, campaign, showTraumaDialog, storyEncounterCodes, scenarioName, investigator, investigatorData, onStoryCountsChange]);
+
+  if (!deck || !investigator) {
+    return null;
   }
-
-  render() {
-    const {
-      deck,
-      componentId,
-      campaign,
-      saveDeckChanges,
-      saveDeckUpgrade,
-    } = this.props;
-    const {
-      storyCounts,
-    } = this.state;
-    const { backgroundStyle, typography } = this.context;
-    const investigator = this.investigator();
-    if (!deck || !investigator) {
-      return null;
-    }
-    const latestScenario = campaign && last(campaign.scenarioResults || []);
-    const xp = latestScenario ? (latestScenario.xp || 0) : 0;
-
-    return (
+  const xp = latestScenario ? (latestScenario.xp || 0) : 0;
+  return (
+    <View style={styles.wrapper}>
+      { traumaDialog }
       <ScrollView style={[styles.container, backgroundStyle]}>
         <View style={space.paddingM}>
           <Text style={typography.text}>
@@ -236,53 +153,49 @@ class DeckUpgradeDialog extends React.Component<Props, State> {
           </Text>
         </View>
         <DeckUpgradeComponent
-          ref={this.deckUpgradeComponent}
-          saveDeckChanges={saveDeckChanges}
-          saveDeckUpgrade={saveDeckUpgrade}
+          ref={deckUpgradeComponent}
           componentId={componentId}
           deck={deck}
           investigator={investigator}
           startingXp={xp}
           storyCounts={storyCounts}
           ignoreStoryCounts={{}}
-          upgradeCompleted={this._deckUpgradeComplete}
-          campaignSection={this.renderCampaignSection(deck)}
+          saveDeckUpgrade={performSaveDeckUpgrade}
+          saveDeckChanges={performSaveDeckChanges}
+          upgradeCompleted={deckUpgradeComplete}
+          campaignSection={campaignSection}
         />
-        <BasicButton onPress={this._save} title={t`Save`} />
+        <BasicButton onPress={save} title={t`Save`} />
       </ScrollView>
-    );
-  }
+    </View>
+  );
 }
 
-
-function mapStateToProps(state: AppState, props: UpgradeDeckProps): ReduxProps {
+DeckUpgradeDialog.options = () => {
   return {
-    deck: getDeck(props.id)(state) || undefined,
-    campaign: (props.campaignId && getCampaign(state, props.campaignId)) || undefined,
-    tabooSetId: getTabooSet(state),
+    topBar: {
+      tintColor: 'white',
+      rightButtons: [{
+        text: t`Save`,
+        color: 'white',
+        id: 'save',
+        accessibilityLabel: t`Save`,
+      }],
+      backButton: {
+        title: t`Cancel`,
+        color: 'white',
+        accessibilityLabel: t`Cancel`,
+      },
+    },
   };
-}
+};
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    saveDeckChanges,
-    saveDeckUpgrade,
-    updateCampaign,
-  } as any, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, NavigationProps & UpgradeDeckProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  withPlayerCards<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps>(
-    withTraumaDialog<NavigationProps & UpgradeDeckProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
-      DeckUpgradeDialog
-    )
-  )
-);
+export default DeckUpgradeDialog;
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',

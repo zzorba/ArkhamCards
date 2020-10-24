@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { find, flatMap, keys, map, uniq, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
-import QueryProvider from '@components/data/QueryProvider';
 import BasicButton from '@components/core/BasicButton';
 import CounterListComponent from './CounterListComponent';
 import CheckListComponent from './CheckListComponent';
@@ -15,16 +14,15 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import CardListWrapper from '@components/card/CardListWrapper';
 import { CardSelectorProps } from '../CardSelectorView';
-import CampaignGuideContext, { CampaignGuideContextType } from '../CampaignGuideContext';
-import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
+import CampaignGuideContext from '../CampaignGuideContext';
+import ScenarioStepContext from '../ScenarioStepContext';
 import { CardChoiceInput, CardSearchQuery, CardQuery } from '@data/scenario/types';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import { LatestDecks, ProcessedScenario } from '@data/scenario';
 import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import { m } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -33,72 +31,111 @@ interface Props {
   input: CardChoiceInput;
 }
 
-interface State {
-  extraCards: string[];
+const FILTER_BUILDER = new FilterBuilder('ccp');
+
+function basicQuery(q: CardSearchQuery): Brackets[] {
+  const result: Brackets[] = [
+    ...(q.trait ? FILTER_BUILDER.traitFilter([q.trait]) : []),
+  ];
+  if (q.unique) {
+    result.push(UNIQUE_FILTER);
+  }
+  if (q.vengeance) {
+    result.push(VENGEANCE_FILTER);
+  }
+  if (q.exclude_code) {
+    const codeParts = map(q.exclude_code, code => `(c.code != '${code}')`).join(' AND ');
+    result.push(where(codeParts));
+  }
+  return result;
 }
 
-interface QueryProps {
-  processedScenario: ProcessedScenario;
-  scenarioInvestigators: Card[];
-  latestDecks: LatestDecks;
-  query: CardQuery[];
-  extraCards: string[];
+function mainQuery(
+  query: CardQuery[],
+  processedScenario: ProcessedScenario,
+  investigators: Card[],
+  latestDecks: LatestDecks,
+): Brackets | undefined {
+  const queries = flatMap(query, q => {
+    if (q.code) {
+      return FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code']);
+    }
+    switch (q.source) {
+      case 'scenario': {
+        const encounterSets = flatMap(
+          processedScenario.steps,
+          step => {
+            if (step.step.type === 'encounter_sets') {
+              return step.step.encounter_sets;
+            }
+            return [];
+          });
+        if (!encounterSets) {
+          return [];
+        }
+        return combineQueriesOpt([
+          ...FILTER_BUILDER.equalsVectorClause(encounterSets, 'encounter_code'),
+          ...basicQuery(q),
+        ], 'and') || [];
+      }
+      case 'deck': {
+        const deckCodes: string[] = uniq(
+          flatMap(investigators, investigator => {
+            const deck = latestDecks[investigator.code];
+            if (!deck) {
+              // Do something else in this case?
+              return [];
+            }
+            return keys(deck.slots);
+          })
+        );
+        if (!deckCodes.length) {
+          return [];
+        }
+        return combineQueriesOpt([
+          ...FILTER_BUILDER.equalsVectorClause(deckCodes, 'code', ['deck']),
+          ...basicQuery(q),
+        ], 'and') || [];
+      }
+    }
+  });
+  return combineQueriesOpt(
+    queries,
+    'or'
+  );
 }
 
-export default class CardChoicePrompt extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static FILTER_BUILDER = new FilterBuilder('ccp');
-  state: State = {
-    extraCards: [],
-  };
-
-  includeNonDeckSearch(
-    investigators: Card[],
-    latestDecks: LatestDecks
-  ) {
-    const { input } = this.props;
+export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
+  const { colors, borderStyle } = useContext(StyleContext)
+  const [extraCards, setExtraCards] = useState<string[]>([]);
+  const { latestDecks } = useContext(CampaignGuideContext);
+  const { scenarioState, processedScenario, scenarioInvestigators } = useContext(ScenarioStepContext);
+  const nonDeckButton = useMemo(() => {
     return !!find(
       input.query,
       query => query.source === 'deck'
     ) && !!find(
-      investigators,
+      scenarioInvestigators,
       investigator => !latestDecks[investigator.code]
     );
-  }
+  }, [input, scenarioInvestigators, latestDecks]);
 
-  lockedCards(
-    scenarioState: ScenarioStateHelper
-  ): undefined | string[] {
-    const {
-      id,
-      input,
-    } = this.props;
+  const selectedCards = useMemo((): undefined | string[] => {
     if (input.include_counts) {
       const choices = scenarioState.numberChoices(id);
       return choices && keys(choices);
     }
     const choices = scenarioState.stringChoices(id);
     return choices && keys(choices);
-  }
+  }, [scenarioState, id, input]);
 
-  _onSelect = (selection: string[]) => {
-    this.setState({
-      extraCards: selection,
-    });
-  };
-
-  _showOtherCardSelector = () => {
-    const { componentId, input } = this.props;
-    const query = flatMap(input.query,
-      query => {
-        if (query.source === 'deck') {
-          return CardChoicePrompt.basicQuery(query);
-        }
-        return [];
+  const showOtherCardSelector = useCallback(() => {
+    const query = flatMap(input.query, query => {
+      if (query.source === 'deck') {
+        return basicQuery(query);
       }
-    );
+      return [];
+    });
 
     Navigation.push<CardSelectorProps>(componentId, {
       component: {
@@ -109,8 +146,8 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
             query,
             'and'
           ),
-          selection: this.state.extraCards,
-          onSelect: this._onSelect,
+          selection: extraCards,
+          onSelect: setExtraCards,
           includeStoryToggle: true,
           uniqueName: true,
         },
@@ -126,20 +163,14 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
         },
       },
     });
-  };
+  }, [extraCards, setExtraCards, componentId, input]);
 
-  _renderCards = (
+  const renderCards = useCallback((
     rawCards: Card[],
     loading: boolean,
     includeNonDeckButton: boolean
   ): Element | null => {
     const cards = uniqBy(rawCards, card => card.code);
-    const {
-      id,
-      text,
-      input,
-    } = this.props;
-    const { colors, borderStyle } = this.context;
     if (loading) {
       return (
         <View style={[styles.loadingRow, borderStyle]}>
@@ -206,146 +237,37 @@ export default class CardChoicePrompt extends React.Component<Props, State> {
         button={includeNonDeckButton ? (
           <BasicButton
             title={t`Choose additional card`}
-            onPress={this._showOtherCardSelector}
+            onPress={showOtherCardSelector}
           />
         ) : undefined}
       />
     );
-  };
-
-  static basicQuery(
-    q: CardSearchQuery
-  ): Brackets[] {
-    const result: Brackets[] = [
-      ...(q.trait ? CardChoicePrompt.FILTER_BUILDER.traitFilter([q.trait]) : []),
-    ];
-    if (q.unique) {
-      result.push(UNIQUE_FILTER);
-    }
-    if (q.vengeance) {
-      result.push(VENGEANCE_FILTER);
-    }
-    if (q.exclude_code) {
-      const codeParts = map(q.exclude_code, code => `(c.code != '${code}')`).join(' AND ');
-      result.push(where(codeParts));
-    }
-    return result;
-  }
-
-  static mainQuery(
-    query: CardQuery[],
-    processedScenario: ProcessedScenario,
-    investigators: Card[],
-    latestDecks: LatestDecks,
-  ): Brackets | undefined {
-    const queries = flatMap(query, q => {
-      if (q.code) {
-        return CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(q.code, 'code', ['code']);
-      }
-      switch (q.source) {
-        case 'scenario': {
-          const encounterSets = flatMap(
-            processedScenario.steps,
-            step => {
-              if (step.step.type === 'encounter_sets') {
-                return step.step.encounter_sets;
-              }
-              return [];
-            });
-          if (!encounterSets) {
-            return [];
-          }
-          return combineQueriesOpt([
-            ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(encounterSets, 'encounter_code'),
-            ...CardChoicePrompt.basicQuery(q),
-          ], 'and') || [];
-        }
-        case 'deck': {
-          const deckCodes: string[] = uniq(
-            flatMap(investigators, investigator => {
-              const deck = latestDecks[investigator.code];
-              if (!deck) {
-                // Do something else in this case?
-                return [];
-              }
-              return keys(deck.slots);
-            })
-          );
-          if (!deckCodes.length) {
-            return [];
-          }
-          return combineQueriesOpt([
-            ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(deckCodes, 'code', ['deck']),
-            ...this.basicQuery(q),
-          ], 'and') || [];
-        }
-      }
-    });
-    return combineQueriesOpt(
-      queries,
-      'or'
-    );
-  }
-
-  static query({
-    processedScenario,
-    scenarioInvestigators,
-    latestDecks,
-    query,
-    extraCards,
-  }: QueryProps) {
-    const queryOpt = CardChoicePrompt.mainQuery(query, processedScenario, scenarioInvestigators, latestDecks);
+  }, [id, text, input, colors, borderStyle, showOtherCardSelector]);
+  const query = useMemo(() => {
+    const queryOpt = mainQuery(input.query, processedScenario, scenarioInvestigators, latestDecks);
     return combineQueriesOpt(
       [
         ...(queryOpt ? [queryOpt] : []),
-        ...CardChoicePrompt.FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),
+        ...FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),
       ],
       'or'
     );
-  }
-
-  render() {
-    const { input } = this.props;
-    const { extraCards } = this.state;
+  }, [processedScenario, scenarioInvestigators, latestDecks, input.query, extraCards]);
+  if (selectedCards === undefined) {
     return (
-      <CampaignGuideContext.Consumer>
-        { ({ latestDecks }: CampaignGuideContextType) => (
-          <ScenarioStepContext.Consumer>
-            { ({ scenarioState, processedScenario, scenarioInvestigators }: ScenarioStepContextType) => {
-              const selectedCards = this.lockedCards(scenarioState);
-              if (selectedCards === undefined) {
-                const nonDeckButton = this.includeNonDeckSearch(scenarioInvestigators, latestDecks);
-                return (
-                  <QueryProvider<QueryProps, Brackets | undefined>
-                    processedScenario={processedScenario}
-                    scenarioInvestigators={scenarioInvestigators}
-                    latestDecks={latestDecks}
-                    query={input.query}
-                    extraCards={extraCards}
-                    getQuery={CardChoicePrompt.query}
-                  >
-                    { query => (
-                      <CardQueryWrapper name="card-choice" query={query} >
-                        { (cards: Card[], loading: boolean) => this._renderCards(cards, loading, nonDeckButton) }
-                      </CardQueryWrapper>
-                    ) }
-                  </QueryProvider>
-                );
-              }
-              return (
-                <CardListWrapper
-                  codes={selectedCards}
-                  type="encounter"
-                >
-                  { (cards: Card[], loading: boolean) => this._renderCards(cards, loading, false) }
-                </CardListWrapper>
-              );
-            } }
-          </ScenarioStepContext.Consumer>
-        ) }
-      </CampaignGuideContext.Consumer>
+      <CardQueryWrapper name="card-choice" query={query} >
+        { (cards: Card[], loading: boolean) => renderCards(cards, loading, nonDeckButton) }
+      </CardQueryWrapper>
     );
   }
+  return (
+    <CardListWrapper
+      codes={selectedCards}
+      type="encounter"
+    >
+      { (cards: Card[], loading: boolean) => renderCards(cards, loading, false) }
+    </CardListWrapper>
+  );
 }
 
 const styles = StyleSheet.create({

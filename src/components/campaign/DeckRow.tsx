@@ -41,7 +41,7 @@ export default function DeckRow({
   viewDeckButton,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const [theDeck, thePreviousDeck] = useDeck(id, true);
+  const [theDeck, thePreviousDeck] = useDeck(id, { fetchIfMissing: true });
   const cards = usePlayerCards(theDeck?.taboo_id);
   const investigators = useInvestigatorCards(theDeck?.taboo_id);
   const investigator = theDeck && investigators && investigators[theDeck.investigator_code] || undefined;

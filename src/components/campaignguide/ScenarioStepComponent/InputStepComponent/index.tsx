@@ -73,7 +73,6 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
           longLived={!!step.input.long_lived}
           delta={!!step.input.delta}
           confirmText={step.input.confirm_text}
-          effects={step.input.effects}
           min={step.input.min}
           max={step.input.max}
           text={step.text}

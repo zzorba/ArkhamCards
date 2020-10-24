@@ -22,7 +22,7 @@ import CardQuantityComponent from '../cardlist/CardSearchResult/CardQuantityComp
 import { InvestigatorCardsProps } from '../cardlist/InvestigatorCardsView';
 import { NavigationProps } from '@components/nav/types';
 import { Slots } from '@actions/types';
-import Card, { CardsMap, PartialCard } from '@data/Card';
+import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import { useSlots, useToggles, useComponentDidAppear, useNavigationButtonPressed, useCards } from '@components/core/hooks';

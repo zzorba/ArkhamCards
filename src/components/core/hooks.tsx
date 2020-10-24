@@ -1,11 +1,11 @@
-import React, { Reducer, useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
+import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent } from 'react-native-navigation';
 import { forEach, debounce } from 'lodash';
 
-import { Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
+import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, getDeck, getTabooSet } from '@reducers';
+import { AppState, getCampaign, getDeck, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
@@ -42,6 +42,37 @@ export function useComponentDidAppear(
       sub.remove();
     };
   }, [componentId]);
+}
+
+
+interface IncAction {
+  type: 'inc';
+}
+interface DecAction {
+  type: 'dec';
+}
+export function useCounter(initialValue: number, { min, max }: { min?: number; max?: number }): [number, () => void, () => void] {
+  const [value, updateValue] = useReducer((state: number, action: IncAction | DecAction) => {
+    switch (action.type) {
+      case 'inc':
+        if (max) {
+          return Math.min(max, state + 1);
+        }
+        return state + 1;
+      case 'dec':
+        if (min) {
+          return Math.max(min, state - 1);
+        }
+        return state - 1;
+    }
+  }, initialValue);
+  const inc = useCallback(() => {
+    updateValue({ type: 'inc' });
+  }, [updateValue]);
+  const dec = useCallback(() => {
+    updateValue({ type: 'dec' });
+  }, [updateValue]);
+  return [value, inc, dec];
 }
 
 interface ClearAction {
@@ -222,7 +253,17 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useDeck(id: number, fectchIfMissing: boolean) {
+export function useCamapign(campaignId?: number): Campaign | undefined {
+  const selector = useCallback((state: AppState) => {
+    if (campaignId) {
+      return getCampaign(state, campaignId);
+    }
+    return undefined;
+  }, [campaignId]);
+  return useSelector(selector);
+}
+
+export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
   const dispatch = useDispatch();
   const deckSelector = useCallback(getDeck(id), [id]);
   const theDeck = useSelector(deckSelector) || undefined;
@@ -231,12 +272,12 @@ export function useDeck(id: number, fectchIfMissing: boolean) {
   }, [theDeck]);
   const thePreviousDeck = useSelector(previousDeckSelector) || undefined;
   useEffect(() => {
-    if (!theDeck && fectchIfMissing) {
+    if (!theDeck && fetchIfMissing) {
       dispatch(fetchPrivateDeck(id));
     }
   }, []);
   useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previous_deck && fectchIfMissing) {
+    if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing) {
       dispatch(fetchPrivateDeck(id));
     }
   }, [theDeck]);

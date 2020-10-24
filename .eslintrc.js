@@ -161,5 +161,6 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 'off',
     'react/jsx-curly-spacing': 'off',
     'react/display-name': 'off',
+    'destructuring/no-rename': 'off',
   }
 }

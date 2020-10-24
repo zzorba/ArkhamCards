@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { flatMap, forEach, map, min, max, groupBy } from 'lodash';
 import { t } from 'ttag';
 
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import withCampaignGuideContext, { CampaignGuideInputProps, CampaignGuideProps } from '@components/campaignguide/withCampaignGuideContext';
 import Card, { CardsMap } from '@data/Card';
@@ -11,33 +10,18 @@ import CardListWrapper from '@components/card/CardListWrapper';
 import space from '@styles/space';
 import { CardErrata } from '@data/scenario/types';
 import EncounterIcon from '@icons/EncounterIcon';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 export interface EncounterCardErrataProps extends CampaignGuideInputProps {
   encounterSets: string[];
 }
 
-type Props = EncounterCardErrataProps & CampaignGuideProps & DimensionsProps;
+type Props = EncounterCardErrataProps & CampaignGuideProps;
 
-class EncounterCardErrataView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function EncounterCardErrataView({ encounterSets, campaignData }: Props) {
+  const { fontScale, colors, typography } = useContext(StyleContext);
 
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Encounter Card Errata`,
-        },
-        backButton: {
-          title: t`Back`,
-        },
-      },
-    };
-  }
-
-  _renderErrata = (errata: CardErrata, key: number, allCards: CardsMap) => {
-    const { fontScale, colors, typography } = this.context;
+  const renderErrata = useCallback((errata: CardErrata, key: number, allCards: CardsMap) => {
     const cardsByName = groupBy(
       flatMap(errata.code, code => {
         const card = allCards[code];
@@ -72,47 +56,54 @@ class EncounterCardErrataView extends React.Component<Props> {
         })}
       </View>
     );
-  };
+  }, [fontScale, colors, typography]);
 
-  render() {
-    const { encounterSets, campaignData } = this.props;
-    const { colors } = this.context;
-    const errata = campaignData.campaignGuide.cardErrata(encounterSets);
-    return (
-      <CardListWrapper
-        codes={flatMap(errata, e => e.code)}
-        type="encounter"
-      >
-        { (cards: Card[], loading: boolean) => {
-          const cardsMap: CardsMap = {};
-          forEach(cards, card => {
-            cardsMap[card.code] = card;
-          });
-          return (
-            <ScrollView contentContainerStyle={styles.container}>
-              { loading ? (
-                <ActivityIndicator
-                  style={space.paddingM}
-                  color={colors.lightText}
-                  size="large"
-                  animating
-                />
-              ) : (
-                <>
-                  { map(errata, (e, idx) => this._renderErrata(e, idx, cardsMap)) }
-                </>
-              ) }
-            </ScrollView>
-          );
-        } }
-      </CardListWrapper>
-    );
-  }
+  const errata = campaignData.campaignGuide.cardErrata(encounterSets);
+  return (
+    <CardListWrapper
+      codes={flatMap(errata, e => e.code)}
+      type="encounter"
+    >
+      { (cards: Card[], loading: boolean) => {
+        const cardsMap: CardsMap = {};
+        forEach(cards, card => {
+          cardsMap[card.code] = card;
+        });
+        return (
+          <ScrollView contentContainerStyle={styles.container}>
+            { loading ? (
+              <ActivityIndicator
+                style={space.paddingM}
+                color={colors.lightText}
+                size="large"
+                animating
+              />
+            ) : (
+              <>
+                { map(errata, (e, idx) => renderErrata(e, idx, cardsMap)) }
+              </>
+            ) }
+          </ScrollView>
+        );
+      } }
+    </CardListWrapper>
+  );
 }
 
-export default withCampaignGuideContext(
-  withDimensions(EncounterCardErrataView)
-);
+EncounterCardErrataView.options = () => {
+  return {
+    topBar: {
+      title: {
+        text: t`Encounter Card Errata`,
+      },
+      backButton: {
+        title: t`Back`,
+      },
+    },
+  };
+};
+
+export default withCampaignGuideContext(EncounterCardErrataView);
 
 const styles = StyleSheet.create({
   container: {

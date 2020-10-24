@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  useWindowDimensions,
   View,
 } from 'react-native';
 // @ts-ignore
@@ -19,7 +18,8 @@ import CardCostIcon from '@components/core/CardCostIcon';
 import InvestigatorImage from '@components/core/InvestigatorImage';
 import Card from '@data/Card';
 import space, { m, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { FadeProps } from 'rn-placeholder/lib/animations/Fade';
 
 interface Props {
   superTitle?: string;
@@ -50,7 +50,6 @@ export default function InvestigatorRow({
   noFactionIcon,
 }: Props) {
   const { backgroundStyle, borderStyle, colors, fontScale, typography } = useContext(StyleContext);
-  const { width } = useWindowDimensions();
   const handleOnPress = useCallback(() => {
     onPress && investigator && onPress(investigator);
   }, [onPress, investigator]);
@@ -64,7 +63,12 @@ export default function InvestigatorRow({
     }
     return colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground;
   }, [eliminated, investigator, colors]);
-
+  const fadeAnim = useCallback((props: any) => {
+    return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />
+  }, [colors]);
+  const detailFadeAnim =  useCallback((props: any) => {
+    return <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />
+  }, [colors]);
   const content = useMemo(() => {
     return (
       <View style={[
@@ -78,7 +82,7 @@ export default function InvestigatorRow({
             { backgroundColor },
           ]} />
         ) : (
-          <Placeholder Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />}>
+          <Placeholder Animation={fadeAnim}>
             <PlaceholderLine noMargin style={styles.headerColor} color={colors.D10} />
           </Placeholder>
         ) }
@@ -106,7 +110,7 @@ export default function InvestigatorRow({
                 { description ? `${investigator.name}: ${description}` : investigator.name }
               </Text>
             ) : (
-              <Placeholder Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}>
+              <Placeholder Animation={detailFadeAnim}>
                 <PlaceholderLine color={colors.L10} height={28 * fontScale * 0.6} width={40} style={{ marginTop: 4, marginBottom: 4 }} />
               </Placeholder>
             ) }
@@ -142,13 +146,15 @@ export default function InvestigatorRow({
             { backgroundColor },
           ]} />
         ) : (
-          <Placeholder Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />}>
+          <Placeholder Animation={fadeAnim}>
             <PlaceholderLine noMargin style={[styles.headerColor, { borderRadius: 0 }]} color={colors.D10} />
           </Placeholder>
         ) }
       </View>
     );
   }, [
+    detailFadeAnim,
+    fadeAnim,
     handleOnRemove,
     backgroundColor,
     investigator,

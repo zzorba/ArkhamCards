@@ -8,7 +8,6 @@ import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/query';
-import Card from '@data/Card';
 import { parseDeck } from '@lib/parseDeck';
 import DeckNavFooter from '../DeckNavFooter';
 import { NavigationProps } from '@components/nav/types';
@@ -28,19 +27,6 @@ interface OwnProps {
 export type EditDeckProps = OwnProps & TabooSetOverride;
 
 type Props = NavigationProps & EditDeckProps;
-
-interface State {
-  deckCardCounts: Slots;
-  slots: Slots;
-}
-
-interface QueryProps {
-  meta: DeckMeta;
-  storyOnly?: boolean;
-  versatile: boolean;
-  onYourOwn: boolean;
-  investigator: Card;
-}
 
 export default function DeckEditView({
   componentId,

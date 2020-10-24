@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Text } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import withCampaignGuideContext, { CampaignGuideProps, CampaignGuideInputProps } from './withCampaignGuideContext';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;
@@ -14,45 +14,40 @@ export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
 export default function withScenarioGuideContext<Props>(
   WrappedComponent: React.ComponentType<Props & ScenarioGuideContextType>
 ): React.ComponentType<Props & ScenarioGuideInputProps> {
-  class ScenarioDataComponent extends React.Component<Props & CampaignGuideProps & ScenarioGuideInputProps> {
-    static contextType = StyleContext;
-    context!: StyleContextType;
+  function ScenarioDataComponent(props: Props & CampaignGuideProps & ScenarioGuideInputProps) {
+    const {
+      campaignData: {
+        campaignState,
+        campaignGuide,
+      },
+      scenarioId,
+    } = props;
+    const styleContext = useContext(StyleContext);
+    const processedScenario = useMemo(() => campaignGuide.getScenario(
+      scenarioId,
+      campaignState
+    ), [scenarioId, campaignState]);
+    const scenarioState = useMemo(() => {
+      return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
+    }, [processedScenario, campaignState]);
 
-    render() {
-      const {
-        campaignData: {
-          campaignState,
-          campaignGuide,
-        },
-        scenarioId,
-      } = this.props;
-      const processedScenario = campaignGuide.getScenario(
-        scenarioId,
-        campaignState
-      );
-      if (!processedScenario) {
-        return <Text>Unknown scenario: { scenarioId }</Text>;
-      }
-      const scenarioState = new ScenarioStateHelper(
-        processedScenario.scenarioGuide.id,
-        campaignState
-      );
-      const context: ScenarioGuideContextType = {
+    if (!processedScenario || !scenarioState) {
+      return <Text>Unknown scenario: { scenarioId }</Text>;
+    }
+    return (
+      <ScenarioGuideContext.Provider value={{
         processedScenario,
         scenarioState,
-        style: this.context,
-      };
-      return (
-        <ScenarioGuideContext.Provider value={context}>
-          <WrappedComponent
-            {...this.props as Props}
-            processedScenario={processedScenario}
-            scenarioState={scenarioState}
-            style={this.context}
-          />
-        </ScenarioGuideContext.Provider>
-      );
-    }
+        style: styleContext,
+      }}>
+        <WrappedComponent
+          {...props as Props}
+          processedScenario={processedScenario}
+          scenarioState={scenarioState}
+          style={styleContext}
+        />
+      </ScenarioGuideContext.Provider>
+    );
   }
   const result = withCampaignGuideContext<Props & ScenarioGuideInputProps>(
     ScenarioDataComponent

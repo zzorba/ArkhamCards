@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   Text,
   StyleSheet,
@@ -10,10 +10,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommu
 
 import { showScenario } from '@components/campaignguide/nav';
 import NavButton from '@components/core/NavButton';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { ProcessedScenario } from '@data/scenario';
 import space, { s } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -26,12 +27,10 @@ interface Props {
   ) => void;
 }
 
-export default class ScenarioButton extends React.Component<Props> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  name() {
-    const { scenario } = this.props;
+export default function ScenarioButton({ componentId, campaignId, campaignGuide, scenario, linked, showLinkedScenario }: Props) {
+  const { campaignState } = useContext(CampaignGuideContext);
+  const { fontScale, colors, typography } = useContext(StyleContext);
+  const name = useMemo(() => {
     const attempt = (scenario.id.replayAttempt || 0) + 1;
     const scenarioName = scenario.scenarioGuide.scenarioType() === 'scenario' ?
       scenario.scenarioGuide.scenarioName() :
@@ -40,32 +39,20 @@ export default class ScenarioButton extends React.Component<Props> {
       return t`${scenarioName} (Attempt ${attempt})`;
     }
     return scenarioName;
-  }
+  }, [scenario]);
 
-  _onPress = () => {
-    const {
-      componentId,
-      scenario,
-      campaignId,
-      campaignGuide,
-      linked,
-      showLinkedScenario,
-    } = this.props;
+  const onPress = useCallback(() => {
     showScenario(
       componentId,
       scenario,
       campaignId,
-      this.context.campaignState,
+      campaignState,
       linked ? campaignGuide.campaignName() : undefined,
       showLinkedScenario
     );
-  };
+  }, [componentId, scenario, campaignId, campaignGuide, linked, showLinkedScenario, campaignState]);
 
-  renderIcon() {
-    const { scenario } = this.props;
-    const {
-      style: { fontScale, colors },
-    } = this.context;
+  const icon = useMemo(() => {
     const iconSize = 24 * fontScale;
     switch (scenario.type) {
       case 'placeholder':
@@ -110,25 +97,21 @@ export default class ScenarioButton extends React.Component<Props> {
           />
         );
     }
-  }
+  }, [scenario, colors, fontScale]);
 
-  renderContent() {
-    const { scenario } = this.props;
-    const {
-      style: { typography },
-    } = this.context;
+  const content = useMemo(() => {
     switch (scenario.type) {
       case 'locked':
         return (
           <Text style={[typography.gameFont, typography.light]} numberOfLines={2}>
-            { this.name() }
+            { name }
           </Text>
         );
       case 'placeholder':
         return (
           <>
             <Text style={[typography.gameFont, typography.light]} numberOfLines={2}>
-              { this.name() }
+              { name }
             </Text>
             <Text style={[typography.small, typography.light]} numberOfLines={1}>
               { t`Coming soon` }
@@ -138,43 +121,40 @@ export default class ScenarioButton extends React.Component<Props> {
       case 'completed':
         return (
           <Text style={typography.gameFont} numberOfLines={2}>
-            { this.name() }
+            { name }
           </Text>
         );
       case 'started':
       case 'playable':
         return (
           <Text style={[typography.gameFont, styles.playable]} numberOfLines={2}>
-            { this.name() }
+            { name }
           </Text>
         );
       case 'skipped':
         return (
           <Text style={[typography.gameFont, styles.skipped]} numberOfLines={2}>
-            { this.name() }
+            { name }
           </Text>
         );
     }
-  }
+  }, [scenario, typography, name]);
 
-  render() {
-    const { scenario } = this.props;
-    return (
-      <NavButton
-        onPress={this._onPress}
-        disabled={(scenario.type === 'locked' || scenario.type === 'skipped' || scenario.type === 'placeholder')}
-      >
-        <View style={styles.wrapper}>
-          <View style={[space.marginLeftS, space.marginRightM]}>
-            { this.renderIcon() }
-          </View>
-          <View style={styles.flex}>
-            { this.renderContent() }
-          </View>
+  return (
+    <NavButton
+      onPress={onPress}
+      disabled={(scenario.type === 'locked' || scenario.type === 'skipped' || scenario.type === 'placeholder')}
+    >
+      <View style={styles.wrapper}>
+        <View style={[space.marginLeftS, space.marginRightM]}>
+          { icon }
         </View>
-      </NavButton>
-    );
-  }
+        <View style={styles.flex}>
+          { content }
+        </View>
+      </View>
+    </NavButton>
+  );
 }
 
 const styles = StyleSheet.create({

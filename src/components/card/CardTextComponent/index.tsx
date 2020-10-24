@@ -269,7 +269,8 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
           color: context.colors.navButton,
         },
         paragraph: {
-          ...context.typography.small,
+          fontFamily: 'Alegreya-Regular',
+          color: context.colors.darkText,
           fontSize: 16 * context.fontScale,
           lineHeight: 20 * context.fontScale,
           marginTop: 4,
