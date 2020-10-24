@@ -58,7 +58,7 @@ export default function useTraumaDialog({ hideKilledInsane }: { hideKilledInsane
   const traumaDialog = useMemo(() => {
     return (
       <EditTraumaDialog
-        visible={!state}
+        visible={!!state}
         investigator={state?.investigator}
         trauma={state?.traumaData}
         updateTrauma={updateTraumaData}
