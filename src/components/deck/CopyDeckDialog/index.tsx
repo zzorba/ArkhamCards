@@ -221,8 +221,8 @@ class CopyDeckDialog extends React.Component<Props, State> {
     }
     return (
       <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`SELECT DECK VERSION TO COPY` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Version to copy` }
         </DialogComponent.Description>
         { parsedBaseDeck ? (
           <SelectDeckSwitch
@@ -338,7 +338,7 @@ class CopyDeckDialog extends React.Component<Props, State> {
         viewRef={viewRef}
       >
         <DialogComponent.Description
-          style={[space.marginSideS, saving ? typography.center : typography.left]}
+          style={[space.marginSideS, saving ? typography.center : typography.left, typography.text]}
         >
           { saving ?
             t`Saving` :

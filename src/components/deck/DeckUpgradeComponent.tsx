@@ -19,6 +19,7 @@ import { DeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import BasicButton from '@components/core/BasicButton';
 
 interface OwnProps {
   investigator: Card;
@@ -30,6 +31,7 @@ interface OwnProps {
   upgradeCompleted: (deck: Deck, xp: number) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+  saveButton?: boolean;
 }
 
 type Props = NavigationProps & OwnProps;
@@ -172,6 +174,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
       investigator,
       componentId,
       campaignSection,
+      saveButton,
     } = this.props;
     const {
       xp,
@@ -229,6 +232,7 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
           updateExileCounts={this._onExileCountsChange}
         />
         { !!campaignSection && campaignSection }
+        { !!saveButton && <BasicButton onPress={this.save} title={t`Save`} /> }
       </View>
     );
   }

@@ -164,8 +164,8 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
           saveDeckChanges={performSaveDeckChanges}
           upgradeCompleted={deckUpgradeComplete}
           campaignSection={campaignSection}
+          saveButton
         />
-        <BasicButton onPress={save} title={t`Save`} />
       </ScrollView>
     </View>
   );
