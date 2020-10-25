@@ -9,24 +9,21 @@ interface Props {
   step: GenericStep;
 }
 
-export default class GenericStepComponent extends React.Component<Props> {
-  render() {
-    const { step } = this.props;
-    if (!step.title && !step.text && !step.bullets) {
-      return null;
-    }
-    if (step.hidden) {
-      return null;
-    }
-    return (
-      <>
-        <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
-          { !!step.text && (
-            <CampaignGuideTextComponent text={step.text} />
-          ) }
-        </SetupStepWrapper>
-        <BulletsComponent bullets={step.bullets} />
-      </>
-    );
+export default function GenericStepComponent({ step }: Props) {
+  if (!step.title && !step.text && !step.bullets) {
+    return null;
   }
+  if (step.hidden) {
+    return null;
+  }
+  return (
+    <>
+      <SetupStepWrapper bulletType={step.title ? 'none' : step.bullet_type}>
+        { !!step.text && (
+          <CampaignGuideTextComponent text={step.text} />
+        ) }
+      </SetupStepWrapper>
+      <BulletsComponent bullets={step.bullets} />
+    </>
+  );
 }

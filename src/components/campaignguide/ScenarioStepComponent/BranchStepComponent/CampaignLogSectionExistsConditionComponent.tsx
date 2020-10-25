@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { t } from 'ttag';
 
 import BinaryResult from '../../BinaryResult';
-import CampaignGuideContext, { CampaignGuideContextType } from '../../CampaignGuideContext';
+import CampaignGuideContext from '../../CampaignGuideContext';
 import {
   BranchStep,
   CampaignLogSectionExistsCondition,

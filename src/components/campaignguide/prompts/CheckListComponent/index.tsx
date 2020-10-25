@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, Text, View, StyleSheet } from 'react-native';
 import { find, forEach, keys, map, sum } from 'lodash';
 import { t } from 'ttag';
 
@@ -30,6 +30,7 @@ export interface CheckListComponentProps {
   min?: number;
   max?: number;
   button?: React.ReactNode;
+  loading?: boolean;
 }
 
 interface Props extends CheckListComponentProps {
@@ -144,9 +145,9 @@ export default class CheckListComponent extends React.Component<Props, State> {
   }
 
   render() {
-    const { id, items, bulletType, text, checkText, button } = this.props;
+    const { id, items, bulletType, text, checkText, button, loading } = this.props;
     const {
-      style: { borderStyle, typography },
+      style: { borderStyle, colors, typography },
       scenarioState,
     } = this.context;
     const { selectedChoice } = this.state;
@@ -164,7 +165,11 @@ export default class CheckListComponent extends React.Component<Props, State> {
             { checkText }
           </Text>
         </View>
-        { map(items, (item, idx) => {
+        { loading ? (
+          <View style={[styles.loadingRow, borderStyle]}>
+            <ActivityIndicator size="small" animating color={colors.lightText} />
+          </View>
+          ): map(items, (item, idx) => {
           const selected = choiceList !== undefined ? (
             choiceList[item.code] !== undefined
           ) : (
@@ -180,7 +185,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
             />
           );
         }) }
-        { ((items.length === 0) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
+        { ((items.length === 0 && !loading) || (choiceList !== undefined && keys(choiceList).length === 0)) && (
           <View style={[styles.row, borderStyle]}>
             <Text style={[typography.mediumGameFont, styles.nameText]}>
               { t`None` }
@@ -220,5 +225,12 @@ const styles = StyleSheet.create({
   },
   nameText: {
     fontWeight: '600',
+  },
+  loadingRow: {
+    flexDirection: 'row',
+    padding: m,
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

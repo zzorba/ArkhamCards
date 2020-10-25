@@ -42,7 +42,7 @@ export default function CampaignSelector({ componentId, campaignChanged }: Props
         selectedCampaign,
       hasGuide
     );
-  }, [campaignState])
+  }, [campaignState]);
 
   const handleCampaignChanged = useCallback((code: CampaignCycleCode, text: string, hasGuide: boolean) => {
     setCampaignState({

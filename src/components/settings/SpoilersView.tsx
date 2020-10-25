@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import { setPackSpoiler, setCyclePackSpoiler } from '@actions';
 import PackListComponent from '@components/core/PackListComponent';
 import { NavigationProps } from '@components/nav/types';
-import { getAllPacks, getPackSpoilers, AppState } from '@reducers';
+import { getAllPacks, getPackSpoilers } from '@reducers';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 

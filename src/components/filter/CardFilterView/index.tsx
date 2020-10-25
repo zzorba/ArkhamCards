@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { keys, forEach, map, filter, indexOf, partition } from 'lodash';
+import { keys, forEach, map, filter, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,

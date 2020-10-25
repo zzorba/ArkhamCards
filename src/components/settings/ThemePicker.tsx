@@ -9,7 +9,6 @@ import { getThemeOverride } from '@reducers';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import StyleContext from '@styles/StyleContext';
 import COLORS from '@styles/colors';
-import { InteractionManager } from 'react-native';
 
 export default function ThemePicker() {
   const dispatch = useDispatch();

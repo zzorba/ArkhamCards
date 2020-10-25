@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { TouchableOpacity as GestureHandlerTouchableOpacity } from 'react-native-gesture-handler';
 
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
 
 interface Props extends TouchableOpacityProps {
@@ -11,37 +11,32 @@ interface Props extends TouchableOpacityProps {
   onValueChange: (checked: boolean) => void;
   accessibilityLabel?: string;
 }
-export default class ArkhamSwitch extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, ...props}: Props) {
+  const { colors } = useContext(StyleContext);
 
-  _onPress = () => {
-    const { value, onValueChange } = this.props;
+  const onPress = useCallback(() => {
     onValueChange(!value);
-  }
-  render() {
-    const { value, onValueChange, accessibilityLabel, disabled, useGestureHandler, ...props } = this.props;
-    const { colors } = this.context;
-    const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
-    return (
-      <TouchableComponent
-        onPress={this._onPress}
-        accessibilityRole="switch"
-        accessibilityLabel={accessibilityLabel}
-        accessibilityState={{ checked: value }}
-        disabled={disabled} {...props}
-      >
-        <View style={styles.icon}>
-          <AppIcon size={28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
-          { !!value && (
-            <View style={styles.check}>
-              <AppIcon size={20} name="check" color={disabled ? colors.L20 : colors.M} />
-            </View>
-          )}
-        </View>
-      </TouchableComponent>
-    );
-  }
+  }, [value, onValueChange]);
+
+  const TouchableComponent = useGestureHandler ? GestureHandlerTouchableOpacity : TouchableOpacity;
+  return (
+    <TouchableComponent
+      onPress={onPress}
+      accessibilityRole="switch"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityState={{ checked: value }}
+      disabled={disabled} {...props}
+    >
+      <View style={styles.icon}>
+        <AppIcon size={28} name="check-circle" color={disabled ? colors.L20 : colors.L10} />
+        { !!value && (
+          <View style={styles.check}>
+            <AppIcon size={20} name="check" color={disabled ? colors.L20 : colors.M} />
+          </View>
+        )}
+      </View>
+    </TouchableComponent>
+  );
 }
 
 const styles = StyleSheet.create({

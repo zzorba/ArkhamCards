@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { ScrollView,StyleSheet, View } from 'react-native';
-import { useSelector } from 'react-redux';
 import { flatMap, keys, map, range, sortBy } from 'lodash';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
@@ -9,11 +8,9 @@ import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
 import { iconsMap } from '@app/NavIcons';
 import COLORS from '@styles/colors';
-import { AppState, getChaosBagResults } from '@reducers';
 import { CHAOS_TOKEN_ORDER, ChaosBag, ChaosTokenType } from '@app_constants';
-import { ChaosBagResults } from '@actions/types';
 import SealTokenButton from './SealTokenButton';
-import { useNavigationButtonPressed } from '@components/core/hooks';
+import { useChaosBagResults, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface SealTokenDialogProps {
   campaignId: number;
@@ -21,8 +18,7 @@ export interface SealTokenDialogProps {
 }
 
 function SealTokenDialog({ componentId, campaignId, chaosBag }: SealTokenDialogProps & NavigationProps) {
-  const chaosBagResultsSelector = useCallback((state: AppState) => getChaosBagResults(state, campaignId), [campaignId]);
-  const chaosBagResults = useSelector(chaosBagResultsSelector);
+  const chaosBagResults = useChaosBagResults(campaignId);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'close') {

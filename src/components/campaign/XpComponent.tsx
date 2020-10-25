@@ -23,7 +23,6 @@ export default function XpComponent({ xp, onChange, isInvestigator }: Props) {
         index={0}
         title={t`Experience`}
         count={xp || 0}
-        isInvestigator={isInvestigator}
       />
     </View>
   );

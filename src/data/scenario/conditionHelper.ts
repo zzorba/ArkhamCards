@@ -60,7 +60,7 @@ interface StringResult {
   option?: Option;
 }
 
-type OptionWithId = Option & { id: string };
+export type OptionWithId = Option & { id: string };
 
 export interface InvestigatorResult {
   type: 'investigator';

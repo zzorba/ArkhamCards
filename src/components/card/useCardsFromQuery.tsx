@@ -5,25 +5,26 @@ import { filter } from 'lodash';
 
 import Card from '@data/Card';
 import { QuerySort } from '@data/types';
-import { getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
+import { useTabooSet } from '@components/core/hooks';
 
 interface Props {
   query?: Brackets;
   sort?: QuerySort[];
+  tabooSetOverride?: number;
 }
 
-export default function useCardsFromQuery({ query, sort }: Props): [Card[], boolean] {
-  const tabooSetId = useSelector(getTabooSet);
-  const { db } = useContext(DatabaseContext);
+export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Props): [Card[], boolean] {
+  const tabooSetId = useTabooSet(tabooSetOverride);
+  const { db } =  useContext(DatabaseContext);
   const [cards, setCards] = useState<Card[] | undefined>();
   useEffect(() => {
     if (!query) {
       setCards([]);
     } else {
-      setCards(undefined);
+      // setCards(undefined);
       db.getCards(query, tabooSetId, sort).then(cards => {
-        setCards(filter(cards, card => !!card))
+        setCards(filter(cards, card => !!card));
       });
     }
   }, [db, query, tabooSetId, sort]);

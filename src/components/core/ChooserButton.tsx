@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { t } from 'ttag';
 import NavButton from './NavButton';
@@ -13,15 +13,9 @@ interface Props {
   selection?: string[];
   indent?: boolean;
 }
-export default class ChooserButton extends React.Component<Props> {
-  _onPress = () => {
-    const {
-      componentId,
-      title,
-      values,
-      onChange,
-      selection,
-    } = this.props;
+
+export default function ChooserButton({ componentId, title, values, onChange, selection, indent}: Props) {
+  const onPress = useCallback(() => {
     Navigation.push<SearchSelectProps>(componentId, {
       component: {
         name: 'SearchFilters.Chooser',
@@ -52,20 +46,12 @@ export default class ChooserButton extends React.Component<Props> {
         },
       },
     });
-  }
-
-  render() {
-    const {
-      title,
-      selection,
-      indent,
-    } = this.props;
-    return (
-      <NavButton
-        text={`${title}: ${selection && selection.length ? selection.join(', ') : t`All`}`}
-        onPress={this._onPress}
-        indent={indent}
-      />
-    );
-  }
+  }, [componentId, title, values, onChange, selection]);
+  return (
+    <NavButton
+      text={`${title}: ${selection && selection.length ? selection.join(', ') : t`All`}`}
+      onPress={onPress}
+      indent={indent}
+    />
+  );
 }

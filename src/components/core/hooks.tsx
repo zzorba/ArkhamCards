@@ -2,13 +2,14 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer } from
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent } from 'react-native-navigation';
 import { forEach, debounce } from 'lodash';
 
-import { Campaign, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, getCampaign, getDeck, getTabooSet } from '@reducers';
+import { AppState, getCampaign, getChaosBagResults, getDeck, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
+import { campaignScenarios, Scenario } from '@components/campaign/constants';
 
 export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
@@ -59,7 +60,7 @@ export function useCounter(initialValue: number, { min, max }: { min?: number; m
   const [value, updateValue] = useReducer((state: number, action: IncAction | DecAction | SetAction) => {
     switch (action.type) {
       case 'set':
-        return action.value
+        return action.value;
       case 'inc':
         if (max) {
           return Math.min(max, state + 1);
@@ -79,7 +80,7 @@ export function useCounter(initialValue: number, { min, max }: { min?: number; m
     updateValue({ type: 'dec' });
   }, [updateValue]);
   const set = useCallback((value: number) => {
-    updateValue({ type: 'set', value})
+    updateValue({ type: 'set', value });
   }, [updateValue]);
   return [value, inc, dec, set];
 }
@@ -253,9 +254,13 @@ export function useCards(indexBy: 'code' | 'id', initialCards?: Card[]) {
   );
 }
 
+export function useTabooSet(tabooSetOverride?: number): number {
+  const selector = useCallback((state: AppState) => getTabooSet(state, tabooSetOverride), [tabooSetOverride]);
+  return useSelector(selector) || 0;
+}
 
 export function usePlayerCards(tabooSetOverride?: number): CardsMap | undefined {
-  const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
+  const tabooSetId = useTabooSet(tabooSetOverride);
   const { playerCardsByTaboo } = useContext(DatabaseContext);
   const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
   return playerCards?.cards;
@@ -283,6 +288,23 @@ export function useCampaign(campaignId?: number): Campaign | undefined {
     return undefined;
   }, [campaignId]);
   return useSelector(selector);
+}
+
+export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code: string]: Scenario }] {
+  const cycleScenarios = useMemo(() => campaign ? campaignScenarios(campaign.cycleCode) : [], [campaign]);
+  const scenarioByCode = useMemo(() => {
+    const result: { [code: string]: Scenario } = {};
+    forEach(cycleScenarios, scenario => {
+      result[scenario.code] = scenario;
+    });
+    return result;
+  }, [cycleScenarios]);
+  return [cycleScenarios, scenarioByCode];
+}
+
+export function useChaosBagResults(campaignId: number): ChaosBagResults {
+  const chaosBagResultsSelector = useCallback((state: AppState) => getChaosBagResults(state, campaignId), [campaignId]);
+  return useSelector(chaosBagResultsSelector);
 }
 
 export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boolean }) {

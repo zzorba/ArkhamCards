@@ -29,7 +29,7 @@ type Props = CardSelectorProps & NavigationProps;
 
 export default function CardSelectorView({ query, selection: initialSelection, onSelect, includeStoryToggle, uniqueName }: Props) {
   const { colors } = useContext(StyleContext);
-  const [selection, setSelection] = useState(mapValues(keyBy(initialSelection), v => true));
+  const [selection, setSelection] = useState(mapValues(keyBy(initialSelection), () => true));
   const [storyToggle, setStoryToggle] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 

@@ -12,7 +12,7 @@ interface Props {
   investigator: Card;
   onPress: (deck: Deck, investigator: Card) => void;
 }
-export default function DeckRowButton({ icon, text, deck, investigator, onPress}: Props) {
+export default function DeckRowButton({ icon, text, deck, investigator, onPress }: Props) {
   const onButtonPress = useCallback(() => {
     onPress(deck, investigator);
   }, [onPress, deck, investigator]);

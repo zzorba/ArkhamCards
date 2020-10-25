@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { map } from 'lodash';
 import {
   StyleSheet,
@@ -29,23 +29,18 @@ interface Props {
     ) => void
   ) => void;
 }
-export default class EditCampaignNotesComponent extends React.Component<Props> {
-
-  _showAddSectionDialog = () => {
-    const {
-      showAddSectionDialog,
-    } = this.props;
-    showAddSectionDialog(this._addNotesSection);
-  };
-
-  _addNotesSection = (name: string, isCount: boolean, perInvestigator: boolean) => {
-    const {
-      campaignNotes,
-      updateCampaignNotes,
-    } = this.props;
-    const newCampaignNotes = Object.assign({}, campaignNotes);
+export default function EditCampaignNotesComponent({
+  componentId,
+  allInvestigators,
+  campaignNotes,
+  updateCampaignNotes,
+  showDialog,
+  showAddSectionDialog,
+}: Props) {
+  const addNotesSection = useCallback((name: string, isCount: boolean, perInvestigator: boolean) => {
+    const newCampaignNotes = { ...campaignNotes };
     if (perInvestigator) {
-      const newInvestigatorNotes = Object.assign({}, campaignNotes.investigatorNotes);
+      const newInvestigatorNotes = { ...campaignNotes.investigatorNotes };
       if (isCount) {
         newInvestigatorNotes.counts = (newInvestigatorNotes.counts || []).slice();
         newInvestigatorNotes.counts.push({ title: name, counts: {}, custom: true });
@@ -64,107 +59,90 @@ export default class EditCampaignNotesComponent extends React.Component<Props> {
       }
     }
     updateCampaignNotes(newCampaignNotes);
-  };
+  }, [campaignNotes, updateCampaignNotes]);
+  const addSectionDialogPressed = useCallback(() => {
+    showAddSectionDialog(addNotesSection);
+  }, [showAddSectionDialog, addNotesSection]);
 
-  _notesChanged = (index: number, notes: string[]) => {
-    const {
-      updateCampaignNotes,
-      campaignNotes,
-    } = this.props;
+  const notesChanged = useCallback((index: number, notes: string[]) => {
     const sections = (campaignNotes.sections || []).slice();
-    sections[index] = Object.assign({}, sections[index], { notes });
-    updateCampaignNotes(Object.assign({}, campaignNotes, { sections }));
-  };
+    sections[index] = {
+      ...sections[index],
+      notes,
+    };
+    updateCampaignNotes({
+      ...campaignNotes,
+      sections,
+    });
+  }, [updateCampaignNotes, campaignNotes]);
 
-  _countChanged = (index: number, count: number) => {
-    const {
-      updateCampaignNotes,
-      campaignNotes,
-    } = this.props;
+  const countChanged = useCallback((index: number, count: number) => {
     const counts = (campaignNotes.counts || []).slice();
-    counts[index] = Object.assign({}, counts[index], { count });
-    updateCampaignNotes(Object.assign({}, campaignNotes, { counts }));
-  };
+    counts[index] = { ...counts[index], count };
+    updateCampaignNotes({ ...campaignNotes, counts });
+  }, [updateCampaignNotes, campaignNotes]);
 
-  _updateInvestigatorNotes = (investigatorNotes: InvestigatorNotes) => {
-    const {
-      updateCampaignNotes,
-      campaignNotes,
-    } = this.props;
-    updateCampaignNotes(Object.assign({}, campaignNotes, { investigatorNotes }));
-  };
+  const updateInvestigatorNotes = useCallback((investigatorNotes: InvestigatorNotes) => {
+    updateCampaignNotes({
+      ...campaignNotes,
+      investigatorNotes,
+    });
+  }, [updateCampaignNotes, campaignNotes]);
 
-  renderSections(sections: CampaignNoteSection[]) {
+  const notesSection = useMemo(() => {
     return (
       <View>
-        { map(sections, (section, idx) => (
+        { map(campaignNotes.sections, (section, idx) => (
           <NotesSection
             key={idx}
             title={section.title}
             notes={section.notes}
             index={idx}
-            notesChanged={this._notesChanged}
-            showDialog={this.props.showDialog}
+            notesChanged={notesChanged}
+            showDialog={showDialog}
           />
         )) }
       </View>
     );
-  }
+  }, [campaignNotes.sections, notesChanged, showDialog]);
 
-  renderCounts(counts: CampaignNoteCount[]) {
+  const countsSection = useMemo(() => {
     return (
       <View>
-        { map(counts, (section, idx) => (
+        { map(campaignNotes.counts, (section, idx) => (
           <EditCountComponent
             key={idx}
             index={idx}
             title={section.title}
             count={section.count || 0}
-            countChanged={this._countChanged}
+            countChanged={countChanged}
           />
         )) }
       </View>
     );
-  }
+  }, [campaignNotes.counts, countChanged]);
 
-  renderInvestigatorSection() {
-    const {
-      componentId,
-      campaignNotes: {
-        investigatorNotes,
-      },
-      allInvestigators,
-      showDialog,
-    } = this.props;
+  const investigatorSection = useMemo(() => {
+    const { investigatorNotes } = campaignNotes;
     return (
       <View style={styles.investigatorSection}>
         <InvestigatorSectionList
-          componentId={componentId}
           allInvestigators={allInvestigators}
           investigatorNotes={investigatorNotes}
-          updateInvestigatorNotes={this._updateInvestigatorNotes}
+          updateInvestigatorNotes={updateInvestigatorNotes}
           showDialog={showDialog}
         />
       </View>
     );
-  }
-
-  render() {
-    const {
-      campaignNotes: {
-        sections,
-        counts,
-      },
-    } = this.props;
-    return (
-      <View style={styles.underline}>
-        { this.renderSections(sections) }
-        { this.renderCounts(counts) }
-        { this.renderInvestigatorSection() }
-        <BasicButton title={t`Add Log Section`} onPress={this._showAddSectionDialog} />
-      </View>
-    );
-  }
+  }, [componentId, campaignNotes.investigatorNotes, allInvestigators, showDialog, updateInvestigatorNotes]);
+  return (
+    <View style={styles.underline}>
+      { notesSection }
+      { countsSection }
+      { investigatorSection }
+      <BasicButton title={t`Add Log Section`} onPress={addSectionDialogPressed} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

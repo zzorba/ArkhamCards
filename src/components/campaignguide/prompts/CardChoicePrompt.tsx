@@ -11,8 +11,6 @@ import CheckListComponent from './CheckListComponent';
 import ChoiceListComponent from './ChoiceListComponent';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
-import CardQueryWrapper from '@components/card/CardQueryWrapper';
-import CardListWrapper from '@components/card/CardListWrapper';
 import { CardSelectorProps } from '../CardSelectorView';
 import CampaignGuideContext from '../CampaignGuideContext';
 import ScenarioStepContext from '../ScenarioStepContext';
@@ -23,6 +21,7 @@ import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 interface Props {
   componentId: string;
@@ -106,7 +105,7 @@ function mainQuery(
 }
 
 export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
-  const { colors, borderStyle } = useContext(StyleContext)
+  const { colors, borderStyle } = useContext(StyleContext);
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario, scenarioInvestigators } = useContext(ScenarioStepContext);
@@ -165,108 +164,90 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
     });
   }, [extraCards, setExtraCards, componentId, input]);
 
-  const renderCards = useCallback((
-    rawCards: Card[],
-    loading: boolean,
-    includeNonDeckButton: boolean
-  ): Element | null => {
-    const cards = uniqBy(rawCards, card => card.code);
-    if (loading) {
-      return (
-        <View style={[styles.loadingRow, borderStyle]}>
-          <ActivityIndicator size="small" animating color={colors.lightText} />
-        </View>
-      );
-    }
-    if (input.include_counts) {
-      return (
-        <>
-          <SetupStepWrapper>
-            { !!text && <CampaignGuideTextComponent text={text} /> }
-          </SetupStepWrapper>
-          <CounterListComponent
-            id={id}
-            countText={input.choices[0].text}
-            items={map(cards, card => {
-              return {
-                code: card.code,
-                name: card.name,
-                limit: card.quantity || 1,
-              };
-            })}
-          />
-        </>
-      );
-    }
-    if (input.choices.length > 1) {
-      return (
-        <>
-          <ChoiceListComponent
-            id={id}
-            text={text}
-            items={map(cards, card => {
-              return {
-                code: card.code,
-                name: card.name,
-              };
-            })}
-            options={{
-              type: 'universal',
-              choices: input.choices,
-            }}
-          />
-        </>
-      );
-    }
-
-    const choice = input.choices[0];
-    return (
-      <CheckListComponent
-        id={id}
-        choiceId={choice.id}
-        text={text}
-        items={map(cards, card => {
-          return {
-            code: card.code,
-            name: card.name,
-          };
-        })}
-        min={input.min}
-        max={input.max}
-        checkText={choice.text}
-        button={includeNonDeckButton ? (
-          <BasicButton
-            title={t`Choose additional card`}
-            onPress={showOtherCardSelector}
-          />
-        ) : undefined}
-      />
-    );
-  }, [id, text, input, colors, borderStyle, showOtherCardSelector]);
   const query = useMemo(() => {
-    const queryOpt = mainQuery(input.query, processedScenario, scenarioInvestigators, latestDecks);
-    return combineQueriesOpt(
-      [
-        ...(queryOpt ? [queryOpt] : []),
-        ...FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),
-      ],
-      'or'
-    );
-  }, [processedScenario, scenarioInvestigators, latestDecks, input.query, extraCards]);
-  if (selectedCards === undefined) {
+    if (selectedCards === undefined) {
+      // No choice yet, so pull up everything possible.
+      const queryOpt = mainQuery(input.query, processedScenario, scenarioInvestigators, latestDecks);
+      return combineQueriesOpt(
+        [
+          ...(queryOpt ? [queryOpt] : []),
+          ...FILTER_BUILDER.equalsVectorClause(extraCards, 'code', ['extra']),
+        ],
+        'or'
+      );
+    }
+    // They've already decided, so only fetch what they already chose.
+    return where('c.code in (:...codes)', { codes: selectedCards });
+  }, [processedScenario, scenarioInvestigators, latestDecks, input.query, extraCards, selectedCards]);
+
+  const [rawCards, loading] = useCardsFromQuery({ query });
+  const cards = uniqBy(rawCards, card => card.code);
+  if (input.include_counts) {
     return (
-      <CardQueryWrapper name="card-choice" query={query} >
-        { (cards: Card[], loading: boolean) => renderCards(cards, loading, nonDeckButton) }
-      </CardQueryWrapper>
+      <>
+        <SetupStepWrapper>
+          { !!text && <CampaignGuideTextComponent text={text} /> }
+        </SetupStepWrapper>
+        <CounterListComponent
+          id={id}
+          countText={input.choices[0].text}
+          loading={loading}
+          items={map(cards, card => {
+            return {
+              code: card.code,
+              name: card.name,
+              limit: card.quantity || 1,
+            };
+          })}
+        />
+      </>
     );
   }
+  if (input.choices.length > 1) {
+    return (
+      <>
+        <ChoiceListComponent
+          id={id}
+          text={text}
+          items={map(cards, card => {
+            return {
+              code: card.code,
+              name: card.name,
+            };
+          })}
+          loading={loading}
+          options={{
+            type: 'universal',
+            choices: input.choices,
+          }}
+        />
+      </>
+    );
+  }
+
+  const choice = input.choices[0];
   return (
-    <CardListWrapper
-      codes={selectedCards}
-      type="encounter"
-    >
-      { (cards: Card[], loading: boolean) => renderCards(cards, loading, false) }
-    </CardListWrapper>
+    <CheckListComponent
+      id={id}
+      choiceId={choice.id}
+      text={text}
+      items={map(cards, card => {
+        return {
+          code: card.code,
+          name: card.name,
+        };
+      })}
+      min={input.min}
+      max={input.max}
+      checkText={choice.text}
+      loading={loading}
+      button={(nonDeckButton && selectedCards === undefined) ? (
+        <BasicButton
+          title={t`Choose additional card`}
+          onPress={showOtherCardSelector}
+        />
+      ) : undefined}
+    />
   );
 }
 

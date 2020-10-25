@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -15,7 +15,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { PackCardsProps } from '@components/settings/PackCardsView';
 import { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -30,16 +30,9 @@ interface Props {
   nameOverride?: string;
 }
 
-export default class PackRow extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _onPress = () => {
-    const {
-      pack,
-      componentId,
-      baseQuery,
-    } = this.props;
+export default function PackRow({ componentId, pack, cycle, setChecked, setCycleChecked, checked, whiteBackground, baseQuery, compact, nameOverride }: Props) {
+  const { colors, fontScale, typography } = useContext(StyleContext);
+  const onPress = useCallback(() => {
     Navigation.push<PackCardsProps>(componentId, {
       component: {
         name: 'Pack',
@@ -59,16 +52,9 @@ export default class PackRow extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [pack, componentId, baseQuery]);
 
-  _onCheckPress = () => {
-    const {
-      pack,
-      cycle,
-      checked,
-      setCycleChecked,
-      setChecked,
-    } = this.props;
+  const onCheckPress = useCallback(() => {
     const value = !checked;
     setChecked && setChecked(pack.code, value);
 
@@ -96,63 +82,51 @@ export default class PackRow extends React.Component<Props> {
         ],
       );
     }
-  };
+  }, [pack, cycle, checked, setCycleChecked, setChecked]);
 
-  render() {
-    const {
-      pack,
-      checked,
-      setChecked,
-      whiteBackground,
-      compact,
-      nameOverride,
-    } = this.props;
-    const { colors, fontScale, typography } = this.context;
-    const mythosPack = true;
-    const backgroundColor = (whiteBackground || mythosPack) ? colors.background : colors.L20;
-    const iconSize = (mythosPack || compact) ? 24 : 28;
-    const fontSize = ((mythosPack || compact) ? 16 : 22) * fontScale;
-    const lineHeight = ((mythosPack || compact) ? 20 : 26) * fontScale;
-    const rowHeight = mythosPack ? 50 : 60;
-    return (
-      <View style={[styles.row,
-        { backgroundColor, height: rowHeight },
-        compact ? {
-          height: lineHeight * fontScale + 20,
-        } : {
-          borderBottomWidth: StyleSheet.hairlineWidth,
-          borderColor: colors.divider,
-        },
-      ]}>
-        <TouchableOpacity style={styles.touchable} onPress={this._onPress}>
-          <View style={styles.touchableContent}>
-            <View style={styles.icon}>
-              <EncounterIcon
-                encounter_code={pack.code}
-                size={iconSize}
-                color={colors.darkText}
-              />
-            </View>
-            <Text
-              style={[typography.large, { color: colors.darkText, fontSize, lineHeight }]}
-              numberOfLines={2}
-              ellipsizeMode="tail"
-            >
-              { nameOverride || pack.name }
-            </Text>
-          </View>
-        </TouchableOpacity>
-        { !!setChecked && (
-          <View style={[styles.checkbox, { height: rowHeight }]}>
-            <ArkhamSwitch
-              value={!!checked}
-              onValueChange={this._onCheckPress}
+  const backgroundColor = colors.background;
+  const iconSize = 24;
+  const fontSize = 16 * fontScale;
+  const lineHeight = 20 * fontScale;
+  const rowHeight = 50;
+  return (
+    <View style={[styles.row,
+      { backgroundColor, height: rowHeight },
+      compact ? {
+        height: lineHeight * fontScale + 20,
+      } : {
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderColor: colors.divider,
+      },
+    ]}>
+      <TouchableOpacity style={styles.touchable} onPress={onPress}>
+        <View style={styles.touchableContent}>
+          <View style={styles.icon}>
+            <EncounterIcon
+              encounter_code={pack.code}
+              size={iconSize}
+              color={colors.darkText}
             />
           </View>
-        ) }
-      </View>
-    );
-  }
+          <Text
+            style={[typography.large, { color: colors.darkText, fontSize, lineHeight }]}
+            numberOfLines={2}
+            ellipsizeMode="tail"
+          >
+            { nameOverride || pack.name }
+          </Text>
+        </View>
+      </TouchableOpacity>
+      { !!setChecked && (
+        <View style={[styles.checkbox, { height: rowHeight }]}>
+          <ArkhamSwitch
+            value={!!checked}
+            onValueChange={onCheckPress}
+          />
+        </View>
+      ) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

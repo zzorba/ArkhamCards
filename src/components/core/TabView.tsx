@@ -29,7 +29,7 @@ interface TabRoute extends Route {
 const initialLayout = { width: Dimensions.get('window').width };
 
 export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Props) {
-  const { backgroundStyle, fontScale, colors} = useContext(StyleContext);
+  const { backgroundStyle, fontScale, colors } = useContext(StyleContext);
   const [index, setIndex] = useState(0);
 
   const onSetIndex = useCallback((index: number) => {

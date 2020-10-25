@@ -148,7 +148,6 @@ class UpgradeDecksView extends React.Component<Props> {
   render() {
     const {
       latestDeckIds,
-      id,
       campaign,
       componentId,
       allInvestigators,

@@ -15,30 +15,16 @@ import { NavigationProps } from '@components/nav/types';
 import { Campaign, ScenarioResult } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useCampaign } from '@components/core/hooks';
+import { useCampaign, useCampaignScenarios } from '@components/core/hooks';
 
 export interface CampaignScenarioProps {
   id: number;
 }
 
-interface ReduxProps {
-  campaign?: Campaign;
-  cycleScenarios?: Scenario[];
-  scenarioByCode?: { [code: string]: Scenario };
-}
-
-type Props = NavigationProps & CampaignScenarioProps & ReduxProps;
 
 export default function CampaignScenarioView({ id, componentId }: CampaignScenarioProps & NavigationProps) {
   const campaign = useCampaign(id);
-  const cycleScenarios = useMemo(() => campaign ? campaignScenarios(campaign.cycleCode) : [], [campaign?.cycleCode]);
-  const scenarioByCode = useMemo(() => {
-    const result: { [code: string]: Scenario } = {};
-    forEach(cycleScenarios, scenario => {
-      result[scenario.code] = scenario;
-    });
-    return result;
-  }, [cycleScenarios]);
+  const [cycleScenarios, scenarioByCode] = useCampaignScenarios(campaign);
   const { backgroundStyle, typography } = useContext(StyleContext);
 
   const renderScenarioResult = useCallback((scenarioResult: ScenarioResult, idx: number) => {

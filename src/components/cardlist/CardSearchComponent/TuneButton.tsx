@@ -111,6 +111,7 @@ const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 4 : 0);
 const styles = StyleSheet.create({
   container: {
     marginLeft: Platform.OS === 'android' ? 8 : 0,
+    marginRight: Platform.OS === 'android' ? 8 : 0,
     width: SIZE + EXTRA_ANDROID_WIDTH,
     height: SIZE,
     position: 'relative',

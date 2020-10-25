@@ -30,7 +30,6 @@ interface Props {
   showTraumaDialog?: (investigator: Card, traumaData: Trauma) => void;
   showDeckHistory?: () => void;
   investigatorDataUpdates?: any;
-  xpAdjustment: number;
   showDeckUpgrade?: () => void;
   tabooSetId?: number;
   renderFooter?: (slots?: Slots) => React.ReactNode;
@@ -56,7 +55,6 @@ export default function DeckProgressComponent({
   showTraumaDialog,
   showDeckHistory,
   investigatorDataUpdates,
-  xpAdjustment,
   showDeckUpgrade,
   tabooSetId,
   renderFooter,
@@ -134,7 +132,6 @@ export default function DeckProgressComponent({
         title={title}
         cards={cards}
         parsedDeck={parsedDeck}
-        xpAdjustment={xpAdjustment}
         tabooSetId={tabooSetId}
         renderFooter={renderFooter}
         onDeckCountChange={onDeckCountChange}

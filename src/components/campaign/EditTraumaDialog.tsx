@@ -23,11 +23,11 @@ interface State {
   visible: boolean;
 }
 
-export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, viewRef, hideKilledInsane}: Props) {
+export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, viewRef, hideKilledInsane }: Props) {
   const [traumaState, setTraumaState] = useState<Trauma>({});
   useEffect(() => {
     if (visible) {
-      setTraumaState(trauma || {})
+      setTraumaState(trauma || {});
     }
   }, [visible]);
 

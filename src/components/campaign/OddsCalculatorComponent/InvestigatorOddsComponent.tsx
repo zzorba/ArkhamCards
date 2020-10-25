@@ -17,12 +17,11 @@ import { useCounter, useFlag } from '@components/core/hooks';
 export interface InvestigatorOddsProps {
   chaosBag: ChaosBag;
   specialTokenValues: SpecialTokenValue[];
-  difficulty?: string;
   investigator: Card;
   testDifficulty: number;
 }
 
-export default function InvestigatorOddsComponent({ chaosBag, specialTokenValues, difficulty, investigator, testDifficulty }: InvestigatorOddsProps) {
+export default function InvestigatorOddsComponent({ chaosBag, specialTokenValues, investigator, testDifficulty }: InvestigatorOddsProps) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
   const [counterValue, increment, decrement] = useCounter(0, { min: 0 });
   const [switchValue, toggleSwitch] = useFlag(false);

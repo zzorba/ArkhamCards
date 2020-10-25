@@ -48,7 +48,7 @@ function ArkhamIconRule(style: StyleContextType): MarkdownRule<WithIconName, Sta
 
 function ArkhamIconSkillTextRule(style: StyleContextType): MarkdownRule<WithIconName, State> {
   return {
-    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\([0-9X]+\))')),
+    match: SimpleMarkdown.inlineRegex(new RegExp('^\\[([^\\]]+)\\](?=\\([0-9X]+\\))')),
     order: BASE_ORDER + 1,
     parse: (capture) => {
       return { name: capture[1] };

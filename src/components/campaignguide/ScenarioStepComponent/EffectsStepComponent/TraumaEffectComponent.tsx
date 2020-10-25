@@ -16,10 +16,9 @@ interface Props {
   effect: TraumaEffect;
   border?: boolean;
   input?: string[];
-  skipCampaignLog?: boolean;
 }
 
-export default function TraumaEffectComponent({ id, effect, border, input, skipCampaignLog }: Props) {
+export default function TraumaEffectComponent({ id, effect, border, input }: Props) {
   const message = useCallback((investigator: Card): string => {
     const male = investigator.grammarGenderMasculine();
     if (effect.insane) {

@@ -561,7 +561,6 @@ class DeckDetailView extends React.Component<Props, State> {
         name: 'Deck.Checklist',
         passProps: {
           id: deck.id,
-          investigator: deck.investigator_code,
           slots,
           tabooSetOverride,
         },

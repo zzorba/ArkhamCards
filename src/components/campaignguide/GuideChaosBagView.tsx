@@ -12,20 +12,13 @@ export interface GuideChaosBagProps {
 
 type Props = NavigationProps & GuideChaosBagProps;
 
-export default class GuideChaosBagView extends React.Component<Props> {
-  render() {
-    const {
-      componentId,
-      campaignId,
-      chaosBag,
-    } = this.props;
-
-    return (
-      <DrawChaosBagComponent
-        componentId={componentId}
-        campaignId={campaignId}
-        chaosBag={chaosBag}
-      />
-    );
-  }
+export default function GuideChaosBagView({ componentId, campaignId, chaosBag }: Props) {
+  return (
+    <DrawChaosBagComponent
+      componentId={componentId}
+      campaignId={campaignId}
+      chaosBag={chaosBag}
+    />
+  );
 }
+

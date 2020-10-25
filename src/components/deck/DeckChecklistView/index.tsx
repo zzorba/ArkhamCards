@@ -20,22 +20,15 @@ import StyleContext from '@styles/StyleContext';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface DeckChecklistProps {
-  investigator: string;
   id: number;
   slots: Slots;
   tabooSetOverride?: number;
 }
 
-interface ReduxProps {
-  checklist: Set<string>;
-}
-
-
 type Props = DeckChecklistProps & NavigationProps;
 
 function DeckChecklistView({
   componentId,
-  investigator,
   id,
   slots,
   tabooSetOverride,

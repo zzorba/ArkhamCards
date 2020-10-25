@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
@@ -18,7 +18,7 @@ import { toggleButtonMode } from '@components/cardlist/CardSearchResult/constant
 import FactionIcon from '@icons/FactionIcon';
 import Card from '@data/Card';
 import { isBig } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 const scaleFactor = isBig ? 1.2 : 1.0;
 
@@ -32,17 +32,18 @@ interface Props {
   imageLink?: boolean;
 }
 
-export default class InvestigatorImage extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function InvestigatorImage({
+  card,
+  componentId,
+  border,
+  small,
+  killedOrInsane,
+  yithian,
+  imageLink,
+}: Props) {
+  const { colors, fontScale } = useContext(StyleContext);
 
-  _onPress = () => {
-    const {
-      card,
-      componentId,
-      imageLink,
-    } = this.props;
-    const { colors } = this.context;
+  const onPress = useCallback(() => {
     if (componentId && card) {
       if (imageLink) {
         showCardImage(componentId, card, colors);
@@ -50,34 +51,24 @@ export default class InvestigatorImage extends React.Component<Props> {
         showCard(componentId, card.code, card, colors, true);
       }
     }
-  };
+  }, [card, componentId, imageLink, colors]);
 
-  small() {
-    const { small } = this.props;
-    const { fontScale } = this.context;
+  const isSmall = useMemo(() => {
     return small || toggleButtonMode(fontScale);
-  }
+  }, [small, fontScale]);
 
-  imageStyle() {
-    const {
-      yithian,
-    } = this.props;
+  const imageStyle = useMemo(() => {
     if (yithian) {
-      return this.small() ? styles.smallYithianImage : styles.bigImage;
+      return isSmall ? styles.smallYithianImage : styles.bigImage;
     }
-    return this.small() ? styles.image : styles.bigImage;
-  }
+    return isSmall ? styles.image : styles.bigImage;
+  }, [isSmall, yithian]);
 
-  renderInvestigatorImage() {
-    const {
-      card,
-      yithian,
-    } = this.props;
-    const { colors } = this.context;
+  const investigatorImage = useMemo(() => {
     if (card) {
       return (
         <FastImage
-          style={this.imageStyle()}
+          style={imageStyle}
           source={{
             uri: `https://arkhamdb.com/${yithian ? 'bundles/cards/04244.jpg' : card.imagesrc}`,
           }}
@@ -86,33 +77,23 @@ export default class InvestigatorImage extends React.Component<Props> {
       );
     }
     return (
-      <View style={[this.imageStyle(), { backgroundColor: colors.L20 }]} />
+      <View style={[imageStyle, { backgroundColor: colors.L20 }]} />
     );
-  }
+  }, [card, yithian, colors, imageStyle]);
 
-  renderStyledImage() {
-    const {
-      killedOrInsane,
-    } = this.props;
+  const styledImage = useMemo(() => {
     if (killedOrInsane) {
       return (
         <Sepia>
-          { this.renderInvestigatorImage() }
+          { investigatorImage }
         </Sepia>
       );
     }
-    return this.renderInvestigatorImage();
-  }
+    return investigatorImage;
+  }, [killedOrInsane, investigatorImage]);
 
-  renderImage() {
-    const {
-      card,
-      killedOrInsane,
-      border,
-    } = this.props;
-    const { colors } = this.context;
-    const small = this.small();
-    const size = (small ? 65 : 110) * scaleFactor;
+  const image = useMemo(() => {
+    const size = (isSmall ? 65 : 110) * scaleFactor;
     if (!card) {
       return (
         <View style={[styles.container, { width: size, height: size }]}>
@@ -137,13 +118,13 @@ export default class InvestigatorImage extends React.Component<Props> {
             },
           ]}>
             <Text style={styles.placeholderIcon} allowFontScaling={false}>
-              <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={small ? 40 : 55} />
+              <FactionIcon faction={card.factionCode()} defaultColor="#FFFFFF" size={isSmall ? 40 : 55} />
             </Text>
           </View>
         </View>
         { !!card.imagesrc && (
           <View style={styles.relative}>
-            { this.renderStyledImage() }
+            { styledImage }
           </View>
         ) }
         <View style={styles.relative}>
@@ -160,19 +141,16 @@ export default class InvestigatorImage extends React.Component<Props> {
         </View>
       </View>
     );
-  }
+  }, [card, killedOrInsane, border, colors, isSmall, styledImage]);
 
-  render() {
-    const { componentId, card } = this.props;
-    if (componentId && card) {
-      return (
-        <TouchableOpacity onPress={this._onPress}>
-          { this.renderImage() }
-        </TouchableOpacity>
-      );
-    }
-    return this.renderImage();
+  if (componentId && card) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        { image }
+      </TouchableOpacity>
+    );
   }
+  return image;
 }
 
 const styles = StyleSheet.create({

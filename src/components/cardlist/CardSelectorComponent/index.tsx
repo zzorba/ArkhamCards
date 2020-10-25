@@ -1,15 +1,14 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useContext, useMemo } from 'react';
 import { filter, flatMap, keys, sortBy } from 'lodash';
 
 import { Slots, SortType } from '@actions/types';
 import Card from '@data/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { usePlayerCards } from '@components/core/hooks';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   slots: Slots;
   counts: Slots;
@@ -20,18 +19,11 @@ interface OwnProps {
   sort?: SortType;
 }
 
-type Props = OwnProps & PlayerCardProps & DimensionsProps;
 
-class CardSelectorComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCounts, filterCard, header, sort }: Props) {
+  const { colors } = useContext(StyleContext);
 
-  _onChange = (card: Card, count: number) => {
-    const {
-      counts,
-      updateCounts,
-      toggleCard,
-    } = this.props;
+  const onChange = useCallback((card: Card, count: number) => {
     if (toggleCard) {
       toggleCard(card.code, count > 0);
     } else if (updateCounts) {
@@ -40,19 +32,17 @@ class CardSelectorComponent extends React.Component<Props> {
         [card.code]: count,
       });
     }
-  };
+  }, [counts, updateCounts, toggleCard]);
 
-  _onCardPress = (card: Card) => {
-    const { colors } = this.context;
-    showCard(this.props.componentId, card.code, card, colors, true);
-  };
+  const onCardPress = useCallback((card: Card) => {
+    showCard(componentId, card.code, card, colors, true);
+  }, [colors, componentId]);
+  const cards = usePlayerCards();
 
-  cards() {
-    const {
-      slots,
-      cards,
-      filterCard,
-    } = this.props;
+  const matchingCards = useMemo(() => {
+    if (!cards) {
+      return [];
+    }
     return sortBy(
       filter(
         keys(slots),
@@ -70,45 +60,31 @@ class CardSelectorComponent extends React.Component<Props> {
         return (card && card.name) || '';
       }
     );
+  }, [slots, cards, filterCard]);
+
+  if (!matchingCards.length || !cards) {
+    return null;
   }
 
-  render() {
-    const {
-      slots,
-      cards,
-      counts,
-      header,
-      toggleCard,
-    } = this.props;
-    const matchingCards = this.cards();
-    if (!matchingCards.length) {
-      return null;
-    }
-
-    return (
-      <>
-        { header }
-        { flatMap(matchingCards, code => {
-          const card = cards[code];
-          if (!card) {
-            return null;
-          }
-          return (
-            <CardToggleRow
-              key={code}
-              card={card}
-              onPress={this._onCardPress}
-              onChange={this._onChange}
-              count={counts[code] || 0}
-              limit={toggleCard ? 1 : slots[code]}
-            />
-          );
-        }) }
-      </>
-    );
-  }
+  return (
+    <>
+      { header }
+      { flatMap(matchingCards, code => {
+        const card = cards[code];
+        if (!card) {
+          return null;
+        }
+        return (
+          <CardToggleRow
+            key={code}
+            card={card}
+            onPress={onCardPress}
+            onChange={onChange}
+            count={counts[code] || 0}
+            limit={toggleCard ? 1 : slots[code]}
+          />
+        );
+      }) }
+    </>
+  );
 }
-
-export default withPlayerCards<OwnProps>(
-  withDimensions(CardSelectorComponent)
-);

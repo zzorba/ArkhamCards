@@ -20,7 +20,6 @@ import {
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { FilterState } from '@lib/filters';
 import { calculateDefaultDbFilterState } from '@components/filter/DefaultFilterState';
-import Card from '@data/Card';
 import Database from '@data/Database';
 import { AppState } from '@reducers';
 import { Brackets } from 'typeorm/browser';

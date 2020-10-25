@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import { t } from 'ttag';
 
@@ -17,54 +17,40 @@ interface Props {
   sectionHeader?: boolean;
 }
 
-export default class EditTraumaComponent extends React.Component<Props> {
-  traumaData() {
-    const {
-      investigatorData,
-      investigator,
-    } = this.props;
+export default function EditTraumaComponent({ investigator, investigatorData, showTraumaDialog, sectionHeader }: Props) {
+  const traumaData = useMemo(() => {
     return (
       investigatorData && investigatorData[investigator.code]
     ) || DEFAULT_TRAUMA_DATA;
-  }
+  }, [investigatorData, investigator]);
 
-  _editTraumaPressed = () => {
-    const {
-      investigator,
-      showTraumaDialog,
-    } = this.props;
-    showTraumaDialog(investigator, this.traumaData());
-  };
+  const editTraumaPressed = useCallback(() => {
+    showTraumaDialog(investigator, traumaData);
+  }, [traumaData, showTraumaDialog, investigator]);
 
-  render() {
-    const {
-      investigator,
-      sectionHeader,
-    } = this.props;
-    const traumaString = investigator.traumaString(this.traumaData());
-    if (sectionHeader) {
-      return (
-        <>
-          <CardSectionHeader
-            investigator={investigator}
-            section={{ superTitle: t`Trauma` }}
-          />
-          <NavButton
-            text={traumaString}
-            onPress={this._editTraumaPressed}
-          />
-        </>
-      );
-    }
+  const traumaString = investigator.traumaString(traumaData);
+  if (sectionHeader) {
     return (
-      <View style={space.marginBottomXs}>
-        <LabeledTextBox
-          column
-          label={t`Trauma`}
-          onPress={this._editTraumaPressed}
-          value={traumaString}
+      <>
+        <CardSectionHeader
+          investigator={investigator}
+          section={{ superTitle: t`Trauma` }}
         />
-      </View>
+        <NavButton
+          text={traumaString}
+          onPress={editTraumaPressed}
+        />
+      </>
     );
   }
+  return (
+    <View style={space.marginBottomXs}>
+      <LabeledTextBox
+        column
+        label={t`Trauma`}
+        onPress={editTraumaPressed}
+        value={traumaString}
+      />
+    </View>
+  );
 }

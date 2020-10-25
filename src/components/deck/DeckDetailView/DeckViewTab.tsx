@@ -42,10 +42,8 @@ import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import COLORS from '@styles/colors';
 import { isBig, m, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { useCards } from '@components/core/hooks';
-import { parse } from 'url';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -253,10 +251,6 @@ interface Props {
   inCollection: {
     [pack_code: string]: boolean;
   };
-}
-
-interface State {
-  limitedSlots: boolean;
 }
 
 function keyForCard(item: SectionCardId) {
@@ -651,7 +645,6 @@ export default function DeckViewTab({
           showDeckUpgrade={showDeckUpgrade}
           showDeckHistory={showDeckHistory}
           investigatorDataUpdates={investigatorDataUpdates}
-          xpAdjustment={xpAdjustment}
           tabooSetId={tabooSetId}
           renderFooter={renderFooter}
           onDeckCountChange={onDeckCountChange}

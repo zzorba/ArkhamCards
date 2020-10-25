@@ -14,7 +14,7 @@ interface Props {
   onPress: () => void;
 }
 
-function ArkhamButton({ icon, title, onPress}: Props) {
+function ArkhamButton({ icon, title, onPress }: Props) {
   const { colors, backgroundStyle, fontScale, typography } = useContext(StyleContext);
   const iconNode = useMemo(() => {
     switch (icon) {

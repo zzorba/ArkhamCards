@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
-import { connect, useSelector } from 'react-redux';
-import { EventSubscription, Navigation, Options } from 'react-native-navigation';
+import { useSelector } from 'react-redux';
+import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import DrawChaosBagComponent from './DrawChaosBagComponent';
@@ -10,7 +10,6 @@ import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
 import { AppState, getCampaign } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
-import { Campaign } from '@data/scenario/types';
 
 export interface CampaignChaosBagProps {
   componentId: string;
@@ -71,7 +70,6 @@ function CampaignChaosBagView({ componentId, campaignId, updateChaosBag, trackDe
       componentId={componentId}
       campaignId={campaignId}
       chaosBag={chaosBag}
-      trackDeltas={trackDeltas}
     />
   );
 }

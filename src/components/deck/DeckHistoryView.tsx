@@ -106,7 +106,6 @@ export default function DeckHistoryView({
           parsedDeck={deck}
           cards={cards}
           editable={false}
-          xpAdjustment={0}
           isPrivate
         />
       )) }

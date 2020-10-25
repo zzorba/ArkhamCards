@@ -305,7 +305,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
           <InvestigatorOddsComponent
             key={investigator.real_name}
             investigator={investigator}
-            difficulty={difficulty}
             testDifficulty={testDifficulty}
             chaosBag={chaosBag}
             specialTokenValues={specialTokenValues}

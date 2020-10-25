@@ -2,10 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
-import CardListWrapper from '@components/card/CardListWrapper';
 import { InvestigatorResult } from '@data/scenario/conditionHelper';
 import Card from '@data/Card';
 import { Option } from '@data/scenario/types';
+import { OptionWithId } from '@data/scenario/conditionHelper';
+import useCardList from '@components/card/useCardList';
 
 interface Props<T> {
   result: InvestigatorResult;
@@ -13,38 +14,36 @@ interface Props<T> {
   renderOption: (investigators: Card[], option: Option, extraArg: T) => Element | null;
 }
 
-export default class InvestigatorResultConditionWrapper<T> extends React.Component<Props<T>> {
-  _renderCards = (cards: Card[], option: Option): Element | null => {
-    const { renderOption, extraArg } = this.props;
-    return renderOption(cards, option, extraArg);
-  };
-
-  render() {
-    const { result } = this.props;
-    return (
-      <>
-        { flatMap(result.options, (option, index) => {
-          const investigators: string[] = [];
-          forEach(result.investigatorChoices, (choices, code) => {
-            if (findIndex(choices, choice => option.id === choice) !== -1) {
-              investigators.push(code);
-            }
-          });
-          if (!investigators.length) {
-            return null;
-          }
-          return (
-            <View key={index}>
-              <CardListWrapper
-                codes={investigators}
-                type="player"
-              >
-                { (cards: Card[]) => this._renderCards(cards, option) }
-              </CardListWrapper>
-            </View>
-          );
-        }) }
-      </>
-    );
+function InvestigatorResultConditionOption<T>({ result, option, renderOption, extraArg }: Props<T> & { option: OptionWithId }) {
+  const investigators: string[] = [];
+  forEach(result.investigatorChoices, (choices, code) => {
+    if (findIndex(choices, choice => option.id === choice) !== -1) {
+      investigators.push(code);
+    }
+  });
+  const [cards, loading] = useCardList(investigators, 'player');
+  if (!investigators.length || loading) {
+    return null;
   }
+  return (
+    <View>
+      { renderOption(cards, option, extraArg) }
+    </View>
+  );
+}
+
+export default function InvestigatorResultConditionWrapper<T>({ result, extraArg, renderOption }: Props<T>) {
+  return (
+    <>
+      { flatMap(result.options, (option, index) => (
+        <InvestigatorResultConditionOption
+          key={index}
+          result={result}
+          extraArg={extraArg}
+          option={option}
+          renderOption={renderOption}
+        />
+      )) }
+    </>
+  );
 }

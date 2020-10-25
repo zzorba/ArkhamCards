@@ -48,7 +48,7 @@ function dialogStrings(lang: string): DialogStrings {
         title: 'Подтвердить',
         description: 'Для изменения языка необходимо загрузить перевод карт из ArkhamDB. Этот процесс требует интернет-соединения и займет какое-то время.',
         confirmButton: 'Загрузить сейчас',
-        cancelButton: 'Отменить'
+        cancelButton: 'Отменить',
       };
     case 'de':
       return {

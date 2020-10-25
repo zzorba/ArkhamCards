@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
@@ -7,7 +7,7 @@ import BasicButton from '@components/core/BasicButton';
 import CounterListItemComponent from './CounterListItemComponent';
 import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
 import { NumberChoices } from '@actions/types';
-import space from '@styles/space';
+import space, { m } from '@styles/space';
 
 export interface CounterItem {
   code: string;
@@ -22,6 +22,7 @@ interface Props {
   items: CounterItem[];
   countText?: string;
   requiredTotal?: number;
+  loading?: boolean;
 }
 
 interface State {
@@ -120,9 +121,9 @@ export default class CounterListComponent extends React.Component<Props, State> 
   }
 
   render() {
-    const { id, items, countText } = this.props;
+    const { id, items, countText, loading } = this.props;
     const {
-      style: { borderStyle, typography },
+      style: { colors, borderStyle, typography },
       scenarioState,
     } = this.context;
     const choiceList = scenarioState.numberChoices(id);
@@ -139,7 +140,11 @@ export default class CounterListComponent extends React.Component<Props, State> 
             { countText }
           </Text>
         </View>
-        { map(items, ({ code, name, description, limit, color }, idx) => {
+        { loading ? (
+          <View style={[styles.loadingRow, borderStyle]}>
+            <ActivityIndicator size="small" animating color={colors.lightText} />
+          </View>
+        ) : map(items, ({ code, name, description, limit, color }, idx) => {
           const value = this.getValue(code, choiceList);
           return (
             <CounterListItemComponent
@@ -166,6 +171,13 @@ const styles = StyleSheet.create({
   prompt: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  loadingRow: {
+    flexDirection: 'row',
+    padding: m,
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

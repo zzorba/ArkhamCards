@@ -15,6 +15,7 @@ import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import FilterBuilder from '@lib/filters';
 import { usePlayerCards, useWeaknessCards } from '@components/core/hooks';
+import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 interface Props {
   id: string;
@@ -75,6 +76,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
     );
   }, [effect.weakness_traits]);
 
+  const [possibleWeaknessCards, possibleWeaknessCardsLoading] = useCardsFromQuery({ query });
   const renderSecondPrompt = useCallback((
     investigators: Card[],
     scenarioState: ScenarioStateHelper
@@ -84,11 +86,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
       return null;
     }
     if (!useAppDecision) {
-      return (
-        <CardQueryWrapper name="add-weakness" query={query}>
-          { (cards: Card[]) => renderCardChoice(cards, investigators) }
-        </CardQueryWrapper>
-      );
+      return possibleWeaknessCardsLoading ? null : renderCardChoice(possibleWeaknessCards, investigators);
     }
     const traitsChoice = effect.select_traits ?
       scenarioState.stringChoices(traitsDecisionId) :
@@ -117,7 +115,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
         ) }
       </>
     );
-  }, [saveTraits, id, traitsDecisionId, effect, weaknessCards, cards, campaignLog, scenarioState, query]);
+  }, [saveTraits, id, traitsDecisionId, effect, weaknessCards, cards, campaignLog, scenarioState, query, possibleWeaknessCards, possibleWeaknessCardsLoading]);
 
   return (
     <>

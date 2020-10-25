@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { flatMap } from 'lodash';
 
-import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import Card from '@data/Card';
 import { combineQueriesOpt } from '@data/query';
 import FilterBuilder from '@lib/filters';
 import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
+import useCardsFromQuery from './useCardsFromQuery';
 
 interface Props<T> {
   codes: string[];
@@ -25,6 +25,7 @@ export default function CardListWrapper<T>({ codes, type, children, extraProps }
   }, [codes]);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
+  const [queryCards, cardsLoading] = useCardsFromQuery({ query });
 
   if (type === 'player') {
     if (!cards || !investigators) {
@@ -45,8 +46,8 @@ export default function CardListWrapper<T>({ codes, type, children, extraProps }
     );
   }
   return (
-    <CardQueryWrapper name="card-list" query={query} extraProps={extraProps}>
-      { children }
-    </CardQueryWrapper>
+    <>
+      { children(queryCards, cardsLoading, extraProps) }
+    </>
   );
 }

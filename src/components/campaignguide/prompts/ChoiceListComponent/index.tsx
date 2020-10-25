@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
 
@@ -11,7 +11,7 @@ import { StringChoices } from '@actions/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
-import space from '@styles/space';
+import space, { m } from '@styles/space';
 
 export interface ListItem {
   code: string;
@@ -27,6 +27,7 @@ export interface ChoiceListComponentProps {
   optional?: boolean;
   detailed?: boolean;
   options: Choices;
+  loading?: boolean;
 }
 interface Props extends ChoiceListComponentProps {
   items: ListItem[];
@@ -137,7 +138,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   }
 
   renderChoices(inputChoiceList?: StringChoices) {
-    const { items, detailed, options, optional } = this.props;
+    const { items, detailed, options, optional, loading } = this.props;
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
         options.choices :
@@ -177,17 +178,31 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   }
 
   render() {
-    const { id, bulletType, text } = this.props;
-    const { scenarioState } = this.context;
+    const { id, bulletType, text, loading } = this.props;
+    const { scenarioState, style: { borderStyle, colors } } = this.context;
     const inputChoices = scenarioState.stringChoices(id);
     return (
       <>
         <SetupStepWrapper bulletType={bulletType}>
           { !!text && <CampaignGuideTextComponent text={text} /> }
         </SetupStepWrapper>
-        { this.renderChoices(inputChoices) }
+        { loading ? (
+            <View style={[styles.loadingRow, borderStyle]}>
+              <ActivityIndicator size="small" animating color={colors.lightText} />
+            </View>
+          ) : this.renderChoices(inputChoices) }
         { this.renderSaveButton(inputChoices !== undefined) }
       </>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  loadingRow: {
+    flexDirection: 'row',
+    padding: m,
+    justifyContent: 'center',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});

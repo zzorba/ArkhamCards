@@ -50,9 +50,6 @@ export default class Database {
         Rule,
       ],
     });
-    this.connectionP.then(connection => {
-      //      connection.query('EXPLAIN QUERY PLAN SELECT "c"."sort_by_type", count(*) as count FROM "card" "c" LEFT JOIN "card" "linked_card" ON "linked_card"."id"="c"."linked_card_id" WHERE ("c"."taboo_set_id" is null OR "c"."taboo_set_id" = 2) AND ((("c"."browse_visible") AND ("c"."deck_limit" >= 0)) AND ("c"."encounter_code" is not null AND ("c"."non_spoiler" is null or "c"."non_spoiler" = false))) GROUP BY "c"."sort_by_type"').then(console.log)
-    });
   }
 
   addListener(change: () => void) {

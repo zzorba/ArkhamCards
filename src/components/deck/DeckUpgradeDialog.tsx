@@ -21,7 +21,6 @@ import { updateCampaign } from '@components/campaign/actions';
 import EditTraumaComponent from '@components/campaign/EditTraumaComponent';
 import Card from '@data/Card';
 import space from '@styles/space';
-import BasicButton from '@components/core/BasicButton';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useDeck, useInvestigatorCards, useNavigationButtonPressed, useSlots } from '@components/core/hooks';
 import useTraumaDialog from '@components/campaign/useTraumaDialog';

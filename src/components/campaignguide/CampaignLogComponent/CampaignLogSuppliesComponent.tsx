@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { map } from 'lodash';
 
@@ -16,9 +16,8 @@ interface Props {
   section: InvestigatorSection;
 }
 
-export default class CampaignLogSuppliesComponent extends React.Component<Props> {
-  _renderInvestigator = (investigator: Card) => {
-    const { sectionId, section, campaignGuide } = this.props;
+export default function CampaignLogSuppliesComponent({ sectionId, campaignGuide, section }: Props) {
+  const renderInvestigator = useCallback((investigator: Card) => {
     const investigatorSection = section[investigator.code];
     return (
       <View key={investigator.code}>
@@ -34,22 +33,23 @@ export default class CampaignLogSuppliesComponent extends React.Component<Props>
         </View>
       </View>
     );
-  }
+  }, [sectionId, section, campaignGuide]);
 
-  render() {
-    const { section } = this.props;
-    return map(section, (investigatorSection, code) => {
-      return (
-        <SingleCardWrapper
-          key={code}
-          code={code}
-          type="player"
-        >
-          { this._renderInvestigator }
-        </SingleCardWrapper>
-      );
-    });
-  }
+  return (
+    <>
+      { map(section, (investigatorSection, code) => {
+        return (
+          <SingleCardWrapper
+            key={code}
+            code={code}
+            type="player"
+          >
+            { renderInvestigator }
+          </SingleCardWrapper>
+        );
+      }) }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

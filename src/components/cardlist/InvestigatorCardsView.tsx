@@ -12,18 +12,15 @@ export interface InvestigatorCardsProps {
 
 type Props = NavigationProps & InvestigatorCardsProps;
 
-export default class InvestigatorCardsView extends React.Component<Props> {
-  render() {
-    const { componentId, investigatorCode } = this.props;
-    return (
-      <SingleCardWrapper code={investigatorCode} type="player">
-        { (investigator: Card) => (
-          <CardSearchComponent
-            componentId={componentId}
-            baseQuery={queryForInvestigator(investigator)}
-          />
-        ) }
-      </SingleCardWrapper>
-    );
-  }
+export default function InvestigatorCardsView({ investigatorCode, componentId }: Props) {
+  return (
+    <SingleCardWrapper code={investigatorCode} type="player">
+      { (investigator: Card) => (
+        <CardSearchComponent
+          componentId={componentId}
+          baseQuery={queryForInvestigator(investigator)}
+        />
+      ) }
+    </SingleCardWrapper>
+  );
 }

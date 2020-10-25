@@ -171,18 +171,6 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       fetchMore();
     }
   }, [visibleCards, cards]);
-  /*
-  useEffect(() => {
-    // Look for holes in visibleCards after we complete one load, in case we need to load more.
-    const visibleCardsAtInitialSpinner = dropWhile(visibleCards, card => !!cards[card.id]);
-    const hasGap = !!find(visibleCardsAtInitialSpinner, card => !!cards[card.id]);
-    if (hasGap) {
-      // Have gaps, keep loading.
-      fetchMore();
-    }
-    // Intentionally not listeneing for 'visibleCards' changes because everytime visibleCards changes we do one fetch regardless.
-  }, [cards]);*/
-
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
     cards,

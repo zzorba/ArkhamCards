@@ -64,10 +64,10 @@ export default function InvestigatorRow({
     return colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground;
   }, [eliminated, investigator, colors]);
   const fadeAnim = useCallback((props: any) => {
-    return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />
+    return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;
   }, [colors]);
-  const detailFadeAnim =  useCallback((props: any) => {
-    return <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />
+  const detailFadeAnim = useCallback((props: any) => {
+    return <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />;
   }, [colors]);
   const content = useMemo(() => {
     return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { find } from 'lodash';
 import { t } from 'ttag';
 
@@ -16,9 +16,8 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class CampaignLogCardConditionComponent extends React.Component<Props> {
-  _renderCard = (card: Card) => {
-    const { step, condition, campaignLog, entry } = this.props;
+export default function CampaignLogCardConditionComponent({ step, entry, condition, campaignLog }: Props) {
+  const renderCard = useCallback((card: Card) => {
     const trueResult = find(condition.options, option => option.boolCondition === true);
     const falseResult = find(condition.options, option => option.boolCondition === false);
     const result = campaignLog.check(condition.section, condition.id);
@@ -34,17 +33,14 @@ export default class CampaignLogCardConditionComponent extends React.Component<P
         result={negated ? !result : result}
       />
     );
-  };
+  }, [step, entry, condition, campaignLog]);
 
-  render() {
-    const { entry } = this.props;
-    return (
-      <SingleCardWrapper
-        code={entry.code}
-        type="encounter"
-      >
-        { this._renderCard }
-      </SingleCardWrapper>
-    );
-  }
+  return (
+    <SingleCardWrapper
+      code={entry.code}
+      type="encounter"
+    >
+      { renderCard }
+    </SingleCardWrapper>
+  );
 }

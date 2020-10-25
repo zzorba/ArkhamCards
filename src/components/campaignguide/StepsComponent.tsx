@@ -11,22 +11,23 @@ interface Props {
   switchCampaignScenario: () => void;
 }
 
-export default class StepsComponent extends React.Component<Props> {
-  render() {
-    const {
-      steps,
-      componentId,
-      width,
-      switchCampaignScenario,
-    } = this.props;
-    return map(steps, (step, idx) => (
-      <ScenarioStepComponent
-        key={`${step.step.id}_${idx}`}
-        componentId={componentId}
-        width={width}
-        step={step}
-        switchCampaignScenario={switchCampaignScenario}
-      />
-    ));
-  }
+export default function StepsComponent({
+  steps,
+  componentId,
+  width,
+  switchCampaignScenario,
+}: Props) {
+  return (
+    <>
+      { map(steps, (step, idx) => (
+        <ScenarioStepComponent
+          key={`${step.step.id}_${idx}`}
+          componentId={componentId}
+          width={width}
+          step={step}
+          switchCampaignScenario={switchCampaignScenario}
+        />
+      )) }
+    </>
+  );
 }

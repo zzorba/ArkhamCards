@@ -13,7 +13,6 @@ interface Props {
   componentId: string;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
-  xpAdjustment: number;
   tabooSetId?: number;
   onTitlePress?: (deck: ParsedDeck) => void;
   renderFooter?: (slots?: Slots) => React.ReactNode;
@@ -36,7 +35,6 @@ export default function ChangesFromPreviousDeck({
   componentId,
   cards,
   parsedDeck,
-  xpAdjustment,
   tabooSetId,
   onTitlePress,
   renderFooter,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ActionSheetIOS, Platform, Linking } from 'react-native';
-import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle, NavigationButtonPressedEvent } from 'react-native-navigation';
+import { Navigation, OptionsTopBar, Options, OptionsModalPresentationStyle } from 'react-native-navigation';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import { InAppBrowser } from '@matt-block/react-native-in-app-browser';
+import { startsWith } from 'lodash';
 import { t } from 'ttag';
-import { map } from 'lodash';
 
 import { DeckChartsProps } from '@components/deck/DeckChartsView';
 import { DrawSimulatorProps } from '@components/deck/DrawSimulatorView';
@@ -19,7 +19,6 @@ import { ThemeColors } from '@styles/theme';
 import { StyleContextType } from '@styles/StyleContext';
 import Database from '@data/Database';
 import { where } from '@data/query';
-import { startsWith } from 'lodash';
 
 export function getDeckOptions(
   colors: ThemeColors,

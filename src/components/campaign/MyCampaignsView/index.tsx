@@ -16,7 +16,7 @@ import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { getAllDecks, getCampaigns } from '@reducers';
+import { getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
 import { m } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
@@ -28,8 +28,6 @@ function MyCampaignsView({ componentId }: NavigationProps) {
   const [search, setSearch] = useState('');
   const { typography } = useContext(StyleContext);
   const campaigns = useSelector(getCampaigns);
-  const decks = useSelector(getAllDecks);
-
   const showNewCampaignDialog = useMemo(() => {
     return throttle(() => {
       Navigation.push(componentId, {
@@ -55,7 +53,7 @@ function MyCampaignsView({ componentId }: NavigationProps) {
     }
   }, componentId, [showNewCampaignDialog]);
 
-  const filteredCampaigns: Campaign[]  = useMemo(() => {
+  const filteredCampaigns: Campaign[] = useMemo(() => {
     return filter<Campaign>(campaigns, campaign => {
       const parts = [campaign.name];
       if (campaign.cycleCode !== CUSTOM) {

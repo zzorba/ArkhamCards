@@ -40,7 +40,7 @@ export default function NumberPrompt({
   text,
 }: Props) {
   const { typography } = useContext(StyleContext);
-  const { scenarioState} = useContext(ScenarioGuideContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
   const [value, incValue, decValue] = useCounter(min || 0, { min, max });
   const currentValue = useMemo(() => {
 

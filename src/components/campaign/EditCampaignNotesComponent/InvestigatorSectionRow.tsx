@@ -17,7 +17,12 @@ interface Props {
   showDialog: ShowTextEditDialog;
 }
 
-export default function InvestigatorSectionRow({ investigator, updateInvestigatorNotes, investigatorNotes, showDialog }: Props) {
+export default function InvestigatorSectionRow({
+  investigator,
+  updateInvestigatorNotes,
+  investigatorNotes,
+  showDialog,
+}: Props) {
   const notesChanged = useCallback((index: number, notes: string[]) => {
     const sections = (investigatorNotes.sections || []).slice();
     const newNotes = Object.assign({}, sections[index].notes, { [investigator.code]: notes });
@@ -69,7 +74,6 @@ export default function InvestigatorSectionRow({ investigator, updateInvestigato
               title={title}
               count={section.counts[investigator.code] || 0}
               countChanged={countChanged}
-              isInvestigator
             />
           );
         }) }

@@ -10,7 +10,7 @@ import PlayScenarioComponent from './PlayScenarioComponent';
 import UpgradeDecksInput from './UpgradeDecksInput';
 import InvestigatorChoiceWithSuppliesInputComponent from './InvestigatorChoiceWithSuppliesInputComponent';
 import InvestigatorChoiceInputComponent from './InvestigatorChoiceInputComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import CheckListPrompt from '@components/campaignguide/prompts/CheckListPrompt';
 import InvestigatorCheckListComponent from '@components/campaignguide/prompts/InvestigatorCheckListComponent';
 import UseSuppliesPrompt from '@components/campaignguide/prompts/UseSuppliesPrompt';

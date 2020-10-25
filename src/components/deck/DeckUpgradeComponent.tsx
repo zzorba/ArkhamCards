@@ -103,7 +103,7 @@ function DeckUpgradeComponent({
     storyCounts,
     ignoreStoryCounts,
     xp,
-    deckUpgradeComplete
+    deckUpgradeComplete,
   ]);
   const saveUpgrade = useCallback((isRetry?: boolean) => {
     if (!deck) {

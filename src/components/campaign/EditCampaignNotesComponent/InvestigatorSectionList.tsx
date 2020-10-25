@@ -12,14 +12,13 @@ import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { s } from '@styles/space';
 
 interface Props {
-  componentId: string;
   allInvestigators: Card[];
   updateInvestigatorNotes: (notes: InvestigatorNotes) => void;
   investigatorNotes: InvestigatorNotes;
   showDialog: ShowTextEditDialog;
 }
 
-export default function InvestigatorSectionList({ componentId, allInvestigators, updateInvestigatorNotes, investigatorNotes, showDialog }: Props) {
+export default function InvestigatorSectionList({ allInvestigators, updateInvestigatorNotes, investigatorNotes, showDialog }: Props) {
   const renderDeckRow = useCallback((investigator: Card) => {
     return (
       <InvestigatorSectionRow

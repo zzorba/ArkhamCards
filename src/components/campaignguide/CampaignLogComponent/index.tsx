@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { flatMap, keys, sum, values } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -22,13 +22,9 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class CampaignLogComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  renderLogEntrySectionContent(id: string, title: string, type?: 'count' | 'supplies') {
-    const { campaignLog, campaignGuide } = this.props;
-    const { borderStyle, typography } = this.context;
+export default function CampaignLogComponent({ componentId, campaignId, campaignGuide, campaignLog }: Props) {
+  const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
+  const renderLogEntrySectionContent = useCallback((id: string, title: string, type?: 'count' | 'supplies') => {
     switch (type) {
       case 'count': {
         const count = campaignLog.count(id, '$count');
@@ -95,17 +91,9 @@ export default class CampaignLogComponent extends React.Component<Props> {
         );
       }
     }
-  }
+  }, [campaignLog, campaignGuide, borderStyle, typography]);
 
-  _oddsCalculatorPressed = () => {
-    const {
-      componentId,
-      campaignId,
-      campaignLog,
-    } = this.props;
-    this.setState({
-      menuOpen: false,
-    });
+  const oddsCalculatorPressed = useCallback(() => {
     Navigation.push<GuideOddsCalculatorProps>(componentId, {
       component: {
         name: 'Guide.OddsCalculator',
@@ -126,10 +114,9 @@ export default class CampaignLogComponent extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [componentId, campaignId, campaignLog]);
 
-  _chaosBagSimulatorPressed = () => {
-    const { componentId, campaignId, campaignLog } = this.props;
+  const chaosBagSimulatorPressed = useCallback(() => {
     Navigation.push<GuideChaosBagProps>(componentId, {
       component: {
         name: 'Guide.ChaosBag',
@@ -150,11 +137,9 @@ export default class CampaignLogComponent extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [componentId, campaignId, campaignLog]);
 
-  renderChaosBag() {
-    const { campaignLog } = this.props;
-    const { borderStyle, typography } = this.context;
+  const chaosBagSection = useMemo(() => {
     if (!keys(campaignLog.chaosBag).length) {
       return null;
     }
@@ -171,35 +156,31 @@ export default class CampaignLogComponent extends React.Component<Props> {
         />
         <BasicButton
           title={t`Draw chaos tokens`}
-          onPress={this._chaosBagSimulatorPressed}
+          onPress={chaosBagSimulatorPressed}
         />
         <BasicButton
           title={t`Odds calculator`}
-          onPress={this._oddsCalculatorPressed}
+          onPress={oddsCalculatorPressed}
         />
       </View>
     );
-  }
+  }, [borderStyle, typography, campaignLog, chaosBagSimulatorPressed, oddsCalculatorPressed]);
 
-  render() {
-    const { campaignGuide } = this.props;
-    const { backgroundStyle } = this.context;
-    return (
-      <View style={backgroundStyle}>
-        { this.renderChaosBag() }
-        { flatMap(campaignGuide.campaignLogSections(), log => {
-          if (log.type === 'hidden') {
-            return null;
-          }
-          return (
-            <View key={log.id}>
-              { this.renderLogEntrySectionContent(log.id, log.title, log.type) }
-            </View>
-          );
-        }) }
-      </View>
-    );
-  }
+  return (
+    <View style={backgroundStyle}>
+      { chaosBagSection }
+      { flatMap(campaignGuide.campaignLogSections(), log => {
+        if (log.type === 'hidden') {
+          return null;
+        }
+        return (
+          <View key={log.id}>
+            { renderLogEntrySectionContent(log.id, log.title, log.type) }
+          </View>
+        );
+      }) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
