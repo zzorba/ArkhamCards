@@ -325,11 +325,9 @@ export default function DeckViewTab({
   }, [componentId, tabooSetId, investigatorFront, colors]);
 
   const data = useMemo((): CardSection[] => {
-    const {
-      normalCards,
-      specialCards,
-      slots,
-    } = parsedDeck;
+    const normalCards = parsedDeck.normalCards;
+    const specialCards = parsedDeck.specialCards;
+    const slots = parsedDeck.slots;
     const validation = new DeckValidation(investigatorBack, slots, meta);
     return [
       {
@@ -364,6 +362,7 @@ export default function DeckViewTab({
       ...(limitedSlots ? [] : bondedSections(slots, cards, bondedCardsByName)),
     ];
   }, [
+    investigatorBack,
     limitedSlots,
     parsedDeck.normalCards,
     parsedDeck.specialCards,
@@ -418,7 +417,7 @@ export default function DeckViewTab({
       investigatorFront,
       renderFooter
     );
-  }, [componentId, data, tabooSetId, parsedDeck.slots, renderFooter, onDeckCountChange, singleCardView, cards]);
+  }, [componentId, data, colors, investigatorFront, tabooSetId, parsedDeck.slots, renderFooter, onDeckCountChange, singleCardView, cards]);
 
   const renderSectionHeader = useCallback(({ section }: { section: SectionListData<SectionCardId> }) => {
     return (
@@ -431,13 +430,9 @@ export default function DeckViewTab({
   }, [parsedDeck.investigator]);
 
   const renderCard = useCallback(({ item, index, section }: SectionListRenderItemInfo<SectionCardId>) => {
-    const {
-      ignoreDeckLimitSlots,
-      deck: {
-        previous_deck,
-        next_deck,
-      },
-    } = parsedDeck;
+    const ignoreDeckLimitSlots = parsedDeck.ignoreDeckLimitSlots;
+    const previous_deck = parsedDeck.deck.previous_deck;
+    const next_deck = parsedDeck.deck.next_deck;
     const card = cards[item.id];
     if (!card) {
       return null;
@@ -479,7 +474,7 @@ export default function DeckViewTab({
   }, [parsedDeck.investigator, problem]);
 
   const availableExperienceButton = useMemo(() => {
-    const { changes } = parsedDeck;
+    const changes = parsedDeck.changes;
     if (!changes) {
       return null;
     }
@@ -546,13 +541,13 @@ export default function DeckViewTab({
       </View>
     );
   }, [
+    investigator,
     colors,
     availableExperienceButton,
     limitedSlots,
     toggleLimitedSlots,
     typography,
     parsedDeck.investigator,
-    parsedDeck.limitedSlots,
     parallelInvestigators,
     deck,
     meta,
@@ -609,7 +604,7 @@ export default function DeckViewTab({
         </TouchableOpacity>
       </View>
     );
-  }, [componentId, parsedDeck.slots, cards, investigator, investigatorFront]);
+  }, [componentId, parsedDeck.slots, showInvestigator, cards, investigator, investigatorFront]);
 
   const header = useMemo(() => {
     return (

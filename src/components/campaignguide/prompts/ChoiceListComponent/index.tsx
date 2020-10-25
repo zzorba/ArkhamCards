@@ -138,7 +138,7 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
   }
 
   renderChoices(inputChoiceList?: StringChoices) {
-    const { items, detailed, options, optional, loading } = this.props;
+    const { items, detailed, options, optional } = this.props;
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
         options.choices :
@@ -187,10 +187,10 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           { !!text && <CampaignGuideTextComponent text={text} /> }
         </SetupStepWrapper>
         { loading ? (
-            <View style={[styles.loadingRow, borderStyle]}>
-              <ActivityIndicator size="small" animating color={colors.lightText} />
-            </View>
-          ) : this.renderChoices(inputChoices) }
+          <View style={[styles.loadingRow, borderStyle]}>
+            <ActivityIndicator size="small" animating color={colors.lightText} />
+          </View>
+        ) : this.renderChoices(inputChoices) }
         { this.renderSaveButton(inputChoices !== undefined) }
       </>
     );

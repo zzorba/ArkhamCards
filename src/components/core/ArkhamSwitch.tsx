@@ -11,7 +11,7 @@ interface Props extends TouchableOpacityProps {
   onValueChange: (checked: boolean) => void;
   accessibilityLabel?: string;
 }
-export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, ...props}: Props) {
+export default function ArkhamSwitch({ useGestureHandler, value, onValueChange, accessibilityLabel, disabled, ...props }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onPress = useCallback(() => {

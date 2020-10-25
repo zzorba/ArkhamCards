@@ -16,11 +16,10 @@ import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsCo
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { FilterState } from '@lib/filters';
 import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from '@components/filter/actions';
-import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
+import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import MythosButton from './MythosButton';
 import TuneButton from './TuneButton';
 import SortButton from './SortButton';
-import ToggleButton from '@components/core/ToggleButton';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import space from '@styles/space';
@@ -375,8 +374,5 @@ const styles = StyleSheet.create({
   },
   searchOption: {
     marginRight: 2,
-  },
-  button: {
-    flex: 1,
   },
 });

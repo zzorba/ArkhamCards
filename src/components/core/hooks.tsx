@@ -16,7 +16,7 @@ export function useNavigationButtonPressed(
   componentId: string,
   deps: any[],
 ) {
-  const debouncedHandler = useCallback(debounce(handler, 1000, { leading: true }), [handler]);
+  const debouncedHandler = useMemo(() => debounce(handler, 1000, { leading: true }), [handler]);
   useEffect(() => {
     const sub = Navigation.events().registerNavigationButtonPressedListener((event: NavigationButtonPressedEvent) => {
       if (event.componentId === componentId) {
@@ -26,12 +26,14 @@ export function useNavigationButtonPressed(
     return () => {
       sub.remove();
     };
-  }, [componentId, ...deps]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [componentId, debouncedHandler, ...deps]);
 }
 
 export function useComponentDidAppear(
   handler: (event: ComponentDidAppearEvent) => void,
   componentId: string,
+  deps: any[],
 ) {
   useEffect(() => {
     const sub = Navigation.events().registerComponentDidAppearListener((event: ComponentDidAppearEvent) => {
@@ -42,7 +44,8 @@ export function useComponentDidAppear(
     return () => {
       sub.remove();
     };
-  }, [componentId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [componentId, handler, ...deps]);
 }
 
 
@@ -309,7 +312,7 @@ export function useChaosBagResults(campaignId: number): ChaosBagResults {
 
 export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
   const dispatch = useDispatch();
-  const deckSelector = useCallback(getDeck(id), [id]);
+  const deckSelector = useMemo(() => getDeck(id), [id]);
   const theDeck = useSelector(deckSelector) || undefined;
   const previousDeckSelector = useCallback((state: AppState) => {
     return theDeck && theDeck.previous_deck && getDeck(theDeck.previous_deck)(state);
@@ -319,15 +322,16 @@ export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boole
     if (!theDeck && fetchIfMissing) {
       dispatch(fetchPrivateDeck(id));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing) {
       dispatch(fetchPrivateDeck(id));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);
   return [theDeck, thePreviousDeck];
 }
-
 
 export function useParsedDeck(
   deck: Deck,

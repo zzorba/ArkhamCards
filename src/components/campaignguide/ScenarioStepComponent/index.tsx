@@ -131,7 +131,7 @@ export default function ScenarioStepComponent({
   switchCampaignScenario,
 }: Props) {
   const { typography, colors } = useContext(StyleContext);
-  const { campaignInvestigators, campaignGuide, campaignId } = useContext(CampaignGuideContext);
+  const { campaignInvestigators } = useContext(CampaignGuideContext);
   const scenarioGuideContext = useContext(ScenarioGuideContext);
   const context: ScenarioStepContextType = useMemo(() => {
     const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());

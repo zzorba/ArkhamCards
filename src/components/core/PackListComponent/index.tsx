@@ -31,7 +31,6 @@ interface Props {
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
   header?: React.ReactElement;
   renderFooter?: () => React.ReactElement;
-  whiteBackground?: boolean;
   baseQuery?: Brackets;
   compact?: boolean;
   noFlatList?: boolean;
@@ -76,7 +75,6 @@ export default function PackListComponent({
   setCycleChecked,
   header,
   renderFooter,
-  whiteBackground,
   baseQuery,
   compact,
   noFlatList,
@@ -97,12 +95,11 @@ export default function PackListComponent({
         setChecked={setChecked}
         setCycleChecked={setCycleChecked}
         checked={checkState && checkState[pack.code]}
-        whiteBackground={whiteBackground}
         baseQuery={baseQuery}
         compact={compact}
       />
     );
-  }, [packs, checkState, setChecked, setCycleChecked, whiteBackground, baseQuery, compact, coreSetName]);
+  }, [packs, checkState, componentId, setChecked, setCycleChecked, baseQuery, compact, coreSetName]);
 
   const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Pack>) => {
     return renderPack(item);

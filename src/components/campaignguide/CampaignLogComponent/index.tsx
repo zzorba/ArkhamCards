@@ -13,7 +13,7 @@ import CampaignLogSectionComponent from './CampaignLogSectionComponent';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import space, { m, s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;

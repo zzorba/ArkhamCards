@@ -57,7 +57,8 @@ export default function DeckListComponent({
         dispatch(fetchPublicDeck(deckId, false));
       }
     });
-  },[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const header = useMemo(() => (
     <View style={styles.header}>
       { !!customHeader && customHeader }

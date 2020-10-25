@@ -389,10 +389,8 @@ class CampaignDetailView extends React.Component<Props, State> {
         component: {
           name: 'Campaign.ChaosBag',
           passProps: {
-            componentId,
             campaignId: campaign.id,
             updateChaosBag: this._updateChaosBag,
-            trackDeltas: true,
           },
           options: {
             topBar: {

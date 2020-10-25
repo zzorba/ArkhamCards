@@ -27,6 +27,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
   ],
   'rules': {
     // Enable additional rules for ESLint:

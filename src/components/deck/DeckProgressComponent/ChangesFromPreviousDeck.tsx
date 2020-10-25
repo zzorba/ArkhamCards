@@ -94,7 +94,7 @@ export default function ChangesFromPreviousDeck({
   }, [colors, allCards, componentId, investigator, slots, tabooSetId, renderFooter, onDeckCountChange, singleCardView]);
 
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {
-    const { investigator } = parsedDeck;
+    const investigator = parsedDeck.investigator;
     const cards = getCards(slots);
     if (!cards.length) {
       return null;
@@ -117,7 +117,7 @@ export default function ChangesFromPreviousDeck({
         )) }
       </React.Fragment>
     );
-  }, [parsedDeck.investigator, getCards]);
+  }, [parsedDeck.investigator, showCardPressed, getCards]);
 
   const handleTitlePress = useCallback(() => {
     if (onTitlePress) {
@@ -147,7 +147,7 @@ export default function ChangesFromPreviousDeck({
         />
       );
     }
-  }, [investigator, changes, editable]);
+  }, [investigator, changes, editable, renderSection]);
 
   if (!hasChanges(changes) && !title) {
     return null;

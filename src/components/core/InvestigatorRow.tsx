@@ -19,7 +19,6 @@ import InvestigatorImage from '@components/core/InvestigatorImage';
 import Card from '@data/Card';
 import space, { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { FadeProps } from 'rn-placeholder/lib/animations/Fade';
 
 interface Props {
   superTitle?: string;

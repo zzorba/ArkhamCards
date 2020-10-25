@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useMemo } from 'react';
-import { filter, forEach, map } from 'lodash';
+import React, { useCallback, useContext } from 'react';
+import { filter, map } from 'lodash';
 import {
   Text,
   ScrollView,
@@ -9,10 +9,10 @@ import {
 import { t } from 'ttag';
 
 import ScenarioResultRow from './ScenarioResultRow';
-import { campaignScenarios, Scenario, completedScenario } from '../constants';
+import { completedScenario } from '../constants';
 import CampaignSummaryComponent from '../CampaignSummaryComponent';
 import { NavigationProps } from '@components/nav/types';
-import { Campaign, ScenarioResult } from '@actions/types';
+import { ScenarioResult } from '@actions/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignScenarios } from '@components/core/hooks';
@@ -20,7 +20,6 @@ import { useCampaign, useCampaignScenarios } from '@components/core/hooks';
 export interface CampaignScenarioProps {
   id: number;
 }
-
 
 export default function CampaignScenarioView({ id, componentId }: CampaignScenarioProps & NavigationProps) {
   const campaign = useCampaign(id);

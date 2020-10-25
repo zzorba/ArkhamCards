@@ -49,7 +49,7 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
   const hasSelection = selection.length > 0;
   useEffect(() => {
     onChange(selection);
-  }, [selection]);
+  }, [selection, onChange]);
   useEffect(() => {
     Navigation.mergeOptions(componentId, {
       topBar: {
@@ -62,7 +62,7 @@ export default function SearchMultiSelectView({ componentId, placeholder, onChan
           }] : [],
       },
     });
-  }, [hasSelection]);
+  }, [hasSelection, componentId]);
 
   const onSelectChanged = useCallback((value: string, selected: boolean) => {
     Keyboard.dismiss();

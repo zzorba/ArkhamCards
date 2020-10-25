@@ -34,7 +34,7 @@ export default function WeaknessSetPackChooserComponent({
   }, [packs, weaknessCards]);
 
   useEffect(() => {
-    const includePack = Object.assign({}, in_collection, override);
+    const includePack = { ...in_collection, ...override };
     const packs: string[] = [];
     forEach(weaknessPacks, pack => {
       if (includePack[pack.code]) {
@@ -42,7 +42,7 @@ export default function WeaknessSetPackChooserComponent({
       }
     });
     onSelectedPacksChanged(packs);
-  }, [override]);
+  }, [override, in_collection, onSelectedPacksChanged, weaknessPacks]);
 
   const onPackCheck = useCallback((pack: string, value: boolean) => {
     setOverride({ type: 'set', key: pack, value: !!value });
@@ -65,7 +65,6 @@ export default function WeaknessSetPackChooserComponent({
       setChecked={onPackCheck}
       baseQuery={BASIC_WEAKNESS_QUERY}
       compact={compact}
-      whiteBackground
       noFlatList
     />
   );

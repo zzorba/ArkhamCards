@@ -19,7 +19,7 @@ export default function DownloadParallelCardsButton() {
     Linking.openURL(languageUrl ||
       'https://www.fantasyflightgames.com/en/products/arkham-horror-the-card-game/'
     );
-  }, []);
+  }, [lang]);
   return (
     <BasicButton
       onPress={onPress}

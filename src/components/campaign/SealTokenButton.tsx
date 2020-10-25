@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { updateChaosBagResults } from './actions';
-import ChaosTokenButton from './ChaosTokenButton'
+import ChaosTokenButton from './ChaosTokenButton';
 import { ChaosTokenType } from '@app_constants';
 import { useChaosBagResults } from '@components/core/hooks';
 
@@ -14,7 +14,7 @@ interface Props {
   canDisable?: boolean;
 }
 
-export default function SealTokenButton({ campaignId, id, iconKey, sealed=false, canDisable=false }: Props) {
+export default function SealTokenButton({ campaignId, id, iconKey, sealed = false, canDisable = false }: Props) {
   const chaosBagResults = useChaosBagResults(campaignId);
   const dispatch = useDispatch();
   const toggleSealToken = useCallback(() => {

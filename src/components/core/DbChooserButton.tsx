@@ -4,7 +4,6 @@ import { t } from 'ttag';
 import NavButton from './NavButton';
 import { SearchSelectProps } from '../cardlist/SearchMultiSelectView';
 import COLORS from '@styles/colors';
-import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
 import { Brackets } from 'typeorm/browser';
 
@@ -59,13 +58,7 @@ export default function DbChooserButton({ componentId, title, field, onChange, s
       });
       setPressed(false);
     });
-  }, [
-    componentId,
-    title,
-    setPressed,
-    onChange,
-    selection,
-  ]);
+  }, [capitalize, db, field, componentId, title, setPressed, onChange, selection, processValue, query, tabooSetId]);
 
   return (
     <NavButton

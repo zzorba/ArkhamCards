@@ -1,7 +1,7 @@
 import React, { ReactNode, useCallback, useContext, useMemo } from 'react';
 import { filter, flatMap, keys, sortBy } from 'lodash';
 
-import { Slots, SortType } from '@actions/types';
+import { Slots } from '@actions/types';
 import Card from '@data/Card';
 import CardToggleRow from './CardToggleRow';
 import { showCard } from '@components/nav/helper';
@@ -16,11 +16,10 @@ interface Props {
   updateCounts?: (slots: Slots) => void;
   filterCard?: (card: Card) => boolean;
   header?: ReactNode;
-  sort?: SortType;
 }
 
 
-export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCounts, filterCard, header, sort }: Props) {
+export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCounts, filterCard, header }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onChange = useCallback((card: Card, count: number) => {

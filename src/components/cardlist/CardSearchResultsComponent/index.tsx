@@ -244,7 +244,6 @@ export default function({
   selectedSort,
   filters,
   mythosMode,
-  visible,
   toggleMythosMode,
   clearSearchFilters,
   tabooSetOverride,
@@ -284,66 +283,7 @@ export default function({
   const searchUpdated = useCallback((text: string) => {
     setSearchTerm(text);
     debouncedUpdateSearch(text);
-  }, []);
-
-  const filterCardText = useCallback((card: Card): boolean => {
-    const {
-      searchQuery,
-      searchCode,
-    } = searchState;
-    if (searchCode && card.position === searchCode) {
-      return true;
-    }
-    if (!searchQuery || searchTerm === '' || !searchTerm) {
-      return true;
-    }
-    if (searchBack) {
-      if (searchQuery.test(card.name) ||
-        (card.linked_card && searchQuery.test(card.linked_card.name)) ||
-        (card.back_name && searchQuery.test(card.back_name)) ||
-        (card.linked_card && card.linked_card.back_name && searchQuery.test(card.linked_card.back_name)) ||
-        (card.subname && searchQuery.test(card.subname)) ||
-        (card.linked_card && card.linked_card.subname && searchQuery.test(card.linked_card.subname))
-      ) {
-        return true;
-      }
-    } else {
-      if (searchQuery.test(card.renderName) || (card.renderSubname && searchQuery.test(card.renderSubname))) {
-        return true;
-      }
-    }
-    if (searchText) {
-      if (
-        (card.real_text && searchQuery.test(card.real_text)) ||
-        (card.linked_card && card.linked_card.real_text && searchQuery.test(card.linked_card.real_text)) ||
-        (card.traits && searchQuery.test(card.traits)) ||
-        (card.linked_card && card.linked_card.traits && searchQuery.test(card.linked_card.traits))
-      ) {
-        return true;
-      }
-      if (searchBack && (
-        (card.back_text && searchQuery.test(card.back_text)) ||
-        (card.linked_card && card.linked_card.back_text && searchQuery.test(card.linked_card.back_text))
-      )) {
-        return true;
-      }
-    }
-    if (searchFlavor) {
-      if (
-        (card.flavor && searchQuery.test(card.flavor)) ||
-        (card.linked_card && card.linked_card.flavor && searchQuery.test(card.linked_card.flavor))
-      ) {
-        return true;
-      }
-      if (searchBack && (
-        (card.back_flavor && searchQuery.test(card.back_flavor)) ||
-        (card.linked_card && card.linked_card.back_flavor && searchQuery.test(card.linked_card.back_flavor))
-      )) {
-        return true;
-      }
-    }
-    return false;
-  }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
+  }, [setSearchTerm, debouncedUpdateSearch]);
 
   const textQuery = useMemo(() => {
     const {
@@ -428,7 +368,7 @@ export default function({
       queryParts,
       'and'
     );
-  }, [baseQuery, mythosToggle, selectedSort, mythosToggle, mythosMode]);
+  }, [baseQuery, mythosToggle, selectedSort, mythosMode]);
   const filterQuery = useMemo(() => filters && FILTER_BUILDER.filterToQuery(filters), [filters]);
   return (
     <CollapsibleSearchBox

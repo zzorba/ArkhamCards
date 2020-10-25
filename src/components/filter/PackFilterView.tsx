@@ -35,7 +35,7 @@ const PackFilterView = (props: FilterFunctionProps & NavigationProps) => {
   }, [packs, onFilterChange, allPacks]);
 
   const setCycleChecked = useCallback((cycle_code: string, value: boolean) => {
-    const cyclePack = find(allPacks, pack => pack.code == cycle_code);
+    const cyclePack = find(allPacks, pack => pack.code === cycle_code);
     if (cyclePack) {
       const deltaPacks = map(
         filter(allPacks, pack => pack.cycle_position === cyclePack.cycle_position),

@@ -109,7 +109,7 @@ function AddSideScenarioView({ componentId, latestScenarioId }: Props) {
         />
       </Dialog>
     );
-  }, [customDialogVisible, customScenarioName, customXpCost, viewRef, typography, cancelCustomScenarioPressed, saveCustomScenario]);
+  }, [customDialogVisible, decCustomXpCost, incCustomXpCost, customScenarioName, customXpCost, viewRef, typography, cancelCustomScenarioPressed, saveCustomScenario]);
 
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const tabs = [

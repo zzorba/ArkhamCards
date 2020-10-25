@@ -26,7 +26,7 @@ export default function withScenarioGuideContext<Props>(
     const processedScenario = useMemo(() => campaignGuide.getScenario(
       scenarioId,
       campaignState
-    ), [scenarioId, campaignState]);
+    ), [scenarioId, campaignGuide, campaignState]);
     const scenarioState = useMemo(() => {
       return processedScenario && new ScenarioStateHelper(processedScenario.scenarioGuide.id, campaignState);
     }, [processedScenario, campaignState]);

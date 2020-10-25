@@ -30,7 +30,7 @@ function CampaignEditWeaknessDialog({ componentId, campaignId }: CampaignEditWea
         { weaknessSet: updatedWeaknessSet } as Campaign
       ));
     }
-  }, [dispatch, campaignId, weaknessSet, updateCampaign]);
+  }, [dispatch, campaignId, weaknessSet]);
   if (!weaknessSet) {
     return null;
   }

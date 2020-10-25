@@ -136,6 +136,7 @@
     "eslint-plugin-destructuring": "2.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-react": "7.18.3",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-react-native": "3.8.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",

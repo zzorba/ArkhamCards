@@ -5,7 +5,7 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import ChooseOneListComponent from './ChooseOneListComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../ScenarioGuideContext';
+import ScenarioGuideContext from '../ScenarioGuideContext';
 import SetupStepWrapper from '../SetupStepWrapper';
 import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';

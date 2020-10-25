@@ -57,13 +57,9 @@ export default function DeckNavFooter({
   }, [parsedDeck.problem]);
 
   const xpString = useMemo(() => {
-    const {
-      deck: {
-        xp,
-      },
-      changes,
-      experience,
-    } = parsedDeck;
+    const experience = parsedDeck.experience;
+    const xp = parsedDeck.deck.xp;
+    const changes = parsedDeck.changes;
     if (!changes) {
       return t`XP: ${experience}`;
     }

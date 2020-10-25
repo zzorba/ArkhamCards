@@ -232,7 +232,7 @@ export default function CardTextComponent({ text, onLinkPress }: Props) {
     );
   const wrappedOnLinkPress = useCallback((url: string) => {
     onLinkPress && onLinkPress(url, context);
-  }, [onLinkPress]);
+  }, [onLinkPress, context]);
 
   // Text that has hyperlinks uses a different style for the icons.
   return (

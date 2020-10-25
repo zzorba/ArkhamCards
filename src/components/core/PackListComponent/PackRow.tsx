@@ -24,13 +24,12 @@ interface Props {
   setChecked?: (pack_code: string, checked: boolean) => void;
   setCycleChecked?: (cycle_code: string, checked: boolean) => void;
   checked?: boolean;
-  whiteBackground?: boolean;
   baseQuery?: Brackets;
   compact?: boolean;
   nameOverride?: string;
 }
 
-export default function PackRow({ componentId, pack, cycle, setChecked, setCycleChecked, checked, whiteBackground, baseQuery, compact, nameOverride }: Props) {
+export default function PackRow({ componentId, pack, cycle, setChecked, setCycleChecked, checked, baseQuery, compact, nameOverride }: Props) {
   const { colors, fontScale, typography } = useContext(StyleContext);
   const onPress = useCallback(() => {
     Navigation.push<PackCardsProps>(componentId, {

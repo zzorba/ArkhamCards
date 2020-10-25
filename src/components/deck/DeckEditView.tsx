@@ -41,7 +41,7 @@ export default function DeckEditView({
   tabooSetOverride,
 }: Props) {
   const [deckCardCounts, updatedDeckCardCounts] = useSlots(slots, updateSlots);
-  const investigators = useInvestigatorCards(deck.taboo_id || 0);
+  const investigators = useInvestigatorCards(tabooSetOverride || 0);
   const [hideVersatile, setHideVersatile] = useState(false);
   const investigator = useMemo(() => {
     const investigator_code = meta?.alternate_back || deck?.investigator_code;
@@ -49,7 +49,7 @@ export default function DeckEditView({
   }, [deck, meta, investigators]);
   useEffect(() => {
     updatedDeckCardCounts({ type: 'sync', slots });
-  }, [slots]);
+  }, [slots, updatedDeckCardCounts]);
   const onDeckCountChange = useCallback((code: string, count: number) => {
     updatedDeckCardCounts({ type: 'set-slot', code, value: count });
   }, [updatedDeckCardCounts]);

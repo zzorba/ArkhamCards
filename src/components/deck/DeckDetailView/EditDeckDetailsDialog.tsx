@@ -46,6 +46,7 @@ export default function EditDeckDetailsDialog(props: Props) {
       setName(props.name);
       setXpAdjustment(props.xpAdjustment);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
   const textInputRef = useRef<TextInput>(null);
 

@@ -90,7 +90,7 @@ export default function(
         delete new_collection[action.code];
       }
     } else if (action.cycle_code) {
-      const cyclePack = find(state.all, pack => pack.code == action.cycle_code);
+      const cyclePack = find(state.all, pack => pack.code === action.cycle_code);
       if (cyclePack) {
         forEach(state.all, pack => {
           if (pack.cycle_position === cyclePack.cycle_position) {
@@ -119,7 +119,7 @@ export default function(
         delete new_spoilers[action.code];
       }
     } else if (action.cycle_code) {
-      const cyclePack = find(state.all, pack => pack.code == action.cycle_code);
+      const cyclePack = find(state.all, pack => pack.code === action.cycle_code);
       if (cyclePack) {
         forEach(state.all, pack => {
           if (pack.cycle_position === cyclePack.cycle_position) {

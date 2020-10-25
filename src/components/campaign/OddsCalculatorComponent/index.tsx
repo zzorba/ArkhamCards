@@ -284,7 +284,6 @@ export default class OddsCalculatorComponent extends React.Component<Props, Stat
       chaosBag,
     } = this.props;
     const {
-      difficulty,
       currentScenarioCard,
       testDifficulty,
     } = this.state;

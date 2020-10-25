@@ -36,7 +36,7 @@ export default function NotesSection({ notesChanged, index, title, notes, showDi
     if (note === '') {
       updatedNotes = filter(updatedNotes, note => note !== '');
       updatedNotes.push('');
-    } else if (index === (notes.length - 1)) {
+    } else if (index === (liveNotes.length - 1)) {
       // If they add something to last one, grow it.
       updatedNotes.push('');
     }

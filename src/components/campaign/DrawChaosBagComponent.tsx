@@ -21,14 +21,13 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { useChaosBagResults } from '@components/core/hooks';
 
 interface Props {
-  componentId: string;
   campaignId: number;
   chaosBag: ChaosBag;
 }
 
-export default function DrawChaosBagComponent({ componentId, campaignId, chaosBag }: Props) {
+export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const chaosBagResults = useChaosBagResults(campaignId);
   const [isChaosBagEmpty, setIsChaosBagEmpty] = useState(false);
 
@@ -148,9 +147,7 @@ export default function DrawChaosBagComponent({ componentId, campaignId, chaosBa
   }, [campaignId, dispatch]);
 
   const drawnTokens = useMemo(() => {
-    const {
-      drawnTokens,
-    } = chaosBagResults;
+    const drawnTokens = chaosBagResults.drawnTokens;
 
     if (drawnTokens.length > 1) {
       return drawnTokens.slice(0, drawnTokens.length - 1).map(function(token, index) {
@@ -172,7 +169,7 @@ export default function DrawChaosBagComponent({ componentId, campaignId, chaosBa
   }, [chaosBagResults.drawnTokens, typography]);
 
   const chaosToken = useMemo(() => {
-    const { drawnTokens } = chaosBagResults;
+    const drawnTokens = chaosBagResults.drawnTokens;
     const iconKey = drawnTokens[drawnTokens.length - 1] || undefined;
     return (
       <TouchableOpacity onPress={handleDrawTokenPressed}>
@@ -182,7 +179,7 @@ export default function DrawChaosBagComponent({ componentId, campaignId, chaosBa
   }, [chaosBagResults.drawnTokens, handleDrawTokenPressed]);
 
   const sealedTokens = useMemo(() => {
-    const { sealedTokens } = chaosBagResults;
+    const sealedTokens = chaosBagResults.sealedTokens;
     return sealedTokens.map(token => {
       return (
         <SealTokenButton
@@ -197,7 +194,7 @@ export default function DrawChaosBagComponent({ componentId, campaignId, chaosBa
   }, [campaignId, chaosBagResults.sealedTokens]);
 
   const drawButton = useMemo(() => {
-    const { drawnTokens } = chaosBagResults;
+    const drawnTokens = chaosBagResults.drawnTokens;
     if (drawnTokens.length > 0) {
       return (
         <BasicButton
@@ -210,7 +207,7 @@ export default function DrawChaosBagComponent({ componentId, campaignId, chaosBa
   }, [chaosBagResults.drawnTokens, handleAddAndDrawAgainPressed, isChaosBagEmpty]);
 
   const clearButton = useMemo(() => {
-    const { drawnTokens } = chaosBagResults;
+    const drawnTokens = chaosBagResults.drawnTokens;
     if (drawnTokens.length > 1) {
       const hasBlessCurse = find(drawnTokens, token => token === 'bless' || token === 'curse');
       if (hasBlessCurse) {
@@ -221,7 +218,6 @@ export default function DrawChaosBagComponent({ componentId, campaignId, chaosBa
           </>
         );
       }
-
       return (
         <BasicButton title={t`Return Tokens`} onPress={handleClearTokensPressed} />
       );

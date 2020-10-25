@@ -18,17 +18,13 @@ interface Props {
   hideKilledInsane?: boolean;
 }
 
-interface State {
-  trauma: Trauma;
-  visible: boolean;
-}
-
 export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, viewRef, hideKilledInsane }: Props) {
   const [traumaState, setTraumaState] = useState<Trauma>({});
   useEffect(() => {
     if (visible) {
       setTraumaState(trauma || {});
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
   const onSubmit = useCallback(() => {

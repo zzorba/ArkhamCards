@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
 import { filter } from 'lodash';
 
@@ -16,7 +15,7 @@ interface Props {
 
 export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Props): [Card[], boolean] {
   const tabooSetId = useTabooSet(tabooSetOverride);
-  const { db } =  useContext(DatabaseContext);
+  const { db } = useContext(DatabaseContext);
   const [cards, setCards] = useState<Card[] | undefined>();
   useEffect(() => {
     if (!query) {

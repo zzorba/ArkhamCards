@@ -48,8 +48,7 @@ function RuleComponent({ componentId, rule, level, noTitle }: { componentId: str
   const linkPressed = useCallback(
     (url: string, context: StyleContextType) => {
       openUrl(url, context, db, componentId, tabooSetId);
-    }, []
-  );
+    }, [componentId, db, tabooSetId]);
 
   return (
     <>

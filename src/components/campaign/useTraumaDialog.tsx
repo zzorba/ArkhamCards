@@ -33,7 +33,7 @@ export default function useTraumaDialog({ hideKilledInsane }: { hideKilledInsane
       ...investigatorData,
       [investigator]: { ...data },
     });
-  }, [state, setState, investigatorData]);
+  }, [state, setInvestigatorData, investigatorData]);
 
   const showTraumaDialog = useCallback((
     investigator: Card,

@@ -123,7 +123,7 @@ export default function PickerStyleButton({
         </View>
       </View>
     );
-  }, [colors, pickerColors, disabled, title, value, noBorder, settingsStyle, widget, widgetIcon]);
+  }, [colors, pickerColors, disabled, borderStyle, typography, title, value, noBorder, settingsStyle, widget, widgetIcon]);
 
   const handleOnPress = useCallback(() => {
     onPress(id);

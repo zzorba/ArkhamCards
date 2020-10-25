@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { flatMap, map, partition } from 'lodash';
 import {
   View,
@@ -10,7 +10,6 @@ import CardDetailSectionHeader from './CardDetailSectionHeader';
 import BondedCardsComponent from './BondedCardsComponent';
 import Card from '@data/Card';
 import space from '@styles/space';
-import StyleContext from '@styles/StyleContext';
 import useCardList from '../useCardList';
 
 interface Props {
@@ -20,7 +19,6 @@ interface Props {
 }
 
 export default function SignatureCardsComponent({ componentId, investigator, width }: Props) {
-  const {} = useContext(StyleContext);
   const requiredCodes = useMemo(() => {
     return flatMap(investigator.deck_requirements?.card || [], req => req.code ? [req.code] : []);
   }, [investigator]);

@@ -4,10 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import ChooseOneListComponent from '../ChooseOneListComponent';
 import SinglePickerComponent from '@components/core/SinglePickerComponent';
 import { DisplayChoice } from '@data/scenario';
-import { BulletType } from '@data/scenario/types';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   code: string;

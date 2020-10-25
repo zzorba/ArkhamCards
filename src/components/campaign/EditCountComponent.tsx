@@ -21,7 +21,7 @@ export default function EditCountComponent({ countChanged, index, title, count: 
   const [count, increment, decrement] = useCounter(initialCount || 0, { min: 0 });
   useEffect(() => {
     countChanged(index, count);
-  }, [count]);
+  }, [count, countChanged, index]);
   return (
     <BasicListRow>
       <Text style={typography.mediumGameFont}>

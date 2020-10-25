@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { find, flatMap, keys, map, uniq, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
@@ -19,8 +18,6 @@ import { LatestDecks, ProcessedScenario } from '@data/scenario';
 import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
-import { m } from '@styles/space';
-import StyleContext from '@styles/StyleContext';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 
 interface Props {
@@ -105,7 +102,6 @@ function mainQuery(
 }
 
 export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
-  const { colors, borderStyle } = useContext(StyleContext);
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
   const { scenarioState, processedScenario, scenarioInvestigators } = useContext(ScenarioStepContext);
@@ -251,12 +247,3 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
   );
 }
 
-const styles = StyleSheet.create({
-  loadingRow: {
-    flexDirection: 'row',
-    padding: m,
-    justifyContent: 'center',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-});

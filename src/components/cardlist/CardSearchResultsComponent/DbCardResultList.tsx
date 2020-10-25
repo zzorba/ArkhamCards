@@ -162,7 +162,7 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
         }, console.log);
       }
     },
-    [visibleCards, cards, beingFetched, fetchSize]
+    [visibleCards, cards, beingFetched, fetchSize, db, updateCards]
   );
 
   useEffect(() => {
@@ -170,6 +170,7 @@ function useCardFetcher(visibleCards: PartialCard[]): CardFetcher {
       // Initial fetch when we get back first set of results.
       fetchMore();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleCards, cards]);
   const allFetched = useMemo(() => !find(visibleCards, card => !cards[card.id]), [cards, visibleCards]);
   return {
@@ -183,10 +184,11 @@ function useDeckQuery(deckCardCounts: Slots, originalDeckSlots?: Slots): [Bracke
   const [updateCounter, setUpdateCounter] = useState(-1);
   const refreshDeck = useCallback(() => {
     setRefreshCounter(updateCounter);
-  }, [refreshCounter, updateCounter]);
+  }, [setRefreshCounter, updateCounter]);
 
   useEffect(() => {
     setUpdateCounter(updateCounter + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deckCardCounts]);
   const hasDeckChanges = (updateCounter > refreshCounter);
 
@@ -199,6 +201,7 @@ function useDeckQuery(deckCardCounts: Slots, originalDeckSlots?: Slots): [Bracke
       code => originalDeckSlots[code] > 0 ||
         (deckCardCounts && deckCardCounts[code] > 0)
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshCounter]);
   const deckQuery = useMemo(() => {
     if (!deckCodes.length) {
@@ -282,7 +285,7 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [filterQuery, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort]);
+  }, [db, storyQuery, textQuery, filterQuery, deckQuery, tabooSetId, sort]);
   const partialCards = textQuery ? textQueryCards : mainQueryCards;
   const [showSpoilers, setShowSpoilers] = useState(false);
 
@@ -416,7 +419,7 @@ function useSectionFeed({
 
   useEffect(() => {
     let ignore = false;
-    // This is for the reall big changes.
+    // This is for the really big changes.
     // Initially or when query/sort/tabooSetId change, we need to cllear our fetched cards
     updateShowNonCollection({ type: 'clear' });
     setShowSpoilers(false);
@@ -442,7 +445,8 @@ function useSectionFeed({
     return () => {
       ignore = true;
     };
-  }, [query, filterQuery, sort, tabooSetId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, filterQuery, sort, tabooSetId, db]);
 
   useEffect(() => {
     if (textQuery) {
@@ -476,6 +480,7 @@ function useSectionFeed({
         ignore = true; delayedSearch.cancel();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, textQuery, sort, tabooSetId]);
 
   const editSpoilerSettings = useCallback(() => {
@@ -550,7 +555,7 @@ function useSectionFeed({
       }
     }
     return result;
-  }, [partialItems, cards, showSpoilers, spoilerCardsCount]);
+  }, [partialItems, cards, showSpoilers, spoilerCardsCount, editSpoilerSettings]);
 
   const feedLoading = useMemo(() => {
     return !!find(take(visibleCards, 1), c => !cards[c.id]);
@@ -583,7 +588,6 @@ export default function({
   textQuery,
   sort,
   tabooSetOverride,
-  mythosToggle,
   initialSort,
   searchTerm,
   expandSearchControls,
@@ -636,6 +640,7 @@ export default function({
   useEffect(() => {
     // showHeader when somethings drastic happens, and get a new error message.
     showHeader && showHeader();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filterQuery, tabooSetId, sort]);
   useEffect(() => {
     if (!refreshing) {
@@ -645,6 +650,7 @@ export default function({
   }, [refreshing]);
   useEffect(() => {
     dispatch(addDbFilterSet(componentId, db, query, initialSort || SORT_BY_TYPE, tabooSetId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, tabooSetId]);
 
   const cardOnPressId = useCallback((id: string, card: Card) => {
@@ -663,7 +669,7 @@ export default function({
     let index = 0;
     const [headerId, cardId] = id.split('.');
     const codes = map(fullFeed, (partialCard, idx) => {
-      if (headerId == partialCard.headerId && cardId == partialCard.id) {
+      if (headerId === partialCard.headerId && cardId === partialCard.id) {
         index = idx;
       }
       return partialCard.code;
@@ -682,8 +688,8 @@ export default function({
       investigator,
       renderFooter,
     );
-  }, [feed, fullFeed, showSpoilerCards, tabooSetOverride, deckCardCounts, onDeckCountChange, investigator, renderFooter, colors]);
-  const debouncedCardOnPressId = useCallback(debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
+  }, [feed, fullFeed, showSpoilerCards, tabooSetOverride, deckCardCounts, onDeckCountChange, investigator, renderFooter, colors, cardPressed, componentId, singleCardView]);
+  const debouncedCardOnPressId = useMemo(() => debounce(cardOnPressId, 500, { leading: true }), [cardOnPressId]);
   const keyExtractor = useCallback((item: Item, index: number) => {
     switch (item.type) {
       case 'button': return `button_${item.id}`;
@@ -707,14 +713,14 @@ export default function({
   }, [feed, fontScale]);
   const getItemLayout = useCallback((item: Item[] | null | undefined, index: number) => {
     return itemOffsets[index];
-  }, [itemOffsets, fontScale]);
-  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<Item>) => {
+  }, [itemOffsets]);
+  const renderItem = useCallback(({ item }: ListRenderItemInfo<Item>) => {
     switch (item.type) {
       case 'button':
         return (
           <ArkhamButton
             title={item.title}
-            onPress={() => item.onPress()}
+            onPress={item.onPress}
             icon={item.icon}
           />
         );
@@ -751,7 +757,7 @@ export default function({
       default:
         return null;
     }
-  }, [debouncedCardOnPressId, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
+  }, [debouncedCardOnPressId, borderStyle, colors, fontScale, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {
@@ -768,7 +774,7 @@ export default function({
   const listFooter = useMemo(() => {
     return (
       <View style={styles.footer}>
-        { (!refreshing && feed.length === 0) ? (
+        { (!refreshing && fullFeed.length === 0) ? (
           <View>
             <View style={[styles.emptyText, borderStyle]}>
               <Text style={typography.text}>
@@ -782,7 +788,7 @@ export default function({
         ) : expandSearchControls }
       </View>
     );
-  }, [searchTerm, expandSearchControls, fullFeed, refreshing]);
+  }, [searchTerm, expandSearchControls, borderStyle, fullFeed.length, typography, refreshing]);
   const handleScrollBeginDrag = useCallback(() => {
     Keyboard.dismiss();
   }, []);

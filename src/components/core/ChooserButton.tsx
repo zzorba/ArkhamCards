@@ -14,7 +14,7 @@ interface Props {
   indent?: boolean;
 }
 
-export default function ChooserButton({ componentId, title, values, onChange, selection, indent}: Props) {
+export default function ChooserButton({ componentId, title, values, onChange, selection, indent }: Props) {
   const onPress = useCallback(() => {
     Navigation.push<SearchSelectProps>(componentId, {
       component: {

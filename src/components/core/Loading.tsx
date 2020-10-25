@@ -67,6 +67,7 @@ export default function Loading({ size }: Props) {
         ),
       ]
     ).start();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

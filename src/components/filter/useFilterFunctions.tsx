@@ -69,7 +69,7 @@ export default function useFilterFunctions({
       ) :
       deepDiff(currentFilters, defaultFilterState);
     return differences && differences.length;
-  }, [defaultFilterState, currentFilters]);
+  }, [defaultFilterState, clearTraits, currentFilters]);
   const [count, setCount] = useState(0);
   useEffect(() => {
     const filterParts: Brackets | undefined =
@@ -84,7 +84,7 @@ export default function useFilterFunctions({
       ),
       tabooSetId
     ).then(count => setCount(count));
-  }, [currentFilters, baseQuery, db]);
+  }, [currentFilters, baseQuery, tabooSetId, db]);
   useEffect(() => {
     Navigation.mergeOptions(componentId, {
       topBar: {
@@ -109,7 +109,7 @@ export default function useFilterFunctions({
         },
       },
     });
-  }, [count, hasChanges]);
+  }, [count, hasChanges, colors.M, title, componentId]);
 
   const pushFilterView = useCallback((screenName: string) => {
     Navigation.push<FilterFunctionProps>(componentId, {

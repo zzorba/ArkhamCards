@@ -1,8 +1,4 @@
-import {
-  Platform,
-  PlatformColor,
-  DynamicColorIOS,
-} from 'react-native';
+import { Platform, PlatformColor } from 'react-native';
 
 const medium = '#9B9B9B';
 

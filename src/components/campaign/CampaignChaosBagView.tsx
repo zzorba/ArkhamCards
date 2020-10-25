@@ -12,19 +12,13 @@ import { AppState, getCampaign } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface CampaignChaosBagProps {
-  componentId: string;
   campaignId: number;
   updateChaosBag: (chaosBag: ChaosBag) => void;
-  trackDeltas?: boolean;
 }
 
-interface ReduxProps {
-  chaosBag: ChaosBag;
-}
+type Props = NavigationProps & CampaignChaosBagProps;
 
-type Props = NavigationProps & CampaignChaosBagProps & ReduxProps;
-
-function CampaignChaosBagView({ componentId, campaignId, updateChaosBag, trackDeltas }: Props) {
+function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
   const chaosBagSelector = useCallback((state: AppState) => {
     const campaign = getCampaign(state, campaignId);
     return (campaign && campaign.chaosBag) || {};
@@ -67,7 +61,6 @@ function CampaignChaosBagView({ componentId, campaignId, updateChaosBag, trackDe
 
   return (
     <DrawChaosBagComponent
-      componentId={componentId}
       campaignId={campaignId}
       chaosBag={chaosBag}
     />

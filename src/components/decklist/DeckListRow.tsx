@@ -73,6 +73,7 @@ function DeckListRowDetails({
   eliminated,
 }: DetailProps) {
   const { colors, typography } = useContext(StyleContext);
+  const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} />, [colors]);
   const cards = usePlayerCards(deck.taboo_id || 0);
   if (details) {
     return (
@@ -84,9 +85,7 @@ function DeckListRowDetails({
   const parsedDeck = deck && cards && parseBasicDeck(deck, cards, previousDeck);
   if (!parsedDeck || !investigator) {
     return (
-      <Placeholder
-        Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}
-      >
+      <Placeholder Animation={loadingAnimation}>
         <PlaceholderLine color={colors.L10} height={11} width={80} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
         <PlaceholderLine color={colors.L10} height={11} width={40} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
         <PlaceholderLine color={colors.L10} height={11} style={TINY_PHONE ? { marginBottom: 4 } : undefined} />
@@ -206,7 +205,7 @@ export default function DeckListRow({
         )}
       />
     );
-  }, [colors, previousDeck, yithian, eliminated, deck, campaign, investigator, compact, subDetails]);
+  }, [colors, previousDeck, yithian, eliminated, deck, campaign, investigator, compact, subDetails, lang, details]);
 
   if (!deck) {
     return (

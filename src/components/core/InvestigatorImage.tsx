@@ -91,13 +91,13 @@ export default function InvestigatorImage({
     }
     return investigatorImage;
   }, [killedOrInsane, investigatorImage]);
-
+  const loadingAnimation = useCallback((props: any) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />, [colors]);
   const image = useMemo(() => {
     const size = (isSmall ? 65 : 110) * scaleFactor;
     if (!card) {
       return (
         <View style={[styles.container, { width: size, height: size }]}>
-          <Placeholder Animation={(props) => <Fade {...props} style={{ backgroundColor: colors.L20 }} duration={1000} />}>
+          <Placeholder Animation={loadingAnimation}>
             <PlaceholderMedia
               color={colors.L10}
               style={[styles.container, { width: size, height: size }, styles.border, { borderColor: border ? colors.M : colors.L10 }]}
@@ -141,7 +141,7 @@ export default function InvestigatorImage({
         </View>
       </View>
     );
-  }, [card, killedOrInsane, border, colors, isSmall, styledImage]);
+  }, [card, killedOrInsane, border, colors, isSmall, styledImage, loadingAnimation]);
 
   if (componentId && card) {
     return (

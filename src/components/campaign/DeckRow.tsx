@@ -63,7 +63,7 @@ export default function DeckRow({
       );
     }
     return null;
-  }, [theDeck, cards, investigator, thePreviousDeck, investigators, renderSubDetails]);
+  }, [theDeck, cards, investigator, thePreviousDeck, renderSubDetails]);
   const details = useMemo(() => {
     if (!theDeck || !renderDetails) {
       return null;
@@ -72,7 +72,7 @@ export default function DeckRow({
       return null;
     }
     return renderDetails(theDeck, cards, investigator, thePreviousDeck);
-  }, [theDeck, cards, investigator, thePreviousDeck, investigators, renderDetails]);
+  }, [theDeck, cards, investigator, thePreviousDeck, renderDetails]);
 
   if (!theDeck) {
     return null;

@@ -30,11 +30,11 @@ export default function SupplyComponent({
   const { typography, colors, borderStyle } = useContext(StyleContext);
   const onIncrement = useCallback(() => {
     inc(investigator.code, supply.id);
-  }, [investigator, supply]);
+  }, [investigator, inc, supply]);
 
   const onDecrement = useCallback(() => {
     dec(investigator.code, supply.id);
-  }, [investigator, supply]);
+  }, [investigator, dec, supply]);
 
   const costString = supply.multiple ?
     ngettext(msgid`(${supply.cost} supply point each)`,

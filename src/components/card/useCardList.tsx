@@ -11,14 +11,17 @@ const FILTER_BUILDER = new FilterBuilder('clw');
 
 export default function useCardList(codes: string[], type: 'player' | 'encounter'): [Card[], boolean] {
   const query = useMemo(() => {
+    if (!codes.length || type === 'player') {
+      return undefined;
+    }
     return combineQueriesOpt(
       FILTER_BUILDER.equalsVectorClause(codes, 'code'),
       'and'
     );
-  }, [codes]);
+  }, [codes, type]);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
-
+  const [queryCards, queryCardsLoading] = useCardsFromQuery({ query });
   if (!codes.length) {
     return [[], false];
   }
@@ -30,5 +33,5 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
     const playerCards = flatMap(codes, code => cards[code] || investigators[code] || []);
     return [playerCards, false];
   }
-  return useCardsFromQuery({ query });
+  return [queryCards, queryCardsLoading];
 }

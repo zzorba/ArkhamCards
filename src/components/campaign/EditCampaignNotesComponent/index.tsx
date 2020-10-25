@@ -7,7 +7,7 @@ import {
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, InvestigatorNotes, CampaignNoteSection, CampaignNoteCount } from '@actions/types';
+import { CampaignNotes, InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
 import { ShowTextEditDialog } from '@components/core/withDialogs';
 import EditCountComponent from '../EditCountComponent';
@@ -16,7 +16,6 @@ import NotesSection from './NotesSection';
 import { s, xs } from '@styles/space';
 
 interface Props {
-  componentId: string;
   allInvestigators: Card[];
   campaignNotes: CampaignNotes;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
@@ -30,7 +29,6 @@ interface Props {
   ) => void;
 }
 export default function EditCampaignNotesComponent({
-  componentId,
   allInvestigators,
   campaignNotes,
   updateCampaignNotes,
@@ -123,7 +121,7 @@ export default function EditCampaignNotesComponent({
   }, [campaignNotes.counts, countChanged]);
 
   const investigatorSection = useMemo(() => {
-    const { investigatorNotes } = campaignNotes;
+    const investigatorNotes = campaignNotes.investigatorNotes;
     return (
       <View style={styles.investigatorSection}>
         <InvestigatorSectionList
@@ -134,7 +132,7 @@ export default function EditCampaignNotesComponent({
         />
       </View>
     );
-  }, [componentId, campaignNotes.investigatorNotes, allInvestigators, showDialog, updateInvestigatorNotes]);
+  }, [campaignNotes.investigatorNotes, allInvestigators, showDialog, updateInvestigatorNotes]);
   return (
     <View style={styles.underline}>
       { notesSection }

@@ -82,7 +82,7 @@ function DbCardDetailSwipeView(props: Props) {
           updateCards({ type: 'cards', cards: newCards });
         }, console.log);
     }
-  }, [index, cardCodes, db, cards]);
+  }, [index, cardCodes, db, cards, tabooSetId, updateCards]);
 
   useEffect(() => {
     if (currentCard) {
@@ -98,7 +98,7 @@ function DbCardDetailSwipeView(props: Props) {
         },
       });
     }
-  }, [currentCard]);
+  }, [currentCard, componentId, props.whiteNav]);
 
   const showInvestigatorCards = useCallback((code: string) => {
     Navigation.push<InvestigatorCardsProps>(componentId, {
@@ -119,11 +119,11 @@ function DbCardDetailSwipeView(props: Props) {
         },
       },
     });
-  }, []);
+  }, [componentId]);
 
   useComponentDidAppear(() => {
     Navigation.mergeOptions(componentId, options(props));
-  }, componentId);
+  }, componentId, [componentId]);
   useNavigationButtonPressed(({ buttonId }) => {
     if (currentCard) {
       if (buttonId === 'share') {
@@ -164,7 +164,7 @@ function DbCardDetailSwipeView(props: Props) {
       return false;
     }
     return !!(showAllSpoilers || showSpoilers[card.pack_code] || spoilers[card.code]);
-  }, [showSpoilers, spoilers]);
+  }, [showSpoilers, spoilers, showAllSpoilers]);
 
   const countChanged = useCallback((code: string, value: number) => {
     if (onDeckCountChange) {
@@ -198,7 +198,7 @@ function DbCardDetailSwipeView(props: Props) {
     );
   }, [countChanged, deckCardCounts, currentCard, hasSecondCore, onDeckCountChange]);
   const renderCard = useCallback((
-    { item: card, index: itemIndex, dataIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
+    { item: card, index: itemIndex }: { item?: Card | undefined; index: number; dataIndex: number }): React.ReactNode => {
     if (!card) {
       return (
         <View style={[styles.wrapper, backgroundStyle, { width, height, justifyContent: 'center' }]}>
@@ -225,7 +225,7 @@ function DbCardDetailSwipeView(props: Props) {
         />
       </ScrollView>
     );
-  }, [showCardSpoiler, backgroundStyle, tabooSetId, componentId, width, toggleShowSpoilers, showInvestigatorCards, cards]);
+  }, [showCardSpoiler, backgroundStyle, tabooSetId, componentId, width, colors, height, toggleShowSpoilers, showInvestigatorCards]);
   const data: (Card | undefined)[] = useMemo(() => {
     return map(cardCodes, code => cards[code]);
   }, [cardCodes, cards]);

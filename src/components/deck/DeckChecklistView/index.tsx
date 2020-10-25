@@ -48,7 +48,7 @@ function DeckChecklistView({
   }, componentId, [sort, setSort]);
   const toggleCard = useCallback((card: Card, value: boolean) => {
     dispatch(setDeckChecklistCard(id, card.code, value));
-  }, [setDeckChecklistCard, id]);
+  }, [dispatch, id]);
 
   const pressCard = useCallback((card: Card) => {
     showCard(
@@ -76,7 +76,7 @@ function DeckChecklistView({
 
   const clearChecklist = useCallback(() => {
     dispatch(resetDeckChecklist(id));
-  }, [resetDeckChecklist, dispatch, id]);
+  }, [dispatch, id]);
 
   const header = useMemo(() => {
     return (

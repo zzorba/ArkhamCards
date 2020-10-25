@@ -98,7 +98,7 @@ function DeckUpgradeDialog({ id, campaignId, showNewDeck, componentId }: Upgrade
     } else {
       Navigation.pop(componentId);
     }
-  }, [showNewDeck, componentId, campaign, updateCampaign, colors, investigator, investigatorData]);
+  }, [showNewDeck, componentId, dispatch, campaign, colors, investigator, investigatorData]);
 
   const onStoryCountsChange = useCallback((storyCounts: Slots) => {
     updateStoryCounts({ type: 'sync', slots: storyCounts });

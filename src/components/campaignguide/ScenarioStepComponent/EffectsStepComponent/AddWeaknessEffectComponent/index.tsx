@@ -12,7 +12,6 @@ import BinaryPrompt from '@components/campaignguide/prompts/BinaryPrompt';
 import { AddWeaknessEffect } from '@data/scenario/types';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
-import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import FilterBuilder from '@lib/filters';
 import { usePlayerCards, useWeaknessCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
@@ -115,7 +114,7 @@ export default function AddWeaknessEffectComponent({ id, effect, input }: Props)
         ) }
       </>
     );
-  }, [saveTraits, id, traitsDecisionId, effect, weaknessCards, cards, campaignLog, scenarioState, query, possibleWeaknessCards, possibleWeaknessCardsLoading]);
+  }, [saveTraits, id, firstDecisionId, renderCardChoice, traitsDecisionId, effect, weaknessCards, cards, campaignLog, possibleWeaknessCards, possibleWeaknessCardsLoading]);
 
   return (
     <>

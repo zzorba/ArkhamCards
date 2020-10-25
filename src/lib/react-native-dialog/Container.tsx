@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import { DynamicColorIOS, KeyboardAvoidingView, Platform, StyleSheet, View, ViewStyle } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import AnimatedModal from 'react-native-modal';
 
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import colors from '@styles/colors';
 
 const IOS_MODAL_ANIMATION = {
   from: { opacity: 0, scale: 1.2 },

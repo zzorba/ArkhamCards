@@ -112,7 +112,7 @@ export default function NumberPrompt({
         ) }
       </View>
     );
-  }, [count, prompt, typography, currentValue, delta, min, max, inc, dec]);
+  }, [count, prompt, typography, currentValue, delta, value, min, max, inc, dec]);
 
   return (
     <View style={space.paddingTopS}>

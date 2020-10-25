@@ -67,6 +67,7 @@ interface SearchResults {
 
 
 export default function RulesView({ componentId }: Props) {
+  const { db } = useContext(DatabaseContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>({
     term: '',
@@ -74,7 +75,7 @@ export default function RulesView({ componentId }: Props) {
   });
   const updateSearch = useCallback((searchTerm: string) => {
     setSearchTerm(searchTerm);
-    if (searchTerm == searchResults.term) {
+    if (searchTerm === searchResults.term) {
       return;
     }
     if (!searchTerm) {
@@ -91,7 +92,7 @@ export default function RulesView({ componentId }: Props) {
       term: searchTerm,
       rules,
     }), console.log);
-  },[]);
+  }, [db, searchResults.term]);
   const [rules, appendRules] = useReducer<Reducer<PagedRules, AppendPagedRules>>(
     (state: PagedRules, action: AppendPagedRules): PagedRules => {
       return {
@@ -105,7 +106,6 @@ export default function RulesView({ componentId }: Props) {
       rules: {},
       endReached: false,
     });
-  const { db } = useContext(DatabaseContext);
   const [page, fetchPage] = useReducer<ReducerWithoutAction<number>>((page: number) => {
     if (!rules.endReached) {
       db.getRulesPaged(
@@ -127,8 +127,10 @@ export default function RulesView({ componentId }: Props) {
     if (!rules.endReached) {
       fetchPage();
     }
-  }, []);
-  const renderItem = ({ item, index }: ListRenderItemInfo<Rule>) => <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
+  }, [rules.endReached, fetchPage]);
+  const renderItem = useCallback(({ item, index }: ListRenderItemInfo<Rule>) => {
+    return <RuleComponent componentId={componentId} key={index} rule={item} level={0} />;
+  }, [componentId]);
   const data = useMemo(() => searchTerm ? searchResults.rules : flatMap(
     sortBy(keys(rules.rules), parseInt),
     idx => rules.rules[idx]

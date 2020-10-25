@@ -65,7 +65,7 @@ export default function InvestigatorOptionsModule({
         />
       </>
     );
-  }, [investigator, parallelInvestigators, disabled, editWarning, meta]);
+  }, [investigator, parallelInvestigators, parallelCardChange, disabled, editWarning, meta]);
 
   const options = investigator.investigatorSelectOptions();
   return (

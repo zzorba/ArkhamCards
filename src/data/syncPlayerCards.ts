@@ -1,4 +1,4 @@
-import { forEach, groupBy, mapValues, sortBy, keys, uniqBy } from 'lodash';
+import { forEach, groupBy, mapValues, sortBy, uniqBy } from 'lodash';
 
 import Card, { CardsMap } from './Card';
 import TabooSet from './TabooSet';

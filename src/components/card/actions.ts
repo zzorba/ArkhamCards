@@ -26,7 +26,7 @@ import {
   TabooCache,
   CardSetSchemaVersionAction,
 } from '@actions/types';
-import { getCardLang, AppState, getPacksInCollection, getPackSpoilers } from '@reducers/index';
+import { getCardLang, AppState } from '@reducers/index';
 import { syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/Database';
 

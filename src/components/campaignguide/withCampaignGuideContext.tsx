@@ -27,18 +27,18 @@ export default function withCampaignGuideContext<Props>(
     }, [campaignId, investigators]);
     const campaignData = useSelector(campaignDataSelector);
     const styleContext = useContext(StyleContext);
-    if (!campaignData) {
+    const context = useMemo(() => {
+      return campaignData ? constructCampaignGuideContext(
+        campaignData as CampaignGuideReduxData,
+        props,
+        styleContext
+      ) : undefined;
+    }, [props, styleContext, campaignData]);
+    if (!campaignData || !context) {
       return (
         <Text>Unknown Campaign</Text>
       );
     }
-    const context = useMemo(() => {
-      return constructCampaignGuideContext(
-        campaignData as CampaignGuideReduxData,
-        props,
-        styleContext
-      );
-    }, [props, styleContext, campaignData]);
     return (
       <CampaignGuideContext.Provider value={context}>
         <WrappedComponent

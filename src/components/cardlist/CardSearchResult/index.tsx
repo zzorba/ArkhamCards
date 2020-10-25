@@ -68,7 +68,6 @@ export default class CardSearchResult extends React.PureComponent<Props> {
   _onDeckCountChange = (code: string, count: number) => {
     const {
       onDeckCountChange,
-      card,
     } = this.props;
     onDeckCountChange && onDeckCountChange(code, count);
   };

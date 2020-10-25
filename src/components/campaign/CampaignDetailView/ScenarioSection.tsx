@@ -21,7 +21,7 @@ interface Props {
 export default function ScenarioSection({ campaign, viewScenarios, addScenarioResult }: Props) {
   const { borderStyle } = useContext(StyleContext);
   return (
-    <React.Fragment>
+    <>
       <NavButton onPress={viewScenarios} noBorder>
         <View style={[
           styles.section,
@@ -38,7 +38,7 @@ export default function ScenarioSection({ campaign, viewScenarios, addScenarioRe
           onPress={addScenarioResult}
         />
       </View>
-    </React.Fragment>
+    </>
   );
 }
 

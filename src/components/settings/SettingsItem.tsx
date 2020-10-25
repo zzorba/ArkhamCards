@@ -21,8 +21,6 @@ interface Props {
   onPress?: () => void;
 }
 
-function dummyOnPress() {}
-
 export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
   const { colors, typography } = useContext(StyleContext);
   if (loading) {
@@ -41,7 +39,7 @@ export default function SettingsItem({ loading, navigation, text, onPress }: Pro
   }
   return (
     <SettingsButton
-      onPress={onPress || dummyOnPress}
+      onPress={onPress}
       title={text}
       titleStyle={typography.text}
       containerStyle={{

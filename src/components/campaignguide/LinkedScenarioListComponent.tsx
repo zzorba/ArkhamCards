@@ -71,7 +71,7 @@ class CampaignLinkHelper {
   };
 }
 
-export default function LinkedScenarioListComponent({ componentId, campaignA, campaignDataA, campaignB, campaignDataB}: Props) {
+export default function LinkedScenarioListComponent({ componentId, campaignA, campaignDataA, campaignB, campaignDataB }: Props) {
   const linkHelper = useMemo(() => {
     return new CampaignLinkHelper(componentId, campaignA, campaignDataA, campaignB, campaignDataB);
   }, [componentId, campaignA, campaignDataA, campaignB, campaignDataB]);

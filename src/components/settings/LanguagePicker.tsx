@@ -105,7 +105,7 @@ export default function LanguagePicker() {
     if (!cardsLoading && tempLang !== undefined) {
       setTempLang(undefined);
     }
-  }, [cardsLoading]);
+  }, [cardsLoading, setTempLang, tempLang]);
 
   const onLanguageChange = useCallback((index: number | null) => {
     if (index === null) {

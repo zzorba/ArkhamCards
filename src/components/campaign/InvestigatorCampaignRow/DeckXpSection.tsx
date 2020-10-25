@@ -49,7 +49,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
       return undefined;
     }
     return parseBasicDeck(deck, cards, previousDeck);
-  }, [previousDeck, deck, cards]);
+  }, [previousDeck, showDeckUpgrade, deck, cards]);
 
   if (!parsedDeck) {
     return null;

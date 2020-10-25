@@ -107,7 +107,7 @@ export default function CardSelectorView({ query, selection: initialSelection, o
         </CardQueryWrapper>
       </>
     );
-  }, [searchTerm, storyQuery, storyToggle, includeStoryToggle, toggleStoryCards]);
+  }, [renderCards, storyQuery, storyToggle, includeStoryToggle, toggleStoryCards]);
 
   const normalCardsQuery = useMemo(() => {
     return combineQueries(

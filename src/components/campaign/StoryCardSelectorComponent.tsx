@@ -45,7 +45,7 @@ export default function StoryCardSelectorComponent({
   const tabooSetId = deck?.taboo_id || 0;
   useEffect(() => {
     updateStoryCounts(storyCounts);
-  }, [storyCounts]);
+  }, [storyCounts, updateStoryCounts]);
 
   const updateCounts = useCallback((slots: Slots) => {
     setStoryCounts({ type: 'sync', slots });
@@ -81,7 +81,7 @@ export default function StoryCardSelectorComponent({
       setStoryCounts({ type: 'sync', slots: deckStorySlots });
     }
     return [storyCards, deckStoryCards];
-  }, [allStoryCards, deck, encounterCodesSet]);
+  }, [allStoryCards, deck, encounterCodesSet, initialized, setStoryCounts, setInitialized]);
 
   const storyCardsSection = useMemo(() => {
     if (!storyCards.length) {

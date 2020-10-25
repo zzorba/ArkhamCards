@@ -169,7 +169,7 @@ export default class CheckListComponent extends React.Component<Props, State> {
           <View style={[styles.loadingRow, borderStyle]}>
             <ActivityIndicator size="small" animating color={colors.lightText} />
           </View>
-          ): map(items, (item, idx) => {
+        ) : map(items, (item, idx) => {
           const selected = choiceList !== undefined ? (
             choiceList[item.code] !== undefined
           ) : (

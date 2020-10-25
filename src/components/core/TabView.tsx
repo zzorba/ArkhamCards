@@ -17,10 +17,6 @@ interface Props {
   scrollEnabled?: boolean;
 }
 
-interface State {
-  index: number;
-}
-
 interface TabRoute extends Route {
   key: string;
   title: string;
@@ -32,7 +28,7 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
   const { backgroundStyle, fontScale, colors } = useContext(StyleContext);
   const [index, setIndex] = useState(0);
 
-  const onSetIndex = useCallback((index: number) => {
+  const onIndexChange = useCallback((index: number) => {
     setIndex(index);
     onTabChange(tabs[index].key);
   }, [onTabChange, setIndex, tabs]);
@@ -71,7 +67,7 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
       renderTabBar={renderTabBar}
       navigationState={navigationState}
       renderScene={renderTab}
-      onIndexChange={setIndex}
+      onIndexChange={onIndexChange}
       initialLayout={initialLayout}
     />
   );
