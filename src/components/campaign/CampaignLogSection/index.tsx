@@ -1,25 +1,22 @@
 import React, { useCallback, useMemo } from 'react';
-import { map } from 'lodash';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { InteractionManager, StyleSheet, View } from 'react-native';
 import { t } from 'ttag';
+import { map } from 'lodash';
 
-import BasicButton from '@components/core/BasicButton';
+import { ShowTextEditDialog } from '@components/core/withDialogs';
 import { CampaignNotes, InvestigatorNotes } from '@actions/types';
 import Card from '@data/Card';
-import { ShowTextEditDialog } from '@components/core/withDialogs';
-import EditCountComponent from '../EditCountComponent';
 import InvestigatorSectionList from './InvestigatorSectionList';
+import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
+import BasicButton from '@components/core/BasicButton';
+import TextEditDialog from '@components/core/TextEditDialog';
 import { s, xs } from '@styles/space';
 
 interface Props {
-  allInvestigators: Card[];
   campaignNotes: CampaignNotes;
   updateCampaignNotes: (campaignNotes: CampaignNotes) => void;
-  showDialog: ShowTextEditDialog;
+  showTextEditDialog: ShowTextEditDialog;
   showAddSectionDialog: (
     addSection: (
       name: string,
@@ -27,14 +24,23 @@ interface Props {
       perInvestigator: boolean
     ) => void
   ) => void;
+  allInvestigators: Card[];
 }
-export default function EditCampaignNotesComponent({
-  allInvestigators,
-  campaignNotes,
-  updateCampaignNotes,
-  showDialog,
-  showAddSectionDialog,
-}: Props) {
+
+export default function CampaignLogSection(props: Props) {
+  const {
+    campaignNotes,
+    updateCampaignNotes,
+    showTextEditDialog,
+    showAddSectionDialog,
+    allInvestigators,
+  } = props;
+  const delayedUpdateCampaignNotes = useCallback((campaignNotes: CampaignNotes) => {
+    InteractionManager.runAfterInteractions(() => {
+      updateCampaignNotes(campaignNotes);
+    });
+  }, [updateCampaignNotes]);
+
   const addNotesSection = useCallback((name: string, isCount: boolean, perInvestigator: boolean) => {
     const newCampaignNotes = { ...campaignNotes };
     if (perInvestigator) {
@@ -56,8 +62,8 @@ export default function EditCampaignNotesComponent({
         newCampaignNotes.sections.push({ title: name, notes: [], custom: true });
       }
     }
-    updateCampaignNotes(newCampaignNotes);
-  }, [campaignNotes, updateCampaignNotes]);
+    delayedUpdateCampaignNotes(newCampaignNotes);
+  }, [campaignNotes, delayedUpdateCampaignNotes]);
   const addSectionDialogPressed = useCallback(() => {
     showAddSectionDialog(addNotesSection);
   }, [showAddSectionDialog, addNotesSection]);
@@ -68,24 +74,26 @@ export default function EditCampaignNotesComponent({
       ...sections[index],
       notes,
     };
-    updateCampaignNotes({
+    delayedUpdateCampaignNotes({
       ...campaignNotes,
       sections,
     });
-  }, [updateCampaignNotes, campaignNotes]);
+  }, [delayedUpdateCampaignNotes, campaignNotes]);
 
   const countChanged = useCallback((index: number, count: number) => {
-    const counts = (campaignNotes.counts || []).slice();
-    counts[index] = { ...counts[index], count };
-    updateCampaignNotes({ ...campaignNotes, counts });
-  }, [updateCampaignNotes, campaignNotes]);
+    if (campaignNotes.counts[index].count !== count) {
+      const counts = (campaignNotes.counts || []).slice();
+      counts[index] = { ...counts[index], count };
+      delayedUpdateCampaignNotes({ ...campaignNotes, counts });
+    }
+  }, [delayedUpdateCampaignNotes, campaignNotes]);
 
   const updateInvestigatorNotes = useCallback((investigatorNotes: InvestigatorNotes) => {
-    updateCampaignNotes({
+    delayedUpdateCampaignNotes({
       ...campaignNotes,
       investigatorNotes,
     });
-  }, [updateCampaignNotes, campaignNotes]);
+  }, [delayedUpdateCampaignNotes, campaignNotes]);
 
   const notesSection = useMemo(() => {
     return (
@@ -97,12 +105,12 @@ export default function EditCampaignNotesComponent({
             notes={section.notes}
             index={idx}
             notesChanged={notesChanged}
-            showDialog={showDialog}
+            showDialog={showTextEditDialog}
           />
         )) }
       </View>
     );
-  }, [campaignNotes.sections, notesChanged, showDialog]);
+  }, [campaignNotes.sections, notesChanged, showTextEditDialog]);
 
   const countsSection = useMemo(() => {
     return (
@@ -128,11 +136,11 @@ export default function EditCampaignNotesComponent({
           allInvestigators={allInvestigators}
           investigatorNotes={investigatorNotes}
           updateInvestigatorNotes={updateInvestigatorNotes}
-          showDialog={showDialog}
+          showDialog={showTextEditDialog}
         />
       </View>
     );
-  }, [campaignNotes.investigatorNotes, allInvestigators, showDialog, updateInvestigatorNotes]);
+  }, [campaignNotes.investigatorNotes, allInvestigators, showTextEditDialog, updateInvestigatorNotes]);
   return (
     <View style={styles.underline}>
       { notesSection }

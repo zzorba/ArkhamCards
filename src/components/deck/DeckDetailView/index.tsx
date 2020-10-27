@@ -25,7 +25,7 @@ import { Navigation, EventSubscription, OptionsTopBarButton } from 'react-native
 import DialogComponent from '@lib/react-native-dialog';
 import deepDiff from 'deep-diff';
 import { ngettext, msgid, t } from 'ttag';
-import SideMenu from 'react-native-side-menu';
+import SideMenu from 'react-native-side-menu-updated';
 
 import {
   SettingsButton,
@@ -34,7 +34,6 @@ import BasicButton from '@components/core/BasicButton';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import Dialog from '@components/core/Dialog';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CopyDeckDialog from '@components/deck/CopyDeckDialog';
@@ -116,7 +115,6 @@ type Props = NavigationProps &
   PlayerCardProps &
   TraumaProps &
   LoginStateProps &
-  InjectedDialogProps &
   DimensionsProps;
 
 interface State {
@@ -1122,7 +1120,6 @@ class DeckDetailView extends React.Component<Props, State> {
   renderCopyDialog() {
     const {
       componentId,
-      viewRef,
       id,
       signedIn,
     } = this.props;
@@ -1134,7 +1131,6 @@ class DeckDetailView extends React.Component<Props, State> {
         componentId={componentId}
         deckId={copying ? id : undefined}
         toggleVisible={this._toggleCopyDialog}
-        viewRef={viewRef}
         signedIn={signedIn}
       />
     );
@@ -1271,9 +1267,6 @@ class DeckDetailView extends React.Component<Props, State> {
 
   renderEditDetailsDialog(deck: Deck, parsedDeck: ParsedDeck) {
     const {
-      viewRef,
-    } = this.props;
-    const {
       editDetailsVisible,
       nameChange,
       xpAdjustment,
@@ -1283,7 +1276,6 @@ class DeckDetailView extends React.Component<Props, State> {
     } = parsedDeck;
     return (
       <EditDeckDetailsDialog
-        viewRef={viewRef}
         visible={editDetailsVisible}
         xp={deck.xp || 0}
         spentXp={changes ? changes.spentXp : 0}
@@ -1297,9 +1289,6 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 
   renderDeletingDialog() {
-    const {
-      viewRef,
-    } = this.props;
     const { colors, typography } = this.context;
     const {
       deleting,
@@ -1307,7 +1296,7 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.state;
     if (deleteError) {
       return (
-        <Dialog title={t`Error`} visible={deleting} viewRef={viewRef}>
+        <Dialog title={t`Error`} visible={deleting}>
           <Text style={[styles.errorMargin, typography.small]}>
             { deleteError }
           </Text>
@@ -1320,7 +1309,7 @@ class DeckDetailView extends React.Component<Props, State> {
 
     }
     return (
-      <Dialog title={t`Deleting`} visible={deleting} viewRef={viewRef}>
+      <Dialog title={t`Deleting`} visible={deleting}>
         <ActivityIndicator
           style={styles.spinner}
           color={colors.lightText}
@@ -1332,9 +1321,6 @@ class DeckDetailView extends React.Component<Props, State> {
   }
 
   renderSavingDialog() {
-    const {
-      viewRef,
-    } = this.props;
     const { colors, typography } = this.context;
     const {
       saving,
@@ -1342,7 +1328,7 @@ class DeckDetailView extends React.Component<Props, State> {
     } = this.state;
     if (saveError) {
       return (
-        <Dialog title={t`Error`} visible={saving} viewRef={viewRef}>
+        <Dialog title={t`Error`} visible={saving}>
           <Text style={[styles.errorMargin, typography.small]}>
             { saveError }
           </Text>
@@ -1355,7 +1341,7 @@ class DeckDetailView extends React.Component<Props, State> {
 
     }
     return (
-      <Dialog title={t`Saving`} visible={saving} viewRef={viewRef}>
+      <Dialog title={t`Saving`} visible={saving}>
         <ActivityIndicator
           style={styles.spinner}
           color={colors.lightText}
@@ -1819,7 +1805,6 @@ class DeckDetailView extends React.Component<Props, State> {
     const {
       componentId,
       isPrivate,
-      captureViewRef,
       cards,
       campaign,
       signedIn,
@@ -1850,7 +1835,7 @@ class DeckDetailView extends React.Component<Props, State> {
       ));
     return (
       <View>
-        <View style={[styles.container, backgroundStyle] } ref={captureViewRef}>
+        <View style={[styles.container, backgroundStyle] }>
           <DeckViewTab
             componentId={componentId}
             inCollection={inCollection}
@@ -1901,7 +1886,6 @@ class DeckDetailView extends React.Component<Props, State> {
   render() {
     const {
       width,
-      captureViewRef,
       deck,
       tabooSets,
     } = this.props;
@@ -1947,7 +1931,7 @@ class DeckDetailView extends React.Component<Props, State> {
     ) : undefined;
     const menuWidth = Math.min(width * 0.60, 240);
     return (
-      <View style={[styles.flex, backgroundStyle]} ref={captureViewRef}>
+      <View style={[styles.flex, backgroundStyle]}>
         <SideMenu
           isOpen={this.state.menuOpen}
           onChange={this._menuOpenChange}
@@ -2008,10 +1992,8 @@ export default withTabooSetOverride<NavigationProps & DeckDetailProps>(
   )(
     withPlayerCards<ReduxProps & TabooSetOverride & ReduxActionProps & NavigationProps & DeckDetailProps & TabooSetOverrideProps>(
       withTraumaDialog(
-        withDialogs(
-          withLoginState(
-            withDimensions(DeckDetailView)
-          )
+        withLoginState(
+          withDimensions(DeckDetailView)
         )
       )
     )

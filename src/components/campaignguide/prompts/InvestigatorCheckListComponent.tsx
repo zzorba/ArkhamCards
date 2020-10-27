@@ -63,7 +63,6 @@ export default function InvestigatorCheckListComponent({
   }, [allowNewDecks, showAddDeckDialog]);
   const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const investigators = useMemo(() => {
-    console.log('Recomputing investigators which changed.');
     return filter(
       allowNewDecks ?
         filter(campaignInvestigators, investigator => !campaignLog.isEliminated(investigator)) :

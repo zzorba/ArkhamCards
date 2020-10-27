@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import CountEditDialog from './CountEditDialog';
 import TextEditDialog from './TextEditDialog';
 
 export type ShowTextEditDialog = (
@@ -17,17 +16,10 @@ export type ShowTextEditDialog = (
   onSaveAndAdd?: (text: string) => void,
 ) => void;
 
-export type ShowCountEditDialog = (
-  title: string,
-  count: number,
-  onCountChange: (count: number) => void,
-) => void;
-
 export interface InjectedDialogProps {
   captureViewRef: (viewRef: View) => void;
   viewRef?: View;
   showTextEditDialog: ShowTextEditDialog;
-  showCountEditDialog: ShowCountEditDialog;
 }
 
 export default function withDialogs<P>(
@@ -36,16 +28,13 @@ export default function withDialogs<P>(
   interface State {
     baseViewRef?: View;
     viewRef?: View;
-    textVisible: boolean;
+    textVisibleCount: number;
     title: string;
     text: string;
     numberOfLines: number;
     onTextChange?: (text: string) => void;
     onSaveAndAdd?: (text: string) => void;
     showCrossOut: boolean;
-    countVisible: boolean;
-    count: number;
-    onCountChange?: (count: number) => void;
   }
 
   class ComponentWithDialogs extends
@@ -54,13 +43,11 @@ export default function withDialogs<P>(
       super(props);
 
       this.state = {
-        textVisible: false,
+        textVisibleCount: 0,
         title: '',
         text: '',
         numberOfLines: 2,
         showCrossOut: false,
-        countVisible: false,
-        count: 0,
       };
     }
 
@@ -85,7 +72,7 @@ export default function withDialogs<P>(
       onSaveAndAdd?: (text: string) => void,
     ) => {
       this.setState({
-        textVisible: true,
+        textVisibleCount: this.state.textVisibleCount + 1,
         title,
         text,
         onTextChange,
@@ -95,15 +82,9 @@ export default function withDialogs<P>(
       });
     };
 
-    _hideTextDialog = () => {
-      this.setState({
-        textVisible: false,
-      });
-    };
-
     renderTextDialog() {
       const {
-        textVisible,
+        textVisibleCount,
         title,
         text,
         onTextChange,
@@ -117,57 +98,13 @@ export default function withDialogs<P>(
       }
       return (
         <TextEditDialog
-          visible={textVisible}
-          viewRef={baseViewRef}
+          visibleCount={textVisibleCount}
           title={title}
           text={text}
-          onTextChange={onTextChange}
-          onSaveAndAdd={onSaveAndAdd}
-          toggleVisible={this._hideTextDialog}
+          onUpdate={onTextChange}
+          onAppend={onSaveAndAdd}
           showCrossOut={showCrossOut}
           numberOfLines={numberOfLines}
-        />
-      );
-    }
-
-    _showCountDialog = (
-      title: string,
-      count: number,
-      onCountChange: (count: number) => void
-    ) => {
-      this.setState({
-        countVisible: true,
-        title,
-        count,
-        onCountChange,
-      });
-    };
-
-    _hideCountDialog = () => {
-      this.setState({
-        countVisible: false,
-      });
-    };
-
-    renderCountDialog() {
-      const {
-        countVisible,
-        title,
-        count,
-        onCountChange,
-        baseViewRef,
-      } = this.state;
-      if (!baseViewRef) {
-        return null;
-      }
-      return (
-        <CountEditDialog
-          visible={countVisible}
-          viewRef={baseViewRef}
-          title={title}
-          count={count}
-          onCountChange={onCountChange}
-          toggleVisible={this._hideCountDialog}
         />
       );
     }
@@ -181,11 +118,9 @@ export default function withDialogs<P>(
               captureViewRef={this._captureViewRef}
               viewRef={this.state.viewRef}
               showTextEditDialog={this._showTextDialog}
-              showCountEditDialog={this._showCountDialog}
             />
           </View>
           { this.renderTextDialog() }
-          { this.renderCountDialog() }
         </View>
       );
     }

@@ -21,7 +21,6 @@ import { t } from 'ttag';
 import { MergeBackupProps } from './MergeBackupView';
 import { Campaign, BackupState } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { getBackupData, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
@@ -41,7 +40,7 @@ interface ReduxActionProps {
   ensureUuid: () => void;
 }
 
-type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps;
 
 
 async function safeReadFile(file: string): Promise<string> {
@@ -231,12 +230,10 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default withDialogs(
-  connect<ReduxProps, ReduxActionProps, InjectedDialogProps & BackupProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(BackupView)
-);
+export default connect<ReduxProps, ReduxActionProps, BackupProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(BackupView);
 
 const styles = StyleSheet.create({
   container: {

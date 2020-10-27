@@ -14,21 +14,9 @@ import { logout, login } from '@actions';
 import { AppState } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 
-interface OwnProps {
+interface Props {
   settings?: boolean;
 }
-
-interface ReduxProps {
-  signedIn: boolean;
-  loading?: boolean;
-}
-
-interface ReduxActionProps {
-  login: () => void;
-  logout: () => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps;
 
 export default function LoginButton({ settings }: Props) {
   const { colors } = useContext(StyleContext);

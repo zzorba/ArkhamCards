@@ -24,7 +24,6 @@ interface VisibleState {
 export default function useTraumaDialog({ hideKilledInsane }: { hideKilledInsane?: boolean }): TraumaProps {
   const [state, setState] = useState<VisibleState | undefined>();
   const [investigatorData, setInvestigatorData] = useState<InvestigatorData>({});
-
   const updateTraumaData = useCallback((investigator: string, data: Trauma) => {
     if (state && state.onUpdate) {
       state.onUpdate(investigator, data);

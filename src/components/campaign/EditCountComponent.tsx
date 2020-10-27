@@ -21,7 +21,8 @@ export default function EditCountComponent({ countChanged, index, title, count: 
   const [count, increment, decrement] = useCounter(initialCount || 0, { min: 0 });
   useEffect(() => {
     countChanged(index, count);
-  }, [count, countChanged, index]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
   return (
     <BasicListRow>
       <Text style={typography.mediumGameFont}>

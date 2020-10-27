@@ -1,238 +1,152 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import {
   NativeSyntheticEvent,
   TextInputContentSizeChangeEventData,
   Platform,
   TextInput,
-  View,
 } from 'react-native';
-import { startsWith, throttle } from 'lodash';
+import { startsWith } from 'lodash';
 import { t } from 'ttag';
 
 import DialogComponent from '@lib/react-native-dialog';
 import Dialog from './Dialog';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useWhyDidYouUpdate } from './hooks';
 
 interface Props {
   title: string;
-  visible: boolean;
+  visibleCount: number;
   text?: string;
   numberOfLines?: number;
-  viewRef?: View;
-  onTextChange?: (text: string) => void;
-  onSaveAndAdd?: (test: string) => void;
-  toggleVisible: () => void;
+  onAppend?: (text: string) => void;
+  onUpdate?: (text: string) => void;
   showCrossOut: boolean;
 }
 
-interface State {
-  textInputRef?: TextInput;
-  text?: string;
-  originalText: string;
-  isCrossedOut: boolean;
-  submitting: boolean;
-  height: number;
-}
-export default class TextEditDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _textInputRef = React.createRef<TextInput>();
-  _throttledUpdateSize!: (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      originalText: '',
-      isCrossedOut: false,
-      submitting: false,
-      height: 40,
-    };
-
-    this._throttledUpdateSize = throttle(
-      this._updateSize,
-      200,
-      { trailing: true }
-    );
-  }
-
-  _updateSize = (event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => {
-    const height = event.nativeEvent.contentSize.height;
-    if (height > this.state.height) {
-      this.setState({
-        height,
-      });
+export default function TextEditDialog(props: Props) {
+  useWhyDidYouUpdate('TextEditDialog', props);
+  const { title, visibleCount, text, numberOfLines = 1, onAppend, onUpdate, showCrossOut } = props;
+  const { typography } = useContext(StyleContext);
+  const textInputRef = useRef<TextInput>(null);
+  const [height, setHeight] = useState(40);
+  const updateSize = useCallback((event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => {
+    const newHeight = event.nativeEvent.contentSize.height;
+    if (newHeight > height) {
+      setHeight(newHeight);
     }
-  };
+  }, [setHeight, height]);
+  const [originalText, setOriginalText] = useState(text || '');
+  useEffect(() => {
+    setOriginalText(text || '');
+  }, [setOriginalText, text]);
 
-  _onTextChange = (value: string) => {
-    this.setState({
-      text: value,
-    });
-  };
+  const [isCrossedOut, initialText] = useMemo(() => {
+    const isCrossedOut = !!(showCrossOut && originalText) && startsWith(originalText, '~');
+    setHeight(40);
+    return [isCrossedOut, isCrossedOut ? originalText.substr(1) : originalText];
+  }, [showCrossOut, originalText, setHeight]);
 
-  componentDidUpdate(prevProps: Props) {
-    const {
-      visible,
-      showCrossOut,
-    } = this.props;
-    if (visible && !prevProps.visible) {
-      const text = this.props.text || '';
-      const isCrossedOut = !!(showCrossOut && text) && startsWith(text, '~');
-      /* eslint-disable react/no-did-update-set-state */
-      this.setState({
-        text: isCrossedOut ? text.substring(1) : text,
-        originalText: text || '',
-        height: 40,
-        isCrossedOut,
-      }, () => {
-        if (this._textInputRef && this._textInputRef.current) {
-          this._textInputRef.current.focus();
-        }
-      });
+  const [editText, onTextChange] = useState(initialText);
+  useEffect(() => {
+    onTextChange(initialText);
+  }, [initialText, onTextChange]);
+
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (visibleCount > 0) {
+      setHeight(40);
+      setVisible(true);
+      // textInputRef.current && textInputRef.current.focus();
     }
-  }
+  }, [visibleCount]);
 
-  _onCancelPress = () => {
-    const {
-      toggleVisible,
-    } = this.props;
-    toggleVisible();
-  };
+  const onCancelPress = useCallback(() => {
+    setVisible(false);
+  }, [setVisible]);
 
-  _onCrossOutPress = () => {
-    const {
-      onTextChange,
-      toggleVisible,
-    } = this.props;
-    const {
-      isCrossedOut,
-      text,
-    } = this.state;
-    const result = isCrossedOut ? text : `~${text}`;
-    toggleVisible();
-    onTextChange && onTextChange(result || '');
-  }
+  const onCrossOutPress = useCallback(() => {
+    const result = isCrossedOut ? editText : `~${editText}`;
+    onUpdate && onUpdate(result || '');
+    setVisible(false);
+  }, [onUpdate, setVisible, isCrossedOut, editText]);
 
-  _onDonePress = () => {
-    const {
-      onTextChange,
-      toggleVisible,
-    } = this.props;
-    const {
-      text,
-      isCrossedOut,
-    } = this.state;
-    const result = isCrossedOut ? `~${text}` : text;
-    onTextChange && onTextChange(result || '');
-    toggleVisible();
-  };
+  const onDonePress = useCallback(() => {
+    const result = isCrossedOut ? `~${editText}` : editText;
+    onUpdate && onUpdate(result || '');
+    setVisible(false);
+  }, [onUpdate, setVisible, isCrossedOut, editText]);
 
-  _onSaveAndAddPress = () => {
-    const {
-      onSaveAndAdd,
-    } = this.props;
-    const {
-      text,
-      isCrossedOut,
-    } = this.state;
-    const result = isCrossedOut ? `~${text}` : text;
-    onSaveAndAdd && onSaveAndAdd(result || '');
-    this.setState({
-      text: '',
-      originalText: '',
-      height: 40,
-      isCrossedOut: false,
-    }, () => {
-      if (this._textInputRef && this._textInputRef.current) {
-        this._textInputRef.current.focus();
-      }
-    });
-  };
+  const onSaveAndAddPress = useCallback(() => {
+    const result = isCrossedOut ? `~${editText}` : editText;
+    onAppend && onAppend(result || '');
+    setOriginalText('');
+    textInputRef.current && textInputRef.current.focus();
+  }, [onAppend, editText, isCrossedOut, setOriginalText, textInputRef]);
 
-  render() {
-    const {
-      visible,
-      title,
-      viewRef,
-      showCrossOut,
-      onSaveAndAdd,
-      numberOfLines = 1,
-    } = this.props;
-    const {
-      isCrossedOut,
-      originalText,
-      text,
-      height,
-    } = this.state;
-    const { typography } = this.context;
-
-    const textChanged = isCrossedOut ?
-      text !== originalText.substring(1) :
-      text !== originalText;
-    const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
-    // const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
-    return (
-      <Dialog visible={visible} title={title} viewRef={viewRef}>
-        { Platform.OS === 'android' && isCrossedOut && (
-          <DialogComponent.Description style={typography.small}>
-            { t`Note: This entry is crossed out` }
-          </DialogComponent.Description>
-        ) }
-        <DialogComponent.Input
-          style={[
-            {
-              height: Math.min(height + 12, 200),
-            },
-            isCrossedOut && Platform.OS === 'ios' ? {
-              textDecorationLine: 'line-through',
-              textDecorationStyle: 'solid',
-              textDecorationColor: '#222',
-            } : {},
-          ]}
-          wrapperStyle={{
+  const textChanged = isCrossedOut ?
+    editText !== originalText.substring(1) :
+    editText !== originalText;
+  const buttonColor = Platform.OS === 'ios' ? '#007ff9' : '#169689';
+  // const height = 18 + Platform.select({ ios: 14, android: 22 }) * numberOfLines;
+  return (
+    <Dialog visible={visible} title={title}>
+      { Platform.OS === 'android' && isCrossedOut && (
+        <DialogComponent.Description style={typography.small}>
+          { t`Note: This entry is crossed out` }
+        </DialogComponent.Description>
+      ) }
+      <DialogComponent.Input
+        style={[
+          {
             height: Math.min(height + 12, 200),
-          }}
-          textInputRef={this._textInputRef}
-          value={text}
-          editable={!isCrossedOut}
-          onChangeText={this._onTextChange}
-          onSubmitEditing={this._onDonePress}
-          multiline={numberOfLines > 1}
-          numberOfLines={numberOfLines}
-          onContentSizeChange={this._updateSize}
-          returnKeyType="done"
-          underlineColorAndroid="#888"
-        />
+          },
+          isCrossedOut && Platform.OS === 'ios' ? {
+            textDecorationLine: 'line-through',
+            textDecorationStyle: 'solid',
+            textDecorationColor: '#222',
+          } : {},
+        ]}
+        textInputRef={textInputRef}
+        wrapperStyle={{
+          height: Math.min(height + 12, 200),
+        }}
+        value={editText}
+        editable={!isCrossedOut}
+        onChangeText={onTextChange}
+        onSubmitEditing={onDonePress}
+        multiline={numberOfLines > 1}
+        numberOfLines={numberOfLines}
+        onContentSizeChange={updateSize}
+        returnKeyType="done"
+        underlineColorAndroid="#888"
+      />
+      <DialogComponent.Button
+        label={t`Cancel`}
+        onPress={onCancelPress}
+      />
+      { !!showCrossOut && (
         <DialogComponent.Button
-          label={t`Cancel`}
-          onPress={this._onCancelPress}
+          label={isCrossedOut ? t`Uncross Out` : t`Cross Out`}
+          color="#ff3b30"
+          onPress={onCrossOutPress}
         />
-        { !!showCrossOut && (
-          <DialogComponent.Button
-            label={isCrossedOut ? t`Uncross Out` : t`Cross Out`}
-            color="#ff3b30"
-            onPress={this._onCrossOutPress}
-          />
-        ) }
-        { !!onSaveAndAdd && (
-          <DialogComponent.Button
-            label={t`Add Another`}
-            color={textChanged ? buttonColor : '#666666'}
-            disabled={!textChanged}
-            onPress={this._onSaveAndAddPress}
-          />
-        ) }
-        { !isCrossedOut && (
-          <DialogComponent.Button
-            label={t`Done`}
-            color={textChanged ? buttonColor : '#666666'}
-            disabled={!textChanged}
-            onPress={this._onDonePress}
-          />
-        ) }
-      </Dialog>
-    );
-  }
+      ) }
+      { !!onAppend && (
+        <DialogComponent.Button
+          label={t`Add Another`}
+          color={textChanged ? buttonColor : '#666666'}
+          disabled={!textChanged}
+          onPress={onSaveAndAddPress}
+        />
+      ) }
+      { !isCrossedOut && (
+        <DialogComponent.Button
+          label={t`Done`}
+          color={textChanged ? buttonColor : '#666666'}
+          disabled={!textChanged}
+          onPress={onDonePress}
+        />
+      ) }
+    </Dialog>
+  );
 }

@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from 'rea
 import {
   Platform,
   TextInput,
-  View,
 } from 'react-native';
 import DialogComponent from '@lib/react-native-dialog';
 import { t } from 'ttag';
@@ -18,13 +17,12 @@ export type AddSectionFunction = (
 ) => void;
 
 interface Props {
-  viewRef?: View;
   visible: boolean;
   addSection?: AddSectionFunction;
-  toggleVisible: () => void;
+  hide: () => void;
 }
 
-export default function AddCampaignNoteSectionDialog({ viewRef, visible, addSection, toggleVisible }: Props) {
+export default function AddCampaignNoteSectionDialog({ visible, addSection, hide }: Props) {
   const { typography } = useContext(StyleContext);
   const textInputRef = useRef<TextInput>(null);
   const [name, setName] = useState('');
@@ -38,13 +36,13 @@ export default function AddCampaignNoteSectionDialog({ viewRef, visible, addSect
   const onAddPress = useCallback(() => {
     addSection && addSection(name, isCount, perInvestigator);
     resetForm();
-    toggleVisible();
-  }, [name, perInvestigator, isCount, addSection, toggleVisible, resetForm]);
+    hide();
+  }, [name, perInvestigator, isCount, addSection, hide, resetForm]);
 
   const onCancelPress = useCallback(() => {
     resetForm();
-    toggleVisible();
-  }, [resetForm, toggleVisible]);
+    hide();
+  }, [resetForm, hide]);
 
   useEffect(() => {
     if (visible) {
@@ -59,7 +57,6 @@ export default function AddCampaignNoteSectionDialog({ viewRef, visible, addSect
     <Dialog
       title={t`Add Campaign Log Section`}
       visible={visible}
-      viewRef={viewRef}
     >
       <DialogComponent.Input
         value={name}

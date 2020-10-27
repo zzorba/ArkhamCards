@@ -121,7 +121,6 @@ export default function CampaignLogComponent({ componentId, campaignId, campaign
       component: {
         name: 'Guide.ChaosBag',
         passProps: {
-          componentId,
           campaignId,
           chaosBag: campaignLog.chaosBag,
         },

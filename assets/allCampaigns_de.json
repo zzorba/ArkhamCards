@@ -31895,8 +31895,8 @@
 }, "scenarios": [
 {
   "id": "all_or_nothing",
-  "scenario_name": "All or Nothing",
-  "full_name": "All or Nothing",
+  "scenario_name": "Alles oder nichts",
+  "full_name": "Alles oder nichts",
   "xp_cost": 1,
   "side_scenario_type": "challenge",
   "challenge": {
@@ -31941,11 +31941,11 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "You’re willing to do whatever it takes to make things right. Your mother’s massive hospital debts won’t pay themselves off, so you’ve come up with a plan: gambling. The adrenaline rush of going all in and risking everything on the mercy of the cards is also a nice perk. Lately it feels as though life has dealt you a bad hand, but you’re often able to turn terrible hands into winning ones. Who needs skill when Lady Luck is on your side?\nYour game of choice is blackjack. Somehow the right cards tend to come up at the right time, and you try to hide your elation when the dealer busts yet again. You seem to go on a hot streak every night as stacks of chips grow ever taller in front of you. Such hot streaks go a long way in paying your debts, but your luck often draws the ire of both the dealer and fellow players alike. You know when to stop.\nOver the years, you’ve acquired a reputation for winning that some call “cheating.” As a result, you’ve been forced to keep a low profile and gamble at a rotating list of venues. There is one venue which you revel winning at over all others: the Clover Club. Vast amounts of money are at stake every night at the speakeasy, but it’s controlled by the O’Bannion gang. Intimidating. Unscrupulous. Ruthless. No one wants to draw the attention of the gang, as your reputation surely does.\nBut the Clover Club has a bottom line that, above all else, must be maintained. The brazen O’Bannions are not fond of being taken advantage of, and will use any means necessary to prevent it. Here, the house always wins.\nSurely that will change tonight. You pull your collar up and walk into La Bella Luna. The restaurant is virtually empty. A faint sound of bombastic music is coming from the back of the establishment. It’s clear where all the patrons are. All you can think about is getting a drink and winning big…"
+      "text": "Du bist fest entschlossen, alles zu tun, um die Dinge wieder ins Lot zu bringen – was es auch kosten mag. Die riesigen Krankenhausrechnungen deiner Mutter werden sich nicht einfach in Luft auflösen. Dein Plan ist einfach: Glücksspiel. Der Adrenalinrausch, wenn du „all-in“ gehst und voll und ganz auf die Gunst der Karten hoffst, gibt dir noch einen zusätzlichen Kick. In letzter Zeit fühlt es sich so an, als hätte dir das Leben eine schlechte Hand nach der anderen ausgeteilt, doch du hast es häufig noch geschafft, Gewinnerhände daraus zu machen. Wer braucht schon Können, wenn die Glücksgöttin auf seiner Seite ist? \nDein Spiel der Wahl ist Blackjack. Irgendwie scheinst du die richtigen Karten zum richtigen Zeitpunkt zu bekommen und musst aufpassen, nicht zu laut zu jubeln, wenn der Dealer erneut die 21 überschritten hat. Jede Nacht hast du eine Glückssträhne und die Chips stapeln sich höher und höher vor dir. Deine Gewinnsträhnen helfen dir enorm, deine Schulden über kurz oder lang abzubezahlen, doch sie ziehen auch regelmäßig die misstrauischen Blicke des Dealers und deiner Mitspieler auf dich. Du findest aber immer den richtigen Zeitpunkt aufzuhören. \nÜber die Jahre hinweg hast du dir den Ruf eines Gewinners erarbeitet. Manche nennen dich auch einen „Falschspieler“. Aus diesem Grund hältst du dich bedeckt und wechselst regelmäßig das Spiellokal. Doch es gibt einen Ort in der Stadt, an dem du deine Siege besonders gerne feierst: im Clover Club. Jede Nacht wird in dieser Flüsterkneipe um hohe Geldsummen gespielt. Kontrolliert wird sie von der O’Bannion-Gang – einer Bande von skrupellosen und unbarmherzigen Schlägern. Keiner will ihre Aufmerksamkeit erregen, daher musst du wegen deines Rufes besonders aufpassen. \nDer Clover Club hat eine Regel, die unter allen Umständen eingehalten werden muss. Die O’Bannions mögen es nicht, übervorteilt zu werden. Ihnen ist jedes Mittel recht, dies zu verhindern. Hier gilt das Motto: Das Haus gewinnt immer. \nDas wird sich heute Nacht ändern. Du rückst deinen Kragen zurecht und betrittst das La Bella Luna. Das Restaurant wirkt wie ausgestorben. Aus dem hinteren Bereich des Gebäudes kannst du leise Unterhaltungsmusik hören. Es ist klar, wo sich alle Gäste befinden. Du hast jetzt nur noch ein Bild im Kopf: wie du mit einem Drink in der Hand hoch gewinnst."
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Szenariovorbereitung",
       "type": "encounter_sets",
       "encounter_sets": [
         "all_or_nothing",
@@ -31955,60 +31955,60 @@
         "arkham",
         "rats"
       ],
-      "subtext": "When gathering <i>The Midnight Masks</i> encounter set, only gather the 5 treachery cards (2x False Lead and 3x Hunting Shadow). Do not gather the locations, act, agenda, and scenario reference cards from that set."
+      "subtext": "Beim Heraussuchen des Begegnungssets <i>Die Mitternachtsmasken</i> werden nur die 5 Verratskarten (2x Falsche Fährte und 3x Hetzender Schatten) herausgesucht. Die Orte, Szenen, Agenden und die Szenarioübersichtskarte dieses Sets werden nicht herausgesucht."
     },
     {
       "id": "gather_return_encounter_sets",
-      "text": "You may optionally decide to gather the cards included in the <i>Return to the House Always Wins</i> encounter set, as well, if your collection includes them.",
+      "text": "Das Begegnungsset <i>Rückkehr zu: Das Haus gewinnt immer</i> kann optional herausgesucht werden, falls es sich in deiner Sammlung befindet.",
       "type": "encounter_sets",
       "encounter_sets": [
         "return_to_the_house_always_wins"
       ],
-      "subtext": "If you do, perform the following additional steps:"
+      "subtext": "Falls sich für dieses Set entschieden wird, werden zusätzlich die folgenden Schritte durchgeführt:"
     },
     {
       "id": "gather_return_encounter_sets_bullets",
       "bullet_type": "none",
       "bullets": [
         {
-          "text": "Remove the “Return to” setup card from the game."
+          "text": "Die Szenariovorbereitungskarte „Rückkehr zu: Das Haus gewinnt immer“ wird aus dem Spiel entfernt."
         },
         {
-          "text": "Remove the original version of the Clover Club Lounge from the game and use the new version of the Clover Club Lounge instead."
+          "text": "Die ursprüngliche Version von Lounge des Clover Clubs wird aus dem Spiel entfernt. Stattdessen wird die Version von Lounge des Clover Clubs verwendet, die im Begegnungsset Rückkehr zu: Das Haus gewinnt immer zu finden ist."
         },
         {
-          "text": "Set the Clover Club Stage aside, out of play."
+          "text": "Der Ort Bühne des Clover Clubs wird als nicht im Spiel befindlich beiseitegelegt."
         },
         {
-          "text": "Include the new treachery cards with the remainder of the encounter cards."
+          "text": "Die neuen Verratskarten werden den übrigen Begegnungskarten hinzugefügt."
         },
         {
-          "text": "Remember that “Skids” O’Toole has “cheated.”"
+          "text": "Merke dir, dass „Skids“ O’Toole „falsch gespielt“ hat."
         }
       ]
     },
     {
       "id": "new_scenario_card",
-      "text": "Remove the original scenario reference card from <i>The House Always Wins</i> encounter set from the game. Use the new scenario reference card provided in the downloadable <i>All or Nothing</i> encounter set."
+      "text": "Die ursprüngliche Szenarioübersichtskarte aus dem Begegnungsset <i>Das Haus gewinnt immer</i> wird aus dem Spiel entfernt. Für dieses Szenario wird die Szenarioübersichtskarte des herunterladbaren Sets <i>Alles oder nichts</i> verwendet."
     },
     {
       "id": "new_act_agenda",
-      "text": "Remove the original act and agenda deck from <i>The House Always Wins</i> encounter set from the game. Build the act and agenda decks using only the new act and agenda cards provided in the downloadable <i>All or Nothing</i> encounter set."
+      "text": "Das ursprüngliche Agenda- und Szenendeck aus dem Begegnungsset <i>Das Haus gewinnt immer</i> wird aus dem Spiel entfernt. Bei der Erstellung des Agenda- und Szenendecks für dieses Szenario werden die Agendaund Szenenkarten des herunterladbaren Sets <i>Alles oder nichts</i> verwendet."
     },
     {
       "id": "remove_misc_cards",
-      "text": "Remove the Peter Clover asset and the Dr. Francis Morgan story asset from the game. These cards are not used in this challenge scenario."
+      "text": "Die Vorteilskarte Peter Clover und die Story-Vorteilskarte Dr. Francis Morgan werden aus dem Spiel entfernt. Diese Karten werden in diesem Herausforderungsszenario nicht verwendet."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: each copy of the Back Hall Doorway location, each copy of the Clover Club Bouncer enemy, and the Siobhan Riley enemy."
+      "text": "Die folgenden Karten werden als nicht im Spiel befindlich beiseitegelegt: jede Kopie des Ortes Tür zum hinteren Bereich, jede Kopie des Gegners Türsteher des Clover Clubs und der Gegner Siobhan Riley."
     },
     {
       "id": "setup_locations",
-      "text": "Put each of the remaining locations into play: Darkened Hall, Clover Club Lounge, Clover Club Bar, Clover Club Cardroom, and La Bella Luna.",
+      "text": "Die übrigen Orte werden ins Spiel gebracht: Dunkler Flur, Lounge des Clover Clubs, Bar des Clover Clubs, Spielzimmer des Clover Clubs und La Bella Luna.",
       "bullets": [
         {
-          "text": "Each investigator begins play in La Bella Luna."
+          "text": "Jeder Ermittler beginnt das Spiel im La Bella Luna."
         }
       ]
     },
@@ -32047,7 +32047,7 @@
     },
     {
       "id": "setup_enemies",
-      "text": "Put the Clover Club Pit Boss enemy into play in the Clover Club Lounge."
+      "text": "Der Gegner Pit Boss des Clover Clubs wird in der Lounge des Clover Clubs ins Spiel gebracht."
     },
     {
       "id": "encounter_deck",
@@ -32060,14 +32060,14 @@
     },
     {
       "id": "skids_bad_swap",
-      "text": "“Skids” O’Toole must either upgrade Hospital Debts to its advanced version, or downgrade the advanced version of On the Lam to its original version.",
+      "text": "„Skids“ O’Toole muss entweder Krankenhausrechnungen zur weiterentwickelten Version verbessern oder die weiterentwickelte Version von Auf der Flucht auf die ursprüngliche Version zurückstufen.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "necronomicon",
-            "text": "Upgrade to advanced Hospital Debts",
+            "text": "Zur weiterentwickelten Version von Krankenhausrechnungen verbessern",
             "effects": [
               {
                 "type": "remove_card",
@@ -32087,7 +32087,7 @@
           },
           {
             "id": "tote_bag",
-            "text": "Downgrade from advanced On the Lam",
+            "text": "Auf die ursprüngliche Version von Auf der Flucht zurückstufen",
             "effects": [
               {
                 "type": "remove_card",
@@ -32110,14 +32110,14 @@
     },
     {
       "id": "skids_good_swap",
-      "text": "“Skids” O’Toole may either upgrade On the Lam to its advanced version, or downgrade the advanced version of Hospital Debts to its original version.",
+      "text": "„Skids“ O’Toole darf entweder Auf der Flucht zur weiterentwickelten Version verbessern oder die weiterentwickelte Version von Krankenhausrechnungen auf die ursprüngliche Version zurückstufen.",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "tote_bag",
-            "text": "Upgrade to advanced On the Lam",
+            "text": "Zur weiterentwickelten Version von Auf der Flucht verbessern",
             "effects": [
               {
                 "type": "remove_card",
@@ -32137,7 +32137,7 @@
           },
           {
             "id": "necronomicon",
-            "text": "Downgrade advanced Hospital Debts",
+            "text": "Auf die ursprüngliche Version von Krankenhausrechnungen zurückstufen",
             "effects": [
               {
                 "type": "remove_card",
@@ -32157,14 +32157,14 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Nichts verändern"
           }
         ]
       }
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the combined Victory X value of each card in the victory display.",
+      "text": "Jeder Ermittler verdient Erfahrungspunkte in Höhe des Sieg- X-Wertes aller Karten im Siegpunktestapel.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -32180,34 +32180,34 @@
     {
       "id": "ask_act2_resources",
       "type": "input",
-      "text": "If the number of resources on Act 2a is (choose one)...",
+      "text": "Wähle eins, falls zutreffend: Falls sich auf Szene 2a …",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "resources_10",
-            "text": "10[per_investigator] or more resources...",
+            "text": "10[per_investigator] oder mehr Ressourcen befinden ...",
             "steps": [
               "1_additional_resource"
             ]
           },
           {
             "id": "resources_20",
-            "text": "20[per_investigator] or more resources...",
+            "text": "20[per_investigator] oder mehr Ressourcen befinden ...",
             "steps": [
               "2_additional_resources"
             ]
           },
           {
             "id": "resources_30",
-            "text": "30[per_investigator] or more resources...",
+            "text": "30[per_investigator] oder mehr Ressourcen befinden ...",
             "steps": [
               "3_additional_resources"
             ]
           },
           {
             "id": "resource_40",
-            "text": "40[per_investigator] or more resources...",
+            "text": "40[per_investigator] oder mehr Ressourcen befinden ...",
             "steps": [
               "4_additional_resources_1_xp"
             ],
@@ -32222,7 +32222,7 @@
           },
           {
             "id": "resource_50",
-            "text": "50[per_investigator] or more resources...",
+            "text": "50[per_investigator] oder mehr Ressourcen befinden ...",
             "steps": [
               "5_additional_resources_2_xp"
             ],
@@ -32237,7 +32237,7 @@
           },
           {
             "id": "resource_60",
-            "text": "60[per_investigator] or more resources...",
+            "text": "60[per_investigator] oder mehr Ressourcen befinden ...",
             "steps": [
               "6_additional_resources_3_xp"
             ],
@@ -32256,32 +32256,32 @@
     {
       "id": "1_additional_resource",
       "bullet_type": "small",
-      "text": "“Skids” O’Toole begins the next scenario with 1 additional resource."
+      "text": "„Skids“ O’Toole beginnt das nächste Szenario mit 1 zusätzlichen Ressource."
     },
     {
       "id": "2_additional_resources",
       "bullet_type": "small",
-      "text": "“Skids” O’Toole begins the next scenario with 2 additional resources."
+      "text": "„Skids“ O’Toole beginnt das nächste Szenario mit 2 zusätzlichen Ressourcen."
     },
     {
       "id": "3_additional_resources",
       "bullet_type": "small",
-      "text": "“Skids” O’Toole begins the next scenario with 3 additional resources."
+      "text": "„Skids“ O’Toole beginnt das nächste Szenario mit 3 zusätzlichen Ressourcen."
     },
     {
       "id": "4_additional_resources_1_xp",
       "bullet_type": "small",
-      "text": "“Skids” O’Toole earns 1 bonus experience and begins the next scenario with 4 additional resources."
+      "text": "„Skids“ O’Toole verdient 1 Bonus-Erfahrungspunkt und beginnt das nächste Szenario mit 4 zusätzlichen Ressourcen."
     },
     {
       "id": "5_additional_resources_2_xp",
       "bullet_type": "small",
-      "text": "“Skids” O’Toole earns 2 bonus experience and begins the next scenario with 5 additional resources."
+      "text": "„Skids“ O’Toole verdient 2 Bonus-Erfahrungspunkt und beginnt das nächste Szenario mit 5 zusätzlichen Ressourcen."
     },
     {
       "id": "6_additional_resources_3_xp",
       "bullet_type": "small",
-      "text": "“Skids” O’Toole earns 3 bonus experience and begins the next scenario with 6 additional resources."
+      "text": "„Skids“ O’Toole verdient 3 Bonus-Erfahrungspunkt und beginnt das nächste Szenario mit 6 zusätzlichen Ressourcen."
     }
   ],
   "resolutions": [
@@ -32300,7 +32300,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "Heart pounding and exhilaration coursing through your veins, you don’t know what gives you more of a rush: winning money from the O’Bannions or escaping from them. This night is proof of what you’ve always thought: “Skids” O’Toole always wins...",
+      "text": "Dein Herz pumpt mit rasendem Tempo Adrenalin durch deine Adern. Du bist dir nicht sicher, was berauschender für dich ist: dass du Geld von den O’Bannions hast gewinnen können oder dass du ihnen entwischen konntest. Diese Nacht beweist, was du dir schon immer gedacht hast: „Skids“ O’Toole gewinnt immer …",
       "steps": [
         "earn_xp",
         "ask_act2_resources",
@@ -32311,7 +32311,7 @@
     {
       "id": "R2",
       "title": "Auflösung 2",
-      "text": "You’ve failed to go unnoticed. Within minutes, you are surrounded by the O’Bannion’s heartless enforcers and dragged into a dark room. The brutes clench their fists and roll up their sleeves. You close your eyes and brace for the hard lesson they’re about to teach you: Lady Luck is no use at the Clover Club.\nYou end up in a heap of trash outside the back alley entrance of the club. All things considered, it could have been worse. Bruised and battered, you remove the Clover Club from your rotating list. Gambling isn’t worth it if the stake is your life. You know firsthand that, at the Clover Club, the house always wins...",
+      "text": "Du hast es nicht geschafft, unauffällig zu bleiben. In wenigen Minuten bist du von den gnadenlosen Vollstreckern der O’Bannion-Gang umringt und wirst von ihnen in ein abgedunkeltes Zimmer gezerrt. Die Schläger ballen ihre Fäuste und krempeln ihre Ärmel hoch. Du schließt deine Augen und machst dich auf die harte Lektion gefasst, die sie dich zweifellos gleich lehren werden: Die Glücksgöttin kann dir im Clover Club nicht helfen. \nSchließlich landest du auf einem Müllhaufen neben dem Hinterausgang des Clubs. Insgesamt betrachtet hätte es schlimmer ausgehen können. Mit Beulen und blauen Flecken gezeichnet streichst du den Clover Club von der Liste deiner Spielorte. Glücksspiel zahlt sich nicht aus, wenn dein Leben auf dem Spiel steht. Aus eigener Erfahrung weißt du nun, dass im Clover Club das Haus immer gewinnt …",
       "steps": [
         "earn_xp",
         "skids_bad_swap",
@@ -35830,7 +35830,7 @@
     },
     {
       "id": "gather_encounter_sets",
-      "title": "Scenario Setup",
+      "title": "Szenariovorbereitung",
       "type": "encounter_sets",
       "encounter_sets": [
         "read_or_die",
@@ -36046,7 +36046,7 @@
           },
           {
             "id": "neither",
-            "text": "No change"
+            "text": "Nichts verändern"
           }
         ]
       }

@@ -23,7 +23,6 @@ interface Props {
   xpAdjustment: number;
   xpAdjustmentEnabled: boolean;
   visible: boolean;
-  viewRef?: View;
   toggleVisible: () => void;
   updateDetails: (name: string, xpAdjustment: number) => void;
 }
@@ -35,7 +34,6 @@ export default function EditDeckDetailsDialog(props: Props) {
     xp,
     spentXp,
     toggleVisible,
-    viewRef,
     xpAdjustmentEnabled,
   } = props;
   const { typography } = useContext(StyleContext);
@@ -68,7 +66,6 @@ export default function EditDeckDetailsDialog(props: Props) {
     <Dialog
       title={t`Deck Details`}
       visible={visible}
-      viewRef={viewRef}
     >
       <View style={styles.column}>
         <DialogComponent.Description style={[typography.smallLabel, space.marginTopM]}>

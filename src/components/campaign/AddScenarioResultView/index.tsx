@@ -18,7 +18,7 @@ import withDimensions, { DimensionsProps } from '@components/core/withDimensions
 import { NavigationProps } from '@components/nav/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import ScenarioSection from './ScenarioSection';
-import CampaignLogSection from '../CampaignDetailView/CampaignLogSection';
+import CampaignLogSection from '../CampaignLogSection';
 import XpComponent from '../XpComponent';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
@@ -206,7 +206,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
     });
   };
 
-  _toggleAddSectionDialog = () => {
+  _hideAddSectionDialog = () => {
     this.setState({
       addSectionVisible: false,
     });
@@ -250,28 +250,22 @@ class AddScenarioResultView extends React.Component<Props, State> {
 
   renderAddSectionDialog() {
     const {
-      viewRef,
-    } = this.props;
-    const {
       addSectionVisible,
       addSectionFunction,
     } = this.state;
 
     return (
       <AddCampaignNoteSectionDialog
-        viewRef={viewRef}
         visible={addSectionVisible}
         addSection={addSectionFunction}
-        toggleVisible={this._toggleAddSectionDialog}
+        hide={this._hideAddSectionDialog}
       />
     );
   }
   render() {
     const {
       campaign,
-      componentId,
       showTextEditDialog,
-      captureViewRef,
       allInvestigators,
     } = this.props;
     const { backgroundStyle, borderStyle } = this.context;
@@ -282,7 +276,7 @@ class AddScenarioResultView extends React.Component<Props, State> {
     const notes = this.campaignNotes();
     const scenarioResults = (campaign && campaign.scenarioResults) || [];
     return (
-      <View style={[styles.flex, backgroundStyle]} ref={captureViewRef}>
+      <View style={[styles.flex, backgroundStyle]}>
         { this.renderAddSectionDialog() }
         <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
           { this.renderScenarios() }
@@ -305,8 +299,6 @@ class AddScenarioResultView extends React.Component<Props, State> {
           </View>
           { !!notes && (
             <CampaignLogSection
-              componentId={componentId}
-              scenarioCount={scenarioResults.length}
               campaignNotes={notes}
               allInvestigators={allInvestigators}
               updateCampaignNotes={this._updateCampaignNotes}

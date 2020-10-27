@@ -41,7 +41,6 @@ import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
@@ -55,7 +54,7 @@ import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-type OwnProps = NavigationProps & PlayerCardProps & InjectedDialogProps;
+type OwnProps = NavigationProps & PlayerCardProps;
 
 interface ReduxProps {
   nextId: number;
@@ -208,9 +207,15 @@ class NewCampaignView extends React.Component<Props, State> {
     });
   };
 
-  _toggleCampaignLogDialog = () => {
+  _showCampaignLogDialog = () => {
     this.setState({
-      campaignLogDialogVisible: !this.state.campaignLogDialogVisible,
+      campaignLogDialogVisible: true,
+    });
+  };
+
+  _hideCampaignLogDialog = () => {
+    this.setState({
+      campaignLogDialogVisible: false,
     });
   };
 
@@ -470,17 +475,6 @@ class NewCampaignView extends React.Component<Props, State> {
     );
   }
 
-  _showCampaignNameDialog = () => {
-    const {
-      name,
-    } = this.state;
-    this.props.showTextEditDialog(
-      t`Campaign Name`,
-      name,
-      this._onNameChange
-    );
-  };
-
   renderWeaknessSetSection() {
     const {
       componentId,
@@ -512,17 +506,13 @@ class NewCampaignView extends React.Component<Props, State> {
 
   renderCampaignSectionDialog() {
     const {
-      viewRef,
-    } = this.props;
-    const {
       campaignLogDialogVisible,
     } = this.state;
     return (
       <AddCampaignNoteSectionDialog
-        viewRef={viewRef}
         visible={campaignLogDialogVisible}
         addSection={this._addCampaignNoteSection}
-        toggleVisible={this._toggleCampaignLogDialog}
+        hide={this._hideCampaignLogDialog}
       />
     );
   }
@@ -595,7 +585,7 @@ class NewCampaignView extends React.Component<Props, State> {
         )) }
         { !this.hasDefinedChaosBag() && (
           <View style={space.marginTopS}>
-            <BasicButton title={t`Add Log Section`} onPress={this._toggleCampaignLogDialog} />
+            <BasicButton title={t`Add Log Section`} onPress={this._showCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -618,7 +608,6 @@ class NewCampaignView extends React.Component<Props, State> {
   render() {
     const {
       componentId,
-      captureViewRef,
       nextId,
     } = this.props;
     const {
@@ -638,7 +627,7 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <View ref={captureViewRef} style={backgroundStyle}>
+      <View style={backgroundStyle}>
         <ScrollView contentContainerStyle={backgroundStyle}>
           <CampaignSelector
             componentId={componentId}
@@ -732,9 +721,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   withPlayerCards(
-    withDialogs(
-      NewCampaignView
-    )
+    NewCampaignView
   )
 );
 

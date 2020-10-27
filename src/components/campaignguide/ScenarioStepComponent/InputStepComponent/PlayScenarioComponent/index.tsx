@@ -60,7 +60,6 @@ export default function PlayScenarioComponent({ componentId, campaignId, id, inp
       component: {
         name: 'Guide.ChaosBag',
         passProps: {
-          componentId,
           campaignId,
           chaosBag: campaignLog.chaosBag,
         },
