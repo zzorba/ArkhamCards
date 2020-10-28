@@ -1,0 +1,13 @@
+diff --git a/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js b/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js
+index 0aaf615..a299de2 100644
+--- a/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js
++++ b/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js
+@@ -11,7 +11,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
+ 
+ var _reduxPersist = require("redux-persist");
+ 
+-var _asyncStorage = _interopRequireDefault(require("@react-native-community/async-storage"));
++var _asyncStorage = _interopRequireDefault(require("@react-native-async-storage/async-storage"));
+ 
+ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+ 

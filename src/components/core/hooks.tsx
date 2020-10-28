@@ -5,7 +5,7 @@ import { forEach, debounce } from 'lodash';
 import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, getCampaign, getChaosBagResults, getDeck, getTabooSet } from '@reducers';
+import { AppState, getCampaign, getChaosBagResults, getDeck, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
@@ -291,6 +291,20 @@ export function useCampaign(campaignId?: number): Campaign | undefined {
     return undefined;
   }, [campaignId]);
   return useSelector(selector);
+}
+
+const EMPTY_DECK_IDS: number[] = [];
+const EMPTY_INVESTIGATORS: Card[] = [];
+export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
+  const latestDeckIdsSelector = useCallback((state: AppState) => {
+    return campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS;
+  }, [campaign]);
+  const latestDeckIds = useSelector(latestDeckIdsSelector);
+  const allInvestigatorsSelector = useCallback((state: AppState) => {
+    return investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS;
+  }, [investigators, campaign]);
+  const allInvestigators = useSelector(allInvestigatorsSelector);
+  return [latestDeckIds, allInvestigators];
 }
 
 export function useCampaignScenarios(campaign?: Campaign): [Scenario[], { [code: string]: Scenario }] {

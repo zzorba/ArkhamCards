@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet } from 'react-native';
 import { map } from 'lodash';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { Campaign } from '@actions/types';
@@ -28,7 +28,7 @@ interface CampaignItemType {
 export default function CampaignList({ onScroll, componentId, campaigns, footer }: Props) {
   const onPress = useCallback((id: number, campaign: Campaign) => {
     Keyboard.dismiss();
-    const options = {
+    const options: Options = {
       topBar: {
         title: {
           text: campaign.name,
@@ -49,6 +49,11 @@ export default function CampaignList({ onScroll, componentId, campaigns, footer 
             accessibilityLabel: t`Menu`,
           },
         ],
+      },
+      sideMenu: {
+        right: {
+
+        },
       },
     };
     if (campaign.guided) {

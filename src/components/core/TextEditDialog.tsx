@@ -56,9 +56,13 @@ export default function TextEditDialog(props: Props) {
     if (visibleCount > 0) {
       setHeight(40);
       setVisible(true);
-      // textInputRef.current && textInputRef.current.focus();
     }
   }, [visibleCount]);
+  useEffect(() => {
+    if (visible) {
+      textInputRef.current && textInputRef.current.focus();
+    }
+  }, [visible]);
 
   const onCancelPress = useCallback(() => {
     setVisible(false);

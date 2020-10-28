@@ -329,7 +329,7 @@ function useSectionFeed({
           });
           currentSectionId = card.headerId;
         }
-        result.push(card);
+        result.push({ ...card, headerId: `deck_${card.headerId}` });
         items.push({ type: 'pc', prefix: 'deck', card });
       });
       items.push({
@@ -654,6 +654,7 @@ export default function({
   }, [query, tabooSetId]);
 
   const cardOnPressId = useCallback((id: string, card: Card) => {
+    console.log(`Card Pressed: ${id}`);
     cardPressed && cardPressed(card);
     if (singleCardView) {
       showCard(
