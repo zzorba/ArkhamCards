@@ -4864,7 +4864,7 @@ msgstr "Reglas de búsqueda"
 
 #: src/data/Card.ts:616 src/data/Card.ts:650 src/data/Card.ts:686 src/data/Card.ts:705
 msgid "Signature Weakness"
-msgstr ""
+msgstr "Debilidad característica"
 
 #: src/data/Card.ts:877
 #, javascript-format
@@ -4880,11 +4880,11 @@ msgstr[1] "Mostrar ${ nonCollectionCount } cartas fuera de la colección"
 
 #: src/components/cardlist/CardSearchComponent/index.tsx:273
 msgid "Hide versatile cards"
-msgstr ""
+msgstr "Ocultar cartas Versátil"
 
 #: src/components/deck/CopyDeckDialog/index.tsx:224
 msgid "Version to copy"
-msgstr ""
+msgstr "Versión a copiar"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
@@ -5063,7 +5063,7 @@ msgstr "Viva"
 #: src/data/scenario/fixedSteps.ts:271
 msgctxt "feminine"
 msgid "Resigned"
-msgstr "Desistida"
+msgstr "Desistido"
 
 #: src/data/scenario/fixedSteps.ts:276
 msgctxt "feminine"
