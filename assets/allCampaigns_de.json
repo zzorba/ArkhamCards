@@ -7636,7 +7636,8 @@
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "text": "#name# war besessen."
+                "masculine_text": "#name# war besessen.",
+                "feminine_text": "#name# war besessen."
               }
             ]
           }
@@ -9794,7 +9795,8 @@
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
+                "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+                "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
               },
               {
                 "type": "add_weakness",
@@ -19096,7 +19098,8 @@
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "text": "#name# war besessen."
+                "masculine_text": "#name# war besessen.",
+                "feminine_text": "#name# war besessen."
               }
             ]
           }
@@ -20734,7 +20737,8 @@
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
+                "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+                "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
               },
               {
                 "type": "add_weakness",
@@ -36451,7 +36455,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# wurde vom Abgrund verschlungen."
+                "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+                "feminine_text": "#name# wurde vom Abgrund verschlungen."
               }
             ]
           }
@@ -36475,7 +36480,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# wurde vom Abgrund verschlungen."
+                "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+                "feminine_text": "#name# wurde vom Abgrund verschlungen."
               }
             ]
           }
@@ -36790,7 +36796,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# wurde vom Abgrund verschlungen."
+                "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+                "feminine_text": "#name# wurde vom Abgrund verschlungen."
               }
             ]
           }
@@ -36814,7 +36821,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# wurde vom Abgrund verschlungen."
+                "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+                "feminine_text": "#name# wurde vom Abgrund verschlungen."
               }
             ]
           }
@@ -38012,7 +38020,8 @@
           "section": "campaign_notes",
           "id": "lead_investigator_joins_pipers",
           "cards": "$lead_investigator",
-          "text": "#name# schließt sich den Pfeifern von Azathoth an."
+          "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
+          "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an."
         }
       ]
     },
@@ -38566,6 +38575,8 @@
           {
             "id": "not_chosen",
             "text": "Nicht gewählt",
+            "masculine_text": "Nicht gewählt",
+            "feminine_text": "Nicht gewählt",
             "effects": []
           },
           {
@@ -38576,43 +38587,53 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "text": "#name# wurde vom Beobachter entführt."
+                "masculine_text": "#name# wurde vom Beobachter entführt.",
+                "feminine_text": "#name# wurde vom Beobachter entführt."
               }
             ]
           },
           {
             "id": "claimed_by_specters",
             "text": "Von Geistern beansprucht",
+            "masculine_text": "Von Geistern beansprucht",
+            "feminine_text": "Von Geistern beansprucht",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "text": "#name# ist von Geistern beansprucht worden."
+                "masculine_text": "#name# ist von Geistern beansprucht worden.",
+                "feminine_text": "#name# ist von Geistern beansprucht worden."
               }
             ]
           },
           {
             "id": "disappeared_into_the_mist",
             "text": "Im Nebel verschwunden",
+            "masculine_text": "Im Nebel verschwunden",
+            "feminine_text": "Im Nebel verschwunden",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "text": "#name# ist im Nebel verschwunden."
+                "masculine_text": "#name# ist im Nebel verschwunden.",
+                "feminine_text": "#name# ist im Nebel verschwunden."
               }
             ]
           },
           {
             "id": "pulled_into_spectral_realm",
             "text": "Ins Reich der Geister gezogen",
+            "masculine_text": "Ins Reich der Geister gezogen",
+            "feminine_text": "Ins Reich der Geister gezogen",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "text": "#name# wurde in das Reich der Geister gezogen."
+                "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+                "feminine_text": "#name# wurde in das Reich der Geister gezogen."
               }
             ]
           }
@@ -48893,7 +48914,8 @@
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "broken_the_law_of_ulthar",
-                "text": "#name# hat das Gesetz von Ulthar gebrochen.",
+                "masculine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
+                "feminine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
                 "cards": "$input_value"
               }
             ]
@@ -49126,7 +49148,8 @@
           "section": "campaign_notes",
           "id": "captured",
           "cards": "$defeated_investigators",
-          "text": "#name# wurde gefangen genommen"
+          "masculine_text": "#name# wurde gefangen genommen.",
+          "feminine_text": "#name# wurde gefangen genommen."
         }
       ]
     },

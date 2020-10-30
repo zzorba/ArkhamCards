@@ -11,21 +11,25 @@ interface Props {
   count: number;
   entry: CampaignLogEntry;
   text?: string;
+  feminineText?: string;
 }
 
-export default function CampaignLogCardEntryComponent({ code, crossedOut, entry, text, count }: Props) {
+export default function CampaignLogCardEntryComponent({ code, crossedOut, entry, text, count, feminineText }: Props) {
   return (
     <SingleCardWrapper
       code={code}
       type="encounter"
     >
-      { (card: Card) => (
-        <TextEntryComponent
-          text={(text || '#name#').replace('#name#', card.name).replace('#X#', `${count}`)}
-          crossedOut={crossedOut}
-          entry={entry}
-        />
-      ) }
+      { (card: Card) => {
+        const prompt: string | undefined = ((feminineText && !card.grammarGenderMasculine()) ? feminineText : text);
+        return (
+          <TextEntryComponent
+            text={(prompt || '#name#').replace('#name#', card.name).replace('#X#', `${count}`)}
+            crossedOut={crossedOut}
+            entry={entry}
+          />
+        );
+      } }
     </SingleCardWrapper>
   );
 }

@@ -47,6 +47,8 @@ export interface LatestDecks {
 export interface DisplayChoice {
   border?: boolean;
   text?: string;
+  masculine_text?: string;
+  feminine_text?: string;
   description?: string;
   steps?: string[] | null;
   effects?: Effect[] | null;

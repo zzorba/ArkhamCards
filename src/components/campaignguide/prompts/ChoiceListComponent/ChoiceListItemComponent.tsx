@@ -1,4 +1,5 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { map } from 'lodash';
 import { StyleSheet, Text, View } from 'react-native';
 
 import ChooseOneListComponent from '../ChooseOneListComponent';
@@ -12,6 +13,7 @@ interface Props {
   code: string;
   name: string;
   color?: string;
+  masculine?: boolean;
   choices: DisplayChoice[];
   choice?: number;
   optional: boolean;
@@ -25,6 +27,7 @@ export default function ChoiceListItemComponent({
   code,
   name,
   color,
+  masculine,
   choices,
   choice,
   optional,
@@ -41,6 +44,17 @@ export default function ChoiceListItemComponent({
     }
     onChoiceChange(code, idx);
   }, [onChoiceChange, code]);
+  const genderedChoices = useMemo(() => {
+    return map(choices, choice => {
+      if (choice.masculine_text && choice.feminine_text) {
+        return {
+          ...choice,
+          text: masculine ? choice.masculine_text : choice.feminine_text,
+        };
+      }
+      return choice;
+    });
+  }, [choices, masculine]);
 
   if (detailed) {
     return (
@@ -64,7 +78,7 @@ export default function ChoiceListItemComponent({
           <View />
         </View>
         <ChooseOneListComponent
-          choices={choices}
+          choices={genderedChoices}
           selectedIndex={choice}
           editable={editable}
           onSelect={onSelect}
@@ -76,7 +90,7 @@ export default function ChoiceListItemComponent({
   }
   return (
     <SinglePickerComponent
-      choices={choices}
+      choices={genderedChoices}
       selectedIndex={choice === undefined ? -1 : choice}
       editable={editable}
       optional={optional}

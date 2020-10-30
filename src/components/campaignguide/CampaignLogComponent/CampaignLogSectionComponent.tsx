@@ -63,6 +63,7 @@ export default function CampaignLogSectionComponent({ sectionId, campaignGuide, 
               count={card.count}
               entry={entry}
               text={logEntry.text}
+              feminineText={logEntry.feminineText}
               crossedOut={crossedOut}
             />
           ));

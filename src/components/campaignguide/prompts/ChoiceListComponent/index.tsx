@@ -17,6 +17,7 @@ export interface ListItem {
   code: string;
   name: string;
   color?: string;
+  masculine?: boolean;
 }
 
 export interface ChoiceListComponentProps {

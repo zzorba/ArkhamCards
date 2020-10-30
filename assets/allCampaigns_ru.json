@@ -7636,7 +7636,8 @@
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "text": "#name# одержим."
+                "masculine_text": "#name# was possessed.",
+                "feminine_text": "#name# was possessed."
               }
             ]
           }
@@ -9794,7 +9795,8 @@
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# читает второй акт «Короля в жёлтом»."
+                "masculine_text": "#name# read Act 2 of The King in Yellow.",
+                "feminine_text": "#name# read Act 2 of The King in Yellow."
               },
               {
                 "type": "add_weakness",
@@ -19096,7 +19098,8 @@
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "text": "#name# одержим."
+                "masculine_text": "#name# was possessed.",
+                "feminine_text": "#name# was possessed."
               }
             ]
           }
@@ -20734,7 +20737,8 @@
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# читает второй акт «Короля в жёлтом»."
+                "masculine_text": "#name# read Act 2 of The King in Yellow.",
+                "feminine_text": "#name# read Act 2 of The King in Yellow."
               },
               {
                 "type": "add_weakness",
@@ -24996,7 +25000,7 @@
     {
       "id": "replacing_locations_reminder",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
+      "title": "Замена локаций",
       "text": "В этом сценарии вы можете получить указание положить новую локацию поверх локации в игре. Когда вы кладёте локацию поверх существующей, новая локация заменяет прежнюю. Все жетоны, прикреплённые карты, сыщики, враги и прочие карты, которые находились в старой локации, теперь находятся в новой локации (они не перемещаются — меняется сама локация). Если локация выходит из игры и под ней есть другая локация, то она заменяет вышедшую. Все жетоны, прикреплённые карты, сыщики, враги и прочие карты, которые находились в той локации, теперь находятся в локации, лежавшей под ней."
     },
     {
@@ -28013,7 +28017,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -36451,7 +36455,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "masculine_text": "#name# was taken by the abyss.",
+                "feminine_text": "#name# was taken by the abyss."
               }
             ]
           }
@@ -36475,7 +36480,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "masculine_text": "#name# was taken by the abyss.",
+                "feminine_text": "#name# was taken by the abyss."
               }
             ]
           }
@@ -36790,7 +36796,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "masculine_text": "#name# was taken by the abyss.",
+                "feminine_text": "#name# was taken by the abyss."
               }
             ]
           }
@@ -36814,7 +36821,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# was taken by the abyss."
+                "masculine_text": "#name# was taken by the abyss.",
+                "feminine_text": "#name# was taken by the abyss."
               }
             ]
           }
@@ -36900,7 +36908,7 @@
   "id": "tcu",
   "position": 4,
   "version": 3,
-  "name": "The Circle Undone",
+  "name": "Нарушенный круг",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -36908,23 +36916,23 @@
     },
     {
       "id": "mementos",
-      "title": "Mementos Discovered"
+      "title": "Собранные свидетельства"
     },
     {
       "id": "05046",
-      "title": "Missing Persons - Gavriella Mizrah"
+      "title": "Пропавшие без вести — Гавриэла Мизра"
     },
     {
       "id": "05047",
-      "title": "Missing Persons - Jerome Davids"
+      "title": "Пропавшие без вести — Джером Дэвидс"
     },
     {
       "id": "05049",
-      "title": "Missing Persons - Penny White"
+      "title": "Пропавшие без вести — Пенни Уайт"
     },
     {
       "id": "05048",
-      "title": "Missing Persons - Valentino Rivas"
+      "title": "Пропавшие без вести — Валентино Ривас"
     },
     {
       "id": "$input_value",
@@ -36960,8 +36968,8 @@
     {
       "id": "prologue",
       "type": "story",
-      "title": "Death Is Only the Beginning",
-      "text": "“The hidden cults to which these witches belonged often guarded and handed down surprising secrets from elder, forgotten aeons; and it was by no means impossible that Keziah had actually mastered the art of passing through dimensional gates.”\n– H. P. Lovecraft, The Dreams in the Witch House"
+      "title": "Смерть — это только начало",
+      "text": "Тайные культы, к которым принадлежали эти ведьмы, нередко хранили и передавали из поколения в поколение удивительные тайны далёких, давно забытых эпох, — поэтому нельзя исключать, что Кассия действительно владела искусством проходить сквозь врата между измерениями.\nГовард Ф. Лавкрафт «Сны в Ведьмином доме»"
     },
     {
       "id": "difficulty_choice",
@@ -36973,7 +36981,7 @@
           {
             "id": "easy",
             "text": "Лёгкий <i>(чтобы познакомиться с сюжетом):</i>",
-            "description": "+1, +1, 0, 0, 0, -1, -1, -2, -3, [skull], [skull], [auto_fail], [elder_sign]",
+            "description": "+1, +1, 0, 0, 0, −1, −1, −2, −3, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -37003,7 +37011,7 @@
           {
             "id": "standard",
             "text": "Обычный <i>(чтобы испытать вызов):</i>",
-            "description": "+1, 0, 0, -1, -1, -2, -2, -3, -4, [skull], [skull], [auto_fail], [elder_sign]",
+            "description": "+1, 0, 0, −1, −1, −2, −2, −3, −4, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -37033,7 +37041,7 @@
           {
             "id": "hard",
             "text": "Сложный <i>(чтобы погрузиться в кошмар):</i>",
-            "description": "0, 0, -1, -1, -2, -2, -3, -4, -5, [skull], [skull], [auto_fail], [elder_sign]",
+            "description": "0, 0, −1, −1, −2, −2, −3, −4, −5, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -37063,7 +37071,7 @@
           {
             "id": "expert",
             "text": "Экстремальный <i>(чтобы познать истинный ужас Аркхэма):</i>",
-            "description": "0, -1, -1, -2, -2, -3, -4, -6, -8, [skull], [skull], [auto_fail], [elder_sign]",
+            "description": "0, −1, −1, −2, −2, −3, −4, −6, −8, [skull], [skull], [auto_fail], [elder_sign]",
             "effects": [
               {
                 "type": "campaign_data",
@@ -37097,8 +37105,8 @@
 }, "scenarios": [
 {
   "id": "at_deaths_doorstep",
-  "scenario_name": "At Death's Doorstep",
-  "full_name": "Scenario II: At Death's Doorstep",
+  "scenario_name": "На пороге смерти",
+  "full_name": "Сценарий II: На пороге смерти",
   "setup": [
     "intro_article",
     "intro",
@@ -37122,12 +37130,12 @@
     {
       "id": "intro_article",
       "bullet_type": "none",
-      "text": "<b>Four Missing, Whereabouts Unknown</b>\n\nResidents of French Hill are still in a tizzy after the sudden disappearance of several guests and house staff from the home of Mr. Josef Meiger during the night of the annual Silver Twilight charity gala last Sunday. “We are absolutely baffled as to how this could have happened,” said Mr. Meiger the day after the disappearances. “That said, we are confident that Sheriff Engle and the Arkham Police will do their due diligence in finding the missing persons.”\nThere is still no evidence whatsoever as to the whereabouts of Miss Gavriella Mizrah, Mr. Jerome Davids, Mr. Valentino Rivas, and Mrs. Penny White, all of whom vanished halfway through the event and have not been seen since. The police are offering a substantial reward for any person or persons who come forward with information related to these disappearances. When asked whether the police were considering the case a homicide, Sheriff Engle had this to say: “There’s no reason to suspect foul play is involved just yet. However, given the circumstances, we have to consider every possibility.” No other attendees have come forward with statements concerning the gala, which seemed to finish without a hitch despite the disappearances.\nSo far, none of the prominent members of the Silver Twilight Lodge have expressed any concern about the Lodge’s upcoming benefit dinner, which was recently moved to the same location: Josef Meiger’s estate in French Hill. “I am certain that this event will be a smashing success,” Mr. Meiger told the Arkham Advertiser in an interview yesterday. “There is no reason for the fair residents of Arkham to worry.”\n\n–Minnie Klein"
+      "text": "<b>Четверо пропали, местоположение неизвестно</b>\n\nЖители Френч-Хилла всё ещё обеспокоены внезапным исчезновением нескольких гостей и прислуги из дома мистера Джозефа Майгера во время ежегодного благотворительного вечера Ложи Серебряных Сумерек. «Мы совершенно не понимаем, как это могло произойти, — сказал мистер Майгер на следующий день после исчезновений. — Но уверены, что шериф Энгл и полиция Аркхэма приложат все усилия, чтобы найти пропавших без вести». \nДо сих пор нет никаких данных о местонахождении мисс Гавриэлы Мизры, мистера Джерома Дэвидса, мистера Валентино Риваса и миссис Пенни Уайт, которые исчезли в разгар вечера, и с тех пор их никто не видел. Полиция назначила крупное вознаграждение за любую информацию об этих исчезновениях. На вопрос о том, рассматривает ли полиция версию убийства, шериф Энгл ответил так: «Пока нет свидетельств, указывающих на наличие злого умысла. Однако, учитывая обстоятельства, мы будем рассматривать все возможные версии». Ни один из прочих гостей вечера никак не прокомментировал исчезновения, которые, по-видимому, никак не повлияли на продолжавшиеся торжества.\nДо сих пор никто из видных членов Ложи Серебряных Сумерек не выразил сомнений по поводу предстоящего благотворительного ужина Ложи, который недавно был перенесён в то же место — особняк Джозефа Майгера во Френч-Хилле. «Уверен, что всё пройдёт на высочайшем уровне, — сообщил мистер Майгер вчера в интервью „Аркхэм Эдвертайзер“. — У честных жителей Аркхэма нет поводов для беспокойства».\n\n<right>Минни Кляйн</right>"
     },
     {
       "id": "intro",
       "type": "story",
-      "text": "You fold up the newspaper and shove it aside on your desk, examining the other files you’ve collected over the last few days concerning the missing persons. It has been several days since your experience in the woods. You have tried to put it all out of mind, but it is impossible. Every night, you dream of a nameless place in the void of space, a faint discordant melody of hypnotizing flutes pulling you forward. Now there are others disappearing from the town without a trace. The disappearances dance along the edges of your thoughts. <i>No reason to worry</i>, you ponder, turning the man’s words over in your head. You think of the card reader and her warning, and you wonder if you are simply imagining devils where there are none. Regardless, there is only one way to know for sure. You pick up the invitation, examining the silver-embossed stationary and perfect calligraphy.\n<center><fancy>The Silver Twilight Lodge</fancy></center>\n<i>requests the pleasure of your company on the evening of November the twenty-ninth at eight o’clock at the estate of Josef Ekhard Meiger, Esq. for the benefit of The Fairchild Foundation</i>\nAs you prepare for the night ahead, you cannot help but wonder: Are you taking action to remedy your fate, as the soothsayer advised? Or are you walking willingly into the jaws of a grim destiny?"
+      "text": "Сложив газету, вы кладёте её на край стола и обращаетесь к другой информации о пропавших, собранной за последнее время. Прошло уже несколько дней после ваших злоключений в лесу. Вы пытались выкинуть их из головы, но не можете. Каждую ночь вам снится безымянное место в бесконечной пустоте и тихая нестройная мелодия гипнотических флейт, влекущая вас вперёд. В городе бесследно исчезают люди. Ваши мысли постоянно возвращаются к этим исчезновениям. «Нет поводов для беспокойства», — вы вертите слова Майгера в голове. Вы вспоминаете о гадалке и её пророчестве и спрашиваете себя: не придумываете ли вы то, чего нет? Как бы то ни было, есть лишь один способ узнать наверняка. Вы берёте приглашение и всматриваетесь в серебряное тиснение и изысканную каллиграфию карточки.\n<center><fancy>Ложа Серебряных Сумерек</fancy></center>\n<i>просит Вас оказать честь своим присутствием на благотворительном вечере Фонда Фэрчайлда, который состоится двадцать девятого ноября в восемь часов пополудни в поместье достопочтенного Джозефа Экхарда Майгера.</i>\nСобираясь на предстоящий вечер, вы невольно задумываетесь: делаете ли вы попытку изменить предначертанное, о которой говорила гадалка, или же добровольно приближаете свою печальную участь?"
     },
     {
       "id": "gather_encounter_sets",
@@ -37153,20 +37161,20 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the seven [[Spectral]] locations aside, out of play."
+      "text": "Отложите в сторону семь [[потусторонних]] локаций."
     },
     {
       "id": "set_aside_josef",
-      "text": "Set the Josef Meiger enemy aside, out of play.",
+      "text": "Отложите в сторону карту врага «Джозеф Майгер».",
       "bullets": [
         {
-          "text": "<i>Note: This card is double-sided and has a story card on its other side. For the best experience, do not look at the other side unless an effect instructs you to do so.</i>"
+          "text": "Эта карта двусторонняя, с картой сюжета на обороте. Чтобы игра была интереснее, не смотрите обратную сторону этой карты, пока не получите указание сделать это."
         }
       ]
     },
     {
       "id": "setup_locations",
-      "text": "Put each of the seven non-[[Spectral]] locations into play (Entry Hall, Victorian Halls, Trophy Room, Billiards Room, Master Bedroom, Balcony, and Office). Each investigator begins play in the Entry Hall."
+      "text": "Введите в игру все семь локаций без черты [[потусторонняя]] («Вестибюль», «Викторианский холл», «Трофейную комнату», «Бильярдную», «Хозяйскую спальню», «Балкон» и «Кабинет»). Все сыщики начинают игру в «Вестибюле»."
     },
     {
       "id": "location_layout",
@@ -37200,7 +37208,7 @@
     },
     {
       "id": "check_missing_persons",
-      "text": "Check the “Missing Persons” section of the Campaign Log:"
+      "text": "Сверьтесь с графой журнала «Пропавшие без вести»:"
     },
     {
       "id": "check_gavriella_clues",
@@ -37273,36 +37281,36 @@
     {
       "id": "gavriella_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Entry Hall because Gavriella Mizrah’s profile is not crossed off."
+      "text": "Поскольку Гавриэла Мизра не вычеркнута, положите 6 улик в «Вестибюль»."
     },
     {
       "id": "jerome_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Office because Jerome Davids’s profile is not crossed off."
+      "text": "Поскольку Джером Дэвис не вычеркнут, положите 6 улик в «Кабинет»."
     },
     {
       "id": "valentino_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Billiards Room because Valentino Rivas’s profile is not crossed off."
+      "text": "Поскольку Валентино Ривас не вычеркнут, положите 6 улик в «Бильярдную»."
     },
     {
       "id": "penny_clues",
       "bullet_type": "small",
-      "text": "Place 6 clues on the Balcony because Penny White’s profile is not crossed off."
+      "text": "Поскольку Пенни Уайт не вычеркнута, положите 6 улик на «Балкон»."
     },
     {
       "id": "remove_pieces_of_evidence",
-      "text": "As evenly as possible, remove a total number of clues from the above locations equal to the number of <i>pieces of evidence that were left behind</i> in your Campaign Log."
+      "text": "Как можно равномернее удалите из указанных локаций столько улик, сколько <i>было оставлено вещественных доказательств.</i>"
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "replacing_locations",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
-      "text": "Throughout this scenario, you may be instructed to swap set-aside locations with existing ones. When a location is swapped with one that is already in play, it takes its place. All tokens, attachments, investigators, enemies, and other cards at the former location are considered to now be at the new location (attached cards remain attached, for example). No game element is considered to have moved during such a swap."
+      "title": "Замена локаций",
+      "text": "В этом сценарии вы можете получить указание заменить локацию в игре на одну из отложенных. Когда происходит замена локаций, новая локация занимает место прежней. Все жетоны, прикреплённые карты, сыщики, враги и прочие карты, которые находились в старой локации, теперь находятся в новой (например, прикреп­лённые карты остаются прикреплёнными). При замене локаций считается, что ни один из игровых элементов не переместился."
     },
     {
       "id": "$play_scenario",
@@ -37322,7 +37330,7 @@
                 }
               ]
             },
-            "text": "Scenario Interlude: A Record of Those Lost",
+            "text": "Сюжетная интерлюдия: Сведения о пропавших",
             "steps": [
               "a_record_of_those_lost",
               "check_gavriella_fate",
@@ -37345,7 +37353,7 @@
     },
     {
       "id": "a_record_of_those_lost",
-      "title": "Interlude 1: A Record of Those Lost",
+      "title": "Интерлюдия I: Сведения о пропавших",
       "effects": [
         {
           "type": "campaign_log",
@@ -37431,7 +37439,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Entry Hall?",
+            "text": "В «Вестибюле» не осталось улик?",
             "steps": [
               "gavriella_fate",
               "on_gavriellas_trail"
@@ -37443,7 +37451,7 @@
     {
       "id": "gavriella_fate",
       "type": "story",
-      "text": "The entry hall to the manor is beautifully decorated, but you find it odd that the grand staircase’s wooden balustrade has been recently repaired and, by the looks of it, hastily so. While nobody is looking, you follow the handrail up and down the stairs until you spot what you are looking for: several splinters of wood, perhaps dislodged by a bullet. You ascend the staircase once more and position yourself where one would need to be standing in order to fire such a shot. After a moment of observation, a faint glimmer near one of the decorative ferns on the second floor catches your eye. There, you find proof: a bullet casing from a .45 handgun. A gun was indeed fired in the entry hall of the manor—but if that is true, how did nobody hear the shots?"
+      "text": "Убранство вестибюля безупречно, но вам кажется странным, что деревянная балюстрада парадной лестницы выглядит так, будто её недавно отремонтировали, и, видимо, наспех. Дождавшись удобного момента, вы осматриваете перила снизу доверху, пока не находите то, что искали: несколько щепок, возможно выбитых пулей. Вы снова поднимаетесь по лестнице и находите место, откуда можно было бы сделать такой выстрел. Внимательно оглядевшись, вы замечаете, как что-то слабо блестит возле одного из декоративных папоротников на втором этаже. Там вы находите доказательство: гильзу от пистолетной пули 45-го калибра. В вестибюле действительно стреляли из пистолета, но раз так, то почему никто не слышал выстрелов?"
     },
     {
       "id": "on_gavriellas_trail",
@@ -37453,7 +37461,7 @@
           "type": "campaign_log",
           "section": "05046",
           "id": "on_gavriellas_trail",
-          "text": "the investigators are on Gavriella’s trail."
+          "text": "сыщики напали на след Гавриэлы."
         }
       ]
     },
@@ -37465,7 +37473,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Office?",
+            "text": "В «Кабинете» не осталось улик?",
             "steps": [
               "jerome_fate",
               "on_jeromes_trail"
@@ -37477,7 +37485,7 @@
     {
       "id": "jerome_fate",
       "type": "story",
-      "text": "Josef Meiger’s personal office is pretty tidy for somebody whose personal secretary just went missing. Perhaps he’s just a fastidious person...or perhaps he’s been scrubbing evidence of some wrongdoing. You find nothing of note in any of Josef’s files, but after some perusing, you realize there is one place you haven’t checked: the trash. Rooting through the garbage bin yields fruit. Near the bottom is a small pocket journal belonging to Jerome Davids, probably tossed there carelessly by the cleaning staff. You turn to the last page. There, Jerome had recorded a list of names, perhaps transcribed from Josef ’s records. You don’t know what it means yet, but it must be important."
+      "text": "Кабинет Джозефа выглядит весьма прибранным, несмотря на то, что его личный помощник недавно пропал. Возможно, Майгер крайне педантичен — или же пытался скрыть следы каких-то злодеяний. Изучив бумаги Джозефа, вы не находите в них ничего примечательного, но потом понимаете, что забыли заглянуть кое-куда — в мусорную корзину. Копание в мусоре приносит плоды. Почти на самом дне вы находите записную книжку Джерома Дэвидса — видимо, её бросили сюда при уборке. На последней странице рукой Джерома записан ряд имён, возможно скопированный из бумаг Джозефа. Вы не знаете, что они значат, но кажется, что-то важное."
     },
     {
       "id": "on_jeromes_trail",
@@ -37487,7 +37495,7 @@
           "type": "campaign_log",
           "section": "05047",
           "id": "on_jeromes_trail",
-          "text": "the investigators are on Jerome’s trail."
+          "text": "сыщики напали на след Джерома."
         }
       ]
     },
@@ -37499,7 +37507,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Balcony?",
+            "text": "На «Балконе» не осталось улик?",
             "steps": [
               "penny_fate",
               "on_pennys_trail"
@@ -37511,7 +37519,7 @@
     {
       "id": "penny_fate",
       "type": "story",
-      "text": "The balcony outside Josef Meiger’s bedroom overlooks the rainy streets and somber spires of French Hill. According to eyewitnesses, Penny was last seen entering Josef ’s bedroom, presumably to tidy it up, or perhaps to look for one of his personal belongings. The cigarette butt on the floor of the balcony tells a different story. Penny came here for a break, and judging from how busy the rest of the staff is, it was probably a much-needed one. If she had been in any danger, could she have climbed or jumped down from the balcony? You peer over the edge. It’s possible, but unlikely. A fall from here could break a leg, or worse. She likely would have retreated back into the manor, where she could have called for help...only, nobody saw her exit from the bedroom. Something doesn’t add up. You tuck the cigarette butt into your coat pocket, hoping it’s actually a lead and not a wild goose chase."
+      "text": "С балкона спальни Джозефа Майгера открывается вид на дождливые улицы и мрачные шпили Френч-Хилла. По словам очевидцев, в последний раз Пенни видели входящей в спальню Джозефа — чтобы прибраться там или, может быть, за какими-то его вещами. Окурок на полу балкона рассказывает другую историю. Пенни пришла сюда передохнуть, и, судя по загруженности остального персонала, перерыв действительно был ей нужен. Будь она в опасности, могла ли она слезть или спрыгнуть с балкона? Вы смотрите вниз. Маловероятно. Если упасть с такой высоты, можно сломать ногу, а то и похуже. Скорее всего, она вернулась бы обратно в дом, где смогла бы позвать на помощь… вот только никто не видел, чтобы она выходила из спальни. Что-то не сходится. Вы прячете окурок в карман пальто, надеясь, что это действительно улика, а не пустая трата времени."
     },
     {
       "id": "on_pennys_trail",
@@ -37521,7 +37529,7 @@
           "type": "campaign_log",
           "section": "05049",
           "id": "on_pennys_trail",
-          "text": "the investigators are on Penny's trail."
+          "text": "сыщики напали на след Пенни."
         }
       ]
     },
@@ -37533,7 +37541,7 @@
         "choices": [
           {
             "id": "no_clues",
-            "text": "Are there no clues on the Billiards Room?",
+            "text": "В «Бильярдной» не осталось улик?",
             "steps": [
               "valentino_fate",
               "on_valentinos_trail"
@@ -37545,7 +37553,7 @@
     {
       "id": "valentino_fate",
       "type": "story",
-      "text": "Tracing Valentino’s steps isn’t difficult. As the guest of honor (and life of the party, from what you hear) there was always a crowd around him. This makes the story that he “vanished when they weren’t looking” all the more unbelievable. In the billiards room, where Valentino was last seen, you corner Adam Gensler, the man he was playing billiards with just before his disappearance. “Look, I already told the cops and the reporters what I saw,” he explains, fidgeting and tapping his toes repeatedly. “Tino and I were playing billiards, I looked away, next thing I know he’s gone,” he insists angrily, returning to his billiards game. “Now where is that damned one ball?” he mutters. It might be nothing, but it looks like Valentino wasn’t the only thing to go missing that night."
+      "text": "Восстановить действия Валентино несложно. Как почётный гость (и, по словам свидетелей, душа вечеринки), он всегда был окружён толпой. Это делает историю о том, что он «исчез, пока никто не видел», весьма неубедительной. В бильярдной, где мистера Риваса видели в последний раз, вы расспрашиваете Адама Генслера, с которым Валентино играл в бильярд прямо перед исчезновением. «Послушайте, я уже рассказал копам и репортерам всё, что видел, — говорит Адам, нервно переминаясь с ноги на ногу. — Мы с Тино играли, я отвернулся, и он исчез, — раздражённо повторяет он и возвращается к бильярдному столу, негромко бормоча: — Где же этот проклятый шар-единица?» Может, это ничего не значит, но, похоже, той ночью пропал не только Валентино."
     },
     {
       "id": "on_valentinos_trail",
@@ -37555,18 +37563,18 @@
           "type": "campaign_log",
           "section": "05048",
           "id": "on_valentinos_trail",
-          "text": "the investigators are on Valentino's trail."
+          "text": "сыщики напали на след Валентино."
         }
       ]
     },
     {
       "id": "advance_act_1b",
-      "text": "Remove all clues from each location in play, and advance to act 1b."
+      "text": "Удалите все оставшиеся улики с локаций в игре и продвиньтесь к сцене 1b."
     },
     {
       "id": "check_final_act",
       "type": "input",
-      "text": "What act was in play when the scenario ended?",
+      "text": "В какой сцене завершилась партия?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -37616,7 +37624,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "investigators_escaped_the_spectral_realm",
-          "text": "the investigators escaped the spectral realm."
+          "text": "сыщики сбежали из потустороннего мира."
         }
       ]
     },
@@ -37627,7 +37635,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "learned_nothing_of_the_lodges_schemes",
-          "text": "the investigators learned nothing of the Lodge’s schemes."
+          "text": "сыщики ничего не узнали о планах Ложи."
         }
       ]
     },
@@ -37638,7 +37646,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "never_seen_again",
-          "text": "the investigators are never seen or heard from again."
+          "text": "сыщики бесследно исчезли."
         }
       ]
     },
@@ -37659,7 +37667,7 @@
     },
     {
       "id": "kill_not_resigned",
-      "text": "Each investigator who has not resigned is <b>killed</b>. If there are not enough investigators in the pool of available investigators to continue the campaign, the campaign is over, and the players lose.",
+      "text": "Каждый сыщик, не совершивший побег, <b>убит</b>. Если для продолжения кампании сыщиков недостаточно, кампания завершается поражением игроков. Каждый игрок, чей сыщик был убит, должен выбрать нового сыщика из доступных. ",
       "effects": [
         {
           "type": "trauma",
@@ -37678,7 +37686,7 @@
     },
     {
       "id": "skip_price_of_progress",
-      "text": "Skip <b>Interlude II: The Price of Progress</b>.",
+      "text": "Пропустите <b>интерлюдию II «Цена прогресса»</b>.",
       "effects": [
         {
           "type": "campaign_data",
@@ -37713,7 +37721,7 @@
     {
       "id": "being_hunted",
       "type": "story",
-      "text": "You are startled from your reverie by the sensation of something crawling up your chest, an icy hand that clasps around your throat. It grips until your breath is trapped and your windpipe starts to crack. Only there is nothing there—just a chilly draft entering the room through the open window. The wind shrill, whistling wind rattles your window frame, penetrating the safety of your home. It almost sounds like the dissonant notes of a dreadful flute: a mindless, haunting music that fills you with inexplicable terror. You rush to the window and slam it shut, hands trembling. Still, the thin, discordant notes echo around you. <i>This can’t be real</i>, you think. <i>Not here, not now</i>. But denial provides no asylum.\nThe cold creeps its way up your back once again. A thin, grey mist pours into the room, seeping beneath your front door and through the cracks around your window. It crawls along the ground and coils slowly around your ankles, sending shivers up your body. You run into your bedroom, slam the door, and lock it. A few seconds of respite are all you receive before the invader resumes its assault. Over and over, a heavy force slams against the door, shaking the entire room. You press against the door, trying to hold it shut. With each pounding crash, dark mist seeps through cracks appearing in the wood. With a final crash, the door shatters. You are hurled back, landing not on the floor but in a cloud of mist, gripped by a hundred spectral arms that cling into your flesh and tear you limb from limb.\nNO!—That can’t be right. You are here, reading this very text. A wave of relief washes over you as you realize it is all in your head. Even so, the words compel your mind to torment you with visions of a macabre death. You find yourself glancing at your window, searching for dark mist that is not there. What if the text is trying to tell you something? Maybe—no, that’s impossible.\n“Real or imagined, your fate approaches all the same.”"
+      "text": "Вы резко просыпаетесь от ощущения, словно что-­то ползёт по вашей груди и ледяная рука хватает вас за горло. Она сжимается, перекрывая вам дыхание и круша трахею. Но ничего этого нет — только холодный сквозняк из от­крытого окна. Ветер с завываниями трясёт оконную раму, втор­гаясь в безопасность вашего дома. Он звучит почти как нестройные ноты жуткой флейты: безумная, неотвязная музыка, наполняющая вас необъяснимым ужасом. Вы бросаетесь к окну и захлопываете его дрожащими руками. Но нестройные высокие ноты не смолкают. «Это не может быть правдой, — думаете вы. — Не здесь, не сейчас». Но отрицание не приносит облегчения.\nХолод вновь поднимается по вашей спине. Едва заметная серая мгла заполняет комнату, просачиваясь под входной дверью и через щели в окне. Она ползёт по полу, свиваясь у ваших ног и заставляя всё ваше тело дрожать. \nВы бежите в спальню, хлопаете дверью и запираете её. \nЭто даёт вам всего несколько секунд передышки — а потом вторжение продолжается. Снова и снова тяжёлая сила обрушивается на дверь, сотрясая всю комнату. Вы прижимаетесь к двери, пытаясь удержать её. С каждым ударом тёмная мгла просачивается в трещины, появляющиеся в дереве. Последний удар — и дверь разлетается в щепки. Вы летите назад, но падаете не на пол, а на облако мглы, и сотни призрачных рук хватают вас, вонзаясь в вашу плоть и разрывая её на кусочки.\nНет! Такого не может быть. Вы здесь, читаете этот самый текст. С превеликим облегчением вы осознаёте, что всё это было только у вас в голове. Тем не менее эти слова заставляют ваш разум мучить вас видениями ужасной смерти. Вы понимаете, что вглядываетесь в окно в поисках тёмной мглы, которой там нет. Что, если этот текст пытается вам что-то сказать? Может быть… — но нет, это невозможно. \n«Настоящая или воображаемая, ваша судьба неумолимо приближается»."
     }
   ],
   "resolutions": [
@@ -37738,7 +37746,7 @@
         "physical",
         "mental"
       ],
-      "text": "As soon as you emerge onto the patio, you are surrounded by grim men in trench coats. Several of them reach into their coat pockets: a warning not to do anything too hasty. Before any threats can be fulfilled, the silence is broken by an icy voice. “Now gentlemen, there is no need for that.” The men withdraw to reveal an elderly man you recognize as Carl Sanford, the president of the Silver Twilight Lodge. Despite the dangerous situation, his expression is almost too casual. The complete lack of fear in his posture and his actions suggests a confidence backed by substantial power. His bodyguards take several steps back, allowing you to speak with Mr. Sanford in private.",
+      "text": "Как только вы выходите во двор, вас об­ступают угрюмые мужчины в плащах. Несколько из них угрожающе опускают руки в карманы пальто: вам лучше не делать резких движений. Но прежде чем угрозы успевают претвориться в жизнь, тишину нарушает ледяной голос: «Право, господа, в этом нет нужды». Люди в плащах отступают, и из-за них появляется пожилой мужчина, в котором вы узнаёте Карла Сэнфорда, президента Ложи Серебряных Сумерек. Несмотря на драматизм ситуации, он сохраняет почти невозмутимое выражение лица. В его позе и движениях нет и намёка на страх — только уверенность, подкреплённая огромной властью. Телохранители отходят на несколько шагов, позволяя вам побеседовать с мистером Сэнфордом наедине.",
       "steps": [
         "investigators_escaped_the_spectral_realm",
         "earn_xp"
@@ -37747,7 +37755,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "You head out of the manor and are embraced by the brisk evening air. Your investigation has left you exhausted and strangely paranoid. Something about that event felt peculiar to you, though you aren’t sure why. Although the guests seemed oblivious, you noticed that the staff was sweaty and jittery, and the Lodge members seemed tense as well. More than once, you noticed their gaze drawn to you, watching your every move. If you didn’t know any better, you’d think the Silver Twilight Lodge was having you tailed for some reason. Regardless, you weren’t able to find much information about the four disappearances, and you doubt you ever will. Perhaps it was nothing, after all.",
+      "text": "Вы выходите из особняка на свежий вечерний воздух. После расследования вы утомлены и болезненно подозрительны. Что-то в этом вечере показалось вам необычным, но вы не знаете почему. Гости вели себя как ни в чём не бывало, зато прислуга казалась нервной и напряжённой, да и члены Ложи были на взводе. Вы не раз ловили на себе их взгляды, наблюдавшие за каждым вашим шагом. В иной ситуации вы бы решили, что Ложа Серебряных \nСумерек зачем-то за вами следит. Как бы там ни было, вы не смогли узнать ничего интересного о четвёрке пропавших и сомневаетесь, что сможете. Возможно, в этих исчезновениях действительно нет ничего особенного.",
       "steps": [
         "learned_nothing_of_the_lodges_schemes",
         "earn_xp",
@@ -37759,7 +37767,7 @@
     {
       "id": "R3",
       "title": "Исход 3",
-      "text": "You flee toward the manor’s entry hall, but the wall of spectral mist still blocks your way. Emerging from the mist are several ghostly faces and arms, writhing and screaming in torment. You turn and are confronted by the empty visage of the hooded Watcher. Before you even realize your doom, the creature’s ethereal body is swirling and swooping through the air as though composed of mist itself. The creature reconstitutes before you, and its charred hand grips your throat, holding you aloft with tremendous strength. You kick and dig your nails into the creature’s hand, struggling with the ferocity of a cornered animal, but it is no use. The last thing you see is the red glare of the thing’s eyes as it drills into your mind.",
+      "text": "Вы бежите в вестибюль, но стена потусторонней мглы всё ещё преграждает путь. Из неё вылезают призрачные лица и руки, вопящие и корчащиеся в муках. Обернувшись, вы видите пустое лицо Стража под капюшоном. Прежде чем вы осознаёте грозящую вам участь, бесплотная фигура расплывается и летит на вас, как будто сама состоит из этой мглы. Существо снова материализуется перед вами, его обугленная рука хватает вас за горло и поднимает в воздух с нечеловеческой силой. Со свирепостью загнанного в угол животного вы бьёте его ногами, впиваетесь ногтями ему в руку, но ничего не помогает. Последнее, что вы видите, — красный блеск глаз твари, проникающей в ваш разум.",
       "steps": [
         "never_seen_again",
         "earn_xp",
@@ -37842,7 +37850,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "the_cosmos",
@@ -38012,7 +38020,8 @@
           "section": "campaign_notes",
           "id": "lead_investigator_joins_pipers",
           "cards": "$lead_investigator",
-          "text": "#name# joins the pipers of Azathoth."
+          "masculine_text": "#name# joins the pipers of Azathoth.",
+          "feminine_text": "#name# joins the pipers of Azathoth."
         }
       ]
     },
@@ -38257,8 +38266,8 @@
 },
 {
   "id": "disappearance_at_the_twilight_estate",
-  "scenario_name": "Prologue: Disappearance at the Twilight Estate",
-  "full_name": "Prologue: Disappearance at the Twilight Estate",
+  "scenario_name": "Пролог: Исчезновение в поместье Сумерек",
+  "full_name": "Пролог: Исчезновение в поместье Сумерек",
   "type": "interlude",
   "setup": [
     "pre_intro",
@@ -38286,15 +38295,15 @@
     {
       "id": "pre_intro",
       "type": "story",
-      "text": "Sunday, November 22nd, 1925. Arkham, Massachusetts.\nThough All Hallows’ Eve is nearly a month past, a grim melancholy lingers throughout the town. Each morning, a thick fog permeates the streets. Nights are beginning to grow longer, and if you ask around town, you’ll hear people swear that it’s getting darker, too. But despite the gloomy mood, progress continues in the sleepy town of Arkham. The election of Nathaniel Rhodes to the United States Senate has upstanding members of the community feeling optimistic about the town’s future. And tonight, at his well-appointed estate in French Hill, a man named Josef Meiger hosts the Silver Twilight Lodge’s charity gala, an annual members-only event that will turn deadly for several attendees…"
+      "text": "22 ноября 1925 года, воскресенье. Аркхэм, штат Массачусетс.\nПрошёл уже месяц после кануна Дня всех Святых, но город всё ещё охвачен мрачной меланхолией. Каждое утро улицы окутывает густой туман. Ночи становятся не только длиннее, но и темнее — многие горожане готовы в этом поклясться. Но несмотря на дух уныния, жизнь в сонном Аркхэме идёт своим чередом. Респектабельные жители города воодушевлены избранием Натаниэля Роудса в Сенат США и с оптимизмом смотрят в будущее Аркхэма. А сегодня вечером человек по имени Джозеф Майгер устраивает в своём богатом особняке во Френч-Хилле благотворительный вечер Ложи Серебряных Сумерек — ежегодное закрытое мероприятие, которое на этот раз будет стоить жизни нескольким участникам…"
     },
     {
       "id": "choose_neutral_investigators",
-      "text": "Each player must choose one of the following neutral investigators to control for the duration of this prologue: Gavriella Mizrah, Jerome Davids, Penny White, or Valentino Rivas. Throughout this prologue, you will play through this character’s story and make choices that will determine their fate. Your choice of investigator has no direct effect on your standard investigator deck, though the results of the prologue will influence the story."
+      "text": "Каждый игрок должен выбрать, за кого из четырёх нейтральных сыщиков сыграть пролог: Гавриэлу Мизру, Джерома Дэвидса, Пенни Уайт или Валентино Риваса. В ходе пролога вы разыграете историю этого персонажа и примете решения, которые определят его судьбу. Выбор персонажа для пролога никак не повлияет на вашу обычную колоду сыщика, однако от результатов пролога зависит дальнейшее развитие сюжета."
     },
     {
       "id": "no_decks",
-      "text": "Do not assemble an investigator deck for any neutral investigator. Instead, gather the cards listed on its reverse side—these cards will be used in that investigator’s unique setup. (All listed cards are level 0 unless otherwise noted.)"
+      "text": "Не составляйте колоды нейтральных сыщиков. Вместо этого соберите карты, указанные на оборотной стороне карт этих сыщиков. Собранные карты понадобятся при подготовке этих сыщиков к игре. (Все указанные карты имеют уровень 0, если не указано иное.)"
     },
     {
       "id": "check_unplayed_investigators",
@@ -38304,7 +38313,7 @@
         "choices": [
           {
             "id": "fewer_than_4_players",
-            "text": "Are there fewer than 4 players in this campaign?",
+            "text": "В этой кампании участвует меньше 4 игроков?",
             "steps": [
               "record_missing_investigators"
             ]
@@ -38314,7 +38323,7 @@
     },
     {
       "id": "record_missing_investigators",
-      "text": "In the “Missing Persons” section of your Campaign Log, cross off the profiles of any of the neutral investigators who were not chosen.",
+      "text": "В графе «Пропавшие без вести» журнала кампании вычеркните всех нейтральных сыщиков, которых никто не выбрал.",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -38331,7 +38340,7 @@
         "choices": [
           {
             "id": "not_chosen",
-            "text": "Not Chosen",
+            "text": "Не выбрали",
             "effects": [
               {
                 "type": "campaign_log_cards",
@@ -38346,11 +38355,11 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "“Ladies and gentlemen,” Josef Meiger announces, raising a glass of champagne in a toast. A hush descends on the room, until only the crackle of the fireplace and whispers of gossip can be heard. “Allow me to welcome you all into my home for this year’s charity gala. We have some very upstanding citizens here tonight, and I thank all of you for your hard work and generosity.” Cheers and murmurs of agreement fill the room. Many of the guests raise their glasses to Valentino, one of the most esteemed members of the Lodge this year, who sits at the Guest of Honor table, which is nearest to the fireplace.\nJosef ’s assistant, Jerome, blends into the wall behind Josef, discreetly checking his pocket watch. In another corner of the room, the head housekeeper, Penny, walks from table to table, filling empty glasses and collecting dirty salad plates. “Each of you has done great deeds in the name of the Silver Twilight Lodge and our historic city,” Josef continues. “Next year, we will continue to shoulder this burden and do what must be done for the sake of progress.” Jerome steps forward quietly, interrupting Josef ’s speech with the unassuming confidence that comes from years of trusted service. He taps Josef lightly on his shoulder and shows him the time. “I’m afraid I am already out of time. Thank you all very much for attending,” Josef concludes, bowing. Polite applause rises from the audience, and Josef walks briskly toward the parlor, followed closely by his assistant. Two servants collect coats as latecomers trickle into the manor, and Gavriella—Josef ’s head of security—watches over the entrance with hard eyes and a clenched jaw. “Has Mr. Sanford arrived?” Josef asks curtly, tapping his polished leather shoe on the floor.\nI’m afraid not,” Jerome replies, flipping through the last pages of the estate’s guest book. “But he should be here any minute, Mr. Meiger.”\n“Good. I want there to be no problems whatsoever when he arrives; am I understood?” Josef calls out to Gavriella: “Make sure he is well protected.” Gavriella nods, patting the handle of her .45 in her shoulder holster. Josef turns his attention back to his assistant. “And have Penny make sure the main course is kept good and hot while we wait for Mr. Sanford’s arrival. Not a single slice is to be served without his presence.”\n“Not even for Mr. Rivas, sir?” Jerome asks, glancing at Josef over the rim of his thick glasses. Josef pauses for a moment, considering.\n“Pour Mr. Rivas another glass of champagne, and I am sure he will not complain. Also, I’m still waiting on those accounts I asked you about earlier today. Don’t forget,” Josef says, clapping his assistant on the shoulder before walking back into the banquet hall. Jerome nods obediently and heads upstairs.\nSoon after, the dark mist would appear, and nothing would be the same."
+      "text": "«Дамы и господа, — объявляет Джозеф Майгер, поднимая бокал. Постепенно шум стихает, и остаётся слышен лишь треск камина да шёпот сплетен. — Позвольте приветствовать вас в моём доме на очередном ежегодном благотворительном вечере. Сегодня здесь присутствуют очень уважаемые горожане. Благодарю вас всех за ваш упорный труд и щедрость». Одобрительный гул заполняет комнату. Многие гости поднимают бокалы за Валентино, одного из самых высокочтимых членов Ложи в этом году, который сегодня занимает место почётного гостя, ближе всех к камину. \nДжером, помощник Джозефа, сливается со стеной, поглядывая на карманные часы. В другом углу комнаты главная экономка Пенни ходит между столами, наполняя пустые бокалы и собирая грязные тарелки. «Каждый из вас совершил великие дела во имя Ложи Серебряных Сумерек и нашего древнего города, — продолжает Джозеф. — В следующем году мы продолжим нести это бремя и делать, что должно, на благо прогресса». Джером бесшумно шагает вперёд, прерывая речь с той непринуждённой уверенностью, что возникает за годы безупречной службы. Он слегка касается плеча Джозефа и показывает ему часы. «Но боюсь, моё время вышло. Большое спасибо за то, что пришли», — Джозеф завершает речь и кланяется. Под вежливые аплодисменты хозяин и его помощник быстрыми шагами направляются в сторону вестибюля. Пара слуг принимают пальто у запоздалых гостей, а Гавриэла, начальница охраны Джозефа, крепко стиснув зубы, внимательно наблюдает за входной дверью. «Мистер Сэнфорд прибыл?» — кратко осведомляется Джозеф, постукивая по паркету блестящей кожаной туфлей.\n«Боюсь, что нет, — отвечает Джером, просматривая последние страницы гостевой книги особняка. — Но должен быть здесь с минуты на минуту, мистер Майгер».\n«Хорошо. Когда он появится, не должно возникнуть никаких проблем. Понятно? — обращается Джозеф к Гавриэле. — Убедитесь, что он под надёжной охраной». Гавриэла кивает, похлопывая по плечевой кобуре с пистолетом 45-го калибра. Джозеф снова обращается к помощнику: «И пусть Пенни проследит, чтобы горячее не остыло, пока мы ждём мистера Сэнфорда. Без него никому не подавать ни единой порции».\n«Даже мистеру Ривасу, сэр?» — уточняет Джером, глядя на Джозефа поверх очков с толстыми стёклами. Джозеф задумывается.\n«Налейте мистеру Ривасу ещё бокал. Уверен, он не будет жаловаться. Кстати, я всё ещё жду отчёты, о которых говорил сегодня. Не забудь», — Джозеф хлопает помощника по плечу и возвращается в банкетный зал. Джером покорно кивает и идёт наверх.\nВскоре придёт тёмная мгла, и всё изменится."
     },
     {
       "id": "read_intros",
-      "text": "One at a time, each player must proceed to the intro for their chosen character and read that section aloud."
+      "text": "Каждый игрок по очереди должен прочесть вступление своего персонажа."
     },
     {
       "id": "check_gavriella_intro",
@@ -38372,8 +38381,8 @@
     {
       "id": "gavriella_intro",
       "type": "story",
-      "title": "Gavriella Intro",
-      "text": "You stand guard as instructed, waiting for Mr. Sanford to appear. By now, the remaining guests have filed into the banquet hall, and you can hear the sounds of merriment and drinking coming from beyond the wooden door behind you. You pay them no mind, remaining vigilant. Years of fighting and discipline have taught you to be ready for anything, even at a harmless banquet like this. Just as you begin to ponder whether your talents are being wasted under Mr. Meiger’s employ, a dark mist invades the parlor through the front door and the window frames, flooding the room. At first, you believe it to be only the evening fog seeping through the manor’s entryway, until you begin to notice that everything the mist touches seems to have decayed as though aged hundreds of years.\nYou step back cautiously, keeping a hand on the grip of your weapon just in case. Never in all your years have you seen something like this. An unnatural chill spreads throughout the room, and shivers run up your spine. As the ashen mist finishes pouring in, it coalesces into a singular form: a humanoid figure wrapped in shadows. It raises its hand and points at you with a charred, blackened finger.\nYou unholster your firearm and point it at the creature, allowing your training to take over. “Don’t come any closer!” you shout. The thing watching you from the entrance is unfazed. Its ethereal form begins to glide toward you, dark mist crawling over the carpet in its wake. “I warned you,” you growl, and a thunderous shot echoes through the parlor as you squeeze the trigger. The bullet rips a hole in the figure’s head like a rush of air billowing through a column of smoke. The mist stitches itself together, and the thing continues to drift your way, reaching out menacingly.\nNothing could have prepared you for combat with such an unnatural enemy. Faced with no other option, you turn and flee up the staircase nearby, pausing to squeeze off several more shots at the top. The bullets that make their target simply pass harmlessly through the ghostly figure, striking the door behind it. A few stray shots shatter a column of the staircase’s wooden balustrade."
+      "title": "Вступление Гавриэлы",
+      "text": "Как и приказано, вы стоите на страже в ожидании мистера Сэнфорда. Остальные гости уже прошли в банкетный зал, и из-за деревянной двери позади вас слышны звуки веселья и кутежа. Вы не обращаете на них внимания, сохраняя бдительность. Годы сражений и армейской дисциплины научили вас быть готовой ко всему — даже на таком безобидном банкете, как этот. Как только вы задумываетесь, не попусту ли растрачиваете свои таланты на службе у мистера Майгера, в вестибюль через парадный вход и окна проникает тёмная мгла, затопляя комнату. Поначалу вы думаете, что это обычный вечерний туман просачивается сквозь двери особняка, но потом замечаете, что всё, к чему прикасается мгла, как будто старится на сотни лет.\nВы осторожно отступаете, на всякий случай положив руку на пистолет. Никогда в своей жизни вы не видели ничего подобного. Неестественный холод расползается по комнате, и у вас по спине пробегают мурашки. Полностью проникнув внутрь, пепельная мгла собирается в человекоподобную фигуру, окутанную тенями. Она поднимает руку и указывает на вас обугленным, почерневшим пальцем.\nГоды тренировки берут верх. Выхватив пистолет из кобуры, вы \nнаправляете его на существо с криком: «Ни шагу вперёд!» Тварь, наблюдающая за вами от входа, невозмутима. Бесплотный силуэт скользит вам навстречу, а позади по ковру расходятся волны тёмной мглы. «Я предупреждала», — рычите вы, и грохот выстрела разносится по залу, когда вы жмёте на спуск. Пуля прорывает дыру в голове фигуры, словно струя воздуха, пронзающая столб дыма. Края дыры смыкаются, и фигура продолжает плыть к вам, зловеще вытянув руку.\nНичто не могло подготовить вас к бою с таким противоестественным врагом. Вам остаётся только развернуться, добежать до верха лестницы и сделать оттуда ещё несколько выстрелов. Те пули, что попадают в цель, проходят сквозь призрачную фигуру и вонзаются в дверь за её спиной. Пара выстрелов разносит в щепки колонну лестничной балюстрады."
     },
     {
       "id": "check_jerome_intro",
@@ -38395,8 +38404,8 @@
     {
       "id": "jerome_intro",
       "type": "story",
-      "title": "Jerome Intro",
-      "text": "You carefully flip through the pages of Mr. Meiger’s ledger, looking for the accounts he inquired about. You have served Mr. Meiger faithfully for almost a decade, and he trusts you with sensitive information like this—a point of pride for you. While you are often curious about your employer’s business, you have never pried into his personal matters. Not until tonight, anyway.\nYou adjust your glasses and lean forward as you turn to the page regarding Mr. Meiger’s request. Some of the names on the list you recognize: Rivas, Gensler, Fairmont, Rhodes, Wick. But many are names you have never heard of before, let alone seen affiliated with Mr. Meiger’s work: Lindquist, Konstantinov, Magro, Atkinson, Lamar…Just how deep do Mr. Meiger’s connections go?\nStrange as that may seem, it is the list of names on the page afterward that raises your hackles. While it was clear that the names on the previous page are associates of Mr. Meiger’s, or at least prominent members of the Lodge, you can only assume that this next series of names is of people your employer is…targeting. For what, you cannot say.\nYou stand next to Josef ’s desk and record the list in your pocket journal carefully, making sure to keep the names in the exact order they appear in Mr. Meiger’s ledger. You hope that your suspicion is nothing more than the absurd imagination of an overworked secretary. Still, something about all of this has you concerned. That, and the sudden draft of frigid air that has somehow wafted into the room. Your gaze naturally drifts to the window, at which point you scream out in shock and lose your balance, stumbling backward into Mr. Meiger’s desk.\nPressed up against the office window is a host of screaming faces emerging from the mist, or perhaps composed of it. Their ghostly hands press against the glass, their eyes hollow and empty. Your reading glasses clatter to the ground and shatter under your heel as you scramble to the other side of the office. You don’t realize that you dropped your pocket journal in the chaos until it is too late."
+      "title": "Вступление Джерома",
+      "text": "Вы осторожно листаете конторскую книгу мистера Майгера в поисках сведений, о которых он спрашивал. Вы верно служите мистеру Майгеру уже почти десять лет, и, к вашей гордости, он доверяет вам конфиденциальную информацию вроде этой. Хоть вам и любопытны дела вашего работодателя, вы никогда не вторгались в его личную жизнь. По крайней мере, до этого вечера.\nНайдя страницу, касающуюся запроса мистера Майгера, вы поправляете очки и наклоняетесь поближе. Некоторые имена в списке вам знакомы: Ривас, Генслер, Фэрмонт, Роудс, Уик. Но многие имена вы никогда даже не слышали и уж точно не встречали по работе: Линдквист, Константинов, Магро, Аткинсон, Ламар… Как же широко простираются связи мистера Майгера?\nКак ни странно, но список имён на следующей странице заставляет волосы у вас на затылке встать дыбом. Вы понимаете, что до этого были перечислены партнёры мистера Майгера или по меньшей мере известные члены Ложи, но вот что до второго списка — вы можете только предполагать, что это люди, которых ваш наниматель… взял на прицел? Зачем — вам неизвестно.\nСтоя у рабочего стола Джозефа, вы аккуратно переписываете имена в свой блокнот в том же порядке, что и в конторской книге мистера Майгера. Вы надеетесь, что ваши подозрения — лишь буйная фантазия переутомленного секретаря. Однако что-то во всём этом вас беспокоит. А ещё — внезапная струя холодного воздуха, каким-то образом проникшая в комнату. Вы машинально бросаете взгляд на окно и тотчас вскрикиваете от неожиданности, наталкиваетесь спиной на стол мистера Майгера и теряете равновесие.\nВы видите, что снаружи к окну кабинета прижимается множество кричащих лиц, возникших из мглы или из неё и состоящих. Их глаза пусты, их призрачные руки давят на стекло. Ваши очки со стуком падают на пол и разбиваются у вас под каблуком, когда вы бросаетесь в дальний конец кабинета. Слишком поздно вы понимаете, что в панике выронили и свой блокнот."
     },
     {
       "id": "check_penny_intro",
@@ -38418,8 +38427,8 @@
     {
       "id": "penny_intro",
       "type": "story",
-      "title": "Penny Intro",
-      "text": "You sigh as the cool New England air embraces you. It has been a very stressful night: stressful enough that you’ve decided to sneak away from the clamor to grab a quick smoke before heading back to work. You rest your arms along the metal railing of the balcony, your fingers trembling as they hold your cigarette. The dreary gambrel rooftops and Victorian manors of French Hill span the view below you, the unlit windows hiding countless secrets.\nYou can’t remember a night in which your employer was as concerned with every little detail as he is tonight. He is normally so calm, so collected. There’s something special about tonight that has him on edge. Is it Mr. Sanford? A shudder crawls through you. For some reason, something about that man gives you the creeps. But Josef has interacted with Mr. Sanford many times before, so that cannot be the reason. What could it be that has Mr. Meiger so worried?\nYou are torn from your thoughts by the gathering of grey clouds overhead, swiftly blotting out the night sky. As the clouds grow ever closer, you begin to see shapes emerging from the vapor. You squint and lean over the railing for a better view. That is when you notice the true forms of the shapes in the mist: their screaming faces, their clawing hands, all writhing in torment and coming straight for you. You cry out in terror and back up against the wall as the mist envelops the building. A spectral shape emerges from the haze beyond the railing, dressed in bloodstained rags. It begs for rest in a croaking, gasping voice. Your only hope for escape is to retreat back into the manor and call for help..."
+      "title": "Вступление Пенни",
+      "text": "Вы выдыхаете, когда вас окутывает прохладный воздух Новой Англии. Вечер выдался напряжённым — достаточно напряжённым, чтобы вы решились сбежать от суматохи на небольшой перекур, прежде чем вернуться к работе. Облокотившись на металлические перила балкона, вы дрожащими пальцами держите сигарету. Вокруг вас простираются мрачные изломанные крыши и викторианские усадьбы Френч-Хилла, и нет числа тем секретам, что хранят их погашенные окна.\nВы не помните, чтобы ваш наниматель когда-нибудь был столь же озабочен каждой мелочью, как сегодня. Обычно он такой спокойный, такой собранный. Но сегодня вечером что-то заставляет его нервничать. Может быть, мистер Сэнфорд? По вашей спине пробегают мурашки. Почему-то этот человек вызывает у вас дрожь. Но Джозеф уже не раз имел дело с мистером Сэнфордом, так что причина не в нём. Что же беспокоит мистера Майгера?\nОт раздумий вас отвлекают серые облака, стремительно затягивающие ночное небо. Они опускаются, и в их клубах вы замечаете тени. Прищурившись, вы перегибаетесь через перила, чтобы разглядеть их получше. Теперь вы ясно видите во мгле фигуры: кричащие лица, когтистые руки, корчащиеся в муках силуэты, которые движутся прямо на вас. Мгла обволакивает здание, вы в ужасе вскрикиваете и вжимаетесь в стену. Из мглы за перилами появляется призрачная фигура в окровавленных лохмотьях. Хриплым задыхающимся голосом она молит об упокоении. Ваш единственный шанс на спасение — вернуться в особняк и позвать на помощь…"
     },
     {
       "id": "check_valentino_intro",
@@ -38441,8 +38450,8 @@
     {
       "id": "valentino_intro",
       "type": "story",
-      "title": "Valentino Intro",
-      "text": "“Are you going to break, or are you going to sit there admiring the cue ball all night?” you ask with a mocking smile. Your opponent sets the ivory ball back on the table with a sigh.\n“I can’t help myself around ivory. You know that, Tino,” Adam replies. You rarely see Adam Gensler except during Lodge functions, but you prefer his company to that of the stuffy business types who make up most of the Lodge these days. He makes his shot, the sudden clattering interrupting the din of conversation. “Your shot, Tino. And do try to avoid hitting the nine ball first. You’re always so overeager.” Adam chuckles as he moves to the other side of the table, making way for you.\n“That was one time, my friend, one time.” You roll your eyes. Truth be told, you’ve enjoyed coming to these events for the opportunity to give back to the community, not to hobnob with Arkham’s gentry. But hobnobbing has had its perks.\nYou lean over the table and clear your mind as you line up your shot. The room falls silent as you block out the clamor and the music, focusing all of your attention on the one ball and the corner pocket. You hold your breath and strike the cue ball. It clacks as it hits its target, and the one ball drops effortlessly into the corner pocket. “There, you see?”\nIt is only then that you realize the silence around you is not just in your mind. All of the light and warmth has been sucked out of the room. Adam is gone, along with everyone else who was present just moments before you took your shot. “Hello?” you call out. A dark mist coils about your ankles as you walk around the billiards table. “If this is a practical joke of some kind, it’s in awfully poor taste,” you remark. The only response is the deep growl that emerges from beneath the table. Morbid curiosity compels you to look underneath it, at which point a dark hound pounces onto your chest, savagely clawing at your torso. You react instinctively, pushing it off of your body as hard as you can. It lands on the billiards table, causing it to collapse under the creature’s weight. You slowly back up as the creature rises to its feet once again and jumps off the broken table, its hollow eyes gazing into your soul."
+      "title": "Вступление Валентино",
+      "text": "«Ты собираешься бить или так и будешь весь вечер любоваться шаром?» — насмешливо спрашиваете вы.\nВаш соперник вздыхает и возвращает бильярдный шар на стол.\n«Ты же знаешь о моей слабости к слоновой кости, Тино», — отве­чает Адам. Вы редко видитесь с Адамом Генслером за пределами Ложи, но предпочитаете его компанию тем чопорным дельцам, из которых нынешняя Ложа в основном состоит. Он совершает удар, и гул разговоров прерывается резким стуком шаров. «Твоя очередь, Тино. Смотри, не ударь девятку первой. Ты всегда такой нетерпеливый», — смеётся Адам и отходит на другую сторону стола, уступая вам место.\n«Это было лишь раз, друг мой, лишь раз». — Вы закатываете глаза. По правде сказать, вы посещаете такие мероприятия ради благотворительности, а не чтобы якшаться с аркхэмской аристократией. Но и у панибратства есть свои плюсы. \nСклонившись над столом, вы прицеливаетесь. Вы отгораживаете свой разум от шума и музыки, сосредоточившись на шаре-единице и угловой лузе, и всё вокруг затихает. Задержав дыхание, вы бьёте по белому шару. Он ударяет в цель, и шар номер один легко падает в угловую лузу. «Ну вот, видишь?»\nТолько теперь вы понимаете, что тишина наступила не только у вас в голове. Из комнаты словно вытянули весь свет и тепло. Адам куда-то пропал, как и все, кто был здесь за миг до вашего удара. «Эй! Кто-нибудь? — кричите вы. Тёмная мгла вьётся у ваших ног, когда вы обходите бильярдный стол. — Если это розыгрыш, то весьма низкопробный». В ответ из-под стола раздаётся гулкий рык. Из нездорового любопытства вы заглядываете туда, и тотчас на вас бросается похожая на собаку чёрная тварь, раздирая вам грудь когтями. Вы машинально отбрасываете её прочь, она падает на бильярдный стол, и тот ломается под её весом. Вы медленно отходите, а существо поднимается на ноги и спрыгивает со сломанного стола, смотря пустыми глазами прямо вам в душу."
     },
     {
       "id": "gather_encounter_sets",
@@ -38458,11 +38467,11 @@
         "the_watcher",
         "chilling_cold"
       ],
-      "subtext": "When gathering the <i>At Death’s Doorstep</i> encounter set, only gather the seven [[Spectral]] locations from that encounter set. Do not gather any of the other cards from that encounter set."
+      "subtext": "Из набора контактов «На пороге смерти» возьмите только семь [[потусторонних]] локаций. Не берите никакие другие карты из этого набора контактов."
     },
     {
       "id": "setup_locations",
-      "text": "Put the seven [[Spectral]] locations into play."
+      "text": "Введите в игру семь [[потусторонних]] локаций."
     },
     {
       "id": "location_layout",
@@ -38496,51 +38505,51 @@
     },
     {
       "id": "spectral_watcher",
-      "text": "Put The Spectral Watcher enemy into play in the Entry Hall."
+      "text": "Поместите «Призрачного Стража» в «Вестибюль»."
     },
     {
       "id": "setup_investigators",
-      "text": "Each player follows the setup instructions on the back of their investigator card."
+      "text": "Каждый игрок выполняет подготовку в соответствии с указаниями на обороте его карты сыщика."
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remaining encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "no_way_out",
       "type": "rule_reminder",
-      "title": "No Way Out",
-      "text": "There is no positive resolution for this scenario. Investigators should strive to last as long as they can and gather as many clues as they can before their inevitable demise. Note that while cards can still be added to the victory display during this scenario, experience and victory points will not be gathered for this scenario.\nSince these investigators do not have decks, ignore any instruction or effect that would cause them to draw cards or interact with player decks. Additionally, since these investigators do not have discard piles, <b>each player card that would be placed in their discard pile is removed from the game, instead.</b>\nGood luck. You’ll need it."
+      "title": "Выхода нет",
+      "text": "У этого сценария нет благоприятного исхода. Сыщики должны продержаться как можно дольше и собрать как можно больше улик, прежде чем их настигнет неминуемая кончина. Обратите внимание, что, хоть у вас и будет возможность помещать карты на победный счёт, по окончании этого сценария сыщики не получат ни победных очков, ни опыта.\nПоскольку у сыщиков нет своих колод, игнорируйте любые указания или эффекты, предписывающие взять карту или иным образом взаимодействовать с колодой сыщика. Кроме того, поскольку у сыщиков нет сброса, <b>любая карта игрока, которая должна уйти в сброс, вместо этого удаляется из игры</b>.\nУдачи. Она вам пригодится."
     },
     {
       "id": "no_experience",
-      "text": "No experience is earned for this prologue."
+      "text": "Сыщики не получают опыта после пролога."
     },
     {
       "id": "pieces_of_evidence",
-      "text": "In your Campaign Log, record <i>X pieces of evidence were left behind</i>. X is the total number of clues on Act 1a—“The Disappearance.”",
+      "text": "Запишите в журнал кампании, что <i>оставлено X вещественных доказательств</i>. X равен числу улик на сцене 1а «Исчезновение».",
       "type": "input",
       "input": {
         "type": "counter",
-        "text": "Clues on Act 1a:",
+        "text": "Число улик на Сцене 1а:",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "pieces_of_evidence",
             "operation": "set_input",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "Оставлено #X# вещественных доказательств."
           }
         ]
       }
     },
     {
       "id": "return_player_cards",
-      "text": "Return each of the player cards used in this scenario to the collection."
+      "text": "Верните в комплект все карты игроков, которые использовались в этом сценарии."
     },
     {
       "id": "choose_investigators",
-      "text": "Each player chooses an investigator from the standard pool of investigators and assembles their investigator deck, as usual.",
+      "text": "Каждый игрок выбирает себе сыщика из числа доступных и собирает его колоду, как обычно.",
       "type": "input",
       "input": {
         "type": "scenario_investigators"
@@ -38548,7 +38557,7 @@
     },
     {
       "id": "agenda_1_results",
-      "text": "As investigators are eliminated, record their fate here:",
+      "text": "Как только сыщик побеждён, запишите его участь здесь:",
       "type": "input",
       "input": {
         "type": "card_choice",
@@ -38565,54 +38574,66 @@
         "choices": [
           {
             "id": "not_chosen",
-            "text": "Not chosen",
+            "text": "Не выбрали",
+            "masculine_text": "Not chosen",
+            "feminine_text": "Not chosen",
             "effects": []
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "Taken by the Watcher",
+            "text": "Забрал Страж",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "text": "#name# was taken by the Watcher."
+                "masculine_text": "#name# was taken by the Watcher.",
+                "feminine_text": "#name# was taken by the Watcher."
               }
             ]
           },
           {
             "id": "claimed_by_specters",
-            "text": "Claimed by specters",
+            "text": "Унесли призраки",
+            "masculine_text": "Claimed by specters",
+            "feminine_text": "Claimed by specters",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "text": "#name# was claimed by specters."
+                "masculine_text": "#name# was claimed by specters.",
+                "feminine_text": "#name# was claimed by specters."
               }
             ]
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "Disappeared into the mist",
+            "text": "Исчезновение во мгле",
+            "masculine_text": "Disappeared into the mist",
+            "feminine_text": "Disappeared into the mist",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "text": "#name# disappeared into the mist."
+                "masculine_text": "#name# disappeared into the mist.",
+                "feminine_text": "#name# disappeared into the mist."
               }
             ]
           },
           {
             "id": "pulled_into_spectral_realm",
-            "text": "Pulled into the spectral realm",
+            "text": "Затянуло в потусторонний мир.",
+            "masculine_text": "Pulled into the spectral realm",
+            "feminine_text": "Pulled into the spectral realm",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "text": "#name# was pulled into the spectral realm."
+                "masculine_text": "#name# was pulled into the spectral realm.",
+                "feminine_text": "#name# was pulled into the spectral realm."
               }
             ]
           }
@@ -38645,13 +38666,13 @@
         "choices": [
           {
             "id": "being_hunted",
-            "text": "Are you being hunted?",
+            "text": "За вами охотятся?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "being_hunted",
-                "text": "you are being hunted."
+                "text": "за вами охотятся."
               }
             ]
           }
@@ -38675,13 +38696,13 @@
   "resolutions": [
     {
       "id": "no_resolution",
-      "title": "No resolution was reached, because each investigator was defeated",
+      "title": "Исход не достигнут, так как все сыщики побеждены",
       "investigator_status": [
         "eliminated",
         "physical",
         "mental"
       ],
-      "text": "“Mr. Sanford, thank you so much for coming. I know you are a busy man. Your presence at tonight’s meeting is very much appreciated.” Josef shakes Carl Sanford’s hand firmly as he speaks. Sanford merely nods. “I know you’ve only just arrived, but I have some...private matters to discuss with you, if that is all right,” Josef continues, his narrow eyes shifting back and forth between the men flanking Mr. Sanford.\n“Very well.” The elderly man nods to his two enforcers, who step aside to give him privacy. He cradles his hands behind his back, his stature impressive for his age. His discerning eyes fall on Josef. “What is the matter?”\nJosef leans closer. “It’s here, sir. It’s here in this very house.”\nThere is a quiet pause between the two men, and then Carl Sanford smiles.",
+      "text": "«Мистер Сэнфорд, премного благодарен вам за визит. Знаю, насколько вы занятой человек. Ваше присутствие на сегодняшней встрече — огромная честь для всех нас». — Джозеф трясёт руку Карла Сэнфорда в крепком рукопожатии. Сэнфорд кратко кивает. «Знаю, вы только приехали, но я бы хотел обсудить с вами… кое-какие частные вопросы, если позволите», — продолжает Джозеф, с прищуром поглядывая то на одного, то на другого человека по сторонам от мистера Сэнфорда. \n«Хорошо». — Пожилой мужчина кивает своим телохранителям, и они отходят, оставляя их наедине. Он складывает руки за спиной. Его выправка и осанка поразительны для столь почтенного возраста. Он переводит снисходительный взгляд на Джозефа. «В чём дело?»\nДжозеф наклоняется ближе. «Оно здесь, сэр. В этом самом доме».\nМужчины некоторое время молчат, а затем на лице Карла Сэнфорда появляется улыбка.",
       "steps": [
         "no_experience",
         "pieces_of_evidence",
@@ -39119,7 +39140,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "keys",
@@ -39534,7 +39555,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "choosing_a_random_location",
@@ -40661,8 +40682,8 @@
 {
   "id": "the_price_of_progress",
   "type": "interlude",
-  "scenario_name": "The Price of Progress",
-  "full_name": "Interlude II: The Price of Progress",
+  "scenario_name": "Цена прогресса",
+  "full_name": "Интерлюдия II: Цена прогресса",
   "setup": [
     "check_silver_twilight_investigator",
     "progress_3",
@@ -40697,37 +40718,37 @@
     },
     {
       "id": "is_silver_twilight",
-      "text": "Because at least one investigator has the [[Silver Twilight]] trait:"
+      "text": "Поскольку хотя бы у одного из сыщиков есть черта [[Серебряные сумерки]]:"
     },
     {
       "id": "no_silver_twilight",
-      "text": "Because no investigators have the [[Silver Twilight]] trait:"
+      "text": "Поскольку ни у одного из сыщиков нет черты [[Серебряные сумерки]]:"
     },
     {
       "id": "progress_1",
       "type": "story",
-      "text": "“Ah, it’s you. I did not expect you to be here, though perhaps I should have,” Mr. Sanford says with a hint of surprise in his voice. “I regret that you had to be involved in this unfortunate affair. I did not plan for you to be a part of any of this.” You narrow your eyes. You suspect fortune had nothing to do with it. You ask him what will happen to those still trapped inside. “Human progress requires sacrifice,” he recites stoically. “It is lamentable when that sacrifice is in blood, but the price in lamentation does not outweigh the yield of our labor.”"
+      "text": "«А, это вы. Не ожидал увидеть вас здесь, хотя стоило бы, — говорит мистер Сэнфорд с тенью удивления в голосе. — Сожалею, что вы оказались замешаны в эту неудачную затею. Я не собирался впутывать вас в неё». Вы прищуриваетесь. Что-то подсказывает вам, что удача тут ни при чём. Вы спрашиваете, что будет с теми, кто остался внутри. «Прогресс человечества требует жертв, — стоически отвечает он. — Прискорбно, что порой эти жертвы кровавы, но эта скорбь не перевешивает пользы нашего труда»."
     },
     {
       "id": "progress_2",
       "type": "story",
-      "text": "“I regret that we must meet under such... unfortunate circumstances,” Mr. Sanford says offhandedly. You narrow your eyes. You suspect fortune had nothing to do with it. You ask him what will happen to those still trapped inside. “Human progress requires sacrifice,” he recites stoically. “It is lamentable when that sacrifice is in blood, but the price in lamentation does not outweigh the yield of our labor.”"
+      "text": "«Сожалею, что нам пришлось познакомиться при таких… неудачных обстоятельствах» — небрежно заявляет мистер Сэнфорд. Вы прищуриваетесь. Что-то подсказывает вам, что удача тут ни при чём. Вы спрашиваете, что будет с теми, кто остался внутри. «Прогресс человечества требует жертв, — стоически отвечает он. — Прискорбно, что порой эти жертвы кровавы, но эта скорбь не перевешивает пользы нашего труда»."
     },
     {
       "id": "progress_3",
       "type": "story",
-      "text": "You didn’t come here to listen to Mr. Sanford proselytize about sacrifice. You came here for answers. You demand an explanation, but the elderly man cuts you off with a scowl. “Yes, yes. You speak of the incident last week. That was the creature’s first manifestation, and the arrival of the dark mist, which you encountered inside.” He glances at the front door to the manor and clears his throat. “The Lodge was not involved in the disappearances that occurred that night,” he explains after a short pause. “But we couldn’t exactly go to the police and tell them a creature made of mist kidnapped four people in Mr. Meiger’s household, could we? So, we had to take matters into our own hands. We suspected that creature was drawn to the crowd, so we recreated the incident in order to understand what happened—to discern its motives.” The decision to host another event at Mr. Meiger’s estate so soon after the disappearances makes sense to you now. As much as you hate to admit it, there is some logic to the plan the Lodge put into action, although you don’t particularly like being used as bait. Who knows how many innocent bystanders were put in mortal danger? Even if the goal was noble, was it worth the sacrifice?\n“I hope you understand that our organization only seeks the betterment of humankind. There are harsh truths that lie beyond our five senses,” Mr. Sanford says, his expression grim. “If we are to survive and prosper, we must adapt. We must learn. We must understand. That is what our order seeks to achieve—a greater understanding of the world around us. A worthy pursuit, don’t you agree?”"
+      "text": "Вы пришли сюда не для того, чтобы мистер Сэнфорд читал вам проповеди о жертвоприношениях. Вы пришли за ответами. Вы требуете объяснений, но пожилой мужчина сердито перебивает вас: «Да, да. Вы говорите об инциденте на прошлой неделе. Тогда существо появилось впервые, и пришла тёмная мгла, с которой вы столкнулись внутри». Он бросает взгляд на входную дверь особняка и откашливается. «Ложа непричастна к исчезновениям той ночи, — продолжает он после короткой паузы. — Но не могли же мы пойти в полицию и сказать, что существо, сделанное из тумана, похитило четырёх человек в доме мистера Майгера, верно? Вот мы и решили взять дело в свои руки. Мы предположили, что существо было привлечено скоплением людей, и воссоздали ситуацию, чтобы понять, что случилось, и разобраться в его поведении». Теперь вам не кажется странным решение провести ещё одно мероприятие в поместье мистера Майгера так скоро после исчезновений. В задумке Ложи всё-таки есть некоторая логика — хоть вам и не нравится признавать это и совсем не понравилось быть приманкой. Кто знает, сколько ещё невинных людей подверглись смертельной опасности? Даже если цель благородна, стоила ли она таких жертв?\n«Надеюсь, вы понимаете, что наша организация действует исключительно на благо человеческого рода. Есть суровые истины, что лежат за пределами наших пяти чувств, — говорит мистер Сэнфорд с суровым выражением лица. — Если мы хотим выжить и процветать, мы должны приспособиться. Мы должны учиться. Мы должны понимать. К этому и стремится наш орден — к более глубокому пониманию окружающего мира. Достойная цель, согласитесь?»"
     },
     {
       "id": "check_josef_meiger",
       "type": "input",
-      "text": "Where is Josef Meiger?",
+      "text": "Где находится карта «Джозеф Майгер»?",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "victory_display",
-            "text": "Victory display.",
+            "text": "На победном счету.",
             "steps": [
               "progress_4",
               "progress_4_effects"
@@ -40735,7 +40756,7 @@
           },
           {
             "id": "entry_hall",
-            "text": "Beneath the Entry Hall.",
+            "text": "Под «Вестибюлем».",
             "steps": [
               "progress_5",
               "rescued_josef",
@@ -40745,7 +40766,7 @@
           },
           {
             "id": "neither",
-            "text": "Neither.",
+            "text": "Ни там, ни там.",
             "steps": [
               "check_silver_twilight"
             ]
@@ -40756,13 +40777,13 @@
     {
       "id": "check_silver_twilight",
       "type": "input",
-      "text": "Compare the number of [[Silver Twilight]] enemies in the victory display and beneath the Entry Hall:",
+      "text": "Сравните число врагов [[Серебряных сумерек]] на победном счету и под «Вестибюлем»:",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "victory_display",
-            "text": "More in the victory display.",
+            "text": "Больше на победном счету.",
             "steps": [
               "progress_4",
               "progress_4_effects"
@@ -40770,7 +40791,7 @@
           },
           {
             "id": "equal",
-            "text": "Equal number in each.",
+            "text": "Поровну.",
             "steps": [
               "progress_4",
               "progress_4_effects"
@@ -40778,7 +40799,7 @@
           },
           {
             "id": "entry_hall",
-            "text": "More beneath the Entry Hall.",
+            "text": "Больше под «Вестибюлем».",
             "steps": [
               "progress_6",
               "josef_is_alive",
@@ -40791,7 +40812,7 @@
     {
       "id": "progress_4",
       "type": "story",
-      "text": "Before you can reply, one of Sanford’s men emerges from the house behind you. He sheathes a long silver blade as he addresses Mr. Sanford. “There is no sign of Josef inside, sir.” The man eyes you suspiciously, keeping his hand on the hilt of his sword. His posture reminds you of that of a knight, stoic and rigidly disciplined. “I see,” Sanford replies. He closes his eyes and takes a deep breath before continuing. “A great loss for our order, but one we anticipated. Gather the Lodge’s belongings from inside the estate, and I will deal with the consequences.” The knight nods and heads back inside. Carl’s cold blue eyes turn back toward you. “As for you, I would ask you to leave this place at once. You have done enough harm as it is.” Before you can protest, he commands the other men nearby to escort you off the premises, and you have little choice but to comply."
+      "text": "Прежде чем вы успеваете ответить, из особняка выходит один из людей Сэнфорда. Он убирает в ножны длинный серебряный клинок и обращается к мистеру Сэнфорду: «Внутри никаких следов Джозефа, сэр». Новоприбывший подозрительно смеряет вас взглядом, держа руку на эфесе меча. В его облике есть что-то от рыцаря, несгибаемого и дисциплинированного.\n«Понятно, — отвечает Сэнфорд. Он закрывает глаза и делает глубокий вдох, прежде чем продолжить. — Большая потеря для нашего ордена, но мы предполагали, что она может случиться. Заберите из особняка имущество Ложи, а с последствиями я разберусь». Рыцарь кивает и уходит внутрь. Холодные голубые глаза Карла возвращаются к вам. «Что же до вас, я бы попросил вас сейчас же покинуть это место. Вы уже нанесли достаточно вреда». Прежде чем вы успеваете возразить, он приказывает cвоим людям выпроводить вас с территории, и вам ничего не остаётся, кроме как подчиниться."
     },
     {
       "id": "progress_4_effects",
@@ -40800,20 +40821,20 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "josef_disappeared_into_the_mist",
-          "text": "Josef disappeared into the mist."
+          "text": "Джозеф исчез во мгле."
         },
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "enemies_of_the_lodge",
-          "text": "the investigators are enemies of the Lodge."
+          "text": "сыщики враждуют с Ложей."
         }
       ]
     },
     {
       "id": "progress_5",
       "type": "story",
-      "text": "You consider Mr. Sanford’s words carefully. You believe that he is telling the truth, but you’re not sure if the ends justify his means. Before you can reply, Josef steps forward. “I believe our new comrades understand the value of working together,” he says politely, standing at your side. “They could have escaped on their own, but they stayed behind to make sure members of the Lodge were safe. Surely we are of the same mind.”\n“Courage is not the same as sacrifice, Josef,” Carl Sanford intones patiently. “Do they have the will to do what is truly right for all of humanity?” The elderly man turns his attention back to you, his cold eyes glinting in the moonlight. He approaches calmly, extending his hand. “Regardless, you have experienced firsthand the danger that we all face. Join us, and we can face it together. With our knowledge combined, we can protect Arkham from this threat.”"
+      "text": "Вы тщательно обдумываете слова мистера Сэнфорда. Вы верите ему, но сомневаетесь, что цель оправдывает его средства. Прежде чем вы успеваете ответить, в разговор вмешивается стоящий поблизости Джозеф. «Убеждён, что наши новые друзья понимают, насколько важно работать вместе, — вежливо замечает он. — Они могли сбежать, но остались, чтобы обеспечить безопасность членов Ложи. Уверен, что нам по пути».\n«Смелость — не то же самое, что жертва, Джозеф, — терпеливо произносит Карл Сэнфорд. — Есть ли у них желание делать то, что действительно нужно всему человечеству?» Пожилой мужчина переводит внимание на вас, его холодные глаза сверкают в лунном свете. Он медленно подходит к вам, протягивая руку: «Как бы то ни было, вы лицом к лицу столкнулись с нашей общей угрозой. Присоединяйтесь к нам, и мы встретим её вместе. Объединив наши знания, мы сможем спасти Аркхэм от этой беды»."
     },
     {
       "id": "rescued_josef",
@@ -40822,13 +40843,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rescued_josef",
-          "text": "the investigators rescued Josef."
+          "text": "сыщики спасли Джозефа."
         }
       ]
     },
     {
       "id": "bonus_xp",
-      "text": "Each investigator earns 2 bonus experience, as they gain insight into the inner workings of the Silver Twilight Lodge.",
+      "text": "Каждый сыщик получает 2 опыта дополнительно, узнав о том, что происходит внутри Ложи Серебряных Сумерек.",
       "effects": [
         {
           "type": "earn_xp",
@@ -40845,7 +40866,7 @@
         "choices": [
           {
             "id": "refuse",
-            "text": "<i>“I refuse to be a part of this.”</i>",
+            "text": "<i>«Я отказываюсь участвовать в этом».</i>",
             "steps": [
               "progress_7",
               "enemies_of_the_lodge"
@@ -40853,7 +40874,7 @@
           },
           {
             "id": "agree",
-            "text": "<i>“I agree.”</i>",
+            "text": "<i>«Я согласен».</i>",
             "steps": [
               "progress_8",
               "members_of_the_lodge"
@@ -40861,7 +40882,7 @@
           },
           {
             "id": "lie",
-            "text": "<i>“I agree.”</i> (You are lying.)",
+            "text": "<i>«Я согласен». (Вы лжёте).</i>",
             "steps": [
               "progress_9",
               "members_of_the_lodge",
@@ -40874,7 +40895,7 @@
     {
       "id": "progress_6",
       "type": "story",
-      "text": "You consider Mr. Sanford’s words carefully. You believe that he is telling the truth, but you’re not sure if the ends justify his means. Before you can reply, Josef Meiger emerges from the house behind you, flanked by two guards wearing expensive suits. One wields a long silver blade as he stands guard. The other observes the situation vigilantly, keeping one hand on the grip of a revolver holstered at his side. Josef recognizes you and addresses you curtly. “You have been poking your head where you don’t belong,” he threatens, narrowing his dark eyes.\n“Stay your tongue, Josef,” Sanford interjects. He approaches calmly, extending his hand toward you. “You have experienced firsthand the danger that we all face. Join us, and we can face it together. With our knowledge combined, we can protect Arkham from this threat.”"
+      "text": "Вы тщательно обдумываете слова мистера Сэнфорда. Вы верите ему, но сомневаетесь, что цель оправдывает его средства. Прежде чем вы успеваете ответить, из особняка появляется Джозеф Майгер в сопровождении двух охранников в дорогих костюмах. Один из них держит наизготовку длинный серебряный клинок, а другой внимательно осматривается, не убирая руку с револьвера в плечевой кобуре. Джозеф сразу узнаёт вас, прищуривает свои тёмные глаза и угрожающе кричит: «Так это вы суёте нос куда не следует!»\n«Придержи язык, Джозеф, — перебивает его Сэнфорд. Он медленно подходит к вам, протягивая руку: — Вы лицом к лицу столкнулись с нашей общей угрозой. Присоединяйтесь к нам, и мы встретим её вместе. Объединив наши знания, мы сможем спасти Аркхэм от этой беды»."
     },
     {
       "id": "josef_is_alive",
@@ -40883,14 +40904,14 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "josef_is_alive",
-          "text": "Josef is alive and well."
+          "text": "Джозеф жив и здоров."
         }
       ]
     },
     {
       "id": "progress_7",
       "type": "story",
-      "text": "Mr. Sanford scowls, returning his hand to his side and narrowing his gaze. “I see. I cannot say I am not disappointed. I thought you would be insightful enough to see the value in working together. But I realize now that my confidence was misplaced.” He sighs and gazes past you, toward Josef ’s manor. “Very well. The Lodge will handle this problem on our own. Return to your state of ignorance. But I warn you: do not get in our way. I am not an enemy you want to have.” Before you can protest, Sanford commands the other men nearby to escort you off the premises, and you have little choice but to comply."
+      "text": "Мистер Сэнфорд хмурится и опускает руку, прищуриваясь: «Ясно. Не могу сказать, что я не разочарован. Я полагал, вам хватит проницательности, чтобы увидеть пользу совместной работы. Но теперь понимаю, что моя уверенность была неуместна. — Он вздыхает и смотрит мимо вас на особняк Джозефа. — Что ж. Ложа справится с этой проблемой без вас. Возвращайтесь в своё невежество. Но предупреждаю: не вставайте у нас на пути. Вам не нужен такой враг, как я». Прежде чем вы успеваете возразить, Сэнфорд приказывает cвоим людям выпроводить вас с территории, и вам ничего не остаётся, кроме как подчиниться."
     },
     {
       "id": "enemies_of_the_lodge",
@@ -40899,24 +40920,24 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "enemies_of_the_lodge",
-          "text": "the investigators are enemies of the Lodge."
+          "text": "сыщики враждуют с Ложей."
         }
       ]
     },
     {
       "id": "progress_8",
       "type": "story",
-      "text": "You shake Mr. Sanford’s hand. His grip is cold, but strong. The other members of the Lodge seem to relax around you. “We will do great works together, my friends,” says Sanford. “Great works indeed.”"
+      "text": "Вы жмёте руку мистера Сэнфорда. Его рукопожатие холодное, но крепкое. Кажется, будто напряжение среди окружающих членов Ложи спадает. «Нас с вами ждут великие дела, друзья мои, — говорит Сэнфорд. — Поистине великие»."
     },
     {
       "id": "members_of_the_lodge",
-      "text": "In your Campaign Log, record that <i>the investigators are members of the Lodge.</i> Add 1 [cultist] token to the chaos bag for the remainder of the campaign.",
+      "text": "Запишите в журнал кампании, что <i>сыщики приняты в Ложу.</i> Добавьте в мешок хаоса 1 жетон [cultist] до конца кампании.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "members_of_the_lodge",
-          "text": "the investigators are members of the Lodge."
+          "text": "сыщики приняты в Ложу."
         },
         {
           "type": "add_chaos_token",
@@ -40929,7 +40950,7 @@
     {
       "id": "progress_9",
       "type": "story",
-      "text": "You shake Mr. Sanford’s hand. His grip is cold, but strong. The other members of the Lodge seem to relax around you. “We will do great works together, my friends,” says Sanford. “Great works indeed.” But out of the corner of your eye, you see one of the Lodge’s enforcers gripping his weapon a little tighter."
+      "text": "Вы жмёте руку мистера Сэнфорда. Его рукопожатие холодное, но крепкое. Кажется, будто напряжение среди окружающих членов Ложи спадает. «Нас с вами ждут великие дела, друзья мои, — говорит Сэнфорд. — Поистине великие». Но уголком глаза вы замечаете, как один из бойцов Ложи покрепче сжимает своё оружие."
     },
     {
       "id": "deceiving_the_lodge",
@@ -40938,7 +40959,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "deceiving_the_lodge",
-          "text": "the investigators are deceiving the Lodge."
+          "text": "сыщики обманывают Ложу."
         }
       ]
     },
@@ -40968,7 +40989,7 @@
     {
       "id": "being_hunted",
       "type": "story",
-      "text": "You are startled from your reverie by the sensation of something crawling up your chest, an icy hand that clasps around your throat. It grips until your breath is trapped and your windpipe starts to crack. Only there is nothing there—just a chilly draft entering the room through the open window. The wind shrill, whistling wind rattles your window frame, penetrating the safety of your home. It almost sounds like the dissonant notes of a dreadful flute: a mindless, haunting music that fills you with inexplicable terror. You rush to the window and slam it shut, hands trembling. Still, the thin, discordant notes echo around you. <i>This can’t be real</i>, you think. <i>Not here, not now</i>. But denial provides no asylum.\nThe cold creeps its way up your back once again. A thin, grey mist pours into the room, seeping beneath your front door and through the cracks around your window. It crawls along the ground and coils slowly around your ankles, sending shivers up your body. You run into your bedroom, slam the door, and lock it. A few seconds of respite are all you receive before the invader resumes its assault. Over and over, a heavy force slams against the door, shaking the entire room. You press against the door, trying to hold it shut. With each pounding crash, dark mist seeps through cracks appearing in the wood. With a final crash, the door shatters. You are hurled back, landing not on the floor but in a cloud of mist, gripped by a hundred spectral arms that cling into your flesh and tear you limb from limb.\nNO!—That can’t be right. You are here, reading this very text. A wave of relief washes over you as you realize it is all in your head. Even so, the words compel your mind to torment you with visions of a macabre death. You find yourself glancing at your window, searching for dark mist that is not there. What if the text is trying to tell you something? Maybe—no, that’s impossible.\n“Real or imagined, your fate approaches all the same.”"
+      "text": "Вы резко просыпаетесь от ощущения, словно что-­то ползёт по вашей груди и ледяная рука хватает вас за горло. Она сжимается, перекрывая вам дыхание и круша трахею. Но ничего этого нет — только холодный сквозняк из от­крытого окна. Ветер с завываниями трясёт оконную раму, втор­гаясь в безопасность вашего дома. Он звучит почти как нестройные ноты жуткой флейты: безумная, неотвязная музыка, наполняющая вас необъяснимым ужасом. Вы бросаетесь к окну и захлопываете его дрожащими руками. Но нестройные высокие ноты не смолкают. «Это не может быть правдой, — думаете вы. — Не здесь, не сейчас». Но отрицание не приносит облегчения.\nХолод вновь поднимается по вашей спине. Едва заметная серая мгла заполняет комнату, просачиваясь под входной дверью и через щели в окне. Она ползёт по полу, свиваясь у ваших ног и заставляя всё ваше тело дрожать. \nВы бежите в спальню, хлопаете дверью и запираете её. \nЭто даёт вам всего несколько секунд передышки — а потом вторжение продолжается. Снова и снова тяжёлая сила обрушивается на дверь, сотрясая всю комнату. Вы прижимаетесь к двери, пытаясь удержать её. С каждым ударом тёмная мгла просачивается в трещины, появляющиеся в дереве. Последний удар — и дверь разлетается в щепки. Вы летите назад, но падаете не на пол, а на облако мглы, и сотни призрачных рук хватают вас, вонзаясь в вашу плоть и разрывая её на кусочки.\nНет! Такого не может быть. Вы здесь, читаете этот самый текст. С превеликим облегчением вы осознаёте, что всё это было только у вас в голове. Тем не менее эти слова заставляют ваш разум мучить вас видениями ужасной смерти. Вы понимаете, что вглядываетесь в окно в поисках тёмной мглы, которой там нет. Что, если этот текст пытается вам что-то сказать? Может быть… — но нет, это невозможно. \n«Настоящая или воображаемая, ваша судьба неумолимо приближается»."
     }
   ]
 },
@@ -41274,7 +41295,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "earn_xp",
@@ -41843,8 +41864,8 @@
 },
 {
   "id": "the_witching_hour",
-  "scenario_name": "The Witching Hour",
-  "full_name": "Scenario I: The Witching Hour",
+  "scenario_name": "Час ведьмовства",
+  "full_name": "Сценарий I: Час ведьмовства",
   "setup": [
     "intro",
     "choose_fate",
@@ -41861,18 +41882,18 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "It is a breezy November evening in Arkham—the perfect night for a walk through Independence Square, or so you had thought, up until the moment Anna Kaslow offered to tell your fortune. You agreed, though you would soon come to regret this decision. For each of the cards the Romani soothsayer draws from her deck, she weaves a tale of despair and misfortune. Judgment. Temperance. Justice. The Hermit. The Hanged Man. The Hierophant. The Lovers. The Chariot. The Wheel of Fortune. To complete her tale, Anna draws the top card and lays it in the center of the formation. Dominating the old, worn card is the ominous image of a towering construct of black onyx. A hellish storm rages over the tower, lightning coursing through the dark clouds. It reads: THE TOWER · XVI. Even if the rest of the reading had gone swimmingly, the sight of the center card would have sent a shiver down your spine. As it stands now, it feels more like the closing of a casket over your body.\n“You did tell me to give it to you straight,” the soothsayer says. She sits cross-legged in front of you, wearing a stony, grim expression. From her unwavering gaze and her cold eyes, you can tell Anna derives no satisfaction from this reading. “Simple misfortune is the least of your concerns,” she explains. “This is a matter of life and death.” She motions to the cards surrounding The Tower—each of them laid in the reverse position—and stares at them intently. “Arrayed against you is everything that you cannot see. You alone stand in their way,” she says enigmatically."
+      "text": "В Аркхэме прохладный ноябрьский вечер — отличное время, чтобы прогуляться по площади Независимости. Или вы так думали, пока Анна Каслоу не предложила вам погадать. Вы согласились, но вскоре пожалели об этом. С каждой картой, которую цыганка берёт из колоды, её пророчество становится всё мрачнее и безнадёжнее. Суд. Умеренность. Правосудие. Отшельник. Повешенный. Первосвященник. Влюблённые. Колесница. Колесо Фортуны. Под конец Анна тянет верхнюю карту колоды и помещает её в центр расклада. На старой, потрёпанной карте возвышается зловещее сооружение из чёрного оникса. Над башней неистовствует адская буря, по тёмным облакам скачет молния. Подпись гласит: «Башня · XVI». Даже если бы до сих пор всё шло благополучно, вид этой центральной карты вызвал бы у вас дрожь. А при таком раскладе она выглядит как последний гвоздь в крышку вашего гроба.\n«Вы же сами просили рассказать всё без прикрас», — говорит гадалка. Она сидит по-турецки, сурово разглядывая вас. Судя по её пристальному холодному взгляду, Анне самой не в радость это предсказание. «Неудачи — меньшая из ваших бед, — поясняет она. — На самом деле речь идёт о жизни и смерти». Она указывает на карты вокруг «Башни» — те лежат в обратном порядке — и снова их рассматривает. «Против вас будет всё, чего вы не видите. И только вы стоите на их пути», — загадочно заключает Анна."
     },
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "accept_fate",
-            "text": "<i>“What can I do to avoid this fate?”</i>",
+            "text": "<i>«Как мне избежать этой судьбы?»</i>",
             "steps": [
               "intro_2",
               "accepted_fate",
@@ -41881,7 +41902,7 @@
           },
           {
             "id": "reject_fate",
-            "text": "<i>“This is bullshit.”</i>",
+            "text": "<i>«Это вздор».</i>",
             "steps": [
               "intro_3",
               "rejected_fate"
@@ -41893,17 +41914,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The woman nods and draws the top card of the deck with a steady hand, revealing it to you without looking at it herself. Depicted on the card is a single wooden wand, surrounded by a pattern of broken stained glass. It reads: ACE OF RODS. “You must be ready to act,” she advises. “Without hesitation. Without regret. When the opportunity arises, you must set into motion the events that will change this fate.”"
+      "text": "Женщина кивает, уверенно тянет верхнюю карту колоды и не глядя показывает её вам. На карте — деревянный посох, окружённый осколками цветного стекла, и подпись: «Туз жезлов». «Вы должны быть готовы действовать, — говорит гадалка. — Без промедления. Без сожалений. Когда выпадет шанс, вы должны запустить цепь событий, которые изменят предначертанное»."
     },
     {
       "id": "accepted_fate",
-      "text": "In your Campaign Log, record that <i>you have accepted your fate</i>. Add 2 [tablet] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "Запишите в журнал кампании, что <i>вы приняли свою судьбу</i>. Добавьте в мешок хаоса 2 жетона [tablet] до конца кампании.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "accepted_fate",
-          "text": "you have accepted your fate."
+          "text": "вы приняли свою судьбу."
         },
         {
           "type": "add_chaos_token",
@@ -41916,7 +41937,7 @@
     },
     {
       "id": "add_tarot",
-      "text": "Before drawing their opening hand for this scenario, the lead investigator searches the collection for 1 copy of The Tower · XVI and 1 copy of Ace of Rods and adds each of them to their deck, if able. The lead investigator has earned these cards. They do not count toward their deck size. (If one or both of these cards are not available, skip this step.)",
+      "text": "При подготовке к сценарию, прежде чем набирать стартовую руку, ведущий сыщик находит в комплекте 1 экземпляр «Туза жезлов» и 1 экземпляр «Башни · XVI» и добавляет их в свою колоду, если это возможно. Считайте, что ведущий сыщик получил эти карты. Они не идут в счёт размера колоды. (Если хотя бы одна из этих карт недоступна, пропустите этот шаг.)",
       "effects": [
         {
           "type": "add_card",
@@ -41934,17 +41955,17 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The woman smirks. “Yes, in a sense, I suppose it is,” she responds. With a single swift motion, she picks up each of the cards displayed before you, save for The Tower card, and shuffles them back into the deck. “The cards only reveal and advise. They cannot influence or impose.” She locks eyes with you, and her smile vanishes from her face. “In other words, though your fate is not set in stone, I assure you the danger you face is not ‘bullshit.’ It is real.” Her eyes narrow. “It is very real.”"
+      "text": "Женщина ухмыляется. «Да, в каком-то смысле так оно и есть» — отвечает она. Одним ловким движением она собирает все выложенные карты, кроме «Башни», и замешивает их обратно в свою колоду. «Карты только показывают и советуют. Они не могут повлиять или заставить». Она смотрит прямо вам в глаза, и улыбка сходит с её лица. «Другими словами, хоть ваша судьба и не высечена в камне, но уверяю вас, угроза, нависшая над вами — не вздор. Она реальна». — Её глаза сужаются. — Она крайне реальна»."
     },
     {
       "id": "rejected_fate",
-      "text": "In your Campaign Log, record that <i>you have rejected your fate</i>. Add 2 [elder_thing] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "Запишите в журнал кампании, что <i>вы отвергли свою судьбу</i>. Добавьте в мешок хаоса 2 жетона [elder_thing] до конца кампании.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rejected_fate",
-          "text": "you have rejected your fate."
+          "text": "вы отвергли свою судьбу."
         },
         {
           "type": "add_chaos_token",
@@ -41958,7 +41979,7 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "Silence hangs in the air as you peer into The Tower card. The world around you dissolves into emptiness as your eyes fixate on the onyx tower. Rolling thunder echoes in the distance. “Do you understand now?” Anna asks. There is no other sign of the soothsayer: only her strained voice. A bolt of lightning streaks across the sky. “Do you see your fate before you, as I do?”\nAnother resounding crack of thunder, and you are suddenly awake. Icy rain pelts your body, soaking you through to the bone. You are lying in the mud beside a wooded trail, and there is no other soul in sight..."
+      "text": "Вы рассматриваете карту с Башней, и в воздухе повисает тишина. Мир вокруг словно исчезает, пока ваши глаза не отрываются от ониксового сооружения. Вдали слышатся раскаты грома. «Теперь понимаете?» — спрашивает Анна. Но самой гадалки нигде нет, слышен лишь её искажённый голос. Молния раскалывает небо. «Видите ли вы свою судьбу так, как вижу её я?»\nРаздаётся ещё один удар грома, и вы резко просыпаетесь. Сверху молотит ледяной дождь, пробирая вас до костей. Вы лежите в грязи на краю лесной тропинки, и больше вокруг не видно ни души…"
     },
     {
       "id": "gather_encounter_sets",
@@ -41973,7 +41994,7 @@
         "striking_fear",
         "tentacles"
       ],
-      "subtext": "When gathering <i>The Devourer Below</i> encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
+      "subtext": "Из набора контактов «Пожиратель из глубин» возьмите только 6 локаций «Аркхэмские леса». Не берите никакие другие карты из этого набора контактов."
     },
     {
       "id": "gather_agents",
@@ -41986,37 +42007,37 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put 5 Witch‐Haunted Woods locations into play as follows:",
+      "text": "Введите в игру 5 локаций «Ведьмовские леса» следующим образом:",
       "bullets": [
         {
-          "text": "In player order, each investigator puts 1 random Witch‐ Haunted Woods location into play <i>in front of them</i>, until there are exactly 5 Witch‐Haunted Woods locations in play (see “Lost and Separated,” below). <i>For example: In a 1-player game, there should be 5 Witch-Haunted Woods in front of that investigator. In a 2-player game, there should be 3 Witch-Haunted Woods in front of the lead investigator and 2 Witch-Haunted Woods in front of the other investigator. In a 3-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, 2 Witch-Haunted Woods in front of the next investigator, and 1 Witch-Haunted Woods in front of the final investigator. In a 4-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, and 1 Witch-Haunted Woods in front of each other investigator.</i>"
+          "text": "В порядке игроков каждый сыщик вводит в игру 1 случайную локацию «Ведьмовские леса», <i>размещая её перед собой</i>, пока в игре не окажется ровно 5 таких локаций (см. «Потерянные и разделённые» ниже). \n<i>Например: Если играет один игрок, перед ним должно быть 5 локаций «Ведьмовские леса». При игре вдвоём перед ведущим сыщиком должно быть 3 локации «Ведьмовские леса», а перед другим сыщиком — 2. При игре втроём перед ведущим сыщиком должно быть 2 локации «Ведьмовские леса», перед следующим сыщиком — тоже 2, а перед последним — 1. При игре вчетвером перед ведущим сыщиком должно быть 2 локации «Ведьмовские леса», а перед остальными — по 1.</i>"
         },
         {
-          "text": "Remove each other Witch‐Haunted Woods from the game."
+          "text": "Удалите из игры все остальные локации «Ведьмовские леса»."
         },
         {
-          "text": "Each investigator begins play at one of the locations in front of them, chosen at random."
+          "text": "Каждый сыщик начинает игру в одной из лежащих перед ним локаций (выбранной случайным образом)."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: each of the Arkham Woods locations and Anette Mason."
+      "text": "Отложите в сторону все локации «Аркхэмские леса» и «Анетту Мейсон»."
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "lost_and_separated",
       "type": "rule_reminder",
-      "title": "Lost and Separated",
-      "text": "During this scenario, the investigators begin play separated and cut off from one another. This is represented by locations entering play “in front of ” each investigator (placed just above their play area).\nAct 1a—“Lost in the Woods” has the text: “Locations in front of you are connected to one another.” This text means that regardless of location/connection symbols, the locations in front of you are considered to be connected to one another, and enemies and investigators may move between them. Locations remain connected to one another via their location/connection symbols, as well.\nHowever, Lost in the Woods also has the text: “You cannot enter locations in front of other investigators.” This means that you cannot move to a location in front of another investigator, even if the two locations are connected or if you are moving via a card effect. Note that this restriction does not apply to enemies, who are free to move between connected locations regardless of which investigator those locations are in front of."
+      "title": "Потерянные и разделённые",
+      "text": "В начале этого сценария сыщики разделены и отрезаны друг от друга. Чтобы отобразить это, локации входят в игру перед каждым из сыщиков, рядом с его игровой зоной.\nСцена 1а «Заблудившись в лесу» гласит: «Локации, лежащие перед вами, связаны между собой». Это значит, что вне зависимости от символов связи на картах локаций, все локации, лежащие перед одним сыщиком, считаются связанными друг с другом, и между ними могут перемещаться сыщики и враги. При этом локации остаются связанными и в соответствии со своими символами связи.\nОднако на сцене «Заблудившись в лесу» также указано: «Вы не можете входить в локации, лежащие перед другими сыщиками». Это значит, что вы не можете переместиться в локацию, лежащую перед другим сыщиком, даже если она связана с вашей и даже если вы перемещаетесь по эффекту карты. Обратите внимание, что это ограничение не относится к врагам, которые могут свободно перемещаться между связанными локациями вне зависимости от того, перед кем из сыщиков лежат эти локации."
     },
     {
       "id": "check_final_act",
       "type": "input",
-      "text": "What act was in play when the scenario ended?",
+      "text": "В какой сцене завершилась партия?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -42068,7 +42089,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "witches_spell_broken",
-          "text": "the witches' spell was broken."
+          "text": "заклятие ведьм снято."
         }
       ]
     },
@@ -42079,25 +42100,25 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "witches_spell_cast",
-          "text": "the witches' spell was cast."
+          "text": "заклятье ведьм завершено."
         }
       ]
     },
     {
       "id": "mementos_flute_and_ritual_components",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Ritual Components</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Гипнотическая флейта</i> и <i>Компоненты ритуала</i>. Каждый сыщик получает 1 опыт дополнительно, заглянув в загадочное прошлое Аркхэма.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "Гипнотическая флейта"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "ritual_components",
-          "text": "Ritual Components"
+          "text": "Компоненты ритуала"
         },
         {
           "type": "earn_xp",
@@ -42123,19 +42144,19 @@
     },
     {
       "id": "mementos_flute_and_scrap_of_torn_shadow",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Scrap of Torn Shadow</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Гипнотическая флейта</i> и <i>Лоскут изорванной тени</i>. Каждый сыщик получает 1 опыт дополнительно, заглянув в загадочное прошлое Аркхэма.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "Гипнотическая флейта"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "scrap_of_torn_shadow",
-          "text": "Scrap of Torn Shadow"
+          "text": "Лоскут изорванной тени"
         },
         {
           "type": "earn_xp",
@@ -42147,20 +42168,20 @@
     {
       "id": "mementos_check_act",
       "type": "input",
-      "text": "Check the act deck.",
+      "text": "Проверьте колоду сцен.",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was act 1 or 2 when the scenario ended.",
+            "text": "Партия завершилась в сцене 1 или 2.",
             "steps": [
               "no_record"
             ]
           },
           {
             "id": "act_3",
-            "text": "It was act 3 when the scenario ended.",
+            "text": "Партия завершилась в сцене 3.",
             "steps": [
               "mementos_flute"
             ]
@@ -42171,13 +42192,13 @@
     {
       "id": "mementos_flute",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "Запишите в графе журнала «Собранные свидетельства»: <i>Гипнотическая флейта</i>. Каждый сыщик получает 1 опыт дополнительно, заглянув в загадочное прошлое Аркхэма.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "Гипнотическая флейта"
         },
         {
           "type": "earn_xp",
@@ -42189,7 +42210,7 @@
     {
       "id": "no_record",
       "bullet_type": "small",
-      "text": "No record is made."
+      "text": "Ничего не происходит."
     }
   ],
   "resolutions": [
@@ -42208,7 +42229,7 @@
     {
       "id": "R1",
       "title": "Исход 1",
-      "text": "Despite her wounds, the leader of the coven rises to her feet. More of the hooded figures emerge from the tree line, eager to defend their leader. “Interloper!” one calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “They’re the ones from before, High Priestess: the ones who interfered with our great work.”\nThe “High Priestess” holds up a single hand, and a hush falls over the other witches. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies to the red-haired accuser. You lower your weapons as several of the hooded figures approach and surround their leader. They begin chanting in a soft tone as they examine her wounds. The red-haired witch crosses her arms and watches you with a hard glare, her gaze never straying far from you. “I am Anette,” says the leader of the coven, “and these are my sisters. Tell me: Who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
+      "text": "Несмотря на раны, глава ковена поднимается на ноги. Из-за деревьев выходит всё больше фигур в плащах, готовых защитить свою предводительницу. «Чужаки! — выкрикивает одна из них, снимая капюшон и указывая на вас узловатым посохом. Её ярко-рыжие волосы сияют в свете костра, а вокруг вытянутой руки вьются искры. — Это они, Верховная жрица: те, кто прежде хотел помешать нашему великому труду». \n«Верховная жрица» поднимает руку, и остальные ведьмы замолкают. «Как всегда, я ценю твоё усердие, сестра. Но не думаю, что это те же люди, о ком ты говоришь», — отвечает она рыжеволосой обвинительнице. Вы опускаете оружие. Ещё несколько фигур в капюшонах подходят ближе к своей предводительнице, окружая её. Они осматривают её раны и затягивают негромкое песнопение. Рыжеволосая ведьма скрещивает руки на груди и сверлит вас неотступным взглядом. «Я Анетта, — говорит глава ковена, — а это мои сёстры. Скажите, кто вы и зачем вы здесь?»\nВы объясняете, что очнулись посреди леса, что на вас нападали ужасные существа и что вы пришли в этот круг, чтобы снять наложенное на леса заклятие. Глаза Анетты сужаются, пока она слушает ваш рассказ. «Это невозможно. Круг был замкнут. Никто не мог войти в лес, пока мы свершали заклинание. — Она скрипит зубами. — Уходите. Сейчас же. Вам тут не место».\n«Но Жрица!.. — восклицает рыжеволосая, однако Анетта взглядом обрывает её. Они смотрят друг другу в глаза, испытывая волю, и Анетта легко одерживает верх.\n«Не вмешивайся, Эринн, — говорит она твёрдым материнским тоном, будто вразумляя ребёнка. Эринн опускает голову, признавая поражение, и внимание Анетты возвращается к вам. — Идите. Вы сняли заклятие, как и хотели. Теперь вы можете выйти из лесов. Но я предупреждаю вас, и это последнее предупреждение: если вы снова встанете у нас на пути, мы не будем так милосердны». \nВы открываете рот, чтобы возразить, но тут порыв тёмного ветра задувает огонь в середине поляны. Из-за деревьев на поляну выползают тени, свиваясь и кружась, цепляясь за полы ведьминых мантий. Тени обвивают ведьм и затягивают в потустороннюю тьму, одну за одной. Через мгновения на поляне остаётесь лишь вы да лунный свет, указывающий вам дорогу домой.",
       "steps": [
         "witches_spell_broken",
         "mementos_flute_and_ritual_components",
@@ -42219,7 +42240,7 @@
     {
       "id": "R2",
       "title": "Исход 2",
-      "text": "With the spell broken, the hooded figures turn their attention to you. More of them emerge from the tree line, eager to take vengeance upon you for destroying their plans. “Interloper!” one of them calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “You will not escape this time!” she cries, prepared to strike you down.\n“Stop!” the leader of the coven yells in a commanding voice, holding up her hand. The red-haired accuser stops in her tracks, and there is a sudden stillness in the clearing around the circle.\n“But High Priestess,” the witch persists, “they’re the ones from before. The ones who interfered with our great work.”\nThe High Priestess places a hand on the red-haired witch’s shoulder. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies.\nThe red-haired witch lowers her rod as the High Priestess approaches you, her arms crossed. She watches you with a hard glare, her gaze never straying far from you. “I am Anette, and these are my sisters,” she says. “Tell me: who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
+      "text": "Заклятие снято, и фигуры в капюшонах обращают взоры на вас. Из-за деревьев выходит всё больше фигур, готовых отомстить вам за нарушенные планы. «Чужаки! — выкрикивает одна из них, снимая капюшон и указывая на вас узловатым посохом. Её ярко-рыжие волосы сияют в свете костра, а вокруг вытянутой руки вьются искры. — На этот раз вам не уйти!» — кричит она, готовясь поразить вас.\n«Стоять!» — властным голосом выкрикивает предводительница ковена, подняв руку. Рыжеволосая обвинительница замирает на полушаге, и на поляне наступает тишина. \n«Но Жрица, — настаивает ведьма, — это же они. Те, кто прежде хотел помешать нашему великому труду». \nВерховная жрица кладёт руку рыжеволосой ведьме на плечо. «Как всегда, я ценю твоё усердие, сестра. Но не думаю, что это те же люди, о ком ты говоришь», — отвечает она. \nРыжеволосая ведьма опускает посох. Скрестив руки на груди, Верховная жрица подходит ближе и сверлит вас неотступным взглядом. «Я Анетта, — говорит она, — а это мои сёстры. Скажите, кто вы и зачем вы здесь?»\nВы объясняете, что очнулись посреди леса, что на вас нападали ужасные существа и что вы пришли в этот круг, чтобы снять наложенное на леса заклятие. Глаза Анетты сужаются, пока она слушает ваш рассказ. «Это невозможно. Круг был замкнут. Никто не мог войти в лес, пока мы свершали заклинание. — Она скрипит зубами. — Уходите. Сейчас же. Вам тут не место».\n«Но Жрица!.. — восклицает рыжеволосая, однако Анетта взглядом обрывает её. Они смотрят друг другу в глаза, испытывая волю, и Анетта легко одерживает верх.\n«Не вмешивайся, Эринн, — говорит она твёрдым материнским тоном, будто вразумляя ребёнка. Эринн опускает голову, признавая поражение, и внимание Анетты возвращается к вам. — Идите. Вы сняли заклятие, как и хотели. Теперь вы можете выйти из лесов. Но я предупреждаю вас, и это последнее предупреждение: если вы снова встанете у нас на пути, мы не будем так милосердны». \nВы открываете рот, чтобы возразить, но тут порыв тёмного ветра задувает огонь в середине поляны. Из-за деревьев на поляну выползают тени, свиваясь и кружась, цепляясь за полы ведьминых мантий. Тени обвивают ведьм и затягивают в потустороннюю тьму, одну за одной. Через мгновения на поляне остаётесь лишь вы да лунный свет, указывающий вам дорогу домой.",
       "steps": [
         "witches_spell_broken",
         "mementos_flute_and_scrap_of_torn_shadow",
@@ -42230,7 +42251,7 @@
     {
       "id": "R3",
       "title": "Исход 3",
-      "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high- pitched piping of a hundred discordant flutes. Your entire body rattles with the sensation. Blood trickles from your ears, and tears well in your eyes. You try to crawl to safety, but it is to no avail. The piping only grows in volume, the discordant cacophony shattering your eardrums and turning your thoughts to sludge. Eventually, after what feels like hours, weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
+      "text": "Вы падаете на землю в изнеможении, вашу голову заполняют потусторонние голоса и пронзительные звуки сотни нестройных флейт. Вас колотит от боли. Из ушей течёт кровь, глаза наполняются слезами. Вы пытаетесь отползти в безопасное место, но тщетно. Звуки флейт становятся всё громче, неблагозвучная какофония рвёт вам барабанные перепонки и превращает ваши мысли в кашу. Кажется, проходят часы, пока вы наконец не лишаетесь чувств от истощения.\nКогда сознание возвращается, вы лежите на берегу Висельного ручья и какой-то мальчишка энергично трясёт вас за плечо. «А ну-ка иди сюда, не трогай их!» — кричит его мать, и мальчик оставляет вас в покое. Учитывая, в каком вы сейчас состоянии, вы не удивлены, что она приняла вас за пьянчугу. Вы отряхиваете с пальто комки засохшей грязи, тяжело поднимаетесь на ноги и отправляетесь в сторону Аптауна.",
       "steps": [
         "witches_spell_cast",
         "mementos_check_act",
@@ -42241,7 +42262,7 @@
     {
       "id": "R4",
       "title": "Исход 4",
-      "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high-pitched piping of a hundred discordant flutes. The sensation fades as the circle’s leader approaches, her powerful form looming over you. “We cannot allow the spell to fail. Take them to the edge of the woods and make sure we are not interrupted,” she commands several of the other hooded women. They grab you by the arms and hoist you up, dragging you away from the central clearing. You try to resist, but your limbs are numb and sluggish, and the cacophony of sound and sensations assaulting your mind has turned your thoughts to sludge. Eventually, after what feels like hours, you are hurled to the ground, and weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
+      "text": "Вы падаете на землю в изнеможении, вашу голову заполняют потусторонние голоса и пронзительные звуки сотни нестройных флейт. Боль утихает, когда к вам подходит предводительница ведьм. Её мощная фигура нависает над вами. «Нельзя прерывать заклинание. Отнесите их к краю леса и убедитесь, что нам никто не помешает», — приказывает она нескольким женщинам в капюшонах. Они хватают вас под руки и тащат прочь от поляны с кругом. Вы пытаетесь сопротивляться, но ваши конечности обмякли и не слушаются, а какофония звуков и боли наполняет ваш мозг, превращая мысли в кашу. Кажется, проходят часы, пока вас наконец не бросают на землю, и вы сразу лишаетесь чувств от истощения.\nКогда сознание возвращается, вы лежите на берегу Висельного ручья и какой-то мальчишка энергично трясёт вас за плечо. «А ну-ка иди сюда, не трогай их!» — кричит его мать, и мальчик оставляет вас в покое. Учитывая, в каком вы сейчас состоянии, вы не удивлены, что она приняла вас за пьянчугу. Вы отряхиваете с пальто комки засохшей грязи, тяжело поднимаетесь на ноги и отправляетесь в сторону Аптауна.",
       "steps": [
         "witches_spell_cast",
         "mementos_flute",
@@ -43137,7 +43158,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "circle_braziers",
@@ -44803,7 +44824,7 @@
     {
       "id": "black_cat_choice",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -47785,7 +47806,7 @@
     {
       "id": "check_final_act",
       "type": "input",
-      "text": "What act was in play when the scenario ended?",
+      "text": "В какой сцене завершилась партия?",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -48893,7 +48914,8 @@
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "broken_the_law_of_ulthar",
-                "text": "#name# has broken the law of Ulthar.",
+                "masculine_text": "#name# has broken the law of Ulthar.",
+                "feminine_text": "#name# has broken the law of Ulthar.",
                 "cards": "$input_value"
               }
             ]
@@ -49126,7 +49148,8 @@
           "section": "campaign_notes",
           "id": "captured",
           "cards": "$defeated_investigators",
-          "text": "#name# was captured."
+          "masculine_text": "#name# was captured.",
+          "feminine_text": "#name# was captured."
         }
       ]
     },
@@ -53923,7 +53946,7 @@
     },
     {
       "id": "shuffle_encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "stop_rule",
@@ -58182,7 +58205,7 @@
     {
       "id": "replacing_locations_reminder",
       "type": "rule_reminder",
-      "title": "Replacing Locations",
+      "title": "Замена локаций",
       "text": "В этом сценарии вы можете получить указание положить новую локацию поверх локации в игре. Когда вы кладёте локацию поверх существующей, новая локация заменяет прежнюю. Все жетоны, прикреплённые карты, сыщики, враги и прочие карты, которые находились в старой локации, теперь находятся в новой локации (они не перемещаются — меняется сама локация). Если локация выходит из игры и под ней есть другая локация, то она заменяет вышедшую. Все жетоны, прикреплённые карты, сыщики, враги и прочие карты, которые находились в той локации, теперь находятся в локации, лежавшей под ней."
     },
     {
@@ -61100,7 +61123,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "Ведущий сыщик должен решить (выберите одно):",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -63674,7 +63697,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "tidal_tunnel_rule",
@@ -64305,7 +64328,7 @@
     },
     {
       "id": "encounter_deck",
-      "text": "Shuffle the remainder of the encounter cards to build the encounter deck."
+      "text": "Сложите в колоду контактов все оставшиеся карты контактов и перемешайте."
     },
     {
       "id": "find_agent_harper_rule",

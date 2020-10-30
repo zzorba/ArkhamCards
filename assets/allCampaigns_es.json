@@ -7636,7 +7636,8 @@
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "text": "#name# fue poseído."
+                "masculine_text": "#name# fue poseído.",
+                "feminine_text": "#name# fue poseída."
               }
             ]
           }
@@ -9794,7 +9795,8 @@
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# leyó el segundo acto de El Rey de Amarillo."
+                "masculine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
+                "feminine_text": "#name# leyó el segundo acto de El Rey de Amarillo."
               },
               {
                 "type": "add_weakness",
@@ -19096,7 +19098,8 @@
                 "section": "campaign_notes",
                 "id": "possessed",
                 "cards": "$input_value",
-                "text": "#name# fue poseído."
+                "masculine_text": "#name# fue poseído.",
+                "feminine_text": "#name# fue poseída."
               }
             ]
           }
@@ -20734,7 +20737,8 @@
                 "section": "campaign_notes",
                 "id": "read_act_2",
                 "cards": "$input_value",
-                "text": "#name# leyó el segundo acto de El Rey de Amarillo."
+                "masculine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
+                "feminine_text": "#name# leyó el segundo acto de El Rey de Amarillo."
               },
               {
                 "type": "add_weakness",
@@ -36451,7 +36455,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# ha sido atrapado por el Abismo."
+                "masculine_text": "#name# ha sido atrapado por el Abismo.",
+                "feminine_text": "#name# ha sido atrapada por el Abismo."
               }
             ]
           }
@@ -36475,7 +36480,8 @@
                 "section": "campaign_notes",
                 "id": "tes_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# ha sido atrapado por el Abismo."
+                "masculine_text": "#name# ha sido atrapado por el Abismo.",
+                "feminine_text": "#name# ha sido atrapada por el Abismo."
               }
             ]
           }
@@ -36790,7 +36796,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# ha sido atrapado por el Abismo."
+                "masculine_text": "#name# ha sido atrapada por el Abismo.",
+                "feminine_text": "#name# ha sido atrapada por el Abismo."
               }
             ]
           }
@@ -36814,7 +36821,8 @@
                 "section": "campaign_notes",
                 "id": "tnu_taken_by_the_abyss",
                 "cards": "$input_value",
-                "text": "#name# ha sido atrapado por el Abismo."
+                "masculine_text": "#name# ha sido atrapada por el Abismo.",
+                "feminine_text": "#name# ha sido atrapada por el Abismo."
               }
             ]
           }
@@ -38012,7 +38020,8 @@
           "section": "campaign_notes",
           "id": "lead_investigator_joins_pipers",
           "cards": "$lead_investigator",
-          "text": "#name# se ha unido a los flautistas de Azathoth."
+          "masculine_text": "#name# se ha unido a los flautistas de Azathoth.",
+          "feminine_text": "#name# se ha unido a los flautistas de Azathoth."
         }
       ]
     },
@@ -38565,7 +38574,9 @@
         "choices": [
           {
             "id": "not_chosen",
-            "text": "No elegidos",
+            "text": "No elegido",
+            "masculine_text": "No elegido",
+            "feminine_text": "No elegida",
             "effects": []
           },
           {
@@ -38576,43 +38587,53 @@
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "taken_by_the_watcher",
-                "text": "el vigilante se llevó a #name#."
+                "masculine_text": "el vigilante se llevó a #name#.",
+                "feminine_text": "el vigilante se llevó a #name#."
               }
             ]
           },
           {
             "id": "claimed_by_specters",
             "text": "Arrebatado por espectros",
+            "masculine_text": "Arrebatado por espectros",
+            "feminine_text": "Arrebatada por espectros",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "claimed_by_specters",
-                "text": "#name# fue arrebatado por espectros."
+                "masculine_text": "#name# fue arrebatado por espectros.",
+                "feminine_text": "#name# fue arrebatada por espectros."
               }
             ]
           },
           {
             "id": "disappeared_into_the_mist",
             "text": "Desapareció en la niebla",
+            "masculine_text": "Desapareció en la niebla",
+            "feminine_text": "Desapareció en la niebla",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "disappeared_into_the_mist",
-                "text": "#name# desapareció en la niebla."
+                "masculine_text": "#name# desapareció en la niebla.",
+                "feminine_text": "#name# desapareció en la niebla."
               }
             ]
           },
           {
             "id": "pulled_into_spectral_realm",
             "text": "Absorbido al reino espectral",
+            "masculine_text": "Absorbido al reino espectral",
+            "feminine_text": "Absorbida al reino espectral",
             "effects": [
               {
                 "type": "campaign_log_cards",
                 "section": "$input_value",
                 "id": "pulled_into_the_spectral_realm",
-                "text": "#name# fue absorbido al reino espectral."
+                "masculine_text": "#name# fue absorbido al reino espectral.",
+                "feminine_text": "#name# fue absorbida al reino espectral."
               }
             ]
           }
@@ -48893,7 +48914,8 @@
                 "type": "campaign_log_cards",
                 "section": "campaign_notes",
                 "id": "broken_the_law_of_ulthar",
-                "text": "#name# ha quebrantado la ley de Ulthar.",
+                "masculine_text": "#name# ha quebrantado la ley de Ulthar.",
+                "feminine_text": "#name# ha quebrantado la ley de Ulthar.",
                 "cards": "$input_value"
               }
             ]
@@ -49126,7 +49148,8 @@
           "section": "campaign_notes",
           "id": "captured",
           "cards": "$defeated_investigators",
-          "text": "#name# fue capturado/a."
+          "masculine_text": "#name# fue capturado.",
+          "feminine_text": "#name# fue capturada."
         }
       ]
     },

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { find } from 'lodash';
-import { t } from 'ttag';
+import { c, t } from 'ttag';
 
 import BinaryResult from '@components/campaignguide/BinaryResult';
 import SingleCardWrapper from '@components/card/SingleCardWrapper';
@@ -17,14 +17,19 @@ interface Props {
 }
 
 export default function CampaignLogCardConditionComponent({ step, entry, condition, campaignLog }: Props) {
+
   const renderCard = useCallback((card: Card) => {
+    const negatedPrompt = card.grammarGenderMasculine() ?
+      c('masculine').t`If <i>${card.name}</i> is not listed under Check ‘${entry.section}’ in your Campaign Log.` :
+      c('feminine').t`If <i>${card.name}</i> is not listed under Check ‘${entry.section}’ in your Campaign Log.`;
+    const positivePrompt = card.grammarGenderMasculine() ?
+      c('masculine').t`If <i>${card.name}</i> is listed under Check ‘${entry.section}’ in your Campaign Log.` :
+      c('feminine').t`If <i>${card.name}</i> is listed under Check ‘${entry.section}’ in your Campaign Log.`;
     const trueResult = find(condition.options, option => option.boolCondition === true);
     const falseResult = find(condition.options, option => option.boolCondition === false);
     const result = campaignLog.check(condition.section, condition.id);
     const negated = !!falseResult && !trueResult;
-    const prompt = negated ?
-      t`If <i>${card.name}</i> is not listed under Check ‘${entry.section}’ in your Campaign Log.` :
-      t`If <i>${card.name}</i> is listed under Check ‘${entry.section}’ in your Campaign Log.`;
+    const prompt = negated ? negatedPrompt : positivePrompt;
 
     return (
       <BinaryResult

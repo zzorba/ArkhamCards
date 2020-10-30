@@ -42,6 +42,16 @@
             "text": "Die Ermittler haben Umôrdhoth zurückgetrieben."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -110,20 +120,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -336,6 +338,16 @@
             "text": "Zebulon Whateley hat Das Vermächtnis von Dunwich überlebt."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -404,20 +416,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -484,6 +488,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# war besessen.",
+            "feminine_text": "#name# war besessen."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "Die Ermittler wurden bei ihrer Flucht aus dem Sanatorium angegriffen."
@@ -573,16 +587,8 @@
             "text": "Die Polizei hegt einen Verdacht gegen die Ermittler"
           },
           {
-            "id": "possessed",
-            "text": "#name# war besessen."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "Die Ermittler haben verhindert, dass Hastur aus seinem Gefängnis entkommt."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
           },
           {
             "id": "slayed_the_monsters",
@@ -603,6 +609,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "Nigel Engram konnte nicht gefunden werden."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
@@ -673,20 +689,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -935,6 +943,16 @@
             "text": "Zebulon Whateley hat Das Vermächtnis von Dunwich überlebt."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -1003,20 +1021,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1120,6 +1130,16 @@
             "text": "Die Ermittler haben Umôrdhoth zurückgetrieben."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -1188,20 +1208,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1273,6 +1285,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# war besessen.",
+            "feminine_text": "#name# war besessen."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "Die Ermittler wurden bei ihrer Flucht aus dem Sanatorium angegriffen."
@@ -1362,16 +1384,8 @@
             "text": "Die Polizei hegt einen Verdacht gegen die Ermittler"
           },
           {
-            "id": "possessed",
-            "text": "#name# war besessen."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "Die Ermittler haben verhindert, dass Hastur aus seinem Gefängnis entkommt."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
           },
           {
             "id": "slayed_the_monsters",
@@ -1392,6 +1406,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "Nigel Engram konnte nicht gefunden werden."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
@@ -1462,20 +1486,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1772,6 +1788,16 @@
             "text": "Die Ermittler wurden gezwungen, auf zusätzliche Ausrüstung zu warten."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -1840,20 +1866,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2064,20 +2082,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "claimed_by_specters",
-            "text": "#name# ist von Geistern beansprucht worden."
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
           },
           {
-            "id": "disappeared_into_the_mist",
-            "text": "#name# ist im Nebel verschwunden."
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "text": "#name# wurde in das Reich der Geister gezogen."
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "#name# wurde vom Beobachter entführt."
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
           }
         ]
       },
@@ -2152,6 +2174,11 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
+            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an."
+          },
           {
             "id": "accepted_fate",
             "text": "Die Ermittler haben ihr Schicksal akzeptiert."
@@ -2257,10 +2284,6 @@
             "text": "Die Ermittler haben ihre Andenken geheim gehalten."
           },
           {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# schließt sich den Pfeifern von Azathoth an."
-          },
-          {
             "id": "learned_nothing_of_the_lodges_schemes",
             "text": "Die Ermittler haben nichts über die Pläne der Loge in Erfahrung gebracht."
           },
@@ -2319,6 +2342,16 @@
           {
             "id": "witches_spell_cast",
             "text": "Der Zauber der Hexen wurde vollendet."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
@@ -2389,20 +2422,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2518,6 +2543,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
+            "feminine_text": "#name# hat das Gesetz von Ulthar gebrochen."
+          },
+          {
+            "id": "captured",
+            "masculine_text": "#name# wurde gefangen genommen.",
+            "feminine_text": "#name# wurde gefangen genommen."
+          },
+          {
             "id": "black_cat_at_your_side",
             "text": "die schwarze Katze ist an deiner Seite."
           },
@@ -2556,14 +2591,6 @@
           {
             "id": "black_cat_warned_the_others",
             "text": "die schwarze Katze hat die anderen gewarnt."
-          },
-          {
-            "id": "broken_the_law_of_ulthar",
-            "text": "#name# hat das Gesetz von Ulthar gebrochen."
-          },
-          {
-            "id": "captured",
-            "text": "#name# wurde gefangen genommen"
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -2658,6 +2685,16 @@
             "text": "du hast es so gewollt."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -2726,20 +2763,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2942,6 +2971,16 @@
             "text": "du hast es so gewollt."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -3010,20 +3049,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3274,6 +3305,16 @@
             "text": "Die Ermittler wurden gezwungen, auf zusätzliche Ausrüstung zu warten."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -3342,20 +3383,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3569,6 +3602,16 @@
             "text": "Die Mission war erfolgreich."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
             "text": "Die Anomalie wurde eingedämmt."
           },
@@ -3637,20 +3680,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",

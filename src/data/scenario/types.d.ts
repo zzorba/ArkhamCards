@@ -263,6 +263,8 @@ export interface CampaignLogCardsEffect {
   section: string;
   id?: string;
   text?: string;
+  masculine_text?: string;
+  feminine_text?: string;
   cards?: "$lead_investigator" | "$defeated_investigators" | "$input_value";
   cross_out?: boolean;
   remove?: boolean;
@@ -541,6 +543,8 @@ export interface CardCodeList {
 export interface Choice {
   id: string;
   text: string;
+  feminine_text?: string;
+  masculine_text?: string;
   description?: string;
   steps?: string[];
   border?: boolean;

@@ -42,6 +42,16 @@
             "text": "сыщики изгнали Умордхота."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -110,20 +120,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -336,6 +338,16 @@
             "text": "Зебулон Уэйтли пережил наследие Данвича."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -404,20 +416,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -484,6 +488,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# read Act 2 of The King in Yellow.",
+            "feminine_text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# was possessed.",
+            "feminine_text": "#name# was possessed."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "при побеге из лечебницы на сыщиков напали."
@@ -573,16 +587,8 @@
             "text": "полиция подозревает вас."
           },
           {
-            "id": "possessed",
-            "text": "#name# одержим."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "сыщики не дали Хастуру сбежать из заточения."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "slayed_the_monsters",
@@ -603,6 +609,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "вы не смогли найти Найджела."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -673,20 +689,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -935,6 +943,16 @@
             "text": "Зебулон Уэйтли пережил наследие Данвича."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1003,20 +1021,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1120,6 +1130,16 @@
             "text": "сыщики изгнали Умордхота."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1188,20 +1208,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1273,6 +1285,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# read Act 2 of The King in Yellow.",
+            "feminine_text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# was possessed.",
+            "feminine_text": "#name# was possessed."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "при побеге из лечебницы на сыщиков напали."
@@ -1362,16 +1384,8 @@
             "text": "полиция подозревает вас."
           },
           {
-            "id": "possessed",
-            "text": "#name# одержим."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "сыщики не дали Хастуру сбежать из заточения."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "slayed_the_monsters",
@@ -1392,6 +1406,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "вы не смогли найти Найджела."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -1462,20 +1486,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1772,6 +1788,16 @@
             "text": "что сыщики вынуждены ждать новых припасов."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1840,20 +1866,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2057,20 +2075,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# disappeared into the mist.",
+            "feminine_text": "#name# disappeared into the mist."
           },
           {
-            "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# was claimed by specters.",
+            "feminine_text": "#name# was claimed by specters."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# was pulled into the spectral realm.",
+            "feminine_text": "#name# was pulled into the spectral realm."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# was taken by the Watcher.",
+            "feminine_text": "#name# was taken by the Watcher."
           }
         ]
       },
@@ -2087,7 +2109,7 @@
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "сыщики напали на след Гавриэлы."
           }
         ]
       },
@@ -2104,7 +2126,7 @@
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "сыщики напали на след Джерома."
           }
         ]
       },
@@ -2121,7 +2143,7 @@
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "сыщики напали на след Валентино."
           }
         ]
       },
@@ -2138,7 +2160,7 @@
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "сыщики напали на след Пенни."
           }
         ]
       },
@@ -2146,8 +2168,13 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# joins the pipers of Azathoth.",
+            "feminine_text": "#name# joins the pipers of Azathoth."
+          },
+          {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "вы приняли свою судьбу."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -2187,7 +2214,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "за вами охотятся."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2199,7 +2226,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "сыщики обманывают Ложу."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -2211,7 +2238,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "сыщики враждуют с Ложей."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2235,35 +2262,31 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "сыщики сбежали из потустороннего мира."
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "Джозеф исчез во мгле."
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "Джозеф жив и здоров."
           },
           {
             "id": "kept_mementos_hidden",
             "text": "the investigators kept their mementos hidden."
           },
           {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# joins the pipers of Azathoth."
-          },
-          {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "сыщики ничего не узнали о планах Ложи."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "сыщики приняты в Ложу."
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "сыщики бесследно исчезли."
           },
           {
             "id": "path_winds_before_you",
@@ -2271,15 +2294,15 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "Оставлено #X# вещественных доказательств."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "вы отвергли свою судьбу."
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "сыщики спасли Джозефа."
           },
           {
             "id": "sided_with_the_coven",
@@ -2307,11 +2330,21 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "заклятие ведьм снято."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "заклятье ведьм завершено."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -2382,20 +2415,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2481,15 +2506,15 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Гипнотическая флейта"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Компоненты ритуала"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Лоскут изорванной тени"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -2510,6 +2535,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# has broken the law of Ulthar.",
+            "feminine_text": "#name# has broken the law of Ulthar."
+          },
+          {
+            "id": "captured",
+            "masculine_text": "#name# was captured.",
+            "feminine_text": "#name# was captured."
+          },
           {
             "id": "black_cat_at_your_side",
             "text": "the black cat is at your side."
@@ -2549,14 +2584,6 @@
           {
             "id": "black_cat_warned_the_others",
             "text": "the black cat warned the others."
-          },
-          {
-            "id": "broken_the_law_of_ulthar",
-            "text": "#name# has broken the law of Ulthar."
-          },
-          {
-            "id": "captured",
-            "text": "#name# was captured."
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -2651,6 +2678,16 @@
             "text": "you asked for it."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -2719,20 +2756,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2935,6 +2964,16 @@
             "text": "you asked for it."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -3003,20 +3042,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3267,6 +3298,16 @@
             "text": "что сыщики вынуждены ждать новых припасов."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -3335,20 +3376,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3555,6 +3588,16 @@
             "text": "the mission succeeded."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -3623,20 +3666,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",

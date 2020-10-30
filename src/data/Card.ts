@@ -48,6 +48,8 @@ const FEMININE_INVESTIGATORS = new Set([
   '07001', // Sister Mary
   '07002', // Amanda Sharpe
   '07003', // Trish
+  '05046', // Gavriella Mizrah
+  '05049', // Penny White
 ]);
 
 const HEADER_SELECT = {
