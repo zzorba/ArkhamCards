@@ -12,6 +12,7 @@ import cards from './cards';
 import decks from './decks';
 import packs from './packs';
 import settings from './settings';
+import dissonantVoices from './dissonantVoices';
 import { CardFilterData, FilterState } from '@lib/filters';
 import { getSystemLanguage } from '@lib/i18n';
 import {
@@ -70,6 +71,11 @@ const signedInPersistConfig = {
   storage: AsyncStorage,
   blacklist: ['loading', 'error'],
 };
+const dissonantVoicesPersistConfig = {
+  key: 'dissonantVoices',
+  storage: AsyncStorage,
+  blacklist: ['loading', 'error'],
+};
 
 // Combine all the reducers
 const rootReducer = combineReducers({
@@ -81,6 +87,7 @@ const rootReducer = combineReducers({
   signedIn: persistReducer(signedInPersistConfig, signedIn),
   settings: persistReducer(settingsPeristConfig, settings),
   filters,
+  dissonantVoices: persistReducer(dissonantVoicesPersistConfig, dissonantVoices),
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

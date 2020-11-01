@@ -6,6 +6,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export interface Narration {
+  id: string;
+  name: string;
+}
+
 export type Schema = AllCampaigns | Log | Errata | Rules;
 export type Step =
   | BranchStep

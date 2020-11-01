@@ -13,10 +13,14 @@ import {
   LOGIN,
   LOGIN_ERROR,
   LOGOUT,
+  DISSONANT_VOICES_LOGIN_STARTED,
+  DISSONANT_VOICES_LOGIN,
+  DISSONANT_VOICES_LOGIN_ERROR,
+  DISSONANT_VOICES_LOGOUT,
 } from './types';
 import { AppState } from '@reducers';
 
-import { getAccessToken, signInFlow, signOutFlow } from '@lib/auth';
+import { getAccessToken, signInFlow, signOutFlow } from '@lib/dissonantVoices';
 // @ts-ignore
 import { decks } from '@lib/authApi';
 
@@ -64,6 +68,55 @@ export function verifyLogin(): ThunkAction<void, AppState, null, Action<string>>
       } else {
         dispatch({
           type: LOGOUT,
+        });
+      }
+    });
+  };
+}
+
+export function dissonantVoicesLogin(): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>): void => {
+    dispatch({
+      type: DISSONANT_VOICES_LOGIN_STARTED,
+    });
+    signInFlow().then(response => {
+      if (response.success) {
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN,
+        });
+      } else {
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN_ERROR,
+          error: response.error,
+        });
+      }
+    });
+  };
+}
+
+export function dissonantVoicesLogout(): ThunkAction<void, AppState, null, Action<string>> {
+  return (dispatch) => {
+    dispatch({
+      type: DISSONANT_VOICES_LOGIN_STARTED,
+    });
+    signOutFlow().then(() => {
+      dispatch({
+        type: DISSONANT_VOICES_LOGOUT,
+      });
+    });
+  };
+}
+
+export function dissonantVoicesVerifyLogin(): ThunkAction<void, AppState, null, Action<string>> {
+  return (dispatch) => {
+    getAccessToken().then(accessToken => {
+      if (accessToken) {
+        dispatch({
+          type: DISSONANT_VOICES_LOGIN,
+        });
+      } else {
+        dispatch({
+          type: DISSONANT_VOICES_LOGOUT,
         });
       }
     });

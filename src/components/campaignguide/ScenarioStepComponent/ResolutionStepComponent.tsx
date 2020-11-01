@@ -10,6 +10,8 @@ import CampaignGuideTextComponent from '../CampaignGuideTextComponent';
 import { ResolutionStep } from '@data/scenario/types';
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { playNarration } from '../Narrator';
+import { Icon } from 'react-native-elements';
 
 interface Props {
   step: ResolutionStep;
@@ -31,8 +33,11 @@ export default function ResolutionStepComponent({ step }: Props) {
       ) }
       { (!!resolution.text || resolution.steps.length > 0) && (
         <View style={space.marginTopM}>
-          <View style={space.marginSideM}>
-            <Text style={typography.mediumGameFont}>
+          <View style={{...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+            { resolution.narration && (
+              <Icon name='play-circle-outline' type='material' onPress={() => playNarration(resolution.narration!.id)}/>
+            ) }
+            <Text style={{...typography.mediumGameFont, flex: 1, paddingLeft: 8}}>
               { resolution.title }
             </Text>
           </View>
