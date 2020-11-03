@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { forEach, map, sum } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CounterListItemComponent from './CounterListItemComponent';
-import ScenarioGuideContext, { ScenarioGuideContextType } from '../../ScenarioGuideContext';
+import ScenarioGuideContext from '../../ScenarioGuideContext';
 import { NumberChoices } from '@actions/types';
 import space, { m } from '@styles/space';
+import { useCounters } from '@components/core/hooks';
+import StyleContext from '@styles/StyleContext';
 
 export interface CounterItem {
   code: string;
@@ -25,69 +27,27 @@ interface Props {
   loading?: boolean;
 }
 
-interface State {
-  counts: {
-    [code: string]: number;
-  };
-}
+export default function CounterListComponent({ id, items, countText, requiredTotal, loading }: Props) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { colors, borderStyle, typography } = useContext(StyleContext);
+  const [counts, onInc, onDec] = useCounters({});
 
-export default class CounterListComponent extends React.Component<Props, State> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      counts: {},
-    };
-  }
-
-  _onInc = (
-    code: string,
-    limit?: number
-  ) => {
-    this.setState(state => {
-      const value = (state.counts[code] || 0) + 1;
-      return {
-        counts: {
-          ...state.counts,
-          [code]: limit !== undefined ? Math.min(limit, value) : value,
-        },
-      };
-    });
-  };
-
-  _onDec = (
-    code: string
-  ) => {
-    this.setState(state => {
-      const value = state.counts[code] || 0;
-      return {
-        counts: {
-          ...state.counts,
-          [code]: Math.max(0, value - 1),
-        },
-      };
-    });
-  };
-
-  _save = () => {
-    const { id } = this.props;
-    const { counts } = this.state;
+  const save = useCallback(() => {
     const choices: NumberChoices = {};
     forEach(counts, (value, code) => {
-      choices[code] = [value];
+      if (value !== undefined) {
+        choices[code] = [value];
+      }
     });
-    this.context.scenarioState.setNumberChoices(
+    scenarioState.setNumberChoices(
       id,
       choices
     );
-  };
+  }, [id, counts, scenarioState]);
+  const choiceList = scenarioState.numberChoices(id);
+  const hasDecision = choiceList !== undefined;
 
-  renderSaveButton(hasDecision: boolean) {
-    const { requiredTotal } = this.props;
-    const { counts } = this.state;
+  const saveButton = useMemo(() => {
     if (hasDecision) {
       return null;
     }
@@ -96,20 +56,19 @@ export default class CounterListComponent extends React.Component<Props, State> 
     return disabled && requiredTotal !== undefined ? (
       <BasicButton
         title={currentTotal > requiredTotal ? t`Too many` : t`Not enough`}
-        onPress={this._save}
+        onPress={save}
         disabled
       />
     ) : (
       <BasicButton
         title={t`Proceed`}
-        onPress={this._save}
+        onPress={save}
         disabled={disabled}
       />
     );
-  }
+  }, [hasDecision, requiredTotal, counts, save]);
 
-  getValue(code: string, choiceList?: NumberChoices): number {
-    const { counts } = this.state;
+  const getValue = useCallback((code: string): number => {
     if (choiceList === undefined) {
       return counts[code] || 0;
     }
@@ -118,53 +77,44 @@ export default class CounterListComponent extends React.Component<Props, State> 
       return 0;
     }
     return investigatorCount[0] || 0;
-  }
+  }, [counts, choiceList]);
 
-  render() {
-    const { id, items, countText, loading } = this.props;
-    const {
-      style: { colors, borderStyle, typography },
-      scenarioState,
-    } = this.context;
-    const choiceList = scenarioState.numberChoices(id);
-    const hasDecision = choiceList !== undefined;
-    return (
-      <View>
-        <View style={[
-          styles.prompt,
-          borderStyle,
-          space.paddingTopS,
-          space.paddingRightM,
-        ]}>
-          <Text style={typography.mediumGameFont}>
-            { countText }
-          </Text>
-        </View>
-        { loading ? (
-          <View style={[styles.loadingRow, borderStyle]}>
-            <ActivityIndicator size="small" animating color={colors.lightText} />
-          </View>
-        ) : map(items, ({ code, name, description, limit, color }, idx) => {
-          const value = this.getValue(code, choiceList);
-          return (
-            <CounterListItemComponent
-              key={idx}
-              value={value}
-              code={code}
-              name={name}
-              description={description}
-              onInc={this._onInc}
-              onDec={this._onDec}
-              limit={limit}
-              editable={!hasDecision}
-              color={color}
-            />
-          );
-        }) }
-        { this.renderSaveButton(hasDecision) }
+  return (
+    <View>
+      <View style={[
+        styles.prompt,
+        borderStyle,
+        space.paddingTopS,
+        space.paddingRightM,
+      ]}>
+        <Text style={typography.mediumGameFont}>
+          { countText }
+        </Text>
       </View>
-    );
-  }
+      { loading ? (
+        <View style={[styles.loadingRow, borderStyle]}>
+          <ActivityIndicator size="small" animating color={colors.lightText} />
+        </View>
+      ) : map(items, ({ code, name, description, limit, color }, idx) => {
+        const value = getValue(code);
+        return (
+          <CounterListItemComponent
+            key={idx}
+            value={value}
+            code={code}
+            name={name}
+            description={description}
+            onInc={onInc}
+            onDec={onDec}
+            limit={limit}
+            editable={!hasDecision}
+            color={color}
+          />
+        );
+      }) }
+      { saveButton }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

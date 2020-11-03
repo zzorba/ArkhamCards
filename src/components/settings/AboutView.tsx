@@ -30,7 +30,7 @@ export default function AboutView() {
       </View>
       <View style={space.marginTopM}>
         <CardTextComponent onLinkPress={linkPressed}
-          text={'<b>Icon Attribution:</b>\n• \'Cards\', \'Decks\', \'Campaigns\' and \'Settings\' icons by Eugene Sarnetsky\n• \'FAQ\' icon by Gregor Cresnar from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• Octopus Vectors by [Vecteezy](https://www.vecteezy.com/free-vector/octopus)'} />
+          text={'<b>Icon Attribution:</b>\n• \'Cards\', \'Decks\', \'Campaigns\' and \'Settings\' icons by Eugene Sarnetsky\n• \'FAQ\' icon by Gregor Cresnar from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'Cards\' icon by Dmitriy Ivanov from the Noun Project.\n• \'crate\' by Imogen Oh from the Noun Project\n• Octopus Vectors by [Vecteezy](https://www.vecteezy.com/free-vector/octopus)'} />
       </View>
       <View style={styles.footer} />
     </ScrollView>

@@ -3747,6 +3747,22 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
             "id": "the_accusation",
             "text": "dummy"
           },
@@ -3787,6 +3803,22 @@
       {
         "section": "memories_recovered",
         "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "a deal with Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "a followed lead."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "a jailbreak."
+          },
+          {
+            "id": "an_intervention",
+            "text": "an intervention."
+          },
           {
             "id": "battle_with_a_horrifying_devil",
             "text": "una batalla con un horripilante demonio"

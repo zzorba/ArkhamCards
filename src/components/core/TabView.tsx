@@ -13,7 +13,7 @@ interface Props {
     title: string;
     node: React.ReactNode;
   }[];
-  onTabChange: (key: string) => void;
+  onTabChange?: (key: string) => void;
   scrollEnabled?: boolean;
 }
 
@@ -30,7 +30,7 @@ export default function ArkhamTabView({ tabs, onTabChange, scrollEnabled }: Prop
 
   const onIndexChange = useCallback((index: number) => {
     setIndex(index);
-    onTabChange(tabs[index].key);
+    onTabChange && onTabChange(tabs[index].key);
   }, [onTabChange, setIndex, tabs]);
 
   const renderTabBar = useCallback((props: SceneRendererProps & {

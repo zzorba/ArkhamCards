@@ -58,7 +58,8 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
   if (!changes && !showDeckUpgrade) {
     return null;
   }
-  const availableXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
+  const spentXp = changes?.spentXp || 0;
+  const totalXp = (deck.xp || 0) + (deck.xp_adjustment || 0);
   return (
     <>
       <CardSectionHeader
@@ -68,7 +69,7 @@ export default function DeckXpSection({ componentId, deck, cards, investigator, 
       { !!changes && (
         <PickerStyleButton
           id="xp"
-          title={`${changes.spentXp} of ${availableXp} spent`}
+          title={t`${spentXp} of ${totalXp} spent`}
           onPress={onPress}
           widget="nav"
           settingsStyle

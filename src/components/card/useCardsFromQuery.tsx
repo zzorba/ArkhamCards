@@ -5,7 +5,7 @@ import { filter } from 'lodash';
 import Card from '@data/Card';
 import { QuerySort } from '@data/types';
 import DatabaseContext from '@data/DatabaseContext';
-import { useTabooSet } from '@components/core/hooks';
+import { useTabooSetId } from '@components/core/hooks';
 
 interface Props {
   query?: Brackets;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Props): [Card[], boolean] {
-  const tabooSetId = useTabooSet(tabooSetOverride);
+  const tabooSetId = useTabooSetId(tabooSetOverride);
   const { db } = useContext(DatabaseContext);
   const [cards, setCards] = useState<Card[] | undefined>();
   useEffect(() => {

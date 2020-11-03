@@ -46,6 +46,7 @@ export default class App {
   }
 
   setupAppEventHandlers(initial: boolean) {
+    console.log('Setting up app event heandlers');
     Linking.addEventListener('url', this._handleUrl);
 
     // We handle arkham cards schema-ref

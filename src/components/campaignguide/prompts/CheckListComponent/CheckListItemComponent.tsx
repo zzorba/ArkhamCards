@@ -12,7 +12,7 @@ interface Props {
   name: string;
   color?: string;
   selected: boolean;
-  onChoiceToggle: (code: string) => void;
+  onChoiceToggle: (code: string, value: boolean) => void;
   editable: boolean;
 }
 
@@ -25,8 +25,8 @@ export default function CheckListItemComponent({
   editable,
 }: Props) {
   const { borderStyle, colors, typography } = useContext(StyleContext);
-  const toggle = useCallback(() => {
-    onChoiceToggle(code);
+  const toggle = useCallback((value: boolean) => {
+    onChoiceToggle(code, value);
   }, [onChoiceToggle, code]);
   if (!editable && !selected) {
     return null;

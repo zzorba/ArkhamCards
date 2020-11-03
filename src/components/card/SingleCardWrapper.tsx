@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Text,
 } from 'react-native';
 import { t } from 'ttag';
 
-import CardListWrapper from '@components/card/CardListWrapper';
 import Card from '@data/Card';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import space from '@styles/space';
+import useCardList from './useCardList';
 
 interface Props<T=undefined> {
   code: string;
@@ -15,38 +15,40 @@ interface Props<T=undefined> {
   extraProps?: T;
   children: (card: Card, extraProps?: T) => React.ReactNode | null;
   loadingComponent?: React.ReactNode;
+  placeholderComponent?: () => React.ReactNode;
 }
 
-export default class SingleCardWrapper<T=undefined> extends React.Component<Props<T>> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function SingleCardWrapper<T=undefined>({ code, type, extraProps, children, loadingComponent, placeholderComponent }: Props<T>) {
+  const { typography } = useContext(StyleContext);
+  const [cards, loading] = useCardList([code], type);
 
-  _render = (cards: Card[], loading: boolean): React.ReactNode => {
-    const { code, children, loadingComponent, extraProps } = this.props;
-    const { typography } = this.context;
-    if (!cards || !cards.length || !cards[0]) {
-      if (loading) {
-        return loadingComponent || null;
+  if (!cards || !cards.length || !cards[0]) {
+    if (loading) {
+      if (loadingComponent) {
+        return (
+          <>
+            { loadingComponent }
+          </>
+        );
       }
+      return null;
+    }
+    if (placeholderComponent) {
       return (
-        <Text style={[typography.text, space.paddingM]}>
-          { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
-        </Text>
+        <>
+          { placeholderComponent() }
+        </>
       );
     }
-    return children(cards[0], extraProps);
-  };
-
-  render() {
-    const { code, type, extraProps } = this.props;
     return (
-      <CardListWrapper
-        codes={[code]}
-        type={type}
-        extraProps={extraProps}
-      >
-        { this._render }
-      </CardListWrapper>
+      <Text style={[typography.text, space.paddingM]}>
+        { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
+      </Text>
     );
   }
+  return (
+    <>
+      { children(cards[0], extraProps) }
+    </>
+  );
 }

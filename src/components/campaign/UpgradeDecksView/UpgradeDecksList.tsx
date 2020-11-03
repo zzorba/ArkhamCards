@@ -52,7 +52,7 @@ export default function UpgradeDecksList({
   allInvestigators,
 }: Props) {
   const { typography } = useContext(StyleContext);
-  const [saved, updateSaved] = useToggles({});
+  const [saved, , setSaved] = useToggles({});
   const renderDetails = useCallback((
     deck: Deck,
     cards: CardsMap,
@@ -94,8 +94,8 @@ export default function UpgradeDecksList({
 
   const saveXp = useCallback((investigator: Card, xp: number) => {
     updateInvestigatorXp(investigator, xp);
-    updateSaved({ type: 'set', key: investigator.code, value: true });
-  }, [updateInvestigatorXp, updateSaved]);
+    setSaved(investigator.code, true);
+  }, [updateInvestigatorXp, setSaved]);
 
   const investigators = filter(
     allInvestigators,

@@ -6,7 +6,7 @@ import TwoSidedCardComponent from './TwoSidedCardComponent';
 import Card from '@data/Card';
 import CardDetailSectionHeader from './CardDetailSectionHeader';
 import FilterBuilder from '@lib/filters';
-import { useTabooSet } from '@components/core/hooks';
+import { useTabooSetId } from '@components/core/hooks';
 import useCardsFromQuery from '../useCardsFromQuery';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function BondedCardsComponent({ componentId, cards, width }: Props) {
-  const tabooSetId = useTabooSet();
+  const tabooSetId = useTabooSetId();
   const bondedToQuery = useMemo(() => {
     if (!find(cards, card => !!card.bonded_name)) {
       return undefined;

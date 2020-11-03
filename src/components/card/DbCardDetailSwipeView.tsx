@@ -64,7 +64,7 @@ function DbCardDetailSwipeView(props: Props) {
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const showSpoilers = useSelector((state: AppState) => getPackSpoilers(state));
-  const [spoilers, updateSpoiler] = useToggles({});
+  const [spoilers, toggleShowSpoilers] = useToggles({});
   const [deckCardCounts, updateDeckCardCounts] = useSlots(props.deckCardCounts || {});
   const [index, setIndex] = useState(initialIndex);
   const [cards, updateCards] = useCards('code', initialCards);
@@ -154,10 +154,6 @@ function DbCardDetailSwipeView(props: Props) {
       }
     }
   }, componentId, [currentCard]);
-
-  const toggleShowSpoilers = useCallback((code: string) => {
-    updateSpoiler({ type: 'toggle', key: code });
-  }, [updateSpoiler]);
 
   const showCardSpoiler = useCallback((card?: Card) => {
     if (!card) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { map } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
@@ -23,54 +23,50 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class HasCardConditionComponent extends React.Component<Props> {
-  investigatorCardPrompt(
-    card: Card,
-    investigator: 'defeated' | 'any' | 'each'
-  ): string {
-    const cardName = card.cardName();
-    switch (investigator) {
-      case 'any':
-        return t`Does any investigator have \"${cardName}\" in their deck?`;
-      case 'defeated':
-        return t`Was an investigator with \"${cardName}\" in their deck defeated?`;
-      case 'each':
-        return t`For each investigator with \"${cardName}\" in their deck:`;
-    }
+function investigatorCardPrompt(
+  card: Card,
+  investigator: 'defeated' | 'any' | 'each'
+): string{
+  const cardName = card.cardName();
+  switch (investigator) {
+    case 'any':
+      return t`Does any investigator have \"${cardName}\" in their deck?`;
+    case 'defeated':
+      return t`Was an investigator with \"${cardName}\" in their deck defeated?`;
+    case 'each':
+      return t`For each investigator with \"${cardName}\" in their deck:`;
   }
+}
 
-  _renderInvestigators = (
-    investigatorCards: Card[],
-    option: Option
-  ): Element | null => {
-    const investigators = stringList(map(investigatorCards, card => card.name));
-    const prompt = option && option.condition;
-    return (
-      <SetupStepWrapper>
-        <CampaignGuideTextComponent
-          text={ngettext(
-            msgid`${investigators} must read <b>${prompt}</b>.`,
-            `${investigators} must read <b>${prompt}</b>.`,
-            investigators.length
-          )}
-        />
-      </SetupStepWrapper>
-    );
-  };
+function renderInvestigators(investigatorCards: Card[], option: Option): Element | null {
+  const investigators = stringList(map(investigatorCards, card => card.name));
+  const prompt = option && option.condition;
+  return (
+    <SetupStepWrapper>
+      <CampaignGuideTextComponent
+        text={ngettext(
+          msgid`${investigators} must read <b>${prompt}</b>.`,
+          `${investigators} must read <b>${prompt}</b>.`,
+          investigators.length
+        )}
+      />
+    </SetupStepWrapper>
+  );
+};
 
-  _renderCard = (card: Card): Element | null => {
-    const { step, condition, campaignLog } = this.props;
+export default function HasCardConditionComponent({ step, condition, campaignLog }: Props) {
+  const renderCard = useCallback((card: Card): Element | null => {
     const result = hasCardConditionResult(condition, campaignLog);
     if (result.type === 'investigator') {
       return (
         <InvestigatorResultConditionWrapper
           result={result}
-          renderOption={this._renderInvestigators}
+          renderOption={renderInvestigators}
           extraArg={card}
         />
       );
     }
-    const prompt = this.investigatorCardPrompt(
+    const prompt = investigatorCardPrompt(
       card,
       condition.investigator
     );
@@ -82,17 +78,14 @@ export default class HasCardConditionComponent extends React.Component<Props> {
         result={result.decision}
       />
     );
-  };
+  }, [step, condition, campaignLog]);
 
-  render() {
-    const { condition } = this.props;
-    return (
-      <SingleCardWrapper
-        code={condition.card}
-        type="player"
-      >
-        { this._renderCard }
-      </SingleCardWrapper>
-    );
-  }
+  return (
+    <SingleCardWrapper
+      code={condition.card}
+      type="player"
+    >
+      { renderCard }
+    </SingleCardWrapper>
+  );
 }

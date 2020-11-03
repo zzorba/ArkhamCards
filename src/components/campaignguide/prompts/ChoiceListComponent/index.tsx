@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { every, findIndex, forEach, flatMap, map } from 'lodash';
 import { t } from 'ttag';
@@ -12,6 +12,7 @@ import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
 import { BulletType } from '@data/scenario/types';
 import { Choices, DisplayChoiceWithId } from '@data/scenario';
 import space, { m } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
 
 export interface ListItem {
   code: string;
@@ -23,7 +24,6 @@ export interface ListItem {
 export interface ChoiceListComponentProps {
   id: string;
   bulletType?: BulletType;
-  title?: string;
   text?: string;
   optional?: boolean;
   detailed?: boolean;
@@ -34,54 +34,35 @@ interface Props extends ChoiceListComponentProps {
   items: ListItem[];
 }
 
-interface State {
-  selectedChoice: {
-    [code: string]: number | undefined;
-  };
-}
-
-export default class InvestigatorChoicePrompt extends React.Component<Props, State> {
-  static contextType = ScenarioGuideContext;
-  context!: ScenarioGuideContextType;
-
-  constructor(props: Props) {
-    super(props);
-
+export default function InvestigatorChoicePrompt({ id, bulletType, text, optional, detailed, options, loading, items }: Props) {
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { borderStyle, colors } = useContext(StyleContext);
+  const [selectedChoice, setSelectedChoice] = useState(() => {
     const selectedChoice: {
       [code: string]: number | undefined;
     } = {};
-    if (!props.optional) {
-      forEach(props.items, item => {
-        if (props.options.type === 'universal') {
+    if (!optional) {
+      forEach(items, item => {
+        if (options.type === 'universal') {
           selectedChoice[item.code] = 0;
         } else {
-          const personalized = props.options.perCode[item.code];
+          const personalized = options.perCode[item.code];
           if (personalized && personalized.length) {
             selectedChoice[item.code] = 0;
           }
         }
       });
     }
-    this.state = {
-      selectedChoice,
-    };
-  }
-
-  _onChoiceChange = (
-    code: string,
-    choice: number
-  ) => {
-    this.setState({
-      selectedChoice: {
-        ...this.state.selectedChoice,
-        [code]: choice === -1 ? undefined : choice,
-      },
+    return selectedChoice;
+  });
+  const onChoiceChange = useCallback((code: string, choice: number) => {
+    setSelectedChoice({
+      ...selectedChoice,
+      [code]: choice === -1 ? undefined : choice,
     });
-  };
+  }, [selectedChoice, setSelectedChoice]);
 
-  _save = () => {
-    const { id, options } = this.props;
-    const { selectedChoice } = this.state;
+  const save = useCallback(() => {
     const choices: StringChoices = {};
     forEach(selectedChoice, (idx, code) => {
       if (idx !== undefined && idx !== -1) {
@@ -93,39 +74,36 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
         }
       }
     });
-    this.context.scenarioState.setStringChoices(
+    scenarioState.setStringChoices(
       id,
       choices
     );
-  };
-
-  renderSaveButton(hasDecision: boolean) {
-    const { items, detailed } = this.props;
-    const { selectedChoice } = this.state;
+  }, [id, options, scenarioState, selectedChoice]);
+  const inputChoices = scenarioState.stringChoices(id);
+  const hasDecision = inputChoices !== undefined;
+  const saveButton = useMemo(() => {
     if (hasDecision) {
       return <View style={space.marginBottomM} />;
     }
     return (
       <BasicButton
         title={t`Proceed`}
-        onPress={this._save}
+        onPress={save}
         disabled={detailed && !every(
           items,
           item => selectedChoice[item.code] !== undefined)
         }
       />
     );
+  }, [hasDecision, items, detailed, selectedChoice, save]);
 
-  }
-
-  getChoice(
+  const getChoice = useCallback((
     code: string,
     choices: DisplayChoiceWithId[],
     inputChoices?: StringChoices
-  ): number | undefined {
-    const { detailed } = this.props;
+  ): number | undefined => {
     if (inputChoices === undefined) {
-      const choice = this.state.selectedChoice[code];
+      const choice = selectedChoice[code];
       if (choice !== undefined) {
         return choice;
       }
@@ -136,10 +114,9 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
       }
     }
     return detailed ? undefined : -1;
-  }
+  }, [detailed, selectedChoice]);
 
-  renderChoices(inputChoiceList?: StringChoices) {
-    const { items, detailed, options, optional } = this.props;
+  const choicesComponent = useMemo(() => {
     const results = flatMap(items, (item, idx) => {
       const choices = options.type === 'universal' ?
         options.choices :
@@ -152,10 +129,10 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           key={idx}
           {...item}
           choices={choices}
-          choice={this.getChoice(item.code, choices, inputChoiceList)}
-          onChoiceChange={this._onChoiceChange}
+          choice={getChoice(item.code, choices, inputChoices)}
+          onChoiceChange={onChoiceChange}
           optional={!!optional}
-          editable={inputChoiceList === undefined}
+          editable={inputChoices === undefined}
           detailed={detailed}
           firstItem={idx === 0}
         />
@@ -170,32 +147,27 @@ export default class InvestigatorChoicePrompt extends React.Component<Props, Sta
           choices={[]}
           editable={false}
           optional={false}
-          onChoiceChange={this._onChoiceChange}
+          onChoiceChange={onChoiceChange}
           firstItem
         />
       );
     }
     return results;
-  }
+  }, [inputChoices, items, detailed, options, optional, getChoice, onChoiceChange]);
 
-  render() {
-    const { id, bulletType, text, loading } = this.props;
-    const { scenarioState, style: { borderStyle, colors } } = this.context;
-    const inputChoices = scenarioState.stringChoices(id);
-    return (
-      <>
-        <SetupStepWrapper bulletType={bulletType}>
-          { !!text && <CampaignGuideTextComponent text={text} /> }
-        </SetupStepWrapper>
-        { loading ? (
-          <View style={[styles.loadingRow, borderStyle]}>
-            <ActivityIndicator size="small" animating color={colors.lightText} />
-          </View>
-        ) : this.renderChoices(inputChoices) }
-        { this.renderSaveButton(inputChoices !== undefined) }
-      </>
-    );
-  }
+  return (
+    <>
+      <SetupStepWrapper bulletType={bulletType}>
+        { !!text && <CampaignGuideTextComponent text={text} /> }
+      </SetupStepWrapper>
+      { loading ? (
+        <View style={[styles.loadingRow, borderStyle]}>
+          <ActivityIndicator size="small" animating color={colors.lightText} />
+        </View>
+      ) : choicesComponent }
+      { saveButton }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { find, map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
@@ -22,9 +22,8 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class CheckSuppliesConditionComponent extends React.Component<Props> {
-  renderCondition(cards: Card[], positive: boolean) {
-    const { condition } = this.props;
+export default function CheckSuppliesConditionComponent({ step, condition, campaignLog }: Props) {
+  const renderCondition = useCallback((cards: Card[], positive: boolean) => {
     const option = find(condition.options, option => option.boolCondition === positive);
     if (!option) {
       return null;
@@ -48,42 +47,39 @@ export default class CheckSuppliesConditionComponent extends React.Component<Pro
         />
       </SetupStepWrapper>
     );
-  }
+  }, [condition]);
 
-  _renderAllOption = (cards: Card[], option: Option): Element | null => {
-    return this.renderCondition(
+  const renderAllOption = useCallback((cards: Card[], option: Option): Element | null => {
+    return renderCondition(
       cards,
       option.boolCondition === true
     );
-  };
+  }, [renderCondition]);
 
-  render(): React.ReactNode {
-    const { step, condition, campaignLog } = this.props;
-    switch (condition.investigator) {
-      case 'any': {
-        return (
-          <BinaryResult
-            bulletType={step.bullet_type}
-            prompt={step.text}
-            result={checkSuppliesAnyConditionResult(condition, campaignLog).decision}
+  switch (condition.investigator) {
+    case 'any': {
+      return (
+        <BinaryResult
+          bulletType={step.bullet_type}
+          prompt={step.text}
+          result={checkSuppliesAnyConditionResult(condition, campaignLog).decision}
+        />
+      );
+    }
+    case 'all': {
+      const result = checkSuppliesAllConditionResult(condition, campaignLog);
+      return (
+        <>
+          <SetupStepWrapper>
+            { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
+          </SetupStepWrapper>
+          <InvestigatorResultConditionWrapper
+            result={result}
+            renderOption={renderAllOption}
+            extraArg={undefined}
           />
-        );
-      }
-      case 'all': {
-        const result = checkSuppliesAllConditionResult(condition, campaignLog);
-        return (
-          <>
-            <SetupStepWrapper>
-              { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
-            </SetupStepWrapper>
-            <InvestigatorResultConditionWrapper
-              result={result}
-              renderOption={this._renderAllOption}
-              extraArg={undefined}
-            />
-          </>
-        );
-      }
+        </>
+      );
     }
   }
 }

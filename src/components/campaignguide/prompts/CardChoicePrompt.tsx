@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Navigation } from 'react-native-navigation';
-import { find, flatMap, keys, map, uniq, uniqBy } from 'lodash';
+import { filter, find, flatMap, keys, map, partition, uniq, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
@@ -19,6 +19,7 @@ import { PLAYER_CARDS_QUERY, combineQueries, combineQueriesOpt, where } from '@d
 import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import { calculateCardChoiceResult } from '@data/scenario/inputHelper';
 
 interface Props {
   componentId: string;
@@ -104,7 +105,7 @@ function mainQuery(
 export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
-  const { scenarioState, processedScenario, scenarioInvestigators } = useContext(ScenarioStepContext);
+  const { scenarioState, processedScenario, scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const nonDeckButton = useMemo(() => {
     return !!find(
       input.query,
@@ -177,7 +178,18 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
   }, [processedScenario, scenarioInvestigators, latestDecks, input.query, extraCards, selectedCards]);
 
   const [rawCards, loading] = useCardsFromQuery({ query });
-  const cards = uniqBy(rawCards, card => card.code);
+  const cards = useMemo(() => {
+    const extraSet = new Set(extraCards);
+    const [extra, normal] = partition(uniqBy(rawCards, card => card.code), card => extraSet.has(card.code));
+    return [...normal, ...extra];
+  }, [rawCards, extraCards]);
+  const filteredCards = useMemo(() => {
+    if (!input.campaign_log_condition) {
+      return cards;
+    }
+    const condition = input.campaign_log_condition;
+    return filter(cards, card => calculateCardChoiceResult(condition, campaignLog, card.code));
+  }, [cards, campaignLog, input.campaign_log_condition]);
   if (input.include_counts) {
     return (
       <>
@@ -188,7 +200,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
           id={id}
           countText={input.choices[0].text}
           loading={loading}
-          items={map(cards, card => {
+          items={map(filteredCards, card => {
             return {
               code: card.code,
               name: card.name,
@@ -205,7 +217,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
         <ChoiceListComponent
           id={id}
           text={text}
-          items={map(cards, card => {
+          items={map(filteredCards, card => {
             return {
               code: card.code,
               name: card.name,
@@ -227,7 +239,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
       id={id}
       choiceId={choice.id}
       text={text}
-      items={map(cards, card => {
+      items={map(filteredCards, card => {
         return {
           code: card.code,
           name: card.name,
@@ -235,6 +247,7 @@ export default function CardChoicePrompt({ componentId, id, text, input }: Props
       })}
       min={input.min}
       max={input.max}
+      extraSelected={extraCards}
       checkText={choice.text}
       loading={loading}
       button={(nonDeckButton && selectedCards === undefined) ? (

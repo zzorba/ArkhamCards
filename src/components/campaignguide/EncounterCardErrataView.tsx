@@ -17,6 +17,7 @@ export interface EncounterCardErrataProps extends CampaignGuideInputProps {
 }
 
 type Props = EncounterCardErrataProps & CampaignGuideProps;
+
 function CardErrataComponent({ errata, cards }: { errata: CardErrata; cards: CardsMap }) {
   const { fontScale, colors, typography } = useContext(StyleContext);
   const cardsByName = useMemo(() => groupBy(

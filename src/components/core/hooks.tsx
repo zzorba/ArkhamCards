@@ -1,15 +1,31 @@
-import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
-import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent } from 'react-native-navigation';
-import { forEach, debounce } from 'lodash';
+import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
+import { forEach, debounce, find } from 'lodash';
 
 import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, getCampaign, getChaosBagResults, getDeck, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
+import { AppState, getCampaign, getChaosBagResults, getDeck, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
 import { campaignScenarios, Scenario } from '@components/campaign/constants';
+import { BackHandler } from 'react-native';
+import TabooSet from '@data/TabooSet';
+
+export function useBackButton(handler: () => boolean) {
+  // Frustration isolated! Yay! 🎉
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', handler);
+
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        handler
+      );
+    };
+  }, [handler]);
+}
 
 export function useNavigationButtonPressed(
   handler: (event: NavigationButtonPressedEvent) => void,
@@ -28,6 +44,28 @@ export function useNavigationButtonPressed(
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [componentId, debouncedHandler, ...deps]);
+}
+
+export function useComponentVisible(componentId: string): boolean {
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const appearSub = Navigation.events().registerComponentDidAppearListener((event: ComponentDidAppearEvent) => {
+      if (event.componentId === componentId) {
+        setVisible(true);
+      }
+    });
+    const disappearSub = Navigation.events().registerComponentDidDisappearListener((event: ComponentDidDisappearEvent) => {
+      if (event.componentId === componentId) {
+        setVisible(false);
+      }
+    });
+    return () => {
+      appearSub.remove();
+      disappearSub.remove();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [componentId, setVisible]);
+  return visible;
 }
 
 export function useComponentDidAppear(
@@ -88,6 +126,60 @@ export function useCounter(initialValue: number, { min, max }: { min?: number; m
   return [value, inc, dec, set];
 }
 
+
+interface IncCountAction {
+  type: 'inc';
+  key: string;
+  max?: number;
+}
+interface DecCountAction {
+  type: 'dec';
+  key: string;
+}
+
+interface SetCountAction {
+  type: 'set';
+  key: string;
+  value: number;
+}
+interface Counters {
+  [code: string]: number | undefined;
+}
+export function useCounters(initialValue: Counters): [Counters, (code: string, max?: number) => void, (code: string) => void, (code: string, value: number) => void] {
+  const [value, updateValue] = useReducer((state: Counters, action: IncCountAction | DecCountAction | SetCountAction) => {
+    switch (action.type) {
+      case 'set':
+        return {
+          ...state,
+          [action.key]: action.value,
+        };
+      case 'inc': {
+        const newValue = (state[action.key] || 0) + 1;
+        return {
+          ...state,
+          [action.key]: action.max !== undefined ? Math.min(action.max, newValue) : newValue,
+        };
+      }
+      case 'dec': {
+        return {
+          ...state,
+          [action.key]: Math.max(0, (state[action.key] || 0) - 1),
+        };
+      }
+    }
+  }, initialValue);
+  const inc = useCallback((code: string, max?: number) => {
+    updateValue({ type: 'inc', key: code, max });
+  }, [updateValue]);
+  const dec = useCallback((code: string) => {
+    updateValue({ type: 'dec', key: code });
+  }, [updateValue]);
+  const set = useCallback((code: string, value: number) => {
+    updateValue({ type: 'set', key: code, value });
+  }, [updateValue]);
+  return [value, inc, dec, set];
+}
+
 interface ClearAction {
   type: 'clear';
 }
@@ -103,17 +195,27 @@ interface ToggleAction {
   key: string;
 }
 
-type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction;
+interface RemoveAction {
+  type: 'remove';
+  key: string;
+}
+
+type SectionToggleAction = SetToggleAction | ToggleAction | ClearAction | RemoveAction;
 
 export interface Toggles {
   [key: string]: boolean | undefined;
 }
 
-export function useToggles(initialState: Toggles) {
-  return useReducer((state: Toggles, action: SectionToggleAction) => {
+export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string, value: boolean) => void, () => void, (code: string) => void] {
+  const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
         return initialState;
+      case 'remove': {
+        const newState = { ...state };
+        delete newState[action.key];
+        return newState;
+      }
       case 'set':
         return {
           ...state,
@@ -126,6 +228,11 @@ export function useToggles(initialState: Toggles) {
         };
     }
   }, initialState);
+  const toggle = useCallback((code: string) => updateToggles({ type: 'toggle', key: code }), [updateToggles]);
+  const set = useCallback((code: string, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
+  const clear = useCallback(() => updateToggles({ type: 'clear' }), [updateToggles]);
+  const remove = useCallback((code: string) => updateToggles({ type: 'remove', key: code }), [updateToggles]);
+  return [toggles, toggle, set, clear, remove];
 }
 
 export function useFlag(initialValue: boolean): [boolean, () => void, (value: boolean) => void] {
@@ -257,13 +364,13 @@ export function useCards(indexBy: 'code' | 'id', initialCards?: Card[]) {
   );
 }
 
-export function useTabooSet(tabooSetOverride?: number): number {
+export function useTabooSetId(tabooSetOverride?: number): number {
   const selector = useCallback((state: AppState) => getTabooSet(state, tabooSetOverride), [tabooSetOverride]);
   return useSelector(selector) || 0;
 }
 
 export function usePlayerCards(tabooSetOverride?: number): CardsMap | undefined {
-  const tabooSetId = useTabooSet(tabooSetOverride);
+  const tabooSetId = useTabooSetId(tabooSetOverride);
   const { playerCardsByTaboo } = useContext(DatabaseContext);
   const playerCards = playerCardsByTaboo && playerCardsByTaboo[`${tabooSetId || 0}`];
   return playerCards?.cards;
@@ -275,6 +382,10 @@ export function useInvestigatorCards(tabooSetOverride?: number): CardsMap | unde
   return investigatorCardsByTaboo?.[`${tabooSetId || 0}`];
 }
 
+export function useTabooSet(tabooSetId: number): TabooSet | undefined {
+  const { tabooSets } = useContext(DatabaseContext);
+  return find(tabooSets, tabooSet => tabooSet.id === tabooSetId);
+}
 
 export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined {
   const tabooSetId = useSelector((state: AppState) => getTabooSet(state, tabooSetOverride));
@@ -326,20 +437,22 @@ export function useChaosBagResults(campaignId: number): ChaosBagResults {
 
 export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
   const dispatch = useDispatch();
-  const deckSelector = useMemo(() => getDeck(id), [id]);
+  const effectiveDeckIdSelector = useCallback((state: AppState) => getEffectiveDeckId(state, id), [id]);
+  const effectiveDeckId = useSelector(effectiveDeckIdSelector);
+  const deckSelector = useMemo(() => getDeck(effectiveDeckId), [effectiveDeckId]);
   const theDeck = useSelector(deckSelector) || undefined;
   const previousDeckSelector = useCallback((state: AppState) => {
     return theDeck && theDeck.previous_deck && getDeck(theDeck.previous_deck)(state);
   }, [theDeck]);
   const thePreviousDeck = useSelector(previousDeckSelector) || undefined;
   useEffect(() => {
-    if (!theDeck && fetchIfMissing) {
+    if (!theDeck && fetchIfMissing && id > 0) {
       dispatch(fetchPrivateDeck(id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing) {
+    if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing && !theDeck.local) {
       dispatch(fetchPrivateDeck(id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -374,6 +487,18 @@ export function useParsedDeck(
     xpAdjustment !== undefined ? xpAdjustment : deck.xp_adjustment,
   ), [cards, deck, meta, slots, ignoreDeckLimitSlots, previousDeck, xpAdjustment]);
   return parsedDeck;
+}
+
+export function useEffectUpdate(update: () => void, deps: any[]) {
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    update();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 }
 
 export function useWhyDidYouUpdate<T>(name: string, props: T) {

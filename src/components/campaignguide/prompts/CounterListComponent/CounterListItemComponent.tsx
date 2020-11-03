@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import { BulletType } from '@data/scenario/types';
 import { m, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   code: string;
@@ -19,82 +19,52 @@ interface Props {
   editable: boolean;
 }
 
-export default class CounterListItemComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function CounterListItemComponent({ code, name, description, color, bulletType, value, limit, onInc, onDec, editable }: Props) {
+  const { borderStyle, typography } = useContext(StyleContext);
+  const inc = useCallback(() => onInc(code, limit), [onInc, code, limit]);
+  const dec = useCallback(() => onDec(code), [onDec, code]);
 
-  _inc = () => {
-    const {
-      onInc,
-      code,
-      limit,
-    } = this.props;
-    onInc(code, limit);
-  };
-
-  _dec = () => {
-    const {
-      onDec,
-      code,
-    } = this.props;
-    onDec(code);
-  };
-
-  renderCount() {
-    const { color } = this.props;
-    const { typography } = this.context;
+  const count = useMemo(() => {
     return (
       <View style={styles.count}>
         <Text style={[typography.bigGameFont, typography.center, color ? typography.white : {}]}>
-          { this.props.value }
+          { value }
         </Text>
       </View>
     );
-  }
+  }, [color, value, typography]);
 
-  render() {
-    const {
-      name,
-      description,
-      limit,
-      color,
-      value,
-      editable,
-    } = this.props;
-    const { borderStyle, typography } = this.context;
-    return (
-      <View style={[
-        styles.promptRow,
-        borderStyle,
-        color ? { backgroundColor: color } : {},
-      ]}>
-        <View style={styles.column}>
-          <Text style={[typography.mediumGameFont, color ? typography.white : {}]}>
-            { name }
+  return (
+    <View style={[
+      styles.promptRow,
+      borderStyle,
+      color ? { backgroundColor: color } : {},
+    ]}>
+      <View style={styles.column}>
+        <Text style={[typography.mediumGameFont, color ? typography.white : {}]}>
+          { name }
+        </Text>
+        { editable && !!description && (
+          <Text style={[typography.text, color ? typography.white : {}]}>
+            { description }
           </Text>
-          { editable && !!description && (
-            <Text style={[typography.text, color ? typography.white : {}]}>
-              { description }
-            </Text>
-          ) }
-        </View>
-        { editable ? (
-          <PlusMinusButtons
-            count={value}
-            max={limit}
-            onIncrement={this._inc}
-            onDecrement={this._dec}
-            countRender={this.renderCount()}
-            color={color ? 'light' : 'dark'}
-            hideDisabledMinus
-          />
-        ) : (
-          this.renderCount()
         ) }
       </View>
-    );
-
-  }
+      { editable ? (
+        <PlusMinusButtons
+          count={value}
+          max={limit}
+          onIncrement={inc}
+          onDecrement={dec}
+          countRender={count}
+          color={color ? 'light' : 'dark'}
+          hideDisabledMinus
+        />
+      ) : (
+        count
+      ) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -252,7 +252,7 @@ function useSectionFeed({
   const packSpoiler = useSelector(getPackSpoilers);
   const [expandButtonPressed, setExpandButtonPressed] = useState(false);
   const packInCollection = useSelector(getPacksInCollection);
-  const [showNonCollection, updateShowNonCollection] = useToggles({});
+  const [showNonCollection, , setShowNonCollection, clearShowNonCollection] = useToggles({});
   const storyQuery = storyOnly ? query : undefined;
   const [deckCards, setDeckCards] = useState<PartialCard[]>([]);
   const [mainQueryCards, setMainQueryCards] = useState<PartialCard[]>([]);
@@ -369,7 +369,7 @@ function useSectionFeed({
             id: `${prefix}_nc_${sectionId}`,
             onPress: () => {
               setExpandButtonPressed(true);
-              updateShowNonCollection({ type: 'set', key: sectionId, value: true });
+              setShowNonCollection(sectionId, true);
             },
             title: ngettext(
               msgid`Show ${nonCollectionCount} non-collection card`,
@@ -408,7 +408,7 @@ function useSectionFeed({
       appendFooterButtons(currentSectionId, showSpoilers ? 1 : 0);
     }
     return [result, items, spoilerCards.length];
-  }, [partialCards, deckCards, showNonCollection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, updateShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
+  }, [partialCards, deckCards, showNonCollection, packInCollection, packSpoiler, showSpoilers, editCollectionSettings, setShowNonCollection, showAllNonCollection, hasDeckChanges, refreshDeck]);
 
   const { cards, fetchMore } = useCardFetcher(visibleCards);
   const [refreshing, setRefreshing] = useState(true);
@@ -421,7 +421,7 @@ function useSectionFeed({
     let ignore = false;
     // This is for the really big changes.
     // Initially or when query/sort/tabooSetId change, we need to cllear our fetched cards
-    updateShowNonCollection({ type: 'clear' });
+    clearShowNonCollection();
     setShowSpoilers(false);
     setExpandButtonPressed(false);
     if (!query) {

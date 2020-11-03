@@ -28,7 +28,6 @@ function renderInvestigators(investigators: Card[], card: Card) {
 }
 
 export default function AddCardEffectComponent({ id, effect }: Props) {
-
   const renderCard = useCallback((card: Card) => {
     return (
       <InvestigatorSelectorWrapper

@@ -20,7 +20,7 @@ export default function WeaknessSetPackChooserComponent({
   onSelectedPacksChanged,
   compact,
 }: OwnProps) {
-  const [override, setOverride] = useToggles({ core: true });
+  const [override, , onPackCheck] = useToggles({ core: true });
   const packs = useSelector((state: AppState) => state.packs.all);
   const in_collection = useSelector((state: AppState) => state.packs.in_collection || EMPTY_IN_COLLECTION);
   const weaknessCards = useWeaknessCards();
@@ -44,9 +44,6 @@ export default function WeaknessSetPackChooserComponent({
     onSelectedPacksChanged(packs);
   }, [override, in_collection, onSelectedPacksChanged, weaknessPacks]);
 
-  const onPackCheck = useCallback((pack: string, value: boolean) => {
-    setOverride({ type: 'set', key: pack, value: !!value });
-  }, [setOverride]);
   const checkState = useMemo(() => {
     const checks: { [key: string]: boolean } = {
       ...in_collection,

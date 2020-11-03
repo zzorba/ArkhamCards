@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { find, findLast, findLastIndex } from 'lodash';
 import { Navigation } from 'react-native-navigation';
@@ -10,7 +10,7 @@ import { ProcessedCampaign } from '@data/scenario';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
@@ -20,20 +20,12 @@ interface Props {
   campaignState: CampaignStateHelper;
 }
 
-export default class AddSideScenarioButton extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function AddSideScenarioButton({ componentId, campaignId, processedCampaign, campaignGuide, campaignState }: Props) {
+  const { typography } = useContext(StyleContext);
 
-  _onPress = () => {
-    const {
-      componentId,
-      campaignId,
-      processedCampaign: {
-        scenarios,
-      },
-    } = this.props;
+  const onPress = useCallback(() => {
     const lastCompletedScenario = findLast(
-      scenarios,
+      processedCampaign.scenarios,
       scenario => scenario.type === 'completed'
     );
     if (!lastCompletedScenario) {
@@ -58,45 +50,37 @@ export default class AddSideScenarioButton extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [componentId, campaignId, processedCampaign.scenarios]);
 
-  canAddScenario() {
-    const {
-      processedCampaign: {
-        scenarios,
-        campaignLog,
-      },
-      campaignGuide,
-      campaignState,
-    } = this.props;
+  const canAddScenario = useMemo(() => {
     const lastCompletedScenarioIndex = findLastIndex(
-      scenarios,
+      processedCampaign.scenarios,
       scenario => scenario.type === 'completed'
     );
-    if (campaignLog.campaignData.result) {
+    if (processedCampaign.campaignLog.campaignData.result) {
       return false;
     }
     // Have to have completed a scenario
     if (lastCompletedScenarioIndex === -1) {
       return false;
     }
-    if (lastCompletedScenarioIndex + 1 < scenarios.length) {
-      const lastScenario = scenarios[lastCompletedScenarioIndex];
-      const nextScenario = scenarios[lastCompletedScenarioIndex + 1];
+    if (lastCompletedScenarioIndex + 1 < processedCampaign.scenarios.length) {
+      const lastScenario = processedCampaign.scenarios[lastCompletedScenarioIndex];
+      const nextScenario = processedCampaign.scenarios[lastCompletedScenarioIndex + 1];
       if (lastScenario.id.scenarioId === nextScenario.id.scenarioId) {
         // Can't insert a scenario in the middle of a replay-loop.
         return false;
       }
     }
     const scenarioInProgress = !!find(
-      scenarios,
+      processedCampaign.scenarios,
       scenario => scenario.type === 'started'
     );
     if (scenarioInProgress) {
       return false;
     }
     const completedActualScenario = find(
-      scenarios,
+      processedCampaign.scenarios,
       scenario =>
         scenario.type === 'completed' &&
         scenario.scenarioGuide.scenarioType() === 'scenario'
@@ -107,7 +91,7 @@ export default class AddSideScenarioButton extends React.Component<Props> {
 
     const nextScenario = campaignGuide.nextScenario(
       campaignState,
-      campaignLog,
+      processedCampaign.campaignLog,
       false
     );
     if (nextScenario && nextScenario.scenario.type === 'interlude') {
@@ -115,26 +99,22 @@ export default class AddSideScenarioButton extends React.Component<Props> {
       return false;
     }
     return true;
-  }
+  }, [processedCampaign.scenarios, processedCampaign.campaignLog, campaignGuide, campaignState]);
 
-  render() {
-    const { typography } = this.context;
-    const disabled = !this.canAddScenario();
-    return (
-      <>
-        <BasicButton
-          title={t`Add side scenario`}
-          onPress={this._onPress}
-          disabled={disabled}
-        />
-        { !!disabled && (
-          <View style={[space.marginTopM, space.marginBottomL, space.marginSideM]}>
-            <Text style={typography.text}>
-              { t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.` }
-            </Text>
-          </View>
-        ) }
-      </>
-    );
-  }
+  return (
+    <>
+      <BasicButton
+        title={t`Add side scenario`}
+        onPress={onPress}
+        disabled={!canAddScenario}
+      />
+      { !canAddScenario && (
+        <View style={[space.marginTopM, space.marginBottomL, space.marginSideM]}>
+          <Text style={typography.text}>
+            { t`Side scenarios cannot be added to a campaign until the previous scenario and following interludes are completed.` }
+          </Text>
+        </View>
+      ) }
+    </>
+  );
 }

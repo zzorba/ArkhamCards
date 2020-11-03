@@ -442,10 +442,18 @@ export default class GuidedCampaignLog {
     return !section.sectionCrossedOut;
   }
 
-  allCards(sectionId: string, id: string): string[] | undefined {
+  allCards(sectionId: string, id?: string): string[] | undefined {
     const section = this.sections[sectionId];
     if (!section) {
       return undefined;
+    }
+    if (!id) {
+      return flatMap(section.entries, entry => {
+        if (entry.type === 'card') {
+          return map(entry.cards || [], card => card.card);
+        }
+        return [];
+      });
     }
     if (section.crossedOut[id]) {
       return undefined;

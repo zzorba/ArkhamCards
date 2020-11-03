@@ -76,8 +76,17 @@ export function toRelativeDateString(date: Date, locale: string) {
     return t`Updated yesterday`;
   }
   if (isAfter(date, addDays(startOfNowDate, -7))) {
-    const dayOfWeek = format(date, 'EEEE', LOCALE_MAP[locale]);
-    return t`Updated ${dayOfWeek}`;
+    const dayOfWeek = format(date, 'EEEE');
+    switch (dayOfWeek) {
+      case 'Monday': return t`Updated Monday`;
+      case 'Tuesday': return t`Updated Tuesday`;
+      case 'Wednesday': return t`Updated Wednesday`;
+      case 'Thursday': return t`Updated Thursday`;
+      case 'Friday': return t`Updated Friday`;
+      case 'Saturday': return t`Updated Saturday`;
+      case 'Sunday': return t`Updated Sunday`;
+      default: return t`Updated ${dayOfWeek}`;
+    }
   }
   const dateString = format(date, 'MMMM d, yyyy', LOCALE_MAP[locale]);
   return t`Updated ${dateString}`;

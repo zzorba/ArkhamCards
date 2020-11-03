@@ -15,16 +15,13 @@ interface Props {
 }
 
 
-export default class MultiConditionComponent extends React.Component<Props> {
-  render(): React.ReactNode {
-    const { step, condition, campaignLog } = this.props;
-    const result = multiConditionResult(condition, campaignLog);
-    return (
-      <BinaryResult
-        bulletType={step.bullet_type}
-        prompt={step.text}
-        result={result.decision}
-      />
-    );
-  }
+export default function MultiConditionComponent({ step, condition, campaignLog }: Props) {
+  const result = multiConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={step.text}
+      result={result.decision}
+    />
+  );
 }

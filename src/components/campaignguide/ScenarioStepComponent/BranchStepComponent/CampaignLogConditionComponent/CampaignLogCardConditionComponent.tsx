@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function CampaignLogCardConditionComponent({ step, entry, condition, campaignLog }: Props) {
-
   const renderCard = useCallback((card: Card) => {
     const negatedPrompt = card.grammarGenderMasculine() ?
       c('masculine').t`If <i>${card.name}</i> is not listed under Check ‘${entry.section}’ in your Campaign Log.` :
