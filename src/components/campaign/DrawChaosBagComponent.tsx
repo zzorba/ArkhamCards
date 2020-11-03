@@ -130,6 +130,17 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
     });
   }, [campaignId, chaosBag]);
 
+  const handleResetChaosBagPressed = useCallback(() => {
+    const newChaosBagResults: ChaosBagResults = {
+      drawnTokens: [],
+      blessTokens: 0,
+      curseTokens: 0,
+      sealedTokens: [],
+      totalDrawnTokens: chaosBagResults.totalDrawnTokens,
+    };
+    dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
+  }, [campaignId, dispatch, chaosBagResults]);
+
   const incBless = useCallback(() => {
     dispatch(adjustBlessCurseChaosBagResults(campaignId, 'bless', 'inc'));
   }, [campaignId, dispatch]);
@@ -272,6 +283,11 @@ export default function DrawChaosBagComponent({ campaignId, chaosBag }: Props) {
         <BasicButton
           title={t`Seal Tokens`}
           onPress={handleSealTokensPressed}
+        />
+        <BasicButton
+          title={t`Reset Chaos Bag`}
+          onPress={handleResetChaosBagPressed}
+          disabled={(chaosBagResults.blessTokens || 0) === 0 && (chaosBagResults.curseTokens || 0) === 0 && (chaosBagResults.sealedTokens.length === 0)}
         />
       </View>
     </ScrollView>

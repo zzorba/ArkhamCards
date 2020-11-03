@@ -2931,23 +2931,23 @@ msgstr ""
 msgid "Add Investigator Deck"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:166
+#: src/components/campaign/DrawChaosBagComponent.tsx:177
 msgid "Tap token to draw"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:201
+#: src/components/campaign/DrawChaosBagComponent.tsx:212
 msgid "Set aside and draw another"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:239
+#: src/components/campaign/DrawChaosBagComponent.tsx:250
 msgid "Drawn"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:267
+#: src/components/campaign/DrawChaosBagComponent.tsx:278
 msgid "Sealed Tokens"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:273
+#: src/components/campaign/DrawChaosBagComponent.tsx:284
 msgid "Seal Tokens"
 msgstr ""
 
@@ -4583,36 +4583,36 @@ msgstr ""
 msgid "Edit Chaos Bag"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:201
+#: src/components/campaign/DrawChaosBagComponent.tsx:212
 msgid "Chaos bag is empty"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:216
+#: src/components/campaign/DrawChaosBagComponent.tsx:227
 msgid "Return Non Bless / Curse Tokens"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:217
+#: src/components/campaign/DrawChaosBagComponent.tsx:228
 msgid "Return All Tokens"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:222
+#: src/components/campaign/DrawChaosBagComponent.tsx:233
 msgid "Return Tokens"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:239
+#: src/components/campaign/DrawChaosBagComponent.tsx:250
 #, javascript-format
 msgid "Total (${ chaosBagResults.totalDrawnTokens })"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:248
+#: src/components/campaign/DrawChaosBagComponent.tsx:259
 msgid "Bless / Curse Tokens"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:256
+#: src/components/campaign/DrawChaosBagComponent.tsx:267
 msgid "Bless"
 msgstr ""
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:264
+#: src/components/campaign/DrawChaosBagComponent.tsx:275
 msgid "Curse"
 msgstr ""
 
@@ -4846,6 +4846,10 @@ msgstr ""
 
 #: src/lib/datetime.ts:87
 msgid "Updated Sunday"
+msgstr ""
+
+#: src/components/campaign/DrawChaosBagComponent.tsx:288
+msgid "Reset Chaos Bag"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26

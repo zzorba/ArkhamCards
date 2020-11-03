@@ -27,7 +27,7 @@ export default function ChaosToken({ iconKey, small }: Props) {
         <ChaosTokenIcon
           icon={iconKey}
           size={size * scale * iconSizeScale}
-          color="#fff"
+          color="#FFF"
           fontFamily="Teutonic"
         />
       );

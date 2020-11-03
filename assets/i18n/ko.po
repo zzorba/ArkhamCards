@@ -2998,23 +2998,23 @@ msgstr "시작하지 않음"
 msgid "Add Investigator Deck"
 msgstr "조사자 덱 추가"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:166
+#: src/components/campaign/DrawChaosBagComponent.tsx:177
 msgid "Tap token to draw"
 msgstr "토큰을 눌러서 뽑으십시오"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:201
+#: src/components/campaign/DrawChaosBagComponent.tsx:212
 msgid "Set aside and draw another"
 msgstr "옆에 두고 하나 더 뽑기"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:239
+#: src/components/campaign/DrawChaosBagComponent.tsx:250
 msgid "Drawn"
 msgstr "뽑힌 토큰"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:267
+#: src/components/campaign/DrawChaosBagComponent.tsx:278
 msgid "Sealed Tokens"
 msgstr "봉인된 토큰"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:273
+#: src/components/campaign/DrawChaosBagComponent.tsx:284
 msgid "Seal Tokens"
 msgstr "토큰 봉인"
 
@@ -4687,36 +4687,36 @@ msgstr "만능: ${ count }"
 msgid "Edit Chaos Bag"
 msgstr "혼돈 주머니 수정"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:201
+#: src/components/campaign/DrawChaosBagComponent.tsx:212
 msgid "Chaos bag is empty"
 msgstr "혼돈 주머니가 비어있습니다."
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:216
+#: src/components/campaign/DrawChaosBagComponent.tsx:227
 msgid "Return Non Bless / Curse Tokens"
 msgstr "축복/저주가 아닌 토큰 되돌리기"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:217
+#: src/components/campaign/DrawChaosBagComponent.tsx:228
 msgid "Return All Tokens"
 msgstr "모든 토큰 되돌리기"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:222
+#: src/components/campaign/DrawChaosBagComponent.tsx:233
 msgid "Return Tokens"
 msgstr "토큰 되돌리기"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:239
+#: src/components/campaign/DrawChaosBagComponent.tsx:250
 #, javascript-format
 msgid "Total (${ chaosBagResults.totalDrawnTokens })"
 msgstr "뽑은 토큰 (${ chaosBagResults.totalDrawnTokens })"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:248
+#: src/components/campaign/DrawChaosBagComponent.tsx:259
 msgid "Bless / Curse Tokens"
 msgstr "축복 / 저주 토큰"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:256
+#: src/components/campaign/DrawChaosBagComponent.tsx:267
 msgid "Bless"
 msgstr "축복"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:264
+#: src/components/campaign/DrawChaosBagComponent.tsx:275
 msgid "Curse"
 msgstr "저주"
 
@@ -4962,6 +4962,10 @@ msgstr "토요일 업데이트"
 #: src/lib/datetime.ts:87
 msgid "Updated Sunday"
 msgstr "일요일 업데이트"
+
+#: src/components/campaign/DrawChaosBagComponent.tsx:288
+msgid "Reset Chaos Bag"
+msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format

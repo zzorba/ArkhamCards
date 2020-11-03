@@ -2756,23 +2756,23 @@ msgstr "Elige las fichas a sellar"
 msgid "At Death's Doorstep"
 msgstr "En la puerta de la muerte (Acto 1)"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:166
+#: src/components/campaign/DrawChaosBagComponent.tsx:177
 msgid "Tap token to draw"
 msgstr "Toca la ficha de Caos para robar"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:201
+#: src/components/campaign/DrawChaosBagComponent.tsx:212
 msgid "Set aside and draw another"
 msgstr "Dejar a un lado y robar otra"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:239
+#: src/components/campaign/DrawChaosBagComponent.tsx:250
 msgid "Drawn"
 msgstr "Robadas"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:267
+#: src/components/campaign/DrawChaosBagComponent.tsx:278
 msgid "Sealed Tokens"
 msgstr "Fichas de Caos selladas"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:273
+#: src/components/campaign/DrawChaosBagComponent.tsx:284
 msgid "Seal Tokens"
 msgstr "Sellar fichas de Caos"
 
@@ -4832,36 +4832,36 @@ msgstr "Comodín: ${ count }"
 msgid "Edit Chaos Bag"
 msgstr "Editar Bolsa de Caos"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:201
+#: src/components/campaign/DrawChaosBagComponent.tsx:212
 msgid "Chaos bag is empty"
 msgstr "Chaos bag is empty"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:216
+#: src/components/campaign/DrawChaosBagComponent.tsx:227
 msgid "Return Non Bless / Curse Tokens"
 msgstr "Devolver fichas no Bendición / Maldición"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:217
+#: src/components/campaign/DrawChaosBagComponent.tsx:228
 msgid "Return All Tokens"
 msgstr "Devolver todas las fichas"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:222
+#: src/components/campaign/DrawChaosBagComponent.tsx:233
 msgid "Return Tokens"
 msgstr "Devolver fichas"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:239
+#: src/components/campaign/DrawChaosBagComponent.tsx:250
 #, javascript-format
 msgid "Total (${ chaosBagResults.totalDrawnTokens })"
 msgstr "Total (${ chaosBagResults.totalDrawnTokens })"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:248
+#: src/components/campaign/DrawChaosBagComponent.tsx:259
 msgid "Bless / Curse Tokens"
 msgstr "Fichas de Bendición / Maldición"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:256
+#: src/components/campaign/DrawChaosBagComponent.tsx:267
 msgid "Bless"
 msgstr "Bendición"
 
-#: src/components/campaign/DrawChaosBagComponent.tsx:264
+#: src/components/campaign/DrawChaosBagComponent.tsx:275
 msgid "Curse"
 msgstr "Maldición"
 
@@ -5121,6 +5121,10 @@ msgstr "Sábado actualizado"
 #: src/lib/datetime.ts:87
 msgid "Updated Sunday"
 msgstr "Domingo actualizado"
+
+#: src/components/campaign/DrawChaosBagComponent.tsx:288
+msgid "Reset Chaos Bag"
+msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
 #, javascript-format
