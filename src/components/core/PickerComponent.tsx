@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { isArray, map } from 'lodash';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { SettingsPicker } from '@lib/react-native-settings-components';
 import { DisplayChoice } from '@data/scenario';

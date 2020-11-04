@@ -4,8 +4,7 @@ import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 import { Action, Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
 import BasicButton from '@components/core/BasicButton';

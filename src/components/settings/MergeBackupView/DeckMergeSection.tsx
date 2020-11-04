@@ -2,8 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { map, sumBy } from 'lodash';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import DeckMergeItem from './DeckMergeItem';
 import { Deck } from '@actions/types';

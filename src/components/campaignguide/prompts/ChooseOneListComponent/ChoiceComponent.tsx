@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';

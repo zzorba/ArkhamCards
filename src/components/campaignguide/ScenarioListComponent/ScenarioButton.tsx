@@ -5,8 +5,7 @@ import {
   View,
 } from 'react-native';
 import { t } from 'ttag';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { showScenario } from '@components/campaignguide/nav';
 import NavButton from '@components/core/NavButton';

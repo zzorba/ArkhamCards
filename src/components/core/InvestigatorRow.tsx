@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 // @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   Placeholder,
   PlaceholderLine,

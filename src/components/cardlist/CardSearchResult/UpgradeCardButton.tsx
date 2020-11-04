@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';

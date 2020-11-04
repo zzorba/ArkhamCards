@@ -10711,7 +10711,7 @@
   "id": "rtdwl",
   "position": 1,
   "version": 1,
-  "name": "Return to The Dunwich Legacy",
+  "name": "Renouveau: L'Héritage de Dunwich",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -11090,8 +11090,8 @@
 },
 {
   "id": "return_to_blood_on_the_altar",
-  "scenario_name": "Return to Blood on the Altar",
-  "full_name": "Scenario IV: Return to Blood on the Altar",
+  "scenario_name": "Renouveau: Du Sang sur l'Autel",
+  "full_name": "Scenario IV: Renouveau: Du Sang sur l'Autel",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -11361,11 +11361,11 @@
     },
     {
       "id": "setup_village_commons",
-      "text": "Remove the original Village Commons location from the game. Put the new Village Commons <i>(Silent Decay)</i> into play. Each investigator begins play at the Village Commons <i>(Silent Decay)</i>."
+      "text": "Retirez de la partie le lieu Terrains Communaux d'origine. Mettez en jeu le nouveau lieu Terrains Communaux <i>(Décrépitude Silencieuse)</i>. Chaque investigateur commence la partie dans le lieu Terrains Communaux <i>(Décrépitude Silencieuse)</i>."
     },
     {
       "id": "setup_locations",
-      "text": "Add the new locations to the original locations from the <i>Blood on the Altar</i> encounter set. Remove two of the three copies of each location from the game at random. Then, choose one of the six remaining locations at random, and remove it from the game as well. Put the remaining five locations into play."
+      "text": "Ajoutez les nouveaux lieux aux lieux d'origine du set de rencontre Du Dang sur l'Autel. Retirez de la partie 2 des 3 exemplaires de chacun de ces lieux, pris au hasard. Ensuite prenez au hasard l'un des 6 lieux restants et retirez le également de la partie. Mettez en jeu les lieux restants."
     },
     {
       "id": "location_layout",
@@ -11403,7 +11403,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Hired Gun, Silas Bishop, The Hidden Chamber, Key to the Chamber, and Powder of Ibn-Ghazi."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : l'Homme de Main, Silas Bishop, La Chambre Cachée, Clé de la Chambre et Poudre d’Ibn-Ghazi."
     },
     {
       "id": "check_bone_to_pick",
@@ -11433,20 +11433,20 @@
     {
       "id": "gather_naomis_crew",
       "bullet_type": "small",
-      "text": "Seeking vengeance, the gang from the Clover Club has followed you to Dunwich. Gather all cards from the <i>Naomi’s Crew</i> encounter set.",
+      "text": "Le gang du Club du Trèfle cherche à se venger et vous a suivi à Dunwich. Réunissez les cartes du set de rencontre <i>La Bande de Naomie</i>.",
       "type": "encounter_sets",
       "encounter_sets": [
         "naomis_crew"
       ],
-      "subtext": "Do not shuffle these cards into the encounter deck yet."
+      "subtext": "Ne mélangez pas ces cartes dans le deck Rencontre pour le moment"
     },
     {
       "id": "setup_hidden_cards_naomi",
-      "text": "Before shuffling the <i>Naomi's Crew</i> encounter set into the encounter deck, take the previously set-aside The Hidden Chamber and Key to the Chamber cards, along with the top 3 cards of the encounter deck. Shuffle them and randomly deal 1 card facedown underneath each location in play except Village Commons."
+      "text": "Avant de mélanger le set de rencontre <i>La Bande de Naomie</i> dans le deck de rencontre, prenez les cartes La Chambre Cachée et Clé de la Chambre que vous avez mises de côté, puis mélangez-les avec les 3 cartes du dessus du deck Rencontre. Ensuite, distribuez aléatoirement 1 carte face cachée sous chaque lieu en jeu à l’exception des Terrains Communaux."
     },
     {
       "id": "spawn_hired_gun",
-      "text": "Spawn one set-aside Hired Gun at one of the locations not connected to Village Commons. Shuffle the other set-aside Hired Gun, along with the rest of the <i>Naomi's Crew</i> encounter set into the encounter deck."
+      "text": "Générez l'un des Hommes de Main mis de côté dans l'un des lieux non-connexes aux Terrains Communaux. Mélangez l'autre Homme de Main dasn le deck Rencontre."
     }
   ],
   "resolutions": [
@@ -11507,8 +11507,8 @@
 },
 {
   "id": "return_to_essex_county_express",
-  "scenario_name": "Return to The Essex County Express",
-  "full_name": "Scenario III: Return to The Essex County Express",
+  "scenario_name": "Renouveau: L'Express du Comté d'Essex",
+  "full_name": "Scenario III: Renouveau: L'Express du Comté d'Essex",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -11844,15 +11844,15 @@
     },
     {
       "id": "remove_agenda_1a",
-      "text": "Remove Agenda 1a - \"A Tear in Reality,\" from the game and replace it with the new Agenda 0a - \"Where There's Smoke\" and the new agenda 1a - \"A Tear in Reality (v.II).\" (When you construct the agenda deck, agenda 0a should be on top.)"
+      "text": "Retirez de la partie l'Intrigue 1a - \"Un Accroc dans la réalité \" et remplacez-la par les nouvelles Intrigues 0a - \"Il n'y a pas de Fumée... \" et 1a - \"Un Accroc dans la réalité (v.II) \" (Quand vous constituez le deck Intrigue, l'Intrigue 0a doit être au-dessus.)"
     },
     {
       "id": "setup_locations",
-      "text": "Put one of the four Engine Car locations into play at random. Remove the other three versions of Engine Car from the game. Then, put six of the ten Train Car locations into play at random, in a straight line to the left of the Engine Car. Remove the remaining four Train Car locations from the game."
+      "text": "Prenez au hasard l’un des quantre lieux Locomotive et mettez-le en jeu. Retirez de la partie les autres exemplaires de la Locomotive. Ensuite, prenez au hasard six des dix lieux Wagon et mettez-les en jeu, disposés en ligne à gauche de la Locomotive. Retirez de la partie les quantres lieux Wagon restants."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the Engineer story asset and all 4 copies of Across Space and Time aside, out of play."
+      "text": "Mettez de côté le soutien d'histoire Technicien, hors jeu."
     }
   ],
   "resolutions": [
@@ -11917,8 +11917,8 @@
 },
 {
   "id": "return_to_extracurricular_activity",
-  "scenario_name": "Return to Extracurricular Activity",
-  "full_name": "Scenario I–A: Return to Extracurricular Activity",
+  "scenario_name": "Renouveau: Activité Extrascolaire",
+  "full_name": "Scenario I–A:Renouveau: Activité Extrascolaire",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12129,7 +12129,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Randomly choose between Orne Library and Warren Observatory. Put the chosen location into play, and remove the other location from the game. Then, put the Miskatonic Quad, Humanities Building, Student Union, Science Building, and Administration Building locations into play. Each investigator begins play at the Miskatonic Quad."
+      "text": "Sélectionnez un lieu au hasard entre la Bibliothèque Orne et l'Obesrvatoire Warren. Mettez en jeu le lieu sélectionné et retirez de la partie l'autre lieu. Ensuite mettez en jeu les lieux Cour de l’Université, Bibliothèque Orne, Bâtiment des Humanités, Maison des Étudiants, Bâtiment des Sciences et Bâtiment de l’Administration. Chaque investigateur commence la partie dans la Cour de l’Université."
     },
     {
       "id": "maybe_spawn_security_guard",
@@ -12151,7 +12151,7 @@
     },
     {
       "id": "spawn_security_guard",
-      "text": "Because you have already completed <b>Return to The House Always Wins</b>, search the gathered encounter sets for 1 copy of Enthralled Security Guard, and spawn it at the Administration Building."
+      "text": "Comme vous avez déjà terminé <b> Renouveau: La Banque Gange Toujours</b>, cherchez l'exemplaire du Garde deSécurité Corrompu dans le set de rencontre réunis et générez-le dans le Bâtiment de l'Administration."
     },
     {
       "id": "proceed_either",
@@ -12257,8 +12257,8 @@
 },
 {
   "id": "return_to_lost_in_time_and_space",
-  "scenario_name": "Return to Lost in Time and Space",
-  "full_name": "Scenario VII: Return to Lost in Time and Space",
+  "scenario_name": "Renouveau: Perdu dans le Temps et l'Espace",
+  "full_name": "Scenario VII: Renouveau: Perdu dans le Temps et l'Espace",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12487,7 +12487,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: The Edge of the Universe, Tear Through Time, and Seth Bishop <i>(Thrall of Yog-Sothoth)</i>."
+      "text": "Mettez les cartes suivantes de côté, hors jeu : Le Bord de l’Univers, Déchirure dans le Temps et Seth Bishop <i>(Thrall de Yog-Sothoth)</i>."
     },
     {
       "id": "check_ritual_completed",
@@ -12509,15 +12509,15 @@
     {
       "id": "replace_act_2",
       "bullet_type": "small",
-      "text": "Replace Act 2a - \"Into the Beyond\" with the new Act 2a - \"Into the Beyond (v. II)\" from the <i>Return to Lost in Time and Space</i> encounter set."
+      "text": "Remplacer l'Acte 2a - \"Dans l'Au-Delà\" par le nouvel Acte 2a - \"Dans l'Au-Delà (v.II)\" inclus dans ce set de rencontre."
     },
     {
       "id": "replace_agenda_3",
-      "text": "Replace Agenda 3a - \"Breaking Through\" with the new Agenda 3a - \"Breaking Through (v. II)\" included in this encounter set."
+      "text": "Remplacer l'Intrigue 3a - \"Passer au Travers\" par la nouvelle Intrigue 3a - \"Passer au Travers (v.II)\" inclus dans ce set de rencontre."
     },
     {
       "id": "setup_realms_beyond",
-      "text": "Put the single-sided Realms Beyond location into play and spawn Yog-Sothoth there."
+      "text": "Mettez en jeu le lieu mono-face Mondes Lointains et générez-y Yog-Sothoth."
     }
   ],
   "resolutions": [
@@ -12585,8 +12585,8 @@
 },
 {
   "id": "return_to_the_house_always_wins",
-  "scenario_name": "Return to The House Always Wins",
-  "full_name": "Scenario I–B: Return to The House Always Wins",
+  "scenario_name": "Renouveau: La Banque Gagne Toujours",
+  "full_name": "Scenario I–B: Renouveau: La Banque Gagne Toujours",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12804,11 +12804,11 @@
     },
     {
       "id": "setup_locations",
-      "text": "Choose one of the two Clover Club Lounge locations at random. Put the chosen location into play, and remove the other version from the game. Then, put the Clover Club Bar, Clover Club Cardroom, and La Bella Luna locations into play. Each investigator begins play in La Bella Luna."
+      "text": "Sélectionnez l'un des deux lieux Lounge du CLub du Trèfle au hasard et retirez de la partie l'autre exemplaire. Mettez en jeu les lieux Lounge du Club du Trèfle, Bar du Club du Trèfle, Salle de Jeu du Club du Trèfle et La Bella Luna. Chaque in- vestigateur commence la partie dans La Bella Luna."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: Clover Club Stage, Darkened Hall, Peter Clover, Dr. Francis Morgan, and each copy of Back Hall Doorway."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : Scène du Club, Couloir Obscur, Peter Clover, Dr Francis Morgan et chaque exemplaire de Porte de Derrière."
     },
     {
       "id": "proceed_either",
@@ -12905,8 +12905,8 @@
 },
 {
   "id": "return_to_the_miskatonic_museum",
-  "scenario_name": "Return to The Miskatonic Museum",
-  "full_name": "Scenario II: Return to The Miskatonic Museum",
+  "scenario_name": "Renouveau: Le Musée Miskatonic",
+  "full_name": "Scenario II: Renouveau: Le Musée Miskatonic",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -13158,10 +13158,10 @@
       "text": "Set the “Exhibit Hall” locations aside as a separate 6 card “Exhibit Deck.” To do this, perform the following:",
       "bullets": [
         {
-          "text": "Gather the 8 “Exhibit Hall” locations. Set Exhibit Hall <i>(Restricted Hall)</i> aside and randomly remove 2 Exhibit Hall locations from the game."
+          "text": "Réunissez les 8 lieux Salle d'exposition. Mettez de côté la Salle d'Exposition <i>(Salle à Accès Restreint)</i> et retirez de la partie 2 lieux Salle d'Exposition pris au hasard."
         },
         {
-          "text": "Shuffle the Exhibit Hall <i>(Restricted Hall)</i> and 2 other random Exhibit Hall locations together to form the bottom 3 cards of the Exhibit Deck, unrevealed side faceup."
+          "text": "Mélangez ensemble la Salle d’Exposition <i>(Salle à Accès Restreint)</i> et 2 autres lieux Salle d’Exposition pris au hasard afin de constituer la base du deck Exposition, face non-révélée visible."
         },
         {
           "text": "Ensuite, placez les 3 autres lieux Salle d’Exposition au dessus dans un ordre aléatoire. Les 6 cartes du deck Exposition ne doivent montrer que leur face non-révélée afin que les joueurs ne sachent pas quelle Salle d’Ex- position est la Salle d’Exposition <i>(Salle à Accès Restreint)</i>."
@@ -13170,7 +13170,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"While an investigator is resolving the text on agenda 1b and agenda 2b, the <b>Forced</b> ability on the next agenda in the agenda deck is considered to be active.\"\nAttach the Return to The Miskatonic Museum scenario reference card to the scenario reference card as a reminder."
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante:\n\"Quand un investigateur résoult le texte de l'Intrigue 1b et de l'Intrigue 2b, la capacité <b>Forcé</b> de la prochaine intrigue dans le deck Intrigue est considérée comme étant active.\"\nAttachez cette carte à la carte de rérérence du scénario en tant qu'aide-mémoire."
     }
   ],
   "resolutions": [
@@ -13219,8 +13219,8 @@
 },
 {
   "id": "return_to_undimensioned_and_unseen",
-  "scenario_name": "Return to Undimensioned and Unseen",
-  "full_name": "Scenario V: Return to Undimensioned and Unseen",
+  "scenario_name": "Renouveau: Aux Frontières du Visible",
+  "full_name": "Scenario V: Renouveau: Aux Frontières du Visible",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -13519,32 +13519,32 @@
     },
     {
       "id": "remove_old_broods",
-      "text": "Remove 4 copies of Brood of Yog-Sothoth from the original scenario and replace them with the 4 new versions of Brood of Yog-Sothoth from the <i>Return to Undimensioned and Unseen</i> encounter set."
+      "text": "Retirez de la partie 4 exemplaires du Rejeton de Yog-Sothoth d'origine et remplacez-les par les 4 nouvelles versions du Rejeton de Yog-Sothoth du set de rencontre <i>Renouveau: Aux Frontières du Visible</i>."
     },
     {
       "id": "randomize_broods_note",
       "bullet_type": "small",
-      "text": "For the duration of this scenario, the following additional rule applies:\n\"If a Brood of Yog-Sothoth would be put into play, it is chosen at random from among the set-aside versions of Brood of Yog-Sothoth.\"\nAttach the Return to Undimensioned and Unseen scenario reference card to the scenario reference card as a reminder."
+      "text": "Pour la durée de ce scénario, appliquez la règle suivante:\n\"Si un Rejeton de Yog-Sothoth devrait être mis en jeu, il est pris au hasard parmi lesversion du Rejeton de Yog-Sothoth mises de côtés.\"\nAttachez cette carte à la carte de référence du scénario en tant qu'aide-mémoire."
     },
     {
       "id": "spawn_two_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen and put 1 random copy of Brood of Yog‐Sothoth into play in Blasted Heath. Then, set the final 3 copies of Brood of Yog‐Sothoth aside, out of play."
+      "text": "Mettez en jeu 1 exemplaire du Rejeton de Yog-Sothoth dans le Vallon de la Source, et 1 exemplaire du Rejeton de Yog-Sothoth dans la Lande Dévastée. Ensuite, mettez de côté les 3 autres exemplaires du Rejeton de Yog-Sothoth, hors jeu."
     },
     {
       "id": "spawn_one_remove_one_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 3 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final copy of Brood of Yog‐Sothoth from the game."
+      "text": "Mettez en jeu 1 exemplaire du Rejeton de Yog-Sothoth dans le Vallon de la Source, et mettez de côté 3 exemplaires du Rejeton de Yog-Sothoth, hors jeu. Ensuite, retirez de la partie le dernier exemplaire du Rejeton de Yog-Sothoth."
     },
     {
       "id": "spawn_one_remove_two_brood",
       "bullet_type": "small",
-      "text": "Put 1 random copy of Brood of Yog‐Sothoth into play in Cold Spring Glen, and set 2 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 2 copies of Brood of Yog‐Sothoth from the game."
+      "text": "Mettez en jeu 1 exemplaire du Rejeton de Yog-Sothoth dans le Vallon de la Source, et mettez de côté 2 exemplaires du Rejeton de Yog-Sothoth, hors jeu. Ensuite, retirez de la partie les 2 autres exemplaires du Rejeton de Yog-Sothoth."
     },
     {
       "id": "spawn_zero_remove_three_brood",
       "bullet_type": "small",
-      "text": "Set 2 random copies of Brood of Yog‐Sothoth aside, out of play. Then, remove the final 3 random copies of Brood of Yog‐Sothoth from the game."
+      "text": "Mettez de côté 2 exemplaires du Rejeton de Yog-Sothoth, hors jeu. Ensuite, retirez de la partie les 3 autres exemplaires du Rejeton de Yog-Sothoth."
     }
   ],
   "resolutions": [
@@ -13588,8 +13588,8 @@
 },
 {
   "id": "return_to_where_doom_awaits",
-  "scenario_name": "Return to Where Doom Awaits",
-  "full_name": "Scenario VI: Return to Where Doom Awaits",
+  "scenario_name": "Renouveau: Là où le Destin Attend",
+  "full_name": "Scenario VI: Renouveau: Là où le Destin Attend",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -13968,7 +13968,7 @@
     {
       "id": "gain_naomi_award",
       "bullet_type": "small",
-      "text": "The lead investigator may choose an investigator to add the Naomi O'Bannion asset to their deck. This card does not count toward that investigator's deck size.",
+      "text": "L’investigateur principal à le droit de choisir un investigateur qui ajoute Naomi O'Bannion à son deck. Cette carte ne compte pas dans la Taille du Deck de cet investigateur.",
       "effects": [
         {
           "type": "add_card",
@@ -13994,15 +13994,15 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put Base of the Hill <i>(Warped and Twisted)</i>, Ascending Path <i>(Warped and Twisted)</i>, and Sentinel Peak into play. Remove the original Base of the Hill and Ascending Path locations from the game. Each investigator begins play at Base of the Hill."
+      "text": "Mettez en jeu le Pied de la Colline <i>Difforme et Perverti</i>, le Chemin Ascendant <i>(Difforme et Perverti)</i> et le Pic de la Sentinelle. Retirez de la partie les lieux Pied de la Colline et Chemin Ascendant d'origine. Chaque investigateur commence la partie au Pied de la Colline."
     },
     {
       "id": "remove_diverging_path",
-      "text": "Remove 2 copies of Diverging Path from the game, at random. Set the other 3 copies of Diverging Path aside, out of play."
+      "text": "Retirez de la partie 2 exemplaire de Chemin Divergent pris au hasard. Mettez de côté, hors jeu, les 3 autres exemplaires de Chemin Divergent."
     },
     {
       "id": "remove_altered_path",
-      "text": "Remove 2 copies of Altered Path from the game, at random. Set the other 3 copies of Altered Path aside, out of play."
+      "text": "Retirez de la partie 2 exemplaire de Chemin Altéré pris au hasard. Mettez de côté, hors jeu, les 3 autres exemplaires de Chemin Altéré."
     },
     {
       "id": "check_set_aside_naomi",
@@ -14029,7 +14029,7 @@
     },
     {
       "id": "set_aside_cards_and_naomi",
-      "text": "Set Seth Bishop and Naomi O'Bannion aside, out of play."
+      "text": "Mettez de côté Seth Bishop et Naomi O'Bannion hors jeu."
     }
   ],
   "resolutions": [
@@ -14411,7 +14411,7 @@
   "campaign":
 {
   "id": "rtnotz",
-  "name": "Renouveau La Nuit de la Zélatrice",
+  "name": "Renouveau: La Nuit de la Zélatrice",
   "position": 0,
   "version": 1,
   "campaign_log": [
@@ -14605,8 +14605,8 @@
 }, "scenarios": [
 {
   "id": "return_to_the_devourer_below",
-  "scenario_name": "Renouveau Le Dévoreur du Dessous",
-  "full_name": "Chapitre III renouveau Le Dévoreur du Dessous",
+  "scenario_name": "Renouveau: Le Dévoreur du Dessous",
+  "full_name": "Chapitre III: Renouveau: Le Dévoreur du Dessous",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -15028,8 +15028,8 @@
 },
 {
   "id": "return_to_the_gathering",
-  "scenario_name": "Renouveau Le Rassemblement",
-  "full_name": "Chapitre I: Renouveau Le Rassemblement",
+  "scenario_name": "Renouveau: Le Rassemblement",
+  "full_name": "Chapitre I: Renouveau: Le Rassemblement",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -15334,8 +15334,8 @@
 },
 {
   "id": "return_to_the_midnight_masks",
-  "scenario_name": "Renouveau Les Masques de Minuit",
-  "full_name": "Chapitre II: Renouveau Les Masques de Minuit",
+  "scenario_name": "Renouveau: Les Masques de Minuit",
+  "full_name": "Chapitre II: Renouveau: Les Masques de Minuit",
   "setup": [
     "lita_condition",
     "intro_3",
@@ -63448,6 +63448,7 @@
   "id": "in_too_deep",
   "scenario_name": "In Too Deep",
   "full_name": "Scenario III: In Too Deep",
+  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",

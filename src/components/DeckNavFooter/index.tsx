@@ -5,8 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { msgid, ngettext, t } from 'ttag';
 
 import { ParsedDeck } from '@actions/types';

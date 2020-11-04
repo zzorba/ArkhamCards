@@ -4,8 +4,7 @@ import {
   Text,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Ripple from '@lib/react-native-material-ripple';
 import Card from '@data/Card';

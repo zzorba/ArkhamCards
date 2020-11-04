@@ -5,8 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { xs, s, isBig } from '@styles/space';
 import StyleContext from '@styles/StyleContext';

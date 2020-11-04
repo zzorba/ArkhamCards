@@ -1,7 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
 import space from '@styles/space';

@@ -24,14 +24,6 @@ import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export type CampaignGuideProps = CampaignGuideInputProps;
 
-interface ReduxActionProps {
-  updateCampaign: (
-    id: number,
-    sparseCampaign: Partial<Campaign>
-  ) => void;
-  deleteCampaign: (id: number) => void;
-}
-
 type Props = CampaignGuideProps &
   NavigationProps &
   InjectedDialogProps &
