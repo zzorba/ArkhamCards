@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { findIndex, flatMap, forEach } from 'lodash';
 
@@ -14,12 +14,15 @@ interface Props<T> {
 }
 
 function InvestigatorResultConditionOption<T>({ result, option, renderOption, extraArg }: Props<T> & { option: OptionWithId }) {
-  const investigators: string[] = [];
-  forEach(result.investigatorChoices, (choices, code) => {
-    if (findIndex(choices, choice => option.id === choice) !== -1) {
-      investigators.push(code);
-    }
-  });
+  const investigators: string[] = useMemo(() => {
+    const investigators: string[] = [];
+    forEach(result.investigatorChoices, (choices, code) => {
+      if (findIndex(choices, choice => option.id === choice) !== -1) {
+        investigators.push(code);
+      }
+    });
+    return investigators;
+  }, [result.investigatorChoices, option.id]);
   const [cards, loading] = useCardList(investigators, 'player');
   if (!investigators.length || loading) {
     return null;

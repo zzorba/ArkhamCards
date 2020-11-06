@@ -44,6 +44,7 @@ import ArkhamButton, { ArkhamButtonIcon } from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
 import { useCards, useSlots, useToggles } from '@components/core/hooks';
+import LoadingCardSearchResult from '../LoadingCardSearchResult';
 
 interface Props {
   componentId: string;
@@ -751,14 +752,12 @@ export default function({
         );
       case 'loading':
         return (
-          <View style={[borderStyle, styles.loadingRow, { height: rowHeight(fontScale) }]}>
-            <ActivityIndicator color={colors.lightText} animating size="small" />
-          </View>
+          <LoadingCardSearchResult />
         );
       default:
         return null;
     }
-  }, [debouncedCardOnPressId, borderStyle, colors, fontScale, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
+  }, [debouncedCardOnPressId, onDeckCountChange, handleDeckCountChange, hasSecondCore, deckCardCounts, investigator, limits, renderCard]);
   const listHeader = useMemo(() => {
     const searchBarPadding = !noSearch && Platform.OS === 'android';
     if (!searchBarPadding && !header) {
@@ -865,12 +864,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomWidth: 1,
   },
-  loadingRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
+
   searchBarPadding: {
     height: SEARCH_BAR_HEIGHT,
   },

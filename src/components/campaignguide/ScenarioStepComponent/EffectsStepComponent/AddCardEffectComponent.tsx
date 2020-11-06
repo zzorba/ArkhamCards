@@ -1,13 +1,16 @@
-import React, { useCallback } from 'react';
+import React, { useContext } from 'react';
+import { Text } from 'react-native';
 import { map } from 'lodash';
 import { t } from 'ttag';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import InvestigatorSelectorWrapper from '@components/campaignguide/InvestigatorSelectorWrapper';
 import { AddCardEffect } from '@data/scenario/types';
 import Card from '@data/Card';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
+import useSingleCard from '@components/card/useSingleCard';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   id: string;
@@ -28,26 +31,28 @@ function renderInvestigators(investigators: Card[], card: Card) {
 }
 
 export default function AddCardEffectComponent({ id, effect }: Props) {
-  const renderCard = useCallback((card: Card) => {
+  const { typography } = useContext(StyleContext);
+  const [card, loading] = useSingleCard(effect.card, 'player');
+  if (loading) {
+    return null;
+  }
+  if (!card) {
+    const code = effect.card;
     return (
-      <InvestigatorSelectorWrapper
-        id={id}
-        investigator={effect.investigator}
-        fixedInvestigator={effect.fixed_investigator}
-        render={renderInvestigators}
-        optional={effect.optional}
-        description={t`Who will add ${card.name} to their deck?`}
-        extraArg={card}
-      />
+      <Text style={[typography.text, space.paddingM]}>
+        { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
+      </Text>
     );
-  }, [id, effect]);
-
+  }
   return (
-    <SingleCardWrapper
-      code={effect.card}
-      type="player"
-    >
-      { renderCard }
-    </SingleCardWrapper>
+    <InvestigatorSelectorWrapper
+      id={id}
+      investigator={effect.investigator}
+      fixedInvestigator={effect.fixed_investigator}
+      render={renderInvestigators}
+      optional={effect.optional}
+      description={t`Who will add ${card.name} to their deck?`}
+      extraArg={card}
+    />
   );
 }

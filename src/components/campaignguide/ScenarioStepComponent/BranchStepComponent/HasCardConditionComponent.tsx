@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useContext } from 'react';
+import { Text } from 'react-native';
 import { map } from 'lodash';
 import { ngettext, msgid, t } from 'ttag';
 
 import InvestigatorResultConditionWrapper from '../../InvestigatorResultConditionWrapper';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import SetupStepWrapper from '../../SetupStepWrapper';
 import BinaryResult from '../../BinaryResult';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
@@ -16,6 +16,9 @@ import {
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import { hasCardConditionResult } from '@data/scenario/conditionHelper';
 import { stringList } from '@lib/stringHelper';
+import useSingleCard from '@components/card/useSingleCard';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   step: BranchStep;
@@ -52,40 +55,40 @@ function renderInvestigators(investigatorCards: Card[], option: Option): Element
       />
     </SetupStepWrapper>
   );
-};
+}
 
 export default function HasCardConditionComponent({ step, condition, campaignLog }: Props) {
-  const renderCard = useCallback((card: Card): Element | null => {
-    const result = hasCardConditionResult(condition, campaignLog);
-    if (result.type === 'investigator') {
-      return (
-        <InvestigatorResultConditionWrapper
-          result={result}
-          renderOption={renderInvestigators}
-          extraArg={card}
-        />
-      );
-    }
-    const prompt = investigatorCardPrompt(
-      card,
-      condition.investigator
-    );
-
+  const { typography } = useContext(StyleContext);
+  const [card, loading] = useSingleCard(condition.card, 'player');
+  if (loading) {
+    return null;
+  }
+  if (!card) {
+    const code = condition.card;
     return (
-      <BinaryResult
-        bulletType={step.bullet_type}
-        prompt={prompt}
-        result={result.decision}
+      <Text style={[typography.text, space.paddingM]}>
+        { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
+      </Text>
+    );
+  }
+
+  const result = hasCardConditionResult(condition, campaignLog);
+  if (result.type === 'investigator') {
+    return (
+      <InvestigatorResultConditionWrapper
+        result={result}
+        renderOption={renderInvestigators}
+        extraArg={card}
       />
     );
-  }, [step, condition, campaignLog]);
+  }
 
+  const prompt = investigatorCardPrompt(card, condition.investigator);
   return (
-    <SingleCardWrapper
-      code={condition.card}
-      type="player"
-    >
-      { renderCard }
-    </SingleCardWrapper>
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={prompt}
+      result={result.decision}
+    />
   );
 }

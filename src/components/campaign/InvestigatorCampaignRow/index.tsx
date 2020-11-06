@@ -14,10 +14,11 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { BODY_OF_A_YITHIAN } from '@app_constants';
 import Card, { CardsMap } from '@data/Card';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import COLORS from '@styles/colors';
 import PickerStyleButton from '@components/core/PickerStyleButton';
 import StyleContext from '@styles/StyleContext';
+import useSingleCard from '@components/card/useSingleCard';
+import LoadingCardSearchResult from '@components/cardlist/LoadingCardSearchResult';
 
 interface Props {
   componentId: string;
@@ -35,6 +36,20 @@ interface Props {
   // For legacy system
   showDeckUpgrade?: (investigator: Card, deck: Deck) => void;
   showTraumaDialog?: (investigator: Card, traumaData: TraumaAndCardData) => void;
+}
+
+function StoryAssetRow({ code, onCardPress }: { code: string, onCardPress: (card: Card) => void }) {
+  const [card, loading] = useSingleCard(code, 'player');
+  if (loading || !card) {
+    return <LoadingCardSearchResult />;
+  }
+  return (
+    <CardSearchResult
+      key={card.code}
+      onPress={onCardPress}
+      card={card}
+    />
+  );
 }
 
 export default function InvestigatorCampaignRow({
@@ -57,16 +72,6 @@ export default function InvestigatorCampaignRow({
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
-
-  const renderStoryAsset = useCallback((card: Card) => {
-    return (
-      <CardSearchResult
-        key={card.code}
-        onPress={onCardPress}
-        card={card}
-      />
-    );
-  }, [onCardPress]);
 
   const incXp = useCallback(() => {
     incSpentXp(investigator.code);
@@ -144,17 +149,11 @@ export default function InvestigatorCampaignRow({
           section={{ superTitle: t`Campaign cards` }}
         />
         { map(storyAssets, asset => (
-          <SingleCardWrapper
-            key={asset}
-            code={asset}
-            type="player"
-          >
-            { renderStoryAsset }
-          </SingleCardWrapper>
+          <StoryAssetRow key={asset} code={asset} onCardPress={onCardPress} />
         )) }
       </>
     );
-  }, [traumaAndCardData, investigator, renderStoryAsset]);
+  }, [traumaAndCardData, investigator, onCardPress]);
 
   const removePressed = useCallback(() => {
     if (removeInvestigator) {

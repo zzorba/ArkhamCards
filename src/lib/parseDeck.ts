@@ -369,7 +369,7 @@ function getDeckChanges(
     ),
     addedCard => {
       if (addedCard.myriad) {
-        const myriadKey = `${addedCard.real_text}_${addedCard.xp}`;
+        const myriadKey = `${addedCard.real_name}_${addedCard.xp}`;
         if (myriadBuys[myriadKey]) {
           // Already paid for a myriad of this level
           // So this one is free.

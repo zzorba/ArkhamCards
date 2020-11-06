@@ -1,14 +1,14 @@
-import React, { useContext, useMemo } from 'react';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import React, { useMemo } from 'react';
+import { StyleSheet } from 'react-native';
 import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponent';
 import { ChaosBag } from '@app_constants';
 import Card from '@data/Card';
 import { SCENARIO_CARDS_QUERY } from '@data/query';
-import StyleContext from '@styles/StyleContext';
 import { useCampaign, useCampaignScenarios, useInvestigatorCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface GuideOddsCalculatorProps {
   campaignId: number;
@@ -17,7 +17,6 @@ export interface GuideOddsCalculatorProps {
 }
 
 export default function GuideOddsCalculatorView({ campaignId, investigatorIds, chaosBag }: GuideOddsCalculatorProps) {
-  const { colors } = useContext(StyleContext);
   const campaign = useCampaign(campaignId);
   const [cycleScenarios, scenarioByCode] = useCampaignScenarios(campaign);
 
@@ -31,9 +30,7 @@ export default function GuideOddsCalculatorView({ campaignId, investigatorIds, c
   }
   if (loading) {
     return (
-      <View style={styles.loading}>
-        <ActivityIndicator size="small" color={colors.lightText} />
-      </View>
+      <LoadingSpinner />
     );
   }
   return (

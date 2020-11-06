@@ -25,7 +25,6 @@ export default function useCardList(codes: string[], type: 'player' | 'encounter
   if (!codes.length) {
     return [[], false];
   }
-
   if (type === 'player') {
     if (!cards || !investigators) {
       return [[], true];

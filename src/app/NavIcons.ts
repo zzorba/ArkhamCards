@@ -6,17 +6,18 @@ import ArkhamIcon from '@icons/ArkhamIcon';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import COLORS from '@styles/colors';
+import { Icon } from 'react-native-vector-icons/Icon';
 
 // define your suffixes by yourself..
 // here we use active, big, small, very-big..
 const icons: {
-  [iconName: string]: [number, string, ReactNode?];
+  [iconName: string]: [number, string, typeof Icon];
 } = {
   elder_sign: [30, COLORS.M, ArkhamIcon],
   intellect: [26, COLORS.M, ArkhamIcon],
   per_investigator: [24, COLORS.M, ArkhamIcon],
   auto_fail: [24, COLORS.M, ArkhamIcon],
-  edit: [26, COLORS.M],
+  edit: [26, COLORS.M, MaterialIcons],
   tune: [28, COLORS.M, AppIcon],
   'content-copy': [28, COLORS.M, MaterialCommunityIcons],
   delete: [30, COLORS.M, MaterialCommunityIcons],
@@ -28,11 +29,11 @@ const icons: {
   'chevron-left': [40, COLORS.M, MaterialCommunityIcons],
   'chevron-right': [40, COLORS.M, MaterialCommunityIcons],
   sort: [28, COLORS.M, AppIcon],
-  'arrow-back': [24, '#000'],
+  'arrow-back': [24, '#000', MaterialIcons],
   menu: [28, COLORS.M, MaterialCommunityIcons],
   cards: [30, COLORS.M, AppIcon],
   settings: [30, COLORS.M, AppIcon],
-  add: [28, COLORS.M],
+  add: [28, COLORS.M, MaterialIcons],
   deck: [28, COLORS.M, AppIcon],
   wild: [28, COLORS.M, ArkhamIcon],
   flip_card: [28, COLORS.M, AppIcon],
@@ -41,17 +42,13 @@ const icons: {
   web: [28, COLORS.M, MaterialCommunityIcons],
 };
 
-const defaultIconProvider = MaterialIcons;
-
 const iconsMap: {
   [key: string]: number;
 } = {};
 
 const iconsLoaded = new Promise((resolve) => {
   Promise.all(Object.keys(icons).map(iconName => {
-    const Provider = icons[iconName][2] || defaultIconProvider;
-    const size = icons[iconName][0];
-    const color = icons[iconName][1];
+    const [size, color, Provider] = icons[iconName];
     return Provider.getImageSource(iconName, size, color);
   })).then(sources => {
     forEach(keys(icons), (iconName, idx) => {

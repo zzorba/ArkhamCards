@@ -1,7 +1,7 @@
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import React, { useContext, useEffect, useState } from 'react';
-import { Animated, Easing, StyleSheet, View } from 'react-native';
+import { Animated, ActivityIndicator, Easing, StyleSheet, View } from 'react-native';
 
 interface Props {
   size: number;
@@ -42,7 +42,7 @@ function Spinner({ value, size }: { size: number; value: Animated.Value }) {
 }
 
 const AnimatedAppIcon = Animated.createAnimatedComponent(AppIcon);
-export default function Loading({ size }: Props) {
+function NewLoading({ size }: Props) {
   const [value0] = useState(new Animated.Value(0));
   const [value1] = useState(new Animated.Value(0));
   useEffect(() => {
@@ -78,7 +78,22 @@ export default function Loading({ size }: Props) {
   );
 }
 
+export default function LoadingSpinner({ large }: { large?: boolean }) {
+  const { colors } = useContext(StyleContext);
+  return (
+    <View style={styles.loading}>
+      <ActivityIndicator size={large ? 'large' : 'small'} color={colors.lightText} animating />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
+  loading: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
   outerWrapper: {
     position: 'relative',
   },

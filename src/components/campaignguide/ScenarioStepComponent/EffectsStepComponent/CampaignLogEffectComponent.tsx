@@ -5,11 +5,12 @@ import {
 import { t } from 'ttag';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
 import CampaignGuideContext from '../../CampaignGuideContext';
-import Card from '@data/Card';
 import { CampaignLogEffect, FreeformCampaignLogEffect, BulletType } from '@data/scenario/types';
 import CampaignGuideTextComponent from '../../CampaignGuideTextComponent';
+import useSingleCard from '@components/card/useSingleCard';
+import StyleContext from '@styles/StyleContext';
+import space from '@styles/space';
 
 interface Props {
   effect: CampaignLogEffect | FreeformCampaignLogEffect;
@@ -18,7 +19,19 @@ interface Props {
   bulletType?: BulletType;
 }
 
-function renderCard(card: Card, section: string) {
+function CardEffectContent({ code, section }: { code: string; section: string }) {
+  const { typography } = useContext(StyleContext);
+  const [card, loading] = useSingleCard(code, 'encounter');
+  if (loading) {
+    return null;
+  }
+  if (!card) {
+    return (
+      <Text style={[typography.text, space.paddingM]}>
+        { t`Missing card #${code}. Please try updating cards from ArkhamDB in settings.` }
+      </Text>
+    );
+  }
   return (
     <CampaignGuideTextComponent
       text={t`In your Campaign Log, under "${section}", record ${card.name}. `}
@@ -68,12 +81,7 @@ function CampaignLogEffectsContent({ effect, input }: {
       }
       case 'card': {
         return (
-          <SingleCardWrapper
-            code={logEntry.code}
-            type="encounter"
-          >
-            { (card: Card) => renderCard(card, logEntry.section) }
-          </SingleCardWrapper>
+          <CardEffectContent code={logEntry.code} section={logEntry.section} />
         );
       }
       case 'section_count': {

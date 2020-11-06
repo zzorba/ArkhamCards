@@ -5,13 +5,12 @@ import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import CardListWrapper from '@components/card/CardListWrapper';
 import PickerStyleButton from '@components/core/PickerStyleButton';
-import Card from '@data/Card';
 import { RandomLocationInput } from '@data/scenario/types';
 import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, l } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import useCardList from '@components/card/useCardList';
 
 interface Props {
   input: RandomLocationInput;
@@ -60,57 +59,43 @@ export default function RandomLocationInputComponent({ input }: Props) {
   const clearLocations = useCallback(() => {
     updateChoices('clear');
   }, [updateChoices]);
+  const [cards, loading] = useCardList(input.cards, 'encounter');
+  if (loading || !cards) {
+    return null;
+  }
 
-  const renderCards = useCallback((cards: Card[]) => {
-    const selectedCards = flatMap(choices, idx => cards[idx] || []);
-    if (!input.multiple) {
-      return (
+  const selectedCards = flatMap(choices, idx => cards[idx] || []);
+  return (
+    <View style={styles.container}>
+      { !input.multiple ? (
         <View style={[styles.wrapper, borderStyle]}>
           <PickerStyleButton
             id="single"
             title={t`Random location`}
-            value={selectedCards.length ?
-              selectedCards[0].name :
-              ''
-            }
+            value={selectedCards.length ? selectedCards[0].name : ''}
             onPress={drawLocation}
             widget="shuffle"
           />
         </View>
-      );
-    }
-    return (
-      <>
-        <BasicButton
-          title={t`Draw location`}
-          disabled={selectedCards.length >= cards.length}
-          onPress={drawLocation}
-        />
-        <BasicButton
-          title={t`Reshuffle`}
-          disabled={choices.length === 0}
-          onPress={clearLocations}
-        />
-        <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
-          { map(selectedCards, card => (
-            <CardSearchResult
-              key={card.code}
-              card={card}
-            />
-          )) }
-        </View>
-      </>
-    );
-  }, [input, choices, borderStyle, clearLocations, drawLocation]);
-
-  return (
-    <View style={styles.container}>
-      <CardListWrapper
-        type="encounter"
-        codes={input.cards}
-      >
-        { (cards: Card[]) => renderCards(cards) }
-      </CardListWrapper>
+      ) : (
+        <>
+          <BasicButton
+            title={t`Draw location`}
+            disabled={selectedCards.length >= cards.length}
+            onPress={drawLocation}
+          />
+          <BasicButton
+            title={t`Reshuffle`}
+            disabled={choices.length === 0}
+            onPress={clearLocations}
+          />
+          <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
+            { map(selectedCards, card => (
+              <CardSearchResult key={card.code} card={card} />
+            )) }
+          </View>
+        </>
+      ) }
       <BasicButton
         title={t`Done`}
         onPress={done}

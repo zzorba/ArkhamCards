@@ -1,13 +1,13 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { map, range } from 'lodash';
 import FastImage from 'react-native-fast-image';
 
-import SingleCardWrapper from '@components/card/SingleCardWrapper';
-import Card from '@data/Card';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import AppIcon from '@icons/AppIcon';
+import useSingleCard from '@components/card/useSingleCard';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 const PLAYER_BACK = require('../../../../assets/player-back.png');
 const ATLACH = require('../../../../assets/atlach.jpg');
@@ -28,13 +28,28 @@ interface Props {
 function TextCard({ name }: { name: string }) {
   const { colors, borderStyle, typography } = useContext(StyleContext);
   return (
-    <View style={[styles.singleCardWrapper, borderStyle, { borderWidth: 1, borderRadius: 8, backgroundColor: colors.faction.mythos.background }]}>
-      <Text style={typography.text}>{ name }</Text>
+    <View style={[
+      styles.singleCardWrapper,
+      borderStyle,
+      { borderWidth: 1, borderRadius: 8, backgroundColor: colors.darkText },
+    ]}>
+      <Text style={[typography.text, { color: colors.background }]}>
+        { name }
+      </Text>
     </View>
   );
 }
 
-function LocationCardImage({ card, back }: { card: Card; back: boolean }) {
+function LocationCardImage({ code, back, name }: { code: string; back: boolean; name?: string }) {
+  const [card, loading] = useSingleCard(code, 'encounter');
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+  if (!card) {
+    return (
+      <TextCard name={name || code} />
+    );
+  }
   const image = back ? card.backimagesrc : card.imagesrc;
   if (!image) {
     return (
@@ -53,8 +68,7 @@ function LocationCardImage({ card, back }: { card: Card; back: boolean }) {
 }
 
 export default function LocationCard({ code, height, width, left, top, name, resource_dividers }: Props) {
-  const { borderStyle, colors, typography } = useContext(StyleContext);
-  const renderPlaceholder = useCallback(() => <TextCard name={name || code} />, [name, code]);
+  const { borderStyle, colors } = useContext(StyleContext);
   const image = useMemo(() => {
     switch (code) {
       case 'blank':
@@ -88,16 +102,14 @@ export default function LocationCard({ code, height, width, left, top, name, res
         );
       default:
         return (
-          <SingleCardWrapper
+          <LocationCardImage
+            name={name}
             code={code.replace('_back', '')}
-            type="encounter"
-            placeholderComponent={name ? renderPlaceholder : undefined}
-          >
-            { (card: Card) => <LocationCardImage key={card.code} card={card} back={code.indexOf('_back') !== -1} /> }
-          </SingleCardWrapper>
+            back={code.indexOf('_back') !== -1}
+          />
         );
     }
-  }, [colors, borderStyle, code, renderPlaceholder, name]);
+  }, [colors, borderStyle, code, name]);
 
   const resourceDividers = useMemo(() => {
     if (!resource_dividers) {

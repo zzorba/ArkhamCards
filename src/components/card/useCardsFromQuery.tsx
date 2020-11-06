@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { Brackets } from 'typeorm/browser';
 import { filter } from 'lodash';
 
@@ -27,5 +27,6 @@ export default function useCardsFromQuery({ query, sort, tabooSetOverride }: Pro
       });
     }
   }, [db, query, tabooSetId, sort]);
-  return [cards || [], cards === undefined];
+  const resultCards = useMemo(() => cards || [], [cards]);
+  return [resultCards, cards === undefined];
 }
