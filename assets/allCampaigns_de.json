@@ -63448,7 +63448,6 @@
   "id": "in_too_deep",
   "scenario_name": "Zu tief drin",
   "full_name": "Szenario III: Zu tief drin",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",

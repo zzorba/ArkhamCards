@@ -63448,7 +63448,6 @@
   "id": "in_too_deep",
   "scenario_name": "In Too Deep",
   "full_name": "Scenario III: In Too Deep",
-  "type": "placeholder",
   "setup": [
     "intro",
     "gather_encounter_sets",

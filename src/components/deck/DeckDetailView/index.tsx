@@ -303,8 +303,7 @@ function DeckDetailView({
     } = parsedDeck;
 
     const problemField = problem ? problem.reason : '';
-
-    setSaving(false);
+    setSaving(true);
     deckDispatch(saveDeckChanges(
       deck,
       {
@@ -880,7 +879,18 @@ function DeckDetailView({
     cards, previousDeck, parsedDeck, colors, tabooSetId, meta, xpAdjustment, ignoreDeckLimitSlots, cardsByName,
   ]);
 
-  const renderFooter = useCallback((slots?: Slots, controls?: React.ReactNode) => {
+  const renderFooter = useCallback((newSlots?: Slots, controls?: React.ReactNode) => {
+    if (!deck || !cards) {
+      return null;
+    }
+    const parsedDeck = parseDeck(
+      deck,
+      meta,
+      newSlots || slots,
+      ignoreDeckLimitSlots,
+      cards,
+      previousDeck
+    );
     if (!parsedDeck) {
       return null;
     }
@@ -892,7 +902,7 @@ function DeckDetailView({
         controls={controls}
       />
     );
-  }, [componentId, parsedDeck, xpAdjustment]);
+  }, [componentId, xpAdjustment, meta, slots, ignoreDeckLimitSlots, cards, previousDeck, deck]);
 
   const uploadLocalDeckPressed = useCallback(() => {
     doUploadLocalDeck();

@@ -105,7 +105,8 @@ export default function LanguagePicker() {
     if (!cardsLoading && tempLang !== undefined) {
       setTempLang(undefined);
     }
-  }, [cardsLoading, setTempLang, tempLang]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardsLoading]);
 
   const onLanguageChange = useCallback((index: number | null) => {
     if (index === null) {
