@@ -1,11 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Text } from 'react-native';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import ScenarioGuideContext, { ScenarioGuideContextType } from './ScenarioGuideContext';
 import withCampaignGuideContext, { CampaignGuideProps, CampaignGuideInputProps } from './withCampaignGuideContext';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
-import StyleContext from '@styles/StyleContext';
 
 export interface ScenarioGuideInputProps extends CampaignGuideInputProps {
   scenarioId: string;
@@ -22,7 +21,6 @@ export default function withScenarioGuideContext<Props>(
       },
       scenarioId,
     } = props;
-    const styleContext = useContext(StyleContext);
     const processedScenario = useMemo(() => campaignGuide.getScenario(
       scenarioId,
       campaignState
@@ -38,13 +36,11 @@ export default function withScenarioGuideContext<Props>(
       <ScenarioGuideContext.Provider value={{
         processedScenario,
         scenarioState,
-        style: styleContext,
       }}>
         <WrappedComponent
           {...props as Props}
           processedScenario={processedScenario}
           scenarioState={scenarioState}
-          style={styleContext}
         />
       </ScenarioGuideContext.Provider>
     );

@@ -1,0 +1,1130 @@
+[
+  {
+    "id": "Golden_Rule",
+    "title": "Die Goldenen Regeln",
+    "text": "Falls der Text dieses Referenzhandbuches im direkten Widerspruch zum Text der Spielregel steht, hat der Text des Referenzhandbuches Vorrang. \nFalls der Text einer Karte im direkten Widerspruch zum Text des Referenzhandbuches oder der Spielregel steht, gilt der Text der Karte."
+  },
+  {
+    "id": "Grim_Rule",
+    "title": "Die Galgenregel",
+    "text": "Falls die Spieler nicht in der Lage sind, mithilfe dieses Referenzhandbuches eine Regel zu finden oder einen Timing-Konflikt zu lösen, wird der Konflikt auf die für das Gewinnen des Szenarios ungünstigste Alternative aufgelöst. Dann geht das Spiel weiter.\nSobald die Ermittler gezwungen werden eine Wahl zu treffen für die es mehrere gültige Optionen gibt, entscheidet sich der Ermittlungsleiter für eine der Optionen. Die Galgenregel spielt bei einer Wahl der Optionen keine Rolle.\n<i>Beispiel: Die Verschlossene Tür (Grundspiel 147) hat den Text: „Hänge diese Karte an den Ort mit den meisten Hinweisen an, der noch keine Verschlossene Tür angehängt hat.“ Falls es 3 Orte gibt, die alle gleich viele Hinweise haben und keine davon schon eine Verschlossene Tür angehängt hat, entscheidet sich der Ermittlungsleiter für einen der 3 Orte. Die Spieler müssen sich bei der Wahl der 3 Optionen nicht für die ungünstigste Alternative entscheiden.</i>\nDie Galgenregel tritt nur in Kraft, falls die Spieler nicht in der Lage sind, eine Antwort auf eine Regelfrage oder einen Timing-Konflikt zu finden, und deshalb nicht in der Lage wären, das Spiel fortzuführen. Die Regel ist dafür entwickelt worden, weiterspielen zu können, ohne zeitintensive Recherchen betreiben zu müssen. Die Galgenregel soll keine erschöpfende Antwort für Regelfragen und Timing-Konflikte sein."
+  },
+  {
+    "id": "A_An",
+    "title": "Ein, eine",
+    "text": "Sobald eine Bedingung beschrieben wird, gilt diese im Hinblick auf die Worte „ein“ oder „eine“ als erfüllt, falls 1 oder mehr der Elemente, auf die sich die Bedingung bezieht, vorhanden sind. <i>So erfüllt zum Beispiel ein Ermittler mit 3 Ressourcen die Bedingung „Jeder Ermittler mit einer Ressource“.</i>"
+  },
+  {
+    "id": "Ability",
+    "title": "Fähigkeiten",
+    "text": "Eine Fähigkeit ist der spezielle Spieltext, der angibt, wie eine Karte das Spiel beeinflusst.\n- Kartenfähigkeiten interagieren nur mit dem Spiel, falls die Karte mit der Fähigkeit im Spiel ist, es sei denn, die Fähigkeit (oder die Regel für den entsprechenden Kartentyp) bezieht sich ausdrücklich auf die Verwendung aus einer Zone heraus, die sich nicht im Spiel befindet.\n- Kartenfähigkeiten interagieren nur mit anderen Karten, die im Spiel sind, es sei denn die Fähigkeit bezieht sich ausdrücklich auf eine Interaktion mit Karten in einer Zone außerhalb des Spiels.\n- Falls sich mehrere Instanzen derselben Fähigkeit im Spiel befinden, interagiert jede Instanz individuell mit dem Spielstatus (oder darf individuell mit ihm interagieren).\nFolgende Typen von Kartenfähigkeiten gibt es: anhaltende Fähigkeiten, erzwungene Fähigkeiten, Enthüllungsfähigkeiten, ausgelöste Fähigkeiten, Schlüsselwörter und Anweisungen für Gegner (Erscheinen und Beute). Jeder dieser Fähigkeitstypen wird im Folgenden detailliert beschrieben.\nSiehe auch: \"[Kosten](#Costs)\", \"[Effekte](#Effects)\", \"[Adjektive](#Qualifiers)\", \"[Selbstreferenzieller Text](#Self_Referential_Text)\".",
+    "rules": [
+      {
+        "id": "Abilities_Constant_Abilities",
+        "title": "Anhaltende Fähigkeiten",
+        "text": "Anhaltende Fähigkeiten sind ohne besondere Formatierung auf der Karte angegeben. Anhaltende Fähigkeiten interagieren immer mit dem Spielstatus, solange sich die Karte im Spiel befindet. (Einige anhaltende Fähigkeiten überprüfen dauerhaft eine bestimmte Bedingung; dies ist an Wörtern wie „während“ oder „solange“ zu erkennen. Die Effekte einer solchen Fähigkeit sind zu jeder Zeit aktiv, wenn die angegebene Bedingung erfüllt ist.) Anhaltende Fähigkeiten haben keinen Initiierungszeitpunkt."
+      },
+      {
+        "id": "Abilities_Forced_Abilities",
+        "title": "Erzwungene Fähigkeiten",
+        "text": "Eine erzwungene Fähigkeit erkennt man an der fettgedruckten Anweisung „<b>Erzwungen</b> –“. Erzwungene Fähigkeiten werden automatisch initiiert und interagieren automatisch zu einem festgelegten Zeitpunkt mit dem Spielstatus. Diesen Zeitpunkt kann man normalerweise an Wörtern wie „sobald“, „nachdem“, „falls“ oder „zu“ erkennen.\n- Falls eine erzwungene Fähigkeit nicht die Möglichkeit hat, den Spielstatus zu verändern, wird sie nicht initiiert.\n- Die Initiierung einer erzwungenen Fähigkeit, welche die Möglichkeit hat, den Spielstatus zu verändern, ist jedes Mal verpflichtend, wenn der vorgegebene Zeitpunkt erfüllt ist.\n- Eine erzwungene Fähigkeit mit einer Timing-Vorgabe, die mit dem Wort „sobald ...“ beginnt, wird automatisch initiiert, sobald die angegebene Timing-Vorgabe eintritt, aber noch bevor ihre Auswirkungen auf den Spielstatus abgehandelt werden.\n- Eine erzwungene Fähigkeit mit einer Timing-Vorgabe, die mit dem Wort „nachdem ...“ beginnt, wird automatisch initiiert, nachdem die Auswirkungen der Timing-Vorgabe auf den Spielstatus abgehandelt worden sind.\n- Zu jeder Timing-Vorgabe müssen alle erzwungenen Fähigkeiten, die sich auf diese Timing-Vorgabe beziehen, abgehandelt werden, bevor [reaction]-Fähigkeiten (siehe unten), die sich auf dieselbe Timing-Vorgabe beziehen, initiiert werden dürfen.\nSiehe \"[Priorität bei gleichzeitiger Abhandlung](#Priority_of_Simultaneous_Resolution)\"."
+      },
+      {
+        "id": "Abilities_Revelation_Abilities",
+        "title": "Enthüllungsfähigkeiten",
+        "text": "Eine Enthüllungsfähigkeit, zu erkennen an einem fettgedruckten \"<b>Revelation</b> – \" auf einer Begegnungskarte oder Schwäche, wird initiiert, wenn ein Ermittler diese Karte zieht (siehe \"[Enthüllung](#Revelation)\"."
+      },
+      {
+        "id": "Abilities_Triggered_Abilities",
+        "title": "Ausgelöste Fähigkeiten",
+        "text": "Vor einer ausgelösten Fähigkeit steht entweder ein [free]-Symbol, ein [reaction]-Symbol, oder ein [action]-Symbol. Falls die Fähigkeit eine oder mehrere Voraussetzungen hat (Kosten und/oder Bedingungen), werden diese im Text direkt hinter diesem Symbol angegeben. Spieler müssen diese Voraussetzungen für ausgelöste Fähigkeiten immer erfüllen, um diese Fähigkeit auslösen zu können. Es gibt drei Arten ausgelöster Fähigkeiten:\nFreie ausgelöste Fähigkeiten ([free])\n– Eine freie ausgelöste Fähigkeit ([free]) darf in jedem Spielerfenster als Spielerfähigkeit ausgelöst werden. (Siehe „Anhang II: Timing und Spiel“ auf Seite 22 für eine vollständige Liste der Spielerfenster.)\nReaktionsausgelöste Fähigkeiten ([reaction])\n– Eine reaktionsausgelöste Fähigkeit ([reaction]) mit einer festgelegten Auslösebedingung darf zu jedem Zeitpunkt ausgelöst werden, an dem die Auslösebedingung erfüllt ist. <i>Beispiel: „[reaction] Nachdem du einen Gegner besiegt hast:“</i>\n- Eine [reaction]󲆍-Fähigkeit mit einer Auslösebedingung, die mit dem Wort „sobald ...“ beginnt, darf verwendet werden, nachdem die angegebene Auslösebedingung initiiert worden ist, aber noch bevor ihre Auswirkungen auf den Spielstatus abgehandelt werden.\n- Eine [reaction] -Fähigkeit mit einer Auslösebedingung, die mit dem Wort „nachdem ...“ beginnt, darf verwendet werden, sofort nachdem die Auswirkungen ihrer Auslösebedingung auf den Spielstatus abgehandelt worden sind.\n- Jede [reaction]-Fähigkeit darf jedes Mal, wenn ihre angegebene Bedingung erfüllt ist, nur ein Mal ausgelöst werden. <i>Beispiel: Eine Fähigkeit die ausgelöst wird, „nachdem X passiert ist“, darf jedes Mal, wenn X passiert ist, nur ein Mal ausgelöst werden.</i>\nAktionsausgelöste Fähigkeiten ([action])\n– Eine aktionsausgelöste Fähigkeit ([action]) darf nur während eines Spielerzuges in der Ermittlungsphase durch eine Aktivieren-Aktion ausgelöst werden, und nur wenn der Ermittler 1 Aktion für jedes in den Kosten der Fähigkeit angegebene [action]-Symbol verwendet.\nFür alle ausgelösten Fähigkeiten gelten folgende Regeln:\n- Ausgelöste Fähigkeiten auf einer Karte, die ein Spieler kontrolliert, werden von diesem Spieler entsprechend der Timing-Vorgabe, die in der Fähigkeit angegeben ist, freiwillig ausgelöst.\n- Eine ausgelöste Fähigkeit kann nur initiiert werden, falls ihr Effekt die Möglichkeit hat, den Spielstatus zu ändern, und ihre Kosten (falls vorhanden) vollständig gezahlt werden können, wobei aktive Modifikatoren für Kosten beachtet werden müssen. Ob diese Möglichkeit besteht, wird überprüft, ohne die Konsequenzen der Zahlung der Kosten oder die Interaktion mit anderen Fähigkeiten in Betracht zu ziehen.\n- Sobald eine Fähigkeit initiiert worden ist, müssen die Spieler ihre Effekte soweit möglich abhandeln, außer wenn der Effekt das Wort „darf“ enthält (siehe \"[Dürfen](#May)\").\nEinem Ermittler ist es erlaubt, ausgelöste Fähigkeiten ([fast], [reaction], und [action]-Fähigkeiten) von folgenden Quellen zu verwenden:\n- Von einer Karte im Spiel, die er kontrolliert. Das beinhaltet seine Ermittlerkarte.\n- Von einer Szenariokarte, die im Spiel und am selben Ort wie der Ermittler ist. Das beinhaltet den Ort selbst, Begegnungskarten, die an den Ort angelegt sind, und alle Begegnungskarten in der Bedrohungszone jedes Ermittlers, der sich an diesem Ort befindet.\n- Von der aktuellen Szenen- oder Agendakarte.\n- Von jeder Karte, die dem Ermittler ausdrücklich erlaubt ihre Fähigkeit zu aktivieren."
+      },
+      {
+        "id": "Abilities_Keywords",
+        "title": "Schlüsselwörter",
+        "text": "Ein Schlüsselwort ist eine Kartenfähigkeit, die eine Karte mit speziellen Regeln versieht (siehe \"[Schlüsselwörter](#Keywords)\")."
+      },
+      {
+        "id": "Spawn_Instructions_and_Prey_Instructions",
+        "title": "Erscheinen- und Beute-Anweisungen",
+        "text": "Erscheinen-Anweisungen enthalten Informationen darüber, wo ein Gegner erscheint, wenn er ins Spiel kommt (siehe \"[Erscheinen](#Spawn)\")\nBeute-Anweisungen enthalten Informationen darüber, welchen Ermittler ein Gegner verfolgt und/oder in einen Kampf verwickelt, falls er die Wahl hat (siehe \"[Beute](#Prey)\")."
+      },
+      {
+        "id": "Action_Designators",
+        "title": "Aktionskennzeichen",
+        "text": "Einige Fähigkeiten enthalten fett gedruckte Aktionskennzeichen (wie <b>Kampf</b>, <b>Entkommen</b>, <b>Ermitteln</b> oder <b>Bewegen</b>). Durch die Aktivierung einer solchen Fähigkeit wird die bezeichnete Aktion wie in den Regeln beschrieben durchgeführt, allerdings wird sie auf die in der Fähigkeit angegebene Weise modifiziert."
+      }
+    ]
+  },
+  {
+    "id": "Act_Deck_and_Agenda_Deck",
+    "title": "Szenendeck und Agendadeck",
+    "text": "Das Szenendeck steht für den Fortschritt, den die Ermittler in einem Szenario machen können. Das Agendadeck steht für den Fortschritt und die Ziele der finsteren Mächte, denen die Ermittler in einem Szenario gegenüberstehen. Das Vorrücken im Szenendeck ist normalerweise gut für die Ermittler, ein Vorrücken im Agendadeck hingegen schlecht.\n- Im Szenendeck rücken die Ermittler vor, falls sie als Gruppe die erforderliche Anzahl Hinweise ausgeben (die auf der Szenenkarte angegeben ist). Eine Szenenkarte kann hierfür einen festen Wert (wie zum Beispiel „4“) oder einen Wert pro Ermittler (erkennbar an dem [per_investigator]-Symbol) angeben. Dies passiert normalerweise als [free]-Spielerfähigkeit. Ein oder alle Ermittler können eine beliebige Anzahl Hinweise zur Gesamtzahl der Hinweise beitragen, die benötigt werden, um von einer Szene aus vorzurücken. Falls die Szene eine „<b>Ermittlungsziel</b> –“-Anweisung enthält, überschreibt diese das Ausgeben von Hinweisen oder fügt zusätzliche Voraussetzungen hinzu.\n- Das Agendadeck rückt vor, falls sich die erforderliche Anzahl Verderbensmarker im Spiel befindet (Verderbensmarker auf der Agendakarte und Verderbensmarker auf anderen Karten im Spiel), die auf der Agendakarte angegeben ist. Eine Agendakarte kann einen festen Wert oder einen Wert pro Ermittler angeben. Falls die Agendakarte eine „<b>Ermittlungsziel</b> –“-Anweisung enthält, überschreibt diese die Verderbensmarker-Voraussetzung oder sie fügt zusätzliche Voraussetzungen hinzu.\n- Die oberste Szenen-/Agendakarte des Szenen-/Agendadecks bezeichnet man als „aktuelle“ Szene/„aktuelle“ Agenda.\nUm im Szenendeck oder Agendadeck vorzurücken, werden folgende Schritte in der angegebenen Reihenfolge befolgt: \n1. Alle Marker werden von der Karte, von der aus vorgerückt werden soll, entfernt. Falls im Agendadeck vorgerückt wird, werden alle Verderbensmarker von jeder Karte im Spiel entfernt. \n2. Die Karte, von der aus vorgerückt wird, wird umgedreht und man folgt den Anweisungen auf der Rückseite („b“-Seite). \n-Falls die Rückseite der Szenen- oder Agendakarte eine Begegnungskarte ist, folgt man den Regeln für das Ziehen des entsprechenden Begegnungskartentyps. Ansonsten folgt man einfach den Anweisungen auf der Karte. \n3. Manchmal gibt die Szenen-/Agendakarte, von der aus vorgerückt wird, an, welche Karte zur nächsten Szene/Agenda wird. Falls sie dies nicht tut, wird die nächste Karte im Deck automatisch zur „aktuellen“ Szene/Agenda. Wenn eine neue Karte zur aktuellen Szene/Agenda wird, wird die Karte, von der aus vorgerückt wird, gleichzeitig aus dem Spiel entfernt. \n-Einige Anweisungen im Szenen- oder Agendadeck (sowie auf anderen Begegnungskartentypen) enthalten Auflösungspunkte in folgendem Format: \"**(→A#)**.\" Falls ein Auflösungspunkt erreicht wird, endet das Szenario. Im Kampagnenleitfaden wird dann die entsprechende Auflösung nachgelesen.\nSiehe auch: \"[Hinweise](#Clues)\", \"[Verderben](#Doom)\"."
+  },
+  {
+    "id": "Action",
+    "title": "Aktion",
+    "text": "Während seines Zuges darf ein Ermittler bis zu **drei** Aktionen nehmen.Sobald eine Aktion durchgeführt wird, werden zunächst sämtliche Kosten der Aktion gezahlt. Dann werden die Konsequenzen der Aktion abgehandelt.\n- Falls ein Ermittler die Anweisung erhält, dass er 1 oder mehr Aktionen verliert, hat er in dieser Runde entsprechend weniger Aktionen zur Verfügung.\nManche Kartenfähigkeiten gewähren Ermittlern „zusätzliche Aktionen“. Falls ein Ermittler während seines Zuges eine oder mehrere zusätzliche Aktionen hat, verbraucht die erste Aktion, die er nimmt die sich als zusätzliche Aktion qualifiziert, jene zusätzliche Aktion. \n<i>Beispiel: Daisy Walker hat den Text: „Du darfst in deinem Zug eine zusätzliche Aktion nehmen, die nur für Buch-[action]-Fähigkeiten verwendet werden kann.“Wenn Daisy das erste Mal eine Buch-[action]-Fähigkeit in jedem Zug durchführt, wird automatisch diese zusätzliche Aktion verwendet und nicht eine von Daisys 3 Standardaktionen. </i> \nFalls sich eine Aktion als eine von mehreren zusätzlichen Aktionen eines Ermittlers qualifiziert, darf dieser wählen, welche zusätzliche Aktion verwendet wird. \nFalls ein Effekt bewirkt, dass ein Ermittler eine oder mehrere Aktionen verliert, hat der Ermittler entsprechend viele Standardaktionen weniger in jenem Zug, die er nehmen kann (die 3 Standardaktionen sind die, welche als Erste „verloren“ gehen). Falls dem Ermittler nur noch zusätzliche Aktionen verbleiben, gehen diese nun in einer vom Ermittler gewählten Reihenfolge verloren. \n<i>Beispiel: Ein Effekt bewirkt, dass Daisy 2 Aktionen verliert. Sie hat dadurch 2 Standardaktionen weniger die sie in ihrem Zug nehmen kann. Sie kann nicht wählen ihre zusätzliche Aktion zu verlieren, es sei denn, es wäre ihre einzige verbleibende Aktion. </i>\nEine vollständige Liste der zur Verfügung stehenden Aktionen befindet sich unter Punkt \"[2.2.1 Der Ermittler nimmt eine Aktion, falls möglich.](#Investigation_Phase)\"."
+  },
+  {
+    "id": "Activate_Action",
+    "title": "Activate Action",
+    "text": "„Aktivieren“ ist eine Aktion, die ein Ermittler in seinem Zug in der Ermittlungsphase nehmen darf. \nSobald diese Aktion genommen wird, initiiert der Ermittler eine Fähigkeit, die eine oder mehrere [action]-Symbole als Teil der Kosten der Fähigkeit enthält. Die Anzahl der [action]-Symbole in den Kosten der Fähigkeit legt fest, wie viele Aktionen der Ermittler für diese Aktivieren-Aktion ausgeben muss. Sobald eine Aktivieren-Aktion durchgeführt wird, werden zunächst sämtliche Kosten der Aktion gleichzeitig bezahlt. Dann werden die Konsequenzen der Aktion abgehandelt.\nEin Ermittler darf Aktionen von folgenden Quellen aktivieren: \n-Eine Karte, die sich im Spiel und unter seiner Kontrolle befindet. Dies umfasst auch seine Ermittlerkarte. \n-Eine Szenariokarte, die sich im Spiel und am selben Ort wie der Ermittler befindet. Darunter fällt auch der Ort selbst, Begegnungskarten, die an diesen Ort platziert worden sind, und alle Begegnungskarten in der Bedrohungszone jedes Ermittlers, der sich an diesem Ort befindet. \n-Die aktuelle Szenen- oder Agendakarte."
+  },
+  {
+    "id": "Active_Player",
+    "title": "Aktiver Spieler",
+    "text": "Der aktive Spieler ist der Spieler, der gerade während der Ermittlungsphase seinen Zug nimmt."
+  },
+  {
+    "id": "After",
+    "title": "Nachdem",
+    "text": "Das Wort „nachdem“ bezieht sich auf den Zeitpunkt direkt nachdem die angegebene Timing-Vorgabe oder auslösende Bedingung vollständig abgehandelt worden ist.\n<i>(Beispiel: Eine Fähigkeit mit dem Text: „Nachdem du eine Gegnerkarte gezogen hast“ wird sofort initiiert, nachdem alle Schritte für das Ziehen einer Gegnerkarte abgehandelt worden sind – seine Enthüllungsfähigkeit abgehandelt worden ist, Monster erschienen sind, u. s. w.)</i>\nSiehe auch: \"[Fähigkeit](#Ability)\", \"[Priorität bei gleichzeitiger Abhandlung](#Priority_of_Simultaneous_Resolution)\"."
+  },
+  {
+    "id": "Additional_Costs",
+    "title": "Zusätzliche Kosten",
+    "text": "Manche Karten haben zusätzliche Kosten, die gezahlt werden müssen, um bestimmte Effekte oder Aktionen durchführen zu können. Diese werden in der Form von „als zusätzliche Kosten um (spezieller Effekt/Aktion) musst du (zusätzliche Kosten)“ oder „Du musst (als zusätzliche Kosten) um (speziellen Effekt/eine Aktion)“ angegeben. \nZusätzliche Kosten sind Kosten, die außerhalb des normalen Zeitpunkts zum Zahlen von Kosten gezahlt werden können (z. B. während des Abhandels eines Effekts). Falls ein Effekt, der zusätzliche Kosten voraussetzt, abgehandelt werden würde, müssen die zusätzlichen Kosten zu diesem Zeitpunkt gezahlt werden. Falls die zusätzlichen Kosten nicht gezahlt werden können, misslingt das Abhandeln dieses Teils des Effekts. \nZusätzliche Kosten müssen nicht gezahlt werden, sobald ein <b>Erzwungen</b>- Effekt oder eine verpflichtende Anweisung (wie etwa im Kampagnenleitfaden oder auf der Rückseite einer Szenen-oder Agendakarte) einen Ermittler dazu auffordert, einen Effekt abzuhandeln.\n<i>Beispiel: „Ashcan“ Pete befindet sich auf dem Miskatonic-Freigelände (Dunwich 48) und aktiviert Dukes zweite Fähigkeit, die lautet: „[action] Erschöpfe Duke: <b>Ermitteln.</b> Du ermittelst mit einem Grund-[intellect]-Fertigkeitswert von 4. Du darfst dich sofort auf einen verbundenen Ort bewegen, bevor du mit diesem Effekt ermittelst.“ Pete zahlt die Kosten, um die Fähigkeit zu aktivieren, indem er eine Aktion ausgibt und Duke erschöpft. Dann handelt Pete die Fähigkeit ab, indem er sich zuerst zur Orne-Bibliothek (Dunwich 50) bewegt und daraufhin ermittelt. Der Text der Orne-Bibliothek aber lautet: „Du musst eine zusätzliche Aktion ausgeben, um in der Orne-Bibliothek zu ermitteln.“ Das fügt zusätzliche Kosten hinzu, die gezahlt werden müssen, um in der Orne-Bibliothek zu ermitteln. Diese zusätzlichen Kosten werden gezahlt, sobald die Ermitteln-Aktion abgehandelt werden würde, außerhalb des Zeitpunkts zum Zahlen von Kosten. Falls Pete die zusätzliche Aktion nicht zahlen kann, misslingt das Abhandeln dieses Teils von Petes Effekt und er kann nicht ermitteln.</i>"
+  },
+  {
+    "id": "Agenda_Deck",
+    "title": "Agendadeck",
+    "text": "\"[Szenendeck und Agendadeck](#Act_Deck_and_Agenda_Deck)\"."
+  },
+  {
+    "id": "Alert",
+    "cycle": ["tfa", "tcu", "tde"],
+    "title": "Alarmiert",
+    "text": "Immer wenn einem Ermittler eine Fertigkeitsprobe misslingt, während er versucht, einem Gegner mit dem Schlüsselwort „Alarmiert“ zu entkommen, führt jener Gegner nach der Anwendung aller Ergebnisse jener Fertigkeitsprobe einen Angriff gegen den entkommenden Ermittler durch. Ein Gegner wird nicht erschöpft, nachdem er einen Alarmiert- Angriff durchgeführt hat. Dieser Angriff wird durchgeführt, egal ob der Gegner mit dem entkommenden Ermittler in einen Kampf verwickelt ist oder nicht."
+  },
+  {
+    "id": "Aloof",
+    "title": "Zurückhaltend",
+    "text": "Zurückhaltend ist eine Schlüsselwortfähigkeit. Ein Gegner mit dem Schlüsselwort Zurückhaltend verwickelt Ermittler am selben Ort nicht automatisch in einen Kampf. \n-Sobald ein Gegner mit Zurückhaltend erscheint, erscheint dieser, ohne in einen Kampf verwickelt zu sein. \n-Ein Ermittler darf die Aktion „In einen Kampf verwickeln“ oder eine Kartenfähigkeit verwenden, um einen Gegner mit Zurückhaltend in einen Kampf zu verwickeln. \n-Ein Ermittler kann einen Gegner mit Zurückhaltend nicht angreifen, solange dieser Gegner nicht mit einem Ermittler in einen Kampf verwickelt ist."
+  },
+  {
+    "id": "As_if",
+    "title": "As if...",
+    "text": "Some card effects allow an investigator to resolve an ability or perform an action as if a certain aspect of the game state were altered, using the text \"as if...\" to indicate the difference. The indicated ability or action is resolved with the altered game state in mind, but the actual game state remains unchanged.\n- The game state is considered to be altered throughout the duration of the indicated ability or action, from its initiation (including the paying of its costs, attacks of opportunity, etc) through the resolution of each aspect of its effect, and up until its completion.\n- Other card abilities or game effects resolved during this duration are also resolved with the altered game state in mind.\n- The game state is not physically altered in any way. (e.g. if you are considered to be at a location, you do not move your mini-card to that location, enemies at that location do not automatically move to your threat area, etc.)\n<i>For example: [Luke Robinson](/card/06004) wants to play [Preposterous Sketches](/card/02186), but is at a location with no clues. One of the locations next to him has a clue on it, so he uses his ability to play Preposterous Sketches as if he were at that location and engaged with each enemy at that location. The game state is considered to be altered in this way throughout the playing of Preposterous Sketches, from its initiation to its resolution. Among other things, this might mean: (a) if there is an enemy at that location, playing Preposterous Sketches would provoke an attack of opportunity, (b) if that location has an ability that would alter the cost of playing the card, it would do so, and (c) other card abilities that might trigger from Luke drawing 1 or more cards would do so as if he were at that connecting location and engaged with that enemy, and so on and so forth. Once Preposterous Sketches has finished resolving and is placed in the discard pile, Luke is no longer considered to be at that location and engaged with each enemy at that location.</i>"
+  },
+  {
+    "id": "Asset_Cards",
+    "title": "Vorteilskarten",
+    "text": "AVorteilskarten stehen für Gegenstände, Verbündete, Talente, Zauber und andere Dinge, die dem Ermittler helfen oder von ihm in einem Szenario verwendet werden dürfen.\n- Sobald man eine Vorteilskarte spielt, platziert man sie in seine Spielzone. Normalerweise bleiben Vorteilskarten im Spiel, wenn sie nicht durch eine Kartenfähigkeit oder einen Spielschritt abgelegt werden.\n- Einige Vorteilskarten haben Werte für Ausdauer und/oder Geistige Gesundheit. Sobald einem Ermittler Schaden oder Horror zugefügt wird, darf dieser Ermittler einen Teil davon oder den kompletten Schaden oder Horror einer gültigen Vorteilskarte zuweisen, die er kontrolliert (siehe \"[Schaden/Horror zufügen](#Dealing_Damage_Horror)\").\n- Die meisten Vorteilskarten benötigen einen oder mehrere Slots, solange sie sich im Spiel befinden (siehe \"[Slots](#Slots)\").\n- Einige Vorteilskarten haben ein Begegnungssetsymbol und keine Stufenanzeige. Solche Vorteilskarten nennt man Storyvorteile. Storyvorteile sind Teil eines Begegnungssets und dürfen nicht zu Spielerdecks hinzugefügt werden, es sei denn, die Auflösung oder die Vorbereitung eines Szenarios erlaubt dies dem Spieler."
+  },
+  {
+    "id": "At",
+    "title": "At",
+    "text": "Some abilities have triggering conditions that use the words \"at\" or \"if\" instead of specifying \"when\" or \"after,\" such as \"at the end of the round,\" or \"if the Ghoul Priest is defeated.\" These abilities trigger in between any \"when...\" abilities and any \"after...\" abilities with the same triggering condition.\nSee also: \"[If](#If)\"."
+  },
+  {
+    "id": "Anhängen an",
+    "title": "Attach To",
+    "text": "Falls eine Karte den Begriff „hänge diese Karte ... an“ verwendet, muss sie an das angegebene Spielelement angehängt werden, sobald sie ins Spiel kommt (sie wird teilweise überlappend darunter platziert). Sobald eine Karte angehängt ist, wird sie als Verstärkung bezeichnet.\n- Der Begriff „anhängen an“ wird immer auf Zulässigkeit des Ziels überprüft, sobald eine Karte an ein Spielelement angehängt wird, aber nach dem Anhängen wird diese nicht erneut überprüft. Falls die ursprüngliche Überprüfung beim Anhängen ungültig ist, ist die Karte nicht in der Lage, angehängt zu werden, und bleibt in ihrem vorherigen Status oder ihrer vorherigen Spielzone. Falls eine solche Karte nicht in ihrem vorherigen Spielstatus oder ihrer vorherigen Spielzone bleiben kann, wird sie abgelegt. \n- Ist eine Verstärkung einmal im Spiel, bleibt sie angehängt, bis entweder die Verstärkung oder das Spielelement, an das sie angehängt ist, das Spiel verlässt (die Verstärkung wird in diesem Fall abgelegt), oder bis eine Kartenfähigkeit die Karte ausdrücklich löst. \n- Eine Verstärkung wird unabhängig von dem Spielelement, an das sie angehängt ist, erschöpft oder spielbereit gemacht.",
+    "rules": [
+      {
+        "id": "Control_of_Attachments",
+        "title": "Control of Attachments",
+        "text": "An attachment may change control depending on the card it is attached to.\n- If an investigator attaches a player card to a player card he or she controls, he or she retains control of the attachment.\n- If an investigator attaches a player card to a player card another investigator controls, that other investigator takes control of the attachment.\n- If a player card with 1 or more player attachments changes control, the card’s new controller takes control of those player attachments.\n- If an investigator attaches a player card to an encounter card, he or she retains control of the attachment (but does not gain control of the attached encounter card)."
+      }
+    ]
+  },
+  {
+    "id": "Attacker_Attacked",
+    "title": "Angreifer, angegriffen",
+    "text": "Ein „Angreifer“ ist eine Entität (normalerweise ein Gegner oder Ermittler), die ihren Angriff gegen eine andere Entität ausführt. Die angegriffene Entität nennt man den „angegriffenen Gegner“ oder „angegriffenen Ermittler“.\""
+  },
+  {
+    "id": "Attack_of_Opportunity",
+    "title": "Gelegenheitsangriff",
+    "text": "Jedes Mal wenn ein Ermittler mit einem oder mehreren spielbereiten Gegnern in einen Kampf verwickelt ist und eine andere Aktion nimmt als <b>Kampf</b> oder <b>Entkommen</b> oder eine <b>Verhandeln</b>- oder <b>Aufgeben</b>-Fähigkeit aktiviert, führt jeder dieser Gegner einen Gelegenheitsangriff gegen den Ermittler durch; die Reihenfolge der Angriffe bestimmt dabei der Ermittler. Jeder Angriff fügt dem Ermittler den Schaden und Horror des Gegners zu.\n- Ein Gelegenheitsangriff wird sofort, nachdem alle Kosten für das Initiieren der Aktion, die diesen Angriff provoziert hat, gezahlt worden sind, aber bevor die Effekte dieser Aktion angewendet werden, durchgeführt. \n- Eine Fähigkeit, die mehr als eine Aktion kostet, provoziert nur einen Gelegenheitsangriff von jedem Gegner, der in einen Kampf verwickelt ist. \n- Ein Gegner wird nicht erschöpft, solange er einen Gelegenheitsangriff macht. \n- Nachdem alle Gelegenheitsangriffe gemacht worden sind, wird das Spiel mit der Abhandlung der Aktion, welche die Angriffe initiiert hat, fortgesetzt. \n- Im Bezug auf Kartenfähigkeiten zählen Gelegenheitsangriffe als Gegnerangriffe.\nEin Gelegenheitsangriff wird nur dann ausgelöst, sobald 1 oder mehrere der Aktionen eines Ermittlers dazu ausgegeben oder verwendet werden, um eine Fähigkeit oder Aktion auszulösen. [free]-Fähigkeiten mit fettgedruckten Aktionskennzeichen provozieren keinen Gelegenheitsangriff."
+  },
+  {
+    "id": "Automatic_Failure_Success",
+    "title": "Automatic Failure/Success",
+    "text": "Some card or token abilities may cause a skill test to automatically fail or to automatically succeed. If a skill test automatically fails or automatically succeeds, it does so during step \"ST.6\" of the \"[Skill Test Timing](#Skill_Test_Timing)\" process outlined.\n- If a skill test automatically fails, the investigator's total skill value for that test is considered 0.\n- If a skill test automatically succeeds, the total difficulty of that test is considered 0.\nSome card effects make an investigator automatically succeed or automatically fail a skill test. If this occurs, depending on the timing of such an effect, certain steps of the skill test may be skipped in their entirety.\n- If it is known that an investigator automatically succeeds or fails at a skill test before Step 3 (\"Reveal chaos token\") occurs, that step is skipped, along with Step 4. No chaos token(s) are revealed from the chaos bag, and the investigator immediately moves to Step 5. All other steps of the skill test resolve as normal.\n- If a chaos token effect causes an investigator to automatically succeed or fail at a skill test, continue with Steps 3 and 4, as normal.\n- If an ability \"automatically evades\" 1 or more enemies, this is not the same as automatically succeeding at an evasion attempt. As per the entry on \"Evade\" in the Rules Reference (see \"[Evade](#Evade)\"), if an ability automatically evades 1 or more enemies, no skill test is made for the evasion attempt whatsoever. Consequentially, because no skill test is made, it is not considered a \"successful\" evasion. The investigator simply follows the steps for evading an enemy (exhausting it and breaking its engagement).\n<i>For example: Patrice uses the ability on Hope, which reads: \"[action] If Hope is ready, exhaust or discard him: <b>Evade.</b> Attempt to evade with a base [agility] value of 5. (If you discarded Hope, this test is automatically successful.)\" If Patrice chooses to discard Hope, the skill test automatically succeeds before chaos tokens are revealed; therefore Steps 3 and 4 of the skill test are skipped. However, the skill test still takes place. Cards may still be committed to the test, and the investigator’s total modified skill value is still determined, as it may have some bearing on other card abilities. However, if Patrice instead uses the ability on Stray Cat, which reads: \"[fast] Discard Stray Cat: Automatically evade a non-<b>Elite</b> enemy at your location,\" no skill test is made whatsoever.</i>"
+  },
+  {
+    "id": "Base_Value",
+    "title": "Grundwert",
+    "text": "Der Grundwert ist der Wert eines Elementes, bevor Modifikatoren angewendet werden. Wenn nicht anders angegeben, ist der Grundwert eines Elementes, das von einer Karte abgeleitet ist, der auf dieser Karte aufgedruckte Wert."
+  },
+  {
+    "id": "Bearer",
+    "title": "Träger",
+    "text": "Der Träger einer Schwäche ist der Ermittler, der das Spiel mit dieser Schwäche in seinem Deck oder seiner Spielzone begonnen hat.\nSiehe \"[Schwäche](#Weakness)\"."
+  },
+  {
+    "id": "Blank",
+    "title": "Leer",
+    "text": "Falls das aufgedruckte Textfeld einer Karte durch eine Fähigkeit behandelt wird, als ob es „leer“ wäre, wird dieses Textfeld behandelt, als ob es keinen aufgedruckten Inhalt hätte. Text und/oder Symbole, die aus anderen Quellen stammen, werden dadurch nicht geleert. \n- Das Textfeld einer Karte enthält Merkmale, Schlüsselwörter, Kartentexte und Fähigkeiten."
+  },
+  {
+    "id": "Bonded",
+    "cycle": ["tcu", "tde"],
+    "title": "Bonded",
+    "text": "Cards with the bonded keyword are linked to another player card. They have no level and therefore are not available as deckbuilding options. Instead, the card to which they are bonded (which is listed in parentheses next to this keyword) brings the bonded card into the game.\nIf your deck contains a card that summons one or more bonded cards, those bonded cards are set aside at the start of each game.\nIf a weakness with the bonded keyword is added to an investigator's deck, hand, threat area, or play area, it does not remain a part of that investigator's deck for the rest of the campaign (unlike other weaknesses). It starts each game set aside with that investigator's other bonded cards.\n<i>For example: Hope, Zeal, and Augur all have the \"bonded (Miss Doyle)\" keyword. This means each of those cards is bonded to the card Miss Doyle. Hope, Zeal, and Augur each have no level and are therefore not available as options to include when building your deck. However, Miss Doyle summons each of these cards when she is played. Therefore, a player with Miss Doyle in their deck should set aside Hope, Zeal, and Augur at the start of each game. These cards are not part of that investigator's deck and do not count towards their deck size.</i>\nIf an investigator’s deck contains a card that summons one or more bonded cards, those bonded cards are set aside at the start of each game. The number of copies of each different bonded card that are set aside in this way is equal to the number of copies of that were included in the product in which that bonded card was introduced. The number of cards in your deck that summon the bonded card in question does not factor into this limit.\n<i>For example: An investigator may only have 3 copies of Soothing Melody set aside at the start of the game. Similarly, an investigator may only have 1 Essence of the Dream set aside at the start of the game, regardless of how many copies of Dream Diary they include in their deck.</i>"
+  },
+  {
+    "id": "Campaign_Play",
+    "title": "Kampagnenspiel",
+    "text": "Eine Kampagne ist eine Reihe von miteinander verbundenen Szenarien, in denen jeder Spieler von einem Szenario zum nächsten denselben Ermittler spielt. Im Verlauf der Kampagne erhält der Ermittler Erfahrungspunkte und Traumata, was sich durch Veränderungen seines Decks widerspiegelt. Jede Entscheidung, die in einer Kampagne getroffen worden ist, kann in späteren Szenarien Auswirkungen haben. \nSobald man eine Kampagne beginnt, werden die Anweisungen für die Vorbereitung der Kampagne im Kampagnenleitfaden befolgt. Nachdem man ein Szenario in einer Kampagne durchgespielt hat, werden die Ergebnisse im Kampagnenlogbuch notiert.",
+    "rules": [
+      {
+        "id": "Experience",
+        "title": "Erfahrung",
+        "text": "Nachdem die Ermittler die Ergebnisse eines Szenarios notiert haben, können sie mit ihrer gewonnenen Erfahrung neue Karten für ihre Decks erwerben. Dazu werden die folgenden Schritte in angegebener Reihen- folge durchgeführt:\n1. <b>Erfahrungspunkte zählen:</b> Jeder Ermittler verdient Erfahrungspunkte in Höhe der Summe der Siegpunktewerte auf allen Karten im Siegpunktestapel, modifiziert durch Boni und Mali, die im Kampagnenleitfaden für diese Auflösung angegeben sind. Diese Summe wird zu eventuell noch nicht ausgegebenen Erfahrungspunkten des Ermittlers addiert, die er in vorherigen Szenarien dieser Kampagne gewonnen hat.\n2. <b>Neue Karten erwerben:</b> Nun dürfen neue Karten erworben und dem Deck des Spielers hinzugefügt werden, indem man Erfahrungspunkte in Höhe der Kartenstufe ausgibt (erkennbar an der Anzahl der weißen Punkte oben links auf der Karte). Beim Erwerben neuer Karten beachtet man folgende Regeln: \n- Die Deckbaurichtlinien des Ermittlers (auf der Rückseite der Ermittlerkarte) müssen beim Erwerb neuer Karten beachtet werden. Man darf nur Karten erwerben, auf die der Ermittler Zugriff hat. Die Anforderungen für die Deckgröße müssen ebenfalls beachtet werden, indem für jede (nicht dauerhafte) Karte, die erworben und dem Deck hinzugefügt worden ist, eine andere Karte aus dem Deck entfernt wird. Schwächekarten und Karten, die dem Deck eines Ermittlers hinzugefügt werden müssen, dürfen nicht für neu erworbene Karten entfernt werden. \n- Jede Karte kostet Erfahrungspunkte in Höhe der Kartenstufe, <i>bis zu einem Minimum von 1</i> (der Kauf einer Karte der Stufe Null kostet trotzdem 1 Erfahrungspunkt). Die Anzahl der weißen Punkte unter den Kosten einer Karte gibt die Stufe der Karte an. \n- Sobald man eine Karte erwirbt, die eine höherstufige Version einer Karte mit demselben Kartennamen ist, darf der Ermittler diese Karte „verbessern“, indem er nur die Differenz der Erfahrung zwischen den beiden Karten zahlt (bis zu einem Minimum von 1) und die niedrigerstufige Version aus seinem Deck entfernt. \n- Neue Karten werden einzeln erworben (oder verbessert). Falls ein Ermittler mehr als 1 Kopie einer neuen Karte erwerben möchte, muss er für jede Kopie einzeln zahlen und für jede erworbene Kopie eine Karte aus seinem Deck entfernen. \n- Ein Spieler kann sein Deck im Verlauf einer Kampagne nur durch die oben angegebenen Schritte und durch besondere Anweisungen im Kampagnenleitfaden verändern.\n3. <b>Nicht ausgegebene Erfahrungspunkte notieren:</b> Jeder Ermittler notiert seine nicht ausgegebenen Erfahrungspunkte im Kampagnenlogbuch. Diese Erfahrungspunkte können zu einem späteren Zeitpunkt in der Kampagne ausgegeben werden."
+      },
+      {
+        "id": "Trauma",
+        "title": "Trauma",
+        "text": "Trauma steht für dauerhaften Schaden an der Ausdauer oder der Psyche eines Ermittlers. \nFalls ein Ermittler in einem Szenario besiegt wird, scheidet dieser Ermittler aus dem Szenario, aber nicht unbedingt aus der Kampagne aus. \nFalls ein Ermittler durch Schaden in Höhe seiner Ausdauer besiegt worden ist, erleidet er 1 körperliches Trauma (wird im Kampagnenlogbuch notiert). Für jedes körperliche Trauma des Ermittlers beginnt dieser jedes künftige Szenario mit 1 Schaden. Falls ein Ermittler körperliche Traumata in Höhe seiner aufgedruckten Ausdauer hat, wird der Ermittler <b>getötet</b>. \nFalls ein Ermittler durch Horror in Höhe seiner geistigen Gesundheit besiegt worden ist, erleidet er 1 seelisches Trauma (wird im Kampagnenlogbuch notiert). Für jedes seelische Trauma des Ermittlers, beginnt dieser jedes künftige Szenario mit 1 Horror. Falls ein Ermittler seelische Traumata in Höhe seiner aufgedruckten geistigen Gesundheit hat, ist der Ermittler <b>wahnsinnig</b> geworden. \nFalls ein Ermittler besiegt worden ist, indem er gleichzeitig Schaden in Höhe seiner Ausdauer *und* Horror in Höhe seiner geistigen Gesundheit erhalten hat, wählt er, welches Trauma er erleidet. \nFalls ein Ermittler getötet oder wahnsinnig geworden ist, muss der Spieler einen neuen Ermittler für das nächste Szenario wählen und für diesen ein neues Deck erstellen. Getötete oder wahnsinnige Ermittler können für den Rest der Kampagne nicht verwendet werden (siehe \"[Getötete/Wahnsinnige Ermittler](#Killed_Insane_Investigators)\").\nFalls ein Spieler einen neuen Ermittler wählen möchte und sich keine weiteren Ermittler im Kartenpool befinden, haben die Spieler verloren und die Kampagne endet."
+      },
+      {
+        "id": "Defeat_by_Card_Ability",
+        "title": "Besiegt durch eine Kartenfähigkeit",
+        "text": "Ein Ermittler kann durch eine Kartenfähigkeit besiegt werden. Ein besiegter Ermittler scheidet aus dem Spiel aus (siehe \"[Ausscheiden](#Elimination)\"). Sollte dies eintreten, befolgt man die Anweisungen der Kartenfähigkeit, um festzustellen, ob dies langfristige Konsequenzen zur Folge hat.\n"
+      },
+      {
+        "id": "Advancing_to_Next_Scenario",
+        "title": "Zum nächsten Szenario vorrücken",
+        "text": "Nachdem man ein Szenario abgeschlossen hat, die Auflösung durchgeführt, das Kampagnenlogbuch auf den neusten Stand gebracht und neue Karten erworben hat, rückt man zum nächsten Szenario (in der Reihenfolge) der Kampagne vor, falls die Auflösung des Szenarios die Ermittler nicht direkt zu einem anderen Szenario leitet."
+      },
+      {
+        "id": "Joining_or_Leaving_a_Campaign",
+        "title": "Einer Kampagne beitreten oder sie verlassen",
+        "text": "Hat eine Kampagne erst einmal begonnen, können die Spieler zwischen zwei Szenarien der Kampagne beitreten oder sie verlassen. \nFalls ein Spieler eine Kampagne verlässt, werden die Informationen über diesen Spieler nicht aus dem Kampagnenlogbuch gelöscht, da er zu einem späteren Zeitpunkt wieder zwischen zwei Szenarien einsteigen darf. \nFalls ein neuer Spieler einer Kampagne beitritt, muss er einen Ermittler wählen, der in dieser Kampagne zuvor noch nicht verwendet worden ist. Dieser Spieler beginnt das Spiel, als ob es sich für ihn um das erste Szenario der Kampagne handeln würde, ohne Erfahrung und ohne Traumata."
+      },
+      {
+        "id": "Transferring_Investigators_to_a_New_Campaign",
+        "title": "Transferring Investigators to a New Campaign",
+        "text": "This section expands on the ability for investigators to transfer from a completed campaign to another campaign, as originally described in the section \"The End...or Is It?\" in the Night of the Zealot campaign guide.\n<i>Note: The standard rules of the game dictate that players start each campaign with a clean state (new decks and 0 experience). The following is an optional variant that is likely to affect the game’s balance. Only intrepid investigators who wish to embrace the chaos should choose this option.</i>\nWhen transferring one or more investigators from a completed campaign to a new campaign, players should observe the following rules:\n- Not all surviving investigators in the original campaign need to be transferred. It is okay to transfer some and start fresh with others.\n- Investigator decks remain the same. This includes all story assets and weaknesses earned in the original campaign, as well as experience gained and trauma suffered. Everything recorded in the campaign log under that investigator’s \"Earned Story Assets / Weaknesses\" should be transferred to the new campaign, as well.\n- All other notes in the Campaign Log should be wiped clean and do not transfer to the new campaign.\n- The chaos bag is reset. This includes all additional chaos tokens that were added to the chaos bag throughout the original campaign.\n- Cards and Campaign Guides are written with the assumption that investigators are not being transferred from one campaign to another. For this reason, campaigns are sometimes referred to as \"the campaign.\" <i>(For example, \"for the remainder of the campaign...\")</i> In general, when interpreting such effects, treat each campaign as being separate from one another. However, some effects should be interpreted as if each campaign played is part of one continuous uninterrupted campaign. This includes rules that dictate how an earned weakness or story asset operates, or additional rules that a specific investigator must follow. <i>(For example, \"for the remainder of the campaign, the bearer of X weakness must only speak in French.\")</i>"
+      }
+    ]
+  },
+  {
+    "id": "Cancel",
+    "title": "Aufheben",
+    "text": "Einige Kartenfähigkeiten können andere Karteneffekte oder Spieleffekte „aufheben“. Aufheben-Fähigkeiten unterbrechen die Initiierung eines Effektes und verhindern, dass der Effekt initiiert wird. \n- Jedes Mal wenn man die Effekte einer Fähigkeit aufhebt, gilt diese Fähigkeit immer noch als initiiert (mit Ausnahme ihrer Effekte) und ihre Kosten sind immer noch bezahlt. Das Initiieren der Effekte der Fähigkeit wird allerdings verhindert und man handelt die Effekte nicht ab. \n- Falls die Effekte einer Ereigniskarte aufgehoben werden, gilt die Karte immer noch als gespielt und die Karte wird weiterhin auf den Ablagestapel ihres Besitzers gelegt. \n- Falls die Effekte einer Verratskarte aufgehoben werden, gilt die Karte immer noch als gezogen und die Karte wird weiterhin auf den Begegnungs-Ablagestapel gelegt."
+  },
+  {
+    "id": "Cannot",
+    "title": "Kann nicht/Können nicht",
+    "text": "Der Begriff „kann nicht“ hat absolute Gültigkeit und kann nicht von anderen Fähigkeiten widerrufen werden."
+  },
+  {
+    "id": "Cardtypes",
+    "title": "Kartentypen",
+    "text": "Informationen über die Kartentypen des Spiels und ihren genauen Aufbau befinden sich in Anhang IV (siehe \"[Anhang IV: Aufbau der Karten](#Appendix_IV_Card_Anatomy)\").\n- Falls eine Fähigkeit dafür sorgt, dass eine Karte ihren Kartentyp ändert, verliert sie alle anderen Kartentypen, die sie möglicherweise hat, und funktioniert genau wie andere Karten des neuen Kartentyps.\nSiehe auch: \"[Vorteilskarten](#Asset_Cards)\", \"[Gegnerkarten](#Enemy_Cards)\", \"[Ereigniskarten](#Event_Cards)\", \"[Ortskarten](#Location_Cards)\", \"[Fertigkeitskarten](#Skill_Cards)\", \"[Verratskarten](#Treachery_Cards)\"."
+  },
+  {
+    "id": "Chaos_Tokens",
+    "title": "Chaos Tokens",
+    "text": "Chaos tokens are revealed from the chaos bag during skill tests, to modify or influence the results of the skill test.\n[skull] [cultist] [elder_thing] [tablet] – If any of these tokens are revealed for a skill test, resolve the effect for that symbol as indicated on the scenario reference card for the current scenario.\n[auto_fail] – This is the auto-fail token. If this token is revealed for a skill test, it indicates the investigator automatically fails the test (see \"[Automatic Failure/Success](#Automatic_Failure_Success)\").\n[elder_sign] – This is the elder sign token. If this token is revealed for a skill test, resolve the [elder_sign] effect on the investigator card belonging to the player performing the skill test.\nIf a revealed chaos token (or the effect referenced by a chaos token) has a numerical modifier, that modifier is applied to the investigator's skill value for this test.\nSee \"[ST.3 Reveal chaos token](#Skill_Test_Timing)\".",
+    "rules": [
+      {
+        "id": "Resolving_Multiple_Revealed_Chaos_Tokens",
+        "title": "Resolving Multiple Revealed Chaos Tokens",
+        "text": "If an investigator is instructed to \"resolve\" multiple revealed chaos tokens, any game or card effects which refer to \"the revealed chaos token\" in the singular should be construed to apply to each of the revealed chaos tokens. For example, when applying chaos symbol effects during Step 4 of a skill test or applying modifiers to an investigator’s skill value during Step 5 of a skill test, the effects and modifiers of all of the resolved chaos tokens should be applied, even though the rules state \"the revealed chaos token.\" Similarly, any card effects that refer to \"the revealed chaos token\" refer to all of the resolved tokens.\n<i>For example: An investigator plays Premonition, which reads: \"Put Premonition into play, reveal a random chaos token from the chaos bag, and seal it on Premonition.\" That investigator then uses Olive McBride to \"reveal 3 chaos tokens instead of 1, choose 2 of those tokens to resolve, and ignore the other.\" In this case, both of the resolved tokens would be sealed on Premonition, even though Premonition only refers to the revealed token as a singular token. Likewise, when Premonition instructs that investigator to \"Resolve the token sealed here as if it were just revealed from the chaos bag,\" the investigator should resolve both of the tokens sealed on it.</i>\nAdditionally, when resolving multiple chaos tokens, any game or card effects which trigger if a certain chaos token is revealed - such as the text \"If the named chaos token is revealed during this skill test...\" on Recall the Future - will trigger if any of the resolved chaos tokens meet the specified conditions. Such an effect will not trigger twice if two of the designated tokens are resolved.\nNote that this entry only applies when multiple chaos tokens are \"resolved.\" If multiple chaos tokens are revealed and all but 1 of them are canceled or ignored, this entry does not apply."
+      }
+    ]
+  },
+  {
+    "id": "Choices_and_the_Grim_Rule",
+    "title": "Choices, and the Grim Rule",
+    "text": "When investigators are forced to make a choice and there are multiple valid options, the lead investigator decides between those options. The Grim Rule does not play a part in these choices.\n<i>For example: Locked Door reads \"Attach to the location with the most clues,and without a Locked Door attached.\" If there are 3 locations that are tied for the most clues, and none of them already have a Locked Door attached, the lead investigator decides between those 3 locations. Players are not forced to decide which of those 3 options would be the objectively worst option.</i>\nThe Grim Rule only comes into effect if players are unable to find the answer to a rules or timing conflict, and are thus unable to continue playing the game. It is designed to keep the game moving when looking up the correct answer would be too time-consuming or inconvenient for the players. The Grim Rule is not an exhaustive answer to rules/timing conflicts."
+  },
+  {
+    "id": "Clues",
+    "title": "Clues",
+    "text": "Clues represent the progress the investigators can make towards solving a mystery, unraveling a conspiracy, and/or advancing in a scenario.\n- The first time an investigator enters a location, that location is revealed (turned face-up) and a number of clues equal to that location's clue value are placed on that location (from the token pool). Most clue values are conveyed as a \"per investigator ([per_investigator])\" value. This may occur during setup.\n- A clue at a location can be discovered by successfully investigating the location (see \"[Investigate Action](#Investigate_Action)\" on page 13), or by a card ability. If an investigator discovers a clue, he or she takes the clue from the location and places it on his or her investigator card, under his or her control.\n- If there are no \"<b>Objective</b> – \" requirements for advancing the current act, during any investigator's turn the investigators may, as a group, spend the requisite number of clues (usually conveyed as a \"per investigator\" value) from their investigator cards to advance the act deck. This is normally done as a [free] player ability. Any or all investigators may contribute any number of clues towards the total number of clues required to advance the act.\n- A card ability that refers to clues \"at a location\" is referring to the undiscovered clues that are currently on that location.\nSee also: \"[Act Deck and Agenda Deck](#Act_Deck_and_Agenda_Deck)\", \"[Tokens, Running out of](#Tokens)\"."
+  },
+  {
+    "id": "Collection",
+    "title": "Collection",
+    "text": "If an ability refers to a player's collection <i>(for example, \"search the collection\")</i>, the collection of cards from which that player's deck was assembled is used.\n<i>Example: Sean and Etienne are each using a deck built from Sean's collection. If Etienne is instructed to \"search the collection,\" he searches Sean's collection.</i>"
+  },
+  {
+    "id": "Constant_Abilities",
+    "title": "Constant Abilities",
+    "text": "See \"[Ability](#Abilities_Constant)\"."
+  },
+  {
+    "id": "Control",
+    "title": "Kontrolle",
+    "text": "See \"[Besitz und Kontrolle](#Ownership_and_Control)\"."
+  },
+  {
+    "id": "Copy",
+    "title": "Kopie",
+    "text": "Eine Kopie einer Karte wird durch ihren Kartennamen bestimmt. Eine zweite Kopie einer Karte ist eine andere Karte mit demselben Kartennamen, unabhängig von Kartentyp, Text, Bild oder anderen Eigenschaften der Karte."
+  },
+  {
+    "id": "Costs",
+    "title": "Kosten",
+    "text": "Es gibt zwei Arten von Kosten im Spiel: Ressourcenkosten und Fähigkeitskosten. \nDie Ressourcenkosten einer Karte entsprechen ihrem numerischen Wert, der (in Ressourcen) bezahlt werden muss, um diese Karte von der Hand zu spielen. Um die Ressourcenkosten zu bezahlen, nimmt ein Ermittler eine bestimmte Anzahl Ressourcen aus seinem Ressourcenvorrat und legt sie in den Markervorrat zurück. \nEinige ausgelöste Kartenfähigkeiten haben das Format „Kosten: Effekt“. In diesem Fall gibt der Teil vor dem Doppelpunkt die Kosten der Fähigkeit an, die bezahlt werden müssen, sowie Auslösebedingungen, die erfüllt sein müssen, um die Fähigkeit auszulösen. Der Teil nach dem Doppelpunkt ist der Effekt. \n- Falls mehrere Kosten für eine einzelne Karte oder Fähigkeit bezahlt werden müssen, müssen diese Kosten gleichzeitig bezahlt werden. \n- Nur der Spieler, der eine Karte oder Fähigkeit kontrolliert, darf ihre Kosten bezahlen. Es dürfen keine Spielelemente verwendet werden, die andere Spieler kontrollieren, um Kosten zu bezahlen. \n- Sobald Karten erschöpft, geopfert oder anderweitig verwendet werden, um Kosten zu bezahlen, dürfen nur Karten im Spiel und unter der Kontrolle ihres Besitzers verwendet werden, falls die Kosten nicht ausdrücklich den Status außerhalb des Spiels angeben. \n- Falls zum Bezahlen von Kosten ein Spielelement benötigt wird, das nicht im Spiel ist, darf der Spieler, der die Kosten bezahlt, nur Spielelemente verwenden, die sich in seinen Spielzonen befinden (wie seine Hand oder sein Deck), um die Kosten zu bezahlen. \n- Falls die Ermittler angewiesen werden Kosten als Gruppe zu bezahlen, darf jeder Ermittler (oder jeder Ermittler der durch die von der Fähigkeit definierten Gruppe) zu den Kosten beitragen. \n- Eine Fähigkeit kann nicht initiiert werden und ihre Kosten nicht bezahlt werden, falls das Abhandeln ihrer Effekte den Spielstatus nicht ändern. \n- Falls ein Ermittler als Kosten Schaden oder Horror nimmt und einen Teil davon auf eine Vorteilskarte umverteilt, gelten die Kosten trotzdem als bezahlt."
+  },
+  {
+    "id": "Dealing_Damage_Horror",
+    "title": "Dealing Damage/Horror",
+    "text": "There are two types of afflictions that may beset an investigator in the game: damage and horror. Damage afflicts an investigator's health, and horror afflicts an investigator's sanity.\nWhen an investigator or enemy is dealt damage and/or horror, follow these steps, in order:\n1. <b>Assign Damage/Horror:</b> Determine the amount of damage and/or horror being dealt. Place damage and/or horror tokens equal to the amount of damage and horror being dealt next to the cards that will be taking the damage/horror.\n- When an investigator is dealt damage or horror, that investigator may assign it to eligible asset cards he or she controls. To be eligible, an asset card must have health in order to be assigned damage, and it must have sanity in order to be assigned horror.\n- An asset cannot be assigned damage beyond the amount of damage it would take to defeat the card, and cannot be assigned horror beyond the amount of horror it would take to defeat the card.\n- All damage/horror that cannot be assigned to an asset must be assigned to the investigator.\n2. <b>Apply Damage/Horror:</b> Any assigned damage/horror that has not been prevented is now placed on each card to which it has been assigned, simultaneously. If no damage/horror is applied in this step, no damage/horror has been successfully dealt.\n- Abilities that prevent, reduce, or reassign damage and/or horror that is being dealt are resolved between steps 1 and 2.\n- After applying damage/horror, if an investigator has damage equal to or higher than his or her health or horror equal to or higher than his or her sanity, he or she is defeated. When an investigator is defeated, he or she is eliminated from the scenario (see \"[Elimination](#Elimination)\").\n- After applying damage/horror, if an enemy has damage equal to or higher than its health, it is defeated and placed in the encounter discard pile (or in its owner's discard pile if it is a weakness).\n- fter applying damage/horror, if an asset has damage equal to or higher than its health or horror equal to or higher than its sanity, it is defeated and placed in its owner's discard pile."
+  },
+  {
+    "id": "Deck",
+    "title": "Deck",
+    "text": "There are 4 main types of decks that appear in any game: the Investigator Deck, the Encounter Deck, the Act Deck, and the Agenda Deck.\n- The order of cards within a deck may not be altered unless a player is instructed to do so by a card ability.\nSee also: \"[Investigator Deck](#Investigator_Deck)\", \"[Encounter Deck](#Encounter_Deck)\", \"[Act Deck and Agenda Deck](#Act_Deck_and_Agenda_Deck)\"."
+  },
+  {
+    "id": "Deckbuilding",
+    "title": "Deckbuilding",
+    "text": "When building a custom deck, the following guidelines must be observed:\n- A player must choose exactly 1 investigator card.\n- A player's investigator deck must include the exact number of player cards indicated on the back of his or her investigator card as the \"Deck Size.\" Weaknesses, investigator-specific cards, and scenario cards that are added to a player's deck do not count towards this number.\n- A player's investigator deck may not include more than 2 copies (by title) of any given player card.\n- Each standard player card in a player's investigator deck must be chosen from among the \"Deckbuilding Options\" available on the back of his or her investigator card.\n- Most investigators have 0 experience to spend at the beginning of a campaign, which means that they may only include level 0 cards in their decks. Some investigators, and/or some campaigns, may provide a player with additional experience at the beginning of a campaign, which can be used immediately to purchase higher level cards (see \"[Campaign Play](#Campaign_Play)\").\n- All other \"Deckbuilding Requirements\" listed on the back of a player's investigator card must be observed.\n- Each required random basic weakness is added to a player's deck at the end of the deckbuilding process.\n- Story Assets may not be included in a player's deck unless the setup or resolution of a scenario grants that player permission to do so. These assets are indicated by the lack of a card level and the presence of an encounter set symbol (see \"[Asset Cards](#Asset_Cards)\").\n- During a campaign, players build a deck before playing the first scenario. In between scenarios, players can purchase new cards or upgrade cards in their deck following the rules found under \"[Campaign Play](#Campaign_Play)\".\nIf 1 or more cards are forcibly removed from an investigator’s deck and returned to the collection (such as when a card is exiled, or when a campaign effect forces an investigator to remove cards from their deck), that investigator must purchase cards so that a legal deck size is maintained. When purchasing cards in this manner, that investigator may purchase level 0 cards at 0 experience cost until a legal deck size is reached.\n- This rule also applies if an effect alters an investigator’s deck size, deckbuilding restrictions, or deckbuilding options such that 1 or more cards must be removed from or added to their deck as a result.",
+    "rules": [
+      {
+        "id": "Classes",
+        "title": "Classes",
+        "text": "Most player cards, including investigators, belong to one of 5 classes. Each class has its own distinct flavor and identity, as described below.\nGuardians ([guardian]) feel compelled to defend humanity, and thus go out of their way to combat the forces of the Mythos. They have a strong sense of duty and selflessness that drives them to protect others, and to hunt monsters down.\nMystics ([mystic]) are drawn to and influenced by the arcane forces of the Mythos. Many have spell-casting abilities, able to manipulate the forces of the universe through magical talent.\nRogues ([rogue]) are self-serving and out for themselves. Wily and opportunistic, they are always eager for a way to exploit their current situation.\nSeekers ([seeker]) are primarily concerned with learning more about the world and about the Mythos. They wish to research forgotten lore, map out uncharted areas, and study strange creatures.\nSurvivors ([survivor]) are everyday people in the wrong place at the wrong time, simply trying to survive. Ill-prepared and ill-equipped, Survivors are the underdogs, who rise to the occasion when their lives are threatened.\nSome cards are not affiliated with any class; these cards are neutral. Generally, investigators only have access to cards from their class.\nSome investigators have access to cards from other classes. Refer to the \"Deckbuilding Options\" on the back of an investigator card to view which cards an investigator has access to."
+      },
+      {
+        "id": "Deckbuilding_Options",
+        "title": "Deckbuilding Options",
+        "text": "The following section clarifies how certain investigators’ deckbuilding options function.\n- If one of the categories of an investigator’s deckbuilding options contains the word \"other\" in it, cards only fall into this category if they fall into no other category. <i>(For example, if an investigator’s deckbuilding options reads: \"Guardian cards level 0–5, up to 10 other <b>Weapon</b> cards,\" then a Guardian card with the <b>Weapon</b> trait would not occupy one of those 10 limited slots, because it first falls into the unlimited Guardian category).</i>\n- If one of the categories of an investigator’s deckbuilding options lists card text in it, cards fall into this category if the listed text appears in the card in any capacity, even if it is circumstantial. <i>(For example, if an investigator’s deckbuilding options reads: \"cards that 'heal horror' level 0–5,\" any card with an ability that heals any amount of horror will fall into this category, even if it only heals horror under specific circumstances.)</i>"
+      }
+    ]
+  },
+  {
+    "id": "Defeat",
+    "title": "Defeat",
+    "text": "Taking damage and/or horror may cause an investigator, enemy, or asset to be defeated.\n- If an investigator has as much or more damage on it as it has health (or as much or more horror on it as it has sanity), that investigator is defeated. An investigator might also be defeated by a card ability. When an investigator is defeated, he or she is eliminated from the scenario (see \"[Elimination](#Elimination)\").\n- In campaign play, an investigator that is defeated by taking damage equal to his or her health suffers 1 physical trauma. An investigator that is defeated by taking horror equal to his or her sanity suffers 1 mental trauma. Taking trauma may cause an investigator to be **killed** or driven **insane** (see \"[Campaign Play](#Campaign_Play)\" for more information).\n- If an enemy has as much or more damage on it as it has health, that enemy is defeated and placed on the encounter discard pile (or on its owner's discard pile if it is a weakness).\n- If an asset with a health value has as much or more damage than it has health, it is defeated. If an asset with a sanity value has as much or more horror than it has sanity, it is defeated. A defeated asset is placed on its owner's discard pile."
+  },
+  {
+    "id": "Delayed_Effects",
+    "title": "Delayed Effects",
+    "text": "Some abilities create delayed effects. Such abilities specify a future timing point, or indicate a future condition that may arise, and dictate an effect that will happen at that time.\n- Each delayed effect initiates automatically and immediately (as a forced ability) if its future timing point or future condition occurs.\n- A delayed effect affects all specified entities that are in the specified game area and eligible at the time the delayed effect resolves."
+  },
+  {
+    "id": "Difficulty_level",
+    "title": "Difficulty (level)",
+    "text": "There are four levels of difficulty in *Arkham Horror: The Card Game*: Easy, Standard, Hard, and Expert. At the beginning of a campaign or standalone scenario, the players choose which difficulty level to use. The campaign setup section of that campaign or scenario's Campaign Guide indicates which chaos tokens should be placed into the chaos bag when playing on each difficulty level.\n- When playing in Easy or Standard mode, use the \"Easy/Standard\" side of each scenario's reference card. When playing in Hard or Expert mode, use the \"Hard/Expert\" side of each scenario's reference card instead."
+  },
+  {
+    "id": "Difficulty_skill_tests",
+    "title": "Difficulty (skill tests)",
+    "text": "The difficulty of a skill test is the target number an investigator is trying to equal or exceed with his or her modified skill value to pass that test.\n- When attacking an enemy, the base difficulty of the skill test is the enemy's fight value.\n- When investigating a location, the base difficulty of the skill test is the location's shroud value.\n- When attempting to evade an enemy, the base difficulty for the skill test is the enemy's evade value.\n- When resolving a skill test created by a card ability, the base difficulty is indicated as a parenthetical value following the indication of which skill is being tested. <i>For example: Intellect (3).</i>\nSee \"[Skill Test Timing](#Skill_Test_Timing)\" or the full rules on skill tests."
+  },
+  {
+    "id": "Direct_Damage_Direct_Horror",
+    "title": "Direct Damage, Direct Horror",
+    "text": "If an ability causes a card to take direct damage or direct horror, that damage or horror must be assigned directly to the specified card, and cannot be assigned or re-assigned elsewhere."
+  },
+  {
+    "id": "Discard_Piles",
+    "title": "Discard Piles",
+    "text": "Any time a card is discarded, it is placed faceup on top of its owner's discard pile. Encounter cards are owned by the encounter deck.\n- Each discard pile is an out-of-play area.\n- Each investigator has his or her own discard pile, and the encounter deck has its own discard pile.\n- Each discard pile is open information, and may be looked at by any player at any time.\n- The order of cards in a discard pile may not be altered unless a player is instructed to do so by a card ability.\n- If multiple cards are discarded simultaneously, the owner of the cards may physically place them on top of his or her discard pile one at a time, in any order. If multiple encounter cards are discarded simultaneously, they are placed on top of the encounter discard pile in any order (determined by lead investigator).\n- Any ability that would shuffle a discard pile of zero cards back into a deck does not shuffle the deck.\n- A single card cannot be shuffled into an empty player deck or encounter deck via card effect. If this shuffling would occur during the playing or revelation of a card that is typically discarded after it is resolved, such as an event or treachery card, it is discarded. Otherwise, the card remains in its current game area."
+  },
+  {
+    "id": "Doom",
+    "title": "Doom",
+    "text": "Doom represents the progress the forces of the Mythos make towards completing foul rituals, summoning cosmic entities, and/or advancing a scenario's agenda.\n- During each Mythos phase, 1 doom is placed on the current agenda (see \"[I. Mythos phase](#Mythos_Phase)\").\n- If there are no \"<b>Objective</b> – \" requirements for advancing the current agenda and the requisite amount of doom is in play (among the agenda and all cards in play), the agenda advances during the \"Check doom threshold\" step of the Mythos phase. Unless a card otherwise specifies that it can advance the agenda, this is the only time at which the agenda can advance.\n- Doom on cards other than the agenda (such as enemies, allies, locations, etc.) counts towards the amount of doom in play.\nSee also: \"[Act Deck and Agenda Deck](#Act_Deck_and_Agenda_Deck)\", \"[Tokens, Running out of](#Tokens)\"."
+  },
+  {
+    "id": "Doubt_and_Conviction",
+    "title": "Doubt and Conviction",
+    "cycle": ["ptc"],
+    "text": "Some story resolutions and interludes in <i>The Path to Carcosa</i> campaign instruct the players to \"Mark one <b>Doubt</b>\" or \"Mark one <b>Conviction</b>\" in their Campaign Log. This is done by filling in one of the boxes next to \"<b>Doubt</b>\" or \"<b>Conviction</b> at the bottom of the Campaign Log.\nLater in the campaign, some scenarios may be changed or altered depending on whether the investigators \"have more <b>Doubt</b> than <b>Conviction</b>\" or \"have more <b>Conviction</b> than <b>Doubt</b>.\" The investigators have more <b>Doubt</b> than <b>Conviction</b> if the number of boxes filled in next to <b>Doubt</b> is greater than the number of boxes filled in next to <b>Conviction</b> (and vice versa). <b>Doubt</b> and <b>Conviction</b> are shared among all of the investigators, and they are not tied to any specific investigator. <b>Doubt</b> and <b>Conviction</b> have no game effect except when explicitly referenced by the Campaign Guide or by a card effect."
+  },
+  {
+    "id": "Draw_Action",
+    "title": "Ziehen (Aktion)",
+    "text": "„Ziehen“ ist eine Aktion, die ein Ermittler in seinem Zug in der Ermittlungsphase nehmen darf. Sobald ein Ermittler diese Aktion nimmt, zieht er eine Karte von seinem Deck."
+  },
+  {
+    "id": "Drawing_Cards",
+    "title": "Karten ziehen",
+    "text": "Sobald ein Spieler angewiesen wird eine oder mehrere Karten zu ziehen, zieht er diese Karten oben von seinem Ermittlerdeck und fügt sie seiner Hand hinzu. \nSobald ein Spieler angewiesen wird eine oder mehrere Begegnungskarten zu ziehen, zieht er diese Karten oben vom Begegnungsdeck und handelt diese nach den Regeln für das Ziehen von Begegnungskarten im Rahmenereignisschritt \"[1.4 Jeder Ermittler zieht 1 Begegnungskarte](#Mythos_Phase)\".\n- Sobald ein Spieler zwei oder mehr Karten als Ergebnis einer einzigen Fähigkeit oder eines Spielschrittes zieht, werden diese Karten gleichzeitig gezogen. Falls ein Deck währenddessen leer wird, wird es zunächst neu gemischt und dann werden die restlichen Karten gezogen. \n- Es gibt kein Limit, wie viele Karten ein Spieler in jeder Runde ziehen darf. \n- Falls ein Ermittler mit einem leeren Ermittlerdeck eine Karte ziehen muss, mischt er seinen Ablagestapel zurück in sein Deck und zieht dann die Karte. Nachdem das Ziehen vollständig abgeschlossen ist, nimmt er 1 Horror."
+  },
+  {
+    "id": "Effects",
+    "title": "Effects",
+    "text": "A card effect is any effect that arises from the resolution of ability text printed on, or gained by, a card. A framework effect is any effect that arises from the resolution of a framework event (see \"[Framework Event Details](#Framework_Event_Details)\").\n- Card effects may be preceded by costs, triggering conditions, play restrictions, and/or play permissions; such elements are not considered effects (see \"[Ability](#Ability)\").\n- Once initiated, players must resolve as much of each aspect of the effect as they are able, unless the effect uses the word \"may.\"\n- When a non-targeting effect attempts to interact with a number of entities (such as \"draw 3 cards\" or \"search the top 5 cards of your deck\") that exceeds the number of entities that currently exist in the specified game area, the effect interacts with as many entities as possible.\n- The expiration of a lasting effect (or the cessation of a constant ability) is not considered to be generating a game state change by a card effect.\n- All aspects of an effect have timing priority over all \"after...\" triggering conditions that might arise as a consequence of that effect. <i>(For example, if an effect reads \"Gain 3 resources and draw 3 cards,\" resolve both aspects of the effect (gaining resources and drawing cards) before initiating an ability that reads \"After drawing a card...\")</i>\nSee also: \"[Delayed Effects](#Delayed_Effects)\", \"[Lasting Effects](#Lasting_Effects)\", \"[Priority of Simultaneous Resolution](#Priority_of_Simultaneous_Resolution)\"."
+  },
+  {
+    "id": "Elimination",
+    "title": "Elimination",
+    "text": "A player is eliminated from a scenario any time his or her investigator is defeated, or if he or she resigns. The only manner in which eliminated investigators interact with the game is when establishing \"per investigator\" values (see \"[Per Investigator](#Per_Investigator)\"). Any time a player is eliminated:\n1. For the purpose of resolving weakness cards, the game has ended for the eliminated investigator. Trigger any “when the game ends” abilities on each weakness the eliminated investigator owns that is in play. Then, remove those weaknesses from the game.\n2. The cards he or she controls in play and all of the cards in his or her out-of-play areas (such as hand, deck, discard pile) are removed from the game.\n- Any card that player owns but does not control that is in play remains in play, but if that card leaves play it is removed from the game.\n3. All clue tokens that player possesses are placed at the location the investigator was at when he or she was eliminated, and all of that player's resource tokens are returned to the token pool.\n4. All enemies engaged with that player are placed at the location the investigator was at when he or she was eliminated, unengaged but otherwise maintaining their current game state.\n5. All other cards in the eliminated investigator's threat area are placed in the appropriate discard pile.\n6. If the lead investigator is eliminated, the remaining players (if any) choose a new lead investigator.\n7. If there are no remaining players, the scenario ends. Refer to \"no resolution was reached\" entry for that scenario in the campaign guide."
+  },
+  {
+    "id": "Empty_Location",
+    "title": "Leerer Ort",
+    "text": "Ein leerer Ort ist ein Ort, an dem sich keine Gegner oder Ermittler befinden."
+  },
+  {
+    "id": "Encounter_Deck",
+    "title": "Begegnungsdeck",
+    "text": "Das Begegnungsdeck enthält die Begegnungskarten (Gegner-, Verratsund Storyvorteilskarten), auf welche die Ermittler in einem Szenario treffen können. \n- Falls das Begegnungsdeck leer ist, wird der Begegnungs-Ablagestapel zurück in das Begegnungsdeck gemischt."
+  },
+  {
+    "id": "Encounter_Set",
+    "title": "Begegnungsset",
+    "text": "Ein Begegnungsset ist eine Gruppe von Begegnungskarten, erkennbar an dem gemeinsamen Begegungssetsymbol neben dem Kartentyp."
+  },
+  {
+    "id": "Enemy_Cards",
+    "title": "Enemy Cards",
+    "text": "Enemies represent villains, cultists, ne'er-do-wells, terrible monsters, and unfathomable entities from alternate dimensions or the cosmos beyond. When an enemy card is drawn by an investigator, that investigator must spawn it following any spawn direction the card bears (see \"[Spawn](#Spawn)\"). If the encountered enemy has no spawn direction, the enemy spawns engaged with the investigator encountering the card and is placed in that investigator's threat area.\nSee \"[1.4 Each investigator draws 1 encounter card](#Mythos_Phase)\".\n- A ready, unengaged enemy engages any time it is at the same location as an investigator (see \"[Enemy Engagement](#Enemy_Engagement)\").\n- If an investigator is engaged with a ready enemy and takes an action other than to **fight**, to **evade**, or to activate a **parley** or **resign** ability, that enemy makes an attack of opportunity (see \"[Attack of Opportunity](#Attack_of_Opportunity)\").\n- Enemies with the hunter keyword move during the Enemy Phase (see \"[III. Enemy phase](#Enemy_Phase)\").\n- Engaged enemies attack during the Enemy Phase (see \"[III. Enemy phase](#Enemy_Phase)\")."
+  },
+  {
+    "id": "Enemy_Engagement",
+    "title": "Enemy Engagement",
+    "text": "While an enemy card is in play, it is either engaged with an investigator (and placed in that investigator's threat area), or it is unengaged and at a location (and placed at that location). Each enemy in an investigator's threat area is considered to be at the same location as that investigator, and should the investigator move, the enemy remains engaged and moves to the new location simultaneously with the investigator.\nAny time a ready unengaged enemy is at the same location as an investigator, it engages that investigator, and is placed in that investigator's threat area. If there are multiple investigators at the same location as a ready unengaged enemy, follow the enemy's prey instructions to determine which investigator is engaged. There is no limit on the number of enemies that can be engaged with a single investigator.\n<i>For example, a ready unengaged enemy immediately engages if:</i>\n- <i>It spawns at the same location as an investigator,</i>\n- <i>It moves into the same location as an investigator,</i>\n- <i>An investigator moves into the same location as it.</i>\nAn exhausted unengaged enemy does not engage, but if an exhausted enemy at the same location as an investigator becomes ready, it engages as soon as it is readied.\n- <i>Note: An enemy with the [Aloof](#Aloof) keyword does not engage in the manner described above.</i>See \"[Engage Action](#Engage_Action)\"."
+  },
+  {
+    "id": "Enemy_Phase_Placeholder",
+    "title": "Enemy Phase",
+    "text": "See \"[III. Enemy phase](#Enemy_Phase)\"."
+  },
+  {
+    "id": "Engage_Action",
+    "title": "Engage Action",
+    "text": "\"Engage\" is an action an investigator may take during his or her turn in the investigation phase.\nTo engage an enemy at the same location <i>(for example, this could be done to engage an exhausted enemy, an aloof enemy, or an enemy engaged with another investigator)</i>, an investigator places the chosen enemy in his or her threat area. The investigator and the enemy are now engaged.\n- An investigator may perform the engage action to engage an enemy that is engaged with a different investigator at the same location. The enemy simultaneously disengages from the previous investigator and engages the investigator performing the action.\n- An investigator cannot use the engage action to engage an enemy he or she is already engaged with.\nWhen an investigator engages an enemy, that enemy has also engaged that investigator, and vice-versa. There is no difference between engaging an enemy and being engaged by an enemy. Effects that trigger \"after an enemy engages you\" will trigger at the same time as effects that trigger \"after you engage an enemy.\""
+  },
+  {
+    "id": "Enters_Play",
+    "title": "Enters Play",
+    "text": "The phrase \"enters play\" refers to any time a card makes a transition from an out-of-play area into a play area (see \"[In Play and Out of Play](#In_Play_and_Out_of_Play)\").\n- If an ability (either on the card itself or from another card) causes a card to enter play in a state different from that specified by the rules, there is no transition to that state. It merely enters play in that state."
+  },
+  {
+    "id": "Evade",
+    "title": "Entkommen, Entkommen (Aktion)",
+    "text": "„Entkommen“ ist eine Aktion, die ein Ermittler in seinem Zug in der Ermittlungsphase nehmen darf. \nUm einem Gegner zu entkommen, mit dem man in einen Kampf verwickelt ist, legt ein Ermittler eine Beweglichkeitsprobe gegen den Entkommenwert dieses Gegners ab (siehe \"[Fertigkeitsproben](#Skill_Tests)\").\nFalls die Probe gelingt, entkommt der Ermittler diesem Gegner (siehe unten). (Dies geschieht in Schritt 7 der Fertigkeitsprobe \"[FP.7 Ergebnis der Fertigkeitsprobe anwenden](#Skill_Test_Timing)\".)\nFalls die Probe misslingt, entkommt der Ermittler dem Gegner nicht und bleibt mit ihm in einen Kampf verwickelt. \n- Falls eine Fähigkeit „automatisch“ 1 oder mehreren Gegnern entkommt, wird für diesen Entkommen-Versuch keine Fertigkeitsprobe abgelegt. \n- Immer wenn ein Ermittler einem Gegner entkommt (ob durch eine Entkommen-Aktion oder durch eine Kartenfähigkeit), wird der Gegner erschöpft (falls er vorher spielbereit war) und der Ermittler löst sich aus dem Kampf. Der Gegner wird aus der Bedrohungszone des Ermittlers an den derzeitigen Ort des Ermittlers verschoben, um anzuzeigen, dass er nicht länger mit dem Ermittler in einen Kampf verwickelt ist. \n- Anders als bei den Aktionen „Kampf“ und „in einen Kampf verwickeln“ kann ein Ermittler eine Entkommen-Aktion nur gegen einen mit ihm in einen Kampf verwickelten Gegner durchführen."
+  },
+  {
+    "id": "Event_Cards",
+    "title": "Ereigniskarten",
+    "text": "Ereigniskarten stehen für taktische Aktionen, Manöver, Zaubersprüche, Tricks und andere spontane Effekte, die einem Spieler zur Verfügung stehen. \n- Falls eine Ereigniskarte nicht das Schlüsselwort Schnell hat, darf sie nur durch eine Spielen-Aktion während des Zuges eines Spielers von dessen Hand durchgeführt werden. Sämtliche Berechtigungen und Einschränkungen für das Spielen der Karte müssen dabei beachtet werden. \n- Eine Ereigniskarte mit Schnell darf jederzeit nach den Anweisungen zum Spielen der Karte von der Hand eines Spielers gespielt werden (siehe \"[Schnell](#Fast)\").\n- Immer wenn ein Spieler eine Ereigniskarte spielt, werden ihre Kosten bezahlt, ihre Effekte abgehandelt (oder aufgehoben) und die Karte wird auf den Ablagestapel des Besitzers gelegt, nachdem diese Effekte abgehandelt (oder aufgehoben) worden sind. \n- Falls die Effekte einer Ereigniskarte aufgehoben werden, gilt die Karte immer noch als gespielt und ihre Kosten als bezahlt. Nur die Effekte werden aufgehoben. \n- Das Spielen (oder Nichtspielen) einer Ereigniskarte von der Hand ist für einen Spieler immer optional, falls das Ereignis in den Spielanweisungen nicht das Wort „muss“ verwendet. \n- Eine Ereigniskarte kann nicht gespielt werden, falls ihre Abhandlung keine Möglichkeit hat, den Spielstatus zu verändern."
+  },
+  {
+    "id": "Exceptional",
+    "title": "Außergewöhnlich",
+    "text": "Außergewöhnlich ist eine Schlüsselwortfähigkeit für den Deckbau. \n- Um eine Karte mit dem Schlüsselwort Außergewöhnlich zu kaufen, muss man das Doppelte ihrer aufgedruckten Erfahrungspunkte bezahlen. \n- Ein Ermittlerdeck eines Spielers kann nicht mehr als 1 Kopie (nach Name) einer Karte mit Außergewöhnlich enthalten."
+  },
+  {
+    "id": "Exhaust",
+    "title": "Erschöpfen, erschöpft",
+    "text": "Gelegentlich bewirkt eine Kartenfähigkeit oder ein Spielschritt, dass eine Karte erschöpft wird, um anzuzeigen, dass sie verwendet worden ist, um eine Funktion durchzuführen. Sobald eine Karte erschöpft wird, wird sie um 90° gedreht. Eine Karte in diesem Zustand nennt man erschöpft. \n- Eine erschöpfte Karte kann nicht erneut erschöpft werden, bis sie wieder spielbereit ist (normalerweise durch einen Spielschritt oder eine Kartenfähigkeit).."
+  },
+  {
+    "id": "Exile",
+    "title": "Exile",
+    "text": "Some player cards must be exiled when they are used. When a card is exiled, it is removed from the game and returned to your collection. During campaign play, a card that has been exiled must be purchased again with experience points (between scenarios) if you wish to re-include it in your deck. If exiling 1 or more cards would reduce your deck below your investigator's deck size, when purchasing cards between scenarios, you must purchase cards so that a legal deck size is maintained (when purchasing cards in this manner, you may purchase level 0 cards for 0 experience cost until a legal deck size is reached)."
+  },
+  {
+    "id": "Experience_Placeholder",
+    "title": "Erfahrungspunkte",
+    "text": "See \"[Kampagnenspiel](#Experience)\"."
+  },
+  {
+    "id": "Explore",
+    "cycle": ["tfa"],
+    "title": "Explore",
+    "text": "Some abilities in this campaign (and others) are identified with an \"Explore\" action designator. Such abilities are generally used to find new locations to put into play, and are initiated using the \"activate\" action.\n\"Explore\" abilities instruct you to draw the top card of the \"exploration deck,\" which is a separate deck that is constructed during the setup of some scenarios. This deck consists of several single-sided locations and treachery cards.\n- Each \"Explore\" ability indicates a particular type of location that you are seeking to draw. <b>If a location of that type is drawn, it is put into play, and you move to that location.</b> This is considered a \"successful\" exploration.\n- If any other location is drawn, place it next to the exploration deck, and draw the next card from the exploration deck. Repeat this process until a location of the indicated type is drawn, or a treachery is drawn. After this action has ended, shuffle each location next to the exploration deck back into the exploration deck.\n- If a treachery card is drawn, it is resolved as normal. If it is discarded, place it in the encounter discard pile as you would normally. There is no discard pile for the exploration deck. This is considered an \"unsuccessful\" exploration.\n- As a single-sided location is put into play from the exploration deck, place clues on that location equal to its clue value.\n<i>Example: Agenda 1a — “Expedition into the Wild” has the following ability: “[action]: <b>Explore.</b> Draw the top card of the exploration deck. If it is a connecting location, put it into play and move to it.” Ursula Downs is at the Expedition Camp and wishes to find a new location to travel to. She spends her first action to explore, drawing the top card of the exploration deck. The card she draws is Circuitous Trail. Because Circuitous Trail is a location that is not connected to the Expedition Camp, it is placed next to the exploration deck, and Ursula draws the next card in the exploration deck. This time, she draws the Low on Supplies treachery card, which she resolves as normal and places in the encounter discard pile. Her exploration is unsuccessful, and she must shuffle the Circuitous Trail that she drew previously back into the exploration deck. Ursula decides to explore one more time, spending a second action. This time, she draws Path of Thorns, which is connected to the Expedition Camp. Her exploration is successful. Path of Thorns is put into play with clues on it equal to its clue value, and Ursula immediately moves from the Expedition Camp to the Path of Thorns.</i>"
+  },
+  {
+    "id": "Fast",
+    "title": "Fast",
+    "text": "Fast is a keyword ability. A fast card does not cost an action to be played and is not played using the \"Play\" action.\n- A fast event card may be played from a player's hand any time its play instructions specify. If the instructions specify when/after a timing point, the card may be played as if the described timing point were a triggering condition for playing the card. If the instructions specify a duration or period of time, the card may be played during any player window within that period. If the instructions specify both a when/after timing point and a duration or period of time, the card may be played in reference to any instance of the specified triggering condition within that time period.\n- A fast asset may be played by an investigator during any player window on his or her turn.\n- Because fast cards do not cost actions to play, they do not provoke attacks of opportunity (see \"[Attack of Opportunity](#Attack_of_Opportunity)\")."
+  },
+  {
+    "id": "Fight_Action",
+    "title": "Fight Action",
+    "text": "\"Fight\" is an action an investigator may take during his or her turn in the investigation phase.\nTo fight an enemy at his or her location, an investigator resolves an attack against that enemy by making a combat test against the enemy's fight value (see \"[Skill Tests](#Skill_Tests)\").\nIf the test is successful, the attack succeeds and damage is dealt to the attacked enemy. The default damage dealt by an attack is 1. Some weapons, spells, or other special attacks may modify this damage. (This occurs during step 7 of the skill test, per \"[ST.7 Apply skill test results](#Skill_Test_Timing)\".)\nIf the test fails, no damage is dealt to the attacked enemy. However, if an investigator fails this test against an enemy that is engaged with another single investigator, the damage of the attack is dealt to the investigator engaged with that enemy.\n- An investigator may fight any enemy at his or her location, including: an enemy he or she is engaged with, an unengaged enemy at the same location, or an enemy engaged with another investigator who is at the same location."
+  },
+  {
+    "id": "Flavor_Text",
+    "title": "Stimmungstext",
+    "text": "Stimmungstext ist zusätzlicher Text auf einer Karte, der thematischen Kontext zu der Karte und/oder ihrer Fähigkeit bietet. Stimmungstext interagiert in keiner Weise mit dem Spiel."
+  },
+  {
+    "id": "Forced_Abilities",
+    "title": "Forced Abilities",
+    "text": "See \"[Ability](#Abilities_Forced)\"."
+  },
+  {
+    "id": "Gains",
+    "title": "Gains",
+    "text": "The word \"gains\" is used in multiple contexts.\n- If a player gains one or more resources, the player takes the specified number of resources from the token pool and adds them to his or her resource pool.\n- If an investigator gains an action, that investigator is permitted one additional action to spend during the specified time period.\n- If a card gains a characteristic (such as an icon, a trait, a keyword, or ability text), the card functions as if it possesses the gained characteristic.\n- \"Gained\" characteristics are not considered to be \"printed\" on the card. If an ability refers to the printed characteristics of a card, it does not refer to gained characteristics."
+  },
+  {
+    "id": "Game",
+    "title": "Spiel",
+    "text": "Ein „Spiel“ besteht aus einem einzelnen Szenario, nicht aus einer gesamten Kampagne. In einer Kampagne bedeutet der Beginn eines neuen Szenarios auch den Beginn eines neuen Spiels."
+  },
+  {
+    "id": "Hand_Size",
+    "title": "Handkartenlimit",
+    "text": "See \"[IV. Unterhaltsphase](#Upkeep_Phase)\"."
+  },
+  {
+    "id": "Heal",
+    "title": "Heilen",
+    "text": "„Heilen“ ist eine Anweisung, die eine angegebene Menge Schaden oder eine angegebene Menge Horror von einer Karte entfernt. \n- Falls eine Karte um mehr Schaden oder Horror geheilt wird, als sie aktuell auf sich hat, wird so viel von der angegebenen Menge wie möglich entfernt."
+  },
+  {
+    "id": "Haunted",
+    "title": "Haunted",
+    "cycle": ["tcu"],
+    "text": "Haunted is a new ability that appears on some locations. Each time an investigator fails a skill test while investigating a location, after applying all results for that skill test, that investigator must resolve all \"<b>Haunted</b> –\" abilities on that location.\nA location is \"haunted\" for the purposes of other card effects if it has at least one \"<b>Haunted</b> –\" ability (printed or otherwise)."
+  },
+  {
+    "id": "Health_and_Damage",
+    "title": "Health and Damage",
+    "text": "Health represents a card's physical fortitude. Damage tracks the physical harm that has been done to a card during a scenario.\n- Any time a card takes damage, place a number of damage tokens equal to the amount of damage just taken on the card (see \"[Dealing Damage/Horror](#Dealing_Damage_Horror)\").\n- If an investigator has damage on him or her equal to or greater than his or her health, that investigator is defeated. When an investigator is defeated, he or she is eliminated from the scenario (see \"[Elimination](#Elimination)\").\n- In campaign play, an investigator that is defeated by taking damage equal to his or her health suffers 1 physical trauma. Taking physical trauma may cause an investigator to be **killed** (see \"[Campaign Play](#Campaign_Play)\" for more information).\n- If an enemy has damage on it equal to or greater than its health, that enemy is defeated and placed in the encounter discard pile.\n- If an asset with a health value has damage on it equal to or greater than its health, it is defeated and placed on its owner's discard pile.\n- An asset card without a health value is not considered to have a health of 0, cannot gain health, and cannot have damage assigned to it.\n- A card's \"remaining health\" is its base health minus the amount of damage on it, plus or minus any active health modifiers.\nSee also: \"[Direct Damage, Direct Horror](#Direct_Damage_Direct_Horror)\"."
+  },
+  {
+    "id": "Hidden",
+    "cycle": ["tcu", "tde"],
+    "title": "Hidden",
+    "text": "An encounter card or weakness with the hidden keyword has a revelation ability that secretly adds that card to your hand. This should be done without revealing that card or its text to the other investigators.\n- While a hidden treachery is in your hand, treat it as if it were in your threat area. Its constant abilities are active, and abilities on it can be triggered, but only by you.\n- While a hidden enemy is in your hand, it is not considered to be engaged with you or in your threat area, and it does not attack unless otherwise specified. However, its constant abilities are active, and abilities on it can be triggered, but only by you.\n- A hidden card counts toward your hand size, but it cannot be discarded from your hand by any means except those described on the card. When discarded, a hidden card is placed in its appropriate discard pile.\nFor the best experience, players are encouraged to stay \"in character\" and not share information about hidden cards in their hand."
+  },
+  {
+    "id": "Hunter",
+    "title": "Hunter",
+    "text": "Hunter is a keyword ability.\nDuring the enemy phase (in [framework step 3.2](#Enemy_Phase)), each ready, unengaged enemy with the hunter keyword moves to a connecting location, along the shortest path towards the nearest investigator. Enemies at a location with one or more investigators do not move.\n- If there are multiple equidistant investigators who qualify as \"the nearest investigator,\" the enemy moves towards the one of those who best meets its prey instructions. If none do, or if the enemy has no prey instructions, the lead investigator may choose an investigator for the enemy to move towards.\n- If a hunter enemy would be compelled to a location to which the move is blocked by a card ability, the enemy does not move.\nSee also: \"[Prey](#Prey)\"."
+  },
+  {
+    "id": "If",
+    "title": "If",
+    "text": "Some abilities have triggering conditions that use the words \"at\" or \"if\" instead of specifying \"when\" or \"after,\" such as \"at the end of the round,\" or \"if the Ghoul Priest is defeated.\" These abilities trigger in between any \"when...\" abilities and any \"after...\" abilities with the same triggering condition.\nSee also: \"[At](#At)\"."
+  },
+  {
+    "id": "Immune",
+    "title": "Immun",
+    "text": "Falls eine Karte immun gegen bestimmte Effekt-Arten ist (<i>zum Beispiel „Immun gegen Verratskarteneffekte“ oder „Immun gegen Spielerkarteneffekte“</i>), kann sie nicht für Effekte dieser Art gewählt oder von ihnen betroffen werden. Nur die Karte selbst ist geschützt; Spielelemente, die in direktem Zusammenhang mit der immunen Karte stehen (wie angehängte Vorteilskarten, Marker auf der Karte oder Fähigkeiten, deren Quelle die immune Karte ist), sind selbst nicht immun. \n- Falls eine Karte eine Immunität gegen einen Effekt erhält, werden bestehende andauernde Effekte, die bereits vorher auf die Karte angewendet worden sind, nicht entfernt. Falls eine Karte eine Immunität gegen einen Effekt verliert, werden bestehende andauernde Effekte dieser Art nicht auf die Karte angewendet. \n- Immunität beschützt eine Karte nur vor Effekten. Sie beschützt eine Karte nicht vor Kosten."
+  },
+  {
+    "id": "In_Play_and_Out_of_Play",
+    "title": "In Play and Out of Play",
+    "text": "The cards that a player controls in his or her play area are considered in play.\nThe current act, the current agenda, each location in the play area, and each encounter card in a investigator's threat area or at a location, are all considered in play.\nOut of play refers to the cards in a player's hand, in any deck, in any discard pile, in the victory display, and those that have been set aside and/or removed from the game.\n- A card enters play when it transitions from an out-of-play origin to an in play area.\n- A card leaves play when it transitions from a in play area to an out-of-play destination.\n- Tokens on in play cards are considered in play. Resources in each investigator's resource pool are also considered in play."
+  },
+  {
+    "id": "In_Player_Order",
+    "title": "In Spielerreihenfolge",
+    "text": "Falls die Spieler angewiesen werden eine Reihe von Handlungen „in Spielerreihenfolge“ durchzuführen, führt der Ermittlungsleiter seinen Teil der Handlungen zuerst durch und die anderen Spieler sind im Uhrzeigersinn danach an der Reihe. Der Begriff „der nächste Spieler“ bezieht sich in diesem Zusammenhang auf den nächsten Spieler, der (im Uhrzeigersinn) in Spielerreihenfolge handelt."
+  },
+  {
+    "id": "Instead",
+    "title": "Instead",
+    "text": "The word \"instead\" is indicative of a replacement effect. A replacement effect is an effect that replaces the resolution of a triggering condition with an alternate means of resolution.\n- If multiple replacement effects are initiated against the same triggering condition and create a conflict in how to resolve the triggering condition, the most recent replacement effect is the one that is used for the resolution of the triggering condition.\n- The word \"would\" is used to define the triggering condition of some abilities, and establishes a higher priority for those abilities than abilities referencing the same triggering condition without the word \"would.\" (For instance, \"When X would occur\" resolves before \"When X occurs.\")\n- If a replacement effect that uses the word \"would\" changes the nature of a triggering condition, the original triggering condition is replaced with the new triggering condition. No further abilities referencing the original triggering condition may be used."
+  },
+  {
+    "id": "Investigate_Action",
+    "title": "Investigate Action",
+    "text": "\"Investigate\" is an action an investigator may take during his or her turn in the investigation phase.\nEach time an investigator takes this action, he or she makes an intellect test against the shroud value of that location (see \"[Skill Tests](#Skill_Tests)\").\nIf the test is successful, the investigator has succeeded in investigating the location, he or she discovers one clue at the location. (This occurs during step 7 of the skill test, per \"[ST.7 Apply skill test results](#Skill_Test_Timing)\".)\nAny time an investigator discovers a clue from a location, that player takes the clue from the location and places it on his or her investigator card, under his or her control.\nIf the test is failed, the investigator has failed in investigating the location. No clues are discovered during step 7 of the skill test."
+  },
+  {
+    "id": "Investigation_Phase_Placeholder",
+    "title": "Investigation Phase",
+    "text": "See \"[II. Investigation phase](#Investigation_Phase)\"."
+  },
+  {
+    "id": "Investigator_Deck",
+    "title": "Investigator Deck",
+    "text": "A player's \"investigator deck\" is the deck that contains that player's asset, event, skill, and weakness cards. A reference to \"your deck\" refers to the investigator deck under your control."
+  },
+  {
+    "id": "Joes_Hunch_Deck",
+    "title": "Joe's \"Hunch Deck\"",
+    "cycle": ["tcu"],
+    "text": "As a private eye, Joe Diamond has learned to follow his instincts, and therefore he has a separate hunch deck, which is constructed during step 4 of the setup of each scenario. The cards in this hunch deck are chosen from Joe's 40-card deck and therefore count toward his total deck size. With the exception of these setup instructions, all references to Joe's \"deck\" refer to Joe's standard investigator deck and not his hunch deck. Joe's hunch deck has no discard pile; cards from your hunch deck are discarded to your standard discard pile when played."
+  },
+  {
+    "id": "Keywords",
+    "title": "Keywords",
+    "text": "A keyword is a card ability which conveys specific rules to its card. Each keyword has its own rules which can be found in the keyword's own section of the glossary. The keywords in this game are: [aloof](#Aloof), [fast](#Fast), [hunter](#Hunter), [massive](#Massive), [peril](#Peril), [retaliate](#Retaliate), [surge](#Surge), [uses](#Uses).\n- There are also two deckbuilding keywords: [exceptional](#Exceptional) and [permanent](#Permanent). Deckbuilding keywords affect deck customization while building and/or leveling up a deck. They have no effect during gameplay. There are no exceptional or permanent cards in the core set – each of these keywords will be presented in future expansions.\n- A single card that has and/or is gaining the same keyword from multiple sources functions as if it has one instance of that keyword.\n- The initiation of any keyword which uses the word \"may\" in its keyword description is optional. The application of all other keywords is mandatory.\nSee \"[Ability](#Abilities_Keywords)\"."
+  },
+  {
+    "id": "Killed_Insane_Investigators",
+    "title": "Killed/Insane Investigators",
+    "text": "During campaign play, investigators who are killed or driven insane must be recorded in your campaign log and cannot be used for the remainder of the campaign.\n- An investigator with physical trauma equal to or higher than his or her printed health is killed.\n- An investigator with mental trauma equal to or higher than his or her printed sanity is driven insane.\n- An investigator may also be killed or driven insane by card ability, or during a scenario's resolution.\n- When playing a standalone scenario, there is no practical difference between being killed, driven insane, or defeated.\nSee \"[Campaign Play](#Campaign_Play)\"."
+  },
+  {
+    "id": "Lasting_Effects",
+    "title": "Lasting Effects",
+    "text": "Some card abilities create conditions that affect the game state for a specified duration *(for example, \"until the end of the phase\" or \" for this skill test\")*. Such effects are known as lasting effects.\n- A lasting effect persists beyond the resolution of the ability that created it, for the duration specified by the effect. The effect continues to affect the game state for the specified duration regardless of whether the card that created the lasting effect is or remains in play.\n- If a lasting effect affects in-play cards (or cards in a specified area), it is only applied to cards that are in play (or the specified area) when the lasting effect is established. Cards that enter play (or the specified area) after its establishment are not affected by the lasting effect.\n- A lasting effect expires as soon as the timing point specified by its duration is reached. This means that an \"until the end of the phase\" lasting effect expires before an \"at the end of the phase\" ability or delayed effect may initiate.\n- A lasting effect that expires at the end of a specific time period can only be initiated during that time period."
+  },
+  {
+    "id": "Lead_Investigator",
+    "title": "Lead Investigator",
+    "text": "The lead investigator is sometimes required to make important scenario decisions. At the beginning of a scenario, the investigators choose a lead investigator. If they cannot agree on a choice, a lead investigator is chosen at random.\n- If there are ever multiple valid options for a choice or decision that must be made *(for example, a hunter enemy that could move in two different directions)*, the lead investigator is the final arbiter in choosing among those options.\n- If the lead investigator is eliminated, the remaining players (if any) choose a new lead investigator."
+  },
+  {
+    "id": "Leaves_Play",
+    "title": "Leaves Play",
+    "text": "The phrase \"leaves play\" refers to any time a card makes a transition from an in-play state to an out-of-play state (see \"[In Play and Out of Play](#In_Play_and_Out_of_Play)\").\nIf a card leaves play, the following consequences occur simultaneously with the card leaving play:\n- All tokens on the card are returned to the token pool.\n- All attachments on the card are discarded.\n- All lasting effects and/or delayed effects affecting the card while it was in play expire for that card."
+  },
+  {
+    "id": "Limits_and_Maximums",
+    "title": "Limits and Maximums",
+    "text": "<b>\"Limit X per [period]\"</b> is a limit that appears on cards that remain in play through the resolution of an ability's effect. Each instance of an ability with such a limit may be initiated X times during the designated period. If a card leaves play and re-enters play during the same period, the card is considered to be bringing a new instance of the ability to the game.\n<b>\"Limit X per (card/game element)\"</b> is a limit that appears on attachment cards, and restricts the number of copies of that card (by title) that can be attached to each designated card or game element.\n- Unless stated otherwise, limits are player specific.\n- A \"group limit,\" however, applies to the entire group of investigators. <i>(For example, if an investigator triggers an ability that is \"group limit once per game,\" no other investigator may trigger that ability during that game.)</i>\n<b>\"Max X per [period]\"</b> imposes a maximum across all copies of a card (by title) for all players. Generally, this phrase imposes a maximum number of times that copies of that card can be played during the designated time period. If a maximum includes the word \"committed\" <i>(For example, \"Max 1 committed per skill test\")</i>, it imposes a maximum number of copies of that card that can be committed to skill tests during the designated period. If a maximum appears as part of an ability, it imposes a maximum number of times that ability can be initiated from all copies (by title) of cards bearing that ability (including itself), during the designated period.\nIf the effects of a card or ability with a limit or maximum are canceled, it is still counted against the limit/maximum, because the ability has been initiated.",
+    "rules": [
+      {
+        "id": "Limits_Pertaining_to_Play_Areas",
+        "title": "Limits Pertaining to Play Areas",
+        "text": "Some limits may pertain to a particular play area, such as \"Limit 1 per deck,\" \"Limit 1 in the victory display,\" or \"Limit 1 in play.\" This limit restricts the number of copies of that card (by title) that can exist in the specified play area. Another copy of that card cannot enter the specified play area if this limit has already been reached. Remember that limits are player specific unless otherwise noted. For example, a card with \"Limit 1 per deck\" can exist in two different investigator decks.\n<i>Note: \"Limit X per investigator\" is a limit that pertains to an investigator’s play area.</i>"
+      }
+    ]
+  },
+  {
+    "id": "Location_Cards",
+    "title": "Location Cards",
+    "text": "Location cards represent the places the investigators may explore during a scenario.\n- Use each investigator's mini-card to indicate which location he or she is at.\n- While an investigator is at a location, that investigator, each of his or her assets, and each card in that investigator's threat area is at the same location.\n- Locations enter play in an \"unrevealed\" state, so that the side with no shroud value and/or clue value is faceup. Do not read the \"revealed\" side at this time.\n- The first time a location is entered by an investigator, that location is revealed by turning it to its other side and placing a number of clues on it equal to its clue value (this may occur during setup). Most clue values are conveyed as a \"per investigator\" ([per_investigator]) value.\n- A location with its shroud/clue value side faceup is in the \"revealed\" state."
+  },
+  {
+    "id": "Lola_and_Roles",
+    "cycle": ["ptc"],
+    "title": "Lola and \"Roles\"",
+    "text": "As a renowned actress, Lola Hayes can play many different roles. At the beginning of each scenario, after investigators draw opening hands, Lola Hayes must choose a role (Neutral, Guardian, Seeker, Rogue, Mystic, or Survivor). Lola can only play cards, commit cards to skill tests, or trigger [action], [fast], or [reaction] abilities on Neutral cards or cards whose class matches her role. This restriction only applies to player cards, not to encounter cards or weaknesses. Note that Constant and <b>Forced</b> abilities remain active on cards whose class does not match Lola's role."
+  },
+  {
+    "id": "Massive",
+    "title": "Massive",
+    "text": "Massive is a keyword ability. A ready enemy with the massive keyword is considered to be engaged with each investigator at the same location as it.\n- An exhausted enemy with the massive keyword is not considered to be engaged with any investigators.\n- An enemy with the massive keyword cannot be placed in an investigator's threat area.\n- When an enemy with the massive keyword attacks during the enemy phase, resolve its (full) attack against each investigator it is engaged with, one investigator at a time. The lead investigator chooses the order in which these attacks resolve. The massive enemy does not exhaust until its final attack of the phase resolves.\n- When an enemy with the massive keyword makes an attack of opportunity, that attack only resolves against the investigator who provoked the attack.\n- A massive enemy does not move with an engaged investigator who moves away from the massive enemy's location.\n- If an investigator fails a combat test against a massive enemy, no damage is dealt to the engaged investigators."
+  },
+  {
+    "id": "May",
+    "title": "May",
+    "text": "The word \"may\" indicates that a specified player has the option to do that which follows. If no player is specified, the option is granted to the controller of the card with the ability in question."
+  },
+  {
+    "id": "Modifiers",
+    "title": "Modifiers",
+    "text": "Some abilities cause values or quantities of characteristics to be modified. The game state constantly checks and (if necessary) updates the count of any variable value or quantity that is being modified.\nAny time a new modifier is applied (or removed), the entire quantity is recalculated from the start, considering the unmodified base value and all active modifiers.\n- When calculating a value, treat all modifiers as being applied simultaneously. However, while performing the calculation, all additive and subtractive modifiers are calculated before doubling and/or halving modifiers.\n- Fractional values are rounded up after all modifiers have been applied.\n- A quantity on a card (such as a stat, an icon, a number of instances of a trait or keyword) cannot be reduced so that it functions with a value below zero. Negative modifiers in excess of a value's current quantity can be applied, but, after all active modifiers have been applied, any resultant value below zero is treated as zero. <i>(For example: Danny tests agility and reveals a –8 chaos token. When applied to his agility of 4, this would reduce his skill value to –4. However, his agility cannot be reduced so that it functions with a value below zero. While the –8 modifier still exists, his agility is treated as zero. If Danny were to play \"Lucky!\" to receive a +2 bonus to the test, this bonus would not be applied to the functioning skill value of zero; but rather, it is applied in conjunction with all active modifiers. Danny's agility would then be calculated as follows: base skill 4, –8 from chaos token, +2 from \"Lucky!\" for a total of –2, which is still treated as zero.)</i>"
+  },
+  {
+    "id": "Move",
+    "title": "Move",
+    "text": "Any time an entity (an investigator or enemy) moves, transfer that enemy card or investigator's mini card from its current location to a different location.\n- Unless otherwise specified by the move effect or ability, the moving entity must move to a connecting location. Connecting locations are identified on the location card representing the entity's current location, as shown below.\n- Any time an entity moves, it is considered to leave the previous location, and to enter the new location, simultaneously.\n- If an entity is \"moved to...\" a specific location, the entity is moved directly to that location, and does not pass through other locations en route.\n- If an investigator moves to an unrevealed location, that location is revealed by turning it to its other side, and placing a number of clues on it equal to its clue value. Most clue values are conveyed as a \"per investigator\" ([per_investigator]) value.\n- If an enemy moves to an unrevealed location, that location remains unrevealed.\n- Game elements (tokens or cards) may also be moved by card abilities from one card to another, or from one game area to another game area.\n- When an entity or game element moves, it cannot move to its same (current) placement. If there is no valid destination for a move, the move cannot be attempted."
+  },
+  {
+    "id": "Move_Action",
+    "title": "Move Action",
+    "text": "\"Move\" is an action an investigator may take during his or her turn in the investigation phase.\nWhen an investigator takes this action, move that investigator (using his or her mini card) to any other location that is marked as a connecting location on his or her current location (see \"[Move](#Move)\")."
+  },
+  {
+    "id": "Mulligan",
+    "title": "Mulligan",
+    "text": "After a player draws a starting hand during setup, that player has a single opportunity to declare a mulligan on any number of the drawn cards he or she does not wish to keep in his or her starting hand. These cards are set aside, and an equivalent number of cards are drawn and added to the player's starting hand. The set-aside cards are then shuffled back into the player's deck.\n- Players take or forgo the opportunity to mulligan in player order."
+  },
+  {
+    "id": "Multiclass_Cards",
+    "title": "Multi-class Cards",
+    "text": "A multi-class card is a card which bears multiple class icons instead of one, and is a card of each of those classes. For example, a card with both a Rogue ([rogue]) and a Guardian ([guardian]) icon is both a Rogue card and a Guardian card for all purposes. Generally, a multi-class card can be included in an investigator’s deck if that investigator has access to <i>either</i> of that card’s classes.\nIf an investigator has limited access to one of the classes on a multiclass card and unlimited access to one of the other classes on that card, it will still occupy one of the investigator’s limited slots unless their deckbuilding options contains the word \"other\" in it <i>(see [Deckbuilding Options](#Deckbuilding_Options))</i>.\nThe following section clarifies how multi-class cards operate depending on how an investigator’s deckbuilding options are presented.\n- <b>Investigators with unlimited access to more than one class <i>(i.e. All Core Set investigators, Minh Thi Phan, Sefina Rousseau, William Yorick, Leo Anderson, Joe Diamond, Preston Fairmont, Diana Stanley)</i>:</b> A multi-class card can be included in that investigator’s deck if it falls into <i>either</i> of the listed classes.\n- <b>Investigators from The Dunwich Legacy expansion</b> <i>(i.e. Zoey Samaras, Rex Murphy, Jenny Barnes, Jim Culver, \"Ashcan\" Pete)</i>: A multi-class card will not occupy one of these investigator’s five \"out of class\" slots if one of its classes is the class they have unlimited access to. A card cannot take up more than one \"out of class\" slot, regardless of how many class icons the card bears.\n- <b>Investigators with unlimited access to one class and limited access to one or more \"other\" classes</b> <i>(i.e. Marie Lambeau, Finn Edwards, Carolyn Fern)</i>: A multi-class card will not occupy one of the investigator’s limited slots, because it falls into the unlimited category <i>(see [Deckbuilding Options](#Deckbuilding_Options))</i>.\n- <b>Investigators with unlimited access to one class and limited access to a second class, without using the word \"other\"</b> <i>(i.e. Norman Withers)</i>: A multi-class card will occupy one of the investigator’s limited slots, even if it also falls into the unlimited category.\n- <b>Lola Hayes:</b> A multi-class card will count as a card of each of its classes toward her Deckbuilding Requirement."
+  },
+  {
+    "id": "Must",
+    "title": "Müssen",
+    "text": "Falls ein Ermittler angewiesen wird, dass er zwischen mehreren Optionen wählen „muss“, ist er verpflichtet eine Option zu wählen, welche die Möglichkeit hat, den Spielstatus zu verändern. \n- Falls eine Form des Wortes „müssen“ fehlt, sobald eine Auswahl zwischen mehreren Möglichkeiten getroffen wird, kann man bei der Abhandlung dieses Effektes jede Möglichkeit wählen – selbst eine Möglichkeit, die den Spielstatus nicht ändert."
+  },
+  {
+    "id": "Myriad",
+    "cycle": ["tde"],
+    "title": "Myriad",
+    "text": "An investigator may include up to three copies of a player card with the myriad keyword in their deck (by title), instead of the normal limit of two copies. Additionally, when you purchase a myriad card for your deck, you may purchase up to two additional copies of that card (at the same level) at no experience cost.\nWhen counting the total amount of experience in your deck, each copy of a Myriad card after the first copy does not count towards your experience total."
+  },
+  {
+    "id": "Mythos_Phase_Placeholder",
+    "title": "Mythos Phase",
+    "text": "See \"[I. Mythos phase](#Mythos_Phase)\"."
+  },
+  {
+    "id": "Nearest",
+    "title": "Nächstgelegen",
+    "text": "Einige Karten beziehen sich auf die „nächstgelegene“ Entität. Nächstgelegen bezieht sich auf die Entität der angegebenen Art an dem Ort, der mit den wenigsten Verbindungen erreicht werden kann, selbst wenn eine oder mehrere dieser Verbindungen durch eine andere Kartenfähigkeit blockiert sind. Der Weg zur nächstgelegenen Entität ist der „kürzeste“ Weg zu dieser Entität."
+  },
+  {
+    "id": "Nested_Sequences",
+    "title": "Nested Sequences",
+    "text": "Each time a triggering condition occurs, the following sequence is followed: 1) execute “when...” effects that interrupt that triggering condition, 2) resolve the triggering condition, and then, 3) execute “after...” effects in response to that triggering condition.\nWithin this sequence, if the use of a [reaction] or <b>Forced</b> ability leads to a new triggering condition, the game pauses and starts a new sequence: (1) execute “when...” effects that interrupt the new triggering condition, (2) resolve the new triggering condition, and then, (3) execute “after...” effects in response to the new triggering condition. This is called a <b>nested sequence</b>. Once this nested sequence is completed, the game returns to where it left off, continuing with the original triggering condition’s sequence.\nIt is possible that a nested sequence generates further triggering conditions (and hence more nested sequences). There is no limit to the number of nested sequences that may occur, but each nested sequence must complete before returning to the sequence that spawned it. In effect, these sequences are resolved in a Last In, First Out (LIFO) manner.\n<i>For example: Roland and Agnes are embroiled in a fierce battle. Roland has a Guard Dog in his play area, and is engaged with a Goat Spawn with 2 damage on it. Agnes is engaged with a Ghoul Minion. Roland wishes to play a .45 Automatic, which provokes an attack of opportunity from the Goat Spawn, dealing 1 damage to Roland. Roland assigns this damage to his Guard Dog, which has a [reaction] ability: “When an enemy attack deals damage to Guard Dog: Deal 1 damage to the attacking enemy.” Before resolving the playing of Roland’s .45 Automatic, Guard Dog’s ability resolves, and 1 damage is dealt to the Goat Spawn, which would defeat it. Goat Spawn has the following <b>Forced</b> ability: “When Goat Spawn is defeated: Each investigator at this location takes 1 horror.” Before resolving the damage dealt to the Guard Dog, 1 horror is dealt to each investigator at the location, including Agnes, who has a [reaction] ability: “After 1 or more horror is placed on Agnes Baker: Deal 1 damage to an enemy at your location.” Before resolving the Goat Spawn’s defeat, Agnes deals 1 damage to the Ghoul Minion engaged with her. Now that there are no further [reaction] or <b>Forced</b> abilities to trigger, the players return to the previous triggering condition and resolve the Goat Spawn’s defeat, and resolve any “After...” effects that might occur when it is defeated. Then, the players resolve the damage dealt to the Guard Dog, and resolve any “After...” effects that might occur from that damage. Finally, the players return to the original triggering condition, and Roland is able to put his .45 Automatic into play.</i>"
+  },
+  {
+    "id": "Nested_Skill_Tests",
+    "title": "Nested Skill Tests",
+    "text": "A skill test cannot initiate during another skill test. If during the resolution of a skill test another skill test would initiate, instead the second skill test does not initiate until the first skill test has finished resolving. If the first skill test was part of an action, the second skill test does not initiate until that action has finished resolving.\n<i>For example: Ursula performing an investigate action. As part of this investigate action, she must perform an [intellect] test. During the resolution of that skill test, she plays Expose Weakness, a fast event which initiates another [intellect] test. Instead of resolving the second [intellect] test during the first one, the initiation of the second [intellect] test is delayed until after the first skill test (and therefore the investigate action) has finished resolving.</i>"
+  },
+  {
+    "id": "Ownership_and_Control",
+    "title": "Ownership and Control",
+    "text": "A card's owner is the player whose deck (or game area) held the card at the start of the game.\nA player controls the cards located in his or her out-of-play game areas (such as the hand, deck, discard pile).\nThe scenario controls the cards in its out-of-play game areas (such as the encounter, act, and agenda decks, and the encounter discard pile).\n- Cards by default enter play under their owner's control. Some abilities may cause cards to change control during a game.\n- If a card would enter an out-of-play area that does not belong to the card's owner, the card is physically placed in its owner's equivalent out-of-play area instead. The card is considered to have entered its controller's out-of-play area, and only the physical placement of the card is adjusted."
+  },
+  {
+    "id": "Parley",
+    "title": "Parley",
+    "text": "Some abilities are identified with a **Parley** action designator. Such abilities are initiated using the \"Activate\" action (see \"[Activate Action](#Activate_Action)\")."
+  },
+  {
+    "id": "Per_Investigator",
+    "title": "Per Investigator ([per_investigator])",
+    "text": "When the [per_investigator] symbol appears after a value, that value is multiplied by the number of investigators who started the scenario.\n- The \"per investigator\" multiplication is done before all other modifiers, and the product of this multiplication is treated as the printed value of the card.\n- Text that uses the phrase \"per investigator\" also counts the number of investigators who started the scenario, and is applied before all other modifiers.\n- If investigators have been eliminated from the scenario, they still count toward \"per investigator\" values."
+  },
+  {
+    "id": "Peril",
+    "title": "Peril",
+    "text": "Peril is a keyword ability.\nWhile resolving the drawing of an encounter card with the peril keyword, an investigator cannot confer with the other players. Those players cannot play cards, trigger abilities, or commit cards to that investigator's skill test(s) while the peril encounter is resolving."
+  },
+  {
+    "id": "Permanent",
+    "title": "Permanent",
+    "text": "Permanent is a deckbuilding keyword ability.\n- A card with the permanent keyword does not count towards your deck size\n- A card with the permanent keyword still counts as being part of your deck and must therefore adhere to all other deckbuilding restrictions.\n- A card with the permanent keyword starts each game in play and is not shuffled into your investigator deck during setup.\n- A card with the permanent keyword cannot be discarded by any means.\n- Ruling from Matthew Newman regarding permanent cards: A card with the permanent keyword cannot be shuffled into an investigator's deck during a scenario or used to pay for the cost of any action that requires a card be discarded or returned to an investigator's deck or hand."
+  },
+  {
+    "id": "Play",
+    "title": "Play",
+    "text": "To play a card, an investigator must pay the card's resource cost and meet any applicable play restrictions and conditions. Most cards can only be played by taking a play action (see \"[Play Action](#Play_Action)\").\nA card with the fast keyword is not played during a play action. Such a card may be played any time its specified triggering condition is met or, if it has no triggering condition, during an appropriate player window (see \"[Fast](#Fast)\").\nAny time an event card is played, its effects are resolved and it is then placed in its owner's discard pile.\nAny time an asset is played, it is placed in the investigator's play area and remains in play until an ability or game effect causes it to leave play. Most assets take up one or more slots while in play (see \"[Slots](#Slots)\").\nSkill cards are not \"played.\" These cards are <i>committed</i> to a skill test from a player's hand in order to use their abilities.\nSee also: \"[Appendix I: Initiation Sequence](#Appendix_I_Initiation_Sequence)\", \"[Play Restrictions, Permissions, and Instructions](#Play_Restrictions_Permissions_and_Instructions)\"."
+  },
+  {
+    "id": "Play_Action",
+    "title": "Play Action",
+    "text": "\"Play\" is an action an investigator may take during his or her turn in the investigation phase.\nWhen an investigator takes this action, that investigator selects an asset or event card in his or her hand, pays its resource cost, and plays it (see \"[Play](#Play)\").\n- Cards with the \"fast\" keyword are not played by using this action (see \"[Fast](#Fast)\").\n- Skill cards are not \"played.\" These cards are *committed* to a skill test from a player's hand in order to use their abilities.",
+    "rules": [
+      {
+        "id": "Play_Restrictions_Permissions_and_Instructions",
+        "title": "Play Restrictions, Permissions, and Instructions",
+        "text": "Many cards and abilities contain specific instructions pertaining to when or how they may or may not be used, or to specific conditions that must be true in order to use them. In order to use such an ability or to play such a card, its play restrictions must be observed.\nA permission allows a player to play a card or use an ability outside the timing specifications provided by the game rules.\nA play instruction describes the timing point at which, and/or time period during which, an event card may be played."
+      }
+    ]
+  },
+  {
+    "id": "Prey",
+    "title": "Prey",
+    "text": "Given the opportunity, some enemies will pursue a defined investigator. These enemies are identified with the bold word \"**Prey**\" in their text box, followed by instructions on whom they should engage.\n- If an enemy that is about to automatically engage an investigator at its location has multiple options of whom to engage, that enemy engages the investigator who best meets its \"prey\" instructions (if multiple investigators are tied in meeting these instructions, the lead investigator may decide among them) (see \"[Enemy Engagement](#Enemy_Engagement)\").\n- If an enemy that is moving towards the nearest investigator has a choice between multiple equidistant investigators, that enemy must select among those investigators the one who best meets its \"prey\" instructions. (If multiple equidistant investigators meet the prey criteria, the lead investigator decides among those investigators. See \"[Hunter](#Hunter)\".)\n- If an enemy's prey instructions contain the word \"only,\" that enemy only moves towards and engages that investigator (as if it were the only investigator in play), and ignores all other investigators while moving and engaging. Other investigators may use the engage action or card abilities to engage the enemy.\n- Prey has no immediate effect on where an enemy will spawn (see \"[Spawn](#Spawn)\")."
+  },
+  {
+    "id": "Printed",
+    "title": "Printed",
+    "text": "The word \"printed\" refers to the text, characteristic, icon, or value that is physically printed on the card."
+  },
+  {
+    "id": "Priority_of_Simultaneous_Resolution",
+    "title": "Priority of Simultaneous Resolution",
+    "text": "If an effect affects multiple players simultaneously, but the players must individually make choices to resolve the effect, these choices are made in player order. Once all necessary choices have been made, the effect resolves simultaneously upon all affected entities.\n- If two or more forced abilities (including delayed effects) would resolve at the same time, the lead investigator determines the order in which the abilities resolve.\n- If two or more constant abilities and/or lasting effects cannot be applied simultaneously, the lead investigator determines the order in which they are applied."
+  },
+  {
+    "id": "Prologue_Investigators",
+    "title": "Prologue Investigators",
+    "cycle": ["tcu"],
+    "text": "The four investigator cards depicted here (Gavriella Mizrah, Jerome Davids, Penny White, and Valentino Rivas) are marked with the <i>Disappearance at the Twilight Estate</i> encounter set icon and can only be used in the prologue for <i>The Circle Undone</i>. They cannot be used in other scenarios. Keep them with the rest of the scenario cards for <i>Disappearance at the Twilight Estate</i>, and do not integrate them into your collection of player cards."
+  },
+  {
+    "id": "Put_into_Play",
+    "title": "Put into Play",
+    "text": "Some card abilities cause a card to be \"put into play.\" Such abilities place the card directly into play from an out-of-play state.\n- The resource cost of a card being put into play <b>is not paid</b>.\n- Unless otherwise stated by the put into play ability, cards that enter play in this manner must do so in a play area that satisfies the standard game rules associated with playing or drawing (for encounter cards) that card.\n- A card that has been put into play is not considered to have been played or drawn."
+  },
+  {
+    "id": "Qualifiers",
+    "title": "Qualifiers",
+    "text": "If card text includes a qualifier followed by multiple terms, the qualifier applies to each term in the list. <i>(For example, in the phrase \"each unique ally and item,\" the word \"unique\" is a qualifier that applies both to \"ally\" and to \"item.\")</i>"
+  },
+  {
+    "id": "Reaction_Opportunities",
+    "title": "Reaction Opportunities",
+    "text": "When a triggering condition resolves, investigators are granted the opportunity to resolve [reaction] abilities in response to that triggering condition. It is only after all investigators have passed their reaction opportunity that the game moves forward.\nUsing a [reaction] ability in response to a triggering condition does not prevent other [reaction] abilities from being used in response to that same triggering condition.\n<i>For example: Roland has just defeated an enemy and wishes to trigger his [reaction] ability: “After you defeat an enemy: Discover 1 clue at your location.” He discovers 1 clue at his location. He may then play Evidence! in response to defeating that same enemy. As both cards have the same triggering condition (“After you defeat an enemy”), triggering one of these reactions does not prevent Roland from triggering the other.</i>"
+  },
+  {
+    "id": "Ready",
+    "title": "Ready",
+    "text": "A card that is in an upright state so that its controller can read its text from left to right is considered ready.\n- The default state in which cards enter play is ready.\n- When an exhausted card readies, it is returned to the upright state. It is then said to be in a ready state.\n- A ready card cannot ready again (it must first be exhausted, typically by a game step or card ability)."
+  },
+  {
+    "id": "Record_in_your_Campaign",
+    "title": "“Record in your Campaign Log...”",
+    "text": "Often the players will be instructed to record a key phrase in the Campaign Log. This should be written under “Campaign Notes” unless specified otherwise. Because the players may be instructed to check the Campaign Log for this phrase at a later time in the campaign, the indicated phrase should be recorded as it appears, without alteration.\n<i>For example: If the players are instructed to record in the Campaign Log that “the investigators were four hours late,” this shouldn’t be rewritten as “the investigators were pretty late,” because the exact number of hours might be important in a later scenario.</i>"
+  },
+  {
+    "id": "Remember_that",
+    "title": "“Remember that...”",
+    "text": "Sometimes a scenario card will instruct the investigators to “remember” a key phrase, often based on an action they have taken or a decision they have made within that scenario. This phrase may come up later during that scenario, and may trigger additional or different effects. There is no need to record this phrase in the Campaign Log, because it will only ever matter during that scenario, or during that scenario’s resolution. The players do not need to “remember” any such instruction beyond the end of the scenario in which it appears."
+  },
+  {
+    "id": "Removed_from_Game",
+    "title": "Removed from Game",
+    "text": "A card that has been removed from the game is placed away from the game area and has no further interaction with the game in any manner for the duration of its removal.\nIf there is no specified duration, a card that has been removed from the game is considered removed until the end of the game."
+  },
+  {
+    "id": "Replacing_an_Opening_Hand",
+    "title": "Replacing an Opening Hand",
+    "text": "If an ability replaces an investigator’s opening hand with a different set of cards, that set of cards is considered to be their new opening hand for the purposes of effects which would alter the number of cards in their opening hand.\nIf an ability replaces an investigator’s opening hand with a number of cards \"kept\" from a larger set of cards, an effect which alters the number of cards in that investigator’s opening hand alters both the cards originally drawn to replace that opening hand, and the number of cards \"kept\" from that larger set.\n<i>For example, the ability on Sefina Rousseau reads: \"When you would draw your opening hand: Draw 13 cards,instead. Choose up to 5 events to place beneath this card and keep 8 cards as your opening hand. Discard the rest.\" If a card effect or game effect alters the number of cards in Sefina’s opening hand, it would alter both the number of cards drawn from her ability and the number of cards she keeps as her opening hand.</i>"
+  },
+  {
+    "id": "Resign",
+    "title": "Resign",
+    "text": "Some abilities are identified with a <b>Resign</b> action designator. Such abilities are initiated using the \"Activate\" action (see \"[Activate Action](#Activate_Action)\").\n- When an investigator resigns, the investigator is eliminated by resignation (see \"[Elimination](#Elimination)\".) An investigator who resigns is not considered to have been defeated."
+  },
+  {
+    "id": "Resource_Action",
+    "title": "Resource Action",
+    "text": "\"Resource\" is an action an investigator may take during his or her turn in the investigation phase.\nWhen an investigator takes this action, that investigator gains one resource by taking it from the token pool and adding it to his or her resource pool."
+  },
+  {
+    "id": "Resources",
+    "title": "Resources",
+    "text": "Resources represent the various means of acquiring new cards at an investigator's disposal – supplies, money, tools, knowledge, spell components, etc.\n- In order to play a card or use an ability that costs resources, an investigator must pay that card or ability's resource cost by taking the specified number of resources from his or her resource pool and returning them to the token pool (see \"[Costs](#Costs)\").\n- Resources can be gained by performing the \"Resource\" action (see \"[Resource Action](#Resource_Action)\").\n- Investigators acquire one resource during each Upkeep phase (see \"[4.4 Each investigator draws 1 card and gains 1 resource](#Upkeep_Phase)\").\nIf an ability refers to the number of \"resources you have,\" \"your resources,\" or any variation on the above, it is only referring to the number of resources in that investigator’s resource pool. Resources on other cards that investigator controls do not count toward this total unless explicitly stated.\nSee also: \"[Tokens, Running out of](#Tokens)\"."
+  },
+  {
+    "id": "Retaliate",
+    "title": "Retaliate",
+    "text": "Retaliate is a keyword ability.\nEach time an investigator fails a skill test while attacking a ready enemy with the retaliate keyword, after applying all results for that skill test, that enemy performs an attack against the attacking investigator. An enemy does not exhaust after performing a retaliate attack.\n- This attack occurs whether the enemy is engaged with the attacking investigator or not."
+  },
+  {
+    "id": "Revelation",
+    "title": "Revelation",
+    "text": "A revelation ability may appear on encounter cards or on weakness cards.\n- When an investigator draws an encounter card, that investigator must resolve all \"<b>Revelation</b> – \" abilities on the card. This occurs before the card enters play, or in the case of a treachery card, before it is placed in the discard pile.\n- When a weakness card enters an investigator's hand, that investigator must immediately resolve all revelation abilities on the card as if it were just drawn."
+  },
+  {
+    "id": "Sanity_and_Horror",
+    "title": "Sanity and Horror",
+    "text": "Sanity represents a card's mental and emotional fortitude. Horror tracks the harm that has been done to a card's psyche by exposure to the Mythos.\n- When a card takes horror, place a number of horror tokens equal to the amount of horror just taken on the card (see \"[Dealing Damage/Horror](#Dealing_Damage_Horror)\").\n- If an investigator has horror on him or her equal to or greater than his or her sanity, that investigator is defeated. When an investigator is defeated, he or she is eliminated from the scenario (see \"[Elimination](#Elimination)\").\n- In campaign play, an investigator that is defeated by taking horror equal to his or her sanity suffers 1 mental trauma. Taking mental trauma may cause an investigator to be driven **insane** (see \"[Campaign Play](#Campaign_Play)\" for more information).\n- If an asset with a sanity value has horror on it equal to or greater than its sanity, it is defeated and placed on its owner's discard pile.\n- A card's \"remaining sanity\" is its base sanity minus the amount of horror on that card, plus or minus any active sanity modifiers.\n- An asset card without a sanity value is not considered to have a sanity of 0, cannot gain sanity, and cannot have horror assigned to it.\nSee also: \"[Direct Damage, Direct Horror](#Direct_Damage_Direct_Horror)\"."
+  },
+  {
+    "id": "Seal",
+    "title": "Seal",
+    "cycle": ["tfa"],
+    "text": "As an additional cost for a card with the seal keyword to enter play, its controller must search the chaos bag for the specified chaos token and place it on top of the card, thereby sealing it. If there is a choice of which token to seal, the card's controller chooses. If the specified token is not in the chaos bag, the card cannot enter play. A sealed chaos token is not considered to be in the chaos bag, and therefore cannot be revealed from the chaos bag as part of a skill test or ability.\nWhen a chaos token is \"released,\" it is returned to the chaos bag and is no longer considered sealed. <b>If a card with one or more chaos tokens sealed on it leaves play for any reason, any chaos tokens sealed on it are immediately released.</b>\nSome cards (with or without the seal keyword) may also have abilities that seal one or more chaos tokens as part of their effect. This is done following the same process as above: searching the chaos bag for the specified token, removing it from the chaos bag, and placing it on the card. If the specified token is not in the chaos bag, the effect fails."
+  },
+  {
+    "id": "Search",
+    "title": "Suchen",
+    "text": "Sobald ein Spieler angewiesen wird eine Karte zu suchen, darf dieser Spieler alle Karten in der Zone, in der gesucht wird, ansehen, ohne diese Karten für andere Spieler zu enthüllen. \n- Falls ein Effekt ein ganzes Deck durchsuchen lässt, muss man das Deck nach Abschluss der Suche mischen. \n- Sobald ein Suchen-Effekt abgehandelt wird, ist ein Spieler verpflichtet das gesuchte Objekt zu finden, falls sich ein oder mehrere gültige Objekte in der Zone befinden, in der man sucht. \n- Solange man gerade in einer Anzahl Karten sucht, werden diese Karten nicht als Karten behandelt, die ihre ursprüngliche Spielzone verlassen haben."
+  },
+  {
+    "id": "Self_Referential_Text",
+    "title": "Selbstreferenzieller Text",
+    "text": "Sobald sich der Text einer Kartenfähigkeit auf ihren eigenen Namen bezieht, bezieht er sich nur auf die Karte selbst, nicht auf andere Kopien der Karte (nach Name). \n- Selbstreferenzielle Fähigkeiten, die das Wort „diese(r)“ verwenden (z. B. „diese Karte“) beziehen sich nur auf die Karte mit dieser Fähigkeit, nicht auf andere Kopien dieser Karte."
+  },
+  {
+    "id": "Set_Aside",
+    "title": "Beiseitelegen",
+    "text": "Einige Szenarien weisen die Spieler an bestimmte Karten beiseitezulegen. Beiseitegelegte Karten interagieren nicht mit dem Spiel, bis sich Anweisungen des Szenarios oder einer Kartenfähigkeit auf sie beziehen.\nFalls ein Effekt einen Ermittler dazu anweist, die Kontrolle über eine derzeit beiseitegelegte Karte zu übernehmen, bringt der Effekt jene Karte in der Spielzone jenes Ermittlers ins Spiel."
+  },
+  {
+    "id": "Signature_Cards",
+    "title": "Signature Cards",
+    "text": "An investigator’s “signature cards” are the cards that are only available to that investigator, and cannot be included in another investigator’s deck. This includes player cards with the text “(Investigator Name) deck only,” as well as non-basic weaknesses that are listed under “Deckbuilding Requirements” and therefore can only be included in that investigator’s deck.\nSignature cards are governed by the following additional rules:\n- The number of each signature card listed under an investigator’s “Deckbuilding Requirements” is the exact number of copies of that card that is to be included in that investigator’s deck. If no number is specified, that number is 1.\n<i>For example: Under “Deckbuilding Requirements” for Roland Banks, the following cards are listed: “Roland’s .38 Special, Cover Up, 1 random basic weakness.” Roland Banks must include exactly 1 copy of his signature cards—Roland’s .38 Special and Cover Up. He is not permitted to include more than 1 copy of either of these cards.</i>\n- An investigator’s signature cards cannot be traded or given to other investigators.\n<i>For example: Roland has the Roland’s .38 Special card in play. He has the card “Teamwork” which can allow investigators at the same location to trade or give assets among one another. However, because Roland’s .38 Special is one of Roland’s signature cards, he cannot give it to another investigator.</i>\n- Signature cards need not abide by typical deckbuilding restrictions, and do not count toward any deckbuilding limitations if other cards share the same title."
+  },
+  {
+    "id": "Skill_Cards",
+    "title": "Skill Cards",
+    "text": "Skill cards represent innate or learned attributes or character traits that improve an investigator's skill tests.\nSkill cards are not played from a player's hand. In order to resolve their abilities, skill cards must be committed to a skill test.\nIf a skill card is committed to a skill test, its ability may be used during the resolution of that skill test, as specified on the card.\nSee \"[Skill Test Timing](#Skill_Test_Timing)\"."
+  },
+  {
+    "id": "Skill_Test_Results_and_Advanced_Timing",
+    "title": "Skill Test Results and Advanced Timing",
+    "text": "During Step 7 of Skill Test Timing (\"Apply skill test results\"), all of the effects of the successful skill test are determined and resolved, one at a time. This includes the effects of the test itself (such as the clue discovered while investigating, or the damage dealt during an attack), as well as any \"If this test is successful...\" effects from card abilities or skill cards committed to the test.\n[reaction] or <b>Forced</b> abilities with a triggering condition dependent upon the skill test being successful or unsuccessful (such as \"After you successfully investigate,\" or \"After you fail a skill test by 2 or more\") do not trigger at this time. These abilities are triggered during Step 6, \"Determine success/failure of skill test.\""
+  },
+  {
+    "id": "Skill_Tests",
+    "title": "Skill Tests",
+    "text": "A number of situations in the game require an investigator to make a skill test, using one of his or her four skills: willpower ([willpower]), intellect ([intellect]), combat ([combat]), or agility ([agility]). A skill test pits the investigator's value in a specified skill against a difficulty value that is determined by the ability or game step that initiated the test. The investigator is attempting to match or exceed this difficulty value in order to succeed at the test.\nA skill test is often referred to as a test of the specified skill. <i>(For example: \"agility test,\" \"combat test,\" \"willpower test,\" or \"intellect test.\")</i>\nSee \"[Skill Test Timing](#Skill_Test_Timing)\"."
+  },
+  {
+    "id": "Slots",
+    "title": "Slots",
+    "text": "Jeder Ermittler hat eine Anzahl bestimmter Slots, die mit Karten gefüllt werden können. Jede Vorteilskarte in der Spiel- oder Bedrohungszone eines Ermittlers mit einem Slotsymbol befindet sich auf einem Slot dieser Art. Slots begrenzen die Anzahl der Vorteilskarten, die ein Ermittler gleichzeitig im Spiel haben kann.\nDie Slots, die einem Ermittler normalerweise zur Verfügung stehen, sind:\n- <b>1 Zubehörslot</b>\n- <b>1 Körperslot</b>\n- <b>1 Verbündeter-Slot</b>\n- <b>2 Handslots</b>\n- <b>2 arkane Slots</b>\n- <b>1 Tarotslot</b>\nFalls eine Vorteilskarte kein Slotsymbol hat, benötigt sie keinen der oben genannten Slots. Es gibt keine Begrenzung für die Anzahl von Vorteilskarten ohne Slotsymbol, die ein Ermittler im Spiel haben kann.\nFalls durch das Spielen oder das Kontrolle Erhalten einer Vorteilskarte ein Ermittler sein Limit der Slotart jener Vorteilskarte überschreitet, muss er andere Vorteilskarten, die er kontrolliert, wählen und ablegen. Dies geschieht zum selben Zeitpunkt, zu dem die neue Vorteilskarte ins Spiel kommt."
+  },
+  {
+    "id": "Spawn",
+    "title": "Erscheinen",
+    "text": "Einige Gegner erscheinen an einem speziellen Ort, sobald sie vom Begegnungsdeck gezogen werden. Dieser Ort wird durch eine fettgedruckte „**Erscheinen**“-Anweisung im Textfeld angegeben. \n- Die Erscheinen-Anweisung eines Gegners wird abgehandelt, sobald der Gegner ins Spiel kommt, unabhängig davon, auf welche Weise dies geschieht. \n- Falls ein Gegner keine Erscheinen-Anweisung hat, erscheint er mit dem Ermittler, der ihn gezogen hat, in einen Kampf verwickelt. \n- Falls es keinen legalen Ort gibt, an dem ein Gegner erscheinen kann (z. B. falls in seiner Erscheinen-Anweisung ein spezieller Ort angegeben ist, der aber nicht im Spiel ist, oder kein Ort im Spiel seine Erscheinen-Anweisung erfüllt), erscheint er nicht und wird stattdessen abgelegt. \n- Falls mehrere Orte die Erscheinen-Anweisung erfüllen, entscheidet sich der Ermittler, der den Gegner erscheinen lässt, zwischen diesen Orten. \n- Falls eine Kartenfähigkeit die Spieler anweist einen Gegner an einem bestimmten Ort erscheinen zu lassen (<i>Beispiel: „Durchsuche das Begegnungsdeck nach einer Kopie von Akolyth und lasse sie in der Südstadt erscheinen“</i>), behandelt man die Fähigkeit, welche die Karte ins Spiel bringt, als die Erscheinen-Anweisung dieses Gegners, die jede andere Erscheinen-Anweisungen überschreibt."
+  },
+  {
+    "id": "Standalone_Mode",
+    "title": "Standalone Mode",
+    "text": "When playing a standalone game (i.e., playing a single scenario as a one-off adventure, removed from its campaign), the following rules apply:\n- When building a deck for a standalone game, an investigator may use higher level cards in his or her deck (so long as they observe the deckbuilding restrictions of the investigator) by counting the total experience of all the higher level cards used in the deck, and taking additional random basic weaknesses based on the following table:\n\n| Experience | Random Basic Weaknesses |\n| --- | --- |\n| 0-9 | 0 additional |\n| 10-19 experience | 1 additional |\n| 20-29 experience | 2 additional |\n| 30-39 experience | 3 additional |\n| 40-49 experience | 4 additional |\n| > 50 experience | Not permitted |\n- After choosing a scenario to play, refer to the Campaign Guide for the campaign that scenario is a part of, starting at the setup for that campaign, and continuing on to the first scenario for that campaign. Read through that scenario's introduction, then skip directly to that scenario's resolution and choose a resolution that is amenable to you. You may choose any resolution you wish. (For an added challenge, choose resolutions that put the investigators in an unfavorable state). If the players are unsure which resolution to choose, or are indifferent, choose <b>Resolution 1</b>. Record the results of the chosen resolution in a Campaign Log as if you were playing through in campaign mode, <b>except do not count experience points</b>.\n- Repeat this process for each scenario up to the scenario you wish to play. Then, setup and play that scenario as normal.\n- If a story decision would occur during gameplay, choose the outcome and record it in your campaign log.\n- Do not apply trauma for having been defeated during gameplay, but if trauma is inflicted during a scenario resolution, apply it.\n- If a scenario weakness or asset is earned that is in an expansion you do not own, simply continue without that card."
+  },
+  {
+    "id": "Story_Cards",
+    "title": "Story Cards",
+    "cycle": ["ptc", "tfa", "tcu", "tde"],
+    "text": "Story cards serve as an avenue for additional narrative and typically appear as the reverse side of another scenario card. When you are instructed to resolve a story card, simply read its story text and resolve its game text, if any."
+  },
+  {
+    "id": "Supplies",
+    "title": "Supplies",
+    "cycle": ["tfa"],
+    "text": "At certain points throughout *The Forgotten Age* campaign, investigators are given the opportunity to choose supplies to bring on their expeditions into the wilds. These supplies are recorded in the Campaign Log, under each investigator's \"Supplies\" section.\nSupplies are purchased with supply points, which are granted to investigators whenever they are given the opportunity to purchase supplies. Leftover supply points are not recorded, and are lost.\nAn investigator's supplies will determine the possible options available during gameplay and throughout the story of this campaign. <b>Each supply has no effect on its own.</b> Some card effects, story options, and resolutions may change or become available depending on the supplies carried by the investigator(s)."
+  },
+  {
+    "id": "Surge",
+    "title": "Surge",
+    "text": "Surge is a keyword ability.\nAfter drawing and resolving an encounter with the surge keyword, an investigator must draw another card from the encounter deck.\n- If a card with the surge keyword is drawn during setup, the surge keyword does resolve."
+  },
+  {
+    "id": "Swarming X",
+    "cycle": ["tde"],
+    "title": "Swarming X",
+    "text": "An enemy with the swarming X keyword is actually a pack of enemies operating in unison. After you put any enemy with the swarming X keyword into play, place the top X cards of your deck facedown underneath the enemy as swarm cards, without looking at them. The enemy they are underneath is called the \"host enemy.\" Some scenario card effects may also instruct a player to add swarm cards to an enemy. This is done using the same process.\n- If it is ever unclear which investigator should add swarm cards, the lead investigator does so.\n- Each swarm card underneath the host enemy acts as a separate instance of that enemy for most purposes. Each swarm card has the same values and text as its host card. <i>(For example, if an investigator is engaged with a host enemy with 2 swarm cards underneath it, that investigator is engaged with 3 enemies in total.)</i>\n- Each swarm card attacks separately when enemies attack during the enemy phase. Once the host enemy and all of its swarm cards have attacked during this step, exhaust all of them.\n- Each swarm card can be attacked or dealt damage separately, but the host enemy cannot be defeated while it still has swarm cards underneath it. When a swarm card is defeated, any excess damage may be dealt to another swarm card underneath the same host enemy or to the host enemy itself. <i>(For example, Tony Morgan uses a .41 Derringer to attack a Stealthy Zoog with 2 swarm cards. The attack deals 2 damage. The first point of damage defeats 1 of the 2 swarm cards, so the excess point of damage may be dealt to another swarm card, defeating it as well.)</i>\n- Anytime a swarm card leaves play, place it on the bottom of its owner's deck. If you are unsure of the owner of the swarm card, you may look at it to determine its owner.\n- The host enemy and all of its swarm cards move, engage, and exhaust as a single entity. <i>(For example, if a host enemy or any of its swarm cards are evaded, all of them exhaust and become disengaged.)</i>"
+  },
+  {
+    "id": "Taking_Damage_Horror",
+    "title": "Taking Damage/Horror",
+    "text": "\"Take X damage\" is shorthand for \"deal X damage to your investigator.\" \"Take X horror\" is shorthand for \"deal X horror to your investigator.\"\nSee \"[Dealing Damage/Horror](#Dealing_Damage_Horror)\"."
+  },
+  {
+    "id": "Target",
+    "title": "Target",
+    "text": "The term \"choose\" indicates that one or more targets must be chosen in order for an ability to resolve. The player resolving the ability must choose a game element (usually a card) that meets the targeting requirements of the ability.\n- If an ability requires the choosing of a target, and there is no valid target (or not enough valid targets), the ability cannot be initiated.\n- If multiple targets are required to be chosen by the same player, they are chosen simultaneously.\n- An effect that can choose \"any number\" of targets does not successfully resolve (and cannot change the game state) if zero of those targets are chosen.\n- A card is not an eligible target for an ability if the resolution of that ability's effect could not change the target's state. *(For example, an exhausted enemy could not be chosen as the target of an effect that reads, \"choose and exhaust an enemy.\")*"
+  },
+  {
+    "id": "Tarot Slot",
+    "title": "Tarot Slot",
+    "text": "Tarot slots are a new type of asset slot introduced in this expansion. The following symbol indicates that an asset fills a tarot slot:\nAs with other slots, tarot slots limit the number of asset cards of that slot type an investigator is permitted to have in play simultaneously.\n<b>By default, an investigator has only one tarot slot available.</b>\nAll other rules governing slots apply to tarot slots, as usual."
+  },
+  {
+    "id": "Then",
+    "title": "Then",
+    "text": "If the effect of an ability includes the word \"then,\" the text preceding the word \"then\" must be successfully resolved in full before the remainder of the effect described after the word \"then\" can be resolved.\n- If the pre-then aspect of an effect does successfully resolve in full, the post-then aspect of the effect must also resolve.\n- The post-then aspect of an effect has timing priority over all other indirect consequences of the resolution of the pre-then aspect. <i>(For example, if an effect reads: \"Draw an encounter card. Then, take 1 horror,\" and a player controls an ability that reads \"After you draw an encounter card,\" the post-then \"take 1 horror\" aspect occurs before the \"After you draw an encounter card\" ability may initiate.)</i>\ns- If the pre-then aspect of an effect does not successfully resolve in full, the post-then aspect does not resolve."
+  },
+  {
+    "id": "Threat_Area",
+    "title": "Bedrohungszone",
+    "text": "Die Bedrohungszone eines Ermittlers ist die Spielzone, in die Begegnungskarten platziert werden, mit denen der Ermittler aktuell in einen Kampf verwickelt ist und/oder die Auswirkungen auf diesen Ermittler haben. \n- Die Karten in der Bedrohungszone eines Ermittlers befinden sich am selben Ort wie der Ermittler."
+  },
+  {
+    "id": "Tokens",
+    "title": "Tokens, Running out of",
+    "text": "There is no limit to the number of tokens (of any type) which can be in the game area at a given time. If players run out of the provided tokens, other tokens, counters, or coins may be used to track the current game state."
+  },
+  {
+    "id": "Traits",
+    "title": "Traits",
+    "text": "Most cards have one or more traits listed at the top of the text box and printed in bold italics.\n- Traits have no inherent effect on the game. Instead, some card abilities reference cards that possess specific traits."
+  },
+  {
+    "id": "Trauma_Placeholder",
+    "title": "Trauma",
+    "text": "See \"[Campaign Play](#Trauma)\"."
+  },
+  {
+    "id": "Treachery_Cards",
+    "title": "Treachery Cards",
+    "text": "Treachery cards represent curses, afflictions, madnesses, obstacles, disasters, or other unexpected occurrences an investigator may encounter throughout the course of a scenario.\nWhen a treachery card is drawn by an investigator, that investigator must resolve its effects. Then, place the card in its discard pile unless otherwise instructed by the ability.\nSee \"[1.4 Each investigator draws 1 encounter card](#Mythos_Phase)\"."
+  },
+  {
+    "id": "Triggered_Abilities",
+    "title": "Triggered Abilities",
+    "text": "A triggered ability is an ability that is optionally triggered by a player. A triggered ability can be identified by one of the following icons.\n- The [action] icon indicates an action-costed triggered ability.\n- The [free] icon indicates a free triggered ability that does not cost an action and may be used during any player window.\n- The [reaction] indicates a reaction triggered ability that does not cost an action and may be used any time its triggering condition is met.\nSee also: \"[Ability](#Abilities_Triggered)\", \"[Appendix I: Initiation Sequence](#Appendix_I_Initiation_Sequence)\".\"\nAn investigator is permitted to use triggered abilities ([free], [reaction], and [action] abilities) from the following sources:\n- A card in play and under his or her control. This includes his or her investigator card.\n- A scenario card that is in play and at the same location as the investigator. This includes the location itself, encounter cards placed at that location, and all encounter cards in the threat area of any investigator at that location.\n- The current act or current agenda card.\n- Any card that explicitly allows the investigator to activate its ability."
+  },
+  {
+    "id": "Triggering_Condition",
+    "title": "Triggering Condition",
+    "text": "A triggering condition indicates the timing point at which an ability may be triggered. Most triggering conditions use the word \"when\" or \"after\" to establish their relation to the specified timing point.\n- Each eligible ability that triggers in reference to a specified timing point may be used once each time that timing point occurs.\n- If multiple instances of the same ability are eligible to initiate, each instance may be used once.\nSee also: \"[Ability](#Ability)\", \"[After](#After)\", \"[When](#When)\"."
+  },
+  {
+    "id": "Unique",
+    "title": "Einzigartig (✷)",
+    "text": "Eine Karte mit dem ✷-Symbol vor dem Kartennamen ist eine einzigartige Karte. Es kann nicht mehr als 1 Instanz jeder einzigartigen Karte gleichzeitig im Spiel geben. Hierbei gilt der Name der Karte. \n- Ein Spieler kann eine einzigartige Karte nicht ins Spiel bringen, falls bereits eine Kopie dieser Karte (nach Name) im Spiel ist. \n- Falls eine einzigartige Begegnungskarte ins Spiel kommen würde, die den gleichen Namen wie eine einzigartige Spielerkarte hat, wird die Spielerkarte abgelegt und die Begegnungskarte gleichzeitig ins Spiel gebracht."
+  },
+  {
+    "id": "Upkeep_Phase_Placeholdler",
+    "title": "Upkeep Phase",
+    "text": "See \"[IV. Upkeep phase](#Upkeep_Phase)\"."
+  },
+  {
+    "id": "Uses",
+    "title": "Uses (X \"type\")",
+    "text": "Uses is a keyword ability.\nWhen a card bearing this keyword enters play, place a number of resource tokens equal to the value (X), from the token pool, on the card. The word following the value establishes and identifies the type of uses this card bears. The resource tokens placed on the card are considered uses of the established type, and are not considered resource tokens.\n- Each card bearing this keyword also has an ability which references the type of use established by the keyword as a part of its cost. When such an ability spends a use, a token of that type must be removed from the card bearing the ability.\n- Other cards may reference and interact with uses of a specified type, usually by adding uses of that type to a card, or using uses of that type for other purposes.\n- A card cannot bear uses of a type other than that established by its own \"Uses (X type)\" keyword. <i>(For example, a card with \"Uses (4 ammo)\" cannot gain charges.)</i>\n- Some cards with this keyword bear text that causes the card to be discarded if it has no uses remaining. If the card contains no such text, it remains in play even if out of uses."
+  },
+  {
+    "id": "Vengeance_X",
+    "title": "Vengeance X",
+    "cycle": ["tfa"],
+    "text": "Some encounter cards are worth vengeance points. The text <b>Vengeance X</b> indicates that a card is worth X vengeance points.\nLike <b>Victory X</b>, when an encounter card with <b>Vengeance X</b> is overcome by the investigators, it is stored in the victory display until the end of the scenario. However, unlike victory points, vengeance represents the awareness and animosity of the Father of Serpents, and it is generally a good idea to avoid accruing vengeance points whenever possible.\nVengeance points in the victory display have no impact upon the game unless specifically referenced by another encounter card.\n- As an enemy with <b>Vengeance X</b> is defeated, place the card in the victory display instead of in the discard pile.\n- At the end of a scenario, take each location with <b>Vengeance X</b> that is in play, revealed, and has no clues on it, and place it in the victory display.\n- As a treachery card with **Vengeance X** completes its resolution, place it in the victory display instead of in the discard pile.\n- Cards worth vengeance points are not also worth victory points unless the card has both <b>Victory X</b> and <b>Vengeance X</b>."
+  },
+  {
+    "id": "Victory_Display_Victory_Points",
+    "title": "Victory Display, Victory Points",
+    "text": "Some encounter cards are worth victory points. The text **Victory X** indicates that a card is worth X victory points.\nAn encounter card worth victory points that is overcome by the investigators is stored in the victory display until the end of the scenario. The victory display is an out-of-play game area shared by all players. Upon completion of the scenario, the cards in the victory display provide experience, which can be used to upgrade an investigator's deck (see \"[Campaign Play](#Campaign_Play)\").\n- As a victory point enemy is defeated, place the card in the victory display instead of in the discard pile.\n- At the end of a scenario, place each victory point location that is in play, revealed, and with no clues on it in the victory display.\n- As a victory point treachery card completes its resolution, place it in the victory display instead of in the discard pile."
+  },
+  {
+    "id": "Weakness",
+    "title": "Schwäche",
+    "text": "Schwäche ist eine Kartenunterart. Diese Karten stehen für die Charakterschwächen, Flüche, Wahnsinn, Verletzungen, Verpflichtungen, Gegner oder Storyelemente, die Teil der Hintergrundgeschichte eines Ermittlers sind oder im Verlauf einer Kampagne erworben werden. Schwächekarten werden unterschiedlich abgehandelt, abhängig von ihrem Kartentyp. \n- Sobald ein Ermittler eine Schwäche zieht, die eine Begegnungskarte ist (<i>zum Beispiel eine Gegner- oder Verratsschwäche</i>), handelt er diese Karte ab, als ob sie gerade vom Begegnungsdeck gezogen worden wäre. \n- Sobald ein Ermittler eine Schwäche zieht, die eine Spielerkarte ist (<i>zum Beispiel eine Vorteils-, Ereignis- oder Fertigkeitsschwäche</i>), handelt er sämtliche Enthüllungseffekte auf der Karte ab und fügt sie der Hand des Ermittlers hinzu. Die Karte darf dann wie jede andere Spielerkarte ihrer Art verwendet werden. \n- Falls eine Schwächekarte anders als durch das Ziehen einer Karte auf die Hand des Ermittlers kommt, muss der Ermittler die Karte abhandeln (einschließlich aller Enthüllungsfähigkeiten), als ob er sie gerade gezogen hätte. \n- Der Träger einer Schwäche ist der Ermittler, der das Spiel mit dieser Schwäche in seinem Deck oder seiner Spielzone begonnen hat. \n- Falls eine Schwäche einem Spielerdeck oder einer Hand während des Durchspielens eines Szenarios hinzugefügt wird, bleibt sie für den Rest der Kampagne Teil des Decks dieses Ermittlers (außer wenn sie durch eine Kartenfähigkeit oder eine Szenarioauflösung aus der Kampagne entfernt wird). \n- Ein Spieler kann sich nicht dafür entscheiden, eine Schwächekarte von seiner Hand abzulegen, falls eine Karte nicht ausdrücklich etwas anderes besagt. \n- Schwächen, die Begegnungskarten sind, werden wie andere Begegnungskarten nicht von einem Spieler kontrolliert. Schwächen, die Spielerkarten sind, werden von ihrem Träger kontrolliert. \n- Einige Karten- und Spieltexte beziehen sich auf „Grundschwächen“. Eine Grundschwäche kann man an dem Begriff „Grundschwäche“ und dem unten abgebildeten Symbol erkennen."
+  },
+  {
+    "id": "When",
+    "title": "Sobald",
+    "text": "Das Wort „sobald“ bezieht sich auf den Moment direkt nachdem die angegebene Timing-Vorgabe oder Auslösebedingung initiiert worden ist, aber bevor die Auswirkungen auf den Spielstatus abgehandelt werden. Die Abhandlung einer „sobald“-Fähigkeit unterbricht die Abhandlung ihrer Timing-Vorgabe oder Auslösebedingung. <i>(Beispiel: Eine Fähigkeit, die besagt „Sobald du eine Gegnerkarte ziehst“, wird sofort initiiert, nachdem man die Gegnerkarte gezogen hat, aber bevor ihre Enthüllungsfähigkeit, ihr Erscheinen u. s. w. abgehandelt werden).</i>\nSiehe auch: \"[Fähigkeit](#Ability)\", \"[Priorität bei gleichzeitiger Abhandlung](#Priority_of_Simultaneous_Resolution)\"."
+  },
+  {
+    "id": "Wild_Skill_Icons",
+    "title": "Wild Skill Icons",
+    "text": "A Wild ([wild]) skill icon on a player card may be used to match any other skill icon for the purposes of both card abilities and counting how many matching icons are committed to a skill test. When using Wild icons for the purpose of resolving a card ability, a player must state which icon the Wild is matching at the time the card is used.\nWild icons committed to a skill test are considered \"matching\" icons for the purposes of card abilities."
+  }
+  ,
+  {
+    "id": "Winning_and_Losing",
+    "title": "Winning and Losing",
+    "text": "Each scenario has a number of different possible endings.\nThe act deck represents the progress of the investigators through a scenario. Some instructions in the act deck (as well as on other encounter cardtypes) contain resolution points, in the format of: \"**(→R#)**.\" The players' primary objective is to advance through the act deck until a (hopefully favorable) resolution point is reached. Should the act deck invoke a resolution, the players have completed the scenario (they may even have \"won!\"). Instructions for resolving the designated resolution are found in the \"do not read until end of game\" section of the campaign manual.\nThe agenda deck represents the objectives and progress of the malicious forces pitted against the investigators in the scenario. Some instructions in the agenda deck (as well as on other encounter cardtypes) also contain resolution points, in the format of: \"<b>(→R#)</b>.\" Should the agenda deck invoke a (usually darker) resolution, the players have lost the scenario. Instructions for resolving the designated resolution are found in the \"do not read until end of game\" section of the campaign guide.\nShould the scenario end with no resolution being reached *(for example, if all investigators have been eliminated or have resigned)*, instructions for resolving the scenario can be found in the \"do not read until end of game\" section of the campaign guide.\n- If playing in a campaign, players will proceed to the next scenario in the campaign regardless of the outcome of the scenario. Even if players \"lose\" a scenario, they still continue their campaign (although with some negative consequences from their failure).\n- When playing a standalone scenario, players either win or lose the scenario. They win if they complete a resolution on an act card. Any other resolution is considered a loss (see \"[Standalone Mode](#Standalone_Mode)\").\nSee \"[Act Deck and Agenda Deck](#Act_Deck_and_Agenda_Deck)\"."
+  }
+  ,
+  {
+    "id": "The_letter_X",
+    "title": "The letter \"X\"",
+    "text": "The value of the letter X is defined by a card ability or a granted player choice. If X is not defined, its value is equal to 0.\n- For costs involving the letter X, the value of X is defined by card ability or player choice, after which the amount paid may be modified by effects without altering the value of X."
+  }
+  ,
+  {
+    "id": "You_Your",
+    "title": "You/Your",
+    "text": "The following guidelines are used to interpret which investigator is referenced by the words \"you\" and \"your.\"\n- A <b>Revelation</b> ability that references \"you/your\" refers to the investigator who drew the card and is resolving the ability.\n- When resolving a triggered ability ([fast], [reaction], or [action] ability), \"you/your\" refers to the investigator triggering the ability.\n- If an ability contains a clause identifying whom it is targeting, \"you/your\" in that ability refers to those investigators. <i>For example, Stubborn Detective reads: \"While Stubborn Detective is at your location...\" This clause identifies \"you\" as any investigator at his location. Young Deep One reads: \"After Young Deep One engages you...\" This clause identifies \"you\" as any investigator who engages Young Deep One.</i>\n- Any other instance of \"you/your\" that does not fall into the above categories refers to the investigator who controls the card, the investigator who has the card in his/her threat area, or who is currently interacting with the card.\nA card may have multiple different abilities in which \"you/your\" may be interpreted differently. “You/your” may refer to a different investigator in each of these abilities.\n<i>For example: Dreams of R’lyeh reads:</i>\n<i>\"<b>Revelation</b> - Put Dreams of R’lyeh into play in your threat area.\nYou get –1 [willpower] and –1 sanity.\n[action]: Test [willpower] (3). If you succeed, Discard Dreams of R’lyeh.\"</i>\nThese three abilities reference \"you/your\" in different ways. For the <b>Revelation</b> ability, \"your\" refers to the investigator who drew Dreams of R’lyeh and is resolving its <b>Revelation</b>. For its constant ability, \"you\" refers to the investigator who has Dreams of R’lyeh in his or her threat area. For its [action] ability, \"you\" refers to the investigator who is performing the [action] ability."
+  },
+  {
+    "id": "Appendix_I_Initiation_Sequence",
+    "title": "Appendix I: Initiation Sequence",
+    "text": "When a player wishes to initiate a triggered ability or play a card, that player first declares his or her intent. There are two preliminary confirmations that must be made before the process of initiating an ability or playing a card may begin. These are:\n- Check play restrictions: determine if the card can be played, or if the ability can be initiated, at this time. (This includes verifying that the resolution of the effect has the potential to change the game state.) If the play restrictions are not met, abort this process.\n- Determine the cost (or costs, if multiple costs are required) to play the card or initiate the ability. If it is established that the cost (taking modifiers into account) can be paid, proceed with the remaining steps of this sequence.\nOnce each of the above confirmations has been made, follow these steps, in order:\n1. Apply any modifiers to the cost(s).\n2. Pay the cost(s). If this step is reached and the cost(s) cannot be paid, abort this process without paying any costs.\n- Upon completion of this step, attacks of opportunity, if applicable, resolve.\n3. The card commences being played, or the effects of the ability attempt to initiate.\n4. The effects of the ability (if not canceled in step 3) complete their initiation, and resolve. The card is regarded as played (and placed in play, or in its owner's discard pile if it's an event), and the ability is considered resolved simultaneously with the completion of this step.\n- If the ability being initiated is on an in-play card, the sequence does not stop from completing if that card leaves play during the sequence."
+  },
+  {
+    "id": "Appendix_II_Timing_and_Gameplay",
+    "title": "Appendix II: Timing and Gameplay",
+    "text": "The \"[Phase Sequence timing chart](#Phase_Sequence_Timing)\" depicts the phases and steps of a game round. Each time an investigator makes a skill test, use the skill test timing detailed in the \"[Skill Test timing chart](#Skill_Test_Timing).\"\nNumbered items presented in the grey boxes are known as framework events. Framework events are mandatory occurrences dictated by the structure of the game.\nThe red boxes are player windows. Players may use [free] triggered abilities in these windows.\nThe specific details for each of these steps are explained starting.",
+    "rules": [
+      {
+        "id": "Phase_Sequence_Timing",
+        "title": "Phase Sequence timing chart",
+        "table": [
+          { "row": [{ "text": "I. Mythos phase (skip during first round of game)" }] },
+          { "row": [{ "color": "green", "text": "1.1 Round begins. Mythos phase begins." }] },
+          { "row": [{ "color": "green", "text": "1.2 Place 1 doom on the current agenda." }] },
+          { "row": [{ "color": "green", "text": "1.3 Check doom threshold." }] },
+          { "row": [{ "color": "green", "text": "1.4 Each investigator draws 1 encounter card." }] },
+          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
+          { "row": [{ "color": "green", "text": "1.5 Mythos phase ends." }] },
+          { "row": [{ "color": "grey", "text": "Proceed to Investigation Phase." }] },
+          { "row": [] },
+          { "row": [{ "text": "II. Investigation phase" }] },
+          { "row": [{ "color": "green", "text": "2.1 Investigation phase begins." }] },
+          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
+          { "row": [{ "color": "green", "text": "2.2 Next investigator's turn begins." }] },
+          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
+          { "row": [{ "color": "green", "text": "2.2.1 Active investigator may take an action, if able. If an action was taken, return to previous player window. If no action was taken, proceed to 2.2.2." }] },
+          { "row": [{ "color": "green", "text": "2.2.2 Investigator's turn ends. If an investigator has not yet taken a turn this phase, return to 2.2. If each investigator has taken a turn this phase, proceed to 2.3." }] },
+          { "row": [{ "color": "green", "text": "2.3 Investigation phase ends." }] },
+          { "row": [{ "color": "grey", "text": "Proceed to Enemy Phase." }] },
+          { "row": [] },
+          { "row": [{ "text": "III. Enemy phase" }] },
+          { "row": [{ "color": "green", "text": "3.1 Enemy phase begins." }] },
+          { "row": [{ "color": "green", "text": "3.2 Hunter enemies move." }] },
+          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
+          { "row": [{ "color": "green", "text": "3.3 Next investigator resolves engaged enemy attacks. If an investigator has not yet resolved enemy attacks this phase, return to previous player window. After final investigator resolves engaged enemy attacks, proceed to next player window." }] },
+          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
+          { "row": [{ "color": "green", "text": "3.4 Enemy phase ends." }] },
+          { "row": [{ "color": "grey", "text": "Proceed to Upkeep Phase." }] },
+          { "row": [] },
+          { "row": [{ "text": "IV. Upkeep phase" }] },
+          { "row": [{ "color": "green", "text": "4.1 Upkeep phase begins." }] },
+          { "row": [{ "color": "red", "text": "[free] PLAYER WINDOW" }] },
+          { "row": [{ "color": "green", "text": "4.2 Reset actions." }] },
+          { "row": [{ "color": "green", "text": "4.3 Ready each exhausted card." }] },
+          { "row": [{ "color": "green", "text": "4.4 Each investigator draws 1 card and gains 1 resource." }] },
+          { "row": [{ "color": "green", "text": "4.5 Each investigator checks hand size." }] },
+          { "row": [{ "color": "green", "text": "4.6 Upkeep phase ends. Round ends." }] },
+          { "row": [{ "color": "grey", "text": "Proceed to Mythos Phase of next game round." }] }
+        ]
+      },
+      {
+        "id": "Framework_Event_Details",
+        "title": "Framework Event Details",
+        "text": "This section provides a detailed explanation of how to handle each framework event step presented on the game's flow chart, in the order that the framework events occur throughout the round.",
+        "rules": [
+          {
+            "id": "Mythos_Phase",
+            "title": "I. Mythos Phase",
+            "text": "<b>During the first round of the game, skip the mythos phase.</b>\n### 1.1 Mythos phase begins.\nThis step formalizes the beginning of the mythos phase. As this is the first framework event of the round, it also formalizes the beginning of a new game round.\nThe beginning of a phase is an important game milestone that may be referenced in card text, either as a point at which an ability may or must resolve, or as a point at which a delayed effect resolves or a lasting effect expires.\n### 1.2 Place 1 doom on the current agenda.\nTake 1 doom from the token pool, and place it on the current agenda card.\n### 1.3 Check doom threshold.\nCompare the total number of doom in play (on the current agenda and on each other card in play) with the doom threshold of the current agenda. If the value of doom in play equals or exceeds the doom threshold of the current agenda, the agenda deck advances.\nWhen the agenda deck advances, remove all doom from play, returning them to the token pool. Turn the current agenda over, read the story text, and follow any advancement instructions. Unless otherwise directed by the advancement instructions, the front side of the next sequential agenda card becomes the new current agenda, and the advancing agenda is simultaneously removed from the game.\n<i>Note: Unless a card otherwise specifies that it can advance the agenda, this is the only time at which the agenda can advance.</i>\n### 1.4 Each investigator draws 1 encounter card.\nIn player order, each investigator draws the top card of the encounter deck, resolves any revelation abilities on the card, and follows the instructions below based on the card's type.\nEach time an investigator draws an encounter card, perform the following steps, in order:\n1. Draw the card from the encounter deck.\n2. Check for the peril keyword on the drawn card. (If the card has the peril keyword, the investigator who drew the card cannot confer with the other players. Those other players cannot play cards, trigger abilities, or commit cards to that investigator's skill test(s) while the peril encounter is resolving.)\n3. Resolve the revelation ability on the drawn card.\n4. If the card is an <b>enemy</b>, spawn it following any spawn instruction the card bears. (A spawn instruction is any text bearing a \"spawn\" precursor.) If the encountered enemy has no spawn instruction, the enemy spawns engaged with the investigator encountering the card and is placed in that investigator's threat area.\nIf the card is a <b>treachery</b>, place the card in the encounter discard pile unless otherwise instructed by the ability.\n5. If the drawn card has the surge keyword, the investigator must draw another card. Restart this process at step 1.\n### 1.5 Mythos phase ends.\nThis step formalizes the end of the mythos phase.\nThe end of a phase is an important game milestone that may be referenced in card text, either as a point at which an ability may or must resolve, or as a point at which a delayed effect resolves or a lasting effect expires."
+          },
+          {
+            "id": "Investigation_Phase",
+            "title": "Investigation phase",
+            "text": "### 2.1 Investigation phase begins.\nThis step formalizes the beginning of the investigation phase.\n### 2.2 Next investigator's turn begins.\nThe investigators may take their turns in any order. The investigators choose among themselves who (among the investigators) will take this turn, and making this choice begins that investigator's turn. The investigator taking his or her turn is known as the \"active investigator.\"\nOnce an investigator begins a turn, that investigator must complete the turn before another investigator may take his or her turn. Each investigator takes one turn each round.\n### 2.2.1 Investigator takes an action, if able.\nDuring his or her turn, an investigator is permitted to take three actions. An action can be used to do one of the following:\n- <b>Investigate</b> your location.\n- <b>Move</b> to a connecting location.\n- <b>Draw</b> (draw 1 card).\n- <b>Resource</b> (gain 1 resource).\n- <b>Play</b> an asset or event card from your hand.\n- <b>Activate</b> an [action]-costed ability on an in-play card you control, an in-play encounter card at your location, a card in your threat area, the current act card, or the current agenda card.\n- <b>Fight</b> an enemy at your location.\n- <b>Engage</b> an enemy at your location.\n- Attempt to <b>evade</b> an enemy engaged with you.\nThe three actions an investigator performs during his or her turn may be any of the above, in any order, and may even be the same action three times in a row.\n<b>Important:</b> When an investigator is engaged with one or more enemies and takes an action other than to <b>fight</b>, to <b>evade</b>, or to activate a <b>parley</b> or <b>resign</b> ability, each of those enemies makes an attack of opportunity against the investigator, in the order of the investigator's choosing.\nAfter an investigator takes an action, return to the previous player window. An investigator may end his or her turn early if there are no other actions he or she wishes to perform. If the investigator does not or cannot take an action, proceed to 2.2.2.\n### 2.2.2 Investigator's turn ends.\nFlip the active investigator's mini card to its colorless side to show that the investigator's turn has ended. If there is an investigator who has not yet taken a turn this round, return to 2.2. If each investigator has taken a turn this round, proceed to 2.3.\n### 2.3 Investigation phase ends.\nThis step formalizes the end of the investigation phase."
+          },
+          {
+            "id": "Enemy_Phase",
+            "title": "III. Enemy phase",
+            "text": "### 3.1 Enemy phase begins.\nThis step formalizes the beginning of the enemy phase.\n### 3.2 Hunter enemies move.\nResolve the hunter keyword for each ready, unengaged enemy that has the hunter keyword (see \"[Hunter](#Hunter)\").\n### 3.3 Next investigator resolves engaged enemy attacks.\nResolve engaged enemy attacks in player order, with each player resolving all of his or her engaged enemies before advancing to the next player.\nEach ready, engaged enemy makes an attack against the investigator to which it is engaged. When an enemy attacks, deal its attack (both its damage and its horror, simultaneously) to the engaged investigator. Upon completion of dealing the attack (and all abilities triggered by the attack), exhaust the enemy. If an investigator is engaged with multiple enemies, resolve their attacks in the order of the attacked investigator's choosing.\nAfter an investigator has resolved the attacks of the enemies he or she is engaged with, return to the previous player window. After the final investigator resolves enemy attacks, proceed to the next player window.\n### 3.4 Enemy phase ends.\nThis step formalizes the end of the enemy phase."
+          },
+          {
+            "id": "Upkeep_Phase",
+            "title": "IV. Upkeep phase",
+            "text": "### 4.1 Upkeep phase begins.\nThis step formalizes the beginning of the upkeep phase.\n### 4.2 Reset actions.\nFlip each investigator's mini card back to its colored side. This indicates that the investigator's actions have been reset for his or her next turn.\n### 4.3 Ready exhausted cards.\nSimultaneously ready each exhausted card.\n### 4.4 Each investigator draws 1 card and gains 1 resource.\nIn player order, each investigator draws 1 card. Once those cards have been drawn, each investigator gains 1 resource.\n### 4.5 Each investigator checks hand size.\nIn player order, each investigator with more than 8 cards in hand chooses and discards cards from his or her hand until he or she has 8 cards remaining in hand.\n### 4.6 Upkeep phase ends.\nThis step formalizes the end of the upkeep phase.\nAs the upkeep phase is the final phase in the round, this step also formalizes the end of the round. Any active \"until the end of the round\" lasting effects expire at this time.\nAfter this step is complete, play proceeds to the beginning of the mythos phase of the next game round."
+          }
+        ]
+      },
+      {
+        "id": "Skill_Test_Timing",
+        "title": "Timing für Fertigkeitsproben",
+        "table": [
+          { "row": [{ "text": "Timing für Fertigkeitsproben"}] },
+          { "row": [{ "color": "green", "text": "FP.1 Fertigkeit für die Probe bestimmen. Die Probe auf diese Fertigkeit beginnt jetzt."}] },
+          { "row": [{ "color": "red", "text": "[free] SPIELERFENSTER"}] },
+          { "row": [{ "color": "green", "text": "FP.2 Karten von der Hand zu dieser Fertigkeitsprobe beitragen."}] },
+          { "row": [{ "color": "red", "text": "[free] SPIELERFENSTER"}] },
+          { "row": [{ "color": "green", "text": "FP.3 Chaosmarker enthüllen."}] },
+          { "row": [{ "color": "green", "text": "FP.4 Chaossymbol-Effekte abhandeln."}] },
+          { "row": [{ "color": "green", "text": "FP.5 Modifizierten Fertigkeitswert des Ermittlers bestimmen."}] },
+          { "row": [{ "color": "green", "text": "FP.6 Bestimmen, ob die Fertigkeitsprobe gelingt/misslingt."}] },
+          { "row": [{ "color": "green", "text": "FP.7 Ergebnis der Fertigkeitsprobe anwenden."}] },
+          { "row": [{ "color": "green", "text": "FP.8 Die Fertigkeitsprobe endet."}] }
+        ],
+        "rules": [
+          {
+            "id": "Skill_Test_1",
+            "title": "FP.1 Fertigkeit für die Probe bestimmen. Die Probe auf diese Fertigkeit beginnt jetzt.",
+            "text": "Dieser Schritt stellt den formalen Beginn der Fertigkeitsprobe dar. Es gibt vier Arten von Fertigkeitsproben: Willenskraftproben, Intellektproben, Kampfproben und Beweglichkeitsproben. Die Kartenfähigkeit oder die Spielregel bestimmt, welche Probe nötig ist und damit beginnt eine Probe dieser Art."
+          },
+          {
+            "id": "Skill_Test_2",
+            "title": "FP.2 Karten von der Hand zur Fertigkeitsprobe beitragen.",
+            "text": "Der Ermittler, der die Fertigkeitsprobe durchführt, darf eine beliebige Anzahl Karten von seiner Hand mit dem entsprechenden Fertigkeitssymbol zur Probe beitragen. \nJeder andere Ermittler am selben Ort wie der Ermittler, der die Probe ablegt, darf eine Karte von seiner Hand mit dem entsprechenden Fertigkeitssymbol zur Probe beitragen. \nEin entsprechendes Fertigkeitssymbol ist entweder eins, das der Probe entspricht, oder ein Jokersymbol. Der Ermittler, der die Probe durchführt, bekommt +1 auf seinen Fertigkeitswert für diese Probe pro entsprechendem Fertigkeitssymbol, das zu dieser Probe beigetragen wird. \nKarten, denen das entsprechende Fertigkeitssymbol fehlt, dürfen nicht zur Probe beigetragen werden. Wird eine Karte zu einer Fertigkeitsprobe beigetragen, werden keine Ressourcenkosten für die Karte gezahlt."
+          },
+          {
+            "id": "Skill_Test_3",
+            "title": "FP.3 Chaosmarker enthüllen.",
+            "text": "Der Ermittler, der die Probe durchführt, enthüllt einen zufälligen Chaosmarker aus dem Chaosbeutel.\nSiehe auch \"[Abhandlung mehrerer enthüllter Chaosmarker](#Resolving_Multiple_Revealed_Chaos_Tokens)\"."
+          },
+          {
+            "id": "Skilll_Test_4",
+            "title": "FP.4 Chaossymbol-Effekte abhandeln..",
+            "text": "Die Effekte, die durch das Symbol auf dem enthüllten Chaosmarker initiiert werden, werden angewendet. Jedes der folgenden Symbole zeigt an, dass eine Fähigkeit auf der Szenarioübersichtskarte initiiert werden muss: [skull], [cultist], [tablet], oder [elder_thing].\nDas [elder_sign]-Symbol zeigt an, dass die [elder_sign]-Fähigkeit auf der Ermittlerkarte des Spielers, der diese Probe durchführt, initiiert werden muss.\nFalls keines der oben angegebenen Symbole enthüllt worden ist oder falls das Symbol keine entsprechende Fähigkeit hat, wird dieser Schritt ohne Effekt abgeschlossen."
+          },
+          {
+            "id": "Skill_Test_5",
+            "title": "FP.5 Modifizierten Fertigkeitswert des Ermittlers bestimmen.",
+            "text": "Man beginnt mit dem Grundwert der Fertigkeit (der abzulegenden Probe) des Ermittlers, der die Probe durchführt, und wendet alle aktiven Modifikatoren an, einschließlich der entsprechenden Symbole, die zur Probe beigetragen wurden, der Effekte von enthüllten Chaosmarkern und allen aktiven Kartenfähigkeiten, die den Fertigkeitswert des Ermittlers modifizieren."
+          },
+          {
+            "id": "Skill_Test_6",
+            "title": "FP.6 Bestimmen, ob die Fertigkeitsprobe gelingt/misslingt.",
+            "text": "Der modifizierte Fertigkeitswert wird mit der Schwierigkeit der Fertigkeitsprobe verglichen. \nFalls der modifizierte Fertigkeitswert der Schwierigkeit der Probe entspricht oder höher ist (angegeben auf der Karte oder durch den Spielmechanismus, der diese Probe hervorgerufen hat), gelingt dem Ermittler die Probe. \n- Falls einem Ermittler eine Probe durch eine Kartenfähigkeit automatisch gelingt, gilt die Gesamtschwierigkeit der Probe als 0.\nFalls der Fertigkeitswert des Ermittlers niedriger ist als die Schwierigkeit dieser Probe, misslingt dem Ermittler die Probe. \n- Falls einem Ermittler eine Fertigkeitsprobe durch eine Kartenfähigkeit oder das Enthüllen des [auto_fail]-Symbols automatisch misslingt, ist der Gesamt-Fertigkeitswert des Ermittlers für diese Probe 0.\nSiehe auch \"[Automatischer Erfolg/Misserfolg](#Automatic_Failure_Success)\"."
+          },
+          {
+            "id": "Skill_Test_7",
+            "title": "FP.7 Ergebnis der Fertigkeitsprobe anwenden.",
+            "text": "Die Kartenfähigkeit oder Spielregel, die eine Fertigkeitsprobe initiiert hat, gibt normalerweise die Konsequenz eines Erfolges und/oder eines Misserfolges dieser Probe an. (Außerdem können zu diesem Zeitpunkt einige andere Karten zusätzliche Konsequenzen beitragen oder bestehende Konsequenzen verändern.) Die entsprechenden Konsequenzen (des in FP.6 bestimmten Erfolges oder Misserfolges) werden zu diesem Zeitpunkt abgehandelt. \nFalls mehrere Ergebnisse in diesem Schritt angewendet werden müssen, wählt der Ermittler, der die Probe durchführt, in welcher Reihenfolge die Ergebnisse angewendet werden."
+          },
+          {
+            "id": "Skill_Test_8",
+            "title": "FP.8 Die Fertigkeitsprobe endet.",
+            "text": "Dieser Schritt stellt das formale Ende der Fertigkeitsprobe dar. Alle Karten, die zur Probe beigetragen worden sind, werden abgelegt und alle enthüllten Chaosmarker werden zurück in den Chaosbeutel gelegt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Appendix_III_Setting_Up_The_Game",
+    "title": "Anhang III: Spielvorbereitung",
+    "text": "Um ein Spiel vorzubereiten, werden folgende Schritte in angegebener Reihenfolge durchgeführt:\n1. <b>Ermittler wählen.</b> Jeder Spieler wählt einen anderen Ermittler und platziert die entsprechende Ermittlerkarte in seine Spielzone.\n2. <b>Schaden/-Horror durch Traumata nehmen.</b> Im Kampagnenspiel platziert jeder Spieler Schaden in Höhe seines körperlichen Traumas und Horror in Höhe seines seelischen Traumas auf seiner Ermittlerkarte.\n3. <b>Einen der Ermittler als Ermittlungsleiter für dieses Spiel wählen.</b>\n4. <b>Ermittlerdecks erstellen und mischen.</b>\n5. <b>Markervorrat erstellen.</b> Die Schadens-, Horror-, Hinweis-/Verderbens- und Ressourcenmarker werden für jeden Spieler leicht erreichbar bereitlegt.\n6. <b>Chaosbeutel erstellen.</b> Die in der Kampagnenvorbereitung angegebenen Chaosmarker werden in den Chaosbeutel gelegt. Die übrigen Chaosmarker kommen zurück in die Spielschachtel. \n- Im Kampagnenmodus wird der Chaosbeutel so verwendet, wie er am Ende des vorherigen Szenarios war.\n7. <b>Startressourcen nehmen.</b> Jeder Ermittler erhält 5 Ressourcen aus dem Markervorrat.\n8. <b>Starthand ziehen.</b> Jeder Spieler zieht 5 Karten. Jeder Spieler darf in Spielerreihenfolge einen Mulligan nehmen. \n- Jede Schwächekarte, die in diesem Schritt gezogen wird, wird ignoriert, beiseitegelegt (ohne sie abzuhandeln) und durch eine neu gezogene Karte vom Deck ersetzt. Nach Abschluss dieses Schrittes wird jede gezogene Schwächekarte zurück in das Deck ihres Besitzers gemischt.\n9. <b>Szenarioeinführung im Kampagnenhandbuch lesen.</b>\n10. <b>Die im Kampagnenhandbuch angegebenen Schritte zur Szenariovorbereitung durchführen.</b> Dazu gehört das Heraussuchen der in den Vorbereitungsanweisungen angegebenen Begegnungssets, die Platzierung der Orte, die Platzierung der kleinen Ermittlerkarten an den Orten, an denen jeder Ermittler das Spiel beginnt, das Beiseitelegen von dafür angegebenen Karten und das Mischen der übrigen Begegnungskarten, um das Begegnungsdeck zu erstellen.\n11. <b>Agendadeck vorbereiten.</b> Das Agendadeck wird in der angegebenen Reihenfolge zusammengestellt, jeweils mit der Seite nach oben, die das Kartenbild zeigt. Agenda 1a ist nun die oberste Karte des Decks. Ein Spieler liest den Storytext auf Agenda 1a vor.\n12. <b>Szenendeck vorbereiten.</b> Das Szenendeck wird in der angegebenen Reihenfolge zusammengestellt, jeweils mit der Seite nach oben, die das Kartenbild zeigt. Szene 1a ist nun die oberste Karte des Decks. Ein Spieler liest den Storytext auf Szene 1a vor.\n13. <b>Szenarioübersichtskarte neben das Agendadeck platzieren.</b>\nWährend der Vorbereitung gibt es kein Spielerfenster. Die Spieler dürfen während der Vorbereitung nur Spielerkartenfähigkeiten auslösen oder Karten von der Hand spielen, falls die spezielle Auslösebedingung der Karte oder der Fähigkeit erfüllt ist."
+  },
+  {
+    "id": "Appendix_IV_Card_Anatomy",
+    "title": "Anhang IV: Aufbau der Karten",
+    "text": "In diesem Abschnitt findet ihr detaillierte Angaben zum Aufbau jedes Kartentyps. Auf den Seiten 28–29 werden Szenariokarten erläutert, auf den Seiten 30–31 Ermittler-/Spielerkarten. \nSzenenkarten, Agendakarten, Ortskarten, Verratskarten, Gegnerkarten und die Szenarioübersichtskarte sind Szenariokarten. \nErmittlerkarten, kleine Ermittlerkarten, Vorteilskarten, Ereigniskarten und Fertigkeitskarten sind Spielerkarten."
+  }
+]

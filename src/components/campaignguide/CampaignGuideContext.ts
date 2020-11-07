@@ -5,7 +5,7 @@ import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import CampaignGuide from '@data/scenario/CampaignGuide';
 import { LatestDecks } from '@data/scenario';
 import Card, { CardsMap } from '@data/Card';
-import { DEFAULLT_STYLE_CONTEXT, StyleContextType } from '@styles/StyleContext';
+import { DEFAULLT_STYLE_CONTEXT } from '@styles/StyleContext';
 
 export interface CampaignGuideContextType {
   campaignId: number;
@@ -19,7 +19,6 @@ export interface CampaignGuideContextType {
   adjustedInvestigatorData: InvestigatorData;
   playerCards: CardsMap;
   lastUpdated: Date;
-  style: StyleContextType;
 }
 
 export const CampaignGuideContext = React.createContext<CampaignGuideContextType>(

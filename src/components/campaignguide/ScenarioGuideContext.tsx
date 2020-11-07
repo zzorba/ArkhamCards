@@ -7,7 +7,7 @@ import { DEFAULLT_STYLE_CONTEXT, StyleContextType } from '@styles/StyleContext';
 export interface ScenarioGuideContextType {
   processedScenario: ProcessedScenario;
   scenarioState: ScenarioStateHelper;
-  style: StyleContextType
+  // style: StyleContextType
 }
 
 export const ScenarioGuideContext = React.createContext<ScenarioGuideContextType>(

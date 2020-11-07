@@ -26,9 +26,7 @@ const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};
 
 export default function useCampaignGuideContext(campaignId: number, campaignData?: CampaignGuideReduxData): CampaignGuideContextType | undefined {
   const campaignInvestigators = campaignData?.campaignInvestigators;
-
   const dispatch = useDispatch();
-  const style = useContext(StyleContext);
   const investigators = useInvestigatorCards();
   const cards = usePlayerCards();
   const campaignChooseDeck = useChooseDeck();
@@ -206,7 +204,6 @@ export default function useCampaignGuideContext(campaignId: number, campaignData
       adjustedInvestigatorData: campaignData.campaign.adjustedInvestigatorData || EMPTY_INVESTIGATOR_DATA,
       playerCards: cards,
       lastUpdated,
-      style,
     };
-  }, [campaignId, campaignData?.campaign, campaignData?.campaignGuide, campaignStateHelper, campaignInvestigators, decksByInvestigator, cards, lastUpdated, style]);
+  }, [campaignId, campaignData?.campaign, campaignData?.campaignGuide, campaignStateHelper, campaignInvestigators, decksByInvestigator, cards, lastUpdated]);
 }
