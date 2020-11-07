@@ -6,8 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { iconSizeScale } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';

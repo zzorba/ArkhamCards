@@ -12,7 +12,6 @@ import { NavigationProps } from '@components/nav/types';
 import BasicButton from '@components/core/BasicButton';
 import NavButton from '@components/core/NavButton';
 import ToggleFilter from '@components/core/ToggleFilter';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { saveDeckChanges, DeckChanges } from '@components/deck/actions';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import { iconsMap } from '@app/NavIcons';
@@ -49,8 +48,7 @@ type Props = NavigationProps &
   CampaignDrawWeaknessProps &
   ReduxProps &
   ReduxActionProps &
-  PlayerCardProps &
-  DimensionsProps;
+  PlayerCardProps;
 
 interface State {
   selectedDeckId?: number;
@@ -409,9 +407,7 @@ export default withPlayerCards<NavigationProps & CampaignDrawWeaknessProps>(
   connect<ReduxProps, ReduxActionProps, NavigationProps & CampaignDrawWeaknessProps & PlayerCardProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-  )(
-    withDimensions(CampaignDrawWeaknessDialog)
-  )
+  )(CampaignDrawWeaknessDialog)
 );
 
 const styles = StyleSheet.create({

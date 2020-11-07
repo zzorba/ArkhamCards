@@ -19,6 +19,7 @@ interface OwnProps {
   onSearchChange: (text: string) => void;
   children: (
     handleScroll: (...args: any[]) => void,
+    showHeader: () => void
   ) => React.ReactNode;
 }
 
@@ -199,7 +200,7 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
     return (
       <View style={[styles.wrapper, backgroundStyle]}>
         <View style={[styles.container, backgroundStyle, borderStyle]}>
-          { children(this._handleScroll) }
+          { children(this._handleScroll, this._showHeader) }
         </View>
         { advancedOpen && !!advancedOptions && Platform.OS === 'android' && (
           <View style={[
@@ -209,7 +210,7 @@ class CollapsibleSearchBox extends React.Component<Props, State> {
               width,
               height: SEARCH_BAR_HEIGHT + advancedOptions.height,
               backgroundColor: 'transparent',
-            }
+            },
           ]} />
         ) }
         <Animated.View style={[

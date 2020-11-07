@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { msgid, ngettext } from 'ttag';
 
@@ -28,13 +28,13 @@ export default function SupplyComponent({
   dec,
 }: Props) {
   const { typography, colors, borderStyle } = useContext(StyleContext);
-  const _inc = () => {
+  const onIncrement = useCallback(() => {
     inc(investigator.code, supply.id);
-  };
+  }, [investigator, inc, supply]);
 
-  const _dec = () => {
+  const onDecrement = useCallback(() => {
     dec(investigator.code, supply.id);
-  };
+  }, [investigator, dec, supply]);
 
   const costString = supply.multiple ?
     ngettext(msgid`(${supply.cost} supply point each)`,
@@ -68,8 +68,8 @@ export default function SupplyComponent({
         { editable ? (
           <PlusMinusButtons
             count={count}
-            onIncrement={_inc}
-            onDecrement={_dec}
+            onIncrement={onIncrement}
+            onDecrement={onDecrement}
             max={supply.multiple ? undefined : 1}
             countRender={(
               <Text style={[styles.count, typography.text, typography.bold, typography.center]}>

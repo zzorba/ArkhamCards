@@ -54,7 +54,7 @@ interface Props {
   rightIconWrapperStyle?: ViewStyle;
   rightIcon?: React.ReactNode;
   disabled?: boolean
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 class SettingsButton extends Component<Props> {

@@ -27,10 +27,10 @@ export default class Dialog extends React.Component<Props, State> {
       viewRef,
     } = this.props;
     if (viewRef !== prevProps.viewRef) {
-      /* eslint-disable react/no-did-update-set-state */
+      /* eslint-disable react/no-did-update-set-state
       this.setState({
         nodeHandle: viewRef ? findNodeHandle(viewRef) : null,
-      });
+      });*/
     }
   }
 

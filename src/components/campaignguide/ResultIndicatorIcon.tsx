@@ -3,8 +3,7 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';

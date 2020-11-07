@@ -14,7 +14,12 @@ export default function GameTextNode({ typography, fontScale, gameFont }: StyleC
     state: RenderState
   ) => {
     return (
-      <Text key={state.key} style={[{ fontFamily: gameFont, fontSize: 24 * fontScale, lineHeight: 24 * fontScale }, typography.dark]}>
+      <Text key={state.key} style={[{
+        fontFamily: gameFont,
+        fontStyle: 'normal',
+        fontSize: 24 * fontScale,
+        lineHeight: 32 * fontScale,
+      }, typography.dark]}>
         { output(node.children, state) }
       </Text>
     );

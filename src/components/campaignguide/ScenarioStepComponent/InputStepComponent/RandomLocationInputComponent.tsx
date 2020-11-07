@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useReducer } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { filter, flatMap, map, throttle, shuffle } from 'lodash';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import CardListWrapper from '@components/card/CardListWrapper';
 import PickerStyleButton from '@components/core/PickerStyleButton';
-import Card from '@data/Card';
 import { RandomLocationInput } from '@data/scenario/types';
-import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, l } from '@styles/space';
+import StyleContext from '@styles/StyleContext';
+import useCardList from '@components/card/useCardList';
 
 interface Props {
   input: RandomLocationInput;
@@ -20,124 +20,88 @@ interface State {
   choices: number[];
 }
 
-export default class RandomLocationInputComponent extends React.Component<Props, State>{
-  static contextType = ScenarioStepContext;
-  context!: ScenarioStepContextType;
 
-  _done: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      choices: [],
-    };
-
-    this._done = throttle(this.done.bind(this), 500);
-  }
-
-  done() {
-    this.context.scenarioState.undo();
-  }
-
-  _drawLocation = () => {
-    const { input } = this.props;
-    this.setState((state: State) => {
-      if (input.multiple) {
-        const existingChoices = new Set(state.choices);
-        const remainingCards = filter(
-          map(input.cards, (card, idx) => idx),
-          idx => !existingChoices.has(idx)
-        );
-        if (!remainingCards.length) {
-          return {
-            choices: state.choices,
-          };
-        }
-        return {
-          choices: [
-            ...state.choices,
+export default function RandomLocationInputComponent({ input }: Props) {
+  const { scenarioState } = useContext(ScenarioStepContext);
+  const { borderStyle } = useContext(StyleContext);
+  const [choices, updateChoices] = useReducer((state: number[], action: 'draw' | 'clear') => {
+    switch (action) {
+      case 'draw': {
+        if (input.multiple) {
+          const existingChoices = new Set(state);
+          const remainingCards = filter(
+            map(input.cards, (card, idx) => idx),
+            idx => !existingChoices.has(idx)
+          );
+          if (!remainingCards.length) {
+            return state;
+          }
+          return [
+            ...state,
             shuffle(remainingCards)[0],
-          ],
-        };
+          ];
+        }
+        const choice = Math.floor(Math.random() * input.cards.length);
+        return state.length ? [] : [choice];
       }
-      const choice = Math.floor(Math.random() * input.cards.length);
-      return {
-        choices: state.choices.length ? [] : [choice],
-      };
-    });
-  };
+      case 'clear':
+        return [];
+    }
+  }, []);
+  const done = useMemo(() => throttle(() => {
+    scenarioState.undo();
+  }, 500), [scenarioState]);
 
-  _clearLocations = () => {
-    this.setState({
-      choices: [],
-    });
-  };
+  const drawLocation = useCallback(() => {
+    updateChoices('draw');
+  }, [updateChoices]);
 
-  _renderCards = (cards: Card[], choices: number[]) => {
-    const { input } = this.props;
-    const selectedCards = flatMap(choices, idx => cards[idx] || []);
-    const {
-      style: { borderStyle },
-    } = this.context;
-    if (!input.multiple) {
-      return (
+  const clearLocations = useCallback(() => {
+    updateChoices('clear');
+  }, [updateChoices]);
+  const [cards, loading] = useCardList(input.cards, 'encounter');
+  if (loading || !cards) {
+    return null;
+  }
+
+  const selectedCards = flatMap(choices, idx => cards[idx] || []);
+  return (
+    <View style={styles.container}>
+      { !input.multiple ? (
         <View style={[styles.wrapper, borderStyle]}>
           <PickerStyleButton
             id="single"
             title={t`Random location`}
-            value={selectedCards.length ?
-              selectedCards[0].name :
-              ''
-            }
-            onPress={this._drawLocation}
+            value={selectedCards.length ? selectedCards[0].name : ''}
+            onPress={drawLocation}
             widget="shuffle"
           />
         </View>
-      );
-    }
-    return (
-      <>
-        <BasicButton
-          title={t`Draw location`}
-          disabled={selectedCards.length >= cards.length}
-          onPress={this._drawLocation}
-        />
-        <BasicButton
-          title={t`Reshuffle`}
-          disabled={choices.length === 0}
-          onPress={this._clearLocations}
-        />
-        <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
-          { map(selectedCards, card => (
-            <CardSearchResult
-              key={card.code}
-              card={card}
-            />
-          )) }
-        </View>
-      </>
-    );
-  };
-
-  render() {
-    const { input } = this.props;
-    const { choices } = this.state;
-    return (
-      <View style={styles.container}>
-        <CardListWrapper
-          type="encounter"
-          codes={input.cards}
-        >
-          { (cards: Card[]) => this._renderCards(cards, choices) }
-        </CardListWrapper>
-        <BasicButton
-          title={t`Done`}
-          onPress={this._done}
-        />
-      </View>
-    );
-  }
+      ) : (
+        <>
+          <BasicButton
+            title={t`Draw location`}
+            disabled={selectedCards.length >= cards.length}
+            onPress={drawLocation}
+          />
+          <BasicButton
+            title={t`Reshuffle`}
+            disabled={choices.length === 0}
+            onPress={clearLocations}
+          />
+          <View style={[selectedCards.length ? styles.wrapper : {}, borderStyle]}>
+            { map(selectedCards, card => (
+              <CardSearchResult key={card.code} card={card} />
+            )) }
+          </View>
+        </>
+      ) }
+      <BasicButton
+        title={t`Done`}
+        onPress={done}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import {
   Animated,
   Easing,
@@ -10,7 +10,7 @@ import { t } from 'ttag';
 
 import ToggleButton from '@components/core/ToggleButton';
 import { isBig, s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   label: string;
@@ -21,56 +21,26 @@ interface Props {
   onToggleChange: (toggleName: string, enabled: boolean) => void;
 }
 
-interface State {
-  heightAnim: Animated.Value;
-}
+export default function AccordionItem({ label, height, children, enabled, toggleName, onToggleChange }: Props) {
+  const { fontScale, borderStyle, typography } = useContext(StyleContext);
+  const heightAnim = useRef(new Animated.Value(enabled ? 1 : 0));
 
-export default class AccordionItem extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+  useEffect(() => {
+    heightAnim.current.stopAnimation(() => {
+      Animated.timing(heightAnim.current, {
+        toValue: enabled ? 1 : 0,
+        duration: 250,
+        easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
+        useNativeDriver: false,
+      }).start();
+    });
+  }, [enabled]);
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      heightAnim: new Animated.Value(props.enabled ? 1 : 0),
-    };
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const {
-      enabled,
-    } = this.props;
-    if (enabled !== prevProps.enabled) {
-      const {
-        heightAnim,
-      } = this.state;
-      heightAnim.stopAnimation(() => {
-        Animated.timing(heightAnim, {
-          toValue: enabled ? 1 : 0,
-          duration: 250,
-          easing: enabled ? Easing.in(Easing.ease) : Easing.out(Easing.ease),
-          useNativeDriver: false,
-        }).start();
-      });
-    }
-  }
-
-  _togglePressed = () => {
-    const {
-      toggleName,
-      onToggleChange,
-      enabled,
-    } = this.props;
+  const togglePressed = useCallback(() => {
     onToggleChange(toggleName, !enabled);
-  };
+  }, [toggleName, onToggleChange, enabled]);
 
-  renderLabel() {
-    const {
-      label,
-      enabled,
-    } = this.props;
-    const { typography } = this.context;
+  const labelSection = useMemo(() => {
     return (
       <View style={styles.row}>
         <Text style={typography.text}>
@@ -79,34 +49,26 @@ export default class AccordionItem extends React.Component<Props, State> {
         <ToggleButton
           accessibilityLabel={t`Enable`}
           value={enabled}
-          onPress={this._togglePressed}
+          onPress={togglePressed}
           size={20}
           icon="expand"
         />
       </View>
     );
-  }
+  }, [label, enabled, typography, togglePressed]);
 
-  render() {
-    const {
-      height,
-      children,
-    } = this.props;
-    const { fontScale, borderStyle } = this.context;
-    const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
-
-    const containerHeight = this.state.heightAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height],
-      extrapolate: 'clamp',
-    });
-    return (
-      <Animated.View style={[styles.container, borderStyle, { height: containerHeight }]}>
-        { this.renderLabel() }
-        { children }
-      </Animated.View>
-    );
-  }
+  const COLLAPSED_HEIGHT = 22 + 18 * fontScale * (isBig ? 1.25 : 1.0);
+  const containerHeight = heightAnim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: [COLLAPSED_HEIGHT, COLLAPSED_HEIGHT + height],
+    extrapolate: 'clamp',
+  });
+  return (
+    <Animated.View style={[styles.container, borderStyle, { height: containerHeight }]}>
+      { labelSection }
+      { children }
+    </Animated.View>
+  );
 }
 
 const styles = StyleSheet.create({

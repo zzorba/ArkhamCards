@@ -4,7 +4,7 @@ import PickerComponent, { PickerProps } from './PickerComponent';
 
 interface Props extends PickerProps {
   formatLabel?: (index: number) => string;
-  onChoiceChange: (index: number) => void;
+  onChoiceChange: (index: number | null) => void;
   selectedIndex?: number;
 }
 

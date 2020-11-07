@@ -42,6 +42,16 @@
             "text": "los investigadores repelieron a Umôrdhoth."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -110,20 +120,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -336,6 +338,16 @@
             "text": "Zebulon Whateley sobrevivió a El legado de Dunwich."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -404,20 +416,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -484,6 +488,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "possessed",
+            "masculine_text": "#name# fue poseído.",
+            "feminine_text": "#name# fue poseída."
+          },
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
+            "feminine_text": "#name# leyó el segundo acto de El Rey de Amarillo."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "los investigadores fueron atacados al huir del manicomio."
@@ -573,16 +587,8 @@
             "text": "la policía sospecha de los investigadores."
           },
           {
-            "id": "possessed",
-            "text": "#name# fue poseído."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "los investigadores impidieron que Hastur escapara de su prisión."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# leyó el segundo acto de El Rey de Amarillo."
           },
           {
             "id": "slayed_the_monsters",
@@ -603,6 +609,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "los investigadores no lograron encontrar a Nigel."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "blob_contained",
@@ -673,20 +689,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -935,6 +943,16 @@
             "text": "Zebulon Whateley sobrevivió a El legado de Dunwich."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -1003,20 +1021,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1120,6 +1130,16 @@
             "text": "los investigadores repelieron a Umôrdhoth."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -1188,20 +1208,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1273,6 +1285,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "possessed",
+            "masculine_text": "#name# fue poseído.",
+            "feminine_text": "#name# fue poseída."
+          },
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# leyó el segundo acto de El Rey de Amarillo.",
+            "feminine_text": "#name# leyó el segundo acto de El Rey de Amarillo."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "los investigadores fueron atacados al huir del manicomio."
@@ -1362,16 +1384,8 @@
             "text": "la policía sospecha de los investigadores."
           },
           {
-            "id": "possessed",
-            "text": "#name# fue poseído."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "los investigadores impidieron que Hastur escapara de su prisión."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# leyó el segundo acto de El Rey de Amarillo."
           },
           {
             "id": "slayed_the_monsters",
@@ -1392,6 +1406,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "los investigadores no lograron encontrar a Nigel."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "blob_contained",
@@ -1462,20 +1486,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1772,6 +1788,16 @@
             "text": "los investigadores se vieron obligados a esperar suministros adicionales."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -1840,20 +1866,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2057,20 +2075,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "claimed_by_specters",
-            "text": "#name# fue arrebatado por espectros."
-          },
-          {
             "id": "disappeared_into_the_mist",
-            "text": "#name# desapareció en la niebla."
+            "masculine_text": "#name# desapareció en la niebla.",
+            "feminine_text": "#name# desapareció en la niebla."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "text": "#name# fue absorbido al reino espectral."
+            "masculine_text": "#name# fue absorbido al reino espectral.",
+            "feminine_text": "#name# fue absorbida al reino espectral."
+          },
+          {
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# fue arrebatado por espectros.",
+            "feminine_text": "#name# fue arrebatada por espectros."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "el vigilante se llevó a #name#."
+            "masculine_text": "el vigilante se llevó a #name#.",
+            "feminine_text": "el vigilante se llevó a #name#."
           }
         ]
       },
@@ -2145,6 +2167,11 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# se ha unido a los flautistas de Azathoth.",
+            "feminine_text": "#name# se ha unido a los flautistas de Azathoth."
+          },
           {
             "id": "accepted_fate",
             "text": "los investigadores han aceptado su destino."
@@ -2250,10 +2277,6 @@
             "text": "los investigadores mantuvieron ocultos sus recuerdos."
           },
           {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# se ha unido a los flautistas de Azathoth."
-          },
-          {
             "id": "learned_nothing_of_the_lodges_schemes",
             "text": "los investigadores no descubrieron nada sobre los planes de la Logia."
           },
@@ -2312,6 +2335,16 @@
           {
             "id": "witches_spell_cast",
             "text": "las brujas lanzaron su hechizo."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "blob_contained",
@@ -2382,20 +2415,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2511,6 +2536,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "captured",
+            "masculine_text": "#name# fue capturado.",
+            "feminine_text": "#name# fue capturada."
+          },
+          {
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# ha quebrantado la ley de Ulthar.",
+            "feminine_text": "#name# ha quebrantado la ley de Ulthar."
+          },
+          {
             "id": "black_cat_at_your_side",
             "text": "el gato negro está con los soñadores."
           },
@@ -2549,14 +2584,6 @@
           {
             "id": "black_cat_warned_the_others",
             "text": "el gato negro advirtió a los demás."
-          },
-          {
-            "id": "broken_the_law_of_ulthar",
-            "text": "#name# ha quebrantado la ley de Ulthar."
-          },
-          {
-            "id": "captured",
-            "text": "#name# fue capturado/a."
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -2651,6 +2678,16 @@
             "text": "los investigadores se lo han buscado."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -2719,20 +2756,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2935,6 +2964,16 @@
             "text": "los investigadores se lo han buscado."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -3003,20 +3042,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3267,6 +3298,16 @@
             "text": "los investigadores se vieron obligados a esperar suministros adicionales."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
             "id": "blob_contained",
             "text": "la anomalía fue contenida."
           },
@@ -3335,20 +3376,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3539,8 +3572,16 @@
             "text": "Othera Gilman está sediento de sangre."
           },
           {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth was consumed by the rising tide."
+          },
+          {
             "id": "little_out_for_blood",
             "text": "Joyce Little está sediento de sangre."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "the investigators made it safely to their vehicles."
           },
           {
             "id": "marsh_out_for_blood",
@@ -3553,6 +3594,16 @@
           {
             "id": "mission_succeeded",
             "text": "la misión tuvo éxito."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapado por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# ha sido atrapada por el Abismo.",
+            "feminine_text": "#name# ha sido atrapada por el Abismo."
           },
           {
             "id": "blob_contained",
@@ -3623,20 +3674,12 @@
             "text": "Agentes de la Hermandad que escaparon: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "se acerca la hora de la verdad."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "los investigadores han unido sus fuerzas con Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# ha sido atrapado por el Abismo."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3712,6 +3755,22 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
             "id": "the_accusation",
             "text": "dummy"
           },
@@ -3752,6 +3811,22 @@
       {
         "section": "memories_recovered",
         "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "a deal with Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "a followed lead."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "a jailbreak."
+          },
+          {
+            "id": "an_intervention",
+            "text": "an intervention."
+          },
           {
             "id": "battle_with_a_horrifying_devil",
             "text": "una batalla con un horripilante demonio"

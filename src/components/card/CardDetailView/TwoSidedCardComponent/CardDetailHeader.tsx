@@ -48,9 +48,9 @@ function FactionIcon({ card, linked }: { card: Card, linked: boolean }) {
     );
   }
 
-  if (card.spoiler) {
-    const encounter_code = card.encounter_code ||
-      (card.linked_card && card.linked_card.encounter_code);
+  const encounter_code = card.encounter_code ||
+    (card.linked_card && card.linked_card.encounter_code);
+  if (encounter_code) {
     return (
       <View>
         { !!encounter_code && (

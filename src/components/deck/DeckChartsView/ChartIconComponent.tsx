@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useMemo, useRef } from 'react';
 import { Text as SVGText } from 'react-native-svg';
 
 import ArkhamIcon from '@icons/ArkhamIcon';
@@ -12,20 +12,11 @@ interface Props {
 
 const SIZE = 32;
 
-export default class ChartIconComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function ChartIconComponent({ x, y, text }: Props) {
+  const { colors } = useContext(StyleContext);
+  const iconGlyphs = useRef(ArkhamIcon.getRawGlyphMap());
 
-  iconGlyphs: { [name: string]: number };
-
-  constructor(props: Props) {
-    super(props);
-    this.iconGlyphs = ArkhamIcon.getRawGlyphMap();
-  }
-
-  color() {
-    const { text } = this.props;
-    const { colors } = this.context;
+  const color = useMemo(() => {
     switch (text) {
       case 'mystic':
       case 'rogue':
@@ -45,19 +36,16 @@ export default class ChartIconComponent extends React.Component<Props> {
       default:
         return colors.M;
     }
-  }
+  }, [text, colors]);
 
-  render() {
-    const { x, y, text } = this.props;
-    return (
-      <SVGText
-        x={x - SIZE / 2} y={y + SIZE / 2 + 3}
-        fontSize={SIZE}
-        fontFamily="arkhamicons"
-        fill={this.color()}
-      >
-        { String.fromCharCode(this.iconGlyphs[text === 'neutral' ? 'elder_sign' : text]) }
-      </SVGText>
-    );
-  }
+  return (
+    <SVGText
+      x={x - SIZE / 2} y={y + SIZE / 2 + 3}
+      fontSize={SIZE}
+      fontFamily="arkhamicons"
+      fill={color}
+    >
+      { String.fromCharCode(iconGlyphs.current[text === 'neutral' ? 'elder_sign' : text]) }
+    </SVGText>
+  );
 }

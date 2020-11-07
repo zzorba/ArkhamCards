@@ -9,21 +9,18 @@ interface Props {
   step: RuleReminderStep;
 }
 
-export default class GenericStepComponent extends React.Component<Props> {
-  render() {
-    const { step } = this.props;
-    return (
-      <>
+export default function RuleReminderStepComponent({ step }: Props) {
+  return (
+    <>
+      <SetupStepWrapper bulletType="none">
+        <CampaignGuideTextComponent text={step.text} />
+      </SetupStepWrapper>
+      <BulletsComponent bullets={step.bullets} normalBulletType />
+      { !!step.example && (
         <SetupStepWrapper bulletType="none">
-          <CampaignGuideTextComponent text={step.text} />
+          <CampaignGuideTextComponent text={step.example} />
         </SetupStepWrapper>
-        <BulletsComponent bullets={step.bullets} normalBulletType />
-        { !!step.example && (
-          <SetupStepWrapper bulletType="none">
-            <CampaignGuideTextComponent text={step.example} />
-          </SetupStepWrapper>
-        ) }
-      </>
-    );
-  }
+      ) }
+    </>
+  );
 }

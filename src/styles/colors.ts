@@ -1,8 +1,4 @@
-import {
-  Platform,
-  PlatformColor,
-  DynamicColorIOS,
-} from 'react-native';
+import { Platform, PlatformColor } from 'react-native';
 
 const medium = '#9B9B9B';
 
@@ -34,7 +30,6 @@ export default {
       light: '#8A7D5A',
     },
   },
-  veryLightBlue: '#cce4ff',
   lightBlue: '#007AFF',
   darkBlue: 'rgb(0, 78, 100)',
   white: 'rgb(247, 247, 255)',

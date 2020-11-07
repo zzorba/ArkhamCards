@@ -1,40 +1,20 @@
-import React from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { filter, flatMap, map, range, uniq, sortBy } from 'lodash';
 import { c, t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
 import MultiPickerComponent from '@components/core/MultiPickerComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
-import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import Card from '@data/Card';
 
 interface Props {
-  scenarioState: ScenarioStateHelper;
   choices?: string[];
   save: (traits: string[]) => void;
   weaknessCards: Card[];
 }
 
-interface State {
-  selectedIndex: number[];
-}
-
-export default class SelectWeaknessTraitsComponent extends React.Component<Props, State> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  state: State = {
-    selectedIndex: [],
-  };
-
-  _onChoiceChange = (selectedIndex: number[]) => {
-    this.setState({
-      selectedIndex,
-    });
-  };
-
-  allTraits(): string[] {
-    const { weaknessCards } = this.props;
+export default function SelectWeaknessTraitsComponent({ choices, save, weaknessCards }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState<number[]>([]);
+  const allTraits = useMemo(() => {
     return sortBy(
       uniq(
         flatMap(weaknessCards, card => {
@@ -50,52 +30,45 @@ export default class SelectWeaknessTraitsComponent extends React.Component<Props
         })
       )
     );
-  }
+  }, [weaknessCards]);
 
-  _save = () => {
-    const { save } = this.props;
-    const { selectedIndex } = this.state;
-    const traits = this.allTraits();
+  const savePress = useCallback(() => {
     save(
-      map(selectedIndex, index => traits[index])
+      map(selectedIndex, index => allTraits[index])
     );
-  };
+  }, [save, selectedIndex, allTraits]);
 
-  renderButton() {
-    const { choices } = this.props;
+  const saveButton = useMemo(() => {
     if (choices !== undefined) {
       return null;
     }
     return (
       <BasicButton
         title={t`Proceed`}
-        onPress={this._save}
+        onPress={savePress}
       />
     );
-  }
+  }, [choices, savePress]);
 
-  render() {
-    const { choices } = this.props;
-    return (
-      <>
-        <MultiPickerComponent
-          title={t`Traits`}
-          editable={choices === undefined}
-          topBorder
-          selectedIndex={
-            choices ? range(0, choices.length) : this.state.selectedIndex}
-          onChoiceChange={this._onChoiceChange}
-          choices={map(choices || this.allTraits(),
-            trait => {
-              return {
-                text: trait,
-              };
-            }
-          )}
-          defaultLabel={c('Weakness Card').t`All`}
-        />
-        { this.renderButton() }
-      </>
-    );
-  }
+  return (
+    <>
+      <MultiPickerComponent
+        title={t`Traits`}
+        editable={choices === undefined}
+        topBorder
+        selectedIndex={
+          choices ? range(0, choices.length) : selectedIndex}
+        onChoiceChange={setSelectedIndex}
+        choices={map(choices || allTraits,
+          trait => {
+            return {
+              text: trait,
+            };
+          }
+        )}
+        defaultLabel={c('Weakness Card').t`All`}
+      />
+      { saveButton }
+    </>
+  );
 }

@@ -27,7 +27,10 @@ export default function ParallelInvestigatorPicker({
   onChange,
 }: Props) {
   const { colors } = useContext(StyleContext);
-  const onChoiceChange = (index: number) => {
+  const onChoiceChange = (index: number | null) => {
+    if (index === null) {
+      return;
+    }
     onChange(
       type,
       index === 0 ? undefined : parallelInvestigators[index - 1].code

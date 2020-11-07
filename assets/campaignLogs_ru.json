@@ -42,6 +42,16 @@
             "text": "сыщики изгнали Умордхота."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -91,43 +101,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -336,6 +338,16 @@
             "text": "Зебулон Уэйтли пережил наследие Данвича."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -385,43 +397,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -484,6 +488,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "possessed",
+            "masculine_text": "#name# одержим.",
+            "feminine_text": "#name# одержима."
+          },
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
+            "feminine_text": "#name# читает второй акт «Короля в жёлтом»."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "при побеге из лечебницы на сыщиков напали."
@@ -573,16 +587,8 @@
             "text": "полиция подозревает вас."
           },
           {
-            "id": "possessed",
-            "text": "#name# одержим."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "сыщики не дали Хастуру сбежать из заточения."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "slayed_the_monsters",
@@ -603,6 +609,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "вы не смогли найти Найджела."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
           },
           {
             "id": "blob_contained",
@@ -654,43 +670,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -935,6 +943,16 @@
             "text": "Зебулон Уэйтли пережил наследие Данвича."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -984,43 +1002,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -1120,6 +1130,16 @@
             "text": "сыщики изгнали Умордхота."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1169,43 +1189,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -1273,6 +1285,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "possessed",
+            "masculine_text": "#name# одержим.",
+            "feminine_text": "#name# одержима."
+          },
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# читает второй акт «Короля в жёлтом».",
+            "feminine_text": "#name# читает второй акт «Короля в жёлтом»."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "при побеге из лечебницы на сыщиков напали."
@@ -1362,16 +1384,8 @@
             "text": "полиция подозревает вас."
           },
           {
-            "id": "possessed",
-            "text": "#name# одержим."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "сыщики не дали Хастуру сбежать из заточения."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# читает второй акт «Короля в жёлтом»."
           },
           {
             "id": "slayed_the_monsters",
@@ -1392,6 +1406,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "вы не смогли найти Найджела."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
           },
           {
             "id": "blob_contained",
@@ -1443,43 +1467,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -1605,19 +1621,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Алехандро всё помнит."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Алехандро настроен против вас."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "светильники зажглись."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "светильники не горят."
           },
           {
             "id": "cleared_path_to_temple",
@@ -1625,7 +1641,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "сыщики подчинились йитианам."
           },
           {
             "id": "earned_alejandros_trust",
@@ -1637,11 +1653,11 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "ткань времени расплетена."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "сыщики упали в глубины."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -1665,7 +1681,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "сыщикам стёрли память."
           },
           {
             "id": "harbinger_alive",
@@ -1689,7 +1705,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ичтака настроена против вас."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -1701,11 +1717,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "сыщики спасли цивилизацию змей."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "сыщики спасли цивилизацию йитиан."
           },
           {
             "id": "jungle_watches",
@@ -1717,11 +1733,11 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "сыщики залатали прореху в ткани времени."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "Средоточие близко."
           },
           {
             "id": "paths_known",
@@ -1729,19 +1745,19 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "перенос прошёл неудачно."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "перенос прошёл крайне неудачно."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "перенос прошёл безупречно."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "перенос прошёл успешно."
           },
           {
             "id": "recruited_help_of_another_expedition",
@@ -1749,7 +1765,7 @@
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "реликвия пропала."
           },
           {
             "id": "rescued_alejandro",
@@ -1757,19 +1773,29 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "сыщики вырвались из плена."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "сыщики навсегда запечатали Реликвию веков."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "сыщики обратили время вспять."
           },
           {
             "id": "wait_for_additional_supplies",
             "text": "что сыщики вынуждены ждать новых припасов."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
           },
           {
             "id": "blob_contained",
@@ -1821,43 +1847,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -1878,7 +1896,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "Глубина: #X#"
           },
           {
             "id": "ichtaca_left_without_you",
@@ -1898,7 +1916,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Выполнено #X# пунктов"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -1990,7 +2008,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Складной нож",
         "description": "Маловат для полноценного оружия, зато легко спрятать.",
         "cost": 2
       },
@@ -2057,20 +2075,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
+            "id": "pulled_into_the_spectral_realm",
+            "masculine_text": "#name# затянут в потусторонний мир.",
+            "feminine_text": "#name# затянута в потусторонний мир."
           },
           {
             "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
+            "masculine_text": "#name# исчез во мгле.",
+            "feminine_text": "#name# исчезла во мгле."
           },
           {
-            "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# унесён призраками.",
+            "feminine_text": "#name# унесена призраками."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
+            "masculine_text": "#name#: забрал Страж.",
+            "feminine_text": "#name#: забрал Страж."
           }
         ]
       },
@@ -2087,7 +2109,7 @@
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "сыщики напали на след Гавриэлы."
           }
         ]
       },
@@ -2104,7 +2126,7 @@
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "сыщики напали на след Джерома."
           }
         ]
       },
@@ -2121,7 +2143,7 @@
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "сыщики напали на след Валентино."
           }
         ]
       },
@@ -2138,7 +2160,7 @@
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "сыщики напали на след Пенни."
           }
         ]
       },
@@ -2146,8 +2168,13 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# joins the pipers of Azathoth.",
+            "feminine_text": "#name# joins the pipers of Azathoth."
+          },
+          {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "вы приняли свою судьбу."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
@@ -2187,7 +2214,7 @@
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "за вами охотятся."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
@@ -2199,7 +2226,7 @@
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "сыщики обманывают Ложу."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
@@ -2211,7 +2238,7 @@
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "сыщики враждуют с Ложей."
           },
           {
             "id": "guardian_of_the_trap_defeated",
@@ -2235,35 +2262,31 @@
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "сыщики сбежали из потустороннего мира."
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "Джозеф исчез во мгле."
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "Джозеф жив и здоров."
           },
           {
             "id": "kept_mementos_hidden",
             "text": "the investigators kept their mementos hidden."
           },
           {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# joins the pipers of Azathoth."
-          },
-          {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "сыщики ничего не узнали о планах Ложи."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "сыщики приняты в Ложу."
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "сыщики бесследно исчезли."
           },
           {
             "id": "path_winds_before_you",
@@ -2271,15 +2294,15 @@
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "Оставлено #X# вещественных доказательств."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "вы отвергли свою судьбу."
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "сыщики спасли Джозефа."
           },
           {
             "id": "sided_with_the_coven",
@@ -2307,11 +2330,21 @@
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "заклятие ведьм снято."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "заклятье ведьм завершено."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
           },
           {
             "id": "blob_contained",
@@ -2363,43 +2396,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -2481,15 +2506,15 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Гипнотическая флейта"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Компоненты ритуала"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Лоскут изорванной тени"
           },
           {
             "id": "wisp_of_spectral_mist",
@@ -2510,6 +2535,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# has broken the law of Ulthar.",
+            "feminine_text": "#name# has broken the law of Ulthar."
+          },
+          {
+            "id": "captured",
+            "masculine_text": "#name# was captured.",
+            "feminine_text": "#name# was captured."
+          },
           {
             "id": "black_cat_at_your_side",
             "text": "the black cat is at your side."
@@ -2549,14 +2584,6 @@
           {
             "id": "black_cat_warned_the_others",
             "text": "the black cat warned the others."
-          },
-          {
-            "id": "broken_the_law_of_ulthar",
-            "text": "#name# has broken the law of Ulthar."
-          },
-          {
-            "id": "captured",
-            "text": "#name# was captured."
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -2651,6 +2678,16 @@
             "text": "you asked for it."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -2700,43 +2737,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -2935,6 +2964,16 @@
             "text": "you asked for it."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -2984,43 +3023,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -3104,19 +3135,19 @@
           },
           {
             "id": "alejandro_remembers_everything",
-            "text": "Alejandro remembers everything."
+            "text": "Алехандро всё помнит."
           },
           {
             "id": "alejandro_set_against",
-            "text": "Alejandro is set against you."
+            "text": "Алехандро настроен против вас."
           },
           {
             "id": "braziers_are_lit",
-            "text": "the braziers are lit."
+            "text": "светильники зажглись."
           },
           {
             "id": "braziers_remain_unlit",
-            "text": "the braziers remain unlit."
+            "text": "светильники не горят."
           },
           {
             "id": "cleared_path_to_temple",
@@ -3124,7 +3155,7 @@
           },
           {
             "id": "cooperated_with_yithians",
-            "text": "the investigators cooperated with the Yithians."
+            "text": "сыщики подчинились йитианам."
           },
           {
             "id": "earned_alejandros_trust",
@@ -3136,11 +3167,11 @@
           },
           {
             "id": "fabric_of_time_unwoven",
-            "text": "the fabric of time is unwoven."
+            "text": "ткань времени расплетена."
           },
           {
             "id": "fell_into_depths",
-            "text": "the investigators fell into the depths."
+            "text": "сыщики упали в глубины."
           },
           {
             "id": "forged_bond_with_ichtaca",
@@ -3164,7 +3195,7 @@
           },
           {
             "id": "had_memories_expunged",
-            "text": "the investigators had their memories expunged."
+            "text": "сыщикам стёрли память."
           },
           {
             "id": "harbinger_alive",
@@ -3188,7 +3219,7 @@
           },
           {
             "id": "ichtaca_set_against",
-            "text": "Ichtaca is set against you."
+            "text": "Ичтака настроена против вас."
           },
           {
             "id": "ichtacas_faith_restored",
@@ -3200,11 +3231,11 @@
           },
           {
             "id": "investigators_saved_serpents",
-            "text": "the investigators saved the civilization of the Serpents."
+            "text": "сыщики спасли цивилизацию змей."
           },
           {
             "id": "investigators_saved_yithians",
-            "text": "the investigators saved the civilization of the Yithians."
+            "text": "сыщики спасли цивилизацию йитиан."
           },
           {
             "id": "jungle_watches",
@@ -3216,11 +3247,11 @@
           },
           {
             "id": "mended_tear_in_time",
-            "text": "the investigators mended the tear in time."
+            "text": "сыщики залатали прореху в ткани времени."
           },
           {
             "id": "nexus_is_near",
-            "text": "the nexus is near."
+            "text": "Средоточие близко."
           },
           {
             "id": "paths_known",
@@ -3228,23 +3259,23 @@
           },
           {
             "id": "process_backfired",
-            "text": "the process backfired."
+            "text": "перенос прошёл неудачно."
           },
           {
             "id": "process_backfired_spectacularly",
-            "text": "the process backfired spectacularly."
+            "text": "перенос прошёл крайне неудачно."
           },
           {
             "id": "process_was_perfected",
-            "text": "the process was perfected."
+            "text": "перенос прошёл безупречно."
           },
           {
             "id": "process_was_successful",
-            "text": "the process was successful."
+            "text": "перенос прошёл успешно."
           },
           {
             "id": "relic_is_missing",
-            "text": "the relic is missing."
+            "text": "реликвия пропала."
           },
           {
             "id": "rescued_alejandro",
@@ -3252,19 +3283,29 @@
           },
           {
             "id": "resisted_captivity",
-            "text": "the investigators resisted captivity."
+            "text": "сыщики вырвались из плена."
           },
           {
             "id": "sealed_relic_of_ages_forever",
-            "text": "the investigators sealed the Relic of Ages forever."
+            "text": "сыщики навсегда запечатали Реликвию веков."
           },
           {
             "id": "turned_back_time",
-            "text": "the investigarors turned back time."
+            "text": "сыщики обратили время вспять."
           },
           {
             "id": "wait_for_additional_supplies",
             "text": "что сыщики вынуждены ждать новых припасов."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
           },
           {
             "id": "blob_contained",
@@ -3316,43 +3357,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -3373,7 +3406,7 @@
           },
           {
             "id": "final_depth",
-            "text": "#X# depth"
+            "text": "Глубина: #X#"
           },
           {
             "id": "ichtaca_left_without_you",
@@ -3385,7 +3418,7 @@
           },
           {
             "id": "tasks_completed",
-            "text": "#X# tasks were completed"
+            "text": "Выполнено #X# пунктов"
           },
           {
             "id": "wilds_add_chaos_token",
@@ -3456,7 +3489,7 @@
       },
       {
         "id": "pocketknife",
-        "name": "Pocketknife",
+        "name": "Складной нож",
         "description": "Маловат для полноценного оружия, зато легко спрятать.",
         "cost": 2
       },
@@ -3539,8 +3572,16 @@
             "text": "Othera Gilman is out for blood."
           },
           {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth was consumed by the rising tide."
+          },
+          {
             "id": "little_out_for_blood",
             "text": "Joyce Little is out for blood."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "the investigators made it safely to their vehicles."
           },
           {
             "id": "marsh_out_for_blood",
@@ -3553,6 +3594,16 @@
           {
             "id": "mission_succeeded",
             "text": "the mission succeeded."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# взят Бездной.",
+            "feminine_text": "#name# взята Бездной."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# взята Бездной.",
+            "feminine_text": "#name# взята Бездной."
           },
           {
             "id": "blob_contained",
@@ -3604,43 +3655,35 @@
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
-            "text": "you are aware of Xzharah’s plans."
+            "text": "сыщики знают о планах Кжараха."
           },
           {
             "id": "tes_brotherhood_schemes_continue",
-            "text": "the Brotherhood’s schemes continue unabated."
+            "text": "планам Братства ничего не мешает."
           },
           {
             "id": "tes_curse_of_slumber_lifted",
-            "text": "the curse of slumber was lifted."
+            "text": "проклятье вечного сна снято."
           },
           {
             "id": "tes_dreamers_in_the_abyss",
-            "text": "dreamers in the abyss (#X#)"
+            "text": "в Бездне #Х# сновидцев"
           },
           {
             "id": "tes_escaped_brotherhood",
-            "text": "Brotherhood Agents Who Escaped: #name#"
-          },
-          {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "Сбежавшие агенты Братства: #name#"
           },
           {
             "id": "tnu_day_of_reckoning_is_coming",
-            "text": "the Day of Reckoning is coming."
+            "text": "грядёт судный день."
           },
           {
             "id": "tnu_joined_xzharah",
-            "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
+            "text": "сыщики примкнули к силам Кжараха."
           },
           {
             "id": "tnu_the_abyss_was_saved",
-            "text": "the Abyss was saved."
+            "text": "Бездна спасена."
           }
         ]
       },
@@ -3712,6 +3755,22 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
             "id": "the_accusation",
             "text": "dummy"
           },
@@ -3752,6 +3811,22 @@
       {
         "section": "memories_recovered",
         "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "a deal with Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "a followed lead."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "a jailbreak."
+          },
+          {
+            "id": "an_intervention",
+            "text": "an intervention."
+          },
           {
             "id": "battle_with_a_horrifying_devil",
             "text": "a battle with a horrifying devil"

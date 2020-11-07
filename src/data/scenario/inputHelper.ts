@@ -6,6 +6,7 @@ import {
   InvestigatorChoiceCondition,
   InvestigatorChoiceInput,
   BinaryConditionalChoice,
+  CampaignLogCardsCondition,
 } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import {
@@ -84,6 +85,18 @@ export function investigatorChoiceInputChoices(
   };
 }
 
+export function calculateCardChoiceResult(
+  condition: CampaignLogCardsCondition,
+  campaignLog: GuidedCampaignLog,
+  code: string
+) {
+  if (condition.id === '$input_value') {
+    const result = !!find(campaignLog.allCards(condition.section), card => card === code);
+    return !!find(condition.options, option => option.boolCondition === result);
+  }
+  return true;
+}
+
 export function calculateBinaryConditionResult(
   condition: BinaryChoiceCondition,
   campaignLog: GuidedCampaignLog
@@ -134,3 +147,4 @@ function calculateInvestigatorConditionResult(
       return investigatorConditionResult(condition, campaignLog);
   }
 }
+

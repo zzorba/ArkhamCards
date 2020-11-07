@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { map } from 'lodash';
 import { c, t, msgid } from 'ttag';
@@ -16,13 +16,11 @@ interface Props {
   effect: TraumaEffect;
   border?: boolean;
   input?: string[];
-  skipCampaignLog?: boolean;
 }
 
-export default class TraumaEffectComponent extends React.Component<Props> {
-  message(investigator: Card): string {
+export default function TraumaEffectComponent({ id, effect, border, input }: Props) {
+  const message = useCallback((investigator: Card): string => {
     const male = investigator.grammarGenderMasculine();
-    const { effect } = this.props;
     if (effect.insane) {
       return male ?
         c('masculine').t`${investigator.name} is driven <b>insane</b>.` :
@@ -106,12 +104,11 @@ export default class TraumaEffectComponent extends React.Component<Props> {
         );
     }
     return 'Unknown trauma type';
-  }
+  }, [effect]);
 
-  _renderInvestigators = (
+  const renderInvestigators = useCallback((
     investigators: Card[]
   ) => {
-    const { id, effect, border } = this.props;
     if (effect.mental_or_physical) {
       if (effect.mental_or_physical !== 1) {
         throw new Error('Always should be 1 mental_or_physical');
@@ -151,26 +148,23 @@ export default class TraumaEffectComponent extends React.Component<Props> {
       <View key={investigator.code} style={border ? space.paddingSideL : undefined}>
         <SetupStepWrapper key={idx} bulletType="small">
           <CampaignGuideTextComponent
-            text={this.message(investigator)}
+            text={message(investigator)}
           />
         </SetupStepWrapper>
       </View>
     ));
-  };
+  }, [id, effect, border, message]);
 
-  render() {
-    const { id, effect, input } = this.props;
-    if (effect.hidden && !effect.mental_or_physical) {
-      return null;
-    }
-    return (
-      <InvestigatorSelectorWrapper
-        id={id}
-        investigator={effect.investigator}
-        input={input}
-        render={this._renderInvestigators}
-        extraArg={undefined}
-      />
-    );
+  if (effect.hidden && !effect.mental_or_physical) {
+    return null;
   }
+  return (
+    <InvestigatorSelectorWrapper
+      id={id}
+      investigator={effect.investigator}
+      input={input}
+      render={renderInvestigators}
+      extraArg={undefined}
+    />
+  );
 }

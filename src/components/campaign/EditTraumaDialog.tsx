@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import DialogComponent from '@lib/react-native-dialog';
 
@@ -18,87 +18,47 @@ interface Props {
   hideKilledInsane?: boolean;
 }
 
-interface State {
-  trauma: Trauma;
-  visible: boolean;
-}
-
-export default class EditTraumaDialog extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      trauma: {},
-      visible: false,
-    };
-  }
-
-  static getDerivedStateFromProps(props: Props, state: State) {
-    if (props.visible !== state.visible) {
-      if (props.visible) {
-        return {
-          visible: props.visible,
-          trauma: props.trauma,
-        };
-      }
-      return {
-        visible: props.visible,
-      };
+export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, viewRef, hideKilledInsane }: Props) {
+  const [traumaState, setTraumaState] = useState<Trauma>({});
+  useEffect(() => {
+    if (visible) {
+      setTraumaState(trauma || {});
     }
-    return null;
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
 
-  _onSubmit = () => {
-    const {
-      investigator,
-      updateTrauma,
-      hideDialog,
-    } = this.props;
+  const onSubmit = useCallback(() => {
     if (investigator) {
-      updateTrauma(investigator.code, this.state.trauma);
+      updateTrauma(investigator.code, traumaState);
     }
     hideDialog();
-  };
+  }, [investigator, updateTrauma, hideDialog, traumaState]);
 
-  _onCancel = () => {
-    this.props.hideDialog();
-  };
+  const onCancel = useCallback(() => {
+    hideDialog();
+  }, [hideDialog]);
 
-  _mutateTrauma = (mutate: (trauma: Trauma) => Trauma) => {
-    this.setState(state => {
-      return {
-        trauma: mutate(state.trauma),
-      };
-    });
-  };
+  const mutateTrauma = useCallback((mutate: (trauma: Trauma) => Trauma) => {
+    setTraumaState(mutate(traumaState));
+  }, [setTraumaState, traumaState]);
 
-  render() {
-    const {
-      investigator,
-      viewRef,
-      hideKilledInsane,
-    } = this.props;
-    const {
-      visible,
-      trauma,
-    } = this.state;
-    return (
-      <Dialog
-        title={investigator ?
-          t`${investigator.firstName}’s Trauma` :
-          t`Trauma`}
-        visible={visible}
-        viewRef={viewRef}
-      >
-        <EditTraumaDialogContent
-          investigator={investigator}
-          trauma={trauma}
-          mutateTrauma={this._mutateTrauma}
-          hideKilledInsane={hideKilledInsane}
-        />
-        <DialogComponent.Button label={t`Cancel`} onPress={this._onCancel} />
-        <DialogComponent.Button label={t`Save`} onPress={this._onSubmit} />
-      </Dialog>
-    );
-  }
+
+  return (
+    <Dialog
+      title={investigator ?
+        t`${investigator.firstName}’s Trauma` :
+        t`Trauma`}
+      visible={visible}
+      viewRef={viewRef}
+    >
+      <EditTraumaDialogContent
+        investigator={investigator}
+        trauma={traumaState}
+        mutateTrauma={mutateTrauma}
+        hideKilledInsane={hideKilledInsane}
+      />
+      <DialogComponent.Button label={t`Cancel`} onPress={onCancel} />
+      <DialogComponent.Button label={t`Save`} onPress={onSubmit} />
+    </Dialog>
+  );
 }

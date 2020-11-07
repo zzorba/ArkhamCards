@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { bindActionCreators, Dispatch, Action } from 'redux';
+import { Platform, Text, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Brackets } from 'typeorm/browser';
 import { Navigation, EventSubscription, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';
@@ -12,18 +13,18 @@ import {
 import Card from '@data/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { FilterState } from '@lib/filters';
 import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from '@components/filter/actions';
-import { getTabooSet, getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
+import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
 import MythosButton from './MythosButton';
 import TuneButton from './TuneButton';
 import SortButton from './SortButton';
-import { Platform } from 'react-native';
+import ArkhamSwitch from '@components/core/ArkhamSwitch';
+import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import space from '@styles/space';
 
 
 interface ReduxProps {
-  tabooSetId?: number;
   filters?: FilterState;
   mythosMode: boolean;
   selectedSort?: SortType;
@@ -52,14 +53,15 @@ interface OwnProps {
   onDeckCountChange?: (code: string, count: number) => void;
   limits?: Slots;
   renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
+  hideVersatile?: boolean;
+  setHideVersatile?: (value: boolean) => void;
   modal?: boolean;
   storyOnly?: boolean;
 }
 
 type Props = OwnProps &
   ReduxProps &
-  ReduxActionProps &
-  DimensionsProps;
+  ReduxActionProps;
 
 interface State {
   visible: boolean;
@@ -142,6 +144,9 @@ export function navigationOptions(
 }
 
 class CardSearchComponent extends React.Component<Props, State> {
+  static contextType = StyleContext;
+  context!: StyleContextType;
+
   _navEventListener?: EventSubscription;
   state: State = {
     visible: true,
@@ -236,20 +241,52 @@ class CardSearchComponent extends React.Component<Props, State> {
     toggleFilter(componentId, key, value);
   };
 
-  _renderHeader = () => {
-    const { filters } = this.props;
+  header() {
+    const {
+      filters,
+      deckCardCounts,
+      hideVersatile,
+      setHideVersatile,
+    } = this.props;
+    const { typography } = this.context;
+    const result: React.ReactElement[] = [];
+    if (deckCardCounts) {
+      result.push(
+        <XpChooser
+          key="xp"
+          onFilterChange={this._onFilterChange}
+          onToggleChange={this._onToggleChange}
+          maxLevel={5}
+          levels={filters?.level || [0,5]}
+          enabled={filters?.levelEnabled || false}
+          exceptional={filters?.exceptional || false}
+          nonExceptional={filters?.nonExceptional || false}
+        />
+      );
+    }
+    if (setHideVersatile) {
+      result.push(
+        <View style={[styles.row, space.paddingRightS, space.paddingTopS, space.paddingBottomS]}>
+          <Text style={[typography.small, styles.searchOption, space.paddingRightS]}>
+            { t`Hide versatile cards` }
+          </Text>
+          <ArkhamSwitch
+            value={!!hideVersatile}
+            onValueChange={setHideVersatile}
+          />
+        </View>
+      );
+    }
+
+    if (!result.length) {
+      return undefined;
+    }
     return (
-      <XpChooser
-        onFilterChange={this._onFilterChange}
-        onToggleChange={this._onToggleChange}
-        maxLevel={5}
-        levels={filters?.level || [0,5]}
-        enabled={filters?.levelEnabled || false}
-        exceptional={filters?.exceptional || false}
-        nonExceptional={filters?.nonExceptional || false}
-      />
+      <>
+        { result }
+      </>
     );
-  };
+  }
 
   render() {
     const {
@@ -290,7 +327,7 @@ class CardSearchComponent extends React.Component<Props, State> {
         deckCardCounts={deckCardCounts}
         onDeckCountChange={onDeckCountChange}
         limits={limits}
-        renderHeader={deckCardCounts ? this._renderHeader : undefined}
+        header={this.header()}
         renderFooter={renderFooter}
         visible={visible}
         storyOnly={storyOnly}
@@ -302,7 +339,6 @@ class CardSearchComponent extends React.Component<Props, State> {
 
 function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
   return {
-    tabooSetId: getTabooSet(state, props.tabooSetOverride),
     filters: getFilterState(state, props.componentId),
     mythosMode: getMythosMode(state, props.componentId),
     selectedSort: getCardSort(state, props.componentId),
@@ -323,6 +359,16 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(
-  withDimensions(CardSearchComponent)
-);
+)(CardSearchComponent);
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flex: 1,
+  },
+  searchOption: {
+    marginRight: 2,
+  },
+});

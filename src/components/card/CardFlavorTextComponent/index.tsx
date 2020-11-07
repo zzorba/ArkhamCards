@@ -169,10 +169,11 @@ interface Props {
   text: string;
   onLinkPress?: (url: string) => void;
   color?: string;
+  width?: string | number;
 }
 
 export default function CardFlavorTextComponent(
-  { text, onLinkPress, color }: Props
+  { text, onLinkPress, color, width }: Props
 ) {
   const context = useContext(StyleContext);
   // Text that has hyperlinks uses a different style for the icons.
@@ -180,6 +181,7 @@ export default function CardFlavorTextComponent(
     <MarkdownView
       style={{
         marginBottom: xs,
+        width,
       }}
       rules={{
         iconTag: ArkhamIconRule(context),

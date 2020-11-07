@@ -1,104 +1,125 @@
-import React from 'react';
-import { keys, forEach, filter, indexOf, partition } from 'lodash';
+import React, { useCallback, useContext, useMemo } from 'react';
+import { keys, forEach, map, filter, partition } from 'lodash';
 import {
   ScrollView,
   StyleSheet,
+  useWindowDimensions,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { t } from 'ttag';
 
-import { Pack } from '@actions/types';
 import FactionChooser from './FactionChooser';
 import XpChooser from './XpChooser';
 import SkillIconChooser from './SkillIconChooser';
 import FilterChooserButton from '../FilterChooserButton';
 import SliderChooser from '../SliderChooser';
-import { CardFilterData } from '@lib/filters';
 import ToggleFilter from '@components/core/ToggleFilter';
-import withFilterFunctions, { FilterFunctionProps, FilterProps } from '../withFilterFunctions';
 import NavButton from '@components/core/NavButton';
-import { CARD_FACTION_CODES } from '@app_constants';
-import { getAllPacks, AppState } from '@reducers';
+import { getAllPacks } from '@reducers';
 import COLORS from '@styles/colors';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { NavigationProps } from '@components/nav/types';
+import useFilterFunctions, { FilterFunctionProps } from '../useFilterFunctions';
 
-interface ReduxProps {
-  allPacks: Pack[];
+function rangeText(name: string, values: [number, number]) {
+  if (values[0] === values[1]) {
+    return `${name}(${values[0]})`;
+  }
+  return `${name}(${values[0]}-${values[1]})`;
 }
 
-interface OwnProps {
-  cardData: CardFilterData;
+function splitTraits(value: string): string[] {
+  return filter(map(value.split('.'), t => t.trim()), t => !!t);
 }
 
-export type CardFilterProps = FilterFunctionProps & OwnProps;
+export type CardFilterProps = FilterFunctionProps;
 
-type Props = OwnProps & ReduxProps & FilterProps;
+const CardFilterView = (props: FilterFunctionProps & NavigationProps) => {
+  const {
+    filters,
+    defaultFilterState,
+    cardFilterData,
+    onFilterChange,
+    onToggleChange,
+    pushFilterView,
+  } = useFilterFunctions(props, {
+    title: t`Filters`,
+  });
+  const allPacks = useSelector(getAllPacks);
+  const onPacksPress = useCallback(() => {
+    pushFilterView('SearchFilters.Packs');
+  }, [pushFilterView]);
 
-class CardFilterView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+  const onEnemyPress = useCallback(() => {
+    pushFilterView('SearchFilters.Enemy');
+  }, [pushFilterView]);
 
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Filter`,
-          color: COLORS.M,
-        },
-      },
-    };
-  }
+  const onLocationPress = useCallback(() => {
+    pushFilterView('SearchFilters.Location');
+  }, [pushFilterView]);
+  const {
+    packs,
+    enemyElite,
+    enemyNonElite,
+    enemyHunter,
+    enemyNonHunter,
+    enemyParley,
+    enemyRetaliate,
+    enemyAlert,
+    enemySpawn,
+    enemyPrey,
+    enemyAloof,
+    enemyMassive,
+    enemyHealthEnabled,
+    enemyHealth,
+    enemyHealthPerInvestigator,
+    enemyDamageEnabled,
+    enemyDamage,
+    enemyHorrorEnabled,
+    enemyHorror,
+    enemyFightEnabled,
+    enemyFight,
+    enemyEvadeEnabled,
+    enemyEvade,
+    shroud,
+    shroudEnabled,
+    clues,
+    cluesEnabled,
+    cluesFixed,
+    hauntedEnabled,
+    uses,
+    factions,
+    traits,
+    types,
+    subTypes,
+    slots,
+    encounters,
+    illustrators,
+    victory,
+    vengeance,
+    skillIcons,
+    skillEnabled,
+    level,
+    levelEnabled,
+    exceptional,
+    nonExceptional,
+    cost,
+    costEnabled,
+    unique,
+    permanent,
+    fast,
+    exile,
+    bonded,
+    seal,
+    myriad,
+    evadeAction,
+    investigateAction,
+    fightAction,
+  } = filters;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      hasCost: false,
-      hasXp: false,
-      hasSkill: false,
-      allUses: [],
-      allFactions: CARD_FACTION_CODES,
-      allTraits: [],
-      allTypes: [],
-      allTypeCodes: [],
-      allSubTypes: [],
-      allPacks: [],
-      allSlots: [],
-      allEncounters: [],
-      allIllustrators: [],
-      levels: [],
-    };
-  }
-
-  _onPacksPress = () => {
-    this.props.pushFilterView('SearchFilters.Packs');
-  };
-
-  _onEnemyPress = () => {
-    this.props.pushFilterView('SearchFilters.Enemy');
-  };
-
-  _onLocationPress = () => {
-    this.props.pushFilterView('SearchFilters.Location');
-  };
-
-  static rangeText(name: string, values: [number, number]) {
-    if (values[0] === values[1]) {
-      return `${name}(${values[0]})`;
-    }
-    return `${name}(${values[0]}-${values[1]})`;
-  }
-
-  selectedPacksText() {
-    const {
-      filters: {
-        packs,
-      },
-      allPacks,
-    } = this.props;
+  const selectedPacksText = useMemo(() => {
     if (!allPacks.length || !packs.length) {
       return t`Packs: All`;
     }
@@ -140,35 +161,9 @@ class CardFilterView extends React.Component<Props> {
     });
     const allPacksString = parts.join(', ');
     return t`Packs: ${allPacksString}`;
-  }
+  }, [packs, allPacks]);
 
-  enemyFilterText() {
-    const {
-      filters: {
-        enemyElite,
-        enemyNonElite,
-        enemyHunter,
-        enemyNonHunter,
-        enemyParley,
-        enemyRetaliate,
-        enemyAlert,
-        enemySpawn,
-        enemyPrey,
-        enemyAloof,
-        enemyMassive,
-        enemyHealthEnabled,
-        enemyHealth,
-        enemyHealthPerInvestigator,
-        enemyDamageEnabled,
-        enemyDamage,
-        enemyHorrorEnabled,
-        enemyHorror,
-        enemyFightEnabled,
-        enemyFight,
-        enemyEvadeEnabled,
-        enemyEvade,
-      },
-    } = this.props;
+  const enemyFilterText = useMemo(() => {
     const parts = [];
     if (enemyElite) {
       parts.push(t`Elite`);
@@ -205,22 +200,22 @@ class CardFilterView extends React.Component<Props> {
     }
     if (enemyHealthEnabled) {
       if (enemyHealthPerInvestigator) {
-        parts.push(CardFilterView.rangeText(t`HPI`, enemyHealth));
+        parts.push(rangeText(t`HPI`, enemyHealth));
       } else {
-        parts.push(CardFilterView.rangeText(t`Health`, enemyHealth));
+        parts.push(rangeText(t`Health`, enemyHealth));
       }
     }
     if (enemyDamageEnabled) {
-      parts.push(CardFilterView.rangeText(t`Damage`, enemyDamage));
+      parts.push(rangeText(t`Damage`, enemyDamage));
     }
     if (enemyHorrorEnabled) {
-      parts.push(CardFilterView.rangeText(t`Horror`, enemyHorror));
+      parts.push(rangeText(t`Horror`, enemyHorror));
     }
     if (enemyFightEnabled) {
-      parts.push(CardFilterView.rangeText(t`Fight`, enemyFight));
+      parts.push(rangeText(t`Fight`, enemyFight));
     }
     if (enemyEvadeEnabled) {
-      parts.push(CardFilterView.rangeText(t`Evade`, enemyEvade));
+      parts.push(rangeText(t`Evade`, enemyEvade));
     }
 
     if (parts.length === 0) {
@@ -228,29 +223,41 @@ class CardFilterView extends React.Component<Props> {
     }
     const searchParts = parts.join(', ');
     return t`Enemies: ${searchParts}`;
-  }
-
-  locationFilterText() {
-    const {
-      filters: {
-        shroud,
-        shroudEnabled,
-        clues,
-        cluesEnabled,
-        cluesFixed,
-        hauntedEnabled,
-      },
-    } = this.props;
+  }, [
+    enemyElite,
+    enemyNonElite,
+    enemyHunter,
+    enemyNonHunter,
+    enemyParley,
+    enemyRetaliate,
+    enemyAlert,
+    enemySpawn,
+    enemyPrey,
+    enemyAloof,
+    enemyMassive,
+    enemyHealthEnabled,
+    enemyHealth,
+    enemyHealthPerInvestigator,
+    enemyDamageEnabled,
+    enemyDamage,
+    enemyHorrorEnabled,
+    enemyHorror,
+    enemyFightEnabled,
+    enemyFight,
+    enemyEvadeEnabled,
+    enemyEvade,
+  ]);
+  const locationFilterText = useMemo(() => {
     const parts = [];
     if (cluesEnabled) {
       if (cluesFixed) {
-        parts.push(CardFilterView.rangeText(t`Fixed Clues`, clues));
+        parts.push(rangeText(t`Fixed Clues`, clues));
       } else {
-        parts.push(CardFilterView.rangeText(t`Clues`, clues));
+        parts.push(rangeText(t`Clues`, clues));
       }
     }
     if (shroudEnabled) {
-      parts.push(CardFilterView.rangeText(t`Shroud`, shroud));
+      parts.push(rangeText(t`Shroud`, shroud));
     }
     if (hauntedEnabled) {
       parts.push(t`Haunted`);
@@ -261,322 +268,287 @@ class CardFilterView extends React.Component<Props> {
     }
     const searchParts = parts.join(', ');
     return t`Locations: ${searchParts}`;
-  }
-
-  render() {
-    const {
-      componentId,
-      width,
-      defaultFilterState,
-      filters: {
-        uses,
-        factions,
-        traits,
-        types,
-        subTypes,
-        packs,
-        slots,
-        encounters,
-        illustrators,
-        victory,
-        vengeance,
-        skillIcons,
-        skillEnabled,
-        level,
-        levelEnabled,
-        exceptional,
-        nonExceptional,
-        cost,
-        costEnabled,
-        unique,
-        permanent,
-        fast,
-        exile,
-        bonded,
-        seal,
-        myriad,
-        evadeAction,
-        investigateAction,
-        fightAction,
-      },
-      onToggleChange,
-      onFilterChange,
-      cardData: {
-        allUses,
-        allFactions,
-        allTraits,
-        allTypes,
-        allTypeCodes,
-        allSubTypes,
-        allPacks,
-        allSlots,
-        allEncounters,
-        allIllustrators,
-        hasCost,
-        hasXp,
-        hasSkill,
-      },
-    } = this.props;
-    const { backgroundStyle, borderStyle } = this.context;
-
-    return (
-      <ScrollView contentContainerStyle={backgroundStyle}>
-        <FactionChooser
-          factions={allFactions}
-          selection={factions}
+  }, [
+    shroud,
+    shroudEnabled,
+    clues,
+    cluesEnabled,
+    cluesFixed,
+    hauntedEnabled,
+  ]);
+  const { allFactions, hasXp, hasWeakness, hasCost, hasSkill, hasEnemy, hasLocation, hasSlot, hasUses } = cardFilterData;
+  const { backgroundStyle, borderStyle } = useContext(StyleContext);
+  const { width } = useWindowDimensions();
+  const {
+    componentId,
+    baseQuery,
+    tabooSetId,
+  } = props;
+  return (
+    <ScrollView contentContainerStyle={backgroundStyle}>
+      <FactionChooser
+        factions={allFactions}
+        selection={factions}
+        onFilterChange={onFilterChange}
+      />
+      { hasXp && (
+        <XpChooser
+          maxLevel={defaultFilterState.level[1]}
+          levels={level}
+          enabled={levelEnabled}
           onFilterChange={onFilterChange}
+          onToggleChange={onToggleChange}
+          exceptional={exceptional}
+          nonExceptional={nonExceptional}
         />
-        { hasXp && (
-          <XpChooser
-            maxLevel={defaultFilterState.level[1]}
-            levels={level}
-            enabled={levelEnabled}
-            onFilterChange={onFilterChange}
-            onToggleChange={onToggleChange}
-            exceptional={exceptional}
-            nonExceptional={nonExceptional}
-          />
-        ) }
-        { hasXp && (
-          <SliderChooser
-            label={t`Level`}
-            width={width}
-            values={level}
-            enabled={levelEnabled}
-            setting="level"
-            onFilterChange={onFilterChange}
-            toggleName="levelEnabled"
-            onToggleChange={onToggleChange}
-            max={defaultFilterState.level[1]}
-            height={2}
-          >
-            <View style={styles.xpSection}>
-              <ToggleFilter
-                label={t`Exceptional`}
-                setting="exceptional"
-                value={exceptional}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Non-Exceptional`}
-                setting="nonExceptional"
-                value={nonExceptional}
-                onChange={onToggleChange}
-              />
-            </View>
-          </SliderChooser>
-        ) }
-        <View>
-          { (types.length > 0 || allTypes.length > 0) && (
-            <FilterChooserButton
-              componentId={componentId}
-              title={t`Types`}
-              values={allTypes}
-              selection={types}
-              setting="types"
-              onFilterChange={onFilterChange}
+      ) }
+      { hasXp && (
+        <SliderChooser
+          label={t`Level`}
+          width={width}
+          values={level}
+          enabled={levelEnabled}
+          setting="level"
+          onFilterChange={onFilterChange}
+          toggleName="levelEnabled"
+          onToggleChange={onToggleChange}
+          max={defaultFilterState.level[1]}
+          height={2}
+        >
+          <View style={styles.xpSection}>
+            <ToggleFilter
+              label={t`Exceptional`}
+              setting="exceptional"
+              value={exceptional}
+              onChange={onToggleChange}
             />
-          ) }
-          { (subTypes.length > 0 || allSubTypes.length > 0) && (
-            <FilterChooserButton
-              componentId={componentId}
-              title={t`SubTypes`}
-              values={allSubTypes}
-              selection={subTypes}
-              setting="subTypes"
-              onFilterChange={onFilterChange}
+            <ToggleFilter
+              label={t`Non-Exceptional`}
+              setting="nonExceptional"
+              value={nonExceptional}
+              onChange={onToggleChange}
             />
-          ) }
-        </View>
-        { hasCost && (
-          <SliderChooser
-            label={t`Cost`}
-            width={width}
-            values={cost}
-            enabled={costEnabled}
-            setting="cost"
-            onFilterChange={onFilterChange}
-            toggleName="costEnabled"
-            onToggleChange={onToggleChange}
-            max={defaultFilterState.cost[1]}
-          />
-        ) }
-        { hasSkill && (
-          <SkillIconChooser
-            skillIcons={skillIcons}
-            onFilterChange={onFilterChange}
-            enabled={skillEnabled}
-            onToggleChange={onToggleChange}
-          />
-        ) }
-        <View>
-          { (traits.length > 0 || allTraits.length > 0) && (
-            <FilterChooserButton
-              title={t`Traits`}
-              componentId={componentId}
-              values={allTraits}
-              selection={traits}
-              setting="traits"
-              onFilterChange={onFilterChange}
-            />
-          ) }
-          { indexOf(allTypeCodes, 'enemy') !== -1 && (
-            <NavButton
-              text={this.enemyFilterText()}
-              onPress={this._onEnemyPress}
-            />
-          ) }
-          { indexOf(allTypeCodes, 'location') !== -1 && (
-            <NavButton
-              text={this.locationFilterText()}
-              onPress={this._onLocationPress}
-            />
-          ) }
-        </View>
-        { (slots.length > 0 || allSlots.length > 0) && (
+          </View>
+        </SliderChooser>
+      ) }
+      <View>
+        <FilterChooserButton
+          componentId={componentId}
+          title={t`Types`}
+          field="type_name"
+          selection={types}
+          setting="types"
+          onFilterChange={onFilterChange}
+          query={baseQuery}
+          tabooSetId={tabooSetId}
+        />
+        { (subTypes.length > 0 || hasWeakness) && (
           <FilterChooserButton
             componentId={componentId}
-            title={t`Slots`}
-            values={allSlots}
-            selection={slots}
-            setting="slots"
+            title={t`SubTypes`}
+            field="subtype_name"
+            selection={subTypes}
+            setting="subTypes"
             onFilterChange={onFilterChange}
+            query={baseQuery}
+            tabooSetId={tabooSetId}
           />
         ) }
-        { (uses.length > 0 || allUses.length > 0) && (
-          <FilterChooserButton
-            componentId={componentId}
-            title={t`Uses`}
-            values={allUses}
-            selection={uses}
-            setting="uses"
-            onFilterChange={onFilterChange}
+      </View>
+      { hasCost && (
+        <SliderChooser
+          label={t`Cost`}
+          width={width}
+          values={cost}
+          enabled={costEnabled}
+          setting="cost"
+          onFilterChange={onFilterChange}
+          toggleName="costEnabled"
+          onToggleChange={onToggleChange}
+          max={defaultFilterState.cost[1]}
+        />
+      ) }
+      { hasSkill && (
+        <SkillIconChooser
+          skillIcons={skillIcons}
+          onFilterChange={onFilterChange}
+          enabled={skillEnabled}
+          onToggleChange={onToggleChange}
+        />
+      ) }
+      <View>
+        <FilterChooserButton
+          title={t`Traits`}
+          componentId={componentId}
+          field="traits"
+          processValue={splitTraits}
+          selection={traits}
+          setting="traits"
+          onFilterChange={onFilterChange}
+          query={baseQuery}
+          tabooSetId={tabooSetId}
+        />
+        { hasEnemy && (
+          <NavButton
+            text={enemyFilterText}
+            onPress={onEnemyPress}
           />
         ) }
-        <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
-          <View style={[styles.toggleRow, space.marginTopXs]}>
-            <View style={styles.toggleColumn}>
-              <ToggleFilter
-                label={t`Fast`}
-                setting="fast"
-                value={fast}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Permanent`}
-                setting="permanent"
-                value={permanent}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Seal`}
-                setting="seal"
-                value={seal}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Fight`}
-                setting="fightAction"
-                value={fightAction}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Investigate`}
-                setting="investigateAction"
-                value={investigateAction}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Victory`}
-                setting="victory"
-                value={victory}
-                onChange={onToggleChange}
-              />
-            </View>
-            <View style={styles.toggleColumn}>
-              <ToggleFilter
-                label={t`Exile`}
-                setting="exile"
-                value={exile}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Unique`}
-                setting="unique"
-                value={unique}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Myriad`}
-                setting="myriad"
-                value={myriad}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Evade`}
-                setting="evadeAction"
-                value={evadeAction}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Bonded`}
-                setting="bonded"
-                value={bonded}
-                onChange={onToggleChange}
-              />
-              <ToggleFilter
-                label={t`Vengeance`}
-                setting="vengeance"
-                value={vengeance}
-                onChange={onToggleChange}
-              />
-            </View>
+        { hasLocation && (
+          <NavButton
+            text={locationFilterText}
+            onPress={onLocationPress}
+          />
+        ) }
+      </View>
+      { hasSlot && (
+        <FilterChooserButton
+          componentId={componentId}
+          title={t`Slots`}
+          processValue={splitTraits}
+          field="slot"
+          selection={slots}
+          setting="slots"
+          onFilterChange={onFilterChange}
+          query={baseQuery}
+          tabooSetId={tabooSetId}
+        />
+      ) }
+      { hasUses && (
+        <FilterChooserButton
+          componentId={componentId}
+          title={t`Uses`}
+          field="uses"
+          selection={uses}
+          setting="uses"
+          onFilterChange={onFilterChange}
+          query={baseQuery}
+          tabooSetId={tabooSetId}
+          capitalize
+        />
+      ) }
+      <View style={[styles.toggleStack, borderStyle, space.paddingBottomS]}>
+        <View style={[styles.toggleRow, space.marginTopXs]}>
+          <View style={styles.toggleColumn}>
+            <ToggleFilter
+              label={t`Fast`}
+              setting="fast"
+              value={fast}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Permanent`}
+              setting="permanent"
+              value={permanent}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Seal`}
+              setting="seal"
+              value={seal}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Fight`}
+              setting="fightAction"
+              value={fightAction}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Investigate`}
+              setting="investigateAction"
+              value={investigateAction}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Victory`}
+              setting="victory"
+              value={victory}
+              onChange={onToggleChange}
+            />
+          </View>
+          <View style={styles.toggleColumn}>
+            <ToggleFilter
+              label={t`Exile`}
+              setting="exile"
+              value={exile}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Unique`}
+              setting="unique"
+              value={unique}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Myriad`}
+              setting="myriad"
+              value={myriad}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Evade`}
+              setting="evadeAction"
+              value={evadeAction}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Bonded`}
+              setting="bonded"
+              value={bonded}
+              onChange={onToggleChange}
+            />
+            <ToggleFilter
+              label={t`Vengeance`}
+              setting="vengeance"
+              value={vengeance}
+              onChange={onToggleChange}
+            />
           </View>
         </View>
-        { (encounters.length > 0 || allEncounters.length > 0) && (
-          <FilterChooserButton
-            componentId={componentId}
-            title={t`Encounter Sets`}
-            values={allEncounters}
-            selection={encounters}
-            setting="encounters"
-            onFilterChange={onFilterChange}
-          />
-        ) }
-        { (packs.length > 0 || allPacks.length > 1) && (
-          <NavButton
-            text={this.selectedPacksText()}
-            onPress={this._onPacksPress}
-          />
-        ) }
-        { (illustrators.length > 0 || allIllustrators.length > 0) && (
-          <FilterChooserButton
-            componentId={componentId}
-            title={t`Illustrators`}
-            values={allIllustrators}
-            selection={illustrators}
-            setting="illustrators"
-            onFilterChange={onFilterChange}
-          />
-        ) }
-      </ScrollView>
-    );
-  }
-}
+      </View>
+      <FilterChooserButton
+        componentId={componentId}
+        title={t`Encounter Sets`}
+        field="encounter_name"
+        selection={encounters}
+        setting="encounters"
+        onFilterChange={onFilterChange}
+        query={baseQuery}
+        tabooSetId={tabooSetId}
+      />
+      { (packs.length > 0 || allPacks.length > 1) && (
+        <NavButton
+          text={selectedPacksText}
+          onPress={onPacksPress}
+        />
+      ) }
+      <FilterChooserButton
+        componentId={componentId}
+        title={t`Illustrators`}
+        field="illustrator"
+        selection={illustrators}
+        setting="illustrators"
+        onFilterChange={onFilterChange}
+        query={baseQuery}
+        tabooSetId={tabooSetId}
+      />
+    </ScrollView>
+  );
+};
 
-
-function mapStateToProps(state: AppState): ReduxProps {
+CardFilterView.options = () => {
   return {
-    allPacks: getAllPacks(state),
+    topBar: {
+      title: {
+        text: t`Filter`,
+        color: COLORS.M,
+      },
+    },
   };
-}
+};
 
-export default connect(mapStateToProps)(
-  withFilterFunctions(
-    CardFilterView,
-    { title: t`Filters` }
-  )
-);
+export default CardFilterView;
 
 const styles = StyleSheet.create({
   toggleStack: {

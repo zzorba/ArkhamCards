@@ -28,7 +28,7 @@ import SettingsItem from './SettingsItem';
 import LoginButton from './LoginButton';
 import StyleContext from '@styles/StyleContext';
 
-const NATIVE_RULES = false;
+const NATIVE_RULES = true;
 interface OwnProps {
   componentId: string;
 }

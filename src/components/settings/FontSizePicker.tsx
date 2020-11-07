@@ -42,7 +42,10 @@ export default function ThemePicker() {
       value: 1.6,
     },
   ];
-  const onThemeChange = (index: number) => {
+  const onThemeChange = (index: number | null) => {
+    if (index === null) {
+      return;
+    }
     dispatch(setFontSize(choices[index].value));
   };
   return (

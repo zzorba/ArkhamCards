@@ -112,35 +112,43 @@ export function refreshMyDecks(): ThunkAction<void, AppState, unknown, Action> {
   };
 }
 
-export function setInCollection(code: string, value: boolean) {
-  return {
-    type: SET_IN_COLLECTION,
-    code,
-    value,
+export function setInCollection(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+    dispatch({
+      type: SET_IN_COLLECTION,
+      code,
+      value,
+    });
   };
 }
 
-export function setCycleInCollection(cycle: number, value: boolean) {
-  return {
-    type: SET_IN_COLLECTION,
-    cycle,
-    value,
+export function setCycleInCollection(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+    dispatch({
+      type: SET_IN_COLLECTION,
+      cycle_code,
+      value,
+    });
   };
 }
 
-export function setPackSpoiler(code: string, value: boolean) {
-  return {
-    type: SET_PACK_SPOILER,
-    code,
-    value,
+export function setPackSpoiler(code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+    dispatch({
+      type: SET_PACK_SPOILER,
+      code,
+      value,
+    });
   };
 }
 
-export function setCyclePackSpoiler(cycle: number, value: boolean) {
-  return {
-    type: SET_PACK_SPOILER,
-    cycle,
-    value,
+export function setCyclePackSpoiler(cycle_code: string, value: boolean): ThunkAction<void, AppState, unknown, Action> {
+  return (dispatch: ThunkDispatch<AppState, unknown, Action>) => {
+    dispatch({
+      type: SET_PACK_SPOILER,
+      cycle_code,
+      value,
+    });
   };
 }
 

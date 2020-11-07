@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { throttle } from 'lodash';
 import {
   ScrollView,
@@ -6,9 +6,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { useDispatch } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 
 import { t } from 'ttag';
 import { ScenarioResult, CUSTOM } from '@actions/types';
@@ -17,10 +16,10 @@ import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { NavigationProps } from '@components/nav/types';
 import XpComponent from './XpComponent';
 import { editScenarioResult } from './actions';
-import { getCampaign, AppState } from '@reducers';
 import COLORS from '@styles/colors';
 import space, { s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCampaign, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface EditScenarioResultProps {
   campaignId: number;
@@ -35,37 +34,31 @@ interface ReduxActionProps {
   editScenarioResult: (id: number, index: number, scenarioResult: ScenarioResult) => void;
 }
 
-type Props = NavigationProps & EditScenarioResultProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = NavigationProps & EditScenarioResultProps & InjectedDialogProps;
 interface State {
   scenarioResult?: ScenarioResult;
 }
 
-class AddScenarioResultView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function EditScenarioResultView({ campaignId, index, componentId, showTextEditDialog }: Props) {
+  const { backgroundStyle, typography } = useContext(StyleContext);
+  const campaign = useCampaign(campaignId);
+  const dispatch = useDispatch();
+  const existingScenarioResult = campaign && campaign.scenarioResults[index];
+  const [scenarioResult, setScenarioResult] = useState<ScenarioResult | undefined>(existingScenarioResult);
+  const doSave = useMemo(() => throttle(() => {
+    if (scenarioResult) {
+      dispatch(editScenarioResult(campaignId, index, scenarioResult));
+    }
+    Navigation.pop(componentId);
+  }, 200), [campaignId, index, scenarioResult, componentId, dispatch]);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'save') {
+      doSave();
+    }
+  }, componentId, [doSave]);
 
-  _navEventListener?: EventSubscription;
-  _doSave!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      scenarioResult: props.scenarioResult,
-    };
-
-    this._updateNavigationButtons();
-    this._navEventListener = Navigation.events().bindComponent(this);
-    this._doSave = throttle(this.doSave.bind(this), 200);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _updateNavigationButtons = () => {
-    const { scenarioResult } = this.state;
-    Navigation.mergeOptions(this.props.componentId, {
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
       topBar: {
         rightButtons: [{
           text: t`Save`,
@@ -77,130 +70,69 @@ class AddScenarioResultView extends React.Component<Props, State> {
         }],
       },
     });
-  }
+  }, [componentId, scenarioResult]);
 
-  navigationButtonPressed({ buttonId }: { buttonId: string}) {
-    if (buttonId === 'save') {
-      this._doSave();
-    }
-  }
-
-  doSave() {
-    const {
-      componentId,
-      campaignId,
-      index,
-      editScenarioResult,
-    } = this.props;
-    const {
-      scenarioResult,
-    } = this.state;
+  const resolutionChanged = useCallback((value: string) => {
     if (scenarioResult) {
-      editScenarioResult(campaignId, index, scenarioResult);
-    }
-    Navigation.pop(componentId);
-  }
-
-  _showResolutionDialog = () => {
-    const {
-      showTextEditDialog,
-      scenarioResult,
-    } = this.props;
-    showTextEditDialog(
-      'Resolution',
-      scenarioResult ? scenarioResult.resolution : '',
-      this._resolutionChanged
-    );
-  };
-
-  _resolutionChanged = (value: string) => {
-    const {
-      scenarioResult,
-    } = this.state;
-    if (scenarioResult) {
-      this.setState({
-        scenarioResult: {
-          ...scenarioResult,
-          resolution: value,
-        },
-      }, this._updateNavigationButtons);
-    }
-  };
-
-  _xpChanged = (xp: number) => {
-    const {
-      scenarioResult,
-    } = this.state;
-    if (scenarioResult) {
-      this.setState({
-        scenarioResult: {
-          ...scenarioResult,
-          xp,
-        },
+      setScenarioResult({
+        ...scenarioResult,
+        resolution: value,
       });
     }
-  };
+  }, [scenarioResult, setScenarioResult]);
 
-  render() {
-    const { backgroundStyle, typography } = this.context;
-    const {
-      scenarioResult,
-    } = this.state;
-    if (!scenarioResult) {
-      return null;
-    }
-    const {
-      xp,
-      scenario,
-      scenarioCode,
-      interlude,
-      resolution,
-    } = scenarioResult;
-    return (
-      <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
-        <View style={space.marginSideS}>
-          <Text style={typography.smallLabel}>
-            { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
-          </Text>
-          <Text style={typography.text}>
-            { scenario }
-          </Text>
-          { (scenarioCode === CUSTOM || !interlude) && (
-            <LabeledTextBox
-              label={t`Resolution`}
-              onPress={this._showResolutionDialog}
-              value={resolution}
-              column
-            />
-          ) }
-        </View>
-        <XpComponent xp={xp || 0} onChange={this._xpChanged} />
-        <View style={styles.footer} />
-      </ScrollView>
+  const showResolutionDialog = useCallback(() => {
+    showTextEditDialog(
+      'Resolution',
+      existingScenarioResult ? existingScenarioResult.resolution : '',
+      resolutionChanged
     );
+  }, [showTextEditDialog, existingScenarioResult, resolutionChanged]);
+
+  const xpChanged = useCallback((xp: number) => {
+    if (scenarioResult) {
+      setScenarioResult({
+        ...scenarioResult,
+        xp,
+      });
+    }
+  }, [scenarioResult, setScenarioResult]);
+
+  if (!scenarioResult) {
+    return null;
   }
+  const {
+    xp,
+    scenario,
+    scenarioCode,
+    interlude,
+    resolution,
+  } = scenarioResult;
+  return (
+    <ScrollView contentContainerStyle={[styles.container, backgroundStyle]}>
+      <View style={space.marginSideS}>
+        <Text style={typography.smallLabel}>
+          { (interlude ? t`Interlude` : t`Scenario`).toUpperCase() }
+        </Text>
+        <Text style={typography.text}>
+          { scenario }
+        </Text>
+        { (scenarioCode === CUSTOM || !interlude) && (
+          <LabeledTextBox
+            label={t`Resolution`}
+            onPress={showResolutionDialog}
+            value={resolution}
+            column
+          />
+        ) }
+      </View>
+      <XpComponent xp={xp || 0} onChange={xpChanged} />
+      <View style={styles.footer} />
+    </ScrollView>
+  );
 }
+export default withDialogs(EditScenarioResultView);
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & EditScenarioResultProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.campaignId);
-  const scenarioResult = campaign && campaign.scenarioResults[props.index];
-  return {
-    scenarioResult,
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    editScenarioResult,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withDialogs(AddScenarioResultView)
-);
 const styles = StyleSheet.create({
   container: {
     flex: 1,

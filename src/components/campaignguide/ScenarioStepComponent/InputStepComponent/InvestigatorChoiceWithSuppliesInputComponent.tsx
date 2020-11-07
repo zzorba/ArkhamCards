@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { find } from 'lodash';
 import { t } from 'ttag';
@@ -19,55 +19,49 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class InvestigatorChoiceWithSuppliesInputComponent extends React.Component<Props> {
-  investigatorHasSupply(code: string) {
-    const { input, campaignLog } = this.props;
+export default function InvestigatorChoiceWithSuppliesInputComponent({ step, input, campaignLog }: Props) {
+  const investigatorHasSupply = useCallback((code: string) => {
     const investigatorSection = campaignLog.investigatorSections[input.section] || {};
     const section = investigatorSection[code];
     return !!(section &&
       find(section.entries, entry => entry.id === input.id && entry.type === 'count' && entry.count > 0) &&
       !section.crossedOut[input.id]
     );
-  }
+  }, [input, campaignLog]);
 
-  _investigatorToString = (card: Card) => {
-    const { input } = this.props;
-    if (this.investigatorHasSupply(card.code)) {
+  const investigatorToString = useCallback((card: Card) => {
+    if (investigatorHasSupply(card.code)) {
       return t`${card.name}\n(has ${input.id})`;
     }
     return card.name;
-  };
+  }, [input, investigatorHasSupply]);
 
-  _renderInvestigatorChoiceResults = (investigator?: Card) => {
+  const renderInvestigatorChoiceResults = useCallback((investigator?: Card) => {
     if (!investigator) {
       return null;
     }
-    const { input } = this.props;
-    const decision = this.investigatorHasSupply(investigator.code);
+    const decision = investigatorHasSupply(investigator.code);
     const option = decision ? input.positiveChoice : input.negativeChoice;
     return (
       <SetupStepWrapper bulletType="small">
         <CampaignGuideTextComponent text={`${investigator.name} reads <b>${option.text}</b>`} />
       </SetupStepWrapper>
     );
-  };
+  }, [input, investigatorHasSupply]);
 
-  render(): React.ReactNode {
-    const { step, input } = this.props;
-    return (
-      <View>
-        <SetupStepWrapper>
-          { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
-        </SetupStepWrapper>
-        <ChooseInvestigatorPrompt
-          id={step.id}
-          title={input.prompt}
-          choiceId="investigator_choice"
-          investigatorToValue={this._investigatorToString}
-          renderResults={this._renderInvestigatorChoiceResults}
-          required
-        />
-      </View>
-    );
-  }
+  return (
+    <View>
+      <SetupStepWrapper>
+        { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
+      </SetupStepWrapper>
+      <ChooseInvestigatorPrompt
+        id={step.id}
+        title={input.prompt}
+        choiceId="investigator_choice"
+        investigatorToValue={investigatorToString}
+        renderResults={renderInvestigatorChoiceResults}
+        required
+      />
+    </View>
+  );
 }

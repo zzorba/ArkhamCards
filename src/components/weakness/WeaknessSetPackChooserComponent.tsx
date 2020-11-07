@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { filter, forEach, map, uniqBy } from 'lodash';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import PackListComponent from '@components/core/PackListComponent';
 import { BASIC_WEAKNESS_QUERY } from '@data/query';
 import { AppState } from '@reducers';
-import { Pack } from '@actions/types';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
+import { useToggles, useWeaknessCards } from '@components/core/hooks';
 
 interface OwnProps {
   componentId: string;
@@ -14,101 +13,56 @@ interface OwnProps {
   compact?: boolean;
 }
 
-interface ReduxProps {
-  in_collection: { [pack_code: string]: boolean };
-  packs?: Pack[];
-}
+const EMPTY_IN_COLLECTION = {};
 
-type Props = OwnProps & ReduxProps & PlayerCardProps;
+export default function WeaknessSetPackChooserComponent({
+  componentId,
+  onSelectedPacksChanged,
+  compact,
+}: OwnProps) {
+  const [override, , onPackCheck] = useToggles({ core: true });
+  const packs = useSelector((state: AppState) => state.packs.all);
+  const in_collection = useSelector((state: AppState) => state.packs.in_collection || EMPTY_IN_COLLECTION);
+  const weaknessCards = useWeaknessCards();
+  const weaknessPacks = useMemo(() => {
+    const weaknessPackSet = new Set(
+      uniqBy(
+        map(weaknessCards || [], card => card.pack_code),
+        code => code
+      ));
+    return filter(packs, pack => weaknessPackSet.has(pack.code));
+  }, [packs, weaknessCards]);
 
-interface State {
-  override: { [pack_code: string]: boolean };
-}
-
-class WeaknessSetPackChooserComponent extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      override: { core: true },
-    };
-  }
-
-  componentDidMount() {
-    this._syncSelectedPacks();
-  }
-
-  _onPackCheck = (pack: string, value: boolean) => {
-    this.setState({
-      override: Object.assign({}, this.state.override, { [pack]: !!value }),
-    }, this._syncSelectedPacks);
-  };
-
-  _syncSelectedPacks = () => {
-    const {
-      in_collection,
-      onSelectedPacksChanged,
-    } = this.props;
-
-    const {
-      override,
-    } = this.state;
-    const includePack = Object.assign({}, in_collection, override);
+  useEffect(() => {
+    const includePack = { ...in_collection, ...override };
     const packs: string[] = [];
-    forEach(this.weaknessPacks(), pack => {
+    forEach(weaknessPacks, pack => {
       if (includePack[pack.code]) {
         packs.push(pack.code);
       }
     });
     onSelectedPacksChanged(packs);
-  };
+  }, [override, in_collection, onSelectedPacksChanged, weaknessPacks]);
 
-  weaknessPacks() {
-    const {
-      weaknessCards,
-      packs,
-    } = this.props;
-    const weaknessPackSet = new Set(
-      uniqBy(
-        map(weaknessCards, card => card.pack_code),
-        code => code
-      ));
-    return filter(packs, pack => weaknessPackSet.has(pack.code));
-  }
+  const checkState = useMemo(() => {
+    const checks: { [key: string]: boolean } = {
+      ...in_collection,
+    };
+    forEach(override, (value, key) => {
+      checks[key] = !!value;
+    });
+    return checks;
+  }, [in_collection, override]);
 
-  render() {
-    const {
-      componentId,
-      in_collection,
-      compact,
-    } = this.props;
-    const {
-      override,
-    } = this.state;
-    const weaknessPacks = this.weaknessPacks();
-    return (
-      <PackListComponent
-        componentId={componentId}
-        packs={weaknessPacks}
-        checkState={{ ...in_collection, ...override }}
-        setChecked={this._onPackCheck}
-        baseQuery={BASIC_WEAKNESS_QUERY}
-        compact={compact}
-        whiteBackground
-        noFlatList
-      />
-    );
-  }
+  return (
+    <PackListComponent
+      componentId={componentId}
+      packs={weaknessPacks}
+      checkState={checkState}
+      setChecked={onPackCheck}
+      baseQuery={BASIC_WEAKNESS_QUERY}
+      compact={compact}
+      noFlatList
+    />
+  );
 }
-
-const EMPTY_IN_COLLECTION = {};
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    packs: state.packs.all,
-    in_collection: state.packs.in_collection || EMPTY_IN_COLLECTION,
-  };
-}
-
-export default connect<ReduxProps, unknown, OwnProps, AppState>(mapStateToProps)(
-  withPlayerCards(WeaknessSetPackChooserComponent)
-);

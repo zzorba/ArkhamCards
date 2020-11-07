@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef, useCallback, useContext, useImperativeHandle, useMemo, useState } from 'react';
 import { forEach, find, keys, throttle } from 'lodash';
 import {
   ActivityIndicator,
@@ -12,15 +12,16 @@ import { Deck, Slots } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { NavigationProps } from '@components/nav/types';
-import { showCard } from '@components/nav/helper';
 import ExileCardSelectorComponent from '@components/campaign/ExileCardSelectorComponent';
 import Card from '@data/Card';
 import { DeckChanges } from '@components/deck/actions';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import space, { m } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import BasicButton from '@components/core/BasicButton';
+import { useCounter, useSlots } from '@components/core/hooks';
 
-interface OwnProps {
+interface DeckUpgradeProps extends NavigationProps{
   investigator: Card;
   deck: Deck;
   startingXp?: number;
@@ -30,51 +31,37 @@ interface OwnProps {
   upgradeCompleted: (deck: Deck, xp: number) => void;
   saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
   saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+  saveButtonText?: string;
 }
 
-type Props = NavigationProps & OwnProps;
-
-interface State {
-  xp: number;
-  exileCounts: Slots;
-  saving: boolean;
-  error?: string;
+export interface DeckUpgradeHandles {
+  save: () => void;
 }
 
-export default class DeckUpgradeComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function DeckUpgradeComponent({
+  componentId,
+  investigator,
+  deck,
+  startingXp,
+  campaignSection,
+  storyCounts,
+  ignoreStoryCounts,
+  upgradeCompleted,
+  saveDeckChanges,
+  saveDeckUpgrade,
+  saveButtonText,
+}: DeckUpgradeProps, ref: any) {
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const [xp, incXp, decXp] = useCounter(startingXp || 0, { min: 0 });
+  const [exileCounts, updateExileCounts] = useSlots({});
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | undefined>();
+  const deckUpgradeComplete = useCallback((deck: Deck, xp: number) => {
+    setSaving(false);
+    upgradeCompleted(deck, xp);
+  }, [setSaving, upgradeCompleted]);
 
-  _saveUpgrade!: (isRetry?: boolean) => void;
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      xp: props.startingXp || 0,
-      exileCounts: {},
-      saving: false,
-    };
-
-    this._saveUpgrade = throttle(this.saveUpgrade.bind(this), 200);
-  }
-
-  save = () => {
-    this._saveUpgrade();
-  };
-
-  _deckUpgradeComplete = (deck: Deck) => {
-    this.setState({
-      saving: false,
-    });
-    this.props.upgradeCompleted(deck, this.state.xp);
-  };
-
-  _handleStoryCardChanges = (upgradedDeck: Deck) => {
-    const {
-      saveDeckChanges,
-      storyCounts,
-      ignoreStoryCounts,
-    } = this.props;
+  const handleStoryCardChanges = useCallback((upgradedDeck: Deck) => {
     const hasStoryChange = !!find(keys(storyCounts), (code) => {
       return (upgradedDeck.slots[code] || 0) !== storyCounts[code];
     }) || !!find(keys(ignoreStoryCounts), (code) => {
@@ -101,138 +88,105 @@ export default class DeckUpgradeComponent extends React.Component<Props, State> 
         slots: newSlots,
         ignoreDeckLimitSlots: newIgnoreSlots,
       }).then(
-        this._deckUpgradeComplete,
+        (deck: Deck) => deckUpgradeComplete(deck, xp),
         (e: Error) => {
           console.log(e);
-          this.setState({
-            error: e.message,
-            saving: false,
-          });
+          setError(e.message);
+          setSaving(false);
         }
       );
     } else {
-      this._deckUpgradeComplete(upgradedDeck);
+      deckUpgradeComplete(upgradedDeck, xp);
     }
-  };
-
-  saveUpgrade(isRetry?: boolean) {
-    const {
-      deck,
-      saveDeckUpgrade,
-    } = this.props;
+  }, [
+    saveDeckChanges,
+    storyCounts,
+    ignoreStoryCounts,
+    xp,
+    deckUpgradeComplete,
+  ]);
+  const saveUpgrade = useCallback((isRetry?: boolean) => {
     if (!deck) {
       return;
     }
-    if (!this.state.saving || isRetry) {
-      this.setState({
-        saving: true,
-      });
-      const {
-        xp,
-        exileCounts,
-      } = this.state;
+    if (!saving || isRetry) {
+      setSaving(true);
       saveDeckUpgrade(deck, xp, exileCounts).then(
-        this._handleStoryCardChanges,
+        handleStoryCardChanges,
         (e: Error) => {
-          this.setState({
-            error: e.message,
-            saving: false,
-          });
+          setError(e.message);
+          setSaving(false);
         }
       );
     }
+  }, [deck, saveDeckUpgrade, saving, xp, exileCounts, handleStoryCardChanges, setError, setSaving]);
+
+  const throttledSaveUpgrade = useMemo(() => {
+    return throttle(() => saveUpgrade(), 200);
+  }, [saveUpgrade]);
+  useImperativeHandle(ref, () => ({
+    save: () => {
+      throttledSaveUpgrade();
+    },
+  }), [throttledSaveUpgrade]);
+  const onExileCountsChange = useCallback((exileCounts: Slots) => {
+    updateExileCounts({ type: 'sync', slots: exileCounts });
+  }, [updateExileCounts]);
+  if (!deck) {
+    return null;
   }
-
-  _onCardPress = (card: Card) => {
-    const { colors } = this.context;
-    showCard(this.props.componentId, card.code, card, colors);
-  };
-
-  _onExileCountsChange = (exileCounts: Slots) => {
-    this.setState({
-      exileCounts,
-    });
-  };
-
-  _incXp = () => {
-    this.setState(state => {
-      return { xp: (state.xp || 0) + 1 };
-    });
-  };
-
-  _decXp = () => {
-    this.setState(state => {
-      return { xp: Math.max((state.xp || 0) - 1, 0) };
-    });
-  };
-
-  render() {
-    const {
-      deck,
-      investigator,
-      componentId,
-      campaignSection,
-    } = this.props;
-    const {
-      xp,
-      exileCounts,
-      saving,
-      error,
-    } = this.state;
-    const { colors, typography } = this.context;
-    if (!deck) {
-      return null;
-    }
-    if (saving) {
-      return (
-        <View style={[styles.container, styles.saving]}>
-          <Text style={typography.text}>
-            { t`Saving...` }
-          </Text>
-          <ActivityIndicator
-            style={space.marginTopM}
-            color={colors.lightText}
-            size="large"
-            animating
-          />
-        </View>
-      );
-    }
-    const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
+  if (saving) {
     return (
-      <View style={styles.container}>
-        { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ superTitle: t`Experience points` }}
+      <View style={[styles.container, styles.saving, backgroundStyle]}>
+        <Text style={typography.text}>
+          { t`Saving...` }
+        </Text>
+        <ActivityIndicator
+          style={space.marginTopM}
+          color={colors.lightText}
+          size="large"
+          animating
         />
-        <BasicListRow>
-          <Text style={typography.text}>
-            { xpString }
-          </Text>
-          <PlusMinusButtons
-            count={xp}
-            onIncrement={this._incXp}
-            onDecrement={this._decXp}
-          />
-        </BasicListRow>
-        <ExileCardSelectorComponent
-          componentId={componentId}
-          id={deck.id}
-          label={(
-            <CardSectionHeader
-              section={{ superTitle: t`Exiled cards` }}
-              investigator={investigator}
-            />
-          )}
-          exileCounts={exileCounts}
-          updateExileCounts={this._onExileCountsChange}
-        />
-        { !!campaignSection && campaignSection }
       </View>
     );
   }
+  const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
+  return (
+    <View style={styles.container}>
+      { !!error && <Text style={[typography.text, typography.error]}>{ error }</Text> }
+      <CardSectionHeader
+        investigator={investigator}
+        section={{ superTitle: t`Experience points` }}
+      />
+      <BasicListRow>
+        <Text style={typography.text}>
+          { xpString }
+        </Text>
+        <PlusMinusButtons
+          count={xp}
+          onIncrement={incXp}
+          onDecrement={decXp}
+        />
+      </BasicListRow>
+      <ExileCardSelectorComponent
+        componentId={componentId}
+        id={deck.id}
+        label={(
+          <CardSectionHeader
+            section={{ superTitle: t`Exiled cards` }}
+            investigator={investigator}
+          />
+        )}
+        exileCounts={exileCounts}
+        updateExileCounts={onExileCountsChange}
+      />
+      { !!campaignSection && campaignSection }
+      { !!saveButtonText && <BasicButton onPress={throttledSaveUpgrade} title={saveButtonText} /> }
+    </View>
+  );
 }
+
+export default forwardRef(DeckUpgradeComponent);
 
 const styles = StyleSheet.create({
   container: {

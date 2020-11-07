@@ -10,14 +10,21 @@ import ScenarioStateHelper from './ScenarioStateHelper';
 import ScenarioGuide from './ScenarioGuide';
 import { FullCampaign, Scenario, Supply, Errata, CardErrata, Question } from './types';
 
+type CampaignLogEntry = {
+  id: string;
+  text: string;
+} | {
+  id: string;
+  text: undefined;
+  masculine_text: string;
+  feminine_text: string;
+};
+
 export interface CampaignLog {
   campaignId: string;
   sections: {
     section: string;
-    entries: {
-      id: string;
-      text: string;
-    }[];
+    entries: CampaignLogEntry[];
   }[];
   supplies: Supply[];
 }
@@ -38,6 +45,7 @@ interface LogEntrySectionCount extends LogSection {
 interface LogEntryText extends LogSection {
   type: 'text';
   text: string;
+  feminineText?: string;
 }
 
 interface LogEntrySupplies extends LogSection {
@@ -565,6 +573,14 @@ export default class CampaignGuide {
         entry => entry.id === id
       );
       if (entry) {
+        if (entry.text === undefined) {
+          return {
+            type: 'text',
+            section: section.title,
+            text: entry.masculine_text,
+            feminineText: entry.feminine_text,
+          };
+        }
         return {
           type: 'text',
           section: section.title,

@@ -33,7 +33,10 @@ export default function ThemePicker() {
       value: 'dark',
     },
   ];
-  const onThemeChange = (index: number) => {
+  const onThemeChange = (index: number | null) => {
+    if (index === null) {
+      return;
+    }
     dispatch(setTheme(choices[index].value));
   };
   const formatLabel = (index: number) => {

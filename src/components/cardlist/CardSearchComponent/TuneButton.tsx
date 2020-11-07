@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback, useContext } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Platform,
   StyleSheet,
@@ -14,11 +14,11 @@ import AppIcon from '@icons/AppIcon';
 import { CardFilterProps } from '@components/filter/CardFilterView';
 import FilterBuilder, { CardFilterData } from '@lib/filters';
 import { AppState, getFilterState, getCardFilterData } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 const SIZE = 36;
 
-interface OwnProps {
+interface Props {
   filterId: string;
   lightButton?: boolean;
   baseQuery?: Brackets;
@@ -30,22 +30,22 @@ interface ReduxProps {
   cardData?: CardFilterData;
 }
 
-type Props = OwnProps & ReduxProps;
 
-class TuneButton extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static WIDTH = SIZE + (Platform.OS === 'android' ? 16 : 0);
-  static HEIGHT = SIZE;
-
-  _onPress = () => {
-    const {
-      filterId,
-      baseQuery,
-      modal,
+function TuneButton({ filterId, lightButton, baseQuery, modal }: Props) {
+  const { colors } = useContext(StyleContext);
+  const filterSelector = useCallback((state: AppState) => {
+    const cardData = getCardFilterData(state, filterId);
+    const filters = getFilterState(state, filterId);
+    if (!filters) {
+      return [false, cardData];
+    }
+    return [
+      !!new FilterBuilder('default').filterToQuery(filters),
       cardData,
-    } = this.props;
+    ];
+  }, [filterId]);
+  const [filters, cardData] = useSelector(filterSelector);
+  const onPress = useCallback(() => {
     if (!cardData) {
       return;
     }
@@ -56,7 +56,6 @@ class TuneButton extends React.Component<Props> {
           filterId,
           baseQuery,
           modal,
-          cardData,
         },
         options: {
           topBar: {
@@ -70,48 +69,30 @@ class TuneButton extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [filterId, baseQuery, modal, cardData]);
 
-  render() {
-    const {
-      filters,
-      lightButton,
-    } = this.props;
-    const { colors } = this.context;
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={this._onPress}>
-          <View style={styles.touchable}>
-            <AppIcon name="filter" size={22} color={lightButton ? 'white' : colors.M} />
-            { filters && <View style={styles.chiclet} /> }
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.touchable}>
+          <AppIcon name="filter" size={22} color={lightButton ? 'white' : colors.M} />
+          { filters && <View style={styles.chiclet} /> }
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  const cardData = getCardFilterData(state, props.filterId);
-  const filters = getFilterState(state, props.filterId);
-  if (!filters) {
-    return {
-      filters: false,
-      cardData,
-    };
-  }
-  return {
-    filters: !!new FilterBuilder('default').filterToQuery(filters),
-    cardData,
-  };
-}
+TuneButton.WIDTH = SIZE + (Platform.OS === 'android' ? 16 : 0);
+TuneButton.HEIGHT = SIZE;
 
-export default connect(mapStateToProps)(TuneButton);
+export default TuneButton;
 
 const EXTRA_ANDROID_WIDTH = (Platform.OS === 'android' ? 4 : 0);
 const styles = StyleSheet.create({
   container: {
     marginLeft: Platform.OS === 'android' ? 8 : 0,
+    marginRight: Platform.OS === 'android' ? 8 : 0,
     width: SIZE + EXTRA_ANDROID_WIDTH,
     height: SIZE,
     position: 'relative',

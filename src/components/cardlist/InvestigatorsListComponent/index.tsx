@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { filter, forEach, map, sortBy } from 'lodash';
 import {
   Keyboard,
@@ -10,26 +10,25 @@ import {
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription } from 'react-native-navigation';
+import { useSelector } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 import { msgid, ngettext, t } from 'ttag';
 
 import CollapsibleSearchBox, { SearchOptions } from '@components/core/CollapsibleSearchBox';
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import { SORT_BY_FACTION, SORT_BY_TITLE, SORT_BY_PACK, SortType } from '@actions/types';
 import Card from '@data/Card';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import ShowNonCollectionFooter from '@components/cardlist/CardSearchResultsComponent/ShowNonCollectionFooter';
-import { getTabooSet, getPacksInCollection, AppState } from '@reducers';
+import { getPacksInCollection } from '@reducers';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { useInvestigatorCards, usePlayerCards, useToggles } from '@components/core/hooks';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   hideDeckbuildingRules?: boolean;
   sort: SortType;
@@ -40,19 +39,6 @@ interface OwnProps {
   customFooter?: React.ReactNode;
 }
 
-interface ReduxProps {
-  in_collection: { [code: string]: boolean };
-  tabooSetId?: number;
-}
-
-type Props = OwnProps & ReduxProps & PlayerCardProps & DimensionsProps;
-
-interface State {
-  showNonCollection: { [key: string]: boolean };
-  headerVisible: boolean;
-  searchTerm: string;
-}
-
 interface Section extends SectionListData<Card> {
   title: string;
   id: string;
@@ -60,60 +46,80 @@ interface Section extends SectionListData<Card> {
   nonCollectionCount: number;
 }
 
-class InvestigatorsListComponent extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  _navEventListener?: EventSubscription;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      showNonCollection: {},
-      headerVisible: true,
-      searchTerm: '',
-    };
-
-    this._navEventListener = Navigation.events().bindComponent(this);
+function headerForInvestigator(
+  sort: SortType,
+  investigator?: Card
+): string {
+  if (!investigator) {
+    return t`N/A`;
   }
+  switch (sort) {
+    case SORT_BY_FACTION:
+      return investigator.faction_name || t`N/A`;
+    case SORT_BY_TITLE:
+      return t`All Investigators`;
+    case SORT_BY_PACK:
+      return investigator.pack_name || t`N/A`;
+    default:
+      return t`N/A`;
+  }
+}
 
-  _handleScrollBeginDrag = () => {
+function renderSectionHeader({ section }: { section: SectionListData<Card> }) {
+  return <CardSectionHeader section={{ title: section.title }} />;
+}
+
+function investigatorToCode(investigator: Card) {
+  return investigator.code;
+}
+
+function renderHeader() {
+  if (Platform.OS === 'android') {
+    return <View style={styles.searchBarPadding} />;
+  }
+  return null;
+}
+
+export default function InvestigatorsListComponent({
+  componentId,
+  hideDeckbuildingRules,
+  sort,
+  onPress,
+  filterInvestigators = [],
+  onlyInvestigators,
+  searchOptions,
+  customFooter,
+}: Props) {
+  const { typography } = useContext(StyleContext);
+  const cards = usePlayerCards();
+  const investigators = useInvestigatorCards();
+
+  const in_collection = useSelector(getPacksInCollection);
+  const [showNonCollection, toggleShowNonCollection, setShowNonCollection] = useToggles({});
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleScrollBeginDrag = useCallback(() => {
     Keyboard.dismiss();
-  };
+  }, []);
 
-  _searchUpdated = (text: string) => {
-    this.setState({
-      searchTerm: text,
-    });
-  };
+  const onInvestigatorPress = useCallback((investigator: Card) => {
+    onPress(investigator);
+  }, [onPress]);
 
-  _onPress = (investigator: Card) => {
-    this.props.onPress(investigator);
-  };
-
-  _editCollection = () => {
-    Navigation.push(this.props.componentId, {
+  const showEditCollection = useCallback(() => {
+    Navigation.push(componentId, {
       component: {
         name: 'My.Collection',
       },
     });
-  };
+  }, [componentId]);
 
-  _showNonCollectionCards = (id: string) => {
+  const showNonCollectionCards = useCallback((id: string) => {
     Keyboard.dismiss();
-    this.setState({
-      showNonCollection: {
-        ...this.state.showNonCollection,
-        [id]: true,
-      },
-    });
-  };
-
-  deckbuildingDetails(investigator: Card) {
-    const { cards, hideDeckbuildingRules } = this.props;
-    const { typography } = this.context;
-    if (hideDeckbuildingRules || !investigator.deck_requirements) {
+    setShowNonCollection(id, true);
+  }, [setShowNonCollection]);
+  const deckbuildingDetails = useCallback((investigator: Card) => {
+    if (!cards || hideDeckbuildingRules || !investigator.deck_requirements) {
       return null;
     }
     return (
@@ -138,52 +144,21 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
         }) }
       </>
     );
-  }
+  }, [cards, hideDeckbuildingRules, typography]);
 
-  _renderItem = ({ item }: SectionListRenderItemInfo<Card>) => {
-    const { hideDeckbuildingRules } = this.props;
+  const renderItem = useCallback(({ item }: SectionListRenderItemInfo<Card>) => {
     return (
       <InvestigatorRow
         key={item.code}
         investigator={item}
-        onPress={this._onPress}
-        button={this.deckbuildingDetails(item)}
+        onPress={onInvestigatorPress}
+        button={deckbuildingDetails(item)}
         bigImage={!hideDeckbuildingRules}
       />
     );
-  };
+  }, [hideDeckbuildingRules, onInvestigatorPress, deckbuildingDetails]);
 
-  static headerForInvestigator(
-    sort: SortType,
-    investigator?: Card
-  ): string {
-    if (!investigator) {
-      return t`N/A`;
-    }
-    switch (sort) {
-      case SORT_BY_FACTION:
-        return investigator.faction_name || t`N/A`;
-      case SORT_BY_TITLE:
-        return t`All Investigators`;
-      case SORT_BY_PACK:
-        return investigator.pack_name || t`N/A`;
-      default:
-        return t`N/A`;
-    }
-  }
-
-  groupedInvestigators(): Section[] {
-    const {
-      investigators,
-      in_collection,
-      filterInvestigators = [],
-      onlyInvestigators,
-      sort,
-    } = this.props;
-    const {
-      showNonCollection,
-      searchTerm,
-    } = this.state;
+  const groupedInvestigators = useMemo((): Section[] => {
     const onlyInvestigatorsSet = onlyInvestigators ? new Set(onlyInvestigators) : undefined;
     const filterInvestigatorsSet = new Set(filterInvestigators);
     const allInvestigators = sortBy(
@@ -193,7 +168,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           if (!i) {
             return false;
           }
-          if (i.altArtInvestigator || i.spoiler) {
+          if (i.altArtInvestigator || i.mythos_card) {
             return false;
           }
           if (filterInvestigatorsSet.has(i.code)) {
@@ -226,7 +201,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
     let nonCollectionCards: Card[] = [];
     let currentBucket: Section | undefined = undefined;
     forEach(allInvestigators, i => {
-      const header = InvestigatorsListComponent.headerForInvestigator(sort, i);
+      const header = headerForInvestigator(sort, i);
       if (!currentBucket || currentBucket.title !== header) {
         if (currentBucket && nonCollectionCards.length > 0) {
           if (showNonCollection[currentBucket.id]) {
@@ -271,16 +246,9 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
       }
     }
     return results;
-  }
+  }, [investigators, in_collection, showNonCollection, searchTerm, filterInvestigators, onlyInvestigators, sort]);
 
-  _renderSectionHeader = ({ section }: { section: SectionListData<Card> }) => {
-    return <CardSectionHeader section={{ title: section.title }} />;
-  };
-
-  _renderSectionFooter = ({ section }: { section: SectionListData<Card> }) => {
-    const {
-      showNonCollection,
-    } = this.state;
+  const renderSectionFooter = useCallback(({ section }: { section: SectionListData<Card> }) => {
     if (!section.nonCollectionCount) {
       return null;
     }
@@ -290,7 +258,7 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
         <ArkhamButton
           icon="edit"
           title={t`Edit Collection`}
-          onPress={this._editCollection}
+          onPress={showEditCollection}
         />
       );
     }
@@ -302,40 +270,13 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
           `Show ${section.nonCollectionCount} non-collection investigators`,
           section.nonCollectionCount
         )}
-        onPress={this._showNonCollectionCards}
+        onPress={showNonCollectionCards}
       />
     );
-  };
+  }, [showNonCollection, showNonCollectionCards, showEditCollection]);
 
-  _investigatorToCode = (investigator: Card) => {
-    return investigator.code;
-  };
-
-  showHeader() {
-    if (!this.state.headerVisible) {
-      this.setState({
-        headerVisible: true,
-      });
-    }
-  }
-
-  hideHeader() {
-    const {
-      headerVisible,
-      searchTerm,
-    } = this.state;
-    if (headerVisible && searchTerm === '') {
-      this.setState({
-        headerVisible: false,
-      });
-    }
-  }
-
-  _renderFooter = () => {
-    const { customFooter } = this.props;
-    const { searchTerm } = this.state;
-    const { typography } = this.context;
-    if (searchTerm && this.groupedInvestigators().length === 0) {
+  const renderFooter = useCallback(() => {
+    if (searchTerm && groupedInvestigators.length === 0) {
       return (
         <>
           { !!customFooter && customFooter }
@@ -353,66 +294,38 @@ class InvestigatorsListComponent extends React.Component<Props, State> {
         <View style={styles.footer} />
       </>
     );
-  };
+  }, [typography, customFooter, searchTerm, groupedInvestigators]);
 
-  _renderHeader = () => {
-    if (Platform.OS === 'android') {
-      return <View style={styles.searchBarPadding} />;
-    }
-    return null;
-  };
-
-  render() {
-    const { searchOptions } = this.props;
-    const {
-      searchTerm,
-    } = this.state;
-    return (
-      <CollapsibleSearchBox
-        prompt={t`Search`}
-        searchTerm={searchTerm}
-        onSearchChange={this._searchUpdated}
-        advancedOptions={searchOptions}
-      >
-        { onScroll => (
-          <SectionList
-            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-            onScroll={onScroll}
-            onScrollBeginDrag={this._handleScrollBeginDrag}
-            sections={this.groupedInvestigators()}
-            renderSectionHeader={this._renderSectionHeader}
-            renderSectionFooter={this._renderSectionFooter}
-            ListHeaderComponent={this._renderHeader}
-            ListFooterComponent={this._renderFooter}
-            renderItem={this._renderItem}
-            initialNumToRender={24}
-            keyExtractor={this._investigatorToCode}
-            stickySectionHeadersEnabled={false}
-            keyboardShouldPersistTaps="always"
-            keyboardDismissMode="on-drag"
-            scrollEventThrottle={1}
-          />
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+  return (
+    <CollapsibleSearchBox
+      prompt={t`Search`}
+      searchTerm={searchTerm}
+      onSearchChange={setSearchTerm}
+      advancedOptions={searchOptions}
+    >
+      { onScroll => (
+        <SectionList
+          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+          onScroll={onScroll}
+          onScrollBeginDrag={handleScrollBeginDrag}
+          sections={groupedInvestigators}
+          renderSectionHeader={renderSectionHeader}
+          renderSectionFooter={renderSectionFooter}
+          ListHeaderComponent={renderHeader}
+          ListFooterComponent={renderFooter}
+          renderItem={renderItem}
+          initialNumToRender={24}
+          keyExtractor={investigatorToCode}
+          stickySectionHeadersEnabled={false}
+          keyboardShouldPersistTaps="always"
+          keyboardDismissMode="on-drag"
+          scrollEventThrottle={1}
+        />
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    in_collection: getPacksInCollection(state),
-    tabooSetId: getTabooSet(state),
-  };
-}
-
-export default connect<ReduxProps, unknown, OwnProps, AppState>(
-  mapStateToProps
-)(
-  withPlayerCards<OwnProps & ReduxProps>(
-    withDimensions(InvestigatorsListComponent)
-  )
-);
 
 const styles = StyleSheet.create({
   footer: {

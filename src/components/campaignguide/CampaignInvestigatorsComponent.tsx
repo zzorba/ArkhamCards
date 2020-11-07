@@ -287,7 +287,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
       spentXp,
     } = this.state;
     const {
-      style: { gameFont, borderStyle, typography },
+      style: { borderStyle, typography },
     } = this.context;
     const canEditTrauma = this.canEditTrauma();
     return (
@@ -332,7 +332,7 @@ export default class CampaignInvestigatorsComponent extends React.Component<Prop
               }
               { killedInvestigators.length > 0 && (
                 <View style={styles.header}>
-                  <Text style={[typography.bigGameFont, { fontFamily: gameFont }, typography.center, typography.underline]}>
+                  <Text style={[typography.bigGameFont, typography.center, typography.underline]}>
                     { t`Killed and Insane Investigators` }
                   </Text>
                 </View>

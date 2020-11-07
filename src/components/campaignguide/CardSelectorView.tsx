@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ScrollView, ActivityIndicator, Platform, View, StyleSheet } from 'react-native';
-import { filter, forEach, keys, map, uniqBy } from 'lodash';
+import { filter, keyBy, mapValues, keys, map, uniqBy } from 'lodash';
 import { Brackets } from 'typeorm/browser';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import QueryProvider from '@components/data/QueryProvider';
 import BasicButton from '@components/core/BasicButton';
 import CardQueryWrapper from '@components/card/CardQueryWrapper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardToggleRow from '@components/cardlist/CardSelectorComponent/CardToggleRow';
 import { NavigationProps } from '@components/nav/types';
 import { searchMatchesText } from '@components/core/searchHelpers';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import Card from '@data/Card';
-import { combineQueries, where } from '@data/query';
+import { combineQueries, MYTHOS_CARDS_QUERY, where } from '@data/query';
 import space from '@styles/space';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 export interface CardSelectorProps {
   query?: Brackets;
@@ -27,58 +25,28 @@ export interface CardSelectorProps {
   uniqueName: boolean;
 }
 
-type Props = CardSelectorProps & NavigationProps & DimensionsProps;
+type Props = CardSelectorProps & NavigationProps;
 
-interface QueryProps {
-  query?: Brackets;
-  searchTerm: string;
-}
+export default function CardSelectorView({ query, selection: initialSelection, onSelect, includeStoryToggle, uniqueName }: Props) {
+  const { colors } = useContext(StyleContext);
+  const [selection, setSelection] = useState(mapValues(keyBy(initialSelection), () => true));
+  const [storyToggle, setStoryToggle] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
-interface State {
-  selection: {
-    [code: string]: boolean;
-  };
-  storyToggle: boolean;
-  searchTerm: string;
-}
-
-class CardSelectorView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    const selection: { [code: string]: boolean } = {};
-    forEach(props.selection, code => {
-      selection[code] = true;
-    });
-    this.state = {
-      selection,
-      storyToggle: false,
-      searchTerm: '',
-    };
-  }
-
-  _onChange = (card: Card, count: number) => {
-    const selection = {
-      ...this.state.selection,
+  const onChange = useCallback((card: Card, count: number) => {
+    const newSelection = {
+      ...selection,
     };
     if (count > 0) {
-      selection[card.code] = true;
+      newSelection[card.code] = true;
     } else {
-      delete selection[card.code];
+      delete newSelection[card.code];
     }
-    this.setState({
-      selection,
-    });
-    this.props.onSelect(keys(selection));
-  };
+    setSelection(newSelection);
+    onSelect(keys(newSelection));
+  }, [selection, onSelect]);
 
-  _render = (cards: Card[], loading: boolean) => {
-    const { uniqueName } = this.props;
-    const { selection, searchTerm } = this.state;
-    const { colors } = this.context;
+  const renderCards = useCallback((cards: Card[], loading: boolean) => {
     if (loading) {
       return (
         <ActivityIndicator
@@ -91,56 +59,41 @@ class CardSelectorView extends React.Component<Props, State> {
     }
     return map(
       uniqBy(
-        filter(
-          cards,
-          card => searchMatchesText(
-            searchTerm,
-            [card.name]
-          )
-        ),
+        filter(cards, card => searchMatchesText(searchTerm, [card.name])),
         card => uniqueName ? card.name : card.code),
       card => (
         <CardToggleRow
           key={card.code}
           card={card}
-          onChange={this._onChange}
+          onChange={onChange}
           count={selection[card.code] ? 1 : 0}
           limit={1}
         />
       )
     );
-  };
+  }, [uniqueName, selection, searchTerm, colors, onChange]);
 
-  _toggleStoryCards = () => {
-    this.setState({
-      storyToggle: true,
-    });
-  };
+  const toggleStoryCards = useCallback(() => {
+    setStoryToggle(true);
+  }, [setStoryToggle]);
 
-  static storyCardsQuery({ query }: QueryProps): Brackets {
+  const storyQuery = useMemo(() => {
     return combineQueries(
-      where('c.encounter_code is not null'),
+      MYTHOS_CARDS_QUERY,
       query ? [query] : [],
       'and'
     );
-  }
+  }, [query]);
 
-  static normalCardsQuery({ query }: QueryProps): Brackets {
-    return combineQueries(
-      where('c.encounter_code is null'),
-      query ? [query] : [],
-      'and'
-    );
-  }
-
-  renderStoryCards(searchTerm: string) {
-    const { query } = this.props;
-    const { storyToggle } = this.state;
+  const storyCardsSection = useMemo(() => {
+    if (!includeStoryToggle) {
+      return null;
+    }
     if (!storyToggle) {
       return (
         <BasicButton
           title={t`Show story assets from other campaigns`}
-          onPress={this._toggleStoryCards}
+          onPress={toggleStoryCards}
         />
       );
     }
@@ -149,63 +102,43 @@ class CardSelectorView extends React.Component<Props, State> {
         <CardSectionHeader
           section={{ title: t`Story assets` }}
         />
-        <QueryProvider<QueryProps, Brackets>
-          query={query}
-          searchTerm={searchTerm}
-          getQuery={CardSelectorView.storyCardsQuery}
-        >
-          { query => (
-            <CardQueryWrapper name="other-selector" query={query}>
-              { this._render }
-            </CardQueryWrapper>
-          ) }
-        </QueryProvider>
+        <CardQueryWrapper name="other-selector" query={storyQuery}>
+          { renderCards }
+        </CardQueryWrapper>
       </>
     );
-  }
+  }, [renderCards, storyQuery, storyToggle, includeStoryToggle, toggleStoryCards]);
 
-  _onSearchChange = (searchTerm: string) => {
-    this.setState({
-      searchTerm,
-    });
-  }
-
-  render() {
-    const { query, includeStoryToggle } = this.props;
-    const { searchTerm } = this.state;
-    return (
-      <CollapsibleSearchBox
-        searchTerm={searchTerm}
-        onSearchChange={this._onSearchChange}
-        prompt={t`Search`}
-      >
-        { onScroll => (
-          <ScrollView
-            onScroll={onScroll}
-            contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-            contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-          >
-            { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
-            <QueryProvider<QueryProps, Brackets>
-              query={query}
-              searchTerm={searchTerm}
-              getQuery={CardSelectorView.normalCardsQuery}
-            >
-              { query => (
-                <CardQueryWrapper name="normal-selector" query={query}>
-                  { this._render }
-                </CardQueryWrapper>
-              ) }
-            </QueryProvider>
-            { includeStoryToggle && this.renderStoryCards(searchTerm) }
-          </ScrollView>
-        ) }
-      </CollapsibleSearchBox>
+  const normalCardsQuery = useMemo(() => {
+    return combineQueries(
+      where('c.encounter_code is null'),
+      query ? [query] : [],
+      'and'
     );
-  }
-}
+  }, [query]);
 
-export default withDimensions(CardSelectorView);
+  return (
+    <CollapsibleSearchBox
+      searchTerm={searchTerm}
+      onSearchChange={setSearchTerm}
+      prompt={t`Search`}
+    >
+      { onScroll => (
+        <ScrollView
+          onScroll={onScroll}
+          contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+          contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+        >
+          { Platform.OS === 'android' && <View style={styles.searchBarPadding} /> }
+          <CardQueryWrapper name="normal-selector" query={normalCardsQuery}>
+            { renderCards }
+          </CardQueryWrapper>
+          { storyCardsSection }
+        </ScrollView>
+      ) }
+    </CollapsibleSearchBox>
+  );
+}
 
 const styles = StyleSheet.create({
   searchBarPadding: {

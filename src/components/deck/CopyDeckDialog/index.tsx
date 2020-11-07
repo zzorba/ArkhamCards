@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Platform, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { throttle } from 'lodash';
 import { bindActionCreators, Action, Dispatch } from 'redux';
 import { connect } from 'react-redux';
@@ -25,7 +25,6 @@ interface OwnProps {
   componentId: string;
   toggleVisible: () => void;
   deckId?: number;
-  viewRef?: View;
   signedIn?: boolean;
 }
 
@@ -221,8 +220,8 @@ class CopyDeckDialog extends React.Component<Props, State> {
     }
     return (
       <React.Fragment>
-        <DialogComponent.Description style={[typography.smallLabel, space.marginBottomS]}>
-          { t`SELECT DECK VERSION TO COPY` }
+        <DialogComponent.Description style={[typography.dialogLabel, space.marginBottomS]}>
+          { t`Version to copy` }
         </DialogComponent.Description>
         { parsedBaseDeck ? (
           <SelectDeckSwitch
@@ -318,7 +317,6 @@ class CopyDeckDialog extends React.Component<Props, State> {
   render() {
     const {
       toggleVisible,
-      viewRef,
       deckId,
     } = this.props;
     const {
@@ -335,10 +333,9 @@ class CopyDeckDialog extends React.Component<Props, State> {
       <Dialog
         title={t`Copy Deck`}
         visible={!!deckId}
-        viewRef={viewRef}
       >
         <DialogComponent.Description
-          style={[space.marginSideS, saving ? typography.center : typography.left]}
+          style={[space.marginSideS, saving ? typography.center : typography.left, typography.text]}
         >
           { saving ?
             t`Saving` :

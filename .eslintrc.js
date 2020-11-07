@@ -27,6 +27,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
   ],
   'rules': {
     // Enable additional rules for ESLint:
@@ -161,5 +162,6 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 'off',
     'react/jsx-curly-spacing': 'off',
     'react/display-name': 'off',
+    'destructuring/no-rename': 'off',
   }
 }

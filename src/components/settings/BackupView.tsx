@@ -21,7 +21,6 @@ import { t } from 'ttag';
 import { MergeBackupProps } from './MergeBackupView';
 import { Campaign, BackupState } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { getBackupData, AppState } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
@@ -41,8 +40,16 @@ interface ReduxActionProps {
   ensureUuid: () => void;
 }
 
-type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps & InjectedDialogProps;
+type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps;
 
+
+async function safeReadFile(file: string): Promise<string> {
+  try {
+    return await RNFS.readFile(file, 'utf8');
+  } catch (error) {
+    return await RNFS.readFile(file, 'ascii');
+  }
+}
 class BackupView extends React.Component<Props> {
   static contextType = StyleContext;
   context!: StyleContextType;
@@ -60,7 +67,7 @@ class BackupView extends React.Component<Props> {
       const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
-      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json')) {
+      if (!res.name.endsWith('.acb') && !res.name.endsWith('.json') && !res.name.endsWith('.null')) {
         Alert.alert(
           t`Unexpected file type`,
           t`This app expects an Arkham Cards backup file (.acb/.json)`,
@@ -75,7 +82,7 @@ class BackupView extends React.Component<Props> {
         return;
       }
       // We got the file
-      const json = JSON.parse(await RNFS.readFile(res.fileCopyUri));
+      const json = JSON.parse(await safeReadFile(res.fileCopyUri));
       const campaigns: Campaign[] = [];
       forEach(values(json.campaigns), campaign => {
         campaigns.push(campaignFromJson(campaign));
@@ -223,12 +230,10 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
   }, dispatch);
 }
 
-export default withDialogs(
-  connect<ReduxProps, ReduxActionProps, InjectedDialogProps & BackupProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(BackupView)
-);
+export default connect<ReduxProps, ReduxActionProps, BackupProps, AppState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(BackupView);
 
 const styles = StyleSheet.create({
   container: {

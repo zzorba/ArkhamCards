@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { isArray, map } from 'lodash';
-// @ts-ignore
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { SettingsPicker } from '@lib/react-native-settings-components';
 import { DisplayChoice } from '@data/scenario';
@@ -120,7 +119,7 @@ export default class PickerComponent extends React.Component<Props> {
       hideWidget,
       modalTitle,
     } = this.props;
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const passedOptions = [
       ...map(choices, (choice, idx) => {
         return {
@@ -159,7 +158,6 @@ export default class PickerComponent extends React.Component<Props> {
               color: colors ? colors.modalTextColor : COLORS.white,
             } : {
               ...typography.mediumGameFont,
-              fontFamily: gameFont,
               color: colors ? colors.modalTextColor : COLORS.white,
             } ,
             description: {
@@ -191,7 +189,6 @@ export default class PickerComponent extends React.Component<Props> {
           color: colors ? colors.textColor : this.context.colors.darkText,
         } : {
           ...typography.mediumGameFont,
-          fontFamily: gameFont,
           color: colors ? colors.textColor : this.context.colors.darkText,
           fontWeight: '600',
         }}

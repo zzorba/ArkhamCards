@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import BasicButton from '@components/core/BasicButton';
 import { BinaryConditionalChoice } from '@data/scenario/types';
@@ -12,25 +12,21 @@ interface Props {
   onPress: (index: number) => void;
 }
 
-export default class BranchButton extends React.Component<Props> {
-  _onPress = () => {
-    const { index, onPress } = this.props;
+export default function BranchButton({ index, choice, campaignLog, onPress }: Props) {
+  const handleOnPress = useCallback(() => {
     onPress(index);
-  };
+  }, [index, onPress]);
 
-  render() {
-    const { choice, campaignLog } = this.props;
-    if (choice.condition) {
-      const result = calculateBinaryConditionResult(choice.condition, campaignLog);
-      if (!result.option) {
-        return null;
-      }
+  if (choice.condition) {
+    const result = calculateBinaryConditionResult(choice.condition, campaignLog);
+    if (!result.option) {
+      return null;
     }
-    return (
-      <BasicButton
-        title={choice.text}
-        onPress={this._onPress}
-      />
-    );
   }
+  return (
+    <BasicButton
+      title={choice.text}
+      onPress={handleOnPress}
+    />
+  );
 }

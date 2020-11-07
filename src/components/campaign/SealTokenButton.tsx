@@ -1,14 +1,12 @@
-import React from 'react';
-import { Action, bindActionCreators, Dispatch } from 'redux';
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { updateChaosBagResults } from './actions';
 import ChaosTokenButton from './ChaosTokenButton';
-import { ChaosBagResults } from '@actions/types';
-import { AppState, getChaosBagResults } from '@reducers';
 import { ChaosTokenType } from '@app_constants';
+import { useChaosBagResults } from '@components/core/hooks';
 
-interface OwnProps {
+interface Props {
   campaignId: number;
   id: string;
   iconKey: ChaosTokenType;
@@ -16,32 +14,10 @@ interface OwnProps {
   canDisable?: boolean;
 }
 
-interface ReduxProps {
-  chaosBagResults: ChaosBagResults;
-}
-
-interface ReduxActionProps {
-  updateChaosBagResults: (id: number, chaosBagResults: ChaosBagResults) => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps;
-
-class SealTokenButton extends React.Component<Props> {
-  public static defaultProps: Partial<Props> = {
-    sealed: false,
-    canDisable: false,
-  };
-
-  _toggleSealToken = () => {
-    const {
-      campaignId,
-      chaosBagResults,
-      id,
-      updateChaosBagResults,
-      iconKey,
-      sealed,
-    } = this.props;
-
+export default function SealTokenButton({ campaignId, id, iconKey, sealed = false, canDisable = false }: Props) {
+  const chaosBagResults = useChaosBagResults(campaignId);
+  const dispatch = useDispatch();
+  const toggleSealToken = useCallback(() => {
     let newSealedTokens = [...chaosBagResults.sealedTokens];
 
     if (sealed) {
@@ -58,41 +34,14 @@ class SealTokenButton extends React.Component<Props> {
       totalDrawnTokens: chaosBagResults.totalDrawnTokens,
     };
 
-    updateChaosBagResults(campaignId, newChaosBagResults);
-  }
+    dispatch(updateChaosBagResults(campaignId, newChaosBagResults));
+  }, [dispatch, campaignId, chaosBagResults, id, iconKey, sealed]);
 
-  render() {
-    const {
-      iconKey,
-      sealed,
-      canDisable,
-    } = this.props;
-    return (
-      <ChaosTokenButton
-        selected={!!(sealed && canDisable)}
-        onPress={this._toggleSealToken}
-        iconKey={iconKey}
-      />
-    );
-  }
+  return (
+    <ChaosTokenButton
+      selected={!!(sealed && canDisable)}
+      onPress={toggleSealToken}
+      iconKey={iconKey}
+    />
+  );
 }
-
-function mapStateToProps(
-  state: AppState,
-  props: OwnProps
-): ReduxProps {
-  return {
-    chaosBagResults: getChaosBagResults(state, props.campaignId),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateChaosBagResults,
-  } as any, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(SealTokenButton);

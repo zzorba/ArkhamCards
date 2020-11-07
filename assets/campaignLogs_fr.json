@@ -42,6 +42,16 @@
             "text": "les investigateurs ont repoussé Umôrdhoth."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -110,20 +120,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -158,31 +160,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -336,6 +338,16 @@
             "text": "Zebulon Whateley a survécu à L'Héritage de Dunwich."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -404,20 +416,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -430,7 +434,7 @@
         "entries": [
           {
             "id": "tmm_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -438,31 +442,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -484,6 +488,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# read Act 2 of The King in Yellow.",
+            "feminine_text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# was possessed.",
+            "feminine_text": "#name# was possessed."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "the investigators were attacked as they escaped the Asylum."
@@ -573,16 +587,8 @@
             "text": "the police are suspicious of you."
           },
           {
-            "id": "possessed",
-            "text": "#name# was possessed."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "the investigators prevented Hastur from escaping his prison."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "slayed_the_monsters",
@@ -603,6 +609,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "you were unable to find Nigel."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -673,20 +689,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -699,11 +707,11 @@
         "entries": [
           {
             "id": "bsr_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "cca_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "possessed",
@@ -711,7 +719,7 @@
           },
           {
             "id": "tpm_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -719,31 +727,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -935,6 +943,16 @@
             "text": "Zebulon Whateley a survécu à L'Héritage de Dunwich."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1003,20 +1021,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1029,7 +1039,7 @@
         "entries": [
           {
             "id": "tmm_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -1037,31 +1047,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -1120,6 +1130,16 @@
             "text": "les investigateurs ont repoussé Umôrdhoth."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1188,20 +1208,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1236,31 +1248,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -1273,6 +1285,16 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "read_act_2",
+            "masculine_text": "#name# read Act 2 of The King in Yellow.",
+            "feminine_text": "#name# read Act 2 of The King in Yellow."
+          },
+          {
+            "id": "possessed",
+            "masculine_text": "#name# was possessed.",
+            "feminine_text": "#name# was possessed."
+          },
           {
             "id": "attacked_as_you_escaped_arkham",
             "text": "the investigators were attacked as they escaped the Asylum."
@@ -1362,16 +1384,8 @@
             "text": "the police are suspicious of you."
           },
           {
-            "id": "possessed",
-            "text": "#name# was possessed."
-          },
-          {
             "id": "prevented_hasturs_escape",
             "text": "the investigators prevented Hastur from escaping his prison."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
           },
           {
             "id": "slayed_the_monsters",
@@ -1392,6 +1406,16 @@
           {
             "id": "unable_to_find_nigel",
             "text": "you were unable to find Nigel."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -1462,20 +1486,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1488,11 +1504,11 @@
         "entries": [
           {
             "id": "bsr_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "cca_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "possessed",
@@ -1500,7 +1516,7 @@
           },
           {
             "id": "tpm_conviction_or_doubt",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -1508,31 +1524,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -1772,6 +1788,16 @@
             "text": "the investigators were forced to wait for additional supplies."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -1840,20 +1866,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1874,7 +1892,7 @@
           },
           {
             "id": "doy_cross_off_rope",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "final_depth",
@@ -1890,11 +1908,11 @@
           },
           {
             "id": "rtdoe_gain_mysterious_scepter",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "rthote2_gain_sticky_goop",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "tasks_completed",
@@ -1902,7 +1920,7 @@
           },
           {
             "id": "wilds_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -1910,31 +1928,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -2057,20 +2075,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# disappeared into the mist.",
+            "feminine_text": "#name# disappeared into the mist."
           },
           {
-            "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# was claimed by specters.",
+            "feminine_text": "#name# was claimed by specters."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# was pulled into the spectral realm.",
+            "feminine_text": "#name# was pulled into the spectral realm."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# was taken by the Watcher.",
+            "feminine_text": "#name# was taken by the Watcher."
           }
         ]
       },
@@ -2145,6 +2167,11 @@
       {
         "section": "campaign_notes",
         "entries": [
+          {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# joins the pipers of Azathoth.",
+            "feminine_text": "#name# joins the pipers of Azathoth."
+          },
           {
             "id": "accepted_fate",
             "text": "you have accepted your fate."
@@ -2250,10 +2277,6 @@
             "text": "the investigators kept their mementos hidden."
           },
           {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# joins the pipers of Azathoth."
-          },
-          {
             "id": "learned_nothing_of_the_lodges_schemes",
             "text": "the investigators learned nothing of the Lodge’s schemes."
           },
@@ -2312,6 +2335,16 @@
           {
             "id": "witches_spell_cast",
             "text": "the witches' spell was cast."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -2382,20 +2415,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2408,27 +2433,27 @@
         "entries": [
           {
             "id": "a_record_of_those_lost",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "act_3_v2",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "left_column",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "right_column",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "uad_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "uad_no_investigators_alive",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -2436,31 +2461,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
@@ -2511,6 +2536,16 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "broken_the_law_of_ulthar",
+            "masculine_text": "#name# has broken the law of Ulthar.",
+            "feminine_text": "#name# has broken the law of Ulthar."
+          },
+          {
+            "id": "captured",
+            "masculine_text": "#name# was captured.",
+            "feminine_text": "#name# was captured."
+          },
+          {
             "id": "black_cat_at_your_side",
             "text": "the black cat is at your side."
           },
@@ -2549,14 +2584,6 @@
           {
             "id": "black_cat_warned_the_others",
             "text": "the black cat warned the others."
-          },
-          {
-            "id": "broken_the_law_of_ulthar",
-            "text": "#name# has broken the law of Ulthar."
-          },
-          {
-            "id": "captured",
-            "text": "#name# was captured."
           },
           {
             "id": "carried_to_the_cold_wastes",
@@ -2651,6 +2678,16 @@
             "text": "you asked for it."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -2719,20 +2756,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2749,39 +2778,39 @@
           },
           {
             "id": "everyone_captured",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "forbidden_lands",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "grand_design",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "half_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "interconnected_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "minar",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "oriab",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "someone_escaped",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "timeless_realm",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -2789,31 +2818,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -2935,6 +2964,16 @@
             "text": "you asked for it."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -3003,20 +3042,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3029,15 +3060,15 @@
         "entries": [
           {
             "id": "half_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "interconnected_campaign",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "spider_queen",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -3045,31 +3076,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -3267,6 +3298,16 @@
             "text": "the investigators were forced to wait for additional supplies."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
             "id": "blob_contained",
             "text": "the anomaly was contained."
           },
@@ -3335,20 +3376,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3369,7 +3402,7 @@
           },
           {
             "id": "doy_cross_off_rope",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "final_depth",
@@ -3389,7 +3422,7 @@
           },
           {
             "id": "wilds_add_chaos_token",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -3397,31 +3430,31 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       }
@@ -3539,8 +3572,16 @@
             "text": "Othera Gilman is out for blood."
           },
           {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth was consumed by the rising tide."
+          },
+          {
             "id": "little_out_for_blood",
             "text": "Joyce Little is out for blood."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "the investigators made it safely to their vehicles."
           },
           {
             "id": "marsh_out_for_blood",
@@ -3553,6 +3594,16 @@
           {
             "id": "mission_succeeded",
             "text": "the mission succeeded."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# was taken by the abyss.",
+            "feminine_text": "#name# was taken by the abyss."
           },
           {
             "id": "blob_contained",
@@ -3623,20 +3674,12 @@
             "text": "Brotherhood Agents Who Escaped: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "the Day of Reckoning is coming."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "you joined forces with Xzharah."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# was taken by the abyss."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3697,23 +3740,39 @@
           },
           {
             "id": "flashback_1",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "flashback_2",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "flashback_3",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "flashback_4",
-            "text": "dummy"
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_5",
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_6",
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_7",
+            "text": "leurre"
+          },
+          {
+            "id": "flashback_8",
+            "text": "leurre"
           },
           {
             "id": "the_accusation",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "$input_value",
@@ -3721,37 +3780,53 @@
           },
           {
             "id": "meh_did_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_did_not_cover_up",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_have_clues",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_no_innocents_killed",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_are_on_your_side",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_police_dont_believe_you",
-            "text": "dummy"
+            "text": "leurre"
           },
           {
             "id": "meh_the_truth",
-            "text": "dummy"
+            "text": "leurre"
           }
         ]
       },
       {
         "section": "memories_recovered",
         "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "a deal with Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "a followed lead."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "a jailbreak."
+          },
+          {
+            "id": "an_intervention",
+            "text": "an intervention."
+          },
           {
             "id": "battle_with_a_horrifying_devil",
             "text": "a battle with a horrifying devil"

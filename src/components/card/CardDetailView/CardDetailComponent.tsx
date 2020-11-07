@@ -50,7 +50,7 @@ export default class CardDetailComponent extends React.Component<Props> {
     if (showSpoilers) {
       return false;
     }
-    return card && card.spoiler;
+    return card && card.mythos_card;
   }
 
   _showInvestigatorCards = () => {
@@ -73,16 +73,18 @@ export default class CardDetailComponent extends React.Component<Props> {
     }
     return (
       <View style={styles.investigatorContent}>
-        <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
-          <Text style={[typography.large, typography.center, typography.uppercase]}>
-            { t`Deckbuilding` }
-          </Text>
+        <View style={styles.maxWidth}>
+          <View style={[styles.deckbuildingSection, { backgroundColor: colors.L20 }]}>
+            <Text style={[typography.large, typography.center, typography.uppercase]}>
+              { t`Deckbuilding` }
+            </Text>
+          </View>
+          <ArkhamButton
+            icon="deck"
+            title={t`Show all available cards`}
+            onPress={this._showInvestigatorCards}
+          />
         </View>
-        <ArkhamButton
-          icon="deck"
-          title={t`Show all available cards`}
-          onPress={this._showInvestigatorCards}
-        />
         <SignatureCardsComponent
           componentId={componentId}
           investigator={card}
@@ -107,11 +109,11 @@ export default class CardDetailComponent extends React.Component<Props> {
       simple,
       width,
     } = this.props;
-    const { backgroundStyle } = this.context;
+    const { backgroundStyle, typography } = this.context;
     if (this.shouldBlur()) {
       return (
         <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
-          <Text style={[space.marginS]}>
+          <Text style={[typography.text, space.paddingM]}>
             { t`Warning: this card contains possible spoilers for '${ card.pack_name }'.` }
           </Text>
           <BasicButton onPress={this._toggleShowSpoilers} title="Show card" />
@@ -121,18 +123,20 @@ export default class CardDetailComponent extends React.Component<Props> {
     }
 
     return (
-      <View key={card.code} style={[styles.viewContainer, backgroundStyle, { width }]}>
-        <TwoSidedCardComponent
-          componentId={componentId}
-          card={card}
-          width={width}
-          simple={!!simple}
-        />
-        <BondedCardsComponent
-          componentId={componentId}
-          cards={[card]}
-          width={width}
-        />
+      <View key={card.code} style={[styles.viewContainer, backgroundStyle]}>
+        <View style={{ width }}>
+          <TwoSidedCardComponent
+            componentId={componentId}
+            card={card}
+            width={width}
+            simple={!!simple}
+          />
+          <BondedCardsComponent
+            componentId={componentId}
+            cards={[card]}
+            width={width}
+          />
+        </View>
         { this.renderInvestigatorCardsLink() }
       </View>
     );
@@ -145,6 +149,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   investigatorContent: {
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  maxWidth: {
     width: '100%',
     maxWidth: 768,
   },

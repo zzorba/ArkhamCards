@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { t } from 'ttag';
 
 import BinaryResult from '@components/campaignguide/BinaryResult';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import {
   BranchStep,
   CampaignDataCondition,
@@ -18,65 +18,56 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-
-export default class CampaignDataConditionComponent extends React.Component<Props> {
-  difficultyStr() {
-    const { campaignLog } = this.props;
+export default function CampaignDataConditionComponent({ step, condition, campaignLog }: Props) {
+  const { campaignGuide } = useContext(CampaignGuideContext);
+  const difficulty = useMemo(() => {
     switch (campaignLog.campaignData.difficulty || 'standard') {
       case 'easy': return t`Easy`;
       case 'standard': return t`Standard`;
       case 'hard': return t`Hard`;
       case 'expert': return t`Expert`;
     }
-  }
-  render() {
-    const { step, condition, campaignLog } = this.props;
-    return (
-      <CampaignGuideContext.Consumer>
-        { ({ campaignGuide }: CampaignGuideContextType) => {
-          switch (condition.campaign_data) {
-            case 'difficulty': {
-              const difficulty = this.difficultyStr();
-              return (
-                <SetupStepWrapper bulletType={step.bullet_type}>
-                  <CampaignGuideTextComponent
-                    text={t`Because you are playing on <b>${difficulty}</b> difficulty:`}
-                  />
-                </SetupStepWrapper>
-              );
-            }
-            case 'scenario_completed': {
-              const result = campaignDataScenarioConditionResult(condition, campaignLog);
-              const scenarioName: string =
-                campaignGuide.scenarioName(condition.scenario) ||
-                condition.scenario;
-              return (
-                <SetupStepWrapper bulletType={step.bullet_type}>
-                  <CampaignGuideTextComponent text={result.decision ?
-                    t`Because you have already completed <b>${scenarioName}</b>:` :
-                    t`Because you have not yet completed <b>${scenarioName}</b>:`
-                  } />
-                </SetupStepWrapper>
-              );
-            }
-            case 'investigator':
-              if (step.text) {
-                const result = campaignDataInvestigatorConditionResult(condition, campaignLog);
-                return (
-                  <BinaryResult
-                    bulletType={step.bullet_type}
-                    prompt={step.text}
-                    result={result.decision}
-                  />
-                );
-              }
-              return null;
-            case 'chaos_bag':
-              // We always write these out.
-              return null;
-          }
-        } }
-      </CampaignGuideContext.Consumer>
-    );
+  }, [campaignLog.campaignData.difficulty]);
+  switch (condition.campaign_data) {
+    case 'difficulty': {
+      return (
+        <SetupStepWrapper bulletType={step.bullet_type}>
+          <CampaignGuideTextComponent
+            text={t`Because you are playing on <b>${difficulty}</b> difficulty:`}
+          />
+        </SetupStepWrapper>
+      );
+    }
+    case 'scenario_completed': {
+      const result = campaignDataScenarioConditionResult(condition, campaignLog);
+      const scenarioName: string =
+        campaignGuide.scenarioName(condition.scenario) ||
+        condition.scenario;
+      return (
+        <SetupStepWrapper bulletType={step.bullet_type}>
+          <CampaignGuideTextComponent text={result.decision ?
+            t`Because you have already completed <b>${scenarioName}</b>:` :
+            t`Because you have not yet completed <b>${scenarioName}</b>:`
+          } />
+        </SetupStepWrapper>
+      );
+    }
+    case 'investigator':
+      if (step.text) {
+        const result = campaignDataInvestigatorConditionResult(condition, campaignLog);
+        return (
+          <BinaryResult
+            bulletType={step.bullet_type}
+            prompt={step.text}
+            result={result.decision}
+          />
+        );
+      }
+      return null;
+    case 'chaos_bag':
+      // We always write these out.
+      return null;
+    default:
+      return null;
   }
 }

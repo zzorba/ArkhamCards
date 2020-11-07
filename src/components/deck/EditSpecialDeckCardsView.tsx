@@ -110,6 +110,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
           ignoreDeckLimitSlots,
           updateSlots: this._updateSlots,
           xpAdjustment: xpAdjustment,
+          tabooSetOverride: deck.taboo_id || 0,
           storyOnly: true,
         },
         options: {
@@ -339,7 +340,7 @@ class EditSpecialDeckCardsView extends React.Component<Props, State> {
     const storyCards: Card[] = [];
     forEach(keys(slots), code => {
       const card = cards[code];
-      if (card && card.spoiler) {
+      if (card && card.mythos_card) {
         storyCards.push(card);
       }
     });

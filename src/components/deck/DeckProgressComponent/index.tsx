@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
 import { t } from 'ttag';
 
 import ArkhamButton from '@components/core/ArkhamButton';
@@ -15,11 +13,10 @@ import CampaignSummaryComponent from '@components/campaign/CampaignSummaryCompon
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { Campaign, Deck, ParsedDeck, Slots, Trauma } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-import { fetchPublicDeck, fetchPrivateDeck } from '@components/deck/actions';
 import space, { l, m, s } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   deck: Deck;
   cards: CardsMap;
@@ -33,7 +30,6 @@ interface OwnProps {
   showTraumaDialog?: (investigator: Card, traumaData: Trauma) => void;
   showDeckHistory?: () => void;
   investigatorDataUpdates?: any;
-  xpAdjustment: number;
   showDeckUpgrade?: () => void;
   tabooSetId?: number;
   renderFooter?: (slots?: Slots) => React.ReactNode;
@@ -46,39 +42,37 @@ interface ReduxActionProps {
   fetchPublicDeck: (deckId: number, useDeckEndpoint: boolean) => void;
 }
 
-type Props = OwnProps & ReduxActionProps;
-
-class DeckProgressComponent extends React.PureComponent<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  investigatorData() {
-    const {
-      campaign,
-      investigatorDataUpdates,
-    } = this.props;
+export default function DeckProgressComponent({
+  componentId,
+  deck,
+  cards,
+  parsedDeck,
+  editable,
+  campaign,
+  hideCampaign,
+  title,
+  onTitlePress,
+  showTraumaDialog,
+  showDeckHistory,
+  investigatorDataUpdates,
+  showDeckUpgrade,
+  tabooSetId,
+  renderFooter,
+  onDeckCountChange,
+  singleCardView,
+}: Props) {
+  const { typography } = useContext(StyleContext);
+  const investigatorData = useMemo(() => {
     if (!campaign) {
       return null;
     }
-    return Object.assign(
-      {},
-      campaign.investigatorData || {},
-      investigatorDataUpdates
-    );
-  }
-
-  renderCampaignSection() {
-    const {
-      campaign,
-      parsedDeck: {
-        investigator,
-      },
-      showTraumaDialog,
-      showDeckUpgrade,
-      editable,
-      hideCampaign,
-    } = this.props;
-    const { typography } = this.context;
+    return {
+      ...(campaign.investigatorData || {}),
+      ...investigatorDataUpdates,
+    };
+  }, [campaign, investigatorDataUpdates]);
+  const { investigator } = parsedDeck;
+  const campaignSection = useMemo(() => {
     if (!editable) {
       return null;
     }
@@ -99,7 +93,7 @@ class DeckProgressComponent extends React.PureComponent<Props> {
             { !!showTraumaDialog && !campaign.guided && (
               <EditTraumaComponent
                 investigator={investigator}
-                investigatorData={this.investigatorData()}
+                investigatorData={investigatorData}
                 showTraumaDialog={showTraumaDialog}
               />
             ) }
@@ -114,71 +108,47 @@ class DeckProgressComponent extends React.PureComponent<Props> {
         ) }
       </React.Fragment>
     );
+  }, [
+    campaign,
+    investigatorData,
+    investigator,
+    showTraumaDialog,
+    showDeckUpgrade,
+    editable,
+    hideCampaign,
+    typography,
+  ]);
+
+  if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
+    return null;
   }
 
-  render() {
-    const {
-      campaign,
-      componentId,
-      deck,
-      cards,
-      parsedDeck,
-      xpAdjustment,
-      editable,
-      tabooSetId,
-      renderFooter,
-      onDeckCountChange,
-      singleCardView,
-      title,
-      onTitlePress,
-      showDeckHistory,
-    } = this.props;
-
-    if (!deck.previous_deck && !deck.next_deck && !campaign && !editable && !title) {
-      return null;
-    }
-
-    // Actually compute the diffs.
-    return (
-      <View style={styles.container}>
-        { this.renderCampaignSection() }
-        <ChangesFromPreviousDeck
-          componentId={componentId}
-          title={title}
-          cards={cards}
-          parsedDeck={parsedDeck}
-          xpAdjustment={xpAdjustment}
-          tabooSetId={tabooSetId}
-          renderFooter={renderFooter}
-          onDeckCountChange={onDeckCountChange}
-          singleCardView={singleCardView}
-          editable={editable}
-          onTitlePress={onTitlePress}
+  // Actually compute the diffs.
+  return (
+    <View style={styles.container}>
+      { campaignSection }
+      <ChangesFromPreviousDeck
+        componentId={componentId}
+        title={title}
+        cards={cards}
+        parsedDeck={parsedDeck}
+        tabooSetId={tabooSetId}
+        renderFooter={renderFooter}
+        onDeckCountChange={onDeckCountChange}
+        singleCardView={singleCardView}
+        editable={editable}
+        onTitlePress={onTitlePress}
+      />
+      { !!editable && !!deck.previous_deck && !!showDeckHistory && (
+        <ArkhamButton
+          icon="deck"
+          title={t`Upgrade History`}
+          onPress={showDeckHistory}
         />
-        { !!editable && !!deck.previous_deck && !!showDeckHistory && (
-          <ArkhamButton
-            icon="deck"
-            title={t`Upgrade History`}
-            onPress={showDeckHistory}
-          />
-        ) }
-      </View>
-    );
-  }
+      ) }
+    </View>
+  );
 }
-
-function mapStateToProps() {
-  return {};
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    fetchPublicDeck,
-    fetchPrivateDeck,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckProgressComponent);
 
 
 const styles = StyleSheet.create({

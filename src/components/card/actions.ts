@@ -30,6 +30,7 @@ import { getCardLang, AppState } from '@reducers/index';
 import { syncCards, syncTaboos } from '@lib/publicApi';
 import Database from '@data/Database';
 
+const VERBOSE = false;
 function shouldFetchCards(state: AppState) {
   return !state.cards.loading;
 }
@@ -55,11 +56,14 @@ export function fetchCards(
   choiceLang: string
 ): ThunkAction<void, AppState, null, CardSetSchemaVersionAction | CardFetchStartAction | CardFetchErrorAction | CardFetchSuccessAction> {
   return async(dispatch, getState) => {
+    VERBOSE && console.log('Fetch Cards called');
     if (!shouldFetchCards(getState())) {
+      VERBOSE && console.log('Skipping fetch cards');
       return;
     }
     const previousLang = getCardLang(getState());
     if (cardLang && previousLang !== cardLang) {
+      VERBOSE && console.log('Locale changed');
       changeLocale(cardLang);
     }
     dispatch({
@@ -69,9 +73,12 @@ export function fetchCards(
     dispatch({
       type: CARD_FETCH_START,
     });
+    VERBOSE && console.log('Fetching packs');
     const packs = await dispatch(fetchPacks(cardLang));
+    VERBOSE && console.log('Packs fetched');
     try {
-      const cardCache = await syncCards(db, packs, cardLang, cardsCache(getState(), cardLang));
+      const state = getState();
+      const cardCache = await syncCards(db, packs, cardLang, cardsCache(state, cardLang));
       try {
         const tabooCache = await syncTaboos(
           db,
@@ -95,6 +102,7 @@ export function fetchCards(
         });
       }
     } catch (err) {
+      console.log(err);
       dispatch({
         type: CARD_FETCH_ERROR,
         error: err.message || err,
@@ -108,51 +116,56 @@ type PackActions = PacksFetchStartAction | PacksFetchErrorAction | PacksCacheHit
 export function fetchPacks(
   lang: string
 ): ThunkAction<Promise<Pack[]>, AppState, null, PackActions> {
-  return (dispatch: Dispatch<PackActions>, getState: () => AppState) => {
-    dispatch({
-      type: PACKS_FETCH_START,
-    });
-    const state = getState().packs;
-    const lastModified = state.lastModified;
-    const packs = state.all;
-    const headers = new Headers();
-    /* eslint-disable eqeqeq */
-    if (lastModified && packs && packs.length && state.lang == lang) {
-      headers.append('If-Modified-Since', lastModified);
-    }
-    const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
-    return fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
-      method: 'GET',
-      headers: headers,
-    }).then(response => {
+  return async(dispatch: Dispatch<PackActions>, getState: () => AppState) => {
+    try {
+      VERBOSE && console.log('entered fetchPacks');
+      dispatch({
+        type: PACKS_FETCH_START,
+      });
+      const state = getState().packs;
+      const lastModified = state.lastModified;
+      const packs = state.all;
+      const headers = new Headers();
+      /* eslint-disable eqeqeq */
+      if (lastModified && packs && packs.length && state.lang == lang) {
+        headers.append('If-Modified-Since', lastModified);
+      }
+      const langPrefix = lang && lang !== 'en' ? `${lang}.` : '';
+      VERBOSE && console.log(`Fetch called: https://${langPrefix}arkhamdb.com/api/public/packs/`);
+      const response = await fetch(`https://${langPrefix}arkhamdb.com/api/public/packs/`, {
+        method: 'GET',
+        headers: headers,
+      });
+      VERBOSE && console.log('Got packs response');
       if (response.status === 304) {
+        VERBOSE && console.log('Packs returned 304');
         // Cache hit, no change needed.
         dispatch({
           type: PACKS_CACHE_HIT,
           timestamp: new Date(),
         });
-        return Promise.resolve(packs);
+        return packs;
       }
       const newLastModified = response.headers.get('Last-Modified');
-      return response.json().then(json => {
-        const packs: Pack[] = json;
-        dispatch({
-          type: PACKS_AVAILABLE,
-          packs,
-          lang,
-          timestamp: new Date(),
-          lastModified: newLastModified || undefined,
-        });
-        return json;
+      const json = await response.json();
+      VERBOSE && console.log('Got packs json');
+      const newPacks: Pack[] = json;
+      dispatch({
+        type: PACKS_AVAILABLE,
+        packs: newPacks,
+        lang,
+        timestamp: new Date(),
+        lastModified: newLastModified || undefined,
       });
-    }).catch(err => {
+      return newPacks;
+    } catch(err){
       console.log(err);
       dispatch({
         type: PACKS_FETCH_ERROR,
         error: err.message || err,
       });
       return [];
-    });
+    }
   };
 }
 

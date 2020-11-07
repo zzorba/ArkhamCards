@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import { DynamicColorIOS, KeyboardAvoidingView, Platform, StyleSheet, View, ViewStyle } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, View, ViewStyle } from 'react-native';
 import AnimatedModal from 'react-native-modal';
 
-import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
-import colors from '@styles/colors';
 
 const IOS_MODAL_ANIMATION = {
   from: { opacity: 0, scale: 1.2 },
@@ -85,7 +83,7 @@ export default function DialogContainer({
         <View style={[styles.content, { backgroundColor: colors.background }, contentStyle]}>
           {Platform.OS === 'ios' && blurComponentIOS}
           {Platform.OS === 'ios' && !blurComponentIOS && (
-            <View style={[styles.blur, blurStyle]} />
+            <View style={[styles.blur, blurStyle, { backgroundColor: colors.L20 }]} />
           )}
           <View style={[styles.header, headerStyle]}>
             {titleChildrens}
@@ -125,7 +123,6 @@ const styles = StyleSheet.create({
   },
   blur: {
     position: 'absolute',
-    backgroundColor: Platform.OS === 'ios' ? DynamicColorIOS({ light: 'white', dark: '#222' }) : 'white',
     top: 0,
     left: 0,
     bottom: 0,

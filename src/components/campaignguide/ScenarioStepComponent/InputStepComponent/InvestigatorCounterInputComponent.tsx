@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ngettext, msgid } from 'ttag';
 
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
-import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
+import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import InvestigatorCounterComponent from '@components/campaignguide/prompts/InvestigatorCounterComponent';
 import { InputStep, InvestigatorCounterInput } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import Card from '@data/Card';
 import { forEach } from 'lodash';
 
 interface Props {
@@ -16,9 +15,9 @@ interface Props {
   campaignLog: GuidedCampaignLog;
 }
 
-export default class InvestigatorCounterInputComponent extends React.Component<Props> {
-  investigatorCounterLimits(scenarioInvestigators: Card[]) {
-    const { campaignLog, input } = this.props;
+export default function InvestigatorCounterInputComponent({ step, input, campaignLog }: Props) {
+  const { scenarioInvestigators } = useContext(ScenarioStepContext);
+  const investigatorCounterLimits = useMemo(() => {
     if (!input.max && !input.investigator_max) {
       return undefined;
     }
@@ -35,10 +34,8 @@ export default class InvestigatorCounterInputComponent extends React.Component<P
       }
     });
     return limits;
-  }
-
-  description(scenarioInvestigators: Card[]) {
-    const { campaignLog, input } = this.props;
+  }, [scenarioInvestigators, campaignLog, input]);
+  const description = useMemo(() => {
     if (!input.show_special_xp) {
       return undefined;
     }
@@ -53,26 +50,19 @@ export default class InvestigatorCounterInputComponent extends React.Component<P
       );
     });
     return description;
-  }
+  }, [scenarioInvestigators, campaignLog, input]);
 
-  render() {
-    const { step, input } = this.props;
-    return (
-      <>
-        <SetupStepWrapper bulletType={step.bullet_type}>
-          { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
-        </SetupStepWrapper>
-        <ScenarioStepContext.Consumer>
-          { ({ scenarioInvestigators }: ScenarioStepContextType) => (
-            <InvestigatorCounterComponent
-              id={step.id}
-              countText={input.text}
-              limits={this.investigatorCounterLimits(scenarioInvestigators)}
-              description={this.description(scenarioInvestigators)}
-            />
-          ) }
-        </ScenarioStepContext.Consumer>
-      </>
-    );
-  }
+  return (
+    <>
+      <SetupStepWrapper bulletType={step.bullet_type}>
+        { !!step.text && <CampaignGuideTextComponent text={step.text} /> }
+      </SetupStepWrapper>
+      <InvestigatorCounterComponent
+        id={step.id}
+        countText={input.text}
+        limits={investigatorCounterLimits}
+        description={description}
+      />
+    </>
+  );
 }

@@ -2,11 +2,12 @@ import React, { useCallback } from 'react';
 
 import InvestigatorRow from '@components/core/InvestigatorRow';
 import InvestigatorDeckRow from '../InvestigatorDeckRow';
-import DeckList, { DeckListProps } from '../DeckList';
+import CampaignDeckList, { CampaignDeckListProps } from '../CampaignDeckList';
 import { Deck } from '@actions/types';
-import Card, { CardsMap } from '@data/Card';
+import Card from '@data/Card';
+import { useInvestigatorCards } from '@components/core/hooks';
 
-interface Props extends DeckListProps {
+interface Props extends CampaignDeckListProps {
   deckRemoved?: (
     id: number,
     deck?: Deck,
@@ -18,54 +19,43 @@ interface Props extends DeckListProps {
   ) => void;
 }
 
-export default function DeckSelector(props: Props) {
-  const {
-    investigatorRemoved,
-    deckRemoved,
-    componentId,
-    deckIds,
-    investigatorIds,
-    deckAdded,
-    investigatorAdded,
-    campaignId,
-  } = props;
-  const renderDeck = useCallback(
-    (
-      deckId: number,
-      cards: CardsMap,
-      investigators: CardsMap
-    ) => {
-      return (
-        <InvestigatorDeckRow
-          key={deckId}
-          id={deckId}
-          investigators={investigators}
-          deckRemoved={deckRemoved}
-        />
-      );
-    }, [deckRemoved]);
+export default function DeckSelector({
+  investigatorRemoved,
+  deckRemoved,
+  componentId,
+  deckIds,
+  investigatorIds,
+  deckAdded,
+  investigatorAdded,
+  campaignId,
+}: Props) {
+  const investigators = useInvestigatorCards();
+  const renderDeck = useCallback((deckId: number) => {
+    return (
+      <InvestigatorDeckRow
+        key={deckId}
+        id={deckId}
+        deckRemoved={deckRemoved}
+      />
+    );
+  }, [deckRemoved]);
 
-  const renderInvestigator = useCallback(
-    (
-      code: string,
-      investigators: CardsMap
-    ) => {
-      const investigator = investigators[code];
-      if (!investigator) {
-        return null;
-      }
-      return (
-        <InvestigatorRow
-          key={code}
-          investigator={investigator}
-          onRemove={investigatorRemoved}
-        />
-      );
-    }, [investigatorRemoved]
-  );
+  const renderInvestigator = useCallback((code: string) => {
+    const investigator = investigators && investigators[code];
+    if (!investigator) {
+      return null;
+    }
+    return (
+      <InvestigatorRow
+        key={code}
+        investigator={investigator}
+        onRemove={investigatorRemoved}
+      />
+    );
+  }, [investigatorRemoved, investigators]);
 
   return (
-    <DeckList
+    <CampaignDeckList
       renderDeck={renderDeck}
       renderInvestigator={renderInvestigator}
       componentId={componentId}
@@ -74,7 +64,6 @@ export default function DeckSelector(props: Props) {
       investigatorIds={investigatorIds}
       deckAdded={deckAdded}
       investigatorAdded={investigatorAdded}
-      otherProps={props}
     />
   );
 }

@@ -1,133 +1,33 @@
-import { filter, findIndex, flatMap, forEach, keys, map, values } from 'lodash';
+import { findIndex, forEach, map } from 'lodash';
 
 import { QueryParams } from '@data/types';
 import { BASIC_QUERY, combineQueries, combineQueriesOpt, where } from '@data/query';
-import { CARD_FACTION_CODES, SKILLS, FactionCodeType } from '@app_constants';
-import Card from '@data/Card';
+import { SKILLS, FactionCodeType, CARD_FACTION_CODES } from '@app_constants';
 import { Brackets } from 'typeorm/browser';
-import Database from '@data/Database';
 
 export interface CardFilterData {
   hasCost: boolean;
   hasXp: boolean;
   hasSkill: boolean;
-  allUses: string[];
+  hasSlot: boolean;
+  hasUses: boolean;
+  hasLocation: boolean;
+  hasEnemy: boolean;
+  hasWeakness: boolean;
   allFactions: FactionCodeType[];
-  allTraits: string[];
-  allTypes: string[];
-  allTypeCodes: string[];
-  allSubTypes: string[];
-  allPacks: string[];
-  allSlots: string[];
-  allEncounters: string[];
-  allIllustrators: string[];
-}
-export async function calculateAllCardFilterData(cards: Card[], db: Database): Promise<CardFilterData> {
-  const result = calculateCardFilterData(cards);
-  const encounterCards = await (await db.cardsQuery())
-    .select('c.encounter_name')
-    .distinct(true)
-    .getRawMany();
-  return {
-    ...result,
-    allEncounters: flatMap(encounterCards, c => values(c)).sort(),
-  };
 }
 
-export function calculateCardFilterData(cards: Card[]): CardFilterData {
-  const factionsMap: { [key: string]: boolean } = {};
-  let hasCost = false;
-  let hasXp = false;
-  let hasSkill = false;
-  const typesMap: { [key: string]: boolean } = {};
-  const typeCodesMap: { [key: string]: boolean } = {};
-  const usesMap: { [key: string]: boolean } = {};
-  const subTypesMap: { [key: string]: boolean } = {};
-  const traitsMap: { [key: string]: boolean } = {};
-  const packsMap: { [key: string]: boolean } = {};
-  const slotsMap: { [key: string]: boolean } = {};
-  const encountersMap: { [key: string]: boolean } = {};
-  const illustratorsMap: { [key: string]: boolean } = {};
-  forEach(cards, card => {
-    if (card.faction_code) {
-      factionsMap[card.faction_code] = true;
-    }
-    if (card.faction2_code) {
-      factionsMap[card.faction2_code] = true;
-    }
-    if (card.cost !== null) {
-      hasCost = true;
-    }
-    if (card.xp !== null) {
-      hasXp = true;
-    }
-    if (!hasSkill && (
-      card.skill_willpower ||
-      card.skill_intellect ||
-      card.skill_combat ||
-      card.skill_agility ||
-      card.skill_wild
-    )) {
-      hasSkill = true;
-    }
-    if (card.traits) {
-      forEach(
-        filter(map(card.traits.split('.'), t => t.trim()), t => !!t),
-        t => {
-          traitsMap[t] = true;
-        });
-    }
-    if (card.subtype_name) {
-      subTypesMap[card.subtype_name] = true;
-    }
-    if (card.uses) {
-      usesMap[card.uses] = true;
-    }
-    if (card.pack_name) {
-      packsMap[card.pack_name] = true;
-    }
-    if (card.slot) {
-      if (card.slot.indexOf('.') !== -1) {
-        forEach(
-          map(card.slot.split('.'), s => s.trim()),
-          s => {
-            slotsMap[s] = true;
-          }
-        );
-      } else {
-        slotsMap[card.slot] = true;
-      }
-    }
-    if (card.encounter_name) {
-      encountersMap[card.encounter_name] = true;
-    }
-    if (card.illustrator) {
-      illustratorsMap[card.illustrator] = true;
-    }
-    typesMap[card.type_name] = true;
-    typeCodesMap[card.type_code] = true;
-  });
-  const allFactions: FactionCodeType[] = filter(
-    CARD_FACTION_CODES,
-    factionCode => !!factionsMap[factionCode]
-  );
-  return {
-    allFactions,
-    hasCost,
-    hasXp,
-    hasSkill,
-    allUses: keys(usesMap).sort(),
-    allTraits: keys(traitsMap).sort(),
-    allTypes: keys(typesMap).sort(),
-    allTypeCodes: keys(typeCodesMap).sort(),
-    allSubTypes: keys(subTypesMap).sort(),
-    allPacks: keys(packsMap).sort(),
-    allSlots: keys(slotsMap).sort(),
-    allEncounters: keys(encountersMap).sort(),
-    allIllustrators: keys(illustratorsMap).sort(),
-  };
-}
-
+export const DefaultCardFilterData: CardFilterData = {
+  hasCost: true,
+  hasXp: true,
+  hasSkill: true,
+  hasSlot: true,
+  hasUses: true,
+  hasLocation: true,
+  hasEnemy: true,
+  hasWeakness: true,
+  allFactions: CARD_FACTION_CODES,
+};
 
 export interface SkillIconsFilters {
   willpower: boolean;

@@ -41,7 +41,6 @@ import AddCampaignNoteSectionDialog from '../AddCampaignNoteSectionDialog';
 import NavButton from '@components/core/NavButton';
 import SettingsSwitch from '@components/core/SettingsSwitch';
 import ChaosBagLine from '@components/core/ChaosBagLine';
-import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import DeckSelector from './DeckSelector';
 import WeaknessSetPackChooserComponent from '@components/weakness/WeaknessSetPackChooserComponent';
 import { showCampaignDifficultyDialog } from '@components/campaign/CampaignDifficultyDialog';
@@ -55,7 +54,7 @@ import COLORS from '@styles/colors';
 import space, { m, s } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
-type OwnProps = NavigationProps & PlayerCardProps & InjectedDialogProps;
+type OwnProps = NavigationProps & PlayerCardProps;
 
 interface ReduxProps {
   nextId: number;
@@ -208,9 +207,15 @@ class NewCampaignView extends React.Component<Props, State> {
     });
   };
 
-  _toggleCampaignLogDialog = () => {
+  _showCampaignLogDialog = () => {
     this.setState({
-      campaignLogDialogVisible: !this.state.campaignLogDialogVisible,
+      campaignLogDialogVisible: true,
+    });
+  };
+
+  _hideCampaignLogDialog = () => {
+    this.setState({
+      campaignLogDialogVisible: false,
     });
   };
 
@@ -456,11 +461,11 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderChaosBagSection() {
-    const { gameFont, typography } = this.context;
+    const { typography } = this.context;
     const chaosBag = this.getChaosBag();
     return (
       <View style={styles.block}>
-        <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+        <Text style={typography.mediumGameFont}>
           { t`Chaos Bag` }
         </Text>
         <View style={space.marginTopS}>
@@ -470,30 +475,18 @@ class NewCampaignView extends React.Component<Props, State> {
     );
   }
 
-  _showCampaignNameDialog = () => {
-    const {
-      name,
-    } = this.state;
-    this.props.showTextEditDialog(
-      t`Campaign Name`,
-      name,
-      this._onNameChange
-    );
-  };
-
   renderWeaknessSetSection() {
     const {
       componentId,
     } = this.props;
     const {
-      gameFont,
       borderStyle,
       typography,
     } = this.context;
     return (
       <View style={[space.paddingBottomS, styles.underline, borderStyle]}>
         <View style={styles.block}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.mediumGameFont}>
             { t`Weakness Set` }
           </Text>
           <Text style={typography.small}>
@@ -513,17 +506,13 @@ class NewCampaignView extends React.Component<Props, State> {
 
   renderCampaignSectionDialog() {
     const {
-      viewRef,
-    } = this.props;
-    const {
       campaignLogDialogVisible,
     } = this.state;
     return (
       <AddCampaignNoteSectionDialog
-        viewRef={viewRef}
         visible={campaignLogDialogVisible}
         addSection={this._addCampaignNoteSection}
-        toggleVisible={this._toggleCampaignLogDialog}
+        hide={this._hideCampaignLogDialog}
       />
     );
   }
@@ -547,7 +536,7 @@ class NewCampaignView extends React.Component<Props, State> {
   }
 
   renderCampaignLogSection() {
-    const { gameFont, borderStyle, typography } = this.context;
+    const { borderStyle, typography } = this.context;
     if (this.isGuided()) {
       return null;
     }
@@ -558,7 +547,7 @@ class NewCampaignView extends React.Component<Props, State> {
     return (
       <View style={[styles.underline, borderStyle]}>
         <View style={styles.block}>
-          <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+          <Text style={typography.mediumGameFont}>
             { t`Campaign Log` }
           </Text>
         </View>
@@ -596,7 +585,7 @@ class NewCampaignView extends React.Component<Props, State> {
         )) }
         { !this.hasDefinedChaosBag() && (
           <View style={space.marginTopS}>
-            <BasicButton title={t`Add Log Section`} onPress={this._toggleCampaignLogDialog} />
+            <BasicButton title={t`Add Log Section`} onPress={this._showCampaignLogDialog} />
           </View>
         ) }
       </View>
@@ -619,11 +608,9 @@ class NewCampaignView extends React.Component<Props, State> {
   render() {
     const {
       componentId,
-      captureViewRef,
       nextId,
     } = this.props;
     const {
-      gameFont,
       backgroundStyle,
       borderStyle,
       typography,
@@ -640,7 +627,7 @@ class NewCampaignView extends React.Component<Props, State> {
     } = this.state;
 
     return (
-      <View ref={captureViewRef} style={backgroundStyle}>
+      <View style={backgroundStyle}>
         <ScrollView contentContainerStyle={backgroundStyle}>
           <CampaignSelector
             componentId={componentId}
@@ -680,7 +667,7 @@ class NewCampaignView extends React.Component<Props, State> {
           { campaignCode !== TDE && (
             <View style={[styles.underline, borderStyle]}>
               <View style={styles.block}>
-                <Text style={[typography.mediumGameFont, { fontFamily: gameFont }]}>
+                <Text style={typography.mediumGameFont}>
                   { t`Investigators` }
                 </Text>
               </View>
@@ -734,9 +721,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   withPlayerCards(
-    withDialogs(
-      NewCampaignView
-    )
+    NewCampaignView
   )
 );
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import { find, map } from 'lodash';
 
@@ -16,24 +16,23 @@ interface Props {
   disabled?: boolean;
 }
 
-export default class InvestigatorOptionsModule extends React.Component<Props> {
+export default function InvestigatorOptionsModule({
+  investigator,
+  meta,
+  parallelInvestigators,
+  setMeta,
+  editWarning,
+  disabled,
+}: Props) {
 
-  _parallelCardChange = (
+  const parallelCardChange = useCallback((
     type: 'alternate_front' | 'alternate_back',
     code?: string
   ) => {
-    const { setMeta } = this.props;
     setMeta(type, code);
-  };
+  }, [setMeta]);
 
-  renderParallelOptions() {
-    const {
-      investigator,
-      parallelInvestigators,
-      disabled,
-      editWarning,
-      meta,
-    } = this.props;
+  const parallelOptionsSection = useMemo(() => {
     if (!parallelInvestigators.length) {
       return null;
     }
@@ -44,7 +43,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
           investigator={investigator}
           parallelInvestigators={parallelInvestigators}
           type="alternate_front"
-          onChange={this._parallelCardChange}
+          onChange={parallelCardChange}
           selection={find(
             parallelInvestigators,
             investigator => investigator.code === meta.alternate_front
@@ -56,7 +55,7 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
           investigator={investigator}
           parallelInvestigators={parallelInvestigators}
           type="alternate_back"
-          onChange={this._parallelCardChange}
+          onChange={parallelCardChange}
           selection={find(
             parallelInvestigators,
             investigator => investigator.code === meta.alternate_back
@@ -66,34 +65,25 @@ export default class InvestigatorOptionsModule extends React.Component<Props> {
         />
       </>
     );
-  }
+  }, [investigator, parallelInvestigators, parallelCardChange, disabled, editWarning, meta]);
 
-  render() {
-    const {
-      investigator,
-      meta,
-      setMeta,
-      disabled,
-      editWarning,
-    } = this.props;
-    const options = investigator.investigatorSelectOptions();
-    return (
-      <View>
-        { this.renderParallelOptions() }
-        { map(options, (option, idx) => {
-          return (
-            <InvestigatorOption
-              key={idx}
-              investigator={investigator}
-              option={option}
-              setMeta={setMeta}
-              meta={meta}
-              disabled={disabled}
-              editWarning={editWarning}
-            />
-          );
-        }) }
-      </View>
-    );
-  }
+  const options = investigator.investigatorSelectOptions();
+  return (
+    <View>
+      { parallelOptionsSection }
+      { map(options, (option, idx) => {
+        return (
+          <InvestigatorOption
+            key={idx}
+            investigator={investigator}
+            option={option}
+            setMeta={setMeta}
+            meta={meta}
+            disabled={disabled}
+            editWarning={editWarning}
+          />
+        );
+      }) }
+    </View>
+  );
 }

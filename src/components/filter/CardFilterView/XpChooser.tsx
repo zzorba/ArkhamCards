@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { flatMap, map, max, min } from 'lodash';
 import {
   Text,
@@ -6,7 +6,7 @@ import {
 import { t } from 'ttag';
 
 import ArkhamButtonGroup from '@components/core/ArkhamButtonGroup';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   onFilterChange: (setting: string, value: any) => void;
@@ -18,28 +18,22 @@ interface Props {
   nonExceptional: boolean;
 }
 
-export default class XpChooser extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  levelRanges() {
-    const {
-      maxLevel,
-    } = this.props;
+export default function XpChooser({
+  onFilterChange,
+  onToggleChange,
+  maxLevel,
+  levels,
+  enabled,
+  exceptional,
+  nonExceptional,
+}: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const levelRanges = useMemo(() => {
     return [[0, 0], [1, maxLevel]];
-  }
+  }, [maxLevel]);
 
-  _updateIndex = (indexes: number[]) => {
-    const {
-      onFilterChange,
-      onToggleChange,
-      maxLevel,
-      enabled,
-      exceptional,
-      nonExceptional,
-    } = this.props;
-    const ranges = this.levelRanges();
-    const selection = flatMap(indexes, idx => ranges[idx]);
+  const updateIndex = useCallback((indexes: number[]) => {
+    const selection = flatMap(indexes, idx => levelRanges[idx]);
     const level = indexes.length > 0 ? [min(selection), max(selection)] : [0, maxLevel];
     onFilterChange('level', level);
     if (indexes.length > 0) {
@@ -51,47 +45,39 @@ export default class XpChooser extends React.Component<Props> {
         onToggleChange('levelEnabled', false);
       }
     }
-    this.setState({
-      levels: level,
-    });
-  };
+  }, [onFilterChange, onToggleChange, maxLevel, enabled, exceptional, nonExceptional, levelRanges]);
 
-  render() {
-    const {
-      levels,
-      maxLevel,
-      enabled,
-    } = this.props;
-    const { colors, typography } = this.context;
-
-    if (maxLevel <= 1) {
-      return null;
-    }
-
-    const selectedIndexes = flatMap(this.levelRanges(), (xyz, idx) => {
-      if (enabled &&
-          xyz[0] >= levels[0] && xyz[0] <= levels[1] &&
-          xyz[1] >= levels[0] && xyz[1] <= levels[1]) {
-        return [idx];
-      }
-      return [];
-    });
-    const buttons = map(this.levelRanges(), xyz => {
-      const startXp = xyz[0];
-      const endXp = xyz[1];
-      const xp = startXp === endXp ?
-        t`Level ${startXp}` :
-        t`Level ${startXp} - ${endXp}`;
-      return {
-        element: (selected: boolean) => (<Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>{ xp }</Text>),
-      };
-    });
-    return (
-      <ArkhamButtonGroup
-        onPress={this._updateIndex}
-        selectedIndexes={selectedIndexes}
-        buttons={buttons}
-      />
-    );
+  if (maxLevel <= 1) {
+    return null;
   }
+
+  const selectedIndexes = flatMap(levelRanges, (xyz, idx) => {
+    if (enabled &&
+        xyz[0] >= levels[0] && xyz[0] <= levels[1] &&
+        xyz[1] >= levels[0] && xyz[1] <= levels[1]) {
+      return [idx];
+    }
+    return [];
+  });
+  const buttons = map(levelRanges, xyz => {
+    const startXp = xyz[0];
+    const endXp = xyz[1];
+    const xp = startXp === endXp ?
+      t`Level ${startXp}` :
+      t`Level ${startXp} - ${endXp}`;
+    return {
+      element: (selected: boolean) => (
+        <Text style={[typography.small, { color: selected ? colors.D20 : colors.L20 }]}>
+          { xp }
+        </Text>
+      ),
+    };
+  });
+  return (
+    <ArkhamButtonGroup
+      onPress={updateIndex}
+      selectedIndexes={selectedIndexes}
+      buttons={buttons}
+    />
+  );
 }

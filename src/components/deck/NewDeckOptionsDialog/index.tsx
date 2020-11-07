@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
   Text,
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  View,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { find, forEach, map, sumBy, throttle } from 'lodash';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { Action } from 'redux';
+import { useDispatch } from 'react-redux';
 import { NetInfoStateType } from '@react-native-community/netinfo';
 import { t } from 'ttag';
 
@@ -20,21 +21,21 @@ import { showDeckModal } from '@components/nav/helper';
 import TabooSetPicker from '@components/core/TabooSetPicker';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import SettingsItem from '@components/settings/SettingsItem';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import BasicButton from '@components/core/BasicButton';
 import withNetworkStatus, { NetworkStatusProps } from '@components/core/withNetworkStatus';
 import withLoginState, { LoginStateProps } from '@components/core/withLoginState';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import { saveNewDeck, NewDeckParams } from '@components/deck/actions';
 import { NavigationProps } from '@components/nav/types';
 import { Deck, Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
 import Card from '@data/Card';
-import { getTabooSet, AppState } from '@reducers';
+import { AppState } from '@reducers';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
 import starterDecks from '../../../../assets/starter-decks';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useFlag, useInvestigatorCards, usePlayerCards, useTabooSetId } from '@components/core/hooks';
+import { ThunkDispatch } from 'redux-thunk';
 
 export interface NewDeckOptionsProps {
   investigatorId: string;
@@ -51,12 +52,8 @@ interface ReduxActionProps {
 
 type Props = NavigationProps &
   NewDeckOptionsProps &
-  PlayerCardProps &
-  ReduxProps &
-  ReduxActionProps &
   NetworkStatusProps &
-  LoginStateProps &
-  DimensionsProps;
+  LoginStateProps;
 
 interface State {
   saving: boolean;
@@ -67,169 +64,30 @@ interface State {
   optionSelected: boolean[];
 }
 
-class NewDeckOptionsDialog extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
-  _onOkayPress!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      saving: false,
-      deckName: undefined,
-      offlineDeck: !props.signedIn || !props.isConnected || props.networkType === NetInfoStateType.none,
-      optionSelected: [true],
-      tabooSetId: props.defaultTabooSetId,
-      starterDeck: false,
-    };
-
-    this._onOkayPress = throttle(this.onOkayPress.bind(this), 200);
-  }
-
-  _onDeckTypeChange = (value: boolean) => {
-    this.setState({
-      offlineDeck: !value,
-    });
-  };
-
-  _onStarterDeckChange = (value: boolean) => {
-    this.setState({
-      starterDeck: value,
-    });
-  }
-
-  _onDeckNameChange = (value?: string) => {
-    this.setState({
-      deckName: value || '',
-    });
-  };
-
-  _toggleOptionsSelected = (index: number, value: boolean) => {
-    const optionSelected = this.state.optionSelected.slice();
-    optionSelected[index] = value;
-
-    this.setState({
-      optionSelected,
-    });
-  };
-
-  _showNewDeck = (deck: Deck) => {
-    const {
-      componentId,
-      onCreateDeck,
-    } = this.props;
-    const { colors } = this.context;
-    const investigator = this.investigator();
-    this.setState({
-      saving: false,
-    });
-    // Change the deck options for required cards, if present.
-    onCreateDeck && onCreateDeck(deck);
-    showDeckModal(componentId, deck, colors, investigator);
-  };
-
-  getSlots() {
-    const {
-      cards,
-    } = this.props;
-    const {
-      optionSelected,
-    } = this.state;
-    const slots: Slots = {
-      // Random basic weakness.
-      [RANDOM_BASIC_WEAKNESS]: 1,
-    };
-
-    // Seed all the 'basic' requirements from the investigator.
-    const investigator = this.investigator();
-    if (investigator && investigator.deck_requirements) {
-      forEach(investigator.deck_requirements.card, cardRequirement => {
-        const card = cardRequirement.code && cards[cardRequirement.code];
-        if (!card) {
-          return;
-        }
-        slots[card.code] = card.deck_limit || card.quantity || 0;
-      });
-      if (investigator.code === '06002') {
-        slots['06008'] = 1;
-      }
-    }
-
-    if (optionSelected[0] !== true ||
-      sumBy(optionSelected, x => x ? 1 : 0) !== 1) {
-      // Now sub in the options that were asked for if we aren't going
-      // with the defaults.
-      const options = this.requiredCardOptions();
-      forEach(optionSelected, (include, index) => {
-        const cards = options[index];
-        forEach(cards, card => {
-          if (include) {
-            slots[card.code] = card.deck_limit || card.quantity || 0;
-          } else if (slots[card.code]) {
-            delete slots[card.code];
-          }
-        });
-      });
-    }
-
-    return slots;
-  }
-
-  onOkayPress(isRetry?: boolean) {
-    const {
-      signedIn,
-      networkType,
-      isConnected,
-      saveNewDeck,
-    } = this.props;
-    const {
-      deckName = this.defaultDeckName(),
-      offlineDeck,
-      saving,
-      starterDeck,
-      tabooSetId,
-    } = this.state;
-    const investigator = this.investigator();
-    if (investigator && (!saving || isRetry)) {
-      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
-      let slots = this.getSlots();
-      if (starterDeck && starterDecks[investigator.code]) {
-        slots = starterDecks[investigator.code];
-      }
-      this.setState({
-        saving: true,
-      });
-      saveNewDeck({
-        local,
-        deckName: deckName || t`New Deck`,
-        investigatorCode: investigator.code,
-        slots: slots,
-        tabooSetId,
-        problem: (starterDeck && starterDecks[investigator.code]) ? undefined : 'too_few_cards',
-      }).then(
-        this._showNewDeck,
-        () => {
-          // TODO: error
-          this.setState({
-            saving: false,
-          });
-        }
-      );
-    }
-  }
-
-  investigator(): Card | undefined {
-    const {
-      investigatorId,
-      investigators,
-    } = this.props;
-    return (investigators && investigators[investigatorId]) || undefined;
-  }
-
-  defaultDeckName() {
-    const investigator = this.investigator();
+function NewDeckOptionsDialog({
+  investigatorId,
+  onCreateDeck,
+  componentId,
+  signedIn,
+  isConnected,
+  networkType,
+  login,
+  refreshNetworkStatus,
+}: Props) {
+  const defaultTabooSetId = useTabooSetId();
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const [saving, setSaving] = useState(false);
+  const [deckNameChange, setDeckNameChange] = useState<string | undefined>();
+  const [offlineDeck, toggleOfflineDeck] = useFlag(!signedIn || !isConnected || networkType === NetInfoStateType.none);
+  const [optionSelected, setOptionSelected] = useState<boolean[]>([]);
+  const [tabooSetId, setTabooSetId] = useState<number | undefined>(defaultTabooSetId);
+  const [starterDeck, setStarterDeck] = useState(false);
+  const investigators = useInvestigatorCards(tabooSetId);
+  const cards = usePlayerCards(tabooSetId);
+  const investigator = useMemo(() => (investigators && investigators[investigatorId]) || undefined, [investigatorId, investigators]);
+  const defaultDeckName = useMemo(() => {
     if (!investigator || !investigator.name) {
       return t`New Deck`;
     }
@@ -247,14 +105,10 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       default:
         return t`${investigator.name} Does It All`;
     }
-  }
+  }, [investigator]);
 
-  requiredCardOptions() {
-    const {
-      cards,
-    } = this.props;
-    const investigator = this.investigator();
-    if (!investigator) {
+  const requiredCardOptions = useMemo(() => {
+    if (!cards || !investigator) {
       return [];
     }
     const result: Card[][] = [[]];
@@ -282,32 +136,85 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
       }
     );
     return result;
-  }
+  }, [cards, investigator]);
+  const slots = useMemo(() => {
+    if (starterDeck && investigator && starterDecks[investigator.code]) {
+      return starterDecks[investigator.code];
+    }
+    const slots: Slots = {
+      // Random basic weakness.
+      [RANDOM_BASIC_WEAKNESS]: 1,
+    };
 
-  _setTabooSetId = (tabooSetId?: number) => {
-    this.setState({
-      tabooSetId,
-    });
-  };
+    // Seed all the 'basic' requirements from the investigator.
+    if (cards && investigator && investigator.deck_requirements) {
+      forEach(investigator.deck_requirements.card, cardRequirement => {
+        const card = cardRequirement.code && cards[cardRequirement.code];
+        if (!card) {
+          return;
+        }
+        slots[card.code] = card.deck_limit || card.quantity || 0;
+      });
+      if (investigator.code === '06002') {
+        slots['06008'] = 1;
+      }
+    }
 
-  renderFormContent(investigator: Card) {
-    const {
-      investigatorId,
-      signedIn,
-      login,
-      refreshNetworkStatus,
-      networkType,
-      isConnected,
-    } = this.props;
-    const { colors, typography } = this.context;
-    const {
-      saving,
-      deckName,
-      offlineDeck,
-      optionSelected,
-      starterDeck,
-      tabooSetId,
-    } = this.state;
+    if (optionSelected[0] !== true ||
+      sumBy(optionSelected, x => x ? 1 : 0) !== 1) {
+      // Now sub in the options that were asked for if we aren't going
+      // with the defaults.
+      forEach(optionSelected, (include, index) => {
+        const cards = requiredCardOptions[index];
+        forEach(cards, card => {
+          if (include) {
+            slots[card.code] = card.deck_limit || card.quantity || 0;
+          } else if (slots[card.code]) {
+            delete slots[card.code];
+          }
+        });
+      });
+    }
+
+    return slots;
+  }, [cards, optionSelected, requiredCardOptions, investigator, starterDeck]);
+  const dispatch: DeckDispatch = useDispatch();
+
+  const showNewDeck = useCallback((deck: Deck) => {
+    setSaving(false);
+    // Change the deck options for required cards, if present.
+    onCreateDeck && onCreateDeck(deck);
+    showDeckModal(componentId, deck, colors, investigator);
+  }, [componentId, onCreateDeck, colors, investigator, setSaving]);
+  const createDeck = useCallback((isRetry?: boolean) => {
+    const deckName = deckNameChange || defaultDeckName;
+    if (investigator && (!saving || isRetry)) {
+      const local = (offlineDeck || !signedIn || !isConnected || networkType === NetInfoStateType.none);
+      setSaving(true);
+      dispatch(saveNewDeck({
+        local,
+        deckName: deckName || t`New Deck`,
+        investigatorCode: investigator.code,
+        slots: slots,
+        tabooSetId,
+        problem: (starterDeck && starterDecks[investigator.code]) ? undefined : 'too_few_cards',
+      })).then(
+        showNewDeck,
+        () => {
+          setSaving(false);
+        }
+      );
+    }
+  }, [signedIn, dispatch, showNewDeck, slots,networkType, isConnected, offlineDeck, saving, starterDeck, tabooSetId, deckNameChange, investigator, defaultDeckName]);
+
+  const onOkayPress = useMemo(() => throttle(() => createDeck(), 200), [createDeck]);
+  const toggleOptionsSelected = useCallback((index: number, value: boolean) => {
+    const updatedOptionSelected = [...optionSelected];
+    updatedOptionSelected[index] = value;
+    setOptionSelected(updatedOptionSelected);
+  }, [optionSelected, setOptionSelected]);
+
+  const formContent = useMemo(() => {
     if (saving) {
       return (
         <ActivityIndicator
@@ -318,7 +225,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         />
       );
     }
-    const cardOptions = this.requiredCardOptions();
+    const cardOptions = requiredCardOptions;
     let hasStarterDeck = false;
     if (investigatorId) {
       hasStarterDeck = starterDecks[investigatorId] !== undefined;
@@ -328,16 +235,18 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         <EditText
           title={t`Name`}
           dialogDescription={t`Enter a name for this deck.`}
-          onValueChange={this._onDeckNameChange}
-          value={deckName}
-          placeholder={this.defaultDeckName()}
+          onValueChange={setDeckNameChange}
+          value={deckNameChange}
+          placeholder={defaultDeckName}
           settingsStyle
         />
-        <TabooSetPicker
-          color={colors.faction[investigator.factionCode()].background}
-          tabooSetId={tabooSetId}
-          setTabooSet={this._setTabooSetId}
-        />
+        { !!investigator && (
+          <TabooSetPicker
+            color={colors.faction[investigator.factionCode()].background}
+            tabooSetId={tabooSetId}
+            setTabooSet={setTabooSetId}
+          />
+        ) }
         <CardSectionHeader
           investigator={investigator}
           section={{ superTitle: t`Required Cards` }}
@@ -350,7 +259,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
               disabled={(index === 0 && cardOptions.length === 1) || starterDeck}
               label={map(requiredCards, card => card.name).join('\n')}
               value={optionSelected[index] || false}
-              onValueChange={this._toggleOptionsSelected}
+              onValueChange={toggleOptionsSelected}
             />
           );
         }) }
@@ -363,7 +272,7 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
             title={t`Create on ArkhamDB`}
             value={!offlineDeck}
             disabled={!signedIn || !isConnected || networkType === NetInfoStateType.none}
-            onValueChange={this._onDeckTypeChange}
+            onValueChange={toggleOfflineDeck}
             settingsStyle
           />
         ) : (
@@ -375,85 +284,60 @@ class NewDeckOptionsDialog extends React.Component<Props, State> {
         ) }
         { (!isConnected || networkType === NetInfoStateType.none) && (
           <TouchableOpacity onPress={refreshNetworkStatus}>
-            <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
-              { t`You seem to be offline. Refresh Network?` }
-            </Text>
+            <View style={[space.paddingS, space.paddingLeftM]}>
+              <Text style={[typography.small, { color: COLORS.red }, space.marginBottomS]}>
+                { t`You seem to be offline. Refresh Network?` }
+              </Text>
+            </View>
           </TouchableOpacity>
         ) }
         { hasStarterDeck && (
           <SettingsSwitch
             title={t`Use Starter Deck`}
             value={starterDeck}
-            onValueChange={this._onStarterDeckChange}
+            onValueChange={setStarterDeck}
             settingsStyle
           />
         ) }
       </>
     );
-  }
+  }, [colors, defaultDeckName, investigator, typography, investigatorId, signedIn, login, refreshNetworkStatus, networkType, isConnected, saving,
+    deckNameChange, offlineDeck, optionSelected, starterDeck, tabooSetId, toggleOfflineDeck, requiredCardOptions, toggleOptionsSelected]);
 
-  _cancelPressed = () => {
-    const { componentId } = this.props;
+  const cancelPressed = useCallback(() => {
     Navigation.pop(componentId);
-  };
+  }, [componentId]);
 
-  render() {
-    const {
-      saving,
-      optionSelected,
-    } = this.state;
-    const { backgroundStyle } = this.context;
-    const investigator = this.investigator();
-    if (!investigator) {
-      return null;
-    }
-    const okDisabled = saving || !find(optionSelected, selected => selected);
-    return (
-      <ScrollView contentContainerStyle={backgroundStyle}>
-        { this.renderFormContent(investigator) }
-        { !saving && (
-          <>
-            <BasicButton
-              title={t`Create deck`}
-              disabled={okDisabled}
-              onPress={this._onOkayPress}
-            />
-            <BasicButton
-              title={t`Cancel`}
-              color={COLORS.red}
-              onPress={this._cancelPressed}
-            />
-          </>
-        ) }
-      </ScrollView>
-    );
+  if (!investigator) {
+    return null;
   }
+  const okDisabled = saving || !find(optionSelected, selected => selected);
+  return (
+    <ScrollView contentContainerStyle={backgroundStyle}>
+      { formContent }
+      { !saving && (
+        <>
+          <BasicButton
+            title={t`Create deck`}
+            disabled={okDisabled}
+            onPress={onOkayPress}
+          />
+          <BasicButton
+            title={t`Cancel`}
+            color={COLORS.red}
+            onPress={cancelPressed}
+          />
+        </>
+      ) }
+    </ScrollView>
+  );
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    defaultTabooSetId: getTabooSet(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({ saveNewDeck } as any, dispatch);
-}
-
-export default withPlayerCards<NavigationProps & NewDeckOptionsProps>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(
-    withLoginState<NavigationProps & NewDeckOptionsProps & ReduxProps & ReduxActionProps & PlayerCardProps>(
-      withDimensions<NavigationProps & NewDeckOptionsProps & ReduxProps & ReduxActionProps & PlayerCardProps & LoginStateProps>(
-        withNetworkStatus<NavigationProps & NewDeckOptionsProps & ReduxProps & ReduxActionProps & PlayerCardProps & LoginStateProps & DimensionsProps>(
-          NewDeckOptionsDialog
-        )
-      ),
-      { noWrapper: true }
-    )
-  )
+export default withLoginState<NavigationProps & NewDeckOptionsProps>(
+  withNetworkStatus<NavigationProps & NewDeckOptionsProps & LoginStateProps>(
+    NewDeckOptionsDialog
+  ),
+  { noWrapper: true }
 );
 
 const styles = StyleSheet.create({

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { FlatList, ListRenderItemInfo, Keyboard, Platform, View, StyleSheet } from 'react-native';
 import { map } from 'lodash';
-import { Navigation } from 'react-native-navigation';
+import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import { Campaign } from '@actions/types';
@@ -24,13 +24,11 @@ interface Props {
 interface CampaignItemType {
   campaign: Campaign;
 }
-export default class CampaignList extends React.Component<Props> {
-  _onPress = (id: number, campaign: Campaign) => {
-    const {
-      componentId,
-    } = this.props;
+
+export default function CampaignList({ onScroll, componentId, campaigns, footer }: Props) {
+  const onPress = useCallback((id: number, campaign: Campaign) => {
     Keyboard.dismiss();
-    const options = {
+    const options: Options = {
       topBar: {
         title: {
           text: campaign.name,
@@ -51,6 +49,11 @@ export default class CampaignList extends React.Component<Props> {
             accessibilityLabel: t`Menu`,
           },
         ],
+      },
+      sideMenu: {
+        right: {
+
+        },
       },
     };
     if (campaign.guided) {
@@ -88,15 +91,15 @@ export default class CampaignList extends React.Component<Props> {
         },
       });
     }
-  };
+  }, [componentId]);
 
-  _renderItem = ({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
+  const renderItem = useCallback(({ item: { campaign } }: ListRenderItemInfo<CampaignItemType>) => {
     if (campaign.link) {
       return (
         <LinkedCampaignItem
           key={campaign.id}
           campaign={campaign}
-          onPress={this._onPress}
+          onPress={onPress}
         />
       );
     }
@@ -104,41 +107,37 @@ export default class CampaignList extends React.Component<Props> {
       <CampaignItem
         key={campaign.id}
         campaign={campaign}
-        onPress={this._onPress}
+        onPress={onPress}
       />
     );
-  };
+  }, [onPress]);
 
-  _renderHeader = () => {
+  const header = useMemo(() => {
     if (Platform.OS === 'android') {
       return (
         <View style={styles.searchBarPadding} />
       );
     }
     return null;
-  };
+  }, []);
 
-  render() {
-    const { campaigns, footer, onScroll } = this.props;
-    return (
-      <FlatList
-        contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
-        contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
-        onScroll={onScroll}
-        data={map(campaigns, campaign => {
-          return {
-            key: `${campaign.id}`,
-            campaign,
-          };
-        })}
-        renderItem={this._renderItem}
-        ListHeaderComponent={this._renderHeader}
-        ListFooterComponent={footer}
-      />
-    );
-  }
+  return (
+    <FlatList
+      contentInset={Platform.OS === 'ios' ? { top: SEARCH_BAR_HEIGHT } : undefined}
+      contentOffset={Platform.OS === 'ios' ? { x: 0, y: -SEARCH_BAR_HEIGHT } : undefined}
+      onScroll={onScroll}
+      data={map(campaigns, campaign => {
+        return {
+          key: `${campaign.id}`,
+          campaign,
+        };
+      })}
+      renderItem={renderItem}
+      ListHeaderComponent={header}
+      ListFooterComponent={footer}
+    />
+  );
 }
-
 
 const styles = StyleSheet.create({
   searchBarPadding: {

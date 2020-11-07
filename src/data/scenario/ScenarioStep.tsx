@@ -666,6 +666,13 @@ export default class ScenarioStep {
           return undefined;
         }
         const investigators: string[] = keys(choices);
+        if (!investigators.length && input.choose_none_steps) {
+          return this.proceedToNextStep(
+            [...input.choose_none_steps, ...this.remainingStepIds],
+            scenarioState,
+            this.campaignLog
+          );
+        }
         const effectsWithInput: EffectsWithInput = {
           input: investigators,
           effects: [

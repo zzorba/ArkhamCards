@@ -42,52 +42,62 @@
             "text": "Die Ermittler haben Umôrdhoth zurückgetrieben."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -110,20 +120,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -336,52 +338,62 @@
             "text": "Zebulon Whateley hat Das Vermächtnis von Dunwich überlebt."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -404,20 +416,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -485,172 +489,184 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
-          },
-          {
-            "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
-          },
-          {
-            "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
-          },
-          {
-            "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
-          },
-          {
-            "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
-          },
-          {
-            "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
-          },
-          {
-            "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
-          },
-          {
-            "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
-          },
-          {
-            "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
-          },
-          {
-            "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
-          },
-          {
-            "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
-          },
-          {
-            "id": "found_nigels_home",
-            "text": "you found Nigel's home."
-          },
-          {
-            "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
-          },
-          {
-            "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
-          },
-          {
-            "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
-          },
-          {
-            "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
-          },
-          {
-            "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
-          },
-          {
-            "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
-          },
-          {
-            "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
-          },
-          {
-            "id": "opened_path_above",
-            "text": "you opened the path above."
-          },
-          {
-            "id": "opened_path_below",
-            "text": "you opened the path below."
-          },
-          {
-            "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "id": "read_act_2",
+            "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
           },
           {
             "id": "possessed",
-            "text": "#name# was possessed."
+            "masculine_text": "#name# war besessen.",
+            "feminine_text": "#name# war besessen."
+          },
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "Die Ermittler wurden bei ihrer Flucht aus dem Sanatorium angegriffen."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "Die Ermittler sind in den Katakomben aufgewacht."
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "Das Reich von Carcosa ist mit unserem verschmolzen und Hastur regiert über beide."
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "Die Polizei wurde nicht verständigt."
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "Der Eidsprecher wurde vernichtet."
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "Die Ermittler sind dem Blick des Phantoms nicht entkommen."
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "Die Ermittler haben die Katakomben alleine betreten."
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "Die Ermittler sind aus dem Sanatorium entkommen."
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "Die Ermittler sind von der Feier geflohen."
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "Die Anhänger des Zeichens wissen, wie sie weiter vorgehen müssen."
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "Nigel Engram wurde gefunden."
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "Nigels Haus wurde gefunden."
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "Hastur hat die Ermittler im Griff."
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "Daniels Warnung wurde beherzigt."
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "Daniels Warnung wurde ignoriert."
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "Die Ermittler sind in ein geheimes Treffen geplatzt."
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "Der König hat seine Opfer beansprucht."
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "Die Ermittler wissen, wo das Tor zu finden ist."
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "Die Ermittler haben die Spange aus Onyx zurückgelassen."
+          },
+          {
+            "id": "opened_path_above",
+            "text": "Die Ermittler haben den oberen Pfad geöffnet."
+          },
+          {
+            "id": "opened_path_below",
+            "text": "Die Ermittler haben den unteren Pfad geöffnet."
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "Die Polizei hegt einen Verdacht gegen die Ermittler"
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
+            "text": "Die Ermittler haben verhindert, dass Hastur aus seinem Gefängnis entkommt."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "Die Monster auf der Feier wurden getötet."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "Der Fremde ist auf der Spur der Ermittler"
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "Die Ermittler haben die Spange aus Onyx mitgenommen"
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "Du hast versucht die Polizei zu warnen"
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "Nigel Engram konnte nicht gefunden werden."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -673,20 +689,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -707,7 +715,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "Ein oder mehr Ermittler waren besessen."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -935,52 +943,62 @@
             "text": "Zebulon Whateley hat Das Vermächtnis von Dunwich überlebt."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1003,20 +1021,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1120,52 +1130,62 @@
             "text": "Die Ermittler haben Umôrdhoth zurückgetrieben."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1188,20 +1208,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1274,172 +1286,184 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "attacked_as_you_escaped_arkham",
-            "text": "the investigators were attacked as they escaped the Asylum."
-          },
-          {
-            "id": "awoke_inside_catacombs",
-            "text": "you awoke inside the catacombs."
-          },
-          {
-            "id": "carcosa_merged",
-            "text": "the realm of Carcosa merged with our own, and Hastur rules over them both."
-          },
-          {
-            "id": "chose_not_to_warn_police",
-            "text": "you chose not to go to the police."
-          },
-          {
-            "id": "destroyed_the_oathspeaker",
-            "text": "you destroyed the oathspeaker."
-          },
-          {
-            "id": "did_not_escape_gaze",
-            "text": "you did not escape the gaze of the phantom."
-          },
-          {
-            "id": "entered_catacombs",
-            "text": "you entered the catacombs on your own."
-          },
-          {
-            "id": "escaped_the_asylum",
-            "text": "the investigators escaped the Asylum."
-          },
-          {
-            "id": "fled_dinner_party",
-            "text": "you fled the dinner party."
-          },
-          {
-            "id": "followers_of_sign_found_way",
-            "text": "the followers of the sign have found the way forward."
-          },
-          {
-            "id": "found_nigel_engram",
-            "text": "you found Nigel Engram."
-          },
-          {
-            "id": "found_nigels_home",
-            "text": "you found Nigel's home."
-          },
-          {
-            "id": "hastur_has_you",
-            "text": "Hastur has you in his grasp."
-          },
-          {
-            "id": "heeded_daniels_warning",
-            "text": "you heeded Daniel’s warning."
-          },
-          {
-            "id": "ignored_daniels_warning",
-            "text": "you ignored Daniel’s warning."
-          },
-          {
-            "id": "intruded_on_secret_meeting",
-            "text": "you intruded on a secret meeting."
-          },
-          {
-            "id": "king_claimed_victims",
-            "text": "the King claimed its victims."
-          },
-          {
-            "id": "know_site_of_gate",
-            "text": "you know the site of the gate."
-          },
-          {
-            "id": "left_onyx_clasp",
-            "text": "you left the onyx clasp behind."
-          },
-          {
-            "id": "opened_path_above",
-            "text": "you opened the path above."
-          },
-          {
-            "id": "opened_path_below",
-            "text": "you opened the path below."
-          },
-          {
-            "id": "police_are_suspicious",
-            "text": "the police are suspicious of you."
+            "id": "read_act_2",
+            "masculine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen.",
+            "feminine_text": "#name# hat Akt 2 von <i>Der König in Gelb</i> gelesen."
           },
           {
             "id": "possessed",
-            "text": "#name# was possessed."
+            "masculine_text": "#name# war besessen.",
+            "feminine_text": "#name# war besessen."
+          },
+          {
+            "id": "attacked_as_you_escaped_arkham",
+            "text": "Die Ermittler wurden bei ihrer Flucht aus dem Sanatorium angegriffen."
+          },
+          {
+            "id": "awoke_inside_catacombs",
+            "text": "Die Ermittler sind in den Katakomben aufgewacht."
+          },
+          {
+            "id": "carcosa_merged",
+            "text": "Das Reich von Carcosa ist mit unserem verschmolzen und Hastur regiert über beide."
+          },
+          {
+            "id": "chose_not_to_warn_police",
+            "text": "Die Polizei wurde nicht verständigt."
+          },
+          {
+            "id": "destroyed_the_oathspeaker",
+            "text": "Der Eidsprecher wurde vernichtet."
+          },
+          {
+            "id": "did_not_escape_gaze",
+            "text": "Die Ermittler sind dem Blick des Phantoms nicht entkommen."
+          },
+          {
+            "id": "entered_catacombs",
+            "text": "Die Ermittler haben die Katakomben alleine betreten."
+          },
+          {
+            "id": "escaped_the_asylum",
+            "text": "Die Ermittler sind aus dem Sanatorium entkommen."
+          },
+          {
+            "id": "fled_dinner_party",
+            "text": "Die Ermittler sind von der Feier geflohen."
+          },
+          {
+            "id": "followers_of_sign_found_way",
+            "text": "Die Anhänger des Zeichens wissen, wie sie weiter vorgehen müssen."
+          },
+          {
+            "id": "found_nigel_engram",
+            "text": "Nigel Engram wurde gefunden."
+          },
+          {
+            "id": "found_nigels_home",
+            "text": "Nigels Haus wurde gefunden."
+          },
+          {
+            "id": "hastur_has_you",
+            "text": "Hastur hat die Ermittler im Griff."
+          },
+          {
+            "id": "heeded_daniels_warning",
+            "text": "Daniels Warnung wurde beherzigt."
+          },
+          {
+            "id": "ignored_daniels_warning",
+            "text": "Daniels Warnung wurde ignoriert."
+          },
+          {
+            "id": "intruded_on_secret_meeting",
+            "text": "Die Ermittler sind in ein geheimes Treffen geplatzt."
+          },
+          {
+            "id": "king_claimed_victims",
+            "text": "Der König hat seine Opfer beansprucht."
+          },
+          {
+            "id": "know_site_of_gate",
+            "text": "Die Ermittler wissen, wo das Tor zu finden ist."
+          },
+          {
+            "id": "left_onyx_clasp",
+            "text": "Die Ermittler haben die Spange aus Onyx zurückgelassen."
+          },
+          {
+            "id": "opened_path_above",
+            "text": "Die Ermittler haben den oberen Pfad geöffnet."
+          },
+          {
+            "id": "opened_path_below",
+            "text": "Die Ermittler haben den unteren Pfad geöffnet."
+          },
+          {
+            "id": "police_are_suspicious",
+            "text": "Die Polizei hegt einen Verdacht gegen die Ermittler"
           },
           {
             "id": "prevented_hasturs_escape",
-            "text": "the investigators prevented Hastur from escaping his prison."
-          },
-          {
-            "id": "read_act_2",
-            "text": "#name# read Act 2 of The King in Yellow."
+            "text": "Die Ermittler haben verhindert, dass Hastur aus seinem Gefängnis entkommt."
           },
           {
             "id": "slayed_the_monsters",
-            "text": "you slayed the monsters at the dinner party."
+            "text": "Die Monster auf der Feier wurden getötet."
           },
           {
             "id": "stranger_is_on_to_you",
-            "text": "the Stranger is on to you."
+            "text": "Der Fremde ist auf der Spur der Ermittler"
           },
           {
             "id": "took_onyx_clasp",
-            "text": "you took the onyx clasp."
+            "text": "Die Ermittler haben die Spange aus Onyx mitgenommen"
           },
           {
             "id": "tried_to_warn_police",
-            "text": "you tried to warn the police."
+            "text": "Du hast versucht die Polizei zu warnen"
           },
           {
             "id": "unable_to_find_nigel",
-            "text": "you were unable to find Nigel."
+            "text": "Nigel Engram konnte nicht gefunden werden."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1462,20 +1486,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1496,7 +1512,7 @@
           },
           {
             "id": "possessed",
-            "text": "one or more investigators was possessed."
+            "text": "Ein oder mehr Ermittler waren besessen."
           },
           {
             "id": "tpm_conviction_or_doubt",
@@ -1772,52 +1788,62 @@
             "text": "Die Ermittler wurden gezwungen, auf zusätzliche Ausrüstung zu warten."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -1840,20 +1866,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -1866,11 +1884,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "versteckt"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "versteckt"
           },
           {
             "id": "doy_cross_off_rope",
@@ -2064,20 +2082,24 @@
         "section": "$input_value",
         "entries": [
           {
-            "id": "claimed_by_specters",
-            "text": "#name# was claimed by specters."
+            "id": "disappeared_into_the_mist",
+            "masculine_text": "#name# ist im Nebel verschwunden.",
+            "feminine_text": "#name# ist im Nebel verschwunden."
           },
           {
-            "id": "disappeared_into_the_mist",
-            "text": "#name# disappeared into the mist."
+            "id": "claimed_by_specters",
+            "masculine_text": "#name# ist von Geistern beansprucht worden.",
+            "feminine_text": "#name# ist von Geistern beansprucht worden."
           },
           {
             "id": "pulled_into_the_spectral_realm",
-            "text": "#name# was pulled into the spectral realm."
+            "masculine_text": "#name# wurde in das Reich der Geister gezogen.",
+            "feminine_text": "#name# wurde in das Reich der Geister gezogen."
           },
           {
             "id": "taken_by_the_watcher",
-            "text": "#name# was taken by the Watcher."
+            "masculine_text": "#name# wurde vom Beobachter entführt.",
+            "feminine_text": "#name# wurde vom Beobachter entführt."
           }
         ]
       },
@@ -2086,15 +2108,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "Gavriella ist am Leben."
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella ist tot."
           },
           {
             "id": "on_gavriellas_trail",
-            "text": "the investigators are on Gavriella’s trail."
+            "text": "Die Ermittler sind Gavriella auf der Spur."
           }
         ]
       },
@@ -2103,15 +2125,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "Jerome ist am Leben."
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome ist tot."
           },
           {
             "id": "on_jeromes_trail",
-            "text": "the investigators are on Jerome’s trail."
+            "text": "Die Ermittler sind Jerome auf der Spur."
           }
         ]
       },
@@ -2120,15 +2142,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "Valentino ist am Leben."
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino ist tot."
           },
           {
             "id": "on_valentinos_trail",
-            "text": "the investigators are on Valentino's trail."
+            "text": "Die Ermittler sind Valentino auf der Spur."
           }
         ]
       },
@@ -2137,15 +2159,15 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "Penny ist am Leben."
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny ist tot."
           },
           {
             "id": "on_pennys_trail",
-            "text": "the investigators are on Penny's trail."
+            "text": "Die Ermittler sind Penny auf der Spur."
           }
         ]
       },
@@ -2153,220 +2175,231 @@
         "section": "campaign_notes",
         "entries": [
           {
+            "id": "lead_investigator_joins_pipers",
+            "masculine_text": "#name# schließt sich den Pfeifern von Azathoth an.",
+            "feminine_text": "#name# schließt sich den Pfeifern von Azathoth an."
+          },
+          {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "Die Ermittler haben ihr Schicksal akzeptiert."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "Anette Mason ist vom Bösen besessen."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
-            "text": "Anette taught you the spells of old."
+            "text": "Anette hat dich die alten Zauber gelehrt."
           },
           {
             "id": "arrested_anette",
-            "text": "the investigators arrested Anette."
+            "text": "Die Ermittler haben Anette verhaftet."
           },
           {
             "id": "arrested_sanford",
-            "text": "the investigators arrested Sanford."
+            "text": "Die Ermittler haben Sanford verhaftet."
           },
           {
             "id": "asked_anette_for_assistance",
-            "text": "the investigators asked Anette for assistance."
+            "text": "Die Ermittler haben Anette um Hilfe gebeten."
           },
           {
             "id": "asked_sanford_for_assistance",
-            "text": "the investigators asked Sanford for assistance."
+            "text": "Die Ermittler haben Sanford um Hilfe gebeten."
           },
           {
             "id": "assumed_control_of_the_silver_twilight_lodge",
-            "text": "the investigators assumed control of the Silver Twilight Lodge."
+            "text": "Die Ermittler haben die Kontrolle über die Silberloge der Dämmerung übernommen."
           },
           {
             "id": "azathoth_devoured_the_universe",
-            "text": "Azathoth devoured the universe."
+            "text": "Azathoth hat das Universum verschlungen."
           },
           {
             "id": "azathoth_slumbers",
-            "text": "Azathoth slumbers… for now."
+            "text": "Azathoth schlummert… noch."
           },
           {
             "id": "being_hunted",
-            "text": "you are being hunted."
+            "text": "Die Ermittler werden gejagt."
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "Carl Sanford verfügt über die Geheimnisse des Universums."
           },
           {
             "id": "continued_alone",
-            "text": "the investigators continued alone."
+            "text": "Die Ermittler machen alleine weiter"
           },
           {
             "id": "deceiving_the_lodge",
-            "text": "the investigators are deceiving the Lodge."
+            "text": "Die Ermittler täuschen die Loge."
           },
           {
             "id": "discovered_how_to_open_the_puzzle_box",
-            "text": "the investigators discovered how to open the puzzle box.."
+            "text": "Die Ermittler haben herausgefunden, wie die Rätselkiste geöffnet wird."
           },
           {
             "id": "doom_draws_ever_closer",
-            "text": "doom draws ever closer."
+            "text": "Das Verderben rückt immer näher."
           },
           {
             "id": "enemies_of_the_lodge",
-            "text": "the investigators are enemies of the Lodge."
+            "text": "Die Ermittler sind Feinde der Loge."
           },
           {
             "id": "guardian_of_the_trap_defeated",
-            "text": "the guardian of the trap emerged and was defeated."
+            "text": "Der Wächter der Falle ist entwichen und wurde besiegt."
           },
           {
             "id": "guardian_of_the_trap_emerged",
-            "text": "the guardian of the trap emerged."
+            "text": "Der Wächter der Falle ist entwichen."
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "#X# Ketzer wurden auf Arkham losgelassen."
           },
           {
             "id": "hid_knowledge_of_coven",
-            "text": "the investigators hid their knowledge of the coven."
+            "text": "Die Ermittler haben ihr Wissen über den Hexenzirkel verheimlicht."
           },
           {
             "id": "inducted_into_the_inner_circle",
-            "text": "the investigators were inducted into the Inner Circle."
+            "text": "Die Ermittler wurden in den inneren Kreis eingeführt."
           },
           {
             "id": "investigators_escaped_the_spectral_realm",
-            "text": "the investigators escaped the spectral realm."
+            "text": "Die Ermittler sind dem Reich der Geister entkommen."
           },
           {
             "id": "josef_disappeared_into_the_mist",
-            "text": "Josef disappeared into the mist."
+            "text": "Josef Meiger ist im Nebel verschwunden."
           },
           {
             "id": "josef_is_alive",
-            "text": "Josef is alive and well."
+            "text": "Josef lebt und es geht ihm gut."
           },
           {
             "id": "kept_mementos_hidden",
-            "text": "the investigators kept their mementos hidden."
-          },
-          {
-            "id": "lead_investigator_joins_pipers",
-            "text": "#name# joins the pipers of Azathoth."
+            "text": "Die Ermittler haben ihre Andenken geheim gehalten."
           },
           {
             "id": "learned_nothing_of_the_lodges_schemes",
-            "text": "the investigators learned nothing of the Lodge’s schemes."
+            "text": "Die Ermittler haben nichts über die Pläne der Loge in Erfahrung gebracht."
           },
           {
             "id": "members_of_the_lodge",
-            "text": "the investigators are members of the Lodge."
+            "text": "Die Ermittler sind Mitglieder der Loge."
           },
           {
             "id": "never_seen_again",
-            "text": "the investigators are never seen or heard from again."
+            "text": "Niemand hat je wieder etwas von den Ermittlern gesehen oder gehört."
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "Der Pfad windet sich vor dir: #X#"
           },
           {
             "id": "pieces_of_evidence",
-            "text": "#X# pieces of evidence were left behind."
+            "text": "#X# Beweismittel wurden zurückgelassen."
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "Die Ermittler haben ihr Schicksal nicht akzeptiert."
           },
           {
             "id": "rescued_josef",
-            "text": "the investigators rescued Josef."
+            "text": "Die Ermittler haben Josef gerettet."
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "Die Ermittler haben sich auf die Seite der Loge geschlagen."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "Die Ermittler haben sich auf die Seite des Hexenzirkels geschlagen."
           },
           {
             "id": "signed_the_black_book",
-            "text": "the investigators signed the Black Book of Azathoth."
+            "text": "Die Ermittler haben im Schwarzen Buch von Azathoth unterschrieben."
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "Die Ermittler haben die Umarmung des Beobachters überlebt."
           },
           {
             "id": "told_lodge_about_coven",
-            "text": "the investigators told the Lodge about the coven."
+            "text": "Die Ermittler haben der Loge vom Hexenzirkel erzählt."
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "Das wahre Wirken der Silberloge der Dämmerung hat begonnen."
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "Der Zauber der Hexen wurde gebrochen."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "Der Zauber der Hexen wurde vollendet."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -2389,20 +2422,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2476,35 +2501,35 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "Strohpuppe"
           },
           {
             "id": "gilmans_journal",
-            "text": "Gilman's Journal"
+            "text": "Gilmans Tagebuch"
           },
           {
             "id": "keziahs_formulae",
-            "text": "Keziah's Formulae"
+            "text": "Keziahs Formeln"
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Hypnotisierende Flöte"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Ritualkomponenten"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Lumpen aus zerrissenem Schatten"
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "Hauch des geisterhaften Nebels"
           },
           {
             "id": "worn_crucific",
-            "text": "Worn Crucifix"
+            "text": "Abgegriffenes Kruzifix"
           }
         ]
       }
@@ -2518,192 +2543,204 @@
         "section": "campaign_notes",
         "entries": [
           {
-            "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
-          },
-          {
-            "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
-          },
-          {
-            "id": "black_cat_delivered_news",
-            "text": "the black cat delivered news of your plight."
-          },
-          {
-            "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
-          },
-          {
-            "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
-          },
-          {
-            "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
-          },
-          {
-            "id": "black_cat_shared_knowledge_of_the_dreamlands",
-            "text": "the black cat shared knowledge of the Dreamlands."
-          },
-          {
-            "id": "black_cat_spoke_of_atlach_nacha",
-            "text": "the black cat spoke of Atlach-Nacha."
-          },
-          {
-            "id": "black_cat_spoke_of_nyarlathotep",
-            "text": "the black cat spoke of Nyarlathotep."
-          },
-          {
-            "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
-          },
-          {
             "id": "broken_the_law_of_ulthar",
-            "text": "#name# has broken the law of Ulthar."
+            "masculine_text": "#name# hat das Gesetz von Ulthar gebrochen.",
+            "feminine_text": "#name# hat das Gesetz von Ulthar gebrochen."
           },
           {
             "id": "captured",
-            "text": "#name# was captured."
+            "masculine_text": "#name# wurde gefangen genommen.",
+            "feminine_text": "#name# wurde gefangen genommen."
+          },
+          {
+            "id": "black_cat_at_your_side",
+            "text": "die schwarze Katze ist an deiner Seite."
+          },
+          {
+            "id": "black_cat_at_your_side_2",
+            "text": "die schwarze Katze ist an deiner Seite."
+          },
+          {
+            "id": "black_cat_delivered_news",
+            "text": "die schwarze Katze hat die Neuigkeit über deine Notlage überbracht."
+          },
+          {
+            "id": "black_cat_has_a_hunch",
+            "text": "die schwarze Katze hat eine Ahnung."
+          },
+          {
+            "id": "black_cat_is_searching_for_the_truth",
+            "text": "Die schwarze Katze sucht nach der Wahrheit."
+          },
+          {
+            "id": "black_cat_knows_the_truth",
+            "text": "Die schwarze Katze kennt die Wahrheit."
+          },
+          {
+            "id": "black_cat_shared_knowledge_of_the_dreamlands",
+            "text": "die schwarze Katze hat das Wissen über die Traumlande geteilt."
+          },
+          {
+            "id": "black_cat_spoke_of_atlach_nacha",
+            "text": "Die schwarze Katze hat von Atlach-Nacha gesprochen."
+          },
+          {
+            "id": "black_cat_spoke_of_nyarlathotep",
+            "text": "Die schwarze Katze hat von Nyarlathotep gesprochen."
+          },
+          {
+            "id": "black_cat_warned_the_others",
+            "text": "die schwarze Katze hat die anderen gewarnt."
           },
           {
             "id": "carried_to_the_cold_wastes",
-            "text": "the investigators were carried to the Cold Wastes."
+            "text": "Die Ermittler wurden in die Kalte Öde gebracht."
           },
           {
             "id": "cats_collected_their_tribute",
-            "text": "the cats collected their tribute from the Zoogs."
+            "text": "Die Katzen haben ihren Tribut von den Zoogs eingefordert."
           },
           {
             "id": "dreamers_awoke",
-            "text": "the dreamers awoke."
+            "text": "Die Träumer sind erwacht."
           },
           {
             "id": "dreamers_banished_nyarlathotep",
-            "text": "the dreamers banished Nyarlathotep."
+            "text": "Die Träumer haben Nyarlathotep verbannt."
           },
           {
             "id": "dreamers_escaped_nyarlathoteps_grasp",
-            "text": "the dreamers escaped from Nyarlathotep's grasp."
+            "text": "Die Träumer sind aus den Fängen des Nyarlathotep entkommen."
           },
           {
             "id": "dreamers_grow_weaker",
-            "text": "the dreamers grow weaker."
+            "text": "die Träumer werden schwächer."
           },
           {
             "id": "dreamers_know_of_another_path",
-            "text": "the dreamers know of another path."
+            "text": "Die Träumer kennen einen anderen Weg."
           },
           {
             "id": "dreamers_stayed_in_dreamlands_forever",
-            "text": "the dreamers stayed in the Dreamlands forever."
+            "text": "Die Träumer sind für immer in den Traumlanden geblieben."
           },
           {
             "id": "dreamers_traveled_beneath_the_monastery",
-            "text": "the dreamers traveled beneath the monasteryr."
+            "text": "Die Träumer sind in die Tiefen unter dem Monasterium hinabgestiegen."
           },
           {
             "id": "forced_way_into_temple",
-            "text": "the investigators forced their way into the temple."
+            "text": "Die Ermittler haben sich gewaltsam Zutritt zum Tempel verschafft."
           },
           {
             "id": "nyarlathoteps_invasion_has_begun",
-            "text": "Nyarlathotep's invasion has begun."
+            "text": "Nyarlathoteps Invasion hat begonnen."
           },
           {
             "id": "parleyed_with_zoogs",
-            "text": "the investigators parleyed with the Zoogs."
+            "text": "Die Ermittler haben mit den Zoogs gesprochen."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "Die Ermittler besitzen den silbernen Schlüssel."
           },
           {
             "id": "randolph_did_not_survive_the_voyage",
-            "text": "Randolph Carter did not survive the voyage."
+            "text": "Randolph hat die Reise nicht überlebt."
           },
           {
             "id": "randolph_eluded_capture",
-            "text": "Randolph eluded capture."
+            "text": "Randolph konnte der Gefangenschaft entgehen."
           },
           {
             "id": "randolph_survived_the_voyage",
-            "text": "Randolph survived the voyage."
+            "text": "Randolph hat die Reise überlebt."
           },
           {
             "id": "randolph_was_captured",
-            "text": "Randolph was captured."
+            "text": "Randolph wurde gefangen genommen."
           },
           {
             "id": "saved_by_randolph_carter",
-            "text": "the investigators were saved by Randolph Carter."
+            "text": "Die Ermittler wurden von Randolph Carter gerettet."
           },
           {
             "id": "strayed_from_the_path",
-            "text": "the dreamers strayed from the path."
+            "text": "die Träumer sind vom Pfad abgekommen."
           },
           {
             "id": "threaten_black_cat",
-            "text": "okay, fine, have it your way then."
+            "text": "In Ordnung, gut, dann mach doch, was du willst."
           },
           {
             "id": "travelled_to_the_cold_wastes",
-            "text": "the investigators traveled to the Cold Wastes."
+            "text": "Die Ermittler sind in die Kalte Öde gereist."
           },
           {
             "id": "virgil_was_captured",
-            "text": "Virgil was captured."
+            "text": "Virgil wurde gefangen genommen."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "du hast es so gewollt."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -2726,20 +2763,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -2835,159 +2864,169 @@
         "entries": [
           {
             "id": "black_cat_at_your_side",
-            "text": "the black cat is at your side."
+            "text": "die schwarze Katze ist an deiner Seite."
           },
           {
             "id": "black_cat_at_your_side_2",
-            "text": "the black cat is at your side."
+            "text": "die schwarze Katze ist an deiner Seite."
           },
           {
             "id": "black_cat_has_a_hunch",
-            "text": "the black cat has a hunch."
+            "text": "die schwarze Katze hat eine Ahnung."
           },
           {
             "id": "black_cat_is_searching_for_the_truth",
-            "text": "the black cat is searching for the truth."
+            "text": "Die schwarze Katze sucht nach der Wahrheit."
           },
           {
             "id": "black_cat_knows_the_truth",
-            "text": "the black cat knows the truth."
+            "text": "Die schwarze Katze kennt die Wahrheit."
           },
           {
             "id": "black_cat_requested_aid",
-            "text": "the black cat requested aid from the others."
+            "text": "Die schwarze Katze hat die anderen um Hilfe gebeten."
           },
           {
             "id": "black_cat_shared_knowledge_of_the_underworld",
-            "text": "the black cat shared knowledge of the Underworld."
+            "text": "Die schwarze Katze hat das Wissen über die Unterwelt geteilt."
           },
           {
             "id": "black_cat_warned_the_others",
-            "text": "the black cat warned the others."
+            "text": "die schwarze Katze hat die anderen gewarnt."
           },
           {
             "id": "bridge_was_completed",
-            "text": "the bridge was completed."
+            "text": "Die Brücke wurde fertiggestellt."
           },
           {
             "id": "bridge_was_destroyed",
-            "text": "the bridge was destroyed."
+            "text": "Die Brücke wurde zerstört."
           },
           {
             "id": "doctor_is_alive",
-            "text": "Dr. Maheswaran is alive."
+            "text": "Dr. Maheswaran ist am Leben."
           },
           {
             "id": "doctor_is_missing",
-            "text": "Dr. Maheswaran is missing."
+            "text": "Dr. Maheswaran wird vermisst."
           },
           {
             "id": "doctor_joined_investigation",
-            "text": "Dr. Maheswaran joined the investigation."
+            "text": "Dr. Maheswaran hat sich den Ermittlern angeschlossen."
           },
           {
             "id": "doctor_stayed_with_patients",
-            "text": "Dr. Maheswaran stayed with her patients."
+            "text": "Dr. Maheswaran ist bei ihren Patienten geblieben."
           },
           {
             "id": "doctors_fate_unknown",
-            "text": "Dr. Maheswaran’s fate is unknown."
+            "text": "Dr. Maheswarans Schicksal ist ungewiss."
           },
           {
             "id": "found_a_way_out_of_the_underworld",
-            "text": "the investigators found a way out of the Underworld."
+            "text": "Die Ermittler haben einen Weg aus der Unterwelt gefunden."
           },
           {
             "id": "never_escaped",
-            "text": "the investigators never escaped."
+            "text": "Die Ermittler sind niemals entkommen."
           },
           {
             "id": "on_your_own",
-            "text": "you are on your own."
+            "text": "Die Ermittler sind auf sich allein gestellt."
           },
           {
             "id": "possess_silver_key",
-            "text": "the investigators possess the Silver Key."
+            "text": "Die Ermittler besitzen den silbernen Schlüssel."
           },
           {
             "id": "randolph_did_not_survive_descent",
-            "text": "Randolph did not survive the descent."
+            "text": "Randolph hat den Abstieg nicht überlebt."
           },
           {
             "id": "randolph_escaped_hospital_alone",
-            "text": "Randolph escaped the hospital on his own."
+            "text": "Randolph ist alleine aus dem Krankenhaus geflohen."
           },
           {
             "id": "randolph_escaped_hospital_with_investigators",
-            "text": "Randolph escaped the hospital with the investigators."
+            "text": "Randolph ist mit den Ermittlern aus dem Krankenhaus geflohen."
           },
           {
             "id": "randolph_survived_descent",
-            "text": "Randolph survived the descent."
+            "text": "Randolph hat den Abstieg überlebt."
           },
           {
             "id": "returned_to_reality",
-            "text": "the investigators returned to reality."
+            "text": "Die Ermittler sind in die Realität zurückgekehrt."
           },
           {
             "id": "still_in_the_dreamlands",
-            "text": "the investigators are still in the Dreamlands."
+            "text": "Die Ermittler sind immer noch in den Traumlanden."
           },
           {
             "id": "trapped_in_atlach_nachas_realm",
-            "text": "the investigators are trapped in Atlach-Nacha's realm."
+            "text": "Die Ermittler sind in Atlach-Nachas Reich gefangen."
           },
           {
             "id": "you_asked_for_it",
-            "text": "you asked for it."
+            "text": "du hast es so gewollt."
+          },
+          {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -3010,20 +3049,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3274,52 +3305,62 @@
             "text": "Die Ermittler wurden gezwungen, auf zusätzliche Ausrüstung zu warten."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -3342,20 +3383,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3368,11 +3401,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "versteckt"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "versteckt"
           },
           {
             "id": "doy_cross_off_rope",
@@ -3553,8 +3586,16 @@
             "text": "Othera Gilman will Blut sehen."
           },
           {
+            "id": "innsmouth_was_consumed_by_the_rising_tide",
+            "text": "Innsmouth was consumed by the rising tide."
+          },
+          {
             "id": "little_out_for_blood",
             "text": "Joyce Little will Blut sehen."
+          },
+          {
+            "id": "made_it_safely_to_their_vehicles",
+            "text": "the investigators made it safely to their vehicles."
           },
           {
             "id": "marsh_out_for_blood",
@@ -3569,52 +3610,62 @@
             "text": "Die Mission war erfolgreich."
           },
           {
+            "id": "tes_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
+            "id": "tnu_taken_by_the_abyss",
+            "masculine_text": "#name# wurde vom Abgrund verschlungen.",
+            "feminine_text": "#name# wurde vom Abgrund verschlungen."
+          },
+          {
             "id": "blob_contained",
-            "text": "the anomaly was contained."
+            "text": "Die Anomalie wurde eingedämmt."
           },
           {
             "id": "blob_devoured_universe",
-            "text": "Subject 8L-08 devoured the entire universe."
+            "text": "Subjekt 8L-08 hat das gesamte Universum verschlungen."
           },
           {
             "id": "coh_cnidathqua_retreated",
-            "text": "Cnidathqua retreated to nurse its wounds."
+            "text": "Cnidathqua hat sich zurückgezogen, um seine Wunden zu lecken."
           },
           {
             "id": "coh_many_were_sacrificed_to_cnidathqua",
-            "text": "many were sacrificed to Cnidathqua during the Carnevale."
+            "text": "Viele Menschen wurden während des Karnevals Cnidathqua geopfert."
           },
           {
             "id": "coh_sun_banished_cnidathqua",
-            "text": "the sun banished Cnidathqua into the depths."
+            "text": "Die Sonne hat Cnidathqua in die Tiefe gebannt."
           },
           {
             "id": "meh_excelsior_claims_another_victim",
-            "text": "the Excelsior claims another victim."
+            "text": "Das Excelsior fordert ein weiteres Opfer."
           },
           {
             "id": "meh_excelsior_is_quiet_for_now",
-            "text": "the Excelsior is quiet, for now."
+            "text": "Das Excelsior ist vorerst ruhig."
           },
           {
             "id": "meh_fled_scene_of_the_crime",
-            "text": "the investigators fled the scene of the crime."
+            "text": "Die Ermittler sind vom Tatort geflohen."
           },
           {
             "id": "meh_murders_continue_unsolved",
-            "text": "the murders continue, unsolved."
+            "text": "Die Morde gehen weiter und bleiben unaufgeklärt."
           },
           {
             "id": "rougarou_continues_to_haunt_the_bayou",
-            "text": "the Rougarou continues to haunt the bayou."
+            "text": "Der Rougarou sucht auch weiterhin den Bayou heim."
           },
           {
             "id": "rougarou_destroyed_and_curse_is_lifted",
-            "text": "the Rougarou is destroyed, and the curse is lifted."
+            "text": "Der Rougarou ist besiegt und der Fluch aufgehoben."
           },
           {
             "id": "rougarou_escaped_and_embrace_curse",
-            "text": "the Rougarou escaped, and you embraced the curse."
+            "text": "Der Rougarou ist entkommen und du hast seinen Fluch angenommen."
           },
           {
             "id": "tes_aware_of_xzharahs_plan",
@@ -3637,20 +3688,12 @@
             "text": "Entkommene Agenten der Bruderschaft: #name#"
           },
           {
-            "id": "tes_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
-          },
-          {
             "id": "tnu_day_of_reckoning_is_coming",
             "text": "Der Jüngste Tag steht bevor."
           },
           {
             "id": "tnu_joined_xzharah",
             "text": "Die Ermittler haben sich auf Xzharahs Seite geschlagen."
-          },
-          {
-            "id": "tnu_taken_by_the_abyss",
-            "text": "#name# wurde vom Abgrund verschlungen."
           },
           {
             "id": "tnu_the_abyss_was_saved",
@@ -3726,6 +3769,22 @@
             "text": "dummy"
           },
           {
+            "id": "flashback_5",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_6",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_7",
+            "text": "dummy"
+          },
+          {
+            "id": "flashback_8",
+            "text": "dummy"
+          },
+          {
             "id": "the_accusation",
             "text": "dummy"
           },
@@ -3766,6 +3825,22 @@
       {
         "section": "memories_recovered",
         "entries": [
+          {
+            "id": "a_deal_with_joe_sargent",
+            "text": "a deal with Joe Sargent."
+          },
+          {
+            "id": "a_followed_lead",
+            "text": "a followed lead."
+          },
+          {
+            "id": "a_jailbreak",
+            "text": "a jailbreak."
+          },
+          {
+            "id": "an_intervention",
+            "text": "an intervention."
+          },
           {
             "id": "battle_with_a_horrifying_devil",
             "text": "ein Kampf mit einem schrecklichen Teufel"

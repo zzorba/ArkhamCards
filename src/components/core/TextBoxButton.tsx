@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import {
   LayoutChangeEvent,
   StyleSheet,
@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import { xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props extends TextInputProps {
   value: string;
@@ -27,58 +27,40 @@ interface State {
   height: number;
 }
 
-export default class TextBoxButton extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function TextBoxButton({ value, multiline, crossedOut, placeholder, textStyle = {}, ...otherProps }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const [height, setHeight] = useState(24);
+  const updateSize = useCallback((event: LayoutChangeEvent) => {
+    setHeight(event.nativeEvent.layout.height);
+  }, [setHeight]);
 
-  state = {
-    height: 24,
-  };
-
-  _updateSize = (event: LayoutChangeEvent) => {
-    this.setState({
-      height: event.nativeEvent.layout.height,
-    });
-  }
-
-  render() {
-    const {
-      value,
-      multiline,
-      crossedOut,
-      placeholder,
-      textStyle = {},
-      ...otherProps
-    } = this.props;
-    const { colors, typography } = this.context;
-    return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.textInput}
-          editable={false}
-          multiline={multiline}
-          {...otherProps}
-        >
-          <Text style={[
-            typography.text,
-            styles.input,
-            { color: colors.lightText },
-            textStyle,
-            multiline ? { height: this.state.height + 12 } : {},
-            crossedOut ? {
-              textDecorationLine: 'line-through',
-              textDecorationStyle: 'solid',
-              textDecorationColor: colors.lightText,
-            } : {},
-            value ? { color: colors.darkText } : { color: colors.lightText },
-          ]}
-          onLayout={multiline ? this._updateSize : undefined}>
-            { value || placeholder }
-          </Text>
-        </TextInput>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.textInput}
+        editable={false}
+        multiline={multiline}
+        {...otherProps}
+      >
+        <Text style={[
+          typography.text,
+          styles.input,
+          { color: colors.lightText },
+          textStyle,
+          multiline ? { height: height + 12 } : {},
+          crossedOut ? {
+            textDecorationLine: 'line-through',
+            textDecorationStyle: 'solid',
+            textDecorationColor: colors.lightText,
+          } : {},
+          value ? { color: colors.darkText } : { color: colors.lightText },
+        ]}
+        onLayout={multiline ? updateSize : undefined}>
+          { value || placeholder }
+        </Text>
+      </TextInput>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

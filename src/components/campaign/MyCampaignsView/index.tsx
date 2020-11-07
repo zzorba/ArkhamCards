@@ -1,123 +1,59 @@
-import React from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { filter, throttle } from 'lodash';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription, Options } from 'react-native-navigation';
+import { useSelector } from 'react-redux';
+import { Navigation, Options } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
-import { CUSTOM, Campaign, DecksMap } from '@actions/types';
+import { CUSTOM, Campaign } from '@actions/types';
 import CampaignList from './CampaignList';
 import { campaignNames } from '@components/campaign/constants';
 import { searchMatchesText } from '@components/core/searchHelpers';
 import withFetchCardsGate from '@components/card/withFetchCardsGate';
 import { iconsMap } from '@app/NavIcons';
-import { getAllDecks, getCampaigns, AppState } from '@reducers';
+import { getCampaigns } from '@reducers';
 import COLORS from '@styles/colors';
 import { m } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import ArkhamButton from '@components/core/ArkhamButton';
+import { useNavigationButtonPressed } from '@components/core/hooks';
+import { NavigationProps } from '@components/nav/types';
 
-interface OwnProps {
-  componentId: string;
-}
-
-interface ReduxProps {
-  campaigns: Campaign[];
-  decks: DecksMap;
-}
-
-type Props = OwnProps & ReduxProps & DimensionsProps;
-
-interface State {
-  search: string;
-}
-
-class MyCampaignsView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  static options(): Options {
-    return {
-      topBar: {
-        title: {
-          text: t`Campaigns`,
-        },
-        rightButtons: [{
-          icon: iconsMap.add,
-          id: 'add',
-          color: COLORS.M,
-          accessibilityLabel: t`New Campaign`,
-        }],
-      },
-    };
-  }
-
-  _navEventListener?: EventSubscription;
-  _showNewCampaignDialog!: () => void;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      search: '',
-    };
-
-    this._showNewCampaignDialog = throttle(this.showNewCampaignDialog.bind(this), 200);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  _searchChanged = (text: string) => {
-    this.setState({
-      search: text,
-    });
-  };
-
-  showNewCampaignDialog() {
-    const {
-      componentId,
-    } = this.props;
-    Navigation.push(componentId, {
-      component: {
-        name: 'Campaign.New',
-        options: {
-          topBar: {
-            title: {
-              text: t`New Campaign`,
-            },
-            backButton: {
-              title: t`Cancel`,
+function MyCampaignsView({ componentId }: NavigationProps) {
+  const [search, setSearch] = useState('');
+  const { typography } = useContext(StyleContext);
+  const campaigns = useSelector(getCampaigns);
+  const showNewCampaignDialog = useMemo(() => {
+    return throttle(() => {
+      Navigation.push(componentId, {
+        component: {
+          name: 'Campaign.New',
+          options: {
+            topBar: {
+              title: {
+                text: t`New Campaign`,
+              },
+              backButton: {
+                title: t`Cancel`,
+              },
             },
           },
         },
-      },
+      });
     });
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
+  }, [componentId]);
+  useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'add') {
-      this._showNewCampaignDialog();
+      showNewCampaignDialog();
     }
-  }
+  }, componentId, [showNewCampaignDialog]);
 
-
-  filteredCampaigns(): Campaign[] {
-    const {
-      campaigns,
-    } = this.props;
-    const {
-      search,
-    } = this.state;
-
+  const filteredCampaigns: Campaign[] = useMemo(() => {
     return filter<Campaign>(campaigns, campaign => {
       const parts = [campaign.name];
       if (campaign.cycleCode !== CUSTOM) {
@@ -125,14 +61,10 @@ class MyCampaignsView extends React.Component<Props, State> {
       }
       return searchMatchesText(search, parts);
     });
-  }
+  }, [campaigns, search]);
 
-  renderConditionalFooter(campaigns: Campaign[]) {
-    const { typography } = this.context;
-    const {
-      search,
-    } = this.state;
-    if (campaigns.length === 0) {
+  const conditionalFooter = useMemo(() => {
+    if (filteredCampaigns.length === 0) {
       if (search) {
         return (
           <View style={styles.footer}>
@@ -153,54 +85,58 @@ class MyCampaignsView extends React.Component<Props, State> {
     return (
       <View style={styles.footer} />
     );
-  }
+  }, [filteredCampaigns, search, typography]);
 
-  renderFooter(campaigns: Campaign[]) {
+  const footer = useMemo(() => {
     return (
       <View>
-        { this.renderConditionalFooter(campaigns) }
+        { conditionalFooter }
         <ArkhamButton
           icon="campaign"
           title={t`New Campaign`}
-          onPress={this._showNewCampaignDialog}
+          onPress={showNewCampaignDialog}
         />
         <View style={styles.gutter} />
       </View>
     );
-  }
+  }, [conditionalFooter, showNewCampaignDialog]);
 
-  render() {
-    const { componentId } = this.props;
-    const { search } = this.state;
-    const campaigns = this.filteredCampaigns();
-    return (
-      <CollapsibleSearchBox
-        prompt={t`Search campaigns`}
-        searchTerm={search}
-        onSearchChange={this._searchChanged}
-      >
-        { onScroll => (
-          <CampaignList
-            onScroll={onScroll}
-            componentId={componentId}
-            campaigns={campaigns}
-            footer={this.renderFooter(campaigns)}
-          />
-        ) }
-      </CollapsibleSearchBox>
-    );
-  }
+  return (
+    <CollapsibleSearchBox
+      prompt={t`Search campaigns`}
+      searchTerm={search}
+      onSearchChange={setSearch}
+    >
+      { onScroll => (
+        <CampaignList
+          onScroll={onScroll}
+          componentId={componentId}
+          campaigns={filteredCampaigns}
+          footer={footer}
+        />
+      ) }
+    </CollapsibleSearchBox>
+  );
 }
 
-function mapStateToProps(state: AppState): ReduxProps {
+MyCampaignsView.options = (): Options => {
   return {
-    campaigns: getCampaigns(state),
-    decks: getAllDecks(state),
+    topBar: {
+      title: {
+        text: t`Campaigns`,
+      },
+      rightButtons: [{
+        icon: iconsMap.add,
+        id: 'add',
+        color: COLORS.M,
+        accessibilityLabel: t`New Campaign`,
+      }],
+    },
   };
-}
+};
 
-export default withFetchCardsGate<OwnProps>(
-  connect(mapStateToProps)(withDimensions(MyCampaignsView)),
+export default withFetchCardsGate<NavigationProps>(
+  MyCampaignsView,
   { promptForUpdate: false },
 );
 

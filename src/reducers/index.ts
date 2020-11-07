@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { concat, find, filter, flatMap, forEach, keys, map, max, minBy, last, sortBy, uniq, values } from 'lodash';
 import { persistReducer } from 'redux-persist';
 import { createSelector } from 'reselect';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import signedIn from './signedIn';
 import campaigns from './campaigns';

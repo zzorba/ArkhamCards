@@ -9,7 +9,6 @@ import StyleContext from './StyleContext';
 import { AppState, getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
-import COLORS from './colors';
 
 interface OwnProps {
   children: React.ReactNode;

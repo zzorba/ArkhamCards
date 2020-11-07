@@ -263,6 +263,8 @@ export interface CampaignLogCardsEffect {
   section: string;
   id?: string;
   text?: string;
+  masculine_text?: string;
+  feminine_text?: string;
   cards?: "$lead_investigator" | "$defeated_investigators" | "$input_value";
   cross_out?: boolean;
   remove?: boolean;
@@ -523,6 +525,7 @@ export interface CardChoiceInput {
   include_counts?: boolean;
   query: CardQuery[];
   choices: Choice[];
+  campaign_log_condition?: CampaignLogCardsCondition;
   min?: number;
   max?: number;
 }
@@ -541,6 +544,8 @@ export interface CardCodeList {
 export interface Choice {
   id: string;
   text: string;
+  feminine_text?: string;
+  masculine_text?: string;
   description?: string;
   steps?: string[];
   border?: boolean;
@@ -648,6 +653,7 @@ export interface InvestigatorChoiceWithSuppliesInput {
 }
 export interface ScenarioInvestigatorsInput {
   type: "scenario_investigators";
+  choose_none_steps?: string[];
 }
 export interface PlayScenarioInput {
   type: "play_scenario";
@@ -743,6 +749,14 @@ export interface LocationSetupStep {
   vertical: "half" | "normal";
   horizontal: "half" | "normal" | "tight";
   locations: string[][];
+  resource_dividers?: {
+    right?: number;
+    bottom?: number;
+  }[][];
+  location_names?: {
+    code: string;
+    name: string;
+  }[];
   bullet_type?: null;
 }
 export interface LocationConnectorsStep {

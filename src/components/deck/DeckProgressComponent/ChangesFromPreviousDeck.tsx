@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { concat, flatMap, findIndex, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
 
@@ -7,13 +7,12 @@ import CardSearchResult from '@components/cardlist/CardSearchResult';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import { DeckChanges, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   componentId: string;
   cards: CardsMap;
   parsedDeck: ParsedDeck;
-  xpAdjustment: number;
   tabooSetId?: number;
   onTitlePress?: (deck: ParsedDeck) => void;
   renderFooter?: (slots?: Slots) => React.ReactNode;
@@ -23,14 +22,34 @@ interface Props {
   editable: boolean;
 }
 
-export default class ChangesFromPreviousDeck extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function hasChanges(changes?: DeckChanges): boolean {
+  return !!(changes && (
+    keys(changes.upgraded).length ||
+    keys(changes.added).length ||
+    keys(changes.removed).length ||
+    keys(changes.exiled).length
+  ));
+}
 
-  cards(slots: Slots): Card[] {
-    const {
-      cards,
-    } = this.props;
+export default function ChangesFromPreviousDeck({
+  componentId,
+  cards,
+  parsedDeck,
+  tabooSetId,
+  onTitlePress,
+  renderFooter,
+  onDeckCountChange,
+  singleCardView,
+  title,
+  editable,
+}: Props) {
+  const { colors } = useContext(StyleContext);
+  const {
+    investigator,
+    changes,
+    slots,
+  } = parsedDeck;
+  const getCards = useCallback((slots: Slots): Card[] => {
     if (!keys(slots).length) {
       return [];
     }
@@ -40,47 +59,30 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         card => card.xp || 0),
       card => card.name
     );
-  }
+  }, [cards]);
 
-  allCards(): Card[] {
-    const {
-      parsedDeck: {
-        changes,
-      },
-    } = this.props;
+  const allCards = useMemo(() => {
     if (!changes) {
       return [];
     }
     return concat(
-      this.cards(changes.upgraded),
-      this.cards(changes.added),
-      this.cards(changes.removed),
-      this.cards(changes.exiled)
+      getCards(changes.upgraded),
+      getCards(changes.added),
+      getCards(changes.removed),
+      getCards(changes.exiled)
     );
-  }
+  }, [changes, getCards]);
 
-  _showCard = (card: Card) => {
-    const {
-      componentId,
-      parsedDeck: {
-        investigator,
-        slots,
-      },
-      tabooSetId,
-      renderFooter,
-      onDeckCountChange,
-      singleCardView,
-    } = this.props;
-    const { colors } = this.context;
+  const showCardPressed = useCallback((card: Card) => {
     if (singleCardView) {
       showCard(componentId, card.code, card, colors, true);
     } else {
-      const allCards = this.allCards();
       showCardSwipe(
         componentId,
-        this.allCards(),
+        map(allCards, card => card.code),
         findIndex(allCards, c => c.code === card.code),
         colors,
+        allCards,
         true,
         tabooSetId,
         slots,
@@ -89,15 +91,11 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         renderFooter
       );
     }
-  };
+  }, [colors, allCards, componentId, investigator, slots, tabooSetId, renderFooter, onDeckCountChange, singleCardView]);
 
-  renderSection(slots: Slots, id: string, title: string) {
-    const {
-      parsedDeck: {
-        investigator,
-      },
-    } = this.props;
-    const cards = this.cards(slots);
+  const renderSection = useCallback((slots: Slots, id: string, title: string) => {
+    const investigator = parsedDeck.investigator;
+    const cards = getCards(slots);
     if (!cards.length) {
       return null;
     }
@@ -111,7 +109,7 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         { map(cards, card => (
           <CardSearchResult
             key={`${id}-${card.code}`}
-            onPress={this._showCard}
+            onPress={showCardPressed}
             card={card}
             count={slots[card.code]}
             deltaCountMode
@@ -119,40 +117,22 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         )) }
       </React.Fragment>
     );
-  }
+  }, [parsedDeck.investigator, showCardPressed, getCards]);
 
-  _onTitlePress = () => {
-    const { onTitlePress, parsedDeck } = this.props;
+  const handleTitlePress = useCallback(() => {
     if (onTitlePress) {
       onTitlePress(parsedDeck);
     }
-  };
+  }, [onTitlePress, parsedDeck]);
 
-  static hasChanges(changes?: DeckChanges): boolean {
-    return !!(changes && (
-      keys(changes.upgraded).length ||
-      keys(changes.added).length ||
-      keys(changes.removed).length ||
-      keys(changes.exiled).length
-    ));
-  }
-
-  renderEdits() {
-    const {
-      parsedDeck: {
-        investigator,
-        changes,
-      },
-      editable,
-    } = this.props;
-
-    if (changes && ChangesFromPreviousDeck.hasChanges(changes)) {
+  const editsSection = useMemo(() => {
+    if (changes && hasChanges(changes)) {
       return (
         <>
-          { this.renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
-          { this.renderSection(changes.added, 'added', t`Added cards`) }
-          { this.renderSection(changes.removed, 'removed', t`Removed cards`) }
-          { this.renderSection(changes.exiled, 'exiled', t`Exiled cards`) }
+          { renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
+          { renderSection(changes.added, 'added', t`Added cards`) }
+          { renderSection(changes.removed, 'removed', t`Removed cards`) }
+          { renderSection(changes.exiled, 'exiled', t`Exiled cards`) }
         </>
       );
     }
@@ -167,31 +147,21 @@ export default class ChangesFromPreviousDeck extends React.Component<Props> {
         />
       );
     }
-  }
+  }, [investigator, changes, editable, renderSection]);
 
-  render() {
-    const {
-      parsedDeck: {
-        investigator,
-        changes,
-      },
-      title,
-      onTitlePress,
-    } = this.props;
-    if (!ChangesFromPreviousDeck.hasChanges(changes) && !title) {
-      return null;
-    }
-    return (
-      <>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{
-            superTitle: title || t`Card changes`,
-            onPress: onTitlePress ? this._onTitlePress : undefined,
-          }}
-        />
-        { this.renderEdits() }
-      </>
-    );
+  if (!hasChanges(changes) && !title) {
+    return null;
   }
+  return (
+    <>
+      <CardSectionHeader
+        investigator={investigator}
+        section={{
+          superTitle: title || t`Card changes`,
+          onPress: onTitlePress ? handleTitlePress : undefined,
+        }}
+      />
+      { editsSection }
+    </>
+  );
 }

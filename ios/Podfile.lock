@@ -1,9 +1,9 @@
 PODS:
-  - AppAuth (1.2.0):
-    - AppAuth/Core (= 1.2.0)
-    - AppAuth/ExternalUserAgent (= 1.2.0)
-  - AppAuth/Core (1.2.0)
-  - AppAuth/ExternalUserAgent (1.2.0)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - appcenter-analytics (3.1.2):
     - AppCenter/Analytics
     - AppCenterReactNativeShared
@@ -219,8 +219,8 @@ PODS:
     - React-cxxreact (= 0.63.3)
     - React-jsi (= 0.63.3)
   - React-jsinspector (0.63.3)
-  - react-native-app-auth (5.1.3):
-    - AppAuth (= 1.2.0)
+  - react-native-app-auth (6.0.0):
+    - AppAuth (= 1.4.0)
     - React
   - react-native-appearance (0.3.4):
     - React
@@ -228,9 +228,9 @@ PODS:
     - react-native-config/App (= 1.3.3)
   - react-native-config/App (1.3.3):
     - React
-  - react-native-document-picker (3.5.4):
-    - React
-  - react-native-in-app-browser (3.1.4):
+  - react-native-document-picker (4.0.0):
+    - React-Core
+  - react-native-in-app-browser (3.2.2):
     - React
   - react-native-keep-awake (4.0.0):
     - React
@@ -238,8 +238,8 @@ PODS:
     - React-Core
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-webview (8.1.2):
-    - React
+  - react-native-webview (10.10.0):
+    - React-Core
   - React-RCTActionSheet (0.63.3):
     - React-Core/RCTActionSheetHeaders (= 0.63.3)
   - React-RCTAnimation (0.63.3):
@@ -307,11 +307,11 @@ PODS:
     - ReactNativeNavigation/Core (= 7.1.0)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNCAsyncStorage (1.11.0):
+  - RNCAsyncStorage (1.13.1):
     - React
   - RNColorMatrixImageFilters (5.2.5):
     - React
-  - RNDeviceInfo (6.0.4):
+  - RNDeviceInfo (7.0.2):
     - React-Core
   - RNFastImage (8.3.2):
     - React
@@ -325,13 +325,13 @@ PODS:
     - React
   - RNLocalize (1.4.2):
     - React-Core
-  - RNReanimated (1.10.2):
+  - RNReanimated (1.13.1):
     - React
-  - RNShare (3.7.0):
-    - React
+  - RNShare (4.0.4):
+    - React-Core
   - RNSVG (12.1.0):
     - React
-  - RNVectorIcons (6.6.0):
+  - RNVectorIcons (7.1.0):
     - React
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
@@ -384,7 +384,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
-  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNColorMatrixImageFilters (from `../node_modules/react-native-color-matrix-image-filters`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
@@ -490,7 +490,7 @@ EXTERNAL SOURCES:
   rn-fetch-blob:
     :path: "../node_modules/rn-fetch-blob"
   RNCAsyncStorage:
-    :path: "../node_modules/@react-native-community/async-storage"
+    :path: "../node_modules/@react-native-async-storage/async-storage"
   RNColorMatrixImageFilters:
     :path: "../node_modules/react-native-color-matrix-image-filters"
   RNDeviceInfo:
@@ -517,7 +517,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   AppCenter: aba7de06e4c2184f90dc84f7866bd07f82427d69
   appcenter-analytics: 86931681ba39a34856727e415d39e7d4693ad7fe
   appcenter-core: 1cca3f4d1f01e820710dc82e14ad2b4806a4f907
@@ -541,15 +541,15 @@ SPEC CHECKSUMS:
   React-jsi: df07aa95b39c5be3e41199921509bfa929ed2b9d
   React-jsiexecutor: b56c03e61c0dd5f5801255f2160a815f4a53d451
   React-jsinspector: 8e68ffbfe23880d3ee9bafa8be2777f60b25cbe2
-  react-native-app-auth: 4b83339a50548e803db392e6dafa82da9c54c85e
+  react-native-app-auth: 6ca234b90aa54adb133ad70261b0324fdc668151
   react-native-appearance: 0f0e5fc2fcef70e03d48c8fe6b00b9158c2ba8aa
   react-native-config: 9a061347e0136fdb32d43a34d60999297d672361
-  react-native-document-picker: 4921045c5c6c78243010f784eae0a3f4b2af7799
-  react-native-in-app-browser: c5ff7e659bbec8358d4b27ec691ed563fff79212
+  react-native-document-picker: 0bba80cc56caab1f67dbaa81ff557e3a9b7f2b9f
+  react-native-in-app-browser: 533839b6e87ec02a7a88bd9f4f7e6e5b586e25fa
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-netinfo: 250dc0ca126512f618a8a2ca6a936577e1f66586
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
-  react-native-webview: fcb5f377aadc216273300f452ee0d321fb85809b
+  react-native-webview: 73e409ecc987c189772bda27ba7f0e2f3dcd2e81
   React-RCTActionSheet: 53ea72699698b0b47a6421cb1c8b4ab215a774aa
   React-RCTAnimation: 1befece0b5183c22ae01b966f5583f42e69a83c2
   React-RCTBlob: 0b284339cbe4b15705a05e2313a51c6d8b51fa40
@@ -562,18 +562,18 @@ SPEC CHECKSUMS:
   ReactCommon: 4167844018c9ed375cc01a843e9ee564399e53c3
   ReactNativeNavigation: 65025dab27b404053678593b2450ed7a022e3173
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
+  RNCAsyncStorage: 90b0a28b3f466894a397687a087bbb6d6852c8d6
   RNColorMatrixImageFilters: b63046039affa237c9e8e10a79052fbc7fb9d963
-  RNDeviceInfo: 5eb11f4aef9395cca403c0c92dff458252fc0b2c
+  RNDeviceInfo: e1d82a27d0c1ea6278e3b141784dc38e51fc90f4
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: 452d4118e338dee1e5ca3fac4d5a11a4ab26a46a
-  RNReanimated: 7de2dca51deacff78bb880f63c1389a24311b376
-  RNShare: a1d5064df7a0ebe778d001869b3f0a124bf0a491
+  RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
+  RNShare: af2aeae0587bf3e40e5268f1ef96aa162f1a6ac9
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a

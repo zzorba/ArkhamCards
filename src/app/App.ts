@@ -5,6 +5,7 @@ import { TouchableOpacity, Platform, Linking, LogBox } from 'react-native';
 import { Appearance } from 'react-native-appearance';
 import DeepLinking from 'react-native-deep-linking';
 import { Action, Store } from 'redux';
+import { addEventListener as addLangEventListener } from 'react-native-localize';
 import { t } from 'ttag';
 
 import { changeLocale } from './i18n';
@@ -36,7 +37,7 @@ export default class App {
     this.currentThemeOverride = undefined;
 
     store.subscribe(this.onStoreUpdate.bind(this, store));
-
+    addLangEventListener('change', () => this.onStoreUpdate(store));
     this.initialAppStart(store).then(safeMode => {
       if (!safeMode) {
         this.setupAppEventHandlers(true);
@@ -45,6 +46,7 @@ export default class App {
   }
 
   setupAppEventHandlers(initial: boolean) {
+    console.log('Setting up app event heandlers');
     Linking.addEventListener('url', this._handleUrl);
 
     // We handle arkham cards schema-ref

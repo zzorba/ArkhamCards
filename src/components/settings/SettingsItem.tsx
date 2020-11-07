@@ -5,8 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-// @ts-ignore
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
   SettingsButton,
@@ -20,10 +19,8 @@ interface Props {
   text: string;
   onPress?: () => void;
 }
+
 export default function SettingsItem({ loading, navigation, text, onPress }: Props) {
-  const dummyOnPress = () => {
-    // Ignore me
-  };
   const { colors, typography } = useContext(StyleContext);
   if (loading) {
     return (
@@ -41,7 +38,7 @@ export default function SettingsItem({ loading, navigation, text, onPress }: Pro
   }
   return (
     <SettingsButton
-      onPress={onPress || dummyOnPress}
+      onPress={onPress}
       title={text}
       titleStyle={typography.text}
       containerStyle={{

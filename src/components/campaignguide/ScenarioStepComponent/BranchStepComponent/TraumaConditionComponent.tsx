@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { t } from 'ttag';
 
 import BinaryResult from '../../BinaryResult';
@@ -16,9 +16,8 @@ interface Props {
 }
 
 
-export default class TraumaConditionComponent extends React.Component<Props> {
-  prompt(): string {
-    const { condition } = this.props;
+export default function TraumaConditionComponent({ step, condition, campaignLog }: Props) {
+  const prompt = useMemo((): string => {
     const messages = {
       killed: {
         lead_investigator: t`If the lead investigator was <b>killed</b>.`,
@@ -26,17 +25,14 @@ export default class TraumaConditionComponent extends React.Component<Props> {
       },
     };
     return messages[condition.trauma][condition.investigator];
-  }
+  }, [condition]);
 
-  render(): React.ReactNode {
-    const { step, condition, campaignLog } = this.props;
-    const result = killedTraumaConditionResult(condition, campaignLog);
-    return (
-      <BinaryResult
-        bulletType={step.bullet_type}
-        prompt={this.prompt()}
-        result={result.decision}
-      />
-    );
-  }
+  const result = killedTraumaConditionResult(condition, campaignLog);
+  return (
+    <BinaryResult
+      bulletType={step.bullet_type}
+      prompt={prompt}
+      result={result.decision}
+    />
+  );
 }
