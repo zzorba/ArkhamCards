@@ -26,7 +26,7 @@ export default function LoginButton({ settings }: Props) {
   const doLogout = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
-  const doLogin = useCallback(() => {
+  const loginPressed = useCallback(() => {
     dispatch(login());
   }, [dispatch]);
   const logOutPressed = useCallback(() => {
@@ -35,11 +35,11 @@ export default function LoginButton({ settings }: Props) {
       t`Data on ArkhamDB will be preserved, but all Campaign data and any edits made without internet might be lost.\n\n If you are having trouble with your account you can also reconnect.`,
       [
         { text: t`Sign Out`, style: 'destructive', onPress: doLogout },
-        { text: t`Reconnect Account`, onPress: doLogin },
+        { text: t`Reconnect Account`, onPress: loginPressed },
         { text: t`Cancel` },
       ],
     );
-  }, [doLogout, doLogin]);
+  }, [doLogout, loginPressed]);
   if (loading) {
     return (
       <ActivityIndicator
@@ -62,10 +62,10 @@ export default function LoginButton({ settings }: Props) {
   }
 
   return settings ? (
-    <SettingsItem onPress={login} text={t`Sign in to ArkhamDB`} />
+    <SettingsItem onPress={loginPressed} text={t`Sign in to ArkhamDB`} />
   ) : (
     <View style={styles.wrapper}>
-      <BasicButton onPress={login} title={t`Sign in to ArkhamDB`} />
+      <BasicButton onPress={loginPressed} title={t`Sign in to ArkhamDB`} />
     </View>
   );
 }

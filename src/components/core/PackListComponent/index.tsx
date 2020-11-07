@@ -52,7 +52,7 @@ function cycleName(position: string): string {
     case '50': return t`Return to...`;
     case '60': return t`Investigator Starter Decks`;
     case '70': return t`Standalone`;
-    case '80': return t`Miscellaneous`;
+    case '80': return t`Books`;
     case '90': return t`Parallel`;
     default: return 'Unknown';
   }
@@ -123,7 +123,7 @@ export default function PackListComponent({
     );
   }
   const groups: PackCycle[] = map(
-    groupBy(packs, pack => pack.cycle_position),
+    groupBy(filter(packs, pack => pack.code !== 'books'), pack => pack.cycle_position),
     (group, key) => {
       return {
         title: cycleName(`${key}`),
