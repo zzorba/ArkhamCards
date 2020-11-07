@@ -273,7 +273,6 @@ interface IncSlotAction {
 interface DecSlotAction {
   type: 'dec-slot';
   code: string;
-  value: number;
 }
 
 type SlotsAction = SlotAction | IncSlotAction | DecSlotAction | ClearAction | SyncAction;

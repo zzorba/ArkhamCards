@@ -14,7 +14,6 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import { CampaignNotes, SingleCampaign, ScenarioResult } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { NavigationProps } from '@components/nav/types';
 import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import ScenarioSection from './ScenarioSection';
@@ -51,8 +50,7 @@ type Props = NavigationProps &
   AddScenarioResultProps &
   ReduxProps &
   ReduxActionProps &
-  InjectedDialogProps &
-  DimensionsProps;
+  InjectedDialogProps;
 
 interface State {
   scenario?: ScenarioResult;
@@ -333,9 +331,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 
 export default withPlayerCards<NavigationProps & AddScenarioResultProps>(
   connect(mapStateToProps, mapDispatchToProps)(
-    withDialogs(
-      withDimensions(AddScenarioResultView)
-    )
+    withDialogs(AddScenarioResultView)
   )
 );
 const styles = StyleSheet.create({

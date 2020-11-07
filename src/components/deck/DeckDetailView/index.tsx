@@ -849,8 +849,8 @@ function DeckDetailView({
   }, [deck, hasPendingEdits, savePressed, clearEdits]);
 
   const showCardUpgradeDialog = useCallback((card: Card) => {
-    if (!parsedDeck || !cards) {
-      return null;
+    if (!cards || !parsedDeck) {
+      return;
     }
     Navigation.push<CardUpgradeDialogProps>(componentId, {
       component: {
@@ -858,7 +858,7 @@ function DeckDetailView({
         passProps: {
           componentId,
           card,
-          parsedDeck: parsedDeck,
+          deck: parsedDeck.deck,
           meta,
           cards,
           cardsByName,

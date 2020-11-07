@@ -13,7 +13,6 @@ import {
 import Card from '@data/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
-import withDimensions, { DimensionsProps } from '@components/core/withDimensions';
 import { FilterState } from '@lib/filters';
 import { removeFilterSet, clearFilters, syncFilterSet, toggleMythosMode, toggleFilter, updateFilter } from '@components/filter/actions';
 import { getFilterState, getMythosMode, getCardSort, AppState } from '@reducers';
@@ -62,8 +61,7 @@ interface OwnProps {
 
 type Props = OwnProps &
   ReduxProps &
-  ReduxActionProps &
-  DimensionsProps;
+  ReduxActionProps;
 
 interface State {
   visible: boolean;
@@ -361,9 +359,7 @@ function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
 export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps
-)(
-  withDimensions(CardSearchComponent)
-);
+)(CardSearchComponent);
 
 const styles = StyleSheet.create({
   row: {
