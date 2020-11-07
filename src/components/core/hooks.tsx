@@ -2,7 +2,7 @@ import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRe
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, getCampaign, getChaosBagResults, getDeck, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
@@ -393,7 +393,7 @@ export function useWeaknessCards(tabooSetOverride?: number): Card[] | undefined 
   return playerCards?.weaknessCards;
 }
 
-export function useCampaign(campaignId?: number): Campaign | undefined {
+export function useCampaign(campaignId?: number): SingleCampaign | undefined {
   const selector = useCallback((state: AppState) => {
     if (campaignId) {
       return getCampaign(state, campaignId);
@@ -403,6 +403,13 @@ export function useCampaign(campaignId?: number): Campaign | undefined {
   return useSelector(selector);
 }
 
+export function useCampaignInvestigators(campaign?: Campaign, investigators?: CardsMap): Card[] {
+  const allInvestigatorsSelector = useCallback((state: AppState) => {
+    return investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS;
+  }, [investigators, campaign]);
+  return useSelector(allInvestigatorsSelector);
+}
+
 const EMPTY_DECK_IDS: number[] = [];
 const EMPTY_INVESTIGATORS: Card[] = [];
 export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
@@ -410,10 +417,7 @@ export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap
     return campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS;
   }, [campaign]);
   const latestDeckIds = useSelector(latestDeckIdsSelector);
-  const allInvestigatorsSelector = useCallback((state: AppState) => {
-    return investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS;
-  }, [investigators, campaign]);
-  const allInvestigators = useSelector(allInvestigatorsSelector);
+  const allInvestigators = useCampaignInvestigators(campaign, investigators);
   return [latestDeckIds, allInvestigators];
 }
 

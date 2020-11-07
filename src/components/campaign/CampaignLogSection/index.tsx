@@ -10,7 +10,6 @@ import InvestigatorSectionList from './InvestigatorSectionList';
 import EditCountComponent from '../EditCountComponent';
 import NotesSection from './NotesSection';
 import BasicButton from '@components/core/BasicButton';
-import TextEditDialog from '@components/core/TextEditDialog';
 import { s, xs } from '@styles/space';
 
 interface Props {

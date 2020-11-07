@@ -11,7 +11,6 @@ import { t } from 'ttag';
 import DialogComponent from '@lib/react-native-dialog';
 import Dialog from './Dialog';
 import StyleContext from '@styles/StyleContext';
-import { useWhyDidYouUpdate } from './hooks';
 
 interface Props {
   title: string;
@@ -24,7 +23,6 @@ interface Props {
 }
 
 export default function TextEditDialog(props: Props) {
-  useWhyDidYouUpdate('TextEditDialog', props);
   const { title, visibleCount, text, numberOfLines = 1, onAppend, onUpdate, showCrossOut } = props;
   const { typography } = useContext(StyleContext);
   const textInputRef = useRef<TextInput>(null);

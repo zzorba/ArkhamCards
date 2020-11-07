@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { keys } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
@@ -66,7 +66,8 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   const updateWeaknessSet = useCallback((weaknessSet: WeaknessSet) => {
     dispatch(updateCampaign(id, { weaknessSet }));
   }, [dispatch, id]);
-  const [addSectionCallback, setAddSectionCallback] = useState<AddSectionFunction | undefined>();
+  const addSectionCallback = useRef<AddSectionFunction>();
+  const [addSectionVisible, setAddSectionVisible] = useState(false);
   const [menuOpen, toggleMenuOpen, setMenuOpen] = useFlag(false);
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
@@ -79,11 +80,13 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
   }, [id, dispatch]);
 
   const showAddSectionDialog = useCallback((addSectionFunction: AddSectionFunction) => {
-    setAddSectionCallback(addSectionFunction);
-  }, [setAddSectionCallback]);
+    addSectionCallback.current = addSectionFunction;
+    setAddSectionVisible(true);
+  }, [addSectionCallback, setAddSectionVisible]);
   const hideAddSectionDialog = useCallback(() => {
-    setAddSectionCallback(undefined);
-  }, [setAddSectionCallback]);
+    setAddSectionVisible(false);
+    addSectionCallback.current = undefined;
+  }, [addSectionCallback, setAddSectionVisible]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'menu') {
@@ -122,16 +125,6 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
     dispatch(cleanBrokenCampaigns());
     Navigation.pop(componentId);
   }, [componentId, dispatch]);
-
-  const addSectionDialog = useMemo(() => {
-    return (
-      <AddCampaignNoteSectionDialog
-        visible={!!addSectionCallback}
-        addSection={addSectionCallback}
-        hide={hideAddSectionDialog}
-      />
-    );
-  }, [addSectionCallback, hideAddSectionDialog]);
 
   const viewScenariosPressed = useCallback(() => {
     setMenuOpen(false);
@@ -246,7 +239,11 @@ function CampaignDetailView({ id, componentId, showTextEditDialog }: Props) {
       >
         { campaignDetails }
       </SideMenu>
-      { addSectionDialog }
+      <AddCampaignNoteSectionDialog
+        visible={addSectionVisible}
+        addSection={addSectionCallback.current}
+        hide={hideAddSectionDialog}
+      />
       { traumaDialog }
     </View>
   );

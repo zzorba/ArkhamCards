@@ -22,7 +22,8 @@ interface Props {
   hide: () => void;
 }
 
-export default function AddCampaignNoteSectionDialog({ visible, addSection, hide }: Props) {
+export default function AddCampaignNoteSectionDialog(props: Props) {
+  const { visible, addSection, hide } = props;
   const { typography } = useContext(StyleContext);
   const textInputRef = useRef<TextInput>(null);
   const [name, setName] = useState('');

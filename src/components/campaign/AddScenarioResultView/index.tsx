@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { throttle } from 'lodash';
 import {
   Platform,
@@ -6,50 +6,31 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
-import { Navigation, EventSubscription, OptionsModalPresentationStyle } from 'react-native-navigation';
+import { useDispatch } from 'react-redux';
+import { Navigation, OptionsModalPresentationStyle } from 'react-native-navigation';
 import { t } from 'ttag';
 
 import BasicButton from '@components/core/BasicButton';
-import { CampaignNotes, SingleCampaign, ScenarioResult } from '@actions/types';
+import { CampaignNotes, ScenarioResult } from '@actions/types';
 import withDialogs, { InjectedDialogProps } from '@components/core/withDialogs';
 import { NavigationProps } from '@components/nav/types';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import ScenarioSection from './ScenarioSection';
 import CampaignLogSection from '../CampaignLogSection';
 import XpComponent from '../XpComponent';
 import AddCampaignNoteSectionDialog, { AddSectionFunction } from '../AddCampaignNoteSectionDialog';
 import { UpgradeDecksProps } from '../UpgradeDecksView';
 import { addScenarioResult } from '../actions';
-import Card from '@data/Card';
-import { getCampaign, getLatestCampaignInvestigators, AppState } from '@reducers';
 import { m } from '@styles/space';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCampaign, useCampaignInvestigators, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface AddScenarioResultProps {
   id: number;
 }
 
-interface ReduxProps {
-  campaign?: SingleCampaign;
-  allInvestigators: Card[];
-}
-
-interface ReduxActionProps {
-  addScenarioResult: (
-    id: number,
-    scenarioResult: ScenarioResult,
-    campaignNotes?: CampaignNotes
-  ) => void;
-}
-
 type Props = NavigationProps &
-  PlayerCardProps &
   AddScenarioResultProps &
-  ReduxProps &
-  ReduxActionProps &
   InjectedDialogProps;
 
 interface State {
@@ -60,94 +41,23 @@ interface State {
   addSectionFunction?: AddSectionFunction;
 }
 
-class AddScenarioResultView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
+  const { backgroundStyle, borderStyle } = useContext(StyleContext);
+  const dispatch = useDispatch();
 
-  _navEventListener?: EventSubscription;
-  _doSave!: (showDeckUpgrade: boolean) => void;
+  const campaign = useCampaign(id);
+  const investigators = useInvestigatorCards();
+  const [scenario, setScenario] = useState<ScenarioResult | undefined>();
+  const [campaignNotes, setCampaignNotes] = useState<CampaignNotes | undefined>();
+  const allInvestigators = useCampaignInvestigators(campaign, investigators);
+  const [xp, setXp] = useState(0);
+  const [addSectionVisible, setAddSectionVisible] = useState(false);
+  const addSectionFunction = useRef<AddSectionFunction>();
 
-  static options() {
-    return {
-      topBar: {
-        title: {
-          text: t`Scenario Result`,
-        },
-        backButton: {
-          title: t`Cancel`,
-        },
-        rightButtonDisabledColor: COLORS.darkGray,
-        rightButtons: [{
-          text: t`Save`,
-          id: 'save',
-          color: COLORS.M,
-        }],
-      },
-    };
-  }
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      xp: 0,
-      addSectionVisible: false,
-    };
-
-    this._doSave = throttle(this.doSave.bind(this), 200);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
-
-  componentDidMount() {
-    this._syncNavigationButtons();
-  }
-
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'save') {
-      this._doSave(true);
-    }
-  }
-
-  saveEnabled() {
-    const { scenario } = this.state;
-    return !!(scenario &&
-      scenario.scenario &&
-      (scenario.interlude || scenario.resolution !== ''));
-  }
-
-  _syncNavigationButtons = () => {
-    const { componentId } = this.props;
-    Navigation.mergeOptions(componentId, {
-      topBar: {
-        rightButtonDisabledColor: COLORS.darkGray,
-        rightButtons: [{
-          text: t`Save`,
-          id: 'save',
-          enabled: this.saveEnabled(),
-          color: COLORS.M,
-        }],
-      },
-    });
-  };
-
-  doSave(showDeckUpgrade: boolean) {
-    const {
-      componentId,
-      id,
-      addScenarioResult,
-    } = this.props;
-    const {
-      scenario,
-      xp,
-      campaignNotes,
-    } = this.state;
+  const doSave = useCallback((showDeckUpgrade: boolean) => {
     if (scenario) {
       const scenarioResult: ScenarioResult = { ...scenario, xp };
-      addScenarioResult(id, scenarioResult, campaignNotes);
+      dispatch(addScenarioResult(id, scenarioResult, campaignNotes));
       const passProps: UpgradeDecksProps = {
         id,
         scenarioResult,
@@ -175,47 +85,54 @@ class AddScenarioResultView extends React.Component<Props, State> {
         Navigation.pop(componentId);
       }
     }
-  }
+  }, [componentId, id, dispatch, scenario, xp, campaignNotes]);
 
-  _scenarioChanged = (scenario: ScenarioResult) => {
-    this.setState({
-      scenario,
-    }, this._syncNavigationButtons);
-  };
+  const savePressed = useMemo(() => throttle((showDeckUpgrade: boolean) => doSave(showDeckUpgrade), 200), [doSave]);
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'save') {
+      savePressed(true);
+    }
+  }, componentId, [savePressed]);
 
-  _xpChanged = (xp: number) => {
-    this.setState({
-      xp,
+  const saveEnabled = useMemo(() => {
+    return !!(scenario &&
+      scenario.scenario &&
+      (scenario.interlude || scenario.resolution !== ''));
+  }, [scenario]);
+
+  useEffect(() => {
+    Navigation.mergeOptions(componentId, {
+      topBar: {
+        rightButtonDisabledColor: COLORS.darkGray,
+        rightButtons: [{
+          text: t`Save`,
+          id: 'save',
+          enabled: saveEnabled,
+          color: COLORS.M,
+        }],
+      },
     });
-  };
+  }, [componentId, saveEnabled]);
 
-  _saveAndDismiss = () => {
-    this._doSave(false);
-  };
+  const saveAndDismiss = useCallback(() => {
+    savePressed(false);
+  }, [savePressed]);
 
-  _saveAndUpgradeDecks = () => {
-    this._doSave(true);
-  };
+  const saveAndUpgradeDecks = useCallback(() => {
+    savePressed(true);
+  }, [savePressed]);
 
-  _showAddSectionDialog = (addSectionFunction: AddSectionFunction) => {
-    this.setState({
-      addSectionVisible: true,
-      addSectionFunction,
-    });
-  };
+  const showAddSectionDialog = useCallback((f: AddSectionFunction) => {
+    setAddSectionVisible(true);
+    addSectionFunction.current = f;
+  }, [addSectionFunction, setAddSectionVisible]);
 
-  _hideAddSectionDialog = () => {
-    this.setState({
-      addSectionVisible: false,
-    });
-  };
+  const hideAddSectionDialog = useCallback(() => {
+    setAddSectionVisible(false);
+    addSectionFunction.current = undefined;
+  }, [addSectionFunction, setAddSectionVisible]);
 
-  renderScenarios() {
-    const {
-      componentId,
-      campaign,
-      showTextEditDialog,
-    } = this.props;
+  const scenariosSection = useMemo(() => {
     if (!campaign) {
       return null;
     }
@@ -223,117 +140,79 @@ class AddScenarioResultView extends React.Component<Props, State> {
       <ScenarioSection
         componentId={componentId}
         campaign={campaign}
-        scenarioChanged={this._scenarioChanged}
+        scenarioChanged={setScenario}
         showTextEditDialog={showTextEditDialog}
       />
     );
-  }
+  }, [componentId, campaign, showTextEditDialog]);
 
-  campaignNotes(): CampaignNotes | undefined {
-    const {
-      campaign,
-    } = this.props;
-    const {
-      campaignNotes,
-    } = this.state;
+  const notes = useMemo(() => {
     return campaignNotes ||
       (campaign && campaign.campaignNotes);
-  }
+  }, [campaignNotes, campaign]);
 
-  _updateCampaignNotes = (campaignNotes: CampaignNotes) => {
-    this.setState({
-      campaignNotes,
-    });
-  };
-
-  renderAddSectionDialog() {
-    const {
-      addSectionVisible,
-      addSectionFunction,
-    } = this.state;
-
-    return (
+  const hasDecks = !!campaign && !!campaign.baseDeckIds && campaign.baseDeckIds.length > 0;
+  return (
+    <View style={[styles.flex, backgroundStyle]}>
       <AddCampaignNoteSectionDialog
         visible={addSectionVisible}
-        addSection={addSectionFunction}
-        hide={this._hideAddSectionDialog}
+        addSection={addSectionFunction.current}
+        hide={hideAddSectionDialog}
       />
-    );
-  }
-  render() {
-    const {
-      campaign,
-      showTextEditDialog,
-      allInvestigators,
-    } = this.props;
-    const { backgroundStyle, borderStyle } = this.context;
-    const {
-      xp,
-    } = this.state;
-    const hasDecks = !!campaign && !!campaign.baseDeckIds && campaign.baseDeckIds.length > 0;
-    const notes = this.campaignNotes();
-    const scenarioResults = (campaign && campaign.scenarioResults) || [];
-    return (
-      <View style={[styles.flex, backgroundStyle]}>
-        { this.renderAddSectionDialog() }
-        <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
-          { this.renderScenarios() }
-          <View style={[styles.bottomBorder, borderStyle]}>
-            <XpComponent xp={xp} onChange={this._xpChanged} />
-          </View>
-          { hasDecks && (
-            <BasicButton
-              title={t`Save and Upgrade Decks`}
-              onPress={this._saveAndUpgradeDecks}
-              disabled={!this.saveEnabled()}
-            />
-          ) }
-          <View style={[styles.bottomBorder, borderStyle]}>
-            <BasicButton
-              title={hasDecks ? t`Only Save` : t`Save`}
-              onPress={this._saveAndDismiss}
-              disabled={!this.saveEnabled()}
-            />
-          </View>
-          { !!notes && (
-            <CampaignLogSection
-              campaignNotes={notes}
-              allInvestigators={allInvestigators}
-              updateCampaignNotes={this._updateCampaignNotes}
-              showTextEditDialog={showTextEditDialog}
-              showAddSectionDialog={this._showAddSectionDialog}
-            />
-          ) }
-          <View style={styles.footer} />
-        </ScrollView>
-      </View>
-    );
-  }
+      <ScrollView style={styles.flex} contentContainerStyle={styles.container}>
+        { scenariosSection }
+        <View style={[styles.bottomBorder, borderStyle]}>
+          <XpComponent xp={xp} onChange={setXp} />
+        </View>
+        { hasDecks && (
+          <BasicButton
+            title={t`Save and Upgrade Decks`}
+            onPress={saveAndUpgradeDecks}
+            disabled={!saveEnabled}
+          />
+        ) }
+        <View style={[styles.bottomBorder, borderStyle]}>
+          <BasicButton
+            title={hasDecks ? t`Only Save` : t`Save`}
+            onPress={saveAndDismiss}
+            disabled={!saveEnabled}
+          />
+        </View>
+        { !!notes && (
+          <CampaignLogSection
+            campaignNotes={notes}
+            allInvestigators={allInvestigators}
+            updateCampaignNotes={setCampaignNotes}
+            showTextEditDialog={showTextEditDialog}
+            showAddSectionDialog={showAddSectionDialog}
+          />
+        ) }
+        <View style={styles.footer} />
+      </ScrollView>
+    </View>
+  );
 }
 
-function mapStateToProps(
-  state: AppState,
-  props: NavigationProps & AddScenarioResultProps & PlayerCardProps
-): ReduxProps {
-  const campaign = getCampaign(state, props.id);
-  const allInvestigators = getLatestCampaignInvestigators(state, props.investigators, campaign);
+AddScenarioResultView.options = () => {
   return {
-    campaign,
-    allInvestigators,
+    topBar: {
+      title: {
+        text: t`Scenario Result`,
+      },
+      backButton: {
+        title: t`Cancel`,
+      },
+      rightButtonDisabledColor: COLORS.darkGray,
+      rightButtons: [{
+        text: t`Save`,
+        id: 'save',
+        color: COLORS.M,
+      }],
+    },
   };
-}
+};
+export default withDialogs(AddScenarioResultView);
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    addScenarioResult,
-  }, dispatch);
-}
-
-export default withPlayerCards<NavigationProps & AddScenarioResultProps>(
-  connect(mapStateToProps, mapDispatchToProps)(
-    withDialogs(AddScenarioResultView)
-  )
-);
 const styles = StyleSheet.create({
   container: {
     paddingTop: m,
