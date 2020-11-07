@@ -87,6 +87,25 @@ export function useComponentDidAppear(
 }
 
 
+export function useComponentDidDisappear(
+  handler: (event: ComponentDidDisappearEvent) => void,
+  componentId: string,
+  deps: any[],
+) {
+  useEffect(() => {
+    const sub = Navigation.events().registerComponentDidDisappearListener((event: ComponentDidDisappearEvent) => {
+      if (event.componentId === componentId) {
+        handler(event);
+      }
+    });
+    return () => {
+      sub.remove();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [componentId, handler, ...deps]);
+}
+
+
 interface IncAction {
   type: 'inc';
 }

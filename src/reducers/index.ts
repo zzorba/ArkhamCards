@@ -99,7 +99,18 @@ export const getCampaigns = createSelector(
       values(allCampaigns),
       campaign => !campaign.linkedCampaignId
     ),
-    campaign => campaign.lastUpdated ? -new Date(campaign.lastUpdated).getTime() : 0
+    campaign => {
+      if (!campaign.lastUpdated) {
+        return 0;
+      }
+      if (typeof campaign.lastUpdated === 'string') {
+        return -(new Date(Date.parse(campaign.lastUpdated)).getTime());
+      }
+      if (typeof campaign.lastUpdated === 'number') {
+        return -(new Date(campaign.lastUpdated).getTime());
+      }
+      return -(campaign.lastUpdated.getTime());
+    }
   )
 );
 

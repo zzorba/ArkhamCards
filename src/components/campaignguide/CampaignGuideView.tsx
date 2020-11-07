@@ -73,7 +73,7 @@ function CampaignGuideView({ campaignId, componentId, showTextEditDialog, campai
 
   const saveCampaignUpdate = useCallback((id: number, sparseCampaign: Partial<Campaign>, now?: Date) => {
     dispatch(updateCampaign(id, sparseCampaign, now));
-  }, [dispatch])
+  }, [dispatch]);
   const { campaignGuide, campaignState } = campaignData;
   const processedCampaign = useMemo(() => campaignGuide.processAllScenarios(campaignState), [campaignGuide, campaignState]);
   const tabs = [
