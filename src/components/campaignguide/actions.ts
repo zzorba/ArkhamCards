@@ -235,3 +235,19 @@ export function setCampaignLink(
     now: new Date(),
   };
 }
+
+export default {
+  startScenario,
+  startSideScenario,
+  resetScenario,
+  setScenarioCount,
+  setScenarioDecision,
+  setScenarioChoice,
+  setScenarioSupplies,
+  setScenarioNumberChoices,
+  setScenarioStringChoices,
+  setScenarioText,
+  setInterScenarioData,
+  setCampaignLink,
+  undo,
+};

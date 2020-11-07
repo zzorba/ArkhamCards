@@ -33,14 +33,6 @@ type Props = NavigationProps &
   AddScenarioResultProps &
   InjectedDialogProps;
 
-interface State {
-  scenario?: ScenarioResult;
-  xp: number;
-  campaignNotes?: CampaignNotes;
-  addSectionVisible: boolean;
-  addSectionFunction?: AddSectionFunction;
-}
-
 function AddScenarioResultView({ componentId, id, showTextEditDialog }: Props) {
   const { backgroundStyle, borderStyle } = useContext(StyleContext);
   const dispatch = useDispatch();

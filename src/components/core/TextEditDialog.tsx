@@ -42,12 +42,13 @@ export default function TextEditDialog(props: Props) {
     const isCrossedOut = !!(showCrossOut && originalText) && startsWith(originalText, '~');
     setHeight(40);
     return [isCrossedOut, isCrossedOut ? originalText.substr(1) : originalText];
-  }, [showCrossOut, originalText, setHeight]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showCrossOut, originalText, setHeight, visibleCount]);
 
   const [editText, onTextChange] = useState(initialText);
   useEffect(() => {
     onTextChange(initialText);
-  }, [initialText, onTextChange]);
+  }, [initialText, onTextChange, visibleCount]);
 
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -82,8 +83,9 @@ export default function TextEditDialog(props: Props) {
     const result = isCrossedOut ? `~${editText}` : editText;
     onAppend && onAppend(result || '');
     setOriginalText('');
+    onTextChange('');
     textInputRef.current && textInputRef.current.focus();
-  }, [onAppend, editText, isCrossedOut, setOriginalText, textInputRef]);
+  }, [onAppend, editText, isCrossedOut, setOriginalText, onTextChange, textInputRef]);
 
   const textChanged = isCrossedOut ?
     editText !== originalText.substring(1) :

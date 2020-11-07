@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { Alert, ScrollView } from 'react-native';
-import { EventSubscription, Navigation } from 'react-native-navigation';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
+import { useDispatch, useSelector } from 'react-redux';
 import { t } from 'ttag';
 
 import LinkedScenarioListComponent from './LinkedScenarioListComponent';
@@ -16,12 +15,13 @@ import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext
 import withTraumaDialog, { TraumaProps } from '@components/campaign/withTraumaDialog';
 import TabView from '@components/core/TabView';
 import { deleteCampaign, updateCampaign } from '@components/campaign/actions';
-import withUniversalCampaignData, { UniversalCampaignProps } from '@components/campaignguide/withUniversalCampaignData';
-import { campaignGuideReduxData, CampaignGuideReduxData, constructCampaignGuideContext } from '@components/campaignguide/contextHelper';
-import { getCampaign, AppState } from '@reducers';
+import { campaignGuideReduxData } from '@components/campaignguide/contextHelper';
+import { AppState } from '@reducers';
 import { NavigationProps } from '@components/nav/types';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCampaign, useInvestigatorCards, useNavigationButtonPressed } from '@components/core/hooks';
+import useCampaignGuideContext from './useCampaignGuideContext';
 
 export interface LinkedCampaignGuideProps {
   campaignId: number;
@@ -29,59 +29,27 @@ export interface LinkedCampaignGuideProps {
   campaignIdB: number;
 }
 
-interface ReduxProps {
-  campaignName: string;
-  campaignDataA?: CampaignGuideReduxData;
-  campaignDataB?: CampaignGuideReduxData;
-}
-
-interface ReduxActionProps {
-  updateCampaign: (
-    id: number,
-    sparseCampaign: Partial<Campaign>
-  ) => void;
-  deleteCampaign: (id: number) => void;
-}
 type Props = LinkedCampaignGuideProps &
-  UniversalCampaignProps &
-  ReduxProps &
-  ReduxActionProps &
   NavigationProps &
   InjectedDialogProps &
   TraumaProps;
 
-class LinkedCampaignGuideView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function LinkedCampaignGuideView(props: Props) {
+  const { componentId, campaignId, campaignIdA, campaignIdB, showTraumaDialog, showTextEditDialog } = props;
+  const investigators = useInvestigatorCards();
+  const styleContext = useContext(StyleContext);
+  const { backgroundStyle } = styleContext;
+  const dispatch = useDispatch();
 
-  _navEventListener!: EventSubscription;
-  constructor(props: Props) {
-    super(props);
-    this._navEventListener = Navigation.events().bindComponent(this);
-  }
+  const campaign = useCampaign(campaignId);
+  const campaignName = (campaign && campaign.name) || '';
+  const campaignDataASelector = useCallback((state: AppState) => investigators && campaignGuideReduxData(campaignIdA, investigators, state), [campaignIdA, investigators]);
+  const campaignDataA = useSelector(campaignDataASelector);
+  const campaignDataBSelector = useCallback((state: AppState) => investigators && campaignGuideReduxData(campaignIdB, investigators, state), [campaignIdB, investigators]);
+  const campaignDataB = useSelector(campaignDataBSelector);
 
-  componentWillUnmount() {
-    this._navEventListener && this._navEventListener.remove();
-  }
-
-  navigationButtonPressed({ buttonId }: { buttonId: string }) {
-    if (buttonId === 'edit') {
-      this._showEditNameDialog();
-    }
-  }
-
-  _showEditNameDialog = () => {
-    const { showTextEditDialog, campaignName } = this.props;
-    showTextEditDialog(
-      t`Name`,
-      campaignName,
-      this._updateCampaignName
-    );
-  }
-
-  _updateCampaignName = (name: string) => {
-    const { campaignId, componentId, updateCampaign } = this.props;
-    updateCampaign(campaignId, { name, lastUpdated: new Date() });
+  const updateCampaignName = useCallback((name: string) => {
+    dispatch(updateCampaign(campaignId, { name, lastUpdated: new Date() }));
     Navigation.mergeOptions(componentId, {
       topBar: {
         title: {
@@ -89,63 +57,48 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         },
       },
     });
-  };
+  }, [campaignId, dispatch, componentId]);
 
-  _syncCampaignData = () => {
-    return;
-  };
+  const showEditNameDialog = useCallback(() => {
+    showTextEditDialog(t`Name`, campaignName, updateCampaignName);
+  }, [campaignName, showTextEditDialog, updateCampaignName]);
 
-  /* eslint-disable @typescript-eslint/no-empty-function */
-  _onTabChange = () => {};
+  useNavigationButtonPressed(({ buttonId }) => {
+    if (buttonId === 'edit') {
+      showEditNameDialog();
+    }
+  }, componentId, [showEditNameDialog]);
 
-  _delete = () => {
-    const { componentId, campaignId, deleteCampaign } = this.props;
-    deleteCampaign(campaignId);
+  const actuallyDeleteCampaign = useCallback(() => {
+    dispatch(deleteCampaign(campaignId));
     Navigation.pop(componentId);
-  };
+  }, [componentId, dispatch, campaignId]);
 
-  _deleteCampaign = () => {
-    const { campaignName } = this.props;
+  const deleteCampaignPressed = useCallback(() => {
     Alert.alert(
       t`Delete`,
       t`Are you sure you want to delete the campaign: ${campaignName}`,
       [
-        { text: t`Delete`, onPress: this._delete, style: 'destructive' },
+        { text: t`Delete`, onPress: actuallyDeleteCampaign, style: 'destructive' },
         { text: t`Cancel`, style: 'cancel' },
       ],
     );
-  };
+  }, [campaignName, actuallyDeleteCampaign]);
 
-  render() {
-    const {
-      campaignDataA,
-      campaignDataB,
-      componentId,
-      updateCampaign,
-      showTraumaDialog,
-    } = this.props;
-    const { backgroundStyle } = this.context;
-    if (!campaignDataA || !campaignDataB) {
+  const handleUpdateCampaign = useCallback((id: number, sparseCampaign: Partial<Campaign>, now?: Date) => {
+    dispatch(updateCampaign(id, sparseCampaign, now));
+  }, [dispatch]);
+
+  const contextA = useCampaignGuideContext(campaignIdA, campaignDataA);
+  const contextB = useCampaignGuideContext(campaignIdB, campaignDataB);
+  const processedCampaignA = useMemo(() => contextA?.campaignGuide && contextA?.campaignState && contextA.campaignGuide.processAllScenarios(contextA.campaignState), [contextA?.campaignGuide, contextA?.campaignState]);
+  const processedCampaignB = useMemo(() => contextB?.campaignGuide && contextB?.campaignState && contextB.campaignGuide.processAllScenarios(contextB.campaignState), [contextB?.campaignGuide, contextB?.campaignState]);
+
+  const tabs = useMemo(() => {
+    if (!campaignDataA || !campaignDataB || !processedCampaignA || !processedCampaignB || !contextA || !contextB) {
       return null;
     }
-    const contextA = constructCampaignGuideContext(
-      campaignDataA,
-      this.props,
-      this.context
-    );
-    const contextB = constructCampaignGuideContext(
-      campaignDataB,
-      this.props,
-      this.context
-    );
-    const processedCampaignA = contextA.campaignGuide.processAllScenarios(
-      contextA.campaignState
-    );
-    const processedCampaignB = contextB.campaignGuide.processAllScenarios(
-      contextB.campaignState
-    );
-
-    const tabs = [
+    return [
       {
         key: 'investigators',
         title: t`Decks`,
@@ -159,7 +112,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             <CampaignGuideContext.Provider value={contextA}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
-                updateCampaign={updateCampaign}
+                updateCampaign={handleUpdateCampaign}
                 processedCampaign={processedCampaignA}
                 campaignData={contextA}
                 showTraumaDialog={showTraumaDialog}
@@ -173,7 +126,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             <CampaignGuideContext.Provider value={contextB}>
               <CampaignInvestigatorsComponent
                 componentId={componentId}
-                updateCampaign={updateCampaign}
+                updateCampaign={handleUpdateCampaign}
                 processedCampaign={processedCampaignB}
                 campaignData={contextB}
                 showTraumaDialog={showTraumaDialog}
@@ -181,7 +134,7 @@ class LinkedCampaignGuideView extends React.Component<Props> {
             </CampaignGuideContext.Provider>
             <BasicButton
               title={t`Delete Campaign`}
-              onPress={this._deleteCampaign}
+              onPress={deleteCampaignPressed}
               color={COLORS.red}
             />
           </ScrollView>
@@ -237,53 +190,15 @@ class LinkedCampaignGuideView extends React.Component<Props> {
         ),
       },
     ];
-
-    return (
-      <TabView
-        tabs={tabs}
-        onTabChange={this._onTabChange}
-      />
-    );
+  }, [campaignDataA, campaignDataB, processedCampaignA, processedCampaignB, contextA, contextB, backgroundStyle, componentId, deleteCampaignPressed, handleUpdateCampaign, showTraumaDialog]);
+  if (!tabs) {
+    return null;
   }
-}
-
-function mapStateToProps(
-  state: AppState,
-  props: LinkedCampaignGuideProps & NavigationProps & UniversalCampaignProps
-): ReduxProps {
-  const campaign = getCampaign(
-    state,
-    props.campaignId
+  return (
+    <TabView tabs={tabs} />
   );
-  return {
-    campaignName: (campaign && campaign.name) || '',
-    campaignDataA: campaignGuideReduxData(
-      props.campaignIdA,
-      props.investigators,
-      state
-    ),
-    campaignDataB: campaignGuideReduxData(
-      props.campaignIdB,
-      props.investigators,
-      state
-    ),
-  };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    updateCampaign,
-    deleteCampaign,
-  } as any, dispatch);
-}
-
-export default withUniversalCampaignData<LinkedCampaignGuideProps & NavigationProps>(
-  connect<ReduxProps, ReduxActionProps, LinkedCampaignGuideProps & NavigationProps & UniversalCampaignProps, AppState>(
-    mapStateToProps,
-    mapDispatchToProps
-  )(
-    withDialogs(
-      withTraumaDialog(LinkedCampaignGuideView, { hideKilledInsane: true })
-    )
-  )
+export default withDialogs(
+  withTraumaDialog(LinkedCampaignGuideView, { hideKilledInsane: true })
 );

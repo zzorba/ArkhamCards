@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 import { forEach, keys, map, values } from 'lodash';
 import { t } from 'ttag';
@@ -8,9 +8,10 @@ import { StringChoices, WeaknessSet } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { drawWeakness } from '@lib/weaknessHelper';
 import InvestigatorButton from '@components/core/InvestigatorButton';
-import CampaignGuideContext, { CampaignGuideContextType } from '@components/campaignguide/CampaignGuideContext';
+import CampaignGuideContext from '@components/campaignguide/CampaignGuideContext';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
+import StyleContext from '@styles/StyleContext';
 
 interface OwnProps {
   id: string;
@@ -23,30 +24,13 @@ interface OwnProps {
   scenarioState: ScenarioStateHelper;
 }
 
-interface State {
-  choices: {
-    [code: string]: string;
-  };
-}
-
 type Props = OwnProps;
 
-export default class DrawRandomWeaknessComponent extends React.Component<Props, State> {
-  static contextType = CampaignGuideContext;
-  context!: CampaignGuideContextType;
-
-  state: State = {
-    choices: {},
-  };
-
-  effectiveWeaknessSet(): WeaknessSet {
-    const { cards, campaignLog } = this.props;
-    const {
-      campaignInvestigators,
-      latestDecks,
-      weaknessSet,
-    } = this.context;
-    const { choices } = this.state;
+export default function DrawRandomWeaknessComponent({ id, investigators, cards, weaknessCards, traits, realTraits, campaignLog, scenarioState }: Props) {
+  const { campaignInvestigators, latestDecks, weaknessSet} = useContext(CampaignGuideContext);
+  const { borderStyle } = useContext(StyleContext);
+  const [choices, setChoices] = useState<{ [code: string]: string }>({});
+  const effectiveWeaknessSet: WeaknessSet = useMemo(() => {
     return campaignLog.effectiveWeaknessSet(
       campaignInvestigators,
       latestDecks,
@@ -54,15 +38,11 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
       cards,
       values(choices)
     );
-  }
+  }, [cards, campaignLog, choices, campaignInvestigators, latestDecks, weaknessSet]);
 
-  _drawRandomWeakness = (
-    code: string
-  ) => {
-    const { weaknessCards, traits, campaignLog, realTraits } = this.props;
-    const weaknessSet = this.effectiveWeaknessSet();
+  const drawRandomWeakness = useCallback((code: string) => {
     const card = drawWeakness(
-      weaknessSet,
+      effectiveWeaknessSet,
       weaknessCards,
       {
         traits,
@@ -74,70 +54,59 @@ export default class DrawRandomWeaknessComponent extends React.Component<Props, 
     if (!card) {
       Alert.alert(t`All weaknesses have been assigned.`);
     } else {
-      this.setState({
-        choices: {
-          ...this.state.choices,
-          [code]: card.code,
-        },
+      setChoices({
+        ...choices,
+        [code]: card.code,
       });
     }
-  };
+  }, [weaknessCards, traits, campaignLog, realTraits, effectiveWeaknessSet, choices, setChoices]);
 
-  _save = () => {
-    const { id, scenarioState } = this.props;
-    const choices: StringChoices = {};
-    forEach(this.state.choices, (card, code) => {
-      choices[code] = [card];
+  const save = useCallback(() => {
+    const stringChoices: StringChoices = {};
+    forEach(choices, (card, code) => {
+      stringChoices[code] = [card];
     });
-    scenarioState.setStringChoices(`${id}_weakness`, choices);
-  };
+    scenarioState.setStringChoices(`${id}_weakness`, stringChoices);
+  }, [id, scenarioState, choices]);
 
-  renderSaveButton(choices?: StringChoices) {
-    const { investigators } = this.props;
-    if (choices !== undefined) {
+  const scenarioChoices = scenarioState.stringChoices(`${id}_weakness`);
+  const saveButton = useMemo(() => {
+    if (scenarioChoices !== undefined) {
       return null;
     }
     return (
       <BasicButton
-        disabled={keys(this.state.choices).length !== investigators.length}
-        onPress={this._save}
+        disabled={keys(choices).length !== investigators.length}
+        onPress={save}
         title={t`Proceed`}
       />
     );
-  }
-
-  render() {
-    const { id, investigators, cards, scenarioState } = this.props;
-    const {
-      style: { borderStyle },
-    } = this.context;
-    const choices = scenarioState.stringChoices(`${id}_weakness`);
-    return (
-      <>
-        <View style={[styles.wrapper, borderStyle]}>
-          { map(investigators, investigator => {
-            const choice = choices !== undefined ? choices[investigator.code][0] :
-              this.state.choices[investigator.code];
-            const choiceCard = choice ? cards[choice] : undefined;
-            return (
-              <InvestigatorButton
-                key={investigator.code}
-                investigator={investigator}
-                value={choice === undefined ?
-                  t`Draw random weakness` :
-                  (choiceCard?.name || 'Missing Card')
-                }
-                onPress={this._drawRandomWeakness}
-                disabled={choice !== undefined}
-                widget="shuffle"
-              />
-            );
-          }) }
-        </View>
-        { this.renderSaveButton(choices) }
-      </>
-    );
-  }
+  }, [investigators, save, choices, scenarioChoices]);
+  return (
+    <>
+      <View style={[styles.wrapper, borderStyle]}>
+        { map(investigators, investigator => {
+          const choice = scenarioChoices !== undefined ? scenarioChoices[investigator.code][0] :
+            choices[investigator.code];
+          const choiceCard = choice ? cards[choice] : undefined;
+          return (
+            <InvestigatorButton
+              key={investigator.code}
+              investigator={investigator}
+              value={choice === undefined ?
+                t`Draw random weakness` :
+                (choiceCard?.name || 'Missing Card')
+              }
+              onPress={drawRandomWeakness}
+              disabled={choice !== undefined}
+              widget="shuffle"
+            />
+          );
+        }) }
+      </View>
+      { saveButton }
+    </>
+  );
 }
 
 const styles = StyleSheet.create({

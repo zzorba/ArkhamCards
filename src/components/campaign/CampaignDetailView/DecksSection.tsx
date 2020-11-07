@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { find, flatMap, filter, map, partition } from 'lodash';
 import {
   Alert,
@@ -14,12 +14,13 @@ import { MyDecksSelectorProps } from '@components/campaign/MyDecksSelectorDialog
 import BasicButton from '@components/core/BasicButton';
 import InvestigatorCampaignRow from '@components/campaign/InvestigatorCampaignRow';
 import { maybeShowWeaknessPrompt } from '../campaignHelper';
-import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, WeaknessSet } from '@actions/types';
+import { Campaign, Deck, DecksMap, InvestigatorData, Slots, Trauma, TraumaAndCardData, WeaknessSet } from '@actions/types';
 import { UpgradeDeckProps } from '@components/deck/DeckUpgradeDialog';
 import Card, { CardsMap } from '@data/Card';
 import space from '@styles/space';
 import COLORS from '@styles/colors';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useFlag } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -38,21 +39,60 @@ interface Props {
   decSpentXp: (code: string) => void;
 }
 
-interface State {
-  removeMode: boolean;
-}
-export default class DecksSection extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+const EMPTY_TRAUMA_DATA: TraumaAndCardData = {};
 
-  state: State = {
-    removeMode: false,
-  };
+export default function DecksSection({
+  componentId,
+  campaign,
+  latestDeckIds,
+  decks,
+  cards,
+  allInvestigators,
+  investigatorData,
+  showTraumaDialog,
+  weaknessSet,
+  updateLatestDeckIds,
+  updateNonDeckInvestigators,
+  updateWeaknessSet,
+  incSpentXp,
+  decSpentXp,
+}: Props) {
+  const { borderStyle, colors, typography } = useContext(StyleContext);
+  const [removeMode, toggleRemoveMode] = useFlag(false);
 
-  _showChooseDeck = (
+  const updateWeaknessAssignedCards = useCallback((weaknessCards: Slots) => {
+    updateWeaknessSet({
+      ...weaknessSet,
+      assignedCards: weaknessCards,
+    });
+  }, [updateWeaknessSet, weaknessSet]);
+
+  const checkForWeaknessPrompt = useCallback((deck: Deck) => {
+    maybeShowWeaknessPrompt(
+      deck,
+      cards,
+      weaknessSet.assignedCards,
+      updateWeaknessAssignedCards
+    );
+  }, [cards, weaknessSet, updateWeaknessAssignedCards]);
+
+  const addDeck = useCallback((deck: Deck) => {
+    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
+    updateLatestDeckIds(newLatestDeckIds);
+    checkForWeaknessPrompt(deck);
+  }, [latestDeckIds, updateLatestDeckIds, checkForWeaknessPrompt]);
+
+  const addInvestigator = useCallback((card: Card) => {
+    const newInvestigators = [
+      ...map(allInvestigators, investigator => investigator.code),
+      card.code,
+    ];
+    updateNonDeckInvestigators(newInvestigators);
+  }, [allInvestigators, updateNonDeckInvestigators]);
+
+  const showChooseDeck = useCallback((
     singleInvestigator?: Card,
   ) => {
-    const { campaign, latestDeckIds, decks, cards } = this.props;
     const campaignInvestigators = flatMap(latestDeckIds, deckId => {
       const deck = decks[deckId];
       return (deck && cards[deck.investigator_code]) || [];
@@ -61,15 +101,15 @@ export default class DecksSection extends React.Component<Props, State> {
     const passProps: MyDecksSelectorProps = singleInvestigator ? {
       campaignId: campaign.id,
       singleInvestigator: singleInvestigator.code,
-      onDeckSelect: this._addDeck,
+      onDeckSelect: addDeck,
     } : {
       campaignId: campaign.id,
       selectedInvestigatorIds: map(
         campaignInvestigators,
         investigator => investigator.code
       ),
-      onDeckSelect: this._addDeck,
-      onInvestigatorSelect: this._addInvestigator,
+      onDeckSelect: addDeck,
+      onInvestigatorSelect: addInvestigator,
       simpleOptions: true,
     };
     Navigation.showModal({
@@ -87,64 +127,9 @@ export default class DecksSection extends React.Component<Props, State> {
         }],
       },
     });
-  };
+  }, [campaign, latestDeckIds, decks, cards, addDeck, addInvestigator]);
 
-  _updateWeaknessAssignedCards = (weaknessCards: Slots) => {
-    const {
-      updateWeaknessSet,
-      weaknessSet,
-    } = this.props;
-    updateWeaknessSet({
-      ...weaknessSet,
-      assignedCards: weaknessCards,
-    });
-  };
-
-  maybeShowWeaknessPrompt(deck: Deck) {
-    const {
-      cards,
-    } = this.props;
-    const {
-      weaknessSet,
-    } = this.props;
-    maybeShowWeaknessPrompt(
-      deck,
-      cards,
-      weaknessSet.assignedCards,
-      this._updateWeaknessAssignedCards
-    );
-  }
-
-  _addInvestigator = (card: Card) => {
-    const {
-      allInvestigators,
-      updateNonDeckInvestigators,
-    } = this.props;
-    const newInvestigators = [
-      ...map(allInvestigators, investigator => investigator.code),
-      card.code,
-    ];
-    updateNonDeckInvestigators(newInvestigators);
-  };
-
-  _addDeck = (deck: Deck) => {
-    const {
-      latestDeckIds,
-      updateLatestDeckIds,
-    } = this.props;
-    const newLatestDeckIds = [...(latestDeckIds || []), deck.id];
-    updateLatestDeckIds(newLatestDeckIds);
-    this.maybeShowWeaknessPrompt(deck);
-  };
-
-  removeInvestigator(investigator: Card, removedDeckId?: number) {
-    const {
-      latestDeckIds,
-      allInvestigators,
-      updateLatestDeckIds,
-      updateNonDeckInvestigators,
-      decks,
-    } = this.props;
+  const removeInvestigator = useCallback((investigator: Card, removedDeckId?: number) =>{
     if (removedDeckId) {
       const newLatestDeckIds = filter(
         latestDeckIds,
@@ -163,12 +148,9 @@ export default class DecksSection extends React.Component<Props, State> {
         )
       );
     }
-  }
+  }, [latestDeckIds, allInvestigators, updateLatestDeckIds, updateNonDeckInvestigators, decks]);
 
-  _removeDeckPrompt = (
-    investigator: Card
-  ) => {
-    const { latestDeckIds, decks } = this.props;
+  const removeDeckPrompt = useCallback((investigator: Card) => {
     const deckId = find(latestDeckIds, deckId => {
       const deck = decks[deckId];
       return deck && deck.investigator_code === investigator.code;
@@ -181,7 +163,7 @@ export default class DecksSection extends React.Component<Props, State> {
       [
         {
           text: t`Remove`,
-          onPress: () => this.removeInvestigator(investigator, deckId),
+          onPress: () => removeInvestigator(investigator, deckId),
           style: 'destructive',
         },
         {
@@ -190,17 +172,9 @@ export default class DecksSection extends React.Component<Props, State> {
         },
       ],
     );
-  };
+  }, [latestDeckIds, decks, removeInvestigator]);
 
-  _showDeckUpgradeDialog = (
-    investigator: Card,
-    deck: Deck
-  ) => {
-    const {
-      componentId,
-      campaign,
-    } = this.props;
-    const { colors } = this.context;
+  const showDeckUpgradeDialog = useCallback((investigator: Card, deck: Deck) => {
     Navigation.push<UpgradeDeckProps>(componentId, {
       component: {
         name: 'Deck.Upgrade',
@@ -229,23 +203,14 @@ export default class DecksSection extends React.Component<Props, State> {
         },
       },
     });
-  };
+  }, [componentId, campaign, colors]);
 
-  _showChooseDeckForInvestigator = (investigator: Card) => {
-    this._showChooseDeck(investigator);
-  };
+  const showChooseDeckForInvestigator = useCallback((investigator: Card) => {
+    showChooseDeck(investigator);
+  }, [showChooseDeck]);
 
-  renderInvestigator(investigator: Card, eliminated: boolean, deck?: Deck) {
-    const {
-      componentId,
-      campaign,
-      cards,
-      showTraumaDialog,
-      incSpentXp,
-      decSpentXp,
-    } = this.props;
-    const { removeMode } = this.state;
-    const traumaAndCardData = campaign.investigatorData[investigator.code] || {};
+  const renderInvestigator = useCallback((investigator: Card, eliminated: boolean, deck?: Deck) => {
+    const traumaAndCardData = campaign.investigatorData[investigator.code] || EMPTY_TRAUMA_DATA;
     return (
       <InvestigatorCampaignRow
         key={investigator.code}
@@ -258,89 +223,73 @@ export default class DecksSection extends React.Component<Props, State> {
         decSpentXp={decSpentXp}
         traumaAndCardData={traumaAndCardData}
         showTraumaDialog={showTraumaDialog}
-        showDeckUpgrade={this._showDeckUpgradeDialog}
+        showDeckUpgrade={showDeckUpgradeDialog}
         playerCards={cards}
-        chooseDeckForInvestigator={this._showChooseDeckForInvestigator}
+        chooseDeckForInvestigator={showChooseDeckForInvestigator}
         deck={deck}
-        removeInvestigator={removeMode ? this._removeDeckPrompt : undefined}
+        removeInvestigator={removeMode ? removeDeckPrompt : undefined}
       />
     );
-  }
+  }, [componentId, campaign, cards, showTraumaDialog, incSpentXp, decSpentXp, removeDeckPrompt, showDeckUpgradeDialog, showChooseDeckForInvestigator, removeMode]);
 
-  _toggleRemoveMode = () => {
-    this.setState(state => {
-      return {
-        removeMode: !state.removeMode,
-      };
+  const latestDecks: Deck[] = useMemo(() => flatMap(latestDeckIds, deckId => decks[deckId] || []), [latestDeckIds, decks]);
+  const [killedInvestigators, aliveInvestigators] = useMemo(() => {
+    return partition(allInvestigators, investigator => {
+      return investigator.eliminated(investigatorData[investigator.code]);
     });
-  };
+  }, [allInvestigators, investigatorData]);
 
-  renderRemoveButton(aliveInvestigators: Card[]) {
+  const removeButton = useMemo(() => {
     if (!aliveInvestigators.length) {
       return null;
     }
-
     return (
       <BasicButton
         title={t`Remove investigators`}
         color={COLORS.red}
-        onPress={this._toggleRemoveMode}
+        onPress={toggleRemoveMode}
       />
     );
-  }
+  }, [aliveInvestigators, toggleRemoveMode]);
 
-  _showAddInvestigator = () => {
-    this._showChooseDeck();
-  };
+  const showAddInvestigator = useCallback(() => {
+    showChooseDeck();
+  }, [showChooseDeck]);
 
-  render() {
-    const {
-      allInvestigators,
-      latestDeckIds,
-      investigatorData,
-      decks,
-    } = this.props;
-    const { borderStyle, typography } = this.context;
-    const latestDecks: Deck[] = flatMap(latestDeckIds, deckId => decks[deckId] || []);
-    const { removeMode } = this.state;
-    const [killedInvestigators, aliveInvestigators] = partition(allInvestigators, investigator => {
-      return investigator.eliminated(investigatorData[investigator.code]);
-    });
-    return (
-      <View style={[styles.underline, borderStyle]}>
-        { flatMap(aliveInvestigators, investigator => {
-          const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
-          return this.renderInvestigator(investigator, false, deck);
-        }) }
-        { !removeMode && (
-          <BasicButton
-            title={t`Add Investigator`}
-            onPress={this._showAddInvestigator}
-          />
-        ) }
-        { removeMode ?
-          <BasicButton
-            title={t`Finished removing investigators`}
-            color={COLORS.red}
-            onPress={this._toggleRemoveMode}
-          /> : this.renderRemoveButton(aliveInvestigators)
-        }
-        { killedInvestigators.length > 0 && (
-          <View style={[styles.underline, borderStyle]}>
-            <View style={space.paddingS}>
-              <Text style={typography.text}>
-                { t`Killed and Insane Investigators` }
-              </Text>
-            </View>
-            { flatMap(killedInvestigators, investigator => {
-              const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
-              return this.renderInvestigator(investigator, true, deck);
-            }) }
+  return (
+    <View style={[styles.underline, borderStyle]}>
+      { flatMap(aliveInvestigators, investigator => {
+        const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
+        return renderInvestigator(investigator, false, deck);
+      }) }
+      { !removeMode && (
+        <BasicButton
+          title={t`Add Investigator`}
+          onPress={showAddInvestigator}
+        />
+      ) }
+      { removeMode ?
+        <BasicButton
+          title={t`Finished removing investigators`}
+          color={COLORS.red}
+          onPress={toggleRemoveMode}
+        /> : removeButton
+      }
+      { killedInvestigators.length > 0 && (
+        <View style={[styles.underline, borderStyle]}>
+          <View style={space.paddingS}>
+            <Text style={typography.text}>
+              { t`Killed and Insane Investigators` }
+            </Text>
           </View>
-        ) }
-      </View>
-    );
-  }
+          { flatMap(killedInvestigators, investigator => {
+            const deck = find(latestDecks, deck => deck.investigator_code === investigator.code);
+            return renderInvestigator(investigator, true, deck);
+          }) }
+        </View>
+      ) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
