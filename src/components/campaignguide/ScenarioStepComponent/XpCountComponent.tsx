@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { map } from 'lodash';
 import { msgid, ngettext } from 'ttag';
 
@@ -6,7 +6,7 @@ import { XpCountStep } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
 import ChoiceListItemComponent from '@components/campaignguide/prompts/ChoiceListComponent/ChoiceListItemComponent';
 import Card, { CardsMap } from '@data/Card';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import CampaignGuideContext from '../CampaignGuideContext';
 import { Deck } from '@actions/types';
 import { useSelector } from 'react-redux';
@@ -68,16 +68,14 @@ function SpentXpComponent({ investigator, campaignLog, children }: {
   return children(earnedXp + campaignLog.totalXp(investigator.code) - (adjustedData ? adjustedData.spentXp || 0 : 0));
 }
 
-export default class XpCountComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+function onChoiceChange() {
+  // intentionally empty.
+}
 
-  _onChoiceChange = () => {
-    // intentionally empty.
-  };
+export default function XpCountComponent({ step, campaignLog }: Props) {
+  const { colors} = useContext(StyleContext);
 
-  specialString(investigator: Card) {
-    const { step, campaignLog } = this.props;
+  const specialString = useCallback((investigator: Card) => {
     const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {
       case 'resupply_points':
@@ -89,40 +87,36 @@ export default class XpCountComponent extends React.Component<Props> {
           `${count} supply points`,
           count);
     }
-  }
-  render() {
-    const { campaignLog } = this.props;
-    const { colors } = this.context;
-    return (
-      <>
-        { map(campaignLog.investigators(false), (investigator, idx) => {
-          const resupplyPointsString = this.specialString(investigator);
-          return (
-            <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
-              { (xp: number) => (
-                <ChoiceListItemComponent
-                  key={investigator.code}
-                  code={investigator.code}
-                  name={investigator.name}
-                  color={colors.faction[investigator.factionCode()].background}
-                  choices={[{
-                    text: ngettext(
-                      msgid`${xp} general / ${resupplyPointsString} XP`,
-                      `${xp} general / ${resupplyPointsString} XP`,
-                      xp
-                    ),
-                  }]}
-                  onChoiceChange={this._onChoiceChange}
-                  choice={0}
-                  editable={false}
-                  optional={false}
-                  firstItem={idx === 0}
-                />
-              ) }
-            </SpentXpComponent>
-          );
-        })}
-      </>
-    );
-  }
+  }, [step, campaignLog]);
+  return (
+    <>
+      { map(campaignLog.investigators(false), (investigator, idx) => {
+        const resupplyPointsString = specialString(investigator);
+        return (
+          <SpentXpComponent investigator={investigator} campaignLog={campaignLog}>
+            { (xp: number) => (
+              <ChoiceListItemComponent
+                key={investigator.code}
+                code={investigator.code}
+                name={investigator.name}
+                color={colors.faction[investigator.factionCode()].background}
+                choices={[{
+                  text: ngettext(
+                    msgid`${xp} general / ${resupplyPointsString} XP`,
+                    `${xp} general / ${resupplyPointsString} XP`,
+                    xp
+                  ),
+                }]}
+                onChoiceChange={onChoiceChange}
+                choice={0}
+                editable={false}
+                optional={false}
+                firstItem={idx === 0}
+              />
+            ) }
+          </SpentXpComponent>
+        );
+      })}
+    </>
+  );
 }

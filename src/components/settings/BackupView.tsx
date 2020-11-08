@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import {
   Alert,
   PermissionsAndroid,
@@ -10,10 +10,9 @@ import {
 import { format } from 'date-fns';
 import { Navigation } from 'react-native-navigation';
 import { forEach, values } from 'lodash';
-import { bindActionCreators, Dispatch, Action } from 'redux';
 import RNFS from 'react-native-fs';
 import DocumentPicker from 'react-native-document-picker';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import base64 from 'react-native-base64';
 import Share from 'react-native-share';
 import { t } from 'ttag';
@@ -21,12 +20,12 @@ import { t } from 'ttag';
 import { MergeBackupProps } from './MergeBackupView';
 import { Campaign, BackupState } from '@actions/types';
 import { NavigationProps } from '@components/nav/types';
-import { getBackupData, AppState } from '@reducers';
+import { getBackupData } from '@reducers';
 import SettingsItem from './SettingsItem';
 import { ensureUuid } from './actions';
 import { campaignFromJson } from '@lib/cloudHelper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 export interface BackupProps {
   safeMode?: boolean;
@@ -36,12 +35,8 @@ interface ReduxProps {
   backupData: BackupState;
 }
 
-interface ReduxActionProps {
-  ensureUuid: () => void;
-}
 
-type Props = BackupProps & NavigationProps & ReduxProps & ReduxActionProps;
-
+type Props = BackupProps & NavigationProps;
 
 async function safeReadFile(file: string): Promise<string> {
   try {
@@ -50,17 +45,41 @@ async function safeReadFile(file: string): Promise<string> {
     return await RNFS.readFile(file, 'ascii');
   }
 }
-class BackupView extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
 
-  componentDidMount() {
-    this.props.ensureUuid();
+
+async function hasFileSystemPermission(read: boolean) {
+  if (Platform.OS === 'ios') {
+    return true;
   }
+  try {
+    const granted = await PermissionsAndroid.request(
+      read ? 'android.permission.READ_EXTERNAL_STORAGE' : 'android.permission.WRITE_EXTERNAL_STORAGE'
+    );
+    switch (granted) {
+      case PermissionsAndroid.RESULTS.GRANTED:
+        return true;
+      case PermissionsAndroid.RESULTS.DENIED:
+        return false;
+      case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
+        Alert.alert(t`Cannot request access`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
+        return false;
+    }
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+}
 
-  _pickBackupFile = async() => {
-    const { componentId } = this.props;
-    if (!await this.hasFileSystemPermission(true)) {
+export default function BackupView({ componentId, safeMode }: BackupProps & NavigationProps) {
+  const { colors } = useContext(StyleContext);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ensureUuid());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const backupData = useSelector(getBackupData);
+  const pickBackupFile = useCallback(async() => {
+    if (!await hasFileSystemPermission(true)) {
       return;
     }
     try {
@@ -73,7 +92,7 @@ class BackupView extends React.Component<Props> {
           t`This app expects an Arkham Cards backup file (.acb/.json)`,
           [{
             text: t`Try again`,
-            onPress: this._pickBackupFile,
+            onPress: pickBackupFile,
           },{
             text: t`Cancel`,
             style: 'cancel',
@@ -106,47 +125,23 @@ class BackupView extends React.Component<Props> {
         throw err;
       }
     }
-  };
+  }, [componentId]);
 
-  _importCampaignData = () => {
+  const importCampaignData = useCallback(() => {
     Alert.alert(
       t`Restore campaign data?`,
       t`This feature will let you restore data from a lost device. If you were signed into ArkhamDB, please reauthorize before importing campaign data.\n\nAfter a backup is selected, you will be able to choose which data to import.`,
       [{
         text: t`Import data`,
-        onPress: this._pickBackupFile,
+        onPress: pickBackupFile,
       },{
         text: t`Cancel`,
         style: 'cancel',
       }],
     );
-  };
+  }, [pickBackupFile]);
 
-  async hasFileSystemPermission(read: boolean) {
-    if (Platform.OS === 'ios') {
-      return true;
-    }
-    try {
-      const granted = await PermissionsAndroid.request(
-        read ? 'android.permission.READ_EXTERNAL_STORAGE' : 'android.permission.WRITE_EXTERNAL_STORAGE'
-      );
-      switch (granted) {
-        case PermissionsAndroid.RESULTS.GRANTED:
-          return true;
-        case PermissionsAndroid.RESULTS.DENIED:
-          return false;
-        case PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN:
-          Alert.alert(t`Cannot request access`, t`It looks like you previously denied allowing Arkham Cards to read/write external files. Please visit your System settings to adjust this permission, and try again.`);
-          return false;
-      }
-    } catch (e) {
-      console.log(e);
-      return false;
-    }
-  }
-
-  _exportCampaignData = () => {
-    const { backupData } = this.props;
+  const exportCampaignData = useCallback(() => {
     Alert.alert(
       t`Backup campaign data?`,
       t`This will let you backup your local decks and campaigns for safe-keeping. This can also be used to move them to another device.`,
@@ -157,7 +152,7 @@ class BackupView extends React.Component<Props> {
         text: t`Export Campaign Data`,
         onPress: async() => {
           try {
-            if (!await this.hasFileSystemPermission(false)) {
+            if (!await hasFileSystemPermission(false)) {
               return;
             }
             const date = format(new Date(), 'yyyy-MM-dd');
@@ -191,49 +186,26 @@ class BackupView extends React.Component<Props> {
         },
       }],
     );
-  };
+  }, [backupData]);
 
-  render() {
-    const {
-      safeMode,
-    } = this.props;
-    const { colors } = this.context;
-    return (
-      <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
-        <ScrollView style={{ backgroundColor: colors.L20 }}>
-          <CardSectionHeader section={{ title: t`Backup` }} />
+  return (
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.L20 }]}>
+      <ScrollView style={{ backgroundColor: colors.L20 }}>
+        <CardSectionHeader section={{ title: t`Backup` }} />
+        <SettingsItem
+          onPress={exportCampaignData}
+          text={t`Backup Campaign Data`}
+        />
+        { !safeMode && (
           <SettingsItem
-            onPress={this._exportCampaignData}
-            text={t`Backup Campaign Data`}
+            onPress={importCampaignData}
+            text={t`Restore Campaign Data`}
           />
-          { !safeMode && (
-            <SettingsItem
-              onPress={this._importCampaignData}
-              text={t`Restore Campaign Data`}
-            />
-          ) }
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
+        ) }
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    backupData: getBackupData(state),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    ensureUuid,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, BackupProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(BackupView);
 
 const styles = StyleSheet.create({
   container: {

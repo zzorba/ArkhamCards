@@ -9,21 +9,14 @@ interface Props {
   sort?: SortType;
 }
 
-class CardSearchView extends React.Component<Props> {
-  render() {
-    const {
-      componentId,
-      sort,
-    } = this.props;
-
-    return (
-      <CardSearchComponent
-        componentId={componentId}
-        mythosToggle
-        sort={sort || SORT_BY_TYPE}
-      />
-    );
-  }
+function CardSearchView({ componentId, sort }: Props) {
+  return (
+    <CardSearchComponent
+      componentId={componentId}
+      mythosToggle
+      sort={sort || SORT_BY_TYPE}
+    />
+  );
 }
 
 export default withFetchCardsGate<Props>(
