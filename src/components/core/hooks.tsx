@@ -205,7 +205,7 @@ interface ClearAction {
 
 interface SetToggleAction {
   type: 'set';
-  key: string;
+  key: string | number;
   value: boolean;
 }
 
@@ -225,7 +225,7 @@ export interface Toggles {
   [key: string]: boolean | undefined;
 }
 
-export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string, value: boolean) => void, () => void, (code: string) => void] {
+export function useToggles(initialState: Toggles): [Toggles, (code: string) => void, (code: string | number, value: boolean) => void, () => void, (code: string) => void] {
   const [toggles, updateToggles] = useReducer((state: Toggles, action: SectionToggleAction) => {
     switch (action.type) {
       case 'clear':
@@ -248,7 +248,7 @@ export function useToggles(initialState: Toggles): [Toggles, (code: string) => v
     }
   }, initialState);
   const toggle = useCallback((code: string) => updateToggles({ type: 'toggle', key: code }), [updateToggles]);
-  const set = useCallback((code: string, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
+  const set = useCallback((code: string | number, value: boolean) => updateToggles({ type: 'set', key: code, value }), [updateToggles]);
   const clear = useCallback(() => updateToggles({ type: 'clear' }), [updateToggles]);
   const remove = useCallback((code: string) => updateToggles({ type: 'remove', key: code }), [updateToggles]);
   return [toggles, toggle, set, clear, remove];
@@ -422,6 +422,7 @@ export function useCampaign(campaignId?: number): SingleCampaign | undefined {
   return useSelector(selector);
 }
 
+const EMPTY_INVESTIGATORS: Card[] = [];
 export function useCampaignInvestigators(campaign?: Campaign, investigators?: CardsMap): Card[] {
   const allInvestigatorsSelector = useCallback((state: AppState) => {
     return investigators && campaign ? getLatestCampaignInvestigators(state, investigators, campaign) : EMPTY_INVESTIGATORS;
@@ -430,13 +431,16 @@ export function useCampaignInvestigators(campaign?: Campaign, investigators?: Ca
 }
 
 const EMPTY_DECK_IDS: number[] = [];
-const EMPTY_INVESTIGATORS: Card[] = [];
-export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
+export function useCampaignLatestDeckIds(campaign?: Campaign): number[] {
   const latestDeckIdsSelector = useCallback((state: AppState) => {
     return campaign ? getLatestCampaignDeckIds(state, campaign) : EMPTY_DECK_IDS;
   }, [campaign]);
-  const latestDeckIds = useSelector(latestDeckIdsSelector);
+  return useSelector(latestDeckIdsSelector);
+}
+
+export function useCampaignDetails(campaign?: Campaign, investigators?: CardsMap): [number[], Card[]] {
   const allInvestigators = useCampaignInvestigators(campaign, investigators);
+  const latestDeckIds = useCampaignLatestDeckIds(campaign);
   return [latestDeckIds, allInvestigators];
 }
 
@@ -457,25 +461,25 @@ export function useChaosBagResults(campaignId: number): ChaosBagResults {
   return useSelector(chaosBagResultsSelector);
 }
 
-export function useDeck(id: number, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
+export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMissing?: boolean }) {
   const dispatch = useDispatch();
-  const effectiveDeckIdSelector = useCallback((state: AppState) => getEffectiveDeckId(state, id), [id]);
+  const effectiveDeckIdSelector = useCallback((state: AppState) => id !== undefined ? getEffectiveDeckId(state, id) : undefined, [id]);
   const effectiveDeckId = useSelector(effectiveDeckIdSelector);
-  const deckSelector = useMemo(() => getDeck(effectiveDeckId), [effectiveDeckId]);
+  const deckSelector = useCallback((state: AppState) => effectiveDeckId !== undefined ? getDeck(effectiveDeckId)(state) : undefined, [effectiveDeckId]);
   const theDeck = useSelector(deckSelector) || undefined;
   const previousDeckSelector = useCallback((state: AppState) => {
     return theDeck && theDeck.previous_deck && getDeck(theDeck.previous_deck)(state);
   }, [theDeck]);
   const thePreviousDeck = useSelector(previousDeckSelector) || undefined;
   useEffect(() => {
-    if (!theDeck && fetchIfMissing && id > 0) {
+    if (!theDeck && fetchIfMissing && id !== undefined && id > 0) {
       dispatch(fetchPrivateDeck(id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!thePreviousDeck && theDeck?.previous_deck && fetchIfMissing && !theDeck.local) {
-      dispatch(fetchPrivateDeck(id));
+      dispatch(fetchPrivateDeck(theDeck.previous_deck));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theDeck]);

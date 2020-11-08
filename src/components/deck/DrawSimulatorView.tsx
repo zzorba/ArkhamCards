@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { concat, filter, flatMap, map, shuffle, range, without } from 'lodash';
 import {
   FlatList,
@@ -10,22 +10,13 @@ import { Button } from 'react-native-elements';
 import { c, t } from 'ttag';
 
 import { Slots } from '@actions/types';
-import withPlayerCards, { PlayerCardProps } from '@components/core/withPlayerCards';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import { s, xs } from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useEffectUpdate, usePlayerCards } from '@components/core/hooks';
 
 export interface DrawSimulatorProps {
   slots: Slots;
-}
-
-type Props = DrawSimulatorProps &
-  PlayerCardProps;
-
-interface State {
-  shuffledDeck: string[];
-  drawnCards: string[];
-  selectedCards: string[];
 }
 
 interface Item {
@@ -34,72 +25,70 @@ interface Item {
   selected: boolean;
 }
 
-class DrawSimulatorView extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+interface DrawnState {
+  shuffledDeck: string[];
+  drawnCards: string[];
+  selectedCards: string[];
+}
 
-  _drawOne = this.draw.bind(this, 1);
-  _drawTwo = this.draw.bind(this, 2);
-  _drawFive = this.draw.bind(this, 5);
-  _drawAll = this.draw.bind(this, 'all');
+export default function DrawSimulatorView({ slots }: DrawSimulatorProps) {
+  const { backgroundStyle, colors, typography } = useContext(StyleContext);
+  const cards = usePlayerCards();
+  const shuffleFreshDeck = useCallback(() => {
+    return shuffle(
+      flatMap(
+        Object.keys(slots),
+        cardId => {
+          const card = cards && cards[cardId];
+          if (!card) {
+            return [];
+          }
+          // DUKE=02014
+          if (card.permanent || card.double_sided || card.code === '02014') {
+            return [];
+          }
+          return map(range(0, slots[cardId]), copy => `${cardId}-${copy}`);
+        }));
+  }, [cards, slots]);
+  const [drawState, setDrawState] = useState<DrawnState>({
+    shuffledDeck: shuffleFreshDeck(),
+    drawnCards: [],
+    selectedCards: [],
+  });
 
-  constructor(props: Props) {
-    super(props);
 
-    this.state = {
-      shuffledDeck: this.shuffleFreshDeck(),
-      drawnCards: [],
-      selectedCards: [],
-    };
-  }
-
-  _resetDeck = () => {
-    this.setState({
-      shuffledDeck: this.shuffleFreshDeck(),
+  const resetDeck = useCallback(() => {
+    setDrawState({
+      shuffledDeck: shuffleFreshDeck(),
       drawnCards: [],
       selectedCards: [],
     });
-  };
+  }, [setDrawState, shuffleFreshDeck]);
 
-  _reshuffleSelected = () => {
+  const reshuffleSelected = useCallback(() => {
     const {
-      shuffledDeck,
       selectedCards,
       drawnCards,
-    } = this.state;
-
+      shuffledDeck,
+    } = drawState;
     const selectedSet = new Set(selectedCards);
     const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
-    this.setState({
+    setDrawState({
       shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
       drawnCards: newDrawnCards,
       selectedCards: [],
     });
-  };
+  }, [drawState, setDrawState]);
 
-  _redrawSelected = () => {
-    const {
-      selectedCards,
-    } = this.state;
-    const {
-      drawnCards,
-      shuffledDeck,
-    } = this.drawHelper(selectedCards.length);
+  useEffectUpdate(() => {
+    resetDeck();
+  }, [cards, slots]);
 
-    const selectedSet = new Set(selectedCards);
-    const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
-    this.setState({
-      shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
-      drawnCards: newDrawnCards,
-      selectedCards: [],
-    });
-  };
-
-  drawHelper(count: number | 'all') {
+  const drawHelper = useCallback((count: number | 'all') => {
     const {
       drawnCards,
       shuffledDeck,
-    } = this.state;
+    } = drawState;
     if (count === 'all') {
       return {
         drawnCards: [
@@ -117,58 +106,65 @@ class DrawSimulatorView extends React.Component<Props, State> {
       ],
       shuffledDeck: shuffledDeck.slice(count),
     };
-  }
+  }, [drawState]);
 
-  draw(count: number | 'all') {
-    this.setState(this.drawHelper(count));
-  }
-
-  shuffleFreshDeck() {
-    const {
-      cards,
-      slots,
-    } = this.props;
-    return shuffle(
-      flatMap(
-        Object.keys(slots),
-        cardId => {
-          const card = cards[cardId];
-          if (!card) {
-            return [];
-          }
-          // DUKE=02014
-          if (card.permanent || card.double_sided || card.code === '02014') {
-            return [];
-          }
-          return map(range(0, slots[cardId]), copy => `${cardId}-${copy}`);
-        }));
-  }
-
-  _toggleSelection = (id: string) => {
+  const redrawSelected = useCallback(() => {
     const {
       selectedCards,
-    } = this.state;
+    } = drawState;
+    const {
+      drawnCards,
+      shuffledDeck,
+    } = drawHelper(selectedCards.length);
+
+    const selectedSet = new Set(selectedCards);
+    const newDrawnCards = filter(drawnCards, key => !selectedSet.has(key));
+    setDrawState({
+      shuffledDeck: shuffle(concat(shuffledDeck, selectedCards)),
+      drawnCards: newDrawnCards,
+      selectedCards: [],
+    });
+  }, [drawState, drawHelper, setDrawState]);
+
+
+  const draw = useCallback((count: number | 'all') => {
+    setDrawState({
+      selectedCards: drawState.selectedCards,
+      ...drawHelper(count),
+    });
+  }, [drawState, drawHelper, setDrawState]);
+
+  const drawOne = useCallback(() => draw(1), [draw]);
+  const drawTwo = useCallback(() => draw(2), [draw]);
+  const drawFive = useCallback(() => draw(5), [draw]);
+  const drawAll = useCallback(() => draw('all'), [draw]);
+
+  const toggleSelection = useCallback((id: string) => {
+    const {
+      selectedCards,
+    } = drawState;
     if (selectedCards.indexOf(id) !== -1) {
-      this.setState({
+      setDrawState({
+        ...drawState,
         selectedCards: without(selectedCards, id),
       });
     } else {
-      this.setState({
+      setDrawState({
+        ...drawState,
         selectedCards: [
           ...selectedCards,
           id,
         ],
       });
     }
-  };
+  }, [drawState, setDrawState]);
 
-  _renderHeader = () => {
+  const header = useMemo(() => {
     const {
       shuffledDeck,
       drawnCards,
       selectedCards,
-    } = this.state;
-    const { colors, typography } = this.context;
+    } = drawState;
     const deckEmpty = shuffledDeck.length === 0;
     const noSelection = selectedCards.length === 0;
     return (
@@ -179,28 +175,28 @@ class DrawSimulatorView extends React.Component<Props, State> {
             <Button
               title="1"
               disabled={deckEmpty}
-              onPress={this._drawOne}
+              onPress={drawOne}
             />
           </View>
           <View style={styles.buttonContainer}>
             <Button
               title="2"
               disabled={deckEmpty}
-              onPress={this._drawTwo}
+              onPress={drawTwo}
             />
           </View>
           <View style={styles.buttonContainer}>
             <Button
               title="5"
               disabled={deckEmpty}
-              onPress={this._drawFive}
+              onPress={drawFive}
             />
           </View>
           <View style={styles.buttonContainer}>
             <Button
               title={c('Draw Cards').t`All`}
               disabled={deckEmpty}
-              onPress={this._drawAll}
+              onPress={drawAll}
             />
           </View>
         </View>
@@ -209,28 +205,27 @@ class DrawSimulatorView extends React.Component<Props, State> {
             <Button
               title={t`Redraw`}
               disabled={noSelection}
-              onPress={this._redrawSelected} />
+              onPress={redrawSelected} />
           </View>
           <View style={styles.buttonContainer}>
             <Button
               title={t`Reshuffle`}
               disabled={noSelection}
-              onPress={this._reshuffleSelected} />
+              onPress={reshuffleSelected} />
           </View>
           <View style={styles.buttonContainer}>
             <Button
               title={t`Reset`}
               disabled={drawnCards.length === 0}
-              onPress={this._resetDeck} />
+              onPress={resetDeck} />
           </View>
         </View>
       </View>
     );
-  };
+  }, [colors, typography, drawState, drawOne, drawTwo, drawFive, drawAll, redrawSelected, reshuffleSelected, resetDeck]);
 
-  _renderCardItem = ({ item }: { item: Item }) => {
-    const card = this.props.cards[item.code];
-    const { colors } = this.context;
+  const renderCardItem = useCallback(({ item }: { item: Item }) => {
+    const card = cards && cards[item.code];
     if (!card) {
       return null;
     }
@@ -239,40 +234,35 @@ class DrawSimulatorView extends React.Component<Props, State> {
         key={item.key}
         id={item.key}
         card={card}
-        onPressId={this._toggleSelection}
+        onPressId={toggleSelection}
         backgroundColor={item.selected ? colors.L20 : undefined}
       />
     );
-  };
+  }, [cards, colors, toggleSelection]);
 
-  render() {
-    const {
-      drawnCards,
-      selectedCards,
-    } = this.state;
-    const { backgroundStyle } = this.context;
-    const selectedSet = new Set(selectedCards);
-    const data = map(drawnCards, cardKey => {
-      const parts = cardKey.split('-');
-      return {
-        key: cardKey,
-        code: parts[0],
-        selected: selectedSet.has(cardKey),
-      };
-    });
-    return (
-      <View style={[styles.container, backgroundStyle]}>
-        { this._renderHeader() }
-        <FlatList
-          data={data}
-          renderItem={this._renderCardItem}
-        />
-      </View>
-    );
-  }
+  const {
+    drawnCards,
+    selectedCards,
+  } = drawState;
+  const selectedSet = useMemo(() => new Set(selectedCards), [selectedCards]);
+  const data = useMemo(() => map(drawnCards, cardKey => {
+    const parts = cardKey.split('-');
+    return {
+      key: cardKey,
+      code: parts[0],
+      selected: selectedSet.has(cardKey),
+    };
+  }), [drawnCards, selectedSet]);
+  return (
+    <View style={[styles.container, backgroundStyle]}>
+      { header }
+      <FlatList
+        data={data}
+        renderItem={renderCardItem}
+      />
+    </View>
+  );
 }
-
-export default withPlayerCards<DrawSimulatorProps>(DrawSimulatorView);
 
 const styles = StyleSheet.create({
   container: {

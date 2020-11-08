@@ -1,19 +1,19 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { forEach, keys } from 'lodash';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import WeaknessDrawComponent from './WeaknessDrawComponent';
 import { t } from 'ttag';
 import { Slots } from '@actions/types';
-import Button from '@components/core/Button';
 import { NavigationProps } from '@components/nav/types';
 import { AppState } from '@reducers';
 import { RANDOM_BASIC_WEAKNESS } from '@app_constants';
-import space, { xs } from '@styles/space';
+import { xs } from '@styles/space';
 import { useFlag, usePlayerCards, useSlots, useWeaknessCards } from '@components/core/hooks';
 import ToggleFilter from '@components/core/ToggleFilter';
 import StyleContext from '@styles/StyleContext';
+import BasicButton from '@components/core/BasicButton';
 
 export interface DrawWeaknessProps {
   saveWeakness: (code: string, replaceRandomBasicWeakness: boolean) => void;
@@ -74,13 +74,10 @@ export default function WeaknessDrawDialog({ componentId, saveWeakness, slots: o
     }
 
     return (
-      <View style={space.marginTopS}>
-        <Button
-          color="green"
-          onPress={saveDrawnCard}
-          text={t`Save to Deck`}
-        />
-      </View>
+      <BasicButton
+        onPress={saveDrawnCard}
+        title={t`Save to Deck`}
+      />
     );
   }, [pendingNextCard, saveDrawnCard]);
 

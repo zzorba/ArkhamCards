@@ -3,7 +3,6 @@ import { Brackets } from 'typeorm/browser';
 
 import { Deck, DeckMeta, Slots } from '@actions/types';
 import { VERSATILE_CODE, ON_YOUR_OWN_CODE } from '@app_constants';
-import { TabooSetOverride } from '@components/core/withPlayerCards';
 import CardSearchComponent from '@components/cardlist/CardSearchComponent';
 import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/InvestigatorRequirements';
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
@@ -13,7 +12,7 @@ import DeckNavFooter from '../DeckNavFooter';
 import { NavigationProps } from '@components/nav/types';
 import { useInvestigatorCards, usePlayerCards, useSlots } from '@components/core/hooks';
 
-interface OwnProps {
+export interface EditDeckProps {
   deck: Deck;
   previousDeck?: Deck;
   xpAdjustment?: number;
@@ -22,9 +21,8 @@ interface OwnProps {
   meta: DeckMeta;
   ignoreDeckLimitSlots: Slots;
   updateSlots: (slots: Slots) => void;
+  tabooSetOverride?: number;
 }
-
-export type EditDeckProps = OwnProps & TabooSetOverride;
 
 type Props = NavigationProps & EditDeckProps;
 
