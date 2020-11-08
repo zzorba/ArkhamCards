@@ -1,54 +1,31 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Alert, SafeAreaView, ScrollView, View, StyleSheet } from 'react-native';
 import { Navigation } from 'react-native-navigation';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import { clearDecks } from '@actions';
 import BasicButton from '@components/core/BasicButton';
-import { AppState, getLangPreference, getLangChoice } from '@reducers';
-import DatabaseContext, { DatabaseContextType } from '@data/DatabaseContext';
+import DatabaseContext from '@data/DatabaseContext';
 import SettingsItem from './SettingsItem';
 import { BackupProps } from './BackupView';
 import StyleContext from '@styles/StyleContext';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   startApp: () => void;
 }
 
-interface State {
-  safeMode: boolean;
-  cacheCleared: boolean;
-}
+export default function SafeModeView({ componentId, startApp }: Props) {
+  const { db } = useContext(DatabaseContext);
+  const { backgroundStyle } = useContext(StyleContext);
+  const dispatch = useDispatch();
+  const [safeMode, setSafeMode] = useState(false);
+  const [cacheCleared, setCacheCleared] = useState(false);
 
-interface ReduxProps {
-  lang: string;
-  langChoice: string;
-}
+  const launchApp = useCallback(() => startApp(), [startApp]);
 
-interface ReduxActionProps {
-  clearDecks: () => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps;
-
-class SafeModeView extends React.Component<Props, State> {
-  static contextType = DatabaseContext;
-  context!: DatabaseContextType;
-
-  state: State = {
-    safeMode: false,
-    cacheCleared: false,
-  };
-
-  _launchApp = () => {
-    this.props.startApp();
-  };
-
-  _enableSafeMode = () => {
-    const { componentId } = this.props;
+  const enableSafeMode = useCallback(() => {
     Navigation.mergeOptions(componentId, {
       topBar: {
         visible: true,
@@ -57,44 +34,23 @@ class SafeModeView extends React.Component<Props, State> {
         },
       },
     });
-    this.setState({
-      safeMode: true,
-    });
-  };
+    setSafeMode(true);
+  }, [componentId, setSafeMode]);
 
-  componentDidMount() {
+  useEffect(() => {
     Alert.alert(
       t`The app drew an Auto-Fail`,
       t`Sorry about that. If the app is crashing on launch, you can enter 'Safe mode' to backup your data.`,
       [
-        { text: t`Start normally`, style: 'cancel', onPress: this._launchApp },
-        { text: t`Safe mode`, onPress: this._enableSafeMode },
+        { text: t`Start normally`, style: 'cancel', onPress: launchApp },
+        { text: t`Safe mode`, onPress: enableSafeMode },
       ],
     );
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-
-  navButtonPressed(screen: string, title: string) {
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: screen,
-        options: {
-          topBar: {
-            title: {
-              text: title,
-            },
-            backButton: {
-              title: t`Done`,
-            },
-          },
-        },
-      },
-    });
-  }
-
-
-  _backupPressed = () => {
-    Navigation.push<BackupProps>(this.props.componentId, {
+  const backupPressed = useCallback(() => {
+    Navigation.push<BackupProps>(componentId, {
       component: {
         name: 'Settings.Backup',
         passProps: {
@@ -112,88 +68,57 @@ class SafeModeView extends React.Component<Props, State> {
         },
       },
     });
-  };
+  }, [componentId]);
 
-  async clearDatabase() {
-    await (await this.context.db.cardsQuery()).delete().execute();
-    await (await this.context.db.encounterSets()).createQueryBuilder().delete().execute();
-    await (await this.context.db.faqEntries()).createQueryBuilder().delete().execute();
-    await (await this.context.db.tabooSets()).createQueryBuilder().delete().execute();
+  const clearDatabase = useCallback(async() => {
+    await (await db.cardsQuery()).delete().execute();
+    await (await db.encounterSets()).createQueryBuilder().delete().execute();
+    await (await db.faqEntries()).createQueryBuilder().delete().execute();
+    await (await db.tabooSets()).createQueryBuilder().delete().execute();
+  }, [db]);
+
+  const clearCache = useCallback(async() => {
+    dispatch(clearDecks());
+    await clearDatabase();
+    setCacheCleared(true);
+  }, [dispatch, clearDatabase, setCacheCleared]);
+
+  if (!safeMode) {
+    return <View style={styles.background} />;
   }
 
-  _clearCache = async() => {
-    const {
-      clearDecks,
-    } = this.props;
-    clearDecks();
-    await this.clearDatabase();
-    this.setState({
-      cacheCleared: true,
-    });
-  };
-
-  render() {
-    const { safeMode, cacheCleared } = this.state;
-    if (!safeMode) {
-      return <View style={styles.background} />;
-    }
-
-    return (
-      <StyleContext.Consumer>
-        { ({ backgroundStyle }) => (
-          <SafeAreaView style={[styles.container, backgroundStyle]}>
-            <ScrollView style={[styles.container, backgroundStyle]} contentContainerStyle={backgroundStyle}>
-              <SettingsItem
-                navigation
-                onPress={this._backupPressed}
-                text={t`Backup Data`}
-              />
-              { cacheCleared ? (
-                <SettingsItem
-                  navigation
-                  text={t`Cache cleared`}
-                />
-              ) : (
-                <SettingsItem
-                  navigation
-                  onPress={this._clearCache}
-                  text={t`Clear cache`}
-                />
-              ) }
-              <BasicButton
-                onPress={this._launchApp}
-                title={t`Done`}
-              />
-            </ScrollView>
-          </SafeAreaView>
+  return (
+    <SafeAreaView style={[styles.container, backgroundStyle]}>
+      <ScrollView style={[styles.container, backgroundStyle]} contentContainerStyle={backgroundStyle}>
+        <SettingsItem
+          navigation
+          onPress={backupPressed}
+          text={t`Backup Data`}
+        />
+        { cacheCleared ? (
+          <SettingsItem
+            navigation
+            text={t`Cache cleared`}
+          />
+        ) : (
+          <SettingsItem
+            navigation
+            onPress={clearCache}
+            text={t`Clear cache`}
+          />
         ) }
-      </StyleContext.Consumer>
-    );
-  }
+        <BasicButton
+          onPress={launchApp}
+          title={t`Done`}
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    lang: getLangPreference(state),
-    langChoice: getLangChoice(state),
-  };
-}
-
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    clearDecks,
-  }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(SafeModeView);
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: '#212C6A',
+    backgroundColor: '#24303C',
     flex: 1,
   },
   container: {

@@ -1,92 +1,47 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback, useContext } from 'react';
 import {
   ActivityIndicator,
   StyleSheet,
   View,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { login } from '@actions';
 import { AppState } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
-interface OwnProps {
-  render: (
-    login: () => void,
-    signedIn: boolean,
-    signInError?: string,
-  ) => ReactNode;
+interface Props {
   noWrapper: boolean;
-  otherProps: any;
+  children: (login: () => void, signedIn: boolean, signInError?: string) => JSX.Element | null;
 }
 
-interface ReduxProps {
-  loading: boolean;
-  signedIn: boolean;
-  error?: string;
-}
+export default function LoginStateComponent({ noWrapper, children }: Props) {
+  const { backgroundStyle, colors } = useContext(StyleContext);
+  const signedIn = useSelector((state: AppState) => state.signedIn.status || false);
+  const error = useSelector((state: AppState) => state.signedIn.error || undefined);
+  const loading = useSelector((state: AppState) => state.signedIn.loading);
+  const dispatch = useDispatch();
+  const doLogin = useCallback(() => dispatch(login()), [dispatch]);
 
-interface ReduxActionProps {
-  login: () => void;
-}
-
-type Props = OwnProps & ReduxProps & ReduxActionProps;
-
-class LoginStateComponent extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  render() {
-    const {
-      loading,
-      signedIn,
-      login,
-      error,
-      render,
-      noWrapper,
-    } = this.props;
-    if (noWrapper) {
-      return render(login, signedIn, error);
-    }
-    const { backgroundStyle, colors } = this.context;
-    return (
-      <View style={styles.wrapper}>
-        { render(login, signedIn, error) }
-        { !!loading && (
-          <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
-            <ActivityIndicator
-              style={{ height: 80 }}
-              color={colors.lightText}
-              size="small"
-              animating
-            />
-          </View>
-        ) }
-      </View>
-    );
+  if (noWrapper) {
+    return children(doLogin, signedIn, error);
   }
+  return (
+    <View style={styles.wrapper}>
+      { children(doLogin, signedIn, error) }
+      { !!loading && (
+        <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
+          <ActivityIndicator
+            style={{ height: 80 }}
+            color={colors.lightText}
+            size="small"
+            animating
+          />
+        </View>
+      ) }
+    </View>
+  );
 }
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    signedIn: state.signedIn.status || false,
-    error: state.signedIn.error || undefined,
-    loading: state.signedIn.loading,
-  };
-}
-
-function mapDispatchToProps(
-  dispatch: Dispatch<Action>
-): ReduxActionProps {
-  return bindActionCreators({ login }, dispatch);
-}
-
-export default connect<ReduxProps, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginStateComponent);
-
 
 const styles = StyleSheet.create({
   wrapper: {
