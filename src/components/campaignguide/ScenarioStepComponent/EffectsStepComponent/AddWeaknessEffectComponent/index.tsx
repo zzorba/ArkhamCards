@@ -15,6 +15,7 @@ import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import FilterBuilder from '@lib/filters';
 import { usePlayerCards, useWeaknessCards } from '@components/core/hooks';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 
 interface Props {
   id: string;
@@ -25,7 +26,8 @@ interface Props {
 const FILTER_BUILDER = new FilterBuilder('weakness');
 
 export default function AddWeaknessEffectComponent({ id, effect, input }: Props) {
-  const { scenarioState, campaignLog } = useContext(ScenarioStepContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
+  const { campaignLog } = useContext(ScenarioStepContext);
   const firstDecisionId = `${id}_use_app`;
   const traitsDecisionId = `${id}_traits`;
   const weaknessCards = useWeaknessCards();

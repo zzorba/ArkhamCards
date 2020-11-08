@@ -132,7 +132,6 @@ export default function ScenarioStepComponent({
 }: Props) {
   const { typography, colors } = useContext(StyleContext);
   const { campaignInvestigators } = useContext(CampaignGuideContext);
-  const scenarioGuideContext = useContext(ScenarioGuideContext);
   const context: ScenarioStepContextType = useMemo(() => {
     const safeCodes = new Set(step.campaignLog.investigatorCodesSafe());
     const investigators = filter(
@@ -140,11 +139,10 @@ export default function ScenarioStepComponent({
       investigator => safeCodes.has(investigator.code)
     );
     return {
-      ...scenarioGuideContext,
       campaignLog: step.campaignLog,
       scenarioInvestigators: investigators,
     };
-  }, [scenarioGuideContext, step.campaignLog, campaignInvestigators]);
+  }, [step.campaignLog, campaignInvestigators]);
   const proceed = useCallback(() => {
     Navigation.pop(componentId);
   }, [componentId]);

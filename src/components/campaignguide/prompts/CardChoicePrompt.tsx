@@ -20,6 +20,7 @@ import FilterBuilder, { UNIQUE_FILTER, VENGEANCE_FILTER } from '@lib/filters';
 import Card from '@data/Card';
 import useCardsFromQuery from '@components/card/useCardsFromQuery';
 import { calculateCardChoiceResult } from '@data/scenario/inputHelper';
+import ScenarioGuideContext from '../ScenarioGuideContext';
 
 interface Props {
   componentId: string;
@@ -105,7 +106,8 @@ function mainQuery(
 export default function CardChoicePrompt({ componentId, id, text, input }: Props) {
   const [extraCards, setExtraCards] = useState<string[]>([]);
   const { latestDecks } = useContext(CampaignGuideContext);
-  const { scenarioState, processedScenario, scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
+  const { scenarioState, processedScenario } = useContext(ScenarioGuideContext);
+  const { scenarioInvestigators, campaignLog } = useContext(ScenarioStepContext);
   const nonDeckButton = useMemo(() => {
     return !!find(
       input.query,

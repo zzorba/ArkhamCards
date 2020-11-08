@@ -1,5 +1,5 @@
 diff --git a/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js b/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js
-index 0aaf615..a299de2 100644
+index 0aaf615..c1bd29b 100644
 --- a/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js
 +++ b/node_modules/@redux-offline/redux-offline/lib/defaults/persist.native.js
 @@ -11,7 +11,7 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
@@ -11,3 +11,16 @@ index 0aaf615..a299de2 100644
  
  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
  
+diff --git a/node_modules/@redux-offline/redux-offline/src/defaults/persist.native.js b/node_modules/@redux-offline/redux-offline/src/defaults/persist.native.js
+index d151a08..bba4889 100644
+--- a/node_modules/@redux-offline/redux-offline/src/defaults/persist.native.js
++++ b/node_modules/@redux-offline/redux-offline/src/defaults/persist.native.js
+@@ -2,7 +2,7 @@
+ // $FlowIgnore
+ import { persistStore } from 'redux-persist';
+ // $FlowIgnore
+-import AsyncStorage from '@react-native-community/async-storage'; // eslint-disable-line
++import AsyncStorage from '@react-native-async-storage/async-storage'; // eslint-disable-line
+ 
+ export default (store: any, options: {}, callback: any) =>
+   // $FlowFixMe

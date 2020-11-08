@@ -5,9 +5,9 @@ import { t } from 'ttag';
 import BasicButton from '@components/core/BasicButton';
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import ScenarioStepContext from '@components/campaignguide/ScenarioStepContext';
 import { m, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 
 interface Props {
   id: string;
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function TextBoxInputComponent({ id, prompt }: Props) {
-  const { scenarioState } = useContext(ScenarioStepContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
   const [text, setText] = useState('');
 

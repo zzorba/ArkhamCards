@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from 'react';
 
 import SetupStepWrapper from '@components/campaignguide/SetupStepWrapper';
 import CampaignGuideTextComponent from '@components/campaignguide/CampaignGuideTextComponent';
-import ScenarioStepContext, { ScenarioStepContextType } from '@components/campaignguide/ScenarioStepContext';
 import { SendCampaignLinkInput, BulletType } from '@data/scenario/types';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
+import ScenarioGuideContext from '@components/campaignguide/ScenarioGuideContext';
 
 interface Props {
   id: string;
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function SendCampaignLinkInputComponent({ id, input, campaignLog, text, bulletType }: Props) {
-  const { scenarioState } = useContext(ScenarioStepContext);
+  const { scenarioState } = useContext(ScenarioGuideContext);
   useEffect(() => {
     if (campaignLog.linked) {
       const sentDecision = scenarioState.campaignLink('send', input.id);

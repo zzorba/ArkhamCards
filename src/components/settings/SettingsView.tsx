@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo } from 'react';
-=import {
+import {
   SafeAreaView,
   ScrollView,
   StyleSheet,

@@ -14,11 +14,10 @@ interface Props {
   trauma?: Trauma;
   updateTrauma: (investigator_code: string, trauma: Trauma) => void;
   hideDialog: () => void;
-  viewRef?: View;
   hideKilledInsane?: boolean;
 }
 
-export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, viewRef, hideKilledInsane }: Props) {
+export default function EditTraumaDialog({ visible, investigator, trauma, updateTrauma, hideDialog, hideKilledInsane }: Props) {
   const [traumaState, setTraumaState] = useState<Trauma>({});
   useEffect(() => {
     if (visible) {
@@ -49,7 +48,6 @@ export default function EditTraumaDialog({ visible, investigator, trauma, update
         t`${investigator.firstName}’s Trauma` :
         t`Trauma`}
       visible={visible}
-      viewRef={viewRef}
     >
       <EditTraumaDialogContent
         investigator={investigator}
