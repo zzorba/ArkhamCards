@@ -9,7 +9,7 @@ import { t } from 'ttag';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
 import Card from '@data/Card';
 import space from '@styles/space';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 
 interface Props {
   card: Card;

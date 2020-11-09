@@ -23,11 +23,6 @@ export interface NewDeckProps {
 
 type Props = NewDeckProps & NavigationProps;
 
-interface State {
-  saving: boolean;
-  selectedSort: SortType;
-}
-
 function NewDeckView({ onCreateDeck, filterInvestigators, onlyInvestigators, componentId }: Props) {
   const { backgroundStyle, colors } = useContext(StyleContext);
   const [selectedSort, sortChanged] = useState<SortType>(SORT_BY_PACK);

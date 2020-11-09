@@ -21,7 +21,7 @@ export default function UpgradeButton({ onPress }: Props) {
       },
     ]} onPress={onPress} rippleColor={colors.M} rippleSize={100}>
       <AppIcon
-        size={24}
+        size={28}
         color={colors.M}
         name="upgrade"
       />
@@ -32,6 +32,8 @@ export default function UpgradeButton({ onPress }: Props) {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 16,
+    paddingLeft: 1,
+    paddingBottom: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
