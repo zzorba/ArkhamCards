@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import { Text } from 'react-native';
 import { useSelector } from 'react-redux';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
@@ -8,6 +7,7 @@ import { AppState } from '@reducers';
 import { campaignGuideReduxData } from '@components/campaignguide/contextHelper';
 import useCampaignGuideContext from './useCampaignGuideContext';
 import { useInvestigatorCards } from '@components/core/hooks';
+import LoadingSpinner from '@components/core/LoadingSpinner';
 
 export interface CampaignGuideInputProps {
   campaignId: number;
@@ -33,7 +33,7 @@ export default function withCampaignGuideContext<Props>(
     const context = useCampaignGuideContext(campaignId, campaignData);
     if (!campaignData || !context) {
       return (
-        <Text>Unknown Campaign</Text>
+        <LoadingSpinner />
       );
     }
     return (

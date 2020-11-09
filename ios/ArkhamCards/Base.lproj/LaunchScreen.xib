@@ -13,12 +13,12 @@
             <rect key="frame" x="0.0" y="0.0" width="575" height="867"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SplashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-J1-voh">
-                    <rect key="frame" x="134" y="275" width="306" height="317"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SplashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-J1-voh">
+                    <rect key="frame" x="20" y="202" width="535" height="518"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="DV3-dT-2xg">
-                    <rect key="frame" x="134" y="275" width="306" height="317"/>
+                    <rect key="frame" x="131" y="275" width="306" height="317"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
