@@ -30366,7 +30366,8 @@
               },
               {
                 "type": "earn_xp",
-                "investigator": "$input_value"
+                "investigator": "$input_value",
+                "bonus": 2
               }
             ]
           }
@@ -59451,7 +59452,8 @@
               },
               {
                 "type": "earn_xp",
-                "investigator": "$input_value"
+                "investigator": "$input_value",
+                "bonus": 2
               }
             ]
           }

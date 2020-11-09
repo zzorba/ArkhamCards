@@ -28994,7 +28994,8 @@
               },
               {
                 "type": "earn_xp",
-                "investigator": "$input_value"
+                "investigator": "$input_value",
+                "bonus": 2
               }
             ]
           }
@@ -29009,7 +29010,7 @@
     },
     {
       "id": "map_xp",
-      "text": "Each investigator with a map earns 2 additional experience as he or she gains insight into the caverns that dwell beneath the surface of the Earth."
+      "text": "Each investigator with a map earns 2 additional experience as they gain insight into the caverns that dwell beneath the surface of the Earth."
     },
     {
       "id": "time_passes",
@@ -53818,7 +53819,8 @@
               },
               {
                 "type": "earn_xp",
-                "investigator": "$input_value"
+                "investigator": "$input_value",
+                "bonus": 2
               }
             ]
           }
@@ -53833,7 +53835,7 @@
     },
     {
       "id": "map_xp",
-      "text": "Each investigator with a map earns 2 additional experience as he or she gains insight into the caverns that dwell beneath the surface of the Earth."
+      "text": "Each investigator with a map earns 2 additional experience as they gain insight into the caverns that dwell beneath the surface of the Earth."
     },
     {
       "id": "time_passes",
