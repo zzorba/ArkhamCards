@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,92 +25,72 @@ interface Props {
   };
 }
 
-export default class CardUpgradeOption extends React.Component<Props> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+export default function CardUpgradeOption({ card, code, count, ignoreCount, onIncrement, onDecrement, onIgnore }: Props) {
+  const { typography } = useContext(StyleContext);
 
-  _inc = () => {
-    const {
-      onIncrement,
-      code,
-    } = this.props;
+  const inc = useCallback(() => {
     onIncrement(code);
-  };
+  }, [onIncrement, code]);
 
-  _dec = () => {
-    const {
-      onDecrement,
-      code,
-    } = this.props;
+  const dec = useCallback(() => {
     onDecrement(code);
-  };
+  }, [onDecrement, code]);
 
-  _incIgnore = () => {
-    const { onIgnore, code } = this.props;
+  const incIgnore = useCallback(() => {
     if (onIgnore) {
       onIgnore.onIncrement(code);
     }
-  };
+  }, [onIgnore, code]);
 
-  _decIgnore = () => {
-    const { onIgnore, code } = this.props;
+  const decIgnore = useCallback(() => {
     if (onIgnore) {
       onIgnore.onDecrement(code);
     }
-  };
+  }, [onIgnore, code]);
 
-  render() {
-    const {
-      count,
-      card,
-      onIgnore,
-      ignoreCount,
-    } = this.props;
-    const { typography } = this.context;
-    const level = card.xp || 0;
-    return (
-      <View>
+  const level = card.xp || 0;
+  return (
+    <View>
+      <View style={[styles.buttonsRow, space.paddingSideS]}>
+        <View style={styles.buttonLabel}>
+          <Text style={typography.dialogLabel}>
+            { t`Level ${level}` }
+          </Text>
+        </View>
+        <Text style={[typography.dialogLabel, styles.countText]}>
+          { count }
+        </Text>
+        <PlusMinusButtons
+          count={count}
+          max={card.deck_limit || 2}
+          onIncrement={inc}
+          onDecrement={dec}
+          size={36}
+          color="dark"
+        />
+      </View>
+      { !!onIgnore && (
         <View style={[styles.buttonsRow, space.paddingSideS]}>
           <View style={styles.buttonLabel}>
             <Text style={typography.dialogLabel}>
-              { t`Level ${level}` }
+              { t`Keep level ${level} after upgrade\nWon't count towards deck size` }
             </Text>
           </View>
           <Text style={[typography.dialogLabel, styles.countText]}>
-            { count }
+            { ignoreCount }
           </Text>
           <PlusMinusButtons
-            count={count}
-            max={card.deck_limit || 2}
-            onIncrement={this._inc}
-            onDecrement={this._dec}
+            count={ignoreCount}
+            max={count}
+            onIncrement={incIgnore}
+            onDecrement={decIgnore}
             size={36}
             color="dark"
           />
         </View>
-        { !!onIgnore && (
-          <View style={[styles.buttonsRow, space.paddingSideS]}>
-            <View style={styles.buttonLabel}>
-              <Text style={typography.dialogLabel}>
-                { t`Keep level ${level} after upgrade\nWon't count towards deck size` }
-              </Text>
-            </View>
-            <Text style={[typography.dialogLabel, styles.countText]}>
-              { ignoreCount }
-            </Text>
-            <PlusMinusButtons
-              count={ignoreCount}
-              max={count}
-              onIncrement={this._incIgnore}
-              onDecrement={this._decIgnore}
-              size={36}
-              color="dark"
-            />
-          </View>
-        ) }
-      </View>
-    );
-  }
+      ) }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

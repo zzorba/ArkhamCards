@@ -98,13 +98,13 @@ export default function DeckNavFooter({
               { SHOW_CHARTS_BUTTON && (
                 <TouchableOpacity onPress={showCardChartsPressed}>
                   <View style={styles.button}>
-                    <MaterialCommunityIcons name="chart-bar" size={28} color="#FFFFFF" />
+                    <AppIcon name="chart" size={36} color="#FFFFFF" />
                   </View>
                 </TouchableOpacity>
               ) }
               <TouchableOpacity onPress={showDrawSimulatorPressed}>
                 <View style={styles.button}>
-                  <AppIcon name="cards-1" size={28} color="#FFFFFF" />
+                  <AppIcon name="draw" size={36} color="#FFFFFF" />
                 </View>
               </TouchableOpacity>
             </>

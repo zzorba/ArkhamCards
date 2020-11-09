@@ -3,13 +3,12 @@ import { findIndex, map } from 'lodash';
 import { format } from 'date-fns';
 import { c, t } from 'ttag';
 
-import connectDb from '@components/data/connectDb';
 import Database from '@data/Database';
 import SinglePickerComponent from './SinglePickerComponent';
-import TabooSet from '@data/TabooSet';
 import StyleContext from '@styles/StyleContext';
+import useDbData from './useDbData';
 
-interface OwnProps {
+interface Props {
   color: string;
   tabooSetId?: number;
   setTabooSet: (tabooSet?: number) => void;
@@ -19,22 +18,28 @@ interface OwnProps {
   transparent?: boolean;
 }
 
-interface DbProps {
-  tabooSets: TabooSet[];
+async function fetchTaboos(db: Database) {
+  const tabooSetsR = await db.tabooSets();
+  const tabooSets = await tabooSetsR.createQueryBuilder()
+    .orderBy('id', 'DESC')
+    .getMany();
+  return tabooSets;
 }
 
-type Props = OwnProps & DbProps;
-
-function TabooSetPicker({ color, tabooSetId, setTabooSet, disabled, description, open, transparent, tabooSets }: Props) {
+export default function TabooSetPicker({ color, tabooSetId, setTabooSet, disabled, description, open, transparent }: Props) {
   const { colors } = useContext(StyleContext);
-
+  const tabooSets = useDbData(fetchTaboos);
   const onTabooChange = useCallback((tabooId: number | null) => {
-    if (tabooId === null) {
+    if (!tabooSets || tabooId === null) {
       // No change, so just drop it.
       return;
     }
     setTabooSet((tabooId === -1 || tabooId >= tabooSets.length) ? undefined : tabooSets[tabooId].id);
   }, [tabooSets, setTabooSet]);
+
+  if (!tabooSets) {
+    return null;
+  }
 
   const selectedIndex = !tabooSetId ?
     -1 :
@@ -66,20 +71,3 @@ function TabooSetPicker({ color, tabooSetId, setTabooSet, disabled, description,
     />
   );
 }
-
-export default connectDb<OwnProps, DbProps>(
-  TabooSetPicker,
-  () => {
-    return {};
-  },
-  async(db: Database) => {
-    const tabooSetsR = await db.tabooSets();
-    const tabooSets = await tabooSetsR.createQueryBuilder()
-      .orderBy('id', 'DESC')
-      .getMany();
-    return {
-      tabooSets,
-    };
-  },
-  { tabooSets: [] }
-);

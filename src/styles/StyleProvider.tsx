@@ -1,12 +1,11 @@
 import React from 'react';
-import DeviceInfo from 'react-native-device-info';
-import { EventSubscription } from 'react-native';
-import { connect } from 'react-redux';
-import { Appearance, ColorSchemeName, AppearancePreferences } from 'react-native-appearance';
+import { useWindowDimensions } from 'react-native';
+import { useSelector } from 'react-redux';
+import { ColorSchemeName, useColorScheme } from 'react-native-appearance';
 import { ThemeProvider } from 'react-native-elements';
 
 import StyleContext from './StyleContext';
-import { AppState, getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
+import { getAppFontScale, getLangPreference, getThemeOverride } from '@reducers';
 import { DARK_THEME, LIGHT_THEME } from './theme';
 import typography from './typography';
 
@@ -52,75 +51,35 @@ const DARK_ELEMENTS_THEME = {
   },
 };
 
-export let RECENT_FONT_SCALE = 1.0;
-
-class StyleProvider extends React.Component<Props, State> {
-  state = {
-    colorScheme: Appearance.getColorScheme(),
-    fontScale: RECENT_FONT_SCALE,
-  };
-
-  _changeListener?: EventSubscription;
-
-  _appearanceChanged = (preferences: AppearancePreferences) => {
-    this.setState({
-      colorScheme: preferences.colorScheme,
-    });
-  }
-
-  componentDidMount() {
-    this._changeListener = Appearance.addChangeListener(this._appearanceChanged);
-    DeviceInfo.getFontScale().then(fontScale => {
-      RECENT_FONT_SCALE = fontScale;
-      this.setState({
-        fontScale,
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    this._changeListener && this._changeListener.remove();
-  }
-
-  render() {
-    const { lang, themeOverride, appFontScale } = this.props;
-    const { colorScheme } = this.state;
-    const fontScale = appFontScale * this.state.fontScale;
-    const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
-    const colors = darkMode ? DARK_THEME : LIGHT_THEME;
-    const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
-    return (
-      <StyleContext.Provider value={{
-        darkMode,
-        fontScale,
-        typography: typography(appFontScale, colors, gameFont),
-        colors,
-        gameFont,
-        backgroundStyle: {
-          backgroundColor: colors.background,
-        },
-        borderStyle: {
-          borderColor: colors.divider,
-        },
-        disabledStyle: {
-          backgroundColor: colors.disableOverlay,
-        },
-      }}>
-        <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
-          { this.props.children }
-        </ThemeProvider>
-      </StyleContext.Provider>
-    );
-  }
+export default function StyleProvider({ children } : Props) {
+  const lang = useSelector(getLangPreference);
+  const themeOverride = useSelector(getThemeOverride);
+  const appFontScale = useSelector(getAppFontScale);
+  const colorScheme = useColorScheme();
+  const { fontScale } = useWindowDimensions();
+  const darkMode = (themeOverride ? themeOverride === 'dark' : colorScheme === 'dark');
+  const colors = darkMode ? DARK_THEME : LIGHT_THEME;
+  const gameFont = lang === 'ru' ? 'Conkordia' : 'Teutonic';
+  return (
+    <StyleContext.Provider value={{
+      darkMode,
+      fontScale,
+      typography: typography(appFontScale, colors, gameFont),
+      colors,
+      gameFont,
+      backgroundStyle: {
+        backgroundColor: colors.background,
+      },
+      borderStyle: {
+        borderColor: colors.divider,
+      },
+      disabledStyle: {
+        backgroundColor: colors.disableOverlay,
+      },
+    }}>
+      <ThemeProvider theme={darkMode ? DARK_ELEMENTS_THEME : LIGHT_ELEMENTS_THEME}>
+        { children }
+      </ThemeProvider>
+    </StyleContext.Provider>
+  );
 }
-
-
-function mapStateToProps(state: AppState): ReduxProps {
-  return {
-    lang: getLangPreference(state),
-    themeOverride: getThemeOverride(state),
-    appFontScale: getAppFontScale(state),
-  };
-}
-
-export default connect(mapStateToProps)(StyleProvider);

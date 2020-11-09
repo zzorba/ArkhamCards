@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { head } from 'lodash';
-import { connect } from 'react-redux';
 import {
   RefreshControl,
   ScrollView,
@@ -13,31 +12,34 @@ import { t } from 'ttag';
 import CardTextComponent from './CardTextComponent';
 import Database from '@data/Database';
 import DatabaseContext from '@data/DatabaseContext';
-import FaqEntry from '@data/FaqEntry';
-import connectDb from '@components/data/connectDb';
 import { openUrl } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
 import { getFaqEntry } from '@lib/publicApi';
-import { getTabooSet, AppState } from '@reducers';
 import space, { m } from '@styles/space';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 import { useTabooSetId } from '@components/core/hooks';
+import useDbData from '@components/core/useDbData';
 
 export interface CardFaqProps {
   id: string;
 }
 
-interface Data {
-  faqEntries: FaqEntry[];
-}
+type Props = NavigationProps & CardFaqProps;
 
-type Props = NavigationProps & CardFaqProps & Data;
-
-function CardFaqView({ id, faqEntries, componentId }: Props) {
+export default function CardFaqView({ id, componentId }: Props) {
   const { db } = useContext(DatabaseContext);
   const { backgroundStyle, colors, typography } = useContext(StyleContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>();
+  const fetchFaqEntries = useCallback(async(db: Database) => {
+    const qb = await db.faqEntries();
+    const faqEntries = await qb.createQueryBuilder('faq')
+      .where('faq.code = :code', { code: id })
+      .getMany();
+    return faqEntries;
+  }, [id]);
+  const faqEntries = useDbData(fetchFaqEntries);
+
   const loadFaq = useCallback(() => {
     if (!loading) {
       setLoading(true);
@@ -57,6 +59,7 @@ function CardFaqView({ id, faqEntries, componentId }: Props) {
     if (!head(faqEntries)) {
       loadFaq();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const tabooSetId = useTabooSetId();
   const linkPressed = useCallback(async(url: string, context: StyleContextType) => {
@@ -106,20 +109,6 @@ function CardFaqView({ id, faqEntries, componentId }: Props) {
     </ScrollView>
   );
 }
-
-export default connectDb<NavigationProps & CardFaqProps, Data, string>(
-  CardFaqView,
-  (props: NavigationProps & CardFaqProps) => props.id,
-  async(db: Database, code: string) => {
-    const qb = await db.faqEntries();
-    const faqEntries = await qb.createQueryBuilder('faq')
-      .where('faq.code = :code', { code })
-      .getMany();
-    return {
-      faqEntries,
-    };
-  }
-);
 
 const styles = StyleSheet.create({
   container: {

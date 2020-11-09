@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import AppIcon from '@icons/AppIcon';
 import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 
@@ -10,18 +10,20 @@ interface Props {
 }
 
 export default function UpgradeButton({ onPress }: Props) {
-  const { colors, fontScale } = useContext(StyleContext);
+  const { colors } = useContext(StyleContext);
   return (
     <Ripple style={[
       styles.button,
       {
-        backgroundColor: colors.M,
+        backgroundColor: colors.L20,
+        width: 32,
+        height: 32,
       },
-    ]} onPress={onPress} rippleColor={colors.L10} rippleSize={100}>
-      <MaterialCommunityIcons
-        size={18 * fontScale}
-        color="#FFF"
-        name="arrow-up-bold"
+    ]} onPress={onPress} rippleColor={colors.M} rippleSize={100}>
+      <AppIcon
+        size={24}
+        color={colors.M}
+        name="upgrade"
       />
     </Ripple>
   );
@@ -29,8 +31,14 @@ export default function UpgradeButton({ onPress }: Props) {
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 8,
-    padding: 8,
-    marginRight: 4,
+    borderRadius: 16,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 4,
+    shadowColor: 'black',
+    shadowOpacity: 0.25,
   },
 });

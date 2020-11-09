@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { AppState, Button, Text } from 'react-native';
 import { flatMap, forEach, keys, map, sortBy } from 'lodash';
 import { t } from 'ttag';
-import { Action, Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { Action } from 'redux';
+import { useDispatch } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Switch from '@components/core/Switch';
@@ -12,7 +12,6 @@ import ShowDeckButton from './ShowDeckButton';
 import { Deck, Slots, NumberChoices } from '@actions/types';
 import BasicListRow from '@components/core/BasicListRow';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import CardListWrapper from '@components/card/CardListWrapper';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { showDeckModal, showCard } from '@components/nav/helper';
@@ -24,9 +23,12 @@ import Card from '@data/Card';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
 import ScenarioStateHelper from '@data/scenario/ScenarioStateHelper';
 import GuidedCampaignLog from '@data/scenario/GuidedCampaignLog';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
+import useCardList from '@components/card/useCardList';
+import { ThunkDispatch } from 'redux-thunk';
 
-interface OwnProps {
+interface Props {
   componentId: string;
   id: string;
   campaignState: CampaignStateHelper;
@@ -37,163 +39,112 @@ interface OwnProps {
   setUnsavedEdits: (investigator: string, edits: boolean) => void;
   editable: boolean;
 }
+type DeckDispatch = ThunkDispatch<AppState, any, Action<unknown>>;
 
-interface ReduxActionProps {
-  saveDeckChanges: (deck: Deck, changes: DeckChanges) => Promise<Deck>;
-  saveDeckUpgrade: (deck: Deck, xp: number, exileCounts: Slots) => Promise<Deck>;
+function computeChoiceId(stepId: string, investigator: Card) {
+  return `${stepId}#${investigator.code}`;
 }
 
-type Props = OwnProps & ReduxActionProps;
+function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investigator, deck, campaignLog, setUnsavedEdits, editable }: Props) {
+  const { colors, typography } = useContext(StyleContext);
+  const deckDispatch: DeckDispatch = useDispatch();
+  const deckUpgradeComponent = useRef<DeckUpgradeHandles>();
+  const earnedXp = useMemo(() => campaignLog.earnedXp(investigator.code), [campaignLog, investigator]);
+  const [xpAdjust, incXp, decXp] = useCounter(earnedXp, {});
+  const [physicalAdjust, incPhysical, decPhysical] = useCounter(0, {});
+  const [mentalAdjust, incMental, decMental] = useCounter(0, {});
+  const [killedAdjust, toggleKilled] = useFlag(false);
+  const [insaneAdjust, toggleInsane] = useFlag(false);
 
-interface State {
-  xp: number;
-  physicalAdjust: number;
-  mentalAdjust: number;
-  killed: boolean;
-  insane: boolean;
-}
-
-class UpgradeDeckRow extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  deckUpgradeComponent: React.RefObject<DeckUpgradeHandles> = React.createRef<DeckUpgradeHandles>();
-
-  static choiceId(stepId: string, investigator: Card) {
-    return `${stepId}#${investigator.code}`;
-  }
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      xp: props.campaignLog.earnedXp(props.investigator.code),
-      physicalAdjust: 0,
-      mentalAdjust: 0,
-      killed: false,
-      insane: false,
-    };
-  }
-
-  unsavedEdits() {
-    const { investigator, campaignLog } = this.props;
-    const { xp, physicalAdjust, mentalAdjust, killed, insane } = this.state;
+  const unsavedEdits = useMemo(() => {
     return physicalAdjust !== 0 ||
       mentalAdjust !== 0 ||
-      xp !== campaignLog.earnedXp(investigator.code) ||
-      killed ||
-      insane;
-  }
+      xpAdjust !== earnedXp ||
+      killedAdjust ||
+      insaneAdjust;
+  }, [earnedXp, xpAdjust, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
 
-  _syncUnsavedEdits = () => {
-    const { setUnsavedEdits, investigator } = this.props;
-    setUnsavedEdits(investigator.code, this.unsavedEdits());
-  };
+  useEffectUpdate(() => {
+    setUnsavedEdits(investigator.code, unsavedEdits);
+  }, [setUnsavedEdits, investigator, unsavedEdits]);
 
-  choiceId() {
-    const {
-      id,
-      investigator,
-    } = this.props;
-    return UpgradeDeckRow.choiceId(id, investigator);
-  }
+  const choiceId = useMemo(() => {
+    return computeChoiceId(id, investigator);
+  }, [id, investigator]);
 
-  _saveCampaignLog = (xp: number, deck?: Deck) => {
-    const {
-      scenarioState,
-      campaignLog,
-      investigator,
-    } = this.props;
-    const {
-      physicalAdjust,
-      mentalAdjust,
-      killed,
-      insane,
-    } = this.state;
+  const saveCampaignLog = useCallback((xp: number, deck?: Deck) => {
     const choices: NumberChoices = {
-      xp: [xp - campaignLog.earnedXp(investigator.code)],
+      xp: [xp - earnedXp],
       physical: [physicalAdjust],
       mental: [mentalAdjust],
-      killed: [killed ? 1 : 0],
-      insane: [insane ? 1 : 0],
+      killed: [killedAdjust ? 1 : 0],
+      insane: [insaneAdjust ? 1 : 0],
     };
     if (deck) {
       choices.deckId = [deck.id];
     }
-    scenarioState.setNumberChoices(this.choiceId(), choices);
-  };
+    scenarioState.setNumberChoices(choiceId, choices);
+  }, [scenarioState, earnedXp, choiceId, physicalAdjust, mentalAdjust, killedAdjust, insaneAdjust]);
 
-  xp(choices?: NumberChoices): number {
-    const { campaignLog, investigator } = this.props;
+  const choices = useMemo(() => scenarioState.numberChoices(choiceId), [scenarioState, choiceId]);
+
+  const xp: number = useMemo(() => {
     if (choices === undefined) {
-      return this.state.xp;
+      return xpAdjust;
     }
-    return campaignLog.earnedXp(investigator.code) +
-      ((choices.xp && choices.xp[0]) || 0);
-  }
+    return earnedXp + ((choices.xp && choices.xp[0]) || 0);
+  }, [xpAdjust, choices, earnedXp]);
 
-  physicalAdjust(choices?: NumberChoices): number {
+  const physicalTrauma: number = useMemo(() => {
     if (choices === undefined) {
-      return this.state.physicalAdjust;
+      return physicalAdjust;
     }
     return (choices.physical && choices.physical[0]) || 0;
-  }
+  }, [choices, physicalAdjust]);
 
-  mentalAdjust(choices?: NumberChoices): number {
+  const mentalTrauma: number = useMemo(() => {
     if (choices === undefined) {
-      return this.state.mentalAdjust;
+      return mentalAdjust;
     }
     return (choices.mental && choices.mental[0]) || 0;
-  }
-
-  killedAdjust(choices?: NumberChoices): boolean {
+  }, [choices, mentalAdjust]);
+  const killed = useMemo(() => {
     if (choices === undefined) {
-      return this.state.killed;
+      return killedAdjust;
     }
     return !!(choices.killed && choices.killed[0]);
-  }
-
-  insaneAdjust(choices?: NumberChoices): boolean {
+  }, [choices, killedAdjust]);
+  const insane = useMemo(() => {
     if (choices === undefined) {
-      return this.state.insane;
+      return insaneAdjust;
     }
     return !!(choices.insane && choices.insane[0]);
-  }
+  }, [choices, insaneAdjust]);
+  const onUpgrade = useCallback((deck: Deck, xp: number) => {
+    saveCampaignLog(xp, deck);
+  }, [saveCampaignLog]);
 
-  _onUpgrade = (deck: Deck, xp: number) => {
-    this._saveCampaignLog(xp, deck);
-  };
-
-  _save = () => {
-    const { deck } = this.props;
+  const save = useCallback(() => {
     if (deck) {
-      if (this.deckUpgradeComponent.current) {
-        this.deckUpgradeComponent.current.save();
+      if (deckUpgradeComponent.current) {
+        deckUpgradeComponent.current.save();
       }
     } else {
-      this._saveCampaignLog(this.state.xp);
+      saveCampaignLog(xpAdjust);
     }
-  };
+  }, [deck, deckUpgradeComponent, saveCampaignLog, xpAdjust]);
 
-  _showCard = (card: Card) => {
-    const { componentId } = this.props;
-    const { colors } = this.context;
-    showCard(
-      componentId,
-      card.code,
-      card,
-      colors,
-      true
-    );
-  };
+  const onCardPress = useCallback((card: Card) => {
+    showCard(componentId, card.code, card, colors, true);
+  }, [componentId, colors]);
 
-  _renderDeltas = (cards: Card[], deltas: Slots) => {
+  const renderDeltas = useCallback((cards: Card[], deltas: Slots) => {
     return map(
       sortBy(cards, card => card.name),
       card => (
         <CardSearchResult
           key={card.code}
-          onPress={this._showCard}
+          onPress={onCardPress}
           card={card}
           count={deltas[card.code]}
           deltaCountMode
@@ -201,16 +152,14 @@ class UpgradeDeckRow extends React.Component<Props, State> {
         />
       )
     );
-  };
+  }, [onCardPress]);
 
-  renderStoryAssetDeltas() {
-    const {
-      campaignLog,
-      investigator,
-    } = this.props;
-    const deltas = campaignLog.storyAssetChanges(investigator.code);
-    const cards: string[] = flatMap(deltas, (count, code) => count !== 0 ? code : []);
-    if (!cards.length) {
+  const storyAssetDeltas = useMemo(() => campaignLog.storyAssetChanges(investigator.code), [campaignLog, investigator]);
+  const storyAssets = useMemo(() => campaignLog.storyAssets(investigator.code), [campaignLog, investigator]);
+  const storyAssetCodes = useMemo(() => flatMap(storyAssetDeltas, (count, code) => count !== 0 ? code : []), [storyAssetDeltas]);
+  const [storyAssetCards] = useCardList(storyAssetCodes, 'player');
+  const storyAssetSection = useMemo(() => {
+    if (!storyAssetCards.length) {
       return null;
     }
     return (
@@ -219,58 +168,12 @@ class UpgradeDeckRow extends React.Component<Props, State> {
           investigator={investigator}
           section={{ superTitle: t`Campaign cards` }}
         />
-        <CardListWrapper codes={cards} type="player">
-          { (cards: Card[]) => this._renderDeltas(cards, deltas) }
-        </CardListWrapper>
+        { renderDeltas(storyAssetCards, storyAssetDeltas) }
       </>
     );
-  }
+  }, [storyAssetDeltas, storyAssetCards, renderDeltas, investigator]);
 
-
-  _incPhysical = () => {
-    this.setState(state => {
-      return { physicalAdjust: (state.physicalAdjust || 0) + 1 };
-    }, this._syncUnsavedEdits);
-  };
-
-  _decPhysical = () => {
-    this.setState(state => {
-      return {
-        physicalAdjust: (state.physicalAdjust || 0) - 1,
-      };
-    }, this._syncUnsavedEdits);
-  };
-
-  _incMental = () => {
-    this.setState(state => {
-      return { mentalAdjust: (state.mentalAdjust || 0) + 1 };
-    }, this._syncUnsavedEdits);
-  };
-
-  _decMental = () => {
-    this.setState(state => {
-      return {
-        mentalAdjust: (state.mentalAdjust || 0) - 1,
-      };
-    }, this._syncUnsavedEdits);
-  };
-
-  _incXp = () => {
-    this.setState(state => {
-      return { xp: (state.xp || 0) + 1 };
-    }, this._syncUnsavedEdits);
-  };
-
-  _decXp = () => {
-    this.setState(state => {
-      return { xp: Math.max((state.xp || 0) - 1, 0) };
-    }, this._syncUnsavedEdits);
-  };
-
-  renderXpSection(choices?: NumberChoices) {
-    const { investigator, editable } = this.props;
-    const { typography } = this.context;
-    const xp = this.xp(choices);
+  const xpSection = useMemo(() => {
     const xpString = xp >= 0 ? `+${xp}` : `${xp}`;
     return (
       <>
@@ -284,48 +187,21 @@ class UpgradeDeckRow extends React.Component<Props, State> {
           </Text>
           { choices === undefined && editable && (
             <PlusMinusButtons
-              count={this.state.xp}
-              onIncrement={this._incXp}
-              onDecrement={this._decXp}
+              count={xpAdjust}
+              onIncrement={incXp}
+              onDecrement={decXp}
             />
           ) }
         </BasicListRow>
       </>
     );
-  }
+  }, [typography, xp, investigator, editable, xpAdjust, incXp, decXp, choices]);
+  const baseTrauma = useMemo(() => campaignLog.baseTrauma(investigator.code), [campaignLog, investigator]);
+  const traumaDelta = useMemo(() => campaignLog.traumaChanges(investigator.code), [campaignLog, investigator]);
 
-  _toggleKilled = () => {
-    this.setState(state => {
-      return {
-        killed: !state.killed,
-      };
-    });
-  };
-
-  _toggleInsane = () => {
-    this.setState(state => {
-      return {
-        insane: !state.insane,
-      };
-    });
-  };
-
-  renderTraumaDetails(choices?: NumberChoices) {
-    const {
-      investigator,
-      campaignLog,
-      editable,
-    } = this.props;
-    const { colors, typography } = this.context;
-    const physicalAdjust = this.physicalAdjust(choices);
-    const mentalAdjust = this.mentalAdjust(choices);
-    const killedAdjust = this.killedAdjust(choices);
-    const insaneAdjust = this.insaneAdjust(choices);
-
-    const baseTrauma = campaignLog.baseTrauma(investigator.code);
-    const traumaDelta = campaignLog.traumaChanges(investigator.code);
-    const physical = (traumaDelta.physical || 0) + physicalAdjust;
-    const mental = (traumaDelta.mental || 0) + mentalAdjust;
+  const traumaSection = useMemo(() => {
+    const physical = (traumaDelta.physical || 0) + physicalTrauma;
+    const mental = (traumaDelta.mental || 0) + mentalTrauma;
     const totalPhysical = (baseTrauma.physical || 0) + physical;
     const totalMental = (baseTrauma.mental || 0) + mental;
 
@@ -334,7 +210,7 @@ class UpgradeDeckRow extends React.Component<Props, State> {
     const locked = (choices !== undefined) || !editable;
     return (
       <>
-        { (!locked || physical !== 0 || mental !== 0 || killedAdjust || insaneAdjust) && (
+        { (!locked || physical !== 0 || mental !== 0 || killed || insane) && (
           <CardSectionHeader
             investigator={investigator}
             section={{ superTitle: t`Trauma` }}
@@ -358,10 +234,10 @@ class UpgradeDeckRow extends React.Component<Props, State> {
               { !locked && (
                 <PlusMinusButtons
                   count={totalPhysical}
-                  onIncrement={this._incPhysical}
-                  onDecrement={this._decPhysical}
+                  onIncrement={incPhysical}
+                  onDecrement={decPhysical}
                   max={investigator.health || 0}
-                  disabled={this.state.killed || this.state.insane}
+                  disabled={killedAdjust || insaneAdjust}
                 />
               ) }
             </BasicListRow>
@@ -374,10 +250,10 @@ class UpgradeDeckRow extends React.Component<Props, State> {
             </Text>
             { !locked ? (
               <Switch
-                value={this.state.killed}
+                value={killedAdjust}
                 customColor={colors.faction[investigator.factionCode()].background}
-                onValueChange={this._toggleKilled}
-                disabled={this.state.insane}
+                onValueChange={toggleKilled}
+                disabled={insaneAdjust}
               />
             ) : (
               <MaterialCommunityIcons
@@ -406,10 +282,10 @@ class UpgradeDeckRow extends React.Component<Props, State> {
               { !locked && (
                 <PlusMinusButtons
                   count={totalMental}
-                  onIncrement={this._incMental}
-                  onDecrement={this._decMental}
+                  onIncrement={incMental}
+                  onDecrement={decMental}
                   max={(investigator.sanity || 0)}
-                  disabled={this.state.killed || this.state.insane}
+                  disabled={killedAdjust || insaneAdjust}
                 />
               ) }
             </BasicListRow>
@@ -423,9 +299,9 @@ class UpgradeDeckRow extends React.Component<Props, State> {
             { !locked ? (
               <Switch
                 customColor={colors.faction[investigator.factionCode()].background}
-                value={this.state.insane}
-                onValueChange={this._toggleInsane}
-                disabled={this.state.killed}
+                value={insaneAdjust}
+                onValueChange={toggleInsane}
+                disabled={killedAdjust}
               />
             ) : (
               <MaterialCommunityIcons
@@ -438,10 +314,11 @@ class UpgradeDeckRow extends React.Component<Props, State> {
         ) }
       </>
     );
-  }
+  }, [incMental, decMental, incPhysical, decPhysical, toggleInsane, toggleKilled, investigator,
+    colors, typography, baseTrauma, choices, editable, insane, killed, physicalTrauma, mentalTrauma,
+    insaneAdjust, killedAdjust, traumaDelta]);
 
-  renderSaveButton(choices?: NumberChoices, deck?: Deck) {
-    const { editable } = this.props;
+  const saveButton = useMemo(() => {
     if (choices !== undefined || !editable) {
       return null;
     }
@@ -449,65 +326,43 @@ class UpgradeDeckRow extends React.Component<Props, State> {
       return (
         <BasicButton
           title={t`Save deck upgrade`}
-          onPress={this._save}
+          onPress={save}
         />
       );
     }
-    if (!this.unsavedEdits()) {
+    if (!unsavedEdits) {
       return null;
     }
     return (
       <BasicButton
         title={t`Save adjustments`}
-        onPress={this._save}
+        onPress={save}
       />
     );
-  }
+  }, [choices, editable, deck, save, unsavedEdits]);
 
-  renderCampaignSection(choices?: NumberChoices, deck?: Deck) {
+  const campaignSection = useMemo(() => {
     return (
       <>
-        { (choices !== undefined || !deck) && this.renderXpSection(choices) }
-        { this.renderTraumaDetails(choices) }
-        { this.renderStoryAssetDeltas() }
-        { this.renderSaveButton(choices, deck) }
+        { (choices !== undefined || !deck) && xpSection }
+        { traumaSection }
+        { storyAssetSection }
+        { saveButton }
       </>
     );
-  }
+  }, [choices, deck, xpSection, traumaSection, storyAssetSection, saveButton]);
 
-  _selectDeck = () => {
-    const {
-      campaignState,
-      investigator,
-    } = this.props;
+  const selectDeck = useCallback(() => {
     campaignState.showChooseDeck(investigator);
-  };
+  }, [campaignState, investigator]);
 
-  _viewDeck = () => {
-    const {
-      componentId,
-      investigator,
-      deck,
-    } = this.props;
+  const viewDeck = useCallback(() => {
     if (deck) {
-      showDeckModal(
-        componentId,
-        deck,
-        this.context.colors,
-        investigator,
-        undefined,
-        true
-      );
+      showDeckModal(componentId, deck, colors, investigator, undefined, true);
     }
-  };
+  }, [componentId, colors, investigator, deck]);
 
-  deckButton(choices?: NumberChoices) {
-    const {
-      componentId,
-      deck,
-      editable,
-      investigator,
-    } = this.props;
+  const deckButton = useMemo(() => {
     if (deck && choices !== undefined && choices.deckId) {
       return (
         <ShowDeckButton
@@ -522,22 +377,21 @@ class UpgradeDeckRow extends React.Component<Props, State> {
     }
     if (!deck) {
       return (
-        <Button title={t`Select deck`} onPress={this._selectDeck} />
+        <Button title={t`Select deck`} onPress={selectDeck} />
       );
     }
     return (
-      <Button title={t`View deck`} onPress={this._viewDeck} />
+      <Button title={t`View deck`} onPress={viewDeck} />
     );
-  }
+  }, [componentId, deck, editable, investigator, choices, selectDeck, viewDeck]);
 
-  computeStoryCountsForDeck(
-    deck: Deck,
-    storyAssets: Slots,
-    storyDeltas: Slots
-  ) {
+  const storyCountsForDeck = useMemo(() => {
+    if (!deck) {
+      return {};
+    }
     const newSlots: Slots = {};
     forEach(keys(storyAssets), code => {
-      const delta = storyDeltas[code];
+      const delta = storyAssetDeltas[code];
       if (delta) {
         newSlots[code] = (deck.slots[code] || 0) + delta;
       } else {
@@ -547,7 +401,7 @@ class UpgradeDeckRow extends React.Component<Props, State> {
         newSlots[code] = 0;
       }
     });
-    forEach(storyDeltas, (delta, code) => {
+    forEach(storyAssetDeltas, (delta, code) => {
       if (storyAssets[code] === undefined) {
         if (delta) {
           newSlots[code] = (deck.slots[code] || 0) + delta;
@@ -555,81 +409,54 @@ class UpgradeDeckRow extends React.Component<Props, State> {
       }
     });
     return newSlots;
-  }
+  }, [deck, storyAssets, storyAssetDeltas]);
 
-  renderDetails(choices?: NumberChoices) {
-    const {
-      componentId,
-      deck,
-      investigator,
-      campaignLog,
-      saveDeckChanges,
-      saveDeckUpgrade,
-      editable,
-    } = this.props;
+
+  const performSaveDeckChanges = useCallback((deck: Deck, changes: DeckChanges): Promise<Deck> => {
+    return deckDispatch(saveDeckChanges(deck, changes) as any);
+  }, [deckDispatch]);
+
+  const performSaveDeckUpgrade = useCallback((deck: Deck, xp: number, exileCounts: Slots): Promise<Deck> => {
+    return deckDispatch(saveDeckUpgrade(deck, xp, exileCounts) as any);
+  }, [deckDispatch]);
+
+  const detailsSection = useMemo(() => {
     if (!deck) {
-      return (this.renderCampaignSection(choices));
+      return campaignSection;
     }
     if (choices !== undefined || !editable) {
-      return this.renderCampaignSection(choices, deck);
+      return campaignSection;
     }
     return (
       <DeckUpgradeComponent
         componentId={componentId}
-        ref={this.deckUpgradeComponent}
+        ref={deckUpgradeComponent}
         deck={deck}
         investigator={investigator}
-        campaignSection={this.renderCampaignSection(choices, deck)}
+        campaignSection={campaignSection}
         startingXp={campaignLog.earnedXp(investigator.code)}
-        storyCounts={this.computeStoryCountsForDeck(
-          deck,
-          campaignLog.storyAssets(investigator.code),
-          campaignLog.storyAssetChanges(investigator.code)
-        )}
+        storyCounts={storyCountsForDeck}
         ignoreStoryCounts={campaignLog.ignoreStoryAssets(investigator.code)}
-        upgradeCompleted={this._onUpgrade}
-        saveDeckChanges={saveDeckChanges}
-        saveDeckUpgrade={saveDeckUpgrade}
+        upgradeCompleted={onUpgrade}
+        saveDeckChanges={performSaveDeckChanges}
+        saveDeckUpgrade={performSaveDeckUpgrade}
       />
     );
-  }
+  }, [componentId, deck, investigator, campaignLog, editable, choices, storyCountsForDeck,
+    performSaveDeckChanges, performSaveDeckUpgrade, onUpgrade,
+    deckUpgradeComponent, campaignSection]);
 
-  render() {
-    const {
-      investigator,
-      campaignLog,
-    } = this.props;
-    const choices = this.props.scenarioState.numberChoices(this.choiceId());
-    const isYithian = (campaignLog.storyAssets(investigator.code)[BODY_OF_A_YITHIAN] || 0) > 0;
-    return (
-      <InvestigatorRow
-        investigator={investigator}
-        yithian={isYithian}
-        button={this.deckButton(choices)}
-      >
-        { this.renderDetails(choices) }
-      </InvestigatorRow>
-    );
-  }
+  const isYithian = (storyAssets[BODY_OF_A_YITHIAN] || 0) > 0;
+  return (
+    <InvestigatorRow
+      investigator={investigator}
+      yithian={isYithian}
+      button={deckButton}
+    >
+      { detailsSection }
+    </InvestigatorRow>
+  );
 }
 
-/* eslint-disable @typescript-eslint/ban-types */
-function mapStateToProps(): {} {
-  return {};
-}
-
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    saveDeckChanges,
-    saveDeckUpgrade,
-  } as any, dispatch);
-}
-
-/* eslint-disable @typescript-eslint/ban-types */
-export default connect<{}, ReduxActionProps, OwnProps, AppState>(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  UpgradeDeckRow
-);
+UpgradeDeckRow.choiceId = computeChoiceId;
+export default UpgradeDeckRow;
