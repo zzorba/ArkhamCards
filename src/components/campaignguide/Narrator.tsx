@@ -1,23 +1,21 @@
-import EncounterIcon from "@icons/EncounterIcon";
-import { getAccessToken } from "@lib/dissonantVoices";
-import { AppState } from "@reducers";
-import { DissonantVoicesState } from "@reducers/dissonantVoices";
-import { StyleContext, StyleContextType } from "@styles/StyleContext";
-import _ from "lodash";
-import React from "react";
+import _ from 'lodash';
+import React from 'react';
 import {
   ActivityIndicator,
-  Button,
-  ScrollView,
   Text,
   TouchableHighlight,
-  TouchableWithoutFeedback,
   View,
-  ViewStyle,
-} from "react-native";
-import { Divider, Icon } from "react-native-elements";
-import TrackPlayer, { ProgressComponent } from "react-native-track-player";
-import { connect } from "react-redux";
+  ViewStyle
+} from 'react-native';
+import { Divider, Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import TrackPlayer, { ProgressComponent } from 'react-native-track-player';
+
+import EncounterIcon from '@icons/EncounterIcon';
+import { getAccessToken } from '@lib/dissonantVoices';
+import { AppState } from '@reducers';
+import { DissonantVoicesState } from '@reducers/dissonantVoices';
+import { StyleContext, StyleContextType } from '@styles/StyleContext';
 
 export async function playNarration(trackId: string) {
   await TrackPlayer.skip(trackId);
@@ -185,33 +183,31 @@ class PlayerView extends React.Component<PlayerProps, PlayerState> {
     const { track, state } = this.state;
 
     return (
-      <TouchableWithoutFeedback style={{ width: "100%" }}>
-        <View>
-          <Divider />
-          <View
-            style={{
-              ...(style || {}),
-              display: "flex",
-              flexDirection: "row",
-              height: 64,
-              alignItems: "center",
-              padding: 16,
-            }}
-          >
-            <ArkworkView track={track} state={state} />
-            <TitleView style={{ flex: 1 }} track={track} />
-            <PreviousButton onPress={this.onPreviousPress} />
-            <ReplayButton onPress={this.onReplayPress} />
-            {state === TrackPlayer.STATE_PLAYING ? (
-              <PauseButton onPress={this.onPlayPress} />
-            ) : (
-              <PlayButton onPress={this.onPlayPress} />
-            )}
-            <NextButton onPress={this.onNextPress} />
-          </View>
-          <ProgressView />
+      <View>
+        <Divider />
+        <View
+          style={{
+            ...(style || {}),
+            display: "flex",
+            flexDirection: "row",
+            height: 64,
+            alignItems: "center",
+            padding: 16,
+          }}
+        >
+          <ArkworkView track={track} state={state} />
+          <TitleView style={{ flex: 1 }} track={track} />
+          <PreviousButton onPress={this.onPreviousPress} />
+          <ReplayButton onPress={this.onReplayPress} />
+          {state === TrackPlayer.STATE_PLAYING ? (
+            <PauseButton onPress={this.onPlayPress} />
+          ) : (
+            <PlayButton onPress={this.onPlayPress} />
+          )}
+          <NextButton onPress={this.onNextPress} />
         </View>
-      </TouchableWithoutFeedback>
+        <ProgressView />
+      </View>
     );
   }
 }

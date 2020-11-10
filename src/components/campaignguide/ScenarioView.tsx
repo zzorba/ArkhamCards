@@ -188,7 +188,6 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
         });
       }
     }
-    console.log('here');
     queueNarration(queue);
   }, [processedScenario]);
 
