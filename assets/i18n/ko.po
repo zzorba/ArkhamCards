@@ -112,20 +112,20 @@ msgstr "${ this.name }(${ this.subname })"
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:144
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:146
 #: src/components/core/CardCostIcon.tsx:75
-#: src/components/deck/DeckDetailView/index.tsx:1052
+#: src/components/deck/DeckDetailView/index.tsx:1062
 #: src/data/Card.ts:511
 #: src/data/Card.ts:527
 msgid "None"
 msgstr "없음"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:104
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:374
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:249
 #: src/data/Card.ts:515
 msgid "Killed"
 msgstr "사망한"
 
 #: src/components/campaign/EditTraumaDialogContent.tsx:114
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:422
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:297
 #: src/data/Card.ts:518
 msgid "Insane"
 msgstr "미친"
@@ -210,7 +210,7 @@ msgstr "신화"
 msgid "Unknown"
 msgstr "불명"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:377
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:270
 #: src/data/Card.ts:669
 #: src/data/Card.ts:757
 msgid "Investigator"
@@ -300,8 +300,8 @@ msgstr "능력"
 msgid "Basic Weakness"
 msgstr "기본 약점"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:163
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:164
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:118
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:119
 #: src/components/campaign/EditScenarioResultView.tsx:115
 #: src/components/campaign/ScenarioDialog.tsx:10
 #: src/data/Card.ts:688
@@ -310,7 +310,7 @@ msgstr "기본 약점"
 msgid "Scenario"
 msgstr "시나리오"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:350
+#: src/components/deck/EditSpecialDeckCardsView.tsx:250
 #: src/data/Card.ts:689
 #: src/data/Card.ts:702
 #: src/data/Card.ts:712
@@ -399,53 +399,54 @@ msgstr ""
 msgid "Undo"
 msgstr "되돌리기"
 
-#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:80
-#: src/components/campaign/AddScenarioResultView/index.tsx:79
+#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:81
+#: src/components/campaign/AddScenarioResultView/index.tsx:195
 #: src/components/campaign/CampaignChaosBagView.tsx:46
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:116
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:188
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:170
 #: src/components/campaign/EditChaosBagDialog/index.tsx:77
 #: src/components/campaign/EditChaosBagDialog/index.tsx:129
 #: src/components/campaign/EditChaosBagDialog/index.tsx:132
-#: src/components/campaign/EditTraumaDialog.tsx:60
+#: src/components/campaign/EditTraumaDialog.tsx:58
 #: src/components/campaign/MyCampaignsView/index.tsx:42
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:75
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:97
-#: src/components/campaign/NewCampaignView/index.tsx:403
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:55
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:77
+#: src/components/campaign/NewCampaignView/index.tsx:267
 #: src/components/campaign/SealTokenDialog.tsx:98
-#: src/components/campaign/UpgradeDecksView/index.tsx:65
+#: src/components/campaign/UpgradeDecksView/index.tsx:137
 #: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:65
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:101
-#: src/components/campaignguide/CampaignGuideView.tsx:77
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:201
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:114
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:90
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:88
+#: src/components/campaignguide/CampaignGuideView.tsx:69
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:125
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:83
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:86
 #: src/components/core/EditText.tsx:29
+#: src/components/core/EditText.tsx:44
 #: src/components/core/TextEditDialog.tsx:128
-#: src/components/deck/CardUpgradeDialog/index.tsx:405
-#: src/components/deck/CopyDeckDialog/index.tsx:347
+#: src/components/deck/CardUpgradeDialog/index.tsx:232
+#: src/components/deck/CopyDeckDialog/index.tsx:249
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:104
-#: src/components/deck/DeckDetailView/index.tsx:356
-#: src/components/deck/DeckDetailView/index.tsx:507
-#: src/components/deck/DeckDetailView/index.tsx:922
-#: src/components/deck/DeckDetailView/index.tsx:931
-#: src/components/deck/DeckDetailView/index.tsx:970
+#: src/components/deck/DeckDetailView/index.tsx:355
+#: src/components/deck/DeckDetailView/index.tsx:506
+#: src/components/deck/DeckDetailView/index.tsx:932
+#: src/components/deck/DeckDetailView/index.tsx:941
+#: src/components/deck/DeckDetailView/index.tsx:980
 #: src/components/deck/DeckUpgradeDialog.tsx:184
 #: src/components/deck/DeckUpgradeDialog.tsx:186
-#: src/components/deck/EditSpecialDeckCardsView.tsx:191
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:425
-#: src/components/deck/NewDeckView.tsx:41
+#: src/components/deck/EditSpecialDeckCardsView.tsx:160
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:309
+#: src/components/deck/NewDeckView.tsx:82
 #: src/components/deck/authHelper.ts:32
 #: src/components/nav/helper.ts:253
 #: src/components/nav/helper.ts:268
-#: src/components/settings/BackupView.tsx:78
-#: src/components/settings/BackupView.tsx:119
-#: src/components/settings/BackupView.tsx:154
-#: src/components/settings/DiagnosticsView.tsx:119
+#: src/components/settings/BackupView.tsx:97
+#: src/components/settings/BackupView.tsx:138
+#: src/components/settings/BackupView.tsx:149
+#: src/components/settings/DiagnosticsView.tsx:120
 #: src/components/settings/LanguagePicker.tsx:90
 #: src/components/settings/LoginButton.tsx:39
-#: src/components/settings/MergeBackupView/index.tsx:221
-#: src/components/settings/MergeBackupView/index.tsx:307
+#: src/components/settings/MergeBackupView/index.tsx:153
+#: src/components/settings/MergeBackupView/index.tsx:236
 #: src/data/scenario/CampaignStateHelper.ts:194
 #. This is a deck upgrade action.
 msgid "Cancel"
@@ -485,36 +486,36 @@ msgstr "<b>${ nextScenarioName }</b>으로 진행합니다."
 msgid "Available weaknesses"
 msgstr "접근가능 약점"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:341
-#: src/components/deck/DeckDetailView/index.tsx:822
-#: src/components/weakness/WeaknessDrawComponent.tsx:285
+#: src/components/deck/CopyDeckDialog/index.tsx:243
+#: src/components/deck/DeckDetailView/index.tsx:821
+#: src/components/weakness/WeaknessDrawComponent.tsx:197
 msgid "Saving"
 msgstr "저장"
 
-#: src/components/weakness/WeaknessDrawComponent.tsx:297
+#: src/components/weakness/WeaknessDrawComponent.tsx:209
 msgid "Draw a Different Weakness"
 msgstr "다른 약점 뽑기"
 
-#: src/components/weakness/WeaknessDrawComponent.tsx:298
+#: src/components/weakness/WeaknessDrawComponent.tsx:210
 msgid "Draw Another"
 msgstr "새로운 약점 뽑기"
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:56
 #: src/components/filter/CardFilterView/index.tsx:381
-#: src/components/weakness/WeaknessDrawComponent.tsx:317
+#: src/components/weakness/WeaknessDrawComponent.tsx:229
 msgid "Traits"
 msgstr "특성"
 
-#: src/components/weakness/WeaknessDrawComponent.tsx:325
+#: src/components/weakness/WeaknessDrawComponent.tsx:237
 msgid "Multiplayer"
 msgstr "다인 플레이"
 
 #: src/components/core/PackListComponent/index.tsx:54
-#: src/components/weakness/WeaknessDrawComponent.tsx:334
+#: src/components/weakness/WeaknessDrawComponent.tsx:246
 msgid "Standalone"
 msgstr "솔로 플레이"
 
-#: src/components/weakness/WeaknessDrawComponent.tsx:411
+#: src/components/weakness/WeaknessDrawComponent.tsx:292
 msgid ""
 "There are no weaknesses that match these trait filters left in the set.\n"
 "\n"
@@ -524,12 +525,12 @@ msgstr ""
 "\n"
 "특성 필터를 수정해 주십시오."
 
-#: src/components/weakness/WeaknessDrawComponent.tsx:417
+#: src/components/weakness/WeaknessDrawComponent.tsx:298
 msgid "All weaknesses have been drawn."
 msgstr "모든 약점이 이미 뽑혔습니다."
 
-#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:324
-#: src/components/weakness/WeaknessDrawDialog.tsx:99
+#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:254
+#: src/components/weakness/WeaknessDrawDialog.tsx:79
 msgid "Save to Deck"
 msgstr "덱에 저장하기"
 
@@ -538,20 +539,20 @@ msgid "Second Core Set"
 msgstr "두번째 기본판"
 
 #: src/components/campaign/SelectCampaignDialog/index.tsx:95
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:300
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:363
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:292
-#: src/components/deck/EditSpecialDeckCardsView.tsx:190
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:301
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:364
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:260
+#: src/components/deck/EditSpecialDeckCardsView.tsx:159
 #: src/components/settings/CollectionEditView.tsx:51
-#: src/components/settings/SettingsView.tsx:82
+#: src/components/settings/SettingsView.tsx:92
 msgid "Edit Collection"
 msgstr "보유게임 수정"
 
-#: src/components/settings/DiagnosticsView.tsx:76
+#: src/components/settings/DiagnosticsView.tsx:80
 msgid "Problem with import"
 msgstr "불러오기 문제"
 
-#: src/components/settings/DiagnosticsView.tsx:77
+#: src/components/settings/DiagnosticsView.tsx:81
 msgid ""
 "We were not able to parse any campaigns from that pasted data.\n"
 "\n"
@@ -562,16 +563,16 @@ msgstr ""
 "\n"
 "아컴카드 앱의 백업 기능을 활용하여 작성된 텍스트와 정확히 일치하는지 한번 확인해 주십시오."
 
-#: src/components/settings/DiagnosticsView.tsx:86
+#: src/components/settings/DiagnosticsView.tsx:87
 msgid "All local decks and campaigns will be overridden"
 msgstr "내부에만 저장된 모든 덱과 모든 캠페인은 삭제될 것입니다."
 
-#: src/components/settings/BackupView.tsx:113
-#: src/components/settings/DiagnosticsView.tsx:88
+#: src/components/settings/BackupView.tsx:132
+#: src/components/settings/DiagnosticsView.tsx:89
 msgid "Restore campaign data?"
 msgstr "캠페인 데이터를 복구하시겠습니까?"
 
-#: src/components/settings/DiagnosticsView.tsx:89
+#: src/components/settings/DiagnosticsView.tsx:90
 #, javascript-format
 msgid ""
 "This feature is intended for advanced diagnostics or to import data from "
@@ -584,25 +585,25 @@ msgstr ""
 "${ erasedCopy }"
 
 #: src/components/campaignguide/ScenarioView.tsx:107
-#: src/components/settings/DiagnosticsView.tsx:91
+#: src/components/settings/DiagnosticsView.tsx:92
 msgid "Nevermind"
 msgstr "신경끄기"
 
-#: src/components/settings/BackupView.tsx:116
-#: src/components/settings/DiagnosticsView.tsx:94
+#: src/components/settings/BackupView.tsx:135
+#: src/components/settings/DiagnosticsView.tsx:95
 msgid "Import data"
 msgstr "데이터 불러오기"
 
-#: src/components/settings/DiagnosticsView.tsx:98
+#: src/components/settings/DiagnosticsView.tsx:99
 msgid "Paste Backup Here"
 msgstr "백업을 이곳에 붙여넣으십시오"
 
-#: src/components/settings/BackupView.tsx:151
-#: src/components/settings/DiagnosticsView.tsx:116
+#: src/components/settings/BackupView.tsx:146
+#: src/components/settings/DiagnosticsView.tsx:117
 msgid "Backup campaign data?"
 msgstr "캠페인 데이터를 백업하시겠습니까?"
 
-#: src/components/settings/DiagnosticsView.tsx:117
+#: src/components/settings/DiagnosticsView.tsx:118
 msgid ""
 "This feature is intended for advanced diagnostics or if you are trying to "
 "move your campaign data from one device to another. Just copy the data and "
@@ -611,60 +612,60 @@ msgstr ""
 "이 기능은 고급 진단 또는 서로 다른 기기들 사이에서 당신의 캠페인 데이터를 옮기기 위하여 제공됩니다. 단순히 해당 데이터를 복사하고, "
 "다른 앱에 가서 붙여넣기만 하면 됩니다."
 
-#: src/components/settings/BackupView.tsx:157
-#: src/components/settings/DiagnosticsView.tsx:122
+#: src/components/settings/BackupView.tsx:152
+#: src/components/settings/DiagnosticsView.tsx:123
 msgid "Export Campaign Data"
 msgstr "캠페인 데이터 내보내기"
 
-#: src/components/settings/DiagnosticsView.tsx:197
+#: src/components/settings/DiagnosticsView.tsx:183
 msgid "Debug Card Json"
 msgstr "카드 Json 디버그"
 
 #: src/components/core/PackListComponent/index.tsx:52
-#: src/components/settings/DiagnosticsView.tsx:177
+#: src/components/settings/DiagnosticsView.tsx:166
 msgid "Return to..."
 msgstr "돌아온..."
 
 #: src/components/core/PackListComponent/index.tsx:53
-#: src/components/settings/DiagnosticsView.tsx:180
+#: src/components/settings/DiagnosticsView.tsx:169
 msgid "Investigator Starter Decks"
 msgstr "초심자용 덱"
 
-#: src/components/settings/DiagnosticsView.tsx:183
+#: src/components/settings/DiagnosticsView.tsx:172
 msgid "Side stories"
 msgstr "독립 시나리오"
 
-#: src/components/settings/DiagnosticsView.tsx:218
+#: src/components/settings/DiagnosticsView.tsx:204
 msgid "Debug"
 msgstr "디버그"
 
-#: src/components/settings/BackupView.tsx:204
-#: src/components/settings/DiagnosticsView.tsx:237
-#: src/components/settings/SafeModeView.tsx:106
-#: src/components/settings/SettingsView.tsx:98
+#: src/components/settings/BackupView.tsx:194
+#: src/components/settings/DiagnosticsView.tsx:220
+#: src/components/settings/SafeModeView.tsx:62
+#: src/components/settings/SettingsView.tsx:108
 msgid "Backup"
 msgstr "백업"
 
-#: src/components/settings/BackupView.tsx:207
-#: src/components/settings/DiagnosticsView.tsx:240
+#: src/components/settings/BackupView.tsx:197
+#: src/components/settings/DiagnosticsView.tsx:223
 msgid "Backup Campaign Data"
 msgstr "캠페인 데이터 백업"
 
-#: src/components/settings/BackupView.tsx:212
-#: src/components/settings/DiagnosticsView.tsx:244
+#: src/components/settings/BackupView.tsx:202
+#: src/components/settings/DiagnosticsView.tsx:227
 msgid "Restore Campaign Data"
 msgstr "캠페인 데이터 복구"
 
-#: src/components/settings/DiagnosticsView.tsx:246
+#: src/components/settings/DiagnosticsView.tsx:229
 msgid "Caches"
 msgstr "캐시"
 
-#: src/components/settings/DiagnosticsView.tsx:249
-#: src/components/settings/SafeModeView.tsx:160
+#: src/components/settings/DiagnosticsView.tsx:232
+#: src/components/settings/SafeModeView.tsx:107
 msgid "Clear cache"
 msgstr "캐시 지우기"
 
-#: src/components/settings/LanguagePicker.tsx:152
+#: src/components/settings/LanguagePicker.tsx:153
 msgid "Note: not all cards have translations available."
 msgstr "참고: 모든 카드의 번역이 제공되는 것은 아닙니다."
 
@@ -696,8 +697,8 @@ msgstr "계정 재연결"
 msgid "Sign out of ArkhamDB"
 msgstr "아컴디비 로그아웃"
 
-#: src/components/deck/DeckDetailView/index.tsx:918
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:373
+#: src/components/deck/DeckDetailView/index.tsx:928
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:264
 #: src/components/settings/LoginButton.tsx:65
 #: src/components/settings/LoginButton.tsx:68
 msgid "Sign in to ArkhamDB"
@@ -707,77 +708,76 @@ msgstr "아컴디비 로그인"
 msgid "Changes the default taboo list for newly created decks and search."
 msgstr "새로 생성하는 덱과 검색에서 활용할 기본 금기 목록을 선택하십시오."
 
-#: src/components/settings/SettingsView.tsx:86
+#: src/components/settings/SettingsView.tsx:96
 msgid "Edit Spoilers"
 msgstr "스포일러 수정"
 
-#: src/components/settings/SettingsView.tsx:90
-#: src/components/settings/SettingsView.tsx:199
+#: src/components/settings/SettingsView.tsx:100
+#: src/components/settings/SettingsView.tsx:192
 msgid "Diagnostics"
 msgstr "진단"
 
-#: src/components/settings/SettingsView.tsx:94
-#: src/components/settings/SettingsView.tsx:201
-#: src/components/settings/SettingsView.tsx:205
+#: src/components/settings/SettingsView.tsx:104
+#: src/components/settings/SettingsView.tsx:194
+#: src/components/settings/SettingsView.tsx:198
 msgid "About Arkham Cards"
 msgstr "아컴카드에 대하여"
 
-#: src/components/campaign/NewCampaignView/index.tsx:296
-#: src/components/campaign/NewCampaignView/index.tsx:300
+#: src/components/campaign/NewCampaignView/index.tsx:122
+#: src/components/campaign/NewCampaignView/index.tsx:126
 #: src/components/campaign/SealTokenDialog.tsx:83
-#: src/components/campaign/UpgradeDecksView/index.tsx:178
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:115
-#: src/components/campaignguide/ScenarioStepComponent/index.tsx:176
+#: src/components/campaign/UpgradeDecksView/index.tsx:118
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:100
+#: src/components/campaignguide/ScenarioStepComponent/index.tsx:174
 #: src/components/core/EditText.tsx:33
 #: src/components/core/EditText.tsx:43
 #: src/components/core/TextEditDialog.tsx:148
-#: src/components/deck/DeckDetailView/index.tsx:397
+#: src/components/deck/DeckDetailView/index.tsx:396
 #: src/components/nav/helper.ts:54
-#: src/components/settings/SafeModeView.tsx:87
-#: src/components/settings/SafeModeView.tsx:109
-#: src/components/settings/SafeModeView.tsx:165
-#: src/components/settings/SettingsView.tsx:69
+#: src/components/settings/SafeModeView.tsx:65
+#: src/components/settings/SafeModeView.tsx:112
+#: src/components/settings/SettingsView.tsx:79
 msgid "Done"
 msgstr "완료"
 
-#: src/components/settings/SettingsView.tsx:128
+#: src/components/settings/SettingsView.tsx:125
 msgid "Updating cards"
 msgstr "카드 업데이트 중"
 
-#: src/components/settings/SettingsView.tsx:131
+#: src/components/settings/SettingsView.tsx:128
 msgid "Error: Check for Cards Again"
 msgstr "오류: 카드 확인하기를 다시 시도하십시오"
 
-#: src/components/settings/SettingsView.tsx:132
+#: src/components/settings/SettingsView.tsx:129
 msgid "Check for New Cards on ArkhamDB"
 msgstr "아컴디비에서 새로운 카드 확인하기"
 
-#: src/components/settings/SettingsView.tsx:151
+#: src/components/settings/SettingsView.tsx:144
 msgid "Account"
 msgstr "계정"
 
-#: src/components/settings/SettingsView.tsx:158
+#: src/components/settings/SettingsView.tsx:151
 msgid "Card Settings"
 msgstr "카드 설정"
 
-#: src/components/settings/SettingsView.tsx:162
+#: src/components/settings/SettingsView.tsx:155
 msgid "Card Collection"
 msgstr "보유게임"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:494
-#: src/components/settings/SettingsView.tsx:167
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:495
+#: src/components/settings/SettingsView.tsx:160
 msgid "Spoiler Settings"
 msgstr "스포일러 설정"
 
-#: src/components/settings/SettingsView.tsx:170
+#: src/components/settings/SettingsView.tsx:163
 msgid "Card Data"
 msgstr "카드 데이터"
 
-#: src/components/settings/SettingsView.tsx:181
+#: src/components/settings/SettingsView.tsx:174
 msgid "Preferences"
 msgstr "설정"
 
-#: src/components/settings/SettingsView.tsx:185
+#: src/components/settings/SettingsView.tsx:178
 msgid "Swipe between card results"
 msgstr "카드 사이 스와이프"
 
@@ -807,27 +807,26 @@ msgstr "불러오는 중"
 #: src/components/campaignguide/EncounterCardErrataView.tsx:96
 #: src/components/campaignguide/ScenarioFaqView.tsx:57
 #: src/components/campaignguide/ScenarioListComponent/AddSideScenarioButton.tsx:47
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:72
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:74
 #: src/components/campaignguide/ScenarioStepComponent/LocationSetupButton.tsx:28
 #: src/components/campaignguide/ScenarioView.tsx:94
 #: src/components/campaignguide/nav.ts:39
-#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:156
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:172
-#: src/components/card/CardDetailView/index.tsx:76
-#: src/components/card/CardDetailView/index.tsx:163
+#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:158
+#: src/components/card/CardDetailView/index.tsx:71
+#: src/components/card/CardDetailView/index.tsx:117
 #: src/components/card/DbCardDetailSwipeView.tsx:52
 #: src/components/card/DbCardDetailSwipeView.tsx:95
 #: src/components/card/DbCardDetailSwipeView.tsx:116
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:497
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:498
 #: src/components/core/ChooserButton.tsx:35
 #: src/components/core/DbChooserButton.tsx:45
 #: src/components/core/PackListComponent/PackRow.tsx:48
-#: src/components/deck/DeckDetailView/index.tsx:571
-#: src/components/deck/DeckDetailView/index.tsx:612
-#: src/components/deck/EditSpecialDeckCardsView.tsx:58
-#: src/components/deck/EditSpecialDeckCardsView.tsx:126
-#: src/components/deck/EditSpecialDeckCardsView.tsx:223
-#: src/components/deck/EditSpecialDeckCardsView.tsx:270
+#: src/components/deck/DeckDetailView/index.tsx:570
+#: src/components/deck/DeckDetailView/index.tsx:611
+#: src/components/deck/EditSpecialDeckCardsView.tsx:87
+#: src/components/deck/EditSpecialDeckCardsView.tsx:142
+#: src/components/deck/EditSpecialDeckCardsView.tsx:188
+#: src/components/deck/EditSpecialDeckCardsView.tsx:297
 #: src/components/filter/CardEnemyFilterView.tsx:219
 #: src/components/filter/PackFilterView.tsx:85
 #: src/components/nav/helper.ts:48
@@ -838,18 +837,18 @@ msgstr "불러오는 중"
 msgid "Back"
 msgstr "뒤로가기"
 
-#: src/components/deck/DeckDetailView/index.tsx:1028
+#: src/components/deck/DeckDetailView/index.tsx:1038
 #: src/components/nav/helper.ts:83
 #: src/components/nav/helper.ts:109
 msgid "Deck"
 msgstr "덱"
 
-#: src/components/deck/DeckDetailView/index.tsx:1107
+#: src/components/deck/DeckDetailView/index.tsx:1117
 #: src/components/nav/helper.ts:171
 msgid "Charts"
 msgstr "차트"
 
-#: src/components/deck/DeckDetailView/index.tsx:1113
+#: src/components/deck/DeckDetailView/index.tsx:1123
 #: src/components/nav/helper.ts:195
 msgid "Draw Simulator"
 msgstr "뽑기 시뮬레이터"
@@ -924,7 +923,7 @@ msgstr "전투"
 msgid "Health"
 msgstr "체력"
 
-#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:74
+#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:75
 #: src/components/filter/CardEnemyFilterView.tsx:94
 #: src/components/filter/CardLocationFilterView.tsx:71
 msgid "Per Investigator"
@@ -1153,7 +1152,7 @@ msgid "Illustrators"
 msgstr "일러스트레이터"
 
 #: src/components/cardlist/CardSearchComponent/TuneButton.tsx:66
-#: src/components/cardlist/CardSearchComponent/index.tsx:118
+#: src/components/cardlist/CardSearchComponent/index.tsx:116
 #: src/components/filter/CardFilterView/index.tsx:48
 msgid "Filters"
 msgstr "필터"
@@ -1214,7 +1213,7 @@ msgid ""
 "fix the problem, tap here to reauthorize."
 msgstr "예상치 못한 오류가 발생하였습니다 (${ error }). 재시작 이후에도 문제가 해결되지 않으면, 이곳을 눌러서 재인증을 받으십시오."
 
-#: src/components/deck/DeckDetailView/index.tsx:919
+#: src/components/deck/DeckDetailView/index.tsx:929
 #: src/components/decklist/MyDecksComponent.tsx:124
 msgid ""
 "ArkhamDB is a popular deck building site where you can manage and share "
@@ -1232,21 +1231,21 @@ msgstr "아컴디비에 연결"
 
 #: src/app/App.ts:262
 #: src/app/App.ts:324
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:372
-#: src/components/campaignguide/CampaignGuideView.tsx:90
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:151
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:265
+#: src/components/campaignguide/CampaignGuideView.tsx:82
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:104
 #: src/components/decklist/MyDecksView.tsx:117
-#: src/components/settings/MergeBackupView/index.tsx:267
+#: src/components/settings/MergeBackupView/index.tsx:196
 msgid "Decks"
 msgstr "덱"
 
 #: src/app/App.ts:268
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:81
-#: src/components/deck/CopyDeckDialog/index.tsx:182
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:207
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:235
-#: src/components/deck/NewDeckView.tsx:35
-#: src/components/deck/NewDeckView.tsx:103
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:61
+#: src/components/deck/CopyDeckDialog/index.tsx:115
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:75
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:179
+#: src/components/deck/NewDeckView.tsx:52
+#: src/components/deck/NewDeckView.tsx:76
 #: src/components/decklist/MyDecksView.tsx:84
 #: src/components/decklist/MyDecksView.tsx:123
 msgid "New Deck"
@@ -1288,9 +1287,9 @@ msgid "Saving..."
 msgstr "저장하는중..."
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:67
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:98
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:103
 #: src/components/campaign/UpgradeDecksView/NonDeckDetailsButton.tsx:32
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:280
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:182
 #: src/components/deck/DeckUpgradeComponent.tsx:159
 msgid "Experience points"
 msgstr "경험치"
@@ -1300,16 +1299,16 @@ msgstr "경험치"
 msgid "Exiled cards"
 msgstr "추방된 카드"
 
-#: src/components/campaign/AddScenarioResultView/index.tsx:83
-#: src/components/campaign/AddScenarioResultView/index.tsx:130
-#: src/components/campaign/AddScenarioResultView/index.tsx:295
+#: src/components/campaign/AddScenarioResultView/index.tsx:100
+#: src/components/campaign/AddScenarioResultView/index.tsx:168
+#: src/components/campaign/AddScenarioResultView/index.tsx:199
 #: src/components/campaign/EditChaosBagDialog/index.tsx:142
 #: src/components/campaign/EditChaosBagDialog/index.tsx:146
 #: src/components/campaign/EditScenarioResultView.tsx:64
 #: src/components/campaign/EditScenarioResultView.tsx:69
-#: src/components/campaign/EditTraumaDialog.tsx:61
-#: src/components/deck/DeckDetailView/index.tsx:385
-#: src/components/deck/DeckDetailView/index.tsx:388
+#: src/components/campaign/EditTraumaDialog.tsx:59
+#: src/components/deck/DeckDetailView/index.tsx:384
+#: src/components/deck/DeckDetailView/index.tsx:387
 #: src/components/deck/DeckUpgradeDialog.tsx:165
 #: src/components/deck/DeckUpgradeDialog.tsx:178
 #: src/components/deck/DeckUpgradeDialog.tsx:181
@@ -1322,7 +1321,7 @@ msgid ""
 "course of a campaign."
 msgstr "당신의 덱을 향상하면, 캠페인 과정에서의 덱 변화 및 경험치를 추적할 수 있습니다."
 
-#: src/components/deck/DrawSimulatorView.tsx:177
+#: src/components/deck/DrawSimulatorView.tsx:173
 msgid "Draw: "
 msgstr "뽑기: "
 
@@ -1331,32 +1330,32 @@ msgstr "뽑기: "
 msgid "All"
 msgstr "전부"
 
-#: src/components/deck/DrawSimulatorView.tsx:210
+#: src/components/deck/DrawSimulatorView.tsx:206
 msgid "Redraw"
 msgstr "다시뽑기"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:90
-#: src/components/deck/DrawSimulatorView.tsx:216
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:88
+#: src/components/deck/DrawSimulatorView.tsx:212
 msgid "Reshuffle"
 msgstr "다시섞기"
 
 #: src/components/campaignguide/ScenarioView.tsx:109
-#: src/components/deck/DrawSimulatorView.tsx:222
+#: src/components/deck/DrawSimulatorView.tsx:218
 msgid "Reset"
 msgstr "초기화"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:122
-#: src/components/deck/EditSpecialDeckCardsView.tsx:361
+#: src/components/deck/EditSpecialDeckCardsView.tsx:83
+#: src/components/deck/EditSpecialDeckCardsView.tsx:261
 msgid "Edit Story Cards"
 msgstr "이야기 카드 수정"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:168
-#: src/components/deck/EditSpecialDeckCardsView.tsx:186
-#: src/components/deck/EditSpecialDeckCardsView.tsx:296
+#: src/components/deck/EditSpecialDeckCardsView.tsx:155
+#: src/components/deck/EditSpecialDeckCardsView.tsx:208
 msgid "Draw Basic Weakness"
 msgstr "기본 약점 뽑기"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:187
+#: src/components/deck/EditSpecialDeckCardsView.tsx:156
 msgid ""
 "This deck does not seem to be part of a campaign yet.\n"
 "\n"
@@ -1370,20 +1369,20 @@ msgstr ""
 "덱을 캠페인에 추가하면, 캠페인 진행 과정의 여러개의 덱들에서 남은 고유 약점을 추적할 수 있습니다.\n"
 "그러는 대신, 당신의 보유게임 전부에서 기본 약점을 뽑을 수 있습니다."
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:189
+#: src/components/deck/EditSpecialDeckCardsView.tsx:158
 msgid "Draw From Collection"
 msgstr "보유게임에서 뽑기"
 
 #: src/components/campaign/nav.tsx:121
-#: src/components/deck/EditSpecialDeckCardsView.tsx:219
-#: src/components/deck/EditSpecialDeckCardsView.tsx:266
+#: src/components/deck/EditSpecialDeckCardsView.tsx:138
+#: src/components/deck/EditSpecialDeckCardsView.tsx:184
 msgid "Draw Weaknesses"
 msgstr "약점 뽑기"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:103
-#: src/components/cardlist/CardSearchComponent/index.tsx:131
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:83
+#: src/components/cardlist/CardSearchComponent/index.tsx:129
 #: src/components/deck/DeckChecklistView/index.tsx:118
-#: src/components/deck/NewDeckView.tsx:47
+#: src/components/deck/NewDeckView.tsx:88
 msgid "Sort"
 msgstr "정렬"
 
@@ -1402,7 +1401,7 @@ msgstr ""
 "이 문제가 지속되면, 재인증을 시도해주세요."
 
 #: src/components/deck/authHelper.ts:21
-#: src/components/settings/BackupView.tsx:75
+#: src/components/settings/BackupView.tsx:94
 msgid "Try again"
 msgstr "다시 시도"
 
@@ -1410,72 +1409,72 @@ msgstr "다시 시도"
 msgid "Reauthorize"
 msgstr "재인증"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:239
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:79
 #, javascript-format
 msgid "The Adventures of ${ investigator.name }"
 msgstr "${ investigator.name }의 모험"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:241
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:81
 msgid "${ investigator.name } Investigates"
 msgstr "조사하는 ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:243
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:83
 #, javascript-format
 msgid "The ${ investigator.name } Mysteries"
 msgstr "수수께끼의 ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:245
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:85
 msgid "The ${ investigator.name } Job"
 msgstr "${ investigator.name }의 과업"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:247
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:87
 #, javascript-format
 msgid "${ investigator.name } on the Road"
 msgstr "방랑하는 ${ investigator.name }"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:249
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:89
 msgid "${ investigator.name } Does It All"
 msgstr "${ investigator.name }는 무엇이든 잘해요"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:176
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:131
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:128
-#: src/components/campaign/NewCampaignView/index.tsx:637
-#: src/components/campaignguide/CampaignGuideView.tsx:56
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:76
-#: src/components/deck/DeckDetailView/index.tsx:1033
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:330
+#: src/components/campaign/NewCampaignView/index.tsx:410
+#: src/components/campaignguide/CampaignGuideView.tsx:48
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:63
+#: src/components/deck/DeckDetailView/index.tsx:1043
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:219
 msgid "Name"
 msgstr "이름"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:331
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:220
 msgid "Enter a name for this deck."
 msgstr "덱의 이름을 입력해주십시오."
 
 #: src/components/card/CardDetailView/SignatureCardsComponent.tsx:38
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:344
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:235
 msgid "Required Cards"
 msgstr "필요 카드"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:291
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:360
+#: src/components/deck/CopyDeckDialog/index.tsx:203
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:251
 msgid "Deck Type"
 msgstr "카드 종류"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:294
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:364
+#: src/components/deck/CopyDeckDialog/index.tsx:206
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:255
 msgid "Create on ArkhamDB"
 msgstr "아컴디비에 생성하기"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:303
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:381
+#: src/components/deck/CopyDeckDialog/index.tsx:215
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:272
 msgid "You seem to be offline. Refresh Network?"
 msgstr "오프라인 상태로 보입니다. 인터넷 연결을 확인해주세요."
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:388
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:279
 msgid "Use Starter Deck"
 msgstr "초심자용 덱"
 
-#: src/components/deck/NewDeckOptionsDialog/index.tsx:420
+#: src/components/deck/NewDeckOptionsDialog/index.tsx:304
 msgid "Create deck"
 msgstr "덱 생성하기"
 
@@ -1500,9 +1499,9 @@ msgid "Card changes"
 msgstr "카드 변경내역"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:124
-#: src/components/campaign/CampaignDetailView/index.tsx:259
+#: src/components/campaign/CampaignDetailView/index.tsx:256
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:79
-#: src/components/deck/DeckDetailView/index.tsx:1119
+#: src/components/deck/DeckDetailView/index.tsx:1129
 #: src/components/deck/DeckProgressComponent/index.tsx:83
 msgid "Campaign"
 msgstr "캠페인"
@@ -1511,8 +1510,8 @@ msgstr "캠페인"
 msgid "Upgrade Deck with XP"
 msgstr "경험치를 소비해 덱 향상하기"
 
-#: src/components/deck/DeckDetailView/index.tsx:1001
-#: src/components/deck/DeckDetailView/index.tsx:1142
+#: src/components/deck/DeckDetailView/index.tsx:1011
+#: src/components/deck/DeckDetailView/index.tsx:1152
 #: src/components/deck/DeckProgressComponent/index.tsx:145
 #. Actually compute the diffs.
 msgid "Upgrade History"
@@ -1577,83 +1576,83 @@ msgid "EXPERIENCE"
 msgstr "경험치"
 
 #: src/components/campaign/campaignHelper.ts:54
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:222
-#: src/components/deck/CopyDeckDialog/index.tsx:351
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:141
+#: src/components/deck/CopyDeckDialog/index.tsx:253
 #: src/components/deck/DeckDetailView/EditDeckDetailsDialog.tsx:108
-#: src/components/deck/DeckDetailView/index.tsx:789
-#: src/components/deck/DeckDetailView/index.tsx:815
+#: src/components/deck/DeckDetailView/index.tsx:788
+#: src/components/deck/DeckDetailView/index.tsx:814
 msgid "Okay"
 msgstr "적용"
 
-#: src/components/deck/DeckDetailView/index.tsx:503
+#: src/components/deck/DeckDetailView/index.tsx:502
 msgid "Delete broken deck"
 msgstr "망가진 덱 삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:504
+#: src/components/deck/DeckDetailView/index.tsx:503
 msgid "Looks like we are having trouble loading this deck for some reason"
 msgstr "여러가지 이유로 이 덱을 불러오는데 문제가 발생하고 있습니다."
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:112
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:115
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:181
-#: src/components/campaignguide/CampaignGuideView.tsx:73
-#: src/components/campaignguide/CampaignGuideView.tsx:76
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:110
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:113
-#: src/components/deck/DeckDetailView/index.tsx:506
-#: src/components/deck/DeckDetailView/index.tsx:964
-#: src/components/deck/DeckDetailView/index.tsx:1173
+#: src/components/campaignguide/CampaignGuideView.tsx:65
+#: src/components/campaignguide/CampaignGuideView.tsx:68
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:79
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:82
+#: src/components/deck/DeckDetailView/index.tsx:505
+#: src/components/deck/DeckDetailView/index.tsx:974
+#: src/components/deck/DeckDetailView/index.tsx:1183
 msgid "Delete"
 msgstr "삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:342
+#: src/components/deck/DeckDetailView/index.tsx:341
 msgid "Save deck changes?"
 msgstr "덱 변경사항을 저장하시겠습니까?"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:64
-#: src/components/deck/DeckDetailView/index.tsx:343
+#: src/components/deck/DeckDetailView/index.tsx:342
 msgid "Looks like you have made some changes that have not been saved."
 msgstr "저장되지 않은 변경사항이 있는 것으로 보입니다."
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:66
-#: src/components/deck/DeckDetailView/index.tsx:345
-#: src/components/deck/DeckDetailView/index.tsx:840
+#: src/components/deck/DeckDetailView/index.tsx:344
+#: src/components/deck/DeckDetailView/index.tsx:839
 msgid "Save Changes"
 msgstr "변경사항 저장"
 
 #: src/components/campaign/EditChaosBagDialog/index.tsx:71
-#: src/components/deck/DeckDetailView/index.tsx:350
-#: src/components/deck/DeckDetailView/index.tsx:844
+#: src/components/deck/DeckDetailView/index.tsx:349
+#: src/components/deck/DeckDetailView/index.tsx:843
 msgid "Discard Changes"
 msgstr "변경사항 취소"
 
-#: src/components/deck/DeckDetailView/index.tsx:567
+#: src/components/deck/DeckDetailView/index.tsx:566
 msgid "Edit Special Cards"
 msgstr "특수 카드 수정"
 
-#: src/components/deck/DeckDetailView/index.tsx:608
+#: src/components/deck/DeckDetailView/index.tsx:607
 msgid "Edit Deck"
 msgstr "덱 수정"
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:80
-#: src/components/deck/DeckDetailView/index.tsx:643
-#: src/components/deck/DeckDetailView/index.tsx:1122
+#: src/components/deck/DeckDetailView/index.tsx:642
+#: src/components/deck/DeckDetailView/index.tsx:1132
 msgid "Upgrade Deck"
 msgstr "덱 향상"
 
-#: src/components/deck/DeckDetailView/index.tsx:908
+#: src/components/deck/DeckDetailView/index.tsx:918
 msgid "Save Local Changes"
 msgstr "디바이스내 변화 저장"
 
-#: src/components/deck/DeckDetailView/index.tsx:909
+#: src/components/deck/DeckDetailView/index.tsx:919
 msgid "Please save any local edits to this deck before sharing to ArkhamDB"
 msgstr "아컴디비에 공유하기 전에 디바이스의 변경사항을 저장해주십시오"
 
-#: src/components/deck/DeckDetailView/index.tsx:913
+#: src/components/deck/DeckDetailView/index.tsx:923
 msgid "Unsupported Operation"
 msgstr "지원하지 않는 기능"
 
-#: src/components/deck/DeckDetailView/index.tsx:914
+#: src/components/deck/DeckDetailView/index.tsx:924
 msgid ""
 "This deck contains next/previous versions with upgrades, so we cannot "
 "upload it to ArkhamDB at this time.\n"
@@ -1665,16 +1664,16 @@ msgstr ""
 "\n"
 "이 덱을 업로드하기를 원하면, 이 덱을 복제한 후 복제한 덱을 업로드하는 방법이 있습니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:921
+#: src/components/deck/DeckDetailView/index.tsx:931
 msgid "Sign In"
 msgstr "로그인"
 
-#: src/components/deck/DeckDetailView/index.tsx:927
-#: src/components/deck/DeckDetailView/index.tsx:1159
+#: src/components/deck/DeckDetailView/index.tsx:937
+#: src/components/deck/DeckDetailView/index.tsx:1169
 msgid "Upload to ArkhamDB"
 msgstr "아컴디비에 업로드"
 
-#: src/components/deck/DeckDetailView/index.tsx:928
+#: src/components/deck/DeckDetailView/index.tsx:938
 msgid ""
 "You can upload your deck to ArkhamDB to share with others.\n"
 "\n"
@@ -1684,33 +1683,33 @@ msgstr ""
 "\n"
 "이 작업 이후에 덱을 변경하기 위해서는 인터넷 연결이 필요하게 됩니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:930
+#: src/components/deck/DeckDetailView/index.tsx:940
 msgid "Upload"
 msgstr "업로드"
 
-#: src/components/deck/DeckDetailView/index.tsx:952
+#: src/components/deck/DeckDetailView/index.tsx:962
 #, javascript-format
 msgid "Delete this upgrade (${ deck.version })"
 msgstr "이번 향상 삭제 (${ deck.version })"
 
-#: src/components/deck/DeckDetailView/index.tsx:957
-#: src/components/deck/DeckDetailView/index.tsx:964
+#: src/components/deck/DeckDetailView/index.tsx:967
+#: src/components/deck/DeckDetailView/index.tsx:974
 msgid "Delete all versions"
 msgstr "모든 버전 삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:975
+#: src/components/deck/DeckDetailView/index.tsx:985
 msgid "Delete deck"
 msgstr "덱 삭제"
 
-#: src/components/deck/DeckDetailView/index.tsx:976
+#: src/components/deck/DeckDetailView/index.tsx:986
 msgid "Are you sure you want to delete this deck?"
 msgstr "정말로 덱을 삭제하기를 원하십니까?"
 
-#: src/components/deck/DeckDetailView/index.tsx:443
+#: src/components/deck/DeckDetailView/index.tsx:442
 msgid "Deck has been deleted"
 msgstr "덱이 삭제되었습니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:444
+#: src/components/deck/DeckDetailView/index.tsx:443
 msgid ""
 "It looks like you deleted this deck from ArkhamDB.\n"
 "\n"
@@ -1721,84 +1720,84 @@ msgstr ""
 "\n"
 "캠페인에 참가하고 있었다면, 동일한 조사자를 추가하여 캠페인 데이터를 복구할 수 있습니다."
 
-#: src/components/deck/DeckDetailView/index.tsx:446
+#: src/components/deck/DeckDetailView/index.tsx:445
 msgid "OK"
 msgstr "OK"
 
-#: src/components/deck/DeckDetailView/index.tsx:784
-#: src/components/deck/DeckDetailView/index.tsx:810
+#: src/components/deck/DeckDetailView/index.tsx:783
+#: src/components/deck/DeckDetailView/index.tsx:809
 msgid "Error"
 msgstr "오류"
 
-#: src/components/deck/DeckDetailView/index.tsx:796
+#: src/components/deck/DeckDetailView/index.tsx:795
 msgid "Deleting"
 msgstr "삭제하는중"
 
-#: src/components/deck/DeckDetailView/index.tsx:1025
+#: src/components/deck/DeckDetailView/index.tsx:1035
 #, javascript-format
 msgid "${ xp } (${ adjustment }) XP"
 msgstr "${ xp } (${ adjustment }) 경험치"
 
-#: src/components/deck/DeckDetailView/index.tsx:1042
+#: src/components/deck/DeckDetailView/index.tsx:1052
 msgid "Description"
 msgstr "설명"
 
-#: src/components/core/TabooSetPicker.tsx:59
-#: src/components/deck/DeckDetailView/index.tsx:1049
+#: src/components/core/TabooSetPicker.tsx:49
+#: src/components/deck/DeckDetailView/index.tsx:1059
 #: src/components/settings/SettingsTabooPicker.tsx:23
 msgid "Taboo List"
 msgstr "금기 목록"
 
-#: src/components/deck/DeckDetailView/index.tsx:1057
+#: src/components/deck/DeckDetailView/index.tsx:1067
 msgid "Deck Id"
 msgstr "덱 번호"
 
 #: src/app/App.ts:312
-#: src/components/deck/DeckDetailView/index.tsx:1068
+#: src/components/deck/DeckDetailView/index.tsx:1078
 msgid "Cards"
 msgstr "카드"
 
-#: src/components/deck/DeckDetailView/index.tsx:1073
+#: src/components/deck/DeckDetailView/index.tsx:1083
 msgid "Edit Cards"
 msgstr "카드 수정"
 
-#: src/components/DeckNavFooter/index.tsx:75
-#: src/components/deck/DeckDetailView/index.tsx:1076
+#: src/components/DeckNavFooter/index.tsx:74
+#: src/components/deck/DeckDetailView/index.tsx:1086
 #, javascript-format
 msgid "${ normalCardCount } Card (${ totalCardCount } Total)"
 msgid_plural "${ normalCardCount } Cards (${ totalCardCount } Total)"
 msgstr[0] "카드 ${ normalCardCount }장 (전체 ${ totalCardCount }장)"
 
-#: src/components/deck/DeckDetailView/index.tsx:1085
+#: src/components/deck/DeckDetailView/index.tsx:1095
 msgid "Story Assets"
 msgstr "이야기 자산"
 
-#: src/components/deck/DeckDetailView/index.tsx:1091
+#: src/components/deck/DeckDetailView/index.tsx:1101
 msgid "Weaknesses"
 msgstr "약점"
 
-#: src/components/deck/DeckDetailView/index.tsx:1126
+#: src/components/deck/DeckDetailView/index.tsx:1136
 msgid "Save changes before upgrading"
 msgstr "향상하기 전에 저장하여야 합니다"
 
-#: src/components/deck/DeckDetailView/index.tsx:1132
+#: src/components/deck/DeckDetailView/index.tsx:1142
 msgid "Available XP"
 msgstr "사용가능한 경험치"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:173
-#: src/components/deck/DeckDetailView/index.tsx:1149
+#: src/components/deck/DeckDetailView/index.tsx:1159
 msgid "Options"
 msgstr "옵션"
 
-#: src/components/deck/DeckDetailView/index.tsx:1152
+#: src/components/deck/DeckDetailView/index.tsx:1162
 msgid "Clone"
 msgstr "복제"
 
-#: src/components/deck/DeckDetailView/index.tsx:1165
+#: src/components/deck/DeckDetailView/index.tsx:1175
 msgid "View on ArkhamDB"
 msgstr "아컴디비에서 보기"
 
-#: src/components/deck/DeckDetailView/index.tsx:1197
+#: src/components/deck/DeckDetailView/index.tsx:1207
 msgid "Delete Deck"
 msgstr "덱 삭제"
 
@@ -1848,7 +1847,7 @@ msgstr "카드 비용"
 msgid "Card Factions"
 msgstr "카드 역할군"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:229
+#: src/components/deck/CopyDeckDialog/index.tsx:154
 #, javascript-format
 msgid ""
 "Base Version\n"
@@ -1857,7 +1856,7 @@ msgstr ""
 "기본 버전\n"
 "${ parsedBaseDeck.experience } 경험치"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:237
+#: src/components/deck/CopyDeckDialog/index.tsx:162
 #, javascript-format
 msgid ""
 "Current Version ${ parsedCurrentDeck.deck.version }\n"
@@ -1866,7 +1865,7 @@ msgstr ""
 "현재 버전 ${ parsedCurrentDeck.deck.version }\n"
 "${ parsedCurrentDeck.experience } 경험치"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:245
+#: src/components/deck/CopyDeckDialog/index.tsx:170
 msgid ""
 "Latest Version ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } XP"
@@ -1874,26 +1873,26 @@ msgstr ""
 "최신 버전 ${ parsedLatestDeck.deck.version }\n"
 "${ parsedLatestDeck.experience } 경험치"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:281
+#: src/components/deck/CopyDeckDialog/index.tsx:193
 msgid "New Name"
 msgstr "새로운 이름"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:91
-#: src/components/deck/CopyDeckDialog/index.tsx:285
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:78
+#: src/components/deck/CopyDeckDialog/index.tsx:197
 msgid "Required"
 msgstr "요구사항"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:334
+#: src/components/deck/CopyDeckDialog/index.tsx:236
 msgid "Copy Deck"
 msgstr "덱 복사"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:342
+#: src/components/deck/CopyDeckDialog/index.tsx:244
 msgid ""
 "Make a copy of a deck so that you can use it in a different campaign or "
 "choose different upgrades."
 msgstr "덱의 사본을 만들어 다른 캠페인에 사용하거나 다른 향상을 선택하는데 활용할 수 있습니다."
 
-#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:76
+#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:57
 #, javascript-format
 msgid "Level ${ level }"
 msgstr "${ level } 레벨"
@@ -2021,10 +2020,6 @@ msgstr ""
 msgid "The Innsmouth Conspiracy"
 msgstr ""
 
-#: src/components/core/PackListComponent/index.tsx:55
-msgid "Miscellaneous"
-msgstr "기타"
-
 #: src/components/cardlist/CardSortDialog.tsx:59
 #: src/components/cardlist/InvestigatorSortDialog.tsx:31
 msgid "Sort by"
@@ -2061,80 +2056,80 @@ msgid "Faction"
 msgstr "역할군"
 
 #: src/components/campaignguide/CardSelectorView.tsx:124
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:372
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:301
 msgid "Search"
 msgstr "검색"
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:122
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:128
 #, javascript-format
 msgid "${ investigator.deck_requirements.size } Cards"
 msgstr "카드 ${ investigator.deck_requirements.size }장"
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:129
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:135
 msgid "Unknown card: ${ req.code }"
 msgstr "미지의 카드: ${ req.code }"
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:344
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:285
 msgid "No matching investigators for \"${ searchTerm }\"."
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 조사자가 없습니다."
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:161
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:165
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:169
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:171
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:54
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:58
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:62
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:64
 #: src/data/Card.ts:880
 msgid "N/A"
 msgstr "N/A"
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:167
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:60
 msgid "All Investigators"
 msgstr "모든 조사자"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:77
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:78
 msgid "Investigating for clues"
 msgstr "단서를 얻기위해 조사하는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:78
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:79
 msgid "Cursing at the tentacle token"
 msgstr "혼돈 주머니에서 5번 연속으로 촉수를 뽑는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:79
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:80
 msgid "Drawing a mythos card with surge"
 msgstr "급증 키워드를 가진 신화 카드를 뽑는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:80
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:81
 msgid "Placing doom on the agenda"
 msgstr "주요사건에 파멸 토큰을 올리는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:81
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:82
 msgid "Reticulating spines"
 msgstr "비술을 발동시키는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:82
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:83
 msgid "Trying to make sense of the Time Warp FAQ"
 msgstr "쏙독새 가슴살 데우는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:83
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:84
 msgid "Taking three damage and three horror"
 msgstr "피해 3과 공포 3을 받는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:84
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:85
 msgid "Up by 5, hope I don't draw the tentacle"
 msgstr "5 높은 테스트에서 촉수 나오지 않기를 기도하는 중"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:783
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:782
 msgid "No matching cards for \"${ searchTerm }\""
 msgstr "\"${ searchTerm }\" 검색 조건과 일치하는 카드가 존재하지 않습니다."
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:784
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:783
 msgid "No matching cards"
 msgstr "일치하는 카드가 존재하지 않음"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:316
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:317
 msgid "In Deck"
 msgstr "덱에 포함된 카드"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:339
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:340
 msgid "All Eligible Cards"
 msgstr "모든 접근 가능한 카드"
 
@@ -2171,45 +2166,43 @@ msgstr "\"${ searchTerm }\" 검색 조건 초기화"
 msgid "Apply"
 msgstr "적용"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:202
+#: src/components/cardlist/CardSearchComponent/index.tsx:200
 msgid "Encounter Cards"
 msgstr "조우 카드"
 
 #: src/app/App.ts:250
-#: src/components/cardlist/CardSearchComponent/index.tsx:202
+#: src/components/cardlist/CardSearchComponent/index.tsx:200
 msgid "Player Cards"
 msgstr "플레이어 카드"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:44
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:87
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:142
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:479
-#: src/components/card/CardDetailView/index.tsx:34
-#: src/components/card/CardDetailView/index.tsx:138
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:115
+#: src/components/card/CardDetailView/index.tsx:37
+#: src/components/card/CardDetailView/index.tsx:88
 #: src/components/card/DbCardDetailSwipeView.tsx:146
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:169
-#: src/components/card/CardDetailView/index.tsx:160
+#: src/components/card/CardDetailView/index.tsx:114
 #: src/components/card/DbCardDetailSwipeView.tsx:113
 msgid "Allowed Cards"
 msgstr "허용된 카드"
 
-#: src/components/card/CardImageView.tsx:55
+#: src/components/card/CardImageView.tsx:120
 msgid "Flip Card"
 msgstr "카드 뒤집기"
 
-#: src/components/card/CardTabooView.tsx:58
+#: src/components/card/CardTabooView.tsx:75
 #, javascript-format
 msgid "Additional XP: ${ taboo.extra_xp }."
 msgstr "추가 경험치: ${ taboo.extra_xp }."
 
-#: src/components/card/CardTabooView.tsx:59
+#: src/components/card/CardTabooView.tsx:76
 msgid "XP Discount: ${ taboo.extra_xp }."
 msgstr "경험치 할인: ${ taboo.extra_xp }."
 
-#: src/components/card/CardTabooView.tsx:117
+#: src/components/card/CardTabooView.tsx:114
 msgid ""
 "The List of Taboos is a list of Arkham Horror: The Card Game cards with "
 "optional deckbuilding restrictions or text changes. This list is designed "
@@ -2219,7 +2212,7 @@ msgstr ""
 "금기 목록은 아컴 호러: 카드 게임의 덱 구성에 제한이나 문구 수정을 가하는 선택 규칙입니다. 이 목록은 조사자의 능력과 시나리오 "
 "난이도 사이에서 적당한 균형을 잡기 위해 고안되었으며, 시간이 지남에 따라 덱 구성 환경이 변화할 수 있도록 설계됐습니다."
 
-#: src/components/card/CardTabooView.tsx:119
+#: src/components/card/CardTabooView.tsx:116
 msgid ""
 "Adhering to The List of Taboos is completely optional. Investigators are "
 "not forced to adhere to the restrictions on this list, but if an "
@@ -2229,17 +2222,17 @@ msgstr ""
 "금기 목록은 원할 경우에만 적용하는 선택 규칙입니다. 금기 목록상의 규제를 반드시 적용할 필요는 없습니다. 하지만 금기 목록을 따르고자 "
 "한다면 반드시 모든 내용을 따르기 바랍니다(금기 목록 중에서 어떤 요소만을 취사선택해선 안됩니다)."
 
-#: src/components/card/CardTabooView.tsx:121
+#: src/components/card/CardTabooView.tsx:118
 msgid ""
 "You can opt-in to always seeing taboos and buiding decks with them in "
 "Settings."
 msgstr "세팅에서 금기 목록을 선택하고 덱을 만들면, 금기 목록이 항상 노출됩니다."
 
-#: src/components/card/FetchCardsGate.tsx:130
+#: src/components/card/FetchCardsGate.tsx:129
 msgid "Check for updated cards?"
 msgstr "갱신된 카드가 있는지 확인하시겠습니까?"
 
-#: src/components/card/FetchCardsGate.tsx:131
+#: src/components/card/FetchCardsGate.tsx:130
 msgid ""
 "It has been more than a week since you checked for new cards.\n"
 "Check for new cards from ArkhamDB?"
@@ -2247,23 +2240,23 @@ msgstr ""
 "새로운 카드를 확인한 후 1주일이 지났습니다.\n"
 "아컴디비에서 새로운 카드가 있는지 확인해보시겠습니까?"
 
-#: src/components/card/FetchCardsGate.tsx:133
+#: src/components/card/FetchCardsGate.tsx:132
 msgid "Ask me later"
 msgstr "나중에 알려주십시오"
 
-#: src/components/card/FetchCardsGate.tsx:134
+#: src/components/card/FetchCardsGate.tsx:133
 msgid "Check for updates"
 msgstr "갱신 내역을 확인합니다"
 
-#: src/components/card/FetchCardsGate.tsx:156
+#: src/components/card/FetchCardsGate.tsx:155
 msgid "Error loading cards, make sure your network is working."
 msgstr "카드를 불러오는데 오류가 발생했습니다. 인터넷 연결이 정상인지 확인해주십시오."
 
-#: src/components/card/FetchCardsGate.tsx:162
+#: src/components/card/FetchCardsGate.tsx:161
 msgid "Try Again"
 msgstr "다시 시도하기"
 
-#: src/components/card/FetchCardsGate.tsx:170
+#: src/components/card/FetchCardsGate.tsx:169
 msgid "Loading latest cards..."
 msgstr "최신 카드 불러오는 중..."
 
@@ -2271,15 +2264,15 @@ msgstr "최신 카드 불러오는 중..."
 msgid "Bound Cards"
 msgstr "결속 카드"
 
-#: src/components/card/CardDetailView/CardDetailComponent.tsx:79
+#: src/components/card/CardDetailView/CardDetailComponent.tsx:62
 msgid "Deckbuilding"
 msgstr "덱 구성"
 
-#: src/components/card/CardDetailView/index.tsx:44
+#: src/components/card/CardDetailView/index.tsx:47
 msgid "Deckbuilding Cards"
 msgstr "덱 구성 카드"
 
-#: src/components/card/CardDetailView/CardDetailComponent.tsx:117
+#: src/components/card/CardDetailView/CardDetailComponent.tsx:88
 #, javascript-format
 msgid "Warning: this card contains possible spoilers for '${ card.pack_name }'."
 msgstr "경고: 이 카드는 '${ card.pack_name }'의 스포일러를 담고 있을 가능성이 있습니다."
@@ -2288,40 +2281,39 @@ msgstr "경고: 이 카드는 '${ card.pack_name }'의 스포일러를 담고 �
 msgid "Alternate Cards"
 msgstr "대체 카드"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:256
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:159
 msgid "Test Icons: "
 msgstr "테스트 아이콘: "
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:310
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:247
 #, javascript-format
 msgid "Doom: ${ doom }"
 msgstr "파멸: ${ doom }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:315
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:252
 #, javascript-format
 msgid "Clues: ${ clues }${ perInvestigatorClues }"
 msgstr "단서: ${ clues }${ perInvestigatorClues }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:321
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:258
 msgid "Shroud: ${ shroud }. Clues: ${ clues }${ perInvestigatorClues }."
 msgstr "장막: ${ shroud }. 단서: ${ clues }${ perInvestigatorClues }."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:395
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:572
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:299
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:427
 msgid "Show back"
 msgstr "뒷면 보기"
 
 #: src/components/card/CardDetailView/TwoSidedCardComponent/CardFooterButton.tsx:65
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:467
 msgid "Taboo"
 msgstr "금기"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:536
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:399
 #, javascript-format
 msgid "Victory: ${ card.victory }."
 msgstr "승점: ${ card.victory }."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:541
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:404
 msgid "Vengeance: ${ card.vengeance }."
 msgstr "복수: ${ card.vengeance }."
 
@@ -2338,55 +2330,55 @@ msgstr "추가 경험치: : ${ card.extra_xp }."
 msgid "XP Discount: ${ card.extra_xp }."
 msgstr "경험치 할인: ${ card.extra_xp }."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:572
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:427
 msgid "Show front"
 msgstr "앞면 보기"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:176
-#: src/components/card/CardDetailView/index.tsx:29
+#: src/components/card/CardDetailView/index.tsx:32
 msgid "Share"
 msgstr "공유"
 
-#: src/components/campaignguide/CampaignGuideView.tsx:74
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:111
+#: src/components/campaignguide/CampaignGuideView.tsx:66
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:80
 #, javascript-format
 msgid "Are you sure you want to delete the campaign: ${ campaignName }"
 msgstr "정말로 캠페인을 삭제하시겠습니까?: ${ campaignName }"
 
 #: src/components/campaign/CampaignScenarioView/index.tsx:51
 #: src/components/campaign/nav.tsx:25
-#: src/components/campaignguide/CampaignGuideView.tsx:112
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:192
+#: src/components/campaignguide/CampaignGuideView.tsx:104
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:145
 msgid "Scenarios"
 msgstr "시나리오"
 
-#: src/components/campaignguide/CampaignGuideView.tsx:126
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:207
+#: src/components/campaignguide/CampaignGuideView.tsx:118
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:160
 msgid "Log"
 msgstr "기록지"
 
-#: src/components/campaignguide/CardSelectorView.tsx:95
+#: src/components/campaignguide/CardSelectorView.tsx:96
 msgid "Show story assets from other campaigns"
 msgstr "다른 캠페인의 이야기 자산 보기"
 
-#: src/components/campaignguide/CardSelectorView.tsx:103
+#: src/components/campaignguide/CardSelectorView.tsx:104
 msgid "Story assets"
 msgstr "이야기 자산"
 
-#: src/components/campaignguide/InvestigatorSelectorWrapper.tsx:129
+#: src/components/campaignguide/InvestigatorSelectorWrapper.tsx:131
 msgid "Choose Investigator"
 msgstr "조사자 선택"
 
-#: src/components/campaignguide/InvestigatorSelectorWrapper.tsx:137
+#: src/components/campaignguide/InvestigatorSelectorWrapper.tsx:139
 msgid "No one"
 msgstr "아무 조사자도 선택하지 않음"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:359
-#: src/components/campaignguide/LinkedCampaignGuideView.tsx:183
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:258
+#: src/components/campaignguide/LinkedCampaignGuideView.tsx:136
 msgid "Delete Campaign"
 msgstr "캠페인 삭제"
 
-#: src/components/campaign/NewCampaignView/index.tsx:551
+#: src/components/campaign/NewCampaignView/index.tsx:358
 #: src/components/campaignguide/ScenarioView.tsx:50
 #: src/components/campaignguide/ScenarioView.tsx:91
 msgid "Campaign Log"
@@ -2406,26 +2398,26 @@ msgstr ""
 "\n"
 "입력했던 모든 데이터는 사라집니다."
 
-#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:153
+#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:155
 msgid "Select Cards"
 msgstr "카드 선택"
 
-#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:255
+#: src/components/campaignguide/prompts/CardChoicePrompt.tsx:257
 msgid "Choose additional card"
 msgstr "추가 카드 선택"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:104
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:81
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/SelectWeaknessTraitsComponent.tsx:47
 #: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/TextBoxInputComponent.tsx:53
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:139
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:135
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:81
 #: src/components/campaignguide/prompts/CheckListComponent/index.tsx:103
 #: src/components/campaignguide/prompts/ChoiceListComponent/index.tsx:90
-#: src/components/campaignguide/prompts/ChooseInvestigatorPrompt.tsx:118
+#: src/components/campaignguide/prompts/ChooseInvestigatorPrompt.tsx:120
 #: src/components/campaignguide/prompts/ChooseOnePrompt.tsx:82
 #: src/components/campaignguide/prompts/CounterListComponent/index.tsx:64
 #: src/components/campaignguide/prompts/NumberPrompt.tsx:140
-#: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:139
+#: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:124
 msgid "Proceed"
 msgstr "진행"
 
@@ -2457,7 +2449,7 @@ msgid "(${ supply.cost } supply point)"
 msgid_plural "(${ supply.cost } supply points)"
 msgstr[0] "(${ supply.cost } 보급 점수)"
 
-#: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:117
+#: src/components/campaignguide/prompts/SuppliesPrompt/index.tsx:102
 #, javascript-format
 msgid "${ spent } of ${ total }"
 msgstr "${ spent }/${ total }"
@@ -2498,11 +2490,11 @@ msgstr ""
 "${ card.name }\n"
 "(${ input.id }를 가지고 있습니다)"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:71
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:74
 msgid "Random location"
 msgstr "무작위 장소"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:85
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/RandomLocationInputComponent.tsx:83
 msgid "Draw location"
 msgstr "장소 뽑기"
 
@@ -2524,8 +2516,8 @@ msgstr "조사자 선택"
 msgid "View deck upgrade"
 msgstr "향상 덱 보기"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:144
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:221
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:149
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:169
 msgid "Campaign cards"
 msgstr "캠페인 카드"
 
@@ -2533,7 +2525,7 @@ msgstr "캠페인 카드"
 msgid "Physical trauma"
 msgstr "육체적 트라우마"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:355
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:230
 #, javascript-format
 msgid " (New Total: ${ totalPhysical })"
 msgstr " (갱신된 합계: ${ totalPhysical })"
@@ -2542,36 +2534,36 @@ msgstr " (갱신된 합계: ${ totalPhysical })"
 msgid "Mental trauma"
 msgstr "정신적 트라우마"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:403
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:278
 #, javascript-format
 msgid " (New Total: ${ totalMental })"
 msgstr " (갱신된 합계: ${ totalMental })"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:452
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:328
 msgid "Save deck upgrade"
 msgstr "향상 덱 저장"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:462
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:338
 msgid "Save adjustments"
 msgstr "변경사항 저장"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:526
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:380
 msgid "Select deck"
 msgstr "덱 선택"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:530
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:384
 msgid "View deck"
 msgstr "덱 보기"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:87
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:83
 msgid "Proceed without saving"
 msgstr "저장하지 않고 진행"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:93
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:89
 msgid "Proceed anyway"
 msgstr "어찌되었든 진행"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:54
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:50
 msgid ""
 "It looks like one or more deck upgrades are unsaved. If you would like the "
 "app to track spent experience as you make deck changes, please go back and "
@@ -2588,7 +2580,7 @@ msgstr ""
 "향상 덱이 저장되고 나면, 덱을 정상적으로 수정할 수 있으며, 앱으로 하여금 당신의 덱 변경에 따른 경험치 소비량을 적절히 추적할 수 "
 "있습니다. 기존 버전의 덱은 여전히 덱 메뉴에서 볼 수 있습니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:74
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:70
 msgid ""
 "It looks like you edited the experience or trauma for an investigator, but "
 "have not saved it yet. Please go back and select ‘Save adjustments’ to "
@@ -2597,73 +2589,74 @@ msgstr ""
 "조사자의 경험치나 트라우마가 수정된 것으로 보이나, 아직 저장되지 않은 것으로 보입니다. 뒤로 가서 '변경사항 저장'을 선택하여야만 "
 "변경사항이 저장됩니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:108
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/index.tsx:104
 msgid "Update decks with scenario results"
 msgstr "시나리오 결과에 따라 덱 향상"
 
 #: src/components/campaign/CampaignChaosBagView.tsx:43
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:147
 #: src/components/campaign/CampaignDetailView/ChaosBagSection.tsx:36
-#: src/components/campaign/NewCampaignView/index.tsx:400
-#: src/components/campaign/NewCampaignView/index.tsx:469
+#: src/components/campaign/NewCampaignView/index.tsx:264
+#: src/components/campaign/NewCampaignView/index.tsx:291
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:381
 #: src/components/campaign/nav.tsx:59
 #: src/components/campaign/nav.tsx:78
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:130
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:150
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:69
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:71
 msgid "Chaos Bag"
 msgstr "혼돈 주머니"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:91
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:93
 msgid "Choose entry to add to campaign log:"
 msgstr "캠페인 기록지에 추가할 항목을 선택하십시오."
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:119
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:121
 msgid "Edit campaign log"
 msgstr "캠페인 기록지 수정"
 
 #: src/components/campaignguide/CampaignLogComponent/index.tsx:157
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:123
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:125
 msgid "Draw chaos tokens"
 msgstr "혼돈 토큰 뽑기"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:127
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:129
 msgid "Draw random basic weakness"
 msgstr "무작위 기본 약점 뽑기"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:141
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:143
 msgid "Scenario completed"
 msgstr "완료된 시나리오"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:141
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:143
 #: src/data/scenario/fixedSteps.ts:58
 msgid "Resolutions"
 msgstr "결말"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:155
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:157
 msgid "Start playing the scenario now."
 msgstr "이제 시나리오를 시작합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:39
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:54
+#, javascript-format
 msgid "Who will add ${ card.name } to their deck?"
 msgstr "어떤 조사자가 ${ card.name } 카드를 덱에 추가하시겠습니까?"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:24
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:37
 #, javascript-format
 msgid "In your Campaign Log, under \"${ section }\", record ${ card.name }. "
 msgstr "당신의 캠페인 기록지 중 \"${ section }\" 항목에, ${ card.name } 항목을 기록합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:39
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:52
 msgid "In your Campaign Log, record that <i>${ text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ text }</i>라고 기록합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:56
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:69
 #, javascript-format
 msgid "In your Campaign Log, cross out <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i> 항목에 X표시를 합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:57
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:70
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", cross out <i>${ "
@@ -2672,11 +2665,11 @@ msgstr ""
 "당신의 캠페인 기록지 중 \"${ logEntry.section }\" 항목에, <i>${ logEntry.text }</i> 항목에 "
 "X표시를 합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:63
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:76
 msgid "In your Campaign Log, record that <i>${ logEntry.text }</i>"
 msgstr "당신의 캠페인 기록지에 <i>${ logEntry.text }</i>라고 기록합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:64
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:77
 #, javascript-format
 msgid ""
 "In your Campaign Log, under \"${ logEntry.section }\", record <i>${ "
@@ -2692,12 +2685,12 @@ msgstr "${ tokenString } 토큰을 혼돈 주머니에 넣습니다."
 msgid "Remove ${ tokenString } from the chaos bag."
 msgstr "${ tokenString } 토큰을 혼돈 주머니에서 제거합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:61
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:74
 #, javascript-format
 msgid "Remove ${ card.name } (${ input.length })"
 msgstr "${ card.name } 카드를 제거합니다 (${ input.length })"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:76
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:89
 msgid "Who will remove ${ card.name } from their deck?"
 msgstr "어떤 조사자가 ${ card.name } 카드를 덱에서 제거하시겠습니까?"
 
@@ -2705,15 +2698,15 @@ msgstr "어떤 조사자가 ${ card.name } 카드를 덱에서 제거하시겠�
 msgid "You suffer 1 physical or mental trauma <i>(your choice)</i>."
 msgstr "당신은 육체적 트라우마를 1 또는 정신적 트라우마를 1 받습니다 <i>(당신이 선택합니다)</i>."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:75
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:55
 msgid "All weaknesses have been assigned."
 msgstr "모든 약점이 할당되어 있습니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:127
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/DrawRandomWeaknessComponent.tsx:97
 msgid "Draw random weakness"
 msgstr "무작위 약점 뽑기"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:39
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddWeaknessEffectComponent/index.tsx:41
 msgid "Do you want to use the app to randomize weaknesses?"
 msgstr "앱을 이용해서 약점을 무작위로 선택하기를 원하십니까?"
 
@@ -2785,26 +2778,27 @@ msgstr[0] ""
 "${ list } 조사자가 ${ supplyName } 보급품을 가지고 있지 않으므로, 해당 조사자는<b>${ sectionName "
 "}</b> 항목을 읽어야만 합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:47
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:50
 #, javascript-format
 msgid "${ investigators } must read <b>${ prompt }</b>."
 msgid_plural "${ investigators } must read <b>${ prompt }</b>."
 msgstr[0] "${ investigators } 조사자는 <b>${ prompt }</b> 항목을 읽어야만 합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:33
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:36
 msgid "Does any investigator have \"${ cardName }\" in their deck?"
 msgstr "\"${ cardName }\" 카드를 덱에 넣은 있는 조사자가 있습니까?"
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:35
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:38
 #, javascript-format
 msgid "Was an investigator with \"${ cardName }\" in their deck defeated?"
 msgstr "\"${ cardName }\" 카드를 덱에 넣은 조사자가 쓰러졌습니까?"
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:37
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:40
 msgid "For each investigator with \"${ cardName }\" in their deck:"
 msgstr "\"${ cardName }\" 카드를 덱에 넣은 모든 조사자는: "
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/ScenarioDataConditionComponent.tsx:26
+#, javascript-format
 msgid "Because there is ${ playerCount } player in the game:"
 msgid_plural "Because there are ${ playerCount } players in the game:"
 msgstr[0] "이 게임을 ${ playerCount }명의 플레이어로 진행하고 있으므로, 다음 지시를 수행합니다."
@@ -2818,7 +2812,6 @@ msgid "If all investigators were <b>killed</b>."
 msgstr "모든 조사자가 <b>사망하면</b>."
 
 #: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/index.tsx:38
-#, javascript-format
 msgid "Check ${ logEntry.section }. <i>If ${ logEntry.text }</i>"
 msgstr ""
 "${ logEntry.section } 항목을 확인합니다. <i>${ logEntry.text }</i> 항목이 있으면, 다음 지시를 "
@@ -2832,7 +2825,7 @@ msgstr "외전 시나리오 선택"
 msgid "Add side scenario"
 msgstr "외전 시나리오 추가"
 
-#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:39
+#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:38
 #, javascript-format
 msgid "${ scenarioName } (Attempt ${ attempt })"
 msgstr "${ scenarioName } (${ attempt }번째 시도)"
@@ -2848,36 +2841,36 @@ msgstr "확률 계산기"
 msgid "Odds calculator"
 msgstr "확률 계산기"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:169
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:203
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:168
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:127
 msgid "Remove deck"
 msgstr "덱 삭제"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:169
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:168
 msgid "Remove investigator"
 msgstr "조사자 삭제"
 
 #: src/components/campaign/EditTraumaComponent.tsx:37
 #: src/components/campaign/EditTraumaComponent.tsx:50
-#: src/components/campaign/EditTraumaDialog.tsx:50
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:180
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:341
+#: src/components/campaign/EditTraumaDialog.tsx:49
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:179
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:216
 msgid "Trauma"
 msgstr "트라우마"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:219
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:218
 msgid "View Deck"
 msgstr "덱 보기"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:233
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:232
 msgid "Select Deck"
 msgstr "덱 선택"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:198
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:122
 msgid "Remove deck from campaign"
 msgstr "캠페인에서 덱 삭제"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:199
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:123
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
@@ -2889,11 +2882,11 @@ msgstr ""
 "\n"
 "이 덱을 삭제한 후, 새로운 덱을 선택할 수 있습니다. 다만, 경험치와 이야기 자산은 새로운 시나리오를 완료한 이후에 저장됩니다."
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:219
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:138
 msgid "Cannot remove"
 msgstr "삭제할 수 없습니다."
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:220
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:139
 msgid ""
 "Since this investigator has participated in one or more scenarios during "
 "this campaign, they cannot be removed.\n"
@@ -2905,24 +2898,24 @@ msgstr ""
 "\n"
 "그러나, 캠페인의 추후 시나리오에서 참가하지 않기로 선택할 수는 있습니다."
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:285
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:186
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:248
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:167
 msgid "Remove investigators"
 msgstr "조사자 제거"
 
 #: src/components/campaign/CampaignDeckList.tsx:75
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:317
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:322
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:267
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:221
 msgid "Add Investigator"
 msgstr "조사자 추가"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:323
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:328
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:273
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:227
 msgid "Finished removing investigators"
 msgstr "조사자 제거가 완료되었습니다"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:332
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:336
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:282
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:235
 msgid "Killed and Insane Investigators"
 msgstr "사망하거나 미친 조사자"
 
@@ -2931,36 +2924,36 @@ msgstr "사망하거나 미친 조사자"
 msgid "Experience cost: ${ xpCost }"
 msgstr "경험치 비용: ${ xpCost }"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:78
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:66
 msgid "Custom side scenario"
 msgstr "커스텀 독립 시나리오"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:87
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:74
 msgid "Scenario Name"
 msgstr "시나리오명"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:95
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:82
 msgid "Experience Cost"
 msgstr "경험치 지용"
 
-#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:84
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:105
+#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:85
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:92
 msgid "Add"
 msgstr "더하기"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:149
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:136
 msgid "Custom scenario"
 msgstr "커스텀 시나리오"
 
-#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:58
+#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:59
 msgid "Add Campaign Log Section"
 msgstr "캠페인 기록지 항목에 추가"
 
-#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:64
+#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:65
 msgid "Section Name"
 msgstr "항목명"
 
-#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:68
+#: src/components/campaign/AddCampaignNoteSectionDialog.tsx:69
 msgid "Count"
 msgstr "셈하는 항목"
 
@@ -2972,20 +2965,21 @@ msgstr "수정"
 msgid "Selected Difficulty"
 msgstr "선택된 난이도"
 
-#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:93
+#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:115
 msgid "Edit Assigned Weaknesses"
 msgstr "할당된 약점 수정"
 
-#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:284
+#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:222
 #, javascript-format
 msgid "Investigator: ${ investigatorName }"
 msgstr "조사자: ${ investigatorName }"
 
-#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:298
+#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:236
+#: src/components/weakness/WeaknessDrawDialog.tsx:61
 msgid "Replace Random Weakness"
 msgstr "무작위 약점 교체"
 
-#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:323
+#: src/components/campaign/CampaignDrawWeaknessDialog.tsx:253
 #, javascript-format
 msgid "Save to ${ investigator.name }’s Deck"
 msgstr "${ investigator.name }의 덱을 저장"
@@ -3018,17 +3012,17 @@ msgstr "봉인된 토큰"
 msgid "Seal Tokens"
 msgstr "토큰 봉인"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:163
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:118
 #: src/components/campaign/EditScenarioResultView.tsx:115
 msgid "Interlude"
 msgstr "막간"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:184
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:139
 #: src/components/campaign/EditScenarioResultView.tsx:122
 msgid "Resolution"
 msgstr "결말"
 
-#: src/components/campaign/EditTraumaDialog.tsx:49
+#: src/components/campaign/EditTraumaDialog.tsx:48
 #, javascript-format
 msgid "${ investigator.firstName }’s Trauma"
 msgstr "${ investigator.firstName }의 트라우마"
@@ -3456,11 +3450,12 @@ msgid "Point of No Return"
 msgstr ""
 
 #: src/components/campaign/NewCampaignView/CampaignSelector.tsx:28
+#: src/components/campaign/NewCampaignView/index.tsx:82
 #: src/components/campaign/constants.ts:279
 msgid "The Night of the Zealot"
 msgstr "광신도의 밤"
 
-#: src/components/campaign/NewCampaignView/index.tsx:142
+#: src/components/campaign/NewCampaignView/index.tsx:93
 #: src/components/campaign/constants.ts:328
 #: src/components/campaign/constants.ts:337
 #: src/components/campaign/constants.ts:345
@@ -3551,17 +3546,17 @@ msgstr "전체 ${ totalXp } 경험치"
 msgid "Upgrade deck"
 msgstr "덱 향상"
 
-#: src/components/campaign/UpgradeDecksView/index.tsx:59
+#: src/components/campaign/UpgradeDecksView/index.tsx:131
 msgid "Update investigator decks"
 msgstr "조사자 덱 향상"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:218
-#: src/components/campaign/UpgradeDecksView/index.tsx:132
-#: src/components/deck/CardUpgradeDialog/index.tsx:401
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:192
+#: src/components/campaign/UpgradeDecksView/index.tsx:81
+#: src/components/deck/CardUpgradeDialog/index.tsx:228
 msgid "Upgrade"
 msgstr "향상"
 
-#: src/components/campaign/UpgradeDecksView/index.tsx:165
+#: src/components/campaign/UpgradeDecksView/index.tsx:105
 msgid ""
 "By upgrading a deck, you can track XP and story card upgrades as your "
 "campaign develops.\n"
@@ -3691,7 +3686,7 @@ msgstr ""
 "참고: 다른 토큰을 공개하게 하는 혼돈 토큰은 \"2개를 뽑아 1개 적용\"과 이와 유사한 여러개를 뽑는 상황에서 정확한 결과를 "
 "보여주지 않습니다."
 
-#: src/components/campaign/NewCampaignView/index.tsx:658
+#: src/components/campaign/NewCampaignView/index.tsx:431
 #: src/components/campaign/OddsCalculatorComponent/index.tsx:411
 msgid "Difficulty"
 msgstr "난이도"
@@ -3700,7 +3695,7 @@ msgstr "난이도"
 #: src/components/campaign/MyCampaignsView/index.tsx:39
 #: src/components/campaign/MyCampaignsView/index.tsx:96
 #: src/components/campaign/MyCampaignsView/index.tsx:132
-#: src/components/campaign/NewCampaignView/index.tsx:117
+#: src/components/campaign/NewCampaignView/index.tsx:484
 msgid "New Campaign"
 msgstr "새로운 캠페인"
 
@@ -3736,51 +3731,51 @@ msgstr "이 약점을 이 캠페인의 기본 약점 세트에서 제거하기�
 msgid "Not Now"
 msgstr "아직 아닙니다"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:177
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:185
-#: src/components/campaign/NewCampaignView/index.tsx:318
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:132
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:140
+#: src/components/campaign/NewCampaignView/index.tsx:205
 msgid "(required)"
 msgstr "(요구됨)"
 
-#: src/components/campaign/NewCampaignView/index.tsx:320
+#: src/components/campaign/NewCampaignView/index.tsx:207
 #, javascript-format
 msgid "My ${ campaign } Campaign"
 msgstr "나의 ${ campaign } 캠페인"
 
-#: src/components/campaign/NewCampaignView/index.tsx:493
+#: src/components/campaign/NewCampaignView/index.tsx:308
 msgid "Include all basic weaknesses from these expansions"
 msgstr "이 확장들의 모든 기본 약점을 포함합니다"
 
-#: src/components/campaign/CampaignLogSection/index.tsx:149
-#: src/components/campaign/NewCampaignView/index.tsx:588
+#: src/components/campaign/CampaignLogSection/index.tsx:148
+#: src/components/campaign/NewCampaignView/index.tsx:395
 msgid "Add Log Section"
 msgstr "기록 항목 추가"
 
-#: src/components/campaign/NewCampaignView/index.tsx:689
+#: src/components/campaign/NewCampaignView/index.tsx:462
 msgid "Create Campaign"
 msgstr "캠페인 생성"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:69
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:91
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:49
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:71
 msgid "Choose an Investigator"
 msgstr "조사자 선택"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:212
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:197
 msgid "Hide Decks From Other Campaigns"
 msgstr "다른 캠페인에서 덱 숨기기"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:224
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:209
 msgid "Hide Killed and Insane Investigators"
 msgstr "사망하거나 미친 조사자 숨기기"
 
-#: src/components/campaign/MyDecksSelectorDialog/index.tsx:236
+#: src/components/campaign/MyDecksSelectorDialog/index.tsx:221
 msgid "Only Show Previous Campaign Members"
 msgstr "이전 캠페인 멤버만 보이기"
 
 #: src/app/App.ts:280
 #: src/app/App.ts:336
 #: src/components/campaign/MyCampaignsView/index.tsx:126
-#: src/components/settings/MergeBackupView/index.tsx:240
+#: src/components/settings/MergeBackupView/index.tsx:169
 msgid "Campaigns"
 msgstr "캠페인"
 
@@ -3788,7 +3783,7 @@ msgstr "캠페인"
 msgid "Edit name"
 msgstr "이름 수정"
 
-#: src/components/campaign/NewCampaignView/index.tsx:644
+#: src/components/campaign/NewCampaignView/index.tsx:417
 msgid "Guided Campaign"
 msgstr "캠페인 가이드 사용"
 
@@ -3826,12 +3821,12 @@ msgstr "변경사항을 저장하시겠습니까?"
 msgid "Add note"
 msgstr "노트 추가"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:177
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:159
 #, javascript-format
 msgid "Remove ${ investigator.name }?"
 msgstr "${ investigator.name } 조사자를 제거하시겠습니까?"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:183
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:165
 msgid "Remove"
 msgstr "제거"
 
@@ -3867,40 +3862,36 @@ msgid "Draw Tokens"
 msgstr "토큰 뽑기"
 
 #: src/components/campaign/CampaignDetailView/CampaignSideMenu.tsx:166
-#: src/components/campaign/NewCampaignView/index.tsx:490
+#: src/components/campaign/NewCampaignView/index.tsx:305
 msgid "Weakness Set"
 msgstr "약점 세트"
 
-#: src/components/campaign/CampaignDetailView/index.tsx:229
+#: src/components/campaign/CampaignDetailView/index.tsx:222
 msgid "Clean up broken campaigns"
 msgstr "부서진 캠페인 삭제"
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:83
-msgid "Custom Scenario Name"
-msgstr "커스텀 시나리오 이름"
-
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:157
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:112
 msgid "Show Interludes"
 msgstr "막간 보기"
 
-#: src/components/campaign/AddScenarioResultView/index.tsx:76
+#: src/components/campaign/AddScenarioResultView/index.tsx:192
 msgid "Scenario Result"
 msgstr "시나리오 결과"
 
-#: src/components/campaign/AddScenarioResultView/index.tsx:288
+#: src/components/campaign/AddScenarioResultView/index.tsx:161
 msgid "Save and Upgrade Decks"
 msgstr "덱 향상 및 저장"
 
-#: src/components/campaign/AddScenarioResultView/index.tsx:295
+#: src/components/campaign/AddScenarioResultView/index.tsx:168
 msgid "Only Save"
 msgstr "저장만 하기"
 
-#: src/components/DeckNavFooter/index.tsx:64
+#: src/components/DeckNavFooter/index.tsx:63
 #, javascript-format
 msgid "XP: ${ experience }"
 msgstr "경험치: ${ experience }"
 
-#: src/components/DeckNavFooter/index.tsx:67
+#: src/components/DeckNavFooter/index.tsx:66
 #, javascript-format
 msgid "XP: ${ changes.spentXp } of ${ adjustedExperience }"
 msgstr "경험치: ${ changes.spentXp }/${ adjustedExperience }"
@@ -3924,15 +3915,15 @@ msgstr "평행 조사자 여부는 덱을 생성하는 시점에서 선택하여
 msgid "Advanced Cards"
 msgstr "강화된 카드"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:348
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:223
 msgid "Physical"
 msgstr "육체적"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:396
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/UpgradeDecksInput/UpgradeDeckRow.tsx:271
 msgid "Mental"
 msgstr "정신적"
 
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:131
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:133
 msgid "Record trauma"
 msgstr "트라우마 기록"
 
@@ -3958,38 +3949,38 @@ msgstr ""
 "<i>${ scenario.scenario_name }</i> 도전 시나리오는 ${ investigator.name } 조사자가 중심이 "
 "되어 진행하는 시나리오이며, 다음 선행 조건을 만족해야 합니다:"
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:46
+#: src/components/campaignguide/ChallengeScenarioView.tsx:45
 msgid ""
 "${ investigator.name } must be chosen as one of the investigators when "
 "playing this scenario."
 msgstr "${ investigator.name } 조사자는 이 시나리오를 플레이하는 조사자 중 하나로 선택되어야만 합니다."
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:58
+#: src/components/campaignguide/ChallengeScenarioView.tsx:56
 msgid ""
 "The app does not enforce Challenge Scenario prerequisites, so please "
 "confirm that they apply manually."
 msgstr "앱에서는 도전 시나리오의 선행 조건을 강제하지 않습니다. 그러므로, 수동으로 조건 만족 여부를 확인해 주십시오."
 
-#: src/components/campaignguide/ChallengeScenarioView.tsx:61
+#: src/components/campaignguide/ChallengeScenarioView.tsx:59
 msgid "Play this scenario"
 msgstr "이 시나리오 플레이"
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:23
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:26
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name } (Advanced)."
 msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 획득합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:24
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:27
 #, javascript-format
 msgid "${ investigator.name } earns ${ card.name }."
 msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 획득합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:28
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:31
 #, javascript-format
 msgid "${ investigator.name } removes ${ card.name } (Advanced)"
 msgstr "${ investigator.name } 조사자는 ${ card.name } (강화된) 카드를 제거합니다."
 
-#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:29
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:32
 msgid "${ investigator.name } removes ${ card.name }"
 msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합니다."
 
@@ -3997,12 +3988,12 @@ msgstr "${ investigator.name } 조사자는 ${ card.name } 카드를 제거합�
 msgid "Challenge Scenario"
 msgstr "도전 시나리오"
 
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:29
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:31
 #, javascript-format
 msgid "${ investigator.name } Challenge Scenario"
 msgstr "${ investigator.name }의 도전 시나리오"
 
-#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:32
+#: src/components/campaignguide/AddSideScenarioView/SideScenarioButton.tsx:34
 #, javascript-format
 msgid ""
 "Experience cost: ${ challengeCost } for ${ investigator.name }, ${ xpCost } "
@@ -4011,15 +4002,15 @@ msgstr ""
 "경험치 비용: ${ investigator.name }는 ${ challengeCost }이며, 다른 조사자는 ${ xpCost } "
 "입니다."
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:118
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:105
 msgid "Side"
 msgstr "외전"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:157
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:144
 msgid "Challenge"
 msgstr "도전"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:162
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:149
 msgid ""
 "Challenge scenarios are special print-and-play scenarios that utilize "
 "existing products in the <i>Arkham Horror: The Card Game</i> collection, "
@@ -4093,19 +4084,19 @@ msgstr "사용 가능 경험치 ${ xp }, (${ parsedDeck.changes.spentXp } 소비
 msgid " (Per Investigator)"
 msgstr " (조사자 당)"
 
-#: src/components/campaign/NewCampaignView/index.tsx:645
+#: src/components/campaign/NewCampaignView/index.tsx:418
 msgid "Use app for scenario setup & resolutions"
 msgstr "시나리오 정리 & 결말을 위해 앱을 활용합니다 (영어입니다)"
 
-#: src/components/campaign/NewCampaignView/index.tsx:645
+#: src/components/campaign/NewCampaignView/index.tsx:418
 msgid "Track campaign log and resolutions manually"
 msgstr "수동으로 캠페인 기록지와 결말을 추적합니다 (영어입니다)"
 
-#: src/components/campaign/NewCampaignView/index.tsx:671
+#: src/components/campaign/NewCampaignView/index.tsx:444
 msgid "Investigators"
 msgstr "조사자"
 
-#: src/components/campaign/NewCampaignView/index.tsx:696
+#: src/components/campaign/NewCampaignView/index.tsx:469
 msgid ""
 "If you encounter any problems with the campaign guide system, please let me "
 "know at arkhamcards@gmail.com."
@@ -4114,16 +4105,16 @@ msgstr ""
 "제작자의 연락처이며, 번역과는 무관합니다.)"
 
 #: src/components/campaign/InvestigatorCampaignRow/DeckXpSection.tsx:72
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:102
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:107
 #, javascript-format
 msgid "${ spentXp } of ${ totalXp } spent"
 msgstr "${ spentXp }/${ totalXp } 소비됨"
 
-#: src/components/campaign/InvestigatorCampaignRow/index.tsx:209
+#: src/components/campaign/InvestigatorCampaignRow/index.tsx:208
 msgid "Edit Trauma"
 msgstr "트라우마 수정"
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:179
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:161
 msgid ""
 "Are you sure you want to remove this deck from the campaign?\n"
 "\n"
@@ -4133,7 +4124,7 @@ msgstr ""
 "\n"
 "덱은 여전히 아컴디비에 남아있게 됩니다."
 
-#: src/components/campaign/CampaignDetailView/DecksSection.tsx:180
+#: src/components/campaign/CampaignDetailView/DecksSection.tsx:162
 #, javascript-format
 msgid ""
 "Are you sure you want to remove ${ investigator.name } from this campaign?\n"
@@ -4144,15 +4135,15 @@ msgstr ""
 "\n"
 "해당 조사자와 연관된 캠페인 기록 데이터는 사라집니다."
 
-#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:164
+#: src/components/campaign/AddScenarioResultView/ScenarioSection.tsx:119
 msgid "Scenario or Interlude"
 msgstr "시나리오 또는 막간"
 
-#: src/components/settings/SettingsView.tsx:191
+#: src/components/settings/SettingsView.tsx:184
 msgid "Alphabetize guide encounter sets"
 msgstr "알파벳 순서로 조우 세트 안내"
 
-#: src/components/campaignguide/AddSideScenarioView/index.tsx:124
+#: src/components/campaignguide/AddSideScenarioView/index.tsx:111
 msgid ""
 "A side-story is a scenario that may be played between any two scenarios of "
 "an <i>Arkham Horror: The Card Game</i> campaign. Playing a side-story costs "
@@ -4186,22 +4177,22 @@ msgstr "트라우마 기록"
 msgid "Select resolution"
 msgstr "결말 선택"
 
-#: src/components/settings/SettingsView.tsx:210
+#: src/components/settings/SettingsView.tsx:203
 msgid "Contact us"
 msgstr "연락하기"
 
-#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:84
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:82
 #, javascript-format
 msgid "${ count } resupply"
 msgid_plural "${ count } resupply"
 msgstr[0] "${ count } 재보급"
 
-#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:88
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:86
 msgid "${ count } supply point"
 msgid_plural "${ count } supply points"
 msgstr[0] "${ count } 보급 점수"
 
-#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:109
+#: src/components/campaignguide/ScenarioStepComponent/XpCountComponent.tsx:104
 #, javascript-format
 msgid "${ xp } general / ${ resupplyPointsString } XP"
 msgid_plural "${ xp } general / ${ resupplyPointsString } XP"
@@ -4213,7 +4204,12 @@ msgid ""
 "and following interludes are completed."
 msgstr "외전 시나리오는 캠페인의 이전 시나리오가 끝내고, 해당 시나리오에 이어지는 막간을 해결하기 전에는 추가할 수 없습니다."
 
-#: src/components/card/SingleCardWrapper.tsx:45
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:31
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/HasCardConditionComponent.tsx:70
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/AddCardEffectComponent.tsx:43
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/CampaignLogEffectComponent.tsx:31
+#: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/RemoveCardEffectComponent.tsx:51
+#: src/components/card/CardDetailView/index.tsx:157
 #, javascript-format
 msgid ""
 "Missing card #${ code }. Please try updating cards from ArkhamDB in "
@@ -4225,20 +4221,20 @@ msgid "${ specialXp } resupply experience available"
 msgid_plural "${ specialXp } resupply experience available"
 msgstr[0] "${ specialXp } 재보급 경험치 사용가능"
 
-#: src/components/settings/BackupView.tsx:72
+#: src/components/settings/BackupView.tsx:91
 msgid "Unexpected file type"
 msgstr "예상치 못한 파일 종류"
 
-#: src/components/settings/SafeModeView.tsx:149
-#: src/components/settings/SettingsView.tsx:156
+#: src/components/settings/SafeModeView.tsx:96
+#: src/components/settings/SettingsView.tsx:149
 msgid "Backup Data"
 msgstr "백업 데이터"
 
-#: src/components/settings/BackupView.tsx:73
+#: src/components/settings/BackupView.tsx:92
 msgid "This app expects an Arkham Cards backup file (.acb/.json)"
 msgstr "아컴카드 백업 파일 확장자를 가진 파일을 예상하고 있습니다. (.acb/.json)"
 
-#: src/components/settings/BackupView.tsx:114
+#: src/components/settings/BackupView.tsx:133
 msgid ""
 "This feature will let you restore data from a lost device. If you were "
 "signed into ArkhamDB, please reauthorize before importing campaign data.\n"
@@ -4250,21 +4246,21 @@ msgstr ""
 "\n"
 "백업이 선택한 후, 어떠한 데이터를 불러올 지 선택할 수 있습니다."
 
-#: src/components/settings/BackupView.tsx:152
+#: src/components/settings/BackupView.tsx:147
 msgid ""
 "This will let you backup your local decks and campaigns for safe-keeping. "
 "This can also be used to move them to another device."
 msgstr "이 기능은 당신의 로컬 덱과 캠페인을 안전하게 백업하게 해줍니다. 또한 다른 기기로 이동하는데 사용할 수도 있습니다."
 
-#: src/components/settings/BackupView.tsx:180
+#: src/components/settings/BackupView.tsx:175
 msgid "Save backup"
 msgstr "백업 저장"
 
-#: src/components/settings/BackupView.tsx:139
+#: src/components/settings/BackupView.tsx:64
 msgid "Cannot request access"
 msgstr "접근 권한을 요청할 수 없습니다"
 
-#: src/components/settings/BackupView.tsx:139
+#: src/components/settings/BackupView.tsx:64
 msgid ""
 "It looks like you previously denied allowing Arkham Cards to read/write "
 "external files. Please visit your System settings to adjust this "
@@ -4279,18 +4275,18 @@ msgid "(${ investigator.name } - ${ scenarioCount } scenario"
 msgid_plural "${ investigator.name } - ${ scenarioCount } scenarios"
 msgstr[0] "${ investigator.name } - ${ scenarioCount } 시나리오"
 
-#: src/components/settings/MergeBackupView/index.tsx:68
-#: src/components/settings/MergeBackupView/index.tsx:71
-#: src/components/settings/MergeBackupView/index.tsx:89
-#: src/components/settings/MergeBackupView/index.tsx:93
+#: src/components/settings/MergeBackupView/index.tsx:88
+#: src/components/settings/MergeBackupView/index.tsx:92
+#: src/components/settings/MergeBackupView/index.tsx:249
+#: src/components/settings/MergeBackupView/index.tsx:252
 msgid "Import"
 msgstr "불러오기"
 
-#: src/components/settings/MergeBackupView/index.tsx:217
+#: src/components/settings/MergeBackupView/index.tsx:149
 msgid "Missing decks"
 msgstr "없어진 덱"
 
-#: src/components/settings/MergeBackupView/index.tsx:218
+#: src/components/settings/MergeBackupView/index.tsx:150
 msgid ""
 "It seems like you have chosen to import a campaign without importing one or "
 "more non-ArkhamDB decks. The campaign can still be imported, however the "
@@ -4299,43 +4295,43 @@ msgstr ""
 "하나 이상의 아컴디비에 저장하지 않은 덱을 불러오지 않고 불러올 캠페인을 선택한 것으로 보입니다. 캠페인은 여전히 불러올 수 있으나, "
 "덱 정보는 삭제됩니다."
 
-#: src/components/settings/MergeBackupView/index.tsx:220
+#: src/components/settings/MergeBackupView/index.tsx:152
 msgid "Import anyway"
 msgstr "어찌되었든 불러오기"
 
-#: src/components/settings/MergeBackupView/index.tsx:242
-#: src/components/settings/MergeBackupView/index.tsx:269
+#: src/components/settings/MergeBackupView/index.tsx:171
+#: src/components/settings/MergeBackupView/index.tsx:198
 msgid "New:"
 msgstr "추가:"
 
-#: src/components/settings/MergeBackupView/index.tsx:249
-#: src/components/settings/MergeBackupView/index.tsx:278
+#: src/components/settings/MergeBackupView/index.tsx:178
+#: src/components/settings/MergeBackupView/index.tsx:207
 msgid "Updated:"
 msgstr "갱신:"
 
-#: src/components/settings/MergeBackupView/index.tsx:256
-#: src/components/settings/MergeBackupView/index.tsx:287
+#: src/components/settings/MergeBackupView/index.tsx:185
+#: src/components/settings/MergeBackupView/index.tsx:216
 msgid "No changes:"
 msgstr "변화없음:"
 
-#: src/components/settings/MergeBackupView/index.tsx:262
-#: src/components/settings/MergeBackupView/index.tsx:295
+#: src/components/settings/MergeBackupView/index.tsx:191
+#: src/components/settings/MergeBackupView/index.tsx:224
 msgid "Local version appears to be newer:"
 msgstr "로컬 버전이 최신:"
 
-#: src/components/settings/MergeBackupView/index.tsx:304
+#: src/components/settings/MergeBackupView/index.tsx:233
 msgid "Import selected data"
 msgstr "선택한 데이터 불러오기"
 
-#: src/components/settings/MergeBackupView/index.tsx:65
+#: src/components/settings/MergeBackupView/index.tsx:246
 msgid "Select items to import"
 msgstr "불러올 아이템 선택"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:267
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:192
 msgid "Investigator trauma"
 msgstr "조사자 트라우마"
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:269
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:194
 msgid ""
 "You can only edit trauma here between scenarios.\n"
 "\n"
@@ -4345,7 +4341,7 @@ msgstr ""
 "\n"
 "시나리오를 진행는 동안에서는 시나리오 가이드에서 수정이 가능합니다."
 
-#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:270
+#: src/components/campaignguide/CampaignInvestigatorsComponent.tsx:195
 msgid "Starting trauma can be adjusted after 'Campaign Setup' has been completed."
 msgstr "시작 트라우마는 '캠페인 준비'가 완료된 후 조정이 가능합니다."
 
@@ -4359,7 +4355,7 @@ msgid ""
 "from ArkhamDB. This requires network and can take some time."
 msgstr "앱 언어 변경은 아컴디비에서 번역된 카드를 다운받아야 합니다. 이 기능은 인터넷 연결이 필요하며 시간이 소요됩니다."
 
-#: src/components/card/FetchCardsGate.tsx:125
+#: src/components/card/FetchCardsGate.tsx:124
 #: src/components/settings/LanguagePicker.tsx:89
 msgid "Download now"
 msgstr "지금 다운로드 하기"
@@ -4369,8 +4365,8 @@ msgid "Doesn't get any"
 msgstr "아무것도 하지 않기"
 
 #: src/components/deck/DeckChecklistView/index.tsx:110
-#: src/components/deck/DeckDetailView/index.tsx:535
-#: src/components/deck/DeckDetailView/index.tsx:1100
+#: src/components/deck/DeckDetailView/index.tsx:534
+#: src/components/deck/DeckDetailView/index.tsx:1110
 msgid "Checklist"
 msgstr "체크리스트"
 
@@ -4378,15 +4374,15 @@ msgstr "체크리스트"
 msgid "Limit 1 Covenant per deck."
 msgstr "덱당 Covenant 1장 한정."
 
-#: src/components/card/CardFaqView.tsx:118
+#: src/components/card/CardFaqView.tsx:97
 msgid "Checking for FAQ"
 msgstr "FAQ 확인 (영문)"
 
-#: src/components/card/CardFaqView.tsx:118
+#: src/components/card/CardFaqView.tsx:97
 msgid "No entries at this time."
 msgstr "현재 아무 항목도 없습니다."
 
-#: src/components/card/CardFaqView.tsx:125
+#: src/components/card/CardFaqView.tsx:104
 #, javascript-format
 msgid "Last Updated: ${ lastUpdated }"
 msgstr "마지막 갱신일: ${ lastUpdated }"
@@ -4396,11 +4392,11 @@ msgstr "마지막 갱신일: ${ lastUpdated }"
 msgid "Default (${ systemLanguage })"
 msgstr "기본 (${ systemLanguage })"
 
-#: src/components/card/FetchCardsGate.tsx:121
+#: src/components/card/FetchCardsGate.tsx:120
 msgid "Download language cards"
 msgstr "해당 언어 카드 다운로드"
 
-#: src/components/card/FetchCardsGate.tsx:122
+#: src/components/card/FetchCardsGate.tsx:121
 #, javascript-format
 msgid ""
 "Would you like to download updated cards from ArkhamDB to match your "
@@ -4412,7 +4408,7 @@ msgstr ""
 "\n"
 "이 기능은 앱 설정의 선호하는 언어보다 우선됩니다."
 
-#: src/components/card/FetchCardsGate.tsx:124
+#: src/components/card/FetchCardsGate.tsx:123
 msgid "Not now"
 msgstr "지금은 아닙니다"
 
@@ -4433,35 +4429,35 @@ msgstr "${ dayOfWeek }전에 갱신됨"
 msgid "Updated ${ dateString }"
 msgstr "${ dateString }에 갱신됨"
 
-#: src/components/settings/LanguagePicker.tsx:151
+#: src/components/settings/LanguagePicker.tsx:152
 msgid "Language"
 msgstr "언어"
 
-#: src/components/settings/SafeModeView.tsx:56
-#: src/components/settings/SafeModeView.tsx:71
+#: src/components/settings/SafeModeView.tsx:33
+#: src/components/settings/SafeModeView.tsx:46
 msgid "Safe mode"
 msgstr "안전 모드"
 
-#: src/components/settings/SafeModeView.tsx:67
+#: src/components/settings/SafeModeView.tsx:42
 msgid "The app drew an Auto-Fail"
 msgstr "이 앱이 자동 실패 토큰을 뽑고 말았습니다"
 
-#: src/components/settings/SafeModeView.tsx:68
+#: src/components/settings/SafeModeView.tsx:43
 msgid ""
 "Sorry about that. If the app is crashing on launch, you can enter 'Safe "
 "mode' to backup your data."
 msgstr "죄송합니다. 앱이 실행 중에 멈추는 경우, '안전 모드'에 들어가서 데이터를 백업할 수 있습니다."
 
-#: src/components/settings/SafeModeView.tsx:70
+#: src/components/settings/SafeModeView.tsx:45
 msgid "Start normally"
 msgstr "일반적으로 실행"
 
-#: src/components/settings/SafeModeView.tsx:154
+#: src/components/settings/SafeModeView.tsx:101
 msgid "Cache cleared"
 msgstr "캐시 초기화"
 
-#: src/components/settings/SettingsView.tsx:107
-#: src/components/settings/SettingsView.tsx:174
+#: src/components/settings/SettingsView.tsx:113
+#: src/components/settings/SettingsView.tsx:167
 msgid "Rules"
 msgstr "규칙(영문)"
 
@@ -4479,7 +4475,7 @@ msgid "Show Spoilers"
 msgstr "스포일러 보기"
 
 #: src/components/campaignguide/ScenarioFaqView.tsx:54
-#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:136
+#: src/components/campaignguide/ScenarioStepComponent/InputStepComponent/PlayScenarioComponent/index.tsx:138
 msgid "Scenario FAQ"
 msgstr "시나리오 FAQ"
 
@@ -4487,23 +4483,23 @@ msgstr "시나리오 FAQ"
 msgid "Interlude FAQ"
 msgstr "막간 FAQ"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:472
+#: src/components/deck/CardUpgradeDialog/index.tsx:292
 #, javascript-format
 msgid "Show ${ nonCollection.length } non-collection card"
 msgid_plural "Show ${ nonCollection.length } non-collection cards"
 msgstr[0] "보유하지 않은 확장에 포함된 ${ nonCollection.length }개의 카드 확인"
 
-#: src/components/cardlist/InvestigatorsListComponent/index.tsx:300
+#: src/components/cardlist/InvestigatorsListComponent/index.tsx:268
 #, javascript-format
 msgid "Show ${ section.nonCollectionCount } non-collection investigator"
 msgid_plural "Show ${ section.nonCollectionCount } non-collection investigators"
 msgstr[0] "보유하지 않은 확장에 포함된 ${ section.nonCollectionCount }명의 조사자 확인"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:538
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:539
 msgid "Edit spoiler settings"
 msgstr "스포일러 설정 수정"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:549
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:550
 #, javascript-format
 msgid "Show ${ spoilerCardsCount } spoiler"
 msgid_plural "Show ${ spoilerCardsCount } spoilers"
@@ -4554,17 +4550,17 @@ msgstr "테마"
 msgid "Enable"
 msgstr "사용"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:319
+#: src/components/deck/EditSpecialDeckCardsView.tsx:225
 msgid "Basic weakness"
 msgstr "기본 약점"
 
-#: src/components/deck/EditSpecialDeckCardsView.tsx:379
+#: src/components/deck/EditSpecialDeckCardsView.tsx:270
 msgid "Do not count towards deck size"
 msgstr "덱 크기에 포함되지 않습니다"
 
-#: src/components/campaign/CampaignDetailView/index.tsx:265
+#: src/components/campaign/CampaignDetailView/index.tsx:262
 #: src/components/campaign/MyCampaignsView/CampaignList.tsx:49
-#: src/components/deck/DeckDetailView/index.tsx:381
+#: src/components/deck/DeckDetailView/index.tsx:380
 msgid "Menu"
 msgstr "메뉴"
 
@@ -4586,10 +4582,6 @@ msgstr "역할군: ${ card.faction_name }"
 #, javascript-format
 msgid "Encounter set: ${ card.encounter_name }"
 msgstr "조우 세트: ${ card.encounter_name }"
-
-#: src/components/core/EditText.tsx:44
-msgid "Cncel"
-msgstr "취소"
 
 #: src/components/core/HealthSanityNumberIcon.tsx:23
 msgid "Health: none"
@@ -4634,11 +4626,11 @@ msgstr "검색 옵션"
 msgid "Search in:"
 msgstr "다음에서 검색:"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:102
+#: src/components/cardlist/CardSearchComponent/index.tsx:100
 msgid "Encounter Card Toggle"
 msgstr "조우 카드 토글"
 
-#: src/components/card/CardDetailView/CardDetailComponent.tsx:84
+#: src/components/card/CardDetailView/CardDetailComponent.tsx:67
 msgid "Show all available cards"
 msgstr "모든 사용 가능한 카드 보기"
 
@@ -4660,25 +4652,25 @@ msgstr "체력: ${ health }"
 msgid "Evade: ${ evade }"
 msgstr "회피: ${ evade }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:260
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:163
 #, javascript-format
 msgid "Willpower: ${ count }"
 msgstr "의지: ${ count }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:261
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:164
 msgid "Intellect: ${ count }"
 msgstr "지식: ${ count }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:262
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:165
 #, javascript-format
 msgid "Combat: ${ count }"
 msgstr "힘: ${ count }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:263
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:166
 msgid "Agility: ${ count }"
 msgstr "민첩: ${ count }"
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:264
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:167
 #, javascript-format
 msgid "Wild: ${ count }"
 msgstr "만능: ${ count }"
@@ -4764,7 +4756,7 @@ msgstr "주머니 내부"
 msgid "The Syzygy"
 msgstr ""
 
-#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:117
+#: src/components/campaignguide/ScenarioListComponent/ScenarioButton.tsx:116
 msgid "Coming soon"
 msgstr "조만간 개봉합니다"
 
@@ -4802,7 +4794,7 @@ msgid ""
 "layout on some screens."
 msgstr "앱의 글자 크기를 크게 하기 위해 사용되며, 이로 인해 일부 화면의 배열에 영향을 미칠 수도 있습니다."
 
-#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:95
+#: src/components/deck/CardUpgradeDialog/CardUpgradeOption.tsx:76
 msgid ""
 "Keep level ${ level } after upgrade\n"
 "Won't count towards deck size"
@@ -4810,17 +4802,17 @@ msgstr ""
 "향상 후 레벨 ${ level } 카드를 유지합니다\n"
 "덱 크기에 영향을 미치지 않습니다"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:385
+#: src/components/deck/CardUpgradeDialog/index.tsx:212
 msgid "Shrewd Analysis Rule"
 msgstr "재빠른 분석 규칙"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:387
+#: src/components/deck/CardUpgradeDialog/index.tsx:214
 #, javascript-format
 msgid "This upgrade will cost ${ xpCost } experience."
 msgid_plural "This upgrade will cost ${ xpCost } experience."
 msgstr[0] "이 향상은 ${ xpCost } 경험치가 필요합니다."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:392
+#: src/components/deck/CardUpgradeDialog/index.tsx:219
 #, javascript-format
 msgid ""
 "Two random cards will be chosen among the following choice:\n"
@@ -4835,11 +4827,11 @@ msgstr[0] ""
 "\n"
 "${ upgradeCards }"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:397
+#: src/components/deck/CardUpgradeDialog/index.tsx:224
 msgid "You can edit your collection under Settings to adjust the eligible choices."
 msgstr "설정의 보유게임을 수정하여 접근 가능한 선택지를 조정할 수 있습니다."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:443
+#: src/components/deck/CardUpgradeDialog/index.tsx:263
 msgid ""
 "<b>Additional Options</b>: When you upgrade a [[Fortune]] or [[Gambit]] "
 "card, you may instead pay the full experience cost on the higher level "
@@ -4850,7 +4842,7 @@ msgstr ""
 "경험치 비용을 전부 지불하고 더 낮은 레벨의 카드를 당신의 덱에 남겨두어도 됩니다(이렇게 남겨둔 카드는 당신의 덱 크기를 계산하거나 "
 "당신의 덱에서 카드 사본 개수를 계산할 때 포함하지 않습니다)."
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:451
+#: src/components/deck/CardUpgradeDialog/index.tsx:271
 msgid ""
 "<b>Shrewd Analysis</b>: If you meet the campaign conditions, you may use "
 "Shrewd Analysis to choose both upgrades randomly and only pay for one.\n"
@@ -4863,11 +4855,11 @@ msgstr ""
 "\n"
 "<i>참고: 이 앱은 두번째 사본의 '무료' 향상을 위해 경험치를 조절합니다.</i>"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:458
+#: src/components/deck/CardUpgradeDialog/index.tsx:278
 msgid "Upgrade results"
 msgstr "향상 결과"
 
-#: src/components/deck/CardUpgradeDialog/index.tsx:464
+#: src/components/deck/CardUpgradeDialog/index.tsx:284
 msgid "Upgrade with Shrewd Analysis"
 msgstr "'재빠른 분석'으로 향상하기"
 
@@ -4891,7 +4883,7 @@ msgstr ""
 msgid "Memories Recovered"
 msgstr ""
 
-#: src/components/campaign/NewCampaignView/index.tsx:653
+#: src/components/campaign/NewCampaignView/index.tsx:426
 msgid ""
 "Note: this campaign is still being released and so the guide is incomplete "
 "(and may contain some mistakes).\n"
@@ -4901,7 +4893,7 @@ msgstr ""
 "참고: 이 캠페인은 현재 발매 중이며, 이로 인해 가이드는 완전하지 않습니다 (그리고 몇몇 실수가 있을 수 있습니다).\n"
 "새로운 시나리오가 발매되면, 우선적으로 앱을 업데이트 하려고 노력하지만 약간의 지연이 있을 수 있습니다."
 
-#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:289
+#: src/components/card/CardDetailView/TwoSidedCardComponent/index.tsx:192
 msgid "Slot: ${ card.slot }"
 msgstr "슬롯: ${ card.slot }"
 
@@ -4921,17 +4913,17 @@ msgstr "전용 약점"
 msgid "Cost: ${ json.cost }"
 msgstr "비용: ${ json.cost }"
 
-#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:374
+#: src/components/cardlist/CardSearchResultsComponent/DbCardResultList.tsx:375
 #, javascript-format
 msgid "Show ${ nonCollectionCount } non-collection card"
 msgid_plural "Show ${ nonCollectionCount } non-collection cards"
 msgstr[0] "보유하지 않은 확장에 포함된 ${ nonCollectionCount }개의 카드 확인"
 
-#: src/components/cardlist/CardSearchComponent/index.tsx:273
+#: src/components/cardlist/CardSearchComponent/index.tsx:271
 msgid "Hide versatile cards"
 msgstr "다재다능 카드 숨기기"
 
-#: src/components/deck/CopyDeckDialog/index.tsx:224
+#: src/components/deck/CopyDeckDialog/index.tsx:149
 msgid "Version to copy"
 msgstr ""
 
@@ -4965,6 +4957,10 @@ msgstr "일요일 업데이트"
 
 #: src/components/campaign/DrawChaosBagComponent.tsx:288
 msgid "Reset Chaos Bag"
+msgstr ""
+
+#: src/components/core/PackListComponent/index.tsx:55
+msgid "Books"
 msgstr ""
 
 #: src/components/campaignguide/ScenarioStepComponent/EffectsStepComponent/TraumaEffectComponent.tsx:26
@@ -5053,7 +5049,7 @@ msgctxt "masculine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:22
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:36
 #, javascript-format
 msgctxt "masculine"
 msgid ""
@@ -5061,7 +5057,8 @@ msgid ""
 "your Campaign Log."
 msgstr "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 없으면."
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:25
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:39
+#, javascript-format
 msgctxt "masculine"
 msgid ""
 "If <i>${ card.name }</i> is listed under Check ‘${ entry.section }’ in your "
@@ -5154,15 +5151,14 @@ msgctxt "feminine"
 msgid "Defeated: no trauma"
 msgstr "쓰러짐: 트라우마 없음"
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:23
-#, javascript-format
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:37
 msgctxt "feminine"
 msgid ""
 "If <i>${ card.name }</i> is not listed under Check ‘${ entry.section }’ in "
 "your Campaign Log."
 msgstr "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 없으면."
 
-#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:26
+#: src/components/campaignguide/ScenarioStepComponent/BranchStepComponent/CampaignLogConditionComponent/CampaignLogCardConditionComponent.tsx:40
 #, javascript-format
 msgctxt "feminine"
 msgid ""
@@ -5172,12 +5168,12 @@ msgstr ""
 "당신의 캠페인 기록지의 ‘${ entry.section }’ 항목에 <i>${ card.name }</i> 항목이 있으면, 다음 지시를 "
 "수행합니다."
 
-#: src/components/deck/DrawSimulatorView.tsx:201
+#: src/components/deck/DrawSimulatorView.tsx:197
 msgctxt "Draw Cards"
 msgid "All"
 msgstr "전부"
 
-#: src/components/core/TabooSetPicker.tsx:62
+#: src/components/core/TabooSetPicker.tsx:52
 msgctxt "Taboo List"
 msgid "None"
 msgstr "없음"
