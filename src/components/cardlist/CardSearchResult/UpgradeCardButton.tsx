@@ -19,7 +19,7 @@ export default function UpgradeButton({ onPress }: Props) {
         width: 32,
         height: 32,
       },
-    ]} onPress={onPress} rippleColor={colors.M} rippleSize={100}>
+    ]} onPress={onPress} rippleColor={colors.M} rippleSize={32}>
       <AppIcon
         size={28}
         color={colors.M}
