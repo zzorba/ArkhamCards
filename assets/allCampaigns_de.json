@@ -63470,7 +63470,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "The sea rises steadily as you make your way along the coast toward the town of Innsmouth. The sun and moon align over the distant horizon, threatening a grim, uncertain future.\nYou remember the layout of the town and several strange faces you met during your first few days there, but nothing that transpired between then and waking up in that waterlogged pit. Agent Harper has been trying to fill you in, but with so many gaps in your memory, each explanation only perplexes you further.\n\"Ever since you came to Innsmouth, things have only gotten worse. It began with the locals. Each day, they got rowdier and more hostile, especially to outsiders like you and me. Do you remember how nauseating some of them looked? Slimy, grayish skin? Wide lips, bulging eyes, that sort of thing?\"\nYou nod. Now that you've remembered, you almost wish you hadn't. It wasn't just the way they looked, either. Their hoarse voices croaked syllables barely resembling human speech, and they reeked of rotting fish.\n\"They're the ones who've been stirring up trouble recently. And that's not all. There are other creatures skulking around Innsmouth of late. I'm sure you've seen them, too.\" She shudders. \"There's some kind of connection between the Esoteric Order of Dago and those... things. Not sure what yet, but we'll get to the bottom of it if—\"\nAgent Harper's voice trails off as she climbs to the top of the headland. Whatever has her staring agape can't be good. You reach the top, haul yourself over the ridge, and see the same devastation she does.\nInnsmouth has been invaded. The same creatures you encountered in that sacrificial pit prowls the street—foul things from the depths of the sea, or perhaps beyond. They patrol the alleys and intersections, searching for something. Hunting. Makeshift barricades block the various pathways through the town as water from Manuxet River spills out onto the streets.\n\"No, this can't be...\" Agent Harper intones. A moment of silent gloom hangs between you. It is clear that Innsmouth is no longer safe. You inform Agent Harper that Agent Dawson left his vehicle near hers, at the abandoned railway station on the western edge of Innsmouth. She nods, understanding. \"Right. We have to get to the other side of town, and fast.\"\nThe sky above you is bathed in hues of violent crimson. With any luck, no more of that color will be spilled today."
+      "text": "Als du an der Küste entlang nach Innsmouth wanderst, steigt der Meeresspiegel immer weiter an. Am fernen Horizont schiebt sich der Mond langsam vor die Sonne und verkündet eine düstere, unsichere Zukunft. \nDu kannst dich an die Gebäude und Straßen der Stadt erinnern und auch an ein paar seltsame Gestalten, denen du in den ersten Tagen deines Aufenthalts begegnet bist, aber an nichts anderes, was zwischen damals und deinem Aufwachen in der feuchten Grotte geschehen ist. Agent Harper hat versucht, dich über einige Dinge ins Bild zu setzen, aber wegen der vielen Löcher in deinen Erinnerungen waren ihre Erklärungen mehr verwirrend als hilfreich. \n„Seit Sie nach Innsmouth gekommen sind, haben sich die Dinge noch weiter verschlechtert. Alles hat mit den Einheimischen begonnen. Mit jedem Tag sind sie streitlustiger und feindseliger geworden, besonders Fremden wie Ihnen und mir gegenüber. Können Sie sich noch daran erinnern, wie widerlich manche von ihnen ausgesehen haben? An ihre glitschige, gräuliche Haut? An ihre breiten Lippen, ihre hervorquellenden Augen?“ \nDu nickst. Als die Erinnerung plötzlich zu dir zurückkehrt, wäre es dir lieber, sie wäre nicht zurückgekommen. Aber es war nicht nur ihr Aussehen. Auch ihre heiseren Stimmen, mit denen sie auf fast unmenschliche Weise Worte hervorkrächzten. Und dann war da noch ihr Gestank nach verwesendem Fisch. \n„Die Einheimischen sind für den neusten Ärger verantwortlich. Und das ist noch nicht alles. Seit Kurzem schleichen auch noch andere Kreaturen in Innsmouth herum. Ich bin mir sicher, dass Sie ihnen auch schon begegnet sind.“ Sie erschaudert. „Es gibt da eine Verbindung zwischen dem Esoterischen Orden von Dagon und diesen … Dingern. Ich weiß noch nicht, wo sie liegt, aber wir werden der Sache auf den Grund gehen, wenn …“ \nAgent Harper verstummt plötzlich, als sie über die Kuppe der Landzunge klettert, und starrt wortlos in die Ferne. Kein gutes Zeichen. Als auch du die Anhöhe erreichst, bietet sich dir das gleiche Bild der Zerstörung, das Harper verstummen ließ. \nInnsmouth wurde überrannt. Die gleichen Kreaturen, denen du in der Opfergrotte begegnet bist, bevölkern jetzt die Straßen – widerwärtige Wesen aus dem Meer und womöglich noch dunkleren Untiefen. Sie patrouillieren in allen Gassen und auf allen Kreuzungen. Anscheinend suchen – oder jagen – sie etwas. Behelfsmäßige Barrikaden versperren viele Wege und der Manuxet ist über die Ufer getreten und überschwemmt die Straßen. \n„Nein, das kann doch nicht sein …“, ruft Agent Harper aus. Für einen Moment steht ihr einfach nur stumm da. Die drohende Endgültigkeit der Lage ist fast greifbar. Es ist klar, dass Innsmouth nicht länger sicher ist. Du teilst Agent Harper mit, dass Agent Dawson seinen Wagen in der Nähe ihres Autos beim aufgegebenen Bahnhof auf der Westseite von Innsmouth abgestellt hat. Sie nickt verstehend. „In Ordnung. Wir müssen also zum anderen Ende der Stadt gelangen, und zwar schnell.“ \nDer Himmel über euch hat sich zu einem bedrohlichen Blutrot verfärbt. Mit etwas Glück muss am heutigen Tag nicht noch mehr von dieser Farbe vergossen werden."
     },
     {
       "id": "gather_encounter_sets",
@@ -63487,13 +63487,13 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put all 15 locations into play.",
+      "text": "Alle 15 Orte werden ins Spiel gebracht.",
       "bullets": [
         {
-          "text": "Place 24 barriers (using resource tokens) between these locations, as shown."
+          "text": "24 Barrieren (Ressourcenmarker) werden wie gezeigt zwischen den Orten platziert."
         },
         {
-          "text": "Each investigation begins play at the Desolate Coastline."
+          "text": "Jeder Ermittler beginnt das Spiel an der Trostlosen Küste."
         }
       ]
     },
@@ -63529,7 +63529,7 @@
       "location_names": [
         {
           "code": "07142",
-          "name": "Railroad Station"
+          "name": "Bahnhof"
         },
         {
           "code": "07129",
@@ -63541,7 +63541,7 @@
         },
         {
           "code": "07141",
-          "name": "Marsh Refinery"
+          "name": "Marsh-Raffinerie"
         },
         {
           "code": "07132",
@@ -63549,23 +63549,23 @@
         },
         {
           "code": "07135",
-          "name": "The Little Bookshop"
+          "name": "Der Kleine Buchladen"
         },
         {
           "code": "07137",
-          "name": "First National Grocery"
+          "name": "First National Lebensmittelladen"
         },
         {
           "code": "07139",
-          "name": "Innsmouth Square"
+          "name": "Marktplatz von Innsmouth"
         },
         {
           "code": "07136",
-          "name": "Fish Street Bridge"
+          "name": "Fish-Street-Brücke"
         },
         {
           "code": "07138",
-          "name": "Innsmouth Harbour"
+          "name": "Hafen von Innsmouth"
         },
         {
           "code": "07130",
@@ -63585,7 +63585,7 @@
         },
         {
           "code": "07143",
-          "name": "Desolate Coastline"
+          "name": "Trostlosen Küste"
         }
       ],
       "resource_dividers": [
@@ -63639,34 +63639,34 @@
     },
     {
       "id": "setup_keys",
-      "text": "Place each key as follows:",
+      "text": "Die Schlüssel werden wie folgt platziert:",
       "bullets": [
         {
-          "text": "Check the \"Possible Hideouts\" section of the Campaign Log for the location that is underlined. Place the black key on that location. <i>(If no location is underlined, skip this step.)</i>"
+          "text": "Überprüfe im Abschnitt „Mögliche Verstecke“ im Kampagnenlogbuch, welcher Ort eingekreist ist. Der schwarze Schlüssel wird auf jenem Ort platziert. <i>(Falls kein Ort eingekreist ist, wird dieser Schritt übersprungen.)</i>"
         },
         {
-          "text": "Set each other key aside, facedown. Shuffle them so you don't know which is which."
+          "text": "Jeder andere Schlüssel wird verdeckt beiseitegelegt und gemischt, sodass die Ermittler nicht wissen, welcher welcher ist."
         }
       ]
     },
     {
       "id": "setup_suspects",
-      "text": "Check the Campaign Log for each [[Suspect]] enemy that <i>is out for blood</i> and trigger each of their revelation abilities without placing clues on them."
+      "text": "Überprüfe das Kampagnenlogbuch nach jedem [[Verdächtiger]]-Gegner, der <i>auf Blut aus ist</i>. Jede Enthüllungsfähigkeit jener Gegner wird ausgelöst, ohne aber Hinweise auf ihnen zu platzieren."
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: 2 copies of the Ravager from the Deep enemy, 2copies of the Young Deep One enemy, the Joe Sargent story asset, the Teachings of the Order story asset, and the Innsmouth Shoggoth enemy."
+      "text": "Die folgenden Karten werden als nicht im Spiel befindlich beiseitegelegt: 2 Kopien des Gegners Verwüster aus der Tiefe, 2 Kopien des Gegners Junges Tiefes Wesen, die Storyvorteilskarte Joe Sargent, die Storyvorteilskarte Die Lehren des Ordens und der Gegner Innsmouth-Shoggothe."
     },
     {
       "id": "setup_angry_mob",
-      "text": "Search the collection for Angry Mob <i>(The Innsmouth Conspiracy card #62b)</i> and set it aside, out of play. (This card is on the reverse side of the \"Finding Agent Harper\" story card.)"
+      "text": "Die Sammlung wird nach dem Gegner Wütende Meute <i>(Die Innsmouth-Verschwörung, #62b)</i> durchsucht und als nicht im Spiel befindlich beiseitegelegt. (Diese Karte ist auf der Rückseite der Karte „Agent Harper finden“ zu finden.)"
     },
     {
       "id": "flood_tokens",
-      "text": "Add the flood tokens to the token pool.",
+      "text": "Die Flutmarker werden dem Markervorrat hinzugefügt.",
       "bullets": [
         {
-          "text": "Increase the flood level of each of the following locations: The House on Water Street, Innsmouth Harbour, and Desolate Coastline."
+          "text": "Die Flutstufe der folgenden Orte wird erhöht: Das Haus in der Water Street, Hafen von Innsmouth und Trostlose Küste."
         }
       ]
     },
@@ -63677,38 +63677,38 @@
     {
       "id": "barriers_rule",
       "type": "rule_reminder",
-      "title": "Barriers",
-      "text": "In this scenario, barriers have been set up around the various streets of Innsmouth. Each barrier is represented by a resource token placed between two locations. Barriers block the movement of investigators along that path.",
+      "title": "Barrieren",
+      "text": "In diesem Szenario sind in den Straßen von Innsmouth Barrieren errichtet worden. Jede Barriere wird von einem Ressourcenmarker repräsentiert, der zwischen zwei Orten liegt. Barrieren versperren Ermittlern den Weg, die sich zwischen zwei Orten mit Barriere dazwischen bewegen wollen.",
       "bullets": [
         {
-          "text": "If there are 1 or more barriers placed directly between two locations, investigators cannot move from one of those locations to the other, even if they are connected."
+          "text": "Falls 1 oder mehr Barrieren direkt zwischen zwei Orten liegen, können sich Ermittler nicht zwischen diesen beiden Orten hin- und herbewegen, auch wenn sie miteinander verbunden sind."
         },
         {
-          "text": "Barriers can be removed using some location abilities, or the ability on act 1a. The more barriers placed between two locations, the more times such an ability must be used in order to clear the path."
+          "text": "Barrieren können durch die Fähigkeit mancher Orte oder die Fähigkeit auf Szene 1a entfernt werden. Je mehr Barrieren zwischen zwei Orten liegen, desto öfter muss eine solche Fähigkeit verwendet werden, um den Weg freizuräumen."
         },
         {
-          "text": "When a hunter enemy moves, after determining which investigator it moves toward, it follows the shortest path not blocked by barriers. If no such path exists, it ignores barriers. All other enemy movement ignores barriers."
+          "text": "Sobald sich ein Gegner durch das Schlüsselwort Jäger bewegt, bewegt er sich, nachdem bestimmt worden ist, auf welchen Ermittler er sich zubewegt, auf dem kürzesten, nicht von Barrieren versperrten Weg auf den Ermittler zu. Falls es keinen solchen Weg gibt, ignoriert der Gegner die Barrieren. Barrieren werden bei allen anderen Gegnerbewegungen ignoriert."
         }
       ]
     },
     {
       "id": "location_adjacency",
       "type": "rule_reminder",
-      "title": "Location Adjacency in Innsmouth",
-      "text": "During this scenario, locations are arranged in a set pattern, with each location adjacent to one or more other locations.",
+      "title": "Benachbarte Orte in Innsmouth",
+      "text": "Während dieses Szenarios werden die Orte in einem vorgegebenen Muster ausgelegt. Dabei ist jeder Ort benachbart zu 1 oder mehr anderen Orten.",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Während dieses Szenarios gelten benachbarte Orte als miteinander verbunden.</b>"
         },
         {
-          "text": "Locations are only adjacent orthogonally (north, east, south, or west); they are not adjacent diagonally."
+          "text": "Orte sind nur orthogonal benachbart (nach Norden, Osten, Süden und Westen), jedoch nicht diagonal."
         }
       ]
     },
     {
       "id": "keys_rule",
       "title": "Schlüssel",
-      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+      "text": "In diesem Szenario steht jeder farbige Schlüssel für ein anderes Objekt. Du kannst die \"Schlüssel\" Option weitere unten verwenden, um ihre Bedeutung zu enthüllen, wenn sie ins Spiel gebracht werden."
     },
     {
       "id": "$play_scenario",
@@ -63735,7 +63735,7 @@
                 }
               ]
             },
-            "text": "Flashback V",
+            "text": "Rückblende V",
             "steps": [
               "flashback_5_story",
               "flashback_5_effects"
@@ -63761,7 +63761,7 @@
                 }
               ]
             },
-            "text": "Flashback VI",
+            "text": "Rückblende VI",
             "steps": [
               "flashback_6_story",
               "flashback_6_effects"
@@ -63787,7 +63787,7 @@
                 }
               ]
             },
-            "text": "Flashback VII",
+            "text": "Rückblende VII",
             "steps": [
               "flashback_7_story",
               "flashback_7_effects"
@@ -63813,7 +63813,7 @@
                 }
               ]
             },
-            "text": "Flashback VIII",
+            "text": "Rückblende VIII",
             "steps": [
               "flashback_8_story",
               "flashback_8_effects",
@@ -63834,21 +63834,21 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "Von welchem Schlüssel möchtest du die Bedeutung lesen:",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Lesen",
         "choices": [
           {
             "id": "black",
-            "text": "Black",
+            "text": "Schwarz",
             "steps": [
               "black_key"
             ]
           },
           {
             "id": "other_keys",
-            "text": "Other Keys",
+            "text": "Andere Schlüssel",
             "steps": [
               "other_keys"
             ]
@@ -63858,45 +63858,45 @@
     },
     {
       "id": "black_key",
-      "text": "Black: Information regarding the suspect who kidnapped Agent Harper."
+      "text": "Schwarz: Informationen über den Verdächtigen, der Agent Harper entführt haben soll."
     },
     {
       "id": "other_keys",
-      "text": "Red/Blue/Green/Yellow/Purple/White: Information from the still-human citizens of Innsmouth regarding the state of the town."
+      "text": "Rot/Blau/Grün/Gelb/Lila/Weiß: Informationen der noch menschlich gebliebenen Bewohner von Innsmouth über den Zustand der Stadt."
     },
     {
       "id": "flashback_5_story",
-      "title": "Flashback V",
+      "title": "Rückblende V",
       "type": "story",
-      "text": "You are in the middle of a conversation with Joe Sargent, the bus driver, but it must be several weeks earlier. The streets are not yet flooded, and all of the dilapidated, ramshackle buildings still stand, despite themselves. \"I told ye, outsider,\" Mr. Sargent says, \"There ain't no buses outta Innsmouth t'day.\" But you're not looking for a bus out of Innsmouth. You explain that you have a proposition for Mr. Sargent. He probes the street for eavesdroppers before answering. \"What kinda prop'sition?\"\nYou know you aren't going to get through to Mr. Sargent with a moral argument, so you appeal to his material desires instead, offering a sizable sum of money in exchange for his assistance. After returning from Devil Reef, you've found Innsmouth to be even less hospitable than normal. You are watched everywhere you go. Simply traveling on foot puts you in danger.\n\"So you jus' need me to ferry you around like a chauffer, that it?\" Mr. Sargent weighs his options momentarily, then shakes your hand. \"I can do that.\""
+      "text": "Du befindest dich inmitten einer Unterhaltung mit dem Busfahrer Joe Sargent. Diese muss vor ein paar Wochen stattgefunden haben. Die Straßen sind noch nicht überflutet und alle der baufälligen, maroden Gebäude stehen noch. „Ich habs Ihnen schon gesagt, Fremder“, sagt Mr. Sargent, „heute fährt kein Bus mehr von Innsmouth ab.“ Aber du bist nicht auf der Suche nach einer Busfahrt aus Innsmouth hinaus. Du erklärst Mr. Sargent, dass du ein Angebot für ihn hast. Bevor er dir antwortet, blickt er sich nach möglichen Mithörern um: „Was soll’n das für ein Angebot sein?“ \nDir ist klar, dass du Mr. Sargent nicht über die moralische Schiene erreichen kannst, sodass du seine materiellen Sehnsüchte ansprichst, indem du ihm im Austausch für seine Hilfe eine stattliche Summe anbietest. Nach deiner Rückkehr vom Teufelsriff erscheint dir Innsmouth noch ungastlicher als zuvor. Du wirst auf Schritt und Tritt beobachtet. Du setzt dich bereits einer Gefahr aus, wenn du weiter zu Fuß gehst. \n„Ich soll Sie also wie so’n Chauffeur herumfahr’n, das ist alles?“ Mr. Sargent wägt einen Augenblick seine Möglichkeiten ab, dann schüttelt er dir die Hand. „Das kann ich mach’n.“"
     },
     {
       "id": "flashback_5_effects",
-      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a deal with Joe Sargent</i>.\nPut the set-aside Joe Sargent asset into play under the control of an investigator at Innsmouth Square.",
+      "text": "Im Kampagnenlogbuch wird unter „Zurückerlangte Erinnerungen“ <i>ein Geschäft mit Joe Sargent</i> notiert. \nBringe die beiseitegelegte Storyvorteilskarte Joe Sargent unter der Kontrolle eines Ermittlers auf dem Marktplatz von Innsmouth ins Spiel.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_deal_with_joe_sargent",
-          "text": "a deal with Joe Sargent."
+          "text": "ein Geschäft mit Joe Sargent."
         }
       ]
     },
     {
       "id": "flashback_6_story",
-      "title": "Flashback VI",
+      "title": "Rückblende VI",
       "type": "story",
-      "text": "The bell over the entrance to the Little Bookshop chimes as you jerk the door open. As expected, the interior is dark. Ever since your first week in town, the shop's been closed. It seems Joyce Little was not only its owner, but its only employee. Thankfully, picking the lock wasn't too difficult. You sneak between the dark, dusty shelves as you search for anything you can find about the Esoteric Order of Dagon.\nThe shop is quiet, and your tail hasn't followed you here. You spend some time perusing the dark, narrow rows of shelves, until you come to a basement with a chain-locked door. There's no way you're getting that door open, but the answers you seek must lay beyond. Somehow, you have to get in there. Just then, the beam of a flashlight shines through the front window of the shop. Your tail is on to you. You flee out the back door, hoping to return another time...\n... and the vision ends. You are back in the present, standing in what remains of the bookshop. Flood waters have destroyed the shelving and rendered most of the books unreadable. However, from the corner of your eye, you notice the once-locked basement door is now ajar. You rush down the steps, splashing through water up to your knees. What you find is an assortment of scrolls and tomes, many in a runic, alien, yet strangely familiar language. Whatever this trove of knowledge is, it must pertain to the Esoteric Order of Dagon. You grab as much as you can find before escaping back into the flooded streets."
+      "text": "Das Glöckchen über dem Eingang zu Der Kleine Buchladen klingelt, als du die Tür aufstößt. Wie du erwartet hast, ist es im Inneren dunkel. Seit deiner ersten Woche in der Stadt ist das Geschäft geschlossen. Wie es scheint, war Joyce Little nicht nur die Besitzerin, sondern auch die einzige Mitarbeiterin. Zum Glück war das Knacken des Schlosses nicht so schwer. Du schleichst dich zwischen den dunklen, staubigen Regalen hindurch und suchst nach irgendetwas über den Esoterischen Orden von Dagon. \nIm Laden ist es still. Deine Beschatter haben dich nicht bis hier hinein verfolgt. Du lässt dir deshalb etwas Zeit, die finsteren, engen Regalreihen zu durchsuchen. Schließlich kommst du an eine Kellertür, die mit einer Kette verschlossen ist. Du siehst keine Chance, die Tür zu öffnen. Aber die Antworten müssen dahinter zu finden sein. Irgendwie musst du dort hineinkommen. Plötzlich huscht der Schein einer Taschenlampe durch das Schaufenster des Ladens. Deine Beschatter sind dir auf der Spur. Du fliehst durch die Hintertür, in der Hoffnung, ein anderes Mal zurückkommen zu können … \nHier endet die Vision. Du bist wieder in der Gegenwart und befindest dich in den Überresten des ehemaligen Buchladens. Die Flut hat die Regale überschwemmt und die meisten Bücher unleserlich gemacht. Im Augenwinkel fällt dir die zuvor verschlossene Kellertür auf, die jetzt offen steht. Du eilst die Stufen hinab und watest durch knietiefes Wasser, bis du eine Sammlung verschiedener Schriftrollen und Bücher findest, die in einer fremdartigen, aber dennoch irgendwie vertraut wirkenden Runensprache verfasst sind. Was dieser Quell des Wissens auch sein mag, er muss dem Esoterischen Orden von Dagon gehören. Du sammelst so viel zusammen, wie du finden kannst, und kehrst dann wieder auf die überfluteten Straßen zurück."
     },
     {
       "id": "flashback_6_effects",
-      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a followed lead</i>.\nAny one investigator may choose to add Teachings of the Order to their deck, immediately putting it into play under their control.",
+      "text": "Im Kampagnenlogbuch wird unter „Zurückerlangte Erinnerungen“ <i>eine verfolgte Spur</i> notiert. \nEiner der Ermittler in Der Kleine Buchladen darf die Storyvorteilskarte Die Lehren des Ordens seinem Deck hinzufügen und sie sofort unter seiner Kontrolle ins Spiel bringen.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_followed_lead",
-          "text": "a followed lead."
+          "text": "eine verfolgte Spur."
         },
         {
           "type": "add_card",
@@ -63907,19 +63907,19 @@
     },
     {
       "id": "flashback_7_story",
-      "title": "Flashback VII",
+      "title": "Rückblende VII",
       "type": "story",
-      "text": "You are on your way into town for the very first time when you pass by a withered old lady gibbering complete nonsense: \"Iä-Y'ha-nthlei... ph'nglui mglw'nafh Pth'thya-l'yi... Hydra fhtagn... mglw'nafh Pth'thya-l'yi...\" You are about to pass her by when she suddenly reaches out and grips your forearm with a strength you couldn't have predicted. \"Pth'thya-l'yi!\" she repeats. \"She is hidden in the depths! In the City of the Deep Ones!\" Her gaze seems to drill into the back of your skull.\nYou take her hand and politely detach it from your arm. It would appear you can't even walk down the street in this town without being accosted by some crackpot—and yet, something about the grievous look in her milky eyes gives you pause. Whatever this woman speaks of, she believes it with absolute certainty. Sighing, you ask her what she is talking about.\n\"Th-they are on their way,\" she sputters. \"First, the alignment. Then the tide. Then the progeny of Mother Hydra.\" Her pale, blind eyes search for yours. Still, her absurd babbling is of no use to you. You are about to depart when she probes for your hand and presses something into your palm. \"Take it!\" she says. You hand it back to her and brush her off. You want no part of this foolishness; your task is to find Agent Harper, not collect bizarre knickknacks. Her expression sours as you turn to leave.\nWhen you return to the present, you are standing over the woman's shredded corpse. Whatever \"nonsense\" she was spouting was in fact a genuine warning. Clutched in her stiff hand is the strange gold coin she'd offered you weeks before. This time, you take it with you."
+      "text": "Du bist das erste Mal in den Straßen der Stadt unterwegs, als du einer verrunzelten, alten Frau begegnest, die vollkommenen Unsinn von sich gibt: „Iä-Y’ha-nthlei … ph’nglui mglw’nafh Pth’thya-l’yi …Hydra fhtagn … mglw’nafh Pth’thya-l’yi …“ Gerade als du an ihr vorbeigehen willst, streckt sie ihre Hand nach dir aus und hält dich mit einer Stärke fest, die du ihr nicht zugetraut hättest. „Pth’thya-l’yi!“, wiederholt sie. „Sie ist in den Tiefen verborgen! In der Stadt der Tiefen Wesen!“ Ihr Blick scheint sich bis in die Rückseite deines Schädels zu bohren. \nDu nimmst ihre Hand und löst sie höflich von deinem Arm. Wie es scheint, kannst du dich nicht einmal durch die Straßen bewegen, ohne von einer Verrückten belästigt zu werden – und dennoch: Irgendetwas in dem schmerzlichen Blick ihrer glasigen Augen lässt dich stutzen. Von was auch immer diese Frau spricht, sie scheint davon überzeugt zu sein. Seufzend fragst du sie, über was sie da redet. \n„S-s-sie sind auf dem Weg“, stottert sie. „Zuerst die Konstellation. Dann die Flut. Dann die Nachkommen von Mutter Hydra.“ Ihre weißen, blinden Augen blicken in deine. Ihr absurdes Gebrabbel ergibt immer noch keinen Sinn für dich. Du willst sie gerade zurücklassen, als sie dich erneut packt und etwas in deine Handfläche drückt. „Nimm es!“, fordert sie dich auf. Du gibst ihr das Ding zurück und weist sie von dir. Du willst mit diesem Unsinn nichts zu tun haben, schließlich musst du Agent Harper finden, nicht irgendwelchen bizarren Schnickschnack sammeln. Ihr Gesichtsausdruck verfinstert sich, als du dich von ihr abwendest. \nAls du in die Gegenwart zurückkehrst, stehst du über dem zerfetzten Leichnam der alten Frau. Von welchem „Unsinn“ sie auch gebrabbelt haben mag, es war offenbar eine sehr ernste Warnung an dich. Ihre steif gewordene Hand hält noch immer die seltsame Goldmünze umklammert, die sie dir vor Wochen angeboten hatte. Dieses Mal nimmst du sie an dich."
     },
     {
       "id": "flashback_7_effects",
-      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>an intervention</i>.\nAdd a +1 token to the chaos bag for the remainder of the campaign.",
+      "text": "Im Kampagnenlogbuch wird unter „Zurückerlangte Erinnerungen“ <i>eine Warnung</i> notiert. \nFür den Rest der Kampagne wird dem Chaosbeutel 1 „+1“-Marker hinzugefügt.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "an_intervention",
-          "text": "an intervention."
+          "text": "eine Warnung."
         },
         {
           "type": "add_chaos_token",
@@ -63931,32 +63931,32 @@
     },
     {
       "id": "flashback_8_story",
-      "title": "Flashback VIII",
+      "title": "Rückblende VIII",
       "type": "story",
-      "text": "You stand in front of Innsmouth's jail warden, a stocky, middle-aged man whose wrinkled flesh is slick with oil. His stench is almost worse than the rank odor of the jailhouse. \"See fer yerself,\" the warden says, pointing down the dank hall. You came here to visit the culprit who kidnapped Agent Harper, only to be informed by the warden that the suspect had escaped the previous night.\nYou hustle down the hall, fists clenched. There's no way they could have escaped on their own. They must have had help, and it could have come from anybody. It could even have been the warden himself. Given the way the townsfolk have impeded your investigation at every turn, it almost seems like the entire town is against you.\nYou round the corner and come face-to-face with the kidnapper's erstwhile jail cell. Not only is it empty, but its bars are bent outward from the middle—enough to fit a human through, or perhaps something even larger. You inspect the bars and find them to be solid steel, so thick that no human could bend them.\nHow could they have possibly gotten out..."
+      "text": "Du stehst vor dem Leiter des Gefängnisses von Innsmouth, einem stämmigen Mann im mittleren Alter, dessen faltige Haut ölig glänzt. Der Gestank, der von ihm ausgeht, ist fast noch schlimmer als der ranzige Geruch des Gefängnisses. „Sehen Sie selbst“, sagt der Gefängnisleiter und zeigt in einen feuchten Flur. Du bist hier, um mit dem Täter zu sprechen, der Agent Harper entführt hatte. Leider musstest du vom Gefängnisleiter erfahren, dass der Verdächtige erst gestern Nacht ausgebrochen ist. \nMit geballten Fäusten eilst du den Gang hinab. Unmöglich, dass er ohne Hilfe entkommen konnte. Es muss ihm jemand dabei geholfen haben. Jeder kann dafür infrage kommen. Selbst der Gefängnisleiter könnte es gewesen sein. Wenn du bedenkst, wie die Stadtbewohner deine Ermittlung bei jeder sich bietenden Gelegenheit behindert haben, so scheint es, dass die gesamte Stadt gegen dich ist. \nAls du um die nächste Ecke biegst, stößt du auf die ehemalige Zelle des Entführers. Sie ist nicht nur leer, ihre Gitterstäbe sind in der Mitte nach außen verbogen – weit genug, dass ein Mensch oder sogar etwas noch Größeres hindurchschlüpfen kann. Du untersuchst die Gitterstäbe und musst feststellen, dass sie aus solidem Stahl gearbeitet sind, so dick, dass sie kein Mensch hätte verbiegen können. \nWie ist er dann ausgebrochen …?"
     },
     {
       "id": "flashback_8_effects",
-      "text": "In the Campaign Log, under \"Memories Recovered,\" record <i>a jailbreak</i>",
+      "text": "Im Kampagnenlogbuch wird unter „Zurückerlangte Erinnerungen“ <i>ein Gefängnisausbruch<i> notiert",
       "effects": [
         {
           "type": "campaign_log",
           "section": "memories_recovered",
           "id": "a_jailbreak",
-          "text": "a jailbreak."
+          "text": "ein Gefängnisausbruch."
         }
       ]
     },
     {
       "id": "flashback_8_choice",
       "type": "input",
-      "text": "Choose and remove one of the following chaos tokens from the chaos bag for the remainder of the campaign ([cultist], [tablet], or [elder_thing]).",
+      "text": "Wähle 1 der folgenden Chaosmarker aus dem Chaosbeutel und entferne ihn für den Rest der Kampagne daraus: [cultist], [tablet], oder [elder_thing].",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "cultist",
-            "text": "Remove [cultist]",
+            "text": "Entferne [cultist]",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -63968,7 +63968,7 @@
           },
           {
             "id": "tablet",
-            "text": "Remove [tablet]",
+            "text": "Entferne [tablet]",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -63980,7 +63980,7 @@
           },
           {
             "id": "cultist",
-            "text": "Remove [elder_thing]",
+            "text": "Entferne [elder_thing]",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -64022,7 +64022,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "made_it_safely_to_their_vehicles",
-          "text": "the investigators made it safely to their vehicles."
+          "text": "Die Ermittler haben es sicher bis zu ihren Fahrzeugen geschafft."
         }
       ]
     },
@@ -64045,7 +64045,7 @@
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Jeder Ermittler verdient Erfahrungspunkte in Höhe des Sieg-XWertes aller Karten im Siegpunktestapel. Notiere diese Erfahrungspunkte im Kampagnen logbuch unter „Nicht ausgegebene EP“. <b>Diese Erfahrungs punkte dürfen jetzt noch nicht ausgegeben werden.</b> Die Ermittler werden zu einem späteren Zeitpunkt dazu angewiesen, diese Erfahrungspunkte auszugeben.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -64062,7 +64062,7 @@
     {
       "id": "vehicle_xp",
       "bullet_type": "small",
-      "text": "Each investigator records 2 additional experience under \"Unspent Experience.\"",
+      "text": "Jeder Ermittler notiert 2 zusätzliche Erfahrungspunkte unter „Nicht ausgegebene EP“.",
       "effects": [
         {
           "type": "earn_xp",
@@ -64080,13 +64080,13 @@
         "choices": [
           {
             "id": "yes",
-            "text": "Was <i>Innsmouth consumed by the rising tide</i>?",
+            "text": "Wurde <i>Innsmouth durch die steigende Flut verzehrt</i>?",
             "effects": [
               {
                 "type": "campaign_log",
                 "section": "campaign_notes",
                 "id": "innsmouth_was_consumed_by_the_rising_tide",
-                "text": "Innsmouth was consumed by the rising tide."
+                "text": "Innsmouth ist durch die steigende Flut verzehrt worden."
               }
             ]
           }
@@ -64103,7 +64103,7 @@
         "physical",
         "mental"
       ],
-      "text": "Your flight from Innsmouth is fraught with peril. Nowhere is safe. Horrific creatures patrol every street, their unblinking eyes scanning for any sign of human life. The eerie silence is punctuated only by the occasional screams of those unfortunate enough to be caught by the foul things. You move through the city as quickly as you can, but they close in all around you. Following your every move. Soon, if you do not find a place to hide, they will catch you. And when they do, your cries of agony will surely join with the others.\nYou are out of options. You break into the nearest building—a sinking ramshackle residence—and hide. You hear the telltale shlick of wet footsteps outside the house. Seconds turn to minutes. Minutes to hours. The sun sets, bathing the sky outside in a deep scarlet hue. Bit by bit, the light fades.\nUnder cover of darkness, you make your move. The flood is so bad now it is a wonder you can even trudge through to the other side of the city, but somehow, you do. With the railway station in sight, you break into a run.",
+      "text": "Deine Flucht aus Innsmouth ist voller Gefahren. Nirgendwo ist es sicher. Schreckliche Kreaturen patrouillieren auf jeder Straße und suchen sie mit ihren Augen, die niemals zu blinzeln scheinen, nach Zeichen menschlichen Lebens ab. Die unheimliche Stille wird nur von den gelegentlichen Schreien derjeniger unterbrochen, die das Pech hatten, von diesen verdorbenen Kreaturen erwischt zu werden. Du läufst so schnell wie möglich durch die Stadt, aber sie nähern sich dir von allen Seiten, verfolgen dich auf Schritt und Tritt. Wenn du nicht bald ein Versteck findest, werden sie dich erwischen. Und wenn das passiert, werden sich deine Schmerzensschreie in den Chor der Sterbenden einreihen. \nDir gehen die Optionen aus. Also brichst du in das nächste Gebäude ein und versteckst dich in diesem langsam versinkenden, baufälligen Wohnhaus. Du hörst das nasse Platschen von Schritten vor dem Haus. Sekunden werden zu Minuten und Minuten werden zu Stunden. Die Sonne geht bereits unter und lässt den Himmel draußen in blutroten Farben erstrahlen. Dann schwindet das Licht mehr und mehr. \nIm Schutz der Dunkelheit wagst du deinen nächsten Schritt. Das Wasser steht jetzt schon so hoch in den Straßen, dass es einem Wunder gleichkommen würde, wenn du es bis zum anderen Ende der Stadt schaffen würdest. Aber irgendwie gelingt es dir doch. Als das Bahnhofsgebäude in Sicht kommt, beginnst du zu rennen.",
       "steps": [
         "ask_consumed_by_rising_tide",
         "resolution_1"
@@ -64112,7 +64112,7 @@
     {
       "id": "R1",
       "title": "Auflösung 1",
-      "text": "You rush to safety, elated to be free of this hellish ordeal. But as you reach the vehicles, uncertainty swims in your mind. When you turn to face Agent Harper, she instantly recognizes your expression.\nYou understand now that you were hired to rescue her, and that something went awry. You and Agent Dawson were captured, and he was sacrificed to that... thing in the tidal caverns. Now you and Agent Harper are safe and free to return to Boston. And yet...\n\"We can't just leave,\" Harper says aloud what you are thinking. Her brows are knit in frustration. \"I mean, look at all of this. This devastation. These... these creatures.\" She motions to what remains of the flooded town of Innsmouth. \"We have to figure out what's really going on here, or...\" she trails off.\nYou understand her meaning. If the tide is rising this quickly here, it could be happening along the eastern seaboard. Arkham, Boston, no city is safe. Worse yet, nobody would believe such a tall tale until it was too late.\nWhatever these creatures are, they are scheming something that could put the entire world in jeopardy. You cannot allow that to happen.\n\"I don't suppose you have Dawson's key, do you?\" Harper asks. You can't imagine you would, yet when you check your belongings, you find a polished silver key among them. Dawson must have given it to you before his untimely end. You try the key on the driver's side door of his automobile, and it turns with an audible click. \"Well, would you look at that.\"\nEager to be away, she starts her car. At the engine's shuddering ignition, your mind reels with sudden pain. A bright spot, like the incandescent sun, flares within your sight. \"Okay, so... where to now?\" she asks, but you're barely able to register her words. The blinding flare grows larger and brighter. The rumbling of the engine drowns out all other sound. The world spins. You fall to the ground, clutching your temples. Your entire head is on fire. You can hear Harper calling to you, but her voice is muffled, like she is deep underwater. Or perhaps you are.\nYour vision fades. All that is left is the roaring of the engine and the crashing of tumultuous sea waves, and then—",
+      "text": "Ermutigt, dieser höllischen Tortur entkommen zu sein, eilst du der Sicherheit der Fahrzeuge entgegen. Als du sie aber erreichst, kommen dir Zweifel. Als du dich Agent Harper zuwendest, kann sie deine Unsicherheit sofort in deinem Gesichtsausdruck erkennen. \nDir ist klar, dass du angeheuert wurdest, um sie zu retten, dabei aber etwas schiefgelaufen ist. Sowohl Agent Dawson als auch du wurdet gefangen genommen und er wurde diesem … Ding in den Gezeitenhöhlen geopfert. Jetzt bist du und Agent Harper in Sicherheit. Du kannst nun endlich nach Boston zurückzukehren, und dennoch … \n„Wir können nicht einfach gehen“, spricht Harper das laut aus, was du gedacht hast, und runzelt missmutig die Stirn. „Was ich damit sagen will: Sehen Sie sich das alles an. Diese Zerstörung! Diese … diese Kreaturen.“ Sie zeigt auf die Überreste der überfluteten Stadt Innsmouth. „Wir müssen herausfinden, was hier wirklich vor sich geht, oder …“, beginnt sie, hält dann aber inne. \nDu weißt, was sie meint. Wenn die Flut hier das Wasser so stark ansteigen lässt, könnte das entlang der ganzen Ostküste passieren. Arkham, Boston, keine Stadt wäre mehr sicher. Und was noch schlimmer ist: Keiner würde dieser „Lügengeschichte“ Glauben schenken, bis es zu spät ist. \nWas auch immer diese Kreaturen sind, sie planen etwas, das die gesamte Welt in Gefahr bringt. Das kannst du einfach nicht zulassen. \n„Ich nehme nicht an, dass Sie Dawsons Wagenschlüssel haben, oder?“, fragt dich Harper. Du gehst nicht davon aus, aber als du deine Sachen durchsuchst, findest du einen eleganten Silberschlüssel. Dawson muss ihn dir vor seinem verfrühten Ableben gegeben haben. Du probierst ihn an der Tür der Fahrerseite aus. Mit einem hörbaren Klicken gelingt es dir, den Schlüssel im Schloss umzudrehen. „Kaum zu glauben.“ \nErpicht darauf, endlich von hier zu verschwinden, startet Harper ihren Wagen. Als der Motor stotternd anspringt, durchzuckt ein plötzlicher Schmerz deinen Kopf. Ein heller Punkt, weißglühend wie die Sonne selbst, flammt vor deinen Augen auf. „Okay … wohin jetzt?“, fragt sie, aber du kannst ihre Worte kaum verstehen. Das blendende Leuchtfeuer wird größer und heller. Das Rumpeln des Motors verschluckt alle anderen Geräusche. Die Welt fängt an, sich zu drehen. Du gehst zu Boden und presst deine Hände an die Schläfen. Dein gesamter Schädel steht in Flammen. Entfernt kannst du hören, wie Harper nach dir ruft, aber ihre Stimme ist gedämpft, als wäre sie tief unter Wasser. Oder vielleicht bist du ja unter Wasser? \nDeine Sicht schwindet. Alles, was übrig bleibt, ist das Dröhnen des Motors und das Anbranden aufgewühlter Wellen – und dann …",
       "steps": [
         "maybe_made_it_safely_to_their_vehicles",
         "earn_xp",
@@ -64394,7 +64394,7 @@
     },
     {
       "id": "setup_keys",
-      "text": "Place each key as follows:",
+      "text": "Die Schlüssel werden wie folgt platziert:",
       "bullets": [
         {
           "text": "Der blaue und grüne Schlüssel werden offen beiseitegelegt."
@@ -64448,7 +64448,7 @@
     },
     {
       "id": "setup_flood_markers",
-      "text": "Add the flood tokens to the token pool."
+      "text": "Die Flutmarker werden dem Markervorrat hinzugefügt."
     },
     {
       "id": "encounter_deck",
@@ -64477,7 +64477,7 @@
       "text": "Während dieses Szenarios werden die Orte in einem vorgegebenen Muster ausgelegt, wobei neue Orte aus dem Gezeitentunnel-Deck rechts, links und unterhalb bereits vorhandener Orte angelegt werden. <i>(Hinweis: Das Gezeitentunnel-Deck existiert zu Beginn des Szenarios noch nicht. Die Spieler werden während des Szenarios angewiesen, wann und wie sie es erstellen sollen.)</i>",
       "bullets": [
         {
-          "text": "<b>During this scenario, adjacent locations are considered to be connected to one another.</b>"
+          "text": "<b>Während dieses Szenarios gelten benachbarte Orte als miteinander verbunden.</b>"
         },
         {
           "text": "Ein Ort, der links, rechts oder unterhalb eines anderen Ortes ins Spiel gebracht wird, sollte auf die beschriebene Art neben den Ort gelegt werden, sodass sich keine anderen Orte zwischen den beiden Orten befinden. Ein Ort, der sich so neben einem anderen Ort befindet, gilt als „benachbart“."
@@ -64498,11 +64498,11 @@
     {
       "id": "keys_rule",
       "title": "Schlüssel",
-      "text": "During this scenario, each colored key represents a different object. You can use the \"Keys\" option below to reveal their narrative role as they enter play."
+      "text": "In diesem Szenario steht jeder farbige Schlüssel für ein anderes Objekt. Du kannst die \"Schlüssel\" Option weitere unten verwenden, um ihre Bedeutung zu enthüllen, wenn sie ins Spiel gebracht werden."
     },
     {
       "id": "earn_xp",
-      "text": "Each investigator earns experience equal to the Victory X value of each card in the victory display. Record this experience under \"Unspent Experience\" in your Campaign Log, but <b>do not spend any of it yet.</b> You will be instructed to spend this experience at a later time.",
+      "text": "Jeder Ermittler verdient Erfahrungspunkte in Höhe des Sieg-XWertes aller Karten im Siegpunktestapel. Notiere diese Erfahrungspunkte im Kampagnen logbuch unter „Nicht ausgegebene EP“. <b>Diese Erfahrungs punkte dürfen jetzt noch nicht ausgegeben werden.</b> Die Ermittler werden zu einem späteren Zeitpunkt dazu angewiesen, diese Erfahrungspunkte auszugeben.",
       "type": "input",
       "input": {
         "type": "counter",
@@ -64639,10 +64639,10 @@
     {
       "id": "ask_keys",
       "type": "input",
-      "text": "Which keys do you want to read the representation of:",
+      "text": "Von welchem Schlüssel möchtest du die Bedeutung lesen:",
       "input": {
         "type": "checklist",
-        "text": "Read",
+        "text": "Lesen",
         "choices": [
           {
             "id": "blue",

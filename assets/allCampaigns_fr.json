@@ -41517,7 +41517,7 @@
     },
     {
       "id": "all_mementos",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Gilman’s Journal</i>, <i>Keziah’s Formulae</i>, and <i>Worn Crucifix</i>.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « souvenirs découverts », inscrivez <i>Journal de Gilman</i>, <i>Formule de Keziah</i> et <i>Crucifix Usagé</i>.",
       "effects": [
         {
           "type": "campaign_log",
