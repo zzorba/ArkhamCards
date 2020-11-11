@@ -10,9 +10,9 @@ import CardTextComponent from '@components/card/CardTextComponent';
 import CardUpgradeOption from './CardUpgradeOption';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import CardDetailComponent from '@components/card/CardDetailView/CardDetailComponent';
-import { Deck, DeckMeta, Slots } from '@actions/types';
+import { DeckMeta, Slots } from '@actions/types';
 import DeckValidation from '@lib/DeckValidation';
-import Card, { CardsMap } from '@data/Card';
+import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import space, { m, s, xs } from '@styles/space';
@@ -23,21 +23,16 @@ import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { useNavigationButtonPressed, useSlots } from '@components/core/hooks';
+import { useDeck, useNavigationButtonPressed, usePlayerCards, useSlots } from '@components/core/hooks';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
-  card?: Card;
-  cards: CardsMap;
-  cardsByName: {
-    [name: string]: Card[];
-  };
+  id: number;
+  cardsByName: Card[];
   slots: Slots;
   ignoreDeckLimitSlots: Slots;
   investigator: Card;
   meta: DeckMeta;
-  deck: Deck;
-  previousDeck?: Deck;
   tabooSetId?: number;
   updateSlots: (slots: Slots) => void;
   updateIgnoreDeckLimitSlots: (slots: Slots) => void;
@@ -49,13 +44,10 @@ type Props = CardUpgradeDialogProps & NavigationProps;
 
 export default function CardUpgradeDialog({
   componentId,
-  card,
-  cards,
   cardsByName,
   investigator,
   meta,
-  deck,
-  previousDeck,
+  id,
   slots: originalSlots,
   ignoreDeckLimitSlots: originalIgnoreDeckLimitSlots,
   tabooSetId,
@@ -64,6 +56,8 @@ export default function CardUpgradeDialog({
   updateXpAdjustment,
   xpAdjustment: originalXpAdjustment,
 }: Props) {
+  const cards = usePlayerCards();
+  const [deck, previousDeck] = useDeck(id, {});
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
   const [slots, updateSlots] = useSlots(originalSlots, updateActualSlots);
@@ -73,7 +67,7 @@ export default function CardUpgradeDialog({
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
 
   const parsedDeck = useMemo(() => {
-    return parseDeck(deck, meta, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
+    return cards && deck && parseDeck(deck, meta, slots, ignoreDeckLimitSlots || {}, cards, previousDeck);
   }, [cards, deck, previousDeck, meta, slots, ignoreDeckLimitSlots]);
 
   useNavigationButtonPressed(({ buttonId }) => {
@@ -85,11 +79,11 @@ export default function CardUpgradeDialog({
   const namedCards = useMemo(() => {
     const validation = new DeckValidation(investigator, slots, meta);
     return sortBy(
-      filter((card && cardsByName[card.real_name]) || [],
+      filter(cardsByName,
         card => validation.canIncludeCard(card, false)),
       card => card.xp || 0
     );
-  }, [card, cardsByName, investigator, meta, slots]);
+  }, [cardsByName, investigator, meta, slots]);
   const onIncrementIgnore = useCallback((code: string) => {
     updateIgnoreDeckLimitSlots({ type: 'inc-slot', code });
   }, [updateIgnoreDeckLimitSlots]);
@@ -102,6 +96,7 @@ export default function CardUpgradeDialog({
     updateSlots({ type: 'inc-slot', code });
     const possibleDecrement = find(reverse(namedCards), card => {
       return (
+        !!cards &&
         card.code !== code && slots[card.code] > 0 &&
         (ignoreDeckLimitSlots[card.code] || 0) < slots[card.code] &&
         (card.xp || 0) < (cards[code]?.xp || 0)
@@ -238,7 +233,7 @@ export default function CardUpgradeDialog({
   }, [slots, namedCards, doShrewdAnalysis, cardInCollection, shrewdAnalysisRule]);
   const shrewdAnalysisCards: Card[] = useMemo(() => {
     return flatMap(uniq(shrewdAnalysisResult), code => {
-      const card = cards[code];
+      const card = cards && cards[code];
       return card ? [card] : [];
     });
   }, [shrewdAnalysisResult, cards]);

@@ -59,7 +59,7 @@ import { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useDeck, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
+import { useComponentVisible, useDeck, useEffectUpdate, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 
@@ -81,6 +81,10 @@ type Props = NavigationProps &
   LoginStateProps;
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
+
+function simpleUpgrade(card?: Card) {
+  console.log('Simple upgrade!');
+}
 function DeckDetailView({
   componentId,
   id,
@@ -154,7 +158,7 @@ function DeckDetailView({
   const campaign = useSelector(campaignSelector);
 
   // When the deck changes (redux / network), update the locally editable state to match.
-  useEffect(() => {
+  useEffectUpdate(() => {
     if (!deck) {
       return;
     }
@@ -860,12 +864,11 @@ function DeckDetailView({
           card,
           deck: parsedDeck.deck,
           meta,
-          cards,
-          cardsByName,
+          cardsByName: cardsByName[card.real_name] || [],
           investigator: parsedDeck.investigator,
           tabooSetId,
           previousDeck,
-          ignoreDeckLimitSlots,
+          ignoreDeckLimitSlots: parsedDeck.ignoreDeckLimitSlots,
           slots: parsedDeck.slots,
           xpAdjustment,
           updateSlots: onSlotsUpdate,
@@ -876,8 +879,7 @@ function DeckDetailView({
       },
     });
   }, [componentId, onIgnoreDeckLimitSlotsUpdate, onSlotsUpdate, setXpAdjustment,
-    cards, previousDeck, parsedDeck, colors, tabooSetId, meta, xpAdjustment, ignoreDeckLimitSlots, cardsByName,
-  ]);
+    cards, previousDeck, parsedDeck, colors, tabooSetId, meta, xpAdjustment, cardsByName]);
 
   const renderFooter = useCallback((newSlots?: Slots, controls?: React.ReactNode) => {
     if (!deck || !cards) {
