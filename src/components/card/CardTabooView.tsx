@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { forEach, map } from 'lodash';
 import {
   ScrollView,
@@ -15,7 +15,6 @@ import CardTextComponent from './CardTextComponent';
 import { NavigationProps } from '@components/nav/types';
 import { l, m, xs, s } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import DatabaseContext from '@data/DatabaseContext';
 import useDbData from '@components/core/useDbData';
 
 export interface CardTabooProps {

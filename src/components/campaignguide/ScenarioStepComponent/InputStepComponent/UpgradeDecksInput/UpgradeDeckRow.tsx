@@ -27,6 +27,7 @@ import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { ThunkDispatch } from 'redux-thunk';
+import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
 
 interface Props {
   componentId: string;
@@ -146,9 +147,12 @@ function UpgradeDeckRow({ componentId, id, campaignState, scenarioState, investi
           key={card.code}
           onPress={onCardPress}
           card={card}
-          count={deltas[card.code]}
-          deltaCountMode
           backgroundColor="transparent"
+          control={{
+            type: 'count',
+            count: deltas[card.code],
+            deltaCountMode: true,
+          }}
         />
       )
     );

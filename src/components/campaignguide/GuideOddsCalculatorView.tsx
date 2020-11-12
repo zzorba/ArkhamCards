@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { StyleSheet } from 'react-native';
 import { flatMap } from 'lodash';
 
 import OddsCalculatorComponent from '@components/campaign/OddsCalculatorComponent';
@@ -44,12 +43,3 @@ export default function GuideOddsCalculatorView({ campaignId, investigatorIds, c
     />
   );
 }
-
-const styles = StyleSheet.create({
-  loading: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-  },
-});

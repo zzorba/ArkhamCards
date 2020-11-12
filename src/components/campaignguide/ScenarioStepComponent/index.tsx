@@ -14,7 +14,6 @@ import TableStepComponent from './TableStepComponent';
 import EffectsStepComponent from './EffectsStepComponent';
 import ResolutionStepComponent from './ResolutionStepComponent';
 import CampaignGuideContext from '../CampaignGuideContext';
-import ScenarioGuideContext from '../ScenarioGuideContext';
 import ScenarioStepContext, { ScenarioStepContextType } from '../ScenarioStepContext';
 import XpCountComponent from './XpCountComponent';
 import BranchStepComponent from './BranchStepComponent';

@@ -8,6 +8,7 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import { DeckChanges, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import StyleContext from '@styles/StyleContext';
+import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
 
 interface Props {
   componentId: string;
@@ -15,8 +16,6 @@ interface Props {
   parsedDeck: ParsedDeck;
   tabooSetId?: number;
   onTitlePress?: (deck: ParsedDeck) => void;
-  renderFooter?: (slots?: Slots) => React.ReactNode;
-  onDeckCountChange?: (code: string, count: number) => void;
   singleCardView?: boolean;
   title?: string;
   editable: boolean;
@@ -37,8 +36,6 @@ export default function ChangesFromPreviousDeck({
   parsedDeck,
   tabooSetId,
   onTitlePress,
-  renderFooter,
-  onDeckCountChange,
   singleCardView,
   title,
   editable,
@@ -85,13 +82,11 @@ export default function ChangesFromPreviousDeck({
         allCards,
         true,
         tabooSetId,
-        slots,
-        onDeckCountChange,
-        investigator,
-        renderFooter
+        parsedDeck.deck.id,
+        investigator
       );
     }
-  }, [colors, allCards, componentId, investigator, slots, tabooSetId, renderFooter, onDeckCountChange, singleCardView]);
+  }, [colors, allCards, componentId, investigator, parsedDeck.deck.id, tabooSetId, singleCardView]);
 
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {
     const investigator = parsedDeck.investigator;
@@ -111,8 +106,11 @@ export default function ChangesFromPreviousDeck({
             key={`${id}-${card.code}`}
             onPress={showCardPressed}
             card={card}
-            count={slots[card.code]}
-            deltaCountMode
+            control={{
+              type: 'count',
+              count: slots[card.code],
+              deltaCountMode: true,
+            }}
           />
         )) }
       </React.Fragment>

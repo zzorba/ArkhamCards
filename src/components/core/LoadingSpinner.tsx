@@ -42,7 +42,7 @@ function Spinner({ value, size }: { size: number; value: Animated.Value }) {
 }
 
 const AnimatedAppIcon = Animated.createAnimatedComponent(AppIcon);
-function NewLoading({ size }: Props) {
+export function NewLoading({ size }: Props) {
   const [value0] = useState(new Animated.Value(0));
   const [value1] = useState(new Animated.Value(0));
   useEffect(() => {

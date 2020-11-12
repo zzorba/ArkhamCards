@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useReducer, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer } from 'react';
 import { filter, map } from 'lodash';
 import {
   StyleSheet,

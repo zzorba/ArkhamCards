@@ -176,7 +176,7 @@ function DiagnosticsView({ showTextEditDialog }: Props) {
         Card.fromJson(JSON.parse(json), packsByCode, cycleNames, lang)
       );
     });
-  },  [packs, lang, db]);
+  }, [packs, lang, db]);
 
   const addDebugCard = useCallback(() => {
     showTextEditDialog(

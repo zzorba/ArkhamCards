@@ -11,41 +11,21 @@ import {
 import ArkhamIcon from '@icons/ArkhamIcon';
 import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
-import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
 import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
-import UpgradeCardButton from './UpgradeCardButton';
-import CardQuantityComponent from './CardQuantityComponent';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { ControlComponent, ControlType } from './ControlComponent';
 
 interface Props {
   card: Card;
   id?: string;
-  count?: number;
   onPress?: (card: Card) => void;
   onPressId?: (code: string, card: Card) => void;
-  onUpgrade?: (card: Card) => void;
-  onDeckCountChange?: (code: string, count: number) => void;
-  limit?: number;
-  onToggleChange?: (card: Card, value: boolean) => void;
-  toggleValue?: boolean;
-  deltaCountMode?: boolean;
-  hasSecondCore?: boolean;
-  showZeroCount?: boolean;
   backgroundColor?: string;
   invalid?: boolean;
-}
-
-function cardCost(card: Card): string {
-  if (card.type_code === 'skill') {
-    return '';
-  }
-  if (card.permanent || card.double_sided) {
-    return '-';
-  }
-  return `${card.cost !== null ? card.cost : 'X'}`;
+  control?: ControlType;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -146,23 +126,16 @@ function CardIcon({ card }: { card: Card }) {
   );
 }
 
-export default function CardSearchResult({
-  card,
-  id,
-  count = 0,
-  onPress,
-  onPressId,
-  onUpgrade,
-  onDeckCountChange,
-  limit,
-  onToggleChange,
-  toggleValue,
-  deltaCountMode,
-  hasSecondCore,
-  showZeroCount,
-  backgroundColor,
-  invalid,
-}: Props) {
+export default function CardSearchResult(props: Props) {
+  const {
+    card,
+    id,
+    control,
+    onPress,
+    onPressId,
+    backgroundColor,
+    invalid,
+  } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPress = useCallback(() => {
     Keyboard.dismiss();
@@ -172,14 +145,6 @@ export default function CardSearchResult({
       onPress && onPress(card);
     }
   }, [onPress, onPressId, id, card]);
-
-  const handleUpgradePressed = useCallback(() => {
-    onUpgrade && onUpgrade(card);
-  }, [onUpgrade, card]);
-
-  const handleDeckCountChange = useCallback((code: string, count: number) => {
-    onDeckCountChange && onDeckCountChange(code, count);
-  }, [onDeckCountChange]);
 
   const dualFactionIcons = useMemo(() => {
     if (!card.faction2_code) {
@@ -278,56 +243,6 @@ export default function CardSearchResult({
     );
   }, [colors, fontScale, typography, card, invalid, tabooBlock, skillIcons, dualFactionIcons]);
 
-  const countText = useMemo(() => {
-    if (deltaCountMode) {
-      if (count > 0) {
-        return `+${count}`;
-      }
-      return `${count}`;
-    }
-    return `×${count}`;
-  }, [count, deltaCountMode]);
-
-  const countBlock = useMemo(() => {
-    if (onDeckCountChange) {
-      const deck_limit: number = Math.min(
-        card.pack_code === 'core' ?
-          ((card.quantity || 0) * (hasSecondCore ? 2 : 1)) :
-          (card.deck_limit || 0),
-        card.deck_limit || 0
-      );
-      return (
-        <CardQuantityComponent
-          count={count || 0}
-          code={card.code}
-          limit={Math.max(count || 0, typeof limit === 'number' ? limit : deck_limit)}
-          countChanged={handleDeckCountChange}
-          showZeroCount={showZeroCount}
-        />
-      );
-    }
-    if (count !== 0) {
-      return (
-        <View style={styles.countWrapper}>
-          { !!onUpgrade && <UpgradeCardButton onPress={handleUpgradePressed} /> }
-          <View style={styles.count}>
-            <Text style={typography.text}>
-              { countText }
-            </Text>
-          </View>
-        </View>
-      );
-    }
-    return null;
-  }, [card, count, countText, limit, hasSecondCore, showZeroCount, typography,
-    onDeckCountChange, onUpgrade, handleDeckCountChange, handleUpgradePressed]);
-
-  const handleToggleChange = useCallback((value: boolean) => {
-    if (onToggleChange) {
-      onToggleChange(card, value);
-    }
-  }, [card, onToggleChange]);
-
   if (!card) {
     return (
       <View style={[
@@ -338,7 +253,7 @@ export default function CardSearchResult({
           height: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
-        !onDeckCountChange ? styles.rowPadding : {},
+        !control ? styles.rowPadding : {},
       ]}>
         <View style={styles.cardNameBlock}>
           <View style={styles.row}>
@@ -360,7 +275,7 @@ export default function CardSearchResult({
           height: rowHeight(fontScale),
           backgroundColor: backgroundColor || colors.background,
         },
-        !onDeckCountChange ? styles.rowPadding : {},
+        !control ? styles.rowPadding : {},
       ]}>
         <Text>No Text</Text>;
       </View>
@@ -376,7 +291,7 @@ export default function CardSearchResult({
         height: rowHeight(fontScale),
         backgroundColor: backgroundColor || colors.background,
       },
-      !onDeckCountChange ? styles.rowPadding : {},
+      !control ? styles.rowPadding : {},
     ]}>
       <TouchableOpacity
         onPress={handleCardPress}
@@ -389,7 +304,7 @@ export default function CardSearchResult({
       >
         <View style={[
           styles.cardTextRow,
-          onDeckCountChange && toggleButtonMode(fontScale) ?
+          control && toggleButtonMode(fontScale) ?
             { paddingRight: buttonWidth(fontScale) } :
             {},
         ]}>
@@ -397,15 +312,7 @@ export default function CardSearchResult({
           { cardName }
         </View>
       </TouchableOpacity>
-      { countBlock }
-      { !!onToggleChange && (
-        <View style={styles.switchButton}>
-          <ArkhamSwitch
-            value={!!toggleValue}
-            onValueChange={handleToggleChange}
-          />
-        </View>
-      ) }
+      { !!control && <ControlComponent control={control} card={card} /> }
     </View>
   );
 }
@@ -465,22 +372,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: s,
     alignItems: 'center',
-  },
-  switchButton: {
-    marginTop: 6,
-    marginRight: 6,
-  },
-  countWrapper: {
-    marginRight: s,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  count: {
-    marginLeft: xs,
-    minWidth: 25,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
   },
   tabooBlock: {
     marginLeft: s,

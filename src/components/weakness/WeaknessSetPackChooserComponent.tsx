@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { filter, forEach, map, uniqBy } from 'lodash';
 import { useSelector } from 'react-redux';
 

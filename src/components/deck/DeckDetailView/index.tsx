@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { forEach, keys, range, throttle } from 'lodash';
+import { find, forEach, keys, range, throttle } from 'lodash';
 import {
   Alert,
   AlertButton,
@@ -35,14 +35,13 @@ import {
   uploadLocalDeck,
   saveDeckChanges,
 } from '@components/deck/actions';
-import { DeckMeta, Slots } from '@actions/types';
+import { Slots, START_DECK_EDIT, UPDATE_DECK_EDIT } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
 import { parseDeck } from '@lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
-import { DeckDescriptionProps } from '../DeckDescriptionView';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
 import { DeckHistoryProps } from '../DeckHistoryView';
 import { EditSpecialCardsProps } from '../EditSpecialDeckCardsView';
@@ -59,7 +58,7 @@ import { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useDeck, useEffectUpdate, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
+import { useComponentVisible, useDeck, useDeckEdits, useEffectUpdate, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 
@@ -82,9 +81,6 @@ type Props = NavigationProps &
 type DeckDispatch = ThunkDispatch<AppState, any, Action>;
 
 
-function simpleUpgrade(card?: Card) {
-  console.log('Simple upgrade!');
-}
 function DeckDetailView({
   componentId,
   id,
@@ -107,16 +103,7 @@ function DeckDetailView({
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
   const [deck, previousDeck] = useDeck(id, { fetchIfMissing: true });
   const deckTabooSetId = ((deck && deck.taboo_id) || 0);
-  const [tabooSetChange, setTabooSetChange] = useState<number | undefined>();
-  const tabooSetId = tabooSetChange !== undefined ? tabooSetChange : deckTabooSetId;
-  const tabooSet = useTabooSet(tabooSetId);
-  const visible = useComponentVisible(componentId);
-  const setTabooSet = useCallback((tabooSetId?: number) => {
-    setTabooSetChange(tabooSetId || 0);
-  }, [setTabooSetChange]);
 
-  const cards = usePlayerCards(tabooSetId);
-  const investigators = useInvestigatorCards(tabooSetId);
   const [copying, toggleCopying] = useFlag(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | undefined>();
@@ -127,48 +114,85 @@ function DeckDetailView({
   const [editDetailsOpen, toggleEditDetailsOpen, setEditDetailsOpen] = useFlag(false);
 
   // All the flags for the current state
-  const [xpAdjustment, setXpAdjustment] = useState(deck?.xp_adjustment || 0);
-  const [nameChange, setNameChange] = useState<string | undefined>();
-  const [descriptionChange, setDescriptionChange] = useState<string | undefined>();
-  const [meta, setMeta] = useState<DeckMeta>(deck?.meta || {});
-  const [slots, updateSlots] = useSlots(deck?.slots || {});
-  const [ignoreDeckLimitSlots, updateIgnoreDeckLimitSlots] = useSlots(deck?.ignoreDeckLimitSlots || {});
+  const deckEdits = useDeckEdits(id, true);
+
+  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deckTabooSetId;
+  const tabooSet = useTabooSet(tabooSetId);
+  const visible = useComponentVisible(componentId);
+
+  const cards = usePlayerCards(tabooSetId);
+  const investigators = useInvestigatorCards(tabooSetId);
+
+  const parallelInvestigators = useMemo(() => {
+    const investigator = deck?.investigator_code;
+    if (!investigator) {
+      return [];
+    }
+    const parallelInvestigators: Card[] = [];
+    forEach(investigators, card => {
+      if (card && investigator && card.alternate_of_code === investigator) {
+        parallelInvestigators.push(card);
+      }
+    });
+    return parallelInvestigators;
+  }, [investigators, deck?.investigator_code]);
+  const slotDeltas = useMemo(() => {
+    const result: {
+      removals: Slots;
+      additions: Slots;
+      ignoreDeckLimitChanged: boolean;
+    } = {
+      removals: {},
+      additions: {},
+      ignoreDeckLimitChanged: false,
+    };
+    if (!deck || !deckEdits) {
+      return result;
+    }
+    forEach(deck.slots, (deckCount, code) => {
+      const currentDeckCount = deckEdits.slots[code] || 0;
+      if (deckCount > currentDeckCount) {
+        result.removals[code] = deckCount - currentDeckCount;
+      }
+    });
+    forEach(deckEdits.slots, (currentCount, code) => {
+      const ogDeckCount = deck.slots[code] || 0;
+      if (ogDeckCount < currentCount) {
+        result.additions[code] = currentCount - ogDeckCount;
+      }
+      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
+      if (ogIgnoreCount !== (deckEdits.ignoreDeckLimitSlots[code] || 0)) {
+        result.ignoreDeckLimitChanged = true;
+      }
+    });
+    return result;
+  }, [deck, deckEdits]);
+
   const parsedDeck = useMemo(() => {
-    if (!deck || !cards) {
+    if (!deck || !cards || !deckEdits) {
       return undefined;
     }
-    return parseDeck(deck, meta, slots, ignoreDeckLimitSlots, cards, previousDeck);
-  }, [deck, meta, slots, ignoreDeckLimitSlots, cards, previousDeck]);
+    return parseDeck(deck, deckEdits.meta, deckEdits.slots, deckEdits.ignoreDeckLimitSlots, cards, previousDeck);
+  }, [deck, deckEdits, cards, previousDeck]);
+
+  const [investigatorFront, investigatorBack] = useMemo(() => {
+    const altFront = deckEdits?.meta.alternate_front && find(
+      parallelInvestigators,
+      card => card.code === deckEdits?.meta.alternate_front);
+    const investigatorFront = (altFront || (cards && deck && cards[deck.investigator_code]));
+
+    const altBack = deckEdits?.meta.alternate_back && find(
+      parallelInvestigators,
+      card => card.code === deckEdits?.meta.alternate_back);
+    const investigatorBack = altBack || (deck && cards && cards[deck.investigator_code]);
+    return [investigatorFront, investigatorBack];
+  }, [deck, cards, deckEdits?.meta, parallelInvestigators]);
+
   const problem = parsedDeck?.problem;
-  const name = nameChange !== undefined ? nameChange : deck?.name;
-
-  const onSlotsUpdate = useCallback((newSlots: Slots, resetIgnoreDeckLimitSlots?: boolean) => {
-    updateSlots({ type: 'sync', slots: newSlots });
-    if (resetIgnoreDeckLimitSlots && deck) {
-      updateIgnoreDeckLimitSlots({ type: 'sync', slots: deck.ignoreDeckLimitSlots || {} });
-    }
-  }, [updateSlots, updateIgnoreDeckLimitSlots, deck]);
-
-  const onIgnoreDeckLimitSlotsUpdate = useCallback((newIgnoreDeckLimitSlots: Slots) => {
-    updateIgnoreDeckLimitSlots({ type: 'sync', slots: newIgnoreDeckLimitSlots });
-  }, [updateIgnoreDeckLimitSlots]);
-
+  const name = deckEdits?.nameChange !== undefined ? deckEdits.nameChange : deck?.name;
   const campaignSelector = useCallback((state: AppState) => campaignId ? getCampaign(state, campaignId) : getCampaignForDeck(state, deck?.id || id), [deck, id, campaignId]);
   const inCollection = useSelector(getPacksInCollection);
   const campaign = useSelector(campaignSelector);
-
-  // When the deck changes (redux / network), update the locally editable state to match.
-  useEffectUpdate(() => {
-    if (!deck) {
-      return;
-    }
-    updateSlots({ type: 'sync', slots: deck?.slots });
-    updateIgnoreDeckLimitSlots({ type: 'sync', slots: deck.ignoreDeckLimitSlots || {} });
-    setMeta(deck.meta || {});
-    setXpAdjustment(deck.xp_adjustment || 0);
-    setTabooSetChange(undefined);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deck]);
 
   const [cardsByName, bondedCardsByName] = useMemo(() => {
     const cardsByName: {
@@ -196,65 +220,20 @@ function DeckDetailView({
     return [cardsByName, bondedCardsByName];
   }, [cards]);
 
-  const parallelInvestigators = useMemo(() => {
-    const investigator = deck?.investigator_code;
-    if (!investigator) {
-      return [];
-    }
-    const parallelInvestigators: Card[] = [];
-    forEach(investigators, card => {
-      if (card && investigator && card.alternate_of_code === investigator) {
-        parallelInvestigators.push(card);
-      }
-    });
-    return parallelInvestigators;
-  }, [investigators, deck?.investigator_code]);
-  const slotDeltas = useMemo(() => {
-    const result: {
-      removals: Slots;
-      additions: Slots;
-      ignoreDeckLimitChanged: boolean;
-    } = {
-      removals: {},
-      additions: {},
-      ignoreDeckLimitChanged: false,
-    };
-    if (!deck) {
-      return result;
-    }
-    forEach(deck.slots, (deckCount, code) => {
-      const currentDeckCount = slots[code] || 0;
-      if (deckCount > currentDeckCount) {
-        result.removals[code] = deckCount - currentDeckCount;
-      }
-    });
-    forEach(slots, (currentCount, code) => {
-      const ogDeckCount = deck.slots[code] || 0;
-      if (ogDeckCount < currentCount) {
-        result.additions[code] = currentCount - ogDeckCount;
-      }
-      const ogIgnoreCount = ((deck.ignoreDeckLimitSlots || {})[code] || 0);
-      if (ogIgnoreCount !== (ignoreDeckLimitSlots[code] || 0)) {
-        result.ignoreDeckLimitChanged = true;
-      }
-    });
-    return result;
-  }, [deck, slots, ignoreDeckLimitSlots]);
-
   const hasPendingEdits = useMemo(() => {
-    if (!deck) {
+    if (!deck || !deckEdits) {
       return false;
     }
     const originalTabooSet: number = (deck.taboo_id || 0);
-    const metaChanges = deepDiff(meta, deck.meta || {});
-    return (nameChange && deck.name !== nameChange) ||
-      (tabooSetChange !== undefined && originalTabooSet !== tabooSetChange) ||
-      (deck.previous_deck && (deck.xp_adjustment || 0) !== xpAdjustment) ||
+    const metaChanges = deepDiff(deckEdits.meta, deck.meta || {});
+    return (deckEdits.nameChange && deck.name !== deckEdits.nameChange) ||
+      (deckEdits.tabooSetChange !== undefined && originalTabooSet !== deckEdits.tabooSetChange) ||
+      (deck.previous_deck && (deck.xp_adjustment || 0) !== deckEdits.xpAdjustment) ||
       keys(slotDeltas.removals).length > 0 ||
       keys(slotDeltas.additions).length > 0 ||
       slotDeltas.ignoreDeckLimitChanged ||
       (!!metaChanges && metaChanges.length > 0);
-  }, [deck, meta, xpAdjustment, nameChange, tabooSetChange, slotDeltas]);
+  }, [deck, deckEdits, slotDeltas]);
 
   const addedBasicWeaknesses = useMemo(() => {
     if (!cards || !deck) {
@@ -298,27 +277,22 @@ function DeckDetailView({
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeck) {
+    if (!deck || !parsedDeck || !deckEdits) {
       return;
     }
-    const {
-      slots,
-      ignoreDeckLimitSlots,
-    } = parsedDeck;
-
     const problemField = problem ? problem.reason : '';
     setSaving(true);
     deckDispatch(saveDeckChanges(
       deck,
       {
-        name: nameChange,
-        slots,
-        ignoreDeckLimitSlots,
+        name: deckEdits.nameChange,
+        slots: deckEdits.slots,
+        ignoreDeckLimitSlots: deckEdits.ignoreDeckLimitSlots,
         problem: problemField,
         spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-        xpAdjustment,
+        xpAdjustment: deckEdits.xpAdjustment,
         tabooSetId,
-        meta,
+        meta: deckEdits.ignoreDeckLimitSlots,
       }
     )).then(() => {
       updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -326,10 +300,9 @@ function DeckDetailView({
         Navigation.dismissAllModals();
       } else {
         setSaving(false);
-        setNameChange(undefined);
       }
     }, handleSaveError);
-  }, [deck, saving, parsedDeck, nameChange, tabooSetId, xpAdjustment, meta, addedBasicWeaknesses, problem,
+  }, [deck, saving, parsedDeck, deckEdits, tabooSetId, addedBasicWeaknesses, problem,
     deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet,
   ]);
 
@@ -432,12 +405,11 @@ function DeckDetailView({
       setSaving(true);
       deckDispatch(uploadLocalDeck(deck)).then(() => {
         setSaving(false);
-        setTabooSetChange(undefined);
       }, () => {
         setSaving(false);
       });
     }
-  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving, setTabooSetChange]);
+  }, 200), [deckDispatch, parsedDeck, saving, deck, setSaving]);
 
   useEffect(() => {
     if (!deck) {
@@ -458,7 +430,7 @@ function DeckDetailView({
   }, [deck]);
 
   useEffect(() => {
-    const newName = nameChange || deck?.name;
+    const newName = deckEdits?.nameChange || deck?.name;
     if (newName) {
       Navigation.mergeOptions(componentId, {
         topBar: {
@@ -470,7 +442,7 @@ function DeckDetailView({
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nameChange]);
+  }, [deckEdits?.nameChange]);
 
   const deleteDeck = useCallback((deleteAllVersions: boolean) => {
     if (!deleting) {
@@ -522,7 +494,7 @@ function DeckDetailView({
   }, [saveEdits]);
 
   const onChecklistPressed = useCallback(() => {
-    if (!deck || !cards) {
+    if (!deck || !cards || !deckEdits) {
       return;
     }
     setMenuOpen(false);
@@ -532,16 +504,16 @@ function DeckDetailView({
         name: 'Deck.Checklist',
         passProps: {
           id: deck.id,
-          slots,
+          slots: deckEdits.slots,
           tabooSetOverride: tabooSetId,
         },
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, cards, tabooSetId, slots, colors, setMenuOpen]);
+  }, [componentId, deck, cards, tabooSetId, deckEdits, colors, setMenuOpen]);
 
   const onEditSpecialPressed = useCallback(() => {
-    if (!deck || !cards) {
+    if (!deck || !cards || !deckEdits) {
       return;
     }
     setMenuOpen(false);
@@ -551,15 +523,8 @@ function DeckDetailView({
         name: 'Deck.EditSpecial',
         passProps: {
           campaignId: campaign ? campaign.id : undefined,
-          deck,
-          meta,
-          previousDeck,
-          slots,
-          ignoreDeckLimitSlots,
-          updateSlots: onSlotsUpdate,
-          updateIgnoreDeckLimitSlots: onIgnoreDeckLimitSlotsUpdate,
+          id,
           assignedWeaknesses: addedBasicWeaknesses,
-          xpAdjustment,
         },
         options: {
           statusBar: {
@@ -581,7 +546,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, onIgnoreDeckLimitSlotsUpdate, onSlotsUpdate, setMenuOpen, deck, previousDeck, cards, campaign, meta, slots, ignoreDeckLimitSlots, xpAdjustment, colors, addedBasicWeaknesses]);
+  }, [componentId, setMenuOpen, id, deck, deckEdits, cards, campaign, colors, addedBasicWeaknesses]);
 
   const onEditPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -593,14 +558,7 @@ function DeckDetailView({
       component: {
         name: 'Deck.Edit',
         passProps: {
-          deck,
-          meta,
-          previousDeck,
-          slots: slots,
-          ignoreDeckLimitSlots: ignoreDeckLimitSlots,
-          updateSlots: onSlotsUpdate,
-          xpAdjustment: xpAdjustment,
-          tabooSetOverride: tabooSetId,
+          id,
         },
         options: {
           statusBar: {
@@ -622,7 +580,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, deck, previousDeck, colors, onSlotsUpdate, setMenuOpen, cards, slots, meta, ignoreDeckLimitSlots, xpAdjustment, tabooSetId]);
+  }, [componentId, deck, id, colors, setMenuOpen, cards]);
 
   const onUpgradePressed = useCallback(() => {
     if (!deck) {
@@ -670,40 +628,8 @@ function DeckDetailView({
   }, [setSaveError, setSaving]);
 
   const clearEdits = useCallback(() => {
-    if (!deck) {
-      return;
-    }
-    setTabooSetChange(undefined);
-    setNameChange(undefined);
-    setMeta(deck.meta || {});
-    setXpAdjustment(deck.xp_adjustment || 0);
-    updateSlots({ type: 'sync', slots: deck.slots });
-    updateIgnoreDeckLimitSlots({ type: 'sync', slots: deck.ignoreDeckLimitSlots || {} });
-  }, [deck, setMeta, setNameChange, setTabooSetChange, setXpAdjustment, updateSlots, updateIgnoreDeckLimitSlots]);
-
-  const updateMeta = useCallback((key: keyof DeckMeta, value?: string) => {
-    if (!deck) {
-      return;
-    }
-
-    const updatedMeta: DeckMeta = {
-      ...meta,
-      [key]: value,
-    };
-
-    if (value === undefined) {
-      delete updatedMeta[key];
-    } else {
-      if (deck.investigator_code === '06002' && key === 'deck_size_selected') {
-        updateSlots({ type: 'set-slot', code: '06008', value: (parseInt(value, 10) - 20) / 10 });
-      }
-    }
-    setMeta(updatedMeta);
-  }, [deck, meta, setMeta, updateSlots]);
-
-  const onDeckCountChange = useCallback((code: string, count: number) => {
-    updateSlots({ type: 'set-slot', code, value: count });
-  }, [updateSlots]);
+    dispatch({ type: START_DECK_EDIT, id });
+  }, [dispatch, id]);
 
   const copyDialog = useMemo(() => {
     return (
@@ -726,42 +652,20 @@ function DeckDetailView({
     setEditDetailsOpen(true);
   }, [setMenuOpen, setEditDetailsOpen]);
 
-  const updateDescription = useCallback((description: string) => {
-    if (!deck) {
-      return;
-    }
-    const descriptionChange = deck.description_md !== description ?
-      description :
-      undefined;
-    setDescriptionChange(descriptionChange);
-  }, [deck, setDescriptionChange]);
-
-  const showEditDescription = useCallback(() => {
-    setMenuOpen(false);
-    if (!parsedDeck) {
-      return;
-    }
-    const options = getDeckOptions(colors, {}, parsedDeck.investigator);
-    Navigation.push<DeckDescriptionProps>(componentId, {
-      component: {
-        name: 'Deck.Description',
-        passProps: {
-          description: '',
-          update: updateDescription,
-        },
-        options: options,
-      },
-    });
-  }, [componentId, setMenuOpen, parsedDeck, colors, updateDescription]);
-
   const updateDeckDetails = useCallback((name: string, xpAdjustment: number) => {
     setEditDetailsOpen(false);
-    setNameChange(name);
-    setXpAdjustment(xpAdjustment);
-  }, [setNameChange, setXpAdjustment, setEditDetailsOpen]);
+    dispatch({
+      type: UPDATE_DECK_EDIT,
+      id,
+      updates: {
+        nameChange: name,
+        xpAdjustment,
+      },
+    });
+  }, [dispatch, id, setEditDetailsOpen]);
 
   const editDetailsDialog = useMemo(() => {
-    if (!deck || !parsedDeck) {
+    if (!deck || !parsedDeck || !deckEdits) {
       return null;
     }
     const {
@@ -772,14 +676,14 @@ function DeckDetailView({
         visible={editDetailsOpen}
         xp={deck.xp || 0}
         spentXp={changes ? changes.spentXp : 0}
-        xpAdjustment={xpAdjustment}
+        xpAdjustment={deckEdits.xpAdjustment}
         xpAdjustmentEnabled={!!deck.previous_deck && !deck.next_deck}
         toggleVisible={toggleEditDetailsOpen}
-        name={nameChange || deck.name}
+        name={deckEdits.nameChange || deck.name}
         updateDetails={updateDeckDetails}
       />
     );
-  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, nameChange, xpAdjustment]);
+  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits]);
 
   const deletingDialog = useMemo(() => {
     if (deleteError) {
@@ -853,7 +757,7 @@ function DeckDetailView({
   }, [deck, hasPendingEdits, savePressed, clearEdits]);
 
   const showCardUpgradeDialog = useCallback((card: Card) => {
-    if (!cards || !parsedDeck) {
+    if (!parsedDeck) {
       return;
     }
     Navigation.push<CardUpgradeDialogProps>(componentId, {
@@ -861,50 +765,14 @@ function DeckDetailView({
         name: 'Dialog.CardUpgrade',
         passProps: {
           componentId,
-          card,
-          deck: parsedDeck.deck,
-          meta,
+          id,
           cardsByName: cardsByName[card.real_name] || [],
           investigator: parsedDeck.investigator,
-          tabooSetId,
-          previousDeck,
-          ignoreDeckLimitSlots: parsedDeck.ignoreDeckLimitSlots,
-          slots: parsedDeck.slots,
-          xpAdjustment,
-          updateSlots: onSlotsUpdate,
-          updateIgnoreDeckLimitSlots: onIgnoreDeckLimitSlotsUpdate,
-          updateXpAdjustment: setXpAdjustment,
         },
         options: getDeckOptions(colors, { title: card.name }, parsedDeck.investigator),
       },
     });
-  }, [componentId, onIgnoreDeckLimitSlotsUpdate, onSlotsUpdate, setXpAdjustment,
-    cards, previousDeck, parsedDeck, colors, tabooSetId, meta, xpAdjustment, cardsByName]);
-
-  const renderFooter = useCallback((newSlots?: Slots, controls?: React.ReactNode) => {
-    if (!deck || !cards) {
-      return null;
-    }
-    const parsedDeck = parseDeck(
-      deck,
-      meta,
-      newSlots || slots,
-      ignoreDeckLimitSlots,
-      cards,
-      previousDeck
-    );
-    if (!parsedDeck) {
-      return null;
-    }
-    return (
-      <DeckNavFooter
-        componentId={componentId}
-        parsedDeck={parsedDeck}
-        xpAdjustment={xpAdjustment}
-        controls={controls}
-      />
-    );
-  }, [componentId, xpAdjustment, meta, slots, ignoreDeckLimitSlots, cards, previousDeck, deck]);
+  }, [componentId, cardsByName, parsedDeck, id, colors]);
 
   const uploadLocalDeckPressed = useCallback(() => {
     doUploadLocalDeck();
@@ -1004,17 +872,13 @@ function DeckDetailView({
         component: {
           name: 'Deck.History',
           passProps: {
-            id: parsedDeck.deck.id,
-            meta,
-            slots,
-            ignoreDeckLimitSlots,
-            xpAdjustment,
+            id,
           },
-          options: getDeckOptions(colors, { title: t`Upgrade History` },parsedDeck.investigator),
+          options: getDeckOptions(colors, { title: t`Upgrade History` }, parsedDeck.investigator),
         },
       });
     }
-  }, [componentId, parsedDeck, colors, meta, slots, ignoreDeckLimitSlots, xpAdjustment, setMenuOpen]);
+  }, [componentId, id, colors, parsedDeck, setMenuOpen]);
 
   const showDrawSimulatorPressed = useCallback(() => {
     setMenuOpen(false);
@@ -1024,7 +888,7 @@ function DeckDetailView({
   }, [componentId, parsedDeck, colors, setMenuOpen]);
 
   const sideMenu = useMemo(() => {
-    if (!deck || !parsedDeck) {
+    if (!deck || !parsedDeck || !deckEdits) {
       return null;
     }
     const {
@@ -1032,8 +896,8 @@ function DeckDetailView({
       totalCardCount,
     } = parsedDeck;
     const editable = isPrivate && deck && !deck.next_deck;
-    const xp = (deck.xp || 0) + xpAdjustment;
-    const adjustment = xpAdjustment >= 0 ? `+${xpAdjustment}` : `${xpAdjustment}`;
+    const xp = (deck.xp || 0) + deckEdits.xpAdjustment;
+    const adjustment = deckEdits.xpAdjustment >= 0 ? `+${deckEdits.xpAdjustment}` : `${deckEdits.xpAdjustment}`;
     const xpString = t`${xp} (${adjustment}) XP`;
     return (
       <ScrollView style={[styles.menu, backgroundStyle]}>
@@ -1043,19 +907,11 @@ function DeckDetailView({
             <SettingsButton
               onPress={showEditDetails}
               title={t`Name`}
-              description={nameChange || deck.name}
+              description={deckEdits.nameChange || deck.name}
               descriptionStyle={typography.small}
               titleStyle={typography.text}
               containerStyle={backgroundStyle}
             />
-            { SHOW_DESCRIPTION_EDITOR && (
-              <SettingsButton
-                onPress={showEditDescription}
-                title={t`Description`}
-                titleStyle={typography.text}
-                containerStyle={backgroundStyle}
-              />
-            ) }
             <SettingsButton
               onPress={showTabooPicker}
               title={t`Taboo List`}
@@ -1190,10 +1046,10 @@ function DeckDetailView({
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, typography, isPrivate, deck, nameChange, hasPendingEdits, xpAdjustment, tabooSet, parsedDeck,
+  }, [backgroundStyle, typography, isPrivate, deck, deckEdits, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
-    showEditDescription, onEditPressed, onEditSpecialPressed, onChecklistPressed,
+    onEditPressed, onEditSpecialPressed, onChecklistPressed,
   ]);
 
   if (!deck) {
@@ -1213,7 +1069,7 @@ function DeckDetailView({
       </View>
     );
   }
-  if (!parsedDeck || !cards) {
+  if (!parsedDeck || !cards || !deckEdits) {
     return (
       <View style={[styles.activityIndicatorContainer, backgroundStyle]}>
         <ActivityIndicator
@@ -1244,18 +1100,16 @@ function DeckDetailView({
               componentId={componentId}
               inCollection={inCollection}
               parallelInvestigators={parallelInvestigators}
+              investigatorFront={investigatorFront}
+              investigatorBack={investigatorBack}
               deck={deck}
               editable={editable}
-              meta={meta}
-              setMeta={updateMeta}
-              deckName={nameChange || deck.name}
               tabooSet={tabooSet}
               tabooSetId={tabooSetId}
               showTaboo={showTaboo}
               tabooOpen={tabooOpen}
-              setTabooSet={setTabooSet}
               singleCardView={singleCardView}
-              xpAdjustment={xpAdjustment}
+              xpAdjustment={deckEdits.xpAdjustment}
               parsedDeck={parsedDeck}
               problem={problem}
               hasPendingEdits={hasPendingEdits}
@@ -1276,11 +1130,9 @@ function DeckDetailView({
               hideCampaign={hideCampaign}
               showTraumaDialog={showTraumaDialog}
               investigatorDataUpdates={investigatorDataUpdates}
-              renderFooter={renderFooter}
-              onDeckCountChange={onDeckCountChange}
               width={width}
             />
-            { renderFooter() }
+            <DeckNavFooter deckId={id} componentId={componentId} />
           </View>
           { editDetailsDialog }
         </View>

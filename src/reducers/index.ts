@@ -26,8 +26,10 @@ import {
   CampaignGuideState,
   NEW_CHAOS_BAG_RESULTS,
   SORT_BY_TYPE,
+  EditDeckState,
 } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
+import { act } from 'react-test-renderer';
 
 const packsPersistConfig = {
   key: 'packs',
@@ -53,7 +55,7 @@ const decksPersistConfig = {
   key: 'decks',
   timeout: 0,
   storage: AsyncStorage,
-  blacklist: ['refreshing', 'error'],
+  blacklist: ['refreshing', 'error', 'edits', 'editting'],
 };
 
 const settingsPeristConfig = {
@@ -563,4 +565,11 @@ export function getAppFontScale(
   state: AppState
 ): number {
   return state.settings.fontScale || 1.0;
+}
+
+export function getDeckEdits(state: AppState, id: number): EditDeckState | undefined {
+  if (!state.decks.editting || !state.decks.editting[id] || !state.decks.edits || !state.decks.edits[id]) {
+    return undefined;
+  }
+  return state.decks.edits[id];
 }

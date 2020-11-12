@@ -47,8 +47,8 @@ export default function StoryCardSelectorComponent({
     updateStoryCounts(storyCounts);
   }, [storyCounts, updateStoryCounts]);
 
-  const updateCounts = useCallback((slots: Slots) => {
-    setStoryCounts({ type: 'sync', slots });
+  const updateCount = useCallback((card: Card, count: number) => {
+    setStoryCounts({ type: 'set-slot', code: card.code, value: count });
   }, [setStoryCounts]);
 
   const [allStoryCards, loading] = useCardsFromQuery({
@@ -104,11 +104,11 @@ export default function StoryCardSelectorComponent({
         componentId={componentId}
         slots={slots}
         counts={storyCounts}
-        updateCounts={updateCounts}
+        updateCount={updateCount}
         header={header}
       />
     );
-  }, [componentId, scenarioName, investigator, storyCards, storyCounts, updateCounts]);
+  }, [componentId, scenarioName, investigator, storyCards, storyCounts, updateCount]);
 
   const deckStoryCardsSection = useMemo(() => {
     if (!deckStoryCards.length) {
@@ -132,11 +132,11 @@ export default function StoryCardSelectorComponent({
         componentId={componentId}
         slots={slots}
         counts={storyCounts}
-        updateCounts={updateCounts}
+        updateCount={updateCount}
         header={header}
       />
     );
-  }, [deckStoryCards, componentId, investigator, storyCounts, updateCounts]);
+  }, [deckStoryCards, componentId, investigator, storyCounts, updateCount]);
 
   if (loading) {
     return (

@@ -73,8 +73,7 @@ function onChoiceChange() {
 }
 
 export default function XpCountComponent({ step, campaignLog }: Props) {
-  const { colors} = useContext(StyleContext);
-
+  const { colors } = useContext(StyleContext);
   const specialString = useCallback((investigator: Card) => {
     const count = campaignLog.specialXp(investigator.code, step.special_xp);
     switch (step.special_xp) {

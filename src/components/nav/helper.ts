@@ -207,10 +207,8 @@ export function showCardSwipe(
   initialCards?: Card[],
   showSpoilers?: boolean,
   tabooSetId?: number,
-  deckCardCounts?: Slots,
-  onDeckCountChange?: (code: string, count: number) => void,
-  investigator?: Card,
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => React.ReactNode,
+  deckId?: number,
+  investigator?: Card
 ) {
   const options = investigator ?
     getDeckOptions(colors, { title: '' }, investigator) :
@@ -231,9 +229,7 @@ export function showCardSwipe(
         initialIndex: index,
         showAllSpoilers: !!showSpoilers,
         tabooSetId,
-        deckCardCounts,
-        onDeckCountChange,
-        renderFooter,
+        deckId,
         whiteNav: !!investigator,
       },
       options,

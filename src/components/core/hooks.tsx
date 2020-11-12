@@ -1,11 +1,12 @@
 import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { InteractionManager } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
 
-import { Campaign, ChaosBagResults, Deck, DeckMeta, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
+import { Campaign, ChaosBagResults, Deck, DeckMeta, EditDeckState, ParsedDeck, SingleCampaign, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState, getCampaign, getChaosBagResults, getDeck, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
+import { AppState, getCampaign, getChaosBagResults, getDeck, getDeckEdits, getEffectiveDeckId, getLatestCampaignDeckIds, getLatestCampaignInvestigators, getTabooSet } from '@reducers';
 import DatabaseContext from '@data/DatabaseContext';
 import { parseDeck } from '@lib/parseDeck';
 import { fetchPrivateDeck } from '@components/deck/actions';
@@ -342,6 +343,67 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
   }, initialState);
 }
 
+export function useDeckEdits(id: number | undefined, initialize?: boolean): EditDeckState | undefined {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (initialize && id !== undefined) {
+      dispatch({ type: 'START_DECK_EDIT', id });
+      return function cleanup() {
+        dispatch({ type: 'FINISH_DECK_EDIT', id });
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const selector = useCallback((state: AppState) => id !== undefined ? getDeckEdits(state, id) : undefined, [id]);
+  const deckEdits = useSelector(selector);
+  return deckEdits;
+}
+
+export interface EditSlotsActions {
+  setSlot: (code: string, count: number) => void;
+  incSlot: (code: string) => void;
+  decSlot: (code: string) => void;
+}
+
+export function useSlotActions(slots?: Slots, editSlotsActions?: EditSlotsActions, updateSlots?: (slots: Slots) => void): [Slots, EditSlotsActions | undefined] {
+  const [deckCardCounts, updateDeckCardCounts] = useSlots(slots || {}, updateSlots);
+  const propsSetSlot = editSlotsActions?.setSlot;
+  const propsDecSlot = editSlotsActions?.decSlot;
+  const propsIncSlot = editSlotsActions?.incSlot;
+
+  const setSlot = useCallback((code: string, value: number) => {
+    if (propsSetSlot) {
+      InteractionManager.runAfterInteractions(() => {
+        propsSetSlot(code, value);
+      });
+    }
+    updateDeckCardCounts({ type: 'set-slot', code, value });
+  }, [propsSetSlot, updateDeckCardCounts]);
+  const incSlot = useCallback((code: string) => {
+    if (propsIncSlot) {
+      InteractionManager.runAfterInteractions(() => {
+        propsIncSlot(code);
+      });
+    }
+    updateDeckCardCounts({ type: 'inc-slot', code });
+  }, [propsIncSlot, updateDeckCardCounts]);
+  const decSlot = useCallback((code: string) => {
+    if (propsDecSlot) {
+      InteractionManager.runAfterInteractions(() => {
+        propsDecSlot(code);
+      });
+    }
+    updateDeckCardCounts({ type: 'dec-slot', code });
+  }, [propsDecSlot, updateDeckCardCounts]);
+  const actions = useMemo(() => {
+    return {
+      setSlot,
+      incSlot,
+      decSlot,
+    };
+  }, [setSlot, incSlot, decSlot]);
+  return [deckCardCounts, editSlotsActions ? actions : undefined];
+}
 
 interface AppendCardsAction {
   type: 'cards';

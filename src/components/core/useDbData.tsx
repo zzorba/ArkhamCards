@@ -21,7 +21,15 @@ export default function useDbData<T>(fetch: (db: Database) => Promise<T>): T | u
     };
   }, [db, listener]);
   useEffect(() => {
-    fetch(db).then(setData);
+    let canceled = false;
+    fetch(db).then((data: T) => {
+      if (!canceled) {
+        setData(data);
+      }
+    });
+    return function cleanup() {
+      canceled = true;
+    };
   }, [fetch, db, setData, refreshCounter]);
   return data;
 }

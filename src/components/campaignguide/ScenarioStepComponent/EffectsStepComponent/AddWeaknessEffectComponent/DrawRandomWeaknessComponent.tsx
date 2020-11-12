@@ -27,7 +27,7 @@ interface OwnProps {
 type Props = OwnProps;
 
 export default function DrawRandomWeaknessComponent({ id, investigators, cards, weaknessCards, traits, realTraits, campaignLog, scenarioState }: Props) {
-  const { campaignInvestigators, latestDecks, weaknessSet} = useContext(CampaignGuideContext);
+  const { campaignInvestigators, latestDecks, weaknessSet } = useContext(CampaignGuideContext);
   const { borderStyle } = useContext(StyleContext);
   const [choices, setChoices] = useState<{ [code: string]: string }>({});
   const effectiveWeaknessSet: WeaknessSet = useMemo(() => {

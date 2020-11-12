@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import DialogComponent from '@lib/react-native-dialog';

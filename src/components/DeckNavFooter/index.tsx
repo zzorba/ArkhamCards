@@ -5,10 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { msgid, ngettext, t } from 'ttag';
 
-import { ParsedDeck } from '@actions/types';
 import AppIcon from '@icons/AppIcon';
 import DeckProblemRow from '@components/core/DeckProblemRow';
 import { TINY_PHONE } from '@styles/sizes';
@@ -17,33 +15,45 @@ import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
+import { useDeck, useDeckEdits, usePlayerCards } from '@components/core/hooks';
+import { parseDeck } from '@lib/parseDeck';
 
 const SHOW_CHARTS_BUTTON = true;
 
 interface Props {
   componentId: string;
-  parsedDeck: ParsedDeck;
-  xpAdjustment: number;
+  deckId: number;
   controls?: React.ReactNode;
 }
 
 export default function DeckNavFooter({
   componentId,
-  parsedDeck,
-  xpAdjustment,
+  deckId,
   controls,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
+  const [deck, previousDeck] = useDeck(deckId, {});
+  const deckEdits = useDeckEdits(deckId);
+  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
+  const cards = usePlayerCards(tabooSetId);
+  const parsedDeck = useMemo(() => {
+    return cards && deck && deckEdits && parseDeck(deck, deckEdits.meta, deckEdits.slots, deckEdits.ignoreDeckLimitSlots, cards, previousDeck);
+  }, [cards, deck, previousDeck, deckEdits]);
+
   const showCardChartsPressed = useCallback(() => {
-    showCardCharts(componentId, parsedDeck, colors);
+    if (parsedDeck) {
+      showCardCharts(componentId, parsedDeck, colors);
+    }
   }, [componentId, parsedDeck, colors]);
 
   const showDrawSimulatorPressed = useCallback(() => {
-    showDrawSimulator(componentId, parsedDeck, colors);
+    if (parsedDeck) {
+      showDrawSimulator(componentId, parsedDeck, colors);
+    }
   }, [componentId, parsedDeck, colors]);
 
   const problemRow = useMemo(() => {
-    if (!parsedDeck.problem) {
+    if (!parsedDeck?.problem) {
       return null;
     }
     return (
@@ -53,18 +63,24 @@ export default function DeckNavFooter({
         noFontScaling
       />
     );
-  }, [parsedDeck.problem]);
+  }, [parsedDeck?.problem]);
 
   const xpString = useMemo(() => {
+    if (!parsedDeck || !deckEdits) {
+      return '';
+    }
     const experience = parsedDeck.experience;
     const xp = parsedDeck.deck.xp;
     const changes = parsedDeck.changes;
     if (!changes) {
       return t`XP: ${experience}`;
     }
-    const adjustedExperience = (xp || 0) + (xpAdjustment || 0);
+    const adjustedExperience = (xp || 0) + (deckEdits.xpAdjustment || 0);
     return t`XP: ${changes.spentXp} of ${adjustedExperience}`;
-  }, [xpAdjustment, parsedDeck.changes, parsedDeck.experience, parsedDeck.deck.xp]);
+  }, [deckEdits, parsedDeck]);
+  if (!parsedDeck) {
+    return null;
+  }
 
   const {
     investigator,

@@ -1,7 +1,6 @@
 import { flatMap } from 'lodash';
 import {
   Deck,
-  InvestigatorData,
   SingleCampaign,
   CampaignGuideState,
   DecksMap,

@@ -52,7 +52,7 @@ function EditChaosBagDialog({ chaosBag: originalChaosBag, updateChaosBag, trackD
   const saveChanges = useMemo(() => throttle(() => {
     updateChaosBag(chaosBag);
     Navigation.pop(componentId);
-  }, 200), [updateChaosBag, chaosBag, componentId])
+  }, 200), [updateChaosBag, chaosBag, componentId]);
 
   const handleBackPress = useCallback(() => {
     if (!visible) {

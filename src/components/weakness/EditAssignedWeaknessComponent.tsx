@@ -10,7 +10,8 @@ import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards, useWeaknessCards } from '@components/core/hooks';
+import { usePlayerCards, useSlotActions, useSlots, useWeaknessCards } from '@components/core/hooks';
+import CardQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/CardQuantityComponent';
 
 interface Props {
   componentId: string;
@@ -20,17 +21,8 @@ interface Props {
 
 function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssignedCards }: Props) {
   const { colors } = useContext(StyleContext);
-  const cards = usePlayerCards();
   const weaknessCards = useWeaknessCards();
-  const onCountChange = useCallback((code: string, count: number) => {
-    const card = cards && cards[code];
-    const newAssignedCards = {
-      ...weaknessSet.assignedCards,
-      [code]: (card && card.quantity || 1) - count,
-    };
-    updateAssignedCards(newAssignedCards);
-  }, [weaknessSet.assignedCards, updateAssignedCards, cards]);
-
+  const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, undefined, updateAssignedCards);
   const cardPressed = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);
@@ -39,18 +31,23 @@ function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssigne
   return (
     <ScrollView>
       { flatMap(weaknessCards, card => {
-        if (!packCodes.has(card.pack_code)) {
+        if (!packCodes.has(card.pack_code) || !editAssignedCards) {
           return null;
         }
+        const count = (card.quantity || 0) - (weaknessSet.assignedCards[card.code] || 0);
+        const limit = (card.quantity || 0);
         return (
           <CardSearchResult
             key={card.code}
             card={card}
-            count={(card.quantity || 0) - (weaknessSet.assignedCards[card.code] || 0)}
             onPress={cardPressed}
-            limit={(card.quantity || 0)}
-            onDeckCountChange={onCountChange}
-            showZeroCount
+            control={{
+              type: 'quantity',
+              count,
+              limit,
+              countChanged: editAssignedCards,
+              showZeroCount: true,
+            }}
           />
         );
       }) }

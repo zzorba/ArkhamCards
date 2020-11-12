@@ -23,6 +23,11 @@ import {
   UpdateDeckAction,
   Deck,
   DecksMap,
+  EditDeckState,
+  START_DECK_EDIT,
+  FINISH_DECK_EDIT,
+  UPDATE_DECK_EDIT_COUNTS,
+  UPDATE_DECK_EDIT,
 } from '@actions/types';
 import deepDiff from 'deep-diff';
 
@@ -30,6 +35,12 @@ interface DecksState {
   all: DecksMap;
   checklist?: {
     [id: number]: string[] | undefined;
+  };
+  edits?: {
+    [id: number]: EditDeckState | undefined;
+  }
+  editting?: {
+    [id: number]: boolean | undefined;
   };
   myDecks: number[];
   replacedLocalIds?: {
@@ -80,6 +91,131 @@ export default function(
   state = DEFAULT_DECK_STATE,
   action: DecksActions
 ): DecksState {
+  if (action.type === START_DECK_EDIT) {
+    const deck = state.all[action.id];
+    const newEdits = deck ? {
+      ...state.edits || {},
+      [action.id]: {
+        nameChange: undefined,
+        meta: deck.meta || {},
+        slots: deck.slots || {},
+        ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots || {},
+        xpAdjustment: deck.xp_adjustment || 0,
+      },
+    } : state.edits;
+    return {
+      ...state,
+      editting: {
+        ...state.editting || {},
+        [action.id]: true,
+      },
+      edits: newEdits,
+    };
+  }
+  if (action.type === FINISH_DECK_EDIT) {
+    const newEditting = { ...state.editting || {} };
+    delete newEditting[action.id];
+    const newEdits = { ...state.edits || {} };
+    delete newEdits[action.id];
+    return {
+      ...state,
+      editting: newEditting,
+      edits: newEdits,
+    };
+  }
+
+  if (action.type === UPDATE_DECK_EDIT) {
+    const currentEdits = (state.edits || {})[action.id];
+    if (!currentEdits) {
+      // Shouldn't happen
+      return state;
+    }
+    const updatedEdits = { ...currentEdits };
+
+    if (action.updates.nameChange !== undefined) {
+      updatedEdits.nameChange = action.updates.nameChange;
+    }
+    if (action.updates.tabooSetChange !== undefined) {
+      updatedEdits.tabooSetChange = action.updates.tabooSetChange;
+    }
+    if (action.updates.meta !== undefined) {
+      updatedEdits.meta = action.updates.meta;
+    }
+    if (action.updates.slots !== undefined) {
+      updatedEdits.slots = action.updates.slots;
+    }
+    if (action.updates.ignoreDeckLimitSlots !== undefined) {
+      updatedEdits.ignoreDeckLimitSlots = action.updates.ignoreDeckLimitSlots;
+    }
+    if (action.updates.xpAdjustment) {
+      updatedEdits.xpAdjustment = action.updates.xpAdjustment;
+    }
+    return {
+      ...state,
+      edits: {
+        ...state.edits,
+        [action.id]: updatedEdits,
+      },
+    };
+  }
+
+  if (action.type === UPDATE_DECK_EDIT_COUNTS) {
+    const currentEdits = (state.edits || {})[action.id];
+    if (!currentEdits) {
+      // Shouldn't happen
+      return state;
+    }
+    if (action.countType === 'xpAdjustment') {
+      let xpAdjustment = currentEdits.xpAdjustment;
+      switch (action.operation) {
+        case 'inc': xpAdjustment++; break;
+        case 'dec': xpAdjustment--; break;
+        case 'set': xpAdjustment = action.value; break;
+      }
+      return {
+        ...state,
+        edits: {
+          ...state.edits,
+          [action.id]: {
+            ...currentEdits,
+            xpAdjustment,
+          },
+        },
+      };
+    }
+    const currentSlots = {
+      ...(action.countType === 'slots' ? currentEdits.slots : currentEdits.ignoreDeckLimitSlots),
+    };
+    switch (action.operation) {
+      case 'set':
+        currentSlots[action.code] = action.value;
+        break;
+      case 'dec':
+        currentSlots[action.code] = Math.max((currentSlots[action.code] || 0) - 1, 0);
+        break;
+      case 'inc':
+        currentSlots[action.code] = Math.min((currentSlots[action.code] || 0) + 1, action.limit || 2);
+        break;
+    }
+    if (!currentSlots[action.code]) {
+      delete currentSlots[action.code];
+    }
+
+    const updatedEdits = { ...currentEdits };
+    if (action.countType === 'slots') {
+      updatedEdits.slots = currentSlots;
+    } else {
+      updatedEdits.ignoreDeckLimitSlots = currentSlots;
+    }
+
+    return {
+      ...state,
+      edits: {
+        ...state.edits,
+        [action.id]: updatedEdits,
+      },
+    };
+  }
   if (action.type === RESET_DECK_CHECKLIST) {
     return {
       ...state,
@@ -361,6 +497,19 @@ export default function(
         action.id,
         ...filter(state.myDecks, deckId => deckId !== action.id),
       ];
+    }
+    if ((state.editting || {})[action.id]) {
+      newState.edits = {
+        ...(state.edits || {}),
+        [action.id]: {
+          nameChange: undefined,
+          tabooSetChange: undefined,
+          slots: deck.slots,
+          ignoreDeckLimitSlots: deck.ignoreDeckLimitSlots || {},
+          meta: deck.meta || {},
+          xpAdjustment: deck.xp_adjustment || 0,
+        },
+      };
     }
     return newState;
   }

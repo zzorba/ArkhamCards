@@ -175,7 +175,6 @@ export default function InputStepComponent({ step, componentId, campaignLog, swi
     case 'send_campaign_link':
       return (
         <SendCampaignLinkInputComponent
-          id={step.id}
           input={step.input}
           campaignLog={campaignLog}
           bulletType={step.bullet_type}

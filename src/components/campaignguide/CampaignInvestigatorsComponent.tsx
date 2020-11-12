@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { Alert, InteractionManager, Text, StyleSheet, View, AppStateStatus } from 'react-native';
+import { Alert, InteractionManager, Text, StyleSheet, View } from 'react-native';
 import { find, findLast, flatMap, forEach, map, mapValues, partition } from 'lodash';
 import { isAfter } from 'date-fns';
 import { useAppState } from '@react-native-community/hooks';
@@ -40,7 +40,7 @@ export default function CampaignInvestigatorsComponent({ componentId, campaignDa
   const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
 
-  const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, (data, code) => (data && data.spentXp) || 0));
+  const [spentXp, incSpentXp, decSpentXp] = useCounters(mapValues(campaignData.adjustedInvestigatorData, data => (data && data.spentXp) || 0));
   const [removeMode, toggleRemoveInvestigator] = useFlag(false);
   const [xpDirty, setXpDirty] = useState(false);
   useEffectUpdate(() => {

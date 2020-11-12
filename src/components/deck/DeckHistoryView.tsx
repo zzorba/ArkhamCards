@@ -9,28 +9,21 @@ import DeckProgressComponent from './DeckProgressComponent';
 import { DeckDetailProps } from './DeckDetailView';
 import { getDeckOptions } from '@components/nav/helper';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, DeckMeta, ParsedDeck, Slots } from '@actions/types';
+import { Deck, ParsedDeck } from '@actions/types';
 import { getAllDecks } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards } from '@components/core/hooks';
+import { useDeckEdits, usePlayerCards } from '@components/core/hooks';
 
 export interface DeckHistoryProps {
   id: number;
-  meta: DeckMeta;
-  slots: Slots;
-  ignoreDeckLimitSlots: Slots;
-  xpAdjustment: number;
 }
 
 export default function DeckHistoryView({
   componentId,
   id,
-  meta,
-  slots,
-  ignoreDeckLimitSlots,
-  xpAdjustment,
 }: DeckHistoryProps & NavigationProps) {
+  const deckEdits = useDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const cards = usePlayerCards();
   const decks = useSelector(getAllDecks);
@@ -45,14 +38,15 @@ export default function DeckHistoryView({
       const previousDeck: Deck | undefined = (
         deck.previous_deck ? decks[deck.previous_deck] : undefined
       );
+      const currentXpAdjustment = currentDeck ? deckEdits?.xpAdjustment : undefined;
       const parsedDeck = parseDeck(
         deck,
-        currentDeck ? meta : (deck.meta || {}),
-        currentDeck ? slots : deck.slots,
-        currentDeck ? ignoreDeckLimitSlots : deck.ignoreDeckLimitSlots,
+        (currentDeck && deckEdits?.meta) || (deck.meta || {}),
+        (currentDeck && deckEdits?.slots) || deck.slots,
+        (currentDeck && deckEdits?.ignoreDeckLimitSlots) || deck.ignoreDeckLimitSlots,
         cards,
         previousDeck,
-        currentDeck ? xpAdjustment : (deck.xp_adjustment || 0),
+        currentXpAdjustment !== undefined ? currentXpAdjustment : (deck.xp_adjustment || 0),
       );
       if (parsedDeck) {
         decksResult.push(parsedDeck);
@@ -60,7 +54,7 @@ export default function DeckHistoryView({
       deck = previousDeck;
     }
     return decksResult;
-  }, [id, decks, cards, slots, ignoreDeckLimitSlots, xpAdjustment, meta]);
+  }, [id, decks, cards, deckEdits]);
 
   const deckTitle = useCallback((deck: ParsedDeck, versionNumber: number): string => {
     if (!deck.changes) {

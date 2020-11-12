@@ -129,8 +129,8 @@ function DeckUpgradeComponent({
       throttledSaveUpgrade();
     },
   }), [throttledSaveUpgrade]);
-  const onExileCountsChange = useCallback((exileCounts: Slots) => {
-    updateExileCounts({ type: 'sync', slots: exileCounts });
+  const onExileCountChange = useCallback((card: Card, count: number) => {
+    updateExileCounts({ type: 'set-slot', code: card.code, value: count });
   }, [updateExileCounts]);
   if (!deck) {
     return null;
@@ -178,7 +178,7 @@ function DeckUpgradeComponent({
           />
         )}
         exileCounts={exileCounts}
-        updateExileCounts={onExileCountsChange}
+        updateExileCount={onExileCountChange}
       />
       { !!campaignSection && campaignSection }
       { !!saveButtonText && <BasicButton onPress={throttledSaveUpgrade} title={saveButtonText} /> }

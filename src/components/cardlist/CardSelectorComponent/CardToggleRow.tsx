@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   View,
 } from 'react-native';
@@ -6,6 +6,7 @@ import {
 import CardSearchResult from '../../cardlist/CardSearchResult';
 import Card from '@data/Card';
 import { useFlag } from '@components/core/hooks';
+import CardToggle from '../CardSearchResult/ControlComponent/CardToggle';
 
 interface Props {
   card: Card;
@@ -16,12 +17,6 @@ interface Props {
   value?: number;
 }
 
-interface State {
-  one: boolean;
-  two: boolean;
-  three: boolean;
-}
-
 export default function CardToggleRow({ card, count, onChange, onPress, limit, value }: Props) {
   const [one, toggleOne] = useFlag(count > 0);
   const [two, toggleTwo] = useFlag(count > 1);
@@ -29,7 +24,9 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, v
 
   useEffect(() => {
     onChange(card, (one ? 1 : 0) + (two ? 1 : 0) + (three ? 1 : 0));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [one, two, three]);
+
   if (limit === 0) {
     return null;
   }
@@ -37,30 +34,36 @@ export default function CardToggleRow({ card, count, onChange, onPress, limit, v
     <View>
       <CardSearchResult
         card={card}
-        count={value}
-        onToggleChange={toggleOne}
         onPress={onPress}
-        toggleValue={one}
         backgroundColor="transparent"
+        control={{
+          type: 'toggle',
+          value: one,
+          toggleValue: toggleOne,
+        }}
       />
       { (limit > 1) && (
         <CardSearchResult
           card={card}
-          count={value}
-          onToggleChange={toggleTwo}
           onPress={onPress}
-          toggleValue={two}
           backgroundColor="transparent"
+          control={{
+            type: 'toggle',
+            value: two,
+            toggleValue: toggleTwo,
+          }}
         />
       ) }
       { (limit > 2) && (
         <CardSearchResult
           card={card}
-          count={value}
-          onToggleChange={toggleThree}
           onPress={onPress}
-          toggleValue={three}
           backgroundColor="transparent"
+          control={{
+            type: 'toggle',
+            value: three,
+            toggleValue: toggleThree,
+          }}
         />
       ) }
     </View>

@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
@@ -23,11 +23,13 @@ import { s, xs } from '@styles/space';
 import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
+import DeckNavFooter from '@components/DeckNavFooter';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
 interface Props {
   componentId: string;
+  deckId?: number;
   baseQuery?: Brackets;
   mythosToggle?: boolean;
   showNonCollection?: boolean;
@@ -37,27 +39,12 @@ interface Props {
   visible: boolean;
   toggleMythosMode: () => void;
   clearSearchFilters: () => void;
-  tabooSetOverride?: number;
 
   investigator?: Card;
-  originalDeckSlots?: Slots;
-  deckCardCounts?: Slots;
-  onDeckCountChange?: (code: string, count: number) => void;
-  limits?: Slots;
   header?: React.ReactElement;
-  renderFooter?: (slots?: Slots, controls?: React.ReactNode) => ReactNode;
   storyOnly?: boolean;
 
   initialSort?: SortType;
-}
-
-interface State {
-  searchText: boolean;
-  searchFlavor: boolean;
-  searchBack: boolean;
-  searchTerm?: string;
-  searchCode?: number;
-  searchQuery?: RegExp;
 }
 
 function searchOptionsHeight(fontScale: number) {
@@ -238,6 +225,7 @@ function ExpandSearchButtons({
 
 export default function({
   componentId,
+  deckId,
   baseQuery,
   mythosToggle,
   showNonCollection,
@@ -246,14 +234,8 @@ export default function({
   mythosMode,
   toggleMythosMode,
   clearSearchFilters,
-  tabooSetOverride,
   investigator,
-  originalDeckSlots,
-  deckCardCounts,
-  onDeckCountChange,
-  limits,
   header,
-  renderFooter,
   storyOnly,
   initialSort,
 }: Props) {
@@ -384,17 +366,13 @@ export default function({
         <>
           <DbCardResultList
             componentId={componentId}
-            tabooSetOverride={tabooSetOverride}
+            deckId={deckId}
             query={query}
             filterQuery={filterQuery || undefined}
             textQuery={textQuery}
             searchTerm={searchTerm}
             sort={selectedSort}
             investigator={investigator}
-            originalDeckSlots={originalDeckSlots}
-            deckCardCounts={deckCardCounts}
-            onDeckCountChange={onDeckCountChange}
-            limits={limits}
             handleScroll={handleScroll}
             showHeader={showHeader}
             expandSearchControls={(
@@ -413,16 +391,15 @@ export default function({
               />
             )}
             header={header}
-            renderFooter={renderFooter}
             showNonCollection={showNonCollection}
             storyOnly={storyOnly}
             mythosToggle={mythosToggle}
             //            mythosMode={mythosToggle && mythosMode}
             initialSort={initialSort}
           />
-          { !!renderFooter && (
+          { deckId !== undefined && (
             <View style={styles.footer}>
-              { renderFooter() }
+              <DeckNavFooter deckId={deckId} componentId={componentId} />
             </View>
           ) }
         </>

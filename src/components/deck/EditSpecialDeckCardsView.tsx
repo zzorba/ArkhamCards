@@ -11,34 +11,31 @@ import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { NavigationProps } from '@components/nav/types';
-import { Deck, DeckMeta, Slots } from '@actions/types';
+import { Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
 import StyleContext from '@styles/StyleContext';
 import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
-import { usePlayerCards, useSlots } from '@components/core/hooks';
+import { useDeck, useDeckEdits, usePlayerCards } from '@components/core/hooks';
+import { useDispatch } from 'react-redux';
+import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
+import { setIgnoreDeckSlot } from './DeckDetailView/actions';
 
 export interface EditSpecialCardsProps {
-  deck: Deck;
-  meta: DeckMeta;
-  previousDeck?: Deck;
-  xpAdjustment?: number;
+  id: number;
   campaignId?: number;
-  updateSlots: (slots: Slots) => void;
-  updateIgnoreDeckLimitSlots: (slots: Slots) => void;
-  slots: Slots;
-  ignoreDeckLimitSlots: Slots;
   assignedWeaknesses?: string[];
 }
 
 function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps) {
   const { backgroundStyle, colors } = useContext(StyleContext);
-  const { componentId, deck, meta, previousDeck, xpAdjustment, campaignId, assignedWeaknesses } = props;
-  const [slots, updateSlotsState] = useSlots(props.slots, props.updateSlots);
-  const [ignoreDeckLimitSlots, updateIgnoreDeckLimitSlotsState] = useSlots(props.ignoreDeckLimitSlots, props.updateIgnoreDeckLimitSlots);
+  const { componentId, campaignId, assignedWeaknesses, id } = props;
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
+  const [deck, previousDeck] = useDeck(id, {});
+  const dispatch = useDispatch();
+  const deckEdits = useDeckEdits(id);
 
   const cardPressed = useCallback((card: Card) => {
     Navigation.push<CardDetailProps>(componentId, {
@@ -54,24 +51,13 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [componentId]);
   const cards = usePlayerCards();
 
-  const updateSlots = useCallback((newSlots: Slots) => {
-    updateSlotsState({ type: 'sync', slots: newSlots });
-  }, [updateSlotsState]);
-
   const editStoryPressed = useCallback(() => {
-    const investigator = cards && cards[deck.investigator_code];
+    const investigator = deck && cards && cards[deck.investigator_code];
     Navigation.push<EditDeckProps>(componentId, {
       component: {
         name: 'Deck.Edit',
         passProps: {
-          deck,
-          meta,
-          previousDeck,
-          slots,
-          ignoreDeckLimitSlots,
-          updateSlots,
-          xpAdjustment: xpAdjustment,
-          tabooSetOverride: deck.taboo_id || 0,
+          id,
           storyOnly: true,
         },
         options: {
@@ -94,23 +80,22 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, deck, meta, previousDeck, cards, xpAdjustment, slots, ignoreDeckLimitSlots, colors, updateSlots]);
+  }, [componentId, deck, cards, colors, id]);
 
   const isSpecial = useCallback((card: Card) => {
-    return card.code === ACE_OF_RODS_CODE || ignoreDeckLimitSlots[card.code] > 0;
-  }, [ignoreDeckLimitSlots]);
+    return !!(card.code === ACE_OF_RODS_CODE || (deckEdits && deckEdits.ignoreDeckLimitSlots[card.code] > 0));
+  }, [deckEdits]);
 
   const saveWeakness = useCallback((code: string, replaceRandomBasicWeakness: boolean) => {
-    const newSlots = { ...slots };
-    if (replaceRandomBasicWeakness && slots[RANDOM_BASIC_WEAKNESS] > 0) {
-      newSlots[RANDOM_BASIC_WEAKNESS]--;
-      if (!newSlots[RANDOM_BASIC_WEAKNESS]) {
-        delete newSlots[RANDOM_BASIC_WEAKNESS];
-      }
+    if (!deckEdits) {
+      return;
     }
-    updateSlots(newSlots);
+    if (replaceRandomBasicWeakness && deckEdits.slots[RANDOM_BASIC_WEAKNESS] > 0) {
+      dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'dec', id, code: RANDOM_BASIC_WEAKNESS });
+    }
+    dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'inc', id, code });
     setUnsavedAssignedWeaknesses([...unsavedAssignedWeaknesses, code]);
-  }, [slots, unsavedAssignedWeaknesses, updateSlots, setUnsavedAssignedWeaknesses]);
+  }, [unsavedAssignedWeaknesses, id, deckEdits, dispatch, setUnsavedAssignedWeaknesses]);
 
   const editCollection = useCallback(() => {
     Navigation.push(componentId, {
@@ -121,12 +106,15 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [componentId]);
 
   const showWeaknessDialog = useCallback(() => {
-    const investigator = cards && cards[deck.investigator_code];
+    if (!deckEdits) {
+      return;
+    }
+    const investigator = deck && cards && cards[deck.investigator_code];
     Navigation.push<DrawWeaknessProps>(componentId, {
       component: {
         name: 'Weakness.Draw',
         passProps: {
-          slots,
+          slots: deckEdits.slots,
           saveWeakness,
         },
         options: {
@@ -149,7 +137,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, cards, deck, colors, slots, saveWeakness]);
+  }, [componentId, cards, deck, colors, deckEdits, saveWeakness]);
   const drawWeakness = useCallback(() => {
     Alert.alert(
       t`Draw Basic Weakness`,
@@ -162,16 +150,16 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [showWeaknessDialog, editCollection]);
 
   const showCampaignWeaknessDialog = useCallback(() => {
-    if (!campaignId) {
+    if (!campaignId || !deckEdits) {
       return;
     }
-    const investigator = cards && cards[deck.investigator_code];
+    const investigator = deck && cards && cards[deck.investigator_code];
     Navigation.push<CampaignDrawWeaknessProps>(componentId, {
       component: {
         name: 'Dialog.CampaignDrawWeakness',
         passProps: {
           campaignId,
-          deckSlots: slots,
+          deckSlots: deckEdits.slots,
           saveWeakness,
           unsavedAssignedCards: unsavedAssignedWeaknesses,
         },
@@ -195,11 +183,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, campaignId, deck, cards, colors, slots, unsavedAssignedWeaknesses, saveWeakness]);
-
-  const onIgnoreDeckLimitSlotsChange = useCallback((ignoreDeckLimitSlots: Slots) => {
-    updateIgnoreDeckLimitSlotsState({ type: 'sync', slots: ignoreDeckLimitSlots });
-  }, [updateIgnoreDeckLimitSlotsState]);
+  }, [componentId, campaignId, deck, cards, colors, deckEdits, unsavedAssignedWeaknesses, saveWeakness]);
 
   const drawWeaknessButton = useMemo(() => {
     return (
@@ -211,15 +195,24 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
     );
   }, [campaignId, showCampaignWeaknessDialog, drawWeakness]);
 
-  const basicWeaknessSection = useMemo(() => {
+  const weaknesses = useMemo(() => {
+    if (!deckEdits) {
+      return [];
+    }
     const weaknesses: Card[] = [];
-    forEach(keys(slots), code => {
+    forEach(keys(deckEdits.slots), code => {
       const card = cards && cards[code];
       if (card && card.subtype_code === 'basicweakness') {
         weaknesses.push(card);
       }
     });
+    return weaknesses;
+  }, [deckEdits, cards]);
 
+  const basicWeaknessSection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
     return (
       <>
         <CardSectionHeader section={{ title: t`Basic weakness` }} />
@@ -227,24 +220,36 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
           <CardSearchResult
             key={card.code}
             card={card}
-            count={slots[card.code]}
             onPress={cardPressed}
+            control={{
+              type: 'count',
+              count: deckEdits.slots[card.code] || 0,
+            }}
           />
         )) }
         { drawWeaknessButton }
       </>
     );
-  }, [cards, slots, drawWeaknessButton, cardPressed]);
+  }, [weaknesses, deckEdits, drawWeaknessButton, cardPressed]);
 
-  const storySection = useMemo(() => {
+
+  const storyCards = useMemo(() => {
+    if (!deckEdits) {
+      return [];
+    }
     const storyCards: Card[] = [];
-    forEach(keys(slots), code => {
+    forEach(keys(deckEdits.slots), code => {
       const card = cards && cards[code];
       if (card && card.mythos_card) {
         storyCards.push(card);
       }
     });
-
+    return storyCards;
+  }, [deckEdits, cards]);
+  const storySection = useMemo(() => {
+    if (!deckEdits) {
+      return null;
+    }
     return (
       <>
         <CardSectionHeader section={{ title: t`Story` }} />
@@ -252,8 +257,11 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
           <CardSearchResult
             key={card.code}
             card={card}
-            count={slots[card.code]}
             onPress={cardPressed}
+            control={{
+              type: 'count',
+              count: deckEdits.slots[card.code],
+            }}
           />
         )) }
         <ArkhamButton
@@ -263,23 +271,25 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         />
       </>
     );
-  }, [cards, slots, cardPressed, editStoryPressed]);
-
+  }, [deckEdits, storyCards, cardPressed, editStoryPressed]);
+  const setIgnoreCardCount = useCallback((card: Card, count: number) => {
+    dispatch(setIgnoreDeckSlot(id, card.code, count));
+  }, [dispatch, id]);
   const ignoreCardsSection = useMemo(() => {
-    const header = (
-      <CardSectionHeader section={{ title: t`Do not count towards deck size` }} />
-    );
+    if (!deckEdits) {
+      return null;
+    }
     return (
       <CardSelectorComponent
         componentId={componentId}
-        slots={slots}
-        counts={ignoreDeckLimitSlots}
-        updateCounts={onIgnoreDeckLimitSlotsChange}
+        slots={deckEdits.slots}
+        counts={deckEdits.ignoreDeckLimitSlots}
+        updateCount={setIgnoreCardCount}
         filterCard={isSpecial}
-        header={header}
+        header={<CardSectionHeader section={{ title: t`Do not count towards deck size` }} />}
       />
     );
-  }, [componentId, ignoreDeckLimitSlots, slots, onIgnoreDeckLimitSlotsChange, isSpecial]);
+  }, [componentId, setIgnoreCardCount, deckEdits, isSpecial]);
 
   return (
     <ScrollView style={[styles.wrapper, backgroundStyle]}>

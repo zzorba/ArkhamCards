@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import {
   ActivityIndicator,
   StyleSheet,

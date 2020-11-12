@@ -13,25 +13,22 @@ interface Props {
   slots: Slots;
   counts: Slots;
   toggleCard?: (code: string, value: boolean) => void;
-  updateCounts?: (slots: Slots) => void;
+  updateCount?: (card: Card, value: number) => void;
   filterCard?: (card: Card) => boolean;
   header?: ReactNode;
 }
 
 
-export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCounts, filterCard, header }: Props) {
+export default function CardSelectorComponent({ componentId, slots, counts, toggleCard, updateCount, filterCard, header }: Props) {
   const { colors } = useContext(StyleContext);
 
   const onChange = useCallback((card: Card, count: number) => {
     if (toggleCard) {
       toggleCard(card.code, count > 0);
-    } else if (updateCounts) {
-      updateCounts({
-        ...counts,
-        [card.code]: count,
-      });
+    } else if (updateCount) {
+      updateCount(card, count);
     }
-  }, [counts, updateCounts, toggleCard]);
+  }, [counts, updateCount, toggleCard]);
 
   const onCardPress = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);

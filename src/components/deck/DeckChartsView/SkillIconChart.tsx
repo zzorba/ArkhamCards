@@ -12,7 +12,6 @@ import ChartLabel from './ChartLabel';
 import ChartIconComponent from './ChartIconComponent';
 import { ParsedDeck } from '@actions/types';
 import { SKILLS, SkillCodeType } from '@app_constants';
-import COLORS from '@styles/colors';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
 
 interface Props {
@@ -73,7 +72,7 @@ export default class SkillIconChart extends React.PureComponent<Props> {
             labels={this._getValue}
             style={{
               data: {
-                fill: ({ datum }: { datum: Item }) => COLORS.skill[datum.skill].default,
+                fill: ({ datum }: { datum: Item }) => colors.skill[datum.skill].icon,
               },
               labels: {
                 fill: 'white',
