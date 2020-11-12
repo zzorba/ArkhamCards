@@ -10711,7 +10711,7 @@
   "id": "rtdwl",
   "position": 1,
   "version": 1,
-  "name": "Renouveau: L'Héritage de Dunwich",
+  "name": "Renouveau - L'Héritage de Dunwich",
   "campaign_log": [
     {
       "id": "campaign_notes",
@@ -11090,8 +11090,8 @@
 },
 {
   "id": "return_to_blood_on_the_altar",
-  "scenario_name": "Renouveau: Du Sang sur l'Autel",
-  "full_name": "Scenario IV: Renouveau: Du Sang sur l'Autel",
+  "scenario_name": "Renouveau - Du Sang sur l'Autel",
+  "full_name": "Scénario IV: Renouveau - Du Sang sur l'Autel",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -11507,8 +11507,8 @@
 },
 {
   "id": "return_to_essex_county_express",
-  "scenario_name": "Renouveau: L'Express du Comté d'Essex",
-  "full_name": "Scenario III: Renouveau: L'Express du Comté d'Essex",
+  "scenario_name": "Renouveau - L'Express du Comté d'Essex",
+  "full_name": "Scénario III: Renouveau - L'Express du Comté d'Essex",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -11844,7 +11844,7 @@
     },
     {
       "id": "remove_agenda_1a",
-      "text": "Retirez de la partie l'Intrigue 1a - \"Un Accroc dans la réalité \" et remplacez-la par les nouvelles Intrigues 0a - \"Il n'y a pas de Fumée... \" et 1a - \"Un Accroc dans la réalité (v.II) \" (Quand vous constituez le deck Intrigue, l'Intrigue 0a doit être au-dessus.)"
+      "text": "Retirez de la partie l'Intrigue 1a - « Un Accroc dans la réalité » et remplacez-la par les nouvelles Intrigues 0a - « Il n'y a pas de Fumée... » et 1a - « Un Accroc dans la réalité (v.II) ». (Quand vous constituez le deck Intrigue, l'Intrigue 0a doit être au-dessus.)"
     },
     {
       "id": "setup_locations",
@@ -11917,8 +11917,8 @@
 },
 {
   "id": "return_to_extracurricular_activity",
-  "scenario_name": "Renouveau: Activité Extrascolaire",
-  "full_name": "Scenario I–A:Renouveau: Activité Extrascolaire",
+  "scenario_name": "Renouveau - Activité Extrascolaire",
+  "full_name": "Scénario I–A:Renouveau - Activité Extrascolaire",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12257,8 +12257,8 @@
 },
 {
   "id": "return_to_lost_in_time_and_space",
-  "scenario_name": "Renouveau: Perdu dans le Temps et l'Espace",
-  "full_name": "Scenario VII: Renouveau: Perdu dans le Temps et l'Espace",
+  "scenario_name": "Renouveau - Perdu dans le Temps et l'Espace",
+  "full_name": "Scénario VII: Renouveau - Perdu dans le Temps et l'Espace",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12509,11 +12509,11 @@
     {
       "id": "replace_act_2",
       "bullet_type": "small",
-      "text": "Remplacer l'Acte 2a - \"Dans l'Au-Delà\" par le nouvel Acte 2a - \"Dans l'Au-Delà (v.II)\" inclus dans ce set de rencontre."
+      "text": "Remplacer l'Acte 2a - « Dans l'Au-Delà » par le nouvel Acte 2a - « Dans l'Au-Delà (v.II) » inclus dans ce set de rencontre."
     },
     {
       "id": "replace_agenda_3",
-      "text": "Remplacer l'Intrigue 3a - \"Passer au Travers\" par la nouvelle Intrigue 3a - \"Passer au Travers (v.II)\" inclus dans ce set de rencontre."
+      "text": "Remplacer l'Intrigue 3a - « Passer au Travers » par la nouvelle Intrigue 3a - « Passer au Travers (v.II) » inclus dans ce set de rencontre."
     },
     {
       "id": "setup_realms_beyond",
@@ -12585,8 +12585,8 @@
 },
 {
   "id": "return_to_the_house_always_wins",
-  "scenario_name": "Renouveau: La Banque Gagne Toujours",
-  "full_name": "Scenario I–B: Renouveau: La Banque Gagne Toujours",
+  "scenario_name": "Renouveau - La Banque Gagne Toujours",
+  "full_name": "Scénario I–B: Renouveau - La Banque Gagne Toujours",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -12804,7 +12804,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Sélectionnez l'un des deux lieux Lounge du CLub du Trèfle au hasard et retirez de la partie l'autre exemplaire. Mettez en jeu les lieux Lounge du Club du Trèfle, Bar du Club du Trèfle, Salle de Jeu du Club du Trèfle et La Bella Luna. Chaque in- vestigateur commence la partie dans La Bella Luna."
+      "text": "Sélectionnez l'un des deux lieux Lounge du CLub du Trèfle au hasard et retirez de la partie l'autre exemplaire. Mettez en jeu les lieux Lounge du Club du Trèfle, Bar du Club du Trèfle, Salle de Jeu du Club du Trèfle et La Bella Luna. Chaque investigateur commence la partie dans La Bella Luna."
     },
     {
       "id": "set_aside_cards",
@@ -12905,8 +12905,8 @@
 },
 {
   "id": "return_to_the_miskatonic_museum",
-  "scenario_name": "Renouveau: Le Musée Miskatonic",
-  "full_name": "Scenario II: Renouveau: Le Musée Miskatonic",
+  "scenario_name": "Renouveau - Le Musée Miskatonic",
+  "full_name": "Scénario II: Renouveau - Le Musée Miskatonic",
   "setup": [
     "prologue",
     "check_henry_armitage_kidnapped",
@@ -13155,7 +13155,7 @@
     },
     {
       "id": "exhibit_halls",
-      "text": "Set the “Exhibit Hall” locations aside as a separate 6 card “Exhibit Deck.” To do this, perform the following:",
+      "text": "Mettez de côté les lieux « Salle d’Exposition » pour constituer un « deck Exposition » de 6 cartes selon les règles suivantes :",
       "bullets": [
         {
           "text": "Réunissez les 8 lieux Salle d'exposition. Mettez de côté la Salle d'Exposition <i>(Salle à Accès Restreint)</i> et retirez de la partie 2 lieux Salle d'Exposition pris au hasard."
@@ -13170,7 +13170,7 @@
     },
     {
       "id": "attach_scenario_reference",
-      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante:\n\"Quand un investigateur résoult le texte de l'Intrigue 1b et de l'Intrigue 2b, la capacité <b>Forcé</b> de la prochaine intrigue dans le deck Intrigue est considérée comme étant active.\"\nAttachez cette carte à la carte de rérérence du scénario en tant qu'aide-mémoire."
+      "text": "Pour la durée de ce scénario, appliquez la règle supplémentaire suivante:\n« Quand un investigateur résoult le texte de l'Intrigue 1b et de l'Intrigue 2b, la capacité <b>Forcé</b> de la prochaine intrigue dans le deck Intrigue est considérée comme étant active. »\nAttachez cette carte à la carte de rérérence du scénario en tant qu'aide-mémoire."
     }
   ],
   "resolutions": [
@@ -13219,8 +13219,8 @@
 },
 {
   "id": "return_to_undimensioned_and_unseen",
-  "scenario_name": "Renouveau: Aux Frontières du Visible",
-  "full_name": "Scenario V: Renouveau: Aux Frontières du Visible",
+  "scenario_name": "Renouveau - Aux Frontières du Visible",
+  "full_name": "Scénario V: Renouveau - Aux Frontières du Visible",
   "setup": [
     "prologue",
     "warn_or_calm_choice",
@@ -13524,7 +13524,7 @@
     {
       "id": "randomize_broods_note",
       "bullet_type": "small",
-      "text": "Pour la durée de ce scénario, appliquez la règle suivante:\n\"Si un Rejeton de Yog-Sothoth devrait être mis en jeu, il est pris au hasard parmi lesversion du Rejeton de Yog-Sothoth mises de côtés.\"\nAttachez cette carte à la carte de référence du scénario en tant qu'aide-mémoire."
+      "text": "Pour la durée de ce scénario, appliquez la règle suivante:\n« Si un Rejeton de Yog-Sothoth devrait être mis en jeu, il est pris au hasard parmi lesversion du Rejeton de Yog-Sothoth mises de côtés. »\nAttachez cette carte à la carte de référence du scénario en tant qu'aide-mémoire."
     },
     {
       "id": "spawn_two_brood",
@@ -13588,8 +13588,8 @@
 },
 {
   "id": "return_to_where_doom_awaits",
-  "scenario_name": "Renouveau: Là où le Destin Attend",
-  "full_name": "Scenario VI: Renouveau: Là où le Destin Attend",
+  "scenario_name": "Renouveau - Là où le Destin Attend",
+  "full_name": "Scénario VI: Renouveau - Là où le Destin Attend",
   "setup": [
     "prologue",
     "check_naomi_has_back",
@@ -14411,7 +14411,7 @@
   "campaign":
 {
   "id": "rtnotz",
-  "name": "Renouveau: La Nuit de la Zélatrice",
+  "name": "Renouveau - La Nuit de la Zélatrice",
   "position": 0,
   "version": 1,
   "campaign_log": [
@@ -14605,8 +14605,8 @@
 }, "scenarios": [
 {
   "id": "return_to_the_devourer_below",
-  "scenario_name": "Renouveau: Le Dévoreur du Dessous",
-  "full_name": "Chapitre III: Renouveau: Le Dévoreur du Dessous",
+  "scenario_name": "Renouveau - Le Dévoreur du Dessous",
+  "full_name": "Scénario III: Renouveau - Le Dévoreur du Dessous",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -14967,7 +14967,7 @@
     },
     {
       "id": "set_aside_cards",
-      "text": "Mettez les cartes Site du Rituel et Umôrdhoth de côté, hors jeu. Retournez \"Renouveau Le Dévoreur du Dessous\" et attachez-la à Umôrdhoth."
+      "text": "Mettez les cartes Site du Rituel et Umôrdhoth de côté, hors jeu. Retournez « Renouveau Le Dévoreur du Dessous » et attachez-la à Umôrdhoth."
     }
   ],
   "resolutions": [
@@ -15028,8 +15028,8 @@
 },
 {
   "id": "return_to_the_gathering",
-  "scenario_name": "Renouveau: Le Rassemblement",
-  "full_name": "Chapitre I: Renouveau: Le Rassemblement",
+  "scenario_name": "Renouveau - Le Rassemblement",
+  "full_name": "Scénario I: Renouveau - Le Rassemblement",
   "setup": [
     "prologue",
     "gather_encounter_sets",
@@ -15224,7 +15224,7 @@
     {
       "id": "remove_act_1a",
       "bullet_type": "small",
-      "text": "Retirez de la partie l'Acte 1a- \"Piégés\" et remplacez-le par le nouvel Ate 1a- \"Mystérieux Portail\"."
+      "text": "Retirez de la partie l'Acte 1a- « Piégés » et remplacez-le par le nouvel Acte 1a- « Mystérieux Portail »."
     },
     {
       "id": "remove_study",
@@ -15334,8 +15334,8 @@
 },
 {
   "id": "return_to_the_midnight_masks",
-  "scenario_name": "Renouveau: Les Masques de Minuit",
-  "full_name": "Chapitre II: Renouveau: Les Masques de Minuit",
+  "scenario_name": "Renouveau - Les Masques de Minuit",
+  "full_name": "Scénario II: Renouveau - Les Masques de Minuit",
   "setup": [
     "lita_condition",
     "intro_3",
@@ -15732,7 +15732,7 @@
     },
     {
       "id": "construct_act_deck",
-      "text": "Construisez le deck Intrigue en utilisant l'un des deux exemplaires de l'Intrigue 1a- \"Prédateur ou Proie?\" pris au hasard, sans regarder leur versos. Retirez de la partie l'autre exemplaire de l'Intrigue 1a."
+      "text": "Construisez le deck Intrigue en utilisant l'un des deux exemplaires de l'Intrigue 1a- « Prédateur ou Proie ? » pris au hasard, sans regarder leur versos. Retirez de la partie l'autre exemplaire de l'Intrigue 1a."
     },
     {
       "id": "setup_locations",
@@ -21770,7 +21770,7 @@
     },
     {
       "id": "hidden",
-      "title": "hidden",
+      "title": "cacher",
       "type": "hidden"
     }
   ],
@@ -26245,7 +26245,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "agenda_5",
-          "text": "hidden"
+          "text": "cacher"
         }
       ]
     },
@@ -26258,13 +26258,13 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "agenda_5",
-          "text": "hidden"
+          "text": "cacher"
         },
         {
           "type": "campaign_log",
           "section": "hidden",
           "id": "agenda_6",
-          "text": "hidden"
+          "text": "cacher"
         }
       ]
     },
@@ -28057,7 +28057,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "L’investigateur principal doit décider (choisir une option) :",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -41667,8 +41667,8 @@
 },
 {
   "id": "the_wages_of_sin",
-  "scenario_name": "The Wages of Sin",
-  "full_name": "Scenario IV: The Wages of Sin",
+  "scenario_name": "Le Salaire du Péché",
+  "full_name": "Scénario IV: Le Salaire du Péché",
   "setup": [
     "intro",
     "gather_encounter_sets",
@@ -41685,7 +41685,7 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "Ever since your encounter with the ghost in the Witch House, you have been forced to reconsider everything you know about life and death. Keziah Mason died over two hundred years ago, but her spirit remains in the spectral mist—the same mist you encountered in Josef Meiger’s manor. One question lingers in your mind as you consider the events that have transpired: Does Keziah’s spirit linger because of the mist, or is the mist caused by her presence? Which is the disease, and which the symptom?\nThe more you delve into Arkham’s history of witchcraft and persecution, the more restless you become. Night after night, you are assaulted by terrible dreams—dreams of death and decay, of guilt and sin. There is an evil that dwells in this city, an evil that has long remained hidden in the darkness of Arkham’s past. What’s worse, your inquiry has reached an impasse. You believe that if you can find the coven of witches you saw in the woods that fateful night, you might be able to learn more about Keziah Mason or of this unspoken evil.\nAs you go through your morning routine, your eyes drift across one of the smaller headlines of today’s newspaper: “Ghost Sightings on Hangman’s Hill? Residents of Uptown claim to have seen human shapes in the thick fog emanating from Hangman’s Brook…” It couldn’t be a coincidence, could it?\nThen the realization dawns on you—if it is witches you seek, the only place you can be certain to find them is six feet underground, in the place where professed witches were executed all those years ago. Searching for specters in a graveyard may not be your safest bet, but you’re not sure one can stay safe in this city anymore."
+      "text": "Depuis votre rencontre avec le fantôme de la Maison de la Sorcière, vous avez été forcé de reconsidérer tout ce que vous saviez à propos de la vie et de la mort. Keziah Mason est morte il y a plus de deux cents ans, mais son esprit demeure dans la brume spectrale ; la même brume que vous avez vue dans le manoir de Josef Meiger. Quand vous tentez d’analyser tous ces événements, une question hante votre esprit : le spectre de Keziah est-il la cause, ou la conséquence de la brume ? La maladie ou bien le symptôme ?\nPlus vous creusez dans l’histoire de la sorcellerie à Arkham et de la persécution qui en a découlé, moins vous parvenez à trouver le sommeil. Nuit après nuit, vous êtes assailli par des rêves ; des rêves de mort et de décrépitude, de culpabilité et de péché. Un mal ronge cette ville, un mal qui est longtemps resté caché dans les ténèbres du passé d’Arkham. Mais le pire, c’est que votre enquête est au point mort. Si seulement vous pouviez retrouver la congrégation de sorcières que vous avez vue cette fameuse nuit, vous pourriez peut-être en apprendre plus sur Keziah Mason ou sur ce mal indéterminé.\nVous reprenez votre routine matinale lorsqu’un petit article du journal d’aujourd’hui attire votre attention : « Des fantômes aperçus sur la Colline du Pendu ? Des habitants du quartier résidentiel déclarent avoir vu des formes humaines au coeur d’un épais brouillard émanant du Ruisseau du Pendu… » Cela ne peut pas être une coïncidence tout de même ?\nVous réalisez ensuite que si vous cherchez des sorcières, le meilleur endroit pour en trouver est six pieds sous terre, là où les femmes reconnues comme sorcières étaient exécutées pendant toutes ces années. Aller chercher des spectres de sorcières dans un cimetière n’est peut-être pas l’idée la plus brillante que vous ayez jamais eue, mais, de toute manière, vous n’êtes plus certain d’être en sécurité en ville."
     },
     {
       "id": "gather_encounter_sets",
@@ -41711,13 +41711,13 @@
     },
     {
       "id": "setup_locations",
-      "text": "Randomly choose one of the two The Gallows locations, one of the two Heretics’ Graves locations, one of the two Chapel Attic locations, and one of the two Chapel Crypt locations, and put them into play. Remove the other versions of The Gallows, Heretics’ Graves, Chapel Attic, and Chapel Crypt from the game. Then, put Haunted Fields, Abandoned Chapel, and Hangman’s Brook into play.",
+      "text": "Prenez au hasard l’un des deux lieux La Potence, l’un des deux lieux Tombes des Hérétiques, l’un des deux lieux Mansarde de la Chapelle et l’un des deux lieux Crypte de la Chapelle et mettez-les en jeu. Retirez de la partie chaque autre version de La Potence, des Tombes des Hérétiques, de la Mansarde de la Chapelle et de la Crypte de la Chapelle. Ensuite, mettez en jeu les Prés Hantés, la Chapelle Abandonnée et le Ruisseau du Pendu (voir la suggestion de placement au verso).",
       "bullets": [
         {
-          "text": "These locations have revealed versions on both sides. One side has the [[Spectral]] trait, and one side does not. When putting these locations into play, use the revealed sides without the [[Spectral]] trait."
+          "text": "Ces lieux ont des faces révélées au recto comme au verso. L’une de faces possède le trait [[Spectral]] et l’autre non. Quand vous mettez en jeu ces lieux, utilisez la face révélée sans le trait [[Spectral]]."
         },
         {
-          "text": "Each investigator begins play in Hangman’s Brook."
+          "text": "Chaque investigateur commence la partie dans le Ruisseau du Pendu."
         }
       ]
     },
@@ -41753,44 +41753,44 @@
     },
     {
       "id": "set_aside_spectral_web",
-      "text": "Set the four Spectral Web assets aside, out of play."
+      "text": "Mettez de côté les quatre soutiens Toile Spectrale, hors jeu."
     },
     {
       "id": "shuffle_heretics",
-      "text": "Shuffle the six Heretic enemies and set aside four of them, at random. Remove the other two copies from the game. These cards are double-sided and have story cards on their reverse side. For the best experience, do not look at the story cards on their other side."
+      "text": "Mélangez les six ennemis Hérétique et mettez-en quatre de côté, pris au hasard. Retirez de la partie les deux autres exemplaires. Ces cartes sont rectoverso et possèdent une carte Histoire sur leur verso. Afin de profiter de la meilleure expérience de jeu possible, nous vous invitons à ne pas regarder le verso de ces cartes."
     },
     {
       "id": "create_encounter_decks",
-      "text": "This scenario utilizes two separate encounter decks.",
+      "text": "Ce scénario utilise deux decks Rencontre séparés.",
       "bullets": [
         {
-          "text": "Separate each of the remaining cards with the [[Spectral]] trait and shuffle them together to build the spectral encounter deck <i>(see “The Spectral Encounter Deck,” below)</i>."
+          "text": "Séparez chaque carte restante ayant le trait [[Spectral]] et mélangez-les ensemble pour constituer le deck Rencontre spectral <i>(voir « Le Deck Rencontre Spectral », ci-dessous)</i>."
         },
         {
-          "text": "Shuffle each of the remaining non-Spectral cards together to build the standard encounter deck."
+          "text": "Mélangez toutes les cartes non-[[Spectral]] restantes ensemble pour constituer le deck Rencontre standard."
         }
       ]
     },
     {
       "id": "spectral_encounter_deck",
       "type": "rule_reminder",
-      "title": "The Spectral Encounter Deck",
-      "text": "During the setup of this scenario, two encounter decks are constructed: a “standard” encounter deck and a “spectral” encounter deck. Generally speaking, whenever an investigator would interact with the encounter deck, that investigator should use the standard encounter deck.\nHowever, at a certain point during this scenario, locations may flip over to their [[Spectral]] side. While an investigator is at a location with the [[Spectral]] trait, that investigator should use the spectral encounter deck instead of the standard encounter deck for all purposes, unless otherwise noted. This includes drawing cards from the encounter deck, as well as searching, looking at, revealing, or otherwise interacting with the encounter deck (or encounter discard pile) in any way. This also includes abilities that trigger when the encounter deck runs out of cards. If an effect specifically refers to the standard encounter deck or spectral encounter deck, it interacts with the specified deck regardless of the investigator’s location.\nEach of the two encounter decks have their own discard pile. Whenever a card with the [[Spectral]] trait would be discarded, it is placed in the discard pile for the spectral encounter deck. All other encounter cards are discarded to the discard pile for the standard encounter deck.\n<i>Note: Flipping a location over from one side to another during this scenario does not “reveal” the new location.</i>"
+      "title": "Le Deck Rencontre Spectral",
+      "text": "Lors de la mise en place de ce scénario, vous constituez deux decks Rencontre : un deck Rencontre « standard » et un deck Rencontre « spectral ». En général, quand un investigateur est censé interagir avec le deck Rencontre, cet investigateur doit utiliser le deck Rencontre standard.\nCependant, à un certain stade lors de ce scénario, les lieux seront retournés pour afficher leur face [[Spectral]]. Tant qu’un investigateur est sur un lieu ayant le trait [[Spectral]], cet investigateur doit systématiquement utiliser le deck Rencontre spectral à la place du deck Rencontre standard, sauf si le contraire est spécifiquement indiqué. Cela inclut : piocher des cartes du deck Rencontre, chercher dedans, regarder dedans, révéler, ou toute autre interaction avec le deck Rencontre (ou la pile de défausse Rencontre). Cela concerne également les capacités qui se déclenchent lorsque le deck Rencontre tombe à court de cartes. Si un effet désigne spécifiquement le deck Rencontre standard ou le deck Rencontre spectral, il fait référence au deck spécifié indépendamment du lieu de l’investigateur.\nChacun des deux decks Rencontre possède sa propre pile de défausse. Quand une carte ayant le trait [[Spectral]] devrait être défaussée, elle est placée dans la pile de défausse Rencontre du deck Rencontre spectral. Toutes les autres cartes Rencontre son défaussées dans la pile de défausse du deck Rencontre standard.\n<i>Attention : lors de ce scénario, lorsque vous retournez un lieu pour afficher son autre face, on ne considère pas que vous avez « révélé » le nouveau lieu.</i>"
     },
     {
       "id": "record_heretics_released",
       "type": "input",
-      "text": "In your Campaign Log, record <i>X heretics were unleashed unto Arkham</i>. X is the number of Heretic enemies in play. (If it is act 1, instead record <i>4 heretics were unleashed unto Arkham</i>.)",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>X hérétiques ont été lâchées sur Arkham</i>. X est le nombre d’ennemis Hérétique en jeu. (Si vous êtes à l’Acte 1, indiquez que <i>4 hérétiques ont été lâchées sur Arkham</i>.)",
       "input": {
         "type": "counter",
-        "text": "Heretic enemies in play:",
+        "text": "Nombre d’ennemis Hérétique en jeu",
         "effects": [
           {
             "type": "campaign_log_count",
             "section": "campaign_notes",
             "id": "heretics_released",
             "operation": "set_input",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "#X# hérétiques ont été lâchées sur Arkham"
           }
         ]
       }
@@ -41819,13 +41819,13 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "corn_husk_doll",
-          "text": "Corn Husk Doll"
+          "text": "Poupée en épi de maïs"
         }
       ]
     },
     {
       "id": "check_earned_wisp",
-      "text": "If 3 or fewer <i>heretics were unleashed unto Arkham</i>...",
+      "text": "Si 3 <i>hérétiques</i> ou moins <i>ont été lâchées sur Arkham</i>...",
       "type": "branch",
       "condition": {
         "type": "campaign_log_count",
@@ -41852,7 +41852,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "survived_the_watchers_embrace",
-          "text": "the investigators survived the watcher’s embrace."
+          "text": "les investigateurs ont survécu à l’étreinte du guetteur."
         }
       ]
     },
@@ -41864,7 +41864,7 @@
           "type": "campaign_log",
           "section": "mementos",
           "id": "wisp_of_spectral_mist",
-          "text": "Wisp of Spectral Mist"
+          "text": "Poignée de Brume Spectrale"
         }
       ]
     },
@@ -41897,7 +41897,7 @@
   "resolutions": [
     {
       "id": "no_resolution_defeated",
-      "title": "No resolution\n(each investigator defeated)",
+      "title": "Aucune conclusion\n(tous les investigateurs ont été vaincus)",
       "investigator_status": [
         "eliminated",
         "physical",
@@ -41923,7 +41923,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "Rays of faded sunlight stream through the haze, and the unnatural mist finally recedes. As it does, Hangman’s Hill returns to its original state. No other spiteful ghosts emerge to haunt you, and the witches who summoned them have retreated into the shadows once more. You hope that you have done enough to prevent the rest of Arkham to succumbing to this horror.",
+      "text": "De pâles rayons de lumière percent enfin à travers la brume et celle-ci reflue. De ce fait, la Colline du Pendu retrouve son aspect originel. Aucun autre spectre en colère ne surgit pour vous hanter et les sorcières qui les ont invoqués se sont de nouveau repliées dans les ombres. Vous espérez que vos actions auront suffit pour empêcher le reste d’Arkham de succomber à cette horreur.",
       "steps": [
         "maybe_corn_husk_doll",
         "record_heretics_released",
@@ -41935,7 +41935,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "Resigned to your fate, you fall to your knees. The mist parts. Time slows to a crawl as the watcher emerges. Its spectral form glides along the ground, approaching with the slow surety of a ticking clock. You close your eyes, unwilling to look upon your killer. Your fingers dig into your palm, and you brace yourself.\nThe moment passes.\nWhen you open your eyes again, the creature is gone, along with the spectral mist.\n…Have you been spared?",
+      "text": "Résigné quant à votre sort, vous tombez à genou. La brume s’écarte. Le temps semble ralentir tandis que le guetteur en émerge. Sa silhouette spectrale glisse sur le sol, s’approchant de vous avec la lenteur et la régularité du tic-tac d’une pendule. Vous fermez les yeux, incapable de regarder votre assassin en face. Vos doigts s’enfoncent dans vos paumes et vous vous arc-boutez.\nUn moment passe.\nQuand vous ouvrez enfin les yeux, la créature a disparu, de même que la brume spectrale.\n…Auriez-vous été épargné ?",
       "steps": [
         "survived_the_watchers_embrace",
         "record_heretics_released",
@@ -41948,8 +41948,8 @@
 },
 {
   "id": "the_witching_hour",
-  "scenario_name": "The Witching Hour",
-  "full_name": "Scenario I: The Witching Hour",
+  "scenario_name": "L’Heure des Sorcières",
+  "full_name": "Scénario I : L’Heure des Sorcières",
   "setup": [
     "intro",
     "choose_fate",
@@ -41966,18 +41966,18 @@
     {
       "id": "intro",
       "type": "story",
-      "text": "It is a breezy November evening in Arkham—the perfect night for a walk through Independence Square, or so you had thought, up until the moment Anna Kaslow offered to tell your fortune. You agreed, though you would soon come to regret this decision. For each of the cards the Romani soothsayer draws from her deck, she weaves a tale of despair and misfortune. Judgment. Temperance. Justice. The Hermit. The Hanged Man. The Hierophant. The Lovers. The Chariot. The Wheel of Fortune. To complete her tale, Anna draws the top card and lays it in the center of the formation. Dominating the old, worn card is the ominous image of a towering construct of black onyx. A hellish storm rages over the tower, lightning coursing through the dark clouds. It reads: THE TOWER · XVI. Even if the rest of the reading had gone swimmingly, the sight of the center card would have sent a shiver down your spine. As it stands now, it feels more like the closing of a casket over your body.\n“You did tell me to give it to you straight,” the soothsayer says. She sits cross-legged in front of you, wearing a stony, grim expression. From her unwavering gaze and her cold eyes, you can tell Anna derives no satisfaction from this reading. “Simple misfortune is the least of your concerns,” she explains. “This is a matter of life and death.” She motions to the cards surrounding The Tower—each of them laid in the reverse position—and stares at them intently. “Arrayed against you is everything that you cannot see. You alone stand in their way,” she says enigmatically."
+      "text": "C’est un soir de novembre particulièrement agréable à Arkham – la nuit parfaite pour une balade dans le square de l’Indépendance. Du moins, c’est ce que vous pensiez jusqu’à ce qu’Anna Kaslow propose de vous lire la bonne aventure. Vous avez accepté, mais vous regretterez bientôt cette décision. Chaque carte que la voyante bohémienne tire de son tas est prétexte à une histoire de désespoir et de malchance. Le Jugement. La Tempérance. La Justice. L’Hermite. Le Pendu. Le Hiérophante. Les Amoureux. Le Chariot. La Roue de la Fortune. Pour conclure son récit, Anna pioche la carte suivante et la pose au milieu des autres cartes. La lame vieille et usée représente une tour d’onyx noir. Une tempête infernale fait rage au-dessus de la structure, et des éclairs zèbrent les nuages noirs. Son nom est : XVI · LA TOUR. Les cartes précédentes pouvaient bien disparaître par magie, la seule vue de l’arcane central aurait suffi à vous faire frissonner. Alors avec cette configuration, c’est plutôt comme si un cercueil se refermait sur votre corps.\n« C’est vous qui m’avez demandé de vous annoncer les choses franchement », dit la voyante. Elle est assise en tailleur en face de vous, stoïque. Devant son regard impassible et ses yeux froids, vous savez qu’Anna n’est pas satisfaite de sa prédiction. « La simple malchance est le cadet de vos soucis », expliquet-elle. « Ceci est une question de vie ou de mort. » Elle désigne les cartes qui encerclent La Tour – toutes sont à l’envers – et les scrute attentivement. « Toutes les choses que vous ne pouvez pas voir sont liguées contre vous. Vous seul vous dressez sur leur chemin », ajoute-t-elle mystérieusement."
     },
     {
       "id": "choose_fate",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "L’investigateur principal doit décider (choisir une option) :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "accept_fate",
-            "text": "<i>“What can I do to avoid this fate?”</i>",
+            "text": "<i>« Que puis-je faire pour éviter un tel destin ? »</i>",
             "steps": [
               "intro_2",
               "accepted_fate",
@@ -41986,7 +41986,7 @@
           },
           {
             "id": "reject_fate",
-            "text": "<i>“This is bullshit.”</i>",
+            "text": "<i>« Ce sont des inepties. »</i>",
             "steps": [
               "intro_3",
               "rejected_fate"
@@ -41998,17 +41998,17 @@
     {
       "id": "intro_2",
       "type": "story",
-      "text": "The woman nods and draws the top card of the deck with a steady hand, revealing it to you without looking at it herself. Depicted on the card is a single wooden wand, surrounded by a pattern of broken stained glass. It reads: ACE OF RODS. “You must be ready to act,” she advises. “Without hesitation. Without regret. When the opportunity arises, you must set into motion the events that will change this fate.”"
+      "text": "La femme fait un signe de tête et pioche la première carte de son tas d’une main sûre, vous la montrant sans la regarder elle-même. Dessus figure un simple bâton de bois entouré d’un motif évoquant un miroir brisé. Il est écrit : AS DE BÂTON. « Vous devez être prêt à agir », conseille-t-elle. « Sans hésitation. Sans regret. Quand vous en aurez l’opportunité, vous devrez mettre en branle les événements qui modifieront ce funeste destin. »"
     },
     {
       "id": "accepted_fate",
-      "text": "In your Campaign Log, record that <i>you have accepted your fate</i>. Add 2 [tablet] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>vous avez accepté votre destin</i>. Ajoutez 2 pions [tablet] à la réserve du chaos pour le reste de la campagne.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "accepted_fate",
-          "text": "you have accepted your fate."
+          "text": "vous avez accepté votre destin."
         },
         {
           "type": "add_chaos_token",
@@ -42021,7 +42021,7 @@
     },
     {
       "id": "add_tarot",
-      "text": "Before drawing their opening hand for this scenario, the lead investigator searches the collection for 1 copy of The Tower · XVI and 1 copy of Ace of Rods and adds each of them to their deck, if able. The lead investigator has earned these cards. They do not count toward their deck size. (If one or both of these cards are not available, skip this step.)",
+      "text": "Avant de piocher sa main de départ pour ce scénario, l’investigateur principal cherche dans la collection 1 exemplaire de XVI · La Tour et 1 exemplaire de l’As de Bâton et les ajoute à son deck, si possible. L’investigateur principal a gagné ces cartes. Elles ne comptent pas dans la Taille du Deck de cet investigateur. (Si l’une de ces cartes, ou les deux, ne sont pas disponibles, passez cette étape.)",
       "effects": [
         {
           "type": "add_card",
@@ -42039,17 +42039,17 @@
     {
       "id": "intro_3",
       "type": "story",
-      "text": "The woman smirks. “Yes, in a sense, I suppose it is,” she responds. With a single swift motion, she picks up each of the cards displayed before you, save for The Tower card, and shuffles them back into the deck. “The cards only reveal and advise. They cannot influence or impose.” She locks eyes with you, and her smile vanishes from her face. “In other words, though your fate is not set in stone, I assure you the danger you face is not ‘bullshit.’ It is real.” Her eyes narrow. “It is very real.”"
+      "text": "La femme esquisse un sourire. « Oui, en un sens, je suppose que oui », répond-elle. D’un geste vif, elle ramasse toutes les cartes étalées devant vous, à l’exception de La Tour, et elle les remet dans son tas. « Les lames ne font que révéler et conseiller. Elles ne peuvent ni influencer, ni imposer. » Anna vous fixe et son sourire disparaît. « En d’autres termes, votre sort n’est pas gravé dans la pierre, mais je vous assure que le danger qui vous guette n’a rien d’une ‘ineptie’ : il est réel. » Ses yeux se plissent. « Il est même très réel. »"
     },
     {
       "id": "rejected_fate",
-      "text": "In your Campaign Log, record that <i>you have rejected your fate</i>. Add 2 [elder_thing] tokens to the chaos bag for the remainder of the campaign.",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>vous avez rejeté votre destin</i>. Ajoutez 2 pions [elder_thing] à la réserve du chaos pour le reste de la campagne.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "rejected_fate",
-          "text": "you have rejected your fate."
+          "text": "vous avez rejeté votre destin."
         },
         {
           "type": "add_chaos_token",
@@ -42063,7 +42063,7 @@
     {
       "id": "intro_4",
       "type": "story",
-      "text": "Silence hangs in the air as you peer into The Tower card. The world around you dissolves into emptiness as your eyes fixate on the onyx tower. Rolling thunder echoes in the distance. “Do you understand now?” Anna asks. There is no other sign of the soothsayer: only her strained voice. A bolt of lightning streaks across the sky. “Do you see your fate before you, as I do?”\nAnother resounding crack of thunder, and you are suddenly awake. Icy rain pelts your body, soaking you through to the bone. You are lying in the mud beside a wooded trail, and there is no other soul in sight..."
+      "text": "Un ange passe tandis que vous observez la carte de La Tour. Le monde autour de vous semble se dissoudre pendant que vos yeux fixent l’édifice d’onyx. Le tonnerre gronde au loin. « Comprenez-vous, à présent ? » demande Anna. La voyante a disparu, ne reste que sa voix. Un éclair traverse le ciel. « Voyez-vous votre destin s’étirer devant vous comme je le vois moi-même ? »/nUn autre coup de tonnerre assourdissant, et vous vous réveillez en sursaut. Une pluie glaciale détrempe vos vêtements et vous glace les os. Vous êtes allongé dans la boue à côté d’un chemin forestier, et il n’y a pas âme qui vive en vue…"
     },
     {
       "id": "gather_encounter_sets",
@@ -42078,7 +42078,7 @@
         "striking_fear",
         "tentacles"
       ],
-      "subtext": "When gathering <i>The Devourer Below</i> encounter set, only gather the 6 Arkham Woods locations. Do not gather any of the other cards from that encounter set."
+      "subtext": "Quand vous réunissez les cartes du set de rencontre <i>Le Dévoreur du Dessous</i>, ne prenez que les 6 lieux Bois d’Arkham. Ne prenez aucune des autres cartes de ce set de rencontre."
     },
     {
       "id": "gather_agents",
@@ -42091,22 +42091,22 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put 5 Witch‐Haunted Woods locations into play as follows:",
+      "text": "Mettez en jeu 4 lieux Bois Ensorcelés de la manière suivante :",
       "bullets": [
         {
-          "text": "In player order, each investigator puts 1 random Witch‐ Haunted Woods location into play <i>in front of them</i>, until there are exactly 5 Witch‐Haunted Woods locations in play (see “Lost and Separated,” below). <i>For example: In a 1-player game, there should be 5 Witch-Haunted Woods in front of that investigator. In a 2-player game, there should be 3 Witch-Haunted Woods in front of the lead investigator and 2 Witch-Haunted Woods in front of the other investigator. In a 3-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, 2 Witch-Haunted Woods in front of the next investigator, and 1 Witch-Haunted Woods in front of the final investigator. In a 4-player game, there should be 2 Witch-Haunted Woods in front of the lead investigator, and 1 Witch-Haunted Woods in front of each other investigator.</i>"
+          "text": "Dans l’ordre des joueurs, chaque investigateur prend au hasard 1 lieu Bois Ensorcelés et le met en jeu <i>en face de lui</i> jusqu’à ce qu’il y ait exactement 4 lieux Bois Ensorcelés en jeu. (Voir « Perdus et Séparés » ci-dessous).<i>Exemple : dans une partie à 1 joueur, il doit y avoir 4 Bois Ensorcelés en face de l’investigateur. Dans une partie à 2 joueurs, il doit y avoir 2 Bois Ensorcelés en face de chaque investigateur. Dans une partie à 3 joueurs, il doit y avoir 2 Bois Ensorcelés en face de l’investigateur principal et 1 Bois Ensorcelés en face de chaque autre investigateur. Dans une partie à 4 joueurs, il doit y avoir 1 Bois Ensorcelés en face de chaque investigateur.</i>"
         },
         {
-          "text": "Remove each other Witch‐Haunted Woods from the game."
+          "text": "Retirez de la partie chaque autre lieu Bois Ensorcelés."
         },
         {
-          "text": "Each investigator begins play at one of the locations in front of them, chosen at random."
+          "text": "Chaque investigateur commence la partie dans l’un des lieux en face de lui, désigné au hasard."
         }
       ]
     },
     {
       "id": "set_aside_cards",
-      "text": "Set the following cards aside, out of play: each of the Arkham Woods locations and Anette Mason."
+      "text": "Mettez de côté les cartes suivantes, hors jeu : tous les lieux Bois d’Arkham, ainsi qu’Anette Mason."
     },
     {
       "id": "encounter_deck",
@@ -42115,8 +42115,8 @@
     {
       "id": "lost_and_separated",
       "type": "rule_reminder",
-      "title": "Lost and Separated",
-      "text": "During this scenario, the investigators begin play separated and cut off from one another. This is represented by locations entering play “in front of ” each investigator (placed just above their play area).\nAct 1a—“Lost in the Woods” has the text: “Locations in front of you are connected to one another.” This text means that regardless of location/connection symbols, the locations in front of you are considered to be connected to one another, and enemies and investigators may move between them. Locations remain connected to one another via their location/connection symbols, as well.\nHowever, Lost in the Woods also has the text: “You cannot enter locations in front of other investigators.” This means that you cannot move to a location in front of another investigator, even if the two locations are connected or if you are moving via a card effect. Note that this restriction does not apply to enemies, who are free to move between connected locations regardless of which investigator those locations are in front of."
+      "title": "Perdus et Séparés",
+      "text": "Lors de ce scénario, les investigateurs commencent la partie séparés les uns des autres. Pour représenter cela, les lieux entrent en jeu « en face de » chaque investigateur (ils sont placés juste au-dessus de leur zone de jeu).\nl’Acte 1a – « Perdu dans les Bois » possède le texte « Les lieux en face de vous sont connexes les uns aux autres. » Cela signifie que quelles que soient les icônes de lieu/connexion, les lieux en face de vous sont connexes et que les investigateurs et les ennemis peuvent se déplacer entre eux. Les lieux restent également connexes les uns aux autres via leurs icônes de lieu/connexion.\n« Perdu dans les Bois » possède également le texte : « Vous ne pouvez pas entrer dans les lieux en face des autres investigateurs. » Cela signifie que vous ne pouvez pas vous déplacer vers un lieu en face d’un autre investigateur même si les deux lieux sont connexes ou si vous vous déplacez par un effet de carte. Notez que cette restriction ne s’applique pas aux ennemis qui sont libres de se déplacer entre des lieux connexes sans se préoccuper de l’investigateur en face duquel se trouvent les lieux."
     },
     {
       "id": "check_final_act",
@@ -42173,7 +42173,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "witches_spell_broken",
-          "text": "the witches' spell was broken."
+          "text": "le sort des sorcières a été brisé."
         }
       ]
     },
@@ -42184,25 +42184,25 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "witches_spell_cast",
-          "text": "the witches' spell was cast."
+          "text": "le sort des sorcières a été lancé."
         }
       ]
     },
     {
       "id": "mementos_flute_and_ritual_components",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Ritual Components</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « souvenirs découverts », inscrivez <i>Flûte Envoûtante</i> et <i>Ingrédients du Rituel</i>. Chaque investigateur reçoit 1 point d’expérience bonus pour avoir eu un aperçu du mystérieux passé d’Arkham.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "Flûte Envoûtante"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "ritual_components",
-          "text": "Ritual Components"
+          "text": "Ingrédients du Rituel"
         },
         {
           "type": "earn_xp",
@@ -42228,19 +42228,19 @@
     },
     {
       "id": "mementos_flute_and_scrap_of_torn_shadow",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i> and <i>Scrap of Torn Shadow</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « souvenirs découverts », inscrivez <i>Flûte Envoûtante</i> et <i>Lambeaux d’Ombre Déchirée</i>. Chaque investigateur reçoit 1 point d’expérience bonus pour avoir eu un aperçu du mystérieux passé d’Arkham.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "Flûte Envoûtante"
         },
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "scrap_of_torn_shadow",
-          "text": "Scrap of Torn Shadow"
+          "text": "Lambeaux d’Ombre Déchirée"
         },
         {
           "type": "earn_xp",
@@ -42252,20 +42252,20 @@
     {
       "id": "mementos_check_act",
       "type": "input",
-      "text": "Check the act deck.",
+      "text": "Vérifiez le deck Acte.",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "act_1_or_2",
-            "text": "It was act 1 or 2 when the scenario ended.",
+            "text": "Vous étiez à l’Acte 1 ou 2 à la fin du scénario",
             "steps": [
               "no_record"
             ]
           },
           {
             "id": "act_3",
-            "text": "It was act 3 when the scenario ended.",
+            "text": "Vous étiez à l’Acte 3 à la fin du scénario",
             "steps": [
               "mementos_flute"
             ]
@@ -42276,13 +42276,13 @@
     {
       "id": "mementos_flute",
       "bullet_type": "small",
-      "text": "In your Campaign Log, under “Mementos Discovered,” record <i>Mesmerizing Flute</i>. Each investigator earns 1 bonus experience, as they gain insight into Arkham’s mysterious past.",
+      "text": "Dans votre Carnet de Campagne, sous la mention « souvenirs découverts », inscrivez <i>Flûte Envoûtante</i>. Chaque investigateur reçoit 1 point d’expérience bonus pour avoir eu un aperçu du mystérieux passé d’Arkham.",
       "effects": [
         {
           "type": "campaign_log",
           "section": "mementos",
           "id": "mesmerizing_flute",
-          "text": "Mesmerizing Flute"
+          "text": "Flûte Envoûtante"
         },
         {
           "type": "earn_xp",
@@ -42294,7 +42294,7 @@
     {
       "id": "no_record",
       "bullet_type": "small",
-      "text": "No record is made."
+      "text": "Aucun enregistrement n'a eu lieu"
     }
   ],
   "resolutions": [
@@ -42313,7 +42313,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "Despite her wounds, the leader of the coven rises to her feet. More of the hooded figures emerge from the tree line, eager to defend their leader. “Interloper!” one calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “They’re the ones from before, High Priestess: the ones who interfered with our great work.”\nThe “High Priestess” holds up a single hand, and a hush falls over the other witches. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies to the red-haired accuser. You lower your weapons as several of the hooded figures approach and surround their leader. They begin chanting in a soft tone as they examine her wounds. The red-haired witch crosses her arms and watches you with a hard glare, her gaze never straying far from you. “I am Anette,” says the leader of the coven, “and these are my sisters. Tell me: Who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
+      "text": "Malgré ses blessures, la cheffe de la congrégation se relève. De plus en plus de silhouettes encapuchonnées émergent des arbres, prêtes à défendre leur mentor. « Intrus ! » lance l’une d’elles, rejetant son capuchon et pointant une baguette de bois noueuse dans votre direction. Ses cheveux roux flamboyants brillent à la lumière du feu et des braises dansent autour de sa main tendue. « Ceux sont ceux de l’autre fois, Grande Prêtresse : ceux qui ont interféré avec notre grand oeuvre. »\nLa « Grande Prêtresse » lève une main et les autres sorcières se taisent. « Comme toujours, j’admire ta perspicacité, ma soeur. Mais je ne crois pas qu’ils soient ceux dont tu parles », répond-elle à votre accusatrice aux cheveux roux. Vous baissez vos armes, et plusieurs des silhouettes à capuches approchent pour entourer leur maîtresse. Elles entament une douce mélopée tout en examinant ses blessures. La sorcière rousse croise les bras et vous observe d’un regard dur sans vous quitter des yeux un seul instant. « Je m’appelle Anette », annonce la cheffe de la congrégation, « et voici mes soeurs. Dites-moi : qui êtes-vous, et pourquoi êtes-vous ici ? »\nVous lui expliquez comment vous vous êtes réveillé dans les bois, comment vous avez été attaqué par de terribles créatures et comment vous avez atteint le centre de ce cercle afin de briser le sort qui s’abattait sur ces lieux. Les yeux d’Anette se plissent à mesure qu’elle écoute votre récit. « C’est impossible. Le cercle était fermé. Nul ne peut entrer dans les bois lorsque nous jetons notre sort. » Elle serre les dents. « Vous devez partir immédiatement. Votre place n’est pas ici. »\n« Mais, Grande Prêtresse ! … » s’exclame la sorcière rousse avant de s’interrompre en voyant le regard d’Anette. Toutes deux s’affrontent des yeux dans une bataille de volonté dont Anette sort rapidement victorieuse.\n« Reste à ta place, Erynn », dit fermement Anette du ton qu’emploierait une mère pour gronder son enfant. Elle se tourne de nouveau vers vous tandis que la dénommée Erynn baisse la tête en signe de soumission. « Partez. Vous avez brisé le sort, comme vous le vouliez. Vous pouvez à présent quitter ces bois. Mais laissez-moi vous prévenir : croisez encore notre chemin, et nous ne nous montrerons pas si clémentes. »\nVous êtes sur le point de protester mais, avant que vous n’ayez pu prononcer le moindre mot, une sombre brise souffle le feu au centre de la clairière. Les ténèbres au-delà de la ligne des arbres se tordent et serpentent jusqu’à l’intérieur de la clairière, s’accrochant aux robes des sorcières. L’une après l’autre, les ombres entraînent chacune des femmes dans les ténèbres. En un instant, elles ont toutes disparu. Vous vous retrouvez seul, n’ayant plus que lueur de la lune pour rentrer chez vous.",
       "steps": [
         "witches_spell_broken",
         "mementos_flute_and_ritual_components",
@@ -42324,7 +42324,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "With the spell broken, the hooded figures turn their attention to you. More of them emerge from the tree line, eager to take vengeance upon you for destroying their plans. “Interloper!” one of them calls you, pulling off her hood and pointing a gnarled wooden rod in your direction. Her bright-red hair glows in the firelight, embers dancing about her extended hand. “You will not escape this time!” she cries, prepared to strike you down.\n“Stop!” the leader of the coven yells in a commanding voice, holding up her hand. The red-haired accuser stops in her tracks, and there is a sudden stillness in the clearing around the circle.\n“But High Priestess,” the witch persists, “they’re the ones from before. The ones who interfered with our great work.”\nThe High Priestess places a hand on the red-haired witch’s shoulder. “As always, I admire your perseverance, sister. But I do not believe these are the ones you speak of,” she replies.\nThe red-haired witch lowers her rod as the High Priestess approaches you, her arms crossed. She watches you with a hard glare, her gaze never straying far from you. “I am Anette, and these are my sisters,” she says. “Tell me: who are you, and why are you here?”\nYou explain how you awoke in the woods, how you were attacked by terrible creatures, and how you came to the center of this circle in order to break the spell surrounding the woods. Anette’s eyes narrow as she hears your story. “That is impossible. The circle was closed. None could enter the woods while we were completing our spell.” She grits her teeth. “You must go at once. This is not your place.”\n“But, High Priestess!—” the red-haired witch exclaims, only to be interrupted by Anette’s gaze. The two lock eyes, a battle of wills that quickly proves Anette victorious.\n“Stand down, Erynn,” Anette says with a firm, motherly tone, as though admonishing a child. She turns her attention back to you as the witch named Erynn lowers her head in defeat. “Go. You’ve broken the spell, just as you desired. You can leave the woods now. But I give you one final warning: cross us again, and we will not be so merciful.”\nYou begin to protest, but before you are able to utter a single word, a dark gale snuffs out the fire at the center of the clearing. Shadows from beyond the tree line suddenly twist and coil into the clearing, tugging at the edges of the witches’ cloaks. One by one, the shadows twist and pull each of the witches into the darkness beyond. In moments, they are gone. You are left with only the soft glow of moonlight to guide you home.",
+      "text": "Leur sort brisé, les silhouettes encapuchonnées se tournent vers vous. D’autres émergent des arbres, désireuses de se venger de vous pour avoir anéanti leurs plans. « Intrus ! » vous lance l’une d’elles, rejetant son capuchon et pointant une baguette de bois noueuse dans votre direction. Ses cheveux roux flamboyants brillent à la lumière du feu et des braises dansent autour de sa main tendue. « Vous ne vous échapperez pas cette fois ! » hurle-t-elle, prête à vous abattre.\n« Arrête ! » clame la cheffe de la congrégation d’une voix impérieuse en levant la main. Votre accusatrice aux cheveux roux est stoppée net dans son élan, et un silence soudain s’abat dans la clairière autour du cercle.\n« Mais, Grande Prêtresse, ce sont ceux de l’autre fois. Ceux qui ont interféré avec notre grand oeuvre. »\nLa Grande Prêtresse pose une main sur l’épaule de sorcière rousse. « Comme toujours, j’admire ta perspicacité, ma soeur. Mais je ne crois pas qu’il s’agisse de ceux dont tu parles », répond-elle.\nLa sorcière rousse abaisse sa baguette tandis que la Grande Prêtresse approche, bras croisés. Elle vous observe d’un regard dur sans vous quitter des yeux un seul instant. « Je m’appelle Anette, et voici mes soeurs », annonce-t-elle. « Dites-moi : qui êtes-vous, et pourquoi êtes-vous ici ? »\nVous lui expliquez comment vous vous êtes réveillé dans les bois, comment vous avez été attaqué par de terribles créatures et comment vous avez atteint le centre de ce cercle afin de briser le sort qui s’abattait sur ces bois. Les yeux d’Anette se plissent à mesure qu’elle écoute votre récit. « C’est impossible. Le cercle était fermé. Nul ne peut entrer dans les bois lorsque nous jetons notre sort. » Elle serre les dents. « Vous devez partir immédiatement. Votre place n’est pas ici. »\n« Mais, Grande Prêtresse ! … » s’exclame la sorcière rousse avant de s’interrompre en voyant le regard d’Anette. Toutes deux s’affrontent des yeux dans une bataille de volonté dont Anette sort rapidement victorieuse.\n« Reste à ta place, Erynn », dit fermement Anette du ton qu’emploierait une mère pour gronder son enfant. Elle se tourne de nouveau vers vous tandis que la dénommée Erynn baisse la tête en signe de soumission. « Partez. Vous avez brisé le sort, comme vous le vouliez. Vous pouvez à présent quitter ces bois. Mais laissez-moi vous prévenir : croisez encore notre chemin, et nous ne nous monterons pas si clémentes. »\nVous êtes sur le point de protester mais, avant que vous n’ayez pu prononcer le moindre mot, une sombre brise souffle le feu au centre de la clairière. Les ténèbres au-delà de la ligne des arbres se tordent et serpentent jusqu’à l’intérieur de la clairière, s’accrochant aux robes des sorcières. L’une après l’autre, les ombres entraînent chacune des femmes dans les ténèbres. En un instant, elles ont toutes disparu. Vous vous retrouvez seul, n’ayant plus que lueur de la lune pour rentrer chez vous.",
       "steps": [
         "witches_spell_broken",
         "mementos_flute_and_scrap_of_torn_shadow",
@@ -42335,7 +42335,7 @@
     {
       "id": "R3",
       "title": "Conclusion 3",
-      "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high- pitched piping of a hundred discordant flutes. Your entire body rattles with the sensation. Blood trickles from your ears, and tears well in your eyes. You try to crawl to safety, but it is to no avail. The piping only grows in volume, the discordant cacophony shattering your eardrums and turning your thoughts to sludge. Eventually, after what feels like hours, weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
+      "text": "Vous tombez au sol, épuisé. Votre tête est emplie de voix surnaturelles et des airs haut-perchés de centaines de flûtes dissonantes. Votre corps tout entier se met à convulser. Du sang s’échappe de vos oreilles et des larmes coulent de vos yeux. Vous tentez de ramper pour vous mettre à l’abri, mais en vain. Les airs de flûtes ne font que croître en intensité, leur cacophonie dissonante brise vos tympans et réduit vos pensées en miettes. Enfin, après ce qui vous semble des heures, la fatigue finit par avoir raison de votre conscience.\nVous vous réveillez près du ruisseau du Pendu quand un petit garçon vous secoue vigoureusement les épaules. « Recule, ne les touche pas ! » crie sa mère, et l’enfant s’écarte de vous. Vu votre état, vous ne seriez pas surpris qu’elle vous ait pris pour une sorte de vagabond. Vous frottez un peu de la boue séchée de votre manteau et vous vous relevez tant bien que mal avant de vous diriger vers le Quartier Résidentiel.",
       "steps": [
         "witches_spell_cast",
         "mementos_check_act",
@@ -42346,7 +42346,7 @@
     {
       "id": "R4",
       "title": "Conclusion 4",
-      "text": "You collapse to the ground in exhaustion, your head swimming with otherworldly voices and the high-pitched piping of a hundred discordant flutes. The sensation fades as the circle’s leader approaches, her powerful form looming over you. “We cannot allow the spell to fail. Take them to the edge of the woods and make sure we are not interrupted,” she commands several of the other hooded women. They grab you by the arms and hoist you up, dragging you away from the central clearing. You try to resist, but your limbs are numb and sluggish, and the cacophony of sound and sensations assaulting your mind has turned your thoughts to sludge. Eventually, after what feels like hours, you are hurled to the ground, and weariness claims your consciousness.\nWhen you next awaken, it is by the side of Hangman’s Brook, where a small child is shaking you vigorously by the shoulders. “Get back here; don’t touch them!” the child’s mother calls to the boy, and he recoils from you. Considering the state you’re in, you wouldn’t be surprised if she thought you some kind of rummy. You brush some of the caked dirt off of your coat and rise begrudgingly to your feet, wandering toward Uptown.",
+      "text": "Vous tombez au sol, épuisé. Votre tête est emplie de voix surnaturelles et des airs haut-perchés de centaines de flûtes dissonantes. Cette sensation disparaît sitôt que la cheffe du cercle approche, sa puissante silhouette penchée sur vous. « Nous ne pouvons laisser le sort échouer. Emmenez-les à la lisière des bois et assurez-vous que nous ne soyons plus interrompues », ordonnet- elle à plusieurs autres femmes coiffées de capuchons. Elles vous attrapent par les bras et vous emportent loin de la clairière centrale. Vous essayez de résister mais vos membres sont mous et engourdis, et la cacophonie de sons et de sensations qui agresse votre esprit a réduit vos pensées en miettes. Enfin, après ce qui vous semble des heures, on vous jette au sol et la fatigue finit par avoir raison de votre conscience.\nVous vous réveillez près du ruisseau du Pendu quand un petit garçon vous secoue vigoureusement les épaules. « Recule, ne les touche pas ! » crie sa mère, et l’enfant s’écarte de vous. Vu votre état, vous ne seriez pas surpris qu’elle vous ait pris pour une sorte de vagabond. Vous frottez un peu de la boue séchée de votre manteau et vous vous relevez tant bien que mal avant de vous diriger vers le Quartier Résidentiel.",
       "steps": [
         "witches_spell_cast",
         "mementos_flute",
@@ -42359,8 +42359,8 @@
 {
   "id": "twist_of_fate",
   "type": "interlude",
-  "scenario_name": "Twist of Fate",
-  "full_name": "Interlude IV: Twist of Fate",
+  "scenario_name": "Coup du Sort",
+  "full_name": "Interlude IV : Coup du Sort",
   "setup": [
     "tof_1",
     "path_winds_before_you",
@@ -42377,18 +42377,18 @@
     {
       "id": "tof_1",
       "type": "story",
-      "text": "You stand underneath the breach, in awe of its presence. Everything the soothsayer predicted has come to pass. “This is a matter of life and death,” she had told you. How right she was. Beyond the cosmic ingress, the nucleus of the cosmos awaits. Now you understand what dwells on the other side, gnawing hungrily at the fabric of reality: the doom of all humanity; no, not just humanity. The doom of all life in the universe.\nThere is a bitter taste in your mouth. Tears well in your eyes. You close your fist so hard your nails dig into your flesh. If you have to die, then die you will. But you’re not going to die sitting down."
+      "text": "Vous vous tenez sous la brèche, empreint d’une terreur révérencielle. Tout ce que la voyante avait prédit est arrivé. « C’est une question de vie ou de mort », vous avait-elle dit. Elle avait raison. Sous l’entrée cosmique, le coeur de l’univers attend. Vous comprenez maintenant ce qui demeure de l’autre côté, rongeant avidement le tissu de la réalité : la fin de l’humanité ; non, pas juste de l’humanité, la fin de toute vie dans l’univers.\nVous avez un goût âpre dans la bouche et des larmes dans les yeux. Vous serrez le poing si fort que vos ongles rentrent dans votre chair. Si vous devez mourir, alors vous mourrez. Mais pas question de mourir en restant ici à ne rien faire."
     },
     {
       "id": "path_winds_before_you",
       "bullet_type": "none",
-      "text": "In your Campaign Log, record <i>the path winds before you</i>. Next to this, record a number of tally marks based on the conditions below:",
+      "text": "Dans votre Carnet de Campagne, indiquez que <i>la voie s’ouvre devant vous</i>. À côté, inscrivez un nombre de traits en fonction des conditions décrites, ci-après.",
       "effects": [
         {
           "type": "campaign_log_count",
           "section": "campaign_notes",
           "id": "path_winds_before_you",
-          "text": "the path winds before you: #X#",
+          "text": "la voie s’ouvre devant vous : #X#",
           "operation": "set",
           "value": 0
         }
@@ -42414,7 +42414,7 @@
     {
       "id": "know_what_you_have_to_do",
       "bullet_type": "small",
-      "text": "You know what you have to do. Record 1 tally mark.",
+      "text": "Vous savez ce que vous avez à faire. Inscrivez 1 trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -42447,7 +42447,7 @@
     {
       "id": "anette_assistance",
       "type": "story",
-      "text": "“Keziah was beseeched to sign a book by the messenger of an ancient being. The Black Book of Azathoth.” Just the name of the thing shakes you to your core. Anette clenches her fist. “I was a fool to not have understood before. That was the source of her power. Not witchcraft, but a pact with a terrible, dark god. All of this, these incursions into our world, the broken bonds of death: it is what Keziah wanted all along. It was the silent will of Azathoth,” she says resentfully."
+      "text": "« Le messager d’un être ancien contraignit Keziah à signer un livre : Le Livre Noir d’Azathoth. » Le simple nom de cette chose vous fait trembler jusqu’aux os. Anette serre son poing. « J’ai été stupide de ne pas comprendre plus tôt. Telle était la source de son pouvoir. Pas la sorcellerie, mais un pacte avec un terrible dieu maléfique. Tout ceci, ces incursions dans notre monde, les frontières brisées de la mort : c’est ce que Keziah voulait depuis le début. C’était la volonté silencieuse d’Azathoth », s’indigne-t-elle."
     },
     {
       "id": "check_asked_sanford_for_assistance",
@@ -42471,12 +42471,12 @@
     {
       "id": "sanford_assistance",
       "type": "story",
-      "text": "“It is a gateway,” Sanford explains, “ joining our world and the greater Cosmos. According to some of the most heinous tomes I have read, at the center, there sleeps a creature known as Azathoth.” Just the name of the thing shakes you to your core. “I fear we have stirred it in its slumber. All of this, these breaches in space, these broken barriers between worlds: it is all because for just a brief moment, for one fragment of a second, we interrupted Azathoth’s dreaming. Do you understand?”"
+      "text": "« C’est un portail », explique Sanford, « qui relie notre monde et le grand Cosmos. Si l’on en croit certains des ouvrages les plus abjects qu’il m’ait été donné de lire, en son centre dort une créature connue sous le nom d’Azathoth. » Le simple nom de cette chose vous fait trembler jusqu’aux os. « J’ai bien peur que nous ayons troublé son sommeil. Tout ceci, ces incursions dans notre monde, les frontières brisées de la mort : c’est arrivé parce que pendant un bref instant, pendant un fragment d’une seule seconde, nous avons interrompu le rêve d’Azathoth. Comprenez-vous ? »"
     },
     {
       "id": "assitance_tally_marks",
       "bullet_type": "small",
-      "text": "Record 2 tally marks.",
+      "text": "Inscrivez 2 traits.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -42597,12 +42597,12 @@
     {
       "id": "two_or_fewer_mementos",
       "bullet_type": "small",
-      "text": "You are woefully unprepared for this journey. (Nothing happens.)"
+      "text": "Vous êtes bien mal préparé pour ce voyage. (Rien ne se passe.)"
     },
     {
       "id": "three_to_five_mementos",
       "bullet_type": "small",
-      "text": "From the evidence you have uncovered, you understand the path you must take a little better. But there is still much you do not know. Record 1 tally mark.",
+      "text": "Grâce aux preuves que vous avez récoltées, vous comprenez un peu mieux la voie à suivre. Mais vous ignorez encore tant de choses. Inscrivez 1 trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -42616,7 +42616,7 @@
     {
       "id": "six_or_more_mementos",
       "bullet_type": "small",
-      "text": "Your journey is laid bare before you. Record 2 tally marks.",
+      "text": "La voie est toute tracée devant vous. Inscrivez 2 traits.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -42647,7 +42647,7 @@
     {
       "id": "have_black_book",
       "bullet_type": "small",
-      "text": "It contains knowledge of the land beyond ordered time and space. Record 1 tally mark.",
+      "text": "Il contient des connaissances sur les contrées qui se trouvent au-delà du temps et de l’espace. Inscrivez 1 trait.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -42678,7 +42678,7 @@
     {
       "id": "doom_draws_ever_closer",
       "bullet_type": "small",
-      "text": "Azathoth’s maw begins to open. Record 2 tally marks.",
+      "text": "Les mâchoires d’Azathoth commencent à s’ouvrir. Inscrivez 2 traits.",
       "effects": [
         {
           "type": "campaign_log_count",
@@ -42692,14 +42692,14 @@
     {
       "id": "tof_2",
       "type": "story",
-      "text": "For almost an hour, you stare up into the empty abyss, pondering your options and your fate. A flock of faceless winged creatures circle the field where you sit. They almost move like vultures, waiting for your demise so as to feast on your corpse. They draw ever nearer, and you begin to wonder if they can read the thoughts that hover on the surface of your mind. Rising to your feet, you raise your arm and call out to one of them. This may be the most foolish thing you have ever done, you think to yourself. But your instinct proves to be the right move: the creatures descend on black leathery wings, landing on the wet grass in front of you. One lowers itself until it reaches the height of your shoulders, offering its back to you. Swallowing the very last of your doubts and your fear, you climb aboard the creature. With a swift flap of its wings, it carries you off into the void, beyond the limits of space…to the domain of Azathoth."
+      "text": "Pendant près d’une heure, vous fixez l’abîme de néant, pesant le pour et le contre de chacune de vos options. Une volée de créatures ailées sans visage décrivent des cercles au-dessus du champ où vous vous trouvez. Elles volent, tels des vautours, attendant votre trépas pour festoyer de votre cadavre. Elles s’approchent de plus en plus et vous commencez à vous demander si elles ne peuvent pas lire vos pensées superficielles. Vous levez un bras et appelez l’une des créatures. C’est sans doute l’une des choses les plus démentes que vous ayez jamais faites, mais votre instinct ne vous a pas trompé. Les créatures aux ailes de cuir noir achèvent leur descente et atterrissent dans l’herbe humide près de vous. L’une d’elles s’abaisse jusqu’à la hauteur de votre épaule, vous offrant son dos. Ravalant vos derniers doutes et votre peur, vous grimpez sur la créature. En un battement d’ailes, elle vous emporte dans le néant, au-delà des limites de l’espace… vers le domaine d’Azathoth."
     }
   ]
 },
 {
   "id": "union_and_disillusion",
-  "scenario_name": "Union and Disillusion",
-  "full_name": "Scenario VI: Union and Disillusion",
+  "scenario_name": "Union et Désillusion",
+  "full_name": "Scénario VI : Union et Désillusion",
   "setup": [
     "intro_1",
     "point_of_no_return",
@@ -42726,27 +42726,27 @@
     {
       "id": "intro_1",
       "type": "story",
-      "text": "The Unvisited Isle lies in the midst of the Miskatonic River, in between two of the bridges that span the river and connect the Downtown and Rivertown neighborhoods of Arkham. Overgrown with vines, thorns, and unnatural underbrush, the island is home to no residents and very few fauna. Rows of mysterious stone pillars stand sentry throughout the island, rising high above the treetops. Though many theories abound, none know for sure what purpose these stone pillars serve, or who built them. Very few dare to venture onto the shores of the enigmatic island, and those who do return with strange tales: bonfires in the woods at the darkest hours of night—stone altars with deep carvings impossible to translate—empty woods devoid of life, save for the stark-black ravens and whippoorwills who perch on the tree branches and watch trespassers with eager eyes. Unfortunately for you, the stakes are too high for you to heed these many warnings.\nThe streets of Arkham are emptier and quieter than you have ever seen them before. A familiar grey mist has enveloped the town. The haze grows denser and thicker the closer you get to the river. You move with haste, not wanting to encounter any others on your way to the site of the ritual, whether they be living or dead. You find several rowboats moored by the docks and climb aboard one of them. With the waters unnaturally still and barely any current carrying the boat, rowing toward the island should be a simple endeavor. Even so, the dense fog makes it difficult for you to get your bearings. Soon, you are completely enclosed by the grey mist, unable to see the banks of the river or the coast of the island. Shapes emerge from the fog. Ripples appear on the surface of the water. The gaze of the watcher is upon you.\nJust then, a pillar of spectral energy ascends into the sky, clear as day even through the haze. The shapes all turn their attention to this beacon, and you sense the watcher’s gaze slipping from your soul. The rite has begun. You row faster, using the light to guide you. It is time to decide once and for all why you have come—are you here to aid the Silver Twilight Lodge? Or to disrupt them?"
+      "text": "L’Île Déserte se trouve au milieu du fleuve Miskatonic, entre deux des ponts qui le traversent et relient le Quartier de la Rivière au centre-ville d’Arkham. La végé-tation dense de l’île, constituée de lierre, d’épineux et de broussailles gigantesques, la rend peu accueillante. Aucun humain n’y réside, et la faune y est presque inexistante. Des rangées de mystérieux piliers de pierre se dressent bien au-dessus de la cime des arbres en différents endroits de l’île. Bien qu’il existe de nombreuses théories, personne ne sait exactement qui a construit ces piliers de pierre, ni pour quelle raison. Rares sont ceux qui osent s’aventurer sur les rives de l’énigmatique île, et ceux qui le font reviennent avec d’étranges contes : feux de joie dans les bois au plus noir de la nuit, autels de pierre avec de profondes gravures intraduisibles, bois déserts et sans vie, à l’exception des corbeaux noirs et des engoulevents qui regardent avidement les visi-teurs, perchés sur les branches des arbres. Malheureusement pour vous, l’enjeu est trop important pour que vous teniez compte de ces nombreux avertissements.\nVous n’aviez jamais vu les rues d’Arkham aussi calmes et désertes. Une brume grise familière a enveloppé la ville. Elle se densifie et s’épaissit à mesure que vous approchez du fleuve. Vous vous hâtez, peu désireux de croiser qui que ce soit, mort ou vivant, avant d’atteindre le site du rituel. Vous trouvez quelques barques amarrées sur les docks et montez dans l’une d’entre elles. L’eau étant étrangement calme et dénuée de tout courant, ramer jusqu’aux rives de l’île ne devrait être qu’une formalité. Malgré tout, le brouillard est si dense que vous peinez à vous orienter. Bientôt, vous êtes complètement cerné par la brume et ne voyez plus ni la berge du fleuve, ni la côte de l’île. Des formes émergent du brouillard et des ondulations apparaissent à la surface de l’eau. L’oeil du guetteur est sur vous.\nÀ cet instant précis, une colonne d’énergie s’élève jusqu’au ciel, l’éclairant comme en plein jour. Les formes se tournent vers ce phare et vous sentez le regard du guetteur se détourner de votre âme. Le rituel a commencé. Vous ramez plus vite, utilisant la lumière pour vous guider. Il est temps pour vous de décider une bonne fois pour toutes si vous êtes là pour aider la Loge du Crépuscule d’Argent, ou pour les arrêter."
     },
     {
       "id": "point_of_no_return",
       "type": "input",
-      "text": "This is a point of no return—you will not get the chance to change your mind later. The investigators must decide (choose one):",
+      "text": "C’est un point de non-retour – vous ne pourrez plus changer d’avis après. Les investigateurs doivent décider (choisir une option) :",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "help_ritual",
-            "text": "<i>“We have to help complete the Lodge’s ritual.”</i>",
-            "description": "Completing the ritual should bind the Spectral Watcher and prevent it from doing any more harm.",
+            "text": "« Nous devons aider la Loge à accomplir son rituel. »",
+            "description": "Accomplir le rituel devrait contraindre le Guetteur Spectral et l’empêcher de faire plus de mal.",
             "steps": [
               "sided_with_the_lodge"
             ]
           },
           {
             "id": "thwart_ritual",
-            "text": "<i>“We have to stop the Lodge’s ritual.”</i>",
-            "description": "Disrupting the ritual should release the Spectral Watcher’s tether to the mortal realm.",
+            "text": "« Nous devons empêcher la Loge d’accomplir son rituel. »",
+            "description": "Stopper le rituel devrait couper les attaches du Guetteur Spectral sur le monde des vivants.",
             "steps": [
               "sided_with_the_coven"
             ]
@@ -42761,7 +42761,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sided_with_the_lodge",
-          "text": "the investigators sided with the Lodge."
+          "text": "les investigateurs ont choisi le camp de la Loge."
         }
       ]
     },
@@ -42772,7 +42772,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "sided_with_the_coven",
-          "text": "the investigators sided with the coven."
+          "text": "les investigateurs ont choisi le camp de la congrégation."
         }
       ]
     },
@@ -42801,7 +42801,7 @@
     },
     {
       "id": "setup_locations",
-      "text": "Put the Miskatonic River and Forbidding Shore into play. Each investigator begins play at the Miskatonic River. Then, shuffle the 6 Unvisited Isle locations and choose 2 at random to put into play. Set the rest aside, out of play."
+      "text": "Mettez en jeu le Fleuve Miskatonic et la Berge Peu Accueillante. Chaque investigateur commence la partie sur le Fleuve Miskatonic. Ensuite, mélangez les 6 lieux Île Déserte et prenez en deux au hasard que vous mettez en jeu. Mettez les autres de côté, hors jeu."
     },
     {
       "id": "location_layout",
@@ -42847,19 +42847,19 @@
     {
       "id": "light_braziers",
       "bullet_type": "small",
-      "text": "The braziers at Forbidding Shore and both Unvisited Isle locations are already lit. Place a resource token on each of these locations to signify this. <i>(See “Circle / Braziers”)</i>"
+      "text": "Les braseros de la Berge Peu Accueillante et des deux lieux Île Déserte sont déjà allumés. Placez un pion Ressource sur chacun de ces lieux afin de le signifier. <i>(Voir « Cercle/Braseros »)</i>"
     },
     {
       "id": "set_aside_cards",
-      "text": "Set The Geist-Trap location and the Watcher’s Gaze treachery aside, out of play."
+      "text": "Mettez de côté le lieu Piège à Spectres et la traîtrise Le Regard du Guetteur, hors jeu."
     },
     {
       "id": "set_aside_bosses",
-      "text": "Search the collection for Anette Mason (The Circle Undone #57) and Josef Meiger (The Circle Undone #85) and set them aside, out of play."
+      "text": "Cherchez Anette Mason (Le Cercle Brisé #57) et Josef Meiger (Le Cercle Brisé #85) dans la collection et mettez-les de côté, hors jeu."
     },
     {
       "id": "check_missing_persons",
-      "text": "Check the “Missing Persons” section of the Campaign Log. Based on which characters are crossed off and which are not, perform the following:"
+      "text": "Vérifiez la section « Personnes Disparues » du Carnet de Campagne. En fonction des personnages qui sont barrés ou non, effectuez les actions suivantes :"
     },
     {
       "id": "check_gavriella",
@@ -42887,12 +42887,12 @@
     {
       "id": "set_aside_gavriella",
       "bullet_type": "small",
-      "text": "Set the Gavriella Mizrah story asset aside, and place the Gavriella’s Fate story card beneath the scenario reference card."
+      "text": "Mettez de côté le soutien d’histoire Gavriella Mizrah et placez la carte Histoire Le Sort de Gavriella sous la carte de référence du scénario."
     },
     {
       "id": "remove_gavriella",
       "bullet_type": "small",
-      "text": "Remove the Gavriella Mizrah story asset and the Gavriella’s Fate story card from the game."
+      "text": "Retirez de la partie la carte Soutien d’histoire Gavriella Mizrah et la cartes Histoire Le destin de Gavriella."
     },
     {
       "id": "check_jerome",
@@ -42920,12 +42920,12 @@
     {
       "id": "set_aside_jerome",
       "bullet_type": "small",
-      "text": "Set the Jerome Davids story asset aside, and place the Jerome’s Fate story card beneath the scenario reference card."
+      "text": "mettez de côté le soutien d’histoire Jerome Davids et placez la carte Histoire Le Sort de Jerome sous la carte de référence du scénario."
     },
     {
       "id": "remove_jerome",
       "bullet_type": "small",
-      "text": "Remove the Jerome Davids story asset and the Jerome’s Fate story card from the game."
+      "text": "Retirez de la partie la carte Soutien d’histoire Jerome Davids et la cartes Histoire Le destin de Jerome."
     },
     {
       "id": "check_penny",
@@ -42953,12 +42953,12 @@
     {
       "id": "set_aside_penny",
       "bullet_type": "small",
-      "text": "Set the Penny White story asset aside, and place the Penny’s Fate story card beneath the scenario reference card."
+      "text": "Mettez de côté le soutien d’histoire Penny White et placez la carte Histoire Le Sort de Penny sous la carte de référence du scénario."
     },
     {
       "id": "remove_penny",
       "bullet_type": "small",
-      "text": "Remove the Penny White story asset and the Penny’s Fate story card from the game."
+      "text": "Retirez de la partie la carte Soutien d’histoire Penny White et la cartes Histoire Le destin de Penny."
     },
     {
       "id": "check_valentino",
@@ -42986,16 +42986,16 @@
     {
       "id": "set_aside_valentino",
       "bullet_type": "small",
-      "text": "Set the Valentino Rivas story asset aside, and place the Valentino’s Fate story card beneath the scenario reference card."
+      "text": "Mettez de côté le soutien d’histoire Valentino Rivas et placez la carte Histoire Le Sort de Valentino sous la carte de référence du scénario."
     },
     {
       "id": "remove_valentino",
       "bullet_type": "small",
-      "text": "Remove the Valentino Rivas story asset and the Valentino’s Fate story card from the game."
+      "text": "Retirez de la partie la carte Soutien d’histoire Valentino Rivas et la cartes Histoire Le destin de Valentino."
     },
     {
       "id": "select_act_3_4",
-      "text": "Depending on the following circumstances, a different version of Acts 3 and 4 should be used in this scenario. Each other version of Act 3 or 4 is removed from the game."
+      "text": "Selon les circonstances, une version différente des Actes 3 et 4 seront utilisés pour ce scénario. Chaque autre version des Actes 3 et 4 est retirée de la partie."
     },
     {
       "id": "check_sided_with_lodge",
@@ -43023,7 +43023,7 @@
     },
     {
       "id": "check_sided_with_the_coven_and_inner_circle",
-      "text": "<i>If the investigators sided with the coven</i>, <i>the investigators are deceiving the Lodge</i>, and <i>the investigators were inducted into the Inner Circle.</i>",
+      "text": "<i>Si les investigateurs ont choisi le camp de la congrégation</i>, que <i>les investigateurs trompent la Loge</i> et que <i>les investigateurs ont été initiés au sein du Cercle Restreint.</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -43071,7 +43071,7 @@
     },
     {
       "id": "check_sided_with_the_coven_and_deceiving",
-      "text": "If the above is not true, <i>the investigators sided with the coven</i>, and at least two of the following is true: <i>the investigators are deceiving the Lodge</i>, <i>the investigators hid their knowledge of the coven</i>, or <i>the investigators kept their mementos hidden.</i>",
+      "text": "Si les propositions ci-dessus sont fausses, que <i>les investigateurs ont choisi le camp de la congrégation</i> et qu’au moins deux des propositions suivantes sont vraies : <i>les investigateurs trompent la Loge</i>, <i>les investigateurs ont caché qu’ils connaissaient la congrégation</i> ou <i>les investigateurs ont gardé leurs souvenirs cachés.</i>",
       "bullet_type": "small",
       "type": "branch",
       "condition": {
@@ -43149,12 +43149,12 @@
     {
       "id": "act_3_v1",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. I)” and Act 4—“The Binding Rite.”"
+      "text": "Utilisez l’Acte 3 – « Par-Delà la Brume (v. I) » et l’Acte 4 – « Le Rituel de Contrainte »."
     },
     {
       "id": "act_3_v2",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. II)” and Act 4—“The Broken Rite.”",
+      "text": "Utilisez l’Acte 3 – « Par-Delà la Brume (v. II) » et l’Acte 4 – « Le Rituel Brisé ».",
       "effects": [
         {
           "type": "campaign_log",
@@ -43167,12 +43167,12 @@
     {
       "id": "act_3_v3",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. III)” and Act 4—“The Broken Rite.”"
+      "text": "Utilisez l’Acte 3 – « Par-Delà la Brume (v. III) » et l’Acte 4 – « Le Rituel Brisé »."
     },
     {
       "id": "act_3_v4",
       "bullet_type": "small",
-      "text": "Use Act 3—“Beyond the Mist (v. IV)” and Act 4—“The Broken Rite.”"
+      "text": "Utilisez l’Acte 3 – « Par-Delà la Brume (v. IV) » et l’Acte 4 – « Le Rituel Brisé »."
     },
     {
       "id": "check_heretics_released",
@@ -43223,22 +43223,22 @@
     {
       "id": "add_1_doom",
       "bullet_type": "small",
-      "text": "Place 1 doom on agenda 1a."
+      "text": "Placez 1 fatalité sur l’Intrigue 1a."
     },
     {
       "id": "add_2_doom",
       "bullet_type": "small",
-      "text": "Place 2 doom on agenda 1a."
+      "text": "Placez 2 fatalité sur l’Intrigue 1a."
     },
     {
       "id": "add_3_doom",
       "bullet_type": "small",
-      "text": "Place 3 doom on agenda 1a."
+      "text": "Placez 3 fatalité sur l’Intrigue 1a."
     },
     {
       "id": "add_4_doom",
       "bullet_type": "small",
-      "text": "Place 4 doom on agenda 1a."
+      "text": "Placez 4 fatalité sur l’Intrigue 1a."
     },
     {
       "id": "encounter_deck",
@@ -43247,26 +43247,26 @@
     {
       "id": "circle_braziers",
       "type": "rule_reminder",
-      "title": "Circle / Braziers",
-      "text": "Throughout this scenario, you will find locations with braziers on them, which can be lit or unlit using the ability with the [[Circle]] action designator on that location. A [[Circle]] ability is always used to either light or unlight the brazier on that location, and serves no other function. Lighting braziers is an important step in completing the ritual set up by the Silver Twilight Lodge. Whether you want braziers lit or unlit depends on whether you plan on aiding the Lodge or thwarting them.",
+      "title": "Cercle / Braseros",
+      "text": "Au cours de ce scénario, vous trouverez des lieux avec des braseros qui peuvent être allumés ou éteints en utilisant l’action Cercle de ce lieu. Une capacité Cercle n’a d’autre fonction que d’allumer ou d’éteindre le brasero sur ce lieu. Allumer les braseros est une étape importante pour accomplir le rituel de la Loge du Crépuscule d’Argent. Allumer ou éteindre les braseros dépend de votre volonté d’aider la Loge, ou de leur mettre des bâtons dans les roues.",
       "bullets": [
         {
-          "text": "Skill tests on [[Circle]] actions often require an investigator to test multiple skills at once (such as “Test [combat]+[intellect]”). Such a test is considered to be a test of both skill types. Cards with either skill icon may be committed to the test, and both icons are considered matching skill icons."
+          "text": "Les tests de compétence des actions [[Cercle]] demandent souvent à un investigateur de tester plusieurs compétences à la fois (exemple : « effectuez un test de  [combat]+[intellect] »). Un tel test est considéré comme étant un test de chacun des types de compétence indiquée. Des cartes portant l’une ou l’autre des icônes de compétence peuvent être attribuées à ce test, et les deux icônes sont considérées comme étant des icônes correspondantes."
         },
         {
-          "text": "If the brazier on a location is lit, place a resource token on that location to signify that the brazier on that location has been lit."
+          "text": "Si le brasero d’un lieu est allumé, placez un pion Ressource sur ce lieu pour signifier que le brasero de ce lieu est allumé."
         },
         {
-          "text": "If the brazier on a location is unlit, remove the resource token from that location, to signify that the brazier on that location is no longer lit."
+          "text": "ÆÆSi le brasero d’un lieu est éteint, retirez un pion Ressource de ce lieu pour signifier que le brasero de ce lieu n’est plus allumé."
         },
         {
-          "text": "If a [[Circle]] action is unsuccessful, nothing happens."
+          "text": "Si une action [[Cercle]] échoue, rien ne se passe."
         },
         {
-          "text": "A lit brazier on a location has no game effect on its own, although other card effects may reference whether or not the brazier on your location is lit."
+          "text": "Un brasero allumé sur un lieu n’a aucun effet direct sur la partie, mais d’autres effets de cartes peuvent faire référence à l’état, allumé ou éteint, du brasero de votre lieu."
         },
         {
-          "text": "A brazier only has two states: lit or unlit. Lighting the brazier on a location with an already lit brazier has no effect, as does unlighting a brazier on a location with no lit brazier."
+          "text": "Un brasero n’a que deux états : allumé ou éteint. Allumer un brasero qui est déjà allumé n’a aucun effet, de même qu’éteindre un brasero déjà éteint."
         }
       ]
     },
@@ -43336,14 +43336,14 @@
                 }
               ]
             },
-            "text": "Gavriella is alive.",
+            "text": "Gavriella est vivante",
             "steps": [
               "gavriella_alive"
             ]
           },
           {
             "id": "jerome_alive",
-            "text": "Jerome is alive.",
+            "text": "Jerome est vivant",
             "condition": {
               "type": "campaign_log",
               "section": "05047",
@@ -43360,7 +43360,7 @@
           },
           {
             "id": "penny_alive",
-            "text": "Penny is alive.",
+            "text": "Penny est vivante",
             "condition": {
               "type": "campaign_log",
               "section": "05049",
@@ -43377,7 +43377,7 @@
           },
           {
             "id": "valentino_alive",
-            "text": "Valentino is alive.",
+            "text": "Valentino est vivant",
             "condition": {
               "type": "campaign_log",
               "section": "05048",
@@ -43397,65 +43397,65 @@
     },
     {
       "id": "gavriella_alive",
-      "text": "Next to Gavriella Mizrah's profile, record <i>Gavriella is alive.</i>",
+      "text": "À côté du profil de Gavriella Mizrah; indiquez que <i>Gavriella est vivante.</i>",
       "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
           "section": "05046",
           "id": "alive",
-          "text": "Gavriella is alive."
+          "text": "Gavriella est vivante"
         }
       ]
     },
     {
       "id": "jerome_alive",
-      "text": "Next to Jerome Davids's profile, record <i>Jerome is alive.</i>",
+      "text": "À côté du profil de Jerome Davids; indiquez que <i>Jerome est vivant.</i>",
       "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
           "section": "05047",
           "id": "alive",
-          "text": "Jerome is alive."
+          "text": "Jerome est vivant"
         }
       ]
     },
     {
       "id": "penny_alive",
-      "text": "Next to Penny White's profile, record <i>Penny is alive.</i>",
+      "text": "À côté du profil de Penny White; indiquez que <i>Penny est vivante.</i>",
       "hidden": true,
       "effects": [
         {
           "type": "campaign_log",
           "section": "05049",
           "id": "alive",
-          "text": "Penny is alive."
+          "text": "Penny est vivante"
         }
       ]
     },
     {
       "id": "valentino_alive",
-      "text": "Next to Valentino Rivas's profile, record <i>Valentino is alive.</i>",
+      "text": "À côté du profil de Valentino Rivas; indiquez que <i>Valentino est vivant.</i>",
       "effects": [
         {
           "type": "campaign_log",
           "section": "05048",
           "id": "alive",
-          "text": "Valentino is alive."
+          "text": "Valentino est vivant"
         }
       ]
     },
     {
       "id": "add_chaos_token",
-      "text": "What change should be made to the chaos bag?",
+      "text": "Quel changement doit être fait dans la reserve du chaos ?",
       "type": "input",
       "input": {
         "type": "choose_one",
         "choices": [
           {
             "id": "remove_cultists",
-            "text": "Remove all [cultist] tokens",
+            "text": "Retirez tous les jetons [cultist]",
             "effects": [
               {
                 "type": "remove_chaos_token",
@@ -43479,15 +43479,15 @@
         "choices": [
           {
             "id": "yes",
-            "text": "<i>“Yes.”</i>",
-            "description": "You may choose this option only if <i>the investigators were inducted into the Inner Circle</i>, and cannot choose this option <i>if the investigators are deceiving the Lodge</i>.",
+            "text": "<i>« Oui. »</i>",
+            "description": "Vous ne pouvez choisir cette option que si <i>les investigateurs ont été initiés au sein du Cercle Restreint</i>, et vous ne pouvez pas la choisir si <i>les investigateur trompent la Loge.</i>",
             "steps": [
               "resolution_2"
             ]
           },
           {
             "id": "no",
-            "text": "<i>“No.”</i>",
+            "text": "« Non. »",
             "steps": [
               "resolution_3"
             ]
@@ -43517,13 +43517,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "true_work_of_silver_twilight_lodge_has_begun",
-          "text": "the true work of the Silver Twilight Lodge has begun."
+          "text": "e véritable travail de la Loge du Crépuscule d’Argent a maintenant commencé."
         }
       ]
     },
     {
       "id": "silver_twilight_wins_campaign",
-      "text": "The Silver Twilight Lodge wins the campaign. (Investigators who are truly loyal to the Lodge win the campaign.)",
+      "text": "L’Ordre du Crépuscule d’Argent a gagné la campagne. (Les investigateurs qui sont réellement fidèles à la Loge ont également gagné la campagne.)",
       "effects": [
         {
           "type": "campaign_data",
@@ -43544,7 +43544,7 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-          "text": "Carl Sanford possesses the secrets of the universe."
+          "text": "Carl Sanford possède les secrets de l’univers."
         }
       ]
     },
@@ -43555,13 +43555,13 @@
           "type": "campaign_log",
           "section": "campaign_notes",
           "id": "anette_mason_is_possessed_by_evil",
-          "text": "Anette Mason is possessed by evil."
+          "text": "Anette Mason est possédée par le démon."
         }
       ]
     },
     {
       "id": "compare_columns_explanation",
-      "text": "Check Campaign Log. Compare the following two bullets to see which has the most true statements."
+      "text": "Vérifiez le Carnet de Campagne. Comparez les deux listes suivantes et voyez laquelle possède le plus de propositions"
     },
     {
       "id": "compare_columns",
@@ -43619,7 +43619,7 @@
     {
       "id": "left_result",
       "bullet_type": "small",
-      "text": "<i>The witches’ spell was broken.</i>\n<i>The investigators rescued Josef</i> / <i>Josef is alive and well.</i>\n<i>1 or fewer heretics were unleashed unto Arkham.</i>",
+      "text": "<i>Le sort des sorcières a été brisé.</i>\n<i>Les investigateurs ont secouru Josef/Josef est bel et bien vivant.</i>\n<i>1 hérétique ou moins a été lâchée sur Arkham.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -43636,7 +43636,7 @@
     {
       "id": "right_result",
       "bullet_type": "small",
-      "text": "<i>The witches’ spell was cast.</i>\n<i>Josef disappeared into the mist.</i>\n<i>2 or more heretics were unleashed unto Arkham.</i>",
+      "text": "<i>Le sort des sorcières a été lancé.</i>\n<i>Josef a disparu dans la brume.</i>\n<i>hérétiques ou plus ont été lâchées sur Arkham.</i>",
       "type": "branch",
       "condition": {
         "type": "campaign_log",
@@ -43663,12 +43663,12 @@
     {
       "id": "left_has_more",
       "bullet_type": "none",
-      "text": "Because the first bullet has more true statements, proceed to <b>Resolution 6</b>"
+      "text": "\"S’il y a plus de propositions vraies dans la première liste, continuez à la <b>Conclusion 6.</b>"
     },
     {
       "id": "right_has_more",
       "bullet_type": "none",
-      "text": "Because the second bullet has more true statements, proceed to <b>Resolution 7</b>"
+      "text": "S’il y a plus de propositions vraies dans la deuxième liste, continuez à la <b>Conclusion 7.</b>"
     },
     {
       "id": "resolution_5",
@@ -43773,7 +43773,7 @@
     },
     {
       "id": "remove_puzzle_box",
-      "text": "If an investigator’s deck contains the Puzzle Box card, remove it from that investigator’s deck.",
+      "text": "Si le deck d’un investigateur contient la carte Boîte à Énigme, retirez-la de son deck.",
       "effects": [
         {
           "type": "remove_card",
@@ -43783,7 +43783,7 @@
     },
     {
       "id": "check_missing_persons_alive",
-      "text": "Check the “Missing Persons” section of your Campaign Log."
+      "text": "Vérifiez la section « Personnes Disparues » de votre Carnet de Campagne."
     },
     {
       "id": "check_gavriella_in_game",
@@ -43805,7 +43805,7 @@
     {
       "id": "check_gavriella_alive",
       "bullet_type": "small",
-      "text": "<i>If Gavriella Mizrah is alive</i>, any one investigator may choose to add the Gavriella Mizrah asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Gavriella Mizrah’s profile, record <i>Gavriella Mizrah is dead</i>.",
+      "text": "<i>Si Gavriella est vivante</i>, n’importe quel investigateur a le droit d’ajouter le soutien Gavriella Mizrah à son deck. Elle ne compte pas dans la Taille du Deck de cet investigateur. Sinon, à côté du profil de Gavriella Mizrah, indiquez que <i>Gavriella est morte</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -43863,7 +43863,7 @@
                 "type": "campaign_log",
                 "section": "05046",
                 "id": "dead",
-                "text": "Gavriella Mizrah is dead."
+                "text": "Gavriella Mizrah est morte"
               }
             ]
           }
@@ -43890,7 +43890,7 @@
     {
       "id": "check_jerome_alive",
       "bullet_type": "small",
-      "text": "<i>If Jerome Davids is alive</i>, any one investigator may choose to add the Jerome Davids asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Jerome Davids’s profile, record <i>Jerome Davids is dead</i>.",
+      "text": "<i>Si Jerome est vivant</i>, n’importe quel investigateur a le droit d’ajouter le soutien Jerome Davids à son deck. Il ne compte pas dans la Taille du Deck de cet investigateur. Sinon, à côté du profil de Jerome Davids, indiquez que <i>Jerome est mort</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -43948,7 +43948,7 @@
                 "type": "campaign_log",
                 "section": "05047",
                 "id": "dead",
-                "text": "Jerome Davids is dead."
+                "text": "Jerome Davids est mort."
               }
             ]
           }
@@ -43975,7 +43975,7 @@
     {
       "id": "check_penny_alive",
       "bullet_type": "small",
-      "text": "<i>If Penny White is alive</i>, any one investigator may choose to add the Penny White asset to their deck. She does not count toward that investigator’s deck size. Otherwise, next to Penny White’s profile, record <i>Penny White is dead</i>.",
+      "text": "<i>Si Penny est vivante</i>, n’importe quel investigateur a le droit d’ajouter le soutien Penny White à son deck. Elle ne compte pas dans la Taille du Deck de cet investigateur. Sinon, à côté du profil de Penny White, indiquez que <i>Penny est morte</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -44033,7 +44033,7 @@
                 "type": "campaign_log",
                 "section": "05049",
                 "id": "dead",
-                "text": "Penny White is dead."
+                "text": "Penny White est morte"
               }
             ]
           }
@@ -44060,7 +44060,7 @@
     {
       "id": "check_valentino_alive",
       "bullet_type": "small",
-      "text": "<i>If Valentino Rivas is alive</i>, any one investigator may choose to add the Valentino Rivas asset to their deck. He does not count toward that investigator’s deck size. Otherwise, next to Valentino Rivas’s profile, record <i>Valentino Rivas</i> is dead.",
+      "text": "<i>Si Valentino est vivant</i>, n’importe quel investigateur a le droit d’ajouter le soutien Valentino Rivas à son deck. Il ne compte pas dans la Taille du Deck de cet investigateur. Sinon, à côté du profil de Valentino Rivas, indiquez que <i>Valentino est mort</i>.",
       "type": "branch",
       "condition": {
         "type": "multi",
@@ -44118,7 +44118,7 @@
                 "type": "campaign_log",
                 "section": "05048",
                 "id": "dead",
-                "text": "Valentino Rivas is dead."
+                "text": "Valentino Rivas est mort."
               }
             ]
           }
@@ -44127,7 +44127,7 @@
     },
     {
       "id": "maybe_record_gavriella_alive",
-      "text": "hidden",
+      "text": "cacher",
       "hidden": true,
       "type": "branch",
       "condition": {
@@ -44142,7 +44142,7 @@
                 "type": "campaign_log",
                 "section": "05046",
                 "id": "alive",
-                "text": "Gavriella is alive."
+                "text": "Gavriella est vivante"
               }
             ]
           }
@@ -44151,7 +44151,7 @@
     },
     {
       "id": "maybe_record_jerome_alive",
-      "text": "hidden",
+      "text": "cacher",
       "hidden": true,
       "type": "branch",
       "condition": {
@@ -44166,7 +44166,7 @@
                 "type": "campaign_log",
                 "section": "05047",
                 "id": "alive",
-                "text": "Jerome is alive."
+                "text": "Jerome est vivant"
               }
             ]
           }
@@ -44175,7 +44175,7 @@
     },
     {
       "id": "maybe_record_penny_alive",
-      "text": "hidden",
+      "text": "cacher",
       "hidden": true,
       "type": "branch",
       "condition": {
@@ -44190,7 +44190,7 @@
                 "type": "campaign_log",
                 "section": "05049",
                 "id": "alive",
-                "text": "Penny is alive."
+                "text": "Penny est vivante"
               }
             ]
           }
@@ -44199,7 +44199,7 @@
     },
     {
       "id": "maybe_record_valentino_alive",
-      "text": "hidden",
+      "text": "cacher",
       "hidden": true,
       "type": "branch",
       "condition": {
@@ -44214,7 +44214,7 @@
                 "type": "campaign_log",
                 "section": "05048",
                 "id": "alive",
-                "text": "Valentino is alive."
+                "text": "Valentino est vivant"
               }
             ]
           }
@@ -44355,7 +44355,7 @@
     },
     {
       "id": "fix_remove_all_cultist_tokens",
-      "text": "While playing the scenario, there was an instruction to remove all [cultist] tokens from the chaos bag.",
+      "text": "Pendant le déroulement du scénario, il y a eu une instruction de retirer tous les jetons [cultist] de la reserve du chaos.",
       "effects": [
         {
           "type": "remove_chaos_token",
@@ -44379,7 +44379,7 @@
         "physical",
         "mental"
       ],
-      "text": "You barely remember sprinting back to shore and getting in your rowboat. It is as though you were possessed—by a fit of madness or by a spirit bent only on survival, you cannot say. You are shaken to your senses by the powerful gale which sweeps across the river, almost capsizing your boat. The spectral pillar marking the site of the Lodge’s ritual suddenly bursts outward. Dozens of specters and phantasmal shapes fly across the treetops and glide across the water. You will never forget their shrieks, like hundreds of deathcries sounding at once.",
+      "text": "Vous vous rappelez à peine votre course effrénée jusqu’à votre barque. Vous étiez comme en transe, poussé soit par un accès de folie, soit par pur instinct de survie, vous ne sauriez le dire. Un puissant vent qui s’abat sur le fleuve et fait presque chavirer votre embarcation vous fait retrouver votre état normal. Le pilier spectral marquant le site du rituel explose soudain. Des douzaines de spectres et de formes fantomatiques s’envolent à travers les arbres et fondent sur le fleuve. Leurs cris, semblables à des centaines de râles d’agonie simultanés, resteront à jamais gravés dans votre mémoire.",
       "steps": [
         "resolution_5"
       ]
@@ -44387,7 +44387,7 @@
     {
       "id": "R1",
       "title": "Conclusion 1",
-      "text": "The revenant thrashes and writhes in torment, unable to escape with its connection to the spectral realm torn away. Carl Sanford steps forward, opens a thick leather tome, and the ghost’s memories—along with the remainder of its form—are unceremoniously pulled into its pages.\n“What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “You cannot even begin to fathom the secrets this monster now possesses. Do you truly believe he will use this power for good?” She asks.",
+      "text": "Le revenant fulmine et se tord de douleur, incapable de s’échapper maintenant que sa connexion au monde des morts est coupée. Carl Sanford s’avance, ouvre un épais grimoire en cuir, et le fantôme – ainsi que tous ses souvenirs – sont aspirés à l’intérieur du livre sans plus de cérémonie.\n« Qu’avez-vous fait !? » hurle Anette, flanquée de plusieurs membres de sa congrégation. Le combat les a épuisées, mais vous ne doutez pas une seconde qu’elles donneront leur vie pour protéger leur grande prêtresse.\n« Ce que j’ai fait ? Eh bien, j’ai trompé le Diable », répond Sanford, un rictus sinistre aux lèvres. Vous remarquez alors que les mots sur le livre brillent maintenant d’une lueur spectrale. « Keziah a signé le Livre Noir d’Azathoth afin d’apprendre les secrets de l’univers ? Une erreur fatale, si vous voulez mon avis, qui l’a précipitée dans les griffes d’un être bien plus puissant qu’elle. » Il commence à feuilleter les pages et ajoute : « Elle a payé le prix, mais c’est moi qui en récolterai les fruits. »\nAnette serre les dents et se tourne vers vous. « Vous pouvez à peine imaginer les secrets que ce monstre détient à présent. Vous croyez réellement qu’il utilisera ce pouvoir pour faire le bien ? » demande-t-elle.",
       "steps": [
         "choose_if_sanford_is_good"
       ]
@@ -44395,7 +44395,7 @@
     {
       "id": "R2",
       "title": "Conclusion 2",
-      "text": "You stand tall and declare your loyalty proudly. The other members of the Order nod in affirmation. Carl Sanford will lead mankind to an era of peace, and protect them from the threats of the cosmos. It may take time for society to adjust, but humanity can only survive if these secrets are in the hands of the Order. The witches retreat into the woods, and you are left alone with your brothers and sisters of the Inner Circle. You gather around your leader, and as he reads from the New Creed of the Silver Twilight Order, he informs you of his plans: of the higher beings of the cosmos, of humanity’s ascension, of the Great Old Ones, of life and death, of Azathoth and the End of Everything. Step by step, the Order plots the future of the Earth, and you will become instrumental in the new world order.",
+      "text": "Vous gardez la tête haute et déclarez fièrement votre loyauté. Les autres membres de l’Ordre hochent la tête en guise d’approbation. Carl Sanford guidera l’humanité vers une ère de paix et la protégera de menaces du cosmos. La société mettra peut-être un peu de temps à s’adapter, mais l’humanité ne peut survivre que si ces secrets sont entre les mains de l’Ordre. Les sorcières se replient dans les bois et vous vous retrouvez seul avec vos frères et soeurs du Cercle Restreint. Vous vous rassemblez autour de votre chef qui commence à lire le Nouveau Credo de l’Ordre du Crépuscule d’Argent et vous parle de ses plans, des êtres supérieurs qui peuplent le cosmos, de l’ascension de l’humanité, de la vie et de la mort, d’Azathoth et de la Fin de Toute Chose. Pas après pas, l’Ordre planifie le futur de la Terre, et vous deviendrez l’un des rouages de ce nouvel ordre mondial.",
       "steps": [
         "true_work_of_silver_twilight_lodge_has_begun",
         "silver_twilight_wins_campaign"
@@ -44404,7 +44404,7 @@
     {
       "id": "R3",
       "title": "Conclusion 3",
-      "text": "Anette is right. Sanford tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. You shake your head.\n“A pity,” Mr. Sanford complains, “I thought you were smarter than this.” You take several steps back, retreating to where the witches are gathered. Sanford turns to the other members of his Order and points to you. “Kill them,” he commands.\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
+      "text": "Anette a raison, Sanford vous a trompé. C’est cela qu’il cherchait depuis le début. Peut-être qu’il est sincère dans son désir de « protéger l’humanité », mais la vérité est qu’il a plusieurs fois mis en danger la vie des autres pour servir son avidité et son désir de pouvoir. Vous secouez la tête.\n« Quel dommage », soupire M. Sanford, « Je pensais que vous étiez plus intelligent que cela. » Vous faites plusieurs pas en arrière, vers l’endroit où les sorcières sont rassemblées. Sanford se tourne vers les autres membres de son Ordre et vous désigne du doigt. « Tuez-les », ordonne-t-il.\n« Erynn, couvre-nous ! » lance Anette à la sorcière aux cheveux roux à côté d’elle. La sorcière acquiesce et agite sa baguette de bois devant elle, créant un nuage de brume qui masque votre présence. « Nous devons filer d’ici. Maintenant ! » crie Anette.\nVotre fuite reste floue dans votre esprit. Les membres du Crépuscule d’Argent vous poursuivent sans relâche à travers la forêt abandonnée. Vous parvenez tout juste à atteindre les berges avant qu’ils ne vous rattrapent. Vous faites signe à Anette et aux autres de se joindre à vous, mais elle secoue la tête. « Nous nous reverrons bientôt. » Le contour des robes des sorcières commence à se fondre dans le ciel nocturne et elles disparaissent l’une après l’autre dans un tourbillon de ténèbres.",
       "steps": [
         "carl_sanford_possesses_the_secrets_of_the_universe",
         "resolution_8"
@@ -44413,7 +44413,7 @@
     {
       "id": "R4",
       "title": "Conclusion 4",
-      "text": "Anette approaches, confronting the remnant’s ethereal shell. “Sister! We are the ones who have called you here from the great beyond.” The shattered revenant turns its attention to Anette, and the rest of her coven watch in anticipation.\n“What are you doing, you fool? This spirit is no mere witch!” Carl Sanford yells out. But it is too late. Anette ignores Mr. Sanford, continuing to speak with the spectral presence. “For years we have suffered injustice after injustice. Share with me your secrets, sister. Together, as one mind, body, and soul, we can begin anew.”\nThe ghost reaches out to her with a long, skeletal arm. Anette’s sisters gasp as their high priestess steps forward and kneels before the being, offering herself. With a sudden rush of energy, the phantom soul is drawn inside Anette. She collapses to the ground, reeling from the spiritual impact. Her body writhes in torment, but none of the other witches step forward to help, instead watching with equal parts terror and fascination. Finally, Anette rises to her feet, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic. \nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
+      "text": "Anette s’approche et fait face à l’enveloppe éthérée du revenant. « Ma soeur ! Nous t’avons rappelée de l’au-delà ! » Le revenant brisé se tourne vers Anette et le reste de sa congrégation retient son souffle.\n« Que faites-vous, sombre idiote ? Cet esprit n’est plus une simple sorcière ! » hurle Carl Sanford. Mais il est trop tard. Anette ignore l’avertissement de M. Sanford et continue de s’adresser à la présent spectrale. « Pendant des siècles, nous avons vécu injustice sur injustice. Partage tes secrets avec moi, ma soeur. Ensemble, un seul esprit, un seul corps, une seule âme, nous pouvons prendre un nouveau départ. »\nLe fantôme tend son long bras squelettique vers elle. Les soeurs d’Anette laissent échapper un hoquet lorsque leur grande prêtresse fait un pas en avant et s’agenouille devant l’être, s’offrant en personne. Dans un éclair d’énergie, l’âme du spectre pénètre le corps d’Anette. Cette dernière vacille sous la force de l’impact magique et tombe au sol. Son corps convulse mais aucune des sorcières ne s’avance pour l’aider, toutes observent avec un mélange de peur et de fascination. Enfin, Anette se relève, les yeux luisants d’un pouvoir mystique. Quand elle parle, ce n’est pas sa voix qui retentit. « Mes soeurs. Réjouissez-vous car je renais », déclare Keziah.\nCarl Sanford vous sort de votre hébétude d’un coup de canne. Vous étiez tellement pris par les événements que vous n’aviez pas remarqué que les membres de la Loge s’éclipsaient discrètement en direction de l’orée de la clairière. L’un des membres du Cercle Restreint sort son pistolet et tente de faire feu, mais d’un simple regard, la grande prêtresse fait se flétrir son bras. Il lâche son arme et pousse un dernier râle avant de n’être plus qu’une coquille desséchée qui tombe au sol. « Nous devons vite filer d’ici », annonce Sanford, imperturbable. « Cet être possède un pouvoir sur la vie et la mort elles-mêmes. Il ne tolérera pas notre présence très longtemps. »\nAnette – ou plutôt Keziah – se tourne vers vous, les yeux brillants. « Vous m’êtes familier, mon enfant. Venez, venez. N’ayez pas peur. Vous n’avez rien à craindre de moi. » Son sourire est démoniaque et sa voix semblable à des couteaux qui vous lacèrent l’âme. Vous détestez l’admettre, mais Sanford a raison. Vous faites demi-tour et fuyez avec le reste de la Loge, espérant être assez rapide pour échapper à la magie de la sorcière.\nVotre fuite reste floue dans votre esprit. Les sorcières et les spectres vous poursuivent sans relâche à travers la forêt abandonnée. Vous parvenez tout juste à atteindre les berges avant qu’ils ne vous rattrapent. Les autres membres de la Loge n’ont pas tous cette chance. Ils se sont éparpillés dans toutes les directions et vous ignorez combien on pu s’enfuir. Vous ne voyez Carl Sanford nulle part mais vous le soupçonnez d’avoir eu un plan de repli pour ce genre d’éventualité.",
       "steps": [
         "maybe_adjust_chaos_bag",
         "anette_mason_is_possessed_by_evil",
@@ -44438,8 +44438,8 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
-      "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Anette and her coven heavily wounded, and the Lodge stands victorious. Carl Sanford holds a thick leather tome in his hands, its pages glowing with arcane power. “What have you done?!” Anette yells. Several members of her coven surround her. They are embattled, but you have no doubt they would lay down their life to protect their high priestess from harm.\n“What have I done? Why, I have cheated the Devil,” Sanford responds with a sinister grin. You notice the words of his tome are now glowing with a spectral radiance. “Keziah signed the Black Book of Azathoth in order to learn the secrets of the universe. A fatal error, in my estimation, for it put her in the clutches of one far more powerful than she.” He begins to read from the pages as he explains further. “She paid the price, but I shall reap the harvest.”\nAnette clenches her jaw and turns toward you. “Listen to me. You cannot even begin to fathom the secrets this monster now possesses. You must stop him, no matter the cost.”\nYou hold your tongue, but in the back of your mind, you suspect Anette is right. Sanford has tricked you. This is what he was after all along. Perhaps he considers this “protecting humanity,” but the truth is that he has endangered the lives of others over and over again in order to serve his own greed and lust for power. However, before you can confront Sanford, he turns to the other members of his Order and points to you. “This one is no longer useful,” he explains. “Kill them all.”\n“Erynn, give us cover!” Anette barks to the red-haired witch next to her. The witch nods in response and waves a wooden rod in front of her, creating a cloud of mist that masks your presence. “We have to get out of here. Go!” Anette yells.\nYour escape is a blur. Robed members of the Silver Twilight cult chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. You motion for Anette and the others to join you, but she shakes her head. “We’ll meet again soon.” The edges of the witches’ cloaks bleed into the night sky, and with a swirl of darkness, they vanish one by one.",
+      "title": "Conclusion 6",
+      "text": "Quand vous recouvrez vos esprits, le vent est tombé et la brume sombre a disparu. Le rituel terminé, l’île a retrouvé son état normal. Mais le rituel a-t-il fonctionné ? Ou a-t-il échoué ? Vous vous frayez un chemin jusqu’au centre de l’île pour découvrir ce qui s’est passé. En arrivant, vous découvrez Anette et sa congrégation grièvement blessées et la Loge victorieuse. Carl Sanford tient un épais grimoire en cuir dont les pages luisent d’un pouvoir mystique. « Qu’avez-vous fait !? » hurle Anette, flanquée de plusieurs membres de sa congrégation. Le combat les a épuisées, mais vous ne doutez pas une seconde qu’elles donneront leur vie pour protéger leur grande prêtresse.\n« Ce que j’ai fait ? Eh bien, j’ai trompé le Diable », répond Sanford, un rictus sinistre aux lèvres. Vous remarquez alors que les mots sur le livre brillent maintenant d’une lueur spectrale. « Keziah a signé le Livre Noir d’Azathoth afin d’apprendre les secrets de l’univers ? Une erreur fatale, si vous voulez mon avis, qui l’a précipitée dans les griffes d’un être bien plus puissant qu’elle. » Il commence à feuilleter les pages et ajoute : « Elle a payé le prix, mais c’est moi qui en récolterai les fruits. »\nAnette serre les dents et se tourne vers vous. « Écoutez-moi. Vous pouvez à peine imaginer les secrets que ce monstre détient à présent. Vous devez l’arrêter, quel qu’en soit le prix. »\nVous retenez votre langue, mais au fond de vous, vous savez qu’Anette a raison, Sanford vous a trompé. C’est cela qu’il cherchait depuis le début. Peut-être qu’il est sincère dans son désir de « protéger l’humanité », mais la vérité est qu’il a plusieurs fois mis en danger la vie des autres pour servir son avidité et son désir de pouvoir. Avant même que vous n’ayez pu vous tourner contre lui, Sanford se tourne vers les autres membres de son Ordre et vous désigne du doigt. « Ils ne sont plus d’aucune utilité », explique-t-il. « Tuez les tous. »\n« Erynn, couvre-nous ! » lance Anette à la sorcière aux cheveux roux à côté d’elle. La sorcière acquiesce et agite sa baguette de bois devant elle, créant un nuage de brume qui masque votre présence. « Nous devons filer d’ici. Maintenant ! » crie Anette.\nVotre fuite reste floue dans votre esprit. Les membres du Crépuscule d’Argent vous poursuivent sans relâche à travers la forêt abandonnée. Vous parvenez tout juste à atteindre les berges avant qu’ils ne vous rattrapent. Vous faites signe à Anette et aux autres de se joindre à vous, mais elle secoue la tête. « Nous nous reverrons bientôt. » Le contour des robes des sorcières commence à se fondre dans le ciel nocturne et elles disparaissent l’une après l’autre dans un tourbillon de ténèbres.",
       "steps": [
         "carl_sanford_possesses_the_secrets_of_the_universe",
         "resolution_8"
@@ -44447,8 +44447,8 @@
     },
     {
       "id": "R7",
-      "title": "Resolution 7",
-      "text": "When you come to your senses, the wind has subsided and the dark mist has vanished. With the ritual concluded, the island seems to have returned to normal—but was the ritual successful, or did it fail? You make your way to the center of the island to find out what happened. As you arrive, you find Carl Sanford and the other members of his Order heavily wounded, and Anette and her coven stand victorious. Anette stands at the center of the clearing, her eyes aglow with mystical power. When she speaks, it is not her voice. “Sisters. Rejoice, for I am reborn,” Keziah says.\nCarl Sanford taps you with his cane. You were so transfixed by the events occurring in front of you that you hadn’t noticed the Lodge members slinking toward the edges of the clearing. One of the Lodge’s inner circle raises a revolver and attempts to fire, but the high priestess simply glares at him, and his arm withers and rots before your eyes. His gun clatters to the ground and he makes one final croak before he is nothing but a decayed husk on the ground. “We must leave this place at once,” Sanford says stoically. “This being possesses power over life and death itself. It will not suffer our presence any longer.”\nAnette—no, Keziah—turns her attention to you, and her eyes brighten. “You look familiar, child. Come, come. Do not be afraid. You have nothing to fear from me.” She grins wickedly. Her voice is like knives driving into your soul. You hate to admit it, but Sanford is right. You turn and flee with the rest of the Lodge, hoping you are fast enough to escape the witch’s magic.\nYour escape is a blur. Witches and spirits chase you relentlessly throughout the forsaken woods. You are only barely able to make it back to the shore before they catch up to you. Other members of the Lodge are perhaps not so fortunate. Having scattered in many directions, you’re not sure how many of them escaped, and you don’t see Carl Sanford anywhere, though you suspect he had a plan for this outcome.",
+      "title": "Conclusion 7",
+      "text": "Quand vous recouvrez vos esprits, le vent est tombé et la brume sombre a disparu. Le rituel terminé, l’île a retrouvé son état normal. Mais le rituel a-t-il fonctionné ? Ou a-t-il échoué ? Vous vous frayez un chemin jusqu’au centre de l’île pour découvrir ce qui s’est passé. En arrivant, vous découvrez Carl Sanford et le reste de l’Ordre grièvement blessés et Anette et sa congrégation, victorieuses. Anette se tient au centre de la clairière, ses yeux luisant d’un pouvoir mystique. Quand elle parle, ce n’est pas sa voix qui retentit. « Mes soeurs. Réjouissez-vous car je renais », déclare Keziah.\nCarl Sanford vous sort de votre hébétude d’un coup de canne. Vous étiez tellement pris par les événements que vous n’aviez pas remarqué que les membres de la Loge s’éclipsaient discrètement en direction de l’orée de la clairière. L’un des membres du Cercle Restreint sort son pistolet et tente de faire feu, mais d’un simple regard, la grande prêtresse fait se flétrir son bras. Il lâche son arme et pousse un dernier râle avant de n’être plus qu’une coquille desséchée qui tombe au sol. « Nous devons vite filer d’ici », annonce Sanford, imperturbable. « Cet être possède un pouvoir sur la vie et la mort elles-mêmes. Il ne tolérera pas notre présence très longtemps. »\nAnette – ou plutôt Keziah – se tourne vers vous, les yeux brillants. « Vous m’êtes familier, mon enfant. Venez, venez. N’ayez pas peur. Vous n’avez rien à craindre de moi. » Son sourire est démoniaque et sa voix semblable à des couteaux qui vous lacèrent l’âme. Vous détestez l’admettre, mais Sanford a raison. Vous faites demi-tour et fuyez avec le reste de la Loge, espérant être assez rapide pour échapper à la magie de la sorcière.\nVotre fuite reste floue dans votre esprit. Les sorcières et les spectres vous poursuivent sans relâche à travers la forêt abandonnée. Vous parvenez tout juste à atteindre les berges avant qu’ils ne vous rattrapent. Les autres membres de la Loge n’ont pas tous cette chance. Ils se sont éparpillés dans toutes les directions et vous ignorez combien on pu s’enfuir. Vous ne voyez Carl Sanford nulle part mais vous le soupçonnez d’avoir eu un plan de repli pour ce genre d’éventualité.",
       "steps": [
         "anette_mason_is_possessed_by_evil",
         "resolution_8"
@@ -44456,8 +44456,8 @@
     },
     {
       "id": "R8",
-      "title": "Resolution 8",
-      "text": "When you finally return to the banks of the Miskatonic River, you take stock of the situation…",
+      "title": "Conclusion 8",
+      "text": "Vous atteignez enfin les rives du Miskatonic et faites le point sur la situation…",
       "steps": [
         "remove_puzzle_box",
         "check_missing_persons_alive",
@@ -44908,7 +44908,7 @@
     {
       "id": "black_cat_choice",
       "type": "input",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "L’investigateur principal doit décider (choisir une option) :",
       "input": {
         "type": "choose_one",
         "choices": [
@@ -54819,7 +54819,7 @@
     },
     {
       "id": "hidden",
-      "title": "hidden",
+      "title": "cacher",
       "type": "hidden"
     }
   ],
@@ -59968,7 +59968,7 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "agenda_5",
-          "text": "hidden"
+          "text": "cacher"
         }
       ]
     },
@@ -59981,13 +59981,13 @@
           "type": "campaign_log",
           "section": "hidden",
           "id": "agenda_5",
-          "text": "hidden"
+          "text": "cacher"
         },
         {
           "type": "campaign_log",
           "section": "hidden",
           "id": "agenda_6",
-          "text": "hidden"
+          "text": "cacher"
         }
       ]
     },
@@ -61211,7 +61211,7 @@
     },
     {
       "id": "choose_talk_to_ichtaca",
-      "text": "The lead investigator must decide (choose one):",
+      "text": "L’investigateur principal doit décider (choisir une option) :",
       "type": "input",
       "input": {
         "type": "choose_one",
@@ -66800,7 +66800,7 @@
     },
     {
       "id": "R6",
-      "title": "Resolution 6",
+      "title": "Conclusion 6",
       "text": "\"Heh, heh, heh, heh... ye startin' to see haow rott'n this town's got, ain't ye?\" Zadok hollers, a crazed look in his wide eyes. He clutches desperately at your arm, not seeming to care about your attempts to bind him. \"We're all in their clutches now, we are! Heh, heh, heh!\"\n\"What's this blotto have to laugh about?\" Agent Harper mocks. \"Hey, Zadok. Stop it with the nonsense and tell us what your game is.\"\nZadok rocks back and forth, his voice growing louder and bolder. \"My game? My game?\" he roils with manic laughter. \"Yeh think I'm to blame, but them fish devils are in our midst, they are! Haven't ye seen them?\" He grins. \"Haven't ye seen them monsters crawlin' an' bleatin' an' barkin' an' hoppin' araoun' the black streets? Haven't ye heard the haowlin' errey night from the churches an' the Order o' Dagon Hall? Don'tcha know what's doin' the haowlin'? Eh? Well?\" His voice rises to a shriek, then descends into a fit of laughter.\n\"No, I haven't,\" Harper replies, her eyes narrow. \"Why don't you tell us all about it?\"",
       "steps": [
         "earn_xp",
@@ -66809,7 +66809,7 @@
     },
     {
       "id": "R7",
-      "title": "Resolution 7",
+      "title": "Conclusion 7",
       "text": "Robert refruses to say a word until you get him a cigar. You begrudgingly oblige, hoping that your generosity yields dividends. \"I was investigating the docks when he and his cronies nabbed me,\" Agent Harper recounts bitterly. You ask who these \"cronies\" were, and she shrugs. \"Not sure. Dockworkers and sailors, I imagine. Whoever hired Mr. Friendly over here must have a lot of influence over the locals.\"\nAfter handing Robert the cigar he demanded, you are surprised to find him a little more compliant, though no more friendly despite his name. \"Doesn't matter,\" he mutters, blowing out a puff of rank cigar smoke. \"You're all dead men walking. No offense, miss.\"\n\"Offense taken,\" she bites back. \"Care to tell us what you mean by that?\"\n\"The Order,\" he replies with a quiet, unwavering resolve. \"They know everything that happens in this town. Probably out lookin' for me right now. You sure you wanna be here when they find me?\" He flashes a sadistic grin.\nHarper doesn't flinch. \"Yeah, actually. I think I do,\" she replies, cracking her knuckles. \"Now start talking.\"",
       "steps": [
         "earn_xp",

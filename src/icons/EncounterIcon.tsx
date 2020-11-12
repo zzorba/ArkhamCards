@@ -413,6 +413,7 @@ export default class EncounterIcon extends React.PureComponent<Props> {
         return this.dreamIcon('point_of_no_return', size, color);
       case 'in_too_deep':
       case 'itd':
+        return this.dreamIcon('in_too_deep', size, color);
       case 'devils_reef':
       case 'def':
       case 'hhg':

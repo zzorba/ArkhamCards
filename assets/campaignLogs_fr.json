@@ -1884,11 +1884,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "cacher"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "cacher"
           },
           {
             "id": "doy_cross_off_rope",
@@ -2101,11 +2101,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Gavriella is alive."
+            "text": "Gavriella est vivante"
           },
           {
             "id": "dead",
-            "text": "Gavriella Mizrah is dead."
+            "text": "Gavriella Mizrah est morte"
           },
           {
             "id": "on_gavriellas_trail",
@@ -2118,11 +2118,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Jerome is alive."
+            "text": "Jerome est vivant"
           },
           {
             "id": "dead",
-            "text": "Jerome Davids is dead."
+            "text": "Jerome Davids est mort."
           },
           {
             "id": "on_jeromes_trail",
@@ -2135,11 +2135,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Valentino is alive."
+            "text": "Valentino est vivant"
           },
           {
             "id": "dead",
-            "text": "Valentino Rivas is dead."
+            "text": "Valentino Rivas est mort."
           },
           {
             "id": "on_valentinos_trail",
@@ -2152,11 +2152,11 @@
         "entries": [
           {
             "id": "alive",
-            "text": "Penny is alive."
+            "text": "Penny est vivante"
           },
           {
             "id": "dead",
-            "text": "Penny White is dead."
+            "text": "Penny White est morte"
           },
           {
             "id": "on_pennys_trail",
@@ -2174,11 +2174,11 @@
           },
           {
             "id": "accepted_fate",
-            "text": "you have accepted your fate."
+            "text": "vous avez accepté votre destin."
           },
           {
             "id": "anette_mason_is_possessed_by_evil",
-            "text": "Anette Mason is possessed by evil."
+            "text": "Anette Mason est possédée par le démon."
           },
           {
             "id": "anette_taught_you_the_spells_of_old",
@@ -2218,7 +2218,7 @@
           },
           {
             "id": "carl_sanford_possesses_the_secrets_of_the_universe",
-            "text": "Carl Sanford possesses the secrets of the universe."
+            "text": "Carl Sanford possède les secrets de l’univers."
           },
           {
             "id": "continued_alone",
@@ -2250,7 +2250,7 @@
           },
           {
             "id": "heretics_released",
-            "text": "#X# heretics were unleashed unto Arkham."
+            "text": "#X# hérétiques ont été lâchées sur Arkham"
           },
           {
             "id": "hid_knowledge_of_coven",
@@ -2290,7 +2290,7 @@
           },
           {
             "id": "path_winds_before_you",
-            "text": "the path winds before you: #X#"
+            "text": "la voie s’ouvre devant vous : #X#"
           },
           {
             "id": "pieces_of_evidence",
@@ -2298,7 +2298,7 @@
           },
           {
             "id": "rejected_fate",
-            "text": "you have rejected your fate."
+            "text": "vous avez rejeté votre destin."
           },
           {
             "id": "rescued_josef",
@@ -2306,11 +2306,11 @@
           },
           {
             "id": "sided_with_the_coven",
-            "text": "the investigators sided with the coven."
+            "text": "les investigateurs ont choisi le camp de la congrégation."
           },
           {
             "id": "sided_with_the_lodge",
-            "text": "the investigators sided with the Lodge."
+            "text": "les investigateurs ont choisi le camp de la Loge."
           },
           {
             "id": "signed_the_black_book",
@@ -2318,7 +2318,7 @@
           },
           {
             "id": "survived_the_watchers_embrace",
-            "text": "the investigators survived the watcher’s embrace."
+            "text": "les investigateurs ont survécu à l’étreinte du guetteur."
           },
           {
             "id": "told_lodge_about_coven",
@@ -2326,15 +2326,15 @@
           },
           {
             "id": "true_work_of_silver_twilight_lodge_has_begun",
-            "text": "the true work of the Silver Twilight Lodge has begun."
+            "text": "e véritable travail de la Loge du Crépuscule d’Argent a maintenant commencé."
           },
           {
             "id": "witches_spell_broken",
-            "text": "the witches' spell was broken."
+            "text": "le sort des sorcières a été brisé."
           },
           {
             "id": "witches_spell_cast",
-            "text": "the witches' spell was cast."
+            "text": "le sort des sorcières a été lancé."
           },
           {
             "id": "tes_taken_by_the_abyss",
@@ -2494,7 +2494,7 @@
         "entries": [
           {
             "id": "corn_husk_doll",
-            "text": "Corn Husk Doll"
+            "text": "Poupée en épi de maïs"
           },
           {
             "id": "gilmans_journal",
@@ -2506,19 +2506,19 @@
           },
           {
             "id": "mesmerizing_flute",
-            "text": "Mesmerizing Flute"
+            "text": "Flûte Envoûtante"
           },
           {
             "id": "ritual_components",
-            "text": "Ritual Components"
+            "text": "Ingrédients du Rituel"
           },
           {
             "id": "scrap_of_torn_shadow",
-            "text": "Scrap of Torn Shadow"
+            "text": "Lambeaux d’Ombre Déchirée"
           },
           {
             "id": "wisp_of_spectral_mist",
-            "text": "Wisp of Spectral Mist"
+            "text": "Poignée de Brume Spectrale"
           },
           {
             "id": "worn_crucific",
@@ -3394,11 +3394,11 @@
         "entries": [
           {
             "id": "agenda_5",
-            "text": "hidden"
+            "text": "cacher"
           },
           {
             "id": "agenda_6",
-            "text": "hidden"
+            "text": "cacher"
           },
           {
             "id": "doy_cross_off_rope",
