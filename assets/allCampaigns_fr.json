@@ -30348,7 +30348,7 @@
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
-        "investigator": "any",
+        "investigator": "all",
         "id": "map",
         "name": "Map",
         "options": [
@@ -59434,7 +59434,7 @@
       "condition": {
         "type": "check_supplies",
         "section": "supplies",
-        "investigator": "any",
+        "investigator": "all",
         "id": "map",
         "name": "Map",
         "options": [

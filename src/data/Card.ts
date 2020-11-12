@@ -963,7 +963,7 @@ export default class Card {
         // It's an encounter card.
         result.browse_visible += 2;
       }
-      if (result.deck_limit > 0 || result.bonded_name) {
+      if (result.deck_limit > 0 || result.bonded_name || result.code === RANDOM_BASIC_WEAKNESS) {
         // It goes in a deck.
         result.browse_visible += 1;
       }

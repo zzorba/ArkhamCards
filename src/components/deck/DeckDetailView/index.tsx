@@ -664,7 +664,7 @@ function DeckDetailView({
   }, [dispatch, id, setEditDetailsOpen]);
 
   const editDetailsDialog = useMemo(() => {
-    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined || deckEdits?.nameChange === undefined) {
+    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
     }
     const {
@@ -887,7 +887,7 @@ function DeckDetailView({
   }, [componentId, parsedDeck, colors, setMenuOpen]);
 
   const sideMenu = useMemo(() => {
-    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined || deckEdits?.nameChange === undefined) {
+    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return null;
     }
     const {
