@@ -43,7 +43,7 @@ import { s, m } from '@styles/space';
 import ArkhamButton, { ArkhamButtonIcon } from '@components/core/ArkhamButton';
 import { SEARCH_BAR_HEIGHT } from '@components/core/SearchBox';
 import StyleContext from '@styles/StyleContext';
-import { useCards, useDeck, useDeckEdits, useEffectUpdate, useToggles } from '@components/core/hooks';
+import { useCards, useDeck, useEffectUpdate, useSimpleDeckEdits, useToggles } from '@components/core/hooks';
 import LoadingCardSearchResult from '../LoadingCardSearchResult';
 
 interface Props {
@@ -605,7 +605,7 @@ export default function({
 }: Props) {
   const { db } = useContext(DatabaseContext);
   const [deck] = useDeck(deckId, {});
-  const deckEdits = useDeckEdits(deckId);
+  const deckEdits = useSimpleDeckEdits(deckId);
   const { colors, borderStyle, fontScale, typography } = useContext(StyleContext);
   const hasSecondCore = useSelector((state: AppState) => getPacksInCollection(state).core || false);
   const [loadingMessage, setLoadingMessage] = useState(getRandomLoadingMessage());

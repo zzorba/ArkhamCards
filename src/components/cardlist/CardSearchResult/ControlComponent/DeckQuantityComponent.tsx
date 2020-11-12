@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { EditSlotsActions, useDeckEdits } from '@components/core/hooks';
+import { EditSlotsActions, useSimpleDeckEdits } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
 import { incDeckSlot, decDeckSlot, setDeckSlot } from '@components/deck/DeckDetailView/actions';
 import CardQuantityComponent from './CardQuantityComponent';
@@ -16,7 +16,7 @@ interface DeckCardQuantityProps {
 
 export default function DeckQuantityComponent(props: DeckCardQuantityProps) {
   const { deckId, code, limit, showZeroCount, forceBig } = props;
-  const deckEditCounts = useDeckEdits(deckId);
+  const deckEditCounts = useSimpleDeckEdits(deckId);
   const dispatch = useDispatch();
   const count = deckEditCounts?.slots[code];
   const countChanged: EditSlotsActions = useMemo(() => {

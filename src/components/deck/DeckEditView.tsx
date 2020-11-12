@@ -7,7 +7,7 @@ import { queryForInvestigator, negativeQueryForInvestigator } from '@lib/Investi
 import FilterBuilder, { defaultFilterState } from '@lib/filters';
 import { STORY_CARDS_QUERY, ON_YOUR_OWN_RESTRICTION, where, combineQueries } from '@data/query';
 import { NavigationProps } from '@components/nav/types';
-import { useDeck, useDeckEdits, useInvestigatorCards } from '@components/core/hooks';
+import { useDeck, useSimpleDeckEdits, useInvestigatorCards } from '@components/core/hooks';
 
 export interface EditDeckProps {
   id: number;
@@ -22,7 +22,7 @@ export default function DeckEditView({
   storyOnly,
 }: Props) {
   const [deck] = useDeck(id, {});
-  const deckEdits = useDeckEdits(id);
+  const deckEdits = useSimpleDeckEdits(id);
   const tabooSetId = (deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deck?.taboo_id) || 0;
   const investigators = useInvestigatorCards(tabooSetId);
   const [hideVersatile, setHideVersatile] = useState(false);

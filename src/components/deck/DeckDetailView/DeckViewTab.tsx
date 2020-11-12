@@ -240,7 +240,6 @@ interface Props {
   singleCardView: boolean;
   tabooSetId?: number;
   showTaboo: boolean;
-  xpAdjustment: number;
   signedIn: boolean;
   login: () => void;
   problem?: DeckProblem;
@@ -276,7 +275,6 @@ export default function DeckViewTab({
   showCardUpgradeDialog,
   problem,
   showEditNameDialog,
-  xpAdjustment,
   tabooSet,
   showTaboo,
   tabooOpen,
@@ -290,7 +288,7 @@ export default function DeckViewTab({
   investigatorDataUpdates,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const deckEdits = useDeckEdits(deck.id);
+  const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
   const [limitedSlots, setLimitedSlots] = useState(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
 
@@ -314,7 +312,7 @@ export default function DeckViewTab({
     const normalCards = parsedDeck.normalCards;
     const specialCards = parsedDeck.specialCards;
     const slots = parsedDeck.slots;
-    const validation = new DeckValidation(investigatorBack, slots, deckEdits?.meta);
+    const validation = new DeckValidation(investigatorBack, slots, deckEditsRef.current?.meta);
     return [
       {
         id: 'cards',
@@ -353,7 +351,7 @@ export default function DeckViewTab({
     parsedDeck.normalCards,
     parsedDeck.specialCards,
     parsedDeck.slots,
-    deckEdits,
+    deckEditsRef,
     cards,
     showEditCards,
     showEditSpecial,
@@ -418,12 +416,12 @@ export default function DeckViewTab({
 
   const renderCard = useCallback(({ item, index, section }: SectionListRenderItemInfo<SectionCardId>) => {
     const card = cards[item.id];
-    if (!card || !deckEdits) {
+    if (!card || !deckEditsRef.current) {
       return null;
     }
-    const count = (item.special && deckEdits.ignoreDeckLimitSlots[item.id] > 0) ?
-      deckEdits.ignoreDeckLimitSlots[item.id] :
-      (item.quantity - (deckEdits.ignoreDeckLimitSlots[item.id] || 0));
+    const count = (item.special && deckEditsRef.current.ignoreDeckLimitSlots[item.id] > 0) ?
+      deckEditsRef.current.ignoreDeckLimitSlots[item.id] :
+      (item.quantity - (deckEditsRef.current.ignoreDeckLimitSlots[item.id] || 0));
     const id = `${section.id}.${index}`;
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
     return (
@@ -440,7 +438,7 @@ export default function DeckViewTab({
         }}
       />
     );
-  }, [showSwipeCard, deckEdits, showDeckUpgrades, showCardUpgradeDialog, cards]);
+  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
 
   const problemHeader = useMemo(() => {
     if (!problem) {
@@ -465,7 +463,7 @@ export default function DeckViewTab({
     if (!changes) {
       return null;
     }
-    const adjustedXp = (deck.xp || 0) + xpAdjustment;
+    const adjustedXp = (deck.xp || 0) + (deckEdits?.xpAdjustment || 0);
     return (
       <PickerStyleButton
         id="xp"
@@ -482,7 +480,7 @@ export default function DeckViewTab({
         settingsStyle
       />
     );
-  }, [colors, parsedDeck.changes, deck, showEditNameDialog, xpAdjustment, editable]);
+  }, [colors, parsedDeck.changes, deck, showEditNameDialog, deckEdits?.xpAdjustment, editable]);
 
   const toggleLimitedSlots = useCallback(() => {
     setLimitedSlots(!limitedSlots);
@@ -492,13 +490,13 @@ export default function DeckViewTab({
     dispatch(setDeckTabooSet(deck.id, tabooSetId || 0));
   }, [dispatch, deck.id]);
   const setMeta = useCallback((key: keyof DeckMeta, value?: string) => {
-    if (deckEdits) {
-      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEdits, key, value));
+    if (deckEditsRef.current) {
+      dispatch(updateDeckMeta(deck.id, deck.investigator_code, deckEditsRef.current, key, value));
     }
-  }, [dispatch, deck.id, deck.investigator_code, deckEdits]);
+  }, [dispatch, deck.id, deck.investigator_code, deckEditsRef]);
 
   const investigatorOptions = useMemo(() => {
-    if (!deckEdits) {
+    if (!deckEdits?.meta) {
       return null;
     }
     return (
@@ -549,7 +547,7 @@ export default function DeckViewTab({
     parsedDeck.investigator,
     parallelInvestigators,
     deck,
-    deckEdits,
+    deckEdits?.meta,
     tabooSetId,
     setMeta,
     tabooSet,

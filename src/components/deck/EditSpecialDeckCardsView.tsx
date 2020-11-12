@@ -11,7 +11,6 @@ import CardSelectorComponent from '@components/cardlist/CardSelectorComponent';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import { DrawWeaknessProps } from '@components/weakness/WeaknessDrawDialog';
 import { NavigationProps } from '@components/nav/types';
-import { Slots } from '@actions/types';
 import { RANDOM_BASIC_WEAKNESS, ACE_OF_RODS_CODE } from '@app_constants';
 import Card from '@data/Card';
 import COLORS from '@styles/colors';
@@ -20,7 +19,6 @@ import CardSectionHeader from '@components/core/CardSectionHeader';
 import ArkhamButton from '@components/core/ArkhamButton';
 import { useDeck, useDeckEdits, usePlayerCards } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
-import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
 import { setIgnoreDeckSlot } from './DeckDetailView/actions';
 
 export interface EditSpecialCardsProps {
@@ -35,7 +33,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
   const [deck, previousDeck] = useDeck(id, {});
   const dispatch = useDispatch();
-  const deckEdits = useDeckEdits(id);
+  const [deckEdits, deckEditsRef] = useDeckEdits(id);
 
   const cardPressed = useCallback((card: Card) => {
     Navigation.push<CardDetailProps>(componentId, {
@@ -83,19 +81,19 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [componentId, deck, cards, colors, id]);
 
   const isSpecial = useCallback((card: Card) => {
-    return !!(card.code === ACE_OF_RODS_CODE || (deckEdits && deckEdits.ignoreDeckLimitSlots[card.code] > 0));
-  }, [deckEdits]);
+    return !!(card.code === ACE_OF_RODS_CODE || (deckEditsRef.current && deckEditsRef.current.ignoreDeckLimitSlots[card.code] > 0));
+  }, [deckEditsRef]);
 
   const saveWeakness = useCallback((code: string, replaceRandomBasicWeakness: boolean) => {
-    if (!deckEdits) {
+    if (!deckEditsRef.current) {
       return;
     }
-    if (replaceRandomBasicWeakness && deckEdits.slots[RANDOM_BASIC_WEAKNESS] > 0) {
+    if (replaceRandomBasicWeakness && deckEditsRef.current.slots[RANDOM_BASIC_WEAKNESS] > 0) {
       dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'dec', id, code: RANDOM_BASIC_WEAKNESS });
     }
     dispatch({ type: 'UPDATE_DECK_EDIT_COUNTS', countType: 'slots', operation: 'inc', id, code });
     setUnsavedAssignedWeaknesses([...unsavedAssignedWeaknesses, code]);
-  }, [unsavedAssignedWeaknesses, id, deckEdits, dispatch, setUnsavedAssignedWeaknesses]);
+  }, [unsavedAssignedWeaknesses, id, deckEditsRef, dispatch, setUnsavedAssignedWeaknesses]);
 
   const editCollection = useCallback(() => {
     Navigation.push(componentId, {
@@ -106,7 +104,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [componentId]);
 
   const showWeaknessDialog = useCallback(() => {
-    if (!deckEdits) {
+    if (!deckEditsRef.current) {
       return;
     }
     const investigator = deck && cards && cards[deck.investigator_code];
@@ -114,7 +112,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
       component: {
         name: 'Weakness.Draw',
         passProps: {
-          slots: deckEdits.slots,
+          slots: deckEditsRef.current.slots,
           saveWeakness,
         },
         options: {
@@ -137,7 +135,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, cards, deck, colors, deckEdits, saveWeakness]);
+  }, [componentId, cards, deck, colors, deckEditsRef, saveWeakness]);
   const drawWeakness = useCallback(() => {
     Alert.alert(
       t`Draw Basic Weakness`,
@@ -150,7 +148,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   }, [showWeaknessDialog, editCollection]);
 
   const showCampaignWeaknessDialog = useCallback(() => {
-    if (!campaignId || !deckEdits) {
+    if (!campaignId || !deckEditsRef.current) {
       return;
     }
     const investigator = deck && cards && cards[deck.investigator_code];
@@ -159,7 +157,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         name: 'Dialog.CampaignDrawWeakness',
         passProps: {
           campaignId,
-          deckSlots: deckEdits.slots,
+          deckSlots: deckEditsRef.current.slots,
           saveWeakness,
           unsavedAssignedCards: unsavedAssignedWeaknesses,
         },
@@ -183,7 +181,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
         },
       },
     });
-  }, [componentId, campaignId, deck, cards, colors, deckEdits, unsavedAssignedWeaknesses, saveWeakness]);
+  }, [componentId, campaignId, deck, cards, colors, deckEditsRef, unsavedAssignedWeaknesses, saveWeakness]);
 
   const drawWeaknessButton = useMemo(() => {
     return (

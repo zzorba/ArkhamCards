@@ -13,7 +13,7 @@ import { Deck, ParsedDeck } from '@actions/types';
 import { getAllDecks } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
-import { useDeckEdits, usePlayerCards } from '@components/core/hooks';
+import { useSimpleDeckEdits, usePlayerCards } from '@components/core/hooks';
 
 export interface DeckHistoryProps {
   id: number;
@@ -23,7 +23,7 @@ export default function DeckHistoryView({
   componentId,
   id,
 }: DeckHistoryProps & NavigationProps) {
-  const deckEdits = useDeckEdits(id);
+  const deckEdits = useSimpleDeckEdits(id);
   const { backgroundStyle, colors } = useContext(StyleContext);
   const cards = usePlayerCards();
   const decks = useSelector(getAllDecks);

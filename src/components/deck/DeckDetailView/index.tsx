@@ -58,11 +58,10 @@ import { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useDeck, useDeckEdits, useEffectUpdate, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
+import { useComponentVisible, useDeck, useDeckEdits, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 
-const SHOW_DESCRIPTION_EDITOR = false;
 const SHOW_CHECKLIST_EDITOR = true;
 export interface DeckDetailProps {
   id: number;
@@ -114,7 +113,7 @@ function DeckDetailView({
   const [editDetailsOpen, toggleEditDetailsOpen, setEditDetailsOpen] = useFlag(false);
 
   // All the flags for the current state
-  const deckEdits = useDeckEdits(id, true);
+  const [deckEdits, deckEditsRef] = useDeckEdits(id, true);
 
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deckTabooSetId;
   const tabooSet = useTabooSet(tabooSetId);
@@ -277,7 +276,7 @@ function DeckDetailView({
     if (saving && !isRetry) {
       return;
     }
-    if (!deck || !parsedDeck || !deckEdits) {
+    if (!deck || !parsedDeck || !deckEditsRef.current) {
       return;
     }
     const problemField = problem ? problem.reason : '';
@@ -285,14 +284,14 @@ function DeckDetailView({
     deckDispatch(saveDeckChanges(
       deck,
       {
-        name: deckEdits.nameChange,
-        slots: deckEdits.slots,
-        ignoreDeckLimitSlots: deckEdits.ignoreDeckLimitSlots,
+        name: deckEditsRef.current.nameChange,
+        slots: deckEditsRef.current.slots,
+        ignoreDeckLimitSlots: deckEditsRef.current.ignoreDeckLimitSlots,
         problem: problemField,
         spentXp: parsedDeck.changes ? parsedDeck.changes.spentXp : 0,
-        xpAdjustment: deckEdits.xpAdjustment,
+        xpAdjustment: deckEditsRef.current.xpAdjustment,
         tabooSetId,
-        meta: deckEdits.ignoreDeckLimitSlots,
+        meta: deckEditsRef.current.ignoreDeckLimitSlots,
       }
     )).then(() => {
       updateCampaignWeaknessSet(addedBasicWeaknesses);
@@ -302,7 +301,7 @@ function DeckDetailView({
         setSaving(false);
       }
     }, handleSaveError);
-  }, [deck, saving, parsedDeck, deckEdits, tabooSetId, addedBasicWeaknesses, problem,
+  }, [deck, saving, parsedDeck, deckEditsRef, tabooSetId, addedBasicWeaknesses, problem,
     deckDispatch, handleSaveError, setSaving, updateCampaignWeaknessSet,
   ]);
 
@@ -494,7 +493,7 @@ function DeckDetailView({
   }, [saveEdits]);
 
   const onChecklistPressed = useCallback(() => {
-    if (!deck || !cards || !deckEdits) {
+    if (!deck || !cards || !deckEditsRef.current) {
       return;
     }
     setMenuOpen(false);
@@ -504,16 +503,16 @@ function DeckDetailView({
         name: 'Deck.Checklist',
         passProps: {
           id: deck.id,
-          slots: deckEdits.slots,
+          slots: deckEditsRef.current.slots,
           tabooSetOverride: tabooSetId,
         },
         options: getDeckOptions(colors, { title: t`Checklist`, noTitle: true }, investigator),
       },
     });
-  }, [componentId, deck, cards, tabooSetId, deckEdits, colors, setMenuOpen]);
+  }, [componentId, deck, cards, tabooSetId, deckEditsRef, colors, setMenuOpen]);
 
   const onEditSpecialPressed = useCallback(() => {
-    if (!deck || !cards || !deckEdits) {
+    if (!deck || !cards) {
       return;
     }
     setMenuOpen(false);
@@ -546,7 +545,7 @@ function DeckDetailView({
         },
       },
     });
-  }, [componentId, setMenuOpen, id, deck, deckEdits, cards, campaign, colors, addedBasicWeaknesses]);
+  }, [componentId, setMenuOpen, id, deck, cards, campaign, colors, addedBasicWeaknesses]);
 
   const onEditPressed = useCallback(() => {
     if (!deck || !cards) {
@@ -665,7 +664,7 @@ function DeckDetailView({
   }, [dispatch, id, setEditDetailsOpen]);
 
   const editDetailsDialog = useMemo(() => {
-    if (!deck || !parsedDeck || !deckEdits) {
+    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined || deckEdits?.nameChange === undefined) {
       return null;
     }
     const {
@@ -683,7 +682,7 @@ function DeckDetailView({
         updateDetails={updateDeckDetails}
       />
     );
-  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits]);
+  }, [deck, parsedDeck, editDetailsOpen, toggleEditDetailsOpen, updateDeckDetails, deckEdits?.xpAdjustment, deckEdits?.nameChange]);
 
   const deletingDialog = useMemo(() => {
     if (deleteError) {
@@ -888,7 +887,7 @@ function DeckDetailView({
   }, [componentId, parsedDeck, colors, setMenuOpen]);
 
   const sideMenu = useMemo(() => {
-    if (!deck || !parsedDeck || !deckEdits) {
+    if (!deck || !parsedDeck || deckEdits?.xpAdjustment === undefined || deckEdits?.nameChange === undefined) {
       return null;
     }
     const {
@@ -1046,7 +1045,7 @@ function DeckDetailView({
         ) }
       </ScrollView>
     );
-  }, [backgroundStyle, typography, isPrivate, deck, deckEdits, hasPendingEdits, tabooSet, parsedDeck,
+  }, [backgroundStyle, typography, isPrivate, deck, deckEdits?.xpAdjustment, deckEdits?.nameChange, hasPendingEdits, tabooSet, parsedDeck,
     showUpgradeHistoryPressed, toggleCopyDialog, deleteDeckPressed, viewDeck, uploadToArkhamDB,
     onUpgradePressed, showCardChartsPressed, showDrawSimulatorPressed, showEditDetails, showTabooPicker,
     onEditPressed, onEditSpecialPressed, onChecklistPressed,
@@ -1109,7 +1108,6 @@ function DeckDetailView({
               showTaboo={showTaboo}
               tabooOpen={tabooOpen}
               singleCardView={singleCardView}
-              xpAdjustment={deckEdits.xpAdjustment}
               parsedDeck={parsedDeck}
               problem={problem}
               hasPendingEdits={hasPendingEdits}

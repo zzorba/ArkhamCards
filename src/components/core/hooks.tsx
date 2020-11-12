@@ -1,4 +1,4 @@
-import { Reducer, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { MutableRefObject, Reducer, Ref, useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { InteractionManager } from 'react-native';
 import { Navigation, NavigationButtonPressedEvent, ComponentDidAppearEvent, ComponentDidDisappearEvent } from 'react-native-navigation';
 import { forEach, debounce, find } from 'lodash';
@@ -343,7 +343,12 @@ export function useSlots(initialState: Slots, updateSlots?: (slots: Slots) => vo
   }, initialState);
 }
 
-export function useDeckEdits(id: number | undefined, initialize?: boolean): EditDeckState | undefined {
+export function useSimpleDeckEdits(id: number | undefined): EditDeckState | undefined {
+  const selector = useCallback((state: AppState) => id !== undefined ? getDeckEdits(state, id) : undefined, [id]);
+  return useSelector(selector);
+}
+
+export function useDeckEdits(id: number | undefined, initialize?: boolean): [EditDeckState | undefined, MutableRefObject<EditDeckState | undefined>] {
   const dispatch = useDispatch();
   useEffect(() => {
     if (initialize && id !== undefined) {
@@ -354,9 +359,14 @@ export function useDeckEdits(id: number | undefined, initialize?: boolean): Edit
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const selector = useCallback((state: AppState) => id !== undefined ? getDeckEdits(state, id) : undefined, [id]);
-  const deckEdits = useSelector(selector);
-  return deckEdits;
+  const deckEdits = useSimpleDeckEdits(id);
+  const deckEditsRef = useRef<EditDeckState>();
+  useEffect(() => {
+    if (deckEdits) {
+      deckEditsRef.current = deckEdits;
+    }
+  }, [deckEdits]);
+  return [deckEdits, deckEditsRef];
 }
 
 export interface EditSlotsActions {

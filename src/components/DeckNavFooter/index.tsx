@@ -15,7 +15,7 @@ import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeck, useDeckEdits, usePlayerCards } from '@components/core/hooks';
+import { useDeck, usePlayerCards, useSimpleDeckEdits } from '@components/core/hooks';
 import { parseDeck } from '@lib/parseDeck';
 
 const SHOW_CHARTS_BUTTON = true;
@@ -33,7 +33,7 @@ export default function DeckNavFooter({
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const [deck, previousDeck] = useDeck(deckId, {});
-  const deckEdits = useDeckEdits(deckId);
+  const deckEdits = useSimpleDeckEdits(deckId);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const cards = usePlayerCards(tabooSetId);
   const parsedDeck = useMemo(() => {
@@ -66,7 +66,7 @@ export default function DeckNavFooter({
   }, [parsedDeck?.problem]);
 
   const xpString = useMemo(() => {
-    if (!parsedDeck || !deckEdits) {
+    if (!parsedDeck || deckEdits?.xpAdjustment === undefined) {
       return '';
     }
     const experience = parsedDeck.experience;
@@ -77,7 +77,7 @@ export default function DeckNavFooter({
     }
     const adjustedExperience = (xp || 0) + (deckEdits.xpAdjustment || 0);
     return t`XP: ${changes.spentXp} of ${adjustedExperience}`;
-  }, [deckEdits, parsedDeck]);
+  }, [deckEdits?.xpAdjustment, parsedDeck]);
   if (!parsedDeck) {
     return null;
   }

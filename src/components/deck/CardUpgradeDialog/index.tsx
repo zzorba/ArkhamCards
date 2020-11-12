@@ -17,14 +17,12 @@ import COLORS from '@styles/colors';
 import { NavigationProps } from '@components/nav/types';
 import space, { m, s, xs } from '@styles/space';
 import DeckNavFooter from '../../DeckNavFooter';
-import { parseDeck } from '@lib/parseDeck';
 import { getPacksInCollection } from '@reducers';
 import StyleContext from '@styles/StyleContext';
 import { PARALLEL_SKIDS_CODE, SHREWD_ANALYSIS_CODE, UNIDENTIFIED_UNTRANSLATED } from '@app_constants';
 import ArkhamButton from '@components/core/ArkhamButton';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import { useDeck, useDeckEdits, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
-import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
+import { useDeck, useSimpleDeckEdits, useNavigationButtonPressed, usePlayerCards } from '@components/core/hooks';
 
 export interface CardUpgradeDialogProps {
   componentId: string;
@@ -42,18 +40,14 @@ export default function CardUpgradeDialog({
   id,
 }: Props) {
   const cards = usePlayerCards();
-  const [deck, previousDeck] = useDeck(id, {});
-  const deckEdits = useDeckEdits(id);
+  const [deck] = useDeck(id, {});
+  const deckEdits = useSimpleDeckEdits(id);
   const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
   const dispatch = useDispatch();
   const { backgroundStyle, borderStyle, typography } = useContext(StyleContext);
   const inCollection = useSelector(getPacksInCollection);
   const [showNonCollection, setShowNonCollection] = useState(false);
   const [shrewdAnalysisResult, setShrewdAnalysisResult] = useState<string[]>([]);
-
-  const parsedDeck = useMemo(() => {
-    return cards && deck && deckEdits && parseDeck(deck, deckEdits.meta, deckEdits.slots, deckEdits.ignoreDeckLimitSlots, cards, previousDeck);
-  }, [cards, deck, previousDeck, deckEdits]);
 
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'back') {
