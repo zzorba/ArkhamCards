@@ -97,7 +97,7 @@
     "typeorm": "0.2.25",
     "url": "0.11.0",
     "utility-types": "3.10.0",
-    "victory-native": "35.3.0",
+    "victory-native": "35.3.1",
     "yarn": "1.22.0"
   },
   "devDependencies": {
