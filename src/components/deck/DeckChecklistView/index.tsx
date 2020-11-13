@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Options } from 'react-native-navigation';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { find } from 'lodash';
 import { t } from 'ttag';
 
 import { iconsMap } from '@app/NavIcons';
@@ -30,15 +31,14 @@ type Props = DeckChecklistProps & NavigationProps;
 function ChecklistCard({
   id,
   card,
-  checklist,
   pressCard,
 }: {
   id: number,
   card: Card;
-  checklist: Set<string>
   pressCard: (card: Card) => void;
 }) {
   const deckEdits = useSimpleDeckEdits(id);
+  const checklist = useSelector((state: AppState) => getDeckChecklist(state, id));
   const dispatch = useDispatch();
   const toggleValue = useCallback((value: boolean) => {
     dispatch(setDeckChecklistCard(id, card.code, value));
@@ -51,7 +51,7 @@ function ChecklistCard({
       control={{
         type: 'count_with_toggle',
         count: deckEdits?.slots[card.code] || 0,
-        value: checklist.has(card.code),
+        value: !!find(checklist, c => c === card.code),
         toggleValue,
       }}
     />
@@ -64,9 +64,9 @@ function DeckChecklistView({
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
-  const checklist = useSelector((state: AppState) => getDeckChecklist(state, id));
   const dispatch = useDispatch();
   const [sort, setSort] = useState<SortType>(SORT_BY_TYPE);
+  const checklist = useSelector((state: AppState) => getDeckChecklist(state, id));
   useNavigationButtonPressed(({ buttonId }) => {
     if (buttonId === 'sort') {
       showSortDialog(
@@ -97,11 +97,10 @@ function DeckChecklistView({
         key={card.code}
         id={id}
         card={card}
-        checklist={checklist}
         pressCard={pressCard}
       />
     );
-  }, [checklist, id, pressCard]);
+  }, [id, pressCard]);
 
   const clearChecklist = useCallback(() => {
     dispatch(resetDeckChecklist(id));
@@ -110,8 +109,8 @@ function DeckChecklistView({
   const header = useMemo(() => {
     return (
       <View style={[space.paddingM, space.marginRightXs, styles.headerRow]}>
-        <TouchableOpacity onPress={clearChecklist} disabled={!checklist.size}>
-          <Text style={[typography.text, checklist.size ? typography.light : { color: colors.L10 }]}>
+        <TouchableOpacity onPress={clearChecklist} disabled={!checklist.length}>
+          <Text style={[typography.text, checklist.length ? typography.light : { color: colors.L10 }]}>
             { t`Clear` }
           </Text>
         </TouchableOpacity>
@@ -131,6 +130,7 @@ function DeckChecklistView({
       header={header}
       renderCard={renderCard}
       noSearch
+      currentDeckOnly
     />
   );
 }

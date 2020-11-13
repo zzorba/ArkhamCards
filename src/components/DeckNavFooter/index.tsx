@@ -15,8 +15,7 @@ import { showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import { FOOTER_HEIGHT } from './constants';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { useDeck, usePlayerCards, useSimpleDeckEdits } from '@components/core/hooks';
-import { parseDeck } from '@lib/parseDeck';
+import { useParsedDeck } from '@components/core/hooks';
 
 const SHOW_CHARTS_BUTTON = true;
 
@@ -32,13 +31,7 @@ export default function DeckNavFooter({
   controls,
 }: Props) {
   const { colors, typography } = useContext(StyleContext);
-  const [deck, previousDeck] = useDeck(deckId, {});
-  const deckEdits = useSimpleDeckEdits(deckId);
-  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
-  const cards = usePlayerCards(tabooSetId);
-  const parsedDeck = useMemo(() => {
-    return cards && deck && deckEdits && parseDeck(deck, deckEdits.meta, deckEdits.slots, deckEdits.ignoreDeckLimitSlots, cards, previousDeck);
-  }, [cards, deck, previousDeck, deckEdits]);
+  const { parsedDeck, deckEdits } = useParsedDeck(deckId, componentId);
 
   const showCardChartsPressed = useCallback(() => {
     if (parsedDeck) {

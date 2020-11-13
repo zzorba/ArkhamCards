@@ -36,7 +36,8 @@ function getDate(date: string | Date) {
   return date;
 }
 
-export default function CampaignInvestigatorsComponent({ componentId, campaignData, processedCampaign, updateCampaign, deleteCampaign, showTraumaDialog }: Props) {
+export default function CampaignInvestigatorsComponent(props: Props) {
+  const { componentId, campaignData, processedCampaign, updateCampaign, deleteCampaign, showTraumaDialog } = props;
   const { campaignState, latestDecks, campaignInvestigators, campaignId, playerCards } = useContext(CampaignGuideContext);
   const { borderStyle, typography } = useContext(StyleContext);
 
@@ -45,7 +46,7 @@ export default function CampaignInvestigatorsComponent({ componentId, campaignDa
   const [xpDirty, setXpDirty] = useState(false);
   useEffectUpdate(() => {
     setXpDirty(true);
-  }, [spentXp]);
+  }, [spentXp, campaignState]);
   const appState = useAppState();
   const syncCampaignData = useCallback(() => {
     const {
@@ -107,7 +108,7 @@ export default function CampaignInvestigatorsComponent({ componentId, campaignDa
     if (xpDirty) {
       syncCampaignData();
     }
-  }, componentId, [xpDirty, syncCampaignData]);
+  }, componentId, [syncCampaignData]);
 
   const addInvestigatorPressed = useCallback(() => {
     campaignState.showChooseDeck();

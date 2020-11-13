@@ -8,7 +8,7 @@ import { NavigationProps } from '@components/nav/types';
 import { ChaosBag } from '@app_constants';
 import COLORS from '@styles/colors';
 import { EditChaosBagProps } from './EditChaosBagDialog';
-import { AppState, getCampaign } from '@reducers';
+import { AppState, getCampaignChaosBag } from '@reducers';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 
 export interface CampaignChaosBagProps {
@@ -19,11 +19,7 @@ export interface CampaignChaosBagProps {
 type Props = NavigationProps & CampaignChaosBagProps;
 
 function CampaignChaosBagView({ componentId, campaignId, updateChaosBag }: Props) {
-  const chaosBagSelector = useCallback((state: AppState) => {
-    const campaign = getCampaign(state, campaignId);
-    return (campaign && campaign.chaosBag) || {};
-  }, [campaignId]);
-  const chaosBag = useSelector(chaosBagSelector);
+  const chaosBag = useSelector((state: AppState) => getCampaignChaosBag(state, campaignId));
 
   const showChaosBagDialog = useCallback(() => {
     if (!updateChaosBag) {

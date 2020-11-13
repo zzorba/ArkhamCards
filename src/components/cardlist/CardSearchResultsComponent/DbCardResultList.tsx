@@ -49,6 +49,7 @@ import LoadingCardSearchResult from '../LoadingCardSearchResult';
 interface Props {
   componentId: string;
   deckId?: number;
+  currentDeckOnly?: boolean;
   query?: Brackets;
   filterQuery?: Brackets;
   textQuery?: Brackets;
@@ -194,7 +195,7 @@ function useDeckQuery(deckCardCounts?: Slots, originalDeckSlots?: Slots): [Brack
 
   const hasDeckChanges = (updateCounter > refreshCounter);
   const deckCodes = useMemo(() => {
-    if (!originalDeckSlots || !deckCardCounts) {
+    if (!originalDeckSlots && !deckCardCounts) {
       return [];
     }
     return filter(
@@ -586,6 +587,7 @@ function itemHeight(item: Item, fontScale: number): number {
 export default function({
   componentId,
   deckId,
+  currentDeckOnly,
   query,
   filterQuery,
   textQuery,
@@ -628,7 +630,7 @@ export default function({
     textQuery,
     showAllNonCollection: showNonCollection,
     deckCardCounts: deckEdits?.slots,
-    originalDeckSlots: deck?.slots,
+    originalDeckSlots: currentDeckOnly ? undefined : deck?.slots,
     storyOnly,
   });
   const dispatch = useDispatch();

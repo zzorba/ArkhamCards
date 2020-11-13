@@ -58,7 +58,7 @@ import { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useDeck, useDeckEdits, useFlag, useInvestigatorCards, useNavigationButtonPressed, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
+import { useComponentVisible, useDeck, useDeckEdits, useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 
@@ -100,8 +100,16 @@ function DeckDetailView({
   const { width } = useWindowDimensions();
 
   const singleCardView = useSelector((state: AppState) => state.settings.singleCardView || false);
-  const [deck, previousDeck] = useDeck(id, { fetchIfMissing: true });
-  const deckTabooSetId = ((deck && deck.taboo_id) || 0);
+  const {
+    deck,
+    cards,
+    previousDeck,
+    deckEdits,
+    deckEditsRef,
+    visible,
+    parsedDeck,
+    tabooSetId,
+  } = useParsedDeck(id, componentId, true);
 
   const [copying, toggleCopying] = useFlag(false);
   const [saving, setSaving] = useState(false);
@@ -112,14 +120,7 @@ function DeckDetailView({
   const [tabooOpen, setTabooOpen] = useState(false);
   const [editDetailsOpen, toggleEditDetailsOpen, setEditDetailsOpen] = useFlag(false);
 
-  // All the flags for the current state
-  const [deckEdits, deckEditsRef] = useDeckEdits(id, true);
-
-  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : deckTabooSetId;
   const tabooSet = useTabooSet(tabooSetId);
-  const visible = useComponentVisible(componentId);
-
-  const cards = usePlayerCards(tabooSetId);
   const investigators = useInvestigatorCards(tabooSetId);
 
   const parallelInvestigators = useMemo(() => {
@@ -135,6 +136,7 @@ function DeckDetailView({
     });
     return parallelInvestigators;
   }, [investigators, deck?.investigator_code]);
+
   const slotDeltas = useMemo(() => {
     const result: {
       removals: Slots;
@@ -166,13 +168,6 @@ function DeckDetailView({
     });
     return result;
   }, [deck, deckEdits]);
-
-  const parsedDeck = useMemo(() => {
-    if (!deck || !cards || !deckEdits) {
-      return undefined;
-    }
-    return parseDeck(deck, deckEdits.meta, deckEdits.slots, deckEdits.ignoreDeckLimitSlots, cards, previousDeck);
-  }, [deck, deckEdits, cards, previousDeck]);
 
   const [investigatorFront, investigatorBack] = useMemo(() => {
     const altFront = deckEdits?.meta.alternate_front && find(
@@ -1097,6 +1092,7 @@ function DeckDetailView({
           <View style={[styles.container, backgroundStyle] }>
             <DeckViewTab
               componentId={componentId}
+              visible={visible}
               inCollection={inCollection}
               parallelInvestigators={parallelInvestigators}
               investigatorFront={investigatorFront}

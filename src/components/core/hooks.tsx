@@ -558,33 +558,48 @@ export function useDeck(id: number | undefined, { fetchIfMissing }: { fetchIfMis
   return [theDeck, thePreviousDeck];
 }
 
-export function useParsedDeck(
-  deck: Deck,
-  {
-    previousDeck,
-    meta,
-    slots,
-    ignoreDeckLimitSlots,
-    xpAdjustment,
-  }: {
-    previousDeck?: Deck;
-    meta?: DeckMeta;
-    slots?: Slots;
-    ignoreDeckLimitSlots?: Slots;
-    xpAdjustment?: number;
-  }
-): ParsedDeck | undefined {
-  const cards = usePlayerCards(deck.taboo_id || 0);
-  const parsedDeck = useMemo(() => cards && parseDeck(
+interface ParsedDeckResults {
+  deck?: Deck;
+  cards?: CardsMap;
+  previousDeck?: Deck;
+  deckEdits?: EditDeckState;
+  tabooSetId: number;
+  deckEditsRef: MutableRefObject<EditDeckState | undefined>;
+  visible: boolean;
+  parsedDeck?: ParsedDeck;
+}
+export function useParsedDeck(id: number, componentId: string, fetchIfMissing?: boolean): ParsedDeckResults {
+  const [deck, previousDeck] = useDeck(id, { fetchIfMissing });
+  const [deckEdits, deckEditsRef] = useDeckEdits(id, fetchIfMissing);
+  const tabooSetId = deckEdits?.tabooSetChange !== undefined ? deckEdits.tabooSetChange : (deck?.taboo_id || 0);
+  const cards = usePlayerCards(tabooSetId);
+  const [parsedDeck, setParsedDeck] = useState<ParsedDeck | undefined>();
+  const visible = useComponentVisible(componentId);
+  useEffect(() => {
+    if (cards && visible && deckEdits && deck) {
+      setParsedDeck(
+        parseDeck(
+          deck,
+          deckEdits.meta,
+          deckEdits.slots,
+          deckEdits.ignoreDeckLimitSlots,
+          cards,
+          previousDeck,
+          deckEdits.xpAdjustment
+        )
+      );
+    }
+  }, [cards, deck, deckEdits, visible, previousDeck]);
+  return {
     deck,
-    meta || deck.meta || {},
-    slots || deck.slots,
-    ignoreDeckLimitSlots || deck.ignoreDeckLimitSlots,
     cards,
     previousDeck,
-    xpAdjustment !== undefined ? xpAdjustment : deck.xp_adjustment,
-  ), [cards, deck, meta, slots, ignoreDeckLimitSlots, previousDeck, xpAdjustment]);
-  return parsedDeck;
+    tabooSetId,
+    deckEdits,
+    deckEditsRef,
+    visible,
+    parsedDeck,
+  };
 }
 
 export function useEffectUpdate(update: () => void, deps: any[]) {

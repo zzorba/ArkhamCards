@@ -14,12 +14,11 @@ import {
   InvestigatorData,
 } from '@actions/types';
 import Card from '@data/Card';
-import { useCallback, useContext, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import useChooseDeck from './useChooseDeck';
 import { forEach } from 'lodash';
 import { useInvestigatorCards, usePlayerCards } from '@components/core/hooks';
 import CampaignStateHelper from '@data/scenario/CampaignStateHelper';
-import StyleContext from '@styles/StyleContext';
 import { CampaignGuideContextType } from './CampaignGuideContext';
 
 const EMPTY_INVESTIGATOR_DATA: InvestigatorData = {};

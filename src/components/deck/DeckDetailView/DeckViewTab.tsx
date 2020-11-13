@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useContext, useMemo, useState } from 'react';
+import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import {
   SectionList,
@@ -44,10 +44,9 @@ import COLORS from '@styles/colors';
 import { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
-import { useDeck, useDeckEdits } from '@components/core/hooks';
+import { useDeckEdits } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
 import { setDeckTabooSet, updateDeckMeta } from './actions';
-import CardUpgradeButton from '@components/cardlist/CardSearchResult/ControlComponent/CardUpgradeButton';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -227,6 +226,7 @@ interface Props {
   bondedCardsByName: {
     [name: string]: Card[];
   };
+  visible: boolean;
   editable: boolean;
   isPrivate: boolean;
   buttons?: ReactNode;
@@ -256,42 +256,44 @@ function keyForCard(item: SectionCardId) {
   return item.id;
 }
 
-export default function DeckViewTab({
-  componentId,
-  tabooSetId,
-  cards,
-  investigatorFront,
-  investigatorBack,
-  deck,
-  parallelInvestigators,
-  parsedDeck,
-  singleCardView,
-  showEditCards,
-  showEditSpecial,
-  cardsByName,
-  bondedCardsByName,
-  inCollection,
-  editable,
-  showCardUpgradeDialog,
-  problem,
-  showEditNameDialog,
-  tabooSet,
-  showTaboo,
-  tabooOpen,
-  buttons,
-  isPrivate,
-  campaign,
-  hideCampaign,
-  showTraumaDialog,
-  showDeckUpgrade,
-  showDeckHistory,
-  investigatorDataUpdates,
-}: Props) {
+export default function DeckViewTab(props: Props) {
+  const {
+    componentId,
+    tabooSetId,
+    cards,
+    investigatorFront,
+    investigatorBack,
+    deck,
+    parallelInvestigators,
+    parsedDeck,
+    singleCardView,
+    showEditCards,
+    showEditSpecial,
+    cardsByName,
+    bondedCardsByName,
+    inCollection,
+    editable,
+    showCardUpgradeDialog,
+    problem,
+    showEditNameDialog,
+    visible,
+    tabooSet,
+    showTaboo,
+    tabooOpen,
+    buttons,
+    isPrivate,
+    campaign,
+    hideCampaign,
+    showTraumaDialog,
+    showDeckUpgrade,
+    showDeckHistory,
+    investigatorDataUpdates,
+  } = props;
   const { colors, typography } = useContext(StyleContext);
   const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
   const [limitedSlots, setLimitedSlots] = useState(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
-
+  const [data, setData] = useState<CardSection[]>([]);
   const showInvestigator = useCallback(() => {
     if (investigatorFront) {
       showCard(
@@ -305,15 +307,15 @@ export default function DeckViewTab({
     }
   }, [componentId, tabooSetId, investigatorFront, colors]);
 
-  const data = useMemo((): CardSection[] => {
-    if (!investigatorBack) {
-      return [];
+  useEffect(() => {
+    if (!investigatorBack || !visible) {
+      return;
     }
     const normalCards = parsedDeck.normalCards;
     const specialCards = parsedDeck.specialCards;
     const slots = parsedDeck.slots;
-    const validation = new DeckValidation(investigatorBack, slots, deckEditsRef.current?.meta);
-    return [
+    const validation = new DeckValidation(investigatorBack, slots, deckEdits?.meta);
+    setData([
       {
         id: 'cards',
         superTitle: t`Deck Cards`,
@@ -344,22 +346,9 @@ export default function DeckViewTab({
         limitedSlots
       ),
       ...(limitedSlots ? [] : bondedSections(slots, cards, bondedCardsByName)),
-    ];
-  }, [
-    investigatorBack,
-    limitedSlots,
-    parsedDeck.normalCards,
-    parsedDeck.specialCards,
-    parsedDeck.slots,
-    deckEditsRef,
-    cards,
-    showEditCards,
-    showEditSpecial,
-    cardsByName,
-    bondedCardsByName,
-    inCollection,
-    editable,
-  ]);
+    ]);
+  }, [investigatorBack, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
+    showEditCards, showEditSpecial, setData, cardsByName, bondedCardsByName, inCollection, editable, visible]);
 
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
@@ -416,12 +405,12 @@ export default function DeckViewTab({
 
   const renderCard = useCallback(({ item, index, section }: SectionListRenderItemInfo<SectionCardId>) => {
     const card = cards[item.id];
-    if (!card || !deckEditsRef.current) {
+    if (!card) {
       return null;
     }
-    const count = (item.special && deckEditsRef.current.ignoreDeckLimitSlots[item.id] > 0) ?
-      deckEditsRef.current.ignoreDeckLimitSlots[item.id] :
-      (item.quantity - (deckEditsRef.current.ignoreDeckLimitSlots[item.id] || 0));
+    const count = (item.special && (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0) > 0) ?
+      deckEditsRef.current?.ignoreDeckLimitSlots[item.id] :
+      (item.quantity - (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0));
     const id = `${section.id}.${index}`;
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
     return (
@@ -431,11 +420,11 @@ export default function DeckViewTab({
         id={id}
         invalid={item.invalid}
         onPressId={showSwipeCard}
-        control={{
+        control={count !== undefined ? {
           type: 'upgrade',
           count,
           onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-        }}
+        } : undefined}
       />
     );
   }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
@@ -619,6 +608,9 @@ export default function DeckViewTab({
       </View>
     );
   }, [problemHeader, investigatorBlock, investigatorOptions, buttons]);
+  if (!deckEdits) {
+    return null;
+  }
 
   return (
     <SectionList
