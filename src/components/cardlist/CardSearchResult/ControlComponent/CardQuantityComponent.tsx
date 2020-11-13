@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef } from 'react';
+import React, { useCallback, useContext, useRef, useState } from 'react';
 import { range } from 'lodash';
 import {
   Animated,
@@ -14,7 +14,7 @@ import CountButton from '../CountButton';
 import { rowHeight, buttonWidth, BUTTON_PADDING, toggleButtonMode } from '../constants';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { EditSlotsActions, useEffectUpdate, useFlag } from '@components/core/hooks';
+import { EditSlotsActions, useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
 
 interface Props {
   code: string;
@@ -24,25 +24,29 @@ interface Props {
   showZeroCount?: boolean;
   forceBig?: boolean;
 }
-function TinyCardQuantityComponent({ code, count, countChanged: { setSlot }, limit }: Props) {
+function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Props) {
   const { borderStyle, fontScale } = useContext(StyleContext);
   const [open, toggleOpen, setOpen] = useFlag(false);
   const slideAnim = useRef(new Animated.Value(0));
+  const [count, setCount] = useState(propsCount);
 
   useEffectUpdate(() => {
-    slideAnim.current.stopAnimation(() => {
-      Animated.timing(slideAnim.current, {
-        toValue: open ? 0 : 1,
-        duration: 150,
-        useNativeDriver: true,
-      }).start();
-    });
+    setCount(propsCount);
+  }, [propsCount]);
+
+  useEffectUpdate(() => {
+    Animated.timing(slideAnim.current, {
+      toValue: open ? 1 : 0,
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
   }, [open]);
 
   const selectCount = useCallback((count: number) => {
-    setSlot(code, count);
+    setCount(count);
     setOpen(false);
-  }, [code, setOpen, setSlot]);
+    setTimeout(() => setSlot(code, count), 100);
+  }, [setOpen, setCount, code, setSlot]);
 
   const drawerWidth = BUTTON_PADDING + (buttonWidth(fontScale) + BUTTON_PADDING) * (limit + 1);
   const translateX = slideAnim.current.interpolate({
@@ -94,14 +98,21 @@ function TinyCardQuantityComponent({ code, count, countChanged: { setSlot }, lim
   );
 }
 
-function NormalCardQuantityComponent({ code, count, countChanged: { incSlot, decSlot }, limit, showZeroCount, forceBig }: Props) {
+function NormalCardQuantityComponent({ code, count: propsCount, countChanged: { incSlot, decSlot }, limit, showZeroCount, forceBig }: Props) {
   const { fontScale, typography } = useContext(StyleContext);
+  const [count, incCount, decCount, setCount] = useCounter(propsCount, { min: 0, max: limit });
+  useEffectUpdate(() => {
+    setCount(propsCount);
+  }, [propsCount]);
+
   const inc = useCallback(() => {
-    incSlot(code);
-  }, [incSlot, code]);
+    incCount();
+    setTimeout(() => incSlot(code), 100);
+  }, [incCount, incSlot, code]);
   const dec = useCallback(() => {
-    decSlot(code);
-  }, [decSlot, code]);
+    decCount();
+    setTimeout(() => decSlot(code), 100);
+  }, [decCount, decSlot, code]);
 
   return (
     <View style={[styles.row, { height: rowHeight(fontScale) }]}>

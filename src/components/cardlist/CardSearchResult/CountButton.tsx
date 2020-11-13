@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import {
   Animated,
   Text,
@@ -9,6 +9,7 @@ import {
 
 import { rowHeight, buttonWidth, BUTTON_PADDING } from './constants';
 import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import { useEffectUpdate } from '@components/core/hooks';
 
 const DEPRESS_HEIGHT = 6;
 
@@ -19,105 +20,59 @@ interface Props {
   onPress: (count: number) => void;
 }
 
-interface State {
-  anim: Animated.Value;
-}
-
-export default class CountButton extends React.PureComponent<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      anim: new Animated.Value(props.selected ? 1.0 : 0.0),
-    };
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const {
-      selected,
-    } = this.props;
-    const {
-      anim,
-    } = this.state;
-    if (selected !== prevProps.selected) {
-      if (selected) {
-        anim.stopAnimation(() => {
-          Animated.timing(anim, {
-            toValue: 1,
-            duration: 250,
-            useNativeDriver: true,
-          }).start();
-        });
-      } else {
-        anim.stopAnimation(() => {
-          Animated.timing(anim, {
-            toValue: 0,
-            duration: 100,
-            useNativeDriver: true,
-          }).start();
-        });
-      }
-    }
-  }
-
-  _onPress = () => {
-    const {
-      count,
-      onPress,
-    } = this.props;
-    onPress(count);
-  }
-
-  render() {
-    const {
-      text,
-      selected,
-    } = this.props;
-    const {
-      anim,
-    } = this.state;
-    const { fontScale, typography } = this.context;
-    const translateY = anim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, DEPRESS_HEIGHT],
-      extrapolate: 'clamp',
+export default function CountButton({ count, text, selected, onPress }: Props) {
+  const { fontScale, typography } = useContext(StyleContext);
+  const anim = useRef(new Animated.Value(selected ? 1.0 : 0.0));
+  useEffectUpdate(() => {
+    anim.current.stopAnimation(() => {
+      Animated.timing(anim.current, {
+        toValue: selected ? 1 : 0,
+        duration: selected ? 250 : 100,
+        useNativeDriver: true,
+      }).start();
     });
-    return (
-      <TouchableWithoutFeedback onPress={this._onPress} delayPressIn={0}>
-        <View style={[
-          styles.container,
+  }, [selected]);
+
+  const handlePress = useCallback(() => {
+    onPress(count);
+  }, [onPress, count]);
+  const translateY = anim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, DEPRESS_HEIGHT],
+    extrapolate: 'clamp',
+  });
+  return (
+    <TouchableWithoutFeedback onPress={handlePress} delayPressIn={0}>
+      <View style={[
+        styles.container,
+        {
+          height: rowHeight(fontScale),
+          width: buttonWidth(fontScale),
+        },
+      ]}>
+        <View style={[styles.shadow, {
+          height: rowHeight(fontScale) / 2,
+          width: buttonWidth(fontScale),
+        }]} />
+        <Animated.View style={[
+          styles.button,
           {
-            height: rowHeight(fontScale),
+            height: rowHeight(fontScale) - DEPRESS_HEIGHT - 2 - 8,
             width: buttonWidth(fontScale),
+            borderColor: selected ? '#1b526f' : '#5191b2',
+            backgroundColor: selected ? '#22678b' : '#59a9d2',
+            transform: [{ translateY: translateY }],
           },
         ]}>
-          <View style={[styles.shadow, {
-            height: rowHeight(fontScale) / 2,
-            width: buttonWidth(fontScale),
-          }]} />
-          <Animated.View style={[
-            styles.button,
-            {
-              height: rowHeight(fontScale) - DEPRESS_HEIGHT - 2 - 8,
-              width: buttonWidth(fontScale),
-              borderColor: selected ? '#1b526f' : '#5191b2',
-              backgroundColor: selected ? '#22678b' : '#59a9d2',
-              transform: [{ translateY: translateY }],
-            },
-          ]}>
-            { !!text && (
-              <Text style={[typography.text, styles.buttonText]}>
-                { text }
-              </Text>
-            ) }
-          </Animated.View>
-        </View>
-      </TouchableWithoutFeedback>
-    );
-  }
+          { !!text && (
+            <Text style={[typography.text, styles.buttonText]}>
+              { text }
+            </Text>
+          ) }
+        </Animated.View>
+      </View>
+    </TouchableWithoutFeedback>
+  );
 }
 
 const styles = StyleSheet.create({

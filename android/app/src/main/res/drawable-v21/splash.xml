@@ -1,0 +1,25 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/primaryColor"/>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle" >
+            <gradient
+                android:type="radial"
+                android:angle="360"
+                android:centerX="50%"
+                android:centerY="50%"
+                android:gradientRadius="63%p"
+                android:endColor="#24303C"
+                android:centerColor="#513661"
+                android:startColor="#7C3C85"
+                >
+            </gradient>
+        </shape>
+    </item>
+    <item>
+
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/ic_launcher_foreground"/>
+    </item>
+</layer-list>
