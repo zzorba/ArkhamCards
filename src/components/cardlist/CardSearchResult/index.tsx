@@ -26,6 +26,7 @@ interface Props {
   backgroundColor?: string;
   invalid?: boolean;
   control?: ControlType;
+  noBorder?: boolean;
 }
 
 function SkillIcons({ skill, count }: { skill: SkillCodeType; count: number }) {
@@ -135,6 +136,7 @@ export default function CardSearchResult(props: Props) {
     onPressId,
     backgroundColor,
     invalid,
+    noBorder,
   } = props;
   const { borderStyle, colors, fontScale, typography } = useContext(StyleContext);
   const handleCardPress = useCallback(() => {
@@ -247,7 +249,7 @@ export default function CardSearchResult(props: Props) {
     return (
       <View style={[
         styles.rowContainer,
-        styles.rowBorder,
+        noBorder ? {} : styles.rowBorder,
         borderStyle,
         {
           height: rowHeight(fontScale),
@@ -269,7 +271,7 @@ export default function CardSearchResult(props: Props) {
     return (
       <View style={[
         styles.rowContainer,
-        styles.rowBorder,
+        noBorder ? {} : styles.rowBorder,
         borderStyle,
         {
           height: rowHeight(fontScale),
@@ -285,7 +287,7 @@ export default function CardSearchResult(props: Props) {
   return (
     <View style={[
       styles.rowContainer,
-      styles.rowBorder,
+      noBorder ? {} : styles.rowBorder,
       borderStyle,
       {
         height: rowHeight(fontScale),

@@ -39,7 +39,6 @@ import { Slots, START_DECK_EDIT, UPDATE_DECK_EDIT } from '@actions/types';
 import { updateCampaign } from '@components/campaign/actions';
 import { DeckChecklistProps } from '@components/deck/DeckChecklistView';
 import Card from '@data/Card';
-import { parseDeck } from '@lib/parseDeck';
 import { EditDeckProps } from '../DeckEditView';
 import { CardUpgradeDialogProps } from '../CardUpgradeDialog';
 import { UpgradeDeckProps } from '../DeckUpgradeDialog';
@@ -58,7 +57,7 @@ import { m } from '@styles/space';
 import COLORS from '@styles/colors';
 import { getDeckOptions, showCardCharts, showDrawSimulator } from '@components/nav/helper';
 import StyleContext from '@styles/StyleContext';
-import { useComponentVisible, useDeck, useDeckEdits, useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, usePlayerCards, useSlots, useTabooSet } from '@components/core/hooks';
+import { useFlag, useInvestigatorCards, useNavigationButtonPressed, useParsedDeck, useTabooSet } from '@components/core/hooks';
 import { ThunkDispatch } from 'redux-thunk';
 import { NavigationProps } from '@components/nav/types';
 

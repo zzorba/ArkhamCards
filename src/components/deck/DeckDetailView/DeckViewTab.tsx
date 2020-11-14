@@ -41,12 +41,15 @@ import DeckValidation from '@lib/DeckValidation';
 import Card, { CardsMap } from '@data/Card';
 import TabooSet from '@data/TabooSet';
 import COLORS from '@styles/colors';
-import { isBig, m, s, xs } from '@styles/space';
+import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDeckEdits } from '@components/core/hooks';
 import { useDispatch } from 'react-redux';
 import { setDeckTabooSet, updateDeckMeta } from './actions';
+import DeckSlotHeader from './DeckSlotHeader';
+import DeckBubbleHeader from './DeckBubbleHeader';
+import DeckSectionHeader from './DeckSectionHeader';
 
 interface SectionCardId extends CardId {
   special: boolean;
@@ -56,6 +59,8 @@ interface SectionCardId extends CardId {
 interface CardSection extends CardSectionHeaderData {
   id: string;
   data: SectionCardId[];
+  first?: boolean;
+  last?: boolean;
 }
 
 function hasUpgrades(
@@ -103,9 +108,10 @@ function deckToSections(
       subAssets => sum(subAssets.data.map(c => c.quantity))
     );
     if (assetCount > 0) {
+      const assets = t`Assets`;
       result.push({
         id: `assets${special ? '-special' : ''}`,
-        subTitle: t`Assets (${assetCount})`,
+        subTitle: `— ${assets} · ${assetCount} —`,
         data: [],
       });
     }
@@ -143,7 +149,7 @@ function deckToSections(
       const count = sumBy(cardIds, c => c.quantity);
       result.push({
         id: `${localizedName}-${special ? '-special' : ''}`,
-        subTitle: `${localizedName} (${count})`,
+        subTitle: `— ${localizedName} · ${count} —`,
         data: map(cardIds, c => {
           return {
             ...c,
@@ -166,6 +172,10 @@ function deckToSections(
       placeholder: true,
       data: [],
     });
+  }
+  if (result.length) {
+    result[0].first = true;
+    result[result.length - 1].last = true;
   }
   return result;
 }
@@ -349,7 +359,7 @@ export default function DeckViewTab(props: Props) {
     ]);
   }, [investigatorBack, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
     showEditCards, showEditSpecial, setData, cardsByName, bondedCardsByName, inCollection, editable, visible]);
-
+  const faction = parsedDeck.investigator.factionCode();
   const showSwipeCard = useCallback((id: string, card: Card) => {
     if (singleCardView) {
       showCard(
@@ -390,14 +400,43 @@ export default function DeckViewTab(props: Props) {
   }, [componentId, data, colors, investigatorFront, tabooSetId, deck.id, singleCardView, cards]);
 
   const renderSectionHeader = useCallback(({ section }: { section: SectionListData<SectionCardId> }) => {
+    const headerSection = section as CardSectionHeaderData;
+    if (headerSection.superTitle) {
+      return (
+        <DeckSectionHeader
+          title={headerSection.superTitle}
+          onPress={headerSection.onPress}
+          faction={faction}
+        />
+      );
+    }
+
+    if (headerSection.title) {
+      return (
+        <View style={[styles.sectionItem, { borderColor: colors.faction[faction].darkBackground }]}>
+          <DeckSlotHeader title={headerSection.title} first={section.first} />
+        </View>
+      );
+    }
+    if (headerSection.subTitle) {
+      return (
+        <View style={[styles.sectionItem, { borderColor: colors.faction[faction].darkBackground }]}>
+          <DeckBubbleHeader title={headerSection.subTitle} />
+        </View>
+      );
+    }
+    return null;
+  }, [faction, colors.faction]);
+  const renderSectionFooter = useCallback(({ section }: { section: SectionListData<SectionCardId> }) => {
+    if (!section.last) {
+      return null;
+    }
     return (
-      <CardSectionHeader
-        key={section.id}
-        section={section as CardSectionHeaderData}
-        investigator={parsedDeck.investigator}
-      />
+      <View style={[styles.sectionFooter, {
+        borderColor: colors.faction[faction].darkBackground,
+      }]} />
     );
-  }, [parsedDeck.investigator]);
+  }, [faction, colors]);
 
   const showDeckUpgrades = useMemo(() => {
     return !!(deck.previous_deck && !deck.next_deck);
@@ -414,20 +453,23 @@ export default function DeckViewTab(props: Props) {
     const id = `${section.id}.${index}`;
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
     return (
-      <CardSearchResult
-        key={id}
-        card={card}
-        id={id}
-        invalid={item.invalid}
-        onPressId={showSwipeCard}
-        control={count !== undefined ? {
-          type: 'upgrade',
-          count,
-          onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-        } : undefined}
-      />
+      <View style={[styles.sectionItem, { borderColor: colors.faction[faction].darkBackground }]}>
+        <CardSearchResult
+          key={id}
+          card={card}
+          id={id}
+          invalid={item.invalid}
+          onPressId={showSwipeCard}
+          control={count !== undefined ? {
+            type: 'upgrade',
+            count,
+            onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+          } : undefined}
+          noBorder={section.last && index === (section.data.length - 1)}
+        />
+      </View>
     );
-  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
+  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards, colors.faction, faction]);
 
   const problemHeader = useMemo(() => {
     if (!problem) {
@@ -613,35 +655,38 @@ export default function DeckViewTab(props: Props) {
   }
 
   return (
-    <SectionList
-      ListHeaderComponent={header}
-      ListFooterComponent={(
-        <DeckProgressComponent
-          componentId={componentId}
-          cards={cards}
-          deck={deck}
-          parsedDeck={parsedDeck}
-          editable={editable}
-          isPrivate={isPrivate}
-          campaign={campaign}
-          hideCampaign={hideCampaign}
-          showTraumaDialog={showTraumaDialog}
-          showDeckUpgrade={showDeckUpgrade}
-          showDeckHistory={showDeckHistory}
-          investigatorDataUpdates={investigatorDataUpdates}
-          tabooSetId={tabooSetId}
-          singleCardView={singleCardView}
-        />
-      )}
-      keyboardShouldPersistTaps="always"
-      keyboardDismissMode="on-drag"
-      initialNumToRender={50}
-      renderItem={renderCard}
-      keyExtractor={keyForCard}
-      stickySectionHeadersEnabled={false}
-      renderSectionHeader={renderSectionHeader}
-      sections={data}
-    />
+    <View style={space.marginSideS}>
+      <SectionList
+        ListHeaderComponent={header}
+        ListFooterComponent={(
+          <DeckProgressComponent
+            componentId={componentId}
+            cards={cards}
+            deck={deck}
+            parsedDeck={parsedDeck}
+            editable={editable}
+            isPrivate={isPrivate}
+            campaign={campaign}
+            hideCampaign={hideCampaign}
+            showTraumaDialog={showTraumaDialog}
+            showDeckUpgrade={showDeckUpgrade}
+            showDeckHistory={showDeckHistory}
+            investigatorDataUpdates={investigatorDataUpdates}
+            tabooSetId={tabooSetId}
+            singleCardView={singleCardView}
+          />
+        )}
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag"
+        initialNumToRender={50}
+        renderItem={renderCard}
+        keyExtractor={keyForCard}
+        stickySectionHeadersEnabled={false}
+        renderSectionHeader={renderSectionHeader}
+        renderSectionFooter={renderSectionFooter}
+        sections={data}
+      />
+    </View>
   );
 }
 
@@ -713,5 +758,19 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
+  },
+  sectionFooter: {
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    height: 16,
+  },
+  sectionItem: {
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    paddingLeft: s,
+    paddingRight: s,
   },
 });
