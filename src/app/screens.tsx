@@ -9,7 +9,6 @@ import MyCampaignsView from '@components/campaign/MyCampaignsView';
 import MyDecksView from '@components/decklist/MyDecksView';
 import SettingsView from '@components/settings/SettingsView';
 import BrowseCardsView from '@components/cardlist/BrowseCardsView';
-import TrackPlayer from 'react-native-track-player';
 
 interface ProviderProps<S> {
   store: S;
@@ -122,26 +121,3 @@ export function registerScreens<S>(Provider: React.ComponentType<ProviderProps<S
     }
   });
 }
-
-TrackPlayer.registerPlaybackService(() => async () => {
-  TrackPlayer.addEventListener('remote-play', () => TrackPlayer.play());
-  TrackPlayer.addEventListener('remote-pause', () => TrackPlayer.pause());
-  TrackPlayer.addEventListener('remote-next', () => TrackPlayer.skipToNext());
-  TrackPlayer.addEventListener('remote-previous', () => TrackPlayer.skipToPrevious());
-
-  await TrackPlayer.setupPlayer({});
-  TrackPlayer.updateOptions({
-    stopWithApp: true,
-    capabilities: [
-      TrackPlayer.CAPABILITY_PLAY,
-      TrackPlayer.CAPABILITY_PAUSE,
-      TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
-      TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
-      TrackPlayer.CAPABILITY_JUMP_BACKWARD,
-    ],
-    compactCapabilities: [
-      TrackPlayer.CAPABILITY_PLAY,
-      TrackPlayer.CAPABILITY_PAUSE,
-    ],
-  });
-});
