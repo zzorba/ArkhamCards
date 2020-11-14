@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useCallback, useContext, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Animated,
   StyleSheet,
@@ -7,146 +7,104 @@ import {
   View,
   Easing,
 } from 'react-native';
-import { bindActionCreators, Dispatch, Action } from 'redux';
 
 import AppIcon from '@icons/AppIcon';
 import { AnimatedArkhamIcon } from '@icons/ArkhamIcon';
 import { toggleMythosMode } from '@components/filter/actions';
 import { AppState, getMythosMode } from '@reducers';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
+import { useEffectUpdate } from '@components/core/hooks';
 
 const SIZE = 32;
 
-interface OwnProps {
+interface Props {
   filterId: string;
-  lightButton?: boolean;
 }
 
-interface ReduxProps {
-  mythosMode: boolean;
-}
+const WIDTH = SIZE * 2 + 12;
+const HEIGHT = SIZE;
 
-interface ReduxActionProps {
-  toggleMythosMode: (id: string, value: boolean) => void;
-}
+function MythosButton({ filterId }: Props) {
+  const { colors } = useContext(StyleContext);
+  const mythosMode = useSelector((state: AppState) => getMythosMode(state, filterId));
+  const toggleAnim = useRef(new Animated.Value(mythosMode ? 1 : 0));
+  const [mythosModeState, setMythosModeState] = useState(mythosMode);
+  const dispatch = useDispatch();
+  useEffectUpdate(() => {
+    setMythosModeState(mythosMode);
+  }, [mythosMode]);
 
-type Props = OwnProps & ReduxProps & ReduxActionProps;
+  useEffectUpdate(() => {
+    Animated.timing(
+      toggleAnim.current,
+      {
+        toValue: mythosModeState ? 1 : 0,
+        duration: 400,
+        useNativeDriver: false,
+        easing: Easing.exp,
+      }
+    ).start();
+  }, [mythosModeState]);
 
-interface State {
-  toggleAnim: Animated.Value;
-  mythosMode: boolean;
-}
+  const onPress = useCallback(() => {
+    const newState = !mythosModeState;
+    dispatch(toggleMythosMode(filterId, newState));
+    setMythosModeState(newState);
+  }, [setMythosModeState, dispatch, mythosModeState, filterId]);
+  const investigatorColor = toggleAnim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: [colors.D30, colors.L10],
+  });
+  const mythosColor = toggleAnim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: [colors.L10, colors.D30],
+  });
+  const movingCircleX = toggleAnim.current.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, SIZE + 2.5],
+  });
 
-class MythosButton extends React.Component<Props, State> {
-  static contextType = StyleContext;
-  context!: StyleContextType;
+  const backgroundColor = colors.L10;
 
-  static WIDTH = SIZE * 2 + 12
-  static HEIGHT = SIZE;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      toggleAnim: new Animated.Value(props.mythosMode ? 1 : 0),
-      mythosMode: props.mythosMode,
-    };
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    const { mythosMode } = this.props;
-    if (mythosMode !== prevProps.mythosMode) {
-      Animated.timing(
-        this.state.toggleAnim,
-        {
-          toValue: mythosMode ? 1 : 0,
-          duration: 400,
-          useNativeDriver: false,
-          easing: Easing.exp,
-        }
-      ).start();
-    }
-  }
-
-
-  _onPress = () => {
-    const {
-      filterId,
-      toggleMythosMode,
-      mythosMode,
-    } = this.props;
-    toggleMythosMode(filterId, !mythosMode);
-  };
-
-  render() {
-    const { toggleAnim } = this.state;
-    const { colors } = this.context;
-
-    const investigatorColor = toggleAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [colors.D30, colors.L10],
-    });
-    const mythosColor = toggleAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [colors.L10, colors.D30],
-    });
-    const movingCircleX = toggleAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, SIZE + 2.5],
-    });
-
-    const backgroundColor = colors.L10;
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.buttonFrame}>
-          <AppIcon name="mythos_button_frame" size={SIZE + 5} color={backgroundColor} />
-        </View>
-        <TouchableWithoutFeedback onPress={this._onPress}>
-          <View style={[styles.buttonContainer, { borderColor: backgroundColor }]}>
-            <Animated.View style={[
-              styles.circle,
-              {
-                backgroundColor,
-                transform: [{ translateX: movingCircleX }],
-              },
-            ]} />
-            <View style={styles.iconWrapper}>
-              <Animated.Text style={{ color: investigatorColor }} allowFontScaling={false}>
-                <AnimatedArkhamIcon
-                  name={'per_investigator'}
-                  size={24}
-                />
-              </Animated.Text>
-            </View>
-            <View style={styles.iconWrapper}>
-              <Animated.Text style={{ color: mythosColor }} allowFontScaling={false}>
-                <AnimatedArkhamIcon
-                  name={'auto_fail'}
-                  size={24}
-                />
-              </Animated.Text>
-            </View>
-          </View>
-        </TouchableWithoutFeedback>
+  return (
+    <View style={styles.container}>
+      <View style={styles.buttonFrame}>
+        <AppIcon name="mythos_button_frame" size={SIZE + 5} color={backgroundColor} />
       </View>
-    );
-  }
+      <TouchableWithoutFeedback onPress={onPress}>
+        <View style={[styles.buttonContainer, { borderColor: backgroundColor }]}>
+          <Animated.View style={[
+            styles.circle,
+            {
+              backgroundColor,
+              transform: [{ translateX: movingCircleX }],
+            },
+          ]} />
+          <View style={styles.iconWrapper}>
+            <Animated.Text style={{ color: investigatorColor }} allowFontScaling={false}>
+              <AnimatedArkhamIcon
+                name={'per_investigator'}
+                size={24}
+              />
+            </Animated.Text>
+          </View>
+          <View style={styles.iconWrapper}>
+            <Animated.Text style={{ color: mythosColor }} allowFontScaling={false}>
+              <AnimatedArkhamIcon
+                name={'auto_fail'}
+                size={24}
+              />
+            </Animated.Text>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </View>
+  );
 }
+MythosButton.WIDTH = WIDTH;
+MythosButton.HEIGHT = HEIGHT;
 
-function mapStateToProps(state: AppState, props: OwnProps): ReduxProps {
-  return {
-    mythosMode: getMythosMode(state, props.filterId),
-  };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<Action>): ReduxActionProps {
-  return bindActionCreators({
-    toggleMythosMode,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MythosButton);
+export default MythosButton;
 
 const styles = StyleSheet.create({
   container: {

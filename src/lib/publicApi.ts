@@ -126,7 +126,7 @@ export const syncTaboos = async function(
 };
 
 async function insertChunk<T>(things: T[], insert: (things: T[]) => Promise<any>, maxInsert?: number) {
-  const chunkThings = chunk(things, Platform.OS === 'ios' ? 50 : maxInsert || 10);
+  const chunkThings = chunk(things, Platform.OS === 'ios' ? 50 : maxInsert || 8);
   await Promise.all(map(chunkThings, async toInsert => await insert(toInsert)));
 }
 

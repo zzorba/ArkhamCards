@@ -24,6 +24,8 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
 import DeckNavFooter from '@components/DeckNavFooter';
+import { useSelector } from 'react-redux';
+import { getLangPreference } from '@reducers';
 
 const DIGIT_REGEX = /^[0-9]+$/;
 
@@ -240,6 +242,7 @@ export default function({
   initialSort,
 }: Props) {
   const { fontScale } = useContext(StyleContext);
+  const lang = useSelector(getLangPreference);
   const [searchText, setSearchText] = useState(false);
   const [searchFlavor, setSearchFlavor] = useState(false);
   const [searchBack, setSearchBack] = useState(false);
@@ -278,46 +281,38 @@ export default function({
     if (searchTerm === '' || !searchTerm) {
       return combineQueriesOpt(parts, 'and');
     }
-    const safeSearchTerm = `%${searchTerm}%`;
+    const safeSearchTerm = `%${searchTerm.toLocaleLowerCase(lang)}%`;
+    parts.push(where('c.s_search_name like :searchTerm', { searchTerm: safeSearchTerm }));
     if (searchBack) {
       parts.push(where([
-        'c.name like :searchTerm',
-        '(c.linked_card is not null AND c.linked_card.name like :searchTerm)',
-        '(c.back_name is not null AND c.back_name like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.back_name is not null and c.linked_card.back_name like :searchTerm)',
-        '(c.subname is not null AND c.subname like :searchTerm)',
-        '(c.linked_card is not null AND c.linked_card.subname is not null AND c.linked_card.subname like :searchTerm)',
-      ].join(' OR '), { searchTerm: safeSearchTerm }));
-    } else {
-      parts.push(where('c.renderName like :searchTerm OR (c.renderSubname is not null AND c.renderSubname like :searchTerm)', { searchTerm: safeSearchTerm }));
+        'c.s_search_name_back like :searchTerm',
+        '(c.linked_card is not null AND c.linked_card.s_search_name like :searchTerm)',
+        '(c.linked_card is not null AND c.linked_card.s_search_name_back like :searchTerm)',
+      ].join(' OR '), { searchTerm: safeSearchTerm }
+      ));
     }
     if (searchText) {
-      parts.push(where([
-        '(c.text is not null AND c.text like :searchTerm)',
-        '(c.traits is not null AND c.traits like :searchTerm)',
-      ].join(' OR '), { searchTerm: safeSearchTerm }));
+      parts.push(where('c.s_search_game like :searchTerm', { searchTerm: safeSearchTerm }));
       if (searchBack) {
         parts.push(where([
-          '(c.linked_card is not null AND c.linked_card.text is not null AND c.linked_card.text like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.traits AND c.linked_card.traits like :searchTerm)',
-          '(c.back_text is not null AND c.back_text like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.back_text is not null AND c.linked_card.back_text like :searchTerm)',
+          'c.s_search_game_back like :searchTerm',
+          '(c.linked_card is not null AND c.linked_card.s_search_game like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.s_search_game_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
     if (searchFlavor) {
-      parts.push(where('(c.flavor is not null AND c.flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
-      '(c.linked_card is no';
+      parts.push(where('(c.s_search_flavor like :searchTerm)', { searchTerm: safeSearchTerm }));
       if (searchBack) {
         parts.push(where([
-          '(c.back_flavor is not null AND c.back_flavor like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.flavor is not null AND c.linked_card.flavor like :searchTerm)',
-          '(c.linked_card is not null AND c.linked_card.back_flavor is not null AND c.linked_card.back_flavor like :searchTerm)',
+          '(c.s_search_flavor_back like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.s_search_flavor like :searchTerm)',
+          '(c.linked_card is not null AND c.linked_card.s_search_flavor_back like :searchTerm)',
         ].join(' OR '), { searchTerm: safeSearchTerm }));
       }
     }
     return combineQueriesOpt(parts, 'or');
-  }, [searchState, searchBack, searchFlavor, searchText, searchTerm]);
+  }, [searchState, searchBack, searchFlavor, searchText, searchTerm, lang]);
 
   const controls = (
     <SearchOptions
