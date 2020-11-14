@@ -2,10 +2,10 @@ import React, { useCallback, useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import AppIcon from '@icons/AppIcon';
-import Ripple from '@lib/react-native-material-ripple';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/Card';
 import { s, xs } from '@styles/space';
+import RoundButton from '@components/core/RoundButton';
 
 interface Props {
   card: Card;
@@ -19,20 +19,13 @@ export default function CardUpgradeButton({ onUpgradePress, card, count }: Props
   return (
     <View style={styles.countWrapper}>
       { !!onUpgradePress && (
-        <Ripple style={[
-          styles.button,
-          {
-            backgroundColor: colors.L20,
-            width: 32,
-            height: 32,
-          },
-        ]} onPress={onPress} rippleColor={colors.M} rippleSize={32}>
+        <RoundButton onPress={onPress}>
           <AppIcon
             size={28}
             color={colors.M}
             name="upgrade"
           />
-        </Ripple>
+        </RoundButton>
       ) }
       <View style={styles.count}>
         <Text style={typography.text}>
@@ -45,19 +38,6 @@ export default function CardUpgradeButton({ onUpgradePress, card, count }: Props
 }
 
 const styles = StyleSheet.create({
-  button: {
-    borderRadius: 16,
-    paddingLeft: 1,
-    paddingBottom: 2,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 8,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 4,
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-  },
   countWrapper: {
     marginRight: s,
     flexDirection: 'row',

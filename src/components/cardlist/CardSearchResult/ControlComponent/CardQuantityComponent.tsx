@@ -1,20 +1,16 @@
-import React, { useCallback, useContext, useRef, useState } from 'react';
-import { range } from 'lodash';
+import React, { useCallback, useContext, useReducer } from 'react';
 import {
-  Animated,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-import Button from '@components/core/Button';
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import CountButton from '../CountButton';
-import { rowHeight, buttonWidth, BUTTON_PADDING, toggleButtonMode } from '../constants';
+import { rowHeight, toggleButtonMode } from '../constants';
 import { s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
-import { EditSlotsActions, useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
+import { EditSlotsActions, useCounter, useEffectUpdate } from '@components/core/hooks';
+import RoundButton from '@components/core/RoundButton';
 
 interface Props {
   code: string;
@@ -24,76 +20,35 @@ interface Props {
   showZeroCount?: boolean;
   forceBig?: boolean;
 }
+
 function TinyCardQuantityComponent({ code, count: propsCount, countChanged: { setSlot }, limit }: Props) {
-  const { borderStyle, fontScale } = useContext(StyleContext);
-  const [open, toggleOpen, setOpen] = useFlag(false);
-  const slideAnim = useRef(new Animated.Value(0));
-  const [count, setCount] = useState(propsCount);
+  const { fontScale, typography } = useContext(StyleContext);
+  const [count, updateCount] = useReducer((count: number, action: 'cycle' | 'sync') => {
+    if (action === 'cycle') {
+      const newCount = (count + 1) % (limit + 1);
+      setTimeout(() => setSlot(code, newCount), 100);
+      return newCount;
+    }
+    return propsCount;
+  }, propsCount);
 
   useEffectUpdate(() => {
-    setCount(propsCount);
+    updateCount('sync');
   }, [propsCount]);
 
-  useEffectUpdate(() => {
-    Animated.timing(slideAnim.current, {
-      toValue: open ? 1 : 0,
-      duration: 150,
-      useNativeDriver: true,
-    }).start();
-  }, [open]);
-
-  const selectCount = useCallback((count: number) => {
-    setCount(count);
-    setOpen(false);
-    setTimeout(() => setSlot(code, count), 100);
-  }, [setOpen, setCount, code, setSlot]);
-
-  const drawerWidth = BUTTON_PADDING + (buttonWidth(fontScale) + BUTTON_PADDING) * (limit + 1);
-  const translateX = slideAnim.current.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, -drawerWidth],
-    extrapolate: 'clamp',
-  });
+  const onPress = useCallback(() => {
+    updateCount('cycle');
+  }, [updateCount]);
 
   return (
-    <View style={[styles.tinyContainer, { height: rowHeight(fontScale) }]} pointerEvents="box-none">
-      <Button
-        style={[styles.button, { width: buttonWidth(fontScale) }]}
-        color={count === 0 ? 'white' : undefined}
-        size="small"
-        align="center"
-        width={buttonWidth(fontScale)}
-        text={count.toString()}
-        onPress={toggleOpen}
-      />
-      <View style={styles.drawer} pointerEvents="box-none">
-        <Animated.View style={[
-          styles.slideDrawer,
-          borderStyle,
-          {
-            height: rowHeight(fontScale),
-            width: drawerWidth,
-            transform: [{ translateX: translateX }],
-          },
-        ]}>
-          <LinearGradient
-            style={styles.gradient}
-            colors={['#a0a0a0', '#f3f3f3']}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 1 }}
-          >
-            { range(0, limit + 1).map(buttonIdx => (
-              <CountButton
-                key={buttonIdx}
-                count={buttonIdx}
-                text={`${buttonIdx}`}
-                selected={count === buttonIdx}
-                onPress={selectCount}
-              />
-            )) }
-          </LinearGradient>
-        </Animated.View>
-      </View>
+    <View style={[styles.row, { height: rowHeight(fontScale) }]}>
+      <RoundButton onPress={onPress}>
+        <View style={styles.centerText}>
+          <Text style={[typography.text, styles.count, typography.center]}>
+            { count }
+          </Text>
+        </View>
+      </RoundButton>
     </View>
   );
 }
@@ -160,40 +115,10 @@ const styles = StyleSheet.create({
     marginRight: s,
     fontWeight: '600',
   },
-  tinyContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
+  centerText: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    overflow: 'visible',
-  },
-  button: {
-    marginTop: xs,
-    marginBottom: xs,
-    marginRight: xs,
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-  drawer: {
-    zIndex: 1,
-    position: 'absolute',
-    top: 0,
-    left: '100%',
-    overflow: 'visible',
-  },
-  slideDrawer: {
-    borderLeftWidth: 1,
-  },
-  gradient: {
-    width: '100%',
-    height: '100%',
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingLeft: BUTTON_PADDING,
+    paddingLeft: 4,
   },
 });
