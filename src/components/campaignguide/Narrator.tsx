@@ -13,7 +13,7 @@ import TrackPlayer, { ProgressComponent } from 'react-native-track-player';
 
 import EncounterIcon from '@icons/EncounterIcon';
 import { getAccessToken } from '@lib/dissonantVoices';
-import { AppState } from '@reducers';
+import { AppState, hasDissonantVoices } from '@reducers';
 import { DissonantVoicesState } from '@reducers/dissonantVoices';
 import { StyleContext, StyleContextType } from '@styles/StyleContext';
 
@@ -481,7 +481,8 @@ class PlaylistView extends React.Component<PlaylistProps, PlaylistState> {
 }
 
 interface NarratorContainerProps {
-  dissonantVoices: DissonantVoicesState;
+  hasDissonantVoices: boolean;
+  children: JSX.Element,
 }
 
 class NarratorContainerView extends React.Component<
@@ -522,8 +523,9 @@ class NarratorContainerView extends React.Component<
   }
 
   render() {
-    const { dissonantVoices, children } = this.props;
-    if (!dissonantVoices?.status) return children;
+    const { hasDissonantVoices, children } = this.props;
+    const { queue } = this.state;
+    if (queue.length === 0 || !hasDissonantVoices) return children;
 
     return (
       <View style={{height: '100%'}}>
@@ -536,6 +538,6 @@ class NarratorContainerView extends React.Component<
 
 export default connect((state: AppState) => {
   return {
-    dissonantVoices: state.dissonantVoices,
+    hasDissonantVoices: hasDissonantVoices(state),
   };
 })(NarratorContainerView);

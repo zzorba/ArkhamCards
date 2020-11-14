@@ -17,6 +17,7 @@ import { ScenarioGuideContextType } from './ScenarioGuideContext';
 import StepsComponent from './StepsComponent';
 import { CampaignLogProps } from './CampaignLogView';
 import withScenarioGuideContext, { ScenarioGuideInputProps } from './withScenarioGuideContext';
+import { hasDissonantVoices } from '@reducers';
 import { iconsMap } from '@app/NavIcons';
 import BasicButton from '@components/core/BasicButton';
 import { NavigationProps } from '@components/nav/types';
@@ -24,7 +25,8 @@ import COLORS from '@styles/colors';
 import { ScenarioFaqProps } from '@components/campaignguide/ScenarioFaqView';
 import { useNavigationButtonPressed } from '@components/core/hooks';
 import StyleContext from '@styles/StyleContext';
-import NarratorView, { NarrationTrack, queueNarration } from './Narrator';
+import NarratorView, { NarrationTrack, queueNarration } from '@components/campaignguide/Narrator';
+import { useSelector } from 'react-redux';
 
 interface OwnProps {
   showLinkedScenario?: (
@@ -123,6 +125,7 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
     }
   }, [componentId, scenarioId, processedScenario.closeOnUndo, campaignState]);
 
+
   useNavigationButtonPressed(({ buttonId }) => {
     switch (buttonId) {
       case 'reset': {
@@ -160,8 +163,16 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
       },
     });
   }, [componentId, campaignId, processedScenario.id]);
-  
+
+  const hasDS = useSelector(hasDissonantVoices);
   useEffect(() => {
+    if (!hasDS) {
+      queueNarration([]);
+    }
+
+    const campaignCode = processedScenario.scenarioGuide.campaignGuide.campaignCycleCode();
+    const campaignName = processedScenario.scenarioGuide.campaignGuide.campaignName();
+    const scenarioName = processedScenario.scenarioGuide.scenarioName();
     const queue: NarrationTrack[] = [];
     for (const scenarioStep of processedScenario.steps) {
       if (scenarioStep.step.type === "resolution") {
@@ -172,25 +183,24 @@ function ScenarioView({ componentId, campaignId, showLinkedScenario, processedSc
 
         queue.push({
           ...narration,
-          campaignCode: processedScenario.scenarioGuide.campaignGuide.campaignCycleCode(),
-          campaignName: processedScenario.scenarioGuide.campaignGuide.campaignName(),
-          scenarioName: processedScenario.scenarioGuide.scenarioName(),
+          campaignCode,
+          campaignName,
+          scenarioName,
         });
-      } else if (scenarioStep.step.type === "story") {
+      } else if (scenarioStep.step.type === "story" || scenarioStep.step.type === "branch") {
         const narration = scenarioStep.step.narration;
         if (!narration) continue;
 
         queue.push({
           ...narration,
-          campaignCode: processedScenario.scenarioGuide.campaignGuide.campaignCycleCode(),
-          campaignName: processedScenario.scenarioGuide.campaignGuide.campaignName(),
-          scenarioName: processedScenario.scenarioGuide.scenarioName(),
+          campaignCode,
+          campaignName,
+          scenarioName,
         });
       }
     }
     queueNarration(queue);
-  }, [processedScenario]);
-
+  }, [processedScenario, hasDS]);
 
   const hasInterludeFaq = processedScenario.scenarioGuide.scenarioType() !== 'scenario' &&
     processedScenario.scenarioGuide.campaignGuide.scenarioFaq(processedScenario.id.scenarioId).length;

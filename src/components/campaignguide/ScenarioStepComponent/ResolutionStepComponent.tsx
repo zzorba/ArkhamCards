@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,8 @@ import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { playNarration } from '../Narrator';
 import { Icon } from 'react-native-elements';
+import { useSelector } from 'react-redux';
+import { hasDissonantVoices } from '@reducers';
 
 interface Props {
   step: ResolutionStep;
@@ -24,7 +26,8 @@ export default function ResolutionStepComponent({ step }: Props) {
   if (!resolution) {
     return <Text>Unknown resolution: { step.resolution }</Text>;
   }
-  return (
+  const hasDS = useSelector(hasDissonantVoices);
+  return useMemo(() => (
     <>
       { !!step.text && (
         <SetupStepWrapper>
@@ -34,7 +37,7 @@ export default function ResolutionStepComponent({ step }: Props) {
       { (!!resolution.text || resolution.steps.length > 0) && (
         <View style={space.marginTopM}>
           <View style={{...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-            { resolution.narration && (
+            { hasDS && resolution.narration && (
               <Icon name='play-circle-outline' type='material' onPress={() => playNarration(resolution.narration!.id)}/>
             ) }
             <Text style={{...typography.mediumGameFont, flex: 1, paddingLeft: 8}}>
@@ -52,5 +55,5 @@ export default function ResolutionStepComponent({ step }: Props) {
         </View>
       ) }
     </>
-  );
+  ), [resolution, hasDS]);
 }

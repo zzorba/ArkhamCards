@@ -276,6 +276,13 @@ export const getDeckToCampaignMap = createSelector(
   }
 );
 
+const dissonantVoicesSelector = (state: AppState) => state.dissonantVoices.status;
+
+export const hasDissonantVoices = createSelector(
+  dissonantVoicesSelector,
+  (status): boolean => status === true
+);
+
 const getAllDecksForCampaignInvestigators = (
   state: AppState,
   investigators: CardsMap,

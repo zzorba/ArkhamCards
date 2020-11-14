@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
@@ -12,7 +11,8 @@ import { StoryStep } from '@data/scenario/types';
 import space from '@styles/space';
 import { playNarration } from '../Narrator';
 import { Icon } from 'react-native-elements';
-import typography from '@styles/typography';
+import { useSelector } from 'react-redux';
+import { hasDissonantVoices } from '@reducers';
 
 interface Props {
   step: StoryStep;
@@ -20,6 +20,7 @@ interface Props {
 }
 
 export default function StoryStepComponent({ step, width }: Props) {
+  const hasDS = useSelector(hasDissonantVoices);
   const text = useMemo(() => {
     return (
       <View style={
@@ -27,7 +28,7 @@ export default function StoryStepComponent({ step, width }: Props) {
       }>
         <View style={space.marginTopM}>
           <View style={{...space.marginSideM, display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-            { step.narration && (
+            { hasDS && step.narration && (
               <Icon name='play-circle-outline' type='material' onPress={() => playNarration(step.narration!.id)}/>
             ) }
           </View>
@@ -43,7 +44,7 @@ export default function StoryStepComponent({ step, width }: Props) {
         <BulletsComponent bullets={step.bullets} />
       </View>
     );
-  }, [step]);
+  }, [step, hasDS]);
   if (step.border) {
     return (
       <BorderWrapper border width={width}>
