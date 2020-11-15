@@ -9559,7 +9559,7 @@
   "scenario_name": "The Pallid Mask",
   "full_name": "Scenario VI: The Pallid Mask",
   "setup": [
-    "check_did_not_escape_gaze",
+    "check_intro_condition",
     "check_ishimaru_haruko",
     "gather_encounter_sets",
     "set_aside_cards",
@@ -9575,12 +9575,34 @@
   ],
   "steps": [
     {
-      "id": "check_did_not_escape_gaze",
+      "id": "check_intro_condition",
+      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "did_not_escape_gaze",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "unable_to_find_nigel",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "did_not_escape_gaze",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
             "boolCondition": true,
@@ -20683,7 +20705,7 @@
   "scenario_name": "Return to The Pallid Mask",
   "full_name": "Scenario VI: Return to The Pallid Mask",
   "setup": [
-    "check_did_not_escape_gaze",
+    "check_intro_condition",
     "check_ishimaru_haruko",
     "gather_encounter_sets",
     "set_aside_cards",
@@ -20700,12 +20722,34 @@
   ],
   "steps": [
     {
-      "id": "check_did_not_escape_gaze",
+      "id": "check_intro_condition",
+      "text": "Check Campaign Log. <i>If you did not escape the gaze of the phantom</i>, or <i>if you were unable to find Nigel</i>",
       "type": "branch",
       "condition": {
-        "type": "campaign_log",
-        "section": "campaign_notes",
-        "id": "did_not_escape_gaze",
+        "type": "multi",
+        "conditions": [
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "unable_to_find_nigel",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          },
+          {
+            "type": "campaign_log",
+            "section": "campaign_notes",
+            "id": "did_not_escape_gaze",
+            "options": [
+              {
+                "boolCondition": true
+              }
+            ]
+          }
+        ],
+        "count": 1,
         "options": [
           {
             "boolCondition": true,
