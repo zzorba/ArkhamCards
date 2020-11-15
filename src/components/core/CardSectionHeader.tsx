@@ -82,7 +82,7 @@ export default function CardSectionHeader({ investigator, section }: Props) {
             borderStyle,
             {
               height,
-              backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
+              backgroundColor: colors.faction[investigator.factionCode()].background,
             },
           ]}
           rippleColor={colors.faction[investigator.factionCode()].text}
@@ -97,7 +97,7 @@ export default function CardSectionHeader({ investigator, section }: Props) {
         borderStyle,
         {
           height,
-          backgroundColor: colors.faction[investigator.factionCode()].darkBackground,
+          backgroundColor: colors.faction[investigator.factionCode()].background,
         },
       ]}>
         { renderSuperTitle(investigator, section.superTitle, true) }

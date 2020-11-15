@@ -31,7 +31,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
   const { backgroundStyle, colors } = useContext(StyleContext);
   const { componentId, campaignId, assignedWeaknesses, id } = props;
   const [unsavedAssignedWeaknesses, setUnsavedAssignedWeaknesses] = useState<string[]>(assignedWeaknesses || []);
-  const [deck, previousDeck] = useDeck(id, {});
+  const [deck] = useDeck(id, {});
   const dispatch = useDispatch();
   const [deckEdits, deckEditsRef] = useDeckEdits(id);
 
@@ -72,7 +72,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },
@@ -129,7 +129,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },
@@ -175,7 +175,7 @@ function EditSpecialDeckCardsView(props: EditSpecialCardsProps & NavigationProps
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },

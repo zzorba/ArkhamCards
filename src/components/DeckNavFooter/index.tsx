@@ -87,7 +87,7 @@ export default function DeckNavFooter({
   );
   return (
     <View style={styles.borderWrapper}>
-      <View style={[styles.wrapper, { backgroundColor: colors.faction[investigator.factionCode()].darkBackground }]}>
+      <View style={[styles.wrapper, { backgroundColor: colors.faction[investigator.factionCode()].background }]}>
         <View style={styles.left}>
           <View style={styles.row}>
             <Text style={[

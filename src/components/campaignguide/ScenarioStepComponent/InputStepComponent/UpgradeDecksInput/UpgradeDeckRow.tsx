@@ -27,7 +27,6 @@ import StyleContext from '@styles/StyleContext';
 import { useCounter, useEffectUpdate, useFlag } from '@components/core/hooks';
 import useCardList from '@components/card/useCardList';
 import { ThunkDispatch } from 'redux-thunk';
-import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
 
 interface Props {
   componentId: string;

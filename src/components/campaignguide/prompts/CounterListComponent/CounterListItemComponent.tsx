@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useMemo } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
 import PlusMinusButtons from '@components/core/PlusMinusButtons';
-import { BulletType } from '@data/scenario/types';
 import { m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 
@@ -11,7 +10,6 @@ interface Props {
   name: string;
   description?: string;
   color?: string;
-  bulletType?: BulletType;
   value: number;
   limit?: number;
   onInc: (code: string, limit?: number) => void;
@@ -19,7 +17,7 @@ interface Props {
   editable: boolean;
 }
 
-export default function CounterListItemComponent({ code, name, description, color, bulletType, value, limit, onInc, onDec, editable }: Props) {
+export default function CounterListItemComponent({ code, name, description, color, value, limit, onInc, onDec, editable }: Props) {
   const { borderStyle, typography } = useContext(StyleContext);
   const inc = useCallback(() => onInc(code, limit), [onInc, code, limit]);
   const dec = useCallback(() => onDec(code), [onDec, code]);

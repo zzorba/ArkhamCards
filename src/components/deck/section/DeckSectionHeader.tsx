@@ -1,12 +1,10 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Ripple from '@lib/react-native-material-ripple';
-import space from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { FactionCodeType } from '@app_constants';
 import AppIcon from '@icons/AppIcon';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface Props {
   title: string;
@@ -20,10 +18,10 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
     return (
       <Ripple
         onPress={onPress}
-        style={[space.marginTopS, styles.header, { backgroundColor: colors.faction[faction].darkBackground }]}
+        style={[styles.header, { backgroundColor: colors.faction[faction].background }]}
         rippleColor={colors.faction[faction].text}
       >
-        <Text style={[typography.header, typography.white]}>
+        <Text style={[typography.header, typography.regular, typography.white]}>
           { title }
         </Text>
         <View style={[styles.icon, { height: 40, width: 40 }]}>
@@ -33,8 +31,8 @@ export default function DeckSectionHeader({ title, faction, onPress }: Props) {
     );
   }
   return (
-    <View style={[space.marginTopS, styles.header, { backgroundColor: colors.faction[faction].background }]}>
-      <Text style={[typography.header, typography.white]}>
+    <View style={[styles.header, { backgroundColor: colors.faction[faction].background }]}>
+      <Text style={[typography.header, typography.regular, typography.white]}>
         { title }
       </Text>
     </View>
@@ -45,6 +43,7 @@ const styles = StyleSheet.create({
   header: {
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
+    borderTopWidth: 0,
     minHeight: 40,
     flexDirection: 'row',
     justifyContent: 'center',

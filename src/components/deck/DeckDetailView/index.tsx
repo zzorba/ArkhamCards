@@ -102,7 +102,6 @@ function DeckDetailView({
   const {
     deck,
     cards,
-    previousDeck,
     deckEdits,
     deckEditsRef,
     visible,
@@ -533,7 +532,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },
@@ -567,7 +566,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },
@@ -602,7 +601,7 @@ function DeckDetailView({
               color: 'white',
             },
             background: {
-              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[parsedDeck ? parsedDeck.investigator.factionCode() : 'neutral'].background,
             },
           },
         },

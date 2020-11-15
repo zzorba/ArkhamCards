@@ -13,7 +13,7 @@ import EncounterIcon from '@icons/EncounterIcon';
 import CardCostIcon, { costIconSize } from '@components/core/CardCostIcon';
 import Card from '@data/Card';
 import { SKILLS, SkillCodeType } from '@app_constants';
-import { rowHeight, iconSize, toggleButtonMode, buttonWidth } from './constants';
+import { rowHeight, iconSize } from './constants';
 import { isBig, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import { ControlComponent, ControlType } from './ControlComponent';
@@ -306,9 +306,6 @@ export default function CardSearchResult(props: Props) {
       >
         <View style={[
           styles.cardTextRow,
-          control && toggleButtonMode(fontScale) ?
-            { paddingRight: buttonWidth(fontScale) } :
-            {},
         ]}>
           <CardIcon card={card} />
           { cardName }

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { rowHeight, buttonWidth, BUTTON_PADDING } from './constants';
-import StyleContext, { StyleContextType } from '@styles/StyleContext';
+import StyleContext from '@styles/StyleContext';
 import { useEffectUpdate } from '@components/core/hooks';
 
 const DEPRESS_HEIGHT = 6;

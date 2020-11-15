@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { debounce } from 'throttle-debounce';
 import {
   StyleSheet,
@@ -9,11 +10,7 @@ import { Brackets } from 'typeorm/browser';
 import RegexEscape from 'regex-escape';
 import { t } from 'ttag';
 
-import {
-  SORT_BY_ENCOUNTER_SET,
-  SortType,
-  Slots,
-} from '@actions/types';
+import { SORT_BY_ENCOUNTER_SET, SortType } from '@actions/types';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import CollapsibleSearchBox from '@components/core/CollapsibleSearchBox';
 import FilterBuilder, { FilterState } from '@lib/filters';
@@ -24,7 +21,6 @@ import ArkhamButton from '@components/core/ArkhamButton';
 import StyleContext from '@styles/StyleContext';
 import DbCardResultList from './DbCardResultList';
 import DeckNavFooter from '@components/DeckNavFooter';
-import { useSelector } from 'react-redux';
 import { getLangPreference } from '@reducers';
 
 const DIGIT_REGEX = /^[0-9]+$/;

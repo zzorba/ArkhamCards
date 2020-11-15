@@ -4,11 +4,12 @@ import { t } from 'ttag';
 
 import { showCard, showCardSwipe } from '@components/nav/helper';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
-import CardSectionHeader from '@components/core/CardSectionHeader';
 import { DeckChanges, ParsedDeck, Slots } from '@actions/types';
 import Card, { CardsMap } from '@data/Card';
 import StyleContext from '@styles/StyleContext';
-import { CardCount } from '@components/cardlist/CardSearchResult/ControlComponent/CardCount';
+import DeckBubbleHeader from '../section/DeckBubbleHeader';
+import RoundedFooterButton from '@components/core/RoundedFooterButton';
+import DeckSectionBlock from '../section/DeckSectionBlock';
 
 interface Props {
   componentId: string;
@@ -19,6 +20,7 @@ interface Props {
   singleCardView?: boolean;
   title?: string;
   editable: boolean;
+  footerButton?: React.ReactNode;
 }
 
 function hasChanges(changes?: DeckChanges): boolean {
@@ -39,12 +41,12 @@ export default function ChangesFromPreviousDeck({
   singleCardView,
   title,
   editable,
+  footerButton,
 }: Props) {
   const { colors } = useContext(StyleContext);
   const {
     investigator,
     changes,
-    slots,
   } = parsedDeck;
   const getCards = useCallback((slots: Slots): Card[] => {
     if (!keys(slots).length) {
@@ -88,22 +90,18 @@ export default function ChangesFromPreviousDeck({
     }
   }, [colors, allCards, componentId, investigator, parsedDeck.deck.id, tabooSetId, singleCardView]);
 
+  const faction = parsedDeck.investigator.factionCode();
   const renderSection = useCallback((slots: Slots, id: string, title: string) => {
-    const investigator = parsedDeck.investigator;
     const cards = getCards(slots);
     if (!cards.length) {
       return null;
     }
 
     return (
-      <React.Fragment>
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ title }}
-        />
-        { map(cards, card => (
+      <>
+        <DeckBubbleHeader title={title} />
+        { map(cards, (card, idx) => (
           <CardSearchResult
-            key={`${id}-${card.code}`}
             onPress={showCardPressed}
             card={card}
             control={{
@@ -111,11 +109,12 @@ export default function ChangesFromPreviousDeck({
               count: slots[card.code],
               deltaCountMode: true,
             }}
+            noBorder={idx === (cards.length - 1)}
           />
         )) }
-      </React.Fragment>
+      </>
     );
-  }, [parsedDeck.investigator, showCardPressed, getCards]);
+  }, [showCardPressed, getCards]);
 
   const handleTitlePress = useCallback(() => {
     if (onTitlePress) {
@@ -127,10 +126,10 @@ export default function ChangesFromPreviousDeck({
     if (changes && hasChanges(changes)) {
       return (
         <>
-          { renderSection(changes.upgraded, 'upgrade', t`Upgraded cards`) }
-          { renderSection(changes.added, 'added', t`Added cards`) }
-          { renderSection(changes.removed, 'removed', t`Removed cards`) }
-          { renderSection(changes.exiled, 'exiled', t`Exiled cards`) }
+          { renderSection(changes.upgraded, 'upgrade', t`Upgraded`) }
+          { renderSection(changes.added, 'added', t`Added`) }
+          { renderSection(changes.removed, 'removed', t`Removed`) }
+          { renderSection(changes.exiled, 'exiled', t`Exiled`) }
         </>
       );
     }
@@ -139,27 +138,21 @@ export default function ChangesFromPreviousDeck({
     }
     if (!editable) {
       return (
-        <CardSectionHeader
-          investigator={investigator}
-          section={{ title: t`No Changes` }}
-        />
+        <DeckBubbleHeader title={t`No Changes` } />
       );
     }
-  }, [investigator, changes, editable, renderSection]);
-
-  if (!hasChanges(changes) && !title) {
+  }, [changes, editable, renderSection]);
+  const changed = hasChanges(changes);
+  if (!changed && !title) {
     return null;
   }
   return (
-    <>
-      <CardSectionHeader
-        investigator={investigator}
-        section={{
-          superTitle: title || t`Card changes`,
-          onPress: onTitlePress ? handleTitlePress : undefined,
-        }}
-      />
+    <DeckSectionBlock
+      faction={faction}
+      title={title || (editable ? t`Latest upgrade` : t`Card changes`)}
+      footerButton={footerButton || (onTitlePress && <RoundedFooterButton title={t`View deck`} icon="deck" onPress={handleTitlePress} />)}
+    >
       { editsSection }
-    </>
+    </DeckSectionBlock>
   );
 }

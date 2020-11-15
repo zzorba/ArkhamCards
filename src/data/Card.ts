@@ -7,7 +7,6 @@ import { BASIC_SKILLS, RANDOM_BASIC_WEAKNESS, FactionCodeType, TypeCodeType, Ski
 import DeckRequirement from './DeckRequirement';
 import DeckOption from './DeckOption';
 import { QuerySort } from './types';
-import { ColumnMetadata } from 'typeorm/browser/metadata/ColumnMetadata';
 
 const SERPENTS_OF_YIG = '04014';
 const USES_REGEX = new RegExp('.*Uses\\s*\\([0-9]+(\\s\\[per_investigator\\])?\\s(.+)\\)\\..*');

@@ -1,14 +1,13 @@
 import React, { ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { filter, find, flatMap, forEach, map, sum, sumBy, uniqBy } from 'lodash';
 import {
-  SectionList,
-  SectionListData,
-  SectionListRenderItemInfo,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { t } from 'ttag';
 
 import PickerStyleButton from '@components/core/PickerStyleButton';
@@ -31,7 +30,7 @@ import InvestigatorImage from '@components/core/InvestigatorImage';
 import CardTextComponent from '@components/card/CardTextComponent';
 import DeckProgressComponent from '../DeckProgressComponent';
 import InvestigatorOptionsModule from './InvestigatorOptionsModule';
-import CardSectionHeader, { CardSectionHeaderData } from '@components/core/CardSectionHeader';
+import { CardSectionHeaderData } from '@components/core/CardSectionHeader';
 import TabooSetPicker from '@components/core/TabooSetPicker';
 import CardSearchResult from '@components/cardlist/CardSearchResult';
 import InvestigatorStatLine from '@components/core/InvestigatorStatLine';
@@ -45,22 +44,29 @@ import space, { isBig, m, s, xs } from '@styles/space';
 import StyleContext from '@styles/StyleContext';
 import ArkhamSwitch from '@components/core/ArkhamSwitch';
 import { useDeckEdits } from '@components/core/hooks';
-import { useDispatch } from 'react-redux';
 import { setDeckTabooSet, updateDeckMeta } from './actions';
-import DeckSlotHeader from './DeckSlotHeader';
-import DeckBubbleHeader from './DeckBubbleHeader';
-import DeckSectionHeader from './DeckSectionHeader';
+import DeckSlotHeader from '@components/deck/section/DeckSlotHeader';
+import DeckBubbleHeader from '@components/deck/section/DeckBubbleHeader';
+import DeckSectionHeader from '@components/deck/section/DeckSectionHeader';
+import DeckSectionBlock from '@components/deck/section/DeckSectionBlock';
 
 interface SectionCardId extends CardId {
   special: boolean;
   hasUpgrades: boolean;
+  index: number;
 }
 
 interface CardSection extends CardSectionHeaderData {
   id: string;
-  data: SectionCardId[];
+  cards: SectionCardId[];
   first?: boolean;
   last?: boolean;
+}
+
+interface DeckSection {
+  title: string;
+  onTitlePress?: () => void;
+  sections: CardSection[];
 }
 
 function hasUpgrades(
@@ -83,6 +89,9 @@ function hasUpgrades(
 }
 
 function deckToSections(
+  title: string,
+  onTitlePress: undefined | (() => void),
+  index: number,
   halfDeck: SplitCards,
   cards: CardsMap,
   cardsByName: { [name: string]: Card[] },
@@ -90,7 +99,7 @@ function deckToSections(
   special: boolean,
   inCollection: { [pack_code: string]: boolean },
   limitedSlots: boolean
-): CardSection[] {
+): [DeckSection, number] {
   const result: CardSection[] = [];
   if (halfDeck.Assets) {
     const assets = flatMap(halfDeck.Assets, subAssets => {
@@ -112,16 +121,17 @@ function deckToSections(
       result.push({
         id: `assets${special ? '-special' : ''}`,
         subTitle: `— ${assets} · ${assetCount} —`,
-        data: [],
+        cards: [],
       });
     }
     forEach(assets, (subAssets, idx) => {
       result.push({
         id: `asset${special ? '-special' : ''}-${idx}`,
         title: subAssets.type,
-        data: map(subAssets.data, c => {
+        cards: map(subAssets.data, c => {
           return {
             ...c,
+            index: index++,
             special,
             hasUpgrades: hasUpgrades(
               c.id,
@@ -150,9 +160,10 @@ function deckToSections(
       result.push({
         id: `${localizedName}-${special ? '-special' : ''}`,
         subTitle: `— ${localizedName} · ${count} —`,
-        data: map(cardIds, c => {
+        cards: map(cardIds, c => {
           return {
             ...c,
+            index: index++,
             special,
             hasUpgrades: hasUpgrades(
               c.id,
@@ -170,22 +181,26 @@ function deckToSections(
     result.push({
       id: 'cards-placeholder',
       placeholder: true,
-      data: [],
+      cards: [],
     });
   }
   if (result.length) {
     result[0].first = true;
     result[result.length - 1].last = true;
   }
-  return result;
+  return [
+    { title, onTitlePress, sections: result },
+    index,
+  ];
 }
 
 
 function bondedSections(
   slots: Slots,
   cards: CardsMap,
-  bondedCardsByName: { [name: string]: Card[] }
-): CardSection[] {
+  bondedCardsByName: { [name: string]: Card[] },
+  index: number,
+): DeckSection | undefined {
   const bondedCards: Card[] = [];
   forEach(slots, (count, code) => {
     const card = cards[code];
@@ -199,24 +214,27 @@ function bondedSections(
     }
   });
   if (!bondedCards.length) {
-    return [];
+    return undefined;
   }
   const uniqBondedCards = uniqBy(bondedCards, c => c.code);
   const count = sumBy(uniqBondedCards, card => card.quantity || 0);
-  return [{
-    id: 'bonded-cards',
+  return {
     title: t`Bonded Cards (${count})`,
-    data: map(uniqBondedCards, c => {
-      return {
-        id: c.code,
-        quantity: c.quantity || 0,
-        special: true,
-        hasUpgrades: false,
-        limited: false,
-        invalid: false,
-      };
-    }),
-  }];
+    sections: [{
+      id: 'bonded',
+      cards: map(uniqBondedCards, c => {
+        return {
+          id: c.code,
+          quantity: c.quantity || 0,
+          index: index++,
+          special: true,
+          hasUpgrades: false,
+          limited: false,
+          invalid: false,
+        };
+      }),
+    }],
+  };
 }
 
 interface Props {
@@ -262,10 +280,6 @@ interface Props {
   };
 }
 
-function keyForCard(item: SectionCardId) {
-  return item.id;
-}
-
 export default function DeckViewTab(props: Props) {
   const {
     componentId,
@@ -303,7 +317,7 @@ export default function DeckViewTab(props: Props) {
   const [deckEdits, deckEditsRef] = useDeckEdits(deck.id);
   const [limitedSlots, setLimitedSlots] = useState(false);
   const investigator = useMemo(() => cards[deck.investigator_code], [cards, deck.investigator_code]);
-  const [data, setData] = useState<CardSection[]>([]);
+  const [data, setData] = useState<DeckSection[]>([]);
   const showInvestigator = useCallback(() => {
     if (investigatorFront) {
       showCard(
@@ -325,38 +339,38 @@ export default function DeckViewTab(props: Props) {
     const specialCards = parsedDeck.specialCards;
     const slots = parsedDeck.slots;
     const validation = new DeckValidation(investigatorBack, slots, deckEdits?.meta);
-    setData([
-      {
-        id: 'cards',
-        superTitle: t`Deck Cards`,
-        data: [],
-        onPress: editable ? showEditCards : undefined,
-      },
-      ...deckToSections(
-        normalCards,
-        cards,
-        cardsByName,
-        validation,
-        false,
-        inCollection,
-        limitedSlots
-      ), {
-        id: 'special',
-        superTitle: t`Special Cards`,
-        data: [],
-        onPress: showEditSpecial,
-      },
-      ...deckToSections(
-        specialCards,
-        cards,
-        cardsByName,
-        validation,
-        true,
-        inCollection,
-        limitedSlots
-      ),
-      ...(limitedSlots ? [] : bondedSections(slots, cards, bondedCardsByName)),
-    ]);
+    const [deckSection, deckIndex] = deckToSections(
+      t`Deck Cards`,
+      editable ? showEditCards : undefined,
+      0,
+      normalCards,
+      cards,
+      cardsByName,
+      validation,
+      false,
+      inCollection,
+      limitedSlots
+    );
+    const [specialSection, specialIndex] = deckToSections(
+      t`Special Cards`,
+      editable ? showEditSpecial : undefined,
+      deckIndex,
+      specialCards,
+      cards,
+      cardsByName,
+      validation,
+      true,
+      inCollection,
+      limitedSlots
+    );
+    const newData: DeckSection[] = [deckSection, specialSection];
+    if (!limitedSlots) {
+      const bonded = bondedSections(slots, cards, bondedCardsByName, specialIndex);
+      if (bonded) {
+        newData.push(bonded);
+      }
+    }
+    setData(newData);
   }, [investigatorBack, limitedSlots, parsedDeck.normalCards, parsedDeck.specialCards, parsedDeck.slots, deckEdits, cards,
     showEditCards, showEditSpecial, setData, cardsByName, bondedCardsByName, inCollection, editable, visible]);
   const faction = parsedDeck.investigator.factionCode();
@@ -372,18 +386,16 @@ export default function DeckViewTab(props: Props) {
       );
       return;
     }
-    const [sectionId, cardIndex] = id.split('.');
-    let index = 0;
+    const index = parseInt(id, 10);
     const visibleCards: Card[] = [];
-    forEach(data, section => {
-      if (sectionId === section.id) {
-        index = visibleCards.length + parseInt(cardIndex, 10);
-      }
-      forEach(section.data, item => {
-        const card = cards[item.id];
-        if (card) {
-          visibleCards.push(card);
-        }
+    forEach(data, deckSection => {
+      forEach(deckSection.sections, section => {
+        forEach(section.cards, item => {
+          const card = cards[item.id];
+          if (card) {
+            visibleCards.push(card);
+          }
+        });
       });
     });
     showCardSwipe(
@@ -399,50 +411,34 @@ export default function DeckViewTab(props: Props) {
     );
   }, [componentId, data, colors, investigatorFront, tabooSetId, deck.id, singleCardView, cards]);
 
-  const renderSectionHeader = useCallback(({ section }: { section: SectionListData<SectionCardId> }) => {
-    const headerSection = section as CardSectionHeaderData;
-    if (headerSection.superTitle) {
+  const renderSectionHeader = useCallback((section: CardSection) => {
+    if (section.superTitle) {
       return (
         <DeckSectionHeader
-          title={headerSection.superTitle}
-          onPress={headerSection.onPress}
+          title={section.superTitle}
+          onPress={section.onPress}
           faction={faction}
         />
       );
     }
-
-    if (headerSection.title) {
+    if (section.title) {
       return (
-        <View style={[styles.sectionItem, { borderColor: colors.faction[faction].darkBackground }]}>
-          <DeckSlotHeader title={headerSection.title} first={section.first} />
-        </View>
+        <DeckSlotHeader title={section.title} first={section.first} />
       );
     }
-    if (headerSection.subTitle) {
+    if (section.subTitle) {
       return (
-        <View style={[styles.sectionItem, { borderColor: colors.faction[faction].darkBackground }]}>
-          <DeckBubbleHeader title={headerSection.subTitle} />
-        </View>
+        <DeckBubbleHeader title={section.subTitle} />
       );
     }
     return null;
-  }, [faction, colors.faction]);
-  const renderSectionFooter = useCallback(({ section }: { section: SectionListData<SectionCardId> }) => {
-    if (!section.last) {
-      return null;
-    }
-    return (
-      <View style={[styles.sectionFooter, {
-        borderColor: colors.faction[faction].darkBackground,
-      }]} />
-    );
-  }, [faction, colors]);
+  }, [faction]);
 
   const showDeckUpgrades = useMemo(() => {
     return !!(deck.previous_deck && !deck.next_deck);
   }, [deck.previous_deck, deck.next_deck]);
 
-  const renderCard = useCallback(({ item, index, section }: SectionListRenderItemInfo<SectionCardId>) => {
+  const renderCard = useCallback((item: SectionCardId, index: number, section: CardSection) => {
     const card = cards[item.id];
     if (!card) {
       return null;
@@ -450,26 +446,23 @@ export default function DeckViewTab(props: Props) {
     const count = (item.special && (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0) > 0) ?
       deckEditsRef.current?.ignoreDeckLimitSlots[item.id] :
       (item.quantity - (deckEditsRef.current?.ignoreDeckLimitSlots[item.id] || 0));
-    const id = `${section.id}.${index}`;
     const upgradeEnabled = showDeckUpgrades && item.hasUpgrades;
     return (
-      <View style={[styles.sectionItem, { borderColor: colors.faction[faction].darkBackground }]}>
-        <CardSearchResult
-          key={id}
-          card={card}
-          id={id}
-          invalid={item.invalid}
-          onPressId={showSwipeCard}
-          control={count !== undefined ? {
-            type: 'upgrade',
-            count,
-            onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
-          } : undefined}
-          noBorder={section.last && index === (section.data.length - 1)}
-        />
-      </View>
+      <CardSearchResult
+        key={item.index}
+        card={card}
+        id={`${item.index}`}
+        invalid={item.invalid}
+        onPressId={showSwipeCard}
+        control={count !== undefined ? {
+          type: 'upgrade',
+          count,
+          onUpgradePress: upgradeEnabled ? showCardUpgradeDialog : undefined,
+        } : undefined}
+        noBorder={section.last && index === (section.cards.length - 1)}
+      />
     );
-  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards, colors.faction, faction]);
+  }, [showSwipeCard, deckEditsRef, showDeckUpgrades, showCardUpgradeDialog, cards]);
 
   const problemHeader = useMemo(() => {
     if (!problem) {
@@ -540,7 +533,7 @@ export default function DeckViewTab(props: Props) {
             setTabooSet={setTabooSet}
             color={colors.faction[
               investigator ? investigator.factionCode() : 'neutral'
-            ].darkBackground}
+            ].background}
             transparent
           />
         ) }
@@ -568,11 +561,7 @@ export default function DeckViewTab(props: Props) {
         ) }
       </View>
     );
-  }, [
-    investigator,
-    colors,
-    availableExperienceButton,
-    limitedSlots,
+  }, [investigator, colors, availableExperienceButton, limitedSlots,
     toggleLimitedSlots,
     typography,
     parsedDeck.investigator,
@@ -655,38 +644,37 @@ export default function DeckViewTab(props: Props) {
   }
 
   return (
-    <View style={space.marginSideS}>
-      <SectionList
-        ListHeaderComponent={header}
-        ListFooterComponent={(
-          <DeckProgressComponent
-            componentId={componentId}
-            cards={cards}
-            deck={deck}
-            parsedDeck={parsedDeck}
-            editable={editable}
-            isPrivate={isPrivate}
-            campaign={campaign}
-            hideCampaign={hideCampaign}
-            showTraumaDialog={showTraumaDialog}
-            showDeckUpgrade={showDeckUpgrade}
-            showDeckHistory={showDeckHistory}
-            investigatorDataUpdates={investigatorDataUpdates}
-            tabooSetId={tabooSetId}
-            singleCardView={singleCardView}
-          />
-        )}
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag"
-        initialNumToRender={50}
-        renderItem={renderCard}
-        keyExtractor={keyForCard}
-        stickySectionHeadersEnabled={false}
-        renderSectionHeader={renderSectionHeader}
-        renderSectionFooter={renderSectionFooter}
-        sections={data}
+    <ScrollView contentContainerStyle={space.marginSideS}>
+      { header }
+      { map(data, deckSection => {
+        return (
+          <DeckSectionBlock faction={faction} title={deckSection.title} onTitlePress={deckSection.onTitlePress}>
+            { flatMap(deckSection.sections, section => (
+              <View key={section.id}>
+                { renderSectionHeader(section) }
+                { map(section.cards, (item, index) => renderCard(item, index, section)) }
+              </View>
+            )) }
+          </DeckSectionBlock>
+        );
+      })}
+      <DeckProgressComponent
+        componentId={componentId}
+        cards={cards}
+        deck={deck}
+        parsedDeck={parsedDeck}
+        editable={editable}
+        isPrivate={isPrivate}
+        campaign={campaign}
+        hideCampaign={hideCampaign}
+        showTraumaDialog={showTraumaDialog}
+        showDeckUpgrade={showDeckUpgrade}
+        showDeckHistory={showDeckHistory}
+        investigatorDataUpdates={investigatorDataUpdates}
+        tabooSetId={tabooSetId}
+        singleCardView={singleCardView}
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -758,19 +746,5 @@ const styles = StyleSheet.create({
     padding: s,
     paddingLeft: m,
     paddingRight: m,
-  },
-  sectionFooter: {
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderBottomWidth: 1,
-    height: 16,
-  },
-  sectionItem: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    paddingLeft: s,
-    paddingRight: s,
   },
 });

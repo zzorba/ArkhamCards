@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import AppIcon from '@icons/AppIcon';
 import StyleContext from '@styles/StyleContext';
 import Card from '@data/Card';
-import { s, xs } from '@styles/space';
+import { xs } from '@styles/space';
 import RoundButton from '@components/core/RoundButton';
 
 interface Props {
@@ -39,7 +39,6 @@ export default function CardUpgradeButton({ onUpgradePress, card, count }: Props
 
 const styles = StyleSheet.create({
   countWrapper: {
-    marginRight: s,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

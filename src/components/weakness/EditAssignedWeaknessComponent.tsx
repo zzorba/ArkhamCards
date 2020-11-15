@@ -1,8 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import { flatMap } from 'lodash';
-import {
-  ScrollView,
-} from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { showCard } from '@components/nav/helper';
 import { t } from 'ttag';
@@ -10,8 +8,7 @@ import { Slots, WeaknessSet } from '@actions/types';
 import Card from '@data/Card';
 import CardSearchResult from '../cardlist/CardSearchResult';
 import StyleContext from '@styles/StyleContext';
-import { usePlayerCards, useSlotActions, useSlots, useWeaknessCards } from '@components/core/hooks';
-import CardQuantityComponent from '@components/cardlist/CardSearchResult/ControlComponent/CardQuantityComponent';
+import { useSlotActions, useWeaknessCards } from '@components/core/hooks';
 
 interface Props {
   componentId: string;
@@ -22,7 +19,7 @@ interface Props {
 function EditAssignedWeaknessComponent({ componentId, weaknessSet, updateAssignedCards }: Props) {
   const { colors } = useContext(StyleContext);
   const weaknessCards = useWeaknessCards();
-  const [assignedCards, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, undefined, updateAssignedCards);
+  const [, editAssignedCards] = useSlotActions(weaknessSet.assignedCards, undefined, updateAssignedCards);
   const cardPressed = useCallback((card: Card) => {
     showCard(componentId, card.code, card, colors, true);
   }, [componentId, colors]);

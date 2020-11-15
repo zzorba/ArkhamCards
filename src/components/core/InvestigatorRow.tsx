@@ -58,9 +58,9 @@ export default function InvestigatorRow({
 
   const backgroundColor = useMemo(() => {
     if (eliminated) {
-      return colors.faction.dead.darkBackground;
+      return colors.faction.dead.background;
     }
-    return colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground;
+    return colors.faction[investigator ? investigator.factionCode() : 'neutral'].background;
   }, [eliminated, investigator, colors]);
   const fadeAnim = useCallback((props: any) => {
     return <Fade {...props} style={{ backgroundColor: colors.M }} duration={1000} />;

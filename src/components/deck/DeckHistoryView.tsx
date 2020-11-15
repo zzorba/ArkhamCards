@@ -14,6 +14,7 @@ import { getAllDecks } from '@reducers';
 import { parseDeck } from '@lib/parseDeck';
 import StyleContext from '@styles/StyleContext';
 import { useSimpleDeckEdits, usePlayerCards } from '@components/core/hooks';
+import space from '@styles/space';
 
 export interface DeckHistoryProps {
   id: number;
@@ -89,12 +90,12 @@ export default function DeckHistoryView({
     return null;
   }
   return (
-    <ScrollView contentContainerStyle={backgroundStyle}>
+    <ScrollView contentContainerStyle={[backgroundStyle, space.paddingSideS]}>
       { map(historicDecks, (deck, idx) => (
         <DeckProgressComponent
           key={deck.deck.id}
           title={deckTitle(deck, historicDecks.length - idx)}
-          onTitlePress={onDeckPress}
+          onTitlePress={idx === 0 ? undefined : onDeckPress}
           componentId={componentId}
           deck={deck.deck}
           parsedDeck={deck}

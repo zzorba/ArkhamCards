@@ -197,7 +197,7 @@ export default function DecksSection({
               color: 'white',
             },
             background: {
-              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].darkBackground,
+              color: colors.faction[investigator ? investigator.factionCode() : 'neutral'].background,
             },
           },
         },

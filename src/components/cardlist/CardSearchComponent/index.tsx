@@ -5,10 +5,7 @@ import { Brackets } from 'typeorm/browser';
 import { Navigation, OptionsTopBarButton, OptionsTopBar } from 'react-native-navigation';
 import { t } from 'ttag';
 
-import {
-  SortType,
-  Slots,
-} from '@actions/types';
+import { SortType } from '@actions/types';
 import Card from '@data/Card';
 import XpChooser from '@components/filter/CardFilterView/XpChooser';
 import CardSearchResultsComponent from '@components/cardlist/CardSearchResultsComponent';
